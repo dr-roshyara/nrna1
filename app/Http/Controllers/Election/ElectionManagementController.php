@@ -1167,11 +1167,13 @@ class ElectionManagementController extends Controller
             ->count();
 
         $votersCount = $election->memberships()
+            ->withoutGlobalScopes()
             ->where('role', 'voter')
             ->where('status', 'active')
             ->count();
 
         $committeeCount = $election->officers()
+            ->withoutGlobalScopes()
             ->where('status', 'active')
             ->count();
 

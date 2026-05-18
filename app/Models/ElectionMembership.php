@@ -227,21 +227,35 @@ class ElectionMembership extends Model
     ): array {
         return DB::transaction(function () use ($userIds, $electionId, $assignedBy) {
             $election = Election::withoutGlobalScopes()->lockForUpdate()->findOrFail($electionId);
+            $organisation = $election->organisation;
 
-            $validUserIds = DB::table('members')
-                ->join('organisation_users',  'members.organisation_user_id', '=', 'organisation_users.id')
-                ->leftJoin('membership_types',    'members.membership_type_id',   '=', 'membership_types.id')
-                ->whereIn('organisation_users.user_id', $userIds)
-                ->where('members.organisation_id', $election->organisation_id)
-                ->where('members.status', 'active')
-                ->whereIn('members.fees_status', ['paid', 'exempt'])
-                ->where(fn ($q) => $q->whereNull('members.membership_type_id')
-                                     ->orWhere('membership_types.grants_voting_rights', true))
-                ->where(fn ($q) => $q->whereNull('members.membership_expires_at')
-                                     ->orWhere('members.membership_expires_at', '>', now()))
-                ->whereNull('members.deleted_at')
-                ->pluck('organisation_users.user_id')
-                ->toArray();
+            // Validate based on organisation's membership mode
+            if ($organisation->uses_full_membership) {
+                // Full membership mode: check members table
+                $validUserIds = DB::table('members')
+                    ->join('organisation_users',  'members.organisation_user_id', '=', 'organisation_users.id')
+                    ->leftJoin('membership_types',    'members.membership_type_id',   '=', 'membership_types.id')
+                    ->whereIn('organisation_users.user_id', $userIds)
+                    ->where('members.organisation_id', $election->organisation_id)
+                    ->where('members.status', 'active')
+                    ->whereIn('members.fees_status', ['paid', 'exempt'])
+                    ->where(fn ($q) => $q->whereNull('members.membership_type_id')
+                                         ->orWhere('membership_types.grants_voting_rights', true))
+                    ->where(fn ($q) => $q->whereNull('members.membership_expires_at')
+                                         ->orWhere('members.membership_expires_at', '>', now()))
+                    ->whereNull('members.deleted_at')
+                    ->pluck('organisation_users.user_id')
+                    ->toArray();
+            } else {
+                // Election-only mode: check organisation_users table
+                $validUserIds = DB::table('organisation_users')
+                    ->whereIn('user_id', $userIds)
+                    ->where('organisation_id', $election->organisation_id)
+                    ->where('status', 'active')
+                    ->whereNull('deleted_at')
+                    ->pluck('user_id')
+                    ->toArray();
+            }
 
             $invalidCount = count(array_diff($userIds, $validUserIds));
 

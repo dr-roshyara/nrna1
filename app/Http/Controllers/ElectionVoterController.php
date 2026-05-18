@@ -155,7 +155,9 @@ class ElectionVoterController extends Controller
                 ->toArray();
         } else {
             // Election-only mode: single efficient query
-            $validIds = OrganisationUser::where('organisation_id', $organisation->id)
+            // Use withoutGlobalScopes() to bypass tenant filtering
+            $validIds = OrganisationUser::withoutGlobalScopes()
+                ->where('organisation_id', $organisation->id)
                 ->whereIn('user_id', $request->user_ids)
                 ->where('status', 'active')
                 ->pluck('user_id')

@@ -119,11 +119,11 @@ class NewsletterCreationTest extends TestCase
     public function test_preview_recipient_count_returns_active_member_count(): void
     {
         // Create 3 active members, 1 inactive, 1 unsubscribed
-        $this->createMember(status: 'active');
-        $this->createMember(status: 'active');
-        $this->createMember(status: 'active');
-        $this->createMember(status: 'inactive');
-        $this->createMember(status: 'active', unsubscribed: true);
+        $this->createNewsletterMember(status: 'active');
+        $this->createNewsletterMember(status: 'active');
+        $this->createNewsletterMember(status: 'active');
+        $this->createNewsletterMember(status: 'inactive');
+        $this->createNewsletterMember(status: 'active', unsubscribed: true);
 
         $newsletter = OrganisationNewsletter::create([
             'organisation_id' => $this->organisation->id,
@@ -143,7 +143,7 @@ class NewsletterCreationTest extends TestCase
                  ->assertJson(['count' => 3]);
     }
 
-    private function createMember(string $status = 'active', bool $unsubscribed = false): Member
+    protected function createNewsletterMember(string $status = 'active', bool $unsubscribed = false): Member
     {
         $user    = User::factory()->create();
         $orgUser = OrganisationUser::create([

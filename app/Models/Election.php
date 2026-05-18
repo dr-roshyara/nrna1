@@ -354,12 +354,13 @@ class Election extends Model
             "election.{$this->id}.voter_stats",
             300,
             function () {
-                $base = fn () => $this->memberships();
+                // Use withoutGlobalScopes() to bypass BelongsToTenant filtering
+                $base = fn () => $this->memberships()->withoutGlobalScopes();
 
                 return [
                     'total_memberships' => $base()->count(),
-                    'active_voters'     => $this->membershipVoters()->count(),
-                    'eligible_voters'   => $this->eligibleVoters()->count(),
+                    'active_voters'     => $this->membershipVoters()->withoutGlobalScopes()->count(),
+                    'eligible_voters'   => $this->eligibleVoters()->withoutGlobalScopes()->count(),
                     'by_status' => [
                         'active'   => $base()->where('status', 'active')->count(),
                         'inactive' => $base()->where('status', 'inactive')->count(),

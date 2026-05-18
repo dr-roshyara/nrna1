@@ -22,7 +22,9 @@ class VoterEligibilityService
     {
         if (!$org->uses_full_membership) {
             // Election-only mode: any active organisation user can vote
-            return OrganisationUser::where('organisation_id', $org->id)
+            // Use withoutGlobalScopes() to bypass tenant filtering during eligibility check
+            return OrganisationUser::withoutGlobalScopes()
+                ->where('organisation_id', $org->id)
                 ->where('user_id', $user->id)
                 ->where('status', 'active')
                 ->whereNull('deleted_at')
@@ -49,6 +51,7 @@ class VoterEligibilityService
     ): Builder {
         if (!$org->uses_full_membership) {
             // Election-only mode: all active org users not yet assigned
+            // Use raw DB query to bypass BelongsToTenant global scope
             return DB::table('organisation_users')
                 ->join('users', 'organisation_users.user_id', '=', 'users.id')
                 ->where('organisation_users.organisation_id', $org->id)
