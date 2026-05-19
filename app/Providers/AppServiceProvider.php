@@ -91,6 +91,12 @@ class AppServiceProvider extends ServiceProvider
             return new ElectionAuditService();
         });
 
+        // Register ConstitutionalMetrics for operational governance observability (Phase 3.1.D)
+        $this->app->singleton(
+            \App\Application\Election\Monitoring\ConstitutionalMetricsContract::class,
+            \App\Application\Election\Monitoring\ConstitutionalMetrics::class
+        );
+
         // Register SeoService as singleton for injectable getMeta() usage
         $this->app->singleton(\App\Services\SeoService::class);
 
