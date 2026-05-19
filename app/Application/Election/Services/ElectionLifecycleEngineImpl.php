@@ -48,27 +48,43 @@ final class ElectionLifecycleEngineImpl implements ElectionLifecycleEngine
             return ElectionLifecycleState::ResultsPublished;
         }
 
-        // 2. Time window: Is voting window open NOW?
+        // 2. Approval workflow states (before setup begins)
+        // Rejected (final state for failed approvals)
+        if ($election->rejected_at !== null) {
+            return ElectionLifecycleState::Rejected;
+        }
+
+        // Submitted for approval (awaiting platform review)
+        if ($election->submitted_for_approval_at !== null && $election->approved_at === null) {
+            return ElectionLifecycleState::SubmittedForApproval;
+        }
+
+        // Approved but setup not started (administration_completed = false)
+        if ($election->approved_at !== null && !$election->administration_completed) {
+            return ElectionLifecycleState::Approved;
+        }
+
+        // 3. Time window: Is voting window open NOW?
         if ($this->isVotingWindowOpenNow($election)) {
             return ElectionLifecycleState::VotingActive;
         }
 
-        // 3. Counting: Voting ended?
+        // 4. Counting: Voting ended?
         if ($this->hasVotingEnded($election)) {
             return ElectionLifecycleState::Counting;
         }
 
-        // 4. Ready: Setup complete, candidates approved?
+        // 5. Ready: Setup complete, candidates approved?
         if ($this->isSetupComplete($election) && $this->hasCandidatesApproved($election)) {
             return ElectionLifecycleState::ReadyForVoting;
         }
 
-        // 5. Setup: Administration completed?
+        // 6. Setup: Administration started (administration_completed = true)
         if ($election->administration_completed) {
             return ElectionLifecycleState::Setup;
         }
 
-        // 6. Default to Draft
+        // 7. Default to Draft
         return ElectionLifecycleState::Draft;
     }
 
@@ -112,6 +128,24 @@ final class ElectionLifecycleEngineImpl implements ElectionLifecycleEngine
         return match ($state) {
             ElectionLifecycleState::Draft => [
                 'canEdit' => true,
+                'canVote' => false,
+                'canManageVoters' => true,
+                'canPublishResults' => false,
+            ],
+            ElectionLifecycleState::SubmittedForApproval => [
+                'canEdit' => false,  // Locked during review
+                'canVote' => false,
+                'canManageVoters' => false,
+                'canPublishResults' => false,
+            ],
+            ElectionLifecycleState::Approved => [
+                'canEdit' => true,  // Can configure after approval
+                'canVote' => false,
+                'canManageVoters' => true,
+                'canPublishResults' => false,
+            ],
+            ElectionLifecycleState::Rejected => [
+                'canEdit' => true,  // Can revise and resubmit
                 'canVote' => false,
                 'canManageVoters' => true,
                 'canPublishResults' => false,
@@ -167,6 +201,8 @@ final class ElectionLifecycleEngineImpl implements ElectionLifecycleEngine
     {
         return match ($state) {
             ElectionLifecycleState::Draft => 'Election setup not started',
+            ElectionLifecycleState::SubmittedForApproval => 'Awaiting platform approval',
+            ElectionLifecycleState::Rejected => 'Approval rejected - address feedback and resubmit',
             ElectionLifecycleState::ReadyForVoting => 'Awaiting voting window',
             ElectionLifecycleState::Counting => 'Voting period has ended',
             ElectionLifecycleState::ResultsPublished => 'Results already published',
@@ -179,6 +215,9 @@ final class ElectionLifecycleEngineImpl implements ElectionLifecycleEngine
     {
         return match ($state) {
             ElectionLifecycleState::Draft => ['submit_for_approval'],
+            ElectionLifecycleState::SubmittedForApproval => [],  // Awaiting admin approval
+            ElectionLifecycleState::Approved => ['begin_setup'],
+            ElectionLifecycleState::Rejected => ['revise_and_resubmit'],
             ElectionLifecycleState::Setup => ['complete_administration', 'complete_nomination'],
             ElectionLifecycleState::ReadyForVoting => ['open_voting'],
             ElectionLifecycleState::VotingActive => ['close_voting', 'pause_voting'],

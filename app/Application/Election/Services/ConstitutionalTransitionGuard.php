@@ -151,7 +151,44 @@ final class ConstitutionalTransitionGuard
                 ->where('status', 'approved')
                 ->exists(),
             'voting_window_defined' => $election->voting_starts_at !== null && $election->voting_ends_at !== null,
+
+            // NEW: Timezone must be configured (stored in settings or dedicated column)
+            'timezone_set' => !empty($election->settings['timezone'] ?? null),
+
+            // NEW: Capacity-based approval
+            // Free plan (≤40 voters) always eligible
+            // Paid plan (>40 voters) requires payment authorization
+            'capacity_eligibility' => $this->isCapacityEligible($election),
+
             default => true,
         };
+    }
+
+    /**
+     * Check if an election is eligible based on voter capacity and payment status.
+     *
+     * FREE PLAN: ≤40 voters → auto-approved
+     * PAID PLAN: >40 voters → requires payment authorization from organization
+     *
+     * @param Election $election
+     * @return bool
+     */
+    private function isCapacityEligible(Election $election): bool
+    {
+        $voterCount = $election->memberships()->where('role', 'voter')->count();
+
+        // Free plan: up to 40 voters
+        if ($voterCount <= 40) {
+            return true;  // Auto-eligible, will auto-approve
+        }
+
+        // Paid plan: must have payment authorized on organization
+        $organisation = $election->organisation;
+        if (!$organisation) {
+            return false;  // No organisation = can't have payment
+        }
+
+        // Check if organisation has payment authorized (settings or dedicated column)
+        return $organisation->payment_authorized ?? false;
     }
 }

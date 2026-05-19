@@ -12,47 +12,87 @@ use App\Domain\Election\Enum\ElectionLifecycleState;
  *
  * **CRITICAL RULES:**
  * 1. All transitions defined here and NOWHERE ELSE
- * 2. Only committees (chief, deputy) can administer
+ * 2. Only committees (chief, deputy) can administer elections
  * 3. Only chief can open voting or publish results
  * 4. Each action has preconditions that must be verified
+ * 5. Approval workflow: draft → submitted → approved/rejected → setup
+ * 6. Capacity-based approval: free plan (≤40 voters) auto-approves, paid plan requires manual review
  */
 final class ElectionConstitution
 {
     public const RULES = [
+        // ──── APPROVAL WORKFLOW (Platform + Committee) ────
         'submit_for_approval' => [
             'allowed_states' => ['draft'],
             'allowed_roles' => ['chief', 'deputy'],
-            'preconditions' => [],
+            'preconditions' => ['timezone_set'],
+            'description' => 'Submit election for platform approval (free plan auto-approves)',
         ],
+        'approve' => [
+            'allowed_states' => ['submitted_for_approval'],
+            'allowed_roles' => ['platform_admin'],
+            'preconditions' => ['capacity_eligibility'],
+            'description' => 'Platform admin approves election (auto if free plan)',
+        ],
+        'reject' => [
+            'allowed_states' => ['submitted_for_approval'],
+            'allowed_roles' => ['platform_admin'],
+            'preconditions' => [],
+            'description' => 'Platform admin rejects election approval with feedback',
+        ],
+        'begin_setup' => [
+            'allowed_states' => ['approved'],
+            'allowed_roles' => ['chief', 'deputy'],
+            'preconditions' => [],
+            'description' => 'Begin election setup (create posts, import voters)',
+        ],
+        'revise_and_resubmit' => [
+            'allowed_states' => ['rejected'],
+            'allowed_roles' => ['chief', 'deputy'],
+            'preconditions' => [],
+            'description' => 'Revise rejection feedback and resubmit for approval',
+        ],
+
+        // ──── SETUP WORKFLOW (Committee) ────
         'complete_administration' => [
             'allowed_states' => ['setup'],
             'allowed_roles' => ['chief', 'deputy'],
             'preconditions' => ['has_posts', 'has_voters', 'has_committee_members'],
+            'description' => 'Complete voter import and committee setup',
         ],
         'complete_nomination' => [
             'allowed_states' => ['setup'],
             'allowed_roles' => ['chief', 'deputy'],
             'preconditions' => ['has_approved_candidates'],
+            'description' => 'Complete candidate approval process',
         ],
+
+        // ──── VOTING WORKFLOW (Chief Only) ────
         'open_voting' => [
             'allowed_states' => ['ready_for_voting'],
             'allowed_roles' => ['chief'],
-            'preconditions' => ['voting_window_defined'],
+            'preconditions' => ['voting_window_defined', 'timezone_set'],
+            'description' => 'Open voting period (chief only)',
         ],
         'close_voting' => [
             'allowed_states' => ['voting_active'],
             'allowed_roles' => ['chief', 'deputy'],
             'preconditions' => [],
+            'description' => 'Close voting period (begin counting)',
         ],
+
+        // ──── RESULTS WORKFLOW (Chief Only) ────
         'publish_results' => [
             'allowed_states' => ['counting'],
             'allowed_roles' => ['chief'],
             'preconditions' => [],
+            'description' => 'Publish election results to members',
         ],
         'archive' => [
             'allowed_states' => ['results_published'],
             'allowed_roles' => ['chief', 'deputy'],
             'preconditions' => [],
+            'description' => 'Archive election (final state)',
         ],
     ];
 
