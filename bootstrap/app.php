@@ -104,6 +104,9 @@ return Application::configure(basePath: dirname(__DIR__))
             // Election State Machine
             'election.state' => \App\Http\Middleware\EnsureElectionState::class,
 
+            // Election SSOT Interceptor (Phase 2.4 - Constitutional Stabilization)
+            'election.ssot' => \App\Http\Middleware\ElectionSSOTInterceptor::class,
+
             // Utility
             'no.cache' => \App\Http\Middleware\NoCacheMiddleware::class,
             'dashboard.role' => \App\Http\Middleware\CheckUserRole::class,

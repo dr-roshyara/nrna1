@@ -3,6 +3,8 @@
 namespace App\Application\Election\Deprecation;
 
 use App\Exceptions\DeprecatedQueryException;
+use App\Application\Election\Monitoring\DriftMonitorInterface;
+use App\Application\Election\Monitoring\SSOTViolationEvent;
 use Illuminate\Support\Facades\Log;
 
 /**
@@ -18,6 +20,10 @@ use Illuminate\Support\Facades\Log;
  */
 final class QueryPolicyGuard
 {
+    public function __construct(
+        private readonly ?DriftMonitorInterface $monitor = null
+    ) {}
+
     /**
      * Assert that a query does not use deprecated fields.
      *
@@ -38,6 +44,13 @@ final class QueryPolicyGuard
                         'severity' => DeprecationPolicy::getSeverity($field),
                     ]
                 );
+
+                // Fire to drift monitor (Stream 4)
+                $this->monitor?->record(SSOTViolationEvent::make(
+                    'deprecated_query_field',
+                    'query_policy',
+                    $context
+                ));
 
                 throw DeprecatedQueryException::fieldNotAllowed($field, $context);
             }

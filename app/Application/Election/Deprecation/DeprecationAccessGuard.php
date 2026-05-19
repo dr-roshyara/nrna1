@@ -3,6 +3,8 @@
 namespace App\Application\Election\Deprecation;
 
 use App\Exceptions\DeprecatedFieldException;
+use App\Application\Election\Monitoring\DriftMonitorInterface;
+use App\Application\Election\Monitoring\SSOTViolationEvent;
 use Illuminate\Support\Facades\Log;
 
 /**
@@ -18,6 +20,10 @@ use Illuminate\Support\Facades\Log;
  */
 final class DeprecationAccessGuard
 {
+    public function __construct(
+        private readonly ?DriftMonitorInterface $monitor = null
+    ) {}
+
     /**
      * Check if a field access should be allowed/warned/blocked.
      *
@@ -42,6 +48,13 @@ final class DeprecationAccessGuard
 
         // Log the access (except in strict mode where we'll throw)
         $this->logAccess($field, $context, $severity);
+
+        // Fire to drift monitor (Stream 4)
+        $this->monitor?->record(SSOTViolationEvent::make(
+            'deprecated_field_access',
+            'deprecation_access',
+            $context
+        ));
 
         // Enforce based on severity
         match ($severity) {

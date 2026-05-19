@@ -484,12 +484,13 @@ public function create(Request $request)
         );
     }
 
+    $lifecycle = $election ? ElectionLifecycle::of($election) : null;
     $electionProp = $election ? array_merge([
         'id' => $election->id,
         'name' => $election->name,
         'type' => $election->type,
         'description' => $election->description,
-        'is_active' => $election->is_active,
+        'is_active' => $lifecycle->canVote(),
     ], $electionSettings ?? []) : null;
 
     return Inertia::render('Vote/CreateVotingPage', [
@@ -2296,6 +2297,7 @@ public function verify(Request $request)
         $showDebugCode = !$hasValidEmail || app()->environment(['local', 'development']);
 
         $election = $this->getElection($request);
+        $lifecycle = $election ? ElectionLifecycle::of($election) : null;
 
         return Inertia::render('Vote/Verify', [
             'vote_data' => $processed_vote_data,
@@ -2317,7 +2319,7 @@ public function verify(Request $request)
                 'name' => $election->name,
                 'type' => $election->type,
                 'description' => $election->description,
-                'is_active' => $election->is_active,
+                'is_active' => $lifecycle->canVote(),
             ] : null,
         ]);
 

@@ -137,6 +137,18 @@ final class ElectionLifecycle
     }
 
     /**
+     * Check if the election can be activated (transition to voting).
+     *
+     * CONSTITUTIONAL FIX for Phase 3.1.C: Replaces deprecated $election->status checks.
+     *
+     * @return bool
+     */
+    public function canActivate(): bool
+    {
+        return $this->canTransitionTo('open_voting');
+    }
+
+    /**
      * Check if this state is terminal (election is finished).
      *
      * @return bool

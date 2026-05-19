@@ -33,6 +33,7 @@ if (ElectionLifecycle::of($election)->canVote()) {
 
 | Document | Purpose |
 |----------|---------|
+| **[PHASE_2_4_CONSTITUTIONAL_STABILIZATION.md](PHASE_2_4_CONSTITUTIONAL_STABILIZATION.md)** | Phase 2.4 drift prevention layer (anti-regression immune system) |
 | **[MIGRATION_GUIDE.md](MIGRATION_GUIDE.md)** | Step-by-step Phase 3 implementation (READ FIRST) |
 | **[API_REFERENCE.md](API_REFERENCE.md)** | Complete ElectionLifecycle facade API |
 | **[PATTERNS.md](PATTERNS.md)** | Code examples and common migration patterns |
@@ -74,14 +75,18 @@ $repo->findByElectionState($election); // Uses state, not status
 
 ## 🏗️ Architecture Layers
 
-### Three-Layer Defense Against SSOT Corruption
+### Four-Layer Defense Against SSOT Corruption
 
 ```
 ┌────────────────────────────────────────────────────────┐
+│  DRIFT PREVENTION LAYER (Phase 2.4)                    │
+│  ConstitutionalDriftMonitor → Records SSOTViolations   │
+│  Architecture Invariant Tests → Static violations scan │
+├────────────────────────────────────────────────────────┤
 │  FACADE LAYER                                          │
 │  ElectionLifecycle::of($election)->canVote()          │
 ├────────────────────────────────────────────────────────┤
-│  APPLICATION LAYER                                     │
+│  ENFORCEMENT LAYER                                     │
 │  - DeprecationAccessGuard: Runtime field enforcement   │
 │  - QueryPolicyGuard: SQL-level validation              │
 ├────────────────────────────────────────────────────────┤
@@ -94,12 +99,39 @@ $repo->findByElectionState($election); // Uses state, not status
 
 ### Defense Mechanisms
 
-| Layer | Mechanism | Blocks |
-|-------|-----------|--------|
+| Layer | Mechanism | Function |
+|-------|-----------|----------|
+| **Drift Prevention** | ConstitutionalDriftMonitor | Records violations to constitutional_integrity log (Phase 2.4) |
+| **Drift Prevention** | Architecture Invariant Tests | Scans migrated controllers for legacy patterns (Phase 2.4) |
 | **Domain** | ElectionReadModel | Direct legacy field access |
-| **Application** | DeprecationAccessGuard | Field access in violation of severity rules |
-| **Query** | QueryPolicyGuard | SQL queries using deprecated fields |
+| **Enforcement** | DeprecationAccessGuard | Field access in violation of severity rules |
+| **Enforcement** | QueryPolicyGuard | SQL queries using deprecated fields |
 | **Facade** | ElectionLifecycle | Scattered consumption patterns |
+
+---
+
+## 🛡️ Phase 2.4: Anti-Regression Immune System
+
+Phase 2.4 installed a **Constitutional Stabilization layer** that prevents future regressions by:
+
+1. **Recording Violations** — `ConstitutionalDriftMonitor` logs architectural violations to `constitutional_integrity.log` (365-day retention)
+2. **Detecting Drift** — 5 Architecture Invariant Tests scan migrated controllers for legacy patterns
+3. **Structured Monitoring** — `SSOTViolationEvent` records violation metadata (type, layer, context, timestamp)
+4. **Guard Integration** — Both `DeprecationAccessGuard` and `QueryPolicyGuard` now fire events to the drift monitor
+
+**Key Components:**
+- **SSOTViolationEvent** — Immutable value object for violation metadata
+- **ConstitutionalDriftMonitor** — Records events to dedicated log channel (never blocks execution)
+- **DriftMonitorInterface** — Interface for testability
+- **ElectionLifecycleContract** — Injectable factory for dependency management
+- **Architecture Invariant Tests** — Static file scanning to enforce SSOT patterns
+
+**Monitoring Log Location:**
+```
+storage/logs/constitutional_integrity.log     ← All violations recorded here
+```
+
+**See Also:** [PHASE_2_4_CONSTITUTIONAL_STABILIZATION.md](PHASE_2_4_CONSTITUTIONAL_STABILIZATION.md) for complete Phase 2.4 architecture and implementation details.
 
 ---
 

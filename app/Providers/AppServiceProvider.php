@@ -130,14 +130,31 @@ class AppServiceProvider extends ServiceProvider
             \App\Application\Election\Services\ConstitutionalTransitionGuard::class
         );
 
+        // Constitutional Drift Monitor: Records SSOT violations for tracking and analysis
+        $this->app->singleton(
+            \App\Application\Election\Monitoring\ConstitutionalDriftMonitor::class
+        );
+
         // Deprecation Enforcement Layer (DEL): Runtime field access control
         $this->app->singleton(
-            \App\Application\Election\Deprecation\DeprecationAccessGuard::class
+            \App\Application\Election\Deprecation\DeprecationAccessGuard::class,
+            fn($app) => new \App\Application\Election\Deprecation\DeprecationAccessGuard(
+                $app->make(\App\Application\Election\Monitoring\ConstitutionalDriftMonitor::class)
+            )
         );
 
         // Query Policy Guard (DEL): SQL-level deprecation enforcement
         $this->app->singleton(
-            \App\Application\Election\Deprecation\QueryPolicyGuard::class
+            \App\Application\Election\Deprecation\QueryPolicyGuard::class,
+            fn($app) => new \App\Application\Election\Deprecation\QueryPolicyGuard(
+                $app->make(\App\Application\Election\Monitoring\ConstitutionalDriftMonitor::class)
+            )
+        );
+
+        // Election Lifecycle Contract: Injectable factory interface (Stream 3)
+        $this->app->singleton(
+            \App\Application\Election\Contracts\ElectionLifecycleContract::class,
+            \App\Application\Election\Contracts\ElectionLifecycleFactory::class
         );
 
         // Register custom Fortify login response

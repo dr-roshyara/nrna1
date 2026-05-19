@@ -1,8 +1,419 @@
-# Election State Machine: Temporal Governance Engine — Refactoring Plan
-**Type:** DDD-First Architecture Refactoring (replaces Election-Only Mode plan — separate concern)
-**Scope:** Three structural constitutional defects in Election lifecycle governance
-**Approach:** TDD-First · Strangler Fig per stream · Zero Regression
-**Date:** 2026-05-18
+# Phase 2.4: Constitutional Stabilization & Drift Prevention Layer
+**Type:** TDD-First Architecture Hardening
+**Scope:** Anti-regression immune system for the SSOT election lifecycle
+**Approach:** RED → GREEN → REFACTOR per stream, ordered by dependency
+**Date:** 2026-05-19
+**Supersedes:** Temporal Governance Engine plan (that plan's Phase 3 is now in motion; this plan closes the missing 2.4 layer)
+
+---
+
+## Context
+
+Phases 1–2.3 built a 3-layer SSOT architecture (Engine → Guard → Facade). Phase 3.1 migrated 4 controllers to `ElectionLifecycle::of($election)`. Phase 2.4 installs the **anti-regression immune system** that prevents future developers from silently reintroducing legacy patterns under deadline pressure.
+
+**Problem:** Correct architecture + strong enforcement layers + no systemic drift detection = architectural entropy over time.
+
+**Architectural target after Phase 2.4:**
+```
+CONTROLLERS
+     ↓
+ElectionLifecycleContract  ← new injectable factory boundary (Stream 3)
+     ↓
+ElectionLifecycle (Facade) ← existing, unchanged
+     ↓
+[DEL: DeprecationAccessGuard + QueryPolicyGuard]  ← fire to DriftMonitor (Stream 4)
+     ↓
+ElectionLifecycleEngine    ← unchanged
+     ↓
+Domain / Database
+
+ConstitutionalDriftMonitor ← receives structured SSOTViolationEvent records (Stream 2)
+```
+
+---
+
+## Key Constraints (Non-Negotiable)
+
+1. **Zero regressions**: 45 existing Phase 2.x unit tests must stay GREEN throughout
+2. **Static facade preserved**: `ElectionLifecycle::of($election)` is backward-compatible — DO NOT change
+3. **ElectionLifecycle constructor is `private`**: Container cannot instantiate it directly. Use factory wrapper pattern.
+4. **Guard constructors are zero-arg**: Add optional monitor via nullable constructor param (`?ConstitutionalDriftMonitor $monitor = null`)
+5. **TDD order**: Write RED tests before any production code in each stream
+
+---
+
+## Phase 2.4 Component Map
+
+| Component | File | Stream |
+|-----------|------|--------|
+| `SSOTViolationEvent` | `app/Application/Election/Monitoring/SSOTViolationEvent.php` | 1 |
+| `ConstitutionalDriftMonitor` | `app/Application/Election/Monitoring/ConstitutionalDriftMonitor.php` | 2 |
+| `ElectionLifecycleContract` | `app/Application/Election/Contracts/ElectionLifecycleContract.php` | 3 |
+| `ElectionLifecycleFactory` | `app/Application/Election/Contracts/ElectionLifecycleFactory.php` | 3 |
+| Guard integration | Modify `DeprecationAccessGuard` + `QueryPolicyGuard` | 4 |
+| Architecture invariant tests | `tests/Unit/Constitutional/Election/SSOTArchitectureInvariantsTest.php` | 5 |
+| `ElectionSSOTInterceptor` middleware | `app/Http/Middleware/ElectionSSOTInterceptor.php` | 6 |
+| Infrastructure wiring | `config/logging.php`, `AppServiceProvider.php`, `bootstrap/app.php` | 7 |
+
+---
+
+## Stream 1: SSOTViolationEvent (Value Object)
+
+**RED test first** — `tests/Unit/Application/Election/ConstitutionalDriftMonitorTest.php`:
+
+```
+test: ssot_violation_event_is_json_serializable
+  - Creates SSOTViolationEvent::make('deprecated_field_access', 'application', 'TestContext')
+  - Assert instanceof \JsonSerializable
+  - Assert json result has keys: violation_type, layer, context, timestamp
+```
+
+**Production code** — `app/Application/Election/Monitoring/SSOTViolationEvent.php`:
+
+```php
+final readonly class SSOTViolationEvent implements \JsonSerializable
+{
+    public function __construct(
+        public string $violationType,
+        public string $layer,
+        public string $context,
+        public \DateTimeImmutable $timestamp,
+    ) {}
+
+    public static function make(string $violationType, string $layer, string $context): self
+    {
+        return new self($violationType, $layer, $context, new \DateTimeImmutable());
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'violation_type' => $this->violationType,
+            'layer'          => $this->layer,
+            'context'        => $this->context,
+            'timestamp'      => $this->timestamp->format(\DateTimeInterface::ATOM),
+        ];
+    }
+}
+```
+
+**Run:** `php artisan test ...ConstitutionalDriftMonitorTest.php --filter ssot_violation_event`
+
+---
+
+## Stream 2: ConstitutionalDriftMonitor
+
+**RED tests** — add to same test file:
+
+```
+test: drift_monitor_logs_to_constitutional_integrity_channel
+  - Log::spy()
+  - new ConstitutionalDriftMonitor()
+  - $monitor->record(SSOTViolationEvent::make('deprecated_field_access', 'application', 'Ctx'))
+  - Log::shouldHaveReceived('channel')->with('constitutional_integrity')
+
+test: drift_monitor_does_not_throw_on_record
+  - Log::fake()
+  - $monitor->record(SSOTViolationEvent::make(...))
+  - No exception thrown
+
+test: drift_monitor_logs_violation_type_and_layer
+  - Log::fake()
+  - record() called with layer='deprecation_access'
+  - Log::assertLogged('warning', fn($m, $ctx) => $ctx['layer'] === 'deprecation_access')
+```
+
+**Production code** — `app/Application/Election/Monitoring/ConstitutionalDriftMonitor.php`:
+
+```php
+final class ConstitutionalDriftMonitor
+{
+    public function record(SSOTViolationEvent $event): void
+    {
+        try {
+            Log::channel('constitutional_integrity')
+                ->warning('constitutional_violation', $event->jsonSerialize());
+        } catch (\Throwable) {
+            // Monitoring must never block application execution
+        }
+    }
+}
+```
+
+**Run:** `php artisan test tests/Unit/Application/Election/ConstitutionalDriftMonitorTest.php`
+Expected: 4 tests GREEN
+
+---
+
+## Stream 3: ElectionLifecycleContract + ElectionLifecycleFactory
+
+**Why factory pattern?** `ElectionLifecycle` has `private function __construct(Election $election, ...)`. Container cannot call `new ElectionLifecycle()`. The contract is a factory interface. Controllers inject it, call `->of($election)`, get a ready `ElectionLifecycle`.
+
+**RED tests** — `tests/Unit/Application/Election/ElectionLifecycleContractTest.php`:
+
+```
+test: contract_is_bound_in_service_container
+  - $this->assertTrue($this->app->bound(ElectionLifecycleContract::class))
+
+test: contract_resolves_to_factory_instance
+  - $this->assertInstanceOf(ElectionLifecycleFactory::class, $this->app->make(ElectionLifecycleContract::class))
+
+test: contract_of_returns_lifecycle_instance
+  - $election = Election::factory()->create()
+  - $lifecycle = $this->app->make(ElectionLifecycleContract::class)->of($election)
+  - $this->assertInstanceOf(ElectionLifecycle::class, $lifecycle)
+
+test: contract_of_lifecycle_can_vote_returns_bool
+  - $election = Election::factory()->create()
+  - $this->assertIsBool($this->app->make(ElectionLifecycleContract::class)->of($election)->canVote())
+```
+
+**Production code:**
+
+`app/Application/Election/Contracts/ElectionLifecycleContract.php`:
+```php
+interface ElectionLifecycleContract
+{
+    public function of(Election $election): ElectionLifecycle;
+    public function withSnapshot(Election $election, ElectionLifecycleSnapshot $snapshot): ElectionLifecycle;
+}
+```
+
+`app/Application/Election/Contracts/ElectionLifecycleFactory.php`:
+```php
+final class ElectionLifecycleFactory implements ElectionLifecycleContract
+{
+    public function of(Election $election): ElectionLifecycle
+    {
+        return ElectionLifecycle::of($election);
+    }
+    public function withSnapshot(Election $election, ElectionLifecycleSnapshot $snapshot): ElectionLifecycle
+    {
+        return ElectionLifecycle::withSnapshot($election, $snapshot);
+    }
+}
+```
+
+**`AppServiceProvider::register()`** — add:
+```php
+$this->app->singleton(
+    \App\Application\Election\Contracts\ElectionLifecycleContract::class,
+    \App\Application\Election\Contracts\ElectionLifecycleFactory::class
+);
+```
+
+**Run:** `php artisan test tests/Unit/Application/Election/ElectionLifecycleContractTest.php`
+Then regression: `php artisan test tests/Unit/Application/Election/ --no-coverage`
+
+---
+
+## Stream 4: Guard Integration (DriftMonitor → both guards)
+
+**RED tests** — `tests/Unit/Application/Election/DriftMonitorIntegrationTest.php`:
+
+```
+test: deprecation_access_guard_fires_to_drift_monitor_on_violation
+  - $monitor = createMock(ConstitutionalDriftMonitor::class)
+  - $monitor->expects($this->once())->method('record')
+  - new DeprecationAccessGuard($monitor)->checkFieldAccess('status', 'TestCtx', 'warning')
+
+test: query_policy_guard_fires_to_drift_monitor_on_violation
+  - $monitor = createMock(ConstitutionalDriftMonitor::class)
+  - $monitor->expects($this->once())->method('record')
+  - try { new QueryPolicyGuard($monitor)->assertAllowedQuery(['status' => 'active'], 'TestCtx'); }
+    catch (DeprecatedQueryException) {}
+
+test: drift_monitor_receives_correct_layer_from_access_guard
+  - Log::fake()
+  - new DeprecationAccessGuard(new ConstitutionalDriftMonitor())->checkFieldAccess('status', 'TestCtx', 'warning')
+  - Log::assertLogged('warning', fn($m, $ctx) => $ctx['layer'] === 'deprecation_access')
+
+test: guards_with_no_monitor_still_pass (regression guard)
+  - new DeprecationAccessGuard()->checkFieldAccess('status', 'TestCtx', 'warning')
+  - No exception (null-safe monitor call is a no-op)
+```
+
+**Modify `app/Application/Election/Deprecation/DeprecationAccessGuard.php`:**
+- Add: `public function __construct(private readonly ?ConstitutionalDriftMonitor $monitor = null) {}`
+- In `checkFieldAccess()`, after `$this->logAccess(...)`, add:
+  ```php
+  $this->monitor?->record(SSOTViolationEvent::make('deprecated_field_access', 'deprecation_access', $context));
+  ```
+
+**Modify `app/Application/Election/Deprecation/QueryPolicyGuard.php`:**
+- Add: `public function __construct(private readonly ?ConstitutionalDriftMonitor $monitor = null) {}`
+- In `assertAllowedQuery()`, before the `throw`, add:
+  ```php
+  $this->monitor?->record(SSOTViolationEvent::make('deprecated_query_field', 'query_policy', $context));
+  ```
+
+**Update existing singletons in `AppServiceProvider::register()`:**
+```php
+$this->app->singleton(\App\Application\Election\Monitoring\ConstitutionalDriftMonitor::class);
+
+// Replace existing bare singletons with injected versions:
+$this->app->singleton(
+    \App\Application\Election\Deprecation\DeprecationAccessGuard::class,
+    fn($app) => new \App\Application\Election\Deprecation\DeprecationAccessGuard(
+        $app->make(\App\Application\Election\Monitoring\ConstitutionalDriftMonitor::class)
+    )
+);
+$this->app->singleton(
+    \App\Application\Election\Deprecation\QueryPolicyGuard::class,
+    fn($app) => new \App\Application\Election\Deprecation\QueryPolicyGuard(
+        $app->make(\App\Application\Election\Monitoring\ConstitutionalDriftMonitor::class)
+    )
+);
+```
+
+**Run:** `php artisan test tests/Unit/Application/Election/DriftMonitorIntegrationTest.php`
+Then regression: `php artisan test tests/Unit/Application/Election/ --no-coverage`
+Expected: 45 existing + ~16 new = 61 tests GREEN
+
+---
+
+## Stream 5: Architecture Invariant Tests (Golden Path Enforcement)
+
+**File:** `tests/Unit/Constitutional/Election/SSOTArchitectureInvariantsTest.php`
+
+These scan source files — no DB, no mocks, no factories. Pure static analysis via file reading.
+
+```
+test: no_migrated_controller_queries_election_with_is_active_column
+  - Scope: [ElectionController.php, VoteController.php, ElectionVotingController.php, VoterSlugController.php]
+  - Assert: none contain "->where('is_active'" or "orWhere('is_active'"
+  - Use assertStringNotContainsString() with helpful failure message
+
+test: no_migrated_controller_reads_election_status_directly
+  - Same 4 files
+  - Assert: none contain "$election->status"
+  - ($membership->status is intentionally NOT matched by this string)
+
+test: all_migrated_controllers_import_lifecycle_facade
+  - Same 4 files
+  - Assert: each contains "use App\Application\Election\Facades\ElectionLifecycle"
+
+test: no_controller_injects_lifecycle_engine_directly
+  - Scan ALL files in app/Http/Controllers/ recursively
+  - Assert: zero contain "ElectionLifecycleEngine"
+
+test: deprecation_policy_guards_only_known_deprecated_fields
+  - Assert DeprecationPolicy::FIELDS has exactly 2 keys: 'status' and 'is_active'
+  - Regression guard against silent policy expansion
+```
+
+**Run:** `php artisan test tests/Unit/Constitutional/Election/SSOTArchitectureInvariantsTest.php`
+Expected: All 5 GREEN immediately (controllers already migrated)
+
+---
+
+## Stream 6: ElectionSSOTInterceptor Middleware
+
+**File:** `app/Http/Middleware/ElectionSSOTInterceptor.php`
+
+```php
+final class ElectionSSOTInterceptor
+{
+    public function __construct(private readonly ConstitutionalDriftMonitor $monitor) {}
+
+    public function handle(Request $request, Closure $next): mixed
+    {
+        return $next($request);
+        // Monitor is wired at guard level (Stream 4).
+        // Middleware resolves the singleton so Laravel container wires it on election requests.
+    }
+}
+```
+
+**Register in `bootstrap/app.php`** as alias (selective, not global):
+```php
+$middleware->alias([
+    'election.ssot' => \App\Http\Middleware\ElectionSSOTInterceptor::class,
+]);
+```
+
+---
+
+## Stream 7: Infrastructure — Logging Channel
+
+**`config/logging.php`** — add after `voting_security` channel:
+```php
+'constitutional_integrity' => [
+    'driver' => 'daily',
+    'path'   => storage_path('logs/constitutional_integrity.log'),
+    'level'  => env('LOG_LEVEL', 'warning'),
+    'days'   => 365,
+],
+```
+
+---
+
+## Execution Order (Strict TDD)
+
+```bash
+# Baseline
+php artisan test tests/Unit/Application/Election/ --no-coverage  # Must be 45 GREEN
+
+# Stream 1 → 2 (same test file, additive)
+php artisan test tests/Unit/Application/Election/ConstitutionalDriftMonitorTest.php
+
+# Stream 3
+php artisan test tests/Unit/Application/Election/ElectionLifecycleContractTest.php
+php artisan test tests/Unit/Application/Election/ --no-coverage   # regression check
+
+# Stream 4
+php artisan test tests/Unit/Application/Election/DriftMonitorIntegrationTest.php
+php artisan test tests/Unit/Application/Election/ --no-coverage   # regression check
+
+# Stream 5
+php artisan test tests/Unit/Constitutional/Election/SSOTArchitectureInvariantsTest.php
+
+# Final verification
+php artisan test tests/Unit/ --no-coverage
+```
+
+---
+
+## New Files (9)
+
+```
+app/Application/Election/Monitoring/SSOTViolationEvent.php
+app/Application/Election/Monitoring/ConstitutionalDriftMonitor.php
+app/Application/Election/Contracts/ElectionLifecycleContract.php
+app/Application/Election/Contracts/ElectionLifecycleFactory.php
+app/Http/Middleware/ElectionSSOTInterceptor.php
+tests/Unit/Application/Election/ConstitutionalDriftMonitorTest.php
+tests/Unit/Application/Election/ElectionLifecycleContractTest.php
+tests/Unit/Application/Election/DriftMonitorIntegrationTest.php
+tests/Unit/Constitutional/Election/SSOTArchitectureInvariantsTest.php
+```
+
+## Modified Files (5)
+
+```
+app/Application/Election/Deprecation/DeprecationAccessGuard.php  — add optional monitor + fire on violation
+app/Application/Election/Deprecation/QueryPolicyGuard.php         — same pattern
+app/Providers/AppServiceProvider.php                             — 4 new bindings, 2 updated singletons
+config/logging.php                                                — add constitutional_integrity channel
+bootstrap/app.php                                                 — register election.ssot middleware alias
+```
+
+---
+
+## Definition of Done
+
+- [ ] `SSOTViolationEvent` is JSON-serializable with keys: violation_type, layer, context, timestamp
+- [ ] `ConstitutionalDriftMonitor::record()` logs to `constitutional_integrity` channel, never throws
+- [ ] `ElectionLifecycleContract` bound in container, resolves to `ElectionLifecycleFactory`
+- [ ] `ElectionLifecycle::of($election)` static call still works (backward-compatible)
+- [ ] `DeprecationAccessGuard` fires SSOTViolationEvent to DriftMonitor on violation
+- [ ] `QueryPolicyGuard` fires SSOTViolationEvent to DriftMonitor on violation
+- [ ] Guards with no monitor (zero-arg construction) still work (null-safe call)
+- [ ] Architecture invariant tests GREEN — no controller bypasses lifecycle facade
+- [ ] `ElectionSSOTInterceptor` registered as `election.ssot` middleware alias
+- [ ] `constitutional_integrity` log channel defined in config/logging.php
+- [ ] `php artisan test tests/Unit/Application/Election/` → 45 existing + new tests GREEN
+- [ ] `php artisan test tests/Unit/Constitutional/Election/` → 5 invariant tests GREEN
 
 ---
 

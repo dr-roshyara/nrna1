@@ -114,6 +114,13 @@ return [
             'level' => env('LOG_LEVEL', 'warning'),
             'days' => 365,
         ],
+
+        'constitutional_integrity' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/constitutional_integrity.log'),
+            'level' => env('LOG_LEVEL', 'warning'),
+            'days' => 365,
+        ],
     ],
 
 ];

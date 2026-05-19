@@ -13,6 +13,8 @@ use App\Services\ElectionService;
 use App\Services\DemoElectionResolver;
 use App\Services\VoterSlugService;
 use App\Services\DashboardResolver;
+use App\Services\ElectionClockService;
+use App\Application\Election\Facades\ElectionLifecycle;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\RedirectResponse;
@@ -52,9 +54,10 @@ class ElectionManagementController extends Controller
             ->where('type', '!=', 'demo')
             ->orderByDesc('created_at');
 
-        if ($request->filled('status')) {
-            $query->where('status', $request->status);
-        }
+        // NOTE: Removed deprecated status filter. Use 'state' field if filtering needed in future.
+        // if ($request->filled('status')) {
+        //     $query->where('status', $request->status);
+        // }
 
         $elections = $query->get()
             ->map(fn ($e) => [
@@ -180,12 +183,10 @@ class ElectionManagementController extends Controller
     {
         $this->authorize('manageSettings', $election);
 
-        if ($election->status === 'active') {
-            return back()->with('error', 'Cannot activate an election that is already active.');
-        }
-
-        if ($election->status === 'completed') {
-            return back()->with('error', 'Cannot activate an election that is already completed.');
+        // CONSTITUTIONAL FIX Phase 3.1.C: Use ElectionLifecycle SSOT instead of deprecated status field
+        $lifecycle = ElectionLifecycle::of($election);
+        if (!$lifecycle->canActivate()) {
+            return back()->with('error', 'Election cannot be activated in its current state.');
         }
 
         Election::withoutGlobalScopes()
@@ -1126,8 +1127,8 @@ class ElectionManagementController extends Controller
     {
         $this->authorize('manage', $election);
 
-        // Guard: cannot change voting dates after voting has started
-        if ($election->voting_starts_at && now()->gte($election->voting_starts_at)) {
+        // CONSTITUTIONAL FIX Phase 3.1.C: Use ElectionClockService instead of raw now()
+        if (ElectionClockService::hasVotingStarted($election)) {
             return back()->withErrors(['error' => 'Cannot modify voting dates after voting has started.']);
         }
 
