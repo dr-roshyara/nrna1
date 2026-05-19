@@ -23,13 +23,25 @@ interface ConstitutionalMetricsContract
 
     /**
      * Record a deprecated field access violation (SEVERITY: LOW).
+     *
+     * Extended parameters (optional) enable Phase 4 extraction blueprint generation.
      */
-    public function recordDeprecatedFieldAccess(string $field, string $context): void;
+    public function recordDeprecatedFieldAccess(
+        string $field,
+        string $context,
+        ?array $dependencyContext = null
+    ): void;
 
     /**
      * Record a query guard violation (SEVERITY: MEDIUM).
+     *
+     * Extended parameters (optional) enable Phase 4 extraction blueprint generation.
      */
-    public function recordQueryGuardViolation(string $field, string $context): void;
+    public function recordQueryGuardViolation(
+        string $field,
+        string $context,
+        ?array $dependencyContext = null
+    ): void;
 
     /**
      * Record a drift monitor violation (SEVERITY: HIGH).

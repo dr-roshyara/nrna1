@@ -51,26 +51,50 @@ final class ConstitutionalMetrics implements ConstitutionalMetricsContract
 
     /**
      * Record a deprecated field access violation (SEVERITY: LOW).
+     *
+     * Optional $dependencyContext enables Phase 4 extraction blueprint generation:
+     * - source_system: 'controller'|'service'|'repository'|'model'|'test'
+     * - source_file: Absolute or relative file path
+     * - source_method: Method where violation occurred
+     * - call_chain: Array of call stack frames
      */
-    public function recordDeprecatedFieldAccess(string $field, string $context): void
-    {
-        $this->incrementMetric('deprecated_field_reads', [
-            'field' => $field,
-            'context' => $context,
-            'severity' => 'LOW',
-        ]);
+    public function recordDeprecatedFieldAccess(
+        string $field,
+        string $context,
+        ?array $dependencyContext = null
+    ): void {
+        $this->incrementMetric('deprecated_field_reads', array_merge(
+            [
+                'field' => $field,
+                'context' => $context,
+                'severity' => 'LOW',
+            ],
+            $dependencyContext ?? []
+        ));
     }
 
     /**
      * Record a query guard violation (SEVERITY: MEDIUM).
+     *
+     * Optional $dependencyContext enables Phase 4 extraction blueprint generation:
+     * - source_system: 'controller'|'service'|'repository'|'model'|'test'
+     * - source_file: Absolute or relative file path
+     * - source_method: Method where violation occurred
+     * - call_chain: Array of call stack frames
      */
-    public function recordQueryGuardViolation(string $field, string $context): void
-    {
-        $this->incrementMetric('illegal_queries_blocked', [
-            'field' => $field,
-            'context' => $context,
-            'severity' => 'MEDIUM',
-        ]);
+    public function recordQueryGuardViolation(
+        string $field,
+        string $context,
+        ?array $dependencyContext = null
+    ): void {
+        $this->incrementMetric('illegal_queries_blocked', array_merge(
+            [
+                'field' => $field,
+                'context' => $context,
+                'severity' => 'MEDIUM',
+            ],
+            $dependencyContext ?? []
+        ));
     }
 
     /**
