@@ -46,8 +46,10 @@ final class DeprecationPolicy
      * - 4: full strict (all enforcement active)
      *
      * Each level increment represents a ~24h observation window at the previous level.
+     *
+     * ACTIVATED: 2026-05-20 11:00 UTC (Phase 3.2 Level 1 - Metrics Strict)
      */
-    public const STRICT_LEVEL = 0;
+    public const STRICT_LEVEL = 1;
 
     /**
      * Get the deprecation rule for a field.
