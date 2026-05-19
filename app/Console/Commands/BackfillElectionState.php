@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Application\Election\Governance\ElectionStateWriteContext;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class BackfillElectionState extends Command
 {
@@ -11,86 +13,75 @@ class BackfillElectionState extends Command
      *
      * @var string
      */
-    protected $signature = 'app:backfill-election-state';
+    protected $signature = 'app:backfill-election-state {--audit-only : Report divergences without fixing}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Backfill explicit state column for all elections';
+    protected $description = 'Backfill/audit election state consistency with SSOT engine';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        $this->info('Backfilling election states...');
+        $auditOnly = $this->option('audit-only');
+        $mode = $auditOnly ? 'AUDIT' : 'REPAIR';
+
+        $this->info("🔍 {$mode} MODE: Checking election states for divergence...");
 
         $elections = \App\Models\Election::query()
             ->withoutGlobalScopes()
             ->get();
 
-        $updated = 0;
+        $divergences = 0;
+        $fixed = 0;
+
         foreach ($elections as $election) {
-            $state = $this->determineState($election);
-            \Illuminate\Support\Facades\DB::table('elections')
-                ->where('id', $election->id)
-                ->update(['state' => $state]);
-            $updated++;
-        }
+            // Compute correct state via SSOT engine
+            $engine = app(\App\Application\Election\Services\ElectionLifecycleEngineImpl::class);
+            $correctState = $engine->getState($election)->value;
 
-        $this->info("Updated {$updated} elections with explicit state values.");
-    }
+            // Check for divergence
+            if ($election->state !== $correctState) {
+                $divergences++;
 
-    /**
-     * Determine the state of an election based on its attributes.
-     * This replicates the original computed state logic.
-     */
-    private function determineState(\App\Models\Election $election): string
-    {
-        // RESULTS (final - overrides everything)
-        if ($election->results_published_at) {
-            return 'results';
-        }
-
-        // RESULTS_PENDING (voting window ended, waiting for counting/results)
-        if ($election->voting_ends_at && now() > $election->voting_ends_at) {
-            if ($election->voting_locked) {
-                return 'results_pending';
-            }
-            return 'voting_ended_unlocked';
-        }
-
-        // VOTING (active voting window)
-        if ($election->voting_starts_at && now() >= $election->voting_starts_at) {
-            if ($election->canEnterVotingPhase()) {
-                return 'voting';
-            }
-            return 'voting_blocked';
-        }
-
-        // NOMINATION COMPLETED (waiting for voting to start)
-        if ($election->nomination_completed) {
-            if (!$election->voting_starts_at || now()->lt($election->voting_starts_at)) {
-                return 'nomination';
+                if ($auditOnly) {
+                    // AUDIT MODE: Log divergence, don't fix
+                    Log::channel('constitutional_integrity')->warning(
+                        "Election state divergence detected (audit-only)",
+                        [
+                            'election_id' => $election->id,
+                            'election_slug' => $election->slug,
+                            'cached_state' => $election->state,
+                            'computed_state' => $correctState,
+                            'action' => 'Manual review required',
+                        ]
+                    );
+                    $this->line("  ⚠️  {$election->slug}: {$election->state} → {$correctState} (not fixed)");
+                } else {
+                    // REPAIR MODE: Fix via authorized context
+                    ElectionStateWriteContext::authorize(function() use ($election, $correctState) {
+                        $election->update(['state' => $correctState]);
+                    });
+                    $fixed++;
+                    $this->line("  ✅ {$election->slug}: {$election->state} → {$correctState} (fixed)");
+                }
             }
         }
 
-        // NOMINATION (after administration completed)
-        if ($election->administration_completed) {
-            if ($election->canEnterNominationPhase()) {
-                return 'nomination';
-            }
-            return 'nomination_blocked';
+        $this->info("\n📊 Summary:");
+        $this->line("  Divergences found: {$divergences}");
+        if (!$auditOnly) {
+            $this->line("  Divergences fixed: {$fixed}");
         }
 
-        // ADMINISTRATION (setup phase with requirements met)
-        if ($election->canEnterAdministrationPhase()) {
-            return 'administration';
+        if ($auditOnly && $divergences > 0) {
+            $this->info("\n💡 Tip: Run without --audit-only to repair divergences.");
         }
 
-        // DRAFT (missing setup requirements)
-        return 'draft';
+        return 0;
     }
 }

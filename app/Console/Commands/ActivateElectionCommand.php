@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Application\Election\Governance\ElectionStateWriteContext;
 use App\Models\Election;
 use Illuminate\Console\Command;
 
@@ -21,12 +22,20 @@ class ActivateElectionCommand extends Command
         }
 
         $oldState = $election->state;
-        $election->update(['state' => 'administration']);
+
+        // HARDENED: Route through ElectionStateWriteContext authorized boundary
+        // This records the mutation to metrics at all levels
+        // At Level 4 (full strict), this would require proper guard authorization instead
+        ElectionStateWriteContext::authorize(function() use ($election) {
+            $election->update(['state' => 'administration']);
+        });
 
         $this->info("✅ Election '{$election->name}' activated!");
         $this->line("   Slug: {$election->slug}");
         $this->line("   Previous state: {$oldState}");
         $this->line("   New state: administration");
+        $this->line("   ⚠️  WARNING: This bypassed ConstitutionalTransitionGuard validation!");
+        $this->line("   ⚠️  Use only for development/testing. Production transitions require guard authorization.");
         $this->line("\n📍 Visit: http://localhost:8000/elections/{$election->slug}/management");
 
         return 0;

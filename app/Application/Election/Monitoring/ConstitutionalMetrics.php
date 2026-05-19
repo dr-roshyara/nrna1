@@ -122,6 +122,22 @@ final class ConstitutionalMetrics implements ConstitutionalMetricsContract
     }
 
     /**
+     * Record an unauthorized state mutation attempt (SEVERITY: CRITICAL).
+     *
+     * Called when code tries to mutate election.state without ConstitutionalTransitionGuard authorization.
+     * At Level 1 (metrics strict): recorded silently
+     * At Level 4 (full strict): will trigger exception in Election model mutator
+     */
+    public function recordUnauthorizedStateMutation(string $field, string $context): void
+    {
+        $this->incrementMetric('unauthorized_state_mutations', [
+            'field' => $field,
+            'context' => $context,
+            'severity' => 'CRITICAL',
+        ]);
+    }
+
+    /**
      * Get health status for strict-mode eligibility decision.
      *
      * Provides complete observability:

@@ -54,6 +54,14 @@ interface ConstitutionalMetricsContract
     public function recordIllegalActivationAttempt(string $electionId, string $reason): void;
 
     /**
+     * Record an unauthorized state mutation attempt (SEVERITY: CRITICAL).
+     *
+     * Called when code tries to mutate election.state without ConstitutionalTransitionGuard authorization.
+     * Used by ElectionStateWriteContext to track bypasses.
+     */
+    public function recordUnauthorizedStateMutation(string $field, string $context): void;
+
+    /**
      * Get comprehensive health report for strict-mode readiness decision.
      *
      * @return array{

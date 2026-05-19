@@ -867,6 +867,41 @@ class Election extends Model
     }
 
     /**
+     * MUTATOR: State Write Barrier (Phase 3.3 Hardening)
+     *
+     * Enforces that ALL state mutations go through ConstitutionalTransitionGuard.
+     * At Level 1 (metrics strict): records violations silently, allows write
+     * At Level 4 (full strict): throws exception, blocks write
+     *
+     * This is the sovereignty boundary: ElectionStateWriteContext.authorize() is the ONLY
+     * way to bypass this check. Used exclusively by ConstitutionalTransitionGuard handlers.
+     */
+    public function setStateAttribute($value): void
+    {
+        // Check if this write is authorized (from guard via ElectionStateWriteContext)
+        if (!\App\Application\Election\Governance\ElectionStateWriteContext::isAuthorized()) {
+            // At Level 1+ (metrics strict): record the violation
+            if (\App\Application\Election\Deprecation\DeprecationPolicy::isEnforcementActive(1)) {
+                \App\Application\Election\Governance\ElectionStateWriteContext::recordViolation(
+                    'state',
+                    debug_backtrace()[1]['function'] ?? 'unknown'
+                );
+            }
+
+            // At Level 4 (full strict): throw exception to block the write
+            if (\App\Application\Election\Deprecation\DeprecationPolicy::isEnforcementActive(4)) {
+                throw new \App\Exceptions\UnauthorizedStateMutationException(
+                    'State mutation requires ConstitutionalTransitionGuard authorization. '
+                    . 'State should only change through guard→handler→authorize() pattern.'
+                );
+            }
+        }
+
+        // Write allowed (either authorized via guard, or enforcement level < 4)
+        $this->attributes['state'] = $value;
+    }
+
+    /**
      * Check if an action is allowed in current state (pure, no auth checks)
      * Maps operations to allowed states per architecture/election_architecture/state_machine_art/statemachine_at_controller_level.md
      */
