@@ -64,7 +64,7 @@ class ElectionManagementController extends Controller
                 'id'         => $e->id,
                 'name'       => $e->name,
                 'slug'       => $e->slug,
-                'status'     => $e->status,
+                'state'      => ElectionLifecycle::of($e)->state()->value,
                 'start_date' => $e->start_date,
                 'end_date'   => $e->end_date,
                 'created_at' => $e->created_at,
@@ -233,12 +233,13 @@ class ElectionManagementController extends Controller
         $orgId = session('current_organisation_id');
         \Illuminate\Support\Facades\Log::info('DASHBOARD_DEBUG', ['orgId' => $orgId, 'user_id' => $authUser->id]);
         if ($orgId) {
+            $now = ElectionClockService::now();
             $activeElection = Election::withoutGlobalScopes()
                 ->where('organisation_id', $orgId)
                 ->where('type', 'real')
                 ->where('status', 'active')
-                ->where('start_date', '<=', now())
-                ->where('end_date', '>=', now())
+                ->where('start_date', '<=', $now)
+                ->where('end_date', '>=', $now)
                 ->first();
 
             $allElectionsInDB = \Illuminate\Support\Facades\DB::table('elections')->get(['id', 'organisation_id', 'type', 'status'])->toArray();
@@ -517,6 +518,7 @@ class ElectionManagementController extends Controller
         }
 
         $elections = collect();
+        $now = ElectionClockService::now();
 
         // 1️⃣ Get organisation-specific demo elections
         if ($user->organisation_id) {
@@ -524,8 +526,8 @@ class ElectionManagementController extends Controller
                 ->where('type', 'demo')
                 ->where('organisation_id', $user->organisation_id)
                 ->where('status', 'active')
-                ->where('start_date', '<=', now())
-                ->where('end_date', '>=', now())
+                ->where('start_date', '<=', $now)
+                ->where('end_date', '>=', $now)
                 ->orderBy('created_at', 'desc')
                 ->get();
 
@@ -543,8 +545,8 @@ class ElectionManagementController extends Controller
             ->where('type', 'demo')
             ->whereNull('organisation_id')
             ->where('status', 'active')
-            ->where('start_date', '<=', now())
-            ->where('end_date', '>=', now())
+            ->where('start_date', '<=', $now)
+            ->where('end_date', '>=', $now)
             ->orderBy('created_at', 'desc')
             ->get();
 

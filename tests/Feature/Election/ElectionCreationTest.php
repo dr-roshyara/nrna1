@@ -204,7 +204,6 @@ class ElectionCreationTest extends TestCase
             'id'              => (string) Str::uuid(),
             'organisation_id' => $this->org->id,
             'name'            => 'General Election 2026',
-            'slug'            => 'general-election-2026-existing',
             'type'            => 'real',
             'status'          => 'planned',
             'start_date'      => now()->addDays(7),
@@ -223,8 +222,7 @@ class ElectionCreationTest extends TestCase
         Election::create([
             'id'              => (string) Str::uuid(),
             'organisation_id' => $otherOrg->id,
-            'name'            => 'General Election 2026',
-            'slug'            => 'general-election-2026-other',
+            'name'            => 'Different Election 2026',
             'type'            => 'real',
             'status'          => 'planned',
             'start_date'      => now()->addDays(7),

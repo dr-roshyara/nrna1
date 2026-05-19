@@ -5,6 +5,7 @@ namespace App\Application\Election\Facades;
 use App\Application\Election\Deprecation\ElectionReadModel;
 use App\Application\Election\Deprecation\QueryPolicyGuard;
 use App\Application\Election\Services\ElectionLifecycleEngineImpl;
+use App\Application\Election\Monitoring\ConstitutionalMetricsContract;
 use App\Domain\Election\Enum\ElectionLifecycleState;
 use App\Domain\Election\ValueObjects\ElectionLifecycleSnapshot;
 use App\Models\Election;
@@ -20,6 +21,8 @@ use App\Models\Election;
  *
  * All consumption flows through this facade. Controllers, repositories, and
  * queries MUST NOT bypass this to access legacy fields directly.
+ *
+ * Reports all lifecycle evaluations to ConstitutionalMetrics for observability.
  *
  * Usage:
  *   $lifecycle = ElectionLifecycle::of($election);
@@ -47,12 +50,20 @@ final class ElectionLifecycle
     /**
      * Factory: Wrap an election with lifecycle context.
      *
+     * Emits lifecycle evaluation metric AFTER snapshot computation
+     * to preserve domain purity (computation separated from side-effects).
+     *
      * @param Election $election
      * @return self
      */
     public static function of(Election $election): self
     {
-        return new self($election);
+        $lifecycle = new self($election);
+
+        // Side-effect: record metric AFTER pure computation
+        app(ConstitutionalMetricsContract::class)?->recordLifecycleEvaluation();
+
+        return $lifecycle;
     }
 
     /**

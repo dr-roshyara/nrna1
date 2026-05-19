@@ -6,6 +6,7 @@ use App\Domain\Election\Constitution\ElectionConstitution;
 use App\Domain\Election\Enum\ElectionLifecycleState;
 use App\Domain\Election\ValueObjects\ElectionLifecycleSnapshot;
 use App\Exceptions\InvalidTransitionException;
+use App\Application\Election\Monitoring\ConstitutionalMetricsContract;
 use App\Models\Election;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,9 +22,13 @@ use Illuminate\Support\Facades\Auth;
  * Throws InvalidTransitionException if ANY check fails.
  *
  * **CRITICAL:** No bypasses, no exceptions. Guard is mandatory.
+ * Reports all denials to ConstitutionalMetrics for observability.
  */
 final class ConstitutionalTransitionGuard
 {
+    public function __construct(
+        private readonly ?ConstitutionalMetricsContract $metrics = null
+    ) {}
     /**
      * Assert that an action is allowed for the current election state.
      *
@@ -41,6 +46,7 @@ final class ConstitutionalTransitionGuard
         try {
             $rules = ElectionConstitution::getRulesForAction($action);
         } catch (\InvalidArgumentException) {
+            $this->metrics?->recordIllegalActivationAttempt($election->id, "Action '$action' not defined in constitution");
             throw new InvalidTransitionException(
                 "Action '{$action}' is not defined in the election constitution"
             );
@@ -49,6 +55,7 @@ final class ConstitutionalTransitionGuard
         // Check 2: State allows action
         if (!ElectionConstitution::isActionAllowedInState($action, $snapshot->state)) {
             $allowedStates = implode(', ', $rules['allowed_states']);
+            $this->metrics?->recordIllegalActivationAttempt($election->id, "Action '$action' not allowed in state '{$snapshot->state->value}'");
             throw new InvalidTransitionException(
                 "Action '{$action}' not allowed in state '{$snapshot->state->value}'. " .
                 "Allowed states: {$allowedStates}"
@@ -59,6 +66,7 @@ final class ConstitutionalTransitionGuard
         $requiredRoles = ElectionConstitution::getAllowedRolesForAction($action);
         if (!$this->userHasAnyRole($election, $requiredRoles)) {
             $rolesStr = implode(', ', $requiredRoles);
+            $this->metrics?->recordIllegalActivationAttempt($election->id, "User lacks required role(s) for action '$action'");
             throw new InvalidTransitionException(
                 "You do not have permission to perform '{$action}'. " .
                 "Required role(s): {$rolesStr}"
@@ -117,6 +125,7 @@ final class ConstitutionalTransitionGuard
 
         if (!empty($unmetConditions)) {
             $condStr = implode(', ', $unmetConditions);
+            $this->metrics?->recordIllegalActivationAttempt($election->id, "Unmet preconditions for action '$action': {$condStr}");
             throw new InvalidTransitionException(
                 "Action '{$action}' cannot proceed. Unmet preconditions: {$condStr}"
             );

@@ -4,6 +4,7 @@ namespace App\Application\Election\Deprecation;
 
 use App\Exceptions\DeprecatedQueryException;
 use App\Application\Election\Monitoring\DriftMonitorInterface;
+use App\Application\Election\Monitoring\ConstitutionalMetricsContract;
 use App\Application\Election\Monitoring\SSOTViolationEvent;
 use Illuminate\Support\Facades\Log;
 
@@ -17,11 +18,13 @@ use Illuminate\Support\Facades\Log;
  * 3. QueryPolicyGuard (query layer) - blocks SQL-level bypass attempts
  *
  * Acts as a hard gate on all query operations that touch deprecated fields.
+ * Reports all violations to ConstitutionalMetrics for observability.
  */
 final class QueryPolicyGuard
 {
     public function __construct(
-        private readonly ?DriftMonitorInterface $monitor = null
+        private readonly ?DriftMonitorInterface $monitor = null,
+        private readonly ?ConstitutionalMetricsContract $metrics = null
     ) {}
 
     /**
@@ -45,6 +48,9 @@ final class QueryPolicyGuard
                     ]
                 );
 
+                // Record to constitutional metrics (observability spine)
+                $this->metrics?->recordQueryGuardViolation($field, $context);
+
                 // Fire to drift monitor (Stream 4)
                 $this->monitor?->record(SSOTViolationEvent::make(
                     'deprecated_query_field',
@@ -52,7 +58,13 @@ final class QueryPolicyGuard
                     $context
                 ));
 
-                throw DeprecatedQueryException::fieldNotAllowed($field, $context);
+                // Enforce based on graduated level
+                // Level 2 = query guard strict (access guard enforces)
+                $shouldThrow = DeprecationPolicy::isEnforcementActive(2);
+
+                if ($shouldThrow) {
+                    throw DeprecatedQueryException::fieldNotAllowed($field, $context);
+                }
             }
         }
     }

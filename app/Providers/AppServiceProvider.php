@@ -131,9 +131,12 @@ class AppServiceProvider extends ServiceProvider
             \App\Application\Election\Services\ElectionLifecycleEngineImpl::class
         );
 
-        // Election Constitutional Guard: Hard gate enforcement for state transitions
+        // Election Constitutional Guard: Hard gate enforcement for state transitions with metrics
         $this->app->singleton(
-            \App\Application\Election\Services\ConstitutionalTransitionGuard::class
+            \App\Application\Election\Services\ConstitutionalTransitionGuard::class,
+            fn($app) => new \App\Application\Election\Services\ConstitutionalTransitionGuard(
+                $app->make(\App\Application\Election\Monitoring\ConstitutionalMetricsContract::class)
+            )
         );
 
         // Constitutional Drift Monitor: Records SSOT violations for tracking and analysis
@@ -141,19 +144,21 @@ class AppServiceProvider extends ServiceProvider
             \App\Application\Election\Monitoring\ConstitutionalDriftMonitor::class
         );
 
-        // Deprecation Enforcement Layer (DEL): Runtime field access control
+        // Deprecation Enforcement Layer (DEL): Runtime field access control with metrics
         $this->app->singleton(
             \App\Application\Election\Deprecation\DeprecationAccessGuard::class,
             fn($app) => new \App\Application\Election\Deprecation\DeprecationAccessGuard(
-                $app->make(\App\Application\Election\Monitoring\ConstitutionalDriftMonitor::class)
+                $app->make(\App\Application\Election\Monitoring\ConstitutionalDriftMonitor::class),
+                $app->make(\App\Application\Election\Monitoring\ConstitutionalMetricsContract::class)
             )
         );
 
-        // Query Policy Guard (DEL): SQL-level deprecation enforcement
+        // Query Policy Guard (DEL): SQL-level deprecation enforcement with metrics
         $this->app->singleton(
             \App\Application\Election\Deprecation\QueryPolicyGuard::class,
             fn($app) => new \App\Application\Election\Deprecation\QueryPolicyGuard(
-                $app->make(\App\Application\Election\Monitoring\ConstitutionalDriftMonitor::class)
+                $app->make(\App\Application\Election\Monitoring\ConstitutionalDriftMonitor::class),
+                $app->make(\App\Application\Election\Monitoring\ConstitutionalMetricsContract::class)
             )
         );
 

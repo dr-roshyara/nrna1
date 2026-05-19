@@ -39,7 +39,6 @@ class ElectionActivationTest extends TestCase
             'id'              => (string) Str::uuid(),
             'organisation_id' => $this->org->id,
             'name'            => 'General Election 2026',
-            'slug'            => 'general-election-2026',
             'type'            => 'real',
             'status'          => 'planned',
             'start_date'      => now()->addDays(7),

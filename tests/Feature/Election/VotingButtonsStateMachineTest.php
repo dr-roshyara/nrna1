@@ -4,6 +4,7 @@ namespace Tests\Feature\Election;
 
 use Tests\TestCase;
 use App\Models\Election;
+use App\Models\Organisation;
 use App\Models\User;
 use App\Models\ElectionStateTransition;
 use App\Models\ElectionOfficer;
@@ -13,6 +14,7 @@ class VotingButtonsStateMachineTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected Organisation $org;
     protected Election $election;
     protected User $officer;
 
@@ -20,10 +22,12 @@ class VotingButtonsStateMachineTest extends TestCase
     {
         parent::setUp();
 
+        $this->org = Organisation::factory()->create();
+
         // Create election in nomination phase (ready for voting)
         // administration_completed = true (from inNominationState factory)
         // nomination_completed = true (so canEnterVotingPhase() passes)
-        $this->election = Election::factory()->inNominationState()->create([
+        $this->election = Election::factory()->forOrganisation($this->org)->inNominationState()->create([
             'nomination_completed' => true,
             'nomination_completed_at' => now(),
             'voting_starts_at' => null,

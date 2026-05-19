@@ -4,6 +4,7 @@ namespace App\Application\Election\Deprecation;
 
 use App\Exceptions\DeprecatedFieldException;
 use App\Application\Election\Monitoring\DriftMonitorInterface;
+use App\Application\Election\Monitoring\ConstitutionalMetricsContract;
 use App\Application\Election\Monitoring\SSOTViolationEvent;
 use Illuminate\Support\Facades\Log;
 
@@ -17,11 +18,14 @@ use Illuminate\Support\Facades\Log;
  * - audit_only: Log silently, no blocking
  * - warning: Log as warning, allow usage
  * - strict: Block all access with exception
+ *
+ * Reports all violations to ConstitutionalMetrics for observability.
  */
 final class DeprecationAccessGuard
 {
     public function __construct(
-        private readonly ?DriftMonitorInterface $monitor = null
+        private readonly ?DriftMonitorInterface $monitor = null,
+        private readonly ?ConstitutionalMetricsContract $metrics = null
     ) {}
 
     /**
@@ -49,6 +53,10 @@ final class DeprecationAccessGuard
         // Log the access (except in strict mode where we'll throw)
         $this->logAccess($field, $context, $severity);
 
+        // Record to constitutional metrics (observability spine)
+        // Always record — metrics layer is always safe
+        $this->metrics?->recordDeprecatedFieldAccess($field, $context);
+
         // Fire to drift monitor (Stream 4)
         $this->monitor?->record(SSOTViolationEvent::make(
             'deprecated_field_access',
@@ -56,17 +64,17 @@ final class DeprecationAccessGuard
             $context
         ));
 
-        // Enforce based on severity
-        match ($severity) {
-            'audit_only' => null,
-            'warning' => null,
-            'strict' => throw new DeprecatedFieldException(
+        // Enforce based on severity and graduated level
+        // Level 4 = full strict (access guard enforces)
+        $shouldThrow = $severity === 'strict' && DeprecationPolicy::isEnforcementActive(4);
+
+        if ($shouldThrow) {
+            throw new DeprecatedFieldException(
                 "Field '{$field}' is deprecated and cannot be accessed in strict mode. " .
                 "Context: {$context}. " .
                 "Replacement: {$rule['replacement']}"
-            ),
-            default => null,
-        };
+            );
+        }
     }
 
     /**
