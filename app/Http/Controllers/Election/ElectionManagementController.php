@@ -1250,6 +1250,14 @@ class ElectionManagementController extends Controller
 
         $this->authorize('manageSettings', $election);
 
+        // Constitutional capability check: Can this election's timeline be edited in current state?
+        $lifecycle = ElectionLifecycle::of($election);
+        abort_unless(
+            $lifecycle->canEditTimeline(),
+            403,
+            "Timeline cannot be modified during the {$lifecycle->state()->label()} phase."
+        );
+
         // Validate phase update permissions - cannot change dates for phases that have started
         $this->validatePhaseUpdatePermissions($election, $request);
 

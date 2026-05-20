@@ -330,17 +330,17 @@ Route::middleware(['auth', 'verified', \App\Http\Middleware\TenantContext::class
             ->name('elections.timeline-view')
             ->can('manageSettings', 'election');
 
-        // ── Timeline Edit (Administration + Nomination phases only) ──────────────────
-        Route::middleware(['election.state:configure_election'])->group(function () {
-            Route::get('/timeline', [ElectionManagementController::class, 'timeline'])
-                ->name('elections.timeline')
-                ->can('manageSettings', 'election');
+        // ── Timeline Edit (Capability-driven authorization via ElectionLifecycle) ──────────────────
+        // Authorization moved from route middleware to controller (constitutional capability model).
+        // The controller uses ElectionLifecycle::canEditTimeline() to check if timeline is editable
+        // in current state, replacing the obsolete Election::allowsAction('configure_election') pattern.
+        Route::get('/timeline', [ElectionManagementController::class, 'timeline'])
+            ->name('elections.timeline')
+            ->can('manageSettings', 'election');
 
-            // TEMP: Testing without ->can() to isolate the 403 source
-            Route::patch('/timeline', [ElectionManagementController::class, 'updateTimeline'])
-                ->name('elections.update-timeline');
-                // ->can('manageSettings', 'election');  // Temporarily disabled
-        });
+        Route::patch('/timeline', [ElectionManagementController::class, 'updateTimeline'])
+            ->name('elections.update-timeline')
+            ->can('manageSettings', 'election');
     });
 
 // Test routes for voter slug system (Phase 1)

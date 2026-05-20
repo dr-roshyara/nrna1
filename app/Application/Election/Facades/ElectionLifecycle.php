@@ -148,6 +148,20 @@ final class ElectionLifecycle
     }
 
     /**
+     * Check if timeline (election dates) can be edited.
+     *
+     * Constitutional capability: Editorial authority over voting windows and setup timeline.
+     * Allowed during: Draft, Approved, Rejected, Setup, ReadyForVoting (if not started)
+     * Blocked during: Voting, Counting, Results, Terminal states
+     *
+     * @return bool
+     */
+    public function canEditTimeline(): bool
+    {
+        return $this->snapshot->canEditTimeline;
+    }
+
+    /**
      * Check if the election can be activated (transition to voting).
      *
      * CONSTITUTIONAL FIX for Phase 3.1.C: Replaces deprecated $election->status checks.

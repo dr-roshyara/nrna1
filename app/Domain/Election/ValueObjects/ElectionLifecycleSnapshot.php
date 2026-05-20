@@ -12,6 +12,7 @@ final class ElectionLifecycleSnapshot
         public readonly bool $canVote,
         public readonly bool $canManageVoters,
         public readonly bool $canPublishResults,
+        public readonly bool $canEditTimeline,
         public readonly bool $isLocked,
         public readonly ?string $blockedReason,
         public readonly array $allowedActions,

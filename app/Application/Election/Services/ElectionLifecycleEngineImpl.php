@@ -35,6 +35,7 @@ final class ElectionLifecycleEngineImpl implements ElectionLifecycleEngine
             canVote: $permissions['canVote'],
             canManageVoters: $permissions['canManageVoters'],
             canPublishResults: $permissions['canPublishResults'],
+            canEditTimeline: $permissions['canEditTimeline'],
             isLocked: $isLocked,
             blockedReason: $blockedReason,
             allowedActions: $allowedActions,
@@ -131,60 +132,70 @@ final class ElectionLifecycleEngineImpl implements ElectionLifecycleEngine
                 'canVote' => false,
                 'canManageVoters' => true,
                 'canPublishResults' => false,
+                'canEditTimeline' => true,
             ],
             ElectionLifecycleState::SubmittedForApproval => [
                 'canEdit' => false,  // Locked during review
                 'canVote' => false,
                 'canManageVoters' => false,
                 'canPublishResults' => false,
+                'canEditTimeline' => false,  // Frozen under platform review
             ],
             ElectionLifecycleState::Approved => [
                 'canEdit' => true,  // Can configure after approval
                 'canVote' => false,
                 'canManageVoters' => true,
                 'canPublishResults' => false,
+                'canEditTimeline' => true,
             ],
             ElectionLifecycleState::Rejected => [
                 'canEdit' => true,  // Can revise and resubmit
                 'canVote' => false,
                 'canManageVoters' => true,
                 'canPublishResults' => false,
+                'canEditTimeline' => true,  // Allow revision
             ],
             ElectionLifecycleState::Setup => [
                 'canEdit' => true,
                 'canVote' => false,
                 'canManageVoters' => true,
                 'canPublishResults' => false,
+                'canEditTimeline' => true,  // Still in setup phase
             ],
             ElectionLifecycleState::ReadyForVoting => [
                 'canEdit' => false,
                 'canVote' => false,
                 'canManageVoters' => false,
                 'canPublishResults' => false,
+                'canEditTimeline' => true,  // Limited: can adjust if voting not opened yet
             ],
             ElectionLifecycleState::VotingActive => [
                 'canEdit' => false,
                 'canVote' => true,
                 'canManageVoters' => false,
                 'canPublishResults' => false,
+                'canEditTimeline' => false,  // Voting integrity - no changes
             ],
             ElectionLifecycleState::Counting => [
                 'canEdit' => false,
                 'canVote' => false,
                 'canManageVoters' => false,
                 'canPublishResults' => true,
+                'canEditTimeline' => false,  // Audit trail immutability
             ],
             ElectionLifecycleState::ResultsPublished => [
                 'canEdit' => false,
                 'canVote' => false,
                 'canManageVoters' => false,
                 'canPublishResults' => false,
+                'canEditTimeline' => false,  // Historical record immutability
             ],
             ElectionLifecycleState::Archived => [
                 'canEdit' => false,
                 'canVote' => false,
                 'canManageVoters' => false,
                 'canPublishResults' => false,
+                'canEditTimeline' => false,  // Terminal state
             ],
         };
     }
