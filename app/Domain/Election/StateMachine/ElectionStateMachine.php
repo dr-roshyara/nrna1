@@ -7,6 +7,10 @@ use App\Models\Election;
 use App\Models\ElectionStateTransition;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @deprecated Compatibility shell only. Sovereign lifecycle authority is ElectionLifecycle.
+ * Use ElectionLifecycle::of($election)->snapshot() instead of this class.
+ */
 class ElectionStateMachine
 {
     private const TRANSITIONS = [

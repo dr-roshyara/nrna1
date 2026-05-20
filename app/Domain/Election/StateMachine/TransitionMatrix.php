@@ -2,6 +2,10 @@
 
 namespace App\Domain\Election\StateMachine;
 
+/**
+ * @deprecated Compatibility shell only. Sovereign lifecycle authority is ElectionLifecycle.
+ * Use ElectionConstitution::RULES instead for authoritative transition rules.
+ */
 class TransitionMatrix
 {
     // Single source of truth: all transitions, their target states, and required roles

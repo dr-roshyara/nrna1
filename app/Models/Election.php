@@ -902,53 +902,41 @@ class Election extends Model
     }
 
     /**
-     * Check if an action is allowed in current state (pure, no auth checks)
-     * Maps operations to allowed states per architecture/election_architecture/state_machine_art/statemachine_at_controller_level.md
+     * @deprecated Use ElectionLifecycle::of($election)->snapshot()->canX instead.
+     * This method is a compatibility bridge that delegates to the new SSOT engine.
+     *
+     * Check if an action is allowed in current state (pure, no auth checks).
+     * Delegates to ElectionLifecycle for all state determinations.
      */
     public function allowsAction(string $action): bool
     {
-        $allowed = [
-            'draft' => [
-                'configure_election',
-                'manage_settings',
-            ],
-            self::STATE_ADMINISTRATION  => [
-                'manage_posts',
-                'import_voters',
-                'manage_committee',
-                'configure_election',
-                'manage_settings',
-            ],
-            self::STATE_NOMINATION => [
-                'apply_candidacy',
-                'approve_candidacy',
-                'view_candidates',
-                'configure_election',
-                'manage_settings',
-            ],
-            self::STATE_VOTING => [
-                'cast_vote',
-                'verify_vote',
-            ],
-            self::STATE_RESULTS_PENDING => [
-                'verify_vote',
-            ],
-            self::STATE_RESULTS => [
-                'view_results',
-                'verify_vote',
-                'download_receipt',
-            ],
-        ];
+        $snapshot = \App\Application\Election\Facades\ElectionLifecycle::of($this)->snapshot();
 
-        // Special case: Allow date editing during voting phase
-        // ONLY if voting is not yet locked (chief can adjust dates before locking)
-        if (($action === 'configure_election' || $action === 'manage_settings')
-            && $this->current_state === self::STATE_VOTING
-            && !$this->voting_locked) {
-            return true;
-        }
+        // Map middleware actions to lifecycle capabilities
+        return match ($action) {
+            // Configuration and setup
+            'manage_posts' => $snapshot->canEdit,
+            'import_voters' => $snapshot->canManageVoters,
+            'manage_committee' => $snapshot->canEdit,
+            'configure_election' => $snapshot->canEdit,
+            'manage_settings' => $snapshot->canEdit,
 
-        return in_array($action, $allowed[$this->current_state] ?? []);
+            // Voting
+            'cast_vote' => $snapshot->canVote,
+            'verify_vote' => $snapshot->canVote || !$snapshot->isLocked,
+
+            // Candidacy
+            'apply_candidacy' => $snapshot->canEdit,
+            'approve_candidacy' => $snapshot->canEdit,
+            'view_candidates' => true,  // Always readable
+
+            // Results
+            'view_results' => !$snapshot->isLocked,
+            'download_receipt' => !$snapshot->isLocked,
+
+            // Default: not allowed
+            default => false,
+        };
     }
 
     /**
