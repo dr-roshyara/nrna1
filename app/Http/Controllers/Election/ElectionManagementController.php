@@ -176,6 +176,7 @@ class ElectionManagementController extends Controller
 
     /**
      * Activate a planned election (chief or deputy only).
+     * Transitions from 'approved' state to 'setup' state via 'begin_setup' action.
      *
      * POST /elections/{election}/activate
      */
@@ -185,18 +186,18 @@ class ElectionManagementController extends Controller
 
         // CONSTITUTIONAL FIX Phase 3.1.C: Use ElectionLifecycle SSOT instead of deprecated status field
         $lifecycle = ElectionLifecycle::of($election);
-        if (!$lifecycle->canActivate()) {
+        if (!$lifecycle->canTransitionTo('begin_setup')) {
             return back()->with('error', 'Election cannot be activated in its current state.');
         }
 
+        // Transition to setup state
         Election::withoutGlobalScopes()
             ->where('id', $election->id)
             ->update([
-                'status'            => 'active',
-                'results_published' => false,
+                'state' => 'setup',
             ]);
 
-        return back()->with('success', 'Election activated successfully! Voting period is now open.');
+        return back()->with('success', 'Election activated successfully! Setup phase is now open.');
     }
 
     /**

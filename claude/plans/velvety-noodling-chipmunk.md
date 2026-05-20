@@ -196,9 +196,27 @@ php artisan election:constitution:health
 
 ## Definition of Done
 
-- [ ] All Elections Feature tests GREEN (from 192 failures → 0)
+- [x] **RC-1 Fixed:** All 20 membership tests now passing (uses CQRS handlers)
+- [ ] All Elections Feature tests GREEN (from 192 → 182 remaining failures)
 - [ ] All Architecture invariant tests still GREEN (6/6)
 - [ ] All Unit Application Election tests still GREEN (60/60)
 - [ ] `php artisan election:constitution:health` → READY FOR STRICT MODE
 - [ ] `ElectionManagementController` has zero deprecated pattern accesses
 - [ ] Ready to change `DeprecationPolicy::MODE` from `'warning'` to `'strict'` (Phase 3.2)
+
+## Execution Progress (Updated 2026-05-20)
+
+### Completed
+✅ **Fix 1: Create corrective migration** - RC-2 addressed (PostgreSQL compatible)
+✅ **Fix 2: Update tests to use CQRS handlers** - RC-1 COMPLETE (20 tests passing)
+  - ElectionMembershipInfrastructureTest: 9/9 passing
+  - ElectionMembershipPersistenceTest: 11/11 passing
+  - Handlers properly integrated with tenant isolation
+
+### In Progress
+⏳ **Fix 3 & 4:** RC-3 (hardcoded slugs) and RC-4 (forOrganisation) - Investigation needed
+   - Initial findings suggest different root cause: unique constraint violations across tests
+   - More thorough analysis needed before fix
+
+### Remaining
+- Fix 5: Complete ElectionManagementController Phase 3.1 migration (6 deprecated sites)

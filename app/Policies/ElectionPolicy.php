@@ -40,22 +40,16 @@ class ElectionPolicy
     }
 
     /**
-     * Chief, deputy, or organisation owner/admin may manage election settings.
+     * Chief or deputy may manage election settings.
+     * (Owners may create elections but cannot manage them after creation)
      */
     public function manageSettings(User $user, Election $election): bool
     {
-        $isOwnerAdmin = UserOrganisationRole::where('user_id', $user->id)
-            ->where('organisation_id', $election->organisation_id)
-            ->whereIn('role', ['owner', 'admin'])
-            ->exists();
-
-        $isChiefDeputy = ElectionOfficer::where('user_id', $user->id)
+        return ElectionOfficer::where('user_id', $user->id)
             ->where('election_id', $election->id)
             ->whereIn('role', ['chief', 'deputy'])
             ->where('status', 'active')
             ->exists();
-
-        return $isOwnerAdmin || $isChiefDeputy;
     }
 
     /**

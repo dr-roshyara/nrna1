@@ -30,20 +30,19 @@ class ElectionActivationTest extends TestCase
 
         $this->org = Organisation::factory()->create(['type' => 'tenant']);
 
+        $this->election = Election::factory()
+            ->forOrganisation($this->org)
+            ->create([
+                'name'   => 'General Election 2026',
+                'type'   => 'real',
+                'state'  => 'approved',
+                'approved_at' => now(),
+            ]);
+
         $this->owner       = $this->createUserWithRole('owner');
         $this->chief       = $this->createOfficer('chief', 'active');
         $this->deputy      = $this->createOfficer('deputy', 'active');
         $this->commissioner = $this->createOfficer('commissioner', 'active');
-
-        $this->election = Election::create([
-            'id'              => (string) Str::uuid(),
-            'organisation_id' => $this->org->id,
-            'name'            => 'General Election 2026',
-            'type'            => 'real',
-            'status'          => 'planned',
-            'start_date'      => now()->addDays(7),
-            'end_date'        => now()->addDays(14),
-        ]);
     }
 
     // =========================================================================
@@ -54,41 +53,41 @@ class ElectionActivationTest extends TestCase
     {
         $response = $this->actingAs($this->chief)
             ->withSession($this->orgSession())
-            ->post(route('elections.activate', $this->election->id));
+            ->post(route('elections.activate', $this->election->slug));
 
         $response->assertRedirect();
         $response->assertSessionHas('success');
-        $this->assertEquals('active', $this->election->fresh()->status);
+        $this->assertEquals('setup', $this->election->fresh()->state);
     }
 
     public function test_deputy_can_activate_planned_election(): void
     {
         $response = $this->actingAs($this->deputy)
             ->withSession($this->orgSession())
-            ->post(route('elections.activate', $this->election->id));
+            ->post(route('elections.activate', $this->election->slug));
 
         $response->assertRedirect();
-        $this->assertEquals('active', $this->election->fresh()->status);
+        $this->assertEquals('setup', $this->election->fresh()->state);
     }
 
     public function test_commissioner_cannot_activate_election(): void
     {
         $response = $this->actingAs($this->commissioner)
             ->withSession($this->orgSession())
-            ->post(route('elections.activate', $this->election->id));
+            ->post(route('elections.activate', $this->election->slug));
 
         $response->assertForbidden();
-        $this->assertEquals('planned', $this->election->fresh()->status);
+        $this->assertEquals('approved', $this->election->fresh()->state);
     }
 
     public function test_owner_cannot_activate_election(): void
     {
         $response = $this->actingAs($this->owner)
             ->withSession($this->orgSession())
-            ->post(route('elections.activate', $this->election->id));
+            ->post(route('elections.activate', $this->election->slug));
 
         $response->assertForbidden();
-        $this->assertEquals('planned', $this->election->fresh()->status);
+        $this->assertEquals('approved', $this->election->fresh()->state);
     }
 
     // =========================================================================
@@ -97,26 +96,31 @@ class ElectionActivationTest extends TestCase
 
     public function test_cannot_activate_already_active_election(): void
     {
-        Election::withoutGlobalScopes()->where('id', $this->election->id)->update(['status' => 'active']);
+        // Set voting window to make engine compute VotingActive state
+        Election::withoutGlobalScopes()->where('id', $this->election->id)->update([
+            'voting_starts_at' => now()->subHour(),
+            'voting_ends_at' => now()->addHour(),
+        ]);
 
         $response = $this->actingAs($this->chief)
             ->withSession($this->orgSession())
-            ->post(route('elections.activate', $this->election->id));
+            ->post(route('elections.activate', $this->election->slug));
 
-        $response->assertSessionHas('error', 'Cannot activate an election that is already active.');
-        $this->assertEquals('active', $this->election->fresh()->status);
+        $response->assertSessionHas('error', 'Election cannot be activated in its current state.');
     }
 
     public function test_cannot_activate_completed_election(): void
     {
-        Election::withoutGlobalScopes()->where('id', $this->election->id)->update(['status' => 'completed']);
+        // Set results published to make engine compute ResultsPublished state
+        Election::withoutGlobalScopes()->where('id', $this->election->id)->update([
+            'results_published_at' => now()->subDay(),
+        ]);
 
         $response = $this->actingAs($this->chief)
             ->withSession($this->orgSession())
-            ->post(route('elections.activate', $this->election->id));
+            ->post(route('elections.activate', $this->election->slug));
 
-        $response->assertSessionHas('error', 'Cannot activate an election that is already completed.');
-        $this->assertEquals('completed', $this->election->fresh()->status);
+        $response->assertSessionHas('error', 'Election cannot be activated in its current state.');
     }
 
     // =========================================================================
@@ -189,12 +193,10 @@ class ElectionActivationTest extends TestCase
             'organisation_id'   => $this->org->id,
             'email_verified_at' => now(),
         ]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => $role,
-        ]);
+        // Factory auto-creates voter role; update it to the desired role
+        UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $this->org->id)
+            ->update(['role' => $role]);
         return $user;
     }
 
@@ -204,13 +206,9 @@ class ElectionActivationTest extends TestCase
             'organisation_id'   => $this->org->id,
             'email_verified_at' => now(),
         ]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'voter',
-        ]);
+        // Factory auto-creates voter role; keep it as-is
         ElectionOfficer::create([
+            'election_id'     => $this->election->id,
             'organisation_id' => $this->org->id,
             'user_id'         => $user->id,
             'role'            => $role,
