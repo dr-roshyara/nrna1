@@ -35,6 +35,11 @@ class VotingButtonsStateMachineTest extends TestCase
         $this->election = ElectionScenarioFactory::configurationComplete($this->org);
 
         $this->officer = User::factory()->create();
+
+        // Create Spatie role for authorization checks (required by ConstitutionalTransitionGuard)
+        \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'chief']);
+        $this->officer->assignRole('chief');
+
         // Create ElectionOfficer relationship for authorization
         ElectionOfficer::create([
             'organisation_id' => $this->election->organisation_id,
@@ -311,11 +316,15 @@ class VotingButtonsStateMachineTest extends TestCase
         );
 
         // Act
-        $this->actingAs($this->officer)->post(
+        $response = $this->actingAs($this->officer)->post(
             route('elections.close-voting', ['election' => $this->election->slug])
         );
 
-        // Assert
+        // Assert response was successful
+        $response->assertStatus(302);
+        $response->assertSessionHas('success');
+
+        // Assert transition record was created
         $this->assertEquals(1, ElectionStateTransition::count());
 
         $transition = ElectionStateTransition::first();
