@@ -9,29 +9,37 @@ namespace App\Domain\Election\StateMachine;
 class TransitionMatrix
 {
     // Single source of truth: all transitions, their target states, and required roles
+    // NOTE: Uses SSOT state names (ElectionLifecycleState enum equivalents)
     public const TRANSITIONS = [
         'draft' => [
-            'submit_for_approval' => ['to' => 'pending_approval', 'roles' => ['chief', 'admin', 'owner']],
-            'auto_submit'         => ['to' => 'administration',   'roles' => ['system']],
+            'submit_for_approval' => ['to' => 'submitted_for_approval', 'roles' => ['chief', 'admin', 'owner']],
+            'auto_submit'         => ['to' => 'setup',   'roles' => ['system']],
         ],
-        'pending_approval' => [
-            'approve' => ['to' => 'administration', 'roles' => ['super_admin', 'platform_admin']],
+        'submitted_for_approval' => [
+            'approve' => ['to' => 'setup', 'roles' => ['super_admin', 'platform_admin']],
             'reject'  => ['to' => 'draft',          'roles' => ['super_admin', 'platform_admin']],
         ],
-        'administration' => [
-            'complete_administration' => ['to' => 'nomination', 'roles' => ['chief', 'deputy']],
+        'setup' => [
+            'complete_administration' => ['to' => 'setup', 'roles' => ['chief', 'deputy']],
+            'open_voting' => ['to' => 'voting_active', 'roles' => ['chief', 'deputy']],
         ],
-        'nomination' => [
-            'open_voting' => ['to' => 'voting', 'roles' => ['chief', 'deputy']],
+        'ready_for_voting' => [
+            'open_voting' => ['to' => 'voting_active', 'roles' => ['chief', 'deputy']],
         ],
-        'voting' => [
-            'close_voting' => ['to' => 'results_pending', 'roles' => ['chief', 'deputy']],
-            'lock_voting'  => ['to' => 'voting',          'roles' => ['chief', 'deputy']],
+        'voting_active' => [
+            'close_voting' => ['to' => 'counting', 'roles' => ['chief', 'deputy']],
+            'lock_voting'  => ['to' => 'voting_active',          'roles' => ['chief', 'deputy']],
         ],
-        'results_pending' => [
-            'publish_results' => ['to' => 'results', 'roles' => ['chief']],
+        'counting' => [
+            'publish_results' => ['to' => 'results_published', 'roles' => ['chief']],
         ],
-        'results' => [],
+        'results_published' => [],
+        'approved' => [
+            'begin_setup' => ['to' => 'setup', 'roles' => ['chief', 'deputy']],
+        ],
+        'rejected' => [
+            'revise_and_resubmit' => ['to' => 'submitted_for_approval', 'roles' => ['chief', 'deputy']],
+        ],
     ];
 
     public static function canPerformAction(string $fromState, string $action): bool

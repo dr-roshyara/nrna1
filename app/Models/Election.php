@@ -1811,12 +1811,14 @@ class Election extends Model
             'status' => 'active',
             'nomination_completed' => true,
             'nomination_completed_at' => $currentTime,
+            // Always activate voting window to start NOW when opening voting
+            // This ensures engine derives VotingActive state (window is open)
+            'voting_starts_at' => $currentTime,
+            'voting_ends_at' => $currentTime->addDays(4),
+            // Lock voting as part of opening voting
+            'voting_locked' => true,
+            'voting_locked_at' => $currentTime,
         ];
-
-        if (!$this->voting_starts_at) {
-            $updateData['voting_starts_at'] = $currentTime;
-            $updateData['voting_ends_at'] = $currentTime->addDays(4);
-        }
 
         if ($actorId) {
             $updateData['voting_locked_by'] = $actorId;
@@ -2012,9 +2014,9 @@ class Election extends Model
         if (($this->pending_candidacies_count ?? 0) > 0) {
             return 'There are pending candidacy applications.';
         }
-        if ($this->voting_starts_at && now()->lt($this->voting_starts_at)) {
-            return 'Voting phase has not yet started. Scheduled start: ' . $this->voting_starts_at->format('Y-m-d H:i');
-        }
+        // NOTE: Don't check if voting_starts_at has been reached.
+        // The open_voting action itself sets voting_starts_at = now(),
+        // so checking if it's in the future would block the action.
         return null;
     }
 

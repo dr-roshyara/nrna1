@@ -37,8 +37,11 @@ class VotingButtonsStateMachineTest extends TestCase
         $this->officer = User::factory()->create();
 
         // Create Spatie role for authorization checks (required by ConstitutionalTransitionGuard)
-        \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'chief']);
-        $this->officer->assignRole('chief');
+        $role = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'chief']);
+        $this->officer->assignRole($role);
+
+        // Clear cached permissions - RefreshDatabase can cause stale permission cache
+        $this->officer = $this->officer->fresh();
 
         // Create ElectionOfficer relationship for authorization
         ElectionOfficer::create([
@@ -78,7 +81,8 @@ class VotingButtonsStateMachineTest extends TestCase
         );
         $this->assertEquals(0, ElectionStateTransition::count());
 
-        // Act
+        // Act: Need authenticated context for ConstitutionalTransitionGuard
+        $this->actingAs($this->officer);
         $transition = $this->election->transitionTo(
             \App\Domain\Election\StateMachine\Transition::manual('open_voting', $this->officer->id, 'Opened voting')
         );
@@ -102,7 +106,8 @@ class VotingButtonsStateMachineTest extends TestCase
         $this->assertTrue($this->election->nomination_completed);
         $this->assertFalse($this->election->voting_locked);
 
-        // Act
+        // Act - need authenticated context for ConstitutionalTransitionGuard
+        $this->actingAs($this->officer);
         $this->election->transitionTo(
             \App\Domain\Election\StateMachine\Transition::manual('open_voting', $this->officer->id, 'Opened voting')
         );
@@ -133,15 +138,19 @@ class VotingButtonsStateMachineTest extends TestCase
             route('elections.open-voting', ['election' => $this->election->slug])
         );
 
+        // Assert: Response should be successful redirect
+        $response->assertStatus(302);
+        if ($response->getSession()->has('error')) {
+            $this->fail("POST failed with error: " . $response->getSession()->get('error'));
+        }
+        $response->assertSessionHas('success');
+
         // Assert: Should transition to voting_active state
         $this->election->refresh();
         $this->assertEquals(
             'voting_active',
             ElectionLifecycle::of($this->election)->state()->value
         );
-
-        $response->assertStatus(302);
-        $response->assertSessionHas('success');
     }
 
     /**
@@ -157,6 +166,10 @@ class VotingButtonsStateMachineTest extends TestCase
             'voting_ends_at' => now()->addHour(),
             'administration_completed' => true,
         ]);
+
+        // Sync state column with engine-derived state
+        $derivedState = ElectionLifecycle::of($this->election->fresh())->state()->value;
+        $this->election->update(['state' => $derivedState]);
 
         // Verify derived state is voting_active (not setup)
         $this->assertEquals(
@@ -243,6 +256,10 @@ class VotingButtonsStateMachineTest extends TestCase
             'voting_ends_at' => now()->addHour(),
         ]);
 
+        // Sync state column with engine-derived state
+        $derivedState = ElectionLifecycle::of($this->election->fresh())->state()->value;
+        $this->election->update(['state' => $derivedState]);
+
         // Verify derived state is voting_active
         $this->assertEquals(
             'voting_active',
@@ -307,6 +324,11 @@ class VotingButtonsStateMachineTest extends TestCase
             'voting_starts_at' => now()->subHour(),
             'voting_ends_at' => now()->addHour(),
         ]);
+
+        // Sync state column with engine-derived state
+        $derivedState = ElectionLifecycle::of($this->election->fresh())->state()->value;
+        $this->election->update(['state' => $derivedState]);
+
         $this->assertEquals(0, ElectionStateTransition::count());
 
         // Verify derived state is voting_active
@@ -359,6 +381,9 @@ class VotingButtonsStateMachineTest extends TestCase
             $derivedState,
             'Voting window ended → engine derives to counting state'
         );
+
+        // Sync state column with engine-derived state
+        $this->election->update(['state' => $derivedState]);
 
         // Act: Try to close voting from counting state
         $response = $this->actingAs($this->officer)->post(

@@ -99,7 +99,35 @@ final class ElectionScenarioFactory
                 'nomination_completed_at' => $now->copy()->subHours(2),
                 // No results
                 'results_published_at' => null,
+                // Timezone required for open_voting precondition
+                'timezone' => 'UTC',
             ]);
+
+        // Create at least one post and candidate (required for open_voting)
+        $post = \App\Models\Post::factory()
+            ->create([
+                'election_id' => $election->id,
+                'organisation_id' => $org->id,
+                'name' => 'Test Position',
+                'is_national_wide' => true,
+            ]);
+
+        // Create an approved candidacy for the post with correct organization
+        $user = \App\Models\User::factory()->forOrganisation($org)->create();
+        \App\Models\Candidacy::factory()
+            ->create([
+                'organisation_id' => $org->id,
+                'post_id' => $post->id,
+                'user_id' => $user->id,
+                'status' => 'approved',
+            ]);
+
+        // Update election counts
+        $election->update([
+            'candidates_count' => 1,
+            'posts_count' => 1,
+            'pending_candidacies_count' => 0,
+        ]);
 
         // Verify engine derives correct state (Setup or ReadyForVoting)
         $state = ElectionLifecycle::of($election)->state();
