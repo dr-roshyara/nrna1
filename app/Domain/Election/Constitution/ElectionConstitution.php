@@ -69,7 +69,7 @@ final class ElectionConstitution
 
         // ──── VOTING WORKFLOW (Chief Only) ────
         'open_voting' => [
-            'allowed_states' => ['ready_for_voting'],
+            'allowed_states' => ['setup', 'ready_for_voting'],
             'allowed_roles' => ['chief'],
             'preconditions' => ['voting_window_defined', 'timezone_set'],
             'description' => 'Open voting period (chief only)',

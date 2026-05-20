@@ -111,16 +111,11 @@ class VotingButtonsStateMachineTest extends TestCase
 
     /**
      * TEST 1: openVoting() transitions from setup → voting_active state
+     * The open_voting action sets voting window facts as a side effect
      */
     public function test_open_voting_transitions_from_nomination_to_voting(): void
     {
-        // Arrange: Set voting window facts (required for voting_active derivation)
-        $this->election->update([
-            'voting_starts_at' => now(),
-            'voting_ends_at' => now()->addHour(),
-        ]);
-
-        // Verify starting state
+        // Arrange: Verify starting state (setup or ready_for_voting)
         $initialState = ElectionLifecycle::of($this->election)->state()->value;
         $this->assertContains(
             $initialState,
@@ -128,7 +123,7 @@ class VotingButtonsStateMachineTest extends TestCase
             'Election must start in setup or ready_for_voting state'
         );
 
-        // Act: Officer clicks "Open Voting" button
+        // Act: Officer clicks "Open Voting" button (sets voting window as side effect)
         $response = $this->actingAs($this->officer)->post(
             route('elections.open-voting', ['election' => $this->election->slug])
         );
@@ -189,16 +184,11 @@ class VotingButtonsStateMachineTest extends TestCase
      */
     public function test_open_voting_creates_state_transition_record(): void
     {
-        // Arrange: Set voting window (required for voting_active derivation)
-        $this->election->update([
-            'voting_starts_at' => now(),
-            'voting_ends_at' => now()->addHour(),
-        ]);
-
+        // Arrange
         $this->assertEquals(0, ElectionStateTransition::count());
         $initialState = ElectionLifecycle::of($this->election)->state()->value;
 
-        // Act
+        // Act: open_voting sets voting window as side effect
         $this->actingAs($this->officer)->post(
             route('elections.open-voting', ['election' => $this->election->slug])
         );
