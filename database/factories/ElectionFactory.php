@@ -106,7 +106,7 @@ class ElectionFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'state' => 'pending_approval',
+                'state' => 'submitted_for_approval',
                 'submitted_for_approval_at' => now(),
                 'submitted_by' => fake()->uuid(),
             ];
@@ -117,7 +117,7 @@ class ElectionFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'state' => 'administration',
+                'state' => 'setup',
                 'approved_at' => now(),
                 'approved_by' => fake()->uuid(),
             ];
@@ -128,7 +128,7 @@ class ElectionFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'state' => 'nomination',
+                'state' => 'setup',
                 'administration_completed' => true,
                 'administration_completed_at' => now(),
             ];
@@ -139,7 +139,7 @@ class ElectionFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'state' => 'voting',
+                'state' => 'voting_active',
                 'nomination_completed' => true,
                 'nomination_completed_at' => now(),
                 'voting_locked' => true,
@@ -151,7 +151,7 @@ class ElectionFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'state' => 'results_pending',
+                'state' => 'counting',
                 'voting_locked' => true,
             ];
         });
@@ -161,7 +161,7 @@ class ElectionFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'state' => 'results',
+                'state' => 'results_published',
                 'voting_locked' => true,
                 'results_locked' => true,
                 'results_published_at' => now(),

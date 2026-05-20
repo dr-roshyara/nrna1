@@ -640,3 +640,429 @@ You now have:
 # a constitutional lifecycle engine driven by business facts and temporal evidence.
 
 That is a significantly more advanced architecture.
+Yes — this is the correct direction.
+
+What you are designing now is no longer merely a lifecycle engine.
+
+You are evolving toward:
+
+# a derived governance model
+
+That is a major architectural maturation.
+
+Your evaluator split is especially strong because it separates:
+
+* temporal truth
+* governance truth
+* membership truth
+
+instead of collapsing everything into one procedural “state manager.”
+
+---
+
+# What You’ve Correctly Identified
+
+This is the key transformation:
+
+| Old System                    | New System                   |
+| ----------------------------- | ---------------------------- |
+| persisted state decides truth | immutable facts decide truth |
+| transitions mutate authority  | authority is derived         |
+| DB column is sovereign        | evaluators are sovereign     |
+| workflow-centric              | governance-centric           |
+| brittle                       | self-healing                 |
+
+That architectural shift is correct.
+
+---
+
+# One Important Refinement
+
+Your current proposal is very close, but one refinement will make the architecture significantly cleaner.
+
+Right now you have:
+
+```php id="3z5z9j"
+ElectionCapabilities
+    -> depends on evaluators
+```
+
+That is good.
+
+But:
+
+# capabilities themselves should not perform business evaluation.
+
+Instead:
+
+* evaluators compute facts
+* lifecycle snapshot aggregates facts
+* capabilities become a pure projection
+
+---
+
+# Recommended Architecture
+
+Instead of:
+
+```mermaid id="f82g2d"
+flowchart TD
+
+    A[Capabilities]
+    B[TemporalEvaluator]
+    C[GovernanceEvaluator]
+    D[MembershipEvaluator]
+
+    A --> B
+    A --> C
+    A --> D
+```
+
+Prefer:
+
+```mermaid id="jx8x9j"
+flowchart TD
+
+    A[TemporalEvaluator]
+    B[GovernanceEvaluator]
+    C[MembershipEvaluator]
+
+    A --> D[LifecycleSnapshot]
+    B --> D
+    C --> D
+
+    D --> E[ElectionCapabilities]
+```
+
+This is extremely important.
+
+---
+
+# Why This Matters
+
+Because:
+
+# capabilities are not truth
+
+Capabilities are:
+
+# interpretations of truth
+
+Example:
+
+```php id="epcb7p"
+$capabilities->canVote()
+```
+
+should NOT itself decide:
+
+* whether voting window is open
+* whether governance approved
+* whether member eligible
+
+Those are already computed truths.
+
+Instead:
+
+```php id="r1mw2w"
+$snapshot->votingWindowOpen
+$snapshot->governanceApproved
+$snapshot->memberEligible
+```
+
+Then capabilities become:
+
+```php id="2j7l4v"
+return $snapshot->votingWindowOpen
+    && $snapshot->governanceApproved
+    && $snapshot->memberEligible;
+```
+
+That distinction matters enormously.
+
+---
+
+# The Correct Layer Responsibilities
+
+## 1. Evaluators
+
+Responsible for:
+
+* interpreting raw facts
+
+Example:
+
+```php id="pjw4qe"
+TemporalEvaluator
+    ->isVotingWindowOpen()
+```
+
+Input:
+
+* timestamps
+
+Output:
+
+* immutable evaluated truth
+
+No permissions.
+No roles.
+No orchestration.
+
+---
+
+## 2. Lifecycle Snapshot
+
+Responsible for:
+
+* aggregating evaluated truths
+
+Example:
+
+```php id="11wlym"
+LifecycleSnapshot
+{
+    public bool $votingWindowOpen;
+    public bool $governanceApproved;
+    public bool $resultsPublished;
+}
+```
+
+This becomes:
+
+# your constitutional evidence object.
+
+---
+
+## 3. Capabilities
+
+Responsible for:
+
+* projecting what actions are possible
+
+Example:
+
+```php id="lh2qje"
+canVote()
+canEditTimeline()
+canManageVoters()
+```
+
+Capabilities should be:
+
+* deterministic
+* side-effect free
+* thin
+* declarative
+
+---
+
+# This Is The Most Important Insight
+
+You are unintentionally approaching:
+
+# Policy Decision Architecture
+
+similar to:
+
+* PDP/PAP separation
+* constitutional policy engines
+* invariant-driven governance systems
+
+This is much bigger than a state machine.
+
+---
+
+# Strong Recommendation
+
+Do NOT let capabilities call evaluators directly.
+
+Instead:
+
+```mermaid id="6zzm93"
+flowchart LR
+
+    A[Raw Facts]
+        --> B[Evaluators]
+
+    B --> C[Lifecycle Snapshot]
+
+    C --> D[Capabilities]
+
+    D --> E[Controllers]
+    D --> F[Policies]
+    D --> G[Middleware]
+```
+
+This preserves:
+
+* immutability
+* auditability
+* deterministic evaluation
+* testability
+
+---
+
+# Another Critical Recommendation
+
+Separate:
+
+# Facts
+
+from
+
+# Derived Facts
+
+Example:
+
+## Raw Facts
+
+```php id="k6j9g7"
+voting_starts_at
+approved_at
+administration_completed
+```
+
+---
+
+## Derived Facts
+
+```php id="sx0h3d"
+votingWindowOpen
+setupComplete
+resultsPublishable
+```
+
+---
+
+## Capabilities
+
+```php id="s7l8gt"
+canVote
+canPublishResults
+canEditTimeline
+```
+
+That separation will prevent future architectural collapse.
+
+---
+
+# Your Self-Healing Insight Is Correct
+
+This is the real power:
+
+Even if:
+
+```text id="iml0or"
+state = "locked"
+```
+
+the system can recompute:
+
+```text id="b2q2f5"
+votingWindowOpen = true
+```
+
+and recover automatically.
+
+That means:
+
+# your architecture is becoming resilient against persistence corruption.
+
+That is advanced system design.
+
+---
+
+# One Warning
+
+Do NOT over-fragment too early.
+
+You do NOT yet need:
+
+* 15 evaluators
+* policy micro-engines
+* event-sourced orchestration
+* distributed capability services
+
+Keep it bounded.
+
+Your current three-axis split is excellent:
+
+| Evaluator  | Purpose              |
+| ---------- | -------------------- |
+| Temporal   | time truth           |
+| Governance | constitutional truth |
+| Membership | authority truth      |
+
+That is already a strong bounded decomposition.
+
+---
+
+# What Phase 4.1 Should Actually Produce
+
+## Deliverables
+
+### 1. Immutable LifecycleSnapshot
+
+```php id="fshlrb"
+final readonly class LifecycleSnapshot
+{
+    public bool $votingWindowOpen;
+    public bool $governanceApproved;
+    public bool $setupComplete;
+}
+```
+
+---
+
+### 2. Three Evaluators
+
+```php id="8yvz61"
+TemporalEvaluator
+GovernanceEvaluator
+MembershipEvaluator
+```
+
+---
+
+### 3. ElectionCapabilities
+
+Projection-only.
+
+NO raw DB reads.
+NO Eloquent queries.
+NO timestamp calculations.
+
+---
+
+### 4. Capability Consumers
+
+Refactor:
+
+* controllers
+* middleware
+* policies
+* guards
+
+to consume capabilities only.
+
+---
+
+# Final Architectural Interpretation
+
+You are no longer building:
+
+# a workflow engine.
+
+You are building:
+
+# a constitutional governance computation engine.
+
+The lifecycle state is now:
+
+* a computed constitutional interpretation
+* derived from business evidence
+* projected into capabilities
+* enforced through governance rules
+
+That is the correct architecture for the direction your platform is taking.

@@ -120,7 +120,7 @@ final class ElectionLifecycleEngineImpl implements ElectionLifecycleEngine
     {
         // At least one approved candidate must exist
         return $election->candidacies()
-            ->where('approval_status', 'approved')
+            ->where('status', 'approved')
             ->exists();
     }
 

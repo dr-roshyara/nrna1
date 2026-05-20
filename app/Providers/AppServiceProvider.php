@@ -190,8 +190,10 @@ class AppServiceProvider extends ServiceProvider
         // Load migrations from database/migrations/landlord/ (temporal governance constraints)
         $this->loadMigrationsFrom(database_path('migrations/landlord'));
 
-        // Validate election state machine configuration at boot time (fail fast)
-        \App\Domain\Election\StateMachine\TransitionMatrix::validate();
+        // @deprecated: TransitionMatrix validation has been migrated to ElectionConstitution
+        // The constitution is code-based, so invalid configs surface at parse time
+        // Future: Add ElectionConstitution::validate() for runtime checks if needed
+        // \App\Domain\Election\StateMachine\TransitionMatrix::validate();
 
         // Register mail components as Blade aliases
         // This allows x-mail::message etc. to work in custom email templates

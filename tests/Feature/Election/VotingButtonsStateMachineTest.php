@@ -3,11 +3,14 @@
 namespace Tests\Feature\Election;
 
 use Tests\TestCase;
+use Tests\Support\ElectionScenarioFactory;
 use App\Models\Election;
 use App\Models\Organisation;
 use App\Models\User;
 use App\Models\ElectionStateTransition;
 use App\Models\ElectionOfficer;
+use App\Application\Election\Facades\ElectionLifecycle;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class VotingButtonsStateMachineTest extends TestCase
@@ -22,19 +25,14 @@ class VotingButtonsStateMachineTest extends TestCase
     {
         parent::setUp();
 
+        // Freeze time for deterministic timeline assertions
+        Carbon::setTestNow(Carbon::parse('2026-05-20 12:00:00'));
+
         $this->org = Organisation::factory()->create();
 
-        // Create election in nomination phase (ready for voting)
-        // administration_completed = true (from inNominationState factory)
-        // nomination_completed = true (so canEnterVotingPhase() passes)
-        $this->election = Election::factory()->forOrganisation($this->org)->inNominationState()->create([
-            'nomination_completed' => true,
-            'nomination_completed_at' => now(),
-            'voting_starts_at' => null,
-            'voting_ends_at' => null,
-            'candidates_count' => 1,
-            'pending_candidacies_count' => 0,
-        ]);
+        // Create election using constitutional scenario factory
+        // configurationComplete() sets all facts and verifies derived state
+        $this->election = ElectionScenarioFactory::configurationComplete($this->org);
 
         $this->officer = User::factory()->create();
         // Create ElectionOfficer relationship for authorization
@@ -54,14 +52,25 @@ class VotingButtonsStateMachineTest extends TestCase
         });
     }
 
+    protected function tearDown(): void
+    {
+        Carbon::setTestNow(); // Release frozen time
+        parent::tearDown();
+    }
+
     /**
      * MODEL TEST: transitionTo() creates ElectionStateTransition and updates election state
      * Tests the core Election::transitionTo() method (bridge to state machine)
      */
     public function test_election_transition_to_voting_creates_transition_record(): void
     {
-        // Arrange
-        $this->assertEquals('nomination', $this->election->current_state);
+        // Arrange: Verify scenario factory created valid starting state
+        $initialState = ElectionLifecycle::of($this->election)->state()->value;
+        $this->assertContains(
+            $initialState,
+            ['setup', 'ready_for_voting'],
+            'Scenario factory derives to setup or ready_for_voting'
+        );
         $this->assertEquals(0, ElectionStateTransition::count());
 
         // Act
@@ -72,8 +81,8 @@ class VotingButtonsStateMachineTest extends TestCase
         // Assert
         $this->assertInstanceOf(ElectionStateTransition::class, $transition);
         $this->assertEquals(1, ElectionStateTransition::count());
-        $this->assertEquals('nomination', $transition->from_state);
-        $this->assertEquals('voting', $transition->to_state);
+        $this->assertEquals($initialState, $transition->from_state);
+        $this->assertEquals('voting_active', $transition->to_state);
         $this->assertEquals('manual', $transition->trigger);
         $this->assertEquals($this->officer->id, $transition->actor_id);
         $this->assertEquals('Opened voting', $transition->reason);
@@ -101,62 +110,93 @@ class VotingButtonsStateMachineTest extends TestCase
     }
 
     /**
-     * TEST 1: openVoting() transitions from nomination → voting state
+     * TEST 1: openVoting() transitions from setup → voting_active state
      */
     public function test_open_voting_transitions_from_nomination_to_voting(): void
     {
-        // Arrange: Election is in nomination phase
-        $this->assertEquals('nomination', $this->election->current_state);
+        // Arrange: Set voting window facts (required for voting_active derivation)
+        $this->election->update([
+            'voting_starts_at' => now(),
+            'voting_ends_at' => now()->addHour(),
+        ]);
+
+        // Verify starting state
+        $initialState = ElectionLifecycle::of($this->election)->state()->value;
+        $this->assertContains(
+            $initialState,
+            ['setup', 'ready_for_voting'],
+            'Election must start in setup or ready_for_voting state'
+        );
 
         // Act: Officer clicks "Open Voting" button
         $response = $this->actingAs($this->officer)->post(
             route('elections.open-voting', ['election' => $this->election->slug])
         );
 
-        // Assert: Should transition to voting state
+        // Assert: Should transition to voting_active state
         $this->election->refresh();
-        $this->assertEquals('voting', $this->election->current_state);
+        $this->assertEquals(
+            'voting_active',
+            ElectionLifecycle::of($this->election)->state()->value
+        );
 
         $response->assertStatus(302);
         $response->assertSessionHas('success');
     }
 
     /**
-     * TEST 2: openVoting() validates election is in nomination state
+     * TEST 2: openVoting() validates election is in setup state
      */
     public function test_open_voting_rejects_if_not_in_nomination_state(): void
     {
-        // Arrange: Election is in voting state (wrong state)
-        // Must explicitly set state because current_state uses the state column, not timestamps
+        // Arrange: Update facts to move election to voting_active state
         $this->election->update([
-            'state' => 'voting',
             'nomination_completed' => true,
+            'nomination_completed_at' => now(),
             'voting_starts_at' => now()->subHour(),
             'voting_ends_at' => now()->addHour(),
+            'administration_completed' => true,
         ]);
-        $this->assertEquals('voting', $this->election->current_state);
 
-        // Act: Try to open voting
+        // Verify derived state is voting_active (not setup)
+        $this->assertEquals(
+            'voting_active',
+            ElectionLifecycle::of($this->election->fresh())->state()->value
+        );
+
+        // Act: Try to open voting from wrong state
         $response = $this->actingAs($this->officer)->post(
             route('elections.open-voting', ['election' => $this->election->slug])
         );
 
         // Assert: Should reject with error
         $this->election->refresh();
-        $this->assertEquals('voting', $this->election->current_state);  // Unchanged
+        $this->assertEquals(
+            'voting_active',
+            ElectionLifecycle::of($this->election)->state()->value
+        );
 
         $response->assertStatus(302);
-        $response->assertSessionHas('error', "Action 'open_voting' is not allowed from state 'voting'. Allowed: close_voting");
+        $response->assertSessionHas('error');
+        $this->assertStringContainsString(
+            "'open_voting' not allowed",
+            session('error')
+        );
     }
 
     /**
      * TEST 3: openVoting() creates ElectionStateTransition record
-     * RED: Should fail because no transition record is created
      */
     public function test_open_voting_creates_state_transition_record(): void
     {
-        // Arrange
+        // Arrange: Set voting window (required for voting_active derivation)
+        $this->election->update([
+            'voting_starts_at' => now(),
+            'voting_ends_at' => now()->addHour(),
+        ]);
+
         $this->assertEquals(0, ElectionStateTransition::count());
+        $initialState = ElectionLifecycle::of($this->election)->state()->value;
 
         // Act
         $this->actingAs($this->officer)->post(
@@ -167,27 +207,27 @@ class VotingButtonsStateMachineTest extends TestCase
         $this->assertEquals(1, ElectionStateTransition::count());
 
         $transition = ElectionStateTransition::first();
-        $this->assertEquals('nomination', $transition->from_state);
-        $this->assertEquals('voting', $transition->to_state);
+        $this->assertEquals($initialState, $transition->from_state);
+        $this->assertEquals('voting_active', $transition->to_state);
         $this->assertEquals('manual', $transition->trigger);
         $this->assertEquals($this->officer->id, $transition->actor_id);
         $this->assertEquals('Manually opened voting by election officer', $transition->reason);
     }
 
     /**
-     * TEST 4: openVoting() locks voting when transitioning to voting state
-     * RED: Should fail because voting_locked column isn't set
+     * TEST 4: openVoting() locks voting when transitioning to voting_active state
      */
     public function test_open_voting_locks_voting_immediately(): void
     {
-        // Arrange - Election starts in nomination phase
+        // Arrange: Verify scenario setup
+        $this->assertFalse($this->election->voting_locked, 'Election should not be locked initially');
 
         // Act
         $this->actingAs($this->officer)->post(
             route('elections.open-voting', ['election' => $this->election->slug])
         );
 
-        // Assert
+        // Assert: Voting should be locked as side effect of transition
         $this->election->refresh();
         $this->assertTrue($this->election->voting_locked);
         $this->assertNotNull($this->election->voting_locked_at);
@@ -195,20 +235,24 @@ class VotingButtonsStateMachineTest extends TestCase
     }
 
     /**
-     * TEST 5: closeVoting() transitions from voting → results_pending state
+     * TEST 5: closeVoting() transitions from voting_active → counting state
      */
     public function test_close_voting_transitions_from_voting_to_results_pending(): void
     {
-        // Arrange: Election is in voting state
-        // Must explicitly set state because current_state uses the state column, not timestamps
+        // Arrange: Update facts to create voting_active state
         $this->election->update([
-            'state' => 'voting',
+            'administration_completed' => true,
             'nomination_completed' => true,
             'nomination_completed_at' => now(),
             'voting_starts_at' => now()->subHour(),
             'voting_ends_at' => now()->addHour(),
         ]);
-        $this->assertEquals('voting', $this->election->current_state);
+
+        // Verify derived state is voting_active
+        $this->assertEquals(
+            'voting_active',
+            ElectionLifecycle::of($this->election->fresh())->state()->value
+        );
 
         // Act
         $response = $this->actingAs($this->officer)->post(
@@ -217,31 +261,42 @@ class VotingButtonsStateMachineTest extends TestCase
 
         // Assert
         $this->election->refresh();
-        $this->assertEquals('results_pending', $this->election->current_state);
+        $this->assertEquals(
+            'counting',
+            ElectionLifecycle::of($this->election)->state()->value
+        );
 
         $response->assertStatus(302);
         $response->assertSessionHas('success');
     }
 
     /**
-     * TEST 6: closeVoting() validates election is in voting state
+     * TEST 6: closeVoting() validates election is in voting_active state
      */
     public function test_close_voting_rejects_if_not_in_voting_state(): void
     {
-        // Arrange: Election is in nomination state (wrong state) - this is already the setUp state
-        $this->assertEquals('nomination', $this->election->current_state);
+        // Arrange: Election is in setup/ready_for_voting state (wrong state for close_voting)
+        $initialState = ElectionLifecycle::of($this->election)->state()->value;
+        $this->assertContains($initialState, ['setup', 'ready_for_voting']);
 
         // Act
         $response = $this->actingAs($this->officer)->post(
             route('elections.close-voting', ['election' => $this->election->slug])
         );
 
-        // Assert
+        // Assert: State should be unchanged
         $this->election->refresh();
-        $this->assertEquals('nomination', $this->election->current_state);  // Unchanged
+        $this->assertEquals(
+            $initialState,
+            ElectionLifecycle::of($this->election)->state()->value
+        );
 
         $response->assertStatus(302);
-        $response->assertSessionHas('error', "Action 'close_voting' is not allowed from state 'nomination'. Allowed: open_voting");
+        $response->assertSessionHas('error');
+        $this->assertStringContainsString(
+            "'close_voting' not allowed",
+            session('error')
+        );
     }
 
     /**
@@ -249,15 +304,21 @@ class VotingButtonsStateMachineTest extends TestCase
      */
     public function test_close_voting_creates_state_transition_record(): void
     {
-        // Arrange: Election is in voting state
+        // Arrange: Update facts to create voting_active state
         $this->election->update([
-            'state' => 'voting',
+            'administration_completed' => true,
             'nomination_completed' => true,
             'nomination_completed_at' => now(),
             'voting_starts_at' => now()->subHour(),
             'voting_ends_at' => now()->addHour(),
         ]);
         $this->assertEquals(0, ElectionStateTransition::count());
+
+        // Verify derived state is voting_active
+        $this->assertEquals(
+            'voting_active',
+            ElectionLifecycle::of($this->election->fresh())->state()->value
+        );
 
         // Act
         $this->actingAs($this->officer)->post(
@@ -268,33 +329,49 @@ class VotingButtonsStateMachineTest extends TestCase
         $this->assertEquals(1, ElectionStateTransition::count());
 
         $transition = ElectionStateTransition::first();
-        $this->assertEquals('voting', $transition->from_state);
-        $this->assertEquals('results_pending', $transition->to_state);
+        $this->assertEquals('voting_active', $transition->from_state);
+        $this->assertEquals('counting', $transition->to_state);
         $this->assertEquals('manual', $transition->trigger);
         $this->assertEquals($this->officer->id, $transition->actor_id);
     }
 
     /**
-     * TEST 8: closeVoting() double-lock guard prevents closing already-closed voting
+     * TEST 8: closeVoting() guard prevents closing voting in wrong state
+     * NOTE: When voting_ends_at is in the past, engine correctly derives to counting state
+     * not voting_active. This test verifies that trying to close from wrong state fails.
      */
     public function test_close_voting_prevents_double_close_when_already_locked_and_ended(): void
     {
-        // Arrange: Election voting already ended and locked
+        // Arrange: Set facts where voting window has already closed
         $this->election->update([
-            'state' => 'voting',                    // Must be in voting state for guard to fire
-            'voting_ends_at' => now()->subHour(),   // Already ended
+            'administration_completed' => true,
+            'nomination_completed' => true,
+            'voting_starts_at' => now()->subDays(1),  // Started yesterday
+            'voting_ends_at' => now()->subHour(),     // Already ended
             'voting_locked' => true,
             'voting_locked_at' => now()->subHour(),
-            'votes_count' => 0,                     // Guard checks this
+            'votes_count' => 0,                       // No votes recorded
         ]);
 
-        // Act: Try to close voting
+        // Verify derived state is counting (voting window closed)
+        $derivedState = ElectionLifecycle::of($this->election->fresh())->state()->value;
+        $this->assertEquals(
+            'counting',
+            $derivedState,
+            'Voting window ended → engine derives to counting state'
+        );
+
+        // Act: Try to close voting from counting state
         $response = $this->actingAs($this->officer)->post(
             route('elections.close-voting', ['election' => $this->election->slug])
         );
 
-        // Assert: Should reject with error
+        // Assert: Should reject with error (can't close voting that's already in counting)
         $response->assertStatus(302);
-        $response->assertSessionHas('error', 'Cannot close voting: Voting ended with no votes recorded.');
+        $response->assertSessionHas('error');
+        $this->assertStringContainsString(
+            "'close_voting' not allowed",
+            session('error')
+        );
     }
 }

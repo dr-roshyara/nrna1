@@ -134,9 +134,7 @@ class ElectionActivationTest extends TestCase
         $this->actingAs($this->owner)
             ->withSession($this->orgSession())
             ->post(route('organisations.elections.store', $this->org->slug), [
-                'name'       => 'Special Election 2026',
-                'start_date' => now()->addDays(7)->toDateString(),
-                'end_date'   => now()->addDays(14)->toDateString(),
+                'name' => 'Special Election 2026',
             ]);
 
         Notification::assertSentTo($this->chief, ElectionReadyForActivation::class);
@@ -151,9 +149,7 @@ class ElectionActivationTest extends TestCase
         $this->actingAs($this->owner)
             ->withSession($this->orgSession())
             ->post(route('organisations.elections.store', $this->org->slug), [
-                'name'       => 'Special Election 2026',
-                'start_date' => now()->addDays(7)->toDateString(),
-                'end_date'   => now()->addDays(14)->toDateString(),
+                'name' => 'Special Election 2026',
             ]);
 
         Notification::assertSentTo($this->chief, ElectionReadyForActivation::class);
@@ -169,9 +165,7 @@ class ElectionActivationTest extends TestCase
         $this->actingAs($this->owner)
             ->withSession($this->orgSession())
             ->post(route('organisations.elections.store', $this->org->slug), [
-                'name'       => 'Special Election 2026',
-                'start_date' => now()->addDays(7)->toDateString(),
-                'end_date'   => now()->addDays(14)->toDateString(),
+                'name' => 'Special Election 2026',
             ]);
 
         Notification::assertSentTo($this->chief, ElectionReadyForActivation::class);

@@ -1035,23 +1035,46 @@ class Election extends Model
     /**
      * Can transition to a given state?
      * Validates both the transition path and business conditions
+     *
+     * @deprecated Compatibility shell. Authority is ElectionLifecycle.
+     * Use ElectionLifecycle::of($this)->canTransitionTo($action) instead.
      */
     public function canTransitionTo(string $toState): bool
     {
-        // Check if transition is valid according to state machine
-        if (!TransitionMatrix::canTransition($this->current_state, $toState)) {
+        // Delegate to ElectionConstitution via snapshot
+        // Check if any action allowed in the current state satisfies the business conditions
+        $currentState = \App\Domain\Election\Enum\ElectionLifecycleState::tryFrom($this->state ?? 'draft');
+        if (!$currentState) {
             return false;
         }
 
-        // Check business conditions for target state
-        return match ($toState) {
-            'administration' => $this->canEnterAdministrationPhase(),
-            'nomination' => $this->canEnterNominationPhase(),
-            'voting' => $this->canEnterVotingPhase(),
-            'results_pending' => $this->canEnterCountingPhase(),
-            'results' => $this->canEnterResultsPhase(),
-            default => false,
-        };
+        foreach (\App\Domain\Election\Constitution\ElectionConstitution::RULES as $action => $rules) {
+            if (!in_array($currentState->value, $rules['allowed_states'] ?? [])) {
+                continue;
+            }
+
+            // Check if ElectionLifecycle allows this action
+            if (!\App\Application\Election\Facades\ElectionLifecycle::of($this)->canTransitionTo($action)) {
+                continue;
+            }
+
+            // Check business conditions for target state
+            $isValid = match ($toState) {
+                'administration' => $this->canEnterAdministrationPhase(),
+                'setup' => true,
+                'ready_for_voting' => true,
+                'voting_active' => $this->canEnterVotingPhase(),
+                'counting' => $this->canEnterCountingPhase(),
+                'results_published' => $this->canEnterResultsPhase(),
+                default => false,
+            };
+
+            if ($isValid) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function isPendingApproval(): bool
@@ -1599,25 +1622,20 @@ class Election extends Model
 
                     // FIX 2: fromState captured INSIDE lock using fresh() to avoid race condition
                     $fromState = $freshElection->current_state;
+
+                    // ── TARGET STATE ────────────────────────────────────────────────────────
+                    // @deprecated: This mapping should eventually come from ElectionConstitution
+                    // For now, keep TransitionMatrix for state derivation until proper mapping is built
                     $toState = \App\Domain\Election\StateMachine\TransitionMatrix::getResultingState($transition->action);
 
-                    // ── 1. Validate: action allowed from current state ──────────────
-                    if (!\App\Domain\Election\StateMachine\TransitionMatrix::canPerformAction($fromState, $transition->action)) {
-                        throw new \App\Domain\Election\Exceptions\InvalidTransitionException(
-                            "Action '{$transition->action}' is not allowed from state '{$fromState}'. " .
-                            "Allowed: " . implode(', ', \App\Domain\Election\StateMachine\TransitionMatrix::getAllowedActions($fromState))
-                        );
-                    }
+                    // ── 1-2. Validate & Authorize: Delegate to ConstitutionalTransitionGuard ──
+                    // This guard replaces TransitionMatrix validation and authorization
+                    $guard = app(\App\Application\Election\Services\ConstitutionalTransitionGuard::class);
+                    $snapshot = \App\Application\Election\Facades\ElectionLifecycle::of($freshElection)->snapshot();
 
-                    // ── 2. Authorize: role must be allowed for this action ──────────
-                    // System transitions bypass permission check
+                    // For non-system transitions, assert the guard allows the action
                     if (!$transition->isSystemTriggered()) {
-                        $actorRole = $this->resolveActorRole($transition->actorId);
-                        if (!\App\Domain\Election\StateMachine\TransitionMatrix::actionRequiresRole($transition->action, $actorRole)) {
-                            throw new \DomainException(
-                                "Action '{$transition->action}' is not permitted for role '{$actorRole}'."
-                            );
-                        }
+                        $guard->assertAllowed($freshElection, $transition->action, $snapshot);
                     }
 
                     // ── 3. Guard: business rules ────────────────────────────────────
@@ -1770,11 +1788,20 @@ class Election extends Model
         }
 
         $actorRole = $this->resolveActorRole((string) $userId);
-        $stateActions = \App\Domain\Election\StateMachine\TransitionMatrix::getAllowedActions($this->state ?? '');
 
-        return array_values(array_filter($stateActions, fn($action) =>
-            \App\Domain\Election\StateMachine\TransitionMatrix::actionRequiresRole($action, $actorRole)
-        ));
+        // Delegate to ElectionConstitution instead of deprecated TransitionMatrix
+        // Get all rules and filter by: (1) action allowed in current state, (2) role allowed for action
+        $allowedActions = [];
+        foreach (\App\Domain\Election\Constitution\ElectionConstitution::RULES as $action => $rules) {
+            $currentState = \App\Domain\Election\Enum\ElectionLifecycleState::tryFrom($this->state ?? 'draft');
+            if ($currentState && in_array($currentState->value, $rules['allowed_states'] ?? [])) {
+                if (in_array($actorRole, $rules['allowed_roles'] ?? [])) {
+                    $allowedActions[] = $action;
+                }
+            }
+        }
+
+        return $allowedActions;
     }
 
     private function applySideEffectsForOpenVoting(?string $actorId, \Carbon\Carbon $currentTime): void
@@ -1895,7 +1922,8 @@ class Election extends Model
 
     public function getProgress(): array
     {
-        $states = \App\Domain\Election\StateMachine\TransitionMatrix::getAllStates();
+        // Delegate to ElectionLifecycleState enum instead of deprecated TransitionMatrix
+        $states = array_map(fn($case) => $case->value, \App\Domain\Election\Enum\ElectionLifecycleState::cases());
         $currentState = $this->state ?? 'draft';
         $currentIndex = (int) array_search($currentState, $states);
         $nextState = $states[$currentIndex + 1] ?? null;
