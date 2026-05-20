@@ -6,7 +6,7 @@ use App\Contexts\Elections\Application\Commands\AssignVoterCommand;
 use App\Contexts\Elections\Application\Handlers\AssignVoterHandler;
 use App\Contexts\Elections\Application\Commands\BulkAssignVotersCommand;
 use App\Contexts\Elections\Application\Handlers\BulkAssignVotersHandler;
-use App\Contexts\Elections\Domain\Enum\ElectionMode;
+use App\Domain\Election\Enum\ElectionMode;
 use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\Organisation;
@@ -99,7 +99,7 @@ class ElectionMembershipPersistenceTest extends TestCase
      */
     public function test_assign_voter_sets_assigned_at(): void
     {
-        $before = now();
+        $before = now()->subSecond();
         $handler = app(AssignVoterHandler::class);
         $handler->handle(new AssignVoterCommand(
             userId: $this->user->id,
@@ -108,12 +108,14 @@ class ElectionMembershipPersistenceTest extends TestCase
             mode: ElectionMode::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
-        $after = now();
+        $after = now()->addSecond();
 
-        $record = ElectionMembership::where('user_id', $this->user->id)
+        $record = ElectionMembership::withoutGlobalScopes()
+            ->where('user_id', $this->user->id)
             ->where('election_id', $this->election->id)
             ->first();
 
+        $this->assertNotNull($record);
         $this->assertNotNull($record->assigned_at);
         $this->assertTrue($record->assigned_at->isBetween($before, $after));
     }
@@ -136,7 +138,8 @@ class ElectionMembershipPersistenceTest extends TestCase
             assignedBy: $this->assignedBy->id,
         ));
 
-        $record = ElectionMembership::where('user_id', $this->user->id)
+        $record = ElectionMembership::withoutGlobalScopes()
+            ->where('user_id', $this->user->id)
             ->where('election_id', $this->election->id)
             ->first();
 
@@ -194,7 +197,8 @@ class ElectionMembershipPersistenceTest extends TestCase
             assignedBy: $this->assignedBy->id,
         ));
 
-        $membership = ElectionMembership::where('user_id', $this->user->id)
+        $membership = ElectionMembership::withoutGlobalScopes()
+            ->where('user_id', $this->user->id)
             ->where('election_id', $this->election->id)
             ->first();
 
@@ -218,7 +222,8 @@ class ElectionMembershipPersistenceTest extends TestCase
             assignedBy: $this->assignedBy->id,
         ));
 
-        $membership = ElectionMembership::where('user_id', $this->user->id)
+        $membership = ElectionMembership::withoutGlobalScopes()
+            ->where('user_id', $this->user->id)
             ->where('election_id', $this->election->id)
             ->first();
 
@@ -242,7 +247,8 @@ class ElectionMembershipPersistenceTest extends TestCase
             assignedBy: $this->assignedBy->id,
         ));
 
-        $membership = ElectionMembership::where('user_id', $this->user->id)
+        $membership = ElectionMembership::withoutGlobalScopes()
+            ->where('user_id', $this->user->id)
             ->where('election_id', $this->election->id)
             ->first();
 
@@ -276,7 +282,8 @@ class ElectionMembershipPersistenceTest extends TestCase
             assignedBy: $this->assignedBy->id,
         ));
 
-        $count = ElectionMembership::where('election_id', $this->election->id)->count();
+        $count = ElectionMembership::withoutGlobalScopes()
+            ->where('election_id', $this->election->id)->count();
         $this->assertEquals(2, $count);
     }
 
@@ -307,7 +314,8 @@ class ElectionMembershipPersistenceTest extends TestCase
             assignedBy: $this->assignedBy->id,
         ));
 
-        $records = ElectionMembership::where('election_id', $this->election->id)
+        $records = ElectionMembership::withoutGlobalScopes()
+            ->where('election_id', $this->election->id)
             ->orderBy('user_id')
             ->get();
 
@@ -332,7 +340,8 @@ class ElectionMembershipPersistenceTest extends TestCase
             assignedBy: $this->assignedBy->id,
         ));
 
-        $retrieved = ElectionMembership::where('user_id', $this->user->id)->first();
+        $retrieved = ElectionMembership::withoutGlobalScopes()
+            ->where('user_id', $this->user->id)->first();
 
         $this->assertNotNull($retrieved);
         $this->assertEquals('voter', $retrieved->role);

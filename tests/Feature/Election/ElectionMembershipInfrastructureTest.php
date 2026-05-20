@@ -2,6 +2,11 @@
 
 namespace Tests\Feature\Election;
 
+use App\Contexts\Elections\Application\Commands\AssignVoterCommand;
+use App\Contexts\Elections\Application\Commands\BulkAssignVotersCommand;
+use App\Contexts\Elections\Application\Handlers\AssignVoterHandler;
+use App\Contexts\Elections\Application\Handlers\BulkAssignVotersHandler;
+use App\Domain\Election\Enum\ElectionMode;
 use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\Organisation;
@@ -67,18 +72,21 @@ class ElectionMembershipInfrastructureTest extends TestCase
     /**
      * Test I.1.1: assignVoter invalidates voter_count cache
      *
-     * Validates: When membership is created, cache key for voter count is cleared
-     * Current implementation: Cache::forget("election.{id}.voter_count")
+     * Validates: When membership is created via handler, cache key for voter count is cleared
+     * Via Eloquent events: ElectionMembership::booted() calls Cache::forget()
      */
     public function test_assign_voter_invalidates_voter_count_cache(): void
     {
         Cache::spy();
 
-        ElectionMembership::assignVoter(
-            $this->user->id,
-            $this->election->id,
-            $this->assignedBy->id
-        );
+        $handler = app(AssignVoterHandler::class);
+        $handler->handle(new AssignVoterCommand(
+            userId: $this->user->id,
+            electionId: $this->election->id,
+            organisationId: $this->organisation->id,
+            mode: ElectionMode::fromOrganisation($this->organisation),
+            assignedBy: $this->assignedBy->id,
+        ));
 
         Cache::shouldHaveReceived('forget')
             ->with("election.{$this->election->id}.voter_count");
@@ -87,18 +95,21 @@ class ElectionMembershipInfrastructureTest extends TestCase
     /**
      * Test I.1.2: assignVoter invalidates voter_stats cache
      *
-     * Validates: When membership is created, cache key for voter stats is cleared
-     * Current implementation: Cache::forget("election.{id}.voter_stats")
+     * Validates: When membership is created via handler, cache key for voter stats is cleared
+     * Via Eloquent events: ElectionMembership::booted() calls Cache::forget()
      */
     public function test_assign_voter_invalidates_voter_stats_cache(): void
     {
         Cache::spy();
 
-        ElectionMembership::assignVoter(
-            $this->user->id,
-            $this->election->id,
-            $this->assignedBy->id
-        );
+        $handler = app(AssignVoterHandler::class);
+        $handler->handle(new AssignVoterCommand(
+            userId: $this->user->id,
+            electionId: $this->election->id,
+            organisationId: $this->organisation->id,
+            mode: ElectionMode::fromOrganisation($this->organisation),
+            assignedBy: $this->assignedBy->id,
+        ));
 
         Cache::shouldHaveReceived('forget')
             ->with("election.{$this->election->id}.voter_stats");
@@ -111,11 +122,14 @@ class ElectionMembershipInfrastructureTest extends TestCase
      */
     public function test_membership_update_invalidates_cache(): void
     {
-        $membership = ElectionMembership::assignVoter(
-            $this->user->id,
-            $this->election->id,
-            $this->assignedBy->id
-        );
+        $handler = app(AssignVoterHandler::class);
+        $membership = $handler->handle(new AssignVoterCommand(
+            userId: $this->user->id,
+            electionId: $this->election->id,
+            organisationId: $this->organisation->id,
+            mode: ElectionMode::fromOrganisation($this->organisation),
+            assignedBy: $this->assignedBy->id,
+        ));
 
         Cache::spy();
         $membership->update(['status' => 'inactive']);
@@ -133,11 +147,14 @@ class ElectionMembershipInfrastructureTest extends TestCase
      */
     public function test_membership_delete_invalidates_cache(): void
     {
-        $membership = ElectionMembership::assignVoter(
-            $this->user->id,
-            $this->election->id,
-            $this->assignedBy->id
-        );
+        $handler = app(AssignVoterHandler::class);
+        $membership = $handler->handle(new AssignVoterCommand(
+            userId: $this->user->id,
+            electionId: $this->election->id,
+            organisationId: $this->organisation->id,
+            mode: ElectionMode::fromOrganisation($this->organisation),
+            assignedBy: $this->assignedBy->id,
+        ));
 
         Cache::spy();
         $membership->delete();
@@ -152,7 +169,7 @@ class ElectionMembershipInfrastructureTest extends TestCase
      * Test I.1.5: bulkAssignVoters invalidates cache
      *
      * Validates: Bulk operation invalidates cache after inserts
-     * Note: bulk operation uses Cache::forget directly in the method
+     * Via handler: Each assignment triggers Eloquent save event
      */
     public function test_bulk_assign_voters_invalidates_cache(): void
     {
@@ -166,11 +183,14 @@ class ElectionMembershipInfrastructureTest extends TestCase
 
         Cache::spy();
 
-        ElectionMembership::bulkAssignVoters(
-            [$this->user->id, $user2->id],
-            $this->election->id,
-            $this->assignedBy->id
-        );
+        $handler = app(BulkAssignVotersHandler::class);
+        $handler->handle(new BulkAssignVotersCommand(
+            userIds: [$this->user->id, $user2->id],
+            electionId: $this->election->id,
+            organisationId: $this->organisation->id,
+            mode: ElectionMode::fromOrganisation($this->organisation),
+            assignedBy: $this->assignedBy->id,
+        ));
 
         Cache::shouldHaveReceived('forget')
             ->with("election.{$this->election->id}.voter_count");
@@ -190,11 +210,14 @@ class ElectionMembershipInfrastructureTest extends TestCase
 
         Cache::spy();
 
-        ElectionMembership::assignVoter(
-            $this->user->id,
-            $this->election->id,
-            $this->assignedBy->id
-        );
+        $handler = app(AssignVoterHandler::class);
+        $handler->handle(new AssignVoterCommand(
+            userId: $this->user->id,
+            electionId: $this->election->id,
+            organisationId: $this->organisation->id,
+            mode: ElectionMode::fromOrganisation($this->organisation),
+            assignedBy: $this->assignedBy->id,
+        ));
 
         Cache::shouldHaveReceived('forget')
             ->with("election.{$this->election->id}.voter_count");
@@ -209,11 +232,14 @@ class ElectionMembershipInfrastructureTest extends TestCase
     {
         Cache::spy();
 
-        ElectionMembership::assignVoter(
-            $this->user->id,
-            $this->election->id,
-            $this->assignedBy->id
-        );
+        $handler = app(AssignVoterHandler::class);
+        $handler->handle(new AssignVoterCommand(
+            userId: $this->user->id,
+            electionId: $this->election->id,
+            organisationId: $this->organisation->id,
+            mode: ElectionMode::fromOrganisation($this->organisation),
+            assignedBy: $this->assignedBy->id,
+        ));
 
         // Verify cache keys were cleared with correct election ID pattern
         Cache::shouldHaveReceived('forget')
@@ -237,11 +263,14 @@ class ElectionMembershipInfrastructureTest extends TestCase
     {
         Cache::spy();
 
-        ElectionMembership::assignVoter(
-            $this->user->id,
-            $this->election->id,
-            $this->assignedBy->id
-        );
+        $handler = app(AssignVoterHandler::class);
+        $handler->handle(new AssignVoterCommand(
+            userId: $this->user->id,
+            electionId: $this->election->id,
+            organisationId: $this->organisation->id,
+            mode: ElectionMode::fromOrganisation($this->organisation),
+            assignedBy: $this->assignedBy->id,
+        ));
 
         // Cache::forget called 3 times (voter_count, voter_stats, user cache)
         Cache::shouldHaveReceived('forget')->times(3);
@@ -262,11 +291,14 @@ class ElectionMembershipInfrastructureTest extends TestCase
 
         // Assign to first election
         Cache::spy();
-        ElectionMembership::assignVoter(
-            $this->user->id,
-            $this->election->id,
-            $this->assignedBy->id
-        );
+        $handler = app(AssignVoterHandler::class);
+        $handler->handle(new AssignVoterCommand(
+            userId: $this->user->id,
+            electionId: $this->election->id,
+            organisationId: $this->organisation->id,
+            mode: ElectionMode::fromOrganisation($this->organisation),
+            assignedBy: $this->assignedBy->id,
+        ));
 
         $firstElectionKey = "election.{$this->election->id}.voter_count";
         Cache::shouldHaveReceived('forget')->with($firstElectionKey);
