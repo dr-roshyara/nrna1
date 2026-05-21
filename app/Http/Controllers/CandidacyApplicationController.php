@@ -107,9 +107,9 @@ class CandidacyApplicationController extends Controller
         abort_if($election->type === 'demo', 404, 'Candidacy applications are not available for demo elections.');
 
         abort_unless(
-            $election->state === 'nomination',
+            $election->state === 'setup',
             403,
-            'Candidacy applications are only available during the nomination phase.'
+            'Candidacy applications are only available during the setup phase.'
         );
 
         $this->ensureOrganisationMember($organisation);
@@ -177,7 +177,7 @@ class CandidacyApplicationController extends Controller
             ->firstOrFail();
 
         abort_if($election->type === 'demo', 404);
-        abort_unless($election->state === 'nomination', 403);
+        abort_unless($election->state === 'setup', 403);
 
         abort_unless(
             $this->canAccessElection($organisation, $validated['election_id'], $user->id),
