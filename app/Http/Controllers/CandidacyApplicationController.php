@@ -36,7 +36,7 @@ class CandidacyApplicationController extends Controller
         $activeElections = Election::withoutGlobalScopes()
             ->where('organisation_id', $organisation->id)
             ->where('type', 'real')
-            ->where('state', 'nomination')
+            ->where('state', 'setup')
             ->with(['posts' => fn ($q) => $q->withoutGlobalScopes()->orderBy('position_order')])
             ->get()
             ->map(fn ($e) => [
@@ -55,7 +55,7 @@ class CandidacyApplicationController extends Controller
         $nonNominationElections = Election::withoutGlobalScopes()
             ->where('organisation_id', $organisation->id)
             ->where('type', 'real')
-            ->whereIn('state', ['administration', 'voting', 'results_pending', 'results'])
+            ->whereIn('state', ['voting_active', 'counting', 'results_published', 'archived'])
             ->get()
             ->map(fn ($e) => [
                 'name'  => $e->name,
