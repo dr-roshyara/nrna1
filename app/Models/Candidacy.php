@@ -45,13 +45,51 @@ class Candidacy extends Model
 
     protected static function booted(): void
     {
-        static::saved(function (Candidacy $candidacy) {
-            if ($candidacy->post) {
-                $electionId = $candidacy->post->election_id;
-                \Illuminate\Support\Facades\Cache::forget("election.{$electionId}.candidates_count");
-                \Illuminate\Support\Facades\Cache::forget("election.{$electionId}.pending_candidacies_count");
+        $syncCandidateCounts = function (Candidacy $candidacy) {
+            if (!$candidacy->post) {
+                return;
             }
-        });
+
+            $electionId = $candidacy->post->election_id;
+
+            // Clear cache
+            \Illuminate\Support\Facades\Cache::forget("election.{$electionId}.candidates_count");
+            \Illuminate\Support\Facades\Cache::forget("election.{$electionId}.pending_candidacies_count");
+
+            // Sync database columns
+            // Note: candidacies.election_id doesn't exist, must join posts to filter by election
+            $approvedCount = \DB::table('candidacies')
+                ->whereExists(function ($query) use ($electionId) {
+                    $query->selectRaw('1')
+                        ->from('posts')
+                        ->where('posts.election_id', $electionId)
+                        ->whereColumn('posts.id', 'candidacies.post_id');
+                })
+                ->where('status', 'approved')
+                ->whereNull('deleted_at')
+                ->count();
+
+            $pendingCount = \DB::table('candidacies')
+                ->whereExists(function ($query) use ($electionId) {
+                    $query->selectRaw('1')
+                        ->from('posts')
+                        ->where('posts.election_id', $electionId)
+                        ->whereColumn('posts.id', 'candidacies.post_id');
+                })
+                ->where('status', 'pending')
+                ->whereNull('deleted_at')
+                ->count();
+
+            \DB::table('elections')
+                ->where('id', $electionId)
+                ->update([
+                    'candidates_count' => $approvedCount,
+                    'pending_candidacies_count' => $pendingCount,
+                ]);
+        };
+
+        static::saved($syncCandidateCounts);
+        static::deleted($syncCandidateCounts);
     }
 
     /**
