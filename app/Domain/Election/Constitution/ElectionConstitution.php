@@ -26,30 +26,42 @@ final class ElectionConstitution
             'allowed_states' => ['draft'],
             'allowed_roles' => ['chief', 'deputy'],
             'preconditions' => ['timezone_set'],
+            'target_state' => 'submitted_for_approval',
             'description' => 'Submit election for platform approval (free plan auto-approves)',
         ],
         'approve' => [
             'allowed_states' => ['submitted_for_approval'],
             'allowed_roles' => ['platform_admin'],
             'preconditions' => ['capacity_eligibility'],
+            'target_state' => 'approved',
             'description' => 'Platform admin approves election (auto if free plan)',
         ],
         'reject' => [
             'allowed_states' => ['submitted_for_approval'],
             'allowed_roles' => ['platform_admin'],
             'preconditions' => [],
+            'target_state' => 'rejected',
             'description' => 'Platform admin rejects election approval with feedback',
+        ],
+        'auto_submit' => [
+            'allowed_states' => ['draft'],
+            'allowed_roles' => ['system'],
+            'preconditions' => ['capacity_eligibility'],
+            'target_state' => 'approved',
+            'description' => 'System auto-approves election (free plan ≤40 voters, skips manual review)',
         ],
         'begin_setup' => [
             'allowed_states' => ['approved'],
             'allowed_roles' => ['chief', 'deputy'],
             'preconditions' => [],
+            'target_state' => 'setup',
             'description' => 'Begin election setup (create posts, import voters)',
         ],
         'revise_and_resubmit' => [
             'allowed_states' => ['rejected'],
             'allowed_roles' => ['chief', 'deputy'],
             'preconditions' => [],
+            'target_state' => 'submitted_for_approval',
             'description' => 'Revise rejection feedback and resubmit for approval',
         ],
 
@@ -58,12 +70,14 @@ final class ElectionConstitution
             'allowed_states' => ['setup'],
             'allowed_roles' => ['chief', 'deputy'],
             'preconditions' => ['has_posts', 'has_voters', 'has_committee_members'],
+            'target_state' => 'setup',
             'description' => 'Complete voter import and committee setup',
         ],
         'complete_nomination' => [
             'allowed_states' => ['setup'],
             'allowed_roles' => ['chief', 'deputy'],
             'preconditions' => ['has_approved_candidates'],
+            'target_state' => 'setup',
             'description' => 'Complete candidate approval process',
         ],
 
@@ -72,12 +86,14 @@ final class ElectionConstitution
             'allowed_states' => ['setup', 'ready_for_voting'],
             'allowed_roles' => ['chief'],
             'preconditions' => ['voting_window_defined', 'timezone_set'],
+            'target_state' => 'voting_active',
             'description' => 'Open voting period (chief only)',
         ],
         'close_voting' => [
             'allowed_states' => ['voting_active'],
             'allowed_roles' => ['chief', 'deputy'],
             'preconditions' => [],
+            'target_state' => 'counting',
             'description' => 'Close voting period (begin counting)',
         ],
 
@@ -86,12 +102,14 @@ final class ElectionConstitution
             'allowed_states' => ['counting'],
             'allowed_roles' => ['chief'],
             'preconditions' => [],
+            'target_state' => 'results_published',
             'description' => 'Publish election results to members',
         ],
         'archive' => [
             'allowed_states' => ['results_published'],
             'allowed_roles' => ['chief', 'deputy'],
             'preconditions' => [],
+            'target_state' => 'archived',
             'description' => 'Archive election (final state)',
         ],
     ];
@@ -157,5 +175,30 @@ final class ElectionConstitution
         $rules = self::getRulesForAction($action);
 
         return $rules['preconditions'];
+    }
+
+    /**
+     * Get the resulting state after an action completes.
+     * This is the SSOT for what state an action produces.
+     *
+     * @param string $action The action name
+     * @return string The target state string (e.g., 'setup', 'voting_active')
+     * @throws \InvalidArgumentException If action is not defined
+     */
+    public static function getTargetStateForAction(string $action): string
+    {
+        $rules = self::getRulesForAction($action);
+        return $rules['target_state'];
+    }
+
+    /**
+     * Get all valid target states from the constitution.
+     * Used to identify which state column values are explicitly set by transitions.
+     *
+     * @return array List of all possible target state strings
+     */
+    public static function getValidTargetStates(): array
+    {
+        return array_unique(array_column(self::RULES, 'target_state'));
     }
 }

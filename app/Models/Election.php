@@ -18,7 +18,6 @@ use App\Models\Result;
 use App\Models\VoterSlug;
 use App\Traits\BelongsToTenant;
 use App\Domain\Election\StateMachine\ElectionStateMachine;
-use App\Domain\Election\StateMachine\TransitionMatrix;
 use App\Domain\Election\StateMachine\TransitionTrigger;
 use App\Domain\Election\Events\ElectionApproved;
 use App\Domain\Election\Events\AdministrationCompleted;
@@ -417,7 +416,7 @@ class Election extends Model
 
     public function scopePendingApproval($query)
     {
-        return $query->where('state', self::STATE_PENDING_APPROVAL);
+        return $query->where('state', 'submitted_for_approval');
     }
 
     /**
@@ -1079,12 +1078,12 @@ class Election extends Model
 
     public function isPendingApproval(): bool
     {
-        return $this->state === self::STATE_PENDING_APPROVAL;
+        return $this->state === 'submitted_for_approval';
     }
 
     public function wasRejected(): bool
     {
-        return $this->state === self::STATE_DRAFT && $this->rejected_at !== null;
+        return $this->state === 'rejected' && $this->rejected_at !== null;
     }
 
     /**
@@ -1190,7 +1189,8 @@ class Election extends Model
      */
     public function canExtendVoting(): bool
     {
-        if ($this->current_state !== 'voting') {
+        // Use SSOT engine to check if currently in voting_active state
+        if (\App\Application\Election\Facades\ElectionLifecycle::of($this)->state()->value !== 'voting_active') {
             return false;
         }
 
@@ -1229,41 +1229,67 @@ class Election extends Model
      */
     public function getStateInfoAttribute(): array
     {
-        $state = $this->current_state;
+        // Use SSOT engine for authoritative state
+        $derivedState = \App\Application\Election\Facades\ElectionLifecycle::of($this)->state()->value;
 
         $info = [
-            self::STATE_ADMINISTRATION => [
-                'name'        => 'Administration',
-                'description' => 'Setting up election, importing voters, managing committee',
+            'draft' => [
+                'name'        => 'Draft',
+                'description' => 'Election is being set up',
+                'color'       => 'slate',
+            ],
+            'submitted_for_approval' => [
+                'name'        => 'Pending Approval',
+                'description' => 'Awaiting admin approval',
+                'color'       => 'yellow',
+            ],
+            'approved' => [
+                'name'        => 'Approved',
+                'description' => 'Election approved and ready for setup',
                 'color'       => 'blue',
             ],
-            self::STATE_NOMINATION => [
-                'name'        => 'Nomination',
-                'description' => 'Candidates can apply and be approved',
-                'color'       => 'purple',
+            'rejected' => [
+                'name'        => 'Rejected',
+                'description' => 'Election was rejected',
+                'color'       => 'red',
             ],
-            self::STATE_VOTING => [
+            'setup' => [
+                'name'        => 'Setup',
+                'description' => 'Configuring administration and nomination phases',
+                'color'       => 'blue',
+            ],
+            'ready_for_voting' => [
+                'name'        => 'Ready for Voting',
+                'description' => 'Configuration complete, ready to open voting',
+                'color'       => 'cyan',
+            ],
+            'voting_active' => [
                 'name'        => 'Voting',
-                'description' => 'Voting is in progress',
+                'description' => 'Voting is currently in progress',
                 'color'       => 'green',
             ],
-            self::STATE_RESULTS_PENDING => [
+            'counting' => [
                 'name'        => 'Counting',
                 'description' => 'Voting closed, results being finalized',
                 'color'       => 'amber',
             ],
-            self::STATE_RESULTS => [
-                'name'        => 'Results',
-                'description' => 'Final results published',
+            'results_published' => [
+                'name'        => 'Results Published',
+                'description' => 'Final results have been published',
                 'color'       => 'orange',
+            ],
+            'archived' => [
+                'name'        => 'Archived',
+                'description' => 'Election is archived',
+                'color'       => 'gray',
             ],
         ];
 
         return [
-            'state'       => $state,
-            'name'        => $info[$state]['name'] ?? 'Unknown',
-            'description' => $info[$state]['description'] ?? '',
-            'color'       => $info[$state]['color'] ?? 'slate',
+            'state'       => $derivedState,
+            'name'        => $info[$derivedState]['name'] ?? 'Unknown',
+            'description' => $info[$derivedState]['description'] ?? '',
+            'color'       => $info[$derivedState]['color'] ?? 'slate',
         ];
     }
 
@@ -1624,9 +1650,8 @@ class Election extends Model
                     $fromState = $freshElection->current_state;
 
                     // ── TARGET STATE ────────────────────────────────────────────────────────
-                    // @deprecated: This mapping should eventually come from ElectionConstitution
-                    // For now, keep TransitionMatrix for state derivation until proper mapping is built
-                    $toState = \App\Domain\Election\StateMachine\TransitionMatrix::getResultingState($transition->action);
+                    // Use ElectionConstitution as SSOT for target state mapping
+                    $toState = \App\Domain\Election\Constitution\ElectionConstitution::getTargetStateForAction($transition->action);
 
                     // ── 1-2. Validate & Authorize: Delegate to ConstitutionalTransitionGuard ──
                     // This guard replaces TransitionMatrix validation and authorization
@@ -1659,6 +1684,7 @@ class Election extends Model
 
                     // ── 6. Side effects (no state changes inside these) ─────────────
                     match ($transition->action) {
+                        'begin_setup'  => $this->applySideEffectsForBeginSetup($currentTime),
                         'open_voting'  => $this->applySideEffectsForOpenVoting($transition->actorId, $currentTime),
                         'lock_voting'  => $this->applySideEffectsForLockVoting($currentTime),
                         'close_voting' => $this->applySideEffectsForCloseVoting($currentTime),
@@ -1789,12 +1815,14 @@ class Election extends Model
 
         $actorRole = $this->resolveActorRole((string) $userId);
 
+        // Use SSOT ElectionLifecycle engine for derived state, not stale state column
+        $currentState = \App\Application\Election\Facades\ElectionLifecycle::of($this)->state();
+
         // Delegate to ElectionConstitution instead of deprecated TransitionMatrix
         // Get all rules and filter by: (1) action allowed in current state, (2) role allowed for action
         $allowedActions = [];
         foreach (\App\Domain\Election\Constitution\ElectionConstitution::RULES as $action => $rules) {
-            $currentState = \App\Domain\Election\Enum\ElectionLifecycleState::tryFrom($this->state ?? 'draft');
-            if ($currentState && in_array($currentState->value, $rules['allowed_states'] ?? [])) {
+            if (in_array($currentState->value, $rules['allowed_states'] ?? [])) {
                 if (in_array($actorRole, $rules['allowed_roles'] ?? [])) {
                     $allowedActions[] = $action;
                 }
@@ -1806,15 +1834,22 @@ class Election extends Model
 
     private function applySideEffectsForOpenVoting(?string $actorId, \Carbon\Carbon $currentTime): void
     {
+        // Debug: Log the values being set
+        \Illuminate\Support\Facades\Log::info('applySideEffectsForOpenVoting', [
+            'election_id' => $this->id,
+            'currentTime' => $currentTime->toIso8601String(),
+            'currentTime + 4 days' => $currentTime->copy()->addDays(4)->toIso8601String(),
+        ]);
+
         $updateData = [
             // NO 'state' here — state is set by transitionTo()
-            'status' => 'active',
+            // NO deprecated 'status' column — use SSOT engine for state derivation
             'nomination_completed' => true,
             'nomination_completed_at' => $currentTime,
             // Always activate voting window to start NOW when opening voting
             // This ensures engine derives VotingActive state (window is open)
             'voting_starts_at' => $currentTime,
-            'voting_ends_at' => $currentTime->addDays(4),
+            'voting_ends_at' => $currentTime->copy()->addDays(4),
             // Lock voting as part of opening voting
             'voting_locked' => true,
             'voting_locked_at' => $currentTime,
@@ -1853,6 +1888,19 @@ class Election extends Model
                 'voting_ends_at' => $currentTime,
                 'voting_locked' => true,
                 'voting_locked_at' => $currentTime,
+            ]);
+    }
+
+    private function applySideEffectsForBeginSetup(\Carbon\Carbon $currentTime): void
+    {
+        // Set the business fact the lifecycle engine reads to derive 'setup' state.
+        // administration_completed=true signals that setup phase has been formally opened.
+        // This replaces the old derived state from the 'approved' workflow.
+        \Illuminate\Support\Facades\DB::table('elections')
+            ->where('id', $this->id)
+            ->update([
+                'administration_completed'    => true,
+                'administration_completed_at' => $currentTime,
             ]);
     }
 
@@ -1924,13 +1972,33 @@ class Election extends Model
 
     public function getProgress(): array
     {
-        // Delegate to ElectionLifecycleState enum instead of deprecated TransitionMatrix
-        $states = array_map(fn($case) => $case->value, \App\Domain\Election\Enum\ElectionLifecycleState::cases());
-        $currentState = $this->state ?? 'draft';
-        $currentIndex = (int) array_search($currentState, $states);
-        $nextState = $states[$currentIndex + 1] ?? null;
+        // SSOT: derive current state from engine, not stale column
+        $currentState = \App\Application\Election\Facades\ElectionLifecycle::of($this)->state()->value;
 
-        return collect($states)->map(function (string $state, int $index) use ($currentState, $currentIndex, $nextState) {
+        // Main linear workflow — rejected is a branch terminal state, not a sequential step.
+        // Including it in the linear path would mark it as "completed" for any election in
+        // setup or later, even though it never went through the rejected branch.
+        $mainPath = [
+            'draft',
+            'submitted_for_approval',
+            'approved',
+            'setup',
+            'ready_for_voting',
+            'voting_active',
+            'counting',
+            'results_published',
+            'archived',
+        ];
+
+        // For rejected elections: show the truncated path ending at rejection
+        if ($currentState === 'rejected') {
+            $mainPath = ['draft', 'submitted_for_approval', 'approved', 'rejected'];
+        }
+
+        $currentIndex = (int) array_search($currentState, $mainPath);
+        $nextState = $mainPath[$currentIndex + 1] ?? null;
+
+        return collect($mainPath)->map(function (string $state, int $index) use ($currentState, $currentIndex, $nextState) {
             if ($state === $currentState) {
                 return $this->progressEntry($state, 'current');
             }
@@ -1967,12 +2035,16 @@ class Election extends Model
     {
         return match ($state) {
             'draft' => 'Draft',
-            'pending_approval' => 'Pending Approval',
-            'administration' => 'Administration',
-            'nomination' => 'Nomination',
-            'voting' => 'Voting',
-            'results_pending' => 'Results Pending',
-            'results' => 'Results',
+            'submitted_for_approval' => 'Pending Approval',
+            'approved' => 'Approved',
+            'rejected' => 'Rejected',
+            'setup' => 'Setup',
+            'ready_for_voting' => 'Ready for Voting',
+            'voting_active' => 'Voting Active',
+            'counting' => 'Counting',
+            'results_published' => 'Results Published',
+            'archived' => 'Archived',
+            // Fallback for any unmapped states
             default => ucfirst(str_replace('_', ' ', $state)),
         };
     }
@@ -1980,8 +2052,8 @@ class Election extends Model
     private function getBlockedReasonForState(string $state): ?string
     {
         return match ($state) {
-            'nomination' => $this->whyCannotCompleteAdministration(),
-            'voting'     => $this->whyCannotOpenVoting(),
+            'setup' => $this->whyCannotCompleteAdministration(),
+            'voting_active'     => $this->whyCannotOpenVoting(),
             default      => null,
         };
     }

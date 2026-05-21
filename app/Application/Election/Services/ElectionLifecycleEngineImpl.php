@@ -6,6 +6,7 @@ use App\Domain\Election\Enum\ElectionLifecycleState;
 use App\Domain\Election\Services\ElectionLifecycleEngine;
 use App\Domain\Election\ValueObjects\ElectionLifecycleSnapshot;
 use App\Models\Election;
+use App\Services\ElectionClockService;
 use Carbon\Carbon;
 
 /**
@@ -44,6 +45,10 @@ final class ElectionLifecycleEngineImpl implements ElectionLifecycleEngine
 
     public function getState(Election $election): ElectionLifecycleState
     {
+        // CRITICAL: Derive state ONLY from business facts, never from persisted state column.
+        // The state column is a compatibility marker and audit record, not truth.
+        // Truth is in timestamps and flags: administration_completed, approved_at, voting_ends_at, results_published_at
+
         // 1. Terminal: Results published?
         if ($election->results_published_at !== null) {
             return ElectionLifecycleState::ResultsPublished;
@@ -91,15 +96,7 @@ final class ElectionLifecycleEngineImpl implements ElectionLifecycleEngine
 
     private function isVotingWindowOpenNow(Election $election): bool
     {
-        $now = Carbon::now();
-        $votingStartsAt = $election->voting_starts_at;
-        $votingEndsAt = $election->voting_ends_at;
-
-        if ($votingStartsAt === null || $votingEndsAt === null) {
-            return false;
-        }
-
-        return $now->greaterThanOrEqualTo($votingStartsAt) && $now->lessThan($votingEndsAt);
+        return ElectionClockService::isVotingOpen($election);
     }
 
     private function hasVotingEnded(Election $election): bool
@@ -213,6 +210,7 @@ final class ElectionLifecycleEngineImpl implements ElectionLifecycleEngine
         return match ($state) {
             ElectionLifecycleState::Draft => 'Election setup not started',
             ElectionLifecycleState::SubmittedForApproval => 'Awaiting platform approval',
+            ElectionLifecycleState::Approved => 'Ready to begin setup - click "Begin Setup"',
             ElectionLifecycleState::Rejected => 'Approval rejected - address feedback and resubmit',
             ElectionLifecycleState::ReadyForVoting => 'Awaiting voting window',
             ElectionLifecycleState::Counting => 'Voting period has ended',
@@ -229,9 +227,9 @@ final class ElectionLifecycleEngineImpl implements ElectionLifecycleEngine
             ElectionLifecycleState::SubmittedForApproval => [],  // Awaiting admin approval
             ElectionLifecycleState::Approved => ['begin_setup'],
             ElectionLifecycleState::Rejected => ['revise_and_resubmit'],
-            ElectionLifecycleState::Setup => ['complete_administration', 'complete_nomination'],
+            ElectionLifecycleState::Setup => ['complete_administration', 'complete_nomination', 'open_voting'],
             ElectionLifecycleState::ReadyForVoting => ['open_voting'],
-            ElectionLifecycleState::VotingActive => ['close_voting', 'pause_voting'],
+            ElectionLifecycleState::VotingActive => ['close_voting'],
             ElectionLifecycleState::Counting => ['publish_results'],
             ElectionLifecycleState::ResultsPublished => ['archive'],
             ElectionLifecycleState::Archived => [],

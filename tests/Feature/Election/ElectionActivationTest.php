@@ -2,6 +2,10 @@
 
 namespace Tests\Feature\Election;
 
+use App\Application\Election\Services\ElectionLifecycleEngineImpl;
+use App\Domain\Election\Constitution\ElectionConstitution;
+use App\Domain\Election\Enum\ElectionLifecycleState;
+use App\Domain\Election\StateMachine\Transition;
 use App\Models\Election;
 use App\Models\ElectionOfficer;
 use App\Models\Organisation;
@@ -121,6 +125,70 @@ class ElectionActivationTest extends TestCase
             ->post(route('elections.activate', $this->election->slug));
 
         $response->assertSessionHas('error', 'Election cannot be activated in its current state.');
+    }
+
+    // =========================================================================
+    // Side-Effect Tests (Phase 3.2 Constitutional Hardening)
+    // =========================================================================
+
+    /**
+     * Test: begin_setup side effects set the business facts the engine needs.
+     *
+     * This test verifies that when 'begin_setup' transition is executed,
+     * the business fact 'administration_completed' is set to true.
+     * The lifecycle engine reads this fact to derive 'setup' state.
+     *
+     * RED phase: This will fail because begin_setup has no side effects yet.
+     * After implementing applySideEffectsForBeginSetup(), this test will pass.
+     */
+    public function test_begin_setup_sets_administration_completed_to_true(): void
+    {
+        $election = Election::factory()
+            ->forOrganisation($this->org)
+            ->create([
+                'state' => 'approved',
+                'approved_at' => now()->subDay(),
+                'administration_completed' => false,
+            ]);
+
+        // Assign chief as ElectionOfficer on this election
+        ElectionOfficer::create([
+            'election_id'     => $election->id,
+            'organisation_id' => $this->org->id,
+            'user_id'         => $this->chief->id,
+            'role'            => 'chief',
+            'status'          => 'active',
+            'appointed_by'    => $this->chief->id,
+            'appointed_at'    => now(),
+            'accepted_at'     => now(),
+        ]);
+
+        // Set tenant context so transition guard can validate chief's role
+        $this->actingAs($this->chief);
+        \App\Services\TenantContext::set($this->org->id);
+
+        // Execute begin_setup transition
+        $election->transitionTo(
+            Transition::manual('begin_setup', $this->chief->id, 'Starting setup')
+        );
+
+        // Refresh from database to get latest state
+        $election->refresh();
+
+        // ASSERTION 1: The business fact must be updated
+        $this->assertTrue(
+            $election->administration_completed,
+            'begin_setup side effects must set administration_completed=true'
+        );
+
+        // ASSERTION 2: The engine must derive 'setup' from the fact
+        $engine = app(ElectionLifecycleEngineImpl::class);
+        $derivedState = $engine->getState($election);
+        $this->assertEquals(
+            ElectionLifecycleState::Setup,
+            $derivedState,
+            'Engine must derive Setup state from administration_completed=true, not from state column'
+        );
     }
 
     // =========================================================================
