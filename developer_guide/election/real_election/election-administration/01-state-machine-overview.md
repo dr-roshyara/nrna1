@@ -68,7 +68,7 @@ The election now flows through this canonical state machine:
 
 4. SETUP
    └─ administration + nomination phases
-   ├─ action: complete_administration (if has_posts, has_voters, has_committee_members)
+   ├─ action: complete_administration (if has_posts, has_voters, has_chief)
    └─ action: complete_nomination (if has_approved_candidates)
 
 5. READY_FOR_VOTING
@@ -94,6 +94,25 @@ The election now flows through this canonical state machine:
 ---
 
 ## 🔑 Key Concepts
+
+### Preconditions Explained
+
+Each state transition has **preconditions** that must be satisfied before the action is allowed:
+
+| Precondition | Meaning | Where Checked |
+|---|---|---|
+| `has_posts` | At least one post (position) exists in the election | `$election->posts()->exists()` |
+| `has_voters` | At least one voter is registered/imported | `$election->voters()->exists()` |
+| `has_chief` | At least one active chief officer is assigned | ElectionOfficer with `role='chief'` and `status='active'` |
+| `has_approved_candidates` | At least one candidate is approved for voting | Candidacy with `status='approved'` |
+| `voting_window_defined` | Both voting start and end times are set | `voting_starts_at` and `voting_ends_at` not null |
+| `timezone_set` | Election timezone is configured | `timezone` field not empty |
+| `capacity_eligibility` | Election meets free/paid plan requirements | ≤40 voters = free (auto-approve), >40 = requires payment |
+
+**Key Change (Phase 3.4+):**
+- `complete_administration` now requires only **one active chief** (`has_chief`)
+- Previously required multiple committee members (`has_committee_members`)
+- This enables election-only mode where minimal committee structure is needed
 
 ### Single Source of Truth (SSOT)
 

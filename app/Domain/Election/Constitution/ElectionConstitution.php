@@ -69,7 +69,7 @@ final class ElectionConstitution
         'complete_administration' => [
             'allowed_states' => ['setup'],
             'allowed_roles' => ['chief', 'deputy'],
-            'preconditions' => ['has_posts', 'has_voters', 'has_committee_members'],
+            'preconditions' => ['has_posts', 'has_voters', 'has_chief'],
             'target_state' => 'setup',
             'description' => 'Complete voter import and committee setup',
         ],

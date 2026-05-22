@@ -1196,8 +1196,8 @@ const submitPhaseCompletion = () => {
   }
 
   const routes = {
-    administration: 'organisations.elections.complete-administration',
-    nomination: 'organisations.elections.complete-nomination',
+    setup: 'organisations.elections.complete-administration',
+    ready_for_voting: 'organisations.elections.complete-nomination',
   }
 
   const routeName = routes[selectedPhase.value]

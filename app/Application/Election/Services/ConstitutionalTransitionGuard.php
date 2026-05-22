@@ -179,8 +179,9 @@ final class ConstitutionalTransitionGuard
         return match ($condition) {
             'has_posts' => $election->posts()->exists(),
             'has_voters' => $election->voters()->exists(),
-            'has_committee_members' => $election->memberships()
-                ->whereIn('role', ['chief', 'deputy'])
+            'has_chief' => \App\Models\ElectionOfficer::where('election_id', $election->id)
+                ->where('role', 'chief')
+                ->where('status', 'active')
                 ->exists(),
             'has_approved_candidates' => $election->candidacies()
                 ->where('status', 'approved')

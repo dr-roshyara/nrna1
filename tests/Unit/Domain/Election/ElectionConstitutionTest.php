@@ -104,7 +104,7 @@ class ElectionConstitutionTest extends TestCase
         $this->assertNotEmpty($preconditions);
         $this->assertContains('has_posts', $preconditions);
         $this->assertContains('has_voters', $preconditions);
-        $this->assertContains('has_committee_members', $preconditions);
+        $this->assertContains('has_chief', $preconditions);
     }
 
     /**
