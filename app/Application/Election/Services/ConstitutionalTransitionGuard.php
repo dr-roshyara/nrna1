@@ -178,7 +178,8 @@ final class ConstitutionalTransitionGuard
     {
         return match ($condition) {
             'has_posts' => $election->posts()->withoutGlobalScopes()->exists(),
-            'has_voters' => $election->voters()->withoutGlobalScopes()->exists(),
+            'has_voters' => $election->voters()->withoutGlobalScopes()->exists()
+                || $election->memberships()->where('role', 'voter')->where('status', 'active')->exists(),
             'has_chief' => \App\Models\ElectionOfficer::where('election_id', $election->id)
                 ->where('role', 'chief')
                 ->where('status', 'active')
