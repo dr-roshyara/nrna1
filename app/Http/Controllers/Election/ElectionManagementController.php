@@ -98,7 +98,10 @@ class ElectionManagementController extends Controller
      */
     public function store(Request $request, Organisation $organisation): RedirectResponse
     {
+        Log::info('ElectionController::store() called', ['org_id' => $organisation->id]);
+
         $this->authorize('create', [Election::class, $organisation]);
+        Log::info('Authorization passed', ['org_id' => $organisation->id]);
 
         $validated = $request->validate([
             'name'                          => ['required', 'string', 'max:255',
@@ -126,6 +129,8 @@ class ElectionManagementController extends Controller
             $endDate = Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_ends_at']);
         }
 
+        Log::info('About to create election', ['name' => $validated['name']]);
+
         $election = Election::create([
             'id'              => (string) Str::uuid(),
             'organisation_id' => $organisation->id,
@@ -148,17 +153,27 @@ class ElectionManagementController extends Controller
             'auto_transition_grace_days'     => 7,
         ]);
 
-        // Notify all active chiefs of this organisation
-        $activeChiefs = ElectionOfficer::with('user')
-            ->where('organisation_id', $organisation->id)
-            ->where('role', 'chief')
-            ->where('status', 'active')
-            ->get()
-            ->pluck('user')
-            ->filter();
+        Log::info('Election created successfully', ['election_id' => $election->id, 'state' => $election->state]);
 
-        if ($activeChiefs->isNotEmpty()) {
-            Notification::send($activeChiefs, new ElectionReadyForActivation($election));
+        // Notify all active chiefs of this organisation
+        try {
+            $activeChiefs = ElectionOfficer::with('user')
+                ->where('organisation_id', $organisation->id)
+                ->where('role', 'chief')
+                ->where('status', 'active')
+                ->get()
+                ->pluck('user')
+                ->filter();
+
+            if ($activeChiefs->isNotEmpty()) {
+                Notification::send($activeChiefs, new ElectionReadyForActivation($election));
+            }
+        } catch (\Exception $e) {
+            Log::warning('Failed to notify chiefs of new election', [
+                'election_id' => $election->id,
+                'organisation_id' => $organisation->id,
+                'error' => $e->getMessage(),
+            ]);
         }
 
         return redirect()->route('organisations.show', $organisation->slug)
