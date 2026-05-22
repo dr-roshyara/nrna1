@@ -396,6 +396,73 @@ Implementation plans are stored in `./claude/plans/` with datetime-stamped filen
 
 ---
 
+## 🗄️ **Database Testing Best Practices**
+
+### **CRITICAL: PHPUnit & Database Management**
+
+**❌ NEVER do this:**
+```bash
+php artisan migrate:fresh              # Destroys development database
+php artisan migrate:refresh            # Destroys development database
+php artisan test --seed                # Can corrupt development data
+```
+
+**✅ ALWAYS do this:**
+```bash
+php artisan test                       # Uses RefreshDatabase trait (safe)
+php artisan test --env=testing         # Explicit testing environment
+```
+
+### **How RefreshDatabase Works**
+
+The `RefreshDatabase` trait (in PHPUnit tests) automatically:
+1. Wraps each test in a database transaction
+2. Rolls back after test completes
+3. **Does NOT affect development database**
+4. Handles all database state automatically
+
+**Example (correct):**
+```php
+class ElectionCreationTest extends TestCase {
+    use RefreshDatabase;  // ← This handles database state
+    
+    public function test_can_create_election() {
+        // Test runs in isolated transaction
+        // Database auto-rolls back after test
+    }
+}
+```
+
+### **Rule: Development vs Testing**
+
+| Action | Development DB | Testing DB | Command |
+|--------|---|---|---|
+| Run migrations | ❌ Never | ✅ Automatic | `php artisan test` |
+| Fresh database | ❌ Never | ✅ Use RefreshDatabase | `use RefreshDatabase;` |
+| Run seeds | ❌ Never | ✅ In test setup | `Seed::run()` in test |
+| Manual reset | ❌ Never | ✅ If needed | `php artisan migrate:refresh --env=testing` |
+
+### **If a Test Needs Special Setup**
+
+Do this **inside** the test class, not before:
+```php
+class SomeTest extends TestCase {
+    use RefreshDatabase;
+    
+    protected function setUp(): void {
+        parent::setUp();
+        // Test-specific setup here
+        // Database transaction wraps this
+    }
+}
+```
+
+### **One More Rule**
+
+**User's development database is sacred.** Never run destructive commands against it. When in doubt, check with the user or run against testing environment explicitly.
+
+---
+
 ## 📝 **Project Mantra**
 
 > *"Vote with confidence, audit with certainty, remain completely anonymous."*
