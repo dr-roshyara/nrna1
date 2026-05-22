@@ -147,9 +147,25 @@ class VotingButtonsStateMachineTest extends TestCase
 
         // Assert: Should transition to voting_active state
         $this->election->refresh();
+
+        // Debug: Check what values are in the database
+        $derivedState = ElectionLifecycle::of($this->election)->state()->value;
+
+        if ($derivedState !== 'voting_active') {
+            $startsAt = $this->election->voting_starts_at ? $this->election->voting_starts_at->toIso8601String() : 'null';
+            $endsAt = $this->election->voting_ends_at ? $this->election->voting_ends_at->toIso8601String() : 'null';
+            $state = $this->election->state;
+            $this->fail(
+                "Expected state 'voting_active' but got '{$derivedState}'. " .
+                "Election data: state column='{$state}', voting_starts_at={$startsAt}, " .
+                "voting_ends_at={$endsAt}, now()=" . now()->toIso8601String() .
+                ". Candidates count=" . $this->election->candidates_count . ", Posts count=" . $this->election->posts_count
+            );
+        }
+
         $this->assertEquals(
             'voting_active',
-            ElectionLifecycle::of($this->election)->state()->value
+            $derivedState
         );
     }
 

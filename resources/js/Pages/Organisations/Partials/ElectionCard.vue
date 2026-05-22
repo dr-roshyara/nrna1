@@ -22,22 +22,6 @@
 
     <!-- Actions -->
     <div class="px-5 py-4 flex items-center gap-2 mt-auto flex-wrap">
-      <!-- Activate — chief/deputy only, planned elections -->
-      <ActionButton
-        v-if="canActivate"
-        variant="warning"
-        size="sm"
-        :loading="activatingId === election.slug"
-        :disabled="activatingId === election.slug"
-        class="flex-1 sm:flex-none"
-        @click="$emit('activate', election.slug)"
-      >
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-        </svg>
-        {{ activatingId === election.id ? 'Activating…' : 'Activate' }}
-      </ActionButton>
-
       <!-- Manage — chief/deputy/admin/owner -->
       <a
         v-if="canManage && !isReadonly"
@@ -65,17 +49,12 @@
 
 <script setup>
 import StatusBadge from '@/Components/StatusBadge.vue'
-import ActionButton from '@/Components/ActionButton.vue'
 
 defineProps({
-  election:    { type: Object, required: true },
-  activatingId: { type: [Number, String, null], default: null },
-  canActivate: { type: Boolean, default: false },
-  canManage:   { type: Boolean, default: false },
-  isReadonly:  { type: Boolean, default: false },
+  election:   { type: Object, required: true },
+  canManage:  { type: Boolean, default: false },
+  isReadonly: { type: Boolean, default: false },
 })
-
-defineEmits(['activate'])
 
 const formatDate = (dateStr) => dateStr ? dateStr.slice(0, 10) : '—'
 </script>

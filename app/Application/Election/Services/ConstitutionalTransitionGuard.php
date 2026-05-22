@@ -83,21 +83,56 @@ final class ConstitutionalTransitionGuard
     /**
      * Check if authenticated user has ANY of the required roles.
      *
+     * Special case: 'system' role for automatic actions
+     * System actions (e.g., auto_submit) are triggered by the system, not a user,
+     * so Auth::user() is null. These should be allowed when 'system' is the required role.
+     *
      * @param Election $election The election (scopes tenant context)
-     * @param array $requiredRoles Role names like ['chief', 'deputy']
-     * @return bool True if user has at least one required role
+     * @param array $requiredRoles Role names like ['chief', 'deputy', 'system']
+     * @return bool True if user has at least one required role (or if 'system' is required and no user)
      */
     private function userHasAnyRole(Election $election, array $requiredRoles): bool
     {
+        // Special case: 'system' role for automatic transitions
+        // If 'system' is the ONLY required role and no user is authenticated,
+        // allow it (system-triggered action like auto_submit)
+        if (in_array('system', $requiredRoles, true)) {
+            // If 'system' is the only role required, allow without authentication
+            if (count($requiredRoles) === 1) {
+                return true;
+            }
+            // If multiple roles including 'system', we're still checking non-system roles
+            // Remove 'system' and check if user has any of the remaining roles
+            $userRoles = array_diff($requiredRoles, ['system']);
+            if (empty($userRoles)) {
+                return true;  // Only 'system' was required
+            }
+            $requiredRoles = $userRoles;  // Check user roles without 'system'
+        }
+
+        // Normal user role checking
         $user = Auth::user();
         if (!$user) {
             return false;
         }
 
         // Check if user is a committee member with one of the required roles
-        // This checks the membership context for committee roles
+        // First check Spatie permission roles (global roles)
         foreach ($requiredRoles as $role) {
             if ($user->hasRole($role)) {
+                return true;
+            }
+        }
+
+        // Also check ElectionOfficer roles (election-specific roles for chief, deputy)
+        foreach ($requiredRoles as $role) {
+            $hasElectionRole = \App\Models\ElectionOfficer::where('election_id', $election->id)
+                ->where('user_id', $user->id)
+                ->where('role', $role)
+                ->where('status', 'active')
+                ->exists();
+
+            if ($hasElectionRole) {
                 return true;
             }
         }
@@ -143,7 +178,7 @@ final class ConstitutionalTransitionGuard
     {
         return match ($condition) {
             'has_posts' => $election->posts()->exists(),
-            'has_voters' => $election->memberships()->exists(),
+            'has_voters' => $election->voters()->exists(),
             'has_committee_members' => $election->memberships()
                 ->whereIn('role', ['chief', 'deputy'])
                 ->exists(),

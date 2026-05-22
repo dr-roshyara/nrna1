@@ -214,6 +214,16 @@ final class ElectionLifecycle
     }
 
     /**
+     * Check if the election is currently active (in voting phase and not yet concluded).
+     *
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return $this->snapshot->state->value === 'voting_active';
+    }
+
+    /**
      * Get the reason this election is blocked from any action.
      *
      * Returns null if election is not blocked.

@@ -143,4 +143,22 @@ class Post extends Model
                     ]);
     }
 
+    protected static function booted(): void
+    {
+        $syncPostsCount = function (self $post) {
+            // Update the denormalized posts_count column when posts change
+            $count = \DB::table('posts')
+                ->where('election_id', $post->election_id)
+                ->whereNull('deleted_at')
+                ->count();
+
+            \DB::table('elections')
+                ->where('id', $post->election_id)
+                ->update(['posts_count' => $count]);
+        };
+
+        static::saved($syncPostsCount);
+        static::deleted($syncPostsCount);
+    }
+
 }

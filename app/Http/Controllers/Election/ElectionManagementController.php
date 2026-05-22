@@ -101,10 +101,12 @@ class ElectionManagementController extends Controller
         $this->authorize('create', [Election::class, $organisation]);
 
         $validated = $request->validate([
-            'name'        => ['required', 'string', 'max:255',
-                              Rule::unique('elections')->where('organisation_id', $organisation->id)],
-            'description' => ['nullable', 'string', 'max:5000'],
-            'type'        => ['sometimes', 'in:real'],
+            'name'                          => ['required', 'string', 'max:255',
+                                                Rule::unique('elections')->where('organisation_id', $organisation->id)],
+            'description'                   => ['nullable', 'string', 'max:5000'],
+            'type'                          => ['sometimes', 'in:real'],
+            'expected_voter_count'          => ['required', 'integer', 'min:1', 'max:10000'],
+            'timezone'                      => ['nullable', 'timezone'],
             'administration_suggested_start' => ['nullable', 'date_format:Y-m-d\TH:i'],
             'administration_suggested_end'   => ['nullable', 'date_format:Y-m-d\TH:i', 'after:administration_suggested_start'],
             'nomination_suggested_start'     => ['nullable', 'date_format:Y-m-d\TH:i'],
@@ -131,9 +133,11 @@ class ElectionManagementController extends Controller
             'slug'            => $this->generateUniqueSlug($validated['name']),
             'description'     => $validated['description'] ?? null,
             'type'            => 'real',
-            'status'          => 'planned',
+            'state'           => 'draft',
             'start_date'      => $startDate,
             'end_date'        => $endDate,
+            'expected_voter_count'          => $validated['expected_voter_count'],
+            'timezone'                      => $validated['timezone'] ?? null,
             'administration_suggested_start' => $validated['administration_suggested_start'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['administration_suggested_start'])->format('Y-m-d H:i:00') : null,
             'administration_suggested_end'   => $validated['administration_suggested_end'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['administration_suggested_end'])->format('Y-m-d H:i:00') : null,
             'nomination_suggested_start'     => $validated['nomination_suggested_start'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['nomination_suggested_start'])->format('Y-m-d H:i:00') : null,
@@ -143,9 +147,6 @@ class ElectionManagementController extends Controller
             'allow_auto_transition'          => true,
             'auto_transition_grace_days'     => 7,
         ]);
-
-        // Validate timeline dates after creation (strict past-date checks)
-        $election->validateTimelineForEdit();
 
         // Notify all active chiefs of this organisation
         $activeChiefs = ElectionOfficer::with('user')
@@ -184,20 +185,24 @@ class ElectionManagementController extends Controller
     {
         $this->authorize('manageSettings', $election);
 
-        // CONSTITUTIONAL FIX Phase 3.1.C: Use ElectionLifecycle SSOT instead of deprecated status field
-        $lifecycle = ElectionLifecycle::of($election);
-        if (!$lifecycle->canTransitionTo('begin_setup')) {
+        // Set tenant context so BelongsToTenant global scope can find related records
+        session(['current_organisation_id' => $election->organisation_id]);
+        \App\Services\TenantContext::set($election->organisation_id);
+
+        try {
+            // Use constitutional transitionTo() which:
+            // 1. Validates via ConstitutionalTransitionGuard
+            // 2. Runs side effects
+            // 3. Creates ElectionStateTransition record
+            $election->transitionTo(
+                \App\Domain\Election\StateMachine\Transition::manual('begin_setup', auth()->id(), 'Activated by officer')
+            );
+
+            return back()->with('success', 'Election activated successfully! Setup phase is now open.');
+        } catch (\Exception $e) {
+            Log::warning('activate() transition failed', ['election_id' => $election->id, 'error' => $e->getMessage()]);
             return back()->with('error', 'Election cannot be activated in its current state.');
         }
-
-        // Transition to setup state
-        Election::withoutGlobalScopes()
-            ->where('id', $election->id)
-            ->update([
-                'state' => 'setup',
-            ]);
-
-        return back()->with('success', 'Election activated successfully! Setup phase is now open.');
     }
 
     /**
@@ -234,17 +239,14 @@ class ElectionManagementController extends Controller
         $orgId = session('current_organisation_id');
         \Illuminate\Support\Facades\Log::info('DASHBOARD_DEBUG', ['orgId' => $orgId, 'user_id' => $authUser->id]);
         if ($orgId) {
-            $now = ElectionClockService::now();
-            $activeElection = Election::withoutGlobalScopes()
+            // Find active election using SSOT state (voting_active) instead of deprecated status
+            $elections = Election::withoutGlobalScopes()
                 ->where('organisation_id', $orgId)
                 ->where('type', 'real')
-                ->where('status', 'active')
-                ->where('start_date', '<=', $now)
-                ->where('end_date', '>=', $now)
-                ->first();
+                ->get();
 
-            $allElectionsInDB = \Illuminate\Support\Facades\DB::table('elections')->get(['id', 'organisation_id', 'type', 'status'])->toArray();
-            \Illuminate\Support\Facades\Log::info('DASHBOARD_DEBUG2', ['session_orgId' => $orgId, 'activeElection' => $activeElection?->id, 'allElectionsInDB' => $allElectionsInDB]);
+            // Filter to elections in voting_active state
+            $activeElection = $elections->first(fn($e) => ElectionLifecycle::of($e)->state()->value === 'voting_active');
 
             if ($activeElection) {
                 $redirect = redirect()->route('elections.show', $activeElection->slug);
@@ -344,11 +346,10 @@ class ElectionManagementController extends Controller
             return redirect()->route('login');
         }
 
-        // Get all active real elections that are currently active
+        // Get all real elections currently in voting_active state
         $activeElections = Election::where('type', 'real')
-            ->where('is_active', true)
             ->get()
-            ->filter(fn ($election) => $election->isCurrentlyActive())
+            ->filter(fn ($election) => ElectionLifecycle::of($election)->state()->value === 'voting_active')
             ->values();
 
         // If no elections, redirect to dashboard
@@ -526,11 +527,12 @@ class ElectionManagementController extends Controller
             $orgElections = Election::withoutGlobalScopes()
                 ->where('type', 'demo')
                 ->where('organisation_id', $user->organisation_id)
-                ->where('status', 'active')
                 ->where('start_date', '<=', $now)
                 ->where('end_date', '>=', $now)
                 ->orderBy('created_at', 'desc')
-                ->get();
+                ->get()
+                ->filter(fn ($e) => ElectionLifecycle::of($e)->state()->value === 'voting_active')
+                ->values();
 
             $elections = $elections->concat($orgElections);
 
@@ -545,11 +547,12 @@ class ElectionManagementController extends Controller
         $publicElections = Election::withoutGlobalScopes()
             ->where('type', 'demo')
             ->whereNull('organisation_id')
-            ->where('status', 'active')
             ->where('start_date', '<=', $now)
             ->where('end_date', '>=', $now)
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->get()
+            ->filter(fn ($e) => ElectionLifecycle::of($e)->state()->value === 'voting_active')
+            ->values();
 
         $elections = $elections->concat($publicElections);
 
@@ -685,6 +688,11 @@ class ElectionManagementController extends Controller
 
         $this->authorize('manageSettings', $election);
 
+        // Set session context to election's organisation so subsequent API calls work
+        // This ensures the BelongsToTenant global scope can find the election
+        session(['current_organisation_id' => $election->organisation_id]);
+        \App\Services\TenantContext::set($election->organisation_id);
+
         $election->load(['organisation']);
 
         $organisation = $election->organisation;
@@ -791,8 +799,14 @@ class ElectionManagementController extends Controller
     public function status(Election $election): \Illuminate\Http\JsonResponse
     {
         return response()->json([
-            'election' => $election->only(['id', 'name', 'status', 'is_active', 'results_published']),
-            'stats'    => $election->voter_stats,
+            'election' => [
+                'id' => $election->id,
+                'name' => $election->name,
+                'state' => ElectionLifecycle::of($election)->state()->value,
+                'is_active' => ElectionLifecycle::of($election)->isActive(),
+                'results_published' => $election->results_published,
+            ],
+            'stats' => $election->voter_stats,
         ]);
     }
 
@@ -1035,7 +1049,11 @@ class ElectionManagementController extends Controller
      */
     public function completeAdministration(Request $request, Organisation $organisation, Election $election): RedirectResponse
     {
-        $this->authorize('manage', $election);
+        $this->authorize('manageSettings', $election);
+
+        // Set tenant context so BelongsToTenant global scope can find related records
+        session(['current_organisation_id' => $organisation->id]);
+        \App\Services\TenantContext::set($organisation->id);
 
         $validated = $request->validate([
             'reason' => 'required|string|min:5|max:500',
@@ -1057,7 +1075,7 @@ class ElectionManagementController extends Controller
      */
     public function completeNomination(Request $request, Organisation $organisation, Election $election): RedirectResponse
     {
-        $this->authorize('manage', $election);
+        $this->authorize('manageSettings', $election);
 
         $validated = $request->validate([
             'reason' => 'required|string|min:5|max:500',
@@ -1079,7 +1097,7 @@ class ElectionManagementController extends Controller
      */
     public function forceCloseNomination(Request $request, Organisation $organisation, Election $election): RedirectResponse
     {
-        $this->authorize('manage', $election);
+        $this->authorize('manageSettings', $election);
 
         $validated = $request->validate([
             'reason' => 'required|string|min:5|max:500',
@@ -1101,7 +1119,7 @@ class ElectionManagementController extends Controller
      */
     public function updateSuggestedDates(Request $request, Organisation $organisation, Election $election): RedirectResponse
     {
-        $this->authorize('manage', $election);
+        $this->authorize('manageSettings', $election);
 
         $phase = $request->input('phase'); // 'administration' or 'nomination'
 
@@ -1128,7 +1146,7 @@ class ElectionManagementController extends Controller
      */
     public function updateVotingDates(Request $request, Organisation $organisation, Election $election): RedirectResponse
     {
-        $this->authorize('manage', $election);
+        $this->authorize('manageSettings', $election);
 
         // CONSTITUTIONAL FIX Phase 3.1.C: Use ElectionClockService instead of raw now()
         if (ElectionClockService::hasVotingStarted($election)) {
@@ -1158,14 +1176,17 @@ class ElectionManagementController extends Controller
     {
         $postsCount = \App\Models\Post::withoutGlobalScopes()
             ->where('election_id', $election->id)
+            ->whereNull('deleted_at')
             ->count();
 
         $approvedCandidatesCount = \App\Models\Candidacy::withoutGlobalScopes()
+            ->whereNull('deleted_at')
             ->whereHas('post', fn ($q) => $q->withoutGlobalScopes()->where('election_id', $election->id))
             ->where('status', \App\Models\Candidacy::STATUS_APPROVED)
             ->count();
 
         $pendingCandidatesCount = \App\Models\Candidacy::withoutGlobalScopes()
+            ->whereNull('deleted_at')
             ->where('status', 'pending')
             ->whereHas('post', fn ($q) => $q->withoutGlobalScopes()->where('election_id', $election->id))
             ->count();
@@ -1181,9 +1202,13 @@ class ElectionManagementController extends Controller
             ->where('status', 'active')
             ->count();
 
+        // Use ElectionLifecycle for authoritative derived state (SSOT), not stale state column
+        $lifecycle = \App\Application\Election\Facades\ElectionLifecycle::of($election)->snapshot();
+        $currentState = $lifecycle->state->value;
+
         return [
-            'currentState'       => $election->current_state,
-            'stateInfo'          => $election->state_info,
+            'currentState'       => $currentState,
+            'stateInfo'          => ['name' => $currentState],
             'postsCount'         => $postsCount,
             'votersCount'        => $votersCount,
             'committeeCount'     => $committeeCount,
@@ -1248,6 +1273,10 @@ class ElectionManagementController extends Controller
                 ->where('slug', $election)
                 ->firstOrFail();
         }
+
+        // Set tenant context so global scopes work correctly in authorization checks
+        session(['current_organisation_id' => $election->organisation_id]);
+        \App\Services\TenantContext::set($election->organisation_id);
 
         $this->authorize('manageSettings', $election);
 

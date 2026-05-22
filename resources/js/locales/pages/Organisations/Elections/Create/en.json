@@ -16,6 +16,18 @@
       "help": "Elections with up to 40 voters are free and auto-approved. More than 40 requires platform admin approval.",
       "approval_warning": "This election will require platform admin approval before it can proceed."
     },
+    "timezone": {
+      "label": "Timezone",
+      "optional": "(optional — required before submission)",
+      "placeholder": "Select timezone...",
+      "help": "Set your election timezone. Required before submitting for approval.",
+      "options": {
+        "utc": "UTC",
+        "berlin": "Europe/Berlin (CET/CEST)",
+        "london": "Europe/London (GMT/BST)",
+        "kathmandu": "Asia/Kathmandu (NPT)"
+      }
+    },
     "start": {
       "section": "Start Date & Time",
       "date_label": "Date",

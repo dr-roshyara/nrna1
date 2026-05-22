@@ -1,222 +1,188 @@
-# Phase 3.1.E: Election Test Suite Stabilization + Remaining Controller Migration
-**Type:** TDD Stabilization + Phase 3.1 Completion
-**Scope:** Fix 192 failing Elections Feature tests + complete ElectionManagementController migration
-**Approach:** Fix root causes in dependency order, then finish Phase 3.1 controller migration
-**Date:** 2026-05-19
-**Supersedes:** Phase 2.4 (complete). This plan closes Phase 3.1 and unblocks Phase 3.2 Strict Mode Activation.
+# Fix: Create Election Page — Constitutional Alignment + Date UX
+**Type:** TDD Feature Fix
+**Scope:** Controller validation, test repair, Vue date UX
+**Date:** 2026-05-21
 
 ---
 
 ## Context
 
-Phase 3.1.A–D completed the SSOT controller migration and CI-level enforcement. However, running the Elections Feature test suite revealed 192 failing tests caused by 4 independent root causes introduced during the Phase C strangler refactoring. These must be resolved before Phase 3.2 (Strict Mode) can be activated safely.
+The create election form at `/organisations/{org}/elections/create` has three categories of problems:
 
-Additionally, `ElectionManagementController` still has 6 deprecated-pattern sites that were not addressed in Phase 3.1.C. Both the test stabilization and the controller migration must complete before declaring Phase 3.1 done.
+1. **Test/controller mismatch:** `ElectionCreationTest` sends `start_date`/`end_date` as plain date strings and asserts validation errors. The controller **ignores** these fields and derives them from voting phase timestamps. Four validation tests silently fail.
 
-**Key Audit Findings (from code exploration):**
+2. **`expected_voter_count` never saved:** The Vue form collects it, the user sees the ">40 requires approval" warning, but the controller never validates or stores it. This breaks the approval workflow: the constitution uses this value to auto-approve (≤40) or route to manual review (>40).
 
-- `ElectionVoterController` — CLEAN. All `->status` usages are on `ElectionMembership` (pivot), not `Election`. Zero Phase 3.1 migration items.
-- `CommitteeMemberController (Api/Governance)` — CLEAN. No election lifecycle references.
-- `ElectionManagementController` — 6 remaining migration targets (lines 67, 239–241, 347, 527–528, 546–547, 791).
+3. **Date UX not constitutional:**
+   - Voting dates default to **today** (which fails past-date guards)
+   - The form blocks submission if any dates are out of chronological order — but dates are **not required at creation** per the constitution; they're only required before `open_voting`
+   - The form structure implies all phases must be planned at create time
 
----
-
-## Root Cause Analysis — 192 Failing Tests
-
-| # | Root Cause | Exception | Test Files | Approx Count |
-|---|-----------|-----------|------------|-------------|
-| RC-1 | `ElectionMembership::assignVoter()` / `bulkAssignVoters()` static methods do not exist (moved to CQRS handlers, tests not updated) | `BadMethodCallException` | `ElectionMembershipInfrastructureTest`, `ElectionMembershipPersistenceTest` | ~20 |
-| RC-2 | Partial unique index `WHERE deleted_at IS NULL` in `harden_election_memberships` migration is MySQL-incompatible (XAMPP/MariaDB) | `QueryException` during `RefreshDatabase` | All tests using `election_memberships` table | ~100+ (cascade) |
-| RC-3 | Hardcoded `'slug' => 'general-election-2026'` in `Election::create()` hits unique constraint across test methods | `UniqueConstraintViolationException` | `ElectionActivationTest`, `ElectionPolicyTest`, many more | ~60 |
-| RC-4 | `Election::factory()` without `->forOrganisation()` sets `organisation_id = null`, breaking route lookups and state machine | `DomainException`, `InvalidTransitionException`, `QueryException` | `VotingButtonsStateMachineTest`, `StateMachine\CurrentBehaviorTest` | ~20 |
+**Constitutional reality:** `state = 'draft'` at creation. The only preconditions enforced at later transitions:
+- `submit_for_approval` → requires `timezone_set`
+- `open_voting` → requires `voting_window_defined` + `timezone_set`
+- All date fields are nullable at creation
 
 ---
 
-## Fix Plan (ordered by dependency)
+## What Changes
 
-### Fix 1: MySQL-Compatible Unique Index (RC-2) — Critical Blocker
+### 1. `ElectionManagementController::store()` (app/Http/Controllers/Election/ElectionManagementController.php ~line 99)
 
-**Why first:** This migration failure during `RefreshDatabase` cascades to 100+ test failures. Nothing else can be verified until this is fixed.
-
-**Problem:**
-`database/migrations/2026_05_19_000001_harden_election_memberships_for_election_only_mode.php`
-creates a partial unique index (`WHERE deleted_at IS NULL`) which MySQL/MariaDB does not support. The migration already ran on production but silently skipped the index creation on MySQL (the `CREATE UNIQUE INDEX ... WHERE` statement fails, but migration marked as ran).
-
-**Solution:** Create a new corrective migration:
-`database/migrations/2026_05_19_100000_fix_election_memberships_unique_index_mysql_compat.php`
-
+**Add to validation rules:**
 ```php
-// Drop partial index if it exists (no-op on MySQL where it never created)
-DB::statement('DROP INDEX IF EXISTS uq_user_election_active ON election_memberships');
-
-// Add MySQL-compatible standard unique constraint
-Schema::table('election_memberships', function (Blueprint $table) {
-    $table->unique(['user_id', 'election_id'], 'uq_user_election');
-});
+'expected_voter_count' => ['required', 'integer', 'min:1', 'max:10000'],
+'timezone'             => ['nullable', 'string', 'timezone:all'],
 ```
 
-**Why this is safe:** `AssignVoterHandler::handle()` already calls `findWithTrashed()` and `restoreAndUpdate()` when a soft-deleted record exists. Re-import cases are handled at the application layer. The partial index was defensive database enforcement that is now redundant.
-
----
-
-### Fix 2: Update Tests to Use CQRS Handlers (RC-1)
-
-**Files to modify:**
-- `tests/Feature/Election/ElectionMembershipInfrastructureTest.php`
-- `tests/Feature/Election/ElectionMembershipPersistenceTest.php`
-
-**Strategy:** Replace all calls to `ElectionMembership::assignVoter(...)` and `ElectionMembership::bulkAssignVoters(...)` with the appropriate handler invocations:
-
+**Add to Election::create([...]):**
 ```php
-// OLD (broken):
-ElectionMembership::assignVoter($election, $user, 'voter');
-
-// NEW (correct):
-$handler = app(AssignVoterHandler::class);
-$handler->handle(new AssignVoterCommand(
-    userId: $user->id,
-    electionId: $election->id,
-    organisationId: $organisation->id,
-    mode: ElectionMode::fromOrganisation($organisation),
-    assignedBy: null,
-));
+'expected_voter_count' => $validated['expected_voter_count'],
+'timezone'             => $validated['timezone'] ?? null,
 ```
 
-Cache invalidation tests (`ElectionMembershipInfrastructureTest`) should verify that the handler pipeline (not the model) triggers cache invalidation via `ElectionCacheService::forgetVoterKeys()`.
+**Remove `validateTimelineForEdit()` call on creation** — timeline validation is a setup-time concern, not creation. An election in `draft` state has no required dates.
+
+**Keep** `start_date`/`end_date` derivation from voting dates — they are still used in active WHERE queries (list endpoint lines 529-550). They are NOT authoritative (derived from `voting_starts_at`/`voting_ends_at`) but must stay in sync. Null at creation is fine.
 
 ---
 
-### Fix 3: Remove Hardcoded Election Slugs (RC-3)
+### 2. `ElectionCreationTest.php` (tests/Feature/Election/ElectionCreationTest.php)
 
-**Files to modify:**
-- `tests/Feature/Election/ElectionActivationTest.php`
-- Any test file creating elections with hardcoded slug strings
+**Remove 4 broken tests** (they assert validation errors on fields the controller doesn't validate):
+- `test_election_requires_start_date`
+- `test_election_requires_end_date`
+- `test_start_date_must_be_before_end_date`
+- `test_start_date_cannot_be_in_past`
 
-**Fix:** Remove `'slug' => 'general-election-2026'` from test fixtures. The `Election` model auto-generates slugs from the name. Let the factory handle slug generation:
-
+**Fix `validPayload()`** — update to use constitutional fields:
 ```php
-// OLD:
-Election::create([..., 'slug' => 'general-election-2026', ...]);
+private function validPayload(): array
+{
+    return [
+        'name'                 => 'General Election 2026',
+        'description'          => 'Election for organisation leadership',
+        'expected_voter_count' => 20,
+    ];
+}
+```
 
-// NEW:
-Election::factory()->forOrganisation($this->org)->create([
-    'name' => 'General Election 2026',
-    // slug auto-generated
+**Fix status assertion** — constitutional state is `draft`, not `planned`:
+```php
+// test_organisation_owner_can_create_election
+$this->assertDatabaseHas('elections', [
+    'organisation_id' => $this->org->id,
+    'name'            => 'General Election 2026',
+    'type'            => 'real',
+    'state'           => 'draft',   // was 'status' => 'planned'
 ]);
+
+// Rename test_election_defaults_to_planned_status → test_election_defaults_to_draft_state
+$this->assertEquals('draft', $election->state);
 ```
 
----
+**Add new constitutional tests (7 total):**
 
-### Fix 4: Add forOrganisation() to Factory Calls (RC-4)
-
-**Files to modify:**
-- `tests/Feature/Election/VotingButtonsStateMachineTest.php`
-- `tests/Feature/Election/StateMachine/CurrentBehaviorTest.php`
-
-**Fix:** All `Election::factory()` calls that omit `->forOrganisation($this->org)` must have it added. Without it, `organisation_id` defaults to `null`, breaking state machine transitions and route lookups.
-
+*expected_voter_count tests:*
 ```php
-// OLD:
-$this->election = Election::factory()->inNominationState()->create([...]);
+public function test_election_requires_expected_voter_count(): void
+public function test_expected_voter_count_must_be_at_least_1(): void
+public function test_expected_voter_count_is_saved_on_creation(): void
+```
 
-// NEW:
-$this->election = Election::factory()
-    ->forOrganisation($this->org)
-    ->inNominationState()
-    ->create([...]);
+*Approval-routing tests (constitutional consequences):*
+```php
+// ≤40 voters → engine can auto-approve (expected_voter_count persisted correctly)
+public function test_small_election_saves_expected_voter_count_for_auto_approval(): void
+// >40 voters → expected_voter_count stored, triggers manual approval path
+public function test_large_election_saves_expected_voter_count_for_manual_review(): void
+```
+
+*Lifecycle capability tests (draft invariants):*
+```php
+public function test_draft_election_created_with_null_dates(): void
+public function test_draft_election_state_is_draft(): void
 ```
 
 ---
 
-### Fix 5: Complete ElectionManagementController Phase 3.1 Migration
+### 3. `Create.vue` (resources/js/Pages/Organisations/Elections/Create.vue)
 
-**File:** `app/Http/Controllers/Election/ElectionManagementController.php`
+**Fix date defaults (suggestions, not persisted pre-fills):**
+- Voting start/end: leave empty, show placeholder text (e.g., "e.g. 2026-06-30T09:00")
+- Helps user understand format without silently pre-filling operational schedules
+- If user explicitly types a date, validate it (must be future, end after start)
 
-Both `ElectionLifecycle` (line 17) and `ElectionClockService` (line 16) are already imported. No new imports needed.
+**Relax `phasesDatesError` validation:**
+- Current: blocks submit if ANY date is filled but not all chronologically valid
+- New: only validate each phase if BOTH start AND end for that phase are provided; only validate cross-phase if adjacent phases are both filled
 
-| Line | Current (deprecated) | Replace with |
-|------|---------------------|--------------|
-| 67 | `$e->status` in list map | `ElectionLifecycle::of($e)->state()->value` |
-| 239 | `->where('status', 'active')` | `->where('state', ElectionState::ActiveVoting->value)` or lifecycle-derived scope |
-| 240–241 | `->where('start_date', '<=', now())->where('end_date', '>=', now())` | `ElectionClockService::scopeActiveWindow($query)` — or inline as `ElectionClockService::now()` comparisons |
-| 347 | `->where('is_active', true)` | Remove or replace with state-based scope; method is marked `@deprecated` |
-| 527–528, 546–547 | Raw `now()` date comparisons in `listDemoElections()` | `ElectionClockService::hasVotingStarted($election)` per call |
-| 791 | `'status' => $election->status, 'is_active' => $election->is_active` in JSON endpoint | `'state' => ElectionLifecycle::of($election)->state()->value, 'is_active' => ElectionLifecycle::of($election)->isActive()` |
+**Add timezone dropdown (visible, constitutional):**
+```vue
+<select v-model="form.timezone">
+  <option value="">Select timezone...</option>
+  <option value="UTC">UTC</option>
+  <option value="Europe/Berlin">Europe/Berlin (CET/CEST)</option>
+  <option value="Europe/London">Europe/London (GMT/BST)</option>
+  <option value="Asia/Kathmandu">Asia/Kathmandu (NPT)</option>
+</select>
+```
+
+**Update submit payload** to include `timezone`.
+
+---
+
+## TDD Execution
+
+### Phase 1 — RED (Existing Failures)
+```bash
+php artisan test tests/Feature/Election/ElectionCreationTest.php --no-coverage
+```
+Expected failures: 4 date tests + status assertions.
+
+### Phase 2 — RED (New Tests)
+Write 5 new constitutional tests. All should fail RED:
+- `test_election_requires_expected_voter_count` — fails, field not validated yet
+- `test_expected_voter_count_is_saved_on_creation` — fails, not stored
+
+### Phase 3 — GREEN (Controller)
+Apply 3 controller changes (validation + storage + remove validateTimelineForEdit).
+Run tests → new tests GREEN.
+
+### Phase 4 — GREEN (Test cleanup)
+Remove 4 broken tests, fix status→state, fix validPayload().
+
+### Phase 5 — GREEN (Vue)
+Fix date defaults, relax validation, add timezone.
+
+### Phase 6 — VERIFY
+```bash
+php artisan test tests/Feature/Election/ElectionCreationTest.php --no-coverage
+php artisan test tests/Unit/Application/Election/ --no-coverage
+```
 
 ---
 
 ## Critical Files
 
-| File | Role |
-|------|------|
-| `database/migrations/2026_05_19_000001_harden_election_memberships_for_election_only_mode.php` | Contains MySQL-incompatible partial index (do not modify — create corrective migration instead) |
-| `database/migrations/2026_05_19_100000_fix_election_memberships_unique_index_mysql_compat.php` | **NEW** — corrective migration to create |
-| `tests/Feature/Election/ElectionMembershipInfrastructureTest.php` | RC-1 fix — update to use AssignVoterHandler |
-| `tests/Feature/Election/ElectionMembershipPersistenceTest.php` | RC-1 fix — update to use AssignVoterHandler |
-| `tests/Feature/Election/ElectionActivationTest.php` | RC-3 fix — remove hardcoded slug |
-| `tests/Feature/Election/VotingButtonsStateMachineTest.php` | RC-4 fix — add forOrganisation() |
-| `tests/Feature/Election/StateMachine/CurrentBehaviorTest.php` | RC-4 fix — add forOrganisation() |
-| `app/Http/Controllers/Election/ElectionManagementController.php` | Fix 5 — 6 remaining Phase 3.1 migration sites |
-| `app/Application/Election/Facades/ElectionLifecycle.php` | Reference — already imported in ManagementController |
-| `app/Services/ElectionClockService.php` | Reference — already imported in ManagementController |
-| `app/Contexts/Elections/Application/Handlers/AssignVoterHandler.php` | Reference — used in RC-1 test updates |
-| `app/Application/Election/Deprecation/DeprecationPolicy.php` | Phase 3.2 gate — MODE='warning', ready to change to 'strict' after fixes |
-
----
-
-## Execution Order
-
-```bash
-# Step 1: Create and run corrective migration (RC-2)
-php artisan make:migration fix_election_memberships_unique_index_mysql_compat
-php artisan migrate
-
-# Step 2: Verify migration fixed cascade failures
-php artisan test tests/Feature/Election/StateMachine/ --no-coverage
-
-# Step 3: Fix handler-based tests (RC-1)
-# Edit ElectionMembershipInfrastructureTest + ElectionMembershipPersistenceTest
-php artisan test tests/Feature/Election/ElectionMembershipInfrastructureTest.php tests/Feature/Election/ElectionMembershipPersistenceTest.php --no-coverage
-
-# Step 4: Fix hardcoded slugs (RC-3)
-# Edit ElectionActivationTest + other affected files
-php artisan test tests/Feature/Election/ElectionActivationTest.php --no-coverage
-
-# Step 5: Fix factory forOrganisation (RC-4)
-php artisan test tests/Feature/Election/VotingButtonsStateMachineTest.php tests/Feature/Election/StateMachine/CurrentBehaviorTest.php --no-coverage
-
-# Step 6: Complete ElectionManagementController Phase 3.1 migration (Fix 5)
-php artisan test tests/Feature/Election/ tests/Unit/Application/Election/ tests/Architecture/ --no-coverage
-
-# Step 7: Verify strict mode readiness
-php artisan election:constitution:health
-```
+| File | Change |
+|------|--------|
+| `app/Http/Controllers/Election/ElectionManagementController.php` | Add expected_voter_count + timezone; remove validateTimelineForEdit() call |
+| `tests/Feature/Election/ElectionCreationTest.php` | Remove 4 broken tests; fix state; add 5 new tests; fix validPayload() |
+| `resources/js/Pages/Organisations/Elections/Create.vue` | Fix date defaults; relax validation; add timezone field |
+| `resources/js/locales/pages/Organisations/Elections/Create/en.json` | Add timezone field label/help |
 
 ---
 
 ## Definition of Done
 
-- [x] **RC-1 Fixed:** All 20 membership tests now passing (uses CQRS handlers)
-- [ ] All Elections Feature tests GREEN (from 192 → 182 remaining failures)
-- [ ] All Architecture invariant tests still GREEN (6/6)
-- [ ] All Unit Application Election tests still GREEN (60/60)
-- [ ] `php artisan election:constitution:health` → READY FOR STRICT MODE
-- [ ] `ElectionManagementController` has zero deprecated pattern accesses
-- [ ] Ready to change `DeprecationPolicy::MODE` from `'warning'` to `'strict'` (Phase 3.2)
-
-## Execution Progress (Updated 2026-05-20)
-
-### Completed
-✅ **Fix 1: Create corrective migration** - RC-2 addressed (PostgreSQL compatible)
-✅ **Fix 2: Update tests to use CQRS handlers** - RC-1 COMPLETE (20 tests passing)
-  - ElectionMembershipInfrastructureTest: 9/9 passing
-  - ElectionMembershipPersistenceTest: 11/11 passing
-  - Handlers properly integrated with tenant isolation
-
-### In Progress
-⏳ **Fix 3 & 4:** RC-3 (hardcoded slugs) and RC-4 (forOrganisation) - Investigation needed
-   - Initial findings suggest different root cause: unique constraint violations across tests
-   - More thorough analysis needed before fix
-
-### Remaining
-- Fix 5: Complete ElectionManagementController Phase 3.1 migration (6 deprecated sites)
+- [ ] `expected_voter_count` saved to DB on creation (drives approval workflow)
+- [ ] `timezone` optional on creation but accepted and stored
+- [ ] No `validateTimelineForEdit()` call on creation
+- [ ] All dates nullable at creation
+- [ ] Voting date defaults are +30/+37 days from today
+- [ ] Phase dates never block submission if empty
+- [ ] All 5 new constitutional tests GREEN
+- [ ] 4 old broken date tests removed
+- [ ] `state = 'draft'` asserted (not `status = 'planned'`)
+- [ ] No regressions in existing green tests

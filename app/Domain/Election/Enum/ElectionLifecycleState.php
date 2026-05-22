@@ -92,4 +92,12 @@ enum ElectionLifecycleState: string
     {
         return $this === self::ReadyForVoting || $this === self::VotingActive;
     }
+
+    /**
+     * Is voting currently active? (votes being accepted now)
+     */
+    public function isActive(): bool
+    {
+        return $this === self::VotingActive;
+    }
 }

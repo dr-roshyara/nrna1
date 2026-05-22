@@ -339,8 +339,8 @@ Route::middleware(['auth', 'verified', \App\Http\Middleware\TenantContext::class
             ->can('manageSettings', 'election');
 
         Route::patch('/timeline', [ElectionManagementController::class, 'updateTimeline'])
-            ->name('elections.update-timeline')
-            ->can('manageSettings', 'election');
+            ->name('elections.update-timeline');
+        // Authorization check moved to controller (line 1265) to handle tenant context properly
     });
 
 // Test routes for voter slug system (Phase 1)

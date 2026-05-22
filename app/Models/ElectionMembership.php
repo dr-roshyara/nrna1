@@ -249,7 +249,24 @@ class ElectionMembership extends Model
             Cache::forget("user.{$membership->user_id}.voter.{$membership->election_id}");
         };
 
+        $syncVoterCount = function (self $membership) {
+            // Update the denormalized voters_count column when memberships change
+            // Only count active voters (role='voter' and status='active')
+            $count = DB::table('election_memberships')
+                ->where('election_id', $membership->election_id)
+                ->where('role', 'voter')
+                ->where('status', 'active')
+                ->whereNull('deleted_at')
+                ->count();
+
+            DB::table('elections')
+                ->where('id', $membership->election_id)
+                ->update(['voters_count' => $count]);
+        };
+
         static::saved($invalidate);
+        static::saved($syncVoterCount);
         static::deleted($invalidate);
+        static::deleted($syncVoterCount);
     }
 }

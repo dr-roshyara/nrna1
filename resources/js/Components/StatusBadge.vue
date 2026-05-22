@@ -14,10 +14,16 @@ const props = defineProps({
 })
 
 const map = {
-  planned:   { label: 'Planned',   classes: 'bg-amber-50 text-amber-700 border-amber-200', dot: 'bg-amber-400' },
-  active:    { label: 'Active',    classes: 'bg-emerald-50 text-emerald-700 border-emerald-200', dot: 'bg-emerald-400 animate-pulse' },
-  completed: { label: 'Completed', classes: 'bg-slate-100 text-slate-600 border-slate-200', dot: 'bg-slate-400' },
-  archived:  { label: 'Archived',  classes: 'bg-gray-100 text-gray-400 border-gray-200', dot: 'bg-gray-300' },
+  draft:                  { label: 'Draft',                classes: 'bg-slate-50 text-slate-700 border-slate-200', dot: 'bg-slate-400' },
+  submitted_for_approval: { label: 'Pending Approval',     classes: 'bg-amber-50 text-amber-700 border-amber-200', dot: 'bg-amber-400' },
+  approved:               { label: 'Approved',             classes: 'bg-emerald-50 text-emerald-700 border-emerald-200', dot: 'bg-emerald-400' },
+  rejected:               { label: 'Rejected',             classes: 'bg-red-50 text-red-700 border-red-200', dot: 'bg-red-400' },
+  setup:                  { label: 'Setup',                classes: 'bg-blue-50 text-blue-700 border-blue-200', dot: 'bg-blue-400' },
+  ready_for_voting:       { label: 'Ready for Voting',     classes: 'bg-purple-50 text-purple-700 border-purple-200', dot: 'bg-purple-400' },
+  voting_active:          { label: 'Voting Active',        classes: 'bg-emerald-50 text-emerald-700 border-emerald-200', dot: 'bg-emerald-400 animate-pulse' },
+  counting:               { label: 'Counting',             classes: 'bg-orange-50 text-orange-700 border-orange-200', dot: 'bg-orange-400' },
+  results_published:      { label: 'Results Published',    classes: 'bg-green-50 text-green-700 border-green-200', dot: 'bg-green-400' },
+  archived:               { label: 'Archived',             classes: 'bg-gray-100 text-gray-400 border-gray-200', dot: 'bg-gray-300' },
 }
 
 const config = computed(() => map[props.status] ?? map.archived)

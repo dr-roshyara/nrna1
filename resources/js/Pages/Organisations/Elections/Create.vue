@@ -112,6 +112,30 @@
             </p>
           </div>
 
+          <!-- Timezone (optional) -->
+          <div class="mb-6">
+            <label for="timezone" class="block text-sm font-medium text-neutral-700 mb-1">
+              {{ t.fields.timezone.label }}
+              <span class="text-neutral-400 font-normal">{{ t.fields.timezone.optional }}</span>
+            </label>
+            <select
+              id="timezone"
+              v-model="form.timezone"
+              class="w-full rounded-md border border-neutral-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              :class="errors.timezone ? 'border-danger-400' : 'border-neutral-300'"
+            >
+              <option value="">{{ t.fields.timezone.placeholder }}</option>
+              <option value="UTC">UTC</option>
+              <option value="Europe/Berlin">{{ t.fields.timezone.berlin }}</option>
+              <option value="Europe/London">{{ t.fields.timezone.london }}</option>
+              <option value="Asia/Kathmandu">{{ t.fields.timezone.kathmandu }}</option>
+            </select>
+            <p v-if="errors.timezone" class="mt-1 text-sm text-danger-600">{{ errors.timezone }}</p>
+            <p class="mt-1 text-xs text-neutral-400">
+              {{ t.fields.timezone.help }}
+            </p>
+          </div>
+
           <!-- STATE MACHINE PHASE DATES SECTION -->
           <div class="border-t pt-8 mb-8">
             <h3 class="text-lg font-semibold text-neutral-900 mb-6">Election Phases Timeline</h3>
@@ -180,6 +204,7 @@
                   <input
                     v-model="form.voting_starts_at"
                     type="datetime-local"
+                    placeholder="e.g. 2026-06-30T09:00"
                     class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
                     :class="errors.voting_starts_at ? 'border-danger-400' : 'border-neutral-300'"
                   />
@@ -190,6 +215,7 @@
                   <input
                     v-model="form.voting_ends_at"
                     type="datetime-local"
+                    placeholder="e.g. 2026-07-07T17:00"
                     class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
                     :class="errors.voting_ends_at ? 'border-danger-400' : 'border-neutral-300'"
                   />
@@ -251,51 +277,57 @@ const { locale } = useI18n()
 const pageData = { de: pageDe, en: pageEn, np: pageNp }
 const t = computed(() => pageData[locale.value] ?? pageData.de)
 
-// Today's date in YYYY-MM-DD for the min attribute
-const today = new Date().toISOString().split('T')[0]
-const defaultVotingStartTime = `${today}T08:00`
-const defaultVotingEndTime = `${today}T18:00`
-
 const form = reactive({
   name:        '',
   description: '',
   expected_voter_count: 1,
+  timezone: '',
   administration_suggested_start: '',
   administration_suggested_end: '',
   nomination_suggested_start: '',
   nomination_suggested_end: '',
-  voting_starts_at: defaultVotingStartTime,
-  voting_ends_at: defaultVotingEndTime,
+  voting_starts_at: '',
+  voting_ends_at: '',
 })
 
-// Client-side: phase dates validation
+// Client-side: phase dates validation (relaxed — only block if dates provided AND invalid)
 const phasesDatesError = computed(() => {
-  if (!form.administration_suggested_start || !form.administration_suggested_end ||
-      !form.nomination_suggested_start || !form.nomination_suggested_end ||
-      !form.voting_starts_at || !form.voting_ends_at) {
-    return null
+  // Only validate phases if they are actually filled in
+  // If some fields are empty, that's OK — dates are optional at creation
+
+  // Admin phase: validate only if BOTH start AND end are provided
+  if (form.administration_suggested_start && form.administration_suggested_end) {
+    const adminStart = new Date(form.administration_suggested_start)
+    const adminEnd = new Date(form.administration_suggested_end)
+    if (adminEnd <= adminStart) return 'Administration phase end must be after start'
   }
 
-  const adminStart = new Date(form.administration_suggested_start)
-  const adminEnd = new Date(form.administration_suggested_end)
-  const nomStart = new Date(form.nomination_suggested_start)
-  const nomEnd = new Date(form.nomination_suggested_end)
-  const votStart = new Date(form.voting_starts_at)
-  const votEnd = new Date(form.voting_ends_at)
+  // Nomination phase: validate only if BOTH start AND end are provided
+  if (form.nomination_suggested_start && form.nomination_suggested_end) {
+    const nomStart = new Date(form.nomination_suggested_start)
+    const nomEnd = new Date(form.nomination_suggested_end)
+    if (nomEnd <= nomStart) return 'Nomination phase end must be after start'
+  }
 
-  // Admin phase: end must be after start
-  if (adminEnd <= adminStart) return 'Administration phase end must be after start'
+  // Voting phase: validate only if BOTH start AND end are provided
+  if (form.voting_starts_at && form.voting_ends_at) {
+    const votStart = new Date(form.voting_starts_at)
+    const votEnd = new Date(form.voting_ends_at)
+    if (votEnd <= votStart) return 'Voting phase end must be after start'
+  }
 
-  // Nomination phase: end must be after start
-  if (nomEnd <= nomStart) return 'Nomination phase end must be after start'
+  // Chronological order: validate only if adjacent phases are both filled
+  if (form.administration_suggested_end && form.nomination_suggested_start) {
+    const adminEnd = new Date(form.administration_suggested_end)
+    const nomStart = new Date(form.nomination_suggested_start)
+    if (nomStart < adminEnd) return 'Nomination phase must start after administration ends'
+  }
 
-  // Voting phase: end must be after start
-  if (votEnd <= votStart) return 'Voting phase end must be after start'
-
-  // Chronological order: admin → nomination → voting
-  if (nomStart < adminEnd) return 'Nomination phase must start after administration ends'
-  if (votStart < nomEnd) return 'Voting phase must start after nomination ends'
-
+  if (form.nomination_suggested_end && form.voting_starts_at) {
+    const nomEnd = new Date(form.nomination_suggested_end)
+    const votStart = new Date(form.voting_starts_at)
+    if (votStart < nomEnd) return 'Voting phase must start after nomination ends'
+  }
 
   return null
 })
@@ -314,6 +346,7 @@ const submit = () => {
       name:        form.name,
       description: form.description,
       expected_voter_count: form.expected_voter_count,
+      timezone:    form.timezone,
       start_date: adminStart ? adminStart.toISOString().split('T')[0] : '',
       end_date: votEnd ? votEnd.toISOString().split('T')[0] : '',
       administration_suggested_start: form.administration_suggested_start,

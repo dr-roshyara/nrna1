@@ -15,12 +15,15 @@ const props = defineProps({
     required: true,
     validator: (v) => [
       'draft',
-      'pending_approval',
-      'administration',
-      'nomination',
-      'voting',
-      'results_pending',
-      'results',
+      'submitted_for_approval',
+      'approved',
+      'rejected',
+      'setup',
+      'ready_for_voting',
+      'voting_active',
+      'counting',
+      'results_published',
+      'archived',
     ].includes(v),
   },
   size: {
@@ -34,12 +37,15 @@ const { t } = useI18n()
 
 const stateConfig = {
   draft: { icon: '📝', color: 'slate', messageKey: 'states.draft' },
-  pending_approval: { icon: '⏳', color: 'amber', messageKey: 'states.pending_approval' },
-  administration: { icon: '⚙️', color: 'blue', messageKey: 'states.administration' },
-  nomination: { icon: '📋', color: 'purple', messageKey: 'states.nomination' },
-  voting: { icon: '🗳️', color: 'emerald', messageKey: 'states.voting' },
-  results_pending: { icon: '📊', color: 'orange', messageKey: 'states.results_pending' },
-  results: { icon: '✅', color: 'green', messageKey: 'states.results' },
+  submitted_for_approval: { icon: '⏳', color: 'amber', messageKey: 'states.submitted_for_approval' },
+  approved: { icon: '✅', color: 'emerald', messageKey: 'states.approved' },
+  rejected: { icon: '❌', color: 'red', messageKey: 'states.rejected' },
+  setup: { icon: '⚙️', color: 'blue', messageKey: 'states.setup' },
+  ready_for_voting: { icon: '📋', color: 'purple', messageKey: 'states.ready_for_voting' },
+  voting_active: { icon: '🗳️', color: 'emerald', messageKey: 'states.voting_active' },
+  counting: { icon: '📊', color: 'orange', messageKey: 'states.counting' },
+  results_published: { icon: '✅', color: 'green', messageKey: 'states.results_published' },
+  archived: { icon: '📦', color: 'gray', messageKey: 'states.archived' },
 }
 
 const colorClasses = {
@@ -50,6 +56,8 @@ const colorClasses = {
   emerald: 'bg-emerald-100 text-emerald-800',
   orange: 'bg-orange-100 text-orange-800',
   green: 'bg-green-100 text-green-800',
+  red: 'bg-red-100 text-red-800',
+  gray: 'bg-gray-100 text-gray-800',
 }
 
 const sizeClasses = {

@@ -36,6 +36,7 @@ class ConstitutionalTransitionGuardTest extends TestCase
         $election = Election::factory()->create([
             'voting_starts_at' => now()->addDays(1),
             'voting_ends_at' => now()->addDays(2),
+            'timezone' => 'UTC',  // Required precondition for open_voting
         ]);
         $user = \App\Models\User::factory()->create();
 
@@ -50,6 +51,7 @@ class ConstitutionalTransitionGuardTest extends TestCase
             canVote: false,
             canManageVoters: false,
             canPublishResults: false,
+            canEditTimeline: true,
             isLocked: true,
             blockedReason: null,
             allowedActions: ['open_voting'],
@@ -73,6 +75,7 @@ class ConstitutionalTransitionGuardTest extends TestCase
             canVote: false,
             canManageVoters: true,
             canPublishResults: false,
+            canEditTimeline: true,
             isLocked: false,
             blockedReason: 'Setup not started',
             allowedActions: [],
@@ -95,6 +98,7 @@ class ConstitutionalTransitionGuardTest extends TestCase
             canVote: false,
             canManageVoters: false,
             canPublishResults: false,
+            canEditTimeline: true,
             isLocked: true,
             blockedReason: null,
             allowedActions: ['open_voting'],
@@ -117,6 +121,7 @@ class ConstitutionalTransitionGuardTest extends TestCase
             canVote: false,
             canManageVoters: false,
             canPublishResults: false,
+            canEditTimeline: true,
             isLocked: true,
             blockedReason: null,
             allowedActions: ['open_voting'],
@@ -177,5 +182,50 @@ class ConstitutionalTransitionGuardTest extends TestCase
         $this->assertContains('has_posts', $preconditions);
         $this->assertContains('has_voters', $preconditions);
         $this->assertContains('has_committee_members', $preconditions);
+    }
+
+    /**
+     * RED: System actions should be allowed without authenticated user
+     *
+     * auto_submit requires 'system' role and should work without Auth::user()
+     * because it's automatically triggered, not user-triggered.
+     */
+    #[\PHPUnit\Framework\Attributes\Test]
+    public function system_actions_allowed_without_authenticated_user(): void
+    {
+        $org = \App\Models\Organisation::firstOrCreate(
+            ['name' => 'Test Org'],
+            ['slug' => 'test-org', 'id' => 9999]
+        );
+
+        $election = Election::factory()
+            ->forOrganisation($org)
+            ->create([
+                'expected_voter_count' => 30,  // Free plan
+                'submitted_for_approval_at' => null,
+                'approved_at' => null,
+                'administration_completed' => false,
+            ]);
+
+        $snapshot = new ElectionLifecycleSnapshot(
+            state: ElectionLifecycleState::Draft,
+            canEdit: true,
+            canVote: false,
+            canManageVoters: true,
+            canPublishResults: false,
+            canEditTimeline: true,
+            isLocked: false,
+            blockedReason: null,
+            allowedActions: ['submit_for_approval', 'auto_submit'],
+        );
+
+        // Ensure no user is authenticated
+        \Illuminate\Support\Facades\Auth::logout();
+        $this->assertNull(\Illuminate\Support\Facades\Auth::user());
+
+        // auto_submit should succeed even without Auth::user()
+        // because 'system' role is valid for automatic actions
+        $this->guard->assertAllowed($election, 'auto_submit', $snapshot);
+        $this->assertTrue(true);
     }
 }

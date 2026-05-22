@@ -231,11 +231,9 @@
               <div v-if="elections.length > 0" class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <ElectionCard
                   v-for="election in elections" :key="election.id"
-                  :election="election" :activating-id="activatingId"
-                  :can-activate="canActivateElection && election.status === 'planned'"
+                  :election="election"
                   :can-manage="canManage || isChief || isDeputy"
                   :is-readonly="isCommissioner || (!canManage && !isOfficer)"
-                  @activate="activateElection"
                 />
               </div>
               <div v-else class="p-6">
@@ -467,7 +465,6 @@ const props = defineProps({
 })
 
 const page = usePage()
-const activatingId = ref(null)
 
 const activeElections    = computed(() => props.elections.filter(e => e.status === 'active'))
 const completedElections = computed(() => props.elections.filter(e => e.status === 'completed'))
@@ -481,15 +478,6 @@ const voterStatus = (electionId) => {
 }
 
 const formatDate = (d) => d ? d.slice(0, 10) : '—'
-
-const activateElection = (electionSlug) => {
-  if (!confirm('Activate this election? Status will change to active.')) return
-  activatingId.value = electionSlug
-  router.post(route('elections.activate', { election: electionSlug }), {}, {
-    preserveScroll: true,
-    onFinish: () => { activatingId.value = null },
-  })
-}
 
 const openOfficerModal = () => {
   router.visit(route('organisations.election-officers.index', props.organisation.slug))

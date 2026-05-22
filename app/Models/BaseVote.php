@@ -229,6 +229,33 @@ abstract class BaseVote extends Model
                 'ip' => request()->ip(),
             ]);
         });
+
+        // Sync votes_count denormalized column
+        static::saved(function ($vote) {
+            if ($vote instanceof Vote) {
+                $count = \DB::table('votes')
+                    ->where('election_id', $vote->election_id)
+                    ->whereNull('deleted_at')
+                    ->count();
+
+                \DB::table('elections')
+                    ->where('id', $vote->election_id)
+                    ->update(['votes_count' => $count]);
+            }
+        });
+
+        static::deleted(function ($vote) {
+            if ($vote instanceof Vote) {
+                $count = \DB::table('votes')
+                    ->where('election_id', $vote->election_id)
+                    ->whereNull('deleted_at')
+                    ->count();
+
+                \DB::table('elections')
+                    ->where('id', $vote->election_id)
+                    ->update(['votes_count' => $count]);
+            }
+        });
     }
 
     /**

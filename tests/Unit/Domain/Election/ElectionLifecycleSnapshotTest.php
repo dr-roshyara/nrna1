@@ -87,11 +87,10 @@ class ElectionLifecycleSnapshotTest extends TestCase
             canEditTimeline: false,
             isLocked: false,
             blockedReason: null,
-            allowedActions: ['close_voting', 'pause_voting'],
+            allowedActions: ['close_voting'],
         );
 
         $this->assertTrue($snapshot->canTransitionTo('close_voting'));
-        $this->assertTrue($snapshot->canTransitionTo('pause_voting'));
         $this->assertFalse($snapshot->canTransitionTo('open_voting'));
     }
 

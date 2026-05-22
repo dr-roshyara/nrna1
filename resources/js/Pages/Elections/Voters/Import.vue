@@ -200,7 +200,7 @@
               <!-- Row table (Election-Only Mode) -->
               <div v-else class="bg-neutral-50 rounded-lg border border-neutral-200 overflow-hidden mb-6">
                 <div class="overflow-x-auto max-h-[32rem] overflow-y-auto">
-                  <table class="w-full text-sm">
+                  <table class="w-full text-sm min-w-max">
                     <thead class="sticky top-0 bg-neutral-100 border-b border-neutral-200">
                       <tr>
                         <th class="px-3 py-2 text-left font-medium text-neutral-700">{{ t.preview.table.row }}</th>

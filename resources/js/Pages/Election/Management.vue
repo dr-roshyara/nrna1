@@ -67,7 +67,7 @@
                 <span class="hidden sm:inline">Setup Guide</span>
                 <span class="sm:hidden">Guide</span>
               </a>
-              <StatusBadge :status="election.status" size="md" />
+              <StatusBadge :status="stateMachine?.currentState ?? 'draft'" size="md" />
             </div>
           </div>
         </Card>
@@ -112,18 +112,60 @@
                   size="lg"
                   :loading="isLoading"
                   class="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 shadow-lg hover:shadow-xl transition-all duration-200"
-                  @click="router.visit(route('elections.submit-for-approval.show', { organisation: organisation.slug, election: election.slug }))"
+                  @click="handleSubmitForApproval"
                 >
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
-                  <span class="font-bold text-base">{{ t.actions?.submit_for_approval || 'Submit for Approval' }}</span>
-                  <span class="text-xs opacity-90 ml-2 hidden sm:inline">→ Begin review</span>
+                  <span class="font-bold text-base">
+                    {{ (election.expected_voter_count || 0) > 40 ? 'Submit for Approval' : 'Submit (Auto-Approved)' }}
+                  </span>
+                  <span class="text-xs opacity-90 ml-2 hidden sm:inline">
+                    {{ (election.expected_voter_count || 0) > 40 ? '→ Begin review' : '→ Auto-approve' }}
+                  </span>
                 </ActionButton>
               </div>
             </transition>
 
-            <!-- Open Voting: Show when in Nomination phase, disabled until preconditions are met -->
+            <!-- Begin Setup: Show when in Approved state (approved → setup) -->
+            <transition name="fade-scale" mode="out-in">
+              <div v-if="canBeginSetup" key="begin-setup" class="w-full">
+                <ActionButton
+                  variant="success"
+                  size="lg"
+                  :loading="isLoading"
+                  class="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 shadow-lg hover:shadow-xl transition-all duration-200"
+                  @click="handleBeginSetup"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                  </svg>
+                  <span class="font-bold text-base">Begin Setup</span>
+                  <span class="text-xs opacity-90 ml-2 hidden sm:inline">→ Start configuration</span>
+                </ActionButton>
+              </div>
+            </transition>
+
+            <!-- Complete Administration: Show when in Setup state -->
+            <transition name="fade-scale" mode="out-in">
+              <div v-if="canCompleteAdministration" key="complete-admin" class="w-full">
+                <ActionButton
+                  variant="outline"
+                  size="lg"
+                  :loading="isLoading"
+                  class="w-full sm:w-auto"
+                  @click="handlePhaseCompleted('administration')"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span class="font-bold text-base">Complete Administration</span>
+                  <span class="text-xs opacity-90 ml-2 hidden sm:inline">→ Begin nominations</span>
+                </ActionButton>
+              </div>
+            </transition>
+
+            <!-- Open Voting: Show when in Setup or Ready for Voting phase, disabled until preconditions are met -->
             <transition name="fade-scale" mode="out-in">
               <div v-if="canOpenVoting" key="open" class="w-full">
                 <div :title="openVotingBlockedReason || ''">
@@ -169,7 +211,7 @@
 
             <!-- Empty State: When no action available (safety fallback) -->
             <transition name="fade-scale" mode="out-in">
-              <div v-if="!canSubmitForApproval && !canOpenVoting && !canLockVoting && !canCloseVoting" key="empty" class="w-full px-6 py-4 bg-slate-50 border-2 border-dashed border-slate-300 rounded-lg text-center">
+              <div v-if="!canSubmitForApproval && !canBeginSetup && !canCompleteAdministration && !canOpenVoting && !canLockVoting && !canCloseVoting" key="empty" class="w-full px-6 py-4 bg-slate-50 border-2 border-dashed border-slate-300 rounded-lg text-center">
                 <p class="text-sm font-medium text-slate-600">✓ Election state locked</p>
               </div>
             </transition>
@@ -216,7 +258,7 @@
 
         <!-- Capacity/Approval Warning Banner -->
         <div
-          v-if="election.state === 'draft'"
+          v-if="currentState === 'draft' || currentState === 'approved'"
           class="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-6"
         >
           <div class="flex items-start gap-3">
@@ -918,7 +960,7 @@ function toDatetimeLocal(raw) {
   return new Date(raw).toISOString().slice(0, 16)
 }
 
-const currentState = computed(() => props.stateMachine?.currentState ?? props.election.state ?? 'draft')
+const currentState = computed(() => props.stateMachine?.currentState ?? 'draft')
 const allowedActions = computed(() => props.stateMachine?.allowedActions ?? [])
 
 const expectedVoterCount = ref(props.capacity?.expected_voter_count ?? 0)
@@ -961,7 +1003,8 @@ const saveButtonText = computed(() => {
 })
 
 const canSubmitForApproval = computed(() => allowedActions.value.includes('submit_for_approval'))
-const isPendingApproval = computed(() => currentState.value === 'pending_approval')
+const isPendingApproval = computed(() => currentState.value === 'submitted_for_approval')
+const canBeginSetup = computed(() => allowedActions.value.includes('begin_setup'))
 const canCompleteAdministration = computed(() => allowedActions.value.includes('complete_administration'))
 const canOpenVoting = computed(() => allowedActions.value.includes('open_voting'))
 const openVotingBlockedReason = computed(() => props.stateMachine?.openVotingBlockedReason ?? null)
@@ -974,13 +1017,15 @@ const isVotingActive = computed(() => canCloseVoting.value)
 const phaseInfo = computed(() => {
   const state = currentState.value
   if (state === 'draft') return { icon: '📋', status: 'Set up election posts, candidates, and voter list. When ready, submit for approval to begin the election workflow.', badge: 'Draft Phase', color: 'amber' }
-  if (state === 'pending_approval') return { icon: '⏳', status: 'Awaiting review by election committee. The election will move to administration once approved.', badge: 'Approval Phase', color: 'amber' }
-  if (state === 'administration') return { icon: '⚙️', status: 'Configure posts and positions, assign candidates, import and approve voters. Complete administration to open nominations.', badge: 'Administration Phase', color: 'amber' }
-  if (state === 'nomination') return { icon: '📋', status: 'Review and approve/reject candidacy applications from members below. Open voting when ready to begin the election.', badge: 'Nomination Phase', color: 'amber' }
-  if (state === 'voting') return { icon: '🗳️', status: '✓ Voting is active — members can cast their votes. Monitor participation and close voting when the period ends.', badge: 'Voting Phase', color: 'emerald' }
-  if (state === 'results_pending') return { icon: '📊', status: 'Voting has closed. Results are being counted. Publish results when ready to make them visible to members.', badge: 'Counting Phase', color: 'amber' }
-  if (state === 'results') return { icon: '✅', status: 'Election complete and results published. All phases are finished.', badge: 'Results Phase', color: 'emerald' }
-  return { icon: '📋', status: 'Unknown', badge: '', color: 'slate' }
+  if (state === 'submitted_for_approval') return { icon: '⏳', status: 'Awaiting review by platform admin. The election will move to setup once approved.', badge: 'Pending Approval', color: 'amber' }
+  if (state === 'approved') return { icon: '✅', status: 'Election approved. Click "Begin Setup" to start configuration.', badge: 'Approved', color: 'emerald' }
+  if (state === 'setup') return { icon: '⚙️', status: 'Configure posts and positions, assign candidates, import and approve voters. Complete administration to proceed.', badge: 'Setup', color: 'amber' }
+  if (state === 'ready_for_voting') return { icon: '📋', status: 'Setup complete and candidates approved. Ready to open voting when you are prepared.', badge: 'Ready for Voting', color: 'amber' }
+  if (state === 'voting_active') return { icon: '🗳️', status: '✓ Voting is active — members can cast their votes. Monitor participation and close voting when the period ends.', badge: 'Voting Active', color: 'emerald' }
+  if (state === 'counting') return { icon: '📊', status: 'Voting has closed. Results are being counted. Publish results when ready to make them visible to members.', badge: 'Counting', color: 'amber' }
+  if (state === 'results_published') return { icon: '✅', status: 'Election complete and results published. All phases are finished.', badge: 'Results Published', color: 'emerald' }
+  if (state === 'rejected') return { icon: '❌', status: 'Election was rejected. You can revise and resubmit for approval.', badge: 'Rejected', color: 'amber' }
+  return { icon: '📋', status: 'Unknown state', badge: state, color: 'slate' }
 })
 
 const settingsUrl = computed(() =>
@@ -1084,6 +1129,52 @@ const lockVoting = () => {
   })
 }
 
+// Submit for Approval: route based on voter count
+const handleSubmitForApproval = () => {
+  const voterCount = props.election?.expected_voter_count || 0
+
+  if (voterCount <= 40) {
+    // Free plan (≤40 voters): submit directly, skip the review page
+    isLoading.value = true
+    router.post(
+      route('elections.submit-for-approval', { election: props.election.slug }),
+      {},
+      {
+        preserveScroll: true,
+        onSuccess: () => {
+          router.reload({ preserveScroll: true })
+        },
+        onError: (errors) => {
+          console.error('Failed to submit election:', errors)
+          isLoading.value = false
+        },
+        onFinish: () => {
+          isLoading.value = false
+        },
+      }
+    )
+  } else {
+    // Paid plan (>40 voters): navigate to review page
+    router.visit(route('elections.submit-for-approval.show', {
+      organisation: props.organisation.slug,
+      election: props.election.slug
+    }))
+  }
+}
+
+// Begin Setup state transition handler
+const handleBeginSetup = () => {
+  isLoading.value = true
+  router.post(
+    route('elections.activate', { election: props.election.slug }),
+    {},
+    {
+      preserveScroll: true,
+      onFinish: () => { isLoading.value = false },
+    }
+  )
+}
+
 // State Machine Event Handlers
 const handlePhaseCompleted = (phase) => {
   selectedPhase.value = phase
@@ -1153,18 +1244,18 @@ const handleDatesUpdated = ({ phase, dates }) => {
     return
   }
 
-  // Map phases to correct database column names
+  // Map SSOT phase states to database column names
   const columnMap = {
-    administration: {
+    setup: {
       start: 'administration_suggested_start',
       end: 'administration_suggested_end',
     },
-    nomination: {
+    ready_for_voting: {
       start: 'nomination_suggested_start',
       end: 'nomination_suggested_end',
     },
-    voting: {
-      start: 'voting_starts_at',   // Voting uses different naming
+    voting_active: {
+      start: 'voting_starts_at',
       end: 'voting_ends_at',
     },
   }
@@ -1175,9 +1266,18 @@ const handleDatesUpdated = ({ phase, dates }) => {
     return
   }
 
+  // Convert local datetime strings to ISO format for backend
+  // Input format: "2026-05-21T18:20" (from datetime-local input, in local time)
+  // Convert to UTC ISO string for storage
+  const convertToISO = (localDatetimeStr) => {
+    if (!localDatetimeStr) return null
+    const date = new Date(localDatetimeStr)
+    return date.toISOString()
+  }
+
   const payload = {
-    [cols.start]: dates.start,
-    [cols.end]: dates.end,
+    [cols.start]: convertToISO(dates.start),
+    [cols.end]: convertToISO(dates.end),
   }
 
   router.patch(route('elections.update-timeline', props.election.slug), payload, {
@@ -1185,7 +1285,7 @@ const handleDatesUpdated = ({ phase, dates }) => {
       router.reload({ preserveScroll: true })
     },
     onError: (errors) => {
-      // Handle validation errors
+      console.error('❌ Error updating timeline:', errors)
     },
   })
 }

@@ -110,7 +110,7 @@
             class="px-6 py-3 rounded-lg bg-primary-600 hover:bg-primary-700 disabled:bg-primary-400 text-white font-semibold transition-colors disabled:cursor-not-allowed flex items-center gap-2"
           >
             <span v-if="isLoading" class="inline-block animate-spin">⟳</span>
-            {{ isLoading ? 'Submitting...' : 'Submit for Approval' }}
+            {{ isLoading ? 'Submitting...' : (election.expected_voter_count > 40 ? 'Submit for Approval' : 'Submit (Auto-Approved)') }}
           </button>
           <button
             v-else
@@ -138,14 +138,15 @@ const props = defineProps({
   organisation: Object,
 })
 
-// Redirect if election is not in draft state (already submitted)
-watch(() => props.election?.state, (state) => {
-  if (state && state !== 'draft') {
+// Redirect only if state changes FROM draft (meaning submission completed)
+// The onSuccess callback already handles the redirect after submission
+watch(() => props.election?.state, (state, oldState) => {
+  if (oldState === 'draft' && state && state !== 'draft') {
     router.visit(route('elections.management', {
       election: props.election.slug
     }))
   }
-}, { immediate: true })
+})
 
 const isLoading = ref(false)
 
@@ -153,6 +154,7 @@ const isDraft = computed(() => props.election?.state === 'draft')
 
 const hasVoterCount = computed(() => props.election?.expected_voter_count > 0)
 
+// Backend decides auto vs manual based on voter count
 const isReady = computed(() => isDraft.value && hasVoterCount.value)
 
 const submitForApproval = () => {

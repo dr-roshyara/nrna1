@@ -27,7 +27,7 @@
       <!-- Column 3: Progress -->
       <div class="header-col col-3">
         <div class="header-progress">
-          <div class="progress-number">{{ completedPhasesCount }}/5</div>
+          <div class="progress-number">{{ completedPhasesCount }}/{{ phases.length }}</div>
           <div class="progress-label">{{ t.timeline.phases_complete }}</div>
         </div>
       </div>
@@ -138,9 +138,9 @@
                 📅 Update Dates
               </button>
 
-              <!-- Lock Voting button (voting phase — NEW) -->
+              <!-- Lock Voting button (voting_active phase — NEW) -->
               <button
-                v-if="phase.state === 'voting'"
+                v-if="phase.state === 'voting_active'"
                 class="action-btn y-focus h-auto font-bold px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95"
                 style="background: #f59e0b; color: #fff; border: none; cursor: pointer;"
                 @click="$emit('lock-voting')"
@@ -156,8 +156,8 @@
                 <span class="lock-text">{{ getLockReason(phase.state) }}</span>
               </div>
 
-              <!-- Countdown Timer (for active voting phase) -->
-              <div v-if="phase.state === 'voting' && isPhaseActive(phase.state)" class="countdown-timer">
+              <!-- Countdown Timer (for active voting_active phase) -->
+              <div v-if="phase.state === 'voting_active' && isPhaseActive(phase.state)" class="countdown-timer">
                 <svg class="timer-icon" viewBox="0 0 24 24" fill="currentColor">
                   <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
                   <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
@@ -309,34 +309,58 @@ onUnmounted(() => {
 
 const phases = [
   {
-    state: 'administration',
+    state: 'draft',
+    icon: '📝',
+    description: 'Create election and configure basic settings.',
+    requirements: ['Election name', 'Basic configuration'],
+  },
+  {
+    state: 'submitted_for_approval',
+    icon: '⏳',
+    description: 'Election submitted for approval by administrator.',
+    requirements: ['Election details complete'],
+  },
+  {
+    state: 'approved',
+    icon: '✅',
+    description: 'Election approved and ready for setup.',
+    requirements: ['Administrator approval'],
+  },
+  {
+    state: 'setup',
     icon: '⚙️',
     description: 'Setup the election structure including posts, voters, and committee members.',
     requirements: ['At least one post', 'At least one voter', 'Election name and configuration'],
   },
   {
-    state: 'nomination',
+    state: 'ready_for_voting',
     icon: '📋',
     description: 'Accept and approve candidate applications.',
     requirements: ['At least one approved candidate', 'No pending candidacies'],
   },
   {
-    state: 'voting',
+    state: 'voting_active',
     icon: '🗳️',
     description: 'Members cast their votes in a secure voting window.',
     requirements: ['Voting dates must be set', 'Voting window must be active'],
   },
   {
-    state: 'results_pending',
+    state: 'counting',
     icon: '⏳',
     description: 'Voting period is complete, awaiting results publication.',
     requirements: ['Voting period must be finished'],
   },
   {
-    state: 'results',
+    state: 'results_published',
     icon: '📊',
     description: 'Results are published and final.',
     requirements: ['Manual publication required'],
+  },
+  {
+    state: 'archived',
+    icon: '📦',
+    description: 'Election archived and closed.',
+    requirements: ['Election completed'],
   },
 ]
 
@@ -354,11 +378,15 @@ const editingPhaseLabel = computed(() => {
 
 
 const phaseStates = computed(() => ({
-  administration: props.election.administration_completed,
-  nomination: props.election.nomination_completed,
-  voting: props.election.voting_ends_at && new Date() > new Date(props.election.voting_ends_at),
-  results_pending: props.election.results_published_at !== null,
-  results: props.election.results_published,
+  draft: props.stateMachine.currentState && ['submitted_for_approval', 'approved', 'setup', 'ready_for_voting', 'voting_active', 'counting', 'results_published', 'archived'].includes(props.stateMachine.currentState),
+  submitted_for_approval: props.election.submitted_for_approval_at !== null && props.election.rejected_at === null,
+  approved: props.election.approved_at !== null && props.election.administration_completed === false,
+  setup: props.election.administration_completed,
+  ready_for_voting: props.election.nomination_completed,
+  voting_active: props.election.voting_ends_at && new Date() > new Date(props.election.voting_ends_at),
+  counting: props.election.results_published_at !== null,
+  results_published: props.election.results_published,
+  archived: props.stateMachine.currentState === 'archived',
 }))
 
 const completedPhasesCount = computed(() => {
@@ -366,7 +394,7 @@ const completedPhasesCount = computed(() => {
 })
 
 const progressPercentage = computed(() => {
-  return (completedPhasesCount.value / 5) * 100
+  return (completedPhasesCount.value / phases.length) * 100
 })
 
 const isPhaseCompleted = (state) => {
@@ -386,22 +414,22 @@ const getStatusClass = (state) => {
 const getPhaseMetrics = (state) => {
   const metrics = {}
   switch (state) {
-    case 'administration':
+    case 'setup':
       metrics.posts = props.election.posts_count || 0
       metrics.voters = props.election.voters_count || 0
       break
-    case 'nomination':
+    case 'ready_for_voting':
       metrics.candidates = props.election.candidates_count || 0
       metrics.pending = props.election.pending_candidacies_count || 0
       break
-    case 'voting':
+    case 'voting_active':
       metrics.codes = props.election.voting_codes_count || 0
       metrics.votes = props.election.votes_count || 0
       break
-    case 'results_pending':
+    case 'counting':
       metrics.awaiting = 'Publication'
       break
-    case 'results':
+    case 'results_published':
       metrics.published = 'Yes'
       break
   }
@@ -425,26 +453,26 @@ const getMetricLabel = (metric) => {
 const getPhaseDates = (state) => {
   const dates = {}
   switch (state) {
-    case 'administration':
+    case 'setup':
       if (props.election.administration_suggested_start)
         dates.start = props.election.administration_suggested_start
       if (props.election.administration_suggested_end)
         dates.end = props.election.administration_suggested_end
       break
-    case 'nomination':
+    case 'ready_for_voting':
       if (props.election.nomination_suggested_start)
         dates.start = props.election.nomination_suggested_start
       if (props.election.nomination_suggested_end)
         dates.end = props.election.nomination_suggested_end
       break
-    case 'voting':
+    case 'voting_active':
       if (props.election.voting_starts_at)
         dates.start = props.election.voting_starts_at
       if (props.election.voting_ends_at)
         dates.end = props.election.voting_ends_at
       break
-    case 'results_pending':
-    case 'results':
+    case 'counting':
+    case 'results_published':
       if (props.election.results_published_at)
         dates.start = props.election.results_published_at
       break
@@ -469,8 +497,8 @@ const hasActions = (state) => {
 
 const canCompletePhase = (state) => {
   const actions = props.stateMachine?.allowedActions || []
-  if (state === 'administration') return actions.includes('complete_administration')
-  if (state === 'nomination') return actions.includes('open_voting')
+  if (state === 'setup') return actions.includes('complete_administration')
+  if (state === 'ready_for_voting') return actions.includes('complete_nomination')
   return false
 }
 
@@ -478,8 +506,8 @@ const canLockVotingPhase = (state) => {
   const actions = props.stateMachine?.allowedActions || []
 
   return (
-    state === 'voting' &&
-    props.stateMachine.currentState === 'voting' &&
+    state === 'voting_active' &&
+    props.stateMachine.currentState === 'voting_active' &&
     !props.election.voting_locked &&
     actions.includes('lock_voting')
   )
@@ -490,18 +518,18 @@ const canUpdateDates = (state) => {
   // Final phases are never editable
 
   switch (state) {
-    case 'administration':
+    case 'setup':
       return !props.election.administration_completed
 
-    case 'nomination':
+    case 'ready_for_voting':
       return !props.election.nomination_completed
 
-    case 'voting':
+    case 'voting_active':
       // Editable until voting is locked (regardless of voting start time)
       return !props.election.voting_locked
 
-    case 'results_pending':
-    case 'results':
+    case 'counting':
+    case 'results_published':
       // Never editable (final phases)
       return false
 
@@ -513,14 +541,14 @@ const canUpdateDates = (state) => {
 // NEW: Check if phase is locked from editing
 const isPhaseLockedFromEdit = (state) => {
   switch (state) {
-    case 'administration':
+    case 'setup':
       return props.election.administration_completed
-    case 'nomination':
+    case 'ready_for_voting':
       return props.election.nomination_completed
-    case 'voting':
+    case 'voting_active':
       return props.election.voting_locked  // Only locked when explicitly locked
-    case 'results_pending':
-    case 'results':
+    case 'counting':
+    case 'results_published':
       return true // Always locked
     default:
       return false
@@ -530,17 +558,17 @@ const isPhaseLockedFromEdit = (state) => {
 // Get reason why phase is locked
 const getLockReason = (state) => {
   switch (state) {
-    case 'administration':
+    case 'setup':
       return 'Admin Locked'
-    case 'nomination':
+    case 'ready_for_voting':
       return 'Nomination Locked'
-    case 'voting':
+    case 'voting_active':
       if (props.election.voting_locked) return 'Voting Locked'
       // Not locked = editable (regardless of start time)
       return 'Editable'
-    case 'results_pending':
-      return 'Results Pending'
-    case 'results':
+    case 'counting':
+      return 'Counting Phase'
+    case 'results_published':
       return 'Results Published'
     default:
       return 'Locked'
@@ -550,7 +578,7 @@ const getLockReason = (state) => {
 // NEW: Check if phase is currently active
 const isPhaseActive = (state) => {
   switch (state) {
-    case 'voting':
+    case 'voting_active':
       return props.election.voting_starts_at && props.election.voting_ends_at &&
              new Date() >= new Date(props.election.voting_starts_at) &&
              new Date() < new Date(props.election.voting_ends_at)
@@ -561,7 +589,7 @@ const isPhaseActive = (state) => {
 
 // Get countdown time until voting ends
 const getCountdownTime = (state) => {
-  if (state !== 'voting' || !props.election.voting_ends_at) return '--:--:--'
+  if (state !== 'voting_active' || !props.election.voting_ends_at) return '--:--:--'
 
   const endTime = new Date(props.election.voting_ends_at)
   const now = currentTime.value
@@ -581,7 +609,7 @@ const getUpdateDisabledReason = (state) => {
   if (isPhaseCompleted(state)) {
     return 'Phase is complete. Dates cannot be edited.'
   }
-  if (state === 'voting') {
+  if (state === 'voting_active') {
     if (props.election.voting_locked) {
       return 'Voting is locked. Dates cannot be edited.'
     }
@@ -601,7 +629,13 @@ const openDateModal = (state) => {
     if (!dateString) return ''
     const date = new Date(dateString)
     if (isNaN(date.getTime())) return ''
-    return date.toISOString().slice(0, 16)
+    // Convert to local time (YYYY-MM-DDTHH:mm format for datetime-local input)
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    const hours = String(date.getHours()).padStart(2, '0')
+    const minutes = String(date.getMinutes()).padStart(2, '0')
+    return `${year}-${month}-${day}T${hours}:${minutes}`
   }
 
   dateForm.value = {
@@ -998,27 +1032,27 @@ const saveDates = () => {
   transition: all 0.3s ease;
 }
 
-.timeline-phase.phase-administration .marker-outer {
+.timeline-phase.phase-setup .marker-outer {
   border-color: var(--color-admin);
   background: linear-gradient(135deg, var(--color-admin) 0%, var(--color-admin-light) 100%);
 }
 
-.timeline-phase.phase-nomination .marker-outer {
+.timeline-phase.phase-ready_for_voting .marker-outer {
   border-color: var(--color-nomination);
   background: linear-gradient(135deg, var(--color-nomination) 0%, var(--color-nomination-light) 100%);
 }
 
-.timeline-phase.phase-voting .marker-outer {
+.timeline-phase.phase-voting_active .marker-outer {
   border-color: var(--color-voting);
   background: linear-gradient(135deg, var(--color-voting) 0%, var(--color-voting-light) 100%);
 }
 
-.timeline-phase.phase-results_pending .marker-outer {
+.timeline-phase.phase-counting .marker-outer {
   border-color: var(--color-pending);
   background: linear-gradient(135deg, var(--color-pending) 0%, var(--color-pending-light) 100%);
 }
 
-.timeline-phase.phase-results .marker-outer {
+.timeline-phase.phase-results_published .marker-outer {
   border-color: var(--color-results);
   background: linear-gradient(135deg, var(--color-results) 0%, var(--color-results-light) 100%);
 }

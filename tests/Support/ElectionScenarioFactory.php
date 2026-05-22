@@ -60,8 +60,9 @@ final class ElectionScenarioFactory
                 'results_published_at' => null,
             ]);
 
-        // Verify engine derives correct state
+        // Verify engine derives correct state and SYNC IT TO DATABASE
         self::assertDerivedState($election, ElectionLifecycleState::Approved);
+        $election->update(['state' => ElectionLifecycleState::Approved->value]);
 
         return $election;
     }
@@ -129,8 +130,21 @@ final class ElectionScenarioFactory
             'pending_candidacies_count' => 0,
         ]);
 
-        // Verify engine derives correct state (Setup or ReadyForVoting)
+        // Verify engine derives correct state and SYNC IT TO DATABASE
         $state = ElectionLifecycle::of($election)->state();
+        $election->update(['state' => $state->value]);
+
+        \Illuminate\Support\Facades\Log::info('ElectionScenarioFactory::configurationComplete', [
+            'election_id' => $election->id,
+            'derived_state' => $state->value,
+            'approved_at' => $election->approved_at?->toIso8601String(),
+            'voting_starts_at' => $election->voting_starts_at?->toIso8601String(),
+            'voting_ends_at' => $election->voting_ends_at?->toIso8601String(),
+            'administration_completed' => $election->administration_completed,
+            'nomination_completed' => $election->nomination_completed,
+            'candidates_count' => $election->candidates_count,
+            'posts_count' => $election->posts_count,
+        ]);
         self::assertStateIsOneOf($election, [
             ElectionLifecycleState::Setup,
             ElectionLifecycleState::ReadyForVoting,
@@ -177,8 +191,9 @@ final class ElectionScenarioFactory
                 'results_published_at' => null,
             ]);
 
-        // Verify engine derives correct state
+        // Verify engine derives correct state and SYNC IT TO DATABASE
         self::assertDerivedState($election, ElectionLifecycleState::VotingActive);
+        $election->update(['state' => ElectionLifecycleState::VotingActive->value]);
 
         return $election;
     }
@@ -214,8 +229,9 @@ final class ElectionScenarioFactory
                 'results_published_at' => null,
             ]);
 
-        // Verify engine derives correct state
+        // Verify engine derives correct state and SYNC IT TO DATABASE
         self::assertDerivedState($election, ElectionLifecycleState::Counting);
+        $election->update(['state' => ElectionLifecycleState::Counting->value]);
 
         return $election;
     }
@@ -250,8 +266,9 @@ final class ElectionScenarioFactory
                 'results_published_at' => $now,
             ]);
 
-        // Verify engine derives correct state
+        // Verify engine derives correct state and SYNC IT TO DATABASE
         self::assertDerivedState($election, ElectionLifecycleState::ResultsPublished);
+        $election->update(['state' => ElectionLifecycleState::ResultsPublished->value]);
 
         return $election;
     }
