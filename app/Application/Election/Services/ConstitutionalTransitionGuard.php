@@ -177,8 +177,8 @@ final class ConstitutionalTransitionGuard
     private function isPreconditionMet(Election $election, string $condition): bool
     {
         return match ($condition) {
-            'has_posts' => $election->posts()->exists(),
-            'has_voters' => $election->voters()->exists(),
+            'has_posts' => $election->posts()->withoutGlobalScopes()->exists(),
+            'has_voters' => $election->voters()->withoutGlobalScopes()->exists(),
             'has_chief' => \App\Models\ElectionOfficer::where('election_id', $election->id)
                 ->where('role', 'chief')
                 ->where('status', 'active')
