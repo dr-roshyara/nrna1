@@ -106,7 +106,7 @@ class ElectionManagementController extends Controller
             'description'                   => ['nullable', 'string', 'max:5000'],
             'type'                          => ['sometimes', 'in:real'],
             'expected_voter_count'          => ['required', 'integer', 'min:1', 'max:10000'],
-            'timezone'                      => ['nullable', 'timezone'],
+            'timezone'                      => ['nullable', 'string', 'max:50'],
             'administration_suggested_start' => ['nullable', 'date_format:Y-m-d\TH:i'],
             'administration_suggested_end'   => ['nullable', 'date_format:Y-m-d\TH:i', 'after:administration_suggested_start'],
             'nomination_suggested_start'     => ['nullable', 'date_format:Y-m-d\TH:i'],
@@ -170,9 +170,9 @@ class ElectionManagementController extends Controller
      */
     private function generateUniqueSlug(string $name): string
     {
-        // Use a UUID suffix so we never need to loop — guaranteed unique.
         $base = Str::slug($name) ?: 'election';
-        return $base . '-' . Str::lower(Str::random(8));
+        $suffix = Str::lower(Str::substr((string) Str::uuid(), 0, 8));
+        return $base . '-' . $suffix;
     }
 
     /**

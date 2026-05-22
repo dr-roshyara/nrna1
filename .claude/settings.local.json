@@ -1,7 +1,6 @@
 {
-  "plansDirectory": "./claude/plans",  
   "permissions": {
-     "allow": [
+    "allow": [
       "Bash(php artisan test:*)",
       "Bash(php artisan make:test:*)",
       "Bash(git add:*)",
@@ -14,7 +13,9 @@
       "Bash(composer:*)",
       "Bash(composer install:*)",
       "Bash(php artisan:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(git commit -m 'refactor: Improve timezone validation and slug generation in ElectionController *)"
     ]
-  }
+  },
+  "plansDirectory": "./claude/plans"
 }
