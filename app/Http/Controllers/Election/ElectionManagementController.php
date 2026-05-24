@@ -15,6 +15,7 @@ use App\Services\VoterSlugService;
 use App\Services\DashboardResolver;
 use App\Services\ElectionClockService;
 use App\Application\Election\Facades\ElectionLifecycle;
+use App\Domain\Election\Projection\ElectionLifecycleProjection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\RedirectResponse;
@@ -27,16 +28,28 @@ use App\Models\Candidacy;
 use App\Notifications\ElectionReadyForActivation;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
+use App\Application\Election\Capabilities\CapabilityContext;
+use App\Application\Election\Capabilities\ElectionConstitutionRegistry;
+use App\Application\Election\Governance\ElectionStateWriteContext;
+use App\Application\Election\Services\ElectionCapabilityResolver;
 
 class ElectionManagementController extends Controller
 {
     protected DemoElectionResolver $demoResolver;
     protected VoterSlugService $slugService;
+    protected ElectionCapabilityResolver $capabilityResolver;
+    protected ElectionConstitutionRegistry $registry;
 
-    public function __construct(DemoElectionResolver $demoResolver, VoterSlugService $slugService)
-    {
+    public function __construct(
+        DemoElectionResolver $demoResolver,
+        VoterSlugService $slugService,
+        ElectionCapabilityResolver $capabilityResolver,
+        ElectionConstitutionRegistry $registry
+    ) {
         $this->demoResolver = $demoResolver;
         $this->slugService = $slugService;
+        $this->capabilityResolver = $capabilityResolver;
+        $this->registry = $registry;
     }
 
     // =========================================================================
@@ -951,29 +964,82 @@ class ElectionManagementController extends Controller
     }
 
     /**
-     * Lock voting period — chief or deputy.
-     * Freezes voting dates and officially begins the election.
+     * SUSPEND ELECTION — governance intervention overlay.
+     *
+     * This is NOT lifecycle progression. Suspension is an operational governance override
+     * that freezes all capabilities except resume. The engine re-derives state from
+     * suspended_at facts; no lifecycle state is directly mutated.
+     *
+     * Authorization: suspendElection (chief only — NOT manageSettings)
+     * @see \App\Policies\ElectionPolicy::suspendElection()
      */
-    public function lockVoting(Election $election): \Illuminate\Http\RedirectResponse
+    public function suspend(Election $election): \Illuminate\Http\RedirectResponse
     {
-        $this->authorize('manageSettings', $election);
+        $this->authorize('suspendElection', $election);
 
-        try {
-            $election->transitionTo(
-                \App\Domain\Election\StateMachine\Transition::manual(
-                    action: 'lock_voting',
-                    actorId: auth()->id(),
-                    reason: 'Voting locked and officially started',
-                    metadata: ['ip' => request()->ip()]
-                )
-            );
-            return back()->with('success', 'Voting locked and officially started.');
-
-        } catch (\App\Domain\Election\Exceptions\InvalidTransitionException $e) {
-            return back()->with('error', $e->getMessage());
-        } catch (\DomainException $e) {
-            return back()->with('error', $e->getMessage());
+        // Guard: prevent double-suspension
+        if ($election->suspended_at !== null) {
+            return back()->with('error', __('This election is already suspended.'));
         }
+
+        $validated = request()->validate([
+            'reason' => ['required', 'string', 'min:10', 'max:1000'],
+            'suspension_category' => ['nullable', 'string', Rule::in(Election::SUSPENSION_CATEGORIES)],
+        ]);
+
+        ElectionStateWriteContext::authorize(function () use ($election, $validated) {
+            $snapshot = ElectionLifecycle::of($election)->snapshot();
+
+            $election->suspended_at = now();
+            $election->suspended_by = auth()->id();
+            $election->suspended_reason = $validated['reason'];
+            $election->suspension_category = $validated['suspension_category'] ?? 'general';
+            $election->suspended_lifecycle_context = $snapshot->state->value;
+            $election->state = 'suspended';
+            $election->save();
+        });
+
+        \App\Models\ElectionAuditLog::record(
+            $election,
+            'suspend',
+            null,
+            ['reason' => $validated['reason'], 'suspension_category' => $validated['suspension_category'] ?? 'general'],
+            request()->user(),
+            request()
+        );
+
+        return back()->with('success', __('Election suspended. All governance operations are now locked.'));
+    }
+
+    /**
+     * RESUME ELECTION — remove governance intervention overlay.
+     *
+     * This reverses a suspension. Like suspend, this is NOT lifecycle progression.
+     * The engine re-derives state from facts (clearing suspended_at restores the
+     * pre-suspension lifecycle position).
+     *
+     * Authorization: suspendElection (chief only — same as suspend)
+     */
+    public function resume(Election $election): \Illuminate\Http\RedirectResponse
+    {
+        $this->authorize('suspendElection', $election);
+
+        ElectionStateWriteContext::authorize(function () use ($election) {
+            $election->suspended_at = null;
+            $election->suspended_by = null;
+            $election->suspended_reason = null;
+            $election->suspension_category = null;
+            $election->resumed_at = now();
+            $election->resumed_by = auth()->id();
+
+            $snapshot = ElectionLifecycle::of($election)->snapshot();
+            $election->state = $snapshot->state->value;
+            $election->suspended_lifecycle_context = null;
+
+            $election->save();
+        });
+
+        return back()->with('success', 'Election resumed. All governance operations are now available.');
     }
 
     /**
@@ -1185,6 +1251,44 @@ class ElectionManagementController extends Controller
     }
 
     /**
+     * Resolve capabilities for all constitution actions using the resolver.
+     */
+    private function resolveCapabilities(Election $election, ?\App\Models\User $user): array
+    {
+        if (!$user) {
+            return array_fill_keys(
+                $this->registry->getAllActions(),
+                ['allowed' => false, 'denial_reason' => 'unauthenticated', 'denial_detail' => null]
+            );
+        }
+
+        $state = \App\Application\Election\Facades\ElectionLifecycle::of($election)->state();
+        $capabilities = [];
+
+        foreach ($this->registry->getAllActions() as $action) {
+            $metadata = $this->registry->getActionMetadata($action);
+
+            $context = new CapabilityContext(
+                election: $election,
+                user: $user,
+                action: $action,
+                actionMetadata: $metadata,
+                state: $state,
+            );
+
+            $decision = $this->capabilityResolver->evaluate($context);
+
+            $capabilities[$action] = [
+                'allowed'       => $decision->allows(),
+                'denial_reason' => $decision->reason?->value,
+                'denial_detail' => $decision->detail,
+            ];
+        }
+
+        return $capabilities;
+    }
+
+    /**
      * Extract state machine data for rendering.
      */
     private function getStateMachineData(Election $election): array
@@ -1221,16 +1325,32 @@ class ElectionManagementController extends Controller
         $lifecycle = \App\Application\Election\Facades\ElectionLifecycle::of($election)->snapshot();
         $currentState = $lifecycle->state->value;
 
+        // Project completed states and availability from constitutional progression
+        $completedStates = ElectionLifecycleProjection::completedStatesFor($currentState);
+        $projectionAvailable = ElectionLifecycleProjection::isProjectionAvailable($currentState);
+
+        // Resolve all capabilities using the resolver
+        $capabilities = $this->resolveCapabilities($election, auth()->user());
+
         return [
-            'currentState'       => $currentState,
-            'stateInfo'          => ['name' => $currentState],
-            'postsCount'         => $postsCount,
-            'votersCount'        => $votersCount,
-            'committeeCount'     => $committeeCount,
-            'pendingCandidates'  => $pendingCandidatesCount,
-            'approvedCandidates' => $approvedCandidatesCount,
-            'allowedActions'             => $election->getAllowedActionsForUser(auth()->id()),
-            'openVotingBlockedReason'    => $election->whyCannotOpenVoting(),
+            'currentState'         => $currentState,
+            'stateInfo'            => ['name' => $currentState],
+            'completedStates'      => $completedStates,
+            'projectionAvailable'  => $projectionAvailable,
+            'postsCount'           => $postsCount,
+            'votersCount'          => $votersCount,
+            'committeeCount'       => $committeeCount,
+            'pendingCandidates'    => $pendingCandidatesCount,
+            'approvedCandidates'   => $approvedCandidatesCount,
+            'capabilities'         => $capabilities,
+            'capabilities_metadata' => [
+                'resolver_version'   => '1.0.0',
+                'generated_at'       => now()->toIso8601String(),
+                'constitution_hash'  => md5(serialize(\App\Domain\Election\Constitution\ElectionConstitution::RULES)),
+            ],
+            'capabilities_trace' => app()->hasDebugModeEnabled()
+                ? $this->capabilityResolver->lastTrace()?->entries
+                : null,
         ];
     }
 

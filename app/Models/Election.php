@@ -17,6 +17,8 @@ use App\Models\Vote;
 use App\Models\Result;
 use App\Models\VoterSlug;
 use App\Traits\BelongsToTenant;
+use App\Domain\Election\Enum\ElectionLifecycleState;
+use App\Domain\Election\ValueObjects\ElectionLifecycleSnapshot;
 use App\Domain\Election\StateMachine\ElectionStateMachine;
 use App\Domain\Election\StateMachine\TransitionTrigger;
 use App\Domain\Election\Events\ElectionApproved;
@@ -48,6 +50,9 @@ class Election extends Model
     const STATE_VOTING          = 'voting';
     const STATE_RESULTS_PENDING = 'results_pending';
     const STATE_RESULTS         = 'results';
+
+    // ── Governance Suspension Constants ─────────────────────────────────────────
+    const SUSPENSION_CATEGORIES = ['general', 'misconduct', 'emergency', 'investigation', 'other'];
 
     public function getRouteKeyName(): string
     {
@@ -110,6 +115,7 @@ class Election extends Model
         'is_active',
         'results_published',
         'results_published_at',
+        'archived_at',
         'settings',
         'status',
         'ip_restriction_enabled',
@@ -166,6 +172,15 @@ class Election extends Model
         'results_locked_at',
         // Capacity
         'expected_voter_count',
+        // Setup split + suspension
+        'setup_started_at',
+        'suspended_at',
+        'suspended_lifecycle_context',
+        'suspended_by',
+        'suspended_reason',
+        'suspension_category',
+        'resumed_at',
+        'resumed_by',
     ];
 
     /**
@@ -185,6 +200,7 @@ class Election extends Model
         'start_date' => 'datetime',
         'end_date' => 'datetime',
         'results_published_at' => 'datetime',
+        'archived_at' => 'datetime',
         'is_active'          => 'boolean',
         'results_published'  => 'boolean',
         'ip_restriction_enabled' => 'boolean',
@@ -220,6 +236,12 @@ class Election extends Model
         'results_locked_at'              => 'datetime',
         // Capacity
         'expected_voter_count'           => 'integer',
+        // Approval & nomination timestamps
+        'approved_at'                    => 'datetime',
+        // Setup split + suspension
+        'setup_started_at'               => 'datetime',
+        'suspended_at'                   => 'datetime',
+        'resumed_at'                     => 'datetime',
     ];
 
     /**
@@ -925,7 +947,7 @@ class Election extends Model
             'verify_vote' => $snapshot->canVote || !$snapshot->isLocked,
 
             // Candidacy
-            'apply_candidacy' => $snapshot->canEdit,
+            'apply_candidacy' => $snapshot->state === \App\Domain\Election\Enum\ElectionLifecycleState::SetupNomination,
             'approve_candidacy' => $snapshot->canEdit,
             'view_candidates' => true,  // Always readable
 
@@ -1524,9 +1546,9 @@ class Election extends Model
                 throw new \InvalidArgumentException('Voting start date must be before end date');
             }
 
-            // Voting start cannot be in the past (integrity critical) — skip in tests
+            // Voting start cannot be in the past (integrity critical)
             // This check ONLY applies when editing timeline, not during state transitions
-            if ($this->type === 'real' && !app()->environment('testing') && $votingStart->lt(now())) {
+            if ($this->type === 'real' && $votingStart->lt(now())) {
                 throw new \InvalidArgumentException('Voting start date cannot be in the past');
             }
         }
@@ -1603,7 +1625,34 @@ class Election extends Model
         return $this->stateMachine ??= new ElectionStateMachine($this);
     }
 
-    public function lockVoting(?string $actorId = null): void
+    /**
+     * Get the current derived lifecycle state (SSOT from engine)
+     */
+    public function currentState(): ElectionLifecycleState
+    {
+        $engine = app(\App\Application\Election\Services\ElectionLifecycleEngineImpl::class);
+        return $engine->getState($this);
+    }
+
+    /**
+     * Get the complete capability snapshot from the engine
+     */
+    public function getEngineSnapshot(): ElectionLifecycleSnapshot
+    {
+        $engine = app(\App\Application\Election\Services\ElectionLifecycleEngineImpl::class);
+        return $engine->compute($this);
+    }
+
+    /**
+     * Infrastructure enforcement: lock voting window after expiry.
+     *
+     * This is NOT a constitutional transition action. It is an operational
+     * enforcement mechanism used by auto-transition commands to seal expired
+     * voting windows. It bypasses the constitutional state machine intentionally.
+     *
+     * Constitutional equivalent: open_voting (which sets voting_locked as side effect)
+     */
+    public function enforceVotingLock(?string $actorId = null): void
     {
         $this->update([
             'voting_locked' => true,
@@ -1686,11 +1735,13 @@ class Election extends Model
                     match ($transition->action) {
                         'begin_setup'  => $this->applySideEffectsForBeginSetup($currentTime),
                         'open_voting'  => $this->applySideEffectsForOpenVoting($transition->actorId, $currentTime),
-                        'lock_voting'  => $this->applySideEffectsForLockVoting($currentTime),
                         'close_voting' => $this->applySideEffectsForCloseVoting($currentTime),
                         'approve'      => $this->applySideEffectsForApprove($transition->actorId, $currentTime),
                         'complete_administration' => $this->applySideEffectsForCompleteAdministration($currentTime),
                         'publish_results' => $this->applySideEffectsForPublishResults($currentTime),
+                        'archive'      => $this->applySideEffectsForArchive($currentTime),
+                        'suspend'      => $this->applySideEffectsForSuspend($transition->actorId, $transition->reason, $currentTime),
+                        'resume'       => $this->applySideEffectsForResume($transition->actorId, $currentTime),
                         default        => null,
                     };
 
@@ -1751,13 +1802,6 @@ class Election extends Model
                 ]);
             }
             return; // Allow closure
-        }
-    }
-
-    private function validateLockVoting(\App\Domain\Election\StateMachine\Transition $transition): void
-    {
-        if ($this->voting_locked) {
-            throw new \DomainException('Cannot lock voting: Voting is already locked.');
         }
     }
 
@@ -1864,20 +1908,6 @@ class Election extends Model
             ->update($updateData);
     }
 
-    /**
-     * Lock voting — marks voting as officially started.
-     * After this, dates can no longer be edited.
-     */
-    private function applySideEffectsForLockVoting(\Carbon\Carbon $currentTime): void
-    {
-        \Illuminate\Support\Facades\DB::table('elections')
-            ->where('id', $this->id)
-            ->update([
-                'voting_locked'    => true,
-                'voting_locked_at' => $currentTime,
-            ]);
-    }
-
     private function applySideEffectsForCloseVoting(\Carbon\Carbon $currentTime): void
     {
         // Bypass model events by using query builder directly (avoiding validateTimeline hook during transition)
@@ -1893,15 +1923,7 @@ class Election extends Model
 
     private function applySideEffectsForBeginSetup(\Carbon\Carbon $currentTime): void
     {
-        // Set the business fact the lifecycle engine reads to derive 'setup' state.
-        // administration_completed=true signals that setup phase has been formally opened.
-        // This replaces the old derived state from the 'approved' workflow.
-        \Illuminate\Support\Facades\DB::table('elections')
-            ->where('id', $this->id)
-            ->update([
-                'administration_completed'    => true,
-                'administration_completed_at' => $currentTime,
-            ]);
+        $this->forceFill(['setup_started_at' => $currentTime])->save();
     }
 
     private function applySideEffectsForApprove(?string $actorId, \Carbon\Carbon $currentTime): void
@@ -1928,9 +1950,7 @@ class Election extends Model
             $updateData['nomination_suggested_end']   = $currentTime->copy()->addDays(14);
         }
 
-        \Illuminate\Support\Facades\DB::table('elections')
-            ->where('id', $this->id)
-            ->update($updateData);
+        $this->forceFill($updateData)->save();
     }
 
     private function applySideEffectsForPublishResults(\Carbon\Carbon $currentTime): void
@@ -1940,6 +1960,51 @@ class Election extends Model
             ->update([
                 'results_published'    => true,
                 'results_published_at' => $currentTime,
+            ]);
+    }
+
+    private function applySideEffectsForArchive(\Carbon\Carbon $currentTime): void
+    {
+        \Illuminate\Support\Facades\DB::table('elections')
+            ->where('id', $this->id)
+            ->update([
+                'archived_at' => $currentTime,
+            ]);
+    }
+
+    private function applySideEffectsForSuspend(?string $actorId, ?string $reason, \Carbon\Carbon $currentTime): void
+    {
+        // Snapshot current lifecycle state for audit trail only.
+        // This is NOT a restoration target — it is forensic evidence.
+        $engine = app(\App\Application\Election\Services\ElectionLifecycleEngineImpl::class);
+        $lifecycleContext = $engine->getState($this)->value;
+
+        \Illuminate\Support\Facades\DB::table('elections')
+            ->where('id', $this->id)
+            ->update([
+                'suspended_at'                => $currentTime,
+                'suspended_by'                => $actorId,
+                'suspended_reason'            => $reason,
+                'suspended_lifecycle_context' => $lifecycleContext,
+            ]);
+    }
+
+    private function applySideEffectsForResume(?string $actorId, \Carbon\Carbon $currentTime): void
+    {
+        // Clear suspension flags ONLY.
+        // Do NOT write suspended_lifecycle_context to state column.
+        // Engine re-derives state from current constitutional facts.
+        // Time continued during suspension — windows may have expired.
+        \Illuminate\Support\Facades\DB::table('elections')
+            ->where('id', $this->id)
+            ->update([
+                'suspended_at'                => null,
+                'suspended_by'                => null,
+                'suspended_reason'            => null,
+                'suspension_category'         => null,
+                'suspended_lifecycle_context' => null,
+                'resumed_at'                  => $currentTime,
+                'resumed_by'                  => $actorId,
             ]);
     }
 
@@ -1982,7 +2047,8 @@ class Election extends Model
             'draft',
             'submitted_for_approval',
             'approved',
-            'setup',
+            'setup_administration',
+            'setup_nomination',
             'ready_for_voting',
             'voting_active',
             'counting',
@@ -2038,7 +2104,8 @@ class Election extends Model
             'submitted_for_approval' => 'Pending Approval',
             'approved' => 'Approved',
             'rejected' => 'Rejected',
-            'setup' => 'Setup',
+            'setup_administration' => 'Setup',
+            'setup_nomination' => 'Nomination',
             'ready_for_voting' => 'Ready for Voting',
             'voting_active' => 'Voting Active',
             'counting' => 'Counting',

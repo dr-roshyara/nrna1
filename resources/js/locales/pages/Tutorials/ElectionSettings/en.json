@@ -34,11 +34,11 @@
 
   "section_statemachine": {
     "heading": "Election Lifecycle",
-    "intro": "Every election progresses through seven distinct phases, each with its own rules and capabilities. The phase your election is in is determined automatically by the dates you set.",
-    "key_concept": "Elections are date-driven, not action-driven. You specify when voting begins and ends, and the system automatically manages phase transitions.",
+    "intro": "Every election progresses through ten distinct phases, each with its own rules and capabilities. The phase your election is in is determined by a constitutional governance engine that derives the current state from date and completion markers. Additionally, a suspension overlay can temporarily halt all operations at any point.",
+    "key_concept": "Elections follow a dual-axis model: a Lifecycle axis (10 linear phases driven by completions and dates) and an Operational axis (suspension as a governance overlay that can pause the lifecycle at any time). The constitutional engine enforces phase transition guards — each transition requires specific preconditions to be met.",
 
     "timeline": {
-      "description": "Your election follows this seven-phase lifecycle:",
+      "description": "Your election follows this ten-phase lifecycle:",
       "phases": [
         {
           "number": 1,
@@ -62,21 +62,34 @@
           "description": "Awaiting review by election committee",
           "color": "slate",
           "triggers": "When submitted for approval by election officer",
-          "what_happens": "The election has been submitted for approval. An election committee or platform admin reviews the configuration. If approved, it moves to Administration where full setup begins.",
+          "what_happens": "The election has been submitted for approval. An election committee or platform admin reviews the configuration. If approved, it moves to Approved where full setup begins.",
           "note": "The election can be rejected here with a reason provided. You can then revise and resubmit.",
           "actions": [
             "Review by election committee",
-            "Approve and move to Administration phase",
+            "Approve and move to Approved phase",
             "Reject with reason for revision"
           ]
         },
         {
           "number": 3,
-          "name": "Administration",
+          "name": "Approved",
+          "icon": "✅",
+          "description": "Election approved, setup ready to begin",
+          "color": "blue",
+          "triggers": "When approved by committee or admin",
+          "what_happens": "The election has been approved. It transitions to Setup Administration where you configure posts, candidates, and voters. This is a brief transitional phase before setup begins.",
+          "actions": [
+            "Transition to Setup Administration",
+            "Begin election configuration"
+          ]
+        },
+        {
+          "number": 4,
+          "name": "Setup Administration",
           "icon": "⚙️",
-          "description": "Set up the election structure",
+          "description": "Configure election structure and voters",
           "color": "amber",
-          "duration": "Approval granted",
+          "triggers": "Approval granted and setup begins",
           "what_happens": "You create posts (positions), add candidates, configure voters, and customise all settings. No voters can access the ballot yet.",
           "actions": [
             "Add or edit posts (positions)",
@@ -88,8 +101,8 @@
           ]
         },
         {
-          "number": 4,
-          "name": "Nomination",
+          "number": 5,
+          "name": "Setup Nomination",
           "icon": "📋",
           "description": "Candidates confirm and campaign",
           "color": "amber",
@@ -103,13 +116,27 @@
           ]
         },
         {
-          "number": 5,
-          "name": "Voting",
+          "number": 6,
+          "name": "Ready for Voting",
+          "icon": "🔐",
+          "description": "Election configured, awaiting voting window",
+          "color": "teal",
+          "triggers": "When nomination is marked complete",
+          "what_happens": "All setup phases are complete and the election is fully configured. The system waits for the voting start date. Preparatory voter operations (code creation, agreement acceptance) are available.",
+          "actions": [
+            "Code creation by voters",
+            "Agreement acceptance",
+            "Prepare for voting period"
+          ]
+        },
+        {
+          "number": 7,
+          "name": "Voting Active",
           "icon": "🗳️",
           "description": "Voters cast their ballots",
           "color": "purple",
           "triggers": "When voting_starts_at is reached",
-          "what_happens": "The voting period is now open. Voters see the ballot and can submit their selections. The system locks voting immediately when this phase starts to ensure fair count.",
+          "what_happens": "The voting period is now open. Voters see the ballot and can submit their selections. The constitutional engine locks voting immediately when this phase starts to ensure fair count.",
           "actions": [
             "Voters access and complete the ballot",
             "Monitor voting progress and real-time tallies",
@@ -119,8 +146,8 @@
           "note": "Once voting opens, settings changes require explicit confirmation. Changing IP restrictions or verification rules can affect voters who are in progress."
         },
         {
-          "number": 6,
-          "name": "Results Pending",
+          "number": 8,
+          "name": "Counting",
           "icon": "📊",
           "description": "Votes are being counted",
           "color": "orange",
@@ -134,18 +161,32 @@
           ]
         },
         {
-          "number": 7,
-          "name": "Results",
+          "number": 9,
+          "name": "Results Published",
           "icon": "✅",
-          "description": "Results are published",
+          "description": "Results are published and verifiable",
           "color": "emerald",
           "triggers": "When results are manually published",
-          "what_happens": "Final results are published. Voters can verify their own votes using their code. This is the final state — the election is complete.",
+          "what_happens": "Final results are published. Voters can verify their own votes using their code. This is the terminal state for the election lifecycle.",
           "actions": [
             "Voters verify their individual votes",
             "Public review of results",
             "Archive election records",
             "Generate final reports"
+          ]
+        },
+        {
+          "number": 10,
+          "name": "Archived",
+          "icon": "📦",
+          "description": "Election is archived, read-only",
+          "color": "slate",
+          "triggers": "When manually archived after results",
+          "what_happens": "The election is archived and becomes read-only. All data is preserved for audit purposes. No further actions are available.",
+          "actions": [
+            "Retrieve archived records",
+            "Audit trail review",
+            "Export final documentation"
           ]
         }
       ]
@@ -153,129 +194,159 @@
 
     "dates_section": {
       "heading": "How Dates Drive Phase Transitions",
-      "description": "Two critical dates determine when your election automatically progresses:",
+      "description": "Key dates determine when the election automatically progresses through its lifecycle:",
       "dates": [
         {
           "field": "Voting Starts At",
           "variable": "voting_starts_at",
-          "when": "Election automatically transitions from Nomination → Voting",
+          "when": "Election automatically transitions from Ready for Voting → Voting Active",
           "sets": "The beginning of the voting period",
           "important": "Voting is locked immediately when this phase starts to prevent tampering"
         },
         {
           "field": "Voting Ends At",
           "variable": "voting_ends_at",
-          "when": "Election automatically transitions from Voting → Results Pending",
+          "when": "Election automatically transitions from Voting Active → Counting",
           "sets": "The deadline for voter submissions",
-          "important": "No votes are accepted after this moment. You must wait until results are counted."
+          "important": "No votes are accepted after this moment. Votes are counted after closure."
         }
       ],
-      "example": "If you set voting_starts_at = 'Mar 1, 9am' and voting_ends_at = 'Mar 3, 5pm', the election will automatically move through Nomination → Voting (Mar 1 9am) → Results Pending (Mar 3 5pm)."
+      "example": "If you set voting_starts_at = 'Mar 1, 9am' and voting_ends_at = 'Mar 3, 5pm', the election will automatically move through Ready for Voting → Voting Active (Mar 1 9am) → Counting (Mar 3 5pm)."
     },
 
     "permissions_section": {
       "heading": "What Can Happen in Each Phase",
-      "description": "Different actions are available depending on the current phase:",
+      "description": "Different actions are available depending on the current phase. The constitutional governance engine enforces these boundaries:",
       "matrix": [
         {
           "action": "Edit election name/description",
           "draft": true,
           "pending_approval": false,
-          "administration": false,
-          "nomination": false,
-          "voting": false,
-          "results_pending": false,
-          "results": false
+          "approved": false,
+          "setup_administration": false,
+          "setup_nomination": false,
+          "ready_for_voting": false,
+          "voting_active": false,
+          "counting": false,
+          "results_published": false,
+          "archived": false
         },
         {
           "action": "Add/edit posts",
           "draft": true,
           "pending_approval": false,
-          "administration": true,
-          "nomination": true,
-          "voting": false,
-          "results_pending": false,
-          "results": false
+          "approved": false,
+          "setup_administration": true,
+          "setup_nomination": true,
+          "ready_for_voting": false,
+          "voting_active": false,
+          "counting": false,
+          "results_published": false,
+          "archived": false
         },
         {
           "action": "Manage candidates",
           "draft": true,
           "pending_approval": false,
-          "administration": true,
-          "nomination": true,
-          "voting": false,
-          "results_pending": false,
-          "results": false
+          "approved": false,
+          "setup_administration": true,
+          "setup_nomination": true,
+          "ready_for_voting": false,
+          "voting_active": false,
+          "counting": false,
+          "results_published": false,
+          "archived": false
         },
         {
           "action": "Import voters",
           "draft": false,
           "pending_approval": false,
-          "administration": true,
-          "nomination": true,
-          "voting": true,
-          "results_pending": false,
-          "results": false
+          "approved": false,
+          "setup_administration": true,
+          "setup_nomination": true,
+          "ready_for_voting": true,
+          "voting_active": true,
+          "counting": false,
+          "results_published": false,
+          "archived": false
         },
         {
           "action": "Change settings",
           "draft": true,
           "pending_approval": false,
-          "administration": true,
-          "nomination": true,
-          "voting": true,
-          "results_pending": true,
-          "results": false
+          "approved": false,
+          "setup_administration": true,
+          "setup_nomination": true,
+          "ready_for_voting": true,
+          "voting_active": true,
+          "counting": true,
+          "results_published": false,
+          "archived": false
         },
         {
           "action": "Submit for approval",
           "draft": true,
           "pending_approval": false,
-          "administration": false,
-          "nomination": false,
-          "voting": false,
-          "results_pending": false,
-          "results": false
+          "approved": false,
+          "setup_administration": false,
+          "setup_nomination": false,
+          "ready_for_voting": false,
+          "voting_active": false,
+          "counting": false,
+          "results_published": false,
+          "archived": false
         },
         {
           "action": "Approve or reject submission",
           "draft": false,
           "pending_approval": true,
-          "administration": false,
-          "nomination": false,
-          "voting": false,
-          "results_pending": false,
-          "results": false
+          "approved": false,
+          "setup_administration": false,
+          "setup_nomination": false,
+          "ready_for_voting": false,
+          "voting_active": false,
+          "counting": false,
+          "results_published": false,
+          "archived": false
         },
         {
           "action": "Voters access ballot",
           "draft": false,
           "pending_approval": false,
-          "administration": false,
-          "nomination": false,
-          "voting": true,
-          "results_pending": false,
-          "results": false
+          "approved": false,
+          "setup_administration": false,
+          "setup_nomination": false,
+          "ready_for_voting": false,
+          "voting_active": true,
+          "counting": false,
+          "results_published": false,
+          "archived": false
         },
         {
           "action": "View results",
           "draft": false,
           "pending_approval": false,
-          "administration": false,
-          "nomination": false,
-          "voting": false,
-          "results_pending": true,
-          "results": true
+          "approved": false,
+          "setup_administration": false,
+          "setup_nomination": false,
+          "ready_for_voting": false,
+          "voting_active": false,
+          "counting": true,
+          "results_published": true,
+          "archived": true
         },
         {
           "action": "Voters verify votes",
           "draft": false,
           "pending_approval": false,
-          "administration": false,
-          "nomination": false,
-          "voting": false,
-          "results_pending": false,
-          "results": true
+          "approved": false,
+          "setup_administration": false,
+          "setup_nomination": false,
+          "ready_for_voting": false,
+          "voting_active": false,
+          "counting": false,
+          "results_published": true,
+          "archived": false
         }
       ]
     },
@@ -284,17 +355,22 @@
       {
         "icon": "📅",
         "label": "Set dates strategically",
-        "text": "Leave enough time in Administration and Nomination phases. Once you set voting dates, they determine when the election automatically progresses."
+        "text": "Leave enough time in Setup Administration and Nomination phases. Once you set voting dates, they determine when the election automatically progresses."
       },
       {
         "icon": "🔒",
         "label": "Voting is locked",
-        "text": "When voting begins, the system immediately prevents any further candidate changes. This ensures vote integrity."
+        "text": "When voting begins, the constitutional engine immediately prevents any further candidate changes. This ensures vote integrity."
       },
       {
         "icon": "⏰",
         "label": "Dates are in server time",
         "text": "All dates use the server's timezone. Make sure to account for timezone differences when setting voting start and end times."
+      },
+      {
+        "icon": "⏸️",
+        "label": "Suspension overlay",
+        "text": "An election can be suspended at any point. Suspension pauses all governance operations while preserving the lifecycle state. Resume to continue from where you left off."
       }
     ]
   },

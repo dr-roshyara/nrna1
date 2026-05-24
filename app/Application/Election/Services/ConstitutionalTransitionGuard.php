@@ -197,7 +197,7 @@ final class ConstitutionalTransitionGuard
             // Paid plan (>40 voters) requires payment authorization
             'capacity_eligibility' => $this->isCapacityEligible($election),
 
-            default => true,
+            default => throw new \LogicException("Unknown precondition: {$condition}"),
         };
     }
 

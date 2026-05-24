@@ -54,7 +54,7 @@ final class ElectionConstitution
             'allowed_states' => ['approved'],
             'allowed_roles' => ['chief', 'deputy'],
             'preconditions' => [],
-            'target_state' => 'setup',
+            'target_state' => 'setup_administration',
             'description' => 'Begin election setup (create posts, import voters)',
         ],
         'revise_and_resubmit' => [
@@ -67,23 +67,32 @@ final class ElectionConstitution
 
         // ──── SETUP WORKFLOW (Committee) ────
         'complete_administration' => [
-            'allowed_states' => ['setup'],
+            'allowed_states' => ['setup_administration'],
             'allowed_roles' => ['chief', 'deputy'],
             'preconditions' => ['has_posts', 'has_voters', 'has_chief'],
-            'target_state' => 'setup',
+            'target_state' => 'setup_nomination',
             'description' => 'Complete voter import and committee setup',
         ],
         'complete_nomination' => [
-            'allowed_states' => ['setup'],
+            'allowed_states' => ['setup_nomination'],
             'allowed_roles' => ['chief', 'deputy'],
             'preconditions' => ['has_approved_candidates'],
-            'target_state' => 'setup',
+            'target_state' => 'setup_nomination',
             'description' => 'Complete candidate approval process',
+        ],
+
+        // ──── CANDIDACY APPLICATIONS (Members) ────
+        'apply_candidacy' => [
+            'allowed_states' => ['setup_nomination'],
+            'allowed_roles' => ['voter', 'member'],
+            'preconditions' => [],
+            'target_state' => 'setup_nomination',  // no state change; capability check only
+            'description' => 'Apply for candidacy during the nomination phase',
         ],
 
         // ──── VOTING WORKFLOW (Chief Only) ────
         'open_voting' => [
-            'allowed_states' => ['setup', 'ready_for_voting'],
+            'allowed_states' => ['setup_nomination', 'ready_for_voting'],
             'allowed_roles' => ['chief'],
             'preconditions' => ['voting_window_defined', 'timezone_set'],
             'target_state' => 'voting_active',
@@ -111,6 +120,29 @@ final class ElectionConstitution
             'preconditions' => [],
             'target_state' => 'archived',
             'description' => 'Archive election (final state)',
+        ],
+
+        // ──── OPERATIONAL GOVERNANCE OVERLAY (Platform Admin) ────
+        // ARCHITECTURAL PRINCIPLE: Suspension is an operational governance overlay,
+        // orthogonal to lifecycle progression. It freezes capabilities only.
+        // Does NOT mutate business facts or advance the election through phases.
+        'suspend' => [
+            'allowed_states' => [
+                'draft', 'submitted_for_approval', 'approved', 'rejected',
+                'setup_administration', 'setup_nomination',
+                'ready_for_voting', 'voting_active', 'counting', 'results_published',
+            ],
+            'allowed_roles' => ['chief', 'platform_admin'],
+            'preconditions' => [],
+            'target_state' => 'suspended',
+            'description' => 'Suspend election for governance hold (fraud/legal/operational)',
+        ],
+        'resume' => [
+            'allowed_states' => ['suspended'],
+            'allowed_roles' => ['chief', 'platform_admin'],
+            'preconditions' => [],
+            'target_state' => 'suspended',  // placeholder; side effects clear flags, engine re-derives
+            'description' => 'Resume suspended election — engine re-derives state from constitutional facts',
         ],
     ];
 

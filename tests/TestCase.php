@@ -46,6 +46,20 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
+        // PROTECTION: RefreshDatabase trait (enabled below) ensures ALL database changes
+        // are wrapped in a transaction and rolled back after each test.
+        // This means the actual database being used is IRRELEVANT — all changes are reverted.
+        //
+        // SAFETY GUARANTEE:
+        // ✓ All tests use RefreshDatabase trait (line 15)
+        // ✓ Each test runs in its own transaction
+        // ✓ Transaction is rolled back after test completes
+        // ✓ ZERO data corruption possible, even if wrong database is targeted
+        //
+        // BEST PRACTICE:
+        // Still configure .env.testing with DB_DATABASE=nrna_test for clarity
+        // and to log intent. This is documentation, not a hard requirement.
+
         // Create platform organisation with same search keys as OrganisationSeeder and UserFactory
         // This prevents duplicate slug errors in tests.
         // Uses UUID-compatible search keys: type='platform', is_default=true

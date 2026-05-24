@@ -241,8 +241,11 @@ Route::prefix('organisations/{organisation:slug}')
         });
 
         // ── Election Voter Management (ElectionMembership — real elections only) ──
+        // NOTE: scopeBindings intentionally omitted. Election::resolveRouteBinding()
+        // already bypasses global scopes. Adding scopeBindings here would conflict
+        // with BelongsToTenant (which resolves to platform org before middleware runs).
+        // Controllers MUST explicitly verify election belongs to the organisation.
         Route::prefix('/elections/{election}')
-            ->scopeBindings()
             ->group(function () {
 
             // ── ADMINISTRATION PHASE ONLY ──────────────────────────────────────────

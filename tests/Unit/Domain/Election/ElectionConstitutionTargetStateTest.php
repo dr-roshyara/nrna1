@@ -24,14 +24,16 @@ class ElectionConstitutionTargetStateTest extends BaseTestCase
     }
 
     /**
-     * Test 2: Specific target states are correct
+     * Test 2: Specific target states are correct (including setup split)
      */
     public function test_target_states_are_correct(): void
     {
-        $this->assertEquals('setup', ElectionConstitution::getTargetStateForAction('begin_setup'));
+        $this->assertEquals('setup_administration', ElectionConstitution::getTargetStateForAction('begin_setup'));
         $this->assertEquals('submitted_for_approval', ElectionConstitution::getTargetStateForAction('submit_for_approval'));
         $this->assertEquals('approved', ElectionConstitution::getTargetStateForAction('approve'));
         $this->assertEquals('rejected', ElectionConstitution::getTargetStateForAction('reject'));
+        $this->assertEquals('setup_administration', ElectionConstitution::getTargetStateForAction('complete_administration'));
+        $this->assertEquals('setup_nomination', ElectionConstitution::getTargetStateForAction('complete_nomination'));
         $this->assertEquals('voting_active', ElectionConstitution::getTargetStateForAction('open_voting'));
         $this->assertEquals('counting', ElectionConstitution::getTargetStateForAction('close_voting'));
         $this->assertEquals('results_published', ElectionConstitution::getTargetStateForAction('publish_results'));
@@ -57,11 +59,12 @@ class ElectionConstitutionTargetStateTest extends BaseTestCase
     {
         $engine = app(ElectionLifecycleEngineImpl::class);
 
-        // begin_setup sets administration_completed = true
+        // begin_setup sets setup_started_at (NOT administration_completed)
         $election = Election::factory()->create([
             'approved_at' => now()->subDay(),
-            'administration_completed' => true,   // what begin_setup will set
-            'state' => 'setup',
+            'setup_started_at' => now(),         // what begin_setup will set
+            'administration_completed' => false,  // NOT set by begin_setup
+            'state' => 'setup_administration',
         ]);
 
         $this->assertEquals(

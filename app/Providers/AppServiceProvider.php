@@ -139,6 +139,20 @@ class AppServiceProvider extends ServiceProvider
             )
         );
 
+        // Election Capability System: Resolver orchestrates policies for advisory capability projection
+        $this->app->singleton(
+            \App\Application\Election\Capabilities\ElectionConstitutionRegistry::class,
+            fn($app) => new \App\Application\Election\Capabilities\ElectionConstitutionRegistry()
+        );
+
+        $this->app->singleton(
+            \App\Application\Election\Services\ElectionCapabilityResolver::class,
+            fn($app) => new \App\Application\Election\Services\ElectionCapabilityResolver([
+                new \App\Application\Election\Capabilities\Policy\OverlayCapabilityPolicy(),
+                new \App\Application\Election\Capabilities\Policy\LifecycleCapabilityBaselinePolicy(),
+            ])
+        );
+
         // Constitutional Drift Monitor: Records SSOT violations for tracking and analysis
         $this->app->singleton(
             \App\Application\Election\Monitoring\ConstitutionalDriftMonitor::class

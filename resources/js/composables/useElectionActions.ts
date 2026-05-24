@@ -74,46 +74,6 @@ export function useElectionActions() {
   }
 
   /**
-   * Lock voting action
-   */
-  async function lockVoting(
-    electionId: string,
-    router: any
-  ): Promise<ActionResult> {
-    const context: ActionContext = {
-      electionId,
-      userId: '', // Will be set by caller if needed
-      action: 'lock_voting',
-    }
-
-    return executeAction(context, async () => {
-      const response = await fetch(`/elections/${electionId}/lock-voting`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest',
-        },
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        return {
-          success: false,
-          error: data.message || 'Failed to lock voting',
-          timestamp: new Date(),
-        }
-      }
-
-      return {
-        success: true,
-        message: 'Voting locked successfully',
-        timestamp: new Date(),
-      }
-    })
-  }
-
-  /**
    * Complete phase action
    */
   async function completePhase(
@@ -171,7 +131,6 @@ export function useElectionActions() {
     hasError,
 
     // Actions
-    lockVoting,
     completePhase,
     executeAction,
     reset,

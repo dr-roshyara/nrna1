@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Application\Election\Facades\ElectionLifecycle;
+use App\Domain\Election\Enum\ElectionLifecycleState;
 use App\Models\CandidacyApplication;
 use App\Models\Election;
 use App\Models\Organisation;
 use App\Models\Post;
 use App\Models\UserOrganisationRole;
-use App\Traits\ChecksElectionAccess;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,8 +17,6 @@ use Inertia\Response;
 
 class CandidacyApplicationController extends Controller
 {
-    use ChecksElectionAccess;
-
     private function ensureOrganisationMember(Organisation $organisation): void
     {
         abort_if(
@@ -36,7 +35,8 @@ class CandidacyApplicationController extends Controller
         $activeElections = Election::withoutGlobalScopes()
             ->where('organisation_id', $organisation->id)
             ->where('type', 'real')
-            ->where('state', 'setup')
+            ->where('administration_completed', true)
+            ->where('nomination_completed', false)
             ->with(['posts' => fn ($q) => $q->withoutGlobalScopes()->orderBy('position_order')])
             ->get()
             ->map(fn ($e) => [
@@ -55,7 +55,7 @@ class CandidacyApplicationController extends Controller
         $nonNominationElections = Election::withoutGlobalScopes()
             ->where('organisation_id', $organisation->id)
             ->where('type', 'real')
-            ->whereIn('state', ['voting_active', 'counting', 'results_published', 'archived'])
+            ->where('nomination_completed', true)
             ->get()
             ->map(fn ($e) => [
                 'name'  => $e->name,
@@ -82,7 +82,7 @@ class CandidacyApplicationController extends Controller
 
         $applications = CandidacyApplication::where('user_id', auth()->id())
             ->where('organisation_id', $organisation->id)
-            ->with(['election:id,name', 'post:id,name'])
+            ->with(['election' => fn ($q) => $q->withoutGlobalScopes()->select('id', 'name'), 'post:id,name'])
             ->orderByDesc('created_at')
             ->get()
             ->map(fn ($a) => [
@@ -104,21 +104,26 @@ class CandidacyApplicationController extends Controller
 
     public function applyForm(Organisation $organisation, Election $election): Response
     {
-        abort_if($election->type === 'demo', 404, 'Candidacy applications are not available for demo elections.');
-
-        abort_unless(
-            $election->state === 'setup',
-            403,
-            'Candidacy applications are only available during the setup phase.'
-        );
-
+        // 1. Organisation membership check (fastest)
         $this->ensureOrganisationMember($organisation);
         $user = auth()->user();
 
+        // 2. Election belongs to this organisation
         abort_unless(
-            $this->canAccessElection($organisation, $election->id, $user->id),
+            $election->organisation_id === $organisation->id,
             403,
-            'You are not authorised to access this election.'
+            'This election does not belong to this organisation.'
+        );
+
+        // 3. Demo elections don't support candidacy applications
+        abort_if($election->type === 'demo', 404, 'Candidacy applications are not available for demo elections.');
+
+        // 4. Constitutional governance check: only during nomination phase
+        $state = ElectionLifecycle::of($election)->state();
+        abort_unless(
+            $state === ElectionLifecycleState::SetupNomination,
+            403,
+            'Candidacy applications are only available during the nomination phase.'
         );
 
         $existingApplication = CandidacyApplication::where('user_id', $user->id)
@@ -177,11 +182,13 @@ class CandidacyApplicationController extends Controller
             ->firstOrFail();
 
         abort_if($election->type === 'demo', 404);
-        abort_unless($election->state === 'setup', 403);
 
+        // Constitutional governance check: only during nomination phase
+        $state = ElectionLifecycle::of($election)->state();
         abort_unless(
-            $this->canAccessElection($organisation, $validated['election_id'], $user->id),
-            403
+            $state === ElectionLifecycleState::SetupNomination,
+            403,
+            'Candidacy applications are only available during the nomination phase.'
         );
 
         try {

@@ -1,5 +1,25 @@
 {
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/scripts/db-safety-check.sh \"$CLAUDE_TOOL_INPUT\""
+          }
+        ]
+      },
+      {
+        "matcher": "PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/scripts/db-safety-check.sh \"$CLAUDE_TOOL_INPUT\""
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "PlanCreate",

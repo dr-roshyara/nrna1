@@ -18,7 +18,22 @@
   "rules": {
     "vue/multi-word-component-names": "off",
     "vue/no-v-html": "warn",
-    "vue/no-undef-properties": "error"
+    "vue/no-undef-properties": "error",
+    "no-restricted-imports": ["error", {
+      "paths": [
+        {
+          "name": "@/Domain/Election/ElectionPhaseService",
+          "importNames": ["PhaseState"],
+          "message": "PhaseState is removed. Use ElectionPhase from ElectionPhaseService."
+        },
+        {
+          "name": "@/Domain/Election/ElectionPhaseService",
+          "importNames": ["PhaseCompletionRules"],
+          "message": "PhaseCompletionRules.isCompleted() is deprecated (C.2.8). Use stateMachine.completedStates instead."
+        }
+      ],
+      "patterns": []
+    }]
   },
   "overrides": [
     {

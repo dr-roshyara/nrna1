@@ -31,13 +31,15 @@ if (ElectionLifecycle::of($election)->canVote()) {
 
 ## 📚 Guide Structure
 
-| Document | Purpose |
-|----------|---------|
-| **[PHASE_2_4_CONSTITUTIONAL_STABILIZATION.md](PHASE_2_4_CONSTITUTIONAL_STABILIZATION.md)** | Phase 2.4 drift prevention layer (anti-regression immune system) |
-| **[MIGRATION_GUIDE.md](MIGRATION_GUIDE.md)** | Step-by-step Phase 3 implementation (READ FIRST) |
-| **[API_REFERENCE.md](API_REFERENCE.md)** | Complete ElectionLifecycle facade API |
-| **[PATTERNS.md](PATTERNS.md)** | Code examples and common migration patterns |
-| **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** | Debugging deprecation warnings and errors |
+| Document | Purpose | Audience |
+|----------|---------|----------|
+| **[05-constitutional-governance-engine.md](05-constitutional-governance-engine.md)** | Constitutional governance engine: 12-state lifecycle, ElectionConstitution rules registry, TransitionGuard, 4-layer capability resolution, dual-axis model, controller patterns, frontend integration | Developers |
+| **[USER_GUIDE.md](USER_GUIDE.md)** | User-facing documentation: roles & permissions, complete 12-state walkthrough, how to create/manage/suspend elections, timeline configuration, best practices | Election officers |
+| **[PHASE_2_4_CONSTITUTIONAL_STABILIZATION.md](PHASE_2_4_CONSTITUTIONAL_STABILIZATION.md)** | Phase 2.4 drift prevention layer (anti-regression immune system) | Developers |
+| **[MIGRATION_GUIDE.md](MIGRATION_GUIDE.md)** | Step-by-step Phase 3 implementation (READ FIRST) | Developers |
+| **[API_REFERENCE.md](API_REFERENCE.md)** | Complete ElectionLifecycle facade API | Developers |
+| **[PATTERNS.md](PATTERNS.md)** | Code examples and common migration patterns | Developers |
+| **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** | Debugging deprecation warnings and errors | Developers |
 
 ---
 
@@ -237,6 +239,18 @@ After each controller migration:
 3. **Start Phase 3.1** — Migrate first controller with mode=warning
 4. **Verify with tests** — Ensure no regressions
 5. **Proceed incrementally** — One controller at a time
+
+---
+
+## Publication Docs
+
+For the **electoral administration guide** (how to use the system as an election officer), see:
+- **[USER_GUIDE.md](USER_GUIDE.md)** — Complete walkthrough from election creation to archiving, including suspension
+
+## Constitutional Governance Engine
+
+For the **constitutional governance architecture** (developer-facing), see:
+- **[05-constitutional-governance-engine.md](05-constitutional-governance-engine.md)** — 12-state lifecycle, ElectionConstitution rules registry, 4-check TransitionGuard, 4-layer capability resolution, dual-axis model (lifecycle + operational overlay), suspension system, controller patterns, frontend integration
 
 ---
 

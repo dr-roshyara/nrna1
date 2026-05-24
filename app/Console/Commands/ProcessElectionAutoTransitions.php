@@ -102,7 +102,7 @@ class ProcessElectionAutoTransitions extends Command
 
         $systemId = null;
         try {
-            $election->lockVoting($systemId);
+            $election->enforceVotingLock($systemId);
             $election->logStateChange('auto_transition_voting_locked', [
                 'grace_period_days' => $gracePeriodDays,
                 'automation' => true,
@@ -126,7 +126,7 @@ class ProcessElectionAutoTransitions extends Command
 
         try {
             $systemId = null;
-            $election->lockVoting($systemId);
+            $election->enforceVotingLock($systemId);
         } catch (\Exception $e) {
             $this->warn("Failed to enforce voting lock for election {$election->id}: {$e->getMessage()}");
         }

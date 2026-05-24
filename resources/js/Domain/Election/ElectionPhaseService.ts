@@ -11,7 +11,19 @@
  * 4. Dates are Date objects, not ISO strings
  */
 
-export type PhaseState = 'administration' | 'nomination' | 'voting' | 'results_pending' | 'results'
+import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
+
+export type ElectionPhase = 'administration' | 'nomination' | 'voting' | 'results_pending' | 'results'
+
+/**
+ * Election Phase Projection (CQRS Read Model)
+ * Maps constitutional lifecycle state to UI phase, indicating overlay states
+ */
+export interface ElectionPhaseProjection {
+  phase: ElectionPhase | null
+  lifecycleState: string
+  isOverlay: boolean
+}
 
 /**
  * Clock Abstraction (Dependency Injection)
@@ -49,13 +61,30 @@ export interface Election {
 }
 
 /**
+ * Capability Entry (Constitutional Authority)
+ * Returned by the capability resolver for each constitutional action
+ */
+export interface CapabilityEntry {
+  allowed: boolean
+  denial_reason: string | null
+  denial_detail: string | null
+}
+
+/**
  * State Machine (Single Source of Truth for current state)
  * This is the ONLY place that knows what state we're in
  */
 export interface StateMachine {
-  currentState: PhaseState
+  currentState: ElectionPhase
+  /** @deprecated Use capabilities[action].allowed instead */
   allowedActions: string[]
-  completedStates?: PhaseState[]
+  completedStates?: ElectionPhase[]
+  capabilities?: Record<string, CapabilityEntry>
+  capabilities_metadata?: {
+    resolver_version: string
+    generated_at: string
+    constitution_hash: string
+  }
 }
 
 /**
@@ -91,11 +120,18 @@ export class ElectionInvariants {
 }
 
 /**
+ * @deprecated C.2.8 — Phase completion semantics are now projected by the backend
+ * via stateMachine.completedStates. The voting case here uses client clock
+ * (clock.now() > voting_ends_at) in violation of constitutional runtime principles.
+ * Do not use for lifecycle interpretation, rendering, or governance decisions.
+ * Delete aggressively once callers are confirmed absent.
+ * @see ADR-005 Projection Sovereignty
+ *
  * Phase Completion Rules (DDD Aggregate)
  * Encapsulates what makes a phase "complete" based on business rules.
  */
 export class PhaseCompletionRules {
-  static isCompleted(phase: PhaseState, election: Election, clock: Clock): boolean {
+  static isCompleted(phase: ElectionPhase, election: Election, clock: Clock): boolean {
     const now = clock.now()
 
     switch (phase) {
@@ -146,7 +182,7 @@ export enum LockReasonCode {
  * Encapsulates when a phase is locked from editing.
  */
 export class PhaseLockRules {
-  static isLockedFromEdit(phase: PhaseState, election: Election, clock: Clock): boolean {
+  static isLockedFromEdit(phase: ElectionPhase, election: Election, clock: Clock): boolean {
     const now = clock.now()
 
     switch (phase) {
@@ -167,7 +203,7 @@ export class PhaseLockRules {
     }
   }
 
-  static getLockReason(phase: PhaseState, election: Election, clock: Clock): LockReasonCode {
+  static getLockReason(phase: ElectionPhase, election: Election, clock: Clock): LockReasonCode {
     const now = clock.now()
 
     switch (phase) {
@@ -195,28 +231,29 @@ export class PhaseLockRules {
  * Determines which actions are allowed based on state and permissions.
  */
 export class ActionAuthorizationRules {
-  static canLockVoting(phase: PhaseState, stateMachine: StateMachine, election: Election): boolean {
-    const hasPermission = (stateMachine.allowedActions || []).includes('lock_voting')
+  static canLockVoting(phase: ElectionPhase, stateMachine: StateMachine, election: Election): boolean {
     return (
       phase === 'voting' &&
       stateMachine.currentState === 'voting' &&
-      !election.voting_locked &&
-      hasPermission
+      !election.voting_locked
     )
   }
 
   static canComplete(
-    phase: PhaseState,
+    phase: ElectionPhase,
     stateMachine: StateMachine,
     election: Election
   ): boolean {
-    const actions = stateMachine.allowedActions || []
-    if (phase === 'administration') return actions.includes('complete_administration')
-    if (phase === 'nomination') return actions.includes('open_voting')
+    if (phase === 'administration') {
+      return stateMachine.capabilities?.['complete_administration']?.allowed ?? false
+    }
+    if (phase === 'nomination') {
+      return stateMachine.capabilities?.['complete_nomination']?.allowed ?? false
+    }
     return false
   }
 
-  static canUpdateDates(phase: PhaseState, election: Election, clock: Clock): boolean {
+  static canUpdateDates(phase: ElectionPhase, election: Election, clock: Clock): boolean {
     const now = clock.now()
 
     switch (phase) {
@@ -244,7 +281,7 @@ export class ActionAuthorizationRules {
  */
 export class PhaseTimelineRules {
   static isPhaseActive(
-    phase: PhaseState,
+    phase: ElectionPhase,
     election: Election,
     stateMachine: StateMachine,
     clock: Clock
@@ -277,101 +314,83 @@ export class PhaseTimelineRules {
 }
 
 /**
- * Phase Progress Tracker (DDD Calculation)
- * Tracks overall election progress.
+ * Phase For (CQRS Projection Function)
+ * Maps constitutional lifecycle state to UI phase projection
+ * Returns null phase for overlay states (ARCHIVED, SUSPENDED)
  */
-export class PhaseProgressTracker {
-  private static readonly TOTAL_PHASES = 5
+export function phaseFor(lifecycleStateOrString: string): ElectionPhaseProjection {
+  const state = lifecycleStateOrString.toUpperCase()
 
-  static getCompletedCount(election: Election, clock: Clock): number {
-    const phases: PhaseState[] = ['administration', 'nomination', 'voting', 'results_pending', 'results']
-    return phases.filter(phase => PhaseCompletionRules.isCompleted(phase, election, clock)).length
-  }
-
-  static getProgressPercentage(election: Election, clock: Clock): number {
-    return (this.getCompletedCount(election, clock) / this.TOTAL_PHASES) * 100
-  }
-}
-
-/**
- * Phase View Model (CQRS Read Model Output)
- * Pure data structure for UI rendering
- * No methods, no side effects, no strings (let Vue format)
- */
-export interface PhaseViewModel {
-  state: PhaseState
-  isCompleted: boolean
-  isActive: boolean
-  isUpcoming: boolean
-  isLockedFromEdit: boolean
-  lockReasonCode: LockReasonCode // UI maps this to translated string
-  canLockVoting: boolean
-  canComplete: boolean
-  canUpdateDates: boolean
-  countdownMs: number // Raw milliseconds, Vue formats as HH:mm:ss
-}
-
-/**
- * Progress Summary (CQRS Read Model Output)
- */
-export interface ProgressSummary {
-  completedCount: number
-  totalPhases: number
-  progressPercentage: number
-}
-
-/**
- * Phase State Aggregator (CQRS Read Model)
- * Single entry point for all phase queries.
- * PURE FUNCTION - no side effects, no validation, no logging
- */
-export class PhaseStateAggregator {
-  /**
-   * Get complete phase view model
-   * This is the ONLY way Vue should get domain data
-   */
-  static getPhaseViewModel(
-    phase: PhaseState,
-    election: Election,
-    stateMachine: StateMachine,
-    clock: Clock
-  ): PhaseViewModel {
+  // Administration phase (all approval/setup states before nomination)
+  if (
+    state === ElectionLifecycleStates.DRAFT.toUpperCase() ||
+    state === ElectionLifecycleStates.SUBMITTED_FOR_APPROVAL.toUpperCase() ||
+    state === ElectionLifecycleStates.APPROVED.toUpperCase() ||
+    state === ElectionLifecycleStates.REJECTED.toUpperCase() ||
+    state === ElectionLifecycleStates.SETUP_ADMINISTRATION.toUpperCase()
+  ) {
     return {
-      state: phase,
-      isCompleted: PhaseCompletionRules.isCompleted(phase, election, clock),
-      isActive: PhaseTimelineRules.isPhaseActive(phase, election, stateMachine, clock),
-      isUpcoming:
-        !PhaseCompletionRules.isCompleted(phase, election, clock) &&
-        phase !== stateMachine.currentState,
-      isLockedFromEdit: PhaseLockRules.isLockedFromEdit(phase, election, clock),
-      lockReasonCode: PhaseLockRules.getLockReason(phase, election, clock),
-      canLockVoting: ActionAuthorizationRules.canLockVoting(phase, stateMachine, election),
-      canComplete: ActionAuthorizationRules.canComplete(phase, stateMachine, election),
-      canUpdateDates: ActionAuthorizationRules.canUpdateDates(phase, election, clock),
-      countdownMs: PhaseTimelineRules.getCountdownMs(election, clock),
+      phase: 'administration',
+      lifecycleState: lifecycleStateOrString,
+      isOverlay: false,
     }
   }
 
-  /**
-   * Get all phases' view models at once
-   */
-  static getAllPhasesViewModels(
-    phases: PhaseState[],
-    election: Election,
-    stateMachine: StateMachine,
-    clock: Clock
-  ): PhaseViewModel[] {
-    return phases.map(phase => this.getPhaseViewModel(phase, election, stateMachine, clock))
+  // Nomination phase
+  if (state === ElectionLifecycleStates.SETUP_NOMINATION.toUpperCase()) {
+    return {
+      phase: 'nomination',
+      lifecycleState: lifecycleStateOrString,
+      isOverlay: false,
+    }
   }
 
-  /**
-   * Get progress summary
-   */
-  static getProgressSummary(election: Election, clock: Clock): ProgressSummary {
+  // Voting phase
+  if (
+    state === ElectionLifecycleStates.READY_FOR_VOTING.toUpperCase() ||
+    state === ElectionLifecycleStates.VOTING_ACTIVE.toUpperCase()
+  ) {
     return {
-      completedCount: PhaseProgressTracker.getCompletedCount(election, clock),
-      totalPhases: 5,
-      progressPercentage: PhaseProgressTracker.getProgressPercentage(election, clock),
+      phase: 'voting',
+      lifecycleState: lifecycleStateOrString,
+      isOverlay: false,
     }
+  }
+
+  // Results pending phase
+  if (state === ElectionLifecycleStates.COUNTING.toUpperCase()) {
+    return {
+      phase: 'results_pending',
+      lifecycleState: lifecycleStateOrString,
+      isOverlay: false,
+    }
+  }
+
+  // Results phase
+  if (state === ElectionLifecycleStates.RESULTS_PUBLISHED.toUpperCase()) {
+    return {
+      phase: 'results',
+      lifecycleState: lifecycleStateOrString,
+      isOverlay: false,
+    }
+  }
+
+  // Overlay states (ARCHIVED, SUSPENDED) — return null phase
+  if (
+    state === ElectionLifecycleStates.ARCHIVED.toUpperCase() ||
+    state === ElectionLifecycleStates.SUSPENDED.toUpperCase()
+  ) {
+    return {
+      phase: null,
+      lifecycleState: lifecycleStateOrString,
+      isOverlay: true,
+    }
+  }
+
+  // Fallback: unknown state
+  return {
+    phase: null,
+    lifecycleState: lifecycleStateOrString,
+    isOverlay: false,
   }
 }

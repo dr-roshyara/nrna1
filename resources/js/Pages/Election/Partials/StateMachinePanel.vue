@@ -138,16 +138,6 @@
                 📅 Update Dates
               </button>
 
-              <!-- Lock Voting button (voting_active phase — NEW) -->
-              <button
-                v-if="phase.state === 'voting_active'"
-                class="action-btn y-focus h-auto font-bold px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95"
-                style="background: #f59e0b; color: #fff; border: none; cursor: pointer;"
-                @click="$emit('lock-voting')"
-              >
-                🔒 Lock & Start Voting
-              </button>
-
               <!-- Locked Badge (for locked phases) -->
               <div v-if="isPhaseLockedFromEdit(phase.state)" class="locked-badge">
                 <svg class="lock-icon" viewBox="0 0 20 20" fill="currentColor">
@@ -157,7 +147,7 @@
               </div>
 
               <!-- Countdown Timer (for active voting_active phase) -->
-              <div v-if="phase.state === 'voting_active' && isPhaseActive(phase.state)" class="countdown-timer">
+              <div v-if="phase.state === ElectionLifecycleStates.VOTING_ACTIVE && isPhaseActive(phase.state)" class="countdown-timer">
                 <svg class="timer-icon" viewBox="0 0 24 24" fill="currentColor">
                   <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
                   <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
@@ -231,6 +221,10 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { route } from 'ziggy-js'
 import { useI18n } from 'vue-i18n'
+import { useElectionCapabilities } from '@/Composables/useElectionCapabilities'
+import { ElectionActions } from '@/Constants/ElectionActions'
+import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
+import { phaseFor } from '@/Domain/Election/ElectionPhaseService'
 import pageDe from '@/locales/pages/Election/Management/de.json'
 import pageEn from '@/locales/pages/Election/Management/en.json'
 import pageNp from '@/locales/pages/Election/Management/np.json'
@@ -256,6 +250,9 @@ const emit = defineEmits(['phase-completed', 'lock-voting'])
 const { locale } = useI18n()
 const pageData = { de: pageDe, en: pageEn, np: pageNp }
 const t = computed(() => pageData[locale.value] ?? pageData.de)
+
+// Capabilities
+const capabilities = useElectionCapabilities(computed(() => props.stateMachine))
 
 const selectedPhase = ref(null)
 const currentTime = ref(new Date())
@@ -309,55 +306,71 @@ onUnmounted(() => {
 
 const phases = [
   {
-    state: 'draft',
+    state: ElectionLifecycleStates.DRAFT,
+    ...phaseFor(ElectionLifecycleStates.DRAFT),
     icon: '📝',
     description: 'Create election and configure basic settings.',
     requirements: ['Election name', 'Basic configuration'],
   },
   {
-    state: 'submitted_for_approval',
+    state: ElectionLifecycleStates.SUBMITTED_FOR_APPROVAL,
+    ...phaseFor(ElectionLifecycleStates.SUBMITTED_FOR_APPROVAL),
     icon: '⏳',
     description: 'Election submitted for approval by administrator.',
     requirements: ['Election details complete'],
   },
   {
-    state: 'approved',
+    state: ElectionLifecycleStates.APPROVED,
+    ...phaseFor(ElectionLifecycleStates.APPROVED),
     icon: '✅',
     description: 'Election approved and ready for setup.',
     requirements: ['Administrator approval'],
   },
   {
-    state: 'setup',
+    state: ElectionLifecycleStates.SETUP_ADMINISTRATION,
+    ...phaseFor(ElectionLifecycleStates.SETUP_ADMINISTRATION),
     icon: '⚙️',
     description: 'Setup the election structure including posts, voters, and committee members.',
     requirements: ['At least one post', 'At least one voter', 'Election name and configuration'],
   },
   {
-    state: 'ready_for_voting',
-    icon: '📋',
+    state: ElectionLifecycleStates.SETUP_NOMINATION,
+    ...phaseFor(ElectionLifecycleStates.SETUP_NOMINATION),
+    icon: '👥',
     description: 'Accept and approve candidate applications.',
+    requirements: ['Nominations open', 'At least one candidate'],
+  },
+  {
+    state: ElectionLifecycleStates.READY_FOR_VOTING,
+    ...phaseFor(ElectionLifecycleStates.READY_FOR_VOTING),
+    icon: '📋',
+    description: 'Finalize voting preparation and candidate approvals.',
     requirements: ['At least one approved candidate', 'No pending candidacies'],
   },
   {
-    state: 'voting_active',
+    state: ElectionLifecycleStates.VOTING_ACTIVE,
+    ...phaseFor(ElectionLifecycleStates.VOTING_ACTIVE),
     icon: '🗳️',
     description: 'Members cast their votes in a secure voting window.',
     requirements: ['Voting dates must be set', 'Voting window must be active'],
   },
   {
-    state: 'counting',
+    state: ElectionLifecycleStates.COUNTING,
+    ...phaseFor(ElectionLifecycleStates.COUNTING),
     icon: '⏳',
     description: 'Voting period is complete, awaiting results publication.',
     requirements: ['Voting period must be finished'],
   },
   {
-    state: 'results_published',
+    state: ElectionLifecycleStates.RESULTS_PUBLISHED,
+    ...phaseFor(ElectionLifecycleStates.RESULTS_PUBLISHED),
     icon: '📊',
     description: 'Results are published and final.',
     requirements: ['Manual publication required'],
   },
   {
-    state: 'archived',
+    state: ElectionLifecycleStates.ARCHIVED,
+    ...phaseFor(ElectionLifecycleStates.ARCHIVED),
     icon: '📦',
     description: 'Election archived and closed.',
     requirements: ['Election completed'],
@@ -376,18 +389,12 @@ const editingPhaseLabel = computed(() => {
   return getPhaseLabel(editingPhaseState.value)
 })
 
-
-const phaseStates = computed(() => ({
-  draft: props.stateMachine.currentState && ['submitted_for_approval', 'approved', 'setup', 'ready_for_voting', 'voting_active', 'counting', 'results_published', 'archived'].includes(props.stateMachine.currentState),
-  submitted_for_approval: props.election.submitted_for_approval_at !== null && props.election.rejected_at === null,
-  approved: props.election.approved_at !== null && props.election.administration_completed === false,
-  setup: props.election.administration_completed,
-  ready_for_voting: props.election.nomination_completed,
-  voting_active: props.election.voting_ends_at && new Date() > new Date(props.election.voting_ends_at),
-  counting: props.election.results_published_at !== null,
-  results_published: props.election.results_published,
-  archived: props.stateMachine.currentState === 'archived',
-}))
+/**
+ * @stabilization C.2.8 — This computed will become the authoritative source
+ * for phase-based rendering once phaseStates is removed.
+ * Currently introduced as a stabilization seam for gradual migration.
+ */
+const currentPhase = computed(() => phaseFor(props.stateMachine.currentState))
 
 const completedPhasesCount = computed(() => {
   return phases.filter(p => isPhaseCompleted(p.state)).length
@@ -398,7 +405,8 @@ const progressPercentage = computed(() => {
 })
 
 const isPhaseCompleted = (state) => {
-  return phaseStates.value[state] ?? false
+  if (!(props.stateMachine.projectionAvailable ?? true)) return false
+  return props.stateMachine.completedStates?.includes(state) ?? false
 }
 
 const isPhaseUpcoming = (state) => {
@@ -414,22 +422,26 @@ const getStatusClass = (state) => {
 const getPhaseMetrics = (state) => {
   const metrics = {}
   switch (state) {
-    case 'setup':
+    case ElectionLifecycleStates.SETUP_ADMINISTRATION:
       metrics.posts = props.election.posts_count || 0
       metrics.voters = props.election.voters_count || 0
       break
-    case 'ready_for_voting':
+    case ElectionLifecycleStates.SETUP_NOMINATION:
       metrics.candidates = props.election.candidates_count || 0
       metrics.pending = props.election.pending_candidacies_count || 0
       break
-    case 'voting_active':
+    case ElectionLifecycleStates.READY_FOR_VOTING:
+      metrics.candidates = props.election.candidates_count || 0
+      metrics.approved = props.election.approved_candidacies_count || 0
+      break
+    case ElectionLifecycleStates.VOTING_ACTIVE:
       metrics.codes = props.election.voting_codes_count || 0
       metrics.votes = props.election.votes_count || 0
       break
-    case 'counting':
+    case ElectionLifecycleStates.COUNTING:
       metrics.awaiting = 'Publication'
       break
-    case 'results_published':
+    case ElectionLifecycleStates.RESULTS_PUBLISHED:
       metrics.published = 'Yes'
       break
   }
@@ -453,26 +465,29 @@ const getMetricLabel = (metric) => {
 const getPhaseDates = (state) => {
   const dates = {}
   switch (state) {
-    case 'setup':
+    case ElectionLifecycleStates.SETUP_ADMINISTRATION:
       if (props.election.administration_suggested_start)
         dates.start = props.election.administration_suggested_start
       if (props.election.administration_suggested_end)
         dates.end = props.election.administration_suggested_end
       break
-    case 'ready_for_voting':
+    case ElectionLifecycleStates.SETUP_NOMINATION:
       if (props.election.nomination_suggested_start)
         dates.start = props.election.nomination_suggested_start
       if (props.election.nomination_suggested_end)
         dates.end = props.election.nomination_suggested_end
       break
-    case 'voting_active':
+    case ElectionLifecycleStates.READY_FOR_VOTING:
+      // No specific dates for ready_for_voting phase
+      break
+    case ElectionLifecycleStates.VOTING_ACTIVE:
       if (props.election.voting_starts_at)
         dates.start = props.election.voting_starts_at
       if (props.election.voting_ends_at)
         dates.end = props.election.voting_ends_at
       break
-    case 'counting':
-    case 'results_published':
+    case ElectionLifecycleStates.COUNTING:
+    case ElectionLifecycleStates.RESULTS_PUBLISHED:
       if (props.election.results_published_at)
         dates.start = props.election.results_published_at
       break
@@ -492,25 +507,13 @@ const formatDate = (date) => {
 }
 
 const hasActions = (state) => {
-  return canCompletePhase(state) || canUpdateDates(state) || canLockVotingPhase(state)
+  return canCompletePhase(state) || canUpdateDates(state)
 }
 
 const canCompletePhase = (state) => {
-  const actions = props.stateMachine?.allowedActions || []
-  if (state === 'setup') return actions.includes('complete_administration')
-  if (state === 'ready_for_voting') return actions.includes('complete_nomination')
+  if (state === ElectionLifecycleStates.SETUP_ADMINISTRATION) return capabilities.canDo(ElectionActions.COMPLETE_ADMINISTRATION)
+  if (state === ElectionLifecycleStates.SETUP_NOMINATION) return capabilities.canDo(ElectionActions.COMPLETE_NOMINATION)
   return false
-}
-
-const canLockVotingPhase = (state) => {
-  const actions = props.stateMachine?.allowedActions || []
-
-  return (
-    state === 'voting_active' &&
-    props.stateMachine.currentState === 'voting_active' &&
-    !props.election.voting_locked &&
-    actions.includes('lock_voting')
-  )
 }
 
 const canUpdateDates = (state) => {
@@ -518,18 +521,22 @@ const canUpdateDates = (state) => {
   // Final phases are never editable
 
   switch (state) {
-    case 'setup':
+    case ElectionLifecycleStates.SETUP_ADMINISTRATION:
       return !props.election.administration_completed
 
-    case 'ready_for_voting':
+    case ElectionLifecycleStates.SETUP_NOMINATION:
       return !props.election.nomination_completed
 
-    case 'voting_active':
+    case ElectionLifecycleStates.READY_FOR_VOTING:
+      // No dates to edit for this phase
+      return false
+
+    case ElectionLifecycleStates.VOTING_ACTIVE:
       // Editable until voting is locked (regardless of voting start time)
       return !props.election.voting_locked
 
-    case 'counting':
-    case 'results_published':
+    case ElectionLifecycleStates.COUNTING:
+    case ElectionLifecycleStates.RESULTS_PUBLISHED:
       // Never editable (final phases)
       return false
 
@@ -538,17 +545,19 @@ const canUpdateDates = (state) => {
   }
 }
 
-// NEW: Check if phase is locked from editing
+// Check if phase is locked from editing
 const isPhaseLockedFromEdit = (state) => {
   switch (state) {
-    case 'setup':
+    case ElectionLifecycleStates.SETUP_ADMINISTRATION:
       return props.election.administration_completed
-    case 'ready_for_voting':
+    case ElectionLifecycleStates.SETUP_NOMINATION:
       return props.election.nomination_completed
-    case 'voting_active':
+    case ElectionLifecycleStates.READY_FOR_VOTING:
+      return false // No dates to lock
+    case ElectionLifecycleStates.VOTING_ACTIVE:
       return props.election.voting_locked  // Only locked when explicitly locked
-    case 'counting':
-    case 'results_published':
+    case ElectionLifecycleStates.COUNTING:
+    case ElectionLifecycleStates.RESULTS_PUBLISHED:
       return true // Always locked
     default:
       return false
@@ -558,17 +567,18 @@ const isPhaseLockedFromEdit = (state) => {
 // Get reason why phase is locked
 const getLockReason = (state) => {
   switch (state) {
-    case 'setup':
-      return 'Admin Locked'
-    case 'ready_for_voting':
+    case ElectionLifecycleStates.SETUP_ADMINISTRATION:
+      return 'Admin Setup Locked'
+    case ElectionLifecycleStates.SETUP_NOMINATION:
       return 'Nomination Locked'
-    case 'voting_active':
+    case ElectionLifecycleStates.READY_FOR_VOTING:
+      return 'Ready for Voting'
+    case ElectionLifecycleStates.VOTING_ACTIVE:
       if (props.election.voting_locked) return 'Voting Locked'
-      // Not locked = editable (regardless of start time)
       return 'Editable'
-    case 'counting':
+    case ElectionLifecycleStates.COUNTING:
       return 'Counting Phase'
-    case 'results_published':
+    case ElectionLifecycleStates.RESULTS_PUBLISHED:
       return 'Results Published'
     default:
       return 'Locked'
@@ -578,7 +588,7 @@ const getLockReason = (state) => {
 // NEW: Check if phase is currently active
 const isPhaseActive = (state) => {
   switch (state) {
-    case 'voting_active':
+    case ElectionLifecycleStates.VOTING_ACTIVE:
       return props.election.voting_starts_at && props.election.voting_ends_at &&
              new Date() >= new Date(props.election.voting_starts_at) &&
              new Date() < new Date(props.election.voting_ends_at)
@@ -589,7 +599,7 @@ const isPhaseActive = (state) => {
 
 // Get countdown time until voting ends
 const getCountdownTime = (state) => {
-  if (state !== 'voting_active' || !props.election.voting_ends_at) return '--:--:--'
+  if (state !== ElectionLifecycleStates.VOTING_ACTIVE || !props.election.voting_ends_at) return '--:--:--'
 
   const endTime = new Date(props.election.voting_ends_at)
   const now = currentTime.value
@@ -609,7 +619,7 @@ const getUpdateDisabledReason = (state) => {
   if (isPhaseCompleted(state)) {
     return 'Phase is complete. Dates cannot be edited.'
   }
-  if (state === 'voting_active') {
+  if (state === ElectionLifecycleStates.VOTING_ACTIVE) {
     if (props.election.voting_locked) {
       return 'Voting is locked. Dates cannot be edited.'
     }

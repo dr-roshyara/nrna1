@@ -241,7 +241,7 @@ Route::get('/tutorial', function () {
 })->name('tutorials.hub');
 
 // Election settings tutorial — public, no auth required
-Route::get('/help/election-setup', function () {
+Route::get('/election-setup', function () {
     return Inertia::render('Tutorials/ElectionSettings');
 })->name('tutorials.election-settings');
 

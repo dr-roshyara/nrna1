@@ -10,7 +10,8 @@ enum ElectionAction: string
     case Reject = 'reject';
     case CompleteAdministration = 'complete_administration';
     case OpenVoting = 'open_voting';
-    case LockVoting = 'lock_voting';
     case CloseVoting = 'close_voting';
     case PublishResults = 'publish_results';
+    case Suspend = 'suspend';
+    case Resume = 'resume';
 }

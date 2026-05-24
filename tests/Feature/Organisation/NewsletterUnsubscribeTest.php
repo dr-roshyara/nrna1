@@ -145,7 +145,7 @@ class NewsletterUnsubscribeTest extends TestCase
         $this->assertEquals(1, NewsletterRecipient::where('organisation_newsletter_id', $newsletter->id)->count());
     }
 
-    private function createMember(): Member
+    protected function createMember(): Member
     {
         $user    = User::factory()->create();
         $orgUser = OrganisationUser::create([

@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\CandidacyApplication;
 use App\Models\Election;
-use App\Models\ElectionMembership;
 use App\Models\Organisation;
 use App\Models\Post;
 use App\Models\User;
@@ -12,6 +11,7 @@ use App\Models\UserOrganisationRole;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Tests\Support\ElectionScenarioFactory;
 use Tests\TestCase;
 
 class CandidacyApplicationTest extends TestCase
@@ -26,24 +26,17 @@ class CandidacyApplicationTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->org      = Organisation::factory()->create(['type' => 'tenant']);
-        $this->member   = User::factory()->create();
-        $this->election = Election::factory()->create([
-            'organisation_id' => $this->org->id,
-            'type'            => 'real',
-            'state'           => 'nomination',
-        ]);
+        $this->org    = Organisation::factory()->create(['type' => 'tenant']);
+        $this->member = User::factory()->create();
+
+        // Use constitutional factory — sets facts that derive SetupNomination state
+        $this->election = ElectionScenarioFactory::setupNomination($this->org);
+
         $this->post = Post::factory()->forElection($this->election)->create();
         UserOrganisationRole::create([
             'user_id'         => $this->member->id,
             'organisation_id' => $this->org->id,
             'role'            => 'voter',
-        ]);
-        ElectionMembership::create([
-            'user_id'         => $this->member->id,
-            'election_id'     => $this->election->id,
-            'organisation_id' => $this->org->id,
-            'status'          => 'active',
         ]);
     }
 
@@ -187,11 +180,14 @@ class CandidacyApplicationTest extends TestCase
 
     public function test_cannot_apply_for_demo_election(): void
     {
-        $demoElection = Election::factory()->create([
-            'organisation_id' => $this->org->id,
-            'type'            => 'demo',
-            'state'           => 'nomination',
-        ]);
+        $demoElection = Election::factory()
+            ->forOrganisation($this->org)
+            ->demo()
+            ->create([
+                // Constitutional facts for SetupNomination (demo check runs first)
+                'administration_completed' => true,
+                'nomination_completed' => false,
+            ]);
         $demoPost = Post::factory()->forElection($demoElection)->create();
 
         $this->actingAs($this->member)
@@ -206,12 +202,14 @@ class CandidacyApplicationTest extends TestCase
 
     public function test_cannot_apply_when_election_not_in_nomination(): void
     {
-        $this->election->update(['state' => 'administration']);
+        // Create election in SetupAdministration (not ready for candidacies)
+        $nonNominationElection = ElectionScenarioFactory::setupAdministration($this->org);
+        $nonNominationPost = Post::factory()->forElection($nonNominationElection)->create();
 
         $this->actingAs($this->member)
              ->post(route('organisations.candidacy.apply', $this->org->slug), [
-                 'election_id'    => $this->election->id,
-                 'post_id'        => $this->post->id,
+                 'election_id'    => $nonNominationElection->id,
+                 'post_id'        => $nonNominationPost->id,
                  'supporter_name' => 'John Supporter',
                  'proposer_name'  => 'Jane Proposer',
              ])

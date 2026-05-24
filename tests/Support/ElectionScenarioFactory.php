@@ -5,7 +5,9 @@ namespace Tests\Support;
 use App\Application\Election\Facades\ElectionLifecycle;
 use App\Domain\Election\Enum\ElectionLifecycleState;
 use App\Models\Election;
+use App\Models\ElectionOfficer;
 use App\Models\Organisation;
+use App\Models\User;
 use Carbon\Carbon;
 
 /**
@@ -77,7 +79,7 @@ final class ElectionScenarioFactory
      * - No results published
      *
      * Expected derived state: Setup (or Ready For Voting if all flags set)
-     * Allowed actions: open_voting, lock_voting (if window started)
+     * Allowed actions: open_voting
      */
     public static function configurationComplete(?Organisation $organisation = null): Election
     {
@@ -146,7 +148,8 @@ final class ElectionScenarioFactory
             'posts_count' => $election->posts_count,
         ]);
         self::assertStateIsOneOf($election, [
-            ElectionLifecycleState::Setup,
+            ElectionLifecycleState::SetupAdministration,
+            ElectionLifecycleState::SetupNomination,
             ElectionLifecycleState::ReadyForVoting,
         ]);
 
@@ -164,7 +167,7 @@ final class ElectionScenarioFactory
      * - Results not published
      *
      * Expected derived state: VotingActive
-     * Allowed actions: lock_voting, close_voting
+     * Allowed actions: close_voting
      */
     public static function votingActive(?Organisation $organisation = null): Election
     {
@@ -196,6 +199,24 @@ final class ElectionScenarioFactory
         $election->update(['state' => ElectionLifecycleState::VotingActive->value]);
 
         return $election;
+    }
+
+    /**
+     * Create a VotingActive election with a chief ElectionOfficer.
+     *
+     * Returns [Election, User(chief), Organisation] for use in HTTP flow tests.
+     * The election is derived via constitutional facts (not state fabrication).
+     * The chief has an active ElectionOfficer record for authorization gates.
+     */
+    public static function votingActiveWithChief(?Organisation $organisation = null): array
+    {
+        $org = $organisation ?? Organisation::factory()->create(['type' => 'tenant']);
+        $election = self::votingActive($org);
+
+        $chief = User::factory()->forOrganisation($org)->create();
+        self::createChiefOfficer($chief, $election, $org);
+
+        return [$election, $chief, $org];
     }
 
     /**
@@ -271,6 +292,142 @@ final class ElectionScenarioFactory
         $election->update(['state' => ElectionLifecycleState::ResultsPublished->value]);
 
         return $election;
+    }
+
+    /**
+     * Create an election in SetupNomination state (nomination phase active)
+     *
+     * Constitutional facts:
+     * - approved_at is set
+     * - administration_completed = true (setup done)
+     * - nomination_completed = false (nomination phase active)
+     * - No voting window configured yet
+     * - No nomination window dates set
+     *
+     * Expected derived state: SetupNomination
+     * Allowed actions: apply_candidacy, complete_nomination, open_voting
+     */
+    public static function setupNomination(?Organisation $organisation = null): Election
+    {
+        $org = $organisation ?? Organisation::factory()->create(['type' => 'tenant']);
+
+        $election = Election::factory()
+            ->forOrganisation($org)
+            ->create([
+                'name' => 'Nomination Election ' . uniqid(),
+                'type' => 'real',
+                'approved_at' => now()->subDay(),
+                // Setup phase completed, nomination phase active
+                'administration_completed' => true,
+                'administration_completed_at' => now()->subHours(4),
+                'nomination_completed' => false,
+                // No voting window — not yet configured
+                'voting_starts_at' => null,
+                'voting_ends_at' => null,
+                // No results
+                'results_published_at' => null,
+                // No nomination window dates — engine derives SetupNomination directly
+                'nomination_suggested_start' => null,
+                'nomination_suggested_end' => null,
+            ]);
+
+        // Verify engine derives correct state and SYNC IT TO DATABASE
+        self::assertDerivedState($election, ElectionLifecycleState::SetupNomination);
+        $election->update(['state' => ElectionLifecycleState::SetupNomination->value]);
+
+        return $election;
+    }
+
+    /**
+     * Create a SetupNomination election with a chief ElectionOfficer.
+     *
+     * Returns [Election, User(chief), Organisation].
+     * Constitutional-safe: delegates to setupNomination() which asserts engine derivation.
+     */
+    public static function setupNominationWithChief(?Organisation $organisation = null): array
+    {
+        $org = $organisation ?? Organisation::factory()->create(['type' => 'tenant']);
+        $election = self::setupNomination($org);
+
+        $chief = User::factory()->forOrganisation($org)->create();
+        self::createChiefOfficer($chief, $election, $org);
+
+        return [$election, $chief, $org];
+    }
+
+    /**
+     * Create an election in SetupAdministration state (governance setup phase)
+     *
+     * Constitutional facts:
+     * - approved_at is set
+     * - setup_started_at is set (committee began setup)
+     * - administration_completed = false (setup not finished)
+     *
+     * Expected derived state: SetupAdministration
+     * Allowed actions: complete_administration
+     */
+    public static function setupAdministration(?Organisation $organisation = null): Election
+    {
+        $org = $organisation ?? Organisation::factory()->create(['type' => 'tenant']);
+
+        $election = Election::factory()
+            ->forOrganisation($org)
+            ->create([
+                'name' => 'Administration Election ' . uniqid(),
+                'type' => 'real',
+                'approved_at' => now()->subDay(),
+                // Setup started but not completed
+                'setup_started_at' => now()->subHours(2),
+                'administration_completed' => false,
+                'nomination_completed' => false,
+                // No voting window
+                'voting_starts_at' => null,
+                'voting_ends_at' => null,
+                // No results
+                'results_published_at' => null,
+            ]);
+
+        // Verify engine derives correct state and SYNC IT TO DATABASE
+        self::assertDerivedState($election, ElectionLifecycleState::SetupAdministration);
+        $election->update(['state' => ElectionLifecycleState::SetupAdministration->value]);
+
+        return $election;
+    }
+
+    /**
+     * Create a SetupAdministration election with a chief ElectionOfficer.
+     *
+     * Returns [Election, User(chief), Organisation].
+     * Constitutional-safe: delegates to setupAdministration() which asserts engine derivation.
+     */
+    public static function setupAdministrationWithChief(?Organisation $organisation = null): array
+    {
+        $org = $organisation ?? Organisation::factory()->create(['type' => 'tenant']);
+        $election = self::setupAdministration($org);
+
+        $chief = User::factory()->forOrganisation($org)->create();
+        self::createChiefOfficer($chief, $election, $org);
+
+        return [$election, $chief, $org];
+    }
+
+    /**
+     * Create a chief ElectionOfficer record for governing an election.
+     *
+     * Must never be called outside the factory — prevents floating governance actors.
+     */
+    private static function createChiefOfficer(User $chief, Election $election, Organisation $org): void
+    {
+        ElectionOfficer::create([
+            'user_id' => $chief->id,
+            'election_id' => $election->id,
+            'organisation_id' => $org->id,
+            'role' => 'chief',
+            'status' => 'active',
+            'appointed_by' => $chief->id,
+            'appointed_at' => now(),
+            'accepted_at' => now(),
+        ]);
     }
 
     /**

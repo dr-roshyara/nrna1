@@ -25,6 +25,11 @@ class EnsureElectionState
             }
         }
 
+        // Demo elections: return 404 for candidacy operations
+        if ($election->type === 'demo' && in_array($operation, ['apply_candidacy', 'approve_candidacy'], true)) {
+            abort(404, 'Candidacy operations are not available for demo elections.');
+        }
+
         $allowsAction = $election->getStateMachine()->allowsAction($operation);
 
         if (!$allowsAction) {

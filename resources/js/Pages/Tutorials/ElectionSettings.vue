@@ -6,7 +6,7 @@ import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
 
 useMeta({
   pageKey: 'tutorials.election-settings',
-  url: '/help/election-setup',
+  url: '/election-setup',
   type: 'article',
 })
 
@@ -286,46 +286,61 @@ const activeSection = computed(() => 'overview')
                   <table class="w-full text-sm">
                     <thead class="bg-gradient-to-r from-slate-100 to-slate-50 border-b-2 border-slate-300">
                       <tr>
-                        <th class="text-left px-4 py-3 font-bold text-slate-900">Action</th>
-                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-slate-100">Draft</th>
-                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-slate-50">Awaiting Approval</th>
-                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-amber-50">Administration</th>
-                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-amber-100">Nomination</th>
-                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-purple-50">Voting</th>
-                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-orange-50">Counting</th>
-                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-emerald-50">Results</th>
+                        <th class="text-left px-3 py-3 font-bold text-slate-900 text-xs">Action</th>
+                        <th class="text-center px-2 py-3 font-bold text-slate-700 text-xs bg-slate-100">Draft</th>
+                        <th class="text-center px-2 py-3 font-bold text-slate-700 text-xs bg-slate-50">Pending Approval</th>
+                        <th class="text-center px-2 py-3 font-bold text-slate-700 text-xs bg-blue-50">Approved</th>
+                        <th class="text-center px-2 py-3 font-bold text-slate-700 text-xs bg-amber-50">Setup Admin</th>
+                        <th class="text-center px-2 py-3 font-bold text-slate-700 text-xs bg-amber-100">Nomination</th>
+                        <th class="text-center px-2 py-3 font-bold text-slate-700 text-xs bg-teal-50">Ready for Voting</th>
+                        <th class="text-center px-2 py-3 font-bold text-slate-700 text-xs bg-purple-50">Voting Active</th>
+                        <th class="text-center px-2 py-3 font-bold text-slate-700 text-xs bg-orange-50">Counting</th>
+                        <th class="text-center px-2 py-3 font-bold text-slate-700 text-xs bg-emerald-50">Results Published</th>
+                        <th class="text-center px-2 py-3 font-bold text-slate-700 text-xs bg-slate-100">Archived</th>
                       </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-200">
                       <tr v-for="(row, ridx) in t.section_statemachine.permissions_section.matrix" :key="ridx" class="hover:bg-slate-50 transition-colors">
-                        <td class="px-4 py-4 text-slate-700 font-semibold">{{ row.action }}</td>
-                        <td class="text-center px-3 py-4">
-                          <span v-if="row.draft" class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full font-bold text-sm">✓</span>
-                          <span v-else class="text-slate-400">—</span>
+                        <td class="px-3 py-4 text-slate-700 font-semibold text-xs">{{ row.action }}</td>
+                        <td class="text-center px-2 py-4">
+                          <span v-if="row.draft" class="inline-flex items-center justify-center w-5 h-5 bg-emerald-100 text-emerald-700 rounded-full font-bold text-xs">✓</span>
+                          <span v-else class="text-slate-300">—</span>
                         </td>
-                        <td class="text-center px-3 py-4">
-                          <span v-if="row.pending_approval" class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full font-bold text-sm">✓</span>
-                          <span v-else class="text-slate-400">—</span>
+                        <td class="text-center px-2 py-4">
+                          <span v-if="row.pending_approval" class="inline-flex items-center justify-center w-5 h-5 bg-emerald-100 text-emerald-700 rounded-full font-bold text-xs">✓</span>
+                          <span v-else class="text-slate-300">—</span>
                         </td>
-                        <td class="text-center px-3 py-4">
-                          <span v-if="row.administration" class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full font-bold text-sm">✓</span>
-                          <span v-else class="text-slate-400">—</span>
+                        <td class="text-center px-2 py-4">
+                          <span v-if="row.approved" class="inline-flex items-center justify-center w-5 h-5 bg-emerald-100 text-emerald-700 rounded-full font-bold text-xs">✓</span>
+                          <span v-else class="text-slate-300">—</span>
                         </td>
-                        <td class="text-center px-3 py-4">
-                          <span v-if="row.nomination" class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full font-bold text-sm">✓</span>
-                          <span v-else class="text-slate-400">—</span>
+                        <td class="text-center px-2 py-4">
+                          <span v-if="row.setup_administration" class="inline-flex items-center justify-center w-5 h-5 bg-emerald-100 text-emerald-700 rounded-full font-bold text-xs">✓</span>
+                          <span v-else class="text-slate-300">—</span>
                         </td>
-                        <td class="text-center px-3 py-4">
-                          <span v-if="row.voting" class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full font-bold text-sm">✓</span>
-                          <span v-else class="text-slate-400">—</span>
+                        <td class="text-center px-2 py-4">
+                          <span v-if="row.setup_nomination" class="inline-flex items-center justify-center w-5 h-5 bg-emerald-100 text-emerald-700 rounded-full font-bold text-xs">✓</span>
+                          <span v-else class="text-slate-300">—</span>
                         </td>
-                        <td class="text-center px-3 py-4">
-                          <span v-if="row.results_pending" class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full font-bold text-sm">✓</span>
-                          <span v-else class="text-slate-400">—</span>
+                        <td class="text-center px-2 py-4">
+                          <span v-if="row.ready_for_voting" class="inline-flex items-center justify-center w-5 h-5 bg-emerald-100 text-emerald-700 rounded-full font-bold text-xs">✓</span>
+                          <span v-else class="text-slate-300">—</span>
                         </td>
-                        <td class="text-center px-3 py-4">
-                          <span v-if="row.results" class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full font-bold text-sm">✓</span>
-                          <span v-else class="text-slate-400">—</span>
+                        <td class="text-center px-2 py-4">
+                          <span v-if="row.voting_active" class="inline-flex items-center justify-center w-5 h-5 bg-emerald-100 text-emerald-700 rounded-full font-bold text-xs">✓</span>
+                          <span v-else class="text-slate-300">—</span>
+                        </td>
+                        <td class="text-center px-2 py-4">
+                          <span v-if="row.counting" class="inline-flex items-center justify-center w-5 h-5 bg-emerald-100 text-emerald-700 rounded-full font-bold text-xs">✓</span>
+                          <span v-else class="text-slate-300">—</span>
+                        </td>
+                        <td class="text-center px-2 py-4">
+                          <span v-if="row.results_published" class="inline-flex items-center justify-center w-5 h-5 bg-emerald-100 text-emerald-700 rounded-full font-bold text-xs">✓</span>
+                          <span v-else class="text-slate-300">—</span>
+                        </td>
+                        <td class="text-center px-2 py-4">
+                          <span v-if="row.archived" class="inline-flex items-center justify-center w-5 h-5 bg-emerald-100 text-emerald-700 rounded-full font-bold text-xs">✓</span>
+                          <span v-else class="text-slate-300">—</span>
                         </td>
                       </tr>
                     </tbody>

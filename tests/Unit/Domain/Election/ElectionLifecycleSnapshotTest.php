@@ -157,7 +157,7 @@ class ElectionLifecycleSnapshotTest extends TestCase
         );
 
         $unlockedSnapshot = new ElectionLifecycleSnapshot(
-            state: ElectionLifecycleState::Setup,
+            state: ElectionLifecycleState::SetupAdministration,
             canEdit: true,
             canVote: false,
             canManageVoters: true,

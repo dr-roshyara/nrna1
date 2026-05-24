@@ -228,4 +228,139 @@ class ConstitutionalTransitionGuardTest extends TestCase
         $this->guard->assertAllowed($election, 'auto_submit', $snapshot);
         $this->assertTrue(true);
     }
+
+    /**
+     * PHASE B: OPERATIONAL SUSPENSION OVERLAY
+     * RED test: Suspend is allowed from VotingActive state
+     *
+     * Suspension should be allowed from any non-archived state.
+     * VotingActive is the most common case where suspension is needed.
+     */
+    #[\PHPUnit\Framework\Attributes\Test]
+    public function suspend_is_allowed_from_voting_active(): void
+    {
+        $election = Election::factory()->create();
+        $user = \App\Models\User::factory()->create();
+
+        \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'platform_admin', 'guard_name' => 'web']);
+        $user->assignRole('platform_admin');
+        $this->actingAs($user);
+
+        $snapshot = new ElectionLifecycleSnapshot(
+            state: ElectionLifecycleState::VotingActive,
+            canEdit: false,
+            canVote: true,
+            canManageVoters: false,
+            canPublishResults: false,
+            canEditTimeline: false,
+            isLocked: true,
+            blockedReason: null,
+            allowedActions: ['suspend'],  // suspend should be available
+        );
+
+        // Should not throw
+        $this->guard->assertAllowed($election, 'suspend', $snapshot);
+        $this->assertTrue(true);
+    }
+
+    /**
+     * RED test: Suspend is not allowed from Archived state
+     *
+     * Suspension is an operational governance overlay.
+     * Archived elections are terminal — no operational changes allowed.
+     */
+    #[\PHPUnit\Framework\Attributes\Test]
+    public function suspend_is_not_allowed_from_archived(): void
+    {
+        $election = Election::factory()->create();
+        $user = \App\Models\User::factory()->create();
+
+        \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'platform_admin', 'guard_name' => 'web']);
+        $user->assignRole('platform_admin');
+        $this->actingAs($user);
+
+        $snapshot = new ElectionLifecycleSnapshot(
+            state: ElectionLifecycleState::Archived,
+            canEdit: false,
+            canVote: false,
+            canManageVoters: false,
+            canPublishResults: false,
+            canEditTimeline: false,
+            isLocked: true,
+            blockedReason: 'Election is archived',
+            allowedActions: [],  // no operations allowed
+        );
+
+        // Should throw
+        $this->expectException(InvalidTransitionException::class);
+        $this->guard->assertAllowed($election, 'suspend', $snapshot);
+    }
+
+    /**
+     * RED test: Resume is allowed from Suspended state
+     *
+     * Resume clears suspension metadata and allows engine to re-derive
+     * lifecycle state from current constitutional facts.
+     */
+    #[\PHPUnit\Framework\Attributes\Test]
+    public function resume_is_allowed_from_suspended(): void
+    {
+        $election = Election::factory()->create([
+            'suspended_at' => now()->subHours(2),
+        ]);
+        $user = \App\Models\User::factory()->create();
+
+        \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'platform_admin', 'guard_name' => 'web']);
+        $user->assignRole('platform_admin');
+        $this->actingAs($user);
+
+        $snapshot = new ElectionLifecycleSnapshot(
+            state: ElectionLifecycleState::Suspended,
+            canEdit: false,
+            canVote: false,
+            canManageVoters: false,
+            canPublishResults: false,
+            canEditTimeline: false,
+            isLocked: true,
+            blockedReason: 'Election is suspended',
+            allowedActions: ['resume'],  // only resume is allowed
+        );
+
+        // Should not throw
+        $this->guard->assertAllowed($election, 'resume', $snapshot);
+        $this->assertTrue(true);
+    }
+
+    /**
+     * RED test: Resume is not allowed from non-suspended states
+     *
+     * Resume can only be called on suspended elections.
+     * Resume has no meaning if election is not suspended.
+     */
+    #[\PHPUnit\Framework\Attributes\Test]
+    public function resume_is_not_allowed_from_draft(): void
+    {
+        $election = Election::factory()->create();
+        $user = \App\Models\User::factory()->create();
+
+        \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'platform_admin', 'guard_name' => 'web']);
+        $user->assignRole('platform_admin');
+        $this->actingAs($user);
+
+        $snapshot = new ElectionLifecycleSnapshot(
+            state: ElectionLifecycleState::Draft,
+            canEdit: true,
+            canVote: false,
+            canManageVoters: true,
+            canPublishResults: false,
+            canEditTimeline: true,
+            isLocked: false,
+            blockedReason: null,
+            allowedActions: ['submit_for_approval'],
+        );
+
+        // Should throw
+        $this->expectException(InvalidTransitionException::class);
+        $this->guard->assertAllowed($election, 'resume', $snapshot);
+    }
 }

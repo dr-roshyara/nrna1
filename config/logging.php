@@ -101,6 +101,13 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
+        'voter_audit' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/voter_audit.log'),
+            'level' => env('LOG_LEVEL', 'info'),
+            'days' => 365,
+        ],
+
         'voting_audit' => [
             'driver' => 'daily',
             'path' => storage_path('logs/voting_audit.log'),

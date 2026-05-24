@@ -65,6 +65,27 @@ class ElectionPolicy
     }
 
     /**
+     * Chief or platform admin may suspend or resume an election.
+     *
+     * Suspension is governance intervention, NOT settings management.
+     * This is intentionally chief-only (not deputy) due to governance significance.
+     * Platform admins are also authorized as system-level governance operators.
+     */
+    public function suspendElection(User $user, Election $election): bool
+    {
+        // Platform admin can always suspend (system-level governance)
+        if ($user->is_super_admin) {
+            return true;
+        }
+
+        return ElectionOfficer::where('user_id', $user->id)
+            ->where('election_id', $election->id)
+            ->where('role', 'chief')
+            ->where('status', 'active')
+            ->exists();
+    }
+
+    /**
      * Chief or deputy may manage voters (add/remove).
      */
     public function manageVoters(User $user, Election $election): bool

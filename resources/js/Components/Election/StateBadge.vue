@@ -8,23 +8,13 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 
 const props = defineProps({
   state: {
     type: String,
     required: true,
-    validator: (v) => [
-      'draft',
-      'submitted_for_approval',
-      'approved',
-      'rejected',
-      'setup',
-      'ready_for_voting',
-      'voting_active',
-      'counting',
-      'results_published',
-      'archived',
-    ].includes(v),
+    validator: (v) => Object.values(ElectionLifecycleStates).includes(v),
   },
   size: {
     type: String,
@@ -36,16 +26,18 @@ const props = defineProps({
 const { t } = useI18n()
 
 const stateConfig = {
-  draft: { icon: '📝', color: 'slate', messageKey: 'states.draft' },
-  submitted_for_approval: { icon: '⏳', color: 'amber', messageKey: 'states.submitted_for_approval' },
-  approved: { icon: '✅', color: 'emerald', messageKey: 'states.approved' },
-  rejected: { icon: '❌', color: 'red', messageKey: 'states.rejected' },
-  setup: { icon: '⚙️', color: 'blue', messageKey: 'states.setup' },
-  ready_for_voting: { icon: '📋', color: 'purple', messageKey: 'states.ready_for_voting' },
-  voting_active: { icon: '🗳️', color: 'emerald', messageKey: 'states.voting_active' },
-  counting: { icon: '📊', color: 'orange', messageKey: 'states.counting' },
-  results_published: { icon: '✅', color: 'green', messageKey: 'states.results_published' },
-  archived: { icon: '📦', color: 'gray', messageKey: 'states.archived' },
+  [ElectionLifecycleStates.DRAFT]: { icon: '📝', color: 'slate', messageKey: 'states.draft' },
+  [ElectionLifecycleStates.SUBMITTED_FOR_APPROVAL]: { icon: '⏳', color: 'amber', messageKey: 'states.submitted_for_approval' },
+  [ElectionLifecycleStates.APPROVED]: { icon: '✅', color: 'emerald', messageKey: 'states.approved' },
+  [ElectionLifecycleStates.REJECTED]: { icon: '❌', color: 'red', messageKey: 'states.rejected' },
+  [ElectionLifecycleStates.SETUP_ADMINISTRATION]: { icon: '⚙️', color: 'blue', messageKey: 'states.setup_administration' },
+  [ElectionLifecycleStates.SETUP_NOMINATION]: { icon: '👥', color: 'indigo', messageKey: 'states.setup_nomination' },
+  [ElectionLifecycleStates.READY_FOR_VOTING]: { icon: '📋', color: 'purple', messageKey: 'states.ready_for_voting' },
+  [ElectionLifecycleStates.VOTING_ACTIVE]: { icon: '🗳️', color: 'emerald', messageKey: 'states.voting_active' },
+  [ElectionLifecycleStates.COUNTING]: { icon: '📊', color: 'orange', messageKey: 'states.counting' },
+  [ElectionLifecycleStates.RESULTS_PUBLISHED]: { icon: '✅', color: 'green', messageKey: 'states.results_published' },
+  [ElectionLifecycleStates.ARCHIVED]: { icon: '📦', color: 'gray', messageKey: 'states.archived' },
+  [ElectionLifecycleStates.SUSPENDED]: { icon: '🚫', color: 'red', messageKey: 'states.suspended' },
 }
 
 const colorClasses = {

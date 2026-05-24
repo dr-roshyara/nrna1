@@ -39,7 +39,7 @@ const props = defineProps({
   title:       { type: String, required: true },
   description: { type: String, default: '' },
   href:        { type: String, required: true },
-  icon:        { type: Object, required: true },
+  icon:        { type: [Object, Function], required: true },
   color:       { type: String, default: 'purple' },
 })
 

@@ -26,9 +26,10 @@ class ElectionCandidacyApplyPageTest extends TestCase
         $this->org      = Organisation::factory()->create(['type' => 'tenant']);
         $this->member   = User::factory()->create();
         $this->election = Election::factory()->create([
-            'organisation_id' => $this->org->id,
-            'type'            => 'real',
-            'status'          => 'active',
+            'organisation_id'         => $this->org->id,
+            'type'                    => 'real',
+            'administration_completed' => true,
+            'nomination_completed'    => false,
         ]);
         $this->post = Post::factory()->forElection($this->election)->create();
         UserOrganisationRole::create([

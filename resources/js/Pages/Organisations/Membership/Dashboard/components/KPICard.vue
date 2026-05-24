@@ -30,7 +30,7 @@ const props = defineProps({
   label:     { type: String, required: true },
   value:     { type: [String, Number], required: true },
   href:      { type: String, required: true },
-  icon:      { type: Object, default: null },
+  icon:      { type: [Object, Function], default: null },
   color:     { type: String, default: 'purple' },
   trend:     { type: String, default: null },   // 'warning' | 'danger' | null
   trendLabel:{ type: String, default: '' },

@@ -32,6 +32,9 @@ class ElectionActivationTest extends TestCase
     {
         parent::setUp();
 
+        // Bypass CSRF middleware for all requests in this test
+        $this->withoutMiddleware(\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class);
+
         $this->org = Organisation::factory()->create(['type' => 'tenant']);
 
         $this->election = Election::factory()
@@ -59,9 +62,23 @@ class ElectionActivationTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.activate', $this->election->slug));
 
+        // Debug: Check what's actually in the session
+        if ($response->getSession()->has('error')) {
+            $this->fail('Activation failed with error: ' . $response->getSession()->get('error'));
+        }
+
         $response->assertRedirect();
         $response->assertSessionHas('success');
-        $this->assertEquals('setup', $this->election->fresh()->state);
+
+        // Verify constitutional facts were set
+        $this->election->refresh();
+        $this->assertNotNull($this->election->setup_started_at, 'begin_setup must set setup_started_at');
+        $this->assertFalse($this->election->administration_completed, 'administration_completed should be false before complete_administration');
+
+        // Verify engine derives SetupAdministration state
+        $engine = app(ElectionLifecycleEngineImpl::class);
+        $derivedState = $engine->getState($this->election);
+        $this->assertEquals(ElectionLifecycleState::SetupAdministration, $derivedState);
     }
 
     public function test_deputy_can_activate_planned_election(): void
@@ -71,7 +88,15 @@ class ElectionActivationTest extends TestCase
             ->post(route('elections.activate', $this->election->slug));
 
         $response->assertRedirect();
-        $this->assertEquals('setup', $this->election->fresh()->state);
+
+        // Verify constitutional facts were set
+        $this->election->refresh();
+        $this->assertNotNull($this->election->setup_started_at, 'begin_setup must set setup_started_at');
+
+        // Verify engine derives SetupAdministration state
+        $engine = app(ElectionLifecycleEngineImpl::class);
+        $derivedState = $engine->getState($this->election);
+        $this->assertEquals(ElectionLifecycleState::SetupAdministration, $derivedState);
     }
 
     public function test_commissioner_cannot_activate_election(): void
@@ -141,7 +166,7 @@ class ElectionActivationTest extends TestCase
      * RED phase: This will fail because begin_setup has no side effects yet.
      * After implementing applySideEffectsForBeginSetup(), this test will pass.
      */
-    public function test_begin_setup_sets_administration_completed_to_true(): void
+    public function test_begin_setup_sets_setup_started_at(): void
     {
         $election = Election::factory()
             ->forOrganisation($this->org)
@@ -176,18 +201,18 @@ class ElectionActivationTest extends TestCase
         $election->refresh();
 
         // ASSERTION 1: The business fact must be updated
-        $this->assertTrue(
-            $election->administration_completed,
-            'begin_setup side effects must set administration_completed=true'
+        $this->assertNotNull(
+            $election->setup_started_at,
+            'begin_setup side effects must set setup_started_at'
         );
 
-        // ASSERTION 2: The engine must derive 'setup' from the fact
+        // ASSERTION 2: The engine must derive SetupAdministration from the fact
         $engine = app(ElectionLifecycleEngineImpl::class);
         $derivedState = $engine->getState($election);
         $this->assertEquals(
-            ElectionLifecycleState::Setup,
+            ElectionLifecycleState::SetupAdministration,
             $derivedState,
-            'Engine must derive Setup state from administration_completed=true, not from state column'
+            'Engine must derive SetupAdministration state from setup_started_at not null'
         );
     }
 

@@ -20,13 +20,7 @@
       "label": "Timezone",
       "optional": "(optional — required before submission)",
       "placeholder": "Select timezone...",
-      "help": "Set your election timezone. Required before submitting for approval.",
-      "options": {
-        "utc": "UTC",
-        "berlin": "Europe/Berlin (CET/CEST)",
-        "london": "Europe/London (GMT/BST)",
-        "kathmandu": "Asia/Kathmandu (NPT)"
-      }
+      "help": "Set your election timezone. Required before submitting for approval."
     },
     "start": {
       "section": "Start Date & Time",

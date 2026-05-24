@@ -54,7 +54,7 @@
               </a>
               <!-- Tutorial/Help Link -->
               <a
-                href="/help/election-setup"
+                :href="route('tutorials.election-settings')"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-50 to-cyan-50 text-primary-700 font-semibold rounded-lg border-2 border-primary-200 hover:border-primary-400 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-blue-200 transition-all duration-200 whitespace-nowrap"
@@ -71,6 +71,39 @@
             </div>
           </div>
         </Card>
+
+        <!-- Suspension Banner -->
+        <div v-if="currentState === ElectionLifecycleStates.SUSPENDED" class="bg-amber-50 border-l-4 border-amber-500 rounded-xl p-5 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0">
+              <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
+                <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-base font-semibold text-amber-800">Election Suspended</h3>
+              <p class="text-sm text-amber-700 mt-0.5">
+                All governance operations are temporarily locked.
+              </p>
+              <p v-if="election.suspended_reason" class="text-xs text-amber-600 mt-2 italic">
+                Reason: {{ election.suspended_reason }}
+              </p>
+            </div>
+            <button
+              v-if="canResume"
+              @click="handleResume"
+              :disabled="isLoading"
+              class="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-sm font-medium rounded-lg transition-all duration-200 shadow-sm hover:shadow disabled:opacity-50"
+            >
+              <svg v-if="!isLoading" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>{{ isLoading ? 'Resuming...' : 'Resume Election' }}</span>
+            </button>
+          </div>
+        </div>
 
         <!-- ── ELECTION CONTROL ───────────────────────────── -->
         <SectionCard padding="lg">
@@ -102,117 +135,157 @@
             </div>
           </div>
 
-          <!-- Action Zone (Single Button - Never Overlaps) -->
-          <div class="w-full min-w-0">
-            <!-- Submit for Approval: Show when in Draft state -->
-            <transition name="fade-scale" mode="out-in">
-              <div v-if="canSubmitForApproval" key="submit" class="w-full">
+          <!-- Action Zone — Grouped by Category -->
+          <div class="w-full min-w-0 space-y-6">
+
+            <!-- ══════════════════════════════════════════════════ -->
+            <!-- GOVERNANCE ACTIONS — Primary state transitions   -->
+            <!-- ══════════════════════════════════════════════════ -->
+            <div v-if="canSubmitForApproval || canBeginSetup">
+              <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Governance Actions</h3>
+              <div class="space-y-3">
+                <transition name="fade-scale" mode="out-in">
+                  <div v-if="canSubmitForApproval" key="submit" class="w-full">
+                    <ActionButton
+                      variant="primary"
+                      size="lg"
+                      :loading="isLoading"
+                      class="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 shadow-lg hover:shadow-xl transition-all duration-200"
+                      @click="handleSubmitForApproval"
+                    >
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      <span class="font-bold text-base">
+                        {{ (election.expected_voter_count || 0) > 40 ? 'Submit for Approval' : 'Submit (Auto-Approved)' }}
+                      </span>
+                      <span class="text-xs opacity-90 ml-2 hidden sm:inline">
+                        {{ (election.expected_voter_count || 0) > 40 ? '→ Begin review' : '→ Auto-approve' }}
+                      </span>
+                    </ActionButton>
+                  </div>
+                </transition>
+                <transition name="fade-scale" mode="out-in">
+                  <div v-if="canBeginSetup" key="begin-setup" class="w-full">
+                    <ActionButton
+                      variant="success"
+                      size="lg"
+                      :loading="isLoading"
+                      class="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 shadow-lg hover:shadow-xl transition-all duration-200"
+                      @click="handleBeginSetup"
+                    >
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                      </svg>
+                      <span class="font-bold text-base">Begin Setup</span>
+                      <span class="text-xs opacity-90 ml-2 hidden sm:inline">→ Start configuration</span>
+                    </ActionButton>
+                  </div>
+                </transition>
+              </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════ -->
+            <!-- PHASE CONTROLS — Mid-level phase transitions     -->
+            <!-- ══════════════════════════════════════════════════ -->
+            <div v-if="canCompleteAdministration || canOpenVoting || canCloseVoting" class="pt-4 border-t border-slate-200">
+              <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Phase Controls</h3>
+              <div class="flex flex-wrap gap-3">
+                <transition name="fade-scale" mode="out-in">
+                  <div v-if="canCompleteAdministration" key="complete-admin">
+                    <ActionButton
+                      variant="outline"
+                      size="md"
+                      :loading="isLoading"
+                      @click="handlePhaseCompleted('setup_administration')"
+                    >
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      Complete Administration
+                    </ActionButton>
+                  </div>
+                </transition>
+                <transition name="fade-scale" mode="out-in">
+                  <div v-if="canOpenVoting" key="open" :title="openVotingBlockedReason || ''">
+                    <div>
+                      <ActionButton
+                        variant="success"
+                        size="md"
+                        :loading="isLoading"
+                        :disabled="isOpenVotingDisabled"
+                        class="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600"
+                        @click="openVoting"
+                      >
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                        </svg>
+                        {{ t.sections.election_control.btn_open }}
+                        <span v-if="!isOpenVotingDisabled" class="text-xs opacity-90 ml-2 hidden sm:inline">→ Begin voting</span>
+                      </ActionButton>
+                      <p v-if="openVotingBlockedReason" class="mt-2 text-xs text-amber-600 font-medium">
+                        {{ openVotingBlockedReason }}
+                      </p>
+                    </div>
+                  </div>
+                </transition>
+                <transition name="fade-scale" mode="out-in">
+                  <div v-if="canCloseVoting" key="close">
+                    <ActionButton
+                      variant="danger"
+                      size="md"
+                      :loading="isLoading"
+                      class="bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600"
+                      @click="closeVoting"
+                    >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 1112.01 3.715M9 9a1 1 0 112 0V5.525a1 1 0 00-2 0v3.475z" clip-rule="evenodd"/>
+                      </svg>
+                      {{ t.sections.election_control.btn_close }}
+                      <span class="text-xs opacity-90 ml-2 hidden sm:inline">→ End voting</span>
+                    </ActionButton>
+                  </div>
+                </transition>
+              </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════ -->
+            <!-- GOVERNANCE — Overlay actions (chief only)        -->
+            <!-- ══════════════════════════════════════════════════ -->
+            <div v-if="canSuspend" class="pt-4 border-t border-slate-200">
+              <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Governance</h3>
+              <div class="flex flex-wrap gap-3">
                 <ActionButton
-                  variant="primary"
-                  size="lg"
+                  variant="danger-outline"
+                  size="md"
                   :loading="isLoading"
-                  class="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 shadow-lg hover:shadow-xl transition-all duration-200"
-                  @click="handleSubmitForApproval"
+                  data-testid="suspend-button"
+                  @click="handleSuspend"
                 >
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
                   </svg>
-                  <span class="font-bold text-base">
-                    {{ (election.expected_voter_count || 0) > 40 ? 'Submit for Approval' : 'Submit (Auto-Approved)' }}
-                  </span>
-                  <span class="text-xs opacity-90 ml-2 hidden sm:inline">
-                    {{ (election.expected_voter_count || 0) > 40 ? '→ Begin review' : '→ Auto-approve' }}
-                  </span>
+                  Suspend Election
                 </ActionButton>
               </div>
-            </transition>
+            </div>
 
-            <!-- Begin Setup: Show when in Approved state (approved → setup) -->
+            <!-- ══════════════════════════════════════════════════ -->
+            <!-- EMPTY STATE — No actions available               -->
+            <!-- ══════════════════════════════════════════════════ -->
             <transition name="fade-scale" mode="out-in">
-              <div v-if="canBeginSetup" key="begin-setup" class="w-full">
-                <ActionButton
-                  variant="success"
-                  size="lg"
-                  :loading="isLoading"
-                  class="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 shadow-lg hover:shadow-xl transition-all duration-200"
-                  @click="handleBeginSetup"
-                >
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              <div
+                v-if="!canSubmitForApproval && !canBeginSetup && !canCompleteAdministration && !canOpenVoting && !canCloseVoting && !canSuspend"
+                key="empty"
+                class="w-full py-8 text-center"
+              >
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-100 mb-3">
+                  <svg class="w-8 h-8 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-4a2 2 0 00-2-2H6a2 2 0 00-2 2v4a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
                   </svg>
-                  <span class="font-bold text-base">Begin Setup</span>
-                  <span class="text-xs opacity-90 ml-2 hidden sm:inline">→ Start configuration</span>
-                </ActionButton>
-              </div>
-            </transition>
-
-            <!-- Complete Administration: Show when in Setup state -->
-            <transition name="fade-scale" mode="out-in">
-              <div v-if="canCompleteAdministration" key="complete-admin" class="w-full">
-                <ActionButton
-                  variant="outline"
-                  size="lg"
-                  :loading="isLoading"
-                  class="w-full sm:w-auto"
-                  @click="handlePhaseCompleted('setup')"
-                >
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  <span class="font-bold text-base">Complete Administration</span>
-                  <span class="text-xs opacity-90 ml-2 hidden sm:inline">→ Begin nominations</span>
-                </ActionButton>
-              </div>
-            </transition>
-
-            <!-- Open Voting: Show when in Setup or Ready for Voting phase, disabled until preconditions are met -->
-            <transition name="fade-scale" mode="out-in">
-              <div v-if="canOpenVoting" key="open" class="w-full">
-                <div :title="openVotingBlockedReason || ''">
-                  <ActionButton
-                    variant="success"
-                    size="lg"
-                    :loading="isLoading"
-                    :disabled="isOpenVotingDisabled"
-                    class="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 shadow-lg hover:shadow-xl transition-all duration-200"
-                    @click="openVoting"
-                  >
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                      <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
-                    </svg>
-                    <span class="font-bold text-base">{{ t.sections.election_control.btn_open }}</span>
-                    <span v-if="!isOpenVotingDisabled" class="text-xs opacity-90 ml-2 hidden sm:inline">→ Begin voting</span>
-                  </ActionButton>
-                  <p v-if="openVotingBlockedReason" class="mt-2 text-xs text-amber-600 font-medium">
-                    {{ openVotingBlockedReason }}
-                  </p>
                 </div>
-              </div>
-            </transition>
-
-            <!-- Close Voting: Show when in Voting phase -->
-            <transition name="fade-scale" mode="out-in">
-              <div v-if="canCloseVoting" key="close" class="w-full">
-                <ActionButton
-                  variant="danger"
-                  size="lg"
-                  :loading="isLoading"
-                  class="w-full sm:w-auto bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600 shadow-lg hover:shadow-xl transition-all duration-200"
-                  @click="closeVoting"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 1112.01 3.715M9 9a1 1 0 112 0V5.525a1 1 0 00-2 0v3.475z" clip-rule="evenodd"/>
-                  </svg>
-                  <span class="font-bold text-base">{{ t.sections.election_control.btn_close }}</span>
-                  <span class="text-xs opacity-90 ml-2 hidden sm:inline">→ End voting</span>
-                </ActionButton>
-              </div>
-            </transition>
-
-            <!-- Empty State: When no action available (safety fallback) -->
-            <transition name="fade-scale" mode="out-in">
-              <div v-if="!canSubmitForApproval && !canBeginSetup && !canCompleteAdministration && !canOpenVoting && !canLockVoting && !canCloseVoting" key="empty" class="w-full px-6 py-4 bg-slate-50 border-2 border-dashed border-slate-300 rounded-lg text-center">
-                <p class="text-sm font-medium text-slate-600">✓ Election state locked</p>
+                <p class="text-sm font-medium text-slate-500">No actions available in current state</p>
+                <p class="text-xs text-slate-400 mt-1">Complete previous phases to unlock next steps</p>
               </div>
             </transition>
           </div>
@@ -328,7 +401,6 @@
           :organisation="organisation"
           @phase-completed="handlePhaseCompleted"
           @dates-updated="handleDatesUpdated"
-          @lock-voting="lockVoting"
         />
 
         <!-- ── TIMELINE SETTINGS ───────────────────────────────── -->
@@ -858,6 +930,88 @@
       </div>
     </Teleport>
 
+    <!-- Governance Suspension Modal -->
+    <Teleport to="body">
+      <div
+        v-if="showSuspendModal"
+        data-testid="suspend-modal"
+        class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+        @click.self="showSuspendModal = false"
+      >
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md transform transition-all">
+          <div class="px-6 py-4 border-b border-slate-200">
+            <h3 class="text-lg font-bold text-slate-900">Suspend Election</h3>
+            <p class="text-sm text-slate-500 mt-1">
+              This action freezes all governance operations except resume.
+            </p>
+          </div>
+
+          <div class="px-6 py-4 space-y-4">
+            <!-- Governance Warning -->
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
+              <p class="text-sm text-red-700 font-medium">
+                This is a governance intervention, NOT an ordinary state transition.
+              </p>
+            </div>
+
+            <!-- Reason (required) -->
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-2">
+                Reason for Suspension <span class="text-red-500">*</span>
+              </label>
+              <textarea
+                v-model="suspendReason"
+                data-testid="suspend-reason"
+                rows="4"
+                placeholder="Describe why this election must be suspended..."
+                class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+              ></textarea>
+              <p class="text-xs text-slate-500 mt-1">
+                Minimum 10 characters. This is recorded in the governance audit trail.
+              </p>
+            </div>
+
+            <!-- Category (optional) -->
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-2">
+                Suspension Category
+              </label>
+              <select
+                v-model="suspendCategory"
+                data-testid="suspend-category"
+                class="w-full px-3 py-2 border border-slate-300 rounded-lg"
+              >
+                <option value="general">General</option>
+                <option value="misconduct">Misconduct</option>
+                <option value="emergency">Emergency</option>
+                <option value="investigation">Investigation</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="px-6 py-4 border-t border-slate-200 flex justify-end gap-3">
+            <button
+              @click="showSuspendModal = false"
+              :disabled="isLoading"
+              class="px-4 py-2 text-slate-700 font-semibold border border-slate-300 rounded-lg hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              data-testid="suspend-confirm"
+              @click="handleSuspendConfirm"
+              :disabled="suspendReason.length < 10 || isLoading"
+              class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            >
+              <span v-if="isLoading" class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+              <span>{{ isLoading ? 'Suspending...' : 'Suspend Election' }}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </Teleport>
+
   </ElectionLayout>
 </template>
 
@@ -875,6 +1029,8 @@ import EmptyState from '@/Components/EmptyState.vue'
 import StateMachinePanel from '@/Pages/Election/Partials/StateMachinePanel.vue'
 import StateBadge from '@/Components/Election/StateBadge.vue'
 import StateProgress from '@/Components/Election/StateProgress.vue'
+import { useElectionCapabilities } from '@/Composables/useElectionCapabilities'
+import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 
 import pageDe from '@/locales/pages/Election/Management/de.json'
 import pageEn from '@/locales/pages/Election/Management/en.json'
@@ -909,6 +1065,11 @@ const showCompletionModal  = ref(false)
 const selectedPhase       = ref(null)
 const completionReason    = ref('')
 const reasonError         = ref('')
+
+// Governance suspension modal
+const showSuspendModal   = ref(false)
+const suspendReason      = ref('')
+const suspendCategory    = ref('general')
 
 
 const onLogoFileChange = (e) => {
@@ -961,7 +1122,7 @@ function toDatetimeLocal(raw) {
 }
 
 const currentState = computed(() => props.stateMachine?.currentState ?? 'draft')
-const allowedActions = computed(() => props.stateMachine?.allowedActions ?? [])
+const capabilities = useElectionCapabilities(computed(() => props.stateMachine))
 
 const expectedVoterCount = ref(props.capacity?.expected_voter_count ?? 0)
 const saveStatus = ref('idle') // 'idle' | 'saving' | 'success' | 'error'
@@ -1002,29 +1163,36 @@ const saveButtonText = computed(() => {
   return 'Save'
 })
 
-const canSubmitForApproval = computed(() => allowedActions.value.includes('submit_for_approval'))
-const isPendingApproval = computed(() => currentState.value === 'submitted_for_approval')
-const canBeginSetup = computed(() => allowedActions.value.includes('begin_setup'))
-const canCompleteAdministration = computed(() => allowedActions.value.includes('complete_administration'))
-const canOpenVoting = computed(() => allowedActions.value.includes('open_voting'))
-const openVotingBlockedReason = computed(() => props.stateMachine?.openVotingBlockedReason ?? null)
-const isOpenVotingDisabled = computed(() => !!openVotingBlockedReason.value)
-const canLockVoting = computed(() => allowedActions.value.includes('lock_voting'))
-const canCloseVoting = computed(() => allowedActions.value.includes('close_voting'))
-const canPublishResults = computed(() => allowedActions.value.includes('publish_results'))
+const {
+  canSubmitForApproval,
+  canBeginSetup,
+  canCompleteAdministration,
+  canOpenVoting,
+  openVotingBlockedReason,
+  isOpenVotingDisabled,
+  canCloseVoting,
+  canPublishResults,
+  canResume,
+  canSuspend,
+} = capabilities
+
+const isPendingApproval = computed(() => currentState.value === ElectionLifecycleStates.SUBMITTED_FOR_APPROVAL)
 const isVotingActive = computed(() => canCloseVoting.value)
 
 const phaseInfo = computed(() => {
   const state = currentState.value
-  if (state === 'draft') return { icon: '📋', status: 'Set up election posts, candidates, and voter list. When ready, submit for approval to begin the election workflow.', badge: 'Draft Phase', color: 'amber' }
-  if (state === 'submitted_for_approval') return { icon: '⏳', status: 'Awaiting review by platform admin. The election will move to setup once approved.', badge: 'Pending Approval', color: 'amber' }
-  if (state === 'approved') return { icon: '✅', status: 'Election approved. Click "Begin Setup" to start configuration.', badge: 'Approved', color: 'emerald' }
-  if (state === 'setup') return { icon: '⚙️', status: 'Configure posts and positions, assign candidates, import and approve voters. Complete administration to proceed.', badge: 'Setup', color: 'amber' }
-  if (state === 'ready_for_voting') return { icon: '📋', status: 'Setup complete and candidates approved. Ready to open voting when you are prepared.', badge: 'Ready for Voting', color: 'amber' }
-  if (state === 'voting_active') return { icon: '🗳️', status: '✓ Voting is active — members can cast their votes. Monitor participation and close voting when the period ends.', badge: 'Voting Active', color: 'emerald' }
-  if (state === 'counting') return { icon: '📊', status: 'Voting has closed. Results are being counted. Publish results when ready to make them visible to members.', badge: 'Counting', color: 'amber' }
-  if (state === 'results_published') return { icon: '✅', status: 'Election complete and results published. All phases are finished.', badge: 'Results Published', color: 'emerald' }
-  if (state === 'rejected') return { icon: '❌', status: 'Election was rejected. You can revise and resubmit for approval.', badge: 'Rejected', color: 'amber' }
+  if (state === ElectionLifecycleStates.DRAFT) return { icon: '📋', status: 'Set up election posts, candidates, and voter list. When ready, submit for approval to begin the election workflow.', badge: 'Draft Phase', color: 'amber' }
+  if (state === ElectionLifecycleStates.SUBMITTED_FOR_APPROVAL) return { icon: '⏳', status: 'Awaiting review by platform admin. The election will move to setup once approved.', badge: 'Pending Approval', color: 'amber' }
+  if (state === ElectionLifecycleStates.APPROVED) return { icon: '✅', status: 'Election approved. Click "Begin Setup" to start configuration.', badge: 'Approved', color: 'emerald' }
+  if (state === ElectionLifecycleStates.SETUP_ADMINISTRATION) return { icon: '⚙️', status: 'Configure posts and positions, import and approve voters. Complete administration to proceed.', badge: 'Administration Setup', color: 'blue' }
+  if (state === ElectionLifecycleStates.SETUP_NOMINATION) return { icon: '👥', status: 'Democratic candidacy process. Candidates apply and are approved. Complete nomination to proceed to voting.', badge: 'Nomination Setup', color: 'indigo' }
+  if (state === ElectionLifecycleStates.READY_FOR_VOTING) return { icon: '📋', status: 'Setup complete and candidates approved. Ready to open voting when you are prepared.', badge: 'Ready for Voting', color: 'amber' }
+  if (state === ElectionLifecycleStates.VOTING_ACTIVE) return { icon: '🗳️', status: '✓ Voting is active — members can cast their votes. Monitor participation and close voting when the period ends.', badge: 'Voting Active', color: 'emerald' }
+  if (state === ElectionLifecycleStates.COUNTING) return { icon: '📊', status: 'Voting has closed. Results are being counted. Publish results when ready to make them visible to members.', badge: 'Counting', color: 'amber' }
+  if (state === ElectionLifecycleStates.RESULTS_PUBLISHED) return { icon: '✅', status: 'Election complete and results published. All phases are finished.', badge: 'Results Published', color: 'emerald' }
+  if (state === ElectionLifecycleStates.REJECTED) return { icon: '❌', status: 'Election was rejected. You can revise and resubmit for approval.', badge: 'Rejected', color: 'amber' }
+  if (state === ElectionLifecycleStates.SUSPENDED) return { icon: '🚫', status: 'Election is suspended. All operations are locked until the election is resumed.', badge: 'Suspended', color: 'red' }
+  if (state === ElectionLifecycleStates.ARCHIVED) return { icon: '📦', status: 'Election is archived. The election workflow is complete.', badge: 'Archived', color: 'gray' }
   return { icon: '📋', status: 'Unknown state', badge: state, color: 'slate' }
 })
 
@@ -1112,18 +1280,34 @@ const closeVoting = () => {
   })
 }
 
-const lockVoting = () => {
-  if (!confirm('Lock voting and officially begin the election? Voting dates will be frozen and cannot be changed after locking.')) return
+const handleResume = () => {
+  if (!confirm('Resume this election? All governance operations will become available again.')) return
   isLoading.value = true
-  router.post(route('elections.lock-voting', { election: props.election.slug }), {}, {
+  router.post(route('elections.resume', { election: props.election.slug }), {}, {
+    preserveScroll: true,
+    onSuccess: () => { router.reload() },
+    onFinish: () => { isLoading.value = false },
+  })
+}
+
+// Governance suspension handlers
+const handleSuspend = () => {
+  suspendReason.value = ''
+  suspendCategory.value = 'general'
+  showSuspendModal.value = true
+}
+
+const handleSuspendConfirm = () => {
+  if (suspendReason.value.length < 10) return
+  isLoading.value = true
+  router.post(route('elections.suspend', { election: props.election.slug }), {
+    reason: suspendReason.value,
+    suspension_category: suspendCategory.value,
+  }, {
     preserveScroll: true,
     onSuccess: () => {
-      // Reload page to show updated state (voting_locked=true, badge change, etc.)
+      showSuspendModal.value = false
       router.reload({ preserveScroll: true })
-    },
-    onError: (errors) => {
-      console.error('Failed to lock voting:', errors)
-      isLoading.value = false
     },
     onFinish: () => { isLoading.value = false },
   })
@@ -1196,8 +1380,8 @@ const submitPhaseCompletion = () => {
   }
 
   const routes = {
-    setup: 'organisations.elections.complete-administration',
-    ready_for_voting: 'organisations.elections.complete-nomination',
+    setup_administration: 'organisations.elections.complete-administration',
+    setup_nomination: 'organisations.elections.complete-nomination',
   }
 
   const routeName = routes[selectedPhase.value]
@@ -1218,7 +1402,7 @@ const submitPhaseCompletion = () => {
       onSuccess: () => {
         // Close modal, then refresh page
         showCompletionModal.value = false
-        router.reload({ preserveScroll: true })
+        router.reload({ only: ['election', 'stateMachine', 'progress'], preserveScroll: true })
       },
       onError: (errors) => {
         reasonError.value = errors.error || errors.reason || 'Failed to complete phase'
@@ -1246,11 +1430,11 @@ const handleDatesUpdated = ({ phase, dates }) => {
 
   // Map SSOT phase states to database column names
   const columnMap = {
-    setup: {
+    setup_administration: {
       start: 'administration_suggested_start',
       end: 'administration_suggested_end',
     },
-    ready_for_voting: {
+    setup_nomination: {
       start: 'nomination_suggested_start',
       end: 'nomination_suggested_end',
     },

@@ -118,18 +118,19 @@
               {{ t.fields.timezone.label }}
               <span class="text-neutral-400 font-normal">{{ t.fields.timezone.optional }}</span>
             </label>
-            <select
+            <input
               id="timezone"
               v-model="form.timezone"
-              class="w-full rounded-md border border-neutral-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              list="timezone-list"
+              type="text"
+              autocomplete="off"
+              :placeholder="t.fields.timezone.placeholder"
+              class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               :class="errors.timezone ? 'border-danger-400' : 'border-neutral-300'"
-            >
-              <option value="">{{ t.fields.timezone.placeholder }}</option>
-              <option value="UTC">UTC</option>
-              <option value="Europe/Berlin">{{ t.fields.timezone.berlin }}</option>
-              <option value="Europe/London">{{ t.fields.timezone.london }}</option>
-              <option value="Asia/Kathmandu">{{ t.fields.timezone.kathmandu }}</option>
-            </select>
+            />
+            <datalist id="timezone-list">
+              <option v-for="tz in allTimezones" :key="tz" :value="tz" />
+            </datalist>
             <p v-if="errors.timezone" class="mt-1 text-sm text-danger-600">{{ errors.timezone }}</p>
             <p class="mt-1 text-xs text-neutral-400">
               {{ t.fields.timezone.help }}
@@ -254,7 +255,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, onMounted } from 'vue'
 import { router, usePage } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import { route } from 'ziggy-js'
@@ -288,6 +289,24 @@ const form = reactive({
   nomination_suggested_end: '',
   voting_starts_at: '',
   voting_ends_at: '',
+})
+
+// Timezone: generate all IANA timezones from browser API, fallback for unsupported browsers
+const allTimezones = computed(() => {
+  if (typeof Intl !== 'undefined' && Intl.supportedValuesOf) {
+    return Intl.supportedValuesOf('timeZone')
+  }
+  return [
+    'UTC', 'Europe/Berlin', 'Europe/London', 'Asia/Kathmandu',
+    'America/New_York', 'America/Chicago', 'America/Denver', 'America/Los_Angeles',
+  ]
+})
+
+// Auto-detect user timezone on mount
+onMounted(() => {
+  if (!form.timezone && Intl.DateTimeFormat) {
+    form.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+  }
 })
 
 // Client-side: phase dates validation (relaxed — only block if dates provided AND invalid)

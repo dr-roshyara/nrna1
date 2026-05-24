@@ -76,8 +76,8 @@ class VotingButtonsStateMachineTest extends TestCase
         $initialState = ElectionLifecycle::of($this->election)->state()->value;
         $this->assertContains(
             $initialState,
-            ['setup', 'ready_for_voting'],
-            'Scenario factory derives to setup or ready_for_voting'
+            ['setup_administration', 'setup_nomination', 'ready_for_voting'],
+            'Scenario factory derives to setup_administration, setup_nomination, or ready_for_voting'
         );
         $this->assertEquals(0, ElectionStateTransition::count());
 
@@ -125,12 +125,12 @@ class VotingButtonsStateMachineTest extends TestCase
      */
     public function test_open_voting_transitions_from_nomination_to_voting(): void
     {
-        // Arrange: Verify starting state (setup or ready_for_voting)
+        // Arrange: Verify starting state (setup_administration, setup_nomination, or ready_for_voting)
         $initialState = ElectionLifecycle::of($this->election)->state()->value;
         $this->assertContains(
             $initialState,
-            ['setup', 'ready_for_voting'],
-            'Election must start in setup or ready_for_voting state'
+            ['setup_administration', 'setup_nomination', 'ready_for_voting'],
+            'Election must start in setup_administration, setup_nomination, or ready_for_voting state'
         );
 
         // Act: Officer clicks "Open Voting" button (sets voting window as side effect)
@@ -305,7 +305,7 @@ class VotingButtonsStateMachineTest extends TestCase
     {
         // Arrange: Election is in setup/ready_for_voting state (wrong state for close_voting)
         $initialState = ElectionLifecycle::of($this->election)->state()->value;
-        $this->assertContains($initialState, ['setup', 'ready_for_voting']);
+        $this->assertContains($initialState, ['setup_administration', 'setup_nomination', 'ready_for_voting']);
 
         // Act
         $response = $this->actingAs($this->officer)->post(

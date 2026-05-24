@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Application\Election\Facades\ElectionLifecycle;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,9 +42,42 @@ class VoteEligibility
         // New ElectionMembership system: if a voter_slug is present, the full
         // upstream middleware stack (VerifyVoterSlug → EnsureElectionVoter →
         // EnsureVoterStepOrder) has already validated eligibility, voting status,
-        // and session window. Skip the legacy is_voter / can_vote column check.
+        // and session window.
+        //
+        // IMPORTANT: The voter_slug bypass is intentionally KEPT for expired slug
+        // renewal — expired slugs must reach CodeController for extension.
+        // However, even with a valid voter_slug, the constitutional election state
+        // MUST still be checked. The voter_slug bypasses legacy column checks but
+        // does NOT bypass constitutional lifecycle authority.
+        //
+        // INVARIANT D: Middleware bypass ≠ Constitutional bypass.
+        // INVARIANT H: Suspension overrides all permissions.
         if ($request->attributes->get('voter_slug')) {
-            \Illuminate\Support\Facades\Log::info('✅ [VoteEligibility] Voter slug present - bypassing legacy check');
+            $voterSlug = $request->attributes->get('voter_slug');
+            $election = $voterSlug->election ?? $request->attributes->get('election');
+
+            if ($election) {
+                // Delegate to constitutional authority (ElectionLifecycle::canVote())
+                // This is NOT duplicating governance logic — it delegates to the SSOT.
+                $lifecycle = ElectionLifecycle::of($election);
+                if (!$lifecycle->canVote()) {
+                    $blockedReason = $lifecycle->blockedReason()
+                        ?? 'Voting is not currently active for this election.';
+
+                    \Illuminate\Support\Facades\Log::info('🔴 [VoteEligibility] Constitutional check blocked', [
+                        'user_id' => $user?->id,
+                        'voter_slug_id' => $voterSlug->id,
+                        'election_id' => $election->id,
+                        'state' => $lifecycle->state()->value,
+                        'reason' => $blockedReason,
+                    ]);
+
+                    return redirect()->route('dashboard')
+                        ->with('error', $blockedReason);
+                }
+            }
+
+            \Illuminate\Support\Facades\Log::info('✅ [VoteEligibility] Voter slug present + constitutional check passed');
             return $next($request);
         }
 

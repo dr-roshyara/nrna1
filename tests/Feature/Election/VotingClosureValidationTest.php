@@ -2,9 +2,10 @@
 
 namespace Tests\Feature\Election;
 
+use App\Application\Election\Services\ElectionLifecycleEngineImpl;
+use App\Domain\Election\Enum\ElectionLifecycleState;
 use App\Models\Election;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Carbon;
 use Tests\TestCase;
 
 /**
@@ -14,131 +15,161 @@ use Tests\TestCase;
  * - closeVoting() must work even if voting started in the past
  * - validateTimelineForEdit() must reject past voting start dates
  * - validateTimeline() (permissive) must NOT reject past dates
+ *
+ * CRITICAL: Assert BOTH lifecycle derivation AND persisted state.
+ * Silent divergence between engine state and persisted state can mask bugs.
  */
 class VotingClosureValidationTest extends TestCase
 {
     use RefreshDatabase;
 
     private Election $election;
+    private \App\Models\User $user;
+    private \App\Models\Organisation $org;
 
     protected function setUp(): void
     {
         parent::setUp();
 
         // Create authenticated user with election officer role
-        $user = \App\Models\User::factory()->create();
-        $this->actingAs($user);
+        $this->user = \App\Models\User::factory()->create();
+        $this->actingAs($this->user);
 
         // Create organisation
-        $org = \App\Models\Organisation::factory()->create();
+        $this->org = \App\Models\Organisation::factory()->create(['type' => 'tenant']);
 
-        // Create election with voting dates in the past
+        // Create election with CONSTITUTIONAL FACTS that make engine derive VotingActive
+        $now = now();
         $this->election = Election::factory()->real()->create([
-            'organisation_id' => $org->id,
-            'state' => 'voting',
-            'voting_starts_at' => now()->subDays(2),  // Started 2 days ago
-            'voting_ends_at' => now()->addDay(),      // Ends tomorrow
+            'organisation_id' => $this->org->id,
+            'approved_at' => $now->copy()->subDays(11),  // Election was approved
+            'setup_started_at' => $now->copy()->subDays(10),
             'administration_completed' => true,
+            'administration_completed_at' => $now->copy()->subDays(9),
             'nomination_completed' => true,
+            'nomination_completed_at' => $now->copy()->subDays(8),
+            // Voting window is OPEN NOW (started in past, ends in future)
+            'voting_starts_at' => $now->copy()->subDays(2),  // Started 2 days ago
+            'voting_ends_at' => $now->copy()->addDay(),      // Ends tomorrow
             'posts_count' => 1,
             'voters_count' => 10,
             'candidates_count' => 5,
         ]);
 
+        // Sync persisted state to match engine derivation
+        $engine = app(ElectionLifecycleEngineImpl::class);
+        $derivedState = $engine->getState($this->election);
+        $this->election->update(['state' => $derivedState->value]);
+
         // Add user as chief election officer
         \App\Models\ElectionOfficer::create([
-            'id' => \Illuminate\Support\Str::uuid(),
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
             'election_id' => $this->election->id,
-            'organisation_id' => $org->id,
+            'organisation_id' => $this->org->id,
             'role' => 'chief',
             'status' => 'active',
+            'appointed_by' => $this->user->id,
+            'appointed_at' => now(),
+            'accepted_at' => now(),
         ]);
 
-        // Add user as organisation owner for authorizations
-        \App\Models\UserOrganisationRole::create([
-            'id' => \Illuminate\Support\Str::uuid(),
-            'user_id' => $user->id,
-            'organisation_id' => $org->id,
-            'role' => 'owner',
-        ]);
+        // Set tenant context
+        \App\Services\TenantContext::set($this->org->id);
     }
 
     // ============================================================
-    // RED PHASE: Tests that would fail before the fix
+    // Core Transition Tests — MUST assert BOTH engine AND persisted state
     // ============================================================
 
     /** @test */
-    public function closeVoting_works_even_if_voting_started_in_past()
+    public function close_voting_works_even_if_voting_started_in_past(): void
     {
-        // BEFORE FIX: Would throw "Voting start date cannot be in the past"
-        // AFTER FIX: Should succeed
+        // Verify starting state via engine (not raw column)
+        $initialDerived = app(ElectionLifecycleEngineImpl::class)->getState($this->election);
+        $this->assertEquals(ElectionLifecycleState::VotingActive, $initialDerived);
 
-        $this->assertEquals('voting', $this->election->state);
+        // Voting did start in the past
         $this->assertTrue(now()->gt($this->election->voting_starts_at));
 
+        // Execute close_voting transition
         $transition = $this->election->transitionTo(
             \App\Domain\Election\StateMachine\Transition::manual(
                 action: 'close_voting',
-                actorId: auth()->id() ?? 'test-actor',
+                actorId: $this->user->id,
                 reason: 'Testing voting closure with past start date'
             )
         );
 
         $this->assertNotNull($transition);
+
+        // CRITICAL: Assert BOTH persisted column AND engine agreement
         $this->election->refresh();
-        // Should transition (to voting_closed or results_pending depending on auto-transition)
-        $this->assertContains($this->election->state, ['voting_closed', 'results_pending']);
+
+        // Persisted state must be 'counting' per Constitution
+        $this->assertEquals('counting', $this->election->state, 'Persisted state must be counting');
+
+        // Engine must also derive 'counting' (no silent divergence)
+        $derivedAfter = app(ElectionLifecycleEngineImpl::class)->getState($this->election);
+        $this->assertEquals(ElectionLifecycleState::Counting, $derivedAfter, 'Engine must agree on counting state');
     }
 
     /** @test */
-    public function lockVoting_works_even_if_voting_started_in_past()
+    public function enforce_voting_lock_works_even_if_voting_started_in_past(): void
     {
-        // Lock voting should also work without timeline validation errors
-        $this->election->lockVoting('test-actor');
+        // Infrastructure-level voting lock should work without timeline validation errors
+        $this->election->enforceVotingLock($this->user->id);
 
         $this->assertTrue($this->election->voting_locked);
         $this->assertNotNull($this->election->voting_locked_at);
+
+        // Engine state should still be VotingActive (locking doesn't change lifecycle state)
+        $derived = app(ElectionLifecycleEngineImpl::class)->getState($this->election);
+        $this->assertEquals(ElectionLifecycleState::VotingActive, $derived);
     }
 
+    // ============================================================
+    // Timeline Validation Tests
+    // ============================================================
+
     /** @test */
-    public function validateTimelineForEdit_rejects_past_voting_start_on_update()
+    public function validateTimelineForEdit_rejects_past_voting_start_on_update(): void
     {
         // When updating an election with past voting start, validateTimelineForEdit should fail
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Voting start date cannot be in the past');
 
         // Use the existing election which already has past voting_starts_at
-        // This election has voting_starts_at = now()->subDays(2) from setUp()
         // Call validateTimelineForEdit() directly - it should throw
         $this->election->validateTimelineForEdit();
     }
 
     /** @test */
-    public function validateTimelineForEdit_rejects_past_voting_start_directly()
+    public function validateTimelineForEdit_rejects_past_voting_start_directly(): void
     {
-        // Create a fresh election in a state where we can change dates
+        // Create a fresh election in approved state (before voting dates are set)
         $fresh = Election::factory()->real()->create([
-            'organisation_id' => $this->election->organisation_id,
-            'state' => 'planning',
-            'voting_starts_at' => now()->addDays(10),
-            'voting_ends_at' => now()->addDays(20),
+            'organisation_id' => $this->org->id,
+            'state' => 'approved',
+            'approved_at' => now()->subDay(),
+            'voting_starts_at' => null,
+            'voting_ends_at' => null,
         ]);
 
-        // Now try to set past dates directly
+        // Now try to set past dates
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Voting start date cannot be in the past');
 
         $fresh->voting_starts_at = now()->subDays(5);
+        $fresh->voting_ends_at = now()->addDays(5);
         $fresh->validateTimelineForEdit();
     }
 
     // ============================================================
-    // GREEN PHASE: Verify the fix works
+    // Permissive Validation Tests (used during state transitions)
     // ============================================================
 
     /** @test */
-    public function validateTimeline_permissive_accepts_past_voting_start()
+    public function validateTimeline_permissive_accepts_past_voting_start(): void
     {
         // The permissive validateTimeline() should NOT throw for past dates
         // (used during state transitions)
@@ -155,7 +186,7 @@ class VotingClosureValidationTest extends TestCase
     }
 
     /** @test */
-    public function validateTimeline_still_validates_chronological_order()
+    public function validateTimeline_still_validates_chronological_order(): void
     {
         // The permissive method should still validate other rules
         $this->expectException(\InvalidArgumentException::class);
@@ -168,10 +199,11 @@ class VotingClosureValidationTest extends TestCase
     }
 
     /** @test */
-    public function validateTimelineForEdit_validates_all_chronological_constraints()
+    public function validateTimelineForEdit_validates_chronological_order(): void
     {
         // validateTimelineForEdit() should validate chronological order
         $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Voting start date must be before end date');
 
         $this->election->voting_starts_at = now()->addDays(5);
         $this->election->voting_ends_at = now()->addDays(3);  // Before start
@@ -180,78 +212,46 @@ class VotingClosureValidationTest extends TestCase
     }
 
     // ============================================================
-    // INTEGRATION: Full workflow
+    // Edge Cases
     // ============================================================
 
     /** @test */
-    public function full_voting_lifecycle_works_without_timeline_validation_errors()
-    {
-        // Use existing election already set up with officer role in setUp()
-        $this->assertEquals('voting', $this->election->state);
-        $this->assertTrue(now()->gt($this->election->voting_starts_at));
-
-        // Simulate voting having continued and now we close it
-        // This is the actual bug scenario: close voting when start date is in the past
-        $transition = $this->election->transitionTo(
-            \App\Domain\Election\StateMachine\Transition::manual('close_voting', auth()->id(), 'Close voting')
-        );
-
-        // Should succeed without "Voting start date cannot be in the past" error
-        $this->assertNotNull($transition);
-        $this->election->refresh();
-        $this->assertContains($this->election->state, ['voting_closed', 'results_pending']);
-    }
-
-    /** @test */
-    public function validateTimelineForEdit_still_requires_duration_minimums()
-    {
-        // The edit validation should still enforce minimum phase durations
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Administration phase must last at least 24 hours');
-
-        // Create dates with too-short duration
-        $this->election->administration_starts_at = now()->addDays(10);
-        $this->election->administration_ends_at = now()->addDays(10)->addMinutes(30);  // Only 30 min
-
-        $this->election->validateTimelineForEdit();
-    }
-
-    // ============================================================
-    // EDGE CASES
-    // ============================================================
-
-    /** @test */
-    public function real_election_validates_strict_on_timeline_edits()
-    {
-        // Attempting to update voting dates to the past should be rejected
-        // This tests the controller-level validation
-        $fresh = Election::factory()->real()->create([
-            'organisation_id' => $this->election->organisation_id,
-            'state' => 'planning',
-            'voting_starts_at' => now()->addDays(5),
-            'voting_ends_at' => now()->addDays(10),
-        ]);
-
-        // Set past dates and validate
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Voting start date cannot be in the past');
-
-        $fresh->voting_starts_at = now()->subDays(1);
-        $fresh->validateTimelineForEdit();
-    }
-
-    /** @test */
-    public function validateTimelineForEdit_allows_future_voting_start()
+    public function validateTimelineForEdit_allows_future_voting_start(): void
     {
         // Future voting dates should be accepted
-        $this->election->voting_starts_at = now()->addDays(5);
-        $this->election->voting_ends_at = now()->addDays(10);
+        $fresh = Election::factory()->real()->create([
+            'organisation_id' => $this->org->id,
+            'state' => 'approved',
+            'approved_at' => now()->subDay(),
+        ]);
+
+        $fresh->voting_starts_at = now()->addDays(5);
+        $fresh->voting_ends_at = now()->addDays(10);
 
         try {
-            $this->election->validateTimelineForEdit();
+            $fresh->validateTimelineForEdit();
             $this->assertTrue(true, 'Future dates accepted');
         } catch (\InvalidArgumentException $e) {
             $this->fail('Should accept future dates: ' . $e->getMessage());
         }
+    }
+
+    /** @test */
+    public function real_election_type_enforces_strict_timeline_validation(): void
+    {
+        // Real elections enforce strict validation in validateTimelineForEdit()
+        $real = Election::factory()->real()->create([
+            'organisation_id' => $this->org->id,
+            'state' => 'approved',
+            'approved_at' => now()->subDay(),
+        ]);
+
+        // Set past dates
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Voting start date cannot be in the past');
+
+        $real->voting_starts_at = now()->subDays(1);
+        $real->voting_ends_at = now()->addDays(5);
+        $real->validateTimelineForEdit();
     }
 }

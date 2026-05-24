@@ -453,7 +453,7 @@ class OrganisationController extends Controller
         $activeElections = Election::withoutGlobalScopes()
             ->where('organisation_id', $organisation->id)
             ->where('type', 'real')
-            ->whereIn('state', ['approved', 'setup', 'ready_for_voting', 'voting_active', 'counting', 'results_published'])
+            ->whereIn('state', ['approved', 'setup_administration', 'setup_nomination', 'ready_for_voting', 'voting_active', 'counting', 'results_published'])
             ->with(['posts' => fn ($q) => $q->withoutGlobalScopes()->orderBy('position_order')])
             ->orderBy('start_date')
             ->get()

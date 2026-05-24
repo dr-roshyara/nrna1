@@ -68,7 +68,7 @@ class ElectionModelLockAndAuditTest extends TestCase
         ]);
     }
 
-    public function test_lock_voting_sets_voting_locked_true(): void
+    public function test_enforce_voting_lock_sets_voting_locked_true(): void
     {
         $election = Election::factory()->create([
             'voting_locked' => false,
@@ -77,12 +77,12 @@ class ElectionModelLockAndAuditTest extends TestCase
         ]);
 
         $user = User::factory()->create();
-        $election->lockVoting($user->id);
+        $election->enforceVotingLock($user->id);
 
         $this->assertTrue($election->fresh()->voting_locked);
     }
 
-    public function test_lock_voting_sets_timestamp_and_actor(): void
+    public function test_enforce_voting_lock_sets_timestamp_and_actor(): void
     {
         $election = Election::factory()->create([
             'voting_starts_at' => now()->addDays(5),
@@ -90,7 +90,7 @@ class ElectionModelLockAndAuditTest extends TestCase
         ]);
 
         $user = User::factory()->create();
-        $election->lockVoting($user->id);
+        $election->enforceVotingLock($user->id);
 
         $fresh = $election->fresh();
         $this->assertNotNull($fresh->voting_locked_at);

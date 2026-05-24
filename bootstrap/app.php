@@ -35,14 +35,11 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\TrackPerformance::class,
         ]);
 
-        // ✅ CRITICAL FIX: TenantContext MUST run BEFORE route model binding
-        // Use prependToGroup to insert BEFORE SubstituteBindings (route binding)
-        // This ensures tenant context is set BEFORE election model is resolved
-        $middleware->web(prepend: [
-            \App\Http\Middleware\TenantContext::class,
-        ]);
+        // ✅ TenantContext is registered as route middleware, NOT web prepend.
+        // Middleware priority (below) enforces: StartSession → TenantContext → SubstituteBindings
+        // This ensures tenant context is set BEFORE route model binding resolves {election:slug}.
 
-        // ✅ Then append other middleware (runs AFTER binding)
+        // ✅ Then append other middleware
         $middleware->web(append: [
             \App\Http\Middleware\PreloadAssets::class,
             \App\Http\Middleware\SetLocale::class,
@@ -86,6 +83,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
             // Voting System - Business Logic
             'vote.eligibility' => \App\Http\Middleware\VoteEligibility::class,
+            'voting.active' => \App\Http\Middleware\EnsureVotingActive::class,
             'voter.slug.verify' => \App\Http\Middleware\VerifyVoterSlug::class,
             'voter.slug.window' => \App\Http\Middleware\ValidateVoterSlugWindow::class,
             'voter.slug.consistency' => \App\Http\Middleware\VerifyVoterSlugConsistency::class,
@@ -117,6 +115,20 @@ return Application::configure(basePath: dirname(__DIR__))
 
             // Platform Admin
             'platform_admin' => \App\Http\Middleware\EnsurePlatformAdmin::class,
+
+            // Tenant Context (multi-tenant organisation scoping)
+            'tenant' => \App\Http\Middleware\TenantContext::class,
+        ]);
+
+        // ✅ CRITICAL: Middleware priority enforces correct ordering
+        // StartSession must run BEFORE TenantContext so session is available.
+        // TenantContext must run BEFORE SubstituteBindings so tenant context
+        // is set BEFORE route model binding resolves {election:slug}.
+        // This fixes the systemic POST redirect issue on tenant-scoped routes.
+        $middleware->priority([
+            \Illuminate\Session\Middleware\StartSession::class,
+            \App\Http\Middleware\TenantContext::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

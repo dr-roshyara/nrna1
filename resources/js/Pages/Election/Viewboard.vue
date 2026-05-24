@@ -210,6 +210,6 @@ const props = defineProps({
     }
 })
 
-const isVotingActive = computed(() => props.election.status === 'active')
+const isVotingActive = computed(() => props.election.state === 'voting_active')
 </script>
 

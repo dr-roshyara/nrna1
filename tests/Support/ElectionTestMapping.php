@@ -56,7 +56,6 @@ final class ElectionTestMapping
         'manage_posts' => 'begin_setup',
         'open_voting' => 'open_voting',
         'close_voting' => 'close_voting',
-        'lock_voting' => 'lock_voting',
         'publish_results' => 'publish_results',
         'submit_for_approval' => 'submit_for_approval',
         'approve' => 'approve',

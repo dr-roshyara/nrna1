@@ -179,7 +179,7 @@
                         </template>
 
                         <!-- ── STATE: Election finished ── -->
-                        <template v-else-if="election.status === 'completed'">
+                        <template v-else-if="props.election.state === 'results_published' || props.election.state === 'archived'">
                             <div class="esp-ballot__header">
                                 <div class="esp-ballot__icon esp-ballot__icon--completed" aria-label="Election finished">🏁</div>
                                 <div>
