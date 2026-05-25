@@ -154,4 +154,91 @@ describe('Frontend Architecture — Constitutional Invariants', () => {
       })
     })
   })
+
+  describe('Frontend Constitutional Runtime Projection — C.2.4', () => {
+
+    describe('Lifecycle Visualization — components do not use election.status', () => {
+      it('Show.vue does not use election.status', () => {
+        const src = readFile('Pages/Election/Show.vue')
+        expect(src).not.toMatch(/election\.status/)
+      })
+
+      it('Candidacy Apply.vue does not use election.status', () => {
+        const src = readFile('Pages/Election/Candidacy/Apply.vue')
+        expect(src).not.toMatch(/election\.status/)
+      })
+
+      it('Elections Voters Index.vue does not use election.status', () => {
+        const src = readFile('Pages/Elections/Voters/Index.vue')
+        expect(src).not.toMatch(/election\.status/)
+      })
+
+      it('Organisations Elections Index.vue does not use election.status', () => {
+        const src = readFile('Pages/Organisations/Elections/Index.vue')
+        expect(src).not.toMatch(/election\.status/)
+      })
+    })
+
+    describe('Lifecycle constants — hardcoded state strings replaced', () => {
+      it('Viewboard.vue uses ElectionLifecycleStates constant not raw string', () => {
+        const src = readFile('Pages/Election/Viewboard.vue')
+        expect(src).not.toContain("'voting_active'")
+        expect(src).toContain('ElectionLifecycleStates')
+      })
+
+      it('Show.vue does not contain hardcoded results_published string', () => {
+        const src = readFile('Pages/Election/Show.vue')
+        expect(src).not.toContain("'results_published'")
+      })
+
+      it('Organisations Show.vue does not contain hardcoded state strings', () => {
+        const src = readFile('Pages/Organisations/Show.vue')
+        expect(src).not.toMatch(/'(voting_active|results_published|archived|counting|setup_|draft|approved)'/)
+      })
+    })
+
+    describe('Constitutional authority fragmentation — no lifecycle+role combinations', () => {
+      it('no Vue page derives capability from lifecycle constant + role combination', () => {
+        const glob = require('glob')
+        const files = glob.sync('resources/js/Pages/**/*.vue', { cwd: resolve(__dirname, '../../..') })
+        const violations = files.filter((f: string) => {
+          const src = readFileSync(resolve(__dirname, '../../../' + f), 'utf-8')
+          // Detect: lifecycle constant used with && (role/condition combination)
+          return /ElectionLifecycleStates\.[A-Z_]+.*&&/.test(src) ||
+                 /&&.*ElectionLifecycleStates\.[A-Z_]+/.test(src)
+        })
+        // Management.vue already migrated — should pass
+        expect(violations).toEqual([])
+      })
+    })
+
+    describe('capabilities_trace contamination — ephemeral field forbidden in production', () => {
+      it('no component reads capabilities_trace', () => {
+        const glob = require('glob')
+        const files = glob.sync('resources/js/Pages/**/*.vue', { cwd: resolve(__dirname, '../../..') })
+        const violations = files.filter((f: string) => {
+          const src = readFileSync(resolve(__dirname, '../../../' + f), 'utf-8')
+          return src.includes('capabilities_trace')
+        })
+        expect(violations).toEqual([])
+      })
+    })
+
+    describe('Flat can_* props eliminated', () => {
+      it('Dashboard ElectionDashboard.vue does not use can_vote_now prop', () => {
+        const src = readFile('Pages/Dashboard/ElectionDashboard.vue')
+        expect(src).not.toContain('can_vote_now')
+      })
+
+      it('Dashboard ElectionDashboard.vue does not use can_access prop', () => {
+        const src = readFile('Pages/Dashboard/ElectionDashboard.vue')
+        expect(src).not.toContain('can_access')
+      })
+
+      it('Election Show.vue does not use can_vote_now prop', () => {
+        const src = readFile('Pages/Election/Show.vue')
+        expect(src).not.toContain('can_vote_now')
+      })
+    })
+  })
 })

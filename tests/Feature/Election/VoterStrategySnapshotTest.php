@@ -5,7 +5,7 @@ namespace Tests\Feature\Election;
 use App\Models\User;
 use App\Models\Organisation;
 use App\Models\Election;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use Tests\TestCase;
 
 class VoterStrategySnapshotTest extends TestCase
@@ -26,7 +26,7 @@ class VoterStrategySnapshotTest extends TestCase
             'name' => 'Test Election',
             'slug' => 'test-election',
             'type' => 'real',
-            'voter_source_strategy' => ElectionMode::fromOrganisation($org)->value,
+            'voter_source_strategy' => VoterSourceStrategy::fromOrganisation($org)->value,
         ]);
 
         $this->assertNotNull($election);
@@ -47,7 +47,7 @@ class VoterStrategySnapshotTest extends TestCase
             'name' => 'Test Election',
             'slug' => 'test-election-2',
             'type' => 'real',
-            'voter_source_strategy' => ElectionMode::fromOrganisation($org)->value,
+            'voter_source_strategy' => VoterSourceStrategy::fromOrganisation($org)->value,
         ]);
 
         $this->assertNotNull($election);
@@ -75,7 +75,7 @@ class VoterStrategySnapshotTest extends TestCase
             'name' => 'Test Election',
             'slug' => 'test-election',
             'type' => 'real',
-            'voter_source_strategy' => ElectionMode::fromOrganisation($org)->value,
+            'voter_source_strategy' => VoterSourceStrategy::fromOrganisation($org)->value,
         ]);
 
         // Verify snapshot is election_only
@@ -110,12 +110,12 @@ class VoterStrategySnapshotTest extends TestCase
 
         // Snapshot says election_only, org says full_membership
         // Snapshot should win
-        $mode = ElectionMode::fromElection($election);
-        $this->assertEquals(ElectionMode::ElectionOnly, $mode);
+        $mode = VoterSourceStrategy::fromElection($election);
+        $this->assertEquals(VoterSourceStrategy::ImportedVoterRegistry, $mode);
     }
 
     #[\PHPUnit\Framework\Attributes\Test]
-    public function test_election_mode_from_election_falls_back_to_org_when_snapshot_null()
+    public function test_election_mode_from_election_throws_when_snapshot_null()
     {
         $org = Organisation::create([
             'name' => 'Test Org',
@@ -131,9 +131,11 @@ class VoterStrategySnapshotTest extends TestCase
             'voter_source_strategy' => null,
         ]);
 
-        // Snapshot is null, org says full_membership
-        // Should fall back to org
-        $mode = ElectionMode::fromElection($election);
-        $this->assertEquals(ElectionMode::FullMembership, $mode);
+        // Elections MUST have immutable voter_source_strategy snapshot
+        // If snapshot is missing, it's an error condition (missing backfill)
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('missing voter_source_strategy snapshot');
+
+        VoterSourceStrategy::fromElection($election);
     }
 }

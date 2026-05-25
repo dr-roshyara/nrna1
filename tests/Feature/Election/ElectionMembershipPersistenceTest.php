@@ -6,7 +6,7 @@ use App\Contexts\Elections\Application\Commands\AssignVoterCommand;
 use App\Contexts\Elections\Application\Handlers\AssignVoterHandler;
 use App\Contexts\Elections\Application\Commands\BulkAssignVotersCommand;
 use App\Contexts\Elections\Application\Handlers\BulkAssignVotersHandler;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\Organisation;
@@ -78,7 +78,7 @@ class ElectionMembershipPersistenceTest extends TestCase
             userId: $this->user->id,
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -105,7 +105,7 @@ class ElectionMembershipPersistenceTest extends TestCase
             userId: $this->user->id,
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
         $after = now()->addSecond();
@@ -134,7 +134,7 @@ class ElectionMembershipPersistenceTest extends TestCase
             userId: $this->user->id,
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -159,7 +159,7 @@ class ElectionMembershipPersistenceTest extends TestCase
             userId: $this->user->id,
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -193,7 +193,7 @@ class ElectionMembershipPersistenceTest extends TestCase
             userId: $this->user->id,
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -218,7 +218,7 @@ class ElectionMembershipPersistenceTest extends TestCase
             userId: $this->user->id,
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -243,7 +243,7 @@ class ElectionMembershipPersistenceTest extends TestCase
             userId: $this->user->id,
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -278,7 +278,7 @@ class ElectionMembershipPersistenceTest extends TestCase
             userIds: [$this->user->id, $user2->id],
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -310,7 +310,7 @@ class ElectionMembershipPersistenceTest extends TestCase
             userIds: [$this->user->id, $user2->id],
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -336,7 +336,7 @@ class ElectionMembershipPersistenceTest extends TestCase
             userId: $this->user->id,
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -361,7 +361,7 @@ class ElectionMembershipPersistenceTest extends TestCase
             userIds: [$this->user->id],
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 

@@ -62,8 +62,8 @@
             <tr v-for="election in elections" :key="election.id" class="hover:bg-neutral-50 transition-colors">
               <td class="px-6 py-4 font-medium text-neutral-900">{{ election.name }}</td>
               <td class="px-6 py-4">
-                <span :class="statusClass(election.status)" class="inline-flex px-2.5 py-0.5 rounded-full text-xs font-semibold">
-                  {{ election.status }}
+                <span :class="statusClass(election.state)" class="inline-flex px-2.5 py-0.5 rounded-full text-xs font-semibold">
+                  {{ election.state }}
                 </span>
               </td>
               <td class="px-6 py-4 text-neutral-600">{{ formatDate(election.start_date) }}</td>
@@ -90,6 +90,7 @@
 <script>
 import Button from '@/Components/Button.vue'
 import Card from '@/Components/Card.vue'
+import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 
 export default {
   components: {
@@ -114,14 +115,22 @@ export default {
       });
     },
 
-    statusClass(status) {
+    statusClass(state) {
       const map = {
-        active:    'bg-success-100 text-success-800',
-        completed: 'bg-neutral-100 text-neutral-700',
-        draft:     'bg-warning-100 text-warning-800',
-        expired:   'bg-danger-100 text-danger-800',
+        [ElectionLifecycleStates.DRAFT]: 'bg-warning-100 text-warning-800',
+        [ElectionLifecycleStates.SUBMITTED_FOR_APPROVAL]: 'bg-warning-100 text-warning-800',
+        [ElectionLifecycleStates.APPROVED]: 'bg-warning-100 text-warning-800',
+        [ElectionLifecycleStates.REJECTED]: 'bg-danger-100 text-danger-800',
+        [ElectionLifecycleStates.SETUP_ADMINISTRATION]: 'bg-warning-100 text-warning-800',
+        [ElectionLifecycleStates.SETUP_NOMINATION]: 'bg-warning-100 text-warning-800',
+        [ElectionLifecycleStates.READY_FOR_VOTING]: 'bg-warning-100 text-warning-800',
+        [ElectionLifecycleStates.VOTING_ACTIVE]: 'bg-success-100 text-success-800',
+        [ElectionLifecycleStates.COUNTING]: 'bg-success-100 text-success-800',
+        [ElectionLifecycleStates.RESULTS_PUBLISHED]: 'bg-neutral-100 text-neutral-700',
+        [ElectionLifecycleStates.ARCHIVED]: 'bg-neutral-100 text-neutral-700',
+        [ElectionLifecycleStates.SUSPENDED]: 'bg-danger-100 text-danger-800',
       };
-      return map[status] ?? 'bg-neutral-100 text-neutral-700';
+      return map[state] ?? 'bg-neutral-100 text-neutral-700';
     },
   },
 };

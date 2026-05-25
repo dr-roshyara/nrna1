@@ -148,5 +148,93 @@
     "monitoring": "अनुगमन | Monitoring",
     "settings": "सेटिङ | Settings",
     "results": "परिणाम | Results"
-  }
+  },
+  "accessibility": {
+    "skip_to_main": "मुख्य सामग्रीमा जानुहोस् | Skip to main content"
+  },
+  "suspension": {
+    "title": "निर्वाचन स्थगित | Election Suspended",
+    "description": "सबै शासन अपरेशनहरू अस्थायी रूप से बन्द छन्। | All governance operations are temporarily locked.",
+    "btn_resume": "निर्वाचन पुनः सुरु गर्नुहोस् | Resume Election",
+    "btn_resuming": "पुनः सुरु गरिँदैछ... | Resuming..."
+  },
+  "governance_actions": {
+    "title": "शासन कारबाही | Governance Actions",
+    "submit_for_approval": "अनुमोदनको लागि सबमिट गर्नुहोस् | Submit for Approval",
+    "submit_for_approval_auto": "सबमिट गर्नुहोस् (स्वचालित-अनुमोदित) | Submit (Auto-Approved)",
+    "submit_hint": "→ पुनरावलोकन सुरु गर्नुहोस् | → Begin review",
+    "submit_hint_auto": "→ स्वचालित अनुमोदन | → Auto-approve",
+    "begin_setup": "सेटअप सुरु गर्नुहोस् | Begin Setup",
+    "begin_setup_hint": "→ कन्फिगरेशन सुरु गर्नुहोस् | → Start configuration"
+  },
+  "phase_controls": {
+    "title": "चरण नियंत्रण | Phase Controls",
+    "complete_admin": "प्रशासन पूरा गर्नुहोस् | Complete Administration",
+    "open_voting": "मतदान खोल्नुहोस् | Open Voting",
+    "open_voting_hint": "→ मतदान सुरु गर्नुहोस् | → Begin voting",
+    "close_voting": "मतदान बन्द गर्नुहोस् | Close Voting",
+    "close_voting_hint": "→ मतदान समाप्त गर्नुहोस् | → End voting"
+  },
+  "governance_section": {
+    "title": "शासन | Governance",
+    "suspend": "निर्वाचन स्थगित गर्नुहोस् | Suspend Election"
+  },
+  "empty_state": {
+    "no_actions": "वर्तमान स्थितिमा कोनो कार्य उपलब्ध छैन | No actions available in current state",
+    "complete_phases": "अगलो चरणहरू अनलक गर्न पहिलेका चरणहरू पूरा गर्नुहोस् | Complete previous phases to unlock next steps"
+  },
+  "voter_count": {
+    "title": "अपेक्षित मतदाता गणना | Expected Voter Count",
+    "label": "मतदाता अपेक्षित | voters expected",
+    "saved": "बचत गरिएको — {count} मतदाता अपेक्षित | Saved — {count} voters expected",
+    "failed": "बचत गर्न असफल। कृपया फेरि प्रयास गर्नुहोस्। | Failed to save. Please try again.",
+    "requires_approval": "{limit} को स्व-सेवा सीमा अतिक्रम गर्दछ — प्ल्याटफर्म प्रशासक अनुमोदन आवश्यक छ। | Exceeds self-service limit of {limit} — platform admin approval required.",
+    "instructions": "अनुमोदनको लागि सबमिट गर्नु अघि अपेक्षित मतदाताको संख्या सेट गर्नुहोस्। | Set the expected number of voters before submitting for approval."
+  },
+  "progress": {
+    "title": "निर्वाचन प्रगति | Election Progress",
+    "subtitle": "वर्तमान स्थिति र वर्कफ्लो प्रगति | Current status and workflow progression"
+  },
+  "timeline_config": {
+    "title": "समयसूची कन्फिगरेशन | Timeline Configuration",
+    "subtitle": "एक स्थानमा सबै निर्वाचन चरण मिति कन्फिगर गर्नुहोस् | Configure all election phase dates in one place",
+    "view": "समयसूची हेर्नुहोस् | View Timeline",
+    "edit": "समयसूची सम्पादन गर्नुहोस् | Edit Timeline"
+  },
+  "settings": {
+    "title": "निर्वाचन सेटिङ | Election Settings",
+    "subtitle": "मतदान नियमहरू र सुरक्षा प्रतिबन्धहरू कन्फिगर गर्नुहोस् | Configure voting rules and security restrictions",
+    "btn_configure": "सेटिङ कन्फिगर गर्नुहोस् | Configure Settings"
+  },
+  "resume_confirmation": "यो निर्वाचन पुनः सुरु गर्नुहोस्? सबै शासन अपरेशनहरू फेरि उपलब्ध हुनेछन्। | Resume this election? All governance operations will become available again.",
+  "suspend_modal": {
+    "title": "निर्वाचन स्थगित गर्नुहोस् | Suspend Election",
+    "description": "यो कार्यले पुनः सुरु गर्नु बाहेक सबै शासन अपरेशनहरू फ्रिज गर्दछ। | This action freezes all governance operations except resume.",
+    "warning": "यो शासन हस्तक्षेप हो, सामान्य अवस्था संक्रमण होइन। | This is a governance intervention, NOT an ordinary state transition.",
+    "reason_label": "स्थगनको कारण | Reason for Suspension",
+    "reason_placeholder": "यस निर्वाचन को स्थगन गर्न पर को वर्णन गर्नुहोस्... | Describe why this election must be suspended...",
+    "reason_hint": "न्यूनतम १० वर्ण। यो शासन लेखापरीक्षा ट्रेलमा रेकर्ड गरिएको छ। | Minimum 10 characters. This is recorded in the governance audit trail.",
+    "category_label": "स्थगन श्रेणी | Suspension Category",
+    "category_general": "सामान्य | General",
+    "category_misconduct": "दुरव्यवहार | Misconduct",
+    "category_emergency": "आपतकाल | Emergency",
+    "category_investigation": "अनुसन्धान | Investigation",
+    "category_other": "अन्य | Other",
+    "btn_cancel": "रद्द गर्नुहोस् | Cancel",
+    "btn_suspend": "निर्वाचन स्थगित गर्नुहोस् | Suspend Election",
+    "btn_suspending": "स्थगित हरिँदैछ... | Suspending..."
+  },
+  "completion_modal": {
+    "title": "{phase} चरण पूरा गर्नुहोस् | Complete {phase} Phase",
+    "description": "कृपया यस चरण पूरा गर्नको लागि एक कारण प्रदान गर्नुहोस्। | Please provide a reason for completing this phase.",
+    "reason_label": "पूरा गर्नको कारण | Reason for Completion",
+    "reason_placeholder": "जस्तै, सबै पदहरू र मतदाताहरू कन्फिगर गरिएका छन्। नामांकन चरणमा अगाडि बढ्न तयार। | e.g., All posts and voters have been configured. Ready to proceed to nomination phase.",
+    "reason_hint": "न्यूनतम ५ वर्ण आवश्यक | Minimum 5 characters required",
+    "btn_cancel": "रद्द गर्नुहोस् | Cancel",
+    "btn_confirm": "पूर्ण पुष्टि गर्नुहोस् | Confirm Completion",
+    "btn_confirming": "पूरा हरिँदैछ... | Completing...",
+    "error_required": "कारण आवश्यक छ | Reason is required",
+    "error_min_length": "कारण कम्तीमा ५ वर्ण हुनु पर्छ | Reason must be at least 5 characters"
+  },
+  "public_list": "सार्वजनिक सूची हेर्नुहोस् | View Public List"
 }

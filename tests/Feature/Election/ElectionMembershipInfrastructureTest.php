@@ -6,7 +6,7 @@ use App\Contexts\Elections\Application\Commands\AssignVoterCommand;
 use App\Contexts\Elections\Application\Commands\BulkAssignVotersCommand;
 use App\Contexts\Elections\Application\Handlers\AssignVoterHandler;
 use App\Contexts\Elections\Application\Handlers\BulkAssignVotersHandler;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\Organisation;
@@ -50,7 +50,7 @@ class ElectionMembershipInfrastructureTest extends TestCase
     {
         parent::setUp();
 
-        $this->organisation = Organisation::factory()->create();
+        $this->organisation = Organisation::factory()->create(['uses_full_membership' => false]);
         $this->election = Election::factory()->create(['organisation_id' => $this->organisation->id]);
         $this->user = User::factory()->create();
         $this->assignedBy = User::factory()->create();
@@ -84,7 +84,7 @@ class ElectionMembershipInfrastructureTest extends TestCase
             userId: $this->user->id,
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -107,7 +107,7 @@ class ElectionMembershipInfrastructureTest extends TestCase
             userId: $this->user->id,
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -127,7 +127,7 @@ class ElectionMembershipInfrastructureTest extends TestCase
             userId: $this->user->id,
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -152,7 +152,7 @@ class ElectionMembershipInfrastructureTest extends TestCase
             userId: $this->user->id,
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -188,7 +188,7 @@ class ElectionMembershipInfrastructureTest extends TestCase
             userIds: [$this->user->id, $user2->id],
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -215,7 +215,7 @@ class ElectionMembershipInfrastructureTest extends TestCase
             userId: $this->user->id,
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -237,7 +237,7 @@ class ElectionMembershipInfrastructureTest extends TestCase
             userId: $this->user->id,
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -268,7 +268,7 @@ class ElectionMembershipInfrastructureTest extends TestCase
             userId: $this->user->id,
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 
@@ -296,7 +296,7 @@ class ElectionMembershipInfrastructureTest extends TestCase
             userId: $this->user->id,
             electionId: $this->election->id,
             organisationId: $this->organisation->id,
-            mode: ElectionMode::fromOrganisation($this->organisation),
+            mode: VoterSourceStrategy::fromOrganisation($this->organisation),
             assignedBy: $this->assignedBy->id,
         ));
 

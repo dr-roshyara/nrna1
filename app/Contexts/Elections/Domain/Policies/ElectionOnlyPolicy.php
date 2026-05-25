@@ -3,7 +3,7 @@
 namespace App\Contexts\Elections\Domain\Policies;
 
 use App\Contexts\Elections\Domain\ValueObjects\EligibilityContext;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 
 /**
  * ElectionOnlyPolicy — Pure logic for election-only mode eligibility
@@ -35,13 +35,13 @@ final class ElectionOnlyPolicy implements VoterEligibilityPolicy
     public function isEligible(
         string $userId,
         string $organisationId,
-        ElectionMode $mode
+        VoterSourceStrategy $mode
     ): bool {
         // Phase A: Placeholder satisfies interface contract
         // Phase B: Infrastructure will wire this to database queries
         // Unit tests will call this directly with test data
 
-        if (! $mode->isElectionOnly()) {
+        if (! $mode->isImportedVoterRegistry()) {
             return false;
         }
 
@@ -58,7 +58,7 @@ final class ElectionOnlyPolicy implements VoterEligibilityPolicy
     public function qualifyingSubset(
         array $userIds,
         string $organisationId,
-        ElectionMode $mode
+        VoterSourceStrategy $mode
     ): array {
         // Domain policies don't implement bulk filtering
         // Infrastructure handles this with optimized queries
@@ -76,7 +76,7 @@ final class ElectionOnlyPolicy implements VoterEligibilityPolicy
     public function decideForContext(EligibilityContext $context): bool
     {
         // Election-only rules: active + not deleted
-        return $context->mode->isElectionOnly()
+        return $context->mode->isImportedVoterRegistry()
             && $context->isActive
             && ! $context->isDeleted;
     }

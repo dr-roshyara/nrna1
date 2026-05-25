@@ -43,6 +43,8 @@ class ElectionSeeder extends Seeder
                 'start_date' => Carbon::now()->subDays(1),
                 'end_date' => Carbon::now()->addMonths(3),
                 'organisation_id' => $platform->id,
+                'voter_source_strategy' => 'full_membership',
+                'state' => 'draft',
             ]
         );
 
@@ -63,6 +65,8 @@ class ElectionSeeder extends Seeder
                 'start_date' => Carbon::now()->subDays(1),
                 'end_date' => Carbon::now()->addWeeks(2),
                 'organisation_id' => $platform->id,
+                'voter_source_strategy' => 'full_membership',
+                'state' => 'draft',
             ]
         );
 

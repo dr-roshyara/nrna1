@@ -44,6 +44,28 @@ class ElectionFactory extends Factory
             'voting_starts_at' => null,
             'voting_ends_at' => null,
             'results_locked' => false,
+            /**
+             * TESTING ANTI-CORRUPTION: voter_source_strategy default
+             *
+             * This value is a test scaffolding convenience for hydrating factory-built
+             * elections with a plausible snapshot. It is NOT representative of how
+             * voter_source_strategy is established in the actual domain.
+             *
+             * The authoritative creation path is:
+             *   ElectionManagementController::store()
+             *       ↓
+             *   ElectionManagementService::createElection()
+             *       ↓
+             *   VoterSourceStrategy::fromOrganisation() [at creation time only]
+             *
+             * Tests that verify creation-flow correctness MUST NOT rely on this default.
+             * Tests MUST verify that snapshots originate from the authoritative path,
+             * not from the factory. See invariant test:
+             *   test_snapshot_originates_from_creation_flow_not_factory_default()
+             *
+             * @see ElectionManagementController::store() for the authoritative creation path
+             */
+            'voter_source_strategy' => 'full_membership',  // Default: full membership (arbitrary choice for testing convenience)
         ];
     }
 
@@ -168,5 +190,35 @@ class ElectionFactory extends Factory
                 'results_published_by' => fake()->uuid(),
             ];
         });
+    }
+
+    /**
+     * Create election with ImportedVoterRegistry voter source strategy.
+     * Tests using this state verify election-only mode behavior.
+     *
+     * TESTING NOTE: This state sets the voter_source_strategy snapshot.
+     * @see factory anti-corruption doc above: snapshot must originate from
+     *      ElectionManagementController::store() in production, not factory default.
+     */
+    public function importedVoterRegistry()
+    {
+        return $this->state([
+            'voter_source_strategy' => 'election_only',
+        ]);
+    }
+
+    /**
+     * Create election with MembershipRegistry voter source strategy.
+     * Tests using this state verify full membership mode behavior.
+     *
+     * TESTING NOTE: This state sets the voter_source_strategy snapshot.
+     * @see factory anti-corruption doc above: snapshot must originate from
+     *      ElectionManagementController::store() in production, not factory default.
+     */
+    public function membershipRegistry()
+    {
+        return $this->state([
+            'voter_source_strategy' => 'full_membership',
+        ]);
     }
 }

@@ -4,7 +4,7 @@
     <a
       href="#main-content"
       class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
-    >Skip to main content</a>
+    >{{ t.accessibility.skip_to_main }}</a>
 
     <main id="main-content" class="min-h-screen bg-neutral-100 py-8 relative overflow-hidden">
       <!-- Decorative left frame gradient -->
@@ -83,9 +83,9 @@
               </div>
             </div>
             <div class="flex-1">
-              <h3 class="text-base font-semibold text-amber-800">Election Suspended</h3>
+              <h3 class="text-base font-semibold text-amber-800">{{ t.suspension.title }}</h3>
               <p class="text-sm text-amber-700 mt-0.5">
-                All governance operations are temporarily locked.
+                {{ t.suspension.description }}
               </p>
               <p v-if="election.suspended_reason" class="text-xs text-amber-600 mt-2 italic">
                 Reason: {{ election.suspended_reason }}
@@ -100,7 +100,7 @@
               <svg v-if="!isLoading" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
-              <span>{{ isLoading ? 'Resuming...' : 'Resume Election' }}</span>
+              <span>{{ isLoading ? t.suspension.btn_resuming : t.suspension.btn_resume }}</span>
             </button>
           </div>
         </div>
@@ -142,7 +142,7 @@
             <!-- GOVERNANCE ACTIONS — Primary state transitions   -->
             <!-- ══════════════════════════════════════════════════ -->
             <div v-if="canSubmitForApproval || canBeginSetup">
-              <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Governance Actions</h3>
+              <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">{{ t.governance_actions.title }}</h3>
               <div class="space-y-3">
                 <transition name="fade-scale" mode="out-in">
                   <div v-if="canSubmitForApproval" key="submit" class="w-full">
@@ -157,10 +157,10 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                       </svg>
                       <span class="font-bold text-base">
-                        {{ (election.expected_voter_count || 0) > 40 ? 'Submit for Approval' : 'Submit (Auto-Approved)' }}
+                        {{ (election.expected_voter_count || 0) > 40 ? t.governance_actions.submit_for_approval : t.governance_actions.submit_for_approval_auto }}
                       </span>
                       <span class="text-xs opacity-90 ml-2 hidden sm:inline">
-                        {{ (election.expected_voter_count || 0) > 40 ? '→ Begin review' : '→ Auto-approve' }}
+                        {{ (election.expected_voter_count || 0) > 40 ? t.governance_actions.submit_hint : t.governance_actions.submit_hint_auto }}
                       </span>
                     </ActionButton>
                   </div>
@@ -177,8 +177,8 @@
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                       </svg>
-                      <span class="font-bold text-base">Begin Setup</span>
-                      <span class="text-xs opacity-90 ml-2 hidden sm:inline">→ Start configuration</span>
+                      <span class="font-bold text-base">{{ t.governance_actions.begin_setup }}</span>
+                      <span class="text-xs opacity-90 ml-2 hidden sm:inline">{{ t.governance_actions.begin_setup_hint }}</span>
                     </ActionButton>
                   </div>
                 </transition>
@@ -189,7 +189,7 @@
             <!-- PHASE CONTROLS — Mid-level phase transitions     -->
             <!-- ══════════════════════════════════════════════════ -->
             <div v-if="canCompleteAdministration || canOpenVoting || canCloseVoting" class="pt-4 border-t border-slate-200">
-              <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Phase Controls</h3>
+              <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">{{ t.phase_controls.title }}</h3>
               <div class="flex flex-wrap gap-3">
                 <transition name="fade-scale" mode="out-in">
                   <div v-if="canCompleteAdministration" key="complete-admin">
@@ -202,7 +202,7 @@
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                       </svg>
-                      Complete Administration
+                      {{ t.phase_controls.complete_admin }}
                     </ActionButton>
                   </div>
                 </transition>
@@ -221,7 +221,7 @@
                           <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
                         </svg>
                         {{ t.sections.election_control.btn_open }}
-                        <span v-if="!isOpenVotingDisabled" class="text-xs opacity-90 ml-2 hidden sm:inline">→ Begin voting</span>
+                        <span v-if="!isOpenVotingDisabled" class="text-xs opacity-90 ml-2 hidden sm:inline">{{ t.phase_controls.open_voting_hint }}</span>
                       </ActionButton>
                       <p v-if="openVotingBlockedReason" class="mt-2 text-xs text-amber-600 font-medium">
                         {{ openVotingBlockedReason }}
@@ -242,7 +242,7 @@
                         <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 1112.01 3.715M9 9a1 1 0 112 0V5.525a1 1 0 00-2 0v3.475z" clip-rule="evenodd"/>
                       </svg>
                       {{ t.sections.election_control.btn_close }}
-                      <span class="text-xs opacity-90 ml-2 hidden sm:inline">→ End voting</span>
+                      <span class="text-xs opacity-90 ml-2 hidden sm:inline">{{ t.phase_controls.close_voting_hint }}</span>
                     </ActionButton>
                   </div>
                 </transition>
@@ -253,7 +253,7 @@
             <!-- GOVERNANCE — Overlay actions (chief only)        -->
             <!-- ══════════════════════════════════════════════════ -->
             <div v-if="canSuspend" class="pt-4 border-t border-slate-200">
-              <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Governance</h3>
+              <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">{{ t.governance_section.title }}</h3>
               <div class="flex flex-wrap gap-3">
                 <ActionButton
                   variant="danger-outline"
@@ -265,7 +265,7 @@
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
                   </svg>
-                  Suspend Election
+                  {{ t.governance_section.suspend }}
                 </ActionButton>
               </div>
             </div>
@@ -284,8 +284,8 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-4a2 2 0 00-2-2H6a2 2 0 00-2 2v4a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
                   </svg>
                 </div>
-                <p class="text-sm font-medium text-slate-500">No actions available in current state</p>
-                <p class="text-xs text-slate-400 mt-1">Complete previous phases to unlock next steps</p>
+                <p class="text-sm font-medium text-slate-500">{{ t.empty_state.no_actions }}</p>
+                <p class="text-xs text-slate-400 mt-1">{{ t.empty_state.complete_phases }}</p>
               </div>
             </transition>
           </div>
@@ -342,7 +342,7 @@
               </svg>
             </div>
             <div class="flex-1">
-              <h3 class="text-sm font-semibold text-amber-800">Expected Voter Count</h3>
+              <h3 class="text-sm font-semibold text-amber-800">{{ t.voter_count.title }}</h3>
               <div class="flex items-center gap-2 mt-1">
                 <input
                   type="number"
@@ -351,7 +351,7 @@
                   v-model.number="expectedVoterCount"
                   class="w-24 rounded-md border border-amber-300 px-2 py-1 text-sm text-amber-900 bg-white focus:outline-none focus:ring-2 focus:ring-amber-500"
                 />
-                <span class="text-sm text-amber-700">voters expected</span>
+                <span class="text-sm text-amber-700">{{ t.voter_count.label }}</span>
                 <button
                   @click="saveExpectedVoterCount"
                   :disabled="saveStatus === 'saving'"
@@ -362,16 +362,16 @@
                 </button>
               </div>
               <p v-if="saveStatus === 'success'" class="text-sm text-emerald-600 font-medium mt-1">
-                ✓ Saved — {{ expectedVoterCount }} voters expected
+                ✓ {{ t.voter_count.saved.replace('{count}', expectedVoterCount) }}
               </p>
               <p v-else-if="saveStatus === 'error'" class="text-sm text-danger-600 font-medium mt-1">
-                ✗ Failed to save. Please try again.
+                ✗ {{ t.voter_count.failed }}
               </p>
               <p v-else-if="capacity?.requires_approval" class="text-sm text-amber-700 mt-2">
-                Exceeds self-service limit of {{ capacity.self_service_limit }} — platform admin approval required.
+                {{ t.voter_count.requires_approval.replace('{limit}', capacity.self_service_limit) }}
               </p>
               <p v-else class="text-sm text-amber-700 mt-1">
-                Set the expected number of voters before submitting for approval.
+                {{ t.voter_count.instructions }}
               </p>
             </div>
           </div>
@@ -386,8 +386,8 @@
               </svg>
             </div>
             <div>
-              <h2 class="text-base font-semibold text-slate-800">Election Progress</h2>
-              <p class="text-xs text-slate-500 mt-0.5">Current status and workflow progression</p>
+              <h2 class="text-base font-semibold text-slate-800">{{ t.progress.title }}</h2>
+              <p class="text-xs text-slate-500 mt-0.5">{{ t.progress.subtitle }}</p>
             </div>
           </div>
           <StateProgress :progress="progress" />
@@ -412,8 +412,8 @@
               </svg>
             </div>
             <div>
-              <h2 class="text-base font-semibold text-slate-800">Timeline Configuration</h2>
-              <p class="text-xs text-slate-500 mt-0.5">Configure all election phase dates in one place</p>
+              <h2 class="text-base font-semibold text-slate-800">{{ t.timeline_config.title }}</h2>
+              <p class="text-xs text-slate-500 mt-0.5">{{ t.timeline_config.subtitle }}</p>
             </div>
           </div>
 
@@ -424,7 +424,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
               </svg>
-              View Timeline
+              {{ t.timeline_config.view }}
             </ActionButton>
 
             <!-- Edit Timeline (Form) -->
@@ -432,7 +432,7 @@
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
               </svg>
-              Edit Timeline
+              {{ t.timeline_config.edit }}
             </ActionButton>
           </div>
         </SectionCard>
@@ -531,7 +531,7 @@
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
               </svg>
-              View Public List
+              {{ t.public_list }}
             </ActionButton>
           </div>
         </SectionCard>
@@ -732,8 +732,8 @@
               </svg>
             </div>
             <div class="min-w-0">
-              <h2 class="text-base font-semibold text-slate-800">Election Settings</h2>
-              <p class="text-xs text-slate-500 mt-0.5">Configure voting rules and security restrictions</p>
+              <h2 class="text-base font-semibold text-slate-800">{{ t.settings.title }}</h2>
+              <p class="text-xs text-slate-500 mt-0.5">{{ t.settings.subtitle }}</p>
             </div>
           </div>
 
@@ -742,7 +742,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
             </svg>
-            Configure Settings
+            {{ t.settings.btn_configure }}
           </ActionButton>
         </SectionCard>
 
@@ -862,7 +862,7 @@
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
-              <span>Election Results</span>
+              <span>{{ t.sections.status.results }}</span>
             </a>
           </div>
         </SectionCard>
@@ -880,29 +880,29 @@
         <div class="bg-white rounded-xl shadow-2xl w-full max-w-md transform transition-all">
           <div class="px-6 py-4 border-b border-slate-200">
             <h3 class="text-lg font-bold text-slate-900 capitalize">
-              Complete {{ selectedPhase }} Phase
+              {{ t.completion_modal.title.replace('{phase}', selectedPhase) }}
             </h3>
             <p class="text-sm text-slate-500 mt-1">
-              Please provide a reason for completing this phase.
+              {{ t.completion_modal.description }}
             </p>
           </div>
 
           <div class="px-6 py-4">
             <label class="block text-sm font-semibold text-slate-700 mb-2">
-              Reason for Completion
+              {{ t.completion_modal.reason_label }}
             </label>
             <textarea
               v-model="completionReason"
-              placeholder="e.g., All posts and voters have been configured. Ready to proceed to nomination phase."
+              :placeholder="t.completion_modal.reason_placeholder"
               rows="4"
               class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
-              :aria-label="`Reason for completing ${selectedPhase} phase`"
+              :aria-label="`${t.completion_modal.reason_label} for ${selectedPhase} phase`"
             ></textarea>
             <p v-if="reasonError" class="text-danger-500 text-sm mt-2 font-medium">
               {{ reasonError }}
             </p>
             <p class="text-xs text-slate-500 mt-2">
-              Minimum 5 characters required
+              {{ t.completion_modal.reason_hint }}
             </p>
           </div>
 
@@ -913,7 +913,7 @@
               class="px-4 py-2 text-slate-700 font-semibold border border-slate-300 rounded-lg hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               aria-label="Cancel phase completion"
             >
-              Cancel
+              {{ t.completion_modal.btn_cancel }}
             </button>
             <Button
               @click="submitPhaseCompletion"
@@ -923,7 +923,7 @@
               class="flex items-center gap-2"
             >
               <span v-if="isLoading" class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-              <span>{{ isLoading ? 'Completing...' : 'Confirm Completion' }}</span>
+              <span>{{ isLoading ? t.completion_modal.btn_confirming : t.completion_modal.btn_confirm }}</span>
             </Button>
           </div>
         </div>
@@ -940,9 +940,9 @@
       >
         <div class="bg-white rounded-xl shadow-2xl w-full max-w-md transform transition-all">
           <div class="px-6 py-4 border-b border-slate-200">
-            <h3 class="text-lg font-bold text-slate-900">Suspend Election</h3>
+            <h3 class="text-lg font-bold text-slate-900">{{ t.suspend_modal.title }}</h3>
             <p class="text-sm text-slate-500 mt-1">
-              This action freezes all governance operations except resume.
+              {{ t.suspend_modal.description }}
             </p>
           </div>
 
@@ -950,42 +950,42 @@
             <!-- Governance Warning -->
             <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
               <p class="text-sm text-red-700 font-medium">
-                This is a governance intervention, NOT an ordinary state transition.
+                {{ t.suspend_modal.warning }}
               </p>
             </div>
 
             <!-- Reason (required) -->
             <div>
               <label class="block text-sm font-semibold text-slate-700 mb-2">
-                Reason for Suspension <span class="text-red-500">*</span>
+                {{ t.suspend_modal.reason_label }} <span class="text-red-500">*</span>
               </label>
               <textarea
                 v-model="suspendReason"
                 data-testid="suspend-reason"
                 rows="4"
-                placeholder="Describe why this election must be suspended..."
+                :placeholder="t.suspend_modal.reason_placeholder"
                 class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
               ></textarea>
               <p class="text-xs text-slate-500 mt-1">
-                Minimum 10 characters. This is recorded in the governance audit trail.
+                {{ t.suspend_modal.reason_hint }}
               </p>
             </div>
 
             <!-- Category (optional) -->
             <div>
               <label class="block text-sm font-semibold text-slate-700 mb-2">
-                Suspension Category
+                {{ t.suspend_modal.category_label }}
               </label>
               <select
                 v-model="suspendCategory"
                 data-testid="suspend-category"
                 class="w-full px-3 py-2 border border-slate-300 rounded-lg"
               >
-                <option value="general">General</option>
-                <option value="misconduct">Misconduct</option>
-                <option value="emergency">Emergency</option>
-                <option value="investigation">Investigation</option>
-                <option value="other">Other</option>
+                <option value="general">{{ t.suspend_modal.category_general }}</option>
+                <option value="misconduct">{{ t.suspend_modal.category_misconduct }}</option>
+                <option value="emergency">{{ t.suspend_modal.category_emergency }}</option>
+                <option value="investigation">{{ t.suspend_modal.category_investigation }}</option>
+                <option value="other">{{ t.suspend_modal.category_other }}</option>
               </select>
             </div>
           </div>
@@ -996,7 +996,7 @@
               :disabled="isLoading"
               class="px-4 py-2 text-slate-700 font-semibold border border-slate-300 rounded-lg hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              Cancel
+              {{ t.suspend_modal.btn_cancel }}
             </button>
             <button
               data-testid="suspend-confirm"
@@ -1005,7 +1005,7 @@
               class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               <span v-if="isLoading" class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-              <span>{{ isLoading ? 'Suspending...' : 'Suspend Election' }}</span>
+              <span>{{ isLoading ? t.suspend_modal.btn_suspending : t.suspend_modal.btn_suspend }}</span>
             </button>
           </div>
         </div>
@@ -1281,7 +1281,7 @@ const closeVoting = () => {
 }
 
 const handleResume = () => {
-  if (!confirm('Resume this election? All governance operations will become available again.')) return
+  if (!confirm(t.value.resume_confirmation)) return
   isLoading.value = true
   router.post(route('elections.resume', { election: props.election.slug }), {}, {
     preserveScroll: true,
@@ -1370,12 +1370,12 @@ const handlePhaseCompleted = (phase) => {
 const submitPhaseCompletion = () => {
   // Validate reason
   if (!completionReason.value.trim()) {
-    reasonError.value = 'Reason is required'
+    reasonError.value = t.value.completion_modal.error_required
     return
   }
 
   if (completionReason.value.trim().length < 5) {
-    reasonError.value = 'Reason must be at least 5 characters'
+    reasonError.value = t.value.completion_modal.error_min_length
     return
   }
 
@@ -1405,7 +1405,7 @@ const submitPhaseCompletion = () => {
         router.reload({ only: ['election', 'stateMachine', 'progress'], preserveScroll: true })
       },
       onError: (errors) => {
-        reasonError.value = errors.error || errors.reason || 'Failed to complete phase'
+        reasonError.value = errors.error || errors.reason || t.value.completion_modal.error_required
         isLoading.value = false
       },
       onFinish: () => {

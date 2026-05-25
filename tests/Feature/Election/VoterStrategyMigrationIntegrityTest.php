@@ -4,7 +4,7 @@ namespace Tests\Feature\Election;
 
 use App\Models\Organisation;
 use App\Models\Election;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use Tests\TestCase;
 
 class VoterStrategyMigrationIntegrityTest extends TestCase
@@ -20,8 +20,8 @@ class VoterStrategyMigrationIntegrityTest extends TestCase
             'uses_full_membership' => true,
         ]);
 
-        $mode = ElectionMode::fromOrganisation($org);
-        $this->assertEquals(ElectionMode::FullMembership, $mode);
+        $mode = VoterSourceStrategy::fromOrganisation($org);
+        $this->assertEquals(VoterSourceStrategy::FullMembership, $mode);
     }
 
     #[\PHPUnit\Framework\Attributes\Test]
@@ -33,8 +33,8 @@ class VoterStrategyMigrationIntegrityTest extends TestCase
             'uses_full_membership' => false,
         ]);
 
-        $mode = ElectionMode::fromOrganisation($org);
-        $this->assertEquals(ElectionMode::ElectionOnly, $mode);
+        $mode = VoterSourceStrategy::fromOrganisation($org);
+        $this->assertEquals(VoterSourceStrategy::ElectionOnly, $mode);
     }
 
     #[\PHPUnit\Framework\Attributes\Test]
@@ -54,7 +54,7 @@ class VoterStrategyMigrationIntegrityTest extends TestCase
             'voter_source_strategy' => null,
         ]);
 
-        $mode = ElectionMode::fromElection($election);
-        $this->assertEquals(ElectionMode::FullMembership, $mode);
+        $mode = VoterSourceStrategy::fromElection($election);
+        $this->assertEquals(VoterSourceStrategy::FullMembership, $mode);
     }
 }

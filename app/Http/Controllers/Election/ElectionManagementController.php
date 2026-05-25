@@ -16,7 +16,7 @@ use App\Services\DashboardResolver;
 use App\Services\ElectionClockService;
 use App\Application\Election\Facades\ElectionLifecycle;
 use App\Domain\Election\Projection\ElectionLifecycleProjection;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\RedirectResponse;
@@ -152,7 +152,7 @@ class ElectionManagementController extends Controller
             'slug'            => $this->generateUniqueSlug($validated['name']),
             'description'     => $validated['description'] ?? null,
             'type'            => 'real',
-            'voter_source_strategy' => ElectionMode::fromOrganisation($organisation)->value,
+            'voter_source_strategy' => VoterSourceStrategy::fromOrganisation($organisation)->toPersistenceValue(),
             'state'           => 'draft',
             'start_date'      => $startDate,
             'end_date'        => $endDate,

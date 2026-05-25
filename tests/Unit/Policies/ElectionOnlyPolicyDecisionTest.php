@@ -4,7 +4,7 @@ namespace Tests\Unit\Policies;
 
 use App\Contexts\Elections\Domain\Policies\ElectionOnlyPolicy;
 use App\Contexts\Elections\Domain\ValueObjects\EligibilityContext;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use PHPUnit\Framework\TestCase;
 use Tests\Support\Fixtures\EligibilityFixtureBuilder;
 
@@ -125,7 +125,7 @@ class ElectionOnlyPolicyDecisionTest extends TestCase
      */
     public function test_interface_method_rejects_wrong_mode(): void
     {
-        $result = $this->policy->isEligible('user-1', 'org-1', ElectionMode::FullMembership);
+        $result = $this->policy->isEligible('user-1', 'org-1', VoterSourceStrategy::MembershipRegistry);
 
         $this->assertFalse($result);
     }
@@ -135,7 +135,7 @@ class ElectionOnlyPolicyDecisionTest extends TestCase
      */
     public function test_interface_method_accepts_election_only_mode(): void
     {
-        $result = $this->policy->isEligible('user-1', 'org-1', ElectionMode::ElectionOnly);
+        $result = $this->policy->isEligible('user-1', 'org-1', VoterSourceStrategy::ImportedVoterRegistry);
 
         $this->assertTrue($result);
     }

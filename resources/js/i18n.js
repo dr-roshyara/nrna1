@@ -198,6 +198,10 @@ import tutorialHubDe from './locales/pages/TutorialHub/de.json';
 import tutorialHubEn from './locales/pages/TutorialHub/en.json';
 import tutorialHubNp from './locales/pages/TutorialHub/np.json';
 
+import electionSubmitForApprovalDe from './locales/pages/Election/SubmitForApproval/de.json';
+import electionSubmitForApprovalEn from './locales/pages/Election/SubmitForApproval/en.json';
+import electionSubmitForApprovalNp from './locales/pages/Election/SubmitForApproval/np.json';
+
 // Get locale from multiple sources in priority order
 function getInitialLocale() {
   // 1. Check for server-provided locale (from Inertia props - highest priority)
@@ -258,6 +262,7 @@ const messages = {
       'forgot-password': forgotPasswordDe,
       election: electionDe,
       'election-show': electionShowDe,
+      'election-submit-for-approval': electionSubmitForApprovalDe,
       'election-dashboard': electionDashboardDe,
       'election-navigation': electionNavigationDe,
       'code-create': createCodeDe,
@@ -320,6 +325,7 @@ const messages = {
       'forgot-password': forgotPasswordEn,
       election: electionEn,
       'election-show': electionShowEn,
+      'election-submit-for-approval': electionSubmitForApprovalEn,
       'election-dashboard': electionDashboardEn,
       'election-navigation': electionNavigationEn,
       'code-create': createCodeEn,
@@ -382,6 +388,7 @@ const messages = {
       'forgot-password': forgotPasswordNp,
       election: electionNp,
       'election-show': electionShowNp,
+      'election-submit-for-approval': electionSubmitForApprovalNp,
       'election-dashboard': electionDashboardNp,
       'election-navigation': electionNavigationNp,
       'code-create': createCodeNp,

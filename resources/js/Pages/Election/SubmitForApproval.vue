@@ -9,10 +9,10 @@
             <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Submit for Approval</p>
+            <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest">{{ $t('pages.election-submit-for-approval.title') }}</p>
           </div>
           <h1 class="text-2xl font-bold text-slate-900">{{ election.name }}</h1>
-          <p class="text-slate-600 mt-2">Review and submit this election for processing</p>
+          <p class="text-slate-600 mt-2">{{ $t('pages.election-submit-for-approval.subtitle') }}</p>
         </Card>
 
         <!-- Approval Workflow Info -->
@@ -22,23 +22,21 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <div>
-              <h3 class="text-lg font-bold text-primary-900 mb-2">Approval Workflow</h3>
+              <h3 class="text-lg font-bold text-primary-900 mb-2">{{ $t('pages.election-submit-for-approval.approval_workflow.title') }}</h3>
               <div v-if="election.expected_voter_count > 40" class="space-y-2">
                 <p class="text-primary-800 font-medium">
-                  ⭐ PAID ELECTION ({{ election.expected_voter_count }} expected voters)
+                  {{ $t('pages.election-submit-for-approval.approval_workflow.paid_election_label', { count: election.expected_voter_count }) }}
                 </p>
                 <p class="text-primary-700 text-sm leading-relaxed">
-                  Elections with more than 40 expected voters require platform administrator review and approval.
-                  This typically takes 1-5 business days. You will receive an email notification when approved or rejected.
+                  {{ $t('pages.election-submit-for-approval.approval_workflow.paid_election_description') }}
                 </p>
               </div>
               <div v-else class="space-y-2">
                 <p class="text-primary-800 font-medium">
-                  ✓ FREE ELECTION ({{ election.expected_voter_count }} expected voters)
+                  {{ $t('pages.election-submit-for-approval.approval_workflow.free_election_label', { count: election.expected_voter_count }) }}
                 </p>
                 <p class="text-primary-700 text-sm leading-relaxed">
-                  Elections with 40 or fewer expected voters are automatically approved.
-                  Your election will move to the setup phase immediately upon submission.
+                  {{ $t('pages.election-submit-for-approval.approval_workflow.free_election_description') }}
                 </p>
               </div>
             </div>
@@ -47,8 +45,8 @@
 
         <!-- Submission Prerequisites -->
         <Card mode="admin" padding="lg" class="rounded-2xl">
-          <h2 class="text-lg font-bold text-slate-900 mb-4">Submission Requirements</h2>
-          <p class="text-slate-700 mb-4 text-sm">Verify these two items before submitting for approval:</p>
+          <h2 class="text-lg font-bold text-slate-900 mb-4">{{ $t('pages.election-submit-for-approval.submission_requirements.title') }}</h2>
+          <p class="text-slate-700 mb-4 text-sm">{{ $t('pages.election-submit-for-approval.submission_requirements.subtitle') }}</p>
 
           <div class="space-y-3">
             <!-- Election Name -->
@@ -57,7 +55,7 @@
                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
               </svg>
               <div class="flex-1">
-                <p class="text-green-900 font-semibold">Election Name</p>
+                <p class="text-green-900 font-semibold">{{ $t('pages.election-submit-for-approval.submission_requirements.election_name') }}</p>
                 <p class="text-green-700 text-sm">{{ election.name }}</p>
               </div>
             </div>
@@ -72,11 +70,11 @@
               </svg>
               <div class="flex-1">
                 <p :class="election.expected_voter_count > 0 ? 'text-green-900 font-semibold' : 'text-danger-900 font-semibold'">
-                  Expected Voter Count
+                  {{ $t('pages.election-submit-for-approval.submission_requirements.expected_voter_count') }}
                 </p>
                 <p :class="election.expected_voter_count > 0 ? 'text-green-700 text-sm' : 'text-danger-700 text-sm'">
-                  {{ election.expected_voter_count }} voter{{ election.expected_voter_count !== 1 ? 's' : '' }} expected
-                  <span v-if="!isReady"> — At least 1 voter is required</span>
+                  {{ election.expected_voter_count }} {{ election.expected_voter_count !== 1 ? $t('pages.election-submit-for-approval.submission_requirements.voter_plural') : $t('pages.election-submit-for-approval.submission_requirements.voter_singular') }} {{ $t('pages.election-submit-for-approval.submission_requirements.voter_count_expected') }}
+                  <span v-if="!isReady"> — {{ $t('pages.election-submit-for-approval.submission_requirements.voter_count_error') }}</span>
                 </p>
               </div>
             </div>
@@ -89,7 +87,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <div class="text-sm text-primary-700">
-                <p class="font-semibold">Posts, candidates, and voters are configured during the <strong>administration phase</strong> — after this submission is approved.</p>
+                <p class="font-semibold">{{ $t('pages.election-submit-for-approval.setup_timing_info') }}</p>
               </div>
             </div>
           </div>
@@ -101,7 +99,7 @@
             :href="route('elections.management', { election: election.slug })"
             class="px-6 py-3 rounded-lg border border-neutral-300 bg-white text-neutral-700 hover:bg-neutral-50 font-semibold transition-colors"
           >
-            Back to Management
+            {{ $t('pages.election-submit-for-approval.actions.back_to_management') }}
           </Link>
           <button
             v-if="isReady"
@@ -110,15 +108,15 @@
             class="px-6 py-3 rounded-lg bg-primary-600 hover:bg-primary-700 disabled:bg-primary-400 text-white font-semibold transition-colors disabled:cursor-not-allowed flex items-center gap-2"
           >
             <span v-if="isLoading" class="inline-block animate-spin">⟳</span>
-            {{ isLoading ? 'Submitting...' : (election.expected_voter_count > 40 ? 'Submit for Approval' : 'Submit (Auto-Approved)') }}
+            {{ isLoading ? $t('pages.election-submit-for-approval.actions.submitting') : (election.expected_voter_count > 40 ? $t('pages.election-submit-for-approval.actions.submit_for_approval') : $t('pages.election-submit-for-approval.actions.submit_auto_approved')) }}
           </button>
           <button
             v-else
             disabled
             class="px-6 py-3 rounded-lg bg-neutral-300 text-neutral-600 font-semibold cursor-not-allowed"
-            :title="!isDraft ? 'Election already submitted for approval' : 'Expected voter count is required before submitting'"
+            :title="!isDraft ? $t('pages.election-submit-for-approval.button_titles.already_submitted') : $t('pages.election-submit-for-approval.button_titles.set_voter_count_first')"
           >
-            {{ !isDraft ? 'Already Submitted' : 'Set Expected Voter Count First' }}
+            {{ !isDraft ? $t('pages.election-submit-for-approval.actions.already_submitted') : $t('pages.election-submit-for-approval.actions.set_voter_count_first') }}
           </button>
         </div>
 

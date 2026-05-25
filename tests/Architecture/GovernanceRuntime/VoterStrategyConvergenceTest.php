@@ -4,7 +4,7 @@ namespace Tests\Architecture\GovernanceRuntime;
 
 use App\Models\Election;
 use App\Models\Organisation;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Log;
 use Tests\TestCase;
@@ -38,7 +38,7 @@ class VoterStrategyConvergenceTest extends TestCase
             'name' => 'Atomic Test Election',
             'slug' => 'atomic-test-election',
             'type' => 'real',
-            'voter_source_strategy' => ElectionMode::fromOrganisation($org)->value,
+            'voter_source_strategy' => VoterSourceStrategy::fromOrganisation($org)->value,
         ]);
 
         // Verify snapshot exists immediately after create (not null)
@@ -82,8 +82,8 @@ class VoterStrategyConvergenceTest extends TestCase
 
         // Verify ElectionMode reads snapshot, not org (refresh election to get latest org)
         $election->refresh();
-        $mode = ElectionMode::fromElection($election);
-        $this->assertTrue($mode->isElectionOnly());
+        $mode = VoterSourceStrategy::fromElection($election);
+        $this->assertTrue($mode->isImportedVoterRegistry());
     }
 
     #[\PHPUnit\Framework\Attributes\Test]
@@ -105,9 +105,9 @@ class VoterStrategyConvergenceTest extends TestCase
         ]);
 
         // ElectionMode must read snapshot (election_only), not org (full_membership)
-        $mode = ElectionMode::fromElection($election);
-        $this->assertTrue($mode->isElectionOnly());
-        $this->assertFalse($mode->isFullMembership());
+        $mode = VoterSourceStrategy::fromElection($election);
+        $this->assertTrue($mode->isImportedVoterRegistry());
+        $this->assertFalse($mode->isMembershipRegistry());
     }
 
     #[\PHPUnit\Framework\Attributes\Test]
@@ -135,7 +135,7 @@ class VoterStrategyConvergenceTest extends TestCase
             '/Election .+ missing voter_source_strategy snapshot.*backfill-voter-source-strategy/'
         );
 
-        ElectionMode::fromElection($election);
+        VoterSourceStrategy::fromElection($election);
     }
 
     #[\PHPUnit\Framework\Attributes\Test]

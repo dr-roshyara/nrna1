@@ -8,7 +8,7 @@ use App\Contexts\Elections\Domain\Exceptions\DuplicateVoterException;
 use App\Contexts\Elections\Domain\Exceptions\VoterNotEligibleException;
 use App\Contexts\Elections\Domain\Policies\VoterEligibilityPolicy;
 use App\Contexts\Elections\Domain\Repositories\VoterRepositoryInterface;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use App\Models\ElectionMembership;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -50,14 +50,14 @@ class AssignVoterHandlerTest extends TestCase
         $this->policyMock
             ->expects($this->once())
             ->method('isEligible')
-            ->with('user-123', 'org-456', ElectionMode::ElectionOnly)
+            ->with('user-123', 'org-456', VoterSourceStrategy::ImportedVoterRegistry)
             ->willReturn(false);
 
         $command = new AssignVoterCommand(
             userId: 'user-123',
             electionId: 'election-789',
             organisationId: 'org-456',
-            mode: ElectionMode::ElectionOnly,
+            mode: VoterSourceStrategy::ImportedVoterRegistry,
             assignedBy: 'admin-001'
         );
 
@@ -92,7 +92,7 @@ class AssignVoterHandlerTest extends TestCase
             userId: 'user-123',
             electionId: 'election-789',
             organisationId: 'org-456',
-            mode: ElectionMode::ElectionOnly,
+            mode: VoterSourceStrategy::ImportedVoterRegistry,
             assignedBy: 'admin-001'
         );
 
@@ -141,7 +141,7 @@ class AssignVoterHandlerTest extends TestCase
             userId: 'user-123',
             electionId: 'election-789',
             organisationId: 'org-456',
-            mode: ElectionMode::ElectionOnly
+            mode: VoterSourceStrategy::ImportedVoterRegistry
         );
 
         $result = $this->handler->handle($command);
@@ -175,7 +175,7 @@ class AssignVoterHandlerTest extends TestCase
             userId: 'user-123',
             electionId: 'election-789',
             organisationId: 'org-456',
-            mode: ElectionMode::ElectionOnly
+            mode: VoterSourceStrategy::ImportedVoterRegistry
         );
 
         $this->handler->handle($command);

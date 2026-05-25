@@ -69,7 +69,7 @@
               <!-- Election header bar -->
               <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50">
                 <h3 class="text-base font-bold text-slate-900">{{ election.name }}</h3>
-                <StatusBadge :status="election.status" />
+                <StatusBadge :status="election.state" />
               </div>
 
               <!-- Action buttons -->

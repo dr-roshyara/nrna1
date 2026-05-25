@@ -18,8 +18,8 @@
           </p>
           <h1 class="sidebar-title">{{ election.name }}</h1>
           <div class="sidebar-badges">
-            <span class="badge-status" :class="`badge-${election.status}`">
-              {{ election.status }}
+            <span class="badge-status" :class="`badge-${election.state}`">
+              {{ election.state }}
             </span>
             <span class="badge-type">{{ election.type }}</span>
           </div>
@@ -428,6 +428,7 @@ import { router, usePage } from '@inertiajs/vue3'
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
 import VoterVerificationModal from '@/Components/Election/VoterVerificationModal.vue'
+import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 
 const props = defineProps({
   election:          { type: Object, required: true },

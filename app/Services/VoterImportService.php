@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\Organisation;
@@ -32,7 +32,7 @@ class VoterImportService
 
     public function downloadTemplate(): \Symfony\Component\HttpFoundation\StreamedResponse
     {
-        $isElectionOnly = ElectionMode::fromElection($this->election)->isElectionOnly();
+        $isElectionOnly = VoterSourceStrategy::fromElection($this->election)->isImportedVoterRegistry();
 
         if ($isElectionOnly) {
             // Election-only mode: firstname;lastname;email
@@ -177,9 +177,9 @@ class VoterImportService
         }
 
         // Use VoterEligibilityService with election's constitutional snapshot
-        $mode = ElectionMode::fromElection($this->election);
+        $mode = VoterSourceStrategy::fromElection($this->election);
         if (! $this->eligibilityService->isEligibleVoter($org, $user, $mode)) {
-            if ($mode->isElectionOnly()) {
+            if ($mode->isImportedVoterRegistry()) {
                 $errors[] = "'{$email}' is not an active member of this organisation.";
             } else {
                 $errors[] = "'{$email}' is not an eligible voter — must be an active formal member with full voting rights.";

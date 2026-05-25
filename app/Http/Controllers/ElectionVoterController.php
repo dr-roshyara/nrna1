@@ -8,7 +8,7 @@ use App\Contexts\Elections\Application\Handlers\AssignVoterHandler;
 use App\Contexts\Elections\Application\Handlers\BulkAssignVotersHandler;
 use App\Contexts\Elections\Domain\Exceptions\DuplicateVoterException;
 use App\Contexts\Elections\Domain\Exceptions\VoterNotEligibleException;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\Organisation;
@@ -71,7 +71,7 @@ class ElectionVoterController extends Controller
             ->toArray();
 
         $unassignedMembers = $this->eligibilityService
-            ->unassignedEligibleQuery($organisation, $assignedUserIds, ElectionMode::fromElection($election))
+            ->unassignedEligibleQuery($organisation, $assignedUserIds, VoterSourceStrategy::fromElection($election))
             ->get();
 
         // Load active verifications for this election, keyed by user_id
@@ -110,7 +110,7 @@ class ElectionVoterController extends Controller
                 // Must be eligible voter (checked against election's constitutional snapshot)
                 function ($attribute, $value, $fail) use ($organisation, $election) {
                     $user = \App\Models\User::find($value);
-                    $mode = ElectionMode::fromElection($election);
+                    $mode = VoterSourceStrategy::fromElection($election);
                     if (! $user || ! $this->eligibilityService->isEligibleVoter($organisation, $user, $mode)) {
                         $fail('The selected user is not eligible to vote in this election.');
                     }
@@ -123,7 +123,7 @@ class ElectionVoterController extends Controller
                 userId: $request->user_id,
                 electionId: $election->id,
                 organisationId: $organisation->id,
-                mode: ElectionMode::fromElection($election),
+                mode: VoterSourceStrategy::fromElection($election),
                 assignedBy: auth()->id(),
             ));
         } catch (VoterNotEligibleException | DuplicateVoterException $e) {
@@ -154,7 +154,7 @@ class ElectionVoterController extends Controller
             userIds:        $request->user_ids,
             electionId:     $election->id,
             organisationId: $organisation->id,
-            mode:           ElectionMode::fromElection($election),
+            mode:           VoterSourceStrategy::fromElection($election),
             assignedBy:     auth()->id(),
         ));
 

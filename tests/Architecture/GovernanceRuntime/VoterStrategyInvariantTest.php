@@ -5,7 +5,7 @@ namespace Tests\Architecture\GovernanceRuntime;
 use App\Models\User;
 use App\Models\Organisation;
 use App\Models\Election;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use App\Domain\Election\Enum\ElectionLifecycleState;
 use App\Domain\Election\ValueObjects\ElectionLifecycleSnapshot;
 use Tests\TestCase;
@@ -47,7 +47,7 @@ class VoterStrategyInvariantTest extends TestCase
             'name' => 'Test Election',
             'slug' => 'test-election-arc',
             'type' => 'real',
-            'voter_source_strategy' => ElectionMode::fromOrganisation($org)->value,
+            'voter_source_strategy' => VoterSourceStrategy::fromOrganisation($org)->value,
         ]);
 
         // Immediately read from database without any post-creation update
@@ -83,8 +83,8 @@ class VoterStrategyInvariantTest extends TestCase
         $election->refresh();
 
         // Snapshot should be unchanged
-        $mode = ElectionMode::fromElection($election);
-        $this->assertEquals(ElectionMode::ElectionOnly, $mode);
+        $mode = VoterSourceStrategy::fromElection($election);
+        $this->assertEquals(VoterSourceStrategy::ImportedVoterRegistry, $mode);
     }
 
     #[\PHPUnit\Framework\Attributes\Test]
@@ -113,8 +113,8 @@ class VoterStrategyInvariantTest extends TestCase
         ]);
 
         // Even though org is full_membership, snapshot should be used
-        $mode = ElectionMode::fromElection($election);
-        $this->assertTrue($mode->isElectionOnly());
+        $mode = VoterSourceStrategy::fromElection($election);
+        $this->assertTrue($mode->isImportedVoterRegistry());
     }
 
     #[\PHPUnit\Framework\Attributes\Test]

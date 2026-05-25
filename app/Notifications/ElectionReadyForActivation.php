@@ -23,12 +23,17 @@ class ElectionReadyForActivation extends Notification implements ShouldQueue
     {
         $managementUrl = route('elections.management', $this->election->id);
 
-        return (new MailMessage)
+        $message = (new MailMessage)
             ->subject("Election Ready for Activation: {$this->election->name}")
             ->greeting("Hello {$notifiable->name}!")
             ->line("A new election **{$this->election->name}** has been created and is ready for activation.")
             ->line("Before activating, please ensure all posts, candidates, and voters are set up.")
-            ->action('Review and Activate Election', $managementUrl)
-            ->line("Scheduled: {$this->election->start_date->format('F j, Y')} to {$this->election->end_date->format('F j, Y')}.");
+            ->action('Review and Activate Election', $managementUrl);
+
+        if ($this->election->start_date && $this->election->end_date) {
+            $message->line("Scheduled: {$this->election->start_date->format('F j, Y')} to {$this->election->end_date->format('F j, Y')}.");
+        }
+
+        return $message;
     }
 }

@@ -1,44 +1,77 @@
 {
-  "title": "नयाँ निर्वाचन सिर्जना गर्नुहोस्",
-  "organisation_label": "संगठन",
+  "title": "नयाँ निर्वाचन सिर्जना गर्नुहोस् | Create New Election",
+  "organisation_label": "संगठन | Organisation",
   "fields": {
     "name": {
-      "label": "निर्वाचनको नाम",
-      "placeholder": "जस्तै: साधारण निर्वाचन २०२६"
+      "label": "निर्वाचनको नाम | Election Name",
+      "placeholder": "जस्तै: साधारण निर्वाचन २०२६ | e.g. General Election 2026"
     },
     "description": {
-      "label": "विवरण",
-      "optional": "(ऐच्छिक)",
-      "placeholder": "निर्वाचनको संक्षिप्त विवरण..."
+      "label": "विवरण | Description",
+      "optional": "(ऐच्छिक | optional)",
+      "placeholder": "निर्वाचनको संक्षिप्त विवरण... | Brief description of the election..."
     },
     "expected_voter_count": {
-      "label": "अपेक्षित मतदाता संख्या",
-      "help": "४० सम्म मतदाता भएका चुनावहरू नि:शुल्क र स्वतः स्वीकृत हुन्छन्। ४० भन्दा बढी भएमा प्लेटफर्म प्रशासकको स्वीकृति चाहिन्छ पर्दछ।",
-      "approval_warning": "यो चुनाव अगाडि बढ्न प्लेटफर्म प्रशासकको स्वीकृति चाहिन्छ पर्नेछ।"
+      "label": "अपेक्षित मतदाता संख्या | Expected Number of Voters",
+      "placeholder": "जस्तै: ५० | e.g. 50",
+      "help": "४० सम्म मतदाता भएका चुनावहरू नि:शुल्क र स्वतः स्वीकृत हुन्छन्। ४० भन्दा बढी भएमा प्लेटफर्म प्रशासकको स्वीकृति चाहिन्छ पर्दछ। | Elections with up to 40 voters are free and auto-approved. More than 40 requires platform admin approval.",
+      "approval_warning": "यो चुनाव अगाडि बढ्न प्लेटफर्म प्रशासकको स्वीकृति चाहिन्छ पर्नेछ। | This election will require platform admin approval before it can proceed."
     },
     "timezone": {
-      "label": "समय क्षेत्र",
-      "optional": "(वैकल्पिक — बुझाउनु अघि आवश्यक)",
-      "placeholder": "समय क्षेत्र छान्नुहोस्...",
-      "help": "आपनो निर्वाचनको समय क्षेत्र सेट गर्नुहोस्। स्वीकृतिको अघि आवश्यक।"
+      "label": "समय क्षेत्र | Timezone",
+      "optional": "(वैकल्पिक — बुझाउनु अघि आवश्यक | optional — required before submission)",
+      "placeholder": "समय क्षेत्र छान्नुहोस्... | Select timezone...",
+      "help": "आपनो निर्वाचनको समय क्षेत्र सेट गर्नुहोस्। स्वीकृतिको अघि आवश्यक। | Set your election timezone. Required before submitting for approval."
     },
     "start": {
-      "section": "सुरु मिति र समय",
-      "date_label": "मिति",
-      "time_label": "खुल्ने समय"
+      "section": "सुरु मिति र समय | Start Date & Time",
+      "date_label": "मिति | Date",
+      "time_label": "खुल्ने समय | Opening Time"
     },
     "end": {
-      "section": "अन्त्य मिति र समय",
-      "date_label": "मिति",
-      "time_label": "बन्द हुने समय"
+      "section": "अन्त्य मिति र समय | End Date & Time",
+      "date_label": "मिति | Date",
+      "time_label": "बन्द हुने समय | Closing Time"
+    }
+  },
+  "info_banner": {
+    "title": "डिजाइनद्वारा सुरक्षित | Secure by Design",
+    "description": "हाम्रो निर्वाचनहरू टेम्पर-प्रूफ राज्य मेसिनसह अपरिवर्तनीय लेखापरीक्षा ट्रेलहरू प्रयोग गर्दछन्। | Our elections use a tamper-proof state machine with immutable audit trails.",
+    "learn_architecture": "आर्किटेक्चर जान्नुहोस् | Learn Architecture",
+    "security_deep_dive": "सुरक्षा गहिराइ | Security Deep Dive"
+  },
+  "phases": {
+    "timeline_title": "निर्वाचन चरणहरूको समयसूची | Election Phases Timeline",
+    "timeline_subtitle": "निर्वाचनको प्रत्येक चरण कहिले हुन्छ भनी परिभाषित गर्नुहोस् | Define when each phase of the election takes place",
+    "administration": {
+      "title": "⚙️ प्रशासन चरण | Administration Phase",
+      "start_label": "सुरु मिति र समय | Start Date & Time",
+      "end_label": "अन्त्य मिति र समय | End Date & Time"
+    },
+    "nomination": {
+      "title": "📋 नामांकन चरण | Nomination Phase",
+      "start_label": "सुरु मिति र समय | Start Date & Time",
+      "end_label": "अन्त्य मिति र समय | End Date & Time"
+    },
+    "voting": {
+      "title": "🗳️ मतदान चरण | Voting Phase",
+      "start_label": "मतदान सुरु हुन्छ | Voting Starts",
+      "end_label": "मतदान समाप्त हुन्छ | Voting Ends",
+      "start_placeholder": "जस्तै 2026-06-30T09:00",
+      "end_placeholder": "जस्तै 2026-07-07T17:00"
     }
   },
   "validation": {
-    "end_after_start": "बन्द हुने समय खुल्ने समय पछि हुनुपर्छ।"
+    "end_after_start": "बन्द हुने समय खुल्ने समय पछि हुनुपर्छ। | Closing time must be after opening time.",
+    "admin_end_after_start": "प्रशासन चरणको अन्त्य सुरु पछि हुनुपर्छ | Administration phase end must be after start",
+    "nom_end_after_start": "नामांकन चरणको अन्त्य सुरु पछि हुनुपर्छ | Nomination phase end must be after start",
+    "vote_end_after_start": "मतदान चरणको अन्त्य सुरु पछि हुनुपर्छ | Voting phase end must be after start",
+    "nom_after_admin": "नामांकन चरण प्रशासन अन्त्य पछि सुरु हुनुपर्छ | Nomination phase must start after administration ends",
+    "vote_after_nom": "मतदान चरण नामांकन अन्त्य पछि सुरु हुनुपर्छ | Voting phase must start after nomination ends"
   },
   "actions": {
-    "cancel": "रद्द गर्नुहोस्",
-    "submit": "निर्वाचन सिर्जना गर्नुहोस्",
-    "submitting": "सिर्जना हुँदैछ…"
+    "cancel": "रद्द गर्नुहोस् | Cancel",
+    "submit": "निर्वाचन सिर्जना गर्नुहोस् | Create Election",
+    "submitting": "सिर्जना हुँदैछ… | Creating…"
   }
 }

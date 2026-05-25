@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Election;
 use App\Http\Controllers\Controller;
 use App\Models\Election;
 use App\Models\Organisation;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use App\Services\VoterEligibilityService;
 use App\Services\VoterImportService;
 use Illuminate\Http\RedirectResponse;
@@ -25,10 +25,15 @@ class VoterImportController extends Controller
 
         $this->authorize('manageVoters', $election);
 
+        $mode = VoterSourceStrategy::fromElection($election);
+
         return Inertia::render('Elections/Voters/Import', [
             'organisation' => $organisation->only('id', 'name', 'slug'),
             'election'     => $election->only('id', 'slug', 'name'),
-            'uses_full_membership' => ElectionMode::fromElection($election)->isFullMembership(),
+            // Phase 3 quarantine: new voter_source_strategy prop with transitional prefix
+            'voter_source_strategy' => $mode->toApiValue(),
+            // Backward compatibility: old uses_full_membership still available during migration
+            'uses_full_membership' => $mode->isMembershipRegistry(),
         ]);
     }
 
@@ -40,10 +45,15 @@ class VoterImportController extends Controller
 
         $this->authorize('manageVoters', $election);
 
+        $mode = VoterSourceStrategy::fromElection($election);
+
         return Inertia::render('Elections/Voters/ImportTutorial', [
             'organisation'       => $organisation->only('id', 'name', 'slug'),
             'election'           => $election->only('id', 'slug', 'name'),
-            'uses_full_membership' => ElectionMode::fromElection($election)->isFullMembership(),
+            // Phase 3 quarantine: new voter_source_strategy prop with transitional prefix
+            'voter_source_strategy' => $mode->toApiValue(),
+            // Backward compatibility: old uses_full_membership still available during migration
+            'uses_full_membership' => $mode->isMembershipRegistry(),
         ]);
     }
 
@@ -54,10 +64,14 @@ class VoterImportController extends Controller
         // publicTutorial() is context-free: no election exists in this scope.
         // Full-membership is the generic default for a context-free instructional view.
         // Do NOT derive from election snapshot — there is no election here.
+        $defaultMode = VoterSourceStrategy::MembershipRegistry;
         return Inertia::render('Elections/Voters/ImportTutorial', [
             'organisation'       => null,
             'election'           => null,
-            'uses_full_membership' => true,
+            // Phase 3 quarantine: context-free default uses MembershipRegistry
+            'voter_source_strategy' => $defaultMode->toApiValue(),
+            // Backward compatibility: old uses_full_membership still available during migration
+            'uses_full_membership' => $defaultMode->isMembershipRegistry(),
             'isPublic'           => true,
         ]);
     }
@@ -86,7 +100,7 @@ class VoterImportController extends Controller
         $service = new VoterImportService($election, $this->eligibilityService);
 
         // Route to correct preview method based on election's constitutional snapshot
-        if (ElectionMode::fromElection($election)->isElectionOnly()) {
+        if (VoterSourceStrategy::fromElection($election)->isImportedVoterRegistry()) {
             $result = $service->previewElectionOnly($request->file('file'));
         } else {
             $result = $service->preview($request->file('file'));
@@ -118,7 +132,7 @@ class VoterImportController extends Controller
         $service = new VoterImportService($election, $this->eligibilityService);
 
         // Route to correct import method based on election's constitutional snapshot
-        if (ElectionMode::fromElection($election)->isElectionOnly()) {
+        if (VoterSourceStrategy::fromElection($election)->isImportedVoterRegistry()) {
             $result = $service->importElectionOnly($request->file('file'));
             $message = sprintf(
                 'Voter import completed: %d users created, %d already existing, %d invitation emails queued.',

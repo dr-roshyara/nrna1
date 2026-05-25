@@ -2,7 +2,7 @@
 
 namespace App\Contexts\Elections\Application\Commands;
 
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 
 /**
  * AssignVoterCommand — Assign a single voter to an election
@@ -22,7 +22,7 @@ final readonly class AssignVoterCommand
         public string $userId,
         public string $electionId,
         public string $organisationId,
-        public ElectionMode $mode,
+        public VoterSourceStrategy $mode,
         public ?string $assignedBy = null,
         public array $metadata = [],
     ) {}

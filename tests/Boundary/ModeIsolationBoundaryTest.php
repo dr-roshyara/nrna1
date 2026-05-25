@@ -4,7 +4,7 @@ namespace Tests\Boundary;
 
 use App\Contexts\Elections\Domain\Policies\ElectionOnlyPolicy;
 use App\Contexts\Elections\Domain\ValueObjects\EligibilityContext;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -43,7 +43,7 @@ class ModeIsolationBoundaryTest extends TestCase
         $fullMembershipContext = new EligibilityContext(
             userId: 'user-1',
             organisationId: 'org-1',
-            mode: ElectionMode::FullMembership,
+            mode: VoterSourceStrategy::FullMembership,
             isActive: true,
             isDeleted: false,
             membershipStatus: 'active',
@@ -70,7 +70,7 @@ class ModeIsolationBoundaryTest extends TestCase
         $contextWithMembershipData = new EligibilityContext(
             userId: 'user-1',
             organisationId: 'org-1',
-            mode: ElectionMode::ElectionOnly,
+            mode: VoterSourceStrategy::ElectionOnly,
             isActive: true,
             isDeleted: false,
             membershipStatus: 'inactive', // Should be ignored
@@ -101,7 +101,7 @@ class ModeIsolationBoundaryTest extends TestCase
         $contextElectionOnlyValid = new EligibilityContext(
             userId: 'user-1',
             organisationId: 'org-1',
-            mode: ElectionMode::ElectionOnly,
+            mode: VoterSourceStrategy::ElectionOnly,
             isActive: true,
             isDeleted: false,
             membershipStatus: null,
@@ -112,7 +112,7 @@ class ModeIsolationBoundaryTest extends TestCase
         $contextFullMembershipValid = new EligibilityContext(
             userId: 'user-2',
             organisationId: 'org-1',
-            mode: ElectionMode::FullMembership,
+            mode: VoterSourceStrategy::FullMembership,
             isActive: true,
             isDeleted: false,
             membershipStatus: 'active',
@@ -135,8 +135,8 @@ class ModeIsolationBoundaryTest extends TestCase
     {
         $policy = new ElectionOnlyPolicy();
 
-        $electionOnlyResult = $policy->isEligible('user-1', 'org-1', ElectionMode::ElectionOnly);
-        $fullMembershipResult = $policy->isEligible('user-1', 'org-1', ElectionMode::FullMembership);
+        $electionOnlyResult = $policy->isEligible('user-1', 'org-1', VoterSourceStrategy::ElectionOnly);
+        $fullMembershipResult = $policy->isEligible('user-1', 'org-1', VoterSourceStrategy::FullMembership);
 
         // Both should behave consistently with mode boundary
         $this->assertNotEquals(

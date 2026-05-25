@@ -2,7 +2,7 @@
 
 namespace App\Contexts\Elections\Application\Commands;
 
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 
 /**
  * BulkAssignVotersCommand — Bulk assign multiple voters to an election
@@ -24,7 +24,7 @@ final readonly class BulkAssignVotersCommand
         public array $userIds,
         public string $electionId,
         public string $organisationId,
-        public ElectionMode $mode,
+        public VoterSourceStrategy $mode,
         public ?string $assignedBy = null,
         public ?string $idempotencyKey = null,
         public int $chunkSize = 500,

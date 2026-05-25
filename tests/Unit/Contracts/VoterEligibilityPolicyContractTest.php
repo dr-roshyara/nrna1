@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
  * - Parameter names (implementation detail)
  * - Return type internals (belongs in implementation tests)
  * - Implementation behavior (belongs in ElectionOnlyPolicyTest, etc.)
- * - Enum specifics (already validated in ElectionModeTest)
+ * - Enum specifics (already validated in VoterSourceStrategyTest)
  *
  * Mental Model: "Can this contract exist and be implemented?"
  */

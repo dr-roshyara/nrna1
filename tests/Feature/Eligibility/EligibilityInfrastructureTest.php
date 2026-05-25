@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Eligibility;
 
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use App\Models\Organisation;
 use App\Models\OrganisationUser;
 use App\Models\User;

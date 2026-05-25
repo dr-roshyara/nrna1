@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Election;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
@@ -39,7 +39,7 @@ class BackfillVoterSourceStrategy extends Command
 
                         // Derive strategy from organisation's governance policy (legitimate use)
                         $organisation = $election->organisation;
-                        $strategy = ElectionMode::fromOrganisation($organisation)->value;
+                        $strategy = VoterSourceStrategy::fromOrganisation($organisation)->value;
 
                         if ($auditOnly) {
                             // AUDIT MODE: Log without updating

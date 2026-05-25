@@ -4,7 +4,7 @@ namespace App\Contexts\Elections\Infrastructure\Policies;
 
 use App\Contexts\Elections\Domain\Policies\VoterEligibilityPolicy;
 use App\Contexts\Elections\Domain\ValueObjects\EligibilityContext;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use App\Models\OrganisationUser;
 use Illuminate\Support\Facades\DB;
 
@@ -47,13 +47,13 @@ final class EloquentVoterEligibilityQueryService implements VoterEligibilityPoli
     public function isEligible(
         string $userId,
         string $organisationId,
-        ElectionMode $mode
+        VoterSourceStrategy $mode
     ): bool {
         // Build context from database queries
         $context = $this->buildContext($userId, $organisationId, $mode);
 
         // Delegate to appropriate policy
-        if ($mode->isElectionOnly()) {
+        if ($mode->isImportedVoterRegistry()) {
             return $this->electionOnlyPolicy->decideForContext($context);
         }
 
@@ -68,13 +68,13 @@ final class EloquentVoterEligibilityQueryService implements VoterEligibilityPoli
     public function qualifyingSubset(
         array $userIds,
         string $organisationId,
-        ElectionMode $mode
+        VoterSourceStrategy $mode
     ): array {
         if (empty($userIds)) {
             return [];
         }
 
-        if ($mode->isElectionOnly()) {
+        if ($mode->isImportedVoterRegistry()) {
             return $this->qualifyingSubsetElectionOnly($userIds, $organisationId);
         }
 
@@ -131,9 +131,9 @@ final class EloquentVoterEligibilityQueryService implements VoterEligibilityPoli
     private function buildContext(
         string $userId,
         string $organisationId,
-        ElectionMode $mode
+        VoterSourceStrategy $mode
     ): EligibilityContext {
-        if ($mode->isElectionOnly()) {
+        if ($mode->isImportedVoterRegistry()) {
             return $this->buildElectionOnlyContext($userId, $organisationId);
         }
 
@@ -159,7 +159,7 @@ final class EloquentVoterEligibilityQueryService implements VoterEligibilityPoli
         return new EligibilityContext(
             userId: $userId,
             organisationId: $organisationId,
-            mode: ElectionMode::ElectionOnly,
+            mode: VoterSourceStrategy::ImportedVoterRegistry,
             isActive: $record?->status === 'active',
             isDeleted: $record?->deleted_at !== null,
         );
@@ -187,7 +187,7 @@ final class EloquentVoterEligibilityQueryService implements VoterEligibilityPoli
             return new EligibilityContext(
                 userId: $userId,
                 organisationId: $organisationId,
-                mode: ElectionMode::FullMembership,
+                mode: VoterSourceStrategy::MembershipRegistry,
                 isActive: false,
                 isDeleted: true,
             );
@@ -206,7 +206,7 @@ final class EloquentVoterEligibilityQueryService implements VoterEligibilityPoli
         return new EligibilityContext(
             userId: $userId,
             organisationId: $organisationId,
-            mode: ElectionMode::FullMembership,
+            mode: VoterSourceStrategy::MembershipRegistry,
             isActive: $membershipStatus === 'active',
             isDeleted: false,
             membershipStatus: $membershipStatus,

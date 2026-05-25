@@ -148,5 +148,93 @@
     "monitoring": "Monitoring",
     "settings": "Settings",
     "results": "Results"
-  }
+  },
+  "accessibility": {
+    "skip_to_main": "Skip to main content"
+  },
+  "suspension": {
+    "title": "Election Suspended",
+    "description": "All governance operations are temporarily locked.",
+    "btn_resume": "Resume Election",
+    "btn_resuming": "Resuming..."
+  },
+  "governance_actions": {
+    "title": "Governance Actions",
+    "submit_for_approval": "Submit for Approval",
+    "submit_for_approval_auto": "Submit (Auto-Approved)",
+    "submit_hint": "→ Begin review",
+    "submit_hint_auto": "→ Auto-approve",
+    "begin_setup": "Begin Setup",
+    "begin_setup_hint": "→ Start configuration"
+  },
+  "phase_controls": {
+    "title": "Phase Controls",
+    "complete_admin": "Complete Administration",
+    "open_voting": "Open Voting",
+    "open_voting_hint": "→ Begin voting",
+    "close_voting": "Close Voting",
+    "close_voting_hint": "→ End voting"
+  },
+  "governance_section": {
+    "title": "Governance",
+    "suspend": "Suspend Election"
+  },
+  "empty_state": {
+    "no_actions": "No actions available in current state",
+    "complete_phases": "Complete previous phases to unlock next steps"
+  },
+  "voter_count": {
+    "title": "Expected Voter Count",
+    "label": "voters expected",
+    "saved": "Saved — {count} voters expected",
+    "failed": "Failed to save. Please try again.",
+    "requires_approval": "Exceeds self-service limit of {limit} — platform admin approval required.",
+    "instructions": "Set the expected number of voters before submitting for approval."
+  },
+  "progress": {
+    "title": "Election Progress",
+    "subtitle": "Current status and workflow progression"
+  },
+  "timeline_config": {
+    "title": "Timeline Configuration",
+    "subtitle": "Configure all election phase dates in one place",
+    "view": "View Timeline",
+    "edit": "Edit Timeline"
+  },
+  "settings": {
+    "title": "Election Settings",
+    "subtitle": "Configure voting rules and security restrictions",
+    "btn_configure": "Configure Settings"
+  },
+  "resume_confirmation": "Resume this election? All governance operations will become available again.",
+  "suspend_modal": {
+    "title": "Suspend Election",
+    "description": "This action freezes all governance operations except resume.",
+    "warning": "This is a governance intervention, NOT an ordinary state transition.",
+    "reason_label": "Reason for Suspension",
+    "reason_placeholder": "Describe why this election must be suspended...",
+    "reason_hint": "Minimum 10 characters. This is recorded in the governance audit trail.",
+    "category_label": "Suspension Category",
+    "category_general": "General",
+    "category_misconduct": "Misconduct",
+    "category_emergency": "Emergency",
+    "category_investigation": "Investigation",
+    "category_other": "Other",
+    "btn_cancel": "Cancel",
+    "btn_suspend": "Suspend Election",
+    "btn_suspending": "Suspending..."
+  },
+  "completion_modal": {
+    "title": "Complete {phase} Phase",
+    "description": "Please provide a reason for completing this phase.",
+    "reason_label": "Reason for Completion",
+    "reason_placeholder": "e.g., All posts and voters have been configured. Ready to proceed to nomination phase.",
+    "reason_hint": "Minimum 5 characters required",
+    "btn_cancel": "Cancel",
+    "btn_confirm": "Confirm Completion",
+    "btn_confirming": "Completing...",
+    "error_required": "Reason is required",
+    "error_min_length": "Reason must be at least 5 characters"
+  },
+  "public_list": "View Public List"
 }

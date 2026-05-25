@@ -23,18 +23,18 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
             <p class="text-sm text-primary-800">
-              <strong>Secure by design:</strong> Our elections use a tamper-proof state machine with immutable audit trails.
+              <strong>{{ t.info_banner.title }}:</strong> {{ t.info_banner.description }}
             </p>
           </div>
           <div class="flex flex-wrap gap-3 ml-8">
             <a :href="route('public.election-architecture')" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-800 underline">
-              Learn Architecture
+              {{ t.info_banner.learn_architecture }}
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
               </svg>
             </a>
             <a :href="route('public.election-security')" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-800 underline">
-              Security Deep Dive
+              {{ t.info_banner.security_deep_dive }}
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
               </svg>
@@ -90,7 +90,7 @@
               type="number"
               min="1"
               max="10000"
-              placeholder="e.g. 50"
+              :placeholder="t.fields.expected_voter_count.placeholder || 'e.g. 50'"
               class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               :class="errors.expected_voter_count ? 'border-danger-400' : 'border-neutral-300'"
             />
@@ -139,15 +139,15 @@
 
           <!-- STATE MACHINE PHASE DATES SECTION -->
           <div class="border-t pt-8 mb-8">
-            <h3 class="text-lg font-semibold text-neutral-900 mb-6">Election Phases Timeline</h3>
-            <p class="text-sm text-neutral-500 mb-6">Define when each phase of the election takes place</p>
+            <h3 class="text-lg font-semibold text-neutral-900 mb-6">{{ t.phases.timeline_title }}</h3>
+            <p class="text-sm text-neutral-500 mb-6">{{ t.phases.timeline_subtitle }}</p>
 
             <!-- Administration Phase -->
             <div class="mb-8 p-4 bg-primary-50 rounded-lg border border-primary-200">
-              <h4 class="text-sm font-semibold text-primary-900 mb-4">⚙️ Administration Phase</h4>
+              <h4 class="text-sm font-semibold text-primary-900 mb-4">{{ t.phases.administration.title }}</h4>
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs text-neutral-600 font-medium mb-1">Start Date & Time</label>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">{{ t.phases.administration.start_label }}</label>
                   <input
                     v-model="form.administration_suggested_start"
                     type="datetime-local"
@@ -157,7 +157,7 @@
                   <p v-if="errors.administration_suggested_start" class="mt-1 text-xs text-danger-600">{{ errors.administration_suggested_start }}</p>
                 </div>
                 <div>
-                  <label class="block text-xs text-neutral-600 font-medium mb-1">End Date & Time</label>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">{{ t.phases.administration.end_label }}</label>
                   <input
                     v-model="form.administration_suggested_end"
                     type="datetime-local"
@@ -171,10 +171,10 @@
 
             <!-- Nomination Phase -->
             <div class="mb-8 p-4 bg-green-50 rounded-lg border border-green-200">
-              <h4 class="text-sm font-semibold text-green-900 mb-4">📋 Nomination Phase</h4>
+              <h4 class="text-sm font-semibold text-green-900 mb-4">{{ t.phases.nomination.title }}</h4>
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs text-neutral-600 font-medium mb-1">Start Date & Time</label>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">{{ t.phases.nomination.start_label }}</label>
                   <input
                     v-model="form.nomination_suggested_start"
                     type="datetime-local"
@@ -184,7 +184,7 @@
                   <p v-if="errors.nomination_suggested_start" class="mt-1 text-xs text-danger-600">{{ errors.nomination_suggested_start }}</p>
                 </div>
                 <div>
-                  <label class="block text-xs text-neutral-600 font-medium mb-1">End Date & Time</label>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">{{ t.phases.nomination.end_label }}</label>
                   <input
                     v-model="form.nomination_suggested_end"
                     type="datetime-local"
@@ -198,25 +198,25 @@
 
             <!-- Voting Phase -->
             <div class="mb-8 p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <h4 class="text-sm font-semibold text-purple-900 mb-4">🗳️ Voting Phase</h4>
+              <h4 class="text-sm font-semibold text-purple-900 mb-4">{{ t.phases.voting.title }}</h4>
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs text-neutral-600 font-medium mb-1">Voting Starts</label>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">{{ t.phases.voting.start_label }}</label>
                   <input
                     v-model="form.voting_starts_at"
                     type="datetime-local"
-                    placeholder="e.g. 2026-06-30T09:00"
+                    :placeholder="t.phases.voting.start_placeholder"
                     class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
                     :class="errors.voting_starts_at ? 'border-danger-400' : 'border-neutral-300'"
                   />
                   <p v-if="errors.voting_starts_at" class="mt-1 text-xs text-danger-600">{{ errors.voting_starts_at }}</p>
                 </div>
                 <div>
-                  <label class="block text-xs text-neutral-600 font-medium mb-1">Voting Ends</label>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">{{ t.phases.voting.end_label }}</label>
                   <input
                     v-model="form.voting_ends_at"
                     type="datetime-local"
-                    placeholder="e.g. 2026-07-07T17:00"
+                    :placeholder="t.phases.voting.end_placeholder"
                     class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
                     :class="errors.voting_ends_at ? 'border-danger-400' : 'border-neutral-300'"
                   />
@@ -318,34 +318,34 @@ const phasesDatesError = computed(() => {
   if (form.administration_suggested_start && form.administration_suggested_end) {
     const adminStart = new Date(form.administration_suggested_start)
     const adminEnd = new Date(form.administration_suggested_end)
-    if (adminEnd <= adminStart) return 'Administration phase end must be after start'
+    if (adminEnd <= adminStart) return t.value.validation.admin_end_after_start
   }
 
   // Nomination phase: validate only if BOTH start AND end are provided
   if (form.nomination_suggested_start && form.nomination_suggested_end) {
     const nomStart = new Date(form.nomination_suggested_start)
     const nomEnd = new Date(form.nomination_suggested_end)
-    if (nomEnd <= nomStart) return 'Nomination phase end must be after start'
+    if (nomEnd <= nomStart) return t.value.validation.nom_end_after_start
   }
 
   // Voting phase: validate only if BOTH start AND end are provided
   if (form.voting_starts_at && form.voting_ends_at) {
     const votStart = new Date(form.voting_starts_at)
     const votEnd = new Date(form.voting_ends_at)
-    if (votEnd <= votStart) return 'Voting phase end must be after start'
+    if (votEnd <= votStart) return t.value.validation.vote_end_after_start
   }
 
   // Chronological order: validate only if adjacent phases are both filled
   if (form.administration_suggested_end && form.nomination_suggested_start) {
     const adminEnd = new Date(form.administration_suggested_end)
     const nomStart = new Date(form.nomination_suggested_start)
-    if (nomStart < adminEnd) return 'Nomination phase must start after administration ends'
+    if (nomStart < adminEnd) return t.value.validation.nom_after_admin
   }
 
   if (form.nomination_suggested_end && form.voting_starts_at) {
     const nomEnd = new Date(form.nomination_suggested_end)
     const votStart = new Date(form.voting_starts_at)
-    if (votStart < nomEnd) return 'Voting phase must start after nomination ends'
+    if (votStart < nomEnd) return t.value.validation.vote_after_nom
   }
 
   return null

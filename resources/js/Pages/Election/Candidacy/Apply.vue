@@ -58,8 +58,8 @@
             <p class="doc-header-election">{{ election.name }}</p>
           </div>
           <div class="doc-header-meta" aria-hidden="true">
-            <span class="meta-pill" :class="election.status === 'active' ? 'meta-pill--active' : 'meta-pill--closed'">
-              {{ election.status === 'active' ? 'Accepting Applications' : election.status }}
+            <span class="meta-pill" :class="election.state === ElectionLifecycleStates.SETUP_NOMINATION ? 'meta-pill--active' : 'meta-pill--closed'">
+              {{ election.state === ElectionLifecycleStates.SETUP_NOMINATION ? 'Accepting Applications' : election.state }}
             </span>
           </div>
         </header>
@@ -162,7 +162,7 @@
         </section>
 
         <!-- ── Application Form ── -->
-        <template v-else-if="election.status === 'active'">
+        <template v-else-if="election.state === ElectionLifecycleStates.SETUP_NOMINATION">
 
           <!-- Section 02: Nominee Details -->
           <section class="doc-section apply-fade" style="--delay: 160ms">
@@ -357,6 +357,7 @@
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { ref, computed } from 'vue'
 import { usePage, router } from '@inertiajs/vue3'
+import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 
 const props = defineProps({
   organisation:        { type: Object, required: true },

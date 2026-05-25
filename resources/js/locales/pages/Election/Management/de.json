@@ -148,5 +148,93 @@
     "monitoring": "Überwachung",
     "settings": "Einstellungen",
     "results": "Ergebnisse"
-  }
+  },
+  "accessibility": {
+    "skip_to_main": "Zum Hauptinhalt springen"
+  },
+  "suspension": {
+    "title": "Wahl ausgesetzt",
+    "description": "Alle Governance-Operationen sind temporär gesperrt.",
+    "btn_resume": "Wahl fortsetzen",
+    "btn_resuming": "Wird fortgesetzt..."
+  },
+  "governance_actions": {
+    "title": "Governance-Maßnahmen",
+    "submit_for_approval": "Zur Genehmigung einreichen",
+    "submit_for_approval_auto": "Einreichen (automatisch genehmigt)",
+    "submit_hint": "→ Überprüfung beginnen",
+    "submit_hint_auto": "→ Automatisch genehmigen",
+    "begin_setup": "Setup starten",
+    "begin_setup_hint": "→ Konfiguration starten"
+  },
+  "phase_controls": {
+    "title": "Phasensteuern",
+    "complete_admin": "Verwaltung abschließen",
+    "open_voting": "Abstimmung öffnen",
+    "open_voting_hint": "→ Abstimmung beginnen",
+    "close_voting": "Abstimmung schließen",
+    "close_voting_hint": "→ Abstimmung beenden"
+  },
+  "governance_section": {
+    "title": "Governance",
+    "suspend": "Wahl aussetzen"
+  },
+  "empty_state": {
+    "no_actions": "Keine Aktionen im aktuellen Zustand verfügbar",
+    "complete_phases": "Schließen Sie vorherige Phasen ab, um nächste Schritte freizuschalten"
+  },
+  "voter_count": {
+    "title": "Erwartete Wählerzahl",
+    "label": "Wähler erwartet",
+    "saved": "Gespeichert — {count} Wähler erwartet",
+    "failed": "Speichern fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "requires_approval": "Überschreitet Self-Service-Limit von {limit} — Genehmigung durch Plattformadministrator erforderlich.",
+    "instructions": "Legen Sie die erwartete Anzahl der Wähler fest, bevor Sie zur Genehmigung einreichen."
+  },
+  "progress": {
+    "title": "Wahlfortschritt",
+    "subtitle": "Aktueller Status und Workflow-Fortschritt"
+  },
+  "timeline_config": {
+    "title": "Zeitplan-Konfiguration",
+    "subtitle": "Konfigurieren Sie alle Wahlphasendaten an einer Stelle",
+    "view": "Zeitplan anzeigen",
+    "edit": "Zeitplan bearbeiten"
+  },
+  "settings": {
+    "title": "Wahleinstellungen",
+    "subtitle": "Konfigurieren Sie Abstimmungsregeln und Sicherheitsbeschränkungen",
+    "btn_configure": "Einstellungen konfigurieren"
+  },
+  "resume_confirmation": "Diese Wahl fortsetzen? Alle Governance-Operationen werden wieder verfügbar.",
+  "suspend_modal": {
+    "title": "Wahl aussetzen",
+    "description": "Diese Aktion friert alle Governance-Operationen mit Ausnahme von Fortsetzen ein.",
+    "warning": "Dies ist ein Governance-Eingriff, KEINE gewöhnliche Zustandsänderung.",
+    "reason_label": "Grund für Aussetzung",
+    "reason_placeholder": "Beschreiben Sie, warum diese Wahl ausgesetzt werden muss...",
+    "reason_hint": "Mindestens 10 Zeichen. Dies wird in der Governance-Audit-Spur aufgezeichnet.",
+    "category_label": "Aussetzungskategorie",
+    "category_general": "Allgemein",
+    "category_misconduct": "Fehlverhalten",
+    "category_emergency": "Notfall",
+    "category_investigation": "Untersuchung",
+    "category_other": "Sonstige",
+    "btn_cancel": "Abbrechen",
+    "btn_suspend": "Wahl aussetzen",
+    "btn_suspending": "Wird ausgesetzt..."
+  },
+  "completion_modal": {
+    "title": "{phase}-Phase abschließen",
+    "description": "Geben Sie bitte einen Grund für die Fertigstellung dieser Phase an.",
+    "reason_label": "Grund für Fertigstellung",
+    "reason_placeholder": "z. B. Alle Positionen und Wähler wurden konfiguriert. Bereit für die Nominierungsphase.",
+    "reason_hint": "Mindestens 5 Zeichen erforderlich",
+    "btn_cancel": "Abbrechen",
+    "btn_confirm": "Fertigstellung bestätigen",
+    "btn_confirming": "Wird abgeschlossen...",
+    "error_required": "Grund ist erforderlich",
+    "error_min_length": "Der Grund muss mindestens 5 Zeichen lang sein"
+  },
+  "public_list": "Öffentliche Liste anzeigen"
 }

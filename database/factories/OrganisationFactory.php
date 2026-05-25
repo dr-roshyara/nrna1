@@ -22,6 +22,7 @@ class OrganisationFactory extends Factory
             'slug' => Str::slug($name),
             'type' => 'tenant',
             'is_default' => false,
+            'uses_full_membership' => true,  // Default: full membership governance (backward compatible)
             'address' => [
                 'street' => $this->faker->streetAddress(),
                 'city' => $this->faker->city(),
@@ -59,6 +60,28 @@ class OrganisationFactory extends Factory
         return $this->state([
             'type' => 'tenant',
             'is_default' => false,
+        ]);
+    }
+
+    /**
+     * Create organisation with election-only governance mode
+     * (lightweight, no formal membership)
+     */
+    public function electionOnly()
+    {
+        return $this->state([
+            'uses_full_membership' => false,
+        ]);
+    }
+
+    /**
+     * Create organisation with full membership governance mode
+     * (formal membership with fees and types)
+     */
+    public function fullMembership()
+    {
+        return $this->state([
+            'uses_full_membership' => true,
         ]);
     }
 

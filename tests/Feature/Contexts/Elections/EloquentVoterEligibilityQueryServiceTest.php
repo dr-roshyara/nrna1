@@ -3,7 +3,7 @@
 namespace Tests\Feature\Contexts\Elections;
 
 use App\Contexts\Elections\Infrastructure\Policies\EloquentVoterEligibilityQueryService;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use App\Models\Organisation;
 use App\Models\OrganisationUser;
 use App\Models\User;
@@ -56,7 +56,7 @@ class EloquentVoterEligibilityQueryServiceTest extends TestCase
         $result = $this->service->isEligible(
             $user->id,
             $this->organisation->id,
-            ElectionMode::ElectionOnly
+            VoterSourceStrategy::ImportedVoterRegistry
         );
 
         $this->assertTrue($result);
@@ -78,7 +78,7 @@ class EloquentVoterEligibilityQueryServiceTest extends TestCase
         $result = $this->service->isEligible(
             $user->id,
             $this->organisation->id,
-            ElectionMode::ElectionOnly
+            VoterSourceStrategy::ImportedVoterRegistry
         );
 
         $this->assertFalse($result);
@@ -94,7 +94,7 @@ class EloquentVoterEligibilityQueryServiceTest extends TestCase
         $result = $this->service->isEligible(
             $user->id,
             $this->organisation->id,
-            ElectionMode::ElectionOnly
+            VoterSourceStrategy::ImportedVoterRegistry
         );
 
         $this->assertFalse($result);
@@ -117,7 +117,7 @@ class EloquentVoterEligibilityQueryServiceTest extends TestCase
         $result = $this->service->isEligible(
             $user->id,
             $this->organisation->id,
-            ElectionMode::ElectionOnly
+            VoterSourceStrategy::ImportedVoterRegistry
         );
 
         $this->assertFalse($result);
@@ -150,7 +150,7 @@ class EloquentVoterEligibilityQueryServiceTest extends TestCase
         $result = $this->service->isEligible(
             $user->id,
             $fullMembershipOrg->id,
-            ElectionMode::FullMembership
+            VoterSourceStrategy::MembershipRegistry
         );
 
         $this->assertTrue($result);
@@ -167,7 +167,7 @@ class EloquentVoterEligibilityQueryServiceTest extends TestCase
         $result = $this->service->isEligible(
             $user->id,
             $fullMembershipOrg->id,
-            ElectionMode::FullMembership
+            VoterSourceStrategy::MembershipRegistry
         );
 
         $this->assertFalse($result);
@@ -198,7 +198,7 @@ class EloquentVoterEligibilityQueryServiceTest extends TestCase
         $result = $this->service->isEligible(
             $user->id,
             $fullMembershipOrg->id,
-            ElectionMode::FullMembership
+            VoterSourceStrategy::MembershipRegistry
         );
 
         $this->assertFalse($result);
@@ -225,14 +225,14 @@ class EloquentVoterEligibilityQueryServiceTest extends TestCase
         $resultOrgA = $this->service->isEligible(
             $user->id,
             $orgA->id,
-            ElectionMode::ElectionOnly
+            VoterSourceStrategy::ImportedVoterRegistry
         );
 
         // But NOT eligible for orgB
         $resultOrgB = $this->service->isEligible(
             $user->id,
             $orgB->id,
-            ElectionMode::ElectionOnly
+            VoterSourceStrategy::ImportedVoterRegistry
         );
 
         $this->assertTrue($resultOrgA);

@@ -194,6 +194,7 @@
 <script setup>
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { computed } from 'vue'
+import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 
 const props = defineProps({
     election: {
@@ -210,6 +211,6 @@ const props = defineProps({
     }
 })
 
-const isVotingActive = computed(() => props.election.state === 'voting_active')
+const isVotingActive = computed(() => props.election.state === ElectionLifecycleStates.VOTING_ACTIVE)
 </script>
 

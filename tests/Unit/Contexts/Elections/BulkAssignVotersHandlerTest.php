@@ -6,7 +6,7 @@ use App\Contexts\Elections\Application\Commands\BulkAssignVotersCommand;
 use App\Contexts\Elections\Application\Handlers\BulkAssignVotersHandler;
 use App\Contexts\Elections\Domain\Policies\VoterEligibilityPolicy;
 use App\Contexts\Elections\Domain\Repositories\VoterRepositoryInterface;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use App\Models\DeadLetterEntry;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -50,7 +50,7 @@ class BulkAssignVotersHandlerTest extends TestCase
             ->with(
                 ['user-1', 'user-2', 'user-3'],
                 'org-456',
-                ElectionMode::ElectionOnly
+                VoterSourceStrategy::ImportedVoterRegistry
             )
             ->willReturn(['user-1', 'user-2']); // user-3 filtered out
 
@@ -68,7 +68,7 @@ class BulkAssignVotersHandlerTest extends TestCase
             userIds: ['user-1', 'user-2', 'user-3'],
             electionId: 'election-789',
             organisationId: 'org-456',
-            mode: ElectionMode::ElectionOnly,
+            mode: VoterSourceStrategy::ImportedVoterRegistry,
             assignedBy: 'admin-001',
         );
 
@@ -101,7 +101,7 @@ class BulkAssignVotersHandlerTest extends TestCase
             userIds: ['user-1', 'user-2', 'user-3'],
             electionId: 'election-789',
             organisationId: 'org-456',
-            mode: ElectionMode::ElectionOnly,
+            mode: VoterSourceStrategy::ImportedVoterRegistry,
         );
 
         $result = $this->handler->handle($command);
@@ -130,7 +130,7 @@ class BulkAssignVotersHandlerTest extends TestCase
             userIds: ['user-1', 'user-2', 'user-3', 'user-4', 'user-5'],
             electionId: 'election-789',
             organisationId: 'org-456',
-            mode: ElectionMode::ElectionOnly,
+            mode: VoterSourceStrategy::ImportedVoterRegistry,
         );
 
         $result = $this->handler->handle($command);
@@ -164,7 +164,7 @@ class BulkAssignVotersHandlerTest extends TestCase
             userIds: $users,
             electionId: 'election-789',
             organisationId: 'org-456',
-            mode: ElectionMode::ElectionOnly,
+            mode: VoterSourceStrategy::ImportedVoterRegistry,
             chunkSize: 500,
         );
 
@@ -196,7 +196,7 @@ class BulkAssignVotersHandlerTest extends TestCase
             userIds: $users,
             electionId: 'election-789',
             organisationId: 'org-456',
-            mode: ElectionMode::ElectionOnly,
+            mode: VoterSourceStrategy::ImportedVoterRegistry,
             chunkSize: 100,
         );
 
@@ -233,7 +233,7 @@ class BulkAssignVotersHandlerTest extends TestCase
             userIds: $users,
             electionId: $electionId,
             organisationId: $orgId,
-            mode: ElectionMode::ElectionOnly,
+            mode: VoterSourceStrategy::ImportedVoterRegistry,
             chunkSize: 500,
         );
 
@@ -286,7 +286,7 @@ class BulkAssignVotersHandlerTest extends TestCase
             userIds: $users,
             electionId: $electionId,
             organisationId: $orgId,
-            mode: ElectionMode::ElectionOnly,
+            mode: VoterSourceStrategy::ImportedVoterRegistry,
             chunkSize: 500,
         );
 

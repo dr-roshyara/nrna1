@@ -395,5 +395,78 @@
     "button-explore": "Explore Results",
     "info-title": "About Demo Results",
     "info-description": "Demo results help you understand our election system. Mode 1 (Public) shows global sample data, while Mode 2 (organisation) displays data specific to your organisation. No real election data is used."
+  },
+  "portals": {
+    "title": "Member Portals",
+    "voter_hub": "Voter Hub",
+    "voter_hub_desc": "View active elections and your voting status",
+    "election_commission": "Election Commission",
+    "election_commission_desc": "Manage elections, voters, and candidates",
+    "membership": "Membership",
+    "membership_desc": "Manage your membership, fees, and renewals",
+    "organisation_roles": "Organisation Roles",
+    "organisation_roles_desc": "View roles and add role-holders as members"
+  },
+  "officer": {
+    "label": "You are",
+    "role_chief": "Election Chief",
+    "role_deputy": "Election Deputy",
+    "role_commissioner": "Election Commissioner",
+    "for": "for",
+    "for_organisation": "for this organisation."
+  },
+  "live": {
+    "title": "Live Voting",
+    "vote_cast": "Vote Cast",
+    "not_a_voter": "Not a voter",
+    "vote_now": "Vote Now"
+  },
+  "admin": {
+    "title": "Administration"
+  },
+  "elections": {
+    "title": "Elections",
+    "singular": "election",
+    "plural": "elections",
+    "new": "New Election",
+    "empty": {
+      "title": "No elections yet",
+      "create": "Create your first election to get started.",
+      "check_later": "Check back later for upcoming elections.",
+      "create_first": "Create First Election"
+    }
+  },
+  "committees": {
+    "title": "Committee Management",
+    "subtitle": "Manage committees at all levels",
+    "manage": "Manage →",
+    "label": "Committees",
+    "description": "organize governance at different levels",
+    "levels": "Central, Provincial, District, Ward",
+    "new": "New"
+  },
+  "officers": {
+    "title": "Election Officers",
+    "subtitle": "Manage who can oversee elections",
+    "manage": "Manage →",
+    "more": "more",
+    "empty": {
+      "title": "No officers appointed",
+      "description": "Appoint chiefs and deputies to manage your elections.",
+      "appoint": "Appoint First Officer"
+    }
+  },
+  "voters": {
+    "title": "Voter Management",
+    "subtitle": "Approve or suspend election voters",
+    "total_members": "Total Members",
+    "active": "Active",
+    "live_elections": "Live Elections"
+  },
+  "results": {
+    "title": "Results Management",
+    "subtitle": "Publish or review completed election results",
+    "published": "Published",
+    "unpublished": "Unpublished"
   }
 }

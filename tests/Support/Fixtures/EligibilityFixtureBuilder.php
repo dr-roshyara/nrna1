@@ -3,7 +3,7 @@
 namespace Tests\Support\Fixtures;
 
 use App\Contexts\Elections\Domain\ValueObjects\EligibilityContext;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 
 /**
  * EligibilityFixtureBuilder — Express eligibility test intent, not ORM mechanics
@@ -20,25 +20,25 @@ final class EligibilityFixtureBuilder
 {
     private string $userId = 'test-user-id';
     private string $organisationId = 'test-org-id';
-    private ElectionMode $mode;
+    private VoterSourceStrategy $mode;
     private bool $isActive = true;
     private bool $isDeleted = false;
     private ?string $membershipStatus = null;
     private ?string $feesStatus = null;
 
-    private function __construct(ElectionMode $mode)
+    private function __construct(VoterSourceStrategy $mode)
     {
         $this->mode = $mode;
     }
 
     public static function electionOnly(): self
     {
-        return new self(ElectionMode::ElectionOnly);
+        return new self(VoterSourceStrategy::ImportedVoterRegistry);
     }
 
     public static function fullMembership(): self
     {
-        return new self(ElectionMode::FullMembership);
+        return new self(VoterSourceStrategy::MembershipRegistry);
     }
 
     public function userId(string $userId): self

@@ -1,1315 +1,525 @@
-# Plan: Phase 3 Consolidation — Semantic Sovereignty & Constitutional Vocabulary Design
+# Plan: Phase C.2.4 — Frontend Constitutional Runtime Projection Stabilization
 
 **Plan ID:** snappy-foraging-codd  
 **Branch:** postgressql  
-**Scope:** Transitional semantic bridge, persistence boundary enforcement, quarantine API vocabulary  
-**Status:** Ready for implementation (TDD-first, --env=testing only)
+**Scope:** Migrate remaining Vue components from legacy vocabulary to constitutional runtime projection  
+**Status:** Ready for implementation (TDD-first, --env=testing only)  
+**Supersedes:** Phase 3 Consolidation (complete)
 
 ---
 
-## Context
+## Strategic Principle (NON-NEGOTIABLE)
 
-Runtime sovereignty is complete (Phase 2). Elections own their `voter_source_strategy` snapshot. Exception enforcement is active. One active sovereignty violation exists.
+The frontend has evolved from stateful UI rendering into **distributed constitutional-runtime projection**.
 
-This phase is **constitutional language stabilization through semantic sovereignty**, not mechanical cleanup. Vocabulary itself becomes governance infrastructure here. Poor semantic boundaries now will propagate into APIs, federation, and constitutional-runtime evolution for years.
+Vue components now participate in constitutional-runtime integrity. That is a fundamentally different engineering responsibility.
 
-**Strategic position:** This plan uses **transitional semantic bridge vocabulary** (`ImportedVoterRegistry` / `MembershipRegistry`). These are deliberate improvements over `ElectionOnly` / `FullMembership`, but they describe **operational registry mechanisms**, NOT final constitutional authorities. The distinction matters: these are not merely "better names" — they represent a shift in governance conceptual model. Phase 4 performs rigorous governance-language work, modeling delegation, federation, hybrid sovereignty, and constitutional treaty participation, to determine final authority vocabulary (which may differ substantially from these transitional registry concepts).
+```
+BEFORE Phase C.2.4:
+  Frontend interprets governance.
+  Vue components derive authority from state/status/role.
+  Governance logic is distributed.
+
+AFTER Phase C.2.4:
+  Frontend renders sovereign authority snapshots.
+  Vue components read capabilities — they never derive them.
+  Governance logic lives exclusively in ElectionCapabilityResolver.
+```
+
+Internal Inertia `stateMachine` contracts are **INTERNAL runtime projections** — NOT federation-safe constitutional protocols. Federation uses treaty-governed contracts. Inertia uses internal transitional contracts.
 
 ---
 
-## 1. Vocabulary Classification: Three Tiers
+## System Taxonomy
 
-### Tier 1: Legacy Infrastructure Vocabulary (what we're moving away from)
-
-| Name | Problem |
+| Artifact | Role |
 |---|---|
-| `ElectionMode` | Implies election has a "mode" — models behavior, not authority |
-| `ElectionOnly` | Implementation detail (no members) — not constitutional meaning |
-| `FullMembership` | Describes data join — not constitutional authority |
-
-### Tier 2: Transitional Semantic Bridge Vocabulary (Phase 3 — what we use now)
-
-| Name | Role | Explicitly NOT |
-|---|---|---|
-| `ImportedVoterRegistry` | Semantic improvement over `ElectionOnly` | Final domain vocabulary |
-| `MembershipRegistry` | Semantic improvement over `FullMembership` | Final domain vocabulary |
-
-**These are classified as transitional semantic bridge vocabulary** — explicitly not final. They must carry `@deprecated` docblocks naming their classification and Phase 4 finalization.
-
-### Tier 3: Constitutional Authority Vocabulary (Phase 4 — exploratory, not pre-approved)
-
-The Phase 4 vocabulary must be determined through proper governance-language work, considering:
-- delegation semantics
-- federation requirements
-- external registry integration
-- hybrid participation authority
-- constitutional treaty participation
-
-**Phase 4 name candidates are exploratory.** Examples like `ImportedVoterAuthority` / `MembershipAuthority` are directional signals, NOT pre-approved final names. Phase 4 must evaluate these rigorously before adoption.
+| `ElectionConstitution` | Sovereignty authority source (all rules) |
+| `ElectionCapabilityResolver` | Runtime derivation engine (derives authority from facts + policies) |
+| `StateMachineContract` | Distributed constitutional runtime protocol (internal Inertia boundary) |
+| `useElectionCapabilities()` | Frontend constitutional-runtime access boundary |
 
 ---
 
-## 1.5. Authority vs Registry Semantic Taxonomy (CRITICAL)
+## Contract Boundary Classification
 
-### The Distinction
-
-**Registry vocabulary** describes the operational mechanism — what data sources voters come from, how participation is governed operationally.
-
-**Authority vocabulary** describes the constitutional legitimacy — who has legitimate power to determine voter participation rules, what makes participation "officially correct," how sovereign authority flows.
-
-### Current Names Are Registry Vocabulary (NOT Authority)
-
-| Term | What It Means | What It Does NOT Mean |
-|---|---|---|
-| `ImportedVoterRegistry` | Voters obtained via direct org enrollment (registry mechanism) | Final name for constitutional voter authority; legitimate sovereign authority source; permanent participation model |
-| `MembershipRegistry` | Voters obtained via formal membership governance (registry mechanism) | Final name for constitutional membership authority; eternal authority structure; immutable governance |
-
-### Why This Distinction Matters
-
-- **Federation safety**: When external authorities participate (different jurisdictions, treaty signatories, delegated governance bodies), authority vocabulary changes fundamentally. Registry vocabulary (how voters are operationally sourced) remains stable across different authority arrangements.
-
-- **Delegation modeling**: A delegated electoral body operates differently than a self-governing one, but both might use the same registry source (members table). The registry is constant; the authority is the variable.
-
-- **Hybrid sovereignty**: An election might derive voter authority from multiple sources (org members + external partner members + appointed delegates). Registry vocabulary cannot express this; authority vocabulary must.
-
-- **Constitutional treaties**: Federated systems with constitutional treaties require authority vocabulary to express legitimacy, not just operational sourcing.
-
-**Phase 3 decision**: Use registry vocabulary as transitional bridge because we're not yet modeling authority conceptually. Phase 4 governance-language work will determine if these names transition to authority vocabulary or get replaced entirely.
-
-### Phase 4 Vocabulary Determination (Exploratory)
-
-Phase 4 MUST answer:
-- Is "registry" a durable concept in distributed, federated, or delegated elections?
-- Does "membership" authority differ meaningfully from "enrollment" authority in treaty contexts?
-- How do external sovereign authorities express themselves in multi-party elections?
-- Should vocabulary distinguish between "participation source" (registry) and "governance authority" (who decides rules)?
-
-**None of these are pre-determined.** ImportedVoterAuthority, MembershipAuthority, or completely different names may emerge from this analysis.
-
----
-
-## 2. Domain-vs-Persistence Vocabulary Boundaries
-
-### Five-Layer Separation with Semantic Non-Equivalence
-
-| Layer | Vocabulary | Method | Stability | Semantic Meaning |
-|---|---|---|---|---|
-| **Domain runtime** | `VoterSourceStrategy::ImportedVoterRegistry` | PHP case names | Phase 3 (transitional bridge) | Registry mechanism at runtime |
-| **Persistence** | `'election_only'`, `'full_membership'` | `->toPersistenceValue()` | Legacy — DB only, never external | What is recorded in database schema |
-| **Observability/telemetry** | Stable semantic keys | `->telemetryKey()` | Stable, immutable, governance-safe | What is traced for audit trails and constitutional disputes |
-| **API/Inertia quarantine** | Quarantined transitional strings | `->toApiValue()` | Phase 3 temporary quarantine | What frontend contracts depend on (QUARANTINED) |
-| **UX/human display** | Translated labels | `->label()` | Localized, unstable, user-language | What humans read on screen |
-
-### CRITICAL: Semantic Non-Equivalence
-
-**Even if two values are identical strings, they are NOT semantically equivalent.**
-
-```
-'election_only' (persistence) ≠ 'election_only' (hypothetical API)
-  ↑ means: stored in database                    ↑ means: contract with frontend
-  ↑ scope: infrastructure only                   ↑ scope: public interface
-  ↑ authority: schema design                     ↑ authority: distributed contracts
-  ↑ mutable by: migration                        ↑ mutable by: governance + federation
-```
-
-This non-equivalence is WHY each layer has its own method. Treating these as equivalent ("just use ->value everywhere") causes:
-- Frontend fossilization (raw persistence tokens become historical contracts)
-- Audit trail corruption (UX labels in logs instead of governance keys)
-- Federation breaks (external parties receive infrastructure vocabulary instead of constitutional vocabulary)
-
-### Method Responsibilities (No Mixing)
-
-| Method | For | NOT For | Why Separate |
+| Boundary | Stability | Versioning | Governance |
 |---|---|---|---|
-| `->toPersistenceValue()` | DB writes, migration, backfill | API, logs, telemetry, UX | Persistence is infrastructure; others are contracts |
-| `->toApiValue()` | API/Inertia boundary (Phase 3: quarantined) | DB, telemetry | API contracts are distributed; DB is local |
-| `->telemetryKey()` | Logs, metrics, structured observability | UX, API, DB | Telemetry must survive localization changes |
-| `->label()` | Human-readable display in UI only | Telemetry, API, DB | Labels are localized; governance keys must not be |
+| Internal Inertia (`stateMachine` prop) | Transitional | `resolver_version` semver | Backend team ownership |
+| Public REST API | Semver governed | v1, v2, etc. | Architecture review |
+| Federation protocol | Treaty governed | Partner-negotiated | Constitutional treaty |
 
-**`->value` is NEVER called outside `->toPersistenceValue()` and `::from()` hydration.** Any other use collapses semantic boundaries.
+The `stateMachine` Inertia prop is INTERNAL. It must NEVER be exposed as a public API or federation contract. Internal transitional semantics must not leak externally.
 
 ---
 
-## 3. Quarantine API Vocabulary Strategy
+## 1. Migration Taxonomy
 
-### The Problem with `toApiValue() → toPersistenceValue()`
+| Category | Purpose | Mechanism | Allowed Sources |
+|---|---|---|---|
+| **Lifecycle Visualization** | Render the election's current constitutional phase | `election.state` + `ElectionLifecycleStates.*` constants | `election.state` prop |
+| **Constitutional Authority Guards** | Control action availability based on sovereign permission | `useElectionCapabilities()` only | `stateMachine.capabilities` prop |
 
-A direct delegation creates **hidden semantic collapse**:
+**Lifecycle state ≠ constitutional authority.**
 
-```php
-// DANGEROUS — persistence and API vocabulary collapse:
-public function toApiValue(): string {
-    return $this->toPersistenceValue(); // ← 'election_only' leaks into API
+`election.state === VOTING_ACTIVE` tells you where the election is in progression. It does NOT tell you what the current user is permitted to do.
+
+Why they differ:
+- Suspension overlay: state remains `VOTING_ACTIVE`, all actions except `resume` are denied
+- Role restrictions: two users in same state have different permitted actions
+- Preconditions: action constitutional for state but blocked by unmet conditions
+- Future overlays: `legal_hold`, `emergency_freeze`, `compliance_review` — all orthogonal to lifecycle
+
+**Rule: Lifecycle constants for visualization only. Capabilities for all permission decisions.**
+
+---
+
+## 2. `StateMachineContract` — Distributed Constitutional Runtime Protocol
+
+This is NOT merely a frontend TypeScript type. It is a **distributed constitutional runtime protocol** flowing from `ElectionCapabilityResolver` to every page that makes governance decisions.
+
+### TypeScript Contract
+
+Create `resources/js/types/StateMachineContract.ts`:
+
+```typescript
+interface CapabilityEntry {
+  allowed: boolean;
+  /**
+   * Stable machine-readable governance identifier.
+   * GOVERNANCE VOCABULARY: changes require ADR + deprecation window.
+   * Used by composable logic and test assertions.
+   * NEVER branched on for display text.
+   */
+  denial_reason: string | null;
+  /**
+   * Localized UX explanation only.
+   * NEVER parsed, branched on, or used in logic.
+   * Display in UI tooltips/messages only.
+   */
+  denial_detail: string | null;
+}
+
+interface CapabilitiesMap {
+  submit_for_approval: CapabilityEntry;
+  approve: CapabilityEntry;
+  reject: CapabilityEntry;
+  auto_submit: CapabilityEntry;
+  begin_setup: CapabilityEntry;
+  revise_and_resubmit: CapabilityEntry;
+  complete_administration: CapabilityEntry;
+  complete_nomination: CapabilityEntry;
+  apply_candidacy: CapabilityEntry;
+  open_voting: CapabilityEntry;
+  close_voting: CapabilityEntry;
+  publish_results: CapabilityEntry;
+  archive: CapabilityEntry;
+  suspend: CapabilityEntry;
+  resume: CapabilityEntry;
+}
+
+interface CapabilitiesMetadata {
+  resolver_version: string;   // semver — governs distributed-runtime compatibility
+  generated_at: string;       // ISO8601 — snapshot derivation timestamp
+  constitution_hash: string;  // MD5 of ElectionConstitution::RULES — drift detection
+}
+
+export interface StateMachineContract {
+  currentState: string;             // ElectionLifecycleStates value
+  completedStates: string[];        // ordered progression for visualization
+  projectionAvailable: boolean;
+  capabilities: CapabilitiesMap;    // constitutional authority snapshot
+  capabilities_metadata: CapabilitiesMetadata;
+  /**
+   * EPHEMERAL — debug only.
+   * FORBIDDEN: production components, test assertions, telemetry, federation.
+   * Not a stable API. Never depend on this structure.
+   */
+  capabilities_trace?: unknown;
 }
 ```
 
-Once `'election_only'` appears in frontend responses and is consumed by Vue props, it becomes a de facto stable contract — even with TODO comments. This creates the fossilization risk we're trying to prevent.
+### Contract Schema Governance Rules
 
-### The Quarantine Solution
-
-Phase 3 `toApiValue()` returns **explicitly-prefixed quarantine strings** that signal transitionality to any consuming system:
-
-```php
-/**
- * Returns the API-facing voter source strategy identifier.
- *
- * PHASE 3 QUARANTINE: These values are temporary transitional tokens.
- * They are NOT stable API vocabulary. Frontend and API consumers MUST NOT
- * treat these as permanent contracts.
- *
- * Sunset criteria: Replace in Phase 4 when governance-vocabulary finalization completes.
- * Phase 4 will return stable constitutional-authority strings (TBD via governance review).
- *
- * @see VoterSourceStrategy::toPersistenceValue() for DB persistence (separate concern)
- */
-public function toApiValue(): string
-{
-    return match($this) {
-        self::ImportedVoterRegistry => 'transitional_imported_voter_registry',
-        self::MembershipRegistry    => 'transitional_membership_registry',
-    };
-}
-```
-
-**Why explicit prefixed tokens instead of raw persistence values:**
-- Frontend developers see `transitional_` prefix and know not to treat this as final
-- Any hardcoded string comparison against these values in tests will show up as smell
-- Makes Phase 4 replacement visible — when the prefix disappears, the contract is stable
-
-### API Quarantine Governance Rules (Non-Negotiable)
-
-**Why these rules exist:** Distributed contracts are historically sticky. Once frontend code hardcodes against these values, analytics systems track them, cached snapshots preserve them, and integrations depend on them — even years later. These rules prevent that fossilization.
-
-#### Rule 1: Migration Ownership
-- **Owner**: Backend team (infrastructure layer)
-- **Responsibility**: Provide explicit migration path from `'transitional_*'` to stable vocabulary
-- **Consequence of breach**: Frontend team left supporting deprecated vocabulary indefinitely
-
-#### Rule 2: Sunset Enforcement Criteria
-- **Precondition**: Phase 4 governance-language work COMPLETE (not just planned)
-- **Precondition**: Constitutional authority vocabulary finalized (not exploratory)
-- **Precondition**: All Phase 3 `transitional_` prefixes mapped to Phase 4 equivalents
-- **Action**: Remove prefix ONLY when Phase 4 vocabulary is stable
-- **Consequence of breach**: Temporary contracts become permanent; frontend investments increase 10-100x
-
-#### Rule 3: Compatibility Duration
-- **Phase 3 → Phase 4 overlap**: Both old (`transitional_*`) and new (stable) vocabulary available simultaneously
-- **Overlap duration**: Minimum 2 minor Laravel releases, OR 8 weeks, whichever is longer
-- **During overlap**: Frontend can migrate incrementally; no hard cutoff
-- **Post-overlap**: `'transitional_*'` values removed; hardcoded consumers break (intentionally)
-- **Consequence of breach**: Distributed systems forced to update all at once; operational instability
-
-#### Rule 4: Distributed Contract Protection
-- **Frontend stores**: Cannot cache `toApiValue()` as permanent identity
-- **Analytics systems**: Must track BOTH `toApiValue()` (transient) AND `telemetryKey()` (stable)
-- **Exports/snapshots**: Must include `telemetryKey()` for audit trail stability
-- **Integrations**: Must NOT hardcode against `toApiValue()` without explicit compatibility duration agreement
-- **Consequence of breach**: External parties locked into temporary vocabulary; federation impossible
-
-#### Rule 5: API Quarantine Exit Criteria (CONCRETE & MEASURABLE)
-
-Quarantine ends ONLY when ALL of these conditions are met:
-
-| Exit Condition | Verification |
+| Concern | Rule |
 |---|---|
-| **Frontend migrated** | All Vue components use stable API vocabulary; no `'transitional_*'` in component code |
-| **Legacy consumers gone** | Contract scan finds zero hardcoded references to `'transitional_*'` in external integrations |
-| **Contract scan clean** | Grep finds zero references to quarantined API values in new public endpoint definitions |
-| **Telemetry stable** | `->telemetryKey()` values have been validated as audit-safe for 2+ months in production |
-| **Federation semantics reviewed** | Architecture review confirms vocabulary aligns with external authority models |
-
-**Without explicit exit criteria, quarantine becomes permanent.** Phase 4 must systematically verify each condition before removing `'transitional_'` prefix.
-
-### Semantic Fossilization Detection (CRITICAL ANTI-CANONIZATION)
-
-**The Risk:** History shows temporary vocabulary becomes permanent by inertia — especially when it enters APIs, telemetry, docs, frontend stores, exports, dashboards, analytics, and audit trails.
-
-**Active Anti-Canonization Protections Required:**
-
-#### 1. Architecture Tests — Prevent Registry Names in Public Contracts
-
-```php
-// ARCHITECTURE TEST — fail if registry vocabulary leaks into public APIs
-public function test_registry_vocabulary_not_in_public_api_endpoints(): void
-{
-    // Scan all public API endpoint definitions
-    // Fail if they return 'imported_voter_registry' or 'membership_registry'
-    // (These are registry mechanism names, not authority vocabulary)
-    
-    $publicEndpoints = [
-        'POST /api/v1/elections',
-        'GET /api/v1/elections/{id}',
-        // etc
-    ];
-    
-    foreach ($publicEndpoints as $endpoint) {
-        $response = $this->getEndpointSchema($endpoint);
-        $this->assertStringNotContainsString(
-            'imported_voter_registry',
-            $response,
-            "Registry vocabulary leaked into public API endpoint {$endpoint}"
-        );
-    }
-}
-```
-
-#### 2. CI Scan — Warn on Registry Names Outside Approved Boundaries
-
-Add to CI pipeline:
-
-```bash
-# FAIL if registry vocabulary appears in new public contracts
-grep -r "ImportedVoterRegistry\|MembershipRegistry" \
-    app/Http/Controllers/Api/ \
-    routes/api.php \
-    && echo "ERROR: Registry vocabulary in public API" && exit 1
-
-# WARN if registry vocabulary appears in federation-scoped code
-grep -r "ImportedVoterRegistry\|MembershipRegistry" \
-    app/Federation/ \
-    && echo "WARNING: Registry vocabulary in federation context"
-```
-
-#### 3. ADR (Architecture Decision Record) — Document Bridge-Only Status
-
-Create `docs/adr/0042-registry-vocabulary-is-bridge-only.md`:
-
-```
-Title: ImportedVoterRegistry/MembershipRegistry Are Transitional Bridge Vocabulary Only
-
-Status: Accepted (Phase 3)
-
-Decision:
-- Registry vocabulary names are operational mechanism descriptors
-- NOT constitutional authority vocabulary (final names TBD in Phase 4)
-- MUST NOT be canonized into permanent APIs, telemetry, or contracts
-
-Consequences:
-- Phase 4 may replace these names entirely
-- Public APIs cannot use these names (breaks federation)
-- Audit trails use telemetryKey() (stable) not registry names (transitional)
-- External partners never see registry vocabulary in contracts
-
-This ADR must be referenced in:
-- PR reviews for Phase 4 API design
-- Federation integration planning
-- Public API endpoint definitions
-- Analytics schema evolution
-```
-
-#### 4. Namespace Enforcement — Isolate Registry Vocabulary
-
-```php
-// app/Domain/Election/Enum/VoterSourceStrategy.php
-
-namespace App\Domain\Election\Enum;
-
-/**
- * NAMESPACE: Domain\Election\Enum (Internal domain only)
- * 
- * This enum MUST NOT be imported into:
- * - App\Http\Resources (API responses)
- * - App\Federation (external contracts)
- * - App\Events (federation events)
- * 
- * Use telemetryKey() for external-facing contexts.
- * Use label() for UX only.
- */
-enum VoterSourceStrategy: string
-{
-    // ...
-}
-```
-
-**Anti-Canonization Rule:** If registry vocabulary appears in a new public API, public export, or federation contract, that counts as Phase 3 failure — vocabulary has been accidentally canonized.
+| `capabilities` keys | Must match `ElectionConstitution::RULES` exactly — tested by `ElectionStateMachineCapabilitiesTest` |
+| `denial_reason` | Stable governance vocabulary — renames require ADR + compatibility window |
+| `denial_detail` | UX text only — NEVER parsed, branched on, or used in logic |
+| `allowed` boolean | Constitutional authority snapshot — single source of truth |
+| `capabilities_trace` | Ephemeral debug data — forbidden in production code, tests, telemetry |
 
 ---
 
-## 4. Telemetry Vocabulary Separation & Governance Ownership
+## 3. `constitution_hash` — Runtime Constitutional Drift Detection
 
-### Why `->label()` Must NOT Be Used for Logs/Telemetry
+The `constitution_hash` field is NOT optional metadata. It is **runtime constitutional drift detection infrastructure**.
 
-UX labels are:
-- Localized (translations change; content improves)
-- Human-oriented (marketing messaging)
-- Unstable across versions (UI copy is not a contract)
-- NOT governance-safe identifiers
+| Concern | Rule |
+|---|---|
+| Hash mismatch | Backend constitution changed; frontend received stale snapshot |
+| Frontend behavior on mismatch | Display stale-runtime warning to admin; do not silently trust capabilities |
+| Telemetry | Emit governance drift event when hash mismatches between requests |
+| Future federation | External authorities verify constitution compatibility via hash |
 
-Logs and metrics require:
-- Stable semantic keys (survives localization changes)
-- Machine-readable (structured observability)
-- Consistent across deployments (no variation)
-- Governance-safe for audit trails (unchangeable without governance decision)
+Frontend must not treat this as decorative. If `constitution_hash` mismatches a known reference, capabilities cannot be trusted as current.
 
-### Telemetry Governance Ownership (CONSTITUTIONAL INFRASTRUCTURE)
+---
 
-The `->telemetryKey()` method returns vocabulary that creates **constitutional observability contracts** — it is NOT just technical telemetry. It is governance infrastructure.
+## 4. `resolver_version` — Semver Governance Policy
 
-#### Why Telemetry Keys Are Constitutional Infrastructure
-
-The `->telemetryKey()` values are the foundation for:
-
-1. **Audit Trails**: Constitutional dispute resolution requires stable identifiers that show historical decision patterns over years, not changing due to translations or UI rewording
-2. **Constitutional Analysis**: When a federation of electoral bodies reviews one another's voting patterns, they rely on stable telemetry keys to understand governance decisions — "how many times did this authority use X governance model?"
-3. **Federation Diagnostics**: External parties (future treaty partners, delegated authorities, oversight bodies) must interpret telemetry without needing translation or interpretation — the telemetry keys ARE the governance contract
-4. **Governance Audit**: Internal governance reviews of "when and why did we switch models" must not be obscured by incidental UI changes
-
-#### Telemetry Governance Ownership Rules
-
-Because telemetry creates constitutional observability contracts, changes require explicit governance authority:
-
-| Concern | Ownership | Rule | Consequence |
-|---|---|---|---|
-| **telemetryKey() change** | Architecture + Governance Review | Requires ADR; must document why identity changed | Breaking change; all audit systems must adapt |
-| **telemetryKey() deprecation** | Backend Team | Must version and preserve old key for 12+ months | Audit continuity across years preserved |
-| **audit telemetry immutability** | Governance Authority | Once recorded, cannot be reinterpreted | Maintains constitutional record integrity |
-| **federation telemetry compatibility** | Federation Authority | External partners must sign off on key changes | Prevents unilateral contract breaks |
-
-#### Immutability Levels
-
-| Level | Immutability | Versioning | Example |
-|---|---|---|---|
-| **Audit records** | ABSOLUTE (forever) | None; if key changes, old records stay old key | `'imported_voter_registry'` recorded in audit log at 2026-03-10 stays that forever |
-| **Active telemetry** | Version-bounded (12+ months) | Deprecated old key; new key available | Can transition from `'election_only_v1'` to `'election_only_v2'` with 12-month overlap |
-| **Federation contracts** | Treaty-governed | Explicit compatibility period | External partners must agree to key deprecation schedule |
-
-**Rule: Never rename telemetry keys casually.** All renames are governance decisions, not refactoring.
-
-### Telemetry Vocabulary Must Be Immutable & Governance-Safe
-
-### Immutability Rules for telemetryKey()
-
-| Scenario | Action | Why |
+| Change Type | Version Impact | Rationale |
 |---|---|---|
-| UI translation improves | Use new `->label()` only | Telemetry must not change with UX copy |
-| Concept is renamed in domain | GOVERNANCE DECISION required | Breaking change; all parties must coordinate |
-| Registry mechanism changes | Phase 4 vocabulary substitution needed | Different semantic meaning; different telemetry key |
-| External partner joins federation | Must support their telemetry keys AND ours | Bridge vocabulary if needed; never reuse old keys |
+| Add capability | MINOR | Additive; existing consumers unaffected |
+| Remove capability | MAJOR | Breaking; distributed consumers must update |
+| Rename `denial_reason` key | MAJOR | Stable governance vocabulary — breaking change |
+| Add metadata field to `capabilities_metadata` | MINOR | Additive |
+| `denial_detail` UX text change | PATCH | UX copy; no logic impact |
+| Add new overlay type | MINOR | New denial_reason keys; additive |
 
-### Required Method
-
-```php
-/**
- * Returns the IMMUTABLE stable observability identifier.
- * 
- * GOVERNANCE-SAFE IDENTIFIER: These values are immutable constitutional markers.
- * Used for audit trails, federation diagnostics, constitutional dispute analysis.
- * NEVER change these values incidentally. Changes require explicit governance decision
- * and coordination with all consuming systems (logs, analytics, external partners).
- * 
- * These values are stable semantic keys — NOT persistence tokens, NOT UX labels.
- * Change ONLY through explicit governance-vocabulary revision, never incidentally.
- * 
- * @see Rule: Telemetry vocabulary changes = governance decision, not implementation detail
- */
-public function telemetryKey(): string
-{
-    return match($this) {
-        self::ImportedVoterRegistry => 'imported_voter_registry',
-        self::MembershipRegistry    => 'membership_registry',
-    };
-}
-```
-
-### Usage Patterns
-
-```php
-// ✅ CORRECT: logs, metrics, audit trails
-Log::info('Voter eligibility check', [
-    'voter_strategy' => $mode->telemetryKey(),        // ← immutable, governance-safe
-    'step' => 'eligibility_evaluation',               // ← other stable semantic keys
-]);
-
-// ✅ CORRECT: exported audit trails
-$audit->record([
-    'authority_model' => $mode->telemetryKey(),       // ← preserved for dispute resolution
-    'timestamp' => now(),
-]);
-
-// ✅ CORRECT: federation diagnostic
-foreach ($federatedElections as $election) {
-    $strategies[] = [
-        'org' => $election->organisation->name,
-        'voter_authority' => $election->strategy->telemetryKey(),  // ← stable across deployments
-    ];
-}
-
-// ❌ WRONG: UI labels in telemetry
-Log::info('Election mode', [
-    'mode' => $mode->label(),  // ← changes with translation; breaks audit trails
-]);
-
-// ❌ WRONG: persistence tokens in telemetry
-Log::info('Voter strategy', [
-    'value' => $mode->toPersistenceValue(),  // ← infrastructure token; not governance identifier
-]);
-```
+Frontend must NOT depend on `resolver_version` for logic branching. It is for compatibility verification and telemetry only.
 
 ---
 
-## 5. Factory Anti-Corruption Documentation
+## 5. `denial_reason` vs `denial_detail` — Hard Semantic Separation
 
-### Classification: Factories Are Testing Utilities, NOT Domain Authorities
-
-Factory defaults are **test convenience hydration only**, NOT domain construction authority.
-
-**Why this distinction matters:** If a factory default accidentally becomes the "expected" behavior for a domain concept, tests will pass even when the actual application layer (controllers, commands, services) is broken. This masks production bugs where the authoritative creation path has drifted from what factories assume.
-
-**The anti-corruption principle:** When testing "does the domain produce the right snapshot," the test MUST verify the snapshot originates from the authoritative path (e.g., `ElectionManagementController::store()`), NOT from the convenient factory default.
-
-```php
-// database/factories/ElectionFactory.php
-
-/**
- * Default voter_source_strategy for test convenience hydration.
- *
- * TESTING ANTI-CORRUPTION UTILITY — NOT DOMAIN CONSTRUCTION AUTHORITY.
- * 
- * This value is a test scaffolding convenience for hydrating factory-built
- * elections with a plausible snapshot. It is NOT representative of how
- * voter_source_strategy is established in the actual domain.
- * 
- * The authoritative creation path is:
- *   ElectionManagementController::store()
- *       ↓
- *   ElectionManagementService::createElection()
- *       ↓
- *   VoterSourceStrategy::fromOrganisation() [at creation time only]
- *
- * Tests that verify creation-flow correctness MUST NOT rely on this default.
- * Tests MUST verify that snapshots originate from the authoritative path,
- * not from the factory. See invariant test below.
- *
- * Consequence of ignoring this anti-corruption principle:
- *   - Factory tests pass ✓
- *   - HTTP creation tests pass ✓
- *   - But production creation might use wrong logic, undetected
- *   - Factories mask application-layer bugs
- *
- * @see ElectionManagementController::store() for the authoritative creation path
- * @see VoterStrategyConvergenceTest::test_snapshot_originates_from_creation_flow_not_factory_default()
- */
-'voter_source_strategy' => 'full_membership',
-```
-
-### Factory Invariant Test (Required — Prevents Masking)
-
-```php
-public function test_snapshot_originates_from_creation_flow_not_factory_default(): void
-{
-    // Use election-only org so factory default ('full_membership') would be WRONG
-    $org = Organisation::factory()->electionOnly()->create();
-
-    // Create election via HTTP flow (not factory) using actingAs admin
-    $this->actingAs($this->createOrgAdmin($org))
-         ->post(route('elections.store', $org), ['name' => 'Test', 'type' => 'real']);
-
-    $election = $org->elections()->latest()->first();
-
-    // Must be 'election_only' from creation flow, NOT 'full_membership' from factory default
-    $this->assertEquals(
-        'election_only',
-        $election->voter_source_strategy,
-        'Snapshot must derive from org mode at creation, not factory default'
-    );
-}
-```
-
-### Technical Enforcement — Prevent Factory Usage in Production Services
-
-**Documentation alone does not prevent misuse.** Need lightweight technical enforcement:
-
-#### 1. Architecture Test — Forbid Factory Injection into Services
-
-```php
-// ARCHITECTURE TEST — fail if services use factories for domain construction
-public function test_services_do_not_construct_domain_via_factories(): void
-{
-    // Scan service layer for factory usage in non-test contexts
-    $services = glob('app/Services/*.php');
-    
-    foreach ($services as $service) {
-        $content = file_get_contents($service);
-        
-        $this->assertStringNotContainsString(
-            '::factory()',
-            $content,
-            "Service {$service} must not construct elections via factory(). " .
-            "Use repository or command layer for domain construction."
-        );
-    }
-}
-```
-
-#### 2. Namespace Enforcement — Isolate Factory References
-
-```php
-// database/factories/ElectionFactory.php
-
-namespace Database\Factories;
-
-/**
- * NAMESPACE CONSTRAINT: Factories live in Database\Factories
- * 
- * This namespace is used ONLY in:
- * - Tests (tests/*)
- * - Seeders (database/seeders)
- * 
- * FORBIDDEN namespaces for factory usage:
- * - App\Services (use repository + command)
- * - App\Domain (use value objects + commands)
- * - App\Http\Controllers (use FormRequest -> Command)
- * - App\Infrastructure (use explicit construction)
- * - App\Application (use command handlers)
- * 
- * Consequence: Factories accidentally used outside tests will cause
- * import errors; namespace prevents accidental leakage into production code.
- */
-class ElectionFactory extends Factory { /* ... */ }
-```
-
-#### 3. Static Analysis Annotation
-
-```php
-// app/Domain/Election/Enum/VoterSourceStrategy.php
-
-/**
- * @internal production code MUST NOT construct this via factory
- * @see Database\Factories\ElectionFactory (test convenience only)
- * @see ElectionManagementController::store() (authoritative construction)
- */
-enum VoterSourceStrategy: string { /* ... */ }
-```
-
-**Rule: Factories remain testing infrastructure only.** Technical enforcement prevents accidental production use.
-
----
-
-## 6. Enforcement Hierarchy: Heuristic vs Authoritative
-
-### Three Levels, Distinct Trust & Coverage
-
-| Level | Mechanism | Role | When to Use | What It Can't Catch | Explicit Classification? |
-|---|---|---|---|---|---|
-| **HEURISTIC** | Grep scans, `str_contains` file scanning, static pattern detection | Fast detection of obvious violations; catches ~80% of mistakes | During development, CI gates, quick validation | Dynamic calls, reflection, late binding, aliased imports, string interpolation | ✅ YES — label test as HEURISTIC |
-| **BEHAVIORAL** | PHPUnit domain tests, behavioral invariants in actual test code | Authoritative: if test passes, behavior IS correct (for covered paths) | Verifying core domain invariants, creation flows, sovereignty | Untested code paths, configuration errors, integration mismatches | ✅ YES — label test as BEHAVIORAL |
-| **GOVERNANCE** | Architecture tests, runtime enforcement, exception throwing | Tests the rules of the architecture itself; fail-fast at runtime | Enforcing boundaries that cannot be tested behaviorally (e.g., "all elections MUST have snapshot") | Exceptions can be caught and swallowed; architecture changes break tests; false confidence in stable boundaries | ✅ YES — label test as GOVERNANCE |
-
-### Trust Levels (Decreasing Confidence)
-
-```
-Heuristic (80% confidence)
-    ↓
-Behavioral (100% confidence for covered paths only)
-    ↓
-Governance (high confidence in architecture; brittle if fundamentals change)
-```
-
-**Key insight:** A passing heuristic grep scan does NOT mean the rule is enforced. It means "no obvious violations detected on this scan." A passing behavioral test means "the domain behaves correctly on this path." A governance test means "the architecture structure is correct, but assumptions about forever-stability may be wrong."
-
-### Explicit Test Classification Rules
-
-**Every enforcement test MUST declare its level in the docblock:**
-
-```php
-// ========================================
-// LEVEL: HEURISTIC
-// ========================================
-// Grep-based scanning for obvious violations.
-// Fast, but cannot detect: reflection, late binding, dynamic string construction.
-//
-// If this test fails: Something is obviously wrong; fix immediately.
-// If this test passes: Might still have subtle violations; see BEHAVIORAL tests.
-public function test_from_organisation_is_not_called_outside_approved_contexts(): void
-{
-    // This uses grep to scan app/ and routes/ for direct calls to
-    // VoterSourceStrategy::fromOrganisation() outside the 2 approved callers
-    ...
-}
-
-// ========================================
-// LEVEL: BEHAVIORAL
-// ========================================
-// Authoritative: verifies actual runtime behavior is correct.
-// Only covers paths WITH test coverage; untested paths are unknown.
-//
-// If this test passes: Behavior is definitely correct on this path.
-// If this test fails: Actual domain logic is broken.
-public function test_snapshot_originates_from_creation_flow_not_factory_default(): void
-{
-    // Creates an election via HTTP (not factory) and verifies snapshot
-    // matches org mode at creation time, not factory default
-    ...
-}
-
-// ========================================
-// LEVEL: GOVERNANCE
-// ========================================
-// Architecture structural tests; fail-fast enforcement at runtime.
-// Protects against repeated violations; assumes boundaries remain stable.
-//
-// If this test passes: Architecture structure is correct RIGHT NOW.
-// If the architecture fundamentally changes: This test may become obsolete.
-public function test_missing_snapshot_throws_exception_enforcing_sovereignty(): void
-{
-    // Verifies that ElectionMode::fromElection() throws if snapshot is null.
-    // This is a governance rule: elections MUST have voter_source_strategy.
-    // Database constraint prevents this in production, but test guards against
-    // code that might try to construct elections without going through
-    // the proper creation path.
-    ...
-}
-```
-
-### Using Enforcement Levels
-
-- **Heuristic tests**: Run early and often (pre-commit, CI gate)
-- **Behavioral tests**: Part of main test suite; must not decrease count
-- **Governance tests**: Part of architecture test suite; guards invariants
-- **Never use heuristic result to claim behavioral correctness**: "Grep found no violations" does NOT mean "behavior is correct"
-
-### Enforcement Hierarchy Conflict Resolution (CRITICAL)
-
-**What happens when enforcement levels disagree?**
-
-Example scenario:
-```
-Grep scan (heuristic):        FAILS — found "fromOrganisation()" call
-Behavioral test (runtime):    PASSES — actual behavior is correct
-Governance test (invariant):  PASSES — architecture structure is valid
-
-Question: Is there a sovereignty violation?
-Answer: NO (unless behavioral test is wrong).
-```
-
-#### Precedence Rules (Explicit Authority Order)
-
-| Precedence | Level | Authority | When It Wins |
+| Field | Meaning | Example | Consumed By |
 |---|---|---|---|
-| **1 (Highest)** | Behavioral runtime test | AUTHORITATIVE | Actual code behavior is correct for covered paths |
-| **2** | Governance invariant test | Structural | Architecture assumptions hold true |
-| **3** | Static analysis heuristic | Advisory | Pattern detected; may be false positive |
-| **4 (Lowest)** | Grep scan | Smoke alarm only | Literal string found; probably needs review |
+| `denial_reason` | Stable machine-readable governance identifier | `'voting_window_not_defined'`, `'suspended'` | Composable logic, test assertions, tooltip key lookup |
+| `denial_detail` | Localized human-readable UX text | `'Voting dates must be set before opening the ballot'` | UI display only — never in logic |
 
-#### Conflict Resolution Rules
+### Governance vocabulary ownership (`denial_reason`)
 
-**Rule: Behavioral test failure = sovereignty violation (investigate immediately)**
-```
-If behavioral test FAILS and grep scan PASSES:
-→ Heuristic (grep) missed something real
-→ Add more specific architecture tests
-→ The behavioral failure is the source of truth
-```
+- All `denial_reason` values are constitutional governance vocabulary
+- Renames require ADR
+- Deprecation window: minimum 8 weeks with old + new key both present
+- Telemetry uses `denial_reason` for audit continuity — changes break audit trails
 
-**Rule: Heuristic failure + behavioral pass = not a violation**
-```
-If grep scan FAILS but behavioral test PASSES:
-→ False positive from heuristic
-→ Refine grep pattern (or ignore if confirmed safe)
-→ Behavioral test is the source of truth
-→ NOT a sovereignty violation
-```
+### FORBIDDEN patterns
 
-**Rule: Governance test disagrees with behavioral = architecture assumption broken**
-```
-If governance test FAILS but behavioral test PASSES:
-→ Architecture assumption is wrong
-→ Governance test predicted behavior incorrectly
-→ Re-evaluate whether governance test is still valid
-→ May need to update or retire outdated governance test
+```typescript
+// ❌ branching on denial_detail text
+if (capability.denial_detail?.includes('ballot')) { ... }
+
+// ❌ comparing denial_detail to literal
+if (capability.denial_detail === 'Some UX message') { ... }
+
+// ❌ using denial_detail as a key
+const key = `tooltips.${capability.denial_detail}`;
 ```
 
-#### Precedence in CI Pipeline
+### ALLOWED patterns
 
-```yaml
-# .github/workflows/governance.yml
+```typescript
+// ✅ display denial_detail as UX text (no branching)
+<span>{{ capability.denial_detail }}</span>
 
-jobs:
-  governance:
-    steps:
-      # First: Heuristic (fail fast, but don't block)
-      - name: Heuristic scan (advisory)
-        run: ./scripts/heuristic-scan.sh
-        continue-on-error: true
-      
-      # Second: Behavioral (required to pass)
-      - name: Behavioral tests (BLOCKING)
-        run: php artisan test --env=testing
-        
-      # Third: Governance invariants (required to pass)
-      - name: Governance invariants (BLOCKING)
-        run: php artisan test tests/Architecture/ --env=testing
-      
-      # Decision: If heuristic fails but behavioral/governance pass → approve
-      # Decision: If behavioral fails → block (violation found)
-      # Decision: If governance fails → block (architecture broken)
+// ✅ branch on denial_reason (stable governance key)
+if (denialReason.value === 'suspended') { showSuspensionNote.value = true; }
+
+// ✅ denial_reason as i18n key lookup
+const tooltipKey = `tooltips.capability_denied.${denialReason.value}`;
 ```
-
-**Key Principle:** Heuristic failure without behavioral/governance failure is NOT a sovereignty violation. It is a pattern that MAY need attention, but actual behavior is the ultimate truth.
 
 ---
 
-## 7. Internal vs External API Boundary Governance
+## 6. Frontend Constitutional Invariants + Enforcement Ownership
 
-### Three Distinct Contract Layers (Not Mixed)
+### Invariant 1: Vue renders authority — Vue does not derive authority
 
-| Boundary | Type | Vocabulary Policy | Mutability | Phase 3 Action | Phase 4 Action | Phase 5+ |
-|---|---|---|---|---|---|---|
-| **Internal Inertia props** (Vue SPA) | Distributed but internal | Transitional allowed — `toApiValue()` returns quarantine prefix; backward-compat alias | High (frontend state changes frequently) | Add `voter_source_strategy` alongside `uses_full_membership` | Remove old alias when Vue migrated; update to stable vocab | Vue caches, stores, computed props update |
-| **Public API contracts** (REST/GraphQL) | External, versioned | Stable vocabulary only | Very low (contract changes = version bump) | No new public API endpoints this phase | Define stable vocabulary AFTER governance-language finalization | External clients depend on versioned APIs |
-| **External integrations** (federation, treaty partners) | Fully external, sovereign | Formally versioned with compatibility terms | Extremely low (other sovereign authorities depend) | Not in scope Phase 3 | Not in scope Phase 4 | Constitutional treaties may regulate changes |
+```typescript
+// ❌ FORBIDDEN — frontend deriving from state + role
+if (election.state === VOTING_ACTIVE && user.role === 'chief') { showButton = true; }
 
-### Governance Rules by Boundary
+// ✅ CORRECT — render pre-derived authority
+const { canCloseVoting } = useElectionCapabilities(computed(() => props.stateMachine));
+```
 
-#### Layer 1: Internal Inertia Props (Vue SPA)
-- **Scope**: Routes, controllers, Inertia responses delivered to first-party Vue app
-- **Vocabulary**: May use `->toApiValue()` with `transitional_` prefix during Phase 3
-- **Backward compatibility**: May include old `uses_full_membership` alongside new `voter_source_strategy` during migration
-- **Migration path**: Vue code migrates incrementally; old prop deprecated (but present) during overlap
-- **Risk level**: Medium (cached in user browsers, frontend stores, CDN snapshots)
-- **Phase 3 rule**: ✅ Allowed; add prop with quarantine prefix
-- **Phase 4 rule**: Replace `'transitional_*'` values with stable vocabulary; keep old prop for 2+ releases
-- **Phase 5+ rule**: Complete removal of old prop after deprecation period
+**Enforced by:** Behavioral Vitest component tests (authoritative)
 
-#### Layer 2: Public API Contracts (REST/GraphQL endpoints)
-- **Scope**: Endpoints explicitly designed for external consumption, documented in API docs
-- **Vocabulary**: STABLE ONLY — no transitional prefixes
-- **Backward compatibility**: Versioning required for ANY change (v1, v2, v3...)
-- **Migration path**: Old version continues working; consumers migrate at their own pace
-- **Risk level**: Very high (partner integrations, third-party apps, published contracts)
-- **Phase 3 rule**: ❌ FORBIDDEN — no new public API endpoints
-- **Phase 4 rule**: Create only after governance vocabulary is final; document stability promise
-- **Phase 5+ rule**: Break existing API versions ONLY with major version bump and deprecation period
+### Invariant 2: `useElectionCapabilities()` is the only authorized authority access point
 
-#### Layer 3: External Integrations (Federation, Treaty Partners)
-- **Scope**: Systems outside our organization that integrate with our elections
-- **Vocabulary**: Formally versioned with explicit compatibility commitments
-- **Backward compatibility**: Governed by constitutional treaties or SLAs
-- **Migration path**: Coordination with external parties; no unilateral changes
-- **Risk level**: Extreme (violating terms breaks federations; legal consequences)
-- **Phase 3 rule**: ❌ FORBIDDEN — federation not in scope yet
-- **Phase 4 rule**: ❌ FORBIDDEN — federation design comes later
-- **Phase 5+ rule**: Treaty-governed vocabulary with explicit sunset/version dates
+No alternative composables. No page-local capability logic. No capability wrappers.
 
-### Layering Violations (What NOT to Do)
+**Enforced by:** Architecture grep test + behavioral tests
 
-| Violation | Example | Impact |
+### Invariant 3: `ElectionLifecycleStates` for visualization only — NEVER for permission decisions
+
+```typescript
+// ✅ state badge, label, progress
+:class="`phase-badge--${election.state}`"
+
+// ❌ action button guard (overlays diverge authority from state)
+v-if="election.state === ElectionLifecycleStates.VOTING_ACTIVE"
+```
+
+**Enforced by:** Vitest architecture grep test
+
+### Invariant 4: No capability reconstruction from lifecycle constants + role
+
+```typescript
+// ❌ FORBIDDEN — distributed sovereignty using constants
+const canPublish = computed(() => 
+  election.state === ElectionLifecycleStates.COUNTING && userIsChief
+);
+```
+
+This is the subtle violation Vitest grep tests must catch.
+
+**Enforced by:** Architecture grep test detecting lifecycle constant + role/permission combination
+
+### Invariant 5: `stateMachine` prop never cached or persisted client-side
+
+Stale capability cache = stale constitutional authority.
+
+**Enforced by:** Code review + architecture test scanning for localStorage/sessionStorage usage with stateMachine
+
+### Invariant 6: `capabilities_trace` forbidden in all production paths
+
+**Enforced by:** Architecture test scanning for `capabilities_trace` references in component code
+
+---
+
+## 7. `useElectionCapabilities()` — Boundary Constraints
+
+This composable is the **frontend constitutional-runtime access boundary**.
+
+### Critical evolutionary constraint
+
+`useElectionCapabilities()` **may expose authority snapshots** from the backend-derived `stateMachine`.  
+`useElectionCapabilities()` **may NOT derive constitutional authority itself**.
+
+It projects. It does not compute governance decisions.
+
+Any logic inside the composable that combines `election.state` + role + conditions = **constitutional monolith risk**. Future overlays must flow through `ElectionCapabilityResolver` (backend), not accumulate in the composable.
+
+### God composable prevention rule
+
+If the composable grows to include:
+- lifecycle reasoning
+- overlay handling
+- role transforms
+- federation logic
+- audit event emission
+- denial formatting beyond tooltip key lookup
+
+...it has become a god composable and must be decomposed.
+
+---
+
+## 8. `ElectionLifecycleStates` — Permitted vs Forbidden Usage
+
+| Use Case | Allowed? | Rationale |
 |---|---|---|
-| **Internal → Public** | Expose `toApiValue()` as public API | Transitional vocabulary becomes distributed contract; breaks federation |
-| **Internal → External** | Send Inertia prop to external system | Partner locked into temporary vocab; breaks when Phase 4 changes |
-| **Public → Internal** | Use versioned API value in controller logic | API version couples to internal logic; refactoring breaks API |
-| **External → Public** | Expose federation contract as REST API | Multi-party rules embedded in single-party versioning; impossible to update |
+| Visual state badge (CSS class) | ✅ | Pure visualization |
+| Informational section rendering | ✅ | Shows context, not permission |
+| Progress step indicator | ✅ | Visualization of constitutional progression |
+| Action button `v-if` guard | ❌ | Overlays diverge authority from state |
+| Content permission gate | ❌ | State cannot express suspension/role |
+| Computed `canSomething` derived from state constant | ❌ | Distributed sovereignty |
+| State constant + role combination in `computed` | ❌ | Reconstructing authority |
 
-### Contract Evolution Mechanics & Versioning Strategy
+---
 
-**The versioning policy differs by boundary. Without explicit strategy, contract evolution becomes chaotic.**
+## 9. Enforcement Trust Hierarchy
 
-#### Versioning Policy by Boundary
-
-| Boundary | Version Scheme | Breaking Changes | Deprecation Cadence |
+| Level | Mechanism | Trust | Purpose |
 |---|---|---|---|
-| **Internal Inertia props** | None (no versioning) | Allowed (Vue migrates with backend) | Backward-compat prop (2+ releases) then drop |
-| **Public API (v1, v2, etc)** | Semantic versioning | Major version bumps only | Old version supported 12+ months |
-| **Federation API** | Treaty-versioned | Requires explicit partner agreement | Partner-dependent (SLA-governed) |
+| **Behavioral** | PHPUnit: Inertia prop shape assertions | AUTHORITATIVE | Capabilities object is actually correct |
+| **Behavioral** | Vitest: component button visibility tests | AUTHORITATIVE | Component renders authority correctly |
+| **Governance** | PHP architecture tests (class purity, boundary) | Structural | Domain layer does not leak to view |
+| **Heuristic** | Vitest `expect(src).not.toContain()` grep | SMOKE ALARM ONLY | Obvious violations detected |
 
-#### Compatibility Windows (Phase 3 → Phase 4 → Phase 5)
-
-```
-PHASE 3 (Now)
-  Internal Inertia: transitional_imported_voter_registry
-  Public API: [none yet]
-  Federation: [none yet]
-  
-PHASE 4 (After governance-language finalization)
-  Internal Inertia: [both old + new] ← compatibility window open
-  Public API: v1/elections → returns stable_voter_authority (NEW)
-  Federation: [none yet; design starts]
-  
-  ↓ After 12+ months
-  
-  Internal Inertia: [new only] ← old prop removed
-  Public API: v1 (old) + v2 (new) ← both supported
-  Federation: [none yet]
-  
-PHASE 5 (External federation integrates)
-  Internal Inertia: [new only]
-  Public API: v1 (sunset scheduled) + v2 (stable)
-  Federation: v1/federation (treaty-versioned, partner-dependent)
-```
-
-#### Breaking Change Protocol
-
-If a breaking change is needed (unlikely in Phase 3, likely in Phase 4+):
-
-1. **Old version**: Supported with deprecation warnings
-2. **Compatibility period**: Minimum 12 months (or SLA-negotiated)
-3. **Communication**: Explicit notice to all consumers (internal + external)
-4. **Migration path**: Clear instructions for upgrading
-5. **Sunset date**: Hardened; no extensions unless extraordinary circumstances
-
-#### Migration Sequencing Rules
-
-**Never break a boundary layer before lower layers are ready:**
-
-```
-SEQUENCE (Correct):
-1. Internal Inertia migrates from transitional → stable (Phase 4)
-2. Public API created with stable vocabulary (Phase 4, after internal stable)
-3. Federation integrations created (Phase 5+, after public API stable for 12+ months)
-
-SEQUENCE (WRONG — breaks downstream):
-1. Create Public API with unstable vocabulary
-   → External partners hard-code against vocabulary
-   → Phase 5 federation breaks because vocabulary unstable
-2. Export federation data using transitional vocabulary
-   → Treaty partners locked into temporary vocabulary
-   → Cannot upgrade without external coordination
-```
-
-**Rule: Always stabilize lower layers before creating upper layers.**
+**Critical rule:** Absence of a grep match ≠ absence of authority reconstruction. Heuristic tests cannot detect computed patterns, aliased constants, or runtime string construction. Behavioral tests are the source of truth.
 
 ---
 
-### Phase 3 Strict Rule
+## 10. Files to Migrate
 
-**Only touch internal Inertia props. Do NOT create any new:**
-- ❌ Public REST/GraphQL API endpoints
-- ❌ Documented API contracts
-- ❌ Federation integrations
-- ❌ External data exports that assume this vocabulary
-- ❌ Analytics schema using `toApiValue()` as permanent identifier
+| File | Current Pattern | Category | Notes |
+|---|---|---|---|
+| `Show.vue` L30, L182 | `election.status` class, raw state string | Lifecycle Visualization | Display only |
+| `Viewboard.vue` L213 | `election.state === 'voting_active'` | Lifecycle Visualization | Replace with constant |
+| `Admin/Elections/All.vue` L109 | `election.state` class/label | Lifecycle Visualization | Display only |
+| `Organisations/Elections/Index.vue` L65 | `election.status` class | Lifecycle Visualization | Display only |
+| `Organisations/ElectionCommission.vue` L72 | `:status="election.status"` | Lifecycle Visualization | StatusBadge prop vocabulary |
+| `Organisations/Posts.vue` L88 | `election.status === 'active'` | **Case-by-case** | Evaluate per guard |
+| `Commission/Dashboard.vue` L63, L74 | `election.status === 'active'` | **Case-by-case** | Evaluate per guard |
+| `Election/Candidacy/Apply.vue` L61, L165 | `election.status === 'active'` | Lifecycle Visualization | Badge + contextual text |
 
-All such surfaces must wait for Phase 4 governance-vocabulary stabilization.
+### Case-by-case decision rule
 
----
+**Lifecycle Visualization** if the guard answers: "Is the election in state X right now?"  
+→ `election.state === ElectionLifecycleStates.*`
 
-## 8. Vocabulary Convergence Matrix (Final for Phase 3)
+**Constitutional Authority** if the guard answers: "Is this user permitted to do X?"  
+→ Must use `useElectionCapabilities()` — overlays and roles diverge from state
 
-| Current PHP Name | Phase 3 PHP Name | DB Value (UNCHANGED) | telemetryKey() | toApiValue() (quarantine) |
-|---|---|---|---|---|
-| `ElectionMode` | `VoterSourceStrategy` | N/A | N/A | N/A |
-| `ElectionMode::ElectionOnly` | `VoterSourceStrategy::ImportedVoterRegistry` | `'election_only'` | `'imported_voter_registry'` | `'transitional_imported_voter_registry'` |
-| `ElectionMode::FullMembership` | `VoterSourceStrategy::MembershipRegistry` | `'full_membership'` | `'membership_registry'` | `'transitional_membership_registry'` |
-| `->isElectionOnly()` | `->isImportedVoterRegistry()` | N/A | | |
-| `->isFullMembership()` | `->isMembershipRegistry()` | N/A | | |
-| `ElectionMode::fromOrganisation()` | `VoterSourceStrategy::fromOrganisation()` | N/A | | Restricted to 2 callers |
-| `ElectionMode::fromElection()` | `VoterSourceStrategy::fromElection()` | N/A | | Sovereign path |
-| (new) `->toPersistenceValue()` | sole `->value` consumer | returns `->value` | | |
-| (new) `->toApiValue()` | quarantine API boundary | returns transitional string | | |
-| (new) `->telemetryKey()` | stable observability | returns stable semantic key | | |
-| `->label()` | UX/human display only | returns localized string | | |
-
----
-
-## 9. Active Sovereignty Violation (Step 0 — Priority Zero)
-
-### The Bug
-
-```php
-// app/Services/VoterEligibilityService.php line 54
-if (!$org->uses_full_membership) { // ← reads org boolean; ignores passed ElectionMode
-
-// Caller (ElectionVoterController.php:74) passes 3rd arg but method only accepts 2:
-->unassignedEligibleQuery($organisation, $assignedUserIds, ElectionMode::fromElection($election))
-// 3rd arg silently dropped by PHP
-```
-
-### The Fix
-
-```php
-public function unassignedEligibleQuery(
-    Organisation $org,
-    array $excludeUserIds = [],
-    ?ElectionMode $mode = null      // ← add (current names; renamed in Step 2)
-): Builder {
-    $mode ??= ElectionMode::FullMembership;
-    if ($mode->isElectionOnly()) { /* election-only path */ }
-    else { /* full membership path */ }
-}
-```
-
----
-
-## 10. VoterSourceStrategy.php — New Enum File Design
-
-```php
-enum VoterSourceStrategy: string
-{
-    /**
-     * TRANSITIONAL SEMANTIC BRIDGE VOCABULARY.
-     * Governance meaning: voter authority derives from org enrollment (no membership filtering).
-     *
-     * @deprecated Case name is transitional. Phase 4 will determine final constitutional name
-     *   through proper governance-language review. Do not treat 'ImportedVoterRegistry' as final.
-     * @see Phase 4 exploration: candidates include ImportedVoterAuthority (not pre-approved)
-     */
-    case ImportedVoterRegistry = 'election_only';
-
-    /**
-     * TRANSITIONAL SEMANTIC BRIDGE VOCABULARY.
-     * Governance meaning: voter authority derives from formal membership governance (fees, status, type).
-     *
-     * @deprecated Case name is transitional. Phase 4 will determine final constitutional name
-     *   through proper governance-language review. Do not treat 'MembershipRegistry' as final.
-     * @see Phase 4 exploration: candidates include MembershipAuthority (not pre-approved)
-     */
-    case MembershipRegistry = 'full_membership';
-
-    // === PERSISTENCE BOUNDARY ===
-    /** @see toPersistenceValue() for DB writes — do NOT use ->value directly outside this method */
-    public function toPersistenceValue(): string { return $this->value; }
-    public static function fromPersistenceValue(string $value): self { return self::from($value); }
-
-    // === SOVEREIGN RESOLUTION ===
-    public static function fromElection(Election $election): self { /* throws if null */ }
-    /**
-     * @internal Approved callers ONLY: BackfillVoterSourceStrategy, ElectionManagementController::store()
-     */
-    public static function fromOrganisation(Organisation $org): self { ... }
-
-    // === API QUARANTINE BOUNDARY ===
-    /**
-     * PHASE 3 QUARANTINE — not stable vocabulary.
-     * Sunset: replace in Phase 4 after governance-language finalization.
-     */
-    public function toApiValue(): string
-    {
-        return match($this) {
-            self::ImportedVoterRegistry => 'transitional_imported_voter_registry',
-            self::MembershipRegistry    => 'transitional_membership_registry',
-        };
-    }
-
-    // === OBSERVABILITY ===
-    /** Stable semantic key for logs, metrics, audit — never changes incidentally */
-    public function telemetryKey(): string
-    {
-        return match($this) {
-            self::ImportedVoterRegistry => 'imported_voter_registry',
-            self::MembershipRegistry    => 'membership_registry',
-        };
-    }
-
-    // === UX DISPLAY ===
-    public function label(): string
-    {
-        return match($this) {
-            self::ImportedVoterRegistry => 'Election-Only',
-            self::MembershipRegistry    => 'Full Membership',
-        };
-    }
-
-    // === HELPERS ===
-    public function isImportedVoterRegistry(): bool { return $this === self::ImportedVoterRegistry; }
-    public function isMembershipRegistry(): bool    { return $this === self::MembershipRegistry; }
-}
-```
+Write a one-line written decision in code comment before changing each guard.
 
 ---
 
 ## 11. Implementation Sequence
 
-| Step | Focus | Key Files | Gate |
-|---|---|---|---|
-| **0** | Fix active sovereignty violation | `VoterEligibilityService.php` | TDD: write failing test first |
-| **1** | Factory & seeder alignment + anti-corruption docs | 5 files | TDD: factory + invariant tests |
-| **2a** | Pre-rename safety audit (grep, serialization, container scan) | Read-only | All checks pass |
-| **2b** | Create `VoterSourceStrategy.php` (new file, both coexist temporarily) | 1 new file | Full test suite passes |
-| **2c** | Incremental: update 25 PHP app files (import + type hints) | 25 files | Suite after each batch |
-| **2d** | Update 16 test files + rename `ElectionModeTest.php` | 16 files | Suite passes |
-| **2e** | Delete `ElectionMode.php`, run final safety audit | 1 delete | 194+ tests, 0 grep hits |
-| **3** | `fromOrganisation()` heuristic enforcement test (classified explicitly) | 1 test | Test passes |
-| **4** | API contract stabilization (quarantine vocabulary, backward-compat aliases) | 3 controller/route files | Inertia prop tests pass |
-| **5** | Translation content review (key NAMES unchanged; content may improve) | 3 lang files | Settings test passes |
+| Step | Focus | Gate |
+|---|---|---|
+| **0** | Safety audit — grep all legacy patterns | Documented inventory |
+| **1** | Create `StateMachineContract.ts` | TypeScript compiles |
+| **2** | TDD: add failing architecture tests | Tests FAIL (red) — correct TDD gate |
+| **3** | Migrate Lifecycle Visualization components (6 files) | Tests green |
+| **4** | Evaluate Posts.vue + Commission/Dashboard.vue (case-by-case) | Written decision per guard |
+| **5** | Constitutional Authority migration where required (PHP test first) | PHP test passes, then Vue migrated |
+| **6** | Final verification — all behavioral + heuristic tests pass | Zero legacy pattern matches |
 
 ---
 
-## 12. Critical Files Summary
+## Step 0: Safety Audit Commands
 
-| File | Step | Change |
-|---|---|---|
-| `app/Services/VoterEligibilityService.php` | 0 | Add `?ElectionMode $mode` param; remove org boolean read |
-| `database/factories/OrganisationFactory.php` | 1 | Add `electionOnly()`, `fullMembership()` states |
-| `database/factories/ElectionFactory.php` | 1 | Add `voter_source_strategy` default (with anti-corruption doc) + 2 states |
-| `database/seeders/ElectionSeeder.php` + 2 | 1 | Add `voter_source_strategy` field |
-| `app/Domain/Election/Enum/VoterSourceStrategy.php` | 2b | NEW — full design per Section 10 |
-| `app/Domain/Election/Enum/ElectionMode.php` | 2e | DELETE |
-| ~25 PHP application files | 2c | Import + type hint + method call updates |
-| ~16 test files | 2d | Import + assertion method name updates |
-| `tests/Unit/Domain/Election/VoterSourceStrategyTest.php` | 2d | RENAME + update |
-| `tests/Architecture/GovernanceRuntime/SovereigntyInvariantTest.php` | 3 | Heuristic enforcement + factory invariant |
-| `app/Http/Controllers/Election/VoterImportController.php` | 4 | Add `->toApiValue()` prop; keep backward-compat |
-| `app/Http/Controllers/ElectionVoterController.php` | 4 | Add `voter_source_strategy` prop |
-| `routes/web.php:123` | 4 | Add `voter_source_strategy` |
-| `resources/lang/{en,de,np}/organisations.php` | 5 | Review content; key NAMES unchanged |
+```bash
+# election.status comparisons
+grep -rn "election\.status" resources/js/ --include="*.vue"
+
+# Hardcoded lifecycle string literals
+grep -rn "'voting_active'\|'results_published'\|'archived'\|'counting'\|'setup_\|'draft'\|'approved'" resources/js/ --include="*.vue"
+
+# Lifecycle constant + role/permission combination (distributed sovereignty risk)
+grep -rn "ElectionLifecycleStates\.[A-Z_]*.*&&\|&& .*ElectionLifecycleStates" resources/js/ --include="*.vue"
+
+# can_* flat props
+grep -rn "\.can_vote\b\|\.can_access\b\|\.can_vote_now\b" resources/js/ --include="*.vue"
+
+# capabilities_trace references (must be zero in components)
+grep -rn "capabilities_trace" resources/js/Pages/ --include="*.vue"
+
+# Already migrated (baseline)
+grep -rn "useElectionCapabilities" resources/js/ --include="*.vue"
+```
+
+---
+
+## Step 2: TDD Architecture Tests (Write Failing First)
+
+Add to `tests/js/Architecture/ElectionFrontendArchitectureTest.spec.ts`:
+
+```typescript
+// Lifecycle Visualization violations
+it('Show.vue does not use election.status', () => {
+  const src = readFile('resources/js/Pages/Election/Show.vue');
+  expect(src).not.toMatch(/election\.status/);
+});
+
+it('Viewboard.vue uses ElectionLifecycleStates constant not raw string', () => {
+  const src = readFile('resources/js/Pages/Election/Viewboard.vue');
+  expect(src).not.toContain("'voting_active'");
+  expect(src).toContain('ElectionLifecycleStates');
+});
+
+it('Candidacy Apply.vue does not use election.status', () => {
+  const src = readFile('resources/js/Pages/Election/Candidacy/Apply.vue');
+  expect(src).not.toMatch(/election\.status/);
+});
+
+// Constitutional authority fragmentation
+it('no Vue page derives capability from lifecycle constant + role combination', () => {
+  const files = glob.sync('resources/js/Pages/**/*.vue');
+  const violations = files.filter(f => {
+    const src = readFile(f);
+    // Detect: lifecycle constant used with && (role/condition combination)
+    return /ElectionLifecycleStates\.[A-Z_]+.*&&/.test(src) ||
+           /&&.*ElectionLifecycleStates\.[A-Z_]+/.test(src);
+  });
+  expect(violations).toEqual([]); // Management.vue already migrated — should pass
+});
+
+// capabilities_trace contamination
+it('no component reads capabilities_trace', () => {
+  const files = glob.sync('resources/js/Pages/**/*.vue');
+  const violations = files.filter(f => readFile(f).includes('capabilities_trace'));
+  expect(violations).toEqual([]);
+});
+```
+
+Run: `npx vitest run tests/js/Architecture/ --reporter=verbose`  
+**Expected: FAIL (red)**
+
+---
+
+## Step 3: Lifecycle Visualization Pattern
+
+```typescript
+// Import
+import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
+
+// BEFORE: :class="`esp-status--${election.status}`"
+// AFTER:  :class="`esp-status--${election.state}`"
+
+// BEFORE: v-if="election.state === 'results_published'"
+// AFTER:  v-if="election.state === ElectionLifecycleStates.RESULTS_PUBLISHED"
+
+// StatusBadge: pass election.state not election.status
+// BEFORE: <StatusBadge :status="election.status" />
+// AFTER:  <StatusBadge :status="election.state" />
+```
+
+After each file: `npx vitest run tests/js/Architecture/ --reporter=verbose`
+
+---
+
+## Step 5: Constitutional Authority Migration (PHP Test First)
+
+```php
+// Write PHP test BEFORE updating controller
+public function test_page_receives_stateMachine_capabilities_prop(): void
+{
+    $response->assertInertia(fn ($page) => $page->has('stateMachine.capabilities'));
+}
+```
+
+Run: `php artisan test tests/Feature/Election/TheSpecificTest.php --env=testing`  
+Only after test passes: add `stateMachine` to controller render data.  
+Only after controller updated: migrate Vue component to `useElectionCapabilities`.
+
+---
+
+## Step 6: Final Verification
+
+```bash
+# All Vitest tests (architecture + component + composable)
+npx vitest run tests/js/ --reporter=verbose
+
+# PHP regressions
+php artisan test tests/Feature/Election/ tests/Architecture/ --env=testing --no-coverage
+
+# Regression grep — must return zero
+grep -rn "election\.status" resources/js/Pages/ --include="*.vue"
+grep -rn "'voting_active'\|'results_published'" resources/js/Pages/ --include="*.vue"
+grep -rn "capabilities_trace" resources/js/Pages/ --include="*.vue"
+```
+
+**Pass criteria:** All Vitest green, zero PHP regressions, zero legacy pattern matches.
+
+---
 
 ## What Is NOT Changed
 
 | Item | Reason |
 |---|---|
-| DB string values `'election_only'`, `'full_membership'` | PHP class rename only — no DB migration |
-| `Organisation.uses_full_membership` | Org owns this |
-| i18n JSON keys in JS locale files | Tied to Vue migration; Phase 4 |
-| Vue `.vue` files | Phase 4 frontend migration |
-| Route names | Tied to Vue; Phase 4 |
-| PHP lang key NAMES | UX vocabulary ≠ domain vocabulary |
-| Any public API endpoints | Stability requires governance-vocabulary finalization first |
+| `Management.vue`, `StateMachinePanel.vue` | Already fully migrated ✅ |
+| `Elections/Voters/Index.vue` voter suspension | Distinct voter-membership sub-system |
+| `useElectionCapabilities.ts` internals | Extend only via explicit backend-first policy addition |
+| `ElectionConstitution.php` | Backend sovereignty source — no changes |
+| `electionUiMapper.js` | Legacy — leave until explicit ADR for removal |
+| DB schema | No schema changes in this phase |
 
 ---
 
----
+## Vocabulary Reference
 
-## 12.5. Phase 4 Semantic Research Backlog (DDD Foundation for Constitutional Language)
-
-**Critical Note:** Phase 3 explicitly avoids canonizing temporary vocabulary. Phase 4 must therefore conduct rigorous semantic research to establish final constitutional authority vocabulary.
-
-This is not naming work. This is **domain modeling work** on governance itself.
-
-### Research Topics (Must Be Explored Before Final Names Are Adopted)
-
-#### 1. Delegated Sovereignty
-- **Question**: When an election is delegated to another authority (regional admin delegates to district), does the voter source strategy change?
-- **Current assumption**: Voter source doesn't change; delegation is governance layer above
-- **Alternative models**: Delegation creates new voter source strategy; delegation redefines authority
-- **Federation impact**: Multi-level delegation requires vocabulary to express "voter authority derives from X delegated by Y"
-- **Research output**: Does `DelegatedVoterAuthority` exist as distinct concept?
-
-#### 2. Federated Participation
-- **Question**: When multiple electoral authorities federate (e.g., national + state + regional), how do voter sources compose?
-- **Current assumption**: Each authority owns its voters separately; federation coordinates but doesn't merge
-- **Alternative models**: Federation creates unified voter pool; federation creates voter compatibility bridge
-- **Research output**: Is there `FederatedVoterAuthority` or `UnifiedVoterRegistry`?
-
-#### 3. Treaty Participation
-- **Question**: When electoral authorities enter constitutional treaties (e.g., trans-national parliament), how are voters legitimized?
-- **Current assumption**: Treaties specify validation rules; each authority validates against treaty rules
-- **Alternative models**: Treaty creates supranational voter authority; treaty creates authority precedence rules
-- **Research output**: Constitutional treaties require `TreatyVoterAuthority`?
-
-#### 4. Hybrid Voter Legitimacy
-- **Question**: What if a single election has multiple voter sources simultaneously (e.g., members + external partner members + delegates)?
-- **Current assumption**: `MembershipRegistry` and `ImportedVoterRegistry` are mutually exclusive
-- **Alternative models**: Elections can compose multiple sources; composition defines legitimacy rules
-- **Research output**: Does `HybridVoterRegistry` or `CompositeLegitimacy` become a third case?
-
-#### 5. Constitutional Override
-- **Question**: Can constitutional governance override normal voter source rules (e.g., emergency elections)?
-- **Current assumption**: Constitutional rules are static once election created
-- **Alternative models**: Constitutional authority can override on emergency/treaty grounds
-- **Research output**: Do we need `ConstitutionalVoterAuthority` separate from registry mechanisms?
-
-#### 6. Registrar Trust & Verification
-- **Question**: When external authorities participate, who verifies they're legitimate registrars?
-- **Current assumption**: Org admin controls voter imports; implicit trust
-- **Alternative models**: Registrar credentials model; trust hierarchy; verification ceremony
-- **Research output**: Does vocabulary need to express `VerifiedRegistrar` vs `UnverifiedImport`?
-
-#### 7. External Authority Inheritance
-- **Question**: When a federation joins an external governance framework, does it inherit that framework's voter semantics?
-- **Current assumption**: Each system owns its semantics; federation coordinates translation
-- **Alternative models**: Inheritance creates vocabulary translation/compatibility layers
-- **Research output**: Does vocabulary need `InheritedVoterAuthority` or `TranslatedVoterRegistry`?
-
-### Phase 4 Research Methodology
-
-Phase 4 must:
-
-1. **Model each topic** using entity-relationship or similar notation
-2. **Identify overlaps** (e.g., does "delegated sovereignty" subsume "hybrid legitimacy"?)
-3. **Determine final vocabulary** (are `ImportedVoterRegistry`/`MembershipRegistry` stages toward broader authority model?)
-4. **Design Phase 5 path** (federation and treaty requirements)
-5. **Document discoveries** in ADRs (Architecture Decision Records)
-
-### What Phase 4 CANNOT Do
-
-- Use temporary Phase 3 names as basis for final design (registry vocabulary is NOT authority vocabulary)
-- Design federation without modeling delegated sovereignty
-- Create public APIs before authority vocabulary is final
-- Make external commitments based on Phase 3 transitional vocabulary
-
-### Expected Outcomes
-
-Phase 4 completion means:
-
-- ✅ Explicit DDD vocabulary for electoral authority (not just registry mechanisms)
-- ✅ Federation models documented
-- ✅ Treaty participation semantics defined
-- ✅ All seven research topics resolved or explicitly deferred
-- ✅ Phase 5 roadmap with federation entry conditions
-
----
-
-## 13. Constitutional Semantic Governance (The Core Strategic Achievement)
-
-### What This Phase Actually Is (CRITICAL UNDERSTANDING)
-
-This is **NOT** a simple mechanical renaming of `ElectionMode` → `VoterSourceStrategy`.
-
-This is **CONSTITUTIONAL SEMANTIC GOVERNANCE** — a fundamental shift in how the system treats vocabulary itself.
-
-**Key Shift:**
-
-Before Phase 3: Vocabulary is naming (choose good names, document them, maybe refactor later)
-
-After Phase 3: **Vocabulary is sovereignty infrastructure.**
-
-This means:
-- Vocabulary owns constitutional authority (elections are sovereign over voter participation rules)
-- Vocabulary enables interoperability (external authorities can understand governance without seeing schema)
-- Vocabulary creates audit trails (immutable telemetry keys for constitutional dispute analysis)
-- Vocabulary enables federation (stable semantics for treaty participation)
-- Vocabulary shapes governance continuity (today's vocabulary choices affect multi-generational systems)
-
-**This is a fundamentally different engineering maturity level.**
-
-### What This Phase Actually Is — The Three Semantic Shifts
-
-### The Three Semantic Shifts
-
-1. **From "Mode" (behavior) to "Strategy" (authority mechanism)**
-   - Old: `ElectionMode` implied the election *has different modes* — a configuration property
-   - New: `VoterSourceStrategy` implies the election *owns authoritative strategy for voter sourcing*
-   - Consequence: This establishes elections as sovereign over "who participates" decisions
-
-2. **From Implementation Detail (no members vs has members) to Registry Classification**
-   - Old: `ElectionOnly` / `FullMembership` were about data schema (presence/absence of members table)
-   - New: `ImportedVoterRegistry` / `MembershipRegistry` classify the *governance source* of voter authority
-   - Consequence: Enables federation — external authorities can understand governance source without seeing our schema
-
-3. **From Mutable Configuration to Immutable Constitutional Snapshot**
-   - Old: Phase 1 read org boolean at runtime (org changes affected election rules retroactively)
-   - New: Election snapshots voter_source_strategy atomically at creation (immutable authority)
-   - Consequence: Elections own their authority; cannot be changed by org mutations
-
-### Why Language Stabilization Matters for Federation
-
-When multiple electoral authorities federate (e.g., state + national election, or multi-party parliament):
-
-**Without stabilized language:**
-```
-Party A: "We use election_only mode" (implementation detail)
-Party B: "We use full_membership mode" (different schema)
-→ Cannot coordinate participation rules
-→ Cannot verify one another's voter eligibility
-→ Cannot audit cross-party participation
-```
-
-**With stabilized language:**
-```
-Party A: "We use ImportedVoterRegistry strategy" (governance source)
-Party B: "We use MembershipRegistry strategy" (governance source)
-→ Both understand we have different participation authorities
-→ Can establish cross-party validation rules
-→ Can audit against our respective authorities
-→ Can plan future treaty participation
-```
-
-### Phase 4 Will Revisit These Names
-
-Phase 4 governance-language work will determine if:
-- "ImportedVoterRegistry" is the right *permanent* name or if "ImportedVoterAuthority" better expresses constitutional legitimacy
-- Registry/Authority distinction itself is the right model or if different taxonomy is needed
-- Federation, delegation, and hybrid sovereignty require entirely different vocabulary
-
-**Phase 3 names are explicitly transitional — a bridge from implementation detail to proper constitutional language.**
-
----
-
-## 14. Constitutional Semantic Governance Infrastructure (FINAL PRINCIPLE)
-
-**This phase is not about code quality or technical cleanup.** It is about **constitutional semantic governance** — treating vocabulary as sovereignty infrastructure.
-
-### What Becomes Governance Infrastructure in Phase 3
-
-| Infrastructure | What It Protects | Why It Matters |
-|---|---|---|
-| **Immutable telemetry keys** | Audit trail continuity across years | Constitutional dispute analysis depends on stable identifiers |
-| **Snapshot voter_source_strategy** | Election authority sovereignty | Elections own "who can participate" rules; immutable from creation |
-| **Layered vocabulary boundaries** | Semantic purity (persistence vs API vs federation) | Prevents accidental vocabulary collapse that breaks interoperability |
-| **Anti-canonization protections** | Prevents temporary names becoming permanent | Registry vocabulary stays transitional; authority vocabulary deferred to Phase 4 |
-| **Telemetry governance ownership** | Authority over audit trail evolution | Changes require governance decisions, not technical convenience |
-| **Enforcement hierarchy** | Structural confidence in semantic boundaries | Heuristic/behavioral/governance levels with explicit precedence |
-| **Contract evolution mechanics** | Versioning strategy across boundaries | Internal → public → federation; prevents layer violation |
-| **Research backlog** | Foundation for future constitution work | Phase 4 can model federation, delegation, treaties with rigor |
-
-### This Is NOT a Small Refactoring
-
-This phase establishes that:
-
-1. **Vocabulary is constitutional law.** Once adopted, it governs multi-generational system behavior.
-2. **Naming changes are sovereign decisions.** Changes to telemetry keys require governance authority, not just developer preference.
-3. **API contracts are treaties.** Once external systems depend on them, they cannot be changed unilaterally.
-4. **Audit trails are immutable records.** Telemetry keys are constitutional markers; changing them breaks dispute analysis.
-5. **Federation requires stable vocabulary.** External authorities must be able to understand our governance without translation.
-
-### This IS Execution-Ready Constitutional Language Stabilization
-
-When Phase 3 completes:
-- ✅ Vocabulary boundaries are enforced at infrastructure level
-- ✅ Registry and authority concepts are distinct (prevents semantic collapse)
-- ✅ Telemetry is immutable and governance-owned
-- ✅ API contracts are quarantined and versioned
-- ✅ Phase 4 semantic research can proceed with rigor
-- ✅ Federation and treaty participation have clear vocabulary requirements
-
----
-
-## 15. Semantic Sovereignty Protection Rules (Non-Negotiable)
-
-These rules enforce constitutional language stabilization. Violations undermine the sovereignty we're establishing.
-
-1. **Persistence boundary** — `->value` is NEVER called outside `->toPersistenceValue()` and `::from()` hydration
-2. **API quarantine** — `->toApiValue()` returns quarantine-prefixed strings; never raw persistence tokens
-3. **UX-telemetry separation** — `->label()` is ONLY for UX; `->telemetryKey()` is ONLY for audit/governance
-4. **Telemetry immutability** — `->telemetryKey()` changes ONLY via governance decision, never incidentally
-5. **Telemetry governance ownership** — Changes to telemetry keys require ADR and architecture review; not casual refactoring
-6. **fromOrganisation() restriction** — Called ONLY from the 2 approved callers (BackfillVoterSourceStrategy, ElectionManagementController)
-7. **Phase 4 openness** — Constitutional names remain exploratory; not pre-approved; federation may require rethinking
-8. **Public API quarantine** — No public API endpoints created in Phase 3; all must wait for Phase 4 vocabulary finalization
-9. **Internal prop transitionality** — Inertia props may carry transitional vocabulary with explicit `transitional_` markers during Phase 3
-10. **Semantic non-equivalence** — Even if two values are identical strings, their semantic meanings in different layers are NOT equivalent
-11. **Anti-canonization enforcement** — Registry vocabulary must not leak into public APIs, exports, or external contracts (detectable via architecture tests)
-12. **Test count protection** — Test count cannot decrease after rename; 194+ must pass (prevents masking bugs)
-13. **Conflict resolution** — Behavioral test failures override heuristic warnings; behavioral/governance tests define truth
-14. **Federation safety** — No external contracts until Phase 4 finalized vocabulary is available
-15. **Constitutional continuity** — All decisions made with awareness that they shape multi-generational system evolution
-
----
-
-## 16. Phase 4+ Evolution Path (Exploratory, Not Pre-Approved)
-
-| Milestone | Content |
+| Legacy `election.status` | Canonical `ElectionLifecycleStates.*` |
 |---|---|
-| **Phase 4** | Governance-language review for constitutional case names. Remove `transitional_` prefix from `toApiValue()`. Vue migration to stable API vocabulary. Final names to be determined — NOT pre-approved. |
-| **Phase 5+** | DB migration for persistence values if warranted. External registry federation. Delegation authority. Constitutional treaty participation. |
-
----
-
-## Verification
-
-```bash
-# Step 0: Sovereignty fix
-php artisan test tests/Architecture/GovernanceRuntime/ --env=testing
-
-# Step 1: Factory + invariant
-php artisan test tests/Unit/Factories/ --env=testing
-
-# Step 2a: Safety audit (before rename)
-grep -rn "ElectionMode" app/ tests/ config/ routes/ --include="*.php"
-grep -rn "'ElectionMode'" app/ tests/ --include="*.php"
-grep -rn "ElectionMode::class" app/ tests/ --include="*.php"
-grep -rn "ElectionMode" app/Jobs/ app/Listeners/ --include="*.php"
-
-# Step 2e: Post-rename regression (count must not decrease)
-php artisan test --env=testing
-
-# Step 3: Architecture heuristics
-php artisan test tests/Architecture/ --env=testing
-
-# Step 4: API quarantine props
-php artisan test tests/Feature/Election/ --env=testing
-
-# Final
-php artisan test --env=testing
-# Expected: 194+ passing, 0 failures
-```
+| `'active'` | `VOTING_ACTIVE` |
+| `'voting_open'` | `VOTING_ACTIVE` |
+| `'published'` | `RESULTS_PUBLISHED` |
+| `'archived'` | `ARCHIVED` |
+| `'pending_approval'` | `SUBMITTED_FOR_APPROVAL` |
+| `'approved'` | `APPROVED` |

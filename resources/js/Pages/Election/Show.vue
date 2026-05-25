@@ -27,7 +27,7 @@
                             <div class="esp-hero__meta">
                                 <span class="esp-meta-date">{{ formatDate(election.start_date) }} — {{ formatDate(election.end_date) }}</span>
                                 <span class="esp-meta-dot" aria-hidden="true">·</span>
-                                <span class="esp-meta-status" :class="`esp-status--${election.status}`">{{ election.status }}</span>
+                                <span class="esp-meta-status" :class="`esp-status--${election.state}`">{{ election.state }}</span>
                             </div>
                         </div>
 
@@ -179,7 +179,7 @@
                         </template>
 
                         <!-- ── STATE: Election finished ── -->
-                        <template v-else-if="props.election.state === 'results_published' || props.election.state === 'archived'">
+                        <template v-else-if="props.election.state === ElectionLifecycleStates.RESULTS_PUBLISHED || props.election.state === ElectionLifecycleStates.ARCHIVED">
                             <div class="esp-ballot__header">
                                 <div class="esp-ballot__icon esp-ballot__icon--completed" aria-label="Election finished">🏁</div>
                                 <div>
@@ -288,6 +288,7 @@ import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { Head, router, usePage } from '@inertiajs/vue3'
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
+import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 
 const props = defineProps({
     election:          { type: Object,  required: true },

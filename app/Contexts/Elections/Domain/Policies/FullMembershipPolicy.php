@@ -3,7 +3,7 @@
 namespace App\Contexts\Elections\Domain\Policies;
 
 use App\Contexts\Elections\Domain\ValueObjects\EligibilityContext;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 
 /**
  * FullMembershipPolicy — Pure logic for full membership mode eligibility
@@ -26,7 +26,7 @@ final class FullMembershipPolicy implements VoterEligibilityPolicy
     public function isEligible(
         string $userId,
         string $organisationId,
-        ElectionMode $mode
+        VoterSourceStrategy $mode
     ): bool {
         // Placeholder — infrastructure queries DB and calls decideForContext
         return true;
@@ -40,7 +40,7 @@ final class FullMembershipPolicy implements VoterEligibilityPolicy
     public function qualifyingSubset(
         array $userIds,
         string $organisationId,
-        ElectionMode $mode
+        VoterSourceStrategy $mode
     ): array {
         // Domain policies don't implement bulk filtering
         // Infrastructure handles this with optimized queries
@@ -54,7 +54,7 @@ final class FullMembershipPolicy implements VoterEligibilityPolicy
      */
     public function decideForContext(EligibilityContext $context): bool
     {
-        return $context->mode->isFullMembership()
+        return $context->mode->isMembershipRegistry()
             && $context->isActive
             && ! $context->isDeleted
             && in_array($context->membershipStatus, ['active'], true)

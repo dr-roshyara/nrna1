@@ -4,7 +4,7 @@ namespace Tests\Feature\Commands;
 
 use App\Models\Election;
 use App\Models\Organisation;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;

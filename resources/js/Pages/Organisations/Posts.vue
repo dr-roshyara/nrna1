@@ -84,8 +84,8 @@
           </Card>
         </div>
 
-        <!-- Apply CTA -->
-        <div v-if="election.status === 'active'" class="pt-2">
+        <!-- Apply CTA: Show link when election is in nomination phase (lifecycle visualization only) -->
+        <div v-if="election.state === ElectionLifecycleStates.SETUP_NOMINATION" class="pt-2">
           <a
             :href="route('organisations.candidacy.create', organisation.slug)"
             class="inline-flex items-center gap-2 text-sm font-medium text-primary-700 bg-primary-50 border border-primary-200 rounded-lg px-5 py-3 hover:bg-primary-100 transition-colors"
@@ -107,6 +107,7 @@ import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import SectionCard from '@/Components/SectionCard.vue'
 import Card from '@/Components/Card.vue'
 import EmptyState from '@/Components/EmptyState.vue'
+import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 
 defineProps({
   organisation: { type: Object, required: true },

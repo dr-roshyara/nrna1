@@ -2,7 +2,7 @@
 
 namespace App\Contexts\Elections\Domain\ValueObjects;
 
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 
 /**
  * EligibilityContext — Immutable eligibility decision input
@@ -23,7 +23,7 @@ final readonly class EligibilityContext
     public function __construct(
         public string $userId,
         public string $organisationId,
-        public ElectionMode $mode,
+        public VoterSourceStrategy $mode,
         public bool $isActive = true,
         public bool $isDeleted = false,
         public ?string $membershipStatus = null,

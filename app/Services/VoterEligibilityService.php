@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Contexts\Elections\Domain\Policies\VoterEligibilityPolicy;
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use App\Models\Organisation;
 use App\Models\OrganisationUser;
 use App\Models\User;
@@ -28,7 +28,7 @@ class VoterEligibilityService
      * IMPORTANT: Mode must be passed from election context — never derive internally.
      * Used by ElectionVoterController::store() validation.
      */
-    public function isEligibleVoter(Organisation $org, User $user, ElectionMode $mode): bool
+    public function isEligibleVoter(Organisation $org, User $user, VoterSourceStrategy $mode): bool
     {
         return $this->policy->isEligible(
             $user->id,
@@ -53,11 +53,11 @@ class VoterEligibilityService
     public function unassignedEligibleQuery(
         Organisation $org,
         array $excludeUserIds = [],
-        ?ElectionMode $mode = null
+        ?VoterSourceStrategy $mode = null
     ): Builder {
-        $mode ??= ElectionMode::FullMembership;
+        $mode ??= VoterSourceStrategy::MembershipRegistry;
 
-        if ($mode->isElectionOnly()) {
+        if ($mode->isImportedVoterRegistry()) {
             // Election-only mode: all active org users not yet assigned
             // Use raw DB query to bypass BelongsToTenant global scope
             return DB::table('organisation_users')

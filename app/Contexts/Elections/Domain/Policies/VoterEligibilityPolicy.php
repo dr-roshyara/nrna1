@@ -2,7 +2,7 @@
 
 namespace App\Contexts\Elections\Domain\Policies;
 
-use App\Domain\Election\Enum\ElectionMode;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 
 /**
  * VoterEligibilityPolicy — Domain Policy Port
@@ -31,14 +31,14 @@ interface VoterEligibilityPolicy
      *
      * @param string $userId User to check
      * @param string $organisationId Explicit tenancy boundary
-     * @param ElectionMode $mode Election operational mode
+     * @param VoterSourceStrategy $mode Election operational mode
      *
      * @return bool True if eligible, false otherwise
      */
     public function isEligible(
         string $userId,
         string $organisationId,
-        ElectionMode $mode
+        VoterSourceStrategy $mode
     ): bool;
 
     /**
@@ -47,13 +47,13 @@ interface VoterEligibilityPolicy
      *
      * @param array $userIds User IDs to filter
      * @param string $organisationId Explicit tenancy boundary
-     * @param ElectionMode $mode Election operational mode
+     * @param VoterSourceStrategy $mode Election operational mode
      *
      * @return array Subset of $userIds containing only eligible users
      */
     public function qualifyingSubset(
         array $userIds,
         string $organisationId,
-        ElectionMode $mode
+        VoterSourceStrategy $mode
     ): array;
 }
