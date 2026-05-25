@@ -925,14 +925,29 @@ class Election extends Model
     }
 
     /**
-     * @deprecated Use ElectionLifecycle::of($election)->snapshot()->canX instead.
-     * This method is a compatibility bridge that delegates to the new SSOT engine.
+     * @deprecated PHASE C.2.5: This method is a transitional bridge. Removal in Step 7.
+     * Use ElectionLifecycle::of($election)->snapshot()->canX or OperationCapabilityMapper instead.
+     *
+     * This method is a compatibility bridge that delegates to the new SSOT engine
+     * and emits deprecation telemetry for migration tracking.
      *
      * Check if an action is allowed in current state (pure, no auth checks).
      * Delegates to ElectionLifecycle for all state determinations.
      */
     public function allowsAction(string $action): bool
     {
+        // PHASE C.2.5: Emit deprecation telemetry for migration tracking
+        \Illuminate\Support\Facades\Log::channel('governance_deprecation')->warning(
+            'Election::allowsAction() called - DEPRECATED - Phase C.2.5 migration tracking',
+            [
+                'election_id' => $this->id,
+                'election_slug' => $this->slug,
+                'action' => $action,
+                'caller' => $this->getDeprecatedBridgeCallerInfo(),
+                'timestamp' => now()->toIso8601String(),
+            ]
+        );
+
         $snapshot = \App\Application\Election\Facades\ElectionLifecycle::of($this)->snapshot();
 
         // Map middleware actions to lifecycle capabilities
@@ -960,6 +975,28 @@ class Election extends Model
             // Default: not allowed
             default => false,
         };
+    }
+
+    /**
+     * Helper: Extract caller information for deprecation telemetry (Phase C.2.5)
+     */
+    private function getDeprecatedBridgeCallerInfo(): string
+    {
+        $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 5);
+        if (isset($trace[2])) {
+            $caller = $trace[2];
+            $file = basename($caller['file'] ?? '');
+            $line = $caller['line'] ?? '?';
+            $function = $caller['function'] ?? '?';
+            $class = $caller['class'] ?? '';
+            $type = $caller['type'] ?? '';
+
+            if ($class) {
+                return "{$class}{$type}{$function}() [{$file}:{$line}]";
+            }
+            return "{$function}() [{$file}:{$line}]";
+        }
+        return 'unknown';
     }
 
     /**

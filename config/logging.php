@@ -128,6 +128,13 @@ return [
             'level' => env('LOG_LEVEL', 'warning'),
             'days' => 365,
         ],
+
+        'governance_deprecation' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/governance_deprecation.log'),
+            'level' => env('LOG_LEVEL', 'warning'),
+            'days' => 90,
+        ],
     ],
 
 ];

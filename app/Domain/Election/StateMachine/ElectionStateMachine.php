@@ -74,8 +74,24 @@ class ElectionStateMachine
         });
     }
 
+    /**
+     * @deprecated PHASE C.2.5: Wrapper is being removed in Step 7.
+     * Direct callers should use Election::allowsAction() only, which is deprecated separately.
+     * New code should use OperationCapabilityMapper + ElectionLifecycle directly.
+     */
     public function allowsAction(string $action): bool
     {
+        // PHASE C.2.5: Emit deprecation telemetry
+        \Illuminate\Support\Facades\Log::channel('governance_deprecation')->warning(
+            'ElectionStateMachine::allowsAction() wrapper called - DEPRECATED - Phase C.2.5 migration tracking',
+            [
+                'election_id' => $this->election->id,
+                'action' => $action,
+                'caller_file' => debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3)[2]['file'] ?? null,
+                'caller_line' => debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3)[2]['line'] ?? null,
+            ]
+        );
+
         return $this->election->allowsAction($action);
     }
 }
