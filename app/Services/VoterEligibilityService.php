@@ -17,22 +17,23 @@ class VoterEligibilityService
     ) {}
 
     /**
-     * Check if a single user is eligible to vote in an organisation.
+     * Check if a single user is eligible to vote in an election.
      *
-     * Phase B: Routes through policy layer (adapter pattern).
-     * Policy governs all eligibility decisions.
+     * Phase 3A: Routes through policy layer (adapter pattern).
+     * Policy governs all eligibility decisions using the election's constitutional snapshot.
      *
-     * - Election-only mode (uses_full_membership=false): Any active OrganisationUser can vote
-     * - Full membership mode (uses_full_membership=true): Requires active Member with paid/exempt fees
+     * - Election-only mode: Any active OrganisationUser can vote
+     * - Full membership mode: Requires active Member with paid/exempt fees
      *
+     * IMPORTANT: Mode must be passed from election context — never derive internally.
      * Used by ElectionVoterController::store() validation.
      */
-    public function isEligibleVoter(Organisation $org, User $user): bool
+    public function isEligibleVoter(Organisation $org, User $user, ElectionMode $mode): bool
     {
         return $this->policy->isEligible(
             $user->id,
             $org->id,
-            ElectionMode::fromOrganisation($org)
+            $mode
         );
     }
 
@@ -44,13 +45,19 @@ class VoterEligibilityService
      *
      * Optionally filters out users already assigned (excludeUserIds).
      *
+     * CRITICAL: Mode must be passed from election context — never derive internally.
+     * Respects election's voter_source_strategy snapshot, not org's mutable mode.
+     *
      * Used by ElectionVoterController::index() and bulkStore().
      */
     public function unassignedEligibleQuery(
         Organisation $org,
-        array $excludeUserIds = []
+        array $excludeUserIds = [],
+        ?ElectionMode $mode = null
     ): Builder {
-        if (!$org->uses_full_membership) {
+        $mode ??= ElectionMode::FullMembership;
+
+        if ($mode->isElectionOnly()) {
             // Election-only mode: all active org users not yet assigned
             // Use raw DB query to bypass BelongsToTenant global scope
             return DB::table('organisation_users')

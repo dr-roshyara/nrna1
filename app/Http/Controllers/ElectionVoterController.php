@@ -71,7 +71,7 @@ class ElectionVoterController extends Controller
             ->toArray();
 
         $unassignedMembers = $this->eligibilityService
-            ->unassignedEligibleQuery($organisation, $assignedUserIds)
+            ->unassignedEligibleQuery($organisation, $assignedUserIds, ElectionMode::fromElection($election))
             ->get();
 
         // Load active verifications for this election, keyed by user_id
@@ -107,10 +107,11 @@ class ElectionVoterController extends Controller
             'user_id' => [
                 'required',
                 'uuid',
-                // Must be eligible voter (depends on organisation's membership mode)
-                function ($attribute, $value, $fail) use ($organisation) {
+                // Must be eligible voter (checked against election's constitutional snapshot)
+                function ($attribute, $value, $fail) use ($organisation, $election) {
                     $user = \App\Models\User::find($value);
-                    if (! $user || ! $this->eligibilityService->isEligibleVoter($organisation, $user)) {
+                    $mode = ElectionMode::fromElection($election);
+                    if (! $user || ! $this->eligibilityService->isEligibleVoter($organisation, $user, $mode)) {
                         $fail('The selected user is not eligible to vote in this election.');
                     }
                 },
@@ -122,7 +123,7 @@ class ElectionVoterController extends Controller
                 userId: $request->user_id,
                 electionId: $election->id,
                 organisationId: $organisation->id,
-                mode: ElectionMode::fromOrganisation($organisation),
+                mode: ElectionMode::fromElection($election),
                 assignedBy: auth()->id(),
             ));
         } catch (VoterNotEligibleException | DuplicateVoterException $e) {
@@ -153,7 +154,7 @@ class ElectionVoterController extends Controller
             userIds:        $request->user_ids,
             electionId:     $election->id,
             organisationId: $organisation->id,
-            mode:           ElectionMode::fromOrganisation($organisation),
+            mode:           ElectionMode::fromElection($election),
             assignedBy:     auth()->id(),
         ));
 

@@ -51,6 +51,9 @@ class VoterImportController extends Controller
 
     public function publicTutorial(): Response
     {
+        // publicTutorial() is context-free: no election exists in this scope.
+        // Full-membership is the generic default for a context-free instructional view.
+        // Do NOT derive from election snapshot — there is no election here.
         return Inertia::render('Elections/Voters/ImportTutorial', [
             'organisation'       => null,
             'election'           => null,
@@ -82,8 +85,8 @@ class VoterImportController extends Controller
 
         $service = new VoterImportService($election, $this->eligibilityService);
 
-        // Route to correct preview method based on membership mode
-        if (!$organisation->uses_full_membership) {
+        // Route to correct preview method based on election's constitutional snapshot
+        if (ElectionMode::fromElection($election)->isElectionOnly()) {
             $result = $service->previewElectionOnly($request->file('file'));
         } else {
             $result = $service->preview($request->file('file'));
@@ -114,8 +117,8 @@ class VoterImportController extends Controller
 
         $service = new VoterImportService($election, $this->eligibilityService);
 
-        // Route to correct import method based on membership mode
-        if (!$organisation->uses_full_membership) {
+        // Route to correct import method based on election's constitutional snapshot
+        if (ElectionMode::fromElection($election)->isElectionOnly()) {
             $result = $service->importElectionOnly($request->file('file'));
             $message = sprintf(
                 'Voter import completed: %d users created, %d already existing, %d invitation emails queued.',

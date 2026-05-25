@@ -4,6 +4,7 @@ namespace App\Domain\Election\Enum;
 
 use App\Models\Organisation;
 use App\Models\Election;
+use Illuminate\Support\Facades\Log;
 
 /**
  * ElectionMode — Domain bifurcation point
@@ -42,19 +43,26 @@ enum ElectionMode: string
 
     /**
      * Resolve election's authoritative voter-source strategy.
-     * Election snapshot is sovereign runtime authority.
+     * Election snapshot is sovereign runtime authority — no fallback.
      *
-     * @deprecated fallback branch — remove after Phase 3 backfill
+     * Phase 3.2: Enforce sovereignty via exception.
+     * All elections must have voter_source_strategy snapshot.
+     * Missing snapshot is a critical bug (database constraint prevents this in production).
      */
     public static function fromElection(Election $election): self
     {
-        if ($election->voter_source_strategy !== null) {
-            return self::from($election->voter_source_strategy);
+        if ($election->voter_source_strategy === null) {
+            throw new \RuntimeException(
+                sprintf(
+                    'Election %s (%s) missing voter_source_strategy snapshot. ' .
+                    'Run "php artisan app:backfill-voter-source-strategy" to populate missing elections.',
+                    $election->id,
+                    $election->slug
+                )
+            );
         }
 
-        // @deprecated Phase 2 compatibility: pre-snapshot elections only
-        // Remove once: SELECT COUNT(*) FROM elections WHERE voter_source_strategy IS NULL = 0
-        return self::fromOrganisation($election->organisation);
+        return self::from($election->voter_source_strategy);
     }
 
     /**
