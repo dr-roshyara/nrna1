@@ -164,7 +164,7 @@ class OrganisationController extends Controller
             ->where('organisation_id', $organisation->id)
             ->where('type', 'real')
             ->orderByDesc('created_at')
-            ->get(['id', 'name', 'slug', 'status', 'start_date', 'end_date', 'results_published']);
+            ->get(['id', 'name', 'slug', 'state', 'start_date', 'end_date', 'results_published']);
 
         // Voter membership context for the current user across these elections
         $electionIds = $realElections->pluck('id')->toArray();

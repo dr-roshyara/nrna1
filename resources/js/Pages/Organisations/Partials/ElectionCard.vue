@@ -14,7 +14,7 @@
           {{ formatDate(election.start_date) }} → {{ formatDate(election.end_date) }}
         </p>
       </div>
-      <StatusBadge :status="election.status" size="sm" />
+      <StatusBadge :status="election.state" size="sm" />
     </div>
 
     <!-- Divider -->

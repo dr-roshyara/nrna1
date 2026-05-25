@@ -466,8 +466,8 @@ const props = defineProps({
 
 const page = usePage()
 
-const activeElections    = computed(() => props.elections.filter(e => e.status === 'active'))
-const completedElections = computed(() => props.elections.filter(e => e.status === 'completed'))
+const activeElections    = computed(() => props.elections.filter(e => e.state === 'voting_active'))
+const completedElections = computed(() => props.elections.filter(e => e.state === 'results_published' || e.state === 'archived'))
 
 const voterStatus = (electionId) => {
   const m = props.voterMemberships[electionId]
