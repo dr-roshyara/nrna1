@@ -190,15 +190,31 @@ class ElectionLifecycleFacadeTest extends TestCase
     }
 
     /**
-     * Test: Facade exposes canTransitionTo
+     * Test: Facade exposes isActionAllowed (authority checking)
      */
     #[\PHPUnit\Framework\Attributes\Test]
-    public function facade_exposes_canTransitionTo(): void
+    public function facade_exposes_isActionAllowed(): void
+    {
+        $election = Election::factory()->create();
+        $facade = ElectionLifecycle::of($election);
+
+        $this->assertIsBool($facade->isActionAllowed('some_action'));
+    }
+
+    /**
+     * Test: Facade preserves canTransitionTo for backward compatibility (deprecated)
+     */
+    #[\PHPUnit\Framework\Attributes\Test]
+    public function facade_preserves_canTransitionTo_for_backward_compatibility(): void
     {
         $election = Election::factory()->create();
         $facade = ElectionLifecycle::of($election);
 
         $this->assertIsBool($facade->canTransitionTo('some_action'));
+        $this->assertEquals(
+            $facade->isActionAllowed('some_action'),
+            $facade->canTransitionTo('some_action')
+        );
     }
 
     /**

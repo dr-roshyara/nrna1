@@ -23,7 +23,7 @@ final class ElectionLifecycleSnapshot
         return $this->state === ElectionLifecycleState::VotingActive;
     }
 
-    public function canTransitionTo(string $action): bool
+    public function isActionAllowed(string $action): bool
     {
         return in_array($action, $this->allowedActions, true);
     }

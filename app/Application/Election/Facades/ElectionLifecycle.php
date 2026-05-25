@@ -170,7 +170,7 @@ final class ElectionLifecycle
      */
     public function canActivate(): bool
     {
-        return $this->canTransitionTo('open_voting');
+        return $this->isActionAllowed('open_voting');
     }
 
     /**
@@ -248,12 +248,24 @@ final class ElectionLifecycle
     /**
      * Check if a specific action is allowed.
      *
+     * CONSTITUTIONAL AUTHORITY CHECK: Determines if an action is permitted in the current state.
+     * This is NOT orchestration (state machine transitions). This is AUTHORITY (what may the user do?).
+     *
      * @param string $action
      * @return bool
      */
+    public function isActionAllowed(string $action): bool
+    {
+        return $this->snapshot->isActionAllowed($action);
+    }
+
+    /**
+     * @deprecated Use isActionAllowed() instead. Name clarifies this is authority checking, not orchestration.
+     * PHASE C.2.5: This method name was semantically contaminated — suggesting orchestration semantics.
+     */
     public function canTransitionTo(string $action): bool
     {
-        return $this->snapshot->canTransitionTo($action);
+        return $this->isActionAllowed($action);
     }
 
     /**

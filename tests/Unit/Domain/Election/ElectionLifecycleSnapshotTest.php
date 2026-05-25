@@ -73,10 +73,10 @@ class ElectionLifecycleSnapshotTest extends TestCase
     }
 
     /**
-     * Test: canTransitionTo() checks allowed actions
+     * Test: isActionAllowed() checks allowed actions
      */
     #[\PHPUnit\Framework\Attributes\Test]
-    public function can_transition_to_checks_allowed_actions(): void
+    public function is_action_allowed_checks_allowed_actions(): void
     {
         $snapshot = new ElectionLifecycleSnapshot(
             state: ElectionLifecycleState::VotingActive,
@@ -90,8 +90,8 @@ class ElectionLifecycleSnapshotTest extends TestCase
             allowedActions: ['close_voting'],
         );
 
-        $this->assertTrue($snapshot->canTransitionTo('close_voting'));
-        $this->assertFalse($snapshot->canTransitionTo('open_voting'));
+        $this->assertTrue($snapshot->isActionAllowed('close_voting'));
+        $this->assertFalse($snapshot->isActionAllowed('open_voting'));
     }
 
     /**

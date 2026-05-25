@@ -1097,7 +1097,7 @@ class Election extends Model
      * Validates both the transition path and business conditions
      *
      * @deprecated Compatibility shell. Authority is ElectionLifecycle.
-     * Use ElectionLifecycle::of($this)->canTransitionTo($action) instead.
+     * Use ElectionLifecycle::of($this)->isActionAllowed($action) instead.
      */
     public function canTransitionTo(string $toState): bool
     {
@@ -1113,8 +1113,8 @@ class Election extends Model
                 continue;
             }
 
-            // Check if ElectionLifecycle allows this action
-            if (!\App\Application\Election\Facades\ElectionLifecycle::of($this)->canTransitionTo($action)) {
+            // Check if ElectionLifecycle allows this action (authority check, not orchestration)
+            if (!\App\Application\Election\Facades\ElectionLifecycle::of($this)->isActionAllowed($action)) {
                 continue;
             }
 
