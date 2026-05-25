@@ -924,80 +924,6 @@ class Election extends Model
         $this->attributes['state'] = $value;
     }
 
-    /**
-     * @deprecated PHASE C.2.5: This method is a transitional bridge. Removal in Step 7.
-     * Use ElectionLifecycle::of($election)->snapshot()->canX or OperationCapabilityMapper instead.
-     *
-     * This method is a compatibility bridge that delegates to the new SSOT engine
-     * and emits deprecation telemetry for migration tracking.
-     *
-     * Check if an action is allowed in current state (pure, no auth checks).
-     * Delegates to ElectionLifecycle for all state determinations.
-     */
-    public function allowsAction(string $action): bool
-    {
-        // PHASE C.2.5: Emit deprecation telemetry for migration tracking
-        \Illuminate\Support\Facades\Log::channel('governance_deprecation')->warning(
-            'Election::allowsAction() called - DEPRECATED - Phase C.2.5 migration tracking',
-            [
-                'election_id' => $this->id,
-                'election_slug' => $this->slug,
-                'action' => $action,
-                'caller' => $this->getDeprecatedBridgeCallerInfo(),
-                'timestamp' => now()->toIso8601String(),
-            ]
-        );
-
-        $snapshot = \App\Application\Election\Facades\ElectionLifecycle::of($this)->snapshot();
-
-        // Map middleware actions to lifecycle capabilities
-        return match ($action) {
-            // Configuration and setup
-            'manage_posts' => $snapshot->canEdit,
-            'import_voters' => $snapshot->canManageVoters,
-            'manage_committee' => $snapshot->canEdit,
-            'configure_election' => $snapshot->canEdit,
-            'manage_settings' => $snapshot->canEdit,
-
-            // Voting
-            'cast_vote' => $snapshot->canVote,
-            'verify_vote' => $snapshot->canVote || !$snapshot->isLocked,
-
-            // Candidacy
-            'apply_candidacy' => $snapshot->state === \App\Domain\Election\Enum\ElectionLifecycleState::SetupNomination,
-            'approve_candidacy' => $snapshot->canEdit,
-            'view_candidates' => true,  // Always readable
-
-            // Results
-            'view_results' => !$snapshot->isLocked,
-            'download_receipt' => !$snapshot->isLocked,
-
-            // Default: not allowed
-            default => false,
-        };
-    }
-
-    /**
-     * Helper: Extract caller information for deprecation telemetry (Phase C.2.5)
-     */
-    private function getDeprecatedBridgeCallerInfo(): string
-    {
-        $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 5);
-        if (isset($trace[2])) {
-            $caller = $trace[2];
-            $file = basename($caller['file'] ?? '');
-            $line = $caller['line'] ?? '?';
-            $function = $caller['function'] ?? '?';
-            $class = $caller['class'] ?? '';
-            $type = $caller['type'] ?? '';
-
-            if ($class) {
-                return "{$class}{$type}{$function}() [{$file}:{$line}]";
-            }
-            return "{$function}() [{$file}:{$line}]";
-        }
-        return 'unknown';
-    }
 
     /**
      * Check if dates for a specific phase can be updated
@@ -1092,50 +1018,6 @@ class Election extends Model
         return $this->results_published_at !== null;
     }
 
-    /**
-     * Can transition to a given state?
-     * Validates both the transition path and business conditions
-     *
-     * @deprecated Compatibility shell. Authority is ElectionLifecycle.
-     * Use ElectionLifecycle::of($this)->isActionAllowed($action) instead.
-     */
-    public function canTransitionTo(string $toState): bool
-    {
-        // Delegate to ElectionConstitution via snapshot
-        // Check if any action allowed in the current state satisfies the business conditions
-        $currentState = \App\Domain\Election\Enum\ElectionLifecycleState::tryFrom($this->state ?? 'draft');
-        if (!$currentState) {
-            return false;
-        }
-
-        foreach (\App\Domain\Election\Constitution\ElectionConstitution::RULES as $action => $rules) {
-            if (!in_array($currentState->value, $rules['allowed_states'] ?? [])) {
-                continue;
-            }
-
-            // Check if ElectionLifecycle allows this action (authority check, not orchestration)
-            if (!\App\Application\Election\Facades\ElectionLifecycle::of($this)->isActionAllowed($action)) {
-                continue;
-            }
-
-            // Check business conditions for target state
-            $isValid = match ($toState) {
-                'administration' => $this->canEnterAdministrationPhase(),
-                'setup' => true,
-                'ready_for_voting' => true,
-                'voting_active' => $this->canEnterVotingPhase(),
-                'counting' => $this->canEnterCountingPhase(),
-                'results_published' => $this->canEnterResultsPhase(),
-                default => false,
-            };
-
-            if ($isValid) {
-                return true;
-            }
-        }
-
-        return false;
-    }
 
     public function isPendingApproval(): bool
     {

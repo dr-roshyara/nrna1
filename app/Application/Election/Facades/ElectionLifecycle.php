@@ -259,14 +259,6 @@ final class ElectionLifecycle
         return $this->snapshot->isActionAllowed($action);
     }
 
-    /**
-     * @deprecated Use isActionAllowed() instead. Name clarifies this is authority checking, not orchestration.
-     * PHASE C.2.5: This method name was semantically contaminated — suggesting orchestration semantics.
-     */
-    public function canTransitionTo(string $action): bool
-    {
-        return $this->isActionAllowed($action);
-    }
 
     /**
      * ============================================================================

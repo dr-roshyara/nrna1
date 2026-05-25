@@ -138,55 +138,6 @@ final class Phase_C25_SovereigntyBehavioralInvariantsTest extends TestCase
         );
     }
 
-    /**
-     * Test: Deprecated allowsAction() bridge delegates to resolver correctly
-     *
-     * GOVERNANCE: Before removing deprecated bridge in Step 7, we track all usage.
-     * This test verifies the deprecated method delegates to resolver without crashes.
-     *
-     * Scenario:
-     * 1. Call deprecated Election::allowsAction() method with mapped actions
-     * 2. Verify it returns a boolean (functional)
-     * 3. Verify it delegates to resolver's capability assessment
-     * 4. Confirm behavior changes when state changes (resolver driven)
-     */
-    #[\PHPUnit\Framework\Attributes\Test]
-    public function deprecated_allowsAction_delegates_to_resolver(): void
-    {
-        $election = Election::factory()->create();
-
-        // Call deprecated bridge with action that's mapped in allowsAction()
-        // (telemetry logging happens internally)
-        // Draft state allows: canEdit=true, canVote=false, canManageVoters=true
-        $result_manage_posts = $election->allowsAction('manage_posts');
-        $result_vote = $election->allowsAction('can_vote');
-
-        // Verify results are booleans (delegates to resolver pattern)
-        $this->assertIsBool($result_manage_posts);
-        $this->assertIsBool($result_vote);
-
-        // Draft state: canEdit=true (manage_posts allowed)
-        $this->assertTrue(
-            $result_manage_posts,
-            'Draft election should allow manage_posts (canEdit=true in Draft state)'
-        );
-
-        // Draft state: canVote=false (voting NOT allowed)
-        $this->assertFalse(
-            $result_vote,
-            'Draft election should NOT allow voting (canVote=false in Draft state)'
-        );
-
-        // Now archive the election (no permissions allowed)
-        $election->update(['archived_at' => now()]);
-
-        // Verify behavior changed (proves resolver is consulted for each call)
-        $result_after_archive = $election->allowsAction('manage_posts');
-        $this->assertFalse(
-            $result_after_archive,
-            'Archived election should NOT allow manage_posts (resolver changed canEdit to false)'
-        );
-    }
 
     /**
      * Test: ElectionLifecycle wrapper is transparent (no reinterpretation)
