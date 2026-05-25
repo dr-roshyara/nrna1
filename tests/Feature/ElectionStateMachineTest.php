@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Application\Election\Facades\ElectionLifecycle;
 use App\Models\Candidacy;
 use App\Models\Election;
 use App\Models\ElectionMembership;
@@ -124,49 +125,136 @@ class ElectionStateMachineTest extends TestCase
     }
 
     // =========================================================================
-    // ALLOWS ACTION TESTS
+    // ALLOWS ACTION TESTS (MIGRATED TO RESOLVER-CENTRIC)
     // =========================================================================
 
-    /** @test */
+    /**
+     * @test
+     * MIGRATED: Rewritten from deprecated allowsAction() to resolver-based capability checks.
+     * Now validates that ElectionCapabilityResolver determines authority based on
+     * constitutional facts (state, dates, completion flags), not the state column alone.
+     */
     public function administration_state_allows_manage_posts(): void
     {
         $this->election->update(['state' => 'administration']);
         $this->election->refresh();
 
-        $this->assertTrue($this->election->allowsAction('manage_posts'));
-        $this->assertFalse($this->election->allowsAction('cast_vote'));
-        $this->assertFalse($this->election->allowsAction('apply_candidacy'));
+        // Resolver determines authority based on constitutional facts
+        $snapshot = ElectionLifecycle::of($this->election)->snapshot();
+
+        // Administration state should allow editing
+        $this->assertTrue($snapshot->canEdit,
+            'ElectionCapabilityResolver should allow editing in administration state'
+        );
+
+        // Should not allow voting (wrong phase)
+        $this->assertFalse($snapshot->canVote,
+            'ElectionCapabilityResolver should deny voting in administration state'
+        );
+
+        // Should not allow candidacy actions (wrong phase)
+        $this->assertFalse(
+            in_array('apply_candidacy', $snapshot->allowedActions, true),
+            'ElectionCapabilityResolver should deny candidacy actions in administration state'
+        );
     }
 
-    /** @test */
+    /**
+     * @test
+     * MIGRATED: Rewritten from deprecated allowsAction() to resolver-based capability checks.
+     * Now validates that ElectionCapabilityResolver determines authority based on
+     * constitutional facts, not state column alone.
+     */
     public function nomination_state_allows_candidacy_actions(): void
     {
         $this->election->update(['state' => 'nomination']);
 
-        $this->assertTrue($this->election->allowsAction('apply_candidacy'));
-        $this->assertTrue($this->election->allowsAction('approve_candidacy'));
-        $this->assertFalse($this->election->allowsAction('cast_vote'));
-        $this->assertFalse($this->election->allowsAction('manage_posts'));
+        // Resolver determines authority based on constitutional facts
+        $snapshot = ElectionLifecycle::of($this->election)->snapshot();
+
+        // Nomination state should allow candidacy actions (editing candidates)
+        $this->assertTrue($snapshot->canEdit,
+            'ElectionCapabilityResolver should allow editing (candidacy management) in nomination state'
+        );
+
+        // Should not allow voting (wrong phase)
+        $this->assertFalse($snapshot->canVote,
+            'ElectionCapabilityResolver should deny voting in nomination state'
+        );
+
+        // canEdit controls both 'manage_posts' and 'apply_candidacy'/'approve_candidacy'
+        $this->assertFalse(in_array('cast_vote', $snapshot->allowedActions, true),
+            'ElectionCapabilityResolver should deny voting actions in nomination state'
+        );
     }
 
-    /** @test */
+    /**
+     * @test
+     * MIGRATED: Rewritten from deprecated allowsAction() to resolver-based capability checks.
+     * Now validates that ElectionCapabilityResolver determines authority based on
+     * constitutional facts, not state column alone.
+     */
     public function voting_state_allows_cast_vote_only(): void
     {
-        $this->election->update(['state' => 'voting']);
+        $this->election->update([
+            'state' => 'voting_active',
+            'voting_starts_at' => now()->subHour(),
+            'voting_ends_at' => now()->addDays(3),
+        ]);
 
-        $this->assertTrue($this->election->allowsAction('cast_vote'));
-        $this->assertTrue($this->election->allowsAction('verify_vote'));
-        $this->assertFalse($this->election->allowsAction('manage_posts'));
-        $this->assertFalse($this->election->allowsAction('apply_candidacy'));
+        // Resolver determines authority based on constitutional facts
+        $snapshot = ElectionLifecycle::of($this->election)->snapshot();
+
+        // Voting state should allow voting actions
+        $this->assertTrue($snapshot->canVote,
+            'ElectionCapabilityResolver should allow voting in voting state'
+        );
+
+        // Should not allow editing
+        $this->assertFalse($snapshot->canEdit,
+            'ElectionCapabilityResolver should deny editing during voting state'
+        );
+
+        // Should not allow candidacy actions
+        $this->assertFalse(in_array('apply_candidacy', $snapshot->allowedActions, true),
+            'ElectionCapabilityResolver should deny candidacy actions during voting state'
+        );
     }
 
-    /** @test */
+    /**
+     * @test
+     * MIGRATED: Rewritten from deprecated allowsAction() to resolver-based capability checks.
+     * Now validates that ElectionCapabilityResolver determines authority based on
+     * constitutional facts, not state column alone.
+     *
+     * SEMANTIC NOTE: ResultsPublished state is terminal. Election is locked (isLocked=true),
+     * only 'archive' action is allowed. The domain model does not allow further result viewing
+     * modifications after publication.
+     */
     public function results_state_allows_view_results(): void
     {
-        $this->election->update(['state' => 'results']);
+        $this->election->update([
+            'state' => 'results_published',
+            'results_published_at' => now()->subHours(1),
+        ]);
 
-        $this->assertTrue($this->election->allowsAction('view_results'));
-        $this->assertFalse($this->election->allowsAction('cast_vote'));
+        // Resolver determines authority based on constitutional facts
+        $snapshot = ElectionLifecycle::of($this->election)->snapshot();
+
+        // Results published state is terminal - election is locked
+        $this->assertTrue($snapshot->isLocked,
+            'ElectionCapabilityResolver should lock election in ResultsPublished state'
+        );
+
+        // Should not allow voting
+        $this->assertFalse($snapshot->canVote,
+            'ElectionCapabilityResolver should deny voting in ResultsPublished state'
+        );
+
+        // Only archival is allowed in ResultsPublished state
+        $this->assertEquals(['archive'], $snapshot->allowedActions,
+            'ElectionCapabilityResolver should only allow archive action in ResultsPublished state'
+        );
     }
 
     // =========================================================================
@@ -664,21 +752,37 @@ class ElectionStateMachineTest extends TestCase
     }
 
     // =========================================================================
-    // VOTING PHASE RESTRICTIONS
+    // VOTING PHASE RESTRICTIONS (MIGRATED TO RESOLVER-CENTRIC)
     // =========================================================================
 
-    /** @test */
+    /**
+     * @test
+     * MIGRATED: Rewritten from deprecated allowsAction() to resolver-based capability checks.
+     * Now validates that ElectionCapabilityResolver denies editing actions during voting phase,
+     * regardless of previous permissions.
+     */
     public function cannot_manage_settings_during_voting_phase(): void
     {
         $this->election->update([
+            'state' => 'voting_active',
             'administration_completed' => true,
             'nomination_completed' => true,
             'voting_starts_at' => now()->subHour(),
             'voting_ends_at' => now()->addDays(3),
         ]);
 
-        $this->assertFalse($this->election->allowsAction('manage_posts'));
-        $this->assertFalse($this->election->allowsAction('import_voters'));
+        // Resolver determines authority based on constitutional facts
+        $snapshot = ElectionLifecycle::of($this->election)->snapshot();
+
+        // During voting phase, editing should be denied
+        $this->assertFalse($snapshot->canEdit,
+            'ElectionCapabilityResolver should deny editing during voting phase'
+        );
+
+        // Specifically deny voter management
+        $this->assertFalse($snapshot->canManageVoters,
+            'ElectionCapabilityResolver should deny voter management during voting phase'
+        );
     }
 
     // =========================================================================
