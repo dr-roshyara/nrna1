@@ -279,6 +279,7 @@ class OrganisationController extends Controller
                 'languages'      => 'nullable|array',
                 'languages.*'    => 'string|in:en,de,np',
                 'logo'           => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+                'uses_full_membership' => 'nullable|boolean',
             ]);
 
             $user = auth()->user();
@@ -310,6 +311,7 @@ class OrganisationController extends Controller
                     'representative' => $request->representative ? ['name' => $request->representative] : null,
                     'languages'      => $request->languages ?? [],
                     'logo'           => $logoPath,
+                    'uses_full_membership' => $request->boolean('uses_full_membership', true),
                 ]);
 
                 \Log::info('Organisation created', [
