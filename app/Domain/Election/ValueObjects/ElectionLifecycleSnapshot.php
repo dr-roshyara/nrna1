@@ -27,4 +27,15 @@ final class ElectionLifecycleSnapshot
     {
         return in_array($action, $this->allowedActions, true);
     }
+
+    public function isParticipationLocked(): bool
+    {
+        return match($this->state) {
+            ElectionLifecycleState::Draft,
+            ElectionLifecycleState::SubmittedForApproval,
+            ElectionLifecycleState::Approved,
+            ElectionLifecycleState::Rejected => false,
+            default => true,
+        };
+    }
 }

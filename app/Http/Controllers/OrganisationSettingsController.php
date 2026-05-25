@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use App\Models\Organisation;
+use App\Models\Election;
+use App\Application\Election\Facades\ElectionLifecycle;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -120,6 +122,22 @@ class OrganisationSettingsController extends Controller
      */
     private function validateModeChangeConstraints(Organisation $organisation, array $validated, int $memberCount): void
     {
+        // Guard: Check if any election is in participation-locked state
+        $lockedElectionExists = Election::withoutGlobalScopes()
+            ->where('organisation_id', $organisation->id)
+            ->get()
+            ->contains(fn($election) => ElectionLifecycle::of($election)->isParticipationLocked());
+
+        if ($lockedElectionExists) {
+            throw new \Illuminate\Validation\ValidationException(
+                \Illuminate\Validation\Validator::make([], [
+                    'membership_mode' => 'required',
+                ], [
+                    'membership_mode.required' => __('organisations.errors.participation_locked_by_active_election'),
+                ])
+            );
+        }
+
         // Only apply constraints when switching FROM full TO election-only
         if (!$organisation->uses_full_membership || $validated['uses_full_membership']) {
             return;

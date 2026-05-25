@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Election;
 use App\Http\Controllers\Controller;
 use App\Models\Election;
 use App\Models\Organisation;
+use App\Domain\Election\Enum\ElectionMode;
 use App\Services\VoterEligibilityService;
 use App\Services\VoterImportService;
 use Illuminate\Http\RedirectResponse;
@@ -27,7 +28,7 @@ class VoterImportController extends Controller
         return Inertia::render('Elections/Voters/Import', [
             'organisation' => $organisation->only('id', 'name', 'slug'),
             'election'     => $election->only('id', 'slug', 'name'),
-            'uses_full_membership' => $organisation->uses_full_membership ?? true,
+            'uses_full_membership' => ElectionMode::fromElection($election)->isFullMembership(),
         ]);
     }
 
@@ -42,7 +43,7 @@ class VoterImportController extends Controller
         return Inertia::render('Elections/Voters/ImportTutorial', [
             'organisation'       => $organisation->only('id', 'name', 'slug'),
             'election'           => $election->only('id', 'slug', 'name'),
-            'uses_full_membership' => $organisation->uses_full_membership ?? true,
+            'uses_full_membership' => ElectionMode::fromElection($election)->isFullMembership(),
         ]);
     }
 

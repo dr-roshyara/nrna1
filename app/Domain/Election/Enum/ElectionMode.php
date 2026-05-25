@@ -3,6 +3,7 @@
 namespace App\Domain\Election\Enum;
 
 use App\Models\Organisation;
+use App\Models\Election;
 
 /**
  * ElectionMode — Domain bifurcation point
@@ -37,6 +38,23 @@ enum ElectionMode: string
         return $organisation->uses_full_membership
             ? self::FullMembership
             : self::ElectionOnly;
+    }
+
+    /**
+     * Resolve election's authoritative voter-source strategy.
+     * Election snapshot is sovereign runtime authority.
+     *
+     * @deprecated fallback branch — remove after Phase 3 backfill
+     */
+    public static function fromElection(Election $election): self
+    {
+        if ($election->voter_source_strategy !== null) {
+            return self::from($election->voter_source_strategy);
+        }
+
+        // @deprecated Phase 2 compatibility: pre-snapshot elections only
+        // Remove once: SELECT COUNT(*) FROM elections WHERE voter_source_strategy IS NULL = 0
+        return self::fromOrganisation($election->organisation);
     }
 
     /**

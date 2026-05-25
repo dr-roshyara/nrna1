@@ -110,6 +110,7 @@ class Election extends Model
         'slug',
         'description',
         'type',
+        'voter_source_strategy',
         'start_date',
         'end_date',
         'is_active',
@@ -208,6 +209,7 @@ class Election extends Model
         'ip_whitelist'           => 'array',
         'settings_changes'       => 'array',
         'settings_updated_at'    => 'datetime',
+        'voter_source_strategy'  => 'string',
         // Business condition casts
         'posts_count'                        => 'integer',
         'voters_count'                       => 'integer',

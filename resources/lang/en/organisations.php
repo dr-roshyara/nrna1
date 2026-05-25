@@ -9,5 +9,6 @@ return [
         'membership_mode_rate_limit' => 'Too many attempts to change membership mode. Please wait before trying again.',
         'pending_fees_block' => 'Cannot switch to election-only mode while :count members have pending fees.',
         'confirmation_required' => 'You must confirm this change when members exist.',
+        'participation_locked_by_active_election' => 'Voter source strategy cannot be changed while an election is in setup, nomination, voting, or counting phase.',
     ],
 ];
