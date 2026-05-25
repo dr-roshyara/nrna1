@@ -520,3 +520,92 @@ php artisan test --env=testing
 4. Voter import page → shows election-only format (not org's current setting)
 5. Advance election to SetupAdministration → try org settings change → blocked
 6. After election archived → org settings change succeeds
+
+---
+
+## Phase 2 Completion Status
+
+✅ **COMPLETE** — All steps implemented, all 24 tests passing (Groups A-E)
+
+**Commits:**
+- `744c7e2a6` — Phase 1: Organization creation bug fix (4 tests)
+- `ebf3d1a5a` — Phase 2: Constitutional snapshot & participation freeze (20 tests)
+
+**Key Achievement:** Election voter authority is now snapshotted constitutionally instead of dynamically inherited from organisation runtime state.
+
+---
+
+## Phase 3+ Strategic Direction
+
+**Principle:** Architectural evolution must follow the sequence:
+```
+stabilize → purify → formalize → federate
+```
+
+### Phase 3 (Consolidation & Purification)
+
+**DO NOT expand yet.** Complete foundational purification first.
+
+**Priority 1 — Snapshot Backfill (CRITICAL)**
+- Backfill all existing elections with voter_source_strategy values
+- Make fallback path unreachable
+- Success: all elections have non-null voter_source_strategy
+
+**Priority 2 — Remove Legacy Fallback**
+- Delete ElectionMode::fromOrganisation() fallback branch
+- Make voter_source_strategy NOT NULL in database
+- Enforce: election snapshot is SOLE authority
+
+**Priority 3 — Vocabulary Convergence**
+- ElectionMode → VoterSourceStrategy (eventual rename)
+- Remove uses_full_membership from election contexts
+- Keep org.uses_full_membership as governance default only
+
+**Priority 4 — Runtime Audit & Invariant Hardening**
+- No election runtime may read org.uses_full_membership
+- No projection may derive authority from org settings
+- No controller may bypass snapshot resolution
+- Encode as architecture tests
+
+**Priority 5 — Overlay Runtime Formalization (Lightweight)**
+- Document suspension authority semantics
+- Clarify emergency governance behavior
+- Clarify whether overlays preserve freeze state
+
+**Why Phase 3 is consolidation, NOT expansion:**
+- Sovereignty just established (fallback still exists = transitional)
+- Vocabulary still mixed
+- Invariants documented but not enforced
+- Architecture not ready for federation yet
+
+### Phase 4 (Participation Authority Modeling)
+
+Start ONLY after Phase 3 is complete.
+
+**Topics:**
+- Voter authority value objects
+- Hybrid participation semantics
+- Delegation authority
+- Capability coupling
+
+### Phase 5 (Federation & External Registries)
+
+Start ONLY after Phase 4 is complete.
+
+**Topics:**
+- External voter authorities
+- Federated identity
+- Delegated participation authority
+- Cross-tenant election participation
+
+---
+
+## Most Important Rule
+
+**DO NOT federate before purifying.**  
+**DO NOT expand before stabilizing.**  
+**DO NOT formalize before converging.**
+
+This discipline prevents governance-runtime instability.
+
+See `memory/phase3_consolidation_strategy.md` for detailed roadmap.
