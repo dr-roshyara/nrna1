@@ -139,6 +139,94 @@ class AppServiceProvider extends ServiceProvider
             )
         );
 
+        // Constitutional Trust Infrastructure: Phase D.5 Resolver Wiring
+        // Register trust evidence privacy policy
+        $this->app->singleton(
+            \App\Domain\Election\Security\TrustEvidencePrivacyPolicy::class,
+            fn($app) => new \App\Domain\Election\Security\TrustEvidencePrivacyPolicy()
+        );
+
+        // Register trust evaluation overlays (Phase D.4)
+        $this->app->singleton(
+            \App\Application\Election\Security\Overlays\EmergencyConditionOverlay::class,
+            fn($app) => new \App\Application\Election\Security\Overlays\EmergencyConditionOverlay()
+        );
+
+        $this->app->singleton(
+            \App\Application\Election\Security\Overlays\RegistrarAttestationElevation::class,
+            fn($app) => new \App\Application\Election\Security\Overlays\RegistrarAttestationElevation()
+        );
+
+        $this->app->singleton(
+            \App\Application\Election\Security\Overlays\SuspiciousActivityOverlay::class,
+            fn($app) => new \App\Application\Election\Security\Overlays\SuspiciousActivityOverlay()
+        );
+
+        $this->app->singleton(
+            \App\Application\Election\Security\Overlays\IpVelocityOverlay::class,
+            fn($app) => new \App\Application\Election\Security\Overlays\IpVelocityOverlay()
+        );
+
+        $this->app->singleton(
+            \App\Application\Election\Security\Overlays\DeviceAnomalyOverlay::class,
+            fn($app) => new \App\Application\Election\Security\Overlays\DeviceAnomalyOverlay()
+        );
+
+        // Register overlay coordinator with all 5 overlays
+        $this->app->singleton(
+            \App\Application\Election\Security\OverlayCoordinator::class,
+            fn($app) => new \App\Application\Election\Security\OverlayCoordinator([
+                $app->make(\App\Application\Election\Security\Overlays\EmergencyConditionOverlay::class),
+                $app->make(\App\Application\Election\Security\Overlays\RegistrarAttestationElevation::class),
+                $app->make(\App\Application\Election\Security\Overlays\SuspiciousActivityOverlay::class),
+                $app->make(\App\Application\Election\Security\Overlays\IpVelocityOverlay::class),
+                $app->make(\App\Application\Election\Security\Overlays\DeviceAnomalyOverlay::class),
+            ])
+        );
+
+        // Register trust policies
+        $this->app->singleton(
+            \App\Application\Election\Security\Policies\VerificationAttestationPolicy::class,
+            fn($app) => new \App\Application\Election\Security\Policies\VerificationAttestationPolicy()
+        );
+
+        $this->app->singleton(
+            \App\Application\Election\Security\Policies\NetworkBindingPolicy::class,
+            fn($app) => new \App\Application\Election\Security\Policies\NetworkBindingPolicy()
+        );
+
+        $this->app->singleton(
+            \App\Application\Election\Security\Policies\DeviceBindingPolicy::class,
+            fn($app) => new \App\Application\Election\Security\Policies\DeviceBindingPolicy()
+        );
+
+        // Register policy sequence
+        $this->app->singleton(
+            \App\Application\Election\Security\PolicySequence::class,
+            fn($app) => new \App\Application\Election\Security\PolicySequence(
+                verificationPolicy: $app->make(\App\Application\Election\Security\Policies\VerificationAttestationPolicy::class),
+                networkPolicy: $app->make(\App\Application\Election\Security\Policies\NetworkBindingPolicy::class),
+                devicePolicy: $app->make(\App\Application\Election\Security\Policies\DeviceBindingPolicy::class),
+            )
+        );
+
+        // Register security event recorder
+        $this->app->singleton(
+            \App\Application\Election\Security\SecurityEventRecorder::class,
+            fn($app) => new \App\Application\Election\Security\SecurityEventRecorder()
+        );
+
+        // Register trust policy evaluator with all dependencies
+        $this->app->singleton(
+            \App\Application\Election\Security\TrustPolicyEvaluator::class,
+            fn($app) => new \App\Application\Election\Security\TrustPolicyEvaluator(
+                overlayCoordinator: $app->make(\App\Application\Election\Security\OverlayCoordinator::class),
+                policySequence: $app->make(\App\Application\Election\Security\PolicySequence::class),
+                eventRecorder: $app->make(\App\Application\Election\Security\SecurityEventRecorder::class),
+                privacyPolicy: $app->make(\App\Domain\Election\Security\TrustEvidencePrivacyPolicy::class),
+            )
+        );
+
         // Election Capability System: Resolver orchestrates policies for advisory capability projection
         $this->app->singleton(
             \App\Application\Election\Capabilities\ElectionConstitutionRegistry::class,
@@ -149,6 +237,7 @@ class AppServiceProvider extends ServiceProvider
             \App\Application\Election\Services\ElectionCapabilityResolver::class,
             fn($app) => new \App\Application\Election\Services\ElectionCapabilityResolver([
                 new \App\Application\Election\Capabilities\Policy\OverlayCapabilityPolicy(),
+                new \App\Application\Election\Capabilities\Policies\TrustCapabilityPolicy(),
                 new \App\Application\Election\Capabilities\Policy\LifecycleCapabilityBaselinePolicy(),
             ])
         );

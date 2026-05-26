@@ -11,6 +11,10 @@ final class OverlayCapabilityPolicy implements CapabilityPolicy
 {
     public function evaluate(CapabilityContext $context): ?CapabilityDecision
     {
+        if ($context->election === null) {
+            return null;
+        }
+
         if ($context->election->suspended_at === null) {
             return null;
         }

@@ -122,13 +122,23 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
             'status' => 'active',
         ]);
 
-        // Phase 1: Complete administration
+        // Transition from approved → setup_administration (requires chief/deputy role)
+        Auth::setUser($this->officer);
+        $election->transitionTo(\App\Domain\Election\StateMachine\Transition::manual('begin_setup', $this->officer->id));
+
+        // Phase 1: Complete administration (setup_administration → setup_nomination)
         $election->completeAdministration('Setup complete', $this->officer->id);
 
         // Phase 2: Add approved candidate (needed for voting validation)
         Candidacy::factory()->create([
             'post_id' => $post->id,
             'status' => 'approved',
+        ]);
+
+        // Set voting window (required precondition for open_voting action)
+        $election->update([
+            'voting_starts_at' => now()->addHours(1),
+            'voting_ends_at' => now()->addHours(3),
         ]);
 
         // Update candidates_count so canEnterVotingPhase() passes
@@ -156,8 +166,8 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
         $election = $this->createApprovedElection();
         $this->advanceToVotingState($election);
 
-        // Verify election is in nomination state before opening voting
-        $this->assertEquals('nomination', ElectionLifecycle::of($election->fresh())->state()->value);
+        // Verify election is in ready_for_voting state before opening voting
+        $this->assertEquals('ready_for_voting', ElectionLifecycle::of($election->fresh())->state()->value);
 
         $response = $this->actingAs($this->officer)
             ->withSession(['current_organisation_id' => $this->testOrg->id])
@@ -167,12 +177,12 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
 
         $election->refresh();
         $this->assertTrue($election->voting_locked);
-        $this->assertEquals('voting', ElectionLifecycle::of($election)->state()->value);
+        $this->assertEquals('voting_active', ElectionLifecycle::of($election)->state()->value);
 
         // Verify audit trail
         $this->assertDatabaseHas('election_state_transitions', [
             'election_id' => $election->id,
-            'to_state' => 'voting',
+            'to_state' => 'voting_active',
             'trigger' => 'manual',
         ]);
     }
@@ -188,7 +198,7 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
             ->post(route('elections.open-voting', $election->slug));
 
         $election->refresh();
-        $this->assertEquals('voting', ElectionLifecycle::of($election)->state()->value);
+        $this->assertEquals('voting_active', ElectionLifecycle::of($election)->state()->value);
 
         // Try to open voting again (should fail)
         $response = $this->actingAs($this->officer)
@@ -248,7 +258,7 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
         $response->assertSessionHas('success');
 
         $election->refresh();
-        $this->assertEquals('voting', ElectionLifecycle::of($election)->state()->value);
+        $this->assertEquals('voting_active', ElectionLifecycle::of($election)->state()->value);
 
         // Now close voting
         $response = $this->actingAs($this->officer)
@@ -257,12 +267,12 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
         $response->assertSessionHas('success');
 
         $election->refresh();
-        $this->assertEquals('results_pending', ElectionLifecycle::of($election)->state()->value);
+        $this->assertEquals('counting', ElectionLifecycle::of($election)->state()->value);
 
         // Verify audit trail
         $this->assertDatabaseHas('election_state_transitions', [
             'election_id' => $election->id,
-            'to_state' => 'results_pending',
+            'to_state' => 'counting',
             'trigger' => 'manual',
         ]);
     }
@@ -273,8 +283,8 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
         $election = $this->createApprovedElection();
         $this->advanceToVotingState($election);
 
-        // Election is in nomination state (not voting)
-        $this->assertEquals('nomination', ElectionLifecycle::of($election)->state()->value);
+        // Election is in ready_for_voting state (not yet voting)
+        $this->assertEquals('ready_for_voting', ElectionLifecycle::of($election)->state()->value);
 
         $response = $this->actingAs($this->officer)
             ->post(route('elections.close-voting', $election->slug));
@@ -298,7 +308,7 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
         $response1->assertSessionHas('success');
 
         $election->refresh();
-        $this->assertEquals('results_pending', ElectionLifecycle::of($election)->state()->value);
+        $this->assertEquals('counting', ElectionLifecycle::of($election)->state()->value);
 
         // Close voting second time (should fail - already closed)
         $response2 = $this->actingAs($this->officer)
@@ -321,7 +331,7 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
             ->post(route('elections.open-voting', $election->slug));
 
         $transition = ElectionStateTransition::where('election_id', $election->id)
-            ->where('to_state', 'voting')
+            ->where('to_state', 'voting_active')
             ->first();
 
         $this->assertNotNull($transition);
@@ -342,7 +352,7 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
             ->post(route('elections.close-voting', $election->slug));
 
         $transition = ElectionStateTransition::where('election_id', $election->id)
-            ->where('to_state', 'results_pending')
+            ->where('to_state', 'counting')
             ->first();
 
         $this->assertNotNull($transition);

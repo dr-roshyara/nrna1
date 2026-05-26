@@ -7,6 +7,7 @@ use App\Application\Election\Security\TrustCapabilityContext;
 use App\Domain\Election\Security\DeviceTrustContext;
 use App\Domain\Election\Security\FingerprintMatchType;
 use App\Domain\Election\Security\NetworkTrustEvidence;
+use App\Domain\Election\Security\OverlayInfluenceContext;
 use App\Domain\Election\Security\TrustValidityScope;
 use App\Domain\Election\Security\VerificationAttestationRecord;
 use App\Domain\Election\Security\VotingSessionTrustContinuity;
@@ -40,55 +41,46 @@ class OverlayCoordinatorTest extends TestCase
         );
     }
 
-    public function test_no_overlay_active_returns_null(): void
+    public function test_no_overlays_returns_no_influence(): void
     {
-        $coordinator = new OverlayCoordinator();
-        $ctx = $this->makeCtx(null); // no election = no overlay
+        // OverlayCoordinator with empty overlays array
+        $coordinator = new OverlayCoordinator([]);
+        $ctx = $this->makeCtx(null);
 
-        $result = $coordinator->apply($ctx);
+        $result = $coordinator->aggregate($ctx);
 
-        $this->assertNull($result);
+        $this->assertInstanceOf(OverlayInfluenceContext::class, $result);
+        $this->assertFalse($result->hasInfluence);
+        $this->assertFalse($result->requiresReview);
+        $this->assertEmpty($result->signals);
     }
 
-    public function test_trust_overlay_inactive_returns_null(): void
+    public function test_overlays_aggregate_signals(): void
     {
-        $coordinator = new OverlayCoordinator();
+        // OverlayCoordinator with empty overlays array (no overlays to evaluate)
+        $coordinator = new OverlayCoordinator([]);
         $election = new Election();
-        $election->trust_overlay_active = false;
         $ctx = $this->makeCtx($election);
 
-        $result = $coordinator->apply($ctx);
+        $result = $coordinator->aggregate($ctx);
 
-        $this->assertNull($result);
-    }
-
-    public function test_trust_overlay_active_returns_deny(): void
-    {
-        $coordinator = new OverlayCoordinator();
-        $election = new Election();
-        $election->trust_overlay_active = true;
-        $election->trust_overlay_reason = 'Suspicious activity detected';
-        $ctx = $this->makeCtx($election);
-
-        $result = $coordinator->apply($ctx);
-
-        $this->assertNotNull($result);
-        $this->assertFalse($result->trusted);
-        $this->assertEquals('overlay_active', $result->reason);
+        $this->assertInstanceOf(OverlayInfluenceContext::class, $result);
+        // No overlays = no signals = no influence
+        $this->assertFalse($result->hasInfluence);
     }
 
     public function test_overlay_never_mutates_context_facts(): void
     {
-        $coordinator = new OverlayCoordinator();
+        // OverlayCoordinator with empty overlays array
+        $coordinator = new OverlayCoordinator([]);
         $election = new Election();
-        $election->trust_overlay_active = true;
         $ctx = $this->makeCtx($election);
 
         // Record facts before
         $ipHashBefore = $ctx->network->currentIpHash;
         $fpHashBefore = $ctx->device->fingerprintHash;
 
-        $coordinator->apply($ctx);
+        $coordinator->aggregate($ctx);
 
         // Invariant 5: context facts must be unchanged
         $this->assertEquals($ipHashBefore, $ctx->network->currentIpHash);

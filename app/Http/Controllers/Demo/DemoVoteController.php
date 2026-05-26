@@ -35,14 +35,15 @@ use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use App\Traits\Voting\CodeVerificationTrait;
 use App\Traits\Voting\VoteStorageTrait;
+use App\Application\Election\Security\TrustPolicyEvaluator;
 
 class DemoVoteController extends Controller
 {
     // ✅ Use consolidated traits for code quality and maintainability
     use CodeVerificationTrait, VoteStorageTrait;
-    public $vote ; 
+    public $vote ;
     public $has_voted;
-    public $in_code ; 
+    public $in_code ;
     public $out_code;
     public $user_id;
     public $verify_final_vote;
@@ -53,7 +54,9 @@ class DemoVoteController extends Controller
     /**
      * Constructor - Initialize voting process state
      */
-    public function __construct()
+    public function __construct(
+        private TrustPolicyEvaluator $trustEvaluator,
+    )
     {
         $this->in_code = '';
         $this->verify_final_vote = false;
@@ -1458,6 +1461,24 @@ private function has_valid_selections($selections)
 
         // Set organisation context for tenant scoping
         session(['current_organisation_id' => $election->organisation_id]);
+
+        // PHASE D.5: Constitutional Trust Evaluation
+        // Evaluate trust before any voting checks (parallel with legacy IP logic)
+        $trustEnvelope = $this->trustEvaluator->evaluate(
+            election: $election,
+            user: $auth_user,
+            rawIp: request()->ip(),
+            rawFingerprint: $request->input('device_fingerprint'),
+            sessionId: $request->session()->getId(),
+        );
+
+        // Log trust evaluation result for audit trail
+        \Log::channel('voting_audit')->info('Trust evaluation completed in vote submission', [
+            'election_id' => $election->id,
+            'user_id' => $auth_user->id,
+            'trust_result' => $trustEnvelope->trusted ? 'allowed' : $trustEnvelope->reason,
+            'ip' => request()->ip(),
+        ]);
 
         // PHASE 3 VALIDATION: Election Validation
         // Demo elections: No organisation validation (can be voted by anyone)

@@ -2,27 +2,24 @@
 
 namespace App\Application\Election\Capabilities;
 
-enum CapabilityPolicyLayer: string
+enum CapabilityPolicyLayer: int
 {
-    case Overlay = 'overlay';
-    case Lifecycle = 'lifecycle';
-    case Preconditions = 'preconditions';
-    case Authorization = 'authorization';
+    case Overlay = 1;
+    case Trust = 2;
+    case Lifecycle = 3;
+    case Preconditions = 4;
+    case Authorization = 5;
 
     public function priority(): int
     {
-        return match ($this) {
-            self::Overlay => 1,
-            self::Lifecycle => 2,
-            self::Preconditions => 3,
-            self::Authorization => 4,
-        };
+        return $this->value;
     }
 
     public function label(): string
     {
         return match ($this) {
             self::Overlay => 'Operational Overlay',
+            self::Trust => 'Constitutional Trust',
             self::Lifecycle => 'Lifecycle State',
             self::Preconditions => 'Constitutional Requirements',
             self::Authorization => 'Role Authorization',

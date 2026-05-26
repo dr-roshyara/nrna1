@@ -23,6 +23,8 @@
         <server name="DB_HOST" value="127.0.0.1"/>
         <server name="DB_PORT" value="5432"/>
         <server name="DB_DATABASE" value="nrna_test"/>
+        <server name="DB_USERNAME" value="publicdigit_user"/>
+        <server name="DB_PASSWORD" value="Rudolfvogt%27%"/>
         <server name="APP_KEY" value="base64:hI6EHt29D8WPl/MQdFYSg6uE/MK/5j5n5Rj7+OXK8QI="/>
         <server name="APP_DEBUG" value="false"/>
         <server name="BCRYPT_ROUNDS" value="4"/>

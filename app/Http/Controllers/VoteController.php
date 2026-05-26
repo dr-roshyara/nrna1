@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Cache;
 use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
+use App\Application\Election\Security\TrustPolicyEvaluator;
 
 class VoteController extends Controller
 {
@@ -42,7 +43,7 @@ class VoteController extends Controller
 
     public $vote ;
     public $has_voted;
-    public $in_code ; 
+    public $in_code ;
     public $out_code;
     public $user_id;
     public $verify_final_vote;
@@ -53,7 +54,9 @@ class VoteController extends Controller
     /**
      * Constructor - Initialize voting process state
      */
-    public function __construct()
+    public function __construct(
+        private TrustPolicyEvaluator $trustEvaluator,
+    )
     {
         $this->in_code = '';
         $this->verify_final_vote = false;
@@ -1447,6 +1450,24 @@ private function has_valid_selections($selections)
         // Get user and election context
         $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
+
+        // PHASE D.5: Constitutional Trust Evaluation
+        // Evaluate trust before any voting checks (parallel with legacy IP logic)
+        $trustEnvelope = $this->trustEvaluator->evaluate(
+            election: $election,
+            user: $auth_user,
+            rawIp: request()->ip(),
+            rawFingerprint: $request->input('device_fingerprint'),
+            sessionId: $request->session()->getId(),
+        );
+
+        // Log trust evaluation result for audit trail
+        \Log::channel('voting_audit')->info('Trust evaluation completed in vote submission', [
+            'election_id' => $election->id,
+            'user_id' => $auth_user->id,
+            'trust_result' => $trustEnvelope->trusted ? 'allowed' : $trustEnvelope->reason,
+            'ip' => request()->ip(),
+        ]);
 
         // SSOT Check: Verify election state allows voting (Phase 3)
         $lifecycle = ElectionLifecycle::of($election);

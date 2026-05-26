@@ -2,6 +2,7 @@
 
 namespace App\Application\Election\Capabilities;
 
+use App\Application\Election\Security\ConstitutionalTrustSnapshot;
 use App\Domain\Election\Enum\ElectionLifecycleState;
 
 final readonly class ElectionCapabilitySnapshot
@@ -12,6 +13,7 @@ final readonly class ElectionCapabilitySnapshot
         public array $capabilities = [],
         public bool $isSuspended = false,
         public CapabilityTrace $trace = new CapabilityTrace(),
+        public ?ConstitutionalTrustSnapshot $trust = null,
     ) {}
 
     public function can(string $action): bool

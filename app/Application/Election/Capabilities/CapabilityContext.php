@@ -3,17 +3,19 @@
 namespace App\Application\Election\Capabilities;
 
 use App\Domain\Election\Enum\ElectionLifecycleState;
+use App\Domain\Election\Security\TrustEvaluationEnvelope;
 use App\Models\Election;
 use App\Models\User;
 
 final readonly class CapabilityContext
 {
     public function __construct(
-        public Election $election,
+        public ?Election $election,
         public ?User $user,
         public string $action,
         public array $actionMetadata,
         public ElectionLifecycleState $state,
+        public ?TrustEvaluationEnvelope $trust = null,
     ) {}
 
     public function isSystemAction(): bool

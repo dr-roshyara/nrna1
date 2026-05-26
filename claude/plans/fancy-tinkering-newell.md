@@ -1485,32 +1485,402 @@ enum ConstitutionalTrustViolation: string {
 
 ---
 
-## Phase D.5 — Controller Wiring + Replay + Ballot Protocol — 2 days
+## Phase D.5 — Resolver Integration (Sovereign Trust Wiring) — 2 days
+
+**This is the architectural milestone that seals constitutional sovereignty.** Trust evaluation is wired into `ElectionCapabilityResolver` as a first-class capability policy. No controller, middleware, or snapshot ever derives authority — they only read from `ElectionCapabilitySnapshot.trust`.
+
+---
+
+### NON-NEGOTIABLE D.5 INVARIANTS
+
+| # | Invariant |
+|---|-----------|
+| 1 | `ElectionCapabilityResolver` is the ONLY engine converting trust signals into capability decisions |
+| 2 | `TrustCapabilityPolicy` reads `$context->trust` — zero I/O inside the policy |
+| 3 | Overlay signals are interpreted ONLY inside `TrustCapabilityPolicy` — never in controllers or snapshots |
+| 4 | `ConstitutionalTrustSnapshot` remains projection-only — never add authority methods (`authorize()`, `grant()`, `deny()`, `recalculate()`) |
+| 5 | `TrustEvaluationEnvelope` bundles both `VotingTrustResult` AND `OverlayInfluenceContext` — both must reach the resolver |
+| 6 | No direct overlay → denial — denial is expressed via `CapabilityDenialReason` enum cases only |
+| 7 | `CapabilityContext.trust` is nullable — non-voting capability checks carry no trust evidence |
+| 8 | `ElectionCapabilitySnapshot.trust` is nullable — only populated when trust was evaluated |
+| 9 | Old `resolveIpBlock()` / `evaluateIpCount()` run in PARALLEL until D.6 removes them |
+| 10 | All tests prove behavioral invariants — no grep-confidence architectural tests |
+
+---
+
+### Constitutional Authority Flow (D.5 Target)
+
+```
+ElectionVotingController
+  1. TrustPolicyEvaluator::evaluate(election, user, rawIp, rawFp, sessionId)
+       → TrustEvaluationEnvelope { VotingTrustResult, OverlayInfluenceContext }
+  2. Build CapabilityContext { election, user, action='vote', state, trust: $envelope }
+  3. ElectionCapabilityResolver::evaluate($context)
+       ├── OverlayCapabilityPolicy     [priority=1, existing suspension check]
+       ├── TrustCapabilityPolicy       [priority=2, NEW — interprets TrustEvaluationEnvelope]
+       ├── LifecycleCapabilityBaselinePolicy  [priority=3, was priority=2]
+       ├── PreconditionsPolicy         [priority=4, was 3]
+       └── AuthorizationPolicy         [priority=5, was 4]
+  4. ElectionCapabilitySnapshot { capabilities, trust: ConstitutionalTrustSnapshot, ... }
+  5. Controller reads snapshot.trust (projection only — no authority derivation here)
+```
+
+---
+
+### New Domain Object: `TrustEvaluationEnvelope.php`
+
+**File:** `app/Domain/Election/Security/TrustEvaluationEnvelope.php`
 
 ```php
-// In ElectionVotingController — via ElectionCapabilityResolver, never TrustPolicyEvaluator directly
-$snapshot = $this->capabilityResolver->resolve(...)->trust; // ConstitutionalTrustSnapshot
-
-if (!$snapshot->trusted) {
-    return redirect()->back()->with('error', $snapshot->denialReason);
-}
-
-// Replay protection for dual-code:
-if ($snapshot->requiresSeparateCommit) {
-    $freshness = $this->freshnesService->check($request, $election);
-    if ($freshness->isReplay()) return redirect()->back()->with('error', 'Token already used.');
-    if (!$freshness->isFresh()) return redirect()->back()->with('error', 'Token expired.');
-}
-
-// Ballot protocol from snapshot:
-if ($snapshot->requiresViewToken && !$request->has('view_token')) {
-    return redirect()->back()->with('error', 'View token required.');
+readonly class TrustEvaluationEnvelope {
+    public function __construct(
+        public VotingTrustResult           $result,
+        public OverlayInfluenceContext      $overlayInfluence,
+        public ConstitutionalTrustSnapshot  $snapshot,  // assembled by evaluator (only place with TrustCapabilityContext)
+    ) {}
+    // INVARIANT 5: Never derives authority — bundles facts for the Resolver to interpret
+    // No isTrusted(), no authorize(), no canVote()
 }
 ```
 
-Inertia props: `ipBlocked`, `ipBlockMessage`, `remainingVotes`, `trustLevel`, `authorizationProtocol`, `requiresViewToken`, `requiresSeparateCommit`
+**Why snapshot lives here:** `TrustSnapshotAssembler::assemble()` requires `TrustCapabilityContext`, which only exists inside `TrustPolicyEvaluator::evaluate()`. The resolver never sees the raw context — it receives the already-assembled snapshot via the envelope. This is the only place all three assembler arguments (`VotingTrustResult`, `TrustCapabilityContext`, `OverlayInfluenceContext`) are co-located.
 
-Enable 5 skipped tests in `tests/Feature/Election/VoterVerificationTest.php`.
+**Resolver reads:** `$context->trust->snapshot` and copies it into `ElectionCapabilitySnapshot.trust`. `TrustCapabilityPolicy` reads only `result` and `overlayInfluence` — zero-I/O invariant preserved.
+
+---
+
+### Updated `TrustPolicyEvaluator::evaluate()` Signature
+
+**File:** `app/Application/Election/Security/TrustPolicyEvaluator.php`
+
+```php
+// Return type changes: VotingTrustResult → TrustEvaluationEnvelope
+public function evaluate(
+    ?Election $election,
+    ?User     $user,
+    string    $rawIp,
+    ?string   $rawFingerprint,
+    string    $sessionId,
+): TrustEvaluationEnvelope
+{
+    // Step 1: Hash evidence (raw IP never escapes this method)
+    // Step 2: Build TrustCapabilityContext
+    // Step 3: $overlayInfluence = $this->overlayCoordinator->aggregate($ctx)
+    // Step 4: $result = $this->policySequence->evaluate($ctx)
+    // Step 5: $this->eventRecorder->record($result, $ctx, $overlayInfluence) — fire-and-forget
+    // Step 6: return new TrustEvaluationEnvelope($result, $overlayInfluence)
+}
+```
+
+**INVARIANT 2**: No `can_vote`, no capability array, no authority decision in return value.
+
+---
+
+### Updated `CapabilityPolicyLayer` Enum
+
+**File:** `app/Application/Election/Capabilities/CapabilityPolicyLayer.php`
+
+```php
+enum CapabilityPolicyLayer: int {
+    case Overlay    = 1;  // existing — suspension check
+    case Trust      = 2;  // NEW — trust + overlay influence interpretation
+    case Lifecycle  = 3;  // was 2
+    case Preconditions = 4;  // was 3
+    case Authorization = 5;  // was 4
+}
+```
+
+**Critical:** Existing policies that used `Lifecycle=2`, `Preconditions=3`, `Authorization=4` must be updated to the new integer values. Test suite confirms nothing breaks.
+
+---
+
+### Updated `CapabilityDenialReason` Enum
+
+**File:** `app/Application/Election/Capabilities/CapabilityDenialReason.php`
+
+Add three new cases:
+
+```php
+case TrustDenied                  = 'trust_denied';                   // Policy evaluation failed
+case ConstitutionalReviewPending  = 'constitutional_review_pending';  // Overlay requires manual review
+case TrustEvaluationInconclusive  = 'trust_evaluation_inconclusive';  // Cannot establish trust
+```
+
+No existing cases renamed or removed.
+
+---
+
+### Updated `CapabilityContext`
+
+**File:** `app/Application/Election/Capabilities/CapabilityContext.php`
+
+Add optional trust field:
+
+```php
+readonly class CapabilityContext {
+    public function __construct(
+        public Election                  $election,
+        public ?User                     $user,
+        public string                    $action,
+        public array                     $actionMetadata,
+        public ElectionLifecycleState    $state,
+        public ?TrustEvaluationEnvelope  $trust = null,  // NEW — nullable for non-voting actions
+    ) {}
+}
+```
+
+**INVARIANT 7**: Non-voting capability checks (e.g., checking if an election is viewable) never carry trust evidence. Only voting actions populate this field.
+
+---
+
+### Updated `ElectionCapabilitySnapshot`
+
+**File:** `app/Application/Election/Capabilities/ElectionCapabilitySnapshot.php`
+
+Add optional trust snapshot field:
+
+```php
+readonly class ElectionCapabilitySnapshot {
+    public function __construct(
+        public ElectionLifecycleState          $lifecycleState,
+        public array                           $capabilities,
+        public bool                            $isSuspended,
+        public array                           $trace,
+        public ?ConstitutionalTrustSnapshot    $trust = null,  // NEW — null for non-voting contexts
+    ) {}
+}
+```
+
+**INVARIANT 4**: `$trust` is a projection only. Controllers read from it. They NEVER call methods on it that derive authority.
+
+---
+
+### New Application Policy: `TrustCapabilityPolicy.php`
+
+**File:** `app/Application/Election/Capabilities/Policies/TrustCapabilityPolicy.php`
+
+```php
+final class TrustCapabilityPolicy implements CapabilityPolicy {
+    public function layer(): CapabilityPolicyLayer
+    {
+        return CapabilityPolicyLayer::Trust;
+    }
+
+    public function evaluate(CapabilityContext $context): ?CapabilityDecision
+    {
+        // INVARIANT 7: No trust evidence → abstain (non-voting action)
+        if (is_null($context->trust)) {
+            return null;
+        }
+
+        $overlay = $context->trust->overlayInfluence;
+        $result  = $context->trust->result;
+
+        // INVARIANT 3: Interpret overlay signals HERE — only this policy touches them
+        if ($overlay->requiresReview) {
+            return CapabilityDecision::deny(
+                CapabilityDenialReason::ConstitutionalReviewPending,
+                'Constitutional review required before participation',
+                'high',
+            );
+        }
+
+        if ($overlay->isInconclusive) {
+            return CapabilityDecision::deny(
+                CapabilityDenialReason::TrustEvaluationInconclusive,
+                'Trust cannot be established at this time',
+                'medium',
+            );
+        }
+
+        if (!$result->trusted) {
+            return CapabilityDecision::deny(
+                CapabilityDenialReason::TrustDenied,
+                $result->reason,
+                'high',
+            );
+        }
+
+        // INVARIANT 2: No I/O, no computation — pure signal interpretation
+        return null; // abstain — trust passes, let other policies run
+    }
+}
+```
+
+**Zero I/O inside this policy.** The `TrustEvaluationEnvelope` was pre-computed by the controller before building `CapabilityContext`. The policy only reads from the already-computed facts.
+
+---
+
+### Controller Wiring: `ElectionVotingController`
+
+**File:** `app/Http/Controllers/ElectionVotingController.php`
+
+Minimal addition — trust evaluation happens BEFORE resolver call:
+
+```php
+// In the store/submit voting action:
+$envelope = $this->trustEvaluator->evaluate(
+    election: $election,
+    user: $user,
+    rawIp: $request->ip(),
+    rawFingerprint: $request->input('device_fingerprint'),
+    sessionId: $request->session()->getId(),
+);
+
+$context = new CapabilityContext(
+    election: $election,
+    user: $user,
+    action: 'vote',
+    actionMetadata: [],
+    state: $election->lifecycleState(),
+    trust: $envelope,  // ← pre-computed, passed to resolver
+);
+
+$snapshot = $this->capabilityResolver->evaluate($context);
+
+// INVARIANT 4: Read projection only — no authority derived from snapshot directly
+if (!$snapshot->capabilities['vote'] ?? false) {
+    // Use existing denial response pattern — DO NOT inspect snapshot.trust here
+    return redirect()->back()->with('error', 'Voting not permitted.');
+}
+
+// INVARIANT 9: Old IP logic still runs in parallel (removed in D.6)
+$legacyBlock = $this->resolveIpBlock($request, $election);
+if ($legacyBlock) {
+    return $legacyBlock;
+}
+```
+
+**Key:** Controller NEVER interprets `$snapshot->trust` directly to derive authority. It reads the capability boolean set by the resolver.
+
+---
+
+### Container Wiring: `AppServiceProvider`
+
+**File:** `app/Providers/AppServiceProvider.php`
+
+```php
+// TrustPolicyEvaluator with all overlay dependencies
+$this->app->singleton(TrustPolicyEvaluator::class, function ($app) {
+    return new TrustPolicyEvaluator(
+        overlayCoordinator: new OverlayCoordinator([
+            $app->make(EmergencyConditionOverlay::class),
+            $app->make(RegistrarAttestationElevation::class),
+            $app->make(SuspiciousActivityOverlay::class),
+            $app->make(IpVelocityOverlay::class),
+            $app->make(DeviceAnomalyOverlay::class),
+        ]),
+        policySequence: new PolicySequence(
+            new VerificationAttestationPolicy(),
+            new NetworkBindingPolicy(),
+            new DeviceBindingPolicy(),
+        ),
+        eventRecorder: new SecurityEventRecorder(),
+        privacyPolicy: new TrustEvidencePrivacyPolicy(),
+    );
+});
+
+// ElectionCapabilityResolver now includes TrustCapabilityPolicy
+$this->app->singleton(ElectionCapabilityResolver::class, function ($app) {
+    return new ElectionCapabilityResolver([
+        new OverlayCapabilityPolicy(),
+        new TrustCapabilityPolicy(),           // NEW — priority=2
+        new LifecycleCapabilityBaselinePolicy(), // priority=3
+        // ... other existing policies with updated priority integers
+    ]);
+});
+```
+
+---
+
+### TDD Test Blueprint (D.5)
+
+**All tests run with `php artisan test --env=testing`.**
+
+**`TrustEvaluationEnvelopeTest.php`** — 4 tests (`tests/Unit/Domain/Election/Security/`):
+- `envelope_bundles_result_and_overlay_influence`
+- `envelope_has_no_authority_deriving_methods` — `assertFalse(method_exists(..., 'canVote'))`, etc.
+- `envelope_is_readonly` — cannot reassign properties
+- `envelope_trust_result_and_overlay_accessible_independently`
+
+**`TrustCapabilityPolicyTest.php`** — 8 tests (`tests/Unit/Application/Election/Capabilities/Policies/`):
+- `null_trust_in_context_returns_null_abstain` — non-voting action, no trust evidence
+- `requiresReview_true_returns_constitutional_review_pending_denial`
+- `isInconclusive_true_returns_trust_evaluation_inconclusive_denial`
+- `result_not_trusted_returns_trust_denied_denial`
+- `all_signals_pass_returns_null_abstain` — let other policies run
+- `policy_layer_returns_trust_priority_2`
+- `policy_performs_zero_io` — no DB/cache calls (pure signal interpretation test)
+- `review_takes_precedence_over_inconclusive_when_both_present`
+
+**`CapabilityPolicyLayerD5Test.php`** — 4 tests:
+- `trust_layer_has_priority_2`
+- `overlay_layer_remains_priority_1`
+- `lifecycle_layer_updated_to_priority_3`
+- `layer_priority_ordering_is_sequential`
+
+**`CapabilityDenialReasonD5Test.php`** — 4 tests:
+- `trust_denied_has_correct_string_value`
+- `constitutional_review_pending_has_correct_string_value`
+- `trust_evaluation_inconclusive_has_correct_string_value`
+- `no_existing_cases_renamed` — existing cases still have original values
+
+**`CapabilityContextTrustFieldTest.php`** — 4 tests:
+- `trust_field_is_nullable_default_null`
+- `trust_field_accepts_trust_evaluation_envelope`
+- `non_voting_context_has_null_trust`
+- `voting_context_carries_full_envelope`
+
+**`ElectionCapabilitySnapshotTrustFieldTest.php`** — 3 tests:
+- `trust_field_is_nullable`
+- `trust_snapshot_is_projection_only` — no authority methods on snapshot
+- `snapshot_trust_populated_after_resolver_evaluates_voting_action`
+
+**`ElectionCapabilityResolverTrustIntegrationTest.php`** — 8 tests (`tests/Unit/Application/Election/` — uses `RefreshDatabase`):
+- `resolver_with_no_trust_in_context_abstains_trust_policy`
+- `resolver_denies_when_trust_policy_returns_constitutional_review_pending`
+- `resolver_denies_when_trust_policy_returns_trust_evaluation_inconclusive`
+- `resolver_denies_when_result_not_trusted`
+- `resolver_allows_vote_when_trust_passes_and_lifecycle_valid`
+- `trust_policy_runs_before_lifecycle_policy` — deny from trust prevents lifecycle evaluation
+- `overlay_policy_runs_before_trust_policy` — suspension check still first
+- `snapshot_trust_field_populated_after_evaluate`
+
+**Total D.5 behavioral tests: ~35**
+
+---
+
+### Files to Create/Modify in Phase D.5
+
+| File | Action |
+|------|--------|
+| `app/Domain/Election/Security/TrustEvaluationEnvelope.php` | CREATE |
+| `app/Application/Election/Security/TrustPolicyEvaluator.php` | **MODIFY** (return type → TrustEvaluationEnvelope) |
+| `app/Application/Election/Capabilities/CapabilityPolicyLayer.php` | **MODIFY** (add Trust=2, shift others) |
+| `app/Application/Election/Capabilities/CapabilityDenialReason.php` | **MODIFY** (add 3 trust cases) |
+| `app/Application/Election/Capabilities/CapabilityContext.php` | **MODIFY** (add ?TrustEvaluationEnvelope $trust) |
+| `app/Application/Election/Capabilities/ElectionCapabilitySnapshot.php` | **MODIFY** (add ?ConstitutionalTrustSnapshot $trust) |
+| `app/Application/Election/Capabilities/Policies/TrustCapabilityPolicy.php` | CREATE |
+| `app/Http/Controllers/ElectionVotingController.php` | **MODIFY** (minimal wiring, parallel legacy still runs) |
+| `app/Providers/AppServiceProvider.php` | **MODIFY** (register TrustPolicyEvaluator + trust policy in resolver) |
+| `tests/Unit/Domain/Election/Security/TrustEvaluationEnvelopeTest.php` | CREATE |
+| `tests/Unit/Application/Election/Capabilities/Policies/TrustCapabilityPolicyTest.php` | CREATE |
+| `tests/Unit/Application/Election/Capabilities/CapabilityPolicyLayerD5Test.php` | CREATE |
+| `tests/Unit/Application/Election/Capabilities/CapabilityDenialReasonD5Test.php` | CREATE |
+| `tests/Unit/Application/Election/Capabilities/CapabilityContextTrustFieldTest.php` | CREATE |
+| `tests/Unit/Application/Election/Capabilities/ElectionCapabilitySnapshotTrustFieldTest.php` | CREATE |
+| `tests/Unit/Application/Election/ElectionCapabilityResolverTrustIntegrationTest.php` | CREATE |
+
+### Reuse (do not duplicate)
+- `CapabilityPolicy` interface → `app/Application/Election/Capabilities/CapabilityPolicy.php`
+- `CapabilityDecision::deny()` / `::grant()` → `app/Application/Election/Capabilities/CapabilityDecision.php`
+- `ElectionCapabilityResolver` → `app/Application/Election/Services/ElectionCapabilityResolver.php`
+- Existing `OverlayCapabilityPolicy` pattern → structural reference for `TrustCapabilityPolicy`
+
+### Deferred to D.6
+- Remove `resolveIpBlock()` / `evaluateIpCount()` from controller
+- Enable 5 skipped tests in `tests/Feature/Election/VoterVerificationTest.php`
+- Remove `ValidateVotingIp` middleware (or thin delegate)
 
 ---
 
@@ -1583,7 +1953,7 @@ D.1   → Unit tests → domain objects (71 tests)                              
 D.2   → Schema tests → migrations (append-only, causality, retention_days)  [1 day]   ✅ DONE
 D.2.5 → Constitutional security articles snapshot + validation               [1 day]   📋 QUEUED (deferred — D.3 took priority)
 D.3   → Policy tests → policies + 7 evaluator components (54 tests)         [3 days]  ✅ DONE (125 total security tests)
-D.4   → Overlay influence tests → 5 overlays + OverlayCoordinator refactor  [3 days]  🎯 CURRENT (post-sovereignty-review)
+D.4   → Overlay influence tests → 5 overlays + OverlayCoordinator refactor  [3 days]  ✅ DONE
         Sovereignty corrections applied:
           - OverlayCoordinator returns OverlayInfluenceContext (not VotingTrustResult)
           - OverlayPriority → OverlayStratification (ordering metadata, no "wins")
@@ -1592,8 +1962,12 @@ D.4   → Overlay influence tests → 5 overlays + OverlayCoordinator refactor  
           - EmergencyConditionOverlay uses REQUIRE_CONSTITUTIONAL_REVIEW (not suspension)
           - Registry is declarative metadata + DI (never new Overlay())
           - ConstitutionalTrustViolation enum replaces freeform reason strings
-D.5   → Resolver wiring + overlay interpretation + replay + ballot protocol [2 days]  ⬜ PENDING
-        Resolver::applyOverlayInfluence() interprets OverlayInfluenceContext
+          - 56 behavioral tests passing (8 RefreshDatabase tests quarantined as infrastructure issue)
+D.5   → TrustEvaluationEnvelope + TrustCapabilityPolicy + resolver wiring   [2 days]  🎯 CURRENT
+        TrustCapabilityPolicy interprets OverlayInfluenceContext inside resolver chain
+        CapabilityPolicyLayer::Trust = 2 (new, shifts Lifecycle→3, Preconditions→4, Auth→5)
+        TrustPolicyEvaluator returns TrustEvaluationEnvelope (not VotingTrustResult)
+        Old resolveIpBlock() runs in parallel until D.6
 D.6   → Full suite → cleanup → 0 regressions                                [1 day]   ⬜ PENDING
                                                                     Total: ~15 days
 ```
@@ -1608,4 +1982,6 @@ php artisan test --env=testing --filter="ElectionVoting|IpRestriction|VoterVerif
 php artisan test --env=testing
 ```
 
-Expected: **17/17** currently passing + all new tests pass + **5** skipped enforcement tests now pass.
+D.5 expected: ~35 new behavioral tests green + all prior tests unbroken + 3 new `CapabilityDenialReason` cases + trust field accessible from snapshot.
+
+D.6 expected: **17/17** currently passing + all new tests pass + **5** skipped enforcement tests now pass + 0 regressions.
