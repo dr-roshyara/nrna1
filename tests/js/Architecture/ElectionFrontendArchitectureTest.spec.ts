@@ -225,14 +225,11 @@ describe('Frontend Architecture — Constitutional Invariants', () => {
     })
 
     describe('Flat can_* props eliminated', () => {
-      it('Dashboard ElectionDashboard.vue does not use can_vote_now prop', () => {
-        const src = readFile('Pages/Dashboard/ElectionDashboard.vue')
-        expect(src).not.toContain('can_vote_now')
-      })
-
-      it('Dashboard ElectionDashboard.vue does not use can_access prop', () => {
-        const src = readFile('Pages/Dashboard/ElectionDashboard.vue')
-        expect(src).not.toContain('can_access')
+      it('Dashboard/ElectionDashboard.vue does not exist (deleted dead code — re-entry forbidden)', () => {
+        const { existsSync } = require('fs')
+        const { resolve: resolvePath } = require('path')
+        const filePath = resolvePath(__dirname, '../../../resources/js/Pages/Dashboard/ElectionDashboard.vue')
+        expect(existsSync(filePath)).toBe(false)
       })
 
       it('Election Show.vue does not use can_vote_now prop', () => {

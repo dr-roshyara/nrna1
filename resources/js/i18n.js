@@ -66,10 +66,6 @@ import electionShowDe from './locales/pages/election/show/de.json';
 import electionShowEn from './locales/pages/election/show/en.json';
 import electionShowNp from './locales/pages/election/show/np.json';
 
-import electionDashboardDe from './locales/pages/Dashboard/ElectionDashboard/de.json';
-import electionDashboardEn from './locales/pages/Dashboard/ElectionDashboard/en.json';
-import electionDashboardNp from './locales/pages/Dashboard/ElectionDashboard/np.json';
-
 import electionNavigationDe from './locales/pages/ElectionNavigation/de.json';
 import electionNavigationEn from './locales/pages/ElectionNavigation/en.json';
 import electionNavigationNp from './locales/pages/ElectionNavigation/np.json';
@@ -263,7 +259,6 @@ const messages = {
       election: electionDe,
       'election-show': electionShowDe,
       'election-submit-for-approval': electionSubmitForApprovalDe,
-      'election-dashboard': electionDashboardDe,
       'election-navigation': electionNavigationDe,
       'code-create': createCodeDe,
       'code-agreement': agreementDe,
@@ -326,7 +321,6 @@ const messages = {
       election: electionEn,
       'election-show': electionShowEn,
       'election-submit-for-approval': electionSubmitForApprovalEn,
-      'election-dashboard': electionDashboardEn,
       'election-navigation': electionNavigationEn,
       'code-create': createCodeEn,
       'code-agreement': agreementEn,
@@ -389,7 +383,6 @@ const messages = {
       election: electionNp,
       'election-show': electionShowNp,
       'election-submit-for-approval': electionSubmitForApprovalNp,
-      'election-dashboard': electionDashboardNp,
       'election-navigation': electionNavigationNp,
       'code-create': createCodeNp,
       'code-agreement': agreementNp,
