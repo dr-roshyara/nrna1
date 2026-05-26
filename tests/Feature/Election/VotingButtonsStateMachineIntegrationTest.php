@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Election;
 
+use App\Application\Election\Facades\ElectionLifecycle;
 use App\Models\Candidacy;
 use App\Models\Election;
 use App\Models\ElectionMembership;
@@ -131,7 +132,7 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
         $this->advanceToVotingState($election);
 
         // Verify election is in nomination state before opening voting
-        $this->assertEquals('nomination', $election->fresh()->current_state);
+        $this->assertEquals('nomination', ElectionLifecycle::of($election->fresh())->state()->value);
 
         $response = $this->actingAs($this->officer)
             ->withSession(['current_organisation_id' => $this->testOrg->id])
@@ -141,7 +142,7 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
 
         $election->refresh();
         $this->assertTrue($election->voting_locked);
-        $this->assertEquals('voting', $election->current_state);
+        $this->assertEquals('voting', ElectionLifecycle::of($election)->state()->value);
 
         // Verify audit trail
         $this->assertDatabaseHas('election_state_transitions', [
@@ -162,7 +163,7 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
             ->post(route('elections.open-voting', $election->slug));
 
         $election->refresh();
-        $this->assertEquals('voting', $election->current_state);
+        $this->assertEquals('voting', ElectionLifecycle::of($election)->state()->value);
 
         // Try to open voting again (should fail)
         $response = $this->actingAs($this->officer)
@@ -222,7 +223,7 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
         $response->assertSessionHas('success');
 
         $election->refresh();
-        $this->assertEquals('voting', $election->current_state);
+        $this->assertEquals('voting', ElectionLifecycle::of($election)->state()->value);
 
         // Now close voting
         $response = $this->actingAs($this->officer)
@@ -231,7 +232,7 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
         $response->assertSessionHas('success');
 
         $election->refresh();
-        $this->assertEquals('results_pending', $election->current_state);
+        $this->assertEquals('results_pending', ElectionLifecycle::of($election)->state()->value);
 
         // Verify audit trail
         $this->assertDatabaseHas('election_state_transitions', [
@@ -248,7 +249,7 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
         $this->advanceToVotingState($election);
 
         // Election is in nomination state (not voting)
-        $this->assertEquals('nomination', $election->current_state);
+        $this->assertEquals('nomination', ElectionLifecycle::of($election)->state()->value);
 
         $response = $this->actingAs($this->officer)
             ->post(route('elections.close-voting', $election->slug));
@@ -272,7 +273,7 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
         $response1->assertSessionHas('success');
 
         $election->refresh();
-        $this->assertEquals('results_pending', $election->current_state);
+        $this->assertEquals('results_pending', ElectionLifecycle::of($election)->state()->value);
 
         // Close voting second time (should fail - already closed)
         $response2 = $this->actingAs($this->officer)
