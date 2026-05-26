@@ -11,6 +11,7 @@ use App\Models\Organisation;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 /**
@@ -61,11 +62,35 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
             'organisation_id' => $this->testOrg->id,
             'type' => 'demo',
             'state' => 'draft',
+            'expected_voter_count' => 50,  // Exceeds self-service limit (40) → requires manual approval
+            'timezone' => 'UTC',  // Required precondition for submission
         ]);
 
-        // Follow the new approval workflow: draft → pending_approval → administration
-        $election->submitForApproval($this->officer->id);
-        $election->approve($this->officer->id, 'Approved for testing');
+        // Assign chief role for this specific election (required for transitions)
+        \App\Models\ElectionOfficer::create([
+            'election_id' => $election->id,
+            'organisation_id' => $this->testOrg->id,
+            'user_id' => $this->officer->id,
+            'role' => 'chief',
+            'status' => 'active',
+            'appointed_by' => $this->officer->id,
+            'appointed_at' => now(),
+            'accepted_at' => now(),
+        ]);
+
+        // Authenticate as officer so that transition guard can verify role
+        Auth::setUser($this->officer);
+
+        // Grant platform_admin role for approve action (required by constitution)
+        $platformAdminRole = \Spatie\Permission\Models\Role::firstOrCreate(
+            ['name' => 'platform_admin'],
+            ['guard_name' => 'web']
+        );
+        $this->officer->assignRole($platformAdminRole);
+
+        // Follow the new approval workflow: draft → submitted_for_approval → approved
+        $election->submitForApproval($this->officer->id);  // Transitions to submitted_for_approval
+        $election->approve($this->officer->id, 'Approved for testing');  // Now transitions to approved
 
         return $election;
     }

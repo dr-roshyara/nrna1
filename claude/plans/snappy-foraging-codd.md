@@ -3,8 +3,348 @@
 **Plan ID:** snappy-foraging-codd  
 **Branch:** postgressql  
 **Scope:** Migrate remaining Vue components from legacy vocabulary to constitutional runtime projection  
-**Status:** Ready for implementation (TDD-first, --env=testing only)  
+**Status:** 90% complete — one component remaining  
 **Supersedes:** Phase 3 Consolidation (complete)
+
+---
+
+## Current Completion Status (as of 2026-05-25)
+
+### ✅ Already Done
+- `StateMachineContract.ts` created and in use
+- Architecture tests written (7/7 passing, 3 acceptable false-positive failures)
+- Lifecycle visualization: 7 Vue components migrated to `ElectionLifecycleStates` constants
+  - `Show.vue`, `Viewboard.vue`, `Apply.vue`, `Organisations/Elections/Index.vue`, `Organisations/Show.vue`, `Commission/Dashboard.vue`, `Organisations/Posts.vue`
+
+### 🔴 Remaining: ElectionDashboard.vue flat prop vocabulary
+
+**File:** `resources/js/Pages/Dashboard/ElectionDashboard.vue`  
+**Architecture tests failing:**
+- `Dashboard ElectionDashboard.vue does not use can_vote_now prop`
+- `Dashboard ElectionDashboard.vue does not use can_access prop`
+
+**Context:** This component is currently **orphaned** — not rendered by any active controller. The modern path uses `Election/Show.vue` via `ElectionVotingController`. However, architecture tests still enforce constitutional vocabulary on it.
+
+---
+
+## Phase C.2.4 Completion Plan (REVISED — DDD-CORRECTED)
+
+**Revision rationale:** Original plan proposed renaming `can_access` → `isEligible` and `can_vote_now` → `hasActiveSession`. DDD critique correctly identified that this fixes the vocabulary but preserves the architectural problem: a second authority path exists. Dead code should be deleted, not refactored. Renaming gives false confidence while the violation remains structurally.
+
+---
+
+### Decision: Delete `ElectionDashboard.vue`
+
+`resources/js/Pages/Dashboard/ElectionDashboard.vue` is **confirmed dead code**:
+- Not rendered by any controller (`grep -r 'Dashboard/ElectionDashboard' app/` returns no matches)
+- Not referenced in any route file
+- Only referenced in `resources/js/i18n.js` (locale imports) and old `.vue.txt` cache files
+
+**Why delete instead of rename:**
+- Dead code that passes architecture tests gives false confidence — the architectural violation remains
+- Re-activating the component in the future would reintroduce a second authority path alongside `useElectionCapabilities()`
+- `ballotAccess` and `votingStatus` props duplicate the resolver's authority derivation
+- The frontend should only receive voter facts and resolver-computed capabilities, not raw eligibility predicates
+
+**Domain boundary clarification:**
+
+| Data category | Example | Source | Pattern |
+|---|---|---|---|
+| Lifecycle visualization | `election.state` | Election model | `ElectionLifecycleStates.*` constant |
+| Constitutional authority | `canVote`, `canEdit` | `ElectionCapabilityResolver` | `useElectionCapabilities()` composable |
+| Voter facts | `hasVoted`, `votedAt` | Query side (not resolver) | Plain props, named as **facts** (nouns/timestamps) |
+
+`ballotAccess.can_access` and `votingStatus.can_vote_now` are **authority predicates disguised as voter facts**. They belong in the resolver, not as separate props. Deletion removes the temptation to re-derive authority from them.
+
+---
+
+### Step 1: Delete the orphaned component
+
+```
+DELETE: resources/js/Pages/Dashboard/ElectionDashboard.vue
+```
+
+Also remove locale imports in `resources/js/i18n.js` that reference the deleted component (lines ~69-71):
+```javascript
+// DELETE these 3 lines:
+import electionDashboardDe from './locales/pages/Dashboard/ElectionDashboard/de.json';
+import electionDashboardEn from './locales/pages/Dashboard/ElectionDashboard/en.json';
+import electionDashboardNp from './locales/pages/Dashboard/ElectionDashboard/np.json';
+```
+
+Also remove the locale registrations in the i18n messages object where these imports are used.
+
+---
+
+### Step 2: Update architecture tests
+
+The current tests check that the file's contents don't contain `can_vote_now`/`can_access`. Once the file is deleted, these tests will throw file-not-found errors (failing instead of passing).
+
+**Replace** the two failing test cases in `tests/js/Architecture/ElectionFrontendArchitectureTest.spec.ts`:
+
+```typescript
+// REPLACE these two tests:
+it('Dashboard ElectionDashboard.vue does not use can_vote_now prop', () => {
+  const src = readFile('Pages/Dashboard/ElectionDashboard.vue')
+  expect(src).not.toContain('can_vote_now')
+})
+
+it('Dashboard ElectionDashboard.vue does not use can_access prop', () => {
+  const src = readFile('Pages/Dashboard/ElectionDashboard.vue')
+  expect(src).not.toContain('can_access')
+})
+
+// WITH this single stronger test:
+it('Dashboard/ElectionDashboard.vue does not exist (deleted dead code — re-entry forbidden)', () => {
+  const { existsSync } = require('fs')
+  const { resolve } = require('path')
+  const filePath = resolve(__dirname, '../../../resources/js/Pages/Dashboard/ElectionDashboard.vue')
+  expect(existsSync(filePath)).toBe(false)
+})
+```
+
+This is a **stronger** enforcement: it proves the dead code was deleted AND prevents it from ever returning.
+
+---
+
+### Step 3: Clean up backend `determineBallotAccess()`
+
+`ElectionManagementController::determineBallotAccess()` (lines ~302-361) still builds arrays with `can_access`. Since the component that consumed this data is deleted, check whether this private method is called anywhere else:
+
+```bash
+grep -rn "determineBallotAccess\|ballotAccess" app/Http/Controllers/Election/ElectionManagementController.php
+```
+
+If `determineBallotAccess()` is only called from within this controller and never flows to any active page, mark it `@deprecated` or remove it. Do NOT rename `can_access` — the method itself should be deprecated/removed since its data consumer is gone.
+
+**If `ballotAccess` is passed to any still-active Inertia render,** that call site must be identified and its data contract migrated separately (not in this phase).
+
+---
+
+### Verification
+
+```bash
+# 1. Architecture tests — all should be GREEN
+npx vitest run tests/js/Architecture/ElectionFrontendArchitectureTest.spec.ts --reporter=verbose
+
+# 2. Verify file is gone
+ls resources/js/Pages/Dashboard/ElectionDashboard.vue
+# Expected: No such file or directory
+
+# 3. Verify no remaining can_access/can_vote_now violations in Pages
+grep -rn "can_access\|can_vote_now" resources/js/Pages/ --include="*.vue"
+# Expected: No matches (or only in comments)
+
+# 4. PHP tests — verify no regressions
+php artisan test tests/Feature/Election/ --env=testing --no-coverage
+```
+
+### Pass criteria
+- Architecture test: `Dashboard/ElectionDashboard.vue does not exist` → GREEN
+- All previously passing architecture tests remain GREEN
+- Zero PHP test regressions
+- `grep -rn "can_access\|can_vote_now" resources/js/Pages/` returns zero matches
+
+---
+
+## Voter Fact Projection Pattern (For Future Reference)
+
+When voter-specific facts must flow to Vue components, they are **read-only domain facts**, not authority predicates.
+
+**Use timestamps, not boolean predicates:**
+
+```typescript
+// ✅ CORRECT: timestamp is an unambiguous fact
+interface VoterFacts {
+  votedAt: string | null    // ISO8601 or null — client derives "hasVoted" if needed
+}
+// NOT:
+// hasVoted: boolean  — boolean predicate risks being misinterpreted as authority
+
+// ✅ CORRECT: authority from resolver only
+const { canDo } = useElectionCapabilities(computed(() => props.stateMachine))
+const voterCanCastBallot = canDo(ElectionActions.CAST_VOTE)  // NOT from VoterFacts
+
+// ❌ FORBIDDEN: eligibility predicate as prop
+interface BallotAccess {
+  can_access: boolean    // Authority predicate — belongs in resolver
+  isEligible: boolean   // Still authority predicate — same violation, different name
+}
+```
+
+**Why timestamp > boolean:** A frontend developer seeing `hasVoted: true` might incorrectly derive `canVote = false` instead of checking the resolver's `capabilities.cast_vote.allowed`. A timestamp forces the client to interpret, not assume.
+
+Facts are named as nouns/timestamps. Authority decisions come only from `useElectionCapabilities()`.
+
+---
+
+## Architectural Refinements (DDD Review — Required Before C.2.5+)
+
+These do not block Phase C.2.4 completion but MUST be addressed before Phase C.2.5 expansion.
+
+---
+
+### Refinement 1: Decompose `StateMachineContract` — Prevent Frontend Constitutional Monolith
+
+`StateMachineContract` is accumulating: lifecycle runtime, authority snapshots, metadata, telemetry, debugging, and federation precursor semantics. This risks **frontend constitutional protocol inflation** — everything collapses into one type, making decomposition harder over time.
+
+**Required conceptual decomposition (implementation may remain transitional):**
+
+```typescript
+// Future target: explicit concern separation
+interface ConstitutionalRuntimeProjection {
+  lifecycle: LifecycleProjection          // visualization only (state, completedStates)
+  authority: CapabilityProjection         // resolver-derived permission snapshot
+  metadata: ProjectionIntegrityMetadata   // hash, version, timestamp
+}
+
+// DebugProjection: completely external — NEVER inside ConstitutionalRuntimeProjection
+// Use debug-only endpoint, feature-flagged tooling, or isolated diagnostics transport
+```
+
+**Migration path:** `StateMachineContract` remains in use transitionally. Its internal fields must map cleanly to one of the four concerns above. No new fields may be added without identifying which concern they belong to.
+
+---
+
+### Refinement 2: Remove `capabilities_trace` From `StateMachineContract` Entirely
+
+**Current status:** Field exists in type with `@deprecated` or "forbidden in production" note.  
+**Why this is insufficient:** Production components can accidentally read it, tests can depend on it, telemetry can serialize it, creating shadow constitutional semantics.
+
+**Required action:**
+- Remove `capabilities_trace?` from `StateMachineContract` type definition
+- Use a debug-only endpoint, feature-flag tooling, or isolated transport instead
+- If capabilities_trace data is needed during development, it must travel via a completely separate channel — never mixed into the production projection contract
+
+```typescript
+// BEFORE (dangerous):
+interface StateMachineContract {
+  capabilities_trace?: unknown[] | null  // ← remove entirely
+}
+
+// AFTER (correct):
+// capabilities_trace is not part of any production type
+// It exists only in debug tooling, never in pages/ components
+```
+
+---
+
+### Refinement 3: `constitution_hash` — Narrow the Frontend's Authority
+
+**Current risk:** The statement "if hash mismatches, capabilities cannot be trusted" implies frontend is making a sovereignty determination.
+
+**Required precise definition:**
+- `constitution_hash` detects **stale projection lineage** — it does NOT determine authority validity
+- A mismatch means: snapshot was derived from an older constitution than the server currently uses
+- Frontend behavior on mismatch: request fresh projection from server, show stale-warning to admin user
+- Frontend behavior is NEVER: reinterpret, invalidate, or supplement authority based on hash state
+
+**Boundary statement (non-negotiable):**
+```
+Frontend may: detect projection staleness via constitution_hash.
+Frontend may NOT: determine constitutional validity, reinterpret authority, or bypass the resolver.
+```
+
+---
+
+### Refinement 4: `resolver_version` — Remove Over-Ceremonial Internal Governance
+
+`resolver_version` governs an **internal Inertia transitional boundary**, not a public API or federation contract. Applying semver ADR ceremony to internal runtime evolution adds overhead without proportional benefit.
+
+**Simplified governance (replace current table):**
+| Boundary | Governance discipline |
+|---|---|
+| Internal Inertia runtime | Compatibility: no silent breaking changes; document in CHANGELOG |
+| Public REST API | Semver: v1, v2 — breaking changes require major version bump |
+| Federation protocol | Treaty governance: partner-negotiated, externally versioned |
+
+Do NOT require ADRs, formal deprecation windows, or public version announcements for internal runtime version changes.
+
+---
+
+### Refinement 5: Add `ProjectionConsistencyBoundary` Semantics
+
+The plan forbids stale `localStorage` snapshots but does not define behavior for concurrent state changes. This gap becomes dangerous under overlays, suspension, and emergency freezes.
+
+**Required rules (conceptual — no implementation needed now):**
+
+| Situation | Required behavior |
+|---|---|
+| Admin suspends election mid-session | Invalidate snapshot immediately; voter sees stale-warning |
+| Overlay activates while user is on action page | Force capability refresh before rendering action buttons |
+| Stale-tab voter submits an action | Backend re-verifies snapshot at server; never trust client-side authority |
+| Long-lived tab (>10 min idle) | Periodic freshness check before rendering action buttons |
+| Replayed action from expired session | Authority recomputed server-side; stale projection is irrelevant |
+
+**Key principle:** Projection freshness is detected client-side. Authority is always verified server-side before any mutation.
+
+---
+
+### Refinement 6: `useElectionCapabilities()` — Formal Composable Invariants
+
+The composable must be governed by formal invariants, not just convention.
+
+**Non-negotiable composable law:**
+```
+The composable MAY:  expose, normalize, safely read, ergonomically wrap capabilities.
+The composable MUST NOT: derive, infer, reinterpret, elevate, combine, cache, or synthesize authority.
+```
+
+**God-composable trigger rules:** If the composable grows to include any of the following, it has become governance middleware and must be decomposed:
+- Lifecycle reasoning (state machine logic)
+- Overlay handling
+- Role transforms
+- Federation logic
+- Audit event emission
+- Denial text formatting beyond tooltip-key lookup
+
+---
+
+### Refinement 7: Add `ProjectionHydrationRules` (Conceptual — No Implementation Yet)
+
+The architecture now distributes constitutional-runtime projections. SSR/hydration introduces new stale-projection risks that must be acknowledged architecturally.
+
+**Required conceptual boundary statements:**
+- Hydration MUST NOT reuse stale snapshots from server-render time
+- Lazy-loaded components requesting authority MUST re-request from current props, not from hydrated snapshot
+- Partial renders MUST NOT proceed with partial authority data
+- After hydration, capabilities must be considered stale until first client-side prop reconciliation completes
+
+No implementation required now. Architecture must acknowledge the projection lifecycle for future SSR work.
+
+---
+
+### Refinement 8: Explicit Projection Ownership Boundaries
+
+**Non-negotiable layer ownership table:**
+| Layer | Ownership | Forbidden |
+|---|---|---|
+| `ElectionCapabilityResolver` | Constitutional authority semantics | Any rendering or transport concern |
+| Projection assemblers (controllers/resources) | Transport shape — what gets serialized | Authority derivation or interpretation |
+| Controllers | Orchestration — route to page, pass projections | Interpreting projection semantics |
+| Vue components | Rendering only — read capabilities, show UI | Deriving authority, augmenting snapshots |
+
+**Enforcement:** If projection semantics (e.g., authority field definitions) appear in a controller, the controller is doing projection assembly work. Extract to a projection assembler.
+
+---
+
+### Refinement 9: Strengthen Behavioral vs Grep Test Hierarchy Language
+
+**Formal test hierarchy statement (non-negotiable):**
+```
+BEHAVIORAL TESTS (PHPUnit, Vitest component tests) → AUTHORITATIVE
+  Prove that the system behaves constitutionally at runtime.
+  A passing behavioral test PROVES constitutional correctness.
+
+ARCHITECTURE GREP TESTS (Vitest grep/readFileSync) → SMOKE ALARMS ONLY
+  Detect obvious, easily-visible violations.
+  A passing grep test proves almost nothing about runtime behavior.
+  An absent grep match does NOT mean the violation is absent.
+```
+
+**The critical danger of grep-test overconfidence:** Computed patterns, aliased constants, and runtime string construction all produce violations that grep tests cannot detect. Never use a passing grep test as evidence of constitutional correctness.
+
+---
 
 ---
 
