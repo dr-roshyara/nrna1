@@ -91,7 +91,7 @@ const verificationModes = [
   { value: 'none', label: 'None (standard)', description: 'No per-voter identity verification. Voters access the ballot with their login credentials only.' },
   { value: 'ip_only', label: 'IP Address Only', description: 'Voter must vote from the pre-verified IP address during the video call.' },
   { value: 'fingerprint_only', label: 'Device Fingerprint Only', description: 'Voter must vote from the pre-verified device. Works across different networks.' },
-  { value: 'both', label: 'Both — IP + Device (Strictest)', description: 'Voter must match both the verified IP address and device. Highest security.' }
+  { value: 'both', label: 'Both — IP + Device Verification', description: 'Requires both verification conditions to be satisfied.' }
 ]
 
 const isShowingNeedsConfirmation = computed(() => {
@@ -179,7 +179,7 @@ const flashWarning = computed(() => {
               <div class="flex-1">
                 <legend class="text-lg font-semibold text-slate-900 mb-2">IP Address Restriction</legend>
                 <p class="text-slate-600 text-sm leading-relaxed">
-                  Limit the number of votes submitted from any single IP address. Prevents multi-voting from shared networks.
+                  Limits participation submissions originating from the same network location according to election configuration.
                 </p>
               </div>
               <div class="flex-shrink-0">
@@ -218,7 +218,7 @@ const flashWarning = computed(() => {
 
               <!-- IP Whitelist Section -->
               <fieldset class="border-t border-slate-300 pt-5">
-                <legend class="text-sm font-semibold text-slate-900 mb-3">Trusted IP Addresses (optional)</legend>
+                <legend class="text-sm font-semibold text-slate-900 mb-3">Configured Network Exceptions (optional)</legend>
                 <p class="text-sm text-slate-600 mb-4">
                   IPs listed below bypass the vote limit. Use for organizational servers or voting centers.
                 </p>
@@ -228,7 +228,7 @@ const flashWarning = computed(() => {
                   rows="4"
                   placeholder="10.0.0.1&#10;192.168.1.0/24&#10;172.16.0.0/12"
                   aria-describedby="whitelist-help"
-                  aria-label="Whitelisted IP addresses"
+                  aria-label="Configured network exceptions"
                   class="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:outline-none focus:border-teal-500 font-mono text-sm bg-white hover:border-slate-400 transition-colors"
                 />
                 <p v-if="whitelistError" class="text-danger-600 font-semibold text-sm mt-3 flex items-center gap-2" role="alert">
@@ -420,7 +420,7 @@ const flashWarning = computed(() => {
                 <li>Open the "Voters" tab for this election</li>
                 <li>For each voter, click the "Verify" button</li>
                 <li>Conduct a video or audio call to confirm their identity</li>
-                <li>Record their IP address and/or device fingerprint</li>
+                <li>Record required verification evidence</li>
                 <li>Save the verification record</li>
               </ol>
             </div>
