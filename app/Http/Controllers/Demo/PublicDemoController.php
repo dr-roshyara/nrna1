@@ -166,7 +166,7 @@ class PublicDemoController extends Controller
     // Step 3: Vote (Ballot Selection)
     // ─────────────────────────────────────────────────────────────────────────
 
-    public function voteShow(PublicDemoSession $publicDemoSession): Response
+    public function voteShow(PublicDemoSession $publicDemoSession): Response|\Illuminate\Http\RedirectResponse
     {
         $this->requireStep($publicDemoSession, 3);
 
@@ -176,6 +176,19 @@ class PublicDemoController extends Controller
             $publicDemoSession->delete();
             return redirect()->route('public-demo.start');
         }
+
+        // TEMPORARY DIAGNOSTIC — remove after production investigation
+        // Uncomment the dd() below, reload the page, check output, then re-comment.
+        // dd([
+        //     'election_id'                        => $election->id,
+        //     'total_posts'                        => DemoPost::withoutGlobalScopes()->where('election_id', $election->id)->count(),
+        //     'total_candidacies_in_db'            => DemoCandidacy::withoutGlobalScopes()->count(),
+        //     'candidacies_matching_election_id'   => DemoCandidacy::withoutGlobalScopes()->where('election_id', $election->id)->count(),
+        //     'candidacies_matching_any_post_id'   => DemoCandidacy::withoutGlobalScopes()->whereIn(
+        //         'post_id',
+        //         DemoPost::withoutGlobalScopes()->where('election_id', $election->id)->pluck('id')
+        //     )->count(),
+        // ]);
 
         $nationalPosts = $this->buildPostsData($election, true);
         $regionalPosts = $this->buildPostsData($election, false);
@@ -397,41 +410,68 @@ class PublicDemoController extends Controller
 
     /**
      * Build posts data for the vote page (national or regional).
+     *
+     * Strategy: eager-load via relationship (primary) with a direct decoupled
+     * query fallback (Scenario B). Both paths call withoutGlobalScopes() to
+     * bypass the BelongsToTenant scope on this anonymous public-demo route.
      */
     private function buildPostsData(Election $election, bool $national): \Illuminate\Support\Collection
     {
         return DemoPost::withoutGlobalScopes()
             ->where('election_id', $election->id)
             ->where('is_national_wide', $national)
+            ->with(['candidacies' => function ($query) {
+                $query->withoutGlobalScopes()
+                      ->orderBy('position_order');
+            }])
             ->orderBy('position_order')
             ->get()
-            ->map(function (DemoPost $post) {
-                $candidates = DemoCandidacy::withoutGlobalScopes()
-                    ->where('post_id', $post->id)
-                    ->orderBy('position_order')
-                    ->get()
-                    ->map(fn ($c) => [
-                        'id' => $c->id,
-                        'candidacy_id' => $c->id,
-                        'user_name' => $c->candidacy_name ?? $c->user_name ?? 'Demo Candidate',
-                        'candidacy_name' => $c->candidacy_name ?? $c->user_name ?? 'Demo Candidate',
-                        'description' => $c->description,
-                        'position_order' => $c->position_order,
-                        'user_id' => null,
-                        'is_selected' => false,
-                    ]);
+            ->map(function (DemoPost $post) use ($election) {
+                // Primary path: use the eager-loaded relation.
+                // Fallback: if the relation returned empty despite data existing,
+                // run a direct decoupled query (Scenario B — tenant scope re-applied).
+                $candidacies = $post->candidacies;
+
+                if ($candidacies->isEmpty()) {
+                    // Scenario B fallback: direct query bypassing all scopes.
+                    // Filter by election_id first; if still empty (Scenario A — old
+                    // data created before election_id was stored), fall back to post_id only.
+                    $candidacies = DemoCandidacy::withoutGlobalScopes()
+                        ->where('post_id', $post->id)
+                        ->where('election_id', $election->id)
+                        ->orderBy('position_order')
+                        ->get();
+
+                    if ($candidacies->isEmpty()) {
+                        $candidacies = DemoCandidacy::withoutGlobalScopes()
+                            ->where('post_id', $post->id)
+                            ->orderBy('position_order')
+                            ->get();
+                    }
+                }
 
                 return [
-                    'id' => $post->id,
-                    'post_id' => $post->id,
-                    'name' => $post->name,
-                    'post_name' => $post->name,
-                    'nepali_name' => $post->nepali_name,
+                    'id'               => $post->id,
+                    'post_id'          => $post->id,
+                    'name'             => $post->name,
+                    'post_name'        => $post->name,
+                    'nepali_name'      => $post->nepali_name,
                     'is_national_wide' => $post->is_national_wide,
-                    'required_number' => $post->required_number,
-                    'position_order' => $post->position_order,
-                    'state_name' => $post->state_name,
-                    'candidates' => $candidates,
+                    'required_number'  => $post->required_number,
+                    'position_order'   => $post->position_order,
+                    'state_name'       => $post->state_name,
+                    'candidates'       => $candidacies->map(fn ($c) => [
+                        'id'             => $c->id,
+                        'candidacy_id'   => $c->id,
+                        'user_id'        => $c->user_id,
+                        'user_name'      => $c->user_name ?? $c->candidacy_name ?? $c->name ?? 'Demo Candidate',
+                        'candidacy_name' => $c->candidacy_name ?? $c->user_name ?? $c->name ?? 'Demo Candidate',
+                        'description'    => $c->description,
+                        'position_order' => $c->position_order,
+                        'image_path_1'   => $c->image_path_1,
+                        'post_id'        => $c->post_id,
+                        'is_selected'    => false,
+                    ])->values(),
                 ];
             });
     }

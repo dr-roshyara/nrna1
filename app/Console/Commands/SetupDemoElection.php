@@ -339,6 +339,7 @@ class SetupDemoElection extends Command
             // Create demo candidacy with correct schema
             DemoCandidacy::create([
                 'post_id'         => $post->id,
+                'election_id'     => $election->id,
                 'organisation_id' => $organisation->id,
                 'user_id'         => null,
                 'name'            => $candidate['candidacy_name'],
