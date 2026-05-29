@@ -38,13 +38,15 @@ class DemoElectionResolver
 
         $query = Election::withoutGlobalScopes()->where('type', 'demo');
 
-        // Priority 1: Org-specific demo (AUTO-CREATE if missing)
+        // Priority 1: Org-specific demo that HAS data (AUTO-CREATE if missing)
         if ($user->organisation_id !== null) {
             $orgDemo = (clone $query)
                 ->where('organisation_id', $user->organisation_id)
-                ->first();
+                ->orderBy('created_at', 'desc')
+                ->get()
+                ->first(fn($e) => $this->electionHasData($e));
 
-            // If no org-specific demo exists, AUTO-CREATE it
+            // If no org-specific demo with data exists, AUTO-CREATE it
             if (!$orgDemo) {
                 $organisation = Organisation::find($user->organisation_id);
                 if ($organisation) {
@@ -89,8 +91,12 @@ class DemoElectionResolver
             ]);
         }
 
-        // Priority 2: Platform-wide demo (fallback)
-        $platformDemo = (clone $query)->whereNull('organisation_id')->first();
+        // Priority 2: Platform-wide demo that HAS data
+        $platformDemo = (clone $query)
+            ->whereNull('organisation_id')
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->first(fn($e) => $this->electionHasData($e));
 
         if ($platformDemo) {
             \Log::info('✅ Using platform-wide demo election', [
@@ -112,42 +118,145 @@ class DemoElectionResolver
     /**
      * Get the demo election for public (anonymous) access.
      *
-     * Priority:
-     * 1️⃣ Default platform organisation's demo election (auto-creates if missing)
-     * 2️⃣ Any platform-wide demo (organisation_id = null)
+     * Priority (with data validation):
+     * 1️⃣ Election with slug 'demo-election-{org_slug}' that HAS posts + candidates
+     * 2️⃣ Most recently created demo election for this org that HAS data
+     * 3️⃣ Any demo election for this org (will auto-create if none exists)
      *
      * @return Election|null
      */
     public function getPublicDemoElection(): ?Election
     {
-        // Priority 1: Default platform organisation demo
         $platformOrg = \App\Models\Organisation::getDefaultPlatform();
 
         if ($platformOrg) {
-            $orgDemo = Election::withoutGlobalScopes()
+            // Priority 1: Try the specific slug that demo:setup creates
+            $namedDemo = Election::withoutGlobalScopes()
                 ->where('type', 'demo')
                 ->where('organisation_id', $platformOrg->id)
+                ->where('slug', 'demo-election-' . $platformOrg->slug)
                 ->first();
 
-            if (!$orgDemo) {
-                try {
-                    $orgDemo = app(DemoElectionCreationService::class)
-                        ->createOrganisationDemoElection($platformOrg->id, $platformOrg);
-                } catch (\Exception $e) {
-                    \Log::error('Failed to auto-create public demo election', ['error' => $e->getMessage()]);
+            if ($namedDemo && $this->electionHasData($namedDemo)) {
+                return $namedDemo;
+            }
+
+            // Priority 2: Most recent demo election for this org that has data
+            $withData = Election::withoutGlobalScopes()
+                ->where('type', 'demo')
+                ->where('organisation_id', $platformOrg->id)
+                ->orderBy('created_at', 'desc')
+                ->get()
+                ->first(fn($e) => $this->electionHasData($e));
+
+            if ($withData) {
+                return $withData;
+            }
+
+            // Priority 3: If named demo exists but is empty, populate it
+            if ($namedDemo && !$this->electionHasData($namedDemo)) {
+                $this->ensureElectionHasData($namedDemo);
+                if ($this->electionHasData($namedDemo)) {
+                    return $namedDemo;
                 }
             }
 
-            if ($orgDemo) {
-                return $orgDemo;
+            // Priority 4: Auto-create new one
+            try {
+                $orgDemo = app(DemoElectionCreationService::class)
+                    ->createOrganisationDemoElection($platformOrg->id, $platformOrg);
+                if ($orgDemo) {
+                    return $orgDemo;
+                }
+            } catch (\Exception $e) {
+                \Log::error('Failed to auto-create public demo election', ['error' => $e->getMessage()]);
             }
         }
 
-        // Priority 2: Platform-wide demo (no organisation_id)
+        // Final fallback: any platform-wide demo
         return Election::withoutGlobalScopes()
             ->where('type', 'demo')
             ->whereNull('organisation_id')
             ->first();
+    }
+
+    /**
+     * Check if an election actually has posts and candidates.
+     */
+    private function electionHasData(Election $election): bool
+    {
+        if ($election->posts_count > 0 && $election->candidates_count > 0) {
+            return true;
+        }
+
+        $postCount = \App\Models\DemoPost::withoutGlobalScopes()
+            ->where('election_id', $election->id)
+            ->count();
+        $candidateCount = \App\Models\DemoCandidacy::withoutGlobalScopes()
+            ->where('election_id', $election->id)
+            ->count();
+
+        if ($postCount !== (int) $election->posts_count || $candidateCount !== (int) $election->candidates_count) {
+            $election->withoutEvents(fn() => $election->update([
+                'posts_count' => $postCount,
+                'candidates_count' => $candidateCount,
+            ]));
+        }
+
+        return $postCount > 0 && $candidateCount > 0;
+    }
+
+    /**
+     * Ensure an election has at least basic demo data.
+     */
+    private function ensureElectionHasData(Election $election): void
+    {
+        $postCount = \App\Models\DemoPost::withoutGlobalScopes()
+            ->where('election_id', $election->id)
+            ->count();
+        if ($postCount > 0) {
+            return;
+        }
+
+        $orgId = $election->organisation_id;
+        $posts = [
+            ['name' => 'President', 'order' => 1, 'required' => 1],
+            ['name' => 'Vice President', 'order' => 2, 'required' => 1],
+            ['name' => 'General Secretary', 'order' => 3, 'required' => 1],
+        ];
+        $names = ['Alice Johnson', 'Bob Smith', 'Carol Williams'];
+
+        foreach ($posts as $p) {
+            $post = \App\Models\DemoPost::withoutGlobalScopes()->create([
+                'election_id' => $election->id,
+                'organisation_id' => $orgId,
+                'name' => $p['name'],
+                'required_number' => $p['required'],
+                'position_order' => $p['order'],
+                'is_national_wide' => true,
+            ]);
+            foreach ($names as $i => $name) {
+                \App\Models\DemoCandidacy::withoutGlobalScopes()->create([
+                    'post_id' => $post->id,
+                    'election_id' => $election->id,
+                    'organisation_id' => $orgId,
+                    'candidacy_name' => $name,
+                    'user_name' => $name,
+                    'position_order' => $i + 1,
+                ]);
+            }
+        }
+
+        $election->withoutEvents(fn() => $election->update([
+            'posts_count' => count($posts),
+            'candidates_count' => count($posts) * count($names),
+        ]));
+
+        \Log::info('Auto-populated empty demo election', [
+            'election_id' => $election->id,
+            'posts' => count($posts),
+            'candidates' => count($posts) * count($names),
+        ]);
     }
 
     /**

@@ -76,11 +76,8 @@ class PublicDemoController extends Controller
             ]
         );
 
-        // Reset session if: completed, expired, or the stored election was force-deleted
-        $electionStale = $demoSession->election_id !== $election->id
-            && !Election::withoutGlobalScopes()->where('id', $demoSession->election_id)->exists();
-
-        if ($demoSession->has_voted || $demoSession->isExpired() || $electionStale) {
+        // Reset session if: completed, expired, or the resolver found a better election
+        if ($demoSession->has_voted || $demoSession->isExpired() || $demoSession->election_id !== $election->id) {
             $demoSession->delete();
             $demoSession = PublicDemoSession::create([
                 'session_token' => $sessionToken,
