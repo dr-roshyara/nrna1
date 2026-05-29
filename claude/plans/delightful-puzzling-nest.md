@@ -188,20 +188,123 @@ Tier 3 — Membership workflow
 Tier 4 — Admin / Internal (low priority)
 ```
 
-**Backlog items from audit:**
+**Backlog items from audit (with Priority / Business Value / Effort):**
+
 ```
-UI-001: Replace hardcoded voted/active/pending badges in voting pages → use StatusBadge
-UI-002: Introduce Button component in Vote/Create.vue, Vote/Verify.vue
-UI-003: Apply WorkflowLayout to Vote/Create.vue, Vote/CreateVotingPage.vue
-UI-004: Apply WorkflowLayout to Election/ElectionPage.vue
-UI-005: Standardize election workflow headers (use WorkflowLayout title)
-UI-006: Introduce Button component in Election/Show.vue, Election/Management.vue
-UI-007: StatusBadge adoption in Election/ElectionIndex.vue, Election/ElectionResult.vue
-UI-008: WorkflowLayout adoption in Membership workflow pages
-UI-009: Standardize form focus states in Vote/ pages
-UI-010: Standardize form focus states in Election/ pages
-UI-011: Standardize table border colors in Members/Index.vue, Admin/ pages
-UI-012: Consolidate modal patterns in Election/Candidacy/ pages
+UI-001
+What:    Replace 50+ hardcoded voted/active/pending badges → use StatusBadge
+Pages:   Vote/Create.vue, Vote/Verify.vue, Vote/Result.vue + DemoVote/*
+Priority: High
+Value:   High — voters see status in 1 consistent color instead of 4
+Effort:  Small (4h) — component exists, swap inline classes
+
+UI-002
+What:    Adopt Button component in Voting workflow
+Pages:   Vote/Create.vue, Vote/Verify.vue, Vote/CreateVotingPage.vue
+Priority: High
+Value:   High — primary user journey, high visibility
+Effort:  Small (2h) — replace raw <button> with <Button variant="">
+
+UI-003
+What:    Apply WorkflowLayout to Voting workflow pages
+Pages:   Vote/CreateVotingPage.vue, Vote/Create.vue, Vote/Verify.vue
+Priority: High
+Value:   High — users recognize consistent step-by-step pattern
+Effort:  Medium (6h) — restructure page sections into slots
+
+UI-004
+What:    Apply WorkflowLayout to Election workflow pages
+Pages:   Election/ElectionPage.vue, Election/Show.vue, Election/Management.vue
+Priority: High
+Value:   High — election managers recognize consistent structure
+Effort:  Medium (6h)
+
+UI-005
+What:    Adopt Button component in Election workflow
+Pages:   Election/Show.vue, Election/Management.vue, Election/ElectionIndex.vue
+Priority: High
+Value:   Medium — staff-facing, high frequency
+Effort:  Small (2h)
+
+UI-006
+What:    StatusBadge adoption in Election pages
+Pages:   Election/ElectionIndex.vue, Election/ElectionResult.vue
+Priority: High
+Value:   High — election states already use StatusBadge API
+Effort:  Small (2h)
+
+UI-007
+What:    Apply WorkflowLayout to Membership workflow
+Pages:   Membership pages (when modified for feature work)
+Priority: Medium
+Value:   Medium — convergence during normal delivery
+Effort:  Medium (6h) — defer until membership touched
+
+UI-008
+What:    Standardize form focus states in Voting + Election pages
+Pages:   Vote/* and Election/Posts/Partials/*
+Priority: Medium
+Value:   Medium — accessibility + keyboard navigation
+Effort:  Small (3h) — add focus:ring-2 focus:ring-primary-500
+
+UI-009
+What:    Consolidate table border colors in Members/Index.vue, Admin pages
+Pages:   Members/Index.vue, Admin/GeoUnits.vue, Admin/GovernanceLevels.vue
+Priority: Low
+Value:   Low — admin-only, low user visibility
+Effort:  Small (2h) — find-replace slate-200 → neutral-200 in table contexts
+
+UI-010
+What:    Consolidate modal patterns in Election/Candidacy pages
+Pages:   Election/Candidacy/Applications.vue, Election/Candidacy/Index.vue
+Priority: Low
+Value:   Low — staff-facing
+Effort:  Medium (4h) — defer to phase C (membership+)
+```
+
+---
+
+## Deliverable 5: Create `FRONTEND_DECISIONS.md`
+
+Frontend ADR (Architecture Decision Record) repository. Records the **why** behind decisions so future contributors (and Claude) don't re-litigate them.
+
+```markdown
+# Frontend Decisions
+
+FD-001
+Decision:  Button.vue is the canonical button component
+Date:      2026-05-29
+Reason:    Already existed with full variant/size API before governance layer was added.
+           Creating AppButton.vue would duplicate rather than eliminate.
+Use:       <Button variant="primary|secondary|outline|ghost|danger|..." size="sm|md|lg">
+
+FD-002
+Decision:  WorkflowLayout owns topology only (not styling, not forms, not validation)
+Date:      2026-05-29
+Reason:    Prevents God Component growth (WorkflowLayoutV2, WorkflowLayoutElection, etc.)
+           Components that own too much create the fragmentation they were built to solve.
+Rule:      If WorkflowLayout grows past 200 lines, split responsibilities.
+
+FD-003
+Decision:  domain prop in WorkflowLayout is open-ended string, not union type
+Date:      2026-05-29
+Reason:    Public Digit will serve NGOs, unions, cooperatives, political parties.
+           Enumerating domains creates forced V2 migration when new org types arrive.
+Use:       domain="voting" or domain="regional-assembly" — any string accepted.
+
+FD-004
+Decision:  StatusBadge supports unknown statuses via neutral fallback
+Date:      2026-05-29
+Reason:    Each organization type may invent domain-specific statuses.
+           Requiring edits to StatusBadge per new status is a maintenance bottleneck.
+Use:       <StatusBadge status="regional-delegate" label="Regional Delegate" />
+
+FD-005
+Decision:  No global color replacements (slate-* → neutral-*, etc.)
+Date:      2026-05-29
+Reason:    High regression risk across 225 files. Semantic differences may be intentional
+           (emerald vs green for active vs completed). Replace only during feature work.
+Rule:      Bring pages to color standard only when already modified for business reasons.
 ```
 
 ---
@@ -211,12 +314,13 @@ UI-012: Consolidate modal patterns in Election/Candidacy/ pages
 | Action | File | Type |
 |---|---|---|
 | UPDATE (append sections) | `.claude/UI_GUIDELINES.md` | Governance rules |
-| UPDATE (extend map + label prop) | `resources/js/Components/StatusBadge.vue` | Add 6 general statuses |
+| UPDATE (extend map + label prop) | `resources/js/Components/StatusBadge.vue` | Add 6 general statuses + extensibility |
 | CREATE | `resources/js/Components/WorkflowLayout.vue` | New slot-based layout component |
-| CREATE | `UI_GOVERNANCE_BACKLOG.md` | Backlog tracking file |
+| CREATE | `UI_GOVERNANCE_BACKLOG.md` | Backlog tracking file with Priority/Value/Effort |
+| CREATE | `FRONTEND_DECISIONS.md` | Frontend ADR repository |
 
 **Not created:**
-- `AppButton.vue` — `Button.vue` already covers this
+- `AppButton.vue` — `Button.vue` already covers this (FD-001)
 - `AppTable.vue` — Deferred (second wave)
 
 ---

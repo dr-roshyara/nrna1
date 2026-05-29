@@ -1,0 +1,1 @@
+const e={DRAFT:"draft",SUBMITTED_FOR_APPROVAL:"submitted_for_approval",APPROVED:"approved",REJECTED:"rejected",SETUP_ADMINISTRATION:"setup_administration",SETUP_NOMINATION:"setup_nomination",READY_FOR_VOTING:"ready_for_voting",VOTING_ACTIVE:"voting_active",COUNTING:"counting",RESULTS_PUBLISHED:"results_published",ARCHIVED:"archived",SUSPENDED:"suspended"};export{e as E};
