@@ -169,9 +169,19 @@ class PublicDemoController extends Controller
 
         $election = Election::withoutGlobalScopes()->find($publicDemoSession->election_id);
 
+        // Election deleted — start fresh
         if (!$election) {
             $publicDemoSession->delete();
             return redirect()->route('public-demo.start');
+        }
+
+        // Election exists but has no data — resolver may have found a better one
+        if (!$this->sessionElectionHasData($election)) {
+            $better = $this->resolver->getPublicDemoElection();
+            if ($better && $better->id !== $election->id) {
+                $publicDemoSession->update(['election_id' => $better->id]);
+                $election = $better;
+            }
         }
 
         $nationalPosts = $this->buildPostsData($election, true);
@@ -402,6 +412,19 @@ class PublicDemoController extends Controller
         if ($session->current_step < $step) {
             abort(403, 'Please complete the previous steps first.');
         }
+    }
+
+    /**
+     * Quick check if an election has posts and candidates.
+     */
+    private function sessionElectionHasData(Election $election): bool
+    {
+        if ($election->posts_count > 0 && $election->candidates_count > 0) {
+            return true;
+        }
+
+        return DemoPost::withoutGlobalScopes()->where('election_id', $election->id)->exists()
+            && DemoCandidacy::withoutGlobalScopes()->where('election_id', $election->id)->exists();
     }
 
     /**
