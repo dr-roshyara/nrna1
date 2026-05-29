@@ -76,8 +76,11 @@ class PublicDemoController extends Controller
             ]
         );
 
-        // If session exists but was completed, give a fresh one
-        if ($demoSession->has_voted || $demoSession->isExpired()) {
+        // Reset session if: completed, expired, or the stored election was force-deleted
+        $electionStale = $demoSession->election_id !== $election->id
+            && !Election::withoutGlobalScopes()->where('id', $demoSession->election_id)->exists();
+
+        if ($demoSession->has_voted || $demoSession->isExpired() || $electionStale) {
             $demoSession->delete();
             $demoSession = PublicDemoSession::create([
                 'session_token' => $sessionToken,
@@ -168,6 +171,11 @@ class PublicDemoController extends Controller
         $this->requireStep($publicDemoSession, 3);
 
         $election = Election::withoutGlobalScopes()->find($publicDemoSession->election_id);
+
+        if (!$election) {
+            $publicDemoSession->delete();
+            return redirect()->route('public-demo.start');
+        }
 
         $nationalPosts = $this->buildPostsData($election, true);
         $regionalPosts = $this->buildPostsData($election, false);

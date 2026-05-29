@@ -316,7 +316,7 @@ public function create(Request $request)
         $groupedCandidates = $demoCandidates->groupBy('post_id');
 
         $national_posts = DemoPost::where('election_id', $election->id)
-            ->where('is_national_wide', 1)
+            ->where('is_national_wide', true)
             ->orderBy('post_id')
             ->get()
             ->map(function ($post) use ($groupedCandidates) {
@@ -351,7 +351,7 @@ public function create(Request $request)
                 $query->withoutGlobalScopes()->with('user')->orderBy('position_order');
             }])
             ->where('election_id', $election->id)
-            ->where('is_national_wide', 1)
+            ->where('is_national_wide', true)
             ->orderBy('position_order')
             ->get()
             ->map(function ($post) {
@@ -390,7 +390,7 @@ public function create(Request $request)
             $groupedCandidates = $demoCandidates->groupBy('post_id');
 
             $regional_posts = DemoPost::where('election_id', $election->id)
-                ->where('is_national_wide', 0)
+                ->where('is_national_wide', false)
                 ->where('state_name', trim($auth_user->region))
                 ->orderBy('post_id')
                 ->get()
@@ -426,7 +426,7 @@ public function create(Request $request)
                     $query->withoutGlobalScopes()->with('user')->orderBy('position_order');
                 }])
                 ->where('election_id', $election->id)
-                ->where('is_national_wide', 0)
+                ->where('is_national_wide', false)
                 ->where('state_name', trim($auth_user->region))
                 ->orderBy('position_order')
                 ->get()
@@ -1023,8 +1023,8 @@ private function validateVoteIntegrity($vote_data, $auth_user)
     
     try {
         // Get available posts for verification
-        $available_national_posts = Post::where('is_national_wide', 1)->pluck('id')->toArray();
-        $available_regional_posts = Post::where('is_national_wide', 0)
+        $available_national_posts = Post::where('is_national_wide', true)->pluck('id')->toArray();
+        $available_regional_posts = Post::where('is_national_wide', false)
             ->where('state_name', trim($auth_user->region))
             ->pluck('id')->toArray();
         

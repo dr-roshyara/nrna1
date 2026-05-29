@@ -478,7 +478,7 @@ public function create(Request $request)
             $query->join('users', 'users.id', '=', 'candidacies.user_id')
                   ->select('candidacies.*', 'users.name as user_name');
         }]))
-        ->where('is_national_wide', 1)
+        ->where('is_national_wide', true)
         ->orderBy('post_id')
         ->get()
         ->map(function ($post) {
@@ -511,7 +511,7 @@ public function create(Request $request)
                 $query->join('users', 'users.id', '=', 'candidacies.user_id')
                       ->select('candidacies.*', 'users.name as user_name');
             }]))
-            ->where('is_national_wide', 0)
+            ->where('is_national_wide', false)
             ->where('state_name', trim($auth_user->region))
             ->orderBy('post_id')
             ->get()
@@ -1038,16 +1038,16 @@ private function validateVoteIntegrity($vote_data, $auth_user)
     
     try {
         // Get available posts for verification
-        $available_national_posts = Post::where('is_national_wide', 1)->pluck('id')->toArray();
-        $available_regional_posts = Post::where('is_national_wide', 0)
+        $available_national_posts = Post::where('is_national_wide', true)->pluck('id')->toArray();
+        $available_regional_posts = Post::where('is_national_wide', false)
             ->where('state_name', trim($auth_user->region))
             ->pluck('id')->toArray();
-        
+
         // Validate national selections
         foreach ($vote_data['national_selected_candidates'] ?? [] as $index => $selection) {
             if ($selection && !$selection['no_vote']) {
                 $post_id = $selection['post_id'] ?? null;
-                
+
                 if (!in_array($post_id, $available_national_posts)) {
                     $errors["national_integrity_{$index}"] = "Invalid national post selection detected.";
                     continue;
