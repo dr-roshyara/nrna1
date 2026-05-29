@@ -394,7 +394,7 @@ class PublicDemoController extends Controller
     {
         return DemoPost::withoutGlobalScopes()
             ->where('election_id', $election->id)
-            ->where('is_national_wide', $national ? 1 : 0)
+            ->where('is_national_wide', $national)
             ->orderBy('position_order')
             ->get()
             ->map(function (DemoPost $post) {

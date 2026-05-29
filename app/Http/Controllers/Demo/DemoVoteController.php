@@ -372,7 +372,7 @@ public function create(Request $request)
         // withoutGlobalScopes() bypasses BelongsToTenant filtering for demo elections
         $nationalPosts = DemoPost::withoutGlobalScopes()
             ->where('election_id', $election->id)
-            ->where('is_national_wide', 1)
+            ->where('is_national_wide', true)
             ->with(['candidacies' => function($query) {
                 $query->withoutGlobalScopes()
                       ->with('user')
@@ -426,7 +426,7 @@ public function create(Request $request)
         if (!empty($auth_user->region)) {
             $regionalPostsQuery = DemoPost::withoutGlobalScopes()
                 ->where('election_id', $election->id)
-                ->where('is_national_wide', 0)
+                ->where('is_national_wide', false)
                 ->where('state_name', trim($auth_user->region))
                 ->with(['candidacies' => function($query) {
                     $query->withoutGlobalScopes()
