@@ -229,7 +229,7 @@ export default {
       message.value = ''
 
       try {
-        const response = await axios.post(`/api/organisations/${props.organisation.id}/demo-setup`, {
+        const response = await axios.post(`/api/organisations/${props.organisation.slug}/demo-setup`, {
           force: props.demoStatus.exists // Force recreate if exists
         })
 

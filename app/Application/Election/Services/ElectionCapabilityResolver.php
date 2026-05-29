@@ -63,16 +63,16 @@ final class ElectionCapabilityResolver
                 return $decision;
             }
 
-            // Policy grants (allows)
+            // Policy authorizes (allows)
             $entry = CapabilityTraceEntry::granted($this->getPolicyName($policy));
             $trace = $trace->add($entry);
             $this->lastTrace = $trace;
             return $decision;
         }
 
-        // No policy denied or granted - default to grant
+        // No policy denied - default to authorized
         $this->lastTrace = $trace;
-        return CapabilityDecision::grant();
+        return CapabilityDecision::authorized();
     }
 
     public function lastTrace(): ?CapabilityTrace

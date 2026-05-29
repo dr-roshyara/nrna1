@@ -51,36 +51,6 @@
                     </p>
                 </div>
 
-                <!-- Public Demo: Code displayed prominently -->
-                <div v-if="is_public_demo && verification_code" class="p-5 bg-green-50 rounded-lg border-l-4 border-green-500 mb-4">
-                    <p class="text-green-900 font-semibold flex items-center mb-3">
-                        <span class="inline-block w-5 h-5 bg-green-600 text-white rounded-full text-xs leading-5 mr-2 flex items-center justify-center">✓</span>
-                        {{ $t('pages.code-create.public_demo.code_display_label') }}
-                    </p>
-                    <div class="text-center flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <span class="inline-block bg-white border-2 border-green-400 rounded-xl px-8 py-4 text-4xl font-mono font-bold tracking-widest text-green-800 shadow-sm select-all">
-                            {{ verification_code }}
-                        </span>
-                        <button
-                            @click="copyCodeToClipboard"
-                            :class="codeCopied ? 'bg-green-500 text-white shadow-lg' : 'bg-white text-green-600 hover:bg-green-50 hover:shadow-md'"
-                            class="font-bold py-3 px-6 rounded-lg transition-all flex items-center justify-center gap-2 border-2 border-green-400 hover:border-green-500 whitespace-nowrap"
-                            title="Copy code to clipboard"
-                        >
-                            <svg v-if="!codeCopied" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                            </svg>
-                            <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            <span class="hidden sm:inline">{{ codeCopied ? 'Copied!' : 'Copy' }}</span>
-                        </button>
-                    </div>
-                    <p class="text-green-700 text-sm mt-3 text-center">
-                        {{ $t('pages.code-create.public_demo.code_hint') }}
-                    </p>
-                </div>
-
                 <!-- Email Failed - Showing Fallback Code -->
                 <div v-else-if="show_code_fallback && !email_sent && !is_public_demo" class="p-4 bg-amber-50 rounded-lg border-l-4 border-amber-500 mb-4">
                     <p class="text-amber-900 font-medium flex items-center">
@@ -194,6 +164,36 @@
                 <div class="bg-white rounded-lg shadow-lg border border-neutral-200 px-6 py-8 max-w-2xl mx-auto">
                     <!-- Code Input -->
                     <div class="mb-8">
+                        <!-- Your demo voting code — displayed directly above the input -->
+                        <div v-if="is_public_demo && verification_code" class="p-5 bg-green-50 rounded-lg border-l-4 border-green-500 mb-6">
+                            <p class="text-green-900 font-semibold flex items-center mb-3">
+                                <span class="inline-block w-5 h-5 bg-green-600 text-white rounded-full text-xs leading-5 mr-2 flex items-center justify-center">✓</span>
+                                {{ $t('pages.code-create.public_demo.code_display_label') }}
+                            </p>
+                            <div class="text-center flex flex-col sm:flex-row items-center justify-center gap-4">
+                                <span class="inline-block bg-white border-2 border-green-400 rounded-xl px-8 py-4 text-4xl font-mono font-bold tracking-widest text-green-800 shadow-sm select-all">
+                                    {{ verification_code }}
+                                </span>
+                                <button
+                                    @click="copyCodeToClipboard"
+                                    :class="codeCopied ? 'bg-green-500 text-white shadow-lg' : 'bg-white text-green-600 hover:bg-green-50 hover:shadow-md'"
+                                    class="font-bold py-3 px-6 rounded-lg transition-all flex items-center justify-center gap-2 border-2 border-green-400 hover:border-green-500 whitespace-nowrap"
+                                    title="Copy code to clipboard"
+                                >
+                                    <svg v-if="!codeCopied" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span class="hidden sm:inline">{{ codeCopied ? 'Copied!' : 'Copy' }}</span>
+                                </button>
+                            </div>
+                            <p class="text-green-700 text-sm mt-3 text-center">
+                                {{ $t('pages.code-create.public_demo.code_hint') }}
+                            </p>
+                        </div>
+
                         <label for="voting_code" class="block mb-6">
                             <div class="flex items-center justify-center mb-2">
                                 <span class="text-2xl mr-2">🔑</span>

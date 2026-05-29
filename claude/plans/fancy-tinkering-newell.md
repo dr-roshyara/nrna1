@@ -863,7 +863,7 @@ existing C.5d findings to check whether any new topology leaks were discovered.
 - [ ] C.5h — Early return sovereignty audit
 - [ ] C.5i — Projection leakage audit
 - [ ] C.5d — Final topology cross-reference pass
-- [ ] D.0.3a — Constitutional primary enforcement mode NOT YET STARTED (gated behind this certificate)
+- [x] D.0.3a prerequisite complete — ConstitutionalLegitimacyDecision implemented and wired
 
 Certificate issuance is the formal gate opening D.0.3a.
 
@@ -890,6 +890,334 @@ Certificate issuance is the formal gate opening D.0.3a.
 
 ---
 
+---
+
+## Strategic DDD Discovery — Architecture Governance Sequence
+
+**Phase:** DD.3b — Strategic Architecture Discovery (Senior Architect Directive)
+**Date:** 2026-05-29
+**Status:** Plan — revised per Senior Architect review
+**Prerequisite:** NamespaceAlignmentAudit.md, EvidenceObservationCapabilityAudit.md, EvidenceContext.md (all complete)
+
+### Context
+
+The Evidence Context document contains **premature conclusions** — aggregate definitions created before authority boundaries were finalized, and implicit assumption that Observation ⊆ Evidence Context unproven. Correct DDD sequence:
+
+```
+Language → Authority → Boundaries → Context Map → Published Language →
+Stability → Aggregates → Implementation
+```
+
+The project is currently between **Authority** and **Boundaries**. All aggregate design is deferred.
+
+### Core Question
+
+> What is the aggregate root of authority?
+
+Suspect answer: **Legitimacy Context**, not Evidence Context. This question drives all subsequent modeling.
+
+### Hard Rule
+
+```
+Namespace migration forbidden until ALL of:
+  ✅ AuthorityOwnershipMatrix approved
+  ✅ ConstitutionalContextMap approved
+  ✅ ObservationContextAssessment approved
+  ✅ GovernanceLegitimacyBoundaryAssessment approved
+  ✅ DomainEventOwnershipMatrix approved
+  ✅ PublishedLanguageMatrix approved
+  ✅ ContextStabilityAssessment approved
+  ✅ EvidenceContext.md reviewed and updated
+  ✅ Context boundaries approved by Senior Architect
+```
+
+### Artifact 1: AuthorityOwnershipMatrix.md (P1)
+
+**Path:** `claude/audits/AuthorityOwnershipMatrix.md`
+
+**Purpose:** For every concept, document what authority it owns and what it must never own. This is foundational — before context boundaries can be drawn, authority must be assigned.
+
+**Concepts to analyze (10):**
+
+| Concept | Key Question |
+|---------|-------------|
+| Observation | Does it own the authority to observe, or just the output of observation? |
+| Signal | Is signal distinct from observation, or same concept at different granularity? |
+| Evidence | Does evidence own preservation authority, or is that infrastructure? |
+| Evaluation | Does evaluation own the authority to classify quality, or is that part of evidence? |
+| Legitimacy | Uncontested — owns final derivation authority. What are the exact bounds? |
+| Governance | Currently conflated with legitimacy in root Security. What does governance own separately? |
+| Projection | Owns presentation only. But what counts as "presentation"? |
+| Replay | Owns deterministic reconstruction. But does it own certification? |
+| Certification | Sub-authority of replay, or independent concept? |
+| Migration | Owns retirement sequencing. Does it own divergence detection? |
+
+**For each concept:** authority owned, authority prohibited, upstream dependencies, downstream dependencies, current code location, whether it has a formal bounded context today.
+
+**Sources:** `ConstitutionalUbiquitousLanguage.md`, `TacticalSemanticAlignment.md`, `SemanticBoundaryMap.md`, `EvidenceObservationCapabilityAudit.md`, `NamespaceAlignmentAudit.md`, all domain types in `app/Domain/Election/Security/` and `app/Domain/Election/Replay/`.
+
+### Artifact 2: ConstitutionalContextMap.md (P2)
+
+**Path:** `claude/audits/ConstitutionalContextMap.md`
+
+**Purpose:** Full bounded-context map. Every context gets: mission, ubiquitous language, upstream/downstream, published language, anti-corruption boundaries, current code locations.
+
+**Contexts to model (tentative):** Observation, Evidence, Evaluation (may merge with Evidence), Legitimacy, Governance (split from Legitimacy analysis), Projection, Replay, Migration.
+
+**Key design decisions:**
+1. Is Observation upstream of Evidence, or same context?
+2. Is Evaluation separate or subdomain of Evidence?
+3. Is Governance inside Legitimacy or independent?
+4. Is Certification inside Replay or independent?
+
+### Artifact 3: ObservationContextAssessment.md (P3)
+
+**Path:** `claude/audits/ObservationContextAssessment.md`
+
+**Purpose:** Determine whether Observation is a subdomain of Evidence Context or an independent bounded context. The most critical boundary decision.
+
+**For Observation ⊆ Evidence:** co-located in Simplified, feeds directly into evidence, no independent lifecycle, signal types coupled to evidence categories.
+
+**For Observation independent:** overlays (app layer) vs evidence (domain layer), different change rates, different authority owners (OverlayCoordinator vs EvidenceSnapshot), different replay roles.
+
+**Structure:** definition comparison, lifecycle analysis, authority boundary analysis, dependency analysis, replay role analysis, change coupling analysis, recommendation.
+
+### Artifact 4: GovernanceLegitimacyBoundaryAssessment.md (P4)
+
+**Path:** `claude/audits/GovernanceLegitimacyBoundaryAssessment.md`
+
+**Purpose:** Split Governance from Legitimacy analysis. These are frequently confused.
+
+| Context | Answers | Example |
+|---------|---------|---------|
+| **Legitimacy** | Is participation legitimate? | ConstitutionalLegitimacyDecision |
+| **Governance** | What action should the organization take? | Enforcement actions, election rules |
+
+Document where they overlap, where they diverge, and whether Governance warrants its own bounded context or is a subdomain of Legitimacy.
+
+### Artifact 5: DomainEventOwnershipMatrix.md (P5)
+
+**Path:** `claude/audits/DomainEventOwnershipMatrix.md`
+
+**Purpose:** Every domain event has exactly one context owner.
+
+| Event | Context Owner |
+|----------------------|--------------|
+| ObservationRecorded | Observation |
+| EvidenceEvaluationCompleted | Evaluation |
+| LegitimacyGranted | Legitimacy |
+| ConstitutionalDenialIssued | Legitimacy |
+| SovereigntyBoundaryCrossed | Migration |
+| DivergenceObserved | Migration |
+| ReplayCertified | Replay |
+| ConstitutionalFallbackActivated | Migration |
+
+Without this matrix, event ownership becomes ambiguous as the system evolves.
+
+### Artifact 4: CoreDomainIdentification.md (P1a)
+
+**Path:** `claude/audits/CoreDomainIdentification.md`
+
+**Purpose:** Not all contexts deserve equal attention. Classify each by strategic value:
+
+| Classification | Meaning | Examples |
+|---------------|---------|----------|
+| **Core Domain** | Generates business value, differentiates the platform | Legitimacy |
+| **Supporting Domain** | Necessary but not differentiating | Evidence, Observation, Replay |
+| **Generic Domain** | Could be off-the-shelf or outsourced | Projection, Migration, Retirement |
+
+**Key questions:**
+- What generates business value?
+- What differentiates the platform from alternatives?
+- What must be protected most?
+- What can be generic?
+
+Without this classification, every context gets equal attention — which is not DDD.
+
+### Artifact 5: ContextRelationshipMatrix.md (P2a)
+
+**Path:** `claude/audits/ContextRelationshipMatrix.md`
+
+**Purpose:** The Context Map describes contexts; this describes how they relate. DDD relationship types:
+
+| Relationship | Meaning |
+|-------------|---------|
+| **Partnership** | Two contexts, coordinated evolution |
+| **Customer/Supplier** | Upstream supplies, downstream consumes |
+| **Conformist** | Downstream conforms to upstream's model |
+| **Anti-Corruption Layer** | Translation layer between contexts |
+| **Shared Kernel** | Shared subset of model |
+| **Open Host Service** | Published protocol for multiple consumers |
+| **Published Language** | Well-documented shared language |
+
+| Upstream | Downstream | Relationship |
+|----------|-----------|-------------|
+| Observation | Evidence | Customer/Supplier |
+| Evidence | Legitimacy | Published Language |
+| Replay | All | Open Host Service |
+| Migration | Legacy | Anti-Corruption Layer |
+
+### Artifact 6: GovernanceLegitimacyBoundaryAssessment.md (P4)
+
+**Path:** `claude/audits/GovernanceLegitimacyBoundaryAssessment.md`
+
+**Purpose:** Split Governance from Legitimacy.
+
+| Context | Answers | Example |
+|---------|---------|---------|
+| **Legitimacy** | Is participation legitimate? | ConstitutionalLegitimacyDecision |
+| **Governance** | What action should the organization take? | Enforcement, election rules |
+
+Document where they overlap, diverge, and whether Governance warrants its own BC or is a subdomain of Legitimacy.
+
+### Artifact 7: DomainEventOwnershipMatrix.md (P5)
+
+**Path:** `claude/audits/DomainEventOwnershipMatrix.md`
+
+**Purpose:** Every domain event has exactly one context owner.
+
+| Event | Context Owner |
+|----------------------|--------------|
+| ObservationRecorded | Observation |
+| EvidenceEvaluationCompleted | Evaluation |
+| LegitimacyGranted | Legitimacy |
+| ConstitutionalDenialIssued | Legitimacy |
+| SovereigntyBoundaryCrossed | Migration |
+| DivergenceObserved | Migration |
+| ReplayCertified | Replay |
+| ConstitutionalFallbackActivated | Migration |
+
+Without this matrix, event ownership becomes ambiguous as the system evolves.
+
+### Artifact 8: DomainCommandOwnershipMatrix.md (P5a)
+
+**Path:** `claude/audits/DomainCommandOwnershipMatrix.md`
+
+**Purpose:** Every command has exactly one context owner. Commands often cross boundaries even when events are clean.
+
+| Command | Owner Context |
+|-------------------|--------------|
+| EvaluateEvidence | Evidence |
+| DeriveLegitimacy | Legitimacy |
+| CertifyReplay | Replay |
+| DetectDivergence | Migration |
+| ProjectConstitutionalState | Projection |
+| ObserveOverlaySignal | Observation |
+
+### Artifact 9: PublishedLanguageMatrix.md (P6)
+
+**Path:** `claude/audits/PublishedLanguageMatrix.md`
+
+**Purpose:** Formal ACL map — what types cross which context boundaries.
+
+| Producer | Consumer | Published Language |
+|-----------|---------|--------------------|
+| Observation | Evidence | OverlaySignal |
+| Evidence | Evaluation | ConstitutionalEvidenceSnapshot |
+| Evaluation | Legitimacy | EvaluationEnvelope |
+| Legitimacy | Governance | LegitimacyOutcome |
+| Replay | (all) | ReplayCertification |
+
+### Artifact 10: ContextStabilityAssessment.md (P7)
+
+**Path:** `claude/audits/ContextStabilityAssessment.md`
+
+**Purpose:** Calibrated stability classification. No context is fully stable while boundaries are still under investigation.
+
+| Context | Stability | Rationale |
+|---------|-----------|-----------|
+| Observation | Emerging | Boundaries still under investigation |
+| Evidence | Emerging | Boundaries still under investigation |
+| Evaluation | Emerging | Not yet proven as independent context |
+| Legitimacy | Maturing | Core domain, existing impl, but boundaries being refined |
+| Governance | Emerging | Not yet separated from Legitimacy |
+| Replay | Maturing | Existing impl (5 classes, 32 tests), cert boundary unclear |
+| Certification | Emerging | Relationship to Replay not yet settled |
+| Migration | Emerging | Divergence scope still being defined |
+| Projection | Emerging | Scope unbounded |
+| Retirement | Temporary | Will be removed after D.5 |
+
+### Artifact 11: BusinessInvariantCatalog.md (P7a)
+
+**Path:** `claude/audits/BusinessInvariantCatalog.md`
+
+**Purpose:** DDD aggregates are built around invariants. Catalog before boundary decisions.
+
+| Invariant | Context | Description |
+|-----------|---------|-------------|
+| One policy sequence per decision | Legitimacy | A legitimacy decision derives from exactly one policy sequence |
+| Evidence frozen at evaluation | Evidence | Evidence snapshot, once created, is never mutated |
+| Replay determinism | Replay | Same evidence + same policy sequence = same outcome |
+| Observations non-sovereign | Observation | Observations never directly produce legitimacy |
+| Evaluation exclusive input | Evaluation→Legitimacy | EvaluationEnvelope is exclusive input to legitimacy derivation |
+| Evidence hash integrity | Evidence | Hash reproducible across processes, hosts, runtimes |
+| Insufficiency monotonic | Legitimacy | More observation abundance never weakens insufficiency |
+
+Only after invariants are catalogued can aggregate boundaries emerge.
+
+### Artifact 12: BusinessCapabilityMap.md (P7b)
+
+**Path:** `claude/audits/BusinessCapabilityMap.md`
+
+**Purpose:** Cross-reference authority ownership with business capability ownership. Prevents governance vocabulary from overwhelming the ubiquitous language.
+
+| Business Capability | Authority Owner | Context |
+|--------------------|----------------|---------|
+| Determine voter participation | ConstitutionalLegitimacyDecision | Legitimacy |
+| Observe device continuity | DeviceAnomalyOverlay | Observation |
+| Freeze evidence for replay | ConstitutionalEvidenceSnapshot | Evidence |
+| Certify replay | ReplayCertification | Replay |
+
+This cross-reference prevents authority-centric modeling from dominating domain-driven modeling.
+
+### Artifact 13: Review EvidenceContext.md (P8)
+
+Review and update EvidenceContext.md with findings from P1-P7b. Fix premature aggregate definitions. Align with approved context boundaries.
+
+### Decision Gate: Approve Context Boundaries (P9)
+
+All artifacts reviewed by Senior Architect. Context boundaries finalized. Published language approved.
+
+### Subsequent Phases (P10-P12)
+
+1. **Namespace Decisions** — only stable/maturing contexts drive namespace migration
+2. **Aggregate Discovery** — deferred until BusinessInvariantCatalog approved (aggregates are consistency boundaries, not documents)
+3. **Implementation**
+
+### Sequencing
+
+```
+P1   AuthorityOwnershipMatrix.md
+P1a  CoreDomainIdentification.md
+P2   ConstitutionalContextMap.md
+P2a  ContextRelationshipMatrix.md
+P3   ObservationContextAssessment.md
+P4   GovernanceLegitimacyBoundaryAssessment.md
+P5   DomainEventOwnershipMatrix.md
+P5a  DomainCommandOwnershipMatrix.md
+P6   PublishedLanguageMatrix.md
+P7   ContextStabilityAssessment.md
+P7a  BusinessInvariantCatalog.md
+P7b  BusinessCapabilityMap.md
+P8   Review EvidenceContext.md
+P9   ✅ APPROVED by Senior Architect — 2026-05-29
+
+── Strategic DDD Discovery PHASE CLOSED ──
+
+P10  Aggregate Discovery (consistency boundaries inside each BC)
+P11  Fitness Functions for Context Boundaries (structural enforcement)
+P12  Namespace Decisions (stable/maturing contexts only)
+P13  Implementation
+```
+
+### Architectural Caution
+
+The plan uses "authority" extensively. DDD models around **business capability**, **business responsibility**, **business invariants**, and **business decisions** — not authority. Authority analysis is useful for constitutional governance systems, but if everything becomes AuthorityOwnershipMatrix → AuthorityBoundary → AuthorityTopology → AuthorityFlow, the architecture risks being driven by governance vocabulary rather than domain vocabulary. BusinessCapabilityMap.md (P7b) provides the cross-reference to keep this in check.
+
+The project is between Authority and Boundaries in the DDD sequence. It is not yet at Aggregates.
+
+---
+
 ## Corrected Sequencing — Complete Path to Retirement
 
 | Step | Phase | Purpose | Status |
@@ -909,7 +1237,8 @@ Certificate issuance is the formal gate opening D.0.3a.
 | 13 | C.5e ✅ | Stabilization certificate issued | **C5e-2026-05-28** — Gate for D.0.3 |
 | — | CFB-1 ✅ | Constitutional Freeze Boundary established | Enforced by F1–F6 fitness functions |
 | 13a | Doctrine ✅ | Constitutional Legitimacy Derivation Doctrine | `claude/governance/ConstitutionalLegitimacyDerivationDoctrine.md` |
-| 14 | D.0.3a ⏳ | Constitutional-primary enforcement mode | **NEXT — requires ConstitutionalLegitimacyDecision implementation** |
+| 14 | D.0.3a ✅ | Constitutional-primary enforcement mode | Config flipped, gate in store(), 50/50 verification tests passing |
+| DD.1 | ✅ | Domain Algebra — Ubiquitous Language, Aggregate Boundaries, ACL | `claude/governance/ConstitutionalUbiquitousLanguage.md` |
 | 15 | D.0.3b | Middleware → passive observer/fallback | After D.0.3a stable |
 | 16 | D.0.3c | Drift window under constitutional authority | After D.0.3b stable |
 | 17 | D.0.3d | Replay certification after primary cutover | After D.0.3c complete |
@@ -987,3 +1316,309 @@ php artisan test --env=testing tests/Unit/Application/Election/Security/IpEviden
 # Note: VoteControllerConstitutionalTest has 2 pre-existing failures
 # (302 redirect, 405 method not allowed — unrelated to H.2)
 ```
+
+---
+
+## Phase D.0.3a — Constitutional Primary Enforcement Mode
+
+**Status:** ⏳ NEXT
+**Phase:** D.0 Constitutional Retirement Sequencing
+**Gate Condition:** C.5e certificate issued + ConstitutionalLegitimacyDecision implemented ✅
+**Transition:** Shadow enforcement → primary enforcement
+
+### Context
+
+ConstitutionalLegitimacyDecision is implemented and wired into VoteController. The constitutional
+evaluation chain (TrustPolicyEvaluator → PolicySequence → ConstitutionalLegitimacyDecision) runs
+on every vote submission at `VoteController::store()`. But currently, the LegitimacyOutcome is
+**telemetry-only** — the legacy gates (canVote, ensureVoterMembership, validateVotingIp) make the
+actual enforcement decision.
+
+D.0.3a makes the constitutional evaluation result the **primary enforcement gate**. The legacy
+checks become secondary defense-in-depth with divergence monitoring.
+
+### Changes
+
+#### 1. `config/voting_security.php` — Flip constitutional_mode default
+
+Flip `'constitutional_mode'` default from `false` to `true`:
+
+```php
+'constitutional_mode' => env('VOTING_CONSTITUTIONAL_MODE', true),
+```
+
+**Effect:** ValidateVotingIp middleware switches from blocking to shadow-recording divergence.
+This is safe because:
+- D.0.1 already implemented the shadow mode code path (lines 78-81)
+- D.0.2 verified the mechanism works (7+10 tests passing)
+- The constitutional gate in store() below becomes the primary enforcement
+
+#### 2. `VoteController::store()` — Constitutional enforcement gate
+
+Insert a new enforcement block AFTER line 1556 (after LegitimacyOutcome derivation) and BEFORE
+the legacy canVote() check. The new flow:
+
+```
+1. Run trust evaluation → get LegitimacyOutcome (unchanged, lines 1542-1556)
+2. ── NEW D.0.3a GATE ──
+   - For REAL elections:
+     - If outcome !== Allowed: block vote, show constitutional denial message
+     - Log denial with trust evaluation context
+     - Record sovereignty divergence (constitutional denies)
+   - For DEMO elections:
+     - Skip constitutional enforcement (demo is testing/training mode)
+     - Continue to legacy checks
+3. Legacy checks (canVote, membership, IP validation) remain as defense-in-depth
+4. If all pass → proceed with vote storage
+```
+
+Implementation details:
+- Use `DB::rollBack()` consistent with existing pattern at line 1581
+- Map outcome to user-facing message via match expression:
+  - `Denied` → "constitutional verification" error message
+  - `Deferred` → "additional verification required" message
+  - `Investigate` → "flagged for manual review" message
+- Track divergence: when constitutional denies but legacy would have passed, record as
+  constitutional-primary divergence event
+- Skip for demo elections to maintain testability
+
+#### 3. `VoteController::create()` — Page-init constitutional gate (MINIMAL)
+
+The `create()` method currently gates via `canVote()`, membership, and IP validation but does
+NOT run TrustPolicyEvaluator. Adding the full evaluation chain would require device fingerprint
+evidence that isn't available at page-init time.
+
+**Approach:**
+- For REAL elections: Add a TrustPolicyEvaluator evaluation with `rawFingerprint: null`
+  (device policy handles missing fingerprint gracefully via NoRequirement match type)
+- If LegitimacyOutcome is not Allowed, redirect to dashboard with constitutional denial message
+- This prevents users from seeing a ballot they can't submit
+
+**Note:** This is a UX improvement, not a security gate. The store() enforcement is authoritative.
+If evaluation with null fingerprint is unreliable, defer this to D.0.3b.
+
+#### 4. Divergence telemetry enhancement
+
+When the constitutional check blocks in store(), record detailed telemetry:
+- Trust evaluation state and reason
+- Which policy triggered the denial (from `$trustEnvelope->result->policyOutcomeSequence`)
+- Whether legacy checks agree (constitutional-primary divergence tracking)
+
+This feeds directly into D.1 drift telemetry requirements.
+
+### Constitutional compliance
+
+| Invariant | Preserved? | How |
+|-----------|-----------|-----|
+| Resolver Exclusivity (F4) | ✅ | LegitimacyOutcome comes ONLY from ConstitutionalLegitimacyDecision |
+| Topology Neutrality | ✅ | Decision depends on evidence, not middleware order |
+| Replay Determinism | ✅ | Same VotingTrustResult → same enforcement decision |
+| Observation ≠ Sovereignty | ✅ | Telemetry still logged; enforcement is from resolver |
+| Sovereignty Monotonicity | ✅ | More evidence cannot weaken insufficiency |
+| Demo testability | ✅ | Demo elections skip constitutional enforcement |
+
+### Verification
+
+1. **F1-F6 fitness functions** — All 31 must pass (constitutional invariants)
+2. **`SovereigntyConvergenceFitnessTest`** — F4 resolver exclusivity tests pass
+3. **`TrustCapabilityPolicyTest`** — 35/35 passing (policy chain regression)
+4. **`IpEvidenceLegacyEquivalenceTest`** — 9/9 passing (dual sovereignty equivalence)
+5. **Demo election flow** — Manual verification: demo voting still works end-to-end
+6. **Store enforcement test** — Verify that a vote submission with constitutional denial is blocked
+
+### Rollback
+
+If D.0.3a causes issues:
+1. Revert `'constitutional_mode'` default to `false`
+2. Remove or comment out the enforcement gate in store()
+3. Run full suite to confirm 2203-failure baseline
+
+### Sequencing (TDD)
+
+1. ✅ Already complete: ConstitutionalLegitimacyDecision exists and is wired
+2. ⏳ Write test: Store enforcement blocks constitutionally denied votes
+3. ⏳ Implement: Flip config default
+4. ⏳ Implement: Add enforcement gate in store()
+5. ⏳ Optionally implement: Page-init gate in create()
+6. ⏳ Run full verification suite
+7. ⏳ Update sequencing table below
+
+---
+
+## Track: Constitutional Domain Algebra Hardening
+
+**Status:** 🆕 NEW STRATEGIC TRACK — runs parallel to D.0.3 execution
+**Phase:** Cross-cutting (prerequisite for M.2/M.3 federation safety)
+**Source:** Senior Architect + DDD Review — doctrine-driven → model-driven
+
+### Problem
+
+The constitutional governance architecture is currently **doctrine-heavy and model-light**:
+
+| Domain concept | Current form | Risk |
+|---------------|-------------|------|
+| Sovereignty | Audit rules + fitness functions | Social enforcement, not structural |
+| Legitimacy | `LegitimacyOutcome` enum + `ConstitutionalLegitimacyDecision` class | Thin — needs aggregate wrapping |
+| Evidence | `TrustEvidencePrivacyPolicy` + hashed strings | No typed Evidence aggregate |
+| Replay | F3 test + doctrine prose | Operational, not domain-owned |
+| Divergence | `SovereigntyDivergenceRecord` + telemetry | Partial — needs event status |
+| Observation | `OverlaySignal` + `ConstitutionalObservationContext` | Separated but unaggregated |
+| Topology | Audit findings | Structural enforcement needed |
+
+### Aggregate Discovery — DEFERRED
+
+DDD aggregate design occurs AFTER: Language → Authority → Boundaries → Consistency Requirements → Transaction Requirements.
+
+The project is currently between **Authority** and **Boundaries**. Prerequisites:
+
+- AuthorityOwnershipMatrix complete
+- ConstitutionalContextMap complete
+- ObservationContextAssessment complete
+- GovernanceLegitimacyBoundaryAssessment complete
+- DomainEventOwnershipMatrix complete
+- PublishedLanguageMatrix complete
+- Context boundaries approved
+
+Only then perform aggregate design. An aggregate is a consistency boundary, not a document or a concept name.
+
+### Anti-Corruption Layer (ACL) — Conceptual Map Only
+
+Existing translation mappings (defined, not implemented):
+
+```
+Legacy (procedural)           → Constitutional (domain)
+──────────────────────────────────────────────────
+User.voting_ip                → NetworkEvidence
+$user->canVote                → LegitimacyEvaluation
+validateVotingIpWithResponse() → EvidenceInconsistency
+middleware blocking            → ConstitutionalDenial
+helper() status checks         → ObservationProjection
+Code.can_vote_now              → AttestationRecord
+ElectionMembership             → ParticipationEligibilityEvidence
+```
+
+**No PHP classes to create.** Existing mappings already documented in `ConstitutionalUbiquitousLanguage.md` and `TacticalSemanticAlignment.md`. ACL implementation deferred until context boundaries are approved.
+
+#### 3. Ubiquitous Language Specification
+
+Create formal language document at `claude/governance/ConstitutionalUbiquitousLanguage.md`:
+
+| Term | Precise Meaning | Counter-example (what it is NOT) |
+|------|----------------|----------------------------------|
+| Evidence | Immutable observed constitutional fact frozen at evaluation time | A mutable DB column |
+| Observation | Non-sovereign contextual interpretation of evidence | A policy decision |
+| Legitimacy | Constitutional participation authorization derived by exclusive resolver | A controller's canVote() check |
+| Sovereignty | Exclusive authority to derive legitimacy within bounded context | Middleware blocking |
+| Replay | Deterministic reconstruction of sovereign outcome from frozen evidence | Log replay |
+| Divergence | Authority mismatch between constitutional and procedural systems | A bug |
+| Projection | Non-authoritative representation of constitutional state | The UI trust score |
+| Topology Leakage | Authority implied by execution order rather than evidence | Middleware ordering |
+| Constitutional Insufficiency | Evidence set that does not meet sovereign threshold for participation | "Not enough trust score" |
+
+#### 4. Replay as First-Class Domain Capability
+
+Elevate replay from operational doctrine to domain-owned capability:
+
+**Files to create:**
+- `app/Domain/Election/Security/Replay/ReplaySession.php` — session with identity, timestamp, evidence hash
+- `app/Domain/Election/Security/Replay/ReplayCertification.php` — certification result with signature
+- `app/Domain/Election/Security/Replay/ReplayCompatibilityVersion.php` — schema version marker
+- `app/Domain/Election/Security/Replay/ReplayEvidenceEnvelope.php` — sealed evidence container
+- `app/Domain/Election/Security/Replay/ReplayAssertion.php` — "same input → same outcome" contract
+
+**Invariant:** ReplayCertification must fail if evidence envelope, policy sequence, or resolver mapping has changed since certification.
+
+#### 5. Constitutional Event Taxonomy
+
+Define explicit event classes:
+
+```
+Sovereign Events (immutable, authority-significant):
+  └─ LegitimacyEvaluated
+  └─ ConstitutionalDenial
+  └─ SovereigntyBoundaryCrossed
+
+Observational Events (non-authoritative, record-only):
+  └─ OverlaySignalRecorded
+  └─ EvidenceInconsistencyObserved
+  └─ DriftTelemetryRecorded
+
+Replay Events (certification-scoped):
+  └─ ReplaySessionOpened
+  └─ ReplayCertificationIssued
+  └─ ReplayDivergenceDetected
+
+Projection Events (presentation-scoped):
+  └─ ConstitutionalStateProjected
+  └─ ObservationRendered
+
+Migration Events (retirement-scoped):
+  └─ DualSovereigntyEntered
+  └─ ConstitutionalFallbackActivated
+  └─ LegacyGateRetired
+```
+
+**Constraint:** Sovereign events must be serialized with schema version and replay hash.
+**Constraint:** Order of sovereign events must not affect subsequent sovereignty outcomes.
+
+#### 6. Tactical Separation — Policy vs Resolver vs Overlay vs Observation
+
+Rigorously separate the currently overlapping concepts:
+
+| Current name | Actual role | Often confused with |
+|-------------|-------------|-------------------|
+| `PolicySequence` | Evaluation orchestrator | Resolver (resolver is `ConstitutionalLegitimacyDecision`) |
+| `NetworkBindingPolicy` | Constitutional rule | Overlay (it runs evidence, doesn't observe) |
+| `DeviceAnomalyOverlay` | Observational signal | Policy (it observes, doesn't evaluate) |
+| `OverlayCoordinator` | Observation aggregator | Resolver (it aggregates, doesn't decide) |
+| `ConstitutionalLegitimacyDecision` | Sole resolver | Policy (derives, doesn't evaluate) |
+
+**Action:** Audit naming and refactor where the name implies the wrong tactical role.
+
+#### 7. Structural Enforcement Over Social Enforcement
+
+Reduce dependence on:
+- Comments (F4 doc says "this is the exclusive resolver")
+- Conventions ("don't derive LegitimacyOutcome outside this class")
+- Audit memory (F4 test scans for violations)
+
+Increase:
+- **Constructor restrictions** on `LegitimacyOutcome` to ensure only `ConstitutionalLegitimacyDecision` can create it
+- **Sealed derivation topology** — `LegitimacyOutcome::fromTrustState()` should be `private` to the class that calls it
+- **Typed evidence algebra** — evidence values carry their type so invalid composition is structurally impossible
+- **Compile-time boundaries** where PHP allows (final classes, readonly properties, private constructors)
+
+**Target:** An engineer cannot accidentally derive legitimacy outside the resolver — the compiler/interpreter prevents it.
+
+### Verification
+
+1. All existing F1-F6 fitness functions still pass — structural enforcement must not break constitutional invariants
+2. F4 test becomes compile-time enforceable rather than scan-based
+3. Ubiquitous language document approved by architectural review
+4. Replay certification can be demonstrated with a test that serializes, deserializes, and asserts identical outcome
+5. Event taxonomy is complete enough to classify every existing log/telemetry call
+
+### Sequencing
+
+| Step | Task | Phase | Status |
+|------|------|-------|--------|
+| 1 | Create ubiquitous language specification | DD.1 | ✅ Complete — `claude/governance/ConstitutionalUbiquitousLanguage.md` |
+| 2 | Aggregate boundaries — DEFERRED (see Strategic DDD Discovery section) | DD.1 | ⏳ Deferred until context boundaries approved |
+| 3 | Anti-Corruption Layer — conceptual map only (no PHP classes) | DD.1 | ✅ Documented in Ubiquitous Language spec |
+| 4 | Elevate Replay to domain capability | DD.2 | ✅ — 5 classes, 32 tests, moved to `app/Domain/Election/Replay/` |
+| 5 | Event Taxonomy Implementation — 10 domain events, 3 test files, 13 tests (35 assertions) across 4 categories | DD.2.5 | ✅ Complete |
+| 6 | Structural Sovereignty Enforcement — LegitimacyOutcome::fromTrustState() removed, F10 enforcement | DD.3a | ✅ — 39/39 tests passing (121 assertions) |
+| 7 | Tactical Semantic Alignment — authority ownership audit, 5 renames, TacticalSemanticAlignment.md | DD.3b | ✅ — 145+ tests passing across affected suites |
+| — | **Strategic DDD Discovery — see section above** (P1-P12 sequence) | DD.3b | **✅ Complete — at P9 gate** |
+| 7a | EvaluationAutonomyAssessment.md — Evaluation ⊂ Evidence | DD.3b | ✅ Complete — `claude/audits/EvaluationAutonomyAssessment.md` |
+| 7b | TemporaryContextRegistry.md — deletion criteria for 3 temporary contexts | DD.3b | ✅ Complete — `claude/audits/TemporaryContextRegistry.md` |
+| 7c | CoreDomainProtection.md — protection rules per domain type | DD.3b | ✅ Complete — `claude/audits/CoreDomainProtection.md` |
+| 7d | ContextDependencyRules.md — dependency direction matrix | DD.3b | ✅ Complete — `claude/audits/ContextDependencyRules.md` |
+| — | **P9 Gate: Context Boundaries Ready for Approval** | DD.3b | **✅ P9 APPROVED by Senior Architect — Strategic DDD Discovery complete** |
+| — | **DD.3b Strategic DDD Discovery: CLOSED** | DD.3b | **✅ All 17 artifacts approved. Phase complete.** |
+| 8 | Aggregate Discovery (P10) — consistency boundaries inside Legitimacy, Evidence, Replay | DD.3c | ✅ Complete — 3 artifacts created |
+| 9 | Fitness Functions for Context Boundaries (P11) — structural enforcement of dependency rules | DD.3c | ⏳ Next |
+| 10 | Namespace Decisions (P12) — stable/maturing contexts only | DD.3c | ⏳ After aggregates + fitness functions |
+| 11 | Implementation (P13) | DD.3c | ⏳ After namespace decisions |
+
+**Parallelism:** Strategic DDD Discovery runs as a read-only gate before any further D.0.3a-D.0.3e execution. All namespace migration, aggregate design, and implementation work is blocked until context boundaries are approved.

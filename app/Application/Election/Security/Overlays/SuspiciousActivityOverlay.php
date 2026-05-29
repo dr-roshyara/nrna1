@@ -2,34 +2,34 @@
 
 namespace App\Application\Election\Security\Overlays;
 
-use App\Application\Election\Security\ConstitutionalOverlay;
+use App\Application\Election\Security\Overlay;
 use App\Application\Election\Security\TrustCapabilityContext;
-use App\Domain\Election\Security\OverlayInfluence;
-use App\Domain\Election\Security\OverlaySignal;
+use App\Domain\Election\Security\Simplified\OverlaySignal;
 
-final class SuspiciousActivityOverlay implements ConstitutionalOverlay
+final class SuspiciousActivityOverlay implements Overlay
 {
     public function evaluate(TrustCapabilityContext $ctx): OverlaySignal
     {
-        // Suspicious activity overlay signals constitutional review requirement
-        // This is an operational governance concern, not a direct denial
+        // Suspicious activity overlay — pure observation semantics
+        // Describes: unusual voting pattern detected
+        // Does NOT escalate directly — only reports evidence inconsistency
+        // Resolver interprets the pattern and decides on procedures
 
-        // Check if suspicious activity overlay is configured on election
         if (is_null($ctx->election) || !$ctx->election->trust_overlay_active) {
-            return OverlaySignal::continue($this->identifier());
+            return OverlaySignal::contextStable(
+                'suspicious_activity',
+                'Normal activity pattern observed',
+                [],
+            );
         }
 
-        // Suspicious activity detected - require constitutional review
-        return new OverlaySignal(
-            OverlayInfluence::REQUIRE_CONSTITUTIONAL_REVIEW,
-            $this->identifier(),
-            $ctx->election->trust_overlay_reason ?? 'suspicious_activity_detected',
+        return OverlaySignal::attestationPresent(
+            'suspicious_activity',
+            'Unusual voting pattern detected: ' . ($ctx->election->trust_overlay_reason ?? 'suspicious_activity_detected'),
             [
                 'suspicious_activity_active' => true,
-                'overlay_reason' => $ctx->election->trust_overlay_reason,
+                'overlay_reason' => $ctx->election->trust_overlay_reason ?? '',
             ],
-            'election_officer',
-            null,
         );
     }
 

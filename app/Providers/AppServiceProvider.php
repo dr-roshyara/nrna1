@@ -140,6 +140,13 @@ class AppServiceProvider extends ServiceProvider
         );
 
         // Constitutional Trust Infrastructure: Phase D.5 Resolver Wiring
+        // Priority 3: Clock Isolation (Temporal Determinism)
+        // Register ClockInterface with production SystemClock
+        $this->app->singleton(
+            \App\Domain\Shared\Clock\ClockInterface::class,
+            \App\Infrastructure\Shared\Clock\SystemClock::class
+        );
+
         // Register trust evidence privacy policy
         $this->app->singleton(
             \App\Domain\Election\Security\TrustEvidencePrivacyPolicy::class,
@@ -164,7 +171,9 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton(
             \App\Application\Election\Security\Overlays\IpVelocityOverlay::class,
-            fn($app) => new \App\Application\Election\Security\Overlays\IpVelocityOverlay()
+            fn($app) => new \App\Application\Election\Security\Overlays\IpVelocityOverlay(
+                clock: $app->make(\App\Domain\Shared\Clock\ClockInterface::class)
+            )
         );
 
         $this->app->singleton(
@@ -172,15 +181,28 @@ class AppServiceProvider extends ServiceProvider
             fn($app) => new \App\Application\Election\Security\Overlays\DeviceAnomalyOverlay()
         );
 
-        // Register overlay coordinator with all 5 overlays
+        // Phase C: Constitutional IP Migration Overlays
         $this->app->singleton(
-            \App\Application\Election\Security\OverlayCoordinator::class,
-            fn($app) => new \App\Application\Election\Security\OverlayCoordinator([
+            \App\Application\Election\Security\Overlays\NetworkContinuityObservation::class,
+            fn($app) => new \App\Application\Election\Security\Overlays\NetworkContinuityObservation()
+        );
+
+        $this->app->singleton(
+            \App\Application\Election\Security\Overlays\ParticipationDensityObservation::class,
+            fn($app) => new \App\Application\Election\Security\Overlays\ParticipationDensityObservation()
+        );
+
+        // Register overlay coordinator with all 7 overlays
+        $this->app->singleton(
+            \App\Application\Election\Security\OverlayAggregator::class,
+            fn($app) => new \App\Application\Election\Security\OverlayAggregator([
                 $app->make(\App\Application\Election\Security\Overlays\EmergencyConditionOverlay::class),
                 $app->make(\App\Application\Election\Security\Overlays\RegistrarAttestationElevation::class),
                 $app->make(\App\Application\Election\Security\Overlays\SuspiciousActivityOverlay::class),
                 $app->make(\App\Application\Election\Security\Overlays\IpVelocityOverlay::class),
                 $app->make(\App\Application\Election\Security\Overlays\DeviceAnomalyOverlay::class),
+                $app->make(\App\Application\Election\Security\Overlays\NetworkContinuityObservation::class),
+                $app->make(\App\Application\Election\Security\Overlays\ParticipationDensityObservation::class),
             ])
         );
 
@@ -210,20 +232,29 @@ class AppServiceProvider extends ServiceProvider
             )
         );
 
-        // Register security event recorder
+        // Register security event recorder with injected clock
         $this->app->singleton(
             \App\Application\Election\Security\SecurityEventRecorder::class,
-            fn($app) => new \App\Application\Election\Security\SecurityEventRecorder()
+            fn($app) => new \App\Application\Election\Security\SecurityEventRecorder(
+                clock: $app->make(\App\Domain\Shared\Clock\ClockInterface::class)
+            )
+        );
+
+        // Register trust snapshot assembler
+        $this->app->singleton(
+            \App\Application\Election\Security\TrustSnapshotAssembler::class,
+            fn($app) => new \App\Application\Election\Security\TrustSnapshotAssembler()
         );
 
         // Register trust policy evaluator with all dependencies
         $this->app->singleton(
             \App\Application\Election\Security\TrustPolicyEvaluator::class,
             fn($app) => new \App\Application\Election\Security\TrustPolicyEvaluator(
-                overlayCoordinator: $app->make(\App\Application\Election\Security\OverlayCoordinator::class),
+                OverlayAggregator: $app->make(\App\Application\Election\Security\OverlayAggregator::class),
                 policySequence: $app->make(\App\Application\Election\Security\PolicySequence::class),
                 eventRecorder: $app->make(\App\Application\Election\Security\SecurityEventRecorder::class),
                 privacyPolicy: $app->make(\App\Domain\Election\Security\TrustEvidencePrivacyPolicy::class),
+                assembler: $app->make(\App\Application\Election\Security\TrustSnapshotAssembler::class),
             )
         );
 

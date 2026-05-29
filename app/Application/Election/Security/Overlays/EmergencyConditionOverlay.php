@@ -2,31 +2,31 @@
 
 namespace App\Application\Election\Security\Overlays;
 
-use App\Application\Election\Security\ConstitutionalOverlay;
+use App\Application\Election\Security\Overlay;
 use App\Application\Election\Security\TrustCapabilityContext;
-use App\Domain\Election\Security\OverlayInfluence;
-use App\Domain\Election\Security\OverlaySignal;
+use App\Domain\Election\Security\Simplified\OverlaySignal;
 
-final class EmergencyConditionOverlay implements ConstitutionalOverlay
+final class EmergencyConditionOverlay implements Overlay
 {
     public function evaluate(TrustCapabilityContext $ctx): OverlaySignal
     {
-        // Emergency governance is NOT casual overlay behavior
-        // This overlay signals REQUIRE_CONSTITUTIONAL_REVIEW — NOT suspension or denial
-        // Authority to activate emergency is deferred constitutional modeling (Phase D+)
+        // Emergency condition overlay — pure observation semantics
+        // Returns frozen vocabulary signal only
+        // Resolver interprets concern level and decides on procedures
 
         if (is_null($ctx->election) || !$ctx->election->trust_overlay_active) {
-            return OverlaySignal::continue($this->identifier());
+            return OverlaySignal::contextStable(
+                'emergency_condition',
+                'No emergency active',
+                [],
+            );
         }
 
-        // Emergency condition detected - require constitutional review
-        return new OverlaySignal(
-            OverlayInfluence::REQUIRE_CONSTITUTIONAL_REVIEW,
-            $this->identifier(),
-            $ctx->election->trust_overlay_reason ?? 'emergency_condition_activated',
-            ['emergency_active' => true, 'overlay_reason' => $ctx->election->trust_overlay_reason],
-            'election_officer', // Who must conduct review
-            null,
+        // Emergency detected — signal evidence inconsistency
+        return OverlaySignal::evidenceInconsistent(
+            'emergency_condition',
+            'Election suspended: ' . ($ctx->election->trust_overlay_reason ?? 'emergency_condition_activated'),
+            ['emergency_active' => true, 'overlay_reason' => $ctx->election->trust_overlay_reason ?? ''],
         );
     }
 

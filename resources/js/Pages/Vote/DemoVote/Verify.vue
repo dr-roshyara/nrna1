@@ -508,8 +508,8 @@ export default {
             required: true
         },
         selected_votes: {
-            type: Array,
-            default: () => []
+            type: Object,
+            default: () => ({})
         },
         total_votes: {
             type: Number,

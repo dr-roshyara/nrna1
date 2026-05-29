@@ -159,7 +159,7 @@
     "btn_resuming": "Wird fortgesetzt..."
   },
   "governance_actions": {
-    "title": "Governance-Maßnahmen",
+    "title": "Lebenszyklusaktionen",
     "submit_for_approval": "Zur Genehmigung einreichen",
     "submit_for_approval_auto": "Einreichen (automatisch genehmigt)",
     "submit_hint": "→ Überprüfung beginnen",
@@ -168,7 +168,7 @@
     "begin_setup_hint": "→ Konfiguration starten"
   },
   "phase_controls": {
-    "title": "Phasensteuern",
+    "title": "Phasenübergänge",
     "complete_admin": "Verwaltung abschließen",
     "open_voting": "Abstimmung öffnen",
     "open_voting_hint": "→ Abstimmung beginnen",
@@ -176,7 +176,7 @@
     "close_voting_hint": "→ Abstimmung beenden"
   },
   "governance_section": {
-    "title": "Governance",
+    "title": "Administrative Kontrollen",
     "suspend": "Wahl aussetzen"
   },
   "empty_state": {
@@ -209,17 +209,17 @@
   "resume_confirmation": "Diese Wahl fortsetzen? Alle Governance-Operationen werden wieder verfügbar.",
   "suspend_modal": {
     "title": "Wahl aussetzen",
-    "description": "Diese Aktion friert alle Governance-Operationen mit Ausnahme von Fortsetzen ein.",
-    "warning": "Dies ist ein Governance-Eingriff, KEINE gewöhnliche Zustandsänderung.",
+    "description": "Dadurch werden alle Wahlvorgänge vorübergehend pausiert.",
+    "warning": "Wähler können während der Aussetzung keine Stimmen abgeben. Verwenden Sie das Begründungsfeld, um zu dokumentieren, warum diese Maßnahme ergriffen wurde — sie wird in der Governance-Audit-Spur aufgezeichnet.",
     "reason_label": "Grund für Aussetzung",
     "reason_placeholder": "Beschreiben Sie, warum diese Wahl ausgesetzt werden muss...",
     "reason_hint": "Mindestens 10 Zeichen. Dies wird in der Governance-Audit-Spur aufgezeichnet.",
     "category_label": "Aussetzungskategorie",
-    "category_general": "Allgemein",
-    "category_misconduct": "Fehlverhalten",
-    "category_emergency": "Notfall",
-    "category_investigation": "Untersuchung",
-    "category_other": "Sonstige",
+    "category_placeholder": "Kategorie auswählen",
+    "category_operational_pause": "Betriebspause",
+    "category_administrative_review": "Verwaltungsüberprüfung",
+    "category_dispute_hold": "Einspruchssperre",
+    "category_technical_issue": "Technisches Problem",
     "btn_cancel": "Abbrechen",
     "btn_suspend": "Wahl aussetzen",
     "btn_suspending": "Wird ausgesetzt..."

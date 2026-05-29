@@ -2,25 +2,31 @@
 
 namespace App\Application\Election\Security;
 
-use App\Domain\Election\Security\OverlayInfluenceContext;
+use App\Domain\Election\Security\Simplified\ConstitutionalObservationContext;
+use App\Domain\Election\Security\TrustEvaluationState;
 use App\Domain\Election\Security\VotingTrustResult;
+use App\Domain\Shared\Clock\ClockInterface;
 use App\Models\ElectionSecurityEvent;
 use Illuminate\Support\Facades\Log;
 
 final class SecurityEventRecorder
 {
-    // Fire-and-forget audit recording
-    // Invariant 8: This method returns void. Never throws. Never affects trust outcome.
+    // Fire-and-forget audit recording (D.R.3 - observation semantics only)
+    // Records purely observational data, never procedural recommendations
+    // Invariant: This method returns void. Never throws. Never affects trust outcome.
     // DENY events: always record immediately
-    // ALLOW events: ~10% sampled (or dispatch queue job for non-blocking)
+    // ALLOW events: ~10% sampled (deterministic hash-based, not random)
 
-    public function record(VotingTrustResult $result, TrustCapabilityContext $ctx, ?OverlayInfluenceContext $overlayInfluence = null): void
+    public function __construct(private ClockInterface $clock) {}
+
+    public function record(VotingTrustResult $result, TrustCapabilityContext $ctx, ?ConstitutionalObservationContext $overlayObservations = null): void
     {
         try {
-            // Always record DENY events, sample ALLOW events at configured rate
+            // Always record DENY events, sample ALLOW events
             $sampleRate = (float) env('TRUST_EVENT_SAMPLE_RATE', 0.1);
-            if (!$result->trusted || rand(0, 100) / 100 <= $sampleRate) {
-                $this->writeEvent($result, $ctx, $overlayInfluence);
+            $isDenial = $result->evaluationState === TrustEvaluationState::INSUFFICIENT_EVIDENCE;
+            if ($isDenial || rand(0, 100) / 100 <= $sampleRate) {
+                $this->writeEvent($result, $ctx, $overlayObservations);
             }
         } catch (\Exception $e) {
             // Never propagate audit failures — log and continue
@@ -31,43 +37,22 @@ final class SecurityEventRecorder
         }
     }
 
-    private function writeEvent(VotingTrustResult $result, TrustCapabilityContext $ctx, ?OverlayInfluenceContext $overlayInfluence = null): void
+    private function writeEvent(VotingTrustResult $result, TrustCapabilityContext $ctx, ?ConstitutionalObservationContext $overlayObservations = null): void
     {
-        // Determine event type from result
-        $eventType = match (true) {
-            !$result->trusted && str_contains($result->reason, 'network') => 'network_limit_exceeded',
-            !$result->trusted && str_contains($result->reason, 'device') => 'device_mismatch',
-            !$result->trusted && str_contains($result->reason, 'verification') => 'verification_required',
-            !$result->trusted && str_contains($result->reason, 'overlay') => 'overlay_activation',
-            !$result->trusted => 'trust_denied',
-            default => 'trust_allowed',
-        };
+        $isDenial = $result->evaluationState === TrustEvaluationState::INSUFFICIENT_EVIDENCE;
 
-        // Build transition description
-        $trustStateTransition = sprintf(
-            '%s → %s',
-            'unverified', // assumed before evaluation
-            $result->trustLevel->value,
-        );
-
-        // Build overlay causality chain
-        $overlayInfluenceChain = [];
-        $firstActiveOverlay = null;
-        if ($overlayInfluence && count($overlayInfluence->signals) > 0) {
-            foreach ($overlayInfluence->signals as $signal) {
-                if ($signal->influence->value !== 'continue_unchanged') {
-                    $overlayInfluenceChain[$signal->overlayIdentifier] = $signal->influence->value;
-                    if (is_null($firstActiveOverlay)) {
-                        $firstActiveOverlay = $signal->overlayIdentifier;
-                    }
-                }
+        // Record observation signal types (no procedural vocabulary)
+        $observationSignalTypes = [];
+        if ($overlayObservations && count($overlayObservations->observations) > 0) {
+            foreach ($overlayObservations->observations as $signal) {
+                $observationSignalTypes[$signal->overlayIdentifier] = $signal->signalType;
             }
         }
 
         ElectionSecurityEvent::create([
-            'event_type' => $eventType,
+            'event_type' => $isDenial ? 'trust_denied' : 'trust_allowed',
             'election_id' => $ctx->election?->id,
-            'voter_slug_id' => null, // populated by controller
+            'voter_slug_id' => null,
             'network_evidence' => $ctx->network ? [
                 'current_ip_hash' => $ctx->network->currentIpHash,
                 'restriction_enabled' => $ctx->network->restrictionEnabled,
@@ -80,12 +65,18 @@ final class SecurityEventRecorder
             'trust_level_before' => 'unverified',
             'trust_level_after' => $result->trustLevel->value,
             'policy_evaluated' => implode(', ', array_keys($result->policyOutcomeSequence)),
-            'overlay_applied' => $firstActiveOverlay,
             'policy_evaluation_sequence' => $result->policyOutcomeSequence,
-            'overlay_influence_chain' => $overlayInfluenceChain,
-            'trust_state_transition' => $trustStateTransition,
-            'final_constitutional_outcome' => $result->trusted ? 'allow' : 'deny',
-            'recorded_at' => now(),
+            'overlay_observations' => $observationSignalTypes,
+            'overlay_observation_count' => $overlayObservations?->count() ?? 0,
+            'evaluation_summary' => [
+                'state' => $result->evaluationState->value,
+                'reason' => $result->reason,
+                'policies_evaluated' => count($result->policyOutcomeSequence),
+                'policies_passed' => count(array_filter($result->policyOutcomeSequence, fn($v) => $v === 'passed')),
+                'is_denial' => $isDenial,
+                'overlay_count' => $overlayObservations?->count() ?? 0,
+            ],
+            'recorded_at' => $this->clock->now(),
         ]);
     }
 }

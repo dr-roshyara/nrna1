@@ -2,51 +2,50 @@
 
 namespace App\Application\Election\Security\Policies;
 
+use App\Application\Election\Security\PolicyFinding;
+use App\Application\Election\Security\ConstitutionalPolicy;
 use App\Application\Election\Security\TrustCapabilityContext;
-use App\Domain\Election\Security\TrustLevel;
-use App\Domain\Election\Security\VotingTrustResult;
+use App\Domain\Election\Security\ConstitutionalConcernLevel;
+use App\Domain\Election\Security\EvidenceWeightCategory;
 
-final class NetworkBindingPolicy
+final class NetworkBindingPolicy implements ConstitutionalPolicy
 {
-    // Constitutional dependency: validates network continuity within established legitimacy
-    // Receives trust level from VerificationAttestationPolicy (via PolicySequence)
-    // Applies trust-elevated thresholds: RegistrarAttested=2x, ContinuityVerified=1.5x, Attested=1x, Unverified=0.5x
-
-    public function evaluate(TrustCapabilityContext $ctx, TrustLevel $currentTrustLevel): VotingTrustResult
+    public function identifier(): string
     {
+        return 'network';
+    }
+
+    public function dependencies(): array
+    {
+        return ['verification'];  // Network binding requires verification first
+    }
+
+    public function evaluate(TrustCapabilityContext $ctx): PolicyFinding
+    {
+        $currentTrustLevel = $ctx->currentTrustLevel();
+
         if (!$ctx->network->restrictionEnabled) {
-            return VotingTrustResult::allow(
-                trustLevel: $currentTrustLevel,
-                context: ['network_restriction' => 'disabled'],
-                sequence: ['network_binding_policy' => ['outcome' => 'passed_unrestricted', 'remaining_votes' => PHP_INT_MAX]],
-            );
+            return PolicyFinding::noFinding($this->identifier());
         }
 
         if ($ctx->network->isWhitelisted()) {
-            return VotingTrustResult::allow(
-                trustLevel: $currentTrustLevel,
-                context: ['network_restriction' => 'whitelisted'],
-                sequence: ['network_binding_policy' => ['outcome' => 'passed_whitelisted', 'remaining_votes' => PHP_INT_MAX]],
-            );
+            return PolicyFinding::noFinding($this->identifier());
         }
 
         if ($ctx->network->exceedsLimit($currentTrustLevel)) {
-            return VotingTrustResult::deny(
-                reason: 'network_limit_exceeded',
-                context: [
+            return new PolicyFinding(
+                concernLevel: ConstitutionalConcernLevel::HIGH,
+                evidenceWeight: EvidenceWeightCategory::STRONG,
+                constitutionalBasis: 'network_limit_exceeded',
+                supportingFacts: [
                     'trust_level' => $currentTrustLevel->value,
                     'votes_from_ip' => $ctx->network->votesFromThisIp,
+                    'limit_for_trust_level' => $ctx->network->maxVotesPerIp,
                 ],
-                sequence: ['network_binding_policy' => ['outcome' => 'denied_limit_exceeded', 'remaining_votes' => 0]],
+                policyIdentifier: $this->identifier(),
             );
         }
 
-        $remaining = $ctx->network->remainingVotes($currentTrustLevel);
-
-        return VotingTrustResult::allow(
-            trustLevel: $currentTrustLevel,
-            context: ['remaining_votes' => $remaining],
-            sequence: ['network_binding_policy' => ['outcome' => 'passed', 'remaining_votes' => $remaining]],
-        );
+        return PolicyFinding::noFinding($this->identifier());
     }
 }

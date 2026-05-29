@@ -7,6 +7,7 @@ use App\Application\Election\Security\TrustSnapshotAssembler;
 use App\Domain\Election\Security\DeviceTrustContext;
 use App\Domain\Election\Security\FingerprintMatchType;
 use App\Domain\Election\Security\NetworkTrustEvidence;
+use App\Domain\Election\Security\TrustEvaluationState;
 use App\Domain\Election\Security\TrustLevel;
 use App\Domain\Election\Security\TrustValidityScope;
 use App\Domain\Election\Security\VerificationAttestationRecord;
@@ -47,7 +48,7 @@ class TrustSnapshotAssemblerTest extends TestCase
 
     public function test_assembles_snapshot_from_allow_result(): void
     {
-        $result = VotingTrustResult::allow(
+        $result = VotingTrustResult::sufficientEvidence(
             trustLevel: TrustLevel::Attested,
             context: ['network_binding' => 'exact_match'],
             sequence: ['verification_attestation_policy' => 'passed_attested'],
@@ -64,8 +65,9 @@ class TrustSnapshotAssemblerTest extends TestCase
 
     public function test_assembles_snapshot_from_deny_result(): void
     {
-        $result = VotingTrustResult::deny(
+        $result = VotingTrustResult::insufficientEvidence(
             reason: 'network_limit_exceeded',
+            trustLevel: TrustLevel::Unverified,
             context: ['trust_level' => 'unverified'],
             sequence: ['network_binding_policy' => ['outcome' => 'denied']],
         );
@@ -80,7 +82,7 @@ class TrustSnapshotAssemblerTest extends TestCase
 
     public function test_attestation_valid_from_context(): void
     {
-        $result = VotingTrustResult::allow(
+        $result = VotingTrustResult::sufficientEvidence(
             trustLevel: TrustLevel::Attested,
             context: [],
             sequence: [],
@@ -96,7 +98,7 @@ class TrustSnapshotAssemblerTest extends TestCase
 
     public function test_requires_view_token_for_dual_code(): void
     {
-        $result = VotingTrustResult::allow(
+        $result = VotingTrustResult::sufficientEvidence(
             trustLevel: TrustLevel::Attested,
             context: [],
             sequence: [],

@@ -25,7 +25,7 @@ use PHPUnit\Framework\TestCase;
  * - deviceLegitimate
  * - verificationLegitimate
  * - trustLegitimate
- * - overlayInfluence
+ * - OverlaySignalCategory
  * - authorizationProtocol
  * - lifecycleState
  * - participationAllowed
@@ -58,7 +58,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: 'allowed',
@@ -69,7 +69,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: 'allowed',
@@ -96,7 +96,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::RegistrarAttested,
-            overlayInfluence: 'require_constitutional_review',  // signal, not grant
+            OverlaySignalCategory: 'require_constitutional_review',  // signal, not grant
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: CapabilityDenialReason::ConstitutionalReviewPending->value,
@@ -108,7 +108,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::RegistrarAttested,
-            overlayInfluence: 'require_constitutional_review',
+            OverlaySignalCategory: 'require_constitutional_review',
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: CapabilityDenialReason::ConstitutionalReviewPending->value,
@@ -133,7 +133,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::Counting,
             participationAllowed: CapabilityDenialReason::InvalidLifecycle->value,
@@ -144,7 +144,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::Counting,
             participationAllowed: CapabilityDenialReason::InvalidLifecycle->value,
@@ -169,7 +169,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::SplitAuthorizationProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: CapabilityDenialReason::UnmetPrecondition->value,  // missing separate commit
@@ -180,7 +180,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::SplitAuthorizationProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: CapabilityDenialReason::UnmetPrecondition->value,
@@ -206,7 +206,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Unverified,    // composite reflects network failure
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,  // lifecycle permits, but trust denies first
             participationAllowed: CapabilityDenialReason::TrustDenied->value,
@@ -217,7 +217,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Unverified,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: CapabilityDenialReason::TrustDenied->value,
@@ -242,7 +242,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::RegistrarAttested,
             trustLegitimate: TrustLevel::RegistrarAttested,
-            overlayInfluence: 'require_constitutional_review',  // emergency overlay signals
+            OverlaySignalCategory: 'require_constitutional_review',  // emergency overlay signals
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: CapabilityDenialReason::ConstitutionalReviewPending->value,
@@ -253,7 +253,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::RegistrarAttested,
             trustLegitimate: TrustLevel::RegistrarAttested,
-            overlayInfluence: 'require_constitutional_review',
+            OverlaySignalCategory: 'require_constitutional_review',
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: CapabilityDenialReason::ConstitutionalReviewPending->value,
@@ -279,7 +279,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,  // would be legitimate
-            overlayInfluence: 'trust_evaluation_inconclusive',  // but velocity makes it unreliable
+            OverlaySignalCategory: 'trust_evaluation_inconclusive',  // but velocity makes it unreliable
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: CapabilityDenialReason::TrustEvaluationInconclusive->value,
@@ -290,7 +290,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: 'trust_evaluation_inconclusive',
+            OverlaySignalCategory: 'trust_evaluation_inconclusive',
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: CapabilityDenialReason::TrustEvaluationInconclusive->value,
@@ -316,7 +316,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::SplitAuthorizationProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: CapabilityDenialReason::MissingRole->value,  // reuse detected as invalid precondition
@@ -327,7 +327,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::SplitAuthorizationProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: CapabilityDenialReason::MissingRole->value,
@@ -352,7 +352,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: CapabilityDenialReason::UnmetPrecondition->value,  // stale auth
@@ -363,7 +363,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: CapabilityDenialReason::UnmetPrecondition->value,
@@ -389,7 +389,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,  // trust would allow
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::Suspended,  // overlay suspension
             participationAllowed: CapabilityDenialReason::Suspended->value,
@@ -400,7 +400,7 @@ class ConstitutionalParityTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::Suspended,
             participationAllowed: CapabilityDenialReason::Suspended->value,

@@ -3,7 +3,7 @@
 namespace App\Application\Election\Capabilities;
 
 use App\Domain\Election\Enum\ElectionLifecycleState;
-use App\Domain\Election\Security\TrustEvaluationEnvelope;
+use App\Domain\Election\Security\Simplified\EvaluationEnvelope;
 use App\Models\Election;
 use App\Models\User;
 
@@ -15,7 +15,7 @@ final readonly class CapabilityContext
         public string $action,
         public array $actionMetadata,
         public ElectionLifecycleState $state,
-        public ?TrustEvaluationEnvelope $trust = null,
+        public ?EvaluationEnvelope $trust = null,
     ) {}
 
     public function isSystemAction(): bool

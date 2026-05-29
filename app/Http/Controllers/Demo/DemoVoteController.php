@@ -1462,14 +1462,41 @@ private function has_valid_selections($selections)
         // Set organisation context for tenant scoping
         session(['current_organisation_id' => $election->organisation_id]);
 
+        // PHASE C.3b: Constitutional Evidence Population
+        // Query registered IP from VoterSlug (constitutional locality)
+        $voterSlug = \App\Models\VoterSlug::where('user_id', $auth_user->id)
+            ->where('election_id', $election->id)
+            ->orderByDesc('created_at')
+            ->first();
+
+        // Extract step_1_ip (initial registration IP) and hash it for evidence transport
+        $registeredIpHash = null;
+        if ($voterSlug && $voterSlug->step_1_ip) {
+            // Use same privacy policy instance injected into TrustPolicyEvaluator
+            // Ensures canonical evidence normalization for determinism
+            $privacyPolicy = app(\App\Domain\Election\Security\TrustEvidencePrivacyPolicy::class);
+            $registeredIpHash = $privacyPolicy->hashIp($voterSlug->step_1_ip, $election->id);
+        }
+
+        // Count participation from current IP in this election (election-scoped density)
+        // Integer-only deterministic comparison: no probabilistic elements
+        $currentIp = request()->ip();
+        $votesFromThisIp = \App\Models\Code::where('election_id', $election->id)
+            ->where('client_ip', $currentIp)
+            ->where('has_voted', true)
+            ->count();
+
         // PHASE D.5: Constitutional Trust Evaluation
         // Evaluate trust before any voting checks (parallel with legacy IP logic)
+        // Now includes registered IP hash and participation density evidence
         $trustEnvelope = $this->trustEvaluator->evaluate(
             election: $election,
             user: $auth_user,
             rawIp: request()->ip(),
             rawFingerprint: $request->input('device_fingerprint'),
             sessionId: $request->session()->getId(),
+            registeredIpHash: $registeredIpHash,
+            votesFromThisIp: $votesFromThisIp,
         );
 
         // Log trust evaluation result for audit trail

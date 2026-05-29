@@ -10,7 +10,7 @@ final readonly class CapabilityDecision
         public CapabilitySeverity $severity = CapabilitySeverity::HardBlock,
     ) {}
 
-    public static function grant(): self
+    public static function authorized(): self
     {
         return new self();
     }
@@ -20,7 +20,7 @@ final readonly class CapabilityDecision
         return new self();
     }
 
-    public static function deny(
+    public static function prohibited(
         CapabilityDenialReason $reason,
         ?string $detail = null,
         CapabilitySeverity $severity = CapabilitySeverity::HardBlock,
@@ -41,6 +41,20 @@ final readonly class CapabilityDecision
     public function denies(): bool
     {
         return $this->reason !== null;
+    }
+
+    // Legacy aliases for backward compatibility during transition
+    public static function grant(): self
+    {
+        return self::authorized();
+    }
+
+    public static function deny(
+        CapabilityDenialReason $reason,
+        ?string $detail = null,
+        CapabilitySeverity $severity = CapabilitySeverity::HardBlock,
+    ): self {
+        return self::prohibited($reason, $detail, $severity);
     }
 
     public function isShortCircuit(): bool

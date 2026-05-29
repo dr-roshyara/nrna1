@@ -931,7 +931,7 @@ class ElectionManagementController extends Controller
             $election->suspended_at = now();
             $election->suspended_by = auth()->id();
             $election->suspended_reason = $validated['reason'];
-            $election->suspension_category = $validated['suspension_category'] ?? 'general';
+            $election->suspension_category = $validated['suspension_category'] ?? 'operational_pause';
             $election->suspended_lifecycle_context = $snapshot->state->value;
             $election->state = 'suspended';
             $election->save();
@@ -941,7 +941,7 @@ class ElectionManagementController extends Controller
             $election,
             'suspend',
             null,
-            ['reason' => $validated['reason'], 'suspension_category' => $validated['suspension_category'] ?? 'general'],
+            ['reason' => $validated['reason'], 'suspension_category' => $validated['suspension_category'] ?? 'operational_pause'],
             request()->user(),
             request()
         );

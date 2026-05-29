@@ -207,43 +207,49 @@
                   </div>
                 </transition>
                 <transition name="fade-scale" mode="out-in">
-                  <div v-if="canOpenVoting" key="open" :title="openVotingBlockedReason || ''">
+                  <div v-if="canOpenVoting || canCompleteAdministration" key="open">
                     <div>
                       <ActionButton
                         variant="success"
                         size="md"
-                        :loading="isLoading"
-                        :disabled="isOpenVotingDisabled"
+                        :loading="isLoading && canOpenVoting"
+                        :disabled="!canOpenVoting"
                         class="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600"
-                        @click="openVoting"
+                        @click="canOpenVoting ? openVoting() : undefined"
                       >
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                           <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
                         </svg>
                         {{ t.sections.election_control.btn_open }}
-                        <span v-if="!isOpenVotingDisabled" class="text-xs opacity-90 ml-2 hidden sm:inline">{{ t.phase_controls.open_voting_hint }}</span>
+                        <span v-if="canOpenVoting" class="text-xs opacity-90 ml-2 hidden sm:inline">{{ t.phase_controls.open_voting_hint }}</span>
                       </ActionButton>
-                      <p v-if="openVotingBlockedReason" class="mt-2 text-xs text-amber-600 font-medium">
-                        {{ openVotingBlockedReason }}
+                      <p v-if="!canOpenVoting && denialLabel(ElectionActions.OPEN_VOTING)" class="mt-2 text-xs text-slate-400 font-medium">
+                        {{ denialLabel(ElectionActions.OPEN_VOTING) }}
                       </p>
                     </div>
                   </div>
                 </transition>
                 <transition name="fade-scale" mode="out-in">
-                  <div v-if="canCloseVoting" key="close">
-                    <ActionButton
-                      variant="danger"
-                      size="md"
-                      :loading="isLoading"
-                      class="bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600"
-                      @click="closeVoting"
-                    >
-                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 1112.01 3.715M9 9a1 1 0 112 0V5.525a1 1 0 00-2 0v3.475z" clip-rule="evenodd"/>
-                      </svg>
-                      {{ t.sections.election_control.btn_close }}
-                      <span class="text-xs opacity-90 ml-2 hidden sm:inline">{{ t.phase_controls.close_voting_hint }}</span>
-                    </ActionButton>
+                  <div v-if="canCloseVoting || canOpenVoting" key="close">
+                    <div>
+                      <ActionButton
+                        variant="danger"
+                        size="md"
+                        :loading="isLoading && canCloseVoting"
+                        :disabled="!canCloseVoting"
+                        class="bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600"
+                        @click="canCloseVoting ? closeVoting() : undefined"
+                      >
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 1112.01 3.715M9 9a1 1 0 112 0V5.525a1 1 0 00-2 0v3.475z" clip-rule="evenodd"/>
+                        </svg>
+                        {{ t.sections.election_control.btn_close }}
+                        <span v-if="canCloseVoting" class="text-xs opacity-90 ml-2 hidden sm:inline">{{ t.phase_controls.close_voting_hint }}</span>
+                      </ActionButton>
+                      <p v-if="!canCloseVoting && denialLabel(ElectionActions.CLOSE_VOTING)" class="mt-2 text-xs text-slate-400 font-medium">
+                        {{ denialLabel(ElectionActions.CLOSE_VOTING) }}
+                      </p>
+                    </div>
                   </div>
                 </transition>
               </div>
@@ -948,8 +954,8 @@
 
           <div class="px-6 py-4 space-y-4">
             <!-- Governance Warning -->
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
-              <p class="text-sm text-red-700 font-medium">
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded">
+              <p class="text-sm text-amber-800 font-medium">
                 {{ t.suspend_modal.warning }}
               </p>
             </div>
@@ -964,28 +970,28 @@
                 data-testid="suspend-reason"
                 rows="4"
                 :placeholder="t.suspend_modal.reason_placeholder"
-                class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
               ></textarea>
               <p class="text-xs text-slate-500 mt-1">
                 {{ t.suspend_modal.reason_hint }}
               </p>
             </div>
 
-            <!-- Category (optional) -->
+            <!-- Category (required) -->
             <div>
               <label class="block text-sm font-semibold text-slate-700 mb-2">
-                {{ t.suspend_modal.category_label }}
+                {{ t.suspend_modal.category_label }} <span class="text-red-500">*</span>
               </label>
               <select
                 v-model="suspendCategory"
                 data-testid="suspend-category"
-                class="w-full px-3 py-2 border border-slate-300 rounded-lg"
+                class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
               >
-                <option value="general">{{ t.suspend_modal.category_general }}</option>
-                <option value="misconduct">{{ t.suspend_modal.category_misconduct }}</option>
-                <option value="emergency">{{ t.suspend_modal.category_emergency }}</option>
-                <option value="investigation">{{ t.suspend_modal.category_investigation }}</option>
-                <option value="other">{{ t.suspend_modal.category_other }}</option>
+                <option value="" disabled>{{ t.suspend_modal.category_placeholder }}</option>
+                <option value="operational_pause">{{ t.suspend_modal.category_operational_pause }}</option>
+                <option value="administrative_review">{{ t.suspend_modal.category_administrative_review }}</option>
+                <option value="dispute_hold">{{ t.suspend_modal.category_dispute_hold }}</option>
+                <option value="technical_issue">{{ t.suspend_modal.category_technical_issue }}</option>
               </select>
             </div>
           </div>
@@ -1001,7 +1007,7 @@
             <button
               data-testid="suspend-confirm"
               @click="handleSuspendConfirm"
-              :disabled="suspendReason.length < 10 || isLoading"
+              :disabled="suspendReason.length < 10 || !suspendCategory || isLoading"
               class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               <span v-if="isLoading" class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
@@ -1030,6 +1036,7 @@ import StateMachinePanel from '@/Pages/Election/Partials/StateMachinePanel.vue'
 import StateBadge from '@/Components/Election/StateBadge.vue'
 import StateProgress from '@/Components/Election/StateProgress.vue'
 import { useElectionCapabilities } from '@/Composables/useElectionCapabilities'
+import { ElectionActions } from '@/Constants/ElectionActions'
 import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 
 import pageDe from '@/locales/pages/Election/Management/de.json'
@@ -1069,7 +1076,7 @@ const reasonError         = ref('')
 // Governance suspension modal
 const showSuspendModal   = ref(false)
 const suspendReason      = ref('')
-const suspendCategory    = ref('general')
+const suspendCategory    = ref('')
 
 
 const onLogoFileChange = (e) => {
@@ -1174,6 +1181,7 @@ const {
   canPublishResults,
   canResume,
   canSuspend,
+  denialLabel,
 } = capabilities
 
 const isPendingApproval = computed(() => currentState.value === ElectionLifecycleStates.SUBMITTED_FOR_APPROVAL)
@@ -1293,12 +1301,12 @@ const handleResume = () => {
 // Governance suspension handlers
 const handleSuspend = () => {
   suspendReason.value = ''
-  suspendCategory.value = 'general'
+  suspendCategory.value = ''
   showSuspendModal.value = true
 }
 
 const handleSuspendConfirm = () => {
-  if (suspendReason.value.length < 10) return
+  if (suspendReason.value.length < 10 || !suspendCategory.value) return
   isLoading.value = true
   router.post(route('elections.suspend', { election: props.election.slug }), {
     reason: suspendReason.value,

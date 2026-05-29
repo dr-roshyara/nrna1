@@ -29,6 +29,10 @@ class ElectionSecurityEvent extends Model
         'overlay_influence_chain',
         'trust_state_transition',
         'final_constitutional_outcome',
+        'evaluation_summary',
+        'constitution_schema_version',
+        'interpreter_version',
+        'evaluation_protocol_version',
         'retention_days',
         'recorded_at',
     ];
@@ -40,6 +44,7 @@ class ElectionSecurityEvent extends Model
         'overlay_influence_chain' => 'array',
         'recorded_at' => 'immutable_datetime',
         'retention_days' => 'integer',
+        'evaluation_summary' => 'array',
     ];
 
     public function election(): BelongsTo

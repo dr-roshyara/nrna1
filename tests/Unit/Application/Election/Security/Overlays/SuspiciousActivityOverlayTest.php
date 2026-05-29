@@ -7,7 +7,6 @@ use App\Application\Election\Security\TrustCapabilityContext;
 use App\Domain\Election\Security\DeviceTrustContext;
 use App\Domain\Election\Security\FingerprintMatchType;
 use App\Domain\Election\Security\NetworkTrustEvidence;
-use App\Domain\Election\Security\OverlayInfluence;
 use App\Domain\Election\Security\TrustValidityScope;
 use App\Domain\Election\Security\VerificationAttestationRecord;
 use App\Domain\Election\Security\VotingSessionTrustContinuity;
@@ -32,7 +31,7 @@ class SuspiciousActivityOverlayTest extends TestCase
         );
     }
 
-    public function test_evaluate_returns_continue_when_no_suspicious_activity(): void
+    public function test_reports_stable_when_activity_normal(): void
     {
         $overlay = new SuspiciousActivityOverlay();
         $election = Election::factory()->create(['trust_overlay_active' => false]);
@@ -40,10 +39,11 @@ class SuspiciousActivityOverlayTest extends TestCase
 
         $signal = $overlay->evaluate($ctx);
 
-        $this->assertEquals(OverlayInfluence::CONTINUE_UNCHANGED, $signal->influence);
+        $this->assertEquals('CONTEXT_STABLE', $signal->signalType);
+        $this->assertEquals('suspicious_activity', $signal->overlayIdentifier);
     }
 
-    public function test_evaluate_returns_constitutional_review_when_suspicious(): void
+    public function test_reports_attestation_when_suspicious_activity_detected(): void
     {
         $overlay = new SuspiciousActivityOverlay();
         $election = Election::factory()->create([
@@ -54,8 +54,8 @@ class SuspiciousActivityOverlayTest extends TestCase
 
         $signal = $overlay->evaluate($ctx);
 
-        $this->assertEquals(OverlayInfluence::REQUIRE_CONSTITUTIONAL_REVIEW, $signal->influence);
-        $this->assertTrue($signal->requiresConstitutionalReview());
+        $this->assertEquals('ADDITIONAL_ATTESTATION_PRESENT', $signal->signalType);
+        $this->assertEquals('suspicious_activity', $signal->overlayIdentifier);
     }
 
     public function test_evaluate_never_mutates_context(): void

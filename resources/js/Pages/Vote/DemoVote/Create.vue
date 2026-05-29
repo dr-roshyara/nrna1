@@ -1,5 +1,5 @@
 <template>
-    <app-layout>
+    <election-layout>
             <!-- Skip Link for Keyboard Users -->
             <a
                 href="#main-content"
@@ -290,14 +290,14 @@
                                             <!-- Selection Counter -->
                                             <div class="bg-white border-2 border-neutral-200 rounded-lg px-6 py-3 text-center shrink-0">
                                                 <div class="text-2xl font-bold text-primary-600">{{ selectedCandidates[post.id]?.length || 0 }}</div>
-                                                <div class="text-sm text-neutral-600">of {{ post.required_number }}</div>
+                                                <div class="text-sm text-neutral-600">{{ $t('pages.Vote.DemoVote.Create.voter_info.of_count', { n: post.required_number }) }}</div>
                                             </div>
                                         </div>
 
                                         <!-- Progress Bar -->
                                         <div class="mt-4">
                                             <div class="flex items-center justify-between text-sm text-neutral-600 mb-1">
-                                                <span>Progress</span>
+                                                <span>{{ $t('pages.Vote.DemoVote.Create.voter_info.progress') }}</span>
                                                 <span>{{ Math.min(100, Math.round(((selectedCandidates[post.id]?.length || 0) / post.required_number) * 100)) }}%</span>
                                             </div>
                                             <div class="w-full bg-neutral-200 rounded-full h-2">
@@ -534,14 +534,14 @@
                                             <!-- Selection Counter -->
                                             <div class="bg-white border-2 border-neutral-200 rounded-lg px-6 py-3 text-center shrink-0">
                                                 <div class="text-2xl font-bold text-green-600">{{ selectedCandidates[post.id]?.length || 0 }}</div>
-                                                <div class="text-sm text-neutral-600">of {{ post.required_number }}</div>
+                                                <div class="text-sm text-neutral-600">{{ $t('pages.Vote.DemoVote.Create.voter_info.of_count', { n: post.required_number }) }}</div>
                                             </div>
                                         </div>
 
                                         <!-- Progress Bar -->
                                         <div class="mt-4">
                                             <div class="flex items-center justify-between text-sm text-neutral-600 mb-1">
-                                                <span>Progress</span>
+                                                <span>{{ $t('pages.Vote.DemoVote.Create.voter_info.progress') }}</span>
                                                 <span>{{ Math.min(100, Math.round(((selectedCandidates[post.id]?.length || 0) / post.required_number) * 100)) }}%</span>
                                             </div>
                                             <div class="w-full bg-neutral-200 rounded-full h-2">
@@ -707,12 +707,12 @@
                     </section>
                 </div>
             </div>
-    </app-layout>
+    </election-layout>
 </template>
 
 <script>
 import { ref, computed, onMounted } from 'vue'
-import AppLayout from '@/Layouts/AppLayout.vue'
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import WorkflowStepIndicator from '@/Components/Workflow/WorkflowStepIndicator.vue'
 import { useForm } from '@inertiajs/vue3'
 
@@ -720,7 +720,7 @@ export default {
     name: 'EnhancedCreate',
 
     components: {
-        AppLayout,
+        ElectionLayout,
         WorkflowStepIndicator,
     },
 

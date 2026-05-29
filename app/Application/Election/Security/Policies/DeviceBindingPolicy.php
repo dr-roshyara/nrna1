@@ -2,38 +2,41 @@
 
 namespace App\Application\Election\Security\Policies;
 
+use App\Application\Election\Security\PolicyFinding;
+use App\Application\Election\Security\ConstitutionalPolicy;
 use App\Application\Election\Security\TrustCapabilityContext;
+use App\Domain\Election\Security\ConstitutionalConcernLevel;
+use App\Domain\Election\Security\EvidenceWeightCategory;
 use App\Domain\Election\Security\FingerprintMatchType;
-use App\Domain\Election\Security\TrustLevel;
-use App\Domain\Election\Security\VotingTrustResult;
 
-final class DeviceBindingPolicy
+final class DeviceBindingPolicy implements ConstitutionalPolicy
 {
-    // Constitutional dependency: validates device continuity integrity
-    // Isolated evaluator — receives only TrustCapabilityContext
+    public function identifier(): string
+    {
+        return 'device';
+    }
 
-    public function evaluate(TrustCapabilityContext $ctx): VotingTrustResult
+    public function dependencies(): array
+    {
+        return ['verification'];  // Device binding requires verification first
+    }
+
+    public function evaluate(TrustCapabilityContext $ctx): PolicyFinding
     {
         if ($ctx->device->matchType === FingerprintMatchType::NotRequired) {
-            return VotingTrustResult::allow(
-                trustLevel: $ctx->currentTrustLevel(),
-                context: ['device_binding' => 'not_required'],
-                sequence: ['device_binding_policy' => 'passed_not_required'],
-            );
+            return PolicyFinding::noFinding($this->identifier());
         }
 
         if ($ctx->device->satisfiesDeviceAttestation()) {
-            return VotingTrustResult::allow(
-                trustLevel: $ctx->currentTrustLevel(),
-                context: ['device_binding' => 'exact_match'],
-                sequence: ['device_binding_policy' => 'passed_exact_match'],
-            );
+            return PolicyFinding::noFinding($this->identifier());
         }
 
-        return VotingTrustResult::deny(
-            reason: 'device_attestation_failed',
-            context: ['fingerprint_match_type' => $ctx->device->matchType->value],
-            sequence: ['device_binding_policy' => 'denied_no_match'],
+        return new PolicyFinding(
+            concernLevel: ConstitutionalConcernLevel::MEDIUM,
+            evidenceWeight: EvidenceWeightCategory::MODERATE,
+            constitutionalBasis: 'device_attestation_failed',
+            supportingFacts: ['fingerprint_match_type' => $ctx->device->matchType->value],
+            policyIdentifier: $this->identifier(),
         );
     }
 }

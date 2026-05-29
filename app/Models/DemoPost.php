@@ -45,6 +45,10 @@ class DemoPost extends Model
         'is_national_wide',
     ];
 
+    protected $casts = [
+        'is_national_wide' => 'boolean',
+    ];
+
     /**
      * Get demo candidacies for this post
      */

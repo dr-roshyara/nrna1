@@ -322,7 +322,7 @@ class SetupDemoElection extends Command
             'name'             => $postData['name'] . ($region ? ' - ' . $region : ''),
             'position_order'   => $postData['position_order'],
             'required_number'  => $postData['required_number'],
-            'is_national_wide' => $isNational ? 1 : 0,
+            'is_national_wide' => $isNational,
             'state_name'       => $region,
             'election_id'      => $election->id,
             'organisation_id'  => $organisation->id,

@@ -5,23 +5,27 @@ namespace App\Application\Election\Security;
 use App\Domain\Election\Security\DeviceTrustContext;
 use App\Domain\Election\Security\FingerprintMatchType;
 use App\Domain\Election\Security\NetworkTrustEvidence;
+use App\Domain\Election\Security\Simplified\ParticipationEligibilityEvidence;
+use App\Domain\Election\Security\TrustEvaluationEnvelope;
 use App\Domain\Election\Security\TrustEvidencePrivacyPolicy;
 use App\Domain\Election\Security\VerificationAttestationRecord;
 use App\Domain\Election\Security\VotingSessionTrustContinuity;
 use App\Domain\Election\Security\VotingTrustResult;
 use App\Models\Election;
+use App\Models\ElectionMembership;
 use App\Models\User;
 
-final class TrustPolicyEvaluator
+class TrustPolicyEvaluator
 {
     // Thin orchestration: hashes evidence → builds context → runs overlay/policies/recorder
-    // Invariant 3: Returns VotingTrustResult only (never can_vote, capability arrays, authority decisions)
+    // Invariant 3: Returns TrustEvaluationEnvelope with result, overlay influence, and snapshot
 
     public function __construct(
-        private OverlayCoordinator                  $overlayCoordinator,
+        private OverlayAggregator                  $OverlayAggregator,
         private PolicySequence                      $policySequence,
         private SecurityEventRecorder               $eventRecorder,
         private TrustEvidencePrivacyPolicy         $privacyPolicy,
+        private TrustSnapshotAssembler             $assembler,
     ) {}
 
     public function evaluate(
@@ -30,7 +34,9 @@ final class TrustPolicyEvaluator
         string    $rawIp,
         ?string   $rawFingerprint,
         string    $sessionId,
-    ): VotingTrustResult
+        ?string   $registeredIpHash = null,
+        ?int      $votesFromThisIp = null,
+    ): TrustEvaluationEnvelope
     {
         // Step 1: Hash evidence (raw IP never reaches any other method)
         $ipHash = $this->privacyPolicy->hashIp($rawIp, $election?->id ?? 'demo');
@@ -40,41 +46,105 @@ final class TrustPolicyEvaluator
         $ctx = new TrustCapabilityContext(
             election: $election,
             user: $user,
-            network: $this->buildNetworkEvidence($election, $ipHash),
+            network: $this->buildNetworkEvidence($election, $ipHash, $registeredIpHash, $votesFromThisIp),
             device: $this->buildDeviceContext($fpHash, $user),
             attestation: $this->buildAttestationRecord($election, $user),
-            sessionContinuity: $this->buildSessionContinuity($sessionId, $ipHash, $election),
+            sessionContinuity: $this->buildSessionContinuity($sessionId, $ipHash, $registeredIpHash ?? $ipHash, $election),
         );
 
         // Step 3: Aggregate overlay influence signals (NEVER short-circuits — Resolver interprets)
-        $overlayInfluence = $this->overlayCoordinator->aggregate($ctx);
+        $OverlaySignalCategory = $this->OverlayAggregator->aggregate($ctx);
 
         // Step 4: PolicySequence evaluates constitutional trust (always runs — not short-circuited by overlays)
         $result = $this->policySequence->evaluate($ctx);
 
-        // Step 5: Fire-and-forget eventRecorder (never awaits, never checks return)
-        $this->eventRecorder->record($result, $ctx, $overlayInfluence);
+        // Step 5: Freeze participation eligibility evidence (TSC-1 — observational, not authority)
+        $eligibility = $this->buildEligibilityEvidence($election, $user);
 
-        // Step 6: Return VotingTrustResult — NEVER can_vote, capability array, or authority decision
-        return $result;
+        // Step 6: Assemble snapshot (only place where TrustCapabilityContext exists)
+        $snapshot = $this->assembler->assemble($result, $ctx, $OverlaySignalCategory);
+
+        // Step 7: Fire-and-forget eventRecorder (never awaits, never checks return)
+        $this->eventRecorder->record($result, $ctx, $OverlaySignalCategory);
+
+        // Step 8: Return TrustEvaluationEnvelope with result, overlay influence, snapshot, and frozen eligibility evidence
+        return new TrustEvaluationEnvelope($result, $OverlaySignalCategory, $snapshot, $eligibility);
+    }
+
+    /**
+     * Build frozen participation eligibility evidence at the evaluation boundary.
+     *
+     * TSC-1: This is OBSERVATIONAL evidence, NOT authority.
+     * The evidence captures the constitutional participation state at the
+     * moment of evaluation, enabling replay systems to detect when runtime
+     * eligibility diverged from the frozen snapshot.
+     *
+     * Returns null when user or election is not available (pre-authentication).
+     */
+    private function buildEligibilityEvidence(?Election $election, ?User $user): ?ParticipationEligibilityEvidence
+    {
+        if (!$user || !$election) {
+            return null;
+        }
+
+        $membership = ElectionMembership::withoutGlobalScopes()
+            ->where('election_id', $election->id)
+            ->where('user_id', $user->id)
+            ->first();
+
+        if (!$membership) {
+            return null;
+        }
+
+        $now = now();
+        $isActive = $membership->status === 'active';
+        $notExpired = $membership->expires_at === null || $membership->expires_at > $now;
+        $hasActiveMembership = $isActive && $notExpired;
+        $hasValidAssignment = $membership->role === 'voter';
+        $hasApproval = $isActive;
+        $isSuspended = in_array($membership->suspension_status, ['proposed', 'confirmed'], true);
+
+        // Deterministic hash of the eligibility state for replay divergence detection
+        $eligibilityHash = hash('sha256', implode('|', [
+            (string)$hasActiveMembership,
+            (string)$hasValidAssignment,
+            (string)$hasApproval,
+            (string)$isSuspended,
+            (string)$membership->expires_at?->toIso8601String(),
+            $membership->suspension_status ?? 'none',
+            $election->id,
+            $user->id,
+        ]));
+
+        return new ParticipationEligibilityEvidence(
+            hasActiveMembership: $hasActiveMembership,
+            hasValidAssignment: $hasValidAssignment,
+            hasApproval: $hasApproval,
+            isSuspended: $isSuspended,
+            eligibilityEvaluatedAt: new \DateTimeImmutable($now->toIso8601String()),
+            eligibilitySourceVersion: '1.0.0',
+            eligibilityHash: $eligibilityHash,
+        );
     }
 
     private function buildNetworkEvidence(
         ?Election $election,
         string    $ipHash,
+        ?string   $registeredIpHash = null,
+        ?int      $votesFromThisIp = null,
     ): NetworkTrustEvidence
     {
         $maxVotesPerIp = $election?->max_votes_per_ip ?? 6;
-        $votesFromThisIp = 0; // populated by controller from database
+        $votes = $votesFromThisIp ?? 0; // Use provided value or default to 0
         $restrictionEnabled = $election?->network_binding_strategy !== 'none' ?? true;
         $whitelist = $election ? ($election->ip_whitelist ? json_decode($election->ip_whitelist, true) : null) : null;
 
         return new NetworkTrustEvidence(
             currentIpHash: $ipHash,
-            registeredIpHash: null, // populated by controller from voter session
+            registeredIpHash: $registeredIpHash, // Populated by controller from voter session
             whitelist: $whitelist,
             maxVotesPerIp: $maxVotesPerIp,
-            votesFromThisIp: $votesFromThisIp,
+            votesFromThisIp: $votes, // Populated by controller from database
             restrictionEnabled: $restrictionEnabled,
             bindingStrategy: $election?->network_binding_strategy ?? 'ip_count',
         );
@@ -112,11 +182,11 @@ final class TrustPolicyEvaluator
         );
     }
 
-    private function buildSessionContinuity(string $sessionId, string $ipHash, ?Election $election): VotingSessionTrustContinuity
+    private function buildSessionContinuity(string $sessionId, string $ipHash, ?string $registeredIpHash, ?Election $election): VotingSessionTrustContinuity
     {
         return new VotingSessionTrustContinuity(
             sessionId: $sessionId,
-            ipHashAtStart: $ipHash, // populated by controller on session start
+            ipHashAtStart: $registeredIpHash ?? $ipHash, // Use registered hash if available, otherwise current
             ipHashCurrent: $ipHash,
             deviceChanged: false, // populated by controller based on fingerprint comparison
             continuityState: 'continuous',

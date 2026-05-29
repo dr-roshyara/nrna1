@@ -65,7 +65,7 @@ final class ResolverVotingBehavior
             deviceLegitimate: $this->extractDeviceLegitimacy($snapshot, $election),
             verificationLegitimate: $this->extractVerificationLegitimacy($snapshot, $election),
             trustLegitimate: $this->extractTrustLegitimacy($snapshot),
-            overlayInfluence: $this->extractOverlayInfluence($snapshot),
+            OverlaySignalCategory: $this->extractOverlayInfluence($snapshot),
             authorizationProtocol: $this->extractAuthorizationProtocol($snapshot),
             lifecycleState: $snapshot->lifecycleState,
             participationAllowed: $this->extractParticipationAllowed($snapshot),
@@ -158,16 +158,16 @@ final class ResolverVotingBehavior
      * Extract overlay influence from resolver snapshot
      *
      * RESOLVER SEMANTICS:
-     * - Captured by OverlayCoordinator.aggregate()
-     * - Populated into snapshot.trust.overlayInfluence (if trust evaluated)
+     * - Captured by OverlayAggregator.aggregate()
+     * - Populated into snapshot.trust.OverlaySignalCategory (if trust evaluated)
      * - Examples: 'require_constitutional_review', 'trust_elevation_request', etc.
      */
     private function extractOverlayInfluence(
         \App\Application\Election\Capabilities\ElectionCapabilitySnapshot $snapshot,
     ): ?string {
         // If trust snapshot has overlay influence recorded
-        if ($snapshot->trust !== null && method_exists($snapshot->trust, 'overlayInfluence')) {
-            // In real implementation: return $snapshot->trust->overlayInfluence
+        if ($snapshot->trust !== null && method_exists($snapshot->trust, 'OverlaySignalCategory')) {
+            // In real implementation: return $snapshot->trust->OverlaySignalCategory
             return null;  // placeholder
         }
 

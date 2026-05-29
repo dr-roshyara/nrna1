@@ -122,6 +122,9 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
             'status' => 'active',
         ]);
 
+        // Refresh election object so precondition checks see the memberships
+        $election->refresh();
+
         // Transition from approved → setup_administration (requires chief/deputy role)
         Auth::setUser($this->officer);
         $election->transitionTo(\App\Domain\Election\StateMachine\Transition::manual('begin_setup', $this->officer->id));
@@ -230,6 +233,13 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
             'role' => 'committee',
             'status' => 'active',
         ]);
+
+        // Refresh election object so precondition checks see the memberships
+        $election->refresh();
+
+        // Transition from approved → setup_administration
+        Auth::setUser($this->officer);
+        $election->transitionTo(\App\Domain\Election\StateMachine\Transition::manual('begin_setup', $this->officer->id));
 
         // Complete administration but NOT nomination (no candidates)
         $election->completeAdministration('Setup complete', $this->officer->id);

@@ -48,11 +48,21 @@ readonly class NetworkTrustEvidence
 
     private function effectiveLimit(TrustLevel $trustLevel): int
     {
+        // Priority 4: Integer-Only Threshold Math (Deterministic Governance)
+        // All calculations use integer-only operations, never floating point
+        // Same input always produces same threshold (replay-deterministic)
+        //
+        // Thresholds (for maxVotesPerIp = N):
+        // - RegistrarAttested: N * 2 = 2N (double the base)
+        // - ContinuityVerified: N * 1.5 = N*3/2 (intdiv for reproducibility)
+        // - Attested: N (baseline)
+        // - Unverified: N / 2 = intdiv(N, 2) (half, minimum 1)
+
         return match ($trustLevel) {
-            TrustLevel::RegistrarAttested => (int) floor($this->maxVotesPerIp * 2),
-            TrustLevel::ContinuityVerified => (int) floor($this->maxVotesPerIp * 1.5),
+            TrustLevel::RegistrarAttested => $this->maxVotesPerIp * 2,
+            TrustLevel::ContinuityVerified => intdiv($this->maxVotesPerIp * 3, 2),
             TrustLevel::Attested => $this->maxVotesPerIp,
-            TrustLevel::Unverified => max(1, (int) floor($this->maxVotesPerIp / 2)),
+            TrustLevel::Unverified => max(1, intdiv($this->maxVotesPerIp, 2)),
         };
     }
 }

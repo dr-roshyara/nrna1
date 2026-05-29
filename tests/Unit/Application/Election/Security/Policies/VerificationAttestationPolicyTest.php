@@ -4,10 +4,11 @@ namespace Tests\Unit\Application\Election\Security\Policies;
 
 use App\Application\Election\Security\Policies\VerificationAttestationPolicy;
 use App\Application\Election\Security\TrustCapabilityContext;
+use App\Domain\Election\Security\ConstitutionalConcernLevel;
 use App\Domain\Election\Security\DeviceTrustContext;
+use App\Domain\Election\Security\EvidenceWeightCategory;
 use App\Domain\Election\Security\FingerprintMatchType;
 use App\Domain\Election\Security\NetworkTrustEvidence;
-use App\Domain\Election\Security\TrustLevel;
 use App\Domain\Election\Security\TrustValidityScope;
 use App\Domain\Election\Security\VerificationAttestationRecord;
 use App\Domain\Election\Security\VotingSessionTrustContinuity;
@@ -53,69 +54,71 @@ class VerificationAttestationPolicyTest extends TestCase
         );
     }
 
-    public function test_not_satisfied_and_required_returns_deny(): void
+    public function test_reports_critical_concern_when_not_satisfied_and_required(): void
     {
         $policy = new VerificationAttestationPolicy();
         $ctx = $this->makeCtx($this->makeAttestation(required: true, attested: false));
 
-        $result = $policy->evaluate($ctx);
+        $finding = $policy->evaluate($ctx);
 
-        $this->assertFalse($result->trusted);
-        $this->assertEquals('verification_required', $result->reason);
+        $this->assertTrue($finding->hasConstitutionalConcern());
+        $this->assertEquals(ConstitutionalConcernLevel::HIGH, $finding->concernLevel);
+        $this->assertEquals('verification_required', $finding->constitutionalBasis);
     }
 
-    public function test_satisfied_with_registrar_returns_registrar_attested(): void
+    public function test_reports_no_concern_when_satisfied_with_registrar(): void
     {
         $policy = new VerificationAttestationPolicy();
         $ctx = $this->makeCtx($this->makeAttestation(required: true, attested: true, registrarId: 'registrar_1'));
 
-        $result = $policy->evaluate($ctx);
+        $finding = $policy->evaluate($ctx);
 
-        $this->assertTrue($result->trusted);
-        $this->assertEquals(TrustLevel::RegistrarAttested, $result->trustLevel);
+        $this->assertFalse($finding->hasConstitutionalConcern());
+        $this->assertEquals(ConstitutionalConcernLevel::NONE, $finding->concernLevel);
     }
 
-    public function test_satisfied_without_registrar_returns_attested(): void
+    public function test_reports_no_concern_when_satisfied_without_registrar(): void
     {
         $policy = new VerificationAttestationPolicy();
         $ctx = $this->makeCtx($this->makeAttestation(required: true, attested: true));
 
-        $result = $policy->evaluate($ctx);
+        $finding = $policy->evaluate($ctx);
 
-        $this->assertTrue($result->trusted);
-        $this->assertEquals(TrustLevel::Attested, $result->trustLevel);
+        $this->assertFalse($finding->hasConstitutionalConcern());
+        $this->assertEquals(ConstitutionalConcernLevel::NONE, $finding->concernLevel);
     }
 
-    public function test_not_required_returns_unverified_allow(): void
+    public function test_reports_no_concern_when_not_required_and_not_attested(): void
     {
         $policy = new VerificationAttestationPolicy();
         $ctx = $this->makeCtx($this->makeAttestation(required: false, attested: false));
 
-        $result = $policy->evaluate($ctx);
+        $finding = $policy->evaluate($ctx);
 
-        $this->assertTrue($result->trusted);
-        $this->assertEquals(TrustLevel::Unverified, $result->trustLevel);
+        $this->assertFalse($finding->hasConstitutionalConcern());
+        $this->assertEquals(ConstitutionalConcernLevel::NONE, $finding->concernLevel);
     }
 
-    public function test_revoked_attestation_returns_deny(): void
+    public function test_reports_critical_concern_when_attestation_revoked(): void
     {
         $policy = new VerificationAttestationPolicy();
         $ctx = $this->makeCtx($this->makeAttestation(required: true, attested: true, revoked: true));
 
-        $result = $policy->evaluate($ctx);
+        $finding = $policy->evaluate($ctx);
 
-        $this->assertFalse($result->trusted);
-        $this->assertEquals('attestation_revoked', $result->reason);
+        $this->assertTrue($finding->hasConstitutionalConcern());
+        $this->assertEquals(ConstitutionalConcernLevel::CRITICAL, $finding->concernLevel);
+        $this->assertEquals('attestation_revoked', $finding->constitutionalBasis);
     }
 
-    public function test_policy_outcome_recorded_in_sequence(): void
+    public function test_finding_includes_policy_identifier(): void
     {
         $policy = new VerificationAttestationPolicy();
         $ctx = $this->makeCtx($this->makeAttestation(required: true, attested: true, registrarId: 'r1'));
 
-        $result = $policy->evaluate($ctx);
+        $finding = $policy->evaluate($ctx);
 
-        $this->assertArrayHasKey('verification_attestation_policy', $result->policyOutcomeSequence);
+        $this->assertEquals('verification', $finding->policyIdentifier);
     }
 
     public function test_policies_do_not_call_each_other(): void

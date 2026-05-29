@@ -7,7 +7,6 @@ use App\Application\Election\Security\TrustCapabilityContext;
 use App\Domain\Election\Security\DeviceTrustContext;
 use App\Domain\Election\Security\FingerprintMatchType;
 use App\Domain\Election\Security\NetworkTrustEvidence;
-use App\Domain\Election\Security\OverlayInfluence;
 use App\Domain\Election\Security\VerificationAttestationRecord;
 use App\Domain\Election\Security\VotingSessionTrustContinuity;
 use App\Models\Election;
@@ -36,7 +35,7 @@ class EmergencyConditionOverlayTest extends TestCase
         );
     }
 
-    public function test_evaluate_returns_continue_when_no_overlay_active(): void
+    public function test_reports_stable_when_overlay_inactive(): void
     {
         $overlay = new EmergencyConditionOverlay();
         $election = Election::factory()->create(['trust_overlay_active' => false]);
@@ -44,10 +43,11 @@ class EmergencyConditionOverlayTest extends TestCase
 
         $signal = $overlay->evaluate($ctx);
 
-        $this->assertEquals(OverlayInfluence::CONTINUE_UNCHANGED, $signal->influence);
+        $this->assertEquals('CONTEXT_STABLE', $signal->signalType);
+        $this->assertEquals('emergency_condition', $signal->overlayIdentifier);
     }
 
-    public function test_evaluate_returns_constitutional_review_when_overlay_active(): void
+    public function test_reports_evidence_inconsistent_when_overlay_active(): void
     {
         $overlay = new EmergencyConditionOverlay();
         $election = Election::factory()->create([
@@ -58,8 +58,8 @@ class EmergencyConditionOverlayTest extends TestCase
 
         $signal = $overlay->evaluate($ctx);
 
-        $this->assertEquals(OverlayInfluence::REQUIRE_CONSTITUTIONAL_REVIEW, $signal->influence);
-        $this->assertTrue($signal->requiresConstitutionalReview());
+        $this->assertEquals('EVIDENCE_INCONSISTENT', $signal->signalType);
+        $this->assertEquals('emergency_condition', $signal->overlayIdentifier);
     }
 
     public function test_evaluate_never_mutates_context(): void

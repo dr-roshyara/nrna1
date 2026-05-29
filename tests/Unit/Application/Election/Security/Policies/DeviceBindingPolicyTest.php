@@ -4,6 +4,7 @@ namespace Tests\Unit\Application\Election\Security\Policies;
 
 use App\Application\Election\Security\Policies\DeviceBindingPolicy;
 use App\Application\Election\Security\TrustCapabilityContext;
+use App\Domain\Election\Security\ConstitutionalConcernLevel;
 use App\Domain\Election\Security\DeviceTrustContext;
 use App\Domain\Election\Security\FingerprintMatchType;
 use App\Domain\Election\Security\NetworkTrustEvidence;
@@ -37,7 +38,7 @@ class DeviceBindingPolicyTest extends TestCase
         );
     }
 
-    public function test_not_required_always_allows(): void
+    public function test_reports_no_concern_when_fingerprint_not_required(): void
     {
         $policy = new DeviceBindingPolicy();
         $ctx = $this->makeCtx(new DeviceTrustContext(
@@ -46,12 +47,13 @@ class DeviceBindingPolicyTest extends TestCase
             captureMethod: 'none', volatility: 'stable',
         ));
 
-        $result = $policy->evaluate($ctx);
+        $finding = $policy->evaluate($ctx);
 
-        $this->assertTrue($result->trusted);
+        $this->assertFalse($finding->hasConstitutionalConcern());
+        $this->assertEquals(ConstitutionalConcernLevel::NONE, $finding->concernLevel);
     }
 
-    public function test_exact_match_allows(): void
+    public function test_reports_no_concern_when_fingerprint_exact_match(): void
     {
         $policy = new DeviceBindingPolicy();
         $ctx = $this->makeCtx(new DeviceTrustContext(
@@ -60,12 +62,13 @@ class DeviceBindingPolicyTest extends TestCase
             captureMethod: 'canvas', volatility: 'stable',
         ));
 
-        $result = $policy->evaluate($ctx);
+        $finding = $policy->evaluate($ctx);
 
-        $this->assertTrue($result->trusted);
+        $this->assertFalse($finding->hasConstitutionalConcern());
+        $this->assertEquals(ConstitutionalConcernLevel::NONE, $finding->concernLevel);
     }
 
-    public function test_no_match_when_required_denies(): void
+    public function test_reports_concern_when_no_match_and_required(): void
     {
         $policy = new DeviceBindingPolicy();
         $ctx = $this->makeCtx(new DeviceTrustContext(
@@ -74,13 +77,13 @@ class DeviceBindingPolicyTest extends TestCase
             captureMethod: 'canvas', volatility: 'stable',
         ));
 
-        $result = $policy->evaluate($ctx);
+        $finding = $policy->evaluate($ctx);
 
-        $this->assertFalse($result->trusted);
-        $this->assertEquals('device_attestation_failed', $result->reason);
+        $this->assertTrue($finding->hasConstitutionalConcern());
+        $this->assertEquals('device_attestation_failed', $finding->constitutionalBasis);
     }
 
-    public function test_no_match_when_not_required_allows(): void
+    public function test_reports_no_concern_when_no_match_but_not_required(): void
     {
         $policy = new DeviceBindingPolicy();
         $ctx = $this->makeCtx(new DeviceTrustContext(
@@ -89,8 +92,9 @@ class DeviceBindingPolicyTest extends TestCase
             captureMethod: 'canvas', volatility: 'stable',
         ));
 
-        $result = $policy->evaluate($ctx);
+        $finding = $policy->evaluate($ctx);
 
-        $this->assertTrue($result->trusted);
+        $this->assertFalse($finding->hasConstitutionalConcern());
+        $this->assertEquals(ConstitutionalConcernLevel::NONE, $finding->concernLevel);
     }
 }

@@ -9,7 +9,8 @@
     "current_voter": "Aktueller Wähler:",
     "region": "Region:",
     "voting_time_remaining": "Sie haben 30 Minuten zum Abstimmen",
-    "progress": "Fortschritt"
+    "progress": "Fortschritt",
+    "of_count": "von {n}"
   },
   "demo_notice": {
     "title": "Demo-Abstimmungsmodus",

@@ -159,7 +159,7 @@
     "btn_resuming": "पुनः सुरु गरिँदैछ... | Resuming..."
   },
   "governance_actions": {
-    "title": "शासन कारबाही | Governance Actions",
+    "title": "जीवनचक्र कारबाही | Lifecycle Actions",
     "submit_for_approval": "अनुमोदनको लागि सबमिट गर्नुहोस् | Submit for Approval",
     "submit_for_approval_auto": "सबमिट गर्नुहोस् (स्वचालित-अनुमोदित) | Submit (Auto-Approved)",
     "submit_hint": "→ पुनरावलोकन सुरु गर्नुहोस् | → Begin review",
@@ -168,7 +168,7 @@
     "begin_setup_hint": "→ कन्फिगरेशन सुरु गर्नुहोस् | → Start configuration"
   },
   "phase_controls": {
-    "title": "चरण नियंत्रण | Phase Controls",
+    "title": "चरण संक्रमण | Phase Transitions",
     "complete_admin": "प्रशासन पूरा गर्नुहोस् | Complete Administration",
     "open_voting": "मतदान खोल्नुहोस् | Open Voting",
     "open_voting_hint": "→ मतदान सुरु गर्नुहोस् | → Begin voting",
@@ -176,7 +176,7 @@
     "close_voting_hint": "→ मतदान समाप्त गर्नुहोस् | → End voting"
   },
   "governance_section": {
-    "title": "शासन | Governance",
+    "title": "प्रशासनिक नियन्त्रण | Administrative Controls",
     "suspend": "निर्वाचन स्थगित गर्नुहोस् | Suspend Election"
   },
   "empty_state": {
@@ -209,17 +209,17 @@
   "resume_confirmation": "यो निर्वाचन पुनः सुरु गर्नुहोस्? सबै शासन अपरेशनहरू फेरि उपलब्ध हुनेछन्। | Resume this election? All governance operations will become available again.",
   "suspend_modal": {
     "title": "निर्वाचन स्थगित गर्नुहोस् | Suspend Election",
-    "description": "यो कार्यले पुनः सुरु गर्नु बाहेक सबै शासन अपरेशनहरू फ्रिज गर्दछ। | This action freezes all governance operations except resume.",
-    "warning": "यो शासन हस्तक्षेप हो, सामान्य अवस्था संक्रमण होइन। | This is a governance intervention, NOT an ordinary state transition.",
+    "description": "यसले सबै निर्वाचन सञ्चालनहरू अस्थायी रूपमा रोक्दछ। | This temporarily pauses all election operations.",
+    "warning": "स्थगनको समयमा मतदाताहरूले मत हाल्न सक्दैनन्। यो कारबाही किन गरिएको हो सो कारण क्षेत्रमा दर्ता गर्नुहोस् — यो शासन लेखापरीक्षा ट्रेलमा रेकर्ड गरिन्छ। | Voters cannot cast votes while suspended. Record the reason why this action was taken — it is recorded in the governance audit trail.",
     "reason_label": "स्थगनको कारण | Reason for Suspension",
     "reason_placeholder": "यस निर्वाचन को स्थगन गर्न पर को वर्णन गर्नुहोस्... | Describe why this election must be suspended...",
     "reason_hint": "न्यूनतम १० वर्ण। यो शासन लेखापरीक्षा ट्रेलमा रेकर्ड गरिएको छ। | Minimum 10 characters. This is recorded in the governance audit trail.",
     "category_label": "स्थगन श्रेणी | Suspension Category",
-    "category_general": "सामान्य | General",
-    "category_misconduct": "दुरव्यवहार | Misconduct",
-    "category_emergency": "आपतकाल | Emergency",
-    "category_investigation": "अनुसन्धान | Investigation",
-    "category_other": "अन्य | Other",
+    "category_placeholder": "श्रेणी छान्नुहोस् | Select a category",
+    "category_operational_pause": "परिचालन विराम | Operational Pause",
+    "category_administrative_review": "प्रशासनिक समीक्षा | Administrative Review",
+    "category_dispute_hold": "विवाद रोक | Dispute Hold",
+    "category_technical_issue": "प्राविधिक समस्या | Technical Issue",
     "btn_cancel": "रद्द गर्नुहोस् | Cancel",
     "btn_suspend": "निर्वाचन स्थगित गर्नुहोस् | Suspend Election",
     "btn_suspending": "स्थगित हरिँदैछ... | Suspending..."

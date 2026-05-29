@@ -30,6 +30,10 @@ class Post extends Model
         'position_order',
     ];
 
+    protected $casts = [
+        'is_national_wide' => 'boolean',
+    ];
+
     /**
      * Scope: Get posts for a specific organisation
      */

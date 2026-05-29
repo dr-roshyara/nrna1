@@ -45,9 +45,9 @@ readonly class CapabilityParitySnapshot
 
         /**
          * Overlay governance influence: operational suspensions, velocity blocks, review requirements.
-         * Enum value from OverlayInfluence domain type; null means no overlay was active.
+         * Enum value from OverlaySignalCategory domain type; null means no overlay was active.
          */
-        public ?string $overlayInfluence,
+        public ?string $OverlaySignalCategory,
 
         /**
          * Authorization protocol requirement: single-code or dual-code ballot authorization.
@@ -87,7 +87,7 @@ readonly class CapabilityParitySnapshot
             && $this->deviceLegitimate === $other->deviceLegitimate
             && $this->verificationLegitimate === $other->verificationLegitimate
             && $this->trustLegitimate === $other->trustLegitimate
-            && $this->overlayInfluence === $other->overlayInfluence
+            && $this->OverlaySignalCategory === $other->OverlaySignalCategory
             && $this->authorizationProtocol === $other->authorizationProtocol
             && $this->lifecycleState === $other->lifecycleState
             && $this->participationAllowed === $other->participationAllowed;
@@ -115,8 +115,8 @@ readonly class CapabilityParitySnapshot
         if ($this->trustLegitimate !== $other->trustLegitimate) {
             $divergences[] = 'trustLegitimate';
         }
-        if ($this->overlayInfluence !== $other->overlayInfluence) {
-            $divergences[] = 'overlayInfluence';
+        if ($this->OverlaySignalCategory !== $other->OverlaySignalCategory) {
+            $divergences[] = 'OverlaySignalCategory';
         }
         if ($this->authorizationProtocol !== $other->authorizationProtocol) {
             $divergences[] = 'authorizationProtocol';

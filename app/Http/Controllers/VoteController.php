@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Cache;
 use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
+use App\Application\Election\Security\ConstitutionalLegitimacyDecision;
 use App\Application\Election\Security\TrustPolicyEvaluator;
 
 class VoteController extends Controller
@@ -56,6 +57,7 @@ class VoteController extends Controller
      */
     public function __construct(
         private TrustPolicyEvaluator $trustEvaluator,
+        private ConstitutionalLegitimacyDecision $legitimacyDecision,
     )
     {
         $this->in_code = '';
@@ -1410,7 +1412,73 @@ private function validate_vote_selections($vote_data)
  * @param array $selections
  * @return bool
  */
-private function has_valid_selections($selections)
+private function trackSovereigntyDivergence(
+        \App\Domain\Election\Security\LegitimacyOutcome $constitutionalOutcome,
+        \App\Domain\Election\Security\LegitimacyOutcome $legacyOutcome,
+        \App\Domain\Election\Security\TrustEvaluationEnvelope $envelope,
+        ?\App\Models\Election $election,
+        ?int $userId,
+        ?string $divergenceReason = null,
+    ): void {
+        $matched = $constitutionalOutcome === $legacyOutcome;
+
+        $matched = $constitutionalOutcome === $legacyOutcome;
+
+        // Automatically classify divergence type and severity from outcome pair
+        $divergenceType = \App\Domain\Election\Security\DivergenceType::classify(
+            legacy: $legacyOutcome,
+            constitutional: $constitutionalOutcome,
+        );
+        $severity = \App\Domain\Election\Security\DivergenceSeverity::fromDivergence(
+            type: $divergenceType,
+            legacy: $legacyOutcome,
+            constitutional: $constitutionalOutcome,
+        );
+
+        $record = new \App\Domain\Election\Security\SovereigntyDivergenceRecord(
+            divergenceType: $divergenceType,
+            legacyOutcome: $legacyOutcome,
+            constitutionalOutcome: $constitutionalOutcome,
+            matched: $matched,
+            severity: $severity,
+            snapshotHash: $envelope->eligibility?->eligibilityHash
+                ?? $envelope->snapshot->trustProvenance
+                    ? hash('sha256', serialize($envelope->snapshot->trustProvenance))
+                    : 'pre-snapshot',
+            context: [
+                'election_id' => $election?->id,
+                'user_id' => $userId,
+                'route' => request()->route()?->getName(),
+            ],
+            observedAt: new \DateTimeImmutable(),
+            divergenceReason: $matched ? null : $divergenceReason,
+        );
+
+        // Log divergence with severity-specific level
+        $logLevel = match ($severity) {
+            \App\Domain\Election\Security\DivergenceSeverity::Existential,
+            \App\Domain\Election\Security\DivergenceSeverity::Critical => 'critical',
+            \App\Domain\Election\Security\DivergenceSeverity::High => 'warning',
+            \App\Domain\Election\Security\DivergenceSeverity::Warning => 'info',
+            \App\Domain\Election\Security\DivergenceSeverity::Info => 'debug',
+        };
+
+        if (!$matched) {
+            \Illuminate\Support\Facades\Log::channel('voting_security')->log($logLevel, 'Sovereignty divergence detected', [
+                'divergence_type' => $record->divergenceType->value,
+                'severity' => $record->severity->value,
+                'legacy_outcome' => $record->legacyOutcome->value,
+                'constitutional_outcome' => $record->constitutionalOutcome->value,
+                'snapshot_hash' => $record->snapshotHash,
+                'election_id' => $election?->id,
+                'user_id' => $userId,
+                'blocks_transfer' => $severity->blocksTransfer(),
+                'divergence_reason' => $divergenceReason,
+            ]);
+        }
+    }
+
+    private function has_valid_selections($selections)
 {
     foreach ($selections as $selection) {
         if ($selection) {
@@ -1451,33 +1519,113 @@ private function has_valid_selections($selections)
         $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
 
+        // PHASE C.3b: Constitutional Evidence Population (Real Elections)
+        // Query registered IP from user account (for real elections)
+        $registeredIpHash = null;
+        if ($auth_user && $auth_user->voting_ip) {
+            // Use same privacy policy instance for canonical hashing (determinism)
+            $privacyPolicy = app(\App\Domain\Election\Security\TrustEvidencePrivacyPolicy::class);
+            $registeredIpHash = $privacyPolicy->hashIp($auth_user->voting_ip, $election->id);
+        }
+
+        // Count participation from current IP in this election (election-scoped density)
+        // Integer-only deterministic comparison: no probabilistic elements
+        $currentIp = request()->ip();
+        $votesFromThisIp = \App\Models\Code::where('election_id', $election->id)
+            ->where('client_ip', $currentIp)
+            ->where('has_voted', true)
+            ->count();
+
         // PHASE D.5: Constitutional Trust Evaluation
         // Evaluate trust before any voting checks (parallel with legacy IP logic)
+        // Now includes registered IP hash and participation density evidence
         $trustEnvelope = $this->trustEvaluator->evaluate(
             election: $election,
             user: $auth_user,
             rawIp: request()->ip(),
             rawFingerprint: $request->input('device_fingerprint'),
             sessionId: $request->session()->getId(),
+            registeredIpHash: $registeredIpHash,
+            votesFromThisIp: $votesFromThisIp,
+        );
+
+        // PHASE D.1: Derive constitutional outcome from trust evaluation
+        // Map VotingTrustResult to sovereign LegitimacyOutcome via exclusive resolver authority
+        $constitutionalOutcome = $this->legitimacyDecision->decide(
+            $trustEnvelope->result
         );
 
         // Log trust evaluation result for audit trail
         \Log::channel('voting_audit')->info('Trust evaluation completed in vote submission', [
             'election_id' => $election->id,
             'user_id' => $auth_user->id,
-            'trust_result' => $trustEnvelope->trusted ? 'allowed' : $trustEnvelope->reason,
+            'trust_result' => $trustEnvelope->result->evaluationState->value,
+            'constitutional_outcome' => $constitutionalOutcome->value,
             'ip' => request()->ip(),
         ]);
+
+        // ── D.0.3a: Constitutional Primary Enforcement ──
+        // The constitutional legitimacy outcome is the PRIMARY enforcement gate.
+        // If the outcome is not Allowed, the vote is blocked here.
+        // Legacy checks (canVote(), membership, IP) become secondary defense-in-depth.
+        // Demo elections are excluded to preserve testability.
+        if ($constitutionalOutcome !== \App\Domain\Election\Security\LegitimacyOutcome::Allowed
+            && $election->type !== 'demo') {
+
+            $denialReason = match ($constitutionalOutcome) {
+                \App\Domain\Election\Security\LegitimacyOutcome::Denied
+                    => 'Your vote cannot be submitted based on constitutional verification. Please contact the election committee.',
+                \App\Domain\Election\Security\LegitimacyOutcome::Deferred
+                    => 'Your vote requires additional verification before submission. Please contact the election committee.',
+                \App\Domain\Election\Security\LegitimacyOutcome::Investigate
+                    => 'Your vote has been flagged for manual review. Please contact the election committee.',
+                default => 'Vote submission blocked by constitutional verification.',
+            };
+
+            \Log::warning('D.0.3a: Constitutional evaluation denied vote submission', [
+                'user_id' => $auth_user->id,
+                'election_id' => $election->id,
+                'constitutional_outcome' => $constitutionalOutcome->value,
+                'trust_state' => $trustEnvelope->result->evaluationState->value,
+                'reason' => $trustEnvelope->result->reason,
+                'policy_sequence' => $trustEnvelope->result->policyOutcomeSequence,
+            ]);
+
+            // Record divergence: constitutional denies (legacy outcome unknown yet)
+            $this->trackSovereigntyDivergence(
+                constitutionalOutcome: $constitutionalOutcome,
+                legacyOutcome: \App\Domain\Election\Security\LegitimacyOutcome::Denied,
+                envelope: $trustEnvelope,
+                election: $election,
+                userId: $auth_user?->id,
+                divergenceReason: 'D.0.3a constitutional gate denied: ' . $trustEnvelope->result->reason,
+            );
+
+            DB::rollBack();
+            return back()->withErrors(['vote' => $denialReason]);
+        }
 
         // SSOT Check: Verify election state allows voting (Phase 3)
         $lifecycle = ElectionLifecycle::of($election);
         if (!$lifecycle->canVote()) {
+            // ── D.1 Shadow divergence tracking ──
+            // Legacy gate denies while constitutional path runs in parallel
+            $this->trackSovereigntyDivergence(
+                constitutionalOutcome: $constitutionalOutcome,
+                legacyOutcome: \App\Domain\Election\Security\LegitimacyOutcome::Denied,
+                envelope: $trustEnvelope,
+                election: $election,
+                userId: $auth_user?->id,
+                divergenceReason: 'Legacy canVote() denied: ' . ($lifecycle->blockedReason() ?? 'unknown'),
+            );
+
             DB::rollBack();
             Log::warning('Vote submission blocked by election state', [
                 'user_id' => $auth_user->id,
                 'election_id' => $election->id,
                 'election_state' => $lifecycle->state()->value,
                 'blocked_reason' => $lifecycle->blockedReason(),
+                'constitutional_outcome' => $constitutionalOutcome->value,
             ]);
             return back()->withErrors([
                 'vote' => 'Voting is not currently allowed: ' . $lifecycle->blockedReason()
@@ -1486,6 +1634,16 @@ private function has_valid_selections($selections)
 
         // Layer 0: FRESH membership check — no cache, inside active transaction
         if ($redirect = $this->ensureVoterMembership($election, $auth_user, false, true)) {
+            // ── D.1 Shadow divergence tracking ──
+            $this->trackSovereigntyDivergence(
+                constitutionalOutcome: $constitutionalOutcome,
+                legacyOutcome: \App\Domain\Election\Security\LegitimacyOutcome::Denied,
+                envelope: $trustEnvelope,
+                election: $election,
+                userId: $auth_user?->id,
+                divergenceReason: 'Legacy ensureVoterMembership() denied',
+            );
+
             return $redirect;
         }
 

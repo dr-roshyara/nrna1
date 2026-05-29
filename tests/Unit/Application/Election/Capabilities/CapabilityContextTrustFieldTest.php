@@ -3,12 +3,15 @@
 namespace Tests\Unit\Application\Election\Capabilities;
 
 use App\Application\Election\Capabilities\CapabilityContext;
-use App\Application\Election\Security\ConstitutionalTrustSnapshot;
 use App\Domain\Election\Enum\ElectionLifecycleState;
-use App\Domain\Election\Security\OverlayInfluenceContext;
-use App\Domain\Election\Security\TrustEvaluationEnvelope;
-use App\Domain\Election\Security\TrustLevel;
-use App\Domain\Election\Security\VotingTrustResult;
+use App\Domain\Election\Security\Simplified\ConstitutionalObservationContext;
+use App\Domain\Election\Security\Simplified\EvaluationEnvelope;
+use App\Domain\Election\Security\Simplified\EvidenceEvaluationResult;
+use App\Domain\Election\Security\Simplified\EvidenceEvaluationState;
+use App\Domain\Election\Security\Simplified\EvidenceClassification;
+use App\Domain\Election\Security\Simplified\EvaluationReasonCode;
+use App\Domain\Election\Security\Simplified\OverlaySignal;
+use App\Domain\Election\Security\Simplified\EvidenceSnapshot;
 use PHPUnit\Framework\TestCase;
 
 class CapabilityContextTrustFieldTest extends TestCase
@@ -26,12 +29,28 @@ class CapabilityContextTrustFieldTest extends TestCase
         $this->assertNull($context->trust);
     }
 
-    public function test_trust_field_accepts_trust_evaluation_envelope(): void
+    public function test_trust_field_accepts_evaluation_envelope(): void
     {
-        $envelope = new TrustEvaluationEnvelope(
-            VotingTrustResult::allow(TrustLevel::Attested, [], []),
-            OverlayInfluenceContext::noInfluence(),
-            new ConstitutionalTrustSnapshot(true, TrustLevel::Attested, 'single_code', false, false, true, 'none', true, null, null, '', []),
+        $envelope = new EvaluationEnvelope(
+            new EvidenceEvaluationResult(
+                evaluationState: EvidenceEvaluationState::SUFFICIENT_EVIDENCE,
+                classification: EvidenceClassification::Attested,
+                reason: EvaluationReasonCode::ALL_POLICIES_PASSED,
+                auditContext: [],
+                policyOutcomeSequence: [],
+            ),
+            new ConstitutionalObservationContext([
+                OverlaySignal::contextStable('test_overlay', 'Normal operation', []),
+            ]),
+            new EvidenceSnapshot(
+                evaluationState: EvidenceEvaluationState::SUFFICIENT_EVIDENCE,
+                classification: EvidenceClassification::Attested,
+                attestationValid: true,
+                continuityPreserved: true,
+                activeOverlay: null,
+                denialReason: '',
+                evidenceProvenance: [],
+            ),
         );
 
         $context = new CapabilityContext(
@@ -61,10 +80,26 @@ class CapabilityContextTrustFieldTest extends TestCase
 
     public function test_voting_context_carries_full_envelope(): void
     {
-        $envelope = new TrustEvaluationEnvelope(
-            VotingTrustResult::allow(TrustLevel::Attested, ['key' => 'value'], []),
-            OverlayInfluenceContext::noInfluence(),
-            new ConstitutionalTrustSnapshot(true, TrustLevel::Attested, 'single_code', false, false, true, 'none', true, null, null, '', []),
+        $envelope = new EvaluationEnvelope(
+            new EvidenceEvaluationResult(
+                evaluationState: EvidenceEvaluationState::SUFFICIENT_EVIDENCE,
+                classification: EvidenceClassification::Attested,
+                reason: EvaluationReasonCode::ALL_POLICIES_PASSED,
+                auditContext: ['key' => 'value'],
+                policyOutcomeSequence: [],
+            ),
+            new ConstitutionalObservationContext([
+                OverlaySignal::contextStable('test_overlay', 'Normal operation', []),
+            ]),
+            new EvidenceSnapshot(
+                evaluationState: EvidenceEvaluationState::SUFFICIENT_EVIDENCE,
+                classification: EvidenceClassification::Attested,
+                attestationValid: true,
+                continuityPreserved: true,
+                activeOverlay: null,
+                denialReason: '',
+                evidenceProvenance: [],
+            ),
         );
 
         $context = new CapabilityContext(
@@ -77,7 +112,7 @@ class CapabilityContextTrustFieldTest extends TestCase
         );
 
         $this->assertNotNull($context->trust);
-        $this->assertTrue($context->trust->result->trusted);
+        $this->assertEquals(EvidenceEvaluationState::SUFFICIENT_EVIDENCE, $context->trust->result->evaluationState);
         $this->assertEquals('value', $context->trust->result->auditContext['key']);
     }
 }

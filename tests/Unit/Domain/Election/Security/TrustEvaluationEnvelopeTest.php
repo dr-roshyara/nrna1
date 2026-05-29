@@ -3,21 +3,29 @@
 namespace Tests\Unit\Domain\Election\Security;
 
 use App\Application\Election\Security\ConstitutionalTrustSnapshot;
-use App\Domain\Election\Security\OverlayInfluenceContext;
+use App\Domain\Election\Security\Simplified\ConstitutionalObservationContext;
 use App\Domain\Election\Security\TrustEvaluationEnvelope;
+use App\Domain\Election\Security\TrustEvaluationState;
 use App\Domain\Election\Security\VotingTrustResult;
 use PHPUnit\Framework\TestCase;
 
 class TrustEvaluationEnvelopeTest extends TestCase
 {
-    public function test_envelope_bundles_result_and_overlay_influence(): void
+    /**
+     * D.R.2 Migration Note:
+     * Overlay influence ontology intentionally replaced by observational constitutional semantics.
+     * Old: OverlayInfluenceContext (encoded overlay authority implication)
+     * New: ConstitutionalObservationContext (pure observation, resolver-exclusive interpretation)
+     */
+    public function test_envelope_bundles_result_and_overlay_observations(): void
     {
-        $result = VotingTrustResult::allow(
+        $result = VotingTrustResult::sufficientEvidence(
             \App\Domain\Election\Security\TrustLevel::Attested,
             [],
             []
         );
-        $overlay = OverlayInfluenceContext::noInfluence();
+        // Constitutional observations: empty set (no overlay signals)
+        $observations = ConstitutionalObservationContext::empty();
         $snapshot = new ConstitutionalTrustSnapshot(
             true,
             \App\Domain\Election\Security\TrustLevel::Attested,
@@ -33,22 +41,27 @@ class TrustEvaluationEnvelopeTest extends TestCase
             [],
         );
 
-        $envelope = new TrustEvaluationEnvelope($result, $overlay, $snapshot);
+        $envelope = new TrustEvaluationEnvelope($result, $observations, $snapshot);
 
         $this->assertSame($result, $envelope->result);
-        $this->assertSame($overlay, $envelope->overlayInfluence);
+        $this->assertSame($observations, $envelope->overlayObservations);
         $this->assertSame($snapshot, $envelope->snapshot);
     }
 
+    /**
+     * D.R.2 Constitutional Principle:
+     * TrustEvaluationEnvelope is purely observational/transportational.
+     * It carries evidence to the resolver, never derives authority.
+     */
     public function test_envelope_has_no_authority_deriving_methods(): void
     {
         $envelope = new TrustEvaluationEnvelope(
-            VotingTrustResult::allow(
+            VotingTrustResult::sufficientEvidence(
                 \App\Domain\Election\Security\TrustLevel::Attested,
                 [],
                 []
             ),
-            OverlayInfluenceContext::noInfluence(),
+            ConstitutionalObservationContext::empty(),
             new ConstitutionalTrustSnapshot(true, \App\Domain\Election\Security\TrustLevel::Attested, 'single_code', false, false, true, 'none', true, null, null, '', []),
         );
 
@@ -60,36 +73,49 @@ class TrustEvaluationEnvelopeTest extends TestCase
         $this->assertFalse(method_exists($envelope, 'recalculate'));
     }
 
+    /**
+     * Envelope immutability: evidence bundling is read-only.
+     * Constitutional invariant: observations cannot be mutated in transit.
+     */
     public function test_envelope_is_readonly(): void
     {
         $envelope = new TrustEvaluationEnvelope(
-            VotingTrustResult::allow(
+            VotingTrustResult::sufficientEvidence(
                 \App\Domain\Election\Security\TrustLevel::Attested,
                 [],
                 []
             ),
-            OverlayInfluenceContext::noInfluence(),
+            ConstitutionalObservationContext::empty(),
             new ConstitutionalTrustSnapshot(true, \App\Domain\Election\Security\TrustLevel::Attested, 'single_code', false, false, true, 'none', true, null, null, '', []),
         );
 
         $this->expectException(\Error::class);
-        $envelope->result = VotingTrustResult::deny('test', [], []);
+        $envelope->result = VotingTrustResult::insufficientEvidence('test', \App\Domain\Election\Security\TrustLevel::Unverified, [], []);
     }
 
-    public function test_envelope_trust_result_and_overlay_accessible_independently(): void
+    /**
+     * Envelope evidence accessibility: result, observations, snapshot remain independent.
+     * This preserves evidence plurality semantics (not collapsed into scalar influence).
+     */
+    public function test_envelope_result_and_observations_accessible_independently(): void
     {
-        $result = VotingTrustResult::allow(
+        $result = VotingTrustResult::sufficientEvidence(
             \App\Domain\Election\Security\TrustLevel::Attested,
             ['key' => 'value'],
             ['policy' => 'passed']
         );
-        $overlay = OverlayInfluenceContext::noInfluence();
+        $observations = ConstitutionalObservationContext::empty();
         $snapshot = new ConstitutionalTrustSnapshot(true, \App\Domain\Election\Security\TrustLevel::Attested, 'single_code', false, false, true, 'none', true, null, null, '', []);
 
-        $envelope = new TrustEvaluationEnvelope($result, $overlay, $snapshot);
+        $envelope = new TrustEvaluationEnvelope($result, $observations, $snapshot);
 
-        $this->assertTrue($envelope->result->trusted);
+        // Result: resolver's verdict
+        $this->assertEquals(TrustEvaluationState::SUFFICIENT_EVIDENCE, $envelope->result->evaluationState);
         $this->assertEquals('value', $envelope->result->auditContext['key']);
-        $this->assertFalse($envelope->overlayInfluence->hasInfluence);
+
+        // Observations: evidence signals (empty in this case = no observational signals)
+        // Constitutional point: observations form a SET, not a scalar reduction
+        $this->assertNotNull($envelope->overlayObservations);
+        $this->assertTrue($envelope->overlayObservations->isEmpty());
     }
 }

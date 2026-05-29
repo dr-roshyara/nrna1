@@ -2,65 +2,76 @@
 
 namespace Tests\Unit\Domain\Election\Security;
 
-use App\Domain\Election\Security\OverlayInfluence;
+use App\Domain\Election\Security\ConstitutionalConcernLevel;
+use App\Domain\Election\Security\EvidenceWeightCategory;
 use App\Domain\Election\Security\OverlaySignal;
+use App\Domain\Election\Security\RecommendedProceduralPath;
 use App\Domain\Election\Security\TrustLevel;
 use PHPUnit\Framework\TestCase;
 
 class OverlaySignalTest extends TestCase
 {
-    public function test_continue_signal_has_continue_unchanged_influence(): void
+    public function test_no_influence_signal_returns_all_neutral_values(): void
     {
-        $signal = OverlaySignal::continue('test_overlay');
+        $signal = OverlaySignal::noInfluence('test_overlay');
 
-        $this->assertEquals(OverlayInfluence::CONTINUE_UNCHANGED, $signal->influence);
+        $this->assertEquals(ConstitutionalConcernLevel::NONE, $signal->concernLevel);
+        $this->assertEquals(EvidenceWeightCategory::STRONG, $signal->evidenceWeight);
+        $this->assertEquals(RecommendedProceduralPath::CONTINUE, $signal->proceduralPath);
         $this->assertEquals('test_overlay', $signal->overlayIdentifier);
+        $this->assertNull($signal->suggestedElevatedLevel);
     }
 
-    public function test_require_constitutional_review_returns_true(): void
+    public function test_defer_to_governance_signal_indicates_review_required(): void
     {
         $signal = new OverlaySignal(
-            OverlayInfluence::REQUIRE_CONSTITUTIONAL_REVIEW,
+            ConstitutionalConcernLevel::CRITICAL,
+            EvidenceWeightCategory::STRONG,
+            RecommendedProceduralPath::DEFER_TO_GOVERNANCE,
             'overlay_id',
             'suspicious_pattern',
             [],
             null,
-            null,
         );
 
-        $this->assertTrue($signal->requiresConstitutionalReview());
+        $this->assertEquals(RecommendedProceduralPath::DEFER_TO_GOVERNANCE, $signal->proceduralPath);
+        $this->assertEquals(ConstitutionalConcernLevel::CRITICAL, $signal->concernLevel);
     }
 
-    public function test_continue_signal_returns_false_for_requires_constitutional_review(): void
+    public function test_continue_signal_has_no_concern(): void
     {
-        $signal = OverlaySignal::continue('test');
+        $signal = OverlaySignal::noInfluence('test');
 
-        $this->assertFalse($signal->requiresConstitutionalReview());
+        $this->assertEquals(RecommendedProceduralPath::CONTINUE, $signal->proceduralPath);
+        $this->assertEquals(ConstitutionalConcernLevel::NONE, $signal->concernLevel);
     }
 
     public function test_trust_elevation_request_carries_suggested_level(): void
     {
         $signal = new OverlaySignal(
-            OverlayInfluence::TRUST_ELEVATION_REQUEST,
+            ConstitutionalConcernLevel::NONE,
+            EvidenceWeightCategory::DEFINITIVE,
+            RecommendedProceduralPath::ELEVATED_SCRUTINY,
             'registrar_elevation',
             'registrar_attestation_present',
             ['registrar_id' => 'reg_123'],
-            null,
             TrustLevel::RegistrarAttested,
         );
 
-        $this->assertEquals(TrustLevel::RegistrarAttested, $signal->suggestedElevatedTrustLevel);
+        $this->assertEquals(TrustLevel::RegistrarAttested, $signal->suggestedElevatedLevel);
+        $this->assertEquals(RecommendedProceduralPath::ELEVATED_SCRUTINY, $signal->proceduralPath);
     }
 
     public function test_signal_evidence_context_contains_no_raw_pii(): void
     {
         // Evidence context should contain hashed/minimized data
         $signal = new OverlaySignal(
-            OverlayInfluence::TRUST_EVALUATION_INCONCLUSIVE,
+            ConstitutionalConcernLevel::LOW,
+            EvidenceWeightCategory::WEAK,
+            RecommendedProceduralPath::REQUEST_REVERIFICATION,
             'ip_velocity',
             'velocity_threshold_exceeded',
             ['velocity_count' => 15, 'threshold' => 10, 'ip_hash' => 'abc123hash'],
-            null,
             null,
         );
 

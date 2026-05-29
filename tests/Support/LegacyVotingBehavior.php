@@ -72,7 +72,7 @@ final class LegacyVotingBehavior
         );
 
         // Step 5: Check overlay (legacy suspension check only)
-        $overlayInfluence = $this->checkLegacyOverlay($election);
+        $OverlaySignalCategory = $this->checkLegacyOverlay($election);
 
         // Step 6: Check lifecycle (legacy status check)
         $lifecycleState = $election->lifecycle_state ?? ElectionLifecycleState::VotingActive;
@@ -83,7 +83,7 @@ final class LegacyVotingBehavior
             deviceLegitimate: $deviceLegitimate,
             verificationLegitimate: $verificationLegitimate,
             trustLegitimate: $trustLegitimate,
-            overlayInfluence: $overlayInfluence,
+            OverlaySignalCategory: $OverlaySignalCategory,
             lifecycleState: $lifecycleState,
             election: $election,
         );
@@ -93,7 +93,7 @@ final class LegacyVotingBehavior
             deviceLegitimate: $deviceLegitimate,
             verificationLegitimate: $verificationLegitimate,
             trustLegitimate: $trustLegitimate,
-            overlayInfluence: $overlayInfluence,
+            OverlaySignalCategory: $OverlaySignalCategory,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,  // legacy uses single-code
             lifecycleState: $lifecycleState,
             participationAllowed: $participationAllowed,
@@ -248,12 +248,12 @@ final class LegacyVotingBehavior
         ?TrustLevel $deviceLegitimate,
         ?TrustLevel $verificationLegitimate,
         ?TrustLevel $trustLegitimate,
-        ?string $overlayInfluence,
+        ?string $OverlaySignalCategory,
         ElectionLifecycleState $lifecycleState,
         Election $election,
     ): string {
         // Legacy: check overlay suspension first
-        if ($overlayInfluence === 'suspended') {
+        if ($OverlaySignalCategory === 'suspended') {
             return CapabilityDenialReason::Suspended->value;
         }
 

@@ -52,7 +52,10 @@ class Election extends Model
     const STATE_RESULTS         = 'results';
 
     // ── Governance Suspension Constants ─────────────────────────────────────────
-    const SUSPENSION_CATEGORIES = ['general', 'misconduct', 'emergency', 'investigation', 'other'];
+    const SUSPENSION_CATEGORIES = [
+        'operational_pause', 'administrative_review', 'dispute_hold', 'technical_issue',
+        'general', 'misconduct', 'emergency', 'investigation', 'other', // legacy aliases
+    ];
 
     public function getRouteKeyName(): string
     {
@@ -210,6 +213,10 @@ class Election extends Model
         'settings_changes'       => 'array',
         'settings_updated_at'    => 'datetime',
         'voter_source_strategy'  => 'string',
+        // Constitutional articles (immutable after creation)
+        'security_articles_snapshot' => 'array',
+        'constitutional_hash'        => 'string',
+        'security_articles_version'  => 'string',
         // Business condition casts
         'posts_count'                        => 'integer',
         'voters_count'                       => 'integer',
@@ -1165,6 +1172,15 @@ class Election extends Model
         }
 
         return true;
+    }
+
+    /**
+     * Get lifecycle state as typed enum
+     */
+    public function lifecycleState(): \App\Domain\Election\Enum\ElectionLifecycleState
+    {
+        $stateValue = $this->state ?? 'draft';
+        return \App\Domain\Election\Enum\ElectionLifecycleState::from($stateValue);
     }
 
     /**
@@ -2155,6 +2171,24 @@ class Election extends Model
     protected static function booted(): void
     {
         static::saving(function (Election $election) {
+            // CONSTITUTIONAL INVARIANT: Prevent mutation of immutable articles after creation
+            if ($election->exists) {
+                $constitutionalFields = [
+                    'security_articles_snapshot',
+                    'constitutional_hash',
+                    'security_articles_version',
+                ];
+
+                foreach ($constitutionalFields as $field) {
+                    if ($election->isDirty($field)) {
+                        throw new \LogicException(
+                            "Constitutional field '{$field}' is immutable after election creation. "
+                            . "Constitutional law cannot be retroactively modified."
+                        );
+                    }
+                }
+            }
+
             // Auto-sync legacy dates from voting period (one-way sync)
             if ($election->isDirty('voting_starts_at') && $election->voting_starts_at) {
                 $election->start_date = $election->voting_starts_at;
@@ -2198,6 +2232,29 @@ class Election extends Model
             }
         });
         static::created(function (Election $election) {
+            // CONSTITUTIONAL SNAPSHOT: Freeze participation rules at election creation
+            $snapshot = new \App\Domain\Election\Constitution\ConstitutionalArticlesSnapshot(
+                networkBindingStrategy: $election->network_binding_strategy ?? 'ip_count',
+                maxVotesPerIp: $election->max_votes_per_ip ?? 6,
+                deviceBindingStrategy: $election->device_binding_strategy ?? 'none',
+                ballotAuthorizationProtocol: $election->ballot_authorization_protocol ?? 'single_code',
+                trustOverlayActive: $election->trust_overlay_active ?? false,
+                trustOverlayPriority: $election->trust_overlay_priority,
+                trustOverlayReason: $election->trust_overlay_reason,
+            );
+
+            // Store immutable snapshot and hash directly (bypassing mutation guard via raw query)
+            \DB::table('elections')
+                ->where('id', $election->id)
+                ->update([
+                    'security_articles_snapshot' => $snapshot->toJson(),
+                    'constitutional_hash' => $snapshot->constitutionalHash(),
+                    'security_articles_version' => 'D.2.5',
+                ]);
+
+            // Reload to reflect snapshot in memory
+            $election->refresh();
+
             Event::dispatch(new \App\Domain\Election\Events\ElectionCreated($election));
         });
     }

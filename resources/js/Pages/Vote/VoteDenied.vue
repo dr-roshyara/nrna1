@@ -94,25 +94,6 @@
                                 </h3>
                                 
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                                    <!-- IP Information -->
-                                    <div v-if="current_ip || original_ip || registered_ip">
-                                        <h4 class="font-semibold text-neutral-700 mb-2">IP Address Information</h4>
-                                        <div class="space-y-1">
-                                            <div v-if="current_ip" class="flex justify-between">
-                                                <span class="text-neutral-600">Current IP:</span>
-                                                <span class="font-mono text-neutral-800">{{ current_ip }}</span>
-                                            </div>
-                                            <div v-if="original_ip" class="flex justify-between">
-                                                <span class="text-neutral-600">Original IP:</span>
-                                                <span class="font-mono text-neutral-800">{{ original_ip }}</span>
-                                            </div>
-                                            <div v-if="registered_ip" class="flex justify-between">
-                                                <span class="text-neutral-600">Registered IP:</span>
-                                                <span class="font-mono text-neutral-800">{{ registered_ip }}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <!-- Rate Limit Information -->
                                     <div v-if="votes_from_ip || max_votes_allowed">
                                         <h4 class="font-semibold text-neutral-700 mb-2">Rate Limit Information</h4>
@@ -334,18 +315,6 @@ export default {
         },
 
         // Technical details (optional - depends on error type)
-        current_ip: {
-            type: String,
-            default: null
-        },
-        original_ip: {
-            type: String,
-            default: null
-        },
-        registered_ip: {
-            type: String,
-            default: null
-        },
         votes_from_ip: {
             type: Number,
             default: null
@@ -457,9 +426,6 @@ export default {
             }
             
             details += `Technical Details:\n`;
-            if (this.current_ip) details += `Current IP: ${this.current_ip}\n`;
-            if (this.original_ip) details += `Original IP: ${this.original_ip}\n`;
-            if (this.registered_ip) details += `Registered IP: ${this.registered_ip}\n`;
             if (this.votes_from_ip !== null) details += `Votes from IP: ${this.votes_from_ip}\n`;
             if (this.max_votes_allowed !== null) details += `Max votes allowed: ${this.max_votes_allowed}\n`;
             if (this.expired_minutes !== null) details += `Expired minutes: ${this.expired_minutes}\n`;

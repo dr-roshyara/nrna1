@@ -2,10 +2,12 @@
 
 namespace Tests\Unit\Application\Election\Security;
 
-use App\Application\Election\Security\OverlayCoordinator;
+use App\Application\Election\Security\OverlayAggregator;
 use App\Application\Election\Security\PolicySequence;
 use App\Application\Election\Security\SecurityEventRecorder;
 use App\Application\Election\Security\TrustPolicyEvaluator;
+use App\Application\Election\Security\TrustSnapshotAssembler;
+use App\Domain\Election\Security\TrustEvaluationEnvelope;
 use App\Domain\Election\Security\TrustEvidencePrivacyPolicy;
 use App\Domain\Election\Security\TrustLevel;
 use App\Domain\Election\Security\VotingTrustResult;
@@ -15,6 +17,16 @@ use Tests\TestCase;
 class TrustPolicyEvaluatorD4Test extends TestCase
 {
     use \Illuminate\Foundation\Testing\RefreshDatabase;
+
+    private function makeClock(): \App\Domain\Shared\Clock\ClockInterface
+    {
+        return new class implements \App\Domain\Shared\Clock\ClockInterface {
+            public function now(): \DateTimeImmutable
+            {
+                return new \DateTimeImmutable();
+            }
+        };
+    }
 
     private function makePolicySequence(): PolicySequence
     {
@@ -34,10 +46,11 @@ class TrustPolicyEvaluatorD4Test extends TestCase
         $election = Election::factory()->create(['trust_overlay_active' => true]);
 
         $evaluator = new TrustPolicyEvaluator(
-            new OverlayCoordinator([]),
+            new OverlayAggregator([]),
             $this->makePolicySequence(),
-            new SecurityEventRecorder(),
+            new SecurityEventRecorder($this->makeClock()),
             new TrustEvidencePrivacyPolicy(),
+            new TrustSnapshotAssembler(),
         );
 
         // Even with overlay active, should still evaluate policies
@@ -49,17 +62,19 @@ class TrustPolicyEvaluatorD4Test extends TestCase
             sessionId: 'test_session',
         );
 
-        // Should return a VotingTrustResult (not null, not affected by overlay)
-        $this->assertInstanceOf(VotingTrustResult::class, $result);
+        // Should return a TrustEvaluationEnvelope with VotingTrustResult inside
+        $this->assertInstanceOf(TrustEvaluationEnvelope::class, $result);
+        $this->assertInstanceOf(VotingTrustResult::class, $result->result);
     }
 
     public function test_evaluate_returns_voting_trust_result_only(): void
     {
         $evaluator = new TrustPolicyEvaluator(
-            new OverlayCoordinator([]),
+            new OverlayAggregator([]),
             $this->makePolicySequence(),
-            new SecurityEventRecorder(),
+            new SecurityEventRecorder($this->makeClock()),
             new TrustEvidencePrivacyPolicy(),
+            new TrustSnapshotAssembler(),
         );
 
         $result = $evaluator->evaluate(
@@ -70,8 +85,9 @@ class TrustPolicyEvaluatorD4Test extends TestCase
             sessionId: 'test_session',
         );
 
-        // Must be exactly VotingTrustResult, not array, not DTO, not capability object
-        $this->assertEquals(VotingTrustResult::class, get_class($result));
+        // Must be exactly TrustEvaluationEnvelope, not array, not DTO, not capability object
+        $this->assertEquals(TrustEvaluationEnvelope::class, get_class($result));
+        $this->assertInstanceOf(VotingTrustResult::class, $result->result);
         $this->assertFalse(is_array($result));
     }
 
@@ -79,10 +95,11 @@ class TrustPolicyEvaluatorD4Test extends TestCase
     {
         // Verify raw IP never leaks into context
         $evaluator = new TrustPolicyEvaluator(
-            new OverlayCoordinator([]),
+            new OverlayAggregator([]),
             $this->makePolicySequence(),
-            new SecurityEventRecorder(),
+            new SecurityEventRecorder($this->makeClock()),
             new TrustEvidencePrivacyPolicy(),
+            new TrustSnapshotAssembler(),
         );
 
         $result = $evaluator->evaluate(
@@ -94,6 +111,7 @@ class TrustPolicyEvaluatorD4Test extends TestCase
         );
 
         // If raw IP leaked, event would contain it — verify it doesn't
-        $this->assertInstanceOf(VotingTrustResult::class, $result);
+        $this->assertInstanceOf(TrustEvaluationEnvelope::class, $result);
+        $this->assertInstanceOf(VotingTrustResult::class, $result->result);
     }
 }

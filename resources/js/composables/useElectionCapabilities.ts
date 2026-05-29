@@ -72,6 +72,28 @@ export function useElectionCapabilities(
     return stateMachine.value?.capabilities?.[action]?.denial_reason ?? null
   }
 
+  const DENIAL_LABELS: Record<string, string> = {
+    suspended: 'Election is currently suspended',
+    missing_role: 'Insufficient privileges for this action',
+    invalid_lifecycle: 'Not available in the current election state',
+    unmet_precondition: 'Prerequisites have not been met',
+    trust_denied: 'Identity verification required',
+    constitutional_review_pending: 'Constitutional review is pending',
+    trust_evaluation_inconclusive: 'Trust cannot be established',
+    unauthenticated: 'Authentication required',
+  }
+
+  /**
+   * Get a human-readable label for a capability denial reason.
+   * Maps CapabilityDenialReason enum values to UI-safe labels.
+   * Returns null if the action is allowed or no reason is available.
+   */
+  const denialLabel = (action: ElectionAction): string | null => {
+    const reason = denialReason(action)
+    if (!reason) return null
+    return DENIAL_LABELS[reason] ?? reason
+  }
+
   /**
    * Check if the given action is denied (opposite of canDo)
    * More semantic for conditional rendering:
@@ -94,6 +116,7 @@ export function useElectionCapabilities(
   return {
     canDo,
     denialReason,
+    denialLabel,
     isDenied,
     // Named computed refs for convenience during component migration
     // These wrap canDo() to maintain the vocabulary centralization principle

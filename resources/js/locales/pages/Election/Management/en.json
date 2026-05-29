@@ -159,7 +159,7 @@
     "btn_resuming": "Resuming..."
   },
   "governance_actions": {
-    "title": "Governance Actions",
+    "title": "Lifecycle Actions",
     "submit_for_approval": "Submit for Approval",
     "submit_for_approval_auto": "Submit (Auto-Approved)",
     "submit_hint": "→ Begin review",
@@ -168,7 +168,7 @@
     "begin_setup_hint": "→ Start configuration"
   },
   "phase_controls": {
-    "title": "Phase Controls",
+    "title": "Phase Transitions",
     "complete_admin": "Complete Administration",
     "open_voting": "Open Voting",
     "open_voting_hint": "→ Begin voting",
@@ -176,7 +176,7 @@
     "close_voting_hint": "→ End voting"
   },
   "governance_section": {
-    "title": "Governance",
+    "title": "Administrative Controls",
     "suspend": "Suspend Election"
   },
   "empty_state": {
@@ -209,17 +209,17 @@
   "resume_confirmation": "Resume this election? All governance operations will become available again.",
   "suspend_modal": {
     "title": "Suspend Election",
-    "description": "This action freezes all governance operations except resume.",
-    "warning": "This is a governance intervention, NOT an ordinary state transition.",
+    "description": "This temporarily pauses all election operations.",
+    "warning": "Voters cannot cast votes while suspended. Use the reason field to document why this action was taken — it is recorded in the governance audit trail.",
     "reason_label": "Reason for Suspension",
     "reason_placeholder": "Describe why this election must be suspended...",
     "reason_hint": "Minimum 10 characters. This is recorded in the governance audit trail.",
     "category_label": "Suspension Category",
-    "category_general": "General",
-    "category_misconduct": "Misconduct",
-    "category_emergency": "Emergency",
-    "category_investigation": "Investigation",
-    "category_other": "Other",
+    "category_placeholder": "Select a category",
+    "category_operational_pause": "Operational Pause",
+    "category_administrative_review": "Administrative Review",
+    "category_dispute_hold": "Dispute Hold",
+    "category_technical_issue": "Technical Issue",
     "btn_cancel": "Cancel",
     "btn_suspend": "Suspend Election",
     "btn_suspending": "Suspending..."

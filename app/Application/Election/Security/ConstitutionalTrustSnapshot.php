@@ -20,7 +20,7 @@ readonly class ConstitutionalTrustSnapshot
         public string     $attestationSource,        // 'registrar'|'session'|'none'
         public bool       $continuityPreserved,
         public ?string    $activeOverlay,
-        public ?string    $overlayInfluence,          // 'elevated'|'denied'|null
+        public ?string    $OverlaySignalCategory,          // 'elevated'|'denied'|null
         public string     $denialReason,
         public array      $trustProvenance,           // causality lineage: policy outcomes only
     ) {}

@@ -21,7 +21,7 @@ readonly class TrustCapabilityContext
         public VotingSessionTrustContinuity  $sessionContinuity,
     ) {}
 
-    // Constitutional facts only — no canVote(), isAuthorized(), isEligible(), trustSufficient()
+    // Evidence context only (derives facts, never authority)
 
     public function currentTrustLevel(): TrustLevel
     {

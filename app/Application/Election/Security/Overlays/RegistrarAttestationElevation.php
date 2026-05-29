@@ -2,42 +2,44 @@
 
 namespace App\Application\Election\Security\Overlays;
 
-use App\Application\Election\Security\ConstitutionalOverlay;
+use App\Application\Election\Security\Overlay;
 use App\Application\Election\Security\TrustCapabilityContext;
-use App\Domain\Election\Security\OverlayInfluence;
-use App\Domain\Election\Security\OverlaySignal;
-use App\Domain\Election\Security\TrustLevel;
+use App\Domain\Election\Security\Simplified\OverlaySignal;
 
-final class RegistrarAttestationElevation implements ConstitutionalOverlay
+final class RegistrarAttestationElevation implements Overlay
 {
     public function evaluate(TrustCapabilityContext $ctx): OverlaySignal
     {
-        // Elevation is a SUGGESTION, not an override
-        // Resolver (D.5) DECIDES whether to accept elevation
-        // This overlay is influence-only — never grants authority
+        // Registrar attestation overlay — pure observation semantics
+        // Describes: registrar has verified the voter
+        // Does NOT suggest elevation — only reports evidence
+        // Resolver interprets the attestation evidence and decides capability
 
-        // If no attestation or attestation revoked, no elevation possible
         if (is_null($ctx->attestation) || !$ctx->attestation->isSatisfied() || $ctx->attestation->revoked) {
-            return OverlaySignal::continue($this->identifier());
-        }
-
-        // If registrar present and attestation valid, suggest elevation
-        if (!is_null($ctx->attestation->registrarId)) {
-            return new OverlaySignal(
-                OverlayInfluence::TRUST_ELEVATION_REQUEST,
-                $this->identifier(),
-                'registrar_attestation_present',
-                ['registrar_id' => $ctx->attestation->registrarId],
-                null,
-                TrustLevel::RegistrarAttested,
+            return OverlaySignal::contextStable(
+                'registrar_attestation',
+                'No registrar attestation present',
+                [],
             );
         }
 
-        return OverlaySignal::continue($this->identifier());
+        if (!is_null($ctx->attestation->registrarId)) {
+            return OverlaySignal::evidenceInconsistent(
+                'registrar_attestation',
+                'Registrar attestation present — evidence inconsistent with baseline unverified state',
+                ['registrar_id' => $ctx->attestation->registrarId],
+            );
+        }
+
+        return OverlaySignal::contextStable(
+            'registrar_attestation',
+            'No registrar attestation present',
+            [],
+        );
     }
 
     public function identifier(): string
     {
-        return 'registrar_attestation_elevation';
+        return 'registrar_attestation';
     }
 }

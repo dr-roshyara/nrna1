@@ -51,7 +51,7 @@ class ElectionCapabilityResolverTrustIntegrationTest extends LaravelTestCase
     public function test_resolver_denies_when_trust_policy_returns_constitutional_review_pending(): void
     {
         $resolver = $this->makeResolver();
-        $overlayInfluence = new OverlayInfluenceContext(
+        $OverlaySignalCategory = new OverlayInfluenceContext(
             signals: [],
             hasInfluence: true,
             requiresReview: true,
@@ -61,7 +61,7 @@ class ElectionCapabilityResolverTrustIntegrationTest extends LaravelTestCase
         );
         $envelope = new TrustEvaluationEnvelope(
             VotingTrustResult::allow(TrustLevel::Attested, [], []),
-            $overlayInfluence,
+            $OverlaySignalCategory,
             new ConstitutionalTrustSnapshot(true, TrustLevel::Attested, 'single_code', false, false, true, 'none', true, null, null, '', []),
         );
         $context = new CapabilityContext(
@@ -83,7 +83,7 @@ class ElectionCapabilityResolverTrustIntegrationTest extends LaravelTestCase
     public function test_resolver_denies_when_trust_policy_returns_trust_evaluation_inconclusive(): void
     {
         $resolver = $this->makeResolver();
-        $overlayInfluence = new OverlayInfluenceContext(
+        $OverlaySignalCategory = new OverlayInfluenceContext(
             signals: [],
             hasInfluence: true,
             requiresReview: false,
@@ -93,7 +93,7 @@ class ElectionCapabilityResolverTrustIntegrationTest extends LaravelTestCase
         );
         $envelope = new TrustEvaluationEnvelope(
             VotingTrustResult::allow(TrustLevel::Attested, [], []),
-            $overlayInfluence,
+            $OverlaySignalCategory,
             new ConstitutionalTrustSnapshot(true, TrustLevel::Attested, 'single_code', false, false, true, 'none', true, null, null, '', []),
         );
         $context = new CapabilityContext(
@@ -114,10 +114,10 @@ class ElectionCapabilityResolverTrustIntegrationTest extends LaravelTestCase
     public function test_resolver_denies_when_result_not_trusted(): void
     {
         $resolver = $this->makeResolver();
-        $overlayInfluence = OverlayInfluenceContext::noInfluence();
+        $OverlaySignalCategory = OverlayInfluenceContext::noInfluence();
         $envelope = new TrustEvaluationEnvelope(
             VotingTrustResult::deny('network_limit_exceeded', [], []),
-            $overlayInfluence,
+            $OverlaySignalCategory,
             new ConstitutionalTrustSnapshot(false, TrustLevel::Unverified, 'single_code', false, false, false, 'none', false, null, null, 'network_limit_exceeded', []),
         );
         $context = new CapabilityContext(
@@ -138,10 +138,10 @@ class ElectionCapabilityResolverTrustIntegrationTest extends LaravelTestCase
     public function test_resolver_allows_vote_when_trust_passes(): void
     {
         $resolver = $this->makeResolver();
-        $overlayInfluence = OverlayInfluenceContext::noInfluence();
+        $OverlaySignalCategory = OverlayInfluenceContext::noInfluence();
         $envelope = new TrustEvaluationEnvelope(
             VotingTrustResult::allow(TrustLevel::Attested, [], []),
-            $overlayInfluence,
+            $OverlaySignalCategory,
             new ConstitutionalTrustSnapshot(true, TrustLevel::Attested, 'single_code', false, false, true, 'none', true, null, null, '', []),
         );
         $context = new CapabilityContext(
@@ -163,10 +163,10 @@ class ElectionCapabilityResolverTrustIntegrationTest extends LaravelTestCase
     {
         $resolver = $this->makeResolver();
         // Create envelope where trust fails
-        $overlayInfluence = OverlayInfluenceContext::noInfluence();
+        $OverlaySignalCategory = OverlayInfluenceContext::noInfluence();
         $envelope = new TrustEvaluationEnvelope(
             VotingTrustResult::deny('verification_failed', [], []),
-            $overlayInfluence,
+            $OverlaySignalCategory,
             new ConstitutionalTrustSnapshot(false, TrustLevel::Unverified, 'single_code', false, false, false, 'none', false, null, null, 'verification_failed', []),
         );
         $context = new CapabilityContext(
@@ -213,7 +213,7 @@ class ElectionCapabilityResolverTrustIntegrationTest extends LaravelTestCase
     {
         $resolver = $this->makeResolver();
         // Both overlay and trust trigger denials - overlay should win (priority 1 < priority 2)
-        $overlayInfluence = new OverlayInfluenceContext(
+        $OverlaySignalCategory = new OverlayInfluenceContext(
             signals: [],
             hasInfluence: true,
             requiresReview: true,
@@ -223,7 +223,7 @@ class ElectionCapabilityResolverTrustIntegrationTest extends LaravelTestCase
         );
         $envelope = new TrustEvaluationEnvelope(
             VotingTrustResult::deny('trust_denied', [], []),
-            $overlayInfluence,
+            $OverlaySignalCategory,
             new ConstitutionalTrustSnapshot(false, TrustLevel::Unverified, 'single_code', false, false, false, 'none', false, null, null, 'trust_denied', []),
         );
         $context = new CapabilityContext(

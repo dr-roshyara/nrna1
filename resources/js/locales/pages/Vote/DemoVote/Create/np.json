@@ -9,7 +9,8 @@
     "current_voter": "हालको मतदाता:",
     "region": "क्षेत्र:",
     "voting_time_remaining": "तपाईंसँग मतदान पूरा गर्न ३० मिनेट छ",
-    "progress": "प्रगति"
+    "progress": "प्रगति",
+    "of_count": "{n} मध्ये"
   },
   "demo_notice": {
     "title": "डेमो चुनाव मोड",

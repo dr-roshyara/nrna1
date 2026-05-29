@@ -7,7 +7,6 @@ use App\Application\Election\Security\TrustCapabilityContext;
 use App\Domain\Election\Security\DeviceTrustContext;
 use App\Domain\Election\Security\FingerprintMatchType;
 use App\Domain\Election\Security\NetworkTrustEvidence;
-use App\Domain\Election\Security\OverlayInfluence;
 use App\Domain\Election\Security\TrustValidityScope;
 use App\Domain\Election\Security\VerificationAttestationRecord;
 use App\Domain\Election\Security\VotingSessionTrustContinuity;
@@ -34,34 +33,26 @@ class DeviceAnomalyOverlayTest extends TestCase
         );
     }
 
-    public function test_evaluate_returns_continue_when_device_already_volatile(): void
-    {
-        $overlay = new DeviceAnomalyOverlay();
-        $ctx = $this->makeContext(deviceVolatility: 'volatile');
-
-        $signal = $overlay->evaluate($ctx);
-
-        $this->assertEquals(OverlayInfluence::CONTINUE_UNCHANGED, $signal->influence);
-    }
-
-    public function test_evaluate_returns_continue_when_device_stable(): void
+    public function test_reports_stable_when_device_stable(): void
     {
         $overlay = new DeviceAnomalyOverlay();
         $ctx = $this->makeContext(deviceVolatility: 'stable', deviceChanged: false);
 
         $signal = $overlay->evaluate($ctx);
 
-        $this->assertEquals(OverlayInfluence::CONTINUE_UNCHANGED, $signal->influence);
+        $this->assertEquals('CONTEXT_STABLE', $signal->signalType);
+        $this->assertEquals('device_anomaly', $signal->overlayIdentifier);
     }
 
-    public function test_evaluate_returns_reverification_when_device_becomes_volatile(): void
+    public function test_reports_attestation_when_device_becomes_volatile(): void
     {
         $overlay = new DeviceAnomalyOverlay();
         $ctx = $this->makeContext(deviceVolatility: 'volatile', deviceChanged: true);
 
         $signal = $overlay->evaluate($ctx);
 
-        $this->assertEquals(OverlayInfluence::REQUIRE_RE_VERIFICATION, $signal->influence);
+        $this->assertEquals('ADDITIONAL_ATTESTATION_PRESENT', $signal->signalType);
+        $this->assertEquals('device_anomaly', $signal->overlayIdentifier);
     }
 
     public function test_identifier_matches_registry(): void

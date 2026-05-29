@@ -96,7 +96,7 @@ class ExtractionMethodsTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: 'allowed',
@@ -107,7 +107,7 @@ class ExtractionMethodsTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: 'allowed',
@@ -127,7 +127,7 @@ class ExtractionMethodsTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: 'allowed',
@@ -141,7 +141,7 @@ class ExtractionMethodsTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: 'allowed',
@@ -154,7 +154,7 @@ class ExtractionMethodsTest extends TestCase
             deviceLegitimate: TrustLevel::Unverified,  // diverges
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: 'allowed',
@@ -167,7 +167,7 @@ class ExtractionMethodsTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Unverified,  // diverges
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: 'allowed',
@@ -180,7 +180,7 @@ class ExtractionMethodsTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Unverified,  // diverges
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: 'allowed',
@@ -193,7 +193,7 @@ class ExtractionMethodsTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: 'require_constitutional_review',  // diverges
+            OverlaySignalCategory: 'require_constitutional_review',  // diverges
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: 'allowed',
@@ -206,7 +206,7 @@ class ExtractionMethodsTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::SplitAuthorizationProtocol->value,  // diverges
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: 'allowed',
@@ -219,7 +219,7 @@ class ExtractionMethodsTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::Counting,  // diverges
             participationAllowed: 'allowed',
@@ -232,7 +232,7 @@ class ExtractionMethodsTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: CapabilityDenialReason::InvalidLifecycle->value,  // diverges
@@ -250,7 +250,7 @@ class ExtractionMethodsTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Attested,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::VotingActive,
             participationAllowed: 'allowed',
@@ -261,7 +261,7 @@ class ExtractionMethodsTest extends TestCase
             deviceLegitimate: TrustLevel::Attested,
             verificationLegitimate: TrustLevel::Attested,
             trustLegitimate: TrustLevel::Unverified,
-            overlayInfluence: 'require_constitutional_review',
+            OverlaySignalCategory: 'require_constitutional_review',
             authorizationProtocol: BallotAuthorizationProtocol::UnifiedTokenProtocol->value,
             lifecycleState: ElectionLifecycleState::Counting,
             participationAllowed: CapabilityDenialReason::InvalidLifecycle->value,
@@ -273,7 +273,7 @@ class ExtractionMethodsTest extends TestCase
         $this->assertCount(5, $divergences);
         $this->assertContains('networkLegitimate', $divergences);
         $this->assertContains('trustLegitimate', $divergences);
-        $this->assertContains('overlayInfluence', $divergences);
+        $this->assertContains('OverlaySignalCategory', $divergences);
         $this->assertContains('lifecycleState', $divergences);
         $this->assertContains('participationAllowed', $divergences);
     }

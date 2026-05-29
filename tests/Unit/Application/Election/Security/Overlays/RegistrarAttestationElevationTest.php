@@ -7,8 +7,6 @@ use App\Application\Election\Security\TrustCapabilityContext;
 use App\Domain\Election\Security\DeviceTrustContext;
 use App\Domain\Election\Security\FingerprintMatchType;
 use App\Domain\Election\Security\NetworkTrustEvidence;
-use App\Domain\Election\Security\OverlayInfluence;
-use App\Domain\Election\Security\TrustLevel;
 use App\Domain\Election\Security\TrustValidityScope;
 use App\Domain\Election\Security\VerificationAttestationRecord;
 use App\Domain\Election\Security\VotingSessionTrustContinuity;
@@ -37,7 +35,7 @@ class RegistrarAttestationElevationTest extends TestCase
         );
     }
 
-    public function test_evaluate_returns_continue_when_no_registrar(): void
+    public function test_reports_no_constitutional_concern_when_no_registrar_present(): void
     {
         $overlay = new RegistrarAttestationElevation();
         $election = Election::factory()->create();
@@ -48,10 +46,11 @@ class RegistrarAttestationElevationTest extends TestCase
 
         $signal = $overlay->evaluate($ctx);
 
-        $this->assertEquals(OverlayInfluence::CONTINUE_UNCHANGED, $signal->influence);
+        $this->assertEquals('CONTEXT_STABLE', $signal->signalType);
+        $this->assertEquals('registrar_attestation', $signal->overlayIdentifier);
     }
 
-    public function test_evaluate_returns_elevation_request_when_registrar_present(): void
+    public function test_reports_evidence_inconsistent_when_registrar_attested(): void
     {
         $overlay = new RegistrarAttestationElevation();
         $election = Election::factory()->create();
@@ -62,11 +61,12 @@ class RegistrarAttestationElevationTest extends TestCase
 
         $signal = $overlay->evaluate($ctx);
 
-        $this->assertEquals(OverlayInfluence::TRUST_ELEVATION_REQUEST, $signal->influence);
-        $this->assertEquals(TrustLevel::RegistrarAttested, $signal->suggestedElevatedTrustLevel);
+        $this->assertEquals('EVIDENCE_INCONSISTENT', $signal->signalType);
+        $this->assertEquals('registrar_attestation', $signal->overlayIdentifier);
+        $this->assertArrayHasKey('registrar_id', $signal->evidenceContext);
     }
 
-    public function test_evaluate_returns_continue_when_attestation_not_satisfied(): void
+    public function test_reports_stable_when_attestation_unsatisfied(): void
     {
         $overlay = new RegistrarAttestationElevation();
         $election = Election::factory()->create();
@@ -77,10 +77,10 @@ class RegistrarAttestationElevationTest extends TestCase
 
         $signal = $overlay->evaluate($ctx);
 
-        $this->assertEquals(OverlayInfluence::CONTINUE_UNCHANGED, $signal->influence);
+        $this->assertEquals('CONTEXT_STABLE', $signal->signalType);
     }
 
-    public function test_evaluate_returns_continue_when_attestation_revoked(): void
+    public function test_reports_stable_when_attestation_revoked(): void
     {
         $overlay = new RegistrarAttestationElevation();
         $election = Election::factory()->create();
@@ -91,13 +91,13 @@ class RegistrarAttestationElevationTest extends TestCase
 
         $signal = $overlay->evaluate($ctx);
 
-        $this->assertEquals(OverlayInfluence::CONTINUE_UNCHANGED, $signal->influence);
+        $this->assertEquals('CONTEXT_STABLE', $signal->signalType);
     }
 
     public function test_identifier_matches_registry(): void
     {
         $overlay = new RegistrarAttestationElevation();
 
-        $this->assertEquals('registrar_attestation_elevation', $overlay->identifier());
+        $this->assertEquals('registrar_attestation', $overlay->identifier());
     }
 }

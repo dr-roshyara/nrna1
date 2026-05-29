@@ -10,6 +10,7 @@ use App\Application\Election\Security\TrustCapabilityContext;
 use App\Domain\Election\Security\DeviceTrustContext;
 use App\Domain\Election\Security\FingerprintMatchType;
 use App\Domain\Election\Security\NetworkTrustEvidence;
+use App\Domain\Election\Security\TrustEvaluationState;
 use App\Domain\Election\Security\TrustLevel;
 use App\Domain\Election\Security\TrustValidityScope;
 use App\Domain\Election\Security\VerificationAttestationRecord;
@@ -87,7 +88,7 @@ class PolicySequenceTest extends TestCase
         $sequence = $this->makeSequence();
         $result = $sequence->evaluate($this->makeFullPassCtx());
 
-        $this->assertTrue($result->trusted);
+        $this->assertEquals(TrustEvaluationState::SUFFICIENT_EVIDENCE, $result->evaluationState);
     }
 
     public function test_verification_denial_short_circuits_network_and_device(): void
@@ -120,7 +121,7 @@ class PolicySequenceTest extends TestCase
         $sequence = $this->makeSequence();
         $result = $sequence->evaluate($ctx);
 
-        $this->assertFalse($result->trusted);
+        $this->assertEquals(TrustEvaluationState::INSUFFICIENT_EVIDENCE, $result->evaluationState);
         $this->assertEquals('verification_required', $result->reason);
         // If short-circuited, network_binding_policy key absent
         $this->assertArrayNotHasKey('network_binding_policy', $result->policyOutcomeSequence);
@@ -132,7 +133,7 @@ class PolicySequenceTest extends TestCase
         $sequence = $this->makeSequence();
         $result = $sequence->evaluate($this->makeUnverifiedCtx());
 
-        $this->assertTrue($result->trusted);
+        $this->assertEquals(TrustEvaluationState::SUFFICIENT_EVIDENCE, $result->evaluationState);
         $this->assertEquals(TrustLevel::Unverified, $result->trustLevel);
     }
 
@@ -141,9 +142,9 @@ class PolicySequenceTest extends TestCase
         $sequence = $this->makeSequence();
         $result = $sequence->evaluate($this->makeFullPassCtx());
 
-        $this->assertArrayHasKey('verification_attestation_policy', $result->policyOutcomeSequence);
-        $this->assertArrayHasKey('network_binding_policy', $result->policyOutcomeSequence);
-        $this->assertArrayHasKey('device_binding_policy', $result->policyOutcomeSequence);
+        $this->assertArrayHasKey('verification', $result->policyOutcomeSequence);
+        $this->assertArrayHasKey('network', $result->policyOutcomeSequence);
+        $this->assertArrayHasKey('device', $result->policyOutcomeSequence);
     }
 
     public function test_device_denial_returns_device_reason(): void
@@ -175,7 +176,7 @@ class PolicySequenceTest extends TestCase
         $sequence = $this->makeSequence();
         $result = $sequence->evaluate($ctx);
 
-        $this->assertFalse($result->trusted);
+        $this->assertEquals(TrustEvaluationState::INSUFFICIENT_EVIDENCE, $result->evaluationState);
         $this->assertEquals('device_attestation_failed', $result->reason);
     }
 }

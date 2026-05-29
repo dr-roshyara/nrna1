@@ -20,7 +20,7 @@ class ConstitutionalTrustSnapshotTest extends TestCase
             attestationSource: 'session',
             continuityPreserved: true,
             activeOverlay: null,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             denialReason: '',
             trustProvenance: ['verification_attestation_policy' => 'passed_attested'],
         );
@@ -42,7 +42,7 @@ class ConstitutionalTrustSnapshotTest extends TestCase
             attestationSource: 'session',
             continuityPreserved: true,
             activeOverlay: null,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             denialReason: '',
             trustProvenance: [],
         );
@@ -63,7 +63,7 @@ class ConstitutionalTrustSnapshotTest extends TestCase
             attestationSource: 'none',
             continuityPreserved: true,
             activeOverlay: null,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             denialReason: 'verification_required',
             trustProvenance: [],
         );
@@ -90,7 +90,7 @@ class ConstitutionalTrustSnapshotTest extends TestCase
             attestationSource: 'session',
             continuityPreserved: true,
             activeOverlay: null,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             denialReason: '',
             trustProvenance: $provenance,
         );
@@ -111,7 +111,7 @@ class ConstitutionalTrustSnapshotTest extends TestCase
             attestationSource: 'session',
             continuityPreserved: true,
             activeOverlay: null,
-            overlayInfluence: null,
+            OverlaySignalCategory: null,
             denialReason: '',
             trustProvenance: [],
         );

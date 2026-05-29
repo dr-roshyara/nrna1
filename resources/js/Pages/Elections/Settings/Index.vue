@@ -90,7 +90,7 @@ const selectionConstraintTypes = [
 const verificationModes = [
   { value: 'none', label: 'None (standard)', description: 'No per-voter identity verification. Voters access the ballot with their login credentials only.' },
   { value: 'ip_only', label: 'IP Address Only', description: 'Voter must vote from the pre-verified IP address during the video call.' },
-  { value: 'fingerprint_only', label: 'Device Fingerprint Only', description: 'Voter must vote from the pre-verified device. Works across different networks.' },
+  { value: 'fingerprint_only', label: 'Device Fingerprint Only', description: 'Voter must vote from the pre-verified device. Verification remains valid independently of network location.' },
   { value: 'both', label: 'Both — IP + Device Verification', description: 'Requires both verification conditions to be satisfied.' }
 ]
 

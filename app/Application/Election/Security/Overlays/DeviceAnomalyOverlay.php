@@ -2,40 +2,43 @@
 
 namespace App\Application\Election\Security\Overlays;
 
-use App\Application\Election\Security\ConstitutionalOverlay;
+use App\Application\Election\Security\Overlay;
 use App\Application\Election\Security\TrustCapabilityContext;
-use App\Domain\Election\Security\OverlayInfluence;
-use App\Domain\Election\Security\OverlaySignal;
+use App\Domain\Election\Security\Simplified\OverlaySignal;
 
-final class DeviceAnomalyOverlay implements ConstitutionalOverlay
+final class DeviceAnomalyOverlay implements Overlay
 {
     public function evaluate(TrustCapabilityContext $ctx): OverlaySignal
     {
-        // Device anomaly detection: volatile fingerprints after stable session
-        // Signal re-verification requirement when device becomes unstable
+        // Device anomaly overlay — pure observation semantics
+        // Describes: device fingerprint changed during session or device became volatile
+        // Does NOT recommend reverification — only reports the anomaly observation
+        // Resolver interprets the anomaly and decides on procedures
 
-        // No anomaly if no device context
         if (is_null($ctx->device)) {
-            return OverlaySignal::continue($this->identifier());
+            return OverlaySignal::contextStable(
+                'device_anomaly',
+                'Device stable, no changes detected',
+                [],
+            );
         }
 
-        // Detect anomaly: device changed AND current device is volatile
-        // This indicates the device fingerprint became unstable/volatile
         if ($ctx->sessionContinuity->deviceChanged && $ctx->device->volatility === 'volatile') {
-            return new OverlaySignal(
-                OverlayInfluence::REQUIRE_RE_VERIFICATION,
-                $this->identifier(),
-                'device_volatility_anomaly_detected',
+            return OverlaySignal::attestationPresent(
+                'device_anomaly',
+                'Device fingerprint changed since session start or became volatile',
                 [
                     'device_volatility' => $ctx->device->volatility,
                     'session_device_changed' => true,
                 ],
-                null,
-                null,
             );
         }
 
-        return OverlaySignal::continue($this->identifier());
+        return OverlaySignal::contextStable(
+            'device_anomaly',
+            'Device stable, no changes detected',
+            [],
+        );
     }
 
     public function identifier(): string

@@ -207,8 +207,6 @@ if (!function_exists('validateVotingIpWithResponse')) {
             return [
                 'valid' => true,
                 'skip_reason' => 'no_voting_ip_set',
-                'current_ip' => $current_ip,
-                'registered_ip' => null
             ];
         }
 
@@ -230,15 +228,11 @@ if (!function_exists('validateVotingIpWithResponse')) {
                 'solution_english' => 'Please return to your registered network connection and try again, or contact the election committee.',
                 'solution_nepali' => 'कृपया आफ्नो दर्ता गरिएको नेटवर्क जडानमा फर्कनुहोस् र फेरि प्रयास गर्नुहोस्, वा निर्वाचन समितिलाई सम्पर्क गर्नुहोस्।',
                 'user_name' => $auth_user->name,
-                'current_ip' => $current_ip,
-                'registered_ip' => $auth_user->voting_ip,
             ]);
         }
 
         return [
             'valid' => true,
-            'current_ip' => $current_ip,
-            'registered_ip' => $auth_user->voting_ip
         ];
     }
 }
