@@ -177,21 +177,33 @@ class PublicDemoController extends Controller
             return redirect()->route('public-demo.start');
         }
 
-        // TEMPORARY DIAGNOSTIC — remove after production investigation
-        // Uncomment the dd() below, reload the page, check output, then re-comment.
+        $nationalPosts = $this->buildPostsData($election, true);
+        $regionalPosts = $this->buildPostsData($election, false);
+
+        // ── DIAGNOSTIC TOOLS ─────────────────────────────────────────────────
+        // Use these to trace the exact data reaching the frontend on production.
+        //
+        // TOOL 1 — Database counts (uncomment, reload, re-comment):
         // dd([
-        //     'election_id'                        => $election->id,
-        //     'total_posts'                        => DemoPost::withoutGlobalScopes()->where('election_id', $election->id)->count(),
-        //     'total_candidacies_in_db'            => DemoCandidacy::withoutGlobalScopes()->count(),
-        //     'candidacies_matching_election_id'   => DemoCandidacy::withoutGlobalScopes()->where('election_id', $election->id)->count(),
-        //     'candidacies_matching_any_post_id'   => DemoCandidacy::withoutGlobalScopes()->whereIn(
+        //     'election_id'                      => $election->id,
+        //     'total_posts'                      => DemoPost::withoutGlobalScopes()->where('election_id', $election->id)->count(),
+        //     'total_candidacies_in_db'          => DemoCandidacy::withoutGlobalScopes()->count(),
+        //     'candidacies_matching_election_id' => DemoCandidacy::withoutGlobalScopes()->where('election_id', $election->id)->count(),
+        //     'candidacies_by_post_id'           => DemoCandidacy::withoutGlobalScopes()->whereIn(
         //         'post_id',
         //         DemoPost::withoutGlobalScopes()->where('election_id', $election->id)->pluck('id')
         //     )->count(),
         // ]);
-
-        $nationalPosts = $this->buildPostsData($election, true);
-        $regionalPosts = $this->buildPostsData($election, false);
+        //
+        // TOOL 2 — Exact JSON payload sent to Vue (uncomment, reload, re-comment):
+        // return response()->json([
+        //     'national_sample' => $nationalPosts->first(),
+        //     'regional_sample' => $regionalPosts->first(),
+        //     'national_count'  => $nationalPosts->count(),
+        //     'regional_count'  => $regionalPosts->count(),
+        //     'first_post_candidate_count' => $nationalPosts->first()?->get('candidates')?->count() ?? 0,
+        // ]);
+        // ─────────────────────────────────────────────────────────────────────
 
         return Inertia::render('Vote/DemoVote/Create', [
             'posts' => [
