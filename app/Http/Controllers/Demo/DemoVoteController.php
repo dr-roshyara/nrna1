@@ -2701,10 +2701,10 @@ public function save_vote($input_data, $hashed_voting_key, $election = null, $au
         // Real elections: organisation_id comes from the election (strict enforcement)
         $vote->organisation_id = $election->organisation_id;
     } else {
-        // Demo elections: organisation_id comes from session
-        // MODE 1: NULL = public demo (visible to all)
-        // MODE 2: organisation_id = scoped to specific organisation
-        $vote->organisation_id = session('current_organisation_id');
+        // Demo elections: organisation_id comes from session, fallback to election's org
+        // MODE 1: NULL = public demo (visible to all) — session org_id is absent
+        // MODE 2: organisation_id = scoped to specific organisation — session org_id is set
+        $vote->organisation_id = session('current_organisation_id') ?? $election->organisation_id;
     }
 
     // Set timestamp for cryptographic hash generation
@@ -2904,7 +2904,8 @@ public function save_vote($input_data, $hashed_voting_key, $election = null, $au
                     if ($election->type === 'real') {
                         $result->organisation_id = $election->organisation_id;
                     } else {
-                        $result->organisation_id = session('current_organisation_id');
+                        // Demo elections: fallback to election's org if session org_id not set
+                        $result->organisation_id = session('current_organisation_id') ?? $election->organisation_id;
                     }
 
                     $result->save();
