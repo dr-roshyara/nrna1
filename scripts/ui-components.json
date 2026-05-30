@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "description": "Design system component registry — single source of truth for all reusable Vue components",
+  "baseline": {
+    "recorded_at": "2026-05-30",
+    "raw_button_tags": 90,
+    "raw_input_tags": 82,
+    "raw_select_tags": 16,
+    "raw_textarea_tags": 23,
+    "total_vue_files": 225
+  },
+  "components": [
+    {
+      "name": "Button",
+      "path": "resources/js/Components/Button.vue",
+      "aliases": ["ActionButton"],
+      "variants": ["primary","secondary","outline","ghost","danger","danger-outline","accent","success","warning"],
+      "replaces_tags": ["button"],
+      "usage_in_pages": 33,
+      "pages_using_it": 11,
+      "target_usage": 120,
+      "notes": "Existing — upgrade with trust-seal variant"
+    },
+    {
+      "name": "Card",
+      "path": "resources/js/Components/Card.vue",
+      "variants": ["default","editorial","admin"],
+      "replaces_tags": [],
+      "usage_in_pages": 30,
+      "pages_using_it": 0,
+      "target_usage": 60,
+      "notes": "Existing — increase adoption"
+    },
+    {
+      "name": "StatusBadge",
+      "path": "resources/js/Components/StatusBadge.vue",
+      "variants": ["draft","voting_active","suspended","verified","pending","active","inactive"],
+      "replaces_tags": [],
+      "usage_in_pages": 5,
+      "pages_using_it": 0,
+      "target_usage": 20,
+      "notes": "Existing — covers 15+ election lifecycle statuses"
+    },
+    {
+      "name": "Modal",
+      "path": "resources/js/Components/Modal.vue",
+      "variants": ["default","danger","success"],
+      "replaces_tags": ["div.*fixed", "div.*inset-0", "teleport"],
+      "usage_in_pages": 0,
+      "pages_using_it": 0,
+      "target_usage": 15,
+      "notes": "NEW — election confirmations, suspension warnings"
+    },
+    {
+      "name": "Input",
+      "path": "resources/js/Components/Input.vue",
+      "variants": ["default","error","success"],
+      "replaces_tags": ["input", "select", "textarea"],
+      "usage_in_pages": 0,
+      "pages_using_it": 0,
+      "target_usage": 80,
+      "notes": "NEW — replaces all raw <input>, <select>, <textarea>"
+    },
+    {
+      "name": "Dropdown",
+      "path": "resources/js/Components/Dropdown.vue",
+      "variants": ["default","searchable"],
+      "replaces_tags": ["select"],
+      "usage_in_pages": 0,
+      "pages_using_it": 0,
+      "target_usage": 15,
+      "notes": "NEW — election selector, role picker, status filter"
+    },
+    {
+      "name": "ProgressBar",
+      "path": "resources/js/Components/ProgressBar.vue",
+      "variants": ["primary","success","warning","danger"],
+      "replaces_tags": [],
+      "usage_in_pages": 0,
+      "pages_using_it": 0,
+      "target_usage": 10,
+      "notes": "NEW — voting progress, setup progress"
+    },
+    {
+      "name": "VerificationSeal",
+      "path": "resources/js/Components/VerificationSeal.vue",
+      "variants": ["verified","pending","warning","idle"],
+      "replaces_tags": [],
+      "usage_in_pages": 0,
+      "pages_using_it": 0,
+      "target_usage": 5,
+      "notes": "NEW — trust mark differentiator"
+    },
+    {
+      "name": "EmptyState",
+      "path": "resources/js/Components/EmptyState.vue",
+      "variants": ["default"],
+      "replaces_tags": [],
+      "usage_in_pages": 0,
+      "pages_using_it": 0,
+      "target_usage": 5,
+      "notes": "Existing — no results, no data, no access"
+    },
+    {
+      "name": "ToggleSwitch",
+      "path": "resources/js/Components/ToggleSwitch.vue",
+      "variants": ["default"],
+      "replaces_tags": ["input.*checkbox", "input.*toggle"],
+      "usage_in_pages": 0,
+      "pages_using_it": 0,
+      "target_usage": 5,
+      "notes": "Existing — settings, feature flags"
+    }
+  ],
+  "excluded_dirs": ["node_modules", "vendor", "dist", "public/build", "storage"],
+  "excluded_files": [
+    "resources/js/Components/Button.vue",
+    "resources/js/Components/Card.vue",
+    "resources/js/Components/StatusBadge.vue",
+    "resources/js/Components/EmptyState.vue",
+    "resources/js/Components/LanguageSwitcher.vue"
+  ]
+}

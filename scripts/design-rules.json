@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "description": "Design system token enforcement rules — consumed by design-check.sh and check-design-tokens.sh",
+  "baseline": 613,
+  "phase_targets": {
+    "phase_4_iteration_1": 592,
+    "phase_4_iteration_2": 580,
+    "phase_4_iteration_3": 545,
+    "phase_4_iteration_4": 529,
+    "phase_4_iteration_5": 511,
+    "phase_4_iteration_6": 485,
+    "phase_5_complete": 50,
+    "final_target": 0
+  },
+  "enforcement": {
+    "current_threshold": 150,
+    "exit_on_fail": false,
+    "mode": "migration"
+  },
+  "rules": [
+    {
+      "id": "bg-color",
+      "label": "Background colors",
+      "pattern": "bg-(blue|red|green|gray|slate|indigo|purple|pink|yellow|teal|cyan|orange|amber|lime|emerald|violet|fuchsia|rose)-[0-9]",
+      "severity": "error",
+      "target": 0,
+      "allowlist_patterns": ["bg-gradient"]
+    },
+    {
+      "id": "text-color",
+      "label": "Text colors",
+      "pattern": "text-(blue|red|green|gray|slate|indigo|purple|pink|yellow|teal|cyan|orange|amber|white)-[0-9]",
+      "severity": "error",
+      "target": 0,
+      "allowlist_patterns": ["text-white"]
+    },
+    {
+      "id": "border-color",
+      "label": "Border colors",
+      "pattern": "border-(blue|red|green|gray|slate|indigo|purple|pink|yellow)-[0-9]",
+      "severity": "warning",
+      "target": 0,
+      "allowlist_patterns": []
+    },
+    {
+      "id": "ring-color",
+      "label": "Ring colors",
+      "pattern": "ring-(blue|red|green|gray|indigo)-[0-9]",
+      "severity": "warning",
+      "target": 0,
+      "allowlist_patterns": ["ring-offset"]
+    },
+    {
+      "id": "divide-color",
+      "label": "Divide colors",
+      "pattern": "divide-(gray|blue|green|red|indigo)-[0-9]",
+      "severity": "warning",
+      "target": 0,
+      "allowlist_patterns": []
+    },
+    {
+      "id": "placeholder-color",
+      "label": "Placeholder colors",
+      "pattern": "placeholder-(gray|blue|red)-[0-9]",
+      "severity": "warning",
+      "target": 0,
+      "allowlist_patterns": []
+    },
+    {
+      "id": "shadow-size",
+      "label": "Shadow sizes",
+      "pattern": "shadow-(sm|md|lg|xl|2xl|inner|none)",
+      "severity": "warning",
+      "target": 0,
+      "allowlist_patterns": ["shadow-lg", "shadow-xl", "shadow-sm", "shadow-md"]
+    },
+    {
+      "id": "font-weight",
+      "label": "Font weights (use CSS variables)",
+      "pattern": "font-(thin|extralight|light|medium|semibold|extrabold|black)",
+      "severity": "warning",
+      "target": 0,
+      "allowlist_patterns": ["font-bold", "font-semibold", "font-medium", "font-normal"]
+    },
+    {
+      "id": "responsive-prefix",
+      "label": "Responsive prefixes (consider tokenization)",
+      "pattern": "(sm|md|lg|xl|2xl):",
+      "severity": "info",
+      "target": -1,
+      "allowlist_patterns": []
+    }
+  ],
+  "excluded_dirs": [
+    "node_modules",
+    "vendor",
+    "dist",
+    "public/build",
+    "storage"
+  ],
+  "active_phase": "phase_4_iteration_6"
+}
