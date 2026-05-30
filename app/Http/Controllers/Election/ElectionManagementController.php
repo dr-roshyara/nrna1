@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Election;
+
+use App\Contexts\Elections\Domain\Events\ResultsPublishedEvent;
+use App\Contexts\Elections\Domain\Events\ResultsUnpublishedEvent;
 use Carbon\Carbon;
+use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -828,6 +832,18 @@ class ElectionManagementController extends Controller
                     metadata: ['ip' => request()->ip()]
                 )
             );
+
+            // Refresh to get updated state/timestamp
+            $election->refresh();
+
+            // Dispatch domain event for publication
+            event(new ResultsPublishedEvent(
+                electionId: $election->id,
+                publishedBy: auth()->id(),
+                publishedAt: new DateTimeImmutable($election->results_published_at->toDateTimeString()),
+                state: $election->state,
+            ));
+
             return back()->with('success', 'Results published successfully.');
         } catch (\App\Domain\Election\Exceptions\InvalidTransitionException $e) {
             return back()->with('error', $e->getMessage());
@@ -841,7 +857,19 @@ class ElectionManagementController extends Controller
      */
     public function unpublish(Election $election): \Illuminate\Http\RedirectResponse
     {
+        $this->authorize('publishResults', $election);
+
+        $previousState = $election->state;
+
         $election->update(['results_published' => false]);
+
+        // Dispatch domain event for unpublication
+        event(new ResultsUnpublishedEvent(
+            electionId: $election->id,
+            unpublishedBy: auth()->id(),
+            unpublishedAt: new DateTimeImmutable(),
+            previousState: $previousState,
+        ));
         return back()->with('success', 'Results unpublished.');
     }
 

@@ -1,346 +1,256 @@
-# Plan: Frontend Governance — Option C (Governance-Driven Convergence)
+# Plan: Election Publication Governance — Authorization Fix + Domain Events + Test Coverage
 
 ## Context
 
-The UI consistency audit revealed 225 pages with fragmented patterns: 15+ status badge variants, 5 button styles, inconsistent focus states, misaligned forms. Rather than a big-bang migration, the goal is **governance-driven convergence**: create governance rules first, then a minimal set of canonical components, then freeze future divergence while old pages converge naturally through normal feature work.
+**Trust work is frozen.** T-001 Domain Events are complete. T-002 has no proven business need.
 
-Build order: **Rules → Components → Backlog** (not Components → Guess Rules Later).
+The next delivery is **Election Publication Governance** — a business concern about governing the official publication status of an election result, not merely a UI publishing feature.
+
+The core election lifecycle is:
+```
+Membership ✅ → Verification ✅ → Voting ✅ → Publication Governance ❌
+```
+
+Exploration found **two concrete bugs**, **zero HTTP tests** for the publication path, and a **missing domain event boundary**.
 
 ---
 
-## Key Discovery: What Already Exists
+## Bugs Found
 
-Before building, the codebase already has:
+**Bug 1 (Security): `unpublish()` missing authorization**
+- `publish()` correctly calls `$this->authorize('publishResults', $election)` — chief-only
+- `unpublish()` has NO authorization check — any authenticated user can unpublish results
+- File: `app/Http/Controllers/Election/ElectionManagementController.php` ~line 842
 
-| Component | Path | Status |
-|---|---|---|
-| `Button.vue` | `resources/js/Components/Button.vue` | ✅ Already canonical — full variant/size API |
-| `StatusBadge.vue` | `resources/js/Components/StatusBadge.vue` | ✅ Exists but needs general statuses added |
-| `WorkflowStepIndicator.vue` | `resources/js/Components/Workflow/WorkflowStepIndicator.vue` | ✅ Fully built, accessible, responsive |
-| `WorkflowProgress.vue` | `resources/js/Components/Workflow/WorkflowProgress.vue` | ✅ Exists |
-| `WorkflowLayout.vue` | — | ❌ Missing — create this |
-| `AppButton.vue` | — | ❌ Not needed — `Button.vue` already covers this |
+**Bug 2 (Routing): Viewboard result link is hardcoded**
+- `resources/js/Pages/Election/Viewboard.vue` hardcodes `href="/election/result"` (no slug)
+- File: `resources/js/Pages/Election/Viewboard.vue`
 
-**Critical implication:** `AppButton.vue` should NOT be created. `Button.vue` already has the canonical API (variant: primary/secondary/outline/ghost/danger/accent/success/warning, size: sm/md/lg, loading, disabled). The governance rules should document `Button.vue` as canonical.
+**Bug 3 (Architecture): No domain events for publication state changes**
+- `publish()` changes `results_published = true` with no domain event
+- `unpublish()` changes `results_published = false` with no domain event
+- Future consumers (audit, notification, constitutional archive) have no extension point
 
----
-
-## Deliverable 1: Update `.claude/UI_GUIDELINES.md`
-
-The file already exists (795 lines) with color tokens, component APIs, and enforcement tools. Add a **Governance Model** section at the top without removing existing content.
-
-**Add these sections:**
-
-```
-## Governance Model
-
-### Preferred (all new pages use this)
-- <Button> for all buttons
-- <StatusBadge> for all status display
-- <WorkflowLayout> for multi-step workflows
-- focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
-
-### Allowed
-- Existing implementations in untouched pages
-- Documented exceptions in design-system.exceptions.json
-
-### Forbidden (new code only)
-- New UI variants without documented justification
-- Raw <button> elements (use <Button>)
-- Hardcoded status badges (use <StatusBadge>)
-- New components that don't eliminate 3+ existing variants
-
-## Component Justification Rule
-New component approved only if it eliminates ≥ 3 existing variants.
-Example: StatusBadge eliminates 15+ variants ✅
-Example: ElectionSpecialButton used in 1 page only ❌
-
-## Before Creating a Component (Claude Pre-Check)
-1. Search resources/js/Components/
-2. Can existing component be extended?
-3. Justify why new component is needed
-4. Does it eliminate 3+ existing variants?
-5. Will it stay under 200 lines?
-
-## Migration Strategy
-- Never refactor untouched pages solely for consistency
-- When a page is modified for business work: bring it to canonical patterns
-- Priority: Voting → Election → Membership
-- No global color replacements (semantic risk)
-- Track work in UI_GOVERNANCE_BACKLOG.md
-```
+**Bug 4 (Architecture): Authorization is duplicated, not unified**
+- Both `publish()` and `unpublish()` belong to one domain capability: **controlling publication authority**
+- Current pattern repeats `publishResults` policy in both places instead of expressing the unified intent
 
 ---
 
-## Deliverable 2: Extend `resources/js/Components/StatusBadge.vue`
+## Constraints
 
-Current StatusBadge handles election lifecycle states only. The audit found 50+ hardcoded badges for general statuses (voted, active, pending, inactive, verified) that aren't in the current map.
-
-**Architecture change: rename `map` to `defaultStatuses`** and add fallback for unknown statuses.
-
-**Add to `defaultStatuses` object:**
-```js
-voted:    { label: 'Voted',    classes: 'bg-green-50 text-green-700 border-green-200',   dot: 'bg-green-400' },
-verified: { label: 'Verified', classes: 'bg-green-50 text-green-700 border-green-200',   dot: 'bg-green-400' },
-active:   { label: 'Active',   classes: 'bg-primary-50 text-primary-700 border-primary-200', dot: 'bg-primary-400' },
-pending:  { label: 'Pending',  classes: 'bg-amber-50 text-amber-700 border-amber-200',   dot: 'bg-amber-400' },
-inactive: { label: 'Inactive', classes: 'bg-neutral-100 text-neutral-500 border-neutral-200', dot: 'bg-neutral-400' },
-warning:  { label: 'Warning',  classes: 'bg-amber-50 text-amber-700 border-amber-200',   dot: 'bg-amber-400' },
-```
-
-**Add extensibility: `label` override + custom fallback:**
-```js
-// Props
-label: { type: String, default: undefined }  // allows override of default label
-
-// Computed fallback: unknown statuses render as neutral with caller's label
-const config = computed(() =>
-  defaultStatuses[props.status] ?? {
-    label: props.label ?? props.status,
-    classes: 'bg-neutral-100 text-neutral-600 border-neutral-200',
-    dot: 'bg-neutral-400',
-  }
-)
-const displayLabel = computed(() => props.label ?? config.value.label)
-```
-
-This means `<StatusBadge status="regional-delegate" label="Regional Delegate" />` works immediately without any edits. Stays well under 150 lines. Does not change existing election statuses.
+- **TDD first**: Tests written before any code changes
+- **`--env=testing`**: All tests run with `php artisan test --env=testing`
+- No new migrations
+- Authorization added to `unpublish()` using existing `ElectionPolicy::publishResults()` (do not refactor policy in this sprint — that is TD-003)
+- Domain events follow T-001 pattern exactly (readonly class, no Laravel, immutable)
+- `unpublish()` keeps direct column update pattern for now (full state machine integration is TD-002)
 
 ---
 
-## Deliverable 3: Create `resources/js/Components/WorkflowLayout.vue`
+## Domain Events to Create
 
-This is the only fully new file. Scope: **workflow topology only** — not styling, not forms, not validation.
+Two new events following T-001 structure (pure PHP, no Eloquent, readonly):
 
-**Structure (slots):**
-- `#header` — Optional override for custom header content  
-- `#default` — Main content area (required)
-- `#actions` — Buttons / navigation row  
-- `#feedback` — Error / success messages  
-
-**Props:**
-- `title` (String, required) — Page/workflow title
-- `subtitle` (String, optional) — Subtitle / instruction line
-- `currentStep` (Number, optional) — Current step (1-based)
-- `totalSteps` (Number, optional, default 5) — Total steps
-- `stepLabels` (Array, optional) — Labels for WorkflowStepIndicator
-- `domain` (String, optional) — **Open-ended string** (not a union type). Used for aria-label context only. Any value accepted: 'voting', 'election', 'membership', 'governance', or future domains like 'regional-delegate', 'ngо-board', 'cooperative-assembly'. Never validated or branched on.
-
-**Internally uses:**
-- `resources/js/Components/Workflow/WorkflowStepIndicator.vue` (already built, accessible, responsive)
-
-**Layout structure:**
+### `ResultsPublishedEvent`
 ```
-<div role="main" :aria-label="domain workflow">
-  <!-- Header zone -->
-  <div> title + subtitle + slot#header </div>
-  
-  <!-- Progress zone (only if currentStep provided) -->
-  <WorkflowStepIndicator v-if="currentStep" ... />
-  
-  <!-- Content zone -->
-  <div> <slot /> </div>
-  
-  <!-- Feedback zone -->
-  <div v-if="$slots.feedback"> <slot name="feedback" /> </div>
-  
-  <!-- Actions zone -->
-  <div v-if="$slots.actions"> <slot name="actions" /> </div>
-</div>
+Fields:
+  electionId     string
+  publishedBy    string  — officer user ID
+  publishedAt    DateTimeImmutable
+  state          string  — election state after transition ('results_published')
 ```
 
-Budget: under 200 lines. Style: Composition API + `<script setup>`.
-
-**Usage example:**
-```vue
-<WorkflowLayout
-  title="Cast Your Vote"
-  subtitle="Step 3 of 5"
-  :currentStep="3"
-  :totalSteps="5"
-  :stepLabels="['Code', 'Agreement', 'Vote', 'Verify', 'Complete']"
-  domain="voting"
->
-  <!-- content -->
-  
-  <template #feedback>
-    <p v-if="error" class="text-sm text-danger-600">{{ error }}</p>
-  </template>
-  
-  <template #actions>
-    <Button variant="outline" @click="back">Previous</Button>
-    <Button variant="primary" @click="next">Continue</Button>
-  </template>
-</WorkflowLayout>
+### `ResultsUnpublishedEvent`
 ```
+Fields:
+  electionId     string
+  unpublishedBy  string  — officer user ID
+  unpublishedAt  DateTimeImmutable
+```
+
+Location: `app/Contexts/Election/Domain/Events/` (note: Election bounded context, not Trust)
 
 ---
 
-## Deliverable 4: Create `UI_GOVERNANCE_BACKLOG.md`
+## TDD Execution Plan
 
-New file at project root. Populated from audit findings. Serves as a visible, manageable queue for consistency work — not immediate tasks, future items applied during normal feature delivery.
+### Phase A — Red (Write All Failing Tests First)
 
-**Priority structure:**
-```
-Tier 1 — Voting workflow (highest user impact)
-Tier 2 — Election workflow
-Tier 3 — Membership workflow
-Tier 4 — Admin / Internal (low priority)
-```
+#### File 1: `tests/Unit/Election/Events/ResultsPublishedEventTest.php`
+- test_event_can_be_created_with_all_fields
+- test_event_is_immutable
+- test_event_contains_only_election_publication_concepts
 
-**Backlog items from audit (with Priority / Business Value / Effort):**
+#### File 2: `tests/Unit/Election/Events/ResultsUnpublishedEventTest.php`
+- test_event_can_be_created_with_all_fields
+- test_event_is_immutable
 
-```
-UI-001
-What:    Replace 50+ hardcoded voted/active/pending badges → use StatusBadge
-Pages:   Vote/Create.vue, Vote/Verify.vue, Vote/Result.vue + DemoVote/*
-Priority: High
-Value:   High — voters see status in 1 consistent color instead of 4
-Effort:  Small (4h) — component exists, swap inline classes
+#### File 3: `tests/Feature/Election/ResultsPublicationTest.php` (HTTP tests)
 
-UI-002
-What:    Adopt Button component in Voting workflow
-Pages:   Vote/Create.vue, Vote/Verify.vue, Vote/CreateVotingPage.vue
-Priority: High
-Value:   High — primary user journey, high visibility
-Effort:  Small (2h) — replace raw <button> with <Button variant="">
+| # | Test | Expected Red Reason |
+|---|------|---|
+| 1 | Viewboard requires auth — guest redirected | May already pass |
+| 2 | Viewboard renders correct Inertia props (election, stats, readonly) | Missing test |
+| 3 | Publish requires chief role — deputy gets 403 | Missing test |
+| 4 | Publish transitions state machine → results_published = true | Missing test |
+| 5 | Publish dispatches ResultsPublishedEvent | Event class doesn't exist yet |
+| 6 | **Unpublish requires authorization — deputy gets 403** | **FAILS: bug proves auth missing** |
+| 7 | Unpublish by chief sets results_published = false | Missing test |
+| 8 | Unpublish dispatches ResultsUnpublishedEvent | Event class doesn't exist yet |
 
-UI-003
-What:    Apply WorkflowLayout to Voting workflow pages
-Pages:   Vote/CreateVotingPage.vue, Vote/Create.vue, Vote/Verify.vue
-Priority: High
-Value:   High — users recognize consistent step-by-step pattern
-Effort:  Medium (6h) — restructure page sections into slots
+#### File 4: `tests/Unit/Election/ElectionPublicationTest.php` (aggregate-level)
+- test_election_cannot_be_published_when_not_in_counting_state
+- test_election_cannot_be_published_twice
+- test_publish_sets_results_published_at_timestamp
+- test_results_published_at_is_not_cleared_on_unpublish (documents the asymmetry as intentional)
 
-UI-004
-What:    Apply WorkflowLayout to Election workflow pages
-Pages:   Election/ElectionPage.vue, Election/Show.vue, Election/Management.vue
-Priority: High
-Value:   High — election managers recognize consistent structure
-Effort:  Medium (6h)
-
-UI-005
-What:    Adopt Button component in Election workflow
-Pages:   Election/Show.vue, Election/Management.vue, Election/ElectionIndex.vue
-Priority: High
-Value:   Medium — staff-facing, high frequency
-Effort:  Small (2h)
-
-UI-006
-What:    StatusBadge adoption in Election pages
-Pages:   Election/ElectionIndex.vue, Election/ElectionResult.vue
-Priority: High
-Value:   High — election states already use StatusBadge API
-Effort:  Small (2h)
-
-UI-007
-What:    Apply WorkflowLayout to Membership workflow
-Pages:   Membership pages (when modified for feature work)
-Priority: Medium
-Value:   Medium — convergence during normal delivery
-Effort:  Medium (6h) — defer until membership touched
-
-UI-008
-What:    Standardize form focus states in Voting + Election pages
-Pages:   Vote/* and Election/Posts/Partials/*
-Priority: Medium
-Value:   Medium — accessibility + keyboard navigation
-Effort:  Small (3h) — add focus:ring-2 focus:ring-primary-500
-
-UI-009
-What:    Consolidate table border colors in Members/Index.vue, Admin pages
-Pages:   Members/Index.vue, Admin/GeoUnits.vue, Admin/GovernanceLevels.vue
-Priority: Low
-Value:   Low — admin-only, low user visibility
-Effort:  Small (2h) — find-replace slate-200 → neutral-200 in table contexts
-
-UI-010
-What:    Consolidate modal patterns in Election/Candidacy pages
-Pages:   Election/Candidacy/Applications.vue, Election/Candidacy/Index.vue
-Priority: Low
-Value:   Low — staff-facing
-Effort:  Medium (4h) — defer to phase C (membership+)
-```
+Run: `php artisan test tests/Unit/Election/ tests/Feature/Election/ResultsPublicationTest.php --env=testing`
+**Expected: Multiple failures.**
 
 ---
 
-## Deliverable 5: Create `FRONTEND_DECISIONS.md`
+### Phase B — Green (Fix the Bugs, Create the Events)
 
-Frontend ADR (Architecture Decision Record) repository. Records the **why** behind decisions so future contributors (and Claude) don't re-litigate them.
+**Step 1: Create event classes**
+- `app/Contexts/Election/Domain/Events/ResultsPublishedEvent.php`
+- `app/Contexts/Election/Domain/Events/ResultsUnpublishedEvent.php`
+- Follow T-001 pattern: `final readonly class`, named constructor, getters only
 
-```markdown
-# Frontend Decisions
+**Step 2: Fix `unpublish()` authorization**
 
-FD-001
-Decision:  Button.vue is the canonical button component
-Date:      2026-05-29
-Reason:    Already existed with full variant/size API before governance layer was added.
-           Creating AppButton.vue would duplicate rather than eliminate.
-Use:       <Button variant="primary|secondary|outline|ghost|danger|..." size="sm|md|lg">
+File: `app/Http/Controllers/Election/ElectionManagementController.php`
 
-FD-002
-Decision:  WorkflowLayout owns topology only (not styling, not forms, not validation)
-Date:      2026-05-29
-Reason:    Prevents God Component growth (WorkflowLayoutV2, WorkflowLayoutElection, etc.)
-           Components that own too much create the fragmentation they were built to solve.
-Rule:      If WorkflowLayout grows past 200 lines, split responsibilities.
-
-FD-003
-Decision:  domain prop in WorkflowLayout is open-ended string, not union type
-Date:      2026-05-29
-Reason:    Public Digit will serve NGOs, unions, cooperatives, political parties.
-           Enumerating domains creates forced V2 migration when new org types arrive.
-Use:       domain="voting" or domain="regional-assembly" — any string accepted.
-
-FD-004
-Decision:  StatusBadge supports unknown statuses via neutral fallback
-Date:      2026-05-29
-Reason:    Each organization type may invent domain-specific statuses.
-           Requiring edits to StatusBadge per new status is a maintenance bottleneck.
-Use:       <StatusBadge status="regional-delegate" label="Regional Delegate" />
-
-FD-005
-Decision:  No global color replacements (slate-* → neutral-*, etc.)
-Date:      2026-05-29
-Reason:    High regression risk across 225 files. Semantic differences may be intentional
-           (emerald vs green for active vs completed). Replace only during feature work.
-Rule:      Bring pages to color standard only when already modified for business reasons.
+Add before the update:
+```php
+$this->authorize('publishResults', $election);
 ```
 
+**Step 3: Dispatch domain events from controller**
+
+In `publish()` after state machine transition:
+```php
+event(new ResultsPublishedEvent(
+    electionId: $election->id,
+    publishedBy: auth()->id(),
+    publishedAt: new DateTimeImmutable($election->results_published_at->toDateTimeString()),
+    state: $election->state,
+));
+```
+
+In `unpublish()` after column update:
+```php
+event(new ResultsUnpublishedEvent(
+    electionId: $election->id,
+    unpublishedBy: auth()->id(),
+    unpublishedAt: new DateTimeImmutable(),
+));
+```
+
+**Step 4: Fix Viewboard routing bug**
+
+File: `resources/js/Pages/Election/Viewboard.vue`
+
+Investigate which route name `ResultController::index()` registers, then replace:
+```html
+<!-- Before (broken) -->
+<a href="/election/result">View Results</a>
+
+<!-- After (correct) -->
+<Link :href="route('election.result', { election: election.slug })">View Results</Link>
+```
+
+Run: `php artisan test tests/Unit/Election/ tests/Feature/Election/ResultsPublicationTest.php --env=testing`
+**Expected: All tests pass.**
+
 ---
 
-## File Summary
+### Phase C — Regression
 
-| Action | File | Type |
-|---|---|---|
-| UPDATE (append sections) | `.claude/UI_GUIDELINES.md` | Governance rules |
-| UPDATE (extend map + label prop) | `resources/js/Components/StatusBadge.vue` | Add 6 general statuses + extensibility |
-| CREATE | `resources/js/Components/WorkflowLayout.vue` | New slot-based layout component |
-| CREATE | `UI_GOVERNANCE_BACKLOG.md` | Backlog tracking file with Priority/Value/Effort |
-| CREATE | `FRONTEND_DECISIONS.md` | Frontend ADR repository |
-
-**Not created:**
-- `AppButton.vue` — `Button.vue` already covers this (FD-001)
-- `AppTable.vue` — Deferred (second wave)
+```bash
+php artisan test --env=testing
+```
+**Expected: No regressions.**
 
 ---
 
-## What NOT To Do
+## Files to Create
 
-- No global color replacements (slate-* → neutral-*, blue-* → primary-*)
-- No refactoring untouched pages
-- Do not remove or alter existing election statuses in StatusBadge
-- WorkflowLayout must not own forms, buttons, validation, or business logic
+| File | Purpose |
+|------|---------|
+| `app/Contexts/Election/Domain/Events/ResultsPublishedEvent.php` | Domain event: results published |
+| `app/Contexts/Election/Domain/Events/ResultsUnpublishedEvent.php` | Domain event: results unpublished |
+| `tests/Unit/Election/Events/ResultsPublishedEventTest.php` | Unit tests for event contract |
+| `tests/Unit/Election/Events/ResultsUnpublishedEventTest.php` | Unit tests for event contract |
+| `tests/Feature/Election/ResultsPublicationTest.php` | 8 HTTP tests for publication workflow |
+| `tests/Unit/Election/ElectionPublicationTest.php` | 4 aggregate-level publication tests |
+
+## Files to Modify
+
+| File | Change |
+|------|--------|
+| `app/Http/Controllers/Election/ElectionManagementController.php` | Add `$this->authorize('publishResults', $election)` to `unpublish()`; dispatch domain events from both `publish()` and `unpublish()` |
+| `resources/js/Pages/Election/Viewboard.vue` | Fix hardcoded href to use election slug |
+
+---
+
+## Test Setup Requirements (From T-001 Lessons Learned)
+
+Each feature test requires in setUp():
+1. `Organisation::factory()->create()`
+2. `User::factory()->create()` for each role
+3. `UserOrganisationRole::create([...])` — required by `EnsureOrganisationMember` middleware (CRITICAL: without this, middleware blocks silently)
+4. `ElectionOfficer::create(['role' => 'chief', 'status' => 'active'])`
+5. `ElectionOfficer::create(['role' => 'deputy', 'status' => 'active'])`
+
+For publish test (Test 4): election must be in `counting` state. Need to verify whether `Election::factory()` accepts arbitrary `state` values or if full transition chain is required.
+
+---
+
+## Technical Debt Captured (Do Not Block This Sprint)
+
+These architectural improvements are real but not delivery blockers:
+
+| Ticket | Description |
+|--------|-------------|
+| **TD-001** | Move `unpublish()` into the state machine (currently direct DB update; should be `results_published → results_unpublished` transition through ConstitutionalTransitionGuard) |
+| **TD-002** | Introduce `ElectionPolicy::managePublication()` that unifies publish + unpublish under a single named capability instead of reusing `publishResults` for both |
+| **TD-003** | Add event listeners for `ResultsPublishedEvent` and `ResultsUnpublishedEvent` once a real consumer exists (audit dashboard, notification, constitutional archive) |
+
+---
+
+## Why This Scope
+
+The Domain Architect named the business concern correctly:
+
+> **Election Publication Governance** — governing the official publication status of a constitutional election result
+
+This sprint delivers:
+- ✅ Security fix (unauthorized unpublish blocked)
+- ✅ Domain events (audit extension point)
+- ✅ Aggregate tests (survive framework changes)
+- ✅ HTTP test coverage (8 tests)
+- ✅ Routing fix
+- ✅ Explicit tech debt captured
+
+It does NOT deliver:
+- Export formats (CSV/PDF/JSON)
+- Real-time results board
+- Verification proof UI
+- State machine refactor for unpublish
+- Policy capability unification
 
 ---
 
 ## Verification
 
-After implementation:
+```bash
+# Phase A: Red
+php artisan test tests/Unit/Election/ tests/Feature/Election/ResultsPublicationTest.php --env=testing
 
-1. `WorkflowLayout` renders correctly with all slot combinations (header only, actions only, feedback only, all slots)
-2. `StatusBadge` renders new statuses: `voted`, `verified`, `active`, `pending`, `inactive`, `warning`
-3. Existing StatusBadge statuses unchanged (draft, approved, voting_active, etc.)
-4. `Button.vue` is documented as canonical in UI_GUIDELINES.md
-5. `UI_GOVERNANCE_BACKLOG.md` has 12 items organized by tier
-6. Run `npm run design-check` — no regression in violation count
+# Phase B: Green
+php artisan test tests/Unit/Election/ tests/Feature/Election/ResultsPublicationTest.php --env=testing
+
+# Phase C: Regression
+php artisan test --env=testing
+```

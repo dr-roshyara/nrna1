@@ -2,8 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Domain\Election\StateMachine\Transition;
 use App\Models\Election;
+use App\Models\ElectionMembership;
+use App\Models\ElectionOfficer;
 use App\Models\Organisation;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ElectionFactory extends Factory
@@ -220,5 +225,253 @@ class ElectionFactory extends Factory
         return $this->state([
             'voter_source_strategy' => 'full_membership',
         ]);
+    }
+
+    /**
+     * Create election in voting_active state through canonical transitions.
+     *
+     * RESPECTS AGGREGATE RULES:
+     * - Executes real transitions (auto_submit → begin_setup → complete_administration → open_voting)
+     * - Does not bypass constitutional guards
+     * - Sets up all required data (posts, voters, chief, timezone, voting window)
+     *
+     * Use in tests that need to verify voting-phase behavior.
+     */
+    public function inVotingActiveState()
+    {
+        return $this->afterCreating(function (Election $election) {
+            // Set timezone (required by open_voting precondition)
+            $election->update([
+                'timezone' => 'UTC',
+                'voting_starts_at' => now(),
+                'voting_ends_at' => now()->addDays(3),
+            ]);
+
+            // Execute auto_submit: draft → approved (free plan ≤40 voters)
+            $election->transitionTo(
+                Transition::manual(
+                    action: 'auto_submit',
+                    actorId: 'system',
+                    reason: 'Test fixture: free plan auto-approval'
+                )
+            );
+
+            // Execute begin_setup: approved → setup_administration
+            $election->transitionTo(
+                Transition::manual(
+                    action: 'begin_setup',
+                    actorId: fake()->uuid(),
+                    reason: 'Test fixture: begin setup'
+                )
+            );
+
+            // Create a post (required by complete_administration precondition: has_posts)
+            Post::factory()
+                ->for($election)
+                ->create(['is_national_wide' => true]);
+
+            // Create a voter (required by complete_administration precondition: has_voters)
+            $voter = User::factory()->create();
+            ElectionMembership::factory()
+                ->for($election)
+                ->for($voter, 'user')
+                ->create();
+
+            // Create chief officer (required by complete_administration precondition: has_chief)
+            $chief = User::factory()->create(['name' => 'Chief Officer']);
+            ElectionOfficer::create([
+                'election_id' => $election->id,
+                'user_id' => $chief->id,
+                'organisation_id' => $election->organisation_id,
+                'role' => 'chief',
+                'status' => 'active',
+            ]);
+
+            // Execute complete_administration: setup_administration → setup_nomination
+            $election->transitionTo(
+                Transition::manual(
+                    action: 'complete_administration',
+                    actorId: $chief->id,
+                    reason: 'Test fixture: administration complete'
+                )
+            );
+
+            // Execute complete_nomination: setup_nomination → setup_nomination (stays in nomination)
+            $election->transitionTo(
+                Transition::manual(
+                    action: 'complete_nomination',
+                    actorId: $chief->id,
+                    reason: 'Test fixture: nomination complete'
+                )
+            );
+
+            // Now set voting dates (required precondition for open_voting)
+            $election->update([
+                'voting_starts_at' => now(),
+                'voting_ends_at' => now()->addDays(3),
+            ]);
+
+            // Execute open_voting: setup_nomination → voting_active (chief only)
+            $election->transitionTo(
+                Transition::manual(
+                    action: 'open_voting',
+                    actorId: $chief->id,
+                    reason: 'Test fixture: open voting'
+                )
+            );
+        });
+    }
+
+    /**
+     * Create election in counting state through canonical transitions.
+     *
+     * RESPECTS AGGREGATE RULES:
+     * - Executes real transitions (voting_active → close_voting → counting)
+     * - Does not bypass constitutional guards
+     * - Sets up all required data and executes full transition sequence
+     */
+    public function inCountingState()
+    {
+        return $this->afterCreating(function (Election $election) {
+            // Set timezone only (required by open_voting precondition)
+            // Do NOT set voting_starts_at/voting_ends_at yet as it may trigger automatic transitions
+            $election->update([
+                'timezone' => 'UTC',
+            ]);
+
+            // Execute auto_submit: draft → approved (free plan ≤40 voters)
+            $election->transitionTo(
+                Transition::manual(
+                    action: 'auto_submit',
+                    actorId: 'system',
+                    reason: 'Test fixture: free plan auto-approval'
+                )
+            );
+
+            // Execute begin_setup: approved → setup_administration
+            $election->transitionTo(
+                Transition::manual(
+                    action: 'begin_setup',
+                    actorId: fake()->uuid(),
+                    reason: 'Test fixture: begin setup'
+                )
+            );
+
+            // Create a post (required by complete_administration precondition: has_posts)
+            Post::factory()
+                ->for($election)
+                ->create(['is_national_wide' => true]);
+
+            // Create a voter (required by complete_administration precondition: has_voters)
+            $voter = User::factory()->create();
+            ElectionMembership::factory()
+                ->for($election)
+                ->for($voter, 'user')
+                ->create();
+
+            // Create chief officer (required by complete_administration precondition: has_chief)
+            $chief = User::factory()->create(['name' => 'Chief Officer']);
+            ElectionOfficer::create([
+                'election_id' => $election->id,
+                'user_id' => $chief->id,
+                'organisation_id' => $election->organisation_id,
+                'role' => 'chief',
+                'status' => 'active',
+            ]);
+
+            // Execute complete_administration: setup_administration → setup_nomination
+            $election->transitionTo(
+                Transition::manual(
+                    action: 'complete_administration',
+                    actorId: $chief->id,
+                    reason: 'Test fixture: administration complete'
+                )
+            );
+
+            // Execute complete_nomination: setup_nomination → setup_nomination (stays in nomination)
+            $election->transitionTo(
+                Transition::manual(
+                    action: 'complete_nomination',
+                    actorId: $chief->id,
+                    reason: 'Test fixture: nomination complete'
+                )
+            );
+
+            // Now set voting dates (required precondition for open_voting)
+            $election->update([
+                'voting_starts_at' => now(),
+                'voting_ends_at' => now()->addDays(3),
+            ]);
+
+            // Execute open_voting: setup_nomination → voting_active (chief only)
+            $election->transitionTo(
+                Transition::manual(
+                    action: 'open_voting',
+                    actorId: $chief->id,
+                    reason: 'Test fixture: open voting'
+                )
+            );
+
+            // Execute close_voting: voting_active → counting
+            $election->transitionTo(
+                Transition::manual(
+                    action: 'close_voting',
+                    actorId: $chief->id,
+                    reason: 'Test fixture: close voting'
+                )
+            );
+        });
+    }
+
+    /**
+     * Create election in results_published state through canonical transitions.
+     *
+     * RESPECTS AGGREGATE RULES:
+     * - Executes real transitions (counting → publish_results → results_published)
+     * - Chief only can publish results
+     * - Does not bypass constitutional guards
+     */
+    public function inResultsPublishedState()
+    {
+        return $this->afterCreating(function (Election $election) {
+            // Reuse inCountingState logic to reach counting state
+            // Then execute publish_results
+
+            // Set timezone (do NOT set voting dates here as they may trigger automatic transitions)
+            $election->update([
+                'timezone' => 'UTC',
+            ]);
+
+            // Execute all transitions up to counting
+            $election->transitionTo(Transition::manual(action: 'auto_submit', actorId: 'system'));
+            $election->transitionTo(Transition::manual(action: 'begin_setup', actorId: fake()->uuid()));
+
+            Post::factory()->for($election)->create(['is_national_wide' => true]);
+            $voter = User::factory()->create();
+            ElectionMembership::factory()->for($election)->for($voter, 'user')->create();
+
+            $chief = User::factory()->create(['name' => 'Chief Officer']);
+            ElectionOfficer::create([
+                'election_id' => $election->id,
+                'user_id' => $chief->id,
+                'organisation_id' => $election->organisation_id,
+                'role' => 'chief',
+                'status' => 'active',
+            ]);
+
+            $election->transitionTo(Transition::manual(action: 'complete_administration', actorId: $chief->id));
+            $election->transitionTo(Transition::manual(action: 'complete_nomination', actorId: $chief->id));
+            $election->transitionTo(Transition::manual(action: 'open_voting', actorId: $chief->id));
+            $election->transitionTo(Transition::manual(action: 'close_voting', actorId: $chief->id));
+
+            // Now execute publish_results: counting → results_published (chief only)
+            $election->transitionTo(
+                Transition::manual(
+                    action: 'publish_results',
+                    actorId: $chief->id,
+                    reason: 'Test fixture: publish results'
+                )
+            );
+        });
     }
 }

@@ -788,7 +788,163 @@ const stateMapping = computed(() =>
 
 ---
 
-**Last Updated:** 2026-05-01  
+**Last Updated:** 2026-05-29  
 **Maintained By:** Design System Lead (nab.raj.sharma)  
 **Governance:** See `.claude/OWNERS` for approval workflow  
 **Status:** Phase 4 in progress, 268 violations remaining (target: < 50)
+
+---
+
+## Governance Model (Added 2026-05-29)
+
+### Preferred — All new pages use this
+
+| Component | Use For |
+|-----------|---------|
+| `<Button>` | All buttons without exception |
+| `<StatusBadge>` | All status display |
+| `<WorkflowLayout>` | All multi-step workflows |
+
+Focus state on all interactive elements:
+```
+focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
+```
+
+### Allowed
+
+- Existing implementations in pages not currently being modified
+- Documented exceptions in `design-system.exceptions.json`
+- Intentional semantic color choices (verify before changing — see color semantics above)
+
+### Forbidden (New Code Only)
+
+- New UI variants without documented justification in `FRONTEND_DECISIONS.md`
+- Raw `<button>` elements (use `<Button>`)
+- Hardcoded status badges (use `<StatusBadge>`)
+- New components that do not eliminate at least 3 existing variants
+
+---
+
+## Component Justification Rule
+
+**A new component is approved only if it eliminates at least 3 existing variants.**
+
+Before creating any new component:
+
+```
+1. Search resources/js/Components/ for existing implementations
+2. Check if Button, StatusBadge, or WorkflowLayout can be extended
+3. If a new component is needed:
+   a. Document the decision in FRONTEND_DECISIONS.md
+   b. Confirm it eliminates 3+ existing variants
+   c. Keep it under 200 lines — if it grows beyond that, split
+```
+
+**Examples:**
+
+| Component | Eliminates | Decision |
+|-----------|-----------|----------|
+| `StatusBadge` | 15+ badge variants | ✅ Approved |
+| `Button` | 5 button patterns | ✅ Approved |
+| `WorkflowLayout` | fragmented per-page step UIs | ✅ Approved |
+| `ElectionSpecialButton` | 1 use case | ❌ Rejected |
+| `MembershipLargeCard` | 0 existing variants | ❌ Rejected |
+
+---
+
+## Canonical Components (Current Set)
+
+### `<Button>` — `resources/js/Components/Button.vue`
+
+The canonical button for all domains. See `FRONTEND_DECISIONS.md` FD-001.
+
+```vue
+<Button variant="primary" size="lg">Create Election</Button>
+<Button variant="secondary" size="md">Cancel</Button>
+<Button variant="danger" size="sm" :loading="deleting">Delete</Button>
+<Button variant="outline" size="md" :disabled="!valid">Next</Button>
+```
+
+Variants: `primary | secondary | outline | ghost | danger | danger-outline | accent | success | warning`  
+Sizes: `sm | md | lg`  
+States: `loading` (spinner), `disabled` (opacity + cursor)
+
+### `<StatusBadge>` — `resources/js/Components/StatusBadge.vue`
+
+Unified status indicator. Supports all election lifecycle states plus general statuses.
+Custom statuses render with neutral fallback — no edits needed for new org types.
+
+```vue
+<StatusBadge status="voting_active" />
+<StatusBadge status="voted" />
+<StatusBadge status="pending" />
+<StatusBadge status="regional-delegate" label="Regional Delegate" />
+```
+
+### `<WorkflowLayout>` — `resources/js/Components/WorkflowLayout.vue`
+
+Workflow topology component. Owns structure only — not forms, not buttons, not validation.
+See `FRONTEND_DECISIONS.md` FD-002 and FD-003.
+
+```vue
+<WorkflowLayout
+  title="Cast Your Vote"
+  subtitle="Select your candidates for each position"
+  :currentStep="3"
+  :totalSteps="5"
+  :stepLabels="['Code', 'Agreement', 'Vote', 'Verify', 'Complete']"
+  domain="voting"
+>
+  <!-- main content -->
+
+  <template #feedback>
+    <p v-if="error" class="text-sm text-danger-600">{{ error }}</p>
+  </template>
+
+  <template #actions>
+    <Button variant="outline" @click="back">Previous</Button>
+    <Button variant="primary" @click="next">Continue</Button>
+  </template>
+</WorkflowLayout>
+```
+
+---
+
+## Migration Strategy
+
+### The Rule
+
+> **Never refactor a page solely for consistency. When a page is modified for business work, bring it to canonical patterns.**
+
+### Priority Order
+
+1. **Voting workflow** — highest user impact, public-facing
+2. **Election workflow** — election manager facing, high frequency
+3. **Membership workflow** — member facing, ongoing
+4. **Admin / Internal** — low priority, defer
+
+### What Not To Do
+
+- No global color replacements across 225 files (regression risk, semantic loss)
+- No separate "frontend modernization initiative"
+- No refactoring untouched pages
+
+### Tracking
+
+All consistency work is tracked in `UI_GOVERNANCE_BACKLOG.md` with Priority, Business Value, and Effort per item.
+
+Architectural decisions are recorded in `FRONTEND_DECISIONS.md`.
+
+---
+
+## Success Criteria
+
+| Milestone | Target |
+|-----------|--------|
+| New pages adopt canonical components | Immediate (governance active) |
+| Voting workflow converges | Month 1-2 |
+| Election workflow converges | Month 2-3 |
+| Membership workflow converges | Month 3-4 |
+| 70% of newly touched pages use canonical patterns | Month 6 |
+
+Success is **not** 225 pages migrated. Success is **controlled convergence** while delivery continues.
