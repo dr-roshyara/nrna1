@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\UserOrganisationRole;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class ResultsPublicationTest extends TestCase
@@ -26,12 +27,31 @@ class ResultsPublicationTest extends TestCase
     {
         parent::setUp();
 
+        // 1. Create the base organization
         $this->organisation = Organisation::factory()->create();
 
+        // 2. Create election in counting state
+        $this->election = Election::factory()
+            ->for($this->organisation)
+            ->inCountingState()
+            ->create();
+
+        // 3. Create Chief Officer for authorization testing
         $this->chief = User::factory()->create(['name' => 'Chief Officer']);
+
+        ElectionOfficer::create([
+            'id' => (string) Str::uuid(),
+            'election_id' => $this->election->id,
+            'user_id' => $this->chief->id,
+            'organisation_id' => $this->organisation->id,
+            'role' => 'chief',
+            'status' => 'active',
+        ]);
+
+        // 4. Create Deputy Officer for unauthorized action testing
         $this->deputy = User::factory()->create(['name' => 'Deputy Officer']);
 
-        // Create organisation membership for both officers (required by middleware)
+        // 5. Ensure organization membership for both officers
         UserOrganisationRole::create([
             'user_id' => $this->chief->id,
             'organisation_id' => $this->organisation->id,
@@ -44,32 +64,9 @@ class ResultsPublicationTest extends TestCase
             'role' => 'admin',
         ]);
 
-        // Create election in counting state through legitimate constitutional transitions
-        // This respects the Election aggregate's state progression rules
-        $this->election = Election::factory()
-            ->for($this->organisation)
-            ->inCountingState()
-            ->create();
-
-        // Get the chief officer created by the fixture
-        // (the fixture sets up the chief during its transition sequence)
-        $this->chief = \App\Models\User::where('name', 'Chief Officer')
-            ->whereHas('electionOfficers', function ($query) {
-                $query->where('election_id', $this->election->id)
-                    ->where('role', 'chief');
-            })
-            ->first();
-
-        // Create election officers
+        // 6. Create deputy election officer role
         ElectionOfficer::create([
-            'election_id' => $this->election->id,
-            'user_id' => $this->chief->id,
-            'organisation_id' => $this->organisation->id,
-            'role' => 'chief',
-            'status' => 'active',
-        ]);
-
-        ElectionOfficer::create([
+            'id' => (string) Str::uuid(),
             'election_id' => $this->election->id,
             'user_id' => $this->deputy->id,
             'organisation_id' => $this->organisation->id,
@@ -107,7 +104,6 @@ class ResultsPublicationTest extends TestCase
             ->where('readonly', true)
         );
 
-        // Verify election data is passed
         $response->assertInertia(fn ($page) => $page
             ->where('election.id', $this->election->id)
             ->where('election.name', $this->election->name)
@@ -128,7 +124,8 @@ class ResultsPublicationTest extends TestCase
 
     public function test_publish_transitions_state_machine(): void
     {
-        // Before publish
+        $this->withoutExceptionHandling();
+
         $this->assertEquals('counting', $this->election->state);
         $this->assertFalse($this->election->results_published);
 
@@ -167,14 +164,12 @@ class ResultsPublicationTest extends TestCase
 
     public function test_unpublish_requires_authorization(): void
     {
-        // First, publish the results
         $this->election->update([
             'results_published' => true,
             'results_published_at' => now(),
             'state' => 'results_published',
         ]);
 
-        // Deputy officer should NOT be able to unpublish
         $response = $this->actingAs($this->deputy)->post(
             route('elections.unpublish', [
                 'organisation' => $this->organisation->slug,
@@ -187,7 +182,6 @@ class ResultsPublicationTest extends TestCase
 
     public function test_unpublish_by_chief_sets_results_unpublished(): void
     {
-        // First, publish the results
         $this->election->update([
             'results_published' => true,
             'results_published_at' => now(),
@@ -209,7 +203,6 @@ class ResultsPublicationTest extends TestCase
 
     public function test_unpublish_dispatches_results_unpublished_event(): void
     {
-        // Publish first
         $this->election->update([
             'results_published' => true,
             'results_published_at' => now(),
