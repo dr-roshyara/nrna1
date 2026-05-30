@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Election;
 
+use App\Contexts\Trust\Domain\Events\IdentityAttestedEvent;
+use App\Contexts\Trust\Domain\Events\VerificationRevokedEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Election;
 use App\Models\Organisation;
 use App\Models\VoterVerification;
 use App\Services\ElectionAuditService;
+use DateTimeImmutable;
 use Illuminate\Http\Request;
 
 class VoterVerificationController extends Controller
@@ -51,7 +54,7 @@ class VoterVerificationController extends Controller
             ));
         } else {
             // Create new verification record
-            VoterVerification::create(array_merge(
+            $verification = VoterVerification::create(array_merge(
                 $validated,
                 [
                     'election_id' => $election->id,
@@ -62,6 +65,15 @@ class VoterVerificationController extends Controller
                 ]
             ));
         }
+
+        // Dispatch identity attested event
+        event(new IdentityAttestedEvent(
+            verificationId: $verification->id,
+            userId: $validated['user_id'],
+            attestedBy: auth()->id(),
+            attestedAt: new DateTimeImmutable($verification->verified_at->toDateTimeString()),
+            notes: $validated['notes'] ?? null,
+        ));
 
         // Log voter_verified event
         app(ElectionAuditService::class)->log(
@@ -102,6 +114,14 @@ class VoterVerificationController extends Controller
             'revoked_by' => auth()->id(),
             'revoked_at' => now(),
         ]);
+
+        // Dispatch verification revoked event
+        event(new VerificationRevokedEvent(
+            verificationId: $verification->id,
+            userId: $verification->user_id,
+            revokedBy: auth()->id(),
+            revokedAt: new DateTimeImmutable($verification->revoked_at->toDateTimeString()),
+        ));
 
         // Log verification_revoked event
         app(ElectionAuditService::class)->log(
