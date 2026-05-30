@@ -135,7 +135,7 @@ class ElectionFactory extends Factory
             return [
                 'state' => 'submitted_for_approval',
                 'submitted_for_approval_at' => now(),
-                'submitted_by' => fake()->uuid(),
+                'submitted_by' => null,
             ];
         });
     }
@@ -146,7 +146,7 @@ class ElectionFactory extends Factory
             return [
                 'state' => 'setup',
                 'approved_at' => now(),
-                'approved_by' => fake()->uuid(),
+                'approved_by' => null,
             ];
         });
     }
@@ -192,7 +192,6 @@ class ElectionFactory extends Factory
                 'voting_locked' => true,
                 'results_locked' => true,
                 'results_published_at' => now(),
-                'results_published_by' => fake()->uuid(),
             ];
         });
     }
