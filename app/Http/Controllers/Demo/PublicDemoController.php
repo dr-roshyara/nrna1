@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Demo;
 use App\Http\Controllers\Controller;
 use App\Models\DemoCandidacy;
 use App\Models\DemoPost;
+use App\Models\DemoVote;
 use App\Models\Election;
 use App\Models\PublicDemoSession;
 use App\Services\DemoElectionResolver;
@@ -412,6 +413,150 @@ class PublicDemoController extends Controller
         if ($session->current_step < $step) {
             abort(403, 'Please complete the previous steps first.');
         }
+    }
+
+    /**
+     * Show aggregated public demo results — no auth required.
+     *
+     * Performance note: O(posts × votes × 60) iterations. Acceptable for demo
+     * volumes (~600k iters at 1k votes). Optimize by indexing votes by post_id
+     * if this becomes a bottleneck.
+     */
+    public function publicResults(): \Inertia\Response|\Illuminate\Http\RedirectResponse
+    {
+        $election = $this->resolver->getPublicDemoElection();
+
+        if (!$election) {
+            return redirect()->route('public-demo.guide');
+        }
+
+        // Only show results if the election is active and has data
+        if (!$election->is_active) {
+            return redirect()->route('public-demo.guide');
+        }
+
+        // Load posts for this election
+        $posts = DemoPost::withoutGlobalScopes()
+            ->where('election_id', $election->id)
+            ->get(['id as post_id', 'name', 'state_name', 'required_number']);
+
+        if ($posts->isEmpty()) {
+            return \Inertia\Inertia::render('Demo/Result/Index', [
+                'final_result' => ['total_votes' => 0, 'posts' => []],
+                'posts' => [],
+                'mode' => 'public',
+                'organisation_id' => $election->organisation_id,
+                'is_demo' => true,
+                'page_title' => 'Public Digit Demo Election Results',
+            ]);
+        }
+
+        // Calculate results (adapted from DemoResultController pattern)
+        $results = $this->calculatePublicResults($posts, $election);
+
+        return \Inertia\Inertia::render('Demo/Result/Index', [
+            'final_result' => $results,
+            'posts' => $posts,
+            'mode' => 'public',
+            'organisation_id' => $election->organisation_id,
+            'is_demo' => true,
+            'page_title' => 'Public Digit Demo Election Results',
+        ]);
+    }
+
+    /**
+     * Calculate aggregated vote results for the public demo election.
+     */
+    private function calculatePublicResults($posts, Election $election): array
+    {
+        $totalVotes = DemoVote::withoutGlobalScopes()
+            ->where('election_id', $election->id)
+            ->count();
+
+        $results = [
+            'total_votes' => $totalVotes,
+            'posts' => [],
+        ];
+
+        // Pre-load all votes for this election to avoid N+1 on DB
+        $allVotes = DemoVote::withoutGlobalScopes()
+            ->where('election_id', $election->id)
+            ->get();
+
+        foreach ($posts as $post) {
+            $postResults = [
+                'post_id' => $post->post_id,
+                'post_name' => $post->name,
+                'state_name' => $post->state_name,
+                'candidates' => [],
+                'no_vote_count' => 0,
+                'total_votes_for_post' => 0,
+            ];
+
+            // Get candidates for this post with user relationship loaded
+            $allCandidates = DemoCandidacy::withoutGlobalScopes()
+                ->where('post_id', $post->post_id)
+                ->where('election_id', $election->id)
+                ->with('user')
+                ->get();
+
+            $candidateVotes = [];
+            foreach ($allCandidates as $c) {
+                $candidateVotes[$c->id] = [
+                    'name' => $c->user?->name ?? $c->user_name ?? $c->candidacy_name ?? $c->name ?? 'Unknown',
+                    'count' => 0,
+                ];
+            }
+
+            // Process each vote to count candidates for this post
+            foreach ($allVotes as $vote) {
+                for ($i = 1; $i <= 60; $i++) {
+                    $field = 'candidate_' . str_pad((string)$i, 2, '0', STR_PAD_LEFT);
+                    $candidateData = $vote->$field ? json_decode($vote->$field, true) : null;
+
+                    if (!$candidateData || ($candidateData['post_id'] ?? null) !== $post->post_id) {
+                        continue;
+                    }
+
+                    if (isset($candidateData['no_vote']) && $candidateData['no_vote'] === true) {
+                        $postResults['no_vote_count']++;
+                        $postResults['total_votes_for_post']++;
+                        continue;
+                    }
+
+                    foreach ($candidateData['candidates'] ?? [] as $candidate) {
+                        $candidateId = $candidate['candidacy_id'] ?? null;
+                        if ($candidateId && isset($candidateVotes[$candidateId])) {
+                            $candidateVotes[$candidateId]['count']++;
+                            $postResults['total_votes_for_post']++;
+                        }
+                    }
+                }
+            }
+
+            // Format and sort candidates by vote count descending
+            foreach ($candidateVotes as $candidateId => $data) {
+                $postResults['candidates'][] = [
+                    'candidacy_id' => $candidateId,
+                    'name' => $data['name'],
+                    'vote_count' => $data['count'],
+                    'vote_percent' => $postResults['total_votes_for_post'] > 0
+                        ? round(($data['count'] / $postResults['total_votes_for_post']) * 100, 2)
+                        : 0,
+                ];
+            }
+
+            usort($postResults['candidates'], function ($a, $b) {
+                if ($a['vote_count'] === $b['vote_count']) {
+                    return strcmp($a['name'], $b['name']);
+                }
+                return $b['vote_count'] - $a['vote_count'];
+            });
+
+            $results['posts'][] = $postResults;
+        }
+
+        return $results;
     }
 
     /**

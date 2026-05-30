@@ -606,6 +606,9 @@ Route::prefix('public-demo')->name('public-demo.')->group(function () {
     // Tutorial / Guide — MUST be before {publicDemoSession} to avoid slug conflict
     Route::get('/guide', [\App\Http\Controllers\Demo\PublicDemoController::class, 'guide'])->name('guide');
 
+    // Public aggregated demo results — no auth required
+    Route::get('/results', [\App\Http\Controllers\Demo\PublicDemoController::class, 'publicResults'])->name('results');
+
     // Entry point — creates or reuses a PublicDemoSession, redirects to Step 1
     Route::get('/start', [\App\Http\Controllers\Demo\PublicDemoController::class, 'start'])->name('start');
 
