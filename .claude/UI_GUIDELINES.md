@@ -15,6 +15,21 @@ This document tells you **how to use those sources correctly** and **what tools 
 
 ---
 
+## 🎨 Brand Color Architecture (Architectural Decision, 2026-05-29)
+
+Public Digit is a **Digital Governance Platform** — the color system must communicate **trust, neutrality, authority, and transparency**.
+
+| Purpose | Color | Hex | Usage |
+|---------|-------|-----|-------|
+| **Primary action** | Blue | `#2563eb` | Submit, Continue, Vote, Verify Identity, Publish Results |
+| **Governance accent** | Gold | `#a0742a` | Constitutional actions, Election administration, Officer actions |
+| **Success** | Emerald | `#059669` | Confirmations, Verified states |
+| **Warning** | Amber | `#d97706` | Alerts, Pending states |
+| **Danger** | Red | `#dc2626` | Errors, Destructive actions |
+| **Neutral** | Gray | neutral-50..900 | Backgrounds, Borders, Secondary text |
+
+**Rule:** `<Button variant="primary">` is the default. Gold (`accent`) should feel important and uncommon — reserved for governance/officer actions only. Purple is **not** a primary brand color.
+
 ## For Claude Code CLI
 
 **Before editing any Vue file, follow this order:**

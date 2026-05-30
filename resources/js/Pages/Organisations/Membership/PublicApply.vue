@@ -124,7 +124,7 @@
           <!-- Submit -->
           <Button
             type="submit"
-            variant="accent"
+            variant="primary"
             size="lg"
             class="w-full"
             :loading="submitting"
