@@ -41,7 +41,7 @@ const props = defineProps({
     required: true,
     validator: (v) => ['global', 'organisation'].includes(v)
   },
-  organisationId: { type: Number, default: null }
+  organisationId: { type: [String, Number], default: null }
 });
 
 const isGlobal = computed(() => props.mode === 'global');

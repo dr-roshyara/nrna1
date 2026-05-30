@@ -128,7 +128,7 @@ const props = defineProps({
     required: true,
     validator: (v) => ['global', 'organisation'].includes(v)
   },
-  organisation_id: { type: Number,  default: null },
+  organisation_id: { type: String,  default: null },
   is_demo:         { type: Boolean, default: true },
   page_title:      { type: String,  default: null },
 });
