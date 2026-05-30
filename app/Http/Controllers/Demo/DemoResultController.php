@@ -16,8 +16,14 @@ class DemoResultController extends Controller
      * MODE 2: Organisation-scoped demo results (organisation_id = X)
      * Accessible only to users within that organisation context
      */
-    public function index()
+    public function index($organisation_slug)
     {
+        // Lookup organisation by slug
+        $organisation = \App\Models\Organisation::where('slug', $organisation_slug)->firstOrFail();
+
+        // Set session for BelongsToTenant scope
+        session(['current_organisation_id' => $organisation->id]);
+
         // BelongsToTenant scope automatically filters by organisation_id
         $posts = DemoPost::get(['id as post_id', 'name', 'state_name', 'required_number']);
 
@@ -28,7 +34,7 @@ class DemoResultController extends Controller
             'final_result' => $results,
             'posts' => $posts,
             'mode' => 'organisation',
-            'organisation_id' => session('current_organisation_id'),
+            'organisation_id' => $organisation->id,
             'is_demo' => true,
             'page_title' => 'Organisation Demo Results'
         ]);
@@ -195,9 +201,15 @@ class DemoResultController extends Controller
     /**
      * Download PDF for MODE 2 (organisation-scoped demo results)
      */
-    public function downloadPDF()
+    public function downloadPDF($organisation_slug)
     {
         try {
+            // Lookup organisation by slug
+            $organisation = \App\Models\Organisation::where('slug', $organisation_slug)->firstOrFail();
+
+            // Set session for BelongsToTenant scope
+            session(['current_organisation_id' => $organisation->id]);
+
             // CRITICAL: Clear all output buffers to prevent PDF corruption
             while (ob_get_level() > 0) {
                 ob_end_clean();

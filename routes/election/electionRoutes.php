@@ -650,11 +650,11 @@ Route::middleware(['auth:sanctum', 'verified'])
 
 // MODE 2: Organisation-scoped demo results (organisation_id = X)
 Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/demo/result', [DemoResultController::class, 'index'])
+    ->get('/organisations/{organisation_slug}/demo/result', [DemoResultController::class, 'index'])
     ->name('demo-result.index');
 
 Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/demo/result/download-pdf', [DemoResultController::class, 'downloadPDF'])
+    ->get('/organisations/{organisation_slug}/demo/result/download-pdf', [DemoResultController::class, 'downloadPDF'])
     ->name('demo-result.download-pdf');
 
 // Verification endpoints for demo results

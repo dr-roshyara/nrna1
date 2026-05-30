@@ -119,7 +119,7 @@
             {{ $t('navigation.security') }}
           </Link>
           <Link
-            :href="page.props.user ? route('demo-result.index') : route('public-demo.results')"
+            :href="page.props.user ? route('demo-result.index', { organisation_slug: page.props.user.organisation?.slug }) : route('public-demo.results')"
             class="text-white font-medium hover:text-blue-100 focus:outline-none focus:ring-2 focus:ring-white/50 px-3 py-2 rounded-sm transition-colors duration-200 text-sm"
           >
             {{ $t('navigation.demo_result') }}
@@ -200,7 +200,7 @@
             🔒 {{ $t('navigation.security') }}
           </Link>
           <Link
-            :href="page.props.user ? route('demo-result.index') : route('public-demo.results')"
+            :href="page.props.user ? route('demo-result.index', { organisation_slug: page.props.user.organisation?.slug }) : route('public-demo.results')"
             @click="showMobileMenu = false"
             class="block px-4 py-3 text-white hover:bg-white/20 active:bg-white/30 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >

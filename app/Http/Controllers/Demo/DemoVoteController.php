@@ -22,13 +22,14 @@ use App\Services\VotingServiceFactory;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use App\Services\VoterProgressService;
 use Illuminate\Routing\Redirector;
 use App\Notifications\SecondVerificationCode;
 use App\Notifications\SendVoteSavingCode;
 //controllers
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -1503,7 +1504,7 @@ private function has_valid_selections($selections)
         \Log::channel('voting_audit')->info('Trust evaluation completed in vote submission', [
             'election_id' => $election->id,
             'user_id' => $auth_user->id,
-            'trust_result' => $trustEnvelope->trusted ? 'allowed' : $trustEnvelope->reason,
+            'trust_result' => $trustEnvelope->result->evaluationState->value,
             'ip' => request()->ip(),
         ]);
 
@@ -1581,6 +1582,39 @@ private function has_valid_selections($selections)
                 return $ipValidation; // Returns the denial response
             }
 
+        // ⛔ Acquire lock to prevent concurrent vote submission
+        $voterSlug = $request->attributes->get('voter_slug');
+        $lockKey = $voterSlug
+            ? "voter_slug_transition:{$voterSlug->id}"
+            : "vote_submission:{$auth_user->id}:{$election->id}";
+        $lock = Cache::lock($lockKey, 10);
+
+        if (!$lock->get()) {
+            DB::rollBack();
+            \Log::warning('Concurrent vote submission blocked by lock', [
+                'user_id' => $auth_user->id,
+                'election_id' => $election->id,
+                'lock_key' => $lockKey,
+            ]);
+            return back()->with('error', 'Please wait, your vote is being processed. Another submission is in progress.');
+        }
+
+        // Re-check has_voted inside lock (fresh read)
+        $freshCode = $code->fresh();
+
+        // ⛔ DEMO ELECTIONS: Block final vote submission if already voted
+        if ($freshCode && $freshCode->has_voted) {
+            $lock->release();
+            DB::rollBack();
+            \Log::warning('⛔ Demo election - blocking final vote submission for voter who already voted', [
+                'user_id' => $auth_user->id,
+                'election_id' => $election->id,
+                'code_id' => $freshCode->id,
+            ]);
+
+            return redirect()->route('dashboard')
+                ->withErrors(['vote' => 'You have already voted in this election. Each voter can only vote once.']);
+        }
 
         //everything take from Code Model
         $this->has_voted    =$code->has_voted;
@@ -1603,7 +1637,7 @@ private function has_valid_selections($selections)
             $_codeVerified = $this->verifyPlainCode($this->out_code, $this->in_code);
             // Use the verification method (via CodeVerificationTrait)
             if (!$_codeVerified) {
-            
+
                 \Log::warning('Code verification failed - returning with error',
                 [
                 'user_id' => $auth_user->id,
@@ -1611,7 +1645,10 @@ private function has_valid_selections($selections)
                 'submitted_code_length' => strlen($request['voting_code'] ?? ''),
                 'failed_at' => now()
                 ]);
-            
+
+            // Release lock before returning
+            $lock->release();
+            DB::rollBack();
             // Return back with your specified error message
             return back()->withErrors([
                 'voting_code' => 'Submitted code is false. Please check your email and try again.'
@@ -1621,14 +1658,51 @@ private function has_valid_selections($selections)
         $this->user_id      =$code->user_id;
         // Use the existing session_name from the code (set during first_submission)
         // Don't overwrite it, just use what's already there
-        $session_name       =$code->session_name;
+        $session_name       = $code->session_name ?: ('vote_data_' . $auth_user->id);
         //get deligatevote from session
         $vote_data = $request->session()->get($session_name);
+
+        // 🔴 DEBUG: Check if vote data exists
+        if (!$vote_data) {
+            $lock->release();
+            DB::rollBack();
+            \Log::error('❌ Vote data not found in session during store()', [
+                'session_name' => $session_name,
+                'session_keys' => array_keys($request->session()->all()),
+                'user_id' => $auth_user->id,
+                'code_session_name' => $code->session_name,
+            ]);
+
+            return back()->withErrors(['vote' => 'Vote data was lost. Please start the voting process again.'])->withInput();
+        }
         // check the  voting codes 
         // dd($vote_data["national_selected_candidates"]);
         // 1. Validate pre-conditions
         // dd($vote_data);
         $pre_check = $this->vote_post_check($auth_user, $code, $vote_data);
+
+        // ✅ CHECK PRE-CONDITIONS: Handle any validation errors
+        if (!empty($pre_check["error_message"])) {
+            $lock->release();
+            DB::rollBack();
+            \Log::error('Vote post-check failed in store()', [
+                'user_id' => $auth_user->id,
+                'error' => $pre_check["error_message"]
+            ]);
+
+            return redirect()->route('dashboard')
+                ->withErrors(['verification' => 'Vote verification failed. Please contact support if this persists.']);
+        }
+
+        if (!empty($pre_check["return_to"])) {
+            $lock->release();
+            DB::rollBack();
+            \Log::info('Vote post-check redirecting user in store()', [
+                'user_id' => $auth_user->id,
+                'redirect_to' => $pre_check["return_to"]
+            ]);
+            return redirect()->route($pre_check["return_to"]);
+        }
 
         /**
              *Here Everything is checked . you save the deligatevote.
@@ -1709,6 +1783,7 @@ private function has_valid_selections($selections)
                 }
 
                 DB::commit();
+                $lock->release();
 
         // ✅ CRITICAL: Mark voter slug as having voted and invalid after successful submission
         $voterSlug = $request->attributes->get('voter_slug');
@@ -1791,6 +1866,9 @@ private function has_valid_selections($selections)
         return redirect()->route('vote.verify_to_show')->with('success', 'Your vote has been successfully submitted.');
 
     } catch (\Illuminate\Validation\ValidationException $e) {
+        if (isset($lock)) {
+            $lock->release();
+        }
         DB::rollBack();
         \Log::error('❌ VALIDATION EXCEPTION in store()', [
             'user_id' => auth()->id(),
@@ -1799,6 +1877,9 @@ private function has_valid_selections($selections)
         return redirect()->back()->withErrors($e->errors())->withInput();
 
     } catch (\Exception $e) {
+        if (isset($lock)) {
+            $lock->release();
+        }
         DB::rollBack();
         \Log::error('❌ EXCEPTION in store() - Vote submission failed', [
             'user_id' => auth()->id(),
