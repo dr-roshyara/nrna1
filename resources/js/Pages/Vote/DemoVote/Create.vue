@@ -1051,9 +1051,9 @@ export default {
                         const candidate = post.candidates.find(c => c.id === id)
                         console.log(`   - Looking for candidate ID ${id}: ${candidate ? '✅ FOUND' : '❌ NOT FOUND'}`);
                         return {
-                            candidacy_id: candidate?.candidacy_id,
-                            user_name: candidate?.candidacy_name,
-                            candidacy_name: candidate?.candidacy_name,
+                            candidacy_id: candidate?.id,  // ✅ FIX: id IS the candidacy_id
+                            user_name: candidate?.user_name,  // ✅ FIX: user_name should be the actual user name
+                            candidacy_name: candidate?.candidacy_name,  // Position name
                             id: candidate?.id
                         }
                     })
