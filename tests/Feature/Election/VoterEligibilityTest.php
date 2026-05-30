@@ -224,12 +224,15 @@ class VoterEligibilityTest extends TestCase
     {
         $user = User::factory()->create();
         // Only add org role — no Member record
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'staff',
-        ]);
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id'         => $user->id,
+                'organisation_id' => $this->org->id,
+            ],
+            [
+                'role' => 'staff',
+            ]
+        );
 
         $this->assertFalse($user->isEligibleVoter($this->org));
     }
@@ -261,12 +264,15 @@ class VoterEligibilityTest extends TestCase
     public function test_store_rejects_user_without_member_record(): void
     {
         $voter = User::factory()->create(['email_verified_at' => now()]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $voter->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'staff',
-        ]);
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id'         => $voter->id,
+                'organisation_id' => $this->org->id,
+            ],
+            [
+                'role' => 'staff',
+            ]
+        );
 
         $this->actingAs($this->officer)
             ->withSession($this->orgSession())
@@ -337,12 +343,15 @@ class VoterEligibilityTest extends TestCase
         $this->makeActiveMember($eligible1);
         $this->makeActiveMember($eligible2);
         // ineligible has only an org role, no Member record
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $ineligible->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'staff',
-        ]);
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id'         => $ineligible->id,
+                'organisation_id' => $this->org->id,
+            ],
+            [
+                'role' => 'staff',
+            ]
+        );
 
         $this->actingAs($this->officer)
             ->withSession($this->orgSession())
@@ -379,12 +388,15 @@ class VoterEligibilityTest extends TestCase
     {
         $users = User::factory()->count(3)->create(['email_verified_at' => now()]);
         foreach ($users as $user) {
-            UserOrganisationRole::create([
-                'id'              => (string) Str::uuid(),
-                'user_id'         => $user->id,
-                'organisation_id' => $this->org->id,
-                'role'            => 'staff',
-            ]);
+            UserOrganisationRole::updateOrCreate(
+                [
+                    'user_id'         => $user->id,
+                    'organisation_id' => $this->org->id,
+                ],
+                [
+                    'role' => 'staff',
+                ]
+            );
         }
 
         $this->actingAs($this->officer)
@@ -410,12 +422,15 @@ class VoterEligibilityTest extends TestCase
 
         $this->makeActiveMember($eligible);
         $this->makeActiveMember($unpaid, fees: 'unpaid');
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $noMember->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'staff',
-        ]);
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id'         => $noMember->id,
+                'organisation_id' => $this->org->id,
+            ],
+            [
+                'role' => 'staff',
+            ]
+        );
 
         $result = ElectionMembership::bulkAssignVoters(
             [$eligible->id, $unpaid->id, $noMember->id],
@@ -535,12 +550,15 @@ class VoterEligibilityTest extends TestCase
     public function test_import_preview_marks_user_without_member_record_as_invalid(): void
     {
         $user = User::factory()->create(['email' => 'staff@example.com']);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'staff',
-        ]);
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id'         => $user->id,
+                'organisation_id' => $this->org->id,
+            ],
+            [
+                'role' => 'staff',
+            ]
+        );
 
         $csv = "email\nstaff@example.com\n";
 
