@@ -150,8 +150,8 @@ export default {
   props:{
      candidacies:Object,
      user_name : String,
-     user_id : Number,  
-     user_lcc : String   
+     user_id : [String, Number],
+     user_lcc : String
   },
  
   data(){ 

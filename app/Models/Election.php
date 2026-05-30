@@ -1670,6 +1670,7 @@ class Election extends Model
 
                     // ── 6. Side effects (no state changes inside these) ─────────────
                     match ($transition->action) {
+                        'submit_for_approval' => $this->applySideEffectsForSubmitForApproval($transition->actorId, $currentTime),
                         'begin_setup'  => $this->applySideEffectsForBeginSetup($currentTime),
                         'open_voting'  => $this->applySideEffectsForOpenVoting($transition->actorId, $currentTime),
                         'close_voting' => $this->applySideEffectsForCloseVoting($currentTime),
@@ -1855,6 +1856,16 @@ class Election extends Model
                 'voting_ends_at' => $currentTime,
                 'voting_locked' => true,
                 'voting_locked_at' => $currentTime,
+            ]);
+    }
+
+    private function applySideEffectsForSubmitForApproval(?string $actorId, \Carbon\Carbon $currentTime): void
+    {
+        \Illuminate\Support\Facades\DB::table('elections')
+            ->where('id', $this->id)
+            ->update([
+                'submitted_for_approval_at' => $currentTime,
+                'submitted_by' => $actorId,
             ]);
     }
 

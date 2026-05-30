@@ -731,7 +731,7 @@ export default {
             default: () => ({ national: [], regional: [] })
         },
         user_name: String,
-        user_id: Number,
+        user_id: [String, Number],
         user_region: String,
         slug: String,
         useSlugPath: Boolean,

@@ -8,11 +8,14 @@ This folder contains comprehensive documentation for the new Single Source of Tr
 
 **New to this system?** Start here:
 1. [01_OVERVIEW.md](01_OVERVIEW.md) — Understand the paradigm shift
-2. [02_STATE_TRANSITIONS.md](02_STATE_TRANSITIONS.md) — See all 10 states and transitions
+2. [02_STATE_TRANSITIONS.md](02_STATE_TRANSITIONS.md) — See all 12 states and transitions
 3. [03_DEVELOPER_API.md](03_DEVELOPER_API.md) — Learn the API
 
 **Building features?**
 - [05_CODE_RECIPES.md](05_CODE_RECIPES.md) — Copy-paste examples for common tasks
+
+**Validating implementation?**
+- [07_TEST_VERIFICATION.md](07_TEST_VERIFICATION.md) — Test verification report (24/24 tests passing)
 
 **Something not working?**
 - [04_TROUBLESHOOTING.md](04_TROUBLESHOOTING.md) — Debug guide with solutions
@@ -27,8 +30,8 @@ This folder contains comprehensive documentation for the new Single Source of Tr
 ### 01_OVERVIEW.md (Essential Context)
 **Read first.** Explains:
 - What changed from old to new system
-- The 10 SSOT states
-- Constitutional facts vs. state
+- The 12 SSOT states (progression + suspended)
+- Constitutional facts vs. derived state
 - Three-layer architecture
 - Key principles and patterns
 - What NOT to do
@@ -138,6 +141,25 @@ Includes:
 
 ---
 
+### 07_TEST_VERIFICATION.md (Verification Report)
+**Proof that the state machine works correctly.**
+
+Includes:
+- Test coverage summary (24 tests, all passing)
+- State derivation verification (10 tests)
+- State transition verification (7 tests)
+- Capability verification (6 tests)
+- Bugs discovered and fixed during testing
+- Constitutional fact mapping
+- Authorization verification
+- Test reliability analysis
+- Compliance checklist
+
+**Time to read:** 10 minutes to understand verification scope
+**Knowledge gained:** Confidence that system is production-ready
+
+---
+
 ## 🎯 Getting Started
 
 ### If you have 5 minutes
@@ -175,17 +197,22 @@ Constitutional Facts (voting_starts_at, nomination_completed, etc.)
             [Use this, not database column]
 ```
 
-### The 10 States
+### The 12 States
+**Progression (time-based):**
 - `draft` — Initial state
-- `submitted_for_approval` — Awaiting admin approval
-- `approved` — Admin approved
-- `rejected` — Admin rejected (terminal)
-- `setup` — Configuration phase
-- `ready_for_voting` — Setup complete, not voting yet
-- `voting_active` — Voting in progress
+- `submitted_for_approval` — Awaiting platform admin review
+- `approved` — Admin approved, ready for setup
+- `setup_administration` — Admin phase (posts, voters, chief)
+- `setup_nomination` — Nomination phase (candidates)
+- `ready_for_voting` — Setup complete, voting not yet started
+- `voting_active` — Voting window open
 - `counting` — Voting closed, tallying
-- `results_published` — Results shown (terminal)
-- `archived` — Archived (terminal)
+- `results_published` — Results published (terminal)
+
+**Terminal/Special:**
+- `rejected` — Admin rejected (terminal)
+- `archived` — Archived/historical (terminal)
+- `suspended` — Operational governance pause (checked FIRST)
 
 ### The Golden Rule
 > Never read from `$election->state` directly.

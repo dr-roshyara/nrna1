@@ -73,7 +73,7 @@
           <div class="relative group">
             <div class="absolute -inset-0.5 bg-gradient-to-r from-green-600 to-emerald-400 rounded-lg blur-sm opacity-20 group-hover:opacity-80 transition duration-1000 group-hover:duration-200"></div>
             <a
-              :href="route('election.demo.start')"
+              :href="route('election.demo.start', { organisation_slug: $page.props.user?.organisation?.slug })"
               aria-label="Demo election ausprobieren"
               class="relative w-full p-4 sm:p-6 lg:p-8 bg-white border-2 border-green-500 rounded-lg hover:shadow-xl focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all text-left flex items-start justify-between gap-3 sm:gap-4 group-hover:border-green-600"
             >

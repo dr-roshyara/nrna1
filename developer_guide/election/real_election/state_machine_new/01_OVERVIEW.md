@@ -25,7 +25,7 @@ Constitutional Facts (voting_starts_at, nomination_completed, etc.)
            ↓
     ElectionLifecycleEngine (Pure PHP)
            ↓
-    ElectionLifecycleState enum (10 states)
+    ElectionLifecycleState enum (12 states)
            ↓
     ElectionLifecycle Facade (SSOT API)
            ↓
@@ -37,52 +37,78 @@ Constitutional Facts (voting_starts_at, nomination_completed, etc.)
 
 ---
 
-## The 10 SSOT States
+## The 12 SSOT States (Constitutional Progression)
 
-| State | Meaning | User Can Transition From |
-|-------|---------|--------------------------|
-| **draft** | Election being created/configured | Initial state |
-| **submitted_for_approval** | Awaiting platform admin approval | draft |
-| **approved** | Admin approved, ready to configure phases | submitted_for_approval |
-| **rejected** | Admin rejected the election | submitted_for_approval |
-| **setup** | Administration and nomination phases configurable | approved |
-| **ready_for_voting** | All setup complete, voting window configured, not yet started | setup |
-| **voting_active** | Voting window is open (now between start and end) | ready_for_voting |
-| **counting** | Voting closed, results being finalized | voting_active |
-| **results_published** | Final results published to voters | counting |
-| **archived** | Election is archived/historical | Any state (terminal) |
+### Approval Phase
+| State | Meaning | Derived From | Transition Action |
+|-------|---------|--------------|-------------------|
+| **draft** | Initial state, election being configured | `submitted_for_approval_at = NULL` | submit_for_approval |
+| **submitted_for_approval** | Awaiting platform admin approval/rejection | `submitted_for_approval_at IS NOT NULL AND approved_at IS NULL AND rejected_at IS NULL` | approve / reject |
+
+### Setup Phase
+| State | Meaning | Derived From | Transition Action |
+|-------|---------|--------------|-------------------|
+| **approved** | Admin approved, ready for setup phases | `approved_at IS NOT NULL AND administration_completed = false` | begin_setup |
+| **rejected** | Admin rejected the election (terminal) | `rejected_at IS NOT NULL` | — |
+| **setup_administration** | Admin phase: configuring posts, voters, chief | `setup_started_at IS NOT NULL AND administration_completed = false` | complete_administration |
+| **setup_nomination** | Nomination phase: candidates registering (time-based) | `administration_completed = true AND nomination_completed = false AND nomination_suggested_start ≤ NOW` | complete_nomination |
+
+### Voting Phase
+| State | Meaning | Derived From | Transition Action |
+|-------|---------|--------------|-------------------|
+| **ready_for_voting** | Setup complete, voting not yet started | `nomination_completed = true AND voting_starts_at > NOW` | open_voting |
+| **voting_active** | Voting window open (NOW between voting_starts_at and voting_ends_at) | `voting_locked = true AND voting_starts_at ≤ NOW ≤ voting_ends_at` | close_voting |
+
+### Results Phase
+| State | Meaning | Derived From | Transition Action |
+|-------|---------|--------------|-------------------|
+| **counting** | Voting closed, results being finalized | `voting_ends_at ≤ NOW AND results_published_at IS NULL` | publish_results |
+| **results_published** | Results published to voters (terminal) | `results_published_at IS NOT NULL` | archive |
+| **archived** | Election is archived/historical (terminal) | `archived_at IS NOT NULL` | — |
+
+### Operational States
+| State | Meaning | Special Behavior |
+|-------|---------|-----------------|
+| **suspended** | Governance override: election paused operationally | Time-based + flag: `suspended_at IS NOT NULL`. Checked FIRST before all other rules. Can transition to any state via resume action. |
 
 ---
 
 ## Constitutional Facts (Not State)
 
-The engine derives state by evaluating these facts:
+The engine derives state by evaluating these facts. State is NEVER stored—it's always computed from these immutable facts:
 
-### Approval Timeline
-- `submitted_at` — When election submitted for approval
+### Approval & Rejection Timeline
+- `submitted_for_approval_at` — When chief submitted for platform admin approval (NULL = not submitted)
 - `approved_at` — When platform admin approved (NULL = not approved)
-- `rejected_at` — When admin rejected (NULL = not rejected)
+- `approved_by` — Which platform admin approved
+- `rejected_at` — When platform admin rejected (NULL = not rejected)
+- `rejected_by` — Which platform admin rejected
+- `rejection_reason` — Why election was rejected
 
-### Setup Phases
-- `administration_completed` — bool, Admin phase complete?
-- `administration_completed_at` — When admin phase finished
-- `nomination_completed` — bool, Nomination phase complete?
-- `nomination_completed_at` — When nomination finished
+### Setup Phase (Administration & Nomination)
+- `setup_started_at` — When begin_setup transition occurred (marks entry to setup_administration)
+- `administration_completed` — boolean, Admin phase complete?
+- `administration_completed_at` — Timestamp when administration was marked complete
+- `nomination_suggested_start` — When nomination phase should open (time-based)
+- `nomination_suggested_end` — When nomination phase should close
+- `nomination_completed` — boolean, Nomination phase complete?
+- `nomination_completed_at` — Timestamp when nomination was marked complete
 
 ### Voting Window
-- `voting_starts_at` — When voting begins (NULL = not configured yet)
-- `voting_ends_at` — When voting ends
-- `voting_locked` — bool, Is voting locked/started?
+- `voting_starts_at` — When voting begins (NULL = not configured)
+- `voting_ends_at` — When voting ends (NULL = not configured)
+- `voting_locked` — boolean, Is voting locked/started?
 - `voting_locked_at` — When voting was locked
-- `voting_locked_by` — Which officer locked it
+- `voting_locked_by` — Which chief locked voting
 
-### Results
+### Results & Archival
 - `results_published_at` — When results published (NULL = not published)
+- `archived_at` — When archived (NULL = not archived)
 
-### Candidates/Voters
-- `candidates_count` — How many approved candidates
-- `pending_candidacies_count` — How many pending applications
-- `votes_count` — How many votes recorded
+### Configuration
+- `timezone` — Election timezone (precondition for approval)
+- `expected_voter_count` — For capacity eligibility check
+- `suspended_at` — Operational pause (checked FIRST; overrides all derivation rules)
 
 ---
 
@@ -107,7 +133,7 @@ The engine derives state by evaluating these facts:
 ┌─────────────────────────────────────────────────────────┐
 │ Layer 3: ElectionLifecycleEngine (Pure PHP, No Laravel) │
 │ ├─ compute($election) → Derive state from facts         │
-│ ├─ 10 derivation rules                                  │
+│ ├─ 12 derivation rules (progression + suspended)        │
 │ └─ Returns ElectionLifecycleSnapshot                    │
 └─────────────────────────────────────────────────────────┘
 ```

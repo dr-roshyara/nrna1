@@ -21,10 +21,26 @@ use Tests\TestCase;
  * Key Principle: Set constitutional facts → verify state derives correctly
  * Never test by directly setting the state column.
  *
- * The 10 SSOT States:
- * draft → submitted_for_approval → approved → setup → ready_for_voting
- * → voting_active → counting → results_published (terminal)
- * Also: rejected (terminal)
+ * The 12 SSOT States (constitutional lifecycle):
+ * draft
+ *   ↓ submit_for_approval
+ * submitted_for_approval
+ *   ↓ approve / reject
+ * approved / rejected (terminal)
+ *   ↓ begin_setup
+ * setup_administration
+ *   ↓ complete_administration
+ * setup_nomination (time-based: when nomination_suggested_start arrives)
+ *   ↓ complete_nomination
+ * ready_for_voting
+ *   ↓ open_voting
+ * voting_active
+ *   ↓ close_voting
+ * counting
+ *   ↓ publish_results
+ * results_published (terminal)
+ *
+ * Also: archived (terminal), suspended (operational overlay, not in progression)
  */
 class CurrentBehaviorTest extends TestCase
 {
@@ -169,6 +185,32 @@ class CurrentBehaviorTest extends TestCase
     // ─────────────────────────────────────────────────────────────────────────
 
     /**
+     * Test P0.4b: SETUP_NOMINATION state derivation (time-based)
+     *
+     * Verifies: Election with administration complete but nomination window open
+     * derives to SETUP_NOMINATION
+     * Facts: administration_completed = true, nomination_suggested_start = PAST
+     */
+    public function test_election_with_nomination_window_open_derives_to_setup_nomination(): void
+    {
+        $this->election = Election::factory()
+            ->forOrganisation($this->org)
+            ->create([
+                'approved_at' => now()->subHours(4),
+                'setup_started_at' => now()->subHours(3),
+                'administration_completed' => true,
+                'administration_completed_at' => now()->subHour(),
+                'nomination_completed' => false,
+                'nomination_suggested_start' => now()->subHour(),  // Past - window open
+                'nomination_suggested_end' => now()->addHours(2),   // Future - still open
+            ]);
+
+        $state = ElectionLifecycle::of($this->election)->state();
+
+        $this->assertEquals('setup_nomination', $state->value);
+    }
+
+    /**
      * Test P0.5: READY_FOR_VOTING state derivation
      *
      * Verifies: Election with setup complete but voting not yet started
@@ -311,6 +353,34 @@ class CurrentBehaviorTest extends TestCase
         $this->assertEquals('rejected', $state->value);
     }
 
+    /**
+     * Test P0.10: ARCHIVED state derivation (terminal)
+     *
+     * Verifies: Election with archived_at set derives to ARCHIVED
+     * Facts: archived_at = SET
+     */
+    public function test_election_with_archived_at_derives_to_archived(): void
+    {
+        $this->election = Election::factory()
+            ->forOrganisation($this->org)
+            ->create([
+                'approved_at' => now()->subHours(20),
+                'setup_started_at' => now()->subHours(19),
+                'administration_completed' => true,
+                'nomination_completed' => true,
+                'voting_locked' => true,
+                'voting_locked_at' => now()->subHours(10),
+                'voting_starts_at' => now()->subHours(15),
+                'voting_ends_at' => now()->subHours(2),
+                'results_published_at' => now()->subHour(),
+                'archived_at' => now(),  // Archived
+            ]);
+
+        $state = ElectionLifecycle::of($this->election)->state();
+
+        $this->assertEquals('archived', $state->value);
+    }
+
     // ─────────────────────────────────────────────────────────────────────────
     // Transition Tests — Verify actual transitions work
     // ─────────────────────────────────────────────────────────────────────────
@@ -319,12 +389,16 @@ class CurrentBehaviorTest extends TestCase
      * Test P1.1: submit_for_approval transition
      *
      * Verifies: DRAFT → SUBMITTED_FOR_APPROVAL via submit_for_approval action
+     * Preconditions: timezone_set (for future transitions), posts, voters, chief
      */
     public function test_submit_for_approval_transition(): void
     {
         $this->election = Election::factory()
             ->forOrganisation($this->org)
-            ->create();
+            ->create([
+                'timezone' => 'UTC',  // Required precondition
+                'expected_voter_count' => 10,  // For capacity eligibility
+            ]);
 
         // Make chief an officer for this election
         ElectionOfficer::create([
@@ -359,6 +433,12 @@ class CurrentBehaviorTest extends TestCase
      */
     public function test_approve_transition(): void
     {
+        // Create platform_admin role if it doesn't exist
+        if (!\Spatie\Permission\Models\Role::where('name', 'platform_admin')->exists()) {
+            \Spatie\Permission\Models\Role::create(['name' => 'platform_admin', 'guard_name' => 'web']);
+        }
+        $this->platform_admin->assignRole('platform_admin');
+
         $this->election = Election::factory()
             ->forOrganisation($this->org)
             ->create(['submitted_for_approval_at' => now()]);
@@ -379,7 +459,7 @@ class CurrentBehaviorTest extends TestCase
     /**
      * Test P1.3: begin_setup transition
      *
-     * Verifies: APPROVED → SETUP via begin_setup action
+     * Verifies: APPROVED → SETUP_ADMINISTRATION via begin_setup action
      */
     public function test_begin_setup_transition(): void
     {
@@ -411,26 +491,53 @@ class CurrentBehaviorTest extends TestCase
         ));
 
         $state = ElectionLifecycle::of($this->election->fresh())->state();
-        $this->assertEquals('setup', $state->value);
+        $this->assertEquals('setup_administration', $state->value);
     }
 
     /**
      * Test P1.4: complete_administration transition
      *
-     * Verifies: SETUP → READY_FOR_VOTING via complete_administration action
+     * Verifies: SETUP_ADMINISTRATION → SETUP_NOMINATION via complete_administration action
+     * Preconditions: timezone_set, has_posts, has_voters
+     * Post-transition: moves to SETUP_NOMINATION (time-based)
      */
     public function test_complete_administration_transition(): void
     {
         $this->election = Election::factory()
             ->forOrganisation($this->org)
             ->create([
+                'timezone' => 'UTC',
                 'approved_at' => now()->subHours(2),
                 'setup_started_at' => now()->subHour(),
                 'administration_completed' => false,
                 'nomination_completed' => false,
+                'nomination_suggested_start' => now()->subMinute(),  // Nomination window open
+                'nomination_suggested_end' => now()->addHours(2),
                 'voting_starts_at' => now()->addHours(4),
                 'voting_ends_at' => now()->addHours(8),
             ]);
+
+        // Add precondition: has_posts
+        \App\Models\Post::factory()->create([
+            'election_id' => $this->election->id,
+            'organisation_id' => $this->org->id,
+        ]);
+
+        // Add precondition: has_voters
+        $voter = User::factory()->create();
+        UserOrganisationRole::updateOrCreate(
+            ['user_id' => $voter->id, 'organisation_id' => $this->org->id],
+            ['role' => 'voter']
+        );
+        \App\Models\ElectionMembership::create([
+            'user_id' => $voter->id,
+            'election_id' => $this->election->id,
+            'organisation_id' => $this->org->id,
+            'role' => 'voter',
+            'status' => 'active',
+            'assigned_by' => $this->chief->id,
+            'assigned_at' => now(),
+        ]);
 
         ElectionOfficer::create([
             'organisation_id' => $this->org->id,
@@ -452,19 +559,21 @@ class CurrentBehaviorTest extends TestCase
         ));
 
         $state = ElectionLifecycle::of($this->election->fresh())->state();
-        $this->assertEquals('ready_for_voting', $state->value);
+        $this->assertEquals('setup_nomination', $state->value);
     }
 
     /**
      * Test P1.5: open_voting transition
      *
      * Verifies: READY_FOR_VOTING → VOTING_ACTIVE via open_voting action
+     * Precondition: timezone_set, has candidates registered
      */
     public function test_open_voting_transition(): void
     {
         $this->election = Election::factory()
             ->forOrganisation($this->org)
             ->create([
+                'timezone' => 'UTC',
                 'approved_at' => now()->subHours(4),
                 'setup_started_at' => now()->subHours(3),
                 'administration_completed' => true,
@@ -474,6 +583,28 @@ class CurrentBehaviorTest extends TestCase
                 'voting_starts_at' => now()->addHours(1),
                 'voting_ends_at' => now()->addHours(5),
             ]);
+
+        // Add precondition: has posts and candidates
+        $post = \App\Models\Post::factory()->create([
+            'election_id' => $this->election->id,
+            'organisation_id' => $this->org->id,
+        ]);
+
+        $candidate = User::factory()->create();
+        UserOrganisationRole::updateOrCreate(
+            ['user_id' => $candidate->id, 'organisation_id' => $this->org->id],
+            ['role' => 'voter']
+        );
+
+        \App\Models\Candidacy::create([
+            'election_id' => $this->election->id,
+            'post_id' => $post->id,
+            'organisation_id' => $this->org->id,
+            'user_id' => $candidate->id,
+            'status' => 'approved',
+            'nominated_by' => $this->chief->id,
+            'nominated_at' => now(),
+        ]);
 
         ElectionOfficer::create([
             'organisation_id' => $this->org->id,
@@ -671,7 +802,8 @@ class CurrentBehaviorTest extends TestCase
     /**
      * Test P2.5: allowedActions for submitted_for_approval
      *
-     * Verifies: SUBMITTED_FOR_APPROVAL shows admin approval actions
+     * Verifies: SUBMITTED_FOR_APPROVAL shows no chief actions (awaiting platform admin)
+     * Note: approve/reject are platform-admin only, not tracked in lifecycle allowedActions
      */
     public function test_submitted_for_approval_allowed_actions(): void
     {
@@ -682,8 +814,7 @@ class CurrentBehaviorTest extends TestCase
         $lifecycle = ElectionLifecycle::of($this->election);
         $actions = $lifecycle->allowedActions();
 
-        $this->assertContains('approve', $actions);
-        $this->assertContains('reject', $actions);
+        $this->assertEmpty($actions, 'SUBMITTED_FOR_APPROVAL has no chief actions, awaits platform admin');
     }
 
     /**

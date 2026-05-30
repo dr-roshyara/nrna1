@@ -351,12 +351,12 @@ class ElectionManagementController extends Controller
      * 1️⃣ Org-specific demo (if user has organisation_id)
      * 2️⃣ Platform-wide demo (fallback)
      */
-    public function startDemo()
+    public function startDemo(string $organisation_slug)
     {
         $authUser = Auth::user();
         Log::info('🎬 Demo election start requested', [
             'user_id' => $authUser?->id,
-            'user_org_id' => $authUser?->organisation_id,
+            'organisation_slug' => $organisation_slug,
         ]);
 
         if (!$authUser) {
@@ -364,9 +364,23 @@ class ElectionManagementController extends Controller
         }
 
         try {
-            // Use DemoElectionResolver to get the correct demo election
-            // Priority: org-specific demo → platform-wide demo
-            $demoElection = $this->demoResolver->getDemoElectionForUser($authUser);
+            // Look up organisation by slug
+            $organisation = Organisation::withoutGlobalScopes()
+                ->where('slug', $organisation_slug)
+                ->firstOrFail();
+
+            Log::info('✅ Organisation found', [
+                'organisation_id' => $organisation->id,
+                'organisation_slug' => $organisation->slug,
+            ]);
+
+            // Get the demo election for this specific organisation
+            $demoElection = Election::withoutGlobalScopes()
+                ->where('type', 'demo')
+                ->where('organisation_id', $organisation->id)
+                ->where('is_active', true)
+                ->orderBy('created_at', 'desc')
+                ->first();
 
             if (!$demoElection) {
                 Log::error('❌ No demo election found', [
@@ -383,10 +397,11 @@ class ElectionManagementController extends Controller
                 'election_org_id' => $demoElection->organisation_id,
             ]);
 
-            // Store demo election in session
+            // Store demo election and organisation in session
             session([
                 'selected_election_id' => $demoElection->id,
                 'selected_election_type' => 'demo',
+                'current_organisation_id' => $organisation->id,
             ]);
 
             Log::info('📝 Session updated', [

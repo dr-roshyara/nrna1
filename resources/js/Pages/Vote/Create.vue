@@ -134,7 +134,7 @@ props:{
     candidacies: Array,
     posts: Array,
      user_name : String,
-     user_id : Number, 
+     user_id : [String, Number],
 },
 setup (props) {
     const form = useForm({

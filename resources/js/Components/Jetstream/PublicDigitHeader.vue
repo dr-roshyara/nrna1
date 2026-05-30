@@ -149,7 +149,7 @@
             {{ $t('navigation.election_architecture', 'Architecture') }}
           </Link>
           <Link
-            :href="route('public-demo.results')"
+            :href="$page.props.user ? route('demo-result.index') : route('public-demo.results')"
             class="px-3 py-2 text-white/80 hover:text-brand-gold-500 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
           >
             {{ $t('navigation.demo_result') }}
@@ -178,7 +178,7 @@
 
         <!-- Demo Link - Gold CTA -->
         <Link
-          :href="$page.props.auth && $page.props.auth.user ? route('election.demo.start') : route('public-demo.start')"
+          :href="$page.props.user ? route('election.demo.start', { organisation_slug: $page.props.user.organisation?.slug }) : route('public-demo.start')"
           class="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-slate-50 font-semibold text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-slate-900 transition-all duration-200 whitespace-nowrap shadow-md hover:shadow-lg group"
           :title="$t('navigation.demo_title', 'Try demo election without registration')"
         >
@@ -249,7 +249,7 @@
           >
             🏛️ {{ $t('navigation.election_architecture', 'Architecture') }}
           </Link>
-          <Link :href="route('public-demo.results')" @click="closeMobileMenu"
+          <Link :href="$page.props.user ? route('demo-result.index') : route('public-demo.results')" @click="closeMobileMenu"
             class="block px-4 py-3 text-white/80 hover:text-brand-gold-500 hover:bg-white/5 active:bg-white/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             📊 {{ $t('navigation.demo_result') }}
@@ -269,8 +269,8 @@
         <!-- Mobile Demo CTA - Gold -->
         <div class="pt-3 border-t border-brand-gold-500/20 px-3">
           <Link
-            :href="$page.props.auth && $page.props.auth.user ? route('election.demo.start') : route('public-demo.start')"
-            @click="closeMobileMenu" 
+            :href="$page.props.user ? route('election.demo.start', { organisation_slug: $page.props.user.organisation?.slug }) : route('public-demo.start')"
+            @click="closeMobileMenu"
             class="block px-4 py-3  text-slate-50  bg-green-600 font-semibold text-sm rounded-lg hover:from-gold-gold hover:to-white active:opacity-90 transition-all duration-150 text-center min-h-[44px] flex items-center justify-center shadow-md"
           >
             🎪 {{ $t('navigation.demo', 'Try Demo') }}

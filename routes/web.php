@@ -205,8 +205,8 @@ Route::get('/election/select', [ElectionController::class, 'selectElection'])
     ->middleware('auth')
     ->name('election.select');
 
-// Demo election start - bypass voter checks
-Route::get('/election/demo/start', [ElectionManagementController::class, 'startDemo'])
+// Demo election start - organisation-scoped
+Route::get('/organisations/{organisation_slug}/demo/start', [ElectionManagementController::class, 'startDemo'])
     ->middleware('auth')
     ->name('election.demo.start');
 

@@ -942,7 +942,7 @@ export default {
   props:{
      candidacies:Object,
      user_name : String,
-     user_id : Number,
+     user_id : [String, Number],
      user_lcc : String,
      election: {
         type: Object,

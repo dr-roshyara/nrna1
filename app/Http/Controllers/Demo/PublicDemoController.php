@@ -44,9 +44,17 @@ class PublicDemoController extends Controller
 
     public function guide(): Response
     {
+        $user = auth()->user();
+
+        // Build org demo URL only if user is authenticated
+        $org_demo_url = null;
+        if ($user && $user->organisation) {
+            $org_demo_url = route('election.demo.start', ['organisation_slug' => $user->organisation->slug]);
+        }
+
         return Inertia::render('Vote/DemoVote/Guide', [
             'start_url'     => route('public-demo.start'),
-            'org_demo_url'  => route('election.demo.start'),
+            'org_demo_url'  => $org_demo_url,
         ]);
     }
 

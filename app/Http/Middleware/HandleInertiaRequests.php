@@ -70,6 +70,12 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request)
     {
+        $user = $request->user();
+        if ($user) {
+            // Explicitly load organisation relationship
+            $user->load('organisation');
+        }
+
         return array_merge(parent::share($request), [
             'canLogin' => \Route::has('login'),
             'canRegister' => \Route::has('register'),
@@ -85,15 +91,20 @@ class HandleInertiaRequests extends Middleware
                 'hasTeamFeatures' => false,
                 'canCreateTeams' => false,
             ],
-            'user' => $request->user() ? [
-                'id' => $request->user()->id,
-                'name' => $request->user()->name,
-                'email' => $request->user()->email,
-                'user_id' => $request->user()->user_id,
-                'is_voter' => $request->user()->is_voter,
-                'can_vote' => $request->user()->can_vote,
-                'is_platform_admin' => $request->user()->isPlatformAdmin(),
-                'is_super_admin' => $request->user()->isSuperAdmin(),
+            'user' => $user ? [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'user_id' => $user->user_id,
+                'is_voter' => $user->is_voter,
+                'can_vote' => $user->can_vote,
+                'is_platform_admin' => $user->isPlatformAdmin(),
+                'is_super_admin' => $user->isSuperAdmin(),
+                'organisation' => $user->organisation ? [
+                    'id' => $user->organisation->id,
+                    'slug' => $user->organisation->slug,
+                    'name' => $user->organisation->name,
+                ] : null,
             ] : null,
             /**
              * SEO Configuration
