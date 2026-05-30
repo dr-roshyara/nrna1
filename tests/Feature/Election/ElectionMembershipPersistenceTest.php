@@ -52,10 +52,15 @@ class ElectionMembershipPersistenceTest extends TestCase
         $this->user = User::factory()->create();
         $this->assignedBy = User::factory()->create();
 
-        UserOrganisationRole::create([
-            'organisation_id' => $this->organisation->id,
-            'user_id' => $this->user->id,
-        ]);
+        UserOrganisationRole::updateOrCreate(
+            [
+                'organisation_id' => $this->organisation->id,
+                'user_id' => $this->user->id,
+            ],
+            [
+                'role' => 'voter',
+            ]
+        );
 
         // For election-only mode tests, also add to organisation_users
         \App\Models\OrganisationUser::create([
