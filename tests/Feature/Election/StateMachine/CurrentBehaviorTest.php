@@ -32,6 +32,7 @@ class CurrentBehaviorTest extends TestCase
 
     private Organisation $org;
     private User $chief;
+    private User $deputy;
     private User $platform_admin;
     private Election $election;
 
@@ -43,12 +44,19 @@ class CurrentBehaviorTest extends TestCase
         session(['current_organisation_id' => $this->org->id]);
 
         $this->chief = User::factory()->create(['email_verified_at' => now()]);
+        $this->deputy = User::factory()->create(['email_verified_at' => now()]);
         $this->platform_admin = User::factory()->create(['email_verified_at' => now()]);
 
         // Setup chief in organisation
         UserOrganisationRole::updateOrCreate(
             ['user_id' => $this->chief->id, 'organisation_id' => $this->org->id],
             ['role' => 'chief']
+        );
+
+        // Setup deputy in organisation
+        UserOrganisationRole::updateOrCreate(
+            ['user_id' => $this->deputy->id, 'organisation_id' => $this->org->id],
+            ['role' => 'deputy']
         );
 
         // Setup platform admin
@@ -66,7 +74,7 @@ class CurrentBehaviorTest extends TestCase
      * Test P0.1: DRAFT state derivation
      *
      * Verifies: New election with no facts set derives to DRAFT
-     * Facts: submitted_at = NULL, approved_at = NULL, etc.
+     * Facts: submitted_for_approval_at = NULL, approved_at = NULL, etc.
      */
     public function test_new_election_derives_to_draft_state(): void
     {
@@ -86,15 +94,17 @@ class CurrentBehaviorTest extends TestCase
     /**
      * Test P0.2: SUBMITTED_FOR_APPROVAL state derivation
      *
-     * Verifies: Election with submitted_at set (no approved_at) derives to SUBMITTED_FOR_APPROVAL
-     * Facts: submitted_at = NOW, approved_at = NULL, rejected_at = NULL
+     * Verifies: Election with submitted_for_approval_at set (no approved_at) derives to SUBMITTED_FOR_APPROVAL
+     * Facts: submitted_for_approval_at = NOW, approved_at = NULL, rejected_at = NULL
      */
-    public function test_election_with_submitted_at_derives_to_submitted_for_approval(): void
+    public function test_election_with_submitted_for_approval_at_derives_correctly(): void
     {
         $this->election = Election::factory()
             ->forOrganisation($this->org)
             ->create([
-                'submitted_at' => now(),
+                'submitted_for_approval_at' => now(),
+                'approved_at' => null,
+                'rejected_at' => null,
             ]);
 
         $state = ElectionLifecycle::of($this->election)->state();
@@ -119,6 +129,7 @@ class CurrentBehaviorTest extends TestCase
             ->create([
                 'approved_at' => now(),
                 'administration_completed' => false,
+                'setup_started_at' => null,
             ]);
 
         $state = ElectionLifecycle::of($this->election)->state();
@@ -133,16 +144,17 @@ class CurrentBehaviorTest extends TestCase
     /**
      * Test P0.4: SETUP state derivation
      *
-     * Verifies: Election with approved_at set AND administration_completed = false
+     * Verifies: Election with setup_started_at set AND administration_completed = false
      * derives to SETUP
-     * Facts: approved_at = NOW, administration_completed = false
+     * Facts: setup_started_at = SET, administration_completed = false
      */
-    public function test_election_with_approved_and_admin_incomplete_derives_to_setup(): void
+    public function test_election_with_setup_started_derives_to_setup(): void
     {
         $this->election = Election::factory()
             ->forOrganisation($this->org)
             ->create([
                 'approved_at' => now()->subHours(2),
+                'setup_started_at' => now()->subHour(),
                 'administration_completed' => false,
                 'nomination_completed' => false,
             ]);
@@ -170,6 +182,7 @@ class CurrentBehaviorTest extends TestCase
             ->forOrganisation($this->org)
             ->create([
                 'approved_at' => now()->subHours(5),
+                'setup_started_at' => now()->subHours(4),
                 'administration_completed' => true,
                 'administration_completed_at' => now()->subHours(3),
                 'nomination_completed' => true,
@@ -200,9 +213,11 @@ class CurrentBehaviorTest extends TestCase
             ->forOrganisation($this->org)
             ->create([
                 'approved_at' => now()->subHours(8),
+                'setup_started_at' => now()->subHours(7),
                 'administration_completed' => true,
                 'nomination_completed' => true,
                 'voting_locked' => true,
+                'voting_locked_at' => now()->subHour(),
                 'voting_starts_at' => now()->subHour(),   // Past
                 'voting_ends_at' => now()->addHours(3),   // Future
             ]);
@@ -229,9 +244,11 @@ class CurrentBehaviorTest extends TestCase
             ->forOrganisation($this->org)
             ->create([
                 'approved_at' => now()->subHours(12),
+                'setup_started_at' => now()->subHours(11),
                 'administration_completed' => true,
                 'nomination_completed' => true,
                 'voting_locked' => true,
+                'voting_locked_at' => now()->subHours(6),
                 'voting_starts_at' => now()->subHours(5),
                 'voting_ends_at' => now()->subHour(),     // Past
                 'results_published_at' => null,           // Not published
@@ -258,9 +275,11 @@ class CurrentBehaviorTest extends TestCase
             ->forOrganisation($this->org)
             ->create([
                 'approved_at' => now()->subHours(12),
+                'setup_started_at' => now()->subHours(11),
                 'administration_completed' => true,
                 'nomination_completed' => true,
                 'voting_locked' => true,
+                'voting_locked_at' => now()->subHours(6),
                 'voting_starts_at' => now()->subHours(8),
                 'voting_ends_at' => now()->subHour(),
                 'results_published_at' => now(),           // Published
@@ -269,6 +288,27 @@ class CurrentBehaviorTest extends TestCase
         $state = ElectionLifecycle::of($this->election)->state();
 
         $this->assertEquals('results_published', $state->value);
+    }
+
+    /**
+     * Test P0.9: REJECTED state derivation (terminal)
+     *
+     * Verifies: Election with rejected_at set derives to REJECTED
+     * Facts: rejected_at = SET
+     */
+    public function test_election_with_rejected_at_derives_to_rejected(): void
+    {
+        $this->election = Election::factory()
+            ->forOrganisation($this->org)
+            ->create([
+                'submitted_for_approval_at' => now()->subDay(),
+                'rejected_at' => now(),
+                'rejection_reason' => 'Insufficient documentation',
+            ]);
+
+        $state = ElectionLifecycle::of($this->election)->state();
+
+        $this->assertEquals('rejected', $state->value);
     }
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -298,6 +338,9 @@ class CurrentBehaviorTest extends TestCase
             'accepted_at' => now(),
         ]);
 
+        // Authenticate as chief before transition
+        $this->actingAs($this->chief);
+
         $this->election->transitionTo(Transition::manual(
             action: 'submit_for_approval',
             actorId: $this->chief->id,
@@ -318,7 +361,10 @@ class CurrentBehaviorTest extends TestCase
     {
         $this->election = Election::factory()
             ->forOrganisation($this->org)
-            ->create(['submitted_at' => now()]);
+            ->create(['submitted_for_approval_at' => now()]);
+
+        // Authenticate as platform admin
+        $this->actingAs($this->platform_admin);
 
         $this->election->transitionTo(Transition::manual(
             action: 'approve',
@@ -342,6 +388,7 @@ class CurrentBehaviorTest extends TestCase
             ->create([
                 'approved_at' => now(),
                 'administration_completed' => false,
+                'setup_started_at' => null,
             ]);
 
         ElectionOfficer::create([
@@ -354,6 +401,8 @@ class CurrentBehaviorTest extends TestCase
             'appointed_at' => now(),
             'accepted_at' => now(),
         ]);
+
+        $this->actingAs($this->chief);
 
         $this->election->transitionTo(Transition::manual(
             action: 'begin_setup',
@@ -376,6 +425,7 @@ class CurrentBehaviorTest extends TestCase
             ->forOrganisation($this->org)
             ->create([
                 'approved_at' => now()->subHours(2),
+                'setup_started_at' => now()->subHour(),
                 'administration_completed' => false,
                 'nomination_completed' => false,
                 'voting_starts_at' => now()->addHours(4),
@@ -392,6 +442,8 @@ class CurrentBehaviorTest extends TestCase
             'appointed_at' => now(),
             'accepted_at' => now(),
         ]);
+
+        $this->actingAs($this->chief);
 
         $this->election->transitionTo(Transition::manual(
             action: 'complete_administration',
@@ -414,6 +466,7 @@ class CurrentBehaviorTest extends TestCase
             ->forOrganisation($this->org)
             ->create([
                 'approved_at' => now()->subHours(4),
+                'setup_started_at' => now()->subHours(3),
                 'administration_completed' => true,
                 'administration_completed_at' => now()->subHours(3),
                 'nomination_completed' => true,
@@ -432,6 +485,8 @@ class CurrentBehaviorTest extends TestCase
             'appointed_at' => now(),
             'accepted_at' => now(),
         ]);
+
+        $this->actingAs($this->chief);
 
         $this->election->transitionTo(Transition::manual(
             action: 'open_voting',
@@ -453,7 +508,12 @@ class CurrentBehaviorTest extends TestCase
         $this->election = Election::factory()
             ->forOrganisation($this->org)
             ->create([
+                'approved_at' => now()->subHours(6),
+                'setup_started_at' => now()->subHours(5),
+                'administration_completed' => true,
+                'nomination_completed' => true,
                 'voting_locked' => true,
+                'voting_locked_at' => now()->subHour(),
                 'voting_starts_at' => now()->subHour(),
                 'voting_ends_at' => now()->addHours(3),
             ]);
@@ -468,6 +528,8 @@ class CurrentBehaviorTest extends TestCase
             'appointed_at' => now(),
             'accepted_at' => now(),
         ]);
+
+        $this->actingAs($this->chief);
 
         $this->election->transitionTo(Transition::manual(
             action: 'close_voting',
@@ -489,7 +551,12 @@ class CurrentBehaviorTest extends TestCase
         $this->election = Election::factory()
             ->forOrganisation($this->org)
             ->create([
+                'approved_at' => now()->subHours(10),
+                'setup_started_at' => now()->subHours(9),
+                'administration_completed' => true,
+                'nomination_completed' => true,
                 'voting_locked' => true,
+                'voting_locked_at' => now()->subHours(4),
                 'voting_starts_at' => now()->subHours(5),
                 'voting_ends_at' => now()->subHour(),
                 'results_published_at' => null,
@@ -505,6 +572,8 @@ class CurrentBehaviorTest extends TestCase
             'appointed_at' => now(),
             'accepted_at' => now(),
         ]);
+
+        $this->actingAs($this->chief);
 
         $this->election->transitionTo(Transition::manual(
             action: 'publish_results',
@@ -531,6 +600,7 @@ class CurrentBehaviorTest extends TestCase
             ->forOrganisation($this->org)
             ->create([
                 'voting_locked' => true,
+                'voting_locked_at' => now()->subHour(),
                 'voting_starts_at' => now()->subHour(),
                 'voting_ends_at' => now()->addHours(2),
             ]);
@@ -541,7 +611,28 @@ class CurrentBehaviorTest extends TestCase
     }
 
     /**
-     * Test P2.2: canEditTimeline capability
+     * Test P2.2: cannot vote before voting window opens
+     *
+     * Verifies: Election with voting_starts_at in future cannot accept votes
+     */
+    public function test_ready_for_voting_cannot_vote(): void
+    {
+        $this->election = Election::factory()
+            ->forOrganisation($this->org)
+            ->create([
+                'administration_completed' => true,
+                'nomination_completed' => true,
+                'voting_starts_at' => now()->addHour(),
+                'voting_ends_at' => now()->addDay(),
+            ]);
+
+        $lifecycle = ElectionLifecycle::of($this->election);
+
+        $this->assertFalse($lifecycle->canVote());
+    }
+
+    /**
+     * Test P2.3: canEditTimeline capability
      *
      * Verifies: Election in SETUP state can edit timeline
      */
@@ -551,6 +642,7 @@ class CurrentBehaviorTest extends TestCase
             ->forOrganisation($this->org)
             ->create([
                 'approved_at' => now(),
+                'setup_started_at' => now(),
                 'administration_completed' => false,
             ]);
 
@@ -560,7 +652,7 @@ class CurrentBehaviorTest extends TestCase
     }
 
     /**
-     * Test P2.3: allowedActions returns correct transitions
+     * Test P2.4: allowedActions returns correct transitions
      *
      * Verifies: DRAFT state shows correct allowed actions
      */
@@ -568,11 +660,51 @@ class CurrentBehaviorTest extends TestCase
     {
         $this->election = Election::factory()
             ->forOrganisation($this->org)
-            ->create(['state' => 'draft']);
+            ->create();
 
         $lifecycle = ElectionLifecycle::of($this->election);
         $actions = $lifecycle->allowedActions();
 
         $this->assertContains('submit_for_approval', $actions);
+    }
+
+    /**
+     * Test P2.5: allowedActions for submitted_for_approval
+     *
+     * Verifies: SUBMITTED_FOR_APPROVAL shows admin approval actions
+     */
+    public function test_submitted_for_approval_allowed_actions(): void
+    {
+        $this->election = Election::factory()
+            ->forOrganisation($this->org)
+            ->create(['submitted_for_approval_at' => now()]);
+
+        $lifecycle = ElectionLifecycle::of($this->election);
+        $actions = $lifecycle->allowedActions();
+
+        $this->assertContains('approve', $actions);
+        $this->assertContains('reject', $actions);
+    }
+
+    /**
+     * Test P2.6: allowedActions for voting_active
+     *
+     * Verifies: VOTING_ACTIVE shows close_voting action
+     */
+    public function test_voting_active_allowed_actions(): void
+    {
+        $this->election = Election::factory()
+            ->forOrganisation($this->org)
+            ->create([
+                'voting_locked' => true,
+                'voting_locked_at' => now()->subHour(),
+                'voting_starts_at' => now()->subHour(),
+                'voting_ends_at' => now()->addHours(2),
+            ]);
+
+        $lifecycle = ElectionLifecycle::of($this->election);
+        $actions = $lifecycle->allowedActions();
+
+        $this->assertContains('close_voting', $actions);
     }
 }
