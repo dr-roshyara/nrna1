@@ -122,7 +122,7 @@ watch(() => props.open, (isOpen) => {
   } else {
     document.body.style.overflow = ''
   }
-})
+}, { immediate: true })
 
 // ── Escape key ──────────────────────────────
 function handleEscape(e) {
