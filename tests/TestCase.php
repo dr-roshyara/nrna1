@@ -46,6 +46,13 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
+        // Clear TenantContext to prevent static state leakage between tests.
+        // Discovery: TenantContext is a static singleton that persists across test boundaries.
+        // Without clearing, HTTP tests that set TenantContext::set($orgId) contaminate
+        // subsequent model-level tests, causing BelongsToTenant scopes to filter by wrong org.
+        // See: tests/Architecture/Election/TenantContextIsolationTest.php
+        \App\Services\TenantContext::clear();
+
         // PROTECTION: RefreshDatabase trait (enabled below) ensures ALL database changes
         // are wrapped in a transaction and rolled back after each test.
         // This means the actual database being used is IRRELEVANT — all changes are reverted.
