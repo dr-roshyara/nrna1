@@ -255,6 +255,7 @@ class ElectionVoterManagementTest extends TestCase
         );
         ElectionOfficer::create([
             'organisation_id' => $org->id,
+            'election_id'     => $this->election->id,
             'user_id'         => $user->id,
             'role'            => $role,
             'status'          => $status,

@@ -196,6 +196,7 @@ class ElectionVoterSuspensionTest extends TestCase
         );
         ElectionOfficer::create([
             'organisation_id' => $this->org->id,
+            'election_id'     => $this->election->id,
             'user_id'         => $user->id,
             'role'            => $role,
             'status'          => 'active',
