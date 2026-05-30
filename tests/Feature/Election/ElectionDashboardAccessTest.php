@@ -41,12 +41,15 @@ class ElectionDashboardAccessTest extends TestCase
         $this->pendingChief = $this->makeOfficer('chief', 'pending');
 
         $this->nonOfficer = User::factory()->create(['organisation_id' => $this->org->id]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $this->nonOfficer->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'voter',
-        ]);
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id'         => $this->nonOfficer->id,
+                'organisation_id' => $this->org->id,
+            ],
+            [
+                'role' => 'voter',
+            ]
+        );
     }
 
     private function makeOfficer(string $role, string $status): User
@@ -55,12 +58,15 @@ class ElectionDashboardAccessTest extends TestCase
             'organisation_id'   => $this->org->id,
             'email_verified_at' => now(),
         ]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'voter',
-        ]);
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id'         => $user->id,
+                'organisation_id' => $this->org->id,
+            ],
+            [
+                'role' => 'voter',
+            ]
+        );
         ElectionOfficer::create([
             'organisation_id' => $this->org->id,
             'user_id'         => $user->id,
