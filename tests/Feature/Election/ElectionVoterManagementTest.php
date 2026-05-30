@@ -244,12 +244,15 @@ class ElectionVoterManagementTest extends TestCase
             'organisation_id'   => $org->id,
             'email_verified_at' => now(),
         ]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $user->id,
-            'organisation_id' => $org->id,
-            'role'            => 'voter',
-        ]);
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id'         => $user->id,
+                'organisation_id' => $org->id,
+            ],
+            [
+                'role' => 'voter',
+            ]
+        );
         ElectionOfficer::create([
             'organisation_id' => $org->id,
             'user_id'         => $user->id,
