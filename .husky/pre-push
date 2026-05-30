@@ -1,0 +1,41 @@
+# ═══════════════════════════════════════════════════════════════
+# pre-push — runs on every `git push`
+# ═══════════════════════════════════════════════════════════════
+#
+# Runs the FULL design governance gate:
+#   - Token compliance (design-check.sh --strict)
+#   - Component audit (component-audit.sh --strict)
+#   - Quick token count (check-design-tokens.sh)
+#
+# This is the HARD gate — blocks push if violations exceed threshold.
+# To bypass: git push --no-verify
+# ═══════════════════════════════════════════════════════════════
+
+echo ""
+echo "╔══════════════════════════════════════════════════╗"
+echo "║  🔒 Design System Pre-Push Gate                  ║"
+echo "╚══════════════════════════════════════════════════╝"
+echo ""
+
+SCRIPT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+
+# Check if jq is available
+if ! command -v jq &>/dev/null; then
+  echo "⚠️  jq not found — install it: sudo apt install jq -y"
+  echo "   Skipping design governance checks."
+  exit 0
+fi
+
+# Run full verify
+bash "$SCRIPT_DIR/scripts/verify.sh"
+
+if [ $? -ne 0 ]; then
+  echo ""
+  echo "❌ PUSH BLOCKED — Design governance violations found."
+  echo "   Run './scripts/verify.sh' locally to see details."
+  echo "   To bypass: git push --no-verify"
+  exit 1
+fi
+
+echo "✅ Push gate passed."
+exit 0

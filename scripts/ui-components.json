@@ -9,6 +9,12 @@
     "raw_textarea_tags": 23,
     "total_vue_files": 225
   },
+  "enforcement": {
+    "adoption_required": true,
+    "new_files_must_use_components": true,
+    "regression_exit_code": 1,
+    "min_adoption_rate_pct": 15
+  },
   "components": [
     {
       "name": "Button",
@@ -19,7 +25,8 @@
       "usage_in_pages": 33,
       "pages_using_it": 11,
       "target_usage": 120,
-      "notes": "Existing — upgrade with trust-seal variant"
+      "adoption_priority": "critical",
+      "notes": "Existing — upgrade with trust-seal variant. New .vue files MUST use <Button> not <button>."
     },
     {
       "name": "Card",
@@ -29,7 +36,8 @@
       "usage_in_pages": 30,
       "pages_using_it": 0,
       "target_usage": 60,
-      "notes": "Existing — increase adoption"
+      "adoption_priority": "high",
+      "notes": "Existing — increase adoption. Prefer <Card> over custom div+shadow+rounded combos."
     },
     {
       "name": "StatusBadge",
@@ -39,17 +47,19 @@
       "usage_in_pages": 5,
       "pages_using_it": 0,
       "target_usage": 20,
-      "notes": "Existing — covers 15+ election lifecycle statuses"
+      "adoption_priority": "high",
+      "notes": "Existing — covers 15+ election lifecycle statuses. Must use over manual badge divs."
     },
     {
       "name": "Modal",
       "path": "resources/js/Components/Modal.vue",
-      "variants": ["default","danger","success"],
-      "replaces_tags": ["div.*fixed", "div.*inset-0", "teleport"],
+      "variants": ["default","danger","success","warning"],
+      "replaces_tags": ["div.*fixed", "div.*inset-0", "teleport", "Jetstream\\\\Modal"],
       "usage_in_pages": 0,
       "pages_using_it": 0,
       "target_usage": 15,
-      "notes": "NEW — election confirmations, suspension warnings"
+      "adoption_priority": "critical",
+      "notes": "NEW — mandatory for all dialogs/modals. No new fixed/inset-0 teleport divs."
     },
     {
       "name": "Input",
@@ -59,7 +69,8 @@
       "usage_in_pages": 0,
       "pages_using_it": 0,
       "target_usage": 80,
-      "notes": "NEW — replaces all raw <input>, <select>, <textarea>"
+      "adoption_priority": "critical",
+      "notes": "NEW — mandatory for all form inputs. No new raw <input>/<select>/<textarea>."
     },
     {
       "name": "Dropdown",
@@ -69,17 +80,19 @@
       "usage_in_pages": 0,
       "pages_using_it": 0,
       "target_usage": 15,
-      "notes": "NEW — election selector, role picker, status filter"
+      "adoption_priority": "high",
+      "notes": "NEW — election selector, role picker, status filter. Prefer over raw <select>."
     },
     {
       "name": "ProgressBar",
       "path": "resources/js/Components/ProgressBar.vue",
-      "variants": ["primary","success","warning","danger"],
+      "variants": ["primary","success","warning","danger","accent"],
       "replaces_tags": [],
       "usage_in_pages": 0,
       "pages_using_it": 0,
       "target_usage": 10,
-      "notes": "NEW — voting progress, setup progress"
+      "adoption_priority": "medium",
+      "notes": "NEW — voting progress, setup progress, data import."
     },
     {
       "name": "VerificationSeal",
@@ -89,35 +102,74 @@
       "usage_in_pages": 0,
       "pages_using_it": 0,
       "target_usage": 5,
-      "notes": "NEW — trust mark differentiator"
+      "adoption_priority": "medium",
+      "notes": "NEW — trust mark. Use for all verified/official state displays."
     },
     {
       "name": "EmptyState",
       "path": "resources/js/Components/EmptyState.vue",
       "variants": ["default"],
       "replaces_tags": [],
-      "usage_in_pages": 0,
+      "usage_in_pages": 4,
       "pages_using_it": 0,
-      "target_usage": 5,
-      "notes": "Existing — no results, no data, no access"
+      "target_usage": 8,
+      "adoption_priority": "medium",
+      "notes": "Existing — no results, no data, no access states."
     },
     {
       "name": "ToggleSwitch",
       "path": "resources/js/Components/ToggleSwitch.vue",
       "variants": ["default"],
-      "replaces_tags": ["input.*checkbox", "input.*toggle"],
+      "replaces_tags": ["input.*checkbox"],
       "usage_in_pages": 0,
       "pages_using_it": 0,
       "target_usage": 5,
-      "notes": "Existing — settings, feature flags"
+      "adoption_priority": "low",
+      "notes": "Existing — settings, feature flags."
     }
   ],
+  "new_file_audit": {
+    "enabled": true,
+    "rules": [
+      {
+        "pattern": "<button[[:space:]>]",
+        "message": "Use <Button variant=\"...\"> instead of raw <button>. Button is at @/Components/Button.vue",
+        "severity": "error"
+      },
+      {
+        "pattern": "<input[[:space:]>]",
+        "message": "Use <Input /> component instead of raw <input>. Input is at @/Components/Input.vue",
+        "severity": "error"
+      },
+      {
+        "pattern": "<select[[:space:]>]",
+        "message": "Use <Dropdown> or <Input type=\"select\"> instead of raw <select>",
+        "severity": "error"
+      },
+      {
+        "pattern": "<textarea",
+        "message": "Use <Input type=\"textarea\"> instead of raw <textarea>",
+        "severity": "error"
+      },
+      {
+        "pattern": "class=\"[^\"]*fixed[^\"]*\"",
+        "message": "Use <Modal> component instead of custom fixed-position dialogs",
+        "severity": "warning"
+      }
+    ]
+  },
   "excluded_dirs": ["node_modules", "vendor", "dist", "public/build", "storage"],
   "excluded_files": [
     "resources/js/Components/Button.vue",
     "resources/js/Components/Card.vue",
     "resources/js/Components/StatusBadge.vue",
     "resources/js/Components/EmptyState.vue",
-    "resources/js/Components/LanguageSwitcher.vue"
+    "resources/js/Components/LanguageSwitcher.vue",
+    "resources/js/Components/Modal.vue",
+    "resources/js/Components/Input.vue",
+    "resources/js/Components/Dropdown.vue",
+    "resources/js/Components/ProgressBar.vue",
+    "resources/js/Components/VerificationSeal.vue",
+    "resources/js/Components/ToggleSwitch.vue"
   ]
 }

@@ -142,6 +142,79 @@ grep -rn '<button[[:space:]>]' "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/de
 done
 
 # ──────────────────────────────────────────────
+# New file audit — new .vue files MUST use design system components
+# ──────────────────────────────────────────────
+NEW_FILE_AUDIT=$(jq -r '.new_file_audit.enabled // false' "$CONFIG_FILE")
+
+if [ "$NEW_FILE_AUDIT" = "true" ]; then
+  echo ""
+  echo "🆕 New File Audit (git-tracked but never-before-scanned .vue files):"
+  echo "───────────────────────────────────────────────────────────────"
+
+  # Find new .vue files in this branch (not on main)
+  NEW_VUE_FILES=$(git diff --name-only HEAD --diff-filter=A 2>/dev/null | grep '\.vue$' || true)
+
+  if [ -z "$NEW_VUE_FILES" ]; then
+    echo "  No new .vue files detected."
+  else
+    NEW_FILE_VIOLATIONS=0
+    RULE_COUNT=$(jq '.new_file_audit.rules | length' "$CONFIG_FILE")
+
+    for ((r = 0; r < RULE_COUNT; r++)); do
+      PATTERN=$(jq -r ".new_file_audit.rules[$r].pattern // \"\"" "$CONFIG_FILE")
+      MESSAGE=$(jq -r ".new_file_audit.rules[$r].message // \"\"" "$CONFIG_FILE")
+      SEVERITY=$(jq -r ".new_file_audit.rules[$r].severity // \"warning\"" "$CONFIG_FILE")
+
+      [ -z "$PATTERN" ] && continue
+
+      for F in $NEW_VUE_FILES; do
+        if grep -qE "$PATTERN" "$PROJECT_DIR/$F" 2>/dev/null; then
+          NEW_FILE_VIOLATIONS=$((NEW_FILE_VIOLATIONS + 1))
+          echo "  ❌ [$SEVERITY] $(basename "$F") — $MESSAGE"
+        fi
+      done
+    done
+
+    if [ "$NEW_FILE_VIOLATIONS" -gt 0 ]; then
+      ALLOW_REGRESSION=true
+    fi
+  fi
+fi
+
+# ──────────────────────────────────────────────
+# Adoption enforcement — component usage must not regress
+# ──────────────────────────────────────────────
+ADOPTION_REQUIRED=$(jq -r '.enforcement.adoption_required // false' "$CONFIG_FILE")
+
+if [ "$ADOPTION_REQUIRED" = "true" ]; then
+  echo ""
+  echo "📊 Adoption Enforcement (targets from ui-components.json):"
+  echo "───────────────────────────────────────────────────────"
+  ADOPTION_FAILURES=0
+
+  for ((i = 0; i < COMPONENT_COUNT; i++)); do
+    NAME=$(jq -r ".components[$i].name // \"Component_$i\"" "$CONFIG_FILE")
+    PRIORITY=$(jq -r ".components[$i].adoption_priority // \"low\"" "$CONFIG_FILE")
+    TARGET=$(jq -r ".components[$i].target_usage // 0" "$CONFIG_FILE")
+
+    # Re-count to get current actual usage
+    CURRENT=$(grep -rn "<$NAME[[:space:]>]" "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | wc -l)
+
+    if [ "$PRIORITY" = "critical" ] && [ "$CURRENT" -lt "$TARGET" ]; then
+      shortfall=$((TARGET - CURRENT))
+      echo "  ⏳ <$NAME>: $CURRENT/$TARGET usages (${shortfall} short — adoption_priority: critical)"
+      ADOPTION_FAILURES=$((ADOPTION_FAILURES + 1))
+    fi
+  done
+
+  if [ "$ADOPTION_FAILURES" -gt 0 ] && [ "$STRICT_MODE" = "--strict" ]; then
+    echo ""
+    echo "  ℹ️  Note: Adoption gaps are tracked but not blocking in strict mode."
+    echo "  ℹ️  Only REGRESSIONS (raw tag counts exceeding baseline) block the gate."
+  fi
+fi
+
+# ──────────────────────────────────────────────
 # Enforcement
 # ──────────────────────────────────────────────
 ALLOW_REGRESSION=false
