@@ -239,31 +239,38 @@ class ElectionFactory extends Factory
      */
     public function inVotingActiveState()
     {
-        return $this->afterCreating(function (Election $election) {
-            // Set timezone (required by open_voting precondition)
+        $now = now();
+        return $this->state([
+            'type' => 'real',
+            'state' => 'voting_active',
+            'timezone' => 'UTC',
+            'expected_voter_count' => 10,
+            'approved_at' => $now,
+            'approved_by' => null,
+            'administration_completed' => true,
+            'administration_completed_at' => $now,
+            'nomination_completed' => true,
+            'nomination_completed_at' => $now,
+            'voting_locked' => true,
+            'voting_locked_at' => $now,
+            'voting_starts_at' => $now->clone()->subHours(1),
+            'voting_ends_at' => $now->clone()->addHours(3),
+        ]);
+    }
+
+    public function inVotingActiveStateOld()
+    {
+        return $this->state(fn () => ['type' => 'real'])  // Real elections use state machine
+            ->afterCreating(function (Election $election) {
+            // Set timezone and expected voter count
             $election->update([
                 'timezone' => 'UTC',
-                'voting_starts_at' => now(),
-                'voting_ends_at' => now()->addDays(3),
+                'expected_voter_count' => 10,
             ]);
 
-            // Execute auto_submit: draft → approved (free plan ≤40 voters)
-            $election->transitionTo(
-                Transition::manual(
-                    action: 'auto_submit',
-                    actorId: 'system',
-                    reason: 'Test fixture: free plan auto-approval'
-                )
-            );
-
-            // Execute begin_setup: approved → setup_administration
-            $election->transitionTo(
-                Transition::manual(
-                    action: 'begin_setup',
-                    actorId: fake()->uuid(),
-                    reason: 'Test fixture: begin setup'
-                )
-            );
+            // Submit for approval - this will auto-approve since ≤40 voters
+            $systemUser = User::factory()->create(['name' => 'System']);
+            $election->submitForApproval($systemUser->id);
 
             // Create a post (required by complete_administration precondition: has_posts)
             Post::factory()
@@ -273,9 +280,13 @@ class ElectionFactory extends Factory
             // Create a voter (required by complete_administration precondition: has_voters)
             $voter = User::factory()->create();
             ElectionMembership::factory()
-                ->for($election)
-                ->for($voter, 'user')
-                ->create();
+                ->create([
+                    'election_id' => $election->id,
+                    'user_id' => $voter->id,
+                    'organisation_id' => $election->organisation_id,
+                    'role' => 'voter',
+                    'status' => 'active',
+                ]);
 
             // Create chief officer (required by complete_administration precondition: has_chief)
             $chief = User::factory()->create(['name' => 'Chief Officer']);
@@ -286,6 +297,18 @@ class ElectionFactory extends Factory
                 'role' => 'chief',
                 'status' => 'active',
             ]);
+
+            // Authenticate as chief for transitions
+            \Illuminate\Support\Facades\Auth::setUser($chief);
+
+            // Execute begin_setup: approved → setup_administration
+            $election->transitionTo(
+                Transition::manual(
+                    action: 'begin_setup',
+                    actorId: $chief->id,
+                    reason: 'Test fixture: begin setup'
+                )
+            );
 
             // Execute complete_administration: setup_administration → setup_nomination
             $election->transitionTo(
@@ -332,27 +355,88 @@ class ElectionFactory extends Factory
      */
     public function inCountingState()
     {
-        return $this->afterCreating(function (Election $election) {
-            // Set timezone only (required by open_voting precondition)
-            // Do NOT set voting_starts_at/voting_ends_at yet as it may trigger automatic transitions
+        $now = now();
+        return $this->state([
+            'type' => 'real',
+            'state' => 'counting',
+            'status' => 'active',
+            'is_active' => true,
+            'timezone' => 'UTC',
+            'expected_voter_count' => 10,
+
+            // Push voting window into the past so lifecycle engine computes 'counting' state
+            'voting_starts_at' => $now->clone()->subHours(5),
+            'voting_ends_at' => $now->clone()->subHours(2),
+            'voting_locked' => true,
+            'voting_locked_at' => $now->clone()->subHours(2),
+
+            // Setup completion flags
+            'approved_at' => $now->clone()->subHours(6),
+            'approved_by' => null,
+            'administration_completed' => true,
+            'administration_completed_at' => $now->clone()->subHours(6),
+            'nomination_completed' => true,
+            'nomination_completed_at' => $now->clone()->subHours(6),
+
+            // Election dates
+            'start_date' => $now->clone()->subHours(5),
+            'end_date' => $now->clone()->subHours(2),
+
+            // Results not yet published
+            'results_locked' => false,
+        ]);
+    }
+
+    public function inCountingStateOld()
+    {
+        return $this->state(fn () => ['type' => 'real'])  // Real elections use state machine
+            ->afterCreating(function (Election $election) {
+            // Set timezone and expected voter count
+            // expected_voter_count ≤ 40 triggers auto-approval (free plan)
             $election->update([
                 'timezone' => 'UTC',
+                'expected_voter_count' => 10,
             ]);
 
-            // Execute auto_submit: draft → approved (free plan ≤40 voters)
-            $election->transitionTo(
-                Transition::manual(
-                    action: 'auto_submit',
-                    actorId: 'system',
-                    reason: 'Test fixture: free plan auto-approval'
-                )
-            );
+            // Submit for approval - this will auto-approve since ≤40 voters
+            // This sets approved_at business fact that lifecycle engine requires
+            $systemUser = User::factory()->create(['name' => 'System']);
+            $election->submitForApproval($systemUser->id);
+
+            // Create a post (required by complete_administration precondition: has_posts)
+            Post::factory()
+                ->for($election)
+                ->create(['is_national_wide' => true]);
+
+            // Create a voter (required by complete_administration precondition: has_voters)
+            $voter = User::factory()->create();
+            ElectionMembership::factory()
+                ->create([
+                    'election_id' => $election->id,
+                    'user_id' => $voter->id,
+                    'organisation_id' => $election->organisation_id,
+                    'role' => 'voter',
+                    'status' => 'active',
+                ]);
+
+            // Create chief officer (required by complete_administration precondition: has_chief)
+            $chief = User::factory()->create(['name' => 'Chief Officer']);
+            ElectionOfficer::create([
+                'election_id' => $election->id,
+                'user_id' => $chief->id,
+                'organisation_id' => $election->organisation_id,
+                'role' => 'chief',
+                'status' => 'active',
+            ]);
+
+            // Authenticate as chief for the transition
+            \Illuminate\Support\Facades\Auth::setUser($chief);
 
             // Execute begin_setup: approved → setup_administration
             $election->transitionTo(
                 Transition::manual(
                     action: 'begin_setup',
-                    actorId: fake()->uuid(),
+                    actorId: $chief->id,
                     reason: 'Test fixture: begin setup'
                 )
             );
@@ -433,23 +517,58 @@ class ElectionFactory extends Factory
      */
     public function inResultsPublishedState()
     {
-        return $this->afterCreating(function (Election $election) {
-            // Reuse inCountingState logic to reach counting state
-            // Then execute publish_results
+        $now = now();
+        return $this->state([
+            'type' => 'real',
+            'state' => 'results_published',
+            'timezone' => 'UTC',
+            'expected_voter_count' => 10,
+            'approved_at' => $now,
+            'approved_by' => null,
+            'administration_completed' => true,
+            'administration_completed_at' => $now,
+            'nomination_completed' => true,
+            'nomination_completed_at' => $now,
+            'voting_locked' => true,
+            'voting_locked_at' => $now,
+            'voting_starts_at' => $now->clone()->subHours(3),
+            'voting_ends_at' => $now->clone()->subHours(1),
+            'results_published' => true,
+            'results_published_at' => $now,
+            'results_locked' => true,
+            'results_locked_at' => $now,
+        ]);
+    }
 
-            // Set timezone (do NOT set voting dates here as they may trigger automatic transitions)
+    public function inResultsPublishedStateOld()
+    {
+        return $this->state(fn () => ['type' => 'real'])  // Real elections use state machine
+            ->afterCreating(function (Election $election) {
+            // Set timezone and expected voter count
             $election->update([
                 'timezone' => 'UTC',
+                'expected_voter_count' => 10,
             ]);
 
-            // Execute all transitions up to counting
-            $election->transitionTo(Transition::manual(action: 'auto_submit', actorId: 'system'));
-            $election->transitionTo(Transition::manual(action: 'begin_setup', actorId: fake()->uuid()));
+            // Submit for approval - this will auto-approve since ≤40 voters
+            $systemUser = User::factory()->create(['name' => 'System']);
+            $election->submitForApproval($systemUser->id);
 
+            // Create a post (required by complete_administration precondition: has_posts)
             Post::factory()->for($election)->create(['is_national_wide' => true]);
-            $voter = User::factory()->create();
-            ElectionMembership::factory()->for($election)->for($voter, 'user')->create();
 
+            // Create a voter (required by complete_administration precondition: has_voters)
+            $voter = User::factory()->create();
+            ElectionMembership::factory()
+                ->create([
+                    'election_id' => $election->id,
+                    'user_id' => $voter->id,
+                    'organisation_id' => $election->organisation_id,
+                    'role' => 'voter',
+                    'status' => 'active',
+                ]);
+
+            // Create chief officer (required by complete_administration precondition: has_chief)
             $chief = User::factory()->create(['name' => 'Chief Officer']);
             ElectionOfficer::create([
                 'election_id' => $election->id,
@@ -459,8 +578,20 @@ class ElectionFactory extends Factory
                 'status' => 'active',
             ]);
 
+            // Authenticate as chief for transitions
+            \Illuminate\Support\Facades\Auth::setUser($chief);
+
+            // Execute all transitions up to counting
+            $election->transitionTo(Transition::manual(action: 'begin_setup', actorId: $chief->id));
             $election->transitionTo(Transition::manual(action: 'complete_administration', actorId: $chief->id));
             $election->transitionTo(Transition::manual(action: 'complete_nomination', actorId: $chief->id));
+
+            // Set voting dates
+            $election->update([
+                'voting_starts_at' => now(),
+                'voting_ends_at' => now()->addDays(3),
+            ]);
+
             $election->transitionTo(Transition::manual(action: 'open_voting', actorId: $chief->id));
             $election->transitionTo(Transition::manual(action: 'close_voting', actorId: $chief->id));
 
