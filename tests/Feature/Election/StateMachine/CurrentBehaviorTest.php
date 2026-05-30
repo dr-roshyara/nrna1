@@ -142,10 +142,10 @@ class CurrentBehaviorTest extends TestCase
     // ─────────────────────────────────────────────────────────────────────────
 
     /**
-     * Test P0.4: SETUP state derivation
+     * Test P0.4: SETUP_ADMINISTRATION state derivation
      *
      * Verifies: Election with setup_started_at set AND administration_completed = false
-     * derives to SETUP
+     * derives to SETUP_ADMINISTRATION
      * Facts: setup_started_at = SET, administration_completed = false
      */
     public function test_election_with_setup_started_derives_to_setup(): void
@@ -161,7 +161,7 @@ class CurrentBehaviorTest extends TestCase
 
         $state = ElectionLifecycle::of($this->election)->state();
 
-        $this->assertEquals('setup', $state->value);
+        $this->assertEquals('setup_administration', $state->value);
     }
 
     // ─────────────────────────────────────────────────────────────────────────
