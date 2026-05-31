@@ -60,12 +60,17 @@ class VoterDropdownTest extends TestCase
             'organisation_id'   => $this->org->id,
             'email_verified_at' => now(),
         ]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'voter',
-        ]);
+        // Factory already creates UserOrganisationRole with role='voter'
+        // Use updateOrCreate to keep that default
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id'         => $user->id,
+                'organisation_id' => $this->org->id,
+            ],
+            [
+                'role' => 'voter',
+            ]
+        );
         ElectionOfficer::create([
             'organisation_id' => $this->org->id,
             'user_id'         => $user->id,
@@ -138,12 +143,16 @@ class VoterDropdownTest extends TestCase
 
         // Ineligible — staff role only, no Member record
         $staffOnly = User::factory()->create(['organisation_id' => $this->org->id, 'name' => 'Staff Only', 'email_verified_at' => now()]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $staffOnly->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'staff',
-        ]);
+        // Factory creates role='voter', override to 'staff'
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id'         => $staffOnly->id,
+                'organisation_id' => $this->org->id,
+            ],
+            [
+                'role' => 'staff',
+            ]
+        );
 
         // Ineligible — expired membership
         $expired = User::factory()->create(['organisation_id' => $this->org->id, 'name' => 'Expired Member', 'email_verified_at' => now()]);
