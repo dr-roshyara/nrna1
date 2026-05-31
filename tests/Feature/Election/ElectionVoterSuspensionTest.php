@@ -33,7 +33,7 @@ class ElectionVoterSuspensionTest extends TestCase
         ]);
 
         $this->chief  = $this->makeOfficer('chief');
-        $this->deputy = $this->makeOfficer('chief');
+        $this->deputy = $this->makeOfficer('deputy');
     }
 
     // =========================================================================
@@ -48,7 +48,7 @@ class ElectionVoterSuspensionTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.voters.propose-suspension', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,
+                'election'     => $this->election->slug,
                 'membership'   => $membership->id,
             ]))
             ->assertRedirect();
@@ -66,7 +66,7 @@ class ElectionVoterSuspensionTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.voters.propose-suspension', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,
+                'election'     => $this->election->slug,
                 'membership'   => $membership->id,
             ]))
             ->assertRedirect()
@@ -84,7 +84,7 @@ class ElectionVoterSuspensionTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.voters.propose-suspension', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,
+                'election'     => $this->election->slug,
                 'membership'   => $membership->id,
             ]))
             ->assertRedirect()
@@ -104,7 +104,7 @@ class ElectionVoterSuspensionTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.voters.confirm-suspension', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,
+                'election'     => $this->election->slug,
                 'membership'   => $membership->id,
             ]))
             ->assertRedirect()
@@ -123,7 +123,7 @@ class ElectionVoterSuspensionTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.voters.confirm-suspension', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,
+                'election'     => $this->election->slug,
                 'membership'   => $membership->id,
             ]))
             ->assertRedirect()
@@ -145,7 +145,7 @@ class ElectionVoterSuspensionTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.voters.cancel-proposal', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,
+                'election'     => $this->election->slug,
                 'membership'   => $membership->id,
             ]))
             ->assertRedirect()
@@ -164,7 +164,7 @@ class ElectionVoterSuspensionTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.voters.cancel-proposal', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,
+                'election'     => $this->election->slug,
                 'membership'   => $membership->id,
             ]))
             ->assertStatus(403);
@@ -210,12 +210,17 @@ class ElectionVoterSuspensionTest extends TestCase
     private function makeMembership(string $status): ElectionMembership
     {
         $voter = User::factory()->create(['organisation_id' => $this->org->id]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $voter->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'voter',
-        ]);
+        // Factory already creates UserOrganisationRole with role='voter'
+        // Use updateOrCreate to avoid duplicate key violation
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id'         => $voter->id,
+                'organisation_id' => $this->org->id,
+            ],
+            [
+                'role' => 'voter',
+            ]
+        );
         return ElectionMembership::create([
             'user_id'         => $voter->id,
             'organisation_id' => $this->org->id,
