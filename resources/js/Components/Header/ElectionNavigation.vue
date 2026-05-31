@@ -70,8 +70,8 @@
                     <!-- Results link - only show when results are published -->
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" v-if="resultsArePublished">
                         <jet-nav-link
-                            :href="'/election/result'"
-                            :active="$page.url === '/election/result'"
+                            :href="route('election.result', { organisation_slug: $page.props.user.organisation?.slug })"
+                            :active="route().current('election.result')"
                         >
                             {{ $t('pages.election-navigation.primary_navigation.result') }}
                         </jet-nav-link>

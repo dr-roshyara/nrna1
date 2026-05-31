@@ -112,12 +112,14 @@
 
 <script setup>
 import { ref } from 'vue';
+import { usePage } from '@inertiajs/vue3';
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue';
 import ModeIndicator from './ModeIndicator.vue';
 import CandidateCard from './Candidate.vue';
 import StatCard from '@/Components/StatCard.vue';
 
+const { props: pageProps } = usePage();
 const isDownloading = ref(false);
 
 const props = defineProps({
@@ -139,11 +141,15 @@ const getPostResults = (postId) =>
 const downloadPDF = async () => {
   isDownloading.value = true;
   try {
-    const route = props.mode === 'global'
-      ? '/demo/global/result/download-pdf'
-      : '/demo/result/download-pdf';
+    let downloadUrl;
+    if (props.mode === 'global') {
+      downloadUrl = route('demo-result.global.download-pdf');
+    } else {
+      const orgSlug = pageProps.user?.organisation?.slug;
+      downloadUrl = route('demo-result.download-pdf', { organisation_slug: orgSlug });
+    }
 
-    const response = await fetch(route);
+    const response = await fetch(downloadUrl);
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
     const link = document.createElement('a');

@@ -28,7 +28,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                             </svg>
                         </a>
-                        <a :href="org_demo_url"
+                        <a v-if="org_demo_url"
+                           :href="org_demo_url"
                            class="group inline-flex items-center gap-2 px-8 py-4 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-all shadow-lg hover:shadow-xl">
                             <span>🏢</span>
                             {{ $t('pages.Vote.DemoVote.Guide.hero.cta_org') }}
@@ -36,6 +37,15 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                             </svg>
                         </a>
+                        <button v-else
+                                disabled
+                                class="group inline-flex items-center gap-2 px-8 py-4 bg-gray-400 text-white font-semibold rounded-xl cursor-not-allowed opacity-60">
+                            <span>🏢</span>
+                            {{ $t('pages.Vote.DemoVote.Guide.hero.cta_org') }}
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </button>
                         <button @click="scrollToSteps"
                                 class="px-8 py-4 border-2 border-slate-300 text-slate-700 font-semibold rounded-xl hover:bg-slate-50 transition-colors">
                             {{ $t('pages.Vote.DemoVote.Guide.hero.cta_learn') }}
@@ -98,10 +108,16 @@
                                 {{ h }}
                             </li>
                         </ul>
-                        <a :href="org_demo_url"
+                        <a v-if="org_demo_url"
+                           :href="org_demo_url"
                            class="block w-full text-center px-4 py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-colors">
                             {{ $t('pages.Vote.DemoVote.Guide.modes.org.cta') }} →
                         </a>
+                        <button v-else
+                                disabled
+                                class="block w-full text-center px-4 py-3 bg-gray-400 text-white font-semibold rounded-xl cursor-not-allowed opacity-60">
+                            {{ $t('pages.Vote.DemoVote.Guide.modes.org.cta') }} →
+                        </button>
                     </div>
                 </div>
 
@@ -395,7 +411,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                             </svg>
                         </a>
-                        <a :href="org_demo_url"
+                        <a v-if="org_demo_url"
+                           :href="org_demo_url"
                            class="inline-flex items-center gap-2 px-8 py-4 bg-indigo-800 text-white font-semibold rounded-xl hover:bg-indigo-900 transition-all shadow-lg border border-indigo-400">
                             <span>🏢</span>
                             {{ $t('pages.Vote.DemoVote.Guide.cta.button_org') }}
@@ -403,6 +420,15 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                             </svg>
                         </a>
+                        <button v-else
+                                disabled
+                                class="inline-flex items-center gap-2 px-8 py-4 bg-gray-500 text-white font-semibold rounded-xl cursor-not-allowed opacity-60 border border-gray-500">
+                            <span>🏢</span>
+                            {{ $t('pages.Vote.DemoVote.Guide.cta.button_org') }}
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -429,7 +455,7 @@ export default {
 
     props: {
         start_url:    { type: String, required: true },
-        org_demo_url: { type: String, required: true },
+        org_demo_url: { type: [String, null], default: null },
     },
 
     setup() {

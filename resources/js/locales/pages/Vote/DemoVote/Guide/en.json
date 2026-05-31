@@ -14,7 +14,7 @@
     "public": {
       "badge": "No login required",
       "title": "Public Demo",
-      "url_label": "/election/public-demo/start",
+      "url_label": "/public-demo/start",
       "description": "The fastest way to experience the voting system. No account needed. Your personal 8-character verification code is displayed directly on the screen as soon as you start.",
       "highlights": [
         "Open to everyone — no account required",
@@ -27,7 +27,7 @@
     "org": {
       "badge": "Login required",
       "title": "Organisation Demo",
-      "url_label": "/election/demo/start",
+      "url_label": "/organisations/{organisation_slug}/demo/start",
       "description": "Simulates a real organisational election. You must be logged in as a member. Once you start, the system sends your personal voting code to your registered email address — just like a live election.",
       "highlights": [
         "Requires a member account and login",

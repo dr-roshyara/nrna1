@@ -25,9 +25,11 @@ class ElectionVoterManagementTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        \App\Services\TenantContext::clear();
 
         $this->org = Organisation::factory()->create(['type' => 'tenant']);
         session(['current_organisation_id' => $this->org->id]);
+        \App\Services\TenantContext::set($this->org->id);
 
         $this->election = Election::factory()->forOrganisation($this->org)->real()->create([
             'status' => 'active',
@@ -50,7 +52,7 @@ class ElectionVoterManagementTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.voters.approve', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,
+                'election'     => $this->election->slug,
                 'membership'   => $membership->id,
             ]))
             ->assertRedirect();
@@ -66,7 +68,7 @@ class ElectionVoterManagementTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.voters.approve', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,
+                'election'     => $this->election->slug,
                 'membership'   => $membership->id,
             ]))
             ->assertRedirect();
@@ -82,7 +84,7 @@ class ElectionVoterManagementTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.voters.approve', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,
+                'election'     => $this->election->slug,
                 'membership'   => $membership->id,
             ]))
             ->assertForbidden();
@@ -98,7 +100,7 @@ class ElectionVoterManagementTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.voters.approve', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,
+                'election'     => $this->election->slug,
                 'membership'   => $membership->id,
             ]))
             ->assertRedirect();
@@ -119,7 +121,7 @@ class ElectionVoterManagementTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.voters.suspend', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,
+                'election'     => $this->election->slug,
                 'membership'   => $membership->id,
             ]))
             ->assertRedirect();
@@ -135,7 +137,7 @@ class ElectionVoterManagementTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.voters.suspend', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,
+                'election'     => $this->election->slug,
                 'membership'   => $membership->id,
             ]))
             ->assertRedirect();
@@ -151,7 +153,7 @@ class ElectionVoterManagementTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.voters.suspend', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,
+                'election'     => $this->election->slug,
                 'membership'   => $membership->id,
             ]))
             ->assertForbidden();
@@ -167,7 +169,7 @@ class ElectionVoterManagementTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.voters.suspend', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,
+                'election'     => $this->election->slug,
                 'membership'   => $membership->id,
             ]))
             ->assertRedirect();
@@ -192,7 +194,7 @@ class ElectionVoterManagementTest extends TestCase
             ->withSession($this->orgSession())
             ->post(route('elections.voters.approve', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,       // our election
+                'election'     => $this->election->slug,       // our election
                 'membership'   => $membershipInOtherElection->id, // different election's membership
             ]))
             ->assertNotFound();
@@ -212,7 +214,7 @@ class ElectionVoterManagementTest extends TestCase
             ->withSession(['current_organisation_id' => $otherOrg->id])
             ->post(route('elections.voters.approve', [
                 'organisation' => $this->org->slug,
-                'election'     => $this->election->id,
+                'election'     => $this->election->slug,
                 'membership'   => $membership->id,
             ]));
 
@@ -274,13 +276,8 @@ class ElectionVoterManagementTest extends TestCase
     private function makeMembershipForElection(Election $election, string $status): ElectionMembership
     {
         $voter = User::factory()->create(['organisation_id' => $this->org->id]);
-        // Required by composite FK: (user_id, organisation_id) → user_organisation_roles
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $voter->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'voter',
-        ]);
+        // UserFactory automatically creates UserOrganisationRole via afterCreating hook
+        // so no need to create it again — the FK is already satisfied
         return ElectionMembership::create([
             'user_id'         => $voter->id,
             'organisation_id' => $this->org->id,

@@ -112,7 +112,7 @@ class DemoResultController extends Controller
             $noVoteCount = 0;
 
             foreach ($allCandidates as $candidacy) {
-                $candidateName = $candidacy->user->name ?? $candidacy->user_name ?? 'Unknown';
+                $candidateName = $candidacy->user->name ?? $candidacy->user_name ?? $candidacy->name ?? 'Unknown';
                 // Key by `id` (UUID) — votes store the UUID in candidacy_id, not the short candidacy_id code
                 $candidateVotes[$candidacy->id] = [
                     'name' => $candidateName,
@@ -145,6 +145,12 @@ class DemoResultController extends Controller
             foreach ($votes as $vote) {
                 for ($i = 1; $i <= 60; $i++) {
                     $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
+
+                    // Skip empty/null columns
+                    if (empty($vote->$field)) {
+                        continue;
+                    }
+
                     $candidateData = json_decode($vote->$field, true);
 
                     if (!$candidateData || ($candidateData['post_id'] ?? null) !== $post->post_id) {
@@ -158,7 +164,7 @@ class DemoResultController extends Controller
                         continue;
                     }
 
-                    // Count candidate votes
+                    // Count candidate votes (candidates array contains selected candidates for this post)
                     foreach ($candidateData['candidates'] ?? [] as $candidate) {
                         $candidateId = $candidate['candidacy_id'] ?? null;
 

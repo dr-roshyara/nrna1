@@ -4,6 +4,7 @@ namespace Tests\Feature\Election;
 
 use App\Models\DemoVote;
 use App\Models\Election;
+use App\Models\ElectionOfficer;
 use App\Models\Organisation;
 use App\Models\User;
 use App\Models\UserOrganisationRole;
@@ -23,16 +24,11 @@ class ElectionSettingsControllerTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        \App\Services\TenantContext::clear();
 
-        $this->organisation = Organisation::factory()->create();
+        $this->organisation = Organisation::factory()->create(['type' => 'tenant']);
         session(['current_organisation_id' => $this->organisation->id]);
-
-        $this->admin = User::factory()->create();
-        UserOrganisationRole::create([
-            'user_id'         => $this->admin->id,
-            'organisation_id' => $this->organisation->id,
-            'role'            => 'admin',
-        ]);
+        \App\Services\TenantContext::set($this->organisation->id);
 
         $this->election = Election::factory()
             ->real()
@@ -42,6 +38,32 @@ class ElectionSettingsControllerTest extends TestCase
                 'settings_version'  => 0,
                 'ip_restriction_enabled' => false,
             ]);
+
+        $this->admin = User::factory()->create([
+            'organisation_id' => $this->organisation->id,
+            'email_verified_at' => now(),
+        ]);
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id'         => $this->admin->id,
+                'organisation_id' => $this->organisation->id,
+            ],
+            [
+                'role' => 'admin',
+            ]
+        );
+
+        // Create ElectionOfficer so admin can manage settings
+        ElectionOfficer::create([
+            'organisation_id' => $this->organisation->id,
+            'election_id'     => $this->election->id,
+            'user_id'         => $this->admin->id,
+            'role'            => 'chief',
+            'status'          => 'active',
+            'appointed_by'    => $this->admin->id,
+            'appointed_at'    => now(),
+            'accepted_at'     => now(),
+        ]);
     }
 
     // ── Edit (GET) ──────────────────────────────────────────────────
@@ -50,6 +72,7 @@ class ElectionSettingsControllerTest extends TestCase
     public function admin_can_view_election_settings_page(): void
     {
         $response = $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->get(route('elections.settings.edit', $this->election->slug));
 
         $response->assertOk();
@@ -64,14 +87,19 @@ class ElectionSettingsControllerTest extends TestCase
     /** @test */
     public function non_admin_cannot_view_election_settings(): void
     {
-        $user = User::factory()->create();
-        UserOrganisationRole::create([
-            'user_id'         => $user->id,
-            'organisation_id' => $this->organisation->id,
-            'role'            => 'member',
-        ]);
+        $user = User::factory()->create(['organisation_id' => $this->organisation->id]);
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id'         => $user->id,
+                'organisation_id' => $this->organisation->id,
+            ],
+            [
+                'role' => 'member',
+            ]
+        );
 
         $response = $this->actingAs($user)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->get(route('elections.settings.edit', $this->election->slug));
 
         $response->assertForbidden();
@@ -85,9 +113,22 @@ class ElectionSettingsControllerTest extends TestCase
             ->for($this->organisation)
             ->create();
 
+        // Create ElectionOfficer for demo election
+        ElectionOfficer::create([
+            'organisation_id' => $this->organisation->id,
+            'election_id'     => $demoElection->id,
+            'user_id'         => $this->admin->id,
+            'role'            => 'chief',
+            'status'          => 'active',
+            'appointed_by'    => $this->admin->id,
+            'appointed_at'    => now(),
+            'accepted_at'     => now(),
+        ]);
+
         DemoVote::factory()->create(['election_id' => $demoElection->id]);
 
         $response = $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->get(route('elections.settings.edit', $demoElection->slug));
 
         $response->assertInertia(fn ($page) =>
@@ -101,6 +142,7 @@ class ElectionSettingsControllerTest extends TestCase
     public function admin_can_update_basic_settings(): void
     {
         $response = $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->patch(route('elections.settings.update', $this->election->slug), [
                 'ip_restriction_enabled'    => true,
                 'ip_restriction_max_per_ip' => 2,
@@ -136,6 +178,7 @@ class ElectionSettingsControllerTest extends TestCase
         $this->election->increment('settings_version');
 
         $response = $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->patch(route('elections.settings.update', $this->election->slug), [
                 'ip_restriction_enabled'    => true,
                 'ip_restriction_max_per_ip' => 2,
@@ -161,6 +204,7 @@ class ElectionSettingsControllerTest extends TestCase
         Vote::factory()->create(['election_id' => $this->election->id]);
 
         $response = $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->patch(route('elections.settings.update', $this->election->slug), [
                 'ip_restriction_enabled'    => true,
                 'ip_restriction_max_per_ip' => 2,
@@ -186,6 +230,7 @@ class ElectionSettingsControllerTest extends TestCase
         Vote::factory()->create(['election_id' => $this->election->id]);
 
         $response = $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->patch(route('elections.settings.update', $this->election->slug), [
                 'ip_restriction_enabled'    => true,
                 'ip_restriction_max_per_ip' => 2,
@@ -208,6 +253,7 @@ class ElectionSettingsControllerTest extends TestCase
     public function array_fields_are_properly_detected_for_changes(): void
     {
         $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->patch(route('elections.settings.update', $this->election->slug), [
                 'ip_restriction_enabled'    => true,
                 'ip_restriction_max_per_ip' => 1,
@@ -222,11 +268,9 @@ class ElectionSettingsControllerTest extends TestCase
                 'agreed_to_settings'        => true,
             ]);
 
-        $this->assertDatabaseHas('elections', [
-            'id'              => $this->election->id,
-            'ip_whitelist'    => json_encode(['192.168.1.0/24', '10.0.0.1']),
-            'settings_version' => 1,
-        ]);
+        $this->election->refresh();
+        $this->assertEquals(1, $this->election->settings_version);
+        $this->assertEquals(['192.168.1.0/24', '10.0.0.1'], $this->election->ip_whitelist);
     }
 
     /** @test */
@@ -290,6 +334,7 @@ class ElectionSettingsControllerTest extends TestCase
     public function validation_rejects_invalid_ip_restriction_max(): void
     {
         $response = $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->patch(route('elections.settings.update', $this->election->slug), [
                 'ip_restriction_enabled'    => true,
                 'ip_restriction_max_per_ip' => 100,  // Exceeds max of 50
@@ -311,6 +356,7 @@ class ElectionSettingsControllerTest extends TestCase
     public function validation_rejects_invalid_voter_verification_mode(): void
     {
         $response = $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->patch(route('elections.settings.update', $this->election->slug), [
                 'ip_restriction_enabled'    => false,
                 'ip_restriction_max_per_ip' => 4,

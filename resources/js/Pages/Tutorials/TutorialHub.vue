@@ -195,7 +195,7 @@ import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
 const { t } = useI18n()
 
 const breadcrumbs = computed(() => [
-  { label: t('pages.tutorial-hub.breadcrumb'), href: '/tutorial' },
+  { label: t('pages.tutorial-hub.breadcrumb'), url: '/tutorial' },
 ])
 </script>
 

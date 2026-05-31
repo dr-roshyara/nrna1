@@ -38,10 +38,17 @@ class VoterImportElectionOnlyTest extends TestCase
             ->state(['uses_full_membership' => false])
             ->create();
 
+        \App\Services\TenantContext::set($this->organisation->id);
+
         $this->election = Election::factory()
             ->for($this->organisation)
             ->state(['type' => 'real'])
-            ->create(['state' => 'setup_administration']);
+            ->create([
+                'submitted_for_approval_at' => now()->subDay(),
+                'approved_at' => now()->subDay(),
+                'setup_started_at' => now()->subHours(6),
+                'administration_completed' => false,
+            ]);
 
         $this->admin = User::factory()
             ->create();

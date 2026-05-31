@@ -168,12 +168,12 @@
                         </h2>
 
                         <div class="flex flex-col sm:flex-row gap-4 justify-center" v-if="election.results_published">
-                            <a
-                                href="/election/result"
+                            <Link
+                                :href="route('election.result', { organisation_slug: $page.props.user.organisation?.slug })"
                                 class="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg shadow-lg transition-colors duration-200"
                             >
                                 👁️ परिणाम हेर्नुहोस् | View Results
-                            </a>
+                            </Link>
                         </div>
 
                         <div v-else class="text-center p-6 bg-neutral-50 rounded-xl border border-neutral-200">
@@ -195,6 +195,9 @@
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { computed } from 'vue'
 import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
+import { Link, usePage } from '@inertiajs/vue3'
+
+const { props: { user } } = usePage()
 
 const props = defineProps({
     election: {

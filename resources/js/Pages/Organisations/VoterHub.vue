@@ -83,7 +83,7 @@
 
             <!-- Demo Result always visible -->
             <ActionCard
-              :href="route('demo-result.index')"
+              :href="route('demo-result.index', { organisation_slug: organisation.slug })"
               accent="emerald"
               :label="t.nav.demo_results"
               :description="t.nav.demo_results_sub"
@@ -129,7 +129,7 @@
 
             <!-- Demo Result -->
             <ActionCard
-              :href="route('demo-result.index')"
+              :href="route('demo-result.index', { organisation_slug: organisation.slug })"
               accent="emerald"
               :label="t.nav.demo_results"
               :description="t.nav.demo_results_sub"
@@ -597,7 +597,8 @@ function statusBadgeClass(electionId) {
 
 function formatDate(d) {
   if (!d) return '—'
-  return new Date(d).toLocaleDateString(locale.value === 'de' ? 'de-DE' : locale.value === 'np' ? 'ne-NP' : 'en-GB', {
+  const localeCode = locale?.value || 'de'
+  return new Date(d).toLocaleDateString(localeCode === 'de' ? 'de-DE' : localeCode === 'np' ? 'ne-NP' : 'en-GB', {
     day: '2-digit', month: 'short', year: 'numeric',
   })
 }

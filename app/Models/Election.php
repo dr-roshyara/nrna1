@@ -153,6 +153,7 @@ class Election extends Model
         'nomination_suggested_end',
         'nomination_completed',
         'nomination_completed_at',
+        'timezone',
         'voting_starts_at',
         'voting_ends_at',
         'allow_auto_transition',
@@ -2100,6 +2101,12 @@ class Election extends Model
         }
         if (($this->pending_candidacies_count ?? 0) > 0) {
             return 'There are pending candidacy applications.';
+        }
+        if (!$this->timezone) {
+            return 'Timezone must be set before opening voting.';
+        }
+        if (!$this->voting_starts_at || !$this->voting_ends_at) {
+            return 'Voting window (start and end times) must be defined.';
         }
         // NOTE: Don't check if voting_starts_at has been reached.
         // The open_voting action itself sets voting_starts_at = now(),

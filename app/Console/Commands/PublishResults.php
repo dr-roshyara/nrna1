@@ -56,7 +56,6 @@ class PublishResults extends Command
             // Publish results using the service
             if (ElectionService::publishResults()) {
                 $this->info('✅ Election results have been successfully published!');
-                $this->info('🔗 Results are now available at: /election/result');
                 $this->newLine();
                 $this->info('📊 Voters can now access the election results from the dashboard.');
 
