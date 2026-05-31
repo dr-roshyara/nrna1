@@ -24,6 +24,7 @@ class VoterImportController extends Controller
         $election = $this->resolveElection($election);
 
         $this->authorize('manageVoters', $election);
+        $this->assertAdministrationSetupState($election);
 
         $mode = VoterSourceStrategy::fromElection($election);
 
@@ -82,6 +83,7 @@ class VoterImportController extends Controller
     {
         $election = $this->resolveElection($election);
         $this->authorize('manageVoters', $election);
+        $this->assertAdministrationSetupState($election);
 
         return (new VoterImportService($election, $this->eligibilityService))->downloadTemplate();
     }
@@ -92,6 +94,7 @@ class VoterImportController extends Controller
     {
         $election = $this->resolveElection($election);
         $this->authorize('manageVoters', $election);
+        $this->assertAdministrationSetupState($election);
 
         $request->validate([
             'file' => 'required|file|mimes:xlsx,xls,csv,txt|max:10240',
@@ -115,6 +118,7 @@ class VoterImportController extends Controller
     {
         $election = $this->resolveElection($election);
         $this->authorize('manageVoters', $election);
+        $this->assertAdministrationSetupState($election);
 
         $request->validate([
             'file'      => 'required|file|mimes:xlsx,xls,csv,txt|max:10240',
@@ -169,5 +173,20 @@ class VoterImportController extends Controller
         abort_if($election->type === 'demo', 404, 'Voter import is not available for demo elections.');
 
         return $election;
+    }
+
+    private function assertAdministrationSetupState(Election $election): void
+    {
+        if ($election->state !== 'setup_administration') {
+            \Log::warning('Voter import blocked — wrong election state', [
+                'election_id'    => $election->id,
+                'current_state'  => $election->state,
+                'required_state' => 'setup_administration',
+                'user_id'        => auth()->id(),
+                'ip'             => request()->ip(),
+            ]);
+
+            abort(403, 'Voter import is only available during the administration setup phase.');
+        }
     }
 }
