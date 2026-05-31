@@ -44,6 +44,7 @@ class VoterImportElectionOnlyTest extends TestCase
             ->for($this->organisation)
             ->state(['type' => 'real'])
             ->create([
+                'voter_source_strategy' => 'election_only',
                 'submitted_for_approval_at' => now()->subDay(),
                 'approved_at' => now()->subDay(),
                 'setup_started_at' => now()->subHours(6),
@@ -67,6 +68,8 @@ class VoterImportElectionOnlyTest extends TestCase
             'role' => 'chief',
             'status' => 'active',
         ]);
+
+        session(['current_organisation_id' => $this->organisation->id]);
     }
 
     // ── Helpers ───────────────────────────────────────────────────────────────
@@ -99,6 +102,7 @@ class VoterImportElectionOnlyTest extends TestCase
         $file = $this->makeCsv($csv);
 
         $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->withHeaders(['Accept' => 'application/json'])
             ->post(route('elections.voters.import.preview', [
                 'organisation' => $this->organisation->slug,
@@ -124,6 +128,7 @@ class VoterImportElectionOnlyTest extends TestCase
         $file = $this->makeCsv($csv);
 
         $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->withHeaders(['Accept' => 'application/json'])
             ->post(route('elections.voters.import.preview', [
                 'organisation' => $this->organisation->slug,
@@ -145,6 +150,7 @@ class VoterImportElectionOnlyTest extends TestCase
         $file = $this->makeCsv($csv);
 
         $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->withHeaders(['Accept' => 'application/json'])
             ->post(route('elections.voters.import', [
                 'organisation' => $this->organisation->slug,
@@ -167,6 +173,7 @@ class VoterImportElectionOnlyTest extends TestCase
         $file = $this->makeCsv($csv);
 
         $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->withHeaders(['Accept' => 'application/json'])
             ->post(route('elections.voters.import', [
                 'organisation' => $this->organisation->slug,
@@ -193,6 +200,7 @@ class VoterImportElectionOnlyTest extends TestCase
         $file = $this->makeCsv($csv);
 
         $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->withHeaders(['Accept' => 'application/json'])
             ->post(route('elections.voters.import', [
                 'organisation' => $this->organisation->slug,
@@ -221,6 +229,7 @@ class VoterImportElectionOnlyTest extends TestCase
         $file = $this->makeCsv($csv);
 
         $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->withHeaders(['Accept' => 'application/json'])
             ->post(route('elections.voters.import', [
                 'organisation' => $this->organisation->slug,
@@ -248,6 +257,7 @@ class VoterImportElectionOnlyTest extends TestCase
         $file = $this->makeCsv($csv);
 
         $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->withHeaders(['Accept' => 'application/json'])
             ->post(route('elections.voters.import', [
                 'organisation' => $this->organisation->slug,
@@ -271,6 +281,7 @@ class VoterImportElectionOnlyTest extends TestCase
 
         // First import
         $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->withHeaders(['Accept' => 'application/json'])
             ->post(route('elections.voters.import', [
                 'organisation' => $this->organisation->slug,
@@ -285,6 +296,7 @@ class VoterImportElectionOnlyTest extends TestCase
 
         // Second import of same email
         $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->withHeaders(['Accept' => 'application/json'])
             ->post(route('elections.voters.import', [
                 'organisation' => $this->organisation->slug,
@@ -408,6 +420,7 @@ class VoterImportElectionOnlyTest extends TestCase
 
         // This test verifies transaction behavior with data integrity
         $this->actingAs($this->admin)
+            ->withSession(['current_organisation_id' => $this->organisation->id])
             ->withHeaders(['Accept' => 'application/json'])
             ->post(route('elections.voters.import', [
                 'organisation' => $this->organisation->slug,
