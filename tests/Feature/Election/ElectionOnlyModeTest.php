@@ -53,13 +53,21 @@ class ElectionOnlyModeTest extends TestCase
         ]);
 
         // Setup admin user with owner role
-        $this->admin = User::factory()->create(['email_verified_at' => now()]);
-        UserOrganisationRole::create([
-            'id' => (string) Str::uuid(),
-            'user_id' => $this->admin->id,
+        $this->admin = User::factory()->create([
             'organisation_id' => $this->electionOnlyOrg->id,
-            'role' => 'owner',
+            'email_verified_at' => now(),
         ]);
+        // Factory already creates UserOrganisationRole with role='voter'
+        // Use updateOrCreate to override role to 'owner'
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id' => $this->admin->id,
+                'organisation_id' => $this->electionOnlyOrg->id,
+            ],
+            [
+                'role' => 'owner',
+            ]
+        );
 
         // Setup regular users
         $this->user1 = User::factory()->create(['email_verified_at' => now()]);
@@ -297,13 +305,18 @@ class ElectionOnlyModeTest extends TestCase
             ->create(['status' => 'active']);
 
         // Setup admin for full membership org
-        $admin = User::factory()->create();
-        UserOrganisationRole::create([
-            'id' => (string) Str::uuid(),
-            'user_id' => $admin->id,
-            'organisation_id' => $this->fullMembershipOrg->id,
-            'role' => 'owner',
-        ]);
+        $admin = User::factory()->create(['organisation_id' => $this->fullMembershipOrg->id]);
+        // Factory already creates UserOrganisationRole with role='voter'
+        // Use updateOrCreate to override role to 'owner'
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id' => $admin->id,
+                'organisation_id' => $this->fullMembershipOrg->id,
+            ],
+            [
+                'role' => 'owner',
+            ]
+        );
 
         // Add admin as election chief (required to manage voters)
         ElectionOfficer::create([
