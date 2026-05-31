@@ -42,10 +42,39 @@ class VoterImportStateGateTest extends TestCase
 
     private function makeElectionInState(string $state): Election
     {
+        // Set constitutional facts for each state (required for ElectionLifecycleEngine)
+        $attrs = ['voter_source_strategy' => 'election_only'] + match ($state) {
+            'draft' => [], // Draft is default, no facts needed
+            'approved' => [
+                'submitted_for_approval_at' => now()->subDay(),
+                'approved_at' => now()->subDay(),
+            ],
+            'setup_administration' => [
+                'submitted_for_approval_at' => now()->subDay(),
+                'approved_at' => now()->subDay(),
+                'setup_started_at' => now()->subHours(6),
+                'administration_completed' => false,
+            ],
+            'voting_active' => [
+                'submitted_for_approval_at' => now()->subDay(),
+                'approved_at' => now()->subDay(),
+                'setup_started_at' => now()->subDay(),
+                'administration_completed' => true,
+                'administration_completed_at' => now()->subHours(12),
+                'nomination_completed' => true,
+                'nomination_completed_at' => now()->subHours(12),
+                'voting_starts_at' => now()->subHour(),
+                'voting_ends_at' => now()->addHour(),
+                'voting_locked' => true,
+                'voting_locked_at' => now()->subHour(),
+            ],
+            default => [],
+        };
+
         $election = Election::factory()
             ->forOrganisation($this->org)
             ->real()
-            ->create(['state' => $state, 'voter_source_strategy' => 'election_only']);
+            ->create($attrs);
 
         ElectionOfficer::create([
             'id'              => (string) Str::uuid(),

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Election;
 
 use App\Http\Controllers\Controller;
+use App\Application\Election\Facades\ElectionLifecycle;
 use App\Models\Election;
 use App\Models\Organisation;
 use App\Domain\Election\Enum\VoterSourceStrategy;
@@ -177,10 +178,12 @@ class VoterImportController extends Controller
 
     private function assertAdministrationSetupState(Election $election): void
     {
-        if ($election->state !== 'setup_administration') {
+        $currentState = ElectionLifecycle::of($election)->state()->value;
+
+        if ($currentState !== 'setup_administration') {
             \Log::warning('Voter import blocked — wrong election state', [
                 'election_id'    => $election->id,
-                'current_state'  => $election->state,
+                'current_state'  => $currentState,
                 'required_state' => 'setup_administration',
                 'user_id'        => auth()->id(),
                 'ip'             => request()->ip(),
