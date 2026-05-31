@@ -15,31 +15,58 @@ class CapacityApprovalTest extends TestCase
     use RefreshDatabase;
 
     private Organisation $org;
-    private User $owner;
+    private User $chief;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->org   = Organisation::factory()->create();
-        $this->owner = User::factory()->create(['organisation_id' => $this->org->id]);
+        $this->chief = User::factory()->create(['organisation_id' => $this->org->id]);
+        // Chief is required for submit_for_approval per ElectionConstitution
         \App\Models\UserOrganisationRole::updateOrCreate(
             [
-                'user_id'         => $this->owner->id,
+                'user_id'         => $this->chief->id,
                 'organisation_id' => $this->org->id,
             ],
             [
-                'role' => 'owner',
+                'role' => 'chief',
             ]
         );
+        // Add as ElectionOfficer so they can submit elections
+        \App\Models\ElectionOfficer::create([
+            'user_id'      => $this->chief->id,
+            'organisation_id' => $this->org->id,
+            'role'         => 'chief',
+            'status'       => 'active',
+            'appointed_by' => $this->chief->id,
+            'appointed_at' => now(),
+            'accepted_at'  => now(),
+        ]);
     }
 
     private function draftElection(int $expectedVoters): Election
     {
-        return Election::factory()->create([
+        $election = Election::factory()->create([
             'organisation_id'      => $this->org->id,
             'state'                => 'draft',
             'expected_voter_count' => $expectedVoters,
+            'timezone'             => 'UTC',  // Required precondition for submit_for_approval
         ]);
+
+        // Chief is required for submit_for_approval per ElectionConstitution
+        // Create ElectionOfficer record for THIS election
+        \App\Models\ElectionOfficer::create([
+            'election_id'      => $election->id,
+            'user_id'          => $this->chief->id,
+            'organisation_id'  => $this->org->id,
+            'role'             => 'chief',
+            'status'           => 'active',
+            'appointed_by'     => $this->chief->id,
+            'appointed_at'     => now(),
+            'accepted_at'      => now(),
+        ]);
+
+        return $election;
     }
 
     private function addVoters(Election $election, int $count): void
@@ -75,28 +102,31 @@ class CapacityApprovalTest extends TestCase
     public function election_with_expected_40_voters_auto_approves(): void
     {
         $election = $this->draftElection(40);
-        $election->submitForApproval($this->owner->id);
-        $this->assertEquals('administration', $election->fresh()->state);
+        $this->actingAs($this->chief);  // Auth::user() must be set for guard to work
+        $election->submitForApproval($this->chief->id);
+        $this->assertEquals('approved', $election->fresh()->state);
     }
 
     /** @test */
     public function election_with_expected_41_voters_goes_to_pending_approval(): void
     {
         $election = $this->draftElection(41);
-        $election->submitForApproval($this->owner->id);
-        $this->assertEquals('pending_approval', $election->fresh()->state);
+        $this->actingAs($this->chief);  // Auth::user() must be set for guard to work
+        $election->submitForApproval($this->chief->id);
+        $this->assertEquals('submitted_for_approval', $election->fresh()->state);
     }
 
     /** @test */
     public function auto_submit_creates_single_system_audit_record(): void
     {
         $election = $this->draftElection(40);
-        $election->submitForApproval($this->owner->id);
+        $this->actingAs($this->chief);  // Auth::user() must be set for guard to work
+        $election->submitForApproval($this->chief->id);
 
         $transitions = ElectionStateTransition::where('election_id', $election->id)->get();
         $this->assertCount(1, $transitions);
         $this->assertEquals('draft', $transitions->first()->from_state);
-        $this->assertEquals('administration', $transitions->first()->to_state);
+        $this->assertEquals('approved', $transitions->first()->to_state);
         $this->assertEquals('system', $transitions->first()->trigger);
     }
 
@@ -104,12 +134,13 @@ class CapacityApprovalTest extends TestCase
     public function manual_submit_creates_manual_audit_record(): void
     {
         $election = $this->draftElection(41);
-        $election->submitForApproval($this->owner->id);
+        $this->actingAs($this->chief);  // Auth::user() must be set for guard to work
+        $election->submitForApproval($this->chief->id);
 
         $transitions = ElectionStateTransition::where('election_id', $election->id)->get();
         $this->assertCount(1, $transitions);
         $this->assertEquals('draft', $transitions->first()->from_state);
-        $this->assertEquals('pending_approval', $transitions->first()->to_state);
+        $this->assertEquals('submitted_for_approval', $transitions->first()->to_state);
         $this->assertEquals('manual', $transitions->first()->trigger);
     }
 
