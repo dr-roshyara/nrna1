@@ -33,15 +33,27 @@ class CsvVoterImportTest extends TestCase
         $this->election = Election::factory()
             ->forOrganisation($this->org)
             ->real()
-            ->create(['status' => 'active', 'state' => 'setup_administration']);
+            ->create([
+                'status' => 'active',
+                'submitted_for_approval_at' => now()->subDay(),
+                'approved_at' => now()->subDay(),
+                'setup_started_at' => now()->subHours(6),
+                'administration_completed' => false,
+            ]);
 
-        $this->admin = User::factory()->create(['email_verified_at' => now()]);
-        UserOrganisationRole::create([
-            'id' => (string) Str::uuid(),
-            'user_id' => $this->admin->id,
+        $this->admin = User::factory()->create([
             'organisation_id' => $this->org->id,
-            'role' => 'owner',
+            'email_verified_at' => now(),
         ]);
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id' => $this->admin->id,
+                'organisation_id' => $this->org->id,
+            ],
+            [
+                'role' => 'owner',
+            ]
+        );
 
         // Add admin as org user (required for election-only mode)
         OrganisationUser::factory()
@@ -95,7 +107,7 @@ class CsvVoterImportTest extends TestCase
     public function csv_import_validates_email_format(): void
     {
         $file = UploadedFile::fake()->createWithContent(
-            'voters.xlsx',
+            'voters.csv',
             "email\ninvalid-email\nnotanemail\ntest@example.com"
         );
 
@@ -134,7 +146,7 @@ class CsvVoterImportTest extends TestCase
         ]);
 
         $file = UploadedFile::fake()->createWithContent(
-            'voters.xlsx',
+            'voters.csv',
             "email\nvoter@example.com"
         );
 
@@ -159,7 +171,13 @@ class CsvVoterImportTest extends TestCase
         $fullMembershipElection = Election::factory()
             ->forOrganisation($fullMembershipOrg)
             ->real()
-            ->create(['status' => 'active']);
+            ->create([
+                'status' => 'active',
+                'submitted_for_approval_at' => now()->subDay(),
+                'approved_at' => now()->subDay(),
+                'setup_started_at' => now()->subHours(6),
+                'administration_completed' => false,
+            ]);
 
         // Create user with no member record
         $user = User::factory()->create(['email' => 'voter@example.com']);
@@ -169,13 +187,16 @@ class CsvVoterImportTest extends TestCase
             ->create(['status' => 'active']);
 
         // Add admin to full membership org
-        $admin = User::factory()->create();
-        UserOrganisationRole::create([
-            'id' => (string) Str::uuid(),
-            'user_id' => $admin->id,
-            'organisation_id' => $fullMembershipOrg->id,
-            'role' => 'owner',
-        ]);
+        $admin = User::factory()->create(['organisation_id' => $fullMembershipOrg->id]);
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id' => $admin->id,
+                'organisation_id' => $fullMembershipOrg->id,
+            ],
+            [
+                'role' => 'owner',
+            ]
+        );
 
         ElectionOfficer::create([
             'id' => (string) Str::uuid(),
@@ -187,7 +208,7 @@ class CsvVoterImportTest extends TestCase
         ]);
 
         $file = UploadedFile::fake()->createWithContent(
-            'voters.xlsx',
+            'voters.csv',
             "email\nvoter@example.com"
         );
 
@@ -219,7 +240,7 @@ class CsvVoterImportTest extends TestCase
         $csvContent = implode("\n", $emailLines);
 
         $file = UploadedFile::fake()->createWithContent(
-            'voters.xlsx',
+            'voters.csv',
             $csvContent
         );
 
