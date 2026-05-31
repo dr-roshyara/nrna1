@@ -21,12 +21,16 @@ class CapacityApprovalTest extends TestCase
     {
         parent::setUp();
         $this->org   = Organisation::factory()->create();
-        $this->owner = User::factory()->create();
-        \App\Models\UserOrganisationRole::create([
-            'organisation_id' => $this->org->id,
-            'user_id'         => $this->owner->id,
-            'role'            => 'owner',
-        ]);
+        $this->owner = User::factory()->create(['organisation_id' => $this->org->id]);
+        \App\Models\UserOrganisationRole::updateOrCreate(
+            [
+                'user_id'         => $this->owner->id,
+                'organisation_id' => $this->org->id,
+            ],
+            [
+                'role' => 'owner',
+            ]
+        );
     }
 
     private function draftElection(int $expectedVoters): Election
@@ -41,12 +45,18 @@ class CapacityApprovalTest extends TestCase
     private function addVoters(Election $election, int $count): void
     {
         for ($i = 0; $i < $count; $i++) {
-            $voter = User::factory()->create();
-            \App\Models\UserOrganisationRole::create([
-                'organisation_id' => $this->org->id,
-                'user_id'         => $voter->id,
-                'role'            => 'member',
-            ]);
+            $voter = User::factory()->create(['organisation_id' => $this->org->id]);
+            // Factory already creates UserOrganisationRole with role='voter'
+            // Use updateOrCreate to override role to 'member' if needed
+            \App\Models\UserOrganisationRole::updateOrCreate(
+                [
+                    'user_id'         => $voter->id,
+                    'organisation_id' => $this->org->id,
+                ],
+                [
+                    'role' => 'member',
+                ]
+            );
             ElectionMembership::create([
                 'id'                => \Str::uuid(),
                 'organisation_id'   => $this->org->id,
