@@ -41,7 +41,7 @@ class VoterImportElectionOnlyTest extends TestCase
         $this->election = Election::factory()
             ->for($this->organisation)
             ->state(['type' => 'real'])
-            ->create();
+            ->create(['state' => 'setup_administration']);
 
         $this->admin = User::factory()
             ->create();

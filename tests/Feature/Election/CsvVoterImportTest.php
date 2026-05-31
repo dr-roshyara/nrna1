@@ -33,7 +33,7 @@ class CsvVoterImportTest extends TestCase
         $this->election = Election::factory()
             ->forOrganisation($this->org)
             ->real()
-            ->create(['status' => 'active']);
+            ->create(['status' => 'active', 'state' => 'setup_administration']);
 
         $this->admin = User::factory()->create(['email_verified_at' => now()]);
         UserOrganisationRole::create([
