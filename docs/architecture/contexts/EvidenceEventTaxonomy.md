@@ -18,10 +18,10 @@ Observation Context (Upstream)
 │
 ▼
 Evidence Context (Boundary)
-│ (Emits: EvidenceFrozen — NOT YET PROVEN)
+│ (Emits: EvidenceFrozen (hypothesis) — NOT YET PROVEN)
 ▼
 Evaluation Context
-│ (Emits: EvidenceEvaluationCompleted — NOT YET PROVEN)
+│ (Emits: EvidenceEvaluationCompleted (hypothesis) — NOT YET PROVEN)
 ▼
 Legitimacy Context ──> Emits: LegitimacyGranted / LegitimacyDenied
 ```
@@ -54,11 +54,11 @@ These events represent state changes owned entirely by the Evidence and Evaluati
 
 **CRITICAL:** Do not implement these until DD.5 validates the aggregate boundaries. These names are hypothetical.
 
-| Event Name | Owning Context | Trigger Condition | Downstream Consumers |
+| Event Name (Hypothesis) | Owning Context (Hypothesis) | Trigger Condition (Hypothesis) | Downstream Consumers (Hypothesis) |
 |:---|:---|:---|:---|
-| **EvidenceFrozen** | Evidence Context (MAYBE) | Observation passes EVI-5 checks and appended to ledger | Evaluation Context (MAYBE) |
-| **EvidenceEvaluationCompleted** | Evaluation Context (MAYBE) | Anomaly detection finishes calculations | Legitimacy Context (MAYBE) |
-| **EvidenceLedgerSealed** | Evidence Context (MAYBE) | ResultsPublished consumed; records locked | Future Audit/Verification Contexts |
+| **EvidenceFrozen** (hypothesis) | Evidence Context (MAYBE) | Observation passes EVI-5 checks and appended to ledger | Evaluation Context (MAYBE) |
+| **EvidenceEvaluationCompleted** (hypothesis) | Evaluation Context (MAYBE) | Anomaly detection finishes calculations | Legitimacy Context (MAYBE) |
+| **EvidenceLedgerSealed** (hypothesis) | Evidence Context (MAYBE) | ResultsPublished consumed; records locked | Future Audit/Verification Contexts |
 
 ---
 
@@ -81,7 +81,7 @@ To enforce **EVI-5** (No indirect voter re-identification), the Inbound Adapter 
 ### Strict Ingestion Filters
 
 1. **Direct PII Stripping:** `user_id`, `email`, `mac_address`, `raw_ip_address` are discarded at outermost boundary.
-2. **Deterministic Hash Verification:** `device_fingerprint_hash` must be cryptographically secure, one-way, salted hash. Salt must be unique per election instance.
+2. **Deterministic Hash Verification:** `device_fingerprint_hash` must undergo cryptographically secure, one-way transformation with election-specific salt. Exact algorithm (SHA-256, BLAKE2, etc.) is a Security Architecture decision, not a domain requirement.
 3. **Temporal Fuzzing (Anti-Correlation Guardrail):**
    - **Risk:** Millisecond-precision timestamps + network region easily correlate back to web server logs, identifying the voter.
    - **Mitigation:** Inbound Adapter **truncates timestamps to minute-level or uniform blocks** in low-turnout elections to eliminate side-channel correlation.
@@ -92,7 +92,7 @@ To enforce **EVI-5** (No indirect voter re-identification), the Inbound Adapter 
 |:---|:---|:---|:---|
 | `payload.ip_address` | Anonymize via Subnet Masking / Geolocation | `network_location` (Region level only) | Prevents IP-based voter lookup |
 | `payload.timestamp` | Temporal Bucketing / Fuzzing (minute granularity) | `occurred_at` (Truncated minute window) | Prevents timestamp correlation with server logs |
-| `payload.device_raw` | SHA-256 with Election-Specific Salt | `device_fingerprint_hash` | Prevents device tracking across elections |
+| `payload.device_raw` | Cryptographic one-way transformation with election-specific salt | `device_fingerprint_hash` | Prevents device tracking across elections |
 | `payload.user_id` | **DISCARDED — Never stored** | `<null>` | Hardest anonymity boundary |
 | `payload.email` | **DISCARDED — Never stored** | `<null>` | Hardest anonymity boundary |
 
