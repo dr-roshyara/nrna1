@@ -1,0 +1,2596 @@
+After reviewing:
+
+* your current code structure 
+* the constitutional governance handover document 
+* the audit/dispute discussions
+* the Evidence Context discovery work 
+
+my conclusion is:
+
+> **Do not build a traditional Audit Context.**
+
+That would be a mistake.
+
+---
+
+# The Most Important Architectural Discovery
+
+Most systems look like:
+
+```text
+Business Context
+      ↓
+Audit Context
+```
+
+But your system is evolving into:
+
+```text
+Observation
+      ↓
+Evidence
+      ↓
+Evaluation
+      ↓
+Legitimacy
+      ↓
+Governance
+```
+
+
+
+This means:
+
+```text
+Audit
+```
+
+is not a source of authority.
+
+Audit is a consumer of authority.
+
+---
+
+# What Problem Are We Solving?
+
+Initially we said:
+
+```text
+Need audit log.
+```
+
+Then:
+
+```text
+Need voter dispute reports.
+```
+
+Then:
+
+```text
+Need committee investigations.
+```
+
+After reviewing the architecture, I believe the real requirement is:
+
+```text
+Need explainable evidence.
+Need replayable evidence.
+Need dispute reconstruction.
+Need constitutional archaeology.
+```
+
+Those are not logging requirements.
+
+---
+
+# What Audit Must NEVER Own
+
+Following your authority model:
+
+```text
+What authority does this own?
+What authority must it never own?
+```
+
+
+
+Audit must NEVER own:
+
+```text
+Legitimacy
+Governance
+Policy Evaluation
+Constitutional Interpretation
+Trust Decisions
+```
+
+Otherwise:
+
+```text
+Audit
+   ↓
+Legitimacy
+```
+
+would become possible.
+
+That violates the architecture.
+
+---
+
+# What Audit SHOULD Own
+
+Audit owns:
+
+```text
+Evidence Preservation
+Evidence Retrieval
+Evidence Reporting
+Evidence Reconstruction
+Investigation Support
+```
+
+Nothing more.
+
+---
+
+# Recommended Context Map
+
+I would design:
+
+```text
+Observation Context
+       ↓
+Evidence Context
+       ↓
+Evaluation Context
+       ↓
+Legitimacy Context
+       ↓
+Governance Context
+
+               │
+               │ publishes
+               ▼
+
+      Audit / Evidence Archive Context
+```
+
+Notice:
+
+```text
+Audit
+```
+
+is on the side.
+
+Not in the authority chain.
+
+---
+
+# Rename Recommendation
+
+I would seriously consider NOT calling it:
+
+```text
+Audit Context
+```
+
+Instead:
+
+```text
+Evidence Archive Context
+```
+
+or
+
+```text
+Evidence Reporting Context
+```
+
+because that's what it actually does.
+
+---
+
+# Proposed Bounded Context
+
+```text
+app/Contexts/Audit
+```
+
+or
+
+```text
+app/Contexts/EvidenceArchive
+```
+
+---
+
+Structure:
+
+```text
+Contexts/
+└── Audit
+    ├── Domain
+    │
+    ├── Application
+    │
+    ├── Infrastructure
+    │
+    └── Presentation
+```
+
+---
+
+# Domain Model
+
+Notice:
+
+No Audit Aggregate.
+
+Instead:
+
+```text
+EvidenceRecord
+```
+
+---
+
+## EvidenceRecord
+
+```text
+EvidenceRecord
+│
+├── id
+├── sourceContext
+├── eventType
+├── actor
+├── subject
+├── evidencePayload
+├── occurredAt
+└── replayMetadata
+```
+
+---
+
+Example:
+
+```text
+Source:
+    Governance
+
+Event:
+    GovernanceDecisionRecorded
+
+Actor:
+    CommitteeChair#5
+
+Subject:
+    Election#2026
+```
+
+---
+
+# Event-Driven Collection
+
+The Audit Context should subscribe to:
+
+```text
+MemberRegistered
+MemberApproved
+
+CommitteeCreated
+CommitteeMemberAssigned
+
+VoteSubmitted
+VoteAccepted
+
+LegitimacyGranted
+LegitimacyDenied
+
+GovernanceDecisionRecorded
+
+ReplayCertificationIssued
+```
+
+Many of these already exist. 
+
+---
+
+# Investigation Service
+
+The most valuable capability.
+
+```text
+InvestigationService
+```
+
+Questions:
+
+```text
+Why was voter denied?
+
+Why was election closed?
+
+Why was legitimacy revoked?
+
+Which evidence existed?
+```
+
+---
+
+Example:
+
+```text
+Investigation
+      ↓
+Find Evidence
+      ↓
+Find Evaluation
+      ↓
+Find Legitimacy
+      ↓
+Find Governance Decision
+```
+
+---
+
+# Evidence Reports
+
+Generate:
+
+```text
+VoterEvidenceReport
+
+CommitteeEvidenceReport
+
+GovernanceDecisionReport
+
+ElectionCertificationReport
+
+ReplayCertificationReport
+```
+
+Not:
+
+```text
+voter.log
+```
+
+---
+
+# Reconciliation Service
+
+I would place this inside Audit.
+
+```text
+ElectionIntegrityService
+```
+
+Responsibilities:
+
+```text
+Eligible Voters
+Ballots Issued
+Votes Cast
+Votes Counted
+```
+
+This directly supports disputes.
+
+---
+
+# Replay Support
+
+Because replay is a first-class domain capability in your architecture:
+
+```text
+ReplaySession
+ReplayCertification
+ReplayEvidenceEnvelope
+```
+
+
+
+Audit must support:
+
+```text
+Show evidence used in replay.
+
+Show evaluation path.
+
+Show legitimacy derivation.
+
+Show governance outcome.
+```
+
+This is much more important than storing login timestamps.
+
+---
+
+# UI (Vue3 + Inertia)
+
+I would create:
+
+```text
+Admin
+└── Evidence Center
+```
+
+Pages:
+
+```text
+EvidenceTimeline.vue
+
+ElectionEvidence.vue
+
+GovernanceDecisionEvidence.vue
+
+ReplayCertification.vue
+
+InvestigationWorkbench.vue
+
+IntegrityDashboard.vue
+```
+
+Not:
+
+```text
+AuditLogs.vue
+```
+
+because your domain has already evolved beyond logging.
+
+---
+
+# Final Recommendation
+
+If I were the Domain Architect of this project, I would formally define:
+
+```text
+Audit Context
+```
+
+as:
+
+> A supporting bounded context responsible for preserving, reconstructing, querying, and reporting evidence generated by constitutional governance processes without owning any legitimacy, governance, or policy authority.
+
+Its responsibilities are:
+
+```text
+✓ Evidence Preservation
+✓ Evidence Reconstruction
+✓ Investigation Support
+✓ Replay Support
+✓ Integrity Verification
+✓ Evidence Reporting
+```
+
+Its non-responsibilities are:
+
+```text
+✗ Legitimacy Derivation
+✗ Trust Evaluation
+✗ Governance Decisions
+✗ Constitutional Interpretation
+✗ Policy Enforcement
+```
+
+That design aligns with your constitutional architecture, replay model, authority ownership rules, and long-term vision far better than a conventional "audit log" subsystem.
+Yes, I agree with **about 85-90%** of this analysis. fileciteturn6file0L1-L170
+
+But I would challenge a few things because your project is no longer a normal DDD project. It is evolving into what I would call a **Constitutional Governance Platform**, which has different architectural forces than typical enterprise systems. fileciteturn4file0L1-L232
+
+---
+
+# What I Strongly Agree With
+
+## 1. Audit Must Not Own Authority
+
+This is the most important conclusion.
+
+The handover document repeatedly establishes:
+
+```text
+Evidence
+↓
+Evaluation
+↓
+Legitimacy
+↓
+Governance
+↓
+Projection
+```
+
+fileciteturn4file0L45-L55
+
+Therefore:
+
+```text
+Audit
+↓
+Legitimacy
+```
+
+must never exist.
+
+I consider this a non-negotiable architectural constraint.
+
+---
+
+## 2. Evidence Is More Important Than Audit
+
+This aligns perfectly with the current architecture.
+
+Your current discovery work is focused on:
+
+```text
+Observation
+Evidence
+Evaluation
+```
+
+not:
+
+```text
+Audit
+```
+
+fileciteturn4file0L90-L125
+
+This is a huge clue.
+
+The architecture is telling us:
+
+> Evidence is a core domain capability.
+
+while:
+
+> Audit is a supporting capability.
+
+That distinction is extremely important.
+
+---
+
+## 3. Replay Support Must Be First-Class
+
+Absolutely agree.
+
+Because your system already contains:
+
+```text
+ReplaySession
+ReplayCertification
+ReplayEvidenceEnvelope
+```
+
+fileciteturn4file0L78-L90
+
+any audit/evidence solution that cannot answer:
+
+```text
+What evidence existed?
+
+What evaluation happened?
+
+What legitimacy decision was produced?
+
+Can we replay it?
+```
+
+is architecturally incomplete.
+
+---
+
+# What I Disagree With
+
+## Challenge 1 — "Evidence Vault" Is Too Infrastructure-Oriented
+
+The paper suggests:
+
+```text
+Evidence Vault
+```
+
+instead of:
+
+```text
+Evidence Archive
+```
+
+fileciteturn6file0L73-L95
+
+I disagree.
+
+Why?
+
+Because:
+
+```text
+Vault
+```
+
+describes:
+
+```text
+Storage
+Security
+Protection
+```
+
+which are infrastructure concerns.
+
+Your architecture is DDD-driven.
+
+Context names should reflect domain capabilities.
+
+Examples:
+
+```text
+Evidence
+Evaluation
+Legitimacy
+Governance
+Replay
+```
+
+These are domain concepts.
+
+"Vault" is not.
+
+---
+
+I would prefer:
+
+```text
+Evidence Reporting Context
+```
+
+or
+
+```text
+Evidence Archive Context
+```
+
+or even:
+
+```text
+Constitutional Evidence Context
+```
+
+depending on scope.
+
+---
+
+# Challenge 2 — Investigation Service Is Not Just Reconstruction
+
+The paper says:
+
+```text
+Investigation Service
+should reconstruct
+but not answer why.
+```
+
+fileciteturn6file0L111-L130
+
+I partially disagree.
+
+The answer depends on what "why" means.
+
+---
+
+### Wrong
+
+```text
+Investigation:
+"Trust score below threshold"
+```
+
+This is evaluation logic.
+
+Should come from Evaluation Context.
+
+---
+
+### Correct
+
+```text
+Investigation:
+"Legitimacy denied because
+EvaluationResult #123
+produced Denied."
+```
+
+This is evidence lineage.
+
+I think Audit/Evidence Reporting should be able to explain:
+
+```text
+What evidence existed?
+What evaluation was produced?
+What legitimacy resulted?
+```
+
+without recomputing anything.
+
+This is crucial for disputes.
+
+---
+
+# Challenge 3 — Reconciliation
+
+This is the biggest disagreement.
+
+The paper says:
+
+```text
+Reconciliation should not live in Evidence Vault.
+```
+
+fileciteturn6file0L96-L110
+
+I think the answer is:
+
+> It depends on the kind of reconciliation.
+
+---
+
+### Mathematical Reconciliation
+
+Example:
+
+```text
+Eligible = 1000
+
+Ballots Issued = 850
+
+Votes Cast = 850
+
+Votes Counted = 850
+```
+
+This is not a constitutional judgment.
+
+It is arithmetic.
+
+I would happily place this inside the Audit/Evidence capability.
+
+---
+
+### Constitutional Reconciliation
+
+Example:
+
+```text
+5 unexplained ballots exist
+```
+
+Now:
+
+```text
+Is election valid?
+```
+
+belongs to:
+
+```text
+Evaluation
+Legitimacy
+Governance
+```
+
+not Audit.
+
+---
+
+# The Biggest Missing Piece
+
+This analysis misses the most important question:
+
+> Who is the consumer?
+
+In your architecture there are at least 5 consumers:
+
+---
+
+### Voter
+
+Needs:
+
+```text
+Was my vote accepted?
+```
+
+---
+
+### Committee
+
+Needs:
+
+```text
+Why was this decision made?
+```
+
+---
+
+### Election Administrator
+
+Needs:
+
+```text
+Show election evidence.
+```
+
+---
+
+### Replay Certification
+
+Needs:
+
+```text
+Can I reproduce the same outcome?
+```
+
+---
+
+### Governance
+
+Needs:
+
+```text
+Can I defend this decision constitutionally?
+```
+
+---
+
+The Audit/Evidence Context must support all five.
+
+---
+
+# My Final Recommendation
+
+If I were writing the architecture today, I would not create:
+
+```text
+Audit Context
+```
+
+and I would not create:
+
+```text
+Evidence Vault Context
+```
+
+either.
+
+I would create:
+
+```text
+Evidence Reporting Context
+```
+
+as a supporting bounded context.
+
+---
+
+Responsibilities:
+
+```text
+✓ Preserve Evidence
+
+✓ Preserve Evaluation Results
+
+✓ Preserve Legitimacy Outcomes
+
+✓ Preserve Governance Decisions
+
+✓ Preserve Replay Evidence
+
+✓ Reconstruct Timelines
+
+✓ Generate Reports
+
+✓ Support Investigations
+
+✓ Support Reconciliation
+```
+
+---
+
+Non-Responsibilities:
+
+```text
+✗ Create Evidence
+
+✗ Evaluate Evidence
+
+✗ Determine Legitimacy
+
+✗ Interpret Constitution
+
+✗ Make Governance Decisions
+```
+
+---
+
+### Final Architectural Verdict
+
+The uploaded analysis contains an important breakthrough:
+
+> Audit is a consumer of authority, not a source of authority.
+
+I fully agree with that. fileciteturn6file0L7-L30
+
+However, after reviewing all discussions and the constitutional governance architecture, I would evolve the idea one step further:
+
+```text
+Traditional Audit Context
+            ↓
+Evidence Archive
+            ↓
+Evidence Reporting Context
+```
+
+Because the real business capability emerging in your system is not logging.
+
+It is:
+
+```text
+Explainability
+Replayability
+Dispute Resolution
+Constitutional Traceability
+```
+
+and that is a much richer domain concept than "audit logging."
+Nab, after reviewing everything, I would **not start by building an Evidence Reporting Context yet.**
+
+This is the most important architectural advice I can give.
+
+The handover document repeatedly says:
+
+> Current priority is Evidence Context Formalization before further extraction or restructuring. 
+
+And I agree with that.
+
+---
+
+# My Architecture Assessment
+
+Today your architecture looks like:
+
+```text
+Observation
+    ↓
+Evidence
+    ↓
+Evaluation
+    ↓
+Legitimacy
+    ↓
+Governance
+```
+
+with:
+
+```text
+Replay
+Certification
+Migration
+```
+
+alongside it. 
+
+The problem is:
+
+```text
+Evidence Context
+```
+
+is still emerging.
+
+Audit/Evidence Reporting depends on it.
+
+---
+
+# What I Would Do First
+
+## Phase 1
+
+Formalize Evidence Context
+
+Before writing a single Audit class.
+
+---
+
+Create:
+
+```text
+docs/architecture/
+└── EvidenceContext.md
+```
+
+Answer:
+
+```text
+What is Evidence?
+
+What authority does Evidence own?
+
+What authority must Evidence never own?
+
+What are Evidence aggregates?
+
+What events does Evidence publish?
+
+What events does Evidence consume?
+```
+
+This is exactly the open decision identified in the handover. 
+
+---
+
+# After Evidence Context Exists
+
+Then create:
+
+```text
+Evidence Reporting Context
+```
+
+---
+
+# Strategic Context Map
+
+```text
+Observation Context
+        │
+        ▼
+Evidence Context
+        │
+        ▼
+Evaluation Context
+        │
+        ▼
+Legitimacy Context
+        │
+        ▼
+Governance Context
+
+        ├─────────────┐
+        │             │
+        ▼             ▼
+
+Replay      Evidence Reporting
+```
+
+Notice:
+
+```text
+Evidence Reporting
+```
+
+is a consumer.
+
+Never an authority producer.
+
+---
+
+# Evidence Reporting Context
+
+Purpose:
+
+```text
+Preserve
+Query
+Reconstruct
+Report
+Investigate
+```
+
+Never:
+
+```text
+Evaluate
+Decide
+Govern
+```
+
+---
+
+# Folder Structure
+
+Because your project already uses:
+
+```text
+app/
+└── Contexts/
+```
+
+I would follow that.
+
+---
+
+```text
+app/
+└── Contexts/
+    └── EvidenceReporting/
+```
+
+---
+
+# Complete Structure
+
+```text
+app/
+└── Contexts/
+    └── EvidenceReporting/
+
+        ├── Domain/
+        │
+        │   ├── EvidenceRecord.php
+        │   ├── EvidenceChain.php
+        │   ├── InvestigationCase.php
+        │   ├── ReportType.php
+        │   └── ValueObjects/
+        │
+        ├── Application/
+        │
+        │   ├── Queries/
+        │   │
+        │   ├── GenerateElectionReport.php
+        │   ├── GenerateVoterReport.php
+        │   ├── GenerateCommitteeReport.php
+        │   │
+        │   ├── Investigation/
+        │   │
+        │   ├── OpenInvestigation.php
+        │   ├── ReconstructTimeline.php
+        │   └── EvidenceChainBuilder.php
+        │
+        ├── Infrastructure/
+        │
+        │   ├── Persistence/
+        │   │
+        │   ├── Eloquent/
+        │   ├── Repositories/
+        │   └── Migrations/
+        │
+        │   ├── Listeners/
+        │   │
+        │   ├── VoteSubmittedListener.php
+        │   ├── LegitimacyGrantedListener.php
+        │   ├── GovernanceDecisionListener.php
+        │   └── ReplayCertificationListener.php
+        │
+        └── Presentation/
+            │
+            ├── Controllers/
+            ├── Resources/
+            └── Requests/
+```
+
+---
+
+# Database Tables
+
+Start with ONE table.
+
+Not five.
+
+---
+
+## evidence_records
+
+```sql
+id
+
+source_context
+
+event_type
+
+aggregate_type
+
+aggregate_id
+
+actor_type
+
+actor_id
+
+payload
+
+occurred_at
+
+created_at
+```
+
+---
+
+Examples:
+
+```text
+Membership
+MemberApproved
+
+Election
+VoteSubmitted
+
+Governance
+DecisionRecorded
+
+Replay
+ReplayCertificationIssued
+```
+
+---
+
+# Domain Model
+
+Keep it tiny.
+
+---
+
+## EvidenceRecord
+
+```text
+EvidenceRecord
+```
+
+is NOT an aggregate with business rules.
+
+It is:
+
+```text
+Immutable Evidence
+```
+
+---
+
+```php
+EvidenceRecord
+{
+    id
+    sourceContext
+    eventType
+    actor
+    aggregate
+    payload
+    occurredAt
+}
+```
+
+---
+
+# Event Collection
+
+Most important piece.
+
+Do NOT call:
+
+```php
+EvidenceRecord::create(...)
+```
+
+inside controllers.
+
+---
+
+Instead:
+
+```text
+VoteSubmitted
+      │
+      ▼
+EvidenceRecordingListener
+      │
+      ▼
+EvidenceRecord
+```
+
+---
+
+```text
+GovernanceDecisionRecorded
+      │
+      ▼
+EvidenceRecordingListener
+      │
+      ▼
+EvidenceRecord
+```
+
+---
+
+# Investigation Capability
+
+Do NOT start with:
+
+```text
+InvestigationCase Aggregate
+```
+
+yet.
+
+Too early.
+
+---
+
+Start with:
+
+```php
+TimelineReconstructionService
+```
+
+Questions:
+
+```text
+What happened?
+
+In what order?
+
+Which evidence existed?
+
+Which decision followed?
+```
+
+---
+
+# First UI
+
+Create:
+
+```text
+Evidence Center
+```
+
+not:
+
+```text
+Audit Logs
+```
+
+---
+
+Pages:
+
+```text
+/Evidence
+
+/Evidence/Elections
+
+/Evidence/Governance
+
+/Evidence/Replay
+```
+
+---
+
+# Development Roadmap
+
+## Sprint 1
+
+Evidence Context Formalization
+
+```text
+EvidenceContext.md
+```
+
+No code.
+
+---
+
+## Sprint 2
+
+EvidenceRecord
+
+Migration
+
+Repository
+
+Tests
+
+---
+
+## Sprint 3
+
+Event listeners
+
+```text
+VoteSubmitted
+DecisionRecorded
+LegitimacyGranted
+```
+
+---
+
+## Sprint 4
+
+Timeline Reconstruction
+
+Evidence Queries
+
+---
+
+## Sprint 5
+
+Evidence Center UI
+
+Vue3 + Inertia
+
+---
+
+## Sprint 6
+
+Report Generation
+
+```text
+Election Report
+
+Committee Report
+
+Voter Report
+```
+
+---
+
+# My Final Recommendation
+
+If I were the lead architect, I would **not begin by building "Audit Context".**
+
+I would proceed in this order:
+
+```text
+1. Evidence Context Formalization
+        ↓
+2. Evidence Event Taxonomy
+        ↓
+3. Evidence Record Store
+        ↓
+4. Evidence Reporting Context
+        ↓
+5. Investigation Support
+        ↓
+6. Replay Integration
+```
+
+Because after reviewing your constitutional architecture, the real bounded context emerging is:
+
+```text
+Evidence
+```
+
+and the reporting/audit capability should be built *on top of that*, not the other way around.
+Yes, I agree with **most of it**, but not all of it. 
+
+In fact, I think this is the closest analysis so far to what a real senior architect would do when inheriting your project.
+
+However, there are **three places where I would deliberately diverge**.
+
+---
+
+# What I Agree With Completely
+
+## 1. Stop Building New Contexts
+
+This is 100% correct.
+
+Your handover document explicitly says:
+
+```text
+Current priority:
+Evidence Context Formalization
+```
+
+before:
+
+```text
+Namespace migration
+Further promotion
+Additional sovereignty restructuring
+```
+
+
+
+Many architects would immediately create:
+
+```text
+Audit Context
+Investigation Context
+Evidence Reporting Context
+```
+
+This would be a mistake.
+
+You have not yet finished discovering:
+
+```text
+Evidence
+```
+
+itself.
+
+---
+
+## 2. Evidence First, Reporting Later
+
+Completely agree.
+
+Because:
+
+```text
+Reporting
+```
+
+consumes:
+
+```text
+Evidence
+```
+
+and consumers cannot be modeled before producers.
+
+---
+
+## 3. No Code In Sprint 1
+
+Absolutely agree.
+
+This is one of the rare cases where:
+
+```text
+Architecture Artifact
+```
+
+is more valuable than:
+
+```text
+Working Code
+```
+
+because the constitutional model is still being discovered.
+
+---
+
+# Where I Disagree
+
+## Disagreement #1
+
+### EvidenceRecord Is Not Just Storage
+
+The document says:
+
+```text
+EvidenceRecord
+is not an aggregate
+```
+
+
+
+I disagree.
+
+Not because it needs behavior today.
+
+But because of your architecture.
+
+You already have:
+
+```text
+Replay
+Certification
+Evidence
+Evaluation
+```
+
+
+
+This means:
+
+```text
+EvidenceRecord
+```
+
+is likely to become a true domain object.
+
+For example:
+
+```text
+EvidenceClassification
+EvidenceRetention
+EvidenceSensitivity
+EvidenceLineage
+```
+
+are all potential future behaviors.
+
+Therefore I would not call it:
+
+```text
+DTO
+Document
+Row
+```
+
+I would model it as:
+
+```text
+EvidenceRecord
+```
+
+inside the Domain layer from day one.
+
+---
+
+## Disagreement #2
+
+### Integrity Hash Too Early
+
+The analysis proposes:
+
+```sql
+integrity_hash
+```
+
+
+
+I would NOT add this yet.
+
+Reason:
+
+Your current phase is:
+
+```text
+Evidence Discovery
+```
+
+not:
+
+```text
+Evidence Protection
+```
+
+You still don't know:
+
+```text
+What is Evidence?
+```
+
+Adding hashes now risks locking in a storage model before the domain model is stable.
+
+I would defer:
+
+```text
+Hash chains
+Integrity hashes
+Signatures
+```
+
+until after:
+
+```text
+Evidence Context Formalization
+```
+
+---
+
+## Disagreement #3
+
+### Sequence Number Is Solving The Wrong Problem
+
+The proposal adds:
+
+```sql
+sequence_number
+```
+
+
+
+I understand the intent.
+
+But your architecture already has:
+
+```text
+ReplaySession
+ReplayCertification
+ReplayEvidenceEnvelope
+```
+
+
+
+The real ordering mechanism may eventually belong to:
+
+```text
+Replay
+```
+
+not:
+
+```text
+Evidence
+```
+
+Therefore:
+
+```text
+sequence_number
+```
+
+might become technical debt.
+
+I would postpone this decision.
+
+---
+
+# The Most Important Missing Insight
+
+This is what I think everybody is still missing.
+
+The handover repeatedly asks:
+
+```text
+What authority does Evidence own?
+```
+
+
+
+Everybody keeps answering:
+
+```text
+Evidence stores facts.
+```
+
+But that's incomplete.
+
+I think the real answer is:
+
+```text
+Evidence owns provenance.
+```
+
+---
+
+Example:
+
+Not:
+
+```text
+Vote Submitted
+```
+
+But:
+
+```text
+Vote Submitted
+
+Produced by:
+Election Context
+
+At:
+Timestamp
+
+Using:
+Evidence Classification
+
+Observed through:
+Observation Context
+```
+
+That provenance chain is likely more important than the storage table.
+
+---
+
+# My Recommended Next Step
+
+Not:
+
+```text
+Create migration
+```
+
+Not:
+
+```text
+Create listener
+```
+
+Not:
+
+```text
+Create Evidence Context folder
+```
+
+Yet.
+
+---
+
+Instead create:
+
+```text
+docs/architecture/EvidenceContext.md
+```
+
+and answer:
+
+### Identity
+
+```text
+What is Evidence?
+```
+
+### Authority
+
+```text
+What authority does Evidence own?
+What authority must Evidence never own?
+```
+
+### Provenance
+
+```text
+Where does evidence come from?
+```
+
+### Lifecycle
+
+```text
+How is evidence created?
+How is evidence preserved?
+How is evidence retired?
+```
+
+### Relationship
+
+```text
+Evidence
+→ Evaluation
+
+Evidence
+→ Replay
+
+Evidence
+→ Governance
+```
+
+### Event Taxonomy
+
+```text
+Which events become evidence?
+```
+
+---
+
+# My Final Verdict
+
+I would score the uploaded analysis:
+
+```text
+Architectural Quality: 9/10
+DDD Quality: 9.5/10
+Execution Readiness: 6/10
+```
+
+because it correctly stops implementation and redirects attention to the unresolved core domain question:
+
+```text
+What is Evidence?
+```
+
+For your project, I believe the next milestone is not:
+
+```text
+Audit Context
+```
+
+It is:
+
+```text
+EvidenceContext.md
+```
+
+Once that document exists and is reviewed, we can decide whether the future architecture needs:
+
+```text
+Evidence Context
++
+Evidence Reporting Context
+```
+
+or whether reporting simply becomes a capability inside the Evidence bounded context.
+
+That decision is still premature today.
+Nab, this latest analysis is the one I agree with the most.
+
+If I merge:
+
+* your constitutional governance architecture 
+* Evidence Context discovery 
+* replay architecture 
+* the previous audit discussions
+* this latest refinement 
+
+then I would consider this the current architectural direction.
+
+---
+
+# My Final Architectural Conclusion
+
+I would NOT build:
+
+```text
+Audit Context
+```
+
+I would NOT build:
+
+```text
+Investigation Context
+```
+
+I would NOT build:
+
+```text
+Evidence Reporting Context
+```
+
+yet.
+
+Instead I would formalize:
+
+```text
+Evidence Context
+```
+
+first.
+
+Because the handover repeatedly tells us:
+
+```text
+Evidence Context Discovery
+```
+
+is the active architectural work. 
+
+---
+
+# The Biggest Insight
+
+The most important sentence from all discussions is:
+
+> Audit is a consumer of authority, not a source of authority.
+
+Everything follows from that.
+
+If that statement is true:
+
+```text
+Evidence
+    ↓
+Evaluation
+    ↓
+Legitimacy
+    ↓
+Governance
+```
+
+must remain intact.
+
+Audit can never sit inside this chain.
+
+---
+
+# Where I Slightly Disagree With The Latest Analysis
+
+Only one place.
+
+The proposal suggests:
+
+```text
+app/Contexts/EvidenceArchive
+```
+
+
+
+I would not create this folder yet.
+
+Because:
+
+```text
+EvidenceArchive
+```
+
+is still a solution.
+
+The domain discovery is not finished.
+
+---
+
+Today I would create:
+
+```text
+docs/architecture/EvidenceContext.md
+```
+
+before creating:
+
+```text
+app/Contexts/EvidenceArchive
+```
+
+This is the one thing I would not compromise on.
+
+---
+
+# What I Would Actually Do Next Week
+
+## Week 1
+
+Create:
+
+```text
+docs/architecture/
+└── EvidenceContext.md
+```
+
+Sections:
+
+```text
+Purpose
+
+Authority
+
+Boundaries
+
+Provenance
+
+Lifecycle
+
+Events
+
+Replay Relationship
+
+Governance Relationship
+
+Non-Responsibilities
+```
+
+No code.
+
+---
+
+## Week 2
+
+Evidence Capability Audit.
+
+Review:
+
+```text
+OverlaySignal
+ConstitutionalObservationContext
+
+ConstitutionalEvidenceSnapshot
+ParticipationEligibilityEvidence
+EvidenceClassification
+
+EvidenceEvaluationState
+EvidenceEvaluationResult
+EvaluationEnvelope
+```
+
+
+
+Determine:
+
+```text
+Observation
+
+Evidence
+
+Evaluation
+```
+
+boundaries.
+
+---
+
+## Week 3
+
+Only then:
+
+Create:
+
+```text
+app/Contexts/Evidence/
+```
+
+not:
+
+```text
+app/Contexts/EvidenceArchive/
+```
+
+---
+
+Structure:
+
+```text
+Contexts/
+└── Evidence/
+    ├── Domain/
+    ├── Application/
+    ├── Infrastructure/
+    └── Presentation/
+```
+
+---
+
+# What I Think The Future Will Become
+
+Eventually:
+
+```text
+Observation Context
+       ↓
+Evidence Context
+       ↓
+Evaluation Context
+       ↓
+Legitimacy Context
+       ↓
+Governance Context
+```
+
+and then:
+
+```text
+Evidence Reporting
+Replay
+Certification
+```
+
+become consumers.
+
+---
+
+# My Suggested End-State
+
+After the Evidence Context is formalized:
+
+```text
+Contexts/
+├── Observation
+├── Evidence
+├── Evaluation
+├── Legitimacy
+├── Governance
+├── Replay
+└── Certification
+```
+
+Then later:
+
+```text
+Supporting/
+└── EvidenceReporting
+```
+
+or
+
+```text
+Supporting/
+└── Investigation
+```
+
+if truly needed.
+
+---
+
+# Architect Score
+
+For this latest analysis:
+
+```text
+DDD Quality:            10/10
+Strategic Design:       10/10
+Tactical Design:         9/10
+Implementation Timing:   9/10
+```
+
+The only thing I would change is:
+
+```text
+Do NOT create EvidenceArchive yet.
+
+Formalize Evidence first.
+```
+
+Everything else is aligned with the constitutional architecture, authority ownership rules, replay model, and bounded-context discovery process that your project has been evolving toward.
+Nab,
+
+This changes the discussion completely.
+
+After reading your `EvidenceContext.md`, my answer is:
+
+> **Do NOT build an Audit Context right now.**
+>
+> You have already built about 70-80% of the conceptual foundation that people were trying to invent through the "Audit Context" discussion. fileciteturn9file0
+
+---
+
+# My Overall Assessment
+
+As a DDD architect, I would score this document:
+
+| Aspect | Score |
+|----------|----------|
+| Strategic DDD | 10/10 |
+| Context Boundaries | 10/10 |
+| Authority Ownership | 10/10 |
+| Ubiquitous Language | 9.5/10 |
+| Tactical Design | 8.5/10 |
+| Aggregate Discovery | Correctly Deferred |
+| Architecture Maturity | DD.3b Discovery Complete |
+
+This is no longer brainstorming.
+
+This is a real bounded-context specification. fileciteturn9file0
+
+---
+
+# The Biggest Discovery
+
+Before reading this document I thought:
+
+```text
+Audit
+    ↓
+Evidence
+```
+
+After reading it:
+
+```text
+Observation
+    ↓
+Evidence
+    ↓
+Evaluation
+    ↓
+Legitimacy
+    ↓
+Governance
+```
+
+is already the architecture.
+
+Audit is nowhere in this authority chain. fileciteturn9file0
+
+That is exactly correct.
+
+---
+
+# Why Audit Context Is The Wrong Abstraction
+
+The original requirement was:
+
+```text
+Need audit logs.
+Need dispute reports.
+Need investigation capability.
+```
+
+The natural reaction is:
+
+```text
+Create Audit Context
+```
+
+But your architecture reveals something different.
+
+The system already owns:
+
+```text
+Evidence Preservation
+Evidence Classification
+Evidence Evaluation
+Reason Codes
+Replay Safety
+Evidence Hashes
+```
+
+fileciteturn9file0
+
+Those are precisely the foundations that an audit system would normally create.
+
+---
+
+# What Is Missing?
+
+Only one thing:
+
+```text
+Evidence Consumption
+```
+
+Everything else already exists.
+
+---
+
+Current:
+
+```text
+Observation
+    ↓
+Evidence
+    ↓
+Evaluation
+    ↓
+Legitimacy
+```
+
+Missing:
+
+```text
+Evidence Consumer
+```
+
+Examples:
+
+```text
+Investigation
+
+Dispute Resolution
+
+Committee Reports
+
+Replay Reports
+
+Evidence Timelines
+```
+
+---
+
+# What I Would Rename
+
+I would not create:
+
+```text
+Audit Context
+```
+
+I would create later:
+
+```text
+Evidence Reporting
+```
+
+or
+
+```text
+Evidence Center
+```
+
+as a supporting capability.
+
+Not as a sovereign bounded context.
+
+---
+
+# The Most Important Architectural Rule
+
+Your document says:
+
+```text
+Evidence owns preservation.
+
+Evidence never owns legitimacy.
+```
+
+fileciteturn9file0
+
+This is the rule that protects the architecture.
+
+Therefore:
+
+```php
+EvidenceEvaluationState::SUFFICIENT_EVIDENCE
+```
+
+must NEVER become:
+
+```php
+LegitimacyOutcome::ALLOWED
+```
+
+inside Evidence.
+
+Your ACL-1 is exactly correct. fileciteturn9file0
+
+---
+
+# What I Would Build Next
+
+Not Audit.
+
+Not Investigation.
+
+Not Reporting.
+
+---
+
+## Phase 1
+
+Finish Evidence.
+
+Specifically:
+
+```text
+Aggregate Discovery
+```
+
+which your document correctly deferred. fileciteturn9file0
+
+---
+
+Questions:
+
+```text
+Is ConstitutionalEvidenceSnapshot
+an Aggregate Root?
+
+Is EvaluationEnvelope
+an Aggregate Root?
+
+What consistency boundaries exist?
+```
+
+This is the next DDD activity.
+
+---
+
+## Phase 2
+
+Formalize Evaluation Context.
+
+Currently:
+
+```text
+EvidenceEvaluationState
+EvidenceEvaluationResult
+EvaluationEnvelope
+```
+
+still live inside Evidence. fileciteturn9file0
+
+I suspect Evaluation will eventually become:
+
+```text
+Observation
+    ↓
+Evidence
+    ↓
+Evaluation
+    ↓
+Legitimacy
+```
+
+as a separate context.
+
+But not yet.
+
+---
+
+## Phase 3
+
+Build Evidence Store.
+
+Now we can safely create:
+
+```text
+evidence_records
+```
+
+table.
+
+Because we now know what Evidence means.
+
+Before this document existed, I would not have recommended building the table.
+
+---
+
+# The Architecture I Would Recommend
+
+Today:
+
+```text
+Contexts/
+├── Observation
+├── Evidence
+├── Evaluation (emerging)
+├── Legitimacy
+├── Replay
+└── Governance
+```
+
+Later:
+
+```text
+Supporting/
+├── EvidenceReporting
+├── Investigation
+└── Certification
+```
+
+---
+
+# What Should Be Stored?
+
+This is where the original audit discussion returns.
+
+I would not store:
+
+```text
+GET /dashboard
+
+GET /profile
+```
+
+---
+
+I would store:
+
+```text
+ObservationRecorded
+
+EvidenceFrozen
+
+EvidenceEvaluationCompleted
+
+LegitimacyGranted
+
+LegitimacyDenied
+
+GovernanceDecisionRecorded
+```
+
+These become your evidence timeline.
+
+---
+
+# Final Verdict
+
+If I were your lead architect reviewing this document, I would formally say:
+
+> The Evidence Context specification is sufficiently mature to stop discussing "Audit Context" as a primary architectural concept.
+
+Instead:
+
+```text
+Audit
+    =
+A future consumer of Evidence
+```
+
+not:
+
+```text
+Audit
+    =
+A producer of authority
+```
+
+The next architectural milestone is **Aggregate Discovery for Evidence** and **formalization of the Evaluation boundary**, not Audit Context design. fileciteturn9file0
+
+In other words:
+
+```text
+2025 discussion:
+"How do we build audit logs?"
+
+2026 architectural reality:
+"Evidence already exists.
+We need consumers of evidence."
+```
+
+That is a much more mature and strategically sound direction.

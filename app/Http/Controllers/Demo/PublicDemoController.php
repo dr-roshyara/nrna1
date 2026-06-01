@@ -322,40 +322,16 @@ class PublicDemoController extends Controller
 
         $receiptHash = strtoupper(substr(hash('sha256', $publicDemoSession->session_token . now()->timestamp), 0, 12));
 
-        // ✅ NEW: Save votes to DemoVote table for results aggregation
-        $selections = $publicDemoSession->candidate_selections ?? [];
-        $allSelections = array_merge(
-            $selections['national'] ?? [],
-            $selections['regional'] ?? []
-        );
-
-        // Build candidate data array (candidate_01..60)
-        $candidateData = [];
-        foreach ($allSelections as $index => $selection) {
-            $candidateIndex = $index + 1;
-            $columnName = 'candidate_' . str_pad($candidateIndex, 2, '0', STR_PAD_LEFT);
-
-            if ($candidateIndex <= 60) {
-                $candidateData[$columnName] = json_encode([
-                    'candidacy_id' => $selection['candidacy_id'] ?? null,
-                    'post_id' => $selection['post_id'] ?? null,
-                    'user_name' => $selection['user_name'] ?? null,
-                    'candidacy_name' => $selection['candidacy_name'] ?? null,
-                ]);
-            }
-        }
-
-        // Create DemoVote record
-        \App\Models\DemoVote::create(array_merge([
-            'organisation_id' => null,  // Public demo has no organisation
+        // Public demo votes are stored in session, not in database
+        // This keeps public demo completely anonymous and session-based
+        $voteData = [
+            'receipt_hash' => $receiptHash,
             'election_id' => $publicDemoSession->election_id,
-            'receipt_hash' => hash('sha256', $receiptHash . config('app.salt')),
-            'participation_proof' => hash('sha256', $publicDemoSession->session_token . request()->ip() . $publicDemoSession->election_id . config('app.salt')),
-            'no_vote_posts' => isset($selections['no_vote_posts']) ? json_encode($selections['no_vote_posts']) : null,
-            'voted_at' => now(),
+            'candidate_selections' => $publicDemoSession->candidate_selections,
+            'no_vote_posts' => $publicDemoSession->candidate_selections['no_vote_posts'] ?? [],
+            'voted_at' => now()->toDateTimeString(),
             'voter_ip' => request()->ip(),
-            'cast_at' => now(),
-        ], $candidateData));
+        ];
 
         $publicDemoSession->update([
             'has_voted' => true,
@@ -363,6 +339,7 @@ class PublicDemoController extends Controller
             'current_step' => 5,
         ]);
 
+        session(['public_demo_vote_' . $publicDemoSession->session_token => $voteData]);
         session(['public_demo_receipt_' . $publicDemoSession->session_token => $receiptHash]);
 
         return redirect()->route('public-demo.thankyou', $publicDemoSession->session_token);
