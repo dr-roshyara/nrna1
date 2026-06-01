@@ -19,13 +19,14 @@ This is an **architecture question** ("Does discovery evidence support the next 
 
 ## What This Review Decides
 
-### Five Questions This Review Will Answer
+### Six Questions This Review Will Answer
 
 1. **Is Evidence Context a real bounded context?** (Not just an audit table)
 2. **Are the context boundaries defensible?** (Can they survive challenge?)
 3. **Are the aggregate hypotheses worthy of observation?** (What would falsify them?)
 4. **Are the core invariants strong enough?** (Do they protect constitutional integrity?)
 5. **Is Phase 1 correctly scoped?** (Instrumentation only, not implementation?)
+6. **What observation would cause us to merge or eliminate Evidence Context?** (Tests the BC itself, not just the aggregate)
 
 ### ❌ Will NOT Be Decided
 
@@ -168,8 +169,9 @@ For each decision, ARB votes:
 | 3. Mature Hypotheses? | ☐ | ☐ | ☐ | Testability and falsifiability |
 | 4. Strong Invariants? | ☐ | ☐ | ☐ | Constitutional-level protection |
 | 5. Correct Phase 1 Scope? | ☐ | ☐ | ☐ | Instrumentation vs. implementation boundary |
+| 6. BC Elimination Criteria? | ☐ | ☐ | ☐ | What would cause Evidence Context to be rejected or merged? |
 
-**ARB Consensus:** After voting on all five decisions, ARB selects one of the three possible verdicts (Approved / Approved With Conditions / Rework Required).
+**ARB Consensus:** After voting on all six decisions, ARB selects one of the three possible verdicts (Approved / Approved With Conditions / Rework Required).
 
 ### Possible ARB Outcomes
 
@@ -205,6 +207,52 @@ This review does **not** approve:
 Approval means: **"The domain has been learned enough to justify observation."**
 
 Not: **"The domain design is final."**
+
+---
+
+## Decision 6: Evidence Context Elimination Criteria
+
+**Why This Decision Matters:**
+
+D6 tests the **leading aggregate hypothesis** (ConstitutionalEvidenceSnapshot).
+
+D7 tests the **bounded context itself** (Evidence Context).
+
+These are different architectural levels.
+
+**Three Examples:**
+
+### Example A: Both Correct
+```
+Aggregate Hypothesis (D6): ConstitutionalEvidenceSnapshot exists ✓
+Context Hypothesis (D7): Evidence Context is valid ✓
+```
+
+### Example B: Aggregate Wrong, Context Right
+```
+Aggregate Hypothesis (D6): ConstitutionalEvidenceSnapshot exists ✗
+Context Hypothesis (D7): Evidence Context is valid ✓
+
+→ Result: Evidence Context survives; aggregate design changes
+```
+
+### Example C: Context Wrong, Aggregate Right
+```
+Aggregate Hypothesis (D6): ConstitutionalEvidenceSnapshot exists ✓
+Context Hypothesis (D7): Evidence Context is valid ✗
+
+→ Result: Merge Evidence into Evaluation or Governance
+```
+
+**ARB Must Answer:**
+
+What observations would prove Evidence Context should not exist independently?
+
+**Candidate Elimination Paths:**
+
+1. **Merge into Evaluation:** If all Evidence invariants are actually Evaluation invariants
+2. **Merge into Governance:** If Evidence is only historical storage, not domain decision-making
+3. **Eliminate as BC:** If Evidence is a supporting subdomain of Election, not an independent context
 
 ---
 
