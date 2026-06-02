@@ -1,9 +1,9 @@
 # Phase 1: Hypothesis Validation (Operational Plan)
 
-**Status:** ARB Approved With Conditions (C1–C6)  
-**Duration:** 30-day observation window  
+**Status:** Proposed For ARB Decision  
 **Purpose:** Reduce architectural uncertainty through empirical observation  
-**Success Metric:** Confidence changed on at least one hypothesis, one architectural decision revisited
+**Success Metric:** Confidence changed on at least one hypothesis, one architectural decision revisited  
+**Exit Criteria:** Learning saturation, not calendar duration
 
 ---
 
@@ -32,11 +32,26 @@ Phase 1 does **not** exist to:
 | **H5** | Evidence observations form distinct behavioral clusters | Do event patterns naturally separate audit generation from feature consumption? |
 | **H6** | Historical data ownership belongs inside Evidence Context | Should archival proof live here or be distributed elsewhere? |
 | **H7** | Evaluation is a clean, separate bounded context | Can evaluation be decoupled entirely from evidence preservation? |
-| **H8** | Verification requires an eventual dedicated context | Does verification deserve its own lifecycle, language, and invariants? |
+| **H8** | Verification exhibits characteristics of an independent bounded context | Does verification deserve its own lifecycle, language, and invariants? |
 
 ---
 
-## Section 3: Allowed & Forbidden Activities
+## Section 3: Work Classification Gate (STEP 0)
+
+Before any activity, classify the work:
+
+| Classification | Use This Plan? | Use Different Path? |
+|:---|:---|:---|
+| **Type A:** Architectural Validation | ✅ Yes | No |
+| **Type B:** Product Development | ❌ No | Standard development process |
+| **Type C:** Bug Fix | ❌ No | Standard bug fix process |
+| **Type D:** Technical Maintenance | ❌ No | Standard maintenance process |
+
+**This plan applies ONLY to Type A work.** All other work bypasses this framework and uses standard development processes.
+
+---
+
+## Section 4: Allowed & Forbidden Activities
 
 ### Allowed
 
@@ -59,7 +74,7 @@ Phase 1 does **not** exist to:
 
 ---
 
-## Section 4: Observation Metrics
+## Section 5: Observation Metrics
 
 | Metric | What Changes If This Triggers? | Observation Method |
 |:-------|:------|:---|
@@ -73,44 +88,53 @@ Phase 1 does **not** exist to:
 
 ---
 
-## Section 5: Decision Delta Template
+## Section 6: Decision Delta Template
 
 After observation period, record:
 
 | Hypothesis | Confidence Before | Observation | Confidence After | Resulting Decision |
 |:---|:---|:---|:---|:---|
-| H1 | 60% | [Real data here] | [New confidence] | Stronger / Weaker / Rejected / Keep |
-| H2 | 60% | [Real data here] | [New confidence] | Stronger / Weaker / Rejected / Keep |
+| H1 | Plausible | [Real data here] | [New confidence] | Stronger / Weaker / Rejected / Keep |
+| H2 | Plausible | [Real data here] | [New confidence] | Stronger / Weaker / Rejected / Keep |
 | (repeat for H3–H8) | | | | |
 
-Possible confidence changes:
-- **Stronger:** Observation validates hypothesis
-- **Weaker:** Observation creates doubt
+**Confidence Levels (Qualitative):**
+- **Very Weak:** Hypothesis barely coherent; likely false
+- **Weak:** Hypothesis has internal contradictions or gaps
+- **Plausible:** Hypothesis makes sense; insufficient data to judge
+- **Strong:** Evidence supports hypothesis; alternative explanations eliminated
+- **Very Strong:** Hypothesis survived multiple falsification attempts
+
+**Possible Decision Outcomes:**
+- **Stronger:** Observation increases confidence level
+- **Weaker:** Observation decreases confidence level
 - **Rejected:** Observation falsifies hypothesis completely
-- **Keep:** No material change
+- **Keep:** No material evidence either direction
 
 ---
 
-## Section 6: Exit Criteria
+## Section 7: Exit Criteria (Learning-Based)
 
 **Phase 1 ends when:**
 
-✅ At least one hypothesis confidence changed materially (±20%)  
+✅ At least one hypothesis confidence changed materially  
 ✅ At least one architectural decision was revisited  
 ✅ Decision Delta matrix completed  
-✅ Real events captured from at least 2–3 complete election cycles  
+✅ Additional observation generates no new architectural insights (learning saturation)  
 
 **Phase 1 does NOT end when:**
 
+❌ Calendar duration expires (e.g., 30 days)  
 ❌ Code is complete  
 ❌ Tables exist  
 ❌ Aggregates are designed  
 ❌ Repositories are implemented  
-❌ Documentation is finished  
+
+**Note:** Duration may be 2 weeks or 8 weeks—learning saturation determines exit, not calendar dates.
 
 ---
 
-## Section 7: The Gating Question
+## Section 8: The Gating Question
 
 Before any Phase 1 activity, ask:
 
@@ -124,14 +148,16 @@ an architectural decision?
 
 ---
 
-## Timeline
+## Timeline (Approximate; Driven by Learning Saturation)
 
 **Day 1:** ARB decision recorded  
 **Day 2:** This plan committed  
 **Day 3:** Deploy minimal observation capture (`Infrastructure/Discovery/`)  
-**Days 4–7:** Collect real domain events  
-**Days 8–28:** Continuous observation  
-**Day 30:** Close observation window, generate Decision Delta  
+**Days 4–7:** Collect real domain events from first election cycle  
+**Weeks 2+:** Continuous observation through subsequent election cycles  
+**Exit Point:** When Decision Delta shows confidence changes on H1–H8 and no new architectural insights emerge  
+
+Duration may range from 2–8 weeks depending on event frequency and learning pace.  
 
 ---
 
