@@ -213,17 +213,90 @@ This document uses the following labels:
 
 ---
 
-## Required Action Before Constitutional Evaluation
+---
 
-Confirm intent with the author (Dr. Nab Raj Roshyara) or project roadmap:
+## Critical Decision Gates (Before Constitutional Evaluation)
 
-1. Are the five domain event classes planned for integration? If yes, when?
-2. Is SecurityEventRecorder being replaced or supplemented by domain events?
-3. Are DivergenceObserved and SovereigntyBoundaryCrossed temporary migration artifacts?
-4. What does `voterIdentifier` contain at runtime?
+### Gate 1: Why Does LegitimacyGranted Carry `voterIdentifier`?
 
-**Without these answers, constitutional evaluation would be based on inferred intent, not confirmed facts.**
+**Question:** Legitimacy decisions grant or deny a voter's participation. Why must that decision be linked to voter identity?
+
+**CONFIRMED:** The field exists. `voterIdentifier` is in the payload.
+
+**INFERRED:** One of the following must be true:
+- Voter identity is necessary for legitimacy verification (justification required)
+- Voter identity is necessary for audit/dispute resolution (justification required)
+- Voter identity will be removed post-migration (explicit timeline required)
+- Voter identity is a design debt and was unintentional (deprecation required)
+
+**UNKNOWN:** Which of the above is correct.
+
+**Constitutional Implication:** Receipt-free voting literature treats voter-to-outcome linkage as a coercion risk. If a voter can be linked to their legitimacy decision, they can be coerced or vote-bought. **Before this event is treated as safe election architecture, the voter-linkage necessity must be explicitly justified or the field removed.**
+
+**Requirement:** Author must state ONE sentence: "This field is necessary because..." OR "This field will be removed because..."
 
 ---
 
-**Status: Lifecycle facts established. Inferences clearly marked. Author confirmation required before constitutional evaluation.**
+### Gate 2: Are DivergenceObserved and SovereigntyBoundaryCrossed Temporary?
+
+**Question:** Both events carry `voterIdentifier` AND reference "D.0.3c migration" and "middleware retirement" in docstrings. Are these temporary instrumentation or permanent architecture?
+
+**CONFIRMED:** Docstrings reference D.0.3c as a gate condition.
+
+**INFERRED:** These events are likely migration instrumentation, not permanent voting architecture.
+
+**UNKNOWN:** 
+- Has D.0.3c been reached?
+- Are these events now obsolete?
+- If not yet reached, when will they be retired?
+
+**Requirement:** Author must confirm:
+1. Is D.0.3c a defined phase with a completion timeline?
+2. When these events are retired, will voter-linked event data be deleted or archived?
+
+---
+
+### Gate 3: SecurityEventRecorder vs Domain Events
+
+**Question:** An operational security recording system (SecurityEventRecorder → ElectionSecurityEvent) exists today. The five domain events are not dispatched. What is the intended relationship?
+
+**CONFIRMED:**
+- SecurityEventRecorder is tested, operational, writes to database
+- Domain events are defined but not dispatched
+- Both appear to serve overlapping security recording purposes
+
+**INFERRED:** The two systems are either:
+1. **Replace:** Domain events will replace SecurityEventRecorder (timeline unknown)
+2. **Supplement:** Domain events will coexist alongside SecurityEventRecorder
+3. **Coexist:** Both will remain indefinitely with different responsibilities
+4. **Abandon:** Domain events are abandoned code (unlikely given recent commit date)
+
+**UNKNOWN:** Which model is correct.
+
+**Architectural Impact:** Phase 1 observation strategy depends on this answer. If SecurityEventRecorder is the only operational system, Phase 1 should observe it. If domain events are planned to replace it, Phase 1 should wait for integration.
+
+**Requirement:** Author must state: "The intended relationship is [replace/supplement/coexist/abandon]."
+
+---
+
+## Required Action Before Constitutional Evaluation
+
+**The lifecycle analysis is complete and facts are clearly separated from inferences. However, constitutional evaluation is BLOCKED pending three author decisions:**
+
+1. **Voter-linkage justification** (LegitimacyGranted + DivergenceObserved + SovereigntyBoundaryCrossed)
+   - Why does `voterIdentifier` exist in each event?
+   - Can it be removed or replaced with a non-linking token?
+
+2. **Migration status confirmation** (DivergenceObserved + SovereigntyBoundaryCrossed)
+   - Explicit D.0.3c phase definition and timeline
+   - Data retention/deletion policy if events are retired
+
+3. **Architecture ownership** (SecurityEventRecorder vs domain events)
+   - What is the intended relationship?
+   - Which system should Phase 1 observe?
+
+**Status: Lifecycle analysis complete. Constitutional evaluation blocked pending author confirmation.**
+
+---
+
+**Next Step:** Consult Dr. Nab Raj Roshyara or project roadmap for the three decision gates above. After confirmation, proceed to Round 4 (Operational Security Recording Analysis).
