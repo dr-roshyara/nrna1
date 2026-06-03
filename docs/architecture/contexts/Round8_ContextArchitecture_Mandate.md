@@ -84,40 +84,38 @@ Answer: Clear; belongs to exactly one context
 Clean context boundaries produce **clean decision ownership**.
 
 If a decision has multiple owners → boundary is wrong.
-If a decision requires consensus → boundary is wrong.
-If a decision can only be made by committee → boundary is wrong.
+If a decision requires multiple contexts to jointly own the final outcome → the boundary may be wrong and should be investigated.
+If a decision can only be made by committee → check whether one context should own it while others participate.
 
 ---
 
-## The Nine Steps
+## The Nine Steps (Execution Order)
 
-### Step 1 — Context Relationship Map
+**Execution Order:** Start with Decision Ownership Matrix. All other artifacts are derived from it.
 
-For Membership, Election, Governance, Appeals, identify:
-
-**Upstream:** Who provides information?
-**Downstream:** Who consumes information?
-**Partnership:** Which contexts collaborate?
-**Shared Concepts:** Which concepts cross boundaries?
-
-**Deliverable:** ContextRelationshipMap_v1.md
-
----
-
-### Step 2 — Context Responsibility Matrix
-
-For every context identify:
-
-**Owns:** What decisions belong exclusively here?
-**Consumes:** What decisions from others are required?
-**Produces:** What outcomes are emitted?
-**Cannot Decide:** What is outside its authority?
-
-**Deliverable:** ContextResponsibilityMatrix.md
+```
+Decision Ownership Matrix
+      ↓
+Context Responsibility Matrix
+      ↓
+Context Relationship Map
+      ↓
+Context Contracts
+      ↓
+Authority Flow Analysis
+      ↓
+Verification Placement Analysis
+      ↓
+Evidence Flow Analysis
+      ↓
+Election Mode Validation
+      ↓
+Round 8 Synthesis
+```
 
 ---
 
-### Step 2.5 — Decision Ownership Matrix (CENTERPIECE)
+### Step 1 — Decision Ownership Matrix (CENTERPIECE)
 
 For every major constitutional decision, identify:
 
@@ -180,7 +178,33 @@ For every major constitutional decision, identify:
 
 ---
 
-### Step 3 — Context Contracts
+### Step 2 — Context Responsibility Matrix
+
+For every context identify:
+
+**Owns:** What decisions belong exclusively here?
+**Consumes:** What decisions from others are required?
+**Produces:** What outcomes are emitted?
+**Cannot Decide:** What is outside its authority?
+
+**Deliverable:** ContextResponsibilityMatrix.md
+
+---
+
+### Step 3 — Context Relationship Map
+
+For Membership, Election, Governance, Appeals, identify:
+
+**Upstream:** Who provides information?
+**Downstream:** Who consumes information?
+**Partnership:** Which contexts collaborate?
+**Shared Concepts:** Which concepts cross boundaries?
+
+**Deliverable:** ContextRelationshipMap_v1.md
+
+---
+
+### Step 4 — Context Contracts
 
 For each relationship (Membership ↔ Election, Election ↔ Governance, etc.):
 
@@ -194,7 +218,7 @@ For each relationship (Membership ↔ Election, Election ↔ Governance, etc.):
 
 ---
 
-### Step 4 — Authority Flow Analysis
+### Step 5 — Authority Flow Analysis
 
 Using H-C assumption (or H-B alternative):
 
@@ -211,7 +235,7 @@ Evaluate: Does H-C survive? If not, document why.
 
 ---
 
-### Step 5 — Verification Placement Analysis
+### Step 6 — Verification Placement Analysis
 
 Evaluate three options:
 
@@ -238,7 +262,7 @@ Do NOT select winner yet. Document tradeoffs.
 
 ---
 
-### Step 6 — Evidence Flow Analysis
+### Step 7 — Evidence Flow Analysis
 
 Map evidence across lifecycle:
 - Evidence Creation
@@ -255,7 +279,7 @@ Document findings.
 
 ---
 
-### Step 7 — Election Mode Validation
+### Step 8 — Election Mode Validation
 
 Validate entire architecture against both modes:
 
@@ -277,7 +301,7 @@ Document differences and mode-specific requirements.
 
 ---
 
-### Step 8 — Round 8 Synthesis
+### Step 9 — Round 8 Synthesis
 
 Synthesize all findings into context architecture v1:
 
