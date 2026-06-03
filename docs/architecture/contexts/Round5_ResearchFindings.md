@@ -402,7 +402,7 @@
 **Confidence:** MEDIUM (strengthened but not proven permanent)
 
 **Available for ARB consideration:**
-- Should Evidence Context design proceed on strengthened H1?
+- What impact does strengthened H1 have on future investment decisions?
 - Does SecurityEventRecorder represent the Evidence Context infrastructure layer?
 - Are domain events part of Evidence Context or separate capability?
 
@@ -415,7 +415,7 @@
 | **D1: SecurityEventRecorder = Infrastructure** | HIGH | Operational status confirmed; permanence unknown |
 | **D2: Domain Events = [Status Unknown]** | MEDIUM | Design quality confirmed; purpose depends on D.0.3c |
 | **D3: Relationship = [Unknown]** | MEDIUM | Both exist; relationship depends on D.0.3c |
-| **H1: Evidence Context = Valid BC** | Strengthened | Operational evidence supports hypothesis; permanence unconfirmed |
+| **H1: Evidence Context = Valid BC** | Moderately Strengthened | Operational evidence supports hypothesis; D2/D3 unresolved limits confidence |
 | **Critical Missing Artifact: D.0.3c Definition** | N/A | References exist; definition not in repository |
 
 ---
