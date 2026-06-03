@@ -408,15 +408,57 @@ For every relationship: **Does Verification create a NEW arrow or travel along a
 | Governance → Appeals | Travels Rule Dependency | Verification of appeal authority uses Governance rules |
 | Membership → Appeals | Travels Information Dependency | Verification of appeal grounds uses Membership records |
 
-**Conclusion:** Verification **travels along existing pathways** in all six relationships.
+**Observed Candidate Pattern:**
 
-**Implications:**
-- Verification does not appear as a separate structural context in the relationship map
-- Verification may be:
-  - A distributed capability (each context owns its own verification)
-  - Infrastructure (shared, used by existing relationships)
-  - Both (distributed for content verification; infrastructure for coordination)
-- Evidence suggests Verification is **not a standalone bounded context** (no new arrows created)
+Within the six analyzed relationships (Governance, Membership, Election, Appeals), Verification travels along existing pathways rather than creating new structural relationships.
+
+**Interpretation (Candidate, Not Concluded):**
+
+This pattern suggests Verification may be:
+- A distributed capability (each context owns its own verification)
+- Infrastructure (shared, used by existing relationships)
+- Both (distributed for content verification; infrastructure for coordination)
+
+**Important Caveat:**
+
+This analysis covers only four candidate contexts. Phase 2 discovered additional major concepts:
+- Evidence (status uncertain)
+- Fraud Investigation (status uncertain)
+- Authority (potential cross-cutting)
+- Recognition (potential cross-cutting)
+
+These were not included in the six relationships analyzed above.
+
+**Conclusion:** Evidence from this matrix weakens the "Verification as standalone context" hypothesis but does not eliminate it. Additional analysis required in Round 8 Step 5 (Verification Placement Analysis) to test against all discovered concepts.
+
+---
+
+## Major Finding: Dependency Nature Variability
+
+**The Single Most Valuable Discovery from Step 3.1:**
+
+Not all constitutional dependencies operate under the same conditions.
+
+The architecture contains:
+- **Structural** dependencies (always present)
+- **Mode-Dependent** dependencies (vary between Election-Only and Full Membership)
+- **Conditional** dependencies (activated by specific circumstances: challenges, fraud, appeals)
+- **Temporal** dependencies (vary by timing in election lifecycle)
+
+**Architectural Implication:**
+
+This heterogeneity explains why earlier bounded-context discovery (Phases 1-2) repeatedly found exceptions and edge cases. The system's dependencies are not uniform; they vary by mode, circumstance, and time.
+
+This means:
+- Context boundaries may need to flex by mode
+- Some relationships are always active; others are conditional
+- Temporal sequence matters (timing affects which dependencies are active)
+- The architecture is more complex than simple context relationships would suggest
+
+**This finding should directly inform:**
+- Step 4 (Authority Flow Analysis) — different authority flows in different modes
+- Step 5 (Verification Placement Analysis) — verification needs vary by condition
+- Step 3.2 (Relationship Map visualization) — must distinguish dependency natures visually
 
 ---
 
@@ -426,15 +468,19 @@ Before creating the relationship map, answer:
 
 ### 1. Which dependencies are structural?
 
-**Structural (always exist):**
+**Always Structural (exist regardless of mode or circumstance):**
 - Governance → Membership (rule definitions)
 - Governance → Election (rule definitions)
 - Governance → Appeals (rule definitions)
-- Membership → Election (in Full Membership mode)
-- Election → Appeals (legitimacy recourse)
 
-**Conditional:**
-- Membership → Appeals (fairness mechanism; conditional on challenges)
+**Mode-Dependent Structural (exist only in specific modes):**
+- Membership → Election (required in Full Membership mode; optional in Election-Only mode)
+
+**Conditional Structural (exist structurally but relevance depends on specific circumstances):**
+- Election → Appeals (structure always exists in Full Membership mode; relevance depends on challenges)
+- Membership → Appeals (structure always exists; relevance depends on challenges being raised)
+
+**Note:** Earlier in the matrix, Election → Appeals was classified as "Structural + Conditional." This correction clarifies terminology: the relationship is structurally always present (in Full Membership mode), but its relevance is conditional on appeals being raised.
 
 ---
 
@@ -469,17 +515,28 @@ Before creating the relationship map, answer:
 
 ### 5. Has Governance become a God Context?
 
-**Evidence:**
+**Observed Candidate Pattern:**
 - Governance defines rules for Membership (upstream)
 - Governance defines rules for Election (upstream)
 - Governance defines rules for Appeals (upstream)
 - All three downstream contexts depend on Governance-defined rules
 
-**Assessment:** Governance is **strategically central** but **operationally optional** (short-term).
+**Candidate Assessment (Not Yet Confirmed):**
 
-**Interpretation:** Governance is a **control point** (bottleneck for evolution) but not operationally blocking (decisions can execute with static rules).
+Operations appear capable of continuing temporarily using previously established rules, even if Governance context becomes unavailable.
 
-**Risk Level:** MEDIUM-HIGH (if Governance needs consensus or becomes slow to change)
+This pattern suggests:
+- Governance may be more critical for **rule evolution** than for **day-to-day execution**
+- Governance may function as a **control point** (managing change) rather than a **blocker** (preventing operation)
+
+**Caveat:** This is based on theoretical analysis of what would happen if Governance disappeared. Real operational impact depends on:
+- How frequently rules need to change
+- How quickly the organization adapts to changing circumstances
+- Whether static rules become problematic under real conditions
+
+**Further Testing Required:** This hypothesis should be tested during Round 8 Step 4 (Authority Flow Analysis) and Step 5 (Verification Placement Analysis).
+
+**Risk Level:** MEDIUM-HIGH (conditional on need for rule evolution and speed of organizational change)
 
 ---
 
@@ -501,7 +558,41 @@ Before creating the relationship map, answer:
 
 ---
 
-### 7. Are any relationships surprising?
+### 7. Which relationships change meaning between Election-Only Mode and Full Membership Mode?
+
+**Mode-Dependent Relationships:**
+
+**Membership ↔ Election:**
+- Full Membership Mode: **Required** (Election depends on Membership)
+- Election-Only Mode: **Optional** (Election can source voters independently)
+- **Implication:** Context boundaries may need to flex by mode
+
+**Governance ↔ Membership:**
+- Both modes: **Same** (Governance defines membership rules)
+- No mode-dependency detected
+
+**Governance ↔ Election:**
+- Both modes: **Same** (Governance defines election rules)
+- Note: Publication rules differ (voter list published in Full Membership, not in Election-Only)
+- This is a **Governance rule difference**, not a dependency difference
+
+**Election ↔ Appeals:**
+- Both modes: **Same structural relationship**
+- Full Membership Mode: Appeals more important (transparency/fairness expected)
+- Election-Only Mode: Appeals less critical (organization has final authority)
+
+**Architectural Significance:**
+
+Mode-dependent relationships represent a major architectural complexity. Systems that must support both modes cannot assume consistent dependency structures.
+
+**This becomes critical for:**
+- Step 3.2 (Relationship Map) — must show mode variations
+- Step 4 (Authority Flow) — authority flows may differ by mode
+- Step 5 (Verification) — verification needs may differ by mode
+
+---
+
+### 8. Are any relationships surprising?
 
 **Surprising Findings:**
 
