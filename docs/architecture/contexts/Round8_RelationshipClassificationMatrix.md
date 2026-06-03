@@ -447,7 +447,11 @@ The architecture contains:
 
 **Architectural Implication:**
 
-This heterogeneity explains why earlier bounded-context discovery (Phases 1-2) repeatedly found exceptions and edge cases. The system's dependencies are not uniform; they vary by mode, circumstance, and time.
+Observed Candidate Pattern:
+
+This heterogeneity may help explain why earlier bounded-context discovery (Phases 1-2) repeatedly encountered exceptions, edge cases, and apparent contradictions. The system's dependencies are not uniform; they vary by mode, circumstance, and time.
+
+Further architectural analysis is required to confirm this explanation.
 
 This means:
 - Context boundaries may need to flex by mode
@@ -459,6 +463,30 @@ This means:
 - Step 4 (Authority Flow Analysis) — different authority flows in different modes
 - Step 5 (Verification Placement Analysis) — verification needs vary by condition
 - Step 3.2 (Relationship Map visualization) — must distinguish dependency natures visually
+
+**Open Question for Round 8 Synthesis:**
+
+Should dependency nature become a first-class architectural concern?
+
+**Rationale:**
+
+Currently, relationships are described as:
+```
+Context A → Context B
+```
+
+But if dependency nature changes behavior, this notation is incomplete.
+
+Future architectural descriptions may need to specify:
+```
+Context A → Context B (Structural)
+Context A → Context B (Mode-Dependent)
+Context A → Context B (Conditional)
+```
+
+as separate architectural relationships with different implications.
+
+This question is worth preserving for Round 8 synthesis and may affect how Round 9 (Tactical DDD) designs aggregates and event flows.
 
 ---
 
