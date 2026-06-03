@@ -180,7 +180,7 @@ LegitimacyEvaluated (line 10-12):
 
 **Classification:** CONFIRMED
 
-**Why this matters:** Explicit reference to "D-phase migration" and "D.0.3c (middleware retirement)" indicates these events are tied to a migration phase, not primary architecture.
+**Why this matters:** Explicit reference to "D-phase migration" and "D.0.3c (middleware retirement)" suggests these events may be associated with a migration-related initiative. The exact relationship remains unknown.
 
 ---
 
@@ -524,12 +524,47 @@ The repository **cannot answer D2 and D3** without additional sources:
 **Decision D:** Is additional discovery warranted?  
 → Recommend: Author/architect consultation preferred over further code-level analysis
 
+### Design Assumptions for Proceeding (D2/D3 MEDIUM Confidence)
+
+**When D2/D3 remain unresolved, design work may proceed using these provisional assumptions:**
+
+**Assumption for D2 (Domain Event Status):**
+```
+Until author clarification: 
+Assume domain events are migration-only instrumentation
+related to D.0.3c (if/when it occurs).
+
+Do NOT design Evidence Context assuming domain events 
+will become operational or replace SecurityEventRecorder.
+
+Rationale: Conservative approach protects against 
+investing in systems that may be deprecated.
+
+Revision trigger: Author clarification on D.0.3c scope/timeline
+```
+
+**Assumption for D3 (Relationship):**
+```
+Until author clarification:
+Assume SecurityEventRecorder is the PRIMARY and PERMANENT
+mechanism for recording security observations.
+
+Design Evidence Context around SecurityEventRecorder,
+not around domain events.
+
+Rationale: SecurityEventRecorder is operational and tested.
+Domain events are not.
+
+Revision trigger: Author decision to activate domain events
+or explicit deprecation of SecurityEventRecorder
+```
+
 ### What NOT to Do
 
-❌ Do not proceed with Evidence Context design until D2/D3 are resolved  
-❌ Do not assume domain event purpose from field presence  
-❌ Do not interpret D.0.3c references without explicit definition  
-❌ Do not recommend "supplementary" or "replacement" relationship without confirmation
+❌ Do not design Evidence Context assuming domain events will replace SecurityEventRecorder  
+❌ Do not design around voterIdentifier without understanding its purpose  
+❌ Do not interpret D.0.3c references as permanent architecture  
+❌ Do not assume supplementary or replacement relationship is correct
 
 ---
 
