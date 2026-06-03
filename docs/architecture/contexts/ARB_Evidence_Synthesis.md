@@ -458,7 +458,7 @@ Based on evidence reduction:
 
 **Q3 Likely:** YES — Major contradictions surfaced and documented
 
-**Q4 Likely:** YES (CONDITIONAL) — Uncertainty reduced enough to start Round 8, BUT Verification role must be resolved first
+**Q4 Likely:** YES (CONDITIONAL) — Uncertainty reduced enough to start Round 8. Verification role must either be resolved before Round 8, or carried into Round 8 as an explicit architectural assumption to be tested.
 
 **Q5 Likely:** MINOR — Some discovery areas identified (Recognition, Legitimacy foundation) but non-blocking
 
