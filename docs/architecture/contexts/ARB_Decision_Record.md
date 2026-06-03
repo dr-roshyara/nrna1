@@ -202,6 +202,20 @@ Date of decision: **[Reviewer fills]**
 
 **Status:** APPROVED with explicit conditions
 
+**Objective:**
+
+Design Exploration will explore whether a coherent Evidence Context model emerges from the current evidence.
+
+Not: Design the Evidence Context (assumes existence)  
+But: Test whether it can coherently model the domain (tests hypothesis)
+
+**Critical Principle:**
+
+Evidence Context remains a working hypothesis throughout Design Exploration.
+
+The goal is not to prove the hypothesis.  
+The goal is to discover whether a coherent model exists.
+
 **Conditions:**
 1. Evidence Context remains a hypothesis, not a confirmed aggregate
 2. D.0.3c and domain event status remain unresolved
@@ -209,7 +223,7 @@ Date of decision: **[Reviewer fills]**
 4. All design decisions must be documented as revisable
 5. Design must identify which assumptions would be falsified by future information
 6. No final architecture approval is implied
-7. Design explores; does not commit to implementation
+7. Exploration tests; does not commit to implementation
 
 **What is NOT authorized:**
 - Implementation of Evidence Context
@@ -219,4 +233,4 @@ Date of decision: **[Reviewer fills]**
 
 ---
 
-**Status: Phase 1 Complete. Design Exploration Authorized.**
+**Status: Phase 1 discovery is complete. Design Exploration is authorized under uncertainty.**
