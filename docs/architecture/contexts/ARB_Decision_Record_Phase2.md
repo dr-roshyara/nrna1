@@ -1,10 +1,10 @@
 # ARB Decision Record — Phase 2 Governance Gate
 
-**Date:** [To be completed after Round 6F.2]  
+**Date:** 2026-06-03  
 **Scope:** Governance decision on Phase 2 discovery completion and Round 7 authorization  
 **Authority:** Architecture Review Board  
-**Status:** PENDING — Do not complete until Round 6F.2 (Authority Stress Test) is finished  
-**Prerequisite:** ARB_Decision_Record_Phase1.md (Phase 1 closed)
+**Status:** COMPLETE — Phase 2 discovery concluded. Round 7 conditionally authorized.  
+**Prerequisite:** ARB_Decision_Record_Phase1.md (Phase 1 closed) ✓
 
 ---
 
@@ -55,16 +55,16 @@ Before this document can be completed:
 
 ### Q0: Has the Authority investigation produced material findings?
 
-**Context:** Round 6F.1 and 6F.2 executed (to be completed after those rounds)
+**Context:** Round 6F.1 and 6F.2 executed
 
 **Decision:**
-- [ ] YES — Authority investigation materially changed the architecture
+- [x] YES — Authority investigation materially changed the architecture
 - [ ] NO — Authority investigation confirmed prior hypotheses only
 - [ ] INCONCLUSIVE — Authority investigation produced conflicting evidence
 
-**Confidence:** [To be filled]  
-**Evidence Strength:** [To be filled]  
-**Rationale:** [Reviewer fills after 6F.2]
+**Confidence:** HIGH  
+**Evidence Strength:** STRONG  
+**Rationale:** Round 6F.1 identified five cross-domain patterns and four candidate hypotheses. Round 6F.2 stress testing found H-A (Single Authority Concept) significantly weakens under 5 of 8 stress scenarios, while H-B (Authority Family) and H-C (Authority Is Cross-Cutting) remain viable. Finding H-A insufficient is material architectural change from H1-only discovery path.
 
 ---
 
@@ -75,12 +75,12 @@ Authority investigation (6F) revealed Legitimacy ≠ Authority.
 
 **Current Assessment (not final determination):**
 - [ ] CLEAR — Sufficient evidence to proceed with context mapping
-- [ ] PARTIAL — Some clarity; significant uncertainties remain
+- [x] PARTIAL — Some clarity; significant uncertainties remain
 - [ ] UNRESOLVED — Insufficient evidence; further discovery recommended
 
-**Confidence:** [To be filled]  
-**Evidence Strength:** [To be filled]  
-**Remaining Unknowns:** [Reviewer lists unresolved questions]
+**Confidence:** MEDIUM  
+**Evidence Strength:** MODERATE  
+**Remaining Unknowns:** Does legitimacy require recognition, or is recognition sufficient? What is minimum set of factors that create legitimacy? Is legitimacy temporal, permanent, or revocable? Authority + Recognition produces legitimacy, but is this the only path?
 
 ---
 
@@ -91,12 +91,12 @@ weakened single-concept hypothesis but did not prove alternative hypotheses.
 
 **Current Assessment (not final determination):**
 - [ ] CLEAR — Authority's role sufficiently understood for context mapping
-- [ ] PARTIAL — Multiple viable hypotheses; boundaries remain exploratory
+- [x] PARTIAL — Multiple viable hypotheses; boundaries remain exploratory
 - [ ] UNRESOLVED — Insufficient clarity; further investigation recommended
 
-**Confidence:** [To be filled]  
-**Evidence Strength:** [To be filled]  
-**Remaining Unknowns:** [Reviewer lists unresolved questions]
+**Confidence:** MEDIUM  
+**Evidence Strength:** MODERATE  
+**Remaining Unknowns:** Is Authority H-B (Family) or H-C (Cross-Cutting)? Can Authority be implicit or must it be explicit? What is minimum Authority (does silence = approval)? Does constitutional hierarchy terminate, or infinite Authority regress?
 
 ---
 
@@ -106,34 +106,35 @@ weakened single-concept hypothesis but did not prove alternative hypotheses.
 core concepts and their relationships.
 
 **Assessment (Can we safely begin exploratory mapping?):**
-- [ ] YES (with reservations) — Reduced enough to explore boundaries
+- [x] YES (with reservations) — Reduced enough to explore boundaries
 - [ ] PARTIAL — Some areas clear; others remain highly uncertain
 - [ ] NO — Uncertainty remains too high; more discovery needed
 
-**Confidence:** [To be filled]  
-**Evidence Strength:** [To be filled]  
-**Reservations:** [Reviewer notes conditions and assumptions]
+**Confidence:** MEDIUM  
+**Evidence Strength:** MODERATE  
+**Reservations:** Round 7 must remain exploratory. Authority nature (H-B vs H-C) still unresolved. Legitimacy requirements still unresolved. Recognition architectural significance still unresolved. Context boundaries are candidates, not conclusions. All assumptions must be documented explicitly.
 
 ---
 
 ### Q4: Should Round 7 (exploratory Context Mapping) proceed?
 
 **Decision:**
-- [ ] YES (CONDITIONAL) — Proceed under specified conditions
+- [x] YES (CONDITIONAL) — Proceed under specified conditions
 - [ ] NO — Further discovery required before context mapping (specify round)
 - [ ] HOLD — Reassess prerequisites before deciding
 
 **If YES (CONDITIONAL), context mapping must:**
-- [ ] Remain exploratory (not final architecture)
-- [ ] Record all assumptions explicitly
-- [ ] Keep boundaries revisable
-- [ ] Avoid tactical design decisions
-- [ ] Avoid aggregate design
-- [ ] Avoid implementation decisions
+- [x] Remain exploratory (not final architecture)
+- [x] Record all assumptions explicitly
+- [x] Keep boundaries revisable
+- [x] Avoid tactical design decisions
+- [x] Avoid aggregate design
+- [x] Avoid implementation decisions
+- [x] Require review before proceeding to Round 8
 
-**Confidence:** [To be filled]  
-**Evidence Strength:** [To be filled]  
-**Conditions:** [Reviewer specifies required conditions]
+**Confidence:** MEDIUM  
+**Evidence Strength:** MODERATE  
+**Conditions:** (1) Context mapping remains exploratory. (2) Boundary decisions remain revisable. (3) Assumptions and uncertainties must be recorded. (4) No aggregate design. (5) No tactical design. (6) No implementation decisions. (7) Round 7 findings require review before Round 8.
 
 ---
 
@@ -145,13 +146,13 @@ core concepts and their relationships.
 - This question establishes historical traceability for the governance record
 
 **Decision:**
-- [ ] YES — Phase 2 materially changed the original architectural understanding
+- [x] YES — Phase 2 materially changed the original architectural understanding
 - [ ] NO — Phase 2 only refined or extended original Phase 1 understanding
 - [ ] PARTIALLY — Some aspects changed; others refined
 
-**Confidence:** [To be filled]  
-**Evidence Strength:** [To be filled]  
-**Rationale:** [Reviewer fills after 6F.2]
+**Confidence:** HIGH  
+**Evidence Strength:** VERY STRONG  
+**Rationale:** The sequence Evidence → Verification → Legitimacy → Authority → Recognition demonstrates repeated emergence of new conceptual layers, not hypothesis refinement. Each layer revealed the previous was insufficient for architectural understanding. Phase 2 expanded investigation scope from "Is H1 valid?" to "What is the constitutional ontology?" This is material scope expansion, not refinement.
 
 ---
 
@@ -202,14 +203,28 @@ to begin exploratory context mapping — not to declare the domain model correct
 
 ## Decision Summary
 
-| Question | Decision | Confidence | Evidence Strength | Rationale |
-|----------|----------|------------|-------------------|-----------|
-| Q0: Authority findings material? | [ ] | [TBD] | [TBD] | [TBD] |
-| Q1: Legitimacy status determined? | [ ] | [TBD] | [TBD] | [TBD] |
-| Q2: Authority nature determined? | [ ] | [TBD] | [TBD] | [TBD] |
-| Q3: Ontology sufficiently understood? | [ ] | [TBD] | [TBD] | [TBD] |
-| Q4: Round 7 authorized? | [ ] | [TBD] | [TBD] | [TBD] |
-| Q5: Phase 2 materially changed understanding? | [ ] | [TBD] | [TBD] | [TBD] |
+| Question | Decision | Confidence | Evidence Strength |
+|----------|----------|------------|-------------------|
+| Q0: Authority findings material? | YES | HIGH | STRONG |
+| Q1: Legitimacy status assessment? | PARTIAL | MEDIUM | MODERATE |
+| Q2: Authority nature assessment? | PARTIAL | MEDIUM | MODERATE |
+| Q3: Uncertainty sufficiently reduced? | YES (with reservations) | MEDIUM | MODERATE |
+| Q4: Round 7 authorized? | YES (CONDITIONAL) | MEDIUM | MODERATE |
+| Q5: Phase 2 materially changed understanding? | YES | HIGH | VERY STRONG |
+
+---
+
+## Architectural Position Statement
+
+The Architecture Review Board recognizes that Phase 2 discovery did not establish definitive architectural truth regarding Authority, Legitimacy, Recognition, or their causal relationships.
+
+The Board further recognizes that strategic context mapping does not require complete certainty.
+
+The purpose of Round 7 is therefore not to validate existing hypotheses, but to determine whether proposed context boundaries remain coherent when applied to the concepts discovered during Phase 2.
+
+Authorization of Round 7 shall not be interpreted as approval of any specific Authority, Legitimacy, Verification, Evidence, or Recognition model.
+
+Round 7 remains an exploratory architectural activity.
 
 ---
 
@@ -242,4 +257,10 @@ The board is authorizing exploratory context mapping, not final architecture.
 
 ---
 
-**Status:** PENDING. Complete after Round 6F.2. Do not fill in answers early.
+---
+
+**Status:** COMPLETE. Phase 2 Governance Gate closed. Round 7 conditionally authorized.
+
+**Governance Authority:** Architecture Review Board  
+**Date Recorded:** 2026-06-03  
+**Effective Immediately:** Round 7 (Candidate Context Mapping) may begin under the seven conditions specified in Q4.
