@@ -67,7 +67,7 @@ This record captures explicit governance decisions on how to proceed.
 - Opposite design philosophies (voter identity null vs. present)
 
 **Decision:**
-- [ ] YES — Acceptable to proceed assuming SecurityEventRecorder is primary; use provisional assumptions
+- [ ] YES — Acceptable to proceed despite unresolved system relationship
 - [ ] NO — Unacceptable; must resolve system relationship before proceeding
 - [ ] CONDITIONAL — Acceptable only if [specific condition stated below]
 
@@ -132,7 +132,7 @@ This record captures explicit governance decisions on how to proceed.
 **Selection (reviewer completes):**
 - [ ] A. Continue Discovery
 - [ ] B. Seek Clarification
-- [ ] C. Authorize Design
+- [ ] C. Authorize Design Exploration
 - [ ] D. Stop Investigation
 
 **Rationale (reviewer completes):**
