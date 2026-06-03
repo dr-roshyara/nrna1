@@ -1,9 +1,11 @@
 # ARB Decision Record — Phase 1 Governance Gate
 
 **Date:** 2026-06-03  
-**Scope:** Explicit governance decisions on Phase 1 discovery completion  
+**Governance Type:** Retrospective Closure Record  
+**NOT:** Authorization for Round 6 (Round 6 discovery already occurred)  
+**Scope:** Records formal closure of Phase 1 (Rounds 1–5) and material expansion recognized in Phase 2 (Rounds 6A–6F)  
 **Authority:** Architecture Review Board  
-**Status:** Awaiting review and decision
+**Status:** APPROVED
 
 ---
 
@@ -17,7 +19,31 @@ Phase 1 Discovery (Rounds 1-5) has completed evidence collection on:
 
 Evidence is documented in Round5_ResearchFindings.md.
 
-This record captures explicit governance decisions on how to proceed.
+This record captures explicit governance decisions on Phase 1 closure and recognizes material expansion that occurred in Phase 2.
+
+---
+
+## Phase 1 → Phase 2 Transition
+
+Phase 1 (Rounds 1–5) investigated the original H1 hypothesis using the Evidence Context
+as the primary candidate. Evidence collection reached natural exhaustion.
+
+Phase 2 (Rounds 6A–6F) materially expanded the investigation beyond the original H1.
+This was not a deviation from the mandate — it is a recognized pattern in strategic DDD
+called discovery-driven scope evolution.
+
+Phase 2 produced material architectural discoveries and hypotheses requiring further validation.
+
+Observed during Phase 2:
+- Verification emerged as a major architectural candidate.
+- Legitimacy emerged as a major organizing concept.
+- Authority emerged as a major discovery target.
+- Recognition emerged as a recurring observation.
+
+Their final architectural status remains subject to Phase 2 governance review.
+They are recorded here as discoveries, candidates, and observations — not as architectural facts.
+They will be addressed in the Phase 2 Governance Gate (ARB_Decision_Record_Phase2.md)
+after Round 6F.2 (Authority Stress Test) is complete.
 
 ---
 
@@ -139,6 +165,24 @@ This record captures explicit governance decisions on how to proceed.
 
 ---
 
+### Q5: Has the investigation materially expanded beyond original H1 scope?
+
+**Context:**
+- Original H1: Evidence Context is a valid, independent bounded context
+- Rounds 6A–6F produced material discoveries not present in original H1
+- Material discoveries: Verification, Legitimacy, Authority, Recognition
+- Each discovery revealed the previous candidate was insufficient
+
+**Decision:**
+- [x] YES — Phase 2 materially expanded investigation scope beyond original H1
+- [ ] NO — Phase 2 only refined or validated original H1
+
+**Confidence:** HIGH  
+**Evidence Strength:** Strong — five distinct rounds of stress testing each revealed new conceptual layers not present in the previous round.  
+**Rationale:** The sequence Evidence → Verification → Legitimacy → Authority → Recognition demonstrates repeated emergence of new conceptual layers during discovery, not merely hypothesis refinement.
+
+---
+
 ## Known Uncertainties Accepted By Governance
 
 If governance selects Option B or C (Seek Clarification or Authorize Design Exploration), the following unknowns remain explicitly unresolved:
@@ -156,13 +200,14 @@ If governance selects Option B or C (Seek Clarification or Authorize Design Expl
 
 ## Decision Summary
 
-| Question | Decision | Rationale |
-|----------|----------|-----------|
-| Q0: H1 strengthened? | [ ] YES / NO / INCONCLUSIVE | [Reviewer fills] |
-| Q1: D2 uncertainty acceptable? | [ ] YES / NO / CONDITIONAL | [Reviewer fills] |
-| Q2: D3 uncertainty acceptable? | [ ] YES / NO / CONDITIONAL | [Reviewer fills] |
-| Q3: Author clarification needed? | [ ] YES / NO | [Reviewer fills] |
-| Q4: Authorized next step? | [ ] A / B / C / D | [Reviewer fills] |
+| Question | Decision | Confidence | Evidence Strength | Rationale |
+|----------|----------|------------|-------------------|-----------|
+| Q0: H1 strengthened? | [ ] YES / NO / INCONCLUSIVE | [TBD] | [TBD] | [Reviewer fills] |
+| Q1: D2 uncertainty acceptable? | [ ] YES / NO / CONDITIONAL | [TBD] | [TBD] | [Reviewer fills] |
+| Q2: D3 uncertainty acceptable? | [ ] YES / NO / CONDITIONAL | [TBD] | [TBD] | [Reviewer fills] |
+| Q3: Author clarification needed? | [ ] YES / NO | [TBD] | [TBD] | [Reviewer fills] |
+| Q4: Authorized next step? | [ ] A / B / C / D | [TBD] | [TBD] | [Reviewer fills] |
+| Q5: Phase 2 materially expanded scope? | [x] YES / [ ] NO | HIGH | Strong | Material discoveries: Verification, Legitimacy, Authority, Recognition |
 
 ---
 
@@ -188,13 +233,14 @@ Date of decision: **[Reviewer fills]**
 
 ### Decisions
 
-| Question | Decision | Rationale |
-|----------|----------|-----------|
-| **Q0: Has Phase 1 produced evidence relevant to H1?** | **YES** | SecurityEventRecorder demonstrates evidence preservation is real and operational. This directly informs H1 evaluation. |
-| **Q1: Is D2 uncertainty acceptable?** | **CONDITIONAL** | D2 (domain events status) is unresolved. Acceptable to proceed only with explicit documentation that all design decisions remain revisable. |
-| **Q2: Is D3 uncertainty acceptable?** | **CONDITIONAL** | D3 (system relationship) is unresolved. Acceptable to proceed only if design explicitly states assumptions and falsification criteria. |
-| **Q3: Is author clarification required?** | **CONDITIONAL** | D.0.3c remains undefined in repository. Optional to pursue; discovery saturation has been reached. Further repository investigation unlikely to yield new evidence. |
-| **Q4: Authorized next step?** | **C. Authorize Design Exploration** | Discovery has reached saturation. Next learning increment comes from modeling, not from additional code inspection. |
+| Question | Decision | Confidence | Evidence Strength | Rationale |
+|----------|----------|------------|-------------------|-----------|
+| **Q0: Has Phase 1 produced evidence relevant to H1?** | **YES** | **HIGH** | **Strong** | SecurityEventRecorder behavior confirmed across multiple independent sources (docstrings, implementation, tests, Round 4 analysis). |
+| **Q1: Is D2 uncertainty acceptable?** | **CONDITIONAL** | **MEDIUM** | **Moderate** | D2 (domain events status) is observable; D.0.3c definition is missing — interpretive gap remains. |
+| **Q2: Is D3 uncertainty acceptable?** | **CONDITIONAL** | **MEDIUM** | **Moderate** | D3 observations are clear; relationship model is inferred, not confirmed by explicit architectural decision. |
+| **Q3: Is author clarification required?** | **CONDITIONAL** | **MEDIUM** | **Weak** | Author clarification would resolve uncertainties; evidence points toward saturation. Further repository investigation unlikely to yield new evidence. |
+| **Q4: Authorized next step?** | **C. Authorize Design Exploration** | **HIGH** | **Strong** | Discovery saturation reached. Next learning increment comes from modeling, not from additional code inspection. |
+| **Q5: Phase 2 materially expanded scope?** | **YES** | **HIGH** | **Strong** | Five distinct rounds of stress testing revealed new conceptual layers (Verification, Legitimacy, Authority, Recognition) not present in original H1. |
 
 ---
 
@@ -237,67 +283,20 @@ The goal is to discover whether a coherent model exists.
 
 ---
 
-## Round 6 Structure: Design Exploration
+## Phase 2 Governance Gate
 
-**Critical Gate: Round 6.0 Must Complete Before 6A Proceeds**
+After Round 6F.2 (Authority Stress Test) completes, a second governance gate is required.
 
-### Round 6.0 — Evidence Context Candidate Existence Test
+**Document:** ARB_Decision_Record_Phase2.md (template exists; answers deferred to Phase 2 review)
 
-**Objective:** Determine whether current evidence justifies treating Evidence as a bounded context candidate.
+**Phase 2 Gate Questions (preview):**
+- Has Authority investigation materially changed the architecture?
+- Has Legitimacy investigation materially changed the architecture?
+- Is Round 7 Context Mapping authorized?
+- Is domain ontology sufficiently understood for context boundaries?
 
-**Do NOT assume Evidence Context exists.**
+**HOLD:** Round 7 Context Mapping is NOT authorized until Phase 2 Gate is complete.
 
-**Evaluate Five Alternatives:**
-
-1. **Independent Bounded Context** — evidence suggests separate domain
-2. **Supporting Subdomain of Election** — evidence suggests part of election domain
-3. **Supporting Subdomain of Evaluation** — evidence suggests part of evaluation domain
-4. **Infrastructure Capability** — evidence suggests operational mechanism only
-5. **Cross-Cutting Concern** — evidence suggests system-wide pattern
-
-For each alternative:
-- Supporting evidence from Rounds 1-5
-- Contradicting evidence
-- Confidence level
-- Open questions
-
-**Output:** EvidenceContextCandidateAssessment.md
-
-**Constraints:**
-- No aggregate design
-- No repository design
-- No implementation discussion
-- No technology decisions
-- No cryptography discussion
-
-**Gate Decision:**
-
-```
-IF Evidence remains a plausible BC candidate:
-    PROCEED to 6A Candidate Responsibilities
-
-IF Evidence is probably infrastructure/supporting subdomain:
-    END Design Exploration; defer to future phase
-```
-
----
-
-### Subsequent Rounds (Only if 6.0 affirms BC candidate)
-
-```
-6A Candidate Responsibilities
-6B Candidate Invariants
-6C Candidate Boundaries
-6D Stress Test Against Evidence
-6E Decision Delta
-```
-
----
-
-**This gate prevents the trap:**
-```
-Hypothesis → Model → Implementation
-(without re-asking: Should this thing exist?)
-```
-
-**Round 6.0 is mandatory before any modeling proceeds.**
+Phase 2 produced discovery-driven scope expansion (a normal pattern in strategic DDD).
+The second governance gate evaluates whether these discoveries are sufficient to authorize
+boundary decisions, or whether further discovery is required.

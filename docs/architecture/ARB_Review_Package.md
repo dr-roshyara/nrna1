@@ -77,9 +77,9 @@ Phase 1 discovery (Rounds 1-5) has completed evidence collection on three core a
 
 **Does D1 sufficiently characterize SecurityEventRecorder's architectural role?**
 
-*Recommend voting: YES*
+*The ARB must decide based on evidence presented above.*
 
-Evidence is sufficient for governance purposes. SecurityEventRecorder is operational infrastructure. Design decisions based on this classification should be sound.
+Evidence shows SecurityEventRecorder exhibits operational infrastructure characteristics across multiple independent sources. The ARB determines whether this evidence is sufficient for governance purposes.
 
 ---
 
@@ -253,7 +253,7 @@ Evidence is sufficient for governance purposes. SecurityEventRecorder is operati
 
 **Assumptions Required:** None (pure discovery)
 
-**Recommendation:** Low priority unless new discovery methods are identified
+**Considerations:** This option maintains pure discovery discipline but faces evidence exhaustion. New methods would be required to resolve D2/D3 without external input.
 
 ---
 
@@ -277,7 +277,7 @@ Evidence is sufficient for governance purposes. SecurityEventRecorder is operati
 
 **Assumptions Required:** Author is available and willing to clarify
 
-**Recommendation:** High priority if author is available within reasonable timeframe
+**Considerations:** This option directly resolves D2/D3 uncertainties if author availability permits. Author input moves from evidence interpretation to authoritative knowledge.
 
 ---
 
@@ -305,7 +305,7 @@ Evidence is sufficient for governance purposes. SecurityEventRecorder is operati
 - D3: SecurityEventRecorder remains primary (unconfirmed)
 - **Revision triggers defined:** Author clarification or explicit domain event activation/recorder deprecation
 
-**Recommendation:** Medium priority; acceptable only if author clarification is unlikely within design timeline
+**Considerations:** This option proceeds with provisional assumptions while maintaining explicit revision triggers. Design rework is possible if assumptions are contradicted by future information.
 
 ---
 
@@ -329,7 +329,7 @@ Evidence is sufficient for governance purposes. SecurityEventRecorder is operati
 
 **Assumptions Required:** None
 
-**Recommendation:** Valid only if alternative architecture provides better path forward
+**Considerations:** This option concludes that Evidence Context investigation has reached its natural boundary. It is valid if the board determines that alternative architectural approaches would be more productive.
 
 ---
 
@@ -341,8 +341,7 @@ The ARB must explicitly vote on four governance questions:
 
 **Question:** Does SecurityEventRecorder's HIGH confidence classification provide sufficient foundation for design work?
 
-**Recommendation:** YES  
-**Rationale:** D1 evidence is robust across multiple sources
+*The ARB must decide based on evidence presented above.*
 
 **Possible votes:**
 - Approve (D1 is sufficient)
@@ -355,9 +354,7 @@ The ARB must explicitly vote on four governance questions:
 
 **Question:** Can design proceed with provisional assumption that domain events are migration-only, or must author clarification precede design?
 
-**Recommendation:** Conditional on author availability  
-- If author available within 2 weeks: seek clarification
-- If author unavailable: proceed with assumption and revision trigger
+*The ARB must decide based on evidence presented above.*
 
 **Possible votes:**
 - Require author clarification before design
@@ -371,9 +368,7 @@ The ARB must explicitly vote on four governance questions:
 
 **Question:** Can design assume SecurityEventRecorder is primary and permanent, or must author clarification resolve the relationship?
 
-**Recommendation:** Conditional on author availability  
-- If author available within 2 weeks: seek clarification  
-- If author unavailable: proceed with assumption and revision trigger
+*The ARB must decide based on evidence presented above.*
 
 **Possible votes:**
 - Require author clarification before design
