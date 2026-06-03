@@ -8,6 +8,19 @@
 
 ---
 
+## Governance Principle
+
+**The purpose of this gate is NOT to determine whether the domain model is correct.**
+
+**The purpose of this gate is to determine whether uncertainty has been reduced 
+sufficiently to begin strategic context mapping.**
+
+This is a critical distinction. The board is not being asked: "Do we know the truth?"
+
+The board is being asked: "Have we learned enough to safely explore boundaries?"
+
+---
+
 ## Context
 
 Phase 2 (Rounds 6A–6F) materially expanded the investigation beyond the original H1.
@@ -21,8 +34,8 @@ Observed during Phase 2:
 Note: None of these are final architectural conclusions. Their status is subject to
 Phase 2 governance review after Round 6F.2 completes.
 
-Phase 2 Governance Gate determines whether these discoveries are sufficient
-to authorize Round 7 (Context Mapping) or whether further discovery is required.
+Phase 2 Governance Gate determines whether uncertainty has been sufficiently reduced
+to authorize Round 7 (exploratory Context Mapping) or whether further discovery is required.
 
 ---
 
@@ -55,63 +68,72 @@ Before this document can be completed:
 
 ---
 
-### Q1: Has Legitimacy's status been sufficiently determined?
+### Q1: Current assessment of Legitimacy's architectural nature?
 
-**Context:** Round 6E concluded Legitimacy is an emergent property, not a bounded context.
-Authority investigation may revise this conclusion.
+**Context:** Round 6E investigated Legitimacy as temporal and potentially emergent.
+Authority investigation (6F) revealed Legitimacy ≠ Authority.
 
-**Decision:**
-- [ ] YES — Legitimacy status is clear enough for context mapping
-- [ ] NO — Legitimacy requires further investigation before context mapping
-- [ ] REVISED — Legitimacy status changed from Round 6E conclusion
+**Current Assessment (not final determination):**
+- [ ] CLEAR — Sufficient evidence to proceed with context mapping
+- [ ] PARTIAL — Some clarity; significant uncertainties remain
+- [ ] UNRESOLVED — Insufficient evidence; further discovery recommended
 
 **Confidence:** [To be filled]  
 **Evidence Strength:** [To be filled]  
-**Rationale:** [Reviewer fills after 6F.2]
+**Remaining Unknowns:** [Reviewer lists unresolved questions]
 
 ---
 
-### Q2: Has Authority's architectural nature been determined?
+### Q2: Current assessment of Authority's architectural nature?
 
-**Context:** Authority emerged as a candidate. Its nature (bounded context, primitive,
-cross-cutting concern, constitutional concept) is not yet proven.
+**Context:** Authority emerged as major discovery target. Stress testing (6F.2)
+weakened single-concept hypothesis but did not prove alternative hypotheses.
 
-**Decision:**
-- [ ] YES — Authority's nature is sufficiently understood for context mapping
-- [ ] NO — Authority requires further investigation
-- [ ] PARTIALLY — Some aspects clear; others require further discovery
+**Current Assessment (not final determination):**
+- [ ] CLEAR — Authority's role sufficiently understood for context mapping
+- [ ] PARTIAL — Multiple viable hypotheses; boundaries remain exploratory
+- [ ] UNRESOLVED — Insufficient clarity; further investigation recommended
 
 **Confidence:** [To be filled]  
 **Evidence Strength:** [To be filled]  
-**Rationale:** [Reviewer fills after 6F.2]
+**Remaining Unknowns:** [Reviewer lists unresolved questions]
 
 ---
 
-### Q3: Is domain ontology sufficiently understood for context boundaries?
+### Q3: Has uncertainty been sufficiently reduced for context mapping?
 
-**Context:** Strategic DDD context mapping requires understanding of core concepts
-and their relationships before boundary decisions can be made.
+**Context:** Strategic DDD context mapping requires reduced uncertainty about
+core concepts and their relationships.
 
-**Decision:**
-- [ ] YES — The constitutional ontology is sufficiently understood
-- [ ] NO — Further discovery is required before context mapping
+**Assessment (Can we safely begin exploratory mapping?):**
+- [ ] YES (with reservations) — Reduced enough to explore boundaries
+- [ ] PARTIAL — Some areas clear; others remain highly uncertain
+- [ ] NO — Uncertainty remains too high; more discovery needed
 
 **Confidence:** [To be filled]  
 **Evidence Strength:** [To be filled]  
-**Rationale:** [Reviewer fills after 6F.2]
+**Reservations:** [Reviewer notes conditions and assumptions]
 
 ---
 
-### Q4: Is Round 7 (Context Mapping) authorized?
+### Q4: Should Round 7 (exploratory Context Mapping) proceed?
 
 **Decision:**
-- [ ] YES — Proceed to Round 7 Context Mapping
-- [ ] NO — Further discovery required (specify round)
-- [ ] CONDITIONAL — Proceed with explicitly documented assumptions
+- [ ] YES (CONDITIONAL) — Proceed under specified conditions
+- [ ] NO — Further discovery required before context mapping (specify round)
+- [ ] HOLD — Reassess prerequisites before deciding
+
+**If YES (CONDITIONAL), context mapping must:**
+- [ ] Remain exploratory (not final architecture)
+- [ ] Record all assumptions explicitly
+- [ ] Keep boundaries revisable
+- [ ] Avoid tactical design decisions
+- [ ] Avoid aggregate design
+- [ ] Avoid implementation decisions
 
 **Confidence:** [To be filled]  
 **Evidence Strength:** [To be filled]  
-**Rationale:** [Reviewer fills after 6F.2]
+**Conditions:** [Reviewer specifies required conditions]
 
 ---
 
@@ -133,18 +155,48 @@ and their relationships before boundary decisions can be made.
 
 ---
 
+## Remaining Uncertainty
+
+The following remain unresolved and must be documented for Phase 2 review:
+
+**Unresolved Questions:**
+- [ ] Relationship between Authority and Legitimacy (are they correlated? causal? independent?)
+- [ ] Relationship between Authority and Recognition (does recognition create authority, or authority require recognition?)
+- [ ] Whether Authority is cross-cutting, primitive, bounded, or family-based
+- [ ] Whether Legitimacy is emergent, foundational, or derived
+- [ ] Whether Recognition is domain-level concept or system-wide property
+
+**These uncertainties do NOT prevent Round 7, but must be explicitly documented.**
+
+---
+
+## Discovery vs Fact
+
+The following remain **discoveries, observations, or hypotheses — NOT architectural facts:**
+
+- Authority Family (multiple behavioral types)
+- Authority Is Cross-Cutting (orthogonal to domains)
+- Recognition significance (appears repeatedly but not investigated directly)
+- Emergent Legitimacy (observation, not proven)
+- Authority ≠ Legitimacy distinction (strong observation, requires deeper investigation)
+
+Round 7 context mapping will treat these as candidates, not conclusions.
+
+---
+
 ## Not Yet Proven
 
-The following remain hypotheses and observations — they are NOT conclusions:
+In addition to Remaining Uncertainties above, the following are explicitly NOT proven:
 
 - Authority is foundational.
 - Legitimacy is emergent.
 - Recognition is architecturally significant.
-- Round 7 (Context Mapping) is the correct next step.
-- Evidence Context is (or is not) a bounded context.
+- Authority Layer diagram causality.
+- H-A disproven (only significantly weakened).
+- H-C dominant (only survived tested scenarios).
 
-The purpose of this gate is to evaluate the evidence supporting or refuting these
-hypotheses before any context boundary decisions are made.
+The purpose of this gate is to evaluate whether uncertainty has been sufficiently reduced
+to begin exploratory context mapping — not to declare the domain model correct.
 
 ---
 
@@ -161,19 +213,32 @@ hypotheses before any context boundary decisions are made.
 
 ---
 
-## HOLD
+## CONDITIONAL AUTHORIZATION
 
-**No Context Mapping, Boundary Decisions, or Tactical Design activities may begin
-until this gate is completed and Q4 = YES.**
+**If Q4 = YES (CONDITIONAL):**
 
-This gate exists because:
-- Context mapping before ontological understanding produces premature boundary decisions
-- Premature boundary decisions are expensive to revise
-- Teams often begin mapping informally before governance approval; this gate prevents that
+Round 7 (exploratory context mapping) is authorized ONLY under these conditions:
 
-The discovery sequence (Evidence → Verification → Legitimacy → Authority → Recognition)
-demonstrates repeated emergence of new conceptual layers.
-Patience at the discovery phase prevents boundary mistakes at the design phase.
+1. **Exploratory, Not Final** — Context Map v1 remains candidate; boundaries are revisable
+2. **Assumptions Recorded** — All provisional decisions must be documented as assumptions
+3. **No Tactical Design** — No aggregate design, no repository patterns, no implementation
+4. **Uncertainty Acknowledged** — The map must explicitly note unresolved questions
+5. **Review Before Tactics** — Before proceeding to tactical DDD, architecture must be reviewed again
+
+**If Q4 = NO or HOLD:**
+
+No context mapping, boundary decisions, or tactical design may proceed.
+Further discovery is required. Specify which round(s).
+
+---
+
+## Governance Review Criteria
+
+This gate asks: **"Has uncertainty been reduced enough to safely explore boundaries?"**
+
+NOT: **"Have we discovered the domain model?"**
+
+The board is authorizing exploratory context mapping, not final architecture.
 
 ---
 
