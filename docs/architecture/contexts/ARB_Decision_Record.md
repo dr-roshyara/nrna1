@@ -234,3 +234,70 @@ The goal is to discover whether a coherent model exists.
 ---
 
 **Status: Phase 1 discovery is complete. Design Exploration is authorized under uncertainty.**
+
+---
+
+## Round 6 Structure: Design Exploration
+
+**Critical Gate: Round 6.0 Must Complete Before 6A Proceeds**
+
+### Round 6.0 — Evidence Context Candidate Existence Test
+
+**Objective:** Determine whether current evidence justifies treating Evidence as a bounded context candidate.
+
+**Do NOT assume Evidence Context exists.**
+
+**Evaluate Five Alternatives:**
+
+1. **Independent Bounded Context** — evidence suggests separate domain
+2. **Supporting Subdomain of Election** — evidence suggests part of election domain
+3. **Supporting Subdomain of Evaluation** — evidence suggests part of evaluation domain
+4. **Infrastructure Capability** — evidence suggests operational mechanism only
+5. **Cross-Cutting Concern** — evidence suggests system-wide pattern
+
+For each alternative:
+- Supporting evidence from Rounds 1-5
+- Contradicting evidence
+- Confidence level
+- Open questions
+
+**Output:** EvidenceContextCandidateAssessment.md
+
+**Constraints:**
+- No aggregate design
+- No repository design
+- No implementation discussion
+- No technology decisions
+- No cryptography discussion
+
+**Gate Decision:**
+
+```
+IF Evidence remains a plausible BC candidate:
+    PROCEED to 6A Candidate Responsibilities
+
+IF Evidence is probably infrastructure/supporting subdomain:
+    END Design Exploration; defer to future phase
+```
+
+---
+
+### Subsequent Rounds (Only if 6.0 affirms BC candidate)
+
+```
+6A Candidate Responsibilities
+6B Candidate Invariants
+6C Candidate Boundaries
+6D Stress Test Against Evidence
+6E Decision Delta
+```
+
+---
+
+**This gate prevents the trap:**
+```
+Hypothesis → Model → Implementation
+(without re-asking: Should this thing exist?)
+```
+
+**Round 6.0 is mandatory before any modeling proceeds.**
