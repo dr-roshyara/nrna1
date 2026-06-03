@@ -34,6 +34,12 @@ Phase 1 does **not** exist to:
 | **H7** | Evaluation is a clean, separate bounded context | Can evaluation be decoupled entirely from evidence preservation? |
 | **H8** | Verification exhibits characteristics of an independent bounded context | Does verification deserve its own lifecycle, language, and invariants? |
 
+### Emergent Questions (Not Yet Formal Hypotheses)
+
+| Question | Relevance | Promote to Hypothesis If |
+|:---|:---|:---|
+| **EQ-1** | Can audit evidence and operational telemetry be separated without reducing dispute resolution quality? | This question appears consistently across multiple scenarios and constraints |
+
 ---
 
 ## Section 3: Work Classification Gate (STEP 0)
@@ -74,7 +80,9 @@ Before any activity, classify the work:
 
 ---
 
-## Section 5: Observation Metrics
+## Section 5: Observation Metrics (A-H)
+
+### Technical & Architectural Metrics (A-E)
 
 | Metric | What Changes If This Triggers? | Observation Method |
 |:-------|:------|:---|
@@ -84,7 +92,17 @@ Before any activity, classify the work:
 | **D: Architectural Surprises** | All hypotheses (scope discovery) | Log unmapped exceptions, transactional states, or event sequences not captured in Phase 0A |
 | **E: Decision Sensitivity** | Hypothesis H4, H6 (boundary definition) | Identify if payload field changes threaten aggregate boundaries |
 
+### DDD & Constitutional Metrics (F-H)
+
+| Metric | What Changes If This Triggers? | Observation Method |
+|:-------|:------|:---|
+| **F: Privacy Risk Observation** | Hypothesis H1, H3 (Evidence ownership) | Does observation itself create re-identification risk? Can voter identity be reconstructed from captured data? |
+| **G: Semantic Observation** | Hypothesis H1, H7, H8 (context boundaries) | Do stakeholders naturally use separate language for Evidence, Evaluation, Verification? Or are concepts constantly mixed? |
+| **H: Responsibility Observation** | Hypothesis H1, H3, H7 (ownership/authority) | Who owns each decision? Does ownership align with proposed context boundaries? |
+
 **Key Question for Each Metric:** What architectural decision could materially change if this metric triggers?
+
+**Important Distinction:** Metrics A-E measure event traffic and architectural coupling. Metrics F-H measure DDD concepts (language, ownership, responsibility) that actually define bounded contexts.
 
 ---
 

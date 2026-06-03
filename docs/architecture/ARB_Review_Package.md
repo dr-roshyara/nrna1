@@ -232,6 +232,23 @@ Evidence shows SecurityEventRecorder exhibits operational infrastructure charact
 
 ---
 
+---
+
+## ARB Q0: Primary Hypothesis Question
+
+**Has the discovery effort materially strengthened H1 (Evidence Context is a valid bounded context)?**
+
+**Possible votes:**
+- YES — Discovery has strengthened H1 sufficiently to justify continued investment
+- NO — Discovery has not strengthened H1; hypothesis appears invalid
+- INCONCLUSIVE — Evidence does not support strong conclusion either way
+
+**Context:** D1-D3 are supporting evidence. H1 is the hypothesis being tested. Q0 is the fundamental architectural question; Q1-Q4 are its inputs.
+
+*The ARB answers this question first. All subsequent design decisions depend on H1 validity.*
+
+---
+
 ## Architectural Options
 
 ### Option A: Continue Discovery
@@ -335,7 +352,7 @@ Evidence shows SecurityEventRecorder exhibits operational infrastructure charact
 
 ## ARB Decision Questions
 
-The ARB must explicitly vote on four governance questions:
+The ARB must explicitly vote on five governance questions:
 
 ### ARB Q1: Is D1 Sufficiently Resolved?
 
