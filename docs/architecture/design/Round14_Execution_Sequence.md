@@ -249,8 +249,8 @@ Integrate all prior findings into a complete strategic responsibility map.
 - Evidence from Step 1 (Governance ↔ Lineage)
 - Authority Assessment from Step 2
 - Preliminary Matrix from Step 3
-- Verification alternatives from Step 4
-- Appeals alternatives from Step 5
+- Verification current strategic placement assessment from Step 4
+- Appeals current strategic placement assessment from Step 5
 
 ### Deliverable
 
@@ -409,8 +409,8 @@ Present findings to Architecture Review Board for strategic design review.
 2. **Key Findings**
    - Governance ↔ Lineage relationship
    - Authority independence assessment
-   - Verification placement decision
-   - Appeals placement decision
+   - Verification current strategic placement assessment
+   - Appeals current strategic placement assessment
 
 3. **Strategic Artifacts**
    - Responsibility Map (D-14-1)
