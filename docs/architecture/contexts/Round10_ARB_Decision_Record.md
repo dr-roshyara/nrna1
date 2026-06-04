@@ -67,7 +67,7 @@ The ARB acknowledges three major risks with this selection:
 
 **Impact if Realized:** Verification Context may be sufficient to explain observed patterns; Authority Context becomes unnecessary.
 
-**Monitoring:** Round 11 should clarify whether Authority and Verification can remain separate concerns.
+**Monitoring:** Round 11 may provide evidence regarding whether Authority and Verification can remain separate concerns.
 
 ---
 
