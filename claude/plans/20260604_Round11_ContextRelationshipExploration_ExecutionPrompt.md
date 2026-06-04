@@ -215,6 +215,15 @@ Possible outcomes:
 
 ---
 
+**Critical Escalation Rule:**
+
+If Decision Lineage explains all six relationships as well as or better than Authority:
+- Classify Wrong Abstraction Risk as **HIGH**
+- Flag for immediate ARB review
+- Do not proceed to aggregate design with H-C
+
+---
+
 ### Section 7: ARB Inputs
 
 Provide evidence only.
@@ -257,8 +266,8 @@ Provide evidence only.
 
 ## Execution Notes
 
-- This is the second-to-last strategic phase before aggregate design
-- Findings will determine whether Round 12 (Aggregate Exploration) proceeds with H-C, H-B, or requires returning to earlier phases
+- This phase determines whether the current working model remains viable for continued strategic exploration
+- Findings will determine whether subsequent phases proceed with H-C, H-B, or require returning to earlier phases
 - Be honest about what the evidence suggests, not what you hoped it would suggest
 - A conclusion that "Authority may not be the right abstraction" is a valuable outcome, not a failure
 
