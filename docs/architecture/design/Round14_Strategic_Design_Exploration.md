@@ -392,11 +392,11 @@ Can the Layered Model explain the relationships between Governance, Authority, D
 - Strategic questions reveal contradictions, OR
 - Layer separation breaks down during analysis
 
-**If YES:**
-→ Proceed to Round 15 ARB Strategic Design Review
+**Outcomes:**
 
-**If NO:**
-→ Escalate to ARB for governance decision
+If YES → Proceed to Round 15 ARB Strategic Design Review
+
+If NO → Escalate to ARB for governance decision
 
 ---
 
@@ -427,4 +427,4 @@ Success does NOT require certainty; success requires evidence-based understandin
 
 **COMPLETION GATE:** Round 15 ARB Strategic Design Review (after all exploration is complete)
 
-**WORKING HYPOTHESIS:** The Layered Model remains viable. This exploration will test that hypothesis.
+**WORKING HYPOTHESIS:** The Layered Model may provide a coherent strategic explanation of the constitutional governance domain. This exploration will test that hypothesis.
