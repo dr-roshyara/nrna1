@@ -313,7 +313,7 @@ ARB must choose one of three paths:
 2. **H-C path:** More complex; more robust to architectural uncertainty
 3. **Parallel exploration:** Explore both until one proves unworkable
 
-This is a legitimate strategic decision with reasonable evidence for all three options.
+This choice requires balancing technical evidence, architectural preferences, risk tolerance, and implementation constraints. All three options have reasonable technical support.
 
 ---
 
@@ -321,5 +321,5 @@ This is a legitimate strategic decision with reasonable evidence for all three o
 
 **AWAITING: ARB Model Selection Decision**
 
-**NEXT:** Round 10 Boundary Exploration (after ARB vote)
+**NEXT:** Path determined by ARB model-selection vote (H-B, H-C, or parallel exploration)
 
