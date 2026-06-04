@@ -22,15 +22,15 @@ Working hypothesis: Decision Lineage and Authority may operate at different conc
 
 **Evidence Summary:**
 
-1. Layered Model satisfies the Architectural Promotion Rule: explains all evidence explained by H-C AND explains major tensions that H-C cannot resolve
+1. Layered Model appears to satisfy the Architectural Promotion Rule: explains all evidence explained by H-C AND explains major tensions that H-C cannot resolve
 
-2. Addresses Governance Subsumption Risk (MEDIUM-HIGH) by positioning Governance as owner of Decision Lineage rules
+2. Provides plausible explanation for Governance Subsumption Risk (MEDIUM-HIGH) by positioning Governance as owner of Decision Lineage rules
 
-3. Addresses Verification Overlap Risk (MEDIUM) by allowing both concepts to coexist at different layers
+3. Provides plausible explanation for Verification Overlap Risk (MEDIUM) by allowing both concepts to coexist at different layers
 
-4. Addresses Wrong Abstraction Risk (MEDIUM) by treating both Authority and Decision Lineage as necessary concepts
+4. Provides plausible explanation for Wrong Abstraction Risk (MEDIUM) by treating both Authority and Decision Lineage as necessary concepts
 
-5. Remains architecturally plausible while resolving three documented tensions simultaneously
+5. Remains architecturally plausible while providing coherent treatment of three documented tensions simultaneously
 
 ---
 
