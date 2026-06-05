@@ -491,23 +491,61 @@ Lineage may be Temporal Structure, with Asset aspects. Whether the 8-stage patte
 
 ## Observed Patterns
 
-### Pattern 1: Some Concepts Clear, Others Ambiguous
+### Pattern 1: Unequal Classification Confidence
 
-Governance and Evidence show stronger category fit.
+**Observation:**
 
-Authority, Trust, Consensus show multiple possible categories.
+Governance and Evidence show evidence for fewer category options.
 
-Decision Lineage and Verification show lower confidence.
+Authority, Trust, Consensus show evidence for multiple category options.
 
-### Pattern 2: Not All Concepts Are Peers
+Decision Lineage and Verification show medium-level confidence.
 
-Current evidence suggests concepts may belong to different architectural types.
+**Current Interpretation:**
 
-This distinction may matter for how they relate to each other.
+Unequal classification confidence may indicate that some concepts are fundamentally different types than others.
 
-### Pattern 3: Governance Relationship Unclear
+**Alternative Interpretation:**
 
-Multiple concepts reference Governance, but Governance's own category (Strategic vs. Temporal vs. Emergent) remains uncertain.
+Classification framework may be imprecise, causing apparently different concepts to fit multiple categories equally.
+
+---
+
+### Pattern 2: Multiple Categories Per Concept
+
+**Observation:**
+
+Most concepts show plausible evidence for multiple category assignments.
+
+Authority fits Strategic Concept, Capability, Process, and Social Property.
+
+Trust fits Social Property, Emergent, Capability, and Temporal Structure.
+
+**Current Interpretation:**
+
+Multiple categories per concept may indicate concepts are fundamentally ambiguous about their architectural type.
+
+**Alternative Interpretation:**
+
+Concepts may belong to multiple categories simultaneously (e.g., both Capability and Process).
+
+---
+
+### Pattern 3: Governance's Own Category Uncertain
+
+**Observation:**
+
+Multiple concepts reference Governance.
+
+Governance itself shows evidence for Strategic Concept and Temporal Structure.
+
+**Current Interpretation:**
+
+Governance's ambiguous classification is significant because other concepts depend on it.
+
+**Alternative Interpretation:**
+
+Governance classification may clarify once other relationships are understood.
 
 ---
 
@@ -521,10 +559,23 @@ This is appropriate for Step 4 exploratory work.
 
 ---
 
+## Current Interpretation
+
+Evidence across all seven concepts shows multiple plausible category assignments.
+
+No single classification emerged as definitively correct for any concept.
+
+This is consistent with Step 4's exploratory intent.
+
+## What Remains Unknown
+
+All concept classifications remain uncertain.
+
+Continued investigation will either:
+- Clarify which category best fits each concept
+- Reveal that concepts belong to multiple categories simultaneously
+- Suggest new categories not yet considered
+
+---
+
 **STATUS: Step 4 Concept Classification Workbook Complete**
-
-**FINDING: Concepts may belong to different architectural categories. Evidence for multiple categories per concept.**
-
-**IMPLICATION: Category determination deferred. Continued investigation required.**
-
-**NEXT: Steps 5+ will continue exploring which classifications are most robust under stress testing.**
