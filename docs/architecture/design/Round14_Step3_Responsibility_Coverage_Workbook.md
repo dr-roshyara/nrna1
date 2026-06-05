@@ -44,9 +44,35 @@ Just map the territory.
 
 ---
 
+## Candidate Concept Classification
+
+This classification is exploratory.
+
+No final categorization is implied.
+
+| Concept | Candidate Category | Confidence |
+|----------|----------|----------|
+| Governance | Strategic Concept | Medium |
+| Authority | Strategic Concept | Medium |
+| Verification | Unknown (Strategic? Capability? Process?) | Low |
+| Evidence | Unknown (Strategic? Asset? Process?) | Low |
+| Trust | Unknown (Social Property? Relationship? Capability?) | Low |
+| Consensus | Unknown (Process? Outcome? Capability?) | Low |
+| Decision Lineage | Unknown (Strategic? Temporal Structure? Record?) | Low |
+
+**Open Question:**
+
+Are these concepts peers in the same architectural category?
+
+Or do they belong to different modeling categories (some strategic concepts, others capabilities, processes, social properties)?
+
+This distinction remains unresolved and should guide later investigation.
+
+---
+
 ## Concept 1: Governance
 
-**Behaviors Clearly Explained by Governance:**
+**Behaviors Currently Explained by Governance:**
 
 - Rule existence (Governance defines what rules exist)
 - Rule scope (Governance bounds what authorities may do)
@@ -86,7 +112,7 @@ Just map the territory.
 
 ## Concept 2: Authority
 
-**Behaviors Clearly Explained by Authority (if independent):**
+**Behaviors Currently Explained by Authority (if independent):**
 
 - Context-specific authority variation (Authority varies by context in ways Governance rules may not)
 - Delegation chain semantics (Authority flows through chains differently than permission)
@@ -124,7 +150,7 @@ Just map the territory.
 
 ## Concept 3: Verification
 
-**Behaviors Clearly Explained by Verification:**
+**Behaviors Currently Explained by Verification:**
 
 - Legitimacy determination (Verification checks whether something meets legitimacy standards)
 - Acceptance criteria (Verification can explain why some decisions are accepted—they passed verification)
@@ -158,7 +184,7 @@ Just map the territory.
 
 ## Concept 4: Evidence
 
-**Behaviors Clearly Explained by Evidence:**
+**Behaviors Currently Explained by Evidence:**
 
 - Decision justification (Evidence provides the material to justify decisions)
 - Verification basis (Evidence is what Verification checks against)
@@ -193,7 +219,7 @@ Just map the territory.
 
 ## Concept 5: Trust
 
-**Behaviors Clearly Explained by Trust (if independent):**
+**Behaviors Currently Explained by Trust (if independent):**
 
 - Authority acceptance asymmetry (same authority accepted in one context/by one group, rejected in another, based on trust)
 - Consensus formation (actors agree based on mutual trust)
@@ -319,43 +345,84 @@ Just map the territory.
 
 ---
 
-## Key Observations (Not Verdicts)
+## Observed Coverage Patterns
 
-### Observation 1
+### Pattern 1: No Alternative Explanations Yet Identified
 
-Governance explains behaviors (rule existence, scope, standards) for which no alternative explanation has yet emerged.
+The following behaviors are currently explained by Governance only:
 
-This suggests Governance may explain different phenomena than other concepts, not necessarily that Governance is "foundational" (a verdict to be decided later).
+- Rule existence
+- Rule scope boundaries
+- Legitimacy standards definition
+- Permission basis
+- Context boundary definition
+- Delegation permission rules
 
-### Observation 2
+**Current Interpretation:**
 
-Authority's explanatory scope is contested. Some behaviors it could explain are also explainable by alternatives (Verification + Evidence + Trust). Others remain unclear.
+Governance may explain these behaviors because no competing concepts have yet emerged to explain them.
 
-This is precisely where model stress testing should continue—not concluded here.
+**Alternative Possibility:**
 
-### Observation 3
+In later investigation, additional concepts may provide alternative explanations for these behaviors.
 
-Verification, Evidence, Trust, and Consensus have only been explored in this workbook for the first time.
+---
 
-They underwent less scrutiny than Governance (which was analyzed in Rounds 8-11).
+### Pattern 2: Contested Explanatory Coverage
 
-Symmetry suggests continuing exploration of these concepts before reaching conclusions about their strategic role.
+Authority could explain some behaviors (permission-to-power translation, context-specific variation), but these behaviors also have alternative explanations:
 
-### Observation 4
+- Verification + Evidence + Trust could partially explain permission-to-power
+- Context-specific Governance rules could explain authority variation
+- Delegation chains could follow Governance permission flow
 
-Decision Lineage is only now being preliminarily examined.
+**Current Interpretation:**
 
-Insufficient evidence exists yet to assess its explanatory role.
+Authority's explanatory necessity remains contested. Multiple concepts could cover the same behaviors.
 
-### Observation 5
+**Alternative Possibility:**
 
-Some behaviors appear explained by multiple concepts (e.g., "acceptance" explained by Verification, Evidence, and Trust together).
+Authority could be explaining something unique that these alternatives miss. Investigation continuing.
 
-This overlapping explanatory coverage is itself worth exploring—it could mean:
-- Concepts are redundant
-- Concepts are complementary
-- Overlapping coverage indicates insufficient concept precision
-- Something else
+---
+
+### Pattern 3: Concept Investigation Asymmetry
+
+Governance was analyzed in Rounds 8-11.
+
+Verification, Evidence, Trust, and Consensus appear in this workbook for the first time.
+
+Decision Lineage is only preliminary.
+
+**Current Observation:**
+
+Different concepts have undergone different levels of scrutiny.
+
+**Methodological Note:**
+
+Equal confidence in all concepts is not justified until they undergo comparable investigation depth.
+
+---
+
+### Pattern 4: Overlapping Explanatory Coverage
+
+Some behaviors (e.g., "acceptance") could be explained by multiple concepts:
+
+- Verification (legitimacy check)
+- Evidence (material support)
+- Trust (actor relationships)
+
+**Current Interpretation:**
+
+Overlapping coverage could mean:
+- Concepts are complementary (all three explain different aspects)
+- Concepts are redundant (one could replace the others)
+- Coverage mapping is still imprecise
+- Concepts operate together in combination
+
+**Open Question:**
+
+Is overlapping coverage a problem (concepts should be distinct) or expected (complex behaviors require multiple concepts)?
 
 ---
 
