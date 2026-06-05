@@ -320,7 +320,10 @@ Governance rules exist. They are applied in specific contexts. What transforms a
 - How unverified authority operates
 - Why direct Governance-Authority relationship exists if only through Verification
 
-**Status:** Structure B has supporting evidence and identified challenges. Core assumption (Authority emerges from Verification) is contradicted by observed unverified authority operation. Alternative candidates address this contradiction differently.
+**Status:** Structure B has supporting evidence and identified challenges. Observed evidence includes:
+- Some authority is linked to Verification success
+- Some authority operates without prior Verification
+Alternative candidates address these observations differently.
 
 ---
 
@@ -497,46 +500,46 @@ The following questions remain after Round 14 analysis:
 
 ---
 
-## Risks to Future Tactical Design
+## Strategic Uncertainties Relevant to Tactical Design
 
 The following uncertainties are relevant to Tactical DDD decisions:
 
-### Critical Risks
+### Primary Uncertainties
 
-**Risk 1: Authority's Nature Undefined**
+**Uncertainty 1: Authority's Nature Undefined**
 - All candidate architectures assume Authority is particular type
 - Yet Step 4 shows Authority could be Strategic Concept, Capability, Process, or Social Property
 - If classification is wrong: Bounded contexts and aggregate design will be misaligned
 - **Mitigation Visibility:** Authority classification must be resolved before aggregate ownership assignment
 
-**Risk 2: Transition Gaps Unexplained**
+**Uncertainty 2: Transition Gaps Unexplained**
 - Five major domain transitions (Permission→Power, Power→Acceptance, Evidence→Legitimacy, Trust→Consensus, Rules→Implementation) remain partially or weakly explained
 - These transitions may represent missing strategic concepts not yet identified
 - If concepts are missing: Current architecture is incomplete
 - **Mitigation Visibility:** If transition gap analysis reveals new concepts, architecture revision needed before Tactical DDD
 
-**Risk 3: Candidate Structures Have Known Limitations**
+**Uncertainty 3: Candidate Structures Have Known Limitations**
 - All four candidates have supporting evidence and identified challenges
 - No candidate lacks contradictions or has complete explanations
 - Selection among candidates involves judgment under uncertainty
 - **Mitigation Visibility:** Tactical DDD foundation selection requires governance review
 
-### Moderate Risks
+### Secondary Uncertainties
 
-**Risk 4: Weak Relationship Confidence**
+**Uncertainty 4: Weak Relationship Confidence**
 - Governance ↔ Trust (LOW confidence)
 - Verification ↔ Trust (LOW-MEDIUM confidence)
 - Authority ↔ Consensus (LOW confidence)
 - These relationships are foundational to multiple candidates
 - **Visibility:** Trust and Consensus domains are poorly understood; these relationships have low confidence (Step 5)
 
-**Risk 5: Concept Type Incompatibility**
+**Uncertainty 5: Concept Type Incompatibility**
 - Concepts classified as different types (Strategic, Capability, Asset, Social Property)
 - Unclear how incompatible types should be modeled in architecture
 - May result in awkward bounded contexts or aggregate boundaries
 - **Mitigation Visibility:** If Tactical DDD produces awkward boundaries, may indicate type incompatibility issue
 
-**Risk 6: Verification Status Ambiguous**
+**Uncertainty 6: Verification Status Ambiguous**
 - Verification shows Strategic-level explanatory power
 - Yet Step 4 classifies it as Capability
 - If Verification is actually Strategic: Current candidate structures are wrong
@@ -581,16 +584,18 @@ Round 14 provides evidence and findings. The following decisions are ARB respons
 - Conduct additional investigation into specific transition gaps before proceeding
 - Treat gaps as design-time decisions rather than architecture-time decisions
 
-### Decision 4: Candidate Selection Criteria
+### Decision 4: Architectural Commitment Strategy
 
-**Question:** What criteria should guide candidate selection?
+**Question:** How should ARB respond to current evidence?
 
-**Current State:** Candidates A, B, C, D each have supporting evidence and challenges. No objective scoring method exists.
+**Current State:** Four candidate structures identified. All have supporting evidence and identified challenges. No candidate lacks contradictions.
 
-**ARB Options:**
-- Apply organizational principles (simplicity, separation of concerns, extensibility, etc.) to candidate comparison
-- Apply risk tolerance frameworks to candidate decision
-- Consider candidate compatibility with future roadmap requirements
+**Possible Responses:**
+- Select one candidate and proceed to Tactical DDD
+- Request additional strategic exploration before selection
+- Decompose domain differently to find candidates with stronger evidence
+- Refactor candidate set based on new criteria
+- Accept uncertainty and embed discovery into Tactical DDD phase
 
 ### Decision 5: Tactical DDD Authorization
 
