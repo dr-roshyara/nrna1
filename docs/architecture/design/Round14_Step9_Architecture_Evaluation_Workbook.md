@@ -174,8 +174,8 @@ With Evidence, Trust, Consensus, Decision Lineage supporting.
 **Governance-Verification Direct Relationship (Step 7, lines 94–115)**
 - Observation: Governance → Verification is strong relationship (Step 5, confidence Med-High)
 - Structure claim: Path flows through Authority (Governance → Authority → Verification)
-- Challenge: If direct Governance-Verification path exists, does Authority add necessary value?
-- Implication: Hierarchy may place Authority at layer that bypasses reality
+- Challenge: Direct Governance-Verification path observed; unclear whether Authority is necessary intermediary
+- Observation: Observed direct relationship suggests Authority may not mediate all Governance-Verification connections
 - Evidence: Step 5 Relationship 2; Step 7 Contradiction 3
 
 **Moderate Challenges to Structure A:**
@@ -201,7 +201,7 @@ With Evidence, Trust, Consensus, Decision Lineage supporting.
 - **Confidence:** MEDIUM (Step 4 classifies Authority as Unknown, could be Strategic, Capability, Process, or Social Property)
 - **Supporting Evidence:** Authority shows some independence from pure Governance implementation (Step 2A alternative explanations partially explain Authority)
 - **Alternative Interpretation:** Authority could be Capability (enabling mechanism) rather than Strategic layer; could be Process (how Governance is applied); could be Social Property (recognition-dependent)
-- **Risk:** If Authority is Capability or Process, not Strategic, entire hierarchy collapses
+- **Observation:** If Authority classification is not Strategic, the layered structure assumption becomes questionable
 
 **Assumption 2: Linear Progression is Necessary**
 - **Description:** Structure assumes decisions must flow through all three layers sequentially
@@ -362,14 +362,14 @@ Authority emerges from successful verification
 - **Confidence:** LOW (Unverified authority contradicts this directly; Step 7 Tier 1 contradiction)
 - **Supporting Evidence:** Authority acceptance correlates with verification (Step 2, Observation 7); Verification shows high explanatory power (Step 3)
 - **Alternative Interpretation:** Verification validates existing authority rather than creating it; Authority is independent, Verification is confirmation mechanism
-- **Risk:** CRITICAL — If unverified authority operates, core assumption is false
+- **Observation:** Unverified authority operating contradicts the assumption that Authority requires prior Verification success
 
 **Assumption 2: Governance and Verification are Primary**
 - **Description:** Structure assumes Governance and Verification are sufficient to explain domain
 - **Confidence:** MEDIUM (Both show strong explanatory coverage, but gaps remain)
 - **Supporting Evidence:** Strongest relationships are Governance → Verification and Evidence → Verification (Step 5)
 - **Alternative Interpretation:** Authority, Trust, and Consensus are independent strategic concepts with independent roles
-- **Risk:** If these concepts have independent strategic roles, Verification-Centric structure cannot be sufficient
+- **Observation:** Step 7 Transition Gap Register shows five major transitions partially or weakly explained by Governance and Verification alone
 
 **Assumption 3: Evidence Quality Determines Verification Outcome**
 - **Description:** Structure assumes Evidence → Verification → Authority → Acceptance chain
@@ -511,7 +511,7 @@ Governance (Strategic Layer)
 - Observation: Structure doesn't explain why Verification and Evidence appear necessary while Trust appears optional
 - Structure claim: All are supporting Capabilities
 - Challenge: Equal-level components should have similar necessity status
-- Implication: Component-level differences suggest hierarchy exists that structure doesn't acknowledge
+- Observation: Variation in necessity status across components indicates structure does not differentiate component importance
 - Evidence: Step 3 Explanatory Coverage Test; Step 8 Coverage Assessment
 
 ---
@@ -603,22 +603,22 @@ Everything else = supporting mechanisms or operational implementations
 **Independent Explanatory Coverage (Step 8)**
 - Observation: Verification shows independent explanatory coverage (Step 8 lines 78–92)
 - Structure claim: All other concepts are Governance implementations
-- Challenge: If Verification were only implementation, its explanations would derive from Governance
-- Implication: Verification's independent explanatory power suggests it's not purely implementation
+- Challenge: If Verification were implementation only, its explanations should be derivative from Governance
+- Observation: Independent explanatory coverage contradicts implementation-only status
 - Evidence: Step 8 Verification explanatory coverage assessment
 
 **Concept Type Diversity (Step 4)**
 - Observation: Concepts classified as different architectural types (Step 4 Matrix lines 480–488)
 - Structure claim: All are implementations (same conceptual level)
-- Challenge: Why would implementations of one concept belong to different types (Capability, Asset, Social Property)?
-- Implication: Type diversity suggests concepts have independent natures, not derivative roles
+- Challenge: Why would implementations of one concept be classified as different types (Capability, Asset, Social Property)?
+- Observation: Type diversity contradicts the assumption that all concepts are same-level implementations
 - Evidence: Step 4 Concept Classification Matrix
 
 **Necessity vs. Implementation Status (Step 3)**
 - Observation: Multiple concepts appear necessary for domain function (Step 8, Explanatory Coverage Test)
 - Structure claim: All other concepts are optional implementations of Governance
 - Challenge: Why would optional implementations appear necessary across multiple phenomena?
-- Implication: Necessity status suggests strategic role, not implementation status
+- Observation: Observed necessity contradicts the assumption that concepts are optional
 - Evidence: Step 8 Explanatory Coverage assessment
 
 ---
@@ -651,7 +651,7 @@ Evidence: Step 5 Relationship 2, Step 8 Strongest Relationships
 
 **Governance Foundational Role**
 
-All candidates place Governance at foundation (Candidates A, B, C, D all begin with Governance; E acknowledges Governance as consistent role).
+All candidates place Governance at foundation (Candidates A, B, C, D all begin with Governance).
 
 Evidence: Steps 1, 3, 5, 8
 
@@ -742,14 +742,13 @@ This candidate represents an evaluation outcome rather than an architecture cand
 
 Observation: All four architecture candidates (A, B, C, D) leave transition gaps unexplained.
 
-However:
-- Governance shows consistent foundational role (not completely incoherent)
-- Some strong relationships exist (Governance → Verification)
-- Candidates explain some phenomena (rule-definition, decision-sequencing)
+Observation: Governance shows consistent foundational role across all candidates.
 
-Therefore: Structure E ("No Coherent Structure") is not the outcome of evaluation.
+Observation: Strong Governance → Verification relationship is evident in Step 5 evidence.
 
-Instead: All candidates provide partial coherence with known limitations.
+Observation: Candidates explain some domain phenomena (rule-definition, decision-sequencing) but leave other phenomena partially or weakly explained.
+
+Assessment: All candidates provide partial explanatory coherence with identified limitations. Structure E ("No Coherent Structure") does not reflect evaluation outcome.
 
 ---
 
