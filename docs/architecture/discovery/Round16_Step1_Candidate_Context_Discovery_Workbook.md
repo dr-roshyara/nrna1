@@ -41,7 +41,7 @@ Enable voters to participate in elections by casting votes while maintaining com
 
 ### Architectural Analysis for Candidate Boundary
 
-#### Language Evidence — STRONG
+#### Language Evidence — Strong Candidate Signal
 
 **Architectural Analysis:**
 
@@ -59,7 +59,7 @@ Enable voters to participate in elections by casting votes while maintaining com
 
 ---
 
-#### Consistency Evidence — STRONG
+#### Consistency Evidence — Strong Candidate Signal
 
 **Architectural Analysis:**
 
@@ -76,7 +76,7 @@ Enable voters to participate in elections by casting votes while maintaining com
 
 ---
 
-#### Decision Evidence — STRONG
+#### Decision Evidence — Strong Candidate Signal
 
 **Architectural Analysis:**
 
@@ -87,13 +87,13 @@ Enable voters to participate in elections by casting votes while maintaining com
 | Is vote recorded? | Voting context | Atomic confirmation |
 | Who sees the vote? | Voting context | Never voter, only tally |
 
-**Finding:** Voting makes independent decisions about selection validity and vote recording. These decisions are localized to voting process.
+**Finding:** Voting appears to make independent decisions about selection validity and vote recording. These decisions appear localized to voting process.
 
 **Confidence:** Current (based on architectural analysis)
 
 ---
 
-#### Actor Evidence — STRONG
+#### Actor Evidence — Strong Candidate Signal
 
 **Architectural Analysis:**
 
@@ -110,7 +110,7 @@ Enable voters to participate in elections by casting votes while maintaining com
 
 ---
 
-#### Lifecycle Evidence — STRONG
+#### Lifecycle Evidence — Strong Candidate Signal
 
 **Architectural Analysis:**
 
@@ -121,7 +121,7 @@ Enable voters to participate in elections by casting votes while maintaining com
 | Post-voting | Vote sealed | Election completed |
 | Verification | Voter verifies their vote | Officer certifies results |
 
-**Finding:** Voting has distinct lifecycle from election administration. A vote exists independently; election administration is broader.
+**Finding:** Voting appears to have distinct lifecycle from election administration. Votes appear to have independent lifecycle; election administration appears broader.
 
 **Confidence:** Current (based on architectural analysis)
 
@@ -182,7 +182,7 @@ Register eligible voters and verify voter eligibility for specific elections.
 
 ### Architectural Analysis for Candidate Boundary
 
-#### Language Evidence — STRONG
+#### Language Evidence — Strong Candidate Signal
 
 **Architectural Analysis:**
 
@@ -199,7 +199,7 @@ Register eligible voters and verify voter eligibility for specific elections.
 
 ---
 
-#### Consistency Evidence — STRONG
+#### Consistency Evidence — Strong Candidate Signal
 
 **Architectural Analysis:**
 
@@ -216,7 +216,7 @@ Register eligible voters and verify voter eligibility for specific elections.
 
 ---
 
-#### Decision Evidence — STRONG
+#### Decision Evidence — Strong Candidate Signal
 
 **Architectural Analysis:**
 
@@ -226,7 +226,7 @@ Register eligible voters and verify voter eligibility for specific elections.
 | Can voter participate? | Voter Registration context | Pre-voting gate |
 | What is voter's region? | Voter Registration context | Used by Voting for post filtering |
 
-**Finding:** Voter Registration makes the critical eligibility decision. Other contexts accept this decision as input.
+**Finding:** Voter Registration appears to make the critical eligibility decision. Other contexts appear to accept this decision as input.
 
 **Confidence:** Current (based on architectural analysis)
 
@@ -248,7 +248,7 @@ Register eligible voters and verify voter eligibility for specific elections.
 
 ---
 
-#### Lifecycle Evidence — STRONG
+#### Lifecycle Evidence — Strong Candidate Signal
 
 **Architectural Analysis:**
 
@@ -337,7 +337,7 @@ Count submitted votes and produce official election results.
 
 ---
 
-#### Consistency Evidence — STRONG
+#### Consistency Evidence — Strong Candidate Signal
 
 **Architectural Analysis:**
 
@@ -386,7 +386,7 @@ Count submitted votes and produce official election results.
 
 ---
 
-#### Lifecycle Evidence — STRONG
+#### Lifecycle Evidence — Strong Candidate Signal
 
 **Architectural Analysis:**
 
@@ -458,7 +458,7 @@ Create, configure, and govern elections. Define rules and delegate authority.
 
 ### Architectural Analysis for Candidate Boundary
 
-#### Language Evidence — WEAK
+#### Language Evidence — Weak Candidate Signal
 
 **Architectural Analysis:**
 
@@ -475,7 +475,7 @@ Create, configure, and govern elections. Define rules and delegate authority.
 
 ---
 
-#### Consistency Evidence — WEAK-MEDIUM
+#### Consistency Evidence — Weak Candidate Signal-MEDIUM
 
 **Architectural Analysis:**
 
@@ -491,7 +491,7 @@ Create, configure, and govern elections. Define rules and delegate authority.
 
 ---
 
-#### Decision Evidence — WEAK
+#### Decision Evidence — Weak Candidate Signal
 
 **Architectural Analysis:**
 
@@ -606,7 +606,7 @@ This candidate context assumes Authority is a coherent strategic concept.
 
 ### Architectural Analysis for Candidate Boundary
 
-#### Language Evidence — WEAK
+#### Language Evidence — Weak Candidate Signal
 
 **Architectural Analysis:**
 
@@ -711,7 +711,7 @@ Verify election integrity and investigate irregularities.
 
 ### Architectural Analysis for Candidate Boundary
 
-#### Language Evidence — WEAK
+#### Language Evidence — Weak Candidate Signal
 
 **Architectural Analysis:**
 
@@ -728,7 +728,7 @@ Verify election integrity and investigate irregularities.
 
 ---
 
-#### Consistency Evidence — WEAK
+#### Consistency Evidence — Weak Candidate Signal
 
 **Architectural Analysis:**
 
@@ -743,7 +743,7 @@ Verify election integrity and investigate irregularities.
 
 ---
 
-#### Decision Evidence — WEAK
+#### Decision Evidence — Weak Candidate Signal
 
 **Architectural Analysis:**
 
