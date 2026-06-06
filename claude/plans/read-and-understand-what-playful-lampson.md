@@ -1,263 +1,221 @@
-# Round 7 — Candidate Context Mapping (Exploratory)
+# Round 8 Step 4 — Authority & Legitimacy Flow Analysis
 
 ## Context
 
-Phase 2 (Rounds 6A–6F) is complete. The Phase 2 Governance Gate (ARB_Decision_Record_Phase2.md)
-conditionally authorized Round 7 under 7 explicit conditions. All conditions are exploratory:
-no tactical design, no aggregate design, no implementation, boundaries remain revisable.
+Round 8 Steps 1-3 are complete:
+- Step 1: Decision Ownership Matrix (20 constitutional decisions, 4 contexts)
+- Step 2: Context Responsibility Matrix (operational vs legitimacy criticality)
+- Step 3: Relationship Classification Matrix + Context Relationship Map
 
-The discovered concepts are: Evidence, Verification, Authority, Legitimacy, Recognition.
-The established domains are: Membership, Election, Governance, Appeals, Fraud Investigation.
-Two operational modes must be tested: Election-Only and Full Membership.
+Round 8 Step 4 investigates how Authority (Power) and Legitimacy (Justification)
+move through constitutional decisions.
 
-**Goal:** Produce `Round7_CandidateContextMap_v1.md` — a candidate boundary map synthesized
-from all Phase 1 and Phase 2 discoveries, stress-tested for coherence, with all
-assumptions and unknowns explicitly documented.
+**Goal:** Produce 3 lean artifacts that trace authority flows through representative
+decisions, classify authority vs legitimacy, and collect balanced evidence for
+H-B vs H-C — without creating another Evidence Context-scale discovery program.
 
 **No code changes. Documentation only.**
 
 ---
 
-## Input Documents (read before writing)
+## Revised Design Principles
 
-### Primary synthesis inputs
+1. **Authority Explosion Risk First** — Before any analysis, ask whether we are
+   observing real authority behavior or relabeling ordinary decisions as authority.
 
-| Document | Key Content |
-|----------|-------------|
-| `docs/architecture/contexts/VerificationDiscoverySummary.md` | Phase 2 complete findings, open questions, entering assumptions |
-| `docs/architecture/contexts/ARB_Decision_Record_Phase2.md` | Governance gate answers, 7 conditions, what remains unresolved |
-| `docs/architecture/contexts/AuthorityDiscoveryFindings.md` | 5 cross-domain patterns, 4 conflicts, 3 candidate hypotheses (H-A/H-B/H-C) |
-| `docs/architecture/contexts/Round6F2_AuthorityStressTest.md` | 8 stress test results — H-A weakens, H-B/H-C viable |
+2. **Representative Decisions Only** — Use 5 key constitutional decisions, not all 20.
+   Expand only if patterns fail to emerge from the representative set.
 
-### Earlier discovery inputs (context reference)
+3. **Candidate Lifecycle** — The 8-stage lifecycle is a hypothesis, not an established
+   framework. Stages may be absent, merged, or irrelevant for some decisions.
+   Only document stages that actually appear.
 
-| Document | Key Content |
-|----------|-------------|
-| `docs/architecture/contexts/EvidenceContextLegitimacySynthesis.md` | Legitimacy as temporal emergent concept |
-| `docs/architecture/contexts/EvidenceContextVerificationStressTest.md` | Verification stress test results |
-| `docs/architecture/contexts/EvidenceContextCandidateAssessment.md` | Original Evidence Context candidate assessment |
-| `docs/architecture/contexts/Round5_ResearchFindings.md` | Phase 1 research findings |
+4. **Three Documents** — Flow + Lifecycle in one; Evidence in one; Risk in one.
+   No spreadsheet archaeology.
 
 ---
 
-## Governance Constraints (must not be violated)
+## 3 Required Deliverables
 
-1. Context mapping remains exploratory (not final architecture)
-2. Boundaries remain revisable
-3. All assumptions must be documented explicitly
-4. No aggregate design
-5. No tactical design
-6. No implementation decisions
-7. Round 7 findings require governance review before Round 8
+All files go in: `docs/architecture/contexts/`
 
----
+### 1. AuthorityFlowAnalysis.md
 
-## Execution Steps
+**Combines:** Authority Flow Through Decisions + Lifecycle Analysis
 
-### Step 0 — Context Identification Heuristics
+**Structure:**
 
-Before evaluating any element, apply these heuristics. A bounded context candidate should demonstrate at least 3 of 6:
+**Section 1: Authority Explosion Risk Check (first activity)**
+- Are we observing authority? Or relabeling ordinary decision behavior?
+- Evidence of real authority patterns vs relabeling risk
+- This section gates whether full analysis is warranted
 
-1. **Unique language** — terms mean something different here than in other domains
-2. **Unique decisions** — makes business decisions that no other domain makes
-3. **Unique consistency rules** — enforces invariants that belong only to this domain
-4. **Independent evolution** — can change without forcing changes in other domains
-5. **Boundary pressure** — merging it with another context would create ambiguity
-6. **Organizational ownership** — would a real organization assign different people or committees to govern this area?
+**Section 2: Candidate Lifecycle Classification (RQ-0)**
+Classify each of the 8 candidate stages as:
+- Authority (Power operation)
+- Legitimacy (Justification operation)
+- Both / Unknown
+Document which stages appear in which decisions. Allow stages to be absent.
 
-If fewer than 3 are present: context candidacy weakens. Reclassify as capability, supporting domain, or cross-cutting concern.
+**Section 3: Authority Flow Through Representative Decisions**
+Five representative constitutional decisions:
+1. Approve Membership (Membership decision)
+2. Create Election (Election decision)
+3. Certify Results (provisional — Election or independent certifier?)
+4. Reverse Membership Decision (Appeals decision)
+5. Grant Authority (Governance decision)
 
-Document heuristic score for each candidate (all 6 criteria, with rationale for each).
+For each decision, document only stages that actually appear:
+| Stage | Present? | Context | Evidence | Category |
 
----
+**Section 4: Power vs Justification Test**
+- Can authority be exercised before legitimacy exists? (Act First or Verify First?)
+- Do Power and Legitimacy travel the same path?
 
-### Step 1 — Candidate Architectural Element Identification
+**Section 5: Authority Boundary Test**
+For each context: Can it create authority another context must respect?
+Outcomes: Yes / No / Conditional / Unknown
 
-For each discovered element, evaluate and document architectural classification:
-
-**Candidate architectural elements to evaluate:**
-- Membership
-- Election
-- Governance
-- Appeals (Appeal Processing)
-- Fraud Investigation
-- Evidence
-- Verification
-
-**Round 7 must determine whether each is:**
-- A bounded context (owns unique language + decisions + consistency rules)
-- A capability within another context
-- A cross-cutting concern (present everywhere, orthogonal to domains)
-- A supporting domain
-- A shared concept appearing in multiple contexts
-
-Apply the heuristics from Step 0 to each. Document rationale. Do NOT decide finally.
+**Section 6: Authority Conservation Test**
+Can authority appear from nowhere? Trace origin for each observed authority claim.
 
 ---
 
-### Step 2 — Discovered Concept Ownership
+### 2. AuthorityHypothesisEvidence.md
 
-For each discovered concept, document ownership and relationships:
+**Strictly balanced evidence for H-B vs H-C.**
 
-**Concepts to map:**
-- Evidence
-- Verification
-- Authority
-- Legitimacy
-- Recognition
+**H-B (Authority Family):** Authority remains context-local, context-specific rules
+**H-C (Cross-Cutting Authority):** Authority crosses contexts, verified outside origin
 
-**For each, document:**
-- Which context appears to own it?
-- Which contexts consume it?
-- Which contexts influence it?
-- Can multiple contexts interpret it differently (translation)?
-- Does it cross context boundaries?
+**Required structure:**
+- Evidence FOR H-B (min 5 concrete observations)
+- Evidence AGAINST H-B (min 5 concrete observations)
+- Evidence FOR H-C (min 5 concrete observations)
+- Evidence AGAINST H-C (min 5 concrete observations)
 
----
+No winner may be declared. Evidence only.
 
-### Step 3 — Election Mode Analysis
-
-Test every candidate boundary against both operational modes:
-
-**Election-Only Mode:**
-- Does the boundary still make sense?
-- Does ownership remain consistent?
-- Does verification remain coherent without public voter list?
-
-**Full Membership Mode:**
-- Does the boundary still make sense?
-- Does eligibility verification alter ownership?
-- Does distributed authority change context responsibilities?
-
-Record differences. Identify mode-specific boundary requirements.
+**Also include:** Authority Acceptance Test observations
+- What transforms claimed authority into effective authority?
+- Which mechanisms appear: Governance approval, Verification, Multi-party, etc.
 
 ---
 
-### Step 4 — Context Relationship Mapping
+### 3. AuthorityRiskAssessment.md
 
-For every candidate context, identify:
-- Upstream relationships (who supplies information)
-- Downstream relationships (who consumes information)
-- Shared concepts (which appear in multiple contexts)
-- Translation requirements (do terms change meaning across contexts?)
+**Section 1: Authority Explosion Risk**
+- How many distinct authority types were observed?
+- Are these genuine categories or modeling inflation?
+- Recommend: reduce / maintain / investigate further
 
----
+**Section 2: Candidate Lifecycle Assessment**
+- Which stages consistently appeared across decisions?
+- Which stages were absent or irrelevant?
+- Does the 8-stage model survive contact with real decisions?
 
-### Step 5 — Boundary Stress Testing
-
-For every proposed boundary, attempt to break it by asking:
-- Can this context exist independently?
-- Does this context make unique business decisions?
-- Does this context own unique language?
-- Would merging it create ambiguity?
-- Would splitting it create duplication?
-
-Document breaks and why they occur.
+**Section 3: Open Questions for Round 8 Synthesis**
+- Questions that Step 4 cannot resolve
+- Questions that must be deferred to Synthesis or Step 5
 
 ---
 
-### Step 6 — Authority and Legitimacy Assessment
+## Representative Decisions (5)
 
-Because H-B (Authority Family) and H-C (Authority Is Cross-Cutting) both remain viable:
+Selected to cover all four contexts plus the Governance cross-context case:
 
-**For Authority:**
-- Test H-B: does placing Authority in each domain create coherent boundaries?
-- Test H-C: does treating Authority as cross-cutting simplify the map?
-- Record which hypothesis the map favors and why
+| Decision | Primary Context | Why Selected |
+|----------|----------------|--------------|
+| Approve Membership | Membership | Core operational decision |
+| Create Election | Election | Core operational decision |
+| Certify Results | Election (provisional) | Tests independent certifier hypothesis |
+| Reverse Membership Decision | Appeals | Tests corrective authority |
+| Grant Authority | Governance | Tests constitutional authority origin |
 
-**For Legitimacy:**
-- Test whether Legitimacy fits as a bounded context
-- Test whether Legitimacy fits as an emergent property
-- Record what the map suggests
-
-Do NOT conclude. Document observations only.
+Only expand to additional decisions if the 5 fail to reveal patterns.
 
 ---
 
-### Step 7 — Recognition Assessment
+## Candidate Lifecycle Stages (8)
 
-Recognition appeared repeatedly but was never deeply investigated.
+These are hypotheses, not established framework.
+Allow any stage to be absent, merged, or irrelevant.
 
-**Evaluate:**
-- Domain concept (belongs to a specific context)?
-- Cross-cutting concern (present in all contexts)?
-- Emergent property (product of Authority + Verification + Transparency)?
-- Architectural illusion (actually just "trust" by another name)?
+1. **Claim** — Someone declares they have authority
+2. **Origin** — Where did this authority come from?
+3. **Delegation** — Who delegated it?
+4. **Acceptance** — What validates the claim?
+5. **Exercise** — Who performs the decision?
+6. **Verification** — Who verifies legitimacy?
+7. **Challenge** — Who can question it?
+8. **Revocation** — Who can cancel it?
 
-Do not force classification. Document what the map reveals.
-
----
-
-### Step 8 — Alternative Map Challenge
-
-After producing the first candidate boundary arrangement, construct at least two alternative maps and compare them. A single map often looks correct; multiple maps reveal hidden assumptions.
-
-**Map A (Maximum Separation):**
-All 7 elements are separate bounded contexts:
-- Membership | Election | Governance | Appeals | Fraud | Evidence | Verification
-
-**Map B (Evidence + Verification Merged):**
-Evidence and Verification exist as a single capability layer inside another context:
-- Membership | Election | Governance | Appeals | Fraud | Evidence+Verification (capability)
-
-**Map C (Evidence as Infrastructure, Verification as Capability):**
-Evidence is infrastructure (like logging); Verification is a capability within Election or Governance:
-- Membership | Election (owns Verification) | Governance | Appeals | Fraud | Evidence (infrastructure)
-
-**For each map, document:**
-- What does this map make easy?
-- What does this map make hard?
-- What assumptions does this map require?
-- Does this map hold under Election-Only mode?
-- Does this map hold under Full Membership mode?
-
-**Then select** the map that survives the most stress with the fewest assumptions.
-
-The selected map becomes **Candidate Context Map v1**. The alternatives remain documented as rejected candidates with rationale.
+Stage category (RQ-0):
+- Authority (Power): Claim, Origin, Delegation, Exercise, Revocation
+- Legitimacy (Justification): Acceptance, Verification, Challenge
 
 ---
 
-## Output File
+## Execution Order
 
-**Location:** `docs/architecture/contexts/Round7_CandidateContextMap_v1.md`
-
-**Required sections (15):**
-
-1. **Heuristic Scoring** — each element scored against 5 heuristics with rationale
-2. **Candidate Architectural Elements** — list with classification (context/capability/cross-cutting/supporting/shared) and rationale
-3. **Context Responsibilities** — what each candidate context owns
-4. **Context Relationships** — upstream/downstream dependencies mapped
-5. **Ownership Analysis** — which context owns Evidence, Verification, Authority, Legitimacy, Recognition
-6. **Election Mode Analysis** — boundary coherence per mode
-7. **Boundary Stress Test Results** — what held, what broke, and why
-8. **Authority Assessment** — H-B vs H-C findings from the map
-9. **Legitimacy Assessment** — bounded context vs emergent from the map
-10. **Recognition Assessment** — domain/cross-cutting/emergent/illusion from the map
-11. **Alternative Maps** — Map A, B, C with trade-offs and rejection rationale
-12. **Assumptions** — all provisional decisions explicitly listed
-13. **Unknowns** — all unresolved questions explicitly listed
-14. **Risks** — architectural risks if map is wrong
-15. **Candidate Context Map v1** — the selected map with visual ASCII or table representation
+1. Read Round8_DecisionOwnershipMatrix.md (foundation for 5 representative decisions)
+2. Read VerificationDiscoverySummary.md (Authority patterns A1-A5, H-A/H-B/H-C)
+3. **Start with Authority Explosion Risk** — gate the rest of the analysis
+4. Produce AuthorityFlowAnalysis.md (lifecycle + flow)
+5. Produce AuthorityHypothesisEvidence.md (balanced H-B vs H-C)
+6. Produce AuthorityRiskAssessment.md (risk + open questions)
+7. Commit all 3 artifacts together
 
 ---
 
 ## Success Criteria
 
-- Candidate boundaries are visible and documented
-- Ownership conflicts are identified (not resolved)
-- Assumptions are documented explicitly
-- Unknowns are listed explicitly
-- Boundary stress test results documented
-- Authority/Legitimacy/Recognition assessments do NOT conclude — they observe
-- The map makes no tactical design decisions
+✓ Authority Explosion Risk assessed first (not last)
+✓ Candidate lifecycle stages classified as Authority vs Legitimacy
+✓ Representative decisions analyzed (not all 20 unless necessary)
+✓ Stages allowed to be absent/merged/irrelevant
+✓ H-B and H-C evidence balanced (min 5 per side)
+✓ Power vs Justification flows compared
+✓ No architecture selected (evidence only)
+✓ No winner declared for H-B vs H-C
+✓ No Tactical DDD performed
+
+Output must be suitable for Round 8 Step 5 Verification Placement Analysis.
 
 ---
 
-## What This Round Does NOT Produce
+## Governance Constraints
 
-- Final architecture
-- Aggregate design
-- Repository patterns
-- API contracts
-- Implementation plan
-- `VerificationDecisionMatrix.md` (deferred until after Round 7 review)
+1. Authority lifecycle is a candidate model, not an established framework
+2. No new concepts may be introduced beyond what prior rounds discovered
+3. No architecture may be selected (evidence only)
+4. No tactical design (no aggregates, entities, APIs, repositories)
+5. Findings must be marked as "Observed Candidate Pattern" not conclusions
+
+---
+
+## Early Exit Rule
+
+If the Authority Explosion Risk assessment (Section 1 of AuthorityFlowAnalysis.md)
+concludes that **"authority" is primarily a descriptive lens rather than a distinct
+domain concept**, Step 4 may terminate early and record that finding.
+
+The goal is discovery, not completing the lifecycle model.
+
+Evidence is allowed to falsify the premise.
+
+This prevents the trap of:
+
+```text
+We planned Step 4
+    ↓
+Therefore Step 4 must find authority
+```
+
+Instead:
+
+```text
+Observe decisions
+    ↓
+See whether authority concept emerges
+```

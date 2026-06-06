@@ -52,6 +52,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\Import\OrganisationUserImportController;
 use App\Http\Controllers\VoterInvitationController;
 use App\Http\Controllers\Election\VoterImportController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -286,6 +287,9 @@ Route::get('/election-architecture', [App\Http\Controllers\ElectionArchitectureC
 Route::get('/election-security', function () {
     return inertia('Public/ElectionSecurity');
 })->name('public.election-security');
+
+// Articles
+Route::get('/ddd-article-part1', [ArticleController::class, 'showDddArticlePartOne'])->name('articles.ddd-part-one');
 
 // SEO landing pages — keyword-targeted routes
 Route::get('/digitale-online-wahlen-fuer-verein', function () {
