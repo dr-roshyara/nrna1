@@ -50,7 +50,7 @@
 | **Audit** | *(none)* | ElectionAuditLog (entity), SecurityEventRecorder (Domain Service), AuditTrail (Read Model) |
 | **Voting** | Vote | Ballot (VO), Receipt (VO), ParticipationProof (VO), VoteIntegrityChecksum (VO), DeviceFingerprint (VO), ElectionEnrollment (entity) |
 | **Results/Tallying** | *(none)* | Result (derived entity), VoteCount (computation), Counting (Governance Policy), ResultSet (Read Model) |
-| **Governance Evidence Replay** | ReplaySession ⚠️ | EvidenceEnvelope (VO), GovernanceDecisionSnapshot (entity), GovernanceArchaeologyRecord (Read Model), ReplayDivergence (Domain Event) |
+| **Governance Evidence Replay** | ReplaySession ⚠️ | EvidenceEnvelope (VO), GovernanceDecisionSnapshot (entity), GovernanceArchaeologyRecord (Read Model), ReplayDivergence (Observed Concept) |
 | **Arbitration/Legitimacy** | *(none)* | ConstitutionalDecision (Decision Record), GovernanceLegitimacy (VO), ArbitrationTrace (VO collection), LegitimacyEvaluator (Domain Service) |
 
 ---
@@ -148,7 +148,7 @@ Trust Attestation ────► Eligibility ────► Authorization ─�
 | D13 | What determines SUFFICIENT vs INSUFFICIENT evidence? | Trust | HIGH STRATEGIC |
 | D18 | Why is ParticipationEligibilityEvidence frozen, hashed? | Eligibility | HIGH STRATEGIC |
 | D22 | Where do constitutional rules originate? | Governance | HIGH STRATEGIC |
-| D30 | Are rules-in-code intentional or temporary? | Governance | HIGH STRATEGIC |
+| D30 | Are rules-in-code intentional or temporary? | Governance | RESOLVED (Round 18) |
 | D35 | What happens when legitimacy = EXPIRED? | Arbitration | HIGH STRATEGIC |
 | D36 | Who may invoke ConstitutionalArbitrationKernel? | Arbitration | HIGH STRATEGIC |
 | D37 | What enforces legitimacy status? | Arbitration | HIGH STRATEGIC |
@@ -171,11 +171,11 @@ Trust Attestation ────► Eligibility ────► Authorization ─�
 | Aggregate stability | 3 stable, 2 provisional (conditions documented) | MEDIUM |
 | Decision ownership | All business decisions mapped to owners | HIGH |
 | Invariant coverage | All invariants covered by aggregate or legitimate pattern | HIGH |
-| Cross-context coupling | All dependencies read-only or event-driven; no shared aggregate transactions | HIGH |
+| Cross-context coupling | Observed dependencies do not currently require shared aggregate consistency. Communication mechanisms have not yet been investigated. | HIGH |
 | Remaining uncertainty | 8 HIGH STRATEGIC debts all require non-repository evidence | MEDIUM |
 
 ---
 
 **Round 29 Strategic-to-Tactical Synthesis — COMPLETE**
 
-**Official domain model reference produced. 9 bounded contexts, 5 aggregates, 15 business decisions, 15 invariants, 8 architectural patterns documented. 13 remaining uncertainties carried forward. Ready for ARB approval and next governance phase authorization.**
+**Authoritative domain model reference produced, subject to documented provisional boundaries and aggregate classifications. 9 bounded contexts, 5 aggregates, 15 business decisions, 15 invariants, 8 architectural patterns documented. 12 remaining uncertainties carried forward. Ready for ARB approval and next governance phase authorization.**
