@@ -28,6 +28,13 @@ This baseline captures all architectural decisions, context classifications, and
 | ADR-004: Strategic Context Boundaries | ✅ Accepted | Only Election Governance confirmed. Voting/Membership/Organisation candidate. Trustworthiness unresolved. |
 | ADR-005: Language Ownership & Governance | ✅ Accepted | `ElectionConstitution` is language authority. All other representations are derived and must be synchronized. |
 
+## Architecture Review Gates
+
+| Gate | Status | Summary |
+|------|--------|---------|
+| ARG-01: Strategic Context Boundaries | ✅ Approved | Election Governance confirmed. Voting/Membership/Organisation candidate. Trustworthiness unresolved. |
+| **ARG-02: Language Governance** | ✅ Approved | Governance language changes across multiple layers (Constitution → Domain → Application → UX). Frontend language may diverge from backend governance language. Governance explanations are not consistently surfaced. Ownership and translation rules for governance language remain unresolved, deferred to ADR-006. |
+
 ## Architecture Principles
 
 | Principle | Source |
