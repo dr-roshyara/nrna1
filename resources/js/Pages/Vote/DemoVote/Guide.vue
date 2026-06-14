@@ -183,7 +183,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-neutral-200 p-6 hover:shadow-md hover:border-primary-200 transition-all">
                     <div class="flex flex-col sm:flex-row gap-6">
                         <div class="shrink-0">
-                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 text-white flex items-center justify-center text-2xl font-bold shadow-md">1</div>
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 text-white flex items-center justify-center text-2xl font-bold shadow-md">1</div>
                         </div>
                         <div class="flex-1">
                             <h3 class="text-xl font-bold text-neutral-800 mb-2">{{ $t('pages.Vote.DemoVote.Guide.step1.title') }}</h3>
@@ -402,7 +402,7 @@
 
             <!-- Final CTA -->
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-                <div class="bg-gradient-to-r from-primary-600 to-blue-600 rounded-2xl p-8 text-center text-white">
+                <div class="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 text-center text-white">
                     <h2 class="text-2xl font-bold mb-3">{{ $t('pages.Vote.DemoVote.Guide.cta.title') }}</h2>
                     <p class="text-primary-100 mb-6">{{ $t('pages.Vote.DemoVote.Guide.cta.subtitle') }}</p>
                     <div class="flex flex-wrap gap-4 justify-center">
