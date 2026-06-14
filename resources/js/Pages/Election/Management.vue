@@ -92,9 +92,9 @@
               </p>
             </div>
             <button
-              v-if="canResume"
+              v-if="currentState === ElectionLifecycleStates.SUSPENDED"
               @click="handleResume"
-              :disabled="isLoading"
+              :disabled="!canResume || isLoading"
               class="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-sm font-medium rounded-lg transition-all duration-200 shadow-sm hover:shadow disabled:opacity-50"
             >
               <svg v-if="!isLoading" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,6 +102,9 @@
               </svg>
               <span>{{ isLoading ? t.suspension.btn_resuming : t.suspension.btn_resume }}</span>
             </button>
+            <p v-if="!canResume && (denialDetail(ElectionActions.RESUME) ?? denialLabel(ElectionActions.RESUME))" class="mt-2 text-xs text-amber-700 font-medium">
+              {{ denialDetail(ElectionActions.RESUME) ?? denialLabel(ElectionActions.RESUME) }}
+            </p>
           </div>
         </div>
 
@@ -141,17 +144,18 @@
             <!-- ══════════════════════════════════════════════════ -->
             <!-- GOVERNANCE ACTIONS — Primary state transitions   -->
             <!-- ══════════════════════════════════════════════════ -->
-            <div v-if="canSubmitForApproval || canBeginSetup">
+            <div>
               <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">{{ t.governance_actions.title }}</h3>
               <div class="space-y-3">
                 <transition name="fade-scale" mode="out-in">
-                  <div v-if="canSubmitForApproval" key="submit" class="w-full">
+                  <div key="submit" class="w-full">
                     <ActionButton
                       variant="primary"
                       size="lg"
+                      :disabled="!canSubmitForApproval"
                       :loading="isLoading"
                       class="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 shadow-lg hover:shadow-xl transition-all duration-200"
-                      @click="handleSubmitForApproval"
+                      @click="canSubmitForApproval ? handleSubmitForApproval() : undefined"
                     >
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -163,16 +167,20 @@
                         {{ (election.expected_voter_count || 0) > 40 ? t.governance_actions.submit_hint : t.governance_actions.submit_hint_auto }}
                       </span>
                     </ActionButton>
+                    <p v-if="!canSubmitForApproval && (denialDetail(ElectionActions.SUBMIT_FOR_APPROVAL) ?? denialLabel(ElectionActions.SUBMIT_FOR_APPROVAL))" class="mt-2 text-xs text-slate-400 font-medium">
+                      {{ denialDetail(ElectionActions.SUBMIT_FOR_APPROVAL) ?? denialLabel(ElectionActions.SUBMIT_FOR_APPROVAL) }}
+                    </p>
                   </div>
                 </transition>
                 <transition name="fade-scale" mode="out-in">
-                  <div v-if="canBeginSetup" key="begin-setup" class="w-full">
+                  <div key="begin-setup" class="w-full">
                     <ActionButton
                       variant="success"
                       size="lg"
+                      :disabled="!canBeginSetup"
                       :loading="isLoading"
                       class="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 shadow-lg hover:shadow-xl transition-all duration-200"
-                      @click="handleBeginSetup"
+                      @click="canBeginSetup ? handleBeginSetup() : undefined"
                     >
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
@@ -180,6 +188,9 @@
                       <span class="font-bold text-base">{{ t.governance_actions.begin_setup }}</span>
                       <span class="text-xs opacity-90 ml-2 hidden sm:inline">{{ t.governance_actions.begin_setup_hint }}</span>
                     </ActionButton>
+                    <p v-if="!canBeginSetup && (denialDetail(ElectionActions.BEGIN_SETUP) ?? denialLabel(ElectionActions.BEGIN_SETUP))" class="mt-2 text-xs text-slate-400 font-medium">
+                      {{ denialDetail(ElectionActions.BEGIN_SETUP) ?? denialLabel(ElectionActions.BEGIN_SETUP) }}
+                    </p>
                   </div>
                 </transition>
               </div>
@@ -192,18 +203,22 @@
               <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">{{ t.phase_controls.title }}</h3>
               <div class="flex flex-wrap gap-3">
                 <transition name="fade-scale" mode="out-in">
-                  <div v-if="canCompleteAdministration" key="complete-admin">
+                  <div key="complete-admin">
                     <ActionButton
                       variant="outline"
                       size="md"
+                      :disabled="!canCompleteAdministration"
                       :loading="isLoading"
-                      @click="handlePhaseCompleted('setup_administration')"
+                      @click="canCompleteAdministration ? handlePhaseCompleted('setup_administration') : undefined"
                     >
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                       </svg>
                       {{ t.phase_controls.complete_admin }}
                     </ActionButton>
+                    <p v-if="!canCompleteAdministration && (denialDetail(ElectionActions.COMPLETE_ADMINISTRATION) ?? denialLabel(ElectionActions.COMPLETE_ADMINISTRATION))" class="mt-2 text-xs text-slate-400 font-medium">
+                      {{ denialDetail(ElectionActions.COMPLETE_ADMINISTRATION) ?? denialLabel(ElectionActions.COMPLETE_ADMINISTRATION) }}
+                    </p>
                   </div>
                 </transition>
                 <transition name="fade-scale" mode="out-in">
@@ -258,21 +273,25 @@
             <!-- ══════════════════════════════════════════════════ -->
             <!-- GOVERNANCE — Overlay actions (chief only)        -->
             <!-- ══════════════════════════════════════════════════ -->
-            <div v-if="canSuspend" class="pt-4 border-t border-slate-200">
+            <div class="pt-4 border-t border-slate-200">
               <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">{{ t.governance_section.title }}</h3>
               <div class="flex flex-wrap gap-3">
                 <ActionButton
                   variant="danger-outline"
                   size="md"
+                  :disabled="!canSuspend"
                   :loading="isLoading"
                   data-testid="suspend-button"
-                  @click="handleSuspend"
+                  @click="canSuspend ? handleSuspend() : undefined"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
                   </svg>
                   {{ t.governance_section.suspend }}
                 </ActionButton>
+                <p v-if="!canSuspend && (denialDetail(ElectionActions.SUSPEND) ?? denialLabel(ElectionActions.SUSPEND))" class="mt-2 text-xs text-slate-400 font-medium">
+                  {{ denialDetail(ElectionActions.SUSPEND) ?? denialLabel(ElectionActions.SUSPEND) }}
+                </p>
               </div>
             </div>
 
@@ -820,7 +839,7 @@
         </div>
 
         <!-- ── RESULT MANAGEMENT ───────────────────────────────── -->
-        <SectionCard v-if="canPublishResults" padding="lg">
+        <SectionCard padding="lg">
           <div class="flex items-center gap-3 mb-6 min-w-0">
             <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
               <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -835,15 +854,19 @@
               v-if="!election.results_published"
               variant="success"
               size="md"
+              :disabled="!canPublishResults"
               :loading="isLoading"
               class="w-full sm:w-auto"
-              @click="publishResults"
+              @click="canPublishResults ? publishResults() : undefined"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8l-8 8-8-8"/>
               </svg>
               {{ t.sections.results.btn_publish }}
             </ActionButton>
+            <p v-if="!canPublishResults && !election.results_published && (denialDetail(ElectionActions.PUBLISH_RESULTS) ?? denialLabel(ElectionActions.PUBLISH_RESULTS))" class="mt-2 text-xs text-slate-400 font-medium">
+              {{ denialDetail(ElectionActions.PUBLISH_RESULTS) ?? denialLabel(ElectionActions.PUBLISH_RESULTS) }}
+            </p>
 
             <ActionButton
               v-if="election.results_published"
