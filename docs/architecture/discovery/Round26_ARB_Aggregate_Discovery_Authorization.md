@@ -56,7 +56,7 @@ All decisions from Round 25 are authoritative. No boundaries are reinterpreted.
 | Voting | ✅ Authorized | Boundary with Verification remains provisional (D42B) |
 | Results/Tallying | ✅ Authorized | Boundary stability provisional (D39) |
 | Governance Evidence Replay | ✅ Authorized | D36 invocation unresolved |
-| Arbitration/Legitimacy | ✅ Authorized | D35/D36/D37 unresolved; boundary with Governance may be resolved during discovery |
+| Arbitration/Legitimacy | ✅ Authorized | D35/D36/D37 unresolved; proceed under current accepted candidate boundary |
 | Challenge/Dispute | ❌ NOT AUTHORIZED | Reclassified as Distributed Domain Capability |
 
 ---
@@ -79,15 +79,15 @@ Aggregate discovery may NOT identify:
 - Microservices
 - APIs or API contracts
 - Database schemas or table designs
-- Domain events
-- Commands
 - Read models
 - Technical architecture
 - Deployment topology
 - Refactoring plans
 - Implementation recommendations
 
-The purpose is tactical DDD discovery — identifying aggregates and their invariants. Nothing more.
+Commands and domain events may be noted if they emerge naturally during invariant analysis. However, command modeling, event storming, messaging design, and integration design are not authorized.
+
+The purpose is tactical DDD discovery — identifying aggregates and their invariants.
 
 ---
 

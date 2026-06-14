@@ -18,9 +18,9 @@ Record observations about future election variability for later phases. These ar
 
 ## 2. Observations
 
-### Observation 1: Electoral Formula Is a Domain Concept
+### Observation 1: Electoral Formula Is a Potential Source of Domain Variability
 
-The handbook identifies multiple fundamentally different election formulas: FPTP, STV, List PR, MMP, Borda Count, Two-Round. The current system appears designed for a single formula. Future systems may need electoral formula as a configurable domain concept — likely within Results/Tallying or Constitutional Governance.
+The handbook identifies multiple fundamentally different election formulas: FPTP, STV, List PR, MMP, Borda Count, Two-Round. The current system appears designed for a single formula. Electoral Formula appears to be a potential source of domain variability. Whether that variability belongs inside Results/Tallying, Constitutional Governance, or another model remains unresolved until aggregate discovery.
 
 ### Observation 2: Ballot Structure May Vary Independently
 
@@ -33,6 +33,10 @@ Current tallying is simple (COUNT + GROUP BY). The handbook describes STV, MMP, 
 ### Observation 4: Constitutional Governance Is Validated
 
 The handbook treats election rules as constitutional/legal/governance artifacts — not software design choices. This strongly validates the Constitutional Governance candidate as a distinct domain concern.
+
+### Observation 5: Election Rule Volatility
+
+The handbook demonstrates that electoral systems change through legal/governance processes. Formula changes, district changes, seat allocation changes, and representation rules change independently of vote collection mechanics. This strengthens evidence that election rules are a separate governance concern, supporting the Constitutional Governance candidate.
 
 ---
 

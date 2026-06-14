@@ -223,8 +223,8 @@
                         {{ t.sections.election_control.btn_open }}
                         <span v-if="canOpenVoting" class="text-xs opacity-90 ml-2 hidden sm:inline">{{ t.phase_controls.open_voting_hint }}</span>
                       </ActionButton>
-                      <p v-if="!canOpenVoting && denialLabel(ElectionActions.OPEN_VOTING)" class="mt-2 text-xs text-slate-400 font-medium">
-                        {{ denialLabel(ElectionActions.OPEN_VOTING) }}
+                      <p v-if="!canOpenVoting && (denialDetail(ElectionActions.OPEN_VOTING) ?? denialLabel(ElectionActions.OPEN_VOTING))" class="mt-2 text-xs text-slate-400 font-medium">
+                        {{ denialDetail(ElectionActions.OPEN_VOTING) ?? denialLabel(ElectionActions.OPEN_VOTING) }}
                       </p>
                     </div>
                   </div>
@@ -246,8 +246,8 @@
                         {{ t.sections.election_control.btn_close }}
                         <span v-if="canCloseVoting" class="text-xs opacity-90 ml-2 hidden sm:inline">{{ t.phase_controls.close_voting_hint }}</span>
                       </ActionButton>
-                      <p v-if="!canCloseVoting && denialLabel(ElectionActions.CLOSE_VOTING)" class="mt-2 text-xs text-slate-400 font-medium">
-                        {{ denialLabel(ElectionActions.CLOSE_VOTING) }}
+                      <p v-if="!canCloseVoting && (denialDetail(ElectionActions.CLOSE_VOTING) ?? denialLabel(ElectionActions.CLOSE_VOTING))" class="mt-2 text-xs text-slate-400 font-medium">
+                        {{ denialDetail(ElectionActions.CLOSE_VOTING) ?? denialLabel(ElectionActions.CLOSE_VOTING) }}
                       </p>
                     </div>
                   </div>
@@ -1182,6 +1182,7 @@ const {
   canPublishResults,
   canResume,
   canSuspend,
+  denialDetail,
   denialLabel,
 } = capabilities
 

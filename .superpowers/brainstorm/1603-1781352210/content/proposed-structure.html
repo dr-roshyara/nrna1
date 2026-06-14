@@ -1,0 +1,174 @@
+<h2>🏛️ Proposed: Unified Election System Structure</h2>
+<p class="subtitle">One design language across every page — based on what already exists</p>
+
+<div class="section">
+  <h3>Phase 1: Layout Unification (3 layouts max)</h3>
+  <p class="subtitle">Reduce from 6+ layouts to 3 clear types</p>
+
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-top:16px;">
+    <div style="border:2px solid #2563eb; border-radius:12px; overflow:hidden;">
+      <div style="background:#2563eb; color:white; padding:8px 12px; font-size:14px; font-weight:700;">PublicDigitLayout</div>
+      <div style="padding:12px; font-size:13px;">
+        <div class="mock-nav">Header / Logo / Nav</div>
+        <div class="mock-content" style="min-height:80px;">Main Content</div>
+        <div class="mock-nav" style="background:#e2e8f0;">Footer</div>
+        <div style="margin-top:8px; font-size:11px; color:#64748b;">
+          ✅ Existing — Login, Welcome, Marketing
+        </div>
+      </div>
+    </div>
+    <div style="border:2px solid #059669; border-radius:12px; overflow:hidden;">
+      <div style="background:#059669; color:white; padding:8px 12px; font-size:14px; font-weight:700;">ElectionLayout</div>
+      <div style="padding:12px; font-size:13px;">
+        <div class="mock-nav">Header / Logo / Nav</div>
+        <div class="mock-content" style="min-height:80px;">Voting Flow Content</div>
+        <div class="mock-nav" style="background:#e2e8f0;">Footer</div>
+        <div style="margin-top:8px; font-size:11px; color:#64748b;">
+          ✅ Existing — Code, Vote, Verify, Result
+        </div>
+      </div>
+    </div>
+    <div style="border:2px solid #a0742a; border-radius:12px; overflow:hidden;">
+      <div style="background:#1e293b; color:white; padding:8px 12px; font-size:14px; font-weight:700;">AdminLayout</div>
+      <div style="padding:12px; font-size:13px;">
+        <div class="mock-nav" style="background:#1e293b; color:white;">⚙️ Admin / Tabs</div>
+        <div class="mock-content" style="min-height:80px;">Admin Content</div>
+        <div style="margin-top:8px; font-size:11px; color:#64748b;">
+          ✅ Existing — Platform Admin, Pending Approvals
+        </div>
+      </div>
+    </div>
+  </div>
+  <p style="margin-top:12px; padding:10px; background:#f0fdf4; border-radius:8px; font-size:13px;">
+    <strong>Kill:</strong> AppLayout, SocialLayout, LoginLayout, TimelineLayout, ProfileLayout, NrnaLayout<br>
+    <strong>Keep:</strong> PublicDigitLayout, ElectionLayout (extends PublicDigit), AdminLayout<br>
+    <strong>New:</strong> Add <code>ElectionLayout</code> workflow steps (progress bar baked in)
+  </p>
+</div>
+
+<div class="section">
+  <h3>Phase 2: Token Standardization</h3>
+  <p class="subtitle">One color space, one radius system, one shadow scale</p>
+
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-top:12px;">
+    <div style="background:#f8fafc; border-radius:12px; padding:16px;">
+      <h4 style="font-size:14px; margin-bottom:8px;">🎯 Colors (semantic only)</h4>
+      <table style="width:100%; font-size:12px;">
+        <tr><td><strong>primary</strong></td><td>#2563eb</td><td>Actions, links, buttons</td></tr>
+        <tr><td><strong>success</strong></td><td>#059669</td><td>Confirmations, verified</td></tr>
+        <tr><td><strong>warning</strong></td><td>#d97706</td><td>Alerts, pending</td></tr>
+        <tr><td><strong>danger</strong></td><td>#dc2626</td><td>Errors, destructive</td></tr>
+        <tr><td><strong>accent</strong></td><td>#a0742a</td><td>Governance/admin</td></tr>
+        <tr><td><strong>neutral</strong></td><td>slate scale</td><td>Backgrounds, text, borders</td></tr>
+      </table>
+      <p style="margin-top:8px; font-size:11px; color:#64748b;">
+        ❌ BAN: <code>gray-*</code>, <code>slate-*</code>, <code>purple-*</code>, <code>pink-*</code>, <code>indigo-*</code>
+      </p>
+    </div>
+    <div style="background:#f8fafc; border-radius:12px; padding:16px;">
+      <h4 style="font-size:14px; margin-bottom:8px;">📐 Spacing & Corners</h4>
+      <table style="width:100%; font-size:12px;">
+        <tr><td><strong>Cards</strong></td><td><code>rounded-xl</code> (12px)</td></tr>
+        <tr><td><strong>Buttons</strong></td><td><code>rounded-lg</code> (8px)</td></tr>
+        <tr><td><strong>Inputs</strong></td><td><code>rounded-lg</code> (8px)</td></tr>
+        <tr><td><strong>Badges</strong></td><td><code>rounded-full</code></td></tr>
+        <tr><td><strong>Modals</strong></td><td><code>rounded-2xl</code> (16px)</td></tr>
+      </table>
+      <p style="margin-top:8px; font-size:11px; color:#64748b;">
+        ❌ BAN: <code>rounded-sm</code>, <code>rounded</code>, arbitrary CSS radii
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Phase 3: Enforce Component Usage</h3>
+  <p class="subtitle">The existing component library (Button, Card, Input, Modal) becomes mandatory</p>
+
+  <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:12px; margin-top:12px;">
+    <div style="background:#f0fdf4; padding:12px; border-radius:8px;">
+      <div style="font-weight:700; font-size:14px;">✅ Must Use</div>
+      <div style="font-size:12px; margin-top:6px;">
+        &lt;Button variant="primary"&gt;<br>
+        &lt;Card&gt;<br>
+        &lt;Input /&gt;<br>
+        &lt;Modal&gt;<br>
+        &lt;StatusBadge variant="..."&gt;
+      </div>
+    </div>
+    <div style="background:#fef2f2; padding:12px; border-radius:8px;">
+      <div style="font-weight:700; font-size:14px;">❌ Banned in Pages/</div>
+      <div style="font-size:12px; margin-top:6px;">
+        &lt;button&gt;<br>
+        &lt;input&gt;<br>
+        &lt;select&gt;<br>
+        &lt;textarea&gt;<br>
+        <code>class="fixed inset-0"</code>
+      </div>
+    </div>
+    <div style="background:#fffbeb; padding:12px; border-radius:8px;">
+      <div style="font-weight:700; font-size:14px;">⚠️ Migrate from</div>
+      <div style="font-size:12px; margin-top:6px;">
+        Jetstream/Button → Components/Button<br>
+        Jetstream/Input → Components/Input<br>
+        Jetstream/Modal → Components/Modal<br>
+        raw &lt;button&gt; → &lt;Button&gt;
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Phase 4: Page Architecture</h3>
+  <p class="subtitle">Clear folder hierarchy reflecting the election lifecycle</p>
+
+  <div style="background:#1e293b; color:#e2e8f0; border-radius:12px; padding:20px; font-family:monospace; font-size:13px; line-height:1.8;">
+    Pages/<br>
+    ├── <strong>Auth/</strong> &nbsp;← Login, Register, Verify Email, Reset PW<br>
+    ├── <strong>Dashboard/</strong> &nbsp;← Welcome (post-login), MainDashboard<br>
+    ├── <strong>Election/</strong> &nbsp;← Core election lifecycle<br>
+    │&nbsp;&nbsp; ├── Index.vue &nbsp;&nbsp;&nbsp;&nbsp;← Election listing/selector<br>
+    │&nbsp;&nbsp; ├── Create.vue &nbsp;&nbsp;&nbsp;&nbsp;← Setup wizard<br>
+    │&nbsp;&nbsp; ├── Code.vue &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Code entry (step 1)<br>
+    │&nbsp;&nbsp; ├── Agreement.vue &nbsp;← Terms accept (step 2)<br>
+    │&nbsp;&nbsp; ├── Vote.vue &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Voting form (step 3)<br>
+    │&nbsp;&nbsp; ├── Verify.vue &nbsp;&nbsp;&nbsp;&nbsp;← Receipt verify (step 4)<br>
+    │&nbsp;&nbsp; ├── Result.vue &nbsp;&nbsp;&nbsp;&nbsp;← Public results<br>
+    │&nbsp;&nbsp; └── Committee/ &nbsp;&nbsp;← Committee management<br>
+    ├── <strong>Admin/</strong> &nbsp;← Platform admin (pending, all elections)<br>
+    ├── <strong>Organisation/</strong> &nbsp;← Org dashboard, members, settings<br>
+    ├── <strong>Profile/</strong> &nbsp;← User profile, settings<br>
+    └── <strong>Marketing/</strong> &nbsp;← Welcome, about, FAQ, guides
+  </div>
+</div>
+
+<div style="background:#eff6ff; border:2px solid #2563eb; border-radius:12px; padding:16px; margin-top:16px;">
+  <h3 style="margin:0 0 8px 0;">❓ Your Decision Needed</h3>
+  <p style="margin:0; font-size:14px;">
+    <strong>Does this direction feel right?</strong> The proposal reduces 6+ layouts → 3, enforces semantic tokens only, bans raw HTML tags in Pages/, and reorganizes into a clear lifecycle hierarchy. <strong>Click to vote:</strong>
+  </p>
+</div>
+
+<div class="options" style="margin-top:16px;">
+  <div class="option" data-choice="proceed" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Proceed — start with Layout Unification (Phase 1)</h3>
+      <p>Merge all pages into PublicDigitLayout / ElectionLayout / AdminLayout. Quickest visible win.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="refine" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Refine the proposal first</h3>
+      <p>Something needs adjustment — we discuss specific concerns before implementing.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="all" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>All phases at once</h3>
+      <p>Go big: layouts + tokens + component enforcement + page restructuring in a single migration.</p>
+    </div>
+  </div>
+</div>
