@@ -1,9 +1,9 @@
 <template>
     <PublicDigitLayout>
-        <main class="min-h-screen bg-gradient-to-br from-primary-200 via-primary-300 to-primary-100">
+        <main class="min-h-screen bg-white">
 
             <!-- Hero Section -->
-            <div class="relative overflow-hidden">
+            <div class="relative bg-gradient-to-br from-primary-200 via-primary-300 to-primary-100 overflow-hidden">
             <div class="absolute inset-0 opacity-20">
               <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary-500 rounded-full blur-3xl"></div>
               <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
