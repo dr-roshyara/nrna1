@@ -49,3 +49,51 @@ Add the missing preconditions to the Constitution's `open_voting` rule definitio
 - `LifecycleCapabilityBaselinePolicy::evaluate()` — only checks state/role
 - `Election::whyCannotOpenVoting()` — checks nomination completion
 - `Election::validateOpenVoting()` — calls whyCannotOpenVoting
+
+---
+
+## TODO-BE-001: Review Open Voting Capability Consistency
+
+**Priority:** P1  
+**Related ARN:** ARN-001  
+**Status:** Open — requires backend investigation
+
+### Problem
+
+The UI shows `open_voting` as available during `setup_nomination` because the capability snapshot reports it as allowed. However, transition validation enforces additional business rules (nomination completed, approved candidates exist, no pending candidacies). This can result in an enabled button that, when clicked, triggers a backend rejection.
+
+### Architectural Concern
+
+The capability system and transition validation may be expressing different business rules. This violates the desired authority chain:
+
+```
+ElectionConstitution → Capability Resolver → Frontend
+```
+
+because the frontend can display an action as available while the backend later rejects it.
+
+### Investigation Required
+
+Review:
+1. `ElectionConstitution::RULES['open_voting']`
+2. `LifecycleCapabilityBaselinePolicy::evaluate()`
+3. `CapabilityResolver` — how preconditions are evaluated
+4. `Election::whyCannotOpenVoting()`
+5. `Election::validateOpenVoting()`
+
+Determine:
+1. Should `open_voting` be allowed during `setup_nomination`?
+2. Should `open_voting` only become available during `ready_for_voting`?
+3. Which rule is authoritative — the Constitution's state-gate or the transition's precondition check?
+4. Are constitutional preconditions missing from the capability evaluation?
+
+### Expected Outcome
+
+Capability evaluation and transition validation must produce consistent governance decisions. No frontend workaround should be introduced.
+
+### Constraints
+
+- Do not change the Constitution without evidence
+- Do not change CapabilityResolver without evidence
+- Do not add frontend workarounds
+- Only investigate and recommend
