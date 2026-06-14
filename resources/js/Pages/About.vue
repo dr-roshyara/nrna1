@@ -1,7 +1,11 @@
 <template>
   <PublicDigitLayout>
     <!-- Hero Section -->
-    <section class="bg-white border-b border-neutral-200">
+    <section class="relative bg-gradient-to-br from-primary-100 via-primary-200 to-primary-50 text-neutral-900 py-20 px-4 overflow-hidden">
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary-500 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
+      </div>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div class="text-center">
           <h1 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-4">
@@ -80,7 +84,7 @@
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div v-for="(feature, index) in securityFeaturesList" :key="index" class="flex items-start">
-            <svg class="h-6 w-6 text-green-500 mt-1 mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="h-6 w-6 text-success-500 mt-1 mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
             </svg>
             <span class="text-neutral-700">{{ feature }}</span>
@@ -96,7 +100,7 @@
           {{ $t('about.supported_organisations_title') }}
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div v-for="(org, index) in supportedOrgsList" :key="index" class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-primary-200 text-center">
+          <div v-for="(org, index) in supportedOrgsList" :key="index" class="bg-gradient-to-br from-primary-50 to-primary-100 p-6 rounded-lg border border-primary-200 text-center">
             <p class="text-neutral-800 font-medium">{{ org }}</p>
           </div>
         </div>
@@ -123,7 +127,7 @@
         <h2 class="text-3xl font-bold text-neutral-900 mb-8">
           {{ $t('about.team_title') }}
         </h2>
-        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-lg border border-primary-200">
+        <div class="bg-gradient-to-r from-primary-50 to-primary-100 p-8 rounded-lg border border-primary-200">
           <p class="text-neutral-700 leading-relaxed text-lg">
             {{ $t('about.team_text') }}
           </p>
