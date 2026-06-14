@@ -6,9 +6,27 @@
 
 ---
 
-## 1. Background
+## 1. Governance Transparency Definition
+
+**Governance Transparency** means users can determine:
+
+1. What action exists.
+2. Why it is unavailable.
+3. What must happen next.
+4. Who is responsible.
+5. When it may become available.
+
+Hidden governance actions (via `v-if="canX"`) answer none of these questions and constitute **Governance Transparency Debt**.
+
+## 2. Background
 
 Round 7 of the architecture discovery process identified two related debts:
+
+**Governance Transparency Debt:** The backend produces explainable authorization decisions via `CapabilityDecision.detail`, but 93% of those explanations never reached the user. Of 15 constitutional actions, only 2 (`open_voting`, `close_voting`) showed any denial explanation. (See: `architecture/round7/GOVERNANCE_TRANSPARENCY_DEBT_REPORT.md`, `architecture/round7/UX_GOVERNANCE_REPORT.md`)
+
+**Language Governance Debt:** The frontend `DENIAL_LABELS` map replaced backend-specific explanations (e.g., "Ballot code already consumed") with generic labels (e.g., "Unmet Requirements"). This constitutes a competing ubiquitous language — the frontend translated governance language without authorization. (See: `architecture/round7/CONSTITUTIONAL_LANGUAGE_AUDIT.md`, `architecture/ARCHITECTURE_BASELINE_V1.md` — ARG-02)
+
+The fix introduced `denialDetail()` to `useElectionCapabilities` and established a display precedence: `denialDetail() > denialLabel() > denialReason()`. This guide ensures those fixes are maintained.
 
 **Governance Transparency Debt:** The backend produces explainable authorization decisions via `CapabilityDecision.detail`, but 93% of those explanations never reached the user. Of 15 constitutional actions, only 2 (`open_voting`, `close_voting`) showed any denial explanation.
 
@@ -18,13 +36,17 @@ The fix introduced `denialDetail()` to `useElectionCapabilities` and established
 
 ---
 
-## 2. Explanation Sources
+## 3. Explanation Sources
 
 | Source | Method | Example | When to Use |
 |--------|--------|---------|-------------|
 | **Backend policy** | `denialDetail(action)` | "Ballot code already consumed" | **Preferred** — carries the specific policy explanation |
 | **Frontend label map** | `denialLabel(action)` | "Unmet Requirements" | **Fallback** — only when `denialDetail()` is null |
 | **Raw reason enum** | `denialReason(action)` | `unmet_precondition` | **Last resort** — technical enum value, not user-facing |
+
+### Important
+
+`denialReason()` should never be used as the primary user-facing explanation. It exists primarily for diagnostics, telemetry, fallback handling, and developer troubleshooting. Always prefer `denialDetail()` when available.
 
 ### Precedence Rule
 
@@ -45,7 +67,7 @@ denialLabel(ElectionActions.X)
 
 ---
 
-## 3. Governance UX Rules
+## 4. Governance UX Rules
 
 For any governance action button (submit, approve, open voting, publish results, suspend, etc.):
 
@@ -72,7 +94,7 @@ Hidden actions answer none of these. Disabled actions with `denialDetail()` answ
 
 ---
 
-## 4. Action Visibility Decision Matrix
+## 5. Action Visibility Decision Matrix
 
 | Situation | Recommended Pattern | Condition |
 |-----------|-------------------|-----------|
@@ -85,7 +107,7 @@ Hidden actions answer none of these. Disabled actions with `denialDetail()` answ
 
 ---
 
-## 5. Code Examples
+## 6. Code Examples
 
 ### ✅ Good — disabled button with backend detail, fallback to label
 
@@ -130,7 +152,7 @@ const explanation = (action) => denialDetail(action) ?? denialLabel(action) ?? d
 
 ---
 
-## 6. DDD Alignment
+## 7. DDD Alignment
 
 The governance language chain flows through four layers:
 
@@ -153,9 +175,25 @@ useElectionCapabilities / denialDetail() (Frontend — preserves language)
 
 Reference: ARG-02 Language Governance (Architecture Baseline v1.0)
 
+### Do Not Translate Governance Language
+
+Frontend code must not replace a specific backend explanation with a more generic explanation when the backend explanation is available.
+
+```typescript
+// ✅ GOOD: backend detail is preserved
+{{ denialDetail(ElectionActions.OPEN_VOTING) ?? denialLabel(ElectionActions.OPEN_VOTING) }}
+// Renders: "Voting window must be defined before opening voting"
+
+// ❌ BAD: generic label replaces specific backend detail
+{{ denialLabel(ElectionActions.OPEN_VOTING) }}
+// Renders: "Not available in the current election state"
+```
+
+The backend's `denialDetail` is the authoritative governance explanation. The `DENIAL_LABELS` map exists only as a fallback for cases where the backend produces no detail — not as a primary explanation source.
+
 ---
 
-## 7. Review Checklist
+## 8. Review Checklist
 
 Before merging any governance-related UI change, verify:
 
@@ -179,7 +217,19 @@ grep -rn "v-if=\"can" resources/js/Pages/Election/Management.vue | grep -v "deni
 
 ---
 
-## 8. Future Work
+## 9. Implementation History
+
+| Story | Description | Status |
+|-------|-------------|--------|
+| **A1** | Expose `denialDetail()` from `useElectionCapabilities` composable | ✅ Complete |
+| **A2.1** | Render `denialDetail()` for `open_voting` and `close_voting` | ✅ Complete |
+| **A2.2** | Extend disabled + explained pattern to remaining governance actions | ⏳ Planned |
+| **A3** | Replace `DENIAL_LABELS` where backend detail exists | ⏳ Future |
+| **ADR-006** | Governance Language Ownership & Flow | 🔮 Future ADR |
+
+---
+
+## 10. Future Work
 
 The current implementation improves transparency while preserving architecture stability. Longer-term, ADR-006 (Governance Language Ownership & Flow) may introduce:
 
