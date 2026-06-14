@@ -84,9 +84,30 @@ export function useElectionCapabilities(
   }
 
   /**
+   * Get the backend-provided denial detail for a capability.
+   * This is the most specific explanation available — it originates from
+   * the capability policy that denied the action (e.g., "Ballot code already
+   * consumed", "Voting window must be defined before opening voting").
+   *
+   * Returns null if:
+   * - stateMachine is null/undefined
+   * - capability entry doesn't exist
+   * - the action is allowed (detail is null)
+   * - no detailed explanation was provided by the backend
+   *
+   * Display precedence: denialDetail() > denialLabel() > denialReason()
+   */
+  const denialDetail = (action: ElectionAction): string | null => {
+    return stateMachine.value?.capabilities?.[action]?.denial_detail ?? null
+  }
+
+  /**
    * Get a human-readable label for a capability denial reason.
    * Maps CapabilityDenialReason enum values to UI-safe labels.
    * Returns null if the action is allowed or no reason is available.
+   *
+   * Note: denialDetail() should be preferred when available, as it carries
+   * the policy-specific explanation rather than a generic reason label.
    */
   const denialLabel = (action: ElectionAction): string | null => {
     const reason = denialReason(action)
@@ -116,6 +137,7 @@ export function useElectionCapabilities(
   return {
     canDo,
     denialReason,
+    denialDetail,
     denialLabel,
     isDenied,
     // Named computed refs for convenience during component migration
