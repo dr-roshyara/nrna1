@@ -1,8 +1,5 @@
 <template>
-  <div class="org-page min-h-screen flex flex-col">
-    <PublicDigitHeader />
-    <div class="flex-1">
-
+  <PublicDigitLayout>
     <a href="#main-content"
       class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:shadow-lg"
     >{{ $t('pages.organisation-show.accessibility.skip_to_main') }}</a>
@@ -418,9 +415,7 @@
       </div>
 
     </main>
-    </div>
-    <PublicDigitFooter class="px-4" />
-  </div>
+  </PublicDigitLayout>
 </template>
 
 <script setup>
@@ -430,8 +425,7 @@ import { useI18n } from 'vue-i18n'
 import { useMeta } from '@/composables/useMeta'
 import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import OrganizationHeader from './Partials/OrganizationHeader.vue'
 import StatsGrid from './Partials/StatsGrid.vue'
 import ActionButtons from './Partials/ActionButtons.vue'

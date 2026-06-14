@@ -1,8 +1,5 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 to-slate-100">
-    <!-- Public Header -->
-    <PublicDigitHeader />
-
+  <PublicDigitLayout>
     <!-- Content -->
     <div class="flex-1 py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -81,15 +78,11 @@
         </div>
       </div>
     </div>
-
-    <!-- Public Footer -->
-    <PublicDigitFooter />
-  </div>
+  </PublicDigitLayout>
 </template>
 
 <script setup>
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue';
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 import CommitteeList from '@/Components/Committee/CommitteeList.vue';
 
 const props = defineProps({

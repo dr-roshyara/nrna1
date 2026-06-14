@@ -1036,6 +1036,7 @@ import StateMachinePanel from '@/Pages/Election/Partials/StateMachinePanel.vue'
 import StateBadge from '@/Components/Election/StateBadge.vue'
 import StateProgress from '@/Components/Election/StateProgress.vue'
 import { useElectionCapabilities } from '@/Composables/useElectionCapabilities'
+import { ElectionApprovalPolicy } from '@/Domain/Election/ElectionApprovalPolicy'
 import { ElectionActions } from '@/Constants/ElectionActions'
 import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 
@@ -1325,8 +1326,7 @@ const handleSuspendConfirm = () => {
 const handleSubmitForApproval = () => {
   const voterCount = props.election?.expected_voter_count || 0
 
-  if (voterCount <= 40) {
-    // Free plan (≤40 voters): submit directly, skip the review page
+  if (ElectionApprovalPolicy.shouldAutoSubmit(voterCount)) {
     isLoading.value = true
     router.post(
       route('elections.submit-for-approval', { election: props.election.slug }),

@@ -1,18 +1,14 @@
 <template>
-    <div class="min-h-screen bg-neutral-50 flex flex-col">
+    <PublicDigitLayout>
         <!-- Skip to main content link for keyboard users -->
         <a href="#main-content" class="skip-to-main">
             {{ $t('accessibility.skip_to_main') }}
         </a>
 
-        <!-- Header -->
-        <PublicDigitHeader />
-
         <!-- Main Content -->
-        <main 
-            id="main-content" 
+        <div
+            id="main-content"
             class="flex-1 flex items-center justify-center py-8 sm:py-12 md:py-16 px-4 sm:px-6"
-            role="main"
             aria-labelledby="page-heading"
         >
             <div class="w-full max-w-md mx-auto">
@@ -233,17 +229,13 @@
                     </p>
                 </div>
             </div>
-        </main>
-
-        <!-- Footer -->
-        <PublicDigitFooter role="contentinfo" aria-label="Site footer" />
-    </div>
+        </div>
+    </PublicDigitLayout>
 </template>
 
 <script>
 import { Link as InertiaLink } from '@inertiajs/vue3';
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
-import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 import JetButton from "@/Components/Jetstream/Button.vue";
 import JetInput from "@/Components/Jetstream/Input.vue";
 import JetCheckbox from "@/Components/Jetstream/Checkbox.vue";
@@ -253,8 +245,7 @@ import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
 export default {
     components: {
         InertiaLink,
-        PublicDigitHeader,
-        PublicDigitFooter,
+        PublicDigitLayout,
         JetButton,
         JetInput,
         JetCheckbox,

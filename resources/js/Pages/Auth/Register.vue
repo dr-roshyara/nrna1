@@ -1,8 +1,5 @@
 <template>
-    <div class="min-h-screen bg-neutral-50">
-        <!-- Header -->
-        <PublicDigitHeader />
-
+    <PublicDigitLayout>
         <!-- Registration Section -->
         <section class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4 md:px-6 lg:px-8">
@@ -241,19 +238,15 @@
             </div>
         </section>
 
-        <!-- Footer -->
-        <PublicDigitFooter />
-    </div>
+    </PublicDigitLayout>
 </template>
 
 <script>
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
-import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 
 export default {
     components: {
-        PublicDigitHeader,
-        PublicDigitFooter,
+        PublicDigitLayout,
     },
 
     data() {

@@ -1,8 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-    <!-- Header -->
-    <PublicDigitHeader />
-
+  <PublicDigitLayout>
     <!-- Main Content with Skip Link Support -->
     <main id="main-content" class="w-full">
       <!-- Hero Section - Mobile First -->
@@ -718,18 +715,14 @@
         </div>
       </section>
     </main>
-
-    <!-- Footer -->
-    <PublicDigitFooter />
-  </div>
+  </PublicDigitLayout>
 </template>
 
 <script setup>
 import { defineProps } from 'vue';
 import { route } from 'ziggy-js';
 import { useI18n } from 'vue-i18n';
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue';
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 import { useMeta } from '@/composables/useMeta';
 
 const { locale } = useI18n();

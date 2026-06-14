@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# Design System Token Enforcement Script v2
-# Reads threshold from scripts/design-rules.json.
-# Fails if raw Tailwind color violations exceed threshold.
+# Design System Token Enforcement Script v3
+# Reads all token rules from scripts/design-rules.json.
+# Fails if total violations exceed threshold.
+# Quick summary version of design-check.sh — counts across all rule patterns.
 # Components should use <Button variant="..."> or token-based classes instead.
 
 set -euo pipefail
@@ -22,21 +23,48 @@ if [ ! -f "$CONFIG_FILE" ]; then
   exit 1
 fi
 
-# Read dynamic threshold from config
+# Read config
 THRESHOLD=$(jq -r '.enforcement.current_threshold // 150' "$CONFIG_FILE")
 EXIT_ON_FAIL=$(jq -r '.enforcement.exit_on_fail // false' "$CONFIG_FILE")
+BASELINE=$(jq -r '.baseline // 613' "$CONFIG_FILE")
 
-# Count raw color violations (background + text + border)
-violations=$(grep -rn \
-  "bg-blue-[0-9]\{3\}\|bg-indigo-[0-9]\{3\}\|bg-gray-[0-9]\{3\}\|bg-slate-[0-9]\{3\}\|bg-red-[0-9]\{3\}\|bg-green-[0-9]\{3\}" \
-  "$SCAN_DIR" \
-  --include="*.vue" 2>/dev/null | wc -l)
+# Build grep exclusion args from config
+EXCLUDED_DIRS=$(jq -r '.excluded_dirs[] // empty' "$CONFIG_FILE" | tr -d '\r')
+EXCLUDED_FILES=$(jq -r '.excluded_files[] // empty' "$CONFIG_FILE" | tr -d '\r')
+GREP_EXCLUDE=""
+for d in $EXCLUDED_DIRS; do
+  GREP_EXCLUDE="$GREP_EXCLUDE --exclude-dir=$d"
+done
+for f in $EXCLUDED_FILES; do
+  GREP_EXCLUDE="$GREP_EXCLUDE --exclude=$f"
+done
 
-echo "Design token violations: $violations"
-echo "Threshold: $THRESHOLD | Baseline: 613 | Target: 0"
+# Count violations across ALL rule patterns from design-rules.json (skip -1 informational)
+total_violations=0
+RULE_COUNT=$(jq '.rules | length' "$CONFIG_FILE")
 
-if [ "$violations" -gt "$THRESHOLD" ]; then
-  echo "FAIL: Too many raw color violations ($violations > $THRESHOLD)."
+for ((i = 0; i < RULE_COUNT; i++)); do
+  PATTERN=$(jq -r ".rules[$i].pattern // \"\"" "$CONFIG_FILE")
+  TARGET=$(jq -r ".rules[$i].target // 0" "$CONFIG_FILE")
+  LABEL=$(jq -r ".rules[$i].label // \"Rule $i\"" "$CONFIG_FILE")
+
+  [ -z "$PATTERN" ] && continue
+  # Skip informational-only rules (target = -1)
+  [ "$TARGET" -lt 0 ] && continue
+
+  count=$(grep -rn "$PATTERN" "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | grep -v "<!--" | wc -l || true)
+  total_violations=$((total_violations + count))
+done
+
+# Also count raw <button> tags
+RAW_BUTTONS=$(grep -rn '<button[[:space:]>]' "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | grep -v "<!--" | wc -l || true)
+total_violations=$((total_violations + RAW_BUTTONS))
+
+echo "Design token violations: $total_violations"
+echo "Threshold: $THRESHOLD | Baseline: $BASELINE | Target: 0"
+
+if [ "$total_violations" -gt "$THRESHOLD" ]; then
+  echo "FAIL: Too many raw color violations ($total_violations > $THRESHOLD)."
   echo "Use <Button variant=\"primary|danger|...\">, <Card>, or design token classes."
   exit 1
 fi

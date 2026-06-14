@@ -1,8 +1,5 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 to-slate-100">
-    <!-- Public Header -->
-    <PublicDigitHeader />
-
+  <PublicDigitLayout>
     <!-- Content -->
     <div class="flex-1 container mx-auto max-w-2xl py-12 px-4">
       <div class="bg-white rounded-lg shadow-sm p-8">
@@ -80,16 +77,13 @@
       </div>
     </div>
 
-    <!-- Public Footer -->
-    <PublicDigitFooter />
-  </div>
+  </PublicDigitLayout>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue';
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 import GeographyCascader from '@/Components/Geography/GeographyCascader.vue';
 
 const props = defineProps({

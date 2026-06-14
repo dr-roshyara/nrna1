@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "description": "Frontend DDD architecture governance — consumed by structure-check.sh. Separate from design-system governance (ui-components.json).",
+
+  "strategy": {
+    "rewrite_existing_code": false,
+    "apply_to_new_features_only": true,
+    "enforce_on_new_files": true
+  },
+
+  "layers": {
+    "domain": true,
+    "application": true,
+    "presentation": true
+  },
+
+  "contexts": [
+    {
+      "name": "Election",
+      "path": "resources/js/Domain/Election",
+      "pages": "resources/js/Pages/Election",
+      "application": "resources/js/Application/Election"
+    },
+    {
+      "name": "Committee",
+      "path": "resources/js/Domain/Committee",
+      "pages": "resources/js/Pages/Committee",
+      "application": "resources/js/Application/Committee"
+    },
+    {
+      "name": "Membership",
+      "path": "resources/js/Domain/Membership",
+      "pages": "resources/js/Pages/Organisations",
+      "application": "resources/js/Application/Membership"
+    },
+    {
+      "name": "Audit",
+      "path": "resources/js/Domain/Audit",
+      "pages": "resources/js/Pages",
+      "application": "resources/js/Application/Audit"
+    }
+  ],
+
+  "rules": [
+    {
+      "id": "ARCH-001",
+      "severity": "warning",
+      "description": "New business logic should be implemented in a UseCase class under Application/<Context>/",
+      "pattern": null
+    },
+    {
+      "id": "ARCH-002",
+      "severity": "error",
+      "description": "Domain classes may not import axios, vue, pinia, router, inertia",
+      "pattern": "(from ['\"]vue|from ['\"]axios|from ['\"]pinia|from ['\"]@inertiajs)"
+    },
+    {
+      "id": "ARCH-003",
+      "severity": "warning",
+      "description": "New domain concepts belong in Domain/<Context>/ — not in Pages/ or Components/",
+      "pattern": null
+    },
+    {
+      "id": "ARCH-004",
+      "severity": "warning",
+      "description": "New .vue files in Pages/ should prefer design system components (<Button>, <Card>, <Input>, <Modal>) over raw HTML tags",
+      "pattern": null
+    }
+  ]
+}

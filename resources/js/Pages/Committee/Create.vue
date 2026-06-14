@@ -1,8 +1,5 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-gradient-to-br from-neutral-50 via-primary-50/30 to-neutral-50">
-    <!-- Public Header -->
-    <PublicDigitHeader />
-
+  <PublicDigitLayout>
     <!-- Content -->
     <div class="flex-1 container mx-auto max-w-2xl py-12 px-4">
       <!-- Main Form Card -->
@@ -343,16 +340,13 @@
       </div>
     </div>
 
-    <!-- Public Footer -->
-    <PublicDigitFooter />
-  </div>
+  </PublicDigitLayout>
 </template>
 
 <script setup>
 import { ref, computed, watch, onUnmounted } from 'vue';
 import { router } from '@inertiajs/vue3';
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue';
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 
 const props = defineProps({
   organisation: Object,

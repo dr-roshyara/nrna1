@@ -1,8 +1,5 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 to-slate-100">
-    <!-- Public Header -->
-    <PublicDigitHeader :breadcrumbs="breadcrumbs" />
-
+  <PublicDigitLayout>
     <!-- Content -->
     <div class="flex-1 max-w-6xl w-full mx-auto px-6 py-12">
       <!-- Tab Navigation -->
@@ -345,17 +342,14 @@
       </div>
     </div>
 
-    <!-- Public Footer -->
-    <PublicDigitFooter />
-  </div>
+  </PublicDigitLayout>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useMeta } from '@/composables/useMeta'
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 
 // Set SEO meta tags and title
 useMeta({ pageKey: 'committee_tutorial' })

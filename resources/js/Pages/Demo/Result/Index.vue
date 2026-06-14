@@ -1,8 +1,5 @@
 <template>
-  <div class="min-h-screen bg-neutral-50 dark:bg-neutral-900 flex flex-col">
-    <!-- Election Header -->
-    <PublicDigitHeader />
-
+  <PublicDigitLayout>
     <!-- Mode Indicator Banner -->
     <mode-indicator :mode="mode" :organisation-id="organisation_id" />
 
@@ -104,17 +101,13 @@
       </section>
 
     </main>
-
-    <!-- Public Digit Footer -->
-    <public-digit-footer />
-  </div>
+  </PublicDigitLayout>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import { usePage } from '@inertiajs/vue3';
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue';
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 import ModeIndicator from './ModeIndicator.vue';
 import CandidateCard from './Candidate.vue';
 import StatCard from '@/Components/StatCard.vue';

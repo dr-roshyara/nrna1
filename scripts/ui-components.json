@@ -1,13 +1,13 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "description": "Design system component registry — single source of truth for all reusable Vue components",
   "baseline": {
-    "recorded_at": "2026-05-30",
-    "raw_button_tags": 90,
-    "raw_input_tags": 82,
-    "raw_select_tags": 16,
-    "raw_textarea_tags": 23,
-    "total_vue_files": 225
+    "recorded_at": "2026-06-13",
+    "raw_button_tags": 92,
+    "raw_input_tags": 75,
+    "raw_select_tags": 15,
+    "raw_textarea_tags": 22,
+    "total_vue_files": 226
   },
   "enforcement": {
     "adoption_required": true,
@@ -22,22 +22,22 @@
       "aliases": ["ActionButton"],
       "variants": ["primary","secondary","outline","ghost","danger","danger-outline","accent","success","warning"],
       "replaces_tags": ["button"],
-      "usage_in_pages": 33,
+      "usage_in_pages": 26,
       "pages_using_it": 11,
       "target_usage": 120,
       "adoption_priority": "critical",
-      "notes": "Existing — upgrade with trust-seal variant. New .vue files MUST use <Button> not <button>."
+      "notes": "Existing — 92 raw <button> remain. New .vue files MUST use <Button> not <button>."
     },
     {
       "name": "Card",
       "path": "resources/js/Components/Card.vue",
       "variants": ["default","editorial","admin"],
       "replaces_tags": [],
-      "usage_in_pages": 30,
+      "usage_in_pages": 29,
       "pages_using_it": 0,
       "target_usage": 60,
       "adoption_priority": "high",
-      "notes": "Existing — increase adoption. Prefer <Card> over custom div+shadow+rounded combos."
+      "notes": "Existing — 29/60 usages. Prefer <Card> over custom div+shadow+rounded combos."
     },
     {
       "name": "StatusBadge",
@@ -48,7 +48,7 @@
       "pages_using_it": 0,
       "target_usage": 20,
       "adoption_priority": "high",
-      "notes": "Existing — covers 15+ election lifecycle statuses. Must use over manual badge divs."
+      "notes": "Existing — 5/20 usages. Covers 15+ election lifecycle statuses."
     },
     {
       "name": "Modal",
@@ -59,7 +59,7 @@
       "pages_using_it": 0,
       "target_usage": 15,
       "adoption_priority": "critical",
-      "notes": "NEW — mandatory for all dialogs/modals. No new fixed/inset-0 teleport divs."
+      "notes": "NEW — 0/15 usages. Mandatory for all dialogs/modals. No new fixed/inset-0 teleport divs."
     },
     {
       "name": "Input",
@@ -70,7 +70,7 @@
       "pages_using_it": 0,
       "target_usage": 80,
       "adoption_priority": "critical",
-      "notes": "NEW — mandatory for all form inputs. No new raw <input>/<select>/<textarea>."
+      "notes": "NEW — 0/80 usages. Mandatory for all form inputs."
     },
     {
       "name": "Dropdown",
@@ -81,7 +81,7 @@
       "pages_using_it": 0,
       "target_usage": 15,
       "adoption_priority": "high",
-      "notes": "NEW — election selector, role picker, status filter. Prefer over raw <select>."
+      "notes": "NEW — 15 raw <select> remain. Prefer over raw <select>."
     },
     {
       "name": "ProgressBar",
@@ -99,11 +99,11 @@
       "path": "resources/js/Components/VerificationSeal.vue",
       "variants": ["verified","pending","warning","idle"],
       "replaces_tags": [],
-      "usage_in_pages": 0,
+      "usage_in_pages": 1,
       "pages_using_it": 0,
       "target_usage": 5,
       "adoption_priority": "medium",
-      "notes": "NEW — trust mark. Use for all verified/official state displays."
+      "notes": "NEW — 1/5 usages. Trust mark for verified/official state displays."
     },
     {
       "name": "EmptyState",
@@ -114,7 +114,7 @@
       "pages_using_it": 0,
       "target_usage": 8,
       "adoption_priority": "medium",
-      "notes": "Existing — no results, no data, no access states."
+      "notes": "Existing — 4/8 usages. No results, no data, no access states."
     },
     {
       "name": "ToggleSwitch",

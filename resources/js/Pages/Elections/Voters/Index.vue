@@ -1,7 +1,5 @@
 <template>
-  <div class="voters-shell">
-    <PublicDigitHeader />
-
+  <PublicDigitLayout>
     <div class="voters-body">
 
       <!-- ═══════════════════════════════════════════════════════════
@@ -403,8 +401,7 @@
       </main>
     </div>
 
-    <PublicDigitFooter />
-  </div>
+  </PublicDigitLayout>
 
   <!-- Voter Verification Modal -->
   <VoterVerificationModal
@@ -425,8 +422,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { router, usePage } from '@inertiajs/vue3'
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import VoterVerificationModal from '@/Components/Election/VoterVerificationModal.vue'
 import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 

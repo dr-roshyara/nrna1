@@ -1,7 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-neutral-100 to-neutral-50 flex flex-col">
-    <PublicDigitHeader :breadcrumbs="breadcrumbs" :election-mode="true" />
-
+  <PublicDigitLayout>
     <main class="flex-1 relative">
       <!-- Article container with elevated card styling -->
       <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
@@ -99,15 +97,12 @@
         </div>
       </article>
     </main>
-
-    <PublicDigitFooter />
-  </div>
+  </PublicDigitLayout>
 </template>
 
 <script setup>
 import { computed } from 'vue'
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 
 const props = defineProps({
   article: {

@@ -1,10 +1,5 @@
 <template>
-    <div class="min-h-screen bg-neutral-50 flex flex-col">
-        <!-- Header with proper ARIA landmark -->
-        <header role="banner">
-            <PublicDigitHeader />
-        </header>
-
+    <PublicDigitLayout>
         <!-- Main content with landmark -->
         <main class="grow py-12 md:py-20 bg-white" role="main">
             <div class="container mx-auto px-4 md:px-6 lg:px-8">
@@ -222,22 +217,17 @@
                 </div>
             </div>
         </main>
-
-        <!-- Footer -->
-        <PublicDigitFooter />
-    </div>
+    </PublicDigitLayout>
 </template>
 
 <script>
 import { Link as InertiaLink } from '@inertiajs/vue3';
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
-import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 
 export default {
     components: {
         InertiaLink,
-        PublicDigitHeader,
-        PublicDigitFooter,
+        PublicDigitLayout,
     },
 
     props: {

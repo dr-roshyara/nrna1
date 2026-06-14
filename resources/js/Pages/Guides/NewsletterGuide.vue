@@ -2,8 +2,7 @@
 import { useMeta } from '@/composables/useMeta'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import { CheckCircleIcon, HandThumbDownIcon, HandThumbUpIcon, MagnifyingGlassIcon, PrinterIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 defineProps({
@@ -197,13 +196,11 @@ const goBack = () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-slate-50">
+  <PublicDigitLayout>
     <!-- Skip navigation -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-amber-900 focus:text-white focus:rounded">
       {{ t?.skip_nav }}
     </a>
-
-    <PublicDigitHeader />
 
     <!-- Back button -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
@@ -528,8 +525,7 @@ const goBack = () => {
       </main>
     </div>
 
-    <PublicDigitFooter />
-  </div>
+  </PublicDigitLayout>
 </template>
 
 <style scoped>

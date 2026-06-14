@@ -23,6 +23,8 @@ class ElectionArchitectureController extends Controller
             ['key' => 'voting', 'icon' => '🗳️', 'color' => 'purple'],
             ['key' => 'counting', 'icon' => '📊', 'color' => 'orange'],
             ['key' => 'results', 'icon' => '✅', 'color' => 'emerald'],
+            // Colors map to semantic tokens in the Vue template:
+            // blue → primary, green → success, purple → accent, orange → warning, emerald → success
         ];
     }
 

@@ -3,11 +3,12 @@
 # ═══════════════════════════════════════════════════════════════
 #
 # Runs the FULL design governance gate:
-#   - Token compliance (design-check.sh --strict)
-#   - Component audit (component-audit.sh --strict)
-#   - Quick token count (check-design-tokens.sh)
+#   UI Layer:    Token compliance + component audit
+#   Security:    Role & permission governance
+#   Domain:      Purity check + structure visibility (warning only)
 #
 # This is the HARD gate — blocks push if violations exceed threshold.
+# Passes even if domain checks warn (non-zero exit suppressed).
 # To bypass: git push --no-verify
 # ═══════════════════════════════════════════════════════════════
 

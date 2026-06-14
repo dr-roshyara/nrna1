@@ -1,10 +1,5 @@
 <template>
-  <div class="min-h-screen bg-neutral-50">
-    <!-- Breadcrumb Schema for SEO -->
-
-    <!-- Header -->
-    <PublicDigitHeader />
-
+  <PublicDigitLayout>
     <!-- Hero Section -->
     <section class="bg-white border-b border-neutral-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
@@ -153,14 +148,11 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <PublicDigitFooter />
-  </div>
+  </PublicDigitLayout>
 </template>
 
 <script>
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import { useMeta } from '@/composables/useMeta'
 
 // Import locale files for About page
@@ -171,8 +163,7 @@ import aboutNp from '@/locales/pages/about/np.json'
 export default {
   name: 'About',
   components: {
-    PublicDigitHeader,
-    PublicDigitFooter,
+    PublicDigitLayout,
   },
 
   data() {

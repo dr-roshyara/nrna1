@@ -1,8 +1,5 @@
 <template>
-    <div class="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
-        <!-- Header - same as home page -->
-        <PublicDigitHeader />
-
+    <PublicDigitLayout>
         <!-- Main Content Area -->
         <main class="grow flex items-center justify-center py-8 md:py-12 px-4 sm:px-6 lg:px-8">
             <div class="max-w-2xl w-full">
@@ -153,17 +150,13 @@
                 </div>
             </div>
         </main>
-
-        <!-- Footer - same as home page -->
-        <PublicDigitFooter class="px-4" />
-    </div>
+    </PublicDigitLayout>
 </template>
 
 <script setup>
 import { nextTick, onMounted } from 'vue';
 import { useForm } from "@inertiajs/vue3";
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
-import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 
 const props = defineProps({
     status: String

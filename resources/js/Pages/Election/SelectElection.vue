@@ -1,8 +1,5 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-neutral-50">
-    <!-- Header -->
-    <PublicDigitHeader />
-
+  <PublicDigitLayout>
     <!-- Main Content -->
     <main class="flex-1 py-12 px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
@@ -134,17 +131,13 @@
         </div>
       </div>
     </main>
-
-    <!-- Footer -->
-    <PublicDigitFooter />
-  </div>
+  </PublicDigitLayout>
 </template>
 
 <script setup>
 import { computed } from 'vue'
 import { Link as InertiaLink, usePage } from '@inertiajs/vue3'
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 
 const props = defineProps({
   activeElections: {

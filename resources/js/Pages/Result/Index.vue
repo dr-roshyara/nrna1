@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col min-h-screen bg-neutral-50 font-serif">
+  <PublicDigitLayout>
     <!-- Main Content -->
     <main class="flex-1 bg-gray-100">
       <!-- Hero Header -->
@@ -142,15 +142,13 @@
       </footer>
     </main>
 
-    <!-- Public Footer -->
-    <PublicDigitFooter />
-  </div>
+  </PublicDigitLayout>
 </template>
 
 <script>
 import Button from '@/Components/Button.vue'
 import PostResult from '@/Pages/Result/PostResult.vue'
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 
 export default {
   components: { Button, PostResult, PublicDigitFooter },

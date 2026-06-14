@@ -1,8 +1,18 @@
 #!/bin/bash
 
 # ═══════════════════════════════════════════════════════════════
-# verify.sh — Master UI/UX Design Governance Orchestrator
-# Runs all design gates sequentially. Exit code 0 only if ALL pass.
+# verify.sh — Master Design Governance Orchestrator v3
+#
+# Governance Architecture:
+#   UI Layer
+#   ├─ Gate 1: Design Token Compliance (design-check.sh --strict)
+#   ├─ Gate 2: Quick Token Count      (check-design-tokens.sh)
+#   └─ Gate 3: Component Audit        (component-audit.sh --strict)
+#
+#   Security Layer
+#   └─ Gate 4: Role & Permission      (check_roles.php)
+#
+# Runs all gates sequentially. Exit code 0 only if ALL pass.
 # ═══════════════════════════════════════════════════════════════
 
 set -euo pipefail
@@ -22,25 +32,45 @@ run_gate() {
   local name="$1"
   local command="$2"
   local severity="${3:-fail}"  # fail | warn
+  local tmpfile
+  local exit_code
+
+  tmpfile=$(mktemp)
 
   echo "──────────────────────────────────────────────"
   echo "  🔍 Gate: $name"
   echo "──────────────────────────────────────────────"
 
-  if eval "$command"; then
+  # Run the command, capturing both stdout and stderr
+  set +e
+  eval "$command" > "$tmpfile" 2>&1
+  exit_code=$?
+  set -e
+
+  # Show gate output (indented)
+  if [ -s "$tmpfile" ]; then
+    while IFS= read -r line; do
+      echo "    $line"
+    done < "$tmpfile"
+  fi
+
+  if [ "$exit_code" -eq $PASS ]; then
     echo ""
     echo "  ✅ Gate passed: $name"
     echo ""
+    rm -f "$tmpfile"
     return $PASS
   else
     echo ""
     if [ "$severity" = "fail" ]; then
       echo "  ❌ Gate FAILED: $name"
       echo ""
+      rm -f "$tmpfile"
       return $FAIL
     else
       echo "  ⚠️  Gate WARNING (non-blocking): $name"
       echo ""
+      rm -f "$tmpfile"
       return $PASS
     fi
   fi
@@ -69,6 +99,27 @@ if ! run_gate "Component Audit (anti-inline linting)" \
   OVERALL_STATUS=$FAIL
 fi
 
+# ── Gate 4: Role & Permission Governance ────────────────
+if ! run_gate "Role & Permission Governance" \
+  "php \"$SCRIPT_DIR/check_roles.php\" --strict" \
+  "fail"; then
+  OVERALL_STATUS=$FAIL
+fi
+
+# ── Gate 5: Domain Purity (warning only) ────────────────
+if ! run_gate "Domain Purity (warning only)" \
+  "bash \"$SCRIPT_DIR/check-domain-purity.sh\"" \
+  "warn"; then
+  OVERALL_STATUS=$FAIL
+fi
+
+# ── Gate 6: DDD Structure Visibility (warning only) ─────
+if ! run_gate "DDD Structure Visibility (warning only)" \
+  "bash \"$SCRIPT_DIR/structure-check.sh\"" \
+  "warn"; then
+  OVERALL_STATUS=$FAIL
+fi
+
 # ── Future Gates (placeholder) ──────────────────────────
 # Gate 4: Accessibility (Phase 4)
 #   bash "$SCRIPT_DIR/a11y-check.sh"
@@ -82,6 +133,7 @@ ELAPSED_SEC=$(( ELAPSED_MS / 1000 ))
 ELAPSED_REMAINDER=$(( ELAPSED_MS % 1000 ))
 
 # ── Summary ─────────────────────────────────────────────
+echo ""
 echo "╔══════════════════════════════════════════════════╗"
 echo "║  📊 Design Governance Summary                    ║"
 echo "╚══════════════════════════════════════════════════╝"

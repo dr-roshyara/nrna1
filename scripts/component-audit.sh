@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Component Audit Script v1
+# Component Audit Script v2
 # Scans .vue files for raw HTML tags that should use design system components.
 # Reads component definitions from scripts/ui-components.json.
 # Tracks baseline counts — regressions must never increase raw tag counts.
@@ -34,8 +34,8 @@ if [ ! -d "$SCAN_DIR" ]; then
   exit 0
 fi
 
-echo "🔧 Design System Component Audit"
-echo "================================"
+echo "🔧 Design System Component Audit v2"
+echo "===================================="
 echo "  Config:  $CONFIG_FILE"
 echo "  Scan:    $SCAN_DIR"
 echo "  Strict:  $STRICT_MODE"
@@ -49,8 +49,8 @@ BASELINE_INPUTS=$(jq -r '.baseline.raw_input_tags // 0' "$CONFIG_FILE")
 BASELINE_SELECTS=$(jq -r '.baseline.raw_select_tags // 0' "$CONFIG_FILE")
 BASELINE_TEXTAREAS=$(jq -r '.baseline.raw_textarea_tags // 0' "$CONFIG_FILE")
 
-EXCLUDED_DIRS=$(jq -r '.excluded_dirs[] // empty' "$CONFIG_FILE")
-EXCLUDED_FILES=$(jq -r '.excluded_files[] // empty' "$CONFIG_FILE")
+EXCLUDED_DIRS=$(jq -r '.excluded_dirs[] // empty' "$CONFIG_FILE" | tr -d '\r')
+EXCLUDED_FILES=$(jq -r '.excluded_files[] // empty' "$CONFIG_FILE" | tr -d '\r')
 
 # Build grep exclusion args
 GREP_EXCLUDE=""
@@ -65,15 +65,15 @@ done
 # Count raw HTML tags
 # ──────────────────────────────────────────────
 echo "📊 Raw HTML Tag Counts (target: 0, must not exceed baseline):"
-echo "────────────────────────────────────────────────────────────"
+echo "──────────────────────────────────────────────────────────────"
 
-RAW_BUTTONS=$(grep -rn '<button[[:space:]>]' "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | grep -v "<!--" | wc -l)
-RAW_INPUTS=$(grep -rn '<input[[:space:]>]' "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | grep -v "<!--" | wc -l)
-RAW_SELECTS=$(grep -rn '<select[[:space:]>]' "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | grep -v "<!--" | wc -l)
-RAW_TEXTAREAS=$(grep -rn '<textarea' "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | grep -v "<!--" | wc -l)
+RAW_BUTTONS=$(grep -rn '<button[[:space:]>]' "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | grep -v "<!--" | wc -l || true)
+RAW_INPUTS=$(grep -rn '<input[[:space:]>]' "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | grep -v "<!--" | wc -l || true)
+RAW_SELECTS=$(grep -rn '<select[[:space:]>]' "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | grep -v "<!--" | wc -l || true)
+RAW_TEXTAREAS=$(grep -rn '<textarea' "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | grep -v "<!--" | wc -l || true)
 
 # Tag counts without baseline enforcement (informational for <Card>, <Modal> etc pattern matching)
-RAW_FIXED_DIVS=$(grep -rn 'class="[^"]*\(fixed\|inset-0\)' "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | grep -v "<!--" | wc -l)
+RAW_FIXED_DIVS=$(grep -rn 'class="[^"]*\(fixed\|inset-0\)' "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | grep -v "<!--" | wc -l || true)
 
 print_tag_count() {
   local label="$1"
@@ -110,12 +110,10 @@ TOTAL_COMPONENT_USAGE=0
 
 for ((i = 0; i < COMPONENT_COUNT; i++)); do
   NAME=$(jq -r ".components[$i].name // \"Component_$i\"" "$CONFIG_FILE")
-  PATH_REL=$(jq -r ".components[$i].path // \"\"" "$CONFIG_FILE")
   TARGET=$(jq -r ".components[$i].target_usage // 0" "$CONFIG_FILE")
   NOTES=$(jq -r ".components[$i].notes // \"\"" "$CONFIG_FILE")
 
-  # Count <ComponentName> usage across all Pages
-  COUNT=$(grep -rn "<$NAME[[:space:]>]" "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | wc -l)
+  COUNT=$(grep -rn "<$NAME[[:space:]>]" "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | wc -l || true)
   TOTAL_COMPONENT_USAGE=$((TOTAL_COMPONENT_USAGE + COUNT))
 
   printf "  %-20s %4d usages  (target: %4d)  %s\n" "<$NAME>:" "$COUNT" "$TARGET" "$NOTES"
@@ -124,12 +122,21 @@ done
 # ──────────────────────────────────────────────
 # Summary
 # ──────────────────────────────────────────────
+TOTAL_RAW_TAGS=$((RAW_BUTTONS + RAW_INPUTS + RAW_SELECTS + RAW_TEXTAREAS))
+
 echo ""
 echo "📈 Summary:"
 echo "──────────"
-echo "  Total raw tag violations:  $((RAW_BUTTONS + RAW_INPUTS + RAW_SELECTS + RAW_TEXTAREAS))"
+echo "  Total raw tag violations:  $TOTAL_RAW_TAGS"
 echo "  Total component usages:    $TOTAL_COMPONENT_USAGE"
-echo "  Component adoption ratio:  $((RAW_BUTTONS > 0 ? TOTAL_COMPONENT_USAGE * 100 / (TOTAL_COMPONENT_USAGE + RAW_BUTTONS) : 0))%"
+
+# Safe division: avoid divide-by-zero
+if [ "$TOTAL_COMPONENT_USAGE" -gt 0 ] || [ "$TOTAL_RAW_TAGS" -gt 0 ]; then
+  ADOPTION_RATIO=$((TOTAL_COMPONENT_USAGE * 100 / (TOTAL_COMPONENT_USAGE + TOTAL_RAW_TAGS)))
+  echo "  Component adoption ratio:  $ADOPTION_RATIO%"
+else
+  echo "  Component adoption ratio:  N/A (no components or raw tags found)"
+fi
 echo ""
 
 # ──────────────────────────────────────────────
@@ -151,11 +158,15 @@ if [ "$NEW_FILE_AUDIT" = "true" ]; then
   echo "🆕 New File Audit (git-tracked but never-before-scanned .vue files):"
   echo "───────────────────────────────────────────────────────────────"
 
-  # Find new .vue files in this branch (not on main)
-  NEW_VUE_FILES=$(git diff --name-only HEAD --diff-filter=A 2>/dev/null | grep '\.vue$' || true)
+  # Find new .vue files in working tree (safely — works even with no commits)
+  NEW_VUE_FILES=""
+  if git rev-parse --git-dir >/dev/null 2>&1; then
+    # Try HEAD first; fall back to empty if no commits
+    NEW_VUE_FILES=$(git diff --name-only HEAD --diff-filter=A 2>/dev/null | grep '\.vue$' || true)
+  fi
 
   if [ -z "$NEW_VUE_FILES" ]; then
-    echo "  No new .vue files detected."
+    echo "  No new .vue files detected (or no commits yet in repository)."
   else
     NEW_FILE_VIOLATIONS=0
     RULE_COUNT=$(jq '.new_file_audit.rules | length' "$CONFIG_FILE")
@@ -168,21 +179,18 @@ if [ "$NEW_FILE_AUDIT" = "true" ]; then
       [ -z "$PATTERN" ] && continue
 
       for F in $NEW_VUE_FILES; do
-        if grep -qE "$PATTERN" "$PROJECT_DIR/$F" 2>/dev/null; then
+        file_path="$PROJECT_DIR/$F"
+        if [ -f "$file_path" ] && grep -qE "$PATTERN" "$file_path" 2>/dev/null; then
           NEW_FILE_VIOLATIONS=$((NEW_FILE_VIOLATIONS + 1))
           echo "  ❌ [$SEVERITY] $(basename "$F") — $MESSAGE"
         fi
       done
     done
-
-    if [ "$NEW_FILE_VIOLATIONS" -gt 0 ]; then
-      ALLOW_REGRESSION=true
-    fi
   fi
 fi
 
 # ──────────────────────────────────────────────
-# Adoption enforcement — component usage must not regress
+# Adoption enforcement — component usage must not regress (using stored counts)
 # ──────────────────────────────────────────────
 ADOPTION_REQUIRED=$(jq -r '.enforcement.adoption_required // false' "$CONFIG_FILE")
 
@@ -197,8 +205,8 @@ if [ "$ADOPTION_REQUIRED" = "true" ]; then
     PRIORITY=$(jq -r ".components[$i].adoption_priority // \"low\"" "$CONFIG_FILE")
     TARGET=$(jq -r ".components[$i].target_usage // 0" "$CONFIG_FILE")
 
-    # Re-count to get current actual usage
-    CURRENT=$(grep -rn "<$NAME[[:space:]>]" "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | wc -l)
+    # Re-count current usage (not using stored count — always live)
+    CURRENT=$(grep -rn "<$NAME[[:space:]>]" "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | wc -l || true)
 
     if [ "$PRIORITY" = "critical" ] && [ "$CURRENT" -lt "$TARGET" ]; then
       shortfall=$((TARGET - CURRENT))
@@ -230,6 +238,20 @@ if [ "$RAW_INPUTS" -gt "$BASELINE_INPUTS" ]; then
   echo ""
   echo "❌ REGRESSION: Raw <input> count ($RAW_INPUTS) exceeds baseline ($BASELINE_INPUTS)."
   echo "   Use <Input /> component instead."
+  ALLOW_REGRESSION=true
+fi
+
+if [ "$RAW_SELECTS" -gt "$BASELINE_SELECTS" ]; then
+  echo ""
+  echo "❌ REGRESSION: Raw <select> count ($RAW_SELECTS) exceeds baseline ($BASELINE_SELECTS)."
+  echo "   Use <Dropdown> or <Input type=\"select\"> instead."
+  ALLOW_REGRESSION=true
+fi
+
+if [ "$RAW_TEXTAREAS" -gt "$BASELINE_TEXTAREAS" ]; then
+  echo ""
+  echo "❌ REGRESSION: Raw <textarea> count ($RAW_TEXTAREAS) exceeds baseline ($BASELINE_TEXTAREAS)."
+  echo "   Use <Input type=\"textarea\"> instead."
   ALLOW_REGRESSION=true
 fi
 

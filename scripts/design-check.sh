@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Design System Compliance Check v2
+# Design System Compliance Check v3
 # Consumes scripts/design-rules.json for dynamic rule enforcement.
 # Non-blocking during migration phase; becomes hard-blocking when violations drop below threshold.
 #
@@ -38,6 +38,7 @@ fi
 # ──────────────────────────────────────────────
 BASELINE=$(jq -r '.baseline // 613' "$CONFIG_FILE")
 THRESHOLD=$(jq -r '.enforcement.current_threshold // 150' "$CONFIG_FILE")
+SOFT_BOUNDARY=$(jq -r '.enforcement.soft_boundary // 50' "$CONFIG_FILE")
 EXIT_ON_FAIL=$(jq -r '.enforcement.exit_on_fail // false' "$CONFIG_FILE")
 ACTIVE_PHASE=$(jq -r '.active_phase // "unknown"' "$CONFIG_FILE")
 
@@ -45,7 +46,7 @@ if [ "$STRICT_MODE" = "--strict" ]; then
   EXIT_ON_FAIL="true"
 fi
 
-echo "🎨 Design System Compliance Check v2"
+echo "🎨 Design System Compliance Check v3"
 echo "======================================"
 echo "  Config:       $CONFIG_FILE"
 echo "  Baseline:     $BASELINE violations"
@@ -58,10 +59,14 @@ echo ""
 # ──────────────────────────────────────────────
 # Build exclusion arguments for grep
 # ──────────────────────────────────────────────
-EXCLUDED_DIRS=$(jq -r '.excluded_dirs[] // empty' "$CONFIG_FILE")
+EXCLUDED_DIRS=$(jq -r '.excluded_dirs[] // empty' "$CONFIG_FILE" | tr -d '\r')
+EXCLUDED_FILES=$(jq -r '.excluded_files[] // empty' "$CONFIG_FILE" | tr -d '\r')
 GREP_EXCLUDE=""
 for d in $EXCLUDED_DIRS; do
   GREP_EXCLUDE="$GREP_EXCLUDE --exclude-dir=$d"
+done
+for f in $EXCLUDED_FILES; do
+  GREP_EXCLUDE="$GREP_EXCLUDE --exclude=$f"
 done
 
 # ──────────────────────────────────────────────
@@ -87,19 +92,20 @@ for ((i = 0; i < RULE_COUNT; i++)); do
     continue
   fi
 
-  # Count violations
+  # Count violations only when target >= 0
+  # target = -1 means informational only — no counting or enforcement
   COUNT=0
   if [ "$TARGET" -ge 0 ]; then
-    # Target > 0 means we're counting down (phase tracking)
-    # Target = 0 means zero tolerance
-    COUNT=$(grep -rn "$PATTERN" "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | grep -v "<!--" | wc -l)
+    COUNT=$(grep -rn "$PATTERN" "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | grep -v "<!--" | wc -l || true)
   fi
 
   RULE_VIOLATIONS["$ID"]=$COUNT
   TOTAL_VIOLATIONS=$((TOTAL_VIOLATIONS + COUNT))
 
   # Color-code by severity and count
-  if [ "$COUNT" -eq 0 ]; then
+  if [ "$TARGET" -lt 0 ]; then
+    printf "  ℹ️  %-30s      (informational — no target)\n" "$LABEL:"
+  elif [ "$COUNT" -eq 0 ]; then
     printf "  ✅ %-30s %4d violations  (target: %d)\n" "$LABEL:" "$COUNT" "$TARGET"
   elif [ "$SEVERITY" = "error" ]; then
     printf "  ❌ %-30s %4d violations  (target: %d)\n" "$LABEL:" "$COUNT" "$TARGET"
@@ -117,7 +123,7 @@ done
 echo ""
 echo "🔧 Component Violations:"
 echo "───────────────────────"
-RAW_BUTTONS=$(grep -rn '<button[[:space:]>]' "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | grep -v "<!--" | wc -l)
+RAW_BUTTONS=$(grep -rn '<button[[:space:]>]' "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | grep -v "<!--" | wc -l || true)
 echo "  Raw <button>: $RAW_BUTTONS (target: 0)"
 TOTAL_VIOLATIONS=$((TOTAL_VIOLATIONS + RAW_BUTTONS))
 
@@ -144,8 +150,13 @@ fi
 echo ""
 echo "📈 Migration Progress:"
 echo "────────────────────"
-COMPLETED=$((BASELINE - TOTAL_VIOLATIONS))
-[ "$BASELINE" -gt 0 ] && PERCENT=$((COMPLETED * 100 / BASELINE)) || PERCENT=0
+if [ "$BASELINE" -gt 0 ]; then
+  COMPLETED=$((BASELINE - TOTAL_VIOLATIONS))
+  PERCENT=$((COMPLETED * 100 / BASELINE))
+else
+  COMPLETED=0
+  PERCENT=0
+fi
 
 echo "  Baseline:     $BASELINE violations"
 echo "  Current:      $TOTAL_VIOLATIONS violations"
@@ -157,7 +168,7 @@ bar_width=50
 filled=$((PERCENT * bar_width / 100))
 printf "  "
 for ((j = 0; j < bar_width; j++)); do
-  [ "$j" -lt "$filled" ] && printf "█" || printf "░"
+  [ "$j" -lt "$filled" ] && printf "#" || printf "."
 done
 printf " %d%%\n" "$PERCENT"
 
@@ -167,7 +178,7 @@ printf " %d%%\n" "$PERCENT"
 echo ""
 echo "🎯 Phase Targets:"
 echo "───────────────"
-jq -r '.phase_targets | to_entries[] | "\(.key)=\(.value)"' "$CONFIG_FILE" 2>/dev/null | while IFS='=' read -r phase target; do
+jq -r '.phase_targets | to_entries[] | "\(.key)=\(.value)"' "$CONFIG_FILE" 2>/dev/null | tr -d '\r' | while IFS='=' read -r phase target; do
   [ -z "$target" ] && continue
   phase_label=$(echo "$phase" | tr '_' ' ' | sed 's/[a-z]/\u&/g')
 
@@ -177,7 +188,7 @@ jq -r '.phase_targets | to_entries[] | "\(.key)=\(.value)"' "$CONFIG_FILE" 2>/de
     remaining=$((TOTAL_VIOLATIONS - target))
     echo "  ⏳ $phase_label: Need $remaining fewer violations"
   fi
-done
+done || true
 
 # ──────────────────────────────────────────────
 # Enforcement decision
@@ -188,12 +199,12 @@ echo "────────────────────"
 
 if [ "$TOTAL_VIOLATIONS" -gt "$THRESHOLD" ]; then
   echo "  Status:    ⚠️  MIGRATION IN PROGRESS ($TOTAL_VIOLATIONS > $THRESHOLD)"
-  echo "  Blocking:  No (warnings only, violations below threshold)"
-elif [ "$TOTAL_VIOLATIONS" -gt 50 ]; then
-  echo "  Status:    🚀 POST-MIGRATION"
+  echo "  Blocking:  No (warnings only, violations above threshold)"
+elif [ "$TOTAL_VIOLATIONS" -gt "$SOFT_BOUNDARY" ]; then
+  echo "  Status:    🚀 POST-MIGRATION ($TOTAL_VIOLATIONS ≤ $THRESHOLD)"
   echo "  Blocking:  Soft (pre-commit warnings)"
 else
-  echo "  Status:    ✅ STRICT ENFORCEMENT READY"
+  echo "  Status:    ✅ STRICT ENFORCEMENT READY ($TOTAL_VIOLATIONS ≤ $SOFT_BOUNDARY)"
   echo "  Blocking:  Yes (all violations fail)"
 fi
 

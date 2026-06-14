@@ -1,8 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-slate-100 to-slate-50">
-    <!-- Header -->
-    <PublicDigitHeader />
-
+  <PublicDigitLayout>
     <main id="main-content" class="w-full">
       <!-- Hero Section -->
       <section class="w-full px-4 py-12 sm:px-6 sm:py-16 md:py-24 lg:px-8 lg:py-32">
@@ -329,10 +326,7 @@
         </div>
       </section>
     </main>
-
-    <!-- Footer -->
-    <PublicDigitFooter />
-  </div>
+  </PublicDigitLayout>
 </template>
 
 <style scoped>
@@ -468,8 +462,7 @@ button:focus, a:focus {
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import { useMeta } from '@/composables/useMeta'
 import { useI18n } from 'vue-i18n'
 

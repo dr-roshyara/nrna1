@@ -16,25 +16,8 @@
 
   <PublicDigitLayout>
     <div class="bg-white">
-      <!-- Language Switcher -->
-      <div class="fixed top-4 right-4 z-50 flex gap-2 bg-white rounded-full shadow-lg p-1">
-        <button
-          v-for="lang in ['en', 'de', 'np']"
-          :key="lang"
-          @click="setLocale(lang)"
-          :class="[
-            'px-4 py-2 rounded-full transition-all font-medium text-sm',
-            locale === lang
-              ? 'bg-primary-600 text-white shadow-md'
-              : 'text-neutral-600 hover:text-neutral-900'
-          ]"
-        >
-          {{ $t('pages.election-architecture.language.' + lang) }}
-        </button>
-      </div>
-
       <!-- Hero Section -->
-      <section class="relative bg-gradient-to-br from-blue-200 via-blue-300 to-blue-100 text-neutral-900 py-20 px-4 overflow-hidden">
+      <section class="relative bg-gradient-to-br from-primary-200 via-primary-300 to-primary-100 text-neutral-900 py-20 px-4 overflow-hidden">
         <div class="absolute inset-0 opacity-20">
           <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary-500 rounded-full blur-3xl"></div>
           <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
@@ -80,11 +63,11 @@
             :key="phase.key"
             class="bg-gradient-to-br rounded-lg p-6 text-white shadow-lg hover:shadow-xl transition-shadow"
             :class="{
-              'from-blue-500 to-blue-600': phase.color === 'blue',
-              'from-green-500 to-green-600': phase.color === 'green',
-              'from-purple-500 to-purple-600': phase.color === 'purple',
-              'from-orange-500 to-orange-600': phase.color === 'orange',
-              'from-emerald-500 to-emerald-600': phase.color === 'emerald',
+              'from-primary-500 to-primary-600': phase.color === 'blue',
+              'from-success-500 to-success-600': phase.color === 'green',
+              'from-accent-500 to-accent-600': phase.color === 'purple',
+              'from-warning-500 to-warning-600': phase.color === 'orange',
+              'from-success-600 to-success-700': phase.color === 'emerald',
             }"
           >
             <div class="text-4xl mb-4">{{ phase.icon }}</div>
@@ -174,15 +157,16 @@
         </h2>
         <div class="space-y-4">
           <div v-for="(item, idx) in faqItems" :key="idx" class="border border-neutral-200 rounded-lg overflow-hidden hover:border-primary-500 transition-colors">
-            <button
+            <Button
+              variant="ghost"
               @click="toggleFaq(idx)"
-              class="w-full flex justify-between items-center p-6 bg-white hover:bg-neutral-50 transition-colors"
+              class="w-full flex justify-between items-center p-6 rounded-none"
             >
               <span class="text-lg font-semibold text-neutral-900 text-left">{{ item.question }}</span>
               <span class="text-primary-600 font-bold text-xl flex-shrink-0 ml-4">
                 {{ openFaq === idx ? '−' : '+' }}
               </span>
-            </button>
+            </Button>
             <transition name="expand">
               <div v-show="openFaq === idx" class="border-t border-neutral-200 bg-neutral-50 p-6">
                 <p class="text-neutral-700">{{ item.answer }}</p>
@@ -193,7 +177,7 @@
       </section>
 
       <!-- CTA Section -->
-      <section class="relative bg-gradient-to-br from-blue-200 via-blue-300 to-blue-100 text-neutral-900 py-20 mt-16 border-t border-neutral-200 overflow-hidden">
+      <section class="relative bg-gradient-to-br from-primary-200 via-primary-300 to-primary-100 text-neutral-900 py-20 mt-16 border-t border-neutral-200 overflow-hidden">
         <div class="absolute inset-0 opacity-20">
           <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary-500 rounded-full blur-3xl"></div>
           <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
@@ -231,6 +215,7 @@ import { Head, router } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import { route } from 'ziggy-js'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
+import Button from '@/Components/Button.vue'
 
 const props = defineProps({
   phases: { type: Array, default: () => [] },
@@ -254,11 +239,20 @@ const toggleFaq = (idx) => {
 // Language switcher with localStorage persistence
 const setLocale = (lang) => {
   locale.value = lang
-  localStorage.setItem('preferred_locale', lang)
+  // Persist locale preference for consistent navigation experience
+  const date = new Date()
+  date.setFullYear(date.getFullYear() + 1)
+  document.cookie = `locale=${lang}; expires=${date.toUTCString()}; path=/`
 }
 
 onMounted(() => {
-  const saved = localStorage.getItem('preferred_locale')
+  // Restore locale from cookie if saved
+  const cookies = document.cookie.split('; ').reduce((acc, c) => {
+    const [key, val] = c.split('=')
+    acc[key] = val
+    return acc
+  }, {})
+  const saved = cookies['locale']
   if (saved && ['en', 'de', 'np'].includes(saved)) {
     locale.value = saved
   }

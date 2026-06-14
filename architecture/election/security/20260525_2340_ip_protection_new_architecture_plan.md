@@ -1,11 +1,11 @@
-I still have more rules of election rules:
-1: e.g. snap the ip of voter while verification and the voter is allowed only to vote thruogh that ip . 
-rule 2: 1 code system : voter uses the same code for opening the ballet and submitting the voted peoples list at end
-Rule 3 : 2 code system : Voter must use separte code for opening the ballet and saving the vallet after selection of canidates. 
-Rule4 : Voters can only vote through a particular ip . 
-Rule 5: Voter can only use the same device finger print while at the time of voter verification . 
-Rule 6 : Voter verification is a process where voter calls the election officer through his device and election officer capture the ip address and the device finger print where can we intigrate them ? 
-Rule 7: maximum number votes that can be casted through an ip address  say (N=6).
+    I still have more rules of election rules:
+    1: e.g. snap the ip of voter while verification and the voter is allowed only to vote thruogh that ip . 
+    rule 2: 1 code system : voter uses the same code for opening the ballet and submitting the voted peoples list at end
+    Rule 3 : 2 code system : Voter must use separte code for opening the ballet and saving the vallet after selection of canidates. 
+    Rule4 : Voters can only vote through a particular ip . 
+    Rule 5: Voter can only use the same device finger print while at the time of voter verification . 
+    Rule 6 : Voter verification is a process where voter calls the election officer through his device and election officer capture the ip address and the device finger print where can we intigrate them ? 
+    Rule 7: maximum number votes that can be casted through an ip address  say (N=6).
 
 Currently these rules are living in Voter controller which makes the voting process weak
 

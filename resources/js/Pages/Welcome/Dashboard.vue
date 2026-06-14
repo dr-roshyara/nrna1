@@ -1,8 +1,5 @@
 <template>
-  <div class="welcome-dashboard min-h-screen bg-neutral-50 flex flex-col">
-    <!-- Header -->
-    <PublicDigitHeader />
-
+  <PublicDigitLayout>
     <!-- Main Content -->
     <main class="grow max-w-4xl mx-auto w-full px-3 sm:px-4 lg:px-8 py-8 sm:py-12 lg:py-16">
       <!-- Welcome Section -->
@@ -267,16 +264,16 @@
 
     <!-- Footer -->
     <!-- Footer placeholder - replace with custom footer component -->
-  </div>
+  </PublicDigitLayout>
 </template>
 
 <script>
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 export default {
   name: 'WelcomeDashboard',
 
   components: {
-    PublicDigitHeader,
+    PublicDigitLayout,
   },
   props: {
     userName: String,

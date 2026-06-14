@@ -1,5 +1,5 @@
 <template>
-    <social-layout>
+    <PublicDigitLayout>
         <div class="flex-1 md:w-1/2">
             <timeline :user="$page.props.user"> </timeline>
             <openions
@@ -30,25 +30,18 @@
             </div>
         </div> -->
         <!-- <join-network></join-network>4 -->
-    </social-layout>
+    </PublicDigitLayout>
 </template>
 
 <script>
-// import NrnaLayout from "@/Layouts/NrnaLayout";
-import SocialLayout from "@/Layouts/SocialLayout.vue";
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 import RightBar from "@/Components/Discussion/RightBar.vue";
 import LeftBar from "@/Components/Discussion/LeftBar.vue";
-import AppLayout from "@/Layouts/AppLayout.vue";
-import Welcome from "@/Components/Jetstream/Welcome.vue";
-import JoinNetwork from "@/Components/General/JoinNetwork.vue";
 import Timeline from "@/Components/Discussion/Timeline.vue";
 import Openions from "@/Components/Discussion/Openions.vue";
 export default {
     components: {
-        SocialLayout,
-        AppLayout,
-        Welcome,
-        JoinNetwork,
+        PublicDigitLayout,
         Timeline,
         Openions,
         RightBar,

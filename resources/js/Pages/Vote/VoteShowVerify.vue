@@ -1,7 +1,5 @@
 <template>
-    <div class="min-h-screen flex flex-col">
-        <PublicDigitHeader />
-
+    <PublicDigitLayout>
         <div class="flex-1">
         <!-- ACCESSIBILITY: Skip link -->
         <a href="#main-content" class="skip-link">
@@ -469,14 +467,11 @@
             </div>
         </main>
         </div>
-
-        <PublicDigitFooter class="px-4" />
-    </div>
+    </PublicDigitLayout>
 </template>
 
 <script>
-import PublicDigitHeader from "@/Components/Jetstream/PublicDigitHeader.vue";
-import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 import VoteFinal from "@/Pages/Vote/VoteFinal";
 import WorkflowStepIndicator from "@/Components/Workflow/WorkflowStepIndicator";
 import { useForm } from "@inertiajs/vue3";
