@@ -222,7 +222,7 @@
                   </div>
                 </transition>
                 <transition name="fade-scale" mode="out-in">
-                  <div v-if="canOpenVoting || canCompleteAdministration" key="open">
+                  <div v-if="canOpenVoting" key="open">
                     <div>
                       <ActionButton
                         variant="success"
@@ -245,7 +245,7 @@
                   </div>
                 </transition>
                 <transition name="fade-scale" mode="out-in">
-                  <div v-if="canCloseVoting || canOpenVoting" key="close">
+                  <div v-if="canCloseVoting" key="close">
                     <div>
                       <ActionButton
                         variant="danger"
