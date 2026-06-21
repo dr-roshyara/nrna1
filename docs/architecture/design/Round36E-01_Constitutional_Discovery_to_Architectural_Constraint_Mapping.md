@@ -136,7 +136,7 @@ This distinction is governed by OBS-36D-02-1: authority is not a context boundar
 
 **AC-04:** The architectural model must represent authority relationships as first-class architectural concerns, distinct from the execution of the functions they authorize. Authority-over-X is not the same architectural concern as executing-X.
 
-**AC-05:** For each D43 authority function (enrollment, criteria, audit, governance authorization, certification), the architectural model must include at least one architectural element that is constitutionally independent of the primary authority holder for that function. The form of this element is TBD.
+**AC-05:** For each D43 authority function (enrollment, criteria, audit, governance authorization, certification), the architecture must realize at least one constitutionally independent authority relationship. The architectural realization of that independence is not determined by this constraint and remains unresolved.
 
 **AC-06:** Independence cannot be achieved by naming two components differently within the same authority boundary. Independence has architectural weight — it must be realized structurally in some form, though the specific form is not determined by this constraint.
 
@@ -152,9 +152,9 @@ This distinction is governed by OBS-36D-02-1: authority is not a context boundar
 
 ### 3.4 Architectural Consequences of CF-05-19
 
-**ACQ-03:** The authority model (who governs what) must be designed as an independent layer of the architecture — separate from, but mapping onto, the functional domain model. The two layers interact but are not the same thing.
+**ACQ-03:** Authority concerns cannot be fully represented through functional execution concerns alone. The specific architectural form of this separation — whether a distinct modeling layer, a distinct artifact, or another arrangement — is an open question that belongs to 36E-03 (DDD Impact Assessment).
 
-**ACQ-04:** DDD modeling alone is insufficient for constitutional trustworthiness. The standard DDD toolkit (aggregates, bounded contexts, domain events) must be augmented with an authority modeling layer. Whether that layer is part of DDD or above it is a 36E-03 question.
+**OAQ-13:** Can standard DDD modeling tools (aggregates, bounded contexts, domain events) represent constitutional authority relationships, or is an additional modeling approach required? This question belongs to 36E-03.
 
 ### 3.5 Open Architecture Questions from CF-05-19
 
@@ -175,15 +175,15 @@ This distinction is governed by OBS-36D-02-1: authority is not a context boundar
 
 **Challenge requires three architectural preconditions:**
 
-1. **Addressability of authority decisions:** A challenge cannot be made against a decision that is not architecturally accessible. Authority decisions must be represented as addressable domain facts — not purely internal state — so that they can be the subject of challenge. A decision that exists only inside an aggregate's private state is architecturally unchallengeble.
+1. **Addressability of authority decisions:** A challenge cannot be made against a decision that is not accessible. Authority decisions must be externally accessible in some form to parties affected by those decisions. A decision with no external access pathway cannot be challenged.
 
-2. **A receiving entity independent of the challenged authority:** Challenge reception cannot be routed through the challenged authority. The receiving element must be architecturally independent — it cannot be a method on the same aggregate, a service in the same bounded context, or any element that the challenged authority controls.
+2. **A receiving entity independent of the challenged authority:** Challenge reception cannot be routed through the challenged authority. The receiving element must be constitutionally independent of the challenged authority — the specific structural form of that independence is not determined here.
 
 3. **A determination mechanism:** Challenge must produce an outcome (upheld, dismissed, modified). The determination mechanism must itself be constitutionally grounded — it cannot be delegated back to the challenged authority.
 
-**AC-08:** Authority decisions must be represented as addressable architectural facts (domain events or equivalent). They cannot be purely encapsulated internal state.
+**AC-08:** Authority decisions must be challengeable and externally addressable — accessible in some form to parties affected by those decisions. An authority decision accessible only as internal private state with no external pathway is not challengeable. The specific representation form is not determined by this constraint.
 
-**AC-09:** Challenge reception and adjudication must be architecturally separate from the challenged authority — not merely a different class in the same boundary, but a structurally independent element with its own constitutional grounding.
+**AC-09:** Challenge reception and adjudication must be structurally independent of the challenged authority. The specific architectural form of that independence is not determined by this constraint.
 
 **AC-10:** The challenge determination mechanism must produce a typed outcome that can be acted upon by the challenged authority — but the determination itself must originate outside the challenged authority's boundary.
 
@@ -373,11 +373,11 @@ All architectural constraints from this round.
 | AC-02 | No authority function may be architecturally self-verifying | CF-05-08 | AR-02: SELF-REF embedded in design |
 | AC-03 | Constitutional legitimacy structures (L-1 to L-5) must be first-class architectural elements | CF-05-08 | AR-03: constitutionally opaque system |
 | AC-04 | Authority relationships must be first-class architectural concerns, distinct from function execution | CF-05-19 | AR-04: invisible constitutional structure |
-| AC-05 | Each D43 authority function must have at least one architecturally independent authority element | CF-05-19 | AR-05: constitutional single point of failure |
+| AC-05 | For each D43 authority function, the architecture must realize at least one constitutionally independent authority relationship; architectural realization unresolved | CF-05-19 | AR-05: constitutional single point of failure |
 | AC-06 | Independence cannot be achieved by naming alone within the same authority boundary | CF-05-19 | AR-06: independence theater |
 | AC-07 | Authority relationships must carry explicit L-1 to L-5 specifications | CF-05-19 | AR-04, AR-05 |
-| AC-08 | Authority decisions must be represented as addressable architectural facts (domain events or equivalent) | L-3 | AR-07: challenge architecturally impossible |
-| AC-09 | Challenge reception and adjudication must be architecturally separate from challenged authority | L-3 | AR-08: self-adjudicated challenges |
+| AC-08 | Authority decisions must be challengeable and externally addressable; representation form unresolved | L-3 | AR-07: challenge architecturally impossible |
+| AC-09 | Challenge reception and adjudication must be structurally independent of challenged authority; structural form unresolved | L-3 | AR-08: self-adjudicated challenges |
 | AC-10 | Challenge determination must produce a typed outcome originating outside the challenged authority | L-3 | AR-08 |
 | AC-11 | Authority lifecycle must be explicitly modeled (creation, operation, suspension, revocation, succession) | L-4 | AR-09, AR-10 |
 | AC-12 | Revocation events must originate outside the authority boundary being revoked | L-4 | AR-09: irremovable authority |
@@ -435,10 +435,9 @@ Consequences that arise from satisfying the constraints — changes to the desig
 |----|------------|--------------|---------------------|
 | ACQ-01 | Architecture must include constitutional legitimacy elements distinct from functional execution | CF-05-08 | Increased architectural scope; functions decompose into execution + authority grounding |
 | ACQ-02 | Separate category of constitutional assurance required, distinct from operational QA | CF-05-08 | New architectural concern type; test suites insufficient |
-| ACQ-03 | Authority model must be designed as independent layer mapping onto domain model | CF-05-19 | Two-layer architecture minimum: functional + constitutional |
-| ACQ-04 | DDD toolkit must be augmented with authority modeling layer | CF-05-19 | Standard DDD alone insufficient for constitutional trustworthiness |
+| ACQ-03 | Authority concerns cannot be fully represented through functional execution concerns alone; form of separation belongs to 36E-03 | CF-05-19 | Functional model alone is architecturally insufficient for constitutional trustworthiness |
 | ACQ-05 | Every authority relationship requires explicit lifecycle state machine | L-4 | Authority lifecycle is a first-class domain concern |
-| ACQ-06 | Domain events must be sufficient to represent authority decisions as addressable facts | L-3 | Event model scope must cover constitutional authority decisions |
+| ACQ-06 | Authority decisions must be represented in a form that is externally addressable for challenge purposes; specific form (events, records, or other) belongs to 36E-03 | L-3 | Representation of authority decisions as addressable architectural facts is a first-class concern |
 | ACQ-07 | Architecture must support external-to-internal decision signals on authority relationships | L-3/L-4 | Inbound authority signals are architectural first-class concern |
 | ACQ-08 | Election system external surface must support audit accessibility by independent entities | IR-H | Audit interface is architectural, not operational |
 | ACQ-09 | Audit = data collection (tightly coupled) + scope validation (independent). Cannot be conflated | IR-H/Gap A-3 | Audit decomposes into two distinct architectural concerns |
@@ -459,35 +458,136 @@ Questions that arise from the constraint mapping but cannot be resolved at this 
 | OAQ-02 | Can behavioral quality mechanisms contribute supporting evidence toward constitutional legitimacy characterization? | CF-05-08 | 36E-03 |
 | OAQ-03 | What is the minimum structural realization of an independent authority relationship? | CF-05-19 | 36E-04 (Architecture Options) |
 | OAQ-04 | Can one independent entity hold L-3/L-4 authority over multiple D43 functions simultaneously? | CF-05-19 | 36E-04 |
-| OAQ-05 | How do the 28 architectural constraints interact? Do any conflict? Which pairs create the highest constraint pressure? | All | 36E-02 (Constraint Interaction) |
+| OAQ-05 | How do the 30 architectural constraints interact? Do any conflict? Which pairs create the highest constraint pressure? | All | 36E-02 (Constraint Interaction) |
 | OAQ-06 | Can audit data collection (tightly coupled) and audit scope validation (independent) share any architectural boundary? | IR-H, ACQ-09 | 36E-03/04 |
 | OAQ-07 | How does the authority map relate to the bounded context map? What are the valid crossing patterns? | OBS-36D-02-1, ACQ-10 | 36E-03 |
-| OAQ-08 | Which architectural elements in the current NRNA model would require modification to satisfy the 28 constraints? | AC-01 to AC-28 | 36E-03 |
+| OAQ-08 | Which architectural elements in the current NRNA model would require modification to satisfy the 30 constraints? | AC-01 to AC-30 | 36E-03 |
 | OAQ-09 | Which constraints from this catalog create the highest implementation risk for enrollment, certification, and audit? | AC-21, AC-24, AC-27/28 | 36E-04/05 |
-| OAQ-10 | Do any of the 28 constraints conflict with each other? (e.g., does AC-14 conflict with any existing system boundary?) | Constraint interaction | 36E-02 |
+| OAQ-10 | Do any of the 30 constraints conflict with each other? (e.g., does AC-14 conflict with any existing system boundary?) | Constraint interaction | 36E-02 |
 | OAQ-11 | What architectural elements are candidates for the "Track C — Foundational Platform" (stable, unlikely to be affected by constraint resolution)? | All constraints | 36E-05 (Architecture Recommendation) |
 | OAQ-12 | Which D43 instances have the highest architectural constraint density? Do they cluster around specific bounded contexts? | AC-21 to AC-28 | 36E-03 |
+| OAQ-13 | Can standard DDD modeling tools (aggregates, bounded contexts, domain events) represent constitutional authority relationships, or is an additional modeling approach required? | CF-05-19, ACQ-03 | 36E-03 |
 
 ---
 
-## Section 12 — ARB Decision Block
+## Section 12 — Additional Constitutional Findings Requiring Constraint Mapping
 
-**[PENDING ARB REVIEW]**
-
-Submitted for ARB assessment on completion of Round 36E-01.
-
-### Open Questions for ARB
-
-**OQ-36E-01-01:** Do the 28 architectural constraints faithfully translate the constitutional discoveries from 36A-36D without introducing architectural design decisions?
-
-**OQ-36E-01-02:** Is the constraint discipline maintained throughout — do any constraints inadvertently name specific architectural solutions?
-
-**OQ-36E-01-03:** Are any major constitutional findings from 36A-36D missing from the constraint mapping? (Candidates: TF-36C-04-03 criteria ambiguity exploitability; AIC-36B-01 completeness mechanism; TC2-DI-01 presence ≠ truth)
-
-**OQ-36E-01-04:** Is the scope of Round 36E-02 (Constraint Interaction Analysis) well-defined given the 28 constraints identified here?
+Two major findings from Rounds 36B and 36C were absent from the initial constraint mapping and are added here.
 
 ---
 
-*Round 36E-01 — Constitutional Discovery → Architectural Constraint Mapping — Submitted for ARB Review*  
+### 12.1 TC2-DI-01 — Evidence Presence ≠ Evidence Truth
+
+**Discovery (from Round 36C-03):** TC2-DI-01 (CANDIDATE PROGRAM-LEVEL INSIGHT): "Presence of evidence is not evidence of truth" — symmetric to TC1-DI-01 ("absence of evidence ≠ evidence of absence"). Together they form TF-36C-COMB-01 (PROGRAM-LEVEL): an evidence record may simultaneously be too small (missing events — TC-1 threat) AND contain incorrect records (false or fabricated records — TC-2 threat). Passive observation resolves neither.
+
+**Architectural Implication:**
+
+An audit function that verifies evidence presence determines that records exist. It does not determine that records accurately represent the underlying events. These are two distinct verification activities with different architectural demands:
+
+- Completeness verification: Are all expected events recorded?
+- Authenticity verification: Do recorded events accurately represent what occurred?
+
+An architecture that conflates these two concerns will satisfy one while leaving the other architecturally unaddressed.
+
+**AC-29:** The architecture must distinguish between evidence presence verification and evidence authenticity verification as distinct architectural concerns. Mechanisms that verify evidence completeness do not automatically verify evidence authenticity. Both concerns must be architecturally represented; the specific mechanisms belong to 36E-03.
+
+**AR-21:** If AC-29 is violated — evidence presence is treated as equivalent to evidence authenticity — the audit function validates that records exist but cannot detect records that accurately state false information. TF-36C-COMB-01 shows the record set can be simultaneously incomplete AND contain false records. An architecture that only verifies presence misses the authenticity dimension entirely; constitutional audit integrity is half-satisfied at best.
+
+**ACQ-14:** The audit architectural model requires conceptually distinct verification pathways for completeness and authenticity. Whether these are separate components, separate passes of the same component, or separate contractual obligations is a 36E-03 question — but they are architecturally distinct concerns.
+
+---
+
+### 12.2 TF-36C-04-03 — Criteria Ambiguity Exploitability
+
+**Discovery (from Round 36C-04):** TF-36C-04-03: Criteria ambiguity is exploitable without evidence manipulation — described in Round 36C-04 as "one of the program's most important findings." The threat is that if eligibility criteria are ambiguous (multiple valid interpretations), the criteria authority can apply different interpretations to different cases without any system record showing inconsistency, because the criteria themselves support multiple readings. No evidence is suppressed or fabricated — the exploitation is in the ambiguity of the criteria representation itself.
+
+**Architectural Implication:**
+
+If criteria are represented in the architecture as natural-language text, open-ended configuration strings, or any form that supports multiple valid interpretations, the criteria authority can exploit that ambiguity without producing architectural evidence of inconsistency. The constitutional threat is not detectable by the system because the system treats all applications of the ambiguous criteria as valid.
+
+**AC-30:** The architecture must represent criteria with sufficient precision to support unambiguous application. Criteria representations that permit multiple valid interpretations create constitutionally exploitable ambiguity that is architecturally undetectable. The architectural form of criteria precision — formal predicate, structured rule, computable definition, or other — is not determined here; the constraint is that the form must preclude multiple valid interpretations of the same criterion applied to the same case.
+
+**AR-22:** If AC-30 is violated — criteria are represented in ambiguous form — TF-36C-04-03 becomes architecturally embedded. Different eligibility determinations under the same criteria cannot be distinguished as inconsistent by the system because the ambiguity is in the representation, not the execution. Constitutional exploitation of criteria is architecturally invisible.
+
+**ACQ-15:** Criteria representation is architecturally a precision problem, not a configuration problem. An architecture that stores criteria as human-readable strings or open configuration has not solved the problem — it has deferred it. The constitutional trustworthiness of enrollment decisions depends on whether the criteria architecture supports a single unambiguous interpretation per case.
+
+---
+
+### 12.3 Updated Constraints and Risks in Summary Tables
+
+**New rows for Section 8 (Constraints Catalog):**
+
+| ID | Constraint | Source | Risk if Violated |
+|----|-----------|--------|-----------------|
+| AC-29 | Evidence presence verification and evidence authenticity verification must be architecturally distinguished as distinct concerns | TC2-DI-01, TF-36C-COMB-01 | AR-21: authenticity dimension unaddressed |
+| AC-30 | Criteria must be represented with sufficient precision to preclude multiple valid interpretations of the same criterion applied to the same case | TF-36C-04-03 | AR-22: criteria ambiguity exploitation architecturally invisible |
+
+**New rows for Section 9 (Risk Catalog):**
+
+| ID | Risk | Constraint Violated | Constitutional Consequence |
+|----|------|--------------------|-----------------------------|
+| AR-21 | Evidence authenticity dimension unaddressed | AC-29 | Audit validates presence only; false records undetectable; TF-36C-COMB-01 embedded |
+| AR-22 | Criteria ambiguity exploitation architecturally invisible | AC-30 | Different eligibility outcomes under identical criteria produce no system-detectable inconsistency |
+
+**New rows for Section 10 (Consequence Catalog):**
+
+| ID | Consequence | Arising From | Design Space Effect |
+|----|------------|--------------|---------------------|
+| ACQ-14 | Audit verification decomposes into completeness verification and authenticity verification as distinct concerns | TC2-DI-01 | Audit implementation scope wider than evidence collection alone |
+| ACQ-15 | Criteria representation is a precision problem, not a configuration problem; architectural form must preclude ambiguity | TF-36C-04-03 | Criteria modeling is a first-class architectural concern, not a configuration detail |
+
+---
+
+## Section 13 — ARB Decision Block
+
+**APPROVED WITH REQUIRED REVISIONS**
+
+**ARB Final Assessment:**
+
+| Area | Assessment |
+|------|------------|
+| Constitutional Traceability | Excellent |
+| DDD Discipline | Very High |
+| Constraint Mapping | Very High |
+| Architecture Neutrality | High |
+| Evidence Traceability | Excellent |
+
+**ARB Observations (all applied):**
+
+**OBS-36E-01-1 (CORRECTION APPLIED):** AC-05 relaxed from "at least one architecturally independent authority element" to "at least one constitutionally independent authority relationship; architectural realization unresolved." CF-05-19 discovered a constitutional requirement, not an architectural element.
+
+**OBS-36E-01-2 (CORRECTION APPLIED):** AC-09 implementation hints removed. "Not merely a different class in the same boundary, but a structurally independent element" was becoming architecture. Replaced with "structurally independent of the challenged authority; architectural form unresolved."
+
+**OBS-36E-01-3 (CORRECTION APPLIED):** ACQ-03 and ACQ-04 conclusions ("independent layer," "two-layer architecture minimum," "DDD toolkit augmented") moved. ACQ-03 weakened to: "authority concerns cannot be fully represented through functional execution concerns alone; form of separation belongs to 36E-03." ACQ-04 converted to OAQ-13 and added to the Open Questions Catalog.
+
+**OBS-36E-01-4 (CORRECTION APPLIED):** AC-08 generalized from "domain events or equivalent" to "challengeable and externally addressable; representation form unresolved." ACQ-06 updated accordingly.
+
+**OBS-36E-01-5 (ADDITION APPLIED):** TC2-DI-01 (Presence ≠ Truth) added as AC-29 with AR-21 and ACQ-14. TF-36C-04-03 (Criteria Ambiguity Exploitability) added as AC-30 with AR-22 and ACQ-15. Both are in Section 12.
+
+**ARB strengths noted:**
+- Charter followed: document stays at Discovery → Constraint → Risk → Consequence without jumping to design
+- OBS-36D-02-1 (Authority ≠ Context) respected throughout — especially AC-18/AC-19/AC-20
+- AC-18 through AC-20 (authority map ≠ context map) are among the most valuable findings in this round
+
+**ARB Governing Instructions for Round 36E-02:**
+
+```
+Round 36E-01: APPROVED WITH REVISIONS
+Round 36E-02 — Constraint Interaction Analysis: AUTHORIZED
+
+Governing question for 36E-02:
+How do the 30 architectural constraints interact?
+Which constraints reinforce each other?
+Which constraints are in tension?
+Which clusters of constraints create the highest architectural pressure?
+
+36E-02 must NOT design solutions to constraint tensions.
+36E-02 identifies interaction patterns only.
+```
+
+---
+
+*Round 36E-01 — Constitutional Discovery → Architectural Constraint Mapping — APPROVED*  
+*Round 36E-02 — Constraint Interaction Analysis — AUTHORIZED*  
 *Research Program: NRNA DDD Trustworthiness*  
 *Document: Round36E-01_Constitutional_Discovery_to_Architectural_Constraint_Mapping.md*

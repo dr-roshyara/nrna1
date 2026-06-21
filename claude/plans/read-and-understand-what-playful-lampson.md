@@ -1,107 +1,204 @@
-# Round 17 — Step 2 Evidence Saturation Checkpoint
+# Round 36E-05 — Architecture Synthesis Plan
 
 ## Context
 
-Six streams completed and accepted into Evidence Corpus. Stream 6B now ready for acceptance.
+36E-04 produced an Architecture Option Catalog covering 7 pressure areas with 20+ options. Each option was evaluated independently across constraint satisfaction, DDD impact, governance impact, trustworthiness impact, and tradeoffs. 4 cross-option tensions were identified. No options were selected or eliminated.
 
-**Approved:**
-- Stream 1 — Evidence Analysis
-- Stream 2 — Governance & Authority
-- Stream 4 — Audit Clarification
-- Stream 5 — Constitutional Rule Discovery
-- Stream 6A — Challenge Presence Assessment
-- Stream 6B — Invocation & Consequence Analysis
+36E-05 is authorized to transform that catalog into:
+1. **Architecture Families** — coherent option combinations (not selections)
+2. **Dependency Map** — which options depend on / conflict with others
+3. **ADR Authoring Sequence** — the order in which Round 37 ADRs must be written
 
-**Pending:** Stream 3 (Voting/Tally Relationship)
-**Supporting:** Hypothesis Register (H1-H23), Discovery Debt Register (D1-D38), Assumption Register (A1-A15)
-
-The ARB requires a governance checkpoint to determine whether Step 2 has reached sufficient evidence saturation, or whether Stream 3 remains necessary.
-
----
-
-## Purpose
-
-Evaluate investigation completeness across all six streams. Assess whether additional repository analysis would substantially change understanding. Classify remaining unknowns by type and priority.
-
-**This is NOT:**
-- Bounded context discovery
-- Strategic design
-- Architecture conclusions
-- Synthesis of findings
-
-This is a governance review of discovery completeness only.
+**Binding guardrails:**
+- MAY recommend option combinations and sequencing
+- MAY NOT select individual options as final architecture
+- Recommended combination ≠ selected architecture
+- No new contexts, aggregates, services, ADRs, technology selections
+- Selection belongs to Round 37 ADRs
 
 ---
 
-## Deliverable
+## Document to Produce
 
-**File:** `docs/architecture/discovery/Round17_Step2_Evidence_Saturation_Checkpoint.md`
-
-**Structure:**
-
-1. **Scope of Review** — Purpose, inputs, constraints
-2. **Investigation Objective Status** — Per-stream assessment:
-   - ✅ Investigated
-   - ◐ Partially Investigated
-   - ❍ Not Yet Investigated
-   - With evidence references
-3. **Discovery Debt Classification** — All D1-D38 reclassified by priority:
-   - HIGH STRATEGIC
-   - MEDIUM
-   - LOW
-   - With rationale
-4. **Stream 3 Assessment** — What unique uncertainty would Stream 3 reduce?
-   - What questions remain unanswered without it?
-   - What evidence might reasonably be expected from it?
-   - **Decision Sensitivity:** If Stream 3 changes our understanding, what governance decisions could change? (HIGH / MEDIUM / LOW)
-5. **Evidence Saturation Assessment** — Per recurring concept:
-   - Evidence | Governance | Authority | Audit | Constitutional Rules | Legitimacy | Arbitration
-   - Saturation: LOW / MEDIUM / HIGH
-   - Rationale: why additional repository analysis is or is not likely to change understanding
-
-5A. **Evidence Confidence Assessment** — For each recurring concept:
-   - Coverage: LOW / MEDIUM / HIGH
-   - Confidence: LOW / MEDIUM / HIGH
-   - Primary Evidence Sources: Tier 1 / Tier 2 / Tier 3 / Tier 4
-   - Note: Coverage and confidence are distinct. Large evidence volume does not automatically imply high confidence — evidence may be concentrated in a single implementation area.
-   - Confidence rationale: what would need to be different to change confidence?
-
-6. **Non-Repository Unknowns** — Categories of debt items that now require:
-   - Stakeholder interviews
-   - ADR archaeology
-   - Governance records
-   - Organizational procedures
-   - Constitutional source material
-7. **Open Questions** — Questions that remain for ARB consideration
-8. **ARB Decision Options** — Evidence presented for all three options:
-   - Option A: Step 2 Complete → proceed to next governance phase
-   - Option B: Execute Stream 3 → then return for checkpoint review
-   - Option C: Additional Discovery Required → specify what
-
-**Important:** Present evidence for all options. Do NOT recommend one. The decision belongs to the ARB.
+**File:** `docs/architecture/design/Round36E-05_Architecture_Synthesis.md`
 
 ---
 
-## Data Sources
+## Document Structure
 
-- **Stream 1** → Round17_Stream1_Evidence_Findings.md
-- **Stream 2** → Round17_Stream2_Governance_Authority_Findings.md
-- **Stream 4** → Round17_Stream4_Audit_Clarification_Findings.md
-- **Stream 5** → Round17_Stream5_Constitutional_Rule_Discovery_Findings.md
-- **Stream 6A** → Round17_Stream6_Dispute_Challenge_Findings.md
-- **Stream 6B** → Round17_Stream6B_Invocation_Consequence_Findings.md
-- **Hypothesis Register** → Round17_Hypothesis_Register.md
-- **Discovery Debt Register** → Round17_Discovery_Debt_Register.md
+### Section 1 — Synthesis Framework
+- 1.1 Purpose and Scope: transform catalog → families + dependencies + ADR sequence
+- 1.2 Three-Level Synthesis Model (mandatory per ARB charter):
+  - **Level 1 — Constitutional Compatibility:** do combined options satisfy the 30 ACs together?
+  - **Level 2 — DDD Compatibility:** do combined options work within the existing DDD model?
+  - **Level 3 — Operational Feasibility:** is the combination organizationally realistic?
+- 1.3 Binding Prohibitions (explicitly listed)
+- 1.4 Input Map — 36E-04 options by pressure area (reference table)
+
+### Section 2 — Option Compatibility Matrix
+
+Cross-option compatibility analysis BEFORE families are proposed. For each pair of options across different pressure areas, classify:
+- **Reinforcing (R):** options strengthen each other constitutionally
+- **Compatible (C):** options can coexist without tension
+- **Tension (T):** options create additional constitutional or design pressure when combined
+- **Incompatible (I):** options cannot coherently coexist (requires explicit constitutional evidence — high bar)
+
+The 4 cross-tensions from 36E-04 Section 9 are the primary inputs:
+- CT-1: EC-01 Option B × CPR-05 Option C (individual verifiability + cryptographic commitment)
+- CT-2: OQ-03-05 Option C × CPR-03 dual authority map (separate authority layer + dual map)
+- CT-3: CPR-04 Option D × program timeline (deferred certification + D39 sequencing)
+- CT-4: CPR-01 Option A × AC-06 (role-level independence + nominal independence risk)
+
+Additional compatibility analysis: EH-01 options × CPR-05 options (verifier independence model must match evidence integrity model).
+
+### Section 3 — Architecture Families
+
+Propose **3 candidate families** based on the compatibility matrix. Each family is a coherent option combination across all 7 pressure areas.
+
+**Family naming convention:** F1 (Minimal Constitutional), F2 (Structural Distribution), F3 (Maximum Constitutional)
+
+For each family, profile at all three synthesis levels:
+
+```
+Family F-N
+-----------
+Option selection per pressure area:
+  EH-01      → Option X
+  EC-01      → Option X
+  CPR-01     → Option X
+  CPR-02     → Option X
+  CPR-03     → Option X
+  CPR-04     → Option X
+  CPR-05     → Option X
+
+Level 1 — Constitutional Compatibility:
+  ACs satisfied: [list]
+  ACs stressed:  [list]
+  ACs unsatisfied: [list]
+
+Level 2 — DDD Compatibility:
+  Model changes required: [assessment]
+  Existing elements compatible: [list]
+  New elements implied: [assessment — not design decisions]
+
+Level 3 — Operational Feasibility:
+  Governance structures required: [assessment]
+  Organizational prerequisites: [list]
+  D39/D42B dependency exposure: [assessment]
+
+Family characteristics summary:
+  [2-3 sentences capturing the constitutional/DDD/operational tradeoff profile]
+```
+
+**Important:** Families show combinations — they do NOT name a winner.
+
+### Section 4 — Constitutional Dependency Map
+
+For each pressure area's options, identify:
+- **Constitutional prerequisites:** which other decisions must be resolved first
+- **Enabling relationships:** which decisions open up or close off other decisions
+- **Shared foundation questions:** the 6 OQs from 36E-04 mapped to the dependency structure
+
+Candidate dependencies (to be validated):
+- CPR-01 (form of independence) is a prerequisite for CPR-04 (certification independence model)
+- CPR-01 + CPR-02 together constrain the viable forms of CPR-03 (authority in DDD)
+- EH-01 option choice constrains CPR-05 option viability (verifier independence model must match evidence integrity architecture)
+- CPR-04 is contingent on D39 resolution (Option D deferred; Options A/B/C provisional)
+- EC-01 resolution (OQ-36E-04-03: Type D or E tension) is a prerequisite for vote challenge architecture
+
+### Section 5 — ADR Authoring Sequence
+
+Propose a sequenced list of ADRs for Round 37. Earlier ADRs unblock later ones.
+
+**Candidate sequence (to be validated against dependency map):**
+
+```
+ADR-1: Authority Model Vocabulary
+  Addresses: OQ-03-05 / CPR-03 (how are authority relationships represented in DDD?)
+  Unblocks: all subsequent ADRs that reference authority relationships
+
+ADR-2: Independence Form per D43 Function
+  Addresses: CPR-01 (form of constitutionally independent authority relationships)
+  Depends on: ADR-1
+  Unblocks: ADR-3, ADR-4, ADR-5
+
+ADR-3: Audit Scope Authority Structure
+  Addresses: OQ-03-03 / CPR-02 / ET-03 (unified vs separated audit scope + execution)
+  Depends on: ADR-2
+  Unblocks: ADR-5
+
+ADR-4: Evidence Integrity Architecture
+  Addresses: CPR-05 / EH-01 (verifier independence + evidence architecture)
+  Depends on: ADR-2
+  Unblocks: ADR-5
+
+ADR-5: Certification Architecture
+  Addresses: CPR-04 (provisional — pending D39)
+  Depends on: ADR-2, ADR-3, ADR-4
+  Note: provisional until D39 resolved
+
+ADR-6: Challenge Architecture (EC-01)
+  Addresses: OQ-36E-04-03 (Type D or E?); scope of challengeable decisions
+  Depends on: ADR-1, ADR-2
+  Note: EC-01 conflict status must be determined in this ADR
+
+ADR-7: D42B Closure (Verification Representation Context)
+  Previously deferred ADR-Candidate-01/02
+  Depends on: ADR-1, ADR-2, ADR-4
+```
+
+**Note:** The exact sequence is the synthesis question — the document may revise this order after the dependency map analysis is complete.
+
+### Section 6 — Open Questions Carried to Round 37
+
+Map the 6 OQs from 36E-04 onto the ADR sequence:
+
+| OQ | Addressed by ADR | Nature |
+|---|---|---|
+| 36E-04-OQ-01 (cross-option tensions) | ADR-1 through ADR-7 collectively | Architectural |
+| 36E-04-OQ-02 (eliminable options) | Each relevant ADR | Selection decision |
+| 36E-04-OQ-03 (EC-01 Type D or E) | ADR-6 | Constitutional determination |
+| 36E-04-OQ-04 (ElectionConstitution as shared L-1) | ADR-1, ADR-2 | Constitutional determination |
+| 36E-04-OQ-05 (certification before or after D39) | ADR-5 | Sequencing decision |
+| 36E-04-OQ-06 (modeling vocabulary sufficiency) | ADR-1 | Vocabulary decision |
+
+### Section 7 — ARB Decision Block
+
+Three questions for ARB:
+1. Are the Architecture Families constitutionally coherent? Are any families eliminable before Round 37 (high bar: requires explicit constitutional evidence)?
+2. Is the ADR Authoring Sequence correct? Are any dependencies missing or incorrectly ordered?
+3. Authorize Round 37 ADR Authoring — which Family (or cross-family options) enters Round 37 as the primary candidate?
 
 ---
 
-## Success Criteria
+## Status Header for the Document
 
-✅ Each stream assessed for investigation completeness
-✅ All 38 discovery debt items classified by strategic priority
-✅ Stream 3 necessity evaluated with evidence
-✅ Per-concept saturation assessed (LOW/MEDIUM/HIGH)
-✅ Non-repository unknowns identified
-✅ ARB options presented without recommendation
-✅ No architectural conclusions drawn
-✅ No bounded context or aggregate inferences
+```
+**Status:** SUBMITTED FOR ARB REVIEW
+**Predecessors:** 36E-01 through 36E-04 — APPROVED
+**Binding Guardrail:** This round synthesizes options. It does NOT select options.
+Recommended combination ≠ final architecture. Selection belongs to Round 37 ADRs.
+```
+
+---
+
+## Verification
+
+This is a documentation-only artifact. Verification:
+1. Check that every pressure area from 36E-04 (7 areas) has an entry in each family
+2. Check that no family section uses language implying selection ("the architecture is", "we will use")
+3. Check that the dependency map references the correct AC numbers from 36E-01
+4. Check that the ADR sequence has no circular dependencies
+5. Check that all 6 OQs from 36E-04 are mapped in Section 6
+6. Confirm Section 1.3 Binding Prohibitions are complete and consistent with 36E-04
+
+---
+
+## Notes for Execution
+
+- Read 36E-04 in full before writing (all 7 section tradeoff summaries are the primary input)
+- Read 36E-01 AC list (30 constraints) for Level 1 constitutional compatibility checking
+- Read 36E-03 DDD impact assessment for Level 2 DDD compatibility checking
+- Do NOT invent new options — only synthesize what 36E-04 produced
+- Architecture Families should feel like coherent philosophical positions, not just arbitrary combinations
+- The dependency map is the intellectual core of 36E-05 — spend most analysis effort there

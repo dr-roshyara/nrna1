@@ -193,6 +193,16 @@
         "description": "Ermöglichen Sie Ihrer Organisation sichere, transparente Online-Wahlen. Public Digit bietet DSGVO-konforme Wahlen für Diaspora-Gemeinschaften, NGOs und Mitgliedsorganisationen weltweit.",
         "keywords": "Online-Wahlen, digitale Abstimmungen, sichere Wahlen, Diaspora-Wahlen, NRNA"
       },
+      "about": {
+        "title": "Über Public Digit | Sichere Digitale Wahlplattform",
+        "description": "Erfahren Sie mehr über die Mission von Public Digit, digitale Demokratie sicher, transparent und zugänglich für Organisationen, NGOs und Diaspora-Gemeinschaften zu machen.",
+        "keywords": "über public digit, digitale Wahlmission, sichere Wahlplattform, Diaspora-Wahlen"
+      },
+      "faq": {
+        "title": "FAQ | Häufig gestellte Fragen | Public Digit",
+        "description": "Finden Sie Antworten auf häufige Fragen zu Online-Wahlen, Sicherheit, Datenschutz und wie Public Digit für Ihre Organisation funktioniert.",
+        "keywords": "FAQ, häufige Fragen, Online-Wahlen Hilfe, Wahlplattform Fragen"
+      },
       "pricing": {
         "title": "Preispläne | Public Digit Elections",
         "description": "Transparente Preisgestaltung für Organisationen aller Größen. Wählen Sie einen Plan, der zu Ihren Wahlbedürfnissen passt. Keine versteckten Gebühren, skalierbare Lösungen für NGOs und Diaspora-Gruppen.",
@@ -223,6 +233,16 @@
         "description": "Sichere Wahl durchführen mit Public Digit. Fünf-Schicht-Sicherheitsarchitektur garantiert vollständige Anonymität, kryptographische Verifizierung und Multi-Tenant-Isolation. DSGVO-konform mit Geräte-Fingerprinting und End-to-End Verschlüsselung.",
         "keywords": "sichere Wahl durchführen, Online-Abstimmung sicher, sichere Wahlen für Vereine, Wahl durchführen digital, Wahlsicherheit, anonyme Abstimmungen, kryptografische Verifizierung, Geräte-Fingerprinting, sichere digitale Wahlen, Wahlintegrität"
       },
+      "election-architecture": {
+        "title": "Wahlarchitektur & Zustandsmaschine | Public Digit",
+        "description": "Entdecken Sie Public Digits 5-Phasen-Wahllebenszyklus: eine manipulationssichere Zustandsmaschine für transparente, verifizierbare Wahlen mit unveränderlichen Prüfpfaden und kryptografischer Verifizierung.",
+        "keywords": "Wahlarchitektur, Zustandsmaschine, Wahllebenszyklus, manipulationssichere Wahlen, Abstimmungssystemarchitektur, digitale Wahlplattform"
+      },
+      "election-security": {
+        "title": "Wahlsicherheit & Zustandsmaschinentechnologie | Public Digit",
+        "description": "Erfahren Sie, wie unsere manipulationssichere Zustandsmaschine die Wahlintegrität durch unveränderliche Prüfpfade, kryptografische Verifizierung und überprüfbare Ergebnisse garantiert.",
+        "keywords": "Wahlsicherheit, Zustandsmaschine, manipulationssicher, Prüfpfad, kryptografisch, Wahlintegrität"
+      },
       "demo-guide": {
         "title": "Online-Wahl Demo - Sichere anonyme Wahlen testen",
         "description": "Erleben Sie eine vollständige Online-Wahl in 5 Schritten. Keine Registrierung erforderlich. Testen Sie sichere, anonyme, verifizierbare Wahlen mit Belegcode-Prüfung.",
@@ -247,6 +267,16 @@
         "title": "Organisationseinstellungen - {organisationName} | Public Digit",
         "description": "Konfigurieren Sie den Mitgliedschaftsmodus und Organisationseinstellungen für {organisationName}. Verwalten Sie die Wählerberechtigung, wählen Sie zwischen Vollständiger Mitgliedschaft oder Wahl-Nur-Modus, mit {memberCount} Mitgliedern.",
         "keywords": "Organisationseinstellungen, Mitgliedschaftsmodus, vollständige Mitgliedschaft, Wahlberechtigung, Wählerverifizierung, Organisationsverwaltung, Mitgliederverwaltung, Public Digit Einstellungen, Vereinsverwaltung, NGO Einstellungen"
+      },
+      "election.result": {
+        "title": "{electionName} Ergebnisse | Public Digit Elections",
+        "description": "Endergebnisse für {electionName}. Sehen Sie Wahlergebnisse, Kandidaten-Rankings und vollständige Abstimmungsstatistiken.",
+        "keywords": "{electionName}, Wahlergebnisse, Abstimmungsergebnisse, Wahlresultate"
+      },
+      "tutorials.voters-management": {
+        "title": "Wählerverwaltung - Vollständige Anleitung | Public Digit",
+        "description": "Erfahren Sie, wie Sie Wähler in Public Digit verwalten. Schritt-für-Schritt-Anleitung zum Hinzufügen, Importieren und Verwalten von Wählerlisten für Ihre Wahlen.",
+        "keywords": "Wählerverwaltung, Wählerlisten, Wählerimport, Wahlwähler, Mitgliederverwaltung, Anleitung, Tutorial"
       },
       "committee_tutorial": {
         "title": "Ausschussverwaltung Anleitung | Public Digit",

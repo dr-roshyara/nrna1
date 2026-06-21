@@ -13,7 +13,7 @@
  *
  * // Page with dynamic parameters
  * useMeta({
- *   pageKey: 'organizations.show',
+ *   pageKey: 'organisations.show',
  *   params: {
  *     organizationName: organisation.name,
  *     memberCount: organisation.members_count,

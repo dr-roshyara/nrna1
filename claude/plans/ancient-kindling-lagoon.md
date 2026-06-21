@@ -1,60 +1,75 @@
-# Plan: Finalize Header Dark Blue Theme — Text, Hover & Button Colors
+# Plan: SEO Phase 1 — Increment 1 (Ownership Cleanup)
 
-**Date:** 2026-06-13  
-**Context:** The PublicDigitHeader gradient was iteratively darkened to `from-primary-800 via-primary-950 to-primary-900`. Now the text colors, hover states, and button colors need to be adjusted for contrast and cohesion on this dark blue background.
+**Date:** 2026-06-14  
+**Context:** SEO exploration revealed 3 co-existing meta mechanisms (useMeta, server-side blade, Inertia `<Head>`) that can conflict. Sprint 1 cleans up duplication and standardizes ownership before any new features are added. JSON-LD support and rollout deferred to Sprint 2.
 
-## Target State
+## Sprint SEO-1 Scope
 
-### Header Gradient (already applied)
-```
-bg-gradient-to-br from-primary-800 via-primary-950 to-primary-900
-text-neutral-100
-border-b border-brand-gold-500/40
-```
+Start with a baseline audit before any code changes. Then cleanup. No framework changes to `useMeta`. No JSON-LD.
 
-### Color Scheme for Dark Blue Background
+### Story SEO-0 — Baseline Audit
 
-| Element | Token | Rationale |
-|---------|-------|-----------|
-| Primary text | `text-neutral-100` | White on dark navy |
-| Medium emphasis | `text-neutral-300` | For nav links, secondary text |
-| Muted text | `text-neutral-400` | For breadcrumbs, helpers |
-| Nav links default | `text-neutral-200 hover:text-primary-200` | Light on dark, hover lifts to brighter blue |
-| Language select text | `text-neutral-200` | Readable on dark |
-| Language select options | `bg-white text-neutral-800` | White dropdown, dark text |
-| Login button (desktop) | `bg-white text-primary-900 hover:bg-primary-100` | White button stands out on dark blue, subtle hover |
-| Logout button | `border-brand-gold-500 text-brand-gold-400 hover:bg-brand-gold-500 hover:text-neutral-900` | Gold border, gold text, filled gold on hover |
-| Mobile menu toggle | `text-neutral-200 hover:bg-neutral-50/10` | Light icon, subtle hover |
-| Mobile menu panel | `bg-white` with standard dark text | Same as before — white panel with dark text |
-| Mobile nav links | `text-neutral-700 hover:text-primary-700` | Dark text on white bg (mobile panel is white) |
-| Demo CTA | Keep `bg-success-600 text-neutral-50` | Green on dark header pops well |
-| Breadcrumb links | `text-brand-gold-400 hover:text-brand-gold-500` | Gold on dark works |
+Create `architecture/seo/SEO_BASELINE_AUDIT.md` documenting current state of every public page's SEO mechanism — which uses `useMeta`, which uses `<Head>`, which has manual DOM conflicts, and sitemap coverage counts. This is the evidence record against which Sprint 1 success is measured.
 
-### Login Button Change
+Only ownership cleanup, baseline documentation, and sitemap fixes. No framework changes to `useMeta`. No JSON-LD rollout.
 
-The login button on the dark blue header should be a **white button with dark text** — like a typical "Sign In" CTA on a dark navbar:
-```
-bg-white text-primary-900 font-semibold
-hover:bg-primary-100
-```
+### Story SEO-1 — Standardize on useMeta
 
-This avoids the "blue on blue" problem of using `bg-primary-600` on `bg-primary-800`.
+Remove standalone `<Head>` blocks and conflicting manual DOM manipulation. Add `useMeta()` calls.
 
-## Files to Modify
+**Files:**
+- `resources/js/Pages/Public/ElectionArchitecture.vue` — remove `<Head>` block (lines 2-15), add `useMeta({ pageKey: 'election-architecture' })`
+- `resources/js/Pages/Public/ElectionSecurity.vue` — remove `<Head>` block (lines 2-12), add `useMeta({ pageKey: 'election-security' })`
+- `resources/js/Pages/Public/VotingSecurity.vue` — remove manual OG/Twitter DOM script (lines 619-631), `useMeta` already covers these
 
-1. **`resources/js/Components/Jetstream/PublicDigitHeader.vue`** — Adjust all text/hover/button tokens for dark blue background
-2. **`architecture/frontend/decisions/ADR-003-Shell-Visual-Identity.md`** — Update gradient to `primary-800/950/900`, document the final color strategy
+**Risk:** Low — `useMeta` already handles all the tags these pages set manually. Removing `<Head>` eliminates the duplicate-source conflict.
 
-## What to Keep Unchanged
+### Story SEO-2 — Remove duplicate useMeta call
 
-- **`PublicDigitFooter.vue`** — Not in scope for this increment
-- All structural/behavioral code
-- Brand gold tokens
-- Success/danger semantic tokens
-- Navigation link structure
+`Welcome.vue` (line 135) and `Components/Header/Welcome.vue` (line 98) both call `useMeta({ pageKey: 'home' })`. The component should not own SEO — only the page should.
+
+**File:** `resources/js/Components/Header/Welcome.vue` — remove `useMeta({ pageKey: 'home' })` call
+
+**Risk:** Very low — the page component's call still runs.
+
+### Story SEO-3 — Sitemap enhancement
+
+Add missing static public pages to `SitemapController.php`:
+- `/about`, `/faq`, `/security`, `/election-architecture`, `/election-security`, `/voting/security`
+- `/public-demo/guide`, `/public-demo/results`
+- `/tutorials/hub`, `/tutorials/election-settings`
+- `/vereinswahlen`, `/wahlen/vereine`, `/wahlen/hybrid`, `/wahlen/sicherheit`
+
+Each with appropriate change frequency (monthly/static) and priority (0.6-0.8).
+
+**File:** `app/Http/Controllers/SitemapController.php`
+
+**Risk:** Low — additive only, existing entries unchanged.
+
+### Story SEO-4 — SEO Architecture Baseline
+
+Create `architecture/seo/SEO_ARCHITECTURE_BASELINE.md` documenting:
+
+| Component | Owner | Authority |
+|-----------|-------|-----------|
+| `useMeta` composable | Frontend pages | ✅ Primary SEO authority |
+| `InjectPageMeta` middleware | Backend | Provides metadata to views |
+| `meta-info.blade.php` | Server render | Fallback/default meta tags |
+| `SitemapController` | Backend | Crawl authority |
+| `robots.txt` | Backend | Index authority |
+| JSON-LD | Future | Deferred to Sprint 2 |
+
+Documents the rule: one page = one SEO owner. No duplicate `<Head>` + `useMeta`.
+
+## Deferred to Sprint 2
+
+- JSON-LD support in `useMeta` — framework change affecting 20+ pages
+- JSON-LD pilot on Home, About, FAQ — depends on framework support
+- JSON-LD rollout to remaining pages
 
 ## Verification
 
-- `bash scripts/design-check.sh` — must pass
-- `bash scripts/component-audit.sh` — must pass
-- Visual consistency across dark blue header with all element types
+- View page source on `/election-architecture`, `/election-security`, `/voting/security` — no duplicate OG/Twitter tags
+- `useMeta` is the single mechanism for all public pages
+- Sitemap includes all static pages listed above
+- `SEO_ARCHITECTURE_BASELINE.md` documents ownership model

@@ -194,6 +194,16 @@
         "description": "Empower your organisation with secure, transparent online voting. Public Digit offers GDPR-compliant elections for diaspora communities, NGOs, and membership organisations worldwide.",
         "keywords": "online voting, digital elections, secure voting, diaspora elections, NRNA"
       },
+      "about": {
+        "title": "About Public Digit | Secure Digital Voting Platform",
+        "description": "Learn about Public Digit's mission to make digital democracy secure, transparent, and accessible for organisations, NGOs, and diaspora communities worldwide.",
+        "keywords": "about public digit, digital voting mission, secure elections platform, diaspora voting"
+      },
+      "faq": {
+        "title": "FAQ | Frequently Asked Questions | Public Digit",
+        "description": "Find answers to common questions about online voting, security, privacy, and how Public Digit works for your organisation.",
+        "keywords": "faq, frequently asked questions, online voting help, voting platform questions"
+      },
       "pricing": {
         "title": "Pricing Plans | Public Digit Elections",
         "description": "Transparent pricing for organisations of all sizes. Choose a plan that fits your election needs. No hidden fees, scalable solutions for NGOs and diaspora groups.",
@@ -224,6 +234,16 @@
         "description": "Conduct secure elections with Public Digit's five-layer security architecture. Complete voter anonymity, cryptographic verification, device fingerprinting, and multi-tenant isolation. GDPR-compliant end-to-end encrypted voting.",
         "keywords": "secure online voting, election security, cryptographic voting, device fingerprinting, voter anonymity, secure elections online, multi-layer security, voting platform security, encrypted voting system, election integrity"
       },
+      "election-architecture": {
+        "title": "Election Architecture & State Machine | Public Digit",
+        "description": "Explore Public Digit's 5-phase election lifecycle: a tamper-proof state machine guaranteeing transparent, verifiable elections with immutable audit trails and cryptographic verification.",
+        "keywords": "election architecture, state machine, election lifecycle, tamper-proof elections, voting system architecture, digital election platform"
+      },
+      "election-security": {
+        "title": "Election Security & State Machine Technology | Public Digit",
+        "description": "Learn how our tamper-proof state machine guarantees election integrity through immutable audit trails, cryptographic verification, and verifiable results.",
+        "keywords": "election security, state machine, tamper-proof, audit trail, cryptographic, voting integrity"
+      },
       "demo-guide": {
         "title": "Online Voting Demo Guide — Public & Organisation Demo | Public Digit",
         "description": "Try our secure anonymous online election demo in 5 steps. No registration needed for the public demo. Organisation demo sends your code by email. 100% GDPR compliant, fully anonymous, verifiable.",
@@ -248,6 +268,21 @@
         "title": "Organisation Settings - {organisationName} | Public Digit",
         "description": "Configure membership mode, election settings, and organisation preferences for {organisationName}. Manage voter eligibility rules, Full Membership vs Election-Only mode, and member count: {memberCount} members.",
         "keywords": "organisation settings, membership mode, full membership, election-only, voter eligibility, election configuration, member management, election security, organisation administration, Public Digit settings"
+      },
+      "election.result": {
+        "title": "{electionName} Results | Public Digit Elections",
+        "description": "Final results for {electionName}. View election outcomes, candidate standings, and complete voting statistics.",
+        "keywords": "{electionName}, election results, voting results, election outcomes"
+      },
+      "tutorials.voters-management": {
+        "title": "Voters Management Guide - Complete Tutorial | Public Digit",
+        "description": "Learn how to manage voters on Public Digit. Step-by-step guide for adding, importing, and managing voter rolls for your elections.",
+        "keywords": "voters management, voter rolls, voter import, election voters, member management, tutorial, guide"
+      },
+      "committee_tutorial": {
+        "title": "Committee Management Tutorial | Public Digit",
+        "description": "Learn how to create, edit, manage members, and remove members from committees. Step-by-step guide for democratic organizations.",
+        "keywords": "committee management, tutorial, guide, democratic governance, elections"
       }
     }
   },
@@ -354,18 +389,5 @@
     "contact_text": "Interested in learning more about Public Digit? We're here to help with demonstrations, technical consultations, and custom solutions for your organisation.",
     "testimonial_title": "What Our Users Say",
     "testimonial_text": "Public Digit has transformed how our organisation conducts elections. The process is secure, transparent, and our members love the convenience of voting from anywhere in the world."
-  },
-  "seo": {
-    "site": {
-      "title": "Public Digit",
-      "description": "Secure voting platform for organisations and diaspora groups"
-    },
-    "pages": {
-      "committee_tutorial": {
-        "title": "Committee Management Tutorial | Public Digit",
-        "description": "Learn how to create, edit, manage members, and remove members from committees. Step-by-step guide for democratic organizations.",
-        "keywords": "committee management, tutorial, guide, democratic governance, elections"
-      }
-    }
   }
 }

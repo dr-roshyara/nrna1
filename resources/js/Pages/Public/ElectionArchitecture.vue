@@ -1,19 +1,4 @@
 <template>
-  <Head>
-    <title>{{ $t('pages.election-architecture.seo.title') }}</title>
-    <meta name="description" :content="$t('pages.election-architecture.seo.description')" />
-    <meta name="keywords" :content="$t('pages.election-architecture.seo.keywords')" />
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
-    <meta property="og:title" :content="$t('pages.election-architecture.seo.og_title')" />
-    <meta property="og:description" :content="$t('pages.election-architecture.seo.og_description')" />
-    <meta property="og:image" content="/storage/architecture/architecture-state-machine.png" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href="https://publicdigit.com/election-architecture" />
-    <link rel="preload" :href="images.stateMachine" as="image" />
-  </Head>
-
   <PublicDigitLayout>
     <div class="bg-white">
       <!-- Hero Section -->
@@ -211,11 +196,14 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { Head, router } from '@inertiajs/vue3'
+import { router } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import { route } from 'ziggy-js'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import Button from '@/Components/Button.vue'
+import { useMeta } from '@/composables/useMeta'
+
+useMeta({ pageKey: 'election-architecture' })
 
 const props = defineProps({
   phases: { type: Array, default: () => [] },

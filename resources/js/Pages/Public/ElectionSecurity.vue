@@ -1,16 +1,4 @@
 <template>
-  <Head>
-    <title>Election Security & State Machine Technology | Public Digit</title>
-    <meta name="description" content="Learn how our tamper-proof state machine guarantees election integrity through immutable audit trails, cryptographic verification, and verifiable results." />
-    <meta name="keywords" content="election security, state machine, tamper-proof, audit trail, cryptographic, voting integrity" />
-    <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Election Security Through State Machine Technology" />
-    <meta property="og:description" content="Tamper-proof state machine with immutable audit trails and cryptographic verification." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href="https://publicdigit.com/election-security" />
-  </Head>
-
   <PublicDigitLayout>
     <div class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       <!-- Hero Section -->
@@ -287,8 +275,10 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import { Head } from '@inertiajs/vue3'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
+import { useMeta } from '@/composables/useMeta'
+
+useMeta({ pageKey: 'election-security' })
 
 const selectedPhase = ref('administration')
 const openFaq = ref(null)

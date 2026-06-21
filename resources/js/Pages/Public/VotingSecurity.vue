@@ -614,29 +614,6 @@ onMounted(() => {
     document.head.appendChild(canonicalLink)
   }
 
-  // Add Open Graph meta tags for social sharing
-  const metaTags = [
-    { property: 'og:title', content: 'Voting Security & Privacy Protection | PublicDigit' },
-    { property: 'og:description', content: 'Learn how PublicDigit protects your vote with one-way encryption, device fingerprinting, and cryptographic verification.' },
-    { property: 'og:image', content: window.location.origin + '/images/security/device_finger_printing_architecture.png' },
-    { property: 'og:url', content: window.location.href },
-    { property: 'og:type', content: 'website' },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: 'Your Vote, Your Privacy - Voting Security Explained' },
-    { name: 'twitter:description', content: 'Discover how device fingerprinting and cryptographic verification protect your voting privacy.' },
-    { name: 'twitter:image', content: window.location.origin + '/images/security/device_finger_printing_architecture.png' }
-  ]
-
-  metaTags.forEach(tagConfig => {
-    const existingTag = document.querySelector(`meta[${tagConfig.property ? 'property' : 'name'}="${tagConfig.property || tagConfig.name}"]`)
-    if (existingTag) existingTag.remove()
-
-    const newTag = document.createElement('meta')
-    if (tagConfig.property) newTag.setAttribute('property', tagConfig.property)
-    if (tagConfig.name) newTag.setAttribute('name', tagConfig.name)
-    newTag.setAttribute('content', tagConfig.content)
-    document.head.appendChild(newTag)
-  })
 })
 
 const pillarKeys = ref(['anonymity', 'verification', 'isolation'])

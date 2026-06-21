@@ -49,8 +49,6 @@ import SecurityComplianceSection from "@/components/Welcome/SecurityComplianceSe
 import ValuePropositionSection from "@/components/Welcome/ValuePropositionSection.vue";
 import TestimonialsSection from "@/components/Welcome/TestimonialsSection.vue";
 import CTASection from "@/components/Welcome/CTASection.vue";
-import { useMeta } from "@/composables/useMeta";
-
 // Import Welcome locale files for array data
 import welcomeDe from '@/locales/pages/Welcome/de.json';
 import welcomeEn from '@/locales/pages/Welcome/en.json';
@@ -84,18 +82,6 @@ export default {
                 np: welcomeNp,
             },
         };
-    },
-    created() {
-        /**
-         * SEO Meta Tags for Homepage
-         *
-         * Automatically sets language-aware meta tags based on current locale
-         * Reads from 'home' page key in i18n translations:
-         * - de.json for German pages
-         * - en.json for English pages
-         * - np.json for Nepali pages
-         */
-        useMeta({ pageKey: 'home' });
     },
     computed: {
         currentLocale() {
