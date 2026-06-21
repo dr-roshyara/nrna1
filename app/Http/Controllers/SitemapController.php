@@ -196,6 +196,9 @@ class SitemapController extends Controller
             '/candidacies/index' => ['priority' => '0.8', 'changefreq' => 'weekly'],
             '/users/index' => ['priority' => '0.7', 'changefreq' => 'weekly'],
             '/public-demo/guide' => ['priority' => '0.8', 'changefreq' => 'monthly'],
+            // Thought-leadership articles (diaspora election governance & auditing)
+            '/who-watch-the-watchmen' => ['priority' => '0.7', 'changefreq' => 'monthly'],
+            '/ddd-article-part1' => ['priority' => '0.7', 'changefreq' => 'monthly'],
         ];
 
         foreach ($staticPages as $url => $config) {

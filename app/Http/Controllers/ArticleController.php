@@ -16,7 +16,13 @@ class ArticleController extends Controller
         }
 
         $raw = File::get($filePath);
-        $article = $this->parseArticle($raw);
+        $article = $this->parseArticle($raw, [
+            'part' => 1,
+            'next_part' => [
+                'title' => 'Part Two: The Constitutional Universe',
+                'status' => 'coming_soon',
+            ],
+        ]);
 
         return Inertia::render('Articles/DddArticlePartOne', [
             'article' => $article,
@@ -24,7 +30,27 @@ class ArticleController extends Controller
         ]);
     }
 
-    private function parseArticle($raw)
+    public function showWhoWatchesTheWatchmen()
+    {
+        $filePath = base_path('docs/articles/Who Watches the Watchmen.md');
+
+        if (!File::exists($filePath)) {
+            abort(404, 'Article not found');
+        }
+
+        $raw = File::get($filePath);
+        $article = $this->parseArticle($raw, [
+            'part' => null,
+            'next_part' => null,
+        ]);
+
+        return Inertia::render('Articles/WhoWatchesTheWatchmen', [
+            'article' => $article,
+            'breadcrumbs' => [],
+        ]);
+    }
+
+    private function parseArticle($raw, array $meta = [])
     {
         $lines = explode("\n", $raw);
         $title = '';
@@ -78,13 +104,10 @@ class ArticleController extends Controller
             'subtitle' => $subtitle,
             'author' => $author,
             'author_bio' => $authorBio,
-            'published_date' => null,
-            'part' => 1,
+            'published_date' => $meta['published_date'] ?? null,
+            'part' => $meta['part'] ?? null,
             'content' => $bodyContent,
-            'next_part' => [
-                'title' => 'Part Two: The Constitutional Universe',
-                'status' => 'coming_soon',
-            ],
+            'next_part' => $meta['next_part'] ?? null,
         ];
     }
 }

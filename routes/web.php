@@ -290,6 +290,7 @@ Route::get('/election-security', function () {
 
 // Articles
 Route::get('/ddd-article-part1', [ArticleController::class, 'showDddArticlePartOne'])->name('articles.ddd-part-one');
+Route::get('/who-watch-the-watchmen', [ArticleController::class, 'showWhoWatchesTheWatchmen'])->name('articles.who-watch-the-watchmen');
 
 // SEO landing pages — keyword-targeted routes
 Route::get('/digitale-online-wahlen-fuer-verein', function () {

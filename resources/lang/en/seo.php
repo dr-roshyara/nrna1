@@ -155,5 +155,97 @@ return [
             'keywords'    => 'governance levels, committee hierarchy, organisational structure, geographic scope, committee management, governance tutorial, NRNA governance',
             'robots'      => 'index, follow',
         ],
+
+        'election-architecture' => [
+            'title'       => 'Election Architecture & State Machine | Public Digit',
+            'description' => 'Explore Public Digit\'s 5-phase election lifecycle: a tamper-proof state machine guaranteeing transparent, verifiable elections with immutable audit trails and cryptographic verification.',
+            'keywords'    => 'election architecture, state machine, election lifecycle, tamper-proof elections, voting system architecture, digital election platform',
+            'robots'      => 'index, follow',
+        ],
+
+        'election-security' => [
+            'title'       => 'Election Security & State Machine Technology | Public Digit',
+            'description' => 'Learn how our tamper-proof state machine guarantees election integrity through immutable audit trails, cryptographic verification, and verifiable results.',
+            'keywords'    => 'election security, state machine, tamper-proof, audit trail, cryptographic, voting integrity',
+            'robots'      => 'index, follow',
+        ],
+
+        'votingSecurity' => [
+            'title'       => 'Five-Layer Security Architecture for Secure Online Voting | Public Digit',
+            'description' => 'Conduct secure elections with Public Digit\'s five-layer security architecture. Complete voter anonymity, cryptographic verification, device fingerprinting, and multi-tenant isolation. GDPR-compliant end-to-end encrypted voting.',
+            'keywords'    => 'secure online voting, election security, cryptographic voting, device fingerprinting, voter anonymity, secure elections online, multi-layer security, voting platform security',
+            'robots'      => 'index, follow',
+        ],
+
+        'committee_tutorial' => [
+            'title'       => 'Committee Management Tutorial | Public Digit',
+            'description' => 'Learn how to create, edit, manage members, and remove members from committees. Step-by-step guide for democratic organizations.',
+            'keywords'    => 'committee management, tutorial, guide, democratic governance, elections',
+            'robots'      => 'index, follow',
+        ],
+
+        'demo-guide' => [
+            'title'       => 'Online Voting Demo Guide — Public & Organisation Demo | Public Digit',
+            'description' => 'Try our secure anonymous online election demo in 5 steps. No registration needed for the public demo. Organisation demo sends your code by email. 100% GDPR compliant, fully anonymous, verifiable.',
+            'keywords'    => 'online voting demo, demo election, public demo election, organisation voting demo, secure online voting, anonymous voting system, how to vote online, election verification, vote anonymously, online election demo free, test online election, demo voting platform, secure election software',
+            'robots'      => 'index, follow',
+        ],
+
+        'tutorials.election-settings' => [
+            'title'       => 'Election Setup Guide - Configure Your Online Election | Public Digit',
+            'description' => 'Learn how to configure every election setting on Public Digit: IP restrictions, ballot options, selection constraints, voter verification, and more. Step-by-step admin guide.',
+            'keywords'    => 'election settings, online election setup, IP restriction voting, voter verification, ballot configuration, election administration, Public Digit guide',
+            'robots'      => 'index, follow',
+        ],
+
+        'tutorials.membership-modes' => [
+            'title'       => 'Membership Modes Guide - Full vs Election-Only | Public Digit',
+            'description' => 'Understand Full Membership and Election-Only modes for your organisation. Learn when to use each mode, how they differ, and how to switch between them without losing data.',
+            'keywords'    => 'membership modes, full membership, election-only voting, voter eligibility, membership requirements, election setup, organisation settings',
+            'robots'      => 'index, follow',
+        ],
+
+        'elections.voters.import.tutorial' => [
+            'title'       => 'Voter Import Tutorial & Complete Guide | Public Digit',
+            'description' => 'Master voter importing for elections on Public Digit. Learn Full Membership vs Election-Only modes, CSV formats, bulk registration, step-by-step import process, and auto-create voter accounts.',
+            'keywords'    => 'voter import, election voters, CSV import, bulk voter registration, voter management, election setup, import guide, membership modes, voter eligibility',
+            'robots'      => 'index, follow',
+        ],
+
+        'organisations.settings' => [
+            'title'       => 'Organisation Settings - {organisationName} | Public Digit',
+            'description' => 'Configure membership mode, election settings, and organisation preferences for {organisationName}. Manage voter eligibility rules, Full Membership vs Election-Only mode, and member count: {memberCount} members.',
+            'keywords'    => 'organisation settings, membership mode, full membership, election-only, voter eligibility, election configuration, member management, election security',
+            'robots'      => 'index, follow',
+        ],
+
+        'newsletter-guide' => [
+            'title'       => 'Complete Newsletter Guide for Organizations | Public Digit',
+            'description' => 'Master newsletter campaigns for your organization. Learn audience segmentation, email composition, delivery tracking, and best practices for member and voter communication with Public Digit.',
+            'keywords'    => 'newsletter, organization email, audience segmentation, email campaigns, member communication, election messaging, bulk email, email marketing',
+            'robots'      => 'index, follow',
+        ],
+
+        'tutorials.voters-management' => [
+            'title'       => 'Voters Management Guide - Complete Tutorial | Public Digit',
+            'description' => 'Learn how to manage voters on Public Digit. Step-by-step guide for adding, importing, and managing voter rolls for your elections.',
+            'keywords'    => 'voters management, voter rolls, voter import, election voters, member management, tutorial, guide',
+            'robots'      => 'index, follow',
+        ],
+
+        // Thought-leadership articles — informational SEO targeting diaspora election governance
+        'who-watch-the-watchmen' => [
+            'title'       => 'Election Auditing for Diaspora Organisations | Public Digit',
+            'description' => 'Who watches the watchmen? A clear look at independent election oversight and auditing for diaspora organisations that run secure online elections.',
+            'keywords'    => 'election auditing, online elections for diaspora organisations, diaspora voting platform, independent election oversight, secure online voting, verifiable elections, NRNA elections, online election software for diaspora',
+            'robots'      => 'index, follow',
+        ],
+
+        'ddd-article-part-one' => [
+            'title'       => 'Building Trustworthy Online Elections | Public Digit',
+            'description' => 'The question that changed everything: how a diaspora organisation rethought secure, verifiable online elections and the architecture of digital trust.',
+            'keywords'    => 'online elections for diaspora organisations, diaspora voting platform, secure online voting, verifiable elections, online election software, NRNA elections, digital democracy',
+            'robots'      => 'index, follow',
+        ],
     ],
 ];

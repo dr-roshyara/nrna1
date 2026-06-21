@@ -11,7 +11,7 @@
               {{ article.title }}
             </h1>
 
-            <!-- Subtitle (Part One: Three Words) -->
+            <!-- Subtitle -->
             <h2 class="font-serif text-2xl sm:text-3xl font-light mb-6 text-neutral-700 italic">
               {{ article.subtitle }}
             </h2>
@@ -33,19 +33,20 @@
 
           <!-- Article footer -->
           <footer class="mt-16 sm:mt-20 pt-8 sm:pt-12 border-t border-neutral-200">
-            <!-- Next part teaser -->
-            <div v-if="article.next_part" class="mb-12 p-6 sm:p-8 bg-neutral-100 border border-brand-gold-300 rounded-lg">
+            <!-- Companion article teaser -->
+            <div class="mb-12 p-6 sm:p-8 bg-neutral-100 border border-brand-gold-300 rounded-lg">
               <p class="text-sm uppercase tracking-widest text-brand-gold-700 font-semibold mb-2">
-                {{ article.next_part.status === 'coming_soon' ? 'Coming Soon' : 'Read Next' }}
+                Related Reading
               </p>
               <h2 class="text-xl sm:text-2xl font-serif font-bold text-neutral-900 mb-2">
-                {{ article.next_part.title }}
+                The Question That Changed Everything
               </h2>
-              <p v-if="article.next_part.status === 'coming_soon'" class="text-neutral-600">
-                Continuing the journey into constitutional governance systems and the role of AI in discovering domain architecture.
+              <p class="text-neutral-600 mb-4">
+                How a single question during a demo reshaped the way one diaspora organization
+                thinks about building trustworthy online elections.
               </p>
-              <a v-else :href="article.next_part.url" class="inline-flex items-center gap-2 mt-4 text-primary-600 hover:text-primary-700 font-medium transition-colors group">
-                Read Part {{ article.part + 1 }}
+              <a href="/ddd-article-part1" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium transition-colors group">
+                Read the companion article
                 <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
@@ -121,17 +122,6 @@ const readingTime = computed(() => {
   return Math.ceil(wordCount / 200)
 })
 
-// Format date helper
-const formatDate = (dateString) => {
-  if (!dateString) return ''
-  const date = new Date(dateString)
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
-}
-
 // Process markdown content into formatted HTML
 const processedContent = computed(() => {
   if (!props.article.content) return ''
@@ -139,64 +129,78 @@ const processedContent = computed(() => {
   const lines = props.article.content.split('\n')
   const result = []
   let currentParagraph = []
+  let listItems = []
+
+  const flushParagraph = () => {
+    if (currentParagraph.length > 0) {
+      result.push(formatParagraph(currentParagraph.join('\n')))
+      currentParagraph = []
+    }
+  }
+
+  const flushList = () => {
+    if (listItems.length > 0) {
+      const items = listItems
+        .map((item) => `<li class="text-neutral-700 text-lg leading-relaxed font-light">${applyMarkdownFormatting(item)}</li>`)
+        .join('')
+      result.push(`<ul class="list-disc pl-6 space-y-2 mb-6">${items}</ul>`)
+      listItems = []
+    }
+  }
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]
     const trimmed = line.trim()
 
+    // Unordered list items
+    if (trimmed.match(/^[-*]\s+/)) {
+      flushParagraph()
+      listItems.push(trimmed.replace(/^[-*]\s+/, ''))
+      continue
+    }
+
     if (trimmed === '---') {
-      if (currentParagraph.length > 0) {
-        result.push(formatParagraph(currentParagraph.join('\n')))
-        currentParagraph = []
-      }
+      flushParagraph()
+      flushList()
       result.push('<div class="my-8 border-t-2 border-brand-gold-200"></div>')
       continue
     }
 
     if (trimmed.match(/^###\s+/)) {
-      if (currentParagraph.length > 0) {
-        result.push(formatParagraph(currentParagraph.join('\n')))
-        currentParagraph = []
-      }
+      flushParagraph()
+      flushList()
       const heading = trimmed.replace(/^###\s+(.+)$/, '$1')
       result.push(`<h3 class="text-2xl font-serif font-bold mt-8 mb-4 text-neutral-900">${heading}</h3>`)
       continue
     }
 
     if (trimmed.match(/^##\s+/)) {
-      if (currentParagraph.length > 0) {
-        result.push(formatParagraph(currentParagraph.join('\n')))
-        currentParagraph = []
-      }
+      flushParagraph()
+      flushList()
       const heading = trimmed.replace(/^##\s+(.+)$/, '$1')
       result.push(`<h2 class="text-3xl font-serif font-bold mt-10 mb-5 text-neutral-900">${heading}</h2>`)
       continue
     }
 
     if (trimmed.match(/^#\s+/)) {
-      if (currentParagraph.length > 0) {
-        result.push(formatParagraph(currentParagraph.join('\n')))
-        currentParagraph = []
-      }
+      flushParagraph()
+      flushList()
       const heading = trimmed.replace(/^#\s+(.+)$/, '$1')
       result.push(`<h1 class="text-4xl font-serif font-bold mt-12 mb-6 text-neutral-900">${heading}</h1>`)
       continue
     }
 
     if (trimmed === '') {
-      if (currentParagraph.length > 0) {
-        result.push(formatParagraph(currentParagraph.join('\n')))
-        currentParagraph = []
-      }
+      flushParagraph()
+      flushList()
       continue
     }
 
     currentParagraph.push(line)
   }
 
-  if (currentParagraph.length > 0) {
-    result.push(formatParagraph(currentParagraph.join('\n')))
-  }
+  flushParagraph()
+  flushList()
 
   return result.join('')
 })
@@ -205,6 +209,7 @@ const formatParagraph = (text) => {
   const trimmed = text.trim()
   if (!trimmed) return ''
 
+  // Highlight "Approach A." / "Approach B." style lead-ins as callout blocks
   const conceptMatch = trimmed.match(/^\*\*([A-Za-z][^*]*?\.)\*\*\s+(.+)$/s)
   if (conceptMatch) {
     const concept = conceptMatch[1]

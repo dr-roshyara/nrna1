@@ -155,5 +155,97 @@ return [
             'keywords'    => 'Governance-Ebenen, Ausschusspyramide, Organisationsstruktur, geografischer Geltungsbereich, Ausschussverwaltung, Governance-Tutorial, NRNA Governance',
             'robots'      => 'index, follow',
         ],
+
+        'election-architecture' => [
+            'title'       => 'Wahlarchitektur & Zustandsmaschine | Public Digit',
+            'description' => 'Entdecken Sie Public Digits 5-Phasen-Wahllebenszyklus: eine manipulationssichere Zustandsmaschine für transparente, verifizierbare Wahlen mit unveränderlichen Prüfpfaden und kryptografischer Verifizierung.',
+            'keywords'    => 'Wahlarchitektur, Zustandsmaschine, Wahllebenszyklus, manipulationssichere Wahlen, Abstimmungssystemarchitektur, digitale Wahlplattform',
+            'robots'      => 'index, follow',
+        ],
+
+        'election-security' => [
+            'title'       => 'Wahlsicherheit & Zustandsmaschinentechnologie | Public Digit',
+            'description' => 'Erfahren Sie, wie unsere manipulationssichere Zustandsmaschine die Wahlintegrität durch unveränderliche Prüfpfade, kryptografische Verifizierung und überprüfbare Ergebnisse garantiert.',
+            'keywords'    => 'Wahlsicherheit, Zustandsmaschine, manipulationssicher, Prüfpfad, kryptografisch, Wahlintegrität',
+            'robots'      => 'index, follow',
+        ],
+
+        'votingSecurity' => [
+            'title'       => 'Sichere Wahl durchführen - Fünf-Schicht-Sicherheit für Online-Abstimmungen | Public Digit',
+            'description' => 'Sichere Wahl durchführen mit Public Digit. Fünf-Schicht-Sicherheitsarchitektur garantiert vollständige Anonymität, kryptographische Verifizierung und Multi-Tenant-Isolation. DSGVO-konform mit Geräte-Fingerprinting und End-to-End Verschlüsselung.',
+            'keywords'    => 'sichere Wahl durchführen, Online-Abstimmung sicher, sichere Wahlen für Vereine, Wahlsicherheit, anonyme Abstimmungen, kryptografische Verifizierung, Geräte-Fingerprinting',
+            'robots'      => 'index, follow',
+        ],
+
+        'committee_tutorial' => [
+            'title'       => 'Ausschussverwaltung Anleitung | Public Digit',
+            'description' => 'Erfahren Sie, wie Sie Ausschüsse erstellen, bearbeiten, Mitglieder verwalten und aus Ausschüssen entfernen. Schritt-für-Schritt-Anleitung für demokratische Organisationen.',
+            'keywords'    => 'Ausschussverwaltung, Anleitung, Leitfaden, demokratische Verwaltung, Wahlen, Ausschussleitung',
+            'robots'      => 'index, follow',
+        ],
+
+        'demo-guide' => [
+            'title'       => 'Online-Wahl Demo - Sichere anonyme Wahlen testen | Public Digit',
+            'description' => 'Erleben Sie eine vollständige Online-Wahl in 5 Schritten. Keine Registrierung erforderlich. Testen Sie sichere, anonyme, verifizierbare Wahlen mit Belegcode-Prüfung.',
+            'keywords'    => 'Online-Wahl Demo, Demo-Wahl, sichere Online-Wahl, anonymes Wahlsystem, wie online wählen, Wahlprüfung, anonym wählen, Online-Wahl kostenlos',
+            'robots'      => 'index, follow',
+        ],
+
+        'tutorials.election-settings' => [
+            'title'       => 'Wahlkonfiguration - Einstellungen erklaert | Public Digit',
+            'description' => 'Schritt-fuer-Schritt-Anleitung fuer alle Wahleinstellungen in Public Digit: IP-Beschraenkungen, Stimmzetteloptionen, Auswahlregeln und Waehlerverifizierung.',
+            'keywords'    => 'Wahleinstellungen, Online-Wahl konfigurieren, IP-Beschrankung Wahl, Wahlerverifizierung, Stimmzettel Einstellungen, Wahlverwaltung, Public Digit Anleitung',
+            'robots'      => 'index, follow',
+        ],
+
+        'tutorials.membership-modes' => [
+            'title'       => 'Mitgliedschaftsmodi - Vollständig vs. Wahl-Nur | Public Digit',
+            'description' => 'Verstehen Sie die Unterschiede zwischen Vollständiger Mitgliedschaft und Wahl-Nur-Modi. Lernen Sie, welcher Modus für Ihre Organisation geeignet ist und wie Sie wechseln können.',
+            'keywords'    => 'Mitgliedschaftsmodi, vollständige Mitgliedschaft, Wahlberechtigung, Wählerverifikation, Organisationseinstellungen, Mitgliedschaftsverwaltung, Online-Wahl, Public Digit Leitfaden',
+            'robots'      => 'index, follow',
+        ],
+
+        'elections.voters.import.tutorial' => [
+            'title'       => 'Wähler-Import Anleitung & Vollständiger Leitfaden | Public Digit',
+            'description' => 'Beherrschen Sie den Wählerimport für Wahlen auf Public Digit. Lernen Sie Vollständigem vs. Wahl-Nur-Modus, CSV-Formate, Massenregistrierung, Schritt-für-Schritt-Prozess und automatische Erstellung von Wählerkonten.',
+            'keywords'    => 'Wähler-Import, Wahlwähler, CSV-Import, Massenverwaltung, Wählerregistrierung, Wahlvorbereitung, Import-Anleitung, Mitgliedschaftsmodi',
+            'robots'      => 'index, follow',
+        ],
+
+        'organisations.settings' => [
+            'title'       => 'Organisationseinstellungen - {organisationName} | Public Digit',
+            'description' => 'Konfigurieren Sie den Mitgliedschaftsmodus und Organisationseinstellungen für {organisationName}. Verwalten Sie die Wählerberechtigung, wählen Sie zwischen Vollständiger Mitgliedschaft oder Wahl-Nur-Modus, mit {memberCount} Mitgliedern.',
+            'keywords'    => 'Organisationseinstellungen, Mitgliedschaftsmodus, vollständige Mitgliedschaft, Wahlberechtigung, Wählerverifizierung, Organisationsverwaltung, Mitgliederverwaltung, Public Digit Einstellungen',
+            'robots'      => 'index, follow',
+        ],
+
+        'newsletter-guide' => [
+            'title'       => 'Kompletter Newsletter-Leitfaden für Organisationen | Public Digit',
+            'description' => 'Beherrschen Sie Newsletter-Kampagnen für Ihre Organisation. Erlernen Sie Zielgruppensegmentierung, E-Mail-Komposition, Zustellungsverfolgung und Best Practices mit Public Digit.',
+            'keywords'    => 'Newsletter, Organisation E-Mail, Zielgruppensegmentierung, E-Mail-Kampagnen, Mitgliederkommunikation, Wahlmitteilungen, Massen-E-Mail, E-Mail-Marketing',
+            'robots'      => 'index, follow',
+        ],
+
+        'tutorials.voters-management' => [
+            'title'       => 'Wählerverwaltung - Vollständige Anleitung | Public Digit',
+            'description' => 'Erfahren Sie, wie Sie Wähler in Public Digit verwalten. Schritt-für-Schritt-Anleitung zum Hinzufügen, Importieren und Verwalten von Wählerlisten für Ihre Wahlen.',
+            'keywords'    => 'Wählerverwaltung, Wählerlisten, Wählerimport, Wahlwähler, Mitgliederverwaltung, Anleitung, Tutorial',
+            'robots'      => 'index, follow',
+        ],
+
+        // Thought-Leadership-Artikel — informativer SEO für Diaspora-Wahlgovernance
+        'who-watch-the-watchmen' => [
+            'title'       => 'Wahlprüfung für Diaspora-Organisationen | Public Digit',
+            'description' => 'Wer überwacht die Wächter? Eine verständliche Betrachtung unabhängiger Wahlaufsicht und -prüfung für Diaspora-Organisationen mit sicheren Online-Wahlen.',
+            'keywords'    => 'Wahlprüfung, Online-Wahlen für Diaspora-Organisationen, Diaspora-Wahlplattform, unabhängige Wahlaufsicht, sichere Online-Wahlen, überprüfbare Wahlen, NRNA-Wahlen, Online-Wahlsoftware Diaspora',
+            'robots'      => 'index, follow',
+        ],
+
+        'ddd-article-part-one' => [
+            'title'       => 'Vertrauenswürdige Online-Wahlen aufbauen | Public Digit',
+            'description' => 'Die Frage, die alles veränderte: Wie eine Diaspora-Organisation sichere, überprüfbare Online-Wahlen und die Architektur digitalen Vertrauens neu durchdachte.',
+            'keywords'    => 'Online-Wahlen für Diaspora-Organisationen, Diaspora-Wahlplattform, sichere Online-Wahlen, überprüfbare Wahlen, Online-Wahlsoftware, NRNA-Wahlen, digitale Demokratie',
+            'robots'      => 'index, follow',
+        ],
     ],
 ];
