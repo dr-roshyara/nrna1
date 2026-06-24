@@ -3,7 +3,7 @@
 **Program:** NRNA DDD Trustworthiness Research Program
 **Document:** External Validation Summary for OQ-38B05-05 (synthesis of EV-01–04)
 **Authority:** Senior Architect — synthesis of independent external input
-**Status:** ⏳ **TEMPLATE — to be completed AFTER external validation responses are collected.**
+**Status:** ⏳ **TEMPLATE — partially superseded.** As of 2026-06-24, the *A-vs-B selection* question was closed by leadership decision (`Round38C-14C`) on **sponsor authority, before external-expert validation was completed (external-expert n = 0).** This template was NOT completed for model selection. If EV-01–04 is still run, its purpose shifts from *model selection* to *safeguard design/validation* under the selected Option B. The Stream-1/Stream-2 records below remain valid; the human-validation streams remain n = 0.
 **Inputs:** EV-01–04 responses gathered using `01_Newspaper_Story.md`, `02_Constitutional_Case_Study.md`, `03_Research_Questions.md`, `04_Expert_Validation_Questionnaire.md`
 **Compared against:** `Round38C-14B_Architect_Preliminary_Hypothesis.md` (SEALED before collection)
 
@@ -31,7 +31,63 @@
 
 ---
 
+## Part 0.A — Evidence Streams & Interim Status (classification frame)
+
+All evidence for OQ-38B05-05 is classified into **three streams of different evidential weight**. Conflating them is the primary archive-integrity risk; the eventual 38C-15 ruling must cite the correct stream for each claim.
+
+**Stream 1 — Internal Discovery** (Rounds 38A–38C). *Purpose:* identify risks, formulate hypotheses. *Status:* **COMPLETE / SATURATED.** *Independence:* LOW (self-generated).
+
+**Stream 2 — Comparative / Literature & Model-Assisted Corroboration** (constitutional & election-law literature; LLM analyses — Claude/Perplexity/DeepSeek/etc. — of the *neutral* package). *Purpose:* does the discovered problem appear in established constitutional theory and historical practice? *Status:* **YES.** *Independence:* LOW–MEDIUM.
+- **CAN validate:** the problem is *recognizable*; it maps to known constitutional dilemmas — abusive constitutionalism / constitutional backsliding / autocratic legalism ("the danger is rule-*using*, not rule-*breaking*," aligning with PAN / Meta-CVI / CERD / gradual independence degradation); the concern is **not an artifact of internal vocabulary**; constitutional maturity surfaces independently as a material variable.
+- **CANNOT validate:** that Option A, Option B, or the phased model is *correct*; that NRNA should adopt any specific governance model. Those require Stream 3.
+- **Independence caveat:** multiple LLMs are **not** N independent sources — same literature, same scholarship, same examples, same training ecosystem, repackaged. Count as **one corroboration signal**, not a convergence of independents.
+
+**Stream 3 — Human Expert Validation** (constitutional scholars, election-law practitioners, diaspora-governance leaders, former election commissioners, constitutional judges if obtainable). *Purpose:* given NRNA's circumstances, what governance choice is justified? *Status:* **OPEN — human n = 0** (n = 1 only if a specific "external expert" response is confirmed to be from an actual human). Populated by Parts 1–6 below.
+
+### Interim status of propositions (Stream 1 + Stream 2 only — NOT human-validated)
+
+| Proposition | Status (Stream 1+2) |
+|---|---|
+| Independence is constitutionally important | CONFIRMED |
+| Single-sovereign concentration creates risk | CONFIRMED |
+| Slow lawful erosion is real | CONFIRMED |
+| Constitutional infancy is a material architectural variable | STRONGLY SUPPORTED |
+| Layered constitutional safeguards desirable in young systems | STRONGLY SUPPORTED |
+| Pure Functional Independence transfers directly to NRNA | NOT CONFIRMED |
+| Structural Independence is mandatory | NOT CONFIRMED |
+| Functional Independence is impossible | REJECTED |
+| Phased A→B is plausible | STRONGLY SUPPORTED |
+| Phased A→B is required | NOT ESTABLISHED |
+
+**Two binding caveats on this table:**
+1. **"Layered safeguards desirable" does NOT imply Structural Independence.** Germany, India, and Canada rely on layered entrenchment (multiple veto points, staggered appointments, difficult amendment, institutional norms) *without* source-level structural separation. Precise statement: *the evidence points toward layered constitutional safeguards; whether those safeguards require structural separation remains unresolved.*
+2. Every option-level row (transfer / mandatory / impossible / phased) reflects **corroboration only**. Human validation has not occurred.
+
+### Binding wording (do not strengthen beyond this)
+
+> **External corroboration strengthens the plausibility of the phased model. External (human) validation has not yet occurred.**
+
+The phased model has crossed from *speculative design idea* → *evidence-supported candidate*. It has **not** crossed to *conclusion*; "Phased A→B is required" = **NOT ESTABLISHED**.
+
+---
+
+## Part 0.B — Candidate Reframing of the Ruling Question (for 38C-15)
+
+The accumulating evidence suggests the primary unresolved variable is **not the architecture choice (A / B / phased) but the set of preconditions** under which any trust-verification mechanism can be relied upon. A/B/phased are *implementation strategies*; the preconditions are logically *prior to* them.
+
+Candidate reformulation of OQ-38B05-05 for the ARB — a **sharpening** of the 38C-14 Part 13 formulation, **not a new Open Question and not a new judgment call** (stopping rule preserved):
+
+> *What minimum constitutional conditions must exist before a trust-verification mechanism can be relied upon to protect election legitimacy over multiple constitutional generations?*
+
+This formulation is **strategy-neutral**: it admits A, B, phased, hybrid, and not-yet-identified options without locking the ARB into today's solution space, and it routes directly to **JC-03** (transferability) and **JC-05** (designability of the five conditions). It is the question EV closing-question C.1 probes (neutrally, without naming "maturity").
+
+**DDD-gate note.** It is tempting to label the precondition set the "Core Domain" and A/B/phased "implementation strategies." Substantively that may well be correct — but **designating a Core Domain is itself a DDD modeling act, which remains GATED until 38C-15 rules.** Recorded here as a candidate framing only; deliberately *not* stamped.
+
+---
+
 ## Part 1 — Independent Rediscovery (the strongest possible evidence)
+
+*This matrix tracks **Stream 3 (human)** rediscovery. Stream 2 (literature/model) rediscovery is already logged in Part 0.A at lower evidential weight; do not double-count it here.*
 
 The single most powerful result available is **independent rediscovery**: experts, given only the neutral situation, naming the same tension the program discovered internally — *without* our vocabulary.
 
