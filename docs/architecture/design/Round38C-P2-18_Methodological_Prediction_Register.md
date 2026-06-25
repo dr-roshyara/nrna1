@@ -80,9 +80,25 @@ Outcomes use **three values, not two**: **Supported · Narrowed · Refuted** (re
 | M-06 | **SUPPORTED** → lifecycle *Replicated* | blind sketch covered the space |
 | P-CAP | Inconclusive | F-PROC property is not resilience/capture |
 | P-D6 | Inconclusive | accountability out of F-PROC scope — defer to F-REV |
-| P-PATTERN | Weakened | F-PROC additive ≠ F-AUTH interacting; no shared pattern yet |
+| P-PATTERN | **No supporting evidence yet** | absence of supporting evidence (F-PROC produced little composite), *not* evidence against — F-THR may revive it |
 
-**New:** **M-07 (candidate, Observed across F-AUTH+F-PROC)** — families divide into **interacting/emergent** (composite = unit) vs **additive/independent** (mechanism = unit); **composite evaluation is conditional on cross-dimensional interaction**, not universal. M-07 is the refined replacement for the over-broad M-01. *Re-locked status pending F-THR.*
+**New observations / predictions (post-discovery):**
+- **M-07 (candidate typology, NOT a taxonomy; Confidence LOW, n=2):** evidence distinguishes ≥2 **interaction profiles** — *highly interacting* (composite = unit; F-AUTH) vs *largely additive* (mechanism = unit; F-PROC); composite evaluation appears **conditional** on cross-dimensional interaction. **Discrete classes vs continuum: undetermined.** Refined replacement for over-broad M-01.
+- **P-PROFILE (new prediction):** the next family's interaction profile is **Emergent / Additive / Mixed**. *A **Mixed** result ⇒ model topology as a **continuum**, not two classes.* Level: Architecture. Test family: **F-THR**.
+
+*Re-lock register before F-THR.*
+
+### Operational definitions (reduce interpretation ambiguity)
+
+- **"Single-mechanism dominates"** = adding any other mechanism produces **no material improvement** on the evaluation template.
+- **"Entirely novel mechanism"** = absent from literature **and** all prior families **and** the mechanism taxonomy (Class→Group).
+- **"Narrowed"** = the observation **remains valid under an explicitly reduced scope** (e.g. *only interacting families*, *only above a complexity threshold*) — not refuted, not unchanged.
+- **"Inconclusive"** = the family **lacks the conditions** to bear on the prediction.
+
+### Classification: empirical observations vs methodological rules
+
+- **Empirical observations** (claims about governance architecture; subject to family evidence): **M-01, M-02, M-03, M-04, M-07.**
+- **Methodological rules** (how we work; justified as practice, evolve by evidence): **R-01 = M-05** (orthogonal dimensions), **R-02 = M-06** (sketch-before-literature). These are *not* empirical discoveries in the same sense; they are kept on the lifecycle for replication but flagged as rules.
 
 ---
 

@@ -36,7 +36,7 @@ L0 Exploratory → L1 Repeatable → L2 Predictive → L3 Stable → L4 External
 | L3 Stable | predictions survive multiple families; **methodology saturation** (no protocol change across 2 consecutive families) | not yet |
 | L4 Externally validated | an independent team replicates classifications/results | not yet |
 
-**Current placement: L2 (Predictive).** Promotion to **L3** requires F-PROC + F-THR + F-REV to update the register without relaxing criteria *and* the yield/saturation metric (P2-SYN-01 §9) to flatten. **L4** requires §3.
+**Current placement: L2+ (Predictive, with first successful hostile replication).** F-PROC narrowed M-01/M-03 under the locked protocol without ad-hoc changes — a *successful* hostile replication, which strengthens L2 but is **not yet L3** (L3 needs the pattern across F-THR + F-REV too). Promotion to **L3** requires F-THR + F-REV to update the register without relaxing criteria *and* the yield/saturation metric (P2-SYN-01 §9) to flatten. **L4** requires §3 (independent replication).
 
 ---
 

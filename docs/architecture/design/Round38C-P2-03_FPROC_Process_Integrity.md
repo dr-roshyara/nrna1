@@ -47,7 +47,7 @@ A "process-integrity composite" *can* be written (deliberation + tenure + window
 | Target property | capture resistance (**emergent**) | process integrity (**additive**) |
 | Unit that matters | the **composite** | mostly the **individual mechanism** |
 
-**The two families have *different composite character*.** This is the central hostile-test finding: composites are **not** universal — some families are emergent (F-AUTH), some additive (F-PROC).
+**The two families have *different interaction topology*** (a measurable property — edge density/typing — not subjective "character"). This is the central hostile-test finding: composites are **not** universal — F-AUTH is densely interacting, F-PROC is largely additive.
 
 ## Step 5 — Prediction register update (UNLOCK → update; statuses binding)
 
@@ -61,10 +61,12 @@ A "process-integrity composite" *can* be written (deliberation + tenure + window
 | **M-06** sketch-before-literature | **SUPPORTED** (→ *Replicated*) | blind sketch covered the space; light literature need |
 | **P-CAP** resilience needs interaction | **Inconclusive** | F-PROC's property is not a resilience/capture property |
 | **P-D6** Accountability dimension | **Inconclusive** | F-PROC maps to existing dims; accountability mechanisms out of scope — defer to **F-REV** |
-| **P-PATTERN** recurring composites | **Weakened** | F-PROC's additive character does not match F-AUTH's interacting composite — no shared pattern yet |
+| **P-PATTERN** recurring composites | **No supporting evidence yet** | F-PROC produced little composite to compare — *absence of supporting evidence, not evidence against*; F-THR could still revive it |
 
 **New observation (added post-discovery, per lock rule):**
-> **M-07 (candidate):** Capability families divide into **interacting/emergent** families (composite is the unit; F-AUTH) and **additive/independent** families (mechanism is the unit; F-PROC). **Composite evaluation is *conditional* on cross-dimensional interaction, not universal.** This is the refined replacement for the over-broad M-01. *Status: Observed (F-AUTH + F-PROC give it 2-family support as a distinction).*
+> **M-07 (candidate typology — NOT yet a taxonomy):** Evidence currently distinguishes **at least two interaction profiles** — *highly interacting* (composite is the unit; F-AUTH) and *largely additive* (mechanism is the unit; F-PROC). **Composite evaluation appears *conditional* on cross-dimensional interaction, not universal** — the refined replacement for the over-broad M-01. *Whether these are **discrete classes or points on a continuum** is undetermined* — only two families seen; F-THR may be **mixed** (mostly additive + one emergent interaction), which would favour a continuum. *Lifecycle: Observed (2 families). Confidence: **Low** (n=2).*
+>
+> **M-07 is itself predictive:** F-THR must report its interaction profile as **Emergent / Additive / Mixed**. A *Mixed* result → model interaction topology as a **continuum**, not a binary. (Recorded in P2-18 as prediction **P-PROFILE**.)
 
 ---
 

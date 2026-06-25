@@ -80,7 +80,7 @@ Observed → Replicated → Reinforced → Working Method Principle → General 
 - **Replicated** — seen independently in a second.
 - **Reinforced** — holds across three+.
 - **Working Method Principle** — holds across all Pass-2 families without refutation.
-- **General Principle** — claimed beyond NRNA (requires external evidence; far off).
+- **General Principle** — claimed beyond NRNA. **Requires validation BEYOND the NRNA corpus** — a *different* governance framework **and** an *independent* team — **not** merely completing all internal families. Far off.
 
 **After F-AUTH (one family), M-01–M-06 are all at "Observed"** (M-05/M-06 additionally *process-adopted*). Nothing is past "Observed" yet — by design.
 
@@ -95,6 +95,8 @@ M-05 (orthogonal dimensions)
           ├─► M-03 (behaviour emergent)
           └─► M-04 (novelty in composition)
 ```
+
+*The arrows denote **evidential** dependency — "M-01 is easier to justify **if** M-05 holds" — **not** formal logical implication.*
 
 **Consequence:** M-05 is foundational; **M-01 is the hub**. If M-01 is *narrowed* (e.g. F-PROC is single-mechanism), M-02/M-03/M-04 narrow with it. If M-05 fails (a family needs a new dimension), the whole composite apparatus is scoped, not destroyed.
 
@@ -129,9 +131,22 @@ Updated after each family. Outcome ∈ {Supported, Narrowed, Refuted}.
 *\*F-OBS predates the methodology; counts only on retrofit.*
 **F-PROC result (hostile):** M-01/M-03 **narrowed** (composites family-specific); M-05/M-06 **replicated**; **M-07** introduced (interacting vs additive families). Yield: 1 new observation (M-07), 0 new dimensions, 0 protocol changes → consistent with maturing.
 
-**Per-family yield** (the saturation metric) — count for each family: new observations · protocol changes · new dimensions · new exclusions · new interaction types · new composites. **Yield → 0 ⇒ the methodology is maturing** (theoretical-saturation analogue).
+**Per-family yield** (the saturation metric) — count for each family: new observations · protocol changes · new dimensions · new exclusions · new interaction types · new composites. **Yield → 0 ⇒ the *protocol is stabilizing*** (theoretical-saturation analogue). **Saturation ≠ truth:** low yield indicates *stability of the current protocol*, **not** that the methodology is *correct*.
 
 **Methodology Saturation criterion:** *no protocol change required across **two consecutive** families.* Until then, the methodology is still evolving and must not be treated as final.
+
+## Part X — Scope of inference (every claim states its population)
+
+| Claim | Scope it addresses (and *only* this) |
+|-------|--------------------------------------|
+| **M-01 / M-07** | governance families analysed in **NRNA Pass 2** |
+| **M-03** | mechanisms identified within the **current NRNA corpus** |
+| **M-04** | composition novelty within the current corpus |
+| **R-01 / R-02** (M-05/M-06) | the **current methodology implementation** |
+| **L3** (Composition Architecture) | an **emerging abstraction within NRNA**, not a general claim |
+| **GRP-01** | single-source architectures **as instantiated by NRNA** |
+
+Statements about *governance systems in general* are **reserved for future external validation** (a non-NRNA framework + independent team). Nothing here claims beyond its row.
 
 ## Part 10 — F-PROC is a DELIBERATELY HOSTILE test
 
