@@ -2,7 +2,7 @@
 
 **Program:** NRNA DDD Trustworthiness Research Program
 **Document:** the single, versioned, **canonical** specification of the research methodology.
-**Version:** **0.9 — Controlled Working Specification.** *(Not v1.0: the maturity model says L2+, with M-07/P-PROFILE/P-PATTERN/P-D6 unresolved and F-THR/F-REV outstanding. v1.0 signals a stable core model — not yet reached.)*
+**Version:** **0.9.1 — Controlled Working Specification.** *(0.9.1 governed micro-bump: +MUST NOT keyword, extension-point frequency — ADR-M-007.)* *(Not v1.0: the maturity model says L2+, with M-07/P-PROFILE/P-PATTERN/P-D6 unresolved and F-THR/F-REV outstanding. v1.0 signals a stable core model — not yet reached.)*
 **Promotion rule:** promote to **v1.0 only after F-REV** confirms no *fundamental* restructuring (M-07 settling; no new dimension/profile forced). A fundamental change before then is a v0.x bump.
 **Status:** 🔒 **FROZEN for F-THR and F-REV** (frozen ≠ final; controlled & governed). Supersedes scattered phrasing in P2-00/17/18/19/SYN-01 (those remain detailed normative sources). Change only via **ADR-M + version bump** — never silently.
 **Incorporates evidence through:** F-OBS, F-AUTH, F-PROC.
@@ -10,9 +10,9 @@
 
 ---
 
-## 0. Normative conventions (RFC-2119 style)
+## 0. Normative conventions (RFC-2119 style)  *(v0.9.1: +MUST NOT; ADR-M-007)*
 
-**SHALL** = mandatory · **SHOULD** = strong recommendation (deviation requires recorded justification) · **MAY** = optional. Examples: the Prediction Register **SHALL** be locked before discovery; capability discovery **SHALL** precede DDD; rejected alternatives **SHALL** be retained with categorized reasons; the methodology **SHOULD** prefer the higher confidence/transferability option; a literature sweep **MAY** propose candidate terms (added only via §16).
+**MUST NOT** = prohibition (an invariant-class ban; stronger than SHALL) · **SHALL** = mandatory · **SHOULD** = strong recommendation (deviation requires recorded justification) · **MAY** = optional. Examples: DDD **MUST NOT** begin before the gate opens; predictions **MUST NOT** be edited during a locked discovery cycle; constitutional properties **MUST NOT** be modified by implementation concerns; the Prediction Register **SHALL** be locked before discovery; rejected alternatives **SHALL** be retained; the methodology **SHOULD** prefer higher confidence/transferability; a literature sweep **MAY** propose candidate terms (added only via §16).
 
 ---
 
@@ -110,13 +110,14 @@ Per capability/family: the **Mechanism Design Space Map** (Class→Group→Mecha
 
 New elements are introduced **only** via **ADR-M + version bump**, and each must pass the relevant gate before adoption:
 
-| Extension point | Admission gate |
-|-----------------|----------------|
-| New capability family | from Pass-1 capability set; not invented in Pass 2 |
-| New mechanism **dimension** (e.g. D6) | orthogonality tests (§ via P2-02I) + appears in ≥1 family as *unclassified residue* first |
-| New **interaction profile** (beyond Emergent/Additive/Mixed) | observed in a family; recorded as candidate (lifecycle Observed) |
-| New **validation metric** | justified by a threat it addresses (§9) |
-| New **literature category** | maps to exactly one research object (§14, D8) |
+| Extension point | Expected frequency | Admission gate |
+|-----------------|--------------------|----------------|
+| New capability family | **Common** | from Pass-1 capability set; not invented in Pass 2 |
+| New **interaction profile** (beyond Emergent/Additive/Mixed) | **Rare** | observed in a family; recorded as candidate (lifecycle Observed) |
+| New mechanism **dimension** (e.g. D6) | **Exceptional** | orthogonality tests + appears in ≥1 family as *unclassified residue* first |
+| New **validation metric** | **Exceptional** | justified by a threat it addresses (§9) |
+| New **methodology stage / lifecycle state** | **Extraordinary** | major version bump + ADR-M + rationale |
+| New **literature category** | Rare | maps to exactly one research object (§14, D8) |
 
 Uncontrolled addition (a new rule "because it's good") is forbidden — the freeze (P2-00 / this spec) governs.
 

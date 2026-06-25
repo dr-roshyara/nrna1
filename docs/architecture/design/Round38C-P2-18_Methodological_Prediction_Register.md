@@ -42,8 +42,8 @@ Outcomes use **three values, not two**: **Supported · Narrowed · Refuted** (re
 | M-02 | Weak | Low | Derived (← M-01) | Architecture | Observed |
 | M-03 | Weak | Low | Derived (← M-01) | Architecture | Observed |
 | M-04 | Weak | Low | Derived (← M-01) | Architecture | Observed |
-| M-05 | Moderate | Medium | Foundational | Method | Observed (adopted) |
-| M-06 | Moderate | Medium | Independent | Method | Observed (adopted) |
+| R-01 (=M-05) | Moderate | Medium | Foundational | **Method-rule** | **Replicated** (post-F-PROC) |
+| R-02 (=M-06) | Moderate | Medium | Independent | **Method-rule** | **Replicated** (post-F-PROC) |
 
 *Levels:* **Method** · **Architecture** · **Family** · **Project** — do not mix when reasoning about a result. *Independence:* Foundational / Derived / Dependent — **a Derived prediction failing matters less than its Foundational parent failing.**
 
