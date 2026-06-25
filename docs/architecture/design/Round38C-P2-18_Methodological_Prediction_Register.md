@@ -13,7 +13,7 @@ Every methodological observation carries four fields: **Observation · Predictio
 
 Before each family's discovery begins, the register is **LOCKED**. **No prediction may be added, removed, reworded, or re-scored during discovery.** After the family's formal document, the register is **UNLOCKED** and each prediction updated to exactly one status: **Supported / Narrowed / Refuted / Inconclusive** (the last when the evidence genuinely does not bear on it). Sequence: `Lock → discover → evaluate → unlock → update`. This removes even the *appearance* of hindsight bias and sits alongside the DDD gate as a standing rule.
 
-> **🔓 LOCK STATUS:** v1 was LOCKED for F-PROC; **UNLOCKED and updated post-F-PROC (v2, 2026-06-25)** — see Register Update Log. **Re-lock before F-THR.**
+> **🔒 LOCK STATUS:** v1 LOCKED for F-PROC; UNLOCKED + updated post-F-PROC (v2). **v3 — LOCKED for F-THR (2026-06-25) as constituent #2 of Methodology Baseline `MB-39.1` (`Round39-03`).** No prediction may be added, removed, reworded, or re-scored until the F-THR formal document is complete. Tests under F-THR: **P-PROFILE, P-CAP, M-07.**
 
 **Assumption vs Prediction (keep distinct):** an *assumption* (e.g. "composite evaluation is meaningful") underlies a *prediction* (e.g. "future families organize into composites"); the chain is Assumption → Prediction → Evidence → Conclusion. Only predictions are scored here.
 

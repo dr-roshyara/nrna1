@@ -30,8 +30,8 @@ Produce a complete, internally consistent, **versioned** specification of the re
 ```
 P1 Freeze & consolidate methodology  → D1 (done) → D3/D5/D6/D4
 P2 Literature integration             → D8 + D7
-P3 Re-lock prediction register
-P4 Run F-THR     (under Spec v0.9 (Controlled Working Specification), frozen)
+P3 Baseline Lock — assemble + freeze Methodology Baseline MB-39.1 (Round39-03; whole baseline, not just the register)
+P4 Run F-THR     (executed under immutable baseline MB-39.1; anomalies → Draft ADR only)
 P5 Run F-REV
 P6 Methodology synthesis (P2-SYN-FINAL)
 P7 Handbook Volume 6 (authoritative narrative of the *stable* methodology)
