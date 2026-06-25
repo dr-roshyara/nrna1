@@ -26,19 +26,21 @@
 
 ---
 
-## Category B — Confirmed observations (recorded; no new theory)
+## Category B — Confirmed observations (recorded with evidence; inputs to future synthesis)
 
-| ID | Observation | Recorded fact (nothing more) |
-|----|-------------|------------------------------|
-| **GAR-F1** | Sponsor / funder is an actor with capture potential | the program runs on *sponsor authority*; sponsor exists and is currently unmodeled as a capture actor. **Observation only** — no family, no mechanism. |
-| **GAR-F2** | Supply chain / vendors exist | supply-chain capture appears in the threat taxonomy with no corresponding actor. Taxonomy/actor mismatch noted. |
-| **GAR-C1** | Capability families are **not orthogonal** | F-THR demonstrably spans F-AUTH/F-PROC/F-REV. The family set is not an orthogonal basis. (No document *claimed* orthogonality → observation, not contradiction.) |
-| **GAR-D2** | GRP-THR-REV recursion is real and irreducible *given Option B* | already modeled in 40-04; restated as fact. |
-| **GAR-E3** | Constitutional self-interpretation recursion (Meta-CVI) exists | already named; *managed, not eliminated* (38C-15). |
-| **GAR-G1** | The lifecycle model omits the **inter-election / dormant period** | factual coverage gap in 40-02 §3 (the period exists; the model does not cover it). |
-| **GAR-H3** | Institutional decay is the dominant residual risk | = F-4; already established. |
+Recorded using the **methodology's evidence model** (evidence · confidence · transferability · population) so governance and methodology documents do not drift.
 
-*Category B items change no theory. GAR-F1/F2 and GAR-G1 are recorded as coverage facts to be addressed when the relevant family/lifecycle is next discovered — not now.*
+| ID | Observation | Evidence | Confidence | Transferability | Population |
+|----|-------------|----------|-----------|-----------------|-----------|
+| **GAR-F1** | Sponsor/funder is an unmodeled capture-surface actor | program runs on *sponsor authority* (38C-14C) | High (directly observed) | High (any sponsored org) | NRNA |
+| **GAR-F2** | Supply chain/vendors absent as actors | threat taxonomy lists supply-chain, no actor (40-02 §5) | Medium | High | NRNA |
+| **GAR-C1** | Capability families are **not orthogonal** | F-THR spans F-AUTH/F-PROC/F-REV (40-04 X-01) | High | Medium | 3 families |
+| **GAR-D2** | GRP-THR-REV recursion real, irreducible *given Option B* | 40-04 D5 | High | Medium (Option-B systems) | NRNA |
+| **GAR-E3** | Constitutional self-interpretation recursion (Meta-CVI) | 38C-15 | High | High | NRNA |
+| **GAR-G1** | Lifecycle omits **inter-election/dormant period** | 40-02 §3 coverage gap | Medium | High | NRNA |
+| **GAR-H3** | Institutional decay = dominant residual risk (F-4) | program-wide | High | High (founding-stage) | NRNA |
+
+***Category B observations do not* immediately *change theory.*** They are **recorded facts that become inputs to future synthesis, and may support or refute future theoretical developments** (e.g. GAR-C1 may later support reclassifying F-THR as cross-cutting — RQ-THR-01). GAR-F1/F2/G1 are coverage facts addressed when the relevant family/lifecycle is discovered — not now.
 
 ---
 

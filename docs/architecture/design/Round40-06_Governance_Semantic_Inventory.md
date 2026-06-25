@@ -2,11 +2,11 @@
 
 **Program:** NRNA DDD Trustworthiness Research Program
 **Type:** Semantic **Inventory** (NOT an Ontology) · **Under MB-39.1 (frozen)**
-**Status:** 🗂️ LIVING INVENTORY — records *observed* semantic conflicts; assigns **no definitions.** Updated by F-REV.
+**Status:** 🗂️ LIVING INVENTORY — records *observed* semantic conflicts **with provenance**; assigns **no definitions.** Updated by F-REV.
 **Date:** 2026-06-25
 
-> **Inventory vs Ontology (the whole point).** An **inventory** says *"we observed these meanings; status: unresolved."* An **ontology** says *"this is the meaning."* Governance discovery is **incomplete** (F-REV outstanding; taxonomy unsettled), so the latter is premature — exactly as a Ubiquitous Language is *discovered*, never fixed in advance (Evans). This document is therefore deliberately **small**: it catalogues, it does not define.
-> **Rule:** every entry lists observed meanings + status + what would resolve it. **No entry contains a chosen definition.** Resolution is deferred to post-F-REV (`Governance Ontology v1.0`).
+> **Inventory vs Ontology (the whole point).** An **inventory** says *"we observed these meanings; status: unresolved."* An **ontology** says *"this is the meaning."* Governance discovery is **incomplete** (F-REV outstanding; taxonomy unsettled), so the latter is premature — a Ubiquitous Language is *discovered*, never fixed in advance (Evans). This document **catalogues with provenance**; it does not define.
+> **Provenance rule:** every observed meaning records **where observed · evidence · confidence · alternative interpretations** (the methodology's own evidence model, reused so governance and methodology artifacts do not drift). **No entry contains a chosen definition.** Resolution deferred to post-F-REV (`Governance Ontology v1.0`).
 
 ---
 
@@ -14,38 +14,49 @@
 
 ```
 Term: Independence
-Observed meanings:
-  Meaning A — Institutional / source independence   (F-AUTH: who appoints; insulated appointment, S-3)
-  Meaning B — Operational / functional independence (F-THR: independent vantage to detect/act)
-  Meaning C — Decisional independence               (F-REV [predicted]: binding rulings free of influence)
+Observed meanings (with provenance):
+  Meaning A — Institutional / source independence
+     Observed in: F-AUTH (appointment design; insulated appointment, S-3)
+     Evidence: P2-02H-02 / F-AUTH texts        Confidence: Medium (1 family, no contradiction)
+     Alternatives: may be a facet of one concept, not separate
+  Meaning B — Operational / functional independence
+     Observed in: F-THR (independent vantage to detect/act)         Round40-02/03
+     Evidence: F-THR domain pass                Confidence: Medium
+     Alternatives: may reduce to "real independence" shared with A
+  Meaning C — Decisional independence
+     Observed in: F-REV [PREDICTED — not yet discovered]
+     Evidence: anticipated only                 Confidence: LOW (predicted)
+     Alternatives: may collapse into B once F-REV runs
 Conflict: one word, three mechanisms, three failure modes, three constitutional grounds.
 Status: UNRESOLVED — do NOT define.
-Resolves when: F-REV clarifies decisional independence (Meaning C); then assess whether A/B/C are
-  one concept with three facets or three distinct concepts.
-Blocks: Strategic DDD ubiquitous language (cannot freeze "independence" yet).
+Closes when: F-REV clarifies Meaning C; then decide one-concept-three-facets vs three-concepts.
+Blocks: Strategic DDD ubiquitous language.
 ```
 
 ## SI-02 — "Legitimacy" (GAR-I4)
 
 ```
 Term: Legitimacy
-Observed use: the emergent apex property in F-THR + cross-family synthesis ("emerges from the closed loop").
-Conflict: used as the keystone outcome everywhere but never defined; unclear whether it is
-  procedural (rules followed), sociological (accepted by members), or constitutional (mandate valid).
-Literature candidates (informs only, never dictates — ADR-M-011): procedural vs sociological vs
-  normative legitimacy (Weber/Beetham families); input/output/throughput legitimacy. NOT adopted.
+Observed use: emergent apex property in F-THR + cross-family synthesis ("emerges from the closed loop").
+   Observed in: Round40-02/03/04         Evidence: synthesis-level     Confidence: Low (undefined)
+Conflict: keystone outcome everywhere, never defined — procedural? sociological? constitutional?
+Alternative interpretations: procedural (rules followed) / sociological (members accept) /
+   constitutional (mandate valid) — undetermined.
+Literature candidates (informs only, never dictates — ADR-M-011): Weber/Beetham legitimacy
+   families; input/output/throughput legitimacy. NOT adopted.
 Status: UNRESOLVED — concept-under-investigation; do NOT define.
-Resolves when: enough families exist to say what legitimacy is *composed of* (synthesis after F-REV).
+Closes when: enough families exist to say what legitimacy is *composed of* (synthesis after F-REV).
 ```
 
 ## SI-03 — "Oversight" / "Authority" / "Adjudication" (GAR-I2)
 
 ```
 Terms: Oversight, Authority, Adjudication
-Observed overlap: used loosely across F-AUTH (authority to appoint), F-THR (oversight to detect),
-  F-REV (adjudication to rule) — boundaries between them are blurred.
-Status: UNRESOLVED — likely 3 distinct roles, possibly one "Oversight & Adjudication" domain.
-Resolves when: F-REV defines adjudication; then separate from oversight/authority.
+Observed in: F-AUTH (authority to appoint) · F-THR (oversight to detect) · F-REV [PRED] (adjudication to rule)
+Evidence: cross-family use        Confidence: Medium that they differ; Low on the boundaries
+Conflict: used loosely; boundaries blurred.
+Alternative interpretations: 3 distinct roles vs one "Oversight & Adjudication" domain.
+Status: UNRESOLVED.   Closes when: F-REV defines adjudication; then separate from oversight/authority.
 ```
 
 ## SI-04 — "Evidence" (GAR-I3)
@@ -53,37 +64,37 @@ Resolves when: F-REV defines adjudication; then separate from oversight/authorit
 ```
 Term: Evidence
 Observed meanings:
-  F-PROC — the audit trail / process record (produced)
-  F-THR  — detection evidence (consumed to verify a capture)
-  F-REV  — adjudication evidence (consumed to rule)
+  F-PROC — audit trail / process record (produced)     Confidence: High (concrete artifact)
+  F-THR  — detection evidence (consumed to verify capture)
+  F-REV  — adjudication evidence [PREDICTED]
 Apparent status: CONSISTENT (all = "reviewable record") but UNCONFIRMED across families.
-Status: PROVISIONALLY CONSISTENT — flag, do not freeze.
-Resolves when: F-REV confirms whether adjudication evidence is the same artifact.
+Alternatives: adjudication evidence may have admissibility rules the others lack.
+Status: PROVISIONALLY CONSISTENT — flag, do not freeze.   Closes when: F-REV confirms.
 ```
 
 ## SI-05 — "Independence: property or domain?" (GAR-C3)
 
 ```
 Question form (not a term conflict): is Independence a candidate governance *domain*
-  or a *property of* the Oversight & Adjudication domain?
-Status: UNRESOLVED — linked to SI-01; cross-references RQ-SEM-01.
+   or a *property of* the Oversight & Adjudication domain?
+Linked to: SI-01; RQ-SEM-01.   Status: UNRESOLVED.   Closes when: SI-01 resolves (post-F-REV).
 ```
 
 ---
 
 ## Inventory status summary
 
-| Entry | Term | Status | Resolves with |
-|-------|------|--------|---------------|
-| SI-01 🔴 | Independence | UNRESOLVED (Critical) | F-REV + cross-family |
-| SI-02 | Legitimacy | UNRESOLVED | more families |
-| SI-03 | Oversight/Authority/Adjudication | UNRESOLVED | F-REV |
-| SI-04 | Evidence | PROVISIONALLY CONSISTENT | F-REV |
-| SI-05 | Independence: property vs domain | UNRESOLVED | F-REV (with SI-01) |
+| Entry | Term | Status | Provenance breadth | Closes with |
+|-------|------|--------|--------------------|-------------|
+| SI-01 🔴 | Independence | UNRESOLVED (Critical) | F-AUTH + F-THR (+F-REV pred) | F-REV + cross-family |
+| SI-02 | Legitimacy | UNRESOLVED | synthesis-level only | more families |
+| SI-03 | Oversight/Authority/Adjudication | UNRESOLVED | 3 families | F-REV |
+| SI-04 | Evidence | PROVISIONALLY CONSISTENT | F-PROC/F-THR (+F-REV pred) | F-REV |
+| SI-05 | Independence: property vs domain | UNRESOLVED | linked SI-01 | post-F-REV |
 
-**Nothing in this document is a definition.** The Governance Ontology v1.0 is built **after** F-REV, from a complete-enough theory.
+**Nothing here is a definition.** Governance Ontology v1.0 is built **after** F-REV.
 
 ---
 
-*Round 40-06 — Governance Semantic Inventory — ISSUED (living; conflicts recorded, no definitions).*
-*5 entries; SI-01 "Independence" Critical. Ontology deferred to post-F-REV. MB-39.1 FROZEN · DDD GATED.*
+*Round 40-06 — Governance Semantic Inventory — ISSUED (living; conflicts + provenance recorded, no definitions).*
+*5 entries; SI-01 "Independence" Critical. Provenance per meaning (where/evidence/confidence/alternatives). Ontology deferred to post-F-REV. MB-39.1 FROZEN · DDD GATED.*
