@@ -44,6 +44,7 @@ P8 Strategic DDD  (gate opens)
 - **DDD gate stays closed.** DDD-R *prepares* (identifies stable vs provisional concepts); it does **not** design contexts/aggregates.
 - **Handbook Volume 6 waits** until after F-REV — it must narrate the *finalized* methodology, not an evolving one.
 - **Three research objects must not be conflated** (D7): Governance / Methodology / Software Translation.
+- **Families propose; governance enacts.** Family documents (F-THR, F-REV) **MUST NOT** directly modify the methodology or the Spec. A discovered anomaly becomes a **Draft ADR-M proposal** reviewed *after* the family (sponsor + ARB), then — if accepted — a Spec version bump before the next family. See `Round39-D6` *Methodology change process (BINDING)*.
 
 ---
 
