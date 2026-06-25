@@ -16,6 +16,21 @@ Pass 2 changes the abstraction (from *what capability* to *how realized*) and wi
 
 **Terminology guard:** mechanisms are grouped into **mechanism classes / categories** — **not** "mechanism families." "Family" is reserved for *capability* families (GLOSSARY-01); do not overload it.
 
+### Pass 2 pipeline (enriched)
+
+```
+Capability
+  → Mechanism Design Space (discover)
+  → Mechanism Classes (classify; Rule 7)
+  → Mechanism Candidates (individual options)
+  → Mechanism Architectures (compositions; Rule 10)
+  → Evaluation (functional + architectural; Rule 8)
+  → Recommendation OR "no dominant mechanism" (Rule 9)
+  → Archive (rejected retained — Rule 6; patterns — Rule 11; open questions)
+```
+
+Many governance mechanisms are **compositional**: several mechanisms combine into one *architecture* (e.g. appointment diversity ≈ staggered terms + regional nomination + term limits + eligibility screening) rather than four competitors. Composition is a first-class step, not an afterthought.
+
 ---
 
 ## The six rules (binding)
@@ -49,18 +64,30 @@ A mechanism can pass functional fitness yet fail architectural fitness (e.g. an 
 
 **Rule 9 — "No dominant mechanism" is a valid outcome.** Pass 2 does **not** force a recommendation. If no candidate dominates, the honest result is *"no dominant mechanism — alternatives carried into Strategic DDD"* with pros/cons preserved.
 
+**Rule 10 — Mechanisms may be compositional.** Record **mechanism architectures** (named combinations that together realize a capability), not only competing singletons. A combination is evaluated as one architecture.
+
+**Rule 11 — Record reusable governance mechanism patterns.** When the same composition recurs across capabilities (e.g. *Detection → Review → Correction*; *Distribution → Entrenchment → Observability*), record it as a **pattern**. Patterns are often more valuable than isolated mechanisms. (Note: some patterns echo EGCP stages — record the echo, do not redefine EGCP.)
+
+**Rule 12 — Evidence strength + origin per mechanism.** Each mechanism records **evidence strength** (★1 research hypothesis … ★5 used in many real institutions) and **origin** (constitutional law / election administration / judicial administration / governance frameworks / enterprise architecture / safety-critical systems / **NRNA original** / **derived combination**).
+
+**Rule 13 — Constraint map per mechanism.** Each mechanism records which properties (S-1..S-5), capabilities, and families it **supports**, the **dependencies** it creates, and its **GRP effect** (strengthen / neutral / weaken). This keeps Pass 2 from becoming local optimization.
+
+**Rule 14 — Literature informs the space; it does not constrain it.** Include excellent mechanisms found in literature; **design novel** mechanisms where literature is silent; a mechanism that improves on the literature is an acceptable outcome. The program is *creating* a constitutional architecture, not surveying existing ones. Literature broadens the design space; it does **not** reopen the constitutional architecture (that phase is closed).
+
 ---
 
 ## Per-capability output format (Pass 2)
 
-For each capability (or each **shared design space** within a family — explore once, map per capability), Pass 2 produces **six outputs**:
+For each capability (or each **shared design space** within a family — explore once, map per capability), Pass 2 produces:
 
 1. **Mechanism design space** — the mapped set of candidate realizations.
-2. **Classification** — candidates grouped into mechanism classes (Rule 7).
-3. **Evaluation matrix** — each candidate on functional + architectural fitness (Rule 8), using the template below.
-4. **Recommendation** — the mechanism(s) carried forward **or** an explicit *"no dominant mechanism"* (Rule 9), with rationale.
-5. **Rejected alternatives (retained)** — the rest + reason (Rule 6).
-6. **Open research questions** — surfaced but not resolved.
+2. **Classification** into mechanism classes (Rule 7).
+3. **Mechanism candidates** (individual) **and mechanism architectures** (compositions, Rule 10).
+4. **Evaluation matrix** — functional + architectural fitness (Rule 8); with evidence strength + origin + constraint map (Rules 12–13).
+5. **Recommendation** OR explicit *"no dominant mechanism"* (Rule 9), with rationale.
+6. **Rejected alternatives (retained)** + reason (Rule 6).
+7. **Governance mechanism patterns** surfaced (Rule 11).
+8. **Open research questions**.
 
 Every entry carries its **upward trace** (Rule 2): Mechanism → Capability → Family → Property → Constitution.
 
@@ -69,14 +96,15 @@ Every entry carries its **upward trace** (Rule 2): Mechanism → Capability → 
 | Criterion | Score / Finding |
 |-----------|-----------------|
 | Satisfies capability (**functional fitness**) | ✓ / Partial / ✗ |
+| **Evidence strength** (Rule 12) | ★1…★5 |
+| **Origin** (Rule 12) | lit domain / NRNA original / derived combination |
 | Constitutional alignment | |
 | Option-B consistency | |
-| GRP impact (strengthen / neutral / weaken) | |
+| **GRP impact** (Rule 13) | strengthen / neutral / weaken |
+| **Constraint map** (Rule 13) | supports S-? / capabilities / families; dependencies created |
 | Family reuse | |
 | Cross-family coupling | |
-| Complexity | |
-| Transparency | |
-| Evolvability | |
+| Complexity / Transparency / Evolvability | |
 | Failure modes | |
 | Open questions | |
 
@@ -87,6 +115,42 @@ This is **governance architecture, not software.** **Still forbidden:** bounded 
 ## Pass 2 completion criterion (prevents indefinite expansion)
 
 Pass 2 is **complete** when **every capability** has: (a) an explored, classified mechanism design space; (b) a comparative evaluation (functional + architectural fitness); (c) either a recommended mechanism **or** an explicit *"no dominant mechanism"* conclusion; (d) documented rationale; (e) preserved rejected alternatives; and (f) recorded open research questions. Anything beyond this (detailed design of the chosen mechanism) is Strategic/Tactical DDD and remains gated.
+
+---
+
+## Literature protocol (Pass 2 role)
+
+**Direction is reversed from the constitutional phase.** The architecture now *asks the literature questions*; literature no longer drives the architecture. Literature **broadens and validates the mechanism design space** — it does **not** reopen constitutional properties.
+
+**Literature categories:**
+| Cat | Domain | Pass-2 use |
+|-----|--------|-----------|
+| A | Constitutional theory (separation of powers, courts, amendment, backsliding) | **CLOSED** — revisit only on genuinely new evidence |
+| B | Institutional design (judicial appointment, regulators, ombudsmen, audit offices, election commissions, central banks) | **YES** — mechanism references |
+| C | Governance engineering (governance frameworks, assurance, accountability, control, operating models) | **YES** — maps to capability families |
+| D | Systems / safety architecture (systems eng., enterprise arch., control theory, safety-critical assurance, recursive/meta-governance) | **IMPORTANT** — esp. for GRP/observability/review analogues |
+
+**Family ↔ literature-domain map:**
+| Family | Literature domains |
+|--------|--------------------|
+| F-OBS | monitoring, auditing, observability, assurance |
+| F-REV (Constitutional Review) | review systems, adjudication, judicial administration (recusal/standing/case assignment/appeals) |
+| F-THR | amendment/entrenchment, eternity clauses |
+| F-AUTH | appointment systems, delegation, regulator/board composition |
+| F-PROC | workflow/lifecycle governance, tenure/succession |
+
+**Per-source extraction (read nothing that can't fill these):**
+| Field | Purpose |
+|-------|---------|
+| Source / Domain | traceability + category |
+| Mechanism class / Mechanism | classification + candidate |
+| Supported capability / property | upward trace |
+| Evidence strength | confidence (Rule 12) |
+| Advantages / Disadvantages | evaluation |
+| Cross-family effects | architectural fitness |
+| Open questions | continuity |
+
+If a source cannot fill these fields for a *mechanism*, it is out of scope for Pass 2.
 
 ---
 
@@ -115,6 +179,7 @@ F-REV  (Constitutional Review)    ← last: the hub; most entangled with GRP; ne
 - **S-3 status** (Authority-refinement vs meta/relationship level) — affects *organization* only; GC-S3-03's mechanism space is the one place this may surface (SYN-03 Part 5 watch item).
 - **Shared-capability consolidation** — taken up **after** Pass 2, **before** Strategic DDD.
 - **RQ-SYN02-01** (are families Option-B artifacts?) — recorded, not investigated in Pass 2.
+- **P2-01 (F-OBS) predates this enrichment.** Its substantive findings stand (classes, layered-composite recommendation, anonymity constraint, rejected set). It will receive a **light retrofit** (evidence strength, origin, constraint map, patterns) at the Pass-2 consolidation — not re-done. F-AUTH onward uses the enriched format directly.
 
 ---
 
