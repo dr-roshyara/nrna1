@@ -1,10 +1,27 @@
-# Round 39-02 — Methodology Integrity Audit (D5) + Coverage Matrix (D5.1) + Freeze Review
+# Round 39-02 — Methodology Integrity Validator (D5) + Coverage Matrix (D5.1) + Freeze Review
+
+*(a conformance validator, not a "compiler" — research includes interpretive decisions)*
 
 **Program:** NRNA DDD Trustworthiness Research Program
 **Workstream:** Round 39 (Methodology Stabilization) — D5
-**Status:** AUDIT — a *compiler pass* over the methodology, not a review. Findings are fixed, not just noted.
+**Status:** **Methodology Integrity Validator** pass (typed validators with severity) — **not a "compiler."** A compiler is deterministic (one syntax, one semantics); a research methodology contains **interpretive decisions** (e.g. is a mechanism D2 or D5?) that are judgments, not syntax errors. So this is a *conformance validator*, not a compiler.
 **Scope:** P2-00, P2-17, P2-18, P2-19, P2-SYN-01, GLOSSARY-01, Round39-01 (Spec v0.9.1), and the family docs P2-01/02/03.
 **Date:** 2026-06-25
+
+## Severity model (every finding is typed)
+
+| Severity | Action | Blocks F-THR? |
+|----------|--------|---------------|
+| **Critical** | must be resolved now (e.g. a prediction edited after lock) | **YES** |
+| **Major** | requires documented resolution | only if unresolved |
+| **Minor** | warning | no |
+| **Informational** | recommendation | no |
+
+Each validator returns **Pass / Warning / Failure** with a severity. **Only Critical blocks F-THR.**
+
+## Validator suite (10)
+
+1 Semantic · 2 Lifecycle · 3 Traceability · 4 Governance-boundary · 5 **Evidence-dependency** · 6 Prediction-lock · 7 Coverage (D5.1) · 8 Version · 9 ADR-consistency · 10 Freeze-readiness.
 
 ---
 
@@ -60,7 +77,57 @@
 
 ---
 
+## Validator 4 (cont.) — Research-object boundary contract (explicit allowed flows)
+
+Generalized beyond Governance↛Software to **all three** research objects:
+
+| From → To | Allowed |
+|-----------|---------|
+| Governance → Methodology | **Evidence only** |
+| Methodology → Governance | **Protocol only** (never alters properties — INV-5) |
+| Governance → Software | **Semantically-stable concepts only** (gated) |
+| Software → Governance | **Never** |
+| Software → Methodology | **Never** |
+| Methodology → Software | **Never** (until DDD authorized) |
+
+**Pass** — no observed violation.
+
+## Validator 5 — Evidence Dependency (every rule cites its evidence)
+
+Each methodology rule answers *"what evidence supports me?"* Rules with none are flagged **Unverified** (not blocking, but explicit).
+
+| Rule | Evidence | Status |
+|------|----------|--------|
+| Prediction Lock | research-rigor design (P2-19) | grounded |
+| Composite-conditional (M-07) | F-AUTH + F-PROC | grounded (2 families) |
+| Orthogonal dimensions (R-01) | F-AUTH + F-PROC | grounded |
+| Sketch-before-literature (R-02) | F-AUTH + F-PROC convergence | grounded |
+| Transferability axis | F-AUTH (state-vs-association) | grounded (1 family) — **Warning: thin** |
+| Three-space model | F-AUTH exclusions | grounded (1 family) — **Warning: thin** |
+
+**Pass with warnings** (two rules rest on one family — acceptable for v0.9; flagged).
+
+## Validators 6 / 8 / 9 (brief)
+
+- **6 Prediction-lock:** register was locked before F-PROC, unlocked after; no prediction edited mid-cycle → **Pass (no Critical)**.
+- **8 Version:** Spec v0.9.1 (governed bump, ADR-M-007); register v2; frozen docs dated → **Pass**.
+- **9 ADR-consistency:** ADR-M-001..007 referenced; **log not yet standalone (F-3, Minor → D6)** → **Warning**.
+
+## Findings summary (severity-typed)
+
+| Finding | Severity | Disposition |
+|---------|----------|-------------|
+| F-1 dual naming M-05/06 ↔ R-01/02 | **Major** | **FIXED** (canonicalized as method-rules) |
+| F-2 lifecycle state staleness (P2-18) | **Major** | **FIXED** (→ Replicated) |
+| F-3 ADR-M log not standalone | **Minor** | open → **D6** |
+| F-4 F-OBS predates enriched methodology | **Minor** | known; light retrofit at consolidation |
+| Thin evidence (transferability, three-space) | **Informational** | flagged; acceptable at v0.9 |
+
+**No Critical findings → F-THR is not blocked.**
+
 ## D5.1 — Methodology Test Coverage Matrix (what has been *exercised*)
+
+*Coverage categories (not numeric %): **Not exercised · Partially exercised · Fully exercised · Replicated · Cross-family validated.***
 
 | Rule / construct | Exercised? | By |
 |------------------|-----------|----|
@@ -100,14 +167,15 @@
 ## Deliverable & next
 
 ```
-D5 Integrity Audit: PASS (5 dimensions); 4 findings — F-1/F-2 FIXED, F-3 (ADR-M log → D6), F-4 (F-OBS retrofit, known)
-D5.1 Coverage matrix: core loop EXERCISED; generalization constructs PENDING (= why v0.9)
-Freeze Review: Q1-Q5 satisfied → Spec v0.9.1 READY to govern F-THR
+Methodology Integrity Validator: 10 validators run; PASS overall, NO Critical findings
+Findings: F-1/F-2 Major (FIXED); F-3 Minor (->D6); F-4 Minor (known); 2 Informational (thin evidence)
+D5.1 Coverage: core loop EXERCISED; generalization constructs NOT-exercised (= why v0.9)
+Freeze Review: Q1-Q5 satisfied -> Spec v0.9.1 READY to govern F-THR (not blocked)
 ```
 
-**Next:** **D6** (ADR-M log, closes F-3) — quick — then **re-lock register → F-THR**. D4 (traceability matrix) and D7/D8 (research-object/literature) and DDD-Readiness can follow F-THR without blocking it.
+**Next:** **D6** (ADR-M log, closes F-3 Minor) — quick — then **re-lock register → F-THR**. D4 (traceability), D7/D8 (research-object/literature), and the **DDD Readiness Assessment** can follow without blocking F-THR. *DDD-R note:* classify concepts as **Semantically Stable** (functionally *and* terminologically stable) → candidate ubiquitous language, vs **Provisional** (e.g. M-07, P-PROFILE) → blocked. Nothing more (no contexts/aggregates).
 
 ---
 
-*Round 39-02 — Methodology Integrity Audit (D5) + Coverage (D5.1) + Freeze Review — ISSUED*
-*5 integrity dimensions PASS (2 findings fixed inline); core loop exercised; Spec v0.9.1 cleared to govern F-THR. Strategic DDD GATED.*
+*Round 39-02 — Methodology Integrity **Validator** (D5) + Coverage (D5.1) + Freeze Review — ISSUED*
+*10 typed validators, severity-graded; PASS, NO Critical; 2 Major findings fixed inline; core loop exercised; Spec v0.9.1 cleared to govern F-THR. Strategic DDD GATED.*
