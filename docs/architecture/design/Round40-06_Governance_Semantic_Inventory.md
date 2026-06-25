@@ -28,9 +28,9 @@ Observed meanings (with provenance):
      Evidence: anticipated only                 Confidence: LOW (predicted)
      Alternatives: may collapse into B once F-REV runs
 Conflict: one word, three mechanisms, three failure modes, three constitutional grounds.
-Status: UNRESOLVED — do NOT define.
-Closes when: F-REV clarifies Meaning C; then decide one-concept-three-facets vs three-concepts.
-Blocks: Strategic DDD ubiquitous language.
+Status: ✅ RESOLVED (post-F-REV) → Governance Ontology v1.0 §3: FOUR concepts —
+  Decisional ⟹ Operational ⟹ Institutional (dependency chain) + orthogonal Perceived.
+Closed by: Round41-01 (F-REV) + Round43-01 (Ontology v1.0).
 ```
 
 ## SI-02 — "Legitimacy" (GAR-I4)
@@ -44,8 +44,10 @@ Alternative interpretations: procedural (rules followed) / sociological (members
    constitutional (mandate valid) — undetermined.
 Literature candidates (informs only, never dictates — ADR-M-011): Weber/Beetham legitimacy
    families; input/output/throughput legitimacy. NOT adopted.
-Status: UNRESOLVED — concept-under-investigation; do NOT define.
-Closes when: enough families exist to say what legitimacy is *composed of* (synthesis after F-REV).
+Status: ✅ RESOLVED (post-F-REV) → Governance Ontology v1.0 §4: EMERGENT composite
+  {consent, independence×4, finality, transparency, correctability}; continuously renewed;
+  asymmetric; partially recoverable. (Component "consent" decomposition still open — O-REV-Q1.)
+Closed by: Round41-01 (F-REV) + Round43-01 (Ontology v1.0).
 ```
 
 ## SI-03 — "Oversight" / "Authority" / "Adjudication" (GAR-I2)
@@ -86,8 +88,8 @@ Linked to: SI-01; RQ-SEM-01.   Status: UNRESOLVED.   Closes when: SI-01 resolves
 
 | Entry | Term | Status | Provenance breadth | Closes with |
 |-------|------|--------|--------------------|-------------|
-| SI-01 🔴 | Independence | UNRESOLVED (Critical) | F-AUTH + F-THR (+F-REV pred) | F-REV + cross-family |
-| SI-02 | Legitimacy | UNRESOLVED | synthesis-level only | more families |
+| SI-01 🔴 | Independence | ✅ RESOLVED → Ontology v1.0 §3 (4 concepts) | F-AUTH + F-THR + F-REV | F-REV (done) |
+| SI-02 | Legitimacy | ✅ RESOLVED → Ontology v1.0 §4 (emergent composite) | F-REV + synthesis | F-REV (done) |
 | SI-03 | Oversight/Authority/Adjudication | UNRESOLVED | 3 families | F-REV |
 | SI-04 | Evidence | PROVISIONALLY CONSISTENT | F-PROC/F-THR (+F-REV pred) | F-REV |
 | SI-05 | Independence: property vs domain | UNRESOLVED | linked SI-01 | post-F-REV |
