@@ -1,10 +1,18 @@
-# Round 39-01 — Governance Architecture Research Methodology — Specification v1.0
+# Round 39-01 — Governance Architecture Research Methodology — Controlled Working Specification
 
 **Program:** NRNA DDD Trustworthiness Research Program
 **Document:** the single, versioned, **canonical** specification of the research methodology.
-**Status:** 🔒 **v1.0 — FROZEN for F-THR and F-REV.** Supersedes scattered phrasing in P2-00/17/18/19/SYN-01 (those remain the detailed normative sources; this is the consolidated reference). Change only via ADR-M + version bump.
+**Version:** **0.9 — Controlled Working Specification.** *(Not v1.0: the maturity model says L2+, with M-07/P-PROFILE/P-PATTERN/P-D6 unresolved and F-THR/F-REV outstanding. v1.0 signals a stable core model — not yet reached.)*
+**Promotion rule:** promote to **v1.0 only after F-REV** confirms no *fundamental* restructuring (M-07 settling; no new dimension/profile forced). A fundamental change before then is a v0.x bump.
+**Status:** 🔒 **FROZEN for F-THR and F-REV** (frozen ≠ final; controlled & governed). Supersedes scattered phrasing in P2-00/17/18/19/SYN-01 (those remain detailed normative sources). Change only via **ADR-M + version bump** — never silently.
 **Incorporates evidence through:** F-OBS, F-AUTH, F-PROC.
 **Date:** 2026-06-25
+
+---
+
+## 0. Normative conventions (RFC-2119 style)
+
+**SHALL** = mandatory · **SHOULD** = strong recommendation (deviation requires recorded justification) · **MAY** = optional. Examples: the Prediction Register **SHALL** be locked before discovery; capability discovery **SHALL** precede DDD; rejected alternatives **SHALL** be retained with categorized reasons; the methodology **SHOULD** prefer the higher confidence/transferability option; a literature sweep **MAY** propose candidate terms (added only via §16).
 
 ---
 
@@ -16,7 +24,9 @@ Translate constitutional intent into software through a disciplined, **traceable
 
 The 13 disciplines (Handbook V0 §4) plus: **discover → synthesize → validate → continue**; **discovery, not optimization** (every mechanism is a hypothesis); **literature informs, never dictates**; **provisional ≠ adopted; working model ≠ established.**
 
-## 3. Definitions (ontology — authoritative)
+## 3. Ontology & glossary (distinct artifacts)
+
+**3.1 Ontology — *what exists* and how it relates** (the entity types of the methodology). **3.2 Glossary — *what each word means*** lives in GLOSSARY-01 (frozen); word-meaning changes go there, ontology/relationship changes go here. The entities below are the ontology; their interactions are governed by the dependency graph (G1/G2) and the lifecycle (§4).
 
 - **Constitutional Property (S-1..S-5)** — a binding requirement (what must be protected).
 - **Governance Capability (`GC-Sx-xx`)** — what the system must be able to do (purpose-only).
@@ -88,6 +98,28 @@ Per capability/family: the **Mechanism Design Space Map** (Class→Group→Mecha
 - **Scope of inference:** every claim states its population; nothing claims beyond NRNA without external validation.
 - **Three research objects** (Governance / Methodology / Software Translation) must not be conflated.
 
+## 15. Invariants (SHALL never change without a new constitutional ruling or a major version)
+
+- **INV-1** Capability discovery precedes DDD.
+- **INV-2** Predictions are locked before discovery (No Retroactive Prediction).
+- **INV-3** Governance evidence is never rewritten retrospectively (errata add, never overwrite).
+- **INV-4** The three research objects (Governance / Methodology / Software Translation) remain separated.
+- **INV-5** Constitutional properties are never altered by implementation concerns.
+
+## 16. Extension points (controlled growth)
+
+New elements are introduced **only** via **ADR-M + version bump**, and each must pass the relevant gate before adoption:
+
+| Extension point | Admission gate |
+|-----------------|----------------|
+| New capability family | from Pass-1 capability set; not invented in Pass 2 |
+| New mechanism **dimension** (e.g. D6) | orthogonality tests (§ via P2-02I) + appears in ≥1 family as *unclassified residue* first |
+| New **interaction profile** (beyond Emergent/Additive/Mixed) | observed in a family; recorded as candidate (lifecycle Observed) |
+| New **validation metric** | justified by a threat it addresses (§9) |
+| New **literature category** | maps to exactly one research object (§14, D8) |
+
+Uncontrolled addition (a new rule "because it's good") is forbidden — the freeze (P2-00 / this spec) governs.
+
 ---
 
 ## Source-document map (detailed normative sources)
@@ -104,5 +136,5 @@ Per capability/family: the **Mechanism Design Space Map** (Class→Group→Mecha
 
 ---
 
-*Round 39-01 — Methodology Specification v1.0 — FROZEN for F-THR / F-REV*
-*Consolidated, versioned, canonical. Change only via ADR-M + version bump. Strategic DDD GATED.*
+*Round 39-01 — Methodology Specification — **v0.9 Controlled Working Specification** — FROZEN for F-THR / F-REV*
+*Consolidated, versioned, canonical. Promote to v1.0 only after F-REV confirms no fundamental restructuring. Change only via ADR-M + version bump. Strategic DDD GATED.*

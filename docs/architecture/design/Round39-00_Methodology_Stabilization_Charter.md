@@ -15,7 +15,7 @@ Produce a complete, internally consistent, **versioned** specification of the re
 
 | # | Deliverable | Status |
 |---|-------------|--------|
-| **D1** | **Methodology Specification v1.0** (consolidates P2-00/17/18/19/SYN-01; includes ontology, state machine, decision rules) | **DELIVERED** (`Round39-01`) |
+| **D1** | **Methodology Specification — v0.9 Controlled Working Specification** (consolidates P2-00/17/18/19/SYN-01; +SHALL/SHOULD/MAY, ontology/glossary split, invariants INV-1..5, extension points) | **DELIVERED** (`Round39-01`); → v1.0 only after F-REV |
 | D2 | Methodology State Machine (transitions: entry/exit/artifacts/allowed/forbidden) | folded into D1 §5; standalone optional |
 | D3 | Methodology Ontology (every concept defined) | folded into D1 §3 |
 | D4 | Methodology Traceability Matrix (where defined / who uses / depends-on / validated / falsifiable) | TODO |
@@ -31,7 +31,7 @@ Produce a complete, internally consistent, **versioned** specification of the re
 P1 Freeze & consolidate methodology  → D1 (done) → D3/D5/D6/D4
 P2 Literature integration             → D8 + D7
 P3 Re-lock prediction register
-P4 Run F-THR     (under Spec v1.0, frozen)
+P4 Run F-THR     (under Spec v0.9 (Controlled Working Specification), frozen)
 P5 Run F-REV
 P6 Methodology synthesis (P2-SYN-FINAL)
 P7 Handbook Volume 6 (authoritative narrative of the *stable* methodology)
@@ -40,7 +40,7 @@ P8 Strategic DDD  (gate opens)
 
 ## Standing rules for Round 39
 
-- **Spec v1.0 is frozen for F-THR and F-REV.** Any change requires an ADR-M and a version bump (v1.1); no silent edits.
+- **Spec v0.9 (Controlled Working Specification) is frozen for F-THR and F-REV.** Any change requires an ADR-M and a version bump (v1.1); no silent edits.
 - **DDD gate stays closed.** DDD-R *prepares* (identifies stable vs provisional concepts); it does **not** design contexts/aggregates.
 - **Handbook Volume 6 waits** until after F-REV — it must narrate the *finalized* methodology, not an evolving one.
 - **Three research objects must not be conflated** (D7): Governance / Methodology / Software Translation.
@@ -48,4 +48,4 @@ P8 Strategic DDD  (gate opens)
 ---
 
 *Round 39-00 — Methodology Stabilization Charter — OPEN*
-*D1 (Methodology Specification v1.0) delivered; D3–D8 + DDD-R pending. F-THR runs only under frozen Spec v1.0.*
+*D1 (Methodology Specification — v0.9 Controlled Working Specification) delivered; D4–D8 + DDD-R pending. F-THR runs only under frozen Spec v0.9; promote to v1.0 only after F-REV.*
