@@ -95,7 +95,7 @@ staggered terms · long terms · non-renewable terms · count-based term limits 
 
 ## Methodological observations (reusable beyond this document)
 
-**Observation P2-02H-01 (anti-anchoring validated):** Independent internal mechanism sketching *followed by* literature expansion yielded **high convergence** — the literature mostly confirmed the 22-mechanism sketch and added few genuinely new ideas. This suggests the **capability-driven discovery process produces a design space broadly consistent with comparative institutional practice** *before* literature is consulted. Reusable across families; a validation of P2-17's sketch-before-literature ordering.
+**Observation P2-02H-01 (scoped — anti-anchoring, one family):** *Within the F-AUTH family*, the independently-derived (sketch-first) search space **substantially overlapped** mechanisms documented in the literature. This is consistent with — but does **not** prove — the claim that capability-driven sketch-before-literature produces a search space aligned with comparative practice. **Whether this generalizes remains to be tested by the remaining families** (tracked as M-06 in P2-18). This is *one family's convergence*, **not** "methodology validated."
 
 **Observation P2-02H-02 (emergent capture resistance — the real finding):** No single mechanism delivers capture resistance. **Capture resistance is an *emergent property* of multiple interacting mechanism *dimensions* (source / temporal / qualification / approval / protection), not a property of any individual mechanism.** Therefore **the unit of design is the *composite governance architecture* (a selection across dimensions), not the mechanism.** This extends the program's arc: capabilities (EGCP) → *mechanisms as architectural compositions*.
 

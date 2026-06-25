@@ -30,16 +30,39 @@ Every mechanism records exactly one **primary origin** (and any secondary):
 
 *Why:* the question "which mechanisms are genuinely original contributions?" must be answerable instantly. NRNA-original and derived-combination entries are the research's novel output.
 
+**Compositional provenance (for composites — four facets):** originality can live in different places, so a composite records all four:
+
+| Facet | Meaning |
+|-------|---------|
+| **Primary origin** | dominant source of its mechanisms |
+| **Secondary origin(s)** | other contributing sources |
+| **Novel composition** | the *selection across dimensions* is new even if every mechanism is borrowed |
+| **Novel interaction** | the *interaction effect* is new even if the composition is familiar |
+
+Sometimes nothing is new except the interaction; sometimes the interaction is old but the composition is new — these are **different research contributions** and are recorded separately.
+
 ---
 
-## 2. Search Space vs Design Space (distinct — record both)
+## 2. Three spaces: Search → Candidate → Design (record all transitions)
 
-| | Definition |
-|--|-----------|
-| **Search Space** | everything the literature/imagination contains for a capability |
-| **Design Space** | the subset that **survives** the constitutional filters: constitutional properties (S-1..S-5) · Option B · architectural invariants (esp. **anonymity**) · GRP handling · capability-family interactions |
+*(refined 2026-06-25, evidence-driven: F-AUTH showed a middle space exists.)*
 
-A mechanism may be in the **search space** but **excluded before entering the design space**. **Excluded mechanisms are recorded with their exclusion reason** (not silently dropped). This yields the audit-proof answer to *"why wasn't mechanism X considered?"* → *"X was in the search space but excluded from the design space because it violated [invariant]"* (e.g. vote-level monitoring excluded by anonymity — see P2-01).
+| Space | Definition |
+|-------|-----------|
+| **Search Space** | everything imaginable / in the literature for a capability |
+| **Candidate Space** | the subset that is **architecturally plausible** (coherent, composable, not absurd) |
+| **Design Space** | the subset that **survives the constitutional filters**: properties (S-1..S-5) · Option B · invariants (esp. **anonymity**) · GRP handling · family interactions |
+
+A mechanism may stay in search (implausible), reach candidate but be **excluded from design** (violates a constraint), or enter design. **Every excluded mechanism is retained with a *categorized* reason:**
+
+| Exclusion category | Meaning | Weight |
+|--------------------|---------|--------|
+| **Constitutional** | violates Option B / a property / the ruling | hard FAIL |
+| **Architectural** | violates an invariant (anonymity), GRP handling, transparency | hard FAIL |
+| **Functional** | does not satisfy the capability | FAIL |
+| **Contextual** | suitable elsewhere (e.g. sovereign states) but not NRNA's kind of org | transferability judgment |
+
+Not all exclusions carry equal weight. This gives the audit-proof answer to *"why wasn't X considered?"* — *with its category* (e.g. external-guarantor = **Contextual**; vote-level monitoring = **Architectural**).
 
 ---
 

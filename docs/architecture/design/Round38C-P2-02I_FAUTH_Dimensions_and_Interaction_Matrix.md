@@ -24,7 +24,18 @@ The harvest (P2-02H) clustered mechanisms into 6 classes — but those classes *
 | **D4 — Approval** | *how much agreement?* | simple · supermajority · cross-faction · regional ratification |
 | **D5 — Protection** | *security after appointment?* | removal-for-cause · tenure security · succession / continuity |
 
-Every mechanism is now a point in this space, not a bucket. (Some span two — e.g. *regional* is D1 when it distributes seats, D4 when it ratifies; *independent nomination committee* is D3 primary / D1 secondary — noted, not collapsed.)
+Every mechanism is a **coordinate vector** in this space (not a point, not a bucket): it may carry weight on several dimensions — e.g. *independent nomination committee* = D3 primary / D1 secondary; *regional* = D1 (seats) and/or D4 (ratification). Treating mechanisms as **vectors** (not points) lets mechanism **similarity** be reasoned about later.
+
+### Orthogonality validation (these are *candidate* dimensions until they pass)
+
+| Test | F-AUTH result |
+|------|---------------|
+| **Independence** — one dimension varies while another is held constant? | ✓ (term length D2 varies independently of source D1) |
+| **Completeness** — every mechanism maps to ≥1 dimension? | ✓ (all 14 mapped) |
+| **Non-redundancy** — no two dimensions express the same concern? | ✓ mostly — *watch:* D1 source-plurality and D4 approval both touch *power distribution*; kept distinct (who vs how-much-agreement) |
+| **Minimality** — removing a dimension loses expressive power? | ✓ (each needed for some mechanism) |
+
+**Status: validated *for F-AUTH*; candidate-universal.** Other families may need different/additional dimensions (P2-18 prediction **P-D6 Accountability**). Frozen for F-AUTH use; **re-validated per family**.
 
 ---
 
@@ -61,6 +72,13 @@ Every mechanism is now a point in this space, not a bucket. (Some span two — e
 | Supermajority confirmation (D4) | mixed/cross-faction nomination | single nominator | threshold governance → **F-THR** |
 | Removal-for-cause (D5) | tenure security | at-will removal | defined grounds + adjudication → **F-REV** |
 
+**Interaction edge types (for the eventual interaction graph).** The columns above are three of a richer typed set — group them:
+- **Structural:** requires · depends · enables
+- **Behavioral:** reinforces · counterbalances · amplifies
+- **Constraint:** conflicts · excludes · dominates
+
+These become **typed edges** when the mechanism interaction graph is formalized (see graph numbering below).
+
 Two interaction findings stand out:
 - **Synergy:** staggered + long + non-renewable + multi-appointer = strongly anti-cohort.
 - **Tension:** sortition (capture-resistant) ↔ strict qualification (competence) — a genuine interaction, not a simple trade-off.
@@ -86,6 +104,10 @@ A composite is *one value chosen per dimension* — this is the unit of design (
 > **Capture resistance is an emergent property of the interaction across dimensions D1–D5, not a property of any single mechanism. The unit of design is the composite governance architecture.**
 
 This is the F-AUTH analogue of GRP-01's depth: the program is now discovering **governance architecture** (how mechanisms compose, constrain, and reinforce) rather than isolated devices. If F-THR and F-REV reinforce this, the **composite-architecture principle** becomes a central program contribution. *(Recorded as an emerging observation — not yet elevated; confirmation needs the remaining families.)*
+
+**Measurable definition of (architectural) emergence** (so "emergent" is falsifiable, not rhetorical): a composite has an emergent property **iff** — (1) **no individual** component mechanism possesses it, **AND** (2) **removing any one** component destroys it, **AND** (3) the interaction produces behaviour **impossible from the isolated** mechanisms. F-AUTH's capture resistance meets all three (no single mechanism resists capture; remove staggering or source-plurality and it collapses; the resistance is a joint effect).
+
+**Governance graphs (numbered, for continuity):** **G1** = Capability Dependency Graph (SYN-03); **G2** = Mechanism Interaction Graph (this document); **G3** = Composite Graph (future — only if composites recur across families, P2-18 P-PATTERN). G1→G2→G3 are complementary models; **G3 is not created now.**
 
 ---
 

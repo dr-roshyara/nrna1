@@ -32,6 +32,14 @@ Constitutional Property  →  Emergent Capability Family  →  Governance Capabi
 
 **Governance Mechanism.** A concrete realization *of* a capability (e.g., staggered terms, sortition, a published register). *How.* Discovered in **Pass 2** — **not before**. A capability may have several competing candidate mechanisms.
 
+**Mechanism Class → Group → Mechanism.** *(added 2026-06-25)* The three-level taxonomy mechanisms are organized in (P2-00 Rule 7). *Class* = mode; *Group* = a design idea within a class; *Mechanism* = a specific realization. ("Group", not "family".)
+
+**Composite Governance Architecture.** *(added 2026-06-25)* A **coordinated selection of mutually interacting mechanisms distributed across multiple orthogonal mechanism dimensions** to realize one governance capability or family. Per Observation P2-02H-02, the composite — not the individual mechanism — is the **unit of design**, and its target behaviour is **emergent** from the interaction.
+
+**Search / Candidate / Design Space.** *(added 2026-06-25; P2-17 §2)* **Search** = everything imaginable/in the literature; **Candidate** = the architecturally-plausible subset; **Design** = the subset surviving the constitutional filters. Excluded mechanisms are retained with a *categorized* reason.
+
+**Architectural vs Research emergence.** *(P2-SYN-01 §3)* **Architectural** = interaction creates new governance behaviour (per-composite). **Research** = the methodology discovers a new principle (synthesis docs only). Never conflate.
+
 **Emergent Capability Family.** A cross-safeguard grouping of capabilities that are manifestations of the same governance concern (e.g., F-OBS Observability). "Emergent" = *discovered from* the capabilities, not imposed. An **organizing layer only** — explicitly **NOT** a bounded context, service, module, or aggregate. Identifier form: `F-XXX`. Current candidates: F-OBS, F-ADJ (Constitutional Review), F-THR, F-AUTH, F-PROC. Always "**candidate** families," never "the five governance families."
 
 **Governance Mechanism vs Capability vs Family (the three-line test):**
