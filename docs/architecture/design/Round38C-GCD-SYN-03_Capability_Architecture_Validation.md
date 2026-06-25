@@ -12,6 +12,12 @@
 
 Pass 2 changes the abstraction (from *what capability* to *how realized*) and will produce a large alternative space. Before that explosion, this document **validates** that the 33-capability architecture is internally coherent — dependencies, cycles, completeness, density, and capability/mechanism independence. **Validation, not discovery.**
 
+This document validates at **three distinct levels** (separated so later audits can cite each independently — passing one does not imply the others):
+
+- **Level 1 — Structural validation:** are dependencies coherent, cycles only the expected GRPs, coverage complete, and family assignment a clean partition? (Parts 1–4)
+- **Level 2 — Abstraction validation:** are capabilities genuinely independent of mechanisms? (Part 5)
+- **Level 3 — Process validation:** is the architecture mature enough to *safely begin* Pass 2? (Parts 6–8)
+
 ---
 
 ## Part 1 — Dependency graph (made explicit)
@@ -45,11 +51,11 @@ Explicit edges (representative, not exhaustive):
 
 ## Part 2 — Cycle analysis
 
-**Result: the only cycles are the Governance Recursion Points (GRPs). No *accidental* circular dependencies were found.**
+**Result: the dependency graph contains no accidental architectural cycles. Every remaining cycle corresponds to a previously identified Governance Recursion Point (GRP).**
 
 Each GRP appears in the graph as a self-loop: F-ADJ is *observed by* F-OBS (GC-S4-07), and an F-OBS detection of a problem in F-ADJ feeds *back into* F-ADJ (challenge the challenger). Likewise appointer-of-appointers and entrench-of-entrenchment. These are **not design errors to remove** — they are the GRP-01 loops, already known to be **ineliminable under a single source and surrounded, not closed.**
 
-> **Validation finding:** the cycle analysis *re-derives* GRP-01 independently — the only cycles are exactly the five GRP loops. This is corroboration, not a defect. Distinguish **accidental cycle (bug, must fix)** from **GRP cycle (structural, surrounded)**: zero of the former, five of the latter.
+> **Validation finding (evidence direction matters):** the graph **independently corroborates** the GRPs rather than introducing new recursive structures — the *graph produces the GRPs*, not the reverse (it is **not** that GRP-01 was assumed and then used to explain the graph). Distinguish **accidental cycle (bug, must fix)** from **GRP cycle (structural, surrounded)**: zero of the former, five of the latter.
 
 ---
 
@@ -67,6 +73,10 @@ Every safeguard covers all five EGCP stages:
 
 **No coverage gaps.** S-1/S-2/S-3/S-5 **delegate** Challenge/Resolution to F-ADJ rather than duplicating it — correct reuse, **and** the reason F-ADJ is a hard dependency for all (Part 4). ("→F-ADJ" = served by the shared Constitutional Review family, not missing.)
 
+**Scope of the completeness claim:** completeness is assessed **relative to the current constitutional properties (S-1..S-5)**. It does **not** claim completeness for governance architectures in general.
+
+**Family assignment is a partition (the Family→Capability hierarchy is strict).** Every capability belongs to **exactly one primary family** (33 capabilities → 5 families; 0 orphans, 0 double-counts; SYN-02). This guarantees `Property → Family → Capability → Mechanism` stays a strict hierarchy — capabilities cannot silently **drift** between families (Architectural Stability Rule).
+
 ---
 
 ## Part 4 — Dependency density (load-bearing elements)
@@ -77,7 +87,11 @@ Every safeguard covers all five EGCP stages:
 | **GC-S1-01** Classification | local hub | GC-S1-02/03/07 all depend on it |
 | **GC-S1-02** Tiered Threshold | reused | F-THR core; reused by S-3 (scope) and S-5 (override) |
 
-These are **architectural load-bearing elements**, not contexts. **Implication for Pass 2:** mechanism robustness matters *most* for hubs — a weak mechanism under F-ADJ or GC-S1-01 weakens many safeguards at once. Pass 2 should treat hub families/capabilities with extra rigor.
+These are **architectural load-bearing elements**, not contexts — and they are of **two different kinds** (they fail differently):
+- **Semantic hubs** — **GC-S1-01** (Classification) and **GC-S1-02** (Threshold): many capabilities depend on their *meaning*. A change here changes what other capabilities *mean*.
+- **Workflow hub** — **F-ADJ / F-REV** (Constitutional Review): many safeguards route their *process* (Challenge/Resolution) through it. A failure here changes how governance *runs*.
+
+This distinction will matter in Strategic DDD (semantic hubs tend toward a shared kernel / published language; the workflow hub toward a shared service). **Implication for Pass 2:** mechanism robustness matters *most* for hubs — a weak mechanism under a hub weakens many safeguards at once; hubs receive extra comparative rigor.
 
 ---
 
@@ -104,6 +118,7 @@ ARCHITECTURAL STABILITY RULE
 3. Families may be reorganized ONLY through an explicit synthesis document.
 4. Properties may NEVER change without constitutional authority (a ruling).
 5. Mechanisms may NEVER redefine capabilities.
+6. Mechanism discoveries MAY introduce new candidate capabilities — but ONLY through an explicit discovery + synthesis document; they may NEVER silently extend an existing capability.
 ```
 
 This prevents Pass 2 mechanism work from silently mutating the validated capability layer.
@@ -112,7 +127,9 @@ This prevents Pass 2 mechanism work from silently mutating the validated capabil
 
 ## Part 7 — The dependency graph is a first-class artifact
 
-The capability dependency graph is recorded as a **first-class governance architectural artifact** — not because software needs it, but because *governance* needs it. Without it, Pass 2 mechanism exploration would be **local optimization** (best mechanism per capability in isolation). With it, Pass 2 is **constrained by the architecture already discovered** (hubs, reuse edges, GRP loops must be respected). It carries forward into Strategic DDD as input (capability map ≠ context map — OBS-36D-02-1).
+The capability dependency graph is recorded as a **governing architectural artifact** (cited by later documents exactly as the glossary is) — not because software needs it, but because *governance* needs it. Without it, Pass 2 mechanism exploration would be **local optimization** (best mechanism per capability in isolation). With it, Pass 2 is **constrained by the architecture already discovered** (hubs, reuse edges, GRP loops must be respected). It carries forward into Strategic DDD as input (capability map ≠ context map — OBS-36D-02-1).
+
+**Framing (recorded, not elevated):** taken together, the governance-architecture artifacts — properties, families, capabilities, the dependency graph, the glossary, and these validation/stability rules — constitute a **constitutional architecture metamodel**: a stable governance layer that separates constitutional reasoning from software design. This layer — more than EGCP or GRP individually — is the program's durable contribution. Recorded as an observation; not a new claim to prove.
 
 ---
 
@@ -127,7 +144,11 @@ The capability dependency graph is recorded as a **first-class governance archit
 | Capability/mechanism independence? | ✓ no capability collapses to a single mandatory mechanism — *current evidence* (Part 5) |
 | Stability rule in force? | ✓ (Part 6) |
 
-**The capability architecture is internally coherent and *provisionally validated for mechanism exploration.* Pass 2 may proceed.**
+**Verdict (independent judgments — do not collapse):**
+- **Structural coherence (L1):** ✓
+- **Abstraction stability (L2):** ✓ *(provisional; current evidence)*
+- **Methodological readiness (L3):** ✓
+- **Pass 2 authorization:** **RECOMMENDED** (under protocol P2-00)
 
 ---
 
