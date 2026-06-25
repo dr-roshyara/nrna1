@@ -5,6 +5,7 @@
 **Date:** 2026-06-25
 
 > **Method.** Derive the system from the four families as *evidence*, then **try to destroy it** (hostile simplification). Keep only what survives removal. No ontology; no constitution change; governance claims = Draft GDRs.
+> **⚠️ Scoping erratum (2026-06-25, post-review).** This document calls **Consent** the "root invariant." That is **over-claimed** — it is the anchor **only for the class {self-governing · no external sovereign · no coercive enforcement}** (NRNA's class). `Round42-02` **falsifies consent-as-universal** across system classes and generalizes the result: *every* constitutional system needs a recursion-terminating **trust anchor ∈ {coercion, consent}**; consent is NRNA-class-specific. `Round42-02` also adds **hostile substitution** and the **Architectural Primitive Matrix**, and reframes this round as a **Constitutional Governance Reference Model.** Read 42-02 alongside this.
 
 ---
 
