@@ -3,7 +3,7 @@
 **Program:** NRNA DDD Trustworthiness Research Program
 **Phase:** Governance Capability Discovery — **Pass 2 protocol** (rules of engagement; not itself mechanism discovery)
 **Authority:** 38C-15 ARB Ruling, Part F.1
-**Status:** 🔒 **PROTOCOL — binding on all Pass 2 work.** No mechanisms discovered here; this defines *how* they will be.
+**Status:** 🔒 **PROTOCOL — binding on all Pass 2 work · FROZEN 2026-06-25.** No mechanisms discovered here; this defines *how* they will be. **Frozen except bug fixes and *evidence-driven* refinements:** a new rule is added only when a real application (F-AUTH onward) exposes a concrete gap — not because another good rule comes to mind. Companion: **P2-17** (evidence provenance, search-vs-design space, evidence-vs-confidence).
 **Date:** 2026-06-25
 
 ---
