@@ -20,7 +20,7 @@ Produce a complete, internally consistent, **versioned** specification of the re
 | D3 | Methodology Ontology (every concept defined) | folded into D1 §3 |
 | D4 | Methodology Traceability Matrix (where defined / who uses / depends-on / validated / falsifiable) | TODO |
 | D5 | Methodology Consistency Audit (contradictions / duplicates / drift across all docs) | TODO |
-| D6 | Methodology Decision Log (expand ADR-M: why / evidence / alternative / consequences / dependencies) | TODO (seed in P2-19) |
+| D6 | Methodology Decision Log (standalone ADR-M: why / evidence / alternatives / consequences / dependencies / review-triggers) | **DELIVERED** (`Round39-D6`; ADR-M-001..011) — closes audit F-3 |
 | D7 | Research Object Separation (3 models: A Governance · B Methodology · C Software Translation) | TODO |
 | D8 | Literature Integration Matrix (every paper → exactly one research object) | TODO |
 | **DDD-R** | **DDD Readiness Assessment** (prepare, do NOT design): which governance concepts are stable enough to become candidate domain concepts; which are provisional (M-07, P-PROFILE) and must NOT shape contexts; which terms are stable ubiquitous-language candidates; what remains blocked pending F-THR/F-REV | TODO |
