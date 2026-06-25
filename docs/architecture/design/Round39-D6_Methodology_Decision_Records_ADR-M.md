@@ -9,6 +9,12 @@
 > Scope: methodology evolution only. Each ADR carries: Status · Date · Version · Classification · Stability · Context · Problem · Alternatives · Evidence · Decision · Consequences · Affected Artifacts · Dependencies · Review Trigger · Supersedes/Superseded-By · Traceability.
 > **Classification ∈** {Methodology Rule · Process Rule · Validation Rule · Evidence Rule · Version-Governance Rule}. **Stability ∈** {Experimental · Working · Controlled · Stable · General}.
 
+### Documentation status (read first)
+
+- **Retrospectively documented.** These ADRs were authored together on **2026-06-25** (Round 39 D6), reconstructing decisions made earlier from the **actual research artifacts** that produced them. The single date is the *documentation* date; each ADR's **trigger event** (`introduced F-AUTH`, `F-PROC`, `Round 39 D1/D5`) records *when the decision was actually taken*. These are **not** contemporaneous records and must not be read as such.
+- **No invented history.** Every claim traces to a real artifact (P2-00/02/02H/02I/03/17/18/19/SYN-01, GLOSSARY-01, Round39-01/02, F-AUTH, F-PROC). No observation IDs, simulation events, dates, scripts, or infrastructure are invented; where automation is hypothetical it is labelled *candidate*.
+- **Evidence hierarchy (every ADR cites in this order).** (1) Our research evidence (observations / hostile tests / family docs) — highest authority; (2) methodology validation (P2-SYN-01); (3) integrity validator (Round39-02); (4) literature — *supporting context only, never primary justification*; (5) architectural consequence. Literature **informs, never dictates** (see ADR-M-011).
+
 ---
 
 ## ADR-M-001 — Composite is the Evaluation Unit
@@ -44,7 +50,7 @@
 - Accepted · 2026-06-25 · replication-rigor · **Process Rule** · **Controlled**
 - **Context/Problem:** even a register can be edited mid-discovery, re-introducing hindsight bias.
 - **Alternatives:** document-but-editable — *rejected:* appearance of goal-moving.
-- **Evidence:** standard pre-registration practice; P2-19 reliability threat.
+- **Evidence:** P2-19 (reliability threat: editable register reintroduces hindsight bias); verified clean in F-PROC (locked → unlocked, no mid-cycle edit). *Supporting context: aligns with pre-registration practice — not the primary justification.*
 - **Decision:** register **SHALL** be locked before discovery, unlocked only after; statuses **Supported/Narrowed/Refuted/Inconclusive**. Predictions **MUST NOT** be edited during a locked cycle.
 - **Consequences:** F-PROC ran locked (verified). **Affected:** P2-18. **Dependencies:** F-THR, F-REV. **Review trigger:** any lock breach (Critical).
 - **Traceability:** INV-2; validator 6.
@@ -157,7 +163,7 @@ F-PROC         → ADR-M-009                  (M-07 composite-conditional narrow
 
 ## Quality gates (D6 completion check)
 
-✓ Every methodology change has an ADR (001–011) · ✓ no undocumented evolution found (backlog notes the one borderline) · ✓ every ADR cites evidence · ✓ every ADR lists rejected alternatives · ✓ every ADR has a review trigger · ✓ explicit consequences · ✓ **no governance discoveries inside ADR-M** · ✓ **no DDD concepts**.
+✓ Every methodology change has an ADR (001–011) · ✓ no undocumented evolution found (backlog notes the one borderline) · ✓ every ADR cites evidence (research-evidence-first hierarchy) · ✓ every ADR lists rejected alternatives · ✓ every ADR has a review trigger · ✓ explicit consequences · ✓ **no governance discoveries inside ADR-M** · ✓ **no DDD concepts** · ✓ **no invented history** (real artifacts only; retrospective status declared) · ✓ **literature is supporting context, never primary justification**.
 
 ---
 
