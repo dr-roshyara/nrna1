@@ -55,7 +55,12 @@ Never `capability → first idea → accepted`.
 
 **Rule 6 — Every rejected mechanism stays in the archive.** Rejected candidates and the reason for rejection are retained. The rejected set is itself a research asset (it records *why not*, which protects future decisions from re-litigation).
 
-**Rule 7 — Classify before comparing.** Candidate mechanisms must first be grouped into **mechanism classes** (e.g. for detection: passive / continuous / distributed / statistical) *before* individual comparison. Comparing fundamentally different classes head-to-head is invalid; compare deliberately within and across classes.
+**Rule 7 — Classify before comparing (three-level taxonomy).** Candidate mechanisms are organized as **Mechanism Class → Mechanism Group → Mechanism** *before* individual comparison — a single "Class" is too coarse to compare within.
+- *Class* = mode (e.g. Statistical, Distributed).
+- *Group* = a design idea within a class (e.g. Distributed → *Independent Observers*; Statistical → *drift detection*).
+- *Mechanism* = a specific realization (e.g. *Regional Representatives*; *cumulative-deviation control chart*).
+
+("**Group**", not "family" — "family" stays reserved for capability families.) Compare within a group, then across groups, then across classes — never across the wrong level.
 
 **Rule 8 — Two independent fitness questions per mechanism.** Every mechanism is judged on **both**:
 - **Functional fitness:** does it satisfy the capability?
@@ -74,16 +79,20 @@ A mechanism can pass functional fitness yet fail architectural fitness (e.g. an 
 
 **Rule 14 — Literature informs the space; it does not constrain it.** Include excellent mechanisms found in literature; **design novel** mechanisms where literature is silent; a mechanism that improves on the literature is an acceptable outcome. The program is *creating* a constitutional architecture, not surveying existing ones. Literature broadens the design space; it does **not** reopen the constitutional architecture (that phase is closed).
 
+**Rule 15 — Mechanisms interact; record the interaction matrix.** Mechanisms are not evaluated only in isolation. Record **synergies** (e.g. passive audit + statistical drift → stronger detection) and **conflicts/risks** (e.g. continuous monitoring + single central observer → concentration). Interaction effects belong to **architectural** fitness and often decide a composite.
+
+**Rule 16 — Pass 2 is discovery, not optimization.** Every mechanism is treated as a **hypothesis**. The sequence is `observe → discover → classify → compare → evaluate → recommend → RETAIN alternatives` — never `discover → choose → forget the rest`. A premature single-winner mindset is the failure mode to avoid.
+
 ---
 
 ## Per-capability output format (Pass 2)
 
-For each capability (or each **shared design space** within a family — explore once, map per capability), Pass 2 produces:
+For each capability (or each **shared design space** within a family — explore once, map per capability), Pass 2 produces a **Mechanism Design Space Map** (the canonical Pass-2 artifact: `Class → Group → Mechanism → Composite → Evaluation → Recommendation`):
 
 1. **Mechanism design space** — the mapped set of candidate realizations.
-2. **Classification** into mechanism classes (Rule 7).
+2. **Classification** — three-level **Class → Group → Mechanism** (Rule 7).
 3. **Mechanism candidates** (individual) **and mechanism architectures** (compositions, Rule 10).
-4. **Evaluation matrix** — functional + architectural fitness (Rule 8); with evidence strength + origin + constraint map (Rules 12–13).
+4. **Evaluation matrix** — functional + architectural fitness (Rule 8); with evidence strength + origin + constraint map (Rules 12–13); **plus an interaction matrix** (synergies / conflicts, Rule 15).
 5. **Recommendation** OR explicit *"no dominant mechanism"* (Rule 9), with rationale.
 6. **Rejected alternatives (retained)** + reason (Rule 6).
 7. **Governance mechanism patterns** surfaced (Rule 11).
@@ -98,6 +107,9 @@ Every entry carries its **upward trace** (Rule 2): Mechanism → Capability → 
 | Satisfies capability (**functional fitness**) | ✓ / Partial / ✗ |
 | **Evidence strength** (Rule 12) | ★1…★5 |
 | **Origin** (Rule 12) | lit domain / NRNA original / derived combination |
+| **Novelty** | existing / adapted / original |
+| **Reuse potential** | useful for other capabilities/families? |
+| **Interactions** (Rule 15) | synergies / conflicts with other mechanisms |
 | Constitutional alignment | |
 | Option-B consistency | |
 | **GRP impact** (Rule 13) | strengthen / neutral / weaken |
@@ -151,6 +163,13 @@ Pass 2 is **complete** when **every capability** has: (a) an explored, classifie
 | Open questions | continuity |
 
 If a source cannot fill these fields for a *mechanism*, it is out of scope for Pass 2.
+
+**Reading priority (Pass 2):**
+1. **Election administration** — real-world governance mechanisms.
+2. **Independent oversight institutions** — appointment, tenure, reporting, accountability.
+3. **Institutional design / constitutional engineering** — how mechanisms are *combined*.
+4. **High-assurance / safety-critical systems** — monitoring, auditability, fail-safe governance, assurance cases.
+5. **Distributed systems** — *only* where the underlying governance pattern is analogous; do **not** import software concepts directly.
 
 ---
 
