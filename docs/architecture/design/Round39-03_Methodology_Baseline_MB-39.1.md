@@ -8,6 +8,8 @@
 
 > **Purpose.** F-THR is the **first controlled hostile replication executed under a single, named, immutable methodology**. Before it runs, the entire methodology — not just the prediction register — is bundled under one identifier and frozen. Any future reviewer asking *"which methodology produced the F-THR evidence?"* answers with **one token: MB-39.1.**
 
+> **Superior tier.** MB-39.1 operates **beneath the Methodology Constitution** (`Round39-MC`, MC-01..MC-08, ADR-M-012). The Constitution is *not* a baseline constituent — it governs the baseline and is entrenched by its own (stricter) amendment rule. MB-39.1 has been verified conformant to all eight principles (see Round39-MC conformance table); this reference is non-substantive and changes no constituent.
+
 ---
 
 ## 1. Baseline constituents (exact artifacts + versions)

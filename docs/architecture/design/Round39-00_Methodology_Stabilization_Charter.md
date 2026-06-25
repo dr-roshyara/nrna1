@@ -38,6 +38,14 @@ P7 Handbook Volume 6 (authoritative narrative of the *stable* methodology)
 P8 Strategic DDD  (gate opens)
 ```
 
+## Methodology tier hierarchy
+
+```
+Methodology Constitution (Round39-MC, MC-01..MC-08)  ← entrenched; amend only by Constitutional Amendment Record
+  ↓ Specification (Round39-01, v0.9.1) ↓ ADR-M (Round39-D6) ↓ Validator (Round39-02)
+  ↓ Baseline (Round39-03, MB-39.1) ↓ Family Execution (F-AUTH/F-PROC/F-THR/F-REV)
+```
+
 ## Standing rules for Round 39
 
 - **Spec v0.9 (Controlled Working Specification) is frozen for F-THR and F-REV.** Any change requires an ADR-M and a version bump (v1.1); no silent edits.

@@ -142,6 +142,17 @@ These are **independent** axes. An ADR can be *Controlled* (the decision is gove
 - **Consequences:** anti-anchoring; bounded reading. **Affected:** P2-17. **Dependencies:** all families. **Review trigger:** a family where literature diverges sharply from the sketch.
 - **Traceability:** rule R-02 (=M-06); validator 5.
 
+## ADR-M-012 — Adopt the Methodology Constitution (MC-01..MC-08)
+- **ADR status:** Controlled · 2026-06-25 · **Trigger:** Round 39 (pre-F-THR) · **Class:** Version-Governance Rule
+- **Context/Problem:** the methodology had operational governance (Spec, ADRs, validator, baseline) but the principles **no ADR may override** were only implicit; an ADR could, in principle, contradict an invariant with nothing above it to forbid that.
+- **Alternatives:** (a) leave invariants only inside the Spec (INV-1..5) — *rejected:* a Spec clause is ADR-amendable, so it cannot bind ADRs above itself; (b) add more SHALL-NOTs to the Spec — *rejected:* same level, no entrenchment.
+- **Evidence:** existing invariants INV-1..5 (Spec §15) + the research-object boundary contract (Round39-02 Validator 4) + the two-vocabularies separation (this doc) already act constitutionally; the Constitution names them, adding no new constraint (see conformance table, Round39-MC).
+- **Decision:** adopt `Round39-MC` as an entrenched tier **above** the Specification: MC-01..MC-08.
+- **Normative rule:** a constitutional principle **MUST NOT** be changed by a routine ADR-M; amendment requires a Constitutional Amendment Record (sponsor + ARB + version bump). Any artifact conflicting with a principle is void to the extent of the conflict.
+- **Consequences:** ADRs/Spec/validator/baseline now have a ceiling. **MB-39.1 verified conformant → undisturbed, stays locked** (codification, not change). **Risk:** none operational; the Constitution must not be over-extended into new rule-making (it states principles, not procedures).
+- **Affected:** Round39-MC (new), Round39-00 (charter), Round39-03 (baseline — superior tier noted). **Dependencies:** all families execute beneath it. **Review trigger:** any proposed change to a principle (→ Constitutional Amendment Record, never a routine ADR).
+- **Supersedes:** none. **Traceability:** INV-1..5; boundary contract; validators 4/5; two-vocabularies (ADR-M-009).
+
 ---
 
 ## Methodology change process (BINDING)
@@ -185,6 +196,7 @@ Next family executes under the new, frozen Specification
 | 009 | Accepted *(obs Experimental)* | Methodology | §12 | M-07, P-PROFILE | 7 | P2-03, P2-18, SYN-01 |
 | 010 | Controlled | Validation | §4,§7,§10 | (statuses) | 2,10 | SYN-01, P2-19 |
 | 011 | Controlled | Process | §6 | — | 5 | P2-17 |
+| 012 | Controlled | Version-Governance | (above §) | — | 4,5 | Round39-MC, charter, R39-03 |
 
 ## Methodology change timeline
 
@@ -195,6 +207,7 @@ replication    → ADR-M-004                  (prediction lock)
 Round 39 (D1)  → ADR-M-007                  (controlled working spec v0.9 → v0.9.1)
 Round 39 (D5)  → ADR-M-008                  (integrity validator)
 F-PROC         → ADR-M-009                  (M-07 composite-conditional narrowing)
+Round 39 (MC)  → ADR-M-012                  (adopt Methodology Constitution, entrenched tier)
 ```
 
 ## Outstanding review triggers (watch-list)
@@ -208,14 +221,14 @@ F-PROC         → ADR-M-009                  (M-07 composite-conditional narrow
 
 ## Open ADR backlog
 
-- **ADR-M-012 (pending):** standalone evidence/provenance model ADR *if* §11 provenance grows beyond ADR-M-005/006 (currently folded). Not yet warranted.
+- **ADR-M-013 (pending):** standalone evidence/provenance model ADR *if* §11 provenance grows beyond ADR-M-005/006 (currently folded). Not yet warranted.
 - No other undocumented methodology evolution identified.
 
 ## Quality gates (D6 completion check)
 
-✓ Every methodology change has an ADR (001–011) · ✓ no undocumented evolution found · ✓ every ADR cites evidence (research-evidence-first hierarchy) · ✓ every ADR lists rejected alternatives · ✓ every ADR has a review trigger · ✓ explicit consequences · ✓ **Decision ≠ Normative Rule** separated · ✓ **ADR status ≠ methodology maturity** separated · ✓ Decision Authority recorded · ✓ **no governance discoveries inside ADR-M** · ✓ **no DDD concepts** · ✓ **no invented history** · ✓ literature is supporting context only.
+✓ Every methodology change has an ADR (001–012) · ✓ no undocumented evolution found · ✓ every ADR cites evidence (research-evidence-first hierarchy) · ✓ every ADR lists rejected alternatives · ✓ every ADR has a review trigger · ✓ explicit consequences · ✓ **Decision ≠ Normative Rule** separated · ✓ **ADR status ≠ methodology maturity** separated · ✓ Decision Authority recorded · ✓ **no governance discoveries inside ADR-M** · ✓ **no DDD concepts** · ✓ **no invented history** · ✓ literature is supporting context only.
 
 ---
 
 *Round 39-D6 — Methodology Decision Records (ADR-M) — ISSUED (closes audit finding F-3)*
-*11 ADRs; ADR-status / methodology-maturity vocabularies separated; binding change-process (families propose, governance enacts); cross-reference matrix + timeline + triggers + backlog. Methodology fully traceable without chat history. Strategic DDD GATED.*
+*12 ADRs (incl. ADR-M-012 adopting the Methodology Constitution); ADR-status / methodology-maturity vocabularies separated; binding change-process (families propose, governance enacts); cross-reference matrix + timeline + triggers + backlog. Methodology fully traceable without chat history. Strategic DDD GATED.*
