@@ -118,14 +118,16 @@ Updated after each family. Outcome ∈ {Supported, Narrowed, Refuted}.
 
 | Obs | F-OBS | F-AUTH | F-PROC | F-THR | F-REV |
 |-----|:--:|:--:|:--:|:--:|:--:|
-| M-01 | (n/a*) | ✓ | ? | ? | ? |
-| M-02 | ? | ✓ | ? | ? | ? |
-| M-03 | ? | ✓ | ? | ? | ? |
-| M-04 | ? | ✓ | ? | ? | ? |
-| M-05 | ~ | ✓ | ? | ? | ? |
-| M-06 | (pre*) | ✓ | ? | ? | ? |
+| M-01 | (n/a*) | ✓ | **narrowed** | ? | ? |
+| M-02 | ? | ✓ | **narrowed** | ? | ? |
+| M-03 | ? | ✓ | **narrowed** | ? | ? |
+| M-04 | ? | ✓ | inconcl. | ? | ? |
+| M-05 | ~ | ✓ | ✓ (replicated) | ? | ? |
+| M-06 | (pre*) | ✓ | ✓ (replicated) | ? | ? |
+| **M-07** (interacting vs additive) | — | (origin) | ✓ Observed | ? | ? |
 
 *\*F-OBS predates the methodology; counts only on retrofit.*
+**F-PROC result (hostile):** M-01/M-03 **narrowed** (composites family-specific); M-05/M-06 **replicated**; **M-07** introduced (interacting vs additive families). Yield: 1 new observation (M-07), 0 new dimensions, 0 protocol changes → consistent with maturing.
 
 **Per-family yield** (the saturation metric) — count for each family: new observations · protocol changes · new dimensions · new exclusions · new interaction types · new composites. **Yield → 0 ⇒ the methodology is maturing** (theoretical-saturation analogue).
 

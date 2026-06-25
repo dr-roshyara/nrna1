@@ -13,7 +13,7 @@ Every methodological observation carries four fields: **Observation · Predictio
 
 Before each family's discovery begins, the register is **LOCKED**. **No prediction may be added, removed, reworded, or re-scored during discovery.** After the family's formal document, the register is **UNLOCKED** and each prediction updated to exactly one status: **Supported / Narrowed / Refuted / Inconclusive** (the last when the evidence genuinely does not bear on it). Sequence: `Lock → discover → evaluate → unlock → update`. This removes even the *appearance* of hindsight bias and sits alongside the DDD gate as a standing rule.
 
-> **🔒 LOCK STATUS: register v1 is LOCKED for F-PROC (2026-06-25).** Do not edit predictions until the F-PROC formal document is complete.
+> **🔓 LOCK STATUS:** v1 was LOCKED for F-PROC; **UNLOCKED and updated post-F-PROC (v2, 2026-06-25)** — see Register Update Log. **Re-lock before F-THR.**
 
 **Assumption vs Prediction (keep distinct):** an *assumption* (e.g. "composite evaluation is meaningful") underlies a *prediction* (e.g. "future families organize into composites"); the chain is Assumption → Prediction → Evidence → Conclusion. Only predictions are scored here.
 
@@ -63,6 +63,26 @@ Outcomes use **three values, not two**: **Supported · Narrowed · Refuted** (re
 | **P-PATTERN** | A reusable **"Governance Pattern"** layer emerges *iff* the same composite recurs across families | no composite recurs across families | none yet | after F-REV |
 
 *P-D6 and P-PATTERN are **predictions only** — do **not** create the dimension or the layer now; let the families decide (the EGCP discipline).*
+
+---
+
+## Register update log
+
+**v2 — after F-PROC (2026-06-25, hostile replication, `Round38C-P2-03`):**
+
+| Pred | Status | Note |
+|------|--------|------|
+| M-01 | **NARROWED** | composite is the unit *for interacting/emergent families* only; additive families (F-PROC) → mechanism-by-mechanism |
+| M-02 | **NARROWED** | holds only where M-01 holds |
+| M-03 | **NARROWED** | emergence is family-specific, not universal |
+| M-04 | Inconclusive | F-PROC mechanisms standard; no composition novelty to judge |
+| M-05 | **SUPPORTED** → lifecycle *Replicated* | D1–D5 classified F-PROC cleanly; no new dimension |
+| M-06 | **SUPPORTED** → lifecycle *Replicated* | blind sketch covered the space |
+| P-CAP | Inconclusive | F-PROC property is not resilience/capture |
+| P-D6 | Inconclusive | accountability out of F-PROC scope — defer to F-REV |
+| P-PATTERN | Weakened | F-PROC additive ≠ F-AUTH interacting; no shared pattern yet |
+
+**New:** **M-07 (candidate, Observed across F-AUTH+F-PROC)** — families divide into **interacting/emergent** (composite = unit) vs **additive/independent** (mechanism = unit); **composite evaluation is conditional on cross-dimensional interaction**, not universal. M-07 is the refined replacement for the over-broad M-01. *Re-locked status pending F-THR.*
 
 ---
 
