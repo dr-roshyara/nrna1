@@ -3,11 +3,12 @@
 **Program:** NRNA DDD Trustworthiness Research Program
 **Phase:** Round 40 — synthesis (integration, not discovery) · **Under Methodology Baseline MB-39.1**
 **Role:** Senior Governance / Constitutional / Election-Security / DDD-Domain-Discovery Architect.
-**Status:** 📐 CANONICAL ARCHITECTURE (descriptive) — the reference architecture of this family before Methodology Governance Review.
+**Status:** 📐 REFERENCE ARCHITECTURE (descriptive) — **program-canonical under MB-39.1**, before Methodology Governance Review.
 **Date:** 2026-06-25
 
 > **Scope.** Integrate the Round 40 discoveries (`Round40-01` measurement, `Round40-02` domain) into one coherent governance architecture. **No new evidence; no new mechanisms** (except to resolve an internal contradiction, flagged if so); **no methodology change; no ADRs; no software/DDD.** Synthesis only.
 > **Gates:** MB-39.1 FROZEN · Register LOCKED · DDD GATED. Constitutional properties are **mapped, never modified.**
+> **Epistemic status (read before "canonical").** This architecture is **synthesized, internally consistency-checked, and evaluated under MB-39.1** — it is **NOT** externally *verified*, *proven*, or *empirically validated*. No formal proofs, model-checking, simulation, case studies, or independent review have been performed. "Canonical" means **canonical *for the NRNA program under MB-39.1*** — the program's working reference — **not** canonical for governance research generally. Population of inference: NRNA, one family. Generalizability: not yet established.
 
 ---
 
@@ -187,13 +188,13 @@ Grouped by cohesion (capabilities that share data, actors, and rate-of-change). 
 
 ---
 
-## D10 — Executive Architecture Summary (canonical)
+## D10 — Executive Architecture Summary (program-canonical under MB-39.1)
 
 The Threat & Capture Resistance governance architecture is a **closed control loop grounded in constitution**. Its grammar (D1) is fixed: capabilities, grounded in constitutional properties, owned by actors, realized by mechanisms, countering capture targets, across the election lifecycle. Its capabilities form a **dependency graph** (D2) whose foundational tier is Monitoring + Independence + Transparency and whose **emergent** apex — Resilience / Legitimacy-retention — exists *only when the loop is closed and independence is real*. Governance **information flows** Threat→Observation→Evidence→Verification→Decision→Action→Review→Archive (D3) with a fast feedback loop (Review→Anticipation) and a slow one (Archive→Learning) that is the founding-stage system's only route to institutional maturity. **Responsibility** is split so that the Election Authority executes but never adjudicates or audits (D4); a capture event moves through a **state machine** (D5) whose two decisive terminal states are **Contained-Only** (anonymity caps remediation) and **Escalated-External** (rarely reachable without a court). The **constitutional keystones** are **S-3** (makes independence real) and **S-5** (keeps the correction loop closed), with S-4 supplying authority and the anonymity invariant deliberately capping remediation (D6). Six **architectural views** (D7) all converge on one invariant: **a closed correction loop with genuine independence.** The architecture is **internally consistent** (D9), with one declared limit (anonymity-bounded remediation) and one bounded residual risk (functional-only independence / meta-capture). The strongest **candidate governance domain** is **Oversight & Adjudication** (D8) — recorded, not promoted.
 
-This is the canonical architectural reference for the family. It introduces no new evidence, changes no methodology, modifies no constitutional property, and performs no software design.
+This is the **program-canonical** architectural reference for the family **under MB-39.1** (synthesized and internally checked — not externally verified). It introduces no new evidence, changes no methodology, modifies no constitutional property, and performs no software design.
 
 ---
 
-*Round 40-03 — Threat & Capture Resistance Governance Architecture Synthesis — ISSUED (descriptive, canonical).*
+*Round 40-03 — Threat & Capture Resistance Governance Architecture Synthesis — ISSUED (descriptive; program-canonical under MB-39.1; synthesized, not externally verified).*
 *Meta-model · capability dependency graph · information flow · responsibility architecture · state machine · constitutional dependency map · 6 views · candidate domains · consistency review. MB-39.1 FROZEN, Register LOCKED, DDD GATED. Next: Methodology Governance Review (Round40-01 DA-THR-01..06) → MB-39.2 decision → F-REV.*

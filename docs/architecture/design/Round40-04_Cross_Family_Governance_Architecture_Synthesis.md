@@ -3,8 +3,10 @@
 **Program:** NRNA DDD Trustworthiness Research Program
 **Phase:** Cross-Family Governance Architecture · **Under Methodology Baseline MB-39.1 (frozen)**
 **Role:** Senior Governance / Constitutional / Election-Security / Strategic-Domain-Discovery Architect.
-**Status:** 📐 CANONICAL CROSS-FAMILY ARCHITECTURE (descriptive) — the architectural baseline before F-REV.
+**Status:** 📐 CROSS-FAMILY REFERENCE ARCHITECTURE (descriptive) — **program-canonical under MB-39.1**; the architectural baseline before F-REV.
 **Date:** 2026-06-25
+
+> **Epistemic status (read before "canonical").** Synthesized, internally consistency-checked, evaluated under MB-39.1 — **NOT** externally *verified*, *proven*, or *empirically validated* (no proofs, model-checking, simulation, case studies, or independent review). "Canonical" = **canonical for the NRNA program under MB-39.1**, not for governance research generally. Population of inference: NRNA, **3 completed families** (F-REV outstanding). Generalizability: not yet established.
 
 > **Scope.** Integrate the completed family architectures — **F-AUTH** (appointment/authority integrity, *emergent*), **F-PROC** (process integrity, *additive*), **F-THR** (threat/capture resistance, *mixed*) — into one governance capability architecture, and locate **F-REV** (review/adjudication) as the *anticipated* next family. **Synthesis, not discovery.**
 > **Discipline.** F-REV relationships are marked **[PREDICTED]** — to be tested when F-REV runs, not claimed as found. No methodology/Register/ADR/DDD/software change. Constitutional properties **mapped, never modified.**
@@ -185,9 +187,9 @@ Domains that appear in **two or more** completed families (cohesion across the p
 
 Across three completed families the NRNA governance architecture is a **self-governing loop with no external sovereign.** **F-AUTH** is foundational — it produces the legitimate, independent bodies everything else assumes; **F-PROC** produces the reviewable evidence; **F-THR** is **cross-cutting**, wrapping and protecting the others with a closed detection→correction loop; and **F-REV** [PREDICTED] is the terminal, binding adjudicator. Their products chain (independence → evidence → closed loop → rulings → **emergent Legitimacy**), and **no family is self-sufficient.** Constitutionally, the whole architecture rests on **S-3** (appointment insulation = independence) as its single keystone and dominant common-mode point, with the **anonymity invariant** as a deliberate architecture-wide ceiling on remediation and attribution. The architecture contains an **irreducible governance recursion** — F-THR needs F-REV and F-REV needs F-THR — with **no internal terminus**, closed only functionally (Option B + S-1..S-5) and carrying a **managed (not eliminated) meta-capture residual**. Architecture-level assurance is therefore **bounded by the weakest of {S-3 independence, F-REV capture-resistance}**. The strongest **recurring governance domains** are **Oversight & Adjudication** and **Independence** (both now cross-family **Stable** candidates, recorded not promoted). Open research observations: a **possibly-missing Eligibility/Franchise family** and the question of whether **F-THR is a peer family or a cross-cutting quality** — both deferred, unchanged, to the post-F-REV review.
 
-This is the canonical cross-family architectural baseline. It introduces no evidence, changes no methodology, modifies no constitutional property, enacts no ADR, and performs no software design. **F-REV is the next discovery; the Methodology Governance Review of DA-THR-01..06 follows it.**
+This is the **program-canonical** cross-family architectural baseline **under MB-39.1** (synthesized and internally checked — not externally verified; NRNA, 3 families, generalizability not yet established). It introduces no evidence, changes no methodology, modifies no constitutional property, enacts no ADR, and performs no software design. **F-REV is the next discovery; the Methodology Governance Review of DA-THR-01..06 follows it.**
 
 ---
 
-*Round 40-04 — Cross-Family Governance Architecture Synthesis — ISSUED (canonical, descriptive).*
+*Round 40-04 — Cross-Family Governance Architecture Synthesis — ISSUED (descriptive; program-canonical under MB-39.1; synthesized, not externally verified; NRNA / 3 families).*
 *F-AUTH foundational · F-PROC evidence · F-THR cross-cutting · F-REV [PREDICTED] terminal+recursive · Legitimacy emergent. Keystone S-3; GRP-THR-REV recursion with no external terminus; assurance bounded by {S-3, F-REV}. Stable domains: Oversight & Adjudication, Independence. Open: missing Eligibility family?; F-THR peer-vs-cross-cutting? MB-39.1 FROZEN · Register LOCKED · DDD GATED.*
