@@ -9,6 +9,14 @@
 
 Every methodological observation carries four fields: **Observation · Prediction · Falsifier · Current evidence.**
 
+## Prediction Lock Rule (BINDING — No Retroactive Prediction)
+
+Before each family's discovery begins, the register is **LOCKED**. **No prediction may be added, removed, reworded, or re-scored during discovery.** After the family's formal document, the register is **UNLOCKED** and each prediction updated to exactly one status: **Supported / Narrowed / Refuted / Inconclusive** (the last when the evidence genuinely does not bear on it). Sequence: `Lock → discover → evaluate → unlock → update`. This removes even the *appearance* of hindsight bias and sits alongside the DDD gate as a standing rule.
+
+> **🔒 LOCK STATUS: register v1 is LOCKED for F-PROC (2026-06-25).** Do not edit predictions until the F-PROC formal document is complete.
+
+**Assumption vs Prediction (keep distinct):** an *assumption* (e.g. "composite evaluation is meaningful") underlies a *prediction* (e.g. "future families organize into composites"); the chain is Assumption → Prediction → Evidence → Conclusion. Only predictions are scored here.
+
 ---
 
 ## Register (v1 — after F-AUTH)
@@ -28,16 +36,21 @@ Every methodological observation carries four fields: **Observation · Predictio
 
 Outcomes use **three values, not two**: **Supported · Narrowed · Refuted** (real science narrows more often than it destroys). Lifecycle states are defined in P2-SYN-01 §6.
 
-| # | Prediction strength | Level | Lifecycle state (after F-AUTH) |
-|---|--------------------|-------|--------------------------------|
-| M-01 | Weak (1 family) | Architecture | Observed |
-| M-02 | Weak | Architecture | Observed |
-| M-03 | Weak | Architecture | Observed |
-| M-04 | Weak | Architecture | Observed |
-| M-05 | Moderate | Method | Observed (process-adopted) |
-| M-06 | Moderate | Method | Observed (process-adopted) |
+| # | Strength | Confidence (≠ lifecycle) | Independence | Level | Lifecycle state |
+|---|----------|--------------------------|--------------|-------|-----------------|
+| M-01 | Weak (1 family) | Medium (1 family, no contradictory evidence) | **Foundational (hub)** | Architecture | Observed |
+| M-02 | Weak | Low | Derived (← M-01) | Architecture | Observed |
+| M-03 | Weak | Low | Derived (← M-01) | Architecture | Observed |
+| M-04 | Weak | Low | Derived (← M-01) | Architecture | Observed |
+| M-05 | Moderate | Medium | Foundational | Method | Observed (adopted) |
+| M-06 | Moderate | Medium | Independent | Method | Observed (adopted) |
 
-*Levels:* **Method** (how we work) · **Architecture** (composite/emergence claims) · **Family** ("F-PROC should organize into composites") · **Project** ("remaining families reinforce emergence"). Do not mix levels when reasoning about a result.
+*Levels:* **Method** · **Architecture** · **Family** · **Project** — do not mix when reasoning about a result. *Independence:* Foundational / Derived / Dependent — **a Derived prediction failing matters less than its Foundational parent failing.**
+
+**Prediction impact analysis (if it fails/narrows):**
+- **M-01 (hub):** M-02/M-03/M-04 narrow with it. Affected: composite evaluation template, interaction matrix, the "composite = unit of design" framing, the G3 composite-graph prospect, and the **L3 Composition** architecture level.
+- **M-05:** scopes the dimension model (per-family dimensions instead of universal D1–D5).
+- **M-06:** affects only the harvest *ordering* (sketch-before-literature); no architecture impact.
 
 ---
 
