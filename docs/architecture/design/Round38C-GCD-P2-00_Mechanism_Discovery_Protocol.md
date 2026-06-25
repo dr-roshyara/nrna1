@@ -12,6 +12,10 @@
 
 Pass 2 changes the abstraction (from *what capability* to *how realized*) and will produce a large alternative space. This protocol fixes the discipline **before** the explosion, so mechanism work cannot silently mutate the validated capability layer (SYN-03) or the frozen vocabulary (GLOSSARY-01).
 
+**Objective — discover the mechanism design space, not "pick a mechanism."** Pass 2 is **exploration, not selection**. For each capability it maps and *classifies* the space of possible realizations, evaluates them, and lets a recommendation (or an explicit *no-dominant-mechanism* conclusion) fall out of the exploration. Selection-first framing is forbidden; it produces local, first-idea bias.
+
+**Terminology guard:** mechanisms are grouped into **mechanism classes / categories** — **not** "mechanism families." "Family" is reserved for *capability* families (GLOSSARY-01); do not overload it.
+
 ---
 
 ## The six rules (binding)
@@ -36,23 +40,53 @@ Never `capability → first idea → accepted`.
 
 **Rule 6 — Every rejected mechanism stays in the archive.** Rejected candidates and the reason for rejection are retained. The rejected set is itself a research asset (it records *why not*, which protects future decisions from re-litigation).
 
+**Rule 7 — Classify before comparing.** Candidate mechanisms must first be grouped into **mechanism classes** (e.g. for detection: passive / continuous / distributed / statistical) *before* individual comparison. Comparing fundamentally different classes head-to-head is invalid; compare deliberately within and across classes.
+
+**Rule 8 — Two independent fitness questions per mechanism.** Every mechanism is judged on **both**:
+- **Functional fitness:** does it satisfy the capability?
+- **Architectural fitness:** does it *strengthen or weaken* GRP handling, EGCP, family reuse, cross-family coupling, the dependency graph, and Option-B assumptions?
+A mechanism can pass functional fitness yet fail architectural fitness (e.g. an automatic appointment algorithm satisfies the capability but creates hidden authority concentration). Both must be reported.
+
+**Rule 9 — "No dominant mechanism" is a valid outcome.** Pass 2 does **not** force a recommendation. If no candidate dominates, the honest result is *"no dominant mechanism — alternatives carried into Strategic DDD"* with pros/cons preserved.
+
 ---
 
 ## Per-capability output format (Pass 2)
 
-For each capability, Pass 2 produces:
+For each capability (or each **shared design space** within a family — explore once, map per capability), Pass 2 produces **six outputs**:
 
-| Field | Content |
-|-------|---------|
-| Capability | GC-Sx-xx + family |
-| Candidate mechanisms | ≥2 genuinely different options |
-| Evaluation criteria | constitutional fit, GRP-exposure, cross-safeguard impact, NRNA-feasibility |
-| Comparison | each candidate against the criteria |
-| Recommended | the mechanism(s) carried forward (with rationale) |
-| Rejected (retained) | the rest + reason (Rule 6) |
-| Traceability | the upward trace (Rule 2) |
+1. **Mechanism design space** — the mapped set of candidate realizations.
+2. **Classification** — candidates grouped into mechanism classes (Rule 7).
+3. **Evaluation matrix** — each candidate on functional + architectural fitness (Rule 8), using the template below.
+4. **Recommendation** — the mechanism(s) carried forward **or** an explicit *"no dominant mechanism"* (Rule 9), with rationale.
+5. **Rejected alternatives (retained)** — the rest + reason (Rule 6).
+6. **Open research questions** — surfaced but not resolved.
 
-**Still forbidden:** bounded contexts, aggregates, services, APIs, domain events, repositories, implementation. Mechanisms are governance mechanisms, not software. **Strategic DDD remains GATED.**
+Every entry carries its **upward trace** (Rule 2): Mechanism → Capability → Family → Property → Constitution.
+
+### Evaluation template (per mechanism)
+
+| Criterion | Score / Finding |
+|-----------|-----------------|
+| Satisfies capability (**functional fitness**) | ✓ / Partial / ✗ |
+| Constitutional alignment | |
+| Option-B consistency | |
+| GRP impact (strengthen / neutral / weaken) | |
+| Family reuse | |
+| Cross-family coupling | |
+| Complexity | |
+| Transparency | |
+| Evolvability | |
+| Failure modes | |
+| Open questions | |
+
+This is **governance architecture, not software.** **Still forbidden:** bounded contexts, aggregates, services, APIs, domain events, repositories, implementation. **Strategic DDD remains GATED.**
+
+---
+
+## Pass 2 completion criterion (prevents indefinite expansion)
+
+Pass 2 is **complete** when **every capability** has: (a) an explored, classified mechanism design space; (b) a comparative evaluation (functional + architectural fitness); (c) either a recommended mechanism **or** an explicit *"no dominant mechanism"* conclusion; (d) documented rationale; (e) preserved rejected alternatives; and (f) recorded open research questions. Anything beyond this (detailed design of the chosen mechanism) is Strategic/Tactical DDD and remains gated.
 
 ---
 
