@@ -6,6 +6,8 @@
 **Status:** 🧭 REVIEW REPORT (findings, not design changes). Reference under review: `Round40-03`, `Round40-04` — **not modified**.
 **Date:** 2026-06-25
 
+> **⚠️ Re-classification erratum (2026-06-25, post-review).** This report over-used **[CONFIRMED]**. On review-of-the-review, only a *semantic contradiction visible in existing evidence* (GAR-I1) and *bare existence observations* (sponsor, supply chain) are genuinely confirmed. Most "[CONFIRMED]" items (missing Eligibility family, F-THR cross-cutting, constitution reduction, family merges/splits) are **research hypotheses generated from only three families** — not established facts. The findings are **formally re-classified A/B/C** in `Round40-GDR-01`; the hypotheses are routed to `Round40-07` (Research Question Register), and semantic conflicts to `Round40-06` (Semantic *Inventory*, not Ontology). This text is preserved unedited (append-only); the GDR governs. *Lesson: a review board identifies questions; it does not manufacture theory (cf. MC-02/MC-05).*
+
 > **Mandate.** Challenge the governance architecture *as if to reject it*. Produce findings only. **No** methodology change, **no** new mechanisms, **no** software/DDD, **no** edits to 40-03/04, MB-39.1, the Register, or the Constitution. Methodology observations are *informational only* and route through the established ADR process — not actioned here.
 > **Issue tags:** **[CONFIRMED]** (a real, agreed issue) · **[POTENTIAL GAP]** (plausible, needs evidence) · **[OPEN RQ]** (genuine research question) · **[DEFER→F-REV]** (best resolved by the next discovery).
 
