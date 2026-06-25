@@ -62,7 +62,9 @@ Mapping the three Pass-1 catalogs onto it:
 | **Challenge** | *(routes to S-4)* GC-S4-01/02 | *(routes to S-4)* GC-S4-01/02 | GC-S4-01 Invocation, GC-S4-02 Standing, GC-S4-03 Conflict Isolation |
 | **Correction** | GC-S1-06 (guards the correction rule itself); ratify/reject | *(routes to S-4)* GC-S4-06 Corrective Action | GC-S4-06 Corrective Action |
 
-The grammar fits all three. That is the emergent pattern.
+The grammar **appears to fit** the three observed safeguard classes analysed so far. That is the emergent pattern.
+
+*(Erratum, 2026-06-25 — non-structural: "fits" softened to "appears to fit" for observation language. The lifecycle, its stages, and their count are unchanged; the freeze protects the structure, not this wording.)*
 
 ---
 

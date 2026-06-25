@@ -88,13 +88,13 @@ S-5's *telos* is equilibrium (a resting state), but it still **instantiates the 
 
 ## 6. Realizability assessment (capability level, forward)
 
-**Realizability: CONFIRMED.** The six capabilities appear to constitute a **complete candidate capability set** for realizing S-5 within Option B — necessity established; sufficiency not. Forward design constraint: **GC-S5-01/03** hold the S-5 GRP (finality self-reference). **GC-S5-05 must remain a routing/preservation capability only** — it must never be designed into a decision on OQ-38A05-02.
+**Realizability: CONFIRMED.** The six capabilities appear to constitute a **complete candidate capability set** for realizing S-5 within Option B — necessity established; sufficiency not. Forward design constraint: **GC-S5-01/03** hold the S-5 GRP (finality self-reference). *(Notebook item for synthesis: the S-5 GRP is more precisely the **meta-question** — "who determines whether finality has actually **attached** / whether the finality declaration was itself constitutionally valid?" — not merely declaring finality or setting the override threshold.)* **GC-S5-05 must remain a routing/preservation capability only** — it must never be designed into a decision on OQ-38A05-02.
 
 ---
 
 ## 7. Open questions (routed to the synthesis round — NOT answered here)
 
-- **OQ-GCD05-01 (EGCP-critical):** Should the terminal lifecycle stage be **Resolution{Confirmation|Correction}** rather than **Correction**? (A refinement, not a new stage — synthesis decides, since EGCP is frozen.)
+- **OQ-GCD05-01 (EGCP-critical):** Should the terminal lifecycle stage be **Resolution** — the lifecycle's **closure operator**, producing one of several constitutional outcomes (currently **Confirmation** or **Correction**) — rather than bare **Correction**? *Resolution is the lifecycle **terminating**, NOT another capability: there must be no `GC-Resolution`.* (A refinement, not a new stage — synthesis decides; EGCP frozen.)
 - **OQ-GCD05-02 (PROTECTED-guard):** Confirm GC-S5-05 only *routes/preserves* OQ-38A05-02 and cannot be elaborated into deciding invalidation.
 - **OQ-GCD05-03 (cross-safeguard):** GC-S5-03 Override Threshold ↔ GC-S1-02 Tiered Threshold — one shared capability or two?
 
