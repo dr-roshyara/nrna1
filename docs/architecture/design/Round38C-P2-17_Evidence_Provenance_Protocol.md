@@ -59,6 +59,17 @@ They can diverge:
 
 Both dimensions are recorded per mechanism. A high-evidence / low-confidence mechanism is **not** preferred over a low-evidence / high-confidence one merely because the literature likes it (this is Rule 14 made measurable).
 
+### 3a. Transferability — third axis *(added 2026-06-25; evidence-driven amendment triggered by F-AUTH)*
+
+Fit also depends on whether a mechanism transfers to NRNA's **kind of organization** — a voluntary, cross-border association, **not** a sovereign state. So record **three independent ★ axes**: **evidence / confidence / transferability**.
+
+| Case | Evidence | Confidence | Transferability | Example |
+|------|----------|-----------|-----------------|---------|
+| State-bound | ★★★★★ | ★★★★★ | ★★ | relies on state enforcement / courts |
+| Association-native | ★★ | ★★★★★ | ★★★★★ | original mechanism designed for NGOs/federations |
+
+*This addition is itself the freeze working: a real application (F-AUTH) exposed the gap, so the protocol evolved — exactly as P2-00's "frozen except evidence-driven refinements" intends, rather than from inventing another rule in the abstract.*
+
 ---
 
 ## 4. Literature comes AFTER the internal design-space sketch (anti-anchoring)

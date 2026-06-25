@@ -93,6 +93,16 @@ staggered terms · long terms · non-renewable terms · count-based term limits 
 
 ---
 
+## Methodological observations (reusable beyond this document)
+
+**Observation P2-02H-01 (anti-anchoring validated):** Independent internal mechanism sketching *followed by* literature expansion yielded **high convergence** — the literature mostly confirmed the 22-mechanism sketch and added few genuinely new ideas. This suggests the **capability-driven discovery process produces a design space broadly consistent with comparative institutional practice** *before* literature is consulted. Reusable across families; a validation of P2-17's sketch-before-literature ordering.
+
+**Observation P2-02H-02 (emergent capture resistance — the real finding):** No single mechanism delivers capture resistance. **Capture resistance is an *emergent property* of multiple interacting mechanism *dimensions* (source / temporal / qualification / approval / protection), not a property of any individual mechanism.** Therefore **the unit of design is the *composite governance architecture* (a selection across dimensions), not the mechanism.** This extends the program's arc: capabilities (EGCP) → *mechanisms as architectural compositions*.
+
+**Adopted downstream:** the formal F-AUTH document and the interaction matrix will reorganize the 6 mixed "classes" into **orthogonal dimensions (D1–D5)** so each mechanism becomes *coordinates*, not a bucket (see `P2-02I`).
+
+---
+
 ## Status
 
 **This is the harvest, not the formal Mechanism Design Space Map.** Discovery is done; the formal F-AUTH Pass-2 document (P2-02) will: score each mechanism on the full evaluation template (functional + architectural + evidence/confidence + constraint map), build the interaction matrix, evaluate the composites, and produce recommendation(s) or an explicit *no-dominant* per class — retaining all alternatives and the Phase-6 exclusions.
