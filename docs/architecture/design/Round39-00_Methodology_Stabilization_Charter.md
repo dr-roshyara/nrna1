@@ -2,7 +2,7 @@
 
 **Program:** NRNA DDD Trustworthiness Research Program
 **Workstream:** Round 39 — **Methodology Stabilization** (NOT Pass 2; NOT DDD)
-**Status:** OPEN
+**Status:** ✅ **CLOSED** (2026-06-25) — methodology is a governed Research Governance Architecture; see `Round39-RGA`. Next: F-THR under MB-39.1.
 **Date:** 2026-06-25
 
 > **Why now.** Through F-PROC the program discovered that *the methodology itself evolves* (M-01 narrowed; M-07 introduced). Before discovering more governance families, the methodology must be **frozen and consolidated** into a single versioned reference, so that **F-THR and F-REV are executed under a stable protocol** rather than a moving one. That makes their evidence substantially stronger.
