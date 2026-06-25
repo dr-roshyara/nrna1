@@ -24,6 +24,23 @@ Every methodological observation carries four fields: **Observation · Predictio
 
 ---
 
+## Annotations — strength · level · lifecycle state
+
+Outcomes use **three values, not two**: **Supported · Narrowed · Refuted** (real science narrows more often than it destroys). Lifecycle states are defined in P2-SYN-01 §6.
+
+| # | Prediction strength | Level | Lifecycle state (after F-AUTH) |
+|---|--------------------|-------|--------------------------------|
+| M-01 | Weak (1 family) | Architecture | Observed |
+| M-02 | Weak | Architecture | Observed |
+| M-03 | Weak | Architecture | Observed |
+| M-04 | Weak | Architecture | Observed |
+| M-05 | Moderate | Method | Observed (process-adopted) |
+| M-06 | Moderate | Method | Observed (process-adopted) |
+
+*Levels:* **Method** (how we work) · **Architecture** (composite/emergence claims) · **Family** ("F-PROC should organize into composites") · **Project** ("remaining families reinforce emergence"). Do not mix levels when reasoning about a result.
+
+---
+
 ## Specific predictions (testable, recorded — not adopted)
 
 | # | Prediction | Falsifier | Evidence | Test family |
