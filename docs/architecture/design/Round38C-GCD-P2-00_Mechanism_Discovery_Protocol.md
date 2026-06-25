@@ -110,6 +110,7 @@ Every entry carries its **upward trace** (Rule 2): Mechanism → Capability → 
 | **Novelty** | existing / adapted / original |
 | **Reuse potential** | useful for other capabilities/families? |
 | **Interactions** (Rule 15) | synergies / conflicts with other mechanisms |
+| **Architectural emergence** | does it create value only when combined? *(architectural emergence — not "research emergence"; P2-SYN-01 §3. Evidence-driven add 2026-06-25)* |
 | Constitutional alignment | |
 | Option-B consistency | |
 | **GRP impact** (Rule 13) | strengthen / neutral / weaken |
