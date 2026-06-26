@@ -37,6 +37,18 @@ Computational identities; **~1/3 of the ontology has no component** (Anonymity=i
 
 **Binding constraints on Strategic DDD:** (1) federate Independence by facet · (2) Anonymity supreme · (3) one Legitimacy projection · (4) software does not own enforcement · (5) design from ownership, then reconcile with existing code (no retrofit — threat TO-5).
 
+### Forbidden Transformations (added R46C — verified in `Round46C-01`)
+
+| Forbidden | Reason | Enforcement mechanism |
+|-----------|--------|------------------------|
+| **Legitimacy → Aggregate / persisted authoritative truth** | derived/emergent only | fitness function: forbid persisting legitimacy; single read model |
+| **Trust-Anchor → Entity/Aggregate** | external boundary | forbidden-list + external-actor modeling; architecture test |
+| **Independence → single object** | 4 semantic facets (Institutional/Operational/Decisional/Perceived) | fitness function: no class/aggregate named "Independence" |
+| **Anonymity → persisted / linkable state** | constitutional invariant | schema check (no voter↔vote linkage) + query check + test |
+| **Consent → software-owned authoritative state** | external origin (constituent) | software records events only; no authoritative-will store |
+| **Resilience → persisted state** | emergent metric | observability metric only |
+| **any Blocked concept → context/aggregate** | research-incomplete (Eligibility/Coercion/Voter-ID/Amendment) | admissibility gate + semantic review (not just naming) |
+
 ## Part V — Open Research Questions (→ `Round40-07`, updated)
 Blocked-from-DDD until discovered: **RQ-EL-01** Eligibility (partially supported, distinct candidate family) · **RQ-COERCE-01** Coercion-resistance · **RQ-ID-01** Voter-identity · **RQ-AMEND-01** Amendment-governance · **RQ-FAIL-01** silent legitimacy erosion · **RQ-FAIL-02** participation collapse · **O-REV-Q1** consent decomposition · sacral-anchor under-explored.
 
