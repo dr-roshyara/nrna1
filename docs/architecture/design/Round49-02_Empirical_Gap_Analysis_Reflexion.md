@@ -1,101 +1,81 @@
-# Round 49-02 — Architecture Conformance Analysis: Certified Landscape vs Code (v1.1)
+# Round 49-02 — Architecture Conformance Analysis (v1.2) — within Evidence-Based Strategic DDD Discovery
 
 **Program:** NRNA DDD Trustworthiness Research Program · **Phase:** Strategic DDD (Phase II) · **Built against:** Certified Release v1.0 / Strategic Domain Landscape v1.0
-**Status:** 🔬 EMPIRICAL CONFORMANCE ANALYSIS (v1.1 — reflexion model **evolved into a multi-perspective Architecture Conformance Framework**). Findings are **provisional**; behavioral verification still required.
+**Status:** 🔬 ARCHITECTURE CONFORMANCE ANALYSIS — the empirical stage of **Evidence-Based Strategic DDD Discovery (EBSD)**. Findings **provisional**; behavioral (L3) verification still required. Feeds Round 49 (BC Evaluation → BDR).
 **Date:** 2026-06-26
 
-> **Correction (v1.0→v1.1).** v1.0 over-claimed: it collapsed "name/location matches" with "the design exists," on **one** axis. v1.1 fixes this: **architectural correspondence ≠ implementation ≠ confirmed bounded context.** The reflexion model is now **one of four** evidence perspectives, findings are scored on **two orthogonal dimensions**, and convergence is graded by **evidence level**.
+> **Methodology rename (v1.1→v1.2).** This is no longer "conformance checking." The full method is **Evidence-Based Strategic DDD Discovery**: *certified semantics → candidate contexts → architecture conformance → evidence grading → boundary falsification → boundary confirmation → BDR.* This document is the **architecture-conformance** stage; the **reflexion model is one of four** evidence perspectives within it.
 
-## 0. The Architecture Conformance Framework (4 perspectives)
+## 0a. Evidence perspectives (4) — a context is classified only when all agree
+**(1) Structural** (modules/namespaces/dependencies — reflexion model) · **(2) Behavioral** (runtime/tests/responsibilities) · **(3) Architectural** (ownership/autonomy/lifecycle) · **(4) Strategic-DDD** (`Round48A` T1–T9). This stage supplies **(1)** + partial **(3)**; **(2)** and **(4)** are owed by Round 49.
 
-A context is classified only after combining:
-1. **Structural correspondence** — namespaces, modules, dependencies (reflexion model lives here).
-2. **Behavioral correspondence** — runtime behavior, tests, business responsibilities.
-3. **Architectural correspondence** — ownership, autonomy, lifecycle.
-4. **Strategic-DDD correspondence** — the `Round48A` boundary tests (T1–T9).
+## 0b. ⭐ Symmetry principle of evidence (completes the discipline)
+> **Implementation presence does NOT prove a bounded context. Implementation absence does NOT disprove one.**
+- `ReplaySession` existing ≠ "Replay is a BC" (capability ≠ context).
+- Contestation being absent ≠ "Contestation is the wrong BC" (it is simply **not yet implemented**).
 
-**Only when all four agree** is a context classified Confirmed / Merge / Supporting / Infrastructure / Rejected (Round 49). This analysis supplies perspectives **1 (structural)** and partial **3**; **2 (behavioral)** and **4 (T1–T9)** are owed by Round 49. *(The reflexion model alone is necessary, not sufficient.)*
+Both directions are merely **evidence-level signals**, never verdicts. *(Aligns with the falsification stance: code is empirical evidence, not authoritative — in either direction.)*
 
-## 1. Evidence levels (only L3 counts as real convergence)
-**L1 Name correspondence** (a class is named like the concept) · **L2 Structural correspondence** (it's organized/depends as expected) · **L3 Behavioral correspondence** (runtime/tests/responsibilities confirm it). **Convergence is only *claimed* at L3.** Most rows below are **L1–L2**.
+## 1. Evidence levels (only L3 = real convergence)
+**L1** name correspondence · **L2** structural — sub-graded **L2a** organization (namespace/module) < **L2b** dependency (graph) < **L2c** business responsibility · **L3** behavioral (runtime/tests). **Convergence claimed only at L3. Zero rows at L3 yet.**
 
-## 2. Two-dimensional conformance map
+## 1b. Architecture-correspondence determinants (so "High" isn't subjective)
+Overall architecture correspondence = a roll-up of: **decision-ownership · truth-ownership · autonomy · lifecycle · integration · language.** A row is "High" only if most determinants are High *and* not contradicted; until T1–T9 run, the roll-up is labelled **Provisionally** High/Medium/Low.
 
-**Dimension A — Architecture correspondence:** High / Medium / Low / Unknown. **Dimension B — Implementation status:** Implemented / Partial / Scattered / Absent. *(Replaces the single Convergence/Drift/Absence axis.)* Confidence **R** = file read · **G** = name/location only.
+## 2. Two-dimensional conformance map (provisional)
 
-| Landscape element | Arch. correspondence | Implementation | Evidence level | Conf |
-|-------------------|----------------------|----------------|----------------|------|
-| **Anonymity** (invariant) | High | Implemented (votes no `user_id`; hashed envelope) | **L2→L3 partial** (schema-level) | R |
-| **Evidence** | High | Implemented (immutable hashed envelope) | **L2** (read; behavior not yet tested) | R |
-| **Adjudication** | High | Partial (kernel+policy+decision; vocab differs) | **L2** | R |
-| **Legitimacy** (read model) | High | Implemented (single-resolver enum, not persisted) | **L2** | R |
-| **Replay** | Medium | Implemented (session/cert/validator) — *placement open* | **L2** | R |
-| **Voting** | Medium | Present (`VotingEngine`/`VoteAggregator`) — *engine ≠ BC* | **L1** | G |
-| **Authorization** | Medium | Present (`ElectionCapabilityResolver`) — *resolver owns? or computes?* | **L1** | G |
-| **Election Lifecycle** | Medium | Present (`ElectionLifecycleEngine`/`TransitionMatrix`) — *engine ≠ BC* | **L1** | G |
-| **Results** (read model) | Medium | Present (`ResultController`) — *read model, or exposed SQL?* | **L1** | G |
-| **Audit** | **Unknown** | Present (`ElectionAuditService`) — *domain? platform? infra?* | **L1** | G |
-| **Appointment** | **Low–Medium** | **Scattered** (Authority/Delegation + Committee) — *not yet a coherent context* | **L1** | G |
-| **Contestation** | High (by certification) | **Absent** | — | R |
-| **Trust-Anchor / Consent** | High | Divergent (device/PKI only) + Consent **Absent** | L1 | R/G |
+Dim A **Architecture correspondence** (Provisional) · Dim B **Implementation status** · Evidence level · Conf (**R** read / **G** name-only).
 
-**Anti-conflation note:** `ElectionLifecycleEngine` does **not** prove a Lifecycle BC (could be a service / workflow / God-object / application service); `VotingEngine` does **not** prove a Voting BC; `ResultController` does **not** prove the Read-Model philosophy (could be exposed SQL); `ElectionAuditService` does **not** prove an Audit BC (could be infra/platform). **Name ≠ structure ≠ behavior ≠ bounded context.**
+| Element | Arch. corr. (provisional) | Implementation | Level | Conf | Alternative interpretation |
+|---------|---------------------------|----------------|-------|------|----------------------------|
+| **Anonymity** (invariant) | **High** | Implemented (no `user_id`; hashed envelope) | L2c→L3-partial | R | — (invariant, not a BC) |
+| **Evidence** | **Prov. High** | Implemented (immutable hashed envelope) | L2b | R | aggregate within a broader context |
+| **Adjudication** | **Prov. High** | Partial (kernel+policy+decision; vocab differs) | L2b | R | subdomain of an Oversight BC |
+| **Legitimacy** (RM) | **Prov. High** | Implemented (single-resolver enum) | L2b | R | — (read model) |
+| **Replay** | **Prov. Medium** | Implemented (session/cert/validator) | L2b | R | **Application/Infra Capability over Evidence** (evidence needed: independent lifecycle/txn) |
+| **Voting** | **Prov. Medium** | Present (`VotingEngine`) | L1/L2a | G | engine is a service, not a BC |
+| **Authorization** | **Prov. Medium** | Present (`ElectionCapabilityResolver`) | L1/L2a | G | computes, may not own → merge w/ Appointment |
+| **Election Lifecycle** | **Prov. Medium** | Present (`LifecycleEngine`/`TransitionMatrix`) | L1/L2a | G | workflow/service; merge into Voting |
+| **Results** (RM) | **Prov. Medium** | Present (`ResultController`) | L1 | G | exposed SQL, not a Read-Model philosophy |
+| **Audit** | **Unknown** | Present (`ElectionAuditService`) | L1 | G | **Infrastructure/Platform**, not a domain BC |
+| **Appointment** | **Prov. Low** | Scattered (Authority/Delegation + Committee) | L1 | G | **Merge into Authorization** |
+| **Contestation** | **Prov. High** (certified) | **Expected Absence** (never implemented) | — | R | module within Adjudication |
+| **Trust-Anchor / Consent** | Architecture: **known external boundary** | **Not represented — EXPECTED** (external; correctly not in software) + device-PKI naming divergence | L1 | R/G | — (external; absence ≠ defect) |
 
-## 3. Headline (restated defensibly)
+**Expected vs unexpected absence:** Contestation and Trust-Anchor/Consent absences are **Expected** (greenfield / external) — *not defects.* An *unexpected* absence (a certified, supposed-to-exist capability missing) would be a finding; neither here is that.
 
-> **The current implementation exhibits substantial *architectural correspondence* with the certified strategic landscape. Direct *behavioral* verification (L3) remains necessary before claiming architectural conformance — and architectural correspondence is *not* proof of bounded-context boundaries (Round 48A/49 owed).**
+## 3. Headline (defensible)
+> **The current implementation exhibits substantial *provisional architectural correspondence* with the certified landscape. Behavioral (L3) verification and `Round48A` T1–T9 remain necessary before any conformance or bounded-context claim.** *(Not "already implemented.")* 4 rows read (R, ≤L2b); rest inferred (G, L1); **none at L3**.
 
-Not "the certified design is already implemented." Of ~13 elements: **4 read directly (R, L2)**, the rest **inferred by name (G, L1)**; **zero are at L3 (behavioral)** yet.
+## 4. Boundary confidence (Round-49 roadmap)
+Adjudication **High** · Evidence **High** · Contestation **High (expected gap)** · Voting Med-High · Authorization **Med** · Lifecycle **Med** · Replay **Low (Capability?)** · Appointment **Low (merge?)** · Audit **Low (infra?)**.
 
-## 4. Boundary confidence (feeds Round 49 — where to investigate)
+## 5. What would falsify the landscape?
+Replay can't evolve independently → merge into Evidence / app-infra · Appointment never owns independent decisions → merge into Authorization · Audit is only telemetry → Platform/Infra · Lifecycle can't exist independent of vote flow → merge into Voting · "Engines" are God-objects → boundary is in code, needs structural refactor.
 
-| Context | Boundary confidence | Round-49 hypothesis to falsify |
-|---------|---------------------|-------------------------------|
-| Adjudication | High | "not a BC" |
-| Evidence | High | "not a BC" |
-| Contestation | High (gap real) | "belongs inside Adjudication" |
-| Authorization | Medium | "merge with Appointment" |
-| Lifecycle | Medium | "merge into Voting" |
-| Voting | Medium-High | "engine ≠ BC" |
-| Replay | Medium | "belongs inside Evidence / is app/infra" |
-| Appointment | **Low** | **"not a BC — merge into Authorization"** |
-| Audit | **Low** | **"Platform/Infrastructure, not a domain BC"** |
+## 6. Actions — by layer
+**Governance (→ KRG):** GI-1 Eligibility · GI-2 Consent/Trust. **Architecture (Strategic DDD):** evaluate Merge/Capability for Appointment/Lifecycle/Audit/Replay (Round 49); AI-1 consolidate to `app/Contexts/*`. **Implementation (later):** L3 behavioral verification of G/L1 rows; Contestation prototype (post-confirmation); NM-1 vocabulary.
 
-## 5. What would falsify the landscape? (falsification, not confirmation)
-
-- If **Replay** cannot evolve independently of Evidence → **merge into Evidence** (or app/infra).
-- If **Appointment** never owns independent decisions → **merge into Authorization**.
-- If **Audit** contains only telemetry → **Platform/Infrastructure**, not a BC.
-- If **Lifecycle** cannot exist independently of the vote flow → **merge into Voting**.
-- If **Voting/Authorization** "engines" are God-objects → the BC boundary is in code, not just names → structural refactor needed.
-
-Round 49 actively attempts each falsification (Round 48A T1–T9).
-
-## 6. Actions — separated by layer
-
-**Governance actions (→ Knowledge Release Governance):** GI-1 Eligibility (Blocked family vs procedural evaluator); GI-2 Consent/Trust naming + model Consent as external boundary. *(unchanged)*
-**Architecture actions (Strategic DDD):** evaluate Merge/Reject/Subdomain for Appointment, Lifecycle, Audit, Replay (Round 49); consolidate AI-1 to `app/Contexts/*` (Round49-03).
-**Implementation actions (Tactical/later):** behavioral verification (L3) of the G/L1 rows; Contestation prototype (after boundaries confirmed); NM-1 vocabulary refactor.
-
-## 7. Current interpretation (not "Accept")
-*(Per review: "Accept" sounds final. Each row's disposition is a **current interpretation pending behavioral + Round-49 evidence.**)*
-- High-correspondence + read (Evidence, Adjudication, Legitimacy, Anonymity): **current interpretation = strong architectural correspondence; behavioral validation (L3) required.**
-- G/L1 rows (Voting, Authorization, Lifecycle, Results, Audit): **current interpretation = capability present; correspondence inferred; behavioral + boundary evidence owed.**
-- Appointment: **current interpretation = scattered; likely Merge — defer to Round 49.**
-- Contestation: **current interpretation = genuine gap (Absent).**
+## 7. Current interpretation + reviewer confidence (with reasons)
+- **Evidence/Adjudication/Legitimacy/Anonymity** — *current interpretation:* strong provisional correspondence. *Confidence: High — reason: direct code read; immutable/single-resolver models; separate responsibilities.* L3 owed.
+- **Voting/Authorization/Lifecycle/Results/Audit** — *current interpretation:* capability present, correspondence inferred. *Confidence: Low — reason: name/location only (L1); responsibility unverified.*
+- **Replay** — *current:* possible BC; *alternative:* application/infra capability; *evidence needed:* independent lifecycle/txn boundary.
+- **Appointment** — *current:* scattered → likely Merge (defer to Round 49).
+- **Contestation** — *current:* expected absence (genuine, expected gap).
 
 ## 8. Threats to validity
-G/L1 rows unverified at runtime (no L3); multi-home (AI-1) means "the code" is itself inconsistent; single-analyst, static; reflexion model is structural only — behavioral + DDD perspectives still owed. **Existing code remains empirical evidence, not authoritative.**
+G/L1 rows unverified at runtime (no L3); multi-home (AI-1); single-analyst, static; only structural + partial architectural perspectives supplied. **Code = empirical evidence, not authoritative — in both directions (§0b).**
 
-## 9. Next
+## 9. Next — Round 49 produces TWO artifacts
 ```
-49-02 Conformance Analysis (this) ✓ — perspectives 1+partial-3
-   → Round 49 BC EVALUATION (Round48A T1-T9 + perspectives 2/4; falsify each candidate; Confirmed/Merge/Subdomain/Capability/Deferred)
-   → behavioral verification (L3) of G/L1 rows
-   → Aggregate discovery → Tactical → code
+49-02 Architecture Conformance Analysis (this; perspectives 1+partial-3) ✓
+   → Round 49 BC Evaluation (Round48A T1-T9 + perspectives 2/4; falsify each candidate)
+       → Output A: ARCHITECTURE CONFORMANCE REPORT (evidence from all 4 perspectives)
+       → Output B: BOUNDARY DECISION REGISTER (Confirmed/Merged/Supporting/Application/Infrastructure/Deferred/Rejected + evidence/confidence/reason)
+   → only THEN Round 50 Aggregate Discovery (not before the BDR is complete)
 ```
 
 ---
 
-*Round 49-02 — Architecture Conformance Analysis v1.1 — ISSUED (reflexion = 1 of 4 perspectives).*
-*TWO dimensions (architecture-correspondence × implementation-status); evidence levels L1/L2/L3 (only L3 = real convergence; ZERO rows at L3 yet); 4 read (R/L2), rest inferred (G/L1). Headline softened: "substantial architectural CORRESPONDENCE; behavioral verification required" (NOT "already implemented"). +Boundary-confidence +What-would-falsify-the-landscape; "Accept"→"Current interpretation"; actions split Governance/Architecture/Implementation. Appointment/Audit NOT classified (→Round 49). Code = evidence not authoritative. Next: Round 49 BC Evaluation (48A).*
+*Round 49-02 — Architecture Conformance Analysis v1.2 — ISSUED (stage of Evidence-Based Strategic DDD Discovery).*
+*Renamed methodology = EBSD; reflexion = 1 of 4 perspectives. SYMMETRY PRINCIPLE: presence ≠ proof, absence ≠ disproof. Evidence levels L1/L2a/L2b/L2c/L3 (only L3 = convergence; none yet). Arch-correspondence decomposed (6 determinants) → "Provisionally High/Med/Low" until T1-T9. Trust-Anchor/Contestation = EXPECTED absence (not defects). +Alternative-interpretation +reviewer-confidence-with-reasons. Round 49 → TWO outputs (Conformance Report + BDR); aggregates only after BDR. Code = evidence not authoritative (both directions).*
