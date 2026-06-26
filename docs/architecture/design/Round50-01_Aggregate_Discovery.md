@@ -14,17 +14,17 @@
 2. **Invariant:** frozen at creation; hash integrity (same evidence → same hash); **voter id hashed (Anonymity Q7)**.
 3. **Consistency:** immediate (atomic at creation).
 4. **Transaction:** one envelope = one txn (write-once).
-5. **Aggregate root:** `EvidenceEnvelope` (id = `envelopeHash`); evidence items = VOs inside.
-- *entity-vs-aggregate:* aggregate (enforces immutability + integrity). *events:* `EvidenceRecorded`. *consumes:* evidence inputs (Voting/Trust pipeline). *app service:* `RecordEvidence`. *repository:* append-only `EvidenceRepository` (write-once, no update/delete). *split?* **No** — atomic.
-- **Replay placement (resolves BDR-06 provisionally):** **Replay = an Application Service *over* Evidence** (`VerifyReplay`), **not** an aggregate; `ReplaySession`/`ReplayCertification` = operational records (read/operational side), not domain aggregates. *(Confirm at implementation → BDR evolution entry.)*
+5. **Aggregate root:** `EvidenceEnvelope` (id = `envelopeHash`); **Evidence Items = Value Objects *initially*** — *Aggregate Review (50-02) must determine whether any evidence type (Vote/Audit/Appointment/Challenge/Device evidence) evolves independently and thus becomes an Entity. Not frozen.*
+- *entity-vs-aggregate:* aggregate (enforces immutability + integrity). *events:* `EvidenceRecorded`. *consumes:* evidence inputs (Voting/Trust pipeline). *app service:* `RecordEvidence`. *split?* **No** — atomic. *(Repository design deferred to post-Review.)*
+- **Replay — current design hypothesis (not frozen):** *Replay is implemented as an **Application Service over the Evidence BC** (`VerifyReplay`), with `ReplaySession`/`ReplayCertification` as operational records — **to be confirmed during implementation + architecture review** (BDR-06).*
 
 ## AGG — Vote  *(Voting BC — Operational)*
 1. **Decision:** is this vote valid and anonymous?
 2. **Invariant:** **no voter↔vote linkage**; uniqueness (`vote_hash`); integrity (`data_checksum`); verifiability (`receipt_hash`); selection rules (`required_number` per post).
 3. **Consistency:** immediate within a vote.
 4. **Transaction:** one `Vote` = one txn; **Results are NOT in this txn** (async projection).
-5. **Aggregate root:** `Vote`; entities/VOs: ballot selections (`candidate_01..60`), `VoteReceipt`, `VoteHash`, `DataChecksum`.
-- *entity-vs-aggregate:* `Vote` is the aggregate (anonymity + integrity in one txn). *events:* `VoteAccepted`. *consumes:* Authorization decision + Lifecycle state (read-only). *app service:* `CastVote`. *repository:* `VoteRepository` (anonymous; no user link). *split?* Ballot = entity **within** Vote (consistency boundary = whole vote); **Result is a separate projection** (not an aggregate).
+5. **Aggregate root:** `Vote` **contains `Ballot`** (Ballot owns the selections); VOs: `VoteReceipt`, `VoteHash`, `DataChecksum`. *(Conceptual — whether selections are an array / JSON / `candidate_01..60` columns / an entity is **implementation**, decided later; Aggregate Discovery stays conceptual.)*
+- *entity-vs-aggregate:* `Vote` is the aggregate (anonymity + integrity in one txn); `Ballot` is an entity within it. *events:* `VoteAccepted`. *consumes:* Authorization decision + Lifecycle state (read-only). *app service:* `CastVote`. *split?* Ballot stays **within** Vote (consistency boundary = whole vote); **Result is a separate projection** (not an aggregate). *(Repository deferred.)*
 - **Tactical note:** current `Vote` is Active-Record creating `Result` synchronously → recommend **Vote aggregate owns only the vote; Results = async read model** (eventual consistency). Flag for Aggregate Review.
 
 ## AGG — Mandate  *(Appointment BC — Operational)*
