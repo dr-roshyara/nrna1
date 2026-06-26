@@ -56,6 +56,20 @@ Ontology v1.0 ✓ / Projection (44) ✓ / Ownership (45) ✓ / Package v1.0 (46)
 
 *A limitation or terminology finding from LIT-2 may rename concepts for interoperability or be recorded as a risk — it may **not** reopen the governance theory.*
 
+## 3b. Full literature roadmap (LIT-2 … LIT-5 + Systems-Theory) — extended
+
+Literature is now a **specialized validation instrument** whose role changes by phase. **Never again** a broad "everything about election/constitutional governance" review (would contaminate the independently-certified theory).
+
+| Review | When | Purpose | Status |
+|--------|------|---------|--------|
+| **LIT-2** Translation & terminology | before/at Phase II start | align terms to ontology eng. / enterprise ontology / DDD semantics | ✅ **DONE** (`Round46-LIT2`) |
+| **LIT-SYS** Systems-Theory positioning *(new, optional-but-valuable)* | now (positions certified meta-arch) | strengthen the *scientific explanation* of the control-system architecture (cybernetics/VSM/Luhmann) — **no model change** | this round (`Round47-LIT-SYS`) |
+| **LIT-3** Strategic/Tactical DDD validation | after Round 49–50 | validate context boundaries vs Strategic DDD / Team Topologies / large-scale DDD | pending |
+| **LIT-4** Engineering / secure-voting | during Tactical DDD + impl | event-sourcing/CQRS/aggregates/hexagonal; secure-voting; Laravel/Postgres/crypto | pending |
+| **LIT-5** Publication positioning | before dissertation/papers | position vs Evans/Vernon/Brandolini/DEMO/ArchiMate/voting literature | pending |
+
+All remain **validation/positioning**, never discovery; none reopens the governance theory.
+
 ## 4. Standing constraints (unchanged)
 
 - **Sketch-before-literature** still holds for any *new* discovery (ADR-M-011).
