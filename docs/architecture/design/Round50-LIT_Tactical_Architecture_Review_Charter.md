@@ -54,7 +54,12 @@ Strategic discovery (BCs, BDR, aggregates) is **frozen**; no significant impleme
 |----------|-------------------|--------------|-------------------|
 | Governance → Software translation pipeline | none found | candidate contribution | empirical validation (→ LIT-METHOD) |
 
-## Source budget (~35–45 high-quality sources)
+## Execution split (refined — decision-organized, two milestones)
+Execution is organized **by architecture decision** (Decision → Alternatives → Evidence → Recommendation → Adopted), not chapter-by-chapter, and split into two milestones:
+- **Part A — Decision-Critical Review (NOW, ~15–20 sources):** only decisions that immediately gate implementation — (1) Aggregate design/transaction boundaries, (2) Domain events/contracts/versioning, (3) Event reliability (outbox/inbox/idempotency/ordering/retry), (4) Repository ownership/persistence boundaries, (5) Architecture fitness/conformance. → `Round50-LIT-A_Decision_Critical_Review.md`.
+- **Part B — Extended Tactical Review (AFTER first implementation slice):** Parts IV (High-Assurance), V-recovery, VII Gap, VIII Critical Evaluation — now answerable against *empirical* implementation findings rather than hypotheticals. Feeds LIT-METHOD.
+
+## Source budget (~35–45 total; Part A ≈ 15–20)
 Tactical DDD 8–10 · Event-driven 8–10 · State modeling 4–6 · Consistency/reliability 6–8 · High-assurance 6–8 · Fitness/conformance + recovery 4–6.
 
 ## Execution rules (honesty — per prior feedback)
