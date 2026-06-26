@@ -1,82 +1,113 @@
-# Round 49-04 — Behavioral Evidence Dossier (L3 evidence collection)
+# Round 49-04 — Behavioral Evidence Dossier (v1.1, empirical research notebook)
 
 **Program:** NRNA DDD Trustworthiness Research Program · **Phase:** EBSD — evidence collection · **Built against:** Landscape v1.0
-**Status:** 📋 EVIDENCE DOSSIER — **collects behavioral evidence ONLY. No decisions.** Decisions are made later (49-05 EBSD Evaluation → 49-06 BDR). Evidence carries IDs (`EV-NNN`) the BDR will reference.
-**Date:** 2026-06-26
+**Status:** 📋 EVIDENCE DOSSIER — **observed facts + interpretation kept SEPARATE. No decisions.** EV-IDs referenced by `49-06` BDR. Decisions made in `49-05` (EBSD Evaluation).
+**Date:** 2026-06-26 · *(v1.0→v1.1: observed-fact vs interpretation split; contradictory evidence; provenance; business-vs-technical behavior; evidence-quality rating; "independent reason to change"; architecture-fitness evidence; Emerging Patterns.)*
 
-> **Separation of activities (per review).** Observation ≠ evaluation — as discovery ≠ certification earlier. This document **observes**; it does **not** decide Confirmed/Merge/etc. Falsification stance: for each candidate ask *"can we **falsify** that this is an independent bounded context?"* (Popper), not "can we find support?"
-> **L3 requirement (objective):** a candidate reaches **L3** only when **runtime behavior + tests + transaction boundaries + observed responsibilities all agree.** Otherwise it stays **L2** (read) or **L1** (name). Each entry records the question set: *owns decisions? · owns truth? · transactions? · events? · dependencies? · tests?*
+> **Discipline.** *Evidence remains evidence until explicitly evaluated; it does not become a decision merely by being observed.* Falsification stance: per candidate ask *"can we falsify that this is an independent BC?"*
+> **Evidence quality:** **Direct** (read the class) · **Strong** (observed via tests) · **Moderate** (via implementation) · **Weak** (inferred) · None. Orthogonal to **Level** L1/L2/L3 (L3 = runtime+tests+transactions+responsibilities agree).
+> **Per-candidate questions:** owns decisions? · owns truth? · transactions? · events? · tests? · **independent reason to change?** (Evans cohesion).
+
+---
+
+## Adjudication
+- **Observed (provenance):** `ConstitutionalArbitrationKernel.php::decide(ctx,capability,at)`; `ConstitutionalDecision.php` (`readonly` VO {winner: `JurisdictionNode`, legitimacy, reason, evaluatedAt, trace}); tests `ConstitutionalPolicyTest`, `ConstitutionalAssertionsTest`. **[EV-001/002/003]**
+- **Business behaviour:** resolves which **committee/jurisdiction** wins a constitutional conflict (Geo).
+- **Technical behaviour:** stateless kernel + policy → immutable decision record with trace.
+- **Dependencies:** `GovernanceDecisionKernel`, `JurisdictionNode` (Geo/Graph), clock.
+- *owns decisions?* yes (jurisdiction) · *owns truth?* no persistent SoR observed · *txns?* single · *events?* `LegitimacyEvaluated/Granted` · *independent reason to change?* **changes when committee/jurisdiction rules change — NOT when election-determination rules change.**
+- **Supporting:** EV-001/002/003. **Contradictory:** none that it's *jurisdiction* arbitration; **contradicts** that it is *election-determination* Adjudication (winner is a JurisdictionNode, not a ballot/contest outcome).
+- **Architecture-fitness:** existing — `ConstitutionalAssertionsTest`; missing — election-determination boundary test.
+- **Quality: Direct · Level L2–L3 · Confidence Medium.**
+- **Interpretation (hypothesis, NOT decision):** the *certified election-determination Adjudication* may be **unrealized**; the code's "arbitration" is a **different (jurisdiction) responsibility**.
+
+## Authorization
+- **Observed (provenance):** `ElectionCapabilityResolver.php::evaluate(context)` → `CapabilityDecision`+`CapabilityTrace`; documented INVARIANT: side-effect-free · deterministic · non-I/O · non-temporal. **[EV-030/031]**
+- **Business behaviour:** decides "may this actor perform this action here?".
+- **Technical behaviour:** pure function over sorted policies; no persistence, no clock, no I/O.
+- *owns decisions?* yes (computes) · *owns truth?* **no** · *txns?* none (pure) · *events?* none · *independent reason to change?* **changes when capability *policies* change** (cohesive around policy resolution).
+- **Supporting:** EV-030/031. **Contradictory (to BC-hood):** owns no truth; no aggregate; no persistence → looks like a service, not a context.
+- **Architecture-fitness:** existing — capability/policy tests; missing — boundary isolation test.
+- **Quality: Direct · Level L2 · Confidence Medium.**
+- **Interpretation:** behaves as a **domain service / decision resolver**; "truth-owning BC" looks falsifiable.
+
+## Appointment  *(deeper L3 read OWED)*
+- **Observed (provenance):** `Contexts/Governance/Domain/Authority/Policies/DelegationLifecyclePolicy`; `RemoveCommitteeMemberCommand`/`Handler`; `Contexts/Committee/*` read models; event `CommitteeLifecycleChanged`. **[EV-050]**
+- **Business behaviour:** delegation of authority / committee membership management. **Technical:** commands + policies + read models (CQRS-ish).
+- *owns decisions?* ? · *owns truth?* ? (committee membership) · *independent reason to change?* ? — **owed.**
+- **Contradictory:** unknown. **Quality: Weak (inferred) · Level L1 · Confidence Low.**
+- **Interpretation:** insufficient evidence; "merge into Authorization" untestable yet.
+
+## Election Lifecycle  *(deeper L3 read OWED)*
+- **Observed:** `ElectionLifecycleEngine(Impl)`, `ElectionLifecycleState`, `TransitionMatrix`, events (`VotingOpened/Closed`, `ResultsPublished`…); tests `ConstitutionalTransitionGuardTest`. **[EV-060]**
+- **Business behaviour:** controls valid election state transitions. **Technical:** state machine + transition guards.
+- *owns truth?* election lifecycle state (likely SoR) · *independent reason to change?* changes when lifecycle states/transitions change — **owed** to confirm independence from Voting.
+- **Quality: Weak–Moderate · Level L1–L2 · Confidence Low-Med.**
+- **Interpretation:** could be workflow/service or BC; "merge into Voting" untested.
+
+## Voting  *(deeper L3 read OWED)*
+- **Observed:** `Vote`/`BaseVote` (**no `user_id`**); `Domain/Voting/{VotingEngine,VoteAggregator,QuorumRule}`; tests `VoteControllerConstitutionalTest`. **[EV-070]**
+- **Business behaviour:** record an anonymous, verifiable vote. **Technical:** engine + aggregator + quorum rules; anonymity at schema level.
+- *owns truth?* **anonymous vote records (SoR)** · *independent reason to change?* changes when ballot/vote rules change — **owed.**
+- **Quality: Weak–Moderate · Level L1–L2 · Confidence Med.** Anonymity invariant strongly present.
+- **Interpretation:** likely a truth-owning context; engine ≠ BC; deeper read owed.
+
+## Evidence
+- **Observed (provenance):** `ReplayEvidenceEnvelope.php::computeHash()` (`readonly`, frozen evidence, deterministic hash, schema-versioned, **hashed** `voterIdentifier`); `EvidenceClassification/Snapshot`, `EvaluationAuditTrail`; test `ConstitutionalEvidenceSnapshotTest`. **[EV-010/011]**
+- **Business behaviour:** preserve the reviewable, immutable record an evaluation used. **Technical:** immutable VO + deterministic hashing.
+- *owns truth?* **YES (immutable SoR)** · *txns?* append-only immutable · *independent reason to change?* changes when the evidence record schema changes (cohesive).
+- **Supporting:** EV-010/011. **Contradictory:** none observed.
+- **Architecture-fitness:** existing — `ReplayDeterminismContractTest`, `ConstitutionalEvidenceSnapshotTest`; missing — none critical.
+- **Quality: Direct + Strong (tests) · Level L2–L3 · Confidence High.**
+- **Interpretation:** strong truth-owning context candidate.
+
+## Replay
+- **Observed (provenance):** `ReplayDeterminismContractTest.php` ("same evidence input → same evaluation output, every time"); `ReplaySession`, `ReplayCertification`, `GovernanceReplayService`, `ScopeAwareReplayValidator`; events `ReplaySessionOpened/CertificationIssued/DivergenceDetected`. **[EV-020/021]**
+- **Business behaviour:** *verify* that an election evaluation reproduces (integrity). **Technical:** deterministic-replay contract over the evidence pipeline.
+- *owns decisions?* no · *owns truth?* **no (operates over Evidence)** · *independent reason to change?* changes when verification/determinism rules change — **tied to Evidence schema.**
+- **Supporting (capability hypothesis):** EV-020 (determinism contract), depends on `EvidenceEnvelope`. **Contradictory (it owns something):** owns `ReplaySession`/`ReplayCertification` aggregates → *some* lifecycle of its own.
+- **Architecture-fitness:** existing — determinism contract test; missing — boundary-isolation test (Replay vs Evidence).
+- **Quality: Direct + Strong · Level L2–L3 · Confidence Medium.**
+- **Interpretation:** likely a **verification capability / application service over Evidence** — but the `ReplaySession`/`Certification` aggregates are *contradictory* evidence to be weighed in 49-05.
+
+## Audit
+- **Observed (provenance):** `ElectionAuditService.php::log(...)` → JSONL files, rotation (100 MB), 30-day retention, categories; deps `Illuminate\Support\Facades\File`, `Carbon`; stores **IP in full** (operational events). **[EV-040/041]**
+- **Business behaviour:** record operational events for accountability. **Technical:** fire-and-forget filesystem logger.
+- *owns decisions?* no · *owns truth?* no (observability logs) · *dependencies?* **infrastructure (filesystem/clock)** · *independent reason to change?* changes when log format/retention/storage changes (infra cohesion).
+- **Supporting (infra hypothesis):** EV-040/041 (File/Carbon deps). **Contradictory:** none — no domain decision observed.
+- **Architecture-fitness:** existing — `ReplayDeterminismAuditTest`; missing — n/a (infra).
+- **Quality: Direct · Level L2 · Confidence Medium.**
+- **Interpretation:** behaves as **Infrastructure/Platform**, not a domain BC. *(Anonymity flag: full-IP storage in operational logs — not vote-linked, but record for the L3 Anonymity check.)*
+
+## Contestation
+- **Observed:** zero files (challenge/appeal/standing/dispute). **[EV-090]**
+- **Quality: Direct (absence) · confirmed Expected absence.**
+- **Interpretation:** genuine, *expected* gap (never implemented). Absence ≠ wrong BC (symmetry principle).
 
 ---
 
-## EV — Adjudication  *(read: Kernel, Decision, tests)*
-- **EV-001** `ConstitutionalArbitrationKernel.decide(ctx, capability, at) → ConstitutionalGovernanceDecision` — stateless service. [R]
-- **EV-002** `ConstitutionalDecision` = `readonly` VO `{winner: JurisdictionNode, legitimacy, reason, evaluatedAt, trace}` → adjudicates **committee/jurisdiction** conflicts (`Geo/Graph`), **NOT** election-determination/contestation. [R]
-- **EV-003** Location: `app/Contexts/Membership/Domain/Committee/Constitutional`. Tests: `ConstitutionalPolicyTest`, `ConstitutionalAssertionsTest`. [R]
-- *owns decisions?* yes (jurisdiction arbitration) · *owns truth?* produces a decision record, no persistent SoR observed · *transactions?* single decision · *events?* `LegitimacyEvaluated`/`LegitimacyGranted` exist · *tests?* yes.
-- **Level L2–L3 · Confidence Medium.** **Falsification note:** the certified *election-determination* Adjudication is **not behaviorally present**; what exists is **committee-jurisdiction arbitration**. *Open:* is certified Adjudication = this (scope mismatch) or **unrealized**?
-
-## EV — Authorization  *(read: ElectionCapabilityResolver)*
-- **EV-030** `ElectionCapabilityResolver.evaluate(context) → CapabilityDecision`; documented INVARIANT: **side-effect-free · deterministic · non-I/O · non-temporal** ("violation destroys constitutional recomputability"). [R]
-- **EV-031** evaluates sorted policies → `CapabilityDecision` + `CapabilityTrace`. [R]
-- *owns decisions?* computes capability decisions (decisional) · *owns truth?* **NO** (pure function, no persistence) · *transactions?* none (pure) · *events?* none observed · *tests?* capability/policy tests exist.
-- **Level L2 · Confidence Medium.** **Falsification note:** "Authorization is a truth-owning BC" appears **falsifiable** — it *computes*, owns no truth; behaves as a **domain service** (candidate merge / supporting).
-
-## EV — Appointment  *(globbed; deeper L3 read OWED)*
-- **EV-050** `app/Contexts/Governance/Domain/Authority/Policies/DelegationLifecyclePolicy`; `RemoveCommitteeMemberCommand`/`Handler`; `Contexts/Committee/*` read models. [G]
-- *owns decisions?* ? (delegation/committee membership) · *owns truth?* ? (committee membership records) · *transactions?* ? · *events?* `CommitteeLifecycleChanged` · *tests?* membership tests exist.
-- **Level L1 · Confidence Low.** **Falsification note:** evidence too thin — **L3 read owed** before evaluating the "merge into Authorization" hypothesis.
-
-## EV — Election Lifecycle  *(globbed; deeper L3 read OWED)*
-- **EV-060** `ElectionLifecycleEngine`/`Impl`, `ElectionLifecycleState`, `TransitionMatrix`, events (`VotingOpened/Closed`, `ResultsPublished`, …). [G]
-- *owns decisions?* state transitions · *owns truth?* election lifecycle state · *transactions?* ? · *events?* many lifecycle events · *tests?* transition-guard tests exist.
-- **Level L1–L2 · Confidence Low-Med.** **Falsification note:** engine could be workflow/service vs BC — **L3 read owed** for "merge into Voting".
-
-## EV — Voting  *(globbed; deeper L3 read OWED)*
-- **EV-070** `Vote`/`BaseVote` (**no `user_id`** — anonymity), `Domain/Voting/{VotingEngine,VoteAggregator,QuorumRule}`. [G]
-- *owns decisions?* vote validity · *owns truth?* **anonymous vote records (SoR)** · *transactions?* per-vote · *events?* `VoteAccepted` (inferred) · *tests?* vote/constitutional voting tests exist.
-- **Level L1–L2 · Confidence Med.** **Falsification note:** engine ≠ BC; **L3 read owed**; anonymity invariant strongly present.
-
-## EV — Evidence  *(read: ReplayEvidenceEnvelope)*
-- **EV-010** `ReplayEvidenceEnvelope` `readonly`, frozen evidence, deterministic `envelopeHash`, schema-versioned, **hashed** `voterIdentifier`. [R]
-- **EV-011** `EvidenceClassification`/`EvidenceSnapshot`/`EvaluationAuditTrail`; tests `ConstitutionalEvidenceSnapshotTest`. [R]
-- *owns decisions?* no · *owns truth?* **YES (immutable SoR)** · *transactions?* append-only immutable · *events?* `EvidenceRecorded` (inferred) · *tests?* yes.
-- **Level L2–L3 · Confidence High.** **Falsification note:** hard to falsify as a truth-owner — strong system-of-record evidence.
-
-## EV — Replay  *(read: ReplayDeterminismContractTest)*
-- **EV-020** `ReplayDeterminismContractTest`: *"same evidence input → same evaluation output, every time"* — a **determinism contract over the evidence-evaluation pipeline**. [R]
-- **EV-021** `ReplaySession`, `ReplayCertification`, `GovernanceReplayService`, `ScopeAwareReplayValidator`. [R]
-- *owns decisions?* **no** (verifies determinism) · *owns truth?* **no** (operates over Evidence) · *transactions?* none · *events?* `ReplaySessionOpened`/`ReplayCertificationIssued`/`ReplayDivergenceDetected` · *tests?* yes (contract).
-- **Level L2–L3 · Confidence Medium.** **Falsification note:** "Replay is a separate BC" appears **falsifiable** — behaves as a **verification capability over Evidence**, not an independent owner.
-
-## EV — Audit  *(read: ElectionAuditService)*
-- **EV-040** `ElectionAuditService.log(...)` → JSONL files, rotation (100 MB), 30-day retention, categories; deps `File` facade + `Carbon`. Fire-and-forget. [R]
-- **EV-041** stores **IP in full** for operational events (actions, not votes). [R]
-- *owns decisions?* **no** · *owns truth?* **no** (observability logs, not SoR) · *transactions?* none · *events?* receives all · *dependencies?* **infrastructure** (filesystem/clock) · *tests?* replay-determinism audit test.
-- **Level L2 · Confidence Medium.** **Falsification note:** "Audit is a domain BC" appears **falsifiable** → behaves as **Infrastructure/Platform**. *(Side-note for Anonymity review: full-IP storage in audit logs — operational, not vote-linked — flag for the L3 Anonymity check.)*
-
-## EV — Contestation  *(confirmed absence)*
-- **EV-090** Zero files (challenge/appeal/standing/dispute). [R]
-- **Level: confirmed-absence (Expected).** **Falsification note:** the gap is real and **expected** (never implemented) — absence ≠ wrong BC (symmetry principle).
-
----
+## Emerging Patterns (observation only — NOT decisions)
+- **EP-1 — Truth ownership is rarer than expected.** Only **Evidence** (EV-010/011) and **Voting** (EV-070) clearly own authoritative truth; Authorization (EV-030), Replay (EV-020), Audit (EV-040), and Adjudication-as-arbitration (EV-002) own *decisions/behaviour* but no persistent SoR. *Status: observation.*
+- **EP-2 — Several certified concepts exist as deterministic services/capabilities, not truth-owning contexts.** Authorization (pure resolver), Replay (determinism contract), Adjudication (stateless kernel). *Status: observation.*
+- **EP-3 — Infrastructure concerns surface in Audit** (filesystem/clock/rotation) — an infra, not domain, signal. *Status: observation.*
+- **EP-4 — "Constitutional" vocabulary spans two subsystems** (Membership committee/jurisdiction vs Election trust/evidence). Naming-collision pattern. *Status: observation.*
 
 ## Dossier status
-| Candidate | Level | Confidence | Deeper L3 read owed? |
-|-----------|-------|-----------|----------------------|
-| Adjudication | L2–L3 | Medium | scope question open |
-| Authorization | L2 | Medium | — |
-| Appointment | **L1** | Low | **yes** |
-| Lifecycle | L1–L2 | Low-Med | **yes** |
-| Voting | L1–L2 | Medium | **yes** |
-| Evidence | L2–L3 | High | — |
-| Replay | L2–L3 | Medium | — |
-| Audit | L2 | Medium | — |
-| Contestation | confirmed-absence | High | n/a |
+| Candidate | Quality | Level | Conf | Deeper L3 owed? |
+|-----------|---------|-------|------|-----------------|
+| Adjudication | Direct | L2–L3 | Med | scope question |
+| Authorization | Direct | L2 | Med | — |
+| Appointment | Weak | L1 | Low | **yes** |
+| Lifecycle | Weak–Mod | L1–L2 | Low-Med | **yes** |
+| Voting | Weak–Mod | L1–L2 | Med | **yes** |
+| Evidence | Direct+Strong | L2–L3 | High | — |
+| Replay | Direct+Strong | L2–L3 | Med | — |
+| Audit | Direct | L2 | Med | — |
+| Contestation | Direct (absence) | — | High | n/a |
 
-**No decisions recorded here.** Three candidates (Appointment, Lifecycle, Voting) still owe a deeper L3 read before the EBSD evaluation. **Next:** complete those reads, then **49-05 EBSD Evaluation** (Hypothesis→Evidence→Analysis→Decision) → **49-06 Boundary Decision Register** (Decision · Reason · Evidence-reference only).
+**No decisions recorded.** Appointment/Lifecycle/Voting owe deeper L3. **Next:** finish those → `49-05` EBSD Evaluation (Hypothesis · Null · Evidence-supporting · Evidence-contradicting · Analysis/alternatives · Confidence · Decision · Reason · Outstanding-uncertainty) → `49-06` BDR (Decision · Reason · Evidence-ref only).
 
 ---
 
-*Round 49-04 — Behavioral Evidence Dossier — ISSUED (evidence only; no decisions).*
-*Falsification-positive signals already: Adjudication-in-code = committee-jurisdiction arbitration (NOT certified election-determination); Authorization = pure resolver (owns no truth); Audit = fire-and-forget infra logger; Replay = determinism capability over Evidence. Strong: Evidence = immutable SoR. Expected-absent: Contestation. EV-IDs assigned. Appointment/Lifecycle/Voting owe deeper L3. Next: finish L3 → 49-05 EBSD Evaluation → 49-06 BDR.*
+*Round 49-04 v1.1 — Behavioral Evidence Dossier — ISSUED (empirical notebook; evidence only).*
+*Observed-fact vs Interpretation SPLIT; contradictory evidence recorded; provenance (class/method/test); business-vs-technical behaviour; evidence-quality (Direct/Strong/Moderate/Weak) + Level L1-L3; "independent reason to change" (Evans); architecture-fitness evidence; Emerging Patterns EP-1..4 (observation only). NO decisions. Next: finish L3 (Appointment/Lifecycle/Voting) → 49-05 Evaluation → 49-06 BDR.*
