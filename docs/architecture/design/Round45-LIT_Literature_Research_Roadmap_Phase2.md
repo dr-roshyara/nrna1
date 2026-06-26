@@ -62,13 +62,16 @@ Literature is now a **specialized validation instrument** whose role changes by 
 
 | Review | When | Purpose | Status |
 |--------|------|---------|--------|
-| **LIT-2** Translation & terminology | before/at Phase II start | align terms to ontology eng. / enterprise ontology / DDD semantics | ✅ **DONE** (`Round46-LIT2`) |
-| **LIT-SYS** Systems-Theory positioning *(new, optional-but-valuable)* | now (positions certified meta-arch) | strengthen the *scientific explanation* of the control-system architecture (cybernetics/VSM/Luhmann) — **no model change** | this round (`Round47-LIT-SYS`) |
-| **LIT-3** Strategic/Tactical DDD validation | after Round 49–50 | validate context boundaries vs Strategic DDD / Team Topologies / large-scale DDD | pending |
+| **LIT-2** Translation + **conceptual positioning + boundary comparison** | before/at Phase II start | align terms **and position the work** vs ontology eng. / enterprise ontology / conceptual modeling / DDD semantics (terminology + where it sits + similarities/differences/boundaries) — never redesign theory | ✅ **DONE** (`Round46-LIT2` + addendum) |
+| **LIT-SYS** Systems-Theory positioning *(dedicated, not optional)* | early (positions certified meta-arch) | strengthen the *scientific explanation* of the control-system architecture (cybernetics/Ashby/VSM/Luhmann) — **no model change** | ✅ **DONE** (`Round47-LIT-SYS`) |
+| **LIT-3** Strategic/Tactical DDD validation | after Round 49–50 | validate context boundaries vs Strategic DDD / context mapping / Team Topologies / large-scale DDD | pending |
 | **LIT-4** Engineering / secure-voting | during Tactical DDD + impl | event-sourcing/CQRS/aggregates/hexagonal; secure-voting; Laravel/Postgres/crypto | pending |
-| **LIT-5** Publication positioning | before dissertation/papers | position vs Evans/Vernon/Brandolini/DEMO/ArchiMate/voting literature | pending |
+| **LIT-EVAL** Empirical architecture evaluation *(new)* | after implementation, **before** LIT-5 | how to *demonstrate the architecture works*: architecture assessment (ATAM-style), evaluation methods, experiments, case studies | pending |
+| **LIT-5** Publication positioning | before dissertation/papers | position vs Evans/Vernon/Brandolini/DEMO/ArchiMate/voting & systems literature | pending |
 
-All remain **validation/positioning**, never discovery; none reopens the governance theory.
+**Sequence (revised):** LIT-2 ✓ → Strategic DDD → LIT-SYS ✓ → Tactical DDD → LIT-3 → Implementation → LIT-4 → **LIT-EVAL** → LIT-5. All are **validation/positioning**, never discovery; none reopens the governance theory.
+
+**Governance-literature rule (refined):** *not* "never another broad governance review," but **"never another *unguided* governance review."** A governance literature review is permitted **only** when driven by an **explicit research question or governance change request** (e.g. a new RQ, a constitutional amendment, a newly-discovered family, a major NRNA-model change) — never "read everything." This refines DA-LIT-01.
 
 ## 4. Standing constraints (unchanged)
 

@@ -82,6 +82,27 @@ The program **independently** split Independence into Institutional / Operationa
 
 ---
 
+## 4b. Conceptual positioning + boundary comparison (LIT-2 scope expansion)
+
+*(Per review: LIT-2 is terminology **+ conceptual positioning + boundary comparison** — never governance redesign.)*
+
+**Conceptual positioning — where each artifact sits in the ontology-engineering stack** [verify]:
+```
+Governance Theory      ≈ Conceptual model (domain-level)
+Governance Ontology v1 ≈ formal Domain Ontology (Guarino-style; axioms = our AX-1..9)
+Semantic Projection    ≈ ontology→model transformation (MDA PIM→PSM; ontology grounding)
+DDD Landscape/Contexts ≈ Information / Logical model
+Implementation         ≈ Physical model
+```
+So **Semantic Projection** is precisely the *ontology→information-model transformation* step — established as a category in ontology engineering / MDE, though our explicit **Translation Assurance** + **persistence split** appear to be additions.
+
+**Boundary comparison — our Ownership Architecture vs enterprise ontology** [verify]:
+- *Similar to:* DEMO (Enterprise Ontology — actor roles, transactions, responsibility) and ArchiMate (business actor/role/collaboration) — both assign responsibility/ownership.
+- *Different from:* ours derives ownership from **constitutional governance** and is defined as much by **what it refuses to own** (anonymity = no owner; enforcement = unowned; legitimacy = emergent/unowned) — *negative ownership* is not standard in DEMO/ArchiMate.
+- *Boundary:* our "ownership" = **semantic ownership of authoritative truth** (systems-of-record), **not** organizational-structure modeling. Adopt DEMO/ArchiMate vocabulary where it aids communication; do **not** adopt their org-modeling frame.
+
+**Finding:** terminology aligns (System of Record, Read Model, ontology-to-model transformation, judicial-independence facets); the **conceptual position** (ontology→information-model transformation) is established; the **distinctive boundary** is *negative/semantic ownership* + Translation Assurance + persistence split. No governance redesign.
+
 ## 5. Conclusion (feeds Round 46B)
 
 LIT-2 **calibrated terminology without disturbing the theory.** Several internal terms align to established vocabulary (System of Record, Derived View, Delegation of Authority, res judicata, judicial-independence facets, ballot secrecy); a few must be disambiguated (Constitutional Trust-Anchor) or collapsed (Determination); "Review/Authority/Independence" are overloaded and must always be qualified. One genuine **limitation (L-1, Pettit contestability)** is recorded as **RQ-ANCHOR-01** for future governance work — explicitly **not** actioned. The corroboration of the four Independences against judicial-independence scholarship is a credibility win and a terminology gift.
