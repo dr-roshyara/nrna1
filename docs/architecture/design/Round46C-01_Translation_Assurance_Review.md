@@ -79,9 +79,24 @@ Blocked: Eligibility · Coercion-resistance · Voter-identity · Amendment-gover
 
 ---
 
+## Q7 — Linguistic preservation (added post-LIT-2)
+
+Semantic drift often begins as **naming drift**, not structural error. Verify that a concept's *name* still means the same thing after projection.
+
+| Concept | Name in DDD | Meaning preserved? |
+|---------|-------------|--------------------|
+| Evidence | `Evidence` aggregate | ✅ same (reviewable record) |
+| Finality | `DeterminationFinalized` event | ✅ (anchor: res judicata) |
+| Determination | one canonical name (NOT also "CaseDecision"/"Ruling") | ⚠ **collapse synonyms** (LIT-2) before DDD |
+| Trust-Anchor | "Constitutional Trust-Anchor" (NOT PKI Root-of-Trust) | ⚠ **disambiguate** (LIT-2) |
+| Independence | always qualified by facet | ⚠ **never unqualified** |
+| Anonymity | tied to "ballot secrecy" | ✅ |
+
+**Finding TA-4 (linguistic):** three naming hazards must be fixed **before** DDD names classes — synonym collapse (Determination), term-collision disambiguation (Constitutional Trust-Anchor), and mandatory qualification of overloaded terms (Review/Authority/Independence). Source: LIT-2 Canonical Vocabulary Report. *Carried into 46B + Strategic DDD naming.*
+
 ## Verdict
 
-> **TRANSLATION ASSURANCE: PASS (with 3 carried findings).** Every admitted concept is representable without semantic loss; every Forbidden Transformation has an enforcement mechanism; every architectural invariant (esp. Anonymity) is enforceable; blocked/external/derived concepts are protected. The `DDD Contract → DDD Decisions` transformation is **verified usable.**
+> **TRANSLATION ASSURANCE: PASS (with 3 + 1 carried findings).** Every admitted concept is representable without semantic loss; every Forbidden Transformation has an enforcement mechanism; every architectural invariant (esp. Anonymity) is enforceable; blocked/external/derived concepts are protected. The `DDD Contract → DDD Decisions` transformation is **verified usable.**
 >
 > The DDD gate still does **not** open here — **46B** (final gate) opens it, incorporating LIT-2 terminology calibration + these 3 carried findings.
 
