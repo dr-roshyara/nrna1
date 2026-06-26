@@ -66,9 +66,9 @@
 
 ---
 
-## Vocabulary Freeze rule (binding at Round 46B)
+## Certified Vocabulary Governance (binding at Round 46B) *(was "Vocabulary Freeze")*
 
-After certification (46B), **no new core governance terminology may be introduced inside Strategic DDD.** Discovering a new term during implementation means:
+Vocabulary is governed against **uncontrolled** evolution — **not** frozen forever (it evolves only via the `Round46-KRG` release lifecycle + compatibility policy). After certification (46B), **no new core governance terminology may be introduced inside Strategic DDD.** Discovering a new term during implementation means:
 
 ```
 New term proposed during DDD

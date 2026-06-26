@@ -37,11 +37,14 @@
 > ### B. PACKAGE FROZEN (versioned)
 > The Certified Release v1.0 is **frozen.** It changes **only** by a new versioned governance release (v1.x), **never** ad hoc during DDD. *(Mirrors the MB-39.1 baseline discipline, now applied to the knowledge package.)*
 
-> ### C. VOCABULARY FREEZE (binding)
-> No new **core governance terminology** may be introduced inside Strategic DDD. New terms → governance backlog → future ontology/package/release. *(46-VOCAB Freeze rule.)*
+> ### C. CERTIFIED VOCABULARY GOVERNANCE (binding) *(was "Vocabulary Freeze")*
+> Vocabulary is governed against **uncontrolled** evolution — **not** frozen forever. No new **core governance terminology** is named in DDD code; proposed terms → governance item → future Published release, per the lifecycle + compatibility policy in `Round46-KRG`.
 
-> ### D. RESEARCH ↔ DDD BOUNDARY (binding)
-> From **Round 47** onward, every artifact belongs to **Strategic DDD**, not governance research. **No new core governance concept is invented during DDD.** A newly discovered governance issue follows the **governance-research process separately** (new RQ → future release) and must **not** silently alter the software model.
+> ### D. RESEARCH ↔ DDD BOUNDARY + ARCHITECTURE CHANGE PROTOCOL (binding)
+> From **Round 47** onward, every artifact belongs to **Strategic DDD**, not governance research. **No new core governance concept is invented during DDD.** **Any change affecting Ontology · Vocabulary · Package · Admissibility MUST originate in Governance Research, never in Strategic DDD** (`Round46-KRG` §4): DDD may *request* a change but never *enact* one; a DDD artifact contradicting the Published release is void to the extent of the conflict until reconciled via a release.
+
+> ### F. KNOWLEDGE RELEASE GOVERNANCE adopted
+> Future evolution follows `Round46-KRG`: lifecycle (Draft→Candidate→Certified→Published→Superseded→Deprecated→Archived) + SemVer-style compatibility (Patch/Minor/Major/Breaking). **Release v1.0 = Certified + Published.**
 
 > ### E. DDD GATE: **OPEN**
 > Strategic DDD (Round 47) may begin. It consumes **only** the Certified Release v1.0: admitted concepts (Part IV), under the 5 constraints + TA-1/2/3/4, within NRNA-class scope, using **only** the Canonical Vocabulary, honoring the Forbidden Transformations. Start point: the **4 owning seams + persistence split** (not the concept list).
