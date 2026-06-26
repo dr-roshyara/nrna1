@@ -56,9 +56,11 @@
 
 ---
 
-## 3. Strong corroboration — Independence ↔ judicial-independence scholarship
+## 3. Terminological correspondence — Independence ↔ judicial-independence scholarship
 
-The program **independently** split Independence into Institutional / Operational / Decisional / Perceived (Round 41). This maps remarkably onto established **judicial-independence** theory **[verify against primary sources]**:
+*(Wording note: "correspondence," not "corroboration" — our independently-derived concepts **align with** established terminology/classifications; this is alignment, not proof.)*
+
+The program **independently** split Independence into Institutional / Operational / Decisional / Perceived (Round 41). This **corresponds** to established **judicial-independence** theory **[verify against primary sources]**:
 
 | Our facet | Established term |
 |-----------|------------------|
@@ -67,7 +69,7 @@ The program **independently** split Independence into Institutional / Operationa
 | Decisional | decisional / adjudicative independence |
 | **Perceived** | **appearance of independence** ("justice must be *seen* to be done") |
 
-**This is a positioning win:** an independently-discovered taxonomy converging on established legal theory strengthens the result's credibility (and supplies ready terminology). **Recommendation:** adopt the established sub-names; retain the dependency-chain finding (Decisional⟹Operational⟹Institutional) and the consent-coupling of "appearance" as the program's *novel* contributions.
+**This is a positioning win (correspondence, not proof):** an independently-discovered taxonomy aligning with established legal theory strengthens the result's *credibility* (and supplies ready terminology) — it does not *prove* the theory. **Recommendation:** adopt the established sub-names; retain the dependency-chain finding (Decisional⟹Operational⟹Institutional) and the consent-coupling of "appearance" as the program's *novel* contributions.
 
 ---
 
