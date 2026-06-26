@@ -17,13 +17,21 @@
 ## Definition of Done — per slice
 ✓ all aggregate DoDs met ✓ end-to-end correction path passes (ChallengeRaised→…→ChallengeResolved) ✓ Failure-Strategy cases covered by tests ✓ Empirical Validation Plan rows populated (observed metrics) ✓ Architecture + Security review gates passed.
 
-## Architectural KPIs (Release gate — objective)
-- **0** architecture violations (Deptrac) · **0** cyclic dependencies · **100%** arch-fitness green.
+## Metrics dashboard (3 categories — formalized)
+**Architecture:** dependency violations (Deptrac) · circular dependencies · aggregate size · event coupling · arch-fitness pass %.
+**Domain (operational):** challenge resolution time · determinations issued · determination latency · replay-verification success % · evidence-integrity failures · election corrections applied · duplicate-event rate.
+**Security:** voter↔vote linkage violations (must be 0) · replay failures · authorization failures.
+
+## Architectural KPIs (Release gate — objective thresholds)
+- **0** architecture/dependency violations (Deptrac) · **0** cyclic dependencies · **100%** arch-fitness green.
 - **100%** aggregate invariants tested · **0** voter↔vote linkage (Q7) · **100%** replay-determinism contract pass.
 - **100%** event-version compatibility (upcast tests) · **0** events emitted outside a txn/outbox.
 
-## Domain (operational) metrics — tracked from first slice
-challenge resolution time · determinations issued · replay-verification success % · evidence-integrity failures · election corrections applied · duplicate-event rate. *(Feed Empirical Validation Plan + Part B.)*
+## Architecture Compliance Checklist (every PR answers)
+☐ new bounded context? ☐ new aggregate? ☐ new repository? ☐ new event (Catalog v1.0 updated + version)? ☐ new policy? ☐ violates an ADR-T? ☐ violates BDR 1.1? ☐ violates architecture tests? — *any "yes" requires an ADR + Architecture Review Gate sign-off before merge.*
+
+## Slice Exit Criteria (Definition of Slice Complete — beyond per-aggregate DoD)
+✓ tests (arch + behavioral) ✓ documentation/runbook ✓ ADR-T referenced/added ✓ architecture tests green ✓ **security review gate** ✓ **domain review** (metrics observed) ✓ code review ✓ benchmark/baseline recorded ✓ Implementation Traceability Matrix updated.
 
 ## Architecture Review Gate (before merge)
 PR cannot merge until: matches **BDR 1.1** (no new/blurred boundary) · conforms to ADR-T1..T12 · Canonical Event Catalog unchanged or version-bumped (ADR-T5) · KPIs green · DoD checked. Reviewer signs "still matches certified architecture."

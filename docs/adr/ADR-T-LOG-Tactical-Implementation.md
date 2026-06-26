@@ -19,6 +19,33 @@
 | **ADR-T12** | **Contestation + Adjudication = binding finality** (greenfield Core) | dispute resolution is an open problem in the voting literature | the trustworthiness differentiator; candidate contribution | D12 · 50-03 |
 | **ADR-T13** | **Cryptographic E2E verifiability — DEFERRED (Proposed)** | current integrity = hash + audit-trail, weaker than voter-verifiable crypto proof | recorded **known limitation**; revisit in Part B | R-4 · S17–S20 |
 
+## ADR dependency graph (prevents conflicting future ADRs)
+```mermaid
+flowchart TD
+    T11[ADR-T11 Anonymity Q7\nconstitutional] --> T3
+    T11 --> T5
+    T11 --> T8
+    T11 --> T10
+    T1[ADR-T1 one-agg-per-txn] --> T2[ADR-T2 events-are-seam]
+    T1 --> T6[ADR-T6 one-repo-per-root]
+    T2 --> T3[ADR-T3 outbox at-least-once]
+    T3 --> T4[ADR-T4 inbox/idempotent]
+    T3 --> T9[ADR-T9 replay=rebuild]
+    T5[ADR-T5 versioning] --> T9
+    T10[ADR-T10 evidence immutable] --> T12[ADR-T12 contestation+adjudication]
+    T1 --> T8[ADR-T8 no-saga correction]
+    T2 --> T8
+    T8 --> T12
+    T7[ADR-T7 conformance toolchain] -. enforces .-> T1
+    T7 -. enforces .-> T2
+    T7 -. enforces .-> T5
+    T7 -. enforces .-> T6
+    T7 -. enforces .-> T11
+    T10 --> T13[ADR-T13 E2E crypto DEFERRED]
+    T11 --> T13
+```
+**Rule:** a new ADR that contradicts an upstream node (esp. **T11 anonymity** or **T1 one-txn**) is rejected; superseding requires an explicit ADR + Architecture Review Gate.
+
 ## ADR template (for any new tactical ADR)
 `Title · Status (Proposed/Accepted/Superseded) · Context · Decision · Consequences · Quality attribute · Source (Dxx/Round 50-xx/literature) · Conformance test`
 
