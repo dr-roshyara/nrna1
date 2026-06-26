@@ -1,72 +1,101 @@
-# Round 49-02 — Empirical Gap Analysis (Reflexion Model): Certified Landscape vs Code
+# Round 49-02 — Architecture Conformance Analysis: Certified Landscape vs Code (v1.1)
 
 **Program:** NRNA DDD Trustworthiness Research Program · **Phase:** Strategic DDD (Phase II) · **Built against:** Certified Release v1.0 / Strategic Domain Landscape v1.0
-**Status:** 🔬 EMPIRICAL EVIDENCE — compares the frozen landscape against the actual Laravel codebase using the **reflexion model** (Convergence / Divergence / Absence / Drift). This is the program's **own** evidence (the decisive kind, given LIT-3's under-instrumented external literature).
+**Status:** 🔬 EMPIRICAL CONFORMANCE ANALYSIS (v1.1 — reflexion model **evolved into a multi-perspective Architecture Conformance Framework**). Findings are **provisional**; behavioral verification still required.
 **Date:** 2026-06-26
 
-> **Method (reflexion model — Passos et al., adopted in LIT-3 §1 Q3 [verify]).** For each landscape element: state the target, extract the actual code, classify, assign a disposition. **Confidence per row:** **R** = file(s) read directly; **G** = inferred from name/location (glob), runtime behavior not verified. *(Honesty lesson carried from the LIT-3 retrieval correction — claims are graded, not asserted.)*
+> **Correction (v1.0→v1.1).** v1.0 over-claimed: it collapsed "name/location matches" with "the design exists," on **one** axis. v1.1 fixes this: **architectural correspondence ≠ implementation ≠ confirmed bounded context.** The reflexion model is now **one of four** evidence perspectives, findings are scored on **two orthogonal dimensions**, and convergence is graded by **evidence level**.
 
-## 1. Reflexion findings
+## 0. The Architecture Conformance Framework (4 perspectives)
 
-| Landscape element | Actual code (evidence) | Class | Conf | Disposition |
-|-------------------|------------------------|-------|------|-------------|
-| **Anonymity** (invariant) | Voting "no `user_id`"; `ReplayEvidenceEnvelope` hashed `voterIdentifier` | **Convergence** | R | Accept; encode as fitness function (ADQC Q7) — *verify hash non-reversible* |
-| **Evidence & Replay** | `app/Domain/Election/Replay/ReplayEvidenceEnvelope` (readonly, deterministic hash, schema-versioned), `ReplaySession`, `ReplayCertification`, `GovernanceReplayService` | **Convergence (strong)** | R | Accept |
-| **Adjudication** | `ConstitutionalArbitrationKernel.decide → Determination`, `ConstitutionalArbitrationPolicy`, `ConstitutionalDecision` | **Convergence** | R | Accept; vocab-align → "Determination" |
-| **Legitimacy** (read model) | `LegitimacyOutcome` enum — single exclusive resolver, not persisted | **Convergence** | R | Accept (honors constraint #3) |
-| **Eligibility** | `EligibilityEvaluator` ("deterministic, read-only"), stable R29 context | **Divergence** | R | **GI-1** → governance (family Blocked; admitting = Breaking v2.0) |
-| **Voting** | `Vote`/`BaseVote`, `Domain/Voting` (`VotingEngine`, `VoteAggregator`, `QuorumRule`) | **Convergence** | G | Accept (runtime unverified) |
-| **Authorization** | `ElectionCapabilityResolver`, `CapabilityContext`, `BallotAuthorizationPolicy` | **Convergence** | G | Accept; qualify "Authority" |
-| **Election Lifecycle Governance** | `ElectionLifecycleEngine`, `ElectionLifecycleState`, `TransitionMatrix` | **Convergence** (name drift) | G | Accept; rename per Vocabulary |
-| **Results** (read model) | `ResultController`, `Result` projection | **Convergence** | G | Accept (derived projection) |
-| **Audit** | `ElectionAuditService`, `ElectionAuditLog`, `SecurityEventRecorder` (fire-and-forget) | **Convergence** | G | Accept |
-| **Appointment / Mandate** | `app/Contexts/Governance/Domain/Authority/.../DelegationLifecyclePolicy` + `Contexts/Committee` + `RemoveCommitteeMemberCommand` (scattered) | **Drift** (partial, multi-home) | G | **Refactor** → consolidate into an Appointment/Mandate context *(corrects earlier "absent" claim)* |
-| **Contestation** | **none** (zero files) | **Absence** | R | **Implementation task** → PROTOTYPE (closes the loop) |
-| **Constitutional Trust-Anchor / Consent** | device/PKI `TrustLevel`/`DeviceTrustContext` only; **no Consent construct** | **Divergence + Absence** | R/G | **GI-2** (naming) + model Consent as external boundary |
-| **Code home consistency** | concepts split across `app/Domain/Election` + `app/Application/Election` + `app/Contexts/{Governance,Membership,Committee}` | **Drift** (multi-home) | R | **AI-1 Refactor** → consolidate to `app/Contexts/*` |
+A context is classified only after combining:
+1. **Structural correspondence** — namespaces, modules, dependencies (reflexion model lives here).
+2. **Behavioral correspondence** — runtime behavior, tests, business responsibilities.
+3. **Architectural correspondence** — ownership, autonomy, lifecycle.
+4. **Strategic-DDD correspondence** — the `Round48A` boundary tests (T1–T9).
 
-## 2. Summary
+**Only when all four agree** is a context classified Confirmed / Merge / Supporting / Infrastructure / Rejected (Round 49). This analysis supplies perspectives **1 (structural)** and partial **3**; **2 (behavioral)** and **4 (T1–T9)** are owed by Round 49. *(The reflexion model alone is necessary, not sufficient.)*
 
-| Class | Count | Elements |
-|-------|------:|----------|
-| **Convergence** | **10** | Anonymity · Evidence&Replay · Adjudication · Legitimacy · Voting · Authorization · Lifecycle · Results · Audit (+ the core invariant) |
-| **Drift** | 2 | Appointment (scattered) · code-home (AI-1) |
-| **Absence** | 1 | **Contestation** (greenfield) |
-| **Divergence** | 2 | Eligibility (GI-1) · Trust-Anchor/Consent (GI-2) |
+## 1. Evidence levels (only L3 counts as real convergence)
+**L1 Name correspondence** (a class is named like the concept) · **L2 Structural correspondence** (it's organized/depends as expected) · **L3 Behavioral correspondence** (runtime/tests/responsibilities confirm it). **Convergence is only *claimed* at L3.** Most rows below are **L1–L2**.
 
-**Headline (the empirical result):** **~10 of ~14 landscape elements CONVERGE — the certified design is, to a striking degree, already implemented.** The certified theory is **not** a parallel universe; it largely *describes the existing system.* The genuine work-list is small and precise:
-- **1 build** (Contestation — Absence),
-- **2 refactors** (consolidate code homes AI-1; consolidate Appointment),
-- **2 governance decisions** (GI-1 Eligibility; GI-2 Consent/Trust).
+## 2. Two-dimensional conformance map
 
-This is strong empirical corroboration of the whole Phase-I→Phase-II pipeline — and, per LIT-3, it is the *program's own evidence*, which is what the under-instrumented external literature cannot supply.
+**Dimension A — Architecture correspondence:** High / Medium / Low / Unknown. **Dimension B — Implementation status:** Implemented / Partial / Scattered / Absent. *(Replaces the single Convergence/Drift/Absence axis.)* Confidence **R** = file read · **G** = name/location only.
 
-## 3. Dispositions
+| Landscape element | Arch. correspondence | Implementation | Evidence level | Conf |
+|-------------------|----------------------|----------------|----------------|------|
+| **Anonymity** (invariant) | High | Implemented (votes no `user_id`; hashed envelope) | **L2→L3 partial** (schema-level) | R |
+| **Evidence** | High | Implemented (immutable hashed envelope) | **L2** (read; behavior not yet tested) | R |
+| **Adjudication** | High | Partial (kernel+policy+decision; vocab differs) | **L2** | R |
+| **Legitimacy** (read model) | High | Implemented (single-resolver enum, not persisted) | **L2** | R |
+| **Replay** | Medium | Implemented (session/cert/validator) — *placement open* | **L2** | R |
+| **Voting** | Medium | Present (`VotingEngine`/`VoteAggregator`) — *engine ≠ BC* | **L1** | G |
+| **Authorization** | Medium | Present (`ElectionCapabilityResolver`) — *resolver owns? or computes?* | **L1** | G |
+| **Election Lifecycle** | Medium | Present (`ElectionLifecycleEngine`/`TransitionMatrix`) — *engine ≠ BC* | **L1** | G |
+| **Results** (read model) | Medium | Present (`ResultController`) — *read model, or exposed SQL?* | **L1** | G |
+| **Audit** | **Unknown** | Present (`ElectionAuditService`) — *domain? platform? infra?* | **L1** | G |
+| **Appointment** | **Low–Medium** | **Scattered** (Authority/Delegation + Committee) — *not yet a coherent context* | **L1** | G |
+| **Contestation** | High (by certification) | **Absent** | — | R |
+| **Trust-Anchor / Consent** | High | Divergent (device/PKI only) + Consent **Absent** | L1 | R/G |
 
-- **Accept (10 convergences):** validate the landscape; where the convergence is **G** (by-name), a runtime/behavioral check is owed before "verified." Encode Anonymity as a fitness function (ADQC Q7).
-- **Implementation task:** **Contestation** prototype — the one true greenfield Core build; closes the correction loop (S-5 standing → Adjudication).
-- **Refactor (architecture, not governance):** **AI-1** consolidate multi-home concepts → `app/Contexts/*`; consolidate the scattered Appointment/Mandate pieces into one context. (Round 50.)
-- **Governance items (→ Knowledge Release Governance, not silent edits):** **GI-1** Eligibility (Blocked family vs procedural evaluator — decide; admitting = Breaking); **GI-2** Trust naming + model Consent as external boundary (Patch/Minor + a Consent boundary decision).
+**Anti-conflation note:** `ElectionLifecycleEngine` does **not** prove a Lifecycle BC (could be a service / workflow / God-object / application service); `VotingEngine` does **not** prove a Voting BC; `ResultController` does **not** prove the Read-Model philosophy (could be exposed SQL); `ElectionAuditService` does **not** prove an Audit BC (could be infra/platform). **Name ≠ structure ≠ behavior ≠ bounded context.**
 
-## 4. Threats to validity (carried)
+## 3. Headline (restated defensibly)
 
-- **G-rows unverified at runtime** — convergence by name/location ≠ behavioral conformance; a prototype/test pass is owed.
-- **Multi-home (AI-1)** means "the code" is itself inconsistent — gap analysis compared the landscape to *several* partial implementations; consolidation must precede a definitive conformance claim.
-- **Single-analyst, static** — no runtime, performance, or operational evidence (mirrors LIT-3 referee weakness #2).
+> **The current implementation exhibits substantial *architectural correspondence* with the certified strategic landscape. Direct *behavioral* verification (L3) remains necessary before claiming architectural conformance — and architectural correspondence is *not* proof of bounded-context boundaries (Round 48A/49 owed).**
 
-## 5. Next
+Not "the certified design is already implemented." Of ~13 elements: **4 read directly (R, L2)**, the rest **inferred by name (G, L1)**; **zero are at L3 (behavioral)** yet.
 
+## 4. Boundary confidence (feeds Round 49 — where to investigate)
+
+| Context | Boundary confidence | Round-49 hypothesis to falsify |
+|---------|---------------------|-------------------------------|
+| Adjudication | High | "not a BC" |
+| Evidence | High | "not a BC" |
+| Contestation | High (gap real) | "belongs inside Adjudication" |
+| Authorization | Medium | "merge with Appointment" |
+| Lifecycle | Medium | "merge into Voting" |
+| Voting | Medium-High | "engine ≠ BC" |
+| Replay | Medium | "belongs inside Evidence / is app/infra" |
+| Appointment | **Low** | **"not a BC — merge into Authorization"** |
+| Audit | **Low** | **"Platform/Infrastructure, not a domain BC"** |
+
+## 5. What would falsify the landscape? (falsification, not confirmation)
+
+- If **Replay** cannot evolve independently of Evidence → **merge into Evidence** (or app/infra).
+- If **Appointment** never owns independent decisions → **merge into Authorization**.
+- If **Audit** contains only telemetry → **Platform/Infrastructure**, not a BC.
+- If **Lifecycle** cannot exist independently of the vote flow → **merge into Voting**.
+- If **Voting/Authorization** "engines" are God-objects → the BC boundary is in code, not just names → structural refactor needed.
+
+Round 49 actively attempts each falsification (Round 48A T1–T9).
+
+## 6. Actions — separated by layer
+
+**Governance actions (→ Knowledge Release Governance):** GI-1 Eligibility (Blocked family vs procedural evaluator); GI-2 Consent/Trust naming + model Consent as external boundary. *(unchanged)*
+**Architecture actions (Strategic DDD):** evaluate Merge/Reject/Subdomain for Appointment, Lifecycle, Audit, Replay (Round 49); consolidate AI-1 to `app/Contexts/*` (Round49-03).
+**Implementation actions (Tactical/later):** behavioral verification (L3) of the G/L1 rows; Contestation prototype (after boundaries confirmed); NM-1 vocabulary refactor.
+
+## 7. Current interpretation (not "Accept")
+*(Per review: "Accept" sounds final. Each row's disposition is a **current interpretation pending behavioral + Round-49 evidence.**)*
+- High-correspondence + read (Evidence, Adjudication, Legitimacy, Anonymity): **current interpretation = strong architectural correspondence; behavioral validation (L3) required.**
+- G/L1 rows (Voting, Authorization, Lifecycle, Results, Audit): **current interpretation = capability present; correspondence inferred; behavioral + boundary evidence owed.**
+- Appointment: **current interpretation = scattered; likely Merge — defer to Round 49.**
+- Contestation: **current interpretation = genuine gap (Absent).**
+
+## 8. Threats to validity
+G/L1 rows unverified at runtime (no L3); multi-home (AI-1) means "the code" is itself inconsistent; single-analyst, static; reflexion model is structural only — behavioral + DDD perspectives still owed. **Existing code remains empirical evidence, not authoritative.**
+
+## 9. Next
 ```
-49-LIT3 (downgraded) ✓ → 49-02 Gap Analysis (this) ✓
-   → AI-1 consolidation decision (which code home is authoritative) ← do before building
-   → PROTOTYPE Contestation in the authoritative home (the 1 Absence; closes the loop)
-   → GI-1/GI-2 to governance (parallel, non-blocking)
-   → Round 50 Aggregate design / refactor (Determination · EvidenceEnvelope · Challenge · Appointment)
+49-02 Conformance Analysis (this) ✓ — perspectives 1+partial-3
+   → Round 49 BC EVALUATION (Round48A T1-T9 + perspectives 2/4; falsify each candidate; Confirmed/Merge/Subdomain/Capability/Deferred)
+   → behavioral verification (L3) of G/L1 rows
+   → Aggregate discovery → Tactical → code
 ```
-
-**Recommended next: the AI-1 consolidation decision, then prototype Contestation** — the gap analysis shows that is the single highest-value piece of real work (the only Core Absence), and it must land in a decided code home.
 
 ---
 
-*Round 49-02 — Empirical Gap Analysis (Reflexion Model) — ISSUED (program's own empirical evidence).*
-*~10/14 CONVERGENCE (certified design largely already implemented — strong corroboration); 2 Drift (Appointment + multi-home AI-1); 1 Absence (Contestation = build target); 2 Divergence (Eligibility GI-1, Consent/Trust GI-2). Confidence graded R/G (read vs glob); G-rows owe runtime verification. Next: AI-1 consolidation → prototype Contestation. MB-39.1 FROZEN.*
+*Round 49-02 — Architecture Conformance Analysis v1.1 — ISSUED (reflexion = 1 of 4 perspectives).*
+*TWO dimensions (architecture-correspondence × implementation-status); evidence levels L1/L2/L3 (only L3 = real convergence; ZERO rows at L3 yet); 4 read (R/L2), rest inferred (G/L1). Headline softened: "substantial architectural CORRESPONDENCE; behavioral verification required" (NOT "already implemented"). +Boundary-confidence +What-would-falsify-the-landscape; "Accept"→"Current interpretation"; actions split Governance/Architecture/Implementation. Appointment/Audit NOT classified (→Round 49). Code = evidence not authoritative. Next: Round 49 BC Evaluation (48A).*
