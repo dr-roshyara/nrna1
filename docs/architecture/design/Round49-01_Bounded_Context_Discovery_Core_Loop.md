@@ -1,75 +1,87 @@
-# Round 49-01 — Bounded Context Discovery: the Core Correction Loop (empirical)
+# Round 49-01 — Candidate Bounded Context Evaluation: the Core Correction Loop (v1.1)
 
 **Program:** NRNA DDD Trustworthiness Research Program · **Phase:** Strategic DDD (Phase II) · **Built against:** Certified Release v1.0 / Landscape v1.0 / Package 1.0.0 / Vocabulary 1.0.0 / Ontology 1.0.0
-**Status:** 🧱 BOUNDED CONTEXT DISCOVERY — the **Core Domain** (Adjudication ← Evidence&Replay ← Contestation, per `Round48-01` CM-1). **Empirical:** grounded in the actual `app/Contexts` + `app/Domain` code. Scored against ADQC (`Round48-00`).
+**Status:** 🔎 CANDIDATE BC **EVALUATION** (v1.1 — was "Bounded Context Discovery"). Evaluates **evidence**, does **not** confirm boundaries or design aggregates. ADQC v1.1; `Round47-OP` discovery discipline.
 **Date:** 2026-06-26
 
-> **Why Core first.** CM-1 named the **correction loop** the Core Domain (the trustworthiness differentiator). This round defines its bounded contexts + candidate aggregates **against real code** — testing whether the certified design already exists, is partial, or is greenfield.
-> **Empirical headline.** **2 of the 3 Core contexts are already substantially built and confirm the certified design; Contestation is greenfield** — making it the natural prototype target (and it closes the loop, S-5).
+> **Methodological correction (v1.0→v1.1).** *Capability discovery ≠ bounded-context confirmation.* Finding related classes proves a **certified capability has implementation support** — it does **NOT** prove a **bounded context exists** (the classes might be one aggregate/module/subdomain inside another BC). This round therefore **evaluates candidates**; **BC confirmation is the next round**; **aggregate design is later** (Round 50+). Aggregates here are **Potential**, not designed.
+> **Reasoning flow (per review):** Certified capability → Observed implementation (evidence) → Implementation alignment → BC discovery criteria → BC confidence → open questions.
+> **Alignment scale:** Fully Aligned · Partially Aligned · Present · Absent · Conflicting. **BC confidence:** High · Medium · Low.
 
-## 1. Code reality (what already exists)
+## 0. Headline (restated defensibly)
 
-- **`app/Contexts/`** — a **bounded-context code layer** exists (`Governance`, `Membership`) **in addition to** the older `app/Domain/Election`. *(Architectural debt AI-1: parallel evolution / two homes for the same concepts — needs a consolidation decision.)*
-- **Adjudication** — BUILT: `Membership/.../Constitutional/ConstitutionalArbitrationKernel` (`decide(ctx,capability,at) → ConstitutionalGovernanceDecision`), `ConstitutionalArbitrationPolicy`, `ConstitutionalDecision`, `LegitimacyEvaluator`, `GovernanceLegitimacy`. Stateless kernel producing a Decision record ("evaluates but does not create truth").
-- **Evidence & Replay** — BUILT: `app/Domain/Election/Replay/ReplayEvidenceEnvelope` (`readonly`, frozen evidence, deterministic `envelopeHash`, **hashed** `voterIdentifier`), `ReplaySession`, `ReplayCertification`, `GovernanceReplayService`, `ConstitutionalReplayFingerprint`, `ScopeAwareReplayValidator`.
-- **Contestation** — **GREENFIELD** (zero files for challenge/appeal/standing/dispute). Promoted by the certified landscape (S-5 standing) but unbuilt.
-- **Legitimacy** — derived: `LegitimacyOutcome` enum (single resolver, not persisted) + `LegitimacyEvaluator` + several `*Legitimacy` value objects across contexts.
-
-## 2. Core bounded contexts (defined empirically)
-
-### BC-CORE-1 — Adjudication
-- **Decision ownership:** "Is this governance decision constitutionally valid? → issue a binding **Determination**."
-- **Candidate aggregate:** **Determination** (= `ConstitutionalGovernanceDecision` / `ConstitutionalDecision`). Domain service: `ConstitutionalArbitrationKernel`. Policy: `ConstitutionalArbitrationPolicy`.
-- **Build status:** **BUILT** (kernel + policy + decision record). **Gap:** vocabulary — `ConstitutionalDecision`/`ConstitutionalGovernanceDecision` → canonical **"Determination"**; `GovernanceLegitimacy`/`ConstitutionalLegitimacy`/`LegitimacyOutcome` proliferation → align to **"Legitimacy" (read model)**.
-- **Certified mapping:** Adjudication seam; produces **Finality** (Determination); **Legitimacy is derived here** (not an aggregate — confirmed by `LegitimacyOutcome` single resolver).
-
-### BC-CORE-2 — Evidence & Replay
-- **Decision ownership:** "Was evidence integrity preserved? Does replay reproduce the original outcome?"
-- **Candidate aggregates:** **EvidenceEnvelope** (immutable System of Record) · **ReplaySession** (aggregate root) · **ReplayCertification**.
-- **Build status:** **BUILT (strong).** Immutability, deterministic hashing, schema-versioned, hashed voter identifier — matches the certified Evidence primitive exactly.
-- **Certified mapping:** Record-Keeping seam (authoritative side); System of Record; feeds Adjudication via Published Language (`ReplayEvidenceEnvelope`). **Anonymity preserved** (hashed identifier — Q7 Pass, *verify hash non-reversible*).
-
-### BC-CORE-3 — Contestation  ⭐ greenfield
-- **Decision ownership:** "Does a party **with standing (S-5)** raise a valid **Challenge** against a Determination, and route it for review?"
-- **Candidate aggregate:** **Challenge** (raised by a standing-holder; lifecycle Raised→Admitted/Dismissed→Routed-to-Adjudication).
-- **Build status:** **GREENFIELD** — nothing exists. This is the **missing entry point of the correction loop** (the certified S-5 standing → detection→challenge→correction).
-- **Certified mapping:** Contestation seam (promoted in `Round47-01`). Upstream Customer-Supplier into Adjudication (`Round48-01`).
-
-## 3. ADQC scorecard (Core bounded contexts)
-
-| Criterion | Verdict | Note |
-|-----------|---------|------|
-| Q1 Semantic fidelity | **Concern** | code uses `ConstitutionalDecision`/multiple `*Legitimacy` names → align to Determination / Legitimacy (Vocabulary) |
-| Q2 Ownership consistency | **Pass** | Adjudication owns Determination; Evidence&Replay owns the envelope/session; clean single-writers |
-| Q3 Autonomy | **Pass** | Arbitration kernel is stateless; Replay is self-contained |
-| Q4 Cohesion | **Pass** | each context = one decision ownership |
-| Q5 Coupling | **Pass** | Evidence→Adjudication via immutable PL; Contestation→Adjudication C/S |
-| Q6 Traceability | **Pass** | built against Release v1.0 / Landscape v1.0 |
-| Q7 Anonymity (gating) | **Pass** | envelope uses hashed voter id; no linkage — *verify hash non-reversible* |
-| Q8 Evolutionary stability | **Concern** | **AI-1** dual code homes (`app/Domain/Election` vs `app/Contexts/*`) → consolidation needed |
-| Q9 Certification compliance (gating) | **Pass** | Contestation is admitted/promoted; no Forbidden Transformation; Legitimacy stays a derived read model |
-
-**No gating failure.** Core design is **validated by existing code** (Adjudication, Evidence&Replay) and has one clear **greenfield gap (Contestation)**.
-
-## 4. Items raised (architecture + naming — NOT governance)
-
-- **AI-1 (architecture debt):** two code homes for Core concepts (`app/Domain/Election/Replay` vs `app/Contexts/Membership/.../Constitutional` + `app/Contexts/Governance`). Decide the authoritative layout (the `app/Contexts/*` bounded-context structure is the DDD-aligned target) → a **consolidation/cleanup decision** for Round 50, not a governance change.
-- **NM-1 (naming hygiene, TA-4 class):** `*Legitimacy`/`*Decision` proliferation across Governance/Membership/Election → converge to Canonical Vocabulary (**Determination**, **Legitimacy** read model). No governance change; a Vocabulary-guided refactor.
-- *(No GI raised — these are software-side, not governance.)*
-
-## 5. Verdict & next — the prototype target
-
-The Core correction loop is **2/3 built and confirms the certified design**; **Contestation is the greenfield gap.** Per the recommended sequence (prototype one Core context to validate governance→software translation in practice), **Contestation is the highest-value prototype**: it is Core, certified-promoted, currently absent, and **building it closes the correction loop** (standing → challenge → adjudication → determination → correction).
-
-```
-48-01 Context Map ✓ → 49-01 BC Discovery (Core, empirical) ✓
-   → LIT-3 (validate map/contexts vs DDD lit)  — optional, can run parallel
-   → PROTOTYPE: Contestation bounded context (greenfield, closes the loop)  ← recommended next
-   → reconcile AI-1 (consolidate app/Domain vs app/Contexts) + NM-1 (vocabulary refactor)
-   → Round 50 Aggregate design (Determination · EvidenceEnvelope/ReplaySession · Challenge)
-```
+**Two certified capabilities — Adjudication and Evidence/Replay — already have substantial *implementation support* in the codebase; Contestation has none.** This is a statement about **code supporting capabilities**, *not* about bounded contexts already existing. Whether each capability becomes a standalone BC is evaluated below and **confirmed in the next round.**
 
 ---
 
-*Round 49-01 — Bounded Context Discovery: Core Correction Loop — ISSUED (empirical; built against Release v1.0 / Landscape v1.0).*
-*Adjudication BUILT (ConstitutionalArbitrationKernel→Determination; Legitimacy derived) · Evidence&Replay BUILT (immutable hashed envelope = System of Record) · Contestation GREENFIELD (S-5 entry; closes the loop). ADQC: no gating failure; Q1/Q8 concerns (vocabulary NM-1, dual-home AI-1). Recommended next: PROTOTYPE Contestation. Anonymity preserved (hashed id, verify).*
+## CC-1 — Adjudication
+- **Certified capability:** issue a binding **Determination** (Finality).
+- **Observed implementation (evidence):**
+  | Class (app/Contexts/Membership/Domain/Committee/Constitutional) | Implies |
+  |----|----|
+  | `ConstitutionalArbitrationKernel` (`decide → ConstitutionalGovernanceDecision`) | adjudication *service* exists |
+  | `ConstitutionalArbitrationPolicy` / `DefaultConstitutionalArbitrationPolicy` | arbitration rules exist |
+  | `ConstitutionalDecision` | a decision *record* exists |
+  | `LegitimacyEvaluator` / `LegitimacyOutcome` | legitimacy derived (single resolver) |
+- **Implementation alignment:** **Partially Aligned** — capability present, but **vocabulary differs** (`ConstitutionalDecision` ≠ certified "Determination") and it lives **inside Membership/Committee**, not a standalone Adjudication module.
+- **BC discovery criteria:** ownership ✓ · cohesion ✓ · autonomy ✓ (stateless kernel) · language ✓ · transactional boundary ✓ (single decision record) · evolutionary independence **?** (currently coupled to Committee) · team boundary unknown.
+- **BC confidence: Medium-High.** Strong candidate — but may resolve as a **subdomain within Governance/Membership** rather than standalone. *Open:* is Adjudication its own BC or a subdomain of an Oversight BC?
+
+## CC-2 — Evidence  *(split from Replay — see CC-3)*
+- **Certified capability:** immutable **System of Record** (reviewable record); Anonymity-preserving.
+- **Observed implementation (evidence):**
+  | Class | Implies |
+  |----|----|
+  | `ReplayEvidenceEnvelope` (`readonly`, deterministic hash, **hashed** `voterIdentifier`) | immutable record + anonymity |
+  | `EvidenceClassification` / `EvidenceSnapshot` / `EvaluationAuditTrail` | evidence is classified, snapshotted, trailed |
+- **Implementation alignment:** **Partially Aligned / Present** — strong immutable-record support.
+- **BC discovery criteria:** ownership ✓ · cohesion ✓ · language ✓ · lifecycle ✓ (frozen at creation) · transactional boundary ✓ (append-only immutable) · evolutionary independence **?**.
+- **BC confidence: Medium.** Strong capability evidence; "Evidence as a BC" vs "Evidence as an aggregate inside a broader context" is **open**.
+
+## CC-3 — Replay  *(deliberately separated from Evidence)*
+- **Certified mapping:** integrity verification + outcome reproduction. **Evidence = truth; Replay = behaviour over truth** — they may evolve differently.
+- **Observed implementation (evidence):** `ReplaySession`, `ReplayCertification`, `GovernanceReplayService`, `ScopeAwareReplayValidator`, `ConstitutionalReplayFingerprint`.
+- **Implementation alignment:** **Present** (rich replay machinery).
+- **⭐ Open question (do NOT decide now):** Is Replay a **domain capability** (own BC), an **application service** over the Evidence BC, or an **infrastructure capability**? Evidence leans toward *application/infrastructure behaviour consuming Evidence*, not a separate BC.
+- **BC confidence (as a *separate* BC): Low.** More likely an application/infrastructure capability over Evidence → decide at Round 50.
+
+## CC-4 — Contestation  *(greenfield)*
+- **Certified capability:** a party **with standing (S-5)** raises a **Challenge** routed to Adjudication.
+- **Observed implementation:** **Absent** (zero files — challenge/appeal/standing/dispute).
+- **Implementation alignment:** **Absent.**
+- **BC discovery criteria (by certification, not code):** ownership ✓ (standing/challenge) · language ✓ · autonomy ✓ · transactional **?** · evolutionary **?**.
+- **BC confidence: High that the GAP is real** (absence confirmed); **Medium that it is a *separate* BC** (vs a module within Adjudication/Contestation). Closing it **closes the correction loop** — the highest-value governance→software gap.
+
+---
+
+## Summary
+
+| Candidate | Alignment | BC confidence | Potential aggregate(s) *(TBD — Round 50)* |
+|-----------|-----------|---------------|-------------------------------------------|
+| Adjudication | Partially Aligned | Med-High | *Potential:* Determination |
+| Evidence | Partially Aligned / Present | Medium | *Potential:* EvidenceEnvelope |
+| Replay | Present | **Low (as separate BC)** | *Potential:* ReplaySession — or app/infra service |
+| Contestation | Absent | High (gap) / Med (separate BC) | *Potential:* Challenge |
+
+*("Potential," not "Candidate" — aggregate boundaries are discovered at Round 50, not asserted here. No Tactical DDD leakage.)*
+
+## ADQC v1.1 (this evaluation as a decision)
+Q1 PASS · Q2 PASS · Q9 PASS (only certified concepts) · **Q11 Boundary Clarity MINOR CONCERN** (Adjudication-vs-Oversight, Evidence-vs-Replay, Contestation-vs-Adjudication boundaries open) · **no gating FAIL.** *(Q10 invariant integrity deferred to BC confirmation — needs the boundaries first.)*
+
+## Items (software-side, NOT governance)
+- **AI-1 (architecture debt):** multi-home (`app/Domain/Election` + `app/Application/Election` + `app/Contexts/{Governance,Membership,Committee}`) — consolidation decided in `Round49-03` (→ `app/Contexts/*`).
+- **NM-1 (naming):** `*Legitimacy`/`*Decision` proliferation → Canonical Vocabulary (Determination/Legitimacy).
+
+## Roadmap (corrected — adds BC confirmation)
+```
+49-01 Candidate BC EVALUATION (this) ✓
+   → BC CONFIRMATION (confirm/merge/reject candidates; ADQC v1.1 + boundary-evidence + confidence)
+   → AGGREGATE discovery (Round 50; resolve Evidence-vs-Replay, Potential→designed aggregates)
+   → Tactical DDD → code (Contestation prototype only after boundaries confirmed)
+```
+*(BC confirmation inserted before aggregate discovery — otherwise aggregates would be designed inside unconfirmed contexts.)*
+
+---
+
+*Round 49-01 — Candidate Bounded Context Evaluation (Core Loop) v1.1 — ISSUED.*
+*Capability discovery ≠ BC confirmation: TWO certified capabilities (Adjudication, Evidence/Replay) have substantial IMPLEMENTATION SUPPORT; Contestation ABSENT. Alignment-graded (Partially Aligned/Present/Absent), evidence tables, discovery criteria, BC confidence (Adjudication Med-High · Evidence Med · Replay LOW-as-separate-BC · Contestation High-gap). Replay placement OPEN (domain/app/infra). Aggregates = POTENTIAL only. Next: BC Confirmation (before aggregates). No code until boundaries confirmed.*
