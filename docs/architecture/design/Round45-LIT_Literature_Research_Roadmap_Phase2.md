@@ -25,23 +25,36 @@
 - **Trigger C — before Strategic DDD** → review of *translation* scholarship (ontology engineering, enterprise ontology, semantic projection, DDD semantics, computational/conceptual modeling) to compare our projection approach with established ones.
 - **Trigger D — before publication** → position every contribution against prior art.
 
-## 3. Scheduled targeted reviews (three, not one)
+## 3. Scheduled targeted reviews (three, not one) — REVISED ordering
+
+**Revision (2026-06-26):** internal readiness is decided **before** literature calibration. `Round46A` (Internal Readiness — internal evidence only) precedes LIT-2; `Round46B` (Final Gate) follows it.
 
 ```
-Ontology v1.0 ✓
-   → LIT-1 (ontology positioning)            [Trigger A — optional/light; map Finality/Independence/Legitimacy to scholarship]
-Computational Semantics (44) ✓ / Ownership (45) ✓
-   → Round 46 Strategic DDD Readiness
-   → LIT-2 (TRANSLATION review)              [Trigger C — the next review: ontology engineering · enterprise ontology ·
-                                              semantic projection · DDD semantics · model-driven engineering]
+Ontology v1.0 ✓ / Projection (44) ✓ / Ownership (45) ✓ / Package v1.0 (46) ✓
+   → Round 46A  INTERNAL Readiness Decision  ✓   [internal evidence ONLY — no literature]
+   → LIT-2 (TRANSLATION & TERMINOLOGY review)     [Trigger C — external calibration; NO governance redesign]
+   → Round 46B  FINAL Strategic DDD Gate Decision [binary READY/NOT-READY incl. terminology calibration]
    → Round 47 Strategic DDD Discovery
-   → LIT-3 (DDD / architecture validation)   [strategic DDD · context mapping · enterprise architecture ·
-                                              high-assurance & secure-voting architecture]
+   → LIT-3 (DDD / architecture validation)        [strategic DDD · context mapping · EA · high-assurance/secure-voting]
    → Tactical DDD → Implementation
-   → LIT-4 (publication positioning)         [Trigger D]
+   → LIT-4 (publication positioning)              [Trigger D]
 ```
 
-**LIT-2 questions (translation, NOT governance):** How do governance ontologies map into computational models? How have ontology engineering / enterprise ontology handled semantic projection? What do DDD / conceptual modeling / EA say about translating stable domain concepts into software boundaries? What existing approaches support or challenge our Semantic Projection (Round 44)? What established terminology best matches concepts we discovered independently?
+### LIT-2 charter (tightened — external calibration, NOT research)
+**Forbidden:** changing the governance theory, ontology, or admissibility (that work is finished). **Objective:** compare the **Domain Knowledge Package v1.0** against ontology engineering · enterprise ontology · conceptual modeling · semantic projection · strategic DDD · context mapping · enterprise architecture, to answer: (1) which terminology already exists? (2) which concepts are genuinely novel? (3) which correspond to established theory? (4) which should be renamed for interoperability? (5) where does literature disagree? (6) does any literature expose an overlooked limitation? (7) does any literature invalidate the **translation strategy** (not the theory)?
+
+**New LIT-2 deliverable — Terminology Mapping** (example shape):
+
+| Our term | Literature equivalent (candidate) | Action |
+|----------|-----------------------------------|--------|
+| Semantic Projection | ontology→model transformation / model-driven transformation | adopt if apt |
+| Truth-of-record | System of Record | align |
+| Truth-of-computation | Derived View / Projection | align |
+| Mandate | Delegation / Authority Assignment | compare |
+| Trust-Anchor | Root of Trust (where applicable) | clarify difference |
+| Independence (4 facets) | governance/constitutional/org-theory taxonomies | check for existing taxonomy |
+
+*A limitation or terminology finding from LIT-2 may rename concepts for interoperability or be recorded as a risk — it may **not** reopen the governance theory.*
 
 ## 4. Standing constraints (unchanged)
 
