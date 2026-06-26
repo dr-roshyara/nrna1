@@ -1,92 +1,125 @@
-# Round 48-01 — Strategic Context Mapping
+# Round 48-01 — Strategic Context Mapping (v1.1)
 
-**Program:** NRNA DDD Trustworthiness Research Program · **Phase:** Strategic DDD (Phase II) · **Built against:** Certified Release v1.0 / Strategic Domain Landscape v1.0 / Package 1.0.0 / Vocabulary 1.0.0 / Ontology 1.0.0 (SD-7 traceability)
-**Status:** 🗺️ CONTEXT MAP — relationships among the **frozen** landscape contexts. Consumes only Landscape v1.0; adds/removes nothing (SD-2). Scored against ADQC (`Round48-00`).
-**Date:** 2026-06-26
+**Program:** NRNA DDD Trustworthiness Research Program · **Phase:** Strategic DDD (Phase II) · **Built against:** Certified Release v1.0 / Strategic Domain Landscape v1.0 / Package 1.0.0 / Vocabulary 1.0.0 / Ontology 1.0.0 (SD-7)
+**Status:** 🗺️ CONTEXT MAP (v1.1 — revised per architect review). Maps **relationships** among **candidate** contexts. Consumes only Landscape v1.0; adds/removes nothing (SD-2). Scored against ADQC v1.1.
+**Date:** 2026-06-26 · *(v1.0→v1.1: fixed Conformist→OHS for consult dependencies; softened CM-2; added domain events, Context Responsibilities, Context Type, Rejected Patterns; arrow legend; provisional emphasis.)*
 
-> **Scope.** Map the **integration relationships** (upstream/downstream + DDD patterns) among the 8 contexts + 2 read models + external boundary + the Anonymity invariant. This is the test of whether the ownership seams translate into coherent context relationships (ADQC Q3/Q5).
-> **⚠️ Discovery-discipline note (added per `Round47-OP`):** these contexts are **CANDIDATE** bounded contexts. *Semantic truth ≠ software structure* — whether each seam is truly a separate bounded context (vs subdomain/aggregate/shared) still requires confirmation by cohesion · lifecycle · transactional consistency · integration needs. The map below is a candidate; boundary confirmation is owed (esp. for the Supporting contexts).
+> **Scope.** Map **integration relationships** (direction + DDD pattern + flow type) among the candidate contexts. Does **not** invent or redesign contexts.
+> **⚠️ PROVISIONAL (per `Round47-OP` discovery discipline).** These are **CANDIDATE** contexts; *semantic truth ≠ software structure*. **All relationships below are provisional until Round 49 confirms or MERGES candidate boundaries.** Likely merge candidates to challenge in Round 49: **Appointment↔Authorization** and **Lifecycle↔Voting**. The map must stay valid even if two candidates merge.
 
-## 1. The contexts (from Landscape v1.0)
+## Flow legend
+**[CMD]** command (solid) · **[QRY]** query/consult (dashed) · **[EVT]** domain event (dotted). DDD patterns: ACL · OHS (Open Host Service) · PL (Published Language) · C/S (Customer-Supplier) · CF (Conformist). **C/S convention: the *Supplier* owns evolution; the *Consumer* adapts.**
 
-Owning: **Appointment** · **Authorization** · **Adjudication** · **Contestation** · **Evidence&Replay** · **Audit**. Substrate (F-PROC): **Voting** · **Election Lifecycle Governance**. Read Models: **Results** · **Legitimacy**. External: **Constitutional Trust-Anchor/Consent**. Invariant: **Anonymity**.
+## 1. Context types (explicit)
 
-## 2. Context map (relationships + DDD patterns)
+| Context | Type |
+|---------|------|
+| Adjudication · Evidence&Replay · Contestation | **Strategic Core** |
+| Voting · Election Lifecycle Governance · Authorization · Appointment | **Supporting** (mission-critical) |
+| Audit | **Generic / Observability** *(see §6 — likely not a business BC)* |
+| Results · Legitimacy | **Projection (Read Model)** |
+| Anonymity | **Constraint (invariant)** |
+| Constitutional Trust-Anchor / Consent | **External** |
 
-| Upstream (supplier) | → | Downstream (consumer) | Pattern | Notes |
-|---------------------|---|------------------------|---------|-------|
-| **Consent / Trust-Anchor** (external) | → | Appointment, Adjudication | **ACL** | external→internal; translate consent/will into certified model (only ACL needed is at the external edge) |
-| **Appointment** | → | Authorization | Customer-Supplier (PL: `Mandate`) | Authorization consumes Mandate VO |
-| **Authorization** | → | Voting | Conformist (read-only) | Voting checks capability; no write-back |
-| **Election Lifecycle Governance** | → | Voting | Conformist (read-only state) | Voting gated by `voting_active` |
-| **Voting** | → | **Evidence&Replay** | Published Language (vote/evidence schema), single-write | Voting writes the authoritative anonymous record |
-| **Voting** | → | **Results** (read model) | derived projection | reconstructable from Vote data (Projection Test) |
-| **Evidence&Replay** | → | Adjudication | Published Language (`EvidenceEnvelope`) | Adjudication consumes immutable evidence |
-| **Contestation** | → | Adjudication | Customer-Supplier (request: challenge) | standing (S-5) raises a case; Adjudication supplies the Determination |
-| **Adjudication** | → | **Legitimacy** (read model) | derived (single resolver) | `LegitimacyOutcome`; never persisted |
-| **Adjudication** | → | Election Lifecycle Governance | Customer-Supplier (binding Determination) | **closes the correction loop** (e.g. invalidate/re-run) |
-| **all contexts** | → | **Audit** | fire-and-forget, one-way | observability; no feedback (R29 invariant) |
+## 2. Context map (relationship · pattern · flow)
 
-**Anonymity (invariant, not a relationship):** constrains the `Voting → Evidence&Replay → Results` path — no stored/derivable voter↔vote linkage anywhere along it (ADQC Q7, gating).
+| Upstream | Downstream | Pattern | Flow | Notes |
+|----------|------------|---------|------|-------|
+| **Consent / Trust-Anchor** (external) | Appointment, Adjudication | **ACL** | [QRY] | translate external will into the certified model — the **only** external ACL |
+| **Appointment** (Supplier) | Authorization (Consumer) | **C/S** (PL: `Mandate`) | [QRY] | Authorization adapts to Mandate; Appointment owns Mandate evolution |
+| **Authorization** | Voting | **OHS** *(was Conformist — corrected)* | [QRY] | Voting **consults** "may this proceed?" — a **policy** dependency, **not** language conformity |
+| **Election Lifecycle Governance** | Voting | **OHS** + **PL** (state vocabulary) *(was Conformist — corrected)* | [QRY] | Voting **consults** `voting_active`; consults, does not conform |
+| **Voting** | Evidence & Replay | **PL** (single-write) | [EVT] `VoteAccepted → EvidenceRecorded` | anonymous authoritative record |
+| **Voting** | Results (read model) | derived projection | [EVT] `VoteAccepted →` tally projection | Projection Test (R25) |
+| **Evidence & Replay** (Supplier) | Adjudication (Consumer) | **PL** (`EvidenceEnvelope`) | [EVT] `EvidenceRecorded` | immutable published facts, not an API |
+| **Contestation** (Consumer) | Adjudication (Supplier) | **C/S** | [CMD] `ChallengeRaised →` | standing (S-5) raises a case; Adjudication supplies the Determination |
+| **Adjudication** | Legitimacy (read model) | derived (single resolver) | [EVT] `DeterminationIssued → LegitimacyEvaluated` | never persisted as authoritative |
+| **Adjudication** (Supplier) | Election Lifecycle Governance (Consumer) | **C/S** (binding) | [EVT] `DeterminationIssued → LifecycleTransitioned` | **closes the correction loop** |
+| **all contexts** | Audit | observer | [EVT] fire-and-forget | one-way; no feedback |
 
-## 3. Context-map diagram
+## 3. Context-map diagram (with flow types)
 
 ```
-   Consent / Trust-Anchor (EXTERNAL) ──ACL──► Appointment ──Mandate(PL)──► Authorization
-                                   └──ACL──► Adjudication                      │ (read-only)
-                                                  ▲                            ▼
-   Election Lifecycle Governance ──state(CF)────► │              Voting ◄──────┘
-        ▲   ▲                                     │                 │ writes (PL, single-write, ANONYMITY)
-        │   └──── binding Determination (C/S) ────┘                 ▼
-        │                                              Evidence & Replay (System of Record) ──PL──► Adjudication
-   correction loop closes here                                      │                                 │
-                                                                     │                                 ▼
-   Contestation ──challenge (C/S, S-5 standing)──────────────────────────────────────────► Adjudication ──derive──► Legitimacy (RM)
-                                                                     │
-                              Voting ──projection──► Results (RM)    └── all ──fire-and-forget──► Audit
+ legend:  ──►[CMD]   ⇠⇢[QRY]   ┄┄►[EVT]
+
+ Consent/Trust-Anchor(EXT) ⇠⇢ACL⇢ Appointment ⇠⇢C/S(Mandate)⇢ Authorization
+                          ⇠⇢ACL⇢ Adjudication                     ⇡ [QRY] OHS
+                                     ▲                              Voting
+ Election Lifecycle Gov ⇠⇢OHS/PL[QRY]⇢ Voting ◄────────────────────┘
+        ▲                                │ ┄[EVT VoteAccepted]┄►  Evidence&Replay ┄[EVT EvidenceRecorded]┄► Adjudication
+        │ ┄[EVT DeterminationIssued→LifecycleTransitioned]┄────────────────────────────────────────────────────┘ │
+        │  (correction loop closes)                                                                               │ ┄[EVT]┄► Legitimacy (RM)
+ Contestation ──[CMD ChallengeRaised]──► Adjudication                          Voting ┄[EVT]┄► Results (RM)
+ all contexts ┄[EVT]┄► Audit (observer, fire-and-forget)
 ```
 
-## 4. Domain distillation (Core / Supporting / Generic)
+## 4. Domain distillation (Strategic Core / Supporting / Generic)
 
 | Class | Contexts | Rationale |
 |-------|----------|-----------|
-| **Core Domain** | **Adjudication · Contestation · Evidence&Replay** (+ Anonymity invariant) | the **closed correction loop** + immutable evidence = the trustworthiness *differentiator* (the whole program's reason to exist) |
-| **Supporting** | Voting · Election Lifecycle Governance · Authorization · Appointment | necessary, valuable, but not the differentiator (standard election machinery) |
-| **Generic** | Audit (observability) · Results (reporting read model) · device-Trust (PKI, GI-2) | commodity capabilities |
+| **Strategic Core Domain** *(was "Core")* | Adjudication · Contestation · Evidence&Replay (+ Anonymity invariant) | the **closed correction loop** + immutable evidence = the trustworthiness *differentiator* |
+| **Supporting** | Voting · Lifecycle · Authorization · Appointment | **mission-critical** but not the differentiator |
+| **Generic** | Audit · device-Trust | commodity |
+| **Projection** | Results · Legitimacy | derived read models |
 
-**Finding (CM-1):** the **Core Domain is the correction loop** (Adjudication ← Evidence ← Contestation), not Voting. This matches the certified meta-architecture (legitimacy emerges from the closed loop) and tells implementation where to invest the most design care.
+**CM-1 (refined):** the **Strategic Core is the correction loop**, not Voting — Voting remains **mission-critical Supporting**. ("Strategic Core" used deliberately; "Core" in Evans's sense is reserved.)
 
-## 5. ADQC scorecard (the map as a decision)
+## 5. Context Responsibilities (Owns / Never Owns)
+
+| Context | Owns (authoritative) | Never owns |
+|---------|----------------------|------------|
+| Evidence & Replay | Evidence · EvidenceEnvelope · ReplaySession · Certification | Determination · vote content · Legitimacy |
+| Adjudication | Determination · Finality | Evidence · votes · Legitimacy (derived) · Mandate |
+| Contestation | Challenge · Standing | Determination (routes to Adjudication) |
+| Appointment | Mandate · institutional independence | capability decisions · Determination |
+| Authorization | capability resolution (decisional indep.) | Mandate (consumes) · Determination |
+| Voting | Vote/Ballot (anonymous) | voter↔vote linkage · Results (derived) · eligibility *definition* |
+| Election Lifecycle Gov | election state · transitions | votes · Determination |
+| Audit | observation record | any business decision / authoritative truth |
+| Results / Legitimacy | *(nothing authoritative — projections)* | any system-of-record |
+
+## 6. ADQC v1.1 scorecard (the map as a decision)
 
 | Criterion | Verdict | Note |
 |-----------|---------|------|
-| Q1 Semantic fidelity | **Pass** | all relationships use Canonical Vocabulary |
-| Q2 Ownership consistency | **Pass** | single-write per system-of-record (Voting→Evidence; Adjudication→Determination) |
-| Q3 Autonomy | **Pass** | dependencies are read-only/async; only the correction-loop edge is C/S |
-| Q4 Cohesion | **Pass** | one decision-ownership per context (R29/R45 confirmed) |
-| Q5 Coupling | **Pass (strong)** | mostly Conformist + read-only + fire-and-forget; **ACL only at the external edge** — the Canonical Vocabulary removes the need for internal ACLs |
-| Q6 Traceability | **Pass** | built against Release v1.0 / Landscape v1.0 (declared above) |
-| Q7 Anonymity (gating) | **Pass** | Voting→Evidence→Results path carries the invariant; no linkage edge exists |
-| Q8 Evolutionary stability | **Pass w/ note** | a Minor release wouldn't reshape the map; **GI-1 Eligibility = Breaking** would add an upstream context to Voting/Authorization |
-| Q9 Certification compliance (gating) | **Pass** | only admitted concepts mapped; Eligibility/Identity-Trust deferred (not mapped); Legitimacy/Results as Read Models; no Forbidden Transformation |
+| Q1 Domain Semantic Integrity | PASS | Canonical Vocabulary throughout |
+| Q2 Ownership Integrity | PASS | single-write per SoR; many consumers |
+| Q3 Autonomy | PASS | dependencies are [QRY]/[EVT]; only correction-loop edge is C/S |
+| Q4 Cohesion (business) | PASS | one cohesive responsibility per context |
+| Q5 Coupling (incl. temporal) | PASS | event-driven + query — **no temporal coupling** on the write path |
+| Q10 Business Invariant Integrity | **PASS** | correction loop is **event-driven** → **no cross-context transaction** for any invariant |
+| Q11 Context Boundary Clarity | **MINOR CONCERN** | Appointment↔Authorization and Lifecycle↔Voting boundaries are candidate-merge → Round 49 |
+| Q6 Traceability | PASS | built against Release v1.0 / Landscape v1.0 |
+| Q7 Anonymity (gating) | PASS | Voting→Evidence→Results path carries no reconstruction edge |
+| Q8 Evolutionary Stability | PASS w/ note | GI-1 Eligibility admission = Breaking (adds upstream context) |
+| Q9 Certification Compliance (gating) | PASS | only admitted concepts; no Forbidden Transformation |
 
-**No gating failure.** The ownership seams **do** translate into a coherent, low-coupling context map — the key result of Round 48.
+**No gating FAIL.** One MINOR CONCERN (Q11) → recorded for Round 49 boundary confirmation (not an ADR-triggering FAIL).
 
-**Finding (CM-2):** the Canonical Vocabulary (one shared ubiquitous language) **eliminates most internal Anti-Corruption Layers** — ACL is needed **only** at the external boundary (Consent/Trust-Anchor). That is a direct architectural dividend of the Phase-I certification discipline.
+## 7. Rejected context-mapping patterns (why not)
 
-## 6. Carried items / next
+| Pattern | Decision | Reason |
+|---------|----------|--------|
+| **Conformist** (internal) | **Rejected** for Authorization→Voting & Lifecycle→Voting | those are **consult (OHS/QRY)** dependencies; Voting does not adopt another team's model |
+| **Shared Kernel** | **Rejected** | would breach context integrity for high-assurance core; the Canonical Vocabulary is a **Published Language**, not shared mutable model/code |
+| **Separate Ways** | **Rejected** for connected contexts | the correction loop requires integration; only **Deferred/Blocked** contexts (Eligibility) sit apart until admitted |
+| **Additional internal ACLs** | **Not currently needed** | Canonical Vocabulary removes most *translation* need — **but may be introduced later** for versioning / lifecycle / bounded evolution (see CM-2) |
 
-- GI-1 (Eligibility) would, if admitted, insert an **Eligibility** context upstream of Voting/Authorization → **Breaking** landscape release (recorded, not actioned).
-- GI-2 (device-Trust) sits as a **Generic** supporting concern feeding Voting/Authorization as evidence — distinct from the external Constitutional Trust-Anchor.
+## 8. CM-2 (softened)
 
-**Next: Round 49 Bounded Context Discovery** — define each Core/Supporting context's internal boundary (aggregates candidates), starting with the **Core Domain correction loop** (Adjudication/Evidence/Contestation), scored against ADQC. Then LIT-3 (validate the map vs Strategic DDD literature), then prototype one Core context.
+**The Canonical Vocabulary *significantly reduces the need for* internal Anti-Corruption Layers** — *not* eliminates. ACL is currently needed only at the external Consent/Trust-Anchor boundary; internal ACLs **may still emerge** from **versioning, lifecycle independence, or bounded evolution** (not vocabulary translation). A dividend of Phase-I certification, stated as an engineering claim, not an absolute.
+
+## 9. Provisional status & next
+
+**All relationships are provisional until Round 49 Bounded Context Confirmation** (ADQC v1.1 + boundary-evidence criteria + confidence levels) confirms or **merges** candidate boundaries. The purpose of Round 49 is to *discover* boundaries from cohesion/lifecycle/transactional-consistency/autonomy — **not** to preserve this candidate decomposition. Specifically challenge: **Appointment↔Authorization**, **Lifecycle↔Voting**, and **Audit** (likely an Observability/Platform context, not a business BC). No code until the strategic model stabilizes.
 
 ```
-47-02 Landscape ✓ → 48-00 ADQC ✓ → 48-01 Context Map (this) ✓
-   → 49 Bounded Contexts (Core first) → LIT-3 → prototype one Core context → ...
+48-00 ADQC v1.1 ✓ → 48-01 Context Map v1.1 (this) ✓
+   → Round 49 Bounded Context Confirmation (confirm/merge/reject candidates; confidence-graded)
+   → 50 Aggregates → tactical → code
 ```
 
 ---
 
-*Round 48-01 — Strategic Context Mapping — ISSUED (built against Release v1.0 / Landscape v1.0).*
-*8 contexts + 2 read models + external; patterns mostly Conformist/read-only/fire-and-forget; ACL only at the external Consent edge (CM-2). Core Domain = the correction loop Adjudication←Evidence←Contestation (CM-1), not Voting. ADQC: no gating failure (Q7 Anonymity + Q9 compliance Pass). Next: Round 49 Bounded Contexts (Core first).*
+*Round 48-01 — Strategic Context Mapping v1.1 — ISSUED (provisional; built against Release v1.0 / Landscape v1.0).*
+*Corrected: Authorization/Lifecycle→Voting = OHS consult (not Conformist). Added: domain events ([CMD]/[QRY]/[EVT] legend), Context Responsibilities (Owns/Never-Owns), Context Type, Rejected Patterns. Softened CM-2 (reduces≠eliminates ACLs). Strategic Core = correction loop (Voting = mission-critical Supporting). ADQC v1.1: no gating FAIL; Q11 MINOR CONCERN (Appointment/Authorization, Lifecycle/Voting merges → Round 49). Relationships PROVISIONAL until Round 49.*
