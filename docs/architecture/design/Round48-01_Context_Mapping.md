@@ -5,6 +5,7 @@
 **Date:** 2026-06-26
 
 > **Scope.** Map the **integration relationships** (upstream/downstream + DDD patterns) among the 8 contexts + 2 read models + external boundary + the Anonymity invariant. This is the test of whether the ownership seams translate into coherent context relationships (ADQC Q3/Q5).
+> **⚠️ Discovery-discipline note (added per `Round47-OP`):** these contexts are **CANDIDATE** bounded contexts. *Semantic truth ≠ software structure* — whether each seam is truly a separate bounded context (vs subdomain/aggregate/shared) still requires confirmation by cohesion · lifecycle · transactional consistency · integration needs. The map below is a candidate; boundary confirmation is owed (esp. for the Supporting contexts).
 
 ## 1. The contexts (from Landscape v1.0)
 
