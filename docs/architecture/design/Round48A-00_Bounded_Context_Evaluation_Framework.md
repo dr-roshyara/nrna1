@@ -1,83 +1,98 @@
-# Round 48A — Bounded Context Evaluation Framework
+# Round 48A — Bounded Context Evaluation Framework (v1.1)
 
 **Program:** NRNA DDD Trustworthiness Research Program · **Phase:** Strategic DDD (Phase II) · **Under `Round47-OP`**
-**Status:** 🧪 EVALUATION FRAMEWORK (instrument) — defines the falsification-based test for whether a candidate seam is an independent bounded context. **Round 49 *applies* this framework; this round *defines* it.**
-**Date:** 2026-06-26 · **Built against:** Landscape v1.0
+**Status:** 🧪 EVALUATION FRAMEWORK (instrument; v1.1). Defines the falsification test for whether a candidate seam is an independent bounded context. **Round 49 *applies* it.**
+**Date:** 2026-06-26 · **Built against:** Landscape v1.0 · *(v1.0→v1.1: weighted tests; reproducible confidence; semantic-vs-software ownership; rejection record; discovery≠optimization; Boundary Decision Register.)*
 
-> **Falsification stance (the core methodological point).** A candidate is **not** "confirmed." Its **null hypothesis is: *this candidate is NOT an independent bounded context.*** The candidate must **earn its existence** by surviving explicit rejection/merge tests. Process: **Candidate → Challenge → Evidence → Decision** (science, not confirmation bias). Round 49 is renamed accordingly: **Bounded Context *Evaluation*** (not "Confirmation").
-> **Two instruments, not one.** **ADQC** (`Round48-00`) measures **decision quality** ("is this a good design?"). **This framework** measures **boundary existence** ("is this a BC at all?"). Both are required; neither substitutes for the other.
+> **Falsification stance.** A candidate's **null hypothesis is: *it is NOT an independent bounded context.*** It must **earn** existence by surviving the tests. Process: Candidate → Challenge → Evidence → Decision.
+> **Two instruments.** This framework measures **boundary existence**; **ADQC** (`Round48-00`) measures **decision quality**. First "does it exist?", then "is it good?".
+> **Discovery ≠ optimization (guard).** **Round 49 *discovers* boundaries** (confirm/merge/reject from evidence). **Round 50 *optimizes/designs* them** (aggregates). Do **not** redesign or optimize during Round 49.
 
-## 1. The nine boundary tests (rejection protocol)
+## ⭐ Principle — semantic ownership ≠ software ownership (novel formulation)
 
-Each candidate is run against all nine. The **outcome arrow** is the disposition if the answer is the failing one.
+**Semantic ownership never changes** (it is certified, frozen). **Software ownership can.** Example: *Evidence* is the **semantic owner** of evidentiary truth — but in software that may live as an **Evidence BC**, a **Replay capability over it**, or a **shared aggregate**. The semantic owner remains *Evidence* regardless. Therefore:
 
+> **A boundary rejection rejects only the *software* boundary — never the certified concept** (SD-6). A `Merge`/`Capability` verdict relocates *software* responsibility; the governance concept is untouched.
+
+*(This is one of the genuinely novel aspects of the methodology — it dissolves the common confusion of semantic truth with software structure.)*
+
+## 1. The nine boundary tests — WEIGHTED
+
+Tests are **not equal**. A candidate can pass many weak tests yet fail a decisive one.
+
+### Primary (decisive — failing any ⇒ likely *not a BC* / Merge, regardless of other passes)
 | # | Test | Failing answer → outcome |
 |---|------|--------------------------|
-| **T1** | Does it **own decisions**? | No → **Reject** (not a domain context) |
-| **T2** | Does it **own authoritative truth** (a system-of-record)? | No → **Probably not a BC** (read model / capability) |
-| **T3** | Can it **evolve independently**? | No → **Merge** |
-| **T4** | **Separate lifecycle**? | No → **Merge** |
-| **T5** | **Separate transactional consistency** (own invariants in one txn)? | No → **Merge** |
-| **T6** | **Separate ubiquitous language**? | No → **Merge** |
-| **T7** | **Separate business capability**? | No → **Reject** |
-| **T8** | Would **another BC become simpler if this were absorbed**? | Yes → **Merge** |
-| **T9** | Does **implementation evidence support independence**? | No → **Remain Candidate (Deferred)** |
+| **T1** | Owns **business decisions**? | No → **Reject** |
+| **T2** | Owns **authoritative truth** (system-of-record)? | No → **not a BC** (read model / capability) |
+| **T5** | **Separate transactional consistency / autonomy** (holds its invariants in one txn, no sync dependence)? | No → **Merge** |
 
-*A candidate that passes T1, T2, T7 cleanly and is not pulled into a merge by T3–T6/T8 is a strong BC; failures route to the verdict taxonomy below.*
+### Secondary (strong, not decisive)
+| # | Test | Failing → |
+|---|------|-----------|
+| **T4** | Separate **lifecycle**? | Merge |
+| **T6** | Separate **ubiquitous language**? | Merge |
+| **T9** | **Implementation evidence** supports independence? | Remain Candidate / Deferred |
 
-## 2. Verdict taxonomy (replaces the blunt "Rejected")
+### Supporting (corroborating)
+| # | Test | Failing → |
+|---|------|-----------|
+| **T3** | Can **evolve independently**? | Merge |
+| **T7** | Separate **business capability**? | Reject |
+| **T8** | Would **another BC simplify if this were absorbed**? (Yes →) | Merge |
 
-| Verdict | Meaning |
-|---------|---------|
-| **Confirmed BC** | strong evidence supports an independent bounded context |
-| **Merge** | better represented *within* another bounded context |
-| **Supporting Subdomain** | not a BC, but a meaningful software module |
-| **Generic Subdomain** | commodity capability |
-| **Application Capability** | better placed *above* the domain layer |
-| **Infrastructure Capability** | not domain logic |
-| **Deferred** | insufficient evidence (remain Candidate) |
+## 2. Verdict taxonomy
+**Confirmed BC · Merge · Supporting Subdomain · Generic Subdomain · Application Capability · Infrastructure Capability · Deferred.** *(Merge/Subdomain/Capability reject only the software boundary; the governance concept is retained.)*
 
-*This specializes `Round47-OP`'s general confidence levels for the BC case — crucially adding **Merge** and the **Subdomain/Capability** outcomes, which "Rejected" was too blunt to express. A `Merge`/`Subdomain`/`Capability` verdict **rejects only the software boundary** — the certified governance concept remains valid (SD-6 / `Round47-OP`).*
+## 3. Reproducible confidence (state WHY, not just the label)
+| Confidence | Rule |
+|-----------|------|
+| **High** | **all 3 Primary pass** + ≥2 Secondary + **no contradiction** |
+| **Medium** | all Primary pass but Secondary mixed, **or** 1 Primary uncertain |
+| **Low** | a **Primary fails**, or little/no evidence |
 
-## 3. Confidence scoring
+*Every confidence label cites the counts, e.g. "High — T1/T2/T5 pass, T4/T6 pass, T9 partial, no contradiction."*
 
-| Confidence | Basis |
-|-----------|-------|
-| **High** | passes T1/T2/T7 + ≥3 of T3–T6 cleanly + implementation evidence (T9) |
-| **Medium** | passes T1/T2/T7 but ≥1 merge-pull (T3–T6/T8) unresolved, or weak T9 |
-| **Low** | fails T1/T2/T7, or strong merge-pull, or no implementation evidence |
+## 4. Evidence requirements (every verdict)
+Evidence table (classes → capability) · T1–T9 results (weighted) · ADQC cross-check (Q2/Q10/Q11) · confidence with counts. **No verdict on "related classes exist" alone (capability ≠ context).**
 
-## 4. Evidence requirements (every verdict must cite)
+## 5. Rejection / Merge Record (mandatory when a candidate is not Confirmed)
+```
+Candidate:           <name>
+Verdict:             Merge | Supporting Subdomain | Application/Infra Capability | Rejected | Deferred
+Failed test(s):      <e.g. T1 (no independent decisions), T5 (no transactional boundary)>
+Reason:              <one line>
+Software disposition: merged into <BC> | becomes capability over <BC> | infra/platform
+Semantic concept:    RETAINED (certified) — only the software boundary changes
+Confidence:          <High/Med/Low + counts>
+```
 
-1. **Evidence table** — observed classes → the capability they imply (the `Round49-01` style).
-2. **Test results** — T1–T9 with the failing-answer dispositions.
-3. **ADQC cross-check** — relevant ADQC v1.1 criteria (esp. Q2 ownership, Q10 invariant-integrity, Q11 boundary-clarity).
-4. **Confidence** + the one-line reason.
+## 6. Boundary Confidence Matrix (the Round-49 roadmap — what to investigate)
+| Candidate | Boundary confidence | Round-49 hypothesis to falsify |
+|-----------|---------------------|-------------------------------|
+| Adjudication | **High** | "not a BC" |
+| Evidence | **Medium** | "not a BC / Replay is separate" |
+| **Replay (Capability)** | **Low** | **"Replay is a *capability* over Evidence / app / infra — not a BC"** *(treated as Capability until proven otherwise)* |
+| Contestation | **High** (gap real) | "belongs inside Adjudication" |
+| Authorization | **Medium** | "merge with Appointment" |
+| **Appointment** | **Low** | **"not a BC — merge into Authorization"** |
+| **Election Lifecycle** | **Medium** | **"merge into Voting"** |
+| Voting | Medium-High | "engine ≠ BC" |
+| **Audit** | **Low** | **"Infrastructure/Platform, not a domain BC"** |
 
-*No verdict without evidence. A verdict asserting "Confirmed BC" with only "related classes exist" is invalid (capability ≠ context).*
+## 7. Boundary Decision Register (BDR) — the authoritative OUTPUT of Round 49
+Round 49 produces a BDR (an ADR-analogue for boundaries):
+| Candidate | Decision | Confidence | Evidence | Reason |
+|-----------|----------|-----------|----------|--------|
+| *(e.g.)* Adjudication | Confirmed BC | High | T1–T9 | owns decisions + autonomy + lifecycle |
+| *(e.g.)* Replay | Deferred / Capability | Low | T1–T9 | insufficient independence; likely capability |
+| *(e.g.)* Appointment | Merged → Authorization | Medium | T1–T9 | no independent decision ownership |
+The BDR is the **authoritative software-boundary record** consumed by Aggregate Design (Round 50). *Certified governance concepts are never altered by it.*
 
-## 5. Boundary Confidence Matrix (initial — to be filled/falsified in Round 49)
-
-Prior (pre-evaluation) expectations; Round 49 must **try to falsify** each:
-
-| Candidate | Prior confidence | Hypothesis to falsify in Round 49 |
-|-----------|------------------|-----------------------------------|
-| Adjudication | High | "not a BC" — strong ownership + autonomy expected to survive |
-| Evidence | High | "not a BC" — SoR + immutability expected to survive |
-| Replay | **Medium** | **"Replay belongs inside Evidence / is application/infra"** — investigate without assuming |
-| Contestation | High (gap) | "the gap is not real / belongs in Adjudication" |
-| **Appointment** | **Low** | **"Appointment is NOT a BC — merge into Authorization"** (challenge hardest) |
-| Authorization | Medium | "merge with Appointment" |
-| **Election Lifecycle** | **Medium** | **"merge into Voting"** (challenge) |
-| Voting | High | "not a BC" — expected to survive |
-| **Audit** | **Low** | **"Audit is Platform/Observability, NOT a domain BC"** (actively try to reject) |
-
-**The three to challenge hardest:** Appointment (likely Merge→Authorization) · Election Lifecycle (possible Merge→Voting) · Audit (likely Infrastructure/Platform, not a BC). **Replay** is the genuine unknown (domain / application / infrastructure).
-
-## 6. Self-review (framework completeness)
-☑ Falsification stance (null = not-a-BC) · ☑ existence ≠ quality (separate from ADQC) · ☑ Merge + Subdomain + Capability verdicts available · ☑ evidence required for every verdict · ☑ Merge/Reject of a software boundary ≠ rejection of the governance concept (SD-6) · ☑ no code; no governance change.
+## 8. Self-review
+☑ Falsification (null = not-a-BC) · ☑ weighted tests (Primary decisive) · ☑ existence ≠ quality (vs ADQC) · ☑ semantic ≠ software ownership · ☑ Merge/Subdomain/Capability verdicts · ☑ rejection record mandatory · ☑ discovery ≠ optimization · ☑ BDR output · ☑ no code; no governance change.
 
 ---
 
-*Round 48A — Bounded Context Evaluation Framework — ISSUED (instrument; applied in Round 49).*
-*Falsification: null hypothesis = "NOT an independent BC"; candidate must survive 9 boundary tests (T1–T9). Verdict taxonomy adds Merge / Supporting-Subdomain / Generic-Subdomain / Application-Capability / Infrastructure-Capability / Deferred (boundary-rejection ≠ governance-concept-rejection). Confidence High/Med/Low; evidence required. Measures EXISTENCE (vs ADQC = quality). Challenge hardest: Appointment(merge?) · Lifecycle(merge?) · Audit(infra?); Replay = genuine unknown. Round 49 = application.*
+*Round 48A — Bounded Context Evaluation Framework v1.1 — ISSUED (instrument; applied in Round 49).*
+*Null = "NOT a BC". 9 tests WEIGHTED (Primary T1/T2/T5 decisive · Secondary T4/T6/T9 · Supporting T3/T7/T8). Verdicts incl. Merge/Subdomain/Capability/Deferred (boundary-rejection ≠ concept-rejection — semantic ownership ≠ software ownership). Reproducible confidence (counts). Rejection Record mandatory. Discovery ≠ optimization (R49 discovers, R50 optimizes). Output = Boundary Decision Register. Challenge hardest: Appointment(merge?)/Lifecycle(merge?)/Audit(infra?); Replay = Capability-until-proven. EXISTENCE instrument (vs ADQC=quality).*
