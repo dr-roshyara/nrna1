@@ -1,47 +1,59 @@
-# Round 49-03 — AI-1 Code-Home Consolidation Decision
+# Round 49-03 — AI-1 Module Authority Decision (Migration Decision) v1.1
 
-**Program:** NRNA DDD Trustworthiness Research Program · **Phase II** · **Under `Round47-OP` operating protocol + SD-1..7**
-**Status:** 🧭 ARCHITECTURE DECISION (plan/recommendation — **no file moves executed**; migration awaits authorization)
-**Date:** 2026-06-26 · **Built against:** Package 1.0.0 / Vocabulary 1.0.0 / Ontology 1.0.0 / Landscape v1.0
+**Program:** NRNA DDD Trustworthiness Research Program · **Phase II** · **Under `Round47-OP` + SD-1..7**
+**Status:** 🧭 ARCHITECTURE DECISION (the **Migration Decision** — first of Decision→Plan→Execution→Verification). **No file moves**; migration gated on the **BDR** (Round 49).
+**Date:** 2026-06-26 · **Built against:** Package 1.0.0 / Vocabulary 1.0.0 / Ontology 1.0.0 / Landscape v1.0 · *(v1.0→v1.1: decoupled the principle from `app/Contexts`; gated on confirmed BCs + BDR; added migration principles, exit criteria, fitness tests; deferred the application-layer question.)*
 
-*(Produced in the protocol's 14-point output format.)*
+*(14-point output format.)*
 
-**1. Purpose** — Resolve AI-1 (gap analysis `Round49-02`, Drift): Core/governance concepts are implemented across **three+ homes** — `app/Domain/Election`, `app/Application/Election`, `app/Contexts/{Governance,Membership,Committee}`. Decide the **authoritative code home** so the Contestation prototype lands correctly and conformance can be claimed against *one* codebase.
+**1. Purpose** — Resolve AI-1 (multi-home drift: `app/Domain/Election` + `app/Application/Election` + `app/Contexts/{Governance,Membership,Committee}`). Establish the **module-authority principle** and a **safe migration approach** — *without* deciding which candidates are real contexts (that is the BDR's job).
 
-**2. Inputs** — `Round49-02` (reflexion findings), Strategic Domain Landscape v1.0, SD-7 (traceability), Knowledge Release Governance (Traceability Version Matrix). Existing code = empirical evidence (not authoritative).
+**2. Inputs** — `Round49-02` v1.2 (conformance); `Round48A` v1.1 (BC evaluation framework); Landscape v1.0; SD-7. Existing code = empirical evidence.
 
-**3. Certified concepts consumed** — none redefined. This is a *code-organization* decision realizing the certified **contexts** (Adjudication, Evidence&Replay, Contestation, Appointment, Authorization, Voting, Lifecycle); it consumes the landscape's context list only.
+**3. Certified concepts consumed** — none redefined; this is code organization realizing **confirmed** contexts.
 
-**4. Architecture decision** — **Adopt `app/Contexts/<Context>/{Domain,Application,Infrastructure}` as the single authoritative home for all certified-landscape contexts.** `app/Domain/Election` + `app/Application/Election` become **legacy (deprecated-in-place)**, migrated incrementally; no big-bang move. Each certified context = exactly one `app/Contexts/*` module (SD-7 one-home rule). The Contestation prototype is created **greenfield** at `app/Contexts/Contestation/`.
+**4. Architecture decision (principle — module-agnostic)**
+> **Each *confirmed* bounded context shall have exactly one *authoritative implementation module*.**
+**Current realization:** `app/Contexts/<Context>/{Domain,Application,Infrastructure}`. *The principle is the architecture; the folder is merely its present realization* — if the project later adopts `Modules/`, `src/`, or `packages/`, the principle is unchanged. (Renames SD-7's "one-home" → **one-confirmed-BC → one-authoritative-module**.)
 
-**5. Decision rationale (WHY, certified-evidence-based)** — (a) `app/Contexts/*` is the only home whose structure *matches the certified landscape's bounded-context decomposition* (Governance, Membership/Committee already host the richest Core: arbitration+replay+legitimacy). (b) SD-7 requires per-artifact traceability to one context; multiple homes make "the code" ambiguous (Q8 concern in `Round49-01`). (c) The landscape (not the folders) drives the home: one certified context → one module. Not "because it seems reasonable" — because SD-7 + the landscape demand a single, context-aligned home.
+**5. Decision rationale (WHY)** — SD-7 traceability requires each confirmed BC to map to exactly one module; multi-home makes "the code" ambiguous (`Round49-01` Q-concern). The landscape (not the folders) drives module authority. The current `app/Contexts/*` realization is chosen because it is already the most context-aligned home — but the *commitment* is to the principle, not the path.
 
-**6. Traceability** — Landscape v1.0 (8 contexts) → each maps to `app/Contexts/<Context>`; `Round49-02` Drift finding → this consolidation; SD-7 → one-home rule; KRG Traceability Matrix → every module declares Package/Vocab/Ontology/Landscape version.
+**6. Traceability (the chain this enables)**
+`Certified Concept → Candidate BC → Confirmed BC (BDR) → Authoritative Module → Namespace → Aggregate → Entity → Table → Tests.`
+AI-1 **implements the Boundary Decision Register**: a module is created/consolidated **only** for a BC the BDR marks **Confirmed** (or Supporting Subdomain). Merged/Capability/Rejected candidates get **no standalone module**.
 
-**7. Alternatives considered** — (A) **Keep `app/Domain/Election` authoritative**, migrate `app/Contexts/*` into it — *rejected:* `app/Domain/Election` is a single bag, not context-aligned; contradicts the landscape. (B) **Hybrid / leave both** — *rejected:* perpetuates AI-1 ambiguity; violates SD-7 single-home. (C) **`app/Contexts/*` authoritative** — *chosen.* (D) Fresh top-level (`app/Governance/*`) — *rejected:* needless churn; `app/Contexts/*` already exists and is populated.
+**7. Alternatives considered** — (A) keep `app/Domain/Election` authoritative — *rejected:* not context-aligned. (B) hybrid/leave both — *rejected:* perpetuates AI-1. (C) **principle + current realization `app/Contexts/*`** — *chosen.* (D) hardcode `app/Contexts` as *the* architecture — *rejected:* couples architecture to a folder (this review's correction).
 
-**8. Constraint verification (5 carried)** — (1) federate Independence by facet: unaffected (organization only). (2) Anonymity supreme: preserved — Voting/Evidence modules keep the no-`user_id`/hashed-id invariant; migration must not introduce linkage (verify per move). (3) one Legitimacy projection: preserved (`LegitimacyOutcome` single resolver stays single). (4) software doesn't own enforcement: unaffected. (5) **design-from-ownership, no retrofit:** *this decision IS the anti-retrofit step* — it reorganizes code to the ownership seams rather than bending the model to the folders.
+**8. Constraint verification (5 carried)** — (1) federate Independence: unaffected. (2) Anonymity: preserved (migration must not introduce linkage — fitness test §13). (3) one Legitimacy projection: preserved. (4) no software enforcement ownership: unaffected. (5) **design-from-ownership, no retrofit:** this *is* the anti-retrofit step.
 
-**9. Forbidden-Transformation verification** — none introduced. No concept persisted/aggregated that must not be (Legitimacy stays derived; Trust-Anchor stays external; no bare "Independence"; no Blocked concept created). Pure relocation.
+**9. Forbidden-Transformation verification** — none introduced (pure relocation; no concept persisted/aggregated that must not be).
 
-**10. Risks** — (R1) migration regression risk in live election code → mitigate with **strangler/incremental** moves + tests, never big-bang. (R2) anonymity regression during a move (R-grade verify each step). (R3) effort/coordination cost. (R4) two homes coexist *during* migration → temporary, tracked. (R5) hidden coupling between `app/Domain/Election` and controllers — must map before moving.
+**10. Risks** — regression in live election code (→ strangler + tests); anonymity regression during a move; hidden coupling Domain↔controllers; migrating a candidate that the BDR later merges (→ **migrate only Confirmed BCs**).
 
-**11. Open questions** — Is `app/Application/Election` (application services) folded under each context's `Application/` or kept as a cross-context application layer? Does `Membership` vs `Governance` vs a new `Adjudication` context own the arbitration kernel currently in `Membership/Committee/Constitutional`? (boundary-confirmation, per DDD Discovery Discipline — candidate, not settled.)
+**11. Open questions** — *(deferred, not left open-ended):* whether `Application/` is per-context or cross-context → **Deferred to Round 50 (Tactical DDD)**. Which candidates get modules → **the BDR decides** (Round 49).
 
-**12. Governance implications** — **None.** AI-1 is **software-side technical debt / refactoring**, not governance (SD-6): no ontology/vocabulary/admissibility change. No Governance Change Request needed. (Confirms `Round49-02` classification.)
+**12. Governance implications** — **none** (software-side debt; SD-6). No Governance Change Request.
 
-**13. Implementation implications** — Migration is **incremental (strangler)**: (i) new work (Contestation) goes to `app/Contexts/*` now; (ii) Core contexts (Adjudication, Evidence&Replay) consolidated next, behind tests; (iii) Supporting/Generic later; (iv) `app/Domain/Election` shrinks to empty, then removed. **No file moves in this artifact** — execution requires explicit authorization (live code).
+**13. Implementation implications — sequence, principles, exit, fitness**
 
-**14. References** — `Round47-00` SD Constitution; `Round47-OP` protocol; `Round47-02` Landscape v1.0; `Round49-01`/`Round49-02`; KRG `Round46-KRG` (Traceability Matrix).
+*Sequence (binding):* `Round 49 Evaluation → BDR → Migration Plan → Migration Execution → Migration Verification → Architecture Fitness Tests`. **Never migrate before the BDR.**
+
+*Migration principles (the migration constitution):* (1) no behavior changes · (2) no semantic changes · (3) no public-API changes · (4) tests before moves · (5) incremental (strangler) · (6) rollback possible · (7) one context at a time.
+
+*Exit criteria — migration complete **iff**:* every **Confirmed** BC has exactly one authoritative module **and** the legacy implementation is removed.
+
+*Architecture fitness tests (prevent re-drift):* enforce in CI (Deptrac / PHPStan / ArchUnit-style) — e.g. **"exactly one module may own Evidence,"** "no `app/Domain/Election2`," "no cross-context write to another context's system-of-record," "no voter↔vote linkage." Without these, the architecture degrades again.
+
+**14. References** — `Round47-00`/`47-OP`; `Round47-02` Landscape; `Round48A` v1.1; `Round49-01`/`49-02` v1.2; KRG `Round46-KRG`.
 
 ---
 
 ## Self-review (protocol gate)
-☑ No governance concepts invented · ☑ Only certified vocabulary · ☑ No Forbidden Transformation · ☑ Ownership respected (one context→one home) · ☑ Admissibility respected · ☑ Traceability complete · ☑ SD Constitution obeyed · ☑ KRG respected. **Pass.**
+☑ principle decoupled from folder · ☑ gated on Confirmed BCs + BDR (not candidates) · ☑ migrate only after BDR · ☑ migration principles + exit criteria + fitness tests · ☑ application-layer deferred (not open) · ☑ no governance change · ☑ no code moved. **Pass.**
 
-**Decision:** `app/Contexts/*` authoritative; incremental strangler migration; Contestation prototype lands at `app/Contexts/Contestation/`. **Awaiting authorization to execute any code move.**
+**Decision:** *one confirmed BC → one authoritative module* (current realization `app/Contexts/*`); strangler migration **after** the BDR; principles + exit criteria + fitness tests defined. **No code moved; awaiting BDR then authorization.**
 
 ---
 
-*Round 49-03 — AI-1 Code-Home Consolidation Decision — ISSUED (plan; no code moved).*
-*Authoritative home = `app/Contexts/<Context>/{Domain,Application,Infrastructure}` (SD-7 one-home; matches Landscape v1.0). `app/Domain/Election`+`app/Application/Election` = legacy, strangler-migrated. Software-side debt — NO governance change. Risks: regression/anonymity (mitigate incremental+tests). Next: prototype Contestation greenfield in app/Contexts (gated on authorization).*
+*Round 49-03 — AI-1 Module Authority (Migration Decision) v1.1 — ISSUED (plan; no code moved).*
+*PRINCIPLE (module-agnostic): one CONFIRMED BC → one authoritative module; `app/Contexts/*` = current realization, NOT the principle. Migration GATED on the BDR (migrate only Confirmed BCs). This = the Migration DECISION (Plan→Execution→Verification follow). Migration constitution (7 principles) + exit criteria + CI fitness tests. Application-layer split DEFERRED to Round 50. Software-side debt, NOT governance.*
