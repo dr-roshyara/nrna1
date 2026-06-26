@@ -1,0 +1,48 @@
+# Deptrac — architecture conformance for the greenfield Core (ADR-T7).
+# Enforces hexagonal layering (Domain<-Application<-Infrastructure) and
+# bounded-context isolation (no direct cross-context domain dependency; the
+# event is the seam — TP-1). Scoped to the greenfield Core to avoid flagging
+# pre-existing contexts; widen as contexts are migrated.
+#
+# Activate:  composer require --dev deptrac/deptrac
+# Run:       vendor/bin/deptrac analyse --config-file=deptrac.yaml
+deptrac:
+  paths:
+    - ./app/Contexts/Contestation
+    - ./app/Contexts/Adjudication
+  layers:
+    # --- hexagonal layers ---
+    - name: Domain
+      collectors:
+        - type: directory
+          value: app/Contexts/.*/Domain/.*
+    - name: Application
+      collectors:
+        - type: directory
+          value: app/Contexts/.*/Application/.*
+    - name: Infrastructure
+      collectors:
+        - type: directory
+          value: app/Contexts/.*/Infrastructure/.*
+    # --- bounded contexts ---
+    - name: Contestation
+      collectors:
+        - type: directory
+          value: app/Contexts/Contestation/.*
+    - name: Adjudication
+      collectors:
+        - type: directory
+          value: app/Contexts/Adjudication/.*
+  ruleset:
+    # Domain depends on nothing (pure PHP). Application on Domain only.
+    # Infrastructure on Domain + Application.
+    Domain: ~
+    Application:
+      - Domain
+    Infrastructure:
+      - Domain
+      - Application
+    # Cross-context: contexts collaborate ONLY via domain events (no direct
+    # code dependency). Empty rulesets => any cross-context import is a violation.
+    Contestation: ~
+    Adjudication: ~
