@@ -31,26 +31,32 @@
 - **Quality: Direct · Level L2 · Confidence Medium.**
 - **Interpretation:** behaves as a **domain service / decision resolver**; "truth-owning BC" looks falsifiable.
 
-## Appointment  *(deeper L3 read OWED)*
-- **Observed (provenance):** `Contexts/Governance/Domain/Authority/Policies/DelegationLifecyclePolicy`; `RemoveCommitteeMemberCommand`/`Handler`; `Contexts/Committee/*` read models; event `CommitteeLifecycleChanged`. **[EV-050]**
-- **Business behaviour:** delegation of authority / committee membership management. **Technical:** commands + policies + read models (CQRS-ish).
-- *owns decisions?* ? · *owns truth?* ? (committee membership) · *independent reason to change?* ? — **owed.**
-- **Contradictory:** unknown. **Quality: Weak (inferred) · Level L1 · Confidence Low.**
-- **Interpretation:** insufficient evidence; "merge into Authorization" untestable yet.
+## Appointment  *(L3 read DONE)*
+- **Observed (provenance):** `Authority/ValueObjects/DelegationStatus` (ACTIVE/REVOKED); `Authority/Policies/DelegationLifecyclePolicy::canTransition(from,to)` (ACTIVE→REVOKED; REVOKED→none); `RemoveCommitteeMemberCommand`/`Handler`; `Contexts/Committee/*` read models; event `CommitteeLifecycleChanged`. **[EV-050/051]**
+- **Business behaviour:** grant/revoke **delegated authority (Mandate)** and manage its lifecycle. **Technical:** status state-machine (ACTIVE/REVOKED) + policy + CQRS commands.
+- *owns decisions?* yes (delegation transitions) · *owns truth?* **likely YES** (`DelegationStatus` = who holds delegated authority + its state) · *txns?* per-delegation · *events?* `CommitteeLifecycleChanged` · *independent reason to change?* when delegation/mandate rules change.
+- **Supporting:** EV-050/051. **Contradictory (to the merge-into-Authorization prior):** **Appointment OWNS Mandate truth; Authorization owns NONE** → the merge direction **reverses**.
+- **Architecture-fitness:** existing — membership tests; missing — delegation-boundary test.
+- **Quality: Direct · Level L2 · Confidence Medium.**
+- **Interpretation:** the **Authority/Delegation** subdomain owns **Mandate truth** → a *stronger* BC candidate than the prior assumed; **"merge Appointment → Authorization" appears FALSIFIED** (Authorization, owning no truth, is the more likely service/merge).
 
-## Election Lifecycle  *(deeper L3 read OWED)*
-- **Observed:** `ElectionLifecycleEngine(Impl)`, `ElectionLifecycleState`, `TransitionMatrix`, events (`VotingOpened/Closed`, `ResultsPublished`…); tests `ConstitutionalTransitionGuardTest`. **[EV-060]**
-- **Business behaviour:** controls valid election state transitions. **Technical:** state machine + transition guards.
-- *owns truth?* election lifecycle state (likely SoR) · *independent reason to change?* changes when lifecycle states/transitions change — **owed** to confirm independence from Voting.
-- **Quality: Weak–Moderate · Level L1–L2 · Confidence Low-Med.**
-- **Interpretation:** could be workflow/service or BC; "merge into Voting" untested.
+## Election Lifecycle  *(L3 read DONE)*
+- **Observed (provenance):** `ElectionLifecycleEngine` interface — `compute(Election $election) → ElectionLifecycleSnapshot`, `getState(Election) → ElectionLifecycleState`; doc: *"Single Source of Truth for election lifecycle … computed from signals … the **Election aggregate root**"*; `TransitionMatrix`; tests `ConstitutionalTransitionGuardTest`. **[EV-060/061]**
+- **Business behaviour:** determine the canonical election lifecycle state + permissions/locks/allowed-actions. **Technical:** **pure computation over the Election aggregate → immutable read-model snapshot.**
+- *owns decisions?* derives state/permissions · *owns truth?* **NO separate SoR — computes FROM the Election aggregate** · *txns?* none (compute) · *events?* lifecycle events emitted around it · *independent reason to change?* when lifecycle-computation rules change.
+- **Supporting:** EV-060/061. **Contradictory (to separate-BC):** it computes from the Election aggregate and returns a read model → a **derivation**, not an independent truth-owner.
+- **Architecture-fitness:** existing — transition-guard tests.
+- **Quality: Direct · Level L2 · Confidence Medium.**
+- **Interpretation:** behaves as a **derivation/service over the Election aggregate** (read-model snapshot); "separate BC" looks **falsifiable**; closely bound to Election/Voting.
 
-## Voting  *(deeper L3 read OWED)*
-- **Observed:** `Vote`/`BaseVote` (**no `user_id`**); `Domain/Voting/{VotingEngine,VoteAggregator,QuorumRule}`; tests `VoteControllerConstitutionalTest`. **[EV-070]**
-- **Business behaviour:** record an anonymous, verifiable vote. **Technical:** engine + aggregator + quorum rules; anonymity at schema level.
-- *owns truth?* **anonymous vote records (SoR)** · *independent reason to change?* changes when ballot/vote rules change — **owed.**
-- **Quality: Weak–Moderate · Level L1–L2 · Confidence Med.** Anonymity invariant strongly present.
-- **Interpretation:** likely a truth-owning context; engine ≠ BC; deeper read owed.
+## Voting  *(L3 read DONE)*
+- **Observed (provenance):** `Vote extends BaseVote` (table `votes`); casts `no_vote_option`, `no_vote_posts`, **`device_metadata_anonymized`**, `cast_at`; `candidate_01..60` JSON columns; **`results()` hasMany Result**; **no `user_id`**; `Domain/Voting/{VotingEngine,VoteAggregator,QuorumRule}`; tests `VoteControllerConstitutionalTest`. **[EV-070/071]**
+- **Business behaviour:** record an anonymous verifiable vote; spawn Result records. **Technical:** Eloquent Active-Record model; anonymity at schema (no `user_id`, anonymized device metadata).
+- *owns decisions?* vote validity · *owns truth?* **YES (anonymous vote records = SoR; Results derived via `hasMany`)** · *txns?* per-vote · *events?* `VoteAccepted` (inferred) · *independent reason to change?* when ballot/vote structure changes.
+- **Supporting:** EV-070/071. **Contradictory (tactical, not BC-existence):** `Vote` is an **Active-Record model** (domain+persistence mixed) — an aggregate-design concern for Round 50, not a boundary contradiction.
+- **Architecture-fitness:** existing — `VoteControllerConstitutionalTest`; missing — anonymity-reconstruction (Q7) test, pure-aggregate test.
+- **Quality: Direct · Level L2 (L3-partial via `results()`) · Confidence Medium-High.**
+- **Interpretation:** **truth-owning context** (anonymous vote SoR); **Results = projection confirmed** (`hasMany Result`); engine ≠ BC.
 
 ## Evidence
 - **Observed (provenance):** `ReplayEvidenceEnvelope.php::computeHash()` (`readonly`, frozen evidence, deterministic hash, schema-versioned, **hashed** `voterIdentifier`); `EvidenceClassification/Snapshot`, `EvaluationAuditTrail`; test `ConstitutionalEvidenceSnapshotTest`. **[EV-010/011]**
@@ -97,15 +103,18 @@
 |-----------|---------|-------|------|-----------------|
 | Adjudication | Direct | L2–L3 | Med | scope question |
 | Authorization | Direct | L2 | Med | — |
-| Appointment | Weak | L1 | Low | **yes** |
-| Lifecycle | Weak–Mod | L1–L2 | Low-Med | **yes** |
-| Voting | Weak–Mod | L1–L2 | Med | **yes** |
+| Appointment | Direct | L2 | Med | — (done — owns Mandate truth) |
+| Lifecycle | Direct | L2 | Med | — (done — derivation over Election) |
+| Voting | Direct | L2 | Med-High | — (done — owns vote SoR) |
 | Evidence | Direct+Strong | L2–L3 | High | — |
 | Replay | Direct+Strong | L2–L3 | Med | — |
 | Audit | Direct | L2 | Med | — |
 | Contestation | Direct (absence) | — | High | n/a |
 
-**No decisions recorded.** Appointment/Lifecycle/Voting owe deeper L3. **Next:** finish those → `49-05` EBSD Evaluation (Hypothesis · Null · Evidence-supporting · Evidence-contradicting · Analysis/alternatives · Confidence · Decision · Reason · Outstanding-uncertainty) → `49-06` BDR (Decision · Reason · Evidence-ref only).
+**No decisions recorded.** All nine candidates now at Direct evidence (L2+). **Ready for `49-05` EBSD Evaluation.**
+
+### Updated Emerging Pattern
+- **EP-5 — A prior was falsified by L3.** The "Appointment → merge into Authorization" prior reversed: **Appointment (Authority/Delegation) owns Mandate truth; Authorization owns none** → if anything merges, it is **Authorization** (a service), not Appointment. *(Evidence EV-030, EV-050/051. Observation only.)* **Next:** finish those → `49-05` EBSD Evaluation (Hypothesis · Null · Evidence-supporting · Evidence-contradicting · Analysis/alternatives · Confidence · Decision · Reason · Outstanding-uncertainty) → `49-06` BDR (Decision · Reason · Evidence-ref only).
 
 ---
 
