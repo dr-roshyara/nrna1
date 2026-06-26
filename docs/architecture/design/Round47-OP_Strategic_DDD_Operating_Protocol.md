@@ -18,7 +18,19 @@ Bounded contexts · context relationships · published language · ACLs · aggre
 ## ⭐ DDD Discovery Discipline (the key correction)
 **Strategic DDD is still DISCOVERY.** **Semantic truth does NOT automatically imply software structure.** The certified ownership seams (Record-Keeping · Adjudication · Contestation · Appointment + Voting + Lifecycle) are **CANDIDATE** contexts — whether each becomes a bounded context / subdomain / aggregate / supporting / generic / shared-kernel / integration context is **discovered** from **ownership · cohesion · lifecycle · transactional consistency · integration needs** — not dictated by semantic ownership.
 
-> **Retroactive note:** `Round48-01` (context map) and `Round49-01` (BC discovery) treated seams as contexts; under this protocol they are **candidate** contexts whose software boundaries still require confirmation by the criteria above. *If evidence contradicts a software-boundary assumption, record it and continue discovery — do NOT modify governance.*
+> **Retroactive note:** `Round48-01` (context map) and `Round49-01` (BC discovery) treated seams as contexts; under this protocol they are **candidate** contexts whose software boundaries still require confirmation by the criteria below. *If evidence contradicts a software-boundary assumption, record it and continue discovery — do NOT modify governance.*
+
+### Software-boundary evidence criteria (the ONLY admissible justifications)
+A candidate seam is **promoted to a bounded context only if supported by one or more of:**
+**semantic ownership · transactional consistency · lifecycle independence · invariants · ubiquitous-language divergence · team autonomy · deployment autonomy · integration characteristics · performance constraints.**
+**No other justification is sufficient.** ("It seems reasonable" / "the ontology has this concept" / "the folder exists" are NOT admissible.)
+
+### Candidate rejection protocol
+A candidate ownership seam **may be rejected as a bounded context** if evidence shows: insufficient cohesion · identical lifecycle to another context · no independent ubiquitous language · no transactional boundary · no autonomy · artificial separation.
+**A rejected candidate remains a valid certified governance concept — only its *software boundary* is rejected** (it may instead become an aggregate inside another context, a shared kernel, a supporting subdomain, etc.). *Governance truth remains true even if software structure differs.*
+
+### Decision confidence levels (Strategic DDD outputs)
+Every Strategic DDD boundary decision carries one: **Confirmed · Strong Candidate · Candidate · Tentative · Rejected.** Strategic DDD is **discovery, not deduction** — confidence is stated, not assumed. (A "Confirmed" context cites ≥2 boundary-evidence criteria; "Rejected" cites the rejection protocol; the rest sit between.)
 
 ## Empirical-validation classification (code vs certified)
 When comparing code to the certified architecture, classify each finding as: **Alignment · Gap · Conflict · Governance-Issue · Technical-Debt · Refactoring-Opportunity · Architecture-Risk.** *(The reflexion model in `Round49-02` is the instance: Convergence=Alignment, Absence=Gap, Divergence=Conflict, Drift=Technical-Debt.)* **Never change the certified model because of existing code.**
@@ -38,4 +50,4 @@ Perform **only** the requested Strategic DDD activity. **Do not jump ahead; do n
 ---
 
 *Round 47-OP — Strategic DDD Operating Protocol — ADOPTED (binding, Phase II).*
-*Role = architect not researcher; certified package immutable; allowed design activities consume only certified concepts; DDD Discovery Discipline (semantic truth ≠ software structure — seams are CANDIDATE contexts); 14-point output format; self-review gate; empirical+literature classification vocabularies. Operationalizes SD-1..7.*
+*Role = architect not researcher; certified package immutable; allowed design activities consume only certified concepts; DDD Discovery Discipline (semantic truth ≠ software structure — seams are CANDIDATE contexts) + software-boundary evidence criteria (9 admissible justifications, no others) + candidate-rejection protocol (rejected boundary ≠ rejected governance concept) + decision-confidence levels (Confirmed/Strong-Candidate/Candidate/Tentative/Rejected); 14-point output format; self-review gate; empirical+literature classification vocabularies. Operationalizes SD-1..7. Code deferred until the strategic model stabilizes (Context Mapping → BC confirmation → only then aggregates/tactical/code).*
