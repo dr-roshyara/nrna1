@@ -45,16 +45,24 @@
 | Date | BDR | From → To | Reason |
 |------|-----|-----------|--------|
 | 2026-06-26 | all | — → **v1.0 baseline** | initial EBSD verdicts (this register) |
+| 2026-06-26 | BDR-05 | Unrealized (scope open) → **Architectural (Greenfield)**, scope RESOLVED → **BDR v1.1** | election-determination path read (below) |
 | *(future)* | BDR-06 | Application Capability → ? | only if Replay is shown to own a domain decision (post-impl) |
-| *(future)* | BDR-05 | Unrealized → Operational/Greenfield | when the election-determination path is resolved |
 | *(future)* | BDR-07/08 | Service/Supporting → ? | only on new evidence (e.g. Authorization acquires state) |
+
+### BDR v1.1 delta — BDR-05 (Adjudication) scope RESOLVED *(append-only; v1.0 table unchanged)*
+- **Read (provenance):** `ElectionLifecycleState` (…`Counting`→`ResultsPublished`→`Archived`); `app/Contexts/Elections/Domain/Events/ResultsPublishedEvent`; no result-dispute/contestation-resolution found. **[EV-100/101]**
+- **Finding:** election **finality = publication finality** (lifecycle `ResultsPublished`, owned by **Lifecycle/Elections** — *administrative*), **NOT** adjudicative finality. Committee `ConstitutionalArbitrationKernel` = a **separate** (jurisdiction) concern.
+- **Resolution:** certified **Adjudication** (adjudicate a contested outcome → binding determination) is **Architectural (Greenfield)** — paired with **Contestation** as the **unbuilt core of the correction loop**. The existing `ResultsPublished` is publication-finality (Lifecycle); jurisdiction-arbitration is separate.
+- **BDR-05 Evidence-Sufficiency: Yes** (was No). **Confidence: Medium-High.**
+- **Architectural significance:** the trustworthiness *differentiator* — **adjudicating a contested election with binding finality — is NOT implemented.** Adjudication+Contestation are the genuine greenfield Core to build.
 
 ---
 
 ## ✅ PHASE MILESTONE — Strategic DDD Discovery COMPLETE
 - **Phase I — Knowledge Discovery & Certification (Rounds 38–46B): COMPLETE.**
 - **Phase II — Strategic DDD Discovery (Rounds 47–49): COMPLETE** — this BDR is its terminal artifact.
-- **Phase III — Tactical DDD (Round 50+): STARTS.** Round 50 (Aggregate Discovery) is **Tactical**, not Strategic Discovery.
+- **Phase III — Strategic→Tactical Transition (Round 50): STARTS.** *(Renamed from "Tactical DDD": Round 50 still carries strategic confirmations — BDR-06 Replay; aggregate/consistency/transactional boundaries straddle strategic+tactical.)*
+- **Phase IV — Tactical DDD: after Aggregate Discovery.**
 
 **Frozen stable artifacts** (change only via versioned re-issue/ADR): `Round47-OP`, ADQC v1.1, EBSD methodology, `Round48A` BC-Evaluation-Framework v1.1, `Round49-04` Dossier, `Round49-05` Evaluation, `Round49-06` BDR. **No further methodology/framework documents** — progress now comes from migration, tactical design, implementation, fitness tests, and empirical validation.
 
