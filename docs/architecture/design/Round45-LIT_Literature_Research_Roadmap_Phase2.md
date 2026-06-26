@@ -69,7 +69,14 @@ Literature is now a **specialized validation instrument** whose role changes by 
 | **LIT-EVAL** Empirical architecture evaluation *(new)* | after implementation, **before** LIT-5 | how to *demonstrate the architecture works*: architecture assessment (ATAM-style), evaluation methods, experiments, case studies | pending |
 | **LIT-5** Publication positioning | before dissertation/papers | position vs Evans/Vernon/Brandolini/DEMO/ArchiMate/voting & systems literature | pending |
 
-**Sequence (revised):** LIT-2 ✓ → Strategic DDD → LIT-SYS ✓ → Tactical DDD → LIT-3 → Implementation → LIT-4 → **LIT-EVAL** → LIT-5. All are **validation/positioning**, never discovery; none reopens the governance theory.
+**Sequence (revised):** LIT-2 ✓ → Strategic DDD → LIT-SYS ✓ → Tactical DDD → LIT-3 ✓ → Implementation → LIT-4 → **LIT-EVAL** → LIT-5.
+
+### Milestone-anchored schedule (confirmed) — ~90% implementation / ~10% literature
+- **During Round 50:** **NO major review.** Only **1–5 paper targeted searches** if a specific aggregate question arises (e.g. consistency boundaries, event versioning, repository patterns, immutable-evidence modeling).
+- **LIT-METHOD** — **after Round 50 + the first implementation milestone** (so it validates an *implemented, evidence-backed* method, not a proposed one): architecture recovery · reflexion-model evolution · Strategic-DDD evaluation · boundary-discovery · architecture conformance · empirical software architecture · fitness-function research · evidence-driven architecture. *Validates the methodology (EBSD), not the software.*
+- **LIT-4** — **after the greenfield Core (Adjudication + Contestation) is implemented**: compare the *real* architecture vs election/secure-voting/high-assurance/event-driven/DDD/constitutional-governance literature.
+- **LIT-5** — **before dissertation/publication**: Related-Work chapter (what exists / what remains / where this differs / what's novel / what evidence supports it).
+*Rationale: literature stays aligned with evidence the project produces, rather than driving implementation prematurely.* All are **validation/positioning**, never discovery; none reopens the governance theory.
 
 **Governance-literature rule (refined):** *not* "never another broad governance review," but **"never another *unguided* governance review."** A governance literature review is permitted **only** when driven by an **explicit research question or governance change request** (e.g. a new RQ, a constitutional amendment, a newly-discovered family, a major NRNA-model change) — never "read everything." This refines DA-LIT-01.
 
