@@ -1,4 +1,6 @@
-# Round 49-07 — Migration Plan (Plan stage)
+# Round 49-07 — Architecture Migration Plan (Plan stage)
+
+*(Renamed "Migration Plan" → **Architecture** Migration Plan: it migrates **architecture** — ownership, modules, dependencies — not merely files.)*
 
 **Program:** NRNA DDD Trustworthiness Research Program · **Phase:** III (Strategic→Tactical Transition) · **Built against:** Architecture Release 1.0 (BDR v1.1)
 **Status:** 📐 MIGRATION PLAN — the **Plan** stage of `Round49-03`'s Migration Decision (Decision → **Plan** → Execution → Verification). **No code moved.** Execution is gated on aggregate design (Round 50) + authorization.

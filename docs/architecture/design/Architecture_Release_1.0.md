@@ -29,5 +29,20 @@
 4. **Governance-to-Software Translation Framework** (semantic ownership and software ownership are related but independently discoverable).
 *Each `[verify]` via LIT-METHOD (architecture-recovery / empirical-architecture positioning) — deferred to after Round 50, for the dissertation Methodology-Validation chapter.*
 
+## Architecture Principles (Release 1.0) — the software-architecture constitution
+1. **Knowledge before software.**
+2. **Semantic ownership before software ownership.**
+3. **Evidence before architecture decisions.**
+4. **Strategic discovery before tactical design.**
+5. **Boundary decisions are governed** (BDR; versioned).
+6. **One authoritative implementation per confirmed BC.**
+7. **Invariants dominate implementation** (decision-first, not entity-first).
+8. **Architecture fitness tests prevent drift.**
+9. **Evidence remains permanent** (append-only; never overwritten).
+10. **Architecture evolves only through governed releases** (1.x / 2.0).
+
+## ✅ Formal declaration
+> **Architecture Release 1.0 APPROVED. Strategic Architecture Discovery COMPLETE. Phase III (Strategic → Tactical Transition) AUTHORIZED.**
+
 ---
 *Architecture Release 1.0 — ISSUED. Bundle: Knowledge 1.0 · Vocabulary 1.0 · Landscape 1.0 · BDR 1.1. Phases: I COMPLETE · II COMPLETE · III Strategic→Tactical Transition STARTS · IV Tactical after Aggregate Discovery. Next: Migration Plan → Round 50 Aggregate Discovery. Code/migration awaits authorization.*
