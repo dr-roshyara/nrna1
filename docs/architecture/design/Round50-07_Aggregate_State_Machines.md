@@ -1,14 +1,71 @@
 # Round 50-07 — Aggregate Lifecycle and State Machine Specification
 
-**Phase III (Tactical Realization) · Built against Release 1.0 · Design only · v1.1 · 2026-06-26**
-**Status:** 🔁 CANDIDATE v1.1 (supersedes v1.0 "Aggregate State Machines") — normative lifecycle spec per aggregate: states · **invariants** · **ownership** · **Command→Policy→Transition→Event tables** · **guards** · **concurrency** · **failure/rejection** · **temporal/clock** · UML. Not yet frozen.
+**Phase III (Tactical Realization) · Built against Release 1.0 · Design only · v1.2 FINAL · 2026-06-26**
+**Status:** 🧊 FROZEN v1.2 (RC1=v1.1 → Final; supersedes v1.0 "Aggregate State Machines") — **normative implementation specification**: principles · identity · states · **invariants** · **ownership** · **Command→Policy→Transition→Event tables** · **guards** · **concurrency** · **failure/rejection** · **temporal/clock** · atomicity · retry · event-guarantees · transition classes · fitness-test linkage · UML. **Last tactical design doc — implementation proceeds from here.**
+
+## Aggregate State Machine Principles (read first)
+1. Every aggregate has **exactly one authoritative state machine**.
+2. Every transition is **initiated by a command**.
+3. Every transition is **validated by policies (guards) before execution**.
+4. Every successful transition **changes state exactly once**.
+5. Every successful transition **emits canonical domain events** (Catalog v1.0) — or none (internal).
+6. **No aggregate directly changes another aggregate's state** (SD-5 #4 / TP-1).
+7. **Recovery must never violate invariants.**
+8. **Terminal states reject all transitions.**
+9. **Time-driven transitions use the authoritative governance clock** (Temporal trust-root, UTC).
+10. **State machines are versioned**; running instances continue under the version with which they were created.
 
 ## Modeling discipline (tactical EBSD analogue)
 Every transition is specified as the same chain the strategic work used:
 ```
 Decision → Command → Policy(guard) → Transition → State → Domain Event
 ```
-Conventions: **▣ terminal · ↦ allowed · ⊘ forbidden** (fitness-tested). Events come from the **Canonical Event Catalog v1.0**; no event is invented here. Each transition emits its event **after** state commit, via the outbox (same txn, ADR-T3).
+Conventions: **`[*]` = INITIAL/FINAL (UML) · ▣ terminal · ↦ allowed · ⊘ forbidden** (fitness-tested). Events come from the **Canonical Event Catalog v1.0**; no event is invented here.
+
+## State machine identity (each aggregate's SM)
+| Field | Meaning |
+|-------|---------|
+| `StateMachineId` | stable id (e.g. `vote-sm`, `challenge-sm`) |
+| `Version` | SM version (e.g. v1); multiple may run simultaneously |
+| `OwnerAggregate` | the sole aggregate that executes it |
+| `EffectiveFrom` / `EffectiveUntil` | validity window; **an instance binds to the version effective at its creation** (Principle 10) |
+
+## Transition atomicity (ordering is FIXED — never reordered)
+```
+guard (policies) ─► [pass?] ─► state mutation (×1) ─► event creation ─► outbox append (same txn) ─► COMMIT ─► async dispatch
+```
+Guard failure **aborts before** any mutation. Event + state commit in **one transaction** (ADR-T1/T3).
+
+## Illegal (forbidden) transition policy — deterministic
+A `⊘` attempt → **throw `DomainException`** → **no state mutation** → recorded to **Audit as a security event** → **no domain event emitted**. Same behavior everywhere (no per-developer variance).
+
+## Retry & idempotency (per action)
+| Action | Retryable? | Idempotent? |
+|--------|-----------|-------------|
+| Command on stale version | No (retry on fresh state after `ConcurrencyConflict`) | — |
+| `CastVote` | **No** (single-use code) | n/a |
+| Event delivery (all) | **Yes** (at-least-once) | **Yes** (consumer dedupes on `EventId`, ADR-T4) |
+| Timeout transition | system-driven, once | yes |
+
+## Event ownership & emission guarantees (single producer; effectively-once)
+| Event | Sole producer | Emitted at | Guarantee |
+|-------|---------------|-----------|-----------|
+| `VoteAccepted` | Vote | Draft→Cast | exactly-once per vote (effectively-once delivery) |
+| `EvidenceRecorded` | EvidenceEnvelope | Open→Frozen | exactly-once per envelope |
+| `MandateGranted`/`Revoked` | Mandate | grant / revoke | exactly-once each |
+| `ChallengeRaised…Resolved` | Challenge | each transition | exactly-once per transition |
+| `DeterminationIssued` | Determination | Draft→Issued | **exactly-once per `challengeId`** |
+| `ElectionCorrectionApplied` | Election | ApplyCorrection | exactly-once per `determinationId` |
+*No other aggregate may emit these (fitness-tested, AT-EVT-001).*
+
+## Transition classification (drives authorization)
+| Class | Examples |
+|-------|----------|
+| **User-initiated** | `CastVote`, `RaiseChallenge` |
+| **System-initiated** | timeouts → `Abandoned`/`Expired`/`Lapsed` |
+| **Governance-initiated** | `GrantMandate`/`RevokeMandate`, `AdmitChallenge`/`RouteChallenge`, `IssueDetermination`, `ApplyCorrection` |
+| **Recovery-initiated** | outbox redelivery, projection replay-rebuild |
+| **Administrative** | (e.g. `CancelElection` — if/when defined; governance-authorized) |
 
 ## State ownership (no aggregate mutates another's state — SD-5 #4 / TP-1)
 | State family | Owned by |
@@ -168,12 +225,21 @@ stateDiagram-v2
 ```
 Each hop atomic; linked by causal events; **no cross-aggregate transaction** (ADR-T1/Q10).
 
-## Fitness tests (from this spec)
-- Every aggregate exposes its allowed transition set; forbidden transitions **throw**, never silently no-op.
-- Terminal states reject all transitions; every timeout has an explicit terminal target.
-- Each transition's guard policy exists (50-06) and is exercised.
-- Concurrency: conflicting commands raise `ConcurrencyConflict` (version check), never lost-update.
-- Parked (awaiting-causal-event) states are recoverable, never dead-locked.
+## Fitness tests (from this spec — IDs are executable references)
+| ID | Asserts |
+|----|---------|
+| **AT-Q7-001** | no state/event/projection carries voter↔vote linkage or `user_id` reconstruction (ties to every "no voter link" invariant) |
+| **AT-SM-001** | forbidden transition throws `DomainException`, no mutation, audited (illegal-transition policy) |
+| **AT-SM-002** | terminal states reject all transitions |
+| **AT-SM-003** | every timeout has an explicit terminal target (no stuck instance) |
+| **AT-SM-004** | each transition's guard policy exists (50-06) and is exercised |
+| **AT-EVT-001** | each event has exactly one producer (event ownership) |
+| **AT-EVT-002** | no consumer subscribes outside its allowed set (Voting consumes nothing foreign) |
+| **AT-TXN-001** | one aggregate root per transaction; event in same txn/outbox |
+| **AT-CON-001** | conflicting commands raise `ConcurrencyConflict` (version check), never lost-update |
+| **AT-REC-001** | parked (awaiting-causal-event) states recover, never dead-lock; recovery preserves invariants |
+
+*Invariant → test linkage: each per-aggregate invariant references its AT-ID (e.g. Cast "no voter↔vote link" → **AT-Q7-001**; "issued once" → **AT-SM-002**; single-producer → **AT-EVT-001**). The spec is thereby **executable architecture**.*
 
 ## Open
 - Exact Election/Lifecycle state names ← existing engine (confirm at implementation).
@@ -181,9 +247,9 @@ Each hop atomic; linked by causal events; **no cross-aggregate transaction** (AD
 
 ## Next
 ```
-50-07 v1.1 (this) → freeze on review → 50-08 Repository & Transaction → 50-09 Verification → Implementation
+50-07 v1.2 FINAL (this) → Implementation (greenfield Core). No further tactical design docs.
 ```
 
 ---
-*Round 50-07 — Aggregate Lifecycle and State Machine Specification — CANDIDATE v1.1.*
-*Adds: state invariants, state ownership, Command→Policy→Transition→Event tables, explicit guards, optimistic-concurrency rule, failure/rejection + timeout transitions (Abandoned/Expired/Lapsed/Dismissed), temporal/clock-authority (UTC + Temporal trust-root), state-machine versioning, UML (mermaid) diagrams, per-aggregate review questions. Modeling discipline = Decision→Command→Policy→Transition→State→Event. Events constrained to Canonical Event Catalog v1.0. Not frozen — awaiting review.*
+*Round 50-07 — Aggregate Lifecycle and State Machine Specification — FROZEN v1.2 (Final).*
+*v1.1→v1.2 adds: 10 State Machine Principles; state-machine identity (Id/Version/Owner/Effective window); fixed transition atomicity (guard→mutate→event→outbox→commit); deterministic illegal-transition policy (DomainException + audit, no mutation); retry & idempotency table; event ownership + emission guarantees (single producer, effectively-once); transition classification (User/System/Governance/Recovery/Administrative); INITIAL/FINAL UML notation; fitness-test IDs (AT-Q7-001…AT-REC-001) linked to invariants → executable architecture. v1.1 base: invariants, ownership, transition tables, guards, optimistic concurrency, failure/timeout transitions, temporal/clock authority, versioning, mermaid UML. Events constrained to Canonical Event Catalog v1.0. FROZEN — last tactical design doc.*
