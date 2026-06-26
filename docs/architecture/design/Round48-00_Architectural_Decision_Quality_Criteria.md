@@ -1,39 +1,65 @@
-# Round 48-00 — Architectural Decision Quality Criteria (ADQC)
+# Round 48-00 — Architectural Decision Quality Criteria (ADQC) v1.1
 
 **Program:** NRNA DDD Trustworthiness Research Program · **Phase:** Strategic DDD (Phase II) · **Built against:** Certified Release v1.0 + Strategic Domain Landscape v1.0
-**Status:** 📏 EVALUATION RUBRIC — the software-side equivalent of the governance verification engine. **Every Strategic DDD decision (Round 48+) is scored against these criteria.**
-**Date:** 2026-06-26
+**Status:** 📏 EVALUATION RUBRIC (v1.1 — revised per architect review). The software-side verification engine. **Every Strategic DDD decision (Round 48+) is scored against these criteria.**
+**Date:** 2026-06-26 · *(v1.0 → v1.1: renamed Q1/Q2/Q4; sharpened Q3/Q7/Q8; added Q10/Q11; added categories + weights + 4-level scale + Fail→ADR rule. Prior scorecards in 48-01/49-01/49-03 used v1.0; future passes use v1.1.)*
 
-> **Why now (not another governance doc).** Phase I optimized *knowledge quality*; Phase II optimizes *architecture quality*. The ADQC is the instrument for that shift — it turns the certified constraints (SD-1..7, Forbidden Transformations, Anonymity, traceability) into a **checklist every context-mapping, bounded-context, and aggregate decision must pass.** It supports the doing; it is not new theory.
+> **Why.** Phase II optimizes *architecture quality*. The ADQC turns SD-1..7 + Forbidden Transformations + ownership architecture + boundary-evidence criteria (`Round47-OP`) into a **per-decision scorecard.** It evaluates **decisions**, not diagrams.
 
-## The criteria (9)
+## Verdict scale (4 levels)
+**PASS · MINOR CONCERN · MAJOR CONCERN · FAIL.** *(was Pass/Concern/Fail — "Concern" covered too much.)*
 
-| # | Criterion | Question | Fail signal |
-|---|-----------|----------|-------------|
-| **Q1 Semantic fidelity** | Does the decision preserve the certified concept's meaning? | drift from Canonical Vocabulary / ontology meaning |
-| **Q2 Ownership consistency** | One semantic owner per authoritative truth (R45)? | two contexts own the same system-of-record |
-| **Q3 Autonomy** | Can the context decide/operate without synchronous dependence on others? | needs another context's write to function |
-| **Q4 Cohesion** | One decision ownership per context (single reason to change)? | a context answers two unrelated decisions |
-| **Q5 Coupling** | Are dependencies read-only/downstream and minimal? | bidirectional writes; chatty sync coupling |
-| **Q6 Traceability** | Declares Package/Vocabulary/Ontology/Landscape versions it was built against (SD-7)? | no version provenance |
-| **Q7 Anonymity** | Does it preserve the supreme invariant (never store/link/reconstruct voter↔vote)? | any path that could link identity to vote |
-| **Q8 Evolutionary stability** | Will it survive a Minor knowledge release without rework? | breaks on terminology/derived-concept change |
-| **Q9 Certification compliance** | Consumes only admitted concepts; honors Forbidden Transformations + 5 constraints + SD-1..7? | uses Held/Blocked concept; violates a Forbidden Transformation |
+## Gating & the Fail rule
+- **Gating (blocking) criteria: Q7 Anonymity and Q9 Certification Compliance.** A **FAIL** on either **blocks** the decision (Critical Fail) — mirrors the governance validator's "Critical blocks."
+- **Every FAIL on *any* criterion MUST produce** an **ADR**, an **Architecture Issue**, or a **Governance Change Request** (SD-6). **Nothing fails silently.**
+
+## Criteria (categorized + weighted)
+
+### Semantic Quality
+| # | Criterion | Question | Weight |
+|---|-----------|----------|-------:|
+| **Q1** | **Domain Semantic Integrity** *(was "Semantic fidelity")* | Does the decision **preserve** the certified concept's meaning (Canonical Vocabulary / ontology)? | 2 |
+| **Q2** | **Ownership Integrity** | Exactly **one authoritative owner** per system-of-record (**many consumers permitted**)? | 2 |
+
+### Architectural Quality
+| # | Criterion | Question | Weight |
+|---|-----------|----------|-------:|
+| **Q3** | **Autonomy** | Can the context perform its **core business decisions** without another context participating **synchronously**? | 2 |
+| **Q4** | **Cohesion** | Does the context have **high business cohesion** (one cohesive responsibility, not SRP code-cohesion)? | 2 |
+| **Q5** | **Coupling** | Dependencies minimal, read-only/async — no **temporal coupling** (A *cannot continue until* B responds)? | 2 |
+| **Q10** | **Business Invariant Integrity** *(new)* | Are domain invariants preserved **without a cross-context transaction**? | 3 |
+| **Q11** | **Context Boundary Clarity** *(new)* | Can a developer clearly tell **which context owns a decision** (no two equally responsible)? | 2 |
+
+### Governance Quality
+| # | Criterion | Question | Weight |
+|---|-----------|----------|-------:|
+| **Q6** | **Traceability** | Declares Package/Vocabulary/Ontology/Landscape versions built against (SD-7)? | 1 |
+| **Q9** | **Certification Compliance** 🔒 | Consumes only admitted concepts; honors Forbidden Transformations + 5 constraints + SD-1..7? | **5 (gating)** |
+
+### High-Assurance Quality
+| # | Criterion | Question | Weight |
+|---|-----------|----------|-------:|
+| **Q7** | **Anonymity** 🔒 | Is it **impossible to *reconstruct*** voter↔vote identity — not merely "no foreign key," but no re-identification via `user_id`+timestamp+IP+logs+ordering? | **5 (gating)** |
+
+### Evolution Quality
+| # | Criterion | Question | Weight |
+|---|-----------|----------|-------:|
+| **Q8** | **Evolutionary Stability** | Will it survive **knowledge evolution** of any release type (Patch/Minor/Major — Breaking flagged), without rework? | 1 |
 
 ## Scoring
+- Each criterion: PASS / MINOR CONCERN / MAJOR CONCERN / FAIL, weighted.
+- **Critical Fail** = FAIL on Q7 **or** Q9 → decision blocked regardless of total.
+- Weighted total gives an **Architecture-Quality** indicator across the five categories; MAJOR CONCERNs are addressed before finalizing; MINOR CONCERNs recorded.
+- **Q10 is one of the strongest predictors of bad decomposition** — a cross-context-transaction invariant almost always means the boundary is wrong.
 
-Each decision: **Pass / Concern / Fail** per criterion. **Q7 (Anonymity) and Q9 (Certification compliance) are gating** — a Fail on either **blocks** the decision (mirrors the governance validator's "Critical blocks"). Q1–Q6, Q8 Concerns are recorded and addressed; they do not block unless they accumulate.
+## Q10 / Q11 rationale (the new criteria)
+- **Q10 Business Invariant Integrity:** Strategic DDD ultimately protects business invariants (Evidence, Finality, Mandate, Determination each have invariants). **FAIL:** an invariant requires multiple contexts to commit together → the boundary is misplaced.
+- **Q11 Context Boundary Clarity:** **FAIL:** two contexts appear equally responsible for a decision → boundary ambiguity (the most common DDD defect).
 
-## Relationship to existing discipline
-
-- Q9 enforces SD-1..7 + Forbidden Transformations + the 5 carried constraints (R45/R46).
-- Q2/Q3/Q4/Q5 operationalize the ownership architecture (R45) and standard DDD context-design heuristics.
-- Q7 is the schema/query/test enforcement of the Anonymity invariant (already realized in code).
-- Q6/Q8 enforce Knowledge Release Governance traceability + SemVer-survivability.
-
-**Use:** applied as a summary scorecard in Round 48 (context map), Round 49 (bounded contexts), Round 50 (aggregates). A decision that Fails a gating criterion is revised or routed to a governance item (never silently overridden — SD-6).
+## Use
+Applied as a summary scorecard in Context Mapping, Bounded-Context confirmation, and Aggregate design. **Any FAIL → ADR / Architecture Issue / Governance Change Request** (never silent). Gating FAIL (Q7/Q9) → do not produce the architecture; explain why (protocol self-review).
 
 ---
 
-*Round 48-00 — Architectural Decision Quality Criteria — ISSUED (rubric for Strategic DDD).*
-*9 criteria; Q7 Anonymity + Q9 Certification-compliance are gating. Operationalizes SD-1..7 + Forbidden Transformations + ownership architecture as a per-decision scorecard. Applied from Round 48 on.*
+*Round 48-00 — Architectural Decision Quality Criteria — v1.1 ISSUED.*
+*11 criteria in 5 categories (Semantic Q1-Q2 · Architectural Q3-Q5,Q10-Q11 · Governance Q6,Q9 · High-Assurance Q7 · Evolution Q8); weighted; 4-level scale (PASS/MINOR/MAJOR/FAIL); Q7 Anonymity + Q9 Certification gating (weight 5). NEW: Q10 Invariant Integrity (no cross-context txn), Q11 Boundary Clarity. Q7 = impossible reconstruction (not just linkage). Every FAIL → ADR/Issue/GCR. Reusable high-assurance DDD framework.*
