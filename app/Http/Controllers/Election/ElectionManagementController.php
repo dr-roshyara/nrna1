@@ -860,7 +860,7 @@ class ElectionManagementController extends Controller
             ));
 
             return back()->with('success', 'Results published successfully.');
-        } catch (\App\Domain\Election\Exceptions\InvalidTransitionException $e) {
+        } catch (\App\Exceptions\InvalidTransitionException $e) {
             return back()->with('error', $e->getMessage());
         } catch (\DomainException $e) {
             return back()->with('error', $e->getMessage());
@@ -906,7 +906,7 @@ class ElectionManagementController extends Controller
             );
             return back()->with('success', 'Voting period opened successfully.');
 
-        } catch (\App\Domain\Election\Exceptions\InvalidTransitionException $e) {
+        } catch (\App\Exceptions\InvalidTransitionException $e) {
             return back()->with('error', $e->getMessage());
         } catch (\DomainException $e) {
             return back()->with('error', $e->getMessage());
@@ -937,7 +937,7 @@ class ElectionManagementController extends Controller
             );
             return back()->with('success', 'Voting period closed successfully.');
 
-        } catch (\App\Domain\Election\Exceptions\InvalidTransitionException $e) {
+        } catch (\App\Exceptions\InvalidTransitionException $e) {
             return back()->with('error', $e->getMessage());
         } catch (\DomainException $e) {
             return back()->with('error', $e->getMessage());

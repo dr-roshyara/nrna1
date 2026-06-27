@@ -2,7 +2,7 @@
 
 namespace App\Concerns;
 
-use App\Synchronization;
+use App\Models\Synchronization;
 
 trait Synchronizable
 {
