@@ -27,6 +27,7 @@ related_to: [PORTAL-INDEX]
 
 ## Developer
 
+1. **[EKP Developer Guide](../global/ekp-developer-guide.md)** — how the knowledge platform works and how to add to it.
 1. Backend discipline & layer rules: [`.claude/CLAUDE.md`](../../../.claude/CLAUDE.md).
 2. The domain you're touching: [domains/](../domains/) (e.g. [Adjudication](../domains/adjudication/README.md)).
 3. The relevant [recipe](recipes/) and [package](packages/).

@@ -46,6 +46,8 @@ docs/knowledge/
 
 Foundations: [Knowledge Constitution](../Knowledge-Constitution.md) · [Lifecycle & Governance](../_meta/lifecycle.md) · [Schema](../schema/) · [Naming](../_meta/naming-conventions.md) · [Ownership](../_meta/OWNERS)
 
+**New here? Read the [EKP Developer Guide](../global/ekp-developer-guide.md)** — what this is, how it works, and how to add knowledge.
+
 ## Legacy folders during the transition
 
 We **evolve, not revolutionise** — existing folders keep their meaning and the portal links into them where files still live:

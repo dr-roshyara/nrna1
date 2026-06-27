@@ -54,6 +54,7 @@ graph LR
     GLOBAL_README["GLOBAL-README<br/><small>reference</small>"]
     GRAPH_FULL["GRAPH-FULL<br/><small>portal</small>"]
     GRAPH_README["GRAPH-README<br/><small>portal</small>"]
+    GUIDE_EKP["GUIDE-EKP<br/><small>guide</small>"]
     KNOWLEDGE_CONSTITUTION["KNOWLEDGE-CONSTITUTION<br/><small>constitution</small>"]
     META_LIFECYCLE["META-LIFECYCLE<br/><small>reference</small>"]
     META_NAMING["META-NAMING<br/><small>reference</small>"]
@@ -107,6 +108,11 @@ graph LR
   MEM_README -->|related_to| PORTAL_INDEX
   SHR_README -->|related_to| PORTAL_INDEX
   TRU_README -->|related_to| PORTAL_INDEX
+  GUIDE_EKP -->|requires| META_NAMING
+  GUIDE_EKP -->|related_to| PORTAL_INDEX
+  GUIDE_EKP -->|related_to| KNOWLEDGE_CONSTITUTION
+  GUIDE_EKP -->|related_to| META_LIFECYCLE
+  GUIDE_EKP -->|related_to| META_NAMING
   GLOBAL_README -->|related_to| PORTAL_INDEX
   KNOWLEDGE_CONSTITUTION -->|related_to| META_LIFECYCLE
   PORTAL_ADR_INDEX -->|related_to| PORTAL_INDEX
@@ -147,4 +153,4 @@ graph LR
   PKG_IMPLEMENT_AGGREGATE -->|includes| ADJ_SM_DETERMINATION
 ```
 
-*Nodes:* 37 · *edges:* 64.
+*Nodes:* 38 · *edges:* 69.
