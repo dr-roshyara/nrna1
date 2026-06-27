@@ -26,5 +26,25 @@
 | AdjudicationService (orchestration, Option A) | T2,T14 | ✅ (in-memory, 48/48) |
 | EventOutbox port (real adapter) | T3,T4 | ☐ |
 
+## Push A — Adjudication persistence (DONE, commit 78aab60d7)
+| Item | Status |
+|------|--------|
+| `determinations` migration (state-only; UNIQUE(org,challenge_ref)) | ✅ |
+| `DeterminationModel` + `DeterminationMapper` + `EloquentDeterminationRepository` | ✅ |
+| `IdentityGenerator`/`UuidIdentityGenerator`; `TransactionManager`/`LaravelTransactionManager` | ✅ |
+| `TransactionalAdjudicationService` decorator (frozen coordinator untouched) | ✅ |
+| `OutboxEventAdapter` → existing `OutboxEvent`/`outbox:process` (explicit payload) | ✅ |
+| `AdjudicationServiceProvider` registered (config/app.php) | ✅ |
+| Integration test (real DB + outbox; exactly-one assertions) | ✅ 2/2 |
+| Architecture testsuite registered in phpunit.xml (F-4) | ✅ |
+| PHPUnit greenfield (unit+integration+fitness) | ✅ 50/50 |
+| PHPStan level max (greenfield contexts) | ✅ clean |
+
+**Push A tracked findings (carry forward):**
+- **Deptrac:** config staged; PHAR download URL 404 (asset naming changed) → resolve URL / install; boundaries enforced meanwhile by `GreenfieldCoreArchitectureTest`.
+- **Infection:** installed but no coverage driver (xdebug/pcov) in this env → wire with pcov in CI.
+- **7 pre-existing legacy architecture-test failures** (e.g. `Phase_C25_SovereigntyLeakagePrevention`, `VocabularyProhibition`) surfaced by registering the suite — NOT introduced by Push A; triage as separate tech-debt.
+- **ADR-T18** (AggregateVersion optimistic concurrency) — still deferred.
+
 ---
 *Implementation Traceability Matrix — living dashboard linking each aggregate to its ADR-T / BDR / events / state machine / repository / policies / tests / status; greenfield Core flagged; checked at the Architecture Review Gate.*
