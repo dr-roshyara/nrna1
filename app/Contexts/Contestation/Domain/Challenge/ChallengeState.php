@@ -5,14 +5,18 @@ declare(strict_types=1);
 namespace App\Contexts\Contestation\Domain\Challenge;
 
 /**
- * Challenge lifecycle states (Round 50-07 v1.2).
+ * Challenge lifecycle states (Round 50-07 v1.2.1, ADR-T20).
+ * Adjudicated = legal finality (binding determination exists);
+ * Resolved = operational completion (consequences executed). Distinct.
  * Terminal: Resolved, Dismissed, Lapsed.
  */
 enum ChallengeState: string
 {
     case Raised = 'raised';
     case Admitted = 'admitted';
+    case Investigating = 'investigating';
     case Routed = 'routed';
+    case Adjudicated = 'adjudicated';
     case Resolved = 'resolved';
     case Dismissed = 'dismissed';
     case Lapsed = 'lapsed';

@@ -6,6 +6,7 @@ namespace App\Contexts\Contestation\Domain\Challenge;
 
 use App\Contexts\Contestation\Domain\Challenge\Exception\IllegalChallengeTransition;
 use App\Contexts\Contestation\Domain\DomainEvent;
+use App\Contexts\Contestation\Domain\Events\ChallengeAdjudicated;
 use App\Contexts\Contestation\Domain\Events\ChallengeAdmitted;
 use App\Contexts\Contestation\Domain\Events\ChallengeDismissed;
 use App\Contexts\Contestation\Domain\Events\ChallengeRaised;
@@ -65,16 +66,38 @@ final class Challenge
         $this->record(new ChallengeDismissed($this->id, $reason, $at));
     }
 
+    /** Optional investigation phase (modeled per ADR-T20; trigger driven later). */
+    public function beginInvestigation(DateTimeImmutable $at): void
+    {
+        $this->guard('beginInvestigation', ChallengeState::Admitted);
+        $this->state = ChallengeState::Investigating;
+    }
+
     public function route(string $routedTo, DateTimeImmutable $at): void
     {
-        $this->guard('route', ChallengeState::Admitted);
+        $this->guard('route', ChallengeState::Admitted, ChallengeState::Investigating);
         $this->state = ChallengeState::Routed;
         $this->record(new ChallengeRouted($this->id, $routedTo, $at));
     }
 
+    /**
+     * Legal finality (ADR-T20): a binding determination exists. Routed →
+     * Adjudicated; emits ChallengeAdjudicated. NOT yet Resolved.
+     */
+    public function adjudicate(DeterminationId $determinationId, DateTimeImmutable $at): void
+    {
+        $this->guard('adjudicate', ChallengeState::Routed);
+        $this->state = ChallengeState::Adjudicated;
+        $this->record(new ChallengeAdjudicated($this->id, $determinationId, $at));
+    }
+
+    /**
+     * Operational completion (ADR-T20): consequences executed. Adjudicated →
+     * Resolved; emits ChallengeResolved. Requires prior adjudication.
+     */
     public function resolve(DeterminationId $determinationId, DateTimeImmutable $at): void
     {
-        $this->guard('resolve', ChallengeState::Routed);
+        $this->guard('resolve', ChallengeState::Adjudicated);
         $this->state = ChallengeState::Resolved;
         $this->record(new ChallengeResolved($this->id, $determinationId, $at));
     }
