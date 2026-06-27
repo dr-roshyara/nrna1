@@ -18,6 +18,7 @@
 | **ADR-T11** | **Anonymity invariant (Q7)** — no voter↔vote linkage in any aggregate, event payload, or projection; hashes only | constitutional, build-breaking | fitness test asserts no linkage/`user_id` reconstruction | D11 · 50-04/05 |
 | **ADR-T12** | **Contestation + Adjudication = binding finality** (greenfield Core) | dispute resolution is an open problem in the voting literature | the trustworthiness differentiator; candidate contribution | D12 · 50-03 |
 | **ADR-T13** | **Cryptographic E2E verifiability — DEFERRED (Proposed)** | current integrity = hash + audit-trail, weaker than voter-verifiable crypto proof | recorded **known limitation**; revisit in Part B | R-4 · S17–S20 |
+| **ADR-T14** | **Adjudication interaction = Option A: Challenge READ-ONLY** during `IssueDetermination`; **Determination is the sole aggregate written** in the transaction | one-aggregate-per-transaction (ADR-T1) must not be violated; Challenge is resolved **asynchronously later** by reacting to `DeterminationIssued` + `ElectionCorrectionApplied` (50-07 Routed→Resolved) | `AdjudicationService` loads Challenge (read), verifies `canProceedToAdjudication()` (state=Routed), creates+saves Determination, enqueues `DeterminationIssued` to outbox in the same txn; never writes Challenge | 50-03 · 50-07 · 50-08 |
 
 ## ADR dependency graph (prevents conflicting future ADRs)
 ```mermaid
