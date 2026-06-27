@@ -57,7 +57,16 @@ Current systems either (a) claim anonymity but store voter↔vote links, (b) lac
 Laravel 11 · PHP 8.2/8.3 · Inertia 2.0 + Vue 3 (forms use `router.post()`, never raw fetch) · MySQL/Postgres · Spatie Permission · Sanctum · custom multi-tenancy (`organisation_id` + `BelongsToTenant` scope) · PHPUnit 11 · Deptrac + PHPStan + Infection (architecture conformance — being installed). Existing infra: transactional outbox (`ProcessOutboxEvents`), dead-letter (`DeadLetterEntry`), `tests/Architecture/`.
 
 # Part VII — Architecture
-**Style:** modular monolith · hexagonal (Domain ← Application ← Infrastructure) · DDD · CQRS-light (Eloquent reads; repository+DTO writes) · event-driven seams.
+
+## Architectural style (authoritative — do not mislabel)
+This is **NOT** pure Clean Architecture, and **NOT** pure Hexagonal. It is a **DDD-First Hybrid Architecture**:
+> Strategic Domain-Driven Design determines bounded contexts, ubiquitous language, aggregate boundaries, policies, and event ownership. Tactical DDD defines aggregates, value objects, repositories, domain services, and state machines. Hexagonal Architecture governs dependency inversion through ports and adapters. Clean Architecture principles maintain inward dependencies between Domain, Application, and Infrastructure. CQRS-light separates aggregate persistence from read models, while event-driven coordination enables eventual consistency between bounded contexts. The system is deployed as a modular monolith.
+
+**The organizing principle is bounded context (business capability), NOT concentric layers** — `app/Contexts/<Context>/{Domain,Application,Infrastructure}`. Every decision starts from the domain: context → ubiquitous language → aggregate → state machine → policies → events → *then* repositories → *then* persistence. The aggregate precedes the port (DDD), the port precedes the adapter (Hexagonal).
+
+Approximate contribution: **DDD ~55% · Hexagonal ~25% · Clean layering ~15% · CQRS-light ~5%**. Drives-what order: `Strategic DDD → Tactical DDD → Hexagonal boundaries → Clean layering → CQRS-light → Event-driven coordination → Laravel`.
+
+**Style (shorthand):** modular monolith · hexagonal (Domain ← Application ← Infrastructure) · DDD-first · CQRS-light (Eloquent reads; repository+DTO writes) · event-driven seams.
 **Code home:** `app/Contexts/<Context>/{Domain,Application,Infrastructure}` (authoritative per Round 49-03).
 **Layer rules:** Domain = pure PHP (no Laravel/Eloquent/Carbon/facades); Application = limited (constructor injection, DTOs, no facades/Eloquent); Infrastructure = Laravel-free-for-all. See `docs/implementation/Implementation_Architecture_Overview.md`.
 **Tactical principles:** **TP-1** event-is-the-seam · **TP-2** request-not-create · **TP-3** events version-never-mutate.
