@@ -24,15 +24,15 @@
                         <div class="p-8">
                             
                             <!-- Warning Icon and Type -->
-                            <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+                            <div class="bg-danger-50 border-l-4 border-danger-400 p-4 mb-6">
                                 <div class="flex items-center">
                                     <div class="shrink-0">
-                                        <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                                        <svg class="h-5 w-5 text-danger-400" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                                         </svg>
                                     </div>
                                     <div class="ml-3">
-                                        <p class="text-sm text-red-700">
+                                        <p class="text-sm text-danger-700">
                                             <strong>Access Denied:</strong> {{ denial_type }}
                                         </p>
                                     </div>
@@ -41,10 +41,10 @@
 
                             <!-- Main Message -->
                             <div class="space-y-4 mb-6">
-                                <div class="bg-gray-50 rounded-lg p-6">
-                                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Reason | कारण</h3>
+                                <div class="bg-neutral-50 rounded-lg p-6">
+                                    <h3 class="text-lg font-semibold text-neutral-900 mb-3">Reason | कारण</h3>
                                     
-                                    <div class="space-y-3 text-gray-700">
+                                    <div class="space-y-3 text-neutral-700">
                                         <p class="leading-relaxed">
                                             {{ message_english }}
                                         </p>
@@ -69,9 +69,9 @@
                             </div>
 
                             <!-- IP Mismatch Details -->
-                            <div v-if="denial_reason === 'ip_mismatch'" class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-                                <h4 class="text-md font-semibold text-blue-800 mb-2">Security Information | सुरक्षा जानकारी</h4>
-                                <div class="text-sm text-blue-700 space-y-1">
+                            <div v-if="denial_reason === 'ip_mismatch'" class="bg-primary-50 border border-primary-200 rounded-lg p-4 mb-6">
+                                <h4 class="text-md font-semibold text-primary-800 mb-2">Security Information | सुरक्षा जानकारी</h4>
+                                <div class="text-sm text-primary-700 space-y-1">
                                     <p><strong>Current IP:</strong> {{ client_ip }}</p>
                                     <p><strong>Security Requirement:</strong> Same IP as registration</p>
                                     <p class="text-xs mt-2 opacity-75">
@@ -90,9 +90,9 @@
                             </div>
 
                             <!-- Contact Information -->
-                            <div class="bg-gray-100 rounded-lg p-4 mb-6">
-                                <h4 class="text-md font-semibold text-gray-800 mb-2">Need Help? | सहायता चाहिन्छ?</h4>
-                                <div class="text-sm text-gray-700 space-y-1">
+                            <div class="bg-neutral-100 rounded-lg p-4 mb-6">
+                                <h4 class="text-md font-semibold text-neutral-800 mb-2">Need Help? | सहायता चाहिन्छ?</h4>
+                                <div class="text-sm text-neutral-700 space-y-1">
                                     <p><strong>Election Committee Contact:</strong></p>
                                     <p>📧 Email: election@nrna.org</p>
                                     <p>📞 Phone: +49-XXX-XXXXXXX</p>
@@ -122,7 +122,7 @@
                             </div>
 
                             <!-- Footer Info -->
-                            <div class="mt-8 text-center text-xs text-gray-500">
+                            <div class="mt-8 text-center text-xs text-neutral-500">
                                 <p>Reference ID: {{ denial_reason }}-{{ Date.now() }}</p>
                                 <p>NRNA ID: {{ nrna_id }}</p>
                                 <p>Time: {{ new Date().toLocaleString() }}</p>

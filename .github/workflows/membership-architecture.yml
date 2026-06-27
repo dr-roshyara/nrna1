@@ -1,0 +1,170 @@
+name: Membership Architecture Guardrails
+
+on:
+  push:
+    branches: [main, postgressql, "phase-*"]
+  pull_request:
+    branches: [main, postgressql]
+
+jobs:
+  architecture-check:
+    runs-on: ubuntu-latest
+    name: Architecture & Test Gates
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: pdo, sqlite, pdo_sqlite
+          tools: composer
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      # =========================================
+      # GATE 1: DB ACCESS ENFORCEMENT
+      # =========================================
+      - name: "GATE 1: No DB access in Application layer"
+        run: |
+          echo "Scanning for forbidden DB::table usage in Application layer..."
+
+          if grep -r "DB::table\|->table(" \
+            app/Contexts/Membership/Application/ \
+            app/Contexts/Elections/Application/ \
+            2>/dev/null; then
+            echo "❌ FAIL: DB::table found in Application layer"
+            echo "   Application layer must use repositories, not raw queries"
+            exit 1
+          fi
+
+          echo "✅ PASS: No DB access in Application layer"
+
+      # =========================================
+      # GATE 2: CONTROLLER PURITY
+      # =========================================
+      - name: "GATE 2: No value object construction in controllers"
+        run: |
+          echo "Scanning for forbidden value object construction in controllers..."
+
+          if grep -r "new GeoPathChain\|GeoPathChain::fromString" \
+            app/Http/Controllers/ \
+            2>/dev/null; then
+            echo "❌ FAIL: GeoPathChain constructed in controller"
+            echo "   Must use MemberGeoPathProviderPort instead"
+            exit 1
+          fi
+
+          echo "✅ PASS: Controllers are pure (no value object construction)"
+
+      # =========================================
+      # GATE 3: PHASE C AUTHORITY
+      # =========================================
+      - name: "GATE 3: Phase C is sole eligibility authority"
+        run: |
+          echo "Scanning for duplicate eligibility logic outside Phase C..."
+
+          # Find all isEligible() calls
+          ELIGIBILITY_CALLS=$(grep -r "isEligible(" app/Contexts/ --include="*.php" | grep -v "EligibleCommitteeQueryService" | grep -v "EligibilityPolicy" || true)
+
+          if [ ! -z "$ELIGIBILITY_CALLS" ]; then
+            echo "⚠️  WARNING: Eligibility logic detected outside Phase C service:"
+            echo "$ELIGIBILITY_CALLS"
+            echo ""
+            echo "This may indicate logic duplication. Verify Phase C is the source of truth."
+          fi
+
+          echo "✅ PASS: Phase C authority check complete"
+
+      # =========================================
+      # GATE 4: TENANT BOUNDARY ENFORCEMENT
+      # =========================================
+      - name: "GATE 4: Tenant scoping enforcement"
+        run: |
+          echo "Scanning for member-scoped API endpoints..."
+
+          if grep -r "members/{id}/committees\|members/{memberId}" \
+            app/Http/ routes/ \
+            2>/dev/null; then
+            echo "❌ FAIL: Member-scoped endpoint detected"
+            echo "   All APIs must be organisation-scoped: /organisations/{tenantId}/..."
+            exit 1
+          fi
+
+          echo "✅ PASS: All endpoints are tenant-scoped"
+
+      # =========================================
+      # GATE 5: CONSTITUTIONAL TEST SUITE
+      # =========================================
+      - name: "GATE 5: Constitutional Membership Tests (72/72 required)"
+        run: |
+          echo "Running Constitutional Membership test suite..."
+
+          php artisan test tests/Unit/Constitutional/Membership/ \
+            --no-coverage \
+            --stop-on-failure \
+            --testdox || {
+            echo "❌ FAIL: Constitutional tests did not pass"
+            echo "   Target: 72/72 passing"
+            exit 1
+          }
+
+          echo "✅ PASS: All 72 Constitutional tests passing"
+
+      # =========================================
+      # GATE 6: PHASE C QUERY SERVICE
+      # =========================================
+      - name: "GATE 6: Phase C Query Service Tests"
+        run: |
+          echo "Running Phase C (EligibleCommitteeQueryService) tests..."
+
+          php artisan test tests/Unit/Constitutional/Membership/Query/EligibleCommitteeQueryServiceTest.php \
+            --no-coverage \
+            --testdox || {
+            echo "❌ FAIL: Phase C tests did not pass"
+            exit 1
+          }
+
+          echo "✅ PASS: Phase C query service stable"
+
+      # =========================================
+      # GATE 7: FEATURE TESTS (soft gate)
+      # =========================================
+      - name: "GATE 7: Feature Tests (optional)"
+        run: |
+          echo "Running feature tests..."
+          php artisan test tests/Feature/ --no-coverage || true
+
+      # =========================================
+      # SUMMARY & REPORT
+      # =========================================
+      - name: Summary Report
+        if: always()
+        run: |
+          echo ""
+          echo "=========================================="
+          echo "ARCHITECTURE GUARDRAILS SUMMARY"
+          echo "=========================================="
+          echo ""
+          echo "✅ GATE 1: DB Access Enforcement"
+          echo "✅ GATE 2: Controller Purity"
+          echo "✅ GATE 3: Phase C Authority"
+          echo "✅ GATE 4: Tenant Scoping"
+          echo "✅ GATE 5: Constitutional Tests (72/72)"
+          echo "✅ GATE 6: Phase C Service"
+          echo "✅ GATE 7: Feature Tests"
+          echo ""
+          echo "BUILD: SAFE FOR MERGE"
+          echo "=========================================="

@@ -1,6 +1,6 @@
 <template>
   <PublicDigitLayout>
-    <div class="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <div class="min-h-screen bg-primary-50">
 
       <!-- ── Sticky Hero Header ─────────────────────────────────────────── -->
       <div class="bg-white/95 backdrop-blur-sm border-b border-slate-200 sticky top-0 z-10">
@@ -56,9 +56,9 @@
         </Transition>
         <div v-if="page.props.errors?.error"
              role="alert" aria-live="assertive"
-             class="mb-4 rounded-xl bg-red-50 border border-red-200 p-4 flex items-center gap-3">
-          <XCircleIcon class="w-5 h-5 text-red-600 flex-shrink-0" aria-hidden="true" />
-          <p class="text-sm text-red-800">{{ page.props.errors.error }}</p>
+             class="mb-4 rounded-xl bg-danger-50 border border-danger-200 p-4 flex items-center gap-3">
+          <XCircleIcon class="w-5 h-5 text-danger-600 flex-shrink-0" aria-hidden="true" />
+          <p class="text-sm text-danger-800">{{ page.props.errors.error }}</p>
         </div>
       </div>
 
@@ -82,9 +82,12 @@
         </div>
 
         <!-- Quick Actions -->
-        <div v-if="quickActions.length" class="mt-8">
-          <h2 class="text-base font-semibold text-slate-700 mb-3">{{ t.quick_actions }}</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+        <div v-if="quickActions.length" class="mt-10">
+          <div class="mb-5">
+            <h2 class="text-lg font-bold text-slate-900">{{ t.quick_actions }}</h2>
+            <p class="text-sm text-slate-500 mt-1">{{ t.quick_actions_desc }}</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5">
             <QuickActionCard
               v-for="action in quickActions"
               :key="action.key"
@@ -142,15 +145,19 @@
                 </div>
                 <div class="p-5 sm:p-6">
                   <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">{{ t.stat_pending_fees }}</p>
-                  <p class="text-base font-semibold" :class="memberSelf.pending_fees > 0 ? 'text-red-600' : 'text-green-700'">
+                  <p class="text-base font-semibold" :class="memberSelf.pending_fees > 0 ? 'text-danger-600' : 'text-green-700'">
                     {{ memberSelf.pending_fees > 0 ? memberSelf.pending_fees.toFixed(2) + ' €' : t.no_pending_fees }}
                     <span v-if="memberSelf.pending_fees <= 0" class="sr-only">— paid up</span>
                   </p>
                 </div>
-                <div v-if="memberSelf.member_id" class="p-5 sm:p-6 flex items-end">
+                <div v-if="memberSelf.member_id" class="p-5 sm:p-6 flex items-end gap-4">
                   <a :href="route('organisations.members.fees.index', [organisation.slug, memberSelf.member_id])"
                      class="text-sm font-medium text-indigo-600 hover:text-indigo-800 hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 rounded">
                     {{ t.nav_my_fees }} →
+                  </a>
+                  <a :href="route('organisations.members.finance', [organisation.slug, memberSelf.member_id])"
+                     class="text-sm font-medium text-green-600 hover:text-green-800 hover:underline focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-1 rounded">
+                    {{ t.nav_my_finance }} →
                   </a>
                 </div>
               </div>
@@ -298,11 +305,11 @@
                   <li v-for="(item, i) in recentActivity.slice(0, 6)" :key="i"
                       class="px-5 py-3 flex items-start gap-3">
                     <div class="mt-0.5 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
-                         :class="item.type === 'payment' ? 'bg-green-100' : 'bg-blue-100'"
+                         :class="item.type === 'payment' ? 'bg-green-100' : 'bg-primary-100'"
                          aria-hidden="true">
                       <component :is="item.type === 'payment' ? CheckCircleIcon : UserIcon"
                                  class="w-3.5 h-3.5"
-                                 :class="item.type === 'payment' ? 'text-green-600' : 'text-blue-600'" />
+                                 :class="item.type === 'payment' ? 'text-green-600' : 'text-primary-600'" />
                     </div>
                     <span class="text-xs text-slate-600 leading-snug">{{ item.message }}</span>
                   </li>
@@ -373,6 +380,7 @@ const translations = {
   en: {
     title: 'Membership Dashboard',
     quick_actions: 'Quick Actions',
+    quick_actions_desc: 'Common tasks and shortcuts for managing membership',
     your_membership: 'Your Membership',
     days_left: 'left',
     // Stat card labels
@@ -396,6 +404,8 @@ const translations = {
     nav_roles: 'Organisation Roles', nav_roles_desc: 'View roles & add as member',
     nav_types: 'Types', nav_manage_tiers: 'Manage tiers',
     nav_my_fees: 'My Fees', nav_payment_history: 'Payment history',
+    nav_my_finance: 'Finance', nav_financial_overview: 'Financial overview',
+    nav_manage_fees: 'Manage Fees', nav_manage_fees_desc: 'Assign and track member fees',
     nav_renew: 'Renew', nav_extend: 'Extend membership',
     nav_apply: 'Apply', nav_become_member: 'Become a member',
     nav_invite_members: 'Invite Members', nav_invite_members_desc: 'Send email invitations to join',
@@ -442,6 +452,7 @@ const translations = {
   de: {
     title: 'Mitgliedschafts-Dashboard',
     quick_actions: 'Schnellaktionen',
+    quick_actions_desc: 'Häufige Aufgaben und Verknüpfungen für die Mitgliedschaftsverwaltung',
     your_membership: 'Ihre Mitgliedschaft',
     days_left: 'verbleibend',
     stat_total_members: 'Mitglieder gesamt',
@@ -462,6 +473,8 @@ const translations = {
     nav_roles: 'Organisationsrollen', nav_roles_desc: 'Rollen anzeigen & als Mitglied hinzufügen',
     nav_types: 'Typen', nav_manage_tiers: 'Stufen verwalten',
     nav_my_fees: 'Meine Gebühren', nav_payment_history: 'Zahlungshistorie',
+    nav_my_finance: 'Finanzen', nav_financial_overview: 'Finanzielle Übersicht',
+    nav_manage_fees: 'Gebühren verwalten', nav_manage_fees_desc: 'Mitgliedsgebühren zuweisen und verfolgen',
     nav_renew: 'Verlängern', nav_extend: 'Mitgliedschaft verlängern',
     nav_apply: 'Beantragen', nav_become_member: 'Mitglied werden',
     nav_invite_members: 'Mitglieder einladen', nav_invite_members_desc: 'E-Mail-Einladungen versenden',
@@ -502,6 +515,7 @@ const translations = {
   np: {
     title: 'सदस्यता ड्यासबोर्ड',
     quick_actions: 'द्रुत कार्यहरू',
+    quick_actions_desc: 'सदस्यता प्रबन्धनका लागि सामान्य कार्य र शर्टकट',
     your_membership: 'तपाईंको सदस्यता',
     days_left: 'बाँकी',
     stat_total_members: 'कुल सदस्यहरू',
@@ -522,6 +536,8 @@ const translations = {
     nav_roles: 'संगठन भूमिकाहरू', nav_roles_desc: 'भूमिका हेर्नुहोस् र सदस्य थप्नुहोस्',
     nav_types: 'प्रकारहरू', nav_manage_tiers: 'स्तर व्यवस्थापन',
     nav_my_fees: 'मेरो शुल्क', nav_payment_history: 'भुक्तानी इतिहास',
+    nav_my_finance: 'वित्त', nav_financial_overview: 'वित्तीय सारांश',
+    nav_manage_fees: 'शुल्क व्यवस्थापन', nav_manage_fees_desc: 'सदस्य शुल्क नियुक्त र ट्र्याक गर्नुहोस्',
     nav_renew: 'नवीकरण', nav_extend: 'सदस्यता बढाउनुहोस्',
     nav_apply: 'आवेदन', nav_become_member: 'सदस्य बन्नुहोस्',
     nav_invite_members: 'सदस्य आमन्त्रण', nav_invite_members_desc: 'इमेल आमन्त्रण पठाउनुहोस्',
@@ -572,7 +588,7 @@ const roleLabel = computed(() => {
 const roleBadgeClass = computed(() => {
   const map = {
     owner:      'bg-purple-100 text-purple-700',
-    admin:      'bg-blue-100 text-blue-700',
+    admin:      'bg-primary-100 text-primary-700',
     commission: 'bg-yellow-100 text-yellow-700',
     member:     'bg-green-100 text-green-700',
   }
@@ -679,6 +695,11 @@ const quickActions = computed(() => {
       key: 'members', title: t.value.nav_members, description: t.value.nav_directory,
       href: safeRoute('organisations.members.index', organisation.slug),
       icon: UsersIcon, color: 'blue',
+    })
+    actions.push({
+      key: 'manage_fees', title: t.value.nav_manage_fees, description: t.value.nav_manage_fees_desc,
+      href: safeRoute('organisations.members.index', organisation.slug),
+      icon: CurrencyEuroIcon, color: 'green',
     })
     actions.push({
       key: 'participants', title: t.value.nav_participants, description: t.value.nav_all_roles,
@@ -800,19 +821,19 @@ const noMembershipDesc = computed(() => {
 const memberStatusIconBg = computed(() => {
   const s = props.memberSelf?.status
   if (s === 'active')  return 'bg-green-100'
-  if (s === 'expired') return 'bg-red-100'
+  if (s === 'expired') return 'bg-danger-100'
   return 'bg-slate-100'
 })
 const memberStatusIconColor = computed(() => {
   const s = props.memberSelf?.status
   if (s === 'active')  return 'text-green-600'
-  if (s === 'expired') return 'text-red-600'
+  if (s === 'expired') return 'text-danger-600'
   return 'text-slate-500'
 })
 const memberStatusTextClass = computed(() => {
   const s = props.memberSelf?.status
   if (s === 'active')  return 'text-green-700'
-  if (s === 'expired') return 'text-red-700'
+  if (s === 'expired') return 'text-danger-700'
   return 'text-slate-700'
 })
 const memberStatusIcon = computed(() => {
@@ -842,3 +863,4 @@ const formatDate = (val) => {
   transform: translateY(-6px);
 }
 </style>
+

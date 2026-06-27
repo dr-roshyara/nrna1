@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Application\Election\Facades\ElectionLifecycle;
 use App\Models\Election;
+use App\Services\ElectionAuditService;
 use Carbon\Carbon;
-use App\Models\VoterSlug; // still used for active-session reuse in start()
+use App\Models\VoterSlug;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Facades\Log;
 
 class ElectionVotingController extends Controller
 {
@@ -24,7 +27,7 @@ class ElectionVotingController extends Controller
     public function show(string $slug): Response
     {
         $election = Election::withoutGlobalScopes()
-            ->with('organisation:id,name,logo')
+            ->with('organisation:id,name,slug,logo')
             ->where('slug', $slug)
             ->where('type', 'real')
             ->firstOrFail();
@@ -40,24 +43,45 @@ class ElectionVotingController extends Controller
             && $membership->role   === 'voter'
             && $membership->status !== 'removed';
 
-        // Compare end_date as end-of-day: an election ending "on March 23" should
-        // remain open for the full day, regardless of whether it was stored as midnight.
-        $endOfDay = \Carbon\Carbon::parse($election->end_date)->endOfDay();
+        // Evaluate election lifecycle state through SSOT
+        $lifecycle = ElectionLifecycle::of($election);
 
-        $canVote = $isEligible
-            && ! $hasVoted
-            && $election->status === 'active'
-            && $election->start_date <= now()
-            && $endOfDay >= now();
+        // canVote() encapsulates: state machine + voting window + administration completion
+        // Membership eligibility is separate concern (voter role, not removed)
+        $canVote = $isEligible && !$hasVoted && $lifecycle->canVote();
+
+        if (!$lifecycle->canVote()) {
+            Log::channel('voter_audit')->info('Vote creation blocked by election lifecycle', [
+                'election_id' => $election->id,
+                'user_id' => $user->id,
+                'election_state' => $lifecycle->state()->value,
+                'blocked_reason' => $lifecycle->blockedReason(),
+            ]);
+        }
 
         $org = $election->organisation;
+
+        // Evaluate IP restriction status
+        $ip      = request()->ip();
+        $ipBlock = $this->resolveIpBlock($election, $ip);
 
         return Inertia::render('Election/Show', [
             'election'         => $election,
             'hasVoted'         => $hasVoted,
             'canVote'          => $canVote,
             'isEligible'       => $isEligible,
-            'ipAddress'        => request()->ip(),
+            'lifecycle'        => [
+                'state'           => $lifecycle->state()->value,
+                'canVote'         => $lifecycle->canVote(),
+                'blockedReason'   => $lifecycle->blockedReason(),
+                'isTerminal'      => $lifecycle->isTerminal(),
+                'allowedActions'  => $lifecycle->allowedActions(),
+            ],
+            'ipAddress'        => $ip,
+            'ipBlocked'        => $ipBlock['blocked'],
+            'ipBlockMessage'   => $ipBlock['message'],
+            'remainingVotes'   => $ipBlock['remainingVotes'] ?? null,
+            'organisation'     => $org,
             'organisationLogo' => $org?->logo ? asset($org->logo) : null,
             'organisationName' => $org?->name,
         ]);
@@ -71,7 +95,7 @@ class ElectionVotingController extends Controller
      * Validates eligibility, creates (or reuses) a VoterSlug,
      * then redirects into the existing voting workflow at slug.code.create.
      */
-    public function start(string $slug): RedirectResponse
+    public function start(Request $request, string $slug): RedirectResponse
     {
         $election = Election::withoutGlobalScopes()
             ->where('slug', $slug)
@@ -94,6 +118,40 @@ class ElectionVotingController extends Controller
                 ->with('info', 'You have already voted.');
         }
 
+        // Validate election lifecycle state (SSOT check)
+        $lifecycle = ElectionLifecycle::of($election);
+        if (!$lifecycle->canVote()) {
+            Log::channel('voter_audit')->warning('Voting start blocked by election lifecycle', [
+                'election_id' => $election->id,
+                'user_id' => $user->id,
+                'election_state' => $lifecycle->state()->value,
+                'blocked_reason' => $lifecycle->blockedReason(),
+            ]);
+
+            return redirect()->route('elections.show', $slug)
+                ->with('error', 'Voting is not currently allowed: ' . $lifecycle->blockedReason());
+        }
+
+        // IP restriction check (replaces bare abort() with friendly redirect)
+        $ipBlock = $this->resolveIpBlock($election, $request->ip());
+        if ($ipBlock['blocked']) {
+            // Log IP block event BEFORE redirect
+            app(ElectionAuditService::class)->log(
+                election: $election,
+                event: 'ip_blocked',
+                user: $user,
+                category: 'voters',
+                ip: $request->ip(),
+                metadata: [
+                    'reason' => 'limit_exceeded',
+                    'max' => $election->ip_restriction_max_per_ip,
+                ]
+            );
+
+            return redirect()->route('elections.show', $slug)
+                ->with('error', $ipBlock['message']);
+        }
+
         // Reuse an unexpired active slug, or refresh any existing slug for this user+election
         $existing = VoterSlug::withoutGlobalScopes()
             ->where('user_id', $user->id)
@@ -109,6 +167,16 @@ class ElectionVotingController extends Controller
                 'can_vote_now' => true,
                 'expires_at' => now()->addMinutes(30),
             ]);
+
+            // Log voting_started event
+            app(ElectionAuditService::class)->log(
+                election: $election,
+                event: 'voting_started',
+                user: $user,
+                category: 'voters',
+                ip: $request->ip()
+            );
+
             return redirect()->route('slug.code.create', ['vslug' => $existing->slug]);
         }
 
@@ -122,6 +190,69 @@ class ElectionVotingController extends Controller
             'expires_at'      => now()->addMinutes(30),
         ]);
 
+        // Log voting_started event
+        app(ElectionAuditService::class)->log(
+            election: $election,
+            event: 'voting_started',
+            user: $user,
+            category: 'voters',
+            ip: $request->ip()
+        );
+
         return redirect()->route('slug.code.create', ['vslug' => $voterSlug->slug]);
+    }
+
+    /**
+     * Evaluate IP restriction status.
+     *
+     * Three-layer precedence:
+     * 1. Whitelist (always bypasses all layers)
+     * 2. Layer 3: Per-election IP restriction (ip_restriction_enabled)
+     * 3. Layer 2: Global fallback (config('app.max_use_clientIP'))
+     */
+    private function resolveIpBlock(Election $election, string $ip): array
+    {
+        // Whitelist always bypasses ALL layers (Layer 3 AND Layer 2)
+        if ($election->ip_whitelist && $election->isIpWhitelisted($ip)) {
+            return ['blocked' => false, 'message' => null];
+        }
+
+        // Layer 3: Per-election setting (takes precedence when enabled)
+        if ($election->isIpRestricted()) {
+            return $this->evaluateIpCount($election, $ip, $election->ip_restriction_max_per_ip);
+        }
+
+        // Layer 2: Global platform fallback (config('app.max_use_clientIP'))
+        $globalMax = (int) config('app.max_use_clientIP', 0);
+        if ($globalMax > 0) {
+            return $this->evaluateIpCount($election, $ip, $globalMax);
+        }
+
+        return ['blocked' => false, 'message' => null];
+    }
+
+    /**
+     * Count completed votes from an IP and determine if blocked.
+     */
+    private function evaluateIpCount(Election $election, string $ip, int $max): array
+    {
+        $votedCount = VoterSlug::where('election_id', $election->id)
+            ->where('step_1_ip', $ip)
+            ->where('has_voted', true)
+            ->count();
+
+        if ($votedCount >= $max) {
+            return [
+                'blocked'        => true,
+                'message'        => "The maximum of {$max} vote(s) from your network has been reached.",
+                'remainingVotes' => 0,
+            ];
+        }
+
+        return [
+            'blocked'        => false,
+            'message'        => null,
+            'remainingVotes' => $max - $votedCount,
+        ];
     }
 }

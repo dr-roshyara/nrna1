@@ -1,8 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
-    <!-- Election Header -->
-    <PublicDigitHeader />
-
+  <PublicDigitLayout>
     <!-- Mode Indicator Banner -->
     <mode-indicator :mode="mode" :organisation-id="organisation_id" />
 
@@ -10,11 +7,11 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 flex-1">
       <!-- Header Section -->
       <header class="mb-8 sm:mb-12">
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-4">
           {{ page_title || $t('pages.demo-result.page_title') }}
         </h1>
 
-        <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
+        <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl">
           {{ $t('pages.demo-result.subtitle') }}
         </p>
       </header>
@@ -68,7 +65,7 @@
 
         <button
           @click="printResults"
-          class="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-800 text-white rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 dark:focus:ring-offset-gray-900 min-h-[44px] sm:min-h-[48px]"
+          class="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-neutral-600 hover:bg-neutral-700 dark:bg-neutral-700 dark:hover:bg-neutral-800 text-white rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 dark:focus:ring-offset-gray-900 min-h-[44px] sm:min-h-[48px]"
           :aria-label="$t('pages.demo-result.actions.print_aria')"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -96,28 +93,26 @@
 
       <!-- Empty State -->
       <section v-if="!posts || posts.length === 0" class="text-center py-16 sm:py-20">
-        <svg class="w-16 h-16 sm:w-20 sm:h-20 mx-auto text-gray-400 dark:text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-16 h-16 sm:w-20 sm:h-20 mx-auto text-neutral-400 dark:text-neutral-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <p class="text-lg text-gray-500 dark:text-gray-400">{{ $t('pages.demo-result.empty.message') }}</p>
-        <p class="text-sm text-gray-400 dark:text-gray-500 mt-2">{{ $t('pages.demo-result.empty.hint') }}</p>
+        <p class="text-lg text-neutral-500 dark:text-neutral-400">{{ $t('pages.demo-result.empty.message') }}</p>
+        <p class="text-sm text-neutral-400 dark:text-neutral-500 mt-2">{{ $t('pages.demo-result.empty.hint') }}</p>
       </section>
 
     </main>
-
-    <!-- Public Digit Footer -->
-    <public-digit-footer />
-  </div>
+  </PublicDigitLayout>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue';
+import { usePage } from '@inertiajs/vue3';
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 import ModeIndicator from './ModeIndicator.vue';
 import CandidateCard from './Candidate.vue';
 import StatCard from '@/Components/StatCard.vue';
 
+const { props: pageProps } = usePage();
 const isDownloading = ref(false);
 
 const props = defineProps({
@@ -126,9 +121,9 @@ const props = defineProps({
   mode: {
     type: String,
     required: true,
-    validator: (v) => ['global', 'organisation'].includes(v)
+    validator: (v) => ['global', 'organisation', 'public'].includes(v)
   },
-  organisation_id: { type: Number,  default: null },
+  organisation_id: { type: String,  default: null },
   is_demo:         { type: Boolean, default: true },
   page_title:      { type: String,  default: null },
 });
@@ -139,11 +134,15 @@ const getPostResults = (postId) =>
 const downloadPDF = async () => {
   isDownloading.value = true;
   try {
-    const route = props.mode === 'global'
-      ? '/demo/global/result/download-pdf'
-      : '/demo/result/download-pdf';
+    let downloadUrl;
+    if (props.mode === 'global') {
+      downloadUrl = route('demo-result.global.download-pdf');
+    } else {
+      const orgSlug = pageProps.user?.organisation?.slug;
+      downloadUrl = route('demo-result.download-pdf', { organisation_slug: orgSlug });
+    }
 
-    const response = await fetch(route);
+    const response = await fetch(downloadUrl);
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -181,3 +180,4 @@ const printResults = () => window.print();
   }
 }
 </style>
+

@@ -22,27 +22,29 @@ use App\Services\VotingServiceFactory;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use App\Services\VoterProgressService;
 use Illuminate\Routing\Redirector;
 use App\Notifications\SecondVerificationCode;
 use App\Notifications\SendVoteSavingCode;
 //controllers
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use App\Traits\Voting\CodeVerificationTrait;
 use App\Traits\Voting\VoteStorageTrait;
+use App\Application\Election\Security\TrustPolicyEvaluator;
 
 class DemoVoteController extends Controller
 {
     // ✅ Use consolidated traits for code quality and maintainability
     use CodeVerificationTrait, VoteStorageTrait;
-    public $vote ; 
+    public $vote ;
     public $has_voted;
-    public $in_code ; 
+    public $in_code ;
     public $out_code;
     public $user_id;
     public $verify_final_vote;
@@ -53,7 +55,9 @@ class DemoVoteController extends Controller
     /**
      * Constructor - Initialize voting process state
      */
-    public function __construct()
+    public function __construct(
+        private TrustPolicyEvaluator $trustEvaluator,
+    )
     {
         $this->in_code = '';
         $this->verify_final_vote = false;
@@ -137,7 +141,7 @@ class DemoVoteController extends Controller
     private function verifyStrictModeCodeState(&$code): string
     {
         // In STRICT MODE, Code2 should not have been used yet
-        if ($code->code_to_save_vote_used_at !== null || $code->is_code_to_save_vote_usable == 0) {
+        if ($code->code_to_save_vote_used_at !== null || $code->is_code_to_save_vote_usable === false) {
             return "dashboard";  // Code expired or already used
         }
 
@@ -255,7 +259,7 @@ class DemoVoteController extends Controller
         }
 
         // REAL: Must check can_vote_now flag (timing restrictions)
-        return $user->can_vote_now == 1;
+        return $user->can_vote_now === true;
     }
 
     /**
@@ -369,7 +373,7 @@ public function create(Request $request)
         // withoutGlobalScopes() bypasses BelongsToTenant filtering for demo elections
         $nationalPosts = DemoPost::withoutGlobalScopes()
             ->where('election_id', $election->id)
-            ->where('is_national_wide', 1)
+            ->where('is_national_wide', true)
             ->with(['candidacies' => function($query) {
                 $query->withoutGlobalScopes()
                       ->with('user')
@@ -423,7 +427,7 @@ public function create(Request $request)
         if (!empty($auth_user->region)) {
             $regionalPostsQuery = DemoPost::withoutGlobalScopes()
                 ->where('election_id', $election->id)
-                ->where('is_national_wide', 0)
+                ->where('is_national_wide', false)
                 ->where('state_name', trim($auth_user->region))
                 ->with(['candidacies' => function($query) {
                     $query->withoutGlobalScopes()
@@ -475,7 +479,7 @@ public function create(Request $request)
             $query->join('users', 'users.id', '=', 'candidacies.user_id')
                   ->select('candidacies.*', 'users.name as user_name');
         }]))
-        ->where('is_national_wide', 1)
+        ->where('is_national_wide', true)
         ->orderBy('post_id')
         ->get()
         ->map(function ($post) {
@@ -508,7 +512,7 @@ public function create(Request $request)
                 $query->join('users', 'users.id', '=', 'candidacies.user_id')
                       ->select('candidacies.*', 'users.name as user_name');
             }]))
-            ->where('is_national_wide', 0)
+            ->where('is_national_wide', false)
             ->where('state_name', trim($auth_user->region))
             ->orderBy('post_id')
             ->get()
@@ -1035,16 +1039,16 @@ private function validateVoteIntegrity($vote_data, $auth_user)
     
     try {
         // Get available posts for verification
-        $available_national_posts = Post::where('is_national_wide', 1)->pluck('id')->toArray();
-        $available_regional_posts = Post::where('is_national_wide', 0)
+        $available_national_posts = Post::where('is_national_wide', true)->pluck('id')->toArray();
+        $available_regional_posts = Post::where('is_national_wide', false)
             ->where('state_name', trim($auth_user->region))
             ->pluck('id')->toArray();
-        
+
         // Validate national selections
         foreach ($vote_data['national_selected_candidates'] ?? [] as $index => $selection) {
             if ($selection && !$selection['no_vote']) {
                 $post_id = $selection['post_id'] ?? null;
-                
+
                 if (!in_array($post_id, $available_national_posts)) {
                     $errors["national_integrity_{$index}"] = "Invalid national post selection detected.";
                     continue;
@@ -1459,6 +1463,51 @@ private function has_valid_selections($selections)
         // Set organisation context for tenant scoping
         session(['current_organisation_id' => $election->organisation_id]);
 
+        // PHASE C.3b: Constitutional Evidence Population
+        // Query registered IP from VoterSlug (constitutional locality)
+        $voterSlug = \App\Models\VoterSlug::where('user_id', $auth_user->id)
+            ->where('election_id', $election->id)
+            ->orderByDesc('created_at')
+            ->first();
+
+        // Extract step_1_ip (initial registration IP) and hash it for evidence transport
+        $registeredIpHash = null;
+        if ($voterSlug && $voterSlug->step_1_ip) {
+            // Use same privacy policy instance injected into TrustPolicyEvaluator
+            // Ensures canonical evidence normalization for determinism
+            $privacyPolicy = app(\App\Domain\Election\Security\TrustEvidencePrivacyPolicy::class);
+            $registeredIpHash = $privacyPolicy->hashIp($voterSlug->step_1_ip, $election->id);
+        }
+
+        // Count participation from current IP in this election (election-scoped density)
+        // Integer-only deterministic comparison: no probabilistic elements
+        $currentIp = request()->ip();
+        $votesFromThisIp = \App\Models\Code::where('election_id', $election->id)
+            ->where('client_ip', $currentIp)
+            ->where('has_voted', true)
+            ->count();
+
+        // PHASE D.5: Constitutional Trust Evaluation
+        // Evaluate trust before any voting checks (parallel with legacy IP logic)
+        // Now includes registered IP hash and participation density evidence
+        $trustEnvelope = $this->trustEvaluator->evaluate(
+            election: $election,
+            user: $auth_user,
+            rawIp: request()->ip(),
+            rawFingerprint: $request->input('device_fingerprint'),
+            sessionId: $request->session()->getId(),
+            registeredIpHash: $registeredIpHash,
+            votesFromThisIp: $votesFromThisIp,
+        );
+
+        // Log trust evaluation result for audit trail
+        \Log::channel('voting_audit')->info('Trust evaluation completed in vote submission', [
+            'election_id' => $election->id,
+            'user_id' => $auth_user->id,
+            'trust_result' => $trustEnvelope->result->evaluationState->value,
+            'ip' => request()->ip(),
+        ]);
+
         // PHASE 3 VALIDATION: Election Validation
         // Demo elections: No organisation validation (can be voted by anyone)
         // Real elections: Require organisation matching
@@ -1533,6 +1582,39 @@ private function has_valid_selections($selections)
                 return $ipValidation; // Returns the denial response
             }
 
+        // ⛔ Acquire lock to prevent concurrent vote submission
+        $voterSlug = $request->attributes->get('voter_slug');
+        $lockKey = $voterSlug
+            ? "voter_slug_transition:{$voterSlug->id}"
+            : "vote_submission:{$auth_user->id}:{$election->id}";
+        $lock = Cache::lock($lockKey, 10);
+
+        if (!$lock->get()) {
+            DB::rollBack();
+            \Log::warning('Concurrent vote submission blocked by lock', [
+                'user_id' => $auth_user->id,
+                'election_id' => $election->id,
+                'lock_key' => $lockKey,
+            ]);
+            return back()->with('error', 'Please wait, your vote is being processed. Another submission is in progress.');
+        }
+
+        // Re-check has_voted inside lock (fresh read)
+        $freshCode = $code->fresh();
+
+        // ⛔ DEMO ELECTIONS: Block final vote submission if already voted
+        if ($freshCode && $freshCode->has_voted) {
+            $lock->release();
+            DB::rollBack();
+            \Log::warning('⛔ Demo election - blocking final vote submission for voter who already voted', [
+                'user_id' => $auth_user->id,
+                'election_id' => $election->id,
+                'code_id' => $freshCode->id,
+            ]);
+
+            return redirect()->route('dashboard')
+                ->withErrors(['vote' => 'You have already voted in this election. Each voter can only vote once.']);
+        }
 
         //everything take from Code Model
         $this->has_voted    =$code->has_voted;
@@ -1555,7 +1637,7 @@ private function has_valid_selections($selections)
             $_codeVerified = $this->verifyPlainCode($this->out_code, $this->in_code);
             // Use the verification method (via CodeVerificationTrait)
             if (!$_codeVerified) {
-            
+
                 \Log::warning('Code verification failed - returning with error',
                 [
                 'user_id' => $auth_user->id,
@@ -1563,7 +1645,10 @@ private function has_valid_selections($selections)
                 'submitted_code_length' => strlen($request['voting_code'] ?? ''),
                 'failed_at' => now()
                 ]);
-            
+
+            // Release lock before returning
+            $lock->release();
+            DB::rollBack();
             // Return back with your specified error message
             return back()->withErrors([
                 'voting_code' => 'Submitted code is false. Please check your email and try again.'
@@ -1573,14 +1658,51 @@ private function has_valid_selections($selections)
         $this->user_id      =$code->user_id;
         // Use the existing session_name from the code (set during first_submission)
         // Don't overwrite it, just use what's already there
-        $session_name       =$code->session_name;
+        $session_name       = $code->session_name ?: ('vote_data_' . $auth_user->id);
         //get deligatevote from session
         $vote_data = $request->session()->get($session_name);
+
+        // 🔴 DEBUG: Check if vote data exists
+        if (!$vote_data) {
+            $lock->release();
+            DB::rollBack();
+            \Log::error('❌ Vote data not found in session during store()', [
+                'session_name' => $session_name,
+                'session_keys' => array_keys($request->session()->all()),
+                'user_id' => $auth_user->id,
+                'code_session_name' => $code->session_name,
+            ]);
+
+            return back()->withErrors(['vote' => 'Vote data was lost. Please start the voting process again.'])->withInput();
+        }
         // check the  voting codes 
         // dd($vote_data["national_selected_candidates"]);
         // 1. Validate pre-conditions
         // dd($vote_data);
         $pre_check = $this->vote_post_check($auth_user, $code, $vote_data);
+
+        // ✅ CHECK PRE-CONDITIONS: Handle any validation errors
+        if (!empty($pre_check["error_message"])) {
+            $lock->release();
+            DB::rollBack();
+            \Log::error('Vote post-check failed in store()', [
+                'user_id' => $auth_user->id,
+                'error' => $pre_check["error_message"]
+            ]);
+
+            return redirect()->route('dashboard')
+                ->withErrors(['verification' => 'Vote verification failed. Please contact support if this persists.']);
+        }
+
+        if (!empty($pre_check["return_to"])) {
+            $lock->release();
+            DB::rollBack();
+            \Log::info('Vote post-check redirecting user in store()', [
+                'user_id' => $auth_user->id,
+                'redirect_to' => $pre_check["return_to"]
+            ]);
+            return redirect()->route($pre_check["return_to"]);
+        }
 
         /**
              *Here Everything is checked . you save the deligatevote.
@@ -1661,6 +1783,7 @@ private function has_valid_selections($selections)
                 }
 
                 DB::commit();
+                $lock->release();
 
         // ✅ CRITICAL: Mark voter slug as having voted and invalid after successful submission
         $voterSlug = $request->attributes->get('voter_slug');
@@ -1743,6 +1866,9 @@ private function has_valid_selections($selections)
         return redirect()->route('vote.verify_to_show')->with('success', 'Your vote has been successfully submitted.');
 
     } catch (\Illuminate\Validation\ValidationException $e) {
+        if (isset($lock)) {
+            $lock->release();
+        }
         DB::rollBack();
         \Log::error('❌ VALIDATION EXCEPTION in store()', [
             'user_id' => auth()->id(),
@@ -1751,6 +1877,9 @@ private function has_valid_selections($selections)
         return redirect()->back()->withErrors($e->errors())->withInput();
 
     } catch (\Exception $e) {
+        if (isset($lock)) {
+            $lock->release();
+        }
         DB::rollBack();
         \Log::error('❌ EXCEPTION in store() - Vote submission failed', [
             'user_id' => auth()->id(),
@@ -2653,10 +2782,10 @@ public function save_vote($input_data, $hashed_voting_key, $election = null, $au
         // Real elections: organisation_id comes from the election (strict enforcement)
         $vote->organisation_id = $election->organisation_id;
     } else {
-        // Demo elections: organisation_id comes from session
-        // MODE 1: NULL = public demo (visible to all)
-        // MODE 2: organisation_id = scoped to specific organisation
-        $vote->organisation_id = session('current_organisation_id');
+        // Demo elections: organisation_id comes from session, fallback to election's org
+        // MODE 1: NULL = public demo (visible to all) — session org_id is absent
+        // MODE 2: organisation_id = scoped to specific organisation — session org_id is set
+        $vote->organisation_id = session('current_organisation_id') ?? $election->organisation_id;
     }
 
     // Set timestamp for cryptographic hash generation
@@ -2856,7 +2985,8 @@ public function save_vote($input_data, $hashed_voting_key, $election = null, $au
                     if ($election->type === 'real') {
                         $result->organisation_id = $election->organisation_id;
                     } else {
-                        $result->organisation_id = session('current_organisation_id');
+                        // Demo elections: fallback to election's org if session org_id not set
+                        $result->organisation_id = session('current_organisation_id') ?? $election->organisation_id;
                     }
 
                     $result->save();
@@ -3158,20 +3288,15 @@ public function verify_final_vote(Request $request)
             return "dashboard";
         }
 
-          // ========== GUARD CLAUSE 4: Code1 never sent ==========
-        if (!$code->has_code1_sent) {
-            \Log::warning('🔴 vote_pre_check: GUARD 4 TRIGGERED - has_code1_sent is false', [
-                'has_code1_sent' => $code->has_code1_sent
+        // ========== GUARD CLAUSE 4: Code1 never sent ==========
+        // Check if code_to_open_voting_form_sent_at is set (indicates code was sent)
+        // Legacy has_code1_sent column was removed from database
+        if (!$code->code_to_open_voting_form_sent_at) {
+            \Log::warning('🔴 vote_pre_check: GUARD 4 TRIGGERED - code_to_open_voting_form_sent_at is null', [
+                'code_to_open_voting_form_sent_at' => $code->code_to_open_voting_form_sent_at
             ]);
             return "code.create";
         }
-        // ========== GUARD CLAUSE 4: Code1 never sent ==========
-        // if (!$code->has_code1_sent) {
-         //     \Log::warning('🔴 vote_pre_check: GUARD 4 - has_code1_sent is false', [
-        //         'has_code1_sent' => $code->has_code1_sent
-        //     ]);
-        //     return "code.create";
-        // }
          // ========== GUARD CLAUSE 5: Check if code has already been used for voting ==========
         if ($code->code_to_save_vote_used_at !== null) {
             \Log::warning('🔴 vote_pre_check: GUARD 5 TRIGGERED - code_to_save_vote_used_at is set', [
@@ -3270,7 +3395,7 @@ public function verify_final_vote(Request $request)
     // 2. IP address check
     $clientIP = \Request::getClientIp(true);
     $max_use_clientIP = config('app.max_use_clientIP');
-    $_message = check_ip_address($clientIP, $max_use_clientIP);
+    $_message = check_ip_address($clientIP, $max_use_clientIP, 'demo_codes');
 
     if (!empty($_message['error_message'])) {
         // Just return the error, let the controller handle the redirect/flash
@@ -3499,7 +3624,7 @@ public function verify_final_vote(Request $request)
         }
 
         // 6. User must NOT have already voted
-        if ($auth_user->has_voted == 1) {
+        if ($auth_user->has_voted === true) {
             \Log::info('⚠️ CHECK 6: User already voted', [
                 'auth_user.has_voted' => $auth_user->has_voted,
                 'returning' => 'vote.verify_to_show'

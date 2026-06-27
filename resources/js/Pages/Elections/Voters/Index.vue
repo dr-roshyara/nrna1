@@ -1,7 +1,5 @@
 <template>
-  <div class="voters-shell">
-    <PublicDigitHeader />
-
+  <PublicDigitLayout>
     <div class="voters-body">
 
       <!-- ═══════════════════════════════════════════════════════════
@@ -18,8 +16,8 @@
           </p>
           <h1 class="sidebar-title">{{ election.name }}</h1>
           <div class="sidebar-badges">
-            <span class="badge-status" :class="`badge-${election.status}`">
-              {{ election.status }}
+            <span class="badge-status" :class="`badge-${election.state}`">
+              {{ election.state }}
             </span>
             <span class="badge-type">{{ election.type }}</span>
           </div>
@@ -55,7 +53,14 @@
 
         <!-- Assign from members -->
         <div class="sidebar-section sidebar-section--grow">
-          <p class="sidebar-label">ASSIGN VOTERS</p>
+          <p class="sidebar-label">
+            {{ organisation.uses_full_membership ? 'ASSIGN MEMBERS AS VOTERS' : 'ASSIGN USERS AS VOTERS' }}
+          </p>
+          <p class="text-xs text-neutral-500 mb-2">
+            {{ organisation.uses_full_membership
+              ? 'Only active members with paid fees appear below.'
+              : 'All organisation users can be assigned as voters.' }}
+          </p>
 
           <div v-if="unassignedMembers.length > 0">
             <input
@@ -135,6 +140,26 @@
       ═══════════════════════════════════════════════════════════ -->
       <main class="voters-main">
 
+        <!-- Page Header with Guide Link -->
+        <div class="voters-page-header">
+          <div class="voters-page-title-block">
+            <h2 class="voters-page-title">Voter Management</h2>
+            <p class="voters-page-subtitle">Assign, verify and manage election voters</p>
+          </div>
+          <a
+            href="/help/voters-verification_guide"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="voters-guide-link"
+            aria-label="Open Voter Management Guide in new window"
+          >
+            <svg class="voters-guide-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>View Voter Guide</span>
+          </a>
+        </div>
+
         <!-- Flash -->
         <div v-if="$page.props.flash?.success" class="flash flash--ok">
           <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
@@ -208,8 +233,21 @@
                 <td class="reg-td">
                   <div class="voter-cell">
                     <div class="voter-avatar">{{ (membership.user?.name ?? '?').charAt(0).toUpperCase() }}</div>
-                    <div>
-                      <p class="voter-name">{{ membership.user?.name ?? '—' }}</p>
+                    <div class="flex-1">
+                      <div class="flex items-center gap-2">
+                        <p class="voter-name">{{ membership.user?.name ?? '—' }}</p>
+                        <!-- Verification Badge -->
+                        <span
+                          v-if="getVerificationStatus(membership.user_id)"
+                          class="verification-badge verification-badge--active"
+                          title="Voter identity verified"
+                        >
+                          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                          </svg>
+                          Verified
+                        </span>
+                      </div>
                       <p class="voter-email">{{ membership.user?.email ?? '—' }}</p>
                     </div>
                   </div>
@@ -247,6 +285,19 @@
                 <!-- Actions -->
                 <td class="reg-td reg-td--actions">
                   <div class="action-row" v-if="!membership.has_voted">
+                    <!-- Verify Voter Identity -->
+                    <button
+                      @click="openVerificationModal(membership)"
+                      :disabled="loadingId === membership.id"
+                      class="act-btn act-btn--verify"
+                      :title="getVerificationStatus(membership.user_id) ? 'Re-verify voter' : 'Verify voter identity'"
+                    >
+                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      {{ getVerificationStatus(membership.user_id) ? 'Re-verify' : 'Verify' }}
+                    </button>
+
                     <!-- Approve (invited → active) -->
                     <button
                       v-if="membership.status !== 'active' && membership.status !== 'removed'"
@@ -350,15 +401,30 @@
       </main>
     </div>
 
-    <PublicDigitFooter />
-  </div>
+  </PublicDigitLayout>
+
+  <!-- Voter Verification Modal -->
+  <VoterVerificationModal
+    :show="showVerificationModal"
+    :voter-id="verificationModalVoter?.id"
+    :voter-name="verificationModalVoter?.name"
+    :voter-email="verificationModalVoter?.email"
+    :voter-current-ip="verificationModalVoter?.currentIp"
+    :voter-last-login="verificationModalVoter?.lastLogin"
+    :organisation="organisation"
+    :election="election"
+    :existing-verification="verificationModalVoter?.verification"
+    @close="showVerificationModal = false"
+    @success="() => { showVerificationModal = false; router.reload() }"
+  />
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import { router, usePage } from '@inertiajs/vue3'
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
+import VoterVerificationModal from '@/Components/Election/VoterVerificationModal.vue'
+import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 
 const props = defineProps({
   election:          { type: Object, required: true },
@@ -367,17 +433,22 @@ const props = defineProps({
   stats:             { type: Object, required: true },
   unassignedMembers: { type: Array,  default: () => [] },
   filters:           { type: Object, default: () => ({}) },
+  verifications:     { type: Object, default: () => ({}) },
 })
 
-const authUserName      = computed(() => usePage().props.user?.name ?? usePage().props.auth?.user?.name)
-const assignUserId      = ref('')
-const assigning         = ref(false)
-const loadingId         = ref(null)
-const selectedMemberIds = ref([])
-const memberSearch      = ref('')
-const searchQuery       = ref(props.filters?.search ?? '')
-const statusFilter      = ref(props.filters?.status ?? '')
-const perPage           = ref(props.filters?.per_page ?? 50)
+const authUserName           = computed(() => usePage().props.user?.name ?? usePage().props.auth?.user?.name)
+const assignUserId           = ref('')
+const assigning              = ref(false)
+const loadingId              = ref(null)
+const selectedMemberIds      = ref([])
+const memberSearch           = ref('')
+const searchQuery            = ref(props.filters?.search ?? '')
+const statusFilter           = ref(props.filters?.status ?? '')
+const perPage                = ref(props.filters?.per_page ?? 50)
+
+// Voter verification modal
+const showVerificationModal   = ref(false)
+const verificationModalVoter  = ref(null)
 
 const exportUrl = computed(() =>
   route('elections.voters.export', { organisation: props.organisation.slug, election: props.election.slug })
@@ -395,12 +466,27 @@ const statusLabel = (s) => ({ active: 'Active', inactive: 'Suspended', invited: 
 
 const formatDate = (d) => d ? new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'
 
+// Voter verification helpers
+const getVerificationStatus = (userId) => props.verifications[userId] ?? null
+
+const openVerificationModal = (membership) => {
+  verificationModalVoter.value = {
+    id: membership.user_id,
+    name: membership.user?.name ?? 'Unknown',
+    email: membership.user?.email ?? '',
+    currentIp: membership.user?.current_ip ?? '—',
+    lastLogin: membership.user?.updated_at ?? null,
+    verification: getVerificationStatus(membership.user_id)
+  }
+  showVerificationModal.value = true
+}
+
 // Filters
 let filterTimer = null
 const debouncedFilter = () => { clearTimeout(filterTimer); filterTimer = setTimeout(applyFilters, 350) }
 const applyFilters = () => {
   router.get(
-    route('elections.voters.index', { organisation: props.organisation.slug, election: props.election.slug }),
+    route('organisations.elections.voters', { organisation: props.organisation.slug, election: props.election.slug }),
     {
       search:    searchQuery.value || undefined,
       status:    statusFilter.value || undefined,
@@ -713,6 +799,64 @@ const cancelProposal = (m) => {
   gap: 1.25rem;
 }
 
+/* Page Header with Guide Link */
+.voters-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #d4a847;
+}
+
+.voters-page-title-block {
+  flex: 1;
+}
+
+.voters-page-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: #0d1117;
+  margin: 0 0 0.25rem 0;
+  letter-spacing: -0.01em;
+}
+
+.voters-page-subtitle {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.voters-guide-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #d4a847 0%, #c9992d 100%);
+  color: white;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(212, 168, 71, 0.3);
+}
+
+.voters-guide-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(212, 168, 71, 0.4);
+}
+
+.voters-guide-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  stroke-width: 2;
+}
+
 /* Flash */
 .flash {
   display: flex;
@@ -883,6 +1027,25 @@ const cancelProposal = (m) => {
 .act-btn--confirm:hover:not(:disabled)  { background: #dcfce7; }
 .act-btn--cancel   { background: #fef2f2; color: #991b1b; border-color: #fecaca; }
 .act-btn--cancel:hover:not(:disabled)   { background: #fee2e2; }
+.act-btn--verify   { background: #dbeafe; color: #0c4a6e; border-color: #bfdbfe; display: inline-flex; align-items: center; gap: 0.25rem; }
+.act-btn--verify:hover:not(:disabled)   { background: #bfdbfe; }
+
+/* Verification badge */
+.verification-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.verification-badge--active {
+  background: #d1fae5;
+  color: #065f46;
+}
 
 /* Pending suspension row highlight */
 .reg-row--suspension-pending { background: #fffbeb !important; border-left: 3px solid #f59e0b; }
@@ -937,5 +1100,21 @@ const cancelProposal = (m) => {
   .voters-sidebar { width: 100%; min-height: auto; flex-direction: row; flex-wrap: wrap; }
   .sidebar-section--grow { flex-basis: 100%; }
   .voters-main { padding: 1.25rem 1rem; }
+
+  .voters-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .voters-guide-link {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .voters-page-title {
+    font-size: 1.35rem;
+  }
 }
 </style>
+

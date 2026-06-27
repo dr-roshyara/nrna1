@@ -82,6 +82,20 @@ return [
             'sslmode' => 'prefer',
         ],
 
+        'pgsql_geo' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_PGSQL_GEO_HOST', '127.0.0.1'),
+            'port' => env('DB_PGSQL_GEO_PORT', '5432'),
+            'database' => env('DB_PGSQL_GEO_DATABASE', 'publicdigit'),
+            'username' => env('DB_PGSQL_GEO_USERNAME', 'publicdigit_user'),
+            'password' => env('DB_PGSQL_GEO_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
+
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
@@ -96,18 +110,16 @@ return [
         ],
 
         'testing' => [
-            'driver' => 'mysql',
+            'driver' => 'pgsql',
             'host' => '127.0.0.1',
-            'port' => 3306,
+            'port' => 5432,
             'database' => 'nrna_test',
             'username' => 'nrna',
             'password' => 'Nrna%2025%Germany',
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
-            'strict' => true,
-            'engine' => null,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
         ],
 
     ],

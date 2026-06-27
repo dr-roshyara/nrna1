@@ -1,13 +1,13 @@
 <template>
   <election-layout>
-    <div class="m-2 min-h-screen bg-gray-100 p-2">
+    <div class="m-2 min-h-screen bg-neutral-100 p-2">
 
       <!-- Header -->
       <div class="mb-6 bg-white rounded-lg shadow-sm p-6">
         <div class="flex items-center justify-between mb-2">
           <div>
-            <h1 class="text-2xl font-bold text-gray-900">Platform Participants — {{ organisation.name }}</h1>
-            <p class="text-sm text-gray-500 mt-1">
+            <h1 class="text-2xl font-bold text-neutral-900">Platform Participants — {{ organisation.name }}</h1>
+            <p class="text-sm text-neutral-500 mt-1">
               Everyone with a platform role (owner, admin, commission, voter, member).
               Paid membership status is shown separately.
             </p>
@@ -21,7 +21,7 @@
             </a>
             <a
               :href="`/organisations/${organisation.slug}`"
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-600 text-white text-sm font-medium hover:bg-primary-700 transition-colors"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -34,7 +34,7 @@
         <!-- Stats -->
         <div class="mt-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           <div class="bg-slate-50 rounded border-l-4 border-slate-400 p-3">
-            <div class="text-xs text-gray-500 uppercase tracking-wide font-medium">Total</div>
+            <div class="text-xs text-neutral-500 uppercase tracking-wide font-medium">Total</div>
             <div class="text-2xl font-bold text-slate-700 mt-1">{{ stats.total }}</div>
           </div>
           <div v-for="role in roleOrder" :key="role"
@@ -52,28 +52,28 @@
       <div class="mb-4 bg-white rounded-lg shadow-sm p-4">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+            <label class="block text-sm font-medium text-neutral-700 mb-1">Name</label>
             <input
               v-model="params.name"
               type="text"
-              class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              class="w-full rounded border border-neutral-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Search by name…"
             />
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <label class="block text-sm font-medium text-neutral-700 mb-1">Email</label>
             <input
               v-model="params.email"
               type="text"
-              class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              class="w-full rounded border border-neutral-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Search by email…"
             />
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Role</label>
+            <label class="block text-sm font-medium text-neutral-700 mb-1">Role</label>
             <select
               v-model="params.role"
-              class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              class="w-full rounded border border-neutral-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">All Roles</option>
               <option value="owner">Owner</option>
@@ -97,16 +97,16 @@
       <!-- Pagination top -->
       <div class="flex items-center justify-between px-5 py-3 bg-white rounded-t-lg shadow-xs">
         <Link v-if="participants.prev_page_url" :href="participants.prev_page_url"
-          class="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600">
+          class="flex items-center gap-2 text-sm font-medium text-neutral-600 hover:text-primary-600">
           ← Previous
         </Link>
         <div v-else class="invisible text-sm">← Previous</div>
-        <span class="text-sm text-gray-600">
+        <span class="text-sm text-neutral-600">
           Page <strong>{{ participants.current_page }}</strong> of <strong>{{ participants.last_page }}</strong>
           &nbsp;({{ participants.total }} records)
         </span>
         <Link v-if="participants.next_page_url" :href="participants.next_page_url"
-          class="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600">
+          class="flex items-center gap-2 text-sm font-medium text-neutral-600 hover:text-primary-600">
           Next →
         </Link>
         <div v-else class="invisible text-sm">Next →</div>
@@ -132,18 +132,18 @@
           </thead>
           <tbody>
             <tr v-if="!participants.data || participants.data.length === 0">
-              <td colspan="5" class="px-4 py-12 text-center text-gray-400">
+              <td colspan="5" class="px-4 py-12 text-center text-neutral-400">
                 No participants found.
               </td>
             </tr>
             <tr
               v-for="(p, index) in participants.data"
               :key="p.id"
-              :class="index % 2 === 0 ? 'bg-white' : 'bg-gray-50'"
-              class="hover:bg-slate-50 transition-colors border-b border-gray-100"
+              :class="index % 2 === 0 ? 'bg-white' : 'bg-neutral-50'"
+              class="hover:bg-slate-50 transition-colors border-b border-neutral-100"
             >
-              <td class="px-4 py-3 font-medium text-gray-900">{{ p.name }}</td>
-              <td class="px-4 py-3 text-gray-600">{{ p.email }}</td>
+              <td class="px-4 py-3 font-medium text-neutral-900">{{ p.name }}</td>
+              <td class="px-4 py-3 text-neutral-600">{{ p.email }}</td>
               <td class="px-4 py-3">
                 <span :class="roleClass(p.role)" class="px-2.5 py-0.5 rounded-full text-xs font-semibold capitalize">
                   {{ roleLabel(p.role) }}
@@ -161,9 +161,9 @@
                   class="px-2.5 py-0.5 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold capitalize">
                   {{ p.member_status }}
                 </span>
-                <span v-else class="text-gray-400 text-xs">No membership</span>
+                <span v-else class="text-neutral-400 text-xs">No membership</span>
               </td>
-              <td class="px-4 py-3 text-gray-500 text-xs">{{ formatDate(p.created_at) }}</td>
+              <td class="px-4 py-3 text-neutral-500 text-xs">{{ formatDate(p.created_at) }}</td>
             </tr>
           </tbody>
         </table>
@@ -172,13 +172,13 @@
       <!-- Pagination bottom -->
       <div class="flex items-center justify-between px-5 py-3 bg-white rounded-b-lg shadow-xs">
         <Link v-if="participants.prev_page_url" :href="participants.prev_page_url"
-          class="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600">
+          class="flex items-center gap-2 text-sm font-medium text-neutral-600 hover:text-primary-600">
           ← Previous
         </Link>
         <div v-else class="invisible text-sm">← Previous</div>
-        <span class="text-sm text-gray-500">{{ participants.total }} total participants</span>
+        <span class="text-sm text-neutral-500">{{ participants.total }} total participants</span>
         <Link v-if="participants.next_page_url" :href="participants.next_page_url"
-          class="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600">
+          class="flex items-center gap-2 text-sm font-medium text-neutral-600 hover:text-primary-600">
           Next →
         </Link>
         <div v-else class="invisible text-sm">Next →</div>
@@ -249,46 +249,46 @@ export default {
 
     roleClass(role) {
       const map = {
-        owner:      'bg-red-100 text-red-800',
+        owner:      'bg-danger-100 text-danger-800',
         admin:      'bg-orange-100 text-orange-800',
-        commission: 'bg-blue-100 text-blue-800',
+        commission: 'bg-primary-100 text-primary-800',
         voter:      'bg-teal-100 text-teal-800',
         member:     'bg-purple-100 text-purple-800',
       }
-      return map[role] ?? 'bg-gray-100 text-gray-600'
+      return map[role] ?? 'bg-neutral-100 text-neutral-600'
     },
 
     roleStatClass(role) {
       const map = {
-        owner:      'bg-red-50 border-red-400',
+        owner:      'bg-danger-50 border-danger-400',
         admin:      'bg-orange-50 border-orange-400',
-        commission: 'bg-blue-50 border-blue-400',
+        commission: 'bg-primary-50 border-primary-400',
         voter:      'bg-teal-50 border-teal-400',
         member:     'bg-purple-50 border-purple-400',
       }
-      return map[role] ?? 'bg-gray-50 border-gray-300'
+      return map[role] ?? 'bg-neutral-50 border-neutral-300'
     },
 
     roleStatLabelClass(role) {
       const map = {
-        owner:      'text-red-600',
+        owner:      'text-danger-600',
         admin:      'text-orange-600',
-        commission: 'text-blue-600',
+        commission: 'text-primary-600',
         voter:      'text-teal-600',
         member:     'text-purple-600',
       }
-      return map[role] ?? 'text-gray-500'
+      return map[role] ?? 'text-neutral-500'
     },
 
     roleStatNumberClass(role) {
       const map = {
-        owner:      'text-red-700',
+        owner:      'text-danger-700',
         admin:      'text-orange-700',
-        commission: 'text-blue-700',
+        commission: 'text-primary-700',
         voter:      'text-teal-700',
         member:     'text-purple-700',
       }
-      return map[role] ?? 'text-gray-700'
+      return map[role] ?? 'text-neutral-700'
     },
 
     formatDate(iso) {
@@ -307,3 +307,4 @@ export default {
   },
 }
 </script>
+

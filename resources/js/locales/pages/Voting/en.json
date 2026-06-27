@@ -28,7 +28,14 @@
     "post_label": "Regional Position"
   },
   "summary": {
-    "title": "Your Vote Summary"
+    "title": "Your Vote Summary",
+    "no_vote_selected": "No Vote Selected",
+    "selected_candidates": "Selected Candidates",
+    "no_selection_made": "No selection made",
+    "summary_stats": "Summary",
+    "positions_selected": "positions selected",
+    "no_vote_selections": "no-vote selections",
+    "incomplete_selections": "incomplete selections"
   },
   "validation": {
     "title": "Please Review Your Selections"
@@ -51,6 +58,7 @@
     "progress_label": "Your Progress",
     "submitting": "Submitting Your Vote...",
     "button_text": "Submit Vote Now",
+    "review_submit": "Review & Submit",
     "button_aria_enabled": "Submit your vote - all selections complete",
     "button_aria_disabled": "Complete all selections to submit your vote"
   },
@@ -90,6 +98,8 @@
     "selected_candidates": "Selected Candidates",
     "of": "of",
     "progress": "Progress",
+    "checkbox_select": "Select",
+    "checkbox_selected": "Selected",
     "status_no_vote": "You chose not to vote for this position",
     "status_valid": "Perfect! You selected exactly {number} candidate(s)",
     "status_invalid": "Please select exactly {number} candidate(s)",

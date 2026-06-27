@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Team;
 use App\Models\User;
 use App\Models\Organisation;
+use App\Models\UserOrganisationRole;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
@@ -21,7 +22,9 @@ class UserFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * NOTE: organisation_id is REQUIRED (NOT NULL foreign key constraint)
+     * CRITICAL: organisation_id is REQUIRED (NOT NULL foreign key constraint)
+     * AND UserOrganisationRole MUST exist for TenantContext middleware to allow access.
+     *
      * You must either:
      * 1. Use ->forOrganisation($org) method
      * 2. Manually pass organisation_id => $org->id to create()
@@ -48,8 +51,28 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'region' => $this->faker->state(), // Required for multi-tenancy
             'organisation_id' => $platform->id,
+            'is_committee_member' => false,
         ];
     }
+
+    /**
+     * Configure the factory to create UserOrganisationRole automatically.
+     * TenantContext middleware requires this role to exist - without it, all requests return 403.
+     */
+    public function configure(): static
+    {
+        return $this->afterCreating(function (User $user) {
+            // Ensure user has a role in their organisation
+            UserOrganisationRole::firstOrCreate(
+                [
+                    'user_id' => $user->id,
+                    'organisation_id' => $user->organisation_id,
+                ],
+                ['role' => 'voter']
+            );
+        });
+    }
+
 
     /**
      * Indicate that the model's email address should be unverified.
@@ -93,11 +116,7 @@ class UserFactory extends Factory
     public function voter()
     {
         return $this->state(function (array $attributes) {
-            return [
-                'is_voter' => true,
-                'can_vote' => true,
-                'has_voted' => false,
-            ];
+            return [];
         });
     }
 

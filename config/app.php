@@ -29,6 +29,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Platform Organisation ID
+    |--------------------------------------------------------------------------
+    |
+    | The ID of the platform (landlord) organisation. Used to distinguish
+    | platform-level operations from tenant-specific operations.
+    |
+    */
+
+    'platform_organisation_id' => env('PLATFORM_ORGANISATION_ID', null),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |
@@ -190,8 +202,13 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
         App\Providers\SEOServiceProvider::class,
-
+        App\Services\GeoLocation\GeoLocationServiceProvider::class,
+        App\Contexts\Geography\Infrastructure\Providers\GeographyServiceProvider::class,
+        App\Contexts\Membership\Infrastructure\Providers\MembershipServiceProvider::class,
+        App\Contexts\Governance\Infrastructure\Providers\GovernanceServiceProvider::class,
+        App\Contexts\Adjudication\Infrastructure\Providers\AdjudicationServiceProvider::class,
 
     ],
 
@@ -247,6 +264,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'GeoLocation' => App\Services\GeoLocation\Facades\GeoLocation::class,
 
     ],
 

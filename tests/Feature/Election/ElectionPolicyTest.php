@@ -28,9 +28,11 @@ class ElectionPolicyTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        \App\Services\TenantContext::clear();
 
         $this->org = Organisation::factory()->create(['type' => 'tenant']);
         session(['current_organisation_id' => $this->org->id]);
+        \App\Services\TenantContext::set($this->org->id);
 
         $this->election = Election::factory()
             ->forOrganisation($this->org)
@@ -46,14 +48,18 @@ class ElectionPolicyTest extends TestCase
             'organisation_id'   => $this->org->id,
             'email_verified_at' => now(),
         ]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'voter',
-        ]);
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id'         => $user->id,
+                'organisation_id' => $this->org->id,
+            ],
+            [
+                'role' => 'voter',
+            ]
+        );
         ElectionOfficer::create([
             'organisation_id' => $this->org->id,
+            'election_id'     => $this->election->id,
             'user_id'         => $user->id,
             'role'            => $role,
             'status'          => 'active',
@@ -70,12 +76,13 @@ class ElectionPolicyTest extends TestCase
             'organisation_id'   => $this->org->id,
             'email_verified_at' => now(),
         ]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => $role,
-        ]);
+        // Factory already creates UserOrganisationRole with role='voter'
+        // Update it to the requested role if different
+        if ($role !== 'voter') {
+            UserOrganisationRole::where('user_id', $user->id)
+                ->where('organisation_id', $this->org->id)
+                ->update(['role' => $role]);
+        }
         return $user;
     }
 
@@ -95,16 +102,16 @@ class ElectionPolicyTest extends TestCase
         $this->assertTrue($deputy->can('manageVoters', $this->election));
     }
 
-    public function test_owner_can_manage_voters(): void
+    public function test_owner_cannot_manage_voters(): void
     {
         $owner = $this->makeOrgUser('owner');
-        $this->assertTrue($owner->can('manageVoters', $this->election));
+        $this->assertFalse($owner->can('manageVoters', $this->election));
     }
 
-    public function test_admin_can_manage_voters(): void
+    public function test_admin_cannot_manage_voters(): void
     {
         $admin = $this->makeOrgUser('admin');
-        $this->assertTrue($admin->can('manageVoters', $this->election));
+        $this->assertFalse($admin->can('manageVoters', $this->election));
     }
 
     public function test_commissioner_cannot_manage_voters(): void

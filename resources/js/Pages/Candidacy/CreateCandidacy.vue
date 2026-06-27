@@ -4,13 +4,13 @@
           -->           
           <div class="flex flex-col mb-10 py-10" >
                 <!-- <div class="flex flex-rwow justify-center m-auto space-x-4 mb-2 py-2">
-                   <inertia-link href="/candidacies/index" class=" p-2 mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-xs"> List of Candidates </inertia-link>
-                    <inertia-link href="/posts/index" class=" p-2  mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-xs"> Name of Posts</inertia-link>
-                     <inertia-link href="/notices/index" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-xs"> List of Notices</inertia-link>
+                   <inertia-link href="/candidacies/index" class=" p-2 mx-2 bg-danger-50 font-bold text-neutral-900 border-right rounded-xs"> List of Candidates </inertia-link>
+                    <inertia-link href="/posts/index" class=" p-2  mx-2 bg-danger-50 font-bold text-neutral-900 border-right rounded-xs"> Name of Posts</inertia-link>
+                     <inertia-link href="/notices/index" class=" p-2   mx-2 bg-danger-50 font-bold text-neutral-900 rounded-xs"> List of Notices</inertia-link>
  
                 </div>  -->
-             <div class="p-4 m-auto bg-gray-50"> 
-             <h2 class="font-bold text-xl text-gray-800 leading-tight text-center">
+             <div class="p-4 m-auto bg-neutral-50"> 
+             <h2 class="font-bold text-xl text-neutral-800 leading-tight text-center">
                 Candidacy Form | उम्मेद्बारी दर्ता औन्लाईन फराम 
             </h2>
             </div> 
@@ -30,7 +30,7 @@
                     flex flex-wrap space-x-6
                     justify-center
                     items-center
-                    border border-gray-200
+                    border border-neutral-200
                     shadow-lg
                     rounded-lg
                     px-4
@@ -151,8 +151,8 @@
                             px-16
                             py-2
                             rounded-lg
-                            bg-blue-800
-                            hover:bg-blue-400
+                            bg-primary-800
+                            hover:bg-primary-400
                             text-white
                         "
                     >

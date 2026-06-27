@@ -5,10 +5,10 @@
         
           <div  class="flex flex-col justify-center  py-4 px-6  ">          
             <!--  here we put the candidate -->
-                     <p class="px-2 mx-auto py-2 text-gray-900 font-bold text-xl"> 
+                     <p class="px-2 mx-auto py-2 text-neutral-900 font-bold text-xl"> 
                           Final Result </p>
                     <table class=" m-4 text-left" v-if="deligate_result">
-                        <tr class="border-b-2 border-gray-400">
+                        <tr class="border-b-2 border-neutral-400">
                            <th class="p-1">S.N.</th>
                              <th class="p-1">Post</th>
                              <th class="p-1">ID</th>

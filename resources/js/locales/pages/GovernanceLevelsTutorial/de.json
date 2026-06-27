@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "title": "Governance-Ebenen — Die Grundlage verstehen",
+    "description": "Erfahren Sie, was Governance-Ebenen sind, warum sie wichtig sind und wie Sie sie für Ihre Organisation konfigurieren."
+  },
+  "hero": {
+    "title": "Was sind Governance-Ebenen?",
+    "subtitle": "Das konstitutionelle Rückgrat der Hierarchie Ihrer Organisation",
+    "summary": "Governance-Ebenen definieren die Befehlskette in Ihrer Organisation — vom globalen Vorstand bis zur lokalen Niederlassung. Jede Ebene repräsentiert eine Stufe in der Hierarchie mit eigenem Ausschuss, geografischem Geltungsbereich und eigener Autorität."
+  },
+  "why": {
+    "title": "Warum Governance-Ebenen definieren?",
+    "points": [
+      {
+        "title": "Klare Hierarchie schaffen",
+        "description": "Definieren Sie, wer wem unterstellt ist. Jede Ebene hat eine klare Position in der Organisationsstruktur."
+      },
+      {
+        "title": "Befugnisübertragung ermöglichen",
+        "description": "Höhere Ebenen können Befugnisse an niedrigere Ebenen delegieren, während die Aufsicht erhalten bleibt."
+      },
+      {
+        "title": "Geografischen Geltungsbereich definieren",
+        "description": "Jede Ebene arbeitet in einem definierten geografischen Gebiet — global, kontinental, national, regional oder lokal."
+      },
+      {
+        "title": "Genehmigungsworkflows steuern",
+        "description": "Entscheidungen durchlaufen die Hierarchie — niedrigere Ebenen schlagen vor, höhere Ebenen genehmigen."
+      },
+      {
+        "title": "Mandantenspezifische Konfiguration",
+        "description": "Jede Organisation definiert ihre eigenen Ebenen. Ihre Hierarchie ist unabhängig von anderen."
+      }
+    ]
+  },
+  "how": {
+    "title": "So verwenden Sie das Formular",
+    "table_header": {
+      "field": "Feld",
+      "description": "Beschreibung"
+    },
+    "fields": [
+      {
+        "field": "Ebene",
+        "description": "Numerische Position in der Hierarchie. Ebene 0 ist die höchste (global), höhere Zahlen sind lokaler."
+      },
+      {
+        "field": "Ausschussname",
+        "description": "Wie der Ausschuss dieser Ebene heißt, z.B. \"Zentraler Arbeitsausschuss\" oder \"Bezirksvorstand\"."
+      },
+      {
+        "field": "Ausschusscode",
+        "description": "Ein kurzer Identifikator, der in APIs und Referenzen verwendet wird, z.B. \"ZAA\" oder \"BZV\"."
+      },
+      {
+        "field": "Geo-Name",
+        "description": "Der geografische Geltungsbereich dieser Ebene, z.B. \"Deutschland\" oder \"Europa\"."
+      },
+      {
+        "field": "Geo-Code",
+        "description": "Ein kurzer Code für das geografische Gebiet, z.B. \"DE\" oder \"EU\"."
+      },
+      {
+        "field": "Übergeordneter Geo-Code",
+        "description": "Der übergeordnete geografische Bereich. Ebene 0 hat keinen übergeordneten Bereich; jede niedrigere Ebene verweist auf die darüber liegende Ebene."
+      },
+      {
+        "field": "Aktiv",
+        "description": "Deaktivieren Sie das Kontrollkästchen, um eine Ebene vorübergehend zu deaktivieren, ohne die Konfiguration zu löschen."
+      }
+    ]
+  },
+  "examples": {
+    "title": "Beispiele aus der Praxis",
+    "subtitle": "Sehen Sie, wie verschiedene Organisationen ihre Governance-Ebenen strukturieren"
+  },
+  "examples_table": {
+    "level": "Ebene",
+    "committee": "Ausschuss",
+    "committee_name": "Ausschussname",
+    "committee_code": "Ausschusscode",
+    "geo_name": "Geo-Name",
+    "geo_code": "Geo-Code",
+    "parent_geo_code": "Übergeordneter Geo-Code",
+    "active": "Aktiv",
+    "actions": "Aktionen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "geo_scope": "Geo-Bereich"
+  },
+  "cta": {
+    "title": "Bereit, Ihre Governance-Ebenen einzurichten?",
+    "description": "Besuchen Sie die Governance-Ebenen-Seite in Ihrem Organisations-Dashboard, um Ihre Hierarchie zu konfigurieren.",
+    "login_hint": "Melden Sie sich an, um auf die Governance-Einstellungen Ihrer Organisation zuzugreifen.",
+    "button": "Zu den Governance-Ebenen"
+  }
+}

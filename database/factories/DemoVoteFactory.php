@@ -27,6 +27,7 @@ class DemoVoteFactory extends Factory
             'candidate_01' => json_encode(['candidacy_id' => $this->faker->word()]),
             'candidate_02' => null,
             'candidate_03' => null,
+            'voted_at' => now(),
             'created_at' => now(),
             'updated_at' => now(),
         ];

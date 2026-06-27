@@ -44,10 +44,10 @@
                 <!-- Gratitude Section -->
                 <div class="mb-12 bg-white rounded-2xl shadow-lg p-8 md:p-12 border-l-4 border-green-500">
                     <div class="max-w-3xl mx-auto text-center">
-                        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                        <h2 class="text-3xl font-bold text-neutral-900 mb-4">
                             {{ $t('pages.vote_final.gratitude.thank_you') }}
                         </h2>
-                        <p class="text-lg text-gray-700 leading-relaxed">
+                        <p class="text-lg text-neutral-700 leading-relaxed">
                             {{ $t('pages.vote_final.gratitude.message') }}
                         </p>
                     </div>
@@ -59,8 +59,8 @@
                     <div class="lg:col-span-2 space-y-8">
                         <!-- Vote Summary -->
                         <div class="bg-white rounded-2xl shadow-lg p-8">
-                            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                                <svg class="w-6 h-6 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <h2 class="text-2xl font-bold text-neutral-900 mb-6 flex items-center">
+                                <svg class="w-6 h-6 text-primary-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                                 {{ $t('pages.vote_final.vote_summary.title') }}
@@ -69,25 +69,25 @@
                             <div class="space-y-6">
                                 <!-- National Posts -->
                                 <div v-if="has_national_posts">
-                                    <h3 class="text-lg font-semibold text-gray-900 mb-4 pb-2 border-b-2 border-blue-200">
+                                    <h3 class="text-lg font-semibold text-neutral-900 mb-4 pb-2 border-b-2 border-primary-200">
                                         {{ $t('pages.vote_final.vote_summary.national_posts') }}
                                     </h3>
                                     <div class="space-y-4">
                                         <div v-for="(group, index) in national_posts_grouped" :key="index"
-                                             class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
-                                            <h4 class="font-semibold text-gray-900 mb-3 text-lg">
+                                             class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-primary-200">
+                                            <h4 class="font-semibold text-neutral-900 mb-3 text-lg">
                                                 {{ group.post_name }}
                                             </h4>
                                             <div v-if="group.candidates.length > 0" class="space-y-2">
                                                 <div v-for="candidate in group.candidates" :key="candidate.candidacy_id"
-                                                     class="flex items-center p-3 bg-white rounded-lg border border-blue-100">
+                                                     class="flex items-center p-3 bg-white rounded-lg border border-primary-100">
                                                     <svg class="w-4 h-4 text-green-600 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                                     </svg>
-                                                    <span class="text-gray-800 font-medium">{{ candidate.user.name }}</span>
+                                                    <span class="text-neutral-800 font-medium">{{ candidate.user.name }}</span>
                                                 </div>
                                             </div>
-                                            <div v-else class="text-gray-600 italic text-sm">
+                                            <div v-else class="text-neutral-600 italic text-sm">
                                                 {{ $t('pages.vote_final.vote_summary.no_vote') }}
                                             </div>
                                         </div>
@@ -96,13 +96,13 @@
 
                                 <!-- Regional Posts -->
                                 <div v-if="has_regional_posts">
-                                    <h3 class="text-lg font-semibold text-gray-900 mb-4 pb-2 border-b-2 border-green-200">
+                                    <h3 class="text-lg font-semibold text-neutral-900 mb-4 pb-2 border-b-2 border-green-200">
                                         {{ $t('pages.vote_final.vote_summary.regional_posts') }}
                                     </h3>
                                     <div class="space-y-4">
                                         <div v-for="(group, index) in regional_posts_grouped" :key="index"
                                              class="p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
-                                            <h4 class="font-semibold text-gray-900 mb-3 text-lg">
+                                            <h4 class="font-semibold text-neutral-900 mb-3 text-lg">
                                                 {{ group.post_name }}
                                             </h4>
                                             <div v-if="group.candidates.length > 0" class="space-y-2">
@@ -111,10 +111,10 @@
                                                     <svg class="w-4 h-4 text-green-600 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                                     </svg>
-                                                    <span class="text-gray-800 font-medium">{{ candidate.user.name }}</span>
+                                                    <span class="text-neutral-800 font-medium">{{ candidate.user.name }}</span>
                                                 </div>
                                             </div>
-                                            <div v-else class="text-gray-600 italic text-sm">
+                                            <div v-else class="text-neutral-600 italic text-sm">
                                                 {{ $t('pages.vote_final.vote_summary.no_vote') }}
                                             </div>
                                         </div>
@@ -125,7 +125,7 @@
 
                         <!-- What Happens Next -->
                         <div class="bg-white rounded-2xl shadow-lg p-8">
-                            <h2 class="text-2xl font-bold text-gray-900 mb-8 flex items-center">
+                            <h2 class="text-2xl font-bold text-neutral-900 mb-8 flex items-center">
                                 <svg class="w-6 h-6 text-purple-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m7 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
@@ -136,33 +136,33 @@
                                 <div class="p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl border border-purple-200">
                                     <div class="flex items-start mb-3">
                                         <div class="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold mr-3 shrink-0">1</div>
-                                        <h3 class="font-semibold text-gray-900 text-lg">{{ $t('pages.vote_final.what_next.step_1_title') }}</h3>
+                                        <h3 class="font-semibold text-neutral-900 text-lg">{{ $t('pages.vote_final.what_next.step_1_title') }}</h3>
                                     </div>
-                                    <p class="text-gray-700 text-sm">{{ $t('pages.vote_final.what_next.step_1_description') }}</p>
+                                    <p class="text-neutral-700 text-sm">{{ $t('pages.vote_final.what_next.step_1_description') }}</p>
                                 </div>
 
-                                <div class="p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border border-blue-200">
+                                <div class="p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border border-primary-200">
                                     <div class="flex items-start mb-3">
-                                        <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mr-3 shrink-0">2</div>
-                                        <h3 class="font-semibold text-gray-900 text-lg">{{ $t('pages.vote_final.what_next.step_2_title') }}</h3>
+                                        <div class="w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold mr-3 shrink-0">2</div>
+                                        <h3 class="font-semibold text-neutral-900 text-lg">{{ $t('pages.vote_final.what_next.step_2_title') }}</h3>
                                     </div>
-                                    <p class="text-gray-700 text-sm">{{ $t('pages.vote_final.what_next.step_2_description') }}</p>
+                                    <p class="text-neutral-700 text-sm">{{ $t('pages.vote_final.what_next.step_2_description') }}</p>
                                 </div>
 
                                 <div class="p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border border-green-200">
                                     <div class="flex items-start mb-3">
                                         <div class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold mr-3 shrink-0">3</div>
-                                        <h3 class="font-semibold text-gray-900 text-lg">{{ $t('pages.vote_final.what_next.step_3_title') }}</h3>
+                                        <h3 class="font-semibold text-neutral-900 text-lg">{{ $t('pages.vote_final.what_next.step_3_title') }}</h3>
                                     </div>
-                                    <p class="text-gray-700 text-sm">{{ $t('pages.vote_final.what_next.step_3_description') }}</p>
+                                    <p class="text-neutral-700 text-sm">{{ $t('pages.vote_final.what_next.step_3_description') }}</p>
                                 </div>
 
                                 <div class="p-6 bg-gradient-to-br from-orange-50 to-red-50 rounded-xl border border-orange-200">
                                     <div class="flex items-start mb-3">
                                         <div class="w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold mr-3 shrink-0">4</div>
-                                        <h3 class="font-semibold text-gray-900 text-lg">{{ $t('pages.vote_final.what_next.step_4_title') }}</h3>
+                                        <h3 class="font-semibold text-neutral-900 text-lg">{{ $t('pages.vote_final.what_next.step_4_title') }}</h3>
                                     </div>
-                                    <p class="text-gray-700 text-sm">{{ $t('pages.vote_final.what_next.step_4_description') }}</p>
+                                    <p class="text-neutral-700 text-sm">{{ $t('pages.vote_final.what_next.step_4_description') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -172,20 +172,20 @@
                     <div class="space-y-8">
                         <!-- Important Information -->
                         <div class="bg-white rounded-2xl shadow-lg p-6">
-                            <h2 class="text-xl font-bold text-gray-900 mb-6">
+                            <h2 class="text-xl font-bold text-neutral-900 mb-6">
                                 {{ $t('pages.vote_final.important_info.title') }}
                             </h2>
 
                             <div class="space-y-4">
                                 <!-- Security -->
-                                <div class="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border-l-4 border-blue-600">
+                                <div class="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border-l-4 border-primary-600">
                                     <div class="flex items-start">
-                                        <svg class="w-5 h-5 text-blue-600 mr-3 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg class="w-5 h-5 text-primary-600 mr-3 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                                         </svg>
                                         <div>
-                                            <h3 class="font-semibold text-gray-900 text-sm">{{ $t('pages.vote_final.important_info.security.title') }}</h3>
-                                            <p class="text-gray-700 text-xs mt-1">{{ $t('pages.vote_final.important_info.security.description') }}</p>
+                                            <h3 class="font-semibold text-neutral-900 text-sm">{{ $t('pages.vote_final.important_info.security.title') }}</h3>
+                                            <p class="text-neutral-700 text-xs mt-1">{{ $t('pages.vote_final.important_info.security.description') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -197,8 +197,8 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                                         </svg>
                                         <div>
-                                            <h3 class="font-semibold text-gray-900 text-sm">{{ $t('pages.vote_final.important_info.privacy.title') }}</h3>
-                                            <p class="text-gray-700 text-xs mt-1">{{ $t('pages.vote_final.important_info.privacy.description') }}</p>
+                                            <h3 class="font-semibold text-neutral-900 text-sm">{{ $t('pages.vote_final.important_info.privacy.title') }}</h3>
+                                            <p class="text-neutral-700 text-xs mt-1">{{ $t('pages.vote_final.important_info.privacy.description') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -210,8 +210,8 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                         </svg>
                                         <div>
-                                            <h3 class="font-semibold text-gray-900 text-sm">{{ $t('pages.vote_final.important_info.verification.title') }}</h3>
-                                            <p class="text-gray-700 text-xs mt-1">{{ $t('pages.vote_final.important_info.verification.description') }}</p>
+                                            <h3 class="font-semibold text-neutral-900 text-sm">{{ $t('pages.vote_final.important_info.verification.title') }}</h3>
+                                            <p class="text-neutral-700 text-xs mt-1">{{ $t('pages.vote_final.important_info.verification.description') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -219,25 +219,25 @@
                         </div>
 
                         <!-- Receipt Card -->
-                        <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-lg p-6 border border-gray-200">
-                            <h3 class="text-lg font-bold text-gray-900 mb-4">{{ $t('pages.vote_final.receipt.title') }}</h3>
+                        <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-lg p-6 border border-neutral-200">
+                            <h3 class="text-lg font-bold text-neutral-900 mb-4">{{ $t('pages.vote_final.receipt.title') }}</h3>
 
                             <div class="space-y-3 mb-6 text-sm">
                                 <div class="flex justify-between items-center p-3 bg-white rounded-lg">
-                                    <span class="text-gray-600">{{ $t('pages.vote_final.receipt.timestamp') }}</span>
-                                    <span class="font-mono text-gray-900">{{ submission_time }}</span>
+                                    <span class="text-neutral-600">{{ $t('pages.vote_final.receipt.timestamp') }}</span>
+                                    <span class="font-mono text-neutral-900">{{ submission_time }}</span>
                                 </div>
                                 <div class="flex justify-between items-center p-3 bg-white rounded-lg">
-                                    <span class="text-gray-600">{{ $t('pages.vote_final.receipt.reference_number') }}</span>
-                                    <span class="font-mono text-gray-900">{{ confirmation_number }}</span>
+                                    <span class="text-neutral-600">{{ $t('pages.vote_final.receipt.reference_number') }}</span>
+                                    <span class="font-mono text-neutral-900">{{ confirmation_number }}</span>
                                 </div>
                             </div>
 
                             <div class="space-y-2">
-                                <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+                                <button class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
                                     📥 {{ $t('pages.vote_final.receipt.download_button') }}
                                 </button>
-                                <button class="w-full bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+                                <button class="w-full bg-neutral-600 hover:bg-neutral-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
                                     🖨️ {{ $t('pages.vote_final.receipt.print_button') }}
                                 </button>
                             </div>
@@ -260,8 +260,8 @@
                 </div>
 
                 <!-- Footer Message -->
-                <div class="text-center py-8 border-t border-gray-200">
-                    <p class="text-lg text-gray-700 font-medium">
+                <div class="text-center py-8 border-t border-neutral-200">
+                    <p class="text-lg text-neutral-700 font-medium">
                         {{ $t('pages.vote_final.footer.message') }}
                     </p>
                 </div>
@@ -400,3 +400,4 @@ button:focus-visible {
     }
 }
 </style>
+

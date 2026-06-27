@@ -1,96 +1,165 @@
 <template>
-  <article class="post-card" :aria-labelledby="`post-heading-${post.id}`">
+  <article class="rounded-xl overflow-hidden bg-white border border-neutral-200 shadow-sm hover:shadow-md transition-shadow duration-300" :aria-labelledby="`post-heading-${post.id}`">
 
-    <!-- Card header -->
-    <header class="post-card__header">
-      <div class="post-card__meta">
-        <span class="post-card__index" aria-hidden="true">{{ String(postIndex + 1).padStart(2, '0') }}</span>
-        <div>
-          <h2 class="post-card__title" :id="`post-heading-${post.id}`">{{ post.name }}</h2>
-          <p class="post-card__scope" v-if="post.state_name || post.is_national_wide">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            {{ post.is_national_wide ? 'National' : post.state_name }}
-          </p>
+    <!-- Post Header with Metadata -->
+    <header class="px-6 py-7 border-b border-primary-100 bg-gradient-to-br from-primary-50 via-primary-50 to-white">
+      <div class="flex items-start justify-between gap-4 mb-4">
+        <div class="flex items-baseline gap-4 flex-1 min-w-0">
+          <span class="text-6xl font-black text-primary-100" aria-hidden="true">{{ String(postIndex + 1).padStart(2, '0') }}</span>
+          <div class="min-w-0 flex-1">
+            <h2 class="text-3xl font-bold text-neutral-900 break-words" :id="`post-heading-${post.id}`">{{ post.name }}</h2>
+            <p v-if="post.state_name || post.is_national_wide" class="text-sm text-neutral-600 mt-1">
+              <span v-if="post.is_national_wide" class="inline-flex items-center gap-1">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-primary-600" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                National Post
+              </span>
+              <span v-else class="inline-flex items-center gap-1">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-primary-600" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                {{ post.state_name }}
+              </span>
+            </p>
+          </div>
         </div>
       </div>
-      <div class="post-card__stats" role="group" :aria-label="`Vote statistics for ${post.name}`">
-        <div class="post-card__stat">
-          <span class="post-card__stat-value">{{ formatNumber(result.total_votes_for_post || 0) }}</span>
-          <span class="post-card__stat-key">Votes</span>
+
+      <!-- Stats Grid — Refined Spacing -->
+      <div class="grid grid-cols-3 gap-6 mt-6 pt-4 border-t border-primary-100">
+        <div class="space-y-1.5">
+          <div class="text-sm font-semibold text-neutral-600 uppercase tracking-wide">Votes Cast</div>
+          <div class="text-3xl font-black text-neutral-900">{{ formatNumber(result.total_votes_for_post || 0) }}</div>
         </div>
-        <div class="post-card__stat" v-if="result.no_vote_count > 0">
-          <span class="post-card__stat-value post-card__stat-value--muted">{{ formatNumber(result.no_vote_count) }}</span>
-          <span class="post-card__stat-key">Abstained</span>
+        <div v-if="result.no_vote_count > 0" class="space-y-1.5">
+          <div class="text-sm font-semibold text-neutral-600 uppercase tracking-wide">Abstained</div>
+          <div class="text-3xl font-black text-neutral-700">{{ formatNumber(result.no_vote_count) }}</div>
         </div>
-        <div class="post-card__stat" v-if="post.required_number">
-          <span class="post-card__stat-value post-card__stat-value--accent">{{ post.required_number }}</span>
-          <span class="post-card__stat-key">{{ post.required_number === 1 ? 'Seat' : 'Seats' }}</span>
+        <div v-if="post.required_number" class="space-y-1.5">
+          <div class="text-sm font-semibold text-neutral-600 uppercase tracking-wide">{{ post.required_number === 1 ? 'Seat' : 'Seats' }}</div>
+          <div class="text-3xl font-black text-accent-600">{{ post.required_number }}</div>
         </div>
       </div>
     </header>
 
-    <!-- No data -->
-    <div v-if="!candidates || candidates.length === 0" class="post-card__no-data" role="status">
-      No candidate data available.
+    <!-- No Data State -->
+    <div v-if="!candidates || candidates.length === 0" class="flex flex-col items-center justify-center px-6 py-16 text-center">
+      <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-neutral-100">
+        <svg class="h-8 w-8 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" /></svg>
+      </div>
+      <p class="text-lg font-semibold text-neutral-900 mb-1">No Candidate Data</p>
+      <p class="text-sm text-neutral-600">Results for this position will appear here once voting is complete.</p>
     </div>
 
-    <!-- Candidates -->
-    <ol class="candidates" :aria-label="`Candidates for ${post.name}, sorted by votes`" v-else>
-      <li
-        v-for="(candidate, idx) in candidates"
-        :key="candidate.candidacy_id"
-        class="candidate"
-        :class="{
-          'candidate--winner': isWinner(idx),
-          'candidate--runner': idx >= post.required_number && idx < (post.required_number + 2),
-        }"
-        :aria-label="candidateAriaLabel(candidate, idx)"
-      >
-        <!-- Rank -->
-        <span class="candidate__rank" aria-hidden="true">
-          <svg v-if="isWinner(idx)" class="candidate__crown" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 20h20v2H2v-2zM4 17l4-8 4 4 4-6 4 6H4z"/></svg>
-          <template v-else>{{ idx + 1 }}</template>
-        </span>
-
-        <!-- Name + bar -->
-        <div class="candidate__body">
-          <div class="candidate__name-row">
-            <span class="candidate__name">{{ candidate.name }}</span>
-            <span class="candidate__tally">
-              <strong class="candidate__votes">{{ formatNumber(candidate.vote_count) }}</strong>
-              <span class="candidate__percent">{{ candidate.vote_percent?.toFixed(1) }}%</span>
-            </span>
+    <!-- Results Sections -->
+    <div v-else class="space-y-8 px-6 py-8">
+      <!-- Elected Candidates Section -->
+      <div v-if="candidates.some((c, idx) => isWinner(idx))">
+        <div class="mb-6">
+          <div class="flex items-center gap-2 mb-1">
+            <svg class="w-5 h-5 text-accent-600" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 10.26H24L17.45 15.53L20.54 23.79L12 18.52L3.46 23.79L6.55 15.53L0 10.26H8.91L12 2Z"/></svg>
+            <h3 class="text-xs font-semibold uppercase tracking-widest text-neutral-600">Elected</h3>
           </div>
-
-          <!-- Progress bar — accessible -->
-          <div
-            class="candidate__bar-track"
-            role="progressbar"
-            :aria-valuenow="candidate.vote_percent || 0"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            :aria-label="`${candidate.name}: ${(candidate.vote_percent || 0).toFixed(1)}% of votes`"
-          >
-            <div
-              class="candidate__bar-fill"
-              :class="{ 'candidate__bar-fill--winner': isWinner(idx) }"
-              :style="{ width: (candidate.vote_percent || 0) + '%' }"
-            ></div>
-          </div>
+          <div class="h-1 w-12 bg-gradient-to-r from-accent-600 to-accent-400 rounded-full"></div>
         </div>
 
-      </li>
-    </ol>
+        <!-- Winners List -->
+        <div class="space-y-7">
+          <div v-for="(candidate, idx) in candidates" :key="candidate.candidacy_id" v-show="isWinner(idx)" class="group">
+            <div class="rounded-lg bg-gradient-to-br from-accent-50 to-white border border-accent-200 p-6 transition-all duration-300 hover:border-accent-400 hover:shadow-md">
+              <!-- Winner Badge + Name -->
+              <div class="flex items-start gap-3 mb-5">
+                <div class="flex-shrink-0 flex h-8 w-8 items-center justify-center rounded-full bg-accent-600 text-white">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 10.26H24L17.45 15.53L20.54 23.79L12 18.52L3.46 23.79L6.55 15.53L0 10.26H8.91L12 2Z"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h4 class="text-xl font-bold text-neutral-900 break-words">{{ candidate.name }}</h4>
+                </div>
+              </div>
 
-    <!-- Abstentions row -->
-    <div v-if="result.no_vote_count > 0" class="post-card__abstain" aria-label="Abstentions">
-      <span class="post-card__abstain-label">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-        Abstentions
-      </span>
-      <span class="post-card__abstain-count">{{ formatNumber(result.no_vote_count) }}</span>
+              <!-- Stats Grid -->
+              <div class="grid grid-cols-2 gap-5 mb-5">
+                <div class="rounded-md bg-white border border-accent-100 p-3">
+                  <div class="text-xs font-semibold text-neutral-600 uppercase mb-1">Vote Count</div>
+                  <div class="text-2xl font-black text-accent-600">{{ formatNumber(candidate.vote_count) }}</div>
+                </div>
+                <div class="rounded-md bg-white border border-accent-100 p-3">
+                  <div class="text-xs font-semibold text-neutral-600 uppercase mb-1">Vote Share</div>
+                  <div class="text-2xl font-black text-accent-600">{{ candidate.vote_percent?.toFixed(1) }}%</div>
+                </div>
+              </div>
+
+              <!-- Progress Bar Section -->
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-semibold text-neutral-600 uppercase">Vote Distribution</span>
+                  <span class="text-xs font-bold text-accent-600">{{ candidate.vote_percent?.toFixed(1) }}%</span>
+                </div>
+                <div class="relative h-3 bg-neutral-100 rounded-full overflow-hidden">
+                  <div
+                    class="absolute h-full bg-gradient-to-r from-accent-600 to-accent-400 rounded-full transition-all duration-1000 ease-out"
+                    :style="{ width: (candidate.vote_percent || 0) + '%' }"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other Candidates Section -->
+      <div v-if="candidates.some((c, idx) => !isWinner(idx))">
+        <div class="mb-6">
+          <div class="flex items-center gap-2 mb-1">
+            <div class="h-5 w-5 rounded border border-neutral-400"></div>
+            <h3 class="text-xs font-semibold uppercase tracking-widest text-neutral-600">Other Candidates</h3>
+          </div>
+          <div class="h-1 w-12 bg-neutral-300 rounded-full"></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div
+            v-for="(candidate, idx) in candidates"
+            v-show="!isWinner(idx)"
+            :key="candidate.candidacy_id"
+            class="rounded-lg border border-neutral-200 bg-white p-4 transition-all duration-300 hover:border-primary-300 hover:shadow-md hover:bg-primary-50 group cursor-default"
+          >
+            <!-- Rank Badge + Name -->
+            <div class="flex items-baseline gap-3 mb-3">
+              <span class="text-2xl font-black text-neutral-300 group-hover:text-primary-400 min-w-fit">{{ idx + 1 }}</span>
+              <span class="text-sm font-semibold text-neutral-900 break-words group-hover:text-primary-700">{{ candidate.name }}</span>
+            </div>
+
+            <!-- Vote Stats -->
+            <div class="grid grid-cols-2 gap-3 mb-3">
+              <div class="rounded bg-neutral-50 p-2 group-hover:bg-primary-100 transition-colors">
+                <div class="text-xs text-neutral-600 font-semibold uppercase tracking-wide mb-0.5">Votes</div>
+                <div class="font-black text-neutral-900 group-hover:text-primary-700">{{ formatNumber(candidate.vote_count) }}</div>
+              </div>
+              <div class="rounded bg-neutral-50 p-2 group-hover:bg-primary-100 transition-colors text-right">
+                <div class="text-xs text-neutral-600 font-semibold uppercase tracking-wide mb-0.5">Share</div>
+                <div class="font-black text-neutral-900 group-hover:text-primary-700">{{ candidate.vote_percent?.toFixed(1) }}%</div>
+              </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="h-2 bg-neutral-100 rounded-full overflow-hidden">
+              <div
+                class="h-full bg-neutral-400 group-hover:bg-primary-500 transition-all duration-500"
+                :style="{ width: (candidate.vote_percent || 0) + '%' }"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Abstentions Row -->
+      <div v-if="result.no_vote_count > 0" class="rounded-lg border border-neutral-200 bg-neutral-50 p-4 flex items-center justify-between hover:bg-neutral-100 transition-colors duration-200">
+        <div class="flex items-center gap-3">
+          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-200">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-neutral-700" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+          </div>
+          <span class="text-sm font-semibold uppercase tracking-wider text-neutral-700">Did Not Vote</span>
+        </div>
+        <span class="text-lg font-black text-neutral-700">{{ formatNumber(result.no_vote_count) }}</span>
+      </div>
     </div>
-
   </article>
 </template>
 
@@ -110,11 +179,17 @@ export default {
       if (!this.result?.candidates) return []
       return [...this.result.candidates].sort((a, b) => b.vote_count - a.vote_count)
     },
+    winningVoteCount() {
+      const requiredNumber = this.post.required_number || 1
+      if (this.candidates.length === 0) return 0
+      if (this.candidates.length <= requiredNumber) return this.candidates[this.candidates.length - 1]?.vote_count || 0
+      return this.candidates[requiredNumber - 1]?.vote_count || 0
+    },
   },
 
   methods: {
     isWinner(idx) {
-      return idx < (this.post.required_number || 1)
+      return this.candidates[idx]?.vote_count >= this.winningVoteCount
     },
     formatNumber(n) {
       return new Intl.NumberFormat().format(n)
@@ -129,260 +204,50 @@ export default {
 </script>
 
 <style scoped>
-/* ── Card shell ─────────────────────────────────────── */
-.post-card {
-  background: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
-  overflow: hidden;
-  transition: box-shadow 0.2s ease;
-}
-.post-card:focus-within {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 20px rgba(0,0,0,0.08);
-}
-
-/* ── Card header ────────────────────────────────────── */
-.post-card__header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid #f1f5f9;
-  flex-wrap: wrap;
-}
-.post-card__meta {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.9rem;
-}
-.post-card__index {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: #e2e8f0;
-  line-height: 1;
-  flex-shrink: 0;
-  padding-top: 0.1rem;
-  min-width: 2.2rem;
-}
-.post-card__title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin: 0 0 0.25rem;
-  line-height: 1.25;
-}
-.post-card__scope {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: #64748b;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin: 0;
-}
-.post-card__stats {
-  display: flex;
-  gap: 1.25rem;
-  flex-shrink: 0;
-}
-.post-card__stat {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.1rem;
-}
-.post-card__stat-value {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #0f172a;
-  line-height: 1;
-}
-.post-card__stat-value--muted { color: #94a3b8; }
-.post-card__stat-value--accent { color: #1e3a5f; }
-.post-card__stat-key {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #94a3b8;
-}
-
-/* ── No data ────────────────────────────────────────── */
-.post-card__no-data {
-  padding: 2rem 1.5rem;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 0.875rem;
-  color: #94a3b8;
-  text-align: center;
-}
-
-/* ── Candidates list ────────────────────────────────── */
-.candidates {
-  list-style: none;
-  margin: 0;
-  padding: 0.5rem 0;
-}
-.candidate {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1.5rem;
-  transition: background 0.15s ease;
-  position: relative;
-}
-.candidate:hover {
-  background: #f8fafc;
-}
-.candidate--winner {
-  background: linear-gradient(90deg, rgba(212,175,55,0.05) 0%, transparent 60%);
-}
-.candidate--winner:hover {
-  background: linear-gradient(90deg, rgba(212,175,55,0.09) 0%, #f8fafc 60%);
-}
-
-/* ── Rank badge ─────────────────────────────────────── */
-.candidate__rank {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #cbd5e1;
-  width: 1.5rem;
-  text-align: center;
-  flex-shrink: 0;
-}
-.candidate--winner .candidate__rank {
-  color: #d4af37;
-}
-.candidate__crown {
-  width: 1rem;
-  height: 1rem;
-  color: #d4af37;
-}
-
-/* ── Candidate body ─────────────────────────────────── */
-.candidate__body {
-  flex: 1;
-  min-width: 0;
-}
-.candidate__name-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.5rem;
-  margin-bottom: 0.35rem;
-}
-.candidate__name {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 0.95rem;
-  color: #1e293b;
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  flex: 1;
-  min-width: 0;
-}
-.candidate--winner .candidate__name {
-  font-weight: 700;
-  color: #0f172a;
-}
-.candidate__tally {
-  display: flex;
-  align-items: baseline;
-  gap: 0.35rem;
-  flex-shrink: 0;
-}
-.candidate__votes {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: #1e293b;
-}
-.candidate__percent {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 0.75rem;
-  color: #64748b;
-}
-
-/* ── Bar ────────────────────────────────────────────── */
-.candidate__bar-track {
-  width: 100%;
-  height: 6px;
-  background: #f1f5f9;
-  border-radius: 999px;
-  overflow: hidden;
-}
-.candidate__bar-fill {
-  height: 100%;
-  background: #475569;
-  border-radius: 999px;
-  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.candidate__bar-fill--winner {
-  background: linear-gradient(90deg, #b8960c, #d4af37);
-}
-
-/* ── Abstentions ────────────────────────────────────── */
-.post-card__abstain {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 1.5rem;
-  border-top: 1px dashed #e2e8f0;
-  background: #fafafa;
-}
-.post-card__abstain-label {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #94a3b8;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-.post-card__abstain-count {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: #94a3b8;
-}
-
-/* ── Responsive ─────────────────────────────────────── */
-@media (max-width: 480px) {
-  .post-card__header {
-    padding: 1rem;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  .post-card__stats {
-    gap: 1rem;
-    align-self: stretch;
-    justify-content: flex-start;
-  }
-  .post-card__stat {
-    align-items: flex-start;
-  }
-  .candidate {
-    padding: 0.65rem 1rem;
-    gap: 0.5rem;
-  }
-  .post-card__abstain {
-    padding: 0.65rem 1rem;
-  }
-}
-
-/* ── Focus ──────────────────────────────────────────── */
-.candidate:focus-visible {
-  outline: 3px solid #d4af37;
+li:focus-visible {
+  outline: 3px solid rgb(245, 158, 11);
   outline-offset: -2px;
+}
+
+/* Smooth entrance animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+article {
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Refined progress bar animation */
+@keyframes fillBar {
+  from {
+    width: 0 !important;
+  }
+}
+
+.group:nth-child(1) div[style*='width'] {
+  animation: fillBar 1.2s ease-out forwards;
+}
+
+.group:nth-child(2) div[style*='width'] {
+  animation: fillBar 1.3s ease-out forwards;
+}
+
+.group:nth-child(3) div[style*='width'] {
+  animation: fillBar 1.4s ease-out forwards;
+}
+
+/* Refined focus states for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid rgb(245, 158, 11);
+  outline-offset: 2px;
 }
 </style>

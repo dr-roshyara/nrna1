@@ -50,6 +50,9 @@ use App\Http\Controllers\OrganisationController;
 use App\Http\Controllers\Organisations\MemberImportController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\Import\OrganisationUserImportController;
+use App\Http\Controllers\VoterInvitationController;
+use App\Http\Controllers\Election\VoterImportController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,88 +70,60 @@ use App\Http\Controllers\Import\OrganisationUserImportController;
  * Register implicit model binding for VoterSlug
  */
 // 🔥 DIGITAL OCEAN FIX: Enhanced route binding with retry logic
+// ⚠️ DEPRECATED: Route binding moved to App\Providers\RouteServiceProvider
+// This binding has been replaced by the custom RouteServiceProvider
+// which provides better error handling, rate limiting, and expiration checks.
+/*
 Route::bind('vslug', function (string $value) {
-    \Log::info('🔍 Route binding lookup', ['vslug' => $value, 'connection' => \DB::connection()->getName()]);
-
-    // Try with retry for Digital Ocean replication lag
-    $voterSlug = null;
-    $attempts = 0;
-    $maxAttempts = 3;
-
-    while (!$voterSlug && $attempts < $maxAttempts) {
-        if ($attempts > 0) {
-            \Log::info('🔄 Retry attempt ' . ($attempts + 1), ['vslug' => $value]);
-            sleep(1); // Wait 1 second between retries
-            \DB::reconnect('mysql'); // Fresh connection
-        }
-
-        // Try DemoVoterSlug first (for demo elections)
-        $voterSlug = DemoVoterSlug::on('mysql')
-            ->withoutGlobalScopes()
-            ->where('slug', $value)
-            ->first();
-
-        if (!$voterSlug) {
-            // Try VoterSlug as fallback (for regular elections)
-            $voterSlug = VoterSlug::on('mysql')
-                ->withoutGlobalScopes()
-                ->where('slug', $value)
-                ->first();
-        }
-
-        $attempts++;
-    }
-
-    if (!$voterSlug) {
-        \Log::error('❌ Voter slug not found after ' . $maxAttempts . ' attempts', [
-            'slug' => $value,
-            'attempts' => $attempts,
-            'session_data' => session()->all()
-        ]);
-
-        // Check if it's in session as fallback
-        $sessionSlug = session('last_created_voter_slug');
-        if ($sessionSlug === $value) {
-            \Log::info('⚠️ Slug found in session but not in DB - possible replication lag', [
-                'slug' => $value
-            ]);
-            // Let them try again by redirecting back
-            abort(403, 'System is initializing. Please try again in 2 seconds.');
-        }
-
-        abort(403, 'Invalid voting link');
-    }
-
-    \Log::info('✅ Route binding successful', [
-        'slug' => $value,
-        'type' => get_class($voterSlug),
-        'attempts' => $attempts
-    ]);
-
-    return $voterSlug;
+    // ... old binding code removed ...
 });
+*/
 
 // Auth::routes();
 
-Route::get('/storage/images/{filename}', function ($filename)
-{
-    $path = storage_path('images/' . $filename);
-    if (!File::exists($path)) {
-        abort(404);
+// ── Serve files from storage/app/public/* via /storage/* ──
+Route::get('/storage/{path?}', function ($path = null) {
+    if (!$path) {
+        abort(404, 'File not found');
     }
 
-    $file = File::get($path);
-    $type = File::mimeType($path);
+    // Prevent directory traversal attacks
+    $safe_path = str_replace('..', '', $path);
+    if ($safe_path !== $path) {
+        abort(403, 'Access denied');
+    }
+
+    $full_path = storage_path('app/public/' . $safe_path);
+
+    if (!File::exists($full_path) || !is_file($full_path)) {
+        abort(404, 'File not found: ' . $safe_path);
+    }
+
+    $file = File::get($full_path);
+    $type = File::mimeType($full_path);
 
     $response = Response::make($file, 200);
     $response->header("Content-Type", $type);
 
     return $response;
-});
+})->where('path', '.*');
 
 // Newsletter unsubscribe (public — no auth required)
 Route::get('/unsubscribe/{token}', [NewsletterUnsubscribeController::class, 'unsubscribe'])
     ->name('newsletter.unsubscribe');
+
+// Newsletter user guide (public — no auth required, optional org context)
+Route::get('/newsletter-guide/{organisationSlug?}', function ($organisationSlug = null) {
+    $org = null;
+    if ($organisationSlug) {
+        $org = \App\Models\Organisation::where('slug', $organisationSlug)->first();
+    }
+
+    return Inertia::render('Guides/NewsletterGuide', [
+        'organisation'       => $org ? $org->only('id', 'name', 'slug') : null,
+        'usesFullMembership' => $org?->uses_full_membership ?? null,
+    ]);
+})->name('guides.newsletter-guide');
 
 // SEO Routes
 // Sitemap Index (aggregates all sitemaps)
@@ -178,6 +153,13 @@ Route::middleware('guest')->group(function () {
     Route::post('/forgot-password', [App\Http\Controllers\Auth\PasswordResetController::class, 'sendResetLink'])->name('password.email');
     Route::get('/reset-password/{token}', [App\Http\Controllers\Auth\PasswordResetController::class, 'showResetForm'])->name('password.reset');
     Route::post('/reset-password', [App\Http\Controllers\Auth\PasswordResetController::class, 'reset'])->name('password.reset.store');
+
+    // Voter invitation routes (public — no auth required)
+    Route::get('/invitation/{token}', [VoterInvitationController::class, 'showSetPassword'])
+        ->name('invitation.show-set-password');
+    Route::post('/invitation/{token}', [VoterInvitationController::class, 'setPassword'])
+        ->name('invitation.store-password')
+        ->middleware('throttle:10,1');
 });
 
 Route::middleware('auth')->group(function () {
@@ -224,8 +206,8 @@ Route::get('/election/select', [ElectionController::class, 'selectElection'])
     ->middleware('auth')
     ->name('election.select');
 
-// Demo election start - bypass voter checks
-Route::get('/election/demo/start', [ElectionManagementController::class, 'startDemo'])
+// Demo election start - organisation-scoped
+Route::get('/organisations/{organisation_slug}/demo/start', [ElectionManagementController::class, 'startDemo'])
     ->middleware('auth')
     ->name('election.demo.start');
 
@@ -254,11 +236,61 @@ Route::get('/faq', function () {
     return Inertia::render('FAQ');
 })->name('faq');
 
+// Tutorial Hub — links to all tutorials, public
+Route::get('/tutorial', function () {
+    return Inertia::render('Tutorials/TutorialHub');
+})->name('tutorials.hub');
+
+// Election settings tutorial — public, no auth required
+Route::get('/election-setup', function () {
+    return Inertia::render('Tutorials/ElectionSettings');
+})->name('tutorials.election-settings');
+
+// Voter verification tutorial — public, no auth required
+Route::get('/help/voters-verification_guide', function () {
+    return Inertia::render('Tutorials/VotersManagement');
+})->name('tutorials.voters-verification-guide');
+
+// Membership modes tutorial — public, no auth required
+Route::get('/help/membership-modes', function () {
+    return Inertia::render('Tutorials/MembershipModes');
+})->name('tutorials.membership-modes');
+
+// Election Journey tutorial — explains the 7-phase election lifecycle
+Route::get('/help/election-journey', function () {
+    return Inertia::render('Tutorials/ElectionJourney');
+})->name('tutorials.election-journey');
+
+// Organisation Creation tutorial — step-by-step guide for creating organisations with geographic scope
+Route::get('/organisation-create-tutorial', function () {
+    return Inertia::render('Tutorials/OrganisationCreateTutorial');
+})->name('organisation-create-tutorial');
+
+// Governance Levels Tutorial — public, no auth required
+Route::get('/governance-levels', function () {
+    return Inertia::render('Tutorials/GovernanceLevelsTutorial');
+})->name('governance.levels.tutorial');
+
+// Public Voter Import Tutorial
+Route::get('/voter-import-tutorial', [VoterImportController::class, 'publicTutorial'])->name('voter-import-tutorial');
+
 // Security page
 Route::get('/security', [App\Http\Controllers\SecurityPageController::class, 'show'])->name('security');
 
 // Voting Security page
 Route::get('/voting/security', [App\Http\Controllers\VotingSecurityPageController::class, 'show'])->name('voting.security');
+
+// Election Architecture page
+Route::get('/election-architecture', [App\Http\Controllers\ElectionArchitectureController::class, 'show'])->name('public.election-architecture');
+
+// Election Security & State Machine page
+Route::get('/election-security', function () {
+    return inertia('Public/ElectionSecurity');
+})->name('public.election-security');
+
+// Articles
+Route::get('/ddd-article-part1', [ArticleController::class, 'showDddArticlePartOne'])->name('articles.ddd-part-one');
+Route::get('/who-watch-the-watchmen', [ArticleController::class, 'showWhoWatchesTheWatchmen'])->name('articles.who-watch-the-watchmen');
 
 // SEO landing pages — keyword-targeted routes
 Route::get('/digitale-online-wahlen-fuer-verein', function () {
@@ -406,7 +438,16 @@ Route::group([], __DIR__.'/election/electionRoutes.php');
 
 //Openion
 // Route::group([], __DIR__.'/openion/openionRoutes.php');
+
+// ============================================================================
+// organisation-SCOPED ROUTES — LOAD FIRST (before committeeRoutes)
+// to ensure API routes are matched before web routes
+// ============================================================================
+require __DIR__.'/organisations.php';
+
 Route::group([], __DIR__.'/committee/committeeRoutes.php');
+
+// NOTE: Governance API routes now registered in RouteServiceProvider with NO Inertia
 // Route::group([], __DIR__.'/openion/openionRoutes.php');
 
 Route::group([], __DIR__.'/openion/openionRoutes.php');
@@ -435,6 +476,7 @@ Route::middleware(['auth'])->group(function () {
     // Admin dashboard (requires admin role)
     Route::prefix('dashboard/admin')->middleware(['dashboard.role:admin'])->group(function () {
         Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+
     });
 
     // Commission dashboard (requires commission role)
@@ -492,12 +534,14 @@ Route::middleware(['auth'])->group(function () {
          ->name('api.organisations.demo-setup');
 });
 
+// NOTE: organisations.php is now loaded EARLIER (before committeeRoutes)
+// to ensure API routes are matched first
+
 // ============================================================================
-// organisation-SCOPED ROUTES (Phase 4 - Voters List)
+// PLATFORM ADMIN ROUTES (Phase 4 - Election Approval)
 // ============================================================================
-// These routes are automatically prefixed with /organisations/{slug}
-// and include EnsureOrganization middleware for security
-require __DIR__.'/organisations.php';
+// These routes are restricted to platform super_admin users
+require __DIR__.'/platform.php';
 
 // ============================================================================
 // STATIC PAGES (Terms of Service & Privacy Policy)

@@ -1,0 +1,77 @@
+# Engineering Knowledge Hub — controlled vocabulary: bounded contexts
+# Source of truth for the `bounded_context` frontmatter field.
+# Mirrors the real bounded contexts in app/Contexts/ (+ root app/Domain/Election) and `global`.
+# knowledge-lint validates `bounded_context` against the keys below.
+version: 1
+
+contexts:
+  global:
+    label: Global / Platform-wide
+    description: Knowledge that applies across the whole platform, owned by no single context.
+    code_path: null
+
+  membership:
+    label: Membership
+    description: Member lifecycle, applications, fees, committee structures.
+    code_path: app/Contexts/Membership
+    maturity: mature
+
+  governance:
+    label: Governance
+    description: Authority models, approval workflows, committee hierarchy.
+    code_path: app/Contexts/Governance
+    maturity: mature
+
+  adjudication:
+    label: Adjudication
+    description: Challenge determination, determination state machine, outcomes.
+    code_path: app/Contexts/Adjudication
+    maturity: growing
+
+  contestation:
+    label: Contestation
+    description: Challenge submission, admission, routing workflow.
+    code_path: app/Contexts/Contestation
+    maturity: growing
+
+  elections:
+    label: Elections
+    description: Voting eligibility, voter policies, voter repositories.
+    code_path: app/Contexts/Elections
+    maturity: foundational
+
+  election:
+    label: Election (root domain)
+    description: Election-wide aggregate, constitution, state machine, ballot security (root app/Domain/Election).
+    code_path: app/Domain/Election
+    maturity: core
+
+  geography:
+    label: Geography
+    description: Regional/administrative units, hierarchies, spatial data.
+    code_path: app/Contexts/Geography
+    maturity: core
+
+  committee:
+    label: Committee
+    description: Committee read models (application layer).
+    code_path: app/Contexts/Committee
+    maturity: minimal
+
+  finance:
+    label: Finance
+    description: Financial domain events (incomplete).
+    code_path: app/Contexts/Finance
+    maturity: stub
+
+  trust:
+    label: Trust
+    description: Trust attestation domain events (incomplete).
+    code_path: app/Contexts/Trust
+    maturity: stub
+
+  shared:
+    label: Shared
+    description: Cross-context events, value objects, orchestration.
+    code_path: app/Contexts/Shared
+    maturity: foundation

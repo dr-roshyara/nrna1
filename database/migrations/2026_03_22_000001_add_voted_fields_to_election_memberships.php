@@ -20,25 +20,47 @@ return new class extends Migration
         // Uses EXISTS + subquery (not JOIN) to avoid duplicate rows when a user
         // somehow has multiple voter_slugs with status='voted' for the same election.
         if (Schema::hasTable('voter_slugs')) {
-            DB::statement("
-                UPDATE election_memberships
-                SET has_voted = 1,
-                    voted_at  = (
-                        SELECT MIN(voter_slugs.updated_at)
-                        FROM voter_slugs
-                        WHERE voter_slugs.user_id     = election_memberships.user_id
-                          AND voter_slugs.election_id = election_memberships.election_id
-                          AND voter_slugs.status      = 'voted'
-                    ),
-                    status = 'inactive'
-                WHERE has_voted = 0
-                  AND EXISTS (
-                      SELECT 1 FROM voter_slugs
-                      WHERE voter_slugs.user_id     = election_memberships.user_id
-                        AND voter_slugs.election_id = election_memberships.election_id
-                        AND voter_slugs.status      = 'voted'
-                  )
-            ");
+            if (DB::getDriverName() === 'pgsql') {
+                DB::statement("
+                    UPDATE election_memberships
+                    SET has_voted = true,
+                        voted_at  = (
+                            SELECT MIN(voter_slugs.updated_at)
+                            FROM voter_slugs
+                            WHERE voter_slugs.user_id     = election_memberships.user_id
+                              AND voter_slugs.election_id = election_memberships.election_id
+                              AND voter_slugs.status      = 'voted'
+                        ),
+                        status = 'inactive'
+                    WHERE has_voted = false
+                      AND EXISTS (
+                          SELECT 1 FROM voter_slugs
+                          WHERE voter_slugs.user_id     = election_memberships.user_id
+                            AND voter_slugs.election_id = election_memberships.election_id
+                            AND voter_slugs.status      = 'voted'
+                      )
+                ");
+            } else {
+                DB::statement("
+                    UPDATE election_memberships
+                    SET has_voted = 1,
+                        voted_at  = (
+                            SELECT MIN(voter_slugs.updated_at)
+                            FROM voter_slugs
+                            WHERE voter_slugs.user_id     = election_memberships.user_id
+                              AND voter_slugs.election_id = election_memberships.election_id
+                              AND voter_slugs.status      = 'voted'
+                        ),
+                        status = 'inactive'
+                    WHERE has_voted = 0
+                      AND EXISTS (
+                          SELECT 1 FROM voter_slugs
+                          WHERE voter_slugs.user_id     = election_memberships.user_id
+                            AND voter_slugs.election_id = election_memberships.election_id
+                            AND voter_slugs.status      = 'voted'
+                      )
+                ");
+            }
         }
     }
 

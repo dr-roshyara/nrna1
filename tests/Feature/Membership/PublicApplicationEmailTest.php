@@ -47,12 +47,7 @@ class PublicApplicationEmailTest extends TestCase
     public function test_admin_notification_sent_to_org_admins(): void
     {
         $admin = User::factory()->create(['email' => 'admin@org.com']);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'organisation_id' => $this->org->id,
-            'user_id'         => $admin->id,
-            'role'            => 'admin',
-        ]);
+        $this->assignRole($admin, $this->org, 'admin');
 
         $this->postJoin();
 
@@ -64,12 +59,7 @@ class PublicApplicationEmailTest extends TestCase
     public function test_admin_notification_sent_to_owner(): void
     {
         $owner = User::factory()->create(['email' => 'owner@org.com']);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'organisation_id' => $this->org->id,
-            'user_id'         => $owner->id,
-            'role'            => 'owner',
-        ]);
+        $this->assignRole($owner, $this->org, 'owner');
 
         $this->postJoin();
 

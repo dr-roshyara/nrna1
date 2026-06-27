@@ -1,0 +1,125 @@
+# Engineering Knowledge Platform (EKP) — MASTER frontmatter schema
+# This is the single contract that knowledge-lint enforces on every governed document
+# under docs/knowledge/. It is data-driven: field values are validated against the sibling
+# vocabulary files rather than hard-coded in the linter.
+#
+#   field            validated against
+#   ---------------  --------------------------------
+#   knowledge_type   knowledge-types.yaml
+#   bounded_context  bounded-contexts.yaml
+#   status           statuses.yaml
+#   authority        authorities.yaml
+#   audience[]       knowledge-audiences.yaml
+#   <relationships>  knowledge-relationships.yaml
+#
+# Bump `version` when the contract changes; docs may pin `schema_version`.
+version: 1
+
+# Where governed docs live (globs, relative to repo root). archive/ is excluded from most rules.
+scope:
+  include:
+    - "docs/knowledge/**/*.md"
+  exclude:
+    - "docs/knowledge/archive/**"
+    - "docs/knowledge/**/README.scaffold.md"
+
+fields:
+  knowledge_id:
+    required: true
+    type: string
+    # PREFIX from knowledge-types.yaml id_prefix, then -NNN or -SLUG. e.g. ADR-0001, ADJ-MODEL-001
+    pattern: "^[A-Z][A-Z0-9-]*-[A-Za-z0-9-]+$"
+    unique: true
+  title:
+    required: true
+    type: string
+  knowledge_type:
+    required: true
+    type: enum
+    source: knowledge-types.yaml
+  bounded_context:
+    required: true
+    type: enum
+    source: bounded-contexts.yaml
+  status:
+    required: true
+    type: enum
+    source: statuses.yaml
+  authority:
+    required: true
+    type: enum
+    source: authorities.yaml
+  audience:
+    required: false
+    recommended: true
+    type: list-enum
+    source: knowledge-audiences.yaml
+  owner:
+    required: true
+    type: string
+  reviewers:
+    required: false
+    type: list
+  version:
+    required: false
+    recommended: true
+    type: string
+  schema_version:
+    required: false
+    type: number
+  tags:
+    required: false
+    recommended: true
+    type: list
+  last_review:
+    required: false
+    type: date
+  next_review:
+    required: false
+    type: date
+  code_refs:
+    required: false
+    type: list
+    # repo-relative paths to code this knowledge documents; validated to exist (warning if missing)
+    validate_exists: true
+  test_refs:
+    required: false
+    type: list
+    validate_exists: true
+
+# Relationship fields are optional lists of knowledge_id; keys validated against
+# knowledge-relationships.yaml (relationships + shortcuts).
+relationship_fields_source: knowledge-relationships.yaml
+
+# Lint rules (see scripts/knowledge-lint.sh). enabled/severity are data-driven.
+rules:
+  frontmatter_present:        { severity: error }
+  frontmatter_parses:         { severity: error }
+  required_fields_present:    { severity: error }
+  knowledge_id_unique:        { severity: error }
+  knowledge_id_pattern:       { severity: error }
+  enum_values_valid:          { severity: error }   # type/status/context/authority/audience
+  relationship_keys_valid:    { severity: error }
+  relationship_targets_exist: { severity: error }   # referenced knowledge_id must exist
+  links_resolve:              { severity: error }   # markdown links to local files resolve
+  recommended_fields_present: { severity: warning } # audience/tags/version
+  owner_present:              { severity: warning }
+  single_authoritative:       { severity: error }   # one authority:authoritative per (topic,context)
+  traceability_complete:      { severity: warning } # per knowledge-types traceability_requires
+  orphan_document:            { severity: warning } # nothing links to it AND it links to nothing
+  circular_dependency:        { severity: warning } # cycle over requires/depends_on
+  boundary_consistency:       { severity: warning } # cross-context link must be typed cross-context
+  frozen_changed_without_adr: { severity: warning } # status:frozen edited w/o ADR in same change
+  review_overdue:             { severity: warning } # next_review in the past
+
+# Topic identity for single_authoritative + duplicate detection.
+# Two docs are "same topic" if they share bounded_context AND any tag in `topic_tags`,
+# or share an explicit `topic:` value (optional field).
+topic_resolution:
+  by: [bounded_context, topic_tags]
+
+# Relationships allowed to cross bounded_context boundaries (others warn under boundary_consistency).
+cross_context_relationships:
+  - related_to
+  - implements
+  - derived_from

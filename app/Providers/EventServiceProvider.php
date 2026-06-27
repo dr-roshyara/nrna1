@@ -7,10 +7,17 @@ use App\Events\Newsletter\NewsletterEmailFailed;
 use App\Events\Newsletter\NewsletterEmailSent;
 use App\Listeners\Newsletter\UpdateNewsletterCounters;
 use App\Events\Membership\MembershipApplicationRejected;
-use App\Events\Membership\MembershipFeePaid;
+use App\Events\MembershipFeePaid;
 use App\Events\Membership\MembershipRenewed;
 use App\Listeners\InvalidateMembershipDashboardCache;
+use App\Listeners\CreateIncomeForMembershipFee;
 use App\Listeners\Membership\RecalculateMemberFeeStatus;
+use App\Listeners\Finance\CreateIncomeFromFeePaidProjection;
+use App\Contexts\Membership\Domain\Fee\Events\FeePaid;
+use App\Contexts\Membership\Application\Member\Listeners\MemberFeeStateListener;
+use App\Contexts\Governance\Domain\Committee\Events\MemberAssignedToCommittee;
+use App\Contexts\Governance\Domain\Committee\Events\MemberRemovedFromCommittee;
+use App\Contexts\Governance\Infrastructure\Projection\CommitteeMemberProjectionListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -38,11 +45,15 @@ class EventServiceProvider extends ServiceProvider
         MembershipFeePaid::class             => [
             InvalidateMembershipDashboardCache::class,
             RecalculateMemberFeeStatus::class,
+            CreateIncomeForMembershipFee::class,
         ],
         MembershipRenewed::class             => [InvalidateMembershipDashboardCache::class],
         // MembershipExpired::class — event not yet created (Phase 4 job)
 
-        // MembershipExpired::class — event not yet created (Phase 4 job) (duplicate removed)
+        // ── Finance integration: Outbox event → Income projection ─────────────
+        'outbox.event' => [
+            CreateIncomeFromFeePaidProjection::class,
+        ],
     ];
 
     /**
@@ -63,5 +74,15 @@ class EventServiceProvider extends ServiceProvider
         // ── Newsletter send counters + kill switch ───────────────────────────
         Event::listen(NewsletterEmailSent::class, [UpdateNewsletterCounters::class, 'handleSent']);
         Event::listen(NewsletterEmailFailed::class, [UpdateNewsletterCounters::class, 'handleFailed']);
+
+        // ── Membership fee paid event listeners ───────────────────────────────
+        Event::listen(MembershipFeePaid::class, [CreateIncomeForMembershipFee::class, 'handle']);
+
+        // ── Domain fee events → Member fee state synchronization ──────────────
+        Event::listen(FeePaid::class, [MemberFeeStateListener::class, 'handle']);
+
+        // ── Committee domain events → Projection synchronization ──────────────
+        Event::listen(MemberAssignedToCommittee::class, [CommitteeMemberProjectionListener::class, 'onMemberAssigned']);
+        Event::listen(MemberRemovedFromCommittee::class, [CommitteeMemberProjectionListener::class, 'onMemberRemoved']);
     }
 }

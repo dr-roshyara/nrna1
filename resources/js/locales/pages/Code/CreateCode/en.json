@@ -27,7 +27,13 @@
     "code_hint": "Enter this code below to continue.",
     "instructions_title": "Instructions",
     "instructions_body": "Your personal voting code is shown above. Enter it in the field below and click \"Next\" to begin.",
-    "guide_link": "How does the demo election work?"
+    "guide_link": "How does the demo election work?",
+    "how_it_works": {
+      "badge_text": "Start Here",
+      "title": "How does the demo election work?",
+      "description": "Get complete step-by-step guidance and understand the entire voting process before you begin.",
+      "cta_text": "View Guide"
+    }
   },
   "form": {
     "code_label": "First Voting Code",

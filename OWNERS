@@ -1,0 +1,50 @@
+# Design System Governance
+
+## Ownership
+
+**Design System Lead:** nab.raj.sharma
+**Backup:** (Team member to assign)
+
+## Approval Requirements
+
+### Tokens & Colors
+- **Required approvers:** 1+ (Design System Lead)
+- **Files:** `tailwind.config.js`, `resources/css/tokens.css`, `tokens.json`
+- **Rationale:** Changes to core color system affect entire platform
+
+### Component APIs
+- **Required approvers:** 1+ (Design System Lead)
+- **Files:** `resources/js/Components/Button.vue`, `resources/js/Components/Card.vue`, `resources/js/Components/ActionButton.vue`
+- **Rationale:** Breaking changes require review
+
+### Exceptions
+- **Required approvers:** 2+ (Design System Lead + 1 additional)
+- **Files:** `design-system.exceptions.json`
+- **Rationale:** Each exception must be justified and time-bound
+
+### Pages Layer Refactoring
+- **Required approvers:** 1+ (Design System Lead)
+- **Files:** `resources/js/Pages/**/*.vue` (design system migrations)
+- **Rationale:** Ensures consistency with design system rules
+
+## Exception Lifecycle
+
+1. **Request:** Open PR modifying `design-system.exceptions.json`
+2. **Justification:** Include reason, expiration date, and scope
+3. **Review:** 2+ approvers verify:
+   - Exception is time-bound (expires != null, unless permanent with strong justification)
+   - Scope is minimal (specific file, not entire directory)
+   - Reason is documented
+4. **Merge:** Can only be merged with approvals
+5. **Audit:** Design System Lead audits quarterly
+
+## Rules
+
+- No `--no-verify` commits (see pre-commit hook)
+- All color/button changes must align with tokens or have exception
+- Exceptions must not exceed 90 days without renewal
+- Design debt is tracked in `design-system.exceptions.json` as source of truth
+
+## Questions?
+
+Contact Design System Lead via PR or issue.

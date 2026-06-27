@@ -211,6 +211,31 @@ class SeoService
             $schemas['faq'] = $additional['faq'];
         }
 
+        // Article schema — injected for thought-leadership article pages
+        if (!empty($additional['article'])) {
+            $a = $additional['article'];
+            $schemas['article'] = [
+                '@context'         => 'https://schema.org',
+                '@type'            => 'Article',
+                'headline'         => $a['headline'] ?? '',
+                'description'      => $a['description'] ?? '',
+                'inLanguage'       => app()->getLocale(),
+                'author'           => [
+                    '@type' => 'Person',
+                    'name'  => $a['author'] ?? config('meta.organisation.name'),
+                ],
+                'publisher'        => [
+                    '@type' => 'Organization',
+                    'name'  => config('meta.organisation.name'),
+                    'logo'  => [
+                        '@type' => 'ImageObject',
+                        'url'   => config('meta.organisation.logo'),
+                    ],
+                ],
+                'mainEntityOfPage' => $a['url'] ?? $canonical,
+            ];
+        }
+
         return $schemas;
     }
 

@@ -19,7 +19,7 @@ class ElectionOfficerController extends Controller
 
         $officers = ElectionOfficer::with('user:id,name,email', 'appointer:id,name', 'election:id,name')
             ->where('organisation_id', $organisation->id)
-            ->orderByRaw("FIELD(status, 'active', 'pending', 'inactive', 'resigned')")
+            ->orderByRaw("CASE WHEN status = 'active' THEN 1 WHEN status = 'pending' THEN 2 WHEN status = 'inactive' THEN 3 WHEN status = 'resigned' THEN 4 ELSE 5 END")
             ->orderBy('role')
             ->get()
             ->map(fn ($o) => [

@@ -1,0 +1,20 @@
+{
+  "title": "Place of Residence",
+  "description": "Select the geographic area where the member resides. This determines committee eligibility.",
+  "select_geo": "Select geographic area",
+  "no_selection": "No geography selected",
+  "clear": "Clear selection",
+  "errors": {
+    "load_failed": "Failed to load geography configuration",
+    "invalid_selection": "Invalid geography selection"
+  },
+  "hints": {
+    "committee_eligibility": "Residence determines which committees the member is eligible for",
+    "optional": "Geography is optional. Members without geography can only be assigned to central committees."
+  },
+  "form": {
+    "label": "Place of Residence",
+    "placeholder": "Select province / district / ward",
+    "helper": "Optional — select the member's place of residence"
+  }
+}

@@ -2,9 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Contexts\Elections\Application\Commands\AssignVoterCommand;
+use App\Contexts\Elections\Application\Commands\BulkAssignVotersCommand;
+use App\Contexts\Elections\Application\Handlers\AssignVoterHandler;
+use App\Contexts\Elections\Application\Handlers\BulkAssignVotersHandler;
+use App\Contexts\Elections\Domain\Exceptions\DuplicateVoterException;
+use App\Contexts\Elections\Domain\Exceptions\VoterNotEligibleException;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\Organisation;
+use App\Models\OrganisationUser;
+use App\Models\VoterVerification;
+use App\Services\VoterEligibilityService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -23,6 +33,12 @@ use Inertia\Inertia;
  */
 class ElectionVoterController extends Controller
 {
+    public function __construct(
+        private VoterEligibilityService $eligibilityService,
+        private AssignVoterHandler $assignVoterHandler,
+        private BulkAssignVotersHandler $bulkAssignVotersHandler,
+    ) {}
+
     // =========================================================================
     // index — list voters assigned to the election
     // =========================================================================
@@ -30,6 +46,7 @@ class ElectionVoterController extends Controller
     public function index(Organisation $organisation, string $election)
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404, 'Voter management is not available for demo elections.');
 
         $this->authorize('view', $election);
@@ -39,7 +56,7 @@ class ElectionVoterController extends Controller
         $perPage  = in_array((int) request('per_page'), [25, 50, 100]) ? (int) request('per_page') : 50;
 
         $voters = $election->memberships()
-            ->with('user:id,name,email')
+            ->with('user:id,name,email,current_ip,updated_at')
             ->where('role', 'voter')
             ->when($search, fn ($q) => $q->whereHas('user', fn ($u) => $u->where('name', 'like', "%{$search}%")->orWhere('email', 'like', "%{$search}%")))
             ->when($status, fn ($q) => $q->where('status', $status))
@@ -53,30 +70,24 @@ class ElectionVoterController extends Controller
             ->pluck('user_id')
             ->toArray();
 
-        $unassignedMembers = DB::table('members')
-            ->join('organisation_users',       'members.organisation_user_id', '=', 'organisation_users.id')
-            ->leftJoin('membership_types',     'members.membership_type_id',   '=', 'membership_types.id')
-            ->join('users',                    'organisation_users.user_id',   '=', 'users.id')
-            ->where('members.organisation_id', $organisation->id)
-            ->where('members.status', 'active')
-            ->whereIn('members.fees_status', ['paid', 'exempt'])
-            ->where(fn ($q) => $q->whereNull('members.membership_type_id')
-                                 ->orWhere('membership_types.grants_voting_rights', true))
-            ->where(fn ($q) => $q->whereNull('members.membership_expires_at')
-                                 ->orWhere('members.membership_expires_at', '>', now()))
-            ->whereNull('members.deleted_at')
-            ->whereNotIn('organisation_users.user_id', $assignedUserIds)
-            ->select('users.id', 'users.name', 'users.email')
-            ->orderBy('users.name')
+        $unassignedMembers = $this->eligibilityService
+            ->unassignedEligibleQuery($organisation, $assignedUserIds, VoterSourceStrategy::fromElection($election))
             ->get();
 
+        // Load active verifications for this election, keyed by user_id
+        $verifications = VoterVerification::where('election_id', $election->id)
+            ->where('status', 'active')
+            ->get(['id', 'user_id', 'verified_ip', 'verified_device_fingerprint_hash', 'verified_at', 'notes'])
+            ->keyBy('user_id');
+
         return Inertia::render('Elections/Voters/Index', [
-            'election'          => $election->only('id', 'slug', 'name', 'type', 'status'),
+            'election'          => $election->only('id', 'slug', 'name', 'type', 'status', 'voter_verification_mode'),
             'organisation'      => $organisation->only('id', 'slug', 'name'),
             'voters'            => $voters,
             'stats'             => $election->voter_stats,
             'unassignedMembers' => $unassignedMembers,
             'filters'           => ['search' => $search, 'status' => $status, 'per_page' => $perPage],
+            'verifications'     => $verifications,
         ]);
     }
 
@@ -87,6 +98,7 @@ class ElectionVoterController extends Controller
     public function store(Request $request, Organisation $organisation, string $election)
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -95,23 +107,26 @@ class ElectionVoterController extends Controller
             'user_id' => [
                 'required',
                 'uuid',
-                // Must be an active formal member with full voting rights
-                function ($attribute, $value, $fail) use ($organisation) {
+                // Must be eligible voter (checked against election's constitutional snapshot)
+                function ($attribute, $value, $fail) use ($organisation, $election) {
                     $user = \App\Models\User::find($value);
-                    if (! $user || ! $user->isEligibleVoter($organisation)) {
-                        $fail('The selected user is not an active formal member with full voting rights.');
+                    $mode = VoterSourceStrategy::fromElection($election);
+                    if (! $user || ! $this->eligibilityService->isEligibleVoter($organisation, $user, $mode)) {
+                        $fail('The selected user is not eligible to vote in this election.');
                     }
                 },
             ],
         ]);
 
         try {
-            ElectionMembership::assignVoter(
-                $request->user_id,
-                $election->id,
-                auth()->id()
-            );
-        } catch (\Exception $e) {
+            $this->assignVoterHandler->handle(new AssignVoterCommand(
+                userId: $request->user_id,
+                electionId: $election->id,
+                organisationId: $organisation->id,
+                mode: VoterSourceStrategy::fromElection($election),
+                assignedBy: auth()->id(),
+            ));
+        } catch (VoterNotEligibleException | DuplicateVoterException $e) {
             return back()->withErrors(['user_id' => $e->getMessage()]);
         }
 
@@ -125,6 +140,7 @@ class ElectionVoterController extends Controller
     public function bulkStore(Request $request, Organisation $organisation, string $election)
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -134,33 +150,18 @@ class ElectionVoterController extends Controller
             'user_ids.*' => 'uuid',
         ]);
 
-        // Filter to eligible voters only (active formal members with full voting rights)
-        $validIds = DB::table('members')
-            ->join('organisation_users',       'members.organisation_user_id', '=', 'organisation_users.id')
-            ->leftJoin('membership_types',     'members.membership_type_id',   '=', 'membership_types.id')
-            ->whereIn('organisation_users.user_id', $request->user_ids)
-            ->where('members.organisation_id', $organisation->id)
-            ->where('members.status', 'active')
-            ->whereIn('members.fees_status', ['paid', 'exempt'])
-            ->where(fn ($q) => $q->whereNull('members.membership_type_id')
-                                 ->orWhere('membership_types.grants_voting_rights', true))
-            ->where(fn ($q) => $q->whereNull('members.membership_expires_at')
-                                 ->orWhere('members.membership_expires_at', '>', now()))
-            ->whereNull('members.deleted_at')
-            ->pluck('organisation_users.user_id')
-            ->toArray();
+        $result = $this->bulkAssignVotersHandler->handle(new BulkAssignVotersCommand(
+            userIds:        $request->user_ids,
+            electionId:     $election->id,
+            organisationId: $organisation->id,
+            mode:           VoterSourceStrategy::fromElection($election),
+            assignedBy:     auth()->id(),
+        ));
 
-        $invalidCount = count($request->user_ids) - count($validIds);
-
-        $result = ElectionMembership::bulkAssignVoters(
-            $validIds,
-            $election->id,
-            auth()->id()
-        );
-
-        $result['invalid'] = ($result['invalid'] ?? 0) + $invalidCount;
-
-        return back()->with('bulk_result', $result);
+        return redirect()->route('organisations.elections.voters', [
+            'organisation' => $organisation->slug,
+            'election' => $election->slug
+        ])->with('bulk_result', $result);
     }
 
     // =========================================================================
@@ -170,6 +171,7 @@ class ElectionVoterController extends Controller
     public function destroy(Organisation $organisation, string $election, ElectionMembership $membership)
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -194,6 +196,7 @@ class ElectionVoterController extends Controller
     public function approve(Organisation $organisation, string $election, ElectionMembership $membership): RedirectResponse
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -219,6 +222,7 @@ class ElectionVoterController extends Controller
     public function suspend(Organisation $organisation, string $election, ElectionMembership $membership): RedirectResponse
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -244,6 +248,7 @@ class ElectionVoterController extends Controller
     public function export(Organisation $organisation, string $election)
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('view', $election);
@@ -285,6 +290,7 @@ class ElectionVoterController extends Controller
     public function proposeSuspension(Organisation $organisation, string $election, ElectionMembership $membership): RedirectResponse
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -324,6 +330,7 @@ class ElectionVoterController extends Controller
     public function confirmSuspension(Organisation $organisation, string $election, ElectionMembership $membership): RedirectResponse
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -358,6 +365,7 @@ class ElectionVoterController extends Controller
     public function cancelProposal(Organisation $organisation, string $election, ElectionMembership $membership): RedirectResponse
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -381,4 +389,5 @@ class ElectionVoterController extends Controller
 
         return back()->with('success', "Suspension proposal for {$membership->user->name} cancelled.");
     }
+
 }

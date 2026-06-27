@@ -13,24 +13,26 @@ use App\Http\Controllers\DeligateVoteController;
 use App\Http\Controllers\DeligateCodeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\Election\ElectionManagementController;
+use App\Http\Controllers\Election\ElectionSettingsController;
 use App\Http\Controllers\ElectionController as VotingElectionController;
 use App\Http\Controllers\VoterSlugController;
 use App\Http\Controllers\Admin\VotingSecurityController;
 use App\Http\Controllers\HasVotedController;
 use App\Services\ElectionService;
 use App\Http\Controllers\ElectionVotingController;
+use App\Http\Controllers\Demo\PublicDemoController;
 use Illuminate\Support\Facades\Route;
 
 // ============================================================
 // PRIMARY ELECTION PAGE (slug-based, shareable, bookmarkable)
 // ============================================================
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/elections/{slug}',        [ElectionVotingController::class, 'show']) ->name('elections.show');
     Route::post('/elections/{slug}/start', [ElectionVotingController::class, 'start'])->name('elections.start');
 });
 
 // Legacy: session-based /election → redirects to /elections/{slug}
-Route::middleware(['auth', 'verified'])->get('/election', [ElectionManagementController::class, 'dashboard'])->name('election.dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/election', [ElectionManagementController::class, 'dashboard'])->name('election.dashboard');
 
 // ============================================================
 // NEW: Election Selection Routes (Phase 2c)
@@ -50,9 +52,33 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/voter/restart', [VoterSl
 Route::middleware(['auth:sanctum', 'verified'])->get('/vote', function () {
     $user = auth()->user();
 
-    // Check basic eligibility
-    if (!$user->can_vote || $user->has_voted) {
-        return redirect()->route('election.dashboard')->with('error', 'You are not eligible to vote at this time.');
+    // RESOLVE the election for constitutional eligibility check
+    $election = null;
+    $sessionElectionId = session('selected_election_id');
+    if ($sessionElectionId) {
+        $election = \App\Models\Election::withoutGlobalScopes()->find($sessionElectionId);
+    }
+    if (!$election) {
+        try {
+            $resolver = app(\App\Services\DemoElectionResolver::class);
+            $election = $resolver->getDemoElectionForUser($user);
+        } catch (\Exception $e) {
+            // No resolver available, will continue without election context
+        }
+    }
+
+    // CONSTITUTIONAL CHECK: Use canVote() instead of legacy can_vote column
+    // LEGACY REPLACEMENT: was: if (!$user->can_vote || $user->has_voted)
+    if ($election) {
+        $lifecycle = \App\Application\Election\Facades\ElectionLifecycle::of($election);
+        if (!$lifecycle->canVote()) {
+            return redirect()->route('election.dashboard')
+                ->with('error', $lifecycle->blockedReason() ?? 'Voting is not currently active.');
+        }
+    } elseif (!$user->can_vote || $user->has_voted) {
+        // Fallback to legacy check only if no election context available
+        return redirect()->route('election.dashboard')
+            ->with('error', 'You are not eligible to vote at this time.');
     }
 
     try {
@@ -73,12 +99,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/vote', function () {
 
 //voters (moved to unified voters section below)
 
-// ✅ IMPORTANT: Add these exact routes
-Route::middleware(['auth:sanctum', 'verified'])
-        ->post('/voters/{id}/approve', [VoterlistController::class, 'approveVoter'])->name('voters.approve');
-
-Route::middleware(['auth:sanctum', 'verified'])
-        ->post('/voters/{id}/reject', [VoterlistController::class, 'rejectVoter'])->name('voters.reject');        
 /**
  * All candidates
  */
@@ -157,10 +177,12 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
    Route::middleware(['auth:sanctum', 'verified'])->get('/votes/index', [VoteController::class, 'index'])->name('vote.index');
 //    Route::middleware(['auth:sanctum', 'verified'])->get('/vote/show', [VoteController::class, 'show'])->name('vote.show');
    Route::middleware(['auth:sanctum', 'verified'])->get('/vote/show/{vote_id}', [VoteController::class, 'show'])->name('vote.show');
+   Route::middleware(['auth:sanctum', 'verified'])->get('/vote/download-pdf/{vote_id}', [VoteController::class, 'downloadVotePDF'])->name('vote.download-pdf');
+   Route::middleware(['auth:sanctum', 'verified'])->post('/vote/confirm-correct', [VoteController::class, 'confirmCorrect'])->name('vote.confirm-correct');
 
    // Election-specific result routes (scoped by election slug)
-   Route::middleware(['auth:sanctum', 'verified'])->get('/election/{election}/result', [ResultController::class, 'index'])->name('result.index');
-   Route::middleware(['auth:sanctum', 'verified'])->get('/election/{election}/result/download-pdf', [ResultController::class, 'downloadPDF'])->name('result.download.pdf');
+   Route::middleware(['auth:sanctum', 'verified'])->get('/election/{election:slug}/result', [ResultController::class, 'index'])->name('result.index');
+   Route::middleware(['auth:sanctum', 'verified'])->get('/election/{election:slug}/result/download-pdf', [ResultController::class, 'downloadPDF'])->name('result.download.pdf');
 
    // Has voted - view all members who have voted
    Route::middleware(['auth:sanctum', 'verified'])->get('/election/hasvoted', [HasVotedController::class, 'index'])->name('hasvoted.index');
@@ -235,13 +257,15 @@ Route::get('posts/index', [PostController::class, 'index'])->name('post.index');
 Route::get('posts/assign', [PostController::class, 'assign'])->name('post.assign');
 
 // Election Management & Viewboard Routes
-Route::middleware(['auth', 'verified'])
-    ->prefix('/elections/{election}')
+// Using explicit {election:slug} to trigger implicit model binding
+// The Election model's resolveRouteBinding() bypasses global scopes
+Route::middleware(['auth', 'verified', 'tenant'])
+    ->prefix('/elections/{election:slug}')
     ->group(function () {
         // Management dashboard — chief or deputy only
+        // 🔥 TEMPORARY: Authorization moved to controller to debug route binding
         Route::get('/management', [ElectionManagementController::class, 'index'])
-            ->name('elections.management')
-            ->can('manageSettings', 'election');
+            ->name('elections.management');
 
         Route::get('/status', [ElectionManagementController::class, 'status'])
             ->name('elections.status')
@@ -270,6 +294,27 @@ Route::middleware(['auth', 'verified'])
             ->name('elections.close-voting')
             ->can('manageSettings', 'election');
 
+        // SUSPEND ELECTION — governance intervention overlay (chief only via suspendElection)
+        // NOT lifecycle progression. See suspendElection policy for authorization semantics.
+        Route::post('/suspend', [ElectionManagementController::class, 'suspend'])
+            ->name('elections.suspend')
+            ->can('suspendElection', 'election');
+
+        // Resume suspended election — restore capabilities after governance hold
+        // Uses suspendElection policy: governance overlay operations share chief-only authorization.
+        Route::post('/resume', [ElectionManagementController::class, 'resume'])
+            ->name('elections.resume')
+            ->can('suspendElection', 'election');
+
+        // Election approval workflow — officer action
+        Route::get('/submit-for-approval', [ElectionManagementController::class, 'showSubmitForApproval'])
+            ->name('elections.submit-for-approval.show')
+            ->can('manageSettings', 'election');
+
+        Route::post('/submit-for-approval', [ElectionManagementController::class, 'submitForApproval'])
+            ->name('elections.submit-for-approval')
+            ->can('manageSettings', 'election');
+
         // Bulk voter management — chief or deputy
         Route::post('/bulk-approve-voters', [ElectionManagementController::class, 'bulkApproveVoters'])
             ->name('elections.bulk-approve-voters')
@@ -288,10 +333,41 @@ Route::middleware(['auth', 'verified'])
             ->name('elections.update-dates')
             ->can('manageSettings', 'election');
 
+        // Update expected voter count — chief or deputy
+        Route::patch('/expected-voter-count', [ElectionManagementController::class, 'updateExpectedVoterCount'])
+            ->name('elections.expected-voter-count')
+            ->can('manageSettings', 'election');
+
         // Upload organisation logo — chief or deputy
         Route::post('/upload-logo', [ElectionManagementController::class, 'uploadLogo'])
             ->name('elections.upload-logo')
             ->can('manageSettings', 'election');
+
+        // ── Election Settings ─────────────────────────────────────────────────────
+        Route::get('/settings', [ElectionSettingsController::class, 'edit'])
+            ->name('elections.settings.edit')
+            ->can('manageSettings', 'election');
+
+        Route::patch('/settings', [ElectionSettingsController::class, 'update'])
+            ->name('elections.settings.update')
+            ->can('manageSettings', 'election');
+
+        // ── Timeline View (Read-only - always accessible for audit trail) ────────────
+        Route::get('/timeline-view', [ElectionManagementController::class, 'timelineView'])
+            ->name('elections.timeline-view')
+            ->can('manageSettings', 'election');
+
+        // ── Timeline Edit (Capability-driven authorization via ElectionLifecycle) ──────────────────
+        // Authorization moved from route middleware to controller (constitutional capability model).
+        // The controller uses ElectionLifecycle::canEditTimeline() to check if timeline is editable
+        // in current state, replacing the obsolete Election::allowsAction('configure_election') pattern.
+        Route::get('/timeline', [ElectionManagementController::class, 'timeline'])
+            ->name('elections.timeline')
+            ->can('manageSettings', 'election');
+
+        Route::patch('/timeline', [ElectionManagementController::class, 'updateTimeline'])
+            ->name('elections.update-timeline');
+        // Authorization check moved to controller (line 1265) to handle tenant context properly
     });
 
 // Test routes for voter slug system (Phase 1)
@@ -394,44 +470,66 @@ Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\Substitut
 //     })->name('voter.vote.submit');
 // });
 
-// Slug-based voting workflow routes (integrated with existing controllers)
+// ============================================================================
+// STEP 1: CODE CREATION (Allow expired voter slugs - CodeController extends them)
+// ============================================================================
+// NOTE: Does NOT include 'voter.slug.window' middleware because expired slugs
+// should be allowed here so CodeController can extend them. The CodeController
+// regenerates the code and extends the voter slug window.
 // Middleware chain:
 // 1. SubstituteBindings - Route model binding
 // 2. voter.slug.verify - Verify slug exists, belongs to user, is active
-// 3. voter.slug.window - Check expiration
+// 3. voter.slug.consistency - Validate election exists and org consistency
+// 4. ensure.election.voter - Check voter membership
+// 5. vote.eligibility - Block ineligible voters before they can obtain a ballot code
+// 6. vote.organisation - Organisation security
+Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.verify', 'voter.slug.consistency', 'ensure.election.voter', 'vote.eligibility', 'vote.organisation'])->group(function () {
+    Route::get('code/create', [CodeController::class, 'create'])->name('slug.code.create');
+    Route::post('code', [CodeController::class, 'store'])->name('slug.code.store');
+});
+
+// ============================================================================
+// STEPS 2-5: FULL VOTING WORKFLOW (with expiration enforcement)
+// ============================================================================
+// Middleware chain:
+// 1. SubstituteBindings - Route model binding
+// 2. voter.slug.verify - Verify slug exists, belongs to user, is active
+// 3. voter.slug.window - Check expiration ← NOW enforced here
 // 4. voter.slug.consistency - Validate election exists and org consistency
 // 5. voter.step.order - Ensure step progression
 // 6. vote.eligibility - Check voting rights
 // 7. validate.voting.ip - IP restrictions (if enabled)
 // 8. vote.organisation - Organisation security
-Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.verify', 'voter.slug.window', 'voter.slug.consistency', 'ensure.election.voter', 'voter.step.order', 'vote.eligibility', 'validate.voting.ip', 'vote.organisation'])->group(function () {
-
-    // Step 1: Code creation (using existing CodeController)
-    Route::get('code/create', [CodeController::class, 'create'])->name('slug.code.create');
-    Route::post('code', [CodeController::class, 'store'])->name('slug.code.store');
+Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.verify', 'voter.slug.window', 'voter.slug.consistency', 'ensure.election.voter', 'voter.step.order', 'vote.eligibility', 'validate.voting.ip', 'vote.organisation', 'throttle:10,1'])->group(function () {
 
     // Step 2: Agreement (using existing CodeController)
     Route::get('vote/agreement', [CodeController::class, 'showAgreement'])->name('slug.code.agreement');
     Route::post('code/agreement', [CodeController::class, 'submitAgreement'])->name('slug.code.agreement.submit');
 
-    // Step 3: Vote creation (using existing VoteController)
-    Route::get('vote/create', [VoteController::class, 'create'])->name('slug.vote.create');
-    Route::post('vote/submit', [VoteController::class, 'first_submission'])->name('slug.vote.submit');
+    // Step 3-5: Constitutional voting operations — protected by voting.active middleware
+    // INVARIANT A: Ballot rendering and vote persistence require canVote() = true
+    // The 'voting.active' middleware provides defense-in-depth; controller-level
+    // canVote() checks remain the primary constitutional gate.
+    Route::middleware(['voting.active'])->group(function () {
+        // Step 3: Vote creation (using existing VoteController)
+        Route::get('vote/create', [VoteController::class, 'create'])->name('slug.vote.create');
+        Route::post('vote/submit', [VoteController::class, 'first_submission'])->name('slug.vote.submit');
 
-    // Step 4: Vote verification (using existing VoteController)
-    Route::get('vote/verify', [VoteController::class, 'verify'])->name('slug.vote.verify');
-    Route::post('vote/verify', [VoteController::class, 'store'])->name('slug.vote.store');
+        // Step 4: Vote verification (using existing VoteController)
+        Route::get('vote/verify', [VoteController::class, 'verify'])->name('slug.vote.verify');
+        Route::post('vote/verify', [VoteController::class, 'store'])->name('slug.vote.store');
 
-    // Step 5: Final submission page
-    Route::get('vote/complete', function (\Illuminate\Http\Request $request) {
-        $voter = $request->attributes->get('voter');
-        $voterSlug = $request->attributes->get('voter_slug');
+        // Step 5: Final submission page
+        Route::get('vote/complete', function (\Illuminate\Http\Request $request) {
+            $voter = $request->attributes->get('voter');
+            $voterSlug = $request->attributes->get('voter_slug');
 
-        return Inertia::render('Vote/Complete', [
-            'voter' => $voter,
-            'slug' => $voterSlug->slug
-        ]);
-    })->name('slug.vote.complete');
+            return Inertia::render('Vote/Complete', [
+                'voter' => $voter,
+                'slug' => $voterSlug->slug
+            ]);
+        })->name('slug.vote.complete');
+    });
 });
 
 // ============================================================================
@@ -509,6 +607,9 @@ Route::prefix('public-demo')->name('public-demo.')->group(function () {
     // Tutorial / Guide — MUST be before {publicDemoSession} to avoid slug conflict
     Route::get('/guide', [\App\Http\Controllers\Demo\PublicDemoController::class, 'guide'])->name('guide');
 
+    // Public aggregated demo results — no auth required
+    Route::get('/results', [\App\Http\Controllers\Demo\PublicDemoController::class, 'publicResults'])->name('results');
+
     // Entry point — creates or reuses a PublicDemoSession, redirects to Step 1
     Route::get('/start', [\App\Http\Controllers\Demo\PublicDemoController::class, 'start'])->name('start');
 
@@ -550,17 +651,29 @@ Route::middleware(['auth:sanctum', 'verified'])
 
 // MODE 2: Organisation-scoped demo results (organisation_id = X)
 Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/demo/result', [DemoResultController::class, 'index'])
+    ->get('/organisations/{organisation_slug}/demo/result', [DemoResultController::class, 'index'])
     ->name('demo-result.index');
 
 Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/demo/result/download-pdf', [DemoResultController::class, 'downloadPDF'])
+    ->get('/organisations/{organisation_slug}/demo/result/download-pdf', [DemoResultController::class, 'downloadPDF'])
     ->name('demo-result.download-pdf');
 
 // Verification endpoints for demo results
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/api/demo/verify-results/{postId}', [DemoResultController::class, 'verifyResults']);
     Route::get('/api/demo/statistical-verification/{postId}', [DemoResultController::class, 'statisticalVerification']);
+});
+
+// Admin routes for election approval workflow
+Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
+    // Pending elections list
+    Route::get('/elections/pending', [\App\Http\Controllers\Admin\AdminElectionController::class, 'pending'])->name('admin.elections.pending');
+
+    // Approve an election
+    Route::post('/elections/{election:slug}/approve', [\App\Http\Controllers\Admin\AdminElectionController::class, 'approve'])->name('admin.elections.approve');
+
+    // Reject an election
+    Route::post('/elections/{election:slug}/reject', [\App\Http\Controllers\Admin\AdminElectionController::class, 'reject'])->name('admin.elections.reject');
 });
 
 // Admin routes for election committee
@@ -589,3 +702,46 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified', 'committee.membe
     // Security report
     Route::get('voting-security/report', [VotingSecurityController::class, 'generateReport'])->name('admin.voting.security.report');
 });
+
+// DEBUG: Test with TenantContext middleware applied
+Route::get('/elections/{election:slug}/debug-tenant', function (\App\Models\Election $election) {
+    $user = auth()->user();
+    return response()->json([
+        'user_id' => $user->id,
+        'user_email' => $user->email,
+        'user_organisation_id' => $user->organisation_id,
+        'session_organisation_id' => session('current_organisation_id'),
+        'election_id' => $election->id,
+        'election_slug' => $election->slug,
+        'election_state' => $election->state,
+        'election_org_id' => $election->organisation_id,
+        'can_manage' => $user->can('manageSettings', $election),
+    ]);
+})->middleware(['auth', 'verified', 'tenant'])->name('election.debug-tenant');
+
+// DEBUG: Direct authorization test
+Route::get('/elections/{election:slug}/auth-test', function (\App\Models\Election $election) {
+    $user = auth()->user();
+    if (!$user) {
+        return response()->json(['error' => 'Not authenticated'], 401);
+    }
+
+    return response()->json([
+        'user_id' => $user->id,
+        'user_email' => $user->email,
+        'election_id' => $election->id,
+        'election_slug' => $election->slug,
+        'election_state' => $election->state,
+        'can_manage' => $user->can('manageSettings', $election),
+        'allows_action' => $election->allowsAction('manage_settings'),
+        'is_chief' => \App\Models\ElectionOfficer::where('user_id', $user->id)
+            ->where('election_id', $election->id)
+            ->where('role', 'chief')
+            ->where('status', 'active')
+            ->exists(),
+        'is_org_owner' => \App\Models\UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $election->organisation_id)
+            ->where('role', 'owner')
+            ->exists(),
+    ]);
+})->middleware(['auth', 'verified'])->name('election.auth-test');

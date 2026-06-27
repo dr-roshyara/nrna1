@@ -1,0 +1,235 @@
+{
+  "meta": {
+    "title": "Wählerverifizierungsleitfaden",
+    "description": "Vollständiger Leitfaden zum Hinzufügen von Mitgliedern als Wähler, zur Verifizierung von Identitäten und zur Verwaltung von Wählerzuweisungen mit IP- und Geräteverifizierung.",
+    "read_time": "5 min Lesezeit",
+    "badge_label": "⏱️"
+  },
+  "page": {
+    "title": "Wählerverwaltungsleitfaden",
+    "subtitle": "Lernen Sie, wie Sie Mitglieder als Wähler zuordnen und die Identitätsverifizierung für Ihre Wahlen einrichten."
+  },
+  "toc": {
+    "label": "Inhalt",
+    "items": [
+      { "id": "overview", "label": "Übersicht" },
+      { "id": "before-you-begin", "label": "Bevor Sie anfangen" },
+      { "id": "add-voters", "label": "Mitglieder als Wähler hinzufügen" },
+      { "id": "verification-modes", "label": "Wählerverifizierungsmodi" },
+      { "id": "video-call-workflow", "label": "Videoanruf-Verifizierungsworkflow" },
+      { "id": "ip-capture", "label": "Wie die IP-Erfassung funktioniert" },
+      { "id": "voting-enforcement", "label": "Wahl-Durchsetzung" },
+      { "id": "scenarios", "label": "Häufige Szenarien" },
+      { "id": "faq", "label": "Häufig gestellte Fragen" }
+    ]
+  },
+  "section_overview": {
+    "heading": "Übersicht",
+    "body": "Die Wählerverwaltungsseite ermöglicht es Wahlbeamten, berechtigte Mitglieder als Wähler zuzuordnen und die Identitätsverifizierung einzurichten, um Betrug zu verhindern.\n\nSchlüsselverantwortungen:\n• Mitglieder der Wahl als berechtigte Wähler hinzufügen\n• Verifizierungsmodi konfigurieren (Keine, IP Only, Fingerprint Only oder Beide)\n• Identitätsverifizierung per Videoanruf durchführen\n• Wählerstatus überwachen und Suspensionen verwalten\n\nDieser Leitfaden führt Sie durch den gesamten Prozess von der Zuordnung bis zur Verifizierung."
+  },
+  "section_prerequisites": {
+    "heading": "Bevor Sie anfangen",
+    "intro": "Stellen Sie sicher, dass Sie die folgenden Voraussetzungen erfüllt haben:",
+    "steps": [
+      {
+        "title": "Wahl erstellt",
+        "body": "Sie haben bereits eine echte (keine Demo-)Wahl erstellt. Demo-Wahlen unterstützen keine Wählerverwaltung."
+      },
+      {
+        "title": "Beamtenrolle",
+        "body": "Sie wurden von einem Administrator zur Wahlbeamtenrolle für diese Wahl ernannt."
+      },
+      {
+        "title": "Mitglieder importiert",
+        "body": "Organisationsmitglieder wurden erstellt und sind als Aktiv mit gezahlten oder befreiten Gebühren gekennzeichnet."
+      },
+      {
+        "title": "Mitgliedschaftstypen (Optional)",
+        "body": "Falls Sie Mitgliedschaftstypen verwenden, stellen Sie sicher, dass sie Stimmrechte gewähren. Mitglieder ohne Typ sind standardmäßig berechtigt."
+      }
+    ]
+  },
+  "section_add_voters": {
+    "heading": "Mitglieder als Wähler hinzufügen",
+    "steps": [
+      {
+        "title": "Zur Wählersseite navigieren",
+        "body": "Gehen Sie zu Ihrer Wahl und klicken Sie auf die Registerkarte Wähler, um das Wählerverwaltungs-Dashboard anzuzeigen."
+      },
+      {
+        "title": "Nach Mitgliedern suchen",
+        "body": "Verwenden Sie das Suchfeld, um berechtigte Mitglieder nach Name oder E-Mail zu finden. Nur aktive Mitglieder mit gezahlten/befreiten Gebühren werden angezeigt."
+      },
+      {
+        "title": "Mitglieder auswählen",
+        "body": "Klicken Sie auf das Kontrollkästchen neben ein oder mehreren Mitgliedern. Sie können bis zu 1.000 Mitglieder auf einmal auswählen."
+      },
+      {
+        "title": "Klicken Sie auf die Zuordnungsschaltfläche",
+        "body": "Klicken Sie auf die grüne Schaltfläche Zuordnen. Ausgewählte Mitglieder werden sofort als Wähler für diese Wahl zugeordnet."
+      },
+      {
+        "title": "Zuordnung verifizieren",
+        "body": "Mitglieder erscheinen nun in der Wählertabelle. Ihr Status ist Ausstehend, bis Sie ihn genehmigen."
+      }
+    ],
+    "eligibility_heading": "Wer kann als Wähler zugeordnet werden?",
+    "eligibility_items": [
+      "Aktive Organisationsmitglieder",
+      "Gebührenstatus muss Bezahlt oder Befreit sein",
+      "Mitgliedschaftstyp entweder: (a) keiner (standardmäßig berechtigt), ODER (b) gewährt Stimmrechte = wahr",
+      "Mitgliedschaft darf nicht abgelaufen sein",
+      "Darf nicht bereits dieser Wahl zugeordnet sein"
+    ]
+  },
+  "section_verification_modes": {
+    "heading": "Wählerverifizierungsmodi",
+    "body": "Wahlen unterstützen vier Verifizierungsmodi, um Sicherheit und Benutzerfreundlichkeit auszugleichen. Sie legen den Modus in den Wahleinstellungen fest, und er gilt für alle Wähler dieser Wahl.",
+    "table_headers": ["Modus", "Beschreibung", "Anwendungsfall"],
+    "modes": [
+      {
+        "name": "Keine",
+        "description": "Keine Verifizierung erforderlich. Wähler können sofort nach der Anmeldung abstimmen.",
+        "use_case": "Kleine, risikoarme Organisationen (Sportclubs, Hobby-Gruppen), in denen die Wähleridentität bereits bekannt ist."
+      },
+      {
+        "name": "Nur IP",
+        "description": "Der Wähler muss von einer verifizierten IP-Adresse abstimmen. Verhindert das Abstimmen von mehreren Orten.",
+        "use_case": "Remote-Organisationen, bei denen Wähler von zu Hause aus arbeiten. Beamte verifizieren einmal, Wähler können diesen Ort zum Abstimmen verwenden."
+      },
+      {
+        "name": "Nur Fingerprint",
+        "description": "Der Wähler muss ein verifiziertes Gerät verwenden. Verhindert das Abstimmen von gemeinsamen oder geliehenen Geräten.",
+        "use_case": "Hochsicherheitswahlen, bei denen der Geräteeigentum kritisch ist (Vorstandswahlen, Führungswahlen)."
+      },
+      {
+        "name": "Beide (IP + Fingerprint)",
+        "description": "Der Wähler muss von verifizierten IP BEIDE und verifiziertem Gerät abstimmen. Maximale Sicherheit.",
+        "use_case": "Diaspora-Organisationen oder internationale Wahlen, die maximale Betrugsbekämpfung erfordern."
+      }
+    ]
+  },
+  "section_video_call": {
+    "heading": "Videoanruf-Verifizierungsworkflow",
+    "steps": [
+      "Mitglied wird als Wähler zugeordnet (Status: Ausstehend)",
+      "Konfigurieren Sie den Verifizierungsmodus in den Wahleinstellungen (Keine/Nur IP/Fingerprint/Beide)",
+      "Teilen Sie dem Wähler mit: 'Bitte melden Sie sich von dem Ort/Gerät an, das Sie zum Abstimmen verwenden werden'",
+      "Wähler meldet sich an — ihre IP und der Geräte-Fingerprint werden automatisch erfasst",
+      "Planen Sie einen kurzen Videoanruf mit dem Wähler (über Zoom, Telefon oder persönlich)",
+      "Während des Anrufs: Öffnen Sie die Wählerverwaltungsseite und klicken Sie auf die Schaltfläche Verifizieren neben dem Wähler",
+      "Das Verifizierungsmodal wird mit der vorausgefüllten IP des Wählers (schreibgeschützt) und dem Geräte-Fingerprint (schreibgeschützt) geöffnet",
+      "Bestätigen Sie die Wähleridentität visuell während des Videoanrufs",
+      "Fügen Sie optionale Notizen zur Verifizierung hinzu (z.B. 'Pass verifiziert', 'Videoanruf 2024-01-15')",
+      "Klicken Sie auf die Schaltfläche Wähler verifizieren im Modal",
+      "Ein grünes Verifizierungsabzeichen erscheint neben dem Namen des Wählers — er kann jetzt abstimmen!"
+    ]
+  },
+  "section_ip_capture": {
+    "heading": "Wie die IP-Erfassung funktioniert",
+    "body": "IP-Adressen werden automatisch erfasst, wenn sich Wähler anmelden. Sie müssen Wählern NICHT nach ihrer IP fragen oder sie manuell eingeben.\n\nHier ist, warum das wichtig ist:\n1. Wähler kontrollieren ihre IP, indem sie WO sich anmelden (Zuhause, Büro, Café, etc.)\n2. Beamte können die IP in dem Verifizierungsmodal nicht bearbeiten oder fälschen\n3. Das System erzwingt, dass Wähler von derselben IP abstimmen, von der sie sich angemeldet haben\n4. Wenn sich die IP eines Wählers ändert (z.B. wenn er Standorte wechselt), muss er sich erneut verifizieren",
+    "how_header": "Wie es funktioniert:",
+    "how_it_works": [
+      "Wähler meldet sich von seinem Heimbüro an (IP: 192.168.1.100)",
+      "Das System erfasst die IP automatisch und speichert sie in seinem Konto",
+      "Beamter verifiziert Wähler per Videoanruf — IP ist schreibgeschützt im Modal",
+      "Wähler stimmt später ab — System bestätigt, dass IP übereinstimmt (192.168.1.100)",
+      "Wenn der Wähler versucht, von einer anderen IP abzustimmen (Café), wird die Abstimmung blockiert"
+    ]
+  },
+  "section_enforcement": {
+    "heading": "Wahl-Durchsetzung",
+    "modes": [
+      {
+        "name": "Modus: Keine",
+        "behavior": "Der Wähler kann sofort nach der Anmeldung abstimmen. Keine Verifizierungsprüfung erforderlich."
+      },
+      {
+        "name": "Modus: Nur IP",
+        "behavior": "Der Wähler muss eine aktive IP-Verifizierung haben. Wenn nicht verifiziert oder IP-Mismatch, wird die Abstimmung abgelehnt mit der Nachricht: 'Ihre aktuelle IP stimmt nicht mit Ihrer verifizierten IP überein.'"
+      },
+      {
+        "name": "Modus: Nur Fingerprint",
+        "behavior": "Der Wähler muss eine aktive Geräteverifizierung haben. Wenn nicht verifiziert oder Gerätemismatch, wird die Abstimmung abgelehnt mit der Nachricht: 'Ihr Gerät stimmt nicht mit Ihrem verifizierten Gerät überein.'"
+      },
+      {
+        "name": "Modus: Beide (IP + Fingerprint)",
+        "behavior": "Der Wähler muss BEIDE aktiven Verifizierungen haben und beide müssen übereinstimmen. Jeder Mismatch blockiert die Abstimmung: 'IP oder Gerätemismatch. Kann nicht von diesem Ort/Gerät abstimmen.'"
+      }
+    ]
+  },
+  "section_scenarios": {
+    "heading": "Häufige Szenarien",
+    "items": [
+      {
+        "title": "Szenario 1: Kleine Clubwahl (Keine Verifizierung)",
+        "setup": "Ein Sportclub mit 50 Mitgliedern stimmt über Führungspositionen ab. Alle Mitglieder kennen sich; das Betrugsrisiko ist gering.",
+        "steps": [
+          "Legen Sie den Wahl-Verifizierungsmodus auf Folgendes fest: Keine",
+          "Ordnen Sie alle 50 Mitglieder als Wähler zu",
+          "Keine Verifizierungsschritte erforderlich — Mitglieder können sofort nach der Anmeldung abstimmen"
+        ]
+      },
+      {
+        "title": "Szenario 2: Remote-Team-Vorstandswahl (Nur IP)",
+        "setup": "Ein remote-first Softwareunternehmen (50 Mitarbeiter über 10 Länder verteilt) stimmt über Executive-Positionen ab. Die Mitarbeiter arbeiten von zu Hause aus.",
+        "steps": [
+          "Legen Sie den Wahl-Verifizierungsmodus auf Folgendes fest: Nur IP",
+          "Teilen Sie dem Team mit: 'Stimmen Sie von Ihrem üblichen Heimbüro ab'",
+          "Planen Sie kurze Videoanrufe mit jedem Mitglied des Teams",
+          "Verifizieren Sie während des Anrufs ihre Identität und speichern Sie ihre IP",
+          "Die Mitarbeiter können jederzeit von dieser Heimbüro-IP abstimmen"
+        ]
+      },
+      {
+        "title": "Szenario 3: Internationale Diaspora-Organisation (Beide IP + Fingerprint)",
+        "setup": "Eine 5.000-Mitglieder-Diaspora-Organisation mit Niederlassungen in 12 Ländern. Mitglieder sind verteilt; das Betrugsrisiko ist sehr hoch.",
+        "steps": [
+          "Legen Sie den Wahl-Verifizierungsmodus auf Folgendes fest: Beide",
+          "Planen Sie obligatorische persönliche oder Video-Verifizierungssitzungen",
+          "Verifizieren Sie während der Sitzungen die Identität (Pass/ID) und speichern Sie IP + Geräte-Fingerprint",
+          "Mitglieder können nur von verifizierter Standort-/Gerätekombination abstimmen",
+          "Maximale Sicherheit gewährleistet eine-Person-eine-Stimme-Garantie"
+        ]
+      }
+    ]
+  },
+  "section_faq": {
+    "heading": "Häufig gestellte Fragen",
+    "items": [
+      {
+        "question": "Kann ich ein Mitglied zuordnen, das nicht in unserer Organisation ist?",
+        "answer": "Nein. Nur aktive Organisationsmitglieder mit gezahlten/befreiten Gebühren können als Wähler zugeordnet werden. Dies wird auf Systemebene durchgesetzt."
+      },
+      {
+        "question": "Was ist, wenn sich die IP eines Wählers nach der Verifizierung ändert?",
+        "answer": "Wenn sich ein Wähler von einer anderen IP anmeldet, können sie nicht abstimmen (falls IP-Modus aktiviert ist). Sie müssen Sie kontaktieren, um sich mit ihrer neuen IP erneut zu verifizieren. Sie können das Verifizierungsmodal erneut öffnen und ihre neue IP bestätigen."
+      },
+      {
+        "question": "Kann ich die IP nach der Verifizierung bearbeiten?",
+        "answer": "Nein. Das IP-Feld im Verifizierungsmodal ist schreibgeschützt — es zeigt die tatsächliche Anmelde-IP des Wählers und kann nicht geändert werden. Dies verhindert betrügerische Bearbeitungen."
+      },
+      {
+        "question": "Was ist, wenn ein Mitglied keinen Mitgliedschaftstyp hat?",
+        "answer": "Mitglieder mit NULL membership_type_id sind standardmäßig berechtigt. Sie benötigen keinen speziellen Mitgliedschaftstyp zum Abstimmen."
+      },
+      {
+        "question": "Kann ich einen Wähler nach der Zuordnung entfernen?",
+        "answer": "Ja. Klicken Sie auf die Schaltfläche Entfernen neben einem Wähler, um ihn zu entfernen. Wenn er noch nicht abgestimmt hat, wird er sofort entfernt. Wenn er abgestimmt hat, bleibt die Stimme gültig, aber er wird als entfernt markiert."
+      },
+      {
+        "question": "Was ist das Suspensionssystem?",
+        "answer": "Wahlbeamte können die Aussetzung eines aktiven Wählers vorschlagen (z.B. wegen Betrugs). Ein zweiter Beamter muss vor der Aussetzung bestätigen. Diese Genehmigung durch zwei Personen verhindert versehentliche Stimmunterdrückung. Ausgesetzte Wähler können nicht abstimmen."
+      },
+      {
+        "question": "Kann ich die Wählerliste exportieren?",
+        "answer": "Ja. Klicken Sie auf die Schaltfläche CSV exportieren, um eine Liste aller Wähler, deren Status und Zuordnungsdatum herunterzuladen. Nützlich für Aufzeichnungen und Audits."
+      },
+      {
+        "question": "Was bedeutet das Verifizierungsabzeichen?",
+        "answer": "Das grüne Häkchen-Abzeichen neben dem Namen eines Wählers bedeutet, dass seine Identität per Videoanruf (oder gleichwertig) von einem Beamten verifiziert wurde. Er kann nun abstimmen (falls der Verifizierungsmodus dies erfordert)."
+      }
+    ]
+  },
+  "back_text": "Zurück zu Wählern"
+}

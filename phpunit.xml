@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
-         bootstrap="vendor/autoload.php"
+         bootstrap="tests/bootstrap-test-database.php"
          colors="true"
 >
     <testsuites>
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
+        <testsuite name="Replay">
+            <directory suffix="Test.php">./tests/Replay</directory>
+        </testsuite>
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Architecture">
+            <directory suffix="Test.php">./tests/Architecture</directory>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
@@ -19,11 +25,16 @@
     </coverage>
     <php>
         <server name="APP_ENV" value="testing"/>
+        <server name="DB_CONNECTION" value="pgsql"/>
+        <server name="DB_HOST" value="127.0.0.1"/>
+        <server name="DB_PORT" value="5432"/>
+        <server name="DB_DATABASE" value="nrna_test"/>
+        <server name="DB_USERNAME" value="publicdigit_user"/>
+        <server name="DB_PASSWORD" value="Rudolfvogt%27%"/>
         <server name="APP_KEY" value="base64:hI6EHt29D8WPl/MQdFYSg6uE/MK/5j5n5Rj7+OXK8QI="/>
+        <server name="APP_DEBUG" value="false"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
-        <server name="DB_CONNECTION" value="sqlite"/>
-        <server name="DB_DATABASE" value=":memory:"/>
         <server name="MAIL_MAILER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="SESSION_DRIVER" value="array"/>

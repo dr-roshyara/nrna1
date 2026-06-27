@@ -46,121 +46,18 @@ class ElectionMembershipTest extends TestCase
         ]);
     }
 
-    // =========================================================================
-    // assignVoter()
-    // =========================================================================
-
-    public function test_assign_voter_creates_active_membership(): void
+    /**
+     * Helper: Create a membership for testing (replaces deprecated assignVoter)
+     */
+    private function createMembership(User $user, Election $election): ElectionMembership
     {
-        $membership = ElectionMembership::assignVoter(
-            $this->member->id,
-            $this->election->id
-        );
-
-        $this->assertInstanceOf(ElectionMembership::class, $membership);
-        $this->assertEquals($this->member->id,   $membership->user_id);
-        $this->assertEquals($this->election->id, $membership->election_id);
-        $this->assertEquals($this->org->id,      $membership->organisation_id);
-        $this->assertEquals('voter',  $membership->role);
-        $this->assertEquals('active', $membership->status);
-
-        $this->assertDatabaseHas('election_memberships', [
-            'user_id'     => $this->member->id,
-            'election_id' => $this->election->id,
-            'role'        => 'voter',
-            'status'      => 'active',
+        return ElectionMembership::create([
+            'user_id'         => $user->id,
+            'organisation_id' => $election->organisation_id,
+            'election_id'     => $election->id,
+            'role'            => 'voter',
+            'status'          => 'active',
         ]);
-    }
-
-    public function test_assign_voter_rejects_user_not_in_organisation(): void
-    {
-        $outsider = User::factory()->create(['email_verified_at' => now()]);
-
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageMatches('/not a member/');
-
-        ElectionMembership::assignVoter($outsider->id, $this->election->id);
-    }
-
-    public function test_assign_voter_throws_when_election_not_found(): void
-    {
-        $this->expectException(\Illuminate\Database\Eloquent\ModelNotFoundException::class);
-
-        ElectionMembership::assignVoter(
-            $this->member->id,
-            (string) Str::uuid() // non-existent
-        );
-    }
-
-    public function test_assign_voter_throws_if_already_active(): void
-    {
-        ElectionMembership::assignVoter($this->member->id, $this->election->id);
-
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageMatches('/already an active voter/');
-
-        ElectionMembership::assignVoter($this->member->id, $this->election->id);
-    }
-
-    public function test_assign_voter_reactivates_inactive_membership(): void
-    {
-        $membership = ElectionMembership::assignVoter($this->member->id, $this->election->id);
-        $membership->update(['status' => 'inactive']);
-
-        $reactivated = ElectionMembership::assignVoter($this->member->id, $this->election->id);
-
-        $this->assertEquals('active', $reactivated->fresh()->status);
-        $this->assertDatabaseCount('election_memberships', 1); // no duplicates
-    }
-
-    // =========================================================================
-    // bulkAssignVoters()
-    // =========================================================================
-
-    public function test_bulk_assign_creates_memberships_for_valid_members(): void
-    {
-        $second = User::factory()->create(['email_verified_at' => now()]);
-        $this->org->users()->attach($second->id, ['id' => (string) Str::uuid(), 'role' => 'voter']);
-
-        $result = ElectionMembership::bulkAssignVoters(
-            [$this->member->id, $second->id],
-            $this->election->id
-        );
-
-        $this->assertEquals(2, $result['success']);
-        $this->assertEquals(0, $result['already_existing']);
-        $this->assertEquals(0, $result['invalid']);
-        $this->assertDatabaseCount('election_memberships', 2);
-    }
-
-    public function test_bulk_assign_skips_non_members(): void
-    {
-        $outsider = User::factory()->create(['email_verified_at' => now()]);
-
-        $result = ElectionMembership::bulkAssignVoters(
-            [$this->member->id, $outsider->id],
-            $this->election->id
-        );
-
-        $this->assertEquals(1, $result['success']);
-        $this->assertEquals(0, $result['already_existing']);
-        $this->assertEquals(1, $result['invalid']);
-        $this->assertDatabaseCount('election_memberships', 1);
-    }
-
-    public function test_bulk_assign_counts_already_existing(): void
-    {
-        ElectionMembership::assignVoter($this->member->id, $this->election->id);
-
-        $result = ElectionMembership::bulkAssignVoters(
-            [$this->member->id],
-            $this->election->id
-        );
-
-        $this->assertEquals(0, $result['success']);
-        $this->assertEquals(1, $result['already_existing']);
-        $this->assertEquals(0, $result['invalid']);
-        $this->assertDatabaseCount('election_memberships', 1); // no duplicates
     }
 
     // =========================================================================
@@ -169,14 +66,14 @@ class ElectionMembershipTest extends TestCase
 
     public function test_is_eligible_returns_true_for_active_non_expired_membership(): void
     {
-        $membership = ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $membership = $this->createMembership($this->member, $this->election);
 
         $this->assertTrue($membership->isEligible());
     }
 
     public function test_is_eligible_returns_false_when_status_is_inactive(): void
     {
-        $membership = ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $membership = $this->createMembership($this->member, $this->election);
         $membership->update(['status' => 'inactive']);
 
         $this->assertFalse($membership->fresh()->isEligible());
@@ -184,7 +81,7 @@ class ElectionMembershipTest extends TestCase
 
     public function test_is_eligible_returns_false_when_expires_at_is_past(): void
     {
-        $membership = ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $membership = $this->createMembership($this->member, $this->election);
         $membership->update(['expires_at' => now()->subDay()]);
 
         $this->assertFalse($membership->fresh()->isEligible());
@@ -196,7 +93,7 @@ class ElectionMembershipTest extends TestCase
 
     public function test_mark_as_voted_updates_last_activity_and_sets_inactive(): void
     {
-        $membership = ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $membership = $this->createMembership($this->member, $this->election);
 
         $membership->markAsVoted();
 
@@ -207,7 +104,7 @@ class ElectionMembershipTest extends TestCase
 
     public function test_remove_sets_status_to_removed_and_stores_reason_in_metadata(): void
     {
-        $membership = ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $membership = $this->createMembership($this->member, $this->election);
 
         $membership->remove('Duplicate account');
 
@@ -223,14 +120,14 @@ class ElectionMembershipTest extends TestCase
 
     public function test_membership_belongs_to_user(): void
     {
-        $membership = ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $membership = $this->createMembership($this->member, $this->election);
 
         $this->assertEquals($this->member->id, $membership->user->id);
     }
 
     public function test_membership_belongs_to_election(): void
     {
-        $membership = ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $membership = $this->createMembership($this->member, $this->election);
 
         $this->assertEquals($this->election->id, $membership->election->id);
     }
@@ -239,8 +136,8 @@ class ElectionMembershipTest extends TestCase
     {
         $election2 = Election::factory()->create(['organisation_id' => $this->org->id]);
 
-        ElectionMembership::assignVoter($this->member->id, $this->election->id);
-        ElectionMembership::assignVoter($this->member->id, $election2->id);
+        $this->createMembership($this->member, $this->election);
+        $this->createMembership($this->member, $election2);
 
         $this->assertEquals(2, $this->member->voterElections()->count());
     }
@@ -248,12 +145,12 @@ class ElectionMembershipTest extends TestCase
     public function test_election_eligible_voters_excludes_expired_memberships(): void
     {
         // active member
-        ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $this->createMembership($this->member, $this->election);
 
         // expired member
         $expiredUser = User::factory()->create(['email_verified_at' => now()]);
         $this->org->users()->attach($expiredUser->id, ['id' => (string) Str::uuid(), 'role' => 'voter']);
-        $expired = ElectionMembership::assignVoter($expiredUser->id, $this->election->id);
+        $expired = $this->createMembership($expiredUser, $this->election);
         $expired->update(['expires_at' => now()->subDay()]);
 
         $this->assertEquals(1, $this->election->eligibleVoters()->count());
@@ -265,7 +162,7 @@ class ElectionMembershipTest extends TestCase
 
     public function test_eligible_scope_excludes_inactive_memberships(): void
     {
-        $membership = ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $membership = $this->createMembership($this->member, $this->election);
         $membership->update(['status' => 'inactive']);
 
         $this->assertEquals(0, ElectionMembership::eligible()->count());
@@ -273,7 +170,7 @@ class ElectionMembershipTest extends TestCase
 
     public function test_scope_voters_returns_only_voter_role(): void
     {
-        ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $this->createMembership($this->member, $this->election);
 
         // Insert a candidate directly (bypassing assignVoter which defaults to 'voter')
         $candidate = User::factory()->create(['email_verified_at' => now()]);
@@ -303,8 +200,8 @@ class ElectionMembershipTest extends TestCase
         $member2 = User::factory()->create(['email_verified_at' => now()]);
         $this->org->users()->attach($member2->id, ['id' => (string) Str::uuid(), 'role' => 'voter']);
 
-        ElectionMembership::assignVoter($this->member->id, $this->election->id);
-        ElectionMembership::assignVoter($member2->id, $election2->id);
+        $this->createMembership($this->member, $this->election);
+        $this->createMembership($member2, $election2);
 
         $this->assertEquals(1, ElectionMembership::forElection($this->election->id)->count());
         $this->assertEquals(1, ElectionMembership::forElection($election2->id)->count());
@@ -337,7 +234,7 @@ class ElectionMembershipTest extends TestCase
 
     public function test_cascade_delete_removes_memberships_when_user_leaves_organisation(): void
     {
-        ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $this->createMembership($this->member, $this->election);
 
         // Removing from the pivot cascades to election_memberships via DB FK
         $this->org->users()->detach($this->member->id);
@@ -356,7 +253,7 @@ class ElectionMembershipTest extends TestCase
     {
         Config::set('cache.default', 'array'); // fast + supports has()
 
-        ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $this->createMembership($this->member, $this->election);
 
         $cacheKey = "election.{$this->election->id}.voter_count";
         $this->assertFalse(Cache::has($cacheKey));
@@ -373,7 +270,7 @@ class ElectionMembershipTest extends TestCase
         Config::set('cache.default', 'array');
 
         // Prime the cache
-        ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $this->createMembership($this->member, $this->election);
         $this->election->fresh()->voter_count; // triggers cache write
 
         $cacheKey = "election.{$this->election->id}.voter_count";
@@ -382,7 +279,7 @@ class ElectionMembershipTest extends TestCase
         // Adding a second voter should clear the cache
         $second = User::factory()->create(['email_verified_at' => now()]);
         $this->org->users()->attach($second->id, ['id' => (string) Str::uuid(), 'role' => 'voter']);
-        ElectionMembership::assignVoter($second->id, $this->election->id);
+        $this->createMembership($second, $this->election);
 
         $this->assertFalse(Cache::has($cacheKey));
     }
@@ -412,7 +309,7 @@ class ElectionMembershipTest extends TestCase
     {
         Config::set('cache.default', 'array');
 
-        ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $this->createMembership($this->member, $this->election);
 
         $stats = $this->election->fresh()->voter_stats;
 
@@ -437,8 +334,8 @@ class ElectionMembershipTest extends TestCase
         $second = User::factory()->create(['email_verified_at' => now()]);
         $this->org->users()->attach($second->id, ['id' => (string) Str::uuid(), 'role' => 'voter']);
 
-        ElectionMembership::assignVoter($this->member->id, $this->election->id);
-        $m2 = ElectionMembership::assignVoter($second->id, $this->election->id);
+        $this->createMembership($this->member, $this->election);
+        $m2 = $this->createMembership($second, $this->election);
 
         // Mark one as inactive
         $m2->markAsVoted();
@@ -457,7 +354,7 @@ class ElectionMembershipTest extends TestCase
     {
         Config::set('cache.default', 'array');
 
-        ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $this->createMembership($this->member, $this->election);
 
         $cacheKey = "election.{$this->election->id}.voter_stats";
 
@@ -476,7 +373,7 @@ class ElectionMembershipTest extends TestCase
         $this->assertTrue(Cache::has($cacheKey));
 
         // Adding a voter must clear the stats cache
-        ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $this->createMembership($this->member, $this->election);
 
         $this->assertFalse(Cache::has($cacheKey));
     }
@@ -490,7 +387,7 @@ class ElectionMembershipTest extends TestCase
         Config::set('cache.default', 'array');
 
         // Create a membership that expires in 30 minutes (within next hour)
-        $membership = ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $membership = $this->createMembership($this->member, $this->election);
         $membership->update(['expires_at' => now()->addMinutes(30)]);
 
         // Prime both caches
@@ -516,7 +413,7 @@ class ElectionMembershipTest extends TestCase
         Config::set('cache.default', 'array');
 
         // Membership with no expires_at — should not be touched
-        ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $this->createMembership($this->member, $this->election);
 
         // Prime the cache
         $this->election->fresh()->voter_count;
@@ -534,7 +431,7 @@ class ElectionMembershipTest extends TestCase
         Config::set('cache.default', 'array');
 
         // Membership that expired 1 hour ago
-        $membership = ElectionMembership::assignVoter($this->member->id, $this->election->id);
+        $membership = $this->createMembership($this->member, $this->election);
         $membership->update(['expires_at' => now()->subHour()]);
 
         $this->election->fresh()->voter_count;
@@ -544,26 +441,6 @@ class ElectionMembershipTest extends TestCase
         $this->artisan('elections:flush-expiring-caches')->assertSuccessful();
 
         $this->assertFalse(Cache::has($countKey));
-    }
-
-    // =========================================================================
-    // BUG #5 — transaction retry count
-    // =========================================================================
-
-    public function test_assign_voter_uses_three_transaction_retries(): void
-    {
-        // Read the source to verify the retry count is 3, not 5
-        $source = file_get_contents(
-            app_path('Models/ElectionMembership.php')
-        );
-
-        // Should contain }, 3) — the three-retry transaction close
-        $this->assertMatchesRegularExpression('/\}\s*,\s*3\s*\)/', $source,
-            'assignVoter() should use 3 transaction retries, not 5'
-        );
-        $this->assertDoesNotMatchRegularExpression('/\}\s*,\s*5\s*\)/', $source,
-            'assignVoter() must not use 5 retries'
-        );
     }
 
     // =========================================================================

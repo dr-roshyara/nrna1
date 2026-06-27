@@ -56,7 +56,11 @@ abstract class BaseVote extends Model
     protected $fillable = [
         'organisation_id',
         'election_id',
+        'vote_hash',
         'receipt_hash',
+        'data_checksum',
+        'results_last_synced_at',
+        'is_verified',
         'no_vote_option',
         'participation_proof',
         'encrypted_vote',
@@ -108,9 +112,25 @@ abstract class BaseVote extends Model
      * 2. organisation_id matches election's organisation
      * 3. vote_hash is provided (cryptographic proof)
      * 4. cast_at timestamp is set
+     *
+     * After save, creates Result records for each selected candidate
      */
     protected static function booted()
     {
+        static::creating(function ($vote) {
+            // ✅ Calculate data checksum for integrity verification
+            if ($vote instanceof Vote && !$vote->data_checksum) {
+                $vote->data_checksum = $vote->calculateChecksum();
+            }
+        });
+
+        static::saved(function ($vote) {
+            // ✅ Create Result records for each selected candidate
+            if ($vote instanceof Vote) {
+                $vote->createResultsFromCandidates();
+            }
+        });
+
         static::creating(function ($vote) {
             // ✅ AUTO-GENERATE receipt_hash if not provided
             // This ensures all votes (demo and real) have cryptographic proof
@@ -208,6 +228,33 @@ abstract class BaseVote extends Model
                 'timestamp' => now(),
                 'ip' => request()->ip(),
             ]);
+        });
+
+        // Sync votes_count denormalized column
+        static::saved(function ($vote) {
+            if ($vote instanceof Vote) {
+                $count = \DB::table('votes')
+                    ->where('election_id', $vote->election_id)
+                    ->whereNull('deleted_at')
+                    ->count();
+
+                \DB::table('elections')
+                    ->where('id', $vote->election_id)
+                    ->update(['votes_count' => $count]);
+            }
+        });
+
+        static::deleted(function ($vote) {
+            if ($vote instanceof Vote) {
+                $count = \DB::table('votes')
+                    ->where('election_id', $vote->election_id)
+                    ->whereNull('deleted_at')
+                    ->count();
+
+                \DB::table('elections')
+                    ->where('id', $vote->election_id)
+                    ->update(['votes_count' => $count]);
+            }
         });
     }
 

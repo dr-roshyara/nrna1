@@ -405,7 +405,7 @@ class VotingSecurityController extends Controller
 
     private function getPeakVotingHours(): array
     {
-        return VoterSlug::selectRaw('HOUR(created_at) as hour, COUNT(*) as count')
+        return VoterSlug::selectRaw("EXTRACT(HOUR FROM created_at) as hour, COUNT(*) as count")
             ->where('created_at', '>', now()->subDays(7))
             ->groupBy('hour')
             ->orderBy('count', 'desc')

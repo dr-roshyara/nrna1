@@ -1,0 +1,44 @@
+{
+  "title": "Governance Levels",
+  "description": "Define the hierarchy levels for committees and geographic units",
+  "fields": {
+    "level": "Level",
+    "committee_name": "Committee Name",
+    "committee_code": "Committee Code",
+    "geo_name": "Geo Name",
+    "geo_code": "Geo Code",
+    "geo_parent_code": "Parent Geo Code",
+    "description": "Description",
+    "is_active": "Active",
+    "sort_order": "Sort Order",
+    "actions": "Actions"
+  },
+  "placeholders": {
+    "committee_name": "e.g., Global Committee",
+    "committee_code": "e.g., GLOBAL",
+    "geo_name": "e.g., World",
+    "geo_code": "e.g., WORLD",
+    "geo_parent_code": "None (Root Level)",
+    "description": "Optional description of this level"
+  },
+  "help_text": "Guide",
+  "actions": {
+    "add": "+ Add Level",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "create": "Create",
+    "refresh": "Refresh",
+    "confirm_delete": "Are you sure you want to delete this level?",
+    "confirm_delete_text": "This action cannot be undone."
+  },
+  "messages": {
+    "create_success": "Governance level created successfully",
+    "update_success": "Governance level updated successfully",
+    "delete_success": "Governance level deleted successfully",
+    "error": "An error occurred",
+    "loading": "Loading levels...",
+    "empty": "No governance levels defined yet. Click \"+ Add Level\" to get started."
+  }
+}

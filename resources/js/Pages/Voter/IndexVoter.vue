@@ -1,34 +1,34 @@
 <template>
     <nrna-layout>
-        <div class="m-2 min-h-screen bg-gray-100 p-2">
+        <div class="m-2 min-h-screen bg-neutral-100 p-2">
             <!-- Success/Error Messages -->
             <div v-if="$page.props.flash?.success" class="mb-4 rounded-sm bg-green-100 border border-green-400 text-green-700 px-4 py-3">
                 {{ $page.props.flash.success }}
             </div>
-            <div v-if="$page.props.flash?.error" class="mb-4 rounded-sm bg-red-100 border border-red-400 text-red-700 px-4 py-3">
+            <div v-if="$page.props.flash?.error" class="mb-4 rounded-sm bg-danger-100 border border-danger-400 text-danger-700 px-4 py-3">
                 {{ $page.props.flash.error }}
             </div>
-            <div v-if="$page.props.errors?.error" class="mb-4 rounded-sm bg-red-100 border border-red-400 text-red-700 px-4 py-3">
+            <div v-if="$page.props.errors?.error" class="mb-4 rounded-sm bg-danger-100 border border-danger-400 text-danger-700 px-4 py-3">
                 {{ $page.props.errors.error }}
             </div>
 
             <div class="flex flex-row justify-between py-2">
                 <Link
                     v-if="voters?.prev_page_url"
-                    class="m-2 rounded-sm bg-gray-300 px-2 py-2"
+                    class="m-2 rounded-sm bg-neutral-300 px-2 py-2"
                     :href="voters.prev_page_url"
                     >Previous Page
                 </Link>
                 <Link
                     v-if="voters?.next_page_url"
-                    class="m-2 rounded-sm bg-gray-300 px-2 py-2"
+                    class="m-2 rounded-sm bg-neutral-300 px-2 py-2"
                     :href="voters.next_page_url"
                     >Next Page
                 </Link>
             </div>
             
             <!-- Committee Member Info -->
-            <div v-if="isCommitteeMember" class="mb-4 rounded-sm bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3">
+            <div v-if="isCommitteeMember" class="mb-4 rounded-sm bg-primary-100 border border-primary-400 text-primary-700 px-4 py-3">
                 <strong>Committee Member Access:</strong> You can approve/reject voters.
             </div>
 
@@ -46,7 +46,7 @@
                 <!-- Table head  -->
                 <template #head>
                     <tr
-                        class="sticky border-b border-gray-400 bg-gray-300 py-2 font-bold text-gray-900"
+                        class="sticky border-b border-neutral-400 bg-neutral-300 py-2 font-bold text-neutral-900"
                     >
                         <!-- <th @click.prevent="sortBy('name')">Stock Id</th> -->
                         <!-- <td v-show="showColumn('manufacturerId')">S.N.</td> -->
@@ -116,7 +116,7 @@
                     <tr
                         v-for="(voter, voterIndx) in safeVoters"
                         :key="voter?.id || voterIndx"
-                        :class="[{ 'bg-gray-100': voterIndx % 2 == 0 }, 'p-1']"
+                        :class="[{ 'bg-neutral-100': voterIndx % 2 == 0 }, 'p-1']"
                     >
                         <td
                             class="border-r border-green-200 p-2"
@@ -147,7 +147,7 @@
                             <span
                                 :class="{
                                     'bg-green-100 text-green-800': voter?.can_vote == 1,
-                                    'bg-red-100 text-red-800': voter?.can_vote == 0 || voter?.can_vote == null
+                                    'bg-danger-100 text-danger-800': voter?.can_vote == 0 || voter?.can_vote == null
                                 }"
                                 class="px-2 py-1 rounded-full text-xs font-medium"
                             >
@@ -164,7 +164,7 @@
                                 <span v-if="voter?.approvedBy" class="text-sm text-green-600">
                                     ✅ Approved by: {{ voter.approvedBy }}
                                 </span>
-                                <span v-else class="text-sm text-gray-400 italic">
+                                <span v-else class="text-sm text-neutral-400 italic">
                                     Approved (no record)
                                 </span>
                             </div>
@@ -172,10 +172,10 @@
                             <!-- If voter is suspended (can_vote = 0 and has suspension info) -->
                             <div v-else-if="voter?.can_vote == 0 && voter?.suspendedBy">
                                 <div class="text-sm">
-                                    <div class="text-red-600">
+                                    <div class="text-danger-600">
                                         ❌ Suspended by: {{ voter.suspendedBy }}
                                     </div>
-                                    <div v-if="voter?.approvedBy" class="text-gray-500 text-xs mt-1">
+                                    <div v-if="voter?.approvedBy" class="text-neutral-500 text-xs mt-1">
                                         Originally approved by: {{ voter.approvedBy }}
                                     </div>
                                 </div>
@@ -183,7 +183,7 @@
 
                             <!-- If voter is pending (never approved) -->
                             <div v-else>
-                                <span class="text-sm text-gray-400 italic">
+                                <span class="text-sm text-neutral-400 italic">
                                     Pending approval
                                 </span>
                             </div>
@@ -194,13 +194,13 @@
                             v-show="showColumn('voting_ip')"
                         >
                             <div v-if="voter?.voting_ip">
-                                <span class="text-sm text-gray-900">{{ voter.voting_ip }}</span>
+                                <span class="text-sm text-neutral-900">{{ voter.voting_ip }}</span>
                                 <!-- Show if current IP is different from voting IP -->
-                                <div v-if="voter?.user_ip && voter.user_ip !== voter.voting_ip" class="text-xs text-gray-500 mt-1">
+                                <div v-if="voter?.user_ip && voter.user_ip !== voter.voting_ip" class="text-xs text-neutral-500 mt-1">
                                     Current: {{ voter.user_ip }}
                                 </div>
                             </div>
-                            <span v-else class="text-sm text-gray-400 italic">Not approved</span>
+                            <span v-else class="text-sm text-neutral-400 italic">Not approved</span>
                         </td>
                         <!-- Actions - only show if committee member -->
                         <td
@@ -223,13 +223,13 @@
                                 <button
                                     v-if="voter?.can_vote == 1"
                                     @click="rejectVoter(voter.id)"
-                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded-sm text-xs"
+                                    class="bg-danger-500 hover:bg-danger-700 text-white font-bold py-1 px-3 rounded-sm text-xs"
                                     :disabled="loading"
                                 >
                                     {{ loading ? 'Loading...' : 'Suspend' }}
                                 </button>
                             </div>
-                            <div v-else class="text-sm text-gray-400 italic">
+                            <div v-else class="text-sm text-neutral-400 italic">
                                 Invalid voter
                             </div>
                         </td>

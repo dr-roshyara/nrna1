@@ -1,5 +1,13 @@
 {
   "page_eyebrow": "Wahlverwaltung",
+  "timeline": {
+    "title": "Wahlfahrt",
+    "currently_in": "Derzeit in",
+    "phase": "Phase",
+    "phases_complete": "Phasen abgeschlossen",
+    "learn_more": "Mehr erfahren",
+    "progress": "Abgeschlossen"
+  },
   "sections": {
     "activate": {
       "title": "Bereit zur Aktivierung?",
@@ -49,11 +57,12 @@
       "empty_title": "Keine Wähler zugewiesen",
       "empty_desc": "Fügen Sie Mitglieder zu dieser Wahl hinzu, um Statistiken zu verfolgen."
     },
-    "voting_control": {
-      "title": "Abstimmungssteuerung",
+    "election_control": {
+      "title": "Wahlkontrolle",
       "currently_active": "Abstimmung ist derzeit aktiv",
       "currently_inactive": "Abstimmung ist derzeit inaktiv",
       "btn_open": "Abstimmung öffnen",
+      "btn_lock": "Sperren & Starten",
       "btn_close": "Abstimmung schließen"
     },
     "posts": {
@@ -73,7 +82,8 @@
       "total_label": "Gesamt",
       "approved_label": "Genehmigt",
       "suspended_label": "Gesperrt",
-      "btn_manage": "Wählerliste verwalten"
+      "btn_manage": "Wählerliste verwalten",
+      "btn_import": "Wähler importieren"
     },
     "results": {
       "title": "Ergebnisverwaltung",
@@ -87,5 +97,144 @@
     "unpublish": "Möchten Sie die Wahlergebnisse wirklich zurückziehen?",
     "open_voting": "Möchten Sie den Abstimmungszeitraum wirklich öffnen? Wähler können ihre Stimme abgeben.",
     "close_voting": "Möchten Sie den Abstimmungszeitraum wirklich schließen? Es werden keine neuen Stimmen mehr angenommen."
-  }
+  },
+  "states": {
+    "draft": "Entwurf",
+    "pending_approval": "Ausstehende Genehmigung",
+    "administration": "Verwaltung",
+    "nomination": "Nominierung",
+    "voting": "Abstimmung",
+    "results_pending": "Auszählung",
+    "results": "Abgeschlossen"
+  },
+  "actions": {
+    "submit_for_approval": "Zur Genehmigung einreichen",
+    "approve": "Genehmigen",
+    "reject": "Ablehnen",
+    "complete_administration": "Verwaltung abschließen",
+    "open_voting": "Abstimmung öffnen",
+    "close_voting": "Abstimmung schließen",
+    "publish_results": "Ergebnisse veröffentlichen"
+  },
+  "modals": {
+    "submit_for_approval": "Wahl zur Genehmigung einreichen",
+    "submit_checklist": "Stellen Sie vor dem Einreichen sicher, dass alle erforderlichen Einrichtungen abgeschlossen sind:",
+    "posts_created": "Mindestens 1 Posten erstellt",
+    "candidates_approved": "Mindestens 1 Kandidat genehmigt",
+    "voters_registered": "Mindestens 1 Wähler registriert",
+    "complete_setup": "Bitte schließen Sie die erforderliche Einrichtung ab, bevor Sie einreichen.",
+    "approve_election": "Wahl genehmigen",
+    "approval_notes_optional": "Genehmigungsnotizen (Optional)",
+    "approval_notes_placeholder": "Fügen Sie optionale Notizen zur Genehmigung hinzu...",
+    "reject_election": "Wahl ablehnen",
+    "rejection_reason_required": "Ablehnungsgrund",
+    "rejection_reason_placeholder": "Bitte geben Sie einen detaillierten Grund für die Ablehnung an...",
+    "min_characters": "Mindestens 10 Zeichen erforderlich",
+    "reason_required": "Grund erforderlich",
+    "reason_min_length": "Grund muss mindestens 10 Zeichen umfassen",
+    "previously_rejected": "Zuvor abgelehnt",
+    "cancel": "Abbrechen",
+    "pending_elections": "Ausstehende Wahlen",
+    "review_and_process": "Überprüfen und genehmigen/lehnen Sie Wahleinreichungen ab",
+    "submitted_by": "Eingereicht von",
+    "on": "am",
+    "no_pending": "Keine ausstehenden Wahlen",
+    "all_processed": "Alle Wahleinreichungen wurden bearbeitet",
+    "preview": "Vorschau"
+  },
+  "phase_groups": {
+    "administration": "Verwaltungsphase",
+    "nomination": "Nominierungsphase",
+    "monitoring": "Überwachung",
+    "settings": "Einstellungen",
+    "results": "Ergebnisse"
+  },
+  "accessibility": {
+    "skip_to_main": "Zum Hauptinhalt springen"
+  },
+  "suspension": {
+    "title": "Wahl ausgesetzt",
+    "description": "Alle Governance-Operationen sind temporär gesperrt.",
+    "btn_resume": "Wahl fortsetzen",
+    "btn_resuming": "Wird fortgesetzt..."
+  },
+  "governance_actions": {
+    "title": "Lebenszyklusaktionen",
+    "submit_for_approval": "Zur Genehmigung einreichen",
+    "submit_for_approval_auto": "Einreichen (automatisch genehmigt)",
+    "submit_hint": "→ Überprüfung beginnen",
+    "submit_hint_auto": "→ Automatisch genehmigen",
+    "begin_setup": "Setup starten",
+    "begin_setup_hint": "→ Konfiguration starten"
+  },
+  "phase_controls": {
+    "title": "Phasenübergänge",
+    "complete_admin": "Verwaltung abschließen",
+    "open_voting": "Abstimmung öffnen",
+    "open_voting_hint": "→ Abstimmung beginnen",
+    "close_voting": "Abstimmung schließen",
+    "close_voting_hint": "→ Abstimmung beenden"
+  },
+  "governance_section": {
+    "title": "Administrative Kontrollen",
+    "suspend": "Wahl aussetzen"
+  },
+  "empty_state": {
+    "no_actions": "Keine Aktionen im aktuellen Zustand verfügbar",
+    "complete_phases": "Schließen Sie vorherige Phasen ab, um nächste Schritte freizuschalten"
+  },
+  "voter_count": {
+    "title": "Erwartete Wählerzahl",
+    "label": "Wähler erwartet",
+    "saved": "Gespeichert — {count} Wähler erwartet",
+    "failed": "Speichern fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "requires_approval": "Überschreitet Self-Service-Limit von {limit} — Genehmigung durch Plattformadministrator erforderlich.",
+    "instructions": "Legen Sie die erwartete Anzahl der Wähler fest, bevor Sie zur Genehmigung einreichen."
+  },
+  "progress": {
+    "title": "Wahlfortschritt",
+    "subtitle": "Aktueller Status und Workflow-Fortschritt"
+  },
+  "timeline_config": {
+    "title": "Zeitplan-Konfiguration",
+    "subtitle": "Konfigurieren Sie alle Wahlphasendaten an einer Stelle",
+    "view": "Zeitplan anzeigen",
+    "edit": "Zeitplan bearbeiten"
+  },
+  "settings": {
+    "title": "Wahleinstellungen",
+    "subtitle": "Konfigurieren Sie Abstimmungsregeln und Sicherheitsbeschränkungen",
+    "btn_configure": "Einstellungen konfigurieren"
+  },
+  "resume_confirmation": "Diese Wahl fortsetzen? Alle Governance-Operationen werden wieder verfügbar.",
+  "suspend_modal": {
+    "title": "Wahl aussetzen",
+    "description": "Dadurch werden alle Wahlvorgänge vorübergehend pausiert.",
+    "warning": "Wähler können während der Aussetzung keine Stimmen abgeben. Verwenden Sie das Begründungsfeld, um zu dokumentieren, warum diese Maßnahme ergriffen wurde — sie wird in der Governance-Audit-Spur aufgezeichnet.",
+    "reason_label": "Grund für Aussetzung",
+    "reason_placeholder": "Beschreiben Sie, warum diese Wahl ausgesetzt werden muss...",
+    "reason_hint": "Mindestens 10 Zeichen. Dies wird in der Governance-Audit-Spur aufgezeichnet.",
+    "category_label": "Aussetzungskategorie",
+    "category_placeholder": "Kategorie auswählen",
+    "category_operational_pause": "Betriebspause",
+    "category_administrative_review": "Verwaltungsüberprüfung",
+    "category_dispute_hold": "Einspruchssperre",
+    "category_technical_issue": "Technisches Problem",
+    "btn_cancel": "Abbrechen",
+    "btn_suspend": "Wahl aussetzen",
+    "btn_suspending": "Wird ausgesetzt..."
+  },
+  "completion_modal": {
+    "title": "{phase}-Phase abschließen",
+    "description": "Geben Sie bitte einen Grund für die Fertigstellung dieser Phase an.",
+    "reason_label": "Grund für Fertigstellung",
+    "reason_placeholder": "z. B. Alle Positionen und Wähler wurden konfiguriert. Bereit für die Nominierungsphase.",
+    "reason_hint": "Mindestens 5 Zeichen erforderlich",
+    "btn_cancel": "Abbrechen",
+    "btn_confirm": "Fertigstellung bestätigen",
+    "btn_confirming": "Wird abgeschlossen...",
+    "error_required": "Grund ist erforderlich",
+    "error_min_length": "Der Grund muss mindestens 5 Zeichen lang sein"
+  },
+  "public_list": "Öffentliche Liste anzeigen"
 }

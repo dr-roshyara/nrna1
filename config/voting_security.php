@@ -86,4 +86,24 @@ return [
     |
     */
     'trust_proxies' => env('VOTING_TRUST_PROXIES', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Constitutional Mode (D.0 Sovereignty Transition)
+    |--------------------------------------------------------------------------
+    |
+    | When enabled, the ValidateVotingIp middleware switches from blocking to
+    | shadow-recording mode: it records divergence telemetry when it WOULD have
+    | blocked, but passes the request through to the constitutional evaluator.
+    |
+    | D.0.1: Shadow-run constitutionally, record divergence telemetry
+    | D.0.2: Verify no divergence after observation window
+    | D.0.3: Remove middleware entirely
+    |
+    | Options:
+    | - false (default): Legacy behavior — block on IP mismatch
+    | - true: Shadow mode — record divergence, pass through to constitutional path
+    |
+    */
+    'constitutional_mode' => env('VOTING_CONSTITUTIONAL_MODE', true),
 ];

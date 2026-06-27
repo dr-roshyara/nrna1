@@ -1,0 +1,112 @@
+   
+  [30;43;1m WARN [39;49;22m Your XML configuration validates against a deprecated schema. Migrate your XML configuration using "--migrate-configuration"!
+
+  [30;43;1m WARN [39;49;22m Metadata found in doc-comment for method Tests\Feature\Election\CapacityApprovalTest::election_with_expected_40_voters_auto_approves(). Metadata in doc-comments is deprecated and will no longer be supported in PHPUnit 12. Update your test code to use attributes instead.
+
+  [30;43;1m WARN [39;49;22m Metadata found in doc-comment for method Tests\Feature\Election\CapacityApprovalTest::election_with_expected_41_voters_goes_to_pending_approval(). Metadata in doc-comments is deprecated and will no longer be supported in PHPUnit 12. Update your test code to use attributes instead.
+
+  [30;43;1m WARN [39;49;22m Metadata found in doc-comment for method Tests\Feature\Election\CapacityApprovalTest::auto_submit_creates_single_system_audit_record(). Metadata in doc-comments is deprecated and will no longer be supported in PHPUnit 12. Update your test code to use attributes instead.
+
+  [30;43;1m WARN [39;49;22m Metadata found in doc-comment for method Tests\Feature\Election\CapacityApprovalTest::manual_submit_creates_manual_audit_record(). Metadata in doc-comments is deprecated and will no longer be supported in PHPUnit 12. Update your test code to use attributes instead.
+
+  [30;43;1m WARN [39;49;22m Metadata found in doc-comment for method Tests\Feature\Election\CapacityApprovalTest::requires_approval_returns_true_when_over_limit(). Metadata in doc-comments is deprecated and will no longer be supported in PHPUnit 12. Update your test code to use attributes instead.
+
+  [30;43;1m WARN [39;49;22m Metadata found in doc-comment for method Tests\Feature\Election\CapacityApprovalTest::requires_approval_returns_false_when_at_limit(). Metadata in doc-comments is deprecated and will no longer be supported in PHPUnit 12. Update your test code to use attributes instead.
+
+  [30;43;1m WARN [39;49;22m Metadata found in doc-comment for method Tests\Feature\Election\CapacityApprovalTest::cannot_import_more_voters_than_expected_count(). Metadata in doc-comments is deprecated and will no longer be supported in PHPUnit 12. Update your test code to use attributes instead.
+
+  [30;43;1m WARN [39;49;22m Metadata found in doc-comment for method Tests\Feature\Election\CapacityApprovalTest::can_import_voters_up_to_expected_count(). Metadata in doc-comments is deprecated and will no longer be supported in PHPUnit 12. Update your test code to use attributes instead.
+                        
+  [39;41;1m FAIL [39;49;22m[39m Tests\Feature\Election\CapacityApprovalTest[39m
+  [31;1m⨯[39;22m[90m [39m[90melection with expected 40 voters auto approves[39m[90m                                                              [39m [90m4.58s[39m  
+  [31;1m⨯[39;22m[90m [39m[90melection with expected 41 voters goes to pending approval[39m[90m                                                   [39m [90m0.22s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mauto submit creates single system audit record[39m[90m                                                              [39m [90m0.19s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mmanual submit creates manual audit record[39m[90m                                                                   [39m [90m0.18s[39m  
+  [32;1m✓[39;22m[90m [39m[90mrequires approval returns true when over limit[39m[90m                                                              [39m [90m0.16s[39m  
+  [32;1m✓[39;22m[90m [39m[90mrequires approval returns false when at limit[39m[90m                                                               [39m [90m0.15s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcannot import more voters than expected count[39m[90m                                                               [39m [90m0.33s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcan import voters up to expected count[39m[90m                                                                      [39m [90m0.35s[39m  
+  [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\Election\CapacityApprovalTest[22m [90m>[39m election with expected 40 voters auto approves                 
+[39;1m  Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'administration'
++'approved'[39;22m
+
+  at [32mtests\Feature\Election\CapacityApprovalTest.php[39m:[32m105[39m
+    101▕     public function election_with_expected_40_voters_auto_approves(): void
+    102▕     {
+    103▕         $election = $this->draftElection(40);
+    104▕         $election->submitForApproval($this->chief->id);
+  ➜ 105▕         $this->assertEquals('administration', $election->fresh()->state);
+    106▕     }
+    107▕ 
+    108▕     /** @test */
+    109▕     public function election_with_expected_41_voters_goes_to_pending_approval(): void
+
+  [33m1   [39m[39;1mtests\Feature\Election\CapacityApprovalTest.php[39;22m:[39;1m105[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\Election\CapacityApprovalTest[22m [90m>[39m election with expected 41 voter… [41;1m InvalidTransitionException [49;22m  
+[39;1m  You do not have permission to perform 'submit_for_approval'. Required role(s): chief, deputy[39;22m
+
+  at [32mapp\Application\Election\Services\ConstitutionalTransitionGuard.php[39m:[32m70[39m
+     66▕         $requiredRoles = ElectionConstitution::getAllowedRolesForAction($action);
+     67▕         if (!$this->userHasAnyRole($election, $requiredRoles)) {
+     68▕             $rolesStr = implode(', ', $requiredRoles);
+     69▕             $this->metrics?->recordIllegalActivationAttempt($election->id, "User lacks required role(s) for action '$action'");
+  ➜  70▕             throw new InvalidTransitionException(
+     71▕                 "You do not have permission to perform '{$action}'. " .
+     72▕                 "Required role(s): {$rolesStr}"
+     73▕             );
+     74▕         }
+
+  [33m1   [39m[39;1mapp\Application\Election\Services\ConstitutionalTransitionGuard.php[39;22m:[39;1m70[39;22m
+  [33m2   [39m[39;1mapp\Models\Election.php[39;22m:[39;1m1650[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\Election\CapacityApprovalTest[22m [90m>[39m auto submit creates single system audit record                 
+[39;1m  Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'administration'
++'approved'[39;22m
+
+  at [32mtests\Feature\Election\CapacityApprovalTest.php[39m:[32m125[39m
+    121▕ 
+    122▕         $transitions = ElectionStateTransition::where('election_id', $election->id)->get();
+    123▕         $this->assertCount(1, $transitions);
+    124▕         $this->assertEquals('draft', $transitions->first()->from_state);
+  ➜ 125▕         $this->assertEquals('administration', $transitions->first()->to_state);
+    126▕         $this->assertEquals('system', $transitions->first()->trigger);
+    127▕     }
+    128▕ 
+    129▕     /** @test */
+
+  [33m1   [39m[39;1mtests\Feature\Election\CapacityApprovalTest.php[39;22m:[39;1m125[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\Election\CapacityApprovalTest[22m [90m>[39m manual submit creates manual au… [41;1m InvalidTransitionException [49;22m  
+[39;1m  You do not have permission to perform 'submit_for_approval'. Required role(s): chief, deputy[39;22m
+
+  at [32mapp\Application\Election\Services\ConstitutionalTransitionGuard.php[39m:[32m70[39m
+     66▕         $requiredRoles = ElectionConstitution::getAllowedRolesForAction($action);
+     67▕         if (!$this->userHasAnyRole($election, $requiredRoles)) {
+     68▕             $rolesStr = implode(', ', $requiredRoles);
+     69▕             $this->metrics?->recordIllegalActivationAttempt($election->id, "User lacks required role(s) for action '$action'");
+  ➜  70▕             throw new InvalidTransitionException(
+     71▕                 "You do not have permission to perform '{$action}'. " .
+     72▕                 "Required role(s): {$rolesStr}"
+     73▕             );
+     74▕         }
+
+  [33m1   [39m[39;1mapp\Application\Election\Services\ConstitutionalTransitionGuard.php[39;22m:[39;1m70[39;22m
+  [33m2   [39m[39;1mapp\Models\Election.php[39;22m:[39;1m1650[39;22m
+
+
+  [90mTests:[39m    [31;1m4 failed[39;22m[90m,[39m[39m [39m[32;1m4 passed[39;22m[90m (9 assertions)[39m
+  [90mDuration:[39m [39m6.48s[39m
+

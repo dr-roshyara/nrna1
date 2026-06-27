@@ -89,25 +89,26 @@
     * with error_message and return to
     */
     if(! function_exists('check_ip_address')){
-        function check_ip_address($clientIP, $max_use_clientIP){
+        function check_ip_address($clientIP, $max_use_clientIP, $table = 'codes'){
             $_message                   =[];
             $_message['error_message']  ="";
             $_message['return_to']      = "";
             $ip_condition               =  "client_ip ='". $clientIP."' ";
             $ip_condition               .=  " AND has_voted";
-            // dd($ip_condition);
-
 
             $select_statement           = "count(case when ";
             $select_statement           .= $ip_condition." ";
             $select_statement           .= " then 1 end) as ipCount";
-            // dd( $select_statement);
-            $times_ip_used              = DB::table('codes')
+            $times_ip_used              = DB::table($table)
                                         ->selectRaw($select_statement)
                                         ->get();
-            // dd($times_ip_used);
-            // dd(max_use_clientIP);
-            $times_use_cleintIP = $times_ip_used[0]->ipCount;
+
+            // Handle empty result set safely
+            if (!$times_ip_used || $times_ip_used->isEmpty()) {
+                $times_use_cleintIP = 0;
+            } else {
+                $times_use_cleintIP = $times_ip_used[0]->ipCount ?? 0;
+            }
             // if($times_use_cleintIP>$max_use_clientIP){
             if($times_use_cleintIP >=$max_use_clientIP){
                 $_message['error_message'] = '
@@ -206,8 +207,6 @@ if (!function_exists('validateVotingIpWithResponse')) {
             return [
                 'valid' => true,
                 'skip_reason' => 'no_voting_ip_set',
-                'current_ip' => $current_ip,
-                'registered_ip' => null
             ];
         }
 
@@ -229,15 +228,11 @@ if (!function_exists('validateVotingIpWithResponse')) {
                 'solution_english' => 'Please return to your registered network connection and try again, or contact the election committee.',
                 'solution_nepali' => 'कृपया आफ्नो दर्ता गरिएको नेटवर्क जडानमा फर्कनुहोस् र फेरि प्रयास गर्नुहोस्, वा निर्वाचन समितिलाई सम्पर्क गर्नुहोस्।',
                 'user_name' => $auth_user->name,
-                'current_ip' => $current_ip,
-                'registered_ip' => $auth_user->voting_ip,
             ]);
         }
 
         return [
             'valid' => true,
-            'current_ip' => $current_ip,
-            'registered_ip' => $auth_user->voting_ip
         ];
     }
 }

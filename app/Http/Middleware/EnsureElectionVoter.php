@@ -12,6 +12,11 @@ class EnsureElectionVoter
     {
         $user = $request->user();
 
+        \Illuminate\Support\Facades\Log::info('🔵 [EnsureElectionVoter] START', [
+            'user_id' => $user?->id,
+            'route' => $request->route()->getName(),
+        ]);
+
         if (! $user) {
             return redirect()->route('login');
         }
@@ -24,11 +29,20 @@ class EnsureElectionVoter
 
         // Demo elections use the legacy code-based system — bypass this check.
         if ($election->type === 'demo') {
+            \Illuminate\Support\Facades\Log::info('✅ [EnsureElectionVoter] Demo election - bypassing');
             return $next($request);
         }
 
         // Real election: verify the user has an active voter membership.
-        if (! $user->isVoterInElection($election->id)) {
+        $isVoter = $user->isVoterInElection($election->id);
+        \Illuminate\Support\Facades\Log::info('🔵 [EnsureElectionVoter] Checking voter status', [
+            'user_id' => $user->id,
+            'election_id' => $election->id,
+            'is_voter' => $isVoter,
+        ]);
+
+        if (! $isVoter) {
+            \Illuminate\Support\Facades\Log::warning('❌ [EnsureElectionVoter] NOT voter - redirecting to dashboard');
             if ($request->expectsJson()) {
                 return response()->json([
                     'message' => 'You are not eligible to vote in this election.',
@@ -38,6 +52,8 @@ class EnsureElectionVoter
             return redirect()->route('election.dashboard')
                 ->with('error', 'You are not eligible to vote in this election.');
         }
+
+        \Illuminate\Support\Facades\Log::info('✅ [EnsureElectionVoter] Voter verified - proceeding');
 
         // Store the resolved election in the request for downstream controllers.
         $request->merge(['verified_election' => $election]);

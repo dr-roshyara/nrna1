@@ -17,18 +17,23 @@ class OrganisationNewsletter extends Model
         'html_content',
         'plain_text',
         'status',
+        'audience_type',
+        'audience_meta',
         'total_recipients',
         'sent_count',
         'failed_count',
         'idempotency_key',
         'queued_at',
+        'scheduled_for',
         'completed_at',
     ];
 
     protected $casts = [
-        'queued_at'    => 'datetime',
-        'completed_at' => 'datetime',
-        'deleted_at'   => 'datetime',
+        'audience_meta' => 'array',
+        'queued_at'     => 'datetime',
+        'scheduled_for' => 'datetime',
+        'completed_at'  => 'datetime',
+        'deleted_at'    => 'datetime',
     ];
 
     public function organisation()
@@ -54,6 +59,27 @@ class OrganisationNewsletter extends Model
     public function attachments()
     {
         return $this->hasMany(NewsletterAttachment::class, 'organisation_newsletter_id');
+    }
+
+    public function getAudienceLabelAttribute(): string
+    {
+        return match($this->audience_type) {
+            'all_members' => 'All Members',
+            'members_full' => 'Full Members',
+            'members_associate' => 'Associate Members',
+            'members_overdue' => 'Members with Overdue Fees',
+            'election_voters' => 'Election Voters',
+            'election_not_voted' => 'Voters Who Haven\'t Voted',
+            'election_voted' => 'Voters Who Already Voted',
+            'election_candidates' => 'Candidates',
+            'election_observers' => 'Observers',
+            'election_committee' => 'Election Committee',
+            'election_all' => 'All Election Participants',
+            'org_participants_staff' => 'Staff',
+            'org_participants_guests' => 'Guests',
+            'org_admins' => 'Organisation Admins',
+            default => $this->audience_type,
+        };
     }
 
     public function scopeDraft($query)

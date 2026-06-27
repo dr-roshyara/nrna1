@@ -196,6 +196,94 @@ class ValidateVotingIpTest extends TestCase
         $this->assertEquals('192.168.1.100', $ip);
     }
 
+    // =========================================================================
+    // D.0.1 Constitutional Mode Tests
+    // When constitutional_mode is active, IP mismatch records divergence
+    // telemetry but passes the request through to the constitutional evaluator.
+    // =========================================================================
+
+    /** @test */
+    public function it_passes_through_in_constitutional_mode_when_ip_mismatches(): void
+    {
+        Config::set('voting_security.control_ip_address', 1);
+        Config::set('voting_security.constitutional_mode', true);
+
+        $user = User::factory()->make([
+            'id' => 1,
+            'name' => 'Test User',
+            'voting_ip' => '192.168.1.100',
+        ]);
+
+        Auth::shouldReceive('user')->andReturn($user);
+
+        $request = Request::create('/vote/create', 'GET');
+        $request->server->set('REMOTE_ADDR', '192.168.1.200');
+
+        $next = function ($req) {
+            return response('Next called', 200);
+        };
+
+        $response = $this->middleware->handle($request, $next);
+
+        // Constitutional mode: must NOT block, must pass through
+        $this->assertEquals(200, $response->status());
+        $this->assertEquals('Next called', $response->getContent());
+    }
+
+    /** @test */
+    public function it_blocks_in_legacy_mode_when_ip_mismatches(): void
+    {
+        Config::set('voting_security.control_ip_address', 1);
+        Config::set('voting_security.constitutional_mode', false);
+        Config::set('voting_security.ip_mismatch_action', 'block');
+
+        $user = User::factory()->make([
+            'id' => 1,
+            'name' => 'Test User',
+            'voting_ip' => '192.168.1.100',
+        ]);
+
+        Auth::shouldReceive('user')->andReturn($user);
+
+        $request = Request::create('/vote/create', 'GET');
+        $request->server->set('REMOTE_ADDR', '192.168.1.200');
+
+        $next = function ($req) {
+            return response('Next called', 200);
+        };
+
+        $response = $this->middleware->handle($request, $next);
+
+        // Legacy mode: must block on mismatch
+        $this->assertInstanceOf(RedirectResponse::class, $response);
+    }
+
+    /** @test */
+    public function it_passes_through_in_constitutional_mode_when_ip_matches(): void
+    {
+        Config::set('voting_security.control_ip_address', 1);
+        Config::set('voting_security.constitutional_mode', true);
+
+        $user = User::factory()->make([
+            'id' => 1,
+            'voting_ip' => '192.168.1.100',
+        ]);
+
+        Auth::shouldReceive('user')->andReturn($user);
+
+        $request = Request::create('/vote/create', 'GET');
+        $request->server->set('REMOTE_ADDR', '192.168.1.100');
+
+        $next = function ($req) {
+            return response('Next called', 200);
+        };
+
+        $response = $this->middleware->handle($request, $next);
+
+        // IP matches: must pass through regardless of mode
+        $this->assertEquals(200, $response->status());
+    }
+
     protected function tearDown(): void
     {
         Mockery::close();

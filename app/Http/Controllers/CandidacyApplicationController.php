@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Application\Election\Facades\ElectionLifecycle;
+use App\Domain\Election\Enum\ElectionLifecycleState;
 use App\Models\CandidacyApplication;
 use App\Models\Election;
 use App\Models\Organisation;
 use App\Models\Post;
 use App\Models\UserOrganisationRole;
-use App\Traits\ChecksElectionAccess;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,20 +17,26 @@ use Inertia\Response;
 
 class CandidacyApplicationController extends Controller
 {
-    use ChecksElectionAccess;
+    private function ensureOrganisationMember(Organisation $organisation): void
+    {
+        abort_if(
+            !UserOrganisationRole::where('user_id', auth()->id())
+                ->where('organisation_id', $organisation->id)
+                ->exists(),
+            403
+        );
+    }
+
     public function create(Organisation $organisation): Response
     {
+        $this->ensureOrganisationMember($organisation);
         $user = auth()->user();
-
-        $role = UserOrganisationRole::where('user_id', $user->id)
-            ->where('organisation_id', $organisation->id)
-            ->value('role');
-        abort_if(! $role, 403);
 
         $activeElections = Election::withoutGlobalScopes()
             ->where('organisation_id', $organisation->id)
             ->where('type', 'real')
-            ->where('status', 'active')
+            ->where('administration_completed', true)
+            ->where('nomination_completed', false)
             ->with(['posts' => fn ($q) => $q->withoutGlobalScopes()->orderBy('position_order')])
             ->get()
             ->map(fn ($e) => [
@@ -45,7 +52,16 @@ class CandidacyApplicationController extends Controller
                 ])->values(),
             ]);
 
-        // Elections where the user already has a pending or approved application
+        $nonNominationElections = Election::withoutGlobalScopes()
+            ->where('organisation_id', $organisation->id)
+            ->where('type', 'real')
+            ->where('nomination_completed', true)
+            ->get()
+            ->map(fn ($e) => [
+                'name'  => $e->name,
+                'state' => $e->state,
+            ]);
+
         $appliedElectionIds = CandidacyApplication::where('user_id', $user->id)
             ->where('organisation_id', $organisation->id)
             ->whereIn('status', ['pending', 'approved'])
@@ -53,24 +69,20 @@ class CandidacyApplicationController extends Controller
             ->all();
 
         return Inertia::render('Organisations/CandidacyCreate', [
-            'organisation'       => $organisation->only('id', 'name', 'slug'),
-            'activeElections'    => $activeElections->values(),
-            'appliedElectionIds' => $appliedElectionIds,
+            'organisation'           => $organisation->only('id', 'name', 'slug'),
+            'activeElections'        => $activeElections->values(),
+            'appliedElectionIds'     => $appliedElectionIds,
+            'nonNominationElections' => $nonNominationElections,
         ]);
     }
 
     public function index(Organisation $organisation): Response
     {
-        $user = auth()->user();
+        $this->ensureOrganisationMember($organisation);
 
-        $role = UserOrganisationRole::where('user_id', $user->id)
+        $applications = CandidacyApplication::where('user_id', auth()->id())
             ->where('organisation_id', $organisation->id)
-            ->value('role');
-        abort_if(! $role, 403);
-
-        $applications = CandidacyApplication::where('user_id', $user->id)
-            ->where('organisation_id', $organisation->id)
-            ->with(['election:id,name', 'post:id,name'])
+            ->with(['election' => fn ($q) => $q->withoutGlobalScopes()->select('id', 'name'), 'post:id,name'])
             ->orderByDesc('created_at')
             ->get()
             ->map(fn ($a) => [
@@ -92,20 +104,33 @@ class CandidacyApplicationController extends Controller
 
     public function applyForm(Organisation $organisation, Election $election): Response
     {
-        abort_if($election->type === 'demo', 404, 'Candidacy applications are not available for demo elections.');
-
+        // 1. Organisation membership check (fastest)
+        $this->ensureOrganisationMember($organisation);
         $user = auth()->user();
 
-        $role = UserOrganisationRole::where('user_id', $user->id)
-            ->where('organisation_id', $organisation->id)
-            ->value('role');
-        abort_if(! $role, 403);
-
+        // 2. Election belongs to this organisation
         abort_unless(
-            $this->canAccessElection($organisation, $election->id, $user->id),
+            $election->organisation_id === $organisation->id,
             403,
-            'You are not authorised to access this election.'
+            'This election does not belong to this organisation.'
         );
+
+        // 3. Demo elections don't support candidacy applications
+        abort_if($election->type === 'demo', 404, 'Candidacy applications are not available for demo elections.');
+
+        // 4. Constitutional governance check: only during nomination phase
+        $state = ElectionLifecycle::of($election)->state();
+        abort_unless(
+            $state === ElectionLifecycleState::SetupNomination,
+            403,
+            'Candidacy applications are only available during the nomination phase.'
+        );
+
+        $existingApplication = CandidacyApplication::where('user_id', $user->id)
+            ->where('election_id', $election->id)
+            ->whereIn('status', ['pending', 'approved', 'rejected'])
+            ->latest()
+            ->first();
 
         $posts = Post::withoutGlobalScopes()
             ->where('election_id', $election->id)
@@ -122,42 +147,25 @@ class CandidacyApplicationController extends Controller
                 'position_order'   => $p->position_order,
             ]);
 
-        $existingApplication = CandidacyApplication::where('user_id', $user->id)
-            ->where('election_id', $election->id)
-            ->whereIn('status', ['pending', 'approved', 'rejected'])
-            ->latest()
-            ->first();
-
         return Inertia::render('Election/Candidacy/Apply', [
             'organisation'        => $organisation->only('id', 'name', 'slug'),
-            'election'            => $election->only('id', 'name', 'slug', 'status', 'start_date', 'end_date'),
+            'election'            => $election->only('id', 'name', 'slug', 'state', 'start_date', 'end_date'),
             'posts'               => $posts->values(),
             'existingApplication' => $existingApplication ? [
-                'id'            => $existingApplication->id,
-                'post_id'       => $existingApplication->post_id,
-                'post_name'     => $existingApplication->post?->name,
-                'status'        => $existingApplication->status,
-                'submitted_at'  => $existingApplication->created_at->format('Y-m-d'),
-                'photo'         => $existingApplication->photo,
+                'id'           => $existingApplication->id,
+                'post_id'      => $existingApplication->post_id,
+                'post_name'    => $existingApplication->post?->name,
+                'status'       => $existingApplication->status,
+                'submitted_at' => $existingApplication->created_at->format('Y-m-d'),
+                'photo'        => $existingApplication->photo,
             ] : null,
         ]);
     }
 
-    public function store(Request $request, Organisation $organisation): RedirectResponse
+    public function store(Request $request, Organisation $organisation): Response
     {
         $user = auth()->user();
-
-        $role = UserOrganisationRole::where('user_id', $user->id)
-            ->where('organisation_id', $organisation->id)
-            ->value('role');
-        abort_if(! $role, 403);
-
-        $electionId = $request->input('election_id');
-        abort_unless(
-            $this->canAccessElection($organisation, $electionId, $user->id),
-            403,
-            'You are not authorised to access this election.'
-        );
+        $this->ensureOrganisationMember($organisation);
 
         $validated = $request->validate([
             'election_id'    => 'required|uuid|exists:elections,id',
@@ -171,49 +179,67 @@ class CandidacyApplicationController extends Controller
         $election = Election::withoutGlobalScopes()
             ->where('id', $validated['election_id'])
             ->where('organisation_id', $organisation->id)
-            ->where('status', 'active')
             ->firstOrFail();
 
-        Post::withoutGlobalScopes()
-            ->where('id', $validated['post_id'])
-            ->where('election_id', $election->id)
-            ->firstOrFail();
+        abort_if($election->type === 'demo', 404);
 
-        // One application per election (not just per post)
-        $existing = CandidacyApplication::where('user_id', $user->id)
-            ->where('election_id', $election->id)
-            ->whereIn('status', ['pending', 'approved'])
-            ->exists();
+        // Constitutional governance check: only during nomination phase
+        $state = ElectionLifecycle::of($election)->state();
+        abort_unless(
+            $state === ElectionLifecycleState::SetupNomination,
+            403,
+            'Candidacy applications are only available during the nomination phase.'
+        );
 
-        if ($existing) {
-            return back()->with('error', 'You have already submitted an application for this election. Only one application per election is allowed.');
-        }
+        try {
+            DB::transaction(function () use ($user, $organisation, $election, $validated, $request) {
+                Post::withoutGlobalScopes()
+                    ->where('id', $validated['post_id'])
+                    ->where('election_id', $election->id)
+                    ->firstOrFail();
 
-        return DB::transaction(function () use ($user, $organisation, $election, $validated, $request) {
-            $photoPath = null;
-            if ($request->hasFile('photo')) {
-                $photoPath = $request->file('photo')->store(
-                    "candidacy/{$organisation->id}/{$user->id}/photos",
-                    'public'
-                );
-            }
+                $existing = CandidacyApplication::where('user_id', $user->id)
+                    ->where('election_id', $election->id)
+                    ->whereIn('status', ['pending', 'approved'])
+                    ->lockForUpdate()
+                    ->exists();
 
-            CandidacyApplication::create([
-                'user_id'         => $user->id,
-                'organisation_id' => $organisation->id,
-                'election_id'     => $election->id,
-                'post_id'         => $validated['post_id'],
-                'supporter_name'  => $validated['supporter_name'],
-                'proposer_name'   => $validated['proposer_name'],
-                'manifesto'       => $validated['manifesto'] ?? null,
-                'photo'           => $photoPath,
-                'status'          => CandidacyApplication::STATUS_PENDING,
+                if ($existing) {
+                    throw new \RuntimeException(
+                        'You have already submitted an application for this election.'
+                    );
+                }
+
+                $photoPath = null;
+                if ($request->hasFile('photo')) {
+                    $photoPath = $request->file('photo')->store(
+                        "candidacy/{$organisation->id}/photos",
+                        'public'
+                    );
+                }
+
+                CandidacyApplication::create([
+                    'user_id'         => $user->id,
+                    'organisation_id' => $organisation->id,
+                    'election_id'     => $election->id,
+                    'post_id'         => $validated['post_id'],
+                    'supporter_name'  => $validated['supporter_name'],
+                    'proposer_name'   => $validated['proposer_name'],
+                    'manifesto'       => $validated['manifesto'] ?? null,
+                    'photo'           => $photoPath,
+                    'status'          => CandidacyApplication::STATUS_PENDING,
+                ]);
+            });
+
+            return Inertia::render('Thankyou/Thankyou', [
+                'message'       => 'Your candidacy application has been submitted successfully and is now under review.',
+                'subMessage'    => 'You will be notified once a decision has been made.',
+                'previousRoute' => route('organisations.voter-hub', $organisation->slug),
             ]);
 
-            return redirect()
-                ->route('organisations.candidacy.list', $organisation->slug)
-                ->with('success', 'Your candidacy application has been submitted for review.');
-        });
+        } catch (\RuntimeException $e) {
+            return back()->withErrors(['form' => $e->getMessage()]);
+        }
     }
 
     private function getStatusLabel(string $status): string

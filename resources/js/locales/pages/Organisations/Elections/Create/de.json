@@ -11,6 +11,18 @@
       "optional": "(optional)",
       "placeholder": "Kurze Beschreibung der Wahl..."
     },
+    "expected_voter_count": {
+      "label": "Erwartete Anzahl Wähler",
+      "placeholder": "z.B. 50",
+      "help": "Wahlen mit bis zu 40 Wählern sind kostenlos und werden automatisch genehmigt. Mehr als 40 benötigen die Genehmigung des Plattform-Administrators.",
+      "approval_warning": "Diese Wahl benötigt die Genehmigung des Plattform-Administrators, bevor sie fortgesetzt werden kann."
+    },
+    "timezone": {
+      "label": "Zeitzone",
+      "optional": "(optional — erforderlich vor der Einreichung)",
+      "placeholder": "Wählen Sie die Zeitzone...",
+      "help": "Legen Sie die Zeitzone Ihrer Wahl fest. Erforderlich vor der Genehmigung."
+    },
     "start": {
       "section": "Startdatum & -uhrzeit",
       "date_label": "Datum",
@@ -22,8 +34,40 @@
       "time_label": "Schließungszeit"
     }
   },
+  "info_banner": {
+    "title": "Sicher von Grund auf",
+    "description": "Unsere Wahlen verwenden eine manipulationssichere Zustandsmaschine mit unveränderlichen Prüfpfaden.",
+    "learn_architecture": "Architektur erlernen",
+    "security_deep_dive": "Sicherheits-Tieftauch"
+  },
+  "phases": {
+    "timeline_title": "Wahlphasen-Zeitplan",
+    "timeline_subtitle": "Definieren Sie, wann jede Phase der Wahl stattfindet",
+    "administration": {
+      "title": "⚙️ Verwaltungsphase",
+      "start_label": "Startdatum & -uhrzeit",
+      "end_label": "Enddatum & -uhrzeit"
+    },
+    "nomination": {
+      "title": "📋 Nominierungsphase",
+      "start_label": "Startdatum & -uhrzeit",
+      "end_label": "Enddatum & -uhrzeit"
+    },
+    "voting": {
+      "title": "🗳️ Abstimmungsphase",
+      "start_label": "Abstimmung beginnt",
+      "end_label": "Abstimmung endet",
+      "start_placeholder": "z.B. 2026-06-30T09:00",
+      "end_placeholder": "z.B. 2026-07-07T17:00"
+    }
+  },
   "validation": {
-    "end_after_start": "Die Schließungszeit muss nach der Öffnungszeit liegen."
+    "end_after_start": "Die Schließungszeit muss nach der Öffnungszeit liegen.",
+    "admin_end_after_start": "Das Ende der Verwaltungsphase muss nach dem Anfang liegen",
+    "nom_end_after_start": "Das Ende der Nominierungsphase muss nach dem Anfang liegen",
+    "vote_end_after_start": "Das Ende der Abstimmungsphase muss nach dem Anfang liegen",
+    "nom_after_admin": "Die Nominierungsphase muss nach dem Ende der Verwaltungsphase beginnen",
+    "vote_after_nom": "Die Abstimmungsphase muss nach dem Ende der Nominierungsphase beginnen"
   },
   "actions": {
     "cancel": "Abbrechen",

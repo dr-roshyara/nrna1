@@ -21,7 +21,7 @@ return new class extends Migration
             $table->uuid('election_id');
 
             // Membership details
-            $table->enum('role', ['voter', 'candidate', 'observer', 'admin'])->default('voter');
+            $table->enum('role', ['voter', 'candidate', 'observer', 'admin', 'committee'])->default('voter');
             $table->enum('status', ['invited', 'active', 'inactive', 'removed'])->default('active');
 
             // Audit / metadata

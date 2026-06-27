@@ -32,7 +32,7 @@ class ElectionPolicy
     }
 
     /**
-     * Any active officer may view results.
+     * Org owner/admin or any active officer may view results.
      */
     public function viewResults(User $user, Election $election): bool
     {
@@ -40,8 +40,8 @@ class ElectionPolicy
     }
 
     /**
-     * Chief or deputy assigned to this specific election may manage its settings.
-     * Org owner/admin no longer auto-granted — must be explicitly assigned as an officer.
+     * Chief or deputy may manage election settings.
+     * (Owners may create elections but cannot manage them after creation)
      */
     public function manageSettings(User $user, Election $election): bool
     {
@@ -65,6 +65,27 @@ class ElectionPolicy
     }
 
     /**
+     * Chief or platform admin may suspend or resume an election.
+     *
+     * Suspension is governance intervention, NOT settings management.
+     * This is intentionally chief-only (not deputy) due to governance significance.
+     * Platform admins are also authorized as system-level governance operators.
+     */
+    public function suspendElection(User $user, Election $election): bool
+    {
+        // Platform admin can always suspend (system-level governance)
+        if ($user->is_super_admin) {
+            return true;
+        }
+
+        return ElectionOfficer::where('user_id', $user->id)
+            ->where('election_id', $election->id)
+            ->where('role', 'chief')
+            ->where('status', 'active')
+            ->exists();
+    }
+
+    /**
      * Chief or deputy may manage voters (add/remove).
      */
     public function manageVoters(User $user, Election $election): bool
@@ -80,6 +101,15 @@ class ElectionPolicy
      * Chief or deputy may manage posts and candidacies.
      */
     public function managePosts(User $user, Election $election): bool
+    {
+        return $this->manageSettings($user, $election);
+    }
+
+    /**
+     * Generic manage method for state machine operations.
+     * Delegates to manageSettings for permission check.
+     */
+    public function manage(User $user, Election $election): bool
     {
         return $this->manageSettings($user, $election);
     }

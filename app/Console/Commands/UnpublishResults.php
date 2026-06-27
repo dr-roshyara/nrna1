@@ -57,7 +57,6 @@ class UnpublishResults extends Command
             // Unpublish results using the service
             if (ElectionService::unpublishResults()) {
                 $this->info('✅ Election results have been successfully unpublished!');
-                $this->info('🔒 Results are now unavailable at: /election/result');
                 $this->newLine();
                 $this->info('📊 Only users with "view-election-results" permission can now access results.');
 

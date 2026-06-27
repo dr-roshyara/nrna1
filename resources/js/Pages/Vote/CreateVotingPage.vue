@@ -87,6 +87,22 @@
                 <!-- ── Workflow Step Indicator ── -->
                 <WorkflowStepIndicator :currentStep="3" class="mb-10 max-w-4xl mx-auto" />
 
+                <!-- ── Election Constraint Hint ── -->
+                <div v-if="election" class="constraint-hint mb-6 p-4 bg-primary-50 border-l-4 border-primary-400 rounded max-w-4xl mx-auto">
+                    <template v-if="election.selection_constraint_type === 'exact'">
+                        ⚠️ You must select exactly {{ election.selection_constraint_max }} candidate(s) per post.
+                    </template>
+                    <template v-else-if="election.selection_constraint_type === 'minimum'">
+                        ⚠️ Select at least {{ election.selection_constraint_min }} candidate(s) per post.
+                    </template>
+                    <template v-else-if="election.selection_constraint_type === 'range'">
+                        ⚠️ Select between {{ election.selection_constraint_min }} and {{ election.selection_constraint_max }} candidate(s) per post.
+                    </template>
+                    <template v-else-if="election.selection_constraint_type === 'maximum'">
+                        Select up to {{ election.selection_constraint_max }} candidate(s) per post.
+                    </template>
+                </div>
+
                 <!-- ── Loading Skeleton ── -->
                 <div v-if="isLoading" class="space-y-8" aria-busy="true" aria-label="Loading voting form">
                     <div v-for="i in 3" :key="i" class="animate-pulse rounded-2xl overflow-hidden shadow-sm">
@@ -118,6 +134,8 @@
                                 :post="post"
                                 :selected-candidates="selectedCandidates[post.id] || []"
                                 :no-vote-selected="noVoteSelections[post.id] || false"
+                                :no-vote-enabled="election?.no_vote_option_enabled ?? true"
+                                :no-vote-label="election?.no_vote_option_label ?? 'Abstain'"
                                 :has-error="!!postErrors[post.id]"
                                 :error-message="postErrors[post.id] || ''"
                                 :post-index="index"
@@ -155,6 +173,8 @@
                                 :post="post"
                                 :selected-candidates="selectedCandidates[post.id] || []"
                                 :no-vote-selected="noVoteSelections[post.id] || false"
+                                :no-vote-enabled="election?.no_vote_option_enabled ?? true"
+                                :no-vote-label="election?.no_vote_option_label ?? 'Abstain'"
                                 :has-error="!!postErrors[post.id]"
                                 :error-message="postErrors[post.id] || ''"
                                 :post-index="normalizedNationalPosts.length + index"
@@ -191,16 +211,16 @@
                                 {{ $t('pages.voting.agreement.title') }}
                             </h3>
                             <div class="flex justify-center mb-4">
-                                <label class="flex items-start gap-4 cursor-pointer max-w-sm">
+                                <label class="flex items-start gap-5 cursor-pointer max-w-2xl">
                                     <input
                                         type="checkbox"
                                         v-model="form.agree_button"
-                                        class="w-6 h-6 mt-0.5 shrink-0 text-primary-600 rounded
-                                               border-2 border-neutral-400
+                                        class="w-14 h-14 mt-1 shrink-0 text-primary-600 rounded
+                                               border-4 border-neutral-500
                                                focus:ring-4 focus:ring-primary-300 focus:ring-offset-1
-                                               cursor-pointer"
+                                               cursor-pointer transition-all"
                                     />
-                                    <span class="font-sans font-medium text-neutral-900 leading-relaxed">
+                                    <span class="font-sans font-bold text-lg text-neutral-900 leading-relaxed">
                                         {{ $t('pages.voting.agreement.checkbox_label') }}
                                     </span>
                                 </label>
@@ -226,25 +246,23 @@
                             </div>
                         </div>
 
-                        <div class="flex justify-center">
-                            <button
-                                type="submit"
-                                :disabled="!canSubmit"
-                                class="w-full max-w-md py-5 px-8 rounded-xl font-sans font-bold text-xl
-                                       shadow-md transition-colors duration-150
-                                       focus:outline-none focus:ring-4 focus:ring-offset-2"
-                                :class="canSubmit
-                                    ? 'bg-primary-600 hover:bg-primary-700 text-white focus:ring-primary-300 cursor-pointer'
-                                    : 'bg-neutral-200 text-neutral-400 cursor-not-allowed'"
-                            >
-                                <span class="flex items-center justify-center gap-2">
-                                    <span aria-hidden="true">🗳️</span>
-                                    <span>{{ loading
-                                        ? $t('pages.voting.submit.submitting')
-                                        : $t('pages.voting.submit.review_submit') }}</span>
-                                </span>
-                            </button>
-                        </div>
+                        <button
+                            type="submit"
+                            :disabled="!canSubmit"
+                            class="w-full py-5 px-8 rounded-xl font-sans font-bold text-xl
+                                   shadow-md transition-colors duration-150
+                                   focus:outline-none focus:ring-4 focus:ring-offset-2"
+                            :class="canSubmit
+                                ? 'bg-primary-600 hover:bg-primary-700 text-white focus:ring-primary-300 cursor-pointer'
+                                : 'bg-neutral-200 text-neutral-400 cursor-not-allowed'"
+                        >
+                            <span class="flex items-center justify-center gap-2">
+                                <span aria-hidden="true">🗳️</span>
+                                <span>{{ loading
+                                    ? $t('pages.voting.submit.submitting')
+                                    : $t('pages.voting.submit.review_submit') }}</span>
+                            </span>
+                        </button>
                     </div>
 
                 </form>
@@ -319,7 +337,7 @@ export default {
         national_posts: { type: Array,   default: () => [] },
         regional_posts:  { type: Array,   default: () => [] },
         user_name:       { type: String,  required: true },
-        user_id:         { type: Number,  required: true },
+        user_id:         { type: [String, Number],  required: true },
         user_region:     { type: String,  default: '' },
         slug:            { type: String,  default: null },
         useSlugPath:     { type: Boolean, default: false },
@@ -351,6 +369,10 @@ export default {
     },
 
     computed: {
+        debugElectionSettings() {
+            return this.election?.no_vote_option_enabled;
+        },
+
         normalizedNationalPosts() {
             return this.national_posts.map(post => ({
                 ...post,
@@ -449,6 +471,13 @@ export default {
     },
 
     async mounted() {
+        // DEBUG: Log election settings on mount
+        console.log('🔵 [CreateVotingPage] MOUNTED - Election data:', {
+            election: this.election,
+            no_vote_enabled: this.election?.no_vote_option_enabled,
+            debugSettings: this.debugElectionSettings,
+        });
+
         await this.$nextTick()
         this.isLoading = false
         this.loadDraft()
@@ -667,3 +696,4 @@ export default {
     to   { opacity: 1; transform: translateY(0); }
 }
 </style>
+

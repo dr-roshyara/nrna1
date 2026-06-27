@@ -30,6 +30,10 @@ class Post extends Model
         'position_order',
     ];
 
+    protected $casts = [
+        'is_national_wide' => 'boolean',
+    ];
+
     /**
      * Scope: Get posts for a specific organisation
      */
@@ -141,6 +145,24 @@ class Post extends Model
                         'image_path_3',
                         'position_order'
                     ]);
+    }
+
+    protected static function booted(): void
+    {
+        $syncPostsCount = function (self $post) {
+            // Update the denormalized posts_count column when posts change
+            $count = \DB::table('posts')
+                ->where('election_id', $post->election_id)
+                ->whereNull('deleted_at')
+                ->count();
+
+            \DB::table('elections')
+                ->where('id', $post->election_id)
+                ->update(['posts_count' => $count]);
+        };
+
+        static::saved($syncPostsCount);
+        static::deleted($syncPostsCount);
     }
 
 }

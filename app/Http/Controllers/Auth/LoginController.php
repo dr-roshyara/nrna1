@@ -67,6 +67,9 @@ class LoginController extends Controller
         // Get authenticated user
         $user = Auth::user();
 
+        // ✅ Capture voter's current IP for verification
+        $user->update(['current_ip' => $request->ip()]);
+
         // ✅ CRITICAL: Check email verification FIRST
         // Newly registered users MUST verify email before accessing dashboard
         if ($user->email_verified_at === null) {

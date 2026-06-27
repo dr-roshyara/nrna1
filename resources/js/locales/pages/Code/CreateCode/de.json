@@ -27,7 +27,13 @@
     "code_hint": "Geben Sie diesen Code unten ein, um fortzufahren.",
     "instructions_title": "Anleitung",
     "instructions_body": "Ihr persönlicher Abstimmungscode wird oben angezeigt. Geben Sie ihn in das Feld unten ein und klicken Sie auf 'Weiter'.",
-    "guide_link": "Wie funktioniert die Demo-Wahl?"
+    "guide_link": "Wie funktioniert die Demo-Wahl?",
+    "how_it_works": {
+      "badge_text": "Hier beginnen",
+      "title": "Wie funktioniert die Demo-Wahl?",
+      "description": "Erhalten Sie vollständige Schritt-für-Schritt-Anleitung und verstehen Sie den gesamten Abstimmungsprozess, bevor Sie beginnen.",
+      "cta_text": "Leitfaden anzeigen"
+    }
   },
   "form": {
     "code_label": "Erster Wahlcode",

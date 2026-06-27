@@ -1,0 +1,105 @@
+# Engineering Knowledge Platform (EKP) — controlled vocabulary: knowledge types (the ontology)
+# Source of truth for the `knowledge_type` frontmatter field.
+# A document's TYPE is metadata, never a folder. The same type can appear in global/ or any domain/.
+# `id_prefix` seeds stable knowledge_id values (e.g. adr -> ADR-0001, ddd-discovery -> DISC-012).
+# `traceability_requires` lists knowledge_types a doc of this type SHOULD link to (any relationship);
+#   a missing link produces a knowledge-lint traceability WARNING.
+version: 1
+
+types:
+  constitution:
+    id_prefix: CONST
+    description: Immutable platform/architecture principles. Highest authority.
+  architecture:
+    id_prefix: ARCH
+    description: Architectural design, context maps, baselines (platform or domain level).
+  adr:
+    id_prefix: ADR
+    description: Architecture Decision Record. Status/Context/Decision/Rationale/Implications.
+  ddd-discovery:
+    id_prefix: DISC
+    description: Domain discovery — events, invariants, boundaries, ubiquitous language.
+  context-map:
+    id_prefix: CMAP
+    description: Relationships and integration patterns between bounded contexts.
+  domain-model:
+    id_prefix: MODEL
+    description: Aggregates, entities, value objects of a context.
+    traceability_requires: [ddd-discovery]
+  aggregate:
+    id_prefix: AGG
+    description: A single aggregate's design, invariants, and boundary.
+    traceability_requires: [ddd-discovery, state-machine, test]
+  event:
+    id_prefix: EVT
+    description: A domain event — payload, producers, consumers.
+  policy:
+    id_prefix: POL
+    description: A business rule expressed as a policy.
+  state-machine:
+    id_prefix: SM
+    description: State transition design for an aggregate/process.
+  business-rule:
+    id_prefix: RULE
+    description: An invariant or business constraint.
+  api:
+    id_prefix: API
+    description: API contract / OpenAPI / endpoint design.
+  implementation:
+    id_prefix: IMPL
+    description: How something is implemented in code (Laravel/Vue), with file pointers.
+    # traceability_requires: [adr]  # re-enable once ADRs carry knowledge cards (later iteration)
+  quality:
+    id_prefix: QA
+    description: Quality gates, test strategy, coverage, fitness functions.
+  test:
+    id_prefix: TEST
+    description: Test design/spec that confirms a doc or aggregate.
+  research:
+    id_prefix: RES
+    description: Exploratory investigation, comparisons, hypothesis testing (e.g. RoundN_*).
+  decision:
+    id_prefix: DEC
+    description: A lighter-weight decision that is not a full ADR.
+  playbook:
+    id_prefix: PLAY
+    description: An operational procedure for how we do a recurring task in this project.
+  recipe:
+    id_prefix: RCP
+    description: Task recipe linking principle -> guide -> template -> prompt -> example -> tests.
+  package:
+    id_prefix: PKG
+    description: A reusable context bundle (manifest of knowledge_ids) for AI and humans.
+  prompt:
+    id_prefix: PROMPT
+    description: A reusable, structured AI prompt (purpose / when-to-use / expected output / example).
+  guide:
+    id_prefix: GUIDE
+    description: Developer guide / how-to (Laravel, Vue, DDD, testing).
+  tutorial:
+    id_prefix: TUT
+    description: Step-by-step learning material for onboarding.
+  runbook:
+    id_prefix: RUN
+    description: Operational runbook (deploy, incident, migration, tenant setup).
+  reference:
+    id_prefix: REF
+    description: Stable reference material consulted repeatedly (glossary, standards).
+  checklist:
+    id_prefix: CHK
+    description: A checklist (PR review, accessibility, security).
+  template:
+    id_prefix: TPL
+    description: A reusable document/code template.
+  status:
+    id_prefix: STAT
+    description: Point-in-time status/progress report. Usually archived after the moment passes.
+  idea:
+    id_prefix: IDEA
+    description: A future idea under evaluation. Not authoritative.
+  review:
+    id_prefix: REV
+    description: A review record (architecture review, AI review, ARB session).
+  portal:
+    id_prefix: PORTAL
+    description: A navigation/index document such as hubs, indexes, and role maps (usually derived authority).

@@ -1,5 +1,13 @@
 {
   "page_eyebrow": "Election Management",
+  "timeline": {
+    "title": "Election Journey",
+    "currently_in": "Currently in",
+    "phase": "phase",
+    "phases_complete": "phases complete",
+    "learn_more": "Learn More",
+    "progress": "Complete"
+  },
   "sections": {
     "activate": {
       "title": "Ready to Activate?",
@@ -49,11 +57,12 @@
       "empty_title": "No voters assigned",
       "empty_desc": "Add members to this election to track voter statistics."
     },
-    "voting_control": {
-      "title": "Voting Control",
+    "election_control": {
+      "title": "Election Control",
       "currently_active": "Voting is currently active",
       "currently_inactive": "Voting is currently inactive",
       "btn_open": "Open Voting",
+      "btn_lock": "Lock & Start",
       "btn_close": "Close Voting"
     },
     "posts": {
@@ -73,7 +82,8 @@
       "total_label": "Total",
       "approved_label": "Approved",
       "suspended_label": "Suspended",
-      "btn_manage": "Manage Voter List"
+      "btn_manage": "Manage Voter List",
+      "btn_import": "Import Voters"
     },
     "results": {
       "title": "Result Management",
@@ -87,5 +97,144 @@
     "unpublish": "Are you sure you want to unpublish the election results?",
     "open_voting": "Are you sure you want to open the voting period? Voters will be able to cast their votes.",
     "close_voting": "Are you sure you want to close the voting period? No new votes will be accepted."
-  }
+  },
+  "states": {
+    "draft": "Draft",
+    "pending_approval": "Pending Approval",
+    "administration": "Administration",
+    "nomination": "Nomination",
+    "voting": "Voting",
+    "results_pending": "Counting",
+    "results": "Complete"
+  },
+  "actions": {
+    "submit_for_approval": "Submit for Approval",
+    "approve": "Approve",
+    "reject": "Reject",
+    "complete_administration": "Complete Administration",
+    "open_voting": "Open Voting",
+    "close_voting": "Close Voting",
+    "publish_results": "Publish Results"
+  },
+  "modals": {
+    "submit_for_approval": "Submit Election for Approval",
+    "submit_checklist": "Before submission, ensure all required setup is complete:",
+    "posts_created": "At least 1 post created",
+    "candidates_approved": "At least 1 candidate approved",
+    "voters_registered": "At least 1 voter registered",
+    "complete_setup": "Please complete all required setup before submitting.",
+    "approve_election": "Approve Election",
+    "approval_notes_optional": "Approval Notes (Optional)",
+    "approval_notes_placeholder": "Add optional notes about approval...",
+    "reject_election": "Reject Election",
+    "rejection_reason_required": "Reason for Rejection",
+    "rejection_reason_placeholder": "Please provide a detailed reason for rejection...",
+    "min_characters": "Minimum 10 characters required",
+    "reason_required": "Reason is required",
+    "reason_min_length": "Reason must be at least 10 characters",
+    "previously_rejected": "Previously Rejected",
+    "cancel": "Cancel",
+    "pending_elections": "Pending Elections",
+    "review_and_process": "Review and approve/reject election submissions",
+    "submitted_by": "Submitted by",
+    "on": "on",
+    "no_pending": "No pending elections",
+    "all_processed": "All election submissions have been processed",
+    "preview": "Preview"
+  },
+  "phase_groups": {
+    "administration": "Administration Phase",
+    "nomination": "Nomination Phase",
+    "monitoring": "Monitoring",
+    "settings": "Settings",
+    "results": "Results"
+  },
+  "accessibility": {
+    "skip_to_main": "Skip to main content"
+  },
+  "suspension": {
+    "title": "Election Suspended",
+    "description": "All governance operations are temporarily locked.",
+    "btn_resume": "Resume Election",
+    "btn_resuming": "Resuming..."
+  },
+  "governance_actions": {
+    "title": "Lifecycle Actions",
+    "submit_for_approval": "Submit for Approval",
+    "submit_for_approval_auto": "Submit (Auto-Approved)",
+    "submit_hint": "→ Begin review",
+    "submit_hint_auto": "→ Auto-approve",
+    "begin_setup": "Begin Setup",
+    "begin_setup_hint": "→ Start configuration"
+  },
+  "phase_controls": {
+    "title": "Phase Transitions",
+    "complete_admin": "Complete Administration",
+    "open_voting": "Open Voting",
+    "open_voting_hint": "→ Begin voting",
+    "close_voting": "Close Voting",
+    "close_voting_hint": "→ End voting"
+  },
+  "governance_section": {
+    "title": "Administrative Controls",
+    "suspend": "Suspend Election"
+  },
+  "empty_state": {
+    "no_actions": "No actions available in current state",
+    "complete_phases": "Complete previous phases to unlock next steps"
+  },
+  "voter_count": {
+    "title": "Expected Voter Count",
+    "label": "voters expected",
+    "saved": "Saved — {count} voters expected",
+    "failed": "Failed to save. Please try again.",
+    "requires_approval": "Exceeds self-service limit of {limit} — platform admin approval required.",
+    "instructions": "Set the expected number of voters before submitting for approval."
+  },
+  "progress": {
+    "title": "Election Progress",
+    "subtitle": "Current status and workflow progression"
+  },
+  "timeline_config": {
+    "title": "Timeline Configuration",
+    "subtitle": "Configure all election phase dates in one place",
+    "view": "View Timeline",
+    "edit": "Edit Timeline"
+  },
+  "settings": {
+    "title": "Election Settings",
+    "subtitle": "Configure voting rules and security restrictions",
+    "btn_configure": "Configure Settings"
+  },
+  "resume_confirmation": "Resume this election? All governance operations will become available again.",
+  "suspend_modal": {
+    "title": "Suspend Election",
+    "description": "This temporarily pauses all election operations.",
+    "warning": "Voters cannot cast votes while suspended. Use the reason field to document why this action was taken — it is recorded in the governance audit trail.",
+    "reason_label": "Reason for Suspension",
+    "reason_placeholder": "Describe why this election must be suspended...",
+    "reason_hint": "Minimum 10 characters. This is recorded in the governance audit trail.",
+    "category_label": "Suspension Category",
+    "category_placeholder": "Select a category",
+    "category_operational_pause": "Operational Pause",
+    "category_administrative_review": "Administrative Review",
+    "category_dispute_hold": "Dispute Hold",
+    "category_technical_issue": "Technical Issue",
+    "btn_cancel": "Cancel",
+    "btn_suspend": "Suspend Election",
+    "btn_suspending": "Suspending..."
+  },
+  "completion_modal": {
+    "title": "Complete {phase} Phase",
+    "description": "Please provide a reason for completing this phase.",
+    "reason_label": "Reason for Completion",
+    "reason_placeholder": "e.g., All posts and voters have been configured. Ready to proceed to nomination phase.",
+    "reason_hint": "Minimum 5 characters required",
+    "btn_cancel": "Cancel",
+    "btn_confirm": "Confirm Completion",
+    "btn_confirming": "Completing...",
+    "error_required": "Reason is required",
+    "error_min_length": "Reason must be at least 5 characters"
+  },
+  "public_list": "View Public List"
 }

@@ -1,110 +1,61 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services;
 
-use App\Models\Organisation;
-use App\Models\User;
-use RuntimeException;
-
-class TenantContext
+/**
+ * Pure in-memory tenant context holder.
+ *
+ * This class holds the current tenant ID for the request.
+ * It has NO Laravel dependencies — session is only used in middleware.
+ * Domain code reads from this, never from session directly.
+ *
+ * Architecture:
+ *   Middleware → TenantContext::set($id) → BelongsToTenant reads via ::get()
+ */
+final class TenantContext
 {
-    private ?Organisation $currentOrganisation = null;
-    private ?User $currentUser = null;
+    private static ?string $tenantId = null;
 
     /**
-     * Set the current tenant context
+     * Set the current tenant ID (called by middleware only)
      */
-    public function setContext(User $user, Organisation $organisation): void
+    public static function set(?string $tenantId): void
     {
-        if (!$user->belongsToOrganisation($organisation->id)) {
-            throw new RuntimeException(
-                "User {$user->id} does not belong to organisation {$organisation->id}"
-            );
-        }
-
-        $this->currentUser = $user;
-        $this->currentOrganisation = $organisation;
-
-        session(['current_organisation_id' => $organisation->id]);
+        self::$tenantId = $tenantId;
     }
 
     /**
-     * Get the current organisation
+     * Get the current tenant ID
      */
-    public function getCurrentOrganisation(): Organisation
+    public static function get(): ?string
     {
-        if (!$this->currentOrganisation) {
-            $this->resolveFromSession();
-        }
-
-        if (!$this->currentOrganisation) {
-            throw new RuntimeException('No tenant context set');
-        }
-
-        return $this->currentOrganisation;
+        return self::$tenantId;
     }
 
     /**
-     * Get the current organisation ID
+     * Check if tenant context is set
      */
-    public function getCurrentOrganisationId(): string
+    public static function has(): bool
     {
-        return $this->getCurrentOrganisation()->id;
+        return self::$tenantId !== null;
     }
 
     /**
-     * Get the current user
+     * Get tenant ID or throw if not set
      */
-    public function getCurrentUser(): User
+    public static function require(): string
     {
-        if (!$this->currentUser) {
-            throw new RuntimeException('No user context set');
-        }
-
-        return $this->currentUser;
+        return self::$tenantId
+            ?? throw new \RuntimeException('Tenant context not set');
     }
 
     /**
-     * Clear the tenant context
+     * Clear the tenant context (for testing)
      */
-    public function clear(): void
+    public static function clear(): void
     {
-        $this->currentOrganisation = null;
-        $this->currentUser = null;
-        session()->forget('current_organisation_id');
-    }
-
-    /**
-     * Resolve context from session
-     */
-    private function resolveFromSession(): void
-    {
-        $organisationId = session('current_organisation_id');
-
-        if (!$organisationId) {
-            return;
-        }
-
-        $organisation = Organisation::find($organisationId);
-
-        if ($organisation) {
-            $this->currentOrganisation = $organisation;
-        }
-    }
-
-    /**
-     * Check if current context is platform
-     */
-    public function isPlatformContext(): bool
-    {
-        return $this->getCurrentOrganisation()->isPlatform();
-    }
-
-    /**
-     * Check if current context is tenant
-     */
-    public function isTenantContext(): bool
-    {
-        return $this->getCurrentOrganisation()->isTenant();
+        self::$tenantId = null;
     }
 }

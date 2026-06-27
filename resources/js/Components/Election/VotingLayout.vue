@@ -60,7 +60,6 @@ const props = defineProps({
       if (!election) return true // Allow null
       return (
         election.id &&
-        typeof election.id === 'number' &&
         election.name &&
         typeof election.name === 'string' &&
         election.type &&

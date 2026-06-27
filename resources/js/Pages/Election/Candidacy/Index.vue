@@ -72,7 +72,7 @@
                 <div class="flex items-center gap-2 mt-1">
                   <span
                     class="text-xs px-2 py-0.5 rounded-full font-medium"
-                    :class="post.is_national_wide ? 'bg-blue-100 text-blue-700' : 'bg-amber-100 text-amber-700'"
+                    :class="post.is_national_wide ? 'bg-primary-100 text-primary-700' : 'bg-amber-100 text-amber-700'"
                   >
                     {{ post.is_national_wide ? 'National' : post.state_name }}
                   </span>
@@ -137,8 +137,8 @@
                 </div>
               </div>
 
-              <!-- Publish button (draft only) -->
-              <div class="flex items-center gap-2 flex-shrink-0">
+              <!-- Action buttons (only when nomination is not locked) -->
+              <div v-if="!nominationLocked" class="flex items-center gap-2 flex-shrink-0">
                 <ActionButton
                   v-if="candidate.status === 'draft'"
                   variant="success"
@@ -165,6 +165,15 @@
                   Remove
                 </ActionButton>
               </div>
+              <!-- Locked notice when nomination is complete -->
+              <div v-else class="flex items-center gap-2 flex-shrink-0">
+                <span class="text-xs text-slate-400 italic flex items-center gap-1">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                  </svg>
+                  Locked
+                </span>
+              </div>
             </div>
           </div>
         </Card>
@@ -184,9 +193,11 @@ import ActionButton from '@/Components/ActionButton.vue'
 import EmptyState from '@/Components/EmptyState.vue'
 
 const props = defineProps({
-  organisation: { type: Object, required: true },
-  election:     { type: Object, required: true },
-  posts:        { type: Array,  default: () => [] },
+  organisation:         { type: Object, required: true },
+  election:             { type: Object, required: true },
+  posts:                { type: Array,  default: () => [] },
+  nominationLocked:     { type: Boolean, default: false },
+  currentElectionState: { type: String,  default: 'draft' },
 })
 
 const page      = usePage()
@@ -204,8 +215,8 @@ function statusClass(status) {
   return {
     draft:     'bg-orange-100 text-orange-700',
     approved:  'bg-emerald-100 text-emerald-700',
-    pending:   'bg-blue-100 text-blue-700',
-    rejected:  'bg-red-100 text-red-700',
+    pending:   'bg-primary-100 text-primary-700',
+    rejected:  'bg-danger-100 text-danger-700',
     withdrawn: 'bg-slate-100 text-slate-500',
   }[status] ?? 'bg-slate-100 text-slate-500'
 }
@@ -248,3 +259,4 @@ function remove(post, candidate) {
   )
 }
 </script>
+

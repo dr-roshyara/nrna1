@@ -16,8 +16,14 @@ class DemoResultController extends Controller
      * MODE 2: Organisation-scoped demo results (organisation_id = X)
      * Accessible only to users within that organisation context
      */
-    public function index()
+    public function index($organisation_slug)
     {
+        // Lookup organisation by slug
+        $organisation = \App\Models\Organisation::where('slug', $organisation_slug)->firstOrFail();
+
+        // Set session for BelongsToTenant scope
+        session(['current_organisation_id' => $organisation->id]);
+
         // BelongsToTenant scope automatically filters by organisation_id
         $posts = DemoPost::get(['id as post_id', 'name', 'state_name', 'required_number']);
 
@@ -28,7 +34,7 @@ class DemoResultController extends Controller
             'final_result' => $results,
             'posts' => $posts,
             'mode' => 'organisation',
-            'organisation_id' => session('current_organisation_id'),
+            'organisation_id' => $organisation->id,
             'is_demo' => true,
             'page_title' => 'Organisation Demo Results'
         ]);
@@ -106,7 +112,7 @@ class DemoResultController extends Controller
             $noVoteCount = 0;
 
             foreach ($allCandidates as $candidacy) {
-                $candidateName = $candidacy->user->name ?? $candidacy->user_name ?? 'Unknown';
+                $candidateName = $candidacy->user->name ?? $candidacy->user_name ?? $candidacy->name ?? 'Unknown';
                 // Key by `id` (UUID) — votes store the UUID in candidacy_id, not the short candidacy_id code
                 $candidateVotes[$candidacy->id] = [
                     'name' => $candidateName,
@@ -121,7 +127,7 @@ class DemoResultController extends Controller
                     ->where(function($query) use ($post) {
                         for ($i = 1; $i <= 60; $i++) {
                             $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
-                            $query->orWhereRaw("JSON_EXTRACT(`$field`, '$.post_id') = ?", [$post->post_id]);
+                            $query->orWhereRaw("\"$field\"::jsonb->>'post_id' = ?", [$post->post_id]);
                         }
                     })
                     ->whereNull('organisation_id')
@@ -130,7 +136,7 @@ class DemoResultController extends Controller
                 $votes = DemoVote::where(function($query) use ($post) {
                     for ($i = 1; $i <= 60; $i++) {
                         $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
-                        $query->orWhereRaw("JSON_EXTRACT(`$field`, '$.post_id') = ?", [$post->post_id]);
+                        $query->orWhereRaw("\"$field\"::jsonb->>'post_id' = ?", [$post->post_id]);
                     }
                 })->get(); // BelongsToTenant auto-scopes
             }
@@ -139,6 +145,12 @@ class DemoResultController extends Controller
             foreach ($votes as $vote) {
                 for ($i = 1; $i <= 60; $i++) {
                     $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
+
+                    // Skip empty/null columns
+                    if (empty($vote->$field)) {
+                        continue;
+                    }
+
                     $candidateData = json_decode($vote->$field, true);
 
                     if (!$candidateData || ($candidateData['post_id'] ?? null) !== $post->post_id) {
@@ -152,7 +164,7 @@ class DemoResultController extends Controller
                         continue;
                     }
 
-                    // Count candidate votes
+                    // Count candidate votes (candidates array contains selected candidates for this post)
                     foreach ($candidateData['candidates'] ?? [] as $candidate) {
                         $candidateId = $candidate['candidacy_id'] ?? null;
 
@@ -195,9 +207,15 @@ class DemoResultController extends Controller
     /**
      * Download PDF for MODE 2 (organisation-scoped demo results)
      */
-    public function downloadPDF()
+    public function downloadPDF($organisation_slug)
     {
         try {
+            // Lookup organisation by slug
+            $organisation = \App\Models\Organisation::where('slug', $organisation_slug)->firstOrFail();
+
+            // Set session for BelongsToTenant scope
+            session(['current_organisation_id' => $organisation->id]);
+
             // CRITICAL: Clear all output buffers to prevent PDF corruption
             while (ob_get_level() > 0) {
                 ob_end_clean();

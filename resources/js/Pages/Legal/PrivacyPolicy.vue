@@ -1,16 +1,16 @@
 <template>
-    <div class="min-h-screen bg-gray-50">
+    <div class="min-h-screen bg-neutral-50">
         <div class="container mx-auto px-4 py-12">
             <div class="max-w-3xl mx-auto bg-white rounded-lg shadow p-8">
-                <h1 class="text-4xl font-bold text-gray-900 mb-8">Privacy Policy</h1>
+                <h1 class="text-4xl font-bold text-neutral-900 mb-8">Privacy Policy</h1>
 
-                <div class="prose prose-lg max-w-none text-gray-700">
+                <div class="prose prose-lg max-w-none text-neutral-700">
                     <p class="mb-6">
                         Public Digit is committed to protecting your privacy. This Privacy Policy explains how we collect,
                         use, disclose, and safeguard your information when you use our platform.
                     </p>
 
-                    <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">1. Information We Collect</h2>
+                    <h2 class="text-2xl font-semibold text-neutral-900 mt-8 mb-4">1. Information We Collect</h2>
                     <p class="mb-4">We may collect information about you in a variety of ways. The information we may collect on the platform includes:</p>
                     <ul class="list-disc list-inside mb-6 space-y-2">
                         <li><strong>Personal Data:</strong> Name, email address, phone number, and other information you voluntarily provide</li>
@@ -18,7 +18,7 @@
                         <li><strong>Usage Data:</strong> Pages visited, time spent on pages, links clicked, and actions taken</li>
                     </ul>
 
-                    <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">2. Use of Your Information</h2>
+                    <h2 class="text-2xl font-semibold text-neutral-900 mt-8 mb-4">2. Use of Your Information</h2>
                     <p class="mb-6">
                         Having accurate information about you permits us to provide you with a smooth, efficient, and customized
                         experience. Specifically, we may use information collected about you via the platform to:
@@ -33,33 +33,33 @@
                         <li>Monitor and analyze usage and trends to improve your experience with the platform</li>
                     </ul>
 
-                    <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">3. Disclosure of Your Information</h2>
+                    <h2 class="text-2xl font-semibold text-neutral-900 mt-8 mb-4">3. Disclosure of Your Information</h2>
                     <p class="mb-6">
                         We may share your information in the situations described in this section. However, we are not in the business
                         of selling information about you to third parties contrary to the representations made in this Privacy Policy.
                         We may disclose generic aggregated demographic information not linked to any personal identification information.
                     </p>
 
-                    <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">4. Security of Your Information</h2>
+                    <h2 class="text-2xl font-semibold text-neutral-900 mt-8 mb-4">4. Security of Your Information</h2>
                     <p class="mb-6">
                         We use administrative, technical, and physical security measures to help protect your personal information.
                         While we have taken reasonable steps to secure the personal information you provide to us, please be aware that
                         no security measures are perfect or impenetrable.
                     </p>
 
-                    <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">5. Contact Us</h2>
+                    <h2 class="text-2xl font-semibold text-neutral-900 mt-8 mb-4">5. Contact Us</h2>
                     <p class="mb-6">
                         If you have questions or comments about this Privacy Policy, please contact us at:
                     </p>
-                    <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="bg-neutral-50 p-6 rounded-lg">
                         <p><strong>Public Digit</strong></p>
                         <p>Rathaus str 4</p>
                         <p>65203 Wiesbaden, Germany</p>
                         <p>Email: support@publicdigit.de</p>
                     </div>
 
-                    <div class="mt-12 pt-8 border-t border-gray-200">
-                        <p class="text-sm text-gray-500">
+                    <div class="mt-12 pt-8 border-t border-neutral-200">
+                        <p class="text-sm text-neutral-500">
                             Last updated: {{ new Date().toLocaleDateString() }}
                         </p>
                     </div>
@@ -68,7 +68,7 @@
                 <div class="mt-8">
                     <a
                         :href="route('register')"
-                        class="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                        class="inline-block px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition"
                     >
                         Back to Registration
                     </a>
@@ -83,3 +83,4 @@ export default {
     name: 'PrivacyPolicy',
 };
 </script>
+

@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Api\OrganizationController;
+use App\Http\Controllers\Api\Governance\CommitteeMemberController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OpenionController;
 use App\Http\Controllers\Api\DemoSetupController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\LocationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +40,8 @@ Route::post('/login', [AuthController::class, 'login']);
 // Locale management (available to all users, no authentication required)
 Route::post('/set-locale', [LocaleController::class, 'setLocale'])->name('api.set-locale');
 Route::get('/get-locale', [LocaleController::class, 'getLocale'])->name('api.get-locale');
+// Allow both GET and POST for geolocation detection (GET for debugging, POST from fetch)
+Route::match(['GET', 'POST'], '/detect-location', [LocationController::class, 'detect'])->name('api.detect-location');
 
 Route::group(['middleware'=>['auth:sanctum']], function(){
     Route::get('/openions/search', [OpenionController::class, 'search'])
@@ -47,3 +51,7 @@ Route::group(['middleware'=>['auth:sanctum']], function(){
     Route::post('/organisations/{organisation}/demo-setup', [DemoSetupController::class, 'setup'])
         ->name('api.organisations.demo-setup');
 });
+
+Route::group([], __DIR__ . '/geography/geographyApiRoutes.php');
+
+// NOTE: Governance API routes moved back to routes/web.php with explicit Inertia exclusion

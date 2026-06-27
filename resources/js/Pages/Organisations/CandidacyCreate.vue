@@ -5,7 +5,7 @@
       <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
       {{ page.props.flash.success }}
     </div>
-    <div v-if="page.props.flash?.error" class="fixed top-4 right-4 z-50 max-w-sm rounded-xl bg-red-600 text-white text-sm font-medium px-5 py-3 shadow-xl flex items-center gap-2">
+    <div v-if="page.props.flash?.error" class="fixed top-4 right-4 z-50 max-w-sm rounded-xl bg-danger-600 text-white text-sm font-medium px-5 py-3 shadow-xl flex items-center gap-2">
       <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       {{ page.props.flash.error }}
     </div>
@@ -24,8 +24,8 @@
 
         <!-- No Active Elections -->
         <EmptyState v-if="activeElections.length === 0"
-          title="No active elections"
-          description="There are no active elections accepting candidacy applications right now."
+          title="No elections in nomination phase"
+          :description="emptyStateDescription"
         />
 
         <!-- Form -->
@@ -49,16 +49,27 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { usePage } from '@inertiajs/vue3'
 import EmptyState from '@/Components/EmptyState.vue'
 import CandidacyApplicationForm from '@/Pages/Organisations/Partials/CandidacyApplicationForm.vue'
 
-defineProps({
-  organisation:       { type: Object, required: true },
-  activeElections:    { type: Array,  default: () => [] },
-  appliedElectionIds: { type: Array,  default: () => [] },
+const props = defineProps({
+  organisation:           { type: Object, required: true },
+  activeElections:        { type: Array,  default: () => [] },
+  appliedElectionIds:     { type: Array,  default: () => [] },
+  nonNominationElections: { type: Array,  default: () => [] },
 })
 
 const page = usePage()
+
+const emptyStateDescription = computed(() => {
+  if (props.nonNominationElections.length > 0) {
+    const names = props.nonNominationElections.map(e => e.name).join(', ')
+    return `"${names}" ${props.nonNominationElections.length === 1 ? 'is' : 'are'} not in the nomination phase yet. Candidacy applications can only be submitted when the election reaches the nomination phase.`
+  }
+  return 'There are no elections accepting candidacy applications right now.'
+})
 </script>
+

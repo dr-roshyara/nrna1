@@ -1,12 +1,7 @@
 <template>
-    <div v-if="!loggedIn" class="min-h-screen bg-gray-50">
-        <!-- Breadcrumb Schema for SEO -->
-
-        <!-- Header -->
-        <PublicDigitHeader />
-
+    <PublicDigitLayout v-if="!loggedIn">
         <!-- Top-Level Action Grid -->
-        <div class="bg-white border-b border-gray-100 py-8">
+        <div class="bg-white border-b border-neutral-100 py-8">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
 
@@ -75,18 +70,13 @@
         <!-- CTA Section -->
         <CTASection :perks="perks" />
 
-        <!-- Footer -->
-        <PublicDigitFooter />
-    </div>
-    <div v-else>
-        <Dashboard />
-    </div>
+    </PublicDigitLayout>
+    <Dashboard v-else />
 </template>
 
 <script>
 import Dashboard from "@/pages/Dashboard.vue";
-import PublicDigitHeader from "@/components/Jetstream/PublicDigitHeader.vue";
-import PublicDigitFooter from "@/components/Jetstream/PublicDigitFooter.vue";
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 
 // Import Welcome section components
 import HeroSection from "@/components/Welcome/HeroSection.vue";
@@ -114,8 +104,7 @@ export default {
     },
     components: {
         Dashboard,
-        PublicDigitHeader,
-        PublicDigitFooter,
+        PublicDigitLayout,
         HeroSection,
         NGOFeaturesSection,
         HowItWorksSection,
@@ -189,3 +178,4 @@ export default {
     },
 };
 </script>
+

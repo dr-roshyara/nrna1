@@ -28,7 +28,12 @@ class EnsureRealVoteOrganisation
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // STEP 1: Get election from middleware chain (set by ElectionMiddleware)
+        \Log::info('🔵 [EnsureRealVoteOrganisation] Middleware START', [
+            'user_id' => auth()->id(),
+            'route' => $request->route()->getName(),
+        ]);
+
+        // STEP 1: Get election from middleware chain (set by VerifyVoterSlugConsistency)
         $election = $request->attributes->get('election');
 
         if (!$election) {
@@ -42,6 +47,11 @@ class EnsureRealVoteOrganisation
                 'election' => __('Election context not found. Please try again.')
             ]);
         }
+
+        \Log::info('✅ [EnsureRealVoteOrganisation] Election found', [
+            'election_id' => $election->id,
+            'election_type' => $election->type,
+        ]);
 
         // STEP 2: BACKWARD COMPATIBILITY - Demo elections bypass ALL validation
         if ($election->type === 'demo') {
@@ -63,9 +73,29 @@ class EnsureRealVoteOrganisation
             return redirect()->route('login');
         }
 
-        // STEP 4: CRITICAL VALIDATION - User's organisation must match election's organisation
-        if ($user->organisation_id !== $election->organisation_id) {
-            return $this->handleOrganisationMismatch($request, $user, $election);
+        // STEP 4: ✅ CRITICAL FIX - Check voter_slug organisation (not user organisation)
+        // In multi-tenancy, user may be from different org than the election they're voting in
+        // VerifyVoterSlugConsistency already validated voter_slug ↔ election org consistency
+        // We just need to verify voter_slug context is present
+        $voterSlug = $request->attributes->get('voter_slug');
+
+        \Log::info('🔍 [EnsureRealVoteOrganisation] Checking voter slug', [
+            'has_voter_slug' => $voterSlug !== null,
+            'voter_slug_id' => $voterSlug?->id,
+            'voter_slug_org_id' => $voterSlug?->organisation_id,
+            'election_org_id' => $election->organisation_id,
+        ]);
+
+        if (!$voterSlug) {
+            \Log::channel('voting_security')->error('PHASE 4: No voter slug in voting flow', [
+                'user_id' => $user->id,
+                'election_id' => $election->id,
+                'route' => $request->route()->getName(),
+            ]);
+
+            return back()->withErrors([
+                'voting_context' => __('Voting session context missing. Please start over.')
+            ]);
         }
 
         // STEP 5: Validation passed - log and continue

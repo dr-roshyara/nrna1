@@ -119,7 +119,7 @@
             {{ $t('navigation.security') }}
           </Link>
           <Link
-            href="/demo/result"
+            :href="page.props.user ? route('demo-result.index', { organisation_slug: page.props.user.organisation?.slug }) : route('public-demo.results')"
             class="text-white font-medium hover:text-blue-100 focus:outline-none focus:ring-2 focus:ring-white/50 px-3 py-2 rounded-sm transition-colors duration-200 text-sm"
           >
             {{ $t('navigation.demo_result') }}
@@ -128,8 +128,9 @@
 
         <!-- Demo Link - Special CTA -->
         <Link
-          :href="route('election.demo.start')"
-          class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold text-sm rounded-sm hover:from-green-600 hover:to-emerald-600 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap shadow-md hover:shadow-lg group"
+          :href="page.props.user ? route('election.demo.start', { organisation_slug: page.props.user.organisation?.slug }) : '#'"
+          :disabled="!page.props.auth?.user?.organisation"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold text-sm rounded-sm hover:from-green-600 hover:to-emerald-600 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap shadow-md hover:shadow-lg group disabled:opacity-50 disabled:cursor-not-allowed"
           :title="$t('navigation.demo_title', 'Try demo election without registration')"
         >
           <svg class="w-4 h-4 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -199,7 +200,7 @@
             🔒 {{ $t('navigation.security') }}
           </Link>
           <Link
-            href="/demo/result"
+            :href="page.props.user ? route('demo-result.index', { organisation_slug: page.props.user.organisation?.slug }) : route('public-demo.results')"
             @click="showMobileMenu = false"
             class="block px-4 py-3 text-white hover:bg-white/20 active:bg-white/30 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
@@ -210,9 +211,10 @@
         <!-- Mobile Demo CTA -->
         <div class="pt-3 border-t border-blue-600/50 px-3">
           <Link
-            :href="route('election.demo.start')"
+            :href="page.props.user ? route('election.demo.start', { organisation_slug: page.props.user.organisation?.slug }) : '#'"
+            :disabled="!page.props.auth?.user?.organisation"
             @click="showMobileMenu = false"
-            class="block px-4 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold text-sm rounded-lg hover:from-green-600 hover:to-emerald-600 active:from-green-700 active:to-emerald-700 transition-all duration-150 text-center min-h-[44px] flex items-center justify-center shadow-md"
+            class="block px-4 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold text-sm rounded-lg hover:from-green-600 hover:to-emerald-600 active:from-green-700 active:to-emerald-700 transition-all duration-150 text-center min-h-[44px] flex items-center justify-center shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
           >
             🎪 {{ $t('navigation.demo', 'Try Demo') }}
           </Link>

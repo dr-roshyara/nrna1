@@ -42,9 +42,9 @@ defineProps({
         </section>
 
         <!-- Features -->
-        <section class="py-16 px-6 bg-gray-50">
+        <section class="py-16 px-6 bg-neutral-50">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">
+                <h2 class="text-3xl font-bold text-center text-neutral-900 mb-12">
                     {{ $t('pages.vereinswahlen.features_title') }}
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -54,7 +54,7 @@ defineProps({
                         class="flex items-start gap-4 bg-white rounded-xl p-6 shadow-sm"
                     >
                         <span class="text-indigo-600 text-2xl" aria-hidden="true">✓</span>
-                        <h3 class="font-semibold text-gray-900 text-lg">{{ label }}</h3>
+                        <h3 class="font-semibold text-neutral-900 text-lg">{{ label }}</h3>
                     </div>
                 </div>
             </div>
@@ -79,3 +79,4 @@ defineProps({
         </section>
     </div>
 </template>
+

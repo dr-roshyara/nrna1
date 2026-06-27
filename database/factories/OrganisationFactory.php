@@ -22,6 +22,7 @@ class OrganisationFactory extends Factory
             'slug' => Str::slug($name),
             'type' => 'tenant',
             'is_default' => false,
+            'uses_full_membership' => true,  // Default: full membership governance (backward compatible)
             'address' => [
                 'street' => $this->faker->streetAddress(),
                 'city' => $this->faker->city(),
@@ -59,6 +60,63 @@ class OrganisationFactory extends Factory
         return $this->state([
             'type' => 'tenant',
             'is_default' => false,
+        ]);
+    }
+
+    /**
+     * Create organisation with election-only governance mode
+     * (lightweight, no formal membership)
+     */
+    public function electionOnly()
+    {
+        return $this->state([
+            'uses_full_membership' => false,
+        ]);
+    }
+
+    /**
+     * Create organisation with full membership governance mode
+     * (formal membership with fees and types)
+     */
+    public function fullMembership()
+    {
+        return $this->state([
+            'uses_full_membership' => true,
+        ]);
+    }
+
+    /**
+     * Create organisation with worldwide scope
+     */
+    public function worldwide()
+    {
+        return $this->state([
+            'committee_structure' => 'geographical',
+            'geographic_scope' => 'worldwide',
+            'geographic_levels' => [
+                ['index' => 1, 'type' => 'static', 'db_level' => null, 'label' => 'Worldwide'],
+                ['index' => 2, 'type' => 'region', 'db_level' => null, 'label' => 'Region'],
+                ['index' => 3, 'type' => 'country', 'db_level' => null, 'label' => 'Country'],
+                ['index' => 4, 'type' => 'geo_unit', 'db_level' => 1, 'label' => 'Province'],
+            ],
+        ]);
+    }
+
+    /**
+     * Create organisation with Nepal scope
+     */
+    public function nepal()
+    {
+        return $this->state([
+            'committee_structure' => 'geographical',
+            'geographic_scope' => 'single_country',
+            'base_country_code' => 'NP',
+            'geographic_levels' => [
+                ['index' => 1, 'type' => 'geo_unit', 'db_level' => 1, 'label' => 'Province'],
+                ['index' => 2, 'type' => 'geo_unit', 'db_level' => 2, 'label' => 'District'],
+                ['index' => 3, 'type' => 'geo_unit', 'db_level' => 3, 'label' => 'Municipality'],
+                ['index' => 4, 'type' => 'geo_unit', 'db_level' => 4, 'label' => 'Ward'],
+            ],
         ]);
     }
 }

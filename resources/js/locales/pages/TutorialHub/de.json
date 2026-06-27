@@ -1,0 +1,81 @@
+{
+  "title": "Anleitungen & Leitfäden",
+  "subtitle": "Schritt-für-Schritt-Anleitungen für jede Funktion. Nach Kategorie durchsuchen und in wenigen Minuten loslegen.",
+  "breadcrumb": "Anleitungen",
+  "read_guide": "Anleitung lesen →",
+  "sections": {
+    "getting_started": "Erste Schritte",
+    "elections": "Wahlen",
+    "committees": "Ausschüsse",
+    "membership": "Mitgliedschaft",
+    "security_architecture": "Sicherheit & Architektur",
+    "try_it_live": "Live ausprobieren"
+  },
+  "cards": {
+    "create_organisation": {
+      "title": "Organisation erstellen",
+      "description": "Schritt-für-Schritt-Anleitung zum Erstellen einer Organisation mit geografischem Umfang und Ausschussstruktur.",
+      "badge": "Anfänger"
+    },
+    "governance_levels": {
+      "title": "Governance-Ebenen",
+      "description": "Governance-Hierarchieebenen für Ihre Organisation verstehen und konfigurieren.",
+      "badge": "Einrichtung"
+    },
+    "election_journey": {
+      "title": "Wahlreise",
+      "description": "Alle 7 Phasen des Wahllebenszyklus durchlaufen — von der Einrichtung bis zu den veröffentlichten Ergebnissen.",
+      "badge": "Überblick"
+    },
+    "election_setup": {
+      "title": "Wahl-Einrichtung",
+      "description": "Wahleinstellungen, Daten, Posten und Kandidaturregeln konfigurieren.",
+      "badge": "Konfiguration"
+    },
+    "voter_import": {
+      "title": "Wähler-Import",
+      "description": "Wähler aus CSV importieren — Format-Anleitung, Feldzuordnung und häufige Fehler.",
+      "badge": "Import"
+    },
+    "voter_verification": {
+      "title": "Wählerverifizierung",
+      "description": "Wie die Wähleridentität während und nach dem Wahlprozess verifiziert wird.",
+      "badge": "Sicherheit"
+    },
+    "committee_management": {
+      "title": "Ausschussverwaltung",
+      "description": "Ausschüsse erstellen, Mitglieder zuweisen, Details bearbeiten und den gesamten Ausschuss-Lebenszyklus verwalten.",
+      "badge": "Vollständige Anleitung"
+    },
+    "membership_modes": {
+      "title": "Mitgliedschaftsmodi",
+      "description": "Den Unterschied zwischen dem reinen Wahlmodus und dem Vollmitgliedschaftsmodus verstehen.",
+      "badge": "Konzepte"
+    },
+    "election_architecture": {
+      "title": "Wahl-Architektur",
+      "description": "Visueller Überblick über die Wahllebenszyklus-Zustandsmaschine — wie Wahlen durch jede Phase mit unveränderlichen Audit-Trails verlaufen.",
+      "badge": "Architektur"
+    },
+    "election_security": {
+      "title": "Wahlsicherheit & Zustandsmaschine",
+      "description": "Wie die manipulationssichere Zustandsmaschine die Wahlintegrität durch kryptografische Verifizierung und nachweisbare Ergebnisse garantiert.",
+      "badge": "Sicherheit"
+    },
+    "platform_security": {
+      "title": "Plattformsicherheit",
+      "description": "DSGVO-Artikel 32, BSI IT-Grundschutz, Ende-zu-Ende-Verschlüsselung und deutsches Daten-Hosting — der vollständige Sicherheits-Stack erklärt.",
+      "badge": "Compliance"
+    },
+    "voting_security": {
+      "title": "Abstimmungssicherheits-Architektur",
+      "description": "Fünfschichtiges Sicherheitsmodell: Wähleranonymität, Gerätefingerabdruck, IP-Steuerung, kryptografische Verifizierung und Multi-Tenant-Isolierung.",
+      "badge": "Vertiefung"
+    },
+    "public_demo": {
+      "title": "Öffentliche Demo",
+      "description": "Das vollständige Abstimmungs-Workflow anonym erleben — kein Konto erforderlich. Probieren Sie es selbst aus.",
+      "badge": "Interaktiv"
+    }
+  }
+}

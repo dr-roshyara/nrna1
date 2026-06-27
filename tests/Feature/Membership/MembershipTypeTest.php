@@ -27,18 +27,10 @@ class MembershipTypeTest extends TestCase
         session(['current_organisation_id' => $this->org->id]);
 
         $this->owner = User::factory()->create();
-        UserOrganisationRole::create([
-            'user_id'         => $this->owner->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'owner',
-        ]);
+        $this->assignRole($this->owner, $this->org, 'owner');
 
         $this->admin = User::factory()->create();
-        UserOrganisationRole::create([
-            'user_id'         => $this->admin->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'admin',
-        ]);
+        $this->assignRole($this->admin, $this->org, 'admin');
     }
 
     // ── CRUD access control ───────────────────────────────────────────────────

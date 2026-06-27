@@ -3,12 +3,12 @@
           -->       
 
             <div class="mx-auto flex flex-col w-full   md: p-4 text-center min-h-screen">
-                <div class=" p-2 mb-2 text-gray-900 font-bold text-lg">
+                <div class=" p-2 mb-2 text-neutral-900 font-bold text-lg">
                     Notices issued from Election commisssion.| 
                     निर्वाचन कमिटीले प्रकाशित गरेका सुचनाहरु 
                 </div>
                 <table class="w-full text-left rounded-sm p-4">
-                    <tr class="border-b-2 border-gray-400 bg-blue-100"> 
+                    <tr class="border-b-2 border-neutral-400 bg-primary-100"> 
                          <th class="hidden md:block px-1 md:px-3">S.N.(क्रम संख्या)</th>
                         <!-- <th class="w-1/3 p-4">Notice Title (सुचना शिर्षक) </th> -->
                         <th class="px-1 md:px-3">Notice Title (सुचना  शिर्षक) </th>
@@ -20,9 +20,9 @@
                         v-for="(notice, noticeIndx) in notices" 
                         :key="noticeIndx" 
                         :class="{
-                            'bg-gray-100 border-b border-gray-100':
+                            'bg-neutral-100 border-b border-neutral-100':
                                 noticeIndx % 2 === 0,
-                            'bg-white border-b border-gray-100':
+                            'bg-white border-b border-neutral-100':
                                 noticeIndx % 2 > 0,
                         }"
                     >
@@ -43,7 +43,7 @@
                          <td class=" px-1 md:px-3"> 
                             <!-- {{notice.pdf_path}}   --> 
                            <a :href="notice.url_path" > 
-                               <span class=" px-1 md:px-2 bg-red-50 font-bold text-sm"> click download </span> 
+                               <span class=" px-1 md:px-2 bg-danger-50 font-bold text-sm"> click download </span> 
                             </a>   
                         </td> 
                     </tr>
@@ -65,3 +65,4 @@ export default {
     },
 };
 </script>
+

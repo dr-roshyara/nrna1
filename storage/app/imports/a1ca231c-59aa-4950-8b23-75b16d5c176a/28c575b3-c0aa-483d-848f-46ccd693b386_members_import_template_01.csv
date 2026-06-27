@@ -1,0 +1,4 @@
+ email;firstname;lastname;membership_number;joined_at;status;fees_status;expires_at
+john.doe@example.com;John;Doe;MEM-001;2024-01-15;active;paid;2025-12-31
+jane.smith@example.com;Jane;Smith;;2024-02-01;active;unpaid;
+bob.wilson@example.com;Bob;Wilson;;2024-03-10;active;exempt;2026-03-10

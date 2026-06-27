@@ -16,7 +16,7 @@
                 <!-- Page Header with Badge -->
                 <header role="banner" class="text-center mb-12">
                     <div class="inline-flex items-center gap-3 mb-4">
-                        <h1 class="text-4xl font-bold text-gray-900">
+                        <h1 class="text-4xl font-bold text-neutral-900">
                             {{ $t('pages.voting.header.title') }}
                         </h1>
                         <div class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full font-semibold text-sm flex items-center gap-2">
@@ -24,10 +24,10 @@
                             Demo Mode
                         </div>
                     </div>
-                    <p class="text-xl text-gray-600 mb-4">
+                    <p class="text-xl text-neutral-600 mb-4">
                         {{ $t('pages.voting.header.subtitle', { name: name }) }}
                     </p>
-                    <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full" aria-hidden="true"></div>
+                    <div class="w-24 h-1 bg-primary-600 mx-auto rounded-full" aria-hidden="true"></div>
                 </header> 
                 <p>testing </p>
 
@@ -39,20 +39,20 @@
                                 <span class="text-green-600 text-2xl">👤</span>
                             </div>
                             <div class="text-left">
-                                <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">{{ $t('pages.voting.voter_info.label') }}</p>
-                                <p class="font-bold text-gray-900 text-lg">{{ name }}</p>
+                                <p class="text-sm text-neutral-600 font-medium uppercase tracking-wide">{{ $t('pages.voting.voter_info.label') }}</p>
+                                <p class="font-bold text-neutral-900 text-lg">{{ name }}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-blue-200">
+                    <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-primary-200">
                         <div class="flex items-center">
-                            <div class="bg-blue-100 p-3 rounded-lg mr-4 shrink-0">
-                                <span class="text-blue-600 text-2xl">📋</span>
+                            <div class="bg-primary-100 p-3 rounded-lg mr-4 shrink-0">
+                                <span class="text-primary-600 text-2xl">📋</span>
                             </div>
                             <div class="text-left">
-                                <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">Election</p>
-                                <p class="font-bold text-gray-900 text-lg">{{ election_name }}</p>
+                                <p class="text-sm text-neutral-600 font-medium uppercase tracking-wide">Election</p>
+                                <p class="font-bold text-neutral-900 text-lg">{{ election_name }}</p>
                             </div>
                         </div>
                     </div>
@@ -63,8 +63,8 @@
                                 <span class="text-purple-600 text-2xl">📊</span>
                             </div>
                             <div class="text-left">
-                                <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">{{ $t('pages.voting.progress_info.label') }}</p>
-                                <p class="font-bold text-gray-900 text-lg">{{ votingProgress.completed }}/{{ votingProgress.total }}</p>
+                                <p class="text-sm text-neutral-600 font-medium uppercase tracking-wide">{{ $t('pages.voting.progress_info.label') }}</p>
+                                <p class="font-bold text-neutral-900 text-lg">{{ votingProgress.completed }}/{{ votingProgress.total }}</p>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
 
                         <!-- National Posts Section -->
                         <section v-if="national_posts && national_posts.length > 0" class="mb-12" aria-labelledby="national-posts-title">
-                            <h2 id="national-posts-title" class="text-3xl font-bold text-gray-900 text-center mb-8">
+                            <h2 id="national-posts-title" class="text-3xl font-bold text-neutral-900 text-center mb-8">
                                 {{ $t('pages.voting.national_posts.section_title') }}
                             </h2>
                             <div class="space-y-8">
@@ -115,7 +115,7 @@
 
                         <!-- Regional Posts Section -->
                         <section v-if="regional_posts && regional_posts.length > 0" class="mb-12" aria-labelledby="regional-posts-title">
-                            <h2 id="regional-posts-title" class="text-3xl font-bold text-gray-900 text-center mb-8">
+                            <h2 id="regional-posts-title" class="text-3xl font-bold text-neutral-900 text-center mb-8">
                                 {{ regionalPostsMessages.sectionTitle?.replace('{region}', user_region) || `Candidates for ${user_region} Region` }}
                             </h2>
                             <div class="space-y-8">
@@ -181,25 +181,25 @@
                                 <div class="p-8 space-y-6">
                                     <!-- Agreement Terms -->
                                     <div>
-                                        <p class="text-gray-700 font-medium mb-4">
+                                        <p class="text-neutral-700 font-medium mb-4">
                                             {{ $t('pages.voting.agreement.intro_text') }}
                                         </p>
-                                        <div class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-r-lg">
-                                            <h3 class="font-bold text-blue-900 mb-4 text-lg">{{ $t('pages.voting.agreement.key_conditions') }}</h3>
+                                        <div class="bg-primary-50 border-l-4 border-primary-500 p-5 rounded-r-lg">
+                                            <h3 class="font-bold text-primary-900 mb-4 text-lg">{{ $t('pages.voting.agreement.key_conditions') }}</h3>
                                             <ul class="space-y-3">
-                                                <li class="flex items-start text-gray-800">
+                                                <li class="flex items-start text-neutral-800">
                                                     <span class="text-green-600 font-bold mr-3 shrink-0 mt-1">✓</span>
                                                     <span class="text-base">{{ $t('pages.voting.agreement.condition_1') }}</span>
                                                 </li>
-                                                <li class="flex items-start text-gray-800">
+                                                <li class="flex items-start text-neutral-800">
                                                     <span class="text-green-600 font-bold mr-3 shrink-0 mt-1">✓</span>
                                                     <span class="text-base">{{ $t('pages.voting.agreement.condition_2') }}</span>
                                                 </li>
-                                                <li class="flex items-start text-gray-800">
+                                                <li class="flex items-start text-neutral-800">
                                                     <span class="text-green-600 font-bold mr-3 shrink-0 mt-1">✓</span>
                                                     <span class="text-base">{{ $t('pages.voting.agreement.condition_3') }}</span>
                                                 </li>
-                                                <li class="flex items-start text-gray-800">
+                                                <li class="flex items-start text-neutral-800">
                                                     <span class="text-green-600 font-bold mr-3 shrink-0 mt-1">✓</span>
                                                     <span class="text-base">{{ $t('pages.voting.agreement.condition_4') }}</span>
                                                 </li>
@@ -208,7 +208,7 @@
                                     </div>
 
                                     <!-- Large Accessible Checkbox -->
-                                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-8">
+                                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-primary-300 rounded-xl p-8">
                                         <div class="flex items-start gap-4">
                                             <div class="shrink-0 pt-2">
                                                 <input
@@ -217,17 +217,17 @@
                                                     name="agree_button"
                                                     v-model="form.agree_button"
                                                     value="on"
-                                                    class="w-16 h-16 text-blue-600 border-3 border-gray-400 rounded-lg focus:ring-4 focus:ring-blue-400 focus:ring-offset-2 cursor-pointer transition-all"
+                                                    class="w-16 h-16 text-primary-600 border-3 border-neutral-400 rounded-lg focus:ring-4 focus:ring-blue-400 focus:ring-offset-2 cursor-pointer transition-all"
                                                     :aria-label="$t('pages.voting.agreement.checkbox_aria_label')"
                                                     @change="announceCheckboxStatus"
                                                 />
                                             </div>
                                             <div class="grow pt-2">
                                                 <label for="agree_button" class="cursor-pointer block">
-                                                    <div class="text-xl font-bold text-gray-900 mb-2 leading-tight">
+                                                    <div class="text-xl font-bold text-neutral-900 mb-2 leading-tight">
                                                         {{ $t('pages.voting.agreement.checkbox_label') }}
                                                     </div>
-                                                    <div class="text-lg text-gray-700 leading-relaxed">
+                                                    <div class="text-lg text-neutral-700 leading-relaxed">
                                                         {{ $t('pages.voting.agreement.checkbox_description') }}
                                                     </div>
                                                 </label>
@@ -243,7 +243,7 @@
                                         </div>
 
                                         <!-- Error Message -->
-                                        <div v-if="errors.agree_button" class="mt-4 p-4 bg-red-50 border-l-4 border-red-500 rounded-sm text-red-700 font-medium" role="alert">
+                                        <div v-if="errors.agree_button" class="mt-4 p-4 bg-danger-50 border-l-4 border-danger-500 rounded-sm text-danger-700 font-medium" role="alert">
                                             {{ errors.agree_button }}
                                         </div>
                                     </div>
@@ -252,18 +252,18 @@
                         </section>
 
                         <!-- Sticky Submit Button -->
-                        <div class="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-200 shadow-2xl z-40">
+                        <div class="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-neutral-200 shadow-2xl z-40">
                             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
                                     <div class="md:col-span-1 flex justify-center md:justify-start">
                                         <div class="text-center md:text-left">
-                                            <p class="text-sm text-gray-600 font-medium">{{ $t('pages.voting.submit.progress_label') }}</p>
-                                            <p class="text-2xl font-bold text-blue-600">{{ votingProgress.completed }}/{{ votingProgress.total }}</p>
+                                            <p class="text-sm text-neutral-600 font-medium">{{ $t('pages.voting.submit.progress_label') }}</p>
+                                            <p class="text-2xl font-bold text-primary-600">{{ votingProgress.completed }}/{{ votingProgress.total }}</p>
                                         </div>
                                     </div>
 
                                     <div class="md:col-span-1">
-                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="w-full bg-neutral-200 rounded-full h-2">
                                             <div
                                                 class="bg-gradient-to-r from-blue-600 to-indigo-600 h-2 rounded-full transition-all duration-300"
                                                 :style="{ width: votingProgress.percentage + '%' }"
@@ -321,12 +321,12 @@
                 <section class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto" aria-labelledby="info-section">
                     <h2 id="info-section" class="sr-only">{{ $t('pages.voting.footer.section_title') }}</h2>
 
-                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border-2 border-blue-200">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border-2 border-primary-200">
                         <div class="flex items-start gap-4">
                             <div class="text-4xl">🔒</div>
                             <div>
-                                <h3 class="font-bold text-blue-900 text-lg mb-2">{{ $t('pages.voting.footer.security.title') }}</h3>
-                                <p class="text-blue-800 text-sm">{{ $t('pages.voting.footer.security.description') }}</p>
+                                <h3 class="font-bold text-primary-900 text-lg mb-2">{{ $t('pages.voting.footer.security.title') }}</h3>
+                                <p class="text-primary-800 text-sm">{{ $t('pages.voting.footer.security.description') }}</p>
                             </div>
                         </div>
                     </div>
@@ -577,12 +577,12 @@ export default {
 
         submitButtonClasses() {
             if (this.loading) {
-                return 'bg-blue-500 text-white cursor-not-allowed';
+                return 'bg-primary-500 text-white cursor-not-allowed';
             }
             if (!this.canSubmit) {
-                return 'bg-gray-400 text-gray-600 cursor-not-allowed';
+                return 'bg-neutral-400 text-neutral-600 cursor-not-allowed';
             }
-            return 'bg-blue-600 hover:bg-blue-700 text-white hover:shadow-lg';
+            return 'bg-primary-600 hover:bg-primary-700 text-white hover:shadow-lg';
         },
 
         submitButtonText() {
@@ -703,3 +703,4 @@ button:active:not(:disabled) {
     }
 }
 </style>
+

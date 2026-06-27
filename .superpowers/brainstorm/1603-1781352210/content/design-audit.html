@@ -1,0 +1,137 @@
+<h2>🎨 Design Inconsistency Audit</h2>
+<p class="subtitle">8 pages analyzed — 4 major categories of drift found</p>
+
+<div class="section">
+  <h3>🔴 Category 1: Layout Chaos</h3>
+  <p class="subtitle">Different pages use different layout strategies entirely</p>
+  <table style="width:100%; border-collapse: collapse; margin-top: 12px;">
+    <tr style="border-bottom: 2px solid #e5e7eb;">
+      <th style="text-align:left; padding:8px 12px;">Page</th>
+      <th style="text-align:left; padding:8px 12px;">Layout</th>
+      <th style="text-align:left; padding:8px 12px;">Container</th>
+    </tr>
+    <tr style="border-bottom: 1px solid #f3f4f6;">
+      <td style="padding:8px 12px;">Login</td>
+      <td style="padding:8px 12px;">❌ No layout — PublicDigitHeader directly</td>
+      <td style="padding:8px 12px;">max-w-md mx-auto</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #f3f4f6;">
+      <td style="padding:8px 12px;">Dashboard Welcome</td>
+      <td style="padding:8px 12px;">✅ PublicDigitLayout</td>
+      <td style="padding:8px 12px;">max-w-1400px, custom grid</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #f3f4f6;">
+      <td style="padding:8px 12px;">Election Page</td>
+      <td style="padding:8px 12px;">❌ No layout — PublicDigitHeader directly</td>
+      <td style="padding:8px 12px;">max-w-4xl mx-auto</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #f3f4f6;">
+      <td style="padding:8px 12px;">Election Result</td>
+      <td style="padding:8px 12px;">❌ AppLayout (header slot)</td>
+      <td style="padding:8px 12px;">unknown</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #f3f4f6;">
+      <td style="padding:8px 12px;">Admin Dashboard</td>
+      <td style="padding:8px 12px;">✅ AdminLayout</td>
+      <td style="padding:8px 12px;">space-y-6</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #f3f4f6;">
+      <td style="padding:8px 12px;">Committee Index</td>
+      <td style="padding:8px 12px;">❌ No layout — Header/Footer directly</td>
+      <td style="padding:8px 12px;">max-w-7xl</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #f3f4f6;">
+      <td style="padding:8px 12px;">Code Create</td>
+      <td style="padding:8px 12px;">✅ ElectionLayout</td>
+      <td style="padding:8px 12px;">max-w-7xl / max-w-2xl</td>
+    </tr>
+    <tr>
+      <td style="padding:8px 12px;">Main Dashboard</td>
+      <td style="padding:8px 12px;">❌ SocialLayout</td>
+      <td style="padding:8px 12px;">flex-1</td>
+    </tr>
+  </table>
+</div>
+
+<div class="section">
+  <h3>🔴 Category 2: Token Inconsistency</h3>
+  <p class="subtitle">Some pages use <code>neutral-*</code>, others use <code>gray-*</code> — these are DIFFERENT colors</p>
+  <div style="display:flex; gap:24px; margin-top:12px; flex-wrap:wrap;">
+    <div style="background:#f9fafb; padding:16px; border-radius:12px; flex:1; min-width:200px;">
+      <div style="font-size:13px; font-weight:700; margin-bottom:8px;">✅ neutral-* (Login, Admin, Election)</div>
+      <div style="display:flex; gap:4px; margin-bottom:8px;">
+        <div style="width:24px;height:24px;border-radius:4px;background:#f8fafc;border:1px solid #e2e8f0;"></div>
+        <div style="width:24px;height:24px;border-radius:4px;background:#f1f5f9;border:1px solid #e2e8f0;"></div>
+        <div style="width:24px;height:24px;border-radius:4px;background:#e2e8f0;"></div>
+        <div style="width:24px;height:24px;border-radius:4px;background:#cbd5e1;"></div>
+        <div style="width:24px;height:24px;border-radius:4px;background:#94a3b8;"></div>
+      </div>
+      <p style="font-size:12px; color:#64748b;">Slate-based neutrals (Tailwind gray-900 mapped to neutral)</p>
+    </div>
+    <div style="background:#f9fafb; padding:16px; border-radius:12px; flex:1; min-width:200px;">
+      <div style="font-size:13px; font-weight:700; margin-bottom:8px;">❌ gray-* (Committee, old pages)</div>
+      <div style="display:flex; gap:4px; margin-bottom:8px;">
+        <div style="width:24px;height:24px;border-radius:4px;background:#f9fafb;border:1px solid #e5e7eb;"></div>
+        <div style="width:24px;height:24px;border-radius:4px;background:#f3f4f6;border:1px solid #e5e7eb;"></div>
+        <div style="width:24px;height:24px;border-radius:4px;background:#e5e7eb;"></div>
+        <div style="width:24px;height:24px;border-radius:4px;background:#d1d5db;"></div>
+        <div style="width:24px;height:24px;border-radius:4px;background:#9ca3af;"></div>
+      </div>
+      <p style="font-size:12px; color:#64748b;">Cool-gray neutrals — warmer, pink-ish tint vs slate-blue</p>
+    </div>
+  </div>
+  <p style="margin-top:12px; padding:12px; background:#fef2f2; border-radius:8px; font-size:14px;">
+    <strong>Impact:</strong> <code>text-neutral-600</code> is #475569 (slate). <code>text-gray-600</code> is #4b5563 (cool gray). They look different side-by-side. Pages using <code>gray-*</code> appear warmer, pages using <code>neutral-*</code> cooler.
+  </p>
+</div>
+
+<div class="section">
+  <h3>🔴 Category 3: Border Radius Sprawl</h3>
+  <p class="subtitle">5 different border-radius levels used across the app</p>
+  <table style="width:100%; border-collapse: collapse; margin-top:12px;">
+    <tr style="border-bottom: 2px solid #e5e7eb;">
+      <th style="text-align:left; padding:8px 12px;">Radius</th>
+      <th style="text-align:left; padding:8px 12px;">Where</th>
+    </tr>
+    <tr style="border-bottom: 1px solid #f3f4f6;">
+      <td style="padding:8px 12px;"><code>rounded-2xl</code> (16px)</td>
+      <td style="padding:8px 12px;">Login card, Code input</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #f3f4f6;">
+      <td style="padding:8px 12px;"><code>rounded-lg</code> (8px)</td>
+      <td style="padding:8px 12px;">Admin cards, Committee cards, Election details</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #f3f4f6;">
+      <td style="padding:8px 12px;"><code>rounded-sm</code> (2px)</td>
+      <td style="padding:8px 12px;">Election alert banners</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #f3f4f6;">
+      <td style="padding:8px 12px;"><code>rounded</code> (4px)</td>
+      <td style="padding:8px 12px;">Various inline elements</td>
+    </tr>
+    <tr>
+      <td style="padding:8px 12px;"><code>border-radius: 16px</code> (CSS)</td>
+      <td style="padding:8px 12px;">Dashboard glassmorphism cards</td>
+    </tr>
+  </table>
+</div>
+
+<div class="section">
+  <h3>🔴 Category 4: Button & Component Division</h3>
+  <p class="subtitle">Some pages use design system, others use raw HTML — creating visual chaos</p>
+
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-top:12px;">
+    <div style="background:#fff7ed; padding:16px; border-radius:8px;">
+      <div style="font-weight:700; margin-bottom:8px;">Raw &lt;button&gt; classes</div>
+      <code style="display:block; font-size:12px; padding:4px 0;">Login: jet-button + raw Tailwind</code>
+      <code style="display:block; font-size:12px; padding:4px 0;">Committee: &lt;a&gt; with bg-primary</code>
+      <code style="display:block; font-size:12px; padding:4px 0;">Code: raw &lt;button&gt; with custom classes</code>
+    </div>
+    <div style="background:#f0fdf4; padding:16px; border-radius:8px;">
+      <div style="font-weight:700; margin-bottom:8px;">Design system components</div>
+      <code style="display:block; font-size:12px; padding:4px 0;">Dashboard: &lt;QuickStartGrid&gt;</code>
+      <code style="display:block; font-size:12px; padding:4px 0;">Admin: &lt;Link&gt; (Inertia)</code>
+      <code style="display:block; font-size:12px; padding:4px 0;">Election: mixed &lt;jet-button&gt;</code>
+    </div>
+  </div>
+</div>

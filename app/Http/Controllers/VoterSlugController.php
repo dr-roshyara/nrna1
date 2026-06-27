@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Application\Election\Facades\ElectionLifecycle;
 use App\Models\User;
 use App\Models\VoterSlug;
 use App\Services\VoterSlugService;
@@ -119,6 +120,20 @@ class VoterSlugController extends Controller
             );
         }
 
+        // Validate election lifecycle state (SSOT check)
+        $lifecycle = ElectionLifecycle::of($election);
+        if (!$lifecycle->canVote()) {
+            Log::warning('Slug creation blocked by election lifecycle', [
+                'user_id' => $user->id,
+                'election_id' => $election->id,
+                'election_state' => $lifecycle->state()->value,
+                'blocked_reason' => $lifecycle->blockedReason(),
+            ]);
+
+            return redirect()->route('election.dashboard')
+                ->with('error', 'Voting is not currently allowed: ' . $lifecycle->blockedReason());
+        }
+
         // ✅ Use the new getOrCreateSlug method with proper election type handling
         try {
             $slug = $this->slugService->getOrCreateSlug($user, $election);
@@ -213,6 +228,20 @@ class VoterSlugController extends Controller
             return redirect()->route('election.dashboard')->with('error',
                 'Selected election not found.'
             );
+        }
+
+        // Validate election lifecycle state (SSOT check)
+        $lifecycle = ElectionLifecycle::of($election);
+        if (!$lifecycle->canVote()) {
+            Log::warning('Slug restart blocked by election lifecycle', [
+                'user_id' => $user->id,
+                'election_id' => $election->id,
+                'election_state' => $lifecycle->state()->value,
+                'blocked_reason' => $lifecycle->blockedReason(),
+            ]);
+
+            return redirect()->route('election.dashboard')
+                ->with('error', 'Voting is not currently allowed: ' . $lifecycle->blockedReason());
         }
 
         // Create a new voting session from scratch

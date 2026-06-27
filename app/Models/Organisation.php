@@ -24,7 +24,18 @@ class Organisation extends Model
         'representative',
         'settings',
         'languages',
+        'default_language',
         'logo',
+        'uses_full_membership',
+        'committee_structure',
+        'geographic_scope',
+        'allowed_countries',
+        'base_country_code',
+        'base_region_id',
+        'geographic_levels',
+        'governance_status',
+        'governance_configured_at',
+        'governance_configured_by',
     ];
 
     protected $casts = [
@@ -32,8 +43,37 @@ class Organisation extends Model
         'representative' => 'array',
         'settings' => 'array',
         'languages' => 'array',
+        'allowed_countries' => 'array',
+        'geographic_levels' => 'array',
         'is_default' => 'boolean',
+        'uses_full_membership' => 'boolean',
+        'governance_status' => 'string',
+        'governance_configured_at' => 'datetime',
     ];
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
+    protected static function booted(): void
+    {
+        static::updating(function (self $org) {
+            $immutable = [
+                'committee_structure',
+                'geographic_scope',
+                'allowed_countries',
+                'base_country_code',
+                'base_region_id',
+            ];
+
+            if ($org->isDirty($immutable)) {
+                throw new \DomainException(
+                    'Geographic configuration is immutable after creation.'
+                );
+            }
+        });
+    }
 
     // Relationships
     public function creator()
@@ -51,6 +91,11 @@ class Organisation extends Model
     public function elections()
     {
         return $this->hasMany(Election::class);
+    }
+
+    public function applications()
+    {
+        return $this->hasMany(MembershipApplication::class, 'organisation_id', 'id');
     }
 
     /**
@@ -150,5 +195,56 @@ class Organisation extends Model
         return static::where('type', 'platform')
                      ->where('is_default', true)
                      ->first();
+    }
+
+    /**
+     * Check if organisation uses election-only mode (no formal membership required)
+     */
+    public function isElectionOnly(): bool
+    {
+        return !$this->uses_full_membership;
+    }
+
+    /**
+     * Check if organisation uses full membership mode (requires formal members with paid fees)
+     */
+    public function usesFullMembership(): bool
+    {
+        return $this->uses_full_membership === true;
+    }
+
+    /**
+     * Get the organisation's default language
+     */
+    public function getDefaultLanguage(): ?string
+    {
+        return $this->default_language;
+    }
+
+    /**
+     * Check if organisation has a default language set
+     */
+    public function hasDefaultLanguage(): bool
+    {
+        return !is_null($this->default_language);
+    }
+
+    /**
+     * Get the organisation's geographic structure (defaults to Nepal if not set)
+     */
+    public function getGeographicStructure(): \App\Contexts\Geography\Domain\ValueObjects\GeographicStructure
+    {
+        if ($this->geographic_levels === null) {
+            return \App\Contexts\Geography\Domain\ValueObjects\GeographicStructure::forNepal();
+        }
+        return \App\Contexts\Geography\Domain\ValueObjects\GeographicStructure::fromArray($this->geographic_levels);
+    }
+
+    /**
+     * Set the organisation's geographic structure
+     */
+    public function setGeographicLevels(\App\Contexts\Geography\Domain\ValueObjects\GeographicStructure $structure): void
+    {
+        $this->geographic_levels = $structure->toArray();
     }
 }

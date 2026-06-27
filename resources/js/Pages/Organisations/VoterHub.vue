@@ -83,7 +83,7 @@
 
             <!-- Demo Result always visible -->
             <ActionCard
-              :href="route('demo-result.index')"
+              :href="route('demo-result.index', { organisation_slug: organisation.slug })"
               accent="emerald"
               :label="t.nav.demo_results"
               :description="t.nav.demo_results_sub"
@@ -117,27 +117,102 @@
               :index="1"
             />
 
-            <!-- Election Results per published election -->
+            <!-- Verify Vote -->
             <ActionCard
-              v-for="(election, i) in publishedElections"
-              :key="'result-' + election.id"
-              :href="route('result.index', { election: election.slug })"
-              accent="violet"
-              :label="t.nav.election_results"
-              :description="election.name"
-              icon="chart"
-              :index="2 + i"
+              href="/vote/verify_to_show"
+              accent="blue"
+              label="Verify Vote"
+              description="View and verify your submitted vote"
+              icon="check"
+              :index="2"
             />
 
             <!-- Demo Result -->
             <ActionCard
-              :href="route('demo-result.index')"
+              :href="route('demo-result.index', { organisation_slug: organisation.slug })"
               accent="emerald"
               :label="t.nav.demo_results"
               :description="t.nav.demo_results_sub"
               icon="chart"
-              :index="2 + publishedElections.length"
+              :index="3"
             />
+          </div>
+        </section>
+
+        <!-- ── SECTION 1.5: PUBLISHED ELECTION RESULTS ──────── -->
+        <section v-if="publishedElections.length > 0" aria-labelledby="results-heading" class="space-y-6">
+          <h2 id="results-heading" class="text-xs font-bold uppercase tracking-widest text-slate-400">
+            {{ publishedElections.length === 1 ? 'Election Result Available' : 'Published Election Results' }}
+          </h2>
+
+          <!-- Results Grid: Bold, Striking Design -->
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div
+              v-for="(election, idx) in publishedElections"
+              :key="'published-' + election.id"
+              class="result-card group relative overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              :style="{ animationDelay: `${idx * 120}ms` }"
+            >
+              <!-- Animated gradient overlay -->
+              <div class="absolute inset-0 bg-gradient-to-tr from-black/0 via-transparent to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
+
+              <!-- Subtle grid pattern background -->
+              <div class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300"
+                   style="backgroundImage: 'linear-gradient(45deg, rgba(255,255,255,0.1) 1px, transparent 1px)', 'linear-gradient(-45deg, rgba(255,255,255,0.1) 1px, transparent 1px)'; backgroundSize: '20px 20px';"
+                   aria-hidden="true"></div>
+
+              <!-- Content -->
+              <div class="relative z-10 flex flex-col h-full">
+                <!-- Header with icon -->
+                <div class="flex items-start justify-between mb-6">
+                  <div class="flex-1">
+                    <p class="text-white/70 text-xs font-semibold uppercase tracking-wider mb-2">Election Complete</p>
+                    <h3 class="text-white font-black text-xl md:text-2xl leading-tight">
+                      {{ election.name }}
+                    </h3>
+                  </div>
+                  <!-- Checkmark Icon -->
+                  <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors duration-300" aria-hidden="true">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Spacer -->
+                <div class="flex-grow"></div>
+
+                <!-- Dual CTA: Results + Receipt Codes -->
+                <div class="pt-6 border-t border-white/20 group-hover:border-white/40 transition-colors duration-300 space-y-2 flex flex-col gap-2">
+                  <!-- View Results Button -->
+                  <a
+                    :href="route('result.index', { election: election.slug })"
+                    class="inline-flex items-center justify-center gap-2 w-full bg-primary-500/80 hover:bg-primary-400 text-white font-extrabold text-base py-3 px-4 rounded-lg transition-all duration-300 border border-primary-400/50 hover:border-primary-300 shadow-md hover:shadow-lg hover:scale-105"
+                    :aria-label="`View results for ${election.name}`"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                    View Results
+                  </a>
+
+                  <!-- View Receipt Codes Button -->
+                  <a
+                    :href="route('organisations.election.receipt-codes', { organisation: organisation.slug, election: election.slug })"
+                    class="inline-flex items-center justify-center gap-2 w-full bg-green-600/80 hover:bg-green-500 text-white font-extrabold text-base py-3 px-4 rounded-lg transition-all duration-300 border border-green-500/50 hover:border-green-400 shadow-md hover:shadow-lg hover:scale-105"
+                    :aria-label="`View receipt codes for ${election.name}`"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                    </svg>
+                    Receipt Codes
+                  </a>
+                </div>
+              </div>
+
+              <!-- Hover accent line -->
+              <div class="absolute bottom-0 left-0 h-1 bg-white/80 w-0 group-hover:w-full transition-all duration-500" aria-hidden="true"></div>
+            </div>
           </div>
         </section>
 
@@ -229,7 +304,7 @@
                       <div class="flex items-center gap-1.5 flex-shrink-0">
                         <span class="text-[10px] px-1.5 py-0.5 rounded font-semibold"
                               :class="post.is_national_wide
-                                ? 'bg-blue-50 text-blue-600'
+                                ? 'bg-primary-50 text-primary-600'
                                 : 'bg-amber-50 text-amber-600'">
                           {{ post.is_national_wide ? t.active_elections.national : (post.state_name || t.active_elections.regional) }}
                         </span>
@@ -269,47 +344,87 @@
                       </svg>
                     </a>
 
-                    <!-- Voter List — officers only -->
+                    <!-- Candidates List -->
                     <a
-                      v-if="isOfficer"
-                      :href="route('elections.voters.index', { organisation: organisation.slug, election: election.slug })"
-                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-blue-200 bg-blue-50 hover:bg-white hover:border-blue-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1"
-                      :aria-label="`View voter list for ${election.name}`"
+                      :href="route('organisations.elections.candidates', { organisation: organisation.slug, election: election.slug })"
+                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-purple-200 bg-purple-50 hover:bg-white hover:border-purple-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-1"
+                      :aria-label="`View candidates for ${election.name}`"
                     >
-                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center" aria-hidden="true">
-                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
                         </svg>
                       </span>
                       <span class="flex-1 min-w-0">
-                        <span class="block text-sm font-semibold text-blue-800">Voter List</span>
-                        <span class="block text-xs text-blue-600">Manage registered voters</span>
+                        <span class="block text-sm font-semibold text-purple-800">Candidates</span>
+                        <span class="block text-xs text-purple-600">View positions & candidates</span>
                       </span>
-                      <svg class="w-4 h-4 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <svg class="w-4 h-4 text-purple-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                       </svg>
                     </a>
 
-                    <!-- Import Voters — officers only -->
+                    <!-- Voters List — all election members -->
                     <a
-                      v-if="isOfficer"
-                      :href="route('elections.voters.import.create', { organisation: organisation.slug, election: election.slug })"
+                      :href="route('organisations.elections.voters', { organisation: organisation.slug, election: election.slug })"
                       class="flex items-center gap-3 px-4 py-3 rounded-xl border border-teal-200 bg-teal-50 hover:bg-white hover:border-teal-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-1"
-                      :aria-label="`Import voters for ${election.name}`"
+                      :aria-label="`View voters for ${election.name}`"
                     >
                       <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-teal-100 flex items-center justify-center" aria-hidden="true">
                         <svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 12H9m6 0a6 6 0 11-12 0 6 6 0 0112 0z"/>
                         </svg>
                       </span>
                       <span class="flex-1 min-w-0">
-                        <span class="block text-sm font-semibold text-teal-800">Import Voters</span>
-                        <span class="block text-xs text-teal-600">Bulk upload from CSV / Excel</span>
+                        <span class="block text-sm font-semibold text-teal-800">Voters</span>
+                        <span class="block text-xs text-teal-600">View registered voters</span>
                       </span>
                       <svg class="w-4 h-4 text-teal-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                       </svg>
                     </a>
+
+                    <!-- Verify Vote -->
+                    <a
+                      href="/vote/verify_to_show"
+                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-primary-200 bg-primary-50 hover:bg-white hover:border-primary-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1"
+                      aria-label="Verify your submitted vote"
+                    >
+                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-4 h-4 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                      </span>
+                      <span class="flex-1 min-w-0">
+                        <span class="block text-sm font-semibold text-primary-800">Verify Vote</span>
+                        <span class="block text-xs text-primary-600">View and verify your vote</span>
+                      </span>
+                      <svg class="w-4 h-4 text-primary-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+
+                    <!-- View Receipt Codes — only if results are published -->
+                    <a
+                      v-if="election.results_published_at"
+                      :href="route('organisations.election.receipt-codes', { organisation: organisation.slug, election: election.slug })"
+                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-green-200 bg-green-50 hover:bg-white hover:border-green-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-1"
+                      :aria-label="`View verification codes for ${election.name}`"
+                    >
+                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01m-.01 4h.01"/>
+                        </svg>
+                      </span>
+                      <span class="flex-1 min-w-0">
+                        <span class="block text-sm font-semibold text-green-800">Receipt Codes</span>
+                        <span class="block text-xs text-green-600">Verify all voter codes</span>
+                      </span>
+                      <svg class="w-4 h-4 text-green-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+
 
                     <!-- Apply for Candidacy — only if not yet applied -->
                     <a
@@ -354,8 +469,22 @@
 
                 <!-- CTA -->
                 <div class="pt-1">
+                  <!-- Results Published: Show Receipt Codes CTA -->
                   <a
-                    v-if="voterStatus(election.id) === 'eligible'"
+                    v-if="election.results_published_at"
+                    :href="route('organisations.election.receipt-codes', { organisation: organisation.slug, election: election.slug })"
+                    class="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 active:bg-green-800 text-white text-sm font-semibold py-2.5 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2"
+                    :aria-label="`View receipt codes for ${election.name}`"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                    </svg>
+                    View Receipt Codes
+                  </a>
+
+                  <!-- Still Active: Vote or Status -->
+                  <a
+                    v-else-if="voterStatus(election.id) === 'eligible'"
                     :href="route('elections.show', { slug: election.slug })"
                     class="flex items-center justify-center gap-2 w-full bg-primary-600 hover:bg-primary-700 active:bg-primary-800 text-white text-sm font-semibold py-2.5 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2"
                     :aria-label="`${t.active_elections.vote_now} — ${election.name}`"
@@ -370,7 +499,7 @@
                   </a>
 
                   <div
-                    v-else-if="voterStatus(election.id) === 'voted'"
+                    v-else-if="voterStatus(election.id) === 'voted' && !election.results_published_at"
                     class="flex items-center justify-center gap-2 w-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm font-semibold py-2.5 rounded-xl"
                     role="status"
                     :aria-label="t.active_elections.vote_submitted"
@@ -468,7 +597,8 @@ function statusBadgeClass(electionId) {
 
 function formatDate(d) {
   if (!d) return '—'
-  return new Date(d).toLocaleDateString(locale.value === 'de' ? 'de-DE' : locale.value === 'np' ? 'ne-NP' : 'en-GB', {
+  const localeCode = locale?.value || 'de'
+  return new Date(d).toLocaleDateString(localeCode === 'de' ? 'de-DE' : localeCode === 'np' ? 'ne-NP' : 'en-GB', {
     day: '2-digit', month: 'short', year: 'numeric',
   })
 }
@@ -491,7 +621,7 @@ export const ActionCard = {
     const accentMap = {
       primary: { border: 'border-l-primary-500', bg: 'bg-primary-50',  icon: 'text-primary-600', hover: 'hover:border-primary-300 hover:bg-primary-50/80' },
       amber:   { border: 'border-l-amber-500',   bg: 'bg-amber-50',    icon: 'text-amber-600',   hover: 'hover:border-amber-300   hover:bg-amber-50/80'   },
-      blue:    { border: 'border-l-blue-500',     bg: 'bg-blue-50',     icon: 'text-blue-600',    hover: 'hover:border-blue-300    hover:bg-blue-50/80'    },
+      blue:    { border: 'border-l-blue-500',     bg: 'bg-primary-50',     icon: 'text-primary-600',    hover: 'hover:border-primary-300    hover:bg-primary-50/80'    },
       violet:  { border: 'border-l-violet-500',   bg: 'bg-violet-50',   icon: 'text-violet-600',  hover: 'hover:border-violet-300  hover:bg-violet-50/80'  },
       emerald: { border: 'border-l-emerald-500',  bg: 'bg-emerald-50',  icon: 'text-emerald-600', hover: 'hover:border-emerald-300 hover:bg-emerald-50/80' },
     }
@@ -551,9 +681,36 @@ export default { components: { ActionCard } }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes slideUpReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .action-card,
-.election-card {
-  animation: fadeUp 0.32s ease-out both;
+.election-card,
+.result-card {
+  animation: slideUpReveal 0.48s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.result-card {
+  /* Glowing effect on hover */
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.result-card:hover {
+  box-shadow: 0 20px 40px -8px rgba(16, 185, 129, 0.4);
+}
+
+.result-card:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
 }
 
 /* High-contrast focus ring for WCAG 2.1 AA */
@@ -562,3 +719,4 @@ export default { components: { ActionCard } }
   outline-offset: 3px;
 }
 </style>
+

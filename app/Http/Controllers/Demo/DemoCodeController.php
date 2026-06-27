@@ -86,7 +86,7 @@ class DemoCodeController extends Controller
 
         // 🚨 CRITICAL FIX: Redirect verified users to agreement page
         // User has verified code but hasn't voted yet - they should be on agreement page, not create page
-        if ($existingCode && $existingCode->can_vote_now == 1 && !$existingCode->has_voted) {
+        if ($existingCode && $existingCode->can_vote_now === true && !$existingCode->has_voted) {
             Log::info('🔄 Redirecting verified user to agreement page', [
                 'user_id' => $user->id,
                 'code_id' => $existingCode->id,
@@ -207,7 +207,7 @@ class DemoCodeController extends Controller
         }
 
         // Check if already verified
-        if ($code->can_vote_now == 1) {
+        if ($code->can_vote_now === true) {
             return $this->handleAlreadyVerified($request, $voterSlug);
         }
 
@@ -711,7 +711,6 @@ class DemoCodeController extends Controller
                 'is_code_to_open_voting_form_usable' => 1,
                 'code_to_open_voting_form' => $uniqueCode,
                 'code_to_open_voting_form_sent_at' => now(),
-                'has_code1_sent' => 1,
                 'code_to_open_voting_form_used_at' => null,
                 'code_to_save_vote_used_at' => null,
                 'is_code_to_save_vote_usable' => 1,
@@ -770,7 +769,6 @@ class DemoCodeController extends Controller
                         'organisation_id' => $election->organisation_id,  // ✅ EXPLICIT
                         'code_to_open_voting_form' => $uniqueCode,
                         'code_to_open_voting_form_sent_at' => now(),
-                        'has_code1_sent' => 1,
                         'client_ip' => $this->clientIP,
                         'voting_time_in_minutes' => $this->votingTimeInMinutes,
                         'is_code_to_open_voting_form_usable' => 1,
@@ -893,7 +891,7 @@ class DemoCodeController extends Controller
         } else {
             // ✅ CRITICAL: If code already verified, DO NOT regenerate
             // Code was successfully verified and user should go to agreement page
-            if ($code->can_vote_now == 1) {
+            if ($code->can_vote_now === true) {
                 Log::info('[DEMO] Code already verified - returning existing code', [
                     'user_id' => $user->id,
                     'election_id' => $election->id,
@@ -904,7 +902,7 @@ class DemoCodeController extends Controller
 
             // Code exists - check if it needs resending
             $isExpired = $code->code_to_open_voting_form_sent_at && \Carbon\Carbon::parse($code->code_to_open_voting_form_sent_at)->diffInMinutes(now()) > $this->votingTimeInMinutes;
-            $codeIsUsed = ($code->is_code_to_open_voting_form_usable == 0 || $code->code_to_open_voting_form_used_at !== null);
+            $codeIsUsed = ($code->is_code_to_open_voting_form_usable === false || $code->code_to_open_voting_form_used_at !== null);
             $notYetVoted = !$code->has_voted;
             $voteNotSubmitted = !$code->vote_submitted;
 
@@ -934,7 +932,6 @@ class DemoCodeController extends Controller
                 $code->update([
                     'code_to_open_voting_form' => $newCode,
                     'code_to_open_voting_form_sent_at' => now(),
-                    'has_code1_sent' => 1,
                     'is_code_to_open_voting_form_usable' => 1,
                     'can_vote_now' => 0,
                     'vote_submitted' => 0, // Reset submission status

@@ -1,0 +1,608 @@
+{
+  "meta": {
+    "title": "Wahlkonfiguration – Leitfaden | Public Digit",
+    "description": "Erfahren Sie, wie Sie jede Wahleinstellung in Public Digit konfigurieren – IP-Einschränkungen, Stimmzetteloptionen, Wählerverifizierung und mehr.",
+    "read_time": "5 Min. Lesezeit",
+    "badge_label": "Admin-Leitfaden"
+  },
+
+  "page": {
+    "title": "Wahleinstellungen – Leitfaden",
+    "subtitle": "Ein vollständiger Überblick über alle Einstellungen Ihrer Wahl – was sie bewirken, wann sie zu verwenden sind und wie man sie korrekt konfiguriert."
+  },
+
+  "toc": {
+    "label": "Inhalt",
+    "items": [
+      { "id": "overview",      "label": "Übersicht" },
+      { "id": "statemachine",  "label": "Wahlablauf" },
+      { "id": "prerequisites", "label": "Voraussetzungen" },
+      { "id": "access",        "label": "Wählerzugangskontrolle" },
+      { "id": "ballot",        "label": "Stimmzetteloptionen" },
+      { "id": "verification",  "label": "Wählerverifizierung" },
+      { "id": "scenarios",     "label": "Typische Szenarien" },
+      { "id": "faq",           "label": "Häufige Fragen" }
+    ]
+  },
+
+  "section_overview": {
+    "heading": "Übersicht",
+    "body": "Die Wahleinstellungen ermöglichen es Ihnen, genau zu steuern, wie Wähler mit Ihrem Stimmzettel interagieren. Sie sind in drei Bereiche unterteilt: Wählerzugangskontrolle (wer abstimmen darf und von wo), Stimmzetteloptionen (wie Kandidaten ausgewählt werden) und Wählerverifizierung (Identitätsprüfungen vor der Wahl). Einstellungen können jederzeit vor der Öffnung der Wahl geändert werden. Sobald die Wahl aktiv ist und Stimmen eingegangen sind, ist ein Bestätigungshäkchen erforderlich.",
+    "tip_label": "Gut zu wissen",
+    "tip": "Einstellungen werden pro Wahl gespeichert – Änderungen bei einer Wahl haben keinen Einfluss auf andere Wahlen in Ihrer Organisation."
+  },
+
+  "section_statemachine": {
+    "heading": "Wahlablauf",
+    "intro": "Jede Wahl durchläuft zehn verschiedene Phasen, die jeweils eigene Regeln und Möglichkeiten haben. Die Phase wird durch eine konstitutionelle Governance-Engine aus Terminen und Abschlussmarkierungen abgeleitet. Zusätzlich kann eine Suspendierungsüberlagerung den Betrieb jederzeit vorübergehend anhalten.",
+    "key_concept": "Wahlen folgen einem zweiachsigen Modell: eine Lebenszyklusachse (10 lineare Phasen, gesteuert durch Abschlüsse und Daten) und eine Betriebsachse (Suspendierung als Governance-Überlagerung). Die konstitutionelle Engine erzwingt Phasenübergangsbedingungen – jeder Übergang erfordert bestimmte Voraussetzungen.",
+
+    "timeline": {
+      "description": "Ihre Wahl folgt diesem zehnphasigen Ablauf:",
+      "phases": [
+        {
+          "number": 1,
+          "name": "Entwurf",
+          "icon": "📝",
+          "description": "Wahl erstellen und konfigurieren",
+          "color": "slate",
+          "duration": "Von der Erstellung bis zur Einreichung zur Genehmigung",
+          "what_happens": "Die Wahl ist neu erstellt und in der ersten Einrichtungsphase. Sie können alle Einstellungen konfigurieren, Ämter erstellen und alles vorbereiten. Noch niemand kann auf die Wahl zugreifen.",
+          "actions": [
+            "Wahlnamen und -beschreibung bearbeiten",
+            "Vorgeschlagene Phasentermine konfigurieren",
+            "Erwartete Wähleranzahl festlegen",
+            "Einstellungen vor der Überprüfung vorbereiten"
+          ]
+        },
+        {
+          "number": 2,
+          "name": "Genehmigung ausstehend",
+          "icon": "⏳",
+          "description": "Warten auf Überprüfung durch das Wahlkomitee",
+          "color": "slate",
+          "triggers": "Wenn zur Genehmigung eingereicht",
+          "what_happens": "Die Wahl wurde zur Genehmigung eingereicht. Ein Wahlausschuss oder Plattform-Admin überprüft die Konfiguration. Bei Genehmigung geht es zur Phase 'Genehmigt'.",
+          "note": "Die Wahl kann hier mit einer Begründung abgelehnt werden. Sie können dann überarbeiten und erneut einreichen.",
+          "actions": [
+            "Überprüfung durch das Wahlkomitee",
+            "Genehmigen und zur nächsten Phase",
+            "Ablehnen mit Begründung"
+          ]
+        },
+        {
+          "number": 3,
+          "name": "Genehmigt",
+          "icon": "✅",
+          "description": "Wahl genehmigt, Einrichtung bereit",
+          "color": "blue",
+          "triggers": "Wenn durch das Komitee genehmigt",
+          "what_happens": "Die Wahl wurde genehmigt und geht zur Phase 'Setup Administration'. Dies ist eine kurze Übergangsphase vor der eigentlichen Konfiguration.",
+          "actions": [
+            "Übergang zur Setup Administration",
+            "Beginn der Wahlkonfiguration"
+          ]
+        },
+        {
+          "number": 4,
+          "name": "Setup Administration",
+          "icon": "⚙️",
+          "description": "Wahlstruktur und Wähler konfigurieren",
+          "color": "amber",
+          "triggers": "Nach Genehmigung, Einrichtung beginnt",
+          "what_happens": "Sie erstellen Ämter, fügen Kandidaten hinzu, konfigurieren Wähler und passen alle Einstellungen an. Wähler können noch nicht auf den Stimmzettel zugreifen.",
+          "actions": [
+            "Ämter hinzufügen oder bearbeiten",
+            "Kandidaturen erstellen und bearbeiten",
+            "Wahleinstellungen konfigurieren",
+            "Wähler importieren",
+            "Abstimmungstermine festlegen",
+            "Einstellungen frei ändern"
+          ]
+        },
+        {
+          "number": 5,
+          "name": "Setup Nominierung",
+          "icon": "📋",
+          "description": "Kandidaten bestätigen und werben",
+          "color": "amber",
+          "triggers": "Wenn Administration abgeschlossen ist",
+          "what_happens": "Die Administrationsphase ist abgeschlossen. Kandidaten überprüfen ihre Informationen. Sie können noch Anpassungen vornehmen, aber die Abstimmungstermine sind jetzt für alle sichtbar.",
+          "actions": [
+            "Kandidatenbestätigungen verwalten",
+            "Kandidaten ihre Einträge überprüfen lassen",
+            "Letzte Anpassungen an Ämtern und Kandidaten",
+            "Vorbereitung von Mitteilungen an Wähler"
+          ]
+        },
+        {
+          "number": 6,
+          "name": "Bereit für Abstimmung",
+          "icon": "🔐",
+          "description": "Wahl konfiguriert, warte auf Abstimmungsfenster",
+          "color": "teal",
+          "triggers": "Wenn Nominierung abgeschlossen ist",
+          "what_happens": "Alle Einrichtungsphasen sind abgeschlossen. Das System wartet auf den Abstimmungsbeginn. Vorbereitende Wähleroperationen (Codeerstellung, Zustimmung) sind verfügbar.",
+          "actions": [
+            "Codeerstellung durch Wähler",
+            "Zustimmungsannahme",
+            "Vorbereitung auf die Abstimmungsperiode"
+          ]
+        },
+        {
+          "number": 7,
+          "name": "Abstimmung aktiv",
+          "icon": "🗳️",
+          "description": "Wähler geben ihre Stimmen ab",
+          "color": "purple",
+          "triggers": "Wenn voting_starts_at erreicht ist",
+          "what_happens": "Die Abstimmungsperiode ist offen. Wähler sehen den Stimmzettel und können ihre Auswahl einreichen. Die konstitutionelle Engine sperrt die Abstimmung sofort bei Phasenbeginn.",
+          "actions": [
+            "Wähler greifen auf den Stimmzettel zu",
+            "Fortschritt überwachen und Live-Auszählungen einsehen",
+            "Wähler bei Fragen unterstützen",
+            "Vorbereitung zur Ergebnisveröffentlichung"
+          ],
+          "note": "Sobald die Abstimmung beginnt, erfordern Einstellungsänderungen eine explizite Bestätigung."
+        },
+        {
+          "number": 8,
+          "name": "Auszählung",
+          "icon": "📊",
+          "description": "Stimmen werden gezählt",
+          "color": "orange",
+          "triggers": "Wenn voting_ends_at erreicht ist",
+          "what_happens": "Die Abstimmung ist abgeschlossen. Der Stimmzettel ist gesperrt und neue Stimmen werden nicht akzeptiert. Ergebnisse werden tabelliert.",
+          "actions": [
+            "Stimmenzahl überprüfen und Ergebnisse validieren",
+            "Nach Unregelmäßigkeiten suchen",
+            "Beteiligten mitteilen, dass Ergebnisse bereit sind",
+            "Ergebnisse veröffentlichen"
+          ]
+        },
+        {
+          "number": 9,
+          "name": "Ergebnisse veröffentlicht",
+          "icon": "✅",
+          "description": "Ergebnisse sind veröffentlicht und überprüfbar",
+          "color": "emerald",
+          "triggers": "Wenn Ergebnisse manuell veröffentlicht werden",
+          "what_happens": "Endergebnisse sind veröffentlicht. Wähler können ihre eigenen Stimmen mit ihrem Code überprüfen. Dies ist der Endzustand des Wahllebenszyklus.",
+          "actions": [
+            "Wähler verifizieren ihre individuellen Stimmen",
+            "Öffentliche Überprüfung der Ergebnisse",
+            "Wahlunterlagen archivieren",
+            "Endberichte generieren"
+          ]
+        },
+        {
+          "number": 10,
+          "name": "Archiviert",
+          "icon": "📦",
+          "description": "Wahl archiviert, schreibgeschützt",
+          "color": "slate",
+          "triggers": "Wenn nach Ergebnissen manuell archiviert",
+          "what_happens": "Die Wahl wird archiviert und ist schreibgeschützt. Alle Daten bleiben für Prüfungszwecke erhalten. Keine weiteren Aktionen verfügbar.",
+          "actions": [
+            "Archivierte Aufzeichnungen abrufen",
+            "Prüfpfad überprüfen",
+            "Abschlussdokumentation exportieren"
+          ]
+        }
+      ]
+    },
+
+    "dates_section": {
+      "heading": "Wie Daten Phasenwechsel auslösen",
+      "description": "Wichtige Daten bestimmen, wann Ihre Wahl automatisch fortschreitet:",
+      "dates": [
+        {
+          "field": "Abstimmung beginnt am",
+          "variable": "voting_starts_at",
+          "when": "Wahl automatisch von Bereit für Abstimmung → Abstimmung aktiv",
+          "sets": "Der Anfang der Abstimmungsperiode",
+          "important": "Die Abstimmung wird sofort gesperrt, wenn diese Phase beginnt"
+        },
+        {
+          "field": "Abstimmung endet am",
+          "variable": "voting_ends_at",
+          "when": "Wahl automatisch von Abstimmung aktiv → Auszählung",
+          "sets": "Die Frist für Stimmabgaben",
+          "important": "Nach diesem Moment werden keine Stimmen mehr akzeptiert."
+        }
+      ],
+      "example": "Wenn Sie voting_starts_at = '1. März, 9:00 Uhr' und voting_ends_at = '3. März, 17:00 Uhr' festlegen, durchläuft die Wahl automatisch Bereit für Abstimmung → Abstimmung aktiv (1. März 9:00) → Auszählung (3. März 17:00)."
+    },
+
+    "permissions_section": {
+      "heading": "Was in jeder Phase möglich ist",
+      "description": "Je nach Phase stehen verschiedene Aktionen zur Verfügung. Die konstitutionelle Governance-Engine erzwingt diese Grenzen:",
+      "matrix": [
+        {
+          "action": "Wahlname/-beschreibung bearbeiten",
+          "draft": true,
+          "pending_approval": false,
+          "approved": false,
+          "setup_administration": false,
+          "setup_nomination": false,
+          "ready_for_voting": false,
+          "voting_active": false,
+          "counting": false,
+          "results_published": false,
+          "archived": false
+        },
+        {
+          "action": "Ämter hinzufügen/bearbeiten",
+          "draft": true,
+          "pending_approval": false,
+          "approved": false,
+          "setup_administration": true,
+          "setup_nomination": true,
+          "ready_for_voting": false,
+          "voting_active": false,
+          "counting": false,
+          "results_published": false,
+          "archived": false
+        },
+        {
+          "action": "Kandidaten verwalten",
+          "draft": true,
+          "pending_approval": false,
+          "approved": false,
+          "setup_administration": true,
+          "setup_nomination": true,
+          "ready_for_voting": false,
+          "voting_active": false,
+          "counting": false,
+          "results_published": false,
+          "archived": false
+        },
+        {
+          "action": "Wähler importieren",
+          "draft": false,
+          "pending_approval": false,
+          "approved": false,
+          "setup_administration": true,
+          "setup_nomination": true,
+          "ready_for_voting": true,
+          "voting_active": true,
+          "counting": false,
+          "results_published": false,
+          "archived": false
+        },
+        {
+          "action": "Einstellungen ändern",
+          "draft": true,
+          "pending_approval": false,
+          "approved": false,
+          "setup_administration": true,
+          "setup_nomination": true,
+          "ready_for_voting": true,
+          "voting_active": true,
+          "counting": true,
+          "results_published": false,
+          "archived": false
+        },
+        {
+          "action": "Zur Genehmigung einreichen",
+          "draft": true,
+          "pending_approval": false,
+          "approved": false,
+          "setup_administration": false,
+          "setup_nomination": false,
+          "ready_for_voting": false,
+          "voting_active": false,
+          "counting": false,
+          "results_published": false,
+          "archived": false
+        },
+        {
+          "action": "Einreichung genehmigen/ablehnen",
+          "draft": false,
+          "pending_approval": true,
+          "approved": false,
+          "setup_administration": false,
+          "setup_nomination": false,
+          "ready_for_voting": false,
+          "voting_active": false,
+          "counting": false,
+          "results_published": false,
+          "archived": false
+        },
+        {
+          "action": "Wähler greifen auf Stimmzettel zu",
+          "draft": false,
+          "pending_approval": false,
+          "approved": false,
+          "setup_administration": false,
+          "setup_nomination": false,
+          "ready_for_voting": false,
+          "voting_active": true,
+          "counting": false,
+          "results_published": false,
+          "archived": false
+        },
+        {
+          "action": "Ergebnisse anzeigen",
+          "draft": false,
+          "pending_approval": false,
+          "approved": false,
+          "setup_administration": false,
+          "setup_nomination": false,
+          "ready_for_voting": false,
+          "voting_active": false,
+          "counting": true,
+          "results_published": true,
+          "archived": true
+        },
+        {
+          "action": "Wähler verifizieren Stimmen",
+          "draft": false,
+          "pending_approval": false,
+          "approved": false,
+          "setup_administration": false,
+          "setup_nomination": false,
+          "ready_for_voting": false,
+          "voting_active": false,
+          "counting": false,
+          "results_published": true,
+          "archived": false
+        }
+      ]
+    },
+
+    "tips": [
+      {
+        "icon": "📅",
+        "label": "Daten strategisch festlegen",
+        "text": "Reservieren Sie ausreichend Zeit für Setup Administration und Nominierung. Sobald Sie Abstimmungsdaten festlegen, bestimmen diese den automatischen Phasenwechsel."
+      },
+      {
+        "icon": "🔒",
+        "label": "Abstimmung ist gesperrt",
+        "text": "Wenn die Abstimmung beginnt, verhindert die konstitutionelle Engine sofort weitere Kandidatenänderungen."
+      },
+      {
+        "icon": "⏰",
+        "label": "Daten verwenden Server-Zeit",
+        "text": "Alle Daten verwenden die Zeitzone des Servers."
+      },
+      {
+        "icon": "⏸️",
+        "label": "Suspendierungsüberlagerung",
+        "text": "Eine Wahl kann jederzeit suspendiert werden. Die Suspendierung pausiert alle Governance-Operationen, während der Lebenszyklusstatus erhalten bleibt."
+      }
+    ]
+  },
+
+  "section_prerequisites": {
+    "heading": "Voraussetzungen",
+    "intro": "Stellen Sie sicher, dass diese Schritte abgeschlossen sind, bevor Sie Einstellungen vornehmen:",
+    "steps": [
+      {
+        "title": "Wahl erstellt",
+        "body": "Ihre Wahl muss im System vorhanden sein, mit einem Namen, Terminen und mindestens einem Amt."
+      },
+      {
+        "title": "Wähler registriert",
+        "body": "Mitglieder müssen über den Reiter \"Wähler\" als Wahlberechtigte importiert worden sein."
+      },
+      {
+        "title": "Wahl noch nicht geöffnet",
+        "body": "Bestimmte Einstellungen – insbesondere IP-Einschränkungen und Verifizierungsmodus – sollten vor der Öffnung der Wahl konfiguriert werden."
+      }
+    ]
+  },
+
+  "section_access": {
+    "heading": "Wählerzugangskontrolle",
+    "intro": "Diese Einstellungen steuern, wo und wie oft Wähler abstimmen können.",
+
+    "ip_restriction": {
+      "heading": "IP-Adressbeschränkung",
+      "body": "Wenn aktiviert, zählt das System, wie viele Stimmen von jeder IP-Adresse abgegeben wurden, und blockiert weitere Stimmen, sobald das Limit erreicht ist.",
+      "analogy_label": "Analogie aus der Praxis",
+      "analogy": "Stellen Sie sich eine IP-Adresse wie einen physischen Abstimmungsort vor. Wenn Ihre Regel lautet: \"Jeder Tisch darf nur 4 Stimmzettel einreichen\", setzt die IP-Beschränkung mit max=4 genau das durch.",
+      "toggle_label": "Aktivieren / Deaktivieren",
+      "toggle_body": "Standardmäßig deaktiviert. Aktivieren Sie diese Option, wenn Ihre Wahl an einem gemeinsamen Ort (Büro, Gemeinschaftszentrum) stattfindet.",
+
+      "max_per_ip": {
+        "heading": "Maximale Stimmen pro IP-Adresse",
+        "body": "Legt fest, wie viele Stimmen von derselben IP-Adresse abgegeben werden dürfen. Der Standardwert ist 4.",
+        "table_caption": "Beispielkonfigurationen:",
+        "table": [
+          { "scenario": "Heimwahl (jeder Wähler am eigenen Anschluss)", "recommended": "1" },
+          { "scenario": "Kleines Büro mit 4 Computern",                 "recommended": "4" },
+          { "scenario": "Gemeindehalle mit geteiltem WLAN (20 Wähler)", "recommended": "20" },
+          { "scenario": "Keine Beschränkung notwendig (alle verifiziert)", "recommended": "Deaktivieren" }
+        ]
+      },
+
+      "whitelist": {
+        "heading": "IP-Whitelist",
+        "body": "Whitelisted IP-Adressen sind vom Stimmlimit ausgenommen. Verwenden Sie dies für vertrauenswürdige Standorte.",
+        "format_label": "Unterstützte Formate",
+        "formats": [
+          "Einzelne IP-Adresse: 192.168.1.100",
+          "CIDR-Bereich: 192.168.1.0/24 bedeutet alle Adressen von 192.168.1.0 bis 192.168.1.255",
+          "Eine Adresse oder ein Bereich pro Zeile"
+        ],
+        "cidr_tip_label": "Was ist CIDR-Notation?",
+        "cidr_tip": "CIDR ist eine kompakte Methode, um einen Bereich von IP-Adressen anzugeben. Die Zahl nach dem Schrägstrich bestimmt die Bereichsgröße: /32 = einzelne IP, /24 = 256 Adressen, /16 = 65.536 Adressen."
+      }
+    }
+  },
+
+  "section_ballot": {
+    "heading": "Stimmzetteloptionen",
+    "intro": "Diese Einstellungen steuern, was Wähler auf dem Stimmzettel sehen und wie viele Kandidaten sie auswählen müssen.",
+
+    "no_vote": {
+      "heading": "\"Keine Stimme\" / Enthaltung erlauben",
+      "body": "Wenn aktiviert, sehen Wähler bei jedem Amt eine zusätzliche Option, mit der sie sich ausdrücklich enthalten können.",
+      "when_label": "Wann verwenden",
+      "when": "Aktivieren Sie diese Option, wenn Ihre Satzung formelle Enthaltungen erlaubt und diese separat gezählt werden sollen.",
+      "label_tip": "Sie können den angezeigten Text anpassen. Häufige Optionen: \"Keine Stimme\", \"Enthalten\", \"Niemanden wählen\"."
+    },
+
+    "selection_constraint": {
+      "heading": "Auswahleinschränkung",
+      "body": "Steuert, wie viele Kandidaten ein Wähler für jedes Amt auswählen muss oder darf.",
+      "table_caption": "Alle fünf Einschränkungstypen erklärt:",
+      "table": [
+        {
+          "type": "Beliebige Anzahl",
+          "description": "Wähler können beliebig viele oder wenige Kandidaten auswählen.",
+          "example": "Offene Wahl, umfrageähnlich"
+        },
+        {
+          "type": "Genau N",
+          "description": "Wähler müssen genau die angegebene Anzahl auswählen. Mehr oder weniger wird blockiert.",
+          "example": "Genau 3 Vorstandsmitglieder wählen"
+        },
+        {
+          "type": "Zwischen min und max",
+          "description": "Wähler müssen mindestens das Minimum und höchstens das Maximum auswählen.",
+          "example": "Zwischen 2 und 5 Ausschussmitglieder"
+        },
+        {
+          "type": "Mindestens N",
+          "description": "Wähler müssen eine Mindestzahl auswählen, dürfen aber mehr wählen.",
+          "example": "Mindestens 1 Pflichtauswahl, mehr erlaubt"
+        },
+        {
+          "type": "Höchstens N",
+          "description": "Wähler dürfen bis zu der angegebenen Höchstzahl auswählen.",
+          "example": "Bis zu 4 Kandidaten"
+        }
+      ],
+      "note_label": "Hinweis",
+      "note": "Die Einschränkung gilt pro Amt. Bei mehreren Ämtern wird jedes Amt separat bewertet."
+    }
+  },
+
+  "section_verification": {
+    "heading": "Wählerverifizierung",
+    "badge": "Erweitert",
+    "intro": "Die Wählerverifizierung fügt eine Identitätsbestätigung hinzu, bevor ein Wähler auf den Stimmzettel zugreifen darf. Ein Administrator überprüft die Identität jedes Wählers (typischerweise per Videoanruf) und hält ihre IP-Adresse und/oder ihren Gerätefingerabdruck fest.",
+
+    "modes_heading": "Verifizierungsmodi",
+    "modes": [
+      {
+        "value": "none",
+        "label": "Keine (Standard)",
+        "description": "Keine individuelle Identitätsprüfung. Wähler greifen nur mit ihren Anmeldedaten auf den Stimmzettel zu."
+      },
+      {
+        "value": "ip_only",
+        "label": "Nur IP-Adresse",
+        "description": "Der Wähler muss von derselben IP-Adresse abstimmen, die bei der Identitätsprüfung erfasst wurde."
+      },
+      {
+        "value": "fingerprint_only",
+        "label": "Nur Gerätefingerabdruck",
+        "description": "Der Wähler muss dasselbe Gerät verwenden, das verifiziert wurde. Funktioniert auch wenn sich die IP-Adresse ändert."
+      },
+      {
+        "value": "both",
+        "label": "Beides – IP + Gerät",
+        "description": "Höchste Sicherheitsstufe. Wähler müssen sowohl die IP-Adresse als auch das Gerät übereinstimmen lassen."
+      }
+    ],
+
+    "workflow_heading": "Admin-Verifizierungsablauf",
+    "workflow_steps": [
+      "Öffnen Sie den Reiter \"Wähler\" für die Wahl.",
+      "Klicken Sie für jeden Wähler auf \"Verifizieren\".",
+      "Führen Sie einen Video- oder Audioanruf durch, um die Identität zu bestätigen.",
+      "Notieren Sie die aktuelle IP-Adresse des Wählers und/oder erfassen Sie den Gerätefingerabdruck.",
+      "Geben Sie diese Daten im Verifizierungsbereich ein und speichern Sie.",
+      "Der Wähler erhält den Status \"Verifiziert\" und kann abstimmen."
+    ],
+
+    "bypass_note_label": "Zusammenspiel mit IP-Beschränkung",
+    "bypass_note": "Verifizierte Wähler umgehen automatisch das IP-Stimmlimit. Dies verhindert, dass ein verifizierter Wähler blockiert wird, weil er zufällig eine IP mit einem anderen Wähler teilt."
+  },
+
+  "section_scenarios": {
+    "heading": "Typische Szenarien",
+    "intro": "Drei typische Wahlkonfigurationen als Orientierungshilfe.",
+    "scenarios": [
+      {
+        "title": "Einfache Vereinswahl",
+        "tag": "Niedrige Sicherheit",
+        "tag_color": "green",
+        "description": "Mitglieder stimmen online von zu Hause aus über mehrere Tage ab.",
+        "settings": [
+          { "setting": "IP-Beschränkung",         "value": "Aus" },
+          { "setting": "Enthaltungsoption",        "value": "Ein (optional)" },
+          { "setting": "Auswahleinschränkung",     "value": "Genau N (laut Satzung)" },
+          { "setting": "Wählerverifizierung",      "value": "Keine" }
+        ],
+        "rationale": "Jeder Wähler ist zu Hause am eigenen Anschluss. Kein IP-Problem, keine Identitätsprüfung notwendig."
+      },
+      {
+        "title": "Sichere Vorstandswahl",
+        "tag": "Hohe Sicherheit",
+        "tag_color": "red",
+        "description": "Vorstandsmitglieder stimmen persönlich von einem einzigen Büro ab.",
+        "settings": [
+          { "setting": "IP-Beschränkung",         "value": "Ein – max. 15 (Vorstandsgröße)" },
+          { "setting": "Enthaltungsoption",        "value": "Aus" },
+          { "setting": "Auswahleinschränkung",     "value": "Genau 1 pro Amt" },
+          { "setting": "Wählerverifizierung",      "value": "Nur IP-Adresse" }
+        ],
+        "rationale": "Alle Wähler teilen die Büro-Internetverbindung. IP-Beschränkung begrenzt Einreichungen. Verifizierung stellt sicher, dass nur vorab identifizierte Personen abstimmen."
+      },
+      {
+        "title": "Diaspora-Organisation",
+        "tag": "Remote + Identitätsprüfung",
+        "tag_color": "blue",
+        "description": "Mitglieder stimmen aus verschiedenen Ländern remote ab. Identität wird per Videoanruf geprüft.",
+        "settings": [
+          { "setting": "IP-Beschränkung",         "value": "Aus" },
+          { "setting": "Enthaltungsoption",        "value": "Ein" },
+          { "setting": "Auswahleinschränkung",     "value": "Höchstens N" },
+          { "setting": "Wählerverifizierung",      "value": "Beides (IP + Gerät)" }
+        ],
+        "rationale": "Wähler sind geografisch verteilt, IP-Beschränkung wäre nicht sinnvoll. Videoanruf-Verifizierung mit IP und Gerät bietet höchste Sicherheit."
+      }
+    ]
+  },
+
+  "section_faq": {
+    "heading": "Häufige Fragen",
+    "items": [
+      {
+        "question": "Kann ich Einstellungen nach dem Start der Wahl ändern?",
+        "answer": "Ja. Wenn die Wahl jedoch aktiv ist und Stimmen eingegangen sind, müssen Sie eine Bestätigung anhaken, dass die Änderung sofort wirksam wird."
+      },
+      {
+        "question": "Was passiert, wenn sich die IP-Adresse eines verifizierten Wählers ändert?",
+        "answer": "Bei Modus \"Nur IP\" oder \"Beides\" wird der Wähler blockiert. Der Administrator kann die Verifikation mit der neuen IP aktualisieren."
+      },
+      {
+        "question": "Was ist ein Gerätefingerabdruck?",
+        "answer": "Ein digitales Profil aus Browser-Einstellungen, Bildschirmauflösung und anderen technischen Signalen, das ein bestimmtes Gerät identifiziert – ohne Cookies."
+      },
+      {
+        "question": "Werden verifizierte Wähler durch IP-Beschränkungen blockiert?",
+        "answer": "Nein. Verifizierte Wähler umgehen das IP-Limit automatisch."
+      },
+      {
+        "question": "Was zeigt der Bereich \"Einstellungsverlauf\"?",
+        "answer": "Die aktuelle Versionsnummer, das letzte Speicherdatum und welcher Administrator die letzte Änderung vorgenommen hat."
+      },
+      {
+        "question": "Kann ich unterschiedliche Auswahlregeln für verschiedene Ämter festlegen?",
+        "answer": "Die Auswahleinschränkung gilt für alle Ämter der Wahl. Verwenden Sie das Feld Erforderliche Anzahl am jeweiligen Amt für individuelle Zählung."
+      }
+    ]
+  },
+
+  "back_btn": "Zu den Wahleinstellungen",
+
+  "seo": {
+    "robots": "index, follow"
+  }
+}

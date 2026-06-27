@@ -1,10 +1,7 @@
 <template>
-  <div class="org-page min-h-screen flex flex-col">
-    <PublicDigitHeader />
-    <div class="flex-1">
-
+  <PublicDigitLayout>
     <a href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:shadow-lg"
     >{{ $t('pages.organisation-show.accessibility.skip_to_main') }}</a>
     <div role="status" aria-live="polite" class="sr-only">
       {{ $t('pages.organisation-show.accessibility.page_loaded', { organisation: organisation.name }) }}
@@ -27,7 +24,7 @@
         <div class="zone__inner">
           <div class="zone__label">
             <span class="zone__label-dot zone__label-dot--slate"></span>
-            Organisation at a Glance
+            {{ $t('pages.organisation-show.stats.title') }}
           </div>
 
           <!-- Officer role banner -->
@@ -41,9 +38,10 @@
           >
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
             <span class="text-sm font-medium">
-              You are <strong class="capitalize">{{ isChief ? 'Election Chief' : isDeputy ? 'Election Deputy' : 'Election Commissioner' }}</strong>
-              <template v-if="officerElectionNames.length > 0"> for <strong>{{ officerElectionNames.join(', ') }}</strong>.</template>
-              <template v-else> for this organisation.</template>
+              {{ $t('pages.organisation-show.officer.label') }}
+              <strong class="capitalize">{{ isChief ? $t('pages.organisation-show.officer.role_chief') : isDeputy ? $t('pages.organisation-show.officer.role_deputy') : $t('pages.organisation-show.officer.role_commissioner') }}</strong>
+              <template v-if="officerElectionNames.length > 0"> {{ $t('pages.organisation-show.officer.for') }} <strong>{{ officerElectionNames.join(', ') }}</strong>.</template>
+              <template v-else> {{ $t('pages.organisation-show.officer.for_organisation') }}</template>
             </span>
           </div>
 
@@ -63,24 +61,10 @@
         <div class="zone__inner">
           <div class="zone__label">
             <span class="zone__label-dot zone__label-dot--blue"></span>
-            Member Portals
+            {{ $t('pages.organisation-show.portals.title') }}
           </div>
 
           <div class="portal-grid">
-            <!-- Membership Dashboard -->
-            <a :href="`/organisations/${organisation.slug}/membership`" class="portal-card portal-card--membership">
-              <div class="portal-card__icon-wrap portal-card__icon-wrap--membership">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-              </div>
-              <div class="portal-card__body">
-                <h3 class="portal-card__title">Membership</h3>
-                <p class="portal-card__desc">Manage your membership, fees, and renewals</p>
-              </div>
-              <div class="portal-card__arrow">→</div>
-            </a>
-
             <!-- Voter Hub -->
             <a :href="route('organisations.voter-hub', organisation.slug)" class="portal-card portal-card--voter">
               <div class="portal-card__icon-wrap portal-card__icon-wrap--voter">
@@ -89,8 +73,8 @@
                 </svg>
               </div>
               <div class="portal-card__body">
-                <h3 class="portal-card__title">Voter Hub</h3>
-                <p class="portal-card__desc">View active elections and your voting status</p>
+                <h3 class="portal-card__title">{{ $t('pages.organisation-show.portals.voter_hub') }}</h3>
+                <p class="portal-card__desc">{{ $t('pages.organisation-show.portals.voter_hub_desc') }}</p>
               </div>
               <div class="portal-card__arrow">→</div>
             </a>
@@ -106,8 +90,22 @@
                 </svg>
               </div>
               <div class="portal-card__body">
-                <h3 class="portal-card__title">Election Commission</h3>
-                <p class="portal-card__desc">Manage elections, voters, and candidates</p>
+                <h3 class="portal-card__title">{{ $t('pages.organisation-show.portals.election_commission') }}</h3>
+                <p class="portal-card__desc">{{ $t('pages.organisation-show.portals.election_commission_desc') }}</p>
+              </div>
+              <div class="portal-card__arrow">→</div>
+            </a>
+
+            <!-- Membership Dashboard -->
+            <a :href="`/organisations/${organisation.slug}/membership`" class="portal-card portal-card--membership">
+              <div class="portal-card__icon-wrap portal-card__icon-wrap--membership">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <div class="portal-card__body">
+                <h3 class="portal-card__title">{{ $t('pages.organisation-show.portals.membership') }}</h3>
+                <p class="portal-card__desc">{{ $t('pages.organisation-show.portals.membership_desc') }}</p>
               </div>
               <div class="portal-card__arrow">→</div>
             </a>
@@ -123,11 +121,14 @@
                 </svg>
               </div>
               <div class="portal-card__body">
-                <h3 class="portal-card__title">Organisation Roles</h3>
-                <p class="portal-card__desc">View roles and add role-holders as members</p>
+                <h3 class="portal-card__title">{{ $t('pages.organisation-show.portals.organisation_roles') }}</h3>
+                <p class="portal-card__desc">{{ $t('pages.organisation-show.portals.organisation_roles_desc') }}</p>
               </div>
               <div class="portal-card__arrow">→</div>
             </a>
+
+            <!-- Membership & Committees (F1: composition layer) -->
+            <MembershipWidget :membership="membership" />
           </div>
         </div>
       </div>
@@ -141,7 +142,7 @@
         <div class="zone__inner zone__inner--live">
           <div class="zone__label zone__label--light">
             <span class="zone__label-dot zone__label-dot--green"></span>
-            Live Voting
+            {{ $t('pages.organisation-show.live.title') }}
           </div>
 
           <div class="live-grid">
@@ -162,15 +163,15 @@
                 <span v-if="voterStatus(election.id) === 'voted'"
                   class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-100 px-3 py-1.5 rounded-full">
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                  Vote Cast
+                  {{ $t('pages.organisation-show.live.vote_cast') }}
                 </span>
                 <span v-else-if="voterStatus(election.id) === 'ineligible'"
                   class="inline-flex items-center gap-1.5 text-xs font-medium text-white/50 bg-white/10 px-3 py-1.5 rounded-full">
-                  Not a voter
+                  {{ $t('pages.organisation-show.live.not_a_voter') }}
                 </span>
                 <Button v-else as="a" :href="route('elections.show', election.slug)" variant="success" size="sm">
                   <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                  Vote Now
+                  {{ $t('pages.organisation-show.live.vote_now') }}
                 </Button>
                 <a v-if="canManage || isOfficer" :href="route('elections.show', election.slug)"
                   class="text-xs font-medium text-white/60 hover:text-white underline underline-offset-2 transition-colors">
@@ -191,7 +192,7 @@
         <div class="zone__inner">
           <div class="zone__label">
             <span class="zone__label-dot zone__label-dot--amber"></span>
-            Administration
+            {{ $t('pages.organisation-show.admin.title') }}
           </div>
 
           <div class="admin-stack">
@@ -206,9 +207,6 @@
               />
             </Card>
 
-            <!-- Demo Setup -->
-            <DemoSetupButton v-if="canManage && !demoStatus?.exists" :organisation="organisation" :demo-status="demoStatus" />
-
             <!-- Elections List -->
             <Card mode="admin" padding="none" class="overflow-hidden">
               <div class="admin-card-header">
@@ -219,35 +217,67 @@
                     </svg>
                   </div>
                   <div>
-                    <h2 class="text-base font-semibold text-slate-800">Elections</h2>
-                    <p v-if="elections.length > 0" class="text-xs text-slate-500">{{ elections.length }} election{{ elections.length !== 1 ? 's' : '' }}</p>
+                    <h2 class="text-base font-semibold text-slate-800">{{ $t('pages.organisation-show.elections.title') }}</h2>
+                    <p v-if="elections.length > 0" class="text-xs text-slate-500">{{ elections.length }} {{ elections.length === 1 ? $t('pages.organisation-show.elections.singular') : $t('pages.organisation-show.elections.plural') }}</p>
                   </div>
                 </div>
                 <Button v-if="canCreateElection" as="a" :href="route('organisations.elections.create', organisation.slug)" variant="primary" size="sm">
                   <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                  New Election
+                  {{ $t('pages.organisation-show.elections.new') }}
                 </Button>
               </div>
               <div v-if="elections.length > 0" class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <ElectionCard
                   v-for="election in elections" :key="election.id"
-                  :election="election" :activating-id="activatingId"
-                  :can-activate="canActivateElection && election.status === 'planned'"
+                  :election="election"
                   :can-manage="canManage || isChief || isDeputy"
                   :is-readonly="isCommissioner || (!canManage && !isOfficer)"
-                  @activate="activateElection"
                 />
               </div>
               <div v-else class="p-6">
-                <EmptyState title="No elections yet" :description="canCreateElection ? 'Create your first election to get started.' : 'Check back later for upcoming elections.'">
+                <EmptyState
+                  :title="$t('pages.organisation-show.elections.empty.title')"
+                  :description="canCreateElection ? $t('pages.organisation-show.elections.empty.create') : $t('pages.organisation-show.elections.empty.check_later')">
                   <template #icon><svg class="w-8 h-8 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg></template>
                   <template v-if="canCreateElection" #action>
                     <Button as="a" :href="route('organisations.elections.create', organisation.slug)" variant="primary">
                       <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                      Create First Election
+                      {{ $t('pages.organisation-show.elections.empty.create_first') }}
                     </Button>
                   </template>
                 </EmptyState>
+              </div>
+            </Card>
+
+            <!-- Committee Management -->
+            <Card v-if="canManage" mode="admin" padding="none" class="overflow-hidden">
+              <div class="admin-card-header">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 class="text-base font-semibold text-slate-800">{{ $t('pages.organisation-show.committees.title') }}</h2>
+                    <p class="text-xs text-slate-500">{{ $t('pages.organisation-show.committees.subtitle') }}</p>
+                  </div>
+                </div>
+                <a :href="`/organisations/${organisation.slug}/committees`"
+                  class="text-sm font-semibold text-primary-600 hover:text-primary-800 hover:underline transition-colors">{{ $t('pages.organisation-show.committees.manage') }}</a>
+              </div>
+              <div class="px-8 py-5">
+                <div class="flex items-center justify-between">
+                  <div class="text-sm text-slate-600">
+                    <p><strong>{{ $t('pages.organisation-show.committees.label') }}</strong> {{ $t('pages.organisation-show.committees.description') }}</p>
+                    <p class="text-xs text-slate-500 mt-1">{{ $t('pages.organisation-show.committees.levels') }}</p>
+                  </div>
+                  <a :href="`/organisations/${organisation.slug}/committees/create`"
+                    class="inline-flex items-center gap-1.5 px-3 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    {{ $t('pages.organisation-show.committees.new') }}
+                  </a>
+                </div>
               </div>
             </Card>
 
@@ -259,12 +289,12 @@
                     <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                   </div>
                   <div>
-                    <h2 class="text-base font-semibold text-slate-800">Election Officers</h2>
-                    <p class="text-xs text-slate-500">Manage who can oversee elections</p>
+                    <h2 class="text-base font-semibold text-slate-800">{{ $t('pages.organisation-show.officers.title') }}</h2>
+                    <p class="text-xs text-slate-500">{{ $t('pages.organisation-show.officers.subtitle') }}</p>
                   </div>
                 </div>
                 <a :href="route('organisations.election-officers.index', organisation.slug)"
-                  class="text-sm font-semibold text-blue-600 hover:text-blue-800 hover:underline transition-colors">Manage →</a>
+                  class="text-sm font-semibold text-primary-600 hover:text-primary-800 hover:underline transition-colors">{{ $t('pages.organisation-show.officers.manage') }}</a>
               </div>
               <div class="px-8 py-5">
                 <div v-if="officers && officers.length > 0" class="flex flex-wrap gap-2">
@@ -275,16 +305,18 @@
                     </div>
                     <span class="font-medium text-slate-700">{{ officer.user_name }}</span>
                     <span class="text-xs font-semibold px-1.5 py-0.5 rounded"
-                      :class="{ 'bg-emerald-100 text-emerald-700': officer.role === 'chief', 'bg-blue-100 text-blue-700': officer.role === 'deputy', 'bg-slate-100 text-slate-600': officer.role === 'commissioner' }">
+                      :class="{ 'bg-emerald-100 text-emerald-700': officer.role === 'chief', 'bg-primary-100 text-primary-700': officer.role === 'deputy', 'bg-slate-100 text-slate-600': officer.role === 'commissioner' }">
                       {{ officer.role }}
                     </span>
                   </div>
-                  <div v-if="officers.length > 6" class="flex items-center px-3 py-1.5 text-sm text-slate-500">+{{ officers.length - 6 }} more</div>
+                  <div v-if="officers.length > 6" class="flex items-center px-3 py-1.5 text-sm text-slate-500">+{{ officers.length - 6 }} {{ $t('pages.organisation-show.officers.more') }}</div>
                 </div>
-                <EmptyState v-else title="No officers appointed" description="Appoint chiefs and deputies to manage your elections.">
+                <EmptyState
+                  :title="$t('pages.organisation-show.officers.empty.title')"
+                  :description="$t('pages.organisation-show.officers.empty.description')">
                   <template #icon><svg class="w-8 h-8 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></template>
                   <template #action>
-                    <Button as="a" :href="route('organisations.election-officers.index', organisation.slug)" variant="secondary">Appoint First Officer</Button>
+                    <Button as="a" :href="route('organisations.election-officers.index', organisation.slug)" variant="secondary">{{ $t('pages.organisation-show.officers.empty.appoint') }}</Button>
                   </template>
                 </EmptyState>
               </div>
@@ -298,14 +330,14 @@
                     <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                   </div>
                   <div>
-                    <h2 class="text-base font-semibold text-slate-800">Voter Management</h2>
-                    <p class="text-xs text-slate-500">Approve or suspend election voters</p>
+                    <h2 class="text-base font-semibold text-slate-800">{{ $t('pages.organisation-show.voters.title') }}</h2>
+                    <p class="text-xs text-slate-500">{{ $t('pages.organisation-show.voters.subtitle') }}</p>
                   </div>
                 </div>
                 <div v-if="elections.length > 0" class="flex flex-col items-end gap-1">
                   <a v-for="election in elections" :key="election.id"
-                    :href="route('elections.voters.index', { organisation: organisation.slug, election: election.slug })"
-                    class="text-sm font-semibold text-blue-600 hover:text-blue-800 hover:underline transition-colors">
+                    :href="route('organisations.elections.voters', { organisation: organisation.slug, election: election.slug })"
+                    class="text-sm font-semibold text-primary-600 hover:text-primary-800 hover:underline transition-colors">
                     {{ election.name }} →
                   </a>
                 </div>
@@ -317,22 +349,25 @@
                     class="block rounded-xl bg-slate-50 border border-slate-200 p-4 text-center hover:bg-slate-100 hover:border-slate-400 hover:shadow-sm transition-all duration-200 group no-underline"
                   >
                     <p class="text-2xl font-bold text-slate-700 group-hover:text-slate-900">{{ stats?.members_count ?? 0 }}</p>
-                    <p class="text-xs text-slate-500 mt-0.5 group-hover:text-slate-700">Total Members</p>
+                    <p class="text-xs text-slate-500 mt-0.5 group-hover:text-slate-700">{{ $t('pages.organisation-show.voters.total_members') }}</p>
                   </a>
                   <a
                     :href="`/organisations/${organisation.slug}/members`"
                     class="block rounded-xl bg-emerald-50 border border-emerald-200 p-4 text-center hover:bg-emerald-100 hover:border-emerald-400 hover:shadow-sm transition-all duration-200 group no-underline"
                   >
                     <p class="text-2xl font-bold text-emerald-700 group-hover:text-emerald-900">{{ stats?.active_members_count ?? 0 }}</p>
-                    <p class="text-xs text-slate-500 mt-0.5 group-hover:text-slate-700">Active</p>
+                    <p class="text-xs text-slate-500 mt-0.5 group-hover:text-slate-700">{{ $t('pages.organisation-show.voters.active') }}</p>
                   </a>
                   <div class="rounded-xl bg-amber-50 border border-amber-200 p-4 text-center">
                     <p class="text-2xl font-bold text-amber-600">{{ stats?.active_elections_count ?? 0 }}</p>
-                    <p class="text-xs text-slate-500 mt-0.5">Live Elections</p>
+                    <p class="text-xs text-slate-500 mt-0.5">{{ $t('pages.organisation-show.voters.live_elections') }}</p>
                   </div>
                 </div>
               </div>
             </Card>
+
+            <!-- Demo Setup -->
+            <DemoSetupButton v-if="canManage && !demoStatus?.exists" :organisation="organisation" :demo-status="demoStatus" />
 
             <!-- Results Management -->
             <Card v-if="(canPublishResults || canManage) && completedElections.length > 0" mode="admin" padding="none" class="overflow-hidden">
@@ -342,8 +377,8 @@
                     <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
                   </div>
                   <div>
-                    <h2 class="text-base font-semibold text-slate-800">Results Management</h2>
-                    <p class="text-xs text-slate-500">Publish or review completed election results</p>
+                    <h2 class="text-base font-semibold text-slate-800">{{ $t('pages.organisation-show.results.title') }}</h2>
+                    <p class="text-xs text-slate-500">{{ $t('pages.organisation-show.results.subtitle') }}</p>
                   </div>
                 </div>
               </div>
@@ -351,10 +386,10 @@
                 <a v-for="election in completedElections" :key="election.id"
                   :href="`/elections/${election.slug}/management`"
                   class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg border transition-colors"
-                  :class="election.results_published ? 'border-emerald-300 text-emerald-700 hover:bg-emerald-50' : 'border-blue-300 text-blue-700 hover:bg-blue-50'">
+                  :class="election.results_published ? 'border-emerald-300 text-emerald-700 hover:bg-emerald-50' : 'border-primary-300 text-primary-700 hover:bg-primary-50'">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                   {{ election.name }}
-                  <span class="text-xs opacity-70">{{ election.results_published ? '· Published' : '· Unpublished' }}</span>
+                  <span class="text-xs opacity-70">· {{ election.results_published ? $t('pages.organisation-show.results.published') : $t('pages.organisation-show.results.unpublished') }}</span>
                 </a>
               </div>
             </Card>
@@ -380,9 +415,7 @@
       </div>
 
     </main>
-    </div>
-    <PublicDigitFooter class="px-4" />
-  </div>
+  </PublicDigitLayout>
 </template>
 
 <script setup>
@@ -390,9 +423,9 @@ import { ref, computed } from 'vue'
 import { router, usePage, Link } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import { useMeta } from '@/composables/useMeta'
+import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 
-import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
-import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import OrganizationHeader from './Partials/OrganizationHeader.vue'
 import StatsGrid from './Partials/StatsGrid.vue'
 import ActionButtons from './Partials/ActionButtons.vue'
@@ -400,6 +433,7 @@ import DemoResultsSection from './Partials/DemoResultsSection.vue'
 import SupportSection from './Partials/SupportSection.vue'
 import DemoSetupButton from './Partials/DemoSetupButton.vue'
 import ElectionCard from './Partials/ElectionCard.vue'
+import MembershipWidget from './Partials/MembershipWidget.vue'
 import Button from '@/Components/Button.vue'
 import Card from '@/Components/Card.vue'
 import SectionCard from '@/Components/SectionCard.vue'
@@ -427,13 +461,13 @@ const props = defineProps({
   orgMembers:          { type: Array, default: () => [] },
   elections:           { type: Array, default: () => [] },
   voterMemberships:    { type: Object, default: () => ({}) },
+  membership:          { type: Array, default: () => [] },
 })
 
 const page = usePage()
-const activatingId = ref(null)
 
-const activeElections    = computed(() => props.elections.filter(e => e.status === 'active'))
-const completedElections = computed(() => props.elections.filter(e => e.status === 'completed'))
+const activeElections    = computed(() => props.elections.filter(e => e.state === ElectionLifecycleStates.VOTING_ACTIVE))
+const completedElections = computed(() => props.elections.filter(e => e.state === ElectionLifecycleStates.RESULTS_PUBLISHED || e.state === ElectionLifecycleStates.ARCHIVED))
 
 const voterStatus = (electionId) => {
   const m = props.voterMemberships[electionId]
@@ -444,15 +478,6 @@ const voterStatus = (electionId) => {
 }
 
 const formatDate = (d) => d ? d.slice(0, 10) : '—'
-
-const activateElection = (electionSlug) => {
-  if (!confirm('Activate this election? Status will change to active.')) return
-  activatingId.value = electionSlug
-  router.post(route('elections.activate', { election: electionSlug }), {}, {
-    preserveScroll: true,
-    onFinish: () => { activatingId.value = null },
-  })
-}
 
 const openOfficerModal = () => {
   router.visit(route('organisations.election-officers.index', props.organisation.slug))
@@ -531,8 +556,8 @@ useMeta({
   box-shadow: 0 8px 32px rgba(6,78,59,0.18);
 }
 .zone--admin {
-  background: #f8fafc;
-  border-bottom: 1px solid #e2e8f0;
+  background: #e2e8f0;
+  border-bottom: 1px solid #cbd5e1;
 }
 .zone--support {
   background: #f1f5f9;
@@ -694,3 +719,4 @@ useMeta({
 .officer-banner--deputy      { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
 .officer-banner--commissioner { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
 </style>
+

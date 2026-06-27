@@ -66,10 +66,6 @@ import electionShowDe from './locales/pages/election/show/de.json';
 import electionShowEn from './locales/pages/election/show/en.json';
 import electionShowNp from './locales/pages/election/show/np.json';
 
-import electionDashboardDe from './locales/pages/Dashboard/ElectionDashboard/de.json';
-import electionDashboardEn from './locales/pages/Dashboard/ElectionDashboard/en.json';
-import electionDashboardNp from './locales/pages/Dashboard/ElectionDashboard/np.json';
-
 import electionNavigationDe from './locales/pages/ElectionNavigation/de.json';
 import electionNavigationEn from './locales/pages/ElectionNavigation/en.json';
 import electionNavigationNp from './locales/pages/ElectionNavigation/np.json';
@@ -166,6 +162,42 @@ import memberImportTutorialDe from './locales/pages/Organisations/Members/Import
 import memberImportTutorialEn from './locales/pages/Organisations/Members/ImportTutorial/en.json';
 import memberImportTutorialNp from './locales/pages/Organisations/Members/ImportTutorial/np.json';
 
+import committeeDe from './locales/pages/Committee/de.json';
+import committeeEn from './locales/pages/Committee/en.json';
+import committeeNp from './locales/pages/Committee/np.json';
+
+import committeeMembersDe from './locales/committee/members/de.json';
+import committeeMembersEn from './locales/committee/members/en.json';
+import committeeMembersNp from './locales/committee/members/np.json';
+
+import organisationCreateTutorialDe from './locales/pages/OrganisationCreateTutorial/de.json';
+import organisationCreateTutorialEn from './locales/pages/OrganisationCreateTutorial/en.json';
+import organisationCreateTutorialNp from './locales/pages/OrganisationCreateTutorial/np.json';
+
+import governanceLevelsDe from './locales/pages/GovernanceLevels/de.json';
+import governanceLevelsEn from './locales/pages/GovernanceLevels/en.json';
+import governanceLevelsNp from './locales/pages/GovernanceLevels/np.json';
+
+import governanceLevelsTutorialDe from './locales/pages/GovernanceLevelsTutorial/de.json';
+import governanceLevelsTutorialEn from './locales/pages/GovernanceLevelsTutorial/en.json';
+import governanceLevelsTutorialNp from './locales/pages/GovernanceLevelsTutorial/np.json';
+
+import geoUnitsDe from './locales/pages/GeoUnits/de.json';
+import geoUnitsEn from './locales/pages/GeoUnits/en.json';
+import geoUnitsNp from './locales/pages/GeoUnits/np.json';
+
+import electionArchitectureDe from './locales/pages/ElectionArchitecture/de.json';
+import electionArchitectureEn from './locales/pages/ElectionArchitecture/en.json';
+import electionArchitectureNp from './locales/pages/ElectionArchitecture/np.json';
+
+import tutorialHubDe from './locales/pages/TutorialHub/de.json';
+import tutorialHubEn from './locales/pages/TutorialHub/en.json';
+import tutorialHubNp from './locales/pages/TutorialHub/np.json';
+
+import electionSubmitForApprovalDe from './locales/pages/Election/SubmitForApproval/de.json';
+import electionSubmitForApprovalEn from './locales/pages/Election/SubmitForApproval/en.json';
+import electionSubmitForApprovalNp from './locales/pages/Election/SubmitForApproval/np.json';
+
 // Get locale from multiple sources in priority order
 function getInitialLocale() {
   // 1. Check for server-provided locale (from Inertia props - highest priority)
@@ -185,8 +217,8 @@ function getInitialLocale() {
     }
   }
 
-  // 3. Check environment variable
-  const envLocale = process.env.MIX_DEFAULT_LOCALE || 'de';
+  // 3. Check environment variable (Vite)
+  const envLocale = import.meta.env.VITE_DEFAULT_LOCALE || 'de';
   if (['de', 'en', 'np'].includes(envLocale)) {
     return envLocale;
   }
@@ -226,7 +258,7 @@ const messages = {
       'forgot-password': forgotPasswordDe,
       election: electionDe,
       'election-show': electionShowDe,
-      'election-dashboard': electionDashboardDe,
+      'election-submit-for-approval': electionSubmitForApprovalDe,
       'election-navigation': electionNavigationDe,
       'code-create': createCodeDe,
       'code-agreement': agreementDe,
@@ -251,7 +283,15 @@ const messages = {
       },
       'voter-import-tutorial': voterImportTutorialDe,
       'member-import-tutorial': memberImportTutorialDe,
+      committee: { ...committeeDe, ...committeeMembersDe.committee },
+      'organisation-create-tutorial': organisationCreateTutorialDe,
+      'governance-levels': governanceLevelsDe,
+      'geo-units': geoUnitsDe,
+      'election-architecture': electionArchitectureDe,
+      'tutorial-hub': tutorialHubDe,
     },
+    // Governance Levels Tutorial (flat-spreaded for root-level $t() access)
+    ...governanceLevelsTutorialDe,
   },
   en: {
     ...en,
@@ -280,7 +320,7 @@ const messages = {
       'forgot-password': forgotPasswordEn,
       election: electionEn,
       'election-show': electionShowEn,
-      'election-dashboard': electionDashboardEn,
+      'election-submit-for-approval': electionSubmitForApprovalEn,
       'election-navigation': electionNavigationEn,
       'code-create': createCodeEn,
       'code-agreement': agreementEn,
@@ -305,7 +345,15 @@ const messages = {
       },
       'voter-import-tutorial': voterImportTutorialEn,
       'member-import-tutorial': memberImportTutorialEn,
+      committee: { ...committeeEn, ...committeeMembersEn.committee },
+      'organisation-create-tutorial': organisationCreateTutorialEn,
+      'governance-levels': governanceLevelsEn,
+      'geo-units': geoUnitsEn,
+      'election-architecture': electionArchitectureEn,
+      'tutorial-hub': tutorialHubEn,
     },
+    // Governance Levels Tutorial (flat-spreaded for root-level $t() access)
+    ...governanceLevelsTutorialEn,
   },
   np: {
     ...np,
@@ -334,7 +382,7 @@ const messages = {
       'forgot-password': forgotPasswordNp,
       election: electionNp,
       'election-show': electionShowNp,
-      'election-dashboard': electionDashboardNp,
+      'election-submit-for-approval': electionSubmitForApprovalNp,
       'election-navigation': electionNavigationNp,
       'code-create': createCodeNp,
       'code-agreement': agreementNp,
@@ -359,7 +407,15 @@ const messages = {
       },
       'voter-import-tutorial': voterImportTutorialNp,
       'member-import-tutorial': memberImportTutorialNp,
+      committee: { ...committeeNp, ...committeeMembersNp.committee },
+      'organisation-create-tutorial': organisationCreateTutorialNp,
+      'governance-levels': governanceLevelsNp,
+      'geo-units': geoUnitsNp,
+      'election-architecture': electionArchitectureNp,
+      'tutorial-hub': tutorialHubNp,
     },
+    // Governance Levels Tutorial (flat-spreaded for root-level $t() access)
+    ...governanceLevelsTutorialNp,
   },
 };
 

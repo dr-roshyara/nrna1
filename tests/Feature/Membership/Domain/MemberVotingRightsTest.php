@@ -79,11 +79,7 @@ class MemberVotingRightsTest extends TestCase
             'user_id'         => $user->id,
             'organisation_id' => $this->org->id,
         ]);
-        UserOrganisationRole::create([
-            'user_id'         => $user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'member',
-        ]);
+        $this->assignRole($user, $this->org, 'member');
 
         return Member::factory()->create([
             'organisation_id'      => $this->org->id,

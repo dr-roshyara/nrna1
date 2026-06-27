@@ -21,6 +21,18 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // Priority 0: Organization default language (authenticated users only, highest priority)
+        if (auth()->check()) {
+            $orgLocale = auth()->user()->currentOrganisation?->default_language;
+            if ($orgLocale && $this->isValidLocale($orgLocale)) {
+                app()->setLocale($orgLocale);
+                if ($request->hasSession()) {
+                    $request->session()->put('locale', $orgLocale);
+                }
+                return $next($request);
+            }
+        }
+
         // Priority 1: locale cookie — read from $_COOKIE superglobal directly.
         // $request->cookie() decrypts via Laravel's cookie pipeline; plain JS-set cookies
         // (not encrypted by Laravel) return null even when listed in EncryptCookies $except.

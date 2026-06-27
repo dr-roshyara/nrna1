@@ -2,9 +2,14 @@ import './bootstrap';
 
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
+import { router } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy'; // Recommended way for Vue 3
+import { createPinia } from 'pinia';
 import i18n from './i18n';
+import { useGeoLocation } from './composables/useGeoLocation';
+import { useLocaleDebug } from './composables/useLocaleDebug';
+import { initializeApiClient } from './services/api';
 
 createInertiaApp({
     id: 'app',
@@ -19,6 +24,17 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         const app = createApp({ render: () => h(App, props) });
 
+        // 🔴 CRASH ON VUE WARNINGS IN DEVELOPMENT
+        // Any missing property, undefined computed, or template error will throw
+        // This catches bugs immediately instead of silently failing in production
+        if (import.meta.env.DEV) {
+            app.config.warnHandler = (msg, instance, trace) => {
+                console.error('❌ Vue Warning (will crash in dev):', msg);
+                if (trace) console.error('Trace:', trace);
+                throw new Error(`Vue Warning: ${msg}`);
+            };
+        }
+
         // Set i18n locale from server-provided locale (page.props.locale)
         // Must be done before mount so useMeta and other composables see the right locale
         const serverLocale = props.initialPage.props.locale;
@@ -29,7 +45,82 @@ createInertiaApp({
         app.use(plugin)
            .use(i18n)
            .use(ZiggyVue) // Modern way: makes route() available in templates & scripts
+           .use(createPinia()) // State management
            .mount(el);
+
+        // Initialize API client with tenant context from page props
+        // Try multiple sources since different controllers pass it differently
+        const tenantId = props.initialPage.props.organisation?.id
+          ?? props.initialPage.props.organisationId
+          ?? props.initialPage.props.auth?.user?.current_organisation_id;
+        console.log('[app.js] Initializing API client with:', {
+          tenantId,
+          organisation: props.initialPage.props.organisation,
+          organisationId: props.initialPage.props.organisationId,
+          authUser: props.initialPage.props.auth?.user ? {
+            id: props.initialPage.props.auth.user.id,
+            name: props.initialPage.props.auth.user.name,
+            current_organisation_id: props.initialPage.props.auth.user.current_organisation_id
+          } : null,
+        });
+        initializeApiClient(tenantId);
+
+        // Listen for auth expiry events from API interceptor
+        window.addEventListener('auth:expired', () => {
+          // For now, redirect to login. Future: could be modal, SSO, etc.
+          window.location.href = '/login';
+        });
+
+        // Initialize debug utilities (available in browser console during development)
+        useLocaleDebug();
+
+        // 🌍 Auto-detect user locale from geo-location (fire-and-forget, non-blocking)
+        // Always detect, but respect manual choice via LanguageSwitcher (which sets cookie)
+        // Get CSRF token from XSRF-TOKEN cookie (Laravel sets this automatically)
+        const getCsrfToken = () => {
+            const name = 'XSRF-TOKEN='
+            const decodedCookie = decodeURIComponent(document.cookie)
+            const cookieArr = decodedCookie.split(';')
+            for (let cookie of cookieArr) {
+                cookie = cookie.trim()
+                if (cookie.indexOf(name) === 0) {
+                    return decodeURIComponent(cookie.substring(name.length))
+                }
+            }
+            return ''
+        }
+
+        fetch('/api/detect-location', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': getCsrfToken(),
+                'Accept': 'application/json',
+            },
+            credentials: 'same-origin',
+            body: JSON.stringify({
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            const locale = data.locale
+            if (locale) {
+                // Check if user manually set language (LanguageSwitcher sets this cookie)
+                const cookieLocale = document.cookie
+                    .split('; ')
+                    .find(row => row.startsWith('locale='))
+                    ?.split('=')[1]
+
+                // Only apply geo-detected locale if no manual cookie choice exists
+                if (!cookieLocale) {
+                    i18n.global.locale.value = locale
+                    document.cookie = `locale=${locale};path=/;max-age=31536000`
+                    console.log('✅ Geo-location auto-detected locale:', locale)
+                }
+            }
+        })
+        .catch(err => console.error('❌ Geo-detection failed:', err))
     },
 
     // In Inertia 2.0, progress is a configuration object here.

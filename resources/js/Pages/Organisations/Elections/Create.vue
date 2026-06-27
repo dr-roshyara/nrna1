@@ -11,17 +11,43 @@
       </div>
 
       <div class="bg-white rounded-lg shadow p-8">
-        <h1 class="text-2xl font-bold text-gray-900 mb-2">{{ t.title }}</h1>
-        <p class="text-gray-500 text-sm mb-8">
-          {{ t.organisation_label }}: <span class="font-medium text-gray-700">{{ organisation.name }}</span>
+        <h1 class="text-2xl font-bold text-neutral-900 mb-2">{{ t.title }}</h1>
+        <p class="text-neutral-500 text-sm mb-8">
+          {{ t.organisation_label }}: <span class="font-medium text-neutral-700">{{ organisation.name }}</span>
         </p>
+
+        <!-- Info Banner - Election Architecture & Security -->
+        <div class="mb-6 p-4 bg-primary-50 border border-primary-200 rounded-lg">
+          <div class="flex items-start gap-3 mb-3">
+            <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <p class="text-sm text-primary-800">
+              <strong>{{ t.info_banner.title }}:</strong> {{ t.info_banner.description }}
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3 ml-8">
+            <a :href="route('public.election-architecture')" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-800 underline">
+              {{ t.info_banner.learn_architecture }}
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+            <a :href="route('public.election-security')" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-800 underline">
+              {{ t.info_banner.security_deep_dive }}
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+          </div>
+        </div>
 
         <form @submit.prevent="submit" novalidate>
 
           <!-- Name -->
           <div class="mb-6">
-            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
-              {{ t.fields.name.label }} <span class="text-red-500">*</span>
+            <label for="name" class="block text-sm font-medium text-neutral-700 mb-1">
+              {{ t.fields.name.label }} <span class="text-danger-500">*</span>
             </label>
             <input
               id="name"
@@ -30,16 +56,16 @@
               maxlength="255"
               :placeholder="t.fields.name.placeholder"
               class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              :class="errors.name ? 'border-red-400' : 'border-gray-300'"
+              :class="errors.name ? 'border-danger-400' : 'border-neutral-300'"
             />
-            <p v-if="errors.name" class="mt-1 text-sm text-red-600">{{ errors.name }}</p>
+            <p v-if="errors.name" class="mt-1 text-sm text-danger-600">{{ errors.name }}</p>
           </div>
 
           <!-- Description -->
           <div class="mb-6">
-            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">
+            <label for="description" class="block text-sm font-medium text-neutral-700 mb-1">
               {{ t.fields.description.label }}
-              <span class="text-gray-400 font-normal">{{ t.fields.description.optional }}</span>
+              <span class="text-neutral-400 font-normal">{{ t.fields.description.optional }}</span>
             </label>
             <textarea
               id="description"
@@ -47,95 +73,176 @@
               rows="3"
               maxlength="5000"
               :placeholder="t.fields.description.placeholder"
-              class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              :class="errors.description ? 'border-red-400' : 'border-gray-300'"
+              class="w-full rounded-md border border-neutral-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              :class="errors.description ? 'border-danger-400' : 'border-neutral-300'"
             />
-            <p v-if="errors.description" class="mt-1 text-sm text-red-600">{{ errors.description }}</p>
+            <p v-if="errors.description" class="mt-1 text-sm text-danger-600">{{ errors.description }}</p>
           </div>
 
-          <!-- Start Date + Time -->
-          <div class="mb-4">
-            <p class="text-sm font-medium text-gray-700 mb-2">
-              {{ t.fields.start.section }} <span class="text-red-500">*</span>
-            </p>
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <label for="start_date" class="block text-xs text-gray-500 mb-1">
-                  {{ t.fields.start.date_label }}
-                </label>
-                <input
-                  id="start_date"
-                  v-model="form.start_date"
-                  type="date"
-                  :min="today"
-                  class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  :class="errors.start_date ? 'border-red-400' : 'border-gray-300'"
-                />
-              </div>
-              <div>
-                <label for="start_time" class="block text-xs text-gray-500 mb-1">
-                  {{ t.fields.start.time_label }}
-                </label>
-                <input
-                  id="start_time"
-                  v-model="form.start_time"
-                  type="time"
-                  class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  :class="errors.start_date ? 'border-red-400' : 'border-gray-300'"
-                />
-              </div>
+          <!-- Expected Voters -->
+          <div class="mb-6">
+            <label for="expected_voter_count" class="block text-sm font-medium text-neutral-700 mb-1">
+              {{ t.fields.expected_voter_count.label }} <span class="text-danger-500">*</span>
+            </label>
+            <input
+              id="expected_voter_count"
+              v-model.number="form.expected_voter_count"
+              type="number"
+              min="1"
+              max="10000"
+              :placeholder="t.fields.expected_voter_count.placeholder || 'e.g. 50'"
+              class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              :class="errors.expected_voter_count ? 'border-danger-400' : 'border-neutral-300'"
+            />
+            <p v-if="errors.expected_voter_count" class="mt-1 text-sm text-danger-600">{{ errors.expected_voter_count }}</p>
+
+            <!-- Approval warning -->
+            <div
+              v-if="form.expected_voter_count > 40"
+              class="mt-2 p-3 bg-amber-50 border border-amber-200 rounded-lg"
+            >
+              <p class="text-sm text-amber-800">
+                ⚠️ {{ t.fields.expected_voter_count.approval_warning }}
+              </p>
             </div>
-            <p v-if="errors.start_date" class="mt-1 text-sm text-red-600">{{ errors.start_date }}</p>
+
+            <!-- Help text -->
+            <p class="mt-1 text-xs text-neutral-400">
+              {{ t.fields.expected_voter_count.help }}
+            </p>
           </div>
 
-          <!-- End Date + Time -->
-          <div class="mb-8">
-            <p class="text-sm font-medium text-gray-700 mb-2">
-              {{ t.fields.end.section }} <span class="text-red-500">*</span>
+          <!-- Timezone (optional) -->
+          <div class="mb-6">
+            <label for="timezone" class="block text-sm font-medium text-neutral-700 mb-1">
+              {{ t.fields.timezone.label }}
+              <span class="text-neutral-400 font-normal">{{ t.fields.timezone.optional }}</span>
+            </label>
+            <input
+              id="timezone"
+              v-model="form.timezone"
+              list="timezone-list"
+              type="text"
+              autocomplete="off"
+              :placeholder="t.fields.timezone.placeholder"
+              class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              :class="errors.timezone ? 'border-danger-400' : 'border-neutral-300'"
+            />
+            <datalist id="timezone-list">
+              <option v-for="tz in allTimezones" :key="tz" :value="tz" />
+            </datalist>
+            <p v-if="errors.timezone" class="mt-1 text-sm text-danger-600">{{ errors.timezone }}</p>
+            <p class="mt-1 text-xs text-neutral-400">
+              {{ t.fields.timezone.help }}
             </p>
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <label for="end_date" class="block text-xs text-gray-500 mb-1">
-                  {{ t.fields.end.date_label }}
-                </label>
-                <input
-                  id="end_date"
-                  v-model="form.end_date"
-                  type="date"
-                  :min="form.start_date || today"
-                  class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  :class="errors.end_date ? 'border-red-400' : 'border-gray-300'"
-                />
-              </div>
-              <div>
-                <label for="end_time" class="block text-xs text-gray-500 mb-1">
-                  {{ t.fields.end.time_label }}
-                </label>
-                <input
-                  id="end_time"
-                  v-model="form.end_time"
-                  type="time"
-                  class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  :class="errors.end_date ? 'border-red-400' : 'border-gray-300'"
-                />
+          </div>
+
+          <!-- STATE MACHINE PHASE DATES SECTION -->
+          <div class="border-t pt-8 mb-8">
+            <h3 class="text-lg font-semibold text-neutral-900 mb-6">{{ t.phases.timeline_title }}</h3>
+            <p class="text-sm text-neutral-500 mb-6">{{ t.phases.timeline_subtitle }}</p>
+
+            <!-- Administration Phase -->
+            <div class="mb-8 p-4 bg-primary-50 rounded-lg border border-primary-200">
+              <h4 class="text-sm font-semibold text-primary-900 mb-4">{{ t.phases.administration.title }}</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">{{ t.phases.administration.start_label }}</label>
+                  <input
+                    v-model="form.administration_suggested_start"
+                    type="datetime-local"
+                    class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    :class="errors.administration_suggested_start ? 'border-danger-400' : 'border-neutral-300'"
+                  />
+                  <p v-if="errors.administration_suggested_start" class="mt-1 text-xs text-danger-600">{{ errors.administration_suggested_start }}</p>
+                </div>
+                <div>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">{{ t.phases.administration.end_label }}</label>
+                  <input
+                    v-model="form.administration_suggested_end"
+                    type="datetime-local"
+                    class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    :class="errors.administration_suggested_end ? 'border-danger-400' : 'border-neutral-300'"
+                  />
+                  <p v-if="errors.administration_suggested_end" class="mt-1 text-xs text-danger-600">{{ errors.administration_suggested_end }}</p>
+                </div>
               </div>
             </div>
-            <p v-if="errors.end_date" class="mt-1 text-sm text-red-600">{{ errors.end_date }}</p>
-            <p v-if="clientDateError" class="mt-1 text-sm text-red-600">{{ clientDateError }}</p>
+
+            <!-- Nomination Phase -->
+            <div class="mb-8 p-4 bg-green-50 rounded-lg border border-green-200">
+              <h4 class="text-sm font-semibold text-green-900 mb-4">{{ t.phases.nomination.title }}</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">{{ t.phases.nomination.start_label }}</label>
+                  <input
+                    v-model="form.nomination_suggested_start"
+                    type="datetime-local"
+                    class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                    :class="errors.nomination_suggested_start ? 'border-danger-400' : 'border-neutral-300'"
+                  />
+                  <p v-if="errors.nomination_suggested_start" class="mt-1 text-xs text-danger-600">{{ errors.nomination_suggested_start }}</p>
+                </div>
+                <div>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">{{ t.phases.nomination.end_label }}</label>
+                  <input
+                    v-model="form.nomination_suggested_end"
+                    type="datetime-local"
+                    class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                    :class="errors.nomination_suggested_end ? 'border-danger-400' : 'border-neutral-300'"
+                  />
+                  <p v-if="errors.nomination_suggested_end" class="mt-1 text-xs text-danger-600">{{ errors.nomination_suggested_end }}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Voting Phase -->
+            <div class="mb-8 p-4 bg-purple-50 rounded-lg border border-purple-200">
+              <h4 class="text-sm font-semibold text-purple-900 mb-4">{{ t.phases.voting.title }}</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">{{ t.phases.voting.start_label }}</label>
+                  <input
+                    v-model="form.voting_starts_at"
+                    type="datetime-local"
+                    :placeholder="t.phases.voting.start_placeholder"
+                    class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    :class="errors.voting_starts_at ? 'border-danger-400' : 'border-neutral-300'"
+                  />
+                  <p v-if="errors.voting_starts_at" class="mt-1 text-xs text-danger-600">{{ errors.voting_starts_at }}</p>
+                </div>
+                <div>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">{{ t.phases.voting.end_label }}</label>
+                  <input
+                    v-model="form.voting_ends_at"
+                    type="datetime-local"
+                    :placeholder="t.phases.voting.end_placeholder"
+                    class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    :class="errors.voting_ends_at ? 'border-danger-400' : 'border-neutral-300'"
+                  />
+                  <p v-if="errors.voting_ends_at" class="mt-1 text-xs text-danger-600">{{ errors.voting_ends_at }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase Dates Error -->
+          <div v-if="phasesDatesError" class="mb-6 rounded-lg bg-danger-50 border border-danger-200 p-4 text-danger-800 text-sm">
+            {{ phasesDatesError }}
           </div>
 
           <!-- Actions -->
           <div class="flex items-center justify-between">
             <a
               :href="route('organisations.show', organisation.slug)"
-              class="text-sm text-gray-500 hover:text-gray-700 underline"
+              class="text-sm text-neutral-500 hover:text-neutral-700 underline"
             >
               {{ t.actions.cancel }}
             </a>
             <button
               type="submit"
-              :disabled="isLoading || !!clientDateError"
-              class="rounded-md bg-blue-600 px-6 py-2 text-sm font-semibold text-white shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              :disabled="isLoading || !!phasesDatesError"
+              class="rounded-md bg-primary-600 px-6 py-2 text-sm font-semibold text-white shadow hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {{ isLoading ? t.actions.submitting : t.actions.submit }}
             </button>
@@ -148,9 +255,10 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, onMounted } from 'vue'
 import { router, usePage } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
+import { route } from 'ziggy-js'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 
 import pageDe from '@/locales/pages/Organisations/Elections/Create/de.json'
@@ -170,37 +278,102 @@ const { locale } = useI18n()
 const pageData = { de: pageDe, en: pageEn, np: pageNp }
 const t = computed(() => pageData[locale.value] ?? pageData.de)
 
-// Today's date in YYYY-MM-DD for the min attribute
-const today = new Date().toISOString().split('T')[0]
-
 const form = reactive({
   name:        '',
   description: '',
-  start_date:  '',
-  start_time:  '08:00',
-  end_date:    '',
-  end_time:    '20:00',
+  expected_voter_count: 1,
+  timezone: '',
+  administration_suggested_start: '',
+  administration_suggested_end: '',
+  nomination_suggested_start: '',
+  nomination_suggested_end: '',
+  voting_starts_at: '',
+  voting_ends_at: '',
 })
 
-// Client-side: end datetime must be after start datetime
-const clientDateError = computed(() => {
-  if (!form.start_date || !form.end_date) return null
-  const start = new Date(`${form.start_date}T${form.start_time || '00:00'}`)
-  const end   = new Date(`${form.end_date}T${form.end_time   || '23:59'}`)
-  if (end <= start) return t.value.validation.end_after_start
+// Timezone: generate all IANA timezones from browser API, fallback for unsupported browsers
+const allTimezones = computed(() => {
+  if (typeof Intl !== 'undefined' && Intl.supportedValuesOf) {
+    return Intl.supportedValuesOf('timeZone')
+  }
+  return [
+    'UTC', 'Europe/Berlin', 'Europe/London', 'Asia/Kathmandu',
+    'America/New_York', 'America/Chicago', 'America/Denver', 'America/Los_Angeles',
+  ]
+})
+
+// Auto-detect user timezone on mount
+onMounted(() => {
+  if (!form.timezone && Intl.DateTimeFormat) {
+    form.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+  }
+})
+
+// Client-side: phase dates validation (relaxed — only block if dates provided AND invalid)
+const phasesDatesError = computed(() => {
+  // Only validate phases if they are actually filled in
+  // If some fields are empty, that's OK — dates are optional at creation
+
+  // Admin phase: validate only if BOTH start AND end are provided
+  if (form.administration_suggested_start && form.administration_suggested_end) {
+    const adminStart = new Date(form.administration_suggested_start)
+    const adminEnd = new Date(form.administration_suggested_end)
+    if (adminEnd <= adminStart) return t.value.validation.admin_end_after_start
+  }
+
+  // Nomination phase: validate only if BOTH start AND end are provided
+  if (form.nomination_suggested_start && form.nomination_suggested_end) {
+    const nomStart = new Date(form.nomination_suggested_start)
+    const nomEnd = new Date(form.nomination_suggested_end)
+    if (nomEnd <= nomStart) return t.value.validation.nom_end_after_start
+  }
+
+  // Voting phase: validate only if BOTH start AND end are provided
+  if (form.voting_starts_at && form.voting_ends_at) {
+    const votStart = new Date(form.voting_starts_at)
+    const votEnd = new Date(form.voting_ends_at)
+    if (votEnd <= votStart) return t.value.validation.vote_end_after_start
+  }
+
+  // Chronological order: validate only if adjacent phases are both filled
+  if (form.administration_suggested_end && form.nomination_suggested_start) {
+    const adminEnd = new Date(form.administration_suggested_end)
+    const nomStart = new Date(form.nomination_suggested_start)
+    if (nomStart < adminEnd) return t.value.validation.nom_after_admin
+  }
+
+  if (form.nomination_suggested_end && form.voting_starts_at) {
+    const nomEnd = new Date(form.nomination_suggested_end)
+    const votStart = new Date(form.voting_starts_at)
+    if (votStart < nomEnd) return t.value.validation.vote_after_nom
+  }
+
   return null
 })
 
 const submit = () => {
-  if (clientDateError.value) return
+  if (phasesDatesError.value) return
   isLoading.value = true
+
+  // Derive election dates from phase dates
+  const adminStart = form.administration_suggested_start ? new Date(form.administration_suggested_start) : null
+  const votEnd = form.voting_ends_at ? new Date(form.voting_ends_at) : null
+
   router.post(
     route('organisations.elections.store', props.organisation.slug),
     {
       name:        form.name,
       description: form.description,
-      start_date:  `${form.start_date} ${form.start_time || '00:00'}:00`,
-      end_date:    `${form.end_date} ${form.end_time || '23:59'}:00`,
+      expected_voter_count: form.expected_voter_count,
+      timezone:    form.timezone,
+      start_date: adminStart ? adminStart.toISOString().split('T')[0] : '',
+      end_date: votEnd ? votEnd.toISOString().split('T')[0] : '',
+      administration_suggested_start: form.administration_suggested_start,
+      administration_suggested_end: form.administration_suggested_end,
+      nomination_suggested_start: form.nomination_suggested_start,
+      nomination_suggested_end: form.nomination_suggested_end,
+      voting_starts_at: form.voting_starts_at,
+      voting_ends_at: form.voting_ends_at,
     },
     {
       preserveScroll: true,
@@ -209,3 +382,4 @@ const submit = () => {
   )
 }
 </script>
+

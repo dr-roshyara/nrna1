@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Traits\BelongsToTenant;
 
 class Voter extends Model
 {
-    use HasUuids, SoftDeletes, BelongsToTenant;
+    use HasUuids, SoftDeletes, BelongsToTenant, HasFactory;
 
     protected $fillable = [
         'organisation_id',

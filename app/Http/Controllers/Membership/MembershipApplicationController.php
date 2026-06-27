@@ -15,6 +15,16 @@ use App\Models\OrganisationUser;
 use App\Models\User;
 use App\Models\UserOrganisationRole;
 use App\Policies\MembershipPolicy;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
+use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
+use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
+use App\Contexts\Membership\Domain\Application\ApplicationId;
+use App\Contexts\Membership\Application\Application\UseCases\SubmitMembershipApplication;
+use App\Contexts\Membership\Application\Application\UseCases\RejectMembershipApplication;
+use App\Contexts\Membership\Application\Application\UseCases\ApproveMembershipApplication;
+use App\Contexts\Membership\Application\Application\DTOs\SubmitMembershipApplicationCommand;
+use App\Contexts\Membership\Application\Application\DTOs\ApproveMembershipApplicationCommand;
+use Carbon\CarbonImmutable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -43,8 +53,11 @@ class MembershipApplicationController extends Controller
 
     // ── store ─────────────────────────────────────────────────────────────────
 
-    public function store(Request $request, Organisation $organisation): RedirectResponse
-    {
+    public function store(
+        Request $request,
+        Organisation $organisation,
+        SubmitMembershipApplication $submitMembershipApplication
+    ): RedirectResponse {
         $validated = $request->validate([
             'membership_type_id'  => ['required', 'uuid'],
             'application_data'    => ['nullable', 'array'],
@@ -53,9 +66,6 @@ class MembershipApplicationController extends Controller
         $user = $request->user();
 
         // Guard: user is already an active member of this organisation.
-        // Both OrganisationUser and Member use BelongsToTenant, so we bypass
-        // global scopes here — the /apply route runs without ensure.organisation
-        // middleware, meaning current_organisation_id is not yet in session.
         $alreadyMember = OrganisationUser::withoutGlobalScopes()
             ->where('organisation_id', $organisation->id)
             ->where('user_id', $user->id)
@@ -71,7 +81,7 @@ class MembershipApplicationController extends Controller
             return back()->withErrors(['error' => 'You are already an active member of this organisation.']);
         }
 
-        // Guard: user already has a pending application (match by user_id OR email)
+        // Guard: user already has a pending application
         $hasPending = MembershipApplication::withoutGlobalScopes()
             ->where('organisation_id', $organisation->id)
             ->whereIn('status', ['draft', 'submitted', 'under_review'])
@@ -95,19 +105,21 @@ class MembershipApplicationController extends Controller
             return back()->withErrors(['membership_type_id' => 'The selected membership type is not available.']);
         }
 
-        MembershipApplication::create([
-            'id'                  => (string) Str::uuid(),
-            'organisation_id'     => $organisation->id,
-            'user_id'             => $user->id,
-            'membership_type_id'  => $type->id,
-            'status'              => 'submitted',
-            'application_data'    => $validated['application_data'] ?? null,
-            'expires_at'          => now()->addDays(config('membership.application_expiry_days', 30)),
-            'submitted_at'        => now(),
-        ]);
+        try {
+            $command = SubmitMembershipApplicationCommand::fromRequest(
+                $organisation->id,
+                $user->id,
+                $validated['membership_type_id'],
+                $validated['application_data'] ?? null
+            );
 
-        return redirect()->route('organisations.voter-hub', $organisation->slug)
-            ->with('success', 'Your membership application has been submitted.');
+            $submitMembershipApplication->execute($command);
+
+            return redirect()->route('organisations.voter-hub', $organisation->slug)
+                ->with('success', 'Your membership application has been submitted.');
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'Failed to submit application: ' . $e->getMessage()]);
+        }
     }
 
     // ── index ─────────────────────────────────────────────────────────────────
@@ -154,9 +166,17 @@ class MembershipApplicationController extends Controller
 
     // ── approve ───────────────────────────────────────────────────────────────
 
-    public function approve(Request $request, Organisation $organisation, MembershipApplication $application): RedirectResponse
-    {
+    public function approve(
+        Request $request,
+        Organisation $organisation,
+        string $application,
+        ApproveMembershipApplication $approveMembershipApplication
+    ): RedirectResponse {
         $this->authorizeForOrg($request->user(), $organisation, 'approveApplication');
+
+        $application = MembershipApplication::where('id', $application)
+            ->where('organisation_id', $organisation->id)
+            ->firstOrFail();
 
         abort_if($application->organisation_id !== $organisation->id, 404);
 
@@ -164,10 +184,11 @@ class MembershipApplicationController extends Controller
             return back()->withErrors(['error' => 'This application has already been processed.']);
         }
 
-        // Public applications: admin must select a membership type at approval
+        // Public applications: admin must select a membership type and committee at approval
         if ($application->isPublicApplication()) {
             $request->validate([
                 'membership_type_id' => ['required', 'uuid'],
+                'committee_id'       => ['nullable', 'uuid'],
             ]);
 
             $selectedType = MembershipType::where('id', $request->membership_type_id)
@@ -175,7 +196,7 @@ class MembershipApplicationController extends Controller
                 ->where('is_active', true)
                 ->first();
 
-            if (! $selectedType) {
+            if (!$selectedType) {
                 return back()->withErrors(['membership_type_id' => 'The selected membership type is not available.']);
             }
 
@@ -184,7 +205,14 @@ class MembershipApplicationController extends Controller
         }
 
         try {
-            DB::transaction(function () use ($application, $request, $organisation) {
+            \Log::info('MembershipApplicationController::approve - starting approval', [
+                'application_id' => $application->id,
+                'organisation_id' => $organisation->id,
+            ]);
+
+            DB::transaction(function () use ($application, $request, $organisation, $approveMembershipApplication) {
+                $user = null;
+
                 // For public applications, link or create the user account
                 if ($application->isPublicApplication()) {
                     $data = $application->application_data ?? [];
@@ -192,7 +220,7 @@ class MembershipApplicationController extends Controller
                     // Re-use existing account if the email is already registered
                     $user = User::where('email', $application->applicant_email)->first();
 
-                    if (! $user) {
+                    if (!$user) {
                         $user = User::create([
                             'id'              => (string) Str::uuid(),
                             'organisation_id' => $organisation->id,
@@ -214,9 +242,10 @@ class MembershipApplicationController extends Controller
 
                     $application->update(['user_id' => $user->id]);
                     $application->refresh();
+                } else {
+                    // For regular applications, fetch the applicant user
+                    $user = User::findOrFail($application->user_id);
                 }
-
-                $application->approve($request->user()->id);
 
                 $type = $application->membershipType;
 
@@ -233,7 +262,7 @@ class MembershipApplicationController extends Controller
                     ]
                 );
 
-                // Create UserOrganisationRole only if no role exists yet (owner/admin takes precedence)
+                // Create UserOrganisationRole
                 UserOrganisationRole::withoutGlobalScopes()->firstOrCreate(
                     [
                         'organisation_id' => $organisation->id,
@@ -245,42 +274,49 @@ class MembershipApplicationController extends Controller
                     ]
                 );
 
-                // Create Member
-                $expiresAt = $type->duration_months
-                    ? now()->addMonths($type->duration_months)
-                    : null;
+                // DDD: Execute use case to create Member and Fee aggregates
+                $committeeId = $request->filled('committee_id')
+                    ? CommitteeId::fromString($request->committee_id)
+                    : CommitteeId::generate();
 
-                $member = Member::create([
-                    'id'                    => (string) Str::uuid(),
-                    'organisation_id'       => $organisation->id,
-                    'organisation_user_id'  => $orgUser->id,
-                    'membership_type_id'    => $type->id,
-                    'membership_number'     => 'M' . strtoupper(Str::random(8)),
-                    'status'                => 'active',
-                    'fees_status'           => 'unpaid',
-                    'joined_at'             => now(),
-                    'membership_expires_at' => $expiresAt,
-                    'created_by'            => $request->user()->id,
+                $command = new ApproveMembershipApplicationCommand(
+                    applicationId: ApplicationId::fromString($application->id),
+                    tenantId: TenantId::fromOrganisationId($organisation->id),
+                    userId: $application->user_id,
+                    organisationUserId: $orgUser->id,
+                    name: $user->name,
+                    email: $user->email,
+                    phone: $user->telephone,
+                    committeeId: $committeeId,
+                    membershipTypeId: MembershipTypeId::fromString($type->id),
+                    membershipFeeAmount: (float) $type->fee_amount,
+                    feeDueDate: CarbonImmutable::now()->addMonths($type->duration_months ?? 12)
+                );
+
+                \Log::info('MembershipApplicationController::approve - executing use case', [
+                    'application_id' => $application->id,
                 ]);
 
-                // Create pending fee (fee snapshot)
-                MembershipFee::create([
-                    'id'                  => (string) Str::uuid(),
-                    'organisation_id'     => $organisation->id,
-                    'member_id'           => $member->id,
-                    'membership_type_id'  => $type->id,
-                    'amount'              => $type->fee_amount,
-                    'currency'            => $type->fee_currency,
-                    'fee_amount_at_time'  => $type->fee_amount,
-                    'currency_at_time'    => $type->fee_currency,
-                    'status'              => 'pending',
-                    'recorded_by'         => $request->user()->id,
+                $approveMembershipApplication->execute($command);
+
+                \Log::info('MembershipApplicationController::approve - use case executed successfully', [
+                    'application_id' => $application->id,
                 ]);
 
-                event(new MembershipApplicationApproved($application));
+                event(new MembershipApplicationApproved($application->fresh()));
             });
         } catch (ApplicationAlreadyProcessedException) {
+            \Log::warning('MembershipApplicationController::approve - already processed', [
+                'application_id' => $application->id,
+            ]);
             return back()->withErrors(['error' => 'This application was already processed by another administrator.']);
+        } catch (\Exception $e) {
+            \Log::error('MembershipApplicationController::approve - exception', [
+                'application_id' => $application->id,
+                'error' => $e->getMessage(),
+                'exception' => $e,
+            ]);
+            return back()->withErrors(['error' => 'Failed to approve application: ' . $e->getMessage()]);
         }
 
         return redirect()->route('organisations.membership.applications.index', $organisation->slug)
@@ -289,9 +325,17 @@ class MembershipApplicationController extends Controller
 
     // ── reject ────────────────────────────────────────────────────────────────
 
-    public function reject(Request $request, Organisation $organisation, MembershipApplication $application): RedirectResponse
-    {
+    public function reject(
+        Request $request,
+        Organisation $organisation,
+        string $application,
+        RejectMembershipApplication $rejectMembershipApplication
+    ): RedirectResponse {
         $this->authorizeForOrg($request->user(), $organisation, 'rejectApplication');
+
+        $application = MembershipApplication::where('id', $application)
+            ->where('organisation_id', $organisation->id)
+            ->firstOrFail();
 
         abort_if($application->organisation_id !== $organisation->id, 404);
 
@@ -304,14 +348,24 @@ class MembershipApplicationController extends Controller
         ]);
 
         try {
-            $application->reject($request->user()->id, $validated['rejection_reason']);
-            event(new MembershipApplicationRejected($application));
+            $applicationId = \App\Contexts\Membership\Domain\Application\ApplicationId::fromString($application->id);
+            $tenantId = TenantId::fromOrganisationId($organisation->id);
+
+            $rejectMembershipApplication->execute(
+                $applicationId,
+                $tenantId,
+                $validated['rejection_reason']
+            );
+
+            event(new MembershipApplicationRejected($application->fresh()));
+
+            return redirect()->route('organisations.membership.applications.index', $organisation->slug)
+                ->with('success', 'Application rejected.');
         } catch (ApplicationAlreadyProcessedException) {
             return back()->withErrors(['error' => 'This application was already processed by another administrator.']);
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'Failed to reject application: ' . $e->getMessage()]);
         }
-
-        return redirect()->route('organisations.membership.applications.index', $organisation->slug)
-            ->with('success', 'Application rejected.');
     }
 
     // ── helpers ───────────────────────────────────────────────────────────────

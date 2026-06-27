@@ -1,0 +1,48 @@
+# Engineering Knowledge Platform (EKP) — Ownership & Governance
+# Extends the repository-root OWNERS model to the knowledge base.
+# Ownership is by domain expertise, not person-wide. Mirrors the design-system governance pattern.
+
+## Knowledge Manager (platform-wide)
+
+**Knowledge Manager:** nab.raj.sharma
+**Backup:** (to assign)
+
+Responsible for: schema/ vocabularies, lifecycle governance, lint rules, archive decisions,
+and the quarterly knowledge audit.
+
+## Domain owners (docs/knowledge/domains/<context>/)
+
+| Bounded context | Owner | Notes |
+|---|---|---|
+| adjudication | nab.raj.sharma | Pilot domain |
+| membership   | (to assign)    | Largest context |
+| governance   | (to assign)    | |
+| contestation | (to assign)    | |
+| elections / election | (to assign) | |
+| geography    | (to assign)    | |
+| committee    | (to assign)    | |
+| finance      | (to assign)    | stub |
+| trust        | (to assign)    | stub |
+| shared       | nab.raj.sharma | |
+
+## Approval requirements (mirrors lifecycle transition roles)
+
+| Change | Required approver(s) | Rationale |
+|---|---|---|
+| Edit `schema/*.yaml` (vocabularies) | Knowledge Manager | Vocabulary changes affect every doc + the linter |
+| Move a doc to `status: approved` | Peer reviewer + (ARB / Chief Architect) | Quality gates must pass |
+| Move a doc to `status: baseline`/`frozen` | Knowledge Manager / Governance Board | Becomes canonical / change-controlled |
+| Edit a `status: frozen` doc | Approved ADR required | Change control |
+| Edit `Knowledge-Constitution.md` | ADR + ARB | Constitutional change |
+
+## Review cadence
+
+- Authoritative docs carry `next_review`; overdue reviews are flagged by `knowledge-lint`.
+- Quarterly knowledge audit by the Knowledge Manager: orphans, duplicate authority, stale baselines, archive candidates.
+
+## Rules
+
+- Nothing becomes `authority: authoritative` without a recorded review (`reviewed_by`).
+- AI-generated docs enter as `authority: generated` and require human review to be promoted.
+- Exactly one authoritative document per (topic, bounded_context).
+- Archive (never delete) obsolete, superseded, and duplicate material.

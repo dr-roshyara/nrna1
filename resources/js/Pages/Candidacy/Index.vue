@@ -3,8 +3,8 @@
     <app-layout> 
          <!-- {{candidacies}}  -->
         <div class="py-2 flex flex-row justify-between "> 
-            <Link  v-if="candidacies.prev_page_url" class="m-2 px-2 py-2 bg-gray-300 rounded-sm" :href="candidacies.prev_page_url" >Previous Page </Link> 
-            <Link  v-if="candidacies.next_page_url" class="m-2 px-2 py-2 bg-gray-300 rounded-sm" :href="candidacies.next_page_url">Next Page </Link> 
+            <Link  v-if="candidacies.prev_page_url" class="m-2 px-2 py-2 bg-neutral-300 rounded-sm" :href="candidacies.prev_page_url" >Previous Page </Link> 
+            <Link  v-if="candidacies.next_page_url" class="m-2 px-2 py-2 bg-neutral-300 rounded-sm" :href="candidacies.next_page_url">Next Page </Link> 
         </div>
      <pagination class="mt-10" :links="candidacies.links" />
 
@@ -39,7 +39,7 @@
      <!-- here is the body of the table  -->
        <template #body>
       <tr v-for="(candidacy, candiIndx) in candidacies.data" :key="candiIndx"
-          :class="[{'bg-gray-100':candiIndx%2==0}, p-1]"    
+          :class="[{'bg-neutral-100':candiIndx%2==0}, p-1]"    
       >
         <td class="border-r border-green-200" >{{ candiIndx+1 }}</td>
         <td class="border-r border-green-200" v-show="showColumn('candidacy_id')">{{ candidacy.candidacy_id}}</td>
@@ -91,3 +91,4 @@ export default {
     
 }
 </script>
+

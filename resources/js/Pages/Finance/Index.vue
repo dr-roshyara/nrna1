@@ -6,7 +6,7 @@
                 the financial report, you can do so by clicking on the
                 corresponding links?
             </div>
-            <div class="mx-auto py-2 text-gray-800">
+            <div class="mx-auto py-2 text-neutral-800">
                 <div class="border-b-slate-200 py-2">
                     <p class="mx-auto mb-1 text-left text-xl">
                         For income statement
@@ -44,3 +44,4 @@ export default {
     },
 };
 </script>
+

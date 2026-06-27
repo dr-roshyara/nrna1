@@ -36,7 +36,7 @@ const paddingMap = {
 }
 
 const classes = computed(() => [
-  'rounded-xl transition-all duration-200',
+  'rounded-lg transition-all duration-200',
   modeMap[props.mode]       ?? modeMap.default,
   variantMap[props.variant] ?? '',
   paddingMap[props.padding] ?? paddingMap.md,

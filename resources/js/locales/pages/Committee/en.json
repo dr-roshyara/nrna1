@@ -1,1 +1,201 @@
-{}
+{
+  "create": {
+    "title": "Create Committee",
+    "form": {
+      "name": "Committee Name",
+      "name_placeholder": "e.g., Central Committee",
+      "code": "Committee Code",
+      "code_placeholder": "e.g., NC-001",
+      "slug": "URL Slug",
+      "slug_placeholder": "committee-name",
+      "type": "Committee Type",
+      "type_label": "Select a committee type",
+      "geo_reference": "Geographic Reference",
+      "geo_placeholder": "e.g., np.1.12 (optional)"
+    },
+    "button_create": "Create Committee",
+    "button_cancel": "Cancel",
+    "messages": {
+      "success": "Committee created successfully",
+      "error": "Failed to create committee",
+      "name_required": "Committee name is required",
+      "code_required": "Committee code is required",
+      "type_required": "Committee type is required"
+    }
+  },
+  "edit": {
+    "title": "Edit Committee",
+    "form": {
+      "name": "Committee Name",
+      "status": "Status",
+      "status_active": "Active",
+      "status_inactive": "Inactive"
+    },
+    "button_update": "Update Committee",
+    "button_cancel": "Cancel",
+    "messages": {
+      "success": "Committee updated successfully",
+      "error": "Failed to update committee"
+    }
+  },
+  "assign_member": {
+    "title": "Assign Member to Committee",
+    "form": {
+      "member": "Member",
+      "member_search": "Search member by name or email",
+      "member_placeholder": "Type to search...",
+      "role": "Role Path",
+      "role_placeholder": "Select a role",
+      "nomination_type": "Nomination Type",
+      "elected": "Elected",
+      "appointed": "Appointed",
+      "volunteered": "Volunteered",
+      "election_date": "Election Date",
+      "election_date_placeholder": "Date of election",
+      "term_end_date": "Term End Date (Optional)",
+      "term_end_placeholder": "When does term end?"
+    },
+    "button_assign": "Assign Member",
+    "button_cancel": "Cancel",
+    "messages": {
+      "success": "Member assigned successfully",
+      "error": "Failed to assign member",
+      "member_required": "Please select a member",
+      "role_required": "Please select a role",
+      "nomination_required": "Please select nomination type",
+      "already_assigned": "This member already has an active assignment",
+      "election_date_required": "Election date is required for elected members"
+    }
+  },
+  "remove_member": {
+    "title": "Remove Member",
+    "confirmation": "Are you sure you want to remove this member from the committee?",
+    "button_confirm": "Yes, Remove",
+    "button_cancel": "Cancel",
+    "messages": {
+      "success": "Member removed successfully",
+      "error": "Failed to remove member"
+    }
+  },
+  "dashboard": {
+    "title": "Committee Dashboard",
+    "section_details": "Committee Details",
+    "section_members": "Active Members",
+    "field_name": "Name",
+    "field_type": "Type",
+    "field_status": "Status",
+    "field_geo": "Geographic Reference",
+    "button_edit": "Edit",
+    "button_add_member": "Add Member",
+    "members_table": {
+      "header_member": "Member",
+      "header_role": "Role",
+      "header_joined": "Joined",
+      "header_action": "Action",
+      "action_remove": "Remove"
+    },
+    "empty_state": "No active members yet"
+  },
+  "slug": {
+    "empty": "Slug cannot be empty",
+    "taken": "This URL slug is already taken",
+    "reserved": "This slug is a reserved system name",
+    "suggestions": "Try one of these suggestions:"
+  },
+  "common": {
+    "types": {
+      "central": "Central Committee",
+      "province": "Provincial Committee",
+      "district": "District Committee",
+      "ward": "Ward Committee",
+      "youth": "Youth Wing",
+      "women": "Women Wing",
+      "student": "Student Wing"
+    }
+  },
+  "tutorial": {
+    "title": "Committee Management Tutorial",
+    "subtitle": "Learn how to manage committees, assign members, and maintain democratic governance",
+    "back_home": "← Back to Home",
+    "pro_tip": "Pro Tips",
+    "create": {
+      "heading": "Create a Committee",
+      "description": "Follow these steps to create a new committee for your organization.",
+      "step1_title": "1. Fill in Committee Details",
+      "step1_text": "Enter a meaningful committee name (e.g., 'Central Committee') and a unique code (e.g., 'NC-001') that identifies this committee.",
+      "step2_title": "2. Select Committee Type",
+      "step2_text": "Choose from Central, Provincial, District, Ward, or specialized types like Youth Wing or Women Wing depending on your organizational structure.",
+      "field_name": "Committee Name",
+      "field_code": "Committee Code",
+      "field_type": "Committee Type",
+      "field_geo": "Geographic Reference",
+      "step3_title": "3. Add Geographic Reference (Optional)",
+      "step3_text": "If your committee operates in a specific region, enter the geographic reference code (e.g., 'np.3.15' for Kathmandu District).",
+      "step4_title": "4. Submit & Complete",
+      "step4_text": "Click 'Create Committee' to finalize. Your committee will be created and ready for member assignment.",
+      "pro_tip": "Use consistent naming conventions like COMM-YEAR-ID for easy identification"
+    },
+    "edit": {
+      "heading": "Edit Committee Details",
+      "description": "Update committee information such as name and status after it has been created.",
+      "step1_title": "1. Navigate to Committee Dashboard",
+      "step1_text": "Go to the committee you want to edit and click the 'Edit' button in the dashboard.",
+      "step2_title": "2. Update Committee Name",
+      "step2_text": "Change the committee name if needed. This is useful when organizational structures evolve.",
+      "option_name": "Update Committee Name",
+      "option_status": "Change Status (Active/Inactive)",
+      "step3_title": "3. Manage Committee Status",
+      "step3_text": "Set the committee to 'Active' or 'Inactive' to control whether it's participating in elections.",
+      "step4_title": "4. Save Changes",
+      "step4_text": "Click 'Update Committee' to apply all changes. Members will still remain assigned."
+    },
+    "assign": {
+      "heading": "Assign Members to Committee",
+      "description": "Add organization members to committees with specific roles and nomination types.",
+      "step1_title": "1. Open the Committee",
+      "step1_text": "Navigate to your committee dashboard and click the 'Add Member' button.",
+      "step2_title": "2. Search & Select Member",
+      "step2_text": "Use the search box to find members by name or email. The list shows members with their basic information.",
+      "step3_title": "3. Select Role & Nomination Type",
+      "step3_text": "Choose the member's role (using the numeric role path like 1.1, 1.2, etc.) and nomination type (Elected, Appointed, or Volunteered).",
+      "step4_title": "4. Complete Assignment",
+      "step4_text": "If the member was elected, enter the election date. Click 'Assign Member' to complete. The member now has an active role in the committee."
+    },
+    "remove": {
+      "heading": "Remove Members from Committee",
+      "description": "Manage committee composition by removing members when their term ends or status changes.",
+      "step1_title": "1. View Active Members",
+      "step1_text": "In the committee dashboard, scroll to the 'Active Members' section to see all current members.",
+      "step2_title": "2. Locate the Member to Remove",
+      "step2_text": "Find the member you want to remove in the members table. You can see their name, role, and join date.",
+      "step3_title": "3. Click Remove Button",
+      "step3_text": "Click the 'Remove' button next to the member's name. A confirmation dialog will appear to prevent accidental removals.",
+      "step4_title": "4. Confirm Removal",
+      "step4_text": "Click 'Yes, Remove' to confirm. The member is immediately removed from the committee, though the assignment record is preserved for audit purposes."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": "Can I have the same person in multiple committees?",
+      "a1": "Yes! A person can hold roles in multiple committees simultaneously. This is useful for organizations with overlapping governance structures.",
+      "q2": "What's the difference between Elected, Appointed, and Volunteered?",
+      "a2": "Elected members were chosen through a voting process. Appointed members were selected by leadership. Volunteered members offered their services.",
+      "q3": "Can I edit a member's role after assignment?",
+      "a3": "Currently, you need to remove the member and reassign them with the new role. This ensures clear audit trails.",
+      "q4": "What happens when a committee member's term ends?",
+      "a4": "Remove the member from the committee to deactivate their role. Their assignment history remains in the system for audit purposes.",
+      "q5": "Can I delete a committee?",
+      "a5": "Committees can be marked as Inactive rather than deleted, preserving all historical records for accountability.",
+      "q6": "What's the role path numbering system?",
+      "a6": "Role paths like 1.1, 1.2, 2.1 represent hierarchical positions. The structure depends on your committee's bylaws and organizational design."
+    },
+    "pro_tips": "Pro Tips",
+    "pro_tip_1": "Use consistent committee codes (e.g., COMM-YEAR-ID) for easy identification",
+    "pro_tip_2": "Assign a committee secretary early to help coordinate activities",
+    "pro_tip_3": "Keep geographic references updated for regional committees",
+    "warnings": "Important Notes",
+    "warning_1": "Committee assignments are audit-logged for transparency and accountability",
+    "warning_2": "Changing a committee's status affects election participation immediately",
+    "note_1": "All committee data is encrypted and isolated per organization",
+    "note_2": "Committee structure templates are available to match your bylaws"
+  }
+}

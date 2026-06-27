@@ -9,7 +9,8 @@
     "current_voter": "Current voter:",
     "region": "Region:",
     "voting_time_remaining": "You have 30 minutes to complete voting",
-    "progress": "Progress"
+    "progress": "Progress",
+    "of_count": "of {n}"
   },
   "demo_notice": {
     "title": "Demo Election Mode",

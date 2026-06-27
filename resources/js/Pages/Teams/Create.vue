@@ -1,11 +1,11 @@
 <template>
-    <div class="min-h-screen bg-gray-50 py-12">
+    <div class="min-h-screen bg-neutral-50 py-12">
         <div class="container mx-auto px-4">
             <div class="max-w-3xl mx-auto bg-white rounded-lg shadow p-8">
-                <h1 class="text-3xl font-bold text-gray-900 mb-6">Create Team</h1>
-                <div class="text-gray-600">
+                <h1 class="text-3xl font-bold text-neutral-900 mb-6">Create Team</h1>
+                <div class="text-neutral-600">
                     <p class="mb-4">Create Team page placeholder</p>
-                    <a :href="route('dashboard')" class="text-blue-600 hover:text-blue-800">Back to Dashboard</a>
+                    <a :href="route('dashboard')" class="text-primary-600 hover:text-primary-800">Back to Dashboard</a>
                 </div>
             </div>
         </div>
@@ -17,3 +17,4 @@ export default {
     name: 'TeamsCreate',
 };
 </script>
+

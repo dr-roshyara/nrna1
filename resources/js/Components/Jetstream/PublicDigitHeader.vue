@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 z-40 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white shadow-lg border-b border-gold/20 relative"
+    class="sticky top-0 z-40 bg-gradient-to-br from-primary-800 via-primary-950 to-primary-900 text-neutral-100 shadow-lg border-b border-brand-gold-500/40 relative"
     :class="electionMode ? 'font-serif' : 'font-sans'"
   >
     <div class="container mx-auto px-3 md:px-6 lg:px-8 relative">
@@ -20,12 +20,12 @@
           <!-- Brand Text -->
           <div class="flex flex-col min-w-0">
             <h1
-              class="text-sm md:text-lg font-bold leading-tight truncate text-white"
+              class="text-sm md:text-lg font-bold leading-tight truncate text-neutral-100"
               :class="electionMode ? 'font-serif tracking-wide' : ''"
             >
               {{ $t('platform.name') }}
             </h1>
-            <span class="text-xs md:text-sm font-normal text-gold-light/80 truncate hidden sm:block">
+            <span class="text-xs md:text-sm font-normal text-brand-gold-400/80 truncate hidden sm:block">
               {{ $t('platform.tagline') }}
             </span>
           </div>
@@ -33,23 +33,37 @@
 
         <!-- Right Controls: Language + Auth + Mobile Menu -->
         <div class="flex items-center gap-2 md:gap-3 shrink-0">
-          <!-- Language Selector -->
-          <div v-if="!disableLanguageSelector" class="relative">
-            <select
-              :value="currentLocale"
-              @change="handleLanguageChange"
-              class="appearance-none bg-white/5 border border-gold/30 rounded-md px-2 md:px-4 py-2 text-xs md:text-sm font-medium text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent cursor-pointer transition-all"
-              :aria-label="$t('common.select_language')"
-            >
-              <option value="de" class="bg-slate-800 text-white">DE</option>
-              <option value="en" class="bg-slate-800 text-white">EN</option>
-              <option value="np" class="bg-slate-800 text-white">NP</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1 md:px-2 text-gold">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
+          <!-- Language Selector + Reset Button -->
+          <div v-if="!disableLanguageSelector" class="flex items-center gap-1">
+            <!-- Language Dropdown -->
+            <div class="relative">
+              <select
+                :value="currentLocale"
+                @change="handleLanguageChange"
+                class="appearance-none bg-white/5 border border-brand-gold-500/30 rounded-md px-2 md:px-4 py-2 text-xs md:text-sm font-medium text-neutral-200 hover:bg-neutral-50/10 focus:outline-none focus:ring-2 focus:ring-brand-gold-500 focus:border-transparent cursor-pointer transition-all"
+                :aria-label="$t('common.select_language')"
+              >
+                <option value="de" class="bg-white text-neutral-800">DE</option>
+                <option value="en" class="bg-white text-neutral-800">EN</option>
+                <option value="np" class="bg-white text-neutral-800">NP</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1 md:px-2 text-brand-gold-500">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </div>
             </div>
+
+            <!-- Reset Button: Clear preferences and re-detect location -->
+            <button
+              @click="resetLanguagePreferences"
+              type="button"
+              title="Clear saved language preference and detect your location automatically"
+              class="px-2 py-2 text-brand-gold-400 hover:text-brand-gold-400 hover:bg-neutral-50/10 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-brand-gold-500"
+              aria-label="Reset language to auto-detect"
+            >
+              🔄
+            </button>
           </div>
 
           <!-- Auth Links - Desktop -->
@@ -57,7 +71,7 @@
             <a
               v-if="!isLoggedIn"
               :href="route('login')"
-              class="inline-flex items-center px-3 md:px-4 py-2 bg-white text-slate-900 font-semibold text-xs md:text-sm rounded-md hover:bg-gold hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-slate-900 transition-all duration-200 whitespace-nowrap group"
+              class="inline-flex items-center px-3 md:px-4 py-2 bg-white text-primary-900 font-semibold text-xs md:text-sm rounded-md hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-brand-gold-500 focus:ring-offset-2 focus:ring-offset-primary-50 transition-all duration-200 whitespace-nowrap group"
             >
               <svg class="w-4 h-4 mr-1 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
@@ -71,7 +85,7 @@
               type="button"
               @click="logout"
               :disabled="isLoggingOut"
-              class="inline-flex items-center px-3 md:px-4 py-2 border border-gold text-gold font-semibold text-xs md:text-sm rounded-md hover:bg-gold hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-slate-900 transition-all duration-200 whitespace-nowrap group disabled:opacity-50 disabled:cursor-not-allowed"
+              class="inline-flex items-center px-3 md:px-4 py-2 border border-brand-gold-500 text-brand-gold-500 font-semibold text-xs md:text-sm rounded-md hover:bg-brand-gold-500 hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-brand-gold-500 focus:ring-offset-2 focus:ring-offset-primary-50 transition-all duration-200 whitespace-nowrap group disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -85,7 +99,7 @@
             @click="toggleMobileMenu"
             :aria-expanded="showMobileMenu"
             :aria-label="showMobileMenu ? $t('common.close_menu') : $t('common.open_menu')"
-            class="md:hidden p-2 rounded-md hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-gold transition-all duration-200"
+            class="md:hidden p-2 rounded-md hover:bg-neutral-50/10 focus:outline-none focus:ring-2 focus:ring-brand-gold-500 transition-all duration-200"
           >
             <svg v-if="!showMobileMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -99,53 +113,74 @@
 
       <!-- Navigation Row - Desktop Only -->
       <nav
-        class="hidden md:flex items-center justify-between py-3 border-t border-gold/20"
+        class="hidden md:flex items-center justify-between py-3 border-t border-brand-gold-500/20"
         role="navigation"
         :aria-label="$t('common.main_navigation')"
       >
         <div class="flex items-center gap-1">
           <Link
             href="/"
-            class="px-3 py-2 text-white/80 hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+            class="px-3 py-2 text-neutral-200 hover:text-brand-gold-400 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
           >
             {{ $t('navigation.home') }}
           </Link>
           <Link
             href="/about"
-            class="px-3 py-2 text-white/80 hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+            class="px-3 py-2 text-neutral-200 hover:text-brand-gold-400 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
           >
             {{ $t('navigation.about') }}
           </Link>
           <Link
             href="/faq"
-            class="px-3 py-2 text-white/80 hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+            class="px-3 py-2 text-neutral-200 hover:text-brand-gold-400 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
           >
             {{ $t('navigation.faq') }}
           </Link>
           <Link
             href="/security"
-            class="px-3 py-2 text-white/80 hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+            class="px-3 py-2 text-neutral-200 hover:text-brand-gold-400 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
           >
             {{ $t('navigation.security') }}
           </Link>
           <Link
-            href="/demo/result"
-            class="px-3 py-2 text-white/80 hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+            :href="route('public.election-architecture')"
+            class="px-3 py-2 text-neutral-200 hover:text-brand-gold-400 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+          >
+            {{ $t('navigation.election_architecture', 'Architecture') }}
+          </Link>
+          <Link
+            v-if="$page.props.user"
+            :href="route('demo-result.index', { organisation_slug: $page.props.user.organisation?.slug })"
+            class="px-3 py-2 text-neutral-200 hover:text-brand-gold-400 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
           >
             {{ $t('navigation.demo_result') }}
           </Link>
           <Link
             :href="route('public-demo.guide')"
-            class="px-3 py-2 text-white/80 hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+            class="px-3 py-2 text-neutral-200 hover:text-brand-gold-400 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
           >
             {{ $t('navigation.demo_guide') }}
+          </Link>
+          <Link
+            :href="route('tutorials.hub')"
+            class="px-3 py-2 text-neutral-200 hover:text-brand-gold-400 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+          >
+            {{ $t('navigation.tutorials') }}
+          </Link>
+          <!-- Platform Admin Link -->
+          <Link
+            v-if="$page.props.user?.is_platform_admin"
+            :href="route('platform.dashboard')"
+            class="px-3 py-2 text-purple-300 hover:text-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-400/50 rounded-sm transition-colors duration-200 text-sm font-medium border-l border-purple-400/30 ml-1 pl-4"
+          >
+            🔑 Platform Admin
           </Link>
         </div>
 
         <!-- Demo Link - Gold CTA -->
         <Link
-          :href="$page.props.auth && $page.props.auth.user ? route('election.demo.start') : route('public-demo.start')"
-          class="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-slate-50 font-semibold text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-slate-900 transition-all duration-200 whitespace-nowrap shadow-md hover:shadow-lg group"
+          :href="$page.props.user ? route('election.demo.start', { organisation_slug: $page.props.user.organisation?.slug }) : route('public-demo.start')"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-success-600 hover:bg-success-700 text-neutral-50 font-semibold text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-success-400 focus:ring-offset-2 focus:ring-offset-primary-50 transition-all duration-200 whitespace-nowrap shadow-md hover:shadow-lg group"
           :title="$t('navigation.demo_title', 'Try demo election without registration')"
         >
           <svg class="w-4 h-4 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -158,7 +193,7 @@
       <!-- Breadcrumb Navigation with JSON-LD Schema -->
       <nav
         v-if="breadcrumbs && breadcrumbs.length > 0"
-        class="border-t border-gold/20 py-2"
+        class="border-t border-brand-gold-500/20 py-2"
         aria-label="Breadcrumb"
       >
         <ol class="container mx-auto px-3 md:px-6 flex flex-wrap items-center gap-1 text-xs md:text-sm">
@@ -166,14 +201,14 @@
             <a
               v-if="index < breadcrumbs.length - 1"
               :href="item.url"
-              class="text-gold-light hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold/50 px-1 py-0.5 rounded"
+              class="text-brand-gold-400 hover:text-brand-gold-400 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 px-1 py-0.5 rounded"
             >
               {{ item.label }}
             </a>
-            <span v-else class="text-white/70 px-1 py-0.5 font-medium">
+            <span v-else class="text-neutral-400 px-1 py-0.5 font-medium">
               {{ item.label }}
             </span>
-            <span v-if="index < breadcrumbs.length - 1" class="text-gold/50 mx-1" aria-hidden="true">/</span>
+            <span v-if="index < breadcrumbs.length - 1" class="text-brand-gold-500/50 mx-1" aria-hidden="true">/</span>
           </li>
         </ol>
       </nav>
@@ -184,62 +219,72 @@
       <!-- Mobile Menu - Dropdown for small screens -->
       <div
         v-if="showMobileMenu"
-        class="md:hidden absolute top-full left-0 right-0 bg-gradient-to-b from-slate-900 to-slate-950 border-t border-gold/20 shadow-2xl py-4 px-0 space-y-2 z-50"
+        class="md:hidden absolute top-full left-0 right-0 bg-white border-t border-brand-gold-500/20 shadow-2xl py-4 px-0 space-y-2 z-50"
         role="region"
         :aria-label="$t('common.mobile_navigation')"
       >
         <!-- Mobile Navigation Links -->
         <div class="space-y-1 px-3">
           <Link href="/" @click="closeMobileMenu"
-            class="block px-4 py-3 text-white/80 hover:text-gold hover:bg-white/5 active:bg-white/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+            class="block px-4 py-3 text-neutral-200 hover:text-brand-gold-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             🏠 {{ $t('navigation.home') }}
           </Link>
           <Link href="/about" @click="closeMobileMenu"
-            class="block px-4 py-3 text-white/80 hover:text-gold hover:bg-white/5 active:bg-white/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+            class="block px-4 py-3 text-neutral-200 hover:text-brand-gold-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             ℹ️ {{ $t('navigation.about') }}
           </Link>
           <Link href="/faq" @click="closeMobileMenu"
-            class="block px-4 py-3 text-white/80 hover:text-gold hover:bg-white/5 active:bg-white/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+            class="block px-4 py-3 text-neutral-200 hover:text-brand-gold-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             ❓ {{ $t('navigation.faq') }}
           </Link>
           <Link href="/security" @click="closeMobileMenu"
-            class="block px-4 py-3 text-white/80 hover:text-gold hover:bg-white/5 active:bg-white/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+            class="block px-4 py-3 text-neutral-200 hover:text-brand-gold-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             🔒 {{ $t('navigation.security') }}
           </Link>
-          <Link href="/demo/result" @click="closeMobileMenu"
-            class="block px-4 py-3 text-white/80 hover:text-gold hover:bg-white/5 active:bg-white/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+          <Link :href="route('public.election-architecture')" @click="closeMobileMenu"
+            class="block px-4 py-3 text-neutral-200 hover:text-brand-gold-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+          >
+            🏛️ {{ $t('navigation.election_architecture', 'Architecture') }}
+          </Link>
+          <Link v-if="$page.props.user" :href="route('demo-result.index', { organisation_slug: $page.props.user.organisation?.slug })" @click="closeMobileMenu"
+            class="block px-4 py-3 text-neutral-200 hover:text-brand-gold-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             📊 {{ $t('navigation.demo_result') }}
           </Link>
           <Link :href="route('public-demo.guide')" @click="closeMobileMenu"
-            class="block px-4 py-3 text-white/80 hover:text-gold hover:bg-white/5 active:bg-white/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+            class="block px-4 py-3 text-neutral-200 hover:text-brand-gold-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             ❓ {{ $t('navigation.demo_guide') }}
+          </Link>
+          <Link :href="route('tutorials.hub')" @click="closeMobileMenu"
+            class="block px-4 py-3 text-neutral-200 hover:text-brand-gold-400 hover:bg-neutral-50/10 active:bg-neutral-50/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+          >
+            📚 {{ $t('navigation.tutorials') }}
           </Link>
         </div>
 
         <!-- Mobile Demo CTA - Gold -->
-        <div class="pt-3 border-t border-gold/20 px-3">
+        <div class="pt-3 border-t border-brand-gold-500/20 px-3">
           <Link
-            :href="$page.props.auth && $page.props.auth.user ? route('election.demo.start') : route('public-demo.start')"
-            @click="closeMobileMenu" 
-            class="block px-4 py-3  text-slate-50  bg-green-600 font-semibold text-sm rounded-lg hover:from-gold-gold hover:to-white active:opacity-90 transition-all duration-150 text-center min-h-[44px] flex items-center justify-center shadow-md"
+            :href="$page.props.user ? route('election.demo.start', { organisation_slug: $page.props.user.organisation?.slug }) : route('public-demo.start')"
+            @click="closeMobileMenu"
+            class="block px-4 py-3  text-neutral-50  bg-success-600 font-semibold text-sm rounded-lg hover:from-gold-gold hover:to-white active:opacity-90 transition-all duration-150 text-center min-h-[44px] flex items-center justify-center shadow-md"
           >
             🎪 {{ $t('navigation.demo', 'Try Demo') }}
           </Link>
         </div> 
 
         <!-- Mobile Auth -->
-        <div class="pt-3 border-t border-gold/20 space-y-2 sm:hidden px-3">
+        <div class="pt-3 border-t border-brand-gold-500/20 space-y-2 sm:hidden px-3">
           <a
             v-if="!isLoggedIn"
             :href="route('login')"
             @click="closeMobileMenu"
-            class="block px-4 py-3 bg-white text-slate-900 font-semibold text-sm rounded-lg hover:bg-gold hover:text-slate-900 active:opacity-90 transition-all duration-150 text-center min-h-[44px] flex items-center justify-center shadow-md"
+            class="block px-4 py-3 bg-primary-600 text-white font-semibold text-sm rounded-lg hover:bg-primary-100 active:opacity-90 transition-all duration-150 text-center min-h-[44px] flex items-center justify-center shadow-md"
           >
             🔐 {{ $t('navigation.login') }}
           </a>
@@ -248,7 +293,7 @@
             type="button"
             @click="logout"
             :disabled="isLoggingOut"
-            class="w-full px-4 py-3 border border-gold text-gold font-semibold text-sm rounded-lg hover:bg-gold hover:text-slate-900 active:opacity-90 transition-all duration-150 min-h-[44px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+            class="w-full px-4 py-3 border border-brand-gold-500 text-brand-gold-500 font-semibold text-sm rounded-lg hover:bg-gold hover:text-neutral-900 active:opacity-90 transition-all duration-150 min-h-[44px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
           >
             🚪 {{ isLoggingOut ? $t('navigation.logging_out', 'Logging out...') : $t('navigation.logout') }}
           </button>
@@ -343,6 +388,19 @@ function switchLanguage(newLocale) {
   document.cookie = `locale=${newLocale}; expires=${date.toUTCString()}; path=/`
 }
 
+function resetLanguagePreferences() {
+  // Clear all stored language preferences
+  localStorage.removeItem('preferred_locale')
+  document.cookie = 'locale=; max-age=0; path=/'
+
+  // Show debug info in console
+  console.log('🔄 Language preferences cleared. Reloading to detect location...')
+  console.log('Browser timezone:', Intl.DateTimeFormat().resolvedOptions().timeZone)
+
+  // Reload page to trigger geo-detection in app.js
+  location.reload()
+}
+
 function toggleMobileMenu() {
   showMobileMenu.value = !showMobileMenu.value
 }
@@ -402,41 +460,7 @@ watch(() => props.locale, (newLocale) => {
 </script>
 
 <style scoped>
-/* ============================================
-   GOLD ACCENT TOKENS
-   ============================================ */
-:root {
-  --gold:       #b5862b;
-  --gold-dark:  #92400e;
-  --gold-light: #d4a84b;
-}
-
-.text-gold        { color: var(--gold); }
-.text-gold-light  { color: var(--gold-light); }
-.bg-gold          { background-color: var(--gold); }
-.border-gold      { border-color: rgba(181, 134, 43, 0.4); }
-
-/* Gradient helpers */
-.from-gold        { --tw-gradient-from: var(--gold); }
-.to-gold-dark     { --tw-gradient-to: var(--gold-dark); }
-.hover\:from-gold-dark:hover { --tw-gradient-from: var(--gold-dark); }
-.hover\:to-gold:hover        { --tw-gradient-to: var(--gold); }
-
-/* Hover states */
-.hover\:bg-gold:hover   { background-color: var(--gold); }
-.hover\:text-gold:hover { color: var(--gold); }
-
-/* Fractional opacity utilities used in template */
-.border-gold\/20  { border-color: rgba(181, 134, 43, 0.2); }
-.border-gold\/30  { border-color: rgba(181, 134, 43, 0.3); }
-.text-gold\/50    { color: rgba(181, 134, 43, 0.5); }
-.text-gold-light\/80 { color: rgba(212, 168, 75, 0.8); }
-.focus\:ring-gold:focus { --tw-ring-color: rgba(181, 134, 43, 0.6); }
-.focus\:ring-gold\/50:focus { --tw-ring-color: rgba(181, 134, 43, 0.5); }
-
-/* ============================================
-   LANGUAGE SELECTOR
-   ============================================ */
+/* Select styling (Tailwind doesn't style select by default) */
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -444,50 +468,19 @@ select {
 }
 
 select option {
-  background-color: #1e293b; /* slate-800 */
+  background-color: #1e293b;
   color: white;
 }
 
-/* ============================================
-   ANIMATIONS — respects prefers-reduced-motion
-   ============================================ */
-@media (prefers-reduced-motion: no-preference) {
-  a, button, select {
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 200ms;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* ============================================
-   ACCESSIBILITY — keyboard focus
-   ============================================ */
+/* Accessibility — keyboard focus uses Tailwind focus-ring classes */
 a:focus-visible,
 button:focus-visible,
 select:focus-visible {
-  outline: 2px solid rgba(181, 134, 43, 0.8);
+  outline: 2px solid rgb(212, 175, 55);
   outline-offset: 2px;
 }
 
-/* ============================================
-   MOBILE TOUCH TARGETS
-   ============================================ */
-@media (max-width: 768px) {
-  select { font-size: 14px; }
-  a, button { min-height: 44px; }
-}
-
-/* ============================================
-   PRINT
-   ============================================ */
+/* Print styles */
 @media print {
   header {
     position: relative;

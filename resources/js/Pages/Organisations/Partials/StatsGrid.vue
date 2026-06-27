@@ -5,25 +5,25 @@
   >
     <h2
       id="stats-heading"
-      class="text-xl font-semibold text-gray-900 mb-6"
+      class="text-xl font-semibold text-neutral-900 mb-6"
     >
       {{ $t('pages.organisation-show.stats.title') }}
     </h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <!-- Total Members Card -->
-      <a :href="`/organisations/${organisationSlug}/members`" class="block bg-gradient-to-br from-blue-50 to-blue-100/30 rounded-xl shadow-sm p-6 hover:shadow-md hover:scale-[1.02] transition-all border border-blue-200 hover:border-blue-400 cursor-pointer no-underline">
+      <a :href="`/organisations/${organisationSlug}/members`" class="block bg-gradient-to-br from-blue-50 to-blue-100/30 rounded-xl shadow-sm p-6 hover:shadow-md hover:scale-[1.02] transition-all border border-primary-200 hover:border-primary-400 cursor-pointer no-underline">
         <div class="flex items-start justify-between">
           <div class="flex-1">
-            <p class="text-xs font-semibold text-blue-600 uppercase tracking-wide mb-1">
+            <p class="text-xs font-semibold text-primary-600 uppercase tracking-wide mb-1">
               {{ $t('pages.organisation-show.stats.total_members') }}
             </p>
-            <p class="text-4xl font-bold text-gray-900 mt-2">
+            <p class="text-4xl font-bold text-neutral-900 mt-2">
               {{ stats.members_count ?? 0 }}
             </p>
           </div>
-          <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-blue-100 p-3">
-            <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+          <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary-100 p-3">
+            <svg class="w-8 h-8 text-primary-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
             </svg>
           </div>
@@ -131,3 +131,4 @@ defineProps({
   }
 })
 </script>
+

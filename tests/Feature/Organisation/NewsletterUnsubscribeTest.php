@@ -36,7 +36,7 @@ class NewsletterUnsubscribeTest extends TestCase
 
     public function test_member_can_unsubscribe_via_token(): void
     {
-        $member = $this->createMember();
+        $member = $this->createNewsletterMember();
         $token  = Str::random(64);
         $member->update(['newsletter_unsubscribe_token' => $token]);
 
@@ -55,7 +55,7 @@ class NewsletterUnsubscribeTest extends TestCase
 
     public function test_already_unsubscribed_member_handled_gracefully(): void
     {
-        $member = $this->createMember();
+        $member = $this->createNewsletterMember();
         $token  = Str::random(64);
         $member->update([
             'newsletter_unsubscribe_token' => $token,
@@ -85,7 +85,7 @@ class NewsletterUnsubscribeTest extends TestCase
         ]);
 
         // Unsubscribed member
-        $unsubMember = $this->createMember();
+        $unsubMember = $this->createNewsletterMember();
         $unsubMember->update(['newsletter_unsubscribed_at' => now()]);
 
         $newsletter = OrganisationNewsletter::create([
@@ -125,7 +125,7 @@ class NewsletterUnsubscribeTest extends TestCase
         ]);
 
         // Bounced member
-        $bouncedMember = $this->createMember();
+        $bouncedMember = $this->createNewsletterMember();
         $bouncedMember->update(['newsletter_bounced_at' => now()]);
 
         $newsletter = OrganisationNewsletter::create([
@@ -145,7 +145,7 @@ class NewsletterUnsubscribeTest extends TestCase
         $this->assertEquals(1, NewsletterRecipient::where('organisation_newsletter_id', $newsletter->id)->count());
     }
 
-    private function createMember(): Member
+    protected function createNewsletterMember(): Member
     {
         $user    = User::factory()->create();
         $orgUser = OrganisationUser::create([

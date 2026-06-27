@@ -11,14 +11,14 @@
         {{ page.props.flash.success }}
       </div>
       <div v-if="page.props.errors?.error"
-           class="mb-6 rounded-lg bg-red-50 border border-red-200 p-4 text-red-800 text-sm">
+           class="mb-6 rounded-lg bg-danger-50 border border-danger-200 p-4 text-danger-800 text-sm">
         {{ page.props.errors.error }}
       </div>
 
       <!-- Back link -->
       <a
         :href="route('organisations.membership.applications.index', organisation.slug)"
-        class="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 mb-6"
+        class="inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-neutral-700 mb-6"
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -56,20 +56,20 @@
 
         <!-- Applicant -->
         <div class="px-6 py-5">
-          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t.section_applicant }}</h2>
+          <h2 class="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">{{ t.section_applicant }}</h2>
           <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-lg font-bold flex-shrink-0">
+            <div class="w-12 h-12 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center text-lg font-bold flex-shrink-0">
               {{ isPublicApp
                   ? initials((application.application_data?.first_name ?? '') + ' ' + (application.application_data?.last_name ?? ''))
                   : initials(application.user?.name) }}
             </div>
             <div>
-              <p class="text-sm font-semibold text-gray-900">
+              <p class="text-sm font-semibold text-neutral-900">
                 {{ isPublicApp
                     ? ((application.application_data?.first_name ?? '') + ' ' + (application.application_data?.last_name ?? '')).trim()
                     : application.user?.name }}
               </p>
-              <p class="text-sm text-gray-500">
+              <p class="text-sm text-neutral-500">
                 {{ isPublicApp ? application.applicant_email : application.user?.email }}
               </p>
             </div>
@@ -78,52 +78,52 @@
 
         <!-- Public application details panel -->
         <div v-if="isPublicApp" class="px-6 py-5">
-          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t.section_public_details }}</h2>
+          <h2 class="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">{{ t.section_public_details }}</h2>
           <dl class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div v-if="application.application_data?.telephone_number">
-              <dt class="text-xs text-gray-400">Phone</dt>
-              <dd class="text-sm font-medium text-gray-800 mt-0.5">{{ application.application_data.telephone_number }}</dd>
+              <dt class="text-xs text-neutral-400">Phone</dt>
+              <dd class="text-sm font-medium text-neutral-800 mt-0.5">{{ application.application_data.telephone_number }}</dd>
             </div>
             <div v-if="application.application_data?.education_level">
-              <dt class="text-xs text-gray-400">Education</dt>
-              <dd class="text-sm font-medium text-gray-800 mt-0.5">{{ application.application_data.education_level }}</dd>
+              <dt class="text-xs text-neutral-400">Education</dt>
+              <dd class="text-sm font-medium text-neutral-800 mt-0.5">{{ application.application_data.education_level }}</dd>
             </div>
             <div v-if="application.application_data?.profession">
-              <dt class="text-xs text-gray-400">Profession</dt>
-              <dd class="text-sm font-medium text-gray-800 mt-0.5">{{ application.application_data.profession }}</dd>
+              <dt class="text-xs text-neutral-400">Profession</dt>
+              <dd class="text-sm font-medium text-neutral-800 mt-0.5">{{ application.application_data.profession }}</dd>
             </div>
             <div v-if="application.application_data?.city">
-              <dt class="text-xs text-gray-400">City</dt>
-              <dd class="text-sm font-medium text-gray-800 mt-0.5">{{ application.application_data.city }}</dd>
+              <dt class="text-xs text-neutral-400">City</dt>
+              <dd class="text-sm font-medium text-neutral-800 mt-0.5">{{ application.application_data.city }}</dd>
             </div>
             <div v-if="application.application_data?.country">
-              <dt class="text-xs text-gray-400">Country</dt>
-              <dd class="text-sm font-medium text-gray-800 mt-0.5">{{ application.application_data.country }}</dd>
+              <dt class="text-xs text-neutral-400">Country</dt>
+              <dd class="text-sm font-medium text-neutral-800 mt-0.5">{{ application.application_data.country }}</dd>
             </div>
             <div v-if="application.application_data?.message" class="sm:col-span-2">
-              <dt class="text-xs text-gray-400">Message</dt>
-              <dd class="text-sm font-medium text-gray-800 mt-0.5 whitespace-pre-wrap">{{ application.application_data.message }}</dd>
+              <dt class="text-xs text-neutral-400">Message</dt>
+              <dd class="text-sm font-medium text-neutral-800 mt-0.5 whitespace-pre-wrap">{{ application.application_data.message }}</dd>
             </div>
           </dl>
         </div>
 
         <!-- Membership type -->
         <div class="px-6 py-5">
-          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t.section_type }}</h2>
+          <h2 class="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">{{ t.section_type }}</h2>
           <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
             <div>
-              <p class="text-xs text-gray-400 mb-0.5">{{ t.type_name }}</p>
-              <p class="text-sm font-medium text-gray-800">{{ application.membership_type?.name ?? '—' }}</p>
+              <p class="text-xs text-neutral-400 mb-0.5">{{ t.type_name }}</p>
+              <p class="text-sm font-medium text-neutral-800">{{ application.membership_type?.name ?? '—' }}</p>
             </div>
             <div>
-              <p class="text-xs text-gray-400 mb-0.5">{{ t.type_fee }}</p>
-              <p class="text-sm font-medium text-gray-800">
+              <p class="text-xs text-neutral-400 mb-0.5">{{ t.type_fee }}</p>
+              <p class="text-sm font-medium text-neutral-800">
                 {{ application.membership_type?.fee_amount }} {{ application.membership_type?.fee_currency }}
               </p>
             </div>
             <div>
-              <p class="text-xs text-gray-400 mb-0.5">{{ t.type_duration }}</p>
-              <p class="text-sm font-medium text-gray-800">
+              <p class="text-xs text-neutral-400 mb-0.5">{{ t.type_duration }}</p>
+              <p class="text-sm font-medium text-neutral-800">
                 {{ application.membership_type?.duration_months
                     ? application.membership_type.duration_months + ' ' + t.months
                     : t.lifetime }}
@@ -134,15 +134,15 @@
 
         <!-- Application dates -->
         <div class="px-6 py-5">
-          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t.section_dates }}</h2>
+          <h2 class="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">{{ t.section_dates }}</h2>
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <p class="text-xs text-gray-400 mb-0.5">{{ t.submitted_at }}</p>
-              <p class="text-sm font-medium text-gray-800">{{ formatDate(application.submitted_at) }}</p>
+              <p class="text-xs text-neutral-400 mb-0.5">{{ t.submitted_at }}</p>
+              <p class="text-sm font-medium text-neutral-800">{{ formatDate(application.submitted_at) }}</p>
             </div>
             <div>
-              <p class="text-xs text-gray-400 mb-0.5">{{ t.expires_at }}</p>
-              <p class="text-sm font-medium" :class="isExpired ? 'text-red-600' : 'text-gray-800'">
+              <p class="text-xs text-neutral-400 mb-0.5">{{ t.expires_at }}</p>
+              <p class="text-sm font-medium" :class="isExpired ? 'text-danger-600' : 'text-neutral-800'">
                 {{ formatDate(application.expires_at) }}
                 <span v-if="isExpired" class="ml-1 text-xs">({{ t.expired }})</span>
               </p>
@@ -152,36 +152,36 @@
 
         <!-- Application data (custom fields) -->
         <div v-if="application.application_data && Object.keys(application.application_data).length > 0" class="px-6 py-5">
-          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t.section_data }}</h2>
+          <h2 class="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">{{ t.section_data }}</h2>
           <dl class="space-y-2">
             <div v-for="(value, key) in application.application_data" :key="key" class="flex gap-4">
-              <dt class="text-sm text-gray-500 w-36 flex-shrink-0 capitalize">{{ key.replace(/_/g, ' ') }}</dt>
-              <dd class="text-sm font-medium text-gray-800">{{ value }}</dd>
+              <dt class="text-sm text-neutral-500 w-36 flex-shrink-0 capitalize">{{ key.replace(/_/g, ' ') }}</dt>
+              <dd class="text-sm font-medium text-neutral-800">{{ value }}</dd>
             </div>
           </dl>
         </div>
 
         <!-- Rejection reason (if rejected) -->
         <div v-if="application.status === 'rejected' && application.rejection_reason" class="px-6 py-5">
-          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t.rejection_reason }}</h2>
-          <p class="text-sm text-gray-700 whitespace-pre-wrap">{{ application.rejection_reason }}</p>
+          <h2 class="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">{{ t.rejection_reason }}</h2>
+          <p class="text-sm text-neutral-700 whitespace-pre-wrap">{{ application.rejection_reason }}</p>
         </div>
 
         <!-- Notes -->
         <div v-if="application.notes" class="px-6 py-5">
-          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t.notes }}</h2>
-          <p class="text-sm text-gray-700 whitespace-pre-wrap">{{ application.notes }}</p>
+          <h2 class="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">{{ t.notes }}</h2>
+          <p class="text-sm text-neutral-700 whitespace-pre-wrap">{{ application.notes }}</p>
         </div>
 
       </div>
 
       <!-- ── Action panel (only for pending applications) ── -->
       <div v-if="isPending" class="mt-6 bg-white rounded-xl shadow p-6 space-y-5">
-        <h2 class="text-base font-semibold text-gray-900">{{ t.action_title }}</h2>
+        <h2 class="text-base font-semibold text-neutral-900">{{ t.action_title }}</h2>
 
         <!-- Membership type selector (required for public applications) -->
         <div v-if="isPublicApp" class="p-4 rounded-lg border border-amber-200 bg-amber-50 space-y-2">
-          <label class="text-sm font-medium text-amber-900 block">{{ t.select_type_label }} <span class="text-red-500">*</span></label>
+          <label class="text-sm font-medium text-amber-900 block">{{ t.select_type_label }} <span class="text-danger-500">*</span></label>
           <select
             v-model="selectedTypeId"
             class="w-full rounded-md border border-amber-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 bg-white"
@@ -191,7 +191,7 @@
               {{ type.name }} — {{ type.fee_amount }} {{ type.fee_currency }}
             </option>
           </select>
-          <p v-if="page.props.errors?.membership_type_id" class="text-xs text-red-700">{{ page.props.errors.membership_type_id }}</p>
+          <p v-if="page.props.errors?.membership_type_id" class="text-xs text-danger-700">{{ page.props.errors.membership_type_id }}</p>
         </div>
 
         <!-- Approve -->
@@ -217,24 +217,24 @@
         </div>
 
         <!-- Reject -->
-        <div class="p-4 rounded-lg border border-red-200 bg-red-50 space-y-3">
+        <div class="p-4 rounded-lg border border-danger-200 bg-danger-50 space-y-3">
           <div>
-            <p class="text-sm font-medium text-red-900">{{ t.reject_label }}</p>
-            <p class="text-xs text-red-700 mt-0.5">{{ t.reject_hint }}</p>
+            <p class="text-sm font-medium text-danger-900">{{ t.reject_label }}</p>
+            <p class="text-xs text-danger-700 mt-0.5">{{ t.reject_hint }}</p>
           </div>
           <textarea
             v-model="rejectionReason"
             rows="3"
             :placeholder="t.rejection_reason_placeholder"
             class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-red-400 resize-none"
-            :class="rejectError ? 'border-red-400' : 'border-red-200'"
+            :class="rejectError ? 'border-danger-400' : 'border-danger-200'"
           />
-          <p v-if="rejectError" class="text-xs text-red-700">{{ rejectError }}</p>
+          <p v-if="rejectError" class="text-xs text-danger-700">{{ rejectError }}</p>
           <div class="flex justify-end">
             <button
               @click="reject"
               :disabled="approving || rejecting"
-              class="inline-flex items-center gap-2 rounded-md bg-red-600 px-5 py-2 text-sm font-semibold text-white shadow hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="inline-flex items-center gap-2 rounded-md bg-danger-600 px-5 py-2 text-sm font-semibold text-white shadow hover:bg-danger-700 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <svg v-if="rejecting" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
@@ -388,13 +388,13 @@ const statusLabel = (status) => {
 
 const statusBannerClass = computed(() => {
   const map = {
-    draft:        'bg-gray-50 border border-gray-200 text-gray-700',
-    submitted:    'bg-blue-50 border border-blue-200 text-blue-800',
+    draft:        'bg-neutral-50 border border-neutral-200 text-neutral-700',
+    submitted:    'bg-primary-50 border border-primary-200 text-primary-800',
     under_review: 'bg-yellow-50 border border-yellow-200 text-yellow-800',
     approved:     'bg-green-50 border border-green-200 text-green-800',
-    rejected:     'bg-red-50 border border-red-200 text-red-800',
+    rejected:     'bg-danger-50 border border-danger-200 text-danger-800',
   }
-  return map[props.application.status] ?? 'bg-gray-50 border border-gray-200 text-gray-700'
+  return map[props.application.status] ?? 'bg-neutral-50 border border-neutral-200 text-neutral-700'
 })
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -443,3 +443,4 @@ const reject = () => {
   )
 }
 </script>
+

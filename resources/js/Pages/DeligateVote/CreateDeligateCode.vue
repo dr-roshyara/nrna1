@@ -14,21 +14,21 @@
             
           <form @submit.prevent="submit" class=" text-center mx-auto mt-10">
             <div class="flex flex-col justify-center px-2 m-2"> 
-                <div class="flex flex-col justify-center space-x-4 items-center p-4 mb-2 m-auto font-bold text-gray-900 ">
+                <div class="flex flex-col justify-center space-x-4 items-center p-4 mb-2 m-auto font-bold text-neutral-900 ">
                    <label for="voting_code"  class="px-4 py-2 mb-3"> 
                       <p> Your voting code is: 1234 </p> 
                       <p> Please enter your voting Code.</p>
                       <p> यहाँलाई पाउनु भएको यो  भोटिङ कोड तलको खाली ठाउमा भरेर वटन थिच्नु होला । </p>  
                    </label>   
-                  <input class=" px-4 py-6 rounded-lg bg-gray-200 w-96 
-                   font-bold border border-blue-400  text-gray-900 font-bold text-xl" 
+                  <input class=" px-4 py-6 rounded-lg bg-neutral-200 w-96 
+                   font-bold border border-primary-400  text-neutral-900 font-bold text-xl" 
                     id="voting_id" 
                    placeholder="PLEASE ENTER HERE YOUR VOTING CODE"  
                     v-model ="form.voting_code"/> 
                 </div>  
                  <div class="mx-auto my-4 w-full"> 
                     <button type="submit" 
-                    class="m-2 px-2 py-4 rounded-lg bg-blue-300 w-96 mx-auto font-bold text-gray-900">
+                    class="m-2 px-2 py-4 rounded-lg bg-primary-300 w-96 mx-auto font-bold text-neutral-900">
                     SEND CODE TO GET VOTING FORM</button> 
                     </div>
                            <div class="mx-auto text-center">

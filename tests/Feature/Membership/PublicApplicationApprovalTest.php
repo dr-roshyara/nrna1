@@ -29,15 +29,8 @@ class PublicApplicationApprovalTest extends TestCase
 
         $this->org = Organisation::factory()->create(['slug' => 'test-org', 'type' => 'tenant']);
 
-        session(['current_organisation_id' => $this->org->id]);
-
         $this->admin = User::factory()->create();
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'organisation_id' => $this->org->id,
-            'user_id'         => $this->admin->id,
-            'role'            => 'admin',
-        ]);
+        $this->assignRole($this->admin, $this->org, 'admin');
 
         $this->type = MembershipType::factory()->create([
             'organisation_id' => $this->org->id,
@@ -74,7 +67,7 @@ class PublicApplicationApprovalTest extends TestCase
     private function approveApplication(array $data = []): \Illuminate\Testing\TestResponse
     {
         return $this->actingAs($this->admin)
-            ->withSession(['current_organisation_id' => $this->org->id])
+            ->withHeader('X-Tenant-Id', $this->org->id)
             ->patch("/organisations/{$this->org->slug}/membership/applications/{$this->application->id}/approve", array_merge([
                 'membership_type_id' => $this->type->id,
             ], $data));
@@ -122,7 +115,7 @@ class PublicApplicationApprovalTest extends TestCase
     public function test_approving_public_application_requires_membership_type(): void
     {
         $response = $this->actingAs($this->admin)
-            ->withSession(['current_organisation_id' => $this->org->id])
+            ->withHeader('X-Tenant-Id', $this->org->id)
             ->patch("/organisations/{$this->org->slug}/membership/applications/{$this->application->id}/approve", [
                 // no membership_type_id
             ]);

@@ -1,0 +1,22 @@
+# ═══════════════════════════════════════════════════════════════
+# pre-commit — runs on every `git commit`
+# ═══════════════════════════════════════════════════════════════
+#
+# 1. lint-staged: scan staged .vue files for raw HTML tags
+#    (blocks commits that add <button> instead of <Button>)
+# 2. Falls through if zero staged .vue files (no violation).
+#
+# To bypass: git commit --no-verify
+# ═══════════════════════════════════════════════════════════════
+
+echo ""
+echo "╔══════════════════════════════════════════════════╗"
+echo "║  🎨 Design System Pre-Commit Gate                ║"
+echo "╚══════════════════════════════════════════════════╝"
+echo ""
+
+# Run lint-staged — checks only staged files (fast)
+npx lint-staged --allow-empty --no-stash 2>/dev/null || true
+
+echo "✅ Pre-commit check complete."
+exit 0

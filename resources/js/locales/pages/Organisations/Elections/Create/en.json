@@ -11,6 +11,18 @@
       "optional": "(optional)",
       "placeholder": "Brief description of the election..."
     },
+    "expected_voter_count": {
+      "label": "Expected Number of Voters",
+      "placeholder": "e.g. 50",
+      "help": "Elections with up to 40 voters are free and auto-approved. More than 40 requires platform admin approval.",
+      "approval_warning": "This election will require platform admin approval before it can proceed."
+    },
+    "timezone": {
+      "label": "Timezone",
+      "optional": "(optional — required before submission)",
+      "placeholder": "Select timezone...",
+      "help": "Set your election timezone. Required before submitting for approval."
+    },
     "start": {
       "section": "Start Date & Time",
       "date_label": "Date",
@@ -22,8 +34,40 @@
       "time_label": "Closing Time"
     }
   },
+  "info_banner": {
+    "title": "Secure by Design",
+    "description": "Our elections use a tamper-proof state machine with immutable audit trails.",
+    "learn_architecture": "Learn Architecture",
+    "security_deep_dive": "Security Deep Dive"
+  },
+  "phases": {
+    "timeline_title": "Election Phases Timeline",
+    "timeline_subtitle": "Define when each phase of the election takes place",
+    "administration": {
+      "title": "⚙️ Administration Phase",
+      "start_label": "Start Date & Time",
+      "end_label": "End Date & Time"
+    },
+    "nomination": {
+      "title": "📋 Nomination Phase",
+      "start_label": "Start Date & Time",
+      "end_label": "End Date & Time"
+    },
+    "voting": {
+      "title": "🗳️ Voting Phase",
+      "start_label": "Voting Starts",
+      "end_label": "Voting Ends",
+      "start_placeholder": "e.g. 2026-06-30T09:00",
+      "end_placeholder": "e.g. 2026-07-07T17:00"
+    }
+  },
   "validation": {
-    "end_after_start": "Closing time must be after opening time."
+    "end_after_start": "Closing time must be after opening time.",
+    "admin_end_after_start": "Administration phase end must be after start",
+    "nom_end_after_start": "Nomination phase end must be after start",
+    "vote_end_after_start": "Voting phase end must be after start",
+    "nom_after_admin": "Nomination phase must start after administration ends",
+    "vote_after_nom": "Voting phase must start after nomination ends"
   },
   "actions": {
     "cancel": "Cancel",

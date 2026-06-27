@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="min-h-screen bg-neutral-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
       <div class="text-center">
         <div class="mx-auto h-12 w-12 text-green-500 mb-4">
@@ -7,14 +7,14 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
-        <h2 class="text-3xl font-extrabold text-gray-900">Appointment Accepted!</h2>
-        <p class="mt-2 text-sm text-gray-600">
+        <h2 class="text-3xl font-extrabold text-neutral-900">Appointment Accepted!</h2>
+        <p class="mt-2 text-sm text-neutral-600">
           You are now an election officer for <strong>{{ officer.organisation.name }}</strong>
         </p>
       </div>
 
       <div class="mt-8 bg-white shadow sm:rounded-lg p-6">
-        <h3 class="text-lg font-medium text-gray-900 capitalize">Role: {{ officer.role }}</h3>
+        <h3 class="text-lg font-medium text-neutral-900 capitalize">Role: {{ officer.role }}</h3>
 
         <div class="mt-6">
           <Link
@@ -37,3 +37,4 @@ defineProps({
   message: String,
 })
 </script>
+

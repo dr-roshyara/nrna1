@@ -1,19 +1,17 @@
 <template>
-    <app-layout>
-        <!-- Breadcrumb Schema for SEO -->
-        <!-- Event Schema for Elections -->
+    <PublicDigitLayout>
         <EventSchema />
 
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <div class="py-8 px-4 max-w-7xl mx-auto">
+            <h2 class="font-semibold text-xl text-neutral-800 leading-tight mb-6">
                 {{ electionName || 'Election Result' }}
             </h2>
-        </template>
-        <div>Election result post name , position , no of votes lcc wise</div>
-    </app-layout>
+            <div>Election result post name , position , no of votes lcc wise</div>
+        </div>
+    </PublicDigitLayout>
 </template>
 <script>
-import AppLayout from "@/Layouts/AppLayout.vue";
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 import EventSchema from "@/Components/EventSchema.vue";
 import { useMeta } from "@/composables/useMeta";
 
@@ -47,3 +45,4 @@ export default {
     }
 };
 </script>
+

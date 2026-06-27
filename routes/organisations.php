@@ -21,6 +21,7 @@
 use App\Http\Controllers\CandidacyApplicationController;
 use App\Http\Controllers\Election\CandidacyManagementController;
 use App\Http\Controllers\Election\VoterImportController;
+use App\Http\Controllers\Election\VoterVerificationController;
 use App\Http\Controllers\Election\CandidacyReviewController;
 use App\Http\Controllers\Election\ElectionManagementController;
 use App\Http\Controllers\Election\PostManagementController;
@@ -28,6 +29,9 @@ use App\Http\Controllers\ElectionOfficerController;
 use App\Http\Controllers\ElectionOfficerInvitationController;
 use App\Http\Controllers\ElectionVoterController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\OrganisationSettingsController;
+use App\Http\Controllers\Admin\GeoUnitController;
+use App\Http\Controllers\OrganisationGeographyController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\Membership\MembershipApplicationController;
 use App\Http\Controllers\Membership\MembershipDashboardController;
@@ -42,6 +46,8 @@ use App\Http\Controllers\Membership\ParticipantInvitationController;
 use App\Http\Controllers\Membership\PublicMembershipApplicationController;
 use App\Http\Controllers\Organisation\OrganisationMemberInvitationController;
 use App\Http\Controllers\OrganisationController;
+use App\Http\Controllers\VotingReceiptController;
+use App\Http\Controllers\Contribution\ContributionController;
 use Illuminate\Support\Facades\Route;
 
 // ── Public membership application — no auth required ──
@@ -87,6 +93,15 @@ Route::prefix('organisations/{organisation:slug}')
         Route::get('/voter-hub',           [OrganisationController::class, 'voterHub'])          ->name('organisations.voter-hub');
         Route::get('/election-commission', [OrganisationController::class, 'electionCommission'])->name('organisations.election-commission');
 
+        // ── Organisation Settings ────────────────────────────────────────────────────
+        Route::get('/settings',                                           [OrganisationSettingsController::class, 'index'])               ->name('organisations.settings.index');
+        Route::patch('/settings/membership-mode',                         [OrganisationSettingsController::class, 'updateMembershipMode'])->name('organisations.settings.update-membership-mode');
+        Route::patch('/settings/language',                                [OrganisationSettingsController::class, 'updateLanguage'])      ->name('organisations.settings.update-language');
+
+        // ── Geography Configuration ────────────────────────────────────────────────────
+        Route::get('/geography/cascader-config', [OrganisationGeographyController::class, 'cascaderConfig'])
+            ->name('organisation.geography.cascader-config');
+
         // ── Candidacy Applications (voter self-service) ────────────────────────────
         Route::get('/candidacy/apply', [CandidacyApplicationController::class, 'create'])->name('organisations.candidacy.create');
         Route::post('/candidacy/apply', [CandidacyApplicationController::class, 'store']) ->name('organisations.candidacy.apply');
@@ -105,7 +120,7 @@ Route::prefix('organisations/{organisation:slug}')
             ->name('organisations.membership.dashboard');
 
         // ── Membership Applications management (admin/commission only) ──────────────
-        Route::prefix('/membership')->name('organisations.membership.')->group(function () {
+        Route::prefix('/membership')->name('organisations.membership.')->scopeBindings()->group(function () {
             Route::get('/applications', [MembershipApplicationController::class, 'index'])
                 ->name('applications.index');
 
@@ -148,6 +163,7 @@ Route::prefix('organisations/{organisation:slug}')
             Route::prefix('/newsletters')->name('newsletters.')->group(function () {
                 Route::get('/',                          [OrganisationNewsletterController::class, 'index'])           ->name('index');
                 Route::get('/create',                    [OrganisationNewsletterController::class, 'create'])          ->name('create');
+                Route::post('/preview-count',            [OrganisationNewsletterController::class, 'previewCount'])    ->name('previewCount');
                 Route::post('/',                         [OrganisationNewsletterController::class, 'store'])           ->name('store');
                 Route::get('/{newsletter}',              [OrganisationNewsletterController::class, 'show'])            ->name('show');
                 Route::get('/{newsletter}/edit',         [OrganisationNewsletterController::class, 'edit'])            ->name('edit');
@@ -168,14 +184,38 @@ Route::prefix('organisations/{organisation:slug}')
         // ── Members List (formal paid members only) ───────────────────────────────
         Route::get('/members',        [MemberController::class, 'index'])  ->name('organisations.members.index');
         Route::get('/members/export', [MemberController::class, 'export']) ->name('organisations.members.export');
+        Route::post('/members',       [MemberController::class, 'store'])   ->name('organisations.members.store');
 
-        // ── Membership Fee & Renewal Management ──────────────────────────────────
+        // ── Member Lifecycle (Phase 3D: DDD Use Cases) ────────────────────────────
         Route::prefix('/members/{member}')->name('organisations.members.')->group(function () {
+            // Financial operations (DDD use cases)
+            Route::patch('/mark-paid',       [MemberController::class, 'markPaid'])       ->name('mark-paid');
+            Route::patch('/waive-fees',      [MemberController::class, 'waiveFees'])      ->name('waive-fees');
+            Route::post('/record-payment',   [MemberController::class, 'recordPayment'])  ->name('record-payment');
+            Route::get('/finance',           [MemberController::class, 'finance'])        ->name('finance');
+
+            // Member status operations (DDD use cases)
+            Route::patch('/suspend',         [MemberController::class, 'suspend'])        ->name('suspend');
+            Route::patch('/archive',         [MemberController::class, 'archive'])        ->name('archive');
+
+            // Legacy routes (to be refactored in Phase 4)
             Route::get('/fees',             [MembershipFeeController::class,     'index']) ->name('fees.index');
+            Route::get('/fees/create',      [MembershipFeeController::class,     'create']) ->name('fees.create');
+            Route::post('/fees',            [MembershipFeeController::class,     'store'])  ->name('fees.store');
             Route::post('/fees/{fee}/pay',  [MembershipFeeController::class,     'pay'])   ->name('fees.pay');
             Route::post('/fees/{fee}/waive',[MembershipFeeController::class,     'waive']) ->name('fees.waive');
             Route::post('/renew',           [MembershipRenewalController::class, 'store']) ->name('renew');
         });
+
+        // ── Contributions ─────────────────────────────────────────────────────────
+        Route::prefix('contributions')->name('organisations.contributions.')->group(function () {
+            Route::get('/', [ContributionController::class, 'index'])->name('index');
+            Route::get('/create', [ContributionController::class, 'create'])->name('create');
+            Route::post('/', [ContributionController::class, 'store'])->name('store');
+            Route::get('/{contribution}', [ContributionController::class, 'show'])->name('show');
+        });
+
+        Route::get('/leaderboard', [ContributionController::class, 'leaderboard'])->name('organisations.leaderboard');
 
         // ── Member Invitations ────────────────────────────────────────────────────
         Route::prefix('/members')->name('organisations.members.')->group(function () {
@@ -183,6 +223,9 @@ Route::prefix('organisations/{organisation:slug}')
             Route::post('/invite',             [OrganisationMemberInvitationController::class, 'store'])  ->name('invite.store');
             Route::delete('/invitations/{invitation}', [OrganisationMemberInvitationController::class, 'destroy'])->name('invitations.destroy');
         });
+
+        // ── Committee Management ───────────────────────────────────────────────────
+        // (Route lives in routes/committee/committeeRoutes.php for proper model binding)
 
         // ── Elections ─────────────────────────────────────────────────────────────
         Route::get('/elections',        [ElectionManagementController::class, 'listForOrganisation']) ->name('organisations.elections.index');
@@ -198,47 +241,149 @@ Route::prefix('organisations/{organisation:slug}')
         });
 
         // ── Election Voter Management (ElectionMembership — real elections only) ──
-        Route::prefix('/elections/{election:slug}')->group(function () {
-            // ── Public candidacy application page (voter-facing, per election) ────
-            Route::get('/candidacy/apply', [CandidacyApplicationController::class, 'applyForm'])
-                ->name('organisations.elections.candidacy.apply');
-            // ── Voter bulk import ──────────────────────────────────────────────
-            Route::prefix('/voters')->name('elections.voters.')->group(function () {
-                Route::get('/import',          [VoterImportController::class, 'create'])  ->name('import.create');
-                Route::get('/import/tutorial', [VoterImportController::class, 'tutorial'])->name('import.tutorial');
-                Route::get('/import/template', [VoterImportController::class, 'template'])->name('import.template');
-                Route::post('/import/preview', [VoterImportController::class, 'preview']) ->name('import.preview');
-                Route::post('/import',         [VoterImportController::class, 'import'])  ->name('import');
+        // NOTE: scopeBindings intentionally omitted. Election::resolveRouteBinding()
+        // already bypasses global scopes. Adding scopeBindings here would conflict
+        // with BelongsToTenant (which resolves to platform org before middleware runs).
+        // Controllers MUST explicitly verify election belongs to the organisation.
+        Route::prefix('/elections/{election}')
+            ->group(function () {
+
+            // ── ADMINISTRATION PHASE ONLY ──────────────────────────────────────────
+            Route::middleware(['election.state:manage_posts'])->group(function () {
+                Route::get('/posts',              [PostManagementController::class, 'index'])  ->name('organisations.elections.posts.index');
+                Route::post('/posts',             [PostManagementController::class, 'store'])  ->name('organisations.elections.posts.store');
+                Route::patch('/posts/{post}',     [PostManagementController::class, 'update']) ->name('organisations.elections.posts.update');
+                Route::delete('/posts/{post}',    [PostManagementController::class, 'destroy'])->name('organisations.elections.posts.destroy');
             });
 
-            Route::get('/voters',                   [ElectionVoterController::class, 'index'])     ->name('elections.voters.index');
-            Route::post('/voters',                  [ElectionVoterController::class, 'store'])     ->name('elections.voters.store');
-            Route::post('/voters/bulk',             [ElectionVoterController::class, 'bulkStore']) ->name('elections.voters.bulk');
-            Route::get('/voters/export',            [ElectionVoterController::class, 'export'])    ->name('elections.voters.export');
-            Route::delete('/voters/{membership}',   [ElectionVoterController::class, 'destroy'])   ->name('elections.voters.destroy');
-            Route::post('/voters/{membership}/approve',             [ElectionVoterController::class, 'approve'])           ->name('elections.voters.approve');
-            Route::post('/voters/{membership}/suspend',             [ElectionVoterController::class, 'suspend'])           ->name('elections.voters.suspend');
-            Route::post('/voters/{membership}/propose-suspension',  [ElectionVoterController::class, 'proposeSuspension']) ->name('elections.voters.propose-suspension');
-            Route::post('/voters/{membership}/confirm-suspension',  [ElectionVoterController::class, 'confirmSuspension']) ->name('elections.voters.confirm-suspension');
-            Route::post('/voters/{membership}/cancel-proposal',     [ElectionVoterController::class, 'cancelProposal'])    ->name('elections.voters.cancel-proposal');
+            Route::middleware(['election.state:import_voters'])->group(function () {
+                Route::prefix('/voters')->name('elections.voters.')->group(function () {
+                    Route::get('/import',          [VoterImportController::class, 'create'])  ->name('import.create');
+                    Route::get('/import/tutorial', [VoterImportController::class, 'tutorial'])->name('import.tutorial');
+                    Route::get('/import/template', [VoterImportController::class, 'template'])->name('import.template');
+                    Route::post('/import/preview', [VoterImportController::class, 'preview']) ->name('import.preview');
+                    Route::post('/import',         [VoterImportController::class, 'import'])  ->name('import');
+                });
 
-            // ── Voter-facing positions page (read-only) ───────────────────────────
+                Route::get('/voters/manage',            [ElectionVoterController::class, 'index'])     ->name('elections.voters.index');
+                Route::post('/voters/manage',           [ElectionVoterController::class, 'store'])     ->name('elections.voters.store');
+                Route::post('/voters/manage/bulk',      [ElectionVoterController::class, 'bulkStore']) ->name('elections.voters.bulk');
+                Route::get('/voters/manage/export',     [ElectionVoterController::class, 'export'])    ->name('elections.voters.export');
+                Route::delete('/voters/{membership}',   [ElectionVoterController::class, 'destroy'])   ->name('elections.voters.destroy');
+                Route::post('/voters/{membership}/approve',             [ElectionVoterController::class, 'approve'])           ->name('elections.voters.approve');
+                Route::post('/voters/{membership}/suspend',             [ElectionVoterController::class, 'suspend'])           ->name('elections.voters.suspend');
+                Route::post('/voters/{membership}/propose-suspension',  [ElectionVoterController::class, 'proposeSuspension']) ->name('elections.voters.propose-suspension');
+                Route::post('/voters/{membership}/confirm-suspension',  [ElectionVoterController::class, 'confirmSuspension']) ->name('elections.voters.confirm-suspension');
+                Route::post('/voters/{membership}/cancel-proposal',     [ElectionVoterController::class, 'cancelProposal'])    ->name('elections.voters.cancel-proposal');
+            });
+
+            // ── NOMINATION PHASE ONLY ──────────────────────────────────────────────
+            Route::middleware(['election.state:apply_candidacy'])->group(function () {
+                Route::get('/candidacy/apply', [CandidacyApplicationController::class, 'applyForm'])
+                    ->name('organisations.elections.candidacy.apply');
+            });
+
+            Route::middleware(['election.state:approve_candidacy'])->group(function () {
+                Route::get('/candidacies',                             [CandidacyManagementController::class, 'index'])  ->name('organisations.elections.candidacies.index');
+                Route::post('/posts/{post}/candidacies',               [CandidacyManagementController::class, 'store'])  ->name('organisations.elections.candidacies.store');
+                Route::patch('/posts/{post}/candidacies/{candidacy}', [CandidacyManagementController::class, 'update']) ->name('organisations.elections.candidacies.update');
+                Route::delete('/posts/{post}/candidacies/{candidacy}',[CandidacyManagementController::class, 'destroy'])->name('organisations.elections.candidacies.destroy');
+
+                Route::get('/candidacy/applications',                        [CandidacyReviewController::class, 'index'])  ->name('organisations.elections.candidacy.applications');
+                Route::patch('/candidacy/applications/{application}',        [CandidacyReviewController::class, 'review']) ->name('organisations.elections.candidacy.review');
+            });
+
+            // ── MULTI-STATE (Verification - allowed in voting, results_pending, results) ──
+            Route::middleware(['election.state:verify_vote'])->group(function () {
+                Route::post('/voters/verify',                           [VoterVerificationController::class, 'store'])  ->name('elections.voters.verify');
+                Route::delete('/voters/{verification}/revoke',          [VoterVerificationController::class, 'revoke']) ->name('elections.voters.verification.revoke');
+            });
+
+            // ── RESULTS PHASE ONLY ─────────────────────────────────────────────────
+            Route::middleware(['election.state:view_results'])->group(function () {
+                Route::get('/receipt-codes',                            [VotingReceiptController::class, 'index'])      ->name('organisations.election.receipt-codes');
+                Route::post('/votes/confirm-correct',                   [VotingReceiptController::class, 'confirmCorrect'])->name('organisations.vote.confirm-correct');
+            });
+
+            // ── MANAGEMENT DASHBOARD (accessible during administration and nomination phases) ──
+            Route::get('/management', [ElectionManagementController::class, 'index'])
+                ->name('organisations.elections.management');
+
+            // ── TIMELINE SETTINGS ─────────────────────────────────────────────────────
+            Route::get('/timeline', [ElectionManagementController::class, 'timeline'])
+                ->name('organisations.elections.timeline');
+            Route::patch('/timeline', [ElectionManagementController::class, 'updateTimeline'])
+                ->name('organisations.elections.update-timeline');
+
+            // ── READ-ONLY PAGES (accessible in multiple/all phases) ──────────────────
             Route::get('/positions',          [OrganisationController::class, 'voterPosts'])->name('organisations.elections.positions');
+            Route::get('/candidates',         [OrganisationController::class, 'voterCandidates'])->name('organisations.elections.candidates');
+            Route::get('/voters', [OrganisationController::class, 'voters'])
+                ->name('organisations.elections.voters')
+                ->middleware('throttle:60,1');
 
-            // ── Posts management (positions within an election) ────────────────────
-            Route::get('/posts',              [PostManagementController::class, 'index'])  ->name('organisations.elections.posts.index');
-            Route::post('/posts',             [PostManagementController::class, 'store'])  ->name('organisations.elections.posts.store');
-            Route::patch('/posts/{post}',     [PostManagementController::class, 'update']) ->name('organisations.elections.posts.update');
-            Route::delete('/posts/{post}',    [PostManagementController::class, 'destroy'])->name('organisations.elections.posts.destroy');
-
-            // ── Candidacies management (candidates per post) ───────────────────────
-            Route::get('/candidacies',                             [CandidacyManagementController::class, 'index'])  ->name('organisations.elections.candidacies.index');
-            Route::post('/posts/{post}/candidacies',               [CandidacyManagementController::class, 'store'])  ->name('organisations.elections.candidacies.store');
-            Route::patch('/posts/{post}/candidacies/{candidacy}', [CandidacyManagementController::class, 'update']) ->name('organisations.elections.candidacies.update');
-            Route::delete('/posts/{post}/candidacies/{candidacy}',[CandidacyManagementController::class, 'destroy'])->name('organisations.elections.candidacies.destroy');
-
-            // ── Candidacy application review (officer-only) ────────────────────────
-            Route::get('/candidacy/applications',                        [CandidacyReviewController::class, 'index'])  ->name('organisations.elections.candidacy.applications');
-            Route::patch('/candidacy/applications/{application}',        [CandidacyReviewController::class, 'review']) ->name('organisations.elections.candidacy.review');
+            // ── Election State Machine (admin-only phase management) ──────────────────
+            // All state machine operations wrapped with 'configure_election' operation
+            Route::middleware(['election.state:configure_election'])->group(function () {
+                Route::post('/complete-administration', [ElectionManagementController::class, 'completeAdministration'])
+                    ->name('organisations.elections.complete-administration');
+                Route::post('/complete-nomination', [ElectionManagementController::class, 'completeNomination'])
+                    ->name('organisations.elections.complete-nomination');
+                Route::post('/force-close-nomination', [ElectionManagementController::class, 'forceCloseNomination'])
+                    ->name('organisations.elections.force-close-nomination');
+                Route::patch('/suggested-dates', [ElectionManagementController::class, 'updateSuggestedDates'])
+                    ->name('organisations.elections.update-suggested-dates');
+                Route::patch('/voting-dates', [ElectionManagementController::class, 'updateVotingDates'])
+                    ->name('organisations.elections.update-voting-dates');
+            });
         });
+
+        // ── Governance Levels Configuration (admin/owner only) ──────────────────
+        Route::prefix('/governance/levels')->name('organisations.governance.levels.')->group(function () {
+            Route::get('/', function (\Illuminate\Http\Request $request) {
+                $organisation = $request->attributes->get('organisation');
+                return \Inertia\Inertia::render('Admin/GovernanceLevels', [
+                    'organisation' => $organisation,
+                ]);
+            })->name('index');
+
+            Route::prefix('api')->group(function () {
+                Route::get('/',                  [\App\Http\Controllers\Admin\GovernanceLevelController::class, 'index']);
+                Route::post('/',                 [\App\Http\Controllers\Admin\GovernanceLevelController::class, 'store']);
+                Route::get('/{id}',              [\App\Http\Controllers\Admin\GovernanceLevelController::class, 'show']);
+                Route::put('/{id}',              [\App\Http\Controllers\Admin\GovernanceLevelController::class, 'update']);
+                Route::delete('/{id}',           [\App\Http\Controllers\Admin\GovernanceLevelController::class, 'destroy']);
+            });
+        });
+
+        // ── Geo Units (governance-projected geography) ─────────────────────────
+        Route::prefix('/geo/units')->name('organisations.geo.units.')->group(function () {
+            Route::get('/', function (\Illuminate\Http\Request $request) {
+                $organisation = $request->attributes->get('organisation');
+                return \Inertia\Inertia::render('Admin/GeoUnits', [
+                    'organisation' => $organisation,
+                ]);
+            })->name('index');
+
+            Route::prefix('api')->group(function () {
+                Route::get('/',          [GeoUnitController::class, 'index']);
+                Route::post('/',         [GeoUnitController::class, 'store']);
+                Route::get('/tree',      [GeoUnitController::class, 'tree']);
+                Route::get('/lookup',    [GeoUnitController::class, 'lookup']);
+                Route::get('/{id}',      [GeoUnitController::class, 'show']);
+            });
+        });
+
+        // ── Canonical Committee Creation (Governance Matrix + Event Sourcing) ────
+        Route::prefix('/committees/api')->name('organisations.committees.api.')->group(function () {
+            Route::post('/create-canonical',
+                [\App\Http\Controllers\Committee\CreateCommitteeController::class, 'store']
+            )->name('create-canonical');
+        });
+
+        // ── Governance API Routes (session auth, JSON only, NO Inertia) ────────────
+        Route::prefix('/api/governance')
+            ->middleware(['json.api', 'auth', 'verified', 'ensure.organisation'])
+            ->name('api.governance.')
+            ->group(base_path('routes/governance-api.php'));
     });

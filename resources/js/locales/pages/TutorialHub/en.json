@@ -1,0 +1,81 @@
+{
+  "title": "Tutorials & Guides",
+  "subtitle": "Step-by-step guides for every feature. Browse by category and get started in minutes.",
+  "breadcrumb": "Tutorials",
+  "read_guide": "Read guide →",
+  "sections": {
+    "getting_started": "Getting Started",
+    "elections": "Elections",
+    "committees": "Committees",
+    "membership": "Membership",
+    "security_architecture": "Security & Architecture",
+    "try_it_live": "Try It Live"
+  },
+  "cards": {
+    "create_organisation": {
+      "title": "Create an Organisation",
+      "description": "Step-by-step guide to creating an organisation with geographic scope and committee structure.",
+      "badge": "Beginner"
+    },
+    "governance_levels": {
+      "title": "Governance Levels",
+      "description": "Understand and configure the governance hierarchy levels for your organisation.",
+      "badge": "Setup"
+    },
+    "election_journey": {
+      "title": "Election Journey",
+      "description": "Walk through all 7 phases of an election lifecycle — from setup to published results.",
+      "badge": "Overview"
+    },
+    "election_setup": {
+      "title": "Election Setup",
+      "description": "Configure election settings, dates, posts, and candidacy rules.",
+      "badge": "Config"
+    },
+    "voter_import": {
+      "title": "Voter Import",
+      "description": "Import voters from CSV — format guide, field mapping, and common errors.",
+      "badge": "Import"
+    },
+    "voter_verification": {
+      "title": "Voter Verification",
+      "description": "How voter identity is verified during and after the election process.",
+      "badge": "Security"
+    },
+    "committee_management": {
+      "title": "Committee Management",
+      "description": "Create committees, assign members, edit details, and manage the full committee lifecycle.",
+      "badge": "Full Guide"
+    },
+    "membership_modes": {
+      "title": "Membership Modes",
+      "description": "Understand the difference between election-only and full membership modes.",
+      "badge": "Concepts"
+    },
+    "election_architecture": {
+      "title": "Election Architecture",
+      "description": "Visual overview of the election lifecycle state machine — how elections move through each phase with immutable audit trails.",
+      "badge": "Architecture"
+    },
+    "election_security": {
+      "title": "Election Security & State Machine",
+      "description": "How the tamper-proof state machine guarantees election integrity through cryptographic verification and verifiable results.",
+      "badge": "Security"
+    },
+    "platform_security": {
+      "title": "Platform Security",
+      "description": "GDPR Article 32, BSI IT-Grundschutz, end-to-end encryption, and German data hosting — the full security stack explained.",
+      "badge": "Compliance"
+    },
+    "voting_security": {
+      "title": "Voting Security Architecture",
+      "description": "Five-layer security model: voter anonymity, device fingerprinting, IP controls, cryptographic verification, and multi-tenant isolation.",
+      "badge": "Deep Dive"
+    },
+    "public_demo": {
+      "title": "Public Demo",
+      "description": "Experience the full voting workflow anonymously — no account required. Try it yourself.",
+      "badge": "Interactive"
+    }
+  }
+}

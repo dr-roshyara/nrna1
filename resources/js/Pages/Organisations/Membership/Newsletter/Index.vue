@@ -9,7 +9,7 @@
         {{ page.props.flash.success }}
       </div>
       <div v-if="page.props.errors?.state || page.props.errors?.error"
-           class="mb-6 rounded-lg bg-red-50 border border-red-200 p-4 text-red-800 text-sm">
+           class="mb-6 rounded-lg bg-danger-50 border border-danger-200 p-4 text-danger-800 text-sm">
         {{ page.props.errors?.state ?? page.props.errors?.error }}
       </div>
 
@@ -24,11 +24,20 @@
           </nav>
           <h1 class="text-2xl font-bold text-slate-900">{{ t.title }}</h1>
         </div>
-        <a :href="route('organisations.membership.newsletters.create', organisation.slug)"
-           class="inline-flex items-center gap-2 rounded-lg bg-purple-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 transition-colors">
-          <PencilSquareIcon class="w-4 h-4" />
-          {{ t.compose }}
-        </a>
+        <div class="flex items-center gap-2">
+          <a :href="route('organisations.membership.newsletters.create', organisation.slug)"
+             class="inline-flex items-center gap-2 rounded-lg bg-purple-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 transition-colors">
+            <PencilSquareIcon class="w-4 h-4" />
+            {{ t.compose }}
+          </a>
+          <a :href="route('guides.newsletter-guide', organisation.slug)"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 rounded-lg border border-amber-300 bg-amber-50 px-4 py-2.5 text-amber-700 text-sm font-medium hover:bg-amber-100 transition-colors">
+            <BookOpenIcon class="w-4 h-4" />
+            {{ t.guide_button }}
+          </a>
+        </div>
       </div>
 
       <!-- Empty state -->
@@ -50,6 +59,7 @@
           <thead class="bg-slate-50">
             <tr>
               <th class="px-5 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide">{{ t.col_subject }}</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide">{{ t.col_audience }}</th>
               <th class="px-5 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide">{{ t.col_status }}</th>
               <th class="px-5 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide">{{ t.col_recipients }}</th>
               <th class="px-5 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide">{{ t.col_date }}</th>
@@ -60,6 +70,11 @@
             <tr v-for="nl in newsletters.data" :key="nl.id" class="hover:bg-slate-50 transition-colors">
               <td class="px-5 py-4">
                 <p class="text-sm font-medium text-slate-900 truncate max-w-xs">{{ nl.subject }}</p>
+              </td>
+              <td class="px-5 py-4">
+                <span :class="audienceBadgeClass(nl.audience_type)" class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold whitespace-nowrap">
+                  {{ getAudienceLabel(nl.audience_type) }}
+                </span>
               </td>
               <td class="px-5 py-4">
                 <span :class="statusClass(nl.status)" class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold">
@@ -86,7 +101,7 @@
                         @submit.prevent="deleteDraft(nl.id)"
                         class="inline">
                     <button type="submit"
-                            class="text-xs font-medium text-red-500 hover:text-red-700">{{ t.delete }}</button>
+                            class="text-xs font-medium text-danger-500 hover:text-danger-700">{{ t.delete }}</button>
                   </form>
                 </div>
               </td>
@@ -115,7 +130,7 @@
 import { computed } from 'vue'
 import { usePage, router } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
-import { CheckCircleIcon, EnvelopeOpenIcon, PencilSquareIcon } from '@heroicons/vue/24/outline'
+import { BookOpenIcon, CheckCircleIcon, EnvelopeOpenIcon, PencilSquareIcon } from '@heroicons/vue/24/outline'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 
 const props = defineProps({
@@ -126,27 +141,44 @@ const props = defineProps({
 const page       = usePage()
 const { locale } = useI18n()
 
+const audienceLabels = {
+  all_members: 'All Members',
+  members_full: 'Full Members',
+  members_associate: 'Associate Members',
+  members_overdue: 'Members with Overdue Fees',
+  election_voters: 'Election Voters',
+  election_not_voted: 'Voters Who Haven\'t Voted',
+  election_voted: 'Voters Who Already Voted',
+  election_candidates: 'Candidates',
+  election_observers: 'Observers',
+  election_committee: 'Election Committee',
+  election_all: 'All Election Participants',
+  org_participants_staff: 'Staff',
+  org_participants_guests: 'Guests',
+  org_admins: 'Organisation Admins',
+}
+
 const translations = {
   en: {
-    title: 'Newsletters', compose: 'Compose',
+    title: 'Newsletters', compose: 'Compose', guide_button: 'User Guide',
     empty_title: 'No newsletters yet', empty_desc: 'Compose your first newsletter to send to all active members.',
-    col_subject: 'Subject', col_status: 'Status', col_recipients: 'Sent / Total', col_date: 'Date',
+    col_subject: 'Subject', col_audience: 'Audience', col_status: 'Status', col_recipients: 'Sent / Total', col_date: 'Date',
     view: 'View', edit: 'Edit', delete: 'Delete', page: 'Page',
     status_draft: 'Draft', status_queued: 'Queued', status_processing: 'Sending',
     status_completed: 'Completed', status_failed: 'Failed', status_cancelled: 'Cancelled',
   },
   de: {
-    title: 'Newsletter', compose: 'Verfassen',
+    title: 'Newsletter', compose: 'Verfassen', guide_button: 'Benutzerhandbuch',
     empty_title: 'Noch keine Newsletter', empty_desc: 'Verfassen Sie Ihren ersten Newsletter für alle aktiven Mitglieder.',
-    col_subject: 'Betreff', col_status: 'Status', col_recipients: 'Gesendet / Gesamt', col_date: 'Datum',
+    col_subject: 'Betreff', col_audience: 'Zielgruppe', col_status: 'Status', col_recipients: 'Gesendet / Gesamt', col_date: 'Datum',
     view: 'Ansehen', edit: 'Bearbeiten', delete: 'Löschen', page: 'Seite',
     status_draft: 'Entwurf', status_queued: 'In Warteschlange', status_processing: 'Wird gesendet',
     status_completed: 'Abgeschlossen', status_failed: 'Fehlgeschlagen', status_cancelled: 'Abgebrochen',
   },
   np: {
-    title: 'न्युजलेटर', compose: 'लेख्नुहोस्',
+    title: 'न्युजलेटर', compose: 'लेख्नुहोस्', guide_button: 'प्रयोगकर्ता गाइड',
     empty_title: 'अहिलेसम्म कुनै न्युजलेटर छैन', empty_desc: 'सबै सक्रिय सदस्यहरूलाई पठाउन पहिलो न्युजलेटर लेख्नुहोस्।',
-    col_subject: 'विषय', col_status: 'स्थिति', col_recipients: 'पठाइएको / जम्मा', col_date: 'मिति',
+    col_subject: 'विषय', col_audience: 'दर्शक', col_status: 'स्थिति', col_recipients: 'पठाइएको / जम्मा', col_date: 'मिति',
     view: 'हेर्नुहोस्', edit: 'सम्पादन', delete: 'मेटाउनुहोस्', page: 'पृष्ठ',
     status_draft: 'मस्यौदा', status_queued: 'पंक्तिमा', status_processing: 'पठाउँदै',
     status_completed: 'सम्पन्न', status_failed: 'असफल', status_cancelled: 'रद्द',
@@ -157,12 +189,36 @@ const t = computed(() => translations[locale.value] ?? translations.en)
 
 const statusClass = (status) => ({
   draft:      'bg-slate-100 text-slate-600',
-  queued:     'bg-blue-100 text-blue-700',
+  queued:     'bg-primary-100 text-primary-700',
   processing: 'bg-yellow-100 text-yellow-700',
   completed:  'bg-green-100 text-green-700',
-  failed:     'bg-red-100 text-red-700',
+  failed:     'bg-danger-100 text-danger-700',
   cancelled:  'bg-slate-100 text-slate-500',
 }[status] ?? 'bg-slate-100 text-slate-500')
+
+const getAudienceLabel = (type) => {
+  return audienceLabels[type] || type
+}
+
+const audienceBadgeClass = (type) => {
+  const classes = {
+    all_members: 'bg-primary-100 text-primary-800',
+    members_full: 'bg-green-100 text-green-800',
+    members_associate: 'bg-purple-100 text-purple-800',
+    members_overdue: 'bg-orange-100 text-orange-800',
+    election_voters: 'bg-indigo-100 text-indigo-800',
+    election_not_voted: 'bg-yellow-100 text-yellow-800',
+    election_voted: 'bg-green-100 text-green-800',
+    election_candidates: 'bg-danger-100 text-danger-800',
+    election_observers: 'bg-cyan-100 text-cyan-800',
+    election_committee: 'bg-rose-100 text-rose-800',
+    election_all: 'bg-violet-100 text-violet-800',
+    org_participants_staff: 'bg-amber-100 text-amber-800',
+    org_participants_guests: 'bg-lime-100 text-lime-800',
+    org_admins: 'bg-fuchsia-100 text-fuchsia-800',
+  }
+  return classes[type] || 'bg-neutral-100 text-neutral-800'
+}
 
 const formatDate = (iso) => {
   if (!iso) return '—'
@@ -174,3 +230,4 @@ const deleteDraft = (id) => {
   router.delete(route('organisations.membership.newsletters.destroy', [props.organisation.slug, id]))
 }
 </script>
+

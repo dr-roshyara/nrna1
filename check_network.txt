@@ -1,0 +1,16 @@
+DO THIS IN BROWSER:
+
+1. Open DevTools (F12)
+2. Click the "Network" tab
+3. Refresh the page (Ctrl+R)
+4. Look for a request named "voters" or similar
+5. Click on it
+6. Look at the "Response" tab
+7. Search for "unassignedMembers" in the response
+8. Tell me: Is unassignedMembers an empty array [] or does it contain data?
+
+Also check:
+9. Open DevTools Console tab (F12 → Console)
+10. Type: usePage().props
+11. Press Enter
+12. Look at what it shows - specifically the "unassignedMembers" property

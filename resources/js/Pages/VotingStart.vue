@@ -1,12 +1,12 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+  <div class="min-h-screen bg-gradient-to-b from-primary-50 to-white">
     <!-- Hero Section -->
     <section class="relative py-12 md:py-20 lg:py-28">
       <div class="container mx-auto px-4 md:px-6 lg:px-8">
         <div class="text-center max-w-4xl mx-auto">
 
           <!-- Brand Badge -->
-          <div class="inline-flex items-center justify-center mb-6 md:mb-8 px-4 md:px-6 py-2 md:py-3 bg-blue-900 text-white rounded-full text-sm md:text-lg font-semibold shadow-lg">
+          <div class="inline-flex items-center justify-center mb-6 md:mb-8 px-4 md:px-6 py-2 md:py-3 bg-primary-900 text-white rounded-full text-sm md:text-lg font-semibold shadow-lg">
             <svg class="w-5 h-5 md:w-6 md:h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
             </svg>
@@ -14,27 +14,27 @@
           </div>
 
           <!-- Main Headline -->
-          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-blue-900 mb-4 md:mb-6 leading-tight tracking-tight">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-primary-900 mb-4 md:mb-6 leading-tight tracking-tight">
             {{ $t('pages.voting-start.hero.subtitle') }}
           </h1>
 
           <!-- Description -->
-          <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 mb-8 md:mb-10 leading-relaxed max-w-2xl mx-auto">
+          <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-neutral-700 mb-8 md:mb-10 leading-relaxed max-w-2xl mx-auto">
             {{ $t('pages.voting-start.hero.description') }}
           </p>
 
           <!-- Pricing Badge -->
-          <div class="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-3 bg-green-50 border border-green-200 rounded-xl px-4 md:px-6 py-3 md:py-4 mb-10 md:mb-12">
-            <span class="text-sm md:text-base font-bold text-green-800">{{ $t('pages.voting-start.pricing.free_trial') }}</span>
-            <span class="text-gray-600 hidden sm:inline">•</span>
-            <span class="text-sm md:text-base font-semibold text-blue-800">{{ $t('pages.voting-start.pricing.from_month') }}</span>
+          <div class="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-3 bg-success-50 border border-success-200 rounded-xl px-4 md:px-6 py-3 md:py-4 mb-10 md:mb-12">
+            <span class="text-sm md:text-base font-bold text-success-800">{{ $t('pages.voting-start.pricing.free_trial') }}</span>
+            <span class="text-neutral-600 hidden sm:inline">•</span>
+            <span class="text-sm md:text-base font-semibold text-primary-800">{{ $t('pages.voting-start.pricing.from_month') }}</span>
           </div>
 
           <!-- Primary CTA - Mobile Optimized -->
           <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-stretch sm:items-center mb-12 md:mb-16">
             <a
               href="/voting/election"
-              class="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-blue-900 text-white font-bold text-sm md:text-lg rounded-xl hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-colors shadow-lg min-h-[44px] md:min-h-[56px]"
+              class="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-primary-900 text-white font-bold text-sm md:text-lg rounded-xl hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 transition-colors shadow-lg min-h-[44px] md:min-h-[56px]"
             >
               <svg class="w-5 h-5 md:w-6 md:h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"/>
@@ -44,7 +44,7 @@
 
             <a
               href="/pricing"
-              class="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 border-2 border-blue-900 text-blue-900 font-bold text-sm md:text-lg rounded-xl hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-colors min-h-[44px] md:min-h-[56px]"
+              class="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 border-2 border-primary-900 text-primary-900 font-bold text-sm md:text-lg rounded-xl hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-primary-100 transition-colors min-h-[44px] md:min-h-[56px]"
             >
               <svg class="w-5 h-5 md:w-6 md:h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
@@ -56,32 +56,32 @@
 
           <!-- Security & Trust Badges - Mobile Optimized -->
           <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center justify-center p-3 md:p-4 bg-white rounded-lg md:rounded-xl border border-blue-100">
-              <div class="w-8 h-8 md:w-10 md:h-10 bg-blue-100 rounded-full flex items-center justify-center mr-0 md:mr-3 mb-2 md:mb-0">
-                <span class="text-blue-600 font-bold text-xs md:text-sm">✓</span>
+            <div class="flex flex-col md:flex-row items-center justify-center p-3 md:p-4 bg-white rounded-lg md:rounded-xl border border-primary-100">
+              <div class="w-8 h-8 md:w-10 md:h-10 bg-primary-100 rounded-full flex items-center justify-center mr-0 md:mr-3 mb-2 md:mb-0">
+                <span class="text-primary-600 font-bold text-xs md:text-sm">✓</span>
               </div>
-              <span class="text-xs md:text-sm font-semibold text-gray-800 text-center md:text-left">{{ $t('pages.voting-start.features.gdpr') }}</span>
+              <span class="text-xs md:text-sm font-semibold text-neutral-800 text-center md:text-left">{{ $t('pages.voting-start.features.gdpr') }}</span>
             </div>
 
-            <div class="flex flex-col md:flex-row items-center justify-center p-3 md:p-4 bg-white rounded-lg md:rounded-xl border border-blue-100">
-              <div class="w-8 h-8 md:w-10 md:h-10 bg-blue-100 rounded-full flex items-center justify-center mr-0 md:mr-3 mb-2 md:mb-0">
-                <span class="text-blue-600 font-bold text-xs md:text-sm">✓</span>
+            <div class="flex flex-col md:flex-row items-center justify-center p-3 md:p-4 bg-white rounded-lg md:rounded-xl border border-primary-100">
+              <div class="w-8 h-8 md:w-10 md:h-10 bg-primary-100 rounded-full flex items-center justify-center mr-0 md:mr-3 mb-2 md:mb-0">
+                <span class="text-primary-600 font-bold text-xs md:text-sm">✓</span>
               </div>
-              <span class="text-xs md:text-sm font-semibold text-gray-800 text-center md:text-left">{{ $t('pages.voting-start.features.german_hosting') }}</span>
+              <span class="text-xs md:text-sm font-semibold text-neutral-800 text-center md:text-left">{{ $t('pages.voting-start.features.german_hosting') }}</span>
             </div>
 
-            <div class="flex flex-col md:flex-row items-center justify-center p-3 md:p-4 bg-white rounded-lg md:rounded-xl border border-blue-100">
-              <div class="w-8 h-8 md:w-10 md:h-10 bg-blue-100 rounded-full flex items-center justify-center mr-0 md:mr-3 mb-2 md:mb-0">
-                <span class="text-blue-600 font-bold text-xs md:text-sm">✓</span>
+            <div class="flex flex-col md:flex-row items-center justify-center p-3 md:p-4 bg-white rounded-lg md:rounded-xl border border-primary-100">
+              <div class="w-8 h-8 md:w-10 md:h-10 bg-primary-100 rounded-full flex items-center justify-center mr-0 md:mr-3 mb-2 md:mb-0">
+                <span class="text-primary-600 font-bold text-xs md:text-sm">✓</span>
               </div>
-              <span class="text-xs md:text-sm font-semibold text-gray-800 text-center md:text-left">{{ $t('pages.voting-start.features.security') }}</span>
+              <span class="text-xs md:text-sm font-semibold text-neutral-800 text-center md:text-left">{{ $t('pages.voting-start.features.security') }}</span>
             </div>
 
-            <div class="flex flex-col md:flex-row items-center justify-center p-3 md:p-4 bg-white rounded-lg md:rounded-xl border border-blue-100">
-              <div class="w-8 h-8 md:w-10 md:h-10 bg-blue-100 rounded-full flex items-center justify-center mr-0 md:mr-3 mb-2 md:mb-0">
-                <span class="text-blue-600 font-bold text-xs md:text-sm">✓</span>
+            <div class="flex flex-col md:flex-row items-center justify-center p-3 md:p-4 bg-white rounded-lg md:rounded-xl border border-primary-100">
+              <div class="w-8 h-8 md:w-10 md:h-10 bg-primary-100 rounded-full flex items-center justify-center mr-0 md:mr-3 mb-2 md:mb-0">
+                <span class="text-primary-600 font-bold text-xs md:text-sm">✓</span>
               </div>
-              <span class="text-xs md:text-sm font-semibold text-gray-800 text-center md:text-left">{{ $t('pages.voting-start.features.multilingual') }}</span>
+              <span class="text-xs md:text-sm font-semibold text-neutral-800 text-center md:text-left">{{ $t('pages.voting-start.features.multilingual') }}</span>
             </div>
           </div>
         </div>
@@ -91,52 +91,52 @@
     <!-- Features Grid -->
     <section class="py-12 md:py-16 lg:py-20 bg-white">
       <div class="container mx-auto px-4 md:px-6 lg:px-8">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-blue-900 mb-10 md:mb-12">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-primary-900 mb-10 md:mb-12">
           {{ $t('pages.voting-start.features.title') }}
         </h2>
 
         <div class="grid md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
           <!-- Feature 1: Secure Voting -->
-          <div class="text-center p-6 md:p-8 bg-blue-50 rounded-xl md:rounded-2xl border border-blue-200 hover:shadow-md transition-shadow">
-            <div class="w-12 h-12 md:w-16 md:h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
-              <svg class="w-6 h-6 md:w-8 md:h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+          <div class="text-center p-6 md:p-8 bg-primary-50 rounded-xl md:rounded-2xl border border-primary-200 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 md:w-16 md:h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
+              <svg class="w-6 h-6 md:w-8 md:h-8 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
               </svg>
             </div>
-            <h3 class="text-lg md:text-xl font-bold text-blue-900 mb-3 md:mb-4">
+            <h3 class="text-lg md:text-xl font-bold text-primary-900 mb-3 md:mb-4">
               {{ $t('pages.voting-start.features.secure.title') }}
             </h3>
-            <p class="text-sm md:text-base text-gray-700 leading-relaxed">
+            <p class="text-sm md:text-base text-neutral-700 leading-relaxed">
               {{ $t('pages.voting-start.features.secure.description') }}
             </p>
           </div>
 
           <!-- Feature 2: Easy Setup -->
-          <div class="text-center p-6 md:p-8 bg-blue-50 rounded-xl md:rounded-2xl border border-blue-200 hover:shadow-md transition-shadow">
-            <div class="w-12 h-12 md:w-16 md:h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
-              <svg class="w-6 h-6 md:w-8 md:h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+          <div class="text-center p-6 md:p-8 bg-primary-50 rounded-xl md:rounded-2xl border border-primary-200 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 md:w-16 md:h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
+              <svg class="w-6 h-6 md:w-8 md:h-8 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
               </svg>
             </div>
-            <h3 class="text-lg md:text-xl font-bold text-blue-900 mb-3 md:mb-4">
+            <h3 class="text-lg md:text-xl font-bold text-primary-900 mb-3 md:mb-4">
               {{ $t('pages.voting-start.features.easy.title') }}
             </h3>
-            <p class="text-sm md:text-base text-gray-700 leading-relaxed">
+            <p class="text-sm md:text-base text-neutral-700 leading-relaxed">
               {{ $t('pages.voting-start.features.easy.description') }}
             </p>
           </div>
 
           <!-- Feature 3: Real-time Results -->
-          <div class="text-center p-6 md:p-8 bg-blue-50 rounded-xl md:rounded-2xl border border-blue-200 hover:shadow-md transition-shadow">
-            <div class="w-12 h-12 md:w-16 md:h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
-              <svg class="w-6 h-6 md:w-8 md:h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+          <div class="text-center p-6 md:p-8 bg-primary-50 rounded-xl md:rounded-2xl border border-primary-200 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 md:w-16 md:h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
+              <svg class="w-6 h-6 md:w-8 md:h-8 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
               </svg>
             </div>
-            <h3 class="text-lg md:text-xl font-bold text-blue-900 mb-3 md:mb-4">
+            <h3 class="text-lg md:text-xl font-bold text-primary-900 mb-3 md:mb-4">
               {{ $t('pages.voting-start.features.realtime.title') }}
             </h3>
-            <p class="text-sm md:text-base text-gray-700 leading-relaxed">
+            <p class="text-sm md:text-base text-neutral-700 leading-relaxed">
               {{ $t('pages.voting-start.features.realtime.description') }}
             </p>
           </div>
@@ -145,7 +145,7 @@
     </section>
 
     <!-- Pricing Callout -->
-    <section class="py-12 md:py-16 lg:py-20 bg-gradient-to-r from-blue-900 to-blue-800">
+    <section class="py-12 md:py-16 lg:py-20 bg-gradient-to-r from-primary-900 to-primary-800">
       <div class="container mx-auto px-4 md:px-6 lg:px-8">
         <div class="text-center text-white max-w-3xl mx-auto">
           <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
@@ -156,7 +156,7 @@
           </p>
           <a
             href="/pricing"
-            class="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-white text-blue-900 font-bold text-sm md:text-lg rounded-xl hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-white/30 transition-colors shadow-lg min-h-[44px] md:min-h-[56px]"
+            class="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-white text-primary-900 font-bold text-sm md:text-lg rounded-xl hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-white/30 transition-colors shadow-lg min-h-[44px] md:min-h-[56px]"
           >
             {{ $t('pages.voting-start.cta.demo') }}
           </a>
@@ -182,7 +182,7 @@ export default {
 <style scoped>
 /* Accessible focus styles */
 a:focus {
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--primary-600, #2563eb);
   outline-offset: 2px;
 }
 
@@ -202,11 +202,11 @@ a:focus {
     background: #ffffff !important;
   }
 
-  .text-blue-900 {
+  .text-primary-900 {
     color: #000000 !important;
   }
 
-  .border-blue-100 {
+  .border-primary-100 {
     border-color: #000000 !important;
     border-width: 2px !important;
   }

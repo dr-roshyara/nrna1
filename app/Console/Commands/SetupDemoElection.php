@@ -24,9 +24,14 @@ class SetupDemoElection extends Command
         $orgIdentifier = $this->option('org');
 
         // STEP 2: Find the organisation (by slug OR ID for flexibility)
-        $organisation = Organisation::where('slug', $orgIdentifier)
-            ->orWhere('id', $orgIdentifier)
-            ->first();
+        // PostgreSQL requires strict type matching: only query ID if it's a valid UUID
+        $organisation = Organisation::where('slug', $orgIdentifier);
+
+        if (Str::isUuid($orgIdentifier)) {
+            $organisation = $organisation->orWhere('id', $orgIdentifier);
+        }
+
+        $organisation = $organisation->first();
 
         if (!$organisation) {
             $this->error("❌ Organisation with slug/ID '{$orgIdentifier}' not found!");
@@ -317,7 +322,7 @@ class SetupDemoElection extends Command
             'name'             => $postData['name'] . ($region ? ' - ' . $region : ''),
             'position_order'   => $postData['position_order'],
             'required_number'  => $postData['required_number'],
-            'is_national_wide' => $isNational ? 1 : 0,
+            'is_national_wide' => $isNational,
             'state_name'       => $region,
             'election_id'      => $election->id,
             'organisation_id'  => $organisation->id,
@@ -334,6 +339,7 @@ class SetupDemoElection extends Command
             // Create demo candidacy with correct schema
             DemoCandidacy::create([
                 'post_id'         => $post->id,
+                'election_id'     => $election->id,
                 'organisation_id' => $organisation->id,
                 'user_id'         => null,
                 'name'            => $candidate['candidacy_name'],

@@ -1,6 +1,6 @@
 <template>
   <article
-    class="group bg-white rounded-xl border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition-all duration-200 flex flex-col overflow-hidden"
+    class="group bg-white rounded-xl border border-slate-200 shadow-sm hover:border-primary-300 hover:shadow-md transition-all duration-200 flex flex-col overflow-hidden"
     :aria-label="election.name"
   >
     <!-- Card Header -->
@@ -14,7 +14,7 @@
           {{ formatDate(election.start_date) }} → {{ formatDate(election.end_date) }}
         </p>
       </div>
-      <StatusBadge :status="election.status" size="sm" />
+      <StatusBadge :status="election.state" size="sm" />
     </div>
 
     <!-- Divider -->
@@ -22,27 +22,11 @@
 
     <!-- Actions -->
     <div class="px-5 py-4 flex items-center gap-2 mt-auto flex-wrap">
-      <!-- Activate — chief/deputy only, planned elections -->
-      <ActionButton
-        v-if="canActivate"
-        variant="warning"
-        size="sm"
-        :loading="activatingId === election.slug"
-        :disabled="activatingId === election.slug"
-        class="flex-1 sm:flex-none"
-        @click="$emit('activate', election.slug)"
-      >
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-        </svg>
-        {{ activatingId === election.id ? 'Activating…' : 'Activate' }}
-      </ActionButton>
-
       <!-- Manage — chief/deputy/admin/owner -->
       <a
         v-if="canManage && !isReadonly"
         :href="`/elections/${election.slug}/management`"
-        class="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-3 py-1.5 border border-blue-300 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+        class="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-3 py-1.5 border border-primary-300 text-primary-600 rounded-lg hover:bg-primary-50 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
         :aria-label="`Manage ${election.name}`"
       >
         Manage
@@ -65,17 +49,13 @@
 
 <script setup>
 import StatusBadge from '@/Components/StatusBadge.vue'
-import ActionButton from '@/Components/ActionButton.vue'
 
 defineProps({
-  election:    { type: Object, required: true },
-  activatingId: { type: [Number, String, null], default: null },
-  canActivate: { type: Boolean, default: false },
-  canManage:   { type: Boolean, default: false },
-  isReadonly:  { type: Boolean, default: false },
+  election:   { type: Object, required: true },
+  canManage:  { type: Boolean, default: false },
+  isReadonly: { type: Boolean, default: false },
 })
-
-defineEmits(['activate'])
 
 const formatDate = (dateStr) => dateStr ? dateStr.slice(0, 10) : '—'
 </script>
+

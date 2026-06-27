@@ -51,18 +51,30 @@
           {{ page.props.flash.success }}
         </div>
         <div v-if="page.props.errors?.error"
-             class="mb-6 rounded-lg bg-red-50 border border-red-200 p-4 text-red-800 text-sm">
+             class="mb-6 rounded-lg bg-danger-50 border border-danger-200 p-4 text-danger-800 text-sm">
           {{ page.props.errors.error }}
         </div>
 
         <!-- Fee list -->
         <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
           <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
-            <h2 class="text-base font-semibold text-slate-800">{{ t.fees_title }}</h2>
-            <span v-if="pendingCount > 0"
-                  class="inline-flex items-center rounded-full bg-amber-100 text-amber-700 text-xs font-semibold px-2.5 py-0.5">
-              {{ pendingCount }} {{ t.pending_badge }}
-            </span>
+            <div class="flex items-center gap-3">
+              <h2 class="text-base font-semibold text-slate-800">{{ t.fees_title }}</h2>
+              <span v-if="pendingCount > 0"
+                    class="inline-flex items-center rounded-full bg-amber-100 text-amber-700 text-xs font-semibold px-2.5 py-0.5">
+                {{ pendingCount }} {{ t.pending_badge }}
+              </span>
+            </div>
+            <Link
+              v-if="canManage"
+              :href="route('organisations.members.fees.create', [organisation.slug, member.id])"
+              class="inline-flex items-center gap-1.5 rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-700 transition-colors"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+              Assign Fee
+            </Link>
           </div>
 
           <div v-if="fees.data && fees.data.length > 0" class="overflow-x-auto">
@@ -96,7 +108,7 @@
                     </div>
                   </td>
                   <td class="px-6 py-4 text-sm whitespace-nowrap"
-                      :class="isOverdue(fee) ? 'text-red-600 font-medium' : 'text-slate-500'">
+                      :class="isOverdue(fee) ? 'text-danger-600 font-medium' : 'text-slate-500'">
                     {{ fee.due_date ? formatDate(fee.due_date) : '—' }}
                     <span v-if="isOverdue(fee)" class="ml-1 text-xs">({{ t.overdue }})</span>
                   </td>
@@ -195,7 +207,7 @@
           <!-- Payment form -->
           <div class="space-y-4">
             <div>
-              <label class="block text-sm font-medium text-slate-700 mb-1">{{ t.payment_method }} <span class="text-red-500">*</span></label>
+              <label class="block text-sm font-medium text-slate-700 mb-1">{{ t.payment_method }} <span class="text-danger-500">*</span></label>
               <select v-model="payForm.payment_method"
                       class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400">
                 <option value="">{{ t.select_method }}</option>
@@ -205,7 +217,7 @@
                 <option value="cheque">{{ t.method_cheque }}</option>
                 <option value="other">{{ t.method_other }}</option>
               </select>
-              <p v-if="payFormError" class="mt-1 text-xs text-red-600">{{ payFormError }}</p>
+              <p v-if="payFormError" class="mt-1 text-xs text-danger-600">{{ payFormError }}</p>
             </div>
 
             <div>
@@ -241,7 +253,7 @@
 
 <script setup>
 import { ref, computed, reactive } from 'vue'
-import { router, usePage } from '@inertiajs/vue3'
+import { router, usePage, Link } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 
@@ -360,7 +372,7 @@ const feeStatusClass = (status) => {
     pending:  'bg-amber-100 text-amber-700',
     paid:     'bg-green-100 text-green-800',
     waived:   'bg-slate-100 text-slate-600',
-    overdue:  'bg-red-100 text-red-700',
+    overdue:  'bg-danger-100 text-danger-700',
   }
   return map[status] ?? 'bg-slate-100 text-slate-600'
 }
@@ -415,3 +427,4 @@ const waive = (fee) => {
   )
 }
 </script>
+

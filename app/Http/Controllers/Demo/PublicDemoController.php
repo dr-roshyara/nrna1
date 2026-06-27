@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Demo;
 use App\Http\Controllers\Controller;
 use App\Models\DemoCandidacy;
 use App\Models\DemoPost;
+use App\Models\DemoVote;
 use App\Models\Election;
 use App\Models\PublicDemoSession;
 use App\Services\DemoElectionResolver;
@@ -43,8 +44,17 @@ class PublicDemoController extends Controller
 
     public function guide(): Response
     {
+        $user = auth()->user();
+
+        // Build org demo URL only if user is authenticated
+        $org_demo_url = null;
+        if ($user && $user->organisation) {
+            $org_demo_url = route('election.demo.start', ['organisation_slug' => $user->organisation->slug]);
+        }
+
         return Inertia::render('Vote/DemoVote/Guide', [
-            'start_url' => route('public-demo.start'),
+            'start_url'     => route('public-demo.start'),
+            'org_demo_url'  => $org_demo_url,
         ]);
     }
 
@@ -75,8 +85,8 @@ class PublicDemoController extends Controller
             ]
         );
 
-        // If session exists but was completed, give a fresh one
-        if ($demoSession->has_voted || $demoSession->isExpired()) {
+        // Reset session if: completed, expired, or the resolver found a better election
+        if ($demoSession->has_voted || $demoSession->isExpired() || $demoSession->election_id !== $election->id) {
             $demoSession->delete();
             $demoSession = PublicDemoSession::create([
                 'session_token' => $sessionToken,
@@ -162,14 +172,54 @@ class PublicDemoController extends Controller
     // Step 3: Vote (Ballot Selection)
     // ─────────────────────────────────────────────────────────────────────────
 
-    public function voteShow(PublicDemoSession $publicDemoSession): Response
+    public function voteShow(PublicDemoSession $publicDemoSession): Response|\Illuminate\Http\RedirectResponse
     {
         $this->requireStep($publicDemoSession, 3);
 
         $election = Election::withoutGlobalScopes()->find($publicDemoSession->election_id);
 
+        // Election deleted — start fresh
+        if (!$election) {
+            $publicDemoSession->delete();
+            return redirect()->route('public-demo.start');
+        }
+
+        // Election exists but has no data — resolver may have found a better one
+        if (!$this->sessionElectionHasData($election)) {
+            $better = $this->resolver->getPublicDemoElection();
+            if ($better && $better->id !== $election->id) {
+                $publicDemoSession->update(['election_id' => $better->id]);
+                $election = $better;
+            }
+        }
+
         $nationalPosts = $this->buildPostsData($election, true);
         $regionalPosts = $this->buildPostsData($election, false);
+
+        // ── DIAGNOSTIC TOOLS ─────────────────────────────────────────────────
+        // Use these to trace the exact data reaching the frontend on production.
+        //
+        // TOOL 1 — Database counts (uncomment, reload, re-comment):
+        // dd([
+        //     'election_id'                      => $election->id,
+        //     'total_posts'                      => DemoPost::withoutGlobalScopes()->where('election_id', $election->id)->count(),
+        //     'total_candidacies_in_db'          => DemoCandidacy::withoutGlobalScopes()->count(),
+        //     'candidacies_matching_election_id' => DemoCandidacy::withoutGlobalScopes()->where('election_id', $election->id)->count(),
+        //     'candidacies_by_post_id'           => DemoCandidacy::withoutGlobalScopes()->whereIn(
+        //         'post_id',
+        //         DemoPost::withoutGlobalScopes()->where('election_id', $election->id)->pluck('id')
+        //     )->count(),
+        // ]);
+        //
+        // TOOL 2 — Exact JSON payload sent to Vue (uncomment, reload, re-comment):
+        // return response()->json([
+        //     'national_sample' => $nationalPosts->first(),
+        //     'regional_sample' => $regionalPosts->first(),
+        //     'national_count'  => $nationalPosts->count(),
+        //     'regional_count'  => $regionalPosts->count(),
+        //     'first_post_candidate_count' => $nationalPosts->first()?->get('candidates')?->count() ?? 0,
+        // ]);
+        // ─────────────────────────────────────────────────────────────────────
 
         return Inertia::render('Vote/DemoVote/Create', [
             'posts' => [
@@ -272,12 +322,24 @@ class PublicDemoController extends Controller
 
         $receiptHash = strtoupper(substr(hash('sha256', $publicDemoSession->session_token . now()->timestamp), 0, 12));
 
+        // Public demo votes are stored in session, not in database
+        // This keeps public demo completely anonymous and session-based
+        $voteData = [
+            'receipt_hash' => $receiptHash,
+            'election_id' => $publicDemoSession->election_id,
+            'candidate_selections' => $publicDemoSession->candidate_selections,
+            'no_vote_posts' => $publicDemoSession->candidate_selections['no_vote_posts'] ?? [],
+            'voted_at' => now()->toDateTimeString(),
+            'voter_ip' => request()->ip(),
+        ];
+
         $publicDemoSession->update([
             'has_voted' => true,
             'voted_at' => now(),
             'current_step' => 5,
         ]);
 
+        session(['public_demo_vote_' . $publicDemoSession->session_token => $voteData]);
         session(['public_demo_receipt_' . $publicDemoSession->session_token => $receiptHash]);
 
         return redirect()->route('public-demo.thankyou', $publicDemoSession->session_token);
@@ -374,6 +436,163 @@ class PublicDemoController extends Controller
     }
 
     /**
+     * Show aggregated public demo results — no auth required.
+     *
+     * Performance note: O(posts × votes × 60) iterations. Acceptable for demo
+     * volumes (~600k iters at 1k votes). Optimize by indexing votes by post_id
+     * if this becomes a bottleneck.
+     */
+    public function publicResults(): \Inertia\Response|\Illuminate\Http\RedirectResponse
+    {
+        $election = $this->resolver->getPublicDemoElection();
+
+        if (!$election) {
+            return redirect()->route('public-demo.guide');
+        }
+
+        // Only show results if the election is active and has data
+        if (!$election->is_active) {
+            return redirect()->route('public-demo.guide');
+        }
+
+        // Load posts for this election
+        $posts = DemoPost::withoutGlobalScopes()
+            ->where('election_id', $election->id)
+            ->get(['id as post_id', 'name', 'state_name', 'required_number']);
+
+        if ($posts->isEmpty()) {
+            return \Inertia\Inertia::render('Demo/Result/Index', [
+                'final_result' => ['total_votes' => 0, 'posts' => []],
+                'posts' => [],
+                'mode' => 'public',
+                'organisation_id' => $election->organisation_id,
+                'is_demo' => true,
+                'page_title' => 'Public Digit Demo Election Results',
+            ]);
+        }
+
+        // Calculate results (adapted from DemoResultController pattern)
+        $results = $this->calculatePublicResults($posts, $election);
+
+        return \Inertia\Inertia::render('Demo/Result/Index', [
+            'final_result' => $results,
+            'posts' => $posts,
+            'mode' => 'public',
+            'organisation_id' => $election->organisation_id,
+            'is_demo' => true,
+            'page_title' => 'Public Digit Demo Election Results',
+        ]);
+    }
+
+    /**
+     * Calculate aggregated vote results for the public demo election.
+     */
+    private function calculatePublicResults($posts, Election $election): array
+    {
+        $totalVotes = DemoVote::withoutGlobalScopes()
+            ->where('election_id', $election->id)
+            ->count();
+
+        $results = [
+            'total_votes' => $totalVotes,
+            'posts' => [],
+        ];
+
+        // Pre-load all votes for this election to avoid N+1 on DB
+        $allVotes = DemoVote::withoutGlobalScopes()
+            ->where('election_id', $election->id)
+            ->get();
+
+        foreach ($posts as $post) {
+            $postResults = [
+                'post_id' => $post->post_id,
+                'post_name' => $post->name,
+                'state_name' => $post->state_name,
+                'candidates' => [],
+                'no_vote_count' => 0,
+                'total_votes_for_post' => 0,
+            ];
+
+            // Get candidates for this post with user relationship loaded
+            $allCandidates = DemoCandidacy::withoutGlobalScopes()
+                ->where('post_id', $post->post_id)
+                ->where('election_id', $election->id)
+                ->with('user')
+                ->get();
+
+            $candidateVotes = [];
+            foreach ($allCandidates as $c) {
+                $candidateVotes[$c->id] = [
+                    'name' => $c->user?->name ?? $c->user_name ?? $c->candidacy_name ?? $c->name ?? 'Unknown',
+                    'count' => 0,
+                ];
+            }
+
+            // Process each vote to count candidates for this post
+            foreach ($allVotes as $vote) {
+                for ($i = 1; $i <= 60; $i++) {
+                    $field = 'candidate_' . str_pad((string)$i, 2, '0', STR_PAD_LEFT);
+                    $candidateData = $vote->$field ? json_decode($vote->$field, true) : null;
+
+                    if (!$candidateData || ($candidateData['post_id'] ?? null) !== $post->post_id) {
+                        continue;
+                    }
+
+                    if (isset($candidateData['no_vote']) && $candidateData['no_vote'] === true) {
+                        $postResults['no_vote_count']++;
+                        $postResults['total_votes_for_post']++;
+                        continue;
+                    }
+
+                    foreach ($candidateData['candidates'] ?? [] as $candidate) {
+                        $candidateId = $candidate['candidacy_id'] ?? null;
+                        if ($candidateId && isset($candidateVotes[$candidateId])) {
+                            $candidateVotes[$candidateId]['count']++;
+                            $postResults['total_votes_for_post']++;
+                        }
+                    }
+                }
+            }
+
+            // Format and sort candidates by vote count descending
+            foreach ($candidateVotes as $candidateId => $data) {
+                $postResults['candidates'][] = [
+                    'candidacy_id' => $candidateId,
+                    'name' => $data['name'],
+                    'vote_count' => $data['count'],
+                    'vote_percent' => $postResults['total_votes_for_post'] > 0
+                        ? round(($data['count'] / $postResults['total_votes_for_post']) * 100, 2)
+                        : 0,
+                ];
+            }
+
+            usort($postResults['candidates'], function ($a, $b) {
+                if ($a['vote_count'] === $b['vote_count']) {
+                    return strcmp($a['name'], $b['name']);
+                }
+                return $b['vote_count'] - $a['vote_count'];
+            });
+
+            $results['posts'][] = $postResults;
+        }
+
+        return $results;
+    }
+
+    /**
+     * Quick check if an election has posts and candidates.
+     */
+    private function sessionElectionHasData(Election $election): bool
+    {
+        if ($election->posts_count > 0 && $election->candidates_count > 0) {
+            return true;
+        }
+
+        return DemoPost::withoutGlobalScopes()->where('election_id', $election->id)->exists()
+            && DemoCandidacy::withoutGlobalScopes()->where('election_id', $election->id)->exists();
+    }
+
+    /**
      * Generate a human-friendly display code (e.g. ABCD-1234).
      */
     private function generateDisplayCode(): string
@@ -388,41 +607,68 @@ class PublicDemoController extends Controller
 
     /**
      * Build posts data for the vote page (national or regional).
+     *
+     * Strategy: eager-load via relationship (primary) with a direct decoupled
+     * query fallback (Scenario B). Both paths call withoutGlobalScopes() to
+     * bypass the BelongsToTenant scope on this anonymous public-demo route.
      */
     private function buildPostsData(Election $election, bool $national): \Illuminate\Support\Collection
     {
         return DemoPost::withoutGlobalScopes()
             ->where('election_id', $election->id)
-            ->where('is_national_wide', $national ? 1 : 0)
+            ->where('is_national_wide', $national)
+            ->with(['candidacies' => function ($query) {
+                $query->withoutGlobalScopes()
+                      ->orderBy('position_order');
+            }])
             ->orderBy('position_order')
             ->get()
-            ->map(function (DemoPost $post) {
-                $candidates = DemoCandidacy::withoutGlobalScopes()
-                    ->where('post_id', $post->id)
-                    ->orderBy('position_order')
-                    ->get()
-                    ->map(fn ($c) => [
-                        'id' => $c->id,
-                        'candidacy_id' => $c->id,
-                        'user_name' => $c->candidacy_name ?? $c->user_name ?? 'Demo Candidate',
-                        'candidacy_name' => $c->candidacy_name ?? $c->user_name ?? 'Demo Candidate',
-                        'description' => $c->description,
-                        'position_order' => $c->position_order,
-                        'user_id' => null,
-                        'is_selected' => false,
-                    ]);
+            ->map(function (DemoPost $post) use ($election) {
+                // Primary path: use the eager-loaded relation.
+                // Fallback: if the relation returned empty despite data existing,
+                // run a direct decoupled query (Scenario B — tenant scope re-applied).
+                $candidacies = $post->candidacies;
+
+                if ($candidacies->isEmpty()) {
+                    // Scenario B fallback: direct query bypassing all scopes.
+                    // Filter by election_id first; if still empty (Scenario A — old
+                    // data created before election_id was stored), fall back to post_id only.
+                    $candidacies = DemoCandidacy::withoutGlobalScopes()
+                        ->where('post_id', $post->id)
+                        ->where('election_id', $election->id)
+                        ->orderBy('position_order')
+                        ->get();
+
+                    if ($candidacies->isEmpty()) {
+                        $candidacies = DemoCandidacy::withoutGlobalScopes()
+                            ->where('post_id', $post->id)
+                            ->orderBy('position_order')
+                            ->get();
+                    }
+                }
 
                 return [
-                    'id' => $post->id,
-                    'post_id' => $post->id,
-                    'name' => $post->name,
-                    'post_name' => $post->name,
-                    'nepali_name' => $post->nepali_name,
+                    'id'               => $post->id,
+                    'post_id'          => $post->id,
+                    'name'             => $post->name,
+                    'post_name'        => $post->name,
+                    'nepali_name'      => $post->nepali_name,
                     'is_national_wide' => $post->is_national_wide,
-                    'required_number' => $post->required_number,
-                    'position_order' => $post->position_order,
-                    'state_name' => $post->state_name,
-                    'candidates' => $candidates,
+                    'required_number'  => $post->required_number,
+                    'position_order'   => $post->position_order,
+                    'state_name'       => $post->state_name,
+                    'candidates'       => $candidacies->map(fn ($c) => [
+                        'id'             => $c->id,
+                        'candidacy_id'   => $c->id,
+                        'user_id'        => $c->user_id,
+                        'user_name'      => $c->user_name ?? $c->candidacy_name ?? $c->name ?? 'Demo Candidate',
+                        'candidacy_name' => $c->candidacy_name ?? $c->user_name ?? $c->name ?? 'Demo Candidate',
+                        'description'    => $c->description,
+                        'position_order' => $c->position_order,
+                        'image_path_1'   => $c->image_path_1,
+                        'post_id'        => $c->post_id,
+                        'is_selected'    => false,
+                    ])->values(),
                 ];
             });
     }

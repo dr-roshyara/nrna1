@@ -11,6 +11,7 @@ use App\Models\UserOrganisationRole;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Tests\Support\ElectionScenarioFactory;
 use Tests\TestCase;
 
 class CandidacyApplicationTest extends TestCase
@@ -25,13 +26,12 @@ class CandidacyApplicationTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->org      = Organisation::factory()->create(['type' => 'tenant']);
-        $this->member   = User::factory()->create();
-        $this->election = Election::factory()->create([
-            'organisation_id' => $this->org->id,
-            'type'            => 'real',
-            'status'          => 'active',
-        ]);
+        $this->org    = Organisation::factory()->create(['type' => 'tenant']);
+        $this->member = User::factory()->create();
+
+        // Use constitutional factory — sets facts that derive SetupNomination state
+        $this->election = ElectionScenarioFactory::setupNomination($this->org);
+
         $this->post = Post::factory()->forElection($this->election)->create();
         UserOrganisationRole::create([
             'user_id'         => $this->member->id,
@@ -50,7 +50,7 @@ class CandidacyApplicationTest extends TestCase
     {
         $this->actingAs(User::factory()->create())
              ->post(route('organisations.candidacy.apply', $this->org->slug), [])
-             ->assertRedirect(); // ensure.organisation middleware redirects non-members
+             ->assertRedirect();
     }
 
     public function test_member_can_submit_valid_application(): void
@@ -65,8 +65,7 @@ class CandidacyApplicationTest extends TestCase
                  'proposer_name'  => 'Jane Proposer',
                  'manifesto'      => 'I will serve the community with dedication.',
              ])
-             ->assertRedirect()
-             ->assertSessionHas('success');
+             ->assertStatus(200);
 
         $this->assertDatabaseHas('candidacy_applications', [
             'user_id'        => $this->member->id,
@@ -119,7 +118,7 @@ class CandidacyApplicationTest extends TestCase
                  'supporter_name' => 'Another Supporter',
                  'proposer_name'  => 'Another Proposer',
              ])
-             ->assertSessionHas('error');
+             ->assertSessionHasErrors('form');
     }
 
     public function test_cannot_apply_for_different_post_in_same_election(): void
@@ -144,7 +143,7 @@ class CandidacyApplicationTest extends TestCase
                  'supporter_name' => 'Another Supporter',
                  'proposer_name'  => 'Another Proposer',
              ])
-             ->assertSessionHas('error');
+             ->assertSessionHasErrors('form');
     }
 
     public function test_photo_is_uploaded_and_stored(): void
@@ -177,6 +176,44 @@ class CandidacyApplicationTest extends TestCase
                  'photo'          => UploadedFile::fake()->create('document.pdf', 100),
              ])
              ->assertSessionHasErrors('photo');
+    }
+
+    public function test_cannot_apply_for_demo_election(): void
+    {
+        $demoElection = Election::factory()
+            ->forOrganisation($this->org)
+            ->demo()
+            ->create([
+                // Constitutional facts for SetupNomination (demo check runs first)
+                'administration_completed' => true,
+                'nomination_completed' => false,
+            ]);
+        $demoPost = Post::factory()->forElection($demoElection)->create();
+
+        $this->actingAs($this->member)
+             ->post(route('organisations.candidacy.apply', $this->org->slug), [
+                 'election_id'    => $demoElection->id,
+                 'post_id'        => $demoPost->id,
+                 'supporter_name' => 'John Supporter',
+                 'proposer_name'  => 'Jane Proposer',
+             ])
+             ->assertStatus(404);
+    }
+
+    public function test_cannot_apply_when_election_not_in_nomination(): void
+    {
+        // Create election in SetupAdministration (not ready for candidacies)
+        $nonNominationElection = ElectionScenarioFactory::setupAdministration($this->org);
+        $nonNominationPost = Post::factory()->forElection($nonNominationElection)->create();
+
+        $this->actingAs($this->member)
+             ->post(route('organisations.candidacy.apply', $this->org->slug), [
+                 'election_id'    => $nonNominationElection->id,
+                 'post_id'        => $nonNominationPost->id,
+                 'supporter_name' => 'John Supporter',
+                 'proposer_name'  => 'Jane Proposer',
+             ])
+             ->assertStatus(403);
     }
 
     public function test_voter_hub_includes_my_applications(): void

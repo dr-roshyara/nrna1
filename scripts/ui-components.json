@@ -1,0 +1,175 @@
+{
+  "schema_version": "1.1",
+  "description": "Design system component registry — single source of truth for all reusable Vue components",
+  "baseline": {
+    "recorded_at": "2026-06-13",
+    "raw_button_tags": 92,
+    "raw_input_tags": 75,
+    "raw_select_tags": 15,
+    "raw_textarea_tags": 22,
+    "total_vue_files": 226
+  },
+  "enforcement": {
+    "adoption_required": true,
+    "new_files_must_use_components": true,
+    "regression_exit_code": 1,
+    "min_adoption_rate_pct": 15
+  },
+  "components": [
+    {
+      "name": "Button",
+      "path": "resources/js/Components/Button.vue",
+      "aliases": ["ActionButton"],
+      "variants": ["primary","secondary","outline","ghost","danger","danger-outline","accent","success","warning"],
+      "replaces_tags": ["button"],
+      "usage_in_pages": 26,
+      "pages_using_it": 11,
+      "target_usage": 120,
+      "adoption_priority": "critical",
+      "notes": "Existing — 92 raw <button> remain. New .vue files MUST use <Button> not <button>."
+    },
+    {
+      "name": "Card",
+      "path": "resources/js/Components/Card.vue",
+      "variants": ["default","editorial","admin"],
+      "replaces_tags": [],
+      "usage_in_pages": 29,
+      "pages_using_it": 0,
+      "target_usage": 60,
+      "adoption_priority": "high",
+      "notes": "Existing — 29/60 usages. Prefer <Card> over custom div+shadow+rounded combos."
+    },
+    {
+      "name": "StatusBadge",
+      "path": "resources/js/Components/StatusBadge.vue",
+      "variants": ["draft","voting_active","suspended","verified","pending","active","inactive"],
+      "replaces_tags": [],
+      "usage_in_pages": 5,
+      "pages_using_it": 0,
+      "target_usage": 20,
+      "adoption_priority": "high",
+      "notes": "Existing — 5/20 usages. Covers 15+ election lifecycle statuses."
+    },
+    {
+      "name": "Modal",
+      "path": "resources/js/Components/Modal.vue",
+      "variants": ["default","danger","success","warning"],
+      "replaces_tags": ["div.*fixed", "div.*inset-0", "teleport", "Jetstream\\\\Modal"],
+      "usage_in_pages": 0,
+      "pages_using_it": 0,
+      "target_usage": 15,
+      "adoption_priority": "critical",
+      "notes": "NEW — 0/15 usages. Mandatory for all dialogs/modals. No new fixed/inset-0 teleport divs."
+    },
+    {
+      "name": "Input",
+      "path": "resources/js/Components/Input.vue",
+      "variants": ["default","error","success"],
+      "replaces_tags": ["input", "select", "textarea"],
+      "usage_in_pages": 0,
+      "pages_using_it": 0,
+      "target_usage": 80,
+      "adoption_priority": "critical",
+      "notes": "NEW — 0/80 usages. Mandatory for all form inputs."
+    },
+    {
+      "name": "Dropdown",
+      "path": "resources/js/Components/Dropdown.vue",
+      "variants": ["default","searchable"],
+      "replaces_tags": ["select"],
+      "usage_in_pages": 0,
+      "pages_using_it": 0,
+      "target_usage": 15,
+      "adoption_priority": "high",
+      "notes": "NEW — 15 raw <select> remain. Prefer over raw <select>."
+    },
+    {
+      "name": "ProgressBar",
+      "path": "resources/js/Components/ProgressBar.vue",
+      "variants": ["primary","success","warning","danger","accent"],
+      "replaces_tags": [],
+      "usage_in_pages": 0,
+      "pages_using_it": 0,
+      "target_usage": 10,
+      "adoption_priority": "medium",
+      "notes": "NEW — voting progress, setup progress, data import."
+    },
+    {
+      "name": "VerificationSeal",
+      "path": "resources/js/Components/VerificationSeal.vue",
+      "variants": ["verified","pending","warning","idle"],
+      "replaces_tags": [],
+      "usage_in_pages": 1,
+      "pages_using_it": 0,
+      "target_usage": 5,
+      "adoption_priority": "medium",
+      "notes": "NEW — 1/5 usages. Trust mark for verified/official state displays."
+    },
+    {
+      "name": "EmptyState",
+      "path": "resources/js/Components/EmptyState.vue",
+      "variants": ["default"],
+      "replaces_tags": [],
+      "usage_in_pages": 4,
+      "pages_using_it": 0,
+      "target_usage": 8,
+      "adoption_priority": "medium",
+      "notes": "Existing — 4/8 usages. No results, no data, no access states."
+    },
+    {
+      "name": "ToggleSwitch",
+      "path": "resources/js/Components/ToggleSwitch.vue",
+      "variants": ["default"],
+      "replaces_tags": ["input.*checkbox"],
+      "usage_in_pages": 0,
+      "pages_using_it": 0,
+      "target_usage": 5,
+      "adoption_priority": "low",
+      "notes": "Existing — settings, feature flags."
+    }
+  ],
+  "new_file_audit": {
+    "enabled": true,
+    "rules": [
+      {
+        "pattern": "<button[[:space:]>]",
+        "message": "Use <Button variant=\"...\"> instead of raw <button>. Button is at @/Components/Button.vue",
+        "severity": "error"
+      },
+      {
+        "pattern": "<input[[:space:]>]",
+        "message": "Use <Input /> component instead of raw <input>. Input is at @/Components/Input.vue",
+        "severity": "error"
+      },
+      {
+        "pattern": "<select[[:space:]>]",
+        "message": "Use <Dropdown> or <Input type=\"select\"> instead of raw <select>",
+        "severity": "error"
+      },
+      {
+        "pattern": "<textarea",
+        "message": "Use <Input type=\"textarea\"> instead of raw <textarea>",
+        "severity": "error"
+      },
+      {
+        "pattern": "class=\"[^\"]*fixed[^\"]*\"",
+        "message": "Use <Modal> component instead of custom fixed-position dialogs",
+        "severity": "warning"
+      }
+    ]
+  },
+  "excluded_dirs": ["node_modules", "vendor", "dist", "public/build", "storage"],
+  "excluded_files": [
+    "resources/js/Components/Button.vue",
+    "resources/js/Components/Card.vue",
+    "resources/js/Components/StatusBadge.vue",
+    "resources/js/Components/EmptyState.vue",
+    "resources/js/Components/LanguageSwitcher.vue",
+    "resources/js/Components/Modal.vue",
+    "resources/js/Components/Input.vue",
+    "resources/js/Components/Dropdown.vue",
+    "resources/js/Components/ProgressBar.vue",
+    "resources/js/Components/VerificationSeal.vue",
+    "resources/js/Components/ToggleSwitch.vue"
+  ]
+}

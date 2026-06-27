@@ -3,14 +3,14 @@
         <div class="flex flex-row justify-center py-2">
             <Link
                 v-if="posts.prev_page_url"
-                class="m-2 rounded-sm bg-gray-300 px-2 py-2"
+                class="m-2 rounded-sm bg-neutral-300 px-2 py-2"
                 :href="posts.prev_page_url"
             >
                 Previous Page
             </Link>
             <Link
                 v-if="posts.next_page_url"
-                class="m-2 rounded-sm bg-gray-300 px-2 py-2"
+                class="m-2 rounded-sm bg-neutral-300 px-2 py-2"
                 :href="posts.next_page_url"
             >
                 Next Page
@@ -68,7 +68,7 @@
                 <tr
                     v-for="(post, pIndx) in posts.data"
                     :key="pIndx"
-                    :class="[{ 'bg-gray-100': pIndx % 2 == 0 }, p - 1]"
+                    :class="[{ 'bg-neutral-100': pIndx % 2 == 0 }, p - 1]"
                 >
                     <td class="border-r border-green-200">{{ pIndx + 1 }}</td>
                     <td
@@ -144,3 +144,4 @@ export default {
     },
 };
 </script>
+

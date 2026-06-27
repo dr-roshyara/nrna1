@@ -1,0 +1,14 @@
+{
+  "committee": {
+    "members": {
+      "status": {
+        "active": "Aktiv",
+        "suspended": "Ausgesetzt",
+        "terminated": "Beendet"
+      },
+      "role": {
+        "member": "Mitglied"
+      }
+    }
+  }
+}

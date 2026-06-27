@@ -101,6 +101,13 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
+        'voter_audit' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/voter_audit.log'),
+            'level' => env('LOG_LEVEL', 'info'),
+            'days' => 365,
+        ],
+
         'voting_audit' => [
             'driver' => 'daily',
             'path' => storage_path('logs/voting_audit.log'),
@@ -113,6 +120,20 @@ return [
             'path' => storage_path('logs/voting_security.log'),
             'level' => env('LOG_LEVEL', 'warning'),
             'days' => 365,
+        ],
+
+        'constitutional_integrity' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/constitutional_integrity.log'),
+            'level' => env('LOG_LEVEL', 'warning'),
+            'days' => 365,
+        ],
+
+        'governance_deprecation' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/governance_deprecation.log'),
+            'level' => env('LOG_LEVEL', 'warning'),
+            'days' => 90,
         ],
     ],
 

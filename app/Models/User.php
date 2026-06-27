@@ -25,7 +25,6 @@ use App\Models\DeligateVote;
 use \App\Models\Candidacy;
 use App\Models\File;
 use App\Models\Upload;
-use App\Models\Assignment;
 use App\Models\Code;
 use App\Models\DemoCode;
 use App\Models\Image;
@@ -73,6 +72,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'current_ip',
         'region',
         'email',
+        'email_verified_at',
         'password',
         'telephone',
         'first_name',
@@ -93,7 +93,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'social_id',
         'social_type',
         'facebook_id',
-        'voting_ip',  // Voting IP is mass-assignable for audit trail
+        'voting_ip',              // Voting IP is mass-assignable for audit trail
+        'leaderboard_visibility', // Contribution leaderboard privacy preference
+        'residence_geo_unit_id',  // F2: Geographic unit for member context
     ];
 
     /**
@@ -135,7 +137,9 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at'      => 'datetime',
+        'leaderboard_visibility' => 'string',
+        'is_super_admin'         => 'boolean',
     ];
 
     /**
@@ -256,13 +260,6 @@ class User extends Authenticatable implements MustVerifyEmail
        public function candidacy(){
            return $this->hasOne(Candidacy::class, 'user_id', 'id')->where('status', 'approved');
        }
-       /**
-        * Assignments and Roles A user can be assigned to many roles
-        */
-          public function assignments(){
-              return $this->belongsToMany(Assignment::class);
-          }
-
      /**
         * User has many files
      */
@@ -1135,8 +1132,10 @@ public function getVoterState(): string
      */
     public function electionCommissionRoles()
     {
-        return $this->belongsToMany(Election::class, 'election_commission_members')
-                    ->withTimestamps();
+        return $this->belongsToMany(Election::class, 'election_officers')
+            ->wherePivotIn('role', ['chief', 'deputy', 'commissioner'])
+            ->wherePivot('status', 'active')
+            ->whereNull('election_officers.deleted_at');
     }
 
     /**
@@ -1246,6 +1245,21 @@ public function getVoterState(): string
             ->where('organisation_id', $organisationId)
             ->where('role', 'owner')
             ->exists();
+    }
+
+    public function isSuperAdmin(): bool
+    {
+        return $this->is_super_admin === true;
+    }
+
+    public function isPlatformAdmin(): bool
+    {
+        return $this->is_super_admin === true || $this->platform_role === 'platform_admin';
+    }
+
+    public function canManagePlatformAdmins(): bool
+    {
+        return $this->isSuperAdmin();
     }
 
     /**

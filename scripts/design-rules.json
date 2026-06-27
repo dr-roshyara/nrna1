@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.1",
+  "description": "Design system token enforcement rules — consumed by design-check.sh and check-design-tokens.sh",
+  "baseline": 613,
+  "phase_targets": {
+    "phase_4_iteration_1": 592,
+    "phase_4_iteration_2": 580,
+    "phase_4_iteration_3": 545,
+    "phase_4_iteration_4": 529,
+    "phase_4_iteration_5": 511,
+    "phase_4_iteration_6": 485,
+    "phase_5_complete": 50,
+    "final_target": 0
+  },
+  "enforcement": {
+    "current_threshold": 150,
+    "soft_boundary": 50,
+    "exit_on_fail": false,
+    "mode": "migration"
+  },
+  "rules": [
+    {
+      "id": "bg-color",
+      "label": "Background colors",
+      "description": "Use semantic background tokens: bg-primary (blue), bg-success (emerald), bg-warning (amber), bg-danger (red), bg-neutral (gray). See tailwind.config.js for full mapping.",
+      "pattern": "bg-(blue|red|green|gray|slate|indigo|purple|pink|yellow|teal|cyan|orange|amber|lime|emerald|violet|fuchsia|rose)-[0-9]",
+      "severity": "error",
+      "target": 0,
+      "allowlist_patterns": ["bg-gradient"]
+    },
+    {
+      "id": "text-color",
+      "label": "Text colors",
+      "description": "Use semantic text tokens: text-primary, text-success, text-warning, text-danger, text-neutral. Only text-white is allowed for contrast on colored backgrounds.",
+      "pattern": "text-(blue|red|green|gray|slate|indigo|purple|pink|yellow|teal|cyan|orange|amber|white)-[0-9]",
+      "severity": "error",
+      "target": 0,
+      "allowlist_patterns": ["text-white"]
+    },
+    {
+      "id": "border-color",
+      "label": "Border colors",
+      "description": "Use semantic border tokens: border-primary, border-success, border-warning, border-danger, border-neutral. See tailwind.config.js for mappings.",
+      "pattern": "border-(blue|red|green|gray|slate|indigo|purple|pink|yellow)-[0-9]",
+      "severity": "warning",
+      "target": 0,
+      "allowlist_patterns": []
+    },
+    {
+      "id": "ring-color",
+      "label": "Ring colors",
+      "description": "Use ring-primary for focus rings (focus:ring-primary). Avoid raw ring color tokens.",
+      "pattern": "ring-(blue|red|green|gray|indigo)-[0-9]",
+      "severity": "warning",
+      "target": 0,
+      "allowlist_patterns": ["ring-offset"]
+    },
+    {
+      "id": "divide-color",
+      "label": "Divide colors",
+      "description": "Use divide-neutral for dividers instead of raw divide color tokens.",
+      "pattern": "divide-(gray|blue|green|red|indigo)-[0-9]",
+      "severity": "warning",
+      "target": 0,
+      "allowlist_patterns": []
+    },
+    {
+      "id": "placeholder-color",
+      "label": "Placeholder colors",
+      "description": "Use placeholder-neutral for input placeholders instead of raw placeholder color tokens.",
+      "pattern": "placeholder-(gray|blue|red)-[0-9]",
+      "severity": "warning",
+      "target": 0,
+      "allowlist_patterns": []
+    },
+    {
+      "id": "shadow-size",
+      "label": "Shadow sizes",
+      "description": "Use shadow-sm, shadow-md, shadow-lg from design tokens. Prefer <Card> component which applies shadows automatically.",
+      "pattern": "shadow-(sm|md|lg|xl|2xl|inner|none)",
+      "severity": "warning",
+      "target": 0,
+      "allowlist_patterns": ["shadow-lg", "shadow-xl", "shadow-sm", "shadow-md"]
+    },
+    {
+      "id": "font-weight",
+      "label": "Font weights (use CSS variables)",
+      "description": "Use CSS custom properties or semantic typography tokens. Prefer font-normal, font-medium, font-semibold, font-bold (allowlisted).",
+      "pattern": "font-(thin|extralight|light|medium|semibold|extrabold|black)",
+      "severity": "warning",
+      "target": 0,
+      "allowlist_patterns": ["font-bold", "font-semibold", "font-medium", "font-normal"]
+    },
+    {
+      "id": "responsive-prefix",
+      "label": "Responsive prefixes (consider tokenization)",
+      "description": "Informational: responsive prefixes (sm:, md:, lg:, xl:, 2xl:) are tracked for migration to token-based responsive utilities.",
+      "pattern": "(sm|md|lg|xl|2xl):",
+      "severity": "info",
+      "target": -1,
+      "allowlist_patterns": []
+    }
+  ],
+  "excluded_dirs": [
+    "node_modules",
+    "vendor",
+    "dist",
+    "public/build",
+    "storage"
+  ],
+  "excluded_files": [
+    "resources/js/Components/Button.vue",
+    "resources/js/Components/Card.vue",
+    "resources/js/Components/StatusBadge.vue",
+    "resources/js/Components/EmptyState.vue",
+    "resources/js/Components/LanguageSwitcher.vue",
+    "resources/js/Components/Modal.vue",
+    "resources/js/Components/Input.vue",
+    "resources/js/Components/Dropdown.vue",
+    "resources/js/Components/ProgressBar.vue",
+    "resources/js/Components/VerificationSeal.vue",
+    "resources/js/Components/ToggleSwitch.vue"
+  ],
+  "active_phase": "phase_4_iteration_6"
+}

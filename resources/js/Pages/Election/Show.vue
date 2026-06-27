@@ -8,23 +8,42 @@
             <section class="esp-hero">
                 <div class="esp-hero__grid" aria-hidden="true"></div>
                 <div class="esp-hero__inner">
-                    <!-- Organisation logo -->
-                    <div v-if="organisationLogo" class="esp-org-logo">
-                        <img :src="organisationLogo"
-                             :alt="organisationName || 'Organisation logo'"
-                             class="esp-org-logo__img" />
-                    </div>
+                    <!-- Header with Organisation Button -->
+                    <div class="esp-hero__header">
+                        <div>
+                            <!-- Organisation logo -->
+                            <div v-if="organisationLogo" class="esp-org-logo">
+                                <img :src="organisationLogo"
+                                     :alt="organisationName || 'Organisation logo'"
+                                     class="esp-org-logo__img" />
+                            </div>
 
-                    <div class="esp-eyebrow">
-                        <span class="esp-eyebrow__line"></span>
-                        <span class="esp-eyebrow__text">{{ $t('pages.election-show.hero.eyebrow') }}</span>
-                        <span class="esp-eyebrow__line"></span>
-                    </div>
-                    <h1 class="esp-hero__title">{{ election.name }}</h1>
-                    <div class="esp-hero__meta">
-                        <span class="esp-meta-date">{{ formatDate(election.start_date) }} — {{ formatDate(election.end_date) }}</span>
-                        <span class="esp-meta-dot" aria-hidden="true">·</span>
-                        <span class="esp-meta-status" :class="`esp-status--${election.status}`">{{ election.status }}</span>
+                            <div class="esp-eyebrow">
+                                <span class="esp-eyebrow__line"></span>
+                                <span class="esp-eyebrow__text">{{ $t('pages.election-show.hero.eyebrow') }}</span>
+                                <span class="esp-eyebrow__line"></span>
+                            </div>
+                            <h1 class="esp-hero__title">{{ election.name }}</h1>
+                            <div class="esp-hero__meta">
+                                <span class="esp-meta-date">{{ formatDate(election.start_date) }} — {{ formatDate(election.end_date) }}</span>
+                                <span class="esp-meta-dot" aria-hidden="true">·</span>
+                                <span class="esp-meta-status" :class="`esp-status--${election.state}`">{{ election.state }}</span>
+                            </div>
+                        </div>
+
+                        <!-- Organisation Button -->
+                        <a v-if="organisation && organisation.slug"
+                           :href="route('organisations.show', organisation.slug)"
+                           class="esp-org-button"
+                           :title="`Go to ${organisationName}`">
+                            <svg class="esp-org-button__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                            <span class="esp-org-button__text">{{ organisationName }}</span>
+                            <svg class="esp-org-button__arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
                     </div>
 
                     <div v-if="ipAddress" class="esp-ip-badge" aria-label="Your IP address">
@@ -100,10 +119,23 @@
                                 </li>
                             </ol>
 
+                            <!-- IP restriction: blocked -->
+                            <div v-if="props.ipBlocked"
+                                 class="rounded-lg border border-danger-200 bg-danger-50 p-4 text-sm text-danger-700 mb-4">
+                                <p class="font-semibold">{{ $t('pages.election-show.ip_blocked.title', 'Voting Not Available From This Network') }}</p>
+                                <p class="mt-1">{{ props.ipBlockMessage }}</p>
+                            </div>
+
+                            <!-- IP restriction: remaining votes hint (optional, only when limit applies) -->
+                            <div v-else-if="props.remainingVotes !== null && props.remainingVotes > 0"
+                                 class="text-xs text-neutral-500 mt-1 mb-4">
+                                {{ $t('pages.election-show.ip_remaining.text', `{count} vote(s) remaining from your network`, { count: props.remainingVotes }) }}
+                            </div>
+
                             <button
                                 class="esp-cta"
                                 :class="{ 'esp-cta--loading': voting }"
-                                :disabled="voting"
+                                :disabled="voting || props.ipBlocked"
                                 :aria-busy="voting"
                                 @click="startVoting"
                             >
@@ -147,7 +179,7 @@
                         </template>
 
                         <!-- ── STATE: Election finished ── -->
-                        <template v-else-if="election.status === 'completed'">
+                        <template v-else-if="props.election.state === ElectionLifecycleStates.RESULTS_PUBLISHED || props.election.state === ElectionLifecycleStates.ARCHIVED">
                             <div class="esp-ballot__header">
                                 <div class="esp-ballot__icon esp-ballot__icon--completed" aria-label="Election finished">🏁</div>
                                 <div>
@@ -161,11 +193,11 @@
                             <div class="esp-certificate">
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.completed.started_label', 'Beginn') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDate(election.start_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(election.start_date) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.completed.ended_label', 'Ende') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDate(election.end_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(election.end_date) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.completed.status_label', 'Status') }}</dt>
@@ -189,11 +221,11 @@
                             <div class="esp-certificate">
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.period_ended.started_label', 'Beginn') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDate(election.start_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(election.start_date) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.period_ended.ended_label', 'Ende') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDate(election.end_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(election.end_date) }}</dd>
                                 </div>
                             </div>
                         </template>
@@ -208,16 +240,16 @@
                                 </div>
                             </div>
                             <p class="esp-ineligible-body" style="margin-bottom:1.5rem">
-                                {{ $t('pages.election-show.not_yet_open.body', { election: election.name, date: formatDate(election.start_date) }, `Sie sind registriert und können ab dem ${formatDate(election.start_date)} abstimmen. Bitte kommen Sie dann zurück.`) }}
+                                {{ $t('pages.election-show.not_yet_open.body', { election: election.name, date: formatDateTime(election.start_date) }, `Sie sind registriert und können ab dem ${formatDateTime(election.start_date)} abstimmen. Bitte kommen Sie dann zurück.`) }}
                             </p>
                             <div class="esp-certificate">
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.not_yet_open.opens_label', 'Öffnet am') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDate(election.start_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(election.start_date) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.not_yet_open.closes_label', 'Schließt am') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDate(election.end_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(election.end_date) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.not_yet_open.status_label', 'Ihr Status') }}</dt>
@@ -256,6 +288,7 @@ import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { Head, router, usePage } from '@inertiajs/vue3'
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
+import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 
 const props = defineProps({
     election:          { type: Object,  required: true },
@@ -263,8 +296,12 @@ const props = defineProps({
     canVote:           { type: Boolean, default: false },
     isEligible:        { type: Boolean, default: false },
     ipAddress:         { type: String,  default: null },
+    ipBlocked:         { type: Boolean, default: false },
+    ipBlockMessage:    { type: String,  default: null },
+    remainingVotes:    { type: Number,  default: null },
     organisationLogo:  { type: String,  default: null },
     organisationName:  { type: String,  default: null },
+    organisation:      { type: Object,  default: null },
 })
 
 // ─── Flash ────────────────────────────────────────────────────────────────────
@@ -316,6 +353,13 @@ onUnmounted(() => clearInterval(timer))
 function formatDate (raw) {
     return new Date(raw).toLocaleDateString('en-GB', {
         day: 'numeric', month: 'long', year: 'numeric',
+    })
+}
+
+function formatDateTime (raw) {
+    return new Date(raw).toLocaleString('en-GB', {
+        day: 'numeric', month: 'long', year: 'numeric',
+        hour: '2-digit', minute: '2-digit',
     })
 }
 
@@ -562,6 +606,100 @@ const ballotCardClass = computed(() => ({
         width: 200px;
         text-align: center;
         font-size: 0.65rem;
+    }
+}
+
+/* ── Hero Header Layout (Title + Organisation Button) ──────────────────────── */
+.esp-hero__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.esp-hero__header > div:first-child {
+    flex: 1;
+    text-align: center;
+}
+
+/* ── Organisation Button ───────────────────────────────────────────────────── */
+.esp-org-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(201, 151, 58, 0.1);
+    border: 1.5px solid rgba(201, 151, 58, 0.3);
+    border-radius: 8px;
+    color: var(--gold-lt);
+    text-decoration: none;
+    font-family: var(--ff-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: all 0.3s cubic-bezier(0.22, 0.68, 0, 1.2);
+    cursor: pointer;
+    backdrop-filter: blur(2px);
+    white-space: nowrap;
+}
+
+.esp-org-button:hover {
+    background: rgba(201, 151, 58, 0.2);
+    border-color: rgba(224, 181, 90, 0.6);
+    color: var(--cream);
+    transform: translateX(4px);
+}
+
+.esp-org-button:active {
+    transform: translateX(2px);
+}
+
+.esp-org-button__icon {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.esp-org-button:hover .esp-org-button__icon {
+    transform: scale(1.1);
+}
+
+.esp-org-button__text {
+    display: inline;
+}
+
+.esp-org-button__arrow {
+    width: 0.875rem;
+    height: 0.875rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.esp-org-button:hover .esp-org-button__arrow {
+    transform: translateX(3px);
+}
+
+/* Responsive: Stack on mobile */
+@media (max-width: 768px) {
+    .esp-hero__header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+
+    .esp-hero__header > div:first-child {
+        text-align: center;
+    }
+
+    .esp-org-button {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .esp-org-button__text {
+        display: inline;
     }
 }
 
@@ -872,3 +1010,4 @@ const ballotCardClass = computed(() => ({
     .esp-certificate__value { text-align: left; }
 }
 </style>
+

@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\DemoVoterSlug;
 use App\Models\User;
 use App\Models\Election;
+use App\Models\Organisation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -28,9 +29,9 @@ class DemoVoterSlugFactory extends Factory
     public function definition(): array
     {
         return [
-            'organisation_id' => null,
+            'organisation_id' => Organisation::factory(),
             'user_id' => User::factory(),
-            'election_id' => Election::factory()->create(['type' => 'demo']),
+            'election_id' => Election::factory()->state(['type' => 'demo']),
             'slug' => Str::random(40),
             'expires_at' => now()->addHour(),
             'is_active' => true,

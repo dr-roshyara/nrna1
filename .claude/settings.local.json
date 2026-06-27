@@ -13,7 +13,11 @@
       "Bash(composer:*)",
       "Bash(composer install:*)",
       "Bash(php artisan:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(git commit -m 'refactor: Improve timezone validation and slug generation in ElectionController *)",
+      "Bash(APP_ENV=testing vendor/bin/phpunit *)",
+      "Bash(Select-String \"FAILED|Tests:\")"
     ]
-  }
+  },
+  "plansDirectory": "./claude/plans"
 }

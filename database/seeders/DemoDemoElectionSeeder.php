@@ -34,6 +34,8 @@ class DemoDemoElectionSeeder extends Seeder
                 'start_date' => now(),
                 'end_date' => now()->addDays(7),
                 'organisation_id' => $platformOrg->id,
+                'voter_source_strategy' => 'full_membership',
+                'state' => 'draft',
             ]
         );
 

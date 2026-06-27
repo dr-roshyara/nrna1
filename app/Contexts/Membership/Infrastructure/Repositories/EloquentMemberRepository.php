@@ -1,0 +1,145 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Contexts\Membership\Infrastructure\Repositories;
+
+use App\Contexts\Membership\Domain\Repositories\MemberRepositoryInterface;
+use App\Contexts\Membership\Domain\Member\Member;
+use App\Contexts\Membership\Domain\Member\MemberId;
+use App\Contexts\Membership\Domain\Member\MemberStatus;
+use App\Contexts\Membership\Domain\Member\ValueObjects\MemberResidenceGeoIdentity;
+use App\Contexts\Membership\Domain\Member\ValueObjects\PersonalInfo;
+use App\Contexts\Membership\Domain\Member\ValueObjects\FeeState;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
+use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
+use App\Contexts\Membership\Infrastructure\Models\MemberContextModel;
+use DateTimeImmutable;
+
+final class EloquentMemberRepository implements MemberRepositoryInterface
+{
+    public function __construct(private MemberContextModel $model) {}
+
+    public function find(MemberId $id, TenantId $tenantId): ?Member
+    {
+        $record = $this->model
+            ->withoutGlobalScopes()
+            ->where('id', $id->value())
+            ->where('organisation_id', $tenantId->value())
+            ->first();
+
+        if (!$record) {
+            return null;
+        }
+
+        return $this->reconstitute($record);
+    }
+
+    public function save(Member $member, TenantId $tenantId, ?string $organisationUserId = null): void
+    {
+        $personalInfo = $member->getPersonalInfo();
+        $memberId = $member->getId()->value();
+        $orgId = $tenantId->value();
+
+        $model = $this->model
+            ->withoutGlobalScopes()
+            ->where('id', $memberId)
+            ->where('organisation_id', $orgId)
+            ->first();
+
+        if (!$model) {
+            $model = new $this->model();
+            $model->id = $memberId;
+            $model->organisation_id = $orgId;
+        }
+
+        $model->personal_info = json_encode([
+            'fullName' => $personalInfo->getFullName(),
+            'email' => $personalInfo->getEmail(),
+            'phone' => $personalInfo->getPhone(),
+        ]);
+        $model->membership_type_id = $member->getMembershipTypeId()->value();
+        $model->status = $member->getStatus()->value();
+        $model->residence_geo_unit_id = $member->getResidenceGeoIdentity()?->residenceGeoUnitId;
+        $model->fee_state = $member->getFeeState()->value;
+
+        if ($organisationUserId !== null) {
+            $model->organisation_user_id = $organisationUserId;
+        }
+
+        $model->save();
+    }
+
+    public function findByStatusForTenant(MemberStatus $status, TenantId $tenantId): array
+    {
+        $records = $this->model
+            ->withoutGlobalScopes()
+            ->where('organisation_id', $tenantId->value())
+            ->where('status', $status->value())
+            ->get();
+
+        return $records->map(fn($record) => $this->reconstitute($record))->all();
+    }
+
+    public function findExpiringForTenant(TenantId $tenantId, int $withinDays): array
+    {
+        $expiryDate = now()->addDays($withinDays)->toDateString();
+
+        $records = $this->model
+            ->withoutGlobalScopes()
+            ->where('organisation_id', $tenantId->value())
+            ->where('status', 'active')
+            ->whereDate('membership_expires_at', '<=', $expiryDate)
+            ->get();
+
+        return $records->map(fn($record) => $this->reconstitute($record))->all();
+    }
+
+    public function existsByEmailForTenant(TenantId $tenantId, string $email): bool
+    {
+        // Check if member with this email exists in tenant
+        $memberExists = $this->model
+            ->withoutGlobalScopes()
+            ->where('organisation_id', $tenantId->value())
+            ->whereHas('organisationUser.user', function ($q) use ($email) {
+                $q->where('email', $email);
+            })
+            ->exists();
+
+        if ($memberExists) {
+            return true;
+        }
+
+        // Check if user exists in this tenant (idempotency guard)
+        return \App\Models\User::where('email', $email)
+            ->where('organisation_id', $tenantId->value())
+            ->exists();
+    }
+
+    private function reconstitute(MemberContextModel $record): Member
+    {
+        $personalInfoData = json_decode($record->personal_info, true) ?? [];
+
+        $personalInfo = PersonalInfo::create(
+            $personalInfoData['fullName'] ?? '',
+            $personalInfoData['email'] ?? '',
+            $personalInfoData['phone'] ?? ''
+        );
+
+        $feeState = $record->fee_state
+            ? FeeState::from($record->fee_state)
+            : FeeState::UNPAID;
+
+        return Member::reconstitute(
+            MemberId::fromString($record->id),
+            MemberStatus::fromString($record->status),
+            $personalInfo,
+            MembershipTypeId::fromString($record->membership_type_id),
+            TenantId::fromOrganisationId($record->organisation_id),
+            $record->residence_geo_unit_id
+                ? new MemberResidenceGeoIdentity((int) $record->residence_geo_unit_id)
+                : null,
+            $feeState
+        );
+    }
+}

@@ -34,9 +34,9 @@
             </div>
             <div v-if="member.expires_at" class="member-card__row">
               <span class="member-card__label">{{ t.expiresAt }}</span>
-              <span class="member-card__value" :class="{ 'text-red-600': isExpired }">
+              <span class="member-card__value" :class="{ 'text-danger-600': isExpired }">
                 {{ formatDate(member.expires_at) }}
-                <span v-if="isExpired" class="ml-1 text-xs font-medium text-red-600">({{ t.expired }})</span>
+                <span v-if="isExpired" class="ml-1 text-xs font-medium text-danger-600">({{ t.expired }})</span>
               </span>
             </div>
           </div>
@@ -506,3 +506,4 @@ function submit() {
 .modal-enter-from .modal-box             { transform: scale(.95) translateY(-1rem); }
 .modal-leave-to .modal-box               { transform: scale(.95) translateY(-1rem); }
 </style>
+

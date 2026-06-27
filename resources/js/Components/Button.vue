@@ -29,7 +29,7 @@ import { computed } from 'vue'
 const props = defineProps({
   as:       { type: String,  default: 'button' }, // 'button' | 'a'
   href:     { type: String,  default: undefined },
-  variant:  { type: String,  default: 'primary' }, // primary | secondary | outline | ghost | danger | accent | success
+  variant:  { type: String,  default: 'primary' }, // primary | secondary | outline | ghost | danger | danger-outline | accent | success | warning
   size:     { type: String,  default: 'md' },       // sm | md | lg
   loading:  { type: Boolean, default: false },
   disabled: { type: Boolean, default: false },
@@ -43,7 +43,9 @@ const variantMap = {
   ghost:     'hover:bg-neutral-100 text-neutral-700 focus:ring-neutral-400',
   danger:    'bg-danger-600    hover:bg-danger-700    text-white shadow-sm focus:ring-danger-500',
   accent:    'bg-accent-600    hover:bg-accent-700    text-white shadow-sm focus:ring-accent-500',
+  warning:   'bg-accent-600    hover:bg-accent-700    text-white shadow-sm focus:ring-accent-500',
   success:   'bg-success-600   hover:bg-success-700   text-white shadow-sm focus:ring-success-500',
+  'danger-outline': 'border-2 border-danger-500 text-danger-600 bg-white hover:bg-danger-50 focus:ring-danger-400',
 }
 
 const sizeMap = {

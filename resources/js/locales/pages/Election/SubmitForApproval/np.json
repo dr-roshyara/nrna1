@@ -1,0 +1,34 @@
+{
+  "title": "अनुमोदनको लागि सबमिट गर्नुहोस् | Submit for Approval",
+  "subtitle": "यो निर्वाचन समीक्षा गरी प्रस्तुत गर्नुहोस् | Review and submit this election for processing",
+  "approval_workflow": {
+    "title": "अनुमोदन कार्यप्रवाह | Approval Workflow",
+    "paid_election_label": "⭐ भुक्तानी निर्वाचन ({count} अपेक्षित मतदाता) | ⭐ PAID ELECTION ({count} expected voters)",
+    "paid_election_description": "४० भन्दा बढी अपेक्षित मतदाता भएका निर्वाचनहरूलाई प्लेटफर्म प्रशासकको समीक्षा र अनुमोदन चाहिन्छ। यो सामान्यतः १-५ कार्य दिन लाग्छ। अनुमोदन वा अस्वीकार भएमा तपाईंले इमेल सूचना पाउनुहुनेछ। | Elections with more than 40 expected voters require platform administrator review and approval. This typically takes 1-5 business days. You will receive an email notification when approved or rejected.",
+    "free_election_label": "✓ निःशुल्क निर्वाचन ({count} अपेक्षित मतदाता) | ✓ FREE ELECTION ({count} expected voters)",
+    "free_election_description": "४० वा कम अपेक्षित मतदाता भएका निर्वाचनहरू स्वतः अनुमोदित हुन्छन्। तपाईंको निर्वाचन प्रस्तुत गरिएको तुरन्तै सेटअप चरणमा जान्छ। | Elections with 40 or fewer expected voters are automatically approved. Your election will move to the setup phase immediately upon submission."
+  },
+  "submission_requirements": {
+    "title": "प्रस्तुतिको आवश्यकताहरू | Submission Requirements",
+    "subtitle": "अनुमोदनको लागि प्रस्तुत गर्नु अघि यी दुई वस्तु सत्यापन गर्नुहोस्: | Verify these two items before submitting for approval:",
+    "election_name": "निर्वाचनको नाम | Election Name",
+    "expected_voter_count": "अपेक्षित मतदाता संख्या | Expected Voter Count",
+    "voter_singular": "मतदाता | voter",
+    "voter_plural": "मतदाता | voters",
+    "voter_count_expected": "अपेक्षित | expected",
+    "voter_count_error": "कम्तिमा १ मतदाता आवश्यक छ | At least 1 voter is required"
+  },
+  "setup_timing_info": "पद, उम्मेदवार र मतदाताहरू प्रशासन चरणको समयमा कन्फिगर गरिन्छ — यो प्रस्तुति अनुमोदित भएपछि। | Posts, candidates, and voters are configured during the administration phase — after this submission is approved.",
+  "actions": {
+    "back_to_management": "व्यवस्थापनमा फिर्ता गर्नुहोस् | Back to Management",
+    "submit_for_approval": "अनुमोदनको लागि सबमिट गर्नुहोस् | Submit for Approval",
+    "submit_auto_approved": "सबमिट गर्नुहोस् (स्वतः अनुमोदित) | Submit (Auto-Approved)",
+    "submitting": "सबमिट हुँदैछ… | Submitting...",
+    "already_submitted": "पहिले नै सबमिट भइसकेको छ | Already Submitted",
+    "set_voter_count_first": "पहिले अपेक्षित मतदाता संख्या सेट गर्नुहोस् | Set Expected Voter Count First"
+  },
+  "button_titles": {
+    "already_submitted": "निर्वाचन पहिले नै अनुमोदनको लागि सबमिट भइसकेको छ | Election already submitted for approval",
+    "set_voter_count_first": "सबमिट गर्नु अघि अपेक्षित मतदाता संख्या आवश्यक छ | Expected voter count is required before submitting"
+  }
+}

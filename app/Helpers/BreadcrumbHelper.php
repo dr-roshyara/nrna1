@@ -86,7 +86,7 @@ class BreadcrumbHelper
             'url' => url('/elections')
         ];
 
-        if ($election = $params['election'] ?? null) {
+        if (($election = $params['election'] ?? null) && is_object($election)) {
             $breadcrumbs[] = [
                 'label' => $election->name,
                 'url' => url('/election/' . $election->id),

@@ -36,11 +36,7 @@ class MembershipApplicationTest extends TestCase
         session(['current_organisation_id' => $this->org->id]);
 
         $this->admin = User::factory()->create();
-        UserOrganisationRole::create([
-            'user_id'         => $this->admin->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'admin',
-        ]);
+        $this->assignRole($this->admin, $this->org, 'admin');
 
         $this->applicant = User::factory()->create();
 
@@ -90,11 +86,7 @@ class MembershipApplicationTest extends TestCase
             'status'               => 'active',
             'membership_expires_at' => now()->addYear(),
         ]);
-        UserOrganisationRole::create([
-            'user_id'         => $this->applicant->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'member',
-        ]);
+        $this->assignRole($this->applicant, $this->org, 'member');
 
         $response = $this->actingAs($this->applicant)->post(
             route('organisations.membership.apply.store', $this->org->slug),
@@ -178,11 +170,7 @@ class MembershipApplicationTest extends TestCase
     public function member_cannot_view_applications_index(): void
     {
         $member = User::factory()->create();
-        UserOrganisationRole::create([
-            'user_id'         => $member->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'member',
-        ]);
+        $this->assignRole($member, $this->org, 'member');
 
         $response = $this->actingAs($member)->get(
             route('organisations.membership.applications.index', $this->org->slug)
@@ -207,9 +195,19 @@ class MembershipApplicationTest extends TestCase
             'expires_at'         => now()->addDays(30),
         ]);
 
-        $this->actingAs($this->admin)->patch(
-            route('organisations.membership.applications.approve', [$this->org->slug, $app->id])
-        );
+        $url = route('organisations.membership.applications.approve', [$this->org->slug, $app->id]);
+        \Log::info('TEST: Approving application', [
+            'app_id' => $app->id,
+            'url' => $url,
+        ]);
+
+        $response = $this->actingAs($this->admin)->patch($url);
+
+        \Log::info('TEST: Response received', [
+            'status' => $response->getStatusCode(),
+        ]);
+
+        $response->assertRedirect();
 
         $this->assertDatabaseHas('membership_applications', [
             'id'     => $app->id,

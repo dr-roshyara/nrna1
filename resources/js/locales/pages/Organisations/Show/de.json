@@ -395,5 +395,78 @@
     "button-explore": "Ergebnisse erkunden",
     "info-title": "Über Demo-Wahlergebnisse",
     "info-description": "Demo-Wahlergebnisse helfen Ihnen, unser Wahlsystem zu verstehen. Modus 1 (Öffentlich) zeigt globale Beispieldaten, während Modus 2 (Organisation) Daten speziell für Ihre Organisation anzeigt. Es werden keine echten Wahldaten verwendet."
+  },
+  "portals": {
+    "title": "Mitgliederportale",
+    "voter_hub": "Wählerzentrale",
+    "voter_hub_desc": "Aktive Wahlen anzeigen und Abstimmungsstatus überprüfen",
+    "election_commission": "Wahlkommission",
+    "election_commission_desc": "Wahlen, Wähler und Kandidaten verwalten",
+    "membership": "Mitgliedschaft",
+    "membership_desc": "Verwalten Sie Ihre Mitgliedschaft, Gebühren und Verlängerungen",
+    "organisation_roles": "Organisationsrollen",
+    "organisation_roles_desc": "Rollen anzeigen und Rollenträger als Mitglieder hinzufügen"
+  },
+  "officer": {
+    "label": "Sie sind",
+    "role_chief": "Wahlleiter",
+    "role_deputy": "Stellvertretender Wahlleiter",
+    "role_commissioner": "Wahlbeisitzer",
+    "for": "für",
+    "for_organisation": "für diese Organisation."
+  },
+  "live": {
+    "title": "Live-Abstimmung",
+    "vote_cast": "Stimme abgegeben",
+    "not_a_voter": "Kein Wähler",
+    "vote_now": "Jetzt abstimmen"
+  },
+  "admin": {
+    "title": "Verwaltung"
+  },
+  "elections": {
+    "title": "Wahlen",
+    "singular": "Wahl",
+    "plural": "Wahlen",
+    "new": "Neue Wahl",
+    "empty": {
+      "title": "Noch keine Wahlen",
+      "create": "Erstellen Sie Ihre erste Wahl, um zu beginnen.",
+      "check_later": "Überprüfen Sie später kommende Wahlen.",
+      "create_first": "Erste Wahl erstellen"
+    }
+  },
+  "committees": {
+    "title": "Ausschussverwaltung",
+    "subtitle": "Verwalten Sie Ausschüsse auf allen Ebenen",
+    "manage": "Verwalten →",
+    "label": "Ausschüsse",
+    "description": "organisieren die Verwaltung auf verschiedenen Ebenen",
+    "levels": "Zentral, Provinz, Distrikt, Bezirk",
+    "new": "Neu"
+  },
+  "officers": {
+    "title": "Wahlleiter",
+    "subtitle": "Verwalten Sie, wer Wahlen überwachen kann",
+    "manage": "Verwalten →",
+    "more": "weitere",
+    "empty": {
+      "title": "Keine Wahlleiter ernannt",
+      "description": "Ernennen Sie Wahlleiter und Stellvertreter zur Verwaltung Ihrer Wahlen.",
+      "appoint": "Ersten Wahlleiter ernennen"
+    }
+  },
+  "voters": {
+    "title": "Wählerverwaltung",
+    "subtitle": "Wähler genehmigen oder suspendieren",
+    "total_members": "Gesamtzahl Mitglieder",
+    "active": "Aktiv",
+    "live_elections": "Laufende Wahlen"
+  },
+  "results": {
+    "title": "Ergebnisverwaltung",
+    "subtitle": "Veröffentlichen oder überprüfen Sie abgeschlossene Wahlergebnisse",
+    "published": "Veröffentlicht",
+    "unpublished": "Nicht veröffentlicht"
   }
 }

@@ -1,6 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Election;
+
+use App\Contexts\Elections\Domain\Events\ResultsPublishedEvent;
+use App\Contexts\Elections\Domain\Events\ResultsUnpublishedEvent;
+use Carbon\Carbon;
+use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -12,6 +17,10 @@ use App\Services\ElectionService;
 use App\Services\DemoElectionResolver;
 use App\Services\VoterSlugService;
 use App\Services\DashboardResolver;
+use App\Services\ElectionClockService;
+use App\Application\Election\Facades\ElectionLifecycle;
+use App\Domain\Election\Projection\ElectionLifecycleProjection;
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\RedirectResponse;
@@ -20,18 +29,32 @@ use Illuminate\Validation\Rule;
 use Inertia\Response;
 use App\Models\ElectionOfficer;
 use App\Models\Organisation;
+use App\Models\Candidacy;
 use App\Notifications\ElectionReadyForActivation;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Validator;
+use App\Application\Election\Capabilities\CapabilityContext;
+use App\Application\Election\Capabilities\ElectionConstitutionRegistry;
+use App\Application\Election\Governance\ElectionStateWriteContext;
+use App\Application\Election\Services\ElectionCapabilityResolver;
 
 class ElectionManagementController extends Controller
 {
     protected DemoElectionResolver $demoResolver;
     protected VoterSlugService $slugService;
+    protected ElectionCapabilityResolver $capabilityResolver;
+    protected ElectionConstitutionRegistry $registry;
 
-    public function __construct(DemoElectionResolver $demoResolver, VoterSlugService $slugService)
-    {
+    public function __construct(
+        DemoElectionResolver $demoResolver,
+        VoterSlugService $slugService,
+        ElectionCapabilityResolver $capabilityResolver,
+        ElectionConstitutionRegistry $registry
+    ) {
         $this->demoResolver = $demoResolver;
         $this->slugService = $slugService;
+        $this->capabilityResolver = $capabilityResolver;
+        $this->registry = $registry;
     }
 
     // =========================================================================
@@ -49,16 +72,17 @@ class ElectionManagementController extends Controller
             ->where('type', '!=', 'demo')
             ->orderByDesc('created_at');
 
-        if ($request->filled('status')) {
-            $query->where('status', $request->status);
-        }
+        // NOTE: Removed deprecated status filter. Use 'state' field if filtering needed in future.
+        // if ($request->filled('status')) {
+        //     $query->where('status', $request->status);
+        // }
 
         $elections = $query->get()
             ->map(fn ($e) => [
                 'id'         => $e->id,
                 'name'       => $e->name,
                 'slug'       => $e->slug,
-                'status'     => $e->status,
+                'state'      => ElectionLifecycle::of($e)->state()->value,
                 'start_date' => $e->start_date,
                 'end_date'   => $e->end_date,
                 'created_at' => $e->created_at,
@@ -92,16 +116,38 @@ class ElectionManagementController extends Controller
      */
     public function store(Request $request, Organisation $organisation): RedirectResponse
     {
+        Log::info('ElectionController::store() called', ['org_id' => $organisation->id]);
+
         $this->authorize('create', [Election::class, $organisation]);
+        Log::info('Authorization passed', ['org_id' => $organisation->id]);
 
         $validated = $request->validate([
-            'name'        => ['required', 'string', 'max:255',
-                              Rule::unique('elections')->where('organisation_id', $organisation->id)],
-            'description' => ['nullable', 'string', 'max:5000'],
-            'start_date'  => ['required', 'date', 'after_or_equal:today'],
-            'end_date'    => ['required', 'date', 'after_or_equal:start_date'],
-            'type'        => ['sometimes', 'in:real'],
+            'name'                          => ['required', 'string', 'max:255',
+                                                Rule::unique('elections')->where('organisation_id', $organisation->id)],
+            'description'                   => ['nullable', 'string', 'max:5000'],
+            'type'                          => ['sometimes', 'in:real'],
+            'expected_voter_count'          => ['required', 'integer', 'min:1', 'max:10000'],
+            'timezone'                      => ['nullable', 'string', 'max:50'],
+            'administration_suggested_start' => ['nullable', 'date_format:Y-m-d\TH:i'],
+            'administration_suggested_end'   => ['nullable', 'date_format:Y-m-d\TH:i', 'after:administration_suggested_start'],
+            'nomination_suggested_start'     => ['nullable', 'date_format:Y-m-d\TH:i'],
+            'nomination_suggested_end'       => ['nullable', 'date_format:Y-m-d\TH:i', 'after:nomination_suggested_start'],
+            'voting_starts_at'               => ['nullable', 'date_format:Y-m-d\TH:i'],
+            'voting_ends_at'                 => ['nullable', 'date_format:Y-m-d\TH:i', 'after:voting_starts_at'],
         ]);
+
+        // Auto-sync legacy dates from voting period (source of truth)
+        $startDate = null;
+        $endDate = null;
+
+        if ($validated['voting_starts_at']) {
+            $startDate = Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_starts_at']);
+        }
+        if ($validated['voting_ends_at']) {
+            $endDate = Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_ends_at']);
+        }
+
+        Log::info('About to create election', ['name' => $validated['name']]);
 
         $election = Election::create([
             'id'              => (string) Str::uuid(),
@@ -110,22 +156,43 @@ class ElectionManagementController extends Controller
             'slug'            => $this->generateUniqueSlug($validated['name']),
             'description'     => $validated['description'] ?? null,
             'type'            => 'real',
-            'status'          => 'planned',
-            'start_date'      => $validated['start_date'],
-            'end_date'        => $validated['end_date'],
+            'voter_source_strategy' => VoterSourceStrategy::fromOrganisation($organisation)->toPersistenceValue(),
+            'state'           => 'draft',
+            'start_date'      => $startDate,
+            'end_date'        => $endDate,
+            'expected_voter_count'          => $validated['expected_voter_count'],
+            'timezone'                      => $validated['timezone'] ?? null,
+            'administration_suggested_start' => $validated['administration_suggested_start'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['administration_suggested_start'])->format('Y-m-d H:i:00') : null,
+            'administration_suggested_end'   => $validated['administration_suggested_end'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['administration_suggested_end'])->format('Y-m-d H:i:00') : null,
+            'nomination_suggested_start'     => $validated['nomination_suggested_start'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['nomination_suggested_start'])->format('Y-m-d H:i:00') : null,
+            'nomination_suggested_end'       => $validated['nomination_suggested_end'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['nomination_suggested_end'])->format('Y-m-d H:i:00') : null,
+            'voting_starts_at'               => $validated['voting_starts_at'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_starts_at'])->format('Y-m-d H:i:00') : null,
+            'voting_ends_at'                 => $validated['voting_ends_at'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_ends_at'])->format('Y-m-d H:i:00') : null,
+            'allow_auto_transition'          => true,
+            'auto_transition_grace_days'     => 7,
         ]);
 
-        // Notify all active chiefs of this organisation
-        $activeChiefs = ElectionOfficer::with('user')
-            ->where('organisation_id', $organisation->id)
-            ->where('role', 'chief')
-            ->where('status', 'active')
-            ->get()
-            ->pluck('user')
-            ->filter();
+        Log::info('Election created successfully', ['election_id' => $election->id, 'state' => $election->state]);
 
-        if ($activeChiefs->isNotEmpty()) {
-            Notification::send($activeChiefs, new ElectionReadyForActivation($election));
+        // Notify all active chiefs of this organisation
+        try {
+            $activeChiefs = ElectionOfficer::with('user')
+                ->where('organisation_id', $organisation->id)
+                ->where('role', 'chief')
+                ->where('status', 'active')
+                ->get()
+                ->pluck('user')
+                ->filter();
+
+            if ($activeChiefs->isNotEmpty()) {
+                Notification::send($activeChiefs, new ElectionReadyForActivation($election));
+            }
+        } catch (\Exception $e) {
+            Log::warning('Failed to notify chiefs of new election', [
+                'election_id' => $election->id,
+                'organisation_id' => $organisation->id,
+                'error' => $e->getMessage(),
+            ]);
         }
 
         return redirect()->route('organisations.show', $organisation->slug)
@@ -137,13 +204,14 @@ class ElectionManagementController extends Controller
      */
     private function generateUniqueSlug(string $name): string
     {
-        // Use a UUID suffix so we never need to loop — guaranteed unique.
         $base = Str::slug($name) ?: 'election';
-        return $base . '-' . Str::lower(Str::random(8));
+        $suffix = Str::lower(Str::substr((string) Str::uuid(), 0, 8));
+        return $base . '-' . $suffix;
     }
 
     /**
      * Activate a planned election (chief or deputy only).
+     * Transitions from 'approved' state to 'setup' state via 'begin_setup' action.
      *
      * POST /elections/{election}/activate
      */
@@ -151,22 +219,24 @@ class ElectionManagementController extends Controller
     {
         $this->authorize('manageSettings', $election);
 
-        if ($election->status === 'active') {
-            return back()->with('error', 'Cannot activate an election that is already active.');
+        // Set tenant context so BelongsToTenant global scope can find related records
+        session(['current_organisation_id' => $election->organisation_id]);
+        \App\Services\TenantContext::set($election->organisation_id);
+
+        try {
+            // Use constitutional transitionTo() which:
+            // 1. Validates via ConstitutionalTransitionGuard
+            // 2. Runs side effects
+            // 3. Creates ElectionStateTransition record
+            $election->transitionTo(
+                \App\Domain\Election\StateMachine\Transition::manual('begin_setup', auth()->id(), 'Activated by officer')
+            );
+
+            return back()->with('success', 'Election activated successfully! Setup phase is now open.');
+        } catch (\Exception $e) {
+            Log::warning('activate() transition failed', ['election_id' => $election->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Election cannot be activated in its current state.');
         }
-
-        if ($election->status === 'completed') {
-            return back()->with('error', 'Cannot activate an election that is already completed.');
-        }
-
-        Election::withoutGlobalScopes()
-            ->where('id', $election->id)
-            ->update([
-                'status'            => 'active',
-                'results_published' => false,
-            ]);
-
-        return back()->with('success', 'Election activated successfully! Voting period is now open.');
     }
 
     /**
@@ -186,7 +256,7 @@ class ElectionManagementController extends Controller
     public function dashboard(DashboardResolver $dashboardResolver)
     {
         $authUser = Auth::user();
-        $ipAddress = $this->getUserIpAddr();
+        $ipAddress = request()->ip();
 
         // Not authenticated: Show welcome page
         if (!$authUser) {
@@ -203,16 +273,14 @@ class ElectionManagementController extends Controller
         $orgId = session('current_organisation_id');
         \Illuminate\Support\Facades\Log::info('DASHBOARD_DEBUG', ['orgId' => $orgId, 'user_id' => $authUser->id]);
         if ($orgId) {
-            $activeElection = Election::withoutGlobalScopes()
+            // Find active election using SSOT state (voting_active) instead of deprecated status
+            $elections = Election::withoutGlobalScopes()
                 ->where('organisation_id', $orgId)
                 ->where('type', 'real')
-                ->where('status', 'active')
-                ->where('start_date', '<=', now())
-                ->where('end_date', '>=', now())
-                ->first();
+                ->get();
 
-            $allElectionsInDB = \Illuminate\Support\Facades\DB::table('elections')->get(['id', 'organisation_id', 'type', 'status'])->toArray();
-            \Illuminate\Support\Facades\Log::info('DASHBOARD_DEBUG2', ['session_orgId' => $orgId, 'activeElection' => $activeElection?->id, 'allElectionsInDB' => $allElectionsInDB]);
+            // Filter to elections in voting_active state
+            $activeElection = $elections->first(fn($e) => ElectionLifecycle::of($e)->state()->value === 'voting_active');
 
             if ($activeElection) {
                 $redirect = redirect()->route('elections.show', $activeElection->slug);
@@ -233,70 +301,6 @@ class ElectionManagementController extends Controller
     }
 
     /**
-     * ✅ NEW: Proper ballot access determination logic
-     */
-    private function determineBallotAccess($user)
-    {
-        // Check if election is active
-        if (!config('election.is_active', true)) {
-            return [
-                'can_access' => false,
-                'error_type' => 'election_inactive',
-                'error_message_nepali' => 'निर्वाचन अहिले सक्रिय छैन।',
-                'error_message_english' => 'Election is not currently active.'
-            ];
-        }
-
-        // Check if user is registered as voter
-        if (!$user->is_voter) {
-            return [
-                'can_access' => false,
-                'error_type' => 'not_voter',
-                'error_message_nepali' => 'तपाईं मतदाताको रूपमा दर्ता हुनुभएको छैन।',
-                'error_message_english' => 'You are not registered as a voter.'
-            ];
-        }
-
-        // Check if user is approved to vote
-        if (!$user->can_vote) {
-            return [
-                'can_access' => false,
-                'error_type' => 'vote_not_approved',
-                'error_message_nepali' => 'तपाईंको मतदान अनुमति अझै स्वीकृत भएको छैन।',
-                'error_message_english' => 'Your voting permission has not been approved yet.'
-            ];
-        }
-
-        // Check if user has already voted (from user table)
-        if ($user->has_voted) {
-            return [
-                'can_access' => true, // Allow access to view their vote
-                'access_type' => 'view_vote',
-                'message_nepali' => 'तपाईंले पहिले नै मतदान गरिसक्नुभएको छ।',
-                'message_english' => 'You have already voted.'
-            ];
-        }
-
-        // Check if voting period is active (new users can only vote if voting period is active)
-        if (!ElectionService::isVotingPeriodActive()) {
-            return [
-                'can_access' => false,
-                'error_type' => 'voting_period_inactive',
-                'error_message_nepali' => 'मतदान अवधि सक्रिय छैन। मतदान सुरु भएपछि फेरि प्रयास गर्नुहोस्।',
-                'error_message_english' => 'Voting period is not active. Please try again when voting has started.'
-            ];
-        }
-
-        // All checks passed - user can vote
-        return [
-            'can_access' => true,
-            'access_type' => 'can_vote',
-            'message_nepali' => 'तपाईं मतदान गर्न सक्नुहुन्छ।',
-            'message_english' => 'You can vote.'
-        ];
-    }
-   
-    /**
      * ⏳ FUTURE USE: Election selection page for multiple simultaneous elections
      *
      * Currently not used (single real election system).
@@ -312,11 +316,10 @@ class ElectionManagementController extends Controller
             return redirect()->route('login');
         }
 
-        // Get all active real elections that are currently active
+        // Get all real elections currently in voting_active state
         $activeElections = Election::where('type', 'real')
-            ->where('is_active', true)
             ->get()
-            ->filter(fn ($election) => $election->isCurrentlyActive())
+            ->filter(fn ($election) => ElectionLifecycle::of($election)->state()->value === 'voting_active')
             ->values();
 
         // If no elections, redirect to dashboard
@@ -348,12 +351,12 @@ class ElectionManagementController extends Controller
      * 1️⃣ Org-specific demo (if user has organisation_id)
      * 2️⃣ Platform-wide demo (fallback)
      */
-    public function startDemo()
+    public function startDemo(string $organisation_slug)
     {
         $authUser = Auth::user();
         Log::info('🎬 Demo election start requested', [
             'user_id' => $authUser?->id,
-            'user_org_id' => $authUser?->organisation_id,
+            'organisation_slug' => $organisation_slug,
         ]);
 
         if (!$authUser) {
@@ -361,9 +364,23 @@ class ElectionManagementController extends Controller
         }
 
         try {
-            // Use DemoElectionResolver to get the correct demo election
-            // Priority: org-specific demo → platform-wide demo
-            $demoElection = $this->demoResolver->getDemoElectionForUser($authUser);
+            // Look up organisation by slug
+            $organisation = Organisation::withoutGlobalScopes()
+                ->where('slug', $organisation_slug)
+                ->firstOrFail();
+
+            Log::info('✅ Organisation found', [
+                'organisation_id' => $organisation->id,
+                'organisation_slug' => $organisation->slug,
+            ]);
+
+            // Get the demo election for this specific organisation
+            $demoElection = Election::withoutGlobalScopes()
+                ->where('type', 'demo')
+                ->where('organisation_id', $organisation->id)
+                ->where('is_active', true)
+                ->orderBy('created_at', 'desc')
+                ->first();
 
             if (!$demoElection) {
                 Log::error('❌ No demo election found', [
@@ -380,10 +397,11 @@ class ElectionManagementController extends Controller
                 'election_org_id' => $demoElection->organisation_id,
             ]);
 
-            // Store demo election in session
+            // Store demo election and organisation in session
             session([
                 'selected_election_id' => $demoElection->id,
                 'selected_election_type' => 'demo',
+                'current_organisation_id' => $organisation->id,
             ]);
 
             Log::info('📝 Session updated', [
@@ -407,40 +425,42 @@ class ElectionManagementController extends Controller
             // 🔥 DIGITAL OCEAN FIX 2: Force session save for database driver
             session()->save();
 
-            // 🔥 DIGITAL OCEAN FIX 3: Verify slug exists with retry for replication lag
+            // ✅ Database-specific slug verification
+            $driver = \DB::getDriverName();
             $verified = false;
-            $attempts = 0;
-            $maxAttempts = 3;
 
-            while (!$verified && $attempts < $maxAttempts) {
-                if ($attempts > 0) {
-                    Log::info('Retrying slug verification', [
-                        'attempt' => $attempts + 1,
-                        'slug_id' => $slug->id
-                    ]);
-                    sleep(1); // Wait 1 second between retries
-                    \DB::reconnect('mysql'); // Fresh connection
+            if ($driver === 'mysql') {
+                // MySQL with Digital Ocean replicas may have read lag - retry verification
+                $maxAttempts = 3;
+                $attempts = 0;
+
+                while (!$verified && $attempts < $maxAttempts) {
+                    if ($attempts > 0) {
+                        Log::debug('Retrying slug verification on MySQL', [
+                            'attempt' => $attempts + 1,
+                            'slug_id' => $slug->id
+                        ]);
+                        sleep(1);
+                        \DB::reconnect($driver);
+                    }
+
+                    $verified = \DB::table('demo_voter_slugs')
+                        ->where('id', $slug->id)
+                        ->exists();
+
+                    $attempts++;
                 }
 
-                // Force write connection for read-after-write consistency
-                $verified = \DB::table('demo_voter_slugs')
-                    ->where('id', $slug->id)
-                    ->exists();
-
-                $attempts++;
-            }
-
-            if (!$verified) {
-                Log::error('⚠️ Slug verification failed after ' . $maxAttempts . ' attempts', [
-                    'slug_id' => $slug->id,
-                    'slug' => $slug->slug
-                ]);
-                // Continue anyway - route binding will have its own retry logic
+                if (!$verified) {
+                    Log::error('Slug verification failed after retries on MySQL', [
+                        'slug_id' => $slug->id,
+                        'attempts' => $maxAttempts
+                    ]);
+                }
             } else {
-                Log::info('✅ Slug verified successfully', [
-                    'attempts' => $attempts,
-                    'slug_id' => $slug->id
-                ]);
+                // PostgreSQL has strong consistency - no verification delay needed
+                $verified = true;
+                Log::debug('Slug created on ' . ucfirst($driver) . ' (strong consistency)');
             }
 
             // Store slug in session for fallback if route binding fails
@@ -485,17 +505,19 @@ class ElectionManagementController extends Controller
         }
 
         $elections = collect();
+        $now = ElectionClockService::now();
 
         // 1️⃣ Get organisation-specific demo elections
         if ($user->organisation_id) {
             $orgElections = Election::withoutGlobalScopes()
                 ->where('type', 'demo')
                 ->where('organisation_id', $user->organisation_id)
-                ->where('status', 'active')
-                ->where('start_date', '<=', now())
-                ->where('end_date', '>=', now())
+                ->where('start_date', '<=', $now)
+                ->where('end_date', '>=', $now)
                 ->orderBy('created_at', 'desc')
-                ->get();
+                ->get()
+                ->filter(fn ($e) => ElectionLifecycle::of($e)->state()->value === 'voting_active')
+                ->values();
 
             $elections = $elections->concat($orgElections);
 
@@ -510,11 +532,12 @@ class ElectionManagementController extends Controller
         $publicElections = Election::withoutGlobalScopes()
             ->where('type', 'demo')
             ->whereNull('organisation_id')
-            ->where('status', 'active')
-            ->where('start_date', '<=', now())
-            ->where('end_date', '>=', now())
+            ->where('start_date', '<=', $now)
+            ->where('end_date', '>=', $now)
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->get()
+            ->filter(fn ($e) => ElectionLifecycle::of($e)->state()->value === 'voting_active')
+            ->values();
 
         $elections = $elections->concat($publicElections);
 
@@ -639,32 +662,41 @@ class ElectionManagementController extends Controller
      * Management dashboard — chief or deputy only.
      * Authorization enforced by route ->can('manageSettings', 'election').
      */
-    public function index(Election $election): Response
+    public function index(string|Election $election): Response
     {
+        // Handle case where route binding passes string instead of model
+        if (is_string($election)) {
+            $election = Election::withoutGlobalScopes()
+                ->where('slug', $election)
+                ->firstOrFail();
+        }
+
+        $this->authorize('manageSettings', $election);
+
+        // Set session context to election's organisation so subsequent API calls work
+        // This ensures the BelongsToTenant global scope can find the election
+        session(['current_organisation_id' => $election->organisation_id]);
+        \App\Services\TenantContext::set($election->organisation_id);
+
         $election->load(['organisation']);
 
-        $postsCount = \App\Models\Post::withoutGlobalScopes()
-            ->where('election_id', $election->id)
-            ->count();
-
-        $candidatesCount = \App\Models\Candidacy::withoutGlobalScopes()
-            ->whereHas('post', fn ($q) => $q->withoutGlobalScopes()->where('election_id', $election->id))
-            ->where('status', \App\Models\Candidacy::STATUS_APPROVED)
-            ->count();
-
         $organisation = $election->organisation;
+        $stateMachine = $this->getStateMachineData($election);
 
         return Inertia::render('Election/Management', [
             'election'        => $election,
             'organisation'    => $organisation ? [
                 'id'   => $organisation->id,
+                'slug' => $organisation->slug,
                 'name' => $organisation->name,
                 'logo' => $organisation->logo ? asset($organisation->logo) : null,
             ] : null,
             'stats'           => $election->voter_stats,
-            'canPublish'      => auth()->user()->can('publishResults', $election) && $election->status === 'completed',
-            'postsCount'      => $postsCount,
-            'candidatesCount' => $candidatesCount,
+            'postsCount'      => $stateMachine['postsCount'],
+            'candidatesCount' => $stateMachine['approvedCandidates'],
+            'stateMachine'    => $stateMachine,
+            'progress'        => $election->getProgress(),
+            'capacity'        => $election->getCapacityInfo(),
         ]);
     }
 
@@ -693,7 +725,7 @@ class ElectionManagementController extends Controller
         }
 
         $path = $request->file('logo')->store(
-            "organisations/{$organisation->id}/logo",
+            "uploads/logos/{$organisation->id}",
             'public'
         );
 
@@ -727,13 +759,39 @@ class ElectionManagementController extends Controller
     }
 
     /**
+     * Update expected voter count — chief or deputy.
+     *
+     * PATCH /elections/{election}/expected-voter-count
+     */
+    public function updateExpectedVoterCount(Request $request, Election $election): RedirectResponse
+    {
+        $this->authorize('manageSettings', $election);
+
+        $validated = $request->validate([
+            'expected_voter_count' => ['required', 'integer', 'min:1', 'max:10000'],
+        ]);
+
+        Election::withoutGlobalScopes()
+            ->where('id', $election->id)
+            ->update(['expected_voter_count' => $validated['expected_voter_count']]);
+
+        return back()->with('success', 'Expected voter count updated successfully.');
+    }
+
+    /**
      * Election status JSON — chief or deputy only.
      */
     public function status(Election $election): \Illuminate\Http\JsonResponse
     {
         return response()->json([
-            'election' => $election->only(['id', 'name', 'status', 'is_active', 'results_published']),
-            'stats'    => $election->voter_stats,
+            'election' => [
+                'id' => $election->id,
+                'name' => $election->name,
+                'state' => ElectionLifecycle::of($election)->state()->value,
+                'is_active' => ElectionLifecycle::of($election)->isActive(),
+                'results_published' => $election->results_published,
+            ],
+            'stats' => $election->voter_stats,
         ]);
     }
 
@@ -751,15 +809,62 @@ class ElectionManagementController extends Controller
     }
 
     /**
-     * Publish results — chief only.
+     * Publish results — chief only. Transitions state and sets timestamp via state machine.
      */
     public function publish(Election $election): \Illuminate\Http\RedirectResponse
     {
-        if ($election->status !== 'completed') {
-            return back()->with('error', 'Results can only be published after voting is closed.');
+        $this->authorize('publishResults', $election);
+
+        // Verify vote-result integrity before publishing; auto-correct any drift
+        $failedVerifications = 0;
+        foreach (\App\Models\Vote::where('election_id', $election->id)->get() as $vote) {
+            $integrity = $vote->verifyResultsIntegrity();
+            if (!$integrity['is_valid']) {
+                $failedVerifications++;
+                \Log::warning('Result integrity violation auto-corrected during publish', [
+                    'vote_id'        => $vote->id,
+                    'election_id'    => $election->id,
+                    'stored_count'   => $integrity['stored_count'],
+                    'expected_count' => $integrity['expected_count'],
+                    'checksum_valid' => $integrity['checksum_valid'],
+                ]);
+                $vote->syncResults();
+            }
         }
-        $election->update(['results_published' => true]);
-        return back()->with('success', 'Results published.');
+        if ($failedVerifications > 0) {
+            \Log::warning('Publish integrity sweep complete', [
+                'election_id'      => $election->id,
+                'violations_fixed' => $failedVerifications,
+            ]);
+        }
+
+        try {
+            $election->transitionTo(
+                \App\Domain\Election\StateMachine\Transition::manual(
+                    action: 'publish_results',
+                    actorId: auth()->id(),
+                    reason: 'Results published by election officer',
+                    metadata: ['ip' => request()->ip()]
+                )
+            );
+
+            // Refresh to get updated state/timestamp
+            $election->refresh();
+
+            // Dispatch domain event for publication
+            event(new ResultsPublishedEvent(
+                electionId: $election->id,
+                publishedBy: auth()->id(),
+                publishedAt: new DateTimeImmutable($election->results_published_at->toDateTimeString()),
+                state: $election->state,
+            ));
+
+            return back()->with('success', 'Results published successfully.');
+        } catch (\App\Exceptions\InvalidTransitionException $e) {
+            return back()->with('error', $e->getMessage());
+        } catch (\DomainException $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     /**
@@ -767,7 +872,19 @@ class ElectionManagementController extends Controller
      */
     public function unpublish(Election $election): \Illuminate\Http\RedirectResponse
     {
+        $this->authorize('publishResults', $election);
+
+        $previousState = $election->state;
+
         $election->update(['results_published' => false]);
+
+        // Dispatch domain event for unpublication
+        event(new ResultsUnpublishedEvent(
+            electionId: $election->id,
+            unpublishedBy: auth()->id(),
+            unpublishedAt: new DateTimeImmutable(),
+            previousState: $previousState,
+        ));
         return back()->with('success', 'Results unpublished.');
     }
 
@@ -776,12 +893,24 @@ class ElectionManagementController extends Controller
      */
     public function openVoting(Election $election): \Illuminate\Http\RedirectResponse
     {
-        $election->update([
-            'status'            => 'active',
-            'is_active'         => true,
-            'results_published' => false,
-        ]);
-        return back()->with('success', 'Voting period opened.');
+        $this->authorize('manageSettings', $election);
+
+        try {
+            $election->transitionTo(
+                \App\Domain\Election\StateMachine\Transition::manual(
+                    action: 'open_voting',
+                    actorId: auth()->id(),
+                    reason: request()->input('reason', 'Manually opened voting by election officer'),
+                    metadata: ['ip' => request()->ip()]
+                )
+            );
+            return back()->with('success', 'Voting period opened successfully.');
+
+        } catch (\App\Exceptions\InvalidTransitionException $e) {
+            return back()->with('error', $e->getMessage());
+        } catch (\DomainException $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     /**
@@ -789,8 +918,142 @@ class ElectionManagementController extends Controller
      */
     public function closeVoting(Election $election): \Illuminate\Http\RedirectResponse
     {
-        $election->update(['status' => 'completed', 'is_active' => false]);
-        return back()->with('success', 'Voting period closed.');
+        $this->authorize('manageSettings', $election);
+
+        try {
+             \Log::info('closeVoting: About to transition', [
+            'election_id' => $election->id,
+            'election_state' => $election->state,
+            'user_id' => auth()->id(),
+            ]);
+
+            $election->transitionTo(
+                \App\Domain\Election\StateMachine\Transition::manual(
+                    action: 'close_voting',
+                    actorId: auth()->id(),
+                    reason: request()->input('reason', 'Manually closed voting by election officer'),
+                    metadata: ['ip' => request()->ip()]
+                )
+            );
+            return back()->with('success', 'Voting period closed successfully.');
+
+        } catch (\App\Exceptions\InvalidTransitionException $e) {
+            return back()->with('error', $e->getMessage());
+        } catch (\DomainException $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    /**
+     * SUSPEND ELECTION — governance intervention overlay.
+     *
+     * This is NOT lifecycle progression. Suspension is an operational governance override
+     * that freezes all capabilities except resume. The engine re-derives state from
+     * suspended_at facts; no lifecycle state is directly mutated.
+     *
+     * Authorization: suspendElection (chief only — NOT manageSettings)
+     * @see \App\Policies\ElectionPolicy::suspendElection()
+     */
+    public function suspend(Election $election): \Illuminate\Http\RedirectResponse
+    {
+        $this->authorize('suspendElection', $election);
+
+        // Guard: prevent double-suspension
+        if ($election->suspended_at !== null) {
+            return back()->with('error', __('This election is already suspended.'));
+        }
+
+        $validated = request()->validate([
+            'reason' => ['required', 'string', 'min:10', 'max:1000'],
+            'suspension_category' => ['nullable', 'string', Rule::in(Election::SUSPENSION_CATEGORIES)],
+        ]);
+
+        ElectionStateWriteContext::authorize(function () use ($election, $validated) {
+            $snapshot = ElectionLifecycle::of($election)->snapshot();
+
+            $election->suspended_at = now();
+            $election->suspended_by = auth()->id();
+            $election->suspended_reason = $validated['reason'];
+            $election->suspension_category = $validated['suspension_category'] ?? 'operational_pause';
+            $election->suspended_lifecycle_context = $snapshot->state->value;
+            $election->state = 'suspended';
+            $election->save();
+        });
+
+        \App\Models\ElectionAuditLog::record(
+            $election,
+            'suspend',
+            null,
+            ['reason' => $validated['reason'], 'suspension_category' => $validated['suspension_category'] ?? 'operational_pause'],
+            request()->user(),
+            request()
+        );
+
+        return back()->with('success', __('Election suspended. All governance operations are now locked.'));
+    }
+
+    /**
+     * RESUME ELECTION — remove governance intervention overlay.
+     *
+     * This reverses a suspension. Like suspend, this is NOT lifecycle progression.
+     * The engine re-derives state from facts (clearing suspended_at restores the
+     * pre-suspension lifecycle position).
+     *
+     * Authorization: suspendElection (chief only — same as suspend)
+     */
+    public function resume(Election $election): \Illuminate\Http\RedirectResponse
+    {
+        $this->authorize('suspendElection', $election);
+
+        ElectionStateWriteContext::authorize(function () use ($election) {
+            $election->suspended_at = null;
+            $election->suspended_by = null;
+            $election->suspended_reason = null;
+            $election->suspension_category = null;
+            $election->resumed_at = now();
+            $election->resumed_by = auth()->id();
+
+            $snapshot = ElectionLifecycle::of($election)->snapshot();
+            $election->state = $snapshot->state->value;
+            $election->suspended_lifecycle_context = null;
+
+            $election->save();
+        });
+
+        return back()->with('success', 'Election resumed. All governance operations are now available.');
+    }
+
+    /**
+     * Show submission review page.
+     */
+    public function showSubmitForApproval(Election $election)
+    {
+        $this->authorize('manageSettings', $election);
+
+        return inertia('Election/SubmitForApproval', [
+            'election' => $election->only(['id', 'slug', 'name', 'state', 'expected_voter_count']),
+            'organisation' => $election->organisation->only(['slug', 'name']),
+        ]);
+    }
+
+    /**
+     * Submit election for approval — officer action.
+     */
+    public function submitForApproval(Election $election): \Illuminate\Http\RedirectResponse
+    {
+        $this->authorize('manageSettings', $election);
+
+        try {
+            $election->submitForApproval(auth()->id());
+            return back()->with('success', 'Election submitted for approval successfully.');
+        } catch (\Exception $e) {
+            Log::error('Failed to submit election for approval', [
+                'election_id' => $election->id,
+                'user_id' => auth()->id(),
+                'error' => $e->getMessage()
+            ]);
+            return back()->with('error', 'Failed to submit election for approval: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -837,14 +1100,428 @@ class ElectionManagementController extends Controller
         return back()->with('success', count($validated['voter_ids']) . ' voters disapproved.');
     }
 
-    public function getUserIpAddr()
+    // =========================================================================
+    // ELECTION STATE MACHINE METHODS
+    // =========================================================================
+
+    /**
+     * Complete administration phase (with validation and auto-setup of nomination)
+     *
+     * POST /organisations/{organisation}/elections/{election}/complete-administration
+     */
+    public function completeAdministration(Request $request, Organisation $organisation, Election $election): RedirectResponse
     {
-        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-            return $_SERVER['HTTP_CLIENT_IP'];
-        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            return explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0];
-        } else {
-            return $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
+        $this->authorize('manageSettings', $election);
+
+        // Set tenant context so BelongsToTenant global scope can find related records
+        session(['current_organisation_id' => $organisation->id]);
+        \App\Services\TenantContext::set($organisation->id);
+
+        $validated = $request->validate([
+            'reason' => 'required|string|min:5|max:500',
+        ]);
+
+        try {
+            $election->completeAdministration($validated['reason'], auth()->id());
+
+            return back()->with('success', 'Administration phase completed. Nomination phase is now open.');
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => $e->getMessage()]);
         }
     }
+
+    /**
+     * Complete nomination phase (with validation and auto-setup of voting)
+     *
+     * POST /organisations/{organisation}/elections/{election}/complete-nomination
+     */
+    public function completeNomination(Request $request, Organisation $organisation, Election $election): RedirectResponse
+    {
+        $this->authorize('manageSettings', $election);
+
+        $validated = $request->validate([
+            'reason' => 'required|string|min:5|max:500',
+        ]);
+
+        try {
+            $election->completeNomination($validated['reason'], auth()->id());
+
+            return back()->with('success', 'Nomination phase closed. Voting phase is now ready.');
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    /**
+     * Force close nomination (rejects pending candidates)
+     *
+     * POST /organisations/{organisation}/elections/{election}/force-close-nomination
+     */
+    public function forceCloseNomination(Request $request, Organisation $organisation, Election $election): RedirectResponse
+    {
+        $this->authorize('manageSettings', $election);
+
+        $validated = $request->validate([
+            'reason' => 'required|string|min:5|max:500',
+        ]);
+
+        try {
+            $election->forceCloseNomination($validated['reason'], auth()->id());
+
+            return back()->with('success', 'Nomination phase forcefully closed. Pending candidates have been rejected.');
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    /**
+     * Update suggested dates for administration/nomination phases
+     *
+     * PATCH /organisations/{organisation}/elections/{election}/suggested-dates
+     */
+    public function updateSuggestedDates(Request $request, Organisation $organisation, Election $election): RedirectResponse
+    {
+        $this->authorize('manageSettings', $election);
+
+        $phase = $request->input('phase'); // 'administration' or 'nomination'
+
+        $validated = $request->validate([
+            'phase'  => 'required|in:administration,nomination',
+            'start'  => 'nullable|date',
+            'end'    => 'nullable|date|after:start',
+        ]);
+
+        $columns = [
+            "{$phase}_suggested_start" => $validated['start'],
+            "{$phase}_suggested_end"   => $validated['end'],
+        ];
+
+        $election->update($columns);
+
+        return back()->with('success', ucfirst($phase) . ' phase dates updated.');
+    }
+
+    /**
+     * Update voting window dates (time-enforced, no manual override)
+     *
+     * PATCH /organisations/{organisation}/elections/{election}/voting-dates
+     */
+    public function updateVotingDates(Request $request, Organisation $organisation, Election $election): RedirectResponse
+    {
+        $this->authorize('manageSettings', $election);
+
+        // CONSTITUTIONAL FIX Phase 3.1.C: Use ElectionClockService instead of raw now()
+        if (ElectionClockService::hasVotingStarted($election)) {
+            return back()->withErrors(['error' => 'Cannot modify voting dates after voting has started.']);
+        }
+
+        $validated = $request->validate([
+            'start' => 'required|date|after:now',
+            'end'   => 'required|date|after:start',
+        ]);
+
+        $election->update([
+            'voting_starts_at' => $validated['start'],
+            'voting_ends_at'   => $validated['end'],
+        ]);
+
+        // Validate timeline dates after update (strict past-date checks)
+        $election->validateTimelineForEdit();
+
+        return back()->with('success', 'Voting window dates updated.');
+    }
+
+    /**
+     * Resolve capabilities for all constitution actions using the resolver.
+     */
+    private function resolveCapabilities(Election $election, ?\App\Models\User $user): array
+    {
+        if (!$user) {
+            return array_fill_keys(
+                $this->registry->getAllActions(),
+                ['allowed' => false, 'denial_reason' => 'unauthenticated', 'denial_detail' => null]
+            );
+        }
+
+        $state = \App\Application\Election\Facades\ElectionLifecycle::of($election)->state();
+        $capabilities = [];
+
+        foreach ($this->registry->getAllActions() as $action) {
+            $metadata = $this->registry->getActionMetadata($action);
+
+            $context = new CapabilityContext(
+                election: $election,
+                user: $user,
+                action: $action,
+                actionMetadata: $metadata,
+                state: $state,
+            );
+
+            $decision = $this->capabilityResolver->evaluate($context);
+
+            $capabilities[$action] = [
+                'allowed'       => $decision->allows(),
+                'denial_reason' => $decision->reason?->value,
+                'denial_detail' => $decision->detail,
+            ];
+        }
+
+        return $capabilities;
+    }
+
+    /**
+     * Extract state machine data for rendering.
+     */
+    private function getStateMachineData(Election $election): array
+    {
+        $postsCount = \App\Models\Post::withoutGlobalScopes()
+            ->where('election_id', $election->id)
+            ->whereNull('deleted_at')
+            ->count();
+
+        $approvedCandidatesCount = \App\Models\Candidacy::withoutGlobalScopes()
+            ->whereNull('deleted_at')
+            ->whereHas('post', fn ($q) => $q->withoutGlobalScopes()->where('election_id', $election->id))
+            ->where('status', \App\Models\Candidacy::STATUS_APPROVED)
+            ->count();
+
+        $pendingCandidatesCount = \App\Models\Candidacy::withoutGlobalScopes()
+            ->whereNull('deleted_at')
+            ->where('status', 'pending')
+            ->whereHas('post', fn ($q) => $q->withoutGlobalScopes()->where('election_id', $election->id))
+            ->count();
+
+        $votersCount = $election->memberships()
+            ->withoutGlobalScopes()
+            ->where('role', 'voter')
+            ->where('status', 'active')
+            ->count();
+
+        $committeeCount = $election->officers()
+            ->withoutGlobalScopes()
+            ->where('status', 'active')
+            ->count();
+
+        // Use ElectionLifecycle for authoritative derived state (SSOT), not stale state column
+        $lifecycle = \App\Application\Election\Facades\ElectionLifecycle::of($election)->snapshot();
+        $currentState = $lifecycle->state->value;
+
+        // Project completed states and availability from constitutional progression
+        $completedStates = ElectionLifecycleProjection::completedStatesFor($currentState);
+        $projectionAvailable = ElectionLifecycleProjection::isProjectionAvailable($currentState);
+
+        // Resolve all capabilities using the resolver
+        $capabilities = $this->resolveCapabilities($election, auth()->user());
+
+        return [
+            'currentState'         => $currentState,
+            'stateInfo'            => ['name' => $currentState],
+            'completedStates'      => $completedStates,
+            'projectionAvailable'  => $projectionAvailable,
+            'postsCount'           => $postsCount,
+            'votersCount'          => $votersCount,
+            'committeeCount'       => $committeeCount,
+            'pendingCandidates'    => $pendingCandidatesCount,
+            'approvedCandidates'   => $approvedCandidatesCount,
+            'capabilities'         => $capabilities,
+            'capabilities_metadata' => [
+                'resolver_version'   => '1.0.0',
+                'generated_at'       => now()->toIso8601String(),
+                'constitution_hash'  => md5(serialize(\App\Domain\Election\Constitution\ElectionConstitution::RULES)),
+            ],
+            'capabilities_trace' => app()->hasDebugModeEnabled()
+                ? $this->capabilityResolver->lastTrace()?->entries
+                : null,
+        ];
+    }
+
+    // =========================================================================
+    // TIMELINE SETTINGS
+    // =========================================================================
+
+    public function timeline(string|Election $election): Response
+    {
+        if (is_string($election)) {
+            $election = Election::withoutGlobalScopes()
+                ->with('organisation')
+                ->where('slug', $election)
+                ->firstOrFail();
+        } else {
+            $election->load('organisation');
+        }
+
+        $this->authorize('manageSettings', $election);
+
+        $organisation = $election->organisation;
+
+        return Inertia::render('Election/Timeline', [
+            'election' => $election,
+            'organisation' => $organisation ? [
+                'id' => $organisation->id,
+                'slug' => $organisation->slug,
+                'name' => $organisation->name,
+            ] : null,
+        ]);
+    }
+
+    public function timelineView(string|Election $election): Response
+    {
+        if (is_string($election)) {
+            $election = Election::withoutGlobalScopes()
+                ->with('organisation')
+                ->where('slug', $election)
+                ->firstOrFail();
+        } else {
+            $election->load('organisation');
+        }
+
+        $this->authorize('manageSettings', $election);
+
+        return Inertia::render('Election/TimelineView', [
+            'election' => $election,
+        ]);
+    }
+
+    public function updateTimeline(Request $request, string|Election $election): RedirectResponse
+    {
+        if (is_string($election)) {
+            $election = Election::withoutGlobalScopes()
+                ->where('slug', $election)
+                ->firstOrFail();
+        }
+
+        // Set tenant context so global scopes work correctly in authorization checks
+        session(['current_organisation_id' => $election->organisation_id]);
+        \App\Services\TenantContext::set($election->organisation_id);
+
+        $this->authorize('manageSettings', $election);
+
+        // Constitutional capability check: Can this election's timeline be edited in current state?
+        $lifecycle = ElectionLifecycle::of($election);
+        abort_unless(
+            $lifecycle->canEditTimeline(),
+            403,
+            "Timeline cannot be modified during the {$lifecycle->state()->label()} phase."
+        );
+
+        // Validate phase update permissions - cannot change dates for phases that have started
+        $this->validatePhaseUpdatePermissions($election, $request);
+
+        $rules = [
+            'administration_suggested_start' => 'nullable|date',
+            'administration_suggested_end'   => 'nullable|date|after:administration_suggested_start',
+            'nomination_suggested_start'     => 'nullable|date',
+            'nomination_suggested_end'       => 'nullable|date|after:nomination_suggested_start',
+            'voting_starts_at'               => 'nullable|date|after:now',
+            'voting_ends_at'                 => 'nullable|date|after:voting_starts_at',
+            'results_published_at'           => 'nullable|date',
+            'allow_auto_transition'          => 'sometimes|boolean',
+            'auto_transition_grace_days'     => 'sometimes|integer|between:0,30',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        // Cross-phase chronological validation
+        $validator->after(function ($v) use ($request) {
+            if ($request->administration_suggested_end && $request->nomination_suggested_start) {
+                if ($request->administration_suggested_end >= $request->nomination_suggested_start) {
+                    $v->errors()->add('nomination_suggested_start',
+                        'Nomination must start after administration ends.');
+                }
+            }
+
+            if ($request->nomination_suggested_end && $request->voting_starts_at) {
+                if ($request->nomination_suggested_end >= $request->voting_starts_at) {
+                    $v->errors()->add('voting_starts_at',
+                        'Voting must start after nomination ends.');
+                }
+            }
+        });
+
+        $validated = $validator->validate();
+
+        // Convert datetime-local format to SQL format
+        foreach ($validated as $key => $value) {
+            if ($value && in_array($key, [
+                'administration_suggested_start',
+                'administration_suggested_end',
+                'nomination_suggested_start',
+                'nomination_suggested_end',
+                'voting_starts_at',
+                'voting_ends_at',
+                'results_published_at',
+            ])) {
+                $validated[$key] = Carbon::parse($value)->format('Y-m-d H:i:s');
+            }
+        }
+
+        // Auto-publish results if results_published_at is set
+        if ($request->filled('results_published_at')) {
+            $validated['results_published'] = true;
+        }
+
+        $election->update($validated);
+
+        // Validate timeline dates after update (strict past-date checks)
+        $election->validateTimelineForEdit();
+
+        return back()->with('success', 'Election timeline updated successfully.');
+    }
+
+    /**
+     * Validate that date updates are allowed for the current phase state
+     * Prevents updating dates for phases that have already started
+     */
+    private function validatePhaseUpdatePermissions(Election $election, Request $request): void
+    {
+        // Administration dates - cannot update if administration is completed
+        if ($request->filled(['administration_suggested_start', 'administration_suggested_end'])) {
+            if (!$election->canUpdatePhaseDates('administration')) {
+                throw new \Illuminate\Validation\ValidationException(
+                    Validator::make([], [])->errors()->add(
+                        'administration_dates',
+                        'Cannot update administration dates after the phase is completed.'
+                    )
+                );
+            }
+        }
+
+        // Nomination dates - cannot update if nomination is completed
+        if ($request->filled(['nomination_suggested_start', 'nomination_suggested_end'])) {
+            if (!$election->canUpdatePhaseDates('nomination')) {
+                throw new \Illuminate\Validation\ValidationException(
+                    Validator::make([], [])->errors()->add(
+                        'nomination_dates',
+                        'Cannot update nomination dates after the phase is completed.'
+                    )
+                );
+            }
+        }
+
+        // Voting dates - cannot update if voting has started or is locked
+        if ($request->filled(['voting_starts_at', 'voting_ends_at'])) {
+            if (!$election->canUpdatePhaseDates('voting')) {
+                $message = $election->voting_locked
+                    ? 'Cannot update voting dates - voting phase is locked.'
+                    : 'Cannot update voting dates - voting has already started.';
+
+                throw new \Illuminate\Validation\ValidationException(
+                    Validator::make([], [])->errors()->add('voting_dates', $message)
+                );
+            }
+        }
+
+        // Results dates - never editable directly
+        if ($request->filled('results_published_at')) {
+            if (!$election->canUpdatePhaseDates('results')) {
+                throw new \Illuminate\Validation\ValidationException(
+                    Validator::make([], [])->errors()->add(
+                        'results_dates',
+                        'Cannot update results publication date - results already published.'
+                    )
+                );
+            }
+        }
+    }
+
 }

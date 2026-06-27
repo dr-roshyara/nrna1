@@ -2,16 +2,16 @@
  <jet-validation-errors class="pt-1" />
   <form class="" @submit.prevent="submit">
     <!-- <div> 
-    <input class="bg-gray-200"  id="from" v-model="form.from" /> 
+    <input class="bg-neutral-200"  id="from" v-model="form.from" /> 
     </div> -->
     <div> 
-    <input  class="bg-gray-200  mx-2 py-2 hidden" id="to" v-model="form.to"  />
+    <input  class="bg-neutral-200  mx-2 py-2 hidden" id="to" v-model="form.to"  />
     </div>
       <div> 
         <!-- <select> <option :value="vt" v-model=""> </option> </select> -->
-        <!-- <input class="bg-gray-200"  id="message" v-model="form.message" /> -->
+        <!-- <input class="bg-neutral-200"  id="message" v-model="form.message" /> -->
     </div>
-    <div class="flex flex-col justify-center  m-1 p-2 bg-blue-300 rounded-lg"> 
+    <div class="flex flex-col justify-center  m-1 p-2 bg-primary-300 rounded-lg"> 
     <button class="px-2 text-bold text-xl " type="submit"> Send Voting Code </button>
     </div> 
   </form>   

@@ -22,11 +22,11 @@ class VoteFactory extends Factory
     {
         return [
             'election_id' => Election::factory()->real(),
-            'no_vote_option' => false,
-            'voting_code' => $this->faker->unique()->word() . '-' . $this->faker->randomNumber(5),
+            'vote_hash' => hash('sha256', $this->faker->unique()->uuid()),
             'candidate_01' => json_encode(['candidacy_id' => $this->faker->word()]),
             'candidate_02' => null,
             'candidate_03' => null,
+            'cast_at' => now(),
             'created_at' => now(),
             'updated_at' => now(),
         ];

@@ -1,15 +1,15 @@
 {
   "success_banner": {
     "title": "Vote Successfully Submitted! मत सफलतापूर्वक जमा गरिएको!",
-    "subtitle": "Your vote has been securely recorded and confirmed. आपनो मत सुरक्षित रूपमा रेकर्ड र पुष्टि गरिएको छ।",
+    "subtitle": "Your vote has been securely recorded and confirmed. आफ्नो मत सुरक्षित रूपमा रेकर्ड र पुष्टि गरिएको छ।",
     "confirmation_number": "Confirmation # पुष्टि संख्या #"
   },
   "gratitude": {
     "thank_you": "Thank You for Voting मतदान गर्नुभएकोमा धन्यवाद",
-    "message": "Your participation in this election is important and helps shape our community's future. Your vote has been successfully recorded with the highest level of security and privacy. यो निर्वाचनमा आपनो भाग लिइनु महत्त्वपूर्ण छ र आमाद समुदायको भविष्य गठन गर्न मद्दत गर्छ। आपनो मत सर्वोच्च स्तरको सुरक्षा र गोपनीयताका साथ सफलतापूर्वक रेकर्ड गरिएको छ।"
+    "message": "Your participation in this election is important and helps shape our community's future. Your vote has been successfully recorded with the highest level of security and privacy. यो निर्वाचनमा आफ्नो भाग लिइनु महत्त्वपूर्ण छ र आमाद समुदायको भविष्य गठन गर्न मद्दत गर्छ। आफ्नो मत सर्वोच्च स्तरको सुरक्षा र गोपनीयताका साथ सफलतापूर्वक रेकर्ड गरिएको छ।"
   },
   "vote_summary": {
-    "title": "Your Vote Summary आपनो मत सारांश",
+    "title": "Your Vote Summary आफ्नो मत सारांश",
     "national_posts": "National Posts राष्ट्रिय पदहरू",
     "regional_posts": "Regional Posts क्षेत्रीय पदहरू",
     "selected_candidates": "Selected Candidates चयन गरिएका उम्मेदवारहरू",
@@ -25,27 +25,27 @@
   "what_next": {
     "title": "What Happens Next? अगलो के हुनेछ?",
     "step_1_title": "Vote Recording मत रेकर्डिङ",
-    "step_1_description": "Your vote is encrypted and stored securely in our voting system. आपनो मत एनक्रिप्ट गरिएको र आमाद मतदान प्रणालीमा सुरक्षित रूपमा संग्रहीत गरिएको छ।",
+    "step_1_description": "Your vote is encrypted and stored securely in our voting system. आफ्नो मत एनक्रिप्ट गरिएको र आमाद मतदान प्रणालीमा सुरक्षित रूपमा संग्रहीत गरिएको छ।",
     "step_2_title": "Election Closing निर्वाचन समापन",
     "step_2_description": "Once all votes are submitted and the election period ends, votes will be counted. सबै मतहरू जमा भएपछि र निर्वाचन अवधि समाप्त भएपछि, मतहरू गणना गरिनेछ।",
     "step_3_title": "Results Publication परिणाम प्रकाशन",
     "step_3_description": "Election results will be published after all votes have been counted and verified. सबै मतहरू गणना र सत्यापन गरेपछि निर्वाचन परिणाम प्रकाशित गरिनेछ।",
     "step_4_title": "Verification Available सत्यापन उपलब्ध",
-    "step_4_description": "You can verify your vote at any time using your verification code. तपाइँ कुनै पनि समयमा आपनो सत्यापन कोड प्रयोग गरेर आपनो मत सत्यापन गर्न सक्नुहुन्छ।"
+    "step_4_description": "You can verify your vote at any time using your verification code. तपाइँ कुनै पनि समयमा आफ्नो सत्यापन कोड प्रयोग गरेर आफ्नो मत सत्यापन गर्न सक्नुहुन्छ।"
   },
   "important_info": {
     "title": "Important Information महत्त्वपूर्ण जानकारी",
     "security": {
-      "title": "Your Vote is Secure आपनो मत सुरक्षित छ",
-      "description": "Your selections are encrypted end-to-end and protected with industry-standard security protocols. आपनो छनौटहरू अन्त देखि अन्त सम्म एनक्रिप्ट गरिएको र उद्योग-मानक सुरक्षा प्रोटोकलहरूद्वारा सुरक्षित छन्।"
+      "title": "Your Vote is Secure आफ्नो मत सुरक्षित छ",
+      "description": "Your selections are encrypted end-to-end and protected with industry-standard security protocols. आफ्नो छनौटहरू अन्त देखि अन्त सम्म एनक्रिप्ट गरिएको र उद्योग-मानक सुरक्षा प्रोटोकलहरूद्वारा सुरक्षित छन्।"
     },
     "privacy": {
-      "title": "Your Privacy is Protected आपनो गोपनीयता सुरक्षित छ",
-      "description": "Your vote is anonymous and cannot be traced back to you. No personal information is stored with your vote. आपनो मत अनाम छ र आपनो लागि पत्ता लगाउन सकिँदैन। आपनो मतसँग कुनै व्यक्तिगत जानकारी संग्रहीत गरिएको छैन।"
+      "title": "Your Privacy is Protected आफ्नो गोपनीयता सुरक्षित छ",
+      "description": "Your vote is anonymous and cannot be traced back to you. No personal information is stored with your vote. आफ्नो मत अनाम छ र आफ्नो लागि पत्ता लगाउन सकिँदैन। आफ्नो मतसँग कुनै व्यक्तिगत जानकारी संग्रहीत गरिएको छैन।"
     },
     "verification": {
       "title": "You Can Verify Later तपाइँ पछि सत्यापन गर्न सक्नुहुन्छ",
-      "description": "Keep your verification code safe. You can use it to verify that your vote was recorded correctly. आपनो सत्यापन कोड सुरक्षित राख्नुहोस्। तपाइँ यसलाई सत्यापन गर्न प्रयोग गर्न सक्नुहुन्छ कि आपनो मत सही तरिकाले रेकर्ड गरिएको छ।"
+      "description": "Keep your verification code safe. You can use it to verify that your vote was recorded correctly. आफ्नो सत्यापन कोड सुरक्षित राख्नुहोस्। तपाइँ यसलाई सत्यापन गर्न प्रयोग गर्न सक्नुहुन्छ कि आफ्नो मत सही तरिकाले रेकर्ड गरिएको छ।"
     }
   },
   "receipt": {
@@ -61,6 +61,6 @@
     "help": "Need Help? सहायता चाहिएको छ?"
   },
   "footer": {
-    "message": "Thank you for exercising your right to vote! आपनो मतदानको अधिकार प्रयोग गर्नुभएकोमा धन्यवाद!"
+    "message": "Thank you for exercising your right to vote! आफ्नो मतदानको अधिकार प्रयोग गर्नुभएकोमा धन्यवाद!"
   }
 }

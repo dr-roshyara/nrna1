@@ -1,0 +1,34 @@
+# Engineering Knowledge Platform (EKP) — controlled vocabulary: audiences
+# Source of truth for the `audience` frontmatter field (a list).
+# The portal uses this to answer "show me everything a new architect / the AI should read."
+# knowledge-lint validates each `audience` entry against the keys below.
+version: 1
+
+audiences:
+  newcomer:
+    label: Newcomer
+    description: Someone onboarding to the project for the first time.
+  developer:
+    label: Developer
+    description: Engineers building features (Laravel/Vue).
+  architect:
+    label: Architect
+    description: People making/owning architectural decisions.
+  reviewer:
+    label: Reviewer
+    description: Code/architecture reviewers and ARB members.
+  product-owner:
+    label: Product Owner
+    description: Product/business stakeholders.
+  committee:
+    label: Committee
+    description: Governance committee / domain stakeholders.
+  ai:
+    label: AI Assistant
+    description: AI collaborators (Claude/ChatGPT/DeepSeek) consuming context.
+  operations:
+    label: Operations
+    description: Deploy/runbook/monitoring audience.
+  security:
+    label: Security
+    description: Security reviewers and auditors.

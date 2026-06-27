@@ -1,5 +1,13 @@
 {
   "page_eyebrow": "चुनाव व्यवस्थापन | Election Management",
+  "timeline": {
+    "title": "चुनाव यात्रा | Election Journey",
+    "currently_in": "हाल | Currently in",
+    "phase": "चरण | phase",
+    "phases_complete": "चरणहरू पूर्ण | phases complete",
+    "learn_more": "थप जानुहोस् | Learn More",
+    "progress": "पूर्ण | Complete"
+  },
   "sections": {
     "activate": {
       "title": "सक्रिय गर्न तयार? | Ready to Activate?",
@@ -49,11 +57,12 @@
       "empty_title": "कुनै मतदाता तोकिएको छैन | No voters assigned",
       "empty_desc": "तथ्यांक ट्र्याक गर्न यस निर्वाचनमा सदस्यहरू थप्नुहोस् | Add members to this election to track voter statistics."
     },
-    "voting_control": {
-      "title": "मतदान नियन्त्रण | Voting Control",
+    "election_control": {
+      "title": "निर्वाचन नियन्त्रण | Election Control",
       "currently_active": "मतदान हाल सक्रिय छ | Voting is currently active",
       "currently_inactive": "मतदान हाल निष्क्रिय छ | Voting is currently inactive",
       "btn_open": "मतदान सुरु गर्नुहोस् | Open Voting",
+      "btn_lock": "लक र सुरु गर्नुहोस् | Lock & Start",
       "btn_close": "मतदान समाप्त गर्नुहोस् | Close Voting"
     },
     "posts": {
@@ -73,7 +82,8 @@
       "total_label": "कुल दर्ता | Total",
       "approved_label": "स्वीकृत | Approved",
       "suspended_label": "निलम्बित | Suspended",
-      "btn_manage": "मतदाता सूची व्यवस्थापन | Manage Voter List"
+      "btn_manage": "मतदाता सूची व्यवस्थापन | Manage Voter List",
+      "btn_import": "मतदाता आयात गर्नुहोस् | Import Voters"
     },
     "results": {
       "title": "परिणाम व्यवस्थापन | Result Management",
@@ -87,5 +97,144 @@
     "unpublish": "के तपाईं परिणाम हटाउन चाहनुहुन्छ? | Are you sure you want to unpublish the election results?",
     "open_voting": "के तपाईं मतदान खोल्न चाहनुहुन्छ? | Are you sure you want to open the voting period?",
     "close_voting": "के तपाईं मतदान बन्द गर्न चाहनुहुन्छ? | Are you sure you want to close the voting period?"
-  }
+  },
+  "states": {
+    "draft": "ड्राफ्ट | Draft",
+    "pending_approval": "अनुमोदनको लागि पेन्डिङ | Pending Approval",
+    "administration": "प्रशासन | Administration",
+    "nomination": "नाम सुझाव | Nomination",
+    "voting": "मतदान | Voting",
+    "results_pending": "गणना | Counting",
+    "results": "पूर्ण | Complete"
+  },
+  "actions": {
+    "submit_for_approval": "अनुमोदनको लागि पेश गर्नुहोस् | Submit for Approval",
+    "approve": "अनुमोदन गर्नुहोस् | Approve",
+    "reject": "अस्वीकार गर्नुहोस् | Reject",
+    "complete_administration": "प्रशासन पूरा गर्नुहोस् | Complete Administration",
+    "open_voting": "मतदान खोल्नुहोस् | Open Voting",
+    "close_voting": "मतदान बन्द गर्नुहोस् | Close Voting",
+    "publish_results": "परिणाम प्रकाशित गर्नुहोस् | Publish Results"
+  },
+  "modals": {
+    "submit_for_approval": "निर्वाचन अनुमोदनको लागि पेश गर्नुहोस् | Submit Election for Approval",
+    "submit_checklist": "पेश गर्नु अघि सबै चाहिन्छ सेटअप पूर्ण भएको सुनिश्चित गर्नुहोस् | Before submission, ensure all required setup is complete:",
+    "posts_created": "कम्तिमा १ पद सिर्जना गरिएको | At least 1 post created",
+    "candidates_approved": "कम्तिमा १ उम्मेदवार अनुमोदित | At least 1 candidate approved",
+    "voters_registered": "कम्तिमा १ मतदाता दर्ता | At least 1 voter registered",
+    "complete_setup": "पेश गर्नु अघि सबै चाहिन्छ सेटअप पूरा गर्नुहोस् | Please complete all required setup before submitting.",
+    "approve_election": "निर्वाचन अनुमोदन गर्नुहोस् | Approve Election",
+    "approval_notes_optional": "अनुमोदन नोटहरू (वैकल्पिक) | Approval Notes (Optional)",
+    "approval_notes_placeholder": "अनुमोदनको बारेमा वैकल्पिक नोटहरू थप्नुहोस् | Add optional notes about approval...",
+    "reject_election": "निर्वाचन अस्वीकार गर्नुहोस् | Reject Election",
+    "rejection_reason_required": "अस्वीकारको कारण | Reason for Rejection",
+    "rejection_reason_placeholder": "अस्वीकारको विस्तृत कारण प्रदान गर्नुहोस् | Please provide a detailed reason for rejection...",
+    "min_characters": "न्यूनतम १० क्यारेक्टर चाहिन्छ | Minimum 10 characters required",
+    "reason_required": "कारण लाग्छ | Reason is required",
+    "reason_min_length": "कारण कम्तिमा १० क्यारेक्टरको हुनुपर्छ | Reason must be at least 10 characters",
+    "previously_rejected": "पहिले अस्वीकृत | Previously Rejected",
+    "cancel": "रद्द गर्नुहोस् | Cancel",
+    "pending_elections": "पेन्डिङ निर्वाचनहरू | Pending Elections",
+    "review_and_process": "निर्वाचन सबमिशन समीक्षा र अनुमोदन/अस्वीकार गर्नुहोस् | Review and approve/reject election submissions",
+    "submitted_by": "द्वारा पेश गरिएको | Submitted by",
+    "on": "मा | on",
+    "no_pending": "कुनै पेन्डिङ निर्वाचन छैन | No pending elections",
+    "all_processed": "सबै निर्वाचन सबमिशन प्रशोधित भएका छन् | All election submissions have been processed",
+    "preview": "पूर्वावलोकन | Preview"
+  },
+  "phase_groups": {
+    "administration": "प्रशासन चरण | Administration Phase",
+    "nomination": "नामांकन चरण | Nomination Phase",
+    "monitoring": "अनुगमन | Monitoring",
+    "settings": "सेटिङ | Settings",
+    "results": "परिणाम | Results"
+  },
+  "accessibility": {
+    "skip_to_main": "मुख्य सामग्रीमा जानुहोस् | Skip to main content"
+  },
+  "suspension": {
+    "title": "निर्वाचन स्थगित | Election Suspended",
+    "description": "सबै शासन अपरेशनहरू अस्थायी रूप से बन्द छन्। | All governance operations are temporarily locked.",
+    "btn_resume": "निर्वाचन पुनः सुरु गर्नुहोस् | Resume Election",
+    "btn_resuming": "पुनः सुरु गरिँदैछ... | Resuming..."
+  },
+  "governance_actions": {
+    "title": "जीवनचक्र कारबाही | Lifecycle Actions",
+    "submit_for_approval": "अनुमोदनको लागि सबमिट गर्नुहोस् | Submit for Approval",
+    "submit_for_approval_auto": "सबमिट गर्नुहोस् (स्वचालित-अनुमोदित) | Submit (Auto-Approved)",
+    "submit_hint": "→ पुनरावलोकन सुरु गर्नुहोस् | → Begin review",
+    "submit_hint_auto": "→ स्वचालित अनुमोदन | → Auto-approve",
+    "begin_setup": "सेटअप सुरु गर्नुहोस् | Begin Setup",
+    "begin_setup_hint": "→ कन्फिगरेशन सुरु गर्नुहोस् | → Start configuration"
+  },
+  "phase_controls": {
+    "title": "चरण संक्रमण | Phase Transitions",
+    "complete_admin": "प्रशासन पूरा गर्नुहोस् | Complete Administration",
+    "open_voting": "मतदान खोल्नुहोस् | Open Voting",
+    "open_voting_hint": "→ मतदान सुरु गर्नुहोस् | → Begin voting",
+    "close_voting": "मतदान बन्द गर्नुहोस् | Close Voting",
+    "close_voting_hint": "→ मतदान समाप्त गर्नुहोस् | → End voting"
+  },
+  "governance_section": {
+    "title": "प्रशासनिक नियन्त्रण | Administrative Controls",
+    "suspend": "निर्वाचन स्थगित गर्नुहोस् | Suspend Election"
+  },
+  "empty_state": {
+    "no_actions": "वर्तमान स्थितिमा कोनो कार्य उपलब्ध छैन | No actions available in current state",
+    "complete_phases": "अगलो चरणहरू अनलक गर्न पहिलेका चरणहरू पूरा गर्नुहोस् | Complete previous phases to unlock next steps"
+  },
+  "voter_count": {
+    "title": "अपेक्षित मतदाता गणना | Expected Voter Count",
+    "label": "मतदाता अपेक्षित | voters expected",
+    "saved": "बचत गरिएको — {count} मतदाता अपेक्षित | Saved — {count} voters expected",
+    "failed": "बचत गर्न असफल। कृपया फेरि प्रयास गर्नुहोस्। | Failed to save. Please try again.",
+    "requires_approval": "{limit} को स्व-सेवा सीमा अतिक्रम गर्दछ — प्ल्याटफर्म प्रशासक अनुमोदन आवश्यक छ। | Exceeds self-service limit of {limit} — platform admin approval required.",
+    "instructions": "अनुमोदनको लागि सबमिट गर्नु अघि अपेक्षित मतदाताको संख्या सेट गर्नुहोस्। | Set the expected number of voters before submitting for approval."
+  },
+  "progress": {
+    "title": "निर्वाचन प्रगति | Election Progress",
+    "subtitle": "वर्तमान स्थिति र वर्कफ्लो प्रगति | Current status and workflow progression"
+  },
+  "timeline_config": {
+    "title": "समयसूची कन्फिगरेशन | Timeline Configuration",
+    "subtitle": "एक स्थानमा सबै निर्वाचन चरण मिति कन्फिगर गर्नुहोस् | Configure all election phase dates in one place",
+    "view": "समयसूची हेर्नुहोस् | View Timeline",
+    "edit": "समयसूची सम्पादन गर्नुहोस् | Edit Timeline"
+  },
+  "settings": {
+    "title": "निर्वाचन सेटिङ | Election Settings",
+    "subtitle": "मतदान नियमहरू र सुरक्षा प्रतिबन्धहरू कन्फिगर गर्नुहोस् | Configure voting rules and security restrictions",
+    "btn_configure": "सेटिङ कन्फिगर गर्नुहोस् | Configure Settings"
+  },
+  "resume_confirmation": "यो निर्वाचन पुनः सुरु गर्नुहोस्? सबै शासन अपरेशनहरू फेरि उपलब्ध हुनेछन्। | Resume this election? All governance operations will become available again.",
+  "suspend_modal": {
+    "title": "निर्वाचन स्थगित गर्नुहोस् | Suspend Election",
+    "description": "यसले सबै निर्वाचन सञ्चालनहरू अस्थायी रूपमा रोक्दछ। | This temporarily pauses all election operations.",
+    "warning": "स्थगनको समयमा मतदाताहरूले मत हाल्न सक्दैनन्। यो कारबाही किन गरिएको हो सो कारण क्षेत्रमा दर्ता गर्नुहोस् — यो शासन लेखापरीक्षा ट्रेलमा रेकर्ड गरिन्छ। | Voters cannot cast votes while suspended. Record the reason why this action was taken — it is recorded in the governance audit trail.",
+    "reason_label": "स्थगनको कारण | Reason for Suspension",
+    "reason_placeholder": "यस निर्वाचन को स्थगन गर्न पर को वर्णन गर्नुहोस्... | Describe why this election must be suspended...",
+    "reason_hint": "न्यूनतम १० वर्ण। यो शासन लेखापरीक्षा ट्रेलमा रेकर्ड गरिएको छ। | Minimum 10 characters. This is recorded in the governance audit trail.",
+    "category_label": "स्थगन श्रेणी | Suspension Category",
+    "category_placeholder": "श्रेणी छान्नुहोस् | Select a category",
+    "category_operational_pause": "परिचालन विराम | Operational Pause",
+    "category_administrative_review": "प्रशासनिक समीक्षा | Administrative Review",
+    "category_dispute_hold": "विवाद रोक | Dispute Hold",
+    "category_technical_issue": "प्राविधिक समस्या | Technical Issue",
+    "btn_cancel": "रद्द गर्नुहोस् | Cancel",
+    "btn_suspend": "निर्वाचन स्थगित गर्नुहोस् | Suspend Election",
+    "btn_suspending": "स्थगित हरिँदैछ... | Suspending..."
+  },
+  "completion_modal": {
+    "title": "{phase} चरण पूरा गर्नुहोस् | Complete {phase} Phase",
+    "description": "कृपया यस चरण पूरा गर्नको लागि एक कारण प्रदान गर्नुहोस्। | Please provide a reason for completing this phase.",
+    "reason_label": "पूरा गर्नको कारण | Reason for Completion",
+    "reason_placeholder": "जस्तै, सबै पदहरू र मतदाताहरू कन्फिगर गरिएका छन्। नामांकन चरणमा अगाडि बढ्न तयार। | e.g., All posts and voters have been configured. Ready to proceed to nomination phase.",
+    "reason_hint": "न्यूनतम ५ वर्ण आवश्यक | Minimum 5 characters required",
+    "btn_cancel": "रद्द गर्नुहोस् | Cancel",
+    "btn_confirm": "पूर्ण पुष्टि गर्नुहोस् | Confirm Completion",
+    "btn_confirming": "पूरा हरिँदैछ... | Completing...",
+    "error_required": "कारण आवश्यक छ | Reason is required",
+    "error_min_length": "कारण कम्तीमा ५ वर्ण हुनु पर्छ | Reason must be at least 5 characters"
+  },
+  "public_list": "सार्वजनिक सूची हेर्नुहोस् | View Public List"
 }

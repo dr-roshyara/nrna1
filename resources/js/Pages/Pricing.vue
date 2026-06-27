@@ -3,7 +3,7 @@
     <!-- Breadcrumb Schema for SEO -->
 
     <!-- Header Section -->
-    <section class="relative py-16 md:py-24 lg:py-32 bg-blue-900 text-white">
+    <section class="relative py-16 md:py-24 lg:py-32 bg-primary-900 text-white">
       <div class="container mx-auto px-4 md:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto">
           <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight">
@@ -17,9 +17,9 @@
     </section>
 
     <!-- Description -->
-    <section class="py-8 md:py-12 bg-white border-b border-blue-100">
+    <section class="py-8 md:py-12 bg-white border-b border-primary-100">
       <div class="container mx-auto px-4 md:px-6 lg:px-8">
-        <p class="text-center text-base md:text-lg text-gray-700 max-w-2xl mx-auto">
+        <p class="text-center text-base md:text-lg text-neutral-700 max-w-2xl mx-auto">
           {{ $t('pages.pricing.description') }}
         </p>
       </div>
@@ -30,20 +30,20 @@
       <div class="container mx-auto px-4 md:px-6 lg:px-8">
         <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <!-- Starter Plan -->
-          <div class="flex flex-col border border-blue-200 rounded-2xl p-8 md:p-10 hover:shadow-lg transition-shadow bg-white">
-            <h3 class="text-2xl md:text-3xl font-bold text-blue-900 mb-2">
+          <div class="flex flex-col border border-primary-200 rounded-2xl p-8 md:p-10 hover:shadow-lg transition-shadow bg-white">
+            <h3 class="text-2xl md:text-3xl font-bold text-primary-900 mb-2">
               {{ $t('pages.pricing.plans.starter.name') }}
             </h3>
-            <p class="text-gray-600 mb-6">
+            <p class="text-neutral-600 mb-6">
               {{ $t('pages.pricing.plans.starter.description') }}
             </p>
 
             <div class="mb-8">
               <div class="flex items-baseline gap-2">
-                <span class="text-5xl md:text-6xl font-bold text-blue-900">
+                <span class="text-5xl md:text-6xl font-bold text-primary-900">
                   {{ $t('pages.pricing.plans.starter.price') }}
                 </span>
-                <span class="text-gray-600">
+                <span class="text-neutral-600">
                   {{ $t('pages.pricing.plans.starter.period') }}
                 </span>
               </div>
@@ -51,37 +51,37 @@
 
             <ul class="space-y-4 mb-10 grow">
               <li v-for="(feature, index) in starterFeatures" :key="index" class="flex items-start gap-3">
-                <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mt-1 shrink-0">
-                  <span class="text-blue-600 font-bold text-sm">✓</span>
+                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center mt-1 shrink-0">
+                  <span class="text-primary-600 font-bold text-sm">✓</span>
                 </div>
-                <span class="text-gray-700">{{ feature }}</span>
+                <span class="text-neutral-700">{{ feature }}</span>
               </li>
             </ul>
 
-            <button class="w-full py-3 md:py-4 bg-blue-100 text-blue-900 font-bold rounded-lg hover:bg-blue-200 transition-colors">
+            <button class="w-full py-3 md:py-4 bg-primary-100 text-primary-900 font-bold rounded-lg hover:bg-primary-200 transition-colors">
               {{ $t('pages.pricing.plans.starter.cta') }}
             </button>
           </div>
 
           <!-- Professional Plan (Popular) -->
-          <div class="flex flex-col border-2 border-blue-900 rounded-2xl p-8 md:p-10 shadow-xl bg-white relative md:scale-105 md:-mt-4">
-            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-900 text-white px-4 py-1 rounded-full text-sm font-semibold">
+          <div class="flex flex-col border-2 border-primary-900 rounded-2xl p-8 md:p-10 shadow-xl bg-white relative md:scale-105 md:-mt-4">
+            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary-900 text-white px-4 py-1 rounded-full text-sm font-semibold">
               {{ $t('pages.pricing.plans.professional.badge') }}
             </div>
 
-            <h3 class="text-2xl md:text-3xl font-bold text-blue-900 mb-2">
+            <h3 class="text-2xl md:text-3xl font-bold text-primary-900 mb-2">
               {{ $t('pages.pricing.plans.professional.name') }}
             </h3>
-            <p class="text-gray-600 mb-6">
+            <p class="text-neutral-600 mb-6">
               {{ $t('pages.pricing.plans.professional.description') }}
             </p>
 
             <div class="mb-8">
               <div class="flex items-baseline gap-2">
-                <span class="text-5xl md:text-6xl font-bold text-blue-900">
+                <span class="text-5xl md:text-6xl font-bold text-primary-900">
                   {{ $t('pages.pricing.plans.professional.price') }}
                 </span>
-                <span class="text-gray-600">
+                <span class="text-neutral-600">
                   {{ $t('pages.pricing.plans.professional.period') }}
                 </span>
               </div>
@@ -89,33 +89,33 @@
 
             <ul class="space-y-4 mb-10 grow">
               <li v-for="(feature, index) in professionalFeatures" :key="index" class="flex items-start gap-3">
-                <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mt-1 shrink-0">
-                  <span class="text-blue-600 font-bold text-sm">✓</span>
+                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center mt-1 shrink-0">
+                  <span class="text-primary-600 font-bold text-sm">✓</span>
                 </div>
-                <span class="text-gray-700">{{ feature }}</span>
+                <span class="text-neutral-700">{{ feature }}</span>
               </li>
             </ul>
 
-            <button class="w-full py-3 md:py-4 bg-blue-900 text-white font-bold rounded-lg hover:bg-blue-800 transition-colors">
+            <button class="w-full py-3 md:py-4 bg-primary-900 text-white font-bold rounded-lg hover:bg-primary-800 transition-colors">
               {{ $t('pages.pricing.plans.professional.cta') }}
             </button>
           </div>
 
           <!-- Enterprise Plan -->
-          <div class="flex flex-col border border-blue-200 rounded-2xl p-8 md:p-10 hover:shadow-lg transition-shadow bg-white">
-            <h3 class="text-2xl md:text-3xl font-bold text-blue-900 mb-2">
+          <div class="flex flex-col border border-primary-200 rounded-2xl p-8 md:p-10 hover:shadow-lg transition-shadow bg-white">
+            <h3 class="text-2xl md:text-3xl font-bold text-primary-900 mb-2">
               {{ $t('pages.pricing.plans.enterprise.name') }}
             </h3>
-            <p class="text-gray-600 mb-6">
+            <p class="text-neutral-600 mb-6">
               {{ $t('pages.pricing.plans.enterprise.description') }}
             </p>
 
             <div class="mb-8">
               <div class="flex items-baseline gap-2">
-                <span class="text-3xl md:text-4xl font-bold text-blue-900">
+                <span class="text-3xl md:text-4xl font-bold text-primary-900">
                   {{ $t('pages.pricing.plans.enterprise.price') }}
                 </span>
-                <span class="text-gray-600">
+                <span class="text-neutral-600">
                   {{ $t('pages.pricing.plans.enterprise.period') }}
                 </span>
               </div>
@@ -123,14 +123,14 @@
 
             <ul class="space-y-4 mb-10 grow">
               <li v-for="(feature, index) in enterpriseFeatures" :key="index" class="flex items-start gap-3">
-                <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mt-1 shrink-0">
-                  <span class="text-blue-600 font-bold text-sm">✓</span>
+                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center mt-1 shrink-0">
+                  <span class="text-primary-600 font-bold text-sm">✓</span>
                 </div>
-                <span class="text-gray-700">{{ feature }}</span>
+                <span class="text-neutral-700">{{ feature }}</span>
               </li>
             </ul>
 
-            <button class="w-full py-3 md:py-4 bg-blue-100 text-blue-900 font-bold rounded-lg hover:bg-blue-200 transition-colors">
+            <button class="w-full py-3 md:py-4 bg-primary-100 text-primary-900 font-bold rounded-lg hover:bg-primary-200 transition-colors">
               {{ $t('pages.pricing.plans.enterprise.cta') }}
             </button>
           </div>
@@ -139,18 +139,18 @@
     </section>
 
     <!-- Features Included -->
-    <section class="py-16 md:py-24 bg-blue-50 border-y border-blue-200">
+    <section class="py-16 md:py-24 bg-primary-50 border-y border-primary-200">
       <div class="container mx-auto px-4 md:px-6 lg:px-8">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-primary-900 mb-12">
           {{ $t('pages.pricing.features.title') }}
         </h2>
 
         <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <div v-for="(feature, index) in includedFeatures" :key="index" class="flex items-center gap-4 p-4 bg-white rounded-lg border border-blue-100">
+          <div v-for="(feature, index) in includedFeatures" :key="index" class="flex items-center gap-4 p-4 bg-white rounded-lg border border-primary-100">
             <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center shrink-0">
               <span class="text-green-600 font-bold">✓</span>
             </div>
-            <span class="text-gray-700 font-medium">{{ feature }}</span>
+            <span class="text-neutral-700 font-medium">{{ feature }}</span>
           </div>
         </div>
       </div>
@@ -159,17 +159,17 @@
     <!-- FAQ Section -->
     <section class="py-16 md:py-24 bg-white">
       <div class="container mx-auto px-4 md:px-6 lg:px-8">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-primary-900 mb-12">
           {{ $t('pages.pricing.faq.title') }}
         </h2>
 
         <div class="max-w-2xl mx-auto space-y-6">
-          <div v-for="(item, index) in faqQuestions" :key="index" class="border border-blue-200 rounded-lg overflow-hidden">
+          <div v-for="(item, index) in faqQuestions" :key="index" class="border border-primary-200 rounded-lg overflow-hidden">
             <button
               @click="toggleFaq(index)"
-              class="w-full px-6 py-4 bg-blue-50 hover:bg-blue-100 transition-colors flex items-center justify-between"
+              class="w-full px-6 py-4 bg-primary-50 hover:bg-primary-100 transition-colors flex items-center justify-between"
             >
-              <span class="font-semibold text-blue-900">{{ item.q }}</span>
+              <span class="font-semibold text-primary-900">{{ item.q }}</span>
               <svg
                 :class="['w-5 h-5 transition-transform', openFaq.includes(index) ? 'rotate-180' : '']"
                 fill="currentColor"
@@ -178,8 +178,8 @@
                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
               </svg>
             </button>
-            <div v-if="openFaq.includes(index)" class="px-6 py-4 bg-white border-t border-blue-200">
-              <p class="text-gray-700">{{ item.a }}</p>
+            <div v-if="openFaq.includes(index)" class="px-6 py-4 bg-white border-t border-primary-200">
+              <p class="text-neutral-700">{{ item.a }}</p>
             </div>
           </div>
         </div>
@@ -196,7 +196,7 @@
           <p class="text-lg opacity-90 mb-8">
             {{ $t('pages.pricing.description') }}
           </p>
-          <button class="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-900 font-bold rounded-lg hover:bg-blue-50 transition-colors shadow-lg min-h-[44px] md:min-h-[56px]">
+          <button class="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-900 font-bold rounded-lg hover:bg-primary-50 transition-colors shadow-lg min-h-[44px] md:min-h-[56px]">
             {{ $t('pages.pricing.cta.start_trial') }}
           </button>
         </div>
@@ -292,14 +292,15 @@ button:focus {
     background: #ffffff !important;
   }
 
-  .text-blue-900 {
+  .text-primary-900 {
     color: #000000 !important;
   }
 
-  .border-blue-200,
-  .border-blue-100 {
+  .border-primary-200,
+  .border-primary-100 {
     border-color: #000000 !important;
     border-width: 2px !important;
   }
 }
 </style>
+

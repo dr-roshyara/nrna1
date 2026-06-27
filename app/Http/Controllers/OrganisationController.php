@@ -14,10 +14,20 @@ use Inertia\Response;
 use Illuminate\Http\Request;
 use App\Traits\ChecksElectionAccess;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
+use App\Contexts\Membership\Application\Membership\Ports\MemberGeoPathProviderPort;
+use App\Contexts\Membership\Application\Membership\Query\MyCommitteesQueryService;
+use App\Contexts\Membership\Domain\Member\MemberId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 
 class OrganisationController extends Controller
 {
     use ChecksElectionAccess;
+
+    public function __construct(
+        private readonly MyCommitteesQueryService $membershipService,
+        private readonly MemberGeoPathProviderPort $geoPathProvider,
+    ) {}
 
     public function index(): Response
     {
@@ -58,9 +68,8 @@ class OrganisationController extends Controller
     {
         \Log::info('Organisation show method called', ['slug' => $slug]);
 
-        // Get organisation by slug OR UUID
+        // Get organisation by slug (route key is defined as 'slug' in model)
         $organisation = Organisation::where('slug', $slug)
-            ->orWhere('id', $slug)
             ->whereNull('deleted_at')
             ->firstOrFail();
 
@@ -110,6 +119,21 @@ class OrganisationController extends Controller
         $canManage = in_array($userRole, ['owner', 'admin']);
         $canCreateElection = in_array($userRole, ['owner', 'admin']);
 
+        // F1: Compose membership read model
+        $memberId = MemberId::fromString((string) $user->id);
+        $tenantId = TenantId::fromOrganisationId((string) $organisation->id);
+        $memberGeoPath = $this->geoPathProvider->resolveForMember($memberId, $tenantId);
+        $membershipData = array_map(fn ($view) => [
+            'committee_id'            => $view->committeeId,
+            'committee_name'          => $view->committeeName,
+            'committee_code'          => $view->committeeCode,
+            'governance_level'        => $view->governanceLevel,
+            'has_active_association'  => $view->hasActiveAssociation,
+            'has_pending_application' => $view->hasPendingApplication,
+            'can_apply'               => $view->canApply,
+            'application_status'      => $view->applicationStatus,
+        ], $this->membershipService->getForMember($memberId, $tenantId, $memberGeoPath));
+
         // Load ALL active officer records for this user in this org (one per election they manage)
         $userOfficerRecords = ElectionOfficer::with('election:id,name')
             ->where('user_id', $user->id)
@@ -140,7 +164,7 @@ class OrganisationController extends Controller
             ->where('organisation_id', $organisation->id)
             ->where('type', 'real')
             ->orderByDesc('created_at')
-            ->get(['id', 'name', 'slug', 'status', 'start_date', 'end_date', 'results_published']);
+            ->get(['id', 'name', 'slug', 'state', 'start_date', 'end_date', 'results_published']);
 
         // Voter membership context for the current user across these elections
         $electionIds = $realElections->pluck('id')->toArray();
@@ -227,6 +251,7 @@ class OrganisationController extends Controller
             'orgMembers'         => $orgMembers,
             'elections'          => $realElections->values(),
             'voterMemberships'   => $voterMemberships,
+            'membership'         => $membershipData,
         ]);
     }
 
@@ -238,48 +263,59 @@ class OrganisationController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'           => 'required|string|min:3|max:255',
-            'email'          => 'nullable|email|max:255',
-            'representative' => 'nullable|string|max:255',
-            'languages'      => 'nullable|array',
-            'languages.*'    => 'string|in:en,de,np',
-            'logo'           => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+        \Log::info('Store method called', [
+            'user_id' => auth()->id(),
+            'all_data' => $request->all(),
+            'files' => $request->hasFile('logo') ? 'has logo' : 'no logo',
+            'method' => $request->method(),
+            'headers' => $request->headers->all(),
         ]);
 
-        $user = auth()->user();
-
-        $org = DB::transaction(function () use ($request, $user) {
-            // Generate unique slug from organisation name
-            $slug = \Illuminate\Support\Str::slug($request->name);
-            $originalSlug = $slug;
-            $counter = 1;
-
-            // Ensure slug is unique
-            while (Organisation::where('slug', $slug)->exists()) {
-                $slug = $originalSlug . '-' . $counter++;
-            }
-
-            // Handle logo upload
-            $logoPath = null;
-            if ($request->hasFile('logo')) {
-                $logoPath = $request->file('logo')->store('organisations/logos', 'public');
-            }
-
-            // Create new tenant organisation
-            $org = Organisation::create([
-                'name'           => $request->name,
-                'slug'           => $slug,
-                'type'           => 'tenant',
-                'is_default'     => false,
-                'email'          => $request->email,
-                'representative' => $request->representative ? ['name' => $request->representative] : null,
-                'languages'      => $request->languages ?? [],
-                'logo'           => $logoPath,
+        try {
+            $request->validate([
+                'name'           => 'required|string|min:3|max:255',
+                'email'          => 'nullable|email|max:255',
+                'representative' => 'nullable|string|max:255',
+                'languages'      => 'nullable|array',
+                'languages.*'    => 'string|in:en,de,np',
+                'logo'           => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+                'uses_full_membership' => 'nullable|boolean',
             ]);
 
-            \Log::info('Organisation created', [
-                'org_id' => $org->id,
+            $user = auth()->user();
+
+            $org = DB::transaction(function () use ($request, $user) {
+                // Generate unique slug from organisation name
+                $slug = \Illuminate\Support\Str::slug($request->name);
+                $originalSlug = $slug;
+                $counter = 1;
+
+                // Ensure slug is unique
+                while (Organisation::where('slug', $slug)->exists()) {
+                    $slug = $originalSlug . '-' . $counter++;
+                }
+
+                // Handle logo upload
+                $logoPath = null;
+                if ($request->hasFile('logo')) {
+                    $logoPath = $request->file('logo')->store('uploads/logos', 'public');
+                }
+
+                // Create new tenant organisation
+                $org = Organisation::create([
+                    'name'           => $request->name,
+                    'slug'           => $slug,
+                    'type'           => 'tenant',
+                    'is_default'     => false,
+                    'email'          => $request->email,
+                    'representative' => $request->representative ? ['name' => $request->representative] : null,
+                    'languages'      => $request->languages ?? [],
+                    'logo'           => $logoPath,
+                    'uses_full_membership' => $request->boolean('uses_full_membership', true),
+                ]);
+
+                \Log::info('Organisation created', [
+                    'org_id' => $org->id,
                 'org_slug' => $org->slug,
                 'org_name' => $org->name,
             ]);
@@ -312,6 +348,8 @@ class OrganisationController extends Controller
                 'is_member' => $isMember,
             ]);
 
+            event(new \App\Events\OrganisationCreated($org));
+
             return $org;
         });
 
@@ -320,7 +358,18 @@ class OrganisationController extends Controller
             'route' => 'organisations.show',
         ]);
 
+        // Clear cache to prevent stale organisation_id in TenantContext middleware
+        Cache::forget("user.{$user->id}.organisation_id");
+
         return redirect()->route('organisations.show', $org->slug);
+        } catch (\Exception $e) {
+            \Log::error('Organisation creation failed', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            return back()->withErrors(['error' => 'Creation failed: ' . $e->getMessage()]);
+        }
     }
 
     /**
@@ -406,7 +455,7 @@ class OrganisationController extends Controller
         $activeElections = Election::withoutGlobalScopes()
             ->where('organisation_id', $organisation->id)
             ->where('type', 'real')
-            ->where('status', 'active')
+            ->whereIn('state', ['approved', 'setup_administration', 'setup_nomination', 'ready_for_voting', 'voting_active', 'counting', 'results_published'])
             ->with(['posts' => fn ($q) => $q->withoutGlobalScopes()->orderBy('position_order')])
             ->orderBy('start_date')
             ->get()
@@ -430,7 +479,7 @@ class OrganisationController extends Controller
         $publishedElections = Election::withoutGlobalScopes()
             ->where('organisation_id', $organisation->id)
             ->where('type', 'real')
-            ->where('results_published', true)
+            ->where('state', 'results_published')
             ->orderBy('start_date')
             ->get()
             ->map(fn ($e) => [
@@ -566,6 +615,119 @@ class OrganisationController extends Controller
             'organisation' => $organisation->only('id', 'name', 'slug'),
             'election'     => $electionModel->only('id', 'name', 'slug', 'status'),
             'posts'        => $posts->values(),
+        ]);
+    }
+
+    /**
+     * Show voter-facing candidates list with positions
+     */
+    public function voterCandidates(Organisation $organisation, string $election): Response
+    {
+        $electionModel = Election::withoutGlobalScopes()
+            ->where('slug', $election)
+            ->where('organisation_id', $organisation->id)
+            ->where('type', 'real')
+            ->firstOrFail();
+
+        abort_unless(
+            $this->canAccessElection($organisation, $electionModel->id),
+            403,
+            'You are not authorised to view this election.'
+        );
+
+        $posts = Post::withoutGlobalScopes()
+            ->where('election_id', $electionModel->id)
+            ->where('organisation_id', $organisation->id)
+            ->orderBy('position_order')
+            ->with(['candidacies' => function ($q) {
+                $q->withoutGlobalScopes()
+                  ->where('status', 'approved')
+                  ->with(['user' => fn ($u) => $u->withoutGlobalScopes()])
+                  ->orderBy('position_order');
+            }])
+            ->get()
+            ->map(fn ($post) => [
+                'id'               => $post->id,
+                'name'             => $post->name,
+                'nepali_name'      => $post->nepali_name,
+                'is_national_wide' => (bool) $post->is_national_wide,
+                'state_name'       => $post->state_name,
+                'required_number'  => $post->required_number,
+                'candidacies'      => $post->candidacies->map(fn ($c) => [
+                    'id'             => $c->id,
+                    'name'           => $c->user?->name ?? $c->name ?? '—',
+                    'description'    => $c->description,
+                    'image_path_1'   => $c->image_path_1,
+                    'image_path_2'   => $c->image_path_2,
+                    'image_path_3'   => $c->image_path_3,
+                    'position_order' => $c->position_order,
+                ])->values(),
+            ]);
+
+        return Inertia::render('Organisations/Candidates', [
+            'organisation' => $organisation->only('id', 'name', 'slug'),
+            'election'     => $electionModel->only('id', 'name', 'slug', 'status'),
+            'posts'        => $posts->values(),
+        ]);
+    }
+
+    // READ-ONLY voter list for ALL election members (including officers).
+    // Admin management remains at ElectionVoterController@index.
+    public function voters(Organisation $organisation, string $election): Response
+    {
+        $electionModel = Election::withoutGlobalScopes()
+            ->where('slug', $election)
+            ->where('organisation_id', $organisation->id)
+            ->where('type', 'real')
+            ->firstOrFail();
+
+        abort_unless(
+            $this->canAccessElection($organisation, $electionModel->id),
+            403,
+            'You are not authorised to view this election.'
+        );
+
+        $query = $electionModel->memberships()
+            ->withoutGlobalScopes()
+            ->with(['user' => fn ($q) => $q->withoutGlobalScopes()->select('id', 'name')])
+            ->where('role', 'voter');
+
+        $sort      = request('sort', 'assigned_at');
+        $direction = in_array(request('direction'), ['asc', 'desc']) ? request('direction') : 'asc';
+        $allowed   = ['name', 'status', 'assigned_at'];
+
+        if ($sort === 'name') {
+            $query->join('users', 'election_memberships.user_id', '=', 'users.id')
+                  ->orderBy('users.name', $direction)
+                  ->select('election_memberships.*');
+        } elseif (in_array($sort, $allowed)) {
+            $query->orderBy($sort, $direction);
+        } else {
+            $query->orderBy('assigned_at', 'asc');
+        }
+
+        if ($status = request('status')) {
+            if ($status === 'pending_suspension') {
+                $query->where('suspension_status', 'proposed');
+            } elseif (in_array($status, ['active', 'invited', 'inactive', 'removed'])) {
+                $query->where('status', $status);
+            }
+        }
+
+        $voters = $query->paginate(50)
+            ->through(fn ($m) => [
+                'id'                => $m->id,
+                'name'              => $m->user?->name ?? '—',
+                'status'            => $m->status,
+                'suspension_status' => $m->suspension_status,
+                'has_voted'         => (bool) $m->has_voted,
+            ]);
+
+        return Inertia::render('Organisations/Voters', [
+            'organisation' => $organisation->only('id', 'name', 'slug'),
+            'election'     => $electionModel->only('id', 'name', 'slug', 'status'),
+            'voters'       => $voters,
+            'filters'      => ['sort' => $sort, 'direction' => $direction, 'status' => request('status')],
         ]);
     }
 

@@ -2,6 +2,10 @@
 
 namespace Tests\Feature\Election;
 
+use App\Application\Election\Services\ElectionLifecycleEngineImpl;
+use App\Domain\Election\Constitution\ElectionConstitution;
+use App\Domain\Election\Enum\ElectionLifecycleState;
+use App\Domain\Election\StateMachine\Transition;
 use App\Models\Election;
 use App\Models\ElectionOfficer;
 use App\Models\Organisation;
@@ -28,23 +32,24 @@ class ElectionActivationTest extends TestCase
     {
         parent::setUp();
 
+        // Bypass CSRF middleware for all requests in this test
+        $this->withoutMiddleware(\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class);
+
         $this->org = Organisation::factory()->create(['type' => 'tenant']);
+
+        $this->election = Election::factory()
+            ->forOrganisation($this->org)
+            ->create([
+                'name'   => 'General Election 2026',
+                'type'   => 'real',
+                'state'  => 'approved',
+                'approved_at' => now(),
+            ]);
 
         $this->owner       = $this->createUserWithRole('owner');
         $this->chief       = $this->createOfficer('chief', 'active');
         $this->deputy      = $this->createOfficer('deputy', 'active');
         $this->commissioner = $this->createOfficer('commissioner', 'active');
-
-        $this->election = Election::create([
-            'id'              => (string) Str::uuid(),
-            'organisation_id' => $this->org->id,
-            'name'            => 'General Election 2026',
-            'slug'            => 'general-election-2026',
-            'type'            => 'real',
-            'status'          => 'planned',
-            'start_date'      => now()->addDays(7),
-            'end_date'        => now()->addDays(14),
-        ]);
     }
 
     // =========================================================================
@@ -55,41 +60,63 @@ class ElectionActivationTest extends TestCase
     {
         $response = $this->actingAs($this->chief)
             ->withSession($this->orgSession())
-            ->post(route('elections.activate', $this->election->id));
+            ->post(route('elections.activate', $this->election->slug));
+
+        // Debug: Check what's actually in the session
+        if ($response->getSession()->has('error')) {
+            $this->fail('Activation failed with error: ' . $response->getSession()->get('error'));
+        }
 
         $response->assertRedirect();
         $response->assertSessionHas('success');
-        $this->assertEquals('active', $this->election->fresh()->status);
+
+        // Verify constitutional facts were set
+        $this->election->refresh();
+        $this->assertNotNull($this->election->setup_started_at, 'begin_setup must set setup_started_at');
+        $this->assertFalse($this->election->administration_completed, 'administration_completed should be false before complete_administration');
+
+        // Verify engine derives SetupAdministration state
+        $engine = app(ElectionLifecycleEngineImpl::class);
+        $derivedState = $engine->getState($this->election);
+        $this->assertEquals(ElectionLifecycleState::SetupAdministration, $derivedState);
     }
 
     public function test_deputy_can_activate_planned_election(): void
     {
         $response = $this->actingAs($this->deputy)
             ->withSession($this->orgSession())
-            ->post(route('elections.activate', $this->election->id));
+            ->post(route('elections.activate', $this->election->slug));
 
         $response->assertRedirect();
-        $this->assertEquals('active', $this->election->fresh()->status);
+
+        // Verify constitutional facts were set
+        $this->election->refresh();
+        $this->assertNotNull($this->election->setup_started_at, 'begin_setup must set setup_started_at');
+
+        // Verify engine derives SetupAdministration state
+        $engine = app(ElectionLifecycleEngineImpl::class);
+        $derivedState = $engine->getState($this->election);
+        $this->assertEquals(ElectionLifecycleState::SetupAdministration, $derivedState);
     }
 
     public function test_commissioner_cannot_activate_election(): void
     {
         $response = $this->actingAs($this->commissioner)
             ->withSession($this->orgSession())
-            ->post(route('elections.activate', $this->election->id));
+            ->post(route('elections.activate', $this->election->slug));
 
         $response->assertForbidden();
-        $this->assertEquals('planned', $this->election->fresh()->status);
+        $this->assertEquals('approved', $this->election->fresh()->state);
     }
 
     public function test_owner_cannot_activate_election(): void
     {
         $response = $this->actingAs($this->owner)
             ->withSession($this->orgSession())
-            ->post(route('elections.activate', $this->election->id));
+            ->post(route('elections.activate', $this->election->slug));
 
         $response->assertForbidden();
-        $this->assertEquals('planned', $this->election->fresh()->status);
+        $this->assertEquals('approved', $this->election->fresh()->state);
     }
 
     // =========================================================================
@@ -98,26 +125,95 @@ class ElectionActivationTest extends TestCase
 
     public function test_cannot_activate_already_active_election(): void
     {
-        Election::withoutGlobalScopes()->where('id', $this->election->id)->update(['status' => 'active']);
+        // Set voting window to make engine compute VotingActive state
+        Election::withoutGlobalScopes()->where('id', $this->election->id)->update([
+            'voting_starts_at' => now()->subHour(),
+            'voting_ends_at' => now()->addHour(),
+        ]);
 
         $response = $this->actingAs($this->chief)
             ->withSession($this->orgSession())
-            ->post(route('elections.activate', $this->election->id));
+            ->post(route('elections.activate', $this->election->slug));
 
-        $response->assertSessionHas('error', 'Cannot activate an election that is already active.');
-        $this->assertEquals('active', $this->election->fresh()->status);
+        $response->assertSessionHas('error', 'Election cannot be activated in its current state.');
     }
 
     public function test_cannot_activate_completed_election(): void
     {
-        Election::withoutGlobalScopes()->where('id', $this->election->id)->update(['status' => 'completed']);
+        // Set results published to make engine compute ResultsPublished state
+        Election::withoutGlobalScopes()->where('id', $this->election->id)->update([
+            'results_published_at' => now()->subDay(),
+        ]);
 
         $response = $this->actingAs($this->chief)
             ->withSession($this->orgSession())
-            ->post(route('elections.activate', $this->election->id));
+            ->post(route('elections.activate', $this->election->slug));
 
-        $response->assertSessionHas('error', 'Cannot activate an election that is already completed.');
-        $this->assertEquals('completed', $this->election->fresh()->status);
+        $response->assertSessionHas('error', 'Election cannot be activated in its current state.');
+    }
+
+    // =========================================================================
+    // Side-Effect Tests (Phase 3.2 Constitutional Hardening)
+    // =========================================================================
+
+    /**
+     * Test: begin_setup side effects set the business facts the engine needs.
+     *
+     * This test verifies that when 'begin_setup' transition is executed,
+     * the business fact 'administration_completed' is set to true.
+     * The lifecycle engine reads this fact to derive 'setup' state.
+     *
+     * RED phase: This will fail because begin_setup has no side effects yet.
+     * After implementing applySideEffectsForBeginSetup(), this test will pass.
+     */
+    public function test_begin_setup_sets_setup_started_at(): void
+    {
+        $election = Election::factory()
+            ->forOrganisation($this->org)
+            ->create([
+                'state' => 'approved',
+                'approved_at' => now()->subDay(),
+                'administration_completed' => false,
+            ]);
+
+        // Assign chief as ElectionOfficer on this election
+        ElectionOfficer::create([
+            'election_id'     => $election->id,
+            'organisation_id' => $this->org->id,
+            'user_id'         => $this->chief->id,
+            'role'            => 'chief',
+            'status'          => 'active',
+            'appointed_by'    => $this->chief->id,
+            'appointed_at'    => now(),
+            'accepted_at'     => now(),
+        ]);
+
+        // Set tenant context so transition guard can validate chief's role
+        $this->actingAs($this->chief);
+        \App\Services\TenantContext::set($this->org->id);
+
+        // Execute begin_setup transition
+        $election->transitionTo(
+            Transition::manual('begin_setup', $this->chief->id, 'Starting setup')
+        );
+
+        // Refresh from database to get latest state
+        $election->refresh();
+
+        // ASSERTION 1: The business fact must be updated
+        $this->assertNotNull(
+            $election->setup_started_at,
+            'begin_setup side effects must set setup_started_at'
+        );
+
+        // ASSERTION 2: The engine must derive SetupAdministration from the fact
+        $engine = app(ElectionLifecycleEngineImpl::class);
+        $derivedState = $engine->getState($election);
+        $this->assertEquals(
+            ElectionLifecycleState::SetupAdministration,
+            $derivedState,
+            'Engine must derive SetupAdministration state from setup_started_at not null'
+        );
     }
 
     // =========================================================================
@@ -131,9 +227,7 @@ class ElectionActivationTest extends TestCase
         $this->actingAs($this->owner)
             ->withSession($this->orgSession())
             ->post(route('organisations.elections.store', $this->org->slug), [
-                'name'       => 'Special Election 2026',
-                'start_date' => now()->addDays(7)->toDateString(),
-                'end_date'   => now()->addDays(14)->toDateString(),
+                'name' => 'Special Election 2026',
             ]);
 
         Notification::assertSentTo($this->chief, ElectionReadyForActivation::class);
@@ -148,9 +242,7 @@ class ElectionActivationTest extends TestCase
         $this->actingAs($this->owner)
             ->withSession($this->orgSession())
             ->post(route('organisations.elections.store', $this->org->slug), [
-                'name'       => 'Special Election 2026',
-                'start_date' => now()->addDays(7)->toDateString(),
-                'end_date'   => now()->addDays(14)->toDateString(),
+                'name' => 'Special Election 2026',
             ]);
 
         Notification::assertSentTo($this->chief, ElectionReadyForActivation::class);
@@ -166,9 +258,7 @@ class ElectionActivationTest extends TestCase
         $this->actingAs($this->owner)
             ->withSession($this->orgSession())
             ->post(route('organisations.elections.store', $this->org->slug), [
-                'name'       => 'Special Election 2026',
-                'start_date' => now()->addDays(7)->toDateString(),
-                'end_date'   => now()->addDays(14)->toDateString(),
+                'name' => 'Special Election 2026',
             ]);
 
         Notification::assertSentTo($this->chief, ElectionReadyForActivation::class);
@@ -190,12 +280,10 @@ class ElectionActivationTest extends TestCase
             'organisation_id'   => $this->org->id,
             'email_verified_at' => now(),
         ]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => $role,
-        ]);
+        // Factory auto-creates voter role; update it to the desired role
+        UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $this->org->id)
+            ->update(['role' => $role]);
         return $user;
     }
 
@@ -205,13 +293,9 @@ class ElectionActivationTest extends TestCase
             'organisation_id'   => $this->org->id,
             'email_verified_at' => now(),
         ]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'voter',
-        ]);
+        // Factory auto-creates voter role; keep it as-is
         ElectionOfficer::create([
+            'election_id'     => $this->election->id,
             'organisation_id' => $this->org->id,
             'user_id'         => $user->id,
             'role'            => $role,
