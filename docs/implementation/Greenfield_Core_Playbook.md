@@ -6,7 +6,7 @@
 ## Toolchain (standardized — complementary layers, ADR-T7)
 | Tool | Role |
 |------|------|
-| **Deptrac** (primary) | bounded-context boundaries, layer/hexagonal enforcement, module isolation (TP-1/T2/T6) |
+| **Deptrac** (primary) | bounded-context boundaries, layer/hexagonal enforcement, module isolation (TP-1/T2/T6). **Install via standalone PHAR** (not composer — keeps it out of project deps): download `deptrac.phar`, run `php deptrac.phar analyse --config-file=deptrac.yaml`. Config already staged. |
 | **PHPStan** | static analysis (max level on `app/Contexts/*`) |
 | **Pest / PHPUnit** | behavioral + aggregate/policy/event tests (RefreshDatabase per CLAUDE.md) |
 | **`tests/Architecture/`** | bespoke constitutional rules (Q7 anonymity, single-producer, no-foreign-consumer) |

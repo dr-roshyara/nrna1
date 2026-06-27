@@ -38,8 +38,49 @@ Deptrac (boundaries/layers) · PHPStan level max · PHPUnit (`tests/Architecture
 ## Traceability (every class traces back)
 Each implemented class cites its lineage, e.g. `Challenge → 50-01/02/07 → ADR-T1/T11/T12 → BDR-05 → Catalog`. The Implementation Traceability Matrix is the dashboard; the Architecture Review Gate checks it.
 
-## Amendment
-This Constitution changes only by an ADR-T + Architecture Review Gate sign-off. It does not reopen architecture (BDR/Release 1.0 frozen).
+## Document precedence (higher wins on conflict)
+```
+1 Project/Strategic Constitution (immutable principles)
+2 Architecture Release 1.0 (+ BDR v1.1)
+3 ADR-T decisions
+4 Implementation Architecture Constitution v1.0 (this)
+5 Implementation Coding Standard v1.0
+6 Package Structure & Naming Conventions v1.0
+7 Greenfield Core Playbook
+```
+Never "fix" architecture through code — raise an ADR-T.
+
+## Dependency direction (Deptrac-translatable)
+```
+Domain         → Domain
+Application    → Domain
+Infrastructure → Application, Domain
+No reverse dependencies. No cross-context Domain→Domain (events only, TP-1).
+```
+
+## Transaction ownership
+Application Services **define** transaction boundaries; repositories **participate**; aggregates **never** manage transactions; Infrastructure executes the mechanics. One transaction = one aggregate + its outbox row.
+
+## Shared Kernel
+Only concepts shared by **multiple** bounded contexts belong in `app/Contexts/Shared/`. The Shared Kernel must **not** evolve into a utility library; business concepts remain in their owning context. Add only at the second real consumer.
+
+## Event contract compatibility (ADR-T5)
+Existing event schema is **immutable**; new fields are **additive** (bump `SchemaVersion`); breaking changes require a **new event version** (`vN+1`); consumers remain backward-compatible until migrated. Never edit a published event's meaning.
+
+## Architecture fitness ownership
+**Every constitutional rule must have an executable fitness test** (PHPUnit arch test / Deptrac / PHPStan) where technically feasible. A rule without a test requires Architecture Review approval and a tracked gap.
+
+## Definition of Done (a feature is complete only if)
+✓ TDD green · ✓ architecture tests green · ✓ PHPStan clean · ✓ Deptrac clean · ✓ mutation threshold met · ✓ Traceability Matrix updated · ✓ ADR-T updated (if required) · ✓ Security review passed · ✓ documentation updated.
+
+## Amendment (tiered)
+| Change | Approval |
+|--------|----------|
+| Minor clarification (editorial) | Architecture Review |
+| Behavioral change | ADR-T |
+| Architectural change | Architecture Board approval |
+| Strategic change | New Architecture Release |
+This Constitution does not reopen architecture (BDR / Release 1.0 frozen).
 
 ---
 *Implementation Architecture Constitution v1.0 — FROZEN. Required reading order; forbidden patterns (build-breaking); mandatory layering/aggregate/event/repository/TDD/tooling rules; fail-closed; traceability. Implementation governance, not methodology. Amend only via ADR-T + review gate.*
