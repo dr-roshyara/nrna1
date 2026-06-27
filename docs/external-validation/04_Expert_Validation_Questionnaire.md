@@ -95,11 +95,15 @@ If at any point you would design something differently, **describe the design an
 
 **4.4** If an organisation cannot yet support a given safeguard, is it sound to use a stronger/temporary structural arrangement until defined preconditions exist, then transition? What would make such a transition trustworthy rather than a permanent excuse?
 
+**4.5** Suppose an organisation does start with stronger, temporary safeguards. What **observable, checkable signs** — if any — would tell you it had become trustworthy enough to safely *relax* them? Be concrete about what you would actually measure. Or is there *no reliable way* to know, so that "temporary" safeguards tend either to become permanent or to be dropped too early?
+
 ---
 
-## Closing question (all panels)
+## Closing questions (all panels)
 
-**C.1** Is there a framing, a risk, or a design consideration we have **not** put in front of you that you think matters more than what we asked? If so, what is it?
+**C.1 (core)** Before you would trust an institution like this to remain genuinely independent over *decades* — through leadership turnover, pressure, and changing circumstances — what specific conditions would have to be in place? Which of those conditions are **essential** versus merely **helpful**? *(Please answer in terms of conditions that must exist, not in terms of which structure to pick — we are not asking you to choose a design.)*
+
+**C.2** Is there a framing, a risk, or a design consideration we have **not** put in front of you that you think matters more than what we asked? If so, what is it?
 
 ---
 

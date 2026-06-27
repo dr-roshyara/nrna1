@@ -47,6 +47,7 @@
     43 => 'App\\Contexts\\Geography\\Infrastructure\\Providers\\GeographyServiceProvider',
     44 => 'App\\Contexts\\Membership\\Infrastructure\\Providers\\MembershipServiceProvider',
     45 => 'App\\Contexts\\Governance\\Infrastructure\\Providers\\GovernanceServiceProvider',
+    46 => 'App\\Contexts\\Adjudication\\Infrastructure\\Providers\\AdjudicationServiceProvider',
   ),
   'eager' => 
   array (
@@ -80,6 +81,7 @@
     27 => 'App\\Contexts\\Geography\\Infrastructure\\Providers\\GeographyServiceProvider',
     28 => 'App\\Contexts\\Membership\\Infrastructure\\Providers\\MembershipServiceProvider',
     29 => 'App\\Contexts\\Governance\\Infrastructure\\Providers\\GovernanceServiceProvider',
+    30 => 'App\\Contexts\\Adjudication\\Infrastructure\\Providers\\AdjudicationServiceProvider',
   ),
   'deferred' => 
   array (

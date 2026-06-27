@@ -79,7 +79,7 @@ This did not happen because anyone acted in bad faith. It happened for a very no
 
 This is where the problem becomes interesting.
 
-The organization has created a special group called the **Constitutional Interpretation Committee**. ("Constitution" means the basic set of rules that the whole organization agrees to follow. To "interpret" it means to explain what those rules really mean when people disagree.)
+Suppose that the organization has created a special group called the **Constitutional Interpretation Committee**. ("Constitution" means the basic set of rules that the whole organization agrees to follow. To "interpret" it means to explain what those rules really mean when people disagree.)
 
 This committee is meant to be **independent**. It is supposed to be able to say "no" to the Membership Assembly — even to rule *against* the Assembly if the Assembly breaks the rules.
 
@@ -106,36 +106,6 @@ Experts who study this kind of system have found two main ways to solve the prob
 Both approaches are used in real countries today. Neither one is clearly wrong. The real question is narrower: **which approach is right for this organization, at this early stage of its life?**
 
 The people designing this system have reached an honest conclusion. They cannot answer this question with technology or engineering alone. It is a question of values and judgment. In the end, it is a question about trust: *where is a democratic organization allowed to place the final trust that holds everything together?*
-
----
-
-## How Other Countries Solve This
-
-This problem is not new. Countries have struggled with it for a very long time. No country has found a perfect answer. But it helps to see how others have tried. Their solutions fall, more or less, into the two approaches above.
-
-Some countries chose **Approach A**. They gave their election watchdog its *own* separate source of power.
-
-**India.** India runs the largest elections in the world. Its election watchdog is the Election Commission of India. Its power does not come from the government of the day. It comes directly from the country's constitution. The head of this commission is also very hard to remove — it takes the same difficult process used to remove a senior judge. This makes it hard for any government to threaten the watchers or push them out.
-
-**South Africa.** South Africa wrote a special set of independent bodies directly into its constitution, with one clear job: to protect democracy. One of them is the Electoral Commission. Because its authority comes from the constitution itself, and not from the government, it can act on its own.
-
-**Mexico.** For many years, the government in Mexico controlled the elections, and people did not trust the results. So Mexico built a new, fully independent election body, run by ordinary citizens rather than by politicians. Its leaders can be chosen only when a large majority of the parliament agrees. Later, when one government tried to weaken it, the country's highest court stopped them — one guard protecting another.
-
-Other countries chose **Approach B**. They kept power in familiar hands, but they built strong locks around it, and they trust independent courts as the final check.
-
-**Germany.** In Germany, the daily running of elections is fairly ordinary. But the final word in any serious election dispute belongs to the Federal Constitutional Court. This court is extremely independent. Its judges are chosen only with a two-thirds majority, so no single party can fill it with friends. Each judge serves one fixed term of twelve years and cannot be chosen again — so they owe nothing to anyone for a second term.
-
-**United States.** In the United States, elections are run separately by each state, not by one central office. At the national level, the main election commission is built to be balanced: no single political party is allowed to hold a majority of its seats. The idea is that opposing sides must agree before anything can happen. Courts then act as the final judge.
-
-**United Kingdom.** The United Kingdom has an Electoral Commission that answers to parliament as a whole, not to the government. This is meant to keep it at arm's length from the people in power. (Even here, the balance is fragile. A recent law gave the government more influence over the commission's priorities, and many people worried that this weakened its independence — exactly the slow drift this article warns about.)
-
-So what can we learn from all of this?
-
-First, **both approaches can work.** Strong, trusted democracies use each one.
-
-Second, **no country relies on structure alone.** Every example above leans on something extra: a long history, a free press, independent courts, or many political parties watching one another. These outside guards quietly catch the mistakes that the written rules alone would miss.
-
-And this brings us back to the hard part. A young diaspora organization has almost none of these outside guards. It has no national courts of its own, no large free press watching it, no rival parties checking each other. So it must think very carefully about which approach to choose — because it has much less to fall back on if the design turns out to be wrong.
 
 ---
 
