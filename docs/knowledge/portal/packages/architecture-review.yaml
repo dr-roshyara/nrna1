@@ -1,0 +1,13 @@
+package: architecture-review
+knowledge_id: PKG-ARCHITECTURE-REVIEW
+purpose: Everything needed to run an architecture review / ARB session.
+audience: [ai, architect, reviewer]
+includes:
+  - KNOWLEDGE-CONSTITUTION         # principles to review against
+  - META-LIFECYCLE                  # quality gates = review criteria
+  - PORTAL-ADR-INDEX                # decisions of record
+includes_optional:
+  - HUB-ELECTION                    # domain context if reviewing election work
+  - HUB-ADJUDICATION
+code_refs:
+  - deptrac.yaml                    # enforced architectural boundaries

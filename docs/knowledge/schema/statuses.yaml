@@ -1,0 +1,59 @@
+# Engineering Knowledge Platform (EKP) — controlled vocabulary: lifecycle statuses
+# Source of truth for the `status` frontmatter field.
+# IMPORTANT: status (lifecycle position) is INDEPENDENT of authority (who/what governs trust).
+#   e.g. an AI-generated doc can be `status: approved, authority: generated`.
+#   See schema/authorities.yaml for the authority dimension.
+# The lifecycle is a state machine: see docs/knowledge/_meta/lifecycle.md
+version: 1
+
+# `order` is the canonical lifecycle progression (used by tooling for sorting/validation).
+# `settled` = a terminal/stable lifecycle position (vs. in-flight).
+statuses:
+  draft:
+    order: 1
+    label: Draft
+    description: Work in progress. Not reviewed. May be wrong.
+    settled: false
+
+  discovery:
+    order: 2
+    label: Discovery
+    description: Active DDD/architecture discovery. Exploratory, evolving.
+    settled: false
+
+  reviewed:
+    order: 3
+    label: Reviewed
+    description: Reviewed by a peer/ARB but not yet formally approved.
+    settled: false
+
+  approved:
+    order: 4
+    label: Approved
+    description: Formally approved and in force.
+    settled: true
+
+  baseline:
+    order: 5
+    label: Baseline
+    description: Approved AND tagged as a stable baseline.
+    settled: true
+
+  frozen:
+    order: 6
+    label: Frozen
+    description: Baseline that must not change without an accompanying ADR. Changes are linted.
+    settled: true
+    requires_adr_to_change: true
+
+  superseded:
+    order: 7
+    label: Superseded
+    description: Replaced by a newer document (see `superseded_by`). Kept for history.
+    settled: true
+
+  archived:
+    order: 8
+    label: Archived
+    description: Retired/obsolete. Lives under archive/. Not part of the working set.
+    settled: true

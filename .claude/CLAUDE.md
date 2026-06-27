@@ -14,6 +14,19 @@ All UI/Vue changes must follow the design system in `.claude/UI_GUIDELINES.md`.
 
 ---
 
+# 📚 Engineering Knowledge Platform (EKP)
+
+Project knowledge is a governed engineering asset under `docs/knowledge/`, with the same discipline as code.
+
+- **Entry point:** [`docs/knowledge/portal/INDEX.md`](../docs/knowledge/portal/INDEX.md) — role-based navigation, topic hubs, recipes, packages.
+- **Rules:** [`Knowledge-Constitution.md`](../docs/knowledge/Knowledge-Constitution.md) + [`_meta/lifecycle.md`](../docs/knowledge/_meta/lifecycle.md). Every governed doc needs a knowledge card (see [`_meta/knowledge-card.template.md`](../docs/knowledge/_meta/knowledge-card.template.md)).
+- **AI rule:** AI-generated knowledge enters under `docs/knowledge/ai/` as `authority: generated` and is **never authoritative without human review**.
+- **Validate:** `npm run knowledge-lint` (PHPStan-for-knowledge) · regenerate graph with `npm run knowledge-graph`.
+- **Reference model:** the **Adjudication** pilot at [`docs/knowledge/domains/adjudication/`](../docs/knowledge/domains/adjudication/README.md).
+- Legacy folders during transition: `architecture/` = Think, `docs/` = Official Truth, `developer_guide/` = Build.
+
+---
+
 # 🏗️ Backend Architecture: Laravel with Discipline
 
 **Laravel is the framework. Use it, don't fight it.**

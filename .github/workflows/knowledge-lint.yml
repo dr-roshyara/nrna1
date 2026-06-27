@@ -1,0 +1,42 @@
+name: knowledge-lint
+
+# Engineering Knowledge Platform (EKP) — "PHPStan for knowledge".
+# Validates docs/knowledge/ against the data-driven schema.
+# WARN-ONLY for now (continue-on-error): promote to blocking once the corpus is clean.
+
+on:
+  pull_request:
+    paths:
+      - 'docs/knowledge/**'
+      - 'scripts/knowledge-lint.php'
+      - 'scripts/knowledge-graph.php'
+  push:
+    branches: [main, master]
+    paths:
+      - 'docs/knowledge/**'
+
+jobs:
+  knowledge-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Knowledge lint (warn-only)
+        continue-on-error: true
+        run: php scripts/knowledge-lint.php
+
+      - name: Knowledge graph is current
+        continue-on-error: true
+        run: |
+          php scripts/knowledge-graph.php
+          if ! git diff --quiet docs/knowledge/portal/graph/; then
+            echo "::warning::Knowledge graph is stale — run 'npm run knowledge-graph' and commit."
+          fi

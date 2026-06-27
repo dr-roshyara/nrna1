@@ -1,3 +1,7 @@
+> ## 📚 Engineering Knowledge Platform
+> Project knowledge (architecture, ADRs, domain models, guides, AI context) is governed under [`docs/knowledge/`](docs/knowledge/portal/INDEX.md).
+> **Start at the [Knowledge Portal](docs/knowledge/portal/INDEX.md)** · [Constitution](docs/knowledge/Knowledge-Constitution.md) · validate with `npm run knowledge-lint`.
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">

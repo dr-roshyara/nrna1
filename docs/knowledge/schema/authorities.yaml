@@ -1,0 +1,33 @@
+# Engineering Knowledge Platform (EKP) — controlled vocabulary: authority
+# Source of truth for the `authority` frontmatter field.
+# Authority answers: "how much should I trust this, and where did it come from?"
+# It is INDEPENDENT of `status` (lifecycle). e.g. status: approved + authority: generated is valid.
+# knowledge-lint uses `authority: authoritative` to detect duplicate authoritative docs per topic.
+version: 1
+
+authorities:
+  authoritative:
+    rank: 1
+    label: Authoritative
+    description: The single source of truth for its topic. Only ONE per topic+context is allowed.
+    single_per_topic: true
+
+  derived:
+    rank: 2
+    label: Derived
+    description: Derived from an authoritative source (e.g. a generated index, a summary).
+
+  generated:
+    rank: 3
+    label: Generated
+    description: Produced by tooling or AI. May be regenerated; do not hand-edit without noting it.
+
+  historical:
+    rank: 4
+    label: Historical
+    description: Kept for the record. Was true at a point in time; not current guidance.
+
+  provisional:
+    rank: 5
+    label: Provisional
+    description: Carries no authority yet. Distinct from the draft lifecycle status.

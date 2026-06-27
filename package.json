@@ -19,6 +19,9 @@
     "type-check": "vue-tsc --noEmit",
     "design-check": "bash scripts/design-check.sh",
     "design:fix": "npm run lint:fix && npm run design-check",
+    "knowledge-lint": "php scripts/knowledge-lint.php",
+    "knowledge-lint:strict": "php scripts/knowledge-lint.php --strict",
+    "knowledge-graph": "php scripts/knowledge-graph.php",
     "migration-progress": "bash scripts/migration-progress.sh",
     "verify": "bash scripts/verify.sh",
     "prepare": "husky"

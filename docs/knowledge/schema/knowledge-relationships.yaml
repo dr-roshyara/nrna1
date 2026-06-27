@@ -1,0 +1,81 @@
+# Engineering Knowledge Platform (EKP) — controlled vocabulary: relationship (edge) types
+# Source of truth for the relationship fields in frontmatter.
+# Each key below is a valid frontmatter field whose value is a list of knowledge_id references.
+# These become TYPED EDGES in the knowledge graph (scripts/knowledge-graph.sh), so the graph
+# is semantic: you know not just THAT two docs are connected but WHY.
+version: 1
+
+relationships:
+  implements:
+    label: implements
+    description: This doc implements a decision/principle (e.g. an impl doc implements an ADR).
+    inverse: implemented_by
+    directed: true
+
+  requires:
+    label: requires
+    description: This doc requires another to be understood/applied first.
+    inverse: required_by
+    directed: true
+
+  depends_on:
+    label: depends on
+    description: This doc depends on another artifact remaining true.
+    inverse: depended_on_by
+    directed: true
+
+  derived_from:
+    label: derived from
+    description: This doc was derived/generated from another source.
+    inverse: source_of
+    directed: true
+
+  supersedes:
+    label: supersedes
+    description: This doc replaces an older one.
+    inverse: superseded_by
+    directed: true
+
+  superseded_by:
+    label: superseded by
+    description: This doc has been replaced by a newer one.
+    inverse: supersedes
+    directed: true
+
+  related_to:
+    label: related to
+    description: General association with no stronger semantics.
+    inverse: related_to
+    directed: false
+
+  documents:
+    label: documents
+    description: This doc documents a piece of code/aggregate/API/state machine.
+    inverse: documented_by
+    directed: true
+
+  verified_by:
+    label: verified by
+    description: A review/verification artifact that confirms this doc.
+    inverse: verifies
+    directed: true
+
+  tested_by:
+    label: tested by
+    description: Tests that exercise/confirm what this doc describes.
+    inverse: tests
+    directed: true
+
+  reviewed_by:
+    label: reviewed by
+    description: A review record (human or AI/ARB) that assessed this doc.
+    inverse: reviews
+    directed: true
+
+# Convenience shortcut fields (also treated as typed edges by the graph generator).
+# They point at well-known artifact kinds and are sugar over `related_to`/`documents`.
+shortcuts:
+  adr:           { maps_to: implements,  description: "Related ADR knowledge_id(s)." }
+  api:           { maps_to: documents,   description: "Related API/OpenAPI knowledge_id(s)." }
+  aggregate:     { maps_to: documents,   description: "Related aggregate knowledge_id(s)." }
+  state_machine: { maps_to: documents,   description: "Related state-machine knowledge_id(s)." }

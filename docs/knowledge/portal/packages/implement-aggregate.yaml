@@ -1,0 +1,18 @@
+package: implement-aggregate
+knowledge_id: PKG-IMPLEMENT-AGGREGATE
+purpose: Everything needed to design and implement a DDD aggregate in this project.
+audience: [ai, developer, architect]
+includes:
+  - KNOWLEDGE-CONSTITUTION        # governing principles
+  - META-NAMING                    # naming/ID conventions
+  - RCP-IMPLEMENT-AGGREGATE        # the step-by-step recipe
+  - RCP-CREATE-ADR                 # record the boundary decision
+  - ADJ-README                     # worked example: Adjudication context
+  - ADJ-MODEL-DETERMINATION        # worked example: aggregate
+  - ADJ-SM-DETERMINATION           # worked example: state machine
+code_refs:
+  - app/Contexts/Adjudication/Domain/Determination/Determination.php
+  - app/Contexts/Adjudication/Domain/Determination/DeterminationState.php
+  - app/Contexts/Adjudication/Infrastructure/Providers/AdjudicationServiceProvider.php
+test_refs:
+  - tests/Unit/Contexts/Adjudication
