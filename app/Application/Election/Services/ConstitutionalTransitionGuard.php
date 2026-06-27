@@ -97,15 +97,16 @@ final class ConstitutionalTransitionGuard
         // If 'system' is the ONLY required role and no user is authenticated,
         // allow it (system-triggered action like auto_submit)
         if (in_array('system', $requiredRoles, true)) {
-            // If 'system' is the only role required, allow without authentication
+            // 'system' role is reserved for queue jobs / schedulers.
+            // Auth::user() === null means no human principal — system context.
+            // A non-null user means an HTTP request: must be blocked.
             if (count($requiredRoles) === 1) {
-                return true;
+                return Auth::user() === null;
             }
-            // If multiple roles including 'system', we're still checking non-system roles
-            // Remove 'system' and check if user has any of the remaining roles
+            // Multiple roles including 'system': strip it and check the remaining human roles.
             $userRoles = array_diff($requiredRoles, ['system']);
             if (empty($userRoles)) {
-                return true;  // Only 'system' was required
+                return Auth::user() === null;  // Reduced to system-only after diff
             }
             $requiredRoles = $userRoles;  // Check user roles without 'system'
         }

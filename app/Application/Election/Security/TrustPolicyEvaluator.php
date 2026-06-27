@@ -136,7 +136,7 @@ class TrustPolicyEvaluator
     {
         $maxVotesPerIp = $election?->max_votes_per_ip ?? 6;
         $votes = $votesFromThisIp ?? 0; // Use provided value or default to 0
-        $restrictionEnabled = $election?->network_binding_strategy !== 'none' ?? true;
+        $restrictionEnabled = $election !== null && $election->network_binding_strategy !== 'none';
         $whitelist = $election ? ($election->ip_whitelist ? json_decode($election->ip_whitelist, true) : null) : null;
 
         return new NetworkTrustEvidence(

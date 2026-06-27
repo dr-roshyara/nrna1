@@ -35,7 +35,7 @@ final class OutboxEventAdapter implements EventOutbox
     {
         $outboxEvent = new OutboxEvent([
             'event_id' => (string) Str::uuid(),
-            'organisation_id' => (string) TenantContext::get(),
+            'organisation_id' => TenantContext::require(),
             'aggregate_type' => 'Determination',
             'aggregate_id' => $event->determinationId->toString(),
             'event_type' => 'DeterminationIssued',

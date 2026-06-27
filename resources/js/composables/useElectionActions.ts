@@ -11,6 +11,7 @@
  */
 
 import { ref, computed } from 'vue'
+import { router } from '@inertiajs/vue3'
 
 export type ActionState = 'idle' | 'loading' | 'success' | 'error'
 
@@ -86,32 +87,26 @@ export function useElectionActions() {
       action: `complete_${phase}`,
     }
 
-    return executeAction(context, async () => {
-      const response = await fetch(`/elections/${electionId}/complete-phase`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest',
-        },
-        body: JSON.stringify({ phase }),
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        return {
-          success: false,
-          error: data.message || `Failed to complete ${phase} phase`,
-          timestamp: new Date(),
+    return executeAction(context, () => new Promise<ActionResult>((resolve) => {
+      router.post(
+        `/elections/${electionId}/complete-phase`,
+        { phase },
+        {
+          preserveState: true,
+          preserveScroll: true,
+          onSuccess: () => resolve({
+            success: true,
+            message: `${phase} phase completed`,
+            timestamp: new Date(),
+          }),
+          onError: (errors: Record<string, string>) => resolve({
+            success: false,
+            error: Object.values(errors).join(', ') || `Failed to complete ${phase} phase`,
+            timestamp: new Date(),
+          }),
         }
-      }
-
-      return {
-        success: true,
-        message: `${phase} phase completed`,
-        timestamp: new Date(),
-      }
-    })
+      )
+    }))
   }
 
   /**

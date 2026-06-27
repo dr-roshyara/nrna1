@@ -481,8 +481,9 @@ Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\Substitut
 // 2. voter.slug.verify - Verify slug exists, belongs to user, is active
 // 3. voter.slug.consistency - Validate election exists and org consistency
 // 4. ensure.election.voter - Check voter membership
-// 5. vote.organisation - Organisation security
-Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.verify', 'voter.slug.consistency', 'ensure.election.voter', 'vote.organisation'])->group(function () {
+// 5. vote.eligibility - Block ineligible voters before they can obtain a ballot code
+// 6. vote.organisation - Organisation security
+Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.verify', 'voter.slug.consistency', 'ensure.election.voter', 'vote.eligibility', 'vote.organisation'])->group(function () {
     Route::get('code/create', [CodeController::class, 'create'])->name('slug.code.create');
     Route::post('code', [CodeController::class, 'store'])->name('slug.code.store');
 });
