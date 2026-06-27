@@ -35,8 +35,8 @@ final class ElectionCapabilityResolver
         foreach ($sortedPolicies as $policy) {
             $decision = $policy->evaluate($context);
 
-            if ($decision === null) {
-                // Policy abstains
+            // null return and CapabilityDecision::abstain() are equivalent — continue to next policy
+            if ($decision === null || $decision->isAbstain()) {
                 $entry = CapabilityTraceEntry::abstained($this->getPolicyName($policy));
                 $trace = $trace->add($entry);
                 continue;
@@ -58,19 +58,17 @@ final class ElectionCapabilityResolver
                 }
                 $trace = $trace->add($entry);
 
-                // Denial (including short-circuit) is final - stop evaluating downstream policies
+                // Denial is final — stop immediately; a grant never overrides a deny
                 $this->lastTrace = $trace;
                 return $decision;
             }
 
-            // Policy authorizes (allows)
+            // Policy grants — record it and continue; a later policy may still deny
             $entry = CapabilityTraceEntry::granted($this->getPolicyName($policy));
             $trace = $trace->add($entry);
-            $this->lastTrace = $trace;
-            return $decision;
         }
 
-        // No policy denied - default to authorized
+        // All policies evaluated — none denied
         $this->lastTrace = $trace;
         return CapabilityDecision::authorized();
     }

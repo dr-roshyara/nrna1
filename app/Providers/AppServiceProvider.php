@@ -268,7 +268,7 @@ class AppServiceProvider extends ServiceProvider
             \App\Application\Election\Services\ElectionCapabilityResolver::class,
             fn($app) => new \App\Application\Election\Services\ElectionCapabilityResolver([
                 new \App\Application\Election\Capabilities\Policy\OverlayCapabilityPolicy(),
-                new \App\Application\Election\Capabilities\Policies\TrustCapabilityPolicy(),
+                new \App\Application\Election\Capabilities\Policies\EvidenceCapabilityPolicy(),
                 new \App\Application\Election\Capabilities\Policy\LifecycleCapabilityBaselinePolicy(),
             ])
         );
