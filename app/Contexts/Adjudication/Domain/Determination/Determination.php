@@ -56,6 +56,31 @@ final class Determination
         );
     }
 
+    /**
+     * Rehydrate from persistence (Infrastructure mapper only). A controlled
+     * entry point so the aggregate remains the sole producer of a valid instance
+     * (no public setters, no reflection). Restores identity + references + state;
+     * ruling content (outcome/legitimacy/reason) lives in the emitted event and
+     * the read row, not in aggregate state (this aggregate does not retain it).
+     */
+    public static function reconstitute(
+        DeterminationId $id,
+        ChallengeRef $challengeRef,
+        IssuedByAuthority $issuedByAuthority,
+        Jurisdiction $jurisdiction,
+        EvidenceEnvelopeRef $evidenceEnvelopeRef,
+        DeterminationState $state,
+    ): self {
+        return new self(
+            $id,
+            $challengeRef,
+            $issuedByAuthority,
+            $jurisdiction,
+            $evidenceEnvelopeRef,
+            $state,
+        );
+    }
+
     public function issue(
         DeterminationOutcome $outcome,
         Legitimacy $legitimacy,
@@ -97,6 +122,23 @@ final class Determination
     public function state(): DeterminationState
     {
         return $this->state;
+    }
+
+    // Read accessors for persistence/rehydration (immutable VOs — no leaked
+    // mutable state). The aggregate remains the source of valid construction.
+    public function issuedByAuthority(): IssuedByAuthority
+    {
+        return $this->issuedByAuthority;
+    }
+
+    public function jurisdiction(): Jurisdiction
+    {
+        return $this->jurisdiction;
+    }
+
+    public function evidenceEnvelopeRef(): EvidenceEnvelopeRef
+    {
+        return $this->evidenceEnvelopeRef;
     }
 
     /**

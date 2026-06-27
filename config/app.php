@@ -208,6 +208,7 @@ return [
         App\Contexts\Geography\Infrastructure\Providers\GeographyServiceProvider::class,
         App\Contexts\Membership\Infrastructure\Providers\MembershipServiceProvider::class,
         App\Contexts\Governance\Infrastructure\Providers\GovernanceServiceProvider::class,
+        App\Contexts\Adjudication\Infrastructure\Providers\AdjudicationServiceProvider::class,
 
     ],
 
