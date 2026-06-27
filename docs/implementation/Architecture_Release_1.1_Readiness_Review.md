@@ -4,7 +4,11 @@
 **Date:** 2026-06-27
 
 ## Verdict: ✅ PASS — Slice 1 domain model may be frozen
-The implemented domain + orchestration conforms to every frozen decision. One architectural insight is flagged (Q3) and two small pattern ADRs are recommended (ADR-T15/T16). None blocks freezing the Slice-1 domain or proceeding to merge-gate work.
+> **Headline result: no implementation has invalidated any frozen architectural decision.**
+
+The implemented domain + orchestration conforms to every frozen decision. One architectural decision is **intentionally postponed** (ADR-T17) and two small pattern ADRs are recommended (ADR-T15/T16). None blocks freezing the Slice-1 domain or proceeding to merge-gate work.
+
+**Risk posture:** the highest architectural uncertainty has been resolved. Remaining work is **predominantly engineering** (Push A), **with a small number of bounded architectural decisions still outstanding** (ADR-T17 and the Election-reaction modelling in Push B).
 
 ## Q1 — Conformance to frozen decisions
 | Frozen decision | Conforms? | Evidence |
@@ -24,7 +28,7 @@ The implemented domain + orchestration conforms to every frozen decision. One ar
 *(Both are applications of existing principles; recording them captures the pattern for future contexts.)*
 
 ## Q3 — Aggregate boundary weaknesses exposed (one genuine insight)
-The `Determination` boundary held cleanly. **Open question surfaced:** `outcome` and **`legitimacy`** are currently **inputs** to `IssueDeterminationCommand` (computed upstream). The frozen 50-06 names a **`LegitimacyDecision`** (Decision policy) — its **placement/invocation is not yet decided**. It must **not** live in the application service (that would put constitutional reasoning in orchestration, violating the Coding Standard). **Decision needed before legitimacy reasoning is implemented:** does the `Determination` aggregate run `LegitimacyDecision` internally, or a dedicated **Adjudication domain service** compute it and pass the verdict to `issue()`? → resolve as **ADR-T17** at the start of the legitimacy work (likely Push B). Not a defect now (the seam is clean); a deferred design decision.
+The `Determination` boundary held cleanly. **Open question surfaced:** `outcome` and **`legitimacy`** are currently **inputs** to `IssueDeterminationCommand` (computed upstream). The frozen 50-06 names a **`LegitimacyDecision`** (Decision policy) — its **placement/invocation is not yet decided**. It must **not** live in the application service (that would put constitutional reasoning in orchestration, violating the Coding Standard). **Decision needed before legitimacy reasoning is implemented:** does the `Determination` aggregate run `LegitimacyDecision` internally, or a dedicated **Adjudication domain service** compute it and pass the verdict to `issue()`? → **ADR-T17**: an **architectural decision intentionally postponed because the current implementation does not require it** (the seam is clean; legitimacy is supplied as an input today). Sequenced, not avoided — resolved as the first agenda item of Push B. Options: (1) aggregate runs `LegitimacyDecision`; (2) **Adjudication domain service computes it → `Determination.issue()` [preferred — legitimacy depends on evidence beyond a single entity]**; (3) application service — **rejected** (no constitutional reasoning in orchestration).
 
 ## Q4 — Event contracts sufficient?
 ✅ `DeterminationIssued` carries `outcome` + `legitimacy` + `evidenceEnvelopeRef` + `challengeRef` — sufficient for Election/Lifecycle to derive the correction type and react, and for the Legitimacy projection. Matches 50-05 (transport envelope + `finalizedAt` added at the outbox layer). No contract gap for the deferred Election reaction.
