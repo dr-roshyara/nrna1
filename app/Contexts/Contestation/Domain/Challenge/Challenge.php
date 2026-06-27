@@ -101,6 +101,17 @@ final class Challenge
     }
 
     /**
+     * Pure derived query (no mutation, no authorization, no persistence, no
+     * events): a challenge may be adjudicated only once routed to a jurisdiction
+     * (Round 50-07). The application service uses this read-only check; the
+     * Challenge is never written during adjudication (ADR-T14).
+     */
+    public function canProceedToAdjudication(): bool
+    {
+        return $this->state === ChallengeState::Routed;
+    }
+
+    /**
      * Pull and clear recorded events (released to the outbox by the app layer).
      *
      * @return list<DomainEvent>

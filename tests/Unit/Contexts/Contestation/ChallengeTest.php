@@ -127,4 +127,25 @@ final class ChallengeTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         SubmittedContent::fromString('   ');
     }
+
+    // ── Pure derived query (read-only; no mutation/auth/persistence/events)
+    public function test_can_proceed_to_adjudication_only_when_routed(): void
+    {
+        $c = $this->raised();
+        $this->assertFalse($c->canProceedToAdjudication(), 'Raised');
+
+        $c->admit($this->at());
+        $this->assertFalse($c->canProceedToAdjudication(), 'Admitted');
+
+        $c->route('jurisdiction-A', $this->at());
+        $this->assertTrue($c->canProceedToAdjudication(), 'Routed');
+
+        $c->resolve(DeterminationId::fromString('d-1'), $this->at());
+        $this->assertFalse($c->canProceedToAdjudication(), 'Resolved');
+
+        // the query must not emit events: clear, query, then assert nothing new
+        $c->pullEvents();
+        $c->canProceedToAdjudication();
+        $this->assertSame([], $c->pullEvents());
+    }
 }

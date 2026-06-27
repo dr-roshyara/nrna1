@@ -7,7 +7,7 @@
 | Aggregate | ADR-T | BDR | Events (Catalog v1.0) | State machine (50-07) | Repository (50-08) | Policies (50-06) | Tests (arch+behavioral) | Status |
 |-----------|-------|-----|------------------------|------------------------|--------------------|------------------|--------------------------|--------|
 | **Challenge** ★ | T1,T2,T11,T12 | greenfield (BDR-05) | ChallengeRaised/Admitted/Dismissed/Routed/Resolved | Raised→…→Resolved | ChallengeRepository | Standing/Content/Admissibility/Routing/StateInvariant | ☐ | ☐ |
-| **Determination** ★ | T1,T2,T12 | greenfield (BDR-05) | DeterminationIssued | Draft→Issued→Final | DeterminationRepository | Authority/Legitimacy/Finality | ☐ | ☐ |
+| **Determination** ★ | T1,T2,T12 | greenfield (BDR-05) | DeterminationIssued ✅ | Draft→Issued→Final ✅ | DeterminationRepository (interface ☐) | Authority/Legitimacy/Finality | ✅ (31 green) | ◑ |
 | **EvidenceEnvelope** | T10,T11 | BC (Operational) | EvidenceRecorded | Open→Frozen | EvidenceRepository | Recording/Immutability/HashCalc | ☐ | ☐ |
 | **Vote** | T1,T3,T11 | BC (Operational) | VoteAccepted | Draft→Cast→Verified/Abandoned | VoteRepository | Eligibility/Admissibility/Anonymity | ☐ | ☐ |
 | **Mandate** | T1,T6 | BC (Operational) | MandateGranted/Revoked | Active→Revoked/Expired | MandateRepository | Authority/Scope/Lifecycle | ☐ | ☐ |
