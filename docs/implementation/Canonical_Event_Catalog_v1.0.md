@@ -13,6 +13,7 @@
 | `ChallengeAdmitted` | Contestation | Process | Supporting | internal | 1 |
 | `ChallengeDismissed` | Contestation | Process | Supporting | internal | 1 |
 | `ChallengeRouted` | Contestation | Process | Supporting | internal | 1 |
+| `ChallengeAdjudicated` | Contestation | Process | Supporting | internal | 1 |
 | `ChallengeResolved` | Contestation | Process | Supporting | internal | 1 |
 | `DeterminationIssued` | Adjudication | Decision | **Core** | restricted | 1 |
 | `ElectionCorrectionApplied` | Election/Lifecycle | **Integration** | **Core** | internal | 1 |
@@ -25,7 +26,7 @@ flowchart LR
     Voting --> VoteAccepted
     Evidence --> EvidenceRecorded
     Appointment --> MandateGranted & MandateRevoked
-    Contestation --> ChallengeRaised & ChallengeAdmitted & ChallengeDismissed & ChallengeRouted & ChallengeResolved
+    Contestation --> ChallengeRaised & ChallengeAdmitted & ChallengeDismissed & ChallengeRouted & ChallengeAdjudicated & ChallengeResolved
     Adjudication --> DeterminationIssued
     Election --> ElectionCorrectionApplied
 ```

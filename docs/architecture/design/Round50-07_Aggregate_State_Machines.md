@@ -148,24 +148,30 @@ stateDiagram-v2
 | Revoked/Expired | GrantMandate | — | — | — | ⊘ no resurrection |
 **Review:** rollback ✘ · timeout ✔ (→Expired, distinct from Revoked) · owner=Mandate · evidence=`MandateGranted/Revoked`.
 
-## Challenge — owned by Contestation aggregate *(greenfield Core)*
+## Challenge — owned by Contestation aggregate *(greenfield Core)* — **v1.2.1 (ADR-T20)**
+**ADR-T20:** `Adjudicated` (legal finality — a binding determination exists) ≠ `Resolved` (operational completion — consequences executed). Two independent facts; Contestation never waits synchronously on Election.
 ```mermaid
 stateDiagram-v2
     [*] --> Raised: RaiseChallenge / ChallengeRaised
     Raised --> Admitted: AdmitChallenge / ChallengeAdmitted
     Raised --> Dismissed: DismissChallenge / ChallengeDismissed
     Raised --> Lapsed: window expires (timeout)
+    Admitted --> Investigating: BeginInvestigation
+    Investigating --> Routed: RouteChallenge / ChallengeRouted
     Admitted --> Routed: RouteChallenge / ChallengeRouted
     Admitted --> Lapsed: decision window expires (timeout)
-    Routed --> Resolved: DeterminationIssued+CorrectionApplied / ChallengeResolved
+    Routed --> Adjudicated: DeterminationIssued / ChallengeAdjudicated
+    Adjudicated --> Resolved: ElectionCorrectionApplied / ChallengeResolved
 ```
 **Invariants**
 | State | Invariant |
 |-------|-----------|
 | Raised | standing verified; within raise window; submitted content attached |
 | Admitted | admissibility = admit |
+| Investigating | (optional phase) modeled now, application trigger driven later |
 | Routed | jurisdiction assigned; **parked** awaiting Determination |
-| Resolved ▣ | linked `determinationId`; correction acknowledged |
+| **Adjudicated** | a binding `determinationId` exists (**legal finality**); correction not yet required-complete |
+| Resolved ▣ | every required consequence completed (**operational completion**) |
 | Dismissed ▣ | dismissed-on-merits; reason recorded |
 | Lapsed ▣ | window expired without decision (≠ Dismissed) |
 **Transitions**
@@ -175,11 +181,13 @@ stateDiagram-v2
 | Raised | AdmitChallenge | ChallengeAdmissibilityDecision=admit | Admitted | ChallengeAdmitted | ✅ |
 | Raised | DismissChallenge | ChallengeAdmissibilityDecision=dismiss | Dismissed ▣ | ChallengeDismissed | ✅ |
 | Raised/Admitted | (timeout) | decision window expired | Lapsed ▣ | — | ✅ (system) |
-| Admitted | RouteChallenge | ChallengeRoutingDecision | Routed | ChallengeRouted | ✅ |
-| Routed | ResolveChallenge | `DeterminationIssued` received **and** `ElectionCorrectionApplied` | Resolved ▣ | ChallengeResolved | ✅ |
-| Raised | AdmitChallenge | raise window closed | — | — | ⊘ |
+| Admitted | BeginInvestigation | — | Investigating | — *(modeled; undriven)* | ✅ |
+| Admitted / Investigating | RouteChallenge | ChallengeRoutingDecision | Routed | ChallengeRouted | ✅ |
+| **Routed** | **AdjudicateChallenge** | reacts to `DeterminationIssued` (Upheld or Dismissed) | **Adjudicated** | **ChallengeAdjudicated** | ✅ *(Push B)* |
+| **Adjudicated** | **ResolveChallenge** | reacts to `ElectionCorrectionApplied` (consequences complete) | Resolved ▣ | ChallengeResolved | ✅ *(Push C)* |
+| Routed | ResolveChallenge | — (must adjudicate first) | — | — | ⊘ |
 | Resolved/Dismissed/Lapsed | any | — | — | — | ⊘ terminal |
-**Review:** skip ✘ (must route before resolve) · repeat ✘ · rollback ✘ · timeout ✔ (→Lapsed) · owner=Contestation · evidence=`determinationId` on Resolved.
+**Review:** skip ✘ (must adjudicate before resolve) · repeat ✘ · rollback ✘ · timeout ✔ (→Lapsed) · owner=Contestation · evidence=`determinationId` on Adjudicated. **Adjudicated≠Resolved (ADR-T20).**
 
 ## Determination — owned by Adjudication aggregate *(greenfield Core)*
 ```mermaid
