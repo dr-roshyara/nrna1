@@ -199,6 +199,7 @@ class SitemapController extends Controller
             // Thought-leadership articles (diaspora election governance & auditing)
             '/who-watch-the-watchmen' => ['priority' => '0.7', 'changefreq' => 'monthly'],
             '/ddd-article-part1' => ['priority' => '0.7', 'changefreq' => 'monthly'],
+            '/from-traits-to-responsibility-space' => ['priority' => '0.7', 'changefreq' => 'monthly'],
         ];
 
         foreach ($staticPages as $url => $config) {

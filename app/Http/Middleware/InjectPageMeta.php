@@ -47,6 +47,7 @@ class InjectPageMeta
             $routeName === 'wahlen.sicherheit'                  => 'sicherheit',
             $routeName === 'articles.who-watch-the-watchmen'    => 'who-watch-the-watchmen',
             $routeName === 'articles.ddd-part-one'              => 'ddd-article-part-one',
+            $routeName === 'articles.from-traits-to-responsibility-space' => 'from-traits-to-responsibility-space',
             default                                             => 'home',
         };
 
@@ -58,7 +59,7 @@ class InjectPageMeta
         $additional = $page === 'vereinswahlen' ? ['vereinswahlen' => true] : [];
 
         // Article pages emit schema.org/Article structured data for rich results
-        if (in_array($page, ['who-watch-the-watchmen', 'ddd-article-part-one'], true)) {
+        if (in_array($page, ['who-watch-the-watchmen', 'ddd-article-part-one', 'from-traits-to-responsibility-space'], true)) {
             $additional['article'] = [
                 'headline'    => trans("seo.pages.{$page}.title"),
                 'description' => trans("seo.pages.{$page}.description"),

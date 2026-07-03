@@ -247,5 +247,12 @@ return [
             'keywords'    => 'online elections for diaspora organisations, diaspora voting platform, secure online voting, verifiable elections, online election software, NRNA elections, digital democracy',
             'robots'      => 'index, follow',
         ],
+
+        'from-traits-to-responsibility-space' => [
+            'title'       => 'The Question That Changed My Understanding of Politics | Public Digit',
+            'description' => 'How trying to build a political score led one researcher to discover he was measuring the wrong thing — and to rethink political performance as the fulfillment of public responsibility.',
+            'keywords'    => 'political accountability, political performance measurement, responsibility-based evaluation, PolitPass, evaluating political leaders, public office responsibilities, evidence-based governance, domain-driven design',
+            'robots'      => 'index, follow',
+        ],
     ],
 ];
