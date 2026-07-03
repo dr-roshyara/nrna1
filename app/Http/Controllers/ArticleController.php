@@ -50,6 +50,26 @@ class ArticleController extends Controller
         ]);
     }
 
+    public function showFromTraitsToResponsibilitySpace()
+    {
+        $filePath = base_path('docs/articles/from_traits_to_responsibility_space.md');
+
+        if (!File::exists($filePath)) {
+            abort(404, 'Article not found');
+        }
+
+        $raw = File::get($filePath);
+        $article = $this->parseArticle($raw, [
+            'part' => null,
+            'next_part' => null,
+        ]);
+
+        return Inertia::render('Articles/FromTraitsToResponsibilitySpace', [
+            'article' => $article,
+            'breadcrumbs' => [],
+        ]);
+    }
+
     private function parseArticle($raw, array $meta = [])
     {
         $lines = explode("\n", $raw);

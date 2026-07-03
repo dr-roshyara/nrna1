@@ -291,6 +291,7 @@ Route::get('/election-security', function () {
 // Articles
 Route::get('/ddd-article-part1', [ArticleController::class, 'showDddArticlePartOne'])->name('articles.ddd-part-one');
 Route::get('/who-watch-the-watchmen', [ArticleController::class, 'showWhoWatchesTheWatchmen'])->name('articles.who-watch-the-watchmen');
+Route::get('/from-traits-to-responsibility-space', [ArticleController::class, 'showFromTraitsToResponsibilitySpace'])->name('articles.from-traits-to-responsibility-space');
 
 // SEO landing pages — keyword-targeted routes
 Route::get('/digitale-online-wahlen-fuer-verein', function () {

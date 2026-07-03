@@ -247,5 +247,12 @@ return [
             'keywords'    => 'Online-Wahlen für Diaspora-Organisationen, Diaspora-Wahlplattform, sichere Online-Wahlen, überprüfbare Wahlen, Online-Wahlsoftware, NRNA-Wahlen, digitale Demokratie',
             'robots'      => 'index, follow',
         ],
+
+        'from-traits-to-responsibility-space' => [
+            'title'       => 'Die Frage, die mein Verständnis von Politik veränderte | Public Digit',
+            'description' => 'Wie der Versuch, einen politischen Score zu entwickeln, einen Forscher erkennen ließ, dass er das Falsche maß — und warum politische Leistung als Erfüllung öffentlicher Verantwortung neu gedacht werden muss.',
+            'keywords'    => 'politische Rechenschaftspflicht, Messung politischer Leistung, verantwortungsbasierte Bewertung, PolitPass, Bewertung politischer Führungskräfte, Verantwortlichkeiten öffentlicher Ämter, evidenzbasierte Governance, Domain-Driven Design',
+            'robots'      => 'index, follow',
+        ],
     ],
 ];
