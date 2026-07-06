@@ -22,28 +22,32 @@
 15. Merge           lifecycle → Verified
 ```
 
-## Gate Classes — Capability vs Engineering (process lesson, PB-003-C2, 2026-07-06)
+## Gate Classes — Capability · Architecture · Engineering (process lesson, PB-003-C2, 2026-07-06)
 
-A capability ticket (PB-xxx) is verified against **Capability Gates only**. Tooling/code-quality standards are **Engineering Gates** and belong to EPIC-000 engineering tickets — never blocking a capability commit.
+A capability ticket (PB-xxx) is verified against **Capability + Architecture Gates only**. Tooling/code-quality standards are **Engineering Improvement Gates** and belong to EPIC-000 engineering tickets — a discovered quality opportunity never blocks a business feature.
 
-| Gate | Class | When required |
-|------|-------|---------------|
-| Official greenfield PHPStan (`phpstan-greenfield.neon`) | **Capability (MANDATORY)** | every capability ticket |
-| Architecture Fitness Tests (full suite) | **Capability (MANDATORY)** | every capability ticket |
-| Unit/feature/integration tests (RED→GREEN) | **Capability (MANDATORY)** | every capability ticket |
-| Ad-hoc `phpstan --level=max` on individual files | **Engineering (optional)** | only when the ticket's purpose is tooling/quality improvement |
-| Mutation (Infection) | **Engineering** | PB-007 / when F-2 wired |
+| Gate | Class | Required for a PB ticket? |
+|------|-------|---------------------------|
+| Unit/feature/integration tests (RED→GREEN) | **Capability** | ✅ Yes |
+| Official greenfield PHPStan (`phpstan-greenfield.neon`) | **Capability** | ✅ Yes |
+| Architecture Fitness Tests (full suite) | **Architecture** | ✅ Yes |
+| Architecture Review (human checkpoint) | **Architecture** | ✅ Yes (ticket boundary) |
+| Ad-hoc `phpstan --level=max` on individual files | **Engineering Improvement** | Only when explicitly scoped (tooling/quality ticket) |
+| Mutation (Infection) | **Engineering Improvement** | PB-007 / when F-2 wired |
 
+Commit rule: commit a capability ticket after all **Capability + Architecture** gates pass, **while recording any non-blocking engineering observations as EPIC-000 backlog items** (transparency without hidden debt).
 Report wording: "Architecture Fitness Tests N/N PASS" (fitness tests) is reported separately from "Architecture Review" (human checkpoint) — they are different things.
+*(Candidate for EKP promotion under ENG-001 — this taxonomy + the ER rules below are reusable engineering knowledge, not PB-003-specific.)*
 
-### ER-03 — Never raise the quality bar for only one sibling component
-If a ticket would improve a shared technical standard, EITHER upgrade **all sibling components in the same architectural layer together**, OR open a dedicated EPIC-000 engineering ticket and defer. Prevents competing standards within one layer. *(Origin: PB-003-C2 — holding InboxEvent to ad-hoc max while its mirror OutboxEvent is not would have created accidental divergence; deferred to ENG-002.)*
+### Engineering Rules (ER)
 
-### ER-02 — Prove intent before changing a gate
-Do not rewrite/weaken/scope a quality gate on inferred intent. Search ADRs/Blueprint/docs for evidence; absent evidence, record an engineering observation, not a gate change. *(Origin: PB-003-C2 — "Shared excluded from PHPStan" turned out to be current gate scope ["widen as contexts migrate"], not a documented decision.)*
+**ER-01 — Run doc/script commands from repo root (absolute cd).** *(Origin: session-4 — a working-directory-dependent sed batch silently skipped; hooks/doc updates must `cd` to repo root.)*
 
-### ER-01 — Run doc/script commands from repo root (absolute cd)
-*(Origin: session-4 — a working-directory-dependent sed batch silently skipped; hooks/doc updates must `cd` to repo root.)*
+**ER-02 — (generalized into ER-04).** Original narrow form "prove intent before changing a gate" is superseded by ER-04; ID retained as a pointer, not reused.
+
+**ER-03 — Maintain Sibling Consistency.** When improving a shared technical standard within an architectural layer: upgrade **all sibling components together**, OR create a dedicated EPIC-000 engineering backlog item. Do not introduce divergent standards between equivalent components (Outbox↔Inbox, repository implementations, mappers, registries, event adapters, future shared infrastructure) unless an ADR explicitly justifies the difference. *(Origin: PB-003-C2 — holding InboxEvent to ad-hoc max while its mirror OutboxEvent is not would have created accidental divergence; deferred to ENG-002.)*
+
+**ER-04 — Validate Intent Before Changing Governance.** When a tool, test, or quality gate appears inconsistent: (1) search for architectural evidence (ADR · Blueprint · AKB/EKP · implementation docs); (2) if evidence exists, follow it; (3) if none exists, document the observation; (4) do NOT infer architectural intent from current implementation alone — absence of evidence is not evidence of intent; (5) if governance must change, propose an ADR or engineering-process update rather than silently changing the workflow. *(Origin: PB-003-C2 — "Shared excluded from PHPStan" turned out to be current gate scope ["widen as contexts migrate"], not a documented decision; three explanations — intentional scope / incremental / historical accident — were indistinguishable without evidence.)*
 
 ## Lifecycle vs Progress (two different concepts — never conflated)
 
