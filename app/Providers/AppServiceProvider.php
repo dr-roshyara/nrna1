@@ -31,6 +31,11 @@ class AppServiceProvider extends ServiceProvider
         // hydrators; adding a context event never edits shared infrastructure.
         $this->app->singleton(\App\Contexts\Shared\Infrastructure\Outbox\EventHydratorRegistry::class);
 
+        // Inbox Handler Registry (Blueprint Push B §6, §16 step 6 · ADR-T4 · PB-003-C4):
+        // container singleton — consuming contexts register their inbox handlers
+        // from their own providers; adding a context never edits shared infrastructure.
+        $this->app->singleton(\App\Contexts\Shared\Infrastructure\Inbox\InboxHandlerRegistry::class);
+
         // Membership context: Committee creation ports
         $this->app->bind(
             \App\Contexts\Membership\Application\Committee\Ports\CommitteeRepositoryPort::class,
