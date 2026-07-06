@@ -12,9 +12,11 @@ use App\Contexts\Adjudication\Application\Service\CoordinatesAdjudication;
 use App\Contexts\Adjudication\Application\Service\TransactionalAdjudicationService;
 use App\Contexts\Adjudication\Domain\Repository\DeterminationRepository;
 use App\Contexts\Adjudication\Infrastructure\Identity\UuidIdentityGenerator;
+use App\Contexts\Adjudication\Infrastructure\Outbox\DeterminationIssuedHydrator;
 use App\Contexts\Adjudication\Infrastructure\Outbox\OutboxEventAdapter;
 use App\Contexts\Adjudication\Infrastructure\Repositories\EloquentDeterminationRepository;
 use App\Contexts\Adjudication\Infrastructure\Transaction\LaravelTransactionManager;
+use App\Contexts\Shared\Infrastructure\Outbox\EventHydratorRegistry;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
@@ -47,5 +49,11 @@ final class AdjudicationServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations/Tenant');
+
+        // Event Registry (Blueprint Push B §6, §16 step 4): Adjudication owns
+        // the hydrators for the events it produces.
+        /** @var EventHydratorRegistry $registry */
+        $registry = $this->app->make(EventHydratorRegistry::class);
+        $registry->register(new DeterminationIssuedHydrator());
     }
 }

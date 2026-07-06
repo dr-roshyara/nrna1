@@ -26,6 +26,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Event Registry (Blueprint Push B §6, §16 step 4 · ADR-T3/T5):
+        // container singleton — each context's provider registers its own
+        // hydrators; adding a context event never edits shared infrastructure.
+        $this->app->singleton(\App\Contexts\Shared\Infrastructure\Outbox\EventHydratorRegistry::class);
+
         // Membership context: Committee creation ports
         $this->app->bind(
             \App\Contexts\Membership\Application\Committee\Ports\CommitteeRepositoryPort::class,
