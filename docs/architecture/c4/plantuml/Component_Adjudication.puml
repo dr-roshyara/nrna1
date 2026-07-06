@@ -1,0 +1,50 @@
+@startuml Component_Adjudication
+!include <C4/C4_Component>
+title Component (C3) — Adjudication Context [IMPLEMENTED — Push A + PB-001]
+
+Container_Boundary(ctx, "Adjudication (app/Contexts/Adjudication)") {
+  Boundary(appl, "Application Layer") {
+    Component(svc, "AdjudicationService (Port)", "interface", "issueDetermination(cmd): DeterminationId")
+    Component(txsvc, "TransactionalAdjudicationService", "decorator", "wraps coordinator in TransactionManager::transactional() — save + outbox atomic (ADR-T1)")
+    Component(coord, "CoordinatesAdjudication", "FROZEN coordinator", "reads Challenge READ-ONLY (ADR-T14); uniqueness guard (BI-1/BI-2); prepare→issue; save; outbox enqueue")
+    Component(txPort, "TransactionManager (Port)", "interface")
+    Component(idPort, "IdentityGenerator (Port)", "interface")
+    Component(obPort, "EventOutbox (Port)", "interface", "enqueue(DomainEvent...)")
+  }
+  Boundary(dom, "Domain Layer [pure PHP]") {
+    Component(agg, "Determination (Aggregate Root)", "prepare→issue→finalize; Draft→Issued→Final; issue emits DeterminationIssued; ruling content lives in the EVENT (ADR-T19 Model B)")
+    Component(vos, "Value Objects", "DeterminationId · ChallengeRef (local, ADR-T16) · DeterminationOutcome{Upheld,Dismissed} · Legitimacy · Reason · EvidenceEnvelopeRef · IssuedByAuthority · Jurisdiction · DeterminationState")
+    Component(evt, "DeterminationIssued", "Domain Event (Core, Catalog v1.0)")
+    Component(repoPort, "DeterminationRepository (Port)", "interface")
+    Component(legit, "LegitimacyDecision", "Domain Service (ADR-T17) — placement resolved; rules TDD-deferred")
+    Component(exc, "DeterminationAlreadyIssued, DeterminationNotFound, IllegalDeterminationTransition", "exceptions")
+  }
+  Boundary(infra, "Infrastructure Layer [Laravel allowed]") {
+    Component(eloqRepo, "EloquentDeterminationRepository", "DeterminationModel + DeterminationMapper; UNIQUE(org, challenge_ref)")
+    Component(txImpl, "LaravelTransactionManager")
+    Component(idImpl, "UuidIdentityGenerator")
+    Component(obImpl, "OutboxEventAdapter", "explicit payload mapping → outbox_events row")
+    Component(hyd, "DeterminationIssuedHydrator", "PB-001: inverse of adapter; registered in provider")
+    Component(prov, "AdjudicationServiceProvider", "bindings + migration + hydrator registration")
+  }
+}
+ComponentDb_Ext(db, "determinations + outbox_events", "PostgreSQL")
+Component_Ext(reg, "EventHydratorRegistry", "Shared Infrastructure singleton")
+
+Rel(txsvc, svc, "implements")
+Rel(txsvc, coord, "decorates")
+Rel(coord, agg, "prepare/issue")
+Rel(coord, repoPort, "save")
+Rel(coord, obPort, "enqueue(DeterminationIssued)")
+Rel(txsvc, txPort, "transactional()")
+Rel(eloqRepo, repoPort, "implements")
+Rel(obImpl, obPort, "implements")
+Rel(txImpl, txPort, "implements")
+Rel(idImpl, idPort, "implements")
+Rel(eloqRepo, db, "SQL")
+Rel(obImpl, db, "INSERT outbox row (same txn)")
+Rel(prov, reg, "register(DeterminationIssuedHydrator)")
+
+SHOW_LEGEND()
+' No Eloquent in Domain; Challenge is NEVER written here (ADR-T14).
+@enduml

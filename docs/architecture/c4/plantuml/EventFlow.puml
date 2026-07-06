@@ -1,0 +1,35 @@
+@startuml EventFlow
+title Event Flow Architecture (project-specific "C5" view) — Canonical Event Catalog v1.0, correction loop
+left to right direction
+
+rectangle "Contestation" as C
+rectangle "Adjudication" as A
+rectangle "Election/Lifecycle" as E
+rectangle "Audit" as AU
+queue "outbox_events\n→ Relay (registry)\n→ inbox_events" as BUS
+
+C --> BUS : ChallengeRaised v1
+C --> BUS : ChallengeAdmitted / Dismissed v1
+C --> BUS : ChallengeRouted v1
+C --> BUS : ChallengeAdjudicated v1
+C --> BUS : ChallengeResolved v1
+A --> BUS : DeterminationIssued v1 (Core)
+E --> BUS : ElectionCorrectionApplied v1 (Core)
+
+BUS --> A : ChallengeRouted
+BUS --> C : DeterminationIssued
+BUS --> E : DeterminationIssued (Upheld only acts)
+BUS --> C : ElectionCorrectionApplied
+BUS --> AU : ALL events
+
+note bottom of BUS
+  Envelope (8 fields): EventId · EventType · AggregateId · AggregateVersion
+  · OccurredAt · CorrelationId · CausationId · SchemaVersion
+  Single producer per event (AT-EVT-001) · additive change → SchemaVersion+1;
+  breaking → new event name (ADR-T5) · hydrators support vCurrent + vPrevious ONLY
+end note
+note bottom
+  NOT shown, by rule: Voting never consumes DeterminationIssued.
+  No payload anywhere carries voter↔vote linkage (CI-5 / Q7 / ADR-T11).
+end note
+@enduml

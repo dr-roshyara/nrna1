@@ -1,0 +1,66 @@
+@startuml Runtime_CorrectionLoop
+title Runtime View — Correction Loop (Push B Blueprint §2) · 5 transactions, eventual consistency between them
+' corr=X minted at ChallengeRaised, copied to EVERY event of the loop; caus = EventId of the causing event.
+
+actor "Standing actor\n(S-1/S-2/S-3)" as user
+participant "Contestation" as C
+participant "Adjudication" as A
+participant "Election/Lifecycle" as E
+database "outbox_events" as OB
+participant "Relay\n(outbox:process)" as R
+participant "Inbox\n(per consumer)" as IB
+
+== Phase 1 · Challenge intake ==
+user -> C : RaiseChallenge
+group TXN T1 [one aggregate + outbox (ADR-T1)]
+  C -> C : Challenge::raise → Raised
+  C -> OB : ChallengeRaised {corr=X, caus=∅}
+end
+note over C : admit()/route() follow the same\nT1b/T1c single-txn pattern
+
+== Phase 2 · Ruling (IMPLEMENTED — Push A) ==
+R -> A : ChallengeRouted (delivered)
+A -> A : IssueDetermination\nChallenge READ-ONLY (ADR-T14)\nLegitimacyDecision (ADR-T17)
+group TXN T2
+  A -> A : Determination::issue → Issued
+  A -> OB : DeterminationIssued {corr=X,\ncaus=ChallengeRouted.eventId}
+end
+
+== Phase 3 · Fork on outcome ==
+OB -> R : pending rows
+R -> R : EventHydratorRegistry\n.hydratorFor('DeterminationIssued')
+R -> IB : deliver to Election  [dedupe key: (eventId, 'Election')]
+R -> IB : deliver to Contestation  [dedupe key: (eventId, 'Contestation')]
+
+group TXN T4 [Contestation — ALWAYS, both outcomes]
+  IB -> C : (idempotent) AdjudicateChallenge
+  C -> C : adjudicate → Adjudicated
+  C -> OB : ChallengeAdjudicated {corr=X, caus=DeterminationIssued.eventId}
+end
+alt outcome = Upheld
+  group TXN T3 [Election]
+    IB -> E : (idempotent) ApplyCorrection\nguards: CorrectionTypeDecision +\nContainedCorrectionInvariant (CI-3)
+    E -> E : write correction state
+    E -> OB : ElectionCorrectionApplied {corr=X,\ncaus=DeterminationIssued.eventId,\ncorrectionType ∈ ReRun|Invalidate|Accept|ContainedOnly}
+  end
+  == Phase 4 · Operational completion ==
+  R -> IB : deliver ElectionCorrectionApplied to Contestation
+  group TXN T5
+    IB -> C : (idempotent) ResolveChallenge
+    C -> C : resolve → Resolved ▣
+    C -> OB : ChallengeResolved {corr=X, caus=ElectionCorrectionApplied.eventId}
+  end
+else outcome = Dismissed
+  note over E : Election inbox records row, handler NO-OP\n(Round 50-03: Dismissed → no correction)
+  group TXN T5' [same handler invocation as T4, sequential txn]
+    C -> C : resolve → Resolved ▣
+    C -> OB : ChallengeResolved {corr=X, caus=DeterminationIssued.eventId}
+  end
+end
+
+note across
+  Failure model: relay retries transient (configurable, default 5 → dead-letter) ·
+  unregistered type → IMMEDIATE dead-letter · duplicate → inbox drop ·
+  out-of-order (T5 before T4) → PARK + re-drive · constitutional guard rejection → dead-letter + governance alert, NEVER auto-retry
+end note
+@enduml

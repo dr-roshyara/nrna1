@@ -1,0 +1,37 @@
+@startuml ContextMap
+title DDD Context Map — greenfield core + supporting capabilities
+' Relationship semantics from Blueprint §10 (Context Boundary Matrix) + ADR-T16 + Catalog v1.0.
+' Pattern labels: Published Language = Canonical Event Catalog v1.0; local opaque VOs at every
+' boundary act as a lightweight ACL (ADR-T16). Where a classic DDD pattern name is an
+' interpretation rather than a frozen decision, it is marked (interp.).
+
+rectangle "Contestation\n[owns Challenge]\nlegal lifecycle" as C #lightgreen
+rectangle "Adjudication\n[owns Determination]\nlegal ruling" as A #lightgreen
+rectangle "Election/Lifecycle\n[owns Election]\noperational correction" as E #lightyellow
+rectangle "Voting [designed]\nowns Vote" as V #white
+rectangle "Evidence [designed]\nowns EvidenceEnvelope" as EV #white
+rectangle "Appointment [designed]\nowns Mandate" as M #white
+rectangle "Membership\n[operational]\nowns Member, Fee, Committee" as MB #lightyellow
+rectangle "Audit\n(supporting capability, BDR)\nconsumes ALL, publishes NONE" as AU #lightgrey
+rectangle "Replay / Authorization / Lifecycle-engine\n(supporting capabilities, BDR — NOT contexts)" as SUP #lightgrey
+
+C -down-> A : "ChallengeRouted\nUpstream→Downstream (Customer–Supplier, interp.)\nPublished Language = Event Catalog"
+A -down-> E : "DeterminationIssued\nrequest/react (Round 50-03 Option A)\nnever direct mutation"
+A -left-> C : "DeterminationIssued\n(Contestation reacts: adjudicate)"
+E -up-> C : "ElectionCorrectionApplied\n(Contestation reacts: resolve)"
+EV .right.> A : "EvidenceEnvelopeRef\nopaque hash ref (ACL-lite, ADR-T16)"
+A .. V : "NO relationship — Voting never\nconsumes DeterminationIssued (CI-3/CI-5)"
+C -> AU : events
+A -> AU : events
+E -> AU : events
+MB -> AU : events
+
+legend right
+  green  = implemented (greenfield)
+  yellow = operational (legacy architecture, migration pending)
+  white  = designed only
+  grey   = supporting capability (not a bounded context per BDR)
+  ALL cross-context integration is event-only via
+  outbox → relay → inbox. NO synchronous calls (Blueprint §11).
+endlegend
+@enduml

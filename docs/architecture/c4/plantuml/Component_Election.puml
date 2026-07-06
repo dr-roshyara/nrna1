@@ -1,0 +1,33 @@
+@startuml Component_Election
+!include <C4/C4_Component>
+title Component (C3) — Election/Lifecycle [OPERATIONAL implementation EXISTS · Correction reaction = PB-004 PLANNED]
+
+Container_Boundary(ctx, "Election / Lifecycle (legacy core + planned greenfield reaction)") {
+  Boundary(existing, "Existing operational core [IMPLEMENTED — legacy architecture]") {
+    Component(engine, "ElectionLifecycleEngineImpl", "SSOT", "derives state from business facts; state column = compatibility cache; 12-step derivation")
+    Component(resolver, "ElectionCapabilityResolver", "capability snapshot; ALL permission decisions")
+    Component(lifecycle, "ElectionLifecycle facade + Snapshot", "read surface for engine")
+    Component(model, "Election (Eloquent model)", "legacy aggregate-ish; constitutional fields immutable via saving hook")
+  }
+  Boundary(planned, "Correction reaction [PLANNED PB-004 — Gap G-3]") {
+    Component(applyH, "ApplyCorrection handler", "reacts to DeterminationIssued(outcome=Upheld) via Inbox; Dismissed → no-op")
+    Component(guards, "CorrectionTypeDecision + ContainedCorrectionInvariant", "policies (Round 50-07); correctionType ∈ {ReRun, Invalidate, Accept, ContainedOnly}")
+    Component(evt, "ElectionCorrectionApplied", "Domain Event (Core, Catalog v1.0) — class MISSING, to build")
+  }
+}
+Component_Ext(inbox, "Inbox wrapper", "Shared Infrastructure — PB-003")
+ComponentDb_Ext(db, "elections + outbox_events", "PostgreSQL")
+
+Rel(applyH, inbox, "consumes DeterminationIssued through (idempotent)")
+Rel(applyH, guards, "guarded by")
+Rel(applyH, model, "writes correction state (T3, one aggregate)")
+Rel(applyH, evt, "emits → outbox (same txn)")
+Rel(engine, model, "reads business facts")
+Rel(resolver, engine, "derives capabilities from")
+Rel(model, db, "SQL")
+
+SHOW_LEGEND()
+' CONSTITUTIONAL RULE (CI-3): correction NEVER modifies anonymous votes — only election
+' state. Forward-only, no compensation (ADR-T8). Adjudication never mutates Election
+' directly (Round 50-03 Option A: request/react).
+@enduml

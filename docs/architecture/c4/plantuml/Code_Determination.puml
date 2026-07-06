@@ -1,0 +1,78 @@
+@startuml Code_Determination
+title Code (C4) — Determination Aggregate (Adjudication) [IMPLEMENTED — Push A + PB-001]
+' Source: app/Contexts/Adjudication — verified inventory 2026-07-06. No framework classes in Domain.
+
+package "Adjudication\\Domain\\Determination" {
+  class Determination <<AggregateRoot>> {
+    -DeterminationId id
+    -ChallengeRef challengeRef
+    -DeterminationState state
+    +{static} prepare(id, challengeRef, authority, jurisdiction, evidenceRef) : self
+    +{static} reconstitute(..., state) : self
+    +issue(outcome, legitimacy, reason, at) : void
+    +finalize(at) : void
+    +pullEvents() : DomainEvent[]
+  }
+  enum DeterminationState { Draft\nIssued\nFinal }
+  enum DeterminationOutcome { Upheld\nDismissed }
+  enum Legitimacy { Legitimate\nIllegitimate }
+  class DeterminationId <<ValueObject>>
+  class ChallengeRef <<ValueObject>> #lightyellow
+  note right of ChallengeRef : LOCAL opaque ref (ADR-T16)
+  class Reason <<ValueObject>>
+  class EvidenceEnvelopeRef <<ValueObject>>
+  class IssuedByAuthority <<ValueObject>>
+  class Jurisdiction <<ValueObject>>
+}
+package "Adjudication\\Domain\\Events" {
+  class DeterminationIssued <<DomainEvent>> {
+    +determinationId, challengeRef, outcome,
+    +legitimacy, reason, evidenceEnvelopeRef,
+    +issuedByAuthority, jurisdiction, occurredAt
+  }
+  note bottom : ADR-T19 Model B — ruling CONTENT lives\nin the event, not aggregate state
+}
+package "Adjudication\\Domain\\Repository" {
+  interface DeterminationRepository <<Port>> {
+    +nextIdentity() +save() +get() +find() +findByChallengeRef()
+  }
+}
+package "Adjudication\\Domain\\Exception" {
+  class DeterminationAlreadyIssued <<Exception>>
+  class IllegalDeterminationTransition <<Exception>>
+  class DeterminationNotFound <<Exception>>
+}
+package "Adjudication\\Application" {
+  interface AdjudicationService <<Port>>
+  class TransactionalAdjudicationService <<Decorator>>
+  class CoordinatesAdjudication <<ApplicationService>> #lightblue
+  note bottom of CoordinatesAdjudication : FROZEN. Challenge READ-ONLY (ADR-T14)\nwrites ONLY Determination + outbox (ADR-T1)
+  interface TransactionManager <<Port>>
+  interface IdentityGenerator <<Port>>
+  interface EventOutbox <<Port>>
+}
+package "Adjudication\\Infrastructure" {
+  class EloquentDeterminationRepository <<Adapter>>
+  class DeterminationModel <<Eloquent>>
+  class DeterminationMapper
+  class LaravelTransactionManager <<Adapter>>
+  class UuidIdentityGenerator <<Adapter>>
+  class OutboxEventAdapter <<Adapter>>
+  class DeterminationIssuedHydrator <<Adapter>>
+  note bottom of DeterminationIssuedHydrator : PB-001 — inverse of OutboxEventAdapter\n(wire contract pair, evolve together)
+}
+
+Determination --> DeterminationState
+Determination ..> DeterminationIssued : issue() records
+Determination ..> IllegalDeterminationTransition : throws
+TransactionalAdjudicationService ..|> AdjudicationService
+TransactionalAdjudicationService o--> CoordinatesAdjudication
+CoordinatesAdjudication --> DeterminationRepository
+CoordinatesAdjudication --> EventOutbox
+EloquentDeterminationRepository ..|> DeterminationRepository
+EloquentDeterminationRepository --> DeterminationModel
+EloquentDeterminationRepository --> DeterminationMapper
+OutboxEventAdapter ..|> EventOutbox
+LaravelTransactionManager ..|> TransactionManager
+UuidIdentityGenerator ..|> IdentityGenerator
+@enduml

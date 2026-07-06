@@ -1,0 +1,37 @@
+@startuml Deployment
+!include <C4/C4_Deployment>
+title Deployment View — single-node modular monolith (current target)
+
+Deployment_Node(client, "User Device", "Browser") {
+  Container(browser, "Vue 3 + Inertia SPA", "served by Laravel via Vite build")
+}
+Deployment_Node(server, "Application Server", "Linux") {
+  Deployment_Node(nginx, "Nginx", "reverse proxy / TLS") {
+  }
+  Deployment_Node(phpfpm, "PHP-FPM 8.3", "") {
+    Container(laravel, "Laravel Application", "modular monolith — all bounded contexts")
+  }
+  Deployment_Node(procs, "Supervisor / cron", "") {
+    Container(worker, "Queue Worker", "artisan queue:work")
+    Container(sched, "Scheduler", "artisan schedule:run → outbox:process (1/min), inbox:redrive (planned)")
+  }
+}
+Deployment_Node(data, "Data tier", "") {
+  ContainerDb(pg, "PostgreSQL", "business tables + outbox_events + inbox_events(planned)", "the transactional-outbox tables live HERE — atomicity with aggregates requires same DB")
+  ContainerDb(redis, "Redis", "cache / sessions / queues (ASSUMPTION)")
+}
+
+Rel(browser, nginx, "HTTPS")
+Rel(nginx, laravel, "FastCGI")
+Rel(laravel, pg, "SQL (aggregate + outbox in one txn)")
+Rel(sched, laravel, "invokes relay")
+Rel(worker, laravel, "runs jobs")
+Rel(laravel, redis, "cache/session/queue")
+
+SHOW_LEGEND()
+' Deployment assumptions (to confirm with operations):
+' 1. Single node suffices at Blueprint §19 volumes (challenges = tens/election, not TPS).
+' 2. Relay is cron-scheduled polling, NOT a broker — broker introduction = Blueprint v1.1.
+' 3. Redis presence assumed from Laravel conventions; tests run array drivers.
+' 4. XAMPP/Windows is the DEV environment; production = Linux/Nginx (convention).
+@enduml
