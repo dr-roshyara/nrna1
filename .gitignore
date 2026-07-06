@@ -21,3 +21,4 @@ storage/framework/
 /storage/app/public/
 .aider*
 .worktrees/
+.claude/runtime/

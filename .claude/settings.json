@@ -29,8 +29,38 @@
             "command": "~/.claude/hooks/timestamp-plan.sh"
           }
         ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/scripts/session-changes-logger.sh"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/scripts/inject-context.sh",
+            "statusMessage": "Loading project context (.claude/CONTEXT.md)"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/scripts/session-log-reminder.sh"
+          }
+        ]
       }
     ]
   },
-  "plansDirectory": "./claude/plans"
+  "plansDirectory": "./.claude/plans"
 }

@@ -507,3 +507,195 @@ If you see `HTTP 302 Found` with HTML response:
 - Integration tests MUST use actual tenant database connections
 - Test tenant switching scenarios explicitly
 ```
+
+---
+
+# Planning, Memory and Session Management
+
+## Principle
+
+The project repository is the single source of truth.
+
+Do not use Claude's global project memory (`~/.claude/...`) for project-specific plans, progress, or memory whenever it can be stored inside this repository.
+
+All project planning and memory must live inside:
+
+.claude/
+
+This allows the entire development history to be version controlled, reviewed, and shared with every developer and AI assistant.
+
+---
+
+# Directory Structure
+
+.claude/
+    MEMORY.md
+    CONTEXT.md
+    sessions/
+    plans/
+
+---
+
+# MEMORY.md
+
+MEMORY.md stores stable project memory.
+
+It should contain information that remains useful across many sessions.
+
+Examples:
+
+- important project conventions
+- coding standards adopted by the project
+- important implementation constraints
+- recurring user preferences
+- project-wide assumptions
+- frequently referenced facts
+
+Do NOT store:
+
+- temporary tasks
+- daily progress
+- implementation plans
+- debugging notes
+
+Always update MEMORY.md when long-term project knowledge changes.
+
+---
+
+# CONTEXT.md
+
+CONTEXT.md represents the current working state.
+
+It should answer:
+
+- What are we currently working on?
+- Which ticket is active?
+- What remains to be done?
+- What blockers exist?
+- What should be done next?
+
+This file should always reflect the latest project state.
+
+Whenever work starts or finishes, update CONTEXT.md.
+
+---
+
+# Plans
+
+Every significant task must have its own plan document.
+
+Store plans in:
+
+.claude/plans/
+
+Use meaningful filenames.
+
+Preferred naming:
+
+PB-123-product-assets.md
+
+or
+
+2026-07-06-api-redesign.md
+
+Avoid randomly generated filenames.
+
+Each plan should include:
+
+- Objective
+- Background
+- Scope
+- Design decisions
+- Task checklist
+- Progress
+- Risks
+- Open questions
+- Next actions
+
+Plans are living documents.
+
+Update them continuously rather than creating new ones.
+
+---
+
+# Session Logs
+
+Every work session must create or update a session log.
+
+Location:
+
+.claude/sessions/
+
+Filename:
+
+YYYY-MM-DD.md
+
+Example:
+
+2026-07-06.md
+
+Each session log should contain:
+
+## Summary
+
+Short description of today's work.
+
+## Completed
+
+Completed tasks.
+
+## Decisions
+
+Important decisions made.
+
+## Problems
+
+Issues encountered.
+
+## Next Steps
+
+Recommended starting point for the next session.
+
+Append to the current day's session log instead of creating multiple logs for the same day.
+
+---
+
+# Workflow
+
+At the beginning of every work session:
+
+1. Read MEMORY.md.
+2. Read CONTEXT.md.
+3. Read the relevant plan document(s).
+4. Read today's session log if it already exists.
+
+Before starting implementation:
+
+- Update the plan if requirements changed.
+- Update CONTEXT.md if priorities changed.
+
+During implementation:
+
+- Keep the plan progress current.
+- Record important decisions.
+
+At the end of every work session:
+
+- Update the plan.
+- Update CONTEXT.md.
+- Update MEMORY.md if long-term knowledge changed.
+- Update today's session log.
+
+Never finish a work session without updating these files.
+
+---
+
+# General Rules
+
+- The repository is the authoritative memory.
+- Avoid duplicate information.
+- Update existing documents instead of creating unnecessary new ones.
+- Use clear, descriptive filenames.
+- Keep plans and session logs concise but complete.
+- Never create randomly named plan files.
+- Treat planning and documentation as part of the implementation, not as optional work.
