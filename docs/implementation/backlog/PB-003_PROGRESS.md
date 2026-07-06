@@ -4,16 +4,26 @@
 **Lifecycle:** In Development · **Last updated:** 2026-07-06 · **Started:** 2026-07-06 · **Completed:** — · **Elapsed:** —
 **Process:** `../Implementation_Process_v1.0.md` — ALL percentages in this file are **PB-003 TICKET-level** (ticked WBS / 18), DERIVED, never hand-written. Epic-level % lives in `EPIC-001_Greenfield_Core.md`; program-level in `../IMPLEMENTATION_PROGRESS.md` / `../PROGRAM_STATUS.md`. Never report an unscoped percentage.
 
+### Capability-group progress (PRIMARY view)
 ```text
-PB-003 (ticket)   6 / 18 WBS complete   →  33%  ██████░░░░░░░░░░░░░░
+Port Layer        ██████████ 100%  (C1 ✔)
+Infrastructure    ███████░░░  67%  (migration + model ✔ C2 · wrapper pending C3)
+Registry          ░░░░░░░░░░   0%  (C4)
+Commands          ░░░░░░░░░░   0%  (C5)
+Testing           ████░░░░░░  40%  (2/5 groups: unit ✔ · feature-persist ✔)
+Documentation     ██░░░░░░░░   partial
 ```
+Secondary (derived backing count): **8 / 18 WBS**.
+
+### C1 Implementation Review (gate result)
+PASS · 0 Critical · 0 Major · 2 Minor (accepted, no action): (m1) IDD called InboxOutcome a "VO" — implemented as enum (correct DDD form for a closed set); (m2) InboxMessage.payload typed `array` per D-08. **Accepted for C2: YES.**
 
 ## Executable process state (hooks/sessions must respect this)
 
 ```text
-Current commit: PB-003-C2 · Current step: 4 (RED) — next session
-Allowed next:  C2 RED (inbox_events migration + InboxEvent model tests)
-Forbidden:     starting C3+, skipping RED, doc commits before code commit
+Current commit: PB-003-C3 · Current step: 4 (RED) — next session
+Allowed next:  C3 RED (Inbox wrapper consume tests — 7 scenarios)
+Forbidden:     starting C4+, skipping RED, doc commits before code commit
 ```
 
 ## Review checkpoints (ticket-boundary reviews — NOT per commit)
@@ -29,7 +39,7 @@ Forbidden:     starting C3+, skipping RED, doc commits before code commit
 | Commit | Scope (code only) | Estimate | Actual | Rollback |
 |--------|-------------------|----------|--------|----------|
 | PB-003-C1 | Port package (6 pure-PHP classes) + unit tests | 1h | 25m ✔ a421c2ef7 | `git revert <hash>` → prior suite green (no consumers yet) |
-| PB-003-C2 | `inbox_events` migration + `InboxEvent` model | 45m | — | revert → table dropped, nothing references it |
+| PB-003-C2 | `inbox_events` migration + `InboxEvent` model | 45m | ~30m ✔ cec36ee07 | revert → table dropped, nothing references it |
 | PB-003-C3 | `Inbox` wrapper + consume tests (7 scenarios) | 2h | — | revert → port remains, no runtime path uses wrapper yet |
 | PB-003-C4 | `InboxHandlerRegistry` + container wiring | 45m | — | revert → wrapper testable via direct construction |
 | PB-003-C5 | `inbox:redrive` + scheduling + config + tests | 1.5h | — | revert → parked rows wait (no data loss; redrive is additive) |
@@ -69,8 +79,8 @@ Forbidden:     starting C3+, skipping RED, doc commits before code commit
 - 1.5 markers `IdempotentReplay` / `PermanentInboxFailure` ✔ (C1)
 
 **2. Infrastructure (Shared\Infrastructure\Inbox)** *(C2, C3)*
-- 2.1 `inbox_events` migration (UNIQUE event_id+consumer_context, D-03) ✘
-- 2.2 `InboxEvent` model ✘
+- 2.1 `inbox_events` migration (UNIQUE event_id+consumer_context, D-03) ✔ (C2)
+- 2.2 `InboxEvent` model ✔ (C2)
 - 2.3 `Inbox` wrapper (txn: dedupe-insert → handle → classify → mark) ✘
 
 **3. Registry** *(C4)*
@@ -82,7 +92,7 @@ Forbidden:     starting C3+, skipping RED, doc commits before code commit
 
 **5. Testing (RED first, every block)**
 - 5.1 unit: message + classification *(C1)* ✔ · registry *(C4)* ✘
-- 5.2 feature: consume semantics (7 scenarios per IDD §11-3) *(C3)* ✘
+- 5.2 feature: consume semantics (7 scenarios per IDD §11-3) *(C3)* ✘ · persistence *(C2)* ✔
 - 5.3 feature: re-drive (4 scenarios) *(C5)* ✘
 - 5.4 architecture: port purity + single-writer scan *(C6)* ✘
 - 5.5 regression gates (Arch suite · Adjudication · outbox) *(every commit)* ✘

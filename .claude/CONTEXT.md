@@ -9,7 +9,7 @@ Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: M1 — Messaging Infrastructure (49%, derived 17/35 WBS)
 Priority: High
 
-- **Detail:** PB-003 Inbox / Deduplication · Lifecycle: **In Development** · Progress: 6/18 WBS (C1 ✔ a421c2ef7) · IDD: `docs/implementation/backlog/PB-003_Inbox_Implementation_Design.md`
+- **Detail:** PB-003 Inbox / Deduplication · Lifecycle: **In Development** · Progress: 8/18 WBS (C2 ✔ cec36ee07) · IDD: `docs/implementation/backlog/PB-003_Inbox_Implementation_Design.md`
 
 ## What remains (EPIC-001)
 PB-003 (Inbox) → PB-004 (Election Reaction, needs IDD) → PB-005 (Contestation Reaction, needs IDD) → PB-006 (IT-1..8) → PB-007 (Merge Gate incl. F-1 Deptrac, F-2 Infection)
@@ -18,7 +18,7 @@ PB-003 (Inbox) → PB-004 (Election Reaction, needs IDD) → PB-005 (Contestatio
 None. All PB-003 dependencies met (PB-001 ✔ PB-002 ✔).
 
 ## Next action (exactly one)
-Process v1.0 step 4 (RED): write failing unit tests for the Inbox **port package** (`InboxMessage`, `InboxHandler`, `InboxOutcome`, `CausalPreconditionMissing`, markers) per IDD §12 step 1 / §17 commit 1.
+PB-003-C3 · Process v1.0 step 4 (RED): write failing feature tests for the **Inbox wrapper** — 7 consume scenarios per IDD §11-3 (dedupe/park/classify in one transaction). C1 (port) ✔ a421c2ef7 · C2 (persistence) ✔ cec36ee07.
 
 ## Parallel tracks (not active this session)
 - Governance: 38D-02 Capability Relationships (after ARB digests 38D-01)

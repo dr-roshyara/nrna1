@@ -105,3 +105,28 @@ Progress
 - PB-003 ticket-level: 6/18 = 33% · EPIC-001: 23/103 = 22% (scoped)
 Next step
 - PB-003-C2 RED: inbox_events migration + InboxEvent model tests
+
+---
+
+## 2026-07-06 (session 5)
+
+### PB-003-C2 + governance ruling
+Completed
+- C1 Implementation Review gate: PASS · 0 Critical / 0 Major / 2 Minor (accepted)
+- PB-003-C2 (cec36ee07): inbox_events migration + InboxEvent model
+- Governance ruling executed: kept InboxEvent mirroring OutboxEvent; did NOT touch Shared cleanup; did NOT weaken gate
+- ENG-002 opened (Shared Infra PHPStan-max alignment — all sibling models together)
+- Process v1.0: Capability vs Engineering gate classes added; ER-01/ER-02/ER-03 recorded (process lessons, not ADR/Blueprint)
+Tests
+- RED: 6 tests / 5 errors (InboxEvent not found) + 1 cascading failure
+- GREEN: 6 tests / 17 assertions / 0 failures (D-03 dedupe proven)
+- Capability Gates: greenfield PHPStan (official) clean · Architecture Fitness Tests 133/133 · outbox regression 16/16
+- Engineering Gate (ad-hoc max): InboxEvent 11 findings = same class as OutboxEvent 7 → deferred to ENG-002 (ER-03), NOT fixed asymmetrically
+Finding (verified, not inferred)
+- Shared exclusion from phpstan-greenfield.neon = current gate scope ("widen as contexts migrate"), NOT a documented architectural decision (no ADR/Blueprint mandate). Recorded as engineering observation.
+Decision
+- none new to Decision Log (D-08 covers port shape); process lessons → Process v1.0
+Progress
+- PB-003 capability: Port 100% · Infra 67% · Testing 40% (secondary 8/18 WBS) · EPIC-001 25/103 = 24% (scoped)
+Next step
+- PB-003-C3 RED: Inbox wrapper consume tests (7 scenarios)

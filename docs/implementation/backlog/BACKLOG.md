@@ -23,6 +23,16 @@
 | EPIC-003 | Evidence context | — | not opened | opens after Push B |
 | EPIC-004 | Voting context migration | — | not opened | opens after Push B |
 | EPIC-005 | Read Models · Audit · Replay | — | not opened | opens after Push B |
+| **EPIC-000** | **Engineering Process & Quality** (workstream, not a capability) | ENG-001, ENG-002 | — | see below |
+
+## EPIC-000 — Engineering Process & Quality
+
+Engineering-governance workstream — distinct from capability tickets (PB-xxx). Improves tooling, process, and cross-cutting code quality. Never mixed into a capability ticket's commits.
+
+| Ticket | Title | Status | Notes |
+|--------|-------|--------|-------|
+| ENG-001 | Process Learning System | Designed | Improvement Log (PI-xxx), retrospectives, metrics/estimate-calibration, Process v1.1 proposals, dashboard refinements (ADR coverage · Current Deliverable · risk reasons). Evidence stash: session-4 cwd bug, C1 est−58%, docs/code-split. |
+| ENG-002 | Shared Infrastructure Static Analysis Alignment | Designed | Bring ALL Shared Infrastructure Eloquent models to PHPStan max **together** (OutboxEvent 7 findings + InboxEvent 11 findings + any siblings). Enforces ER-03. Opened from PB-003-C2 finding: ad-hoc max is inconsistent with the mirror convention + official gate excludes `Shared` ("widen as contexts migrate"). Evidence: no ADR/Blueprint mandates Shared exclusion — it is current gate scope, an engineering observation, not an architectural decision. |
 
 ## Program Health
 
