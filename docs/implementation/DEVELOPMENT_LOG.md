@@ -167,3 +167,27 @@ Progress
 - Exit Criteria: 4/14 (port · persistence · wrapper · [C1 review])
 Next step
 - PB-003-C4 RED: InboxHandlerRegistry tests + container wiring
+
+---
+
+## 2026-07-06 (session 8)
+
+### PB-003-C4 — InboxHandlerRegistry + wiring
+Completed
+- PB-003-C4 (3bc0b35dc): InboxHandlerRegistry (consumer_context, event_type)→handler + UnregisteredInboxHandler + container singleton (AppServiceProvider)
+Tests
+- RED: 7 tests / 7 errors (classes not found)
+- GREEN: Inbox suite 27 / 70 assertions / 0 failures (registry 6 unit + 1 wiring)
+- Capability gates: greenfield PHPStan clean · Architecture Fitness Tests 133/133 · outbox regression green
+- Registry is pure PHP (testable without Laravel)
+Architecture Validation
+- Patterns validated: Registry Pattern · Hexagonal Infrastructure (port owned by Application, registry in Infrastructure) · Open/Closed (new context registers without Shared edit) · boundary between generic infra and context-specific handling
+- Intentional divergence (ER-03, justified + documented): keyed by (consumer_context, event_type) vs sibling's event_type-only — D-03 multi-consumer
+- Architectural risks discovered: none
+- Architectural assumptions introduced: none
+- New architectural decisions: none (D-03 already covers the key)
+Progress
+- PB-003 capability: Port 100% · Infrastructure 100% · Registry 100% · Testing 80% (secondary 13/18 WBS) · EPIC-001 30/103 = 29% (scoped)
+- Exit Criteria: 5/14 (port · persistence · wrapper · registry · [C1 review])
+Next step
+- PB-003-C5 RED: inbox:redrive command + scheduling + config + re-drive tests
