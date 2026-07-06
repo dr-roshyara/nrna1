@@ -83,3 +83,25 @@ Debt
 Completed
 - Push B Architecture Blueprint authored (17→20 sections through review cycle)
 - PushB_Decision_Log.md opened (D-01..D-06)
+
+---
+
+## 2026-07-06 (session 4)
+
+### Baseline Freeze + PB-003-C1
+Completed
+- BASELINE 1.1: 5 commits (e61e111d0 AD-fixes · 67d4602ca PB-001/002 · 0be566370 docs · afae5e9d5 .claude OS · f7e1893f6 register) · tree clean · tag baseline-release-1.1 · branch feature/pb003
+- IMPLEMENTATION_BASELINE.md seeded (PB-001/PB-002 Verified retroactively)
+- PB-003 tracker: Exit Criteria, commit plan C1-C6+DOC with rollback column, executable process state
+- PROGRAM_STATUS: Program Health Dashboard added
+- PB-003-C1 (a421c2ef7): 6 port classes + 2 test files
+Tests
+- RED: 7 tests / 7 errors / 0 assertions (classes not found)
+- GREEN: 7 tests / 20 assertions / 0 failures
+- Gates: greenfield PHPStan clean · port PHPStan max clean · purity zero-Illuminate · Arch 133/133
+Decision
+- none new
+Progress
+- PB-003 ticket-level: 6/18 = 33% · EPIC-001: 23/103 = 22% (scoped)
+Next step
+- PB-003-C2 RED: inbox_events migration + InboxEvent model tests

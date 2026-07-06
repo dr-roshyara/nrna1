@@ -1,19 +1,19 @@
 # PB-003 Inbox — Progress Tracker
 
 **Ticket:** PB-003 · **IDD:** `PB-003_Inbox_Implementation_Design.md` · **Branch:** feature/pb003
-**Lifecycle:** Approved · **Last updated:** 2026-07-06 · **Started:** — · **Completed:** — · **Elapsed:** —
+**Lifecycle:** In Development · **Last updated:** 2026-07-06 · **Started:** 2026-07-06 · **Completed:** — · **Elapsed:** —
 **Process:** `../Implementation_Process_v1.0.md` — ALL percentages in this file are **PB-003 TICKET-level** (ticked WBS / 18), DERIVED, never hand-written. Epic-level % lives in `EPIC-001_Greenfield_Core.md`; program-level in `../IMPLEMENTATION_PROGRESS.md` / `../PROGRAM_STATUS.md`. Never report an unscoped percentage.
 
 ```text
-PB-003 (ticket)   0 / 18 WBS complete   →  0%   ░░░░░░░░░░░░░░░░░░░░
+PB-003 (ticket)   6 / 18 WBS complete   →  33%  ██████░░░░░░░░░░░░░░
 ```
 
 ## Executable process state (hooks/sessions must respect this)
 
 ```text
-Current commit: PB-003-C1 · Current step: 4 (RED)
-Allowed next:  GREEN (only after RED evidence captured)
-Forbidden:     starting C2+, running ahead to architecture-test step, doc commits before code commit
+Current commit: PB-003-C2 · Current step: 4 (RED) — next session
+Allowed next:  C2 RED (inbox_events migration + InboxEvent model tests)
+Forbidden:     starting C3+, skipping RED, doc commits before code commit
 ```
 
 ## Review checkpoints (ticket-boundary reviews — NOT per commit)
@@ -28,7 +28,7 @@ Forbidden:     starting C2+, running ahead to architecture-test step, doc commit
 
 | Commit | Scope (code only) | Estimate | Actual | Rollback |
 |--------|-------------------|----------|--------|----------|
-| PB-003-C1 | Port package (6 pure-PHP classes) + unit tests | 1h | — | `git revert <hash>` → prior suite green (no consumers yet) |
+| PB-003-C1 | Port package (6 pure-PHP classes) + unit tests | 1h | 25m ✔ a421c2ef7 | `git revert <hash>` → prior suite green (no consumers yet) |
 | PB-003-C2 | `inbox_events` migration + `InboxEvent` model | 45m | — | revert → table dropped, nothing references it |
 | PB-003-C3 | `Inbox` wrapper + consume tests (7 scenarios) | 2h | — | revert → port remains, no runtime path uses wrapper yet |
 | PB-003-C4 | `InboxHandlerRegistry` + container wiring | 45m | — | revert → wrapper testable via direct construction |
@@ -62,11 +62,11 @@ Forbidden:     starting C2+, running ahead to architecture-test step, doc commit
 ## Work Breakdown Structure (tick per commit; % derives from here)
 
 **1. Port Layer (Shared\Application\Inbox — pure PHP)** *(PB-003-C1)*
-- 1.1 `InboxMessage` ✘
-- 1.2 `InboxHandler` ✘
-- 1.3 `InboxOutcome` ✘
-- 1.4 `CausalPreconditionMissing` ✘
-- 1.5 markers `IdempotentReplay` / `PermanentInboxFailure` ✘
+- 1.1 `InboxMessage` ✔ (C1)
+- 1.2 `InboxHandler` ✔ (C1)
+- 1.3 `InboxOutcome` ✔ (C1)
+- 1.4 `CausalPreconditionMissing` ✔ (C1)
+- 1.5 markers `IdempotentReplay` / `PermanentInboxFailure` ✔ (C1)
 
 **2. Infrastructure (Shared\Infrastructure\Inbox)** *(C2, C3)*
 - 2.1 `inbox_events` migration (UNIQUE event_id+consumer_context, D-03) ✘
@@ -81,7 +81,7 @@ Forbidden:     starting C2+, running ahead to architecture-test step, doc commit
 - 4.1 `inbox:redrive` + scheduling + `config/inbox.php` ✘
 
 **5. Testing (RED first, every block)**
-- 5.1 unit: message + classification *(C1)* ✘ · registry *(C4)* ✘
+- 5.1 unit: message + classification *(C1)* ✔ · registry *(C4)* ✘
 - 5.2 feature: consume semantics (7 scenarios per IDD §11-3) *(C3)* ✘
 - 5.3 feature: re-drive (4 scenarios) *(C5)* ✘
 - 5.4 architecture: port purity + single-writer scan *(C6)* ✘

@@ -5,11 +5,11 @@
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
 Ticket: PB-003
 Plan: .claude/plans/PB-003-inbox.md
-Branch: feature/pb003
+Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: M1 — Messaging Infrastructure (49%, derived 17/35 WBS)
 Priority: High
 
-- **Detail:** PB-003 Inbox / Deduplication · Lifecycle: **Approved** · Progress: 0/18 WBS · IDD: `docs/implementation/backlog/PB-003_Inbox_Implementation_Design.md`
+- **Detail:** PB-003 Inbox / Deduplication · Lifecycle: **In Development** · Progress: 6/18 WBS (C1 ✔ a421c2ef7) · IDD: `docs/implementation/backlog/PB-003_Inbox_Implementation_Design.md`
 
 ## What remains (EPIC-001)
 PB-003 (Inbox) → PB-004 (Election Reaction, needs IDD) → PB-005 (Contestation Reaction, needs IDD) → PB-006 (IT-1..8) → PB-007 (Merge Gate incl. F-1 Deptrac, F-2 Infection)
