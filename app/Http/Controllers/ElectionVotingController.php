@@ -110,7 +110,7 @@ class ElectionVotingController extends Controller
 
         if (! $membership || $membership->role !== 'voter' || $membership->status === 'removed') {
             return redirect()->route('elections.show', $slug)
-                ->with('error', 'You are not eligible to vote in this election.');
+                ->with('error', 'You are not registered as a voter for this election.');
         }
 
         if ($membership->has_voted) {

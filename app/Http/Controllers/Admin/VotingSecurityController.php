@@ -159,7 +159,7 @@ class VotingSecurityController extends Controller
 
         if (!$user->is_voter || !$user->can_vote) {
             return redirect()->back()->with('error',
-                'Cannot generate recovery slug - user is not eligible to vote.'
+                'Cannot generate recovery slug - user lacks voting eligibility.'
             );
         }
 

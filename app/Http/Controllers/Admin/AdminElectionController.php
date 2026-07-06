@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Domain\Election\Enum\ElectionLifecycleState;
 use App\Http\Controllers\Controller;
 use App\Models\Election;
 use Illuminate\Http\RedirectResponse;
@@ -32,8 +33,11 @@ class AdminElectionController extends Controller
 
         $election = Election::withoutGlobalScopes()->findOrFail($election);
 
-        if ($election->state !== 'pending_approval') {
-            return back()->with('error', 'Election is not in pending approval state.');
+        // Engine is sovereign; the state column is a compatibility cache.
+        // (The old check compared against 'pending_approval', a value that does
+        // not exist in the lifecycle enum — it always failed.)
+        if ($election->currentState() !== ElectionLifecycleState::SubmittedForApproval) {
+            return back()->with('error', 'Election is not awaiting approval.');
         }
 
         try {
@@ -52,8 +56,8 @@ class AdminElectionController extends Controller
 
         $election = Election::withoutGlobalScopes()->findOrFail($election);
 
-        if ($election->state !== 'pending_approval') {
-            return back()->with('error', 'Election is not in pending approval state.');
+        if ($election->currentState() !== ElectionLifecycleState::SubmittedForApproval) {
+            return back()->with('error', 'Election is not awaiting approval.');
         }
 
         try {

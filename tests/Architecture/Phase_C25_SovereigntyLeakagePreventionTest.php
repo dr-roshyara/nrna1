@@ -39,6 +39,7 @@ class Phase_C25_SovereigntyLeakagePreventionTest extends TestCase
             'app/Http/Middleware/EnsureElectionState.php',     // Step 2 will refactor
             'app/Domain/Election/StateMachine/ElectionStateMachine.php', // Step 7 will remove
             'app/Models/Election.php',  // Definition only, not usage
+            'app/Http/Middleware/OperationCapabilityMapper.php', // Comment-only reference (documents what it replaces); makes no authority decisions
         ];
 
         $grep = $this->grepFiles('allowsAction', $this->appPath, ['--include=*.php']);
@@ -195,7 +196,9 @@ class Phase_C25_SovereigntyLeakagePreventionTest extends TestCase
             'app/Domain/Election/StateMachine/ElectionStateMachine.php', // Deprecated
         ];
 
-        $grep = $this->grepFiles('getStateMachine', $this->appPath, ['--include=*.php']);
+        // Match the call syntax only — 'getStateMachineData(...)' (a resolver-backed
+        // projection helper) must not trip this guard on a name-substring match.
+        $grep = $this->grepFiles('getStateMachine(', $this->appPath, ['--include=*.php']);
 
         foreach ($grep as $match) {
             $file = $match['file'];
@@ -229,31 +232,50 @@ class Phase_C25_SovereigntyLeakagePreventionTest extends TestCase
                 return null;
             }
 
-            $parts = explode(':', $line, 3);
-            if (count($parts) < 3) {
+            // Split on grep's ':<line>:' separator, not on every ':' —
+            // Windows drive letters (C:\...) contain a colon in the path itself.
+            if (!preg_match('/^(.+?):(\d+):(.*)$/', $line, $m)) {
                 return null;
             }
 
-            [$file, $lineNum, $content] = $parts;
+            $file = str_replace('\\', '/', trim($m[1]));
+            $base = str_replace('\\', '/', base_path()) . '/';
 
             return [
-                'file' => str_replace(base_path() . '/', '', trim($file)),
-                'line' => (int) $lineNum,
-                'content' => $content,
+                'file' => str_replace($base, '', $file),
+                'line' => (int) $m[2],
+                'content' => $m[3],
             ];
         }, $output));
     }
 
     /**
-     * Helper: find PHP files recursively
+     * Helper: find PHP files recursively.
+     *
+     * Pure PHP — shell `find` differs across platforms and a malformed
+     * exclude expression made it fail silently (scanning zero files).
      */
     private function findPhpFiles(string $path, string $exclude = ''): array
     {
-        $cmd = "find {$path} -name '*.php' -type f";
-        if ($exclude) {
-            $cmd .= " -not {$exclude}";
+        if (!is_dir($path)) {
+            return [];
         }
-        exec($cmd, $files);
+
+        $files = [];
+        $iterator = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS)
+        );
+
+        foreach ($iterator as $file) {
+            if ($file->getExtension() !== 'php') {
+                continue;
+            }
+            if ($exclude !== '' && stripos($file->getFilename(), 'test') !== false) {
+                continue;
+            }
+            $files[] = $file->getRealPath();
+        }
+
         return $files;
     }
 }

@@ -1,20 +1,27 @@
 # Architecture Debt Backlog
 
-**Status:** living · pre-existing architecture-test failures surfaced when the Architecture testsuite was registered (Push A / F-4). **None are in the greenfield Core (Adjudication/Contestation)** — all are legacy. Tracked here as a **separate workstream** so greenfield-Core evaluation stays clean. Triage/own independently.
-**Date:** 2026-06-27 · Source: `php vendor/bin/phpunit --testsuite Architecture` (7 failures + 1 risky).
+**Status:** ✅ **CLEARED (2026-07-06)** — all five items fixed; Architecture suite **131/131 green** (0 failures, 1 legitimate skip). The condition "re-run `--testsuite Architecture` until green, then the full suite becomes a hard CI gate" is now MET.
+**Origin:** pre-existing failures surfaced when the Architecture testsuite was registered (Push A / F-4). None were in the greenfield Core — all legacy. Fixed under the dedicated legacy workstream (2026-07-05/06), separate from Push A/B commits.
+
+| ID | Failing test | Resolution (2026-07-05/06) |
+|----|--------------|----------------------------|
+| **AD-001** ✅ | `CommitteeDomainPurityTest` | `CommitteeStructureId` → pure-PHP ULID generator; `CommitteeSlug` → pure-PHP slugify. `Illuminate\Support\Str` removed from Membership Domain layer. |
+| **AD-002** ✅ | `ElectionStateMachineConsistencyTest` | `APPLY_CANDIDACY: 'apply_candidacy'` added to `resources/js/Constants/ElectionActions.ts` (14→15, matches PHP enum). |
+| **AD-003** ✅ | `ElectionLifecycleStateConsistencyTest` (×2) | Tests asserted the stale `state` cache column; per the enum docblock the ENGINE is sovereign. Tests now assert `currentState()->value`. Engine logic was correct. |
+| **AD-004** ✅ | `Phase_C25_SovereigntyLeakagePreventionTest` (×3) | The `C:0` suspicion was CONFIRMED — `grepFiles()` split on `:` broke on Windows drive letters, and `findPhpFiles()`'s malformed `find` exclude silently scanned ZERO files. Both helpers rewritten in pure PHP. The repaired guards then exposed REAL findings, all fixed: hardcoded `'not eligible'` vocabulary purged from 8 controllers; `getStateMachineData` name-substring false-positive (pattern now matches call syntax); comment-only `allowsAction` reference documented; **and a real business bug — `AdminElectionController::approve()/reject()` compared `state !== 'pending_approval'`, a value not in the lifecycle enum, so admin approval always short-circuited** — fixed via `currentState() === ElectionLifecycleState::SubmittedForApproval`. |
+| **AD-005** ✅ | `VocabularyProhibitionTest` (risky) | Empty-directory early-return replaced with `markTestSkipped()` — no more assertion-less pass. |
+
+**Bonus fix (same sweep):** `MiddlewareExecutionOrderTest` 3 failures — all stale pre-Laravel-11 test assumptions (TenantContext is route-alias by design; `/dashboard` is public by design; `csrf_token()` needs a request first). Tests corrected; 9/9 green.
+
+## Lessons recorded
+- The detectors themselves were platform-broken and created **false confidence** — guards reported "OK" while checking almost nothing. Repairing them immediately caught a real business defect. Architecture tests are executable governance, not documentation.
+- Behaviour tests can fail in the opposite direction: implementation correct, test assumptions stale. Both directions need the same discipline: verify, then fix the wrong side.
+
+## Open items
 
 | ID | Failing test | Issue | Owner |
 |----|--------------|-------|-------|
-| **AD-001** | `CommitteeDomainPurityTest::test_domain_layer_has_no_framework_dependencies` | `Membership/Domain/Committee/CommitteeStructureId.php` and `ValueObjects/CommitteeSlug.php` import `Illuminate\` (domain-purity violation) | Membership |
-| **AD-002** | `ElectionStateMachineConsistencyTest::test_frontend_contains_all_php_enum_actions` | Frontend `ElectionActions.ts` missing `apply_candidacy` action — PHP↔TS enum drift | Election/UI |
-| **AD-003** | `ElectionLifecycleStateConsistencyTest::computes_counting_state` + `computes_voting_active_state` | Lifecycle engine does not compute `counting`/`voting_active` from the voting window (2 tests) | Election |
-| **AD-004** | `Phase_C25_SovereigntyLeakagePreventionTest` (×3) | new `allowsAction()` call-site (`C:0`); hardcoded denial reason `'not eligible'` in `Admin/VotingSecurityController.php`; new `getStateMachine()` call-site (`C:0`) — note `C:0` may indicate a detector false-positive to verify | Election/Governance |
-| **AD-005** | `VocabularyProhibitionTest::test_layer3_no_authority_vocabulary` | risky — performs no assertions (test needs a real assertion) | Governance |
-
-## Rules
-- These are **not** greenfield-Core regressions; do **not** mix into Push A/B commits.
-- The greenfield fitness tests (`GreenfieldCoreArchitectureTest`) are **green** — the Architecture suite registration is valuable precisely because it surfaced this legacy debt.
-- Fix under dedicated AD-### commits with the owning context; re-run `--testsuite Architecture` until green, then the full suite becomes a hard CI gate.
+| **AD-006** | `Tests\Feature\Membership\OutboxIntegrationTest` (×3 errors) | `FeeTestFactory` passes `Membership\Domain\ValueObjects\TenantId` where `Fee::create()` expects `Shared\Domain\ValueObjects\TenantId` — legacy test-support drift after TenantId consolidation. Pre-existing (git-stash-verified 2026-07-06 during Push B step 5; NOT caused by the relay refactor). | Membership |
 
 ---
-*Architecture Debt Backlog — 5 items (AD-001..AD-005, 7 failing + 1 risky tests) — all PRE-EXISTING legacy, none in greenfield Core. Separate workstream.*
+*Architecture Debt Backlog — AD-001..AD-005 ALL FIXED (2026-07-05/06); Architecture suite green (133/133 as of 2026-07-06 incl. EventRegistryCompleteness); AD-006 opened (legacy Membership test factory, pre-existing).*

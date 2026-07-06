@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Contexts\Membership\Domain\Committee\ValueObjects;
 
 use App\Contexts\Membership\Domain\Committee\Exceptions\InvalidCommitteeSlugException;
-use Illuminate\Support\Str;
 
 final readonly class CommitteeSlug
 {
@@ -19,7 +18,7 @@ final readonly class CommitteeSlug
 
     public static function fromString(string $input): self
     {
-        $normalized = Str::slug($input);
+        $normalized = self::slugify($input);
 
         if ($normalized === '') {
             throw InvalidCommitteeSlugException::empty();
@@ -33,7 +32,21 @@ final readonly class CommitteeSlug
 
     public static function fromName(string $name): self
     {
-        return self::fromString(Str::slug($name));
+        return self::fromString($name);
+    }
+
+    // Pure-PHP slug — the domain layer must not depend on Illuminate\Support\Str.
+    private static function slugify(string $value): string
+    {
+        $transliterated = @iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', trim($value));
+        if ($transliterated !== false) {
+            $value = $transliterated;
+        }
+
+        $value = strtolower($value);
+        $value = preg_replace('/[^a-z0-9]+/', '-', $value) ?? '';
+
+        return trim($value, '-');
     }
 
     public function value(): string

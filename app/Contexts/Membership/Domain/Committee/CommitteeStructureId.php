@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Contexts\Membership\Domain\Committee;
 
-use Illuminate\Support\Str;
 use InvalidArgumentException;
 
 /**
@@ -25,7 +24,23 @@ final class CommitteeStructureId
 
     public static function generate(): self
     {
-        return new self((string) Str::ulid());
+        // Pure-PHP ULID (Crockford base32): 48-bit ms timestamp + 80 bits randomness.
+        // Domain layer must not depend on Illuminate\Support\Str.
+        $alphabet = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
+
+        $time = (int) (microtime(true) * 1000);
+        $timePart = '';
+        for ($i = 0; $i < 10; $i++) {
+            $timePart = $alphabet[$time % 32] . $timePart;
+            $time = intdiv($time, 32);
+        }
+
+        $randomPart = '';
+        for ($i = 0; $i < 16; $i++) {
+            $randomPart .= $alphabet[random_int(0, 31)];
+        }
+
+        return new self($timePart . $randomPart);
     }
 
     public static function fromString(string $value): self

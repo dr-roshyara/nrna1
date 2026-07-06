@@ -13,11 +13,13 @@ class MiddlewareExecutionOrderTest extends TestCase
     /**
      * Test web middleware group contains custom middleware.
      *
-     * CRITICAL: Order must be:
+     * CRITICAL (post Laravel 11 migration — see bootstrap/app.php):
      * 1. Laravel's default web middleware (session, csrf, etc)
      * 2. SetLocale (must run after session is started)
      * 3. HandleInertiaRequests (must run after locale is set)
-     * 4. TenantContext (must run last to access session data)
+     * 4. TenantContext is deliberately NOT in the web group — it is route
+     *    middleware (alias 'tenant') with an explicit priority rule:
+     *    StartSession → TenantContext → SubstituteBindings.
      */
     public function test_web_middleware_group_has_custom_middleware_in_order()
     {
@@ -35,10 +37,19 @@ class MiddlewareExecutionOrderTest extends TestCase
             return class_basename(get_class($m));
         }, $webMiddleware);
 
-        // Verify custom middleware are present
+        // Verify custom middleware are present in the web group
         $this->assertContains('SetLocale', $middlewareClassNames);
         $this->assertContains('HandleInertiaRequests', $middlewareClassNames);
-        $this->assertContains('TenantContext', $middlewareClassNames);
+
+        // TenantContext must NOT be blanket web middleware — it is applied per
+        // route via the 'tenant' alias so its priority rule can order it
+        // between StartSession and SubstituteBindings.
+        $this->assertNotContains('TenantContext', $middlewareClassNames,
+            'TenantContext must stay route-level (alias), not web-group middleware');
+
+        $aliases = $router->getMiddleware();
+        $this->assertArrayHasKey('tenant', $aliases);
+        $this->assertEquals(\App\Http\Middleware\TenantContext::class, $aliases['tenant']);
     }
 
     /**
@@ -58,25 +69,30 @@ class MiddlewareExecutionOrderTest extends TestCase
     }
 
     /**
-     * Test authentication middleware runs before tenant context.
+     * Test the middleware chain tolerates both guests and authenticated users.
+     *
+     * /dashboard is deliberately public: ElectionManagementController::dashboard
+     * renders the Welcome page for guests (it doubles as the landing page).
+     * The meaningful ordering property is that TenantContext and the rest of
+     * the chain do not crash when no authenticated user / org context exists.
      */
     public function test_authentication_middleware_runs_before_tenant_context()
     {
-        // Without authentication
+        // Without authentication: Welcome page renders (200) — no crash from
+        // tenant/session middleware running for a guest.
         $response1 = $this->get('/dashboard');
-        // Should not have access (401/302 redirect)
-        $this->assertTrue(
-            in_array($response1->status(), [302, 401]),
-            'Unauthenticated request should be redirected'
-        );
+        $response1->assertOk();
 
-        // With authentication
+        // With authentication: resolver runs (200 render or 302 role redirect),
+        // never an auth failure or middleware crash.
         $user = User::factory()->create();
         $this->actingAs($user);
 
         $response2 = $this->get('/dashboard');
-        // Should have access (200)
-        $this->assertNotEquals(401, $response2->status());
+        $this->assertTrue(
+            in_array($response2->status(), [200, 302]),
+            "Authenticated dashboard request should render or redirect, got {$response2->status()}"
+        );
     }
 
     /**
@@ -99,13 +115,19 @@ class MiddlewareExecutionOrderTest extends TestCase
 
     /**
      * Test CSRF token is available for forms.
+     *
+     * csrf_token() reads from the session, which only exists after a request
+     * has run through StartSession — calling it before any request returns
+     * null in Laravel 11 tests.
      */
     public function test_csrf_token_is_available()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        // Token should be available
+        // Run a request so StartSession boots the session store
+        $this->get('/dashboard');
+
         $token = csrf_token();
         $this->assertNotNull($token);
         $this->assertNotEmpty($token);
