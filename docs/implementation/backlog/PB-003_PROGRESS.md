@@ -7,13 +7,13 @@
 ### Capability-group progress (PRIMARY view)
 ```text
 Port Layer        ██████████ 100%  (C1 ✔)
-Infrastructure    ███████░░░  67%  (migration + model ✔ C2 · wrapper pending C3)
+Infrastructure    ██████████ 100%  (migration + model ✔ C2 · wrapper ✔ C3)
 Registry          ░░░░░░░░░░   0%  (C4)
 Commands          ░░░░░░░░░░   0%  (C5)
-Testing           ████░░░░░░  40%  (2/5 groups: unit ✔ · feature-persist ✔)
+Testing           ██████░░░░  60%  (3/5 groups: unit ✔ · feature-persist ✔ · feature-consume ✔)
 Documentation     ██░░░░░░░░   partial
 ```
-Secondary (derived backing count): **8 / 18 WBS**.
+Secondary (derived backing count): **10 / 18 WBS**.
 
 ### C1 Implementation Review (gate result)
 PASS · 0 Critical · 0 Major · 2 Minor (accepted, no action): (m1) IDD called InboxOutcome a "VO" — implemented as enum (correct DDD form for a closed set); (m2) InboxMessage.payload typed `array` per D-08. **Accepted for C2: YES.**
@@ -21,9 +21,9 @@ PASS · 0 Critical · 0 Major · 2 Minor (accepted, no action): (m1) IDD called 
 ## Executable process state (hooks/sessions must respect this)
 
 ```text
-Current commit: PB-003-C3 · Current step: 4 (RED) — next session
-Allowed next:  C3 RED (Inbox wrapper consume tests — 7 scenarios)
-Forbidden:     starting C4+, skipping RED, doc commits before code commit
+Current commit: PB-003-C4 · Current step: 4 (RED) — next session
+Allowed next:  C4 RED (InboxHandlerRegistry tests + container wiring)
+Forbidden:     starting C5+, skipping RED, doc commits before code commit
 ```
 
 ## Review checkpoints (ticket-boundary reviews — NOT per commit)
@@ -40,7 +40,7 @@ Forbidden:     starting C4+, skipping RED, doc commits before code commit
 |--------|-------------------|----------|--------|----------|
 | PB-003-C1 | Port package (6 pure-PHP classes) + unit tests | 1h | 25m ✔ a421c2ef7 | `git revert <hash>` → prior suite green (no consumers yet) |
 | PB-003-C2 | `inbox_events` migration + `InboxEvent` model | 45m | ~30m ✔ cec36ee07 | revert → table dropped, nothing references it |
-| PB-003-C3 | `Inbox` wrapper + consume tests (7 scenarios) | 2h | — | revert → port remains, no runtime path uses wrapper yet |
+| PB-003-C3 | `Inbox` wrapper + consume tests (7 scenarios) | 2h | ~40m ✔ 8930f47fd | revert → port remains, no runtime path uses wrapper yet |
 | PB-003-C4 | `InboxHandlerRegistry` + container wiring | 45m | — | revert → wrapper testable via direct construction |
 | PB-003-C5 | `inbox:redrive` + scheduling + config + tests | 1.5h | — | revert → parked rows wait (no data loss; redrive is additive) |
 | PB-003-C6 | Architecture tests (port purity, single-writer) | 45m | — | revert → guards only |
@@ -81,7 +81,7 @@ Forbidden:     starting C4+, skipping RED, doc commits before code commit
 **2. Infrastructure (Shared\Infrastructure\Inbox)** *(C2, C3)*
 - 2.1 `inbox_events` migration (UNIQUE event_id+consumer_context, D-03) ✔ (C2)
 - 2.2 `InboxEvent` model ✔ (C2)
-- 2.3 `Inbox` wrapper (txn: dedupe-insert → handle → classify → mark) ✘
+- 2.3 `Inbox` wrapper (txn: dedupe-insert → handle → classify → mark) ✔ (C3)
 
 **3. Registry** *(C4)*
 - 3.1 `InboxHandlerRegistry` ✘
@@ -92,7 +92,7 @@ Forbidden:     starting C4+, skipping RED, doc commits before code commit
 
 **5. Testing (RED first, every block)**
 - 5.1 unit: message + classification *(C1)* ✔ · registry *(C4)* ✘
-- 5.2 feature: consume semantics (7 scenarios per IDD §11-3) *(C3)* ✘ · persistence *(C2)* ✔
+- 5.2 feature: consume semantics (7 scenarios per IDD §11-3) *(C3)* ✔ · persistence *(C2)* ✔
 - 5.3 feature: re-drive (4 scenarios) *(C5)* ✘
 - 5.4 architecture: port purity + single-writer scan *(C6)* ✘
 - 5.5 regression gates (Arch suite · Adjudication · outbox) *(every commit)* ✘

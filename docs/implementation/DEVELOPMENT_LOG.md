@@ -144,3 +144,26 @@ Note
 - PB-003-C2 = commit complete (DoD met). PB-003 TICKET stays In Development — ticket reaches Verified only when all 14 Exit Criteria pass (wrapper/registry/redrive/arch-tests pending). "C2 Verified" in review = commit-level, not ticket-level.
 Next step
 - PB-003-C3 RED: Inbox wrapper consume tests (7 scenarios) — next session (one-step discipline)
+
+---
+
+## 2026-07-06 (session 7)
+
+### PB-003-C3 — Inbox wrapper
+Completed
+- PB-003-C3 (8930f47fd): Inbox wrapper — consume() dedupe-claim → handler → classify, one DB::transaction (mirrors OutboxEventProcessor, ER-03)
+- config/inbox.php (park_retry/deadline; D-05 pattern) — landed in C3, its first consumer (sequencing clarification from IDD C5 slot; recorded)
+Tests
+- RED: 7 tests / 7 errors (Inbox not found)
+- GREEN: consume 7 + persistence 6 = 13 / 36 assertions / 0 failures (all 7 §11-3 scenarios: processed · duplicate · CausalPrecondition→parked · IdempotentReplay→processed · Permanent→dead+alert · transient→rollback+rethrow · existing-terminal short-circuit)
+- Capability gates: greenfield PHPStan clean · Architecture Fitness Tests 133/133 · outbox regression 16/16
+- Engineering gate (ad-hoc max on Shared): NOT run — Engineering Improvement class, ENG-002 (ER-03)
+Engineering observation
+- none new (ENG-002 already tracks Shared PHPStan-max; wrapper is within that scope)
+Decision
+- none new to Decision Log; sequencing clarification (config in C3) recorded in commit + tracker
+Progress
+- PB-003 capability: Port 100% · Infrastructure 100% · Testing 60% (secondary 10/18 WBS) · EPIC-001 27/103 = 26% (scoped)
+- Exit Criteria: 4/14 (port · persistence · wrapper · [C1 review])
+Next step
+- PB-003-C4 RED: InboxHandlerRegistry tests + container wiring

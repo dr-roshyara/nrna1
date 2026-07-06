@@ -10,7 +10,7 @@
 |--------|-------|-----------|--------------------|-----|------|------|-----------|--------|--------------|
 | PB-001 | Event Registry | **Verified** | `██████████` 100% | 8/8 | S | Low | — | election-audit | 2026-07-06 |
 | PB-002 | Relay Registry | **Verified** | `██████████` 100% | 9/9 | M | Low | PB-001 | election-audit | 2026-07-06 |
-| PB-003 | Inbox / Deduplication | **In Development** (C2 ✔ cec36ee07) | `████░░░░░░` 44% (Port✔ Infra 67%) | 8/18 | L | Medium (no arch uncertainty) | PB-001 ✔ PB-002 ✔ | feature/pb003 | 2026-07-06 |
+| PB-003 | Inbox / Deduplication | **In Development** (C3 ✔ 8930f47fd) | `██████░░░░` 56% (Port✔ Infra✔) | 10/18 | L | Medium (no arch uncertainty) | PB-001 ✔ PB-002 ✔ | feature/pb003 | 2026-07-06 |
 | PB-004 | Election Reaction | Designed | 0% | 0/22 *(est.)* | XL | High | PB-003 | — | 2026-07-06 |
 | PB-005 | Contestation Reaction + infra | Designed | 0% | 0/24 *(est.)* | XL | High | PB-003, PB-004 | — | 2026-07-06 |
 | PB-006 | Integration Tests IT-1..IT-8 | Designed | 0% | 0/12 *(est.)* | L | Medium | PB-004, PB-005 | — | 2026-07-06 |
@@ -18,7 +18,7 @@
 
 **Blocked flag:** none currently. (A ticket is *Blocked* only when work SHOULD proceed but cannot — unmet dependency at its turn, or external blocker. PB-004..007 are simply not yet at their turn.)
 
-**Derived epic progress: 25 / 103 WBS items = 24%** *(estimated counts marked; recomputed as each IDD replaces its estimate)*
+**Derived epic progress: 27 / 103 WBS items = 26%** *(estimated counts marked; recomputed as each IDD replaces its estimate)*
 
 ## Dependency chain (strict)
 
