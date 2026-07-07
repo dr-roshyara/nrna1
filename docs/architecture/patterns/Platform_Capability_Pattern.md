@@ -14,7 +14,7 @@
 A **Platform Capability** is a **reusable architectural capability consumed by multiple bounded contexts**, owned centrally so no context reinvents it. State it on two orthogonal axes — **never conflate them** (PGP-01):
 
 - **Architectural role:** *Platform Capability* (what it is to the system).
-- **DDD classification:** what it is in DDD terms (typically a Generic/Supporting Technical Subdomain), realized as Shared Infrastructure + a thin Shared Kernel / Published Language.
+- **DDD classification:** what it is in DDD terms (typically a Generic/Supporting Technical Subdomain), realized as Shared Infrastructure + a thin Shared Kernel, exposed to consumers via the **appropriate DDD integration pattern** — Published Language, Open Host Service, Customer/Supplier, or Conformist (do not presume Published Language; validated against Notification + Identity).
 
 A Platform Capability is **not** a bounded context, **not** a core/business subdomain, and holds **no business decisions**.
 
@@ -26,14 +26,14 @@ Each instance document (`<Name>_Platform_Architecture.md`) contains exactly thes
 
 1. **Purpose** — what the capability is, for whom.
 2. **Business Problem** — the business/constitutional need it serves. Start here, never with the technology; the capability is the *solution*, not the goal.
-3. **Strategic Context** — where it sits in the domain landscape; which contexts consume it; the integration pattern.
+3. **Strategic Context** — where it sits in the domain landscape; which contexts consume it; **name the DDD integration pattern** (Customer/Supplier · Open Host Service · Published Language · Conformist) — do not assume one.
 4. **DDD Classification** — role vs classification, stated separately (§1).
 5. **Architectural Role & Boundaries** — what it owns and what it never owns.
 6. **Ownership Matrix** — one owner per responsibility, using the disposition vocabulary (§3).
 7. **Invariant Catalog** — every invariant classified (§4), each with owner · preserver · verifier · **host of executable architecture** (§5).
 8. **Extension Model** — how a new consumer is added **without modifying the capability** (Open/Closed): the extension point(s) and registration mechanism.
 9. **Architecture Fitness Functions** — the executable guarantees, each mapped to an invariant and hosted by its owner (§5); planned RED/GREEN/regression before implementation.
-10. **Operational Model** — the capability's **Failure Model**, **Recovery Model**, **Scheduling/Execution Model**, and **Observability Model** — described as *categories*; state what is architectural vs tunable. *(Informative note: capabilities fill these differently — a delivery capability may use retry/park/dead-letter/replay; a query capability may use timeout/fallback/cache-invalidation; a notification capability may use fan-out/suppression. The pattern mandates the categories, not any specific semantics.)*
+10. **Operational Model** — the capability's **Failure Model**, **Recovery Model**, **Timing & Lifecycle Model** (scheduling, execution cadence, expiry, batching, session/message lifecycle), and **Observability Model** — described as *categories*; state what is architectural vs tunable. *(Informative note: capabilities fill these differently — a delivery capability may use retry/park/dead-letter/replay + redrive cadence; a query capability may use timeout/fallback/cache-invalidation; an identity capability may use token/session expiry; a notification capability may use fan-out/suppression + digest batching. The pattern mandates the categories, not any specific semantics.)*
 11. **ADR Traceability** — every ADR the capability realizes or produces, and the PGP principles it applies.
 12. **Evolution Model** — how it grows without redesign; deferred decisions tracked as debt/future ADRs.
 
@@ -93,3 +93,17 @@ A preserver hosting an owner's guarantee is an **ownership mismatch** (architect
 4. Plan (do not write) the fitness functions per §5, then — only after exit review — implement RED → GREEN.
 
 **Reference instance:** `../Messaging_Platform_Architecture.md`, the first Platform Capability.
+
+---
+
+## 8. Validation & Stability
+
+**Status: STABLE.** A pattern is proven by *multiple conceptual applications*, not one implementation. This pattern was walked, section by section, against two deliberately different hypothetical capabilities — **Notification** (fan-out/channels/templates) and **Identity** (authn/authz/sessions/tokens) — as thought experiments (no implementation).
+
+- **Survived both** with all twelve sections fitting naturally; **no section added or removed** (the pattern is lean, not an encyclopedia).
+- **Two issues appeared in *both* walkthroughs** (the bar for refinement) and were applied: (1) do not presume *Published Language* — name the DDD integration pattern (§1, §2.3); (2) generalize the timing category from "Scheduling/Execution" to **Timing & Lifecycle** (§2.10), since Identity expresses it as session/token expiry, not scheduling.
+- Capability-specific concerns surfaced (privacy/PII, quotas/rate-limits) are captured by the existing **Invariant Catalog** (constitutional/operational) — **no new abstraction required**.
+
+**Specializations:** Messaging Platform = the **first validated specialization**. Notification/Identity were validation thought experiments only (not commitments to build).
+
+**Confidence:** capability-agnostic. Further refinement only if a *real* future capability reveals a structural gap both a second capability shares (§6 discipline).

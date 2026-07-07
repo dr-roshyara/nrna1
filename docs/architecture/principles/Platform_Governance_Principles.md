@@ -1,8 +1,9 @@
-# Platform Governance Principles (PGP)
+# Architecture Principles — Chapter P: Platform Capabilities (PGP-01…05)
 
-**AKB layer:** L-Principles (Architecture Principles) · **Status:** enduring principles (Living register) · **2026-07-07**
+**AKB layer:** L-Principles · **Status:** a **chapter of the one Architecture Principles constitution**, not a separate constitution · Living · **2026-07-07**
 **Scope:** governance of **Platform Capabilities** (reusable infrastructure consumed by multiple bounded contexts).
-**Relationship to existing principles:** these operate *under* the **Architecture Principles (Release 1.0)** software-architecture constitution (principles 1–10). They are **namespaced `PGP-nn`** deliberately, to avoid collision with that numbered list (see Governance Integration Report, finding G-2). They are **principles**, not decisions — enduring rules that individual **ADRs reference** (an ADR records a decision *in context*; a principle endures across decisions).
+**One constitution, many chapters.** These are **not** a second constitution. They are the **Platform Capabilities chapter** of the single **Architecture Principles** constitution (whose Release-1.0 principles 1–10 remain the general chapter). `PGP-nn` is the chapter's local numbering (avoids collision with 1–10); it does not imply a parallel authority. Future concerns (security, testing, operations) become **further chapters** of the *same* constitution — never new constitutions.
+**Principles, not decisions.** Enduring rules that individual **ADRs reference** (an ADR records a decision *in context*; a principle endures across decisions).
 
 > **Principle vs Decision.** A *principle* states an enduring architectural rule. A *decision (ADR)* applies a principle to a specific context. The Messaging `ADR-MP` series *applies* these principles to the Messaging Platform; future capabilities apply the same principles via their own ADRs.
 

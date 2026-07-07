@@ -95,12 +95,17 @@ An explicit **knowledge hierarchy** overlaid on the document *levels* of §1 (§
 ### Registry additions
 | Document | Layer | Level | Lifecycle |
 |----------|-------|-------|-----------|
-| Platform Governance Principles (PGP-01…05) | L2 | L1 (constitution-adjacent) | Living register |
-| Platform Capability Pattern | L3 | L3 (playbook/pattern) | Living |
-| Messaging Platform Architecture | L4 | L3 | Living (first capability) |
+| Architecture Principles — Platform Capabilities **chapter** (PGP-01…05) | L2 | L1 (a chapter of the one Architecture Principles constitution — not a separate constitution) | Living |
+| Platform Capability Pattern | L3 | L3 (pattern) | Living — **STABLE** (validated vs Notification + Identity) |
+| Messaging Platform Architecture | L4 | L3 | Living (first **validated** specialization) |
 | ADR-MP-01…05 | (decisions) | L4 | Living |
 
-> **Version-tag note (G-1):** the Messaging document was drafted as "AKB Release 1.2," which **collides** with §4's roadmap (v1.2 = operational-BC migration). Release numbering for this governance addition is **pending ARB ratification** — see `Governance_Integration_Report.md`.
+### Governance rules for this layer (fold-in — keep the AKB lean)
+- **Anti-proliferation (adopted 2026-07-07):** a new *permanent* governance artifact is justified only if it (1) eliminates an existing artifact, (2) simplifies the architecture, (3) generalizes knowledge already proven by multiple examples, or (4) directly supports implementation. Otherwise it does not become permanent. Transition/working artifacts are retired once their knowledge is folded in.
+- **Governance lifecycle for L2–L4 (authoritative docs):** change via **Proposal → Review → Ratification → Publication** (not propose→merge).
+- **One constitution, many chapters:** new principle areas (security, testing, ops) become *chapters* of the Architecture Principles constitution — never new constitutions.
+
+> **Open (G-1), pending ARB:** "AKB Release 1.2" on the Messaging docs collides with §4's roadmap (v1.2 = operational-BC migration); release numbering for this governance addition is **pending ratification** (tag neutralized meanwhile). *(The transition-only Governance Integration Report has been retired; its durable knowledge is folded here, into the PGP chapter, the Pattern §8, and ADR-MP.)*
 
 ---
 *Architecture Knowledge Base v1.0 — logical overlay: 4 documentation levels (Constitution/Handbook/Playbooks/Living); lifecycle classification (Immutable/Frozen/Living/Generated/Historical) with registry; AKB versioning; maturity model (currently Level 6 ◐); traceability chain; knowledge-map reading order. Handbook is the L2 navigation center. Physical re-foldering deferred to AKB v1.1 (single reviewed migration).*
