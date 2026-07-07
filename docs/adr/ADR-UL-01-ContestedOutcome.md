@@ -27,7 +27,7 @@ Adopt the concept the certified vocabulary already names. **BDR v1.1 (immutable)
 *(adopted as a standard section for all ADR-UL / ADR-PL — makes ownership explicit, prevents boundary erosion.)*
 - **Owned by:** Contestation BC (the `Challenge` aggregate and its `ContestedOutcomeRef` VO).
 - **Consumed by:** Adjudication (a `Determination` inherits the Challenge's `ContestedOutcomeRef`), Election (PB-004 reads `electionId` from it).
-- **Carried by:** `ChallengeRaised` (Contestation — *internal* domain event, evolved in place) · **Published through:** `DeterminationIssued v2` (Adjudication — the cross-context integration event) — see ADR-PL-01.
+- **Carried by:** `ChallengeRaised` (Contestation — *internal* domain event, evolved in place) · **Published through:** `DeterminationIssued` payload **schema version 2** (Adjudication — same event, additive; the cross-context integration event) — see ADR-PL-01.
 - **Referenced across contexts as strings** (ADR-T16); each context reconstructs its own local VO.
 
 ## Consequences

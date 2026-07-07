@@ -47,6 +47,22 @@ Per ADR-T5, version dispatch lives INSIDE the hydrator (payload `schema_version`
 
 When vNext ships: hydrator supports {vNext, vCurrent}; rows older than vPrevious must be upcast/migrated before the old branch is deleted. Unlimited version support is forbidden — it silently accumulates untested legacy paths. Breaking changes are a NEW event name, not a new version (Blueprint §12).
 
+### Decision tree — what kind of published-language change is this? (ARB, 2026-07-08)
+
+```
+A published-language change to event E:
+├─ BREAKING (removes/renames/repurposes a field; changes meaning of an existing field)
+│     → NEW published event NAME (E2). Not a version bump. (ADR-T5 TP-3)
+│
+└─ ADDITIVE + backward-compatible (adds an OPTIONAL field; old payloads still valid)
+      → SAME event E, SAME class/name.
+        · increment payload `schema_version` (absent = 1)
+        · hydrator supports vCurrent + vPrevious (old payload → new field null/default)
+        · producer stamps the new schema_version
+```
+
+**Terminology:** say **"E — payload schema version N"**, never "E vN" (ambiguous — it reads like a new class). The *business event* is unchanged; only its *payload schema* evolves. Reference application: `DeterminationIssued` payload schema version 2 adds optional `contestedOutcome` (ADR-PL-01).
+
 ## Guarantees (test-enforced)
 
 - Registry contract: `tests/Unit/Contexts/Shared/Outbox/EventHydratorRegistryTest.php`
