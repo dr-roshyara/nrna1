@@ -510,6 +510,24 @@ If you see `HTTP 302 Found` with HTML response:
 
 ---
 
+# 📘 Developer Guide — Definition of Done (STANDING RULE)
+
+**Every implementation step ships with a developer guide. This is part of the Definition of Done — do it without being asked.**
+
+A "step" is a code slice (a `PB-xxx-Cn`-style commit, or any self-contained implementation change). For each step:
+
+1. **Write or update** a developer guide under `developer_guide/<area>/` (e.g. `developer_guide/audit_system/`). One area folder per subsystem/ticket; **one file per step**, numbered for reading order (`00_index.md`, `01_step_...md`, …). Keep an `00_index.md` that maps the steps.
+2. **Ground every snippet in the committed code** — no invented APIs. Match the house voice of the area's existing guides.
+3. **Each guide covers:** purpose · where it fits (layer/namespace) · key files · design decisions (with ADR/D-refs) · how it works (with code) · how to use/extend · testing · pitfalls · a **Traceability** line.
+4. **Honor the invariants** in the docs too: anonymity (ADR-T11 — no voter↔vote linkage in examples), and messaging/business-boundary rules.
+5. **Commit** the guide with the step (or as a paired `docs(<area>): …` commit alongside the code/`-DOC` commit). Update the area `00_index.md`.
+
+**Cadence:** per step, updated as slices land, finalized at ticket certification. Small/mechanical fixes may fold into the nearest step guide rather than a new file — use judgment, but never skip silently.
+
+**Automation:** a `Stop` hook (`.claude/scripts/dev-guide-reminder.sh`) prints a non-blocking reminder when code changed today but no `developer_guide/` file was touched. The reminder is a safety net — the rule above is the obligation.
+
+---
+
 # Planning, Memory and Session Management
 
 ## Principle

@@ -59,6 +59,14 @@
             "command": "bash .claude/scripts/session-log-reminder.sh"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/scripts/dev-guide-reminder.sh"
+          }
+        ]
       }
     ]
   },

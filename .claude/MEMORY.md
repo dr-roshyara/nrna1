@@ -24,5 +24,6 @@
 - Chief-architect review loop: propose → review → apply refinements → freeze. Never start coding before the design artifact (IDD) is approved.
 - TDD is mandatory and literal: RED confirmed before GREEN, every class.
 - One micro-slice per session; stop at the ticket boundary; single NEXT ACTION always defined.
+- **Developer guide per step is Definition of Done** (do NOT wait to be asked): one file per step under `developer_guide/<area>/` (+ `00_index.md`), snippets grounded in committed code, ending with a Traceability line. Standing rule in `.claude/CLAUDE.md`; reminder hook `.claude/scripts/dev-guide-reminder.sh`.
 - Commits reference ticket IDs (`PB-003: ...`). Git identity: `=Dr. Nab Raj Roshyara`.
 - Descriptive filenames always; renaming "Untitled" docs is expected housekeeping.
