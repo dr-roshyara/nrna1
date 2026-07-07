@@ -43,7 +43,10 @@ Implementation Landscape · Implementation Traceability Matrix · Architecture D
 - **ADRs:** `docs/adr/` (domain ADR-001…008; tactical ADR-T log).
 - **Strategic/DDD discovery:** `docs/architecture/design/` (Round 47–50) · `docs/architecture/discovery/` (Round 27–28) · `architecture/strategic/` (Round 6).
 - **Code home:** `app/Contexts/<Context>/{Domain,Application,Infrastructure}`.
-- **AKB structure (4 levels + lifecycle + maturity):** `docs/architecture/Architecture_Knowledge_Base_v1.0.md`.
+- **AKB structure (4 levels + lifecycle + maturity):** `docs/architecture/Architecture_Knowledge_Base_v1.0.md` — see **§8 Architectural Knowledge Layers** (Vision → Strategic DDD → Principles → Patterns → Platform Capabilities → Bounded Contexts → Implementation).
+- **Architecture Principles (enduring):** Release-1.0 ten principles + **Platform Governance Principles** (`docs/architecture/principles/Platform_Governance_Principles.md`, PGP-01…05).
+- **Architecture Patterns:** **Platform Capability Pattern** (`docs/architecture/patterns/Platform_Capability_Pattern.md`).
+- **Platform Capabilities:** **Messaging Platform** (`docs/architecture/Messaging_Platform_Architecture.md`) — first instance; decisions `docs/adr/ADR-MP-Messaging-Platform.md`.
 
 ## The rule
 Every new Level-2+ document **links back into this structure** (parent/related/children) rather than existing in isolation. Frozen decisions change only via ADR + review.

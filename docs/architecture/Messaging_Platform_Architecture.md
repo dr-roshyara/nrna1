@@ -1,7 +1,8 @@
-# Messaging Platform — Architecture (AKB Release 1.2)
+# Messaging Platform — Architecture
 
-**Status:** Instance #1 of `Platform_Capability_Template.md` · **2026-07-07** · pending final ARB sign-off before executable architecture begins.
-**Traceability:** `Messaging_Platform_Strategic_Model.md` · `..._Review.md` · `ADR-MP-01…05` · Blueprint §6/§7/§8 · ADR-T1/T3/T4/T5/T8/T11/T16.
+**AKB layer:** L-Platform-Capabilities (first instance) · **Release tag:** *pending ARB ratification* — "AKB 1.2" collides with the AKB roadmap §4; see Governance Integration Report **G-1**.
+**Status:** Instance #1 of the Platform Capability pattern (`patterns/Platform_Capability_Pattern.md`) · **2026-07-07** · pending final ARB sign-off before executable architecture begins.
+**Traceability:** `Messaging_Platform_Strategic_Model.md` · `..._Review.md` · principles `principles/Platform_Governance_Principles.md` (PGP-01…05) · decisions `../adr/ADR-MP-Messaging-Platform.md` (ADR-MP-01…05) · Blueprint §6/§7/§8 · ADR-T1/T3/T4/T5/T8/T11/T16.
 **Constraint:** this document is design + planning only. No production code, no tests. §9 *plans* the executable architecture; it does not implement it.
 
 ---
@@ -98,7 +99,7 @@ Produces: **ADR-MP-01…05**. Realizes: ADR-T1 (txn), ADR-T3/T5 (outbox/versioni
 ## §13 — Exit Review (Step 5)
 | Exit criterion | Status |
 |----------------|--------|
-| Platform Capability template is reusable (capability-agnostic) | ✔ `Platform_Capability_Template.md` |
+| Platform Capability pattern is reusable (capability-agnostic) | ✔ `patterns/Platform_Capability_Pattern.md` |
 | Messaging is the first specialization (instance of the template) | ✔ this document |
 | Every invariant has exactly one owner | ✔ §7 |
 | Every executable guard has exactly one host (owner-hosts-the-guard) | ✔ §7/§9 (ADR-MP-03) |

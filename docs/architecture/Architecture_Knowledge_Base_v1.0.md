@@ -74,5 +74,33 @@ Handbook (this AKB's L2 center)
    → (research) EBTAE · LIT-A · 38C-15 ruling
 ```
 
+## 8. Architectural Knowledge Layers (governance overlay — 2026-07-07)
+
+An explicit **knowledge hierarchy** overlaid on the document *levels* of §1 (§1 classifies a document's *role*; this classifies its *altitude*, vision → implementation). It organizes existing knowledge — it invents none.
+
+| Layer | What lives here | Existing anchors | New (this release) |
+|-------|-----------------|------------------|--------------------|
+| **L0 Vision** | what the platform is | Portal one-liner · Handbook Part I | — |
+| **L1 Strategic DDD** | boundaries, subdomains, ubiquitous language | Certified Strategic Architecture Landscape · BDR v1.1 · Round 47–50 | Messaging Strategic Model + Review |
+| **L2 Architecture Principles** | enduring rules ADRs reference | Architecture Principles (Release 1.0) 1–10 | **Platform Governance Principles** `principles/Platform_Governance_Principles.md` (PGP-01…05) |
+| **L3 Architecture Patterns** | reusable structural templates | (implicit before now) | **Platform Capability Pattern** `patterns/Platform_Capability_Pattern.md` |
+| **L4 Platform Capabilities** | reusable infra consumed by many BCs | (none before now) | **Messaging Platform** `Messaging_Platform_Architecture.md` (first instance) |
+| **L5 Bounded Contexts** | business contexts | Contestation · Adjudication · Election · Evidence · Appointment · Voting | — |
+| **L6 Implementation** | code, tests, playbooks | `app/Contexts/**` · fitness suites · Playbooks | — |
+
+**Distinction made explicit (this release):** *Architecture Principles* (L2, enduring) are separate from *Architecture Decisions* (ADRs, context-specific). ADRs **reference** principles. The Messaging `ADR-MP` series *applies* PGP-01…05.
+
+**Every future Platform Capability** has a defined home: L1 model+review → L2/L3 (reuse PGP + the pattern) → **L4 as a new instance** → L5 consumers register against it → L6 executable architecture (hosted per PGP-03).
+
+### Registry additions
+| Document | Layer | Level | Lifecycle |
+|----------|-------|-------|-----------|
+| Platform Governance Principles (PGP-01…05) | L2 | L1 (constitution-adjacent) | Living register |
+| Platform Capability Pattern | L3 | L3 (playbook/pattern) | Living |
+| Messaging Platform Architecture | L4 | L3 | Living (first capability) |
+| ADR-MP-01…05 | (decisions) | L4 | Living |
+
+> **Version-tag note (G-1):** the Messaging document was drafted as "AKB Release 1.2," which **collides** with §4's roadmap (v1.2 = operational-BC migration). Release numbering for this governance addition is **pending ARB ratification** — see `Governance_Integration_Report.md`.
+
 ---
 *Architecture Knowledge Base v1.0 — logical overlay: 4 documentation levels (Constitution/Handbook/Playbooks/Living); lifecycle classification (Immutable/Frozen/Living/Generated/Historical) with registry; AKB versioning; maturity model (currently Level 6 ◐); traceability chain; knowledge-map reading order. Handbook is the L2 navigation center. Physical re-foldering deferred to AKB v1.1 (single reviewed migration).*

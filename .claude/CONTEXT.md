@@ -18,7 +18,7 @@ PB-003 (Inbox) → **Platform Capability Certification (D-11 gate)** → PB-004 
 None. PB-003 is Verified/Certified; PB-004 is unblocked (needs its IDD first).
 
 ## Next action (exactly one)
-**AWAIT final ARB sign-off of the Platform Capability governance foundation**, then begin executable architecture RED-first (hosted per ADR-MP-03), **starting with AD-M1** (relocate the anonymity guard to the Constitutional suite) as the first consumer of the new governance. Foundation delivered this session: `Platform_Capability_Template.md` (reusable meta-model) · `Messaging_Platform_Architecture.md` (AKB 1.2, first instance) · `ADR-MP-01…05` (D-12 split into single-question decisions) · exit review passed (§13). **Do NOT start executable tests/code until sign-off; do NOT start PB-004** (which needs its own IDD).
+**AWAIT ARB ratification of the governance integration** (esp. G-1 release numbering + G-2 PGP namespace, per `docs/architecture/Governance_Integration_Report.md`), then begin executable architecture RED-first (hosted per PGP-03/ADR-MP-03), **starting with AD-M1** (relocate the anonymity guard to the Constitutional suite) as the first consumer of the governance. AKB now layered (index §8): L2 Principles = `principles/Platform_Governance_Principles.md` (PGP-01…05) · L3 Patterns = `patterns/Platform_Capability_Pattern.md` · L4 Platform Capabilities = `Messaging_Platform_Architecture.md` (first instance). **Do NOT start executable tests/code until ratification; do NOT start PB-004** (needs its own IDD).
 
 ## Architecture debt (tracked; not blockers)
 - **AD-M1** — relocate the anonymity guard from `InboxMessagingArchitectureTest` (C6B property #11) to the **Constitutional** suite (owner-hosts-the-guard, D-12/Q2). Remediate via Finding→ADR→RED→GREEN.
