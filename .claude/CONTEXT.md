@@ -18,7 +18,7 @@ PB-003 (Inbox) → **Platform Capability Certification (D-11 gate)** → PB-004 
 None. PB-003 is Verified/Certified; PB-004 is unblocked (needs its IDD first).
 
 ## Next action (exactly one)
-**PB-004 (Election Reaction) — write the IDD FIRST** (Architecture Review Gate; propose → review → approve before any code). PB-004 consumes the certified Inbox by implementing an `InboxHandler` + registering it — no change to Shared. Carry forward residual risks R-1 (handler txn discipline — candidate guardrail when the first handler lands), R-2 (replay unproven), R-3 (shared-kernel purity test + dead-letter alerting). See `PB-003_Architecture_Readiness_Report.md`.
+**AWAIT ARB approval of the Messaging Platform Strategic Model** (`docs/architecture/Messaging_Platform_Strategic_Model.md`) — Strategic DDD step BEFORE PB-004. It promotes PB-001+PB-002+PB-003 into one Messaging Platform capability and answers ownership/invariant questions (esp. anonymity = constitutional, *preserved* not owned). On approval + answers to Q1–Q5: record the derived decision(s), then write `Messaging_Platform_Architecture.md` (AKB 1.2), then RED-first any platform-wide fitness test, then PB-004 IDD. **Do NOT start PB-004; do NOT create MessagingPlatformArchitectureTest yet.** (Premature D-12 was withdrawn.)
 
 ## Parallel tracks (not active this session)
 - Governance: 38D-02 Capability Relationships (after ARB digests 38D-01)
