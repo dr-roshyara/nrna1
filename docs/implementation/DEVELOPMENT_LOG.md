@@ -191,3 +191,36 @@ Progress
 - Exit Criteria: 5/14 (port · persistence · wrapper · registry · [C1 review])
 Next step
 - PB-003-C5 RED: inbox:redrive command + scheduling + config + re-drive tests
+
+---
+
+## 2026-07-07 (session 9)
+
+### PB-003-C5 — inbox:redrive recovery + InboxExecutionEngine
+Completed
+- PB-003-C5 (ce7f2b99d): InboxExecutionEngine (shared run+classify), Inbox refactored to delegate, RedriveParkedInboxEvents service, inbox:redrive command + everyMinute schedule, parkedDue($asOf) optional param
+- Architect refinements R1 (no God Service — engine extracted), R2 (time injected via reused ClockInterface), R3 (absolute preserved deadline; recovery = same handler/message)
+- D-10 recorded
+Tests
+- RED: 7 tests / 7 errors (service not found)
+- GREEN: redrive 7/14; full Inbox suite 34/84 (C3/C4 regression proof for engine refactor)
+- Capability gates: greenfield PHPStan clean · Architecture Fitness Tests 133/133 · outbox regression 9/18 · command registered
+- NOTE: `artisan inbox:redrive` against DEV db fails (inbox_events not migrated there) — expected; migrating dev forbidden (CLAUDE.md); logic proven by RefreshDatabase feature tests
+### Architecture Validation
+- Patterns REUSED: ClockInterface (existing shared), Registry, Classification, one-txn-per-row (ADR-T1)
+- Patterns EXTENDED: recovery/retry policy (new); execution seam (engine now shared by consume+redrive)
+- Patterns intentionally NOT reused: `Inbox::reattempt()` (rejected — God Service); new Clock port (rejected — duplication)
+- Architectural risks discovered: none
+- Architectural assumptions introduced: cross-message ordering within a consistency boundary is OUT OF SCOPE for PB-003 (per-message idempotency only) — future ADR candidate
+- New architectural decisions: D-10 (retry timing owned by redrive; engine extraction; injected time)
+- Potential future ADR candidate: consistency-boundary event ordering (if a context needs ordered delivery)
+### Architectural Regression Check
+- Did this weaken any previously validated property?
+  Bounded-context autonomy: no · Idempotency: no (strengthened — engine is the single classify path) · Event ordering: unchanged (never claimed) · Transaction boundaries: no (row-per-txn preserved) · Open/Closed: no · Hexagonal separation: no (engine=Infra, port stays Application) · Infrastructure independence: no
+  Recovery Review — can recovery produce a business outcome unreachable by normal execution? NO (same handler, same message; only timing differs)
+  Result: no regressions detected.
+Progress
+- PB-003 capability: Port/Infra/Registry/Commands/Testing 100% (secondary 15/18 WBS) · EPIC-001 32/103 = 31%
+- Exit Criteria: 6/14 (port · persistence · wrapper · registry · redrive · C1-review)
+Next step
+- PB-003-C6 RED: inbox architecture tests (port purity + single-writer)

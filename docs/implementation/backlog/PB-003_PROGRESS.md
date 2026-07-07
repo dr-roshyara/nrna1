@@ -9,11 +9,11 @@
 Port Layer        ██████████ 100%  (C1 ✔)
 Infrastructure    ██████████ 100%  (migration + model ✔ C2 · wrapper ✔ C3)
 Registry          ██████████ 100%  (registry + wiring ✔ C4)
-Commands          ░░░░░░░░░░   0%  (C5)
-Testing           ████████░░  80%  (4/5 groups: unit ✔ · persist ✔ · consume ✔ · registry ✔)
+Commands          ██████████ 100%  (inbox:redrive + schedule ✔ C5)
+Testing           ██████████ 100%  (5/5 groups: unit ✔ · persist ✔ · consume ✔ · registry ✔ · redrive ✔)
 Documentation     ██░░░░░░░░   partial
 ```
-Secondary (derived backing count): **13 / 18 WBS**.
+Secondary (derived backing count): **15 / 18 WBS**.
 
 ### C1 Implementation Review (gate result)
 PASS · 0 Critical · 0 Major · 2 Minor (accepted, no action): (m1) IDD called InboxOutcome a "VO" — implemented as enum (correct DDD form for a closed set); (m2) InboxMessage.payload typed `array` per D-08. **Accepted for C2: YES.**
@@ -21,9 +21,9 @@ PASS · 0 Critical · 0 Major · 2 Minor (accepted, no action): (m1) IDD called 
 ## Executable process state (hooks/sessions must respect this)
 
 ```text
-Current commit: PB-003-C5 · Current step: 4 (RED) — next session
-Allowed next:  C5 RED (inbox:redrive command + scheduling + re-drive tests)
-Forbidden:     starting C6+, skipping RED, doc commits before code commit
+Current commit: PB-003-C6 · Current step: 4 (RED) — next session
+Allowed next:  C6 RED (inbox architecture tests: port purity + single-writer scan)
+Forbidden:     starting PB-004, skipping RED, doc commits before code commit
 ```
 
 ## Review checkpoints (ticket-boundary reviews — NOT per commit)
@@ -42,7 +42,7 @@ Forbidden:     starting C6+, skipping RED, doc commits before code commit
 | PB-003-C2 | `inbox_events` migration + `InboxEvent` model | 45m | ~30m ✔ cec36ee07 | revert → table dropped, nothing references it |
 | PB-003-C3 | `Inbox` wrapper + consume tests (7 scenarios) | 2h | ~40m ✔ 8930f47fd | revert → port remains, no runtime path uses wrapper yet |
 | PB-003-C4 | `InboxHandlerRegistry` + container wiring | 45m | ~25m ✔ 3bc0b35dc | revert → wrapper testable via direct construction |
-| PB-003-C5 | `inbox:redrive` + scheduling + config + tests | 1.5h | — | revert → parked rows wait (no data loss; redrive is additive) |
+| PB-003-C5 | `inbox:redrive` + scheduling + config + tests | 1.5h | ~50m ✔ ce7f2b99d | revert → parked rows wait (no data loss; redrive is additive) |
 | PB-003-C6 | Architecture tests (port purity, single-writer) | 45m | — | revert → guards only |
 | PB-003-DOC | progress/dev-log/session/epic-board records (per session end) | 15m | — | revert → docs only |
 
@@ -81,19 +81,19 @@ Forbidden:     starting C6+, skipping RED, doc commits before code commit
 **2. Infrastructure (Shared\Infrastructure\Inbox)** *(C2, C3)*
 - 2.1 `inbox_events` migration (UNIQUE event_id+consumer_context, D-03) ✔ (C2)
 - 2.2 `InboxEvent` model ✔ (C2)
-- 2.3 `Inbox` wrapper (txn: dedupe-insert → handle → classify → mark) ✔ (C3)
+- 2.3 `Inbox` wrapper + `InboxExecutionEngine` (shared run+classify) ✔ (C3/C5)
 
 **3. Registry** *(C4)*
 - 3.1 `InboxHandlerRegistry` ✔ (C4)
 - 3.2 container singleton (AppServiceProvider) ✔ (C4)
 
 **4. Commands** *(C5)*
-- 4.1 `inbox:redrive` + scheduling + `config/inbox.php` ✘
+- 4.1 `inbox:redrive` + scheduling + `config/inbox.php` ✔ (C5 · config in C3)
 
 **5. Testing (RED first, every block)**
 - 5.1 unit: message + classification *(C1)* ✔ · registry *(C4)* ✔
 - 5.2 feature: consume semantics (7 scenarios per IDD §11-3) *(C3)* ✔ · persistence *(C2)* ✔
-- 5.3 feature: re-drive (4 scenarios) *(C5)* ✘
+- 5.3 feature: re-drive (7 scenarios) *(C5)* ✔
 - 5.4 architecture: port purity + single-writer scan *(C6)* ✘
 - 5.5 regression gates (Arch suite · Adjudication · outbox) *(every commit)* ✘
 
