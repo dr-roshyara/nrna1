@@ -33,6 +33,7 @@ Engineering-governance workstream — distinct from capability tickets (PB-xxx).
 |--------|-------|--------|-------|
 | ENG-001 | Process Learning System | Designed | Improvement Log (PI-xxx), retrospectives, metrics/estimate-calibration, Process v1.1 proposals, dashboard refinements (ADR coverage · Current Deliverable · risk reasons). Evidence stash: session-4 cwd bug, C1 est−58%, docs/code-split. |
 | ENG-002 | Shared Infrastructure Static Analysis Alignment | Designed | Bring ALL Shared Infrastructure Eloquent models to PHPStan max **together** (OutboxEvent 7 findings + InboxEvent 11 findings + any siblings). Enforces ER-03. Opened from PB-003-C2 finding: ad-hoc max is inconsistent with the mirror convention + official gate excludes `Shared` ("widen as contexts migrate"). Evidence: no ADR/Blueprint mandates Shared exclusion — it is current gate scope, an engineering observation, not an architectural decision. |
+| ENG-003 | `*Ref` Value-Object naming consistency sweep | Backlog | After `TargetRef → ContestedOutcomeRef` (ADR-UL-01), review sibling reference VOs (`RaiserStandingRef`, and any `*Ref` in other contexts) for naming/shape consistency (ER-03). Sweep only — no behavior change; batch under EPIC-000. Opened from PB-004 step-1 ARB review (2026-07-08). |
 
 ## Program Health
 

@@ -14,6 +14,8 @@ namespace App\Contexts\Contestation\Domain\Challenge;
  *
  * Reference ONLY — carries no vote content; `type`/`targetId` reference a
  * Result or Determination, never a vote or voter (anonymity — ADR-T11).
+ *
+ * @immutable
  */
 final readonly class ContestedOutcomeRef
 {
