@@ -18,6 +18,15 @@
             "command": "bash .claude/scripts/db-safety-check.sh \"$CLAUDE_TOOL_INPUT\""
           }
         ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/scripts/discipline-gate-reminder.sh \"$CLAUDE_TOOL_INPUT\""
+          }
+        ]
       }
     ],
     "PostToolUse": [

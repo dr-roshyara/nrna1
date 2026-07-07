@@ -25,5 +25,6 @@
 - TDD is mandatory and literal: RED confirmed before GREEN, every class.
 - One micro-slice per session; stop at the ticket boundary; single NEXT ACTION always defined.
 - **Developer guide per step is Definition of Done** (do NOT wait to be asked): one file per step under `developer_guide/<area>/` (+ `00_index.md`), snippets grounded in committed code, ending with a Traceability line. Standing rule in `.claude/CLAUDE.md`; reminder hook `.claude/scripts/dev-guide-reminder.sh`.
+- **Development discipline is fixed: Business → DDD → Architecture → Tests → Implementation.** Never jump to a test/class before the DDD model + Architecture Decision that justifies it. Discovered gap: `Finding → Architecture Decision → RED → GREEN → Certification`. Architecture produces tickets; tickets never accrete into architecture (model the platform capability first). Standing rule in `.claude/CLAUDE.md`; tripwire hook `.claude/scripts/discipline-gate-reminder.sh`.
 - Commits reference ticket IDs (`PB-003: ...`). Git identity: `=Dr. Nab Raj Roshyara`.
 - Descriptive filenames always; renaming "Untitled" docs is expected housekeeping.

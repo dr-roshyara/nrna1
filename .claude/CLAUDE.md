@@ -510,6 +510,30 @@ If you see `HTTP 302 Found` with HTML response:
 
 ---
 
+# 🧭 Development Discipline — Business → DDD → Architecture → Tests → Implementation (STANDING RULE)
+
+**Every change follows this order. Do not skip upstream stages. Do not jump to a test or to code before the stage that justifies it exists.**
+
+```
+Business need  →  DDD model (ubiquitous language, boundaries, ownership)  →
+Architecture (decision recorded)  →  Tests (executable architecture / TDD RED)  →  Implementation (GREEN)
+```
+
+Concretely:
+1. **Business first** — know the business/constitutional need a change serves. No change is "just technical" if it touches behavior.
+2. **DDD before architecture** — model it: what is it, which bounded context/subdomain owns it, what does it *own* vs merely *preserve*? Resolve ownership of every invariant **before** protecting it. (E.g. anonymity is a *constitutional* invariant that Messaging *preserves* — not one it owns.)
+3. **Architecture decision before tests** — record the decision (ADR / Decision Log `D-nn`) that the model produces. A test encodes a decision; the decision must exist first.
+4. **Tests before implementation (TDD)** — RED first, then minimal GREEN. Architecture/fitness tests verify **properties**, not class names.
+5. **For a discovered gap, the sequence is:** `Finding → Architecture Decision → RED → GREEN → Certification`. Never `Finding → Implementation → Certification`.
+
+**Anti-pattern to avoid (DDD):** never let a *ticket* or an *observation* silently *become* architecture. Architecture **produces** tickets; tickets do not accrete into architecture. When several tickets have produced a reusable capability, **model it as a platform capability first**, then let tests/consumers follow.
+
+**When in doubt, stop and model.** Producing a strategic model / ADR is real work, not a detour — it is the first stage, not a delay before "the real work."
+
+**Automation:** a non-blocking `PreToolUse` tripwire (`.claude/scripts/discipline-gate-reminder.sh`) reminds when a **new** test or production file is about to be created, to confirm the upstream artifacts exist. It is a checkpoint, not a wall — the rule above is the obligation.
+
+---
+
 # 📘 Developer Guide — Definition of Done (STANDING RULE)
 
 **Every implementation step ships with a developer guide. This is part of the Definition of Done — do it without being asked.**
