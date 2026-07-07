@@ -13,7 +13,7 @@ Commands          ██████████ 100%  (inbox:redrive + schedule
 Testing           ██████████ 100%  (5/5 groups: unit ✔ · persist ✔ · consume ✔ · registry ✔ · redrive ✔)
 Documentation     ██░░░░░░░░   partial
 ```
-Secondary (derived backing count): **16 / 18 WBS** (C6A verification ✔; C6B certification + deptrac-extend remain).
+Secondary (derived backing count): **18 / 18 WBS** — PB-003 **VERIFIED / CERTIFIED** (ARR, 2026-07-07).
 
 ### C1 Implementation Review (gate result)
 PASS · 0 Critical · 0 Major · 2 Minor (accepted, no action): (m1) IDD called InboxOutcome a "VO" — implemented as enum (correct DDD form for a closed set); (m2) InboxMessage.payload typed `array` per D-08. **Accepted for C2: YES.**
@@ -21,9 +21,9 @@ PASS · 0 Critical · 0 Major · 2 Minor (accepted, no action): (m1) IDD called 
 ## Executable process state (hooks/sessions must respect this)
 
 ```text
-Current commit: PB-003-C6A ✔ 305cfb9ff (Messaging Architecture Verification GREEN)
-Allowed next:  C6B — Platform Capability Certification (answer the 7 reuse questions with evidence; judgment, not new features) + extend deptrac.yaml to Shared
-Forbidden:     starting PB-004, editing FROZEN Implementation_Process_v1.0 (fold-in needs v1.1), doc commits before code commit
+Current commit: PB-003 COMPLETE — C6B ✔ 528619ba6 (ARR: CERTIFIED); C6A ✔ 305cfb9ff
+Allowed next:  PB-004 (Election Reaction) — write its IDD FIRST (Architecture Review Gate), then implement C1.. ; carry residual risks R-1/R-2/R-3
+Forbidden:     implementing PB-004 before its IDD is approved; editing FROZEN Implementation_Process_v1.0 (fold-in needs v1.1)
 ```
 
 ## Review checkpoints (ticket-boundary reviews — NOT per commit)
@@ -31,8 +31,8 @@ Forbidden:     starting PB-004, editing FROZEN Implementation_Process_v1.0 (fold
 | Review | Status |
 |--------|--------|
 | Architecture Review (IDD) | ✔ 2026-07-06 |
-| Platform Capability Certification (C6B — 7 reuse questions, D-11) | ☐ |
-| Implementation Review (after C6B, before merge request) | ☐ |
+| Platform Capability Certification / ARR (C6B — D-11) | ✔ 2026-07-07 CERTIFIED (`PB-003_Architecture_Readiness_Report.md`) |
+| Implementation Review (subsumed by ARR) | ✔ 2026-07-07 |
 | Merge Review (Architecture Review Checklist on PR) | ☐ |
 
 ## Commit plan (code commits C1–C6 · docs in separate PB-003-DOC commits)
@@ -45,7 +45,7 @@ Forbidden:     starting PB-004, editing FROZEN Implementation_Process_v1.0 (fold
 | PB-003-C4 | `InboxHandlerRegistry` + container wiring | 45m | ~25m ✔ 3bc0b35dc | revert → wrapper testable via direct construction |
 | PB-003-C5 | `inbox:redrive` + scheduling + config + tests | 1.5h | ~50m ✔ ce7f2b99d | revert → parked rows wait (no data loss; redrive is additive) |
 | PB-003-C6A | Messaging Architecture Verification (10 property-based tests) + strict clock | 45m | ~55m ✔ 305cfb9ff | revert → guards + 1 signature tighten only |
-| PB-003-C6B | Platform Capability Certification (7 reuse questions) + deptrac→Shared | 45m | — | docs + config only |
+| PB-003-C6B | Architecture Readiness Review (ARB) + RED-first guard hardening (F-1/F-2/F-3) | 45m | ~60m ✔ 528619ba6 | revert → tests only |
 | PB-003-DOC | progress/dev-log/session/epic-board records (per session end) | 15m | — | revert → docs only |
 
 **Per-commit DoD:** ☐ RED evidence captured (output, not claim) ☐ GREEN evidence captured ☐ PHPStan (greenfield gate) ☐ purity/rule checks for that commit ☐ tracker WBS ticked (edit now, commit in next PB-003-DOC)
@@ -55,21 +55,23 @@ Forbidden:     starting PB-004, editing FROZEN Implementation_Process_v1.0 (fold
 ## PB-003 Exit Criteria (ticket → Verified ONLY when ALL ✔)
 
 ```text
-☐ Inbox port package exists (6 classes, pure PHP)
-☐ inbox_events infrastructure exists (migration + model, UNIQUE(event_id, consumer_context))
-☐ Idempotent wrapper exists (dedupe/park/classify in ONE txn)
-☐ Handler registry exists (duplicate registration rejected)
-☐ Redrive exists (parked re-drive + deadline → dead)
-☐ All PB-003 tests green (unit + feature + architecture)
-☐ Architecture suite green, zero regressions
-☐ PHPStan greenfield gate green
-☐ Traceability Matrix row → Verified
-☐ Decision Log updated (or explicit "no new decisions")
-☐ Progress tracker at 18/18 (derived)
-☐ Implementation Review passed (ticket boundary)
-☐ IMPLEMENTATION_BASELINE.md line appended
-☐ Ready-for-PB-004 statement (inbox consumable by Election Reaction)
+✔ Inbox port package exists (6 classes, pure PHP)                       C1
+✔ inbox_events infrastructure exists (migration + model, UNIQUE)        C2
+✔ Idempotent wrapper exists (dedupe/park/classify in ONE txn)           C3
+✔ Handler registry exists (duplicate registration rejected)            C4
+✔ Redrive exists (parked re-drive + deadline → dead)                    C5
+✔ All PB-003 tests green (unit + feature + architecture)                verification 11/11 · Inbox 34
+✔ Architecture suite green, zero regressions                            143 passed / 1 skip
+✔ PHPStan greenfield gate green
+✔ Traceability Matrix row → Verified
+✔ Decision Log updated                                                  D-10, D-11
+✔ Progress tracker at 18/18 (derived)
+✔ Implementation Review passed (ticket boundary)                        subsumed by ARR (C6B)
+✔ IMPLEMENTATION_BASELINE.md line appended
+✔ Ready-for-PB-004 statement (inbox consumable by Election Reaction)    ARR §5 — CERTIFIED
 ```
+
+**Ready-for-PB-004:** the Inbox is CERTIFIED as a reusable platform capability (see `PB-003_Architecture_Readiness_Report.md`). PB-004 (Election Reaction) may consume it by implementing an `InboxHandler` + registering it — no change to Shared. PB-004 still requires its own IDD before implementation. Residual risks R-1/R-2/R-3 carry forward (non-blocking).
 
 ## Work Breakdown Structure (tick per commit; % derives from here)
 

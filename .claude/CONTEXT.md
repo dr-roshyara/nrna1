@@ -9,16 +9,16 @@ Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: M1 — Messaging Infrastructure (49%, derived 17/35 WBS)
 Priority: High
 
-- **Detail:** PB-003 Inbox / Deduplication · Lifecycle: **In Development** · Progress: 16/18 WBS (C6A ✔ 305cfb9ff) · IDD: `docs/implementation/backlog/PB-003_Inbox_Implementation_Design.md` · Verification matrix: `docs/implementation/Messaging_Architecture_Verification.md`
+- **Detail:** PB-003 Inbox / Deduplication · Lifecycle: **VERIFIED / CERTIFIED (ARR, 2026-07-07)** · 18/18 WBS · ARR: `docs/implementation/PB-003_Architecture_Readiness_Report.md` · matrix: `docs/implementation/Messaging_Architecture_Verification.md`. **Next ticket: PB-004 (needs IDD).**
 
 ## What remains (EPIC-001)
 PB-003 (Inbox) → **Platform Capability Certification (D-11 gate)** → PB-004 (Election Reaction, needs IDD) → PB-005 (Contestation Reaction, needs IDD) → PB-006 (IT-1..8) → PB-007 (Merge Gate incl. F-1 Deptrac, F-2 Infection)
 
 ## Blockers
-None. All PB-003 dependencies met (PB-001 ✔ PB-002 ✔).
+None. PB-003 is Verified/Certified; PB-004 is unblocked (needs its IDD first).
 
 ## Next action (exactly one)
-PB-003-C6B · **Platform Capability Certification** (D-11): answer the 7 reuse questions with evidence (reuse-unchanged · Replay-reuses-engine · Monitoring-without-business-code · framework-portability · Shared-business-agnostic · constitutional-messaging-invariants · no-regression) in `docs/implementation/Messaging_Architecture_Verification.md`, and extend `deptrac.yaml` paths to include `app/Contexts/Shared`. Judgment + config, no new features. C6A verification ✔ 305cfb9ff (10 property tests). Then Implementation Review → Verified → PB-004.
+**PB-004 (Election Reaction) — write the IDD FIRST** (Architecture Review Gate; propose → review → approve before any code). PB-004 consumes the certified Inbox by implementing an `InboxHandler` + registering it — no change to Shared. Carry forward residual risks R-1 (handler txn discipline — candidate guardrail when the first handler lands), R-2 (replay unproven), R-3 (shared-kernel purity test + dead-letter alerting). See `PB-003_Architecture_Readiness_Report.md`.
 
 ## Parallel tracks (not active this session)
 - Governance: 38D-02 Capability Relationships (after ARB digests 38D-01)

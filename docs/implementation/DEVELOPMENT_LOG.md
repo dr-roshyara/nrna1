@@ -253,3 +253,32 @@ Tests
 - Result: no regressions; net architectural protection increased.
 Next step
 - PB-003-C6B: Platform Capability Certification (7 reuse questions) + extend deptrac to Shared → Implementation Review → Verified
+
+---
+
+## 2026-07-07 (session 11)
+
+### PB-003-C6B — Architecture Readiness Review (ARB role) → PB-003 CERTIFIED
+Completed
+- Conducted C6B as an adversarial ARB review (reviewer treated PB-003 as another team's work and tried to REJECT it); independent re-validation of evidence, not trusted from build sessions
+- Produced `docs/implementation/PB-003_Architecture_Readiness_Report.md` (readiness matrix + attempt-to-reject + certification)
+- Findings remediated RED-first (falsifiability proven, then GREEN): F-1 anonymity guard on messaging transport (ADR-T11 — was unguarded for Shared); F-2 ownership cardinality broadened to app-wide; F-3 messaging-ownership scan broadened to inline FQN
+- Residual risks recorded (non-blocking): R-1 handler txn discipline; R-2 replay unproven; R-3 shared-kernel purity + dead-letter alerting
+- PB-003 marked Verified/Certified; IMPLEMENTATION_BASELINE line appended; PB-004 authorized (needs IDD)
+- Reviewer-tooling caution logged: a `grep -E` probe gave a false negative on marker-catch cardinality → re-run with ripgrep; scan tooling must be self-validated
+Tests
+- verification 11/11 (added anonymity); Architecture Fitness 143 passed / 1 skip; full Inbox 34; greenfield PHPStan clean
+- No production code changed — the code was already conformant; the gaps were in the guardrails
+### Architecture Validation
+- Patterns REUSED: adversarial-review-before-certify; property-based fitness scans; GreenfieldCore FORBIDDEN_LINKAGE_TOKENS set
+- Patterns EXTENDED: anonymity enforcement now covers the messaging transport; ownership cardinality is now an app-wide property; coupling detection covers inline FQN
+- Patterns intentionally NOT reused: rubber-stamp certification (rejected — ARB must try to reject); class-name-bound tests
+- Risks discovered: R-1/R-2/R-3 (documented). Assumptions: replay reuse is design-sound but unproven until built
+- New decisions: certification recorded under D-11; ARR report is the permanent artifact
+- Future ADR/refactor candidates: Process v1.1 (absorb matrix + ARR template); handler-txn guardrail; shared-kernel purity test; dead-letter alerting adapter
+### Architectural Regression Check
+- Weakened any validated property? None. Protection INCREASED: anonymity (new), app-wide ownership (broadened), inline-FQN coupling (broadened)
+- Recovery reachable-only, idempotency, determinism, transaction/execution/recovery ownership, hexagonal separation: all re-validated intact
+- Result: no regressions; PB-003 certified as a reusable platform capability
+Next step
+- PB-004 (Election Reaction): write IDD first (Architecture Review Gate), then implement against the certified Inbox

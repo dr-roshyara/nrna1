@@ -19,6 +19,9 @@
 | 8 | Clock ownership (decisions) | Execution + recovery paths read no ambient time — clock injected | `test_decision_paths_use_injected_time_only` | PASS |
 | 9 | Clock allow-list | Any surviving ambient time in messaging is only an audit stamp (`processed_at`) | `test_ambient_time_in_messaging_is_only_audit_metadata` | PASS |
 | 10 | Message immutability | Concrete data carriers in the port are `readonly` | `test_port_data_carriers_are_immutable` | PASS |
+| 11 | Anonymity (ADR-T11/Q7) | Messaging transport carries no voter↔vote linkage token | `test_messaging_layer_has_no_voter_vote_linkage` | PASS (added C6B/ARR, F-1) |
+
+**C6B ARR hardening:** properties 5/6 broadened from directory-scoped to **app-wide** (F-2); property 3 broadened to catch inline `\App\Contexts\<X>\` FQNs, not just `use` (F-3).
 
 **Falsifiability proven (C6A):** invariants 3, 5, 9 verified to *detect* synthetic violations and *ignore* conformant code (guardrails, not vacuous assertions).
 
@@ -26,7 +29,9 @@
 
 ---
 
-## Platform Capability Certification (C6B — judgment, not code)
+## Platform Capability Certification (C6B — Architecture Readiness Review)
+
+**Outcome: CERTIFIED (2026-07-07).** Conducted as an adversarial ARB review. Full report: [`PB-003_Architecture_Readiness_Report.md`](./PB-003_Architecture_Readiness_Report.md). Three guardrail findings (F-1 anonymity, F-2 app-wide ownership, F-3 inline FQN) were remediated RED-first during the review; three residual risks (R-1 handler txn discipline, R-2 replay unproven, R-3 shared-kernel/alerting) carry forward as tracked, non-blocking items.
 
 Before PB-004 may begin, answer (evidence-backed). Any "No" halts implementation and requests architectural review.
 
