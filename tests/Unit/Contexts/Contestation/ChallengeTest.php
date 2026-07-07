@@ -9,9 +9,12 @@ use App\Contexts\Contestation\Domain\Challenge\ChallengeId;
 use App\Contexts\Contestation\Domain\Challenge\ChallengeState;
 use App\Contexts\Contestation\Domain\Challenge\DeterminationId;
 use App\Contexts\Contestation\Domain\Challenge\Exception\IllegalChallengeTransition;
+use App\Contexts\Contestation\Domain\Challenge\ContestedOutcomeRef;
+use App\Contexts\Contestation\Domain\Challenge\ElectionId;
 use App\Contexts\Contestation\Domain\Challenge\RaiserStandingRef;
 use App\Contexts\Contestation\Domain\Challenge\SubmittedContent;
-use App\Contexts\Contestation\Domain\Challenge\TargetRef;
+use App\Contexts\Contestation\Domain\Challenge\TargetId;
+use App\Contexts\Contestation\Domain\Challenge\TargetType;
 use App\Contexts\Contestation\Domain\Events\ChallengeAdjudicated;
 use App\Contexts\Contestation\Domain\Events\ChallengeAdmitted;
 use App\Contexts\Contestation\Domain\Events\ChallengeRaised;
@@ -27,9 +30,19 @@ final class ChallengeTest extends TestCase
         return Challenge::raise(
             ChallengeId::fromString('c-1'),
             RaiserStandingRef::fromString('standing-1'),
-            TargetRef::fromString('election-outcome-1'),
+            $this->contestedOutcome(),
             SubmittedContent::fromString('Tally dispute on post X.'),
             $this->at(),
+        );
+    }
+
+    private function contestedOutcome(): ContestedOutcomeRef
+    {
+        // ContestedOutcome (ADR-UL-01): reference only, election-scoped, no vote content.
+        return ContestedOutcomeRef::of(
+            ElectionId::fromString('election-1'),
+            TargetType::ElectionResult,
+            TargetId::fromString('outcome-1'),
         );
     }
 
@@ -47,6 +60,9 @@ final class ChallengeTest extends TestCase
         $events = $c->pullEvents();
         $this->assertCount(1, $events);
         $this->assertInstanceOf(ChallengeRaised::class, $events[0]);
+        // ADR-UL-01: the raised event carries the ContestedOutcomeRef (electionId first-class).
+        $this->assertSame('election-1', $events[0]->contestedOutcome->electionId->toString());
+        $this->assertSame(TargetType::ElectionResult, $events[0]->contestedOutcome->type);
         $this->assertSame([], $c->pullEvents(), 'pullEvents must clear after release');
     }
 

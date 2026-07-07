@@ -7,15 +7,16 @@ namespace App\Contexts\Contestation\Domain\Challenge;
 use InvalidArgumentException;
 
 /**
- * What is being challenged — a reference to an election outcome or a prior
- * determination. Reference only; carries no vote content.
+ * Identifier of the specific ContestedOutcome being contested — an Election
+ * Result id or a prior Determination id (per TargetType). Reference only;
+ * NEVER a vote or voter identifier (anonymity — ADR-T11).
  */
-final readonly class TargetRef
+final readonly class TargetId
 {
     private function __construct(public string $value)
     {
         if (trim($value) === '') {
-            throw new InvalidArgumentException('TargetRef cannot be empty.');
+            throw new InvalidArgumentException('TargetId cannot be empty.');
         }
     }
 

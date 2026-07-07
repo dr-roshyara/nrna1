@@ -18,7 +18,11 @@ PB-003 (Inbox) → **Platform Capability Certification (D-11 gate)** → PB-004 
 None. PB-003 is Verified/Certified; PB-004 is unblocked (needs its IDD first).
 
 ## Next action (exactly one)
-**BEGIN implementation (TDD) — DD-4 CLOSED, `ContestedOutcome` ratified.** ADRs written: ADR-UL-01 (Ubiquitous Language) + ADR-PL-01 (Published Language, `DeterminationIssued v2`); ER-06 adopted; ADR classification scheme (`docs/adr/README.md`); glossary graduated out of the IDD (D-14). **Prerequisite chain before PB-004 RED (each RED→GREEN, no further architecture):** (1) Contestation `TargetRef→ContestedOutcomeRef` VO + `ChallengeRaised v2` (7 refs / 4 files); (2) Adjudication `Determination` carries `ContestedOutcomeRef` + `DeterminationIssued v2`; (3) register v2 hydrators (Event Registry, vCurrent+vPrevious); (4) **PB-004 RED (C1 Domain)**. Messaging unaffected (consume-only); anonymity preserved; ADR-T5 (v1 retained). Aggregate name (Election vs ElectionCorrection) validated during RED.
+**Implementation (TDD) — prerequisite chain for PB-004. Step 1 ✔ DONE.**
+- **✔ Step 1 (Contestation):** `TargetRef:string` → `ContestedOutcomeRef` VO (+ `ElectionId`/`TargetType`/`TargetId`); `Challenge::raise` + `ChallengeRaised` carry it (`ChallengeRaised` evolved in place — internal domain event, not published language; ADR-PL-01). RED→GREEN; ChallengeTest 12/12; Architecture 154✔/1 skip; greenfield PHPStan clean. ARB refinements folded (internal-event rationale; VO holds no transport — `fromParts` removed).
+- **→ Step 2 (Adjudication):** `Determination` carries `ContestedOutcomeRef`; **`DeterminationIssued v2`** (published integration event → ADR-T5 v2, v1 retained). RED→GREEN.
+- Step 3: register v2 hydrators (Event Registry, vCurrent+vPrevious). Step 4: **PB-004 RED (C1 Domain)**.
+Messaging unaffected (consume-only); anonymity preserved. Traceable to ADR-UL-01/ADR-PL-01. No new architecture unless implementation reveals a genuine inconsistency.
 
 ## Architecture debt (tracked)
 - **AD-M1 — RESOLVED (2026-07-07) · category: Architecture Fitness Evolution** (no domain change — only *where* the fitness guard lives). Anonymity guard relocated to the constitutional suite (`GreenfieldCoreArchitectureTest::test_at_q7_001_no_voter_vote_linkage` now scans the Shared messaging surface incl. Outbox); property #11 removed from the Inbox test. RED→GREEN proven; Architecture suite 142✔/1 skip; greenfield PHPStan clean. First fitness change validating PGP-03.

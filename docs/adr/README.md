@@ -2,6 +2,8 @@
 
 **Status:** Living index · **2026-07-08** · introduced per ARB recommendation (distinguish business-language evolution from technical decisions as the ADR set grows).
 
+> **Governance note:** ADR classes describe the **nature** of a decision, not its **importance**. A Published-Language ADR is not "lesser" than a Strategic one — they govern different concerns. Do not infer priority from class.
+
 ## Classification scheme
 | Class | Meaning | Examples |
 |-------|---------|----------|

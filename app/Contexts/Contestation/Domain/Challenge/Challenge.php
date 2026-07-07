@@ -42,12 +42,12 @@ final class Challenge
     public static function raise(
         ChallengeId $id,
         RaiserStandingRef $raiser,
-        TargetRef $target,
+        ContestedOutcomeRef $contestedOutcome,
         SubmittedContent $content,
         DateTimeImmutable $at,
     ): self {
         $challenge = new self($id, ChallengeState::Raised);
-        $challenge->record(new ChallengeRaised($id, $raiser, $target, $content, $at));
+        $challenge->record(new ChallengeRaised($id, $raiser, $contestedOutcome, $content, $at));
 
         return $challenge;
     }

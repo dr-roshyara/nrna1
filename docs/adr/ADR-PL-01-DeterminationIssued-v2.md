@@ -9,8 +9,8 @@ ADR-UL-01 established `ContestedOutcome` + the `ContestedOutcomeRef` VO as Conte
 ## Decision
 Evolve the published language to carry the domain concept, versioning per **ADR-T5** (version, never mutate; v1 retained until consumers migrate):
 
-- **`ChallengeRaised v2`** (Contestation) — carries `ContestedOutcomeRef` (replacing the opaque `target` string). *(v1 retained.)*
-- **`DeterminationIssued v2`** (Adjudication) — adds `contestedOutcome: ContestedOutcomeRef` (which contains `electionId`). Determination inherits the Challenge's `ContestedOutcomeRef` (ADR-T14: Challenge read-only during `IssueDetermination`). *(v1 retained.)*
+- **`ChallengeRaised`** (Contestation) — **evolved in place** to carry `ContestedOutcomeRef` (replacing the opaque `target` string); **no versioning**. *Rationale (DDD, not repository state):* `ChallengeRaised` is an **internal domain event confined to the Contestation bounded context** — it is **not part of the stable published language** (catalog: Process/Supporting/internal). An internal domain event may evolve in place until explicitly *promoted* to a published integration event; only then does the version-never-mutate rule bind it. *(This holds regardless of how many consumers exist today — the argument is the event's published status, not a consumer count.)*
+- **`DeterminationIssued v2`** (Adjudication) — **published integration event** (restricted; consumed cross-context by Election), so it **is** bound by ADR-T5: add `contestedOutcome: ContestedOutcomeRef` (which contains `electionId`) as **v2**, **v1 retained** until consumers migrate. Determination inherits the Challenge's `ContestedOutcomeRef` (ADR-T14: Challenge read-only during `IssueDetermination`).
 - The reference crosses contexts as **strings** (ADR-T16); each context reconstructs its local VO. **Anonymity:** `ContestedOutcomeRef` carries no voter↔vote linkage (`electionId`/`type`/`targetId` only).
 
 Consumers (Election/PB-004) read `electionId` from `contestedOutcome` — **because it is the published language**, not a bolt-on.
@@ -25,7 +25,7 @@ Consumers (Election/PB-004) read `electionId` from `contestedOutcome` — **beca
 - Carry a bare `electionId` field — loses the `ContestedOutcome` concept (would re-introduce primitive obsession at the contract level).
 
 ## Sequenced work (implementation — TDD, next)
-1. Contestation: `TargetRef → ContestedOutcomeRef`; `ChallengeRaised v2` (RED→GREEN).
+1. Contestation: `TargetRef → ContestedOutcomeRef`; `ChallengeRaised` evolved in place (internal domain event — no version) (RED→GREEN).
 2. Adjudication: `Determination` carries `ContestedOutcomeRef`; `DeterminationIssued v2` (RED→GREEN).
 3. Register v2 hydrators (Event Registry).
 4. PB-004 RED (Election consumes v2).
