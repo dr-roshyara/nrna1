@@ -1,6 +1,6 @@
 # Architecture Principles — Chapter P: Platform Capabilities (PGP-01…05)
 
-**AKB layer:** L-Principles · **Status:** a **chapter of the one Architecture Principles constitution**, not a separate constitution · Living · **2026-07-07**
+**AKB layer:** L-Principles · **Status:** a **chapter of the one Architecture Principles constitution**, not a separate constitution · **FROZEN** (D-13; change only via ADR + review) · **2026-07-07**
 **Scope:** governance of **Platform Capabilities** (reusable infrastructure consumed by multiple bounded contexts).
 **One constitution, many chapters.** These are **not** a second constitution. They are the **Platform Capabilities chapter** of the single **Architecture Principles** constitution (whose Release-1.0 principles 1–10 remain the general chapter). `PGP-nn` is the chapter's local numbering (avoids collision with 1–10); it does not imply a parallel authority. Future concerns (security, testing, operations) become **further chapters** of the *same* constitution — never new constitutions.
 **Principles, not decisions.** Enduring rules that individual **ADRs reference** (an ADR records a decision *in context*; a principle endures across decisions).

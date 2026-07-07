@@ -1,6 +1,6 @@
 # Platform Capability — Architecture Pattern
 
-**AKB layer:** L-Patterns (Architecture Patterns) · **Status:** reusable pattern · **2026-07-07**
+**AKB layer:** L-Patterns (Architecture Patterns) · **Maturity:** PROVISIONALLY STABLE (validated against 2 conceptual instances; not yet proven by multiple *production* capabilities) · **Lifecycle:** FROZEN (change only via ADR + review — ER-01) · **2026-07-07**
 **Purpose:** define what a **Platform Capability** *is* and how one is documented, governed, and evolved — **capability-agnostic**. Any platform capability (Messaging, Replay, Monitoring, Notifications, Identity, Search, …) instantiates this pattern. The first instance is the Messaging Platform.
 
 > **Why this exists (generalize before specializing).** The program repeatedly produces reusable infrastructure by completing several tickets. Left as tickets, that infrastructure sits at the wrong abstraction level with no stable contract. This pattern captures the *enduring concept* so every capability gets a consistent, DDD-sound governance frame — architecture describing lasting concepts, not individual implementations.
@@ -98,7 +98,7 @@ A preserver hosting an owner's guarantee is an **ownership mismatch** (architect
 
 ## 8. Validation & Stability
 
-**Status: STABLE.** A pattern is proven by *multiple conceptual applications*, not one implementation. This pattern was walked, section by section, against two deliberately different hypothetical capabilities — **Notification** (fan-out/channels/templates) and **Identity** (authn/authz/sessions/tokens) — as thought experiments (no implementation).
+**Status: PROVISIONALLY STABLE** — validated against **2 conceptual instances** (Notification, Identity); full "Stable" is reserved for proof by multiple *production* capabilities (e.g. Messaging + Replay/Monitoring after real implementation). A pattern is proven by *multiple conceptual applications*, not one implementation. This pattern was walked, section by section, against two deliberately different hypothetical capabilities — **Notification** (fan-out/channels/templates) and **Identity** (authn/authz/sessions/tokens) — as thought experiments (no implementation).
 
 - **Survived both** with all twelve sections fitting naturally; **no section added or removed** (the pattern is lean, not an encyclopedia).
 - **Two issues appeared in *both* walkthroughs** (the bar for refinement) and were applied: (1) do not presume *Published Language* — name the DDD integration pattern (§1, §2.3); (2) generalize the timing category from "Scheduling/Execution" to **Timing & Lifecycle** (§2.10), since Identity expresses it as session/token expiry, not scheduling.

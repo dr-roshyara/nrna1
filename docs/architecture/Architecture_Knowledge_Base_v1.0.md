@@ -95,13 +95,13 @@ An explicit **knowledge hierarchy** overlaid on the document *levels* of §1 (§
 ### Registry additions
 | Document | Layer | Level | Lifecycle |
 |----------|-------|-------|-----------|
-| Architecture Principles — Platform Capabilities **chapter** (PGP-01…05) | L2 | L1 (a chapter of the one Architecture Principles constitution — not a separate constitution) | Living |
-| Platform Capability Pattern | L3 | L3 (pattern) | Living — **STABLE** (validated vs Notification + Identity) |
-| Messaging Platform Architecture | L4 | L3 | Living (first **validated** specialization) |
-| ADR-MP-01…05 | (decisions) | L4 | Living |
+| Architecture Principles — Platform Capabilities **chapter** (PGP-01…05) | L2 | L1 (a chapter of the one Architecture Principles constitution — not a separate constitution) | **FROZEN** (D-13) |
+| Platform Capability Pattern | L3 | L3 (pattern) | **FROZEN** (D-13); maturity **Provisionally Stable** (validated vs Notification + Identity) |
+| Messaging Platform Architecture | L4 | L3 | **FROZEN** (D-13); first validated specialization |
+| ADR-MP-01…05 | (decisions) | L4 | Living (decision records) |
 
-### Governance rules for this layer (fold-in — keep the AKB lean)
-- **Anti-proliferation (adopted 2026-07-07):** a new *permanent* governance artifact is justified only if it (1) eliminates an existing artifact, (2) simplifies the architecture, (3) generalizes knowledge already proven by multiple examples, or (4) directly supports implementation. Otherwise it does not become permanent. Transition/working artifacts are retired once their knowledge is folded in.
+### Governance rules for this layer
+- **Architecture Convergence → see ER-05** (Decision Log D-13; folds into Process v1.1). Every iteration reduces/maintains complexity; prefer merging/simplifying/retiring over new permanent artifacts. *(Single source of truth — not restated here, per ER-05 itself.)*
 - **Governance lifecycle for L2–L4 (authoritative docs):** change via **Proposal → Review → Ratification → Publication** (not propose→merge).
 - **One constitution, many chapters:** new principle areas (security, testing, ops) become *chapters* of the Architecture Principles constitution — never new constitutions.
 
