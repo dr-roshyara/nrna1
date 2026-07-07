@@ -548,7 +548,7 @@ A "step" is a code slice (a `PB-xxx-Cn`-style commit, or any self-contained impl
 
 **Cadence:** per step, updated as slices land, finalized at ticket certification. Small/mechanical fixes may fold into the nearest step guide rather than a new file — use judgment, but never skip silently.
 
-**Automation:** a `Stop` hook (`.claude/scripts/dev-guide-reminder.sh`) prints a non-blocking reminder when code changed today but no `developer_guide/` file was touched. The reminder is a safety net — the rule above is the obligation.
+**Automation:** a `Stop` hook (`.claude/scripts/dev-guide-reminder.sh`) prints a non-blocking, **area-aware** reminder — it nudges per code-*area* changed today (e.g. `app/Contexts/Contestation` → `developer_guide/contestation/`) that has no matching guide update, so a guide written for an unrelated track can't silence a real gap. The reminder is a safety net — **the rule above is the obligation, and it is a judgment I should not skip**: when an ADR already captures the design, still add a short developer-facing guide (the ADR records the *decision*; the guide is the developer *how-to*).
 
 ---
 
