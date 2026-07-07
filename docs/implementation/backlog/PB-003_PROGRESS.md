@@ -13,7 +13,7 @@ Commands          ██████████ 100%  (inbox:redrive + schedule
 Testing           ██████████ 100%  (5/5 groups: unit ✔ · persist ✔ · consume ✔ · registry ✔ · redrive ✔)
 Documentation     ██░░░░░░░░   partial
 ```
-Secondary (derived backing count): **15 / 18 WBS**.
+Secondary (derived backing count): **16 / 18 WBS** (C6A verification ✔; C6B certification + deptrac-extend remain).
 
 ### C1 Implementation Review (gate result)
 PASS · 0 Critical · 0 Major · 2 Minor (accepted, no action): (m1) IDD called InboxOutcome a "VO" — implemented as enum (correct DDD form for a closed set); (m2) InboxMessage.payload typed `array` per D-08. **Accepted for C2: YES.**
@@ -21,9 +21,9 @@ PASS · 0 Critical · 0 Major · 2 Minor (accepted, no action): (m1) IDD called 
 ## Executable process state (hooks/sessions must respect this)
 
 ```text
-Current commit: PB-003-C6 · Current step: 4 (RED) — next session
-Allowed next:  C6 RED (inbox architecture tests: port purity + single-writer scan)
-Forbidden:     starting PB-004, skipping RED, doc commits before code commit
+Current commit: PB-003-C6A ✔ 305cfb9ff (Messaging Architecture Verification GREEN)
+Allowed next:  C6B — Platform Capability Certification (answer the 7 reuse questions with evidence; judgment, not new features) + extend deptrac.yaml to Shared
+Forbidden:     starting PB-004, editing FROZEN Implementation_Process_v1.0 (fold-in needs v1.1), doc commits before code commit
 ```
 
 ## Review checkpoints (ticket-boundary reviews — NOT per commit)
@@ -31,7 +31,8 @@ Forbidden:     starting PB-004, skipping RED, doc commits before code commit
 | Review | Status |
 |--------|--------|
 | Architecture Review (IDD) | ✔ 2026-07-06 |
-| Implementation Review (after C6, before merge request) | ☐ |
+| Platform Capability Certification (C6B — 7 reuse questions, D-11) | ☐ |
+| Implementation Review (after C6B, before merge request) | ☐ |
 | Merge Review (Architecture Review Checklist on PR) | ☐ |
 
 ## Commit plan (code commits C1–C6 · docs in separate PB-003-DOC commits)
@@ -43,7 +44,8 @@ Forbidden:     starting PB-004, skipping RED, doc commits before code commit
 | PB-003-C3 | `Inbox` wrapper + consume tests (7 scenarios) | 2h | ~40m ✔ 8930f47fd | revert → port remains, no runtime path uses wrapper yet |
 | PB-003-C4 | `InboxHandlerRegistry` + container wiring | 45m | ~25m ✔ 3bc0b35dc | revert → wrapper testable via direct construction |
 | PB-003-C5 | `inbox:redrive` + scheduling + config + tests | 1.5h | ~50m ✔ ce7f2b99d | revert → parked rows wait (no data loss; redrive is additive) |
-| PB-003-C6 | Architecture tests (port purity, single-writer) | 45m | — | revert → guards only |
+| PB-003-C6A | Messaging Architecture Verification (10 property-based tests) + strict clock | 45m | ~55m ✔ 305cfb9ff | revert → guards + 1 signature tighten only |
+| PB-003-C6B | Platform Capability Certification (7 reuse questions) + deptrac→Shared | 45m | — | docs + config only |
 | PB-003-DOC | progress/dev-log/session/epic-board records (per session end) | 15m | — | revert → docs only |
 
 **Per-commit DoD:** ☐ RED evidence captured (output, not claim) ☐ GREEN evidence captured ☐ PHPStan (greenfield gate) ☐ purity/rule checks for that commit ☐ tracker WBS ticked (edit now, commit in next PB-003-DOC)
@@ -94,8 +96,8 @@ Forbidden:     starting PB-004, skipping RED, doc commits before code commit
 - 5.1 unit: message + classification *(C1)* ✔ · registry *(C4)* ✔
 - 5.2 feature: consume semantics (7 scenarios per IDD §11-3) *(C3)* ✔ · persistence *(C2)* ✔
 - 5.3 feature: re-drive (7 scenarios) *(C5)* ✔
-- 5.4 architecture: port purity + single-writer scan *(C6)* ✘
-- 5.5 regression gates (Arch suite · Adjudication · outbox) *(every commit)* ✘
+- 5.4 architecture: Messaging Architecture Verification — 10 property-based invariants *(C6A)* ✔ 305cfb9ff
+- 5.5 regression gates (Arch suite 142✔/1 skip · greenfield PHPStan clean · full Inbox 44✔) *(C6A)* ✔
 
 **6. Documentation** *(PB-003-DOC commits + ticket close)*
 - 6.1 Traceability Matrix row → Verified ✘

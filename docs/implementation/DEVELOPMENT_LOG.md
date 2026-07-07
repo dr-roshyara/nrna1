@@ -224,3 +224,32 @@ Progress
 - Exit Criteria: 6/14 (port · persistence · wrapper · registry · redrive · C1-review)
 Next step
 - PB-003-C6 RED: inbox architecture tests (port purity + single-writer)
+
+---
+
+## 2026-07-07 (session 10)
+
+### PB-003-C6A — Messaging Architecture Verification (property-based) + strict clock
+Completed
+- PB-003-C6A (305cfb9ff): `InboxMessagingArchitectureTest` — 10 PROPERTY-based fitness tests (cardinality/uniqueness, never class names); pure-PHP scan (Windows-safe)
+- Strict-clock refinement: `scopeParkedDue()` default `now()` REMOVED — decision inputs require injected instant; ambient time allowed only for `processed_at` audit stamps; `InboxEventTest` updated to inject
+- Architect refinements applied: (1) property-based not class-named; (2) stricter clock; (3) Messaging Ownership row added (Shared imports no bounded context); (4) C6 split → C6A verification (objective) + C6B certification (judgment)
+- Created permanent template `docs/implementation/Messaging_Architecture_Verification.md`; D-11 recorded (Platform Capability Certification gate)
+- Key finding: pre-existing gates (GreenfieldCore test, deptrac, phpstan-greenfield) all scope to Contestation+Adjudication — Shared had ZERO arch coverage before C6A
+Tests
+- Arch verification 10/10; full Inbox 44/44; Architecture Fitness 142 passed / 1 skip (613 assertions); greenfield PHPStan clean
+- Falsifiability PROVEN: invariants 3/5/9 detect synthetic violations + ignore clean code (guardrails, not vacuous)
+### Architecture Validation
+- Patterns REUSED: fitness-test file-scan style (GreenfieldCore), ClockInterface, cardinality-as-invariant
+- Patterns EXTENDED: architecture coverage now includes Shared messaging (was uncovered); property-based ownership invariants (execution/recovery/transaction/clock/messaging)
+- Patterns intentionally NOT reused: class-name-bound assertions (rejected — freezes implementation); scoping C6 to two scans (rejected — too small for a platform foundation)
+- Risks discovered: none new. Assumptions: folding matrix+7Q into FROZEN Process v1.0 needs a v1.1 bump (deferred; companion doc authoritative meanwhile)
+- New decisions: D-11 (C6A/C6B split + Platform Capability Certification gate + strict clock + property-based rule)
+- Future ADR candidate: Process v1.1 to absorb the verification matrix + 7 certification questions
+### Architectural Regression Check
+- Weakened any validated property? Bounded-context autonomy: no (strengthened — Messaging Ownership now executable). Idempotency: no. Event ordering: unchanged. Transaction boundaries: no (executor-opens-none now enforced). Open/Closed: no (registry extensibility preserved). Hexagonal separation: no (port purity + dep-direction now enforced for Shared). Infrastructure independence: no.
+- Recovery Review — recovery reachable-only: unchanged (C5 property intact).
+- Strict-clock change: tightened a signature (removed a default); one C2-era test updated to inject; full Inbox suite green → no behavioral regression.
+- Result: no regressions; net architectural protection increased.
+Next step
+- PB-003-C6B: Platform Capability Certification (7 reuse questions) + extend deptrac to Shared → Implementation Review → Verified
