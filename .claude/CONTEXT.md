@@ -18,7 +18,11 @@ PB-003 (Inbox) → **Platform Capability Certification (D-11 gate)** → PB-004 
 None. PB-003 is Verified/Certified; PB-004 is unblocked (needs its IDD first).
 
 ## Next action (exactly one)
-**AWAIT ARB approval of the Messaging Platform Strategic Model** (`docs/architecture/Messaging_Platform_Strategic_Model.md`) — Strategic DDD step BEFORE PB-004. It promotes PB-001+PB-002+PB-003 into one Messaging Platform capability and answers ownership/invariant questions (esp. anonymity = constitutional, *preserved* not owned). On approval + answers to Q1–Q5: record the derived decision(s), then write `Messaging_Platform_Architecture.md` (AKB 1.2), then RED-first any platform-wide fitness test, then PB-004 IDD. **Do NOT start PB-004; do NOT create MessagingPlatformArchitectureTest yet.** (Premature D-12 was withdrawn.)
+**AWAIT final ARB sign-off of the reviewed Strategic Model**, then write `Messaging_Platform_Architecture.md` (AKB Release 1.2). Model reviewed & revised (RC-1…RC-6 applied); ARB report = `docs/architecture/Messaging_Platform_Strategic_Model_Review.md`; Q1–Q4 resolved, Q5 deferred; decision recorded (D-12). After the platform doc: RED-first executable architecture **hosted by the correct owner** (Messaging-owned invariants in the Messaging suite; anonymity/tenant in the Constitutional suite), then PB-004 IDD. **Do NOT start PB-004; do NOT write the platform architecture doc until sign-off; do NOT create executable tests yet.**
+
+## Architecture debt (tracked; not blockers)
+- **AD-M1** — relocate the anonymity guard from `InboxMessagingArchitectureTest` (C6B property #11) to the **Constitutional** suite (owner-hosts-the-guard, D-12/Q2). Remediate via Finding→ADR→RED→GREEN.
+- **AD-M2** — decide Outbox formal Application port / hexagonal symmetry (D-12/Q5) — future ADR, only under business pressure.
 
 ## Parallel tracks (not active this session)
 - Governance: 38D-02 Capability Relationships (after ARB digests 38D-01)
