@@ -29,7 +29,20 @@ final class InboxMessagingArchitectureTest extends TestCase
     private const PORT = 'app/Contexts/Shared/Application/Inbox';
     private const INFRA = 'app/Contexts/Shared/Infrastructure/Inbox';
 
+    /**
+     * Ownership cardinality is an APP-WIDE property: "exactly one execution owner"
+     * means one in the whole codebase, not one per directory. A second owner
+     * introduced in any context must be detected (ARR finding F-2).
+     */
+    private const SCAN = 'app';
+
     private const FRAMEWORK_IMPORTS = ['Illuminate\\', 'Laravel\\', 'Eloquent', 'Carbon\\'];
+
+    // ADR-T11 / Q7 — anonymity is an always-invariant. The messaging transport
+    // must never carry voter<->vote linkage (payload, columns, or log context).
+    private const FORBIDDEN_LINKAGE_TOKENS = [
+        'user_id', 'voter_id', 'voterId', 'voting_code', 'votingCode',
+    ];
 
     /** Handler-outcome classification markers (Blueprint §8). */
     private const CLASSIFICATION_MARKERS = [
@@ -81,17 +94,40 @@ final class InboxMessagingArchitectureTest extends TestCase
         foreach ([self::PORT, self::INFRA] as $dir) {
             foreach ($this->phpFiles($dir) as $file) {
                 $content = file_get_contents($file->getRealPath());
-                // Any App\Contexts\<X>\ where <X> is NOT Shared.
-                if (preg_match_all('~use\s+App\\\\Contexts\\\\(\w+)\\\\~', $content, $m)) {
+                // Any reference to App\Contexts\<X>\ where <X> is NOT Shared —
+                // via `use` OR an inline fully-qualified `\App\Contexts\<X>\` name
+                // (ARR finding F-3: a `use`-only scan is evadable by inline FQN).
+                if (preg_match_all('~App\\\\Contexts\\\\(\w+)\\\\~', $content, $m)) {
                     foreach ($m[1] as $ctx) {
                         if ($ctx !== 'Shared') {
-                            $violations[] = sprintf('%s imports bounded context "%s"', $file->getBasename(), $ctx);
+                            $violations[] = sprintf('%s references bounded context "%s"', $file->getBasename(), $ctx);
                         }
                     }
                 }
             }
         }
-        $this->assertEmpty($violations, "Messaging ownership violated — Shared imports business code:\n" . implode("\n", $violations));
+        $this->assertEmpty($violations, "Messaging ownership violated — Shared references business code:\n" . implode("\n", $violations));
+    }
+
+    // ── 3b. Anonymity (ADR-T11 / Q7): messaging carries no voter<->vote linkage ──
+    // The transport must never introduce a token that could link a voter to a vote —
+    // not in the message DTO, the persistence model/columns, or a dead-letter log.
+    // (ARR finding F-1: the pre-existing linkage guard scoped only to the greenfield
+    // Core; the messaging subsystem itself was unguarded.)
+    public function test_messaging_layer_has_no_voter_vote_linkage(): void
+    {
+        $violations = [];
+        foreach ([self::PORT, self::INFRA] as $dir) {
+            foreach ($this->phpFiles($dir) as $file) {
+                $content = file_get_contents($file->getRealPath());
+                foreach (self::FORBIDDEN_LINKAGE_TOKENS as $token) {
+                    if (str_contains($content, $token)) {
+                        $violations[] = sprintf('%s contains forbidden linkage token "%s"', $file->getBasename(), $token);
+                    }
+                }
+            }
+        }
+        $this->assertEmpty($violations, "Anonymity violation (ADR-T11) in messaging transport:\n" . implode("\n", $violations));
     }
 
     // ── 4. Single writer: only the messaging package owns the persistence model ──
@@ -118,11 +154,11 @@ final class InboxMessagingArchitectureTest extends TestCase
     // classification marker. Must be exactly one — no duplicated classify logic.
     public function test_exactly_one_component_classifies_handler_outcomes(): void
     {
-        $classifiers = $this->filesMatching(self::INFRA, $this->markerCatchRegex());
+        $classifiers = $this->filesMatching(self::SCAN, $this->markerCatchRegex());
         $this->assertCount(
             1,
             $classifiers,
-            "Handler-outcome classification must live in exactly ONE component; found: "
+            "Handler-outcome classification must live in exactly ONE component (app-wide); found: "
                 . implode(', ', array_map('basename', $classifiers))
         );
     }
@@ -130,16 +166,11 @@ final class InboxMessagingArchitectureTest extends TestCase
     // ── 6. Recovery ownership: EXACTLY ONE component owns retry scheduling ──
     public function test_exactly_one_component_owns_retry_scheduling(): void
     {
-        $schedulers = $this->filesMatching(self::INFRA, '~parkedDue\s*\(~');
-        // Exclude the scope DEFINITION (the model declares the scope; owning it ≠ using it).
-        $schedulers = array_values(array_filter(
-            $schedulers,
-            fn (string $f) => !str_contains(file_get_contents($f), 'function scopeParkedDue')
-        ));
+        $schedulers = $this->schedulingOwners();
         $this->assertCount(
             1,
             $schedulers,
-            "Retry scheduling must be owned by exactly ONE component; found: "
+            "Retry scheduling must be owned by exactly ONE component (app-wide); found: "
                 . implode(', ', array_map('basename', $schedulers))
         );
     }
@@ -149,7 +180,7 @@ final class InboxMessagingArchitectureTest extends TestCase
     // by the orchestrator that claims/selects the row).
     public function test_execution_component_opens_no_transaction(): void
     {
-        $classifiers = $this->filesMatching(self::INFRA, $this->markerCatchRegex());
+        $classifiers = $this->filesMatching(self::SCAN, $this->markerCatchRegex());
         $this->assertCount(1, $classifiers, 'precondition: one execution component (see property 5)');
 
         $content = file_get_contents($classifiers[0]);
@@ -168,11 +199,8 @@ final class InboxMessagingArchitectureTest extends TestCase
     public function test_decision_paths_use_injected_time_only(): void
     {
         $decisionFiles = array_unique(array_merge(
-            $this->filesMatching(self::INFRA, $this->markerCatchRegex()),
-            array_values(array_filter(
-                $this->filesMatching(self::INFRA, '~parkedDue\s*\(~'),
-                fn (string $f) => !str_contains(file_get_contents($f), 'function scopeParkedDue')
-            ))
+            $this->filesMatching(self::SCAN, $this->markerCatchRegex()),
+            $this->schedulingOwners()
         ));
 
         $violations = [];
@@ -220,6 +248,21 @@ final class InboxMessagingArchitectureTest extends TestCase
     private function markerCatchRegex(): string
     {
         return '~catch\s*\(\s*\\\\?(' . implode('|', self::CLASSIFICATION_MARKERS) . ')~';
+    }
+
+    /**
+     * App-wide owners of retry scheduling: files that USE the `parkedDue` scope,
+     * excluding the model that DECLARES it (declaring a scope is not owning the
+     * scheduling decision).
+     *
+     * @return list<string>
+     */
+    private function schedulingOwners(): array
+    {
+        return array_values(array_filter(
+            $this->filesMatching(self::SCAN, '~parkedDue\s*\(~'),
+            fn (string $f) => !str_contains(file_get_contents($f), 'function scopeParkedDue')
+        ));
     }
 
     /** @return list<string> realpaths of files whose content matches $regex */
