@@ -84,14 +84,16 @@ final class InboxEvent extends Model
     /**
      * Parked rows whose re-drive time has arrived (Blueprint §7 F4).
      *
-     * $asOf defaults to now() (backward-compatible); redrive passes the injected
-     * clock's instant so recovery has ONE authoritative time source (R2).
+     * $asOf is REQUIRED — a re-drive decision is a scheduling input, so the
+     * authoritative instant MUST be injected (ClockInterface), never ambient
+     * (PB-003-C6A strict-clock rule; ADR-T temporal determinism). Ambient time
+     * is permitted only for audit stamps (processed_at), never for decisions.
      */
-    public function scopeParkedDue($query, ?\DateTimeInterface $asOf = null)
+    public function scopeParkedDue($query, \DateTimeInterface $asOf)
     {
         return $query->where('status', 'parked')
             ->whereNotNull('parked_until')
-            ->where('parked_until', '<=', $asOf ?? now());
+            ->where('parked_until', '<=', $asOf);
     }
 
     public function scopeForTenant($query, string $tenantId)

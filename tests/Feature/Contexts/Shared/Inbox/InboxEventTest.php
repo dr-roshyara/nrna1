@@ -123,7 +123,9 @@ final class InboxEventTest extends TestCase
         $processed = $this->row(['__org' => $organisation]);
         $processed->markProcessed();
 
-        $ids = InboxEvent::parkedDue()->pluck('id')->all();
+        // Strict-clock (C6A): the scope REQUIRES an injected instant — a re-drive
+        // decision must never read ambient time.
+        $ids = InboxEvent::parkedDue(new \DateTimeImmutable('now'))->pluck('id')->all();
         $this->assertSame([$due->id], $ids);
     }
 }
