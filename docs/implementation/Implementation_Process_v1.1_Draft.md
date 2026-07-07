@@ -14,6 +14,9 @@
 - **Test for a new permanent governance artifact:** it must (1) eliminate an existing artifact, (2) simplify the architecture, (3) generalize knowledge already proven by multiple examples, or (4) directly support implementation. Otherwise it is transitional and is retired once its knowledge is folded in.
 - *(Origin: 2026-07-07 governance maturity — architecture crossed from under-design risk to over-design risk; adopted via Decision Log D-13.)*
 
+**ER-06 — Ubiquitous Language before Published Language.** Whenever an integration/published contract would change, **first** verify the **ubiquitous language** (is the change hiding a Primitive-Obsession concept? what is the business/constitutional term?). Only after the domain concept and its term are settled may the **published language** (events, integration contracts) evolve — and the contract change is then a *consequence* of the language, not a convenience. Prefer the **constitutional/governance term** over an invented software concept.
+- *(Origin: 2026-07-07/08 — PB-004 DD-4: `TargetRef:string` (Primitive Obsession) → concept `ContestedOutcome` (certified BDR v1.1 term) + `TargetReference` VO, discovered by modeling meaning before reference; only then `DeterminationIssued v2`.)*
+
 ---
 
 ## Process gates — additions
