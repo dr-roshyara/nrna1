@@ -4,34 +4,35 @@ declare(strict_types=1);
 
 namespace App\Contexts\Shared\Infrastructure\Inbox;
 
-use App\Contexts\Shared\Application\Inbox\CausalPreconditionMissing;
-use App\Contexts\Shared\Application\Inbox\IdempotentReplay;
 use App\Contexts\Shared\Application\Inbox\InboxHandler;
 use App\Contexts\Shared\Application\Inbox\InboxMessage;
 use App\Contexts\Shared\Application\Inbox\InboxOutcome;
-use App\Contexts\Shared\Application\Inbox\PermanentInboxFailure;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 /**
- * The ONE idempotent-consumption mechanism (ADR-T4). A handler is invoked at
- * most once per (event_id, consumer_context); duplicates, out-of-order arrival,
- * and crashes are absorbed here so consuming contexts stay simple.
+ * Idempotent-consumption entry point for FRESH delivery (ADR-T4): dedupe-claims
+ * the (event_id, consumer_context) slot, then delegates run+classify to the
+ * shared {@see InboxExecutionEngine}. A handler is invoked at most once per
+ * (event_id, consumer_context); duplicates and races are absorbed here.
  *
  * Owner: Shared Infrastructure
  * Layer: Infrastructure (Laravel allowed; mirrors OutboxEventProcessor's direct
  *        DB::transaction convention — ER-03 sibling consistency)
- * Responsibility: dedupe-claim → invoke handler → classify outcome, in ONE txn
+ * Responsibility: dedupe-claim (fresh delivery) → delegate to execution engine, in ONE txn
  * Traceability: Blueprint §6/§7/§8 · ADR-T1 (one txn) · ADR-T4 (dedupe) · Matrix: Inbox
  *
+ * Classification lives in InboxExecutionEngine (shared with redrive) — Inbox does
+ * NOT accumulate runtime behaviours (no God Service). A PARKED row is never
+ * re-invoked here; retry timing is owned solely by redrive (D-10).
  * The wrapper never inspects payload semantics (Blueprint §6 context-boundary).
- * Exception classification is the handler's contract (Blueprint §8):
- *   CausalPreconditionMissing → Parked · IdempotentReplay → Processed
- *   PermanentInboxFailure → DeadLettered · other Throwable → rollback + rethrow.
  */
 final class Inbox
 {
+    public function __construct(private readonly InboxExecutionEngine $engine)
+    {
+    }
+
     public function consume(InboxMessage $message, InboxHandler $handler): InboxOutcome
     {
         $context = $handler->consumerContext();
@@ -66,7 +67,8 @@ final class Inbox
                     'park_attempts' => 0,
                 ]);
 
-                return $this->invoke($row, $message, $handler);
+                // Run + classify in the SAME transaction (shared with redrive).
+                return $this->engine->execute($row, $message, $handler);
             });
         } catch (QueryException $e) {
             // Concurrent claim of the same (event_id, consumer_context): the other
@@ -76,41 +78,6 @@ final class Inbox
             }
             throw $e;
         }
-    }
-
-    private function invoke(InboxEvent $row, InboxMessage $message, InboxHandler $handler): InboxOutcome
-    {
-        try {
-            $handler->handle($message);
-            $row->markProcessed();
-
-            return InboxOutcome::Processed;
-        } catch (CausalPreconditionMissing $e) {
-            $row->markParked(
-                now()->addMinutes((int) config('inbox.park_retry_minutes', 5)),
-                now()->addMinutes((int) config('inbox.park_deadline_minutes', 60)),
-            );
-
-            return InboxOutcome::Parked;
-        } catch (IdempotentReplay) {
-            $row->markProcessed();
-
-            return InboxOutcome::Processed;
-        } catch (PermanentInboxFailure $e) {
-            $row->markDead();
-            Log::error('Inbox message dead-lettered', [
-                'dead_letter_reason' => 'PERMANENT_HANDLER_FAILURE',
-                'event_id' => $row->event_id,
-                'consumer_context' => $row->consumer_context,
-                'event_type' => $row->event_type,
-                'organisation_id' => $row->organisation_id,
-                'error' => $e->getMessage(),
-            ]);
-
-            return InboxOutcome::DeadLettered;
-        }
-        // Any other Throwable propagates → DB::transaction rolls back (row insert
-        // undone) → relay redelivery retries cleanly (Blueprint §7 F5).
     }
 
     private function isUniqueViolation(QueryException $e): bool

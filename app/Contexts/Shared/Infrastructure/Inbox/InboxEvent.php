@@ -81,12 +81,17 @@ final class InboxEvent extends Model
         ]);
     }
 
-    /** Parked rows whose re-drive time has arrived (Blueprint §7 F4). */
-    public function scopeParkedDue($query)
+    /**
+     * Parked rows whose re-drive time has arrived (Blueprint §7 F4).
+     *
+     * $asOf defaults to now() (backward-compatible); redrive passes the injected
+     * clock's instant so recovery has ONE authoritative time source (R2).
+     */
+    public function scopeParkedDue($query, ?\DateTimeInterface $asOf = null)
     {
         return $query->where('status', 'parked')
             ->whereNotNull('parked_until')
-            ->where('parked_until', '<=', now());
+            ->where('parked_until', '<=', $asOf ?? now());
     }
 
     public function scopeForTenant($query, string $tenantId)
