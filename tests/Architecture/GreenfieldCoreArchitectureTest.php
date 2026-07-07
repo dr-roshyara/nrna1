@@ -33,6 +33,17 @@ final class GreenfieldCoreArchitectureTest extends TestCase
         'user_id', 'voter_id', 'voterId', 'voting_code', 'votingCode',
     ];
 
+    // AD-M1 (owner-hosts-the-guard, PGP-03/ADR-MP-03): anonymity is a CONSTITUTIONAL
+    // invariant owned here, so this suite hosts its guard. The Messaging Platform
+    // (Shared messaging surface) merely PRESERVES anonymity and contributes its files
+    // as scan inputs — it must not host the guarantee it does not own. Relocated from
+    // the retired InboxMessagingArchitectureTest property #11.
+    private const MESSAGING_SURFACE = [
+        'app/Contexts/Shared/Application/Inbox',
+        'app/Contexts/Shared/Infrastructure/Inbox',
+        'app/Contexts/Shared/Infrastructure/Outbox',
+    ];
+
     private const FORBIDDEN_FRAMEWORK_IMPORTS = [
         'Illuminate\\', 'Laravel\\', 'Eloquent', 'Carbon\\',
     ];
@@ -47,11 +58,15 @@ final class GreenfieldCoreArchitectureTest extends TestCase
         }
     }
 
-    // ── AT-Q7-001: no voter<->vote linkage anywhere in the Core ──────
+    // ── AT-Q7-001: no voter<->vote linkage in the Core OR the messaging surface ──
+    // Owner (constitution) hosts the guard; the messaging surface is a scan input
+    // (AD-M1). The Core must be anonymity-clean, and the transport must never
+    // introduce/carry linkage either.
     public function test_at_q7_001_no_voter_vote_linkage(): void
     {
         $violations = [];
-        foreach (self::CONTEXTS as $base) {
+        $scanRoots = array_merge(array_values(self::CONTEXTS), self::MESSAGING_SURFACE);
+        foreach ($scanRoots as $base) {
             foreach ($this->phpFiles($base) as $file) {
                 $content = file_get_contents($file->getRealPath());
                 foreach (self::FORBIDDEN_LINKAGE_TOKENS as $token) {

@@ -38,11 +38,11 @@ final class InboxMessagingArchitectureTest extends TestCase
 
     private const FRAMEWORK_IMPORTS = ['Illuminate\\', 'Laravel\\', 'Eloquent', 'Carbon\\'];
 
-    // ADR-T11 / Q7 — anonymity is an always-invariant. The messaging transport
-    // must never carry voter<->vote linkage (payload, columns, or log context).
-    private const FORBIDDEN_LINKAGE_TOKENS = [
-        'user_id', 'voter_id', 'voterId', 'voting_code', 'votingCode',
-    ];
+    // NOTE (AD-M1): anonymity is a CONSTITUTIONAL invariant that Messaging PRESERVES
+    // but does not OWN. Its executable guard is hosted by the owner's suite —
+    // GreenfieldCoreArchitectureTest::test_at_q7_001_no_voter_vote_linkage now scans
+    // the Shared messaging surface. Per owner-hosts-the-guard (PGP-03/ADR-MP-03), this
+    // suite no longer hosts that guard.
 
     /** Handler-outcome classification markers (Blueprint §8). */
     private const CLASSIFICATION_MARKERS = [
@@ -109,26 +109,7 @@ final class InboxMessagingArchitectureTest extends TestCase
         $this->assertEmpty($violations, "Messaging ownership violated — Shared references business code:\n" . implode("\n", $violations));
     }
 
-    // ── 3b. Anonymity (ADR-T11 / Q7): messaging carries no voter<->vote linkage ──
-    // The transport must never introduce a token that could link a voter to a vote —
-    // not in the message DTO, the persistence model/columns, or a dead-letter log.
-    // (ARR finding F-1: the pre-existing linkage guard scoped only to the greenfield
-    // Core; the messaging subsystem itself was unguarded.)
-    public function test_messaging_layer_has_no_voter_vote_linkage(): void
-    {
-        $violations = [];
-        foreach ([self::PORT, self::INFRA] as $dir) {
-            foreach ($this->phpFiles($dir) as $file) {
-                $content = file_get_contents($file->getRealPath());
-                foreach (self::FORBIDDEN_LINKAGE_TOKENS as $token) {
-                    if (str_contains($content, $token)) {
-                        $violations[] = sprintf('%s contains forbidden linkage token "%s"', $file->getBasename(), $token);
-                    }
-                }
-            }
-        }
-        $this->assertEmpty($violations, "Anonymity violation (ADR-T11) in messaging transport:\n" . implode("\n", $violations));
-    }
+    // (Anonymity guard relocated to the constitutional suite — see AD-M1 note above.)
 
     // ── 4. Single writer: only the messaging package owns the persistence model ──
     public function test_inbox_persistence_model_has_a_single_owning_package(): void

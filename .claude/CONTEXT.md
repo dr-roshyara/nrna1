@@ -18,11 +18,12 @@ PB-003 (Inbox) → **Platform Capability Certification (D-11 gate)** → PB-004 
 None. PB-003 is Verified/Certified; PB-004 is unblocked (needs its IDD first).
 
 ## Next action (exactly one)
-**AWAIT ARB ratification of one open item — G-1** (release numbering: "AKB 1.2" collides with roadmap §4; tag neutralized, recorded in AKB §8). Then begin executable architecture RED-first (hosted per PGP-03/ADR-MP-03), **starting with AD-M1** (relocate the anonymity guard to the Constitutional suite) as the first consumer of the governance. Pattern is **STABLE** (validated vs Notification + Identity); G-2 resolved (PGP is a *chapter* of the one Architecture Principles constitution); G-3 accepted (scoped re-foldering); the transition-only Governance Integration Report was **retired** (knowledge folded into AKB §8 / PGP chapter / Pattern §8 / ADR-MP). Anti-proliferation rule adopted (AKB §8). **Do NOT start executable tests/code until G-1 ratified; do NOT start PB-004** (needs its own IDD).
+**PB-004 (Election Reaction) — write the IDD FIRST** (Architecture Review Gate; propose → review → approve before any code). Architecture is frozen (D-13) and implementation-driven now; the Messaging Platform is a certified, frozen contract. PB-004 consumes it by implementing an `InboxHandler` + registering it — no change to Shared. AD-M1 ✔ (governance validated); AD-M2 deferred; G-1 trivial/pending.
 
-## Architecture debt (tracked; not blockers)
-- **AD-M1** — relocate the anonymity guard from `InboxMessagingArchitectureTest` (C6B property #11) to the **Constitutional** suite (owner-hosts-the-guard, D-12/Q2). Remediate via Finding→ADR→RED→GREEN.
-- **AD-M2** — decide Outbox formal Application port / hexagonal symmetry (D-12/Q5) — future ADR, only under business pressure.
+## Architecture debt (tracked)
+- **AD-M1 — RESOLVED (2026-07-07).** Anonymity guard relocated to the constitutional suite (`GreenfieldCoreArchitectureTest::test_at_q7_001_no_voter_vote_linkage` now scans the Shared messaging surface incl. Outbox); property #11 removed from the Inbox test. RED→GREEN proven; Architecture suite 142✔/1 skip; greenfield PHPStan clean. First implementation validating PGP-03.
+- **AD-M2** — decide Outbox formal Application port / hexagonal symmetry (ADR-MP-05/Q5) — future ADR, only under business pressure.
+- **G-1** (trivial, pending) — release numbering for the governance addition ("AKB 1.2" collides with roadmap §4); tag neutralized; recommend a non-colliding tag.
 
 ## Parallel tracks (not active this session)
 - Governance: 38D-02 Capability Relationships (after ARB digests 38D-01)
