@@ -11,7 +11,7 @@
 | PB-001 | Event Registry | **Verified** | `██████████` 100% | 8/8 | S | Low | — | election-audit | 2026-07-06 |
 | PB-002 | Relay Registry | **Verified** | `██████████` 100% | 9/9 | M | Low | PB-001 | election-audit | 2026-07-06 |
 | PB-003 | Inbox / Deduplication | **Verified / Certified** (C6B ✔ 528619ba6, ARR) | `██████████` 100% (all groups ✔ · ARR CERTIFIED) | 18/18 | L | Resolved | PB-001 ✔ PB-002 ✔ | feature/pb003 | 2026-07-07 |
-| PB-004 | Election Reaction | Designed | 0% | 0/22 *(est.)* | XL | High | PB-003 | — | 2026-07-06 |
+| PB-004 | Election Reaction | **Event Storming ✔ · IDD drafted** (awaiting ARB + DD-4 ruling) | 0% | 0/22 *(est.)* | XL | High | PB-003 ✔ | feature/pb004 (pending) | 2026-07-07 |
 | PB-005 | Contestation Reaction + infra | Designed | 0% | 0/24 *(est.)* | XL | High | PB-003, PB-004 | — | 2026-07-06 |
 | PB-006 | Integration Tests IT-1..IT-8 | Designed | 0% | 0/12 *(est.)* | L | Medium | PB-004, PB-005 | — | 2026-07-06 |
 | PB-007 | Merge Gate (+F-1, F-2) | Designed | 0% | 0/10 *(est.)* | M | Low | PB-006 | — | 2026-07-06 |

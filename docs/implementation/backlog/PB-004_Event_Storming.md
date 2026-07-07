@@ -1,6 +1,6 @@
 # PB-004 Election Reaction — Mini Event Storming (one page)
 
-**Status:** discovery artifact for ARB review · **2026-07-07** · precedes the PB-004 IDD (the IDD must trace back to this model). No implementation.
+**Status:** **APPROVED by ARB with rulings** (OQ-1…OQ-4 resolved below) · **2026-07-07** · the PB-004 IDD (`PB-004_Election_Reaction_Implementation_Design.md`) traces to this model. No implementation.
 **Evidence:** Catalog 50-05 · Policy 50-06 · ADR-T1/T8/T14/T16/T20 · D-01/D-02 · Blueprint §6/§7. Grounded, not invented (ER-02).
 
 ---
@@ -31,11 +31,19 @@ DeterminationIssued          Election reaction            ElectionCorrectionAppl
 
 ---
 
-## Open questions for ARB (resolve before the IDD traces to this model)
-- **OQ-1 — Aggregate home:** greenfield `app/Contexts/Election` reaction slice, or extend the legacy Election/Lifecycle engine? (Reaction is Core + Integration; greenfield Core precedent = Contestation/Adjudication.)
-- **OQ-2 — Dismissed path:** confirm Election emits **nothing** on Dismissed (D-02 "stays silent"), i.e. no `ElectionCorrectionApplied`, and whether an internal no-correction audit fact is wanted.
-- **OQ-3 — Ruling→correctionType map:** confirm the authoritative mapping (incl. `Accept` = Upheld-but-accept, D-02) and that it is owned solely by Election (`CorrectionTypeDecision`).
-- **OQ-4 — Idempotency:** Inbox dedupe is `(event_id, consumer_context)`; add an aggregate-level guard on `(determinationId, electionId)` to make re-application impossible even across replay?
+## ARB rulings (2026-07-07 — RESOLVED)
+- **OQ-1 → Greenfield `Election` bounded context.** Do NOT extend the legacy Lifecycle engine. New behavior driven by constitutional determinations belongs in a context with its own ubiquitous language/aggregates/policies; extending legacy blurs responsibility and hinders migration. The new `Election` context is initially a **consumer** exposing only the **minimum reaction behavior**.
+- **OQ-2 → Dismissed = no correction, no event.** A dismissal is a legal conclusion that no corrective action is required; silence is a valid business outcome. The Inbox message is still marked **Processed** (operational), but no correction workflow starts.
+- **OQ-3 → Ruling→CorrectionType mapping is owned by the Election context.** Adjudication decides *what was decided*; Election decides *how it affects election state*. Adjudication never encodes election-specific correction semantics (bounded-context autonomy).
+- **OQ-4 → Idempotency at BOTH levels.** Infra: Messaging dedupe `(event_id, consumer_context)` (same message not reprocessed). Domain: the Election aggregate guarantees the same determination cannot produce multiple corrections. Different responsibilities — neither replaces the other.
+
+## Consistency boundary (ARB refinement — explicit)
+```text
+Inbox Message ─► Election Aggregate ─► ElectionCorrectionApplied ─► Outbox
+└──────────────── ONE transactional consistency boundary ─────────────┘
+                     (everything beyond it is EVENTUALLY consistent)
+```
+One transaction spans: consume-claim → aggregate decision+write → correction event to outbox. Cross-context propagation (→ Contestation resolve, PB-005) is eventual.
 
 ---
 
