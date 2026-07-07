@@ -18,10 +18,10 @@ PB-003 (Inbox) → **Platform Capability Certification (D-11 gate)** → PB-004 
 None. PB-003 is Verified/Certified; PB-004 is unblocked (needs its IDD first).
 
 ## Next action (exactly one)
-**PB-004 (Election Reaction) — write the IDD FIRST** (Architecture Review Gate; propose → review → approve before any code). Architecture is frozen (D-13) and implementation-driven now; the Messaging Platform is a certified, frozen contract. PB-004 consumes it by implementing an `InboxHandler` + registering it — no change to Shared. AD-M1 ✔ (governance validated); AD-M2 deferred; G-1 trivial/pending.
+**AWAIT ARB sign-off of the PB-004 Mini Event Storming** (`docs/implementation/backlog/PB-004_Event_Storming.md`) + rulings on OQ-1…OQ-4 (esp. OQ-1: greenfield `app/Contexts/Election` vs legacy Lifecycle). ARR Gate re: Messaging = **PASS** (consume-only, no Shared change). On sign-off → write the PB-004 IDD tracing to the Event Storming → RED → GREEN → regression → evidence. Sequence per architect: **Event Storming → IDD → RED**. Do NOT write the IDD or any code until the Event Storming is signed off; do NOT modify the frozen Messaging Platform.
 
 ## Architecture debt (tracked)
-- **AD-M1 — RESOLVED (2026-07-07).** Anonymity guard relocated to the constitutional suite (`GreenfieldCoreArchitectureTest::test_at_q7_001_no_voter_vote_linkage` now scans the Shared messaging surface incl. Outbox); property #11 removed from the Inbox test. RED→GREEN proven; Architecture suite 142✔/1 skip; greenfield PHPStan clean. First implementation validating PGP-03.
+- **AD-M1 — RESOLVED (2026-07-07) · category: Architecture Fitness Evolution** (no domain change — only *where* the fitness guard lives). Anonymity guard relocated to the constitutional suite (`GreenfieldCoreArchitectureTest::test_at_q7_001_no_voter_vote_linkage` now scans the Shared messaging surface incl. Outbox); property #11 removed from the Inbox test. RED→GREEN proven; Architecture suite 142✔/1 skip; greenfield PHPStan clean. First fitness change validating PGP-03.
 - **AD-M2** — decide Outbox formal Application port / hexagonal symmetry (ADR-MP-05/Q5) — future ADR, only under business pressure.
 - **G-1** (trivial, pending) — release numbering for the governance addition ("AKB 1.2" collides with roadmap §4); tag neutralized; recommend a non-colliding tag.
 

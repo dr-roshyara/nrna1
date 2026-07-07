@@ -1,7 +1,7 @@
 # Messaging Platform — Architecture
 
 **AKB layer:** L-Platform-Capabilities (first instance) · **Release tag:** *pending ARB ratification* — "AKB 1.2" collides with the AKB roadmap §4; see Governance Integration Report **G-1**.
-**Status:** Instance #1 of the Platform Capability pattern (`patterns/Platform_Capability_Pattern.md`) · **FROZEN** (D-13; change only via ADR + review) · **2026-07-07**. Executable architecture now proceeds implementation-driven (AD-M1 first).
+**Status:** Instance #1 of the Platform Capability pattern (`patterns/Platform_Capability_Pattern.md`) · **2026-07-07**. **Granular freeze (D-13):** the **Architectural Contract** — §§1–8 & 11 (purpose · business problem · strategic context · DDD classification · boundaries · ownership · invariants · extension model · ADR traceability) — is **FROZEN** (change only via ADR + review). **Implementation & Operational Notes** — §§9–10 & 12 (fitness-function *plan* · operational model · evolution) — are **LIVING** (evolve with implementation evidence; no ADR needed). Consumers depend on the frozen contract; implementation ADRs must not reopen it.
 **Traceability:** `Messaging_Platform_Strategic_Model.md` · `..._Review.md` · principles `principles/Platform_Governance_Principles.md` (PGP-01…05) · decisions `../adr/ADR-MP-Messaging-Platform.md` (ADR-MP-01…05) · Blueprint §6/§7/§8 · ADR-T1/T3/T4/T5/T8/T11/T16.
 **Constraint:** this document is design + planning only. No production code, no tests. §9 *plans* the executable architecture; it does not implement it.
 

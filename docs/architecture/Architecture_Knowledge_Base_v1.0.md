@@ -101,7 +101,8 @@ An explicit **knowledge hierarchy** overlaid on the document *levels* of §1 (§
 | ADR-MP-01…05 | (decisions) | L4 | Living (decision records) |
 
 ### Governance rules for this layer
-- **Architecture Convergence → see ER-05** (Decision Log D-13; folds into Process v1.1). Every iteration reduces/maintains complexity; prefer merging/simplifying/retiring over new permanent artifacts. *(Single source of truth — not restated here, per ER-05 itself.)*
+- **Architecture Convergence → see ER-05** (canonical home: `../implementation/Implementation_Process_v1.1_Draft.md`; adopted via D-13). Every iteration reduces/maintains complexity. *(Single source of truth — not restated here, per ER-05 itself.)*
+- **ARR Gate** (consume-vs-change a frozen Platform Capability) → same Process v1.1 draft.
 - **Governance lifecycle for L2–L4 (authoritative docs):** change via **Proposal → Review → Ratification → Publication** (not propose→merge).
 - **One constitution, many chapters:** new principle areas (security, testing, ops) become *chapters* of the Architecture Principles constitution — never new constitutions.
 
