@@ -1,6 +1,14 @@
 # PHPStan — static analysis for the greenfield Core (ADR-T7).
 # Scoped to Contestation + Adjudication + Election at max level; widen as contexts migrate.
 #
+# STAGED QUALIFICATION (why Election is here but not yet in GreenfieldCoreArchitectureTest):
+# these are DIFFERENT gates. PHPStan verifies TYPE CORRECTNESS — it needs no particular
+# layer layout, so a partial context (Domain + Application) qualifies immediately. The
+# Architecture Fitness test verifies STRUCTURAL COMPLETENESS — it asserts a complete
+# Hexagonal context (Domain + Application + Infrastructure), so Election joins it only when
+# its Infrastructure layer lands. A context participating in static analysis before
+# structural verification is a staged qualification, NOT an inconsistency.
+#
 # Activate:  composer require --dev phpstan/phpstan
 # Run:       vendor/bin/phpstan analyse -c phpstan-greenfield.neon
 parameters:
