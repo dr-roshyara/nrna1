@@ -65,7 +65,7 @@ public function handle(InboxMessage $message): void
     $electionId      = $this->electionScopeOf($message);                 // v1 ⇒ DeterminationLacksElectionScope
     $determinationId = DeterminationId::fromString(/* payload */);
     $outcome         = RulingOutcome::from(/* payload 'outcome' */);
-    $appliedAt       = new DateTimeImmutable(/* payload 'occurredAt' */); // time received, not discovered
+    $appliedAt       = $this->clock->now();                              // APPLICATION timestamp (injected clock)
 
     $election = $this->elections->find($electionId);
     if ($election === null) {
@@ -77,7 +77,7 @@ public function handle(InboxMessage $message): void
 }
 ```
 
-Note `applyDetermination` receives its timestamp — the reaction time comes from the inbound event, never from an ambient clock.
+**`appliedAt` is the application timestamp** (Step 4A.1, ARB Q1 ruling): it records *when the Election bounded context applies the correction*, read from the injected `App\Domain\Shared\Clock\ClockInterface` (`SystemClock` in production, `FrozenClock` in tests). This is a **different fact** from the determination's issuance time — `DeterminationIssued.occurredAt` (say 10:00) and `ElectionCorrectionApplied.appliedAt` (say 10:04) coexist unmutated; the gap is real (inbox latency) and matters for latency/audit/replay. The determination's `occurredAt` is still parsed and available in the handler, but is intentionally **never** assigned to `appliedAt`; if ever surfaced it travels as its own attribute.
 
 ## How to use / extend
 
@@ -103,4 +103,4 @@ Gates: 13/13 Election unit tests · greenfield PHPStan (Election now in scope) �
 
 ## Traceability
 
-PB-004 Step 3 (GREEN) · ADR-T8 (forward-only correction loop) · ADR-T11 (anonymity) · ADR-T16 (local VOs, tenant-free domain) · ADR-UL-01 (ContestedOutcome) · ADR-PL-01 (DeterminationIssued schema v2) · D-02 (Dismissed ⇒ no correction) · OQ-3 (Election owns the correction policy) · Canonical Event Catalog 50-05 · ARB rulings (round 2: v1/unknown; round 3: cross-org + repository boundary refinement + semantic-duplicate test).
+PB-004 Step 3 (GREEN) · Step 4A.1 (`appliedAt` = application timestamp via injected `ClockInterface`; ARB Q1) · ADR-T8 (forward-only correction loop) · ADR-T11 (anonymity) · ADR-T16 (local VOs, tenant-free domain) · ADR-UL-01 (ContestedOutcome) · ADR-PL-01 (DeterminationIssued schema v2) · D-02 (Dismissed ⇒ no correction) · OQ-3 (Election owns the correction policy) · Canonical Event Catalog 50-05 · ER-08 (reviews record, implementations repair) · ARB rulings (round 2: v1/unknown; round 3: cross-org + repository boundary refinement + semantic-duplicate test; Step 4A.1: temporal correction).

@@ -13,6 +13,7 @@ use App\Contexts\Election\Domain\Repository\ElectionRepository;
 use App\Contexts\Election\Domain\RulingOutcome;
 use App\Contexts\Shared\Application\Inbox\InboxHandler;
 use App\Contexts\Shared\Application\Inbox\InboxMessage;
+use App\Domain\Shared\Clock\ClockInterface;
 use DateTimeImmutable;
 
 /**
@@ -36,6 +37,7 @@ final class DeterminationIssuedReactionHandler implements InboxHandler
     public function __construct(
         private readonly ElectionRepository $elections,
         private readonly ReactionEventOutbox $outbox,
+        private readonly ClockInterface $clock,
     ) {
     }
 
@@ -57,7 +59,16 @@ final class DeterminationIssuedReactionHandler implements InboxHandler
         $electionId = $this->electionScopeOf($message);
         $determinationId = DeterminationId::fromString($this->stringField($message->payload, 'determinationId'));
         $outcome = RulingOutcome::from($this->stringField($message->payload, 'outcome'));
-        $appliedAt = new DateTimeImmutable($this->stringField($message->payload, 'occurredAt'));
+
+        // The determination's ISSUANCE time. Parsed and available, but intentionally NOT
+        // used as the correction's timestamp: `appliedAt` records when THIS context applies
+        // the correction, a distinct fact (ARB Q1 ruling). Retained for future latency /
+        // audit / replay use — if ever surfaced it travels as its own attribute, never as
+        // `appliedAt`.
+        $determinationIssuedAt = new DateTimeImmutable($this->stringField($message->payload, 'occurredAt'));
+
+        // Application timestamp: when the Election bounded context applies the correction.
+        $appliedAt = $this->clock->now();
 
         $election = $this->elections->find($electionId);
         if ($election === null) {

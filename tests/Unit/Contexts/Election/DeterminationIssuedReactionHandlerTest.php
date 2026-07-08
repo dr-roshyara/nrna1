@@ -14,6 +14,7 @@ use App\Contexts\Election\Domain\Exception\DeterminationLacksElectionScope;
 use App\Contexts\Election\Domain\Repository\ElectionRepository;
 use App\Contexts\Shared\Application\Inbox\InboxHandler;
 use App\Contexts\Shared\Application\Inbox\InboxMessage;
+use App\Infrastructure\Shared\Clock\FrozenClock;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -59,7 +60,7 @@ final class DeterminationIssuedReactionHandlerTest extends TestCase
 
     public function test_handler_is_an_election_inbox_consumer_for_determination_issued(): void
     {
-        $handler = new DeterminationIssuedReactionHandler($this->repositoryScopedTo('org-1'), $this->outbox());
+        $handler = $this->handler($this->repositoryScopedTo('org-1'), $this->outbox());
 
         $this->assertInstanceOf(InboxHandler::class, $handler);
         $this->assertSame('Election', $handler->consumerContext());
@@ -71,14 +72,23 @@ final class DeterminationIssuedReactionHandlerTest extends TestCase
         $outbox = $this->outbox();
         // The Election already EXISTS in the ambient org (org-1) — the handler resolves and applies to it.
         $repo = $this->repositoryScopedTo('org-1', ElectionId::fromString('election-77'), 'org-1');
+        $message = $this->schemaV2Message('org-1');
 
-        (new DeterminationIssuedReactionHandler($repo, $outbox))->handle($this->schemaV2Message('org-1'));
+        // Application timestamp (when Election applies the correction) is 10:04 — deliberately
+        // LATER than the determination's issuance time (10:00) carried in the payload.
+        $this->handler($repo, $outbox)->handle($message);
 
         $this->assertCount(1, $outbox->events);
         $this->assertInstanceOf(ElectionCorrectionApplied::class, $outbox->events[0]);
         // Proves the local model was reconstructed from contestedOutcome.electionId:
         $this->assertSame('election-77', $outbox->events[0]->electionId->toString());
         $this->assertSame('det-9', $outbox->events[0]->determinationId->toString());
+
+        // Both timestamps coexist, unmutated, and are DIFFERENT facts:
+        //  - DeterminationIssued.occurredAt (issuance) stays 10:00 on the inbound message;
+        //  - ElectionCorrectionApplied.appliedAt (application) is the clock's 10:04.
+        $this->assertSame('2026-07-08T10:00:00+00:00', $message->payload['occurredAt']);
+        $this->assertSame('2026-07-08T10:04:00+00:00', $outbox->events[0]->appliedAt->format(DATE_ATOM));
     }
 
     // (A) schema v1 is historically valid but lacks the election scope this consumer
@@ -101,7 +111,7 @@ final class DeterminationIssuedReactionHandlerTest extends TestCase
         );
 
         $this->expectException(DeterminationLacksElectionScope::class);
-        (new DeterminationIssuedReactionHandler($this->repositoryScopedTo('org-1'), $this->outbox()))->handle($v1);
+        $this->handler($this->repositoryScopedTo('org-1'), $this->outbox())->handle($v1);
     }
 
     // (B) unknown Election → rejected, NEVER derived. Election reacts to existing
@@ -112,7 +122,7 @@ final class DeterminationIssuedReactionHandlerTest extends TestCase
         $outbox = $this->outbox();
 
         try {
-            (new DeterminationIssuedReactionHandler($repo, $outbox))->handle($this->schemaV2Message('org-1'));
+            $this->handler($repo, $outbox)->handle($this->schemaV2Message('org-1'));
             $this->fail('Expected CannotApplyDeterminationToUnknownElection');
         } catch (CannotApplyDeterminationToUnknownElection) {
             $this->assertSame([], $outbox->events, 'no correction may be emitted for an unknown election');
@@ -129,10 +139,23 @@ final class DeterminationIssuedReactionHandlerTest extends TestCase
         $outbox = $this->outbox();
 
         $this->expectException(CannotApplyDeterminationToUnknownElection::class);
-        (new DeterminationIssuedReactionHandler($repo, $outbox))->handle($this->schemaV2Message('org-1'));
+        $this->handler($repo, $outbox)->handle($this->schemaV2Message('org-1'));
     }
 
     // ── intended in-memory collaborators (define the intended Election ports) ──
+
+    /**
+     * Build the handler with a FROZEN application clock. The default 10:04 is deliberately
+     * later than the payload's determination-issuance time (10:00), so tests can prove the
+     * event records the application timestamp, not the determination's.
+     */
+    private function handler(
+        ElectionRepository $repository,
+        ReactionEventOutbox $outbox,
+        string $applicationTimestamp = '2026-07-08T10:04:00+00:00',
+    ): DeterminationIssuedReactionHandler {
+        return new DeterminationIssuedReactionHandler($repository, $outbox, FrozenClock::at($applicationTimestamp));
+    }
 
     /**
      * A repository already scoped to the ambient organisation (as the concrete Eloquent
