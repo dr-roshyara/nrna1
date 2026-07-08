@@ -85,4 +85,23 @@ final class Election
 
         return $events;
     }
+
+    public function id(): ElectionId
+    {
+        return $this->id;
+    }
+
+    /**
+     * The determinations this election has applied — the idempotency set a repository
+     * persists as the greenfield reaction state.
+     *
+     * @return list<DeterminationId>
+     */
+    public function appliedDeterminationIds(): array
+    {
+        return array_map(
+            static fn (string $id): DeterminationId => DeterminationId::fromString($id),
+            array_keys($this->appliedDeterminations),
+        );
+    }
 }

@@ -99,6 +99,7 @@ public function find(ElectionId $id): ?Election {
 6. **No cross-system transaction** — existence is a read; the correction write is Election's own transaction (ADR-T1).
 7. The **domain never knows** whether existence is provided by legacy or by a future greenfield implementation — it only sees `ElectionRepository::find()`.
 8. The **ACL is removable without domain change** — the Strangler exit is a single binding swap (legacy adapter → greenfield adapter).
+9. **Aggregate Reconstruction Invariant** — the Election aggregate is reconstructed from **multiple persistence sources** (legacy *existence* + greenfield *reaction state*); **no single source is individually authoritative for the aggregate as a whole**. Concretely: `Election ≠ legacy row`; `Aggregate = legacy existence + greenfield reaction state`. Future developers must not assume `Election == the legacy elections row`.
 
 ### ARB rulings folded in
 - Port is a **business-oriented `ElectionExistencePort`** with `exists()` (not `ElectionDirectory`/`knows()`).
@@ -110,8 +111,56 @@ public function find(ElectionId $id): ?Election {
 - **Improve PublicDigit delivery?** Yes — a correct, existence-grounded reaction without prematurely building Election lifecycle.
 - **Architectural entropy?** Reduced — legacy coupling contained behind one explicit, removable port; domain stays autonomous; ownership made explicit.
 
+## Step 4A.3 — RED Test Matrix + failure ownership (IDD; awaiting ARB approval BEFORE any RED)
+
+### Who owns the failure? (closing the IDD gap the ARB flagged)
+The IDD defined *exists* and *doesn't exist*; it did not define *cannot determine existence*. Decision (an application of the frozen messaging failure taxonomy, Blueprint §8 — **IDD-level, not a new ADR**):
+
+| Situation | Classification | Handled where | Message outcome |
+|---|---|---|---|
+| Election exists | — | apply correction | Processed |
+| Election **absent** (queried OK, no row / other org / soft-deleted) | **business absence** — domain/application | `CannotApplyDeterminationToUnknownElection` (business exception) | permanent → dead-letter/incident (never retried as transient) |
+| Existence **cannot be determined** (legacy DB down, query error) | **infrastructure failure** | infra exception **propagates unchanged**; Application does NOT translate it to "unknown"; Domain never sees it | transient → inbox wrapper rolls back, relay redelivers (F5) |
+
+**Load-bearing invariant:** the ACL adapter returns `false` **only** for a *successful* query with no matching row. On a query/connection failure it **throws** (never returns `false`) — otherwise a transient infra fault would be misclassified as a permanent business absence and wrongly dead-lettered. *Business absence ≠ infrastructure failure.*
+
+### RED Test Matrix (behaviour → expected; write RED from THIS, not from implementation structure)
+**Composition logic — unit, in-memory doubles (fast, no DB; ER-07 behaviour):**
+| # | Scenario | Expected |
+|---|---|---|
+| 1 | existence=true, no prior corrections | `find()` → Election; `applyDetermination` emits 1 `ElectionCorrectionApplied` |
+| 2 | existence=false | `find()` → null → handler raises `CannotApplyDeterminationToUnknownElection`; no event |
+| 3 | existence=true, determination already applied (prior in store) | reconstituted with prior set → reapply idempotent; no event |
+| 4 | existence port **throws** (infra) | exception **propagates** (NOT converted to unknown-election); no event |
+
+**Legacy ACL adapter — Feature/DB (`LegacyElectionExistenceAdapter` over real `elections`):**
+| # | Scenario | Expected |
+|---|---|---|
+| 5 | legacy row present in ambient org | `exists()` → true |
+| 6 | legacy row present, **different** org | `exists()` → false (tenant isolation) |
+| 7 | legacy row **soft-deleted** | `exists()` → false |
+| 8 | no legacy row | `exists()` → false |
+
+*(Anonymity is structural, not a runtime assertion: the adapter queries `elections` only — a table with no vote/voter columns — so no anonymity data is reachable. Invariant #5.)*
+
+**Corrections store + composite repository — Feature/DB (end-to-end reconstruction):**
+| # | Scenario | Expected |
+|---|---|---|
+| 9 | `save(Election)` with an applied determination | row persisted, org-scoped; `appliedDeterminations(id)` returns it |
+| 10 | save same applied determination twice | single row (tenant-scoped unique) — persistence idempotent |
+| 11 | legacy election exists + store has prior det → `find()` | Election reconstituted with prior applied set (cross-reload idempotency) |
+| 12 | legacy election exists + no corrections → `find()` then apply + `save()` | reconstitutes empty set → first correction applies and persists |
+
+### Conventions to mirror — and debt to NOT inherit
+Mirror: pgsql `nrna_test` harness · `Tests\TestCase` base · real `Organisation` + `TenantContext::set()` in `setUp()` · migration loading via a context `ElectionServiceProvider` registered in `config/app.php` · `updateOrCreate`/tenant-trait repository style.
+Do **not** inherit: the belt-and-suspenders duplicate `use RefreshDatabase` (base already has it) · reliance on the platform-org-slug fallback (`'platform'` vs `'publicdigit'` mismatch) — always set `TenantContext` explicitly · any naming/shortcut that doesn't fit the Election ubiquitous language.
+
+**Do NOT test `TenantContext` internals** (verified elsewhere): tests observe only externally-visible tenant *behaviour* — same tenant → found, different tenant → not found — never *how* tenant resolution is implemented.
+
+**STOP — awaiting ARB approval of this matrix + failure decision before writing RED.**
+
 ## Next (not authorized yet)
-- **Step 4A.2** — *(design above; awaiting ARB review before 4A.3)*.
+- **Step 4A.2 / 4A.3** — *(design + RED matrix above; RED begins on ARB approval)*.
 - **Step 4A.3** — persistence for the reaction (corrections/idempotency store) once existence has a source.
 - **Step 4B** — messaging integration (outbox adapter · inbox registry wiring · `ElectionCorrectionApplied` hydrator).
 - **Step 4C** — architecture qualification (extend `GreenfieldCoreArchitectureTest` to Election as a complete hexagonal context · full regression · docs · Completion Review).
