@@ -6,7 +6,7 @@ namespace App\Contexts\Contestation\Application;
 
 use App\Contexts\Contestation\Application\Exception\AwaitingAdjudication;
 use App\Contexts\Contestation\Application\Exception\DeterminationAlreadyApplied;
-use App\Contexts\Contestation\Application\Inbox\ChallengeReactionInboxTranslator;
+use App\Contexts\Contestation\Application\Inbox\ChallengeReactionOutcomeTranslator;
 use App\Contexts\Contestation\Domain\Challenge\ChallengeId;
 use App\Contexts\Contestation\Domain\Challenge\DeterminationId;
 use App\Contexts\Contestation\Domain\Challenge\DeterminationOutcome;
@@ -21,7 +21,7 @@ use App\Domain\Shared\Clock\ClockInterface;
  * Challenge. Thin — it reconstructs local identities (ADR-T16), applies the application
  * timestamp (injected clock), delegates the business decision to
  * {@see ChallengeAdjudicationReaction}, and TRANSLATES any business condition into a
- * Messaging Platform marker via {@see ChallengeReactionInboxTranslator}. The messaging
+ * Messaging Platform marker via {@see ChallengeReactionOutcomeTranslator}. The messaging
  * vocabulary lives only in the translator.
  */
 final class AdjudicateChallengeHandler implements InboxHandler
@@ -29,7 +29,7 @@ final class AdjudicateChallengeHandler implements InboxHandler
     public function __construct(
         private readonly ChallengeAdjudicationReaction $reaction,
         private readonly ClockInterface $clock,
-        private readonly ChallengeReactionInboxTranslator $translator,
+        private readonly ChallengeReactionOutcomeTranslator $translator,
     ) {
     }
 

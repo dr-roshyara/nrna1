@@ -6,7 +6,7 @@ namespace App\Contexts\Contestation\Application;
 
 use App\Contexts\Contestation\Application\Exception\AwaitingAdjudication;
 use App\Contexts\Contestation\Application\Exception\DeterminationAlreadyApplied;
-use App\Contexts\Contestation\Application\Inbox\ChallengeReactionInboxTranslator;
+use App\Contexts\Contestation\Application\Inbox\ChallengeReactionOutcomeTranslator;
 use App\Contexts\Contestation\Domain\Challenge\DeterminationId;
 use App\Contexts\Contestation\Domain\Challenge\Exception\IllegalChallengeTransition;
 use App\Contexts\Shared\Application\Inbox\InboxHandler;
@@ -25,7 +25,7 @@ final class ResolveChallengeHandler implements InboxHandler
     public function __construct(
         private readonly ChallengeResolutionReaction $reaction,
         private readonly ClockInterface $clock,
-        private readonly ChallengeReactionInboxTranslator $translator,
+        private readonly ChallengeReactionOutcomeTranslator $translator,
     ) {
     }
 

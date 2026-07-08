@@ -21,7 +21,7 @@ use Throwable;
  *   ConflictingDetermination     → PermanentInboxFailure     (dead-letter + escalate)
  *   IllegalChallengeTransition   → PermanentInboxFailure
  */
-final class ChallengeReactionInboxTranslator
+final class ChallengeReactionOutcomeTranslator
 {
     public function toInboxOutcome(Throwable $businessCondition): Throwable
     {

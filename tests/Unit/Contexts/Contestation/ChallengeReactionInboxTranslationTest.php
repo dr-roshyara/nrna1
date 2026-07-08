@@ -9,7 +9,7 @@ use App\Contexts\Contestation\Application\ChallengeAdjudicationReaction;
 use App\Contexts\Contestation\Application\ChallengeResolutionReaction;
 use App\Contexts\Contestation\Application\Exception\AwaitingAdjudication;
 use App\Contexts\Contestation\Application\Exception\DeterminationAlreadyApplied;
-use App\Contexts\Contestation\Application\Inbox\ChallengeReactionInboxTranslator;
+use App\Contexts\Contestation\Application\Inbox\ChallengeReactionOutcomeTranslator;
 use App\Contexts\Contestation\Application\Port\ChallengeEventOutbox;
 use App\Contexts\Contestation\Application\ResolveChallengeHandler;
 use App\Contexts\Contestation\Domain\Challenge\ChallengeState;
@@ -36,9 +36,9 @@ use Tests\Support\Contestation\InMemoryChallengeRepository;
  */
 final class ChallengeReactionInboxTranslationTest extends TestCase
 {
-    private function translator(): ChallengeReactionInboxTranslator
+    private function translator(): ChallengeReactionOutcomeTranslator
     {
-        return new ChallengeReactionInboxTranslator();
+        return new ChallengeReactionOutcomeTranslator();
     }
 
     public function test_premature_correction_translates_to_a_park(): void
