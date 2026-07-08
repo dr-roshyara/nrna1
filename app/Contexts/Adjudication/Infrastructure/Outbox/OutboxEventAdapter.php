@@ -40,6 +40,9 @@ final class OutboxEventAdapter implements EventOutbox
             'aggregate_id' => $event->determinationId->toString(),
             'event_type' => 'DeterminationIssued',
             'payload' => [
+                // ADR-PL-01: payload schema version 2 — additively carries the
+                // contested-outcome reference. Same event; hydrator reads v1+v2.
+                'schema_version' => 2,
                 'determinationId' => $event->determinationId->toString(),
                 'challengeRef' => $event->challengeRef->toString(),
                 'outcome' => $event->outcome->value,
@@ -48,6 +51,11 @@ final class OutboxEventAdapter implements EventOutbox
                 'evidenceEnvelopeRef' => $event->evidenceEnvelopeRef->toString(),
                 'issuedByAuthority' => $event->issuedByAuthority->toString(),
                 'jurisdiction' => $event->jurisdiction->toString(),
+                'contestedOutcome' => $event->contestedOutcome === null ? null : [
+                    'electionId' => $event->contestedOutcome->electionId->toString(),
+                    'type' => $event->contestedOutcome->type->value,
+                    'targetId' => $event->contestedOutcome->targetId->toString(),
+                ],
                 'occurredAt' => $event->occurredAt->format(DATE_ATOM),
             ],
             'status' => 'pending',

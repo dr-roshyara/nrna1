@@ -5,8 +5,12 @@ declare(strict_types=1);
 namespace Tests\Unit\Contexts\Adjudication;
 
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
+use App\Contexts\Adjudication\Domain\Determination\ContestedOutcomeRef;
 use App\Contexts\Adjudication\Domain\Determination\Determination;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationId;
+use App\Contexts\Adjudication\Domain\Determination\ElectionId;
+use App\Contexts\Adjudication\Domain\Determination\TargetId;
+use App\Contexts\Adjudication\Domain\Determination\TargetType;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationState;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceEnvelopeRef;
@@ -34,6 +38,11 @@ final class DeterminationTest extends TestCase
             IssuedByAuthority::fromString('ARB'),
             Jurisdiction::fromString('National'),
             EvidenceEnvelopeRef::fromString('ev-1'),
+            ContestedOutcomeRef::of(
+                ElectionId::fromString('election-1'),
+                TargetType::ElectionResult,
+                TargetId::fromString('result-1'),
+            ),
         );
     }
 
@@ -56,6 +65,33 @@ final class DeterminationTest extends TestCase
         $this->assertSame('det-1', $events[0]->determinationId->toString());
         $this->assertSame('ch-1', $events[0]->challengeRef->toString());
         $this->assertSame(DeterminationOutcome::Upheld, $events[0]->outcome);
+    }
+
+    // ADR-UL-01 / ADR-PL-01: the Determination carries the ContestedOutcomeRef it
+    // rules on, and emits it on DeterminationIssued (payload schema version 2).
+    public function test_issue_carries_the_contested_outcome(): void
+    {
+        $determination = Determination::prepare(
+            DeterminationId::fromString('det-2'),
+            ChallengeRef::fromString('ch-2'),
+            IssuedByAuthority::fromString('ARB'),
+            Jurisdiction::fromString('National'),
+            EvidenceEnvelopeRef::fromString('ev-2'),
+            ContestedOutcomeRef::of(
+                ElectionId::fromString('election-1'),
+                TargetType::ElectionResult,
+                TargetId::fromString('result-1'),
+            ),
+        );
+
+        $determination->issue(DeterminationOutcome::Upheld, Legitimacy::Legitimate, Reason::fromString('Upheld.'), $this->at());
+
+        $events = $determination->pullEvents();
+        $this->assertInstanceOf(DeterminationIssued::class, $events[0]);
+        $this->assertNotNull($events[0]->contestedOutcome);
+        $this->assertSame('election-1', $events[0]->contestedOutcome->electionId->toString());
+        $this->assertSame(TargetType::ElectionResult, $events[0]->contestedOutcome->type);
+        $this->assertSame('result-1', $events[0]->contestedOutcome->targetId->toString());
     }
 
     public function test_finalize_transitions_issued_to_final_without_event(): void

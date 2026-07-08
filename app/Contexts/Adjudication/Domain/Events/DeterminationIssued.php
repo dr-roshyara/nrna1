@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\Adjudication\Domain\Events;
 
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
+use App\Contexts\Adjudication\Domain\Determination\ContestedOutcomeRef;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationId;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceEnvelopeRef;
@@ -20,6 +21,11 @@ use DateTimeImmutable;
  * Decision/Core, restricted). Sole producer: Adjudication. Consumers: Election/
  * Lifecycle, Legitimacy projection, Audit — NOT Voting. Carries no voter↔vote
  * linkage (evidence referenced by hash only). Transport envelope added at outbox.
+ *
+ * PAYLOAD SCHEMA VERSION 2 (ADR-PL-01): additively carries the `contestedOutcome`
+ * reference (which contains electionId) so a consumer can resolve the target
+ * Election. Backward-compatible — nullable; a v1 payload hydrates it as null.
+ * Same event, NOT a new class (ADR-T5 + Event Registry).
  */
 final readonly class DeterminationIssued implements DomainEvent
 {
@@ -32,6 +38,7 @@ final readonly class DeterminationIssued implements DomainEvent
         public EvidenceEnvelopeRef $evidenceEnvelopeRef,
         public IssuedByAuthority $issuedByAuthority,
         public Jurisdiction $jurisdiction,
+        public ?ContestedOutcomeRef $contestedOutcome,   // schema_version 2 (null for v1 payloads)
         public DateTimeImmutable $occurredAt,
     ) {
     }

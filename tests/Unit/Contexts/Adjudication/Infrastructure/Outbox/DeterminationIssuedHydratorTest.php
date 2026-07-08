@@ -6,6 +6,7 @@ namespace Tests\Unit\Contexts\Adjudication\Infrastructure\Outbox;
 
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
 use App\Contexts\Adjudication\Domain\Determination\Legitimacy;
+use App\Contexts\Adjudication\Domain\Determination\TargetType;
 use App\Contexts\Adjudication\Domain\Events\DeterminationIssued;
 use App\Contexts\Adjudication\Infrastructure\Outbox\DeterminationIssuedHydrator;
 use PHPUnit\Framework\TestCase;
@@ -81,6 +82,34 @@ final class DeterminationIssuedHydratorTest extends TestCase
         $event = (new DeterminationIssuedHydrator())->hydrate($payload);
 
         $this->assertInstanceOf(DeterminationIssued::class, $event);
+    }
+
+    // ADR-PL-01: payload schema version 2 additively carries contestedOutcome.
+    public function test_hydrates_contested_outcome_at_schema_version_2(): void
+    {
+        $payload = $this->payload();
+        $payload['schema_version'] = 2;
+        $payload['contestedOutcome'] = [
+            'electionId' => 'election-1',
+            'type' => 'election_result',
+            'targetId' => 'result-1',
+        ];
+
+        $event = (new DeterminationIssuedHydrator())->hydrate($payload);
+
+        $this->assertNotNull($event->contestedOutcome);
+        $this->assertSame('election-1', $event->contestedOutcome->electionId->toString());
+        $this->assertSame(TargetType::ElectionResult, $event->contestedOutcome->type);
+        $this->assertSame('result-1', $event->contestedOutcome->targetId->toString());
+    }
+
+    public function test_v1_payload_hydrates_null_contested_outcome(): void
+    {
+        // Backward compatible (vPrevious): a v1 payload (no schema_version / no
+        // contestedOutcome) hydrates contestedOutcome as null.
+        $event = (new DeterminationIssuedHydrator())->hydrate($this->payload());
+
+        $this->assertNull($event->contestedOutcome);
     }
 
     public function test_missing_required_field_fails_loudly(): void

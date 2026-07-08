@@ -47,6 +47,7 @@ final class CoordinatesAdjudication implements AdjudicationService
             $command->issuedByAuthority,
             $command->jurisdiction,
             $command->evidenceEnvelopeRef,
+            $command->contestedOutcome,
         );
         $determination->issue(
             $command->outcome,

@@ -34,6 +34,7 @@ final class Determination
         private readonly IssuedByAuthority $issuedByAuthority,
         private readonly Jurisdiction $jurisdiction,
         private readonly EvidenceEnvelopeRef $evidenceEnvelopeRef,
+        private readonly ?ContestedOutcomeRef $contestedOutcome,
         private DeterminationState $state,
     ) {
     }
@@ -44,14 +45,16 @@ final class Determination
         IssuedByAuthority $issuedByAuthority,
         Jurisdiction $jurisdiction,
         EvidenceEnvelopeRef $evidenceEnvelopeRef,
+        ContestedOutcomeRef $contestedOutcome,
     ): self {
-        // Draft: authority/jurisdiction/evidence present (VO ctors guarantee it).
+        // Draft: authority/jurisdiction/evidence/contested-outcome present (VO ctors guarantee it).
         return new self(
             $id,
             $challengeRef,
             $issuedByAuthority,
             $jurisdiction,
             $evidenceEnvelopeRef,
+            $contestedOutcome,
             DeterminationState::Draft,
         );
     }
@@ -69,6 +72,7 @@ final class Determination
         IssuedByAuthority $issuedByAuthority,
         Jurisdiction $jurisdiction,
         EvidenceEnvelopeRef $evidenceEnvelopeRef,
+        ?ContestedOutcomeRef $contestedOutcome,   // nullable: rows written before schema v2
         DeterminationState $state,
     ): self {
         return new self(
@@ -77,6 +81,7 @@ final class Determination
             $issuedByAuthority,
             $jurisdiction,
             $evidenceEnvelopeRef,
+            $contestedOutcome,
             $state,
         );
     }
@@ -98,6 +103,7 @@ final class Determination
             $this->evidenceEnvelopeRef,
             $this->issuedByAuthority,
             $this->jurisdiction,
+            $this->contestedOutcome,
             $at,
         ));
     }
@@ -117,6 +123,11 @@ final class Determination
     public function challengeRef(): ChallengeRef
     {
         return $this->challengeRef;
+    }
+
+    public function contestedOutcome(): ?ContestedOutcomeRef
+    {
+        return $this->contestedOutcome;
     }
 
     public function state(): DeterminationState

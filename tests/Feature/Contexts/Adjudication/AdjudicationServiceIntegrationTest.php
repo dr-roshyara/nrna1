@@ -7,12 +7,16 @@ namespace Tests\Feature\Contexts\Adjudication;
 use App\Contexts\Adjudication\Application\Command\IssueDeterminationCommand;
 use App\Contexts\Adjudication\Application\Service\AdjudicationService;
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
+use App\Contexts\Adjudication\Domain\Determination\ContestedOutcomeRef;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
+use App\Contexts\Adjudication\Domain\Determination\ElectionId;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceEnvelopeRef;
 use App\Contexts\Adjudication\Domain\Determination\IssuedByAuthority;
 use App\Contexts\Adjudication\Domain\Determination\Jurisdiction;
 use App\Contexts\Adjudication\Domain\Determination\Legitimacy;
 use App\Contexts\Adjudication\Domain\Determination\Reason;
+use App\Contexts\Adjudication\Domain\Determination\TargetId;
+use App\Contexts\Adjudication\Domain\Determination\TargetType;
 use App\Contexts\Adjudication\Domain\Exception\DeterminationAlreadyIssued;
 use App\Models\Organisation;
 use App\Services\TenantContext;
@@ -56,6 +60,11 @@ final class AdjudicationServiceIntegrationTest extends TestCase
             IssuedByAuthority::fromString('ARB'),
             Jurisdiction::fromString('National'),
             EvidenceEnvelopeRef::fromString('ev-1'),
+            ContestedOutcomeRef::of(
+                ElectionId::fromString('election-1'),
+                TargetType::ElectionResult,
+                TargetId::fromString('result-1'),
+            ),
             new DateTimeImmutable('2026-06-27T10:00:00+00:00'),
         );
     }

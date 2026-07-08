@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\Adjudication\Application\Command;
 
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
+use App\Contexts\Adjudication\Domain\Determination\ContestedOutcomeRef;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceEnvelopeRef;
 use App\Contexts\Adjudication\Domain\Determination\IssuedByAuthority;
@@ -29,6 +30,7 @@ final readonly class IssueDeterminationCommand
         public IssuedByAuthority $issuedByAuthority,
         public Jurisdiction $jurisdiction,
         public EvidenceEnvelopeRef $evidenceEnvelopeRef,
+        public ContestedOutcomeRef $contestedOutcome,
         public DateTimeImmutable $occurredAt,
     ) {
     }
