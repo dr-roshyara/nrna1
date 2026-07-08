@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Contexts\Election;
 
-use App\Contexts\Election\Application\Port\AppliedDeterminationStore;
+use App\Contexts\Election\Application\Port\AppliedDeterminationLedger;
 use App\Contexts\Election\Application\Port\ElectionExistencePort;
 use App\Contexts\Election\Domain\DeterminationId;
 use App\Contexts\Election\Domain\Election;
@@ -19,7 +19,7 @@ use RuntimeException;
  * PB-004 Step 4A.3 (RED) — the composite `ElectionRepository` reconstructs the Election
  * aggregate from TWO independent persistence sources (Aggregate Reconstruction Invariant):
  *   existence  — the ElectionExistencePort (legacy today, behind the ACL), and
- *   reaction state — the greenfield AppliedDeterminationStore (the idempotency set).
+ *   reaction state — the greenfield AppliedDeterminationLedger (the idempotency set).
  * No single source is authoritative for the aggregate as a whole.
  *
  * These are pure composition-logic tests over in-memory doubles (no DB): behaviour, not
@@ -117,9 +117,9 @@ final class CompositeElectionRepositoryTest extends TestCase
     /**
      * @param list<string> $prior
      */
-    private function store(array $prior = []): AppliedDeterminationStore
+    private function store(array $prior = []): AppliedDeterminationLedger
     {
-        $store = new class implements AppliedDeterminationStore {
+        $store = new class implements AppliedDeterminationLedger {
             /** @var array<string, true> */
             public array $ids = [];
 

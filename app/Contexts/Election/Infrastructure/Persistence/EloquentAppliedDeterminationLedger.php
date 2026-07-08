@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contexts\Election\Infrastructure\Persistence;
 
-use App\Contexts\Election\Application\Port\AppliedDeterminationStore;
+use App\Contexts\Election\Application\Port\AppliedDeterminationLedger;
 use App\Contexts\Election\Domain\DeterminationId;
 use App\Contexts\Election\Domain\ElectionId;
 use App\Contexts\Election\Infrastructure\Models\ElectionAppliedDeterminationModel;
@@ -15,7 +15,7 @@ use App\Contexts\Election\Infrastructure\Models\ElectionAppliedDeterminationMode
  * question. `remember()` is idempotent via `updateOrCreate` on (election, determination)
  * within the ambient organisation (backed by the tenant-scoped unique index).
  */
-final class EloquentAppliedDeterminationStore implements AppliedDeterminationStore
+final class EloquentAppliedDeterminationLedger implements AppliedDeterminationLedger
 {
     /**
      * @return list<DeterminationId>

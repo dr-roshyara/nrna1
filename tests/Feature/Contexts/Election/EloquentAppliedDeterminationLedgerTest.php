@@ -6,7 +6,7 @@ namespace Tests\Feature\Contexts\Election;
 
 use App\Contexts\Election\Domain\DeterminationId;
 use App\Contexts\Election\Domain\ElectionId;
-use App\Contexts\Election\Infrastructure\Persistence\EloquentAppliedDeterminationStore;
+use App\Contexts\Election\Infrastructure\Persistence\EloquentAppliedDeterminationLedger;
 use App\Models\Organisation;
 use App\Services\TenantContext;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +23,7 @@ use Tests\TestCase;
  * (recording the same determination twice keeps a single row) · tenant-scoped
  * (another organisation sees nothing). Externally-visible tenant behaviour only.
  */
-final class EloquentAppliedDeterminationStoreTest extends TestCase
+final class EloquentAppliedDeterminationLedgerTest extends TestCase
 {
     private string $orgId;
 
@@ -45,9 +45,9 @@ final class EloquentAppliedDeterminationStoreTest extends TestCase
         ])->id;
     }
 
-    private function store(): EloquentAppliedDeterminationStore
+    private function store(): EloquentAppliedDeterminationLedger
     {
-        return new EloquentAppliedDeterminationStore();
+        return new EloquentAppliedDeterminationLedger();
     }
 
     private function idsOf(ElectionId $election): array

@@ -9,6 +9,7 @@ Election owns the **`Election`** aggregate — the part of an election that **re
 |-------|--------|
 | [`01_election_reaction.md`](./01_election_reaction.md) | The Election **reaction slice** (PB-004 Step 3 + 4A.1): `DeterminationIssuedReactionHandler` → `Election::applyDetermination()` → `ElectionCorrectionApplied`, the `ElectionCorrectionPolicy`, the tenant-free repository boundary, the three business rulings (schema-v1 incompatibility · unknown election · cross-organisation), and `appliedAt` as the application timestamp (injected clock). |
 | [`02_infrastructure_existence_and_reaction_store.md`](./02_infrastructure_existence_and_reaction_store.md) | The **Infrastructure slice** (PB-004 Step 4A.3): the composite `ElectionRepository` reconstructing the aggregate from **existence** (legacy `elections` via a read-only ACL, Strangler) **+** **reaction state** (greenfield idempotency ledger); the `ElectionExistencePort` seam; and the business-absence-≠-infrastructure-failure rule. |
+| [`03_messaging_integration.md`](./03_messaging_integration.md) | The **Messaging slice** (PB-004 Step 4B): the `ReactionOutboxAdapter` (writes `ElectionCorrectionApplied` to the shared outbox, atomically via the inbox transaction), the inbox-registry wiring for `DeterminationIssuedReactionHandler`, and the `ElectionCorrectionAppliedHydrator` (payload↔domain event; schema-version rejection). |
 
 ## Authoritative architecture
 - Ubiquitous language: `docs/adr/ADR-UL-01-ContestedOutcome.md`.

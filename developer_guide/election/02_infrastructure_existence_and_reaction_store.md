@@ -10,11 +10,11 @@ Give the Election reaction a real persistence backing **without** the Election c
 app/Contexts/Election/
   Application/Port/
     ElectionExistencePort.php          # "does this election exist?" (Strangler seam)
-    AppliedDeterminationStore.php      # greenfield reaction-state ledger (idempotency set)
+    AppliedDeterminationLedger.php      # greenfield reaction-state ledger (idempotency set)
   Infrastructure/
     Repository/CompositeElectionRepository.php     # implements Domain ElectionRepository
     Acl/LegacyElectionExistenceAdapter.php         # reads legacy `elections` (read-only)
-    Persistence/EloquentAppliedDeterminationStore.php
+    Persistence/EloquentAppliedDeterminationLedger.php
     Models/ElectionAppliedDeterminationModel.php   # BelongsToTenant
     Database/Migrations/Tenant/..._create_election_applied_determinations_table.php
     Providers/ElectionServiceProvider.php          # bindings + migration loading
@@ -23,7 +23,7 @@ app/Contexts/Election/
 
 ## Design decisions (traceable to the approved IDD)
 
-- **Aggregate Reconstruction Invariant.** `CompositeElectionRepository::find()` reconstructs the aggregate from **existence** (`ElectionExistencePort`) **+** **reaction state** (`AppliedDeterminationStore`). `Election ≠ legacy row`; no single source is authoritative for the whole aggregate.
+- **Aggregate Reconstruction Invariant.** `CompositeElectionRepository::find()` reconstructs the aggregate from **existence** (`ElectionExistencePort`) **+** **reaction state** (`AppliedDeterminationLedger`). `Election ≠ legacy row`; no single source is authoritative for the whole aggregate.
 - **Existence via ACL (Strangler).** `LegacyElectionExistenceAdapter` reads the legacy `elections` table — the *current operational source of truth* — read-only, tenant-scoped, soft-delete aware, identity-only. It is the only code that knows the legacy schema. Swapping the `ElectionExistencePort` binding is the entire Strangler exit; the domain never changes.
 - **Business absence ≠ infrastructure failure.** `exists()` returns `false` only for a successfully-answered "no such election in this org" → `null` → `CannotApplyDeterminationToUnknownElection` (permanent). A query/connection error **propagates** (never becomes `false`), so a transient fault is retried by the inbox relay, not dead-lettered. This is the load-bearing failure rule (Blueprint §8 taxonomy; IDD-level, no ADR).
 - **Tenant scope is infrastructure.** The domain and ports express only `ElectionId`; the adapter and the `BelongsToTenant` model resolve the ambient organisation. Cross-org → not found.
@@ -56,7 +56,7 @@ public function save(Election $election): void
 ## Testing
 
 - Unit (`tests/Unit/Contexts/Election/CompositeElectionRepositoryTest.php`): composition logic over in-memory doubles — existence/absence, cross-reload idempotency, **infra-failure propagation** (not swallowed to null), save persists the applied set.
-- Feature/DB (`tests/Feature/Contexts/Election/`): `LegacyElectionExistenceAdapterTest` (exists / absent / cross-org / soft-deleted) and `EloquentAppliedDeterminationStoreTest` (empty / round-trip / idempotent single row / tenant-scoped).
+- Feature/DB (`tests/Feature/Contexts/Election/`): `LegacyElectionExistenceAdapterTest` (exists / absent / cross-org / soft-deleted) and `EloquentAppliedDeterminationLedgerTest` (empty / round-trip / idempotent single row / tenant-scoped).
 - **Harness note:** this pgsql suite disables per-test transaction rollback (`Tests\TestCase::beginDatabaseTransaction` is a no-op for pgsql; isolation is `migrate:fresh` once per process). Feature tests therefore **create a unique organisation per test** and use **tenant-scoped assertions** — never global `assertDatabaseCount`, which is unsafe when rows accumulate across methods.
 
 ## Pitfalls

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contexts\Election\Infrastructure\Repository;
 
-use App\Contexts\Election\Application\Port\AppliedDeterminationStore;
+use App\Contexts\Election\Application\Port\AppliedDeterminationLedger;
 use App\Contexts\Election\Application\Port\ElectionExistencePort;
 use App\Contexts\Election\Domain\Election;
 use App\Contexts\Election\Domain\ElectionId;
@@ -28,7 +28,7 @@ final class CompositeElectionRepository implements ElectionRepository
 {
     public function __construct(
         private readonly ElectionExistencePort $existence,
-        private readonly AppliedDeterminationStore $corrections,
+        private readonly AppliedDeterminationLedger $corrections,
     ) {
     }
 

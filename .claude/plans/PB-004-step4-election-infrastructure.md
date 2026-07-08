@@ -167,7 +167,9 @@ Consume-only against the frozen Messaging Platform (ARR PASS — no platform cha
 | Concern | Owner | Note |
 |---|---|---|
 | `ElectionCorrectionApplied` (the event) | **Election** | Catalog: Election/Lifecycle · Integration · Core; ownership map Election→ElectionCorrectionApplied. Permanent. |
-| Publication responsibility | **Election** | Election produces + enqueues its event; the Shared relay (OutboxEventProcessor) does the downstream re-emit. |
+| Publication **decision** ("this event occurred") | **Election (domain)** | The aggregate decides the correction happened and records the event. |
+| Publication **mechanism** (serialize · enqueue · relay) | **Shared Messaging Platform** | Infrastructure serializes, enqueues the outbox row, and the relay re-emits downstream. |
+| Transport `event_id` (outbox row identity) | **Outbox Adapter** | Generated (`Str::uuid()`) when mapping domain event → `OutboxEvent`. NOT domain identity — the domain event carries only business identity (electionId, determinationId). |
 | Outbox **mechanism** | **Shared platform** (frozen) | Election owns only its *adapter* mapping its event → an `outbox_events` row. |
 | Inbox **mechanism + registry** | **Shared platform** (frozen) | Election owns only *registering* its handler. |
 | Transaction boundary (ADR-T1) | **Inherited from `Inbox::consume()`** | apply→enqueue→save run inside the inbox's `DB::transaction`; one aggregate + its outbox row(s) per txn. **No Election TransactionManager.** |
@@ -179,6 +181,10 @@ Consume-only against the frozen Messaging Platform (ARR PASS — no platform cha
 
 Adapter + hydrator define the wire contract together and evolve together (ER-07: transport is tested by their round-trip, not by domain behaviour tests).
 
+**Composition-seam note (ARB):** `ElectionExistencePort` and `AppliedDeterminationLedger` are **implementation-composition seams**, NOT part of the Election domain's ubiquitous language; when the Strangler migration completes they may change or disappear without affecting the domain model — only `ElectionRepository` (the Domain Port) is permanent.
+
+**What the hydrator hydrates (ARB):** `ElectionCorrectionAppliedHydrator` reconstructs Election's **domain event** (`ElectionCorrectionApplied`) from the **published payload** (the cross-context wire contract). The Shared relay (`OutboxEventProcessor`) then wraps that domain event in the `IntegrationEvent` envelope that actually crosses the bounded-context boundary. So: payload schema = the published contract (owned jointly by adapter + hydrator, producer side); domain event = the local reconstruction; envelope = platform-owned.
+
 ### RED Behaviour Matrix (write RED from this)
 | # | Scenario | Level | Expected |
 |---|---|---|---|
@@ -189,6 +195,7 @@ Adapter + hydrator define the wire contract together and evolve together (ER-07:
 | 5 | hydration preserves all business data | Unit | `hydrator.hydrate(adapter payload)` round-trips to an `ElectionCorrectionApplied` with identical electionId/determinationId/correctionType/appliedAt |
 | 6 | inbox registry resolves the correct handler | Feature | after provider boot, `InboxHandlerRegistry::handlerFor('Election','DeterminationIssued')` returns the reaction handler |
 | 7 | adapter requires a tenant | Unit | `enqueue` with no ambient tenant → throws (mirror Adjudication `TenantContext::require()` guard) |
+| 8 | unsupported `schema_version` is rejected, never silently hydrated | Unit | `hydrate()` of a payload with an unknown `schema_version` (e.g. 99) → throws (rejected per platform policy); it never returns a silently-hydrated event. (Election supports only v1; absent → treated as v1.) |
 
 ### Divergences flagged (no approved-artifact change required — per instruction 6)
 - **CorrectionType**: code intentionally has only `ContainedOnly` (ADR-T8 forward-only, approved in Step 3); the catalog lists `ReRun|Invalidate|Accept|ContainedOnly`. Consistent with the approved decision; hydrator maps `'contained_only'` ↔ `ContainedOnly`. No change.
