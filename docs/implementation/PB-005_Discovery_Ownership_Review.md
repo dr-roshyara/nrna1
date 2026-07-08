@@ -46,7 +46,7 @@ When an adjudication issues a binding determination on a contested outcome, and 
 
 **Genuinely new vs PB-004:**
 - **Two inbound events / two reactions** (adjudicate + resolve) — PB-004 had one.
-- **Parking (`CausalPreconditionMissing`)** — first use of the inbox out-of-order park/redrive path in a reaction (PB-004 never parked; its "unknown" was permanent).
+- **Parking (`CausalPreconditionMissing`)** — parking is **not** new (it is an existing Messaging Platform capability, PB-003). What is new: **Contestation becomes the first *reacting* bounded context that intentionally uses parking as part of its business workflow** (PB-004 never parked; its "unknown" was permanent).
 - **Dismissed short-circuit** — one reaction performing two transitions.
 
 ## 6. Open architectural questions (ARB ruling requested BEFORE the IDD)
