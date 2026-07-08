@@ -63,7 +63,9 @@ When Adjudication issues a binding determination on a contested election outcome
 - Other responsibilities: identity → Election's own local `ElectionId` VO (ADR-T16); reaction state (applied-determination idempotency set) → Election greenfield (4A.3); publication (`ElectionCorrectionApplied`) → Election (4B); translation legacy↔greenfield → the ACL only; tenant scope → infrastructure boundary; consistency → no cross-system transaction (ADR-T1); anonymity → constitutional, preserved by the ACL.
 
 ### Strategic Decision
-Source election existence from the legacy `elections` table through a **read-only Anti-Corruption Layer**, expressed as a **business-oriented port the Election context depends on** — `ElectionExistencePort` — and hidden behind the unchanged domain contract `ElectionRepository::find(ElectionId): ?Election`.
+Source election existence from the legacy `elections` table through a **read-only Anti-Corruption Layer**, expressed as a **business-oriented port the Election context depends on** — `ElectionExistencePort` — and hidden behind the unchanged **Domain Port** `ElectionRepository::find(ElectionId): ?Election` (a repository *is* a Domain Port; Hexagonal).
+
+**Tenant scoping is an infrastructure concern.** The Domain (and the port) express only Election *identity* (`ElectionId`); the Domain never passes an organisation/tenant id into the port. The adapter resolves the ambient organisation transparently (TenantContext), so cross-org existence resolves to "not found" without the Domain ever knowing tenancy exists.
 
 **Composition insight** (resolves "happy-path always rejects"): `find()` composes two sources — (1) **existence** via `ElectionExistencePort` (legacy today, tenant-scoped), and (2) **applied-determinations** (idempotency set) via the greenfield corrections store (4A.3). An existing-but-never-corrected election reconstitutes with an empty set → the first determination applies; an unknown/cross-org election → `null` → `CannotApplyDeterminationToUnknownElection`.
 
