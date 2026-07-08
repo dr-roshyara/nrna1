@@ -11,6 +11,8 @@ Election owns the **`Election`** aggregate — the part of an election that **re
 | [`02_infrastructure_existence_and_reaction_store.md`](./02_infrastructure_existence_and_reaction_store.md) | The **Infrastructure slice** (PB-004 Step 4A.3): the composite `ElectionRepository` reconstructing the aggregate from **existence** (legacy `elections` via a read-only ACL, Strangler) **+** **reaction state** (greenfield idempotency ledger); the `ElectionExistencePort` seam; and the business-absence-≠-infrastructure-failure rule. |
 | [`03_messaging_integration.md`](./03_messaging_integration.md) | The **Messaging slice** (PB-004 Step 4B): the `ReactionOutboxAdapter` (writes `ElectionCorrectionApplied` to the shared outbox, atomically via the inbox transaction), the inbox-registry wiring for `DeterminationIssuedReactionHandler`, and the `ElectionCorrectionAppliedHydrator` (payload↔domain event; schema-version rejection). |
 
+**Step 4C — Architecture Qualification (no new guide; qualification only):** Election joined `tests/Architecture/GreenfieldCoreArchitectureTest` (`CONTEXTS` + event-ownership) once it became a complete hexagonal context, and passes every existing greenfield rule (hexagonal completeness · domain-has-no-infrastructure-imports · event ownership · readonly events · anonymity AT-Q7). This proves conformance; it introduced no production code.
+
 ## Authoritative architecture
 - Ubiquitous language: `docs/adr/ADR-UL-01-ContestedOutcome.md`.
 - Published language consumed: `docs/adr/ADR-PL-01-DeterminationIssued-v2.md` + `docs/implementation/Event_Registry.md`.

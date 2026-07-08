@@ -24,13 +24,10 @@ final class GreenfieldCoreArchitectureTest extends TestCase
     private const CONTEXTS = [
         'Contestation' => 'app/Contexts/Contestation',
         'Adjudication' => 'app/Contexts/Adjudication',
-        // 'Election' intentionally participates in static analysis (phpstan-greenfield.neon)
-        // BEFORE participating in structural completeness verification here. Structural
-        // verification requires a complete Hexagonal Architecture (Domain + Application +
-        // Infrastructure); Election is a partial context today (Domain + Application only),
-        // so scanning it now would be a false RED for a layer not yet authorized to be built.
-        // This is a STAGED QUALIFICATION, not an inconsistency — Election joins this scan
-        // when its Infrastructure layer lands (PB-004 next slice).
+        // Election joined this scan at PB-004 Step 4C once it became a complete Hexagonal
+        // context (Domain + Application + Infrastructure, Steps 4A.3 + 4B). The earlier
+        // staged-qualification deferral (it was Domain+Application only) is now resolved.
+        'Election' => 'app/Contexts/Election',
     ];
 
     // Q7 (ADR-T11): these contexts must never carry voter<->vote linkage.
@@ -124,6 +121,7 @@ final class GreenfieldCoreArchitectureTest extends TestCase
         $ownership = [
             'Contestation' => ['Challenge'],
             'Adjudication' => ['Determination'],
+            'Election' => ['Election'],
         ];
         $violations = [];
         foreach (self::CONTEXTS as $name => $base) {
