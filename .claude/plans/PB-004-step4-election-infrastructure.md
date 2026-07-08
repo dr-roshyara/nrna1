@@ -159,8 +159,48 @@ Do **not** inherit: the belt-and-suspenders duplicate `use RefreshDatabase` (bas
 
 **STOP — awaiting ARB approval of this matrix + failure decision before writing RED.**
 
+## Step 4B — Messaging Integration (IDD; awaiting ARB approval BEFORE any RED)
+
+Consume-only against the frozen Messaging Platform (ARR PASS — no platform change). Reuse the Adjudication pattern; invent nothing.
+
+### DDD Ownership Check
+| Concern | Owner | Note |
+|---|---|---|
+| `ElectionCorrectionApplied` (the event) | **Election** | Catalog: Election/Lifecycle · Integration · Core; ownership map Election→ElectionCorrectionApplied. Permanent. |
+| Publication responsibility | **Election** | Election produces + enqueues its event; the Shared relay (OutboxEventProcessor) does the downstream re-emit. |
+| Outbox **mechanism** | **Shared platform** (frozen) | Election owns only its *adapter* mapping its event → an `outbox_events` row. |
+| Inbox **mechanism + registry** | **Shared platform** (frozen) | Election owns only *registering* its handler. |
+| Transaction boundary (ADR-T1) | **Inherited from `Inbox::consume()`** | apply→enqueue→save run inside the inbox's `DB::transaction`; one aggregate + its outbox row(s) per txn. **No Election TransactionManager.** |
+
+### Implementation Design (3 artifacts, mirror Adjudication)
+1. **Outbox adapter** `App\Contexts\Election\Infrastructure\Outbox\ReactionOutboxAdapter implements ReactionEventOutbox` — `enqueue()` uses `match(true)` (explicit per-event writer, no reflection) → save Shared `OutboxEvent`: `event_id`=uuid · `organisation_id`=**`TenantContext::require()`** (never `get()` — the S7/FK lesson) · `aggregate_type`='Election' · `aggregate_id`=electionId->toString() · `event_type`='ElectionCorrectionApplied' · `payload`={`schema_version`:1, electionId, determinationId, correctionType(`->value`='contained_only'), appliedAt(ATOM)} · status='pending' · attempts:0 · available_at=now(). Bind `ReactionEventOutbox → ReactionOutboxAdapter` in `ElectionServiceProvider::register()`.
+2. **Inbox registry wiring** — `ElectionServiceProvider::boot()`: `InboxHandlerRegistry::register($app->make(DeterminationIssuedReactionHandler::class))` (deps already resolvable: ElectionRepository, ClockInterface, ReactionEventOutbox via #1).
+3. **Hydrator** `App\Contexts\Election\Infrastructure\Outbox\ElectionCorrectionAppliedHydrator implements EventHydrator` — `eventType()`='ElectionCorrectionApplied'; `hydrate(payload)`→ `new ElectionCorrectionApplied(ElectionId::fromString, DeterminationId::fromString, CorrectionType::from, new DateTimeImmutable(appliedAt))` with a `required()` guard + schema_version(v1) dispatch. Register via `EventHydratorRegistry` in `boot()`. Required: `ElectionCorrectionApplied` is a published Integration event (downstream consumer: Contestation, PB-005) — also satisfies `EventRegistryCompletenessTest`.
+
+Adapter + hydrator define the wire contract together and evolve together (ER-07: transport is tested by their round-trip, not by domain behaviour tests).
+
+### RED Behaviour Matrix (write RED from this)
+| # | Scenario | Level | Expected |
+|---|---|---|---|
+| 1 | `ElectionCorrectionApplied` written atomically with the reaction (via `Inbox::consume`) | Feature/DB | after consuming an Upheld `DeterminationIssued` for an existing election: exactly 1 `outbox_events` row (event_type=ElectionCorrectionApplied, aggregate_type=Election, aggregate_id=electionId, org-scoped, status=pending) AND the reaction-state ledger row persisted — in one txn |
+| 2 | exactly one outbox record per successful correction | Feature/DB | one row, no duplicates |
+| 3 | duplicate determination → no duplicate event | Feature/DB | re-consume (same event_id) → inbox dedupe / aggregate idempotency → still exactly 1 outbox row |
+| 4 | infrastructure failure rolls back BOTH aggregate state and outbox | Feature/DB | a throw mid-consume → 0 outbox rows AND 0 ledger rows (inbox txn rollback) |
+| 5 | hydration preserves all business data | Unit | `hydrator.hydrate(adapter payload)` round-trips to an `ElectionCorrectionApplied` with identical electionId/determinationId/correctionType/appliedAt |
+| 6 | inbox registry resolves the correct handler | Feature | after provider boot, `InboxHandlerRegistry::handlerFor('Election','DeterminationIssued')` returns the reaction handler |
+| 7 | adapter requires a tenant | Unit | `enqueue` with no ambient tenant → throws (mirror Adjudication `TenantContext::require()` guard) |
+
+### Divergences flagged (no approved-artifact change required — per instruction 6)
+- **CorrectionType**: code intentionally has only `ContainedOnly` (ADR-T8 forward-only, approved in Step 3); the catalog lists `ReRun|Invalidate|Accept|ContainedOnly`. Consistent with the approved decision; hydrator maps `'contained_only'` ↔ `ContainedOnly`. No change.
+- **`outbox_events.aggregate_id` is `uuid`**: in production the electionId is a legacy uuid (resolved via the ACL), so consistent. Feature tests must use uuid-shaped electionIds. `ElectionId` VO does not enforce uuid (accepts any non-empty string) — **observation** (retrospective), not a change.
+
+### Reuse (not reinvent)
+Shared `OutboxEvent` · `EventHydrator`/`EventHydratorRegistry` · `InboxHandlerRegistry` · `Inbox::consume` txn. Mirror `OutboxEventAdapter` + `DeterminationIssuedHydrator` + provider registration. Test templates: `AdjudicationServiceIntegrationTest` (outbox atomicity), `InboxConsumeTest` (rollback/dedupe), `OutboxEventProcessorRegistryTest` (hydration), `OutboxEventAdapterTest` (`TenantContext::require` guard).
+
+**STOP — awaiting ARB approval of this design + matrix (and the `Store`→`Ledger` rename decision) before writing RED.**
+
 ## Next (not authorized yet)
-- **Step 4A.2 / 4A.3** — *(design + RED matrix above; RED begins on ARB approval)*.
+- **Step 4B** — *(design + matrix above; RED begins on ARB approval)*. Then **4C** qualification.
 - **Step 4A.3** — persistence for the reaction (corrections/idempotency store) once existence has a source.
 - **Step 4B** — messaging integration (outbox adapter · inbox registry wiring · `ElectionCorrectionApplied` hydrator).
 - **Step 4C** — architecture qualification (extend `GreenfieldCoreArchitectureTest` to Election as a complete hexagonal context · full regression · docs · Completion Review).
