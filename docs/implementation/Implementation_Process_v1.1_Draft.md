@@ -20,6 +20,9 @@
 **ER-07 — Test behavior, not transport.** Wherever possible, RED tests verify **domain behavior** (aggregate decisions, emitted domain events, invariants) rather than serialization/infrastructure mechanics. Transport/wire format (payload shape, `schema_version`, JSON) is tested **separately** by the adapter/hydrator that owns the wire contract. A behavior test must not break when only the transport encoding changes.
 - *(Origin: 2026-07-08 — PB-004 step 2: the RED that drove the design asserted the aggregate emitting `ContestedOutcomeRef` on its domain event, not the JSON payload; the wire shape was covered separately by the hydrator round-trip.)*
 
+**ER-08 — Reviews Record, Implementations Repair.** Completion Reviews (EP-02) document implementation **conformance** and discovered **deviations**; they do **not** introduce behavioral changes. Behavioral corrections belong **exclusively** to a subsequent approved implementation slice, made under RED→GREEN. This keeps a review from silently becoming a hidden implementation session.
+- *(Origin: 2026-07-08 — PB-004 step 3 EP-02: the timestamp (`appliedAt`) deviation was recorded during the review and fixed only in the next approved slice (4A.1), not during the review itself.)*
+
 ---
 
 ## Execution Rules — Engineering Process (EP) — new section
@@ -35,6 +38,26 @@
 6. **Re-plan on invalidation:** if implementation reveals the approved plan is no longer valid, **STOP**, explain why, present the revised plan, and wait for approval before continuing — never silently change direction mid-implementation.
 
 **EP-02 — Completion Review.** Implementation does not end at Verification. Verification answers *"does it work?"* (executable gates, PASS/FAIL); **Completion Review answers "did we implement the approved plan?"** — a human comparison of the delivered work against the approved plan/IDD before the work is called done. *(Names existing practice: the per-ticket Implementation Review and the step-14 Architecture Review Checklist already perform this; EP-02 makes it explicit for all planned work, not only PB tickets.)*
+
+**EP-03 — Engineering Readiness Review (ERR).** EP-01 steps 1–2 ("understand, analyze"), made explicit and provider-independent: before any non-trivial implementation, the implementer performs a readiness review by answering a standard set of engineering questions — **deriving as many answers as possible from authoritative project knowledge** (ADRs, BDRs, the constitution and architecture artifacts, engineering standards, developer guides, source code, tests, and repository history) **and asking the human only what cannot be determined confidently.** The review's output *is* the EP-01 plan submitted for approval. This is the *Engineering Conversation*: think first; code never starts the conversation.
+
+**Stopping condition — the ERR ends only when:** ✓ sufficient understanding exists · ✓ every remaining unknown has been explicitly identified (and routed to the human) · ✓ a plan can be produced. **Otherwise implementation shall not begin.**
+
+| Domain | The questions (derive first; ask only gaps) |
+|---|---|
+| Business | What problem? Who benefits? Which business/constitutional invariant applies — what can never be violated? |
+| DDD | Which bounded context? Existing or new aggregate? Ubiquitous-language changes? Domain events, policies, invariants? |
+| Architecture | Which style and constraints govern here? Which ADR governs this change? |
+| Process | Does an approved plan exist? If not: STOP — produce one (EP-01). |
+| TDD | Existing or new behavior? Where is the failing test? Can RED be written first — and if not, why? |
+| Design | Which existing pattern applies (strategy · factory · state · specification · repository · application/domain service)? Reusing or inventing? |
+| Impact | What changes — aggregate, API, database, UI, contract, developer guide, ADR? |
+| Verification | How will correctness be known — tests, architecture tests, PHPStan gate, mutation, fitness functions, human review? |
+| Completion | DoD boxes, developer guide, evidence, commit shape, review path? |
+
+**Depth scales with the task** (same review, different depth): a typo answers "trivial/skip" in seconds; a PB ticket answers in full — **for PB tickets the 17-section IDD *is* the ERR's complete form** (this rule generalizes the IDD's discipline to all non-trivial work, it does not duplicate it). The derived answers are stated in the plan (e.g. "Derived: context = Election, aggregate = existing, ADR = ADR-PL-01 · Cannot determine: extend aggregate vs. new policy — please decide"), so the human sees what was derived and decides only what remains.
+
+*(Origin: 2026-07-08 ARB direction — "the questions belong to the engineering process, not to Claude". Deferred per freeze: modeling `EngineeringConversation` as a platform aggregate — retrospective candidate, evidence first.)*
 
 **"Non-trivial" — decision table** (so planning does not degenerate into ceremony):
 
@@ -69,8 +92,8 @@
 
 ## Pending fold-ins (queued for ratification into v1.1 body)
 - Messaging Architecture Verification Matrix + the Platform Capability Readiness questions (from PB-003 C6A/C6B).
-- ER-05 + ARR Gate (above).
-- **EP-01 Plan First + EP-02 Completion Review (above) + the EP-vs-ER namespace decision.**
+- ER-05 · ER-06 · ER-07 · ER-08 + ARR Gate (above).
+- **EP-01 Plan First + EP-02 Completion Review + EP-03 Engineering Readiness Review (above) + the EP-vs-ER namespace decision.**
 - ADR template alignment for the ADR-MP / PGP style (principles referenced by decisions).
 
 *(On ratification, this draft is renumbered to `Implementation_Process_v1.1.md` and v1.0's frozen body is superseded additively — no rule content lost.)*
