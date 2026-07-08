@@ -88,7 +88,10 @@ So: the **aggregate** raises *business-semantic* exceptions (`ConflictingDetermi
 
 **Implementation reality:** the outbox adapter maps the **domain event** to the published payload; it has no other source for `resolution`. So "enrich only the Integration Event" is architecturally awkward here — the adapter would need the outcome from outside the domain event (breaking the aggregate-records-events → adapter-maps pattern). Integration-only enrichment is therefore only clean if we accept a handler→adapter side-channel.
 
-**Recommendation (for ARB approval; not yet applied):** since (1) aggregate behaviour and (2) reconstitution do **not** require it, the strictly-minimal domain is preferred **unless** the ARB rules `resolution` is Contestation UL (Q3). Given the challenge's *outcome* is a first-class fact of its conclusion and the adapter-maps-domain-event reality, my recommendation is to **treat `resolution` as Contestation UL and carry it on the domain event** — record the determination outcome at `adjudicate()` and add a `Resolution` VO to `ChallengeResolved` (`resolve(DeterminationId, Resolution, $at)`), at **schema v1** (unpublished → no compatibility burden). **Alternative (if ARB rules it non-UL):** keep the domain event minimal and correct the catalog to drop `resolution` from `ChallengeResolved` (an F-5 documentation fix). *Domain event NOT modified until the ARB rules.*
+**Recommendation (rejected by ARB) → ARB RULING (binding):** **Keep the Domain Event minimal; enrich only the published Integration Event.** My analysis's own findings — aggregate behaviour: no; reconstitution: no; replay: no — outweigh the convenience argument; only downstream consumers need `resolution`, so it does **not** belong in the Domain Event. This preserves the Domain-Event ≠ Integration-Event separation established in PB-004.
+- `ChallengeResolved` **domain event** stays `(ChallengeId, DeterminationId, occurredAt)` — **unchanged**. `resolve(DeterminationId, $at)` unchanged.
+- `resolution` (Upheld/Dismissed) is added **only** to the published **Integration Event** payload.
+- **Mechanism (no hidden coupling):** the Application reaction handler *derives* `resolution` from the reaction context — Upheld ⇐ triggered by `ElectionCorrectionApplied`; Dismissed ⇐ triggered by `DeterminationIssued` `outcome=Dismissed` — and supplies it to the outbox adapter **explicitly at publish time** (an explicit, typed publication argument), never by expanding the domain event and never via ambient state. The adapter stamps `resolution` onto the published `ChallengeResolved` payload. The exact publish-seam signature is settled in RED (5C); the principle is fixed: **enrichment is explicit and application-supplied, the Domain stays pure.**
 
 **F-3 (resolution key).** `ResolveChallengeHandler` finds the Challenge by `determinationId` (no `challengeId` on `ElectionCorrectionApplied`) → add `ChallengeRepository::findByDeterminationId`. Confirm intended correlation key.
 
@@ -99,5 +102,12 @@ So: the **aggregate** raises *business-semantic* exceptions (`ConflictingDetermi
 ## Verification (for the eventual GREEN, not now)
 Unit (aggregate `reconstitute` + handlers, in-memory doubles) → Feature (real inbox `consume`, outbox rows, parking, tenant) → greenfield PHPStan → Architecture suite (Contestation already scanned) → regression. Reuse the PB-004 Feature harness discipline (unique org per test; tenant-scoped assertions).
 
-## STOP
-IDD only. **No RED, no code.** Await ARB approval of the IDD and rulings on F-1…F-5 before Phase 3 (RED).
+## 10. Slicing (PB-005 is XL — sub-slices mirror PB-004, each with its own RED→GREEN→stop)
+- **5A — Domain + Application reaction (unit; no DB):** `Challenge::reconstitute(...)`; `ConflictingDetermination` domain exception; `AdjudicateChallengeHandler` + `ResolveChallengeHandler` over in-memory `ChallengeRepository` + outbox doubles; Dismissed short-circuit; replay classification (F-1) + parking + application-time clock. Domain event `ChallengeResolved` unchanged (F-2 ruling).
+- **5B — Infrastructure persistence:** `EloquentChallengeRepository` (+ `findByDeterminationId`), `ChallengeModel` (`BelongsToTenant`), `ChallengeMapper`, `challenges` migration, `ContestationServiceProvider` (repo binding) + `config/app.php`. Feature/DB.
+- **5C — Messaging:** outbox adapter (`ChallengeAdjudicated`; `ChallengeResolved` **with the explicit `resolution` enrichment seam**, F-2), hydrators, inbox-registry wiring for **both** handlers. Feature/DB (atomic, parking end-to-end, dedupe).
+- **5D — Architecture qualification:** confirm Contestation (now complete hexagonal) still passes `GreenfieldCoreArchitectureTest` (already in `CONTEXTS`; ownership `Contestation⇒['Challenge']` already present); full regression; docs; Completion Review → closes PB-005.
+- **F-5 documentation corrections** — separate proposal after 5D.
+
+## STATUS: IDD FROZEN (ARB-approved 2026-07-08). Proceed to Phase 3 (RED), slice 5A first.
+No architectural redesign during implementation unless RED reveals the approved design is insufficient.
