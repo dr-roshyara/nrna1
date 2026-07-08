@@ -185,6 +185,10 @@ Adapter + hydrator define the wire contract together and evolve together (ER-07:
 
 **What the hydrator hydrates (ARB):** `ElectionCorrectionAppliedHydrator` reconstructs Election's **domain event** (`ElectionCorrectionApplied`) from the **published payload** (the cross-context wire contract). The Shared relay (`OutboxEventProcessor`) then wraps that domain event in the `IntegrationEvent` envelope that actually crosses the bounded-context boundary. So: payload schema = the published contract (owned jointly by adapter + hydrator, producer side); domain event = the local reconstruction; envelope = platform-owned.
 
+**Messaging ownership (ARB — made explicit):**
+- The **Outbox Adapter translates, serializes, and enqueues** the published Integration Event (maps the Domain Event → outbox representation and writes the `OutboxEvent`). It does **not** publish and does **not** republish Domain Events directly; the **Shared Relay** performs the eventual publication. Domain↔Integration translation is an **Infrastructure** responsibility. Chain: `Domain → Domain Event → Infrastructure translate·serialize·enqueue Integration Event → Shared Relay publishes`.
+- The transport **`EventId`** is owned by the **Outbox / Shared Messaging layer** (adapter-assigned `Str::uuid()`), never the Domain — the domain event carries only business identity (electionId, determinationId).
+
 ### RED Behaviour Matrix (write RED from this)
 | # | Scenario | Level | Expected |
 |---|---|---|---|

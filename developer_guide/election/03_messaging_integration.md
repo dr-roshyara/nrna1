@@ -20,6 +20,9 @@ app/Contexts/Election/
 ## Design decisions (traceable to the approved IDD)
 
 - **Ownership split.** Election owns the **publication decision** ("this correction occurred" — the aggregate records `ElectionCorrectionApplied`); the **Shared platform owns the mechanism** (serialize · enqueue · relay). The **Outbox Adapter** assigns the transport `event_id` (a fresh uuid) — the domain event carries only business identity (electionId, determinationId).
+- **Integration Event vs Domain Event (explicit).** The Outbox Adapter **translates, serializes, and enqueues** the published Integration Event — it maps the Domain Event (`ElectionCorrectionApplied`) into the outbox representation (`event_type` + payload) and writes the `OutboxEvent`. It does **not** publish and does **not** republish Domain Events directly; the **Shared Relay** (`OutboxEventProcessor`) performs the eventual publication. **Domain↔Integration translation is an Infrastructure responsibility.** The transport `EventId` is owned by the **Outbox / Shared Messaging layer** (adapter-assigned), never the Domain. Responsibility chain:
+
+  `Domain → creates Domain Event → Infrastructure (adapter) translates · serializes · enqueues Integration Event → Shared Relay publishes`.
 - **Atomicity is inherited (ADR-T1).** `Inbox::consume()` wraps the whole handling in one `DB::transaction`. The handler's `applyDetermination → outbox.enqueue → repository.save` all run inside it. Election needs **no** TransactionManager. A throw anywhere rolls back the inbox row **and** the outbox write together.
 - **Explicit per-event mapping** (`match(true)`), not reflection — mirrors Adjudication; published integration events deserve explicit wire mapping.
 - **Tenant safety.** The adapter stamps `organisation_id` via `TenantContext::require()` (throws when unset) — never `get()`, which once silently produced `''` → FK violation.
