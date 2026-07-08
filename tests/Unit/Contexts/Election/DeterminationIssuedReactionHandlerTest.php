@@ -9,24 +9,33 @@ use App\Contexts\Election\Application\Port\ReactionEventOutbox;
 use App\Contexts\Election\Domain\Election;
 use App\Contexts\Election\Domain\ElectionId;
 use App\Contexts\Election\Domain\Events\ElectionCorrectionApplied;
+use App\Contexts\Election\Domain\Exception\CannotApplyDeterminationToUnknownElection;
+use App\Contexts\Election\Domain\Exception\DeterminationLacksElectionScope;
+use App\Contexts\Election\Domain\OrganisationId;
 use App\Contexts\Election\Domain\Repository\ElectionRepository;
 use App\Contexts\Shared\Application\Inbox\InboxHandler;
 use App\Contexts\Shared\Application\Inbox\InboxMessage;
-use App\Contexts\Shared\Application\Inbox\PermanentInboxFailure;
 use PHPUnit\Framework\TestCase;
 
 /**
- * PB-004 Step 3 (RED) — the Election reaction consumes `DeterminationIssued`
- * (payload schema version 2) via the frozen Messaging Platform Inbox port, and
- * reconstructs its OWN local model (ADR-T16) from the payload — reading the
- * electionId from `contestedOutcome`. Then it drives the Election aggregate.
+ * PB-004 Step 3 (RED, round 3) — the Election reaction consumes `DeterminationIssued`
+ * (payload schema version 2) via the frozen Messaging Platform Inbox port, resolves
+ * the target Election within the determination's organisation, and drives the
+ * aggregate. The handler *reacts*; the aggregate *decides*.
  *
- * ARR: Election is a CONSUMER of the frozen Messaging Platform (implements the
- * Shared `InboxHandler` port) — no change to Shared.
+ * Constitutional/business decisions encoded here (ARB round-2 rulings):
+ *  - schema v1 (no election scope) is a **business incompatibility**, NOT corruption —
+ *    a dedicated domain exception (infra later maps it to dead-letter/incident).
+ *  - an **unknown Election is rejected**, never derived — Election reacts to existing
+ *    elections; it does not provision them.
+ *  - a determination is **never applied across organisation boundaries** — resolution
+ *    is organisation-scoped (tenant lives at the repository/infra boundary, keeping the
+ *    Election *domain* tenant-free per ADR-T16 / Adjudication precedent). [ARB: confirm
+ *    org placement — repository boundary vs domain aggregate.]
  */
 final class DeterminationIssuedReactionHandlerTest extends TestCase
 {
-    private function schemaV2Message(): InboxMessage
+    private function schemaV2Message(string $organisationId = 'org-1'): InboxMessage
     {
         return new InboxMessage(
             eventId: 'evt-1',
@@ -37,21 +46,16 @@ final class DeterminationIssuedReactionHandlerTest extends TestCase
                 'challengeRef' => 'ch-9',
                 'outcome' => 'upheld',
                 'legitimacy' => 'legitimate',
-                // schema v2 additive block — carries the electionId (ADR-PL-01):
-                'contestedOutcome' => [
-                    'electionId' => 'election-77',
-                    'type' => 'election_result',
-                    'targetId' => 'result-1',
-                ],
+                'contestedOutcome' => ['electionId' => 'election-77', 'type' => 'election_result', 'targetId' => 'result-1'],
                 'occurredAt' => '2026-07-08T10:00:00+00:00',
             ],
-            organisationId: 'org-1',
+            organisationId: $organisationId,
         );
     }
 
     public function test_handler_is_an_election_inbox_consumer_for_determination_issued(): void
     {
-        $handler = $this->handler($this->outbox());
+        $handler = new DeterminationIssuedReactionHandler($this->repository(null), $this->outbox());
 
         $this->assertInstanceOf(InboxHandler::class, $handler);
         $this->assertSame('Election', $handler->consumerContext());
@@ -61,8 +65,10 @@ final class DeterminationIssuedReactionHandlerTest extends TestCase
     public function test_reconstructs_election_from_schema_v2_payload_and_applies_correction(): void
     {
         $outbox = $this->outbox();
+        // The Election already EXISTS (org-1) — the handler resolves and applies to it.
+        $repo = $this->repository(ElectionId::fromString('election-77'), 'org-1');
 
-        $this->handler($outbox)->handle($this->schemaV2Message());
+        (new DeterminationIssuedReactionHandler($repo, $outbox))->handle($this->schemaV2Message('org-1'));
 
         $this->assertCount(1, $outbox->events);
         $this->assertInstanceOf(ElectionCorrectionApplied::class, $outbox->events[0]);
@@ -71,11 +77,10 @@ final class DeterminationIssuedReactionHandlerTest extends TestCase
         $this->assertSame('det-9', $outbox->events[0]->determinationId->toString());
     }
 
-    // Backward compatibility (explicit): a schema_version 1 DeterminationIssued has
-    // NO contestedOutcome, so Election cannot resolve its target election. Retrying
-    // cannot add the field → it is a PERMANENT failure (dead-letter loudly), never a
-    // silent drop and never an endless park. (ADR-T5 vPrevious + Blueprint §7 F2.)
-    public function test_schema_v1_determination_without_contested_outcome_is_permanently_failed(): void
+    // (A) schema v1 is historically valid but lacks the election scope this consumer
+    // needs — a BUSINESS INCOMPATIBILITY (not corruption, not transient). A dedicated
+    // domain exception; infrastructure later maps it to dead-letter/incident.
+    public function test_schema_v1_without_election_scope_is_a_business_incompatibility(): void
     {
         $v1 = new InboxMessage(
             eventId: 'evt-2',
@@ -91,52 +96,63 @@ final class DeterminationIssuedReactionHandlerTest extends TestCase
             organisationId: 'org-1',
         );
 
-        $this->expectException(PermanentInboxFailure::class);
-        $this->handler($this->outbox())->handle($v1);
+        $this->expectException(DeterminationLacksElectionScope::class);
+        (new DeterminationIssuedReactionHandler($this->repository(null), $this->outbox()))->handle($v1);
     }
 
-    // Missing Election state (constitutional decision — flagged for ARB confirmation):
-    // a DeterminationIssued is authority-issued and names its election via
-    // contestedOutcome.electionId. Election TRUSTS that identity and DERIVES the
-    // correction-holder for it (no prior state required) — it does NOT reject, park,
-    // or invent a *different* election. The correction is recorded for the named election.
-    public function test_unknown_election_is_derived_from_the_determination_not_rejected(): void
+    // (B) unknown Election → rejected, NEVER derived. Election reacts to existing
+    // elections; it does not provision them.
+    public function test_unknown_election_is_rejected_not_derived(): void
     {
+        $repo = $this->repository(null); // resolves nothing
         $outbox = $this->outbox();
 
-        // Repository with NO stored elections — get() derives a fresh aggregate.
-        $repo = new class implements ElectionRepository {
-            public function get(ElectionId $id): Election
-            {
-                return Election::identifiedBy($id); // derive; do not reject
-            }
+        try {
+            (new DeterminationIssuedReactionHandler($repo, $outbox))->handle($this->schemaV2Message('org-1'));
+            $this->fail('Expected CannotApplyDeterminationToUnknownElection');
+        } catch (CannotApplyDeterminationToUnknownElection) {
+            $this->assertSame([], $outbox->events, 'no correction may be emitted for an unknown election');
+        }
+    }
 
-            public function save(Election $election): void
-            {
-            }
-        };
+    // (C) constitutional invariant: a determination is NEVER applied across
+    // organisation boundaries. Resolution is org-scoped — a determination from org-1
+    // cannot reach an election that belongs to org-2 (it resolves to "unknown").
+    public function test_determination_never_applies_across_organisation_boundaries(): void
+    {
+        // Election exists only in org-2; the determination arrives under org-1.
+        $repo = $this->repository(ElectionId::fromString('election-77'), 'org-2');
+        $outbox = $this->outbox();
 
-        (new DeterminationIssuedReactionHandler($repo, $outbox))->handle($this->schemaV2Message());
-
-        $this->assertCount(1, $outbox->events, 'unknown election is derived and corrected, not rejected');
-        $this->assertSame('election-77', $outbox->events[0]->electionId->toString());
+        $this->expectException(CannotApplyDeterminationToUnknownElection::class);
+        (new DeterminationIssuedReactionHandler($repo, $outbox))->handle($this->schemaV2Message('org-1'));
     }
 
     // ── intended in-memory collaborators (define the intended Election ports) ──
-    private function handler(ReactionEventOutbox $outbox): DeterminationIssuedReactionHandler
+
+    /** Organisation-scoped resolution (tenant at the repository boundary; domain stays tenant-free). */
+    private function repository(?ElectionId $existing, string $inOrganisation = 'org-1'): ElectionRepository
     {
-        $repo = new class implements ElectionRepository {
-            public function get(ElectionId $id): Election
+        return new class($existing, $inOrganisation) implements ElectionRepository {
+            public function __construct(private ?ElectionId $existing, private string $inOrganisation)
             {
-                return Election::identifiedBy($id);
+            }
+
+            public function find(ElectionId $id, OrganisationId $organisation): ?Election
+            {
+                if ($this->existing !== null
+                    && $id->toString() === $this->existing->toString()
+                    && $organisation->toString() === $this->inOrganisation) {
+                    return Election::identifiedBy($this->existing);
+                }
+
+                return null;
             }
 
             public function save(Election $election): void
             {
             }
         };
-
-        return new DeterminationIssuedReactionHandler($repo, $outbox);
     }
 
     private function outbox(): ReactionEventOutbox
