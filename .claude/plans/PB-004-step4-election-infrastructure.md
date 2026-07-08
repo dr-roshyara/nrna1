@@ -50,8 +50,66 @@ Planning the Infrastructure work surfaced a **plan-invalidating finding** (EP-01
 ## Architectural Note
 Step 4A.1 intentionally introduces **no persistence concerns**. The Election bounded context remains persistence-agnostic until Election existence has an approved source of truth (Step 4A.2, the ACL design).
 
+## Step 4A.2 — Election Existence (IDD design — ARB-refined, awaiting review; NO code, NO ADR)
+
+**This is an IDD design**, not an ADR: it introduces no new architectural decision — it *applies* already-approved principles (DDD, Hexagonal, ACL, Strangler). Recorded in the IDD (this plan), per ARB ruling.
+
+### Business Question
+When Adjudication issues a binding determination on a contested election outcome, the Election context must apply a correction **to an election that already exists**. What does "this election exists" mean, and **who owns that answer**?
+
+### Ownership (business concept vs. operational source of truth — the crucial distinction)
+- **The Election bounded context owns the business concept of *Election*** — its lifecycle, existence, and identity. This never changes. Election is *not* owned by legacy.
+- **The legacy voting platform is only the *current operational source of truth* for election existence**, until the greenfield Election-lifecycle capability is built. That is a temporary implementation fact, not ownership. (*Avoid the phrase "legacy owns existence" — legacy is a source, not an owner.*)
+- Other responsibilities: identity → Election's own local `ElectionId` VO (ADR-T16); reaction state (applied-determination idempotency set) → Election greenfield (4A.3); publication (`ElectionCorrectionApplied`) → Election (4B); translation legacy↔greenfield → the ACL only; tenant scope → infrastructure boundary; consistency → no cross-system transaction (ADR-T1); anonymity → constitutional, preserved by the ACL.
+
+### Strategic Decision
+Source election existence from the legacy `elections` table through a **read-only Anti-Corruption Layer**, expressed as a **business-oriented port the Election context depends on** — `ElectionExistencePort` — and hidden behind the unchanged domain contract `ElectionRepository::find(ElectionId): ?Election`.
+
+**Composition insight** (resolves "happy-path always rejects"): `find()` composes two sources — (1) **existence** via `ElectionExistencePort` (legacy today, tenant-scoped), and (2) **applied-determinations** (idempotency set) via the greenfield corrections store (4A.3). An existing-but-never-corrected election reconstitutes with an empty set → the first determination applies; an unknown/cross-org election → `null` → `CannotApplyDeterminationToUnknownElection`.
+
+### Interfaces (design shape — not code)
+```
+// App\Contexts\Election\Application\Port\ElectionExistencePort
+//   The business dependency: "does this Election exist (within the ambient organisation)?"
+//   NOT a "directory"/"knowledge base" — it expresses the business invariant, not a lookup mechanism.
+interface ElectionExistencePort {
+    public function exists(ElectionId $id): bool;   // read-only; identity only; never vote/voter data (ADR-T11)
+}
+
+// find() composition, in the 4A.3 concrete repository:
+public function find(ElectionId $id): ?Election {
+    if (!$this->existence->exists($id)) {           // legacy today, tenant-scoped — SOURCE, not owner
+        return null;                                //   unknown / cross-org → reject
+    }
+    $applied = $this->corrections->appliedDeterminations($id);   // greenfield reaction state (4A.3)
+    return Election::reconstitute($id, $applied);
+}
+```
+- Adapter (4A.3, Infrastructure): `LegacyElectionExistenceAdapter implements ElectionExistencePort` — queries `elections` by `id`, scoped to the ambient organisation, `whereNull('deleted_at')`, selecting identity only. The **only** code that knows the legacy schema; read-only.
+- **Status-agnostic** (ARB-ruled): existence = "row present in this org, not soft-deleted." Whether a `completed`/`archived` election *may be corrected* is **business validity**, owned by future **Election Policy** — NOT the ACL. `Exists ≠ MayBeCorrected`.
+
+### Architectural Invariants (the non-negotiable contract for 4A.3 implementation)
+1. The Election **domain never imports legacy** (no `App\Models\Election`, no legacy namespace).
+2. The ACL is **read-only** — it never writes to legacy.
+3. The ACL is the **only translator** between legacy and greenfield identity.
+4. **Tenant isolation preserved** — existence is scoped to the ambient organisation (cross-org → not found).
+5. **Anonymity preserved** — existence reads election identity only, never `votes`/`results` (ADR-T11).
+6. **No cross-system transaction** — existence is a read; the correction write is Election's own transaction (ADR-T1).
+7. The **domain never knows** whether existence is provided by legacy or by a future greenfield implementation — it only sees `ElectionRepository::find()`.
+8. The **ACL is removable without domain change** — the Strangler exit is a single binding swap (legacy adapter → greenfield adapter).
+
+### ARB rulings folded in
+- Port is a **business-oriented `ElectionExistencePort`** with `exists()` (not `ElectionDirectory`/`knows()`).
+- Ownership language corrected: Election BC owns the *concept*; legacy is the *current operational source of truth*.
+- Strangler invariant made explicit (#7 above).
+- **No ADR** — kept as IDD.
+
+### Closing questions
+- **Improve PublicDigit delivery?** Yes — a correct, existence-grounded reaction without prematurely building Election lifecycle.
+- **Architectural entropy?** Reduced — legacy coupling contained behind one explicit, removable port; domain stays autonomous; ownership made explicit.
+
 ## Next (not authorized yet)
-- **Step 4A.2** — design the Election existence **ACL** over the legacy `elections` table (read-only existence/identity; greenfield stays autonomous behind the port). No persistence code.
+- **Step 4A.2** — *(design above; awaiting ARB review before 4A.3)*.
 - **Step 4A.3** — persistence for the reaction (corrections/idempotency store) once existence has a source.
 - **Step 4B** — messaging integration (outbox adapter · inbox registry wiring · `ElectionCorrectionApplied` hydrator).
 - **Step 4C** — architecture qualification (extend `GreenfieldCoreArchitectureTest` to Election as a complete hexagonal context · full regression · docs · Completion Review).
