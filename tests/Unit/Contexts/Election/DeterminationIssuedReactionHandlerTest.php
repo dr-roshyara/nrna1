@@ -12,6 +12,7 @@ use App\Contexts\Election\Domain\Events\ElectionCorrectionApplied;
 use App\Contexts\Election\Domain\Repository\ElectionRepository;
 use App\Contexts\Shared\Application\Inbox\InboxHandler;
 use App\Contexts\Shared\Application\Inbox\InboxMessage;
+use App\Contexts\Shared\Application\Inbox\PermanentInboxFailure;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -68,6 +69,57 @@ final class DeterminationIssuedReactionHandlerTest extends TestCase
         // Proves the local model was reconstructed from contestedOutcome.electionId:
         $this->assertSame('election-77', $outbox->events[0]->electionId->toString());
         $this->assertSame('det-9', $outbox->events[0]->determinationId->toString());
+    }
+
+    // Backward compatibility (explicit): a schema_version 1 DeterminationIssued has
+    // NO contestedOutcome, so Election cannot resolve its target election. Retrying
+    // cannot add the field → it is a PERMANENT failure (dead-letter loudly), never a
+    // silent drop and never an endless park. (ADR-T5 vPrevious + Blueprint §7 F2.)
+    public function test_schema_v1_determination_without_contested_outcome_is_permanently_failed(): void
+    {
+        $v1 = new InboxMessage(
+            eventId: 'evt-2',
+            eventType: 'DeterminationIssued',
+            payload: [
+                // no schema_version (=> 1), no contestedOutcome
+                'determinationId' => 'det-v1',
+                'challengeRef' => 'ch-v1',
+                'outcome' => 'upheld',
+                'legitimacy' => 'legitimate',
+                'occurredAt' => '2026-07-08T10:00:00+00:00',
+            ],
+            organisationId: 'org-1',
+        );
+
+        $this->expectException(PermanentInboxFailure::class);
+        $this->handler($this->outbox())->handle($v1);
+    }
+
+    // Missing Election state (constitutional decision — flagged for ARB confirmation):
+    // a DeterminationIssued is authority-issued and names its election via
+    // contestedOutcome.electionId. Election TRUSTS that identity and DERIVES the
+    // correction-holder for it (no prior state required) — it does NOT reject, park,
+    // or invent a *different* election. The correction is recorded for the named election.
+    public function test_unknown_election_is_derived_from_the_determination_not_rejected(): void
+    {
+        $outbox = $this->outbox();
+
+        // Repository with NO stored elections — get() derives a fresh aggregate.
+        $repo = new class implements ElectionRepository {
+            public function get(ElectionId $id): Election
+            {
+                return Election::identifiedBy($id); // derive; do not reject
+            }
+
+            public function save(Election $election): void
+            {
+            }
+        };
+
+        (new DeterminationIssuedReactionHandler($repo, $outbox))->handle($this->schemaV2Message());
+
+        $this->assertCount(1, $outbox->events, 'unknown election is derived and corrected, not rejected');
+        $this->assertSame('election-77', $outbox->events[0]->electionId->toString());
     }
 
     // ── intended in-memory collaborators (define the intended Election ports) ──
