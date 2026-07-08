@@ -11,27 +11,31 @@ use App\Contexts\Election\Domain\ElectionId;
 use App\Contexts\Election\Domain\Events\ElectionCorrectionApplied;
 use App\Contexts\Election\Domain\Exception\CannotApplyDeterminationToUnknownElection;
 use App\Contexts\Election\Domain\Exception\DeterminationLacksElectionScope;
-use App\Contexts\Election\Domain\OrganisationId;
 use App\Contexts\Election\Domain\Repository\ElectionRepository;
 use App\Contexts\Shared\Application\Inbox\InboxHandler;
 use App\Contexts\Shared\Application\Inbox\InboxMessage;
 use PHPUnit\Framework\TestCase;
 
 /**
- * PB-004 Step 3 (RED, round 3) — the Election reaction consumes `DeterminationIssued`
- * (payload schema version 2) via the frozen Messaging Platform Inbox port, resolves
- * the target Election within the determination's organisation, and drives the
- * aggregate. The handler *reacts*; the aggregate *decides*.
+ * PB-004 Step 3 — the Election reaction consumes `DeterminationIssued` (payload schema
+ * version 2) via the frozen Messaging Platform Inbox port, resolves the target Election
+ * within the determination's organisation, and drives the aggregate. The handler
+ * *reacts*; the aggregate *decides*.
  *
- * Constitutional/business decisions encoded here (ARB round-2 rulings):
+ * Constitutional/business decisions encoded here (ARB round-2/3 rulings):
  *  - schema v1 (no election scope) is a **business incompatibility**, NOT corruption —
  *    a dedicated domain exception (infra later maps it to dead-letter/incident).
  *  - an **unknown Election is rejected**, never derived — Election reacts to existing
  *    elections; it does not provision them.
  *  - a determination is **never applied across organisation boundaries** — resolution
- *    is organisation-scoped (tenant lives at the repository/infra boundary, keeping the
- *    Election *domain* tenant-free per ADR-T16 / Adjudication precedent). [ARB: confirm
- *    org placement — repository boundary vs domain aggregate.]
+ *    is organisation-scoped.
+ *
+ * Repository boundary (ARB round-3 refinement): the repository answers a pure DOMAIN
+ * question — `find(ElectionId): ?Election`. Organisation scope is NOT part of the
+ * contract; it is applied by the organisation-scoped repository implementation (as the
+ * concrete Eloquent repository is, under the ambient tenant), keeping the Election
+ * *domain* tenant-free (ADR-T16). A cross-organisation determination therefore simply
+ * resolves to "unknown".
  */
 final class DeterminationIssuedReactionHandlerTest extends TestCase
 {
@@ -55,7 +59,7 @@ final class DeterminationIssuedReactionHandlerTest extends TestCase
 
     public function test_handler_is_an_election_inbox_consumer_for_determination_issued(): void
     {
-        $handler = new DeterminationIssuedReactionHandler($this->repository(null), $this->outbox());
+        $handler = new DeterminationIssuedReactionHandler($this->repositoryScopedTo('org-1'), $this->outbox());
 
         $this->assertInstanceOf(InboxHandler::class, $handler);
         $this->assertSame('Election', $handler->consumerContext());
@@ -65,8 +69,8 @@ final class DeterminationIssuedReactionHandlerTest extends TestCase
     public function test_reconstructs_election_from_schema_v2_payload_and_applies_correction(): void
     {
         $outbox = $this->outbox();
-        // The Election already EXISTS (org-1) — the handler resolves and applies to it.
-        $repo = $this->repository(ElectionId::fromString('election-77'), 'org-1');
+        // The Election already EXISTS in the ambient org (org-1) — the handler resolves and applies to it.
+        $repo = $this->repositoryScopedTo('org-1', ElectionId::fromString('election-77'), 'org-1');
 
         (new DeterminationIssuedReactionHandler($repo, $outbox))->handle($this->schemaV2Message('org-1'));
 
@@ -97,14 +101,14 @@ final class DeterminationIssuedReactionHandlerTest extends TestCase
         );
 
         $this->expectException(DeterminationLacksElectionScope::class);
-        (new DeterminationIssuedReactionHandler($this->repository(null), $this->outbox()))->handle($v1);
+        (new DeterminationIssuedReactionHandler($this->repositoryScopedTo('org-1'), $this->outbox()))->handle($v1);
     }
 
     // (B) unknown Election → rejected, NEVER derived. Election reacts to existing
     // elections; it does not provision them.
     public function test_unknown_election_is_rejected_not_derived(): void
     {
-        $repo = $this->repository(null); // resolves nothing
+        $repo = $this->repositoryScopedTo('org-1'); // scope holds no such election
         $outbox = $this->outbox();
 
         try {
@@ -116,12 +120,12 @@ final class DeterminationIssuedReactionHandlerTest extends TestCase
     }
 
     // (C) constitutional invariant: a determination is NEVER applied across
-    // organisation boundaries. Resolution is org-scoped — a determination from org-1
-    // cannot reach an election that belongs to org-2 (it resolves to "unknown").
+    // organisation boundaries. The election exists, but in org-2; a determination
+    // arriving under org-1 resolves against org-1's scope and finds nothing.
     public function test_determination_never_applies_across_organisation_boundaries(): void
     {
-        // Election exists only in org-2; the determination arrives under org-1.
-        $repo = $this->repository(ElectionId::fromString('election-77'), 'org-2');
+        // Determination arrives under org-1; election-77 belongs to org-2.
+        $repo = $this->repositoryScopedTo('org-1', ElectionId::fromString('election-77'), 'org-2');
         $outbox = $this->outbox();
 
         $this->expectException(CannotApplyDeterminationToUnknownElection::class);
@@ -130,20 +134,31 @@ final class DeterminationIssuedReactionHandlerTest extends TestCase
 
     // ── intended in-memory collaborators (define the intended Election ports) ──
 
-    /** Organisation-scoped resolution (tenant at the repository boundary; domain stays tenant-free). */
-    private function repository(?ElectionId $existing, string $inOrganisation = 'org-1'): ElectionRepository
-    {
-        return new class($existing, $inOrganisation) implements ElectionRepository {
-            public function __construct(private ?ElectionId $existing, private string $inOrganisation)
-            {
+    /**
+     * A repository already scoped to the ambient organisation (as the concrete Eloquent
+     * repository is, under TenantContext). `find()` asks a pure domain question; the
+     * organisation scope is applied HERE, never as part of the repository contract.
+     */
+    private function repositoryScopedTo(
+        string $ambientOrganisation,
+        ?ElectionId $election = null,
+        string $electionOrganisation = 'org-1',
+    ): ElectionRepository {
+        return new class($ambientOrganisation, $election, $electionOrganisation) implements ElectionRepository {
+            public function __construct(
+                private string $ambientOrganisation,
+                private ?ElectionId $election,
+                private string $electionOrganisation,
+            ) {
             }
 
-            public function find(ElectionId $id, OrganisationId $organisation): ?Election
+            public function find(ElectionId $id): ?Election
             {
-                if ($this->existing !== null
-                    && $id->toString() === $this->existing->toString()
-                    && $organisation->toString() === $this->inOrganisation) {
-                    return Election::identifiedBy($this->existing);
+                // The scoped repository can only see elections within its own organisation.
+                if ($this->election !== null
+                    && $id->toString() === $this->election->toString()
+                    && $this->electionOrganisation === $this->ambientOrganisation) {
+                    return Election::identifiedBy($this->election);
                 }
 
                 return null;

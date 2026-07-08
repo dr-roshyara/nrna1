@@ -88,6 +88,23 @@ final class ElectionTest extends TestCase
         $this->assertCount(1, $election->pullEvents(), 'exactly one correction per determination');
     }
 
+    // Business-level (semantic) idempotency (ARB round-3): an election REHYDRATED with a
+    // determination it has already applied must not re-emit a correction when that same
+    // determination is presented again. This is distinct from same-instance/message
+    // idempotency above — it survives reload, so a re-delivery after persistence cannot
+    // produce a second, semantically duplicate correction.
+    public function test_reapplying_an_already_applied_determination_emits_no_event(): void
+    {
+        $election = Election::reconstitute(
+            ElectionId::fromString('election-1'),
+            [DeterminationId::fromString('det-6')],
+        );
+
+        $election->applyDetermination(DeterminationId::fromString('det-6'), RulingOutcome::Upheld, $this->at());
+
+        $this->assertSame([], $election->pullEvents(), 'a previously applied determination yields no new correction');
+    }
+
     // Event boundary: ElectionCorrectionApplied carries only Election-owned identity.
     // It must NOT leak Contestation concepts (e.g. ChallengeId) — Election never
     // knows the Challenge; it reacts to the Determination.

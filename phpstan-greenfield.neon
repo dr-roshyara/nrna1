@@ -1,5 +1,5 @@
 # PHPStan — static analysis for the greenfield Core (ADR-T7).
-# Scoped to Contestation + Adjudication at max level; widen as contexts migrate.
+# Scoped to Contestation + Adjudication + Election at max level; widen as contexts migrate.
 #
 # Activate:  composer require --dev phpstan/phpstan
 # Run:       vendor/bin/phpstan analyse -c phpstan-greenfield.neon
@@ -8,6 +8,7 @@ parameters:
     paths:
         - app/Contexts/Contestation
         - app/Contexts/Adjudication
+        - app/Contexts/Election
     # Domain layer must stay framework-free; flag accidental Eloquent/Carbon use.
     # (Structural boundary enforcement lives in deptrac.yaml + the PHPUnit
     #  GreenfieldCoreArchitectureTest; PHPStan covers type-level correctness.)

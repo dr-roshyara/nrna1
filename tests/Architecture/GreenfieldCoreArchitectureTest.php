@@ -24,6 +24,10 @@ final class GreenfieldCoreArchitectureTest extends TestCase
     private const CONTEXTS = [
         'Contestation' => 'app/Contexts/Contestation',
         'Adjudication' => 'app/Contexts/Adjudication',
+        // 'Election' joins this scan when its Infrastructure layer lands (PB-004 next
+        // slice). It is a partial context today (Domain + Application only); the
+        // hexagonal-completeness check below asserts all three layers, so scanning it
+        // now would be a false RED for a layer not yet authorized to be built.
     ];
 
     // Q7 (ADR-T11): these contexts must never carry voter<->vote linkage.
