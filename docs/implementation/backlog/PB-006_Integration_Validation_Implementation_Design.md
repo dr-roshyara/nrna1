@@ -66,4 +66,9 @@ DO NOT modify: Outbox, Relay (`OutboxEventProcessor` logic), Inbox, existing reg
 - **D-2 APPROVED:** dispatcher wired as a **listener** on the relay's `IntegrationEvent`; the relay stays **byte-identical**.
 - ARB refinements folded: `ConsumerResolver` dependency (registry behind it) · deterministic **ordered** routing (`consumerContext()` ascending) · **audit continuity** in the Trustworthiness qualification · "Consumer Discovery" wording · **Registration ≠ Delivery** recorded as a permanent design principle (ADR-MP-06).
 
-## STATUS: IDD APPROVED (ARB) — 6A RED authorized; STOP after RED for review before GREEN.
+## 6B sub-slicing (post-6A; F-PB006-2 authorized by ARB)
+- **6B-1 — Correlation chain (F-PB006-2, RED-first):** additive `outbox_events` migration (`correlation_id`/`causation_id`, nullable) · producers stamp them (Adjudication mints a correlation when none exists — loop start absent the raise path; the reacting contexts propagate **correlation = consumed message's correlationId, causation = consumed message's eventId**) · relay copies row → envelope. The producer-side propagation **seam is NOT prescribed — it emerges from RED** (per the F-2 doctrine). Domain events untouched.
+- **6B-2 — IT-1..IT-8 suite** over the real path (per §5), including the now-verifiable IT-8 full chain.
+- Then **6C** triple qualification + Completion Review.
+
+## STATUS: IDD APPROVED (ARB) — 6A DONE (GREEN accepted); 6B-1 in RED. STOP at each RED/GREEN boundary for review.

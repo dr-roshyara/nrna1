@@ -14,9 +14,9 @@ Wiring: `AppServiceProvider` — `ConsumerResolver → RegistryConsumerResolver`
 
 ## The four responsibilities (ADR-MP-06 — each separately testable)
 1. **Receive** the relay's `IntegrationEvent`.
-2. **Consumer Discovery** via `ConsumerResolver` — deterministic **ordered** set: identical event + registry state ⇒ identical order, ordered by a **stable consumer identifier** (currently `consumerContext()` ascending; the contract is *stability*, not lexicographic comparison).
+2. **Consumer Discovery** via `ConsumerResolver` — deterministic **ordered** set: identical event + registry state ⇒ identical order, ordered by a **stable consumer identifier** (currently `consumerContext()` ascending; the contract is *stability*, not lexicographic comparison). **Ordering carries NO business meaning** — consumers must never rely on being first; it exists only for reproducibility.
 3. **Inbox Message Creation** — one `InboxMessage` per consumer; identity, type, payload, organisation (ADR-T16), correlation/causation (D-06, **D-1**: additive nullable envelope fields) propagated. **Audit continuity:** the InboxMessage carries the SAME `event_id` as the originating `OutboxEvent` — every consumption traceable to exactly one outbox record.
-4. **Delivery** — `Inbox::consume` per consumer. **Consumer atomicity/isolation:** each consumer runs in its own inbox transaction; one consumer's park/dead-letter/failure never blocks another; no partial inbox state leaks across consumers. A transient Throwable is re-thrown *after* all consumers were attempted, so the relay's redelivery retries (inbox dedupe protects completed consumers).
+4. **Delivery** — `Inbox::consume` per consumer. **Consumer atomicity/isolation:** each consumer runs in its own inbox transaction; one consumer's park/dead-letter/failure never blocks another; no partial inbox state leaks across consumers. A transient Throwable is re-thrown *after* all consumers were attempted — **why:** the relay retry guarantees eventual delivery for the *failed* consumer, while completed consumers are protected by inbox idempotency on the redelivery; failing fast would deny remaining consumers their attempt for no gain.
 
 The dispatcher holds **no state** and **no business decisions**. Empty consumer set ⇒ no-op.
 
