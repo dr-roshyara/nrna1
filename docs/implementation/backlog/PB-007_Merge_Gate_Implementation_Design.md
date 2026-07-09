@@ -13,6 +13,14 @@ Harden the engineering process that protects the qualified architecture: one exe
 - **7D — Single entry point + CI:** composer scripts **`merge-gate`** (fitness suites → Deptrac → greenfield PHPStan → widened regression; fail-fast; one PASS/FAIL) and **`quality-gate`** (Infection, coverage). New workflow **`greenfield-merge-gate.yml`** running `composer merge-gate` on PRs; quality tier separate/scheduled; existing workflows untouched.
 - **7E — Qualification + Completion Review:** Architecture + DDD + Trustworthiness (the gate must not weaken any invariant — it only enforces) · EP-02 → **STOP** (the retrospective follows, not started).
 
+## 2a. ARB refinements (binding, applied 2026-07-10)
+- **R1 — Rules from architecture, not filesystem:** Deptrac rules are derived from the APPROVED architectural model (bounded contexts, hexagonal layers, approved dependencies) — never from the current package layout alone. The tool must not codify a temporary implementation detail.
+- **R2 — Ownership:** PB-007 only HOSTS the CorrelationId-minting fitness test; the invariant remains OWNED by the Messaging Platform architecture (ADR-MP-06; owner-hosts-the-guard ADR-MP-03).
+- **R3 — Stable interface:** `composer merge-gate` is a STABLE PUBLIC INTERFACE to the engineering system — internal tooling may change; the command contract must not.
+- **Slice reorder (ARB):** the CI workflow orchestrates FINISHED gates, so it moves last: **7A Deptrac → 7B minting fitness → 7C Infection → 7D composer entry point → 7E CI workflow → Qualification/Completion**.
+- **Approvals granted:** A-1 ✅ (report mode first, lockfile change isolated to this slice) · A-2 ✅ conditionally (Shared = infrastructure/platform layer; Deptrac enforces only APPROVED dependency rules, infers no new architecture) · A-3 ✅.
+- **Rollout order (never inverted):** Install → Report → Classify violations (ARB findings, never silent fixes) → Fix intentionally → Fail mode.
+
 ## 3. Boundaries
 No domain/aggregate/platform-logic changes · pre-existing findings recorded, not fixed (7A report-mode findings go to the ARB) · no new patterns · the frozen `.claude` platform untouched.
 
