@@ -11,11 +11,17 @@ namespace App\Contexts\Shared\Application\Messaging;
  *    incoming correlation already exists; otherwise it propagates the existing
  *    CorrelationId and records the triggering message as the CausationId."
  *
- * Producer-independent and bounded-context-independent. CorrelationId identifies the
- * whole conversation (one per constitutional loop); CausationId links each hop to the
- * exact triggering message. These are provenance, not "just two columns" — the
- * constitutional audit chain is built on them. Supplied EXPLICITLY at publish time
- * (never ambient). Pure PHP; @immutable.
+ * Producer-independent and bounded-context-independent. Supplied EXPLICITLY at publish
+ * time (never ambient). Pure PHP; @immutable.
+ *
+ * CONSTITUTIONAL AUDIT INVARIANT (ARB, 2026-07-10):
+ *  - Exactly ONE producer mints a CorrelationId for each constitutional conversation.
+ *  - Every subsequent producer propagates that CorrelationId UNCHANGED — no producer
+ *    may mint a second correlation within a conversation.
+ *  - Every publication after the first records its IMMEDIATE causal predecessor as
+ *    the CausationId.
+ *  - CorrelationId identifies the CONVERSATION, not the event; CausationId identifies
+ *    the DIRECT PARENT, not the chain.
  */
 final readonly class EventProvenance
 {

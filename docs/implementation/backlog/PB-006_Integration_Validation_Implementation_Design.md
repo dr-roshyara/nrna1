@@ -71,4 +71,17 @@ DO NOT modify: Outbox, Relay (`OutboxEventProcessor` logic), Inbox, existing reg
 - **6B-2 — IT-1..IT-8 suite** over the real path (per §5), including the now-verifiable IT-8 full chain.
 - Then **6C** triple qualification + Completion Review.
 
-## STATUS: IDD APPROVED (ARB) — 6A DONE (GREEN accepted); 6B-1 in RED. STOP at each RED/GREEN boundary for review.
+## IT evidence mapping (6C)
+| IT | Evidence |
+|---|---|
+| IT-1 (+IT-8) | `CorrectionLoopIntegrationTest::test_it1...` — full Upheld loop ×2 relay runs; challenge Resolved; ledger row; resolution=upheld; ONE correlation across 4 outbox rows; causation per hop (resolution caused by the correction); chain queryable by correlation across outbox+inbox |
+| IT-2 | `...::test_it2...` — Dismissed: Election emits NOTHING; short-circuit resolution=dismissed; causation=determination |
+| IT-3 | `...::test_it3...` — same event redelivered through the real listener → deduped per consumer; no second effect |
+| IT-4 | `...::test_it4...` — correction before determination → parked; determination delivered → Adjudicated; redrive → Resolved |
+| IT-5 | existing `OutboxEventProcessorRegistryTest` (registered processed · unregistered → dead-letter, F2) |
+| IT-6 | existing `InboxConsumeTest` (F5 transient rollback+rethrow · F9 permanent dead-letter) + `InboxRedriveTest` (deadline, unregistered) |
+| IT-7 | `GreenfieldCoreArchitectureTest` (AT-EVT-001 single producer · domain purity · anonymity) + Messaging fitness suites |
+| IT-8 | folded into IT-1 chain assertions + `CorrelationChainTest` |
+F1–F9 coverage: F2 (IT-5) · F4 (IT-4 + redrive suite) · F5/F8/F9 (IT-6/inbox suites) · F1/F3/F6/F7 (PB-003 suites — per-case rows in the inbox/outbox tests).
+
+## STATUS: 6A ✔ · 6B-1 ✔ · 6B-2 ✔ (IT-1..8 evidenced) — 6C qualification presented; PB-006 awaiting ARB closure. NO PB-007.
