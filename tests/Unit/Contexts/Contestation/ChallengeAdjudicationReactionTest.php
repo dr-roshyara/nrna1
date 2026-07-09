@@ -19,6 +19,7 @@ use App\Contexts\Contestation\Domain\Events\ChallengeAdjudicated;
 use App\Contexts\Contestation\Domain\Events\ChallengeResolved;
 use App\Contexts\Contestation\Domain\Repository\ChallengeRepository;
 use DateTimeImmutable;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use PHPUnit\Framework\TestCase;
 use Tests\Support\Contestation\InMemoryChallengeRepository;
 
@@ -42,7 +43,7 @@ final class ChallengeAdjudicationReactionTest extends TestCase
         $repo = $this->repo($this->routed('ch-1'));
         $outbox = $this->outbox();
 
-        $this->reaction($repo, $outbox)->on(ChallengeId::fromString('ch-1'), DeterminationId::fromString('det-1'), DeterminationOutcome::Upheld, $this->at());
+        $this->reaction($repo, $outbox)->on(ChallengeId::fromString('ch-1'), DeterminationId::fromString('det-1'), DeterminationOutcome::Upheld, $this->at(), EventProvenance::fromConsumed('corr-test', 'evt-cause'));
 
         $this->assertCount(1, $outbox->events);
         $this->assertInstanceOf(ChallengeAdjudicated::class, $outbox->events[0]);
@@ -54,7 +55,7 @@ final class ChallengeAdjudicationReactionTest extends TestCase
         $repo = $this->repo($this->routed('ch-1'));
         $outbox = $this->outbox();
 
-        $this->reaction($repo, $outbox)->on(ChallengeId::fromString('ch-1'), DeterminationId::fromString('det-1'), DeterminationOutcome::Dismissed, $this->at());
+        $this->reaction($repo, $outbox)->on(ChallengeId::fromString('ch-1'), DeterminationId::fromString('det-1'), DeterminationOutcome::Dismissed, $this->at(), EventProvenance::fromConsumed('corr-test', 'evt-cause'));
 
         // Adjudicated raw; the resolved event is published as the integration carrier with
         // resolution=Dismissed (5C seam) — the domain event stays minimal.
@@ -70,7 +71,7 @@ final class ChallengeAdjudicationReactionTest extends TestCase
         $repo = $this->repo($this->adjudicated('ch-1', 'det-1'));
 
         $this->expectException(DeterminationAlreadyApplied::class); // business condition, not an inbox marker
-        $this->reaction($repo, $this->outbox())->on(ChallengeId::fromString('ch-1'), DeterminationId::fromString('det-1'), DeterminationOutcome::Upheld, $this->at());
+        $this->reaction($repo, $this->outbox())->on(ChallengeId::fromString('ch-1'), DeterminationId::fromString('det-1'), DeterminationOutcome::Upheld, $this->at(), EventProvenance::fromConsumed('corr-test', 'evt-cause'));
     }
 
     public function test_a_different_determination_on_an_adjudicated_challenge_conflicts(): void
@@ -78,7 +79,7 @@ final class ChallengeAdjudicationReactionTest extends TestCase
         $repo = $this->repo($this->adjudicated('ch-1', 'det-1'));
 
         $this->expectException(ConflictingDetermination::class); // domain invariant: one binding determination per challenge
-        $this->reaction($repo, $this->outbox())->on(ChallengeId::fromString('ch-1'), DeterminationId::fromString('det-2'), DeterminationOutcome::Upheld, $this->at());
+        $this->reaction($repo, $this->outbox())->on(ChallengeId::fromString('ch-1'), DeterminationId::fromString('det-2'), DeterminationOutcome::Upheld, $this->at(), EventProvenance::fromConsumed('corr-test', 'evt-cause'));
     }
 
     // ── collaborators + fixtures ──
@@ -109,7 +110,7 @@ final class ChallengeAdjudicationReactionTest extends TestCase
             /** @var list<object> */
             public array $events = [];
 
-            public function enqueue(object ...$events): void
+            public function enqueue(EventProvenance $provenance, object ...$events): void
             {
                 $this->events = array_merge($this->events, $events);
             }

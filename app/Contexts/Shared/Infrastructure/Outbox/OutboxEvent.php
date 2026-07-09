@@ -7,6 +7,10 @@ namespace App\Contexts\Shared\Infrastructure\Outbox;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
+/**
+ * @property string|null $correlation_id F-PB006-2 provenance (nullable: predates stamping / chain start has no cause)
+ * @property string|null $causation_id
+ */
 final class OutboxEvent extends Model
 {
     use HasUuids;
@@ -23,6 +27,8 @@ final class OutboxEvent extends Model
         'aggregate_id',
         'event_type',
         'payload',
+        'correlation_id',
+        'causation_id',
         'status',
         'attempts',
         'available_at',

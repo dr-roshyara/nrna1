@@ -17,6 +17,7 @@ use App\Contexts\Contestation\Domain\Challenge\DeterminationId;
 use App\Contexts\Contestation\Domain\Events\ChallengeResolved;
 use App\Contexts\Contestation\Domain\Repository\ChallengeRepository;
 use DateTimeImmutable;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use PHPUnit\Framework\TestCase;
 use Tests\Support\Contestation\InMemoryChallengeRepository;
 
@@ -39,7 +40,7 @@ final class ChallengeResolutionReactionTest extends TestCase
         $repo = $this->repo($this->adjudicated('ch-1', 'det-1'));
         $outbox = $this->outbox();
 
-        $this->reaction($repo, $outbox)->on(DeterminationId::fromString('det-1'), $this->at());
+        $this->reaction($repo, $outbox)->on(DeterminationId::fromString('det-1'), $this->at(), EventProvenance::fromConsumed('corr-test', 'evt-cause'));
 
         // 5C emergent seam: the published item is the integration carrier (minimal domain
         // event + Application-supplied resolution), not the raw domain event.
@@ -54,7 +55,7 @@ final class ChallengeResolutionReactionTest extends TestCase
     {
         // No Challenge carries this determination yet → temporally premature (business).
         $this->expectException(AwaitingAdjudication::class);
-        $this->reaction($this->repo(), $this->outbox())->on(DeterminationId::fromString('det-1'), $this->at());
+        $this->reaction($this->repo(), $this->outbox())->on(DeterminationId::fromString('det-1'), $this->at(), EventProvenance::fromConsumed('corr-test', 'evt-cause'));
     }
 
     public function test_re_delivery_of_an_already_resolved_challenge_is_a_business_replay(): void
@@ -62,7 +63,7 @@ final class ChallengeResolutionReactionTest extends TestCase
         $repo = $this->repo($this->resolved('ch-1', 'det-1'));
 
         $this->expectException(DeterminationAlreadyApplied::class);
-        $this->reaction($repo, $this->outbox())->on(DeterminationId::fromString('det-1'), $this->at());
+        $this->reaction($repo, $this->outbox())->on(DeterminationId::fromString('det-1'), $this->at(), EventProvenance::fromConsumed('corr-test', 'evt-cause'));
     }
 
     // ── collaborators + fixtures ──
@@ -93,7 +94,7 @@ final class ChallengeResolutionReactionTest extends TestCase
             /** @var list<object> */
             public array $events = [];
 
-            public function enqueue(object ...$events): void
+            public function enqueue(EventProvenance $provenance, object ...$events): void
             {
                 $this->events = array_merge($this->events, $events);
             }

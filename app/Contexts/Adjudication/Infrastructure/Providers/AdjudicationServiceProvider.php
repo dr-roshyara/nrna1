@@ -39,8 +39,11 @@ final class AdjudicationServiceProvider extends ServiceProvider
             /** @var TransactionManager $transactions */
             $transactions = $app->make(TransactionManager::class);
 
+            /** @var IdentityGenerator $identities */
+            $identities = $app->make(IdentityGenerator::class);
+
             return new TransactionalAdjudicationService(
-                new CoordinatesAdjudication($repository, $outbox),
+                new CoordinatesAdjudication($repository, $outbox, $identities),
                 $transactions,
             );
         });

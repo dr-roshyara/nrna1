@@ -7,6 +7,7 @@ namespace App\Contexts\Contestation\Infrastructure\Outbox;
 use App\Contexts\Contestation\Application\ChallengeResolvedIntegration;
 use App\Contexts\Contestation\Application\Port\ChallengeEventOutbox;
 use App\Contexts\Contestation\Domain\Events\ChallengeAdjudicated;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use App\Contexts\Shared\Infrastructure\Outbox\OutboxEvent;
 use App\Services\TenantContext;
 use Illuminate\Support\Str;
@@ -24,18 +25,18 @@ use LogicException;
  */
 final class ChallengeOutboxAdapter implements ChallengeEventOutbox
 {
-    public function enqueue(object ...$events): void
+    public function enqueue(EventProvenance $provenance, object ...$events): void
     {
         foreach ($events as $event) {
             match (true) {
-                $event instanceof ChallengeAdjudicated => $this->writeAdjudicated($event),
-                $event instanceof ChallengeResolvedIntegration => $this->writeResolved($event),
+                $event instanceof ChallengeAdjudicated => $this->writeAdjudicated($event, $provenance),
+                $event instanceof ChallengeResolvedIntegration => $this->writeResolved($event, $provenance),
                 default => throw new LogicException('No outbox mapping for event '.$event::class),
             };
         }
     }
 
-    private function writeAdjudicated(ChallengeAdjudicated $event): void
+    private function writeAdjudicated(ChallengeAdjudicated $event, EventProvenance $provenance): void
     {
         (new OutboxEvent([
             'event_id' => (string) Str::uuid(),
@@ -43,6 +44,8 @@ final class ChallengeOutboxAdapter implements ChallengeEventOutbox
             'aggregate_type' => 'Challenge',
             'aggregate_id' => $event->challengeId->toString(),
             'event_type' => 'ChallengeAdjudicated',
+            'correlation_id' => $provenance->correlationId,
+            'causation_id' => $provenance->causationId,
             'payload' => [
                 'schema_version' => 1,
                 'challengeId' => $event->challengeId->toString(),
@@ -55,7 +58,7 @@ final class ChallengeOutboxAdapter implements ChallengeEventOutbox
         ]))->save();
     }
 
-    private function writeResolved(ChallengeResolvedIntegration $integration): void
+    private function writeResolved(ChallengeResolvedIntegration $integration, EventProvenance $provenance): void
     {
         $event = $integration->event;
 
@@ -65,6 +68,8 @@ final class ChallengeOutboxAdapter implements ChallengeEventOutbox
             'aggregate_type' => 'Challenge',
             'aggregate_id' => $event->challengeId->toString(),
             'event_type' => 'ChallengeResolved',
+            'correlation_id' => $provenance->correlationId,
+            'causation_id' => $provenance->causationId,
             'payload' => [
                 'schema_version' => 1,
                 'challengeId' => $event->challengeId->toString(),

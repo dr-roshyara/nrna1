@@ -7,6 +7,7 @@ namespace App\Contexts\Contestation\Application;
 use App\Contexts\Contestation\Application\Exception\AwaitingAdjudication;
 use App\Contexts\Contestation\Application\Exception\DeterminationAlreadyApplied;
 use App\Contexts\Contestation\Application\Port\ChallengeEventOutbox;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use App\Contexts\Contestation\Domain\Challenge\ChallengeState;
 use App\Contexts\Contestation\Domain\Challenge\DeterminationId;
 use App\Contexts\Contestation\Domain\Events\ChallengeResolved;
@@ -28,7 +29,7 @@ final class ChallengeResolutionReaction
     ) {
     }
 
-    public function on(DeterminationId $determinationId, DateTimeImmutable $at): void
+    public function on(DeterminationId $determinationId, DateTimeImmutable $at, EventProvenance $provenance): void
     {
         $challenge = $this->challenges->findByDeterminationId($determinationId);
         if ($challenge === null) {
@@ -43,7 +44,7 @@ final class ChallengeResolutionReaction
             // A correction was applied ⇒ the challenge was Upheld. The Application supplies
             // `resolution` explicitly for the published Integration Event (F-2); the domain
             // event stays minimal.
-            $this->outbox->enqueue(...$this->enrich($challenge->pullEvents(), Resolution::Upheld));
+            $this->outbox->enqueue($provenance, ...$this->enrich($challenge->pullEvents(), Resolution::Upheld));
             $this->challenges->save($challenge);
 
             return;

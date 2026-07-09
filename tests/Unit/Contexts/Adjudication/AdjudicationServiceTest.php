@@ -35,7 +35,12 @@ final class AdjudicationServiceTest extends TestCase
     {
         $this->repo = new InMemoryDeterminationRepository();
         $this->outbox = new InMemoryEventOutbox();
-        $this->service = new CoordinatesAdjudication($this->repo, $this->outbox);
+        $this->service = new CoordinatesAdjudication($this->repo, $this->outbox, new class implements \App\Contexts\Adjudication\Application\Port\IdentityGenerator {
+            public function next(): string
+            {
+                return 'corr-minted';
+            }
+        });
     }
 
     private function command(string $challenge = 'ch-1'): IssueDeterminationCommand

@@ -7,6 +7,7 @@ namespace App\Contexts\Contestation\Application;
 use App\Contexts\Contestation\Application\Exception\AwaitingAdjudication;
 use App\Contexts\Contestation\Application\Exception\DeterminationAlreadyApplied;
 use App\Contexts\Contestation\Application\Port\ChallengeEventOutbox;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use App\Contexts\Contestation\Domain\Challenge\ChallengeId;
 use App\Contexts\Contestation\Domain\Challenge\ChallengeState;
 use App\Contexts\Contestation\Domain\Challenge\DeterminationId;
@@ -36,6 +37,7 @@ final class ChallengeAdjudicationReaction
         DeterminationId $determinationId,
         DeterminationOutcome $outcome,
         DateTimeImmutable $at,
+        EventProvenance $provenance,
     ): void {
         $challenge = $this->challenges->find($challengeId);
         if ($challenge === null) {
@@ -48,9 +50,9 @@ final class ChallengeAdjudicationReaction
                 $challenge->resolve($determinationId, $at); // short-circuit: Election is silent on Dismissed
                 // Dismissed ⇒ the Application enriches the published ChallengeResolved with a
                 // Dismissed resolution (F-2); the domain event stays minimal.
-                $this->outbox->enqueue(...$this->enrich($challenge->pullEvents(), Resolution::Dismissed));
+                $this->outbox->enqueue($provenance, ...$this->enrich($challenge->pullEvents(), Resolution::Dismissed));
             } else {
-                $this->outbox->enqueue(...$challenge->pullEvents());
+                $this->outbox->enqueue($provenance, ...$challenge->pullEvents());
             }
             $this->challenges->save($challenge);
 

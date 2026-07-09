@@ -15,6 +15,7 @@ use App\Contexts\Election\Domain\Repository\ElectionRepository;
 use App\Contexts\Shared\Application\Inbox\InboxHandler;
 use App\Contexts\Shared\Application\Inbox\InboxMessage;
 use App\Infrastructure\Shared\Clock\FrozenClock;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -199,7 +200,7 @@ final class DeterminationIssuedReactionHandlerTest extends TestCase
             /** @var list<object> */
             public array $events = [];
 
-            public function enqueue(object ...$events): void
+            public function enqueue(EventProvenance $provenance, object ...$events): void
             {
                 $this->events = array_merge($this->events, $events);
             }

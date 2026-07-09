@@ -13,6 +13,7 @@ use App\Contexts\Election\Domain\Repository\ElectionRepository;
 use App\Contexts\Election\Domain\RulingOutcome;
 use App\Contexts\Shared\Application\Inbox\InboxHandler;
 use App\Contexts\Shared\Application\Inbox\InboxMessage;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use App\Domain\Shared\Clock\ClockInterface;
 use DateTimeImmutable;
 
@@ -76,7 +77,10 @@ final class DeterminationIssuedReactionHandler implements InboxHandler
         }
 
         $election->applyDetermination($determinationId, $outcome, $appliedAt);
-        $this->outbox->enqueue(...$election->pullEvents());
+        $this->outbox->enqueue(
+            EventProvenance::fromConsumed($message->correlationId, $message->eventId),
+            ...$election->pullEvents(),
+        );
         $this->elections->save($election);
     }
 

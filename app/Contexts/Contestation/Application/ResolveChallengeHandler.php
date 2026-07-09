@@ -11,6 +11,7 @@ use App\Contexts\Contestation\Domain\Challenge\DeterminationId;
 use App\Contexts\Contestation\Domain\Challenge\Exception\IllegalChallengeTransition;
 use App\Contexts\Shared\Application\Inbox\InboxHandler;
 use App\Contexts\Shared\Application\Inbox\InboxMessage;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use App\Domain\Shared\Clock\ClockInterface;
 
 /**
@@ -47,7 +48,11 @@ final class ResolveChallengeHandler implements InboxHandler
         $determinationId = DeterminationId::fromString($this->stringField($message->payload, 'determinationId'));
 
         try {
-            $this->reaction->on($determinationId, $this->clock->now());
+            $this->reaction->on(
+                $determinationId,
+                $this->clock->now(),
+                EventProvenance::fromConsumed($message->correlationId, $message->eventId),
+            );
         } catch (DeterminationAlreadyApplied|AwaitingAdjudication|IllegalChallengeTransition $businessCondition) {
             throw $this->translator->toInboxOutcome($businessCondition);
         }

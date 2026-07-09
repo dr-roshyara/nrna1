@@ -7,6 +7,7 @@ namespace App\Contexts\Adjudication\Infrastructure\Outbox;
 use App\Contexts\Adjudication\Application\Port\EventOutbox;
 use App\Contexts\Adjudication\Domain\DomainEvent;
 use App\Contexts\Adjudication\Domain\Events\DeterminationIssued;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use App\Contexts\Shared\Infrastructure\Outbox\OutboxEvent;
 use App\Services\TenantContext;
 use Illuminate\Support\Str;
@@ -19,11 +20,11 @@ use Illuminate\Support\Str;
  */
 final class OutboxEventAdapter implements EventOutbox
 {
-    public function enqueue(DomainEvent ...$events): void
+    public function enqueue(EventProvenance $provenance, DomainEvent ...$events): void
     {
         foreach ($events as $event) {
             match (true) {
-                $event instanceof DeterminationIssued => $this->writeDeterminationIssued($event),
+                $event instanceof DeterminationIssued => $this->writeDeterminationIssued($event, $provenance),
                 default => throw new \LogicException(
                     'No outbox mapping for event ' . $event::class
                 ),
@@ -31,7 +32,7 @@ final class OutboxEventAdapter implements EventOutbox
         }
     }
 
-    private function writeDeterminationIssued(DeterminationIssued $event): void
+    private function writeDeterminationIssued(DeterminationIssued $event, EventProvenance $provenance): void
     {
         $outboxEvent = new OutboxEvent([
             'event_id' => (string) Str::uuid(),
@@ -39,6 +40,8 @@ final class OutboxEventAdapter implements EventOutbox
             'aggregate_type' => 'Determination',
             'aggregate_id' => $event->determinationId->toString(),
             'event_type' => 'DeterminationIssued',
+            'correlation_id' => $provenance->correlationId,
+            'causation_id' => $provenance->causationId,
             'payload' => [
                 // ADR-PL-01: payload schema version 2 — additively carries the
                 // contested-outcome reference. Same event; hydrator reads v1+v2.

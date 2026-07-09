@@ -17,6 +17,7 @@ use App\Contexts\Adjudication\Infrastructure\Outbox\OutboxEventAdapter;
 use App\Services\TenantContext;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Application;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -111,7 +112,7 @@ class OutboxEventAdapterTest extends TestCase
         $this->expectExceptionMessage('Tenant context not set');
 
         // Act
-        $adapter->enqueue($this->makeDeterminationIssued());
+        $adapter->enqueue(EventProvenance::start('corr-1'), $this->makeDeterminationIssued());
     }
 
     // -----------------------------------------------------------------------
@@ -155,7 +156,7 @@ class OutboxEventAdapterTest extends TestCase
         $adapter = new OutboxEventAdapter();
 
         try {
-            $adapter->enqueue($this->makeDeterminationIssued());
+            $adapter->enqueue(EventProvenance::start('corr-1'), $this->makeDeterminationIssued());
         } catch (\RuntimeException $e) {
             // The S7 bug would surface as "Tenant context not set"
             $this->assertStringNotContainsString(

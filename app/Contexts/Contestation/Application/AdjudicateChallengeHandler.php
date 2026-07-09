@@ -14,6 +14,7 @@ use App\Contexts\Contestation\Domain\Challenge\Exception\ConflictingDeterminatio
 use App\Contexts\Contestation\Domain\Challenge\Exception\IllegalChallengeTransition;
 use App\Contexts\Shared\Application\Inbox\InboxHandler;
 use App\Contexts\Shared\Application\Inbox\InboxMessage;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use App\Domain\Shared\Clock\ClockInterface;
 
 /**
@@ -53,7 +54,13 @@ final class AdjudicateChallengeHandler implements InboxHandler
         $outcome = DeterminationOutcome::from($this->stringField($message->payload, 'outcome'));
 
         try {
-            $this->reaction->on($challengeId, $determinationId, $outcome, $this->clock->now());
+            $this->reaction->on(
+                $challengeId,
+                $determinationId,
+                $outcome,
+                $this->clock->now(),
+                EventProvenance::fromConsumed($message->correlationId, $message->eventId),
+            );
         } catch (ConflictingDetermination|DeterminationAlreadyApplied|AwaitingAdjudication|IllegalChallengeTransition $businessCondition) {
             throw $this->translator->toInboxOutcome($businessCondition);
         }

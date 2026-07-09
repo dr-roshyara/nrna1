@@ -6,6 +6,7 @@ namespace App\Contexts\Election\Infrastructure\Outbox;
 
 use App\Contexts\Election\Application\Port\ReactionEventOutbox;
 use App\Contexts\Election\Domain\Events\ElectionCorrectionApplied;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use App\Contexts\Shared\Infrastructure\Outbox\OutboxEvent;
 use App\Services\TenantContext;
 use Illuminate\Support\Str;
@@ -24,17 +25,17 @@ use LogicException;
  */
 final class ReactionOutboxAdapter implements ReactionEventOutbox
 {
-    public function enqueue(object ...$events): void
+    public function enqueue(EventProvenance $provenance, object ...$events): void
     {
         foreach ($events as $event) {
             match (true) {
-                $event instanceof ElectionCorrectionApplied => $this->writeElectionCorrectionApplied($event),
+                $event instanceof ElectionCorrectionApplied => $this->writeElectionCorrectionApplied($event, $provenance),
                 default => throw new LogicException('No outbox mapping for event '.$event::class),
             };
         }
     }
 
-    private function writeElectionCorrectionApplied(ElectionCorrectionApplied $event): void
+    private function writeElectionCorrectionApplied(ElectionCorrectionApplied $event, EventProvenance $provenance): void
     {
         (new OutboxEvent([
             'event_id' => (string) Str::uuid(),
@@ -42,6 +43,8 @@ final class ReactionOutboxAdapter implements ReactionEventOutbox
             'aggregate_type' => 'Election',
             'aggregate_id' => $event->electionId->toString(),
             'event_type' => 'ElectionCorrectionApplied',
+            'correlation_id' => $provenance->correlationId,
+            'causation_id' => $provenance->causationId,
             'payload' => [
                 'schema_version' => 1,
                 'electionId' => $event->electionId->toString(),

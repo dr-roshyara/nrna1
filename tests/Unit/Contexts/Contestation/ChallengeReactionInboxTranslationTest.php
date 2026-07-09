@@ -20,6 +20,7 @@ use App\Contexts\Shared\Application\Inbox\IdempotentReplay;
 use App\Contexts\Shared\Application\Inbox\InboxHandler;
 use App\Contexts\Shared\Application\Inbox\PermanentInboxFailure;
 use App\Infrastructure\Shared\Clock\FrozenClock;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use PHPUnit\Framework\TestCase;
 use Tests\Support\Contestation\InMemoryChallengeRepository;
 
@@ -90,7 +91,7 @@ final class ChallengeReactionInboxTranslationTest extends TestCase
             /** @var list<object> */
             public array $events = [];
 
-            public function enqueue(object ...$events): void
+            public function enqueue(EventProvenance $provenance, object ...$events): void
             {
                 $this->events = array_merge($this->events, $events);
             }

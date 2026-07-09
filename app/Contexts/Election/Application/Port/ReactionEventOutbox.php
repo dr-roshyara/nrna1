@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Contexts\Election\Application\Port;
 
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
+
 /**
  * Application port through which the Election reaction publishes the domain events it
  * decided (e.g. {@see \App\Contexts\Election\Domain\Events\ElectionCorrectionApplied}).
@@ -14,5 +16,9 @@ namespace App\Contexts\Election\Application\Port;
  */
 interface ReactionEventOutbox
 {
-    public function enqueue(object ...$events): void;
+    /**
+     * Provenance is supplied EXPLICITLY at publish time (ADR-MP-06 invariant): the
+     * reaction propagates the consumed message's correlation and records it as the cause.
+     */
+    public function enqueue(EventProvenance $provenance, object ...$events): void;
 }

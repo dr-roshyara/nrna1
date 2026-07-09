@@ -153,6 +153,9 @@ final class OutboxEventProcessor
             organisationId: $event->organisation_id,
             payload: $payload,
             occurredAt: $event->created_at,
+            // F-PB006-2: provenance copied row -> envelope (D-1 fields now populated).
+            correlationId: $event->correlation_id,
+            causationId: $event->causation_id,
         );
     }
 

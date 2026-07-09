@@ -11,6 +11,7 @@ use App\Contexts\Election\Domain\Events\ElectionCorrectionApplied;
 use App\Contexts\Election\Infrastructure\Outbox\ReactionOutboxAdapter;
 use App\Services\TenantContext;
 use DateTimeImmutable;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
@@ -44,6 +45,6 @@ final class ReactionOutboxAdapterTest extends TestCase
 
         // No ambient tenant → require() must throw before any row is written.
         $this->expectException(RuntimeException::class);
-        (new ReactionOutboxAdapter())->enqueue($event);
+        (new ReactionOutboxAdapter())->enqueue(EventProvenance::start('corr-1'), $event);
     }
 }
