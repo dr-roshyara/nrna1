@@ -22,6 +22,18 @@
 # graph; the officially supported PHAR shim `qossmic/deptrac-shim` (deptrac 1.0.2)
 # is used instead. Same tool, same gate.
 #
+# Uncovered dependencies (ARB 7A refinement 1): the ~90 uncovered targets are
+# APPROVED EXTERNAL PLATFORM DEPENDENCIES — ClockInterface (PB-004 clock ruling),
+# Illuminate\* (framework, Infrastructure layer), BelongsToTenant/TenantContext
+# (app-wide tenant mechanism). Uncovered != approved: these are intentionally
+# outside the analysed paths TODAY; an explicit ExternalPlatform layer is a
+# recorded future refinement so everything becomes covered-or-intentionally-ignored.
+#
+# Shared admission rule (ARB 7A refinement 2): Shared exists ONLY to host technical
+# concepts that would otherwise duplicate across bounded contexts. Business
+# concepts migrate into Shared only through EXPLICIT ARB APPROVAL — Shared must
+# never degrade into a general utility layer.
+#
 # Run (report mode): vendor/bin/deptrac analyse --config-file=deptrac.yaml
 deptrac:
   paths:
