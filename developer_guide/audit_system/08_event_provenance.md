@@ -18,7 +18,14 @@ These are **provenance / message lineage**, not "two UUID columns."
 Examples: `Challenge → Determination → Correction → Resolution` · `Membership → Election → Vote → Result → Audit`. One CorrelationId identifies the whole conversation; every event except the first records its immediate causal predecessor as the CausationId.
 
 ## Architecture Fitness Rule — CorrelationId minting
-Exactly **one** producer may mint a CorrelationId per Constitutional Conversation; all subsequent producers propagate it unchanged; no second mint within a conversation. Enforced by architecture (`start()` only at chain origin), design (`fromConsumed()` propagates, never mints), and test (IT-1: one CorrelationId across all rows).
+Exactly **one** producer may mint a CorrelationId per Constitutional Conversation; all subsequent producers propagate it unchanged; no second mint within a conversation. Enforced by architecture (`start()` only at chain origin), design (`fromConsumed()` propagates, never mints), and test (IT-1: one CorrelationId across all rows). A dedicated fitness test is **deferred to PB-007 or the first architecture-quality milestone after it**.
+
+## Acyclicity invariant (recorded; no implementation today)
+A Constitutional Conversation must form a **directed acyclic graph** — causation links only point to earlier events; no event may directly or transitively cause itself. Load-bearing once replay/projections/distributed workflows arrive.
+
+## Where the pieces live (wiring + schema)
+- Columns: additive migration `database/migrations/2026_07_10_000001_add_provenance_to_outbox_events.php` (nullable, indexed `correlation_id`/`causation_id` on `outbox_events`); `inbox_events` carried them since PB-003.
+- Wiring: `AppServiceProvider` — `ConsumerResolver → RegistryConsumerResolver` binding + the dispatcher listener on `IntegrationEvent` (see guide 07).
 
 ## Integration Events only — NEVER Domain Events
 Domain Events carry **zero** provenance (business facts). Integration Events carry `EventProvenance` (published message + lineage). **Invariant: no Domain Event class may contain CorrelationId/CausationId properties.** Provenance lives exclusively in the messaging layer.
