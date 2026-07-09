@@ -15,7 +15,7 @@
 ## 2. Dispatcher design (per ADR-MP-06 — four explicit responsibilities)
 `App\Contexts\Shared\Infrastructure\Messaging\IntegrationEventDispatcher` (name/location per ARB: Messaging-owned, NOT under Inbox):
 1. **Receive** — invoked with the relay's `IntegrationEvent` (wiring: a listener on the relay's dispatched `IntegrationEvent`, registered in the Shared/App provider; the relay itself is not modified).
-2. **Consumer Resolution** — `InboxHandlerRegistry` needs one additive query: `handlersFor(eventType): list<InboxHandler>` (today it only resolves by exact `(consumer, type)` pair). Additive method, no existing contract changed. Deterministic.
+2. **Consumer Discovery (ARB refinement)** — the dispatcher depends on a **`ConsumerResolver`** port (Messaging-owned): `consumersFor(eventType): list<InboxHandler>` returning the **ordered** consumer set (**ordering rule: `consumerContext()` ascending, lexicographic** — reproducible regardless of registration order). The registry stays an implementation detail behind `RegistryConsumerResolver` (which uses one **additive** registry query). Determinism: identical event + identical registry state ⇒ identical ordered set.
 3. **Inbox Message Creation** — one `InboxMessage` per resolved consumer: `event_id`, `event_type`, `payload`, `organisation_id`, `correlation/causation` — all propagated from the `IntegrationEvent` (which the relay builds from the outbox row). *(Gap check: `IntegrationEvent` currently carries eventId/type/aggregate/org/payload/occurredAt — if correlation/causation are absent on the envelope, adding them is an additive envelope field, flagged below as D-1.)*
 4. **Delivery** — `Inbox::consume($message, $handler)` per consumer, each consumer wrapped so one consumer's failure/park/dead-letter never blocks another (**consumer isolation**); outcomes are per-consumer, observable, never re-thrown into the relay loop except for transient infrastructure faults (which the relay's existing retry handles).
 
@@ -37,6 +37,8 @@ No consumers registered for a type ⇒ no-op (not an error). The dispatcher hold
 | 6 | no consumer registered for the type | no-op; no row; no error |
 | 7 | tenant propagation | inbox rows carry the producing row's `organisation_id`; consumption is org-scoped |
 | 8 | correlation/causation propagation (D-06) | values on the inbox rows equal the outbox row's |
+| 9 | **deterministic ORDERED routing** (ARB) | two consumers registered in reverse order → invoked in `consumerContext()` ascending order, identical on repeat |
+| 10 | **audit continuity** (ARB) | every created inbox row's `event_id` equals the originating outbox event's `event_id` — each `InboxMessage` traceable to exactly ONE `OutboxEvent` |
 
 ## 5. IT-1..IT-8 mapping (6B — Blueprint §9, over the real path)
 | IT | Scenario | Path exercised |
@@ -59,9 +61,9 @@ Every failure-model case F1–F9 is covered at least once across IT-3..IT-6 + ex
 ## 7. Boundaries
 DO NOT modify: Outbox, Relay (`OutboxEventProcessor` logic), Inbox, existing registry contracts (only the **additive** `handlersFor()`), PB-004/PB-005 contexts, aggregates, schemas. DO NOT begin PB-007. The dispatcher is the ONLY new production code.
 
-## 8. Open decisions for ARB (with the IDD)
-- **D-1 (envelope fields):** if `IntegrationEvent` lacks correlation/causation fields, add them **additively** (they exist on `outbox_events`; the relay would copy them through). Flag: additive envelope change, no consumer breakage.
-- **D-2 (listener vs relay-step):** wire the dispatcher as a Laravel listener on `IntegrationEvent` (zero relay modification; recommended) vs. an explicit call inside the relay (more explicit, but touches the frozen relay). **Recommended: listener** — the relay stays byte-identical.
+## 8. Decisions (ARB-ruled 2026-07-10)
+- **D-1 APPROVED:** `IntegrationEvent` envelope extended **additively** with `CorrelationId`/`CausationId` (messaging concerns; domain events untouched).
+- **D-2 APPROVED:** dispatcher wired as a **listener** on the relay's `IntegrationEvent`; the relay stays **byte-identical**.
+- ARB refinements folded: `ConsumerResolver` dependency (registry behind it) · deterministic **ordered** routing (`consumerContext()` ascending) · **audit continuity** in the Trustworthiness qualification · "Consumer Discovery" wording · **Registration ≠ Delivery** recorded as a permanent design principle (ADR-MP-06).
 
-## STOP
-Awaiting ARB review of this IDD (+ D-1/D-2) before 6A RED.
+## STATUS: IDD APPROVED (ARB) — 6A RED authorized; STOP after RED for review before GREEN.
