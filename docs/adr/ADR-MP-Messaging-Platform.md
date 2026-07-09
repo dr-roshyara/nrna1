@@ -52,5 +52,20 @@
 
 ---
 
+## ADR-MP-06 — Integration Event Dispatcher (delivery capability)
+
+**Status:** Accepted (ARB, 2026-07-10 — authorized under the R-29 escape clause). · **Applies:** PGP-01/PGP-02 (platform capability; single ownership) · ADR-T1/T4/T16 · D-06.
+**Question:** How does a published integration event travel from a producer's outbox to every consuming context's inbox?
+**Evidence (F-PB006-1, PB-006 Discovery):** it doesn't — the relay dispatches `IntegrationEvent` onto the Laravel event bus and stops; `Inbox::consume` has **zero** production callers; handler **registration ≠ delivery**. PB-006 (a feature) thereby demonstrated the frozen platform insufficient — precisely the sanctioned evolution path.
+**Decision:** Add **`IntegrationEventDispatcher`** — a **Shared Messaging Platform capability** (owner: Messaging Platform; the **Inbox does NOT own delivery — it is one consumer**). It closes the loop with four explicit, separately-testable responsibilities:
+1. **Receive** the relay's output (`IntegrationEvent`).
+2. **Consumer Resolution** — look up **all** consumers registered for the event type in `InboxHandlerRegistry` (deterministic: same event type → same consumer set).
+3. **Inbox Message Creation** — build one `InboxMessage` per consumer, propagating event identity, type, payload, **organisation** (ADR-T16), **correlation/causation** (D-06) from the outbox record.
+4. **Delivery** — `Inbox::consume($message, $handler)` per consumer, with **consumer isolation**: one consumer's park/dead-letter/failure never blocks another consumer or the relay.
+**Invariants (Trustworthiness — the dispatcher joins the trusted computing base):** deterministic routing · replay safety (redelivery lands on inbox dedupe; the dispatcher itself holds no state) · tenant propagation/isolation · consumer isolation · causal-ordering preservation (premature → park, via the inbox's own semantics) · correlation/causation propagation · event-identity propagation (dedupe preserved). It contains **no business decisions** (ADR-MP-01) and does not alter Outbox/Relay/Inbox/Registry contracts — it is only the missing link between them.
+**Consequences:** IT-1/IT-2 validate the REAL production path; hand-stitched test delivery (rejected Option B) is retired for E2E tests. An unresolvable consumer set (no registrations) is a no-op for that event type, not an error (consumers may not exist yet). Failure of the dispatcher run is retried by the relay's existing redelivery semantics.
+
+---
+
 ### Relationship to the Decision Log
 Decision-Log **D-12** is retained as a **pointer** to this ADR-MP series (the log records that the decision was made and split; the ADRs hold the authoritative, single-question records).
