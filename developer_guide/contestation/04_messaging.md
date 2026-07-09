@@ -39,6 +39,15 @@ Ownership chain: `Domain Event → Application (attaches resolution) → Integra
 - Unit (`ChallengeEventHydratorsTest`): hydrators reconstruct the minimal domain events and **do not** put `resolution` on them; unsupported `schema_version` rejected.
 - Harness: raw-uuid ids (outbox `aggregate_id` + inbox `event_id` are uuid columns); pgsql has no per-test rollback (unique ids per test).
 
+## Why `ChallengeResolvedIntegration` is a carrier, not a pattern (ARB Q1)
+It is a **temporary implementation carrier**, created solely because RED required the published payload to carry `resolution` while the domain event stayed minimal. It is **not** an architectural pattern and introduces no framework: a plain, immutable pair (minimal domain event + `Resolution`), scoped to Contestation's publish path (the reactions build it; the outbox adapter maps it). It is not reused by any other context. If a genuinely generic "integration enrichment" abstraction is ever justified by repeated evidence across contexts, this carrier would be replaced by it — evidence-first (ER-02); until then it stays deliberately specific and minimal.
+
+## Why `Resolution` lives in the Application, not the Domain (ARB Q2)
+- **The Domain event stays minimal:** once a Challenge is `Resolved` (terminal), no aggregate behaviour or reconstitution branches on *how* it resolved. The Challenge's own history is complete without the outcome flag (F-2 analysis: aggregate behaviour = no, reconstitution = no).
+- **The Integration event is enriched:** downstream consumers (AdjudicationService, Audit, Legitimacy projections) need to know whether the challenge was **upheld** (a correction was applied) or **dismissed** — that is a cross-context reporting need, not an intra-Contestation one.
+- **Downstream needs it; the Domain does not** → by the Domain-Event ≠ Integration-Event separation (established in PB-004), the fact belongs **outside** the Domain, on the published payload only.
+- **It is derived at reaction time** from the trigger (`ElectionCorrectionApplied` ⇒ Upheld; `DeterminationIssued outcome=Dismissed` ⇒ Dismissed) — an Application orchestration concern, not a domain invariant. Hence `Resolution` is an Application enum and the reactions supply it explicitly at publish time.
+
 ## Pitfalls
 - `resolution` is integration-only — never add it to the `ChallengeResolved` domain event (F-2).
 - The adapter maps the **carrier** for resolved, the **raw event** for adjudicated — keep the `match(true)` arms explicit.
