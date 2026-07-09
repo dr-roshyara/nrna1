@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Tests\Unit\Contexts\Contestation;
 
 use App\Contexts\Contestation\Application\ChallengeAdjudicationReaction;
+use App\Contexts\Contestation\Application\ChallengeResolvedIntegration;
 use App\Contexts\Contestation\Application\Exception\DeterminationAlreadyApplied;
 use App\Contexts\Contestation\Application\Port\ChallengeEventOutbox;
+use App\Contexts\Contestation\Application\Resolution;
 use App\Contexts\Contestation\Domain\Challenge\Challenge;
 use App\Contexts\Contestation\Domain\Challenge\ChallengeId;
 use App\Contexts\Contestation\Domain\Challenge\ChallengeState;
@@ -54,8 +56,12 @@ final class ChallengeAdjudicationReactionTest extends TestCase
 
         $this->reaction($repo, $outbox)->on(ChallengeId::fromString('ch-1'), DeterminationId::fromString('det-1'), DeterminationOutcome::Dismissed, $this->at());
 
+        // Adjudicated raw; the resolved event is published as the integration carrier with
+        // resolution=Dismissed (5C seam) — the domain event stays minimal.
         $this->assertInstanceOf(ChallengeAdjudicated::class, $outbox->events[0]);
-        $this->assertInstanceOf(ChallengeResolved::class, $outbox->events[1]);
+        $this->assertInstanceOf(ChallengeResolvedIntegration::class, $outbox->events[1]);
+        $this->assertInstanceOf(ChallengeResolved::class, $outbox->events[1]->event);
+        $this->assertSame(Resolution::Dismissed, $outbox->events[1]->resolution);
         $this->assertSame(ChallengeState::Resolved, $repo->saved('ch-1')->state());
     }
 

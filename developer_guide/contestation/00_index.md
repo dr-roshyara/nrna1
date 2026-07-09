@@ -10,6 +10,7 @@ Contestation owns the **`Challenge`** aggregate — a standing-holder's formal, 
 | [`01_contested_outcome.md`](./01_contested_outcome.md) | The **`ContestedOutcome`** concept + **`ContestedOutcomeRef`** Value Object (replacing the former `TargetRef:string`) — what a Challenge contests, and why it is election-scoped. (ADR-UL-01) |
 | [`02_reaction_handlers.md`](./02_reaction_handlers.md) | PB-005 Step 5A — the **reaction** to `DeterminationIssued` (`adjudicate`, + Dismissed short-circuit) and `ElectionCorrectionApplied` (`resolve`, correlate by determinationId, premature→park); the **business-condition → inbox-marker** translation boundary. |
 | [`03_persistence.md`](./03_persistence.md) | PB-005 Step 5B — the single-source `EloquentChallengeRepository` (Contestation owns the Challenge; no ACL), the mapper as sole translation point, the full-schema `challenges` table, and `findByDeterminationId` as a correlation index (not an identity). |
+| [`04_messaging.md`](./04_messaging.md) | PB-005 Step 5C — the messaging integration: outbox adapter for `ChallengeAdjudicated`/`ChallengeResolved`, the two hydrators, inbox-registry wiring, and the F-2 `resolution` enrichment seam (`ChallengeResolvedIntegration`) supplied by the Application; domain event stays minimal. |
 
 ## Authoritative architecture
 - **Ubiquitous language / concept:** `docs/adr/ADR-UL-01-ContestedOutcome.md` (concept, glossary, ownership).

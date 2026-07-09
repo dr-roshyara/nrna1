@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace Tests\Unit\Contexts\Contestation;
 
 use App\Contexts\Contestation\Application\ChallengeResolutionReaction;
+use App\Contexts\Contestation\Application\ChallengeResolvedIntegration;
 use App\Contexts\Contestation\Application\Exception\AwaitingAdjudication;
 use App\Contexts\Contestation\Application\Exception\DeterminationAlreadyApplied;
 use App\Contexts\Contestation\Application\Port\ChallengeEventOutbox;
+use App\Contexts\Contestation\Application\Resolution;
 use App\Contexts\Contestation\Domain\Challenge\Challenge;
 use App\Contexts\Contestation\Domain\Challenge\ChallengeId;
 use App\Contexts\Contestation\Domain\Challenge\ChallengeState;
@@ -39,8 +41,12 @@ final class ChallengeResolutionReactionTest extends TestCase
 
         $this->reaction($repo, $outbox)->on(DeterminationId::fromString('det-1'), $this->at());
 
+        // 5C emergent seam: the published item is the integration carrier (minimal domain
+        // event + Application-supplied resolution), not the raw domain event.
         $this->assertCount(1, $outbox->events);
-        $this->assertInstanceOf(ChallengeResolved::class, $outbox->events[0]);
+        $this->assertInstanceOf(ChallengeResolvedIntegration::class, $outbox->events[0]);
+        $this->assertInstanceOf(ChallengeResolved::class, $outbox->events[0]->event);
+        $this->assertSame(Resolution::Upheld, $outbox->events[0]->resolution);
         $this->assertSame(ChallengeState::Resolved, $repo->saved('ch-1')->state());
     }
 

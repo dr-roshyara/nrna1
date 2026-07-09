@@ -9,6 +9,7 @@ use App\Contexts\Contestation\Application\Exception\DeterminationAlreadyApplied;
 use App\Contexts\Contestation\Application\Port\ChallengeEventOutbox;
 use App\Contexts\Contestation\Domain\Challenge\ChallengeState;
 use App\Contexts\Contestation\Domain\Challenge\DeterminationId;
+use App\Contexts\Contestation\Domain\Events\ChallengeResolved;
 use App\Contexts\Contestation\Domain\Repository\ChallengeRepository;
 use DateTimeImmutable;
 
@@ -39,7 +40,10 @@ final class ChallengeResolutionReaction
 
         if ($challenge->state() === ChallengeState::Adjudicated) {
             $challenge->resolve($determinationId, $at);
-            $this->outbox->enqueue(...$challenge->pullEvents());
+            // A correction was applied ⇒ the challenge was Upheld. The Application supplies
+            // `resolution` explicitly for the published Integration Event (F-2); the domain
+            // event stays minimal.
+            $this->outbox->enqueue(...$this->enrich($challenge->pullEvents(), Resolution::Upheld));
             $this->challenges->save($challenge);
 
             return;
@@ -50,5 +54,22 @@ final class ChallengeResolutionReaction
             'Challenge for determination "%s" is already resolved.',
             $determinationId->toString(),
         ));
+    }
+
+    /**
+     * Attach the Application-supplied `resolution` to the ChallengeResolved event for
+     * publication (F-2); other events pass through unchanged. The domain event is not modified.
+     *
+     * @param  list<object> $events
+     * @return list<object>
+     */
+    private function enrich(array $events, Resolution $resolution): array
+    {
+        return array_map(
+            static fn (object $event): object => $event instanceof ChallengeResolved
+                ? new ChallengeResolvedIntegration($event, $resolution)
+                : $event,
+            $events,
+        );
     }
 }
