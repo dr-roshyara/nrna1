@@ -49,6 +49,12 @@ ER-01 Architecture-before-implementation · ER-02 **Evidence before governance**
 ## 9. Review discipline (trial to a future retrospective)
 Every Completion Review: **A Product · B Platform · C Learning**, plus an **Architectural Confidence Delta** table, closing with two questions — *Did this improve PublicDigit delivery?* and *Did this reduce or increase architectural entropy?* Every statement classified **Observed · Measured · Derived · Interpreted · Recommended**. Principle: *the implementation agent records evidence; the architect decides significance.*
 
+## 9a. Qualification categories (run all three at a slice's qualification step)
+A greenfield slice is qualified against **three** categories, not one:
+1. **Architecture Qualification** — `GreenfieldCoreArchitectureTest` (hexagonal completeness, domain-has-no-infrastructure-imports, event ownership, readonly events) · greenfield PHPStan · full regression · **Deptrac (F-1) is *deferred by roadmap* to the PB-007 merge gate — deferred, NOT skipped**; the fitness `domain-has-no-infra-imports` check covers dependency direction meanwhile.
+2. **DDD Qualification** — ownership unchanged · published language consistent · event ownership unchanged · integration boundaries explicit (events only) · no new architectural pattern introduced.
+3. **Trustworthiness Qualification** — the platform is a *constitutional* system, so each slice must explicitly preserve: **anonymity** (no voter↔vote linkage, ADR-T11) · **forward-only correction** (no un-casting/compensation, ADR-T8) · **event immutability** (readonly domain events) · **replay safety** (idempotent; re-execute-free side effects) · **causal ordering** (out-of-order → park + re-drive, never fail) · **tenant isolation** (organisation-scoped, ADR-T16) · any other constitutional invariant the slice touches. These are product guarantees, not incidental properties — verify them, don't assume them.
+
 ## 10. AI Engineering Platform — frozen
 **Baseline Execution Mode v1.0:** no changes to the `.claude` structure, hooks, automation, or governance artifacts unless a feature demonstrates the platform is insufficient. The platform **serves the product** (ADR-AIP-02 Product Primacy). Reviews record findings; changes require evidence.
 
