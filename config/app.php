@@ -210,6 +210,7 @@ return [
         App\Contexts\Governance\Infrastructure\Providers\GovernanceServiceProvider::class,
         App\Contexts\Adjudication\Infrastructure\Providers\AdjudicationServiceProvider::class,
         App\Contexts\Election\Infrastructure\Providers\ElectionServiceProvider::class,
+        App\Contexts\Contestation\Infrastructure\Providers\ContestationServiceProvider::class,
 
     ],
 
