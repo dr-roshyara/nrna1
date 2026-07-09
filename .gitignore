@@ -22,3 +22,9 @@ storage/framework/
 .aider*
 .worktrees/
 .claude/runtime/
+
+# PB-007 quality/architecture gate artifacts (generated)
+/infection-log.txt
+/infection-summary.txt
+/.deptrac.cache
+/build/

@@ -1,0 +1,33 @@
+{
+    // PB-007 7C — mutation-testing baseline for the greenfield Core (A-3: baseline-then-ratchet).
+    // QUALITY-IMPROVEMENT gate: reports/trends only; NO enforcement in PB-007 (no min-msi).
+    // Thresholds are raised deliberately at milestones — never retroactively, never lowered.
+    // Coverage driver: Xdebug, enabled per-invocation only (PHPUnit 11 dropped phpdbg
+    // support; see IDD §2c). The stable interface (composer quality-gate, 7D) owns the
+    // invocation semantics — the driver is an implementation detail.
+    "source": {
+        "directories": [
+            "app/Contexts/Contestation",
+            "app/Contexts/Adjudication",
+            "app/Contexts/Election",
+            "app/Contexts/Shared/Application/Inbox",
+            "app/Contexts/Shared/Application/Messaging",
+            "app/Contexts/Shared/Infrastructure/Inbox",
+            "app/Contexts/Shared/Infrastructure/Messaging",
+            "app/Contexts/Shared/Infrastructure/Outbox"
+        ]
+    },
+    // Per-MUTANT timeout (seconds): 60 — a hanging escaped mutant must not stall the run
+    // (deviation from the advisory 600s, which is a per-mutant value and would let a
+    // single infinite-loop mutant burn 10 minutes; recorded).
+    "timeout": 60,
+    // Initial test run = the greenfield-core suites (phpunit.xml GreenfieldCore), aligned
+    // with the mutation scope above: legacy tests cannot kill greenfield mutants, and the
+    // full legacy suite carries pre-existing failures (recorded as findings, not repaired
+    // here) that would abort Infection's passing-state precondition.
+    "testFrameworkOptions": "--testsuite=GreenfieldCore",
+    "logs": {
+        "text": "infection-log.txt",
+        "summary": "infection-summary.txt"
+    }
+}

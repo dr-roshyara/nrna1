@@ -1,6 +1,6 @@
 # PB-007 (Greenfield Merge Gate) — Implementation Design Document (IDD)
 
-**Status:** Design — awaiting ARB review. **No code/config until approved.** **2026-07-10.**
+**Status:** **FROZEN** — ARB approved 2026-07-10 (A-1..A-3 granted §2a; two freeze refinements applied §2c). Changes only via a new ARB ruling. PB-007 proceeds through its remaining slices under this approved governance model.
 **Grounds:** Discovery `docs/implementation/PB-007_Discovery_Findings.md` (4 ARB rulings applied: gate taxonomy Architecture/Behaviour/Engineering/Improvement/Reporting · Local/CI per gate · single entry point · DoD-warning classified with evidence).
 
 ## 1. Purpose
@@ -21,6 +21,79 @@ Harden the engineering process that protects the qualified architecture: one exe
 - **Approvals granted:** A-1 ✅ (report mode first, lockfile change isolated to this slice) · A-2 ✅ conditionally (Shared = infrastructure/platform layer; Deptrac enforces only APPROVED dependency rules, infers no new architecture) · A-3 ✅.
 - **Rollout order (never inverted):** Install → Report → Classify violations (ARB findings, never silent fixes) → Fix intentionally → Fail mode.
 
+## 2b. Recorded future refinements (ARB @ 7B acceptance — NOT blocking, NOT scheduled)
+- Replace the minting-guard file-path allowlist with a semantic marker (annotation/interface, e.g. `OriginProducer`) so file moves never touch the architecture test.
+- Strengthen the provenance rule: reacting producers must ALWAYS propagate (not only never mint).
+- Detector hardening: ignore string literals as well as comments.
+- Complementary fitness rules toward a complete constitutional provenance specification: every produced event carries a CorrelationId; every consumed event exposes one.
+- **(ARB @ 7C)** Split Infection reports by bounded context (Election MSI · Contestation MSI · Adjudication MSI · Messaging MSI) as an architectural health indicator. Future, not now.
+- **(ARB @ 7C)** Highest-value mutation targets for the election-trust argument: election state transitions, correction loop, constitutional invariants, messaging provenance, anonymity. Mutation testing there proves *constitutional invariants cannot be trivially broken without tests failing* — a stronger statement than coverage.
+- **(ARB @ IDD freeze)** Candidate engineering principle for formal adoption (e.g. in the process doc / an ADR): *"Quality gates are permitted to reveal latent defects. They are not responsible for introducing them."* — summarizes 7A (Deptrac revealed, didn't create, violations) and 7C (Infection revealed, didn't create, the coverage incompatibility).
+- **(ARB @ IDD freeze)** Engineering Trust Dashboard: one health view over the gates (Architecture PASS · Messaging PASS · DDD PASS · Regression PASS · Mutation trend · Coverage trend). Explicitly deferred — "not now, later."
+
+## 2c. 7C evidence record (ARB ruling applied, 2026-07-10)
+
+Two **different classes** of finding are recorded here (ARB freeze refinement 1 — never conflate them): **platform compatibility repairs** belong to PB-007; **pre-existing repository debt** belongs to historical cleanup (retrospective), not to this ticket.
+
+### 2c-i. Platform compatibility repairs (PB-007-owned)
+
+**PHPUnit configuration change — classification (ARB-required note):**
+> **PB-007 did not introduce a new coverage policy. It repaired the project's PHPUnit configuration so that the existing PHPUnit 11 installation can actually generate coverage. Infection merely exposed the latent incompatibility.**
+
+`phpunit.xml` still carried the PHPUnit-9-era `<coverage processUncoveredFiles>` + `<include>` form; installed PHPUnit is 11.5.6, whose XSD rejects it. The defect was latent because Infection is the **first automated consumer of executable coverage** in this repository. Classification: **platform compatibility repair** (Observed → Engineering repair → Recorded — not an Infection implementation detail, not a behaviour change).
+
+**Coverage-driver substitution (engineering evidence, deptrac-shim precedent):**
+- Observed: no pcov/xdebug extension on this machine; the plan was phpdbg (verified present, PHP 8.3.24).
+- Observed: **PHPUnit 11 dropped phpdbg support** (`php-code-coverage` ≥ 10 supports only Xdebug/PCOV) — the phpdbg route fails with "No code coverage driver available" even when hosted by `phpdbg -qrr`. The earlier "phpdbg suffices, no environment change needed" conclusion is corrected by this evidence.
+- Repair: `php_xdebug-3.5.3-8.3-ts-vs16-x86_64.dll` (exact build match: PHP 8.3.24 · TS · VS16 · x64) placed in the PHP extension dir; **enabled per-invocation only** via `--initial-tests-php-options="-d zend_extension=… -d xdebug.mode=coverage"`. No `php.ini` change; default PHP unaffected (verified: `php -m` shows no xdebug); mutant test runs execute on plain PHP (no coverage overhead). Reversible by deleting one DLL.
+- **Stable-interface principle (ARB):** *the stable interface (`composer merge-gate` / `quality-gate`) owns the invocation semantics.* Developers never care whether the implementation uses phpdbg, Xdebug, or PCOV — the interface stays constant; the driver is an implementation detail hidden inside 7D's composer scripts.
+
+### 2c-ii. Pre-existing repository debt (historical — recorded, NOT repaired; all → retrospective list)
+
+**Excluded behaviour-preservingly:**
+| # | Finding | Impact observed | 7C action |
+|---|---|---|---|
+| F-7C-1 | `tests/Unit/Domain/Election/Security/OverlaySignalCategoryTest.php` declares class `OverlayInfluenceTest` (mismatch; legacy `89914ce3a`) — PHPUnit cannot load the class, so its tests are **already dead** in every suite run | Suite-load warning; Infection's generated config sets `stopOnDefect="true"` + `failOnWarning="true"`, so the warning aborted the initial run with "No tests executed" | Excluded from the Unit testsuite (zero executed tests removed — behaviour-preserving) |
+| F-7C-2 | `app/Domain/Election/Models/ElectionUser.php` is a scaffold *document*: comment header + a second `<?php` at line 11 — parse error; never autoloaded, so latent | Coverage static analyzer aborts ("Cannot parse … unexpected '<'") | Excluded from coverage `<source>` (never coverable — behaviour-preserving) |
+| F-7C-3 | `app/Http/Middleware/VoterSlugStep.php` is a **markdown document saved as .php** (git-recovery batch `86468d3d7`) — parse error | Same coverage-parse abort class | Excluded from coverage `<source>` (same rationale) |
+
+Scan evidence: `php -l` over all **1,511** files under `app/` → exactly these **2** parse failures (so individual exclusion, not source-narrowing, is the minimal repair; the coverage source policy stays `./app`, unchanged).
+
+**Exclusion-integrity statement (ARB freeze refinement 2):** *Coverage exclusions were applied only because the files are non-executable repository artifacts (dead scaffold or malformed recovery artifact). Coverage policy for executable production code remains unchanged.*
+
+**Further pre-existing debt observed by the full-suite run (recorded, NOT repaired; → retrospective):**
+| # | Finding | Evidence |
+|---|---|---|
+| F-7C-4 | `Tests\Unit\Middleware\ValidateVotingIpTest::it_blocks_request_when_ip_does_not_match` **fails standalone in normal order** (middleware returns `Response`, test expects `RedirectResponse`) — legacy area, files unmodified; Infection's initial run was the first process to execute the full 6,109-test suite in one pass, which is why per-slice regression (qualified greenfield suites) never saw it | Reproduced standalone; `git status` clean on both files |
+| F-7C-5 | Contexts **outside** the greenfield core carry broken unit/feature tests: Membership (stale constructor signatures — e.g. `AssignMemberToCommitteeHandler` now takes 6 args, tests pass 5), older `Elections` context handler tests — 69 errors + 5 failures when swept into one run | Broad-suite run: 997 tests, 69 errors, 5 failures, all in Membership/Elections/Geography/Governance |
+| F-7C-6 | **57 risky tests** in the greenfield Feature suites: "test code or tested code removed error/exception handlers other than its own" — framework-level (Laravel app teardown/rebuild vs PHPUnit 11 handler bookkeeping); no `set_error_handler`/`restore_*` calls exist in `app/` or `tests/` (grep-verified) | GreenfieldCore run: 179 tests, 0 failures, 57 risky, exit 0 |
+
+### 2c-iii. 7C engineering decisions (in-scope, recorded)
+
+- **`GreenfieldCore` testsuite (additive, phpunit.xml):** exactly the tests that can *kill* greenfield-core mutants — Unit+Feature of Contestation/Adjudication/Election/Shared + Replay, matching the A-3 mutation scope. Deliberately excluded: other contexts (outside A-3 scope, carrying F-7C-5 debt) and `tests/Architecture` (file-scanning fitness tests read source from disk — they cannot detect in-memory mutations, zero mutation signal). Existing suites unchanged.
+- **Greenfield harness-convention repair (in greenfield scope, so repaired not deferred):** `AdjudicationServiceIntegrationTest` (PB-004-era) asserted **global** `outbox_events`/`determinations` counts — the exact failure class PB-006 repaired by convention (harness has no per-test rollback → scoped assertions, never global counts). Both assertions scoped to the test's unique organisation; "exactly one event" semantics preserved. GreenfieldCore suite: **179 tests, 477 assertions, 0 failures, exit 0** after repair.
+- **Two-step Infection invocation (pre-generated coverage):** Infection's generated initial-run config **forces** `stopOnDefect="true"` (verified in `XmlConfigurationManipulator::setStopOnFailureOrDefect`), and PHPUnit 11 stops on **risky** tests too (`TestResult\Facade`) — so F-7C-6's 57 risky tests would silently truncate the initial coverage run (worse than failing: a wrong baseline). Repair: use Infection's documented pre-generated-coverage interface — `phpunit --coverage-xml --log-junit` under project semantics (risky ≠ fail), then `infection --coverage=… --skip-initial-tests`. The 7D `composer quality-gate` script encodes both steps; the stable interface owns the invocation semantics.
+
+**Baseline metrics (ARB-required set — MSI alone is insufficient) — MEASURED 2026-07-10 (Infection 0.29.10, greenfield-core scope, GreenfieldCore suite, 7m16s, 8 threads):**
+| Metric | Value |
+|---|---|
+| **MSI** | **75%** |
+| **Mutation Code Coverage** | **78%** |
+| **Covered Code MSI (Test Strength)** | **96%** |
+| Mutants generated | 892 |
+| Killed by tests | 638 |
+| Killed by per-mutant timeout (60s) | 48 *(counted as detected; some may be environment-slow rather than genuinely trapped — caveat recorded)* |
+| **Escaped (covered but undetected — highest risk)** | **22** |
+| Not covered by tests | 184 |
+| Errors / syntax errors | 0 / 0 |
+
+**Escaped-mutant distribution (Measured; input for future ratchet work, NOT fixed in PB-007):**
+`ChallengeReactionOutcomeTranslator` 4 · `DeterminationLacksElectionScope` 3 · `CannotApplyDeterminationToUnknownElection` 3 · `Challenge` 3 · `OutboxEventProcessor` 2 · `ChallengeResolvedHydrator` 2 · `Election`, `TargetId`, `RaiserStandingRef`, `ElectionId` (Contestation), `ChallengeAdjudicationReaction` 1 each. **Interpreted:** the largest single concentration sits on the business-condition→inbox-marker translation boundary (`ChallengeReactionOutcomeTranslator`) — squarely in the constitutional correction loop, i.e. exactly the ARB's named highest-value mutation territory; first candidate when the ratchet begins.
+
+**Reading the baseline (Interpreted):** Test Strength 96% says code the greenfield tests actually cover is very hard to mutate silently; the MSI gap to 75% is dominated by the 184 *uncovered* mutants (Mutation Code Coverage 78%), not by weak assertions. Raising MSI = extending coverage into the uncovered 22%, then hunting the 22 escapees.
+
+**Ratchet policy (A-3, restated):** baseline measured and recorded first; `min-msi` thresholds are raised **deliberately at milestones** — never retroactively, never lowered; **no enforcement inside PB-007** (Infection stays in the quality tier, not the merge gate).
+
 ## 3. Boundaries
 No domain/aggregate/platform-logic changes · pre-existing findings recorded, not fixed (7A report-mode findings go to the ARB) · no new patterns · the frozen `.claude` platform untouched.
 
@@ -32,4 +105,5 @@ No domain/aggregate/platform-logic changes · pre-existing findings recorded, no
 ## 5. Evidence at completion
 Single-command `composer merge-gate` PASS output · Deptrac report (violations classified or zero) · minting fitness test RED→GREEN · baseline MSI recorded · CI workflow green · widened regression exact numbers · triple qualification · Completion Review.
 
-## STOP — awaiting ARB review of this IDD (+ approvals A-1..A-3) before any implementation.
+## ARB ruling (2026-07-10) — IDD approved and FROZEN
+> PB-007 IDD is approved. The document correctly models the Greenfield Merge Gate as an architectural qualification rather than a tooling exercise. The separation of Architecture, Behaviour, Engineering, Improvement, and Reporting gates is clear. The stable `composer merge-gate` interface is an appropriate architectural abstraction, and the recorded platform compatibility repair accurately distinguishes a latent PHPUnit 11 coverage incompatibility from behaviour introduced by Infection. Two editorial refinements applied before freeze: (1) platform compatibility repairs separated from pre-existing repository debt (§2c-i/§2c-ii); (2) exclusion-integrity statement added (§2c-ii). No further architectural changes required. PB-007 may proceed through its remaining implementation slices under the approved governance model.
