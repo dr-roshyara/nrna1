@@ -22,6 +22,11 @@ namespace App\Contexts\Shared\Application\Messaging;
  *    the CausationId.
  *  - CorrelationId identifies the CONVERSATION, not the event; CausationId identifies
  *    the DIRECT PARENT, not the chain.
+ *
+ * A CONSTITUTIONAL CONVERSATION is the complete causal chain of events originating
+ * from one constitutional decision process (see ADR-MP-06 + developer guide 08).
+ * EventProvenance applies ONLY to Integration Events — NEVER Domain Events (no Domain
+ * Event class may carry correlation/causation properties).
  */
 final readonly class EventProvenance
 {

@@ -12,6 +12,17 @@ These are **provenance / message lineage**, not "two UUID columns."
 3. Every publication after the first records its **immediate causal predecessor** as the CausationId.
 4. **Correlation identifies the conversation, not the event; Causation identifies the direct parent, not the chain.**
 
+## Constitutional Conversation (architectural term)
+> The complete causal chain of events originating from one constitutional decision process.
+
+Examples: `Challenge → Determination → Correction → Resolution` · `Membership → Election → Vote → Result → Audit`. One CorrelationId identifies the whole conversation; every event except the first records its immediate causal predecessor as the CausationId.
+
+## Architecture Fitness Rule — CorrelationId minting
+Exactly **one** producer may mint a CorrelationId per Constitutional Conversation; all subsequent producers propagate it unchanged; no second mint within a conversation. Enforced by architecture (`start()` only at chain origin), design (`fromConsumed()` propagates, never mints), and test (IT-1: one CorrelationId across all rows).
+
+## Integration Events only — NEVER Domain Events
+Domain Events carry **zero** provenance (business facts). Integration Events carry `EventProvenance` (published message + lineage). **Invariant: no Domain Event class may contain CorrelationId/CausationId properties.** Provenance lives exclusively in the messaging layer.
+
 ## The API (Shared Application — pure PHP; explicit, never ambient)
 ```php
 EventProvenance::start($minted)                       // chain-starting producer: mint, no cause
