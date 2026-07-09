@@ -60,7 +60,8 @@ final class InboxEventTest extends TestCase
         $this->row(['event_id' => $eventId, 'consumer_context' => 'Election', '__org' => $organisation]);
         $second = $this->row(['event_id' => $eventId, 'consumer_context' => 'Contestation', '__org' => $organisation]);
 
-        $this->assertDatabaseCount('inbox_events', 2);
+        // Scoped to this event_id (no-rollback pgsql harness: never global counts).
+        $this->assertSame(2, InboxEvent::query()->where('event_id', $eventId)->count());
         $this->assertSame($eventId, $second->fresh()->event_id);
     }
 

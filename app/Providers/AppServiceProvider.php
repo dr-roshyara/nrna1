@@ -36,6 +36,13 @@ class AppServiceProvider extends ServiceProvider
         // from their own providers; adding a context never edits shared infrastructure.
         $this->app->singleton(\App\Contexts\Shared\Infrastructure\Inbox\InboxHandlerRegistry::class);
 
+        // Messaging delivery capability (ADR-MP-06 · PB-006-6A): Consumer Discovery is a
+        // Messaging-owned port; the registry is the implementation behind it.
+        $this->app->bind(
+            \App\Contexts\Shared\Infrastructure\Messaging\ConsumerResolver::class,
+            \App\Contexts\Shared\Infrastructure\Messaging\RegistryConsumerResolver::class
+        );
+
         // Membership context: Committee creation ports
         $this->app->bind(
             \App\Contexts\Membership\Application\Committee\Ports\CommitteeRepositoryPort::class,
@@ -327,6 +334,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Messaging delivery (ADR-MP-06, D-2): the dispatcher is a LISTENER on the
+        // relay's dispatched IntegrationEvent — the relay stays byte-identical; the
+        // dispatcher is simply another consumer of relay output.
+        \Illuminate\Support\Facades\Event::listen(
+            \App\Contexts\Shared\Infrastructure\Outbox\IntegrationEvent::class,
+            [\App\Contexts\Shared\Infrastructure\Messaging\IntegrationEventDispatcher::class, 'handle']
+        );
+
         // Load migrations from context directories
         $this->loadMigrationsFrom(app_path('Contexts/Membership/Infrastructure/Database/Migrations/Tenant'));
         $this->loadMigrationsFrom(app_path('Contexts/Geography/Infrastructure/Database/Migrations'));

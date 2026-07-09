@@ -90,7 +90,7 @@ final class InboxConsumeTest extends TestCase
 
         $this->assertSame(InboxOutcome::Processed, $outcome);
         $this->assertSame(1, $handler->calls);
-        $this->assertSame('processed', InboxEvent::query()->firstOrFail()->status);
+        $this->assertSame('processed', InboxEvent::query()->where('event_id', $msg->eventId)->firstOrFail()->status);
     }
 
     public function test_duplicate_delivery_does_not_reinvoke_handler(): void
@@ -104,7 +104,8 @@ final class InboxConsumeTest extends TestCase
 
         $this->assertSame(InboxOutcome::Duplicate, $outcome);
         $this->assertSame(0, $second->calls, 'handler must NOT be re-invoked for a duplicate');
-        $this->assertSame(1, InboxEvent::query()->count(), 'dedupe: one row per (event_id, consumer_context)');
+        // Scoped to this message's event_id (no-rollback pgsql harness: never global counts).
+        $this->assertSame(1, InboxEvent::query()->where('event_id', $msg->eventId)->count(), 'dedupe: one row per (event_id, consumer_context)');
     }
 
     public function test_causal_precondition_missing_parks_with_until_and_deadline(): void
@@ -113,10 +114,11 @@ final class InboxConsumeTest extends TestCase
             throw new CausalPreconditionMissing('challenge not yet Adjudicated');
         });
 
-        $outcome = $this->inbox()->consume($this->message(), $handler);
+        $msg = $this->message();
+        $outcome = $this->inbox()->consume($msg, $handler);
 
         $this->assertSame(InboxOutcome::Parked, $outcome);
-        $row = InboxEvent::query()->firstOrFail();
+        $row = InboxEvent::query()->where('event_id', $msg->eventId)->firstOrFail();
         $this->assertSame('parked', $row->status);
         $this->assertSame(1, $row->park_attempts);
         $this->assertNotNull($row->parked_until);
@@ -130,10 +132,11 @@ final class InboxConsumeTest extends TestCase
             };
         });
 
-        $outcome = $this->inbox()->consume($this->message(), $handler);
+        $msg = $this->message();
+        $outcome = $this->inbox()->consume($msg, $handler);
 
         $this->assertSame(InboxOutcome::Processed, $outcome);
-        $this->assertSame('processed', InboxEvent::query()->firstOrFail()->status);
+        $this->assertSame('processed', InboxEvent::query()->where('event_id', $msg->eventId)->firstOrFail()->status);
     }
 
     public function test_permanent_failure_marker_dead_letters(): void
@@ -143,10 +146,11 @@ final class InboxConsumeTest extends TestCase
             };
         });
 
-        $outcome = $this->inbox()->consume($this->message(), $handler);
+        $msg = $this->message();
+        $outcome = $this->inbox()->consume($msg, $handler);
 
         $this->assertSame(InboxOutcome::DeadLettered, $outcome);
-        $this->assertSame('dead', InboxEvent::query()->firstOrFail()->status);
+        $this->assertSame('dead', InboxEvent::query()->where('event_id', $msg->eventId)->firstOrFail()->status);
     }
 
     public function test_transient_throwable_rolls_back_leaving_no_row_and_rethrows(): void
@@ -155,14 +159,17 @@ final class InboxConsumeTest extends TestCase
             throw new \RuntimeException('DB deadlock');
         });
 
+        $msg = $this->message();
+
         try {
-            $this->inbox()->consume($this->message(), $handler);
+            $this->inbox()->consume($msg, $handler);
             $this->fail('transient exception must propagate');
         } catch (\RuntimeException $e) {
             $this->assertStringContainsString('DB deadlock', $e->getMessage());
         }
 
-        $this->assertSame(0, InboxEvent::query()->count(), 'rollback must leave NO row (redelivery-clean)');
+        // Scoped to this message's event_id (no-rollback pgsql harness: never global counts).
+        $this->assertSame(0, InboxEvent::query()->where('event_id', $msg->eventId)->count(), 'rollback must leave NO row (redelivery-clean)');
     }
 
     /**

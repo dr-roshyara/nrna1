@@ -52,7 +52,7 @@ final class InboxRedriveTest extends TestCase
     {
         return InboxEvent::create(array_merge([
             'event_id' => (string) Str::uuid(),
-            'consumer_context' => 'Contestation',
+            'consumer_context' => 'RedriveProbe',
             'event_type' => 'DeterminationIssued',
             'payload' => ['probe' => true],
             'organisation_id' => $this->orgId,
@@ -63,8 +63,14 @@ final class InboxRedriveTest extends TestCase
         ], $overrides));
     }
 
-    /** @param callable(InboxMessage):void $onHandle */
-    private function register(callable $onHandle, string $context = 'Contestation', string $type = 'DeterminationIssued'): object
+    /**
+     * Probe consumer context (F-PB006-3 repair): the app singleton registry now carries
+     * REAL boot-time registrations (Election/Contestation providers, PB-004/PB-005), so a
+     * fake registered under a real (consumer, type) pair collides (LogicException).
+     *
+     * @param callable(InboxMessage):void $onHandle
+     */
+    private function register(callable $onHandle, string $context = 'RedriveProbe', string $type = 'DeterminationIssued'): object
     {
         $handler = new class($onHandle, $context, $type) implements InboxHandler {
             public int $calls = 0;

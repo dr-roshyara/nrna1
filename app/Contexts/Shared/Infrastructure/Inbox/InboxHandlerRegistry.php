@@ -63,6 +63,27 @@ final class InboxHandlerRegistry
         return isset($this->handlers[$this->key($consumerContext, $eventType)]);
     }
 
+    /**
+     * ADDITIVE discovery query (ADR-MP-06): all handlers registered for an event type,
+     * across consumer contexts. Used by the Messaging Platform's ConsumerResolver — the
+     * ordering contract lives THERE (stable consumer identifier), not here. Existing
+     * methods are unchanged.
+     *
+     * @return list<InboxHandler>
+     */
+    public function handlersFor(string $eventType): array
+    {
+        $matches = [];
+        foreach ($this->handlers as $key => $handler) {
+            [, $type] = explode("\0", $key, 2);
+            if ($type === $eventType) {
+                $matches[] = $handler;
+            }
+        }
+
+        return $matches;
+    }
+
     private function key(string $consumerContext, string $eventType): string
     {
         return $consumerContext . "\0" . $eventType;

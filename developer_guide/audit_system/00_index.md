@@ -43,6 +43,7 @@ It also doubles as an **audit ledger**. The `inbox_events` table is a durable, p
 | C4 | [`04_step_c4_handler_registry.md`](./04_step_c4_handler_registry.md) | The **routing seam** — `InboxHandlerRegistry`, keyed by `(consumer_context, event_type)`; the open/closed boundary between infra and business. |
 | C5 | [`05_step_c5_redrive_and_engine.md`](./05_step_c5_redrive_and_engine.md) | The **recovery layer** — `InboxExecutionEngine` (the one run+classify seam), `RedriveParkedInboxEvents`, the `inbox:redrive` command and its schedule. |
 | C6A | [`06_step_c6a_architecture_verification.md`](./06_step_c6a_architecture_verification.md) | The **guardrails** — 10 property-based architecture fitness tests + the strict-clock rule that keep the subsystem a reusable platform capability. |
+| 6A (PB-006) | [`07_integration_event_dispatcher.md`](./07_integration_event_dispatcher.md) | The **delivery capability** (ADR-MP-06): `IntegrationEventDispatcher` + `ConsumerResolver` — carries relay output into every consuming context's inbox (Registration ≠ Delivery; deterministic ordered routing; consumer isolation; audit continuity). |
 
 ---
 
