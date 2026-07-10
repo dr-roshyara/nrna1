@@ -27,6 +27,8 @@
 
 ## Execution Rules — Engineering Process (EP) — new section
 
+> **Relation to the platform (2026-07-10):** the EP rules below are **PublicDigit's project-specific binding of the provider-independent [Engineering Execution Protocol](../../engineering/governance/Engineering_Execution_Protocol.md)** (Engineering Platform standard). The protocol defines the lifecycle and roles once (Engineer · Independent Reviewer · Approval Authority); this section binds it to PublicDigit's tools, gates, templates, and depth tiers. On conflict, the binding may be stricter than the protocol, never looser.
+
 *EP rules govern **how a working session operates** (human or AI assistant, any provider — Claude, Copilot, Cursor, Gemini, Codex behave identically); ER rules govern **what the work must satisfy**. Distinct concerns, one home. Assistant configuration files (e.g. `.claude/CLAUDE.md`) may only **reference** EP rules, never restate them.*
 
 **EP-01 — Plan First.** For every non-trivial engineering task, the **Planning Stage** is mandatory (the EP namespace already places it in the Engineering Process — no "Engineering-" prefix stutter). The implementer (human developer or AI assistant — any provider) shall:

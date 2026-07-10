@@ -64,6 +64,10 @@ engineering/
 │   ├── c4/                    Platform architecture views (16 diagrams)
 │   └── baseline/              Sealed Baseline v1.0 corpus (Phase-01 … Phase-03A; frozen — R-30: moves allowed, edits never)
 │
+├── governance/                What the platform ENFORCES
+│   └── Engineering_Execution_Protocol.md   Provider- and project-independent execution lifecycle
+│                                            (plan → review → approve → implement → verify → report → decide)
+│
 ├── knowledge/                 What the platform LEARNS (organized by domain object)
 │   └── patterns/              Pattern cards EPC-001..018 + Pattern Evidence Register (the harvest already happened; these are its results)
 │       └── sources/           Source material (provenance; eventual home: research/sources/)
@@ -77,7 +81,7 @@ engineering/
 | Namespace | Will hold | Trigger |
 |---|---|---|
 | `architecture/reference/` | promoted Reference Architecture | ARB promotion, post-PB-004 |
-| `governance/standards/` | the Engineering Standards document | R-32, post-PB-004 retrospective |
+| `governance/standards/` | the Engineering Standards document (sibling of the Execution Protocol, which already lives at `governance/`) | R-32, post-PB-004 retrospective |
 | `governance/rulings/` | non-ADR rulings, if ever split from the ADR-AIP log | ARB decision |
 | `knowledge/research/harvests/` · `knowledge/research/sources/` | dated harvest activity records + research material (Harvest → Pattern → Evidence separation) | PB-004 retrospective (four-way dossier split) |
 | `knowledge/evidence/` | the Pattern Evidence Register as its own artifact | PB-004 retrospective (four-way dossier split) |
