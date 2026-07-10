@@ -1,6 +1,6 @@
 # Engineering Execution Protocol (EEP)
 
-**Class:** Engineering Platform standard · **Status:** Adopted (Decision Authority, 2026-07-10) · **Owner:** Decision Authority
+**Class:** Engineering Platform standard · **Status:** Adopted · **STABLE** (Decision Authority, 2026-07-10) — changes only on usage evidence from real engineering sessions; imagined improvements are rejected by default · **Owner:** Decision Authority
 **Scope:** every engineering work item executed under this platform, in any project, in any language, by any engineer — human or automated.
 
 ---
