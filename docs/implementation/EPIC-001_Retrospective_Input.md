@@ -27,7 +27,7 @@
 | # | Candidate | Current stage | Evidence source |
 |---|-----------|---------------|-----------------|
 | P-1 | Principle: *"Quality gates are permitted to reveal latent defects. They are not responsible for introducing them."* | Candidate principle (recorded, not adopted) | PB-007 IDD §2b · demonstrated at 7A/7C/F-7D-1 |
-| P-2 | **Evidence-Preconditions checklist** for long-running experiments (measured source unchanged · tests unchanged · artifacts reused · no concurrent activity) | Candidate practice (evaluate, not promote — ARB) | F-7D-2 execution contract, IDD §2e |
+| P-2 | **Evidence-Preconditions checklist** for long-running experiments (measured source unchanged · tests unchanged · artifacts reused · no concurrent activity) | **Single observation** — one successful use is not candidacy; ladder: observation → *repeated* observation → practice → candidate standard (ARB mentoring 2026-07-11) | F-7D-2 execution contract, IDD §2e |
 | P-3 | *"The platform owns orchestration, not the third-party tool"* (two-step Infection invocation is the instance) | Candidate principle | IDD §2c-iii · ARB 7C acceptance |
 | P-4 | **EP-01-Light form** (Objective · Classification · Risk · Files · Expected evidence · Not changing) for below-IDD-weight changes | Observed working practice (used twice, both approved) | `.claude/MEMORY.md` · F-7D-2 resume + threads repair |
 | P-5 | **PASS AFTER CORRECTION** qualification-lifecycle (Finding F-… / Correction CR-… / Qualification OQ-… identifier separation) | Approved on the platform track; candidate for product-track adoption | Engineering-track OQ records (parallel session, ARB-approved 2026-07-10) |
