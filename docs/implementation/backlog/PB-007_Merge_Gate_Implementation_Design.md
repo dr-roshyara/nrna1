@@ -94,6 +94,35 @@ Scan evidence: `php -l` over all **1,511** files under `app/` → exactly these 
 
 **Ratchet policy (A-3, restated):** baseline measured and recorded first; `min-msi` thresholds are raised **deliberately at milestones** — never retroactively, never lowered; **no enforcement inside PB-007** (Infection stays in the quality tier, not the merge gate).
 
+**7C ACCEPTED by ARB (2026-07-10).** Rulings recorded with acceptance: the two-step invocation is the keeper insight (*the platform owns orchestration, not the third-party tool* — Infection must not own PHPUnit execution semantics); the 75% MSI is read via Test Strength 96% (coverage expansion, not weak assertions); escaped mutants are NOT fixed in PB-007 — ratchet work is a future backlog item (recorded as **ENG-004 Mutation Ratchet 1**, first target `ChallengeReactionOutcomeTranslator`); the cross-session collision is an operational race condition, not a test defect. 7D authorized.
+
+## 2d. Gate tiers (ARB clarification @ 7C acceptance — binding for 7D)
+
+The stable interface exposes the taxonomy as **two tiers**, so future maintainers can see WHY mutation testing is measured but not enforced:
+
+| Tier | Gates | Command | Semantics |
+|---|---|---|---|
+| **Blocking** | Architecture (fitness suites, Deptrac **fail mode**) · Behaviour (widened regression) · Engineering (greenfield PHPStan) | `composer merge-gate` | fail-fast; one PASS/FAIL; merges blocked on failure |
+| **Non-blocking** | Improvement/Reporting (Infection MSI · coverage · trends) | `composer quality-gate` | measures + records; NEVER blocks a merge in PB-007 (A-3 ratchet applies) |
+
+## 2e. 7D evidence record (2026-07-10 — STOP for ARB review before 7E)
+
+**Delivered:** `composer.json` scripts `merge-gate` + `quality-gate` (+ `scripts-descriptions` naming the tiers per §2d) · Deptrac **fail-mode flip executed** (the blocking gate consumes the exit code — governance change scheduled for 7D at 7A acceptance) · developer guides `developer_guide/merge_gate/00_index.md` + `01_stable_interface.md` (ARB-refined: stable architectural contract, no time-dependent values).
+
+**Verification (Observed):**
+- `composer merge-gate` → **PASS**, single command, fail-fast, exit 0: Architecture fitness **146✔/626 assertions/1 skip** → Deptrac fail mode (0 violations) → greenfield PHPStan clean → GreenfieldCore regression **179✔/477 assertions/0 failed** (57 risky = F-7C-6).
+- `composer quality-gate` → runs end-to-end through the stable interface: coverage artifacts generated (`build/coverage/`), Infection consumes them `--skip-initial-tests`, metric set reported.
+
+**F-7D-1 — Composer process timeout (classification: Engineering Platform Repair, ARB-confirmed):** Composer's default 300s per-process timeout killed Infection mid-analysis on the first `quality-gate` run. Repair: `Composer\Config::disableProcessTimeout` (documented Composer mechanism) prepended to both gate scripts. The product did not change; the engineering capability did. The gate discovered a latent defect in its own harness — the same class as 7C's PHPUnit-11 coverage repair ("quality gates reveal latent defects; they don't introduce them").
+
+**F-7D-2 — Mutation measurement is thread-sensitive (OPEN — ARB disposition requested; recorded, NOT resolved in 7D):**
+| Invocation (same coverage artifacts, same 892 mutants) | MSI | Covered-Code MSI | Killed | Escaped | Not covered |
+|---|---|---|---|---|---|
+| 8 threads (baseline method) | 75% | 96% | 622 (+1 timeout) | 20 | 184 |
+| 1 thread (accidental: `--threads=max` silently degraded to 1 in Infection 0.29.10) | 50% | 65% | 416 (+3) | 224 | 184 |
+
+Identical uncovered sets ⇒ same mutant population and coverage mapping; only *detection* diverges — ~200 feature-covered mutants flip killed↔escaped with thread count. Competing hypotheses (Interpreted, undecided): (a) 8-thread parallelism produces **false kills** — concurrent per-mutant phpunit processes each `migrate:fresh` the shared `nrna_test`, so sibling table-drops fail tests for reasons unrelated to the mutation (a failed test counts as a kill), meaning the recorded baseline's Test Strength 96% may be optimistic for feature-covered code; or (b) sequential execution produces **false escapes** via cross-run state accumulation. Discriminating experiment identified (hand-apply one 1-thread-escaped mutant; run its covering feature test standalone; pass ⇒ (a), fail ⇒ (b)). Candidate remedy if (a): per-thread test databases via Infection's `TEST_TOKEN` convention — engineering work for ENG-004/its own item, never an ad-hoc 7D fix. Interim: the interface pins `--threads=8` (the value the recorded baseline used — **an explicit thread count is part of the measurement semantics**, never `max`); baseline comparability preserved while the ARB rules on validity.
+
 ## 3. Boundaries
 No domain/aggregate/platform-logic changes · pre-existing findings recorded, not fixed (7A report-mode findings go to the ARB) · no new patterns · the frozen `.claude` platform untouched.
 

@@ -64,7 +64,25 @@
         "test": [
             "@php artisan test",
             "bash scripts/enforce-tenantid.sh"
+        ],
+        "merge-gate": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php vendor/phpunit/phpunit/phpunit --testsuite=Architecture",
+            "@php vendor/qossmic/deptrac-shim/deptrac analyse --no-progress",
+            "@php vendor/phpstan/phpstan/phpstan analyse -c phpstan-greenfield.neon --no-progress --memory-limit=1G",
+            "@php vendor/phpunit/phpunit/phpunit --testsuite=GreenfieldCore",
+            "@php -r \"echo PHP_EOL.'MERGE GATE: PASS (Architecture fitness / Deptrac / greenfield PHPStan / widened regression)'.PHP_EOL;\""
+        ],
+        "quality-gate": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php -d zend_extension=php_xdebug-3.5.3-8.3-ts-vs16-x86_64.dll -d xdebug.mode=coverage vendor/phpunit/phpunit/phpunit --testsuite=GreenfieldCore --coverage-xml=build/coverage/coverage-xml --log-junit=build/coverage/junit.xml",
+            "@php vendor/infection/infection/bin/infection --coverage=build/coverage --skip-initial-tests --threads=8 --no-interaction",
+            "@php -r \"echo PHP_EOL.'QUALITY GATE: measured (non-blocking tier - A-3 ratchet policy; see infection-summary.txt)'.PHP_EOL;\""
         ]
+    },
+    "scripts-descriptions": {
+        "merge-gate": "BLOCKING tier (PB-007 IDD 2d): Architecture + Behaviour + Engineering gates, fail-fast, one PASS/FAIL. STABLE PUBLIC INTERFACE (ARB R3) - internals may change, the command contract must not.",
+        "quality-gate": "NON-BLOCKING tier (PB-007 IDD 2d): Infection mutation measurement via pre-generated coverage (two-step: the platform owns PHPUnit execution semantics, not Infection). Measures and records; never blocks a merge (A-3)."
     },
     "config": {
         "optimize-autoloader": true,

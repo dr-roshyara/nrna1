@@ -28,6 +28,8 @@
 - **GOVERNANCE FREEZE (R-27):** no new platform principles/architecture docs until the PB-004 usage retrospective; amendments only (AIP-13); platform-only work needs ARB approval (AIP-14); retrospective includes a deletion goal.
 - **STRUCTURAL FREEZE (R-37, 2026-07-10) — Engineering Platform Baseline v1.0 is frozen** (baselines freeze; architectures evolve — never say "the architecture is frozen"). Until C3 + PB-004 + retrospective: `engineering/` permits only bugfix/broken-link/typo; burden of proof reversed — *every architectural idea is guilty until proven necessary by implementation evidence*; expansion proposals without demonstrated insufficiency are rejected by default.
 - Platform serves PublicDigit delivery — the standing question: *smallest platform change that unlocks the next PublicDigit capability?*
+- **AIP observation stop (ARB, 2026-07-10):** unless implementation exposes a genuine deficiency in the Engineering Platform, do NOT add further AIP observations — record only implementation evidence required to complete the current ticket. Everything else waits for the retrospective.
+- **Implementation-first default (ARB, 2026-07-10):** the architecture and engineering platform have demonstrated stability — every new ticket is an IMPLEMENTATION ticket by default, not an architecture ticket. The question is *"can I implement this capability within the approved architecture?"* — only a NO (with implementation evidence of insufficiency) opens an ADR/ARB discussion.
 
 ## User preferences (recurring)
 - Chief-architect review loop: propose → review → apply refinements → freeze. Never start coding before the design artifact (IDD) is approved.
