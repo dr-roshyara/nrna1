@@ -56,7 +56,7 @@ Every work item begins with a written plan. Minimum contents:
 - **Files affected** — the artifacts expected to change
 - **Risks** — what could go wrong, and its severity
 - **Verification strategy** — HOW correctness will be known (the methods)
-- **Expected evidence** — WHAT artifacts verification will produce (the outputs)
+- **Evidence** — WHAT kind of artifacts verification is expected to produce; the exact artifacts are recorded in the report (verification does not always know beforehand precisely what evidence will exist)
 - **Out of scope** — what deliberately will not change
 
 The plan ends in the state **WAITING FOR REVIEW**. Purely clerical record-keeping (appending to an existing log or register, transcribing a decision verbatim) requires no plan; everything that mutates engineering artifacts does.
