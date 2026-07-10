@@ -106,7 +106,9 @@ The **live registry** is `.claude/platform/registry.yaml` (a runtime asset, deli
 
 2. Engineering?  Does it decide, teach, prove, or harvest HOW we engineer?
                  → engineering/  (decision → architecture/adr · pattern card → knowledge/patterns
-                                  · evidence → verification/reports)
+                                  · evidence → verification/reports · protocol → governance/)
+                 Litmus: could a different project adopt it UNCHANGED? Yes → engineering/.
+                 Needs project-specific context or evidence → it belongs with the project.
 
 3. Runtime?      Is it an active plan, session log, or context for the current adapter?
                  → .claude/
