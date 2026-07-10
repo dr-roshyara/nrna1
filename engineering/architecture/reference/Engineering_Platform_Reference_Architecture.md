@@ -73,7 +73,7 @@ The Engineering Execution Protocol defines an **explicit lifecycle**: Implementa
 
 **Implemented (repository evidence):**
 - ✅ Execution lifecycle with mandatory human approval — `governance/Engineering_Execution_Protocol.md`
-- ✅ Qualification with correction lifecycle (never fix in-run · PASS AFTER CORRECTION · F-/CR-/OQ- id series) — `verification/qualification/2026-07-10-OQ-ENG-001.md`
+- ✅ Qualification with correction lifecycle (never fix in-run · PASS AFTER CORRECTION · F-/CR-/OQ- id series) — qualification record **OQ-ENG-001** in `verification/qualification/`
 - ✅ Traceability change → plan → decision — five-question trace + implementation reports (project binding)
 - ✅ Knowledge harvest → pattern → evidence chain — `knowledge/patterns/`
 - ✅ Provider-neutral Engineer role — the EEP (zero provider names; qualification-verified)
