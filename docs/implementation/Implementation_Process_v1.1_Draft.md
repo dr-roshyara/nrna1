@@ -84,10 +84,14 @@ Objective        — one sentence
 Classification   — □ Record only  □ Documentation  □ Runtime  □ Product  □ Architecture
 Risk             — Low / Medium / High
 Files affected   — list
-Expected evidence— what proves it worked
+Verification     — how correctness will be known (unit test · qualification · document
+                   review · rename-only diff · broken-link scan · static analysis ·
+                   manual inspection) + the expected artifact
 Not changing     — what stays deliberately untouched
 Awaiting ARB approval.
 ```
+
+*("Verification", not "expected evidence" — ARB refinement 2026-07-10: broader; a `git mv` verifies by a rename-only diff, not by a test. No further EP variants (no EP-01A/B/C) — EP-01 and EP-01-Light are the complete set.)*
 
 Pure *Record-only* actions (classifying an observation into the retrospective inbox, appending a session-log entry, an ARB-dictated verbatim record) need no separate form — the classification statement itself is the plan; everything else uses the form as the minimum. **Role separation preserved:** the AI is the engineer (plans, implements, reports) · an independent reviewer may assess the plan · the human ARB approves. *(Origin: 2026-07-10 ARB — "restore the explicit approval gate before any change"; the freeze changed most work into record/defer/reject, which had quietly thinned the gate.)*
 
