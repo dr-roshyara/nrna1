@@ -20,6 +20,14 @@
 - **Windows dev quirks:** shell-driven test helpers broke on `C:\` paths before (grep `:` split) — prefer pure-PHP file scanning in architecture tests.
 - **Hydrator versioning rule:** vCurrent + vPrevious ONLY (`docs/implementation/Event_Registry.md`).
 
+## AI/PublicDigit Engineering Platform (durable — Baseline v1.0, 2026-07-08)
+- **Authority:** `engineering/architecture/adr/ADR-AIP-01` (Baseline + Construction Addendum) + `ADR-AIP-02` (AIP-14 Product Primacy) · corpus `engineering/architecture/proposals/Phase-0*.md` (FROZEN) · rulings register (Living, append-only): `engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md` (R-30..; R-1..R-29 historical in sealed Phase-02.5 §6).
+- **Namespace (EM-001, 2026-07-10):** `docs/`+`architecture/` = Product · `engineering/` = Engineering Platform (entry: `engineering/README.md`; audit: `engineering/MIGRATION_REPORT.md`) · `.claude/` = runtime mount point (never moves). Create folders only when the first artifact arrives — no speculative namespaces.
+- **Registry-first workflow is BINDING:** every `.claude` artifact: register in `.claude/platform/registry.yaml` (CMP/AST ids, five-question trace: capability→context→principle→decision→ADR) → review → implement → verify. Guide: `developer_guide/ai_platform/01_registry_first_workflow.md`.
+- **Verification Engine = measuring instrument (R-26):** run → capture → PASS/FAIL → stop; no interpretation inside the instrument.
+- **GOVERNANCE FREEZE (R-27):** no new platform principles/architecture docs until the PB-004 usage retrospective; amendments only (AIP-13); platform-only work needs ARB approval (AIP-14); retrospective includes a deletion goal.
+- Platform serves PublicDigit delivery — the standing question: *smallest platform change that unlocks the next PublicDigit capability?*
+
 ## User preferences (recurring)
 - Chief-architect review loop: propose → review → apply refinements → freeze. Never start coding before the design artifact (IDD) is approved.
 - TDD is mandatory and literal: RED confirmed before GREEN, every class.

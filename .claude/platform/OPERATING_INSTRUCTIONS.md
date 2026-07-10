@@ -2,7 +2,7 @@
 
 **Issued by:** ARB/Chief Architect, 2026-07-08; revised same day with the Evidence-First operating rules (explicit adoption — session log `.claude/sessions/2026-07-08.md`)
 **Binding during:** the Construction phase (post-Baseline, until superseded)
-**Relation:** operationalizes EP-01/EP-02 (`docs/implementation/Implementation_Process_v1.1_Draft.md`), R-26/R-27/R-34 (`docs/adr/ADR-AIP-LOG-Platform-Rulings.md`), AIP-13/14. On conflict, ADRs and the Implementation Process win.
+**Relation:** operationalizes EP-01/EP-02 (`docs/implementation/Implementation_Process_v1.1_Draft.md`), R-26/R-27/R-34 (`engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md`), AIP-13/14. On conflict, ADRs and the Implementation Process win.
 
 ---
 

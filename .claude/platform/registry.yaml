@@ -30,7 +30,7 @@ platform:
     designation: "Baseline v1.0 - Reference Implementation Pending"
   iteration: 1
   # OI-1 renames apply by supersession (ARB 2026-07-08: OI-1 does not block construction)
-  vocabulary: docs/architecture/proposals/ai-platform/Phase-02.6-Ubiquitous-Language.md
+  vocabulary: engineering/architecture/proposals/Phase-02.6-Ubiquitous-Language.md
   # ARB amendment 3 (2026-07-08): knowledge loads before rules (rules depend on knowledge, never the reverse)
   loading_order: [configuration, registry, knowledge, rules, hooks, commands, agents]
   # Normalized runtime moments (enum) — the only legal values for assets.runtime_moments:
