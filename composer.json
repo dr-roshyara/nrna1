@@ -76,7 +76,7 @@
         "quality-gate": [
             "Composer\\Config::disableProcessTimeout",
             "@php -d zend_extension=php_xdebug-3.5.3-8.3-ts-vs16-x86_64.dll -d xdebug.mode=coverage vendor/phpunit/phpunit/phpunit --testsuite=GreenfieldCore --coverage-xml=build/coverage/coverage-xml --log-junit=build/coverage/junit.xml",
-            "@php vendor/infection/infection/bin/infection --coverage=build/coverage --skip-initial-tests --threads=8 --no-interaction",
+            "@php vendor/infection/infection/bin/infection --coverage=build/coverage --skip-initial-tests --threads=1 --no-interaction",
             "@php -r \"echo PHP_EOL.'QUALITY GATE: measured (non-blocking tier - A-3 ratchet policy; see infection-summary.txt)'.PHP_EOL;\""
         ]
     },
