@@ -6,6 +6,7 @@ entry point per tier; internals may change, the command contract must not (ARB R
 | # | Guide | Slice | What it covers |
 |---|-------|-------|----------------|
 | 01 | [The stable interface: `composer merge-gate` / `quality-gate`](01_stable_interface.md) | 7D | Both tiers, why two commands, the two-step Infection invocation, running and extending the gates |
+| 02 | [CI: the gate on every PR, the quality tier on a schedule](02_ci_workflows.md) | 7E | The two workflows, why they contain no gate logic, the validated execution model in CI |
 
 ## The two tiers (PB-007 IDD §2d)
 

@@ -133,6 +133,14 @@ Identical uncovered sets ⇒ same mutant population and coverage mapping; only *
 - **Honest reading (Interpreted; ARB-refined wording):** *Under the validated execution model, Covered-Code MSI (Test Strength) is measured as 65%. The previously reported 96% value is retained as historical output from an execution model that did not pass evidence validation and therefore is not suitable as the baseline.* The "assertions are strong, only coverage is missing" story was an artifact of that unvalidated execution model. Escapes concentrate exactly where the ARB named the highest-value mutation territory: the messaging/persistence boundary of the constitutional correction loop. ENG-004 (Mutation Ratchet 1) baselines against THESE validated numbers.
 - **Consequences:** (1) `quality-gate` must run the validated execution model — `--threads=8` → `--threads=1` (change gated behind EP-01-Light approval); (2) restoring parallel speed WITH validity = per-thread databases (Infection `TEST_TOKEN`) — future engineering work (ENG-004 or its own item), not PB-007; (3) no other changes — architecture untouched, exactly as the outcome branches predicted.
 
+## 2f. 7E evidence record (2026-07-10 — STOP for ARB review before qualification)
+
+**Delivered:** `.github/workflows/greenfield-merge-gate.yml` (blocking tier: every PR + main-branch pushes + manual; single step `composer merge-gate`; postgres service mirroring the `tests/bootstrap-test-database.php` forced credentials; 40-min timeout) · `.github/workflows/greenfield-quality-tier.yml` (non-blocking tier: weekly schedule + manual; single step `composer quality-gate` under the **validated 1-thread execution model**; Xdebug via setup-php ini on Linux — the script's per-invocation Windows DLL flag degrades to a startup notice, `-d xdebug.mode=coverage` applies either way; mutation reports uploaded as artifacts) · guide `developer_guide/merge_gate/02_ci_workflows.md`. Existing workflows untouched (knowledge-lint · membership-architecture · regression-detector).
+
+**Design honored:** the workflows contain **no gate logic** — each invokes exactly one stable command (R3), so CI can never drift from the local gate; quality tier separate/scheduled, never on the merge path (§2d).
+
+**Verification (Observed):** both workflow files parse as valid YAML (Symfony Yaml); the invoked commands are the ones verified in §2e (merge-gate PASS locally; quality-gate end-to-end). **Evidence limit (honest):** "CI workflow green" (§5) requires an actual PR/dispatch run on the forge — achievable only after push; recorded as the remaining §5 item, not claimed.
+
 ## 3. Boundaries
 No domain/aggregate/platform-logic changes · pre-existing findings recorded, not fixed (7A report-mode findings go to the ARB) · no new patterns · the frozen `.claude` platform untouched.
 
