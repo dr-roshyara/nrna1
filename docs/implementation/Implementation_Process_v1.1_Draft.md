@@ -76,6 +76,23 @@
 
 *(Origin: 2026-07-08, ARB/mentor review of the Engineering Platform construction — codifies the already-practiced loop: plan → review → approve → implement → verify. Step 6 is the load-bearing clause. Note for ratification review: decide whether EP remains a separate namespace or folds into ER; the distinction proposed here is execution-mode vs. work-product rules.)*
 
+**EP-01-Light — lightweight planning form (clarification, ARB 2026-07-10).** Under a frozen baseline most changes are small; the approval gate stays, the ceremony shrinks. For any repository mutation below IDD weight, the implementer presents this form (30–60 seconds) and **waits for approval** before executing:
+
+```text
+EP-01 Implementation Review
+Objective        — one sentence
+Classification   — □ Record only  □ Documentation  □ Runtime  □ Product  □ Architecture
+Risk             — Low / Medium / High
+Files affected   — list
+Expected evidence— what proves it worked
+Not changing     — what stays deliberately untouched
+Awaiting ARB approval.
+```
+
+Pure *Record-only* actions (classifying an observation into the retrospective inbox, appending a session-log entry, an ARB-dictated verbatim record) need no separate form — the classification statement itself is the plan; everything else uses the form as the minimum. **Role separation preserved:** the AI is the engineer (plans, implements, reports) · an independent reviewer may assess the plan · the human ARB approves. *(Origin: 2026-07-10 ARB — "restore the explicit approval gate before any change"; the freeze changed most work into record/defer/reject, which had quietly thinned the gate.)*
+
+**EP-02 — Implementation Report format (clarification, ARB 2026-07-10).** Every implementation (and every EP-01-Light execution) ends with a concise report answering, in order: **(1) changes made · (2) changes deliberately NOT made · (3) verification/evidence · (4) git commit ref(s) · (5) next recommended action.** This is what makes each commit auditable without reading the diff; it is the standing output format, not an optional courtesy.
+
 ---
 
 ## Process gates — additions
