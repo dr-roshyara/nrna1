@@ -20,7 +20,7 @@
 | Epic | Title | Tickets | Progress (derived) | File |
 |------|-------|---------|--------------------|------|
 | EPIC-001 | Greenfield Core (correction loop) | PB-001..007 | 7/7 closed = **100%** · **ready for formal closure pending retrospective** | `EPIC-001_Greenfield_Core.md` |
-| EPIC-002 | **Evidence** (constitutional evidence, audit timeline, replay, verification) | — | not opened — **NEXT: Discovery + literature review first** (ARB roadmap) | opens after EPIC-001 retrospective |
+| EPIC-002 | **Strategic Discovery — candidate BC: Evidence** (discovery may conclude the candidate is too large, is two contexts, or merges elsewhere — it must not assume its own answer; ARB 2026-07-11) | — | not opened — **NEXT: Problem Statement → literature review → Strategic Discovery** | charter: `../EPIC-002_Problem_Statement.md` · opens after EPIC-001 retrospective |
 | EPIC-003 | Voting (ballot casting, anonymous storage, tally — migration + verifiability) | — | not opened | after EPIC-002 |
 | EPIC-004 | Appointment / Governance (delegates, mandates, authority chains) | — | not opened | after EPIC-003 |
 | EPIC-005 | Read Models · Public Transparency | — | not opened | after EPIC-004 |

@@ -53,9 +53,12 @@ What was used? What wasn't? What hurt? What simplified development? What should 
 ## 6. Next epic (status only — no design here)
 
 ```text
-Next Epic:  EPIC-002 — Evidence
+Next Epic:  EPIC-002 — Strategic Discovery
+Candidate BC: Evidence  (discovery may confirm it, split it, or merge it —
+              it must not assume its own answer; ARB 2026-07-11)
 Status:     Ready for Discovery (after retrospective + formal EPIC-001 closure)
-First step: Discovery + literature review (no code, no architecture in this pack)
+Charter:    EPIC-002_Problem_Statement.md (research charter — not an IDD, not an ADR)
+First step: Problem Statement → literature review (no code, no architecture in this pack)
 ```
 
 ---
