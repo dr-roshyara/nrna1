@@ -39,9 +39,11 @@ Derivation: registry parse (components/assets) + `settings.json` hook count + `g
 
 **Retrospective question added (peer-review close): "What surprised us?"** — friction found beats features planned; three surprises outrank twenty speculative improvements.
 
-**ARB candidate — Engineering Decision Record (EDR) (2026-07-10, Class A; explicitly NOT built now, R-37):** a small operational-decision artifact between ADR and session log — *Finding · Evidence · Decision · Reason · Effect* (example shape given with F-7D-2 content — the example is FORMAT ONLY; the actual F-7D-2 ruling remains open). Rationale: operational decisions (baselines, measurement semantics, gate parameters) are too small for ADRs but too important to disappear into session logs. Trigger: accumulated operational history demonstrates the loss (the retrospective checks whether any operational decision from PB-004..007 already became hard to find).
-
-**Retrospective questions added (ARB, EEP acceptance 2026-07-10):** (1) *Does "Engineer" remain sufficient after multiple execution styles?* — the execution-unit abstraction (human · AI agent · build system · CI action as interchangeable execution units) was considered and explicitly NOT applied (one implementation style today; don't generalize before evidence). (2) *Should the placement litmus ("can another project adopt it unchanged? → engineering/") become an ADR?* — ARB: it is a decision rule, not documentation.
+**Retrospective questions (2026-07-10; format: question · trigger — reasoning lives in the session record, not here):**
+- *Did any operational decision from PB-004..007 become hard to find in session logs?* Trigger: retrospective check. (If yes, discuss an operational-decision record then — not before.)
+- *Does "Engineer" remain sufficient after multiple execution styles?* Trigger: a second execution style exists.
+- *Should the placement litmus ("adopt-unchanged → engineering/") become an ADR?* Trigger: retrospective.
+- *Do the externally-proposed orchestration concepts (workflow engine · execution aggregates · JSON artifacts · approval UI) earn existence?* Trigger: PB-004 + multi-project evidence. Reason: R-37. Conclusion on record: the platform implements their intent through governance, not orchestration software.
 
 **Engineering habit (informal, not governance): every new piece of metadata must save more time than it costs to maintain.** Metadata inventory is itself subject to the retrospective's deletion goal.
 
