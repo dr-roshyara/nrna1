@@ -1,8 +1,8 @@
 # Engineering Platform Reference Architecture
 
-**Class:** Engineering Platform architecture · **Status:** **DRAFT — Proposed** (adoption requires an architecture review; nothing has adopted this document yet) · **Owner:** Decision Authority
-**Placement note:** this document is the **first artifact** of `architecture/reference/` — the directory exists because the artifact now exists (folder rule), not the reverse. The namespace was reserved for the promoted Reference Architecture; promotion is the pending review.
-**Relation:** describes the platform *as implemented*; on any conflict, the rulings register, the sealed Baseline corpus (`../baseline/` — the genesis record), and the Engineering Execution Protocol win. Every repository path cited below was existence-verified on 2026-07-10.
+**Class:** Engineering Platform architecture · **Status:** **DRAFT** — adoption test: this document is used through one complete engineering cycle (qualification → implementation → retrospective); it becomes **Adopted** only if qualification and the retrospective show it accurately described reality throughout · **Owner:** Decision Authority
+**Placement note:** this document is the **first artifact** of `architecture/reference/` — the directory exists because the artifact now exists (folder rule), not the reverse.
+**Relation:** describes the platform *as implemented*; on any conflict, the rulings register, the sealed Baseline corpus (`../baseline/` — the genesis record), and the Engineering Execution Protocol win. *This reference architecture describes the repository as qualified by the latest Engineering Qualification; repository conformance is verified by qualification, not by this document.*
 
 > **Governing principle:** *Architecture documents describe implemented capabilities and accepted governance. Research ideas, candidate domain models, and speculative structures belong in the retrospective inbox until evidence promotes them into the architecture.*
 
@@ -18,9 +18,9 @@ An **engineering governance architecture** — not a software system. It governs
 
 *(Stated here as this document's principle; formal principle numbering is deliberately deferred — R-27 permits no new numbered principles until the retrospective, and rule parsimony requires checking whether existing rules already carry it.)*
 
-## 2. The five engineering capabilities (implemented; capabilities survive folder renames — current implementations existence-verified 2026-07-10)
+## 2. The five engineering capabilities (implemented; capabilities survive folder renames)
 
-| Capability | Responsibility | Evidence (current implementation) |
+| Capability | Responsibility | Current implementation |
 |---|---|---|
 | **Engineering Knowledge** | Harvest external knowledge into pattern cards; evidence decides promotion | Pattern-card repository w/ evidence register — currently `knowledge/patterns/` (EPC-001..018; sources under `patterns/sources/`) |
 | **Engineering Governance** | Define what processes exist, when they are mandatory, who approves, what evidence suffices | Execution protocol + rulings register + freezes — currently `governance/Engineering_Execution_Protocol.md` · `architecture/adr/ADR-AIP-LOG-Platform-Rulings.md` (R-27/R-37) |
@@ -120,4 +120,4 @@ A project references the Engineering Execution Protocol from its own implementat
 
 ---
 
-*This document is rewritten when repository reality changes and the evidence has been accepted — never ahead of it.*
+**This document is normative. Qualification verifies conformance to this reference architecture. Operational evidence may trigger revisions through the platform governance process.** It is rewritten when repository reality changes and the evidence has been accepted — never ahead of it.
