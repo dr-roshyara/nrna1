@@ -82,7 +82,7 @@ Never: start by writing prompts · start by creating agents · start by copying 
 
 | # | Principle (one line) | Authoritative home |
 |---|---|---|
-| 1 | **Start with the engineering domain, not the AI tool** — the provider is the outermost layer | `engineering/architecture/proposals/Phase-02-Domain-Model.md` (frozen Baseline) |
+| 1 | **Start with the engineering domain, not the AI tool** — the provider is the outermost layer | `engineering/architecture/baseline/Phase-02-Domain-Model.md` (frozen Baseline) |
 | 2 | **Model the engineering domain with DDD** — the election system is the Core Domain; this platform is a Supporting Subdomain, always | Phase-02 §1–2 · handover sentence in session log 2026-07-08 |
 | 3 | **Separate architecture from runtime** — "Verification Engine" is architecture; `run-gates.sh` is one implementation | `Phase-03A-Reference-Architecture.md` §1 |
 | 4 | **Capabilities before files** — Capability → Component → Implementation → Asset; files appear last | Phase-02.5 §2 (capability catalog) + `.claude/platform/registry.yaml` |
@@ -98,7 +98,7 @@ Never: start by writing prompts · start by creating agents · start by copying 
 | 14 | **Evidence first** — ask "what evidence demonstrates a need?", never "what should we improve?"; implementation drives architecture | AIP-13 (Phase-02.5 §3) · Evidence-First rules (AST-013) |
 | 15 | **Product Primacy** — which feature requires this change? No feature → don't build it | ADR-AIP-02 (AIP-14) · the 30-second question (session log 2026-07-08) |
 | 16 | **One responsibility per document class** — Standards=principles · Process=steps · ADR=why · Registry=what runs · Guide=how · Log=what happened | session log 2026-07-08 (rule); Engineering Standards will host it |
-| 17 | **Harvest knowledge, never copy it** — extract patterns → candidates → evidence → retrospective → accept/reject | `engineering/knowledge/harvests/engineering_pattern_cards_agent_skills.md` (EPC-010 + Evidence Log) |
+| 17 | **Harvest knowledge, never copy it** — extract patterns → candidates → evidence → retrospective → accept/reject | `engineering/knowledge/patterns/engineering_pattern_cards_agent_skills.md` (EPC-010 + Evidence Log) |
 | 18 | **Evolve on demand, never ahead of it** — feature → observation → evidence → retrospective → one small improvement | AIP-13/AIP-14 · R-27/R-29 freeze |
 | 19 | **Measure outcomes, not inventory** — fewer mistakes, better traceability, faster safe delivery; never counts of prompts/agents/hooks | R-33 (Operational Readiness v1.0 criteria) · Platform Value ledger (plan) |
 | 20 | **Maturity is a ladder** — prompts → reusable prompts → agents → workflows → engineering process → **AI engineering architecture** → self-improving platform | this guide; the journey record is `.claude/sessions/2026-07-08.md` |

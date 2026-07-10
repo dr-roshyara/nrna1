@@ -3,21 +3,30 @@
 ```
                  PublicDigit Repository
 
-                ┌──────────────────────┐
-                │       Product        │   docs/ · architecture/ · app/ · tests/
-                └──────────────────────┘
+              ┌───────────────────────────┐
+              │         Product           │
+              │───────────────────────────│
+              │  app/        tests/       │
+              │  docs/       architecture/│
+              └───────────────────────────┘
                            ▲
-                      built using
+                    engineered using
                            │
-                ┌──────────────────────┐
-                │ Engineering Platform │   engineering/   ← you are here
-                └──────────────────────┘
+              ┌───────────────────────────┐
+              │   Engineering Platform    │   ← you are here
+              │───────────────────────────│
+              │  architecture/            │
+              │  knowledge/               │
+              │  verification/            │
+              └───────────────────────────┘
                            ▲
-                    executed through
+                      executed by
                            │
-                ┌──────────────────────┐
-                │   Runtime Adapter    │   .claude/  (current adapter)
-                └──────────────────────┘
+              ┌───────────────────────────┐
+              │         Runtime           │
+              │───────────────────────────│
+              │  .claude/                 │
+              └───────────────────────────┘
                            ▲
                            │
                    Execution Engine
@@ -53,11 +62,11 @@ engineering/
 ├── architecture/              What the platform IS
 │   ├── adr/                   Engineering platform decisions (ADR-AIP-01, ADR-AIP-02, rulings log)
 │   ├── c4/                    Platform architecture views (16 diagrams)
-│   └── proposals/             Sealed Baseline v1.0 corpus (Phase-01 … Phase-03A; R-30: moves allowed, edits never)
+│   └── baseline/              Sealed Baseline v1.0 corpus (Phase-01 … Phase-03A; frozen — R-30: moves allowed, edits never)
 │
 ├── knowledge/                 What the platform LEARNS (organized by domain object)
-│   └── harvests/              Knowledge Harvest dossiers (pattern cards EPC-001..018 + Pattern Evidence Register)
-│       └── sources/           Harvest source material (provenance)
+│   └── patterns/              Pattern cards EPC-001..018 + Pattern Evidence Register (the harvest already happened; these are its results)
+│       └── sources/           Source material (provenance; eventual home: research/sources/)
 │
 └── verification/              What the platform PROVES
     └── reports/               Architecture reviews, audits, assessments (evidence-executed)
@@ -70,8 +79,10 @@ engineering/
 | `architecture/reference/` | promoted Reference Architecture | ARB promotion, post-PB-004 |
 | `governance/standards/` | the Engineering Standards document | R-32, post-PB-004 retrospective |
 | `governance/rulings/` | non-ADR rulings, if ever split from the ADR-AIP log | ARB decision |
-| `knowledge/patterns/` · `knowledge/evidence/` | the four-way dossier split (Implemented / Candidates / Rejected / Evidence) | PB-004 retrospective |
+| `knowledge/research/harvests/` · `knowledge/research/sources/` | dated harvest activity records + research material (Harvest → Pattern → Evidence separation) | PB-004 retrospective (four-way dossier split) |
+| `knowledge/evidence/` | the Pattern Evidence Register as its own artifact | PB-004 retrospective (four-way dossier split) |
 | `capabilities/` | capability model as first-class artifacts (ddd-assurance, knowledge-management, provider-assurance, …) | retrospective ruling on the capability layer |
+| `verification/evidence/` | raw gate outputs / captured verdicts, separate from narrative reports | when AST-010 produces them |
 | `verification/fitness-functions/` | FF-1..17 implementations | product-driven need (AIP-14) |
 | `verification/qualification/` | OQ records | OQ-1 execution (plan currently lives in the runtime mount) |
 | `developer/guides/` · `developer/onboarding/` | `developer_guide/ai_platform/` content | later slice — currently hook-coupled (see MIGRATION_REPORT) |
@@ -90,7 +101,7 @@ The **live registry** is `.claude/platform/registry.yaml` (a runtime asset, deli
                  → docs/ (official truth) or architecture/ (product workspace)
 
 2. Engineering?  Does it decide, teach, prove, or harvest HOW we engineer?
-                 → engineering/  (decision → architecture/adr · harvest → knowledge/harvests
+                 → engineering/  (decision → architecture/adr · pattern card → knowledge/patterns
                                   · evidence → verification/reports)
 
 3. Runtime?      Is it an active plan, session log, or context for the current adapter?
@@ -102,7 +113,7 @@ Still in doubt? Ask the five questions (capability? context? principle? decision
 ## Rules that bind this directory
 
 - **Product Primacy (AIP-14):** every addition must serve a product feature. No feature → don't build it.
-- **Sealed corpus (R-30):** `architecture/proposals/Phase-*` is permanently sealed — moves allowed, edits never.
+- **Sealed corpus (R-30):** `architecture/baseline/Phase-*` is permanently sealed — moves allowed, edits never.
 - **Assertion Integrity (AIP-10):** no document here may assert an event that has not occurred; no invented scores or metrics.
 - **Append-only history (AIP-11):** rulings and evidence registers are appended, never rewritten.
 - **Governance freeze (R-27/R-29):** platform changes only when a product feature demonstrates insufficiency, via retrospective.

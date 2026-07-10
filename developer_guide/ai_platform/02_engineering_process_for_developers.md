@@ -8,7 +8,7 @@ Since 2026-07-08, every non-trivial engineering task on this project — by a hu
 
 - **Authoritative rule text (read that, not this, on conflict):** `docs/implementation/Implementation_Process_v1.1_Draft.md` § "Execution Rules — Engineering Process (EP)". Rules live once, there. `.claude/CLAUDE.md` only points to them.
 - **Operating instructions for AI sessions:** `.claude/platform/OPERATING_INSTRUCTIONS.md` (AST-013) — role, slice discipline, observation classes, economies.
-- **Rulings history:** `engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md` (living) · R-1..R-29 historical in the sealed `engineering/architecture/proposals/Phase-02.5-Certification-Plan.md`.
+- **Rulings history:** `engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md` (living) · R-1..R-29 historical in the sealed `engineering/architecture/baseline/Phase-02.5-Certification-Plan.md`.
 
 ## How a session starts
 

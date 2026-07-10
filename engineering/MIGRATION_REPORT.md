@@ -73,3 +73,13 @@
 6. ✅ **Hooks/runtime:** nothing under `.claude/` moved; only pointer values inside living runtime documents updated.
 7. ✅ **Empty source folders removed** (`docs/architecture/proposals/`, `architecture/verification/`); `architecture/ai_architecture/` retained — holds only the ambiguous PNG (§5, awaiting ARB).
 8. **Execution deviation from the original EM-001 plan (recorded, ARB-directed):** D1 overturned (ADR-AIP moved), `knowledge/research/` renamed to `knowledge/harvests/` (domain object, not activity), verification reports nested under `reports/`, no empty namespace folders created (reserved namespaces documented in `README.md` instead), incremental commit-per-move instead of one migration commit.
+
+## 8b. Post-review refinements (ARB acceptance review, 2026-07-10 — structure rated 9.5/10)
+
+| Change | Why (ARB) |
+|---|---|
+| `architecture/proposals/` → `architecture/baseline/` (`git mv`, history preserved) | The Phase documents are no longer proposals — they are the frozen Baseline. |
+| `knowledge/harvests/` → `knowledge/patterns/` (`git mv`, history preserved) | A harvest is the activity; the harvest already happened. These files are pattern cards. |
+| README picture now shows the folder names inside each concern box | 30-second onboarding. |
+
+**Recorded as reserved, NOT built (ARB: "don't do this now"):** `knowledge/research/{harvests,sources}` (dated harvest records; PDFs are research material) · `verification/evidence/` split from `reports/` · report filename standardization (timestamps inside documents, not filenames) — all in the README reserved-namespace table, each with its trigger. Living references re-swept and `registry.yaml` re-validated after the renames (vocabulary target exists at `engineering/architecture/baseline/`).

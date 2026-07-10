@@ -1,6 +1,6 @@
 # Developer Guide — AI Engineering Platform
 
-Area covering the PublicDigit AI Engineering Platform (`.claude/platform/` + governed `.claude/` assets). Architecture authority: `engineering/architecture/adr/ADR-AIP-01-AI-Engineering-Platform-Baseline-v1.0.md` and the Baseline v1.0 corpus under `engineering/architecture/proposals/`.
+Area covering the PublicDigit AI Engineering Platform (`.claude/platform/` + governed `.claude/` assets). Architecture authority: `engineering/architecture/adr/ADR-AIP-01-AI-Engineering-Platform-Baseline-v1.0.md` and the Baseline v1.0 corpus under `engineering/architecture/baseline/`.
 
 | # | Guide | Covers |
 |---|-------|--------|

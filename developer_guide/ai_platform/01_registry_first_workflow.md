@@ -56,7 +56,7 @@ trace:
   adr: ADR-AIP-01           # which ADR authorizes it?
 ```
 
-If any answer is missing, the artifact must not be created. (CAP/AIP/PD are defined in the Baseline corpus: `engineering/architecture/proposals/Phase-02.5-Certification-Plan.md` and `Phase-02.7-Platform-Decisions.md`.)
+If any answer is missing, the artifact must not be created. (CAP/AIP/PD are defined in the Baseline corpus: `engineering/architecture/baseline/Phase-02.5-Certification-Plan.md` and `Phase-02.7-Platform-Decisions.md`.)
 
 ## Adoption states
 
