@@ -26,6 +26,7 @@
 - **Registry-first workflow is BINDING:** every `.claude` artifact: register in `.claude/platform/registry.yaml` (CMP/AST ids, five-question trace: capability→context→principle→decision→ADR) → review → implement → verify. Guide: `developer_guide/ai_platform/01_registry_first_workflow.md`.
 - **Verification Engine = measuring instrument (R-26):** run → capture → PASS/FAIL → stop; no interpretation inside the instrument.
 - **GOVERNANCE FREEZE (R-27):** no new platform principles/architecture docs until the PB-004 usage retrospective; amendments only (AIP-13); platform-only work needs ARB approval (AIP-14); retrospective includes a deletion goal.
+- **STRUCTURAL FREEZE (R-37, 2026-07-10) — Engineering Platform Baseline v1.0 is frozen** (baselines freeze; architectures evolve — never say "the architecture is frozen"). Until C3 + PB-004 + retrospective: `engineering/` permits only bugfix/broken-link/typo; burden of proof reversed — *every architectural idea is guilty until proven necessary by implementation evidence*; expansion proposals without demonstrated insufficiency are rejected by default.
 - Platform serves PublicDigit delivery — the standing question: *smallest platform change that unlocks the next PublicDigit capability?*
 
 ## User preferences (recurring)
