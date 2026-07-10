@@ -43,7 +43,9 @@ Derivation: registry parse (components/assets) + `settings.json` hook count + `g
 - *Did any operational decision from PB-004..007 become hard to find in session logs?* Trigger: retrospective check. (If yes, discuss an operational-decision record then — not before.)
 - *Does "Engineer" remain sufficient after multiple execution styles?* Trigger: a second execution style exists.
 - *Should the placement litmus ("adopt-unchanged → engineering/") become an ADR?* Trigger: retrospective.
-- *Do the externally-proposed orchestration concepts (workflow engine · execution aggregates · JSON artifacts · approval UI) earn existence?* Trigger: PB-004 + multi-project evidence. Reason: R-37. Conclusion on record: the platform implements their intent through governance, not orchestration software.
+- *Do any externally proposed concepts deserve adoption?* Trigger: PB-004 + multi-project evidence. Reference: the external-proposal evaluation (one permanent home). Reason: R-37.
+
+**INBOX FROZEN (Decision Authority, 2026-07-10): no further modifications to this retrospective inbox until the retrospective itself.**
 
 **Engineering habit (informal, not governance): every new piece of metadata must save more time than it costs to maintain.** Metadata inventory is itself subject to the retrospective's deletion goal.
 
