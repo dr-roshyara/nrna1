@@ -1,8 +1,9 @@
 # Engineering Platform Reference Architecture
 
-**Class:** Engineering Platform architecture · **Status:** **DRAFT** — adoption test: this document is used through one complete engineering cycle (qualification → implementation → retrospective); it becomes **Adopted** only if qualification and the retrospective show it accurately described reality throughout · **Owner:** Decision Authority
+**Class:** Engineering Platform architecture · **Status:** **DRAFT** · **Owner:** Decision Authority
+**Lifecycle:** **DRAFT** (used through one complete engineering cycle) → **ADOPTED** (only if qualification and the retrospective confirm it accurately described reality throughout) → **STABLE** (changes only when repository reality changes and qualification evidence demonstrates the document is no longer accurate).
 **Placement note:** this document is the **first artifact** of `architecture/reference/` — the directory exists because the artifact now exists (folder rule), not the reverse.
-**Relation:** describes the platform *as implemented*; on any conflict, the rulings register, the sealed Baseline corpus (`../baseline/` — the genesis record), and the Engineering Execution Protocol win. *This reference architecture describes the repository as qualified by the latest Engineering Qualification; repository conformance is verified by qualification, not by this document.*
+**Relation:** describes the platform *as implemented*; on any conflict, the rulings register, the sealed Baseline corpus (`../baseline/` — the genesis record), and the Engineering Execution Protocol win. *This reference architecture specifies the Engineering Platform. Engineering Qualification verifies repository conformance to this specification. Operational evidence demonstrates that conformance.*
 
 > **Governing principle:** *Architecture documents describe implemented capabilities and accepted governance. Research ideas, candidate domain models, and speculative structures belong in the retrospective inbox until evidence promotes them into the architecture.*
 
@@ -120,4 +121,4 @@ A project references the Engineering Execution Protocol from its own implementat
 
 ---
 
-**This document is normative. Qualification verifies conformance to this reference architecture. Operational evidence may trigger revisions through the platform governance process.** It is rewritten when repository reality changes and the evidence has been accepted — never ahead of it.
+**This document is normative. Qualification verifies repository conformance to this reference architecture. Operational evidence may trigger revisions through the platform governance process.** It is rewritten when repository reality changes and the evidence has been accepted — never ahead of it.
