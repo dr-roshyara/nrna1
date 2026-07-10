@@ -1,47 +1,49 @@
 # Program Status — Health Dashboard & One-Page Report
 
-**Date:** 2026-07-06 · **Audience:** first thing anyone opens · detail: `backlog/BACKLOG.md`
+**Date:** 2026-07-10 (one-time evidence-derived synchronization — ARB-amended order step 5) · **Audience:** first thing anyone opens · detail: `backlog/BACKLOG.md`
 
 ## Program Health Dashboard
 
 ```text
-Architecture        100%   (Blueprint v1.0 FROZEN)      Current Ticket    PB-003
-Research            98%    (38C closed, 38D-01 in)      Current Commit    PB-003-C1
-DDD Discovery       100%   (Rounds 17-50 complete)      Current Risk      LOW
-Implementation      17%    (EPIC-001, 17/103 WBS)       Blocked           NO
-Quality Gates       72%    (Arch+PHPStan ✔ · Deptrac/   Next Milestone    M1 close (PB-003)
-                            Mutation pending F-1/F-2)    Then              PB-004 (needs IDD)
-Documentation       96%    (Domain Model Catalogue +
-                            deploy doc outstanding)
-Technical Debt      97%    (AD-006 open, quarantined)
+Architecture        100%   (Blueprint v1.0 FROZEN; Deptrac    Current Ticket    none — between epics
+                            fail-mode 0 violations)            Current Phase     EPIC-001 closure sequence
+Research            100%   (EPIC-001 evidence chain complete)  Current Risk      LOW
+DDD Discovery       100%   (greenfield core: 3 contexts        Blocked           NO
+                            mature + Shared platform)
+Implementation      100%   (EPIC-001: 7/7 tickets closed)      Next Milestone    EPIC-001 retrospective
+Quality Gates       100%   wired (merge gate PASS · CI          Then              formal EPIC-001 close
+                            workflows · mutation = measured,                       → EPIC-002 Evidence
+                            non-blocking, validated baseline)                        Discovery
+Documentation       98%    (IDDs/guides current; deploy doc
+                            outstanding)
+Technical Debt      95%    (AD-006 open · F-7C-1..6 recorded
+                            for retrospective; F-1/F-2 closed)
 ```
 
-*(All derived: Implementation = epic WBS · Quality Gates = passing gate types / required gate types (5/7: tests, arch suite, PHPStan, purity, review process ✔; Deptrac, Mutation ✘) · Debt = closed debt items / total raised (33/34).)*
+*(All derived: Implementation = closed tickets / planned tickets (7/7, closure rulings) · Quality Gates = wired gate types / required (7/7: fitness, Deptrac, PHPStan, regression, mutation-measurement, merge-gate interface, CI) · Debt = closed / raised.)*
 
 ```text
-Current milestone      M1 — Messaging Infrastructure          49%  (derived: 17/35 WBS)
-Current ticket         PB-003 — Inbox / Deduplication         Approved · 0/18
-Current branch         feature/pb003
-
-Architecture           100%   (Blueprint v1.0 FROZEN, ARB gate passed)
-Research/Governance     98%   (38C closed · 38D-01 accepted)
-Implementation (EPIC-001)  17%   (derived: 17/103 WBS)
-Migration                0%   (by design — after Push B)
+Milestones             M1 ✔ (2026-07-07) · M2 ✔ (2026-07-09) · M3 ✔ (2026-07-10)
+Current branch         feature/pb003 (EPIC-001 work; merge decision at formal closure)
 
 Program burn-up
   Architecture     ██████████████████████████ 100%
-  Infrastructure   ████████████░░░░░░░░░░░░░░  49%   (M1: registry+relay done, inbox next)
-  Domain           ██████████████░░░░░░░░░░░░  ~55%  (Challenge+Determination done; reactions pending)
-  Application      ██████░░░░░░░░░░░░░░░░░░░░  ~25%  (Adjudication service done; handlers pending)
-  Integration      ░░░░░░░░░░░░░░░░░░░░░░░░░░   0%   (M3)
-  Migration        ░░░░░░░░░░░░░░░░░░░░░░░░░░   0%
+  Infrastructure   ██████████████████████████ 100%   (M1: registry+relay+inbox+dispatcher+provenance)
+  Domain           ██████████████████████████ 100%   (greenfield core: Contestation·Adjudication·Election)
+  Application      ██████████████████████████ 100%   (reactions·handlers·translators — correction loop)
+  Integration      ██████████████████████████ 100%   (M3: IT-1..8 over the REAL path · merge gate · CI)
+  Migration        ░░░░░░░░░░░░░░░░░░░░░░░░░░   0%   (EPIC-006, by design)
 
-Health   Architecture 🟢 · Tests 🟢 · Debt 🟢 · Governance 🟢 · Migration 🟡 · Production 🔴 · Research 🟢
+Health   Architecture 🟢 · Tests 🟢 · Debt 🟢 · Governance 🟢 · Migration 🟡 (by design) ·
+         Production 🟡 (gate+CI wired; first real CI run pending push; no deploy doc) · Research 🟢
 
-Remaining work (EPIC-001)   PB-003 → PB-004 → PB-005 → PB-006 → PB-007
-Next milestone              M2 — Correction Loop (opens when PB-003 Verified)
-Risks in focus              PB-004/005 are the two XL/High-risk tickets; both require IDDs first
-Gates outstanding           F-1 Deptrac · F-2 Infection (both M3 conditions, not blockers now)
+Mutation baseline (validated, F-7D-2)   MSI 50% · Mutation Code Coverage 77% · Test Strength 65%
+                                        (8-thread 75%/96% figures REJECTED — failed evidence validation)
+
+Remaining sequence     1) EPIC-001 retrospective (input pack ready)
+                       2) formal EPIC-001 closure
+                       3) EPIC-002 Evidence — Discovery + literature review FIRST (no code)
+Risks in focus         first real CI run pending push · deployment doc outstanding
 ```
 
-*Rule: every number above is derived (WBS or gate results) — nothing hand-estimated except layer bars marked "~", which become derived when their epics open.*
+*Rule: every number above is derived (closure rulings, gate outputs, or WBS) — nothing hand-estimated. Evidence sources: `backlog/BACKLOG.md` §Synchronization record.*
