@@ -62,7 +62,8 @@ engineering/
 ├── architecture/              What the platform IS
 │   ├── adr/                   Engineering platform decisions (ADR-AIP-01, ADR-AIP-02, rulings log)
 │   ├── c4/                    Platform architecture views (16 diagrams)
-│   └── baseline/              Sealed Baseline v1.0 corpus (Phase-01 … Phase-03A; frozen — R-30: moves allowed, edits never)
+│   ├── baseline/              Sealed Baseline v1.0 corpus (Phase-01 … Phase-03A; frozen — R-30: moves allowed, edits never)
+│   └── reference/             Reference Architecture (DRAFT — describes implemented reality; adoption pending review)
 │
 ├── governance/                What the platform ENFORCES
 │   └── Engineering_Execution_Protocol.md   Provider- and project-independent execution lifecycle
@@ -80,7 +81,6 @@ engineering/
 
 | Namespace | Will hold | Trigger |
 |---|---|---|
-| `architecture/reference/` | promoted Reference Architecture | ARB promotion, post-PB-004 |
 | `governance/standards/` | the Engineering Standards document (sibling of the Execution Protocol, which already lives at `governance/`) | R-32, post-PB-004 retrospective |
 | `governance/rulings/` | non-ADR rulings, if ever split from the ADR-AIP log | ARB decision |
 | `knowledge/research/harvests/` · `knowledge/research/sources/` | dated harvest activity records + research material (Harvest → Pattern → Evidence separation) | PB-004 retrospective (four-way dossier split) |
