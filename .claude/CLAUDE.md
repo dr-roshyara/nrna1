@@ -634,6 +634,8 @@ Whenever work starts or finishes, update CONTEXT.md.
 
 # Plans
 
+**Runtime work plans are ephemeral. Engineering plans are governed artifacts created only after EP-01 approval.**
+
 Every significant task must have its own plan document.
 
 **Storage and naming are governed by ES-004.2** (`engineering/governance/ES-004-Documentation.md` — the canonical rule; this section is a pointer):

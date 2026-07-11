@@ -63,6 +63,13 @@ Future Implementation Notes:   (optional) what would need to happen for automati
 - **Current resolution procedure:** apply the three-concern table
 - **Qualification method:** OQ structural checks
 
+### DetermineArtifactLifecycle
+- **Question:** is this artifact **ephemeral runtime working material** or a **governed engineering artifact** — and if its content becomes governance-relevant, what promotes it?
+- **Authority:** ES-005.1 (concern ownership) · ES-004.2 (record conventions; Engineering-Plan scope)
+- **Current resolution procedure:** apply the **deletion litmus** — *"can this be deleted without loss of governed knowledge?"* Yes → runtime working artifact (ephemeral; placement is an implementation detail). No → governed engineering artifact (durable; ES-004 conventions apply). Crossing from one to the other happens only through an **explicit governance event** (the artifact-promotion pattern: `Runtime Artifact → Promotion Event → Governed Artifact → Qualification → History`; for plans, the promotion event is EP-01 approval — plans are today's one observed specialization; whether the pattern generalizes to context, knowledge, reports, evidence is pilot-tested, not assumed)
+- **Qualification method:** OQ structural/documentation checks; EP-02 review catches missed promotions (a governance citation of a runtime-named artifact is the signal)
+- *(Provenance: ARB-ordered insertion, 2026-07-11 — placement depends on lifecycle, so this decision precedes DeterminePlacement; integrated from the Plan Concept Decision Paper, which is now historical rationale.)*
+
 ### DetermineReusePotential
 - **Question:** did this work **reveal** reusable engineering knowledge? *(reveal, not produce — the project reveals; the engineer captures; the platform governs; engineering promotes)*
 - **Authority:** ES-006.4 (The Harvest Question)

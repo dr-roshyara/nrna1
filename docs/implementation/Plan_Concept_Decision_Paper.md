@@ -1,6 +1,6 @@
 # Plan Concept Decision Paper — Is "Plan" One Domain Concept or Two?
 
-**Kind:** architectural decision paper (ARB-commissioned, 2026-07-11) · **Status:** **ADOPTED** (ARB 2026-07-11 — "Approved with minor wording refinements"; all four refinements applied same day; the model is validated further by the Project Knowledge pilot)
+**Kind:** architectural decision paper (ARB-commissioned, 2026-07-11) · **Status:** **HISTORICAL — SUPERSEDED BY the Engineering Standards** (ARB closure, 2026-07-11). The decision is integrated: **ES-004.2** (Engineering-Plan scope) · **Engineering Decision Model → DetermineArtifactLifecycle** (deletion litmus; artifact-promotion pattern) · one runtime sentence in `.claude/CLAUDE.md`. **The standards are the canonical source of truth; this paper is the historical rationale behind them and is not maintained further.**
 **Question:** *Are Work Plans and Engineering Plans distinct domain concepts with different lifecycles, or merely two storage representations of the same concept?*
 **Method:** DDD — the concept is defined by nature, lifecycle, ownership, and obligations, never by file format or folder. Storage follows the model.
 
