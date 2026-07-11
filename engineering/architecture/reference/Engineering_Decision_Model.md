@@ -4,6 +4,7 @@
 **Status:** **DRAFT** — adoption test (mirrors the EEP and Reference Architecture lifecycles): one real engineering cycle must show that engineers — human or AI — consistently resolve decisions through this model; then qualification + retrospective decide promotion to ADOPTED. The model earns adoption through use.
 **Purpose:** formally define **what engineering decisions exist**, which standards answer them, how today's Engineer resolves them, and how compliance is verified. The Standards say *what the rules are*; this model says *what decisions an Engineer resolves with them*.
 **Nature:** a specification, never an executor. *The architecture never executes — the Engineer consults it.* These are **Engineering Decisions, not services** — a DDD Domain Service is executable; a decision is a specification that exists independently of whoever answers it (today: an engineer reasoning; someday, perhaps, software — without changing this model).
+**This model is a decision INDEX, never a second rulebook** *(ARB, 2026-07-11)*: every entry points to its Authority and names the resolution procedure in one line — it never restates rule text. The rules live once, in the ES documents; if an entry ever seems to need more than a one-line procedure, that text belongs in the governing standard, not here (rules-live-once, applied to this model's own content — otherwise Standards, Decision Model, and Runtime would slowly duplicate the same authority).
 
 ## The universal decision pattern
 
@@ -14,22 +15,31 @@ Question  →  Decision  →  Authority  →  Procedure  →  Evidence
                                        resolves it)
 ```
 
-## The four-layer architecture
+## The layered architecture
+
+*(ARB refinement, 2026-07-11: the Reference Architecture and this Decision Model are **complementary siblings, not a hierarchy** — the Reference Architecture explains what the platform IS; the Decision Model explains how engineering decisions are RESOLVED. Neither depends on the other; both depend on the Standards.)*
 
 ```text
-Engineering Standards            what the platform defines        (ES-001..ES-006)
-        │
-        ▼
-Engineering Decision Model       what decisions engineers make    (this document)
-        │
-        ▼
-Runtime Binding                  how today's adapter is pointed   (.claude/CLAUDE.md — frozen as a pointer)
-        │
-        ▼
-Engineer                         who decides and acts             (human or AI — the active party)
-        │
-        ▼
-Qualification                    how compliance is checked        (ES-003; OQ instruments)
+                 Engineering Standards                (ES-001..ES-006 — the rules, stated once)
+                  /                 \
+                 ▼                   ▼
+Reference Architecture       Engineering Decision Model
+(what the platform is)       (how decisions are resolved — this document)
+                  \                 /
+                   ▼               ▼
+          Engineering Execution Protocol              (how work is performed)
+                     │
+                     ▼
+             Runtime Binding                          (.claude/CLAUDE.md — frozen as a pointer)
+                     │
+                     ▼
+                 Engineer                             (human or AI — the active party)
+                     │
+                     ▼
+              Qualification                           (ES-003; OQ instruments)
+                     │
+                     ▼
+                 Evidence
 ```
 
 ## The Decision Model Schema (reusable — every decision, in any catalog, is documented with it)
@@ -106,4 +116,4 @@ Worked example of the same pattern in the future domain: *Question:* "what knowl
 Consequences, all in force: decisions are documented, never coded · machine verification lives in qualification instruments (periodic), not resident daemons · the AI **evaluates and recommends** — authority remains with governance (ES-001.2) · a decision procedure earns software implementation only through the promotion ladder, with evidence that reasoning-over-standards fails.
 
 ---
-*Traceability: ARB decision-model commissions + the services→decisions vocabulary correction (2026-07-11: "a Domain Service is executable; these are specifications"). Per the ARB closing order, platform refinement stops with this document; its own adoption is earned through one real engineering cycle.*
+*Traceability: ARB decision-model commissions + the services→decisions vocabulary correction (2026-07-11: "a Domain Service is executable; these are specifications") + ARB acceptance record (2026-07-11: **Decision: Accepted**, four minor recommendations — Current Resolution Procedure rename · decision-index-not-second-rulebook · automation stance held architectural · conceptual freeze — all applied). Platform refinement stops with this document; its own adoption is earned through one real engineering cycle.*
