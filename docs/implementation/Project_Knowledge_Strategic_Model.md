@@ -116,3 +116,12 @@ Trigger: any task (ticket, review, question, session start — extending the exi
 ---
 
 **Constraint check:** conceptual only; every term and entity validated or falsified with evidence pointers; three candidates corrected (Coordinate→VO, Query→VO, ProjectMemory→region-not-aggregate), one falsified (Retrieval as peer term), one added under evidence pressure (WorkingContext, ephemeral by constitutional necessity). **STOP — ARB review precedes any design or implementation.**
+
+---
+
+## Recorded observations (ARB review 2026-07-11 — placed, not designed; concept-adding is now STOPPED pending pilot evidence)
+
+- **ContextEvaluation (NAMED — it already existed unnamed):** the Working Context is disposed; **its evaluation persists** — was it sufficient? what was missing (U events)? what was unnecessary (O events)? This is exactly the §3 sufficiency instrument of the research report, and it fits an existing type with no new machinery: a Measurement-nature claim about an assembly (the qualification record of a context). Persisting the evaluation while disposing the context improves assembly without violating Never-a-Copy.
+- **Context Assembly as kernel-domain candidate (Class A, flagged tension):** the ARB observes everything in the knowledge ecosystem converges on Context Assembly ("engineering exists because engineers need context…"). Recorded as the candidate kernel of the KNOWLEDGE ecosystem — with the tension named: the Election System remains the product's Core Domain (product primacy, non-negotiable); "kernel" here ranks capabilities within the knowledge architecture, never against the product. Decided at architecture phase, with pilot evidence.
+- **KnowledgeObligation (candidate, NOT added):** Need = "I require it"; Obligation = "the project must eventually provide it." The phenomenon already exists as recorded gap evidence (unsatisfiable needs). Whether it requires a named aggregate — or gap-evidence records suffice — is an evidence question the pilot answers ("the concept will appear naturally" — ARB — or it won't, and that is the answer).
+- **The bridge sentence (ARB, on record):** *"The model is now rich enough to generate architectural rules, but not yet rich enough to require them. The next phase is not abstraction — it is instrumentation."*

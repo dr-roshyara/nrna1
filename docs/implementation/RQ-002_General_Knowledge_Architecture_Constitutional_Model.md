@@ -63,6 +63,7 @@ Knowledge Instance = NATURE × REPRESENTATION × GOVERNANCE-STATUS ( × AUTHORIT
 8. No knowledge capability may create a second-population artifact class.
 9. Knowledge quality is evidenced, never asserted.
 10. **Representation transitions are deliberate, named acts that preserve nature and provenance** — a silent transition (a summary dropping a caveat, an encoding changing the rule) is a defect.
+11. **Knowledge exists to satisfy Knowledge Needs, never to maximize documentation** *(the telos invariant — ARB, 2026-07-11)*. Every other rule derives from it: minimal sufficient context (P6), never-a-copy, ephemeral assembly, gap evidence from unsatisfied needs, selective capture. A knowledge system's success metric is needs satisfied, not artifacts produced — the direct inversion of the supply-driven KM tradition whose failures the evidence documents.
 
 ## 4. The Constitutional Governance Rules
 
