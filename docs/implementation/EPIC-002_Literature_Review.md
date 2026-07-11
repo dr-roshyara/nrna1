@@ -1,6 +1,7 @@
 # EPIC-002 Literature Review — Constitutional Trust Discovery (Working Document)
 
 **Status:** IN PROGRESS — iteration 1 of N (STOPPING CRITERION NOT REACHED). **Authority:** generated — research artifact under the charter `EPIC-002_Problem_Statement.md`; never authoritative without ARB review.
+**MAPPING QUARANTINE (ARB iteration-2 charter, 2026-07-11):** iteration 1's INTERPRETATION entries that map literature concepts onto PublicDigit (e.g. "the correction loop maps to strong software independence", "maps to the implemented Contestation/Adjudication split") are **QUARANTINED — premature**. They stand as recorded history but carry NO analytical weight until ALL major disciplines are reviewed and cross-disciplinary synthesis is authorized. The only permitted mapping is the Concept Register (`EPIC-002_Concept_Register.md`): concepts appear in disciplines — that is all. Forbidden until synthesis: "PublicDigit equals …", "this means we should build …", "this maps to …".
 **Method compliance:** no bounded contexts are named or proposed in this document (ARB: concepts → clusters → candidate BCs, in that order, later). Every statement labeled FACT / INTERPRETATION / RECOMMENDATION / OPEN QUESTION. Sources classified Supports / Weakens / Contradicts / Introduces against A-1..A-10.
 
 ## Verification status (honest)
@@ -82,7 +83,7 @@
 
 ## Stopping criterion
 
-**NOT REACHED.** Every iteration-1 source changed the concept register (12 new concepts across 7 sources — zero consecutive non-changing sources). The review continues.
+**NOT REACHED** (criterion updated by the ARB iteration-2 charter: stop when no concept moves LOW→MEDIUM or MEDIUM→HIGH for three consecutive major sources — see the Concept Register movement log). Iteration 1 seeded the register; zero qualifying no-movement sources so far. The review continues.
 
 ---
 *Charter: `EPIC-002_Problem_Statement.md` · Run: `wf_588d4d47-8d6` (resumable) · Raw claims: workflow journal + scratchpad extract · Labels per charter: FACT / INTERPRETATION / RECOMMENDATION / OPEN QUESTION, never collapsed.*

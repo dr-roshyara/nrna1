@@ -114,6 +114,16 @@ The synthesis step consumes NKMs, never raw articles.
 
 *(This method section serves EPIC-002 first. If a second research effort adopts it unchanged, it earns promotion to a platform research protocol — evidence first, per the placement litmus.)*
 
+## Iteration-2 method amendments (ARB, 2026-07-11 — AUTHORITATIVE)
+
+1. **Concept Register is the spine** (`EPIC-002_Concept_Register.md`, living): concept × discipline matrix; confidence by discipline count (HIGH ≥5 · MEDIUM 3–4 · LOW 1–2 · TENTATIVE single-source). The ONLY permitted mapping is concept→discipline.
+2. **PublicDigit-mapping freeze:** forbidden until all major disciplines are reviewed — no "PublicDigit equals…", no "this means we should build…", no "this maps to…". Iteration-1 mapping interpretations are quarantined. Confirmation bias enters at the mapping step; the freeze blocks it.
+3. **Pipeline refined:** literature → Concept Register → concept *frequency* analysis → concept *relationship* analysis → cross-disciplinary synthesis → clustering → candidate capabilities → candidate subdomains → candidate bounded contexts → ARB review → Strategic DDD → IDD → implementation.
+4. **Stopping criterion (replaces the 3-source UL rule):** stop when no concept moves LOW→MEDIUM or MEDIUM→HIGH for three consecutive major sources (knowledge saturation, not fatigue). Movement log lives in the register.
+5. **Per-source output format:** Source · Discipline · Key claims · Assumption impact (Supports/Weakens/Contradicts/Introduces) · Concept Register update · Category (FACT/INTERPRETATION/RECOMMENDATION/OPEN QUESTION) · Open question.
+6. **Iteration-2 discipline order (law dominates):** Constitutional Law → Administrative Law → Governance Theory → Trust Engineering (assurance/safety cases, NIST, dependability) → Digital Forensics → Distributed Systems → DDD literature (Evans/Vernon/Brandolini — discovering domains rather than naming them).
+7. **Standing open question carried into every discipline:** which trust properties are achievable in PublicDigit's private-organization constitutional setting, and which must be explicitly declared out of scope with recorded consequences?
+
 ## Deliverables (Strategic Discovery artifacts ONLY)
 
 0. **Problem Space Model** — the primary deliverable: what concepts exist, which recur across disciplines, which differ, which conflict, which are domain-specific vs universal. Only AFTER it: whether "Evidence" is a bounded context.
