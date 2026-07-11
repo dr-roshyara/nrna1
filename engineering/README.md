@@ -83,7 +83,7 @@ engineering/
 
 | Namespace | Will hold | Trigger |
 |---|---|---|
-| `governance/standards/` | the Engineering Standards document (sibling of the Execution Protocol, which already lives at `governance/`) | R-32, post-PB-004 retrospective |
+| ~~`governance/standards/`~~ | **FULFILLED (2026-07-11):** the Engineering Standards landed as `governance/ES-001..ES-006` + `STANDARDS_INDEX.md` (R-32 executed in its evidence-justified form, per OQ-ENG-002; no subfolder needed — folder rule) | — |
 | `governance/rulings/` | non-ADR rulings, if ever split from the ADR-AIP log | ARB decision |
 | `knowledge/research/harvests/` · `knowledge/research/sources/` | dated harvest activity records + research material (Harvest → Pattern → Evidence separation) | PB-004 retrospective (four-way dossier split) |
 | `knowledge/evidence/` | the Pattern Evidence Register as its own artifact | PB-004 retrospective (four-way dossier split) |
