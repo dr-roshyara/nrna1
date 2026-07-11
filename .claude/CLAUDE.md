@@ -4,7 +4,8 @@
 
 Rule text, exception tiers (plan required/optional/not-required), and ratification status live **once**, in `docs/implementation/Implementation_Process_v1.1_Draft.md` §"Execution Rules — Engineering Process (EP)". This section is provider-agnostic: any assistant (Claude, Copilot, Cursor, Gemini, Codex) obeys the same process.
 
-**Engineering Standards runtime loop (POINTER — canonical homes: `engineering/governance/STANDARDS_INDEX.md` → ES-001..ES-006, PROPOSED):** at task start, determine which ES documents govern the work (the index's one-line table suffices) → execute under ES-002 (+ the EP binding above) → verify per the standard's own **Qualification Method** header → report per EP-02. MEMORY carries hints only; on any rule question, the ES document is the truth.
+**Engineering decision services (POINTER — canonical homes: `engineering/governance/STANDARDS_INDEX.md` → ES-001..ES-006, PROPOSED):** the architecture never executes — **the Engineer consults it.** Before acting, resolve these engineering decisions, each answered by the standards (today: by reasoning over them — the Enforcement Matrix classifies them AI-enforced; no software implements them):
+`DetermineConcern` (ES-005.1: Product / Engineering / Runtime) → `DetermineArtifactType` (ES-004/ES-006: standard? guide? pattern? record? research?) → `DeterminePlacement` (ES-005.3 litmus + ES-005.2 folder rule) → `DetermineApplicableStandards` (the index) → `DetermineQualificationMethod` (each standard's own header) → `DeterminePromotionPath` (ES-006.1 — a guide teaches rules, it never creates them). Then execute under ES-002 + the EP binding, verify, report per EP-02. The same services will answer Project-Knowledge questions with different answers (future PKS rules behind the same services — no second decision process). MEMORY carries hints; the ES documents are the truth.
 
 ---
 
