@@ -6,6 +6,14 @@
 
 ---
 
+## Primary research question (problem space first — ARB, 2026-07-11)
+
+> **What properties must a constitutional governance platform satisfy to produce evidence that stakeholders can trust?**
+
+Discovery starts HERE — in the problem space — not at "how should Evidence be designed?". The research tries to **falsify** the going-in assumption (Evidence as one bounded context), not to elaborate it. Every discovery activity must answer one of: *what exists? · what is already known? · which assumptions are wrong? · which concepts recur across disciplines? · what ownership emerges naturally? · which responsibilities clearly do NOT belong together?*
+
+**Finding labels (never collapsed):** every statement in discovery output is labeled **FACT** (observed from literature or implementation) · **INTERPRETATION** (analysis) · **RECOMMENDATION** (proposal) · **OPEN QUESTION** (unknown). At the end of each discovery session: STOP — the ARB decides whether discovery is sufficient to authorize Strategic DDD/tactical design.
+
 ## Problem
 
 PublicDigit's constitutional correction loop (EPIC-001) produces a complete, provenance-carrying event trail — but **current operational evidence is implicit**. Events exist as messaging artifacts (outbox/inbox rows, correlation chains), not as *constitutional evidence*: nothing yet defines what makes a record admissible, immutable, publishable, replayable, or forensically inspectable. For a platform whose value proposition is trust, evidence is the next capability — and today nobody can state precisely what "Evidence" owns, where its boundaries lie, or whether it is one bounded context at all.
