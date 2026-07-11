@@ -1,3 +1,13 @@
+# ⚙️ Engineering Process — EP-01 Plan First (POINTER, not a restatement)
+
+**Follow the PublicDigit Engineering Process.** For every **non-trivial engineering task**: perform the **Engineering Readiness Review (EP-03)** — derive the business/DDD/architecture/TDD/design/impact/verification answers from the repository, ask the human only what cannot be derived — then the **Planning Stage (EP-01)**: produce the plan → **wait for explicit human approval (APPROVAL APPLIES TO THE PLAN, not merely to the task request)** → implement only the approved plan → **Completion Review (EP-02): did we implement the approved plan?** **If implementation invalidates the approved plan: STOP, explain why, present the revised plan, wait for approval — never silently change direction.** *(Provider binding: in Claude Code the Planning Stage maps to Plan Mode.)*
+
+Rule text, exception tiers (plan required/optional/not-required), and ratification status live **once**, in `docs/implementation/Implementation_Process_v1.1_Draft.md` §"Execution Rules — Engineering Process (EP)". This section is provider-agnostic: any assistant (Claude, Copilot, Cursor, Gemini, Codex) obeys the same process.
+
+**Engineering Standards runtime loop (POINTER — canonical homes: `engineering/governance/STANDARDS_INDEX.md` → ES-001..ES-006, PROPOSED):** at task start, determine which ES documents govern the work (the index's one-line table suffices) → execute under ES-002 (+ the EP binding above) → verify per the standard's own **Qualification Method** header → report per EP-02. MEMORY carries hints only; on any rule question, the ES document is the truth.
+
+---
+
 # 🎨 BEFORE ANYTHING: READ UI_GUIDELINES.md
 
 All UI/Vue changes must follow the design system in `.claude/UI_GUIDELINES.md`.
