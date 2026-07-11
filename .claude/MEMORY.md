@@ -16,7 +16,7 @@
 - **Anonymity (CI-5/Q7/VO-1)** is always-invariant: no payload/log/dead-letter row may allow voter↔vote linkage. `votes` has no user_id by design.
 - **Governance vocabulary:** never hardcode denial strings like 'not eligible' in controllers (Phase_C25 guard); use resolver denial_reason or approved wording.
 - **PHPStan gate:** `phpstan-greenfield.neon` (Contestation+Adjudication, max) is the official gate; run it, not ad-hoc paths.
-- **Test DB:** PostgreSQL (`phpunit.xml`); RefreshDatabase only — never migrate:fresh against dev DB. NOTE: root `CLAUDE.md` tech table is stale (says Laravel 9/MySQL; actual Laravel 11/PostgreSQL).
+- **Test DB:** PostgreSQL (`phpunit.xml`); RefreshDatabase only — never migrate:fresh against dev DB. (Root `CLAUDE.md` tech table refreshed 2026-07-11 — Laravel 11/PHP 8.2/PostgreSQL/Sanctum.)
 - **Windows dev quirks:** shell-driven test helpers broke on `C:\` paths before (grep `:` split) — prefer pure-PHP file scanning in architecture tests.
 - **Hydrator versioning rule:** vCurrent + vPrevious ONLY (`docs/implementation/Event_Registry.md`).
 
@@ -43,7 +43,8 @@
   · Qualification lifecycle (never fix in-run; PASS-AFTER-CORRECTION; F-/CR-/OQ- series) + score-persistence stop + measurement conventions → **ES-003**
   · Retrospectives-recommend + record conventions (append-only logs; ids not filenames; one responsibility per record type) → **ES-004**
   · Three-concern separation + folder rule + placement litmus → **ES-005**
-  · Promotion ladder + research freeze (no Level 5) + harvest discipline → **ES-006 Engineering Knowledge Governance**
+  · Promotion ladder + research freeze (no Level 5) + harvest discipline + harvest question ("did this work REVEAL reusable engineering knowledge?" — No is the healthy default) → **ES-006 Engineering Knowledge Governance**
+  · **Plans are TWO concepts (ADOPTED 2026-07-11):** Work Plan (Runtime, ephemeral, `.claude/plans/` = plansDirectory) vs Engineering Plan (governed EP-01 deliverable, `docs/plans/`, `YYYYMMDD-HHMM-<what>-plan.md`) — paper: `docs/implementation/Plan_Concept_Decision_Paper.md`; rulings register now R-30..R-38
 - **EP-01-Light gate (hint):** below IDD weight, present the form and WAIT; record-only exempt; every implementation ends with the EP-02 report. Rule text: `Implementation_Process_v1.1_Draft.md` (registered in ES-002).
 - Pending ARB (knowledge track): assembly-report review · EKP disposition · pilot authorization.
 - Commits reference ticket IDs (`PB-003: ...`). Git identity: `=Dr. Nab Raj Roshyara`.

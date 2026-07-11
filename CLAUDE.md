@@ -122,10 +122,10 @@ Each voter has their own log file containing:
 
 | Component | Technology | Purpose |
 |-----------|------------|---------|
-| **Backend** | Laravel 9.x | PHP framework, business logic |
-| **Frontend** | Vue 3 + Inertia.js | Reactive SPA experience |
-| **Database** | MySQL/PostgreSQL | Data persistence |
-| **Authentication** | Laravel Fortify | Login, registration, 2FA |
+| **Backend** | Laravel 11 (PHP 8.2) | PHP framework, business logic |
+| **Frontend** | Vue 3 + Inertia.js 2.0 | Reactive SPA experience |
+| **Database** | PostgreSQL | Data persistence |
+| **Authentication** | Laravel Sanctum + Socialite | Login, API tokens, social auth |
 | **Permissions** | Spatie Permission | Role-based access control |
 | **Multi-tenancy** | Custom implementation | Organisation isolation |
 | **Testing** | PHPUnit | TDD-first approach |

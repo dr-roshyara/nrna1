@@ -16,8 +16,9 @@
       "Bash(grep:*)",
       "Bash(git commit -m 'refactor: Improve timezone validation and slug generation in ElectionController *)",
       "Bash(APP_ENV=testing vendor/bin/phpunit *)",
-      "Bash(Select-String \"FAILED|Tests:\")"
+      "Bash(Select-String \"FAILED|Tests:\")",
+      "Bash(curl -s https://xdebug.org/download)"
     ]
   },
-  "plansDirectory": "./claude/plans"
+  "plansDirectory": "./.claude/plans"
 }

@@ -19,8 +19,9 @@
 - Cite durable **ids**, not dated filenames, in long-lived documents.
 - No numeric scores in records (ES-003.2); reasoning lives in session records — decision documents carry decisions and rationale, never debate transcripts.
 - One responsibility per record type: **IDD = implementation decisions · ADR = architectural decisions · retrospective = lessons · CONTEXT = current state only** (EPIC-001 retrospective consolidation rule, P-6).
-- **Plans** *(ARB refinement 2026-07-11 — a clarification of this convention, not a new standard)*:
-  - Saved in `./docs/plans/` (plans are project-specific, so `docs/`, not `engineering/`; per the folder rule ES-005.2, the directory is created only when the first plan arrives).
+- **Plans** *(ARB refinements 2026-07-11 — clarifications of this convention, not a new standard)*:
+  - **Scope (Plan Concept Decision Paper, ADOPTED):** this rule governs **Engineering Plans** — deliberate, approved EP-01 deliverables. Provider plan-mode **Work Plans** are Runtime artifacts (ES-005.1) outside this rule's scope; at EP-01 approval, plan content is promoted into a governed Engineering Plan (paper: `docs/implementation/Plan_Concept_Decision_Paper.md`).
+  - Saved in `./docs/plans/` (plans are project-specific, so `docs/`, not `engineering/`; the directory pre-exists with legacy plans, which stand as history).
   - Named `YYYYMMDD-HHMM-<what_is_it_about>-plan.md` — e.g. `20260711-1830-evidence-context-strategic-discovery-plan.md` *(Decision Authority override, 2026-07-11: plans are the explicit EXCEPTION to the ids-not-filenames bullet — the timestamp preserves chronological history; the description says what it is about; the `-plan.md` suffix marks the type)*.
   - When citing a plan from long-lived documents, prefer the work-item id it serves (e.g. "the EPIC-002 discovery plan") over the raw filename. A superseding plan references the superseded plan's filename in its traceability section.
   - Existing plans in `.claude/plans/` / `claude/plans/` are historical records — they stand where they are (no migration; R-37). The convention applies from the next plan onward. *Bindings reconciled 2026-07-11 (user-authorized): root `CLAUDE.md` and `.claude/CLAUDE.md` plan sections are now pointers to this rule — the convention lives once, here.*
