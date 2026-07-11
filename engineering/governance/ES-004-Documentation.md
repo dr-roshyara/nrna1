@@ -19,6 +19,11 @@
 - Cite durable **ids**, not dated filenames, in long-lived documents.
 - No numeric scores in records (ES-003.2); reasoning lives in session records — decision documents carry decisions and rationale, never debate transcripts.
 - One responsibility per record type: **IDD = implementation decisions · ADR = architectural decisions · retrospective = lessons · CONTEXT = current state only** (EPIC-001 retrospective consolidation rule, P-6).
+- **Plans** *(ARB refinement 2026-07-11 — a clarification of this convention, not a new standard)*:
+  - Saved in `./docs/plans/` (plans are project-specific, so `docs/`, not `engineering/`; per the folder rule ES-005.2, the directory is created only when the first plan arrives).
+  - Named `<ID>-<Brief-Description>-Plan.md` — e.g. `EPIC-002-001-Evidence-Context-Strategic-Discovery-Plan.md`. Durable IDs, never dated filenames (this bullet's parent rule, applied to plans).
+  - The ID is durable: it does not change when the plan is updated. A superseding plan references the superseded plan's ID in its traceability section.
+  - Existing plans in `.claude/plans/` / `claude/plans/` are historical records — they stand where they are (no migration; R-37). The convention applies from the next plan onward. *Known conflict, flagged for reconciliation: the project/runtime bindings (root `CLAUDE.md`, `.claude/CLAUDE.md`) still describe older plan conventions (datetime-stamped names, `.claude/plans/` placement) — those pointer texts are user-owned instructions; this ES text is the canonical convention once they are reconciled.*
 
 ## Registered (pointers)
 
