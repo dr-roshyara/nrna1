@@ -63,7 +63,8 @@ Future Implementation Notes:   (optional) what would need to happen for automati
 - **Current resolution procedure:** apply the three-concern table
 - **Qualification method:** OQ structural checks
 
-### DetermineArtifactLifecycle
+### DetermineArtifactLifecycle — **CANDIDATE reusable decision** *(ARB status correction, 2026-07-11)*
+> *DetermineArtifactLifecycle is a **candidate reusable decision** introduced because of the Plan Concept analysis. The Project Knowledge pilot shall determine whether it is a generic Engineering Decision or merely a Plan-specific decision.* (Research → Pilot → Qualification → Engineering — this decision obeys the same ladder it sits beside; today's confirmed evidence: Plans.)
 - **Question:** is this artifact **ephemeral runtime working material** or a **governed engineering artifact** — and if its content becomes governance-relevant, what promotes it?
 - **Authority:** ES-005.1 (concern ownership) · ES-004.2 (record conventions; Engineering-Plan scope)
 - **Current resolution procedure:** apply the **deletion litmus** — *"can this be deleted without loss of governed knowledge?"* Yes → runtime working artifact (ephemeral; placement is an implementation detail). No → governed engineering artifact (durable; ES-004 conventions apply). Crossing from one to the other happens only through an **explicit governance event** (the artifact-promotion pattern: `Runtime Artifact → Promotion Event → Governed Artifact → Qualification → History`; for plans, the promotion event is EP-01 approval — plans are today's one observed specialization; whether the pattern generalizes to context, knowledge, reports, evidence is pilot-tested, not assumed)

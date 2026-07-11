@@ -1,6 +1,6 @@
 # Work-Plan Location Consolidation — Mechanical Migration Plan
 
-**Kind:** Engineering Plan (the first under the ES-004.2 convention — governed, EP-01 object) · **Status:** PREPARED — awaiting ARB approval; NOT executed.
+**Kind:** Engineering Plan (the first under the ES-004.2 convention — governed, EP-01 object) · **Status:** **APPROVED & CLOSED** (ARB 2026-07-11: "Move nothing … is actually the safest architectural decision. History should not be rewritten merely for cosmetic consistency. I would approve that."). Item 1 executed by definition (nothing moved) · item 2 already in force (DetermineArtifactLifecycle) · item 3 (optional README) not ordered — skipped.
 **Objective:** complete the mechanical consequences of the adopted plan-concept decision (Work Plan ≠ Engineering Plan) with zero damage to historical records.
 
 ## Already done (prior commits — listed for completeness, no action)
