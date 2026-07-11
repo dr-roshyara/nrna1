@@ -11,7 +11,7 @@
 | Exclusive decisions | what concepts, rules, and decisions **exist and mean** — the content of standards, the decision catalog, reference architecture, protocols |
 | Owned artifacts | ES-001..006 · STANDARDS_INDEX · Engineering Decision Model · Reference Architecture · EEP · charters and decision papers (until HISTORICAL) |
 | Forbidden actions | **executing** ("the architecture never executes — the Engineer consults it") · **measuring its own compliance** (Verification's) · **deciding its own adoption or promotion** ("evidence promotes architecture; architecture never promotes itself") |
-| Boundary crossings observed this cycle | three attempted, all caught: DetermineArtifactLifecycle initially entered as settled (specification self-adopting) · R-38 initially drafted as a new freeze rule (specification restating governance as new governance) · the automation principle nearly entered the constitution without evidence |
+| Observed Constitutional Boundary Tests | three attempted, all caught: DetermineArtifactLifecycle initially entered as settled (specification self-adopting) · R-38 initially drafted as a new freeze rule (specification restating governance as new governance) · the automation principle nearly entered the constitution without evidence |
 | Corrections applied | ✅ all three, same-day: CANDIDATE marking (ARB wording) · Option B consolidation correction · promotion-path holding |
 | Remaining ambiguities | none — pilot-gated questions are explicitly parked decisions with named owners, not ambiguities |
 
@@ -22,7 +22,7 @@
 | Exclusive decisions | **how** to implement within an approved plan (below-plan granularity) · resolving the eight Engineering Decisions in daily work (consulting authorities, never creating them) |
 | Owned artifacts | work plans (runtime) · code and tests · session logs (operational record) · EP-02 report authorship (acceptance is the Decision Authority's) |
 | Forbidden actions | silently changing direction from an approved plan (EP-01) · creating rules or standards (ladder only) · self-certifying · fixing findings in-run (ES-003.1) |
-| Boundary crossings observed this cycle | three documented: the session-log overwrite (append-only violation, 2026-07-11) · the TDD lapse (production before RED, PB-004 step 2) · R-36 citing an ungoverned runtime-named artifact (execution artifact entering governance without a promotion event — historical) |
+| Observed Constitutional Boundary Tests | three documented: the session-log overwrite (append-only violation, 2026-07-11) · the TDD lapse (production before RED, PB-004 step 2) · R-36 citing an ungoverned runtime-named artifact (execution artifact entering governance without a promotion event — historical) |
 | Corrections applied | ✅ first two fully (git recovery + violation record; stash→RED→GREEN). Third: **recorded, deliberately not repaired** (history stands, ES-004.2); forward defense in place (DetermineArtifactLifecycle candidate). An accepted residual, not an open crossing |
 | Remaining ambiguities | none blocking |
 
@@ -33,7 +33,7 @@
 | Exclusive decisions | **what the evidence shows** — verdicts as measurements (PASS · PASS AFTER CORRECTION · WARN · FAIL · INCONCLUSIVE · EMERGENT), finding identification and mandated classification |
 | Owned artifacts | OQ records and protocols (OQ-ENG-001/002/003) · verification reports (readiness · delta · pattern validation · neutrality review · this matrix) · qualification plans |
 | Forbidden actions | **fixing findings** (report-never-fix) · **recommending governance actions** (authorization, repairs, deferrals, qualification strategy) · interpreting beyond measurement (R-26) · **complying with commissions that request decisions** — the refined principle: the instrument records *"outside verification authority — referred to the Decision Authority"* rather than obeying |
-| Boundary crossings observed this cycle | the documented case: delta report §7 ("Authorize C3" + NF-1 strategy — 2 MAJOR) and the baseline readiness report's commissioned recommendation — both commission-induced, both the instrument's own responsibility under the refined principle |
+| Observed Constitutional Boundary Tests | the documented case: delta report §7 ("Authorize C3" + NF-1 strategy — 2 MAJOR) and the baseline readiness report's commissioned recommendation — both commission-induced, both the instrument's own responsibility under the refined principle |
 | Corrections applied | ✅ identified and annotated by the Neutrality Review (the verifier audited itself by its own rule); disposition of the report wordings is **an open Decision Authority choice, correctly routed** — the crossing is documented and submitted, not silently standing |
 | Remaining ambiguities | none about *who decides* — the one open item (apply suggested wordings vs. accept-with-annotation) has a named owner and sits in the right queue |
 
@@ -44,7 +44,7 @@
 | Exclusive decisions | adoption · ratification · promotion/retirement · plan approval (EP-01) · qualification acceptance · freezes · next-step selection |
 | Owned artifacts | rulings register · ADR acceptances · ratification signatures · approval/acceptance records |
 | Forbidden actions | implementing (Execution's) · measuring its own compliance (Verification's) · **being automated** ("promotion is never automated") · inferring its own decisions from praise or suggestion (R-34: explicit adoption only) |
-| Boundary crossings observed this cycle | one: R-38 — an assessment recorded as a new governance rule (the Decision Authority generating governance that restated governance) |
+| Observed Constitutional Boundary Tests | one: R-38 — an assessment recorded as a new governance rule (the Decision Authority generating governance that restated governance) |
 | Corrections applied | ✅ same-day, by the Decision Authority against itself (Option B: "this ruling introduces NO new governance"), with the standing preference recorded: interpret existing rulings rather than add consolidating ones |
 | Remaining ambiguities | none |
 
