@@ -19,7 +19,7 @@
 
 | Epic | Title | Tickets | Progress (derived) | File |
 |------|-------|---------|--------------------|------|
-| EPIC-001 | Greenfield Core (correction loop) | PB-001..007 | 7/7 closed = **100%** · **ready for formal closure pending retrospective** | `EPIC-001_Greenfield_Core.md` |
+| EPIC-001 | Greenfield Core (correction loop) | PB-001..007 | 7/7 closed = **100%** · **CLOSED (2026-07-11** — retrospective conducted + ARB-confirmed; record: `../EPIC-001_Retrospective.md`**)** | `EPIC-001_Greenfield_Core.md` |
 | EPIC-002 | **Strategic Discovery — candidate BC: Evidence** (discovery may conclude the candidate is too large, is two contexts, or merges elsewhere — it must not assume its own answer; ARB 2026-07-11) | — | not opened — **NEXT: Problem Statement → literature review → Strategic Discovery** | charter: `../EPIC-002_Problem_Statement.md` · opens after EPIC-001 retrospective |
 | EPIC-003 | Voting (ballot casting, anonymous storage, tally — migration + verifiability) | — | not opened | after EPIC-002 |
 | EPIC-004 | Appointment / Governance (delegates, mandates, authority chains) | — | not opened | after EPIC-003 |
@@ -38,6 +38,7 @@ Engineering-governance workstream — distinct from capability tickets (PB-xxx).
 | ENG-001 | Process Learning System | Designed | Improvement Log (PI-xxx), retrospectives, metrics/estimate-calibration, Process v1.1 proposals, dashboard refinements (ADR coverage · Current Deliverable · risk reasons). Evidence stash: session-4 cwd bug, C1 est−58%, docs/code-split. |
 | ENG-002 | Shared Infrastructure Static Analysis Alignment | Designed | Bring ALL Shared Infrastructure Eloquent models to PHPStan max **together** (OutboxEvent 7 findings + InboxEvent 11 findings + any siblings). Enforces ER-03. Opened from PB-003-C2 finding. |
 | ENG-003 | `*Ref` Value-Object naming consistency sweep | Backlog | After `TargetRef → ContestedOutcomeRef` (ADR-UL-01), review sibling reference VOs for naming/shape consistency (ER-03). Sweep only — no behavior change. Opened from PB-004 step-1 ARB review (2026-07-08). |
+| ENG-005 | Stream B Documentation Consolidation | Backlog | From ARB-confirmed retrospective decision P-6 (2026-07-11): apply the documentation rule (IDD = implementation decisions · ADR = architectural decisions · retrospective = lessons · CONTEXT = current state only) — refresh stale c4 · remove superseded progress tables · de-duplicate rulings across record types (evidence O-10). No redesign (dependency map §6 Stream B). |
 | ENG-004 | Mutation Ratchet 1 | Backlog | First deliberate MSI raise per the A-3 baseline-then-ratchet policy. **Validated baseline (F-7D-2, IDD §2e): MSI 50% · Mutation Code Coverage 77% · Covered-Code MSI (Test Strength) 65% · 224 escaped · 184 uncovered** *(the earlier 75%/96% figures were produced by an execution model that failed evidence validation — history only)*. Scope: extend coverage into the uncovered mutants, then hunt escapees — escapes concentrate in the messaging/persistence boundary of the correction loop (`ChallengeOutboxAdapter` · mappers · hydrators · `InboxExecutionEngine`), the ARB's named highest-value mutation territory. **Enabling sub-item: per-thread test databases via Infection `TEST_TOKEN`** (restores fast AND valid measurement — currently the validated model is 1-thread, ~1h17m). Raise `min-msi` only at completion (never retroactive, never lowered). Opened at ARB 7C acceptance; baseline corrected at F-7D-2 (2026-07-10). |
 
 ## Program Health
@@ -66,11 +67,12 @@ Engineering-governance workstream — distinct from capability tickets (PB-xxx).
 ## NEXT ACTION (exactly one)
 
 ```text
-Phase:         EPIC-001 closure sequence (ARB-amended order, step 6)
-Action:        EPIC-001 RETROSPECTIVE (ARB-led)
-Input:         ../EPIC-001_Retrospective_Input.md (evidence pack — observations,
-               candidate promotions, candidate deletions; prepared 2026-07-10)
-Then:          formal EPIC-001 closure → EPIC-002 (Evidence) Discovery
+Phase:         EPIC-002 Strategic Discovery (EPIC-001 CLOSED 2026-07-11)
+Action:        Phase 1 — LITERATURE REVIEW (researcher role; charter:
+               ../EPIC-002_Problem_Statement.md; candidate BC: Evidence —
+               discovery must not assume its own answer)
+Constraints:   no code · no aggregates · no APIs · no IDD (until ARB authorizes)
+Then:          Phase 2 Strategic DDD → STOP → ARB review (IDD authorization decision)
 ```
 
 ---

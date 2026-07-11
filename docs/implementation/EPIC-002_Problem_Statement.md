@@ -41,6 +41,36 @@ PublicDigit's constitutional correction loop (EPIC-001) produces a complete, pro
 
 Purpose: **validate or falsify our own model** — identify durable concepts that belong in the ubiquitous language; never copy systems.
 
+## Research method (ARB enhancement, 2026-07-11 — governs the literature review)
+
+**Standing instruction to any external research tool:** *"Do NOT design our architecture. Perform a systematic literature review. Produce a Normalized Knowledge Model."* Raw prose is not a deliverable; structured knowledge is.
+
+**1. Research quality gates** — the review is incomplete until each gate is answered:
+| Gate | Question |
+|---|---|
+| Evidence completeness | Are multiple independent sources converging? |
+| Source diversity | Academic AND industry AND tooling ecosystems represented? |
+| Recency | Are we relying on pre-AI-era assumptions where that matters? |
+| Contradiction surface | Are disagreements between sources explicitly mapped, not averaged away? |
+
+**2. Evidence classification** — every finding is labeled: **Observed practice** ("teams use X") vs **Claimed benefit** ("X improves Y") vs **Evidence strength** (anecdotal · case study · wide adoption without proof · empirical validation). Descriptive consensus is never treated as causal evidence.
+
+**3. Normalized Knowledge Model (NKM)** — the unit of research output, one per concept:
+```text
+Concept · Purpose · Variants · Preconditions · Failure modes · Evidence level
+```
+The synthesis step consumes NKMs, never raw articles.
+
+**4. Negative findings are mandatory** — what does NOT work, where approaches failed, what was abandoned and why. A review reporting only successes has failed the survivorship-bias check.
+
+**5. Promotion criteria** — a researched concept may enter the candidate ubiquitous language only if: cross-domain evidence (≥2 independent disciplines from the table above) · survives the contradiction surface · aligns with existing principles (anonymity, provenance, append-only) · respects rule parsimony (no rule explosion).
+
+**6. Time-box + confidence** — each objective above is time-boxed; findings carry an explicit confidence level (High/Medium/Low by source quality and consistency); a provisional conclusion with a marked uncertainty beats an unbounded search.
+
+**7. Feedback loop** — implementation later becomes a research *producer*: failed implementations return here as first-class evidence for the next research cycle.
+
+*(This method section serves EPIC-002 first. If a second research effort adopts it unchanged, it earns promotion to a platform research protocol — evidence first, per the placement litmus.)*
+
 ## Deliverables (Strategic Discovery artifacts ONLY)
 
 1. **Literature review** (state of the art → PublicDigit gap analysis)

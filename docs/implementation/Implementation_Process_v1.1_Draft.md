@@ -23,6 +23,28 @@
 **ER-08 — Reviews Record, Implementations Repair.** Completion Reviews (EP-02) document implementation **conformance** and discovered **deviations**; they do **not** introduce behavioral changes. Behavioral corrections belong **exclusively** to a subsequent approved implementation slice, made under RED→GREEN. This keeps a review from silently becoming a hidden implementation session.
 - *(Origin: 2026-07-08 — PB-004 step 3 EP-02: the timestamp (`appliedAt`) deviation was recorded during the review and fixed only in the next approved slice (4A.1), not during the review itself.)*
 
+**ER-09 — Project Knowledge Management (Documentation Architecture). STATUS: PROPOSED — ratification at v1.1; execution vehicle: EPIC-000 Stream B (already scheduled by the EPIC-001 retrospective).**
+*Evidence of insufficiency (retrospective 2026-07-11):* O-10/P-6 — ruling duplication across record types · O-8 — boards drifted five closures behind implementation · templates scattered without an index. The rule exists because reality demonstrated the gap, not because a proposal suggested it.
+
+1. **Placement (three bounded contexts, per EM-001):** every document lives in exactly one owning context — Product (`docs/`, `architecture/`, `developer_guide/`) · Engineering (`engineering/`) · Runtime (`.claude/`). Placement litmus decides: adoptable-unchanged by another project → Engineering; needs project context → Product; active session state → Runtime. No document outside its owning context.
+2. **Authorized document types — each with ONE authoritative template/reference form (existing artifacts indexed, not duplicated):**
+| Type | Lifecycle | Authoritative template / reference form |
+|---|---|---|
+| ADR | permanent; superseded, never edited | classes + register: `docs/adr/README.md`; decision-record form: `docs/architecture/design/Round38C-16_ARB_Decision_Template_v1.0.md` |
+| IDD | temporary; superseded by code + closure | `docs/implementation/IDD_Prompt_Template_Push_Implementation_Design.md` (frozen; consumed by CMP-007) |
+| Developer Guide | living | area convention in `.claude/CLAUDE.md` §Developer Guide DoD (00_index + numbered steps + Traceability line) |
+| Governed knowledge doc | EKP lifecycle | `docs/knowledge/_meta/knowledge-card.template.md` + `lifecycle.md` + Knowledge-Constitution |
+| Research charter/memo | input-only; never architecture until promoted | reference form: `docs/implementation/EPIC-002_Problem_Statement.md` (incl. its Research Method §) |
+| Retrospective record | permanent, append-only | reference form: `docs/implementation/EPIC-001_Retrospective.md` (recommendations ≠ decisions; ARB column) |
+| Qualification record | permanent; PASS/PASS-AFTER-CORRECTION/WARN/FAIL | reference form: OQ-ENG-001 (`engineering/verification/qualification/`) |
+| README | living | entry-point convention: `engineering/README.md` as exemplar |
+A new document type (or a generic template file replacing a reference form) requires ARB approval; **a template file is created when its type's next document is authored — never speculatively** (folder rule applied to templates).
+3. **Authority hierarchy:** ADR > IDD > Developer Guide > logs/records. No document may contradict a higher-authority document; on conflict the higher one wins and the lower one is corrected (living) or superseded (permanent).
+4. **Governance:** created from the indexed template/reference form · reviewed before authoritative status · living docs append/extend, permanent docs supersede · retirement = archive, never delete · CONTEXT is current state only, never a knowledge store.
+5. **Compliance:** checklist at review now; automated fitness checks are a **candidate** (enters with the Stream B slice, evidence permitting) — not built by this rule.
+
+*(Origin: 2026-07-11 — external Documentation-Management/ER-09 proposal, reworked under rule parsimony: existing templates indexed instead of duplicated; no `engineering/templates/` creation under R-37 (C3 pending); no registry change (the runtime registry governs `.claude` assets); no migration deadline — EPIC-000 Stream B is the scheduled vehicle. The proposal's "Status: Adopted" was corrected to PROPOSED per AIP-10 — adoption is the ARB's act, not the author's.)*
+
 ---
 
 ## Execution Rules — Engineering Process (EP) — new section

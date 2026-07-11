@@ -1,7 +1,7 @@
 # EPIC-001 — Greenfield Core (correction loop) — Ticket Backlog
 
 **Goal:** the complete constitutional correction loop `ChallengeRaised → … → ChallengeResolved` per Push B Blueprint v1.0.
-**Status:** **COMPLETE — ready for formal closure pending retrospective** (ARB final ruling 2026-07-10, verbatim in `PB-007_Merge_Gate_Implementation_Design.md` §6.5).
+**Status:** **FORMALLY CLOSED — 2026-07-11** (retrospective conducted + ARB-confirmed: `../EPIC-001_Retrospective.md`; closure per the PB-007 IDD §6.5 ruling sequence). Reopen only for defects · compatibility fixes · retrospective promotions.
 **Process:** PB-001..003 followed the original implementation process (`../Implementation_Process_v1.0.md`); PB-004..007 were completed under the evolved implementation discipline documented in the approved IDDs and engineering governance (Discovery → IDD → ARB → RED → GREEN → qualification → Completion Review).
 **Milestones:** M1 = PB-001..003 ✔ · M2 = PB-004..005 ✔ · M3 = PB-006..007 ✔
 **Synchronized:** 2026-07-10 (one-time, evidence-derived — ARB-amended execution order step 5; nothing hand-estimated).
@@ -42,7 +42,7 @@ PB-001 ✔ → PB-002 ✔ → PB-003 ✔ → PB-004 ✔ → PB-005 ✔ → PB-00
 
 Reopen only for: defects · compatibility fixes · retrospective promotions.
 
-**Next (ARB sequence, in order):**
-1. **EPIC-001 Retrospective** (ARB-led; input pack: `../EPIC-001_Retrospective_Input.md`)
-2. **Formal EPIC-001 Closure**
-3. **EPIC-002 (Evidence) Discovery**
+**Closure sequence: complete.**
+1. ✔ **EPIC-001 Retrospective** (2026-07-11; record: `../EPIC-001_Retrospective.md` — P-1/P-3 promoted · P-4/P-6/P-7 adopted · P-2/P-5 deferred · D-1/D-3 retired · D-2 resolved by reference)
+2. ✔ **Formal EPIC-001 Closure** (2026-07-11, ARB-confirmed)
+3. → **EPIC-002 Strategic Discovery** (charter: `../EPIC-002_Problem_Statement.md` — candidate BC: Evidence; literature review first)
