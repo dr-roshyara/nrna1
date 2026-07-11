@@ -1,6 +1,12 @@
 # ES-002 — Engineering Execution
 
-**Status:** PROPOSED · **Owner:** Decision Authority · part of the [Standards Index](STANDARDS_INDEX.md).
+**Status:** PROPOSED · part of the [Standards Index](STANDARDS_INDEX.md)
+**Purpose:** how engineering work is performed — the execution lifecycle and its standing defaults.
+**Scope:** every engineering work item, any engineer (human or AI), any track.
+**Authority:** Decision Authority (ARB).
+**Qualification Method:** EP-02 completion reviews per work item; operational qualifications (OQ) for the lifecycle itself.
+**Supersedes:** the MEMORY-resident texts of the implementation-first default and the observation stop (now hosted here).
+**Related Standards:** ES-001 (authority) · ES-003 (verification of executed work) · ES-004 (the reports execution produces).
 
 ## Registered execution rules (governed homes — pointers, never copies)
 

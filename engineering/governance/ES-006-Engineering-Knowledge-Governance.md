@@ -1,6 +1,12 @@
-# ES-006 — Knowledge
+# ES-006 — Engineering Knowledge Governance
 
-**Status:** PROPOSED · **Owner:** Decision Authority · part of the [Standards Index](STANDARDS_INDEX.md).
+**Status:** PROPOSED · part of the [Standards Index](STANDARDS_INDEX.md)
+**Purpose:** how ENGINEERING knowledge is harvested, promoted, and retired — the lifecycle of the platform's own learning.
+**Scope:** engineering knowledge only (patterns, evidence, research artifacts, standards candidates). **Explicitly OUT of scope: Project Knowledge** — a separate bounded context; its standards (PKS-class) arrive only after its pilot and qualification. This scoping prevents ES-006 from slowly absorbing project concepts.
+**Authority:** Decision Authority (ARB).
+**Qualification Method:** promotion-ladder audits (does every promoted item carry qualification evidence?) + evidence-register integrity checks.
+**Supersedes:** the MEMORY-resident text of the knowledge research freeze (now hosted here).
+**Related Standards:** ES-001 (burden of proof) · ES-003 (the qualification step of the ladder) · ES-005 (research-tier placement).
 
 ## Hosted rules (canonical here; previously MEMORY-only or board-resident)
 

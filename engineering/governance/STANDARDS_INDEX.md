@@ -13,4 +13,28 @@
 | [ES-003](ES-003-Qualification.md) | Qualification | How the platform verifies itself | qualification lifecycle · score-persistence stop · measurement conventions |
 | [ES-004](ES-004-Documentation.md) | Documentation | How records are structured & governed | retrospectives-recommend · record conventions |
 | [ES-005](ES-005-Repository.md) | Repository | How the repository is organized | folder rule · placement litmus |
-| [ES-006](ES-006-Knowledge.md) | Knowledge | How knowledge is harvested, promoted, retired | promotion ladder · knowledge research freeze |
+| [ES-006](ES-006-Engineering-Knowledge-Governance.md) | Engineering Knowledge Governance | How ENGINEERING knowledge is harvested, promoted, retired (NOT project knowledge — a separate bounded context with its own future standards after the pilot) | promotion ladder · knowledge research freeze · harvest discipline |
+
+## Constitutional hierarchy
+
+```text
+                    ES-001 Constitution
+                          │
+              ┌───────────┴───────────┐
+              ▼                       ▼
+      ES-002 Execution        ES-003 Qualification
+              │                       │
+              └───────────┬───────────┘
+                          ▼
+                 ES-004 Documentation
+                          │
+                          ▼
+                  ES-005 Repository
+                          │
+                          ▼
+        ES-006 Engineering Knowledge Governance
+```
+
+## The stopping rule
+
+> **The ES document set is complete. No new ES standards will be created unless operational evidence demonstrates insufficiency in the existing set.** If a new rule appears, the first question is: **"Which existing ES document owns this?"** — never "Should we create ES-007?" (This is ES-001.1 Rule Parsimony applied to the standards themselves; recreating fragmentation would undo this consolidation's entire purpose.)

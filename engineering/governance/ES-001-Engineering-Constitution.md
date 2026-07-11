@@ -1,6 +1,12 @@
 # ES-001 — Engineering Constitution
 
-**Status:** PROPOSED · **Owner:** Decision Authority · part of the [Standards Index](STANDARDS_INDEX.md).
+**Status:** PROPOSED · part of the [Standards Index](STANDARDS_INDEX.md)
+**Purpose:** the foundational principles of the Engineering Platform and the rules by which governance itself is created.
+**Scope:** all engineering work and all platform governance acts.
+**Authority:** Decision Authority (ARB).
+**Qualification Method:** constitution audits (OQ-ENG-002-class: ownership, discoverability, single-home, no-contradiction checks).
+**Supersedes:** the MEMORY-resident texts of rule parsimony and governance-creation (now hosted here; MEMORY holds hints).
+**Related Standards:** all (ES-002..ES-006 derive their authority from this document's registered sources).
 
 ## Registered constitutional sources (governed homes — pointers, never copies)
 

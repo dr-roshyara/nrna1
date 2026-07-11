@@ -43,7 +43,7 @@
   · Qualification lifecycle (never fix in-run; PASS-AFTER-CORRECTION; F-/CR-/OQ- series) + score-persistence stop + measurement conventions → **ES-003**
   · Retrospectives-recommend + record conventions (append-only logs; ids not filenames; one responsibility per record type) → **ES-004**
   · Three-concern separation + folder rule + placement litmus → **ES-005**
-  · Promotion ladder (Research→Pilot→Qualification→Standard→Stable) + knowledge research freeze (no Level 5) + harvest discipline → **ES-006**
+  · Promotion ladder + research freeze (no Level 5) + harvest discipline → **ES-006 Engineering Knowledge Governance**
 - **EP-01-Light gate (hint):** below IDD weight, present the form and WAIT; record-only exempt; every implementation ends with the EP-02 report. Rule text: `Implementation_Process_v1.1_Draft.md` (registered in ES-002).
 - Pending ARB (knowledge track): assembly-report review · EKP disposition · pilot authorization.
 - Commits reference ticket IDs (`PB-003: ...`). Git identity: `=Dr. Nab Raj Roshyara`.

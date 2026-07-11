@@ -1,7 +1,12 @@
 # ES-003 — Qualification
 
-**Status:** PROPOSED · **Owner:** Decision Authority · part of the [Standards Index](STANDARDS_INDEX.md).
-**Resolves finding F-OQ2-1:** the qualification lifecycle previously lived in an evidence-record addendum + runtime MEMORY; this document is now its canonical home.
+**Status:** PROPOSED · part of the [Standards Index](STANDARDS_INDEX.md)
+**Purpose:** how the platform verifies itself and everything it governs — the qualification lifecycle and measurement discipline.
+**Scope:** every qualification, measurement, gate run, and recorded verdict.
+**Authority:** Decision Authority (ARB); instruments produce, the authority accepts.
+**Qualification Method:** re-runs (a qualification is re-validated by re-running it) + audits of verdict-history integrity.
+**Supersedes:** the OQ-ENG-001 addendum and MEMORY as rule homes for the lifecycle (resolves finding F-OQ2-1); MEMORY texts of the score-stop and measurement conventions.
+**Related Standards:** ES-001 (authority) · ES-002 (what gets qualified) · ES-004 (how verdicts are recorded).
 
 ## Hosted rules (canonical here)
 
