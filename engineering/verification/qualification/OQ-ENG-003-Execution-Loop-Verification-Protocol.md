@@ -1,8 +1,8 @@
-# OQ-ENG-003 — Execution Loop Verification (PROTOCOL — not yet executed)
+# OQ-ENG-003 — Decision Resolution Verification (PROTOCOL — not yet executed)
 
-**Status:** COMMISSIONED (ARB, 2026-07-11) — **awaiting execution in a FRESH session.**
+**Status:** COMMISSIONED (ARB, 2026-07-11) · APPROVED with two refinements (ARB, same day) — **awaiting execution in a FRESH session.**
 **Class:** operational qualification instrument (ES-003) — *verification by execution, not assertion.*
-**Purpose:** prove that the execution loop is correctly encoded — that a cold engineer, starting from zero, navigating only by the standards, triggers every rule as designed.
+**Purpose (reframed per ARB):** demonstrate that a cold Engineer can **resolve all required Engineering Decisions from repository artifacts alone** — and therefore execute the Engineering Execution Protocol correctly. The platform is a **decision-support architecture**; the execution loop is a consequence of correctly resolved decisions, not the thing under test. The Decision Model, not the workflow, is the center of gravity. *(Original framing "verify the execution loop is correctly encoded" superseded same-day; file name retained per record conventions.)*
 **Deliverable of the run:** a dated record `2026-MM-DD-OQ-ENG-003.md` beside this protocol, per the report table below.
 
 ## Execution constraints (binding)
@@ -42,7 +42,15 @@ Simulated work item: *"A developer has raised a question about how to structure 
 
 ## Report format (the run's record)
 
-One row per question, verdict **Yes / No / Partial**, each with the evidence (which document was consulted, what it said): DetermineConcern · DetermineApplicableStandards · EP-01 · ARB Review · EEP followed · ES-003 followed · EP-02 report produced · DetermineReusePotential · DetermineArtifactType (if applicable) · DeterminePromotionPath (if applicable) · Ask-for-next-step. Overall verdict per ES-003.1: **PASS · PASS AFTER CORRECTION · WARN · FAIL**. Findings in the F-OQ3-n series. **STOP after the report — ARB review decides the next step.**
+One row per question, verdict **Yes / No / Partial**, each with the evidence (which document was consulted, what it said): DetermineConcern · DetermineApplicableStandards · EP-01 · ARB Review · EEP followed · ES-003 followed · EP-02 report produced · DetermineReusePotential · DetermineArtifactType (if applicable) · DeterminePromotionPath (if applicable) · Ask-for-next-step.
+
+**The final question — decision-resolution sufficiency (the real success criterion, added by ARB):**
+
+> **Did any required Engineering Decision lack sufficient information for resolution from repository artifacts alone?** (No / Partially / Yes — naming the decision and the missing information)
+
+This measures **architectural completeness**. Any Partially/Yes is not a mere workflow defect — it is exactly the evidence class that triggers architectural evolution, along the platform's own chain: *insufficient information → Finding (F-OQ3-n) → Qualification → Evidence → possible architecture change via ES-006.1.* If the answer is **No** (all decisions resolvable), the platform has demonstrated something stronger than "the workflow works": its documentation, standards, and governance are **self-sufficient for a cold engineer**.
+
+Overall verdict per ES-003.1: **PASS · PASS AFTER CORRECTION · WARN · FAIL**. Findings in the F-OQ3-n series. **STOP after the report — ARB review decides the next step.**
 
 ---
 *Traceability: ARB commission 2026-07-11 (execution-loop verification prompt), issued immediately after R-38 (conceptual freeze) — consistent with it: this exercises the platform, extends nothing.*
