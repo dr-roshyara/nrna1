@@ -137,7 +137,7 @@ Pure *Record-only* actions (classifying an observation into the retrospective in
 
 ## Pending fold-ins (queued for ratification into v1.1 body)
 - Messaging Architecture Verification Matrix + the Platform Capability Readiness questions (from PB-003 C6A/C6B).
-- ER-05 · ER-06 · ER-07 · ER-08 + ARR Gate (above).
+- ER-05 · ER-06 · ER-07 · ER-08 · **ER-09 (Project Knowledge Management — PROPOSED)** + ARR Gate (above).
 - **EP-01 Plan First + EP-02 Completion Review + EP-03 Engineering Readiness Review (above) + the EP-vs-ER namespace decision.**
 - ADR template alignment for the ADR-MP / PGP style (principles referenced by decisions).
 
