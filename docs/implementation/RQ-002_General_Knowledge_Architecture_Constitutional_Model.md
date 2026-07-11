@@ -1,7 +1,7 @@
 # General Knowledge Architecture — Constitutional Model
 
 **Kind:** constitutional modeling — the invariant structure of knowledge **within the researched domain (software project knowledge)**; the terminal synthesis artifact of RQ-002. NOT design: no folders, templates, software, or implementation. The model is deliberately timeless — it stands to any future implementation as relational algebra stands to a database engine.
-**Status:** ACCEPTED AS RESEARCH (ARB) · refined for epistemic honesty (this revision) — architectural adoption pending ARB review of the refined form.
+**Status:** ACCEPTED AS RESEARCH (ARB) · refined for epistemic honesty · **RESEARCH FREEZE (ARB, 2026-07-11):** *the constitutional knowledge model is complete enough to be falsified; further changes come from pilot evidence, never from theoretical discussion.* Architectural adoption pending pilot evidence + ARB ruling.
 **Epistemic scope (binding on every claim below):** "constitutional" means *constitutional within the researched domain — software project knowledge*. Evidence from medicine, law, aviation, finance, or education was not collected; cross-industry validity is an untested hypothesis, not a claim. This boundary strengthens the model: it states exactly what the evidence covers.
 **Evidence base (closed):** the full RQ-002 chain (charter · raw findings · discovery report · synthesis · taxonomy · meta-model) + the Engineering Platform as first-party corroborating evidence.
 
