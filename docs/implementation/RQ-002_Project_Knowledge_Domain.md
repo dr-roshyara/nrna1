@@ -1,7 +1,7 @@
-# RQ-002 — Project Knowledge System (Research Charter)
+# RQ-002 — Project Knowledge Domain (Research Charter)
 
 **Kind:** research charter — NOT an ADR, NOT an IDD, NOT a design. This document is the constitution of a research phase: it defines the question, the sub-questions, and the boundaries. It decides nothing about the solution.
-**Status:** APPROVED WITH AMENDMENTS (ARB, 2026-07-11) — literature review authorized. *(Naming: "Project Knowledge System" per ARB elevation — "management" administrates, "architecture" was still documentation-flavored; the research is about knowledge itself. RQ-002 is the durable id; the filename stays.)*
+**Status:** APPROVED WITH AMENDMENTS (ARB, 2026-07-11) — literature review authorized. *(Naming history: "Management" administrates · "Architecture" was documentation-flavored · "System" already implies something to build. **"Domain"** biases nothing — the research discovers whether a system even exists. RQ-002 is the durable id.)*
 **Reference form:** modeled on `EPIC-002_Problem_Statement.md` (the indexed authoritative form for research charters, ER-09 §2).
 **Role instruction (binding for this phase):** *think like a researcher, not an architect.* The researcher asks **"what exists?"**; the architect asks "what should we build?". This phase stays in the first role until the ARB authorizes design.
 
@@ -11,9 +11,11 @@
 
 ## Research question (broadened at ARB review — knowledge is dynamic, not static)
 
-**How does project knowledge emerge, evolve, decay, and get consumed during software engineering?**
+**How is project knowledge created, validated, evolved, discovered, consumed, challenged, forgotten, and retired?**
 
-The static form ("what kinds exist?") is contained within this, but the domain includes knowledge *dynamics* as first-class concepts: **entropy · obsolescence · conflict · forgetting · rediscovery**. A taxonomy that cannot express "this knowledge is decaying" has missed the domain.
+The static form ("what kinds exist?") is contained within this, but the domain is a *living system with events*: knowledge is not merely lost to decay — it is **deliberately superseded, invalidated, forked; two truths coexist; forgotten knowledge is rediscovered**. Entropy · obsolescence · conflict · forgetting · rediscovery are first-class domain concepts. A taxonomy that cannot express "this knowledge is decaying" or "these two facts contradict" has missed the domain.
+
+**The granularity question (mandatory):** *what is the smallest unit of project knowledge?* — the aggregate-root question asked of knowledge: one ADR? one decision? one invariant? one business rule? one ubiquitous-language concept? one finding? Until this is answered, every other structure rests on unknown granularity.
 
 ## Why now (evidence, not appetite)
 
@@ -33,7 +35,8 @@ The static form ("what kinds exist?") is contained within this, but the domain i
 3. **Discovery & context assembly** — how should an AI (or a newcomer) assemble *just enough* relevant knowledge for a task without reading everything? (need → discover → assemble → detect contradictions → working context)
 4. **Qualification** — how is knowledge known to be *still correct*? (evidence strength · source diversity · recency — the correctness-over-time problem no current tooling attacks)
 5. **Boundary** — how is project knowledge different from engineering knowledge? What is the precise line between "how we engineer" (Engineering Platform) and "what this project is"?
-6. **Ownership** — what would a Project Knowledge Platform own vs observe vs never touch, relative to the Engineering Platform, the Product, and the Runtime?
+6. **Ownership** — what would a Project Knowledge capability own vs observe vs never touch, relative to the Engineering Platform, the Product, and the Runtime?
+7. **Knowledge Quality (added at ARB review — a research thread of its own):** when is knowledge *authoritative*? What overrides what? Can two contradictory facts coexist — under what rules? Can obsolete knowledge remain searchable? What is canonical vs historical? How is trust measured?
 
 ## Research method
 
@@ -68,18 +71,25 @@ Concept · Definition · Purpose · Lifecycle · Relationships · Producers · C
 | **Information architecture** | information scent · navigation · knowledge organization · classification, ontology, taxonomy |
 | **Software engineering** | ADRs · living documentation · domain storytelling · event storming · context mapping · decision capture · empirical studies on what teams actually read vs maintain |
 | **AI** | context assembly · retrieval and RAG · memory systems and agent memory · knowledge graphs · context compression |
+| **Information quality** *(7th discipline, added at ARB review)* | provenance · lineage · trust · authority · freshness · confidence · versioning · conflict resolution |
 
 Purpose: **validate or falsify our candidate taxonomy, the EKP's assumptions, and the "second platform" hypothesis** — never copy systems. Successful **and failed** knowledge-management systems are both mandatory study objects.
+*(Framing observation on record: this field may be closer to **Knowledge Engineering** — modeling knowledge itself — than to documentation or knowledge management.)*
 
-## Deliverables (research artifacts ONLY)
+## Deliverables (research artifacts ONLY — produced in this order)
 
 1. **Literature review** (state of the art → gap analysis against the EKP incumbent)
 2. **Candidate ubiquitous language** for project knowledge
-3. **Ownership map** (Project Knowledge candidate: owns / observes / never touches)
-4. **Context map** (relationships to Engineering Platform · Product · Runtime · EKP)
-5. **Open questions register**
-6. **Recommendation** — new platform / EKP capability / absorbed rules / deferred — **with evidence**
-7. **STOP → ARB review**: the ARB decides whether the evidence authorizes design.
+3. **Normalized Knowledge Ontology** *(added at ARB review — the semantic backbone)*: for every discovered concept — parent · children · relationships · lifecycle · authority · producer · consumer
+4. **Ownership map** (Project Knowledge candidate: owns / observes / never touches)
+5. **Context map** (relationships to Engineering Platform · Product · Runtime · EKP)
+6. **Open questions register**
+7. **Recommendation** — new platform / EKP capability / absorbed rules / deferred — **with evidence**
+8. **STOP → ARB review**: the ARB decides whether the evidence authorizes design.
+
+## Exit criteria (ARB warning: this must not become a six-month research project)
+
+The research **ends** when: literature review complete across the seven disciplines · universal concepts identified · contradictions documented · ubiquitous language produced · ontology drafted · recommendation made — **then STOP.** Time-boxed per the inherited method; provisional conclusions with marked uncertainty beat unbounded search. Only after the STOP may architecture begin.
 
 ## Explicitly NOT produced
 
