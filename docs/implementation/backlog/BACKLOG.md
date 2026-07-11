@@ -19,7 +19,7 @@
 
 | Epic | Title | Tickets | Progress (derived) | File |
 |------|-------|---------|--------------------|------|
-| EPIC-001 | Greenfield Core (correction loop) | PB-001..007 | 7/7 closed = **100%** · retrospective conducted 2026-07-11 (record: `../EPIC-001_Retrospective.md`) · **formal closure: PENDING explicit ARB decision** | `EPIC-001_Greenfield_Core.md` |
+| EPIC-001 | Greenfield Core (correction loop) | PB-001..007 | 7/7 closed = **100%** · **FORMALLY CLOSED (explicit ARB decision, 2026-07-11** — record: `../EPIC-001_Retrospective.md`**)** | `EPIC-001_Greenfield_Core.md` |
 | EPIC-002 | **Strategic Discovery — candidate BC: Evidence** (discovery may conclude the candidate is too large, is two contexts, or merges elsewhere — it must not assume its own answer; ARB 2026-07-11) | — | not opened — **NEXT: Problem Statement → literature review → Strategic Discovery** | charter: `../EPIC-002_Problem_Statement.md` · opens after EPIC-001 retrospective |
 | EPIC-003 | Voting (ballot casting, anonymous storage, tally — migration + verifiability) | — | not opened | after EPIC-002 |
 | EPIC-004 | Appointment / Governance (delegates, mandates, authority chains) | — | not opened | after EPIC-003 |
@@ -67,11 +67,12 @@ Engineering-governance workstream — distinct from capability tickets (PB-xxx).
 ## NEXT ACTION (exactly one)
 
 ```text
-Phase:         EPIC-001 closure decision (retrospective conducted; decisions pending)
-Action:        EXPLICIT ARB DECISIONS on P-4 · P-6 · P-7 · D-2 + formal closure
-               (record: ../EPIC-001_Retrospective.md)
-Then:          EPIC-002 Strategic Discovery Phase 1 (literature review; charter
-               ../EPIC-002_Problem_Statement.md; problem-space first; no code/IDD)
+Phase:         EPIC-002 Strategic Discovery (EPIC-001 formally closed 2026-07-11)
+Action:        Phase 1 — PROBLEM-SPACE LITERATURE REVIEW (researcher mode; charter
+               ../EPIC-002_Problem_Statement.md; assumption-evidence table; FACT/
+               INTERPRETATION/RECOMMENDATION/OPEN-QUESTION labels; falsify, not elaborate)
+Constraints:   no code · no aggregates · no APIs · no IDD · STOP at session end
+Then:          Phase 2 Strategic DDD -> STOP -> ARB review (IDD authorization decision)
 ```
 
 ---

@@ -12,7 +12,7 @@ EPIC-001 Greenfield Core   7 / 7 tickets closed   ██████████
   M3 Integration & Gate    PB-006..007 ✔          ██████████████████████████ 100%  (2026-07-10)
 ```
 
-*(Retrospective conducted 2026-07-11; formal EPIC-001 closure PENDING explicit ARB decision — record: `EPIC-001_Retrospective.md`.)*
+*(EPIC-001 FORMALLY CLOSED — explicit ARB decision 2026-07-11; record: `EPIC-001_Retrospective.md`.)*
 
 ## Program Health
 
@@ -61,7 +61,7 @@ Production Hardening          ███░░░░░░░░░░░░░�
 
 ## Ticket Snapshot (detail in backlog/BACKLOG.md)
 
-PB-001 **Verified** · PB-002 **Verified** · PB-003 **CERTIFIED** · PB-004 **CLOSED** · PB-005 **CLOSED** · PB-006 **CLOSED** · PB-007 **CLOSED** — **EPIC-001: implementation complete; formal closure pending explicit ARB decision.**
+PB-001 **Verified** · PB-002 **Verified** · PB-003 **CERTIFIED** · PB-004 **CLOSED** · PB-005 **CLOSED** · PB-006 **CLOSED** · PB-007 **CLOSED** — **EPIC-001 FORMALLY CLOSED (explicit ARB decision, 2026-07-11).**
 
 ## Program Metrics
 

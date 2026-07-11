@@ -1,7 +1,7 @@
 # EPIC-001 — Greenfield Core (correction loop) — Ticket Backlog
 
 **Goal:** the complete constitutional correction loop `ChallengeRaised → … → ChallengeResolved` per Push B Blueprint v1.0.
-**Status:** **COMPLETE — retrospective conducted 2026-07-11; formal closure PENDING explicit ARB decision** (record: `../EPIC-001_Retrospective.md`; an earlier closure mark inferred from a "continue" message was retracted — *continue ≠ governance decision*).
+**Status:** **FORMALLY CLOSED — explicit ARB decision, 2026-07-11** (record: `../EPIC-001_Retrospective.md`). Reopen only for defects · compatibility fixes · retrospective promotions.
 **Process:** PB-001..003 followed the original implementation process (`../Implementation_Process_v1.0.md`); PB-004..007 were completed under the evolved implementation discipline documented in the approved IDDs and engineering governance (Discovery → IDD → ARB → RED → GREEN → qualification → Completion Review).
 **Milestones:** M1 = PB-001..003 ✔ · M2 = PB-004..005 ✔ · M3 = PB-006..007 ✔
 **Synchronized:** 2026-07-10 (one-time, evidence-derived — ARB-amended execution order step 5; nothing hand-estimated).
@@ -43,6 +43,6 @@ PB-001 ✔ → PB-002 ✔ → PB-003 ✔ → PB-004 ✔ → PB-005 ✔ → PB-00
 Reopen only for: defects · compatibility fixes · retrospective promotions.
 
 **Closure sequence: complete.**
-1. ✔ **EPIC-001 Retrospective conducted** (2026-07-11; ARB-confirmed so far: P-1/P-3 promoted · P-2/P-5 deferred · D-1/D-3 retired; **pending explicit ARB decision: P-4 · P-6 · P-7 · D-2**)
-2. → **Formal EPIC-001 Closure** (PENDING explicit ARB decision)
+1. ✔ **EPIC-001 Retrospective** (2026-07-11; all ten candidates explicitly decided: P-1/P-3 promoted · P-4 working practice · P-6 Engineering Standard (rule only) · P-7 scoped practice · P-2/P-5 deferred · D-1/D-3 retired · D-2 override: AST-008 unwired)
+2. ✔ **Formal EPIC-001 Closure** (explicit ARB decision, 2026-07-11)
 3. → **EPIC-002 Strategic Discovery** (charter: `../EPIC-002_Problem_Statement.md` — candidate BC: Evidence; literature review first)
