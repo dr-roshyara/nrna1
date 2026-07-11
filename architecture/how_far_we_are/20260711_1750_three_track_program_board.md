@@ -37,8 +37,13 @@ CI qualification runs · deployment documentation · backup · monitoring · dis
 | Context Assembly theory | ✅ (research report — E-1 answered) |
 | Pilot instrumentation | ⏳ awaiting ARB authorization |
 | First project pilot (one real ticket, U/O counted) | ⏳ |
+| **Pilot Qualification Report** *(added at ARB promotion-model review — did the model hold? what emerged? what disappeared?)* | ⏳ |
+| **Promotion Recommendation** *(should a Reference Architecture exist at all?)* | ⏳ |
+| Project Knowledge Reference Architecture | ⏳ **CONDITIONAL — written only if the Promotion Recommendation says yes. The RA must earn its existence; it is not a default deliverable.** |
 | Evidence collection (~20–30 tasks horizon) | ⏳ |
-| Retrospective (promote/reject the deferred concepts) | ⏳ |
+| Research retrospective (promote/reject deferred concepts) | ⏳ |
+
+**Refined promotion ladder (ARB — reuses existing machinery, no new process):** `Research → Pilot → Qualification → Engineering Standard → Stable Engineering Capability`. Qualification sits between research and engineering — exactly what the platform already does. Correction on record: the ladder has ALREADY graduated artifacts (EEP, qualification lifecycle, rulings, Reference Architecture, score-stop, rule parsimony are engineering standards, not research) — the Project Knowledge work simply hasn't entered it yet. Governing principle = the existing burden-of-proof rule applied to promotion: **evidence promotes architecture; architecture does not promote itself** (rule parsimony: no new rule needed).
 
 Pending ARB decisions gating this track: research-report review · **EKP disposition** · pilot authorization.
 

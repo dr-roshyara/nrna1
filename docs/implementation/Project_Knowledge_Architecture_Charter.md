@@ -32,8 +32,8 @@ Ubiquitous language · bounded contexts · ADRs and decision knowledge · busine
 
 Constitutional model binding (all invariants and rules) · no design in this charter · architecture begins only on ARB authorization · the biggest known risk is reflexive: **context assembly must not itself become a second-population artifact** (PK-P1) — the design answer must come from a small evidence-producing pilot on real tickets.
 
-## Success criterion
+## Success criterion (amended at ARB promotion-model review, 2026-07-11 — the Reference Architecture must EARN its existence)
 
-A Project Knowledge Reference Architecture (same DRAFT → ADOPTED → STABLE lifecycle as the platform's) from which context assembly, project memory, and knowledge governance derive as implementations of a well-understood specialization — falsifiable, evidence-bound, and adoptable-unchanged by another project except for its dense-region weights.
+The pilot and its **Pilot Qualification Report** determine whether a Project Knowledge Reference Architecture is warranted at all. Sequence: pilot → qualification report → **Promotion Recommendation** → *only if yes:* Reference Architecture draft (same DRAFT → ADOPTED → STABLE lifecycle as the platform's) → ARB review → engineering promotion → ER-09 ratification. Success = the question "does this architecture deserve to exist?" answered with evidence — in either direction. A recommendation of "the existing structures absorbed everything; no RA needed" is a SUCCESS outcome, not a failure.
 
 **STOP — ARB approval of this charter precedes any architecture work.**
