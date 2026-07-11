@@ -236,7 +236,7 @@ assets:
       principle: AIP-03
       decision: PD-12
       adr: ADR-AIP-01
-    notes: "violates AIP-03 (hidden machine state) and Phase-03A section 3 (project scope authoritative); superseded by in-repo relocation in slice C2. R-36 (2026-07-09): removal scheduled for the NEXT release (deprecate -> remove; one release cycle for any remaining local consumer to migrate)"
+    notes: "violates AIP-03 (hidden machine state) and Phase-03A section 3 (project scope authoritative); superseded by in-repo relocation in slice C2. R-36 (2026-07-09): removal scheduled for the NEXT release (deprecate -> remove; one release cycle for any remaining local consumer to migrate). UNWIRED from .claude/settings.json 2026-07-11 by explicit ARB retrospective decision D-2 (EPIC-001 retrospective; supersedes C2 sequencing for the unwire step only — machine-local file removal stays with the R-36 release cycle)"
 
   - id: AST-009
     path: .claude/platform/registry.yaml

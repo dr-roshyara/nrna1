@@ -49,6 +49,13 @@ PublicDigit's constitutional correction loop (EPIC-001) produces a complete, pro
 
 Purpose: **validate or falsify our own model** — identify durable concepts that belong in the ubiquitous language; never copy systems.
 
+**Permanent researcher rule (ARB, 2026-07-11):** *every literature source must either strengthen, weaken, or falsify at least one existing PublicDigit assumption* — no collecting for its own sake. The review maintains an assumption-evidence table:
+
+| Existing assumption | Literature | Result (strengthens / weakens / contradicts / uncertain) |
+|---|---|---|
+
+Sources that touch no assumption are excluded or generate a NEW recorded assumption first.
+
 ## Research method (ARB enhancement, 2026-07-11 — governs the literature review)
 
 **Standing instruction to any external research tool:** *"Do NOT design our architecture. Perform a systematic literature review. Produce a Normalized Knowledge Model."* Raw prose is not a deliverable; structured knowledge is.

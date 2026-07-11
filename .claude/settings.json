@@ -31,15 +31,6 @@
     ],
     "PostToolUse": [
       {
-        "matcher": "PlanCreate",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/timestamp-plan.sh"
-          }
-        ]
-      },
-      {
         "matcher": "Write|Edit",
         "hooks": [
           {
