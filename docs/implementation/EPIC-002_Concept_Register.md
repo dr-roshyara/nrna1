@@ -27,6 +27,32 @@
 
 *Iteration-1 sources S1–S7: see `EPIC-002_Literature_Review.md` §Sources. All claims currently [EXTRACTED-UNVERIFIED] (re-verification pending).*
 
+## Iteration 2a additions (Constitutional Law + Administrative Law — VERIFIED: 18 confirmed / 7 refuted)
+
+| Concept | ES | CL | AL | GT | TE | DF | DS | PR | AT | DDD | Confidence | First source(s) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Administrative/evidentiary record (fixed, contemporaneous, presumption of regularity) | | | ✓ | | | | | | | | LOW (1) | ACUS 2013-4; Overton Park comm. |
+| Presumption of regularity (once certified, rarely rebutted) | | | ✓ | | | | | | | | LOW (1) | ACUS 2013-4 |
+| Record-completeness challenge doctrine / undefined "bad faith" threshold (NEGATIVE FINDING: 50+ yrs undefined) | | | ✓ | | | | | | | | LOW (1) | U. Chicago L. Rev. |
+| Contemporaneity requirement / no post-hoc rationalization (Chenery/hard-look) | | ✓ | ✓ | | | | | | | | LOW (2) | ACUS 2013-4; CRS LSB10558; U. Chicago L. Rev. |
+| Differentiated standard-of-review taxonomy (substantial evidence / abuse of discretion / de novo / clearly erroneous — NOT unified) | | ✓ | ✓ | | | | | | | | LOW (2) | Standard of review (WP); Hawaii Law lib.; Seattle U. L. Rev. |
+| Rechtliches Gehör / third-party hearing right (broader than US due process) | | | ✓ | | | | | | | | LOW (1) | VwVfG §28(1); Pünder I·CON 2013 |
+| Finality-vs-immutability decoupling (Bestandskraft ≠ immutability) | | | ✓ | | | | | | | | LOW (1) | VwVfG §48; Pünder I·CON 2013 |
+| Procedural curing rules (Heilung) — NEGATIVE FINDING: exploitable as laxity incentive | | | ✓ | | | | | | | | LOW (1) | VwVfG §§45–46; Pünder I·CON 2013 (Sendler) |
+| Legitimacy vs. justice (distinct evaluative axes; legitimacy pre-eminent for judicial review) | | ✓ | | | | | | | | | LOW (1), single-source caveat | Hickey, OJLS 2022 |
+
+**Register-row promotions this iteration: ZERO.** Per the anti-clustering-bias rule, new concepts enter fresh rather than being merged into iteration-1 rows even where a relationship is plausible (see the Literature Review's "Cross-iteration concept-relationship notes" — merging is a clustering judgment explicitly deferred to the synthesis phase). Two relationship notes recorded (not merges): *contemporaneity requirement* ↔ *commit-before-sample/declare-failure* (ES); *finality-vs-immutability* ↔ *declare-failure/evidence co-production* (ES).
+
+**Independent-discipline note on A-9 (assumption-table bookkeeping, distinct from register promotions):** the *differentiated standard-of-review taxonomy* concept contradicts A-9 via AL/CL's own internal logic, entirely independently of ES's custody/certification and auditability/auditing splits. Four independent A-9-weakening signals now stand across two disciplines (ES, AL/CL) — tracked in the Literature Review, not as a register-tier movement.
+
+## Movement log (for the stopping criterion)
+
+| Date | Source | Movements (LOW→MEDIUM / MEDIUM→HIGH) | Consecutive no-movement count |
+|---|---|---|---|
+| 2026-07-11 | Iteration 1 (S1–S7, seeding) | register created — all entries enter at LOW/TENTATIVE | 0 |
+| 2026-07-11 | Iteration 2a attempt 1 (`wf_4c2904f1-602`) | **0 sources fetched — total infrastructure failure**, not a research result; excluded from the count | n/a |
+| 2026-07-11 | Iteration 2a attempt 2 (`wf_e118e84a-441`, 23 sources, 18 confirmed) | 9 new concepts added (fresh, LOW) · **0 tier promotions** | 1 (first no-promotion iteration; criterion needs 3 consecutive) |
+
 ## Concept-relationship notes (allowed: concept↔concept only; no PublicDigit mapping)
 
 - Custody evidence is a stated *precondition* of statistical certification (S4 S5: certification over an unestablished trail = "theater").

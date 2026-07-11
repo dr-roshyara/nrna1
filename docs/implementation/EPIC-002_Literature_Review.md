@@ -1,6 +1,6 @@
 # EPIC-002 Literature Review — Constitutional Trust Discovery (Working Document)
 
-**Status:** IN PROGRESS — iteration 1 of N complete; **iteration 2a (Constitutional Law + Administrative Law) FAILED — 0 sources, total infrastructure failure** (all 30 fetch attempts hit the Fable-5 model session limit before any content was retrieved; run `wf_4c2904f1-602`, journal empty of usable claims). This is worse than iteration 1's partial failure and is recorded as such — no claims to quarantine or verify, simply none produced. Retry scheduled under Sonnet 5 (model switched after the failure). STOPPING CRITERION NOT REACHED. **Authority:** generated — research artifact under the charter `EPIC-002_Problem_Statement.md`; never authoritative without ARB review.
+**Status:** IN PROGRESS — iteration 1 complete (unverified); **iteration 2a (Constitutional Law + Administrative Law) COMPLETE AND VERIFIED** on retry (run `wf_e118e84a-441`, under Sonnet 5, after the first attempt `wf_4c2904f1-602` failed totally — 0 sources, all 30 fetches hit the Fable-5 session limit; recorded as history below). Iteration 2a: 23 sources fetched, 91 claims extracted, 25 adversarially voted, **18 CONFIRMED**, **7 REFUTED** (recorded — not repeated), 0 stuck unverified. STOPPING CRITERION NOT REACHED. **Authority:** generated — research artifact under the charter `EPIC-002_Problem_Statement.md`; never authoritative without ARB review.
 **MAPPING QUARANTINE (ARB iteration-2 charter, 2026-07-11):** iteration 1's INTERPRETATION entries that map literature concepts onto PublicDigit (e.g. "the correction loop maps to strong software independence", "maps to the implemented Contestation/Adjudication split") are **QUARANTINED — premature**. They stand as recorded history but carry NO analytical weight until ALL major disciplines are reviewed and cross-disciplinary synthesis is authorized. The only permitted mapping is the Concept Register (`EPIC-002_Concept_Register.md`): concepts appear in disciplines — that is all. Forbidden until synthesis: "PublicDigit equals …", "this means we should build …", "this maps to …".
 **Method compliance:** no bounded contexts are named or proposed in this document (ARB: concepts → clusters → candidate BCs, in that order, later). Every statement labeled FACT / INTERPRETATION / RECOMMENDATION / OPEN QUESTION. Sources classified Supports / Weakens / Contradicts / Introduces against A-1..A-10.
 
@@ -81,9 +81,91 @@
 2. Iteration 2 targets, in priority order per the ARB review: **constitutional law** (legitimacy, procedural fairness, burden of proof, appeal) · **administrative law** (justification, appeals ≈ adjudication workflows) · **assurance cases** (structured trust arguments — potentially UL-changing) · **election certification as distinct from auditing** · **governance theory** (accountability, transparency, delegation, authority) · W3C PROV core · audit theory.
 3. Hold ALL concept clustering until at least the law + assurance-case iterations land (the current concept set is election-science-heavy; clustering now would bake in a single-discipline bias).
 
+## Iteration 2a — Constitutional Law + Administrative Law (VERIFIED)
+
+**Coverage note (honest):** the run's search angles skewed heavily to U.S. federal administrative/constitutional law plus German *Verwaltungsrecht* (VwVfG). The one England/Wales source tested (*Wiley*, on late-justification admissibility) was **refuted both times** — common-law-outside-the-US remains effectively uncovered despite being requested. **Tyler-style empirical procedural-justice research (perceived-fairness→legitimacy) was explicitly in scope and NOT reached** — sources were fetched (Tyler 2015 psych-science survey, *Why People Obey the Law*, a procedural-justice methods review) but produced no claim that survived to the confirmed list. **This is a coverage gap, not a finding about Tyler's work** — flagged for a dedicated iteration-2 follow-up. The requested private-organization transfer question (German *Vereinsrecht*, association/party bylaws) was **not reached by any surviving source** — two German association-law sources were fetched but produced zero confirmed claims. **This question remains fully open, not merely thinly evidenced.**
+
+### Confirmed findings (18 claims → 8 synthesized; per-source format per the ARB charter)
+
+**Source cluster 1 — Administrative record & presumption of regularity**
+**Sources:** ACUS Recommendation 2013-4 (primary) · *Overton Park* commentary, U. Chicago L. Rev. (primary). **Discipline:** Administrative Law.
+**Key claims (FACT, confirmed 3-0 unless noted):** the administrative record is the fixed, contemporaneous substrate of a reviewable decision — everything actually before the decision-maker at the time, including contrary evidence; post-hoc litigation affidavits are "merely post hoc rationalizations" (*Overton Park* 1971) and excluded; once certified, the record carries a strong, rarely-rebutted presumption of regularity.
+**Assumption impact:** SUPPORTS A-2 (a form of immutability) and A-3 (auditability) — but **as properties of the record specifically, not of the underlying determination** (see Bestandskraft finding below, which shows these are NOT the same thing).
+**Concept Register update:** new concepts — *administrative/evidentiary record* · *presumption of regularity* (both AL, LOW/1 discipline this run).
+**Category:** FACT (doctrine) + INTERPRETATION (the record/determination distinction).
+**Open question:** does "presumption of regularity" have any analog outside adjudicated public-law records?
+
+**Source cluster 2 — The undefined "bad faith" threshold (NEGATIVE FINDING)**
+**Source:** U. Chicago L. Rev., *Scope of Evidentiary Review in Constitutional Challenges to Agency Action* (primary). **Discipline:** Administrative/Constitutional Law.
+**Key claim (FACT, 3-0):** courts permit expanding review beyond the closed record only on a "strong showing of bad faith or improper behavior" — and **this threshold has never been fully explained by the courts that apply it**, over 50+ years of litigation (only one Supreme Court case, *Dept. of Commerce v. New York* 2019, has ever found it satisfied, without articulating a general test).
+**Assumption impact:** this is a **mandatory negative finding**: a mechanism meant to guard record integrity against bad-faith conduct exists in name but has no settled operational content.
+**Concept Register update:** new concept — *record-completeness challenge doctrine / undefined bad-faith threshold* (AL, LOW/1) — flagged negative-finding.
+**Category:** FACT.
+**Open question:** does any jurisdiction (comparative/EU law) have a clearer analog where U.S. courts do not?
+
+**Source cluster 3 — Contemporaneity of justification (Chenery / hard-look doctrine)**
+**Sources:** ACUS 2013-4 · CRS Legal Sidebar LSB10558 · U. Chicago L. Rev. (all primary/secondary, corroborating). **Discipline:** Administrative Law.
+**Key claims (FACT, confirmed):** an agency must show "a rational connection between the facts found and the choice made" (*State Farm* 1983) at the time of decision; a reviewing body may **never** supply reasoning the decision-maker itself did not give (*Chenery*); reaffirmed in *DHS v. Regents* (2020), which rejected reasons offered nine months after the original decision, even though the reconstructed rationale may have been sound.
+**Assumption impact:** STRONGLY SUPPORTS A-6 (causal/temporal ordering — justification must precede or accompany the decision, never be reconstructed afterward) and A-3 (auditability via the "satisfactory explanation" requirement).
+**Concept Register update:** new concept — *contemporaneity requirement / no post-hoc rationalization* (AL, LOW/1 this run). **Relationship note (concept↔concept, NOT a PublicDigit mapping):** this concept appears related to iteration-1's *commit-before-sample* (S4, election science) and *declare-failure obligation* (S1) — both forbid retrospective reconstruction of a record or its justification. Kept as a **noted relationship**, not merged into one register row (merging is a clustering judgment reserved for the synthesis phase).
+**Category:** FACT + a flagged cross-iteration relationship (INTERPRETATION, weak — single relationship note, not a promotion).
+**Open question:** none beyond the general transfer question.
+
+**Source cluster 4 — Standards of review: a differentiated taxonomy, not one concept**
+**Sources:** *Standard of review* (Wikipedia, secondary) · Hawaii Law Library standards-of-review guide (secondary) · Seattle U. L. Rev. primer (secondary), cross-corroborated against primary case law in the verifier evidence (*Consolidated Edison v. NLRB* 1938; *Biestek v. Berryhill* 2019). **Discipline:** Administrative Law (with constitutional-challenge framing).
+**Key claim (FACT, confirmed via 5 merged sub-claims):** "standard of review" is not a single unified concept but a differentiated taxonomy of distinct doctrinal instruments — *substantial evidence* (scrutinizes the record itself, a deliberately low bar: "more than a scintilla"), *abuse of discretion* (scrutinizes decision-maker conduct), *de novo* (unconstrained re-examination of law), *clearly erroneous*/*arbitrary-and-capricious* (overall soundness) — each keyed to a **different object of scrutiny**; the appellate standard-of-review functions structurally the same role one level up that burden-of-proof does at trial level.
+**Assumption impact:** **DIRECTLY CONTRADICTS A-9** (evidence as a single concept) — independently of, and via entirely different legal mechanisms than, iteration 1's election-science splits (custody vs certification, auditability vs auditing). This is a **second, independent discipline** now contradicting A-9 via its own internal structure.
+**Concept Register update:** new concept — *differentiated standard-of-review taxonomy* (AL, and arguably CL via the constitutional-challenge angle — LOW/2 disciplines this run: AL + CL).
+**Category:** FACT. **RECOMMENDATION (flagged, not acted on):** track A-9 contradictions as a running tally across disciplines — four independent splits now (2 from ES, this one spanning AL/CL) — but no BC or clustering conclusion drawn.
+**Open question:** none.
+
+**Source cluster 5 — German comparative law: hearing right broader than U.S. due process**
+**Sources:** BMI official English translation of VwVfG (primary, cross-checked against the German original on gesetze-im-internet.de) · Pünder, I·CON 2013 (primary, peer-reviewed). **Discipline:** Administrative Law (comparative/civil law).
+**Key claim (FACT, 3-0):** §28(1) VwVfG requires the opportunity to comment before any adverse administrative act, and **extends this hearing right to third parties whose rights are affected** — broader than U.S. doctrine, where third-party hearing rights are "nebulous" and "in principle never granted" in public-benefits contexts.
+**Assumption impact:** directly relevant to the **standing transfer question**: shows a specific procedural-fairness property (breadth of who must be heard) that is **not even uniform across public-law systems** (Germany > U.S.) — a caution against assuming any single "evidence/fairness" package transfers uniformly to private-organization governance.
+**Concept Register update:** new concept — *rechtliches Gehör / third-party hearing right* (AL, LOW/1).
+**Category:** FACT.
+**Open question:** the transfer question itself — unresolved.
+
+**Source cluster 6 — Finality ≠ immutability (Bestandskraft) + procedural curing rules (NEGATIVE FINDING)**
+**Sources:** BMI VwVfG translation (primary, cross-checked) · Pünder, I·CON 2013 (primary). **Discipline:** Administrative Law (comparative/civil law).
+**Key claim (FACT, 3-0, both sub-claims):** German law formally **decouples** finality-against-challenge (*Bestandskraft*, non-appealability) from immutability of the determination — an unlawful act can become non-appealable while remaining substantively unlawful and revisable by the issuing authority itself, retrospectively or prospectively (§48 VwVfG); separately, procedural errors are treated as **curable and legally irrelevant** once corrected or shown not to have affected the outcome (§§45–46 VwVfG).
+**Assumption impact:** WEAKENS a strict reading of A-2 (immutability) — finality and immutability are explicitly NOT the same property in this legal system. SUPPORTS A-10 (a correction/adjudication loop exists structurally). **Mandatory negative finding:** the scholarship (citing former Federal Administrative Court president Sendler) documents that this curing mechanism is exploitable — "some administrative bodies purposefully deny citizens the possibility to state their arguments, knowing it is unlikely that citizens will seek legal remedy" — and some German scholars consider the curing rule potentially unconstitutional. **The correction loop, as actually practiced in this legal system, is documented as a vector for weakening ex-ante procedural rigor, not purely a safety valve.**
+**Concept Register update:** new concepts — *finality-vs-immutability decoupling (Bestandskraft)* and *procedural curing rules (Heilung)* (both AL, LOW/1) — the latter flagged negative-finding.
+**Category:** FACT + mandatory negative finding.
+**Open question:** what design property (in any domain, not just software) would prevent a correction mechanism from being exploited as a laxity incentive? Left open — no PublicDigit mapping drawn.
+
+**Source cluster 7 — Legitimacy ≠ justice (single-source, downgraded confidence)**
+**Source:** Hickey, Oxford J. Legal Studies 2022, via NCBI/PMC (peer-reviewed). **Discipline:** Constitutional Law.
+**Key claim (FACT, 3-0, confidence downgraded to MEDIUM by the verification harness because it rests on one article):** legitimacy (propriety of *how* a decision comes about) and justice (substantive correctness of the *outcome*) are conceptually distinct evaluative axes for institutional decisions; a decision can be legitimate — and therefore survive institutional/constitutional challenge — without being substantively "just," and it is **legitimacy, not justice, that is the pre-eminent consideration for judicial review**.
+**Assumption impact:** **introduces a new concept orthogonal to A-1/A-2/A-3/A-6/A-9/A-10** — it reframes the research question itself: trust in a governance platform may track *process-legitimacy*, not *outcome-justice*.
+**Concept Register update:** new concept — *legitimacy vs. justice (distinct evaluative axes)* (CL, LOW/1, single-source caveat noted).
+**Category:** FACT + INTERPRETATION (the reframing).
+**Open question:** does this reframing survive when Tyler-style empirical procedural-justice literature is actually reached (deferred — coverage gap above)?
+
+### Refuted claims (recorded — mandatory, so they are not repeated)
+
+| Claim | Vote | Why it matters |
+|---|---|---|
+| Constitutional-challenge review is confined strictly to the administrative record | 0-3 | Overreach of the statutory-APA record rule into constitutional review generally |
+| German law imposes a *general* statutory Begründungspflicht stronger than U.S. reason-giving | 0-3 | An intuitively plausible comparative-law claim that does NOT hold as stated |
+| §39(1) VwVfG imposes a general duty to give reasons for administrative acts (as characterized) | 0-3 | The specific statutory characterization overreached |
+| English courts categorically exclude late-reconstructed justifications | 1-2 | Common-law-outside-US claim; unconfirmed, not disproven — absence of evidence |
+| *R (Bradley) v SSWP* as a clean example of reason-giving failure | 1-2 | Case-specific claim did not survive re-examination |
+| "Reciprocity of justification" is constitutive of legitimacy (citizens must recognize the reasons as reasonable) | 0-3 | The BROADER legitimacy-vs-justice framing (cluster 7) survived; this SPECIFIC normative extension from the same source did not |
+| Arbitrary-and-capricious review = merely "did the agency consider the relevant factors" | 1-2 | Oversimplification of a more nuanced standard |
+
+**INTERPRETATION:** the refutation rate (7 of 25 voted claims, 28%) is itself evidence the verification process is discriminating, not rubber-stamping — consistent with iteration-1's honesty standard.
+
+## Cross-iteration concept-relationship notes (concept↔concept only — no clustering, no BC naming)
+
+- *Contemporaneity requirement* (AL, this iteration) relates to *commit-before-sample* and *declare-failure* (ES, iteration 1) — both forbid retrospective reconstruction of record or justification. **Not merged** (clustering deferred).
+- *Differentiated standard-of-review taxonomy* (AL/CL) independently reinforces the A-9-weakening direction already established by ES's custody/certification and auditability/auditing splits — a **second, unrelated discipline** contradicting A-9 by its own internal logic. Four independent A-9-weakening signals now stand across two disciplines.
+- *Finality-vs-immutability decoupling* (AL) and *the correction loop's exploitability as documented in German administrative law* relate conceptually to ES's *declare-failure obligation* and *evidence co-production* — all concern what happens when a correction/audit mechanism exists but is not exercised rigorously. **Not merged.**
+
 ## Stopping criterion
 
-**NOT REACHED** (criterion updated by the ARB iteration-2 charter: stop when no concept moves LOW→MEDIUM or MEDIUM→HIGH for three consecutive major sources — see the Concept Register movement log). Iteration 1 seeded the register; zero qualifying no-movement sources so far. The review continues.
+**NOT REACHED.** Iteration 2a added 9 new concepts (register: `EPIC-002_Concept_Register.md`) across 2 disciplines with 0 register-row promotions this iteration (new concepts enter fresh, per the anti-clustering-bias rule — merging iteration-1 and iteration-2a concepts is a clustering judgment explicitly deferred). Separately, the **assumption table** shows A-9 weakened by an independent second discipline. **Coverage gaps carried forward:** Tyler-style procedural-justice literature (requested, not reached) · private-organization transfer question / Vereinsrecht (requested, not reached) · common-law-outside-US (one source tested, refuted). Iteration 2b targets next: Governance Theory + Trust Engineering (assurance/safety cases, NIST, dependability) per the charter's discipline order.
 
 ---
-*Charter: `EPIC-002_Problem_Statement.md` · Run: `wf_588d4d47-8d6` (resumable) · Raw claims: workflow journal + scratchpad extract · Labels per charter: FACT / INTERPRETATION / RECOMMENDATION / OPEN QUESTION, never collapsed.*
+*Charter: `EPIC-002_Problem_Statement.md` · Runs: `wf_588d4d47-8d6` (iteration 1, resumable) · `wf_4c2904f1-602` (iteration 2a attempt 1, FAILED — 0 sources, Fable-5 session limit) · `wf_e118e84a-441` (iteration 2a attempt 2, VERIFIED, under Sonnet 5) · Labels per charter: FACT / INTERPRETATION / RECOMMENDATION / OPEN QUESTION, never collapsed.*
