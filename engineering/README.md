@@ -66,6 +66,8 @@ engineering/
 │   └── reference/             Reference Architecture (DRAFT — describes implemented reality; adoption pending review)
 │
 ├── governance/                What the platform ENFORCES
+│   ├── STANDARDS_INDEX.md     ES-001..ES-006 — every binding rule's canonical home or authoritative pointer (PROPOSED)
+│   ├── ES-001..ES-006         Constitution · Execution · Qualification · Documentation · Repository · Knowledge
 │   └── Engineering_Execution_Protocol.md   Provider- and project-independent execution lifecycle
 │                                            (plan → review → approve → implement → verify → report → decide)
 │
