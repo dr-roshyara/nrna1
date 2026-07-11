@@ -6,7 +6,7 @@
 **Authority:** Decision Authority (ARB).
 **Qualification Method:** constitution audits (OQ-ENG-002-class: ownership, discoverability, single-home, no-contradiction checks).
 **Supersedes:** the MEMORY-resident texts of rule parsimony and governance-creation (now hosted here; MEMORY holds hints).
-**Enforcement:** Human + AI (see the Enforcement Matrix in the Standards Index).
+**Decision authority (compliance):** Human + AI — the AI evaluates, governance decides (see the Decision Authority & Verification Matrix in the Standards Index).
 **Related Standards:** all (ES-002..ES-006 derive their authority from this document's registered sources).
 
 ## Registered constitutional sources (governed homes — pointers, never copies)

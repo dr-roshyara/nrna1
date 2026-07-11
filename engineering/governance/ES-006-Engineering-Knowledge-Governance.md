@@ -6,7 +6,7 @@
 **Authority:** Decision Authority (ARB).
 **Qualification Method:** promotion-ladder audits (does every promoted item carry qualification evidence?) + evidence-register integrity checks.
 **Supersedes:** the MEMORY-resident text of the knowledge research freeze (now hosted here).
-**Enforcement:** Human + AI (see the Enforcement Matrix in the Standards Index).
+**Decision authority (compliance):** Human + AI — the AI evaluates, governance decides (see the Decision Authority & Verification Matrix in the Standards Index).
 **Related Standards:** ES-001 (burden of proof) · ES-003 (the qualification step of the ladder) · ES-005 (research-tier placement).
 
 ## Hosted rules (canonical here; previously MEMORY-only or board-resident)

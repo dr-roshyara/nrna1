@@ -6,7 +6,7 @@
 **Authority:** Decision Authority (ARB).
 **Qualification Method:** EP-02 completion reviews per work item; operational qualifications (OQ) for the lifecycle itself.
 **Supersedes:** the MEMORY-resident texts of the implementation-first default and the observation stop (now hosted here).
-**Enforcement:** AI (approval gates: Human) (see the Enforcement Matrix in the Standards Index).
+**Decision authority (compliance):** AI (approval gates: Human) — the AI evaluates, governance decides (see the Decision Authority & Verification Matrix in the Standards Index).
 **Related Standards:** ES-001 (authority) · ES-003 (verification of executed work) · ES-004 (the reports execution produces).
 
 ## Registered execution rules (governed homes — pointers, never copies)

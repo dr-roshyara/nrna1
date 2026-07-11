@@ -6,7 +6,7 @@
 **Authority:** Decision Authority (ARB).
 **Qualification Method:** documentation checks within operational qualifications (link/reference/status integrity; record-type responsibility).
 **Supersedes:** the MEMORY-resident texts of retrospectives-recommend and the record conventions (now hosted here).
-**Enforcement:** AI (+ one Machine candidate: append-only guard, ARB pending) (see the Enforcement Matrix in the Standards Index).
+**Decision authority (compliance):** AI (+ one Machine candidate: append-only guard, ARB pending) — the AI evaluates, governance decides (see the Decision Authority & Verification Matrix in the Standards Index).
 **Related Standards:** ES-001 (governance creation) · ES-003 (verdict recording) · ES-005 (where records live).
 
 ## Hosted rules (canonical here; previously MEMORY-only or scattered)
