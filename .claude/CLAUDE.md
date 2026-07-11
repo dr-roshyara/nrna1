@@ -636,19 +636,21 @@ Whenever work starts or finishes, update CONTEXT.md.
 
 Every significant task must have its own plan document.
 
+**Storage and naming are governed by ES-004.2** (`engineering/governance/ES-004-Documentation.md` — the canonical rule; this section is a pointer):
+
 Store plans in:
 
-.claude/plans/
+./docs/plans/
 
-Use meaningful filenames.
+Naming:
 
-Preferred naming:
+<ID>-<Brief-Description>-Plan.md
 
-PB-123-product-assets.md
+Example:
 
-or
+EPIC-002-001-Evidence-Context-Strategic-Discovery-Plan.md
 
-2026-07-06-api-redesign.md
+Durable IDs, never dated filenames. A superseding plan cites the superseded plan's ID in its traceability section. Existing plans in .claude/plans/ are historical records — they stand; the convention applies from the next plan onward.
 
 Avoid randomly generated filenames.
 

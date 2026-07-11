@@ -23,7 +23,7 @@
   - Saved in `./docs/plans/` (plans are project-specific, so `docs/`, not `engineering/`; per the folder rule ES-005.2, the directory is created only when the first plan arrives).
   - Named `<ID>-<Brief-Description>-Plan.md` — e.g. `EPIC-002-001-Evidence-Context-Strategic-Discovery-Plan.md`. Durable IDs, never dated filenames (this bullet's parent rule, applied to plans).
   - The ID is durable: it does not change when the plan is updated. A superseding plan references the superseded plan's ID in its traceability section.
-  - Existing plans in `.claude/plans/` / `claude/plans/` are historical records — they stand where they are (no migration; R-37). The convention applies from the next plan onward. *Known conflict, flagged for reconciliation: the project/runtime bindings (root `CLAUDE.md`, `.claude/CLAUDE.md`) still describe older plan conventions (datetime-stamped names, `.claude/plans/` placement) — those pointer texts are user-owned instructions; this ES text is the canonical convention once they are reconciled.*
+  - Existing plans in `.claude/plans/` / `claude/plans/` are historical records — they stand where they are (no migration; R-37). The convention applies from the next plan onward. *Bindings reconciled 2026-07-11 (user-authorized): root `CLAUDE.md` and `.claude/CLAUDE.md` plan sections are now pointers to this rule — the convention lives once, here.*
 
 ## Registered (pointers)
 

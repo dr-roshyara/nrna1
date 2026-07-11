@@ -372,27 +372,16 @@ In an era of increasing remote participation, the ability to conduct **secure, v
 
 ## 🗂️ **Development Practices**
 
-### **Plan Storage Convention**
+### **Plan Storage Convention (POINTER — canonical rule: ES-004.2)**
 
-Implementation plans are stored in `./claude/plans/` with datetime-stamped filenames.
+Plans follow **ES-004.2** (`engineering/governance/ES-004-Documentation.md`): stored in `./docs/plans/`, named `<ID>-<Brief-Description>-Plan.md` (e.g. `EPIC-002-001-Evidence-Context-Strategic-Discovery-Plan.md`). Durable IDs, never datetime-stamped filenames; a superseding plan cites the superseded plan's ID.
 
-**Naming Convention:**
-```
-./claude/plans/YYYYMMDD-HHMM-<phase-or-task-name>.md
-```
+*(The former convention here — `./claude/plans/YYYYMMDD-HHMM-*.md` — was superseded by ARB order 2026-07-11; existing plans under `claude/plans/` and `.claude/plans/` stand as historical records, no migration.)*
 
-**Example:**
-```
-./claude/plans/20260514-1200-phase-b-corrections.md
-./claude/plans/20260514-1430-voting-eligibility-policy.md
-./claude/plans/20260515-0900-elections-gateway-integration.md
-```
-
-**Purpose:**
+**Purpose (unchanged):**
 - Each major implementation phase gets its own plan document
-- Datetime stamps preserve chronological history
 - Plans are committed to git alongside implementation
-- Enables easy reference in commit messages: "see ./claude/plans/20260514-1200-..."
+- Reference plans in commit messages by ID: "see EPIC-002-001"
 
 ---
 
