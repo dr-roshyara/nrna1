@@ -34,6 +34,9 @@ The validation report holds **3 retrospective confirmations (medium strength) ·
 ### INCONCLUSIVE when:
 - The pilot produces **no non-plan crossing opportunities at all** (nothing to test). Consequence: the candidate **remains a candidate** — no promotion, no retirement; the horizon extends to the ~20–30-task validation window already on record. Inconclusive is a legal outcome, not a failure.
 
+### EMERGENT OBSERVATION *(fourth outcome — ARB refinement, 2026-07-11)*:
+- The pilot reveals a **third explanation** — something neither confirming nor falsifying the candidate (genuine pilots often do). Recorded as **research input only**: it does **not** influence the candidate's verdict or status immediately; it enters the retrospective as a research question (the same channel as the Governance Promotion watch-item). This prevents surprise findings from silently becoming architecture.
+
 ## 4. Counting & recording rules
 - Counts only, never composite scores (ES-003.2). Sources: session logs, EP-02 reports, the pilot's qualification records — no new instrumentation is built for this (R-26: measurement lives in qualification instruments, periodically).
 - The verdict is recorded per ES-003.1 (PASS / FAIL / INCONCLUSIVE with history); the **ARB decides promotion** at the retrospective (ES-006.1) — this plan defines the evidence, never the decision.
