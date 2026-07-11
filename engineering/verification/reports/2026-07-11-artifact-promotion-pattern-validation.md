@@ -30,6 +30,15 @@ One **pathology** found, zero refuting counterexamples: **R-36 cites `claude/pla
 | Unknowns (designed tests pending) | 2 | WorkingContext (pilot) · retrospective inbox (retrospective) |
 | Not applicable | 1 class | born-governed records |
 
+## 3b. Evidence-strength taxonomy (ARB refinement, 2026-07-11)
+
+| Evidence class | Definition | Strength |
+|---|---|---|
+| **Retrospective** | the pattern was *discovered afterwards* in events not executed as instances of it | **Medium** |
+| **Prospective** | work was *intentionally executed using* the pattern — the promotion event declared before the crossing | **Strong** |
+
+All three confirmed specializations above are **retrospective (medium)**. Prospective evidence count today: **zero**. The pilot's task is therefore precisely defined: **produce the first prospective validation.**
+
 ## 4. Conclusion — one recommendation
 
 **Do NOT generalize into an Engineering Platform capability yet.** Hold Artifact Promotion as a **pilot-gated candidate pattern** (matching DetermineArtifactLifecycle's candidate status).
