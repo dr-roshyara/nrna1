@@ -644,13 +644,13 @@ Store plans in:
 
 Naming:
 
-<ID>-<Brief-Description>-Plan.md
+YYYYMMDD-HHMM-<what_is_it_about>-plan.md
 
 Example:
 
-EPIC-002-001-Evidence-Context-Strategic-Discovery-Plan.md
+20260711-1830-evidence-context-strategic-discovery-plan.md
 
-Durable IDs, never dated filenames. A superseding plan cites the superseded plan's ID in its traceability section. Existing plans in .claude/plans/ are historical records — they stand; the convention applies from the next plan onward.
+The timestamp preserves chronological history; the -plan.md suffix marks the type. A superseding plan cites the superseded plan's filename in its traceability section. Existing plans in .claude/plans/ are historical records — they stand; the convention applies from the next plan onward.
 
 Avoid randomly generated filenames.
 
