@@ -25,18 +25,24 @@ Qualification sits between research and engineering — nothing is promoted beca
 
 **ES-006.4 — The Harvest Question** *(ARB 2026-07-11 — the objective is knowledge discovery, never rule extraction)*. The standing engineering question at completion of project work (EP-02 / retrospective) is:
 
-> **"Did this work produce reusable engineering knowledge?"**
+> **"Did this work REVEAL reusable engineering knowledge?"**
 
-It is a **question, not a mandate**: most tickets honestly answer **No, and No is a fully valid outcome** — continue work, harvest nothing. The forbidden framing is *"can we create a new rule?"* — asking for rules makes people find rules. Only a **Yes** proceeds:
+*Reveal, not produce* (ARB): the project **reveals** knowledge · the engineer **captures** it · the platform **governs** it · engineering **promotes** it — knowledge is discovered, never manufactured. It is a **question, not a mandate**: most tickets honestly answer **No, and No is a fully valid outcome** — continue work, harvest nothing. **No-as-health-indicator:** if every ticket yields a pattern or standard, the platform is over-generalizing; a mature platform's harvest is mostly No *(qualitative signal only — no harvest-rate metric is persisted, per the score-stop, ES-003.2)*. The forbidden framing is *"can we create a new rule?"* — asking for rules makes people find rules. Only a **Yes** proceeds:
 
 ```text
-Project Work → Observe → DetermineReusePotential ── No ──► continue work (the common case)
-                                   │ Yes
-                                   ▼
-                        DetermineArtifactType   (pattern card · guide · qualification improvement ·
-                                   │             candidate standard · research — or, on reflection, nothing)
-                                   ▼
-                        ES-006.1 Promotion Ladder → Qualification → Engineering
+Project Outcome          (implementation · verification · qualification · retrospective —
+      │                   the ONLY legitimate harvest inputs; never arbitrary
+      ▼                   mid-coding speculation — harvesting stays evidence-based)
+  Observation
+      │
+      ▼
+DetermineReusePotential ── No ──► continue work (the common, healthy case)
+      │ Yes
+      ▼
+DetermineArtifactType   (pattern card · guide · qualification improvement ·
+      │                  candidate standard · research — or, on reflection, nothing)
+      ▼
+ES-006.1 Promotion Ladder → Qualification → Engineering
 ```
 
 The platform seeks **reusable engineering knowledge** (never "AI rules" — the platform is provider- and AI-neutral); a standard is only one possible destination, and the right representation emerges from the evidence (consistent with the constitutional telos: knowledge exists to satisfy knowledge needs; documentation is merely one possible representation). Decisions are cataloged in the [Engineering Decision Model](../architecture/reference/Engineering_Decision_Model.md).

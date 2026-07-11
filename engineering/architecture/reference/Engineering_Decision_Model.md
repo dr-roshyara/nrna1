@@ -64,9 +64,9 @@ Future Implementation Notes:   (optional) what would need to happen for automati
 - **Qualification method:** OQ structural checks
 
 ### DetermineReusePotential
-- **Question:** did this work produce reusable engineering knowledge?
+- **Question:** did this work **reveal** reusable engineering knowledge? *(reveal, not produce — the project reveals; the engineer captures; the platform governs; engineering promotes)*
 - **Authority:** ES-006.4 (The Harvest Question)
-- **Current resolution procedure:** ask the question at completion (EP-02 / retrospective) and answer honestly — **"No" is the common, fully valid outcome** (continue work, harvest nothing); only "Yes" proceeds to DetermineArtifactType. Never ask "can we create a new rule?" — the platform seeks knowledge, not rules
+- **Current resolution procedure:** ask the question at completion (EP-02 / retrospective), taking **Project Outcomes** as the only inputs (implementation · verification · qualification · retrospective — never mid-coding speculation), and answer honestly — **"No" is the common, fully valid outcome** (continue work, harvest nothing); only "Yes" proceeds to DetermineArtifactType. Never ask "can we create a new rule?" — the platform seeks knowledge, not rules
 - **Qualification method:** EP-02 review
 - *(Provenance: ARB-ordered split of DetermineArtifactType, 2026-07-11 — entered through the stopping rule's own question, "which existing decision does this extend?": first decide whether anything is worth keeping, only then what kind of thing it is.)*
 
