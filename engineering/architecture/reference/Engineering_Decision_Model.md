@@ -38,7 +38,7 @@ Qualification                    how compliance is checked        (ES-003; OQ in
 Decision:                      the named decision
 Question:                      the question the Engineer must answer
 Authority:                     which standard governs this decision
-Current Procedure:             how the Engineer resolves it today
+Current Resolution Procedure:  how the Engineer resolves it today (the decision never changes; only its resolution evolves)
 Qualification:                 how compliance is verified
 Future Implementation Notes:   (optional) what would need to happen for automation
 ```
@@ -50,37 +50,37 @@ Future Implementation Notes:   (optional) what would need to happen for automati
 ### DetermineConcern
 - **Question:** does this belong to Product, Engineering, or Runtime?
 - **Authority:** ES-005.1 (Three-Concern Separation)
-- **Current procedure:** apply the three-concern table
+- **Current resolution procedure:** apply the three-concern table
 - **Qualification method:** OQ structural checks
 
 ### DetermineArtifactType
 - **Question:** is this a standard, a guide, a pattern, a record, or research?
 - **Authority:** ES-004 (Documentation) · ES-006 (Engineering Knowledge Governance) · ER-09 when ratified
-- **Current procedure:** match against the authorized-type index
+- **Current resolution procedure:** match against the authorized-type index
 - **Qualification method:** OQ documentation checks
 
 ### DeterminePlacement
 - **Question:** where should this artifact live?
 - **Authority:** ES-005.3 (Placement Litmus) · ES-005.2 (Folder Rule)
-- **Current procedure:** litmus ("adoptable unchanged by another project?") → folder rule (first-artifact) → placement
+- **Current resolution procedure:** litmus ("adoptable unchanged by another project?") → folder rule (first-artifact) → placement
 - **Qualification method:** OQ structural instruments (repository qualification)
 
 ### DetermineApplicableStandards
 - **Question:** which ES documents govern this work?
 - **Authority:** STANDARDS_INDEX
-- **Current procedure:** read the index's one-line table
+- **Current resolution procedure:** read the index's one-line table
 - **Qualification method:** EP-02 completion review
 
 ### DetermineQualificationMethod
 - **Question:** how will compliance with the governing standard be known?
 - **Authority:** each standard's own Qualification Method header
-- **Current procedure:** read the governing standard's header
+- **Current resolution procedure:** read the governing standard's header
 - **Qualification method:** ES-003 lifecycle (re-runs; verdict-history audits)
 
 ### DeterminePromotionPath
 - **Question:** does this work create or promote a rule?
 - **Authority:** ES-006.1 (Promotion Ladder)
-- **Current procedure:** a guide teaches rules and never creates them; anything rule-creating enters the ladder (pilot → qualification → recommendation → **ARB decides**)
+- **Current resolution procedure:** a guide teaches rules and never creates them; anything rule-creating enters the ladder (pilot → qualification → recommendation → **ARB decides**)
 - **Qualification method:** promotion-ladder audits
 - **Future implementation notes:** none — promotion is a human governance act and is never automated
 
@@ -101,7 +101,7 @@ Worked example of the same pattern in the future domain: *Question:* "what knowl
 
 ## The automation stance
 
-> **Automation is an implementation of governance, never governance itself.** *(Ratification candidate for constitutional status — ARB decides at ES ratification; parsimony note: generalizes R-26 + "governance precedes automation".)*
+> **Automation is an implementation of governance, never governance itself.** *(An architectural statement of this model — NOT constitutional. Per the ARB (2026-07-11), it follows the same promotion path as everything else: Research → Use → Qualification → Adoption. It becomes constitutional only if operational evidence earns it that status; parsimony note: it generalizes R-26 + "governance precedes automation".)*
 
 Consequences, all in force: decisions are documented, never coded · machine verification lives in qualification instruments (periodic), not resident daemons · the AI **evaluates and recommends** — authority remains with governance (ES-001.2) · a decision procedure earns software implementation only through the promotion ladder, with evidence that reasoning-over-standards fails.
 

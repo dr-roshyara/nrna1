@@ -57,7 +57,7 @@
 | ES-006.2 Research freeze · ES-006.3 Harvest discipline | AI evaluates | OQ register-integrity checks | Existing (OQ instruments) |
 | Registry-first (registered) | Machine (paths/ids) + AI (trace quality) | registry validator | Existing (symfony/yaml runs) |
 
-**The smallest automation set justified by evidence: ZERO new hooks.** Machine verification lives in qualification instruments (periodic, per R-26) — not resident daemons; existing reminders cover runtime guidance; one candidate awaits the ARB. *Automation is an implementation of governance, never governance itself* (ratification candidate for constitutional status — recorded in the Decision Model).
+**The smallest automation set justified by evidence: ZERO new hooks.** Machine verification lives in qualification instruments (periodic, per R-26) — not resident daemons; existing reminders cover runtime guidance; one candidate awaits the ARB. *Automation is an implementation of governance, never governance itself* (an architectural statement following the normal promotion path — see the Decision Model).
 
 ## The stopping rule
 
