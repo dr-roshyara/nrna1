@@ -13,7 +13,7 @@
 | [ES-003](ES-003-Qualification.md) | Qualification | How the platform verifies itself | qualification lifecycle · score-persistence stop · measurement conventions |
 | [ES-004](ES-004-Documentation.md) | Documentation | How records are structured & governed | retrospectives-recommend · record conventions |
 | [ES-005](ES-005-Repository.md) | Repository | How the repository is organized | folder rule · placement litmus |
-| [ES-006](ES-006-Engineering-Knowledge-Governance.md) | Engineering Knowledge Governance | How ENGINEERING knowledge is harvested, promoted, retired (NOT project knowledge — a separate bounded context with its own future standards after the pilot) | promotion ladder · knowledge research freeze · harvest discipline |
+| [ES-006](ES-006-Engineering-Knowledge-Governance.md) | Engineering Knowledge Governance | How ENGINEERING knowledge is harvested, promoted, retired (NOT project knowledge — a separate bounded context with its own future standards after the pilot) | promotion ladder · knowledge research freeze · harvest discipline · harvest question |
 
 ## Constitutional hierarchy
 
@@ -55,6 +55,7 @@
 | ES-005.3 Placement litmus · ES-005.4 Never-a-copy (candidate) | AI evaluates (judgment) | EP-02 review | None |
 | ES-006.1 Promotion ladder | **Human decides** (AI recommends) | promotion-ladder audits | None |
 | ES-006.2 Research freeze · ES-006.3 Harvest discipline | AI evaluates | OQ register-integrity checks | Existing (OQ instruments) |
+| ES-006.4 Harvest question | AI evaluates ("No" is the common, valid answer) → **Human decides** any Yes via ES-006.1 | EP-02 review | None |
 | Registry-first (registered) | Machine (paths/ids) + AI (trace quality) | registry validator | Existing (symfony/yaml runs) |
 
 **The smallest automation set justified by evidence: ZERO new hooks.** Machine verification lives in qualification instruments (periodic, per R-26) — not resident daemons; existing reminders cover runtime guidance; one candidate awaits the ARB. *Automation is an implementation of governance, never governance itself* (an architectural statement following the normal promotion path — see the Decision Model).

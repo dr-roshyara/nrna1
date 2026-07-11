@@ -63,10 +63,17 @@ Future Implementation Notes:   (optional) what would need to happen for automati
 - **Current resolution procedure:** apply the three-concern table
 - **Qualification method:** OQ structural checks
 
+### DetermineReusePotential
+- **Question:** did this work produce reusable engineering knowledge?
+- **Authority:** ES-006.4 (The Harvest Question)
+- **Current resolution procedure:** ask the question at completion (EP-02 / retrospective) and answer honestly — **"No" is the common, fully valid outcome** (continue work, harvest nothing); only "Yes" proceeds to DetermineArtifactType. Never ask "can we create a new rule?" — the platform seeks knowledge, not rules
+- **Qualification method:** EP-02 review
+- *(Provenance: ARB-ordered split of DetermineArtifactType, 2026-07-11 — entered through the stopping rule's own question, "which existing decision does this extend?": first decide whether anything is worth keeping, only then what kind of thing it is.)*
+
 ### DetermineArtifactType
-- **Question:** is this a standard, a guide, a pattern, a record, or research?
+- **Question:** what should this reusable knowledge become — a pattern card, a guide, a qualification improvement, a candidate standard, or research? *(reached only after DetermineReusePotential = Yes; "on reflection, nothing" remains a valid answer)*
 - **Authority:** ES-004 (Documentation) · ES-006 (Engineering Knowledge Governance) · ER-09 when ratified
-- **Current resolution procedure:** match against the authorized-type index
+- **Current resolution procedure:** match against the authorized-type index — the right representation emerges from the evidence; a standard is only one possible destination
 - **Qualification method:** OQ documentation checks
 
 ### DeterminePlacement
@@ -116,4 +123,4 @@ Worked example of the same pattern in the future domain: *Question:* "what knowl
 Consequences, all in force: decisions are documented, never coded · machine verification lives in qualification instruments (periodic), not resident daemons · the AI **evaluates and recommends** — authority remains with governance (ES-001.2) · a decision procedure earns software implementation only through the promotion ladder, with evidence that reasoning-over-standards fails.
 
 ---
-*Traceability: ARB decision-model commissions + the services→decisions vocabulary correction (2026-07-11: "a Domain Service is executable; these are specifications") + ARB acceptance record (2026-07-11: **Decision: Accepted**, four minor recommendations — Current Resolution Procedure rename · decision-index-not-second-rulebook · automation stance held architectural · conceptual freeze — all applied). Platform refinement stops with this document; its own adoption is earned through one real engineering cycle.*
+*Traceability: ARB decision-model commissions + the services→decisions vocabulary correction (2026-07-11: "a Domain Service is executable; these are specifications") + ARB acceptance record (2026-07-11: **Decision: Accepted**, four minor recommendations — Current Resolution Procedure rename · decision-index-not-second-rulebook · automation stance held architectural · conceptual freeze — all applied) + the harvest amendment (2026-07-11: objective is "discover reusable engineering knowledge", never "extract rules"; DetermineReusePotential split out of DetermineArtifactType by ARB order; ES-006.4). Platform refinement stops with this document; its own adoption is earned through one real engineering cycle.*
