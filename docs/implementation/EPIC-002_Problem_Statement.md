@@ -1,10 +1,14 @@
-# EPIC-002 — Problem Statement (Research Charter for Strategic Discovery)
+# EPIC-002 — Problem Statement (Research Charter for Strategic Discovery — **Constitutional Trust Discovery**)
 
 **Kind:** research charter — NOT an IDD, NOT an ADR. This document is the constitution of the Strategic Discovery phase: it defines the problem, the questions, and the boundaries of the research. It decides nothing about the solution.
 **Authorized:** ARB 2026-07-11. **Activated:** after the EPIC-001 retrospective + formal closure.
 **Role instruction (ARB, binding for this phase):** *Do not think like a software architect during EPIC-002 — think like a researcher.* The researcher asks **"what exists?"**; the architect asks "what should we build?". EPIC-002 stays in the first role until the ARB authorizes an IDD.
 
 ---
+
+## Objective (ARB redirect, 2026-07-11 — AUTHORITATIVE)
+
+> **The objective is NOT to design the Evidence bounded context. The objective is to determine whether "Evidence" should exist as a bounded context at all.** It may become Evidence · Trust · Certification · Constitutional Audit · Provenance · Accountability · Audit Services — or two or three contexts. Approach with genuine uncertainty: confirmed, split, merged, renamed, or rejected are all acceptable outcomes. This phase is **Constitutional Trust Discovery**, not Evidence Discovery.
 
 ## Primary research question (problem space first — ARB, 2026-07-11)
 
@@ -13,6 +17,21 @@
 Discovery starts HERE — in the problem space — not at "how should Evidence be designed?". The research tries to **falsify** the going-in assumption (Evidence as one bounded context), not to elaborate it. Every discovery activity must answer one of: *what exists? · what is already known? · which assumptions are wrong? · which concepts recur across disciplines? · what ownership emerges naturally? · which responsibilities clearly do NOT belong together?*
 
 **Finding labels (never collapsed):** every statement in discovery output is labeled **FACT** (observed from literature or implementation) · **INTERPRETATION** (analysis) · **RECOMMENDATION** (proposal) · **OPEN QUESTION** (unknown). At the end of each discovery session: STOP — the ARB decides whether discovery is sufficient to authorize Strategic DDD/tactical design.
+
+## Initial assumptions to test (ARB, 2026-07-11 — the falsification targets)
+
+| # | Assumption | Source |
+|---|------------|--------|
+| A-1 | "Evidence" is the right bounded context name | Existing roadmap |
+| A-2 | Evidence must be immutable | ADR-T8 (forward-only) |
+| A-3 | Evidence must be auditable | ADR-T1/T4/T16 |
+| A-4 | Evidence must be replay-safe | Inbox deduplication |
+| A-5 | Evidence must be tenant-isolated | ADR-T16 |
+| A-6 | Evidence must be causally ordered | Parking + redrive |
+| A-7 | Evidence must be anonymous | ADR-T11 |
+| A-8 | Evidence must be queryable | IT-8 |
+| A-9 | Evidence belongs to a single bounded context | Existing context map |
+| A-10 | Evidence is produced by the correction loop | PB-004/005/006 |
 
 ## Problem
 
@@ -40,21 +59,30 @@ PublicDigit's constitutional correction loop (EPIC-001) produces a complete, pro
 
 ## Literature review (multi-disciplinary — the core research activity; meaningful time, not a day or two)
 
-| Discipline | Topics |
+| Discipline | Key concepts |
 |---|---|
-| **Domain** | election audits · constitutional governance · parliamentary procedure · administrative law and adjudication workflows |
-| **Evidence** | digital evidence management · chain of custody · provenance models (e.g. W3C PROV) · evidential reasoning |
-| **Architecture** | event sourcing in regulated systems · CQRS · audit systems · tamper-evident/transparency logs (Merkle structures, WORM) |
-| **Voting** | end-to-end verifiable voting · risk-limiting audits (RLAs) · election integrity and observation |
+| **Constitutional law** | due process · judicial review · evidentiary standards · legitimacy · challengeability · admissible evidence |
+| **Administrative law** | government justification · appeals · procedural fairness · demonstrable reasoning |
+| **Election science** | Risk-Limiting Audits (RLAs) · End-to-End Verifiable Voting · election certification · ballot accounting · observer models |
+| **Digital forensics** | evidence admissibility · chain of custody · integrity · provenance · timestamping |
+| **Trust engineering** | NIST trustworthy systems · assurance cases · safety cases · ISO trust frameworks |
+| **Distributed systems** | Byzantine agreement · consensus · immutability · replay · deterministic reconstruction |
+| **Provenance / data lineage** | W3C PROV · causal history · lineage · attribution |
+| **Audit theory** | audit trails · forensic accounting · auditability |
+| **DDD (strategic only)** | bounded contexts · ubiquitous language · context mapping · ownership — which concepts recur across ALL the disciplines above? |
 
 Purpose: **validate or falsify our own model** — identify durable concepts that belong in the ubiquitous language; never copy systems.
 
-**Permanent researcher rule (ARB, 2026-07-11):** *every literature source must either strengthen, weaken, or falsify at least one existing PublicDigit assumption* — no collecting for its own sake. The review maintains an assumption-evidence table:
+**Permanent researcher rule (ARB, 2026-07-11):** every source must produce one of FOUR results against the assumption register — no collecting for its own sake:
 
-| Existing assumption | Literature | Result (strengthens / weakens / contradicts / uncertain) |
-|---|---|---|
+| Result | Meaning |
+|---|---|
+| **Supports** | strengthens an existing PublicDigit assumption |
+| **Weakens** | calls an assumption into question |
+| **Contradicts** | directly opposes an assumption |
+| **Introduces** | exposes an important concept never considered — enters the register as a NEW recorded assumption/concept |
 
-Sources that touch no assumption are excluded or generate a NEW recorded assumption first.
+The review maintains the assumption-evidence table (A-1..A-10 above + introduced entries).
 
 ## Research method (ARB enhancement, 2026-07-11 — governs the literature review)
 
@@ -88,13 +116,18 @@ The synthesis step consumes NKMs, never raw articles.
 
 ## Deliverables (Strategic Discovery artifacts ONLY)
 
-1. **Literature review** (state of the art → PublicDigit gap analysis)
+0. **Problem Space Model** — the primary deliverable: what concepts exist, which recur across disciplines, which differ, which conflict, which are domain-specific vs universal. Only AFTER it: whether "Evidence" is a bounded context.
+1. **Literature review** (state of the art → PublicDigit gap analysis; assumption-evidence table with supports/weakens/contradicts/introduces)
 2. **Candidate ubiquitous language** for the evidence domain
 3. **Ownership map** (what the candidate context owns / observes / must never touch)
 4. **Context map** (relationships to the implemented core; builds on `EPIC-002_Context_Dependency_Map_Draft.md`)
 5. **Open questions register** (what discovery could not resolve)
-6. **Recommendation** — one bounded context / several / merge — with evidence
+6. **Recommendation to the ARB** — is "Evidence" confirmed, split, merged, renamed, or rejected; should tactical DDD begin, and for which context(s)
 7. **STOP → ARB review**: the ARB decides whether the accumulated evidence authorizes an IDD.
+
+## Stopping criterion (ARB-strengthened, 2026-07-11)
+
+**Stop when no source changes the ubiquitous language for three consecutive major sources.** Not "finish the review"; not "time is up". State explicitly, in the report, where the criterion was met (or why the time-box ended first, with marked uncertainty).
 
 ## Success criterion
 
