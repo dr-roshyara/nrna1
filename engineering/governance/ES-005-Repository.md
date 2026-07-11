@@ -6,6 +6,7 @@
 **Authority:** Decision Authority (ARB).
 **Qualification Method:** structural qualifications (OQ E-2-class: folder justification, first-artifact, reserved namespaces, link integrity).
 **Supersedes:** README/MEMORY as the rule homes for the folder rule and placement litmus (README remains the entry-point summary; this document is canonical).
+**Enforcement:** Machine (via OQ instruments) + AI (litmus) (see the Enforcement Matrix in the Standards Index).
 **Related Standards:** ES-001 (authority) · ES-004 (record placement) · ES-006 (research-tier placement).
 
 ## Hosted rules (canonical here; previously README/MEMORY conventions)

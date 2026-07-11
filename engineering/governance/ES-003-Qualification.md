@@ -6,6 +6,7 @@
 **Authority:** Decision Authority (ARB); instruments produce, the authority accepts.
 **Qualification Method:** re-runs (a qualification is re-validated by re-running it) + audits of verdict-history integrity.
 **Supersedes:** the OQ-ENG-001 addendum and MEMORY as rule homes for the lifecycle (resolves finding F-OQ2-1); MEMORY texts of the score-stop and measurement conventions.
+**Enforcement:** AI + Machine (instruments) + Human (acceptance) (see the Enforcement Matrix in the Standards Index).
 **Related Standards:** ES-001 (authority) · ES-002 (what gets qualified) · ES-004 (how verdicts are recorded).
 
 ## Hosted rules (canonical here)
