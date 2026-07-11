@@ -4,7 +4,7 @@
 
 Rule text, exception tiers (plan required/optional/not-required), and ratification status live **once**, in `docs/implementation/Implementation_Process_v1.1_Draft.md` §"Execution Rules — Engineering Process (EP)". This section is provider-agnostic: any assistant (Claude, Copilot, Cursor, Gemini, Codex) obeys the same process.
 
-**Engineering decisions (POINTER):** the architecture never executes — the Engineer consults it. **Before acting, resolve the required Engineering Decisions — see `engineering/architecture/reference/Engineering_Decision_Model.md`** (the six decision services, their answering standards, and decision authority). Canonical rules: `engineering/governance/STANDARDS_INDEX.md` → ES-001..ES-006. Then execute under ES-002 + the EP binding, verify per the governing standard's Qualification Method, report per EP-02. MEMORY carries hints; the ES documents are the truth.
+**Engineering Decisions (POINTER — this runtime binding is FROZEN; it grows no further):** Before acting, resolve the required Engineering Decisions. See `engineering/architecture/reference/Engineering_Decision_Model.md`. Canonical rules: `engineering/governance/STANDARDS_INDEX.md` → ES-001..ES-006. MEMORY carries hints; the ES documents are the truth.
 
 ---
 
