@@ -1,7 +1,7 @@
-# RQ-002 — Project Knowledge Architecture (Research Charter)
+# RQ-002 — Project Knowledge System (Research Charter)
 
 **Kind:** research charter — NOT an ADR, NOT an IDD, NOT a design. This document is the constitution of a research phase: it defines the question, the sub-questions, and the boundaries. It decides nothing about the solution.
-**Status:** PROPOSED — awaiting ARB review before the literature review begins.
+**Status:** APPROVED WITH AMENDMENTS (ARB, 2026-07-11) — literature review authorized. *(Naming: "Project Knowledge System" per ARB elevation — "management" administrates, "architecture" was still documentation-flavored; the research is about knowledge itself. RQ-002 is the durable id; the filename stays.)*
 **Reference form:** modeled on `EPIC-002_Problem_Statement.md` (the indexed authoritative form for research charters, ER-09 §2).
 **Role instruction (binding for this phase):** *think like a researcher, not an architect.* The researcher asks **"what exists?"**; the architect asks "what should we build?". This phase stays in the first role until the ARB authorizes design.
 
@@ -9,9 +9,11 @@
 
 ---
 
-## Research question
+## Research question (broadened at ARB review — knowledge is dynamic, not static)
 
-**What is project knowledge — what kinds exist, and how should they be organized, governed, discovered, validated, evolved, and consumed by humans and AI throughout a project's lifetime?**
+**How does project knowledge emerge, evolve, decay, and get consumed during software engineering?**
+
+The static form ("what kinds exist?") is contained within this, but the domain includes knowledge *dynamics* as first-class concepts: **entropy · obsolescence · conflict · forgetting · rediscovery**. A taxonomy that cannot express "this knowledge is decaying" has missed the domain.
 
 ## Why now (evidence, not appetite)
 
@@ -35,20 +37,39 @@
 
 ## Research method
 
-This research **inherits the Research Method section of the EPIC-002 charter** unchanged (quality gates · observed-practice/claimed-benefit/evidence-strength classification · Normalized Knowledge Model per concept · mandatory negative findings · promotion criteria · time-box + confidence · implementation-as-research-producer). Standing instruction to any external research tool: *"Do NOT design our architecture. Perform a systematic literature review. Produce Normalized Knowledge Models."*
+This research **inherits the Research Method section of the EPIC-002 charter** (quality gates · observed-practice/claimed-benefit/evidence-strength classification · mandatory negative findings · promotion criteria · time-box + confidence · implementation-as-research-producer), with one amendment for this domain — the **deepened Normalized Knowledge Model**, one per discovered concept:
+
+```text
+Concept · Definition · Purpose · Lifecycle · Relationships · Producers · Consumers
+· Failure modes · Evidence strength · Contradictory viewpoints
+```
+
 *(Recorded observation: this is the method's **second use** — the promotion trigger to a platform research protocol is hereby evidenced; the promotion itself is an ARB act, queued, not executed.)*
 
-## Literature review scope (multi-disciplinary)
+## Standing research mission (hand verbatim to any research executor — human, AI, or external tool)
+
+> You are no longer acting as a software architect. You are acting as a senior researcher in Domain-Driven Design, Knowledge Management, AI-assisted Software Engineering, Organizational Learning and Information Architecture.
+>
+> Your task is NOT to design our platform. Your task is to **discover universal principles governing project knowledge**. The Engineering Platform already governs HOW engineering happens. We are researching WHAT project knowledge actually is.
+>
+> Research objectives: (1) define "project knowledge" · (2) identify every distinct knowledge category occurring during software engineering · (3) study how knowledge is created · (4) how it evolves · (5) how it becomes obsolete · (6) how it is validated · (7) how it is consumed · (8) how AI engineers discover knowledge · (9) how human engineers discover knowledge · (10) study successful AND failed knowledge management systems.
+>
+> For every discovered concept produce a Normalized Knowledge Model (ten fields, above).
+>
+> Do NOT produce architecture. Do NOT produce folders. Do NOT produce templates. Do NOT propose software. Do NOT propose our platform. Your deliverable is a **normalized body of knowledge**. Only after the literature review is complete may architectural synthesis begin.
+
+## Literature review scope (broadened at ARB review — six disciplines)
 
 | Discipline | Topics |
 |---|---|
-| **Knowledge management** | organizational knowledge lifecycles · knowledge governance · documentation decay/drift studies |
-| **DDD practice** | how DDD teams keep domain knowledge synchronized with code · ubiquitous-language maintenance · context-map upkeep |
-| **Knowledge representation** | knowledge graphs · ontologies · ADR/decision-knowledge tooling ecosystems |
-| **AI-assisted development** | retrieval/context-assembly for coding agents · minimal-sufficient-context research · documentation-as-context practices |
-| **Empirical software engineering** | studies on documentation usage, staleness, and trust · what teams actually read vs maintain |
+| **Organizational knowledge** | Nonaka & Takeuchi (knowledge creation, tacit vs explicit, the knowledge spiral) · Senge (learning organizations) · organizational memory and forgetting |
+| **Knowledge management** | knowledge lifecycle · knowledge decay/entropy · knowledge governance · discovery and retrieval · documentation drift studies |
+| **Cognitive science** | working vs long-term memory · expert knowledge and mental models · cognitive load · knowledge transfer |
+| **Information architecture** | information scent · navigation · knowledge organization · classification, ontology, taxonomy |
+| **Software engineering** | ADRs · living documentation · domain storytelling · event storming · context mapping · decision capture · empirical studies on what teams actually read vs maintain |
+| **AI** | context assembly · retrieval and RAG · memory systems and agent memory · knowledge graphs · context compression |
 
-Purpose: **validate or falsify our candidate taxonomy and the EKP's assumptions** — never copy systems.
+Purpose: **validate or falsify our candidate taxonomy, the EKP's assumptions, and the "second platform" hypothesis** — never copy systems. Successful **and failed** knowledge-management systems are both mandatory study objects.
 
 ## Deliverables (research artifacts ONLY)
 
@@ -64,9 +85,11 @@ Purpose: **validate or falsify our candidate taxonomy and the EKP's assumptions*
 
 ❌ Document templates · ❌ folder structures · ❌ implementation rules · ❌ aggregates or bounded-context designs · ❌ any change to `engineering/` (R-37 in force pending C3) · ❌ any change to the EKP (the incumbent is studied, not modified) · ❌ ER-09 finalization (paused pending this research).
 
-## Success criterion
+## Success criterion (elevated at ARB review — a domain model, not a verdict)
 
-The research report can **confirm or falsify** the going-in assumptions (the seven-kind taxonomy, the EKP's single-lifecycle model, the "second platform" hypothesis). A report that merely restates them has failed; a report that changes them with evidence has succeeded.
+**After completing this research, we can derive a ubiquitous language for project knowledge that is independent of any documentation format, tooling, AI provider, or software project.** The first deliverable is a *domain model of knowledge itself* — so that any later architecture (documentation, AI context assembly, knowledge graph, search, retrieval) becomes an implementation of a well-understood domain rather than the starting point.
+
+Secondary criterion (retained): the report can **confirm or falsify** the going-in assumptions (the seven-kind taxonomy, the EKP's single-lifecycle model, the "second platform" hypothesis). A report that merely restates them has failed.
 
 ## Relationship to EPIC-002
 
