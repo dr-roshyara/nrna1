@@ -14,6 +14,7 @@
 | **Owns** | The project's ubiquitous language and its maintenance · the product's context boundaries as knowledge · decision knowledge (ADR/IDD-class content) · business rules as knowledge (their encoding is shared with Product) · domain models · implementation knowledge (the "how it's built" claims) · project memory (the historical region) · context assembly · onboarding paths · knowledge evolution. |
 | **Observes** | Engineering Platform outputs (qualification records, gate results, retrospectives — consumed as evidence claims) · Runtime observations (session logs — mined, never owned) · Product implementation (read-only; the code is the highest-authority knowledge carrier, owned by Product). |
 | **Never touches** | Engineering execution (EEP, gates, qualification machinery) · Product code (read-only always) · Tacit knowledge (succession mechanics only — constitutional theorem) · Runtime session state. |
+| **Context invariant (ARB, binding):** | **Project Knowledge never becomes a copy of the project.** It references, assembles, validates, and contextualizes existing knowledge — never duplicates it. This single rule is what prevents the context from decaying into another wiki or document store (the graveyard lifecycle the evidence documents for every copy-based knowledge system). |
 | **Relation to Engineering Platform** | **Sibling bounded context under the same constitution** — not parent, not child, not part of Engineering (§5). |
 | **Relation to Runtime** | Consumes runtime observations as memory input; supplies assembled context *to* the runtime's session-start gesture; owns neither. |
 
@@ -29,7 +30,7 @@
 | **Rule** | ✅ | A constraint governing behavior — Constraint nature; authority follows representation (encoded > prose, PK-P4). |
 | **Scenario** | ⚠ VALIDATED WITH CAUTION | A concrete event/interaction sequence. Evidence warning: prose and workshop scenarios die by design (EventStorming boards, Domain Stories); executable scenarios mostly failed as business-facing artifacts (SBE's own 10-year survey). A scenario is durable knowledge only as an Executable representation maintained by its consuming population, else it is conversation scaffolding — valuable and disposable. |
 | **Model** (domain model) | ✅ as composite | A structured bundle of Definition + Description claims about a domain's structure and behavior; governed at claim granularity (a model is "fresh" only claim-by-claim). |
-| **Implementation Knowledge** | ✅ | Claims linking concepts to their construction ("Challenge is an aggregate in Contestation; its outbox is…") — Description nature, code-proximate representations survive. |
+| **Construction Knowledge** *(renamed from "Implementation Knowledge" at ARB review — "implementation" reads as coding tips; the content is broader)* | ✅ | Claims linking concepts to their construction: architecture, mapping, technical decisions, implementation rationale, extension points ("Challenge is an aggregate in Contestation; its outbox is…") — Description nature, code-proximate representations survive. |
 | **Project Memory** | ✅ REFRAMED | Not a store: **the append-only historical region of the space** (superseded decisions, session observations, qualification history), reached by mining existing records (git, logs, registers) — never a new curated repository (invariant 8). |
 | **Context Assembly** | ✅ FIRST-CLASS | The domain's central act: composing the minimal sufficient Working Context for a task (§4). |
 | **Knowledge Retrieval** | ❌ FALSIFIED as peer term — DEMOTED | Retrieval is a *mechanism inside* assembly (the coordinate-matching step). Keeping it as a peer term reintroduces document-centric thinking ("find documents") that the evidence rejects ("assemble understanding"). |
@@ -42,21 +43,26 @@
 **Value objects:** **KnowledgeCoordinate** (Nature × Representation × Status × Scope — identity by value; exists independently of artifacts; ✅ but as VO, not entity — corrected from the candidate list) · **Provenance** (producer, time, context) · **FreshnessStamp** (owner, last-verified, domain half-life) · **Scent** (label, summary, address) · **QueryPredicate** (a coordinate region + concept anchors; ✅ KnowledgeQuery corrected to VO).
 
 **Aggregates (conceptual):**
-- **KnowledgeClaim** — root of the specialization. The atomic unit (constitutional): content + Coordinate + Provenance + Status + Scent. Invariants 2, 3, 7 enforced here. Composite artifacts (a model, a guide) are *bundles referencing claims*, not super-aggregates.
+- **KnowledgeClaim** — **now CONSTITUTIONAL, not specialization-owned** (promoted at ARB review: Claim = the atomic Knowledge Instance; identity confirmed). This context *inherits* it unchanged; invariants 2, 3, 7 attach at the constitutional level. Composite artifacts (a model, a guide) are *instances bundling claims*, not super-aggregates.
+- **KnowledgeNeed** *(added at ARB review — the missing producer of Working Contexts)* — the knowledge required to perform a task, derived from task intent and business concepts. Lifecycle: **expressed → assembly attempted → satisfied | unsatisfiable → superseded**. The *unsatisfiable* state is load-bearing: unmet needs accumulate as first-class evidence of knowledge gaps — the consumption feedback loop's negative signal (evidence: the most-*deferred* information need in the corpus is design rationale — deferred needs are real, observable objects; Ko 2007). A Working Context has no meaning without its Need.
 - **DecisionRecord** — an immutable claim-bundle of Decision nature with supersession links; canonical ⟺ accepted ∧ unsuperseded ∧ owned ∧ bound (evidence: the Watson-Discovery binding condition).
 - **UbiquitousTerm** — a context-bound Definition claim whose validation is conversational+code; carries its owning context; drift is a boundary event, not an edit.
 - **WorkingContext** — **ephemeral** aggregate: the assembly result. Invariants: minimal sufficiency (PK-P6) · every member's status visible (inv. 2) · contradictions surfaced as ranked coexistence, never silently resolved (inv. 4) · **discarded at task end** — persistence would create a curated second population; ephemerality is how the aggregate satisfies invariant 8 *by construction*.
 - **ProjectMemory** — ❌ NOT an aggregate (corrected from the candidate list): it is the historical *region* of the space, accessed by mining; modeling it as an aggregate would invite building the store the evidence forbids. **KnowledgeFlow** — likewise not an aggregate: a flow is an observed path (recoverable from provenance links), not a managed thing. **KnowledgeSpecialization** — a descriptive concept, not a domain object.
 
-**Domain services (conceptual):** **ContextAssembly** (Task Need → Working Context; §4) · **IntakeQualification** (born-stale gate + claim evaluation at creation) · **Supersession** (link-demote-preserve; never edit) · **TransitionService** (deliberate representation transitions — the rationale mining path lives here).
+**Domain services (conceptual):**
+- **ContextAssemblyService** *(formalized at ARB review — the heart of the domain)* — responsibilities: interpret task intent · derive the KnowledgeNeed (identify relevant Business Concepts and Contexts) · locate canonical Definitions, governing Decisions, applicable Rules · assemble the Working Context · surface contradictions as ranked coexistence (never silently pick) · minimize (PK-P6) · preserve provenance (invariant 3) · record unsatisfiable needs as gap evidence.
+- **IntakeQualification** (born-stale gate + claim evaluation at creation) · **Supersession** (link-demote-preserve; never edit) · **TransitionService** (deliberate representation transitions — the rationale mining path lives here).
 
 **Domain events (conceptual):** ClaimRecorded · ClaimSuperseded (with reason) · ClaimDeprecated (with reason) · ContradictionDetected · ContextAssembled · TransitionPerformed (from-representation, to-representation, nature preserved).
 
 ## 4. Context Assembly Model (the first-class act)
 
 ```text
-Task Need ("implement voting eligibility")
-   ↓  concept extraction            — which Business Concepts and Contexts does the task touch?
+Task ("implement voting eligibility")
+   ↓  KNOWLEDGE NEED derived        — the aggregate between Task and Working Context: which
+                                      understanding must exist for this task to proceed safely?
+   ↓  concept extraction            — which Business Concepts and Contexts does the need touch?
    ↓  predicate formation           — coordinate region: canonical Definitions for those concepts ·
                                       governing Decisions (accepted∧unsuperseded, in scope) ·
                                       applicable Rules (executable representation preferred, PK-P4) ·
@@ -90,7 +96,12 @@ Trigger: any task (ticket, review, question, session start — extending the exi
           │                            │
           └─────────────┬──────────────┘
                         │
-              Product Implementation                 (both serve it; neither owns it)
+                 Product Domain                      (a bounded context in its own right:
+        aggregates · events · contexts ·              both siblings serve it; neither owns it)
+        value objects · policies · invariants
+                        │
+                  Source Code                        (ONE representation of the Product Domain —
+                                                      the executable one, highest-authority)
 ```
 
 | Aspect | Relationship |

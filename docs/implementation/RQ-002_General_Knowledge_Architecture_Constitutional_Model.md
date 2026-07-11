@@ -16,7 +16,8 @@ KNOWLEDGE SPACE = NATURE × REPRESENTATION × GOVERNANCE-STATUS ( × AUTHORITY-S
 | Concept | Definition |
 |---|---|
 | **Knowledge Coordinate** | A position in the space (e.g., Decision × Recorded × Canonical × Project) — existing independently of any artifact. Retrieval matches coordinates, never artifact types: "all canonical project decisions", not "all ADRs". |
-| **Knowledge Instance** | An artifact occupying a coordinate (ADR-17 *occupies* Decision×Recorded×Canonical×Project). |
+| **Knowledge Claim** | **The atomic unit of knowledge** (constitutional — promoted from the Project Knowledge specialization on the ARB's identity finding): content + Coordinate + Provenance + Status + Scent. The four-way smallest-unit convergence (nanopublication · knowledge claim · smallest-true-span · decision-or-definition) defined exactly this object. Every specialization inherits it unchanged. |
+| **Knowledge Instance** | An artifact occupying a coordinate — either a single Claim or a **composite bundling claims** (an ADR document, a domain model). Composites are governed claim-by-claim (a composite is "fresh" only claim-by-claim). |
 | **Knowledge Flow** | A path through the space — a sequence of nature derivations and representation transitions. |
 | **Knowledge Query** | A retrieval of a *region* of the space by coordinate predicates — the consumer-side act where **Purpose** lives; elevated to first-class as **Context Assembly** in the Project Knowledge specialization. |
 | **Knowledge Transition** | A deliberate move of one coordinate (tacit→recorded; prose→executable; canonical→superseded). |
