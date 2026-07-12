@@ -199,6 +199,23 @@ graph TD
 
 The provider is the runtime at the bottom of a governed engineering stack — never the center of the system.
 
+## 12. Addendum — the constitutional layer (added 2026-07-12; this file predates it entirely)
+
+*(Evidence-reconstruction finding: this document contains zero references to ES-001..006, the Engineering Decision Model, the EEP, or the rulings register beyond R-35 — it was written 2026-07-08, before the 2026-07-11 constitutional consolidation. Added as an addendum, not a rewrite, per this file's own rule: "frozen artifacts win on conflict.")*
+
+```mermaid
+graph TD
+  ES[Engineering Standards<br/>ES-001..ES-006] --> DM[Engineering Decision Model<br/>8 decisions, DRAFT]
+  DM --> EEP[Engineering Execution Protocol<br/>Adopted · Stable]
+  EEP --> RB[Runtime Binding<br/>.claude/CLAUDE.md — frozen pointer]
+  RB --> RT[Runtime Hooks & Merge Gates<br/>see developer_guide/ai_platform/03_runtime_mechanics.md]
+  RT --> AG[Architecture Governance<br/>ARB · ADR · EP-02/EP-03]
+  AG --> EV[Operational Evidence]
+  EV -.->|retrospective, R-38 conceptual freeze| ES
+```
+
+This sits between §2 (Provider-independent stack) and §11 (What the provider actually is) in the reading order: the Decision Model and ES-standards are what "Engineering Standards" in §1/§2 concretely *is*, as of 2026-07-11. The Registry architecture (§5, CMP/AST) and this constitutional layer coexist — the registry governs `.claude` runtime assets; ES-001..006 govern the engineering process and its decisions. Neither absorbed the other.
+
 ---
 
-*Corrections applied vs. the ARB draft (2026-07-08): §3 redrawn from a linear chain to the frozen Phase-02 relationships (OHS/PL, Conformist, Separate Ways, Human Authority as event source); §9 renamed to Pattern Evidence Register. On any conflict, the frozen Baseline corpus and the Implementation Process win over these views.*
+*Corrections applied vs. the ARB draft (2026-07-08): §3 redrawn from a linear chain to the frozen Phase-02 relationships (OHS/PL, Conformist, Separate Ways, Human Authority as event source); §9 renamed to Pattern Evidence Register. §12 added 2026-07-12 (constitutional layer, post-dates original). On any conflict, the frozen Baseline corpus and the Implementation Process win over these views.*

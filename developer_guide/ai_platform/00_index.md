@@ -7,7 +7,7 @@ Area covering the PublicDigit AI Engineering Platform (`.claude/platform/` + gov
 | 00 | [AI Engineering Architecture](00_ai_engineering_architecture.md) | **The foundational document — why this platform exists.** The inversion (DDD → domain → capabilities → components → assets → provider binding), the twenty principles with pointers to their authoritative homes, reading order for newcomers. Provider-independent. |
 | 01 | [The Registry-First Workflow](01_registry_first_workflow.md) | How to add, change, or retire any `.claude` artifact: register → review → implement → verify. The Platform Registry, stable IDs, the five-question rule, validation. |
 | 02 | [Working Under the Engineering Process](02_engineering_process_for_developers.md) | EP-01 Planning Stage (plan → explicit approval → implement → re-plan on invalidation), EP-02 Completion Review, the non-trivial decision table, gates, observation classes A–D, the 30-second platform-work question. |
-| 03 | *(reserved — written with slice C3: the Verification Engine's first implementation, `run-gates.sh`)* | |
+| 03 | [Runtime Mechanics](03_runtime_mechanics.md) | **Written 2026-07-12, from operational evidence** (not slice C3 as originally reserved — see the guide's own status note). Concrete, file-traced sequences: SessionStart, Development (discipline gate), DB Safety blocking, Merge Gate, Architecture Governance. States plainly where automation ends and human/AI judgment begins. |
 
-**Reading order for newcomers:** ADR-AIP-01 → `.claude/platform/registry.yaml` (it is small — read it whole) → guide 01 → guide 02.
+**Reading order for newcomers:** ADR-AIP-01 → `.claude/platform/registry.yaml` (it is small — read it whole) → guide 01 → guide 02 → guide 03.
 **Guide obligation:** a numbered step guide here is part of the Definition of Done for every platform implementation step — the same rule as every other `developer_guide/` area.
