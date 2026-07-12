@@ -120,9 +120,13 @@ The synthesis step consumes NKMs, never raw articles.
 
 **Exactly two amendments are authorized this round** (below); no others.
 
-### Amendment 1 — Universal / Domain-specific / Jurisdiction-specific classification
+### Amendment 1 — classification convention (REFINED, ARB 2026-07-11): "Observed in X" before "Candidate Y"
 
-Every concept entry (Literature Review + Concept Register) additionally answers: is this concept **Universal** (recurs independent of any one field or legal system), **Domain-specific** (tied to one field, e.g. election science, but not to one jurisdiction), or **Jurisdiction-specific** (tied to one legal system's doctrine, e.g. US or German administrative law)? A Jurisdiction-specific concept and a Universal concept do not carry equal synthesis weight later.
+Every concept entry (Literature Review + Concept Register) records **where it was observed** (which discipline/jurisdiction the source comes from) and, separately, a **generality candidate** — never a premature final class. Convention: *"Observed in [discipline/jurisdiction] — Candidate [Universal / Domain-specific / Jurisdiction-specific] (evidence pending)"*. A concept sourced from one jurisdiction is NOT thereby proven jurisdiction-bound — the source is a fact; the generality is a hypothesis awaiting corroboration from an independent discipline. Only concepts corroborated across ≥2 independent disciplines/jurisdictions may drop the "candidate"/"evidence pending" qualifier.
+
+**Also (same amendment, ARB refinement):** every concept additionally tagged **Descriptive** (describes existing practice/reality) or **Normative** (prescribes how a system ought to behave) — these carry different synthesis weight (a description of what exists is not the same kind of evidence as a prescription of what should exist).
+
+**Wording discipline (ARB refinement):** external doctrine does not "prove" an internal assumption. Replace emphatic verdicts ("STRONGLY SUPPORTS", "DIRECTLY CONTRADICTS") with **"independent evidence consistent with / in tension with"** — the assumption register still uses Supports/Weakens/Contradicts/Introduces as its required classification vocabulary, but the prose around it must not overclaim proof.
 
 ### Amendment 2 — Stopping criterion refined (frequency alone is insufficient)
 
@@ -141,6 +145,10 @@ Digital Evidence · Digital Forensics · Provenance (W3C PROV) · Trust Engineer
 5. **Per-source output format:** Source · Discipline · Key claims · Assumption impact (Supports/Weakens/Contradicts/Introduces) · Concept Register update · Category (FACT/INTERPRETATION/RECOMMENDATION/OPEN QUESTION) · Open question.
 6. **Iteration-2 discipline order (law dominates):** Constitutional Law → Administrative Law → Governance Theory → Trust Engineering (assurance/safety cases, NIST, dependability) → Digital Forensics → Distributed Systems → DDD literature (Evans/Vernon/Brandolini — discovering domains rather than naming them).
 7. **Standing open question carried into every discipline:** which trust properties are achievable in PublicDigit's private-organization constitutional setting, and which must be explicitly declared out of scope with recorded consequences?
+
+## Synthesis-weighting guidance (recorded for the synthesis phase — NOT acted on now, ARB 2026-07-11)
+
+The eventual cross-disciplinary synthesis should weight **election science, trust engineering, and evidence/forensics literature more heavily than administrative-procedure doctrine** — the platform is trustworthy voting, not administrative-law software. Legal doctrine informs the design; it does not dominate it. This is guidance for the synthesis step, not an instruction to re-weight completed iterations.
 
 ## Deliverables (Strategic Discovery artifacts ONLY)
 
