@@ -59,9 +59,9 @@
 
 **Register-row promotions this iteration: ZERO** (same anti-clustering-bias rule). **Digital Forensics (DF) column remains entirely unpopulated** — the coverage gap is real, not a register omission.
 
-**Candidate new conceptual category flagged (ARB stopping-criterion condition 2, triggered):** *evidence-substrate vs. argument-over-evidence separability* — corroborated (at varying confidence) across PR (Finding 3, medium) and TE (Findings 5–7, high, though the most direct TE-specific claims for this exact framing were refuted — see Literature Review refuted-claims table). Not yet a settled synthesis conclusion; recorded as a candidate category per the charter's refined stopping rule.
+**Repeated cross-disciplinary phenomenon flagged (ARB stopping-criterion condition 2, triggered; wording tightened 2026-07-12):** *evidence-substrate vs. argument-over-evidence separability* — independently observed in PR (Finding 3, medium confidence) and TE (Findings 5–7, though the most direct TE-specific claims for this exact framing were refuted — see Literature Review refuted-claims table). Status: **repeated cross-disciplinary phenomenon → candidate conceptual category → requires synthesis.** Not yet a settled synthesis conclusion.
 
-**A-9 tally (assumption-table bookkeeping, distinct from register promotions):** THREE independent disciplines now weaken A-9 via three structurally unrelated mechanisms — ES (custody/certification, auditability/auditing splits) · AL/CL (differentiated standard-of-review taxonomy) · PR+TE (typed data-model decomposition; heterogeneous-artifact traceability).
+**A-9 observation tally (bookkeeping only — NOT a synthesis verdict, ARB wording correction 2026-07-12):** FOUR disciplines have each independently observed a structure that appears inconsistent with A-9, via four structurally unrelated mechanisms — ES (custody/certification, auditability/auditing splits) · AL/CL (differentiated standard-of-review taxonomy) · PR (typed data-model decomposition) · TE (heterogeneous-artifact traceability). *The literature does not know A-9 exists; it only reports itself. Whether A-9 should be considered weakened is reserved for the synthesis phase.*
 
 **Independent-discipline note on A-9 (assumption-table bookkeeping, distinct from register promotions):** the *differentiated standard-of-review taxonomy* concept contradicts A-9 via AL/CL's own internal logic, entirely independently of ES's custody/certification and auditability/auditing splits. Four independent A-9-weakening signals now stand across two disciplines (ES, AL/CL) — tracked in the Literature Review, not as a register-tier movement.
 
@@ -81,6 +81,23 @@
 - Contestable/defensible pair *refines* software independence (S4: introduced because SI was too weak).
 - Declare-failure *presupposes* an evidence-sufficiency measure (risk limit) (S1 S5).
 - Co-production *conditions* auditability→trust conversion (a verifiable-but-unverified system yields no trust) (S3 S4).
+
+## Repeated cross-disciplinary phenomena — recurrence tracking (ARB request, 2026-07-12)
+
+**Why this table exists, separate from the per-concept rows above:** per-row checkmark counts mostly read 1, because the anti-clustering-bias rule forbids merging differently-named concepts across disciplines even when they instantiate the same underlying pattern (e.g. ES's *declare-failure* and PR's *unspecified adjudication mechanism* are NOT merged into one row). The real cross-discipline recurrence signal therefore lives at the **phenomenon** level — patterns that several separately-recorded concept-rows independently point at. This table makes that signal explicit, as the ARB requested, without merging the underlying rows.
+
+**Status vocabulary (ARB, 2026-07-12):** a phenomenon observed in only 1 discipline is **not yet a repeated phenomenon** (single-discipline observation). A phenomenon independently observed in ≥2 disciplines is a **repeated cross-disciplinary phenomenon → candidate conceptual category → requires synthesis**. Neither status is a synthesis verdict; both are bookkeeping.
+
+| Phenomenon | ES | CL | AL | GT | TE | DF | DS | PR | AT | Disciplines (n) | Status |
+|---|---|---|---|---|---|---|---|---|---|---:|---|
+| Evidence is structurally plural / multi-kind (instantiating rows: ES auditability≠auditing, custody-vs-certification; AL/CL standard-of-review taxonomy; PR Entity/Activity/Agent decomposition; TE heterogeneous-artifact traceability) | ✓ | ✓ | ✓ | | ✓ | | | ✓ | | 4 | Repeated cross-disciplinary phenomenon → candidate conceptual category → requires synthesis |
+| An adjudication/correction mechanism is neither automatic nor guaranteed reliable (ES declare-failure; AL finality-vs-immutability/procedural curing rules, documented as gameable; PR unspecified adjudication mechanism) | ✓ | | ✓ | | | | | ✓ | | 3 | Repeated cross-disciplinary phenomenon → candidate conceptual category → requires synthesis |
+| Contemporaneity — no retrospective reconstruction of record or justification (ES commit-before-sample; AL/CL contemporaneity requirement/Chenery) | ✓ | ✓ | ✓ | | | | | | | 2 (counted once per unique discipline: ES, AL/CL) | Repeated cross-disciplinary phenomenon → candidate conceptual category → requires synthesis |
+| Evidence-substrate is separable from argument/trust-judgement over it (PR scope-boundary finding, medium confidence; TE assurance-case case-vs-evidence framing, most direct claims refuted) | | | | | ✓ | | | ✓ | | 2 | Repeated cross-disciplinary phenomenon → candidate conceptual category → requires synthesis (confidence uneven — one leg medium, one leg indirect) |
+| Chain of custody / evidence integrity as a named practice (ES, embedded practice only) | ✓ | | | | | | | | | 1 | **NOT YET a repeated phenomenon** — single-discipline observation; DF coverage gap (0 surviving claims) prevents cross-discipline confirmation this round |
+| Causal ordering is not reducible to timestamp/chronological ordering (PR quasi-order finding) | | | | | | | | ✓ | | 1 | **NOT YET a repeated phenomenon** — single-discipline observation; watch for DS/ES echo in future iterations |
+
+**Reading this table (bookkeeping, not synthesis):** four phenomena have now crossed the ≥2-discipline recurrence threshold; two remain single-discipline observations pending further iterations (one of them — chain of custody — blocked specifically by the Digital Forensics coverage gap). Per Strategic DDD discovery discipline, **recurrence across independent disciplines is the signal this register is built to surface — not confidence tiers alone.**
 
 ## Movement log (for the stopping criterion)
 
