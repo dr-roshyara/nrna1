@@ -150,6 +150,19 @@ Digital Evidence · Digital Forensics · Provenance (W3C PROV) · Trust Engineer
 
 The eventual cross-disciplinary synthesis should weight **election science, trust engineering, and evidence/forensics literature more heavily than administrative-procedure doctrine** — the platform is trustworthy voting, not administrative-law software. Legal doctrine informs the design; it does not dominate it. This is guidance for the synthesis step, not an instruction to re-weight completed iterations.
 
+## FALSIFICATION PHASE (ARB directive, 2026-07-12 — supersedes discovery-mode emphasis for the remaining disciplines)
+
+**The strategy changes: stop trying to discover more concepts; start trying to falsify the recurring phenomena.** The question for every remaining discipline is no longer "can I find more support?" but **"can I find a mature discipline where this phenomenon does NOT exist?"** A phenomenon that survives serious falsification attempts across ElectionGuard, E2E-verifiable voting, governance theory, and DDD literature is far stronger evidence of a genuine architectural regularity than any amount of additional confirmation.
+
+Binding rules for the remaining iterations:
+1. Remaining disciplines (ElectionGuard · E2E-VV · Governance Theory · DDD literature) run as **falsification attempts** against the recurring phenomena — counterexamples and contradictory evidence are the primary quarry; supporting examples are recorded but are not the goal.
+2. **Independent Evidence Families replace discipline-count** as the recurrence metric. What matters is mechanism independence, not label count: ES contributes *statistical verification*, AL/CL *judicial review doctrine*, PR *ontology/formal modeling*, TE *safety-assurance argumentation*, DF *forensic procedure*. Two disciplines sharing one mechanism (e.g. both citing hashes) count as ONE family.
+3. **Recurrence numbers carry limited meaning by themselves** — recurrence can reflect one school of thought echoing across fields. True independence requires different assumptions, methodologies, objectives, communities, and terminology, all converging.
+4. **No new candidate concepts** unless they emerge from multiple independent sources; priority is strengthening or falsifying the existing recurring phenomena.
+5. **Trajectory note (recorded, NOT adopted):** the ARB observes the recurring phenomena may be heading toward "constitutional invariants." They are NOT called invariants yet — the falsification phase is precisely the test of whether any deserves that name. A "Candidate invariant?" column exists in the register for bookkeeping only.
+6. **ARB-introduced hypothesis to test (not mine, not adopted):** the level model may be missing a layer — *Reality → Observation → Evidence → Argument → Decision → Legitimacy*: evidence is not reality; evidence is already an interpretation of observations. The remaining disciplines should look for whether mature fields distinguish observation from evidence (e.g. raw sensor data vs. admitted exhibit; witnessed event vs. testimony). Recorded as a falsifiable hypothesis, tested like the phenomena.
+7. Discovery/synthesis separation, mapping freeze, and all prior conventions remain in force unchanged.
+
 ## Deliverables (Strategic Discovery artifacts ONLY)
 
 0. **Problem Space Model** — the primary deliverable: what concepts exist, which recur across disciplines, which differ, which conflict, which are domain-specific vs universal. Only AFTER it: whether "Evidence" is a bounded context.
