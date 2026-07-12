@@ -7,7 +7,7 @@
 ## Constraints (binding for the entire observation period)
 
 - **Do not** modify the EEP, ES-001..ES-006, EP-02, or any template.
-- **Do not** create new governance artifacts beyond this protocol and its session-log entries.
+- **Do not** create governance artifacts *derived from this hypothesis* until the observation period concludes. **Independent observations remain governed by their own lifecycle** — discovering a completely different issue during observation is recorded normally, not suppressed by this protocol *(ARB refinement, 2026-07-12: the original blanket wording was too restrictive)*.
 - **Do not** propose any platform change until the observation period closes.
 - Use **"project-state synchronization"** throughout, never "backlog updates" — the hypothesis is general (backlog, epic progress, program status, and anything similar tomorrow), not backlog-specific.
 
@@ -24,6 +24,7 @@ The next **3–5 real implementation cycles** (e.g., PB-008, PB-009, PB-010, or 
 | Missing state transitions | A plan moves from ARB approval to implementation with no state update anywhere |
 | Next-plan selection error | The next plan selected from the backlog is already underway or completed |
 | Dashboard staleness | Any status/progress document fails to reflect current execution state |
+| **No observable impact** *(ARB refinement — strengthens falsifiability)* | A state document went un-updated **and nothing bad happened**: planning still worked, nobody was confused, no wrong selection occurred. Record these too — if inconsistencies occur without operational consequence across the observation period, the hypothesis should FAIL, because not every inconsistency is operationally significant |
 
 ## How to record (session log only)
 
