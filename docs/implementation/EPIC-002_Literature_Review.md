@@ -1,6 +1,6 @@
 # EPIC-002 Literature Review — Constitutional Trust Discovery (Working Document)
 
-**Status:** IN PROGRESS — iteration 1 complete (unverified); **iteration 2a (Constitutional Law + Administrative Law) COMPLETE AND VERIFIED** on retry (run `wf_e118e84a-441`, under Sonnet 5, after the first attempt `wf_4c2904f1-602` failed totally — 0 sources, all 30 fetches hit the Fable-5 session limit; recorded as history below). Iteration 2a: 23 sources fetched, 91 claims extracted, 25 adversarially voted, **18 CONFIRMED**, **7 REFUTED** (recorded — not repeated), 0 stuck unverified. STOPPING CRITERION NOT REACHED. **Authority:** generated — research artifact under the charter `EPIC-002_Problem_Statement.md`; never authoritative without ARB review.
+**Status:** IN PROGRESS — iteration 1 complete (unverified); iteration 2a (Constitutional + Administrative Law) COMPLETE AND VERIFIED (18 confirmed / 7 refuted); **iteration 2b (Digital Forensics + W3C PROV + Trust Engineering/Assurance) COMPLETE AND VERIFIED** on retry (run `wf_9986ccdd-189`, after a first attempt `wf_97560c79-715` failed at the decomposition step — schema validation loop, `/angles: must NOT have fewer than 3 items`, root-caused and fixed by loosening the discipline-count phrasing; recorded as history below). Iteration 2b: 26 sources, 106 claims extracted, 25 adversarially voted, **10 CONFIRMED → 7 synthesized findings**, **15 REFUTED** (highest refutation rate yet — recorded, not repeated), 0 stuck unverified. **MAJOR COVERAGE GAP:** zero Digital Forensics claims survived (all refuted, several unanimously) — flagged prominently below. **STOPPING CRITERION criterion (2) TRIGGERED THIS ITERATION** — a candidate new conceptual category emerged (evidence-substrate vs. argument-over-evidence separability); see below. **Authority:** generated — research artifact under the charter `EPIC-002_Problem_Statement.md`; never authoritative without ARB review.
 **MAPPING QUARANTINE (ARB iteration-2 charter, 2026-07-11):** iteration 1's INTERPRETATION entries that map literature concepts onto PublicDigit (e.g. "the correction loop maps to strong software independence", "maps to the implemented Contestation/Adjudication split") are **QUARANTINED — premature**. They stand as recorded history but carry NO analytical weight until ALL major disciplines are reviewed and cross-disciplinary synthesis is authorized. The only permitted mapping is the Concept Register (`EPIC-002_Concept_Register.md`): concepts appear in disciplines — that is all. Forbidden until synthesis: "PublicDigit equals …", "this means we should build …", "this maps to …".
 **Method compliance:** no bounded contexts are named or proposed in this document (ARB: concepts → clusters → candidate BCs, in that order, later). Every statement labeled FACT / INTERPRETATION / RECOMMENDATION / OPEN QUESTION. Sources classified Supports / Weakens / Contradicts / Introduces against A-1..A-10.
 
@@ -167,5 +167,99 @@
 
 **NOT REACHED.** Iteration 2a added 9 new concepts (register: `EPIC-002_Concept_Register.md`) across 2 disciplines with 0 register-row promotions this iteration (new concepts enter fresh, per the anti-clustering-bias rule — merging iteration-1 and iteration-2a concepts is a clustering judgment explicitly deferred). Separately, the **assumption table** shows A-9 weakened by an independent second discipline. **Coverage gaps carried forward:** Tyler-style procedural-justice literature (requested, not reached) · private-organization transfer question / Vereinsrecht (requested, not reached) · common-law-outside-US (one source tested, refuted). Iteration 2b targets next: Governance Theory + Trust Engineering (assurance/safety cases, NIST, dependability) per the charter's discipline order.
 
+## Iteration 2b — Digital Forensics + W3C PROV + Trust Engineering/Assurance (VERIFIED)
+
+**Coverage note (honest, MAJOR gap):** **zero Digital Forensics claims survived adversarial verification** — every candidate claim about ISO/IEC 27037/27041, ACPO/NIST guidelines, or Daubert/Frye admissibility was refuted, several unanimously (0-3), including a suspiciously precise single-study statistic ("18% documentation improvement, 100% vs. 82% baseline admissibility") that the verifiers correctly killed. **This means Discipline (A), explicitly requested, is empirically unaddressed this iteration** — an open question below asks whether this is a genuine literature gap or a search-strategy limitation. **Separately:** NIST-specific assurance-case definitions (SP 800-160, CNSSI 4009) were also refuted despite explicit request — but the underlying claim/argument/evidence-separation concept survived via non-NIST sources (safety-critical-systems literature), so the *concept* is present in the register without a NIST citation.
+
+### Confirmed findings (10 claims → 7 synthesized; per-source format)
+
+**Finding 1 — PROV decomposes evidence into typed primitives, not one concept**
+**Sources:** W3C PROV-DM, PROV-O (primary Recommendations) · Moreau et al., J. Web Semantics 2015 (primary, PROV co-chairs' design rationale). **Discipline:** Provenance/Lineage.
+**Key claim (FACT, confirmed 2-1/2-1/3-0):** PROV-DM/PROV-O decompose "evidence/provenance" into three ontologically distinct role-typed primitives — Entity (fixed-aspect thing), Activity (occurs over time, acts on entities), Agent (bears responsibility) — plus a relation family (generation, usage, derivation, attribution, delegation, invalidation). The design-rationale paper confirms this is deliberate architecture, not accident; the decomposition is echoed verbatim by derivative standards (e.g. IVOA Provenance DM) outside the original W3C context.
+**Assumption impact:** independent evidence in tension with A-9 (evidence as one concept) — a **third discipline** (after ES and AL/CL) whose own internal structure treats evidence as multi-kind, via yet another distinct mechanism (typed data-model primitives, not legal doctrine).
+**Concept Register update:** new concepts — *Entity/Activity/Agent typed decomposition* and *generation/usage/derivation/attribution/delegation relation family* (PR, corroborated across 2 independent standards bodies within the discipline — W3C + IVOA).
+**Category:** FACT.
+**Open question:** none.
+
+**Finding 2 — PROV leaves derivation-adjudication deliberately unspecified**
+**Source:** W3C PROV-DM (primary). **Discipline:** Provenance/Lineage.
+**Key claim (FACT, confirmed 3-0):** PROV states a derivation "is considered to have been determined by unspecified means" — even *Revision* (the closest concept to a correction) is defined structurally with no validation/adjudication mechanism attached.
+**Assumption impact:** independent evidence in tension with A-10 as a universal property — recording lineage does not itself constitute or guarantee an adjudication/correction loop; the loop is an external layer a system must deliberately construct, not something lineage-recording provides "for free."
+**Concept Register update:** new concept — *unspecified adjudication mechanism (derivation validity left external)* (PR, single-source).
+**Category:** FACT.
+**Open question:** what concretely fills this gap in practice (peer review, judicial process, structured argument), and does the filling mechanism vary by jurisdiction/domain? (Carried to next iteration.)
+
+**Finding 3 — PROV's own scope boundary separates lineage-data from trust-judgement (the standing question, first direct hit)**
+**Source:** W3C PROV-DM (primary). **Discipline:** Provenance/Lineage.
+**Key claim (FACT, confirmed 2-1 — split vote reflects genuine interpretive disagreement about how far to extend this, not a factual dispute):** PROV acknowledges lineage records can help humans make trust judgements, but the standard stops short of formally modeling trust or evidential weight — it captures the lineage substrate only, leaving any argument about trustworthiness to unspecified downstream reasoning.
+**Assumption impact:** the **first direct evidence this iteration for the standing question** — "evidence" (recorded lineage data) is conceptually separable from "argument/trust-judgement over evidence," with PROV's own documented scope boundary drawn exactly at that line.
+**Concept Register update:** new concept — *evidence-substrate vs. trust-judgement scope boundary* (PR, MEDIUM confidence — contested interpretive extension, single primary source).
+**Category:** FACT + INTERPRETATION (the "this is the standing-question answer" framing is interpretive, flagged as such by the split vote).
+**Open question:** the standing question itself — see synthesis note below.
+
+**Finding 4 — Causal ordering (PROV) is a quasi-order, explicitly decoupled from timestamp ordering**
+**Source:** W3C PROV-Sem (primary, formal semantics). **Discipline:** Provenance/Lineage.
+**Key claim (FACT, confirmed 2-1):** PROV formally models causal/derivation ordering as a quasi-order (not a strict total order) and **explicitly decouples it from timestamp ordering** — the spec's own worked example shows chronological time-value order and causal-derivation order can even conflict (mutual precedence under differing timestamps).
+**Assumption impact:** nuances A-6 (causal ordering) — a system relying on "causal ordering" cannot assume timestamp ordering is a reliable proxy for causal/derivation ordering; these are formally distinct properties in the leading provenance standard.
+**Concept Register update:** new concept — *causal ordering as quasi-order distinct from timestamp ordering* (PR, single-source, MEDIUM confidence).
+**Category:** FACT.
+**Open question:** none this iteration (echoed in distributed-systems logical-clock literature per the research but not independently confirmed here — future iteration candidate).
+
+**Finding 5 — Assurance cases trace to heterogeneous artifacts unified only by traceability links (second independent discipline weakening A-9)**
+**Source:** Wei et al., J. Systems and Software 2024 (primary, peer-reviewed). **Discipline:** Trust Engineering/Assurance.
+**Key claim (FACT, confirmed 3-0):** model-based assurance cases in safety-critical engineering trace to heterogeneous engineering artifacts (architectural models, safety analyses, behaviour models, spanning multiple modeling languages/tools) unified only by traceability links, not by being one uniform kind of artifact — the paper states directly that "assurance cases are not self-contained documents."
+**Assumption impact:** independent evidence in tension with A-9, from an **entirely separate discipline** (safety/software engineering) via a structurally analogous but mechanistically distinct pattern (traceability across heterogeneous artifact types, vs. PROV's typed data-model primitives, vs. legal doctrine's custody/certification/scrutiny splits). **Now three disciplines (ES, AL/CL, PR+TE) independently weaken A-9 via three unrelated mechanisms.**
+**Concept Register update:** new concept — *traceability across heterogeneous artifact types* (TE, single-source; relationship noted to PR's Finding 1, not merged).
+**Category:** FACT.
+**Open question:** none.
+
+**Finding 6 — Confirmation bias in assurance-case construction/review (NEGATIVE FINDING)**
+**Sources:** Gohar, Hunter, Cohen, Lutz — 20-year systematic literature review, arXiv:2502.00238 (primary) · Habli, Alexander, Hawkins, SSS'21 (primary). **Discipline:** Trust Engineering/Assurance.
+**Key claim (FACT, confirmed 3-0/3-0):** confirmation bias in the manual, judgment-driven construction and review of assurance-case arguments is a documented, credible mechanism (explicitly distinguished by the field's own researchers from mere "false-premise" objections) by which a case can pass formal review/certification while still harboring undetected defeaters — with real-world consequences cited (RAF Nimrod MR2 XV230 loss).
+**Assumption impact:** **mandatory negative finding.** Certification/passing-review is not proof the underlying evidentiary/argumentative basis is sound — a documented failure mode structurally distinct from any hash/custody-based integrity failure (which this iteration could not independently confirm at all, per the forensics coverage gap above).
+**Concept Register update:** new concept — *confirmation bias as a credible assurance-case failure mode ("assurance theater")* (TE, corroborated by 2 independent primary sources within the discipline).
+**Category:** FACT + mandatory negative finding.
+**Open question:** does an analogous failure mode exist in digital-forensics chain-of-custody practice? Unanswerable this iteration (forensics gap).
+
+**Finding 7 — No rigorous empirical evidence that assurance cases deliver net trust/safety value (NEGATIVE FINDING)**
+**Source:** Habli, Alexander, Hawkins, SSS'21 (primary, peer-reviewed). **Discipline:** Trust Engineering/Assurance.
+**Key claim (FACT, confirmed 3-0):** there is no rigorous empirical evidence base demonstrating that safety cases (structured argument-based assurance) actually deliver net safety/trust value compared to alternatives — the field has produced extensive *methodological* research (notations, formalisms, automation, patterns) but almost no *outcome* evaluation, a gap the field's own leading researchers call "poor" and an "impending crisis."
+**Assumption impact:** **mandatory negative finding, and a sobering one.** A structured-argument approach to trust can be methodologically mature while remaining empirically unproven at the level that matters (does it actually work?). This is a general concern — applies whenever any assurance mechanism is asked to justify itself by results rather than procedural compliance alone.
+**Concept Register update:** new concept — *empirical outcome evaluation of an assurance mechanism (as distinct from procedural/methodological maturity)* (TE, single-source, Universal in character per the finding's own framing — but held at Candidate per convention, evidence pending a second discipline).
+**Category:** FACT + mandatory negative finding.
+**Open question:** does the same evidence-practice gap (methodological maturity without outcome evidence) extend to provenance/lineage systems generally? Open.
+
+### Refuted claims (15 — the highest refutation rate yet; recorded so they are not repeated)
+
+| Claim (abbreviated) | Vote | Why it matters |
+|---|---|---|
+| ISO 27037/27041 implementation empirically improves traceability/documentation/robustness (multi-case study) | 1-2 | Entire forensics angle — did not survive |
+| Same study: 18% documentation improvement, 100% vs. 82% baseline admissibility | 0-3 | A suspiciously precise single-study statistic — correctly killed; a caution against over-trusting quantified claims from one source |
+| PROV Working Group treated "ease of use" vs. "validity-checking" as competing design axes (weak analogue of evidence/argument separation) | 0-3 | Body text was inaccessible to verifiers — appropriately killed for insufficient basis |
+| PROV-O scopes out quality/trust/evidential-weight judgments entirely | 0-3 | Overreach — a MORE MODEST version of this point survived as Finding 3 (medium confidence) |
+| PROV frames provenance as one metadata subtype among others (Weakens A-9 + Introduces) | 0-3 | Overreach on source text |
+| PROV explicitly builds temporal ordering as a mechanism (Supports A-6) | 0-3 | Refuted — ironically, the OPPOSITE nuance (quasi-order ≠ timestamp order) survived as Finding 4 |
+| Derivation defined with no correction/adjudication notion (Weakens A-10 + standing question) | 0-3 | Overreach in this specific wording — the underlying point survived, more narrowly, as Finding 2 |
+| PROV-Sem excludes trust/reliability assessment explicitly | 1-2 | Overreach — Finding 3 carries the surviving, more modest version |
+| NIST SP 800-160/ISO 15026-1: assurance case = claim + argument + evidence (3 separable elements) | 1-2 | NIST-specific definitional claim did not survive — concept survives via non-NIST sources (Finding 5/6/7) |
+| NIST CNSSI 4009 / SEI: "arguments paired with supporting evidence" | 0-3 | Same NIST-sourcing issue |
+| Assurance cases are a communication/confidence structure distinct from system properties they argue about | 0-3 | Overreach in this specific framing |
+| GSN: evidence nodes vs. claims nodes, defeaters distinguished by node type attacked | 0-3 | The MOST DIRECTLY on-point claim for the standing question — refuted. Do not treat the standing question as settled by GSN-specific structure; Finding 3/5 carry the surviving basis |
+| Seven-category defeater taxonomy (20-yr review) — evidence-validity is one of seven | 0-3 | Overreach in this specific framing |
+| No evidence safety cases are revised after real incidents (correction-loop absence) | 0-3 | Interesting claim, did not survive — remains genuinely open, not established either way |
+| Rushby's NLD: leaves (evidence, probabilistic) vs. interior nodes (reasoning, deductive) | 1-2 | Another direct-hit claim for the standing question that did NOT survive — same caution as the GSN row above |
+
+**INTERPRETATION (important, and self-illustrating):** the refutation rate this iteration (15 of 25 voted claims, 60%) is markedly higher than iteration 2a's 28%. Notably, **several of the most directly on-point claims for this iteration's own standing question were refuted** (GSN evidence/claims nodes, Rushby's NLD leaves/interior split) while a more modestly-worded, less specific version of essentially the same phenomenon survived (Finding 3, medium confidence, split vote). This is the adversarial-verification process enforcing, empirically, exactly the wording discipline the ARB required by charter amendment: the underlying pattern (evidence separable from argument-over-evidence) is real but was frequently over-claimed in its strongest forms.
+
+## Cross-iteration concept-relationship notes (concept↔concept only — no clustering, no BC naming)
+
+- *Traceability across heterogeneous artifacts* (TE, Finding 5) relates to *Entity/Activity/Agent typed decomposition* (PR, Finding 1) — both weaken A-9 via structurally analogous but mechanistically distinct patterns. **Not merged.**
+- *Unspecified adjudication mechanism* (PR, Finding 2) relates to iteration 2a's *finality-vs-immutability decoupling / procedural curing rules* (AL) — both concern what happens (or doesn't happen) when a correction/adjudication mechanism is supposed to exist. Three disciplines now (ES declare-failure, AL Bestandskraft, PR unspecified-means) circle the same structural question: **is an adjudication loop automatic, reliable, or neither?** Literature answer so far: neither — it is external (PR), gameable (AL), and its outcome-effectiveness is empirically unproven where studied at all (TE, Finding 7). **Not merged — this is a note, not a cluster.**
+- The **standing question** (evidence vs. argument-over-evidence) now has direct (if modest-confidence) support in 2 disciplines (PR Finding 3, TE Finding 5/6/7 collectively) — this is flagged as a **candidate new conceptual category** per the strengthened stopping criterion, not yet a settled synthesis conclusion.
+
+## Stopping criterion
+
+**NOT REACHED on either condition.** Condition (1): iteration 2b added 8 new concepts, 0 register-tier promotions (fresh entries per the anti-clustering rule). Condition (2): **TRIGGERED — a candidate new conceptual category emerged** (evidence-substrate vs. argument-over-evidence separability, corroborated across 2 disciplines this iteration) — this by itself is sufficient to continue past this iteration under the refined two-part criterion, independent of promotion-frequency bookkeeping. **Major open item carried forward:** the Digital Forensics coverage gap (0 surviving claims) — ARB decision needed on whether to retry forensics specifically or accept the gap and proceed to ElectionGuard/E2E-Verifiable Voting per the roadmap.
+
 ---
-*Charter: `EPIC-002_Problem_Statement.md` · Runs: `wf_588d4d47-8d6` (iteration 1, resumable) · `wf_4c2904f1-602` (iteration 2a attempt 1, FAILED — 0 sources, Fable-5 session limit) · `wf_e118e84a-441` (iteration 2a attempt 2, VERIFIED, under Sonnet 5) · Labels per charter: FACT / INTERPRETATION / RECOMMENDATION / OPEN QUESTION, never collapsed.*
+*Charter: `EPIC-002_Problem_Statement.md` · Runs: `wf_588d4d47-8d6` (iteration 1, resumable) · `wf_4c2904f1-602` (iteration 2a attempt 1, FAILED — 0 sources, Fable-5 session limit) · `wf_e118e84a-441` (iteration 2a attempt 2, VERIFIED) · `wf_97560c79-715` (iteration 2b attempt 1, FAILED — decomposition schema loop) · `wf_9986ccdd-189` (iteration 2b attempt 2, VERIFIED) · Labels per charter: FACT / INTERPRETATION / RECOMMENDATION / OPEN QUESTION, never collapsed.*

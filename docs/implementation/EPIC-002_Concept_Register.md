@@ -45,6 +45,24 @@
 
 **Register-row promotions this iteration: ZERO.** Per the anti-clustering-bias rule, new concepts enter fresh rather than being merged into iteration-1 rows even where a relationship is plausible (see the Literature Review's "Cross-iteration concept-relationship notes" — merging is a clustering judgment explicitly deferred to the synthesis phase). Two relationship notes recorded (not merges): *contemporaneity requirement* ↔ *commit-before-sample/declare-failure* (ES); *finality-vs-immutability* ↔ *declare-failure/evidence co-production* (ES).
 
+## Iteration 2b additions (Digital Forensics + W3C PROV + Trust Engineering/Assurance — VERIFIED: 10 confirmed / 15 refuted; ZERO surviving Digital Forensics claims)
+
+| Concept | ES | CL | AL | GT | TE | DF | DS | PR | AT | DDD | Confidence | Class (Observed in / Candidate) | Nature | First source(s) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Entity/Activity/Agent typed decomposition + generation/usage/derivation/attribution/delegation relations | | | | | | | | ✓ | | | LOW (1 discipline; corroborated across 2 standards bodies within it — W3C+IVOA) | Observed in PR (W3C PROV-DM/PROV-O + design rationale; echoed by IVOA Provenance DM) — Candidate Universal (evidence pending a second discipline) | Descriptive | PROV-DM; PROV-O; Moreau et al. 2015 |
+| Unspecified adjudication mechanism (derivation validity determined by "unspecified means") | | | | | | | | ✓ | | | LOW (1) | Observed in PR (W3C PROV-DM) — Candidate Universal (relates to AL's Bestandskraft/curing and ES's declare-failure — not merged) | Descriptive | PROV-DM |
+| Evidence-substrate vs. trust-judgement scope boundary (standing-question first hit) | | | | | | | | ✓ | | | LOW (1), single-source, MEDIUM-confidence/split-vote | Observed in PR (W3C PROV-DM) — Candidate Universal (evidence pending; candidate NEW CONCEPTUAL CATEGORY per the stopping criterion) | Descriptive/Interpretive | PROV-DM |
+| Causal ordering as quasi-order distinct from timestamp ordering | | | | | | | | ✓ | | | LOW (1) | Observed in PR (W3C PROV-Sem, formal semantics) — Candidate Domain-specific (formal-semantics framing; possible DS echo unconfirmed this iteration) | Descriptive | PROV-Sem |
+| Traceability across heterogeneous artifact types (models, analyses, behaviour traces unified only by links) | | | | | ✓ | | | | | | LOW (1) | Observed in TE (Wei et al., J. Systems and Software 2024) — Candidate Universal (relates to PR's typed-decomposition, Finding 1 — not merged) | Descriptive | Wei et al. 2024 |
+| Confirmation bias as a credible assurance-case failure mode ("assurance theater") — NEGATIVE FINDING | | | | | ✓ | | | | | | LOW (1 discipline, corroborated by 2 independent sources within it) | Observed in TE (Gohar et al. 2025; Habli/Alexander/Hawkins 2021, incl. RAF Nimrod MR2 XV230) — Candidate Universal (evidence pending a second discipline) | Descriptive (documents a failure mode) | arXiv:2502.00238; Habli et al. SSS'21 |
+| Empirical outcome evaluation of an assurance mechanism (vs. methodological/procedural maturity) — NEGATIVE FINDING | | | | | ✓ | | | | | | LOW (1) | Observed in TE (Habli/Alexander/Hawkins SSS'21) — Candidate Universal (evidence pending; the finding's own framing suggests broad applicability, held at Candidate per convention) | Descriptive (documents an evidence-practice gap) | Habli et al. SSS'21 |
+
+**Register-row promotions this iteration: ZERO** (same anti-clustering-bias rule). **Digital Forensics (DF) column remains entirely unpopulated** — the coverage gap is real, not a register omission.
+
+**Candidate new conceptual category flagged (ARB stopping-criterion condition 2, triggered):** *evidence-substrate vs. argument-over-evidence separability* — corroborated (at varying confidence) across PR (Finding 3, medium) and TE (Findings 5–7, high, though the most direct TE-specific claims for this exact framing were refuted — see Literature Review refuted-claims table). Not yet a settled synthesis conclusion; recorded as a candidate category per the charter's refined stopping rule.
+
+**A-9 tally (assumption-table bookkeeping, distinct from register promotions):** THREE independent disciplines now weaken A-9 via three structurally unrelated mechanisms — ES (custody/certification, auditability/auditing splits) · AL/CL (differentiated standard-of-review taxonomy) · PR+TE (typed data-model decomposition; heterogeneous-artifact traceability).
+
 **Independent-discipline note on A-9 (assumption-table bookkeeping, distinct from register promotions):** the *differentiated standard-of-review taxonomy* concept contradicts A-9 via AL/CL's own internal logic, entirely independently of ES's custody/certification and auditability/auditing splits. Four independent A-9-weakening signals now stand across two disciplines (ES, AL/CL) — tracked in the Literature Review, not as a register-tier movement.
 
 ## Movement log (for the stopping criterion)
@@ -54,6 +72,8 @@
 | 2026-07-11 | Iteration 1 (S1–S7, seeding) | register created — all entries enter at LOW/TENTATIVE | 0 |
 | 2026-07-11 | Iteration 2a attempt 1 (`wf_4c2904f1-602`) | **0 sources fetched — total infrastructure failure**, not a research result; excluded from the count | n/a |
 | 2026-07-11 | Iteration 2a attempt 2 (`wf_e118e84a-441`, 23 sources, 18 confirmed) | 9 new concepts added (fresh, LOW) · **0 tier promotions** | 1 (first no-promotion iteration; criterion needs 3 consecutive) |
+| 2026-07-12 | Iteration 2b attempt 1 (`wf_97560c79-715`) | **0 sources — decomposition schema loop, infrastructure failure**; excluded from the count | n/a |
+| 2026-07-12 | Iteration 2b attempt 2 (`wf_9986ccdd-189`, 26 sources, 10 confirmed) | 7 new concepts added (fresh, LOW) · **0 tier promotions** BUT **condition-2 (new conceptual category) TRIGGERED** — evidence-substrate/argument-over-evidence separability | Criterion NOT reached (condition 2 explicitly overrides frequency-only counting per the refined rule) |
 
 ## Concept-relationship notes (allowed: concept↔concept only; no PublicDigit mapping)
 
