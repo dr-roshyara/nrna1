@@ -18,6 +18,7 @@
 | ER-01..ER-04 | original engineering rules (frozen process) | `docs/implementation/Implementation_Process_v1.0.md` (FROZEN) |
 | ER-05..ER-09 | convergence · UL-before-PL · behavior-not-transport · reviews-record/implementations-repair · project-knowledge (PROPOSED, paused) | `Implementation_Process_v1.1_Draft.md` §ER |
 | Registry-first workflow | every `.claude` runtime asset: register → review → implement → verify, with the five-question trace | `.claude/platform/registry.yaml` header (binding) + `developer_guide/ai_platform/01_registry_first_workflow.md` |
+| **TDD · Clean Architecture · Hexagonal (Ports & Adapters)** *(cross-reference added 2026-07-12 — a repository-verification found these already FROZEN and tool-enforced at the Product tier, predating the Engineering Platform; the gap was this table not pointing to them, not the principles being absent)* | mandatory TDD cycle (RED→GREEN→REFACTOR→arch tests→static analysis→mutation tests→gates→merge) · Domain←Application←Infrastructure dependency direction · Ports & Adapters at every architectural boundary — all Deptrac/PHPStan/PHPUnit-enforced | `docs/implementation/Implementation_Architecture_Constitution_v1.0.md` (FROZEN 2026-06-26; amend only via ADR-T + Architecture Board) — Product-tier, ES-005.1; governs *how PublicDigit code is written*, distinct from ES-002's *how engineering work is performed* |
 
 ## Hosted rules (this document is their canonical home; previously MEMORY-only)
 
