@@ -114,6 +114,24 @@ The synthesis step consumes NKMs, never raw articles.
 
 *(This method section serves EPIC-002 first. If a second research effort adopts it unchanged, it earns promotion to a platform research protocol — evidence first, per the placement litmus.)*
 
+## PROCESS FREEZE (ARB, 2026-07-11 — AUTHORITATIVE, supersedes further meta-process elaboration)
+
+**The research methodology is now sufficiently mature. No further research-framework mechanics unless implementation demonstrates a deficiency.** Effective immediately: optimize *quality of insight per paper*, not process. Preserve what exists (confirmations/refutations/coverage-gaps/negative-findings recording, the Concept Register, the mapping freeze) — do not add further meta-artifacts.
+
+**Exactly two amendments are authorized this round** (below); no others.
+
+### Amendment 1 — Universal / Domain-specific / Jurisdiction-specific classification
+
+Every concept entry (Literature Review + Concept Register) additionally answers: is this concept **Universal** (recurs independent of any one field or legal system), **Domain-specific** (tied to one field, e.g. election science, but not to one jurisdiction), or **Jurisdiction-specific** (tied to one legal system's doctrine, e.g. US or German administrative law)? A Jurisdiction-specific concept and a Universal concept do not carry equal synthesis weight later.
+
+### Amendment 2 — Stopping criterion refined (frequency alone is insufficient)
+
+**Stop when BOTH hold:** (1) no concept promotion (LOW→MEDIUM/MEDIUM→HIGH) for three consecutive major sources, **AND** (2) no fundamentally new conceptual category has appeared (a single paper — e.g. the CAP theorem, ElectionGuard — can change a field regardless of promotion-frequency bookkeeping). Both conditions checked at every iteration boundary; frequency-only saturation is not sufficient to stop.
+
+### Roadmap reorder (ARB, 2026-07-11 — supersedes the prior iteration-2 order)
+
+Digital Evidence · Digital Forensics · Provenance (W3C PROV) · Trust Engineering · **ElectionGuard** · End-to-End Verifiable Voting are inserted **before** Governance Theory — they sit closer to the candidate Evidence context than governance theory's abstractions do. Order: ~~Constitutional Law ✓ → Administrative Law ✓~~ → **Digital Evidence/Forensics → Provenance (W3C PROV) → Trust Engineering → ElectionGuard → E2E-Verifiable Voting** → Governance Theory → DDD literature.
+
 ## Iteration-2 method amendments (ARB, 2026-07-11 — AUTHORITATIVE)
 
 1. **Concept Register is the spine** (`EPIC-002_Concept_Register.md`, living): concept × discipline matrix; confidence by discipline count (HIGH ≥5 · MEDIUM 3–4 · LOW 1–2 · TENTATIVE single-source). The ONLY permitted mapping is concept→discipline.
