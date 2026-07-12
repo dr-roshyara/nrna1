@@ -65,6 +65,19 @@
 
 **Independent-discipline note on A-9 (assumption-table bookkeeping, distinct from register promotions):** the *differentiated standard-of-review taxonomy* concept contradicts A-9 via AL/CL's own internal logic, entirely independently of ES's custody/certification and auditability/auditing splits. Four independent A-9-weakening signals now stand across two disciplines (ES, AL/CL) — tracked in the Literature Review, not as a register-tier movement.
 
+## Iteration 2c additions (Digital Forensics, isolated — PARTIALLY VERIFIED: 8 confirmed / 5 refuted / 12 unverified)
+
+| Concept | ES | CL | AL | GT | TE | DF | DS | PR | AT | DDD | Confidence | Class (Observed in / Candidate) | Nature | First source(s) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Custody log (person-attributed, time-stamped possession sequence) | | | | | | ✓ | | | | | LOW (1) | Observed in DF (US federal guidance, NIST SP 800-86) — Candidate Universal (evidence pending) | Normative | NIST SP 800-86 |
+| Multi-point message-digest comparison (before/after/re-verify original) | | | | | | ✓ | | | | | LOW (1) | Observed in DF (NIST SP 800-86) — Candidate Universal (hashing not jurisdiction-bound; evidence pending) | Descriptive w/ normative force | NIST SP 800-86 |
+| Tamper-evidence ≠ tamper-prevention (hash detects, does not stop, alteration) | | | | | | ✓ | | | | | LOW (1) | Observed in DF — Candidate Universal (evidence pending; watch for relation to ES software-independence — noted, NOT merged) | Descriptive | NIST SP 800-86 |
+| Scope-limitation disclaimer (technical guidance ≠ legal sufficiency) — NEGATIVE FINDING | | | | | | ✓ | | | | | LOW (1) | Observed in DF (US federal publication) — Candidate Jurisdiction-specific (evidence pending) | Normative | NIST SP 800-86 |
+| Live acquisition alters evidence (documented-alteration substitutes for immutability) | | | | | | ✓ | | | | | LOW (1) | Observed in DF (SWGDE 18-F-002) — Candidate Universal within DF (evidence pending, single source) | Descriptive + Normative | SWGDE 18-F-002-2.0 |
+| Property-specific hash-trust argument (preimage vs. collision resistance) | | | | | | ✓ | | | | | LOW (1) | Observed in DF (SWGDE position) — Candidate Domain-specific (evidence pending) | Descriptive | SWGDE MD5/SHA1 position |
+
+**Register-row promotions this iteration: ZERO** (anti-clustering rule; DF concepts enter fresh). **Relationship notes (not merges):** *tamper-evidence ≠ tamper-prevention* (DF) relates to ES's *software independence* (tamper-evidence of code reliance) and to iteration-1's observation that internal immutability is insufficient without external detectability — three separately-recorded rows now circle detectability-over-prevention. *Custody log* (DF) is the first direct DF observation of the custody phenomenon previously embedded in ES sources.
+
 ## Movement log (for the stopping criterion)
 
 | Date | Source | Movements (LOW→MEDIUM / MEDIUM→HIGH) | Consecutive no-movement count |
@@ -74,6 +87,7 @@
 | 2026-07-11 | Iteration 2a attempt 2 (`wf_e118e84a-441`, 23 sources, 18 confirmed) | 9 new concepts added (fresh, LOW) · **0 tier promotions** | 1 (first no-promotion iteration; criterion needs 3 consecutive) |
 | 2026-07-12 | Iteration 2b attempt 1 (`wf_97560c79-715`) | **0 sources — decomposition schema loop, infrastructure failure**; excluded from the count | n/a |
 | 2026-07-12 | Iteration 2b attempt 2 (`wf_9986ccdd-189`, 26 sources, 10 confirmed) | 7 new concepts added (fresh, LOW) · **0 tier promotions** BUT **condition-2 (new conceptual category) TRIGGERED** — evidence-substrate/argument-over-evidence separability | Criterion NOT reached (condition 2 explicitly overrides frequency-only counting per the refined rule) |
+| 2026-07-12 | Iteration 2c (`wf_18bdf7c3-331`, DF isolated, partially verified) | 6 new concepts added (fresh, LOW) · **0 tier promotions** · custody phenomenon gains its second discipline (see recurrence table) | Criterion NOT reached (phenomenon-level recurrence movement; 12 claims still unverified) |
 
 ## Concept-relationship notes (allowed: concept↔concept only; no PublicDigit mapping)
 
@@ -93,11 +107,11 @@
 | Evidence is structurally plural / multi-kind (instantiating rows: ES auditability≠auditing, custody-vs-certification; AL/CL standard-of-review taxonomy; PR Entity/Activity/Agent decomposition; TE heterogeneous-artifact traceability) | ✓ | ✓ | ✓ | | ✓ | | | ✓ | | 4 | Repeated cross-disciplinary phenomenon → candidate conceptual category → requires synthesis |
 | An adjudication/correction mechanism is neither automatic nor guaranteed reliable (ES declare-failure; AL finality-vs-immutability/procedural curing rules, documented as gameable; PR unspecified adjudication mechanism) | ✓ | | ✓ | | | | | ✓ | | 3 | Repeated cross-disciplinary phenomenon → candidate conceptual category → requires synthesis |
 | Contemporaneity — no retrospective reconstruction of record or justification (ES commit-before-sample; AL/CL contemporaneity requirement/Chenery) | ✓ | ✓ | ✓ | | | | | | | 2 (counted once per unique discipline: ES, AL/CL) | Repeated cross-disciplinary phenomenon → candidate conceptual category → requires synthesis |
-| Evidence-substrate is separable from argument/trust-judgement over it (PR scope-boundary finding, medium confidence; TE assurance-case case-vs-evidence framing, most direct claims refuted) | | | | | ✓ | | | ✓ | | 2 | Repeated cross-disciplinary phenomenon → candidate conceptual category → requires synthesis (confidence uneven — one leg medium, one leg indirect) |
-| Chain of custody / evidence integrity as a named practice (ES, embedded practice only) | ✓ | | | | | | | | | 1 | **NOT YET a repeated phenomenon** — single-discipline observation; DF coverage gap (0 surviving claims) prevents cross-discipline confirmation this round |
+| Evidence-substrate is separable from argument/trust-judgement over it (PR scope-boundary finding, medium confidence; TE assurance-case case-vs-evidence framing, most direct claims refuted; DF hedged echo — NIST legal-sufficiency disclaimer, 3-0, a scope DISCLAIMER not a conceptual treatment) | | | | | ✓ | ✓* | | ✓ | | 2 (+1 hedged*) | Repeated cross-disciplinary phenomenon → candidate conceptual category → requires synthesis (confidence uneven — one leg medium, one leg indirect, one leg hedged/weaker-in-kind) |
+| Chain of custody / evidence integrity as a named practice (ES embedded practice; DF direct guidance — NIST custody log, confirmed 3-0) | ✓ | | | | | ✓ | | | | 2 | Repeated cross-disciplinary phenomenon → candidate conceptual category → requires synthesis *(moved from single-discipline at iteration 2c)* |
 | Causal ordering is not reducible to timestamp/chronological ordering (PR quasi-order finding) | | | | | | | | ✓ | | 1 | **NOT YET a repeated phenomenon** — single-discipline observation; watch for DS/ES echo in future iterations |
 
-**Reading this table (bookkeeping, not synthesis):** four phenomena have now crossed the ≥2-discipline recurrence threshold; two remain single-discipline observations pending further iterations (one of them — chain of custody — blocked specifically by the Digital Forensics coverage gap). Per Strategic DDD discovery discipline, **recurrence across independent disciplines is the signal this register is built to surface — not confidence tiers alone.**
+**Reading this table (bookkeeping, not synthesis):** five phenomena have now crossed the ≥2-discipline recurrence threshold (chain of custody joined at iteration 2c when the isolated DF run broke the coverage gap); one remains a single-discipline observation (causal-ordering-vs-timestamp, PR only). Per Strategic DDD discovery discipline, **recurrence across independent disciplines is the signal this register is built to surface — not confidence tiers alone.**
 
 ## Movement log (for the stopping criterion)
 
