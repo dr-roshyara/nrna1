@@ -9,8 +9,17 @@
 # (a DDD model / architecture decision), so we never encode assumptions in a test
 # or class before the model justifies them. Edits to existing files stay silent
 # (you are already past the gate). Never blocks — it is a checkpoint, not a wall.
+#
+# STATE-AWARE (fixed 2026-07-12): fires at most ONCE PER SESSION-DAY. Repeated
+# new test/prod files in one session (e.g. a multi-class TDD slice) no longer
+# re-trigger the same reminder — the discipline question was already raised
+# once; repeating it every file is noise, not signal. Marker mirrors the
+# existing .claude/runtime/YYYY-MM-DD-*.json pattern used elsewhere.
 set -u
 cd "$(dirname "$0")/../.." || exit 0
+
+marker=".claude/runtime/$(date +%F)-discipline-reminded.flag"
+[ -f "$marker" ] && exit 0
 
 # Tool input arrives on STDIN (like the changes logger) or as $1 (CLAUDE_TOOL_INPUT).
 input="$(cat 2>/dev/null)"
@@ -44,7 +53,10 @@ php -r '
        . "an approved Architecture Decision.\n"
        . "  -> For a discovered gap use: Finding -> Architecture Decision -> RED -> GREEN -> Certification. "
        . "Do not encode assumptions in a test/class before the model justifies them.\n"
-       . "  (non-blocking checkpoint; see .claude/CLAUDE.md)";
+       . "  (non-blocking checkpoint, once per session; see .claude/CLAUDE.md)";
+
+  @mkdir($argv[2], 0777, true);
+  @touch($argv[3]);
 
   echo json_encode([
       "systemMessage" => $msg,
@@ -53,5 +65,5 @@ php -r '
           "additionalContext" => $msg,
       ],
   ]);
-' "$input" 2>/dev/null
+' "$input" ".claude/runtime" "$marker" 2>/dev/null
 exit 0

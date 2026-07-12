@@ -2,16 +2,7 @@
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash .claude/scripts/db-safety-check.sh \"$CLAUDE_TOOL_INPUT\""
-          }
-        ]
-      },
-      {
-        "matcher": "PowerShell",
+        "matcher": "Bash|PowerShell",
         "hooks": [
           {
             "type": "command",
