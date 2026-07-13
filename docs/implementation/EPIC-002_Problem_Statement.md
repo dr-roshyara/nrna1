@@ -150,6 +150,19 @@ Digital Evidence · Digital Forensics · Provenance (W3C PROV) · Trust Engineer
 
 The eventual cross-disciplinary synthesis should weight **election science, trust engineering, and evidence/forensics literature more heavily than administrative-procedure doctrine** — the platform is trustworthy voting, not administrative-law software. Legal doctrine informs the design; it does not dominate it. This is guidance for the synthesis step, not an instruction to re-weight completed iterations.
 
+## RESEARCH INFRASTRUCTURE QUALIFICATION (ARB directive, 2026-07-13 — binding, precedes any further literature iteration)
+
+**A research iteration is VALID only if all four stages pass:** Extraction PASS → Verification PASS → **Extraction Audit PASS** (new stage: every verified/confirmed claim is confirmed to have reached synthesis — nothing dropped between verification and the final report) → Synthesis PASS. If any stage fails, **the iteration is INVALID, not negative.** An invalid iteration must never be read as "0 confirmed / N refuted" (that reads as falsification succeeding) — it is recorded as **produced no usable result this attempt**, with confirmed status **UNKNOWN**, and:
+- **the recurrence table is NOT updated from it**,
+- **no phenomenon's status changes because of it**,
+- **no architectural hypothesis is touched by it.**
+
+**What happened in iteration 3a (2026-07-13), diagnosed, not guessed:** Extraction PASS (104/105 agents completed, real claim text with quotes) · Verification PASS (per-claim votes recorded, including 7 well-formed refuted claims with real quotes and vote counts) · **Synthesis FAILED** — the final aggregation call returned a literal placeholder stub (`"claim":"test claim"`, `"evidence":"test evidence"`) instead of merging the confirmed claims; the `confirmed` key was entirely absent from the result. Manual reconstruction from the raw per-vote journal was attempted and abandoned: cache keys are opaque content hashes with no visible claim↔vote pairing exposed to the caller, so reconstructing confirmed claims by hand risked misattributing evidence — an unacceptable integrity risk. **Verdict: iteration 3a is INVALID.** The 7 refuted claims are retained as legitimate content (refutation didn't depend on the broken synthesis step); the confirmed/positive side of the falsification test is **UNKNOWN**, not zero, not negative.
+
+**Important operational note:** resuming the SAME run with identical arguments will NOT fix a synthesis-stage corruption — the tool's own caching semantics mean a call that "completed" (even with bad output) replays its cached result rather than regenerating. A genuine retry requires either a fresh (non-resumed) run or a deliberately altered prompt.
+
+**Acceptance gate going forward:** before any iteration's findings are written into the Literature Review or Concept Register, verify all four stages passed. Do not rerun the ElectionGuard/E2E-VV search immediately — per ARB ruling, the objective is now to confirm the *next* attempt's synthesis stage actually produces real content before treating any output as research data.
+
 ## FALSIFICATION PHASE (ARB directive, 2026-07-12 — supersedes discovery-mode emphasis for the remaining disciplines)
 
 **The strategy changes: stop trying to discover more concepts; start trying to falsify the recurring phenomena.** The question for every remaining discipline is no longer "can I find more support?" but **"can I find a mature discipline where this phenomenon does NOT exist?"** A phenomenon that survives serious falsification attempts across ElectionGuard, E2E-verifiable voting, governance theory, and DDD literature is far stronger evidence of a genuine architectural regularity than any amount of additional confirmation.

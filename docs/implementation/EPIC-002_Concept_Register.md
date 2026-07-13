@@ -88,6 +88,7 @@
 | 2026-07-12 | Iteration 2b attempt 1 (`wf_97560c79-715`) | **0 sources — decomposition schema loop, infrastructure failure**; excluded from the count | n/a |
 | 2026-07-12 | Iteration 2b attempt 2 (`wf_9986ccdd-189`, 26 sources, 10 confirmed) | 7 new concepts added (fresh, LOW) · **0 tier promotions** BUT **condition-2 (new conceptual category) TRIGGERED** — evidence-substrate/argument-over-evidence separability | Criterion NOT reached (condition 2 explicitly overrides frequency-only counting per the refined rule) |
 | 2026-07-12 | Iteration 2c (`wf_18bdf7c3-331`, DF isolated, partially verified) | 6 new concepts added (fresh, LOW) · **0 tier promotions** · custody phenomenon gains its second discipline (see recurrence table) | Criterion NOT reached (phenomenon-level recurrence movement; 12 claims still unverified) |
+| 2026-07-13 | Iteration 3a (`wf_3f9f7018-a37`, resumed as task `wg40ljxqs`, ElectionGuard/E2E-VV) | **INVALID — Research Infrastructure failure (NEW failure class: synthesis-stage corruption, not rate-limiting).** Extraction PASS, Verification PASS, Synthesis FAILED (placeholder stub returned). 7 refuted claims retained as legitimate content; confirmed findings UNKNOWN, not zero. **NO register update, no phenomenon-table update, no promotions** — per the Research Infrastructure Qualification rule, an invalid iteration touches nothing | Excluded entirely from the stopping-criterion count (not a research result of any kind) |
 
 ## Concept-relationship notes (allowed: concept↔concept only; no PublicDigit mapping)
 

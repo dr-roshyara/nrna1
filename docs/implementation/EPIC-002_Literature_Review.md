@@ -311,5 +311,30 @@ ISO/IEC 27037's self-scoping (identification/collection/acquisition/preservation
 
 **Coverage note (honest):** custody-chain failures in real court cases (angle D) produced no confirmed claims — the documented-failure angle remains thin; Daubert/Frye (angle C) is extracted but unverified. Both carried forward.
 
+## Iteration 3a — ElectionGuard + E2E-Verifiable Voting — **INVALID (Research Infrastructure failure, NOT a research finding)**
+
+**Runs:** `wf_3f9f7018-a37` (first attempt: total verification-panel rate-limit failure, 25/25, resets-at-midnight Berlin) → resumed (same run ID; task-tracking ID `wg40ljxqs`) (second attempt: Extraction PASS, Verification PASS, **Synthesis FAILED** — the harness's final aggregation call returned a literal placeholder stub instead of merged confirmed findings).
+
+**Per the Research Infrastructure Qualification rule (ARB, 2026-07-13): this iteration is INVALID, not a negative result.**
+- Confirmed/positive falsification-test findings: **UNKNOWN** (not zero — the synthesis step that would have produced them corrupted instead of running).
+- Refuted claims: **7 retained as legitimate content** (refutation-recording did not depend on the broken synthesis stage) — recorded below for completeness, but **do not treat their existence as evidence the phenomena were tested and passed**; the confirming half of the same test is simply missing.
+- **Recurrence table: NOT updated.** No phenomenon's status changes because of this iteration. No architectural hypothesis is touched.
+
+### Refuted claims retained (7 — genuine content, quoted, from the working verification stage)
+
+| Claim (abbreviated) | Vote | Phenomenon relevance |
+|---|---|---|
+| ElectionGuard's color-coded verification groupings (orange/key-gen, blue/ballot-correctness, green/election-record) constitute the P1 evidence taxonomy with distinct verifier audiences | (refuted — overreach beyond the cited quote) | P1 — claim overreached; the color-coding concept itself may still hold, but this specific "distinct audiences" framing did not survive as stated |
+| Contemporaneity enforced by construction — casting/challenging only possible after the confirmation code exists, "never before" | 1-2 | P3 — did not survive as an unqualified claim |
+| Discrepancy resolution (Preston, Idaho) was manual/human, not automatic | 0-3 | P2 — did not survive as stated (though the underlying manual-resolution fact is separately corroborated in unverified extraction text) |
+| ElectionGuard substitutes public record-publication for custody; not eliminated system-wide (paper retained, guardian-ceremony trust residue) | 1-2 | P5 — nuanced counterexample candidate did not survive as stated |
+| v2.0 spec legitimizes post-hoc aggregation of per-guardian partial decryptions into single artifacts, removing individual contributions from the published record | 0-3 | P3/P4 — the strongest counterexample candidate in this run did NOT survive verification |
+| Hash-chain binding of ballots + device identity at cast time performs the "custody" role without a named custody practice | 0-3 | P3/P5 |
+| Verifier failure requires external human review to localize fault (record vs. verification mechanism) | (vote not fully captured before synthesis broke) | P2 |
+
+**INTERPRETATION (bounded):** every one of this run's most falsification-relevant candidate counterexamples (post-hoc guardian-share aggregation for P3/P4; custody substitution for P5) was **refuted**, not confirmed. This narrows what iteration 3a can honestly claim to almost nothing — refutation of a *claim about a counterexample* is not the same as failure of the counterexample search itself, and the confirming/supporting evidence stream that would tell us what DID hold up is exactly what synthesis lost. **No conclusion about P1–P5 survival is drawn from this iteration.**
+
+**Next step (per ARB ruling):** do NOT immediately rerun the ElectionGuard/E2E-VV search. First confirm a clean run of the research workflow (Extraction → Verification → Extraction Audit → Synthesis, all passing) on a small scope, before treating any further output as valid research data.
+
 ---
 *Charter: `EPIC-002_Problem_Statement.md` · Runs: `wf_588d4d47-8d6` (iteration 1, resumable) · `wf_4c2904f1-602` (iteration 2a attempt 1, FAILED — 0 sources, Fable-5 session limit) · `wf_e118e84a-441` (iteration 2a attempt 2, VERIFIED) · `wf_97560c79-715` (iteration 2b attempt 1, FAILED — decomposition schema loop) · `wf_9986ccdd-189` (iteration 2b attempt 2, VERIFIED) · `wf_18bdf7c3-331` (iteration 2c, Digital Forensics isolated, PARTIALLY VERIFIED — session limit killed 36 verifier panels + harness synthesis; 8 confirmed manually synthesized) · Labels per charter: FACT / INTERPRETATION / RECOMMENDATION / OPEN QUESTION, never collapsed.*
