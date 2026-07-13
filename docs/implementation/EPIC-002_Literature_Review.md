@@ -315,8 +315,8 @@ ISO/IEC 27037's self-scoping (identification/collection/acquisition/preservation
 
 **Runs:** `wf_3f9f7018-a37` (first attempt: total verification-panel rate-limit failure, 25/25, resets-at-midnight Berlin) → resumed (same run ID; task-tracking ID `wg40ljxqs`) (second attempt: Extraction PASS, Verification PASS, **Synthesis FAILED** — the harness's final aggregation call returned a literal placeholder stub instead of merged confirmed findings).
 
-**Per the Research Infrastructure Qualification rule (ARB, 2026-07-13): this iteration is INVALID, not a negative result.**
-- Confirmed/positive falsification-test findings: **UNKNOWN** (not zero — the synthesis step that would have produced them corrupted instead of running).
+**Per the Research Workflow Qualification rule (ARB, 2026-07-13, refined same day): this iteration is INVALID, not a negative result.** (Evidence Set retained: the 7 refuted claims below passed their own stage — Verification — intact; only Synthesis failed.)
+- **Positive evidence status: UNKNOWN.** **Reason: the workflow failed before positive findings could be synthesized** — this is a statement about the workflow, not about ElectionGuard/E2E-VV literature.
 - Refuted claims: **7 retained as legitimate content** (refutation-recording did not depend on the broken synthesis stage) — recorded below for completeness, but **do not treat their existence as evidence the phenomena were tested and passed**; the confirming half of the same test is simply missing.
 - **Recurrence table: NOT updated.** No phenomenon's status changes because of this iteration. No architectural hypothesis is touched.
 

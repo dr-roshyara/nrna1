@@ -150,18 +150,54 @@ Digital Evidence · Digital Forensics · Provenance (W3C PROV) · Trust Engineer
 
 The eventual cross-disciplinary synthesis should weight **election science, trust engineering, and evidence/forensics literature more heavily than administrative-procedure doctrine** — the platform is trustworthy voting, not administrative-law software. Legal doctrine informs the design; it does not dominate it. This is guidance for the synthesis step, not an instruction to re-weight completed iterations.
 
-## RESEARCH INFRASTRUCTURE QUALIFICATION (ARB directive, 2026-07-13 — binding, precedes any further literature iteration)
+## RESEARCH WORKFLOW QUALIFICATION (ARB directive, 2026-07-13, refined same day — binding, precedes any further literature iteration)
 
-**A research iteration is VALID only if all four stages pass:** Extraction PASS → Verification PASS → **Extraction Audit PASS** (new stage: every verified/confirmed claim is confirmed to have reached synthesis — nothing dropped between verification and the final report) → Synthesis PASS. If any stage fails, **the iteration is INVALID, not negative.** An invalid iteration must never be read as "0 confirmed / N refuted" (that reads as falsification succeeding) — it is recorded as **produced no usable result this attempt**, with confirmed status **UNKNOWN**, and:
-- **the recurrence table is NOT updated from it**,
-- **no phenomenon's status changes because of it**,
-- **no architectural hypothesis is touched by it.**
+*(Renamed from "Research Infrastructure Qualification" — ARB: "infrastructure" suggests servers/pipelines; this is workflow correctness.)*
 
-**What happened in iteration 3a (2026-07-13), diagnosed, not guessed:** Extraction PASS (104/105 agents completed, real claim text with quotes) · Verification PASS (per-claim votes recorded, including 7 well-formed refuted claims with real quotes and vote counts) · **Synthesis FAILED** — the final aggregation call returned a literal placeholder stub (`"claim":"test claim"`, `"evidence":"test evidence"`) instead of merging the confirmed claims; the `confirmed` key was entirely absent from the result. Manual reconstruction from the raw per-vote journal was attempted and abandoned: cache keys are opaque content hashes with no visible claim↔vote pairing exposed to the caller, so reconstructing confirmed claims by hand risked misattributing evidence — an unacceptable integrity risk. **Verdict: iteration 3a is INVALID.** The 7 refuted claims are retained as legitimate content (refutation didn't depend on the broken synthesis step); the confirmed/positive side of the falsification test is **UNKNOWN**, not zero, not negative.
+### The pipeline (ARB-defined, refined)
+
+```
+Search → Extraction → Verification → Evidence Set (persisted) → Extraction Audit → Synthesis → Interpretation
+```
+
+**Evidence Set is the canonical research artifact** (new stage, ARB refinement): the persisted output of Verification — every confirmed, refuted, and unverified claim, each with its source quote and vote. In this program's existing practice, the per-iteration "Confirmed findings" + "Refuted claims" tables already written into `EPIC-002_Literature_Review.md` ARE the Evidence Set — no new file is created; the existing tables are recognized under this name retroactively. **Synthesis and Interpretation are consumers of the Evidence Set, never replacements for it** — this is why Extraction and Verification never need to re-run merely because Synthesis failed (exactly what happened in iteration 3a).
+
+### Stage invariants
+
+| Stage | Input | Output | Invariant |
+|---|---|---|---|
+| **Extraction** | Sources | Raw claims | Every extracted claim cites a specific source and carries a verbatim quote (no paraphrase). |
+| **Verification** | Raw claims | Verified claims (confirmed / refuted / unverified) + vote record | Every claim receives an adversarial vote; the vote is recorded alongside the claim. |
+| **Evidence Set** | Verified claims | Persisted, canonical claim record | **No verified claim is silently lost.** **No claim in the Evidence Set exists without a verification record.** |
+| **Extraction Audit** | Verified claims + Evidence Set | Audit result (PASS/FAIL) | Every verified claim is present in the Evidence Set. Every claim in the Evidence Set has a verified source. No unverified claim is silently promoted. |
+| **Synthesis** | Evidence Set | Synthesized findings | Every synthesized claim originates from a verified claim in the Evidence Set. Every verified claim either appears in synthesis or is explicitly accounted for as excluded. No synthesized claim appears without a verified source (this is exactly the invariant iteration 3a's synthesis stage violated — it returned content with no traceable source at all). |
+| **Interpretation** | Synthesized findings | Strategic Discovery input (ARB-gated) | No architectural interpretation without a synthesized finding behind it. |
+
+### Validity rule
+
+**A research iteration is VALID only if Extraction, Verification, Evidence Set, and Extraction Audit all pass, AND Synthesis passes.** If any stage fails, **the iteration is INVALID, not negative.** An invalid iteration must never be read as "0 confirmed / N refuted" (that reads as falsification succeeding). Instead, record explicitly:
+
+> **Positive evidence status: UNKNOWN.**
+> **Reason: the workflow failed before positive findings could be synthesized — this is a statement about the workflow, not about the world.**
+
+An invalid iteration:
+- does **not** update the recurrence table,
+- does **not** change any phenomenon's status,
+- does **not** touch any architectural hypothesis,
+- but **does** retain whatever Evidence Set content it produced before the failing stage (e.g. refuted claims from a working Verification stage survive a broken Synthesis stage — they carry their own vote record and need no further stage to be legitimate).
+- **A failed stage invalidates the iteration but must not invalidate previously completed stages** — the Evidence Set persists even when Synthesis fails, so Extraction and Verification never have to re-run for that reason alone.
+
+### What happened in iteration 3a (2026-07-13), diagnosed, not guessed
+
+Extraction PASS (104/105 agents completed, real claim text with quotes) · Verification PASS (per-claim votes recorded, including 7 well-formed refuted claims with real quotes and vote counts) · Evidence Set: the confirmed side is genuinely absent (the `confirmed` key never existed in the output — not merely empty) · Extraction Audit: would have caught this immediately had it existed as an explicit step · **Synthesis FAILED** — the final aggregation call returned a literal placeholder stub (`"claim":"test claim"`, `"evidence":"test evidence"`) with no traceable source, violating the Synthesis invariant outright. Manual reconstruction from the raw per-vote journal was attempted and abandoned: cache keys are opaque content hashes with no visible claim↔vote pairing exposed to the caller, so reconstructing confirmed claims by hand risked misattributing evidence — an unacceptable integrity risk.
+
+**Verdict: iteration 3a is INVALID.** Positive evidence status: **UNKNOWN** — the workflow failed before positive findings could be synthesized; this says nothing about whether ElectionGuard/E2E-VV literature would confirm or refute the five phenomena. The 7 refuted claims are retained as legitimate Evidence Set content (their own stage — Verification — passed); they carry no conclusion about phenomenon survival, since the confirming half of the same test is exactly what Synthesis lost.
 
 **Important operational note:** resuming the SAME run with identical arguments will NOT fix a synthesis-stage corruption — the tool's own caching semantics mean a call that "completed" (even with bad output) replays its cached result rather than regenerating. A genuine retry requires either a fresh (non-resumed) run or a deliberately altered prompt.
 
-**Acceptance gate going forward:** before any iteration's findings are written into the Literature Review or Concept Register, verify all four stages passed. Do not rerun the ElectionGuard/E2E-VV search immediately — per ARB ruling, the objective is now to confirm the *next* attempt's synthesis stage actually produces real content before treating any output as research data.
+### Acceptance gate going forward
+
+Before any iteration's findings are written into the Literature Review or Concept Register, verify Extraction, Verification, Evidence Set, Extraction Audit, and Synthesis all passed. **Do not rerun the ElectionGuard/E2E-VV search until the workflow itself has demonstrated — on any scope, not necessarily this one — that it can produce a valid Synthesis output from a real Evidence Set.** Continue Strategic Discovery only after the workflow has shown it can produce trustworthy evidence, not merely more literature.
 
 ## FALSIFICATION PHASE (ARB directive, 2026-07-12 — supersedes discovery-mode emphasis for the remaining disciplines)
 
