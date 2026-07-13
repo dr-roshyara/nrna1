@@ -169,6 +169,8 @@ Search → Extraction → Verification → Evidence Set (persisted) → Extracti
 | **Extraction** | Sources | Raw claims | Every extracted claim cites a specific source and carries a verbatim quote (no paraphrase). |
 | **Verification** | Raw claims | Verified claims (confirmed / refuted / unverified) + vote record | Every claim receives an adversarial vote; the vote is recorded alongside the claim. |
 | **Evidence Set** | Verified claims | Persisted, canonical claim record | **No verified claim is silently lost.** **No claim in the Evidence Set exists without a verification record.** |
+
+**Evidence Set interface contract (ARB final refinement, 2026-07-13):** every entry contains exactly `{Claim, Evidence (quote), Source, Vote, Confidence, Status (confirmed/refuted/unverified)}` — this is the public contract between Verification and Synthesis; Synthesis may consume only these fields. **Versioned:** each Evidence Set is stamped with its producing run ID (e.g. `wf_3f9f7018-a37`) — if an iteration is rerun, the new Evidence Set is a new version (v2), never a silent overwrite; the invalid v1 stands as history. **Immutable:** once persisted, an Evidence Set entry is never edited — corrections happen by adding a new entry (e.g. a later-refuted claim) or a new version, never by mutating the old one. Immutability is what makes every later stage reproducible from a fixed input.
 | **Extraction Audit** | Verified claims + Evidence Set | Audit result (PASS/FAIL) | Every verified claim is present in the Evidence Set. Every claim in the Evidence Set has a verified source. No unverified claim is silently promoted. |
 | **Synthesis** | Evidence Set | Synthesized findings | Every synthesized claim originates from a verified claim in the Evidence Set. Every verified claim either appears in synthesis or is explicitly accounted for as excluded. No synthesized claim appears without a verified source (this is exactly the invariant iteration 3a's synthesis stage violated — it returned content with no traceable source at all). |
 | **Interpretation** | Synthesized findings | Strategic Discovery input (ARB-gated) | No architectural interpretation without a synthesized finding behind it. |
@@ -197,7 +199,18 @@ Extraction PASS (104/105 agents completed, real claim text with quotes) · Verif
 
 ### Acceptance gate going forward
 
-Before any iteration's findings are written into the Literature Review or Concept Register, verify Extraction, Verification, Evidence Set, Extraction Audit, and Synthesis all passed. **Do not rerun the ElectionGuard/E2E-VV search until the workflow itself has demonstrated — on any scope, not necessarily this one — that it can produce a valid Synthesis output from a real Evidence Set.** Continue Strategic Discovery only after the workflow has shown it can produce trustworthy evidence, not merely more literature.
+Before any iteration's findings are written into the Literature Review or Concept Register, verify Extraction, Verification, Evidence Set, Extraction Audit, and Synthesis all passed.
+
+### PROCESS FREEZE (ARB, 2026-07-13 — the research workflow is now mature)
+
+**"Synthesis and Interpretation are consumers of the Evidence Set, never replacements for it"** is adopted as a standing architectural principle of the research process. **The methodology is frozen under the same evidence-first governance already applied to the engineering platform: no further workflow refinement in anticipation of hypothetical problems.** Future changes to this pipeline require demonstrated deficiency, not foresight. This mirrors exactly the post-PB-007 transition on the engineering-platform track — the workflow has earned the right to be used, not further designed.
+
+**Sequence from here:**
+1. Run one small-scope qualification iteration — deliberately OFF-TOPIC from EPIC-002 (so a pass/fail proves nothing about ElectionGuard and costs nothing research-wise if it fails again) — to prove Extraction → Verification → Evidence Set → Extraction Audit → Synthesis can complete cleanly end-to-end.
+2. If it passes: rerun the invalid ElectionGuard/E2E-VV iteration (3a) using the now-qualified workflow.
+3. Continue the planned literature disciplines (Governance Theory, DDD literature) under the falsification-phase rules already in force.
+4. Only after the full charter is covered: cross-disciplinary synthesis (ARB-gated).
+5. Only after ARB approval of that synthesis: transition from Strategic Discovery into tactical design (IDD) — still out of scope for this ticket.
 
 ## FALSIFICATION PHASE (ARB directive, 2026-07-12 — supersedes discovery-mode emphasis for the remaining disciplines)
 
