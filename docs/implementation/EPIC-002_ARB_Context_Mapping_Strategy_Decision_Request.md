@@ -32,18 +32,40 @@ Applying the three-question criterion to the uncertainties still on record — a
 - **Binding sunset clause:** the scenario maps are decision-support artifacts. The ARB rules **immediately after** reviewing them; exactly one canonical Context Map is then produced and the scenario maps are archived as history. They must not persist as parallel semi-authoritative representations.
 - **Known risk (on record):** comparative maps invite comparing maps instead of deciding architecture — the immediate-ruling requirement exists precisely to prevent that drift.
 
-## 3. Recommendation
+## 3. Recommendation — the Decision Gate (refined per ARB, 2026-07-25)
 
-**Attempt Choice 1 first.** The three-question criterion confirms the open uncertainty is real — but it is a single, well-bounded, fully-consequence-analyzed architectural judgment, not an information gap. Every input a scenario map would visualize is already stated in prose in the committed record. Scenario maps add presentation value, not information value; they cost effort and carry the compare-maps-instead-of-deciding risk. **Choice 2 is the legitimate fallback, not the default** — to be invoked only if, upon actually confronting the ruling, the board finds it cannot choose without seeing the alternatives drawn.
+The process is a **loop, not a single attempt**:
+
+```
+Decision Gate
+
+The ARB shall first determine whether the current architectural knowledge is
+sufficient to make a governing decision.
+
+If yes:
+
+    Decide.
+
+If no:
+
+    Commission comparative scenario maps as a bounded decision-support
+    activity.
+
+Return immediately to the same decision gate.
+```
+
+The three-question criterion confirms the open uncertainty is real — but it is a single, well-bounded, fully-consequence-analyzed architectural judgment, not an information gap. Every input a scenario map would visualize is already stated in prose in the committed record. Scenario maps add presentation value, not information value; they cost effort and carry the compare-maps-instead-of-deciding risk. **Choice 2 is the legitimate, bounded support activity inside the loop — never an exit from it**: after the scenario maps are reviewed, the same decision gate is confronted again, immediately.
 
 ## 4. ARB Decision Request
 
 The ARB is asked to answer one question:
 
-> **Can the ARB confidently rule now on the coupled custody + merger pair — choosing among Scenario A (custodial), B (self-verifying), and C (hybrid, per-stream), and jointly disposing of the CB-1/CB-4 merger?**
+> **Does the ARB have sufficient architectural evidence to make a responsible decision now on the coupled custody + merger pair — choosing among Scenario A (custodial), B (self-verifying), and C (hybrid, per-stream), and jointly disposing of the CB-1/CB-4 merger?**
+
+*(Wording deliberate, per ARB refinement: "responsible," not "confident" — architecture decisions rarely reach certainty; boards decide under uncertainty. The question is whether the evidence suffices for a responsible judgment, not whether doubt has been eliminated.)*
 
 - **If YES:** record the ruling; authorize **one canonical Context Map** on the ruled decomposition.
-- **If NO:** authorize **comparative scenario maps (A/B/C) under the binding sunset clause**, with the ruling required immediately after their review.
+- **If NO:** commission **comparative scenario maps (A/B/C) under the binding sunset clause** as a bounded decision-support activity — then return immediately to this same decision gate.
 
 Either answer also implicitly disposes of CB-3-Alt's handling: it is carried as an annotation on whichever map(s) are authorized — already established as non-blocking, requiring no separate ruling now.
 
