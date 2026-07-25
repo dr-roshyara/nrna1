@@ -186,7 +186,15 @@ These are business and governance decisions, not tactical modeling decisions. Re
 
 **The four rulings form one coherent constitutional policy** (ARB observation, recorded): (1) corrections are append-only and supersede, never rewrite, history · (2) evidence is retained per the business lifecycle of contestation and adjudication · (3) the current linkage is an accepted Phase-1 custodial constraint under privileged, audited access, reviewed at Self-Verifying Integrity · (4) detection may be automated; correction requires explicit authority. All four derive technical behavior from explicit domain policy, not implementation convenience.
 
-**Gate status: the Tactical DDD entry condition set by the ARB Resolution above is SATISFIED.** Tactical DDD is formally unblocked; it commences on explicit ARB opening, carrying these four rulings as binding inputs alongside the two entry items already on record (Adjudication scope extension per Special Review №1; hybrid stream assignments from the all-custodial baseline per Special Review №2).
+**Gate status (wording per ARB caution): the prerequisites for Tactical DDD have been satisfied. Tactical DDD may now begin under explicit ARB authorization — it has not begun.** It carries these four rulings as binding inputs alongside the two entry items already on record (Adjudication scope extension per Special Review №1; hybrid stream assignments from the all-custodial baseline per Special Review №2).
+
+## CLOSING RESOLUTION (ARB chair, 2026-07-25 — recorded verbatim in substance)
+
+> **The Strategic Architecture program is complete.** The Tactical DDD Entry Assessment has been accepted, the four constitutional policies have been ratified, and the prerequisites for Tactical DDD have been satisfied. Future work shall proceed within the accepted strategic baseline and constitutional policies. **Tactical DDD may now commence only through explicit ARB authorization for a specific bounded context, beginning with a clearly scoped tactical work package rather than broad system-wide modeling.**
+
+**Standing sequence for opening Tactical DDD (per the resolution — scope before aggregates):** (1) confirm which bounded context is tackled first; (2) define that context's tactical objectives; (3) state the explicit not-in-scope items; (4) freeze the tactical work package — only then aggregate discovery, value objects, invariants, and the rest.
+
+**ARB recommendation on record (not an authorization):** the first tactical candidate is **Adjudication** — strongest implementation nucleus, naming reconciliation complete, scope decision settled (subset → extend), central consumer of Collection & Aggregation, and seated directly in the constitutional correction loop. The lowest-risk first tactical iteration.
 
 ---
 *Strategic baseline: `EPIC-002_Canonical_Context_Map.md` (ACCEPTED) · `EPIC-002_Relationship_Pattern_Selection.md` (ACCEPTED, ARB Resolution §) · Evidence: four codebase inventory reports, 2026-07-25 (Adjudication/Contestation · Trust/Governance/Shared/messaging · evidence/record/custody sweep · architectural intent + behavioral mapping).*
