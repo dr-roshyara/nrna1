@@ -28,7 +28,7 @@ Everything below should be read against this: the strategic model's most importa
 
 **Architectural intent (recovered):** evidence-based voter trust as a first-class model, built deliberately and twice — the `Simplified/` generation is a second attempt kept in parallel, with the divergence-observation machinery existing specifically to prove the two agree before retiring the old one. The intent is mature; the domain it serves is *voter-trust legitimacy at vote time*.
 
-**Alignment:** the capability *shape* matches the BC exactly — heterogeneous, multi-kind evidence aggregated for downstream evaluation, with provenance. But the *consumer* differs: this pipeline feeds a vote-time legitimacy gate (`ConstitutionalLegitimacyDecision`, whose single production caller is `VoteController::store()`), not challenge adjudication. Strategically, Collection & Aggregation's output is consumed by Adjudication (COL-1); the existing pipeline's output is consumed by an act-time enforcement decision. Additionally: `EvidenceEnvelopeRef` in the Adjudication context points at "the Evidence context" — **which does not exist**. This BC is that missing referent.
+**Alignment:** the capability *shape* matches the BC exactly — heterogeneous, multi-kind evidence aggregated for downstream evaluation, with provenance. **The current implementation primarily supports vote-time legitimacy decisions** (`ConstitutionalLegitimacyDecision`, whose single production caller is `VoteController::store()`). *This is a current-implementation observation, not a stable architectural conclusion* (ARB refinement, 2026-07-25): whether this evidence vocabulary becomes the canonical evidence source for adjudication — i.e., whether tomorrow's picture is Collection → vote legitimacy **and** → Adjudication — **is a Tactical DDD design decision, deliberately left open here.** Additionally: `EvidenceEnvelopeRef` in the Adjudication context points at "the Evidence context" — **which does not exist**. This BC is that missing referent.
 
 **Boundary observations (not violations — evolution lag):** two parallel generations of the same model; everything outside contexts; the evidence vocabulary is trust/security-scoped, narrower than the BC's general responsibility.
 
@@ -140,7 +140,19 @@ Classifying existing code between the two ratified integrity contexts (classific
 
 **Every implementation artifact examined belongs to exactly one BC above, is explicitly shared (messaging platform, ClockInterface — the one primitive both worlds share), or is explicitly recorded as adjacent landscape (§3).**
 
-## 5. Quality gate (self-verified)
+## 5. Architectural Risk Register (ARB refinement, 2026-07-25 — architectural risk, not implementation risk; this table IS the ARB agenda)
+
+| # | Risk | Severity | Reason | Where evidenced |
+|---|---|---|---|---|
+| R-1 | Correction loop has no production entry | **Critical** | The core domain (constitutional correction) is incomplete — the loop cannot fire outside tests | §0; intent+behavior report |
+| R-2 | Corrections cannot affect published results | **Critical** | The trust loop cannot complete: terminal `results_published` state, no re-open path, auto-correcting publish sweep | §0; §1.5 |
+| R-3 | Record retention mismatch (30 vs. 730 days) | **High** | Adjudication evidence may disappear before a dispute can use it — undermines COL-2 for the model's central consumer | §1.2 |
+| R-4 | No self-verifying implementation | **Medium** | An entire strategic BC is greenfield; COL-3b/COL-4b have no counterpart | §1.4 |
+| R-5 | Evidence vocabulary split into two generations | **Medium** | Tactical modelling complexity; the divergence apparatus exists to resolve it but the decision is unmade | §1.1 |
+| R-6 | Custody violation-consequence inverted (auto-correct, never block) | **High** | D3-adjacent behavior inherited silently would encode the wrong default | §1.3 |
+| R-7 | Anonymity is no-direct-FK, not unlinkability (re-identification join) | **High** | Bears directly on the custody model's subject matter; must be a decision, not an inheritance | §1.3 |
+
+## 6. Quality gate (self-verified)
 
 - Every accepted BC assessed — ✅ (five entries, §1).
 - Every artifact assigned to exactly one BC or explicitly shared/adjacent — ✅ (§4 note, §3).
@@ -152,6 +164,14 @@ Classifying existing code between the two ratified integrity contexts (classific
 ---
 
 **Stop condition:** the Tactical DDD Entry Assessment is complete. **STOP.** Tactical DDD does not begin; no architecture is redesigned; no aggregates or entities are written. Await explicit ARB authorization — the assessment's open business decisions (§4 Required-movement column) are the natural agenda for that authorization discussion.
+
+---
+
+## ACCEPTED (ARB Resolution, 2026-07-25 — recorded verbatim in substance)
+
+> **The Tactical DDD Entry Assessment is accepted.** It successfully bridges the accepted Strategic DDD baseline to the existing implementation through evidence-based implementation archaeology. The assessment identifies the current implementation landscape, architectural intent, maturity, and open business decisions without redesigning the system or reopening strategic architecture. **Tactical DDD shall commence only after the ARB resolves the four architectural business decisions identified in the assessment:** (1) correction landing point — how adjudication corrections affect the legacy results world; (2) audit retention policy — the 30-vs-730-day contradiction; (3) custody policy — whether the code-to-vote linkage is an accepted design trade-off or an architectural defect; (4) integrity policy — whether custody violations block publication or continue with auto-correction and logging.
+
+These are business and governance decisions, not tactical modeling decisions. Resolving them first prevents Tactical DDD from encoding assumptions that later have to be revisited.
 
 ---
 *Strategic baseline: `EPIC-002_Canonical_Context_Map.md` (ACCEPTED) · `EPIC-002_Relationship_Pattern_Selection.md` (ACCEPTED, ARB Resolution §) · Evidence: four codebase inventory reports, 2026-07-25 (Adjudication/Contestation · Trust/Governance/Shared/messaging · evidence/record/custody sweep · architectural intent + behavioral mapping).*
