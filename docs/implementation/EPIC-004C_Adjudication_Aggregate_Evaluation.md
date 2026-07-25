@@ -78,4 +78,24 @@
 **Stop condition: STOP.** Artifact №2 complete in refined (seven-criteria) form. Await ARB decision on the recommendations — noting the ARB may reasonably decide Determination now and **defer the Candidate-2 decision until Q-1 is answered**, since Q-1 is its named discriminator. The next artifact (Aggregate Responsibilities, for whichever candidates the ARB accepts) begins only after decision → refine → freeze.
 
 ---
+
+## DECIDED — ARTIFACT №2 FROZEN (ARB, 2026-07-25, explicit per-item decisions)
+
+1. **Determination: ACCEPTED — AGGREGATE, existing implementation confirmed unchanged.** Enters artifact №3 (Aggregate Responsibilities) as a settled element.
+2. **AdjudicationProceeding: DEFERRED until Q-1 is answered** — exactly as the artifact's own logic recommends: Criterion 7 (Business Decision Authority) hinges on who holds the decision authority, which is what Q-1 defines. **Both realizations remain preserved** (Aggregate Candidate, Medium · Process Manager, Medium); neither is foreclosed. The deferral is an application of the evidence discipline, not an evasion: deciding before Q-1 would resolve by assumption what the business has not yet said.
+3. The five not-an-Adjudication-aggregate recommendations and the Authority deferral stand as recommended (implicitly accepted with the artifact's freeze; none was contested).
+
+**ARB ruling table (recorded verbatim in substance):**
+
+| Candidate | Decision | Confidence |
+|---|---|---:|
+| Determination | **Approved as Aggregate** | High |
+| AdjudicationProceeding | **Deferred** | Medium |
+| Process-Manager alternative | **Remains under consideration** | Medium |
+
+**ARB grounds (recorded):** once the process has identified a discriminator, use it — deferral is the evidence discipline applied, not decision-avoidance. Both models remain internally consistent today (Model A: "an adjudication is opened, deliberated, and concluded" → aggregate; Model B: "the constitutional authority issues a determination" → the authority owns the decision, the proceeding coordinates preparation → process manager). **The deciding factor, quoted by the chair:** *"proceeding is currently an architectural hypothesis rather than a discovered business concept"* — once acknowledged, the burden of proof shifts: the ARB does not approve a new aggregate because it is technically elegant; it approves it because the **business** recognizes it as a meaningful consistency-and-decision boundary, or because later evidence demonstrates it must exist despite not yet being explicit in the business language. Not at that point yet.
+
+**This artifact is FROZEN.** Reopening routes through the ARB. Next artifact: №3 — Aggregate Responsibilities, scoped to the accepted aggregate (Determination) — on explicit ARB opening; the Candidate-2 track resumes when Q-1 is answered.
+
+---
 *Predecessors: `EPIC-004_Adjudication_Tactical_Work_Package.md` (frozen) · `EPIC-004A` (closed, accepted with rulings) · `EPIC-004B` (frozen as refined) · Constitutional inputs: EPIC-002 baseline, EPIC-003 §THE FOUR DECISIONS, ADR-T1/T11/T14/T17/T19.*
