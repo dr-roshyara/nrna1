@@ -239,5 +239,11 @@ With this acceptance, the Strategic DDD phase of EPIC-002 is **formally complete
 
 *Strategic record, complete chain: Charter → Literature (iterations 1–5, falsification mode) → Evidence Family Independence Audit → Cross-Disciplinary Evidence Consolidation → Strategic Domain Discovery → Candidate Bounded Context Discovery → Domain Decomposition Evaluation → Canonical Domain Model Decision → Context Mapping Preparation (Domain Collaboration Discovery) → Context Mapping Readiness Assessment → Decision Gate ruling (Scenario C Hybrid; keep-separate) → Canonical Context Map (ACCEPTED; five Bounded Contexts ratified) → Relationship Pattern Selection with Adversarial Design Review (ACCEPTED).*
 
+## ARB RESOLUTION — EPIC-002 CLOSED (chair, 2026-07-25, recorded verbatim)
+
+> **ARB Resolution:** EPIC-002 Strategic DDD is accepted and declared complete. The strategic architecture has been validated through evidence-based discovery, explicit decision making, adversarial design review, and formal acceptance. These artifacts now constitute the **authoritative strategic baseline** for Tactical DDD. Future changes to the strategic architecture require explicit architectural review through the recorded falsifiability conditions, reversal conditions, or new domain evidence; **they shall not emerge implicitly during implementation.**
+
+**Standing caution (recorded with the resolution):** the primary risk from here is *strategic erosion during Tactical DDD* — implementation pressure quietly redefining strategic concepts. The accepted strategic artifacts are architectural **constraints**: Tactical DDD may refine them; it may not silently redefine a bounded context, relationship pattern, or strategic assumption. Any such change routes back through explicit architectural decision.
+
 ---
 *Charter: `EPIC-002_Problem_Statement.md` · Inputs: `EPIC-002_Canonical_Context_Map.md` (ACCEPTED) and prior accepted EPIC-002 artifacts · No new sources consulted.*
