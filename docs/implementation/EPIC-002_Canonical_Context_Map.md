@@ -92,5 +92,9 @@ Every context and edge on this map traces to committed record: contexts to `EPIC
 
 **Stop condition:** this map is produced under the Decision Gate's YES path. **STOP for ARB acceptance.** Upon acceptance: (1) the five contexts are ratified as Bounded Contexts; (2) the next authorized activity is **Relationship Pattern Selection** over this map's edges. Until acceptance, no relationship patterns, no Tactical DDD, no implementation.
 
+## ACCEPTED (ARB, 2026-07-25 — explicit formal acceptance, recorded)
+
+**The Canonical Context Map is ACCEPTED.** Per the state-transition clause above, the five previously approved Candidate Domain Boundaries — Collection & Aggregation, Contemporaneous Record-Fixing, Custodial Integrity, Self-Verifying Integrity, Adjudication — **are hereby ratified as the project's Bounded Contexts for Tactical DDD.** Acceptance was given with the pre-pattern checklist result in view (4/5 clean; one flagged finding): **the Adjudication-name reconciliation** (discovered context vs. the already-implemented `app/Contexts/Adjudication` from EPIC-001 — same concept / extension / distinct-needing-rename) **is deferred to the Tactical DDD entry checklist**, per the accepted option. Next authorized activity: **Relationship Pattern Selection** over this map's edges. Tactical DDD and implementation remain not authorized until pattern selection completes and Strategic DDD is declared complete.
+
 ---
 *Charter: `EPIC-002_Problem_Statement.md` · Ruling: `EPIC-002_ARB_Context_Mapping_Strategy_Decision_Request.md` §5 · Inputs: the accepted EPIC-002 Strategic DDD artifacts · No new sources consulted.*
