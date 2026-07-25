@@ -1,49 +1,61 @@
 # EPIC-004B Adjudication Aggregate Discovery
 
-**Kind:** Tactical DDD artifact №1 of 9 (per the ARB execution rule: one artifact → review → refine → freeze → next). **This artifact answers exactly one question: WHICH aggregates does the extended Adjudication context need, and why.** Aggregate *boundaries* (artifact 2), *responsibilities* (3), *invariants* (4), value objects, events, commands, repositories, and services are downstream artifacts — deliberately not elaborated here.
+**Kind:** Tactical DDD artifact №1 (per the ARB execution rule: one artifact → review → refine → freeze → next). **This artifact identifies aggregate CANDIDATES — it declares no aggregates.** *(Refined per ARB review, 2026-07-25: the original draft prematurely declared "discovered aggregates"; every such claim is corrected to "candidate." The declaration itself belongs to the next artifact.)*
+**Sequence amendment (ARB, 2026-07-25):** the artifact sequence gains one step — **Aggregate Discovery → Aggregate Evaluation & Selection → Aggregate Boundaries → Responsibilities → Invariants → VOs → Domain Events → Commands → Repositories → Domain Services.** Artifact №2 is now *Evaluation & Selection*: it tests every candidate against DDD aggregate criteria and decides which become aggregates.
 **Authorization:** ARB, 2026-07-25 — Tactical Discovery closed; Aggregate Discovery authorized as the first Tactical DDD artifact.
-**Binding constraints:** the frozen work package (EPIC-004, incl. subset→extend, no rename) · the four Constitutional Policies · K1/P2 (adjudication never automatic) · ADR-T1 (one transaction = one aggregate root) · ADR-T11 (anonymity) · ADR-T14 (Determination is the sole aggregate written by issuance) · ADR-T19 (state-based aggregate + event-as-ruling-record). Q-1 (authority) and Q-2 (window terms) remain open; nothing below forecloses either.
+**Binding constraints:** the frozen work package (EPIC-004, incl. subset→extend, no rename) · the four Constitutional Policies · K1/P2 (adjudication never automatic) · ADR-T1/T11/T14/T19. Q-1 (authority) and Q-2 (window terms) remain open; nothing below forecloses either.
 
 ---
 
-## Discovery method
+## Discovery rule (corrected per ARB)
 
-An aggregate exists where the business has a **consistency obligation with its own lifecycle** — a cluster of facts that must change together, under one guardian, at one pace. Each candidate below is tested against: (a) does the business evidence show such an obligation? (b) does it have its own lifecycle and volatility? (c) would merging it into another aggregate force two paces of change under one guardian? Candidates that fail become non-aggregates (recorded, with reasons).
+> **An aggregate exists where the business requires one consistency boundary that must be protected atomically.** Lifecycle, ownership, and volatility are *evidence*; the consistency boundary is the *decision* — and that decision is artifact №2's to make, not this document's.
 
-## Aggregate 1 — Determination *(existing; retained unchanged)*
+Accordingly, this artifact records, per candidate: the candidate · its evidence · the reasons it may warrant aggregate status · its open questions. Nothing is retained, nothing is rejected, no collaboration is described, no guardianship or transaction shape is assigned.
 
-- **What it guards:** the exactly-once, content-fixed-at-issue, binding ruling record for one challenge.
-- **Reason to exist (evidence):** proven in production-grade code and tests — Draft→Issued→Final lifecycle, one-determination-per-challenge (service guard + DB uniqueness), ruling content fixed once in the immutable event (ADR-T19 Model B). Its consistency obligation is *record integrity*, not judgment.
-- **Discovery decision:** **retained as-is.** The subset→extend ruling means the extension happens *around* this aggregate, not inside it. Nothing discovered in EPIC-003/004A gives any reason to reshape a record-keeping aggregate that already satisfies its obligations.
+## Candidate 1 — Determination
 
-## Aggregate 2 — AdjudicationProceeding *(new — the judgment half)*
+- **The candidate:** the exactly-once, content-fixed-at-issue, binding ruling record for one challenge.
+- **Evidence:** operates as an aggregate in production-grade code today — Draft→Issued→Final lifecycle, one-determination-per-challenge enforced at service and database level, ruling content fixed once in the immutable event (ADR-T19 Model B); thoroughly tested and architecture-qualified.
+- **Reasons it may warrant aggregate status:** the uniqueness rule and the fixed-at-issue property look like a genuine atomic-consistency obligation over the ruling record; the existing implementation treats them as exactly that.
+- **Open questions (for Evaluation & Selection):** whether the extension of the context changes what this record must protect atomically; whether its existing shape survives the arrival of the judgment concern unchanged. Its production standing is strong evidence, not a verdict.
 
-- **What it guards:** the deliberative process for one routed challenge — from the moment the contested matter is taken up for judgment, through evidence assembly and sufficiency assessment, to exactly one of two outcomes: a ruling is issued (via Aggregate 1), or **failure is declared** (insufficient evidence — the COL-1 customer's refusal power exercised).
-- **Reason to exist (evidence):**
-  - The judgment process has its **own lifecycle**, distinct from the ruling record's: a proceeding is *open* long before any ruling exists and may end *without* one (declare-failure) — a lifecycle the Determination aggregate cannot and should not express (its docblock: ruling content is decided upstream).
-  - It has its **own consistency obligation**: what evidence has been admitted to *this* judgment, what has been demanded and not yet supplied, and whether the proceeding may conclude — facts that must change together under one guardian, at review-time pace (versus the record's issue-instant pace).
-  - It is where **K1/P2 becomes structural**: the proceeding can assemble, track, and demand — but concluding it is a decision the aggregate must *receive from* an authority, never compute. (How the authority is modeled awaits Q-1; the proceeding refers to it opaquely meanwhile, exactly as `IssuedByAuthority` does today.)
-  - The strategic record's differentiated-scrutiny echo (AL/CL) and declare-failure obligation (ES) both attach *here* — to the process — not to the ruling record.
-- **Working name:** **AdjudicationProceeding** (judicial register, consistent with the context's existing vocabulary — Determination, Jurisdiction, IssuedByAuthority). Alternatives considered: *AdjudicationCase* (workable; "case" collides with safety-assurance "case" vocabulary from the strategic record), *Judgment* (names the outcome, not the process). Name is review-open.
-- **Relationship to Aggregate 1 (discovery-level only):** one proceeding concerns one challenge; a concluded-with-ruling proceeding leads to exactly one Determination. Per ADR-T1/T14, they are separate transactional units — the proceeding never writes the ruling record in its own transaction. *Precise boundary and interaction shape: artifact 2.*
+## Candidate 2 — AdjudicationProceeding *(working name; review-open)*
 
-## Considered and NOT discovered as aggregates (recorded, with reasons)
+- **The candidate:** the deliberative process for one routed challenge — from the contested matter being taken up for judgment, through evidence assembly and sufficiency assessment, to one of two endings: a ruling is issued, or failure is declared (insufficient evidence — the COL-1 refusal power exercised).
+- **Evidence:** the judgment process demonstrably has its own lifecycle, distinct from the ruling record's — a proceeding is open long before any ruling exists and may end *without* one; it changes at review-time pace versus the record's issue-instant pace; the strategic record's declare-failure obligation (ES) and differentiated-scrutiny echo (AL/CL) attach to the *process*, not the record; K1/P2 demand the process receive its conclusion from an authority, never compute it.
+- **Reasons it may warrant aggregate status:** the set of facts "what evidence has been admitted to this judgment, what has been demanded and not supplied, whether the proceeding may conclude" *may* constitute a consistency boundary requiring atomic protection.
+- **Open questions (for Evaluation & Selection — explicitly undecided):** whether this concern is an **aggregate at all** — it could instead prove to be a Policy, a Process Manager, a Saga, a Domain Service, a workflow, **or remain inside Determination**. Lifecycle evidence alone does not settle this; the consistency test does. Also open: its relationship to Candidate 1 in every respect (including transactional shape) — deliberately not described here.
+- **Naming evidence (for whenever the concept is ratified in any form):** *AdjudicationProceeding* (judicial register, consistent with Determination/Jurisdiction/IssuedByAuthority) · *AdjudicationCase* (workable; collides with safety-assurance "case" vocabulary in the strategic record) · *Judgment* (names the outcome, not the process).
 
-- **Declare-failure** — an *outcome* of the proceeding, not a thing with its own consistency obligation. It is recorded as a fact when the proceeding concludes that way. Making it an aggregate would manufacture a guardian with nothing to guard.
-- **Evidence body / evidence envelope** — the proceeding *references* evidence (opaquely today, per `EvidenceEnvelopeRef`); the evidence itself is owned upstream (Collection & Aggregation, strategically). An Adjudication-side evidence aggregate would re-own another context's subject matter across the COL-1 boundary — exactly what the Customer–Supplier pattern exists to prevent.
-- **Integrity Quarantine** — Policy 4's controlled pending state lives where publication lives, not in Adjudication; the quarantine's *consequence* (a challenge, then a proceeding) arrives through the collaboration path. Per the ARB's Q-3 reclassification, this is Tactical Collaboration material — out of this context's aggregate set.
-- **Authority** — deferred pending Q-1. Until ruled, authority remains an opaque reference (as today); if Q-1 later yields an authority model, its home (Governance donor vs. local) is decided then — nothing here forecloses it.
-- **Superseding Constitutional Publication** — Policy 1's mechanism is a *consumer* of this context's output (COL-5b/publication side), not an Adjudication aggregate.
+## Further candidates — deferred for evaluation (NOT rejected; evidence recorded, verdicts withheld)
 
-## What this discovery hands to artifact 2 (Aggregate Boundaries)
+*(Refined per ARB: the original draft classified these as non-aggregates — too early. They have not failed; they have not yet been evaluated. The observations below are evaluation inputs, not conclusions.)*
 
-The open boundary questions this artifact deliberately leaves: where exactly the proceeding's evidence-tracking stops and Collection's supply begins (the COL-1 contract line) · whether proceeding-conclusion and determination-issuance are one business moment in two transactions or two moments (ADR-T1 shape) · what "one proceeding per challenge" means for re-raised or conflicting challenges (interacts with the existing one-determination-per-challenge rule) · the proceeding's terminal states.
+- **Declare-failure** — evidence suggests it is an *outcome* of the proceeding concern rather than a thing with its own consistency obligation; whether it needs any independent protected state is Evaluation's question.
+- **Evidence body / evidence envelope** — evidence suggests upstream ownership (Collection & Aggregation, strategically; the COL-1 Customer–Supplier line); whether Adjudication needs any locally-consistent evidence-tracking state of its own — and whether that state belongs to Candidate 2 or elsewhere — is Evaluation's question.
+- **Integrity Quarantine** — per the ARB's Q-3 reclassification, its *arrival path* is collaboration material; whether any quarantine-adjacent state lives inside this context at all is Evaluation's question, with current evidence pointing toward the publication side.
+- **Authority** — deferred pending Q-1 by ARB ruling; unforecloseable here by construction.
+- **Superseding Constitutional Publication** — current evidence places it as a consumer of this context's output; Evaluation may confirm or complicate that.
+
+## What this discovery hands to artifact №2 (Aggregate Evaluation & Selection)
+
+For **every** candidate above, Evaluation & Selection answers the ARB's six criteria before anything is declared an aggregate:
+
+1. What consistency does it protect?
+2. What invariants does it own?
+3. Can it change independently?
+4. Can it fail independently?
+5. Must it commit atomically?
+6. Does it own transactional consistency?
+
+Accepted and rejected candidates are recorded there with rationale; alternatives are preserved until sufficient evidence exists.
 
 ---
 
-**Self-review:** exactly one question answered (which aggregates, why) ✅ · two aggregates discovered, one retained + one new, each with an evidence-based consistency obligation ✅ · five non-aggregates recorded with reasons ✅ · no boundaries drawn, no responsibilities assigned, no invariants formalized, no VOs/events/commands/repositories/services designed ✅ · Q-1/Q-2 unforeclosed; Q-3's reclassification respected (quarantine excluded as collaboration material) ✅ · K1/P2 honored structurally (the proceeding receives conclusions, never computes them) ✅.
+**Self-review (post-refinement):** no aggregate is declared anywhere — every concept is a candidate ✅ · no candidate is rejected — the five deferred items carry evidence, not verdicts ✅ · no collaboration, guardianship, or transaction shape is described (the original draft's "proceeding never writes the ruling record" statement is withdrawn to artifact-№2/№3 territory) ✅ · the discovery rule is the consistency rule, with lifecycle demoted to evidence ✅ · Q-1/Q-2 unforeclosed; Q-3's reclassification respected ✅ · restraint preserved (no Evidence/Authority/Quarantine aggregates invented) ✅.
 
-**Stop condition: STOP.** Artifact 1 of 9 complete. Await ARB review → refine → freeze; artifact 2 (Aggregate Boundaries) begins only after this freeze.
+**Stop condition: STOP.** Artifact №1 complete in refined form. Await ARB review → freeze; artifact №2 (**Aggregate Evaluation & Selection**) begins only after this freeze.
 
 ---
-*Frozen charter: `EPIC-004_Adjudication_Tactical_Work_Package.md` · Closed discovery: `EPIC-004A_Adjudication_Tactical_Discovery.md` (accepted with rulings) · Constitutional inputs: EPIC-002 baseline, EPIC-003 §THE FOUR DECISIONS, ADR-T1/T11/T14/T17/T19.*
+*Frozen charter: `EPIC-004_Adjudication_Tactical_Work_Package.md` · Closed discovery: `EPIC-004A_Adjudication_Tactical_Discovery.md` (accepted with rulings) · Constitutional inputs: EPIC-002 baseline, EPIC-003 §THE FOUR DECISIONS, ADR-T1/T11/T14/T17/T19 · Refinement record: ARB review 2026-07-25 (8.2/10 → candidates-not-aggregates correction; sequence amended to insert Evaluation & Selection).*
