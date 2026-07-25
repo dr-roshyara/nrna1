@@ -120,4 +120,15 @@ One determination per challenge (implemented) · determination content fixed onc
 **Stop condition: STOP.** No aggregate discovery, no Tactical DDD, no tactical artifact of any kind. Await explicit ARB review of this discovery — including disposition of Q-1, Q-2, and the new Q-3 — before the next phase is authorized.
 
 ---
+
+## ACCEPTED WITH RULINGS (ARB, 2026-07-25 — 7.8/10; the LAST preparatory document)
+
+- **Accepted as sufficient evidence.** With a recorded criticism: §§5 (Responsibility Inventory), 6 (Information Ownership), and 8 (Modeling Hotspots) drifted from *"what must the Tactical Model explain?"* into *"how should Tactical DDD think about the model?"* — raw materials Tactical DDD derives itself. The stronger scope would have ended at vocabulary, decisions, lifecycles, code-evidence reconciliation, and unresolved business questions.
+- **Q-1 and Q-2 remain open business questions** (unchanged).
+- **Q-3 is REJECTED as an ARB question and reclassified: Tactical Collaboration concern.** Processes crossing bounded contexts are normal — that is what process managers, domain events, and choreography exist for; a cross-context flow implies neither a defective work package nor a second authorization. Handled during collaboration modeling, off the ARB agenda.
+- **The Tactical Discovery phase is CLOSED. No further discovery or governance artifacts.** Architecture reduces uncertainty; it does not eliminate it before allowing design.
+- **Execution rule from here (binding):** one Tactical DDD artifact → ARB review → refine → freeze → next artifact. Sequence: Aggregate Discovery → Aggregate Boundaries → Aggregate Responsibilities → Invariants → Value Objects → Domain Events → Commands → Repositories → Domain Services.
+- **Next authorized activity: Aggregate Discovery for the Adjudication bounded context** — the first Tactical DDD artifact.
+
+---
 *Frozen charter: `EPIC-004_Adjudication_Tactical_Work_Package.md` · Constitutional inputs: EPIC-002 baseline, EPIC-003 Entry Assessment (§THE FOUR DECISIONS, Special Reviews, Risk Register) · Evidence: the four 2026-07-25 codebase inventories, ADR-T-LOG, ADR-MP series, Canonical Event Catalog.*
