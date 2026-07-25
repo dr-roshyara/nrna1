@@ -48,7 +48,7 @@
 
 ### COL-3b — Self-Verifying Integrity → Adjudication (public-verifiability result, self-verifying streams)
 
-**Relationship: Open Host Service with Published Language** (one combined decision — the canonical pairing).
+**Relationship: Open Host Service with Published Language** (one combined decision — the canonical pairing). ***[SUPERSEDED on adversarial review → Published Language alone; see the Adversarial Design Review section. Original text preserved as history.]***
 
 **Rationale.** The business purpose of self-verification is that **any observer, not a privileged downstream, can verify** — the evidence base's "no canonical verifier" finding is this pattern stated as a design fact: the context publishes a stable, documented protocol (the published language) and hosts verification openly (the open host), so that independently-built verifiers — Adjudication among them, but never exclusively — can consume it. A downstream-specific contract (Customer–Supplier) would contradict universal verifiability at the level of business purpose, not merely convenience. Language ownership is unambiguous: the verification protocol is the self-verifying context's own published model.
 
@@ -129,7 +129,7 @@
 | COL-1 | Customer–Supplier | Declare-failure is the customer's bargaining power made explicit |
 | COL-2 | Conformist | Conformity to the fixed record IS the constitutional invariant (P3) |
 | COL-3a | Customer–Supplier | Admissibility requirements flow from where evidence is weighed |
-| COL-3b | Open Host Service + Published Language | "No canonical verifier" is this pattern stated as a design fact |
+| COL-3b | ~~Open Host Service +~~ Published Language *(revised on adversarial review)* | "No canonical verifier" — the openness lives in the published language; no host exists |
 | COL-4a | No pattern (model-blind handoff) | Opacity is the protection; coupling would be regression |
 | COL-4b | Conformist (to the published language) | Fixing-as-commitment: the record's form is prescribed for these streams |
 | COL-5a | Subsumed into COL-1 | The return channel of one contract, not a second relationship |
@@ -156,6 +156,72 @@
 ---
 
 **Stop condition:** Relationship Pattern Selection is complete. This was the final Strategic DDD activity. **STOP.** No Tactical DDD, no implementation guidance, no new governance phase. Await explicit ARB authorization — upon acceptance of this document, Strategic DDD is complete and the Tactical DDD gate (with its two entry items) is next.
+
+---
+
+# Adversarial Design Review (ARB-commissioned, 2026-07-25 — appended to this document, not a new artifact)
+
+**Method:** every selected pattern is assumed wrong until justified. For each: the strongest competing pattern, why it ultimately loses (or wins), and the explicit architectural assumptions under which the surviving choice is valid — stated as falsifiability conditions, so each decision remains testable rather than dogmatic.
+
+**Outcome up front: one decision is REVISED (COL-3b), eight are confirmed — several with sharpened scope — and the global no-Partnership/no-Shared-Kernel claim now carries its own architectural justification.**
+
+## Per-edge adversarial results
+
+### COL-1 (Customer–Supplier) — CONFIRMED
+**Strongest competitor: Partnership.** The attack: when audit standards evolve (e.g., risk-limiting audits are introduced), collection practice and adjudication standards change *together*, often planned by one institutional body — looks like aligned co-evolution. **Why it loses:** joint *planning* is not joint *model ownership*. Every influence in the evidence is asymmetric: adjudicative requirements drive collection; collection never drives scrutiny standards — and it must not, because an evidence-producer negotiating the evidence-weigher's standards corrupts the independence P2's whole evidence base presupposes. Partnership would grant exactly that influence. **Validity assumption (falsifiable):** Adjudication retains genuine refusal power (declare-failure). In any deployment where certification is forced regardless of evidence sufficiency, this C–S collapses into upstream-dominant Conformist and the decision must be revisited.
+
+### COL-2 (Conformist) — CONFIRMED, WITH SHARPENED SCOPE
+**The challenge (the strongest one raised against any decision): does Adjudication adopt Record-Fixing's model, or merely trust an immutable artifact?** Trusting immutability is not automatically Conformist — if Adjudication kept the record as an opaque token, the correct answer would be "no pattern" (as COL-4a). **Resolution:** Adjudication does more than trust — it *reasons in the record's own terms*. Hard-look/Chenery review grounds determinations in the record's own statements, quoted and cited untranslated; the record's articulation, not a paraphrase, is what determinations attach to. That is genuine model adoption of the record sublanguage. **Sharpened scope:** Conformist applies to the *record-as-evidence sublanguage only* — Adjudication adopts the record's terms verbatim for grounding; its judgment overlay (scrutiny standards, sufficiency) is its own model and is not part of this edge (this is K2 restated as pattern scope). **Competitor ACL loses** because translating the record breaks the as-fixed standing that gives it evidentiary force. **Validity assumption (falsifiable):** determinations are grounded in the record's own terms. A deployment that translated records into internal representations *for determination-grounding* would convert this edge to ACL and must trigger review.
+
+### COL-3a (Customer–Supplier) — CONFIRMED, WITH A RECORDED REVISION TRIGGER
+**Strongest competitor: Published Language.** The attack: custody-log conventions are genuinely standardized (NIST SP 800-86) and in the wider world serve many consumers — courts, auditors, regulators — which smells like PL, not a bilateral contract. **Why it loses here:** on the ruled map, the only consumer of custody attestations is Adjudication, and the relationship's active ingredient is the *direction of requirement flow* — admissibility demands shape custody documentation, with the standardized form being the medium through which the supplier meets them, not the governance itself. **Honest concession, recorded as a revision trigger:** if a future map adds further attestation consumers (e.g., an external-audit context), this decision should be revisited toward Published Language — the concession is written here so the future change is a planned evolution, not a contradiction.
+
+### COL-3b — **REVISED: Published Language alone. Open Host Service is withdrawn.**
+**The challenge stands: there is no host.** On adversarial inspection, the original OHS+PL pairing overstated the relationship. OHS means a context *offers its capability as a host* that consumers interact with. But the entire design fact this edge rests on — "no canonical verifier" — cuts the other way: the self-verifying context publishes the record and the protocol specification, and verification then happens **entirely in the consumers' own space, with no interaction with the publisher at verification time**. That independence is not incidental; it is the point — a verifier that depended on the publisher's hosted capability would not be independently verifying. The openness lives in the *publication of the language*, not in any hosted relationship. **Revised decision: Published Language (alone).** The record-and-spec publication is the shared, well-documented language; every independent verifier — Adjudication included, privileged never — consumes it without any host interaction. **Why this revision matters downstream:** Tactical DDD must not manufacture a hosted verification capability on this edge; doing so would contradict both this decision and the no-canonical-verifier evidence. **Validity assumption (falsifiable):** verification requires nothing from the publisher beyond the published record and spec. If a future protocol required live interaction with the publisher to verify, OHS would re-enter consideration.
+
+### COL-4a (No pattern — model-blind handoff) — CONFIRMED, WITH THE BURDEN OF PROOF MET EXPLICITLY
+"No pattern" is unusual and owes a stronger argument. **The test that justifies it:** *could either side change its internal model arbitrarily without the other noticing?* Both directions answer YES — custody re-hashes whatever bits it is handed (digest comparison does not parse); record-fixing neither knows nor cares how possession is tracked. When that test passes, the crossing is purely existential (an object changes hands) with zero semantic dependency, and imposing any model-mediating pattern **manufactures governance for a dependency that has no semantic content**. **Each competitor loses concretely:** *Customer–Supplier* — custody imposes no real requirements (a determinate, hashable object is guaranteed by P3's own fixing discipline, not by custody's demand); *ACL* — nothing is translated because nothing is interpreted; *Conformist* — custody adopts no model, deliberately; *Partnership* — no joint model exists to co-own. **Validity assumption (falsifiable):** custody remains content-blind. The moment custody is asked to "understand" record contents, this edge needs a real pattern — and that request should itself be treated as an architectural regression alarm, per the original decision.
+
+### COL-4b (Conformist to the published language) — CONFIRMED
+**Strongest competitor: Shared Kernel** — sharper than the originally-considered Partnership. The attack: the commitment format is literally shared between fixer and verifier; is that not a shared kernel? **Why it loses:** Shared Kernel means *joint ownership with joint change control*. Here change control is unilateral — the protocol is owned and published by Self-Verifying Integrity (per COL-3b as revised), and record-fixing *adopts* it for assigned streams; changes flow one way (spec evolves → fixing follows), exactly the ElectionGuard reality (spec authors own the spec; devices conform). Adoption under unilateral change control is Conformist, not SK. **Validity assumption (falsifiable):** spec ownership stays unilateral. If governance ever grants record-fixers joint change control over the protocol, this edge genuinely becomes Partnership/SK and must be re-decided.
+
+### COL-5a (subsumed into COL-1) — CONFIRMED
+**The attack:** subsumption hides an edge; episodic, corrective, potentially adversarial demands have different dynamics than routine supply and deserve their own contract. **Why it loses:** rejection-and-renewed-demand is not a different relationship — it is the customer side of the same contract exercising its defining power. Two contracts over one relationship is how the two halves drift apart; the watch-item (adjudication becoming a de-facto upstream controller) is better contained by one contract with explicit bounds than by a second, separately-evolving one.
+
+### COL-5b (Customer–Supplier, prospective-only) — CONFIRMED
+**Strongest competitor: no direct relationship at all** — the attack says deficiency findings influence record-fixing only *mediated through the external legal environment* (findings → updated regulations → fixing conforms to law), which would make this edge Separate Ways with environmental mediation. **Why it loses:** the domain evidence shows direct requirement flow without waiting for legislative mediation — audit-governance remediation (ICFR: identified deficiencies create direct remediation obligations on the producing side) is the ruled model's own family for this mechanism. **On the temporal qualifier:** "prospective-only" is not a new pattern; it is a domain invariant (P3) bounding the contract's scope — the pattern is C–S, the constraint is constitutional.
+
+### Custodial ↔ Self-Verifying (Separate Ways) — CONFIRMED, STRENGTHENED BY THE ATTACK
+**The attack:** belt-and-suspenders streams need *someone* to notice when the two assurances disagree — doesn't that require a relationship between the assurers? **Why it fails — and strengthens the decision:** the noticing belongs to the *consumer* (Adjudication weighs both attestations on its own edges), which is exactly where the original decision placed it. More: independence between assurers is what makes a disagreement *informative* — correlated assurance channels fail together and their agreement proves little. The attack, followed to its end, re-derives the original rationale.
+
+## The global claim, given its own justification (as the review demanded)
+
+**"No Partnership and no Shared Kernel anywhere" is not a stylistic preference — it is a consequence of the domain's accountability requirement.** The decomposition's purpose is constitutional trust, and constitutional trust requires every trust-bearing crossing to be *attributable*: it must always be answerable **who owed what to whom** when evidence fails, custody breaks, or a determination is challenged. Jointly-owned models blur precisely that attribution — a co-owned invariant has no single owner to hold to account. Independently: every influence actually discovered across the entire falsification program was asymmetric (requirements flow one way on every edge above; no co-owned model was ever observed in any of the eight evidence families); and K2 plus tamper-evidence both depend on boundaries *not* sharing internals. Zero Partnership/SK is therefore what the evidence and the accountability requirement jointly produce. **Falsifiability:** should a genuinely co-owned model ever be discovered in later work, admitting it is an ARB-gated architectural change, not a silent pattern upgrade.
+
+## Completeness note (recorded, not a map revision)
+
+The Strategic Domain Discovery's dependency matrix listed an evidence-object handoff from Collection to the integrity contexts. The accepted map carries the object handoff on COL-4 (Record-Fixing → Integrity). If later work treats a direct Collection → Integrity handoff as a distinct edge, it **inherits COL-4a's decision by identical grounds** (custodial side: model-blind, no pattern) and COL-4b's for self-verifying streams — recorded here so the question is pre-answered without reopening the accepted map.
+
+## Post-review decision summary
+
+| Edge | Pre-review | Post-review |
+|---|---|---|
+| COL-1 | Customer–Supplier | **Confirmed** (falsifiability: declare-failure must remain real) |
+| COL-2 | Conformist | **Confirmed, scope sharpened** (record sublanguage only; judgment overlay excluded) |
+| COL-3a | Customer–Supplier | **Confirmed** (+ recorded revision trigger: additional consumers → reconsider PL) |
+| COL-3b | OHS + Published Language | **REVISED → Published Language alone** (no host exists; independence of verification is the point) |
+| COL-4a | No pattern | **Confirmed, burden met** (the could-either-side-change-unnoticed test) |
+| COL-4b | Conformist | **Confirmed** (vs. Shared Kernel: change control is unilateral) |
+| COL-5a | Subsumed into COL-1 | **Confirmed** |
+| COL-5b | C–S prospective-only | **Confirmed** (vs. environmental mediation: direct remediation obligation is the ruled family) |
+| Integrity pair | Separate Ways | **Confirmed, strengthened** (the disagreement-detection attack re-derives the rationale) |
+| COL-6 | None (annotation) | **Unchanged** (nothing to review — no ruled context) |
+
+**Consistency re-check after revision:** the COL-3b revision strengthens rather than disturbs consistency — Published Language alone sits *closer* to the no-canonical-verifier design fact than OHS+PL did; no other decision depended on the withdrawn host relationship. The Strategic Architecture Consistency Review's three answers stand.
+
+---
+
+**Stop condition (post-review):** the adversarial design review is complete — one revision, eight confirmations, the global claim justified, every decision now carrying an explicit falsifiability condition. **STOP.** Await ARB acceptance of the reviewed document; upon acceptance, Strategic DDD is complete.
 
 ---
 *Charter: `EPIC-002_Problem_Statement.md` · Inputs: `EPIC-002_Canonical_Context_Map.md` (ACCEPTED) and prior accepted EPIC-002 artifacts · No new sources consulted.*
