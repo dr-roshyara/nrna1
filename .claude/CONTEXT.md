@@ -1,6 +1,16 @@
 # Current Working State
 
-**Updated:** 2026-07-12
+**Updated:** 2026-07-25
+
+## EPIC-002 track — CLOSED (2026-07-25); EPIC-003 Tactical DDD Entry Assessment IN PROGRESS
+*(This section supersedes the "(7) NEXT: EPIC-002 Strategic Discovery Phase 1" pointer in the historical chain below — that phase ran 2026-07-11 → 2026-07-25 and is complete.)*
+
+- **EPIC-002 Strategic DDD: COMPLETE + OFFICIALLY CLOSED** (ARB Resolution recorded in `docs/implementation/EPIC-002_Relationship_Pattern_Selection.md` §ARB RESOLUTION). Full chain: literature iterations 1–5 (falsification mode) → evidence-family audit (P2 corrected 11→8) → consolidation → domain discovery → candidate boundaries → decomposition evaluation → canonical decision → collaboration discovery → readiness assessment → Decision Gate ruling (**Scenario C Hybrid** custody + **keep CB-1/CB-4 separate**, with reversal condition) → **Canonical Context Map ACCEPTED (5 Bounded Contexts ratified: Collection & Aggregation · Contemporaneous Record-Fixing · Custodial Integrity · Self-Verifying Integrity · Adjudication)** → Relationship Pattern Selection + adversarial design review ACCEPTED (COL-3b revised to Published Language alone).
+- **Strategic baseline is BINDING** (see `.claude/MEMORY.md` "Constraints that bite") — changes only via recorded falsifiability/reversal conditions or new domain evidence, never implicitly during implementation.
+- **Current activity: EPIC-003 Tactical DDD Entry Assessment** (ARB-commissioned bridge, NOT Tactical DDD itself) — mapping the existing EPIC-001 codebase onto the 5 ratified BCs; deliverable `docs/implementation/EPIC-003_Tactical_DDD_Entry_Assessment.md`; two mandatory special reviews (Adjudication-name reconciliation vs `app/Contexts/Adjudication`; hybrid integrity code classification). Three exploration agents dispatched 2026-07-25; assessment written from their findings only.
+- **Next action (this track, exactly one):** finish + commit the Entry Assessment → STOP for ARB review. Tactical DDD itself NOT authorized until then.
+
+
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
 Ticket: PB-003
