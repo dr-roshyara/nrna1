@@ -71,7 +71,19 @@ Either answer also implicitly disposes of CB-3-Alt's handling: it is carried as 
 
 ---
 
-**Stop condition:** this request frames the decision; it does not make it and does not map anything. **STOP.** No Context Map of any kind is authorized until the ARB answers the question above.
+## 5. RULING RECORDED (ARB, 2026-07-25 — explicit per-item decision, not inferred)
+
+The Decision Gate was answered **YES** — the ARB ruled directly, without commissioning scenario maps:
+
+1. **Custody question: Scenario C — Hybrid.** Both integrity mechanisms coexist, assigned per evidentiary stream: custodial integrity (CB-2) and self-verifying integrity (CB-2-Alt) are BOTH part of the canonical decomposition, each discharging the integrity obligation for the streams assigned to it (including, where warranted, both for one stream — the belt-and-suspenders pattern real deployments exhibit). **Wording deliberate (ARB refinement): the evidence does not prove Scenario C — Scenario C is the best-supported architectural synthesis under the agreed evaluation criteria.** The literature documents patterns and trade-offs; the choice is the board's architectural judgment combining those observations with domain understanding.
+
+**ARB rationale (recorded):** *The Board determines that the current architectural evidence is sufficient to make a responsible decision. Scenario C (Hybrid) is adopted because it provides the best explanation of the evaluated evidence under the agreed evaluation criteria, accommodates the observed diversity of integrity mechanisms (STAR-Vote, Wombat, the ElectionGuard pilot), and avoids introducing unnecessary exceptions. The Board concludes that comparative scenario maps would improve visualization but are unlikely to change the architectural decision; therefore they are not commissioned.*
+2. **CB-1/CB-4 merger: KEEP SEPARATE.** Collection and Contemporaneous Record-Fixing remain distinct positions; COL-2 remains a crossing collaboration. **ARB rationale (recorded verbatim in substance):** the primary DDD boundary criterion is *does this responsibility change for different reasons* — not co-occurrence. Collection changes when evidence sources/formats/acquisition policies change; Record-Fixing changes when recording requirements, timestamping rules, or legal/procedural recording requirements change — different reasons to evolve. Their ubiquitous language differs ("what evidence do we have?" vs. "what became the official record at that moment?"). The outputs-travel-together observation is an **integration criterion, not a domain criterion** — Customer/Credit-Assessment and Order/Payment also always travel together yet remain separate contexts. The act-time vs. review-time temporal split prevails. **Recorded reversal condition:** this ruling is reversed only if it is later concluded that Contemporaneous Record-Fixing has **no independent domain policy or decision-making beyond Collection** — i.e., it is merely a mechanical step within Collection. The evidence has not reached that threshold.
+3. **CB-3-Alt:** per §4, carried as an annotation on CB-3 — no separate ruling required.
+
+**Consequence, per §2 Choice 1:** one canonical Context Map on the ruled decomposition is now **authorized**. Scenario maps are not produced (the gate was passed without them). Relationship-pattern selection remains unauthorized until the canonical map exists and is ARB-accepted.
+
+**Stop condition (updated):** the gate is answered; the canonical Context Map is the next artifact. Relationship patterns, Tactical DDD, and implementation remain not authorized.
 
 ---
 *Charter: `EPIC-002_Problem_Statement.md` · Inputs: the EPIC-002 artifacts listed in the header · No new sources consulted; no new findings introduced.*
