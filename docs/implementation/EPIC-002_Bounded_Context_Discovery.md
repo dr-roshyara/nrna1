@@ -11,7 +11,7 @@
 Examining the five discovered responsibilities (R1 gather, R2 adjudicate, R3 custody, R4 contemporaneity, R5 separability) for what always co-occurs, what depends on what, and what evolves independently:
 
 - **R2 depends on R1** in every discipline examined — adjudication never occurs without prior evidence collection. This dependency is one-directional and never observed reversed.
-- **R2 and D1 are inseparable** — no source discusses adjudication without also discussing whether it could be automated; this is the tightest, most consistently co-occurring pair in the whole evidence base (11 families).
+- **R2 and D1 are inseparable** — no source discusses adjudication without also discussing whether it could be automated; this is the tightest, most consistently co-occurring pair in the whole evidence base (8 families, tied with R1's — corrected from an earlier 11; see `EPIC-002_Evidence_Family_Independence_Audit.md`).
 - **R3 and D3 are the same question from two angles** — "maintain custody" and "is custody preserved/displaced/split" are not two responsibilities but one contested responsibility whose very necessity is disputed (T1).
 - **R4 feeds R2 but is not shown to require the same actor.** Every discipline that discusses both (AL/CL's Chenery doctrine, ES's commit-before-sample) treats record-fixing as occurring at or near the original act, while adjudication (courts, panels, verification processes) frequently occurs later and via a different kind of actor. This is a **volatility difference**: R4 changes per-transaction; R2 changes at a policy/procedural level. Per standard cohesion heuristics, responsibilities that change at different rates and via different actors are candidates for separate treatment rather than fusion — **this is an inference drawn from the discovered evidence, not itself sourced from any single paper.**
 - **R5 is cross-cutting, not a discrete activity.** No discipline describes "separability" as something a distinct actor *does*; every source frames it as a property that must hold (or is shown to fail) within whatever activity handles evidence representation — it attaches to R1, R2, or R3 rather than standing alone.
@@ -106,8 +106,8 @@ Revisiting Clusters A–E from the Strategic Domain Discovery Report against the
 - **Capabilities:** C2.
 - **Constraints:** K1.
 - **Dependencies:** consumes BC-1's output; consumes BC-4's output (record) as its evidentiary basis.
-- **Evidence:** 11 independent families — the strongest, most robustly cohesive candidate in the entire program.
-- **Confidence:** HIGH cohesion, HIGH distinctiveness (clearly owns a decision).
+- **Evidence:** 8 independent families, tied with BC-1 — **corrected from an earlier 11** (`EPIC-002_Evidence_Family_Independence_Audit.md`: four of iteration 4's claimed families shared one mechanism and collapse to one). Still the strongest *decision-owning* candidate in the program — BC-1 ties on family count but owns no decision.
+- **Confidence:** HIGH cohesion, HIGH distinctiveness (clearly owns a decision, which BC-1 does not).
 - **Alternative interpretation / counterargument:** see BC-3-Alt.
 
 ### Candidate BC-3-Alt — Authority Validity / Expiry (possible split from BC-3, not confirmed)
@@ -138,7 +138,7 @@ Per §3's reclassification, this is **not** proposed as a candidate bounded cont
 | BC-1 Collection | High | None (owns no decision) | 8 families | Medium — cohesive but may not be its own context |
 | BC-2 Custodial Integrity | Medium | D3 (one reading) | 3 families | Low/contested — competes with BC-2-Alt |
 | BC-2-Alt Self-Verifying Integrity | Medium | D3 (other reading) | 1 family, partially refuted | Low/contested |
-| BC-3 Adjudication | High | D1 | 11 families | High — strongest candidate in the program |
+| BC-3 Adjudication | High | D1 | 8 families (tied with BC-1; corrected from 11) | High — strongest *decision-owning* candidate in the program |
 | BC-3-Alt Authority Validity | Low | D1 (narrow reading) | 1 family, uncategorized | Low — most speculative candidate |
 | BC-4 Contemporaneous Record-Fixing | Medium | D2 | 3 families | Low/Medium — real counterargument for absorption into BC-3 |
 

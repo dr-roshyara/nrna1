@@ -28,7 +28,7 @@
 - **Why the boundary might not resolve to one:** this may not be a single boundary with two implementations but two alternative designs for the same concern — evaluation must ask whether both coexist for different evidentiary streams, one displaces the other, or the tension requires an architectural (not evidentiary) decision.
 
 ### CB-3 vs. CB-3-Alt — Adjudication vs. Authority-Validity
-- **Strengths (Adjudication):** the single strongest, most evidence-backed candidate in the program — 11 independent families, clear decision-ownership (D1), consistent non-automaticity everywhere examined.
+- **Strengths (Adjudication):** the strongest *decision-owning* candidate in the program — 8 independent families, tied with CB-1 (**corrected from an earlier 11**; see `EPIC-002_Evidence_Family_Independence_Audit.md`), clear decision-ownership (D1, which CB-1 lacks), consistent non-automaticity everywhere examined.
 - **Weaknesses (Adjudication):** the language analysis suggests possible semantic overload (content-dispute resolution vs. authority-validity/expiry) — an internal inconsistency not yet resolved.
 - **Strengths (Authority-Validity):** a genuine, real-world documented mechanism (Australia's Legislative Instruments Act), not hypothetical.
 - **Weaknesses (Authority-Validity):** rests on exactly one narrow, jurisdiction-specific, secondary-sourced (2-1 vote) candidate — the thinnest evidentiary base of any candidate in the program.

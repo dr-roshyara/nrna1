@@ -452,7 +452,7 @@ Both direct P3 falsification attempts (Reverse-Narrative-legitimizes-retrospecti
 
 ### Evidence Sufficiency Review — Iteration 5 (advisory; decision is ARB's)
 
-**Strongest confirmations across the whole literature program:** P1 and P2 — 7 and 10 independent evidence families respectively, zero counterexamples found despite repeated, genuine falsification attempts across six disciplines (statistical verification, judicial-review doctrine, ontology, safety-assurance argumentation, cryptographic-protocol analysis, governance theory, DDD literature).
+**Strongest confirmations across the whole literature program:** P1 and P2 — **8 independent evidence families each (tied)**, zero counterexamples found despite repeated, genuine falsification attempts across six disciplines (statistical verification, judicial-review doctrine, ontology, safety-assurance argumentation, cryptographic-protocol analysis, governance theory, DDD literature). *(P2's count corrected from an earlier 10/11 figure — see `EPIC-002_Evidence_Family_Independence_Audit.md`, 2026-07-25: four of iteration 4's claimed new families shared one underlying mechanism and collapse to one. P1's count also updated here to include iteration 5's own addition, previously left unincorporated in this line.)*
 
 **Strongest counterexamples/tensions across the whole program:** P5's ElectionGuard-retains-custody vs. Ali & Murray-self-verification contest (iteration 3a v2) remains the single most informative result — a real, unresolved split rather than a clean confirmation or refutation. P2's self-executing legislative-sunset candidate (iteration 4) is the next most significant open item — narrow, jurisdiction-specific, and explicitly uncategorized.
 

@@ -26,7 +26,7 @@
 - **Fails/doubtful under:** unresolved — two open categorization questions remain live, not resolved by this consolidation:
   1. Does self-executing legislative sunset/expiry (Australia's Legislative Instruments Act) count as an automatic correction mechanism against P2, or is "expiry of legal authority" a structurally different kind of mechanism than "adjudication of evidence quality"? (iteration 4)
   2. Do algorithmic microservice-boundary-clustering techniques (Louvain, GNN-based) constitute automated adjudication, or a structurally different technical-clustering activity? (iteration 5, cited only in passing, not applied in the source paper's own method)
-- **Appears across:** 11 independent evidence families — the strongest and most broadly corroborated phenomenon in the program, precisely because it has also been the most aggressively attacked.
+- **Appears across:** 8 independent evidence families, tied with P1 — **corrected from an earlier 11 figure** (`EPIC-002_Evidence_Family_Independence_Audit.md`, 2026-07-25: four of iteration 4's claimed families shared one underlying mechanism, "institutional deliberative oversight is non-automatic," and collapse to one). Still the most aggressively attacked phenomenon in the program, even if no longer the single broadest by count.
 
 ### P3 — Contemporaneity — no retrospective reconstruction of record or justification
 
@@ -81,8 +81,7 @@ These describe *what the literature says happens*, not what any future architect
 
 ## 4. Stable invariants (candidates only — not confirmed, per explicit ARB instruction)
 
-- **P1 (evidence plurality)** is the strongest standing candidate in the program: 8 independent families, zero counterexamples despite repeated, genuine falsification attempts across maximally diverse disciplines (cryptographic protocol analysis, judicial-review doctrine, safety-assurance argumentation, DDD literature).
-- **P2 (adjudication non-automaticity)** is the second-strongest: 11 independent families, zero *confirmed* counterexamples — though two open categorization questions remain genuinely unresolved rather than settled in P2's favor.
+- **P1 (evidence plurality)** and **P2 (adjudication non-automaticity)** are tied as the strongest standing candidates in the program: **8 independent families each** (P2 corrected from an earlier 11 — see `EPIC-002_Evidence_Family_Independence_Audit.md`), zero counterexamples despite repeated, genuine falsification attempts across maximally diverse disciplines (cryptographic protocol analysis, judicial-review doctrine, safety-assurance argumentation, DDD literature). P2 additionally carries two open categorization questions, unresolved rather than settled in its favor.
 - Neither is asserted here as confirmed or as an architectural decision. Both are candidates for Strategic DDD to test further and for the ARB to ultimately rule on.
 
 ## 5. Explicit uncertainties (carried forward, not resolved)
