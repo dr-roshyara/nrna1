@@ -42,6 +42,10 @@ if [ ! -f "$CONFIG_FILE" ]; then
   exit 0
 fi
 
+# Fail-closed on unreadable policy (EG-002a) — verify.sh runs this gate warn-only,
+# so a parse failure surfaces as a loud warning, never a silent pass
+source "$SCRIPT_DIR/lib/config-guard.sh"
+
 # ──────────────────────────────────────────────
 # Read strategy
 # ──────────────────────────────────────────────
@@ -55,6 +59,7 @@ echo ""
 # Read contexts from config
 # ──────────────────────────────────────────────
 CONTEXT_COUNT=$(jq '.contexts | length' "$CONFIG_FILE")
+require_int ".contexts|length" "$CONTEXT_COUNT"
 
 if [ "$CONTEXT_COUNT" -eq 0 ]; then
   echo "  ℹ️  No bounded contexts defined in frontend-architecture.json."
@@ -113,6 +118,7 @@ echo ""
 # ARCH rules check
 # ──────────────────────────────────────────────
 RULE_COUNT=$(jq '.rules | length' "$CONFIG_FILE")
+require_int ".rules|length" "$RULE_COUNT"
 if [ "$RULE_COUNT" -gt 0 ]; then
   echo "ARCH Rules:"
   echo "═══════════"
