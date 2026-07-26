@@ -2,6 +2,10 @@
 
 **Created:** 2026-07-26 (handoff session) · **Status:** AUTHORIZED — execution begins in a fresh session, RED first
 **Authority:** WP-1 authorization (ARB 2026-07-26) · `docs/implementation/EPIC-004_Architecture_to_Implementation_Roadmap.md` §WP-1 · ADR-T22
+**Mode ruling (chair):** Auto mode — the discovery/planning work is done; this is disciplined execution of an approved slice. Plan mode returns for: architectural contradictions · missing invariants exposed by RED · ADR conflicts · EG-004/EG-005 · any later slice needing real design decisions.
+
+> **Implementation objective: satisfy the existing architecture through executable evidence — not reinterpret or redesign it.**
+> (The lens for every implementation decision. Its complement: do not revisit platform architecture unless new evidence requires it.)
 
 ## Commission (chair, verbatim in substance — the opening instruction)
 
@@ -28,6 +32,16 @@ OUT: everything else — WP-2..WP-8 unopened; no PM code; no platform/gate chang
 ## Gates (every one, before ARB slice acceptance)
 
 TDD RED confirmed before GREEN · `composer merge-gate` PASS · triple qualification (Architecture / DDD / Trustworthiness) · measurable conformance gate (*no deviation from a frozen ADR/invariant without a recorded ARB decision*) · dev guide (`developer_guide/adjudication/`) · STOP for ARB slice acceptance. WP-2 opens only on that acceptance.
+
+## Automatic STOP conditions (chair's Auto-mode safeguard — halt and report, do not proceed)
+
+- All four RED tests written and confirmed failing → report RED evidence before GREEN.
+- GREEN implementation passes → report, run gates, stop for ARB slice acceptance.
+- `composer merge-gate` fails for an unexpected reason → stop, diagnose, report — never force past.
+- An ADR appears inconsistent with what implementation requires → stop, record evidence, request authorization.
+- Implementation requires ANY change outside WP-1 scope (incl. platform/gates → log as EG-xxx) → stop, request authorization.
+
+These exist so Auto mode cannot wander into WP-2 or platform work.
 
 ## Boundary rules (the handoff's substance)
 
