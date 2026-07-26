@@ -179,4 +179,14 @@ The APM **requires durable state**: demands outstanding and their deadlines, adm
 **Stop condition: STOP.** The Process Manager Architecture is complete as architecture — no implementation, no infrastructure, no Laravel artifacts, no code. Await explicit ARB review: the natural decision agenda is (1) this architecture itself, (2) the three drafted successor decisions, (3) Q-2's parameters, which three sections of this design consume.
 
 ---
+
+## APPROVED (ARB, 2026-07-26)
+
+**The Process Manager Architecture is APPROVED.** ARB verdict (recorded verbatim in substance): a model of disciplined architectural reasoning — derives from the frozen chain's named residue, applies every governance principle, drafts successor decisions rather than editing frozen artifacts; the nine silences are defended; the entry condition discriminated; DMT's third branch closes on `finalize()`.
+
+**Status ledger at approval:** the architecture — APPROVED · the three successor decisions — **RECOGNIZED, awaiting explicit ARB issuance** (recognition is not issuance; nothing is issued by this approval) · Q-2's parameters — **ARB decision required** (five items: Contestation Window terms · Maximum Adjudication Duration · Legal Safety Margin · horizon-expiry policy · the armed `DeterminationFinalized` reversal condition) · open questions with named owners stand as §15 records them.
+
+**Next: the ARB decision agenda** — issuance of the successor decisions and the Q-2 parameters — before any refinement or implementation.
+
+---
 *Immutable inputs: the frozen nine-artifact chain (`EPIC-004B`..`EPIC-004J`) · `EPIC-004_Q1_Authority_Resolution.md` · the four Constitutional Policies (EPIC-003 §THE FOUR DECISIONS) · ADR-T1/T8/T11/T14/T16/T17(valid until superseded)/T19 · Q-2 as framed by the work package · EPIC-003 implementation inventories (the open-arc finding; `finalize()`'s zero callers; the existing scheduled-command and inbox-translation precedents).*
