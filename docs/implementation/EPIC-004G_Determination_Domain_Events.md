@@ -47,4 +47,14 @@ Exactly one event confirmed, with the strongest removal-test result in the artif
 **Stop condition: STOP.** Domain Events only. Commands (artifact №7) and everything after begin on explicit ARB opening, after this artifact's review → refine → freeze.
 
 ---
+
+## FROZEN (ARB, 2026-07-26) — with two principles adopted and one reclassification
+
+**Artifact №6 is accepted and FROZEN.** Adopted as permanent governance (→ MEMORY):
+- **Architectural Silence Principle (ASP):** *the absence of an architectural element is a decision, not a default; rejected candidates and deliberate non-events are recorded with rationale and, where appropriate, reversal conditions.*
+- **Artifact Derivation Principle (ADP):** *every tactical artifact derives from the immediately preceding frozen artifact; new concepts may not bypass the derivation chain without explicit ARB authorization.*
+
+**Reclassification:** the PM deferrals (FailureDeclared · EvidenceSet · R-4-expanded seat) are recorded as an **Emergent Design Cluster**, not independent TODOs — the clustering is architectural evidence that these are symptoms of one missing concept, to be **opened together** when the Process Manager is designed. Artifact №7 (Commands) is authorized under its entry condition: *business occurrence → business intention → command — never public method → command; a command answers "what business intention is being expressed toward the aggregate?", never "which method exists?"*
+
+---
 *Frozen inputs: `EPIC-004E` (invariants) · `EPIC-004F` (VOs) · `EPIC-004D` (truths) · Round 50-07 v1.2 · ADR-T19 Model B · Canonical Event Catalog v1.0 · the Domain-Event ≠ Integration-Event invariant (ADR-MP-06 discipline).*
