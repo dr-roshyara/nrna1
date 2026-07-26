@@ -314,3 +314,20 @@ assets:
       principle: AIP-09
       decision: PD-13
       adr: ADR-AIP-01
+
+  - id: AST-014
+    path: .claude/scripts/ddd-principles-reminder.sh
+    component: CMP-004
+    adoption: adopted
+    governance_tier: 2
+    verified:
+      date: 2026-07-26
+      method: "manual 4-case test at creation — Domain-layer file fires once per session-day (marker); second same-day trigger silent; non-Domain path silent; empty input silent; never blocks"
+    runtime_moments: [PRE_ACTION]
+    trace:
+      capability: CAP-06
+      context: implementation-guidance
+      principle: AIP-09
+      decision: PD-13
+      adr: ADR-AIP-01
+    notes: "Ordered by explicit DA ruling 2026-07-26 (with the R-39 early promotion of the DDD Tactical Governance Principles). Non-blocking reminder of the 7 principles when tactical-DDD surface files (app/Contexts/*/Domain/, app/Domain/) are created or edited. Canonical rules: engineering/knowledge/methodology/DDD_Tactical_Governance_Principles.md — the hook points, never restates. Matrix note: the 'zero new hooks' position was evidence-based default; this hook exists by explicit DA order, the override path the matrix itself names."

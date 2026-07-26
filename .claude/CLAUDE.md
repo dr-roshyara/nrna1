@@ -540,7 +540,7 @@ Concretely:
 
 **When in doubt, stop and model.** Producing a strategic model / ADR is real work, not a detour — it is the first stage, not a delay before "the real work."
 
-**Tactical DDD work is additionally governed by the seven DDD Tactical Governance Principles** — canonical home `docs/architecture/governance/DDD_PRINCIPLES.md` (FROZEN, ARB 2026-07-26); this line is a pointer, never the rule text.
+**Tactical DDD work is additionally governed by the seven DDD Tactical Governance Principles** — canonical home `engineering/knowledge/methodology/DDD_Tactical_Governance_Principles.md` (ADOPTED, ARB 2026-07-26; PublicDigit binding: `docs/architecture/governance/DDD_PRINCIPLES.md`); this line is a pointer, never the rule text.
 
 **Automation:** a non-blocking `PreToolUse` tripwire (`.claude/scripts/discipline-gate-reminder.sh`) reminds when a **new** test or production file is about to be created, to confirm the upstream artifacts exist. It is a checkpoint, not a wall — the rule above is the obligation.
 

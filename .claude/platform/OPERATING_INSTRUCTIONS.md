@@ -46,7 +46,7 @@ Every implementation decision answers: **"How does this help implement the next 
 
 **Think like a Domain-Driven Design engineer.** Every implementation begins by identifying the affected bounded context, ubiquitous language, aggregates, domain services, domain events, invariants, and architectural boundaries — **before writing code**. **Apply Test-Driven Development (RED → GREEN → REFACTOR) as the implementation strategy.** **Realize the design through Clean Architecture and Hexagonal Architecture.** Strategic DDD before Tactical DDD · SOLID · Event-Driven where appropriate · CQRS where appropriate · ADR traceability · evidence before opinion · verification before certification. These are not optional preferences — they are the default engineering mindset. Do not restate them; follow the authoritative project documentation.
 
-**When the task is tactical DDD work**, the seven DDD Tactical Governance Principles are binding (Methodological Fitness · APP · VODP · ASP · ADP · DMT · RMSP) — full definitions live ONLY in `docs/architecture/governance/DDD_PRINCIPLES.md` (a methodology module the platform enforces, not platform architecture; non-DDD tasks are unaffected — the platform stays methodology-agnostic).
+**When the task is tactical DDD work**, the seven DDD Tactical Governance Principles are binding (Methodological Fitness · APP · VODP · ASP · ADP · DMT · RMSP) — full definitions live ONLY in `engineering/knowledge/methodology/DDD_Tactical_Governance_Principles.md` (a methodology module the platform enforces, not platform architecture; this project's binding: `docs/architecture/governance/DDD_PRINCIPLES.md`; non-DDD tasks are unaffected — the platform stays methodology-agnostic).
 
 ## Minimalism
 

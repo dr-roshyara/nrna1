@@ -55,3 +55,4 @@ The platform seeks **reusable engineering knowledge** (never "AI rules" — the 
 | RQ-002 research corpus (Constitution, taxonomy, meta-model, strategic model, assembly research) | `docs/implementation/RQ-002_*` + `Project_Knowledge_Strategic_Model.md` — research tier, project-side by ES-005.3 |
 | EKP (incumbent project-knowledge governance) | `docs/knowledge/` — **disposition PENDING ARB** (metadata model aligned; consumption model falsified by E-1) |
 | Retrospective inbox (deferred concepts + triggers) | `.claude/plans/AIP-iteration-1-construction.md` (frozen until the retrospective) |
+| DDD Tactical Governance Principles (methodology module — ADOPTED via explicit DA early-promotion exception R-39) | `../knowledge/methodology/DDD_Tactical_Governance_Principles.md` — projects bind (PublicDigit: `docs/architecture/governance/DDD_PRINCIPLES.md`), never fork |
