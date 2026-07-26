@@ -65,4 +65,10 @@ Every confirmed VO names its parent invariant(s) and passed the removal test —
 **Stop condition: STOP.** Value Objects only. Domain Events (artifact №6) and everything after begin on explicit ARB opening, after this artifact's review → refine → freeze.
 
 ---
+
+## FROZEN (ARB, 2026-07-26)
+
+**Artifact №5 is accepted and FROZEN.** The **Value Object Derivation Principle (VODP)** is adopted as permanent governance: *a Value Object is justified only when it strengthens the expression, validation, or protection of one or more accepted business invariants; convenience grouping or data packaging alone is insufficient.* Artifact №6 (Domain Events) is authorized under its entry condition: *every proposed Domain Event must trace to one or more accepted business invariants and represent a business-significant occurrence; if removing the event would not weaken the communication of a meaningful business occurrence, it does not become a Domain Event.*
+
+---
 *Frozen inputs: `EPIC-004E` (artifact №4, FROZEN — the eight invariants) · `EPIC-004D` (FROZEN) · `EPIC-004_Q1_Authority_Resolution.md` · ADR-T16/T17/UL-01 · VO inventory evidence: EPIC-003 Adjudication report + `DeterminationValueObjectsTest`.*
