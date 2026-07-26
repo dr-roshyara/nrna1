@@ -11,7 +11,7 @@
 
 From the issued record, exhaustively: **(a)** `EvidenceSet` VO + `IssueDeterminationCommand`/`DeterminationIssued` additive schema v3 (ADR-T22) · **(b)** the APM itself — durable process store, state machine, conclude-time atomic fixation, event-logged record (EPIC-004K §§5–7, §11) · **(c)** `ChallengeRouted` publication + provenance-mint relocation + minting-allowlist update (ADR-T21) · **(d)** APM wiring — inbound consumption, issuance request path, `AdjudicationFailureDeclared` (event + integration counterpart), authority-decision intake port · **(e)** temporal machinery — demand deadlines, adjudication horizon, Expired handling (ruled policy) · **(f)** the finality evaluator (temporal policy; `finalize()` gains its caller) · **(g)** bootstrap-parameter configuration (per-election-type, org-overridable) · **(h)** **retention alignment** — the existing 30-day `audit:cleanup` violates the ratified Retention Invariant the moment windows go live; it must become EPW-aware · **(i)** end-to-end operational validation of the now-closed loop + triple qualification + CI.
 
-**Two dependency discoveries this roadmap surfaces (the honest findings):**
+**Two implementation dependency findings this roadmap surfaces** *(engineering findings derived from the approved architecture — not architectural discoveries; terminology per ARB Review Comment 2)*:
 1. **ADR-T21 has a prerequisite the architecture consumed but did not own:** `ChallengeRouted` is only emitted by `Challenge::route()`, and the raise→admit→route path has **no application service and no production trigger** (the known "later backlog item" from PB-005). Publishing an event nothing emits is dead wiring. The raise-path slice is therefore **in this roadmap as WP-5**, flagged for explicit ARB scope confirmation (it is Contestation work the APM commission implied but did not contain). The *entry point* that lets a real actor file a challenge (UI/API) is **product work outside this roadmap** — flagged, not designed.
 2. **The authority-decision intake has no production channel yet:** Q-1's published contract artifact is undecided by name and Governance-side. The APM's intake is a **port**; its first adapter is administrative/test-seam only, with the Governance contract's tactical design as recorded later work. The APM does not block on it.
 
@@ -76,19 +76,27 @@ Rollout follows the implementation order; each WP is dark until its consumer exi
 
 ## 8. Definition of Done — per slice and for the phase
 
-**Per slice:** RED→GREEN evidence · keystone tests green · merge-gate PASS · triple qualification recorded · dev guide committed · conformance check (§5.3) recorded · ARB slice acceptance. **Phase DoD:** all eight WPs accepted · WP-8's end-to-end proof green in CI · zero frozen-invariant tests modified · the two flagged externals (challenge-filing entry point; Governance authority-contract design) recorded as the next tracks' inputs, not silently absorbed.
+**Per slice:** RED→GREEN evidence · keystone tests green · merge-gate PASS · triple qualification recorded · dev guide committed · conformance check (§5.3) recorded · **measurable conformance gate (ARB Review Comment 3): no deviation from a frozen ADR or architectural invariant without a recorded ARB decision — objectively verifiable: the slice's diff touches no frozen-invariant test and cites an issued ADR for every behavior it changes** · ARB slice acceptance. **Phase DoD:** all eight WPs accepted · WP-8's end-to-end proof green in CI · zero frozen-invariant tests modified · the two flagged externals (challenge-filing entry point; Governance authority-contract design) recorded as the next tracks' inputs, not silently absorbed.
 
 ## Open items surfaced by this roadmap (for the ARB at review)
 
-1. **WP-5 scope confirmation** — the Contestation raise-path slice: implied prerequisite of the approved architecture, formally Contestation-side. Include here (recommended — the loop head is this program's stated purpose) or split to a Contestation ticket?
+1. **WP-5 ownership — EXPLICIT ARB DECISION REQUIRED (elevated to a gate per ARB Review Comment 1):** *Is WP-5 part of EPIC-004 implementation, or is it a prerequisite to be delivered by the Contestation workstream before EPIC-004 integration?* Roadmap recommendation: include in EPIC-004 (the loop head is this program's stated purpose); ownership stays clear either way — the decision, not the recommendation, settles it.
 2. **WP-7 timing** — retention alignment could precede everything (it fixes a standing EPIC-003 finding) or ride the WP-6 config as sequenced here. Recommended: as sequenced (the arithmetic needs the config).
 3. The two recorded externals (challenge-filing UX/API · Governance authority-contract artifact) — acknowledged as outside this authorization; owners to be assigned when their tracks open.
 
 ## Self-review (Chief-Engineer frame)
 
-Every WP names the issued decision it realizes; nothing realizes an unissued idea ✅ · the two honest dependency discoveries (raise-path prerequisite; authority-intake channel) are surfaced as findings with recommendations, not silently absorbed into scope ✅ · no frozen invariant is touched anywhere; the one aggregate-code change (WP-1) rides its explicitly issued succession (ADR-T22) ✅ · migrations additive, rollbacks defined, the one compatibility-sensitive act has a pre-deploy check and an asymmetric-rollback rule ✅ · every slice carries architectural-conformance acceptance, not merely behavioral ✅ · no architecture is redesigned, no code is written here ✅.
+Every WP names the issued decision it realizes; nothing realizes an unissued idea ✅ · the two implementation dependency findings (raise-path prerequisite; authority-intake channel) are surfaced with recommendations, not silently absorbed into scope ✅ · no frozen invariant is touched anywhere; the one aggregate-code change (WP-1) rides its explicitly issued succession (ADR-T22) ✅ · migrations additive, rollbacks defined, the one compatibility-sensitive act has a pre-deploy check and an asymmetric-rollback rule ✅ · every slice carries architectural-conformance acceptance, not merely behavioral ✅ · no architecture is redesigned, no code is written here ✅.
 
 **Stop condition: STOP.** This roadmap is the refinement phase's first artifact and authorizes nothing by itself. Await ARB review and approval — upon it, WP-1 begins as the first implementation slice under the established one-slice-one-review rhythm.
 
 ---
 *Immutable inputs as headed · Codebase evidence: EPIC-003 inventories + the PB-005/PB-006/PB-007 implementation record (test conventions, merge-gate, scheduled-command and translation-family precedents) · Authorization: `EPIC-004_Q2_Resolution_Package.md` §RATIFIED·AUTHORIZED·TRANSITION RECOGNIZED.*
+
+---
+
+## APPROVED WITH THREE REVIEW COMMENTS (ARB, 2026-07-26 — all applied)
+
+**Decision: APPROVED.** The ARB classifies this artifact as engineering governance, not architecture — the intended transition. Conditions applied in place: **(1)** WP-5 ownership elevated to an explicit ARB decision gate (open items §1) — *in EPIC-004, or a Contestation-workstream prerequisite?* — awaiting disposition; **(2)** "dependency discoveries" renamed **implementation dependency findings** (engineering findings derived from the approved architecture, reinforcing the Architect→Chief-Engineer role change); **(3)** the Definition of Done gains a measurable conformance gate: *no deviation from a frozen ADR or architectural invariant without a recorded ARB decision.*
+
+**WP-1 authorization:** the ARB signalled comfort authorizing WP-1 upon these conditions; the explicit authorization is requested per item and recorded when given — not inferred from the signal.
