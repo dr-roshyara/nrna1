@@ -87,4 +87,10 @@
 **Stop condition: STOP.** Invariants only. Value Objects (artifact №5) and everything after begin on explicit ARB opening, after this artifact's review → refine → freeze.
 
 ---
+
+## FROZEN (ARB, 2026-07-26)
+
+**Artifact №4 is accepted and FROZEN** with the litmus-clean propositions. The merge finding stands as recommended (truths distinct, shared fact acknowledged). The eight invariants are the binding input to artifact №5 (Value Objects), authorized under the entry condition: *every proposed Value Object must trace to one or more frozen invariants; if removing it does not weaken the expression, validation, or protection of an accepted invariant, it does not become a Value Object.*
+
+---
 *Frozen inputs: `EPIC-004D` (artifact №3, FROZEN — the six truths) · `EPIC-004C` (complete) · `EPIC-004_Q1_Authority_Resolution.md` · the four Constitutional Policies · ADR-T1/T11/T14/T19 · Enforcement evidence: the qualified Adjudication test suite (EPIC-003 inventory).*
