@@ -36,4 +36,10 @@ One repository confirmed for one ratified aggregate — Rule 9 held ✅ · every
 **Stop condition: STOP.** Repositories only. Domain Services (artifact №9 — the final artifact of the chain) begins on explicit ARB opening, after this artifact's review → refine → freeze.
 
 ---
+
+## FROZEN (ARB, 2026-07-26)
+
+**Artifact №8 is accepted and FROZEN.** Adopted as the seventh permanent principle: **Repository Minimal Surface Principle (RMSP)** — *a repository exposes only the operations required to preserve, reconstitute, or enforce accepted aggregate invariants; query convenience belongs to read models, never aggregate repositories.* Companion reusable rule: **reconstitution is not an occurrence** — loading historical state is never a business event. Artifact №9 (Domain Services — the final chain artifact) is authorized under the strict entry condition: *a Domain Service exists only when a business operation cannot naturally belong to a single Aggregate while preserving the participating aggregates' protected truths; if removing it weakens no accepted responsibility or invariant, it does not become a Domain Service.*
+
+---
 *Frozen inputs: `EPIC-004H` (commands; DMT adopted at its freeze) · `EPIC-004E` (invariants; the two-seat INV-B1 pattern) · `EPIC-004D` (truths; the frozen R-3 boundary finding) · ADR-T1/T8/T19 · Rule 9 (repositories for aggregates only) · Implementation evidence: EPIC-003 inventory (DeterminationRepository / EloquentDeterminationRepository / DeterminationMapper).*
