@@ -34,13 +34,13 @@
 
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: PB-003
-Plan: .claude/plans/PB-003-inbox.md
+Ticket: WP-1 (EPIC-004 Adjudication implementation — EvidenceSet / DeterminationIssued v3)
+Plan: .claude/plans/WP-1-evidenceset-v3.md
 Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: M1 — Messaging Infrastructure (49%, derived 17/35 WBS)
 Priority: High
 
-- **Detail:** PB-003 Inbox / Deduplication · Lifecycle: **VERIFIED / CERTIFIED (ARR, 2026-07-07)** · 18/18 WBS · ARR: `docs/implementation/PB-003_Architecture_Readiness_Report.md` · matrix: `docs/implementation/Messaging_Architecture_Verification.md`. **Next ticket: PB-004 (needs IDD).**
+- **Detail (handoff, 2026-07-26):** *The Engineering Platform workstream no longer blocks implementation. Responsibility transitions from engineering-platform repair back to product implementation; remaining EG items (EG-002b · EG-004 · EG-005) continue as independent tracked work* (`docs/plans/20260726-2056-engineering-platform-repair-plan.md`). The push path is restored **for the currently identified defects** (EG-001..EG-003 complete) — not an absolute claim. WP-1 is the sole authorized slice; commission text in the WP-1 work plan. *(Historical: PB-003 Inbox VERIFIED/CERTIFIED 2026-07-07; PB-004..007 + EPIC-001..004 closed — see MEMORY + session logs.)*
 
 ## What remains (EPIC-001)
 PB-003 (Inbox) → **Platform Capability Certification (D-11 gate)** → PB-004 (Election Reaction, needs IDD) → PB-005 (Contestation Reaction, needs IDD) → PB-006 (IT-1..8) → PB-007 (Merge Gate incl. F-1 Deptrac, F-2 Infection)
