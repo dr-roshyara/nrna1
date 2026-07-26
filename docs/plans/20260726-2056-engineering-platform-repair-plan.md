@@ -66,9 +66,21 @@ The audit found: the design-governance shell gates run on an impostor `jq` (npm 
 | **Acceptance criteria** | Gate counts match an independent manual `grep -E` spot-check; a synthetic violation added in a test copy is detected (falsifiability); strict mode passes at the ratified baseline; removing the synthetic violation returns the count to baseline. |
 | **Dependencies** | EG-001 + EG-002a (a trustworthy parse layer is a precondition for trusting any measured number). |
 
+### EG-005 — Engineering Platform Qualification (ARB amendment, 2026-07-26 — workstream terminal milestone)
+
+| | |
+|---|---|
+| **Class** | Qualification, not repair — answers ONE question: *can this engineering platform now be trusted to govern implementation?* |
+| **Acceptance** | All F-GATE findings resolved or intentionally accepted (each with a recorded disposition) · the original failing push scenario re-run successfully · every repaired gate verified with positive AND negative tests (executes the Repair Acceptance Gate) · no contradictory reporting remains · no silent fail-open behavior remains · closing declaration: **engineering platform OPERATIONAL**. |
+| **Dependencies** | Last — after EG-003 implementation and EG-004. |
+
 ### Not repaired (recorded)
 
 - **F-GATE-7** (pre-commit advisory-only): matches its own documented design; record-only, no action.
+
+### New finding during EG-003 implementation — F-GATE-8 (flagged, then aligned in-slice)
+
+**PermissionSeeder was incomplete relative to the gate's own recorded policy:** `check_roles.php` CHECK-4 requires `election-committee` → {election.create, election.publish, election.results.view}, but the seeder assigned permissions only to `admin`. Relocating the gate to CI without alignment would have produced a knowingly-red CI (the same broken-rollout class as the F-GATE-4 wall). Disposition: the gate script is the recorded policy; the seeder failing to implement it is the defect → seeder aligned in the EG-003 slice (additive `givePermissionTo`), reported to the ARB rather than silently absorbed. (`ElectionPermissionSeeder`'s divergent permission naming scheme is noted as pre-existing product vocabulary, untouched — not this workstream's scope.)
 
 ---
 
@@ -114,7 +126,8 @@ An instrument that has never been seen to fail on bad input has not been shown t
 - [x] ARB approval of this plan (granted 2026-07-26, three amendments folded)
 - [x] EG-001 ✔ DONE 2026-07-26: step-0 verification reproduced on all 4 axes (PATH · identity npm-jq-1.7.2 jQuery wrapper · empty-output/exit-0 probe · no other jq) → impostor removed (`npm uninstall -g jq`, 146 pkgs) → real jq-1.8.1 installed (winget, WinGet/Links) → acceptance PASS (identity re-verified; `.baseline`→613, threshold→150, 9 rules iterate; zero `integer expression` errors; zero padLevels noise; component audit compares true baselines 92/75/15/22 — all ✅ legitimately) → hazard + self-check documented in `scripts/README.md`. Predicted residue confirmed visible: token rules count 0 via BRE (F-GATE-3 → EG-004, untouched by design).
 - [ ] Repair Acceptance Gate: break→block→restore→pass evidence recorded per repaired gate + original failing scenario re-run
-- [ ] EG-003: ARB ruling recorded → implemented → docs-only push verified end-to-end
+- [x] EG-003 ✔ RULED + IMPLEMENTED 2026-07-26: **ARB ruled Option (i)** with the rationale recorded verbatim in substance — *the enforcement point must match what is being validated*: pre-push validates repository content + static engineering policy; CI/deployment with a seeded database validates runtime configuration + operational readiness; NOT because RBAC is unimportant, NOT a weakening of enforcement. Implementation: Gate 4 removed from `verify.sh` (relocation comment cites ruling + audit) · `.husky/pre-push` header updated · new `role-permission-verification.yml` (postgres service mirroring merge-gate CI · migrate · `PermissionSeeder` · `check_roles.php --strict` unchanged) · F-GATE-8 seeder alignment (committee assignments per the gate's recorded policy). CI-green evidence lands with the first real run (PB-007 7E precedent: recorded, not claimed). Push re-run: see below.
+- [ ] EG-005: Engineering Platform Qualification (terminal milestone — see section above)
 - [x] EG-002a ✔ DONE 2026-07-26: shared guard `scripts/lib/config-guard.sh` (`require_int`, negative allowed for target:-1) sourced by all 4 scripts; every enforcement-relevant numeric parse validated (design-check: baseline/threshold/soft_boundary/rule-count/per-rule target; check-design-tokens: threshold/baseline/rule-count/target; component-audit: 4 tag baselines/component-count/target_usage; structure-check: context/rule counts — warn-only contract preserved via orchestrator severity). Display-only phase-target loop skips non-integers instead of failing (recorded scope decision). **RED→GREEN falsifiability:** pre-fix, corrupted baseline/threshold → gate still passed exit 0 (defect reproduced); post-fix, break→BLOCK exit 1 naming the key (both configs) → restore→PASS with true numbers (613/150; audit baselines); configs restored byte-identical.
 - [ ] EG-002b: (if approved) guard blocks on missing/fake jq
 - [ ] EG-004: ERE+allowlists · true counts measured · re-baseline proposal → ARB → ratified numbers land with the fix
