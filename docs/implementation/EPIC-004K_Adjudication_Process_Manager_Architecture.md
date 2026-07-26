@@ -188,5 +188,17 @@ The APM **requires durable state**: demands outstanding and their deadlines, adm
 
 **Next: the ARB decision agenda** — issuance of the successor decisions and the Q-2 parameters — before any refinement or implementation.
 
+## DECISION AGENDA RESOLVED (ARB, 2026-07-26, explicit per-item)
+
+**1. All three successor decisions ISSUED together** — the ARB's recorded ground: they are not independent implementation choices but architectural consequences of the approved design (without ChallengeRouted publication the PM has no entry point; the schema evolution is exactly what successor decisions exist for; leaving ADR-T17 unsuperseded would leave the record internally inconsistent). **Issued into the ADR-T log as ADR-T21 (ChallengeRouted published language), ADR-T22 (DeterminationIssued additive schema evolution / EvidenceSet carrier), ADR-T23 (supersedes ADR-T17 — the authority decides, the PM receives; ADR-T17 preserved as history, never edited).** Implementation of all three: NOT yet authorized.
+
+**2. Q-2 — resolved in approach; values reserved (reconciliation recorded explicitly):** the ARB selected the **interim rule** (all three terms are per-election-type parameters, org-configurable, with conservative ARB-set interim defaults marked INTERIM, revisited with business stakeholders) while its accompanying rationale reserved the business-policy substance for the next agenda. **Reconciled reading, recorded so it is correctable if misread:** the *approach and structure* are ruled now; the **interim default VALUES (the actual durations) are the next ARB agenda's business item** — nothing in this record sets a number.
+
+**3. Horizon-expiry policy RULED: return to Contestation; late decisions never honored.** Expiry announces the failure-to-conclude; the challenge's disposition is Contestation's per its own rules; a post-expiry authority decision dead-letters as a conflict. Consistent with P3 and the existing translation family; no new machinery.
+
+**4. The `DeterminationFinalized` reversal condition: HOLD — stays armed.** The retention consumer is a candidate, not a built consumer; the frozen condition requires the consumer as evidence. Returns through ARB review when the retention machinery is actually designed.
+
+**Standing sequence confirmed by the ARB (recorded):** architecture approved ✓ → successor decisions issued ✓ → **business-policy parameters (Q-2 interim values): next agenda** → only then refinement and implementation authorization. The architectural-evolution vs. business-policy distinction is maintained.
+
 ---
 *Immutable inputs: the frozen nine-artifact chain (`EPIC-004B`..`EPIC-004J`) · `EPIC-004_Q1_Authority_Resolution.md` · the four Constitutional Policies (EPIC-003 §THE FOUR DECISIONS) · ADR-T1/T8/T11/T14/T16/T17(valid until superseded)/T19 · Q-2 as framed by the work package · EPIC-003 implementation inventories (the open-arc finding; `finalize()`'s zero callers; the existing scheduled-command and inbox-translation precedents).*
