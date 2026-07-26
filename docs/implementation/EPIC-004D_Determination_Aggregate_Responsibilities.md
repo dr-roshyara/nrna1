@@ -3,7 +3,8 @@
 **Kind:** Tactical DDD artifact №3 (one artifact → ARB review → refine → freeze → next). **Role:** implementation architect operating from a frozen constitutional baseline — not a discoverer. This artifact defines **what the Determination aggregate is responsible for protecting**; it designs nothing (no methods, events, commands, VOs, repositories, services, APIs, schemas).
 **Constitutional baseline (frozen — not reopened here):** Determination is the only accepted aggregate in this scope, existing implementation confirmed · Governance owns constitutional authority, delegation, lifecycle, and validity; Adjudication never models authority and depends only on Governance's published contract · the AdjudicationProceeding concern is a Process Manager / orchestration, not designed here · the four Constitutional Policies · K1/P2 · ADR-T1/T11/T14/T19.
 **Governance rule applied as mandatory acceptance criterion (adopted this cycle, recorded in MEMORY):** *Responsibilities are discovered, not invented. Every accepted responsibility must trace to explicit business evidence or a previously frozen ARB decision; an untraceable responsibility is rejected or deferred.*
-**Acceptance test (strengthened per ARB review, 2026-07-26 — every step must hold):** traceable? → business obligation? → business decision? → needs transactional consistency? → cannot naturally belong elsewhere (alternatives eliminated explicitly, §F per responsibility)? → **a business sentence becomes false if removed?** → accept.
+**Acceptance chain (canonical form per ARB, 2026-07-26 — every step must hold):** **Business evidence** *(renamed from "traceable" — traceability is the mechanism; evidence is the reason)* → business obligation → business decision → consistency required? → alternative owners eliminated (§F)? → removal breaks business truth? → **protected business truth identified** → accept. *Aggregates protect business truths; the protection target is the positive form of the removal-test sentence — the removal test is its falsification probe.*
+**Healthy-criterion rule (ARB, recorded):** *every acceptance criterion must have demonstrated at least one rejection during the methodology's development — a criterion that never rejects is ceremonial.* (Status here: the ownership step rejected R-3; the validity half of R-5 was cut by the Q-1 constraint; the classification scheme pre-excluded the coordination concerns.)
 **Classification scheme (per responsibility):** Decision (makes a business decision) · Consistency (maintains an invariant) · Lifecycle (owns state transitions) · Recording (records business facts) · **Coordination (near-automatic reject — coordination belongs outside the aggregate by prior ruling).**
 
 ---
@@ -19,6 +20,7 @@
 - **F (why nobody else):** *Governance* — owns authority, not record lifecycles. *Process Manager* — can request transitions but cannot prevent illegal ones without the aggregate's own guard; a PM-enforced lifecycle is advisory. *Application Service* — a service-level guard can be bypassed by any second caller; the guard must live with the state. *Publication* — downstream consumer. *Policy* — policies inform transitions; they cannot enforce atomic refusal.
 - **Classification:** Lifecycle.
 - **Removal test:** *"A binding ruling, once final, can never change"* becomes false — the constitutional finality of determinations would be unenforced.
+- **Protects:** the lawfulness of the ruling record's history and the absoluteness of its finality.
 - **E: ACCEPT.**
 
 ### R-2 — Exactly-once issuance *for this determination* (instance-level)
@@ -30,6 +32,7 @@
 - **F (why nobody else):** *Governance / Publication / Policy* — no visibility into this instance's transition instant. *Process Manager* — sees its own requests, not the aggregate's state under concurrency. *Application Service* — owns the SET-level rule (R-3), but the instance-level fact ("this one has already issued") is knowable only inside the boundary at commit time.
 - **Classification:** Consistency.
 - **Removal test:** *"A determination is issued exactly once"* becomes false — a re-issued determination would emit two ruling events for one record.
+- **Protects:** each determination represents exactly one act of ruling.
 - **E: ACCEPT** — *with the honest split recorded in R-3.*
 
 ### R-3 — One determination per challenge (set-level) — **the honest finding of this artifact**
@@ -51,6 +54,7 @@
 - **F (why nobody else):** *Governance* — decides authority, not ruling records. *Process Manager* — assembles inputs; if fixation lived there, "issued" and "fixed" would be two separable moments — exactly what P3 forbids. *Application Service* — could write both, but could also write them apart; only the aggregate makes separation structurally impossible. *Publication* — consumes the fixed record; fixation upstream of it. *Policy* — informs content; cannot fix it.
 - **Classification:** Recording + Consistency (one fixation fact).
 - **Removal test:** *"The ruling as published is the ruling as decided at the moment of issue"* becomes false — post-hoc rationalization of rulings would be possible.
+- **Protects:** the ruling the world sees is the ruling that was decided — never a reconstruction.
 - **E: ACCEPT — in its current, implemented form.** **DEFER the expanded form** ("fix the evidence-set-as-considered," C1's surviving obligation from the Candidate-2 ruling): whether the ruling's evidence basis becomes a *set* of admissions supplied by the Process Manager, and whether its fixation seat is this aggregate's issuance or the orchestration's conclusion, **depends on the Process Manager design — explicitly out of scope here.** Traceable, real, and deliberately not decided by this artifact.
 
 ### R-5 — Refuse issuance absent the required assertions (presence, not validity)
@@ -62,6 +66,7 @@
 - **F (why nobody else):** *Governance* — owns whether the authority is VALID; it cannot own whether this record carries an assertion at all. *Process Manager* — can check before requesting, but a second caller bypasses it. *Application Service* — same bypass exposure; presence must be a condition of existence, not of one path. *Publication/Policy* — too late / advisory.
 - **Classification:** Consistency (existence-condition).
 - **Removal test:** *"Every ruling is attributable from the moment it exists"* becomes false — an unattributed ruling could exist, however briefly.
+- **Protects:** every determination has an accountable issuer.
 - **E: ACCEPT — bounded hard by the Q-1 constraint:** this is **presence/attribution only. Validity of the authority's delegation is Governance's, full stop** (binding constraint: Adjudication never implements or duplicates constitutional authority rules). Where the published-contract consultation happens is later tactical design — *not* an aggregate responsibility under criterion 4.
 
 ### R-6 — Attribution of the ruling (who issued, under what jurisdiction, on what evidence)
@@ -73,6 +78,7 @@
 - **F (why nobody else):** *Governance* — knows who HOLDS authority; only the ruling's own record can bind who EXERCISED it here, to this ruling, inseparably. *Process Manager* — a PM-side attribution log is a second record that can diverge from the ruling. *Application Service / Publication / Policy* — attribution anywhere but inside the fixed record is separable from it, which attribution must never be.
 - **Classification:** Recording.
 - **Removal test:** *"For any determination, who issued it, over what jurisdiction, on what evidence — is always answerable from the record itself"* becomes false — the accountability triple would depend on reconstruction.
+- **Protects:** every determination is answerable — who, under what jurisdiction, on what evidence — from the record alone.
 - **E: ACCEPT** (distinct from R-4 because the *business decision owned* differs: R-4 owns "the content is fixed"; R-6 owns "the ruling is attributable" — the ARB may merge them on review if the distinction carries no weight).
 
 ### R-7 — Anonymity guardianship over everything it records and emits
@@ -84,6 +90,7 @@
 - **F (why nobody else):** *Fitness tests* — detect after the fact; cannot refuse at fixation. *Process Manager / Application Service* — filtering upstream helps but is bypassable; the record's own guardian is the unbypassable seat. *Governance / Publication / Policy* — wrong subject matter or too late.
 - **Classification:** Decision (admissibility of content into a constitutional record).
 - **Removal test:** *"No constitutional record enables voter↔vote linkage"* becomes false at its most durable point — the permanent record itself.
+- **Protects:** ballot secrecy at the one place it would be permanent if lost — the constitutional record.
 - **E: ACCEPT** — noting honestly that this is a *constraint-shaped* responsibility (it owns the decision "this content is admissible in a constitutional record"), shared in enforcement with fitness tests; the aggregate's part is refusing forbidden content at fixation.
 
 ## Accepted responsibility list
