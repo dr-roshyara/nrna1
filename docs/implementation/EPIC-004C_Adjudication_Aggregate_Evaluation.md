@@ -98,4 +98,25 @@
 **This artifact is FROZEN.** Reopening routes through the ARB. Next artifact: №3 — Aggregate Responsibilities, scoped to the accepted aggregate (Determination) — on explicit ARB opening; the Candidate-2 track resumes when Q-1 is answered.
 
 ---
+
+## CANDIDATE 2 — RESOLVED (ARB, 2026-07-26, on the resolved discriminator; the reopening this freeze itself sanctioned)
+
+**Q-1 was answered** (`EPIC-004_Q1_Authority_Resolution.md`, FROZEN): Governance owns the authority model; Adjudication depends on Governance's authority decision through a published contract; the deliberative record is **not** the decision's owner.
+
+**Ruling: the AdjudicationProceeding concern is realized as PROCESS MANAGER / APPLICATION ORCHESTRATION — not an aggregate.** Grounds: with Criterion 7 answered, the business language reads *Governance authorizes → Adjudication evaluates → Determination issued* — "Proceeding" remains an architectural hypothesis without business identity, and the burden-of-proof standard the ARB applied at deferral (the business must recognize the boundary; technical elegance does not suffice) is not met. The deliberation becomes coordination plus an event-logged record.
+
+**What survives the ruling as an obligation, not a casualty:** Criterion 1's conclude-time atomic fixation of the evidence-set-as-considered still requires an enforcement home — that design lands in later artifacts (the issuance boundary that the ratified Determination aggregate already guards is the evident candidate seat, but the choice is tactical design, not made here). **Reversal condition (recorded):** if future domain evidence introduces "proceeding"/"case" as genuine business language, the aggregate realization may be re-proposed through ARB review.
+
+**Final disposition table (artifact №2, complete):**
+
+| Candidate | Final decision | Confidence |
+|---|---|---:|
+| Determination | **Aggregate** (existing implementation confirmed) | High |
+| AdjudicationProceeding | **Process Manager / orchestration** (with reversal condition) | Decided |
+| Declare-failure · Evidence body · Quarantine · Superseding Publication | Not Adjudication aggregates | High |
+| Authority | Resolved by Q-1: Governance owns; Adjudication consumes via published contract | Decided |
+
+**Artifact №2 is now COMPLETE and remains FROZEN.** Next: artifact №3 — Aggregate Responsibilities, scoped to Determination (the context's single ratified aggregate), with the orchestration concern's responsibilities addressed where the frozen methodology places them.
+
+---
 *Predecessors: `EPIC-004_Adjudication_Tactical_Work_Package.md` (frozen) · `EPIC-004A` (closed, accepted with rulings) · `EPIC-004B` (frozen as refined) · Constitutional inputs: EPIC-002 baseline, EPIC-003 §THE FOUR DECISIONS, ADR-T1/T11/T14/T17/T19.*
