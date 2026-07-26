@@ -100,3 +100,10 @@ Every WP names the issued decision it realizes; nothing realizes an unissued ide
 **Decision: APPROVED.** The ARB classifies this artifact as engineering governance, not architecture — the intended transition. Conditions applied in place: **(1)** WP-5 ownership elevated to an explicit ARB decision gate (open items §1) — *in EPIC-004, or a Contestation-workstream prerequisite?* — awaiting disposition; **(2)** "dependency discoveries" renamed **implementation dependency findings** (engineering findings derived from the approved architecture, reinforcing the Architect→Chief-Engineer role change); **(3)** the Definition of Done gains a measurable conformance gate: *no deviation from a frozen ADR or architectural invariant without a recorded ARB decision.*
 
 **WP-1 authorization:** the ARB signalled comfort authorizing WP-1 upon these conditions; the explicit authorization is requested per item and recorded when given — not inferred from the signal.
+
+## GATES RULED (ARB, 2026-07-26, explicit per-item)
+
+1. **WP-5 ownership: PART OF EPIC-004.** The Contestation raise-path slice stays in this roadmap at its sequenced position, under this program's gates — one workstream owns the whole arc from raise to resolution. The WP-5 gate (Review Comment 1) is closed.
+2. **WP-1 is AUTHORIZED** as the first implementation slice, under the one-slice-one-review cadence and every gate this roadmap defines (TDD RED-first · keystone tests · merge-gate · triple qualification · the measurable conformance gate · dev guide · STOP for slice acceptance).
+
+**The roadmap is now fully in force.** Implementation begins at WP-1; no other WP is authorized; each subsequent WP opens only on its predecessor's ARB slice acceptance.
