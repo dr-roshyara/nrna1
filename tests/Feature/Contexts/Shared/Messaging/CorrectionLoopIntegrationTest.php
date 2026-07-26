@@ -11,6 +11,7 @@ use App\Contexts\Adjudication\Domain\Determination\ContestedOutcomeRef;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
 use App\Contexts\Adjudication\Domain\Determination\ElectionId as AdjElectionId;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceEnvelopeRef;
+use App\Contexts\Adjudication\Domain\Determination\EvidenceSet;
 use App\Contexts\Adjudication\Domain\Determination\IssuedByAuthority;
 use App\Contexts\Adjudication\Domain\Determination\Jurisdiction;
 use App\Contexts\Adjudication\Domain\Determination\Legitimacy;
@@ -89,6 +90,7 @@ final class CorrectionLoopIntegrationTest extends TestCase
                     TargetType::ElectionResult,
                     TargetId::fromString('result-1'),
                 ),
+                EvidenceSet::fromRefs('ev-1'),
                 new DateTimeImmutable('2026-07-10T10:00:00+00:00'),
             ),
         )->toString();

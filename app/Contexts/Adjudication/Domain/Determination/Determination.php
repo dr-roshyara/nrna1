@@ -86,10 +86,17 @@ final class Determination
         );
     }
 
+    /**
+     * ADR-T22 succession (WP-1): issuance accepts and FIXES the considered-
+     * evidence set — R-4-expanded's permanent fixation seat. The set travels in
+     * the emitted event (the ruling's record, ADR-T19) and can never diverge
+     * from what was decided (INV-4 rider).
+     */
     public function issue(
         DeterminationOutcome $outcome,
         Legitimacy $legitimacy,
         Reason $reason,
+        EvidenceSet $evidenceSet,
         DateTimeImmutable $at,
     ): void {
         $this->guard('issue', DeterminationState::Draft);
@@ -104,6 +111,7 @@ final class Determination
             $this->issuedByAuthority,
             $this->jurisdiction,
             $this->contestedOutcome,
+            $evidenceSet,
             $at,
         ));
     }

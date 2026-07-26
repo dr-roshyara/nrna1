@@ -43,9 +43,10 @@ final class OutboxEventAdapter implements EventOutbox
             'correlation_id' => $provenance->correlationId,
             'causation_id' => $provenance->causationId,
             'payload' => [
-                // ADR-PL-01: payload schema version 2 — additively carries the
-                // contested-outcome reference. Same event; hydrator reads v1+v2.
-                'schema_version' => 2,
+                // ADR-T22 (WP-1): payload schema version 3 — additively carries
+                // the fixed considered-evidence set. Same event; hydrator window
+                // is (v3, v2) — v1 retired per the versioning rule.
+                'schema_version' => 3,
                 'determinationId' => $event->determinationId->toString(),
                 'challengeRef' => $event->challengeRef->toString(),
                 'outcome' => $event->outcome->value,
@@ -59,6 +60,7 @@ final class OutboxEventAdapter implements EventOutbox
                     'type' => $event->contestedOutcome->type->value,
                     'targetId' => $event->contestedOutcome->targetId->toString(),
                 ],
+                'evidenceSet' => $event->evidenceSet?->toArray(),
                 'occurredAt' => $event->occurredAt->format(DATE_ATOM),
             ],
             'status' => 'pending',

@@ -8,6 +8,7 @@ Adjudication owns the **`Determination`** aggregate — the binding ruling on a 
 | Guide | Covers |
 |-------|--------|
 | [`01_determination_contested_outcome_schema_v2.md`](./01_determination_contested_outcome_schema_v2.md) | The `Determination` carrying a **`ContestedOutcomeRef`** (Adjudication's own local VO, ADR-T16) and emitting it on **`DeterminationIssued` payload schema version 2** — additive, backward-compatible (ADR-PL-01). |
+| [`02_determination_evidence_set_schema_v3.md`](./02_determination_evidence_set_schema_v3.md) | **WP-1 (ADR-T22):** the **`EvidenceSet`** VO — the considered-evidence set fixed at issuance (R-4-expanded/INV-4 rider) — carried on **payload schema version 3**; hydrator window shifts to **(v3, v2), v1 retired**. |
 
 ## Authoritative architecture
 - Ubiquitous language: `docs/adr/ADR-UL-01-ContestedOutcome.md`.

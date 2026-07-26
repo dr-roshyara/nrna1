@@ -82,6 +82,7 @@ class OutboxEventAdapterTest extends TestCase
             issuedByAuthority: IssuedByAuthority::fromString('550e8400-e29b-41d4-a716-446655440004'),
             jurisdiction: Jurisdiction::fromString('test-jurisdiction'),
             contestedOutcome: null,   // S7 tenant test — contested outcome not exercised here
+            evidenceSet: null,        // S7 tenant test — considered set not exercised here
             occurredAt: new \DateTimeImmutable('2026-01-01T00:00:00Z'),
         );
     }

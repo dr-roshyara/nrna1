@@ -8,6 +8,7 @@ use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
 use App\Contexts\Adjudication\Domain\Determination\ContestedOutcomeRef;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceEnvelopeRef;
+use App\Contexts\Adjudication\Domain\Determination\EvidenceSet;
 use App\Contexts\Adjudication\Domain\Determination\IssuedByAuthority;
 use App\Contexts\Adjudication\Domain\Determination\Jurisdiction;
 use App\Contexts\Adjudication\Domain\Determination\Legitimacy;
@@ -31,6 +32,7 @@ final readonly class IssueDeterminationCommand
         public Jurisdiction $jurisdiction,
         public EvidenceEnvelopeRef $evidenceEnvelopeRef,
         public ContestedOutcomeRef $contestedOutcome,
+        public EvidenceSet $evidenceSet,   // ADR-T22 (WP-1): the considered set, fixed at issuance
         public DateTimeImmutable $occurredAt,
     ) {
     }

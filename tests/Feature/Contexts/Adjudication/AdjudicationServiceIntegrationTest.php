@@ -11,6 +11,7 @@ use App\Contexts\Adjudication\Domain\Determination\ContestedOutcomeRef;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
 use App\Contexts\Adjudication\Domain\Determination\ElectionId;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceEnvelopeRef;
+use App\Contexts\Adjudication\Domain\Determination\EvidenceSet;
 use App\Contexts\Adjudication\Domain\Determination\IssuedByAuthority;
 use App\Contexts\Adjudication\Domain\Determination\Jurisdiction;
 use App\Contexts\Adjudication\Domain\Determination\Legitimacy;
@@ -18,6 +19,7 @@ use App\Contexts\Adjudication\Domain\Determination\Reason;
 use App\Contexts\Adjudication\Domain\Determination\TargetId;
 use App\Contexts\Adjudication\Domain\Determination\TargetType;
 use App\Contexts\Adjudication\Domain\Exception\DeterminationAlreadyIssued;
+use App\Contexts\Adjudication\Infrastructure\Outbox\DeterminationIssuedHydrator;
 use App\Models\Organisation;
 use App\Services\TenantContext;
 use DateTimeImmutable;
@@ -66,6 +68,7 @@ final class AdjudicationServiceIntegrationTest extends TestCase
                 TargetType::ElectionResult,
                 TargetId::fromString('result-1'),
             ),
+            EvidenceSet::fromRefs('ev-1', 'ev-supplementary-2'),
             new DateTimeImmutable('2026-06-27T10:00:00+00:00'),
         );
     }
@@ -94,6 +97,22 @@ final class AdjudicationServiceIntegrationTest extends TestCase
             'organisation_id' => $this->tenantId,
             'status' => 'pending',
         ]);
+
+        // KEYSTONE (WP-1, ADR-T22): v3 round-trip over the REAL wire — the
+        // adapter-written payload carries schema_version 3 + the fixed set, and
+        // the context's own hydrator reconstructs the event with the set intact.
+        $row = DB::table('outbox_events')
+            ->where('organisation_id', $this->tenantId)
+            ->where('event_type', 'DeterminationIssued')
+            ->first();
+        $payload = json_decode((string) $row->payload, true);
+
+        $this->assertSame(3, $payload['schema_version']);
+        $this->assertSame(['ev-1', 'ev-supplementary-2'], $payload['evidenceSet']);
+
+        $event = (new DeterminationIssuedHydrator())->hydrate($payload);
+        $this->assertNotNull($event->evidenceSet);
+        $this->assertSame(['ev-1', 'ev-supplementary-2'], $event->evidenceSet->toArray());
     }
 
     public function test_reissue_same_challenge_throws_and_keeps_single_row(): void

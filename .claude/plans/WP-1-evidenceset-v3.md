@@ -48,6 +48,15 @@ These exist so Auto mode cannot wander into WP-2 or platform work.
 - Engineering-platform repair ≠ product implementation. EG-002b / EG-004 / EG-005 are tracked, non-blocking under current ARB decisions, and continue independently.
 - Pushes require the user (SSH key is passphrase-protected) — ask, don't attempt.
 
+## Progress (2026-07-26)
+
+- ✔ Inputs read · downstream v3-tolerance verified (no consumer gates on schema_version)
+- ✔ RED written + confirmed (10 failures, all expected reasons) — reported at STOP #1
+- ✔ RED→work-item mapping verified one-to-one (chair's pre-GREEN check) — GREEN authorized
+- ✔ GREEN minimal: EvidenceSet VO · event `?evidenceSet` · `issue()` succession · command field · adapter v3 · hydrator window (v3,v2) v1 rejected · call sites updated · real-wire round-trip pinned in the integration test
+- ✔ Gates: Adjudication unit 52✔ · loop Feature 7✔ (IT-1..4 green ON v3 payloads) · **`composer merge-gate` PASS** · pre-deploy check EXECUTED: 0 pending DeterminationIssued rows (any version)
+- ✔ Dev guide `developer_guide/adjudication/02_determination_evidence_set_schema_v3.md` (+ index)
+
 ## Next action (exactly one)
 
-Read ADR-T22 + roadmap §WP-1 + current `app/Contexts/Adjudication` schema-v2 implementation → write the four keystone tests → **confirm RED** → stop for nothing less than GREEN by the approved design.
+**STOP #2 — awaiting ARB slice acceptance of WP-1.** WP-2 opens only on that acceptance.
