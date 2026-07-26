@@ -112,7 +112,7 @@ An instrument that has never been seen to fail on bad input has not been shown t
 ## Task checklist
 
 - [x] ARB approval of this plan (granted 2026-07-26, three amendments folded)
-- [ ] EG-001: step-0 reproducibility verification · impostor removed · real jq installed · acceptance checks pass · hazard documented
+- [x] EG-001 ✔ DONE 2026-07-26: step-0 verification reproduced on all 4 axes (PATH · identity npm-jq-1.7.2 jQuery wrapper · empty-output/exit-0 probe · no other jq) → impostor removed (`npm uninstall -g jq`, 146 pkgs) → real jq-1.8.1 installed (winget, WinGet/Links) → acceptance PASS (identity re-verified; `.baseline`→613, threshold→150, 9 rules iterate; zero `integer expression` errors; zero padLevels noise; component audit compares true baselines 92/75/15/22 — all ✅ legitimately) → hazard + self-check documented in `scripts/README.md`. Predicted residue confirmed visible: token rules count 0 via BRE (F-GATE-3 → EG-004, untouched by design).
 - [ ] Repair Acceptance Gate: break→block→restore→pass evidence recorded per repaired gate + original failing scenario re-run
 - [ ] EG-003: ARB ruling recorded → implemented → docs-only push verified end-to-end
 - [ ] EG-002a: fail-closed parsing in 4 scripts · falsifiability demonstrated
