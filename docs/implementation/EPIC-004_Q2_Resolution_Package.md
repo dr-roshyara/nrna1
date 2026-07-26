@@ -63,6 +63,8 @@ The reversal condition **remains armed and is not activated by this package**. *
 
 ## Parameter table (the package's normative core — all INTERIM)
 
+> **Standing qualification (ARB challenge, accepted and recorded before ratification):** **these values are implementation bootstrap defaults, not constitutional defaults.** They exist only to unblock implementation and carry no implication that they represent final governance policy. The earlier ruling ("structure now, values later") is honored in substance: what the ARB ratifies here is the *bootstrap*, and the constitutional values remain the stakeholder review's to set — the review requirement on every row is the mechanism, this sentence is its meaning.
+
 | Parameter | Scope | Interim default | Evidence grade | Stakeholder review |
 |---|---|---|---|---|
 | `contestation_window` (election result) | per election type | 30 days from publication | Weak-but-real (the one operationalized legacy number) | REQUIRED — type differentiation expected |
