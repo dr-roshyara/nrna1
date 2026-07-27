@@ -57,6 +57,12 @@ These exist so Auto mode cannot wander into WP-2 or platform work.
 - ✔ Gates: Adjudication unit 52✔ · loop Feature 7✔ (IT-1..4 green ON v3 payloads) · **`composer merge-gate` PASS** · pre-deploy check EXECUTED: 0 pending DeterminationIssued rows (any version)
 - ✔ Dev guide `developer_guide/adjudication/02_determination_evidence_set_schema_v3.md` (+ index)
 
+## Acceptance (ARB, 2026-07-26/27)
+
+**WP-1 — ACCEPTED** (all nine review gates ✅: scope discipline · ADR conformance · DDD · trustworthiness · RED→GREEN · regression · merge gate · deployment readiness · documentation), **subject to one evidence condition — DISCHARGED 2026-07-27:** a representative v3 payload captured read-only from the real outbox (test DB; event_id `f97d7cdd-…a80f`) and archived in dev guide 02 §Implementation evidence. The 57 risky tests confirmed as pre-existing debt (F-7C-6), not a WP-1 concern.
+
+**WP-1 CLOSED · WP-2 (APM core) AUTHORIZED** under the same execution discipline.
+
 ## Next action (exactly one)
 
-**STOP #2 — awaiting ARB slice acceptance of WP-1.** WP-2 opens only on that acceptance.
+**WP-2, fresh session:** create its work plan from roadmap §WP-2 (keystones: exactly-once conclusion under concurrent redelivery · no admission after conclusion · unique-active-per-challenge under race), re-point CONTEXT.md, RED first.

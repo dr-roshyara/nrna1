@@ -62,6 +62,35 @@ Hydration: v3 → set required and reconstructed; **v2 → `evidenceSet === null
 - `AdjudicationServiceIntegrationTest` — REAL-wire round-trip: adapter row (schema_version 3 + set) → hydrator → set intact.
 - Keystones written RED-first and confirmed failing for the expected reasons before GREEN.
 
+## Implementation evidence — representative v3 payload (ARB acceptance condition, captured 2026-07-27)
+
+Captured **read-only from the real `outbox_events` table** (test DB `nrna_test`, written by
+`OutboxEventAdapter` during the real service path — not hand-authored). Reference shape for
+future migrations (`event_id f97d7cdd-9a45-43c2-9a7f-2d44b7a4a80f`, `aggregate_type Determination`):
+
+```json
+{
+    "schema_version": 3,
+    "determinationId": "0a578a76-f2fc-4372-a6b6-ee6238904169",
+    "challengeRef": "3cce3dd9-cc30-400f-a3ed-98c13d2040b1",
+    "outcome": "upheld",
+    "legitimacy": "legitimate",
+    "reason": "Tally dispute.",
+    "evidenceEnvelopeRef": "ev-1",
+    "issuedByAuthority": "ARB",
+    "jurisdiction": "National",
+    "contestedOutcome": {
+        "electionId": "109bdd99-d4a5-4db4-a041-0bad8abb7df8",
+        "type": "election_result",
+        "targetId": "result-1"
+    },
+    "evidenceSet": [
+        "ev-1"
+    ],
+    "occurredAt": "2026-07-10T10:00:00+00:00"
+}
+```
+
 ## Pitfalls
 
 - Never write a `FinalizeDeterminationCommand` or emit on `finalize()` — finality is Q-2's temporal policy (WP-6), unchanged by this slice.
