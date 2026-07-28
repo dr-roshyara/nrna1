@@ -65,5 +65,8 @@
       }
     ]
   },
-  "plansDirectory": "./.claude/plans"
+  "plansDirectory": "./.claude/plans",
+  "enabledPlugins": {
+    "skill-creator@claude-plugins-official": true
+  }
 }

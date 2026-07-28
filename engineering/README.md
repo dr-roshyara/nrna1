@@ -50,6 +50,8 @@
 
 The runtime mount point (`.claude/` today) is dictated by tooling — like `.git/` or `.github/`. It never moves, and it is never "the architecture": it is where the current provider binding executes the engineering defined here. **The Election System is the Core Domain; this platform is a Supporting Subdomain** (AIP-14, Product Primacy).
 
+> **Multi-product relationship (DA clarification, 2026-07-27):** this directory contains the **Engineering Knowledge Architecture Baseline v1.0** and the shared engineering capabilities used to develop **all PublicDigit products** (Online Voting today; KnowledgeOS and future products if their gates open). Product-specific domain architectures remain owned by their respective product domains and **consume, but do not redefine, the engineering capability** — the capability never depends on any product's domain concepts (no election lifecycle here; no retrieval/embeddings here), and improvements discovered while building a product flow back **only** through the evidence-driven governance process (ES-006.4 → ES-006.1 → Decision Authority). One capability, many consumers, zero forks (EEP §10.9). *(A second real adopting product is the recorded trigger for the Platform ≙ Adoption split — pre-positioned, not executed.)*
+
 ---
 
 ## Information map
