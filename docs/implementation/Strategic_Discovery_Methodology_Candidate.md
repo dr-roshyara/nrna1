@@ -4,7 +4,7 @@
 |---|---|
 | **Kind** | Methodology capture — **learning input** (ES-006.3 harvest discipline). Records reusable engineering knowledge revealed by the PKS Phase-1 discovery. **Adopts nothing; creates no governance** (ES-001.2). |
 | **Authority** | Generated — never authoritative without human review. |
-| **Status** | **RECORDED — candidate.** One operational instance (the PKS discovery, 2026-07-27). The multi-context evidence bar for methodology-module candidacy (R-39's normal bar) is **not yet met** — a second independent discovery run is the natural qualifying evidence. Routed to the retrospective inbox, not to adoption. |
+| **Status** | **RECORDED — candidate; standing CONFIRMED (ARB, 2026-07-28: DR-4 "Confirm as recorded" — `PKS_Phase_I_ARB_Rulings.md`).** One operational instance (the PKS discovery, 2026-07-27). The multi-context evidence bar for methodology-module candidacy (R-39's normal bar) is **not yet met** — a second independent discovery run is the natural qualifying evidence. Routed to the retrospective inbox, not to adoption; no adoption occurred at confirmation. |
 | **Provenance** | Emerged unplanned across the PKS Phase-1 review rounds (Principal Architect + assistant, 2026-07-27); the PA's closing instruction: preserve it in the engineering methodology, **not** in the PKS discovery report — it is method, not product domain. |
 | **Placement** | Project-side per ES-006.2/ES-005.3 (research/candidate artifacts live in `docs/implementation/` until promoted); promotion, if ever, would move it beside `engineering/knowledge/methodology/DDD_Tactical_Governance_Principles.md` via the ES-006.1 ladder. |
 

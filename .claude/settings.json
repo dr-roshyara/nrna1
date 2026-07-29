@@ -15,6 +15,11 @@
         "hooks": [
           {
             "type": "command",
+            "command": "bash .claude/scripts/project-knowledge-guard.sh \"$CLAUDE_TOOL_INPUT\"",
+            "statusMessage": "Checking project-memory boundary"
+          },
+          {
+            "type": "command",
             "command": "bash .claude/scripts/discipline-gate-reminder.sh \"$CLAUDE_TOOL_INPUT\""
           },
           {
@@ -66,6 +71,7 @@
     ]
   },
   "plansDirectory": "./.claude/plans",
+  "autoMemoryEnabled": false,
   "enabledPlugins": {
     "skill-creator@claude-plugins-official": true
   }

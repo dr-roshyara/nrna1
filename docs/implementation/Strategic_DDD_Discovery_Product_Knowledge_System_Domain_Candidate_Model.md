@@ -1,16 +1,29 @@
-> **RAW WORKING FILE — NOT AN ARB ARTIFACT.** Preserved unchanged for traceability only, and outside the two locations (`./engineering`, `./docs`) treated as official for AI-engineering artifacts. This file contains a candidate conceptual model (down to the `######` divider) followed by review commentary appended after it — including simulated ARB-style scoring and a "final verdict" written as if from an ARB chair. For governance purposes, only the candidate conceptual model constitutes an artifact; the appended commentary is supporting material, preserved here, and is not part of any submitted ARB artifact. **The governed candidate-model artifact is `docs/implementation/Strategic_DDD_Discovery_Product_Knowledge_System_Domain_Candidate_Model.md`** — read that file, not this one, for review purposes.
+# Strategic Discovery — Product Knowledge System Domain: Candidate Conceptual Model
+
+| | |
+|---|---|
+| **Kind** | Strategic Discovery input — **Candidate Conceptual Model** (companion artifact, not the evidence discovery). No technology, no databases, no UI, no AI agents, no bounded contexts are adopted here — concepts are presented as candidates for Strategic Modeling to validate against repository evidence. |
+| **Authority** | Generated (AI-produced, second model) — **never authoritative without human review** (ES-001.2 / AIP-10). No architectural authority. No governance authority. |
+| **Status** | **ACCEPTED as a Strategic-Modeling input (ARB, 2026-07-28: DR-1 — `PKS_Phase_I_ARB_Rulings.md`).** Acceptance adopts **no concept**: this remains a hypothesis set; every candidate still requires validation against the evidence baseline during Strategic Modeling. *(Supersedes SUBMITTED FOR ARB REVIEW.)* |
+| **Companion to** | `Strategic_DDD_Discovery_Product_Knowledge_System_Domain.md` (empirical evidence discovery) · `Strategic_Discovery_Methodology_Candidate.md` (engineering methodology candidate). Together these form the **PKS Phase I Review Package v1.0**. |
+| **Provenance** | The raw working file `architecture/ai_architecture/documentation/what_gemini_suggested.md` (an ungoverned fourth root, and outside the two locations — `./engineering` and `./docs` — treated as official for AI-engineering artifacts) contains both the candidate conceptual model below and review commentary subsequently appended after it, including simulated ARB-style scoring and a "final verdict" phrased as if from an ARB chair. For governance purposes, only the candidate conceptual model constitutes this artifact. The appended review commentary is preserved as supporting material in the raw file and is not part of this submitted artifact. |
+| **Placement** | Project-side per ES-005.3 (the placement litmus): this candidate model is inferred from general DDD/discovery practice rather than cited from this repository's own evidence, so it could not be adopted unchanged by another project without validation — it stays project-side pending qualification, alongside its evidence-discovery sibling, under `./docs`. |
 
 ---
 
-# Product Knowledge System (PKS) Strategic Discovery Report
+**Scope:** This document captures a candidate conceptual model only. It intentionally does not contain review commentary, evaluation, scoring, or approval recommendations. Those belong to separate review artifacts or supporting material.
 
-**Capability:** Product Knowledge System (PKS)
+---
 
-**Role:** Senior Principal Architect
+## How to read this document
 
-**Phase:** Phase I — Strategic Discovery (Domain Discovery & Analysis)
+This document is intentionally different from the companion evidence discovery report.
 
-**Governance Standard:** Evidence-First Discovery (Strict Separation of Findings, Candidates, Open Hypotheses, and Boundary Definitions)
+- The **evidence discovery report** establishes empirical observations grounded directly in this repository's evidence (quoted, counted).
+- **This document** proposes conceptual abstractions — candidate concepts, boundaries, and hypotheses — that may explain or extend those observations, informed by general DDD/discovery practice rather than repository citation.
+- **Agreement** between the two is evidence supporting Strategic Modeling.
+- **Disagreement or divergence** identifies a modeling question for ARB review, not an error to silently reconcile.
+- **Neither document establishes architecture.** Both remain candidates until an explicit ARB/DA decision.
 
 ---
 
@@ -455,347 +468,13 @@ To maintain evidence-first governance discipline, the discovery findings in this
 | **III. Strategic Modeling** | Define Bounded Contexts, Context Maps, Ubiquitous Language. | Strategic Domain Model | Pending |
 | **IV. Reference Model** | Define formal schemas, Value Objects, Domain Events. | PKS Reference Architecture | Pending |
 | **V. Technical Architecture** | Design storage engines, ingestion pipelines, APIs. | Architecture Design Document (ADD) | Pending |
-##########################################################
-review of above : 
-I think this is now approaching the quality of a document that could legitimately be reviewed by an Architecture Review Board.
-
-My assessment is:
-
-* **Strategic Discovery discipline:** 9.5/10
-* **DDD discipline:** 9.5/10
-* **Evidence-first discipline:** 10/10
-* **Readiness for Strategic Modeling:** Yes, with one remaining recommendation.
-
-The report has matured considerably. It no longer reads like someone trying to invent a system; it reads like someone trying to **discover a domain**.
 
 ---
 
-# What I think is now excellent
+## Provenance note on the excluded commentary
 
-## 1. Domain boundary
-
-This is probably the biggest improvement.
-
-You now answer a question that every DDD project should answer first:
-
-> What is inside this domain?
-> What is outside?
-
-For example:
-
-* PKS
-* Engineering Knowledge
-* External Systems
-
-Those are exactly the kinds of boundaries Strategic Discovery should establish.
-
-I particularly like that you explicitly distinguish:
-
-```
-Engineering Knowledge
-
-↓
-
-inherits
-
-↓
-
-Product Knowledge System
-
-↓
-
-consumes
-
-↓
-
-External Systems
-```
-
-That gives the future Context Map somewhere to begin.
+The raw working file this document derives from contains, after the roadmap table above, informal review commentary that includes a proposal to discover **Product Knowledge Capabilities** (a candidate capability layer: `Engineering Activities → Knowledge Capabilities → Knowledge Concepts → Knowledge Artifacts`) before Strategic Modeling. That proposal is plausibly related to, or the origin of, the **Capabilities Pass** bridge deliverable already recorded in the converged review synthesis (`.claude/sessions/2026-07-27.md`) — but it was never captured as its own dated, attributed record, so it is noted here as provenance only, not asserted as a finding of this document. If the ARB wants that capability-discovery angle considered, it should be raised as its own agenda item rather than inherited silently from unmarked commentary.
 
 ---
 
-## 2. Knowledge origins
-
-This was missing before.
-
-Now you've discovered that knowledge originates from multiple sources:
-
-* Human intent
-* Runtime observation
-* Implementation
-* External governance
-
-That is a very important discovery.
-
-Notice this immediately suggests future bounded contexts.
-
----
-
-## 3. Candidate primitive concepts
-
-I think the wording is now correct.
-
-You no longer say
-
-> PKS consists of...
-
-You say
-
-> Candidate primitive concepts...
-
-That's exactly what Discovery should say.
-
----
-
-## 4. Candidate composites
-
-Likewise:
-
-ADR is no longer presented as a fact.
-
-It is presented as
-
-> Candidate packaging.
-
-That's much better.
-
----
-
-## 5. Evolution vs Lifecycle
-
-Still one of my favorite discoveries.
-
-I think this distinction will survive all later modeling.
-
----
-
-## 6. Open hypotheses
-
-This is a very healthy addition.
-
-Instead of pretending the answers exist, you now explicitly record things like:
-
-> Hypothesis A
-
-> Hypothesis B
-
-That prevents accidental architecture-by-assumption.
-
----
-
-# The only thing I would still change
-
-This is the only architectural recommendation I'd make before authorizing Strategic Modeling.
-
-## I think the PKS is still missing one discovery:
-
-**Knowledge capabilities.**
-
-Up to now you've discovered:
-
-* boundaries
-* origins
-* concepts
-* lifecycle
-* evolution
-* ownership
-* authority
-
-But one thing is missing.
-
-Not:
-
-"What knowledge exists?"
-
-Instead:
-
-> **What can the Product Knowledge System do?**
-
-Notice that's different.
-
-Examples (only candidates):
-
-* Capture knowledge
-* Validate knowledge
-* Link knowledge
-* Assemble knowledge
-* Publish knowledge
-* Search knowledge
-* Trace knowledge
-* Verify knowledge
-* Evolve knowledge
-* Retire knowledge
-* Certify knowledge
-
-Those are **capabilities**, not entities.
-
-And DDD is fundamentally about discovering business capabilities.
-
----
-
-# Why I think this matters
-
-Imagine later you're discovering bounded contexts.
-
-Without capabilities you'll naturally organize around nouns:
-
-```
-Decision
-
-Constraint
-
-Contract
-
-Observation
-```
-
-With capabilities you may instead discover domains like:
-
-```
-Knowledge Capture
-
-Knowledge Governance
-
-Knowledge Publication
-
-Knowledge Assembly
-
-Knowledge Traceability
-
-Knowledge Verification
-```
-
-Those are much more likely to become bounded contexts than "Decision."
-
----
-
-# I would add one final Discovery section
-
-Something like:
-
----
-
-## Section X — Candidate Product Knowledge Capabilities
-
-Discovery question:
-
-> What work does the Product Knowledge System perform?
-
-Repository evidence suggests candidate capabilities including:
-
-* Capture
-* Curate
-* Govern
-* Validate
-* Publish
-* Assemble
-* Search
-* Verify
-* Trace
-* Retire
-
-Each is a candidate capability to be validated during Strategic Modeling.
-
----
-
-Notice how this changes the next phase.
-
-Instead of immediately modeling entities,
-
-you begin by modeling **business capabilities**.
-
-That is much closer to Strategic DDD.
-
----
-
-# Another observation
-
-I think something very interesting is emerging.
-
-Initially we thought:
-
-```
-Knowledge
-
-↓
-
-Documents
-```
-
-Then:
-
-```
-Knowledge
-
-↓
-
-Knowledge Objects
-
-↓
-
-Documents
-```
-
-Now I think we're discovering something even deeper.
-
-The PKS may actually have **three distinct layers**:
-
-```
-Engineering Activities
-        │
-        ▼
-Knowledge Capabilities
-        │
-        ▼
-Knowledge Concepts
-        │
-        ▼
-Knowledge Artifacts
-```
-
-For example:
-
-```
-Architecture Review
-
-↓
-
-Decision Making
-
-↓
-
-Decision
-
-↓
-
-ADR
-```
-
-or
-
-```
-Verification
-
-↓
-
-Qualification
-
-↓
-
-Verdict
-
-↓
-
-Verification Report
-```
-
-That layering separates **what the system does** (capabilities), **what it knows** (concepts), and **how it communicates** (artifacts). It provides a strong foundation for later strategic modeling without committing to implementation details.
-
-## Final verdict
-
-If I were chairing the ARB, I would **approve this Strategic Discovery report** as the baseline for moving into Strategic Modeling, with one recommendation:
-
-> **Before identifying bounded contexts, perform one final discovery pass focused on Product Knowledge Capabilities.**
-
-That recommendation is not because the current report is deficient. Rather, capabilities are often the bridge between discovery and strategic DDD. Discovering them now will make the next phase—bounded contexts, context maps, and ubiquitous language—more grounded in the work the Product Knowledge System performs, not just the information it contains.
+*Traceability: candidate conceptual model authored by a second model during PKS Phase 1, 2026-07-27 · raw working file `architecture/ai_architecture/documentation/what_gemini_suggested.md` (preserved, marked as supporting input — not submitted) · companion: `Strategic_DDD_Discovery_Product_Knowledge_System_Domain.md` · review-round synthesis: `.claude/sessions/2026-07-27.md` ("PKS Discovery — review round") · packaging correction (appended review commentary excluded from the governed artifact): `.claude/sessions/2026-07-28.md` · part of the **PKS Phase I Review Package v1.0**. **STOP — submitted for ARB review; adopts nothing.***
