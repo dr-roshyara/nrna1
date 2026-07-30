@@ -1,6 +1,6 @@
 # Work Plan — WP-2: Adjudication Process Manager (APM) core
 
-**Created:** 2026-07-30 · **Status:** AUTHORIZED — pre-implementation assessment COMPLETE; next step is RED
+**Created:** 2026-07-30 · **Status:** **CLOSED — ACCEPTED by ARB (2026-07-30).** WP-2 is historical record. **WP-3 AUTHORIZED** — see `.claude/plans/WP-3-challengerouted-published-language.md`.
 **Mode:** Auto · **Discipline:** Business Model → Strategic DDD → Tactical → RED → GREEN (PA commission 2026-07-30)
 
 > **Implementation objective: realize the approved business model through disciplined DDD — implementation stays subordinate to architecture, architecture stays subordinate to the business domain.**
@@ -358,3 +358,14 @@ Inserted permanently between Architectural Traceability and RED. **GREEN AUTHORI
 ## 16. Next action (exactly one)
 
 **STOP — ARB slice acceptance of WP-2.** WP-3 opens only on that acceptance. Recorded for the review: the §11.3 mapper-consolidation *proposal* (not executed) · the F-T1 derived-implication record with its revision condition.
+
+
+---
+
+## 17. ARB SLICE ACCEPTANCE (2026-07-30)
+
+**WP-2 — ACCEPTED.** Recorded outcomes: APM core complete (states · guards · conclude-time fixation · active-scoped uniqueness · store) · 25 tests GREEN · `composer merge-gate` PASS · triple qualification PASS. Implementation protocol declared **operationally baselined** and frozen for routine work in the same ruling.
+
+Carried to the next slice, not lost: the §11.3 **mapper-consolidation proposal** (recorded, never executed) · **F-T1**'s derived-implication record with its revision condition (if the DA later rules one-process-per-challenge-forever, the partial index and its test must be revised).
+
+**WP-2 is historical record. Next engineering milestone: WP-3.**

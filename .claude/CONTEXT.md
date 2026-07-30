@@ -10,21 +10,22 @@ durable constraints, and preferences live in `.claude/MEMORY.md`; history lives 
 recorded reversal condition.
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: WP-2 (EPIC-004 APM core) — EXECUTING: pre-implementation assessment COMPLETE, RED is next; WP-1 ACCEPTED+CLOSED (ARB 2026-07-27)
-Plan: .claude/plans/WP-2-apm-core.md
+Ticket: WP-3 (ChallengeRouted published language + mint relocation) — AUTHORIZED, assessment COMPLETE, RED next; WP-1 + WP-2 ACCEPTED+CLOSED (ARB 2026-07-27 / 2026-07-30)
+Plan: .claude/plans/WP-3-challengerouted-published-language.md
 Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
-Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ accepted · WP-2 authorized (1/8 WPs closed)
+Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ · WP-2 ✔ accepted · WP-3 authorized (2/8 WPs closed)
 Priority: High
 
-- **Detail:** WP-2 keystones (roadmap §WP-2): exactly-once conclusion under concurrent redelivery ·
-  no admission after conclusion · unique-active-per-challenge under race. Execution-contract
-  pattern: `.claude/plans/WP-1-evidenceset-v3.md` (Auto mode · RED first · STOP conditions).
-  WP-2's plan carries its own authority register + business-model fidelity review; RED is the next step.
+- **Detail:** WP-3 keystones (roadmap §WP-3): mint-at-route · `CorrelationIdMintingTest` green with the
+  relocated allowlist · catalog completeness green. Executed under
+  `.claude/IMPLEMENTATION_PROTOCOL.md` (**OPERATIONAL, frozen** — amendments only on operational
+  evidence from a completed WP). One flagged assumption to settle in RED: where the mint seats
+  without pre-building WP-5's raise path — if no seam exists, STOP and report.
 - **Engineering platform:** operational for the identified defects (EG-001..003 ✔); EG-002b ·
   EG-004 · EG-005 tracked in `docs/plans/20260726-2056-engineering-platform-repair-plan.md` — non-blocking.
 
 ## Next action (exactly one)
-**WP-2 RED** — write the §6 keystone tests in `.claude/plans/WP-2-apm-core.md`, confirm they fail for the expected reasons, report at the RED boundary before any production code.
+**WP-3 RED** — write the Phase-10 keystone tests in `.claude/plans/WP-3-challengerouted-published-language.md`, confirm they fail for the expected reasons, report at the RED boundary before any production code.
 
 ## Blockers
 None.
