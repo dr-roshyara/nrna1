@@ -116,3 +116,36 @@ No aggregate changes. No new VO. `ChallengeRouted` stays a **minimal domain even
 ## Next action (exactly one)
 
 **Write the Phase 10 RED tests and confirm they fail for the expected reasons. Report at the RED boundary before any production code.**
+
+---
+
+## Phase 10 opened — the flagged assumption resolved by evidence, and it triggered the recorded STOP condition
+
+**RED was authorized. The plan's own first act was to settle Phase 8's flagged assumption — *where does the mint seat without pre-building WP-5's raise path?* — with the recorded instruction: "if no non-WP-5 seam exists, STOP and report rather than invent one." It does not exist.**
+
+### Evidence
+
+| Check | Result |
+|---|---|
+| `Challenge::route(string $routedTo, DateTimeImmutable $at)` exists on the aggregate and records `ChallengeRouted` | ✔ (`Challenge.php:94`, `:98`) |
+| **Any Application-layer caller of `->route(`** | **NONE.** The only matches repo-wide are Laravel's unrelated `$request->route('tenant')` in Membership |
+| Production mint sites (`EventProvenance::start()`) | Exactly one — `CoordinatesAdjudication`, the sole `CHAIN_ORIGIN_ALLOWLIST` entry |
+
+**No application service, handler, command or coordinator routes a challenge.** The routing *entry point* does not exist — and building it **is** WP-5's raise path.
+
+### Consequence — WP-3 does not divide the way the roadmap's order assumes
+
+| Half | Status |
+|---|---|
+| **WP-3a — published-language machinery**: `ChallengeRoutedHydrator` · Canonical Event Catalog entry · `ChallengeOutboxAdapter` mapping · payload schema v1 · registry-completeness | **Executable now.** The event class exists; publication and hydration are provable from a constructed event without any caller |
+| **WP-3b — mint relocation**: move `start()` from `CoordinatesAdjudication` to the routing act + update `CHAIN_ORIGIN_ALLOWLIST` | **BLOCKED on WP-5.** Relocating the mint to a seam that does not exist would leave **zero** production mint sites — the correlation chain would break, and `CorrelationIdMintingTest` would guard an empty allowlist |
+
+**Risk R-2 was recorded as a caution; the evidence upgrades it to a hard blocker.** This is the sharper form of the roadmap's own dependency finding: it flagged that *ADR-T21 publishes an event nothing emits until WP-5*; what is now established is that **the mint-relocation half of WP-3 also cannot execute before WP-5** — the roadmap's `WP-3 → WP-4 → WP-5` order assumes WP-3 is wholly executable, and it is not.
+
+### Recommendation (ARB decision — re-slicing the roadmap is not mine)
+
+1. **Authorize WP-3a now** as the slice: publication machinery only, keystone tests = hydrator round-trip · catalog completeness · adapter writes schema v1 · unsupported version rejected · anonymity. `CoordinatesAdjudication` keeps minting untouched, so the chain stays intact and no existing loop test breaks.
+2. **Move WP-3b to WP-5** (or make it WP-5's first act), where the raise path supplies the seam ADR-T21 names. ADR-T21 is unchanged and unviolated — only the *sequencing* of its two consequences changes.
+3. **Alternative, if the ARB prefers WP-3 whole:** WP-5 must precede WP-3 — a roadmap re-order, which is an explicit ARB act, not an implementation convenience.
+
+**No production code, no tests written. No seam invented.**

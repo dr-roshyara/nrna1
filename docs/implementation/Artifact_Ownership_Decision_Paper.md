@@ -1,6 +1,6 @@
 # Artifact Ownership — Platform Architecture Decision Paper
 
-**Status:** DRAFT — **awaiting Decision Authority ratification** · **Authority:** Generated (Chief Software Architect commission, 2026-07-30)
+**Status:** **RATIFIED (DA, 2026-07-30 — recorded as ruling R-42)** · vocabulary refinement applied · **Authority:** Generated (Chief Software Architect commission, 2026-07-30)
 **Resolves:** the open question deferred by `2026-07-30-developer-guide-ownership-investigation.md` — *does the Platform Registry become the authoritative ownership registry for project-side engineering artifacts?*
 **Precedent for form/placement:** `Placement_Rule_Decision_Paper.md` (same shape: a paper awaiting DA decisions). **No code. No governance document modified. No protocol amendment.**
 
@@ -78,7 +78,19 @@ The reminder answers exactly one question: *"which guide area owes a guide for w
 
 ### Decision
 
-**Option D — ownership is declared by the owner, and the reminder derives routing from those declarations.** Concretely: each `developer_guide/<area>/00_index.md` carries a machine-readable declaration of the code paths that area covers; `dev-guide-reminder.sh` (AST-006) resolves changed paths through those declarations instead of its three regexes; paths claimed by no area are reported as **unclaimed** rather than ignored.
+**Option D — “Documentation Coverage Declaration”.**
+
+*Name and vocabulary fixed at ratification (DA): the declaration expresses **documentation coverage**, never architectural ownership. The key is `documentation_coverage:` — **not** `owns:`, which would reintroduce exactly the conflation Phase 2 removed.*
+
+```yaml
+# developer_guide/color_theme/00_index.md
+documentation_coverage:
+  - scripts/design-check.sh
+  - scripts/component-audit.sh
+  - scripts/design-rules.json
+```
+
+The reminder asks *"which coverage declaration matches this path?"* — never *"who owns this artifact?"* Concretely: each `developer_guide/<area>/00_index.md` carries a machine-readable declaration of the code paths that area covers; `dev-guide-reminder.sh` (AST-006) resolves changed paths through those declarations instead of its three regexes; paths claimed by no area are reported as **unclaimed** rather than ignored.
 
 ### Architectural rationale
 
