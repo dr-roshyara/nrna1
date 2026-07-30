@@ -137,8 +137,17 @@ No aggregate changes. No new VO. `ChallengeRouted` stays a **minimal domain even
 
 | Half | Status |
 |---|---|
-| **WP-3a — published-language machinery**: `ChallengeRoutedHydrator` · Canonical Event Catalog entry · `ChallengeOutboxAdapter` mapping · payload schema v1 · registry-completeness | **Executable now.** The event class exists; publication and hydration are provable from a constructed event without any caller |
-| **WP-3b — mint relocation**: move `start()` from `CoordinatesAdjudication` to the routing act + update `CHAIN_ORIGIN_ALLOWLIST` | **BLOCKED on WP-5.** Relocating the mint to a seam that does not exist would leave **zero** production mint sites — the correlation chain would break, and `CorrelationIdMintingTest` would guard an empty allowlist |
+| **WP-3A — Published Language Infrastructure**: `ChallengeRoutedHydrator` · Canonical Event Catalog entry · `ChallengeOutboxAdapter` mapping · payload schema v1 · hydrator registration | **APPROVED — executable now** (ARB 2026-07-30). The event class exists; publication and hydration are provable from a constructed event without any caller. *Establishes infrastructure capability* |
+| **WP-3B — Correlation Origin Relocation**: move `start()` from `CoordinatesAdjudication` to the routing act + update `CHAIN_ORIGIN_ALLOWLIST` | **DEFERRED** (ARB 2026-07-30). *Changes business behaviour* |
+
+**The deferral's dependency, stated conceptually rather than chronologically (DA refinement 2026-07-30):**
+
+> **Correlation Origin Relocation depends on the existence of a routing application service.**
+> *Under the current roadmap, that service belongs to WP-5.*
+
+Phrased this way the dependency stays correct if the roadmap is re-ordered — the blocker is the **absent seam**, not the number of a work package. Relocating the mint before that service exists would leave **zero** production mint sites: the correlation chain breaks and `CorrelationIdMintingTest` guards an empty allowlist.
+
+*The two slices are separated by their **reason to change**: WP-3A establishes infrastructure capability; WP-3B changes business behaviour.*
 
 **Risk R-2 was recorded as a caution; the evidence upgrades it to a hard blocker.** This is the sharper form of the roadmap's own dependency finding: it flagged that *ADR-T21 publishes an event nothing emits until WP-5*; what is now established is that **the mint-relocation half of WP-3 also cannot execute before WP-5** — the roadmap's `WP-3 → WP-4 → WP-5` order assumes WP-3 is wholly executable, and it is not.
 
@@ -149,3 +158,24 @@ No aggregate changes. No new VO. `ChallengeRouted` stays a **minimal domain even
 3. **Alternative, if the ARB prefers WP-3 whole:** WP-5 must precede WP-3 — a roadmap re-order, which is an explicit ARB act, not an implementation convenience.
 
 **No production code, no tests written. No seam invented.**
+
+---
+
+## WP-3A RED WRITTEN + CONFIRMED (2026-07-30) — STOP at the RED boundary
+
+**11 tests · 10 failing for the expected reasons · 1 passing by construction.**
+
+| File | Tests | Result |
+|---|---|---|
+| `tests/Unit/Contexts/Contestation/Infrastructure/Outbox/ChallengeRoutedHydratorTest.php` | 7 | 4 errors + 2 failures = **`ChallengeRoutedHydrator` not found** (intentionally unimplemented). **1 passes by construction:** the payload-shape anonymity check asserts the wire contract carries no voter/vote key — true of the contract as designed, so it is a *pinned* contract rather than a pending one |
+| `tests/Feature/Contexts/Contestation/ChallengeRoutedPublicationTest.php` | 4 | 4 errors = **`LogicException: No outbox mapping for event …ChallengeRouted`** — the adapter's `match(true)` default, i.e. exactly the missing publication |
+
+**Coverage:** hydrator round-trip fidelity · **domain event stays minimal** after hydration (the PB-005 F-2 ruling pinned as a test: exactly the three recorded facts, nothing enriched) · unsupported `schema_version` rejected · absent marker = v1 · missing field fails loudly · payload-shape anonymity · **published to the outbox at schema v1** with `aggregate_type=Challenge` · **supplied provenance stamped unchanged** · **publication is registration** (`registry->has()` + `hydratorFor()` resolve the booted hydrator) · real-wire anonymity.
+
+**Two boundaries the tests enforce structurally, not by comment:**
+1. **No mint site is added.** Every test *supplies* provenance explicitly; nothing calls `EventProvenance::start()` in Contestation. WP-3B's relocation stays absent, so `CorrelationIdMintingTest` remains green with its single existing allowlist entry and the correlation chain is untouched.
+2. **No consumer registration.** Nothing registers an inbox handler for `ChallengeRouted` — that is WP-4.
+
+**One API correction during RED (recorded, not silent):** the registry's lookup methods are `has()` / `hydratorFor()`, not `for()`. Corrected in the test before confirming RED — a test-authoring fix, not a design change.
+
+**Progress:** ✔ Phases 1–9 · ✔ flagged assumption resolved (→ the WP-3A/WP-3B split) · ✔ **WP-3A RED confirmed** · ⏳ GREEN (awaiting report acceptance) · ⏳ gates · ⏳ dev guide · ⏳ ARB slice acceptance. **WP-3B deferred** — depends on the existence of a routing application service.
