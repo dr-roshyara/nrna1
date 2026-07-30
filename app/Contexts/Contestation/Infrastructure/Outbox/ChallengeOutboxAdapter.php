@@ -7,6 +7,7 @@ namespace App\Contexts\Contestation\Infrastructure\Outbox;
 use App\Contexts\Contestation\Application\ChallengeResolvedIntegration;
 use App\Contexts\Contestation\Application\Port\ChallengeEventOutbox;
 use App\Contexts\Contestation\Domain\Events\ChallengeAdjudicated;
+use App\Contexts\Contestation\Domain\Events\ChallengeRouted;
 use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use App\Contexts\Shared\Infrastructure\Outbox\OutboxEvent;
 use App\Services\TenantContext;
@@ -29,11 +30,44 @@ final class ChallengeOutboxAdapter implements ChallengeEventOutbox
     {
         foreach ($events as $event) {
             match (true) {
+                $event instanceof ChallengeRouted => $this->writeRouted($event, $provenance),
                 $event instanceof ChallengeAdjudicated => $this->writeAdjudicated($event, $provenance),
                 $event instanceof ChallengeResolvedIntegration => $this->writeResolved($event, $provenance),
                 default => throw new LogicException('No outbox mapping for event '.$event::class),
             };
         }
+    }
+
+    /**
+     * ADR-T21: `ChallengeRouted` is PUBLISHED LANGUAGE — the correction loop's
+     * head trigger. Publication is one half of that status; the other is
+     * registration (`ChallengeRoutedHydrator`).
+     *
+     * Provenance is SUPPLIED, never minted here. Relocating the correlation
+     * origin to the routing act is a separate slice (Correlation Origin
+     * Relocation) which depends on the existence of a routing application
+     * service — absent today.
+     */
+    private function writeRouted(ChallengeRouted $event, EventProvenance $provenance): void
+    {
+        (new OutboxEvent([
+            'event_id' => (string) Str::uuid(),
+            'organisation_id' => TenantContext::require(),
+            'aggregate_type' => 'Challenge',
+            'aggregate_id' => $event->challengeId->toString(),
+            'event_type' => 'ChallengeRouted',
+            'correlation_id' => $provenance->correlationId,
+            'causation_id' => $provenance->causationId,
+            'payload' => [
+                'schema_version' => 1,
+                'challengeId' => $event->challengeId->toString(),
+                'routedTo' => $event->routedTo,
+                'occurredAt' => $event->occurredAt->format(DATE_ATOM),
+            ],
+            'status' => 'pending',
+            'attempts' => 0,
+            'available_at' => now(),
+        ]))->save();
     }
 
     private function writeAdjudicated(ChallengeAdjudicated $event, EventProvenance $provenance): void

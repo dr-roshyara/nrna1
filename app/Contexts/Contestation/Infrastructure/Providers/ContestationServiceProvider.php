@@ -11,6 +11,7 @@ use App\Contexts\Contestation\Domain\Repository\ChallengeRepository;
 use App\Contexts\Contestation\Infrastructure\Outbox\ChallengeAdjudicatedHydrator;
 use App\Contexts\Contestation\Infrastructure\Outbox\ChallengeOutboxAdapter;
 use App\Contexts\Contestation\Infrastructure\Outbox\ChallengeResolvedHydrator;
+use App\Contexts\Contestation\Infrastructure\Outbox\ChallengeRoutedHydrator;
 use App\Contexts\Contestation\Infrastructure\Repositories\EloquentChallengeRepository;
 use App\Contexts\Shared\Infrastructure\Inbox\InboxHandlerRegistry;
 use App\Contexts\Shared\Infrastructure\Outbox\EventHydratorRegistry;
@@ -37,6 +38,8 @@ final class ContestationServiceProvider extends ServiceProvider
         $hydrators = $this->app->make(EventHydratorRegistry::class);
         $hydrators->register(new ChallengeAdjudicatedHydrator());
         $hydrators->register(new ChallengeResolvedHydrator());
+        // ADR-T21: ChallengeRouted is published language — registration completes it.
+        $hydrators->register(new ChallengeRoutedHydrator());
 
         // Register the two inbox consumers (resolved by (Contestation, <eventType>)).
         /** @var InboxHandlerRegistry $inbox */

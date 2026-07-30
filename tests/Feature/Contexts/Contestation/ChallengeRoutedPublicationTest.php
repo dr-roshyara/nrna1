@@ -37,6 +37,10 @@ final class ChallengeRoutedPublicationTest extends TestCase
 {
     use RefreshDatabase;
 
+    /** `outbox_events.correlation_id`/`causation_id` are UUID columns — test data must be valid UUIDs. */
+    private const CONVERSATION = 'a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d';
+    private const OTHER_CONVERSATION = 'b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e';
+
     private string $tenantId;
 
     protected function setUp(): void
@@ -78,7 +82,7 @@ final class ChallengeRoutedPublicationTest extends TestCase
     public function test_routing_is_published_to_the_outbox_as_challenge_routed(): void
     {
         $this->outbox()->enqueue(
-            EventProvenance::start('conversation-1'),
+            EventProvenance::start(self::CONVERSATION),
             $this->routedEvent(),
         );
 
@@ -101,12 +105,12 @@ final class ChallengeRoutedPublicationTest extends TestCase
 
     // ── Provenance is propagated unchanged, never invented ──────────────────
 
-    public function test_supplied_provenance_is_stamped_unchanged(): void
+    public function test_supplied_chain_start_provenance_is_stamped_unchanged(): void
     {
         // ADR-MP-06: provenance is supplied explicitly at publish time. WP-3A adds
         // no mint site — the correlation origin stays where it is until WP-3B.
         $this->outbox()->enqueue(
-            EventProvenance::start('conversation-42'),
+            EventProvenance::start(self::OTHER_CONVERSATION),
             $this->routedEvent(),
         );
 
@@ -115,8 +119,12 @@ final class ChallengeRoutedPublicationTest extends TestCase
             ->where('event_type', 'ChallengeRouted')
             ->first();
 
-        $this->assertSame('conversation-42', $row->correlation_id);
-        $this->assertSame('conversation-42', $row->causation_id);
+        $this->assertSame(self::OTHER_CONVERSATION, $row->correlation_id);
+        // ADR-MP-06: causation is the IMMEDIATE PARENT — a chain-starting
+        // provenance has no parent, so causation is null. (Corrected after the
+        // first draft asserted causation == correlation, which would have pinned
+        // the wrong invariant; `EventProvenance::start()` returns (id, null).)
+        $this->assertNull($row->causation_id);
     }
 
     // ── KEYSTONE: publication is registration ───────────────────────────────
@@ -126,7 +134,7 @@ final class ChallengeRoutedPublicationTest extends TestCase
         /** @var EventHydratorRegistry $registry */
         $registry = $this->app->make(EventHydratorRegistry::class);
 
-        $this->outbox()->enqueue(EventProvenance::start('conversation-1'), $this->routedEvent());
+        $this->outbox()->enqueue(EventProvenance::start(self::CONVERSATION), $this->routedEvent());
 
         $row = DB::table('outbox_events')
             ->where('organisation_id', $this->tenantId)
@@ -148,7 +156,7 @@ final class ChallengeRoutedPublicationTest extends TestCase
 
     public function test_the_published_row_contains_no_voter_or_vote_identifier(): void
     {
-        $this->outbox()->enqueue(EventProvenance::start('conversation-1'), $this->routedEvent());
+        $this->outbox()->enqueue(EventProvenance::start(self::CONVERSATION), $this->routedEvent());
 
         $row = DB::table('outbox_events')
             ->where('organisation_id', $this->tenantId)

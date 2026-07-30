@@ -170,7 +170,7 @@ Phrased this way the dependency stays correct if the roadmap is re-ordered — t
 | `tests/Unit/Contexts/Contestation/Infrastructure/Outbox/ChallengeRoutedHydratorTest.php` | 7 | 4 errors + 2 failures = **`ChallengeRoutedHydrator` not found** (intentionally unimplemented). **1 passes by construction:** the payload-shape anonymity check asserts the wire contract carries no voter/vote key — true of the contract as designed, so it is a *pinned* contract rather than a pending one |
 | `tests/Feature/Contexts/Contestation/ChallengeRoutedPublicationTest.php` | 4 | 4 errors = **`LogicException: No outbox mapping for event …ChallengeRouted`** — the adapter's `match(true)` default, i.e. exactly the missing publication |
 
-**Coverage:** hydrator round-trip fidelity · **domain event stays minimal** after hydration (the PB-005 F-2 ruling pinned as a test: exactly the three recorded facts, nothing enriched) · unsupported `schema_version` rejected · absent marker = v1 · missing field fails loudly · payload-shape anonymity · **published to the outbox at schema v1** with `aggregate_type=Challenge` · **supplied provenance stamped unchanged** · **publication is registration** (`registry->has()` + `hydratorFor()` resolve the booted hydrator) · real-wire anonymity.
+**Coverage:** hydrator round-trip fidelity · **domain event stays minimal** after hydration (the PB-005 F-2 ruling pinned as a test: exactly the three recorded facts, nothing enriched) · unsupported `schema_version` rejected · absent marker = v1 · missing field fails loudly · payload-shape anonymity · **published to the outbox at schema v1** with `aggregate_type=Challenge` · **supplied provenance stamped unchanged** · **registration resolves the booted hydrator** (`registry->has()` + `hydratorFor()`) · real-wire anonymity.
 
 **Two boundaries the tests enforce structurally, not by comment:**
 1. **No mint site is added.** Every test *supplies* provenance explicitly; nothing calls `EventProvenance::start()` in Contestation. WP-3B's relocation stays absent, so `CorrelationIdMintingTest` remains green with its single existing allowlist entry and the correlation chain is untouched.
@@ -179,3 +179,63 @@ Phrased this way the dependency stays correct if the roadmap is re-ordered — t
 **One API correction during RED (recorded, not silent):** the registry's lookup methods are `has()` / `hydratorFor()`, not `for()`. Corrected in the test before confirming RED — a test-authoring fix, not a design change.
 
 **Progress:** ✔ Phases 1–9 · ✔ flagged assumption resolved (→ the WP-3A/WP-3B split) · ✔ **WP-3A RED confirmed** · ⏳ GREEN (awaiting report acceptance) · ⏳ gates · ⏳ dev guide · ⏳ ARB slice acceptance. **WP-3B deferred** — depends on the existence of a routing application service.
+
+
+---
+
+## Published language — the precise relationship (ARB refinement, 2026-07-30)
+
+The earlier shorthand *"publication is registration"* was **too strong**; they are distinct responsibilities:
+
+```
+Published Language
+        ├── Publication    — the event travels over the wire (outbox row, schema v1)
+        └── Registration   — the event can be reconstructed from that wire representation (hydrator)
+```
+
+> **Published language requires BOTH publication and registration. An event is not part of the published language unless it can both travel over the wire and be reconstructed from that wire representation.**
+
+Either alone is incomplete: publication without registration produces an unreconstructable row; registration without publication produces a reader for something nothing sends.
+
+## WP-3A GREEN — acceptance criteria (objective boundary)
+
+| Capability | Acceptance evidence |
+|---|---|
+| **Hydration** | Round-trip test passes (payload → domain event, full fidelity) |
+| **Publication** | Outbox row written: `event_type=ChallengeRouted`, `aggregate_type=Challenge`, `status=pending` |
+| **Registration** | `EventHydratorRegistry` resolves the booted hydrator (`has()` + `hydratorFor()`) |
+| **Schema** | Version-handling tests pass: v1 accepted · absent marker = v1 · v2 rejected · missing field loud |
+| **Anonymity** | Privacy tests pass at both the payload-shape and real-wire levels |
+| **Minimality** | The reconstructed domain event carries exactly its three recorded facts (PB-005 F-2 ruling) |
+| **Boundary integrity** | No mint site added (`CorrelationIdMintingTest` green, allowlist unchanged) · no consumer registered (WP-4 untouched) |
+| **Gates** | `composer merge-gate` PASS · triple qualification · dev guide shipped |
+
+GREEN is complete only when every row above has its evidence.
+
+---
+
+## WP-3A GREEN DONE + GATES PASS (2026-07-30) — STOP for ARB slice acceptance
+
+**11/11 tests GREEN. `composer merge-gate` PASS:** Architecture fitness 146✔/626 · **Deptrac 0 violations** · greenfield PHPStan **No errors** · widened regression 222✔/584/0 failed (66 risky = the recorded F-7C-6 artifact).
+
+**Acceptance criteria — every row has its evidence:**
+
+| Capability | Evidence |
+|---|---|
+| Hydration | round-trip test passes (payload → minimal domain event, full fidelity) |
+| Publication | outbox row written: `event_type=ChallengeRouted` · `aggregate_type=Challenge` · `status=pending` |
+| Registration | `EventHydratorRegistry::has()` + `hydratorFor()` resolve the booted `ChallengeRoutedHydrator` |
+| Schema | v1 accepted · absent marker = v1 · v2 rejected · missing field loud |
+| Anonymity | payload-shape and real-wire privacy tests pass |
+| Minimality | reconstructed event carries exactly its three recorded facts (PB-005 F-2) |
+| Boundary integrity | **no mint site added** (`CorrelationIdMintingTest` green, allowlist unchanged at one entry) · **no consumer registered** (WP-4 untouched) |
+| Gates | merge-gate PASS · dev guide `developer_guide/contestation/05_*` + index row |
+
+**Implemented:** `ChallengeRoutedHydrator` (registration half) · `ChallengeOutboxAdapter::writeRouted()` (publication half, schema v1) · hydrator registration in `ContestationServiceProvider`. **`ChallengeRouted` itself unchanged** — WP-3A publishes an event that already existed.
+
+**Three findings recorded, not absorbed:**
+1. **Phase-15 diagnosis ×2, both returning "incorrect test."** (a) `correlation_id`/`causation_id` are **UUID columns**; my test data (`'conversation-1'`) was invalid — test fixed. (b) I asserted `causation_id === correlation_id` for a chain start; `EventProvenance::start()` returns `(id, **null**)`, and **null is correct** — ADR-MP-06's invariant is *causation = immediate parent*, and a chain start has no parent. The assertion now pins the real invariant, and the corrected test is **stronger** than the draft.
+2. **The catalog entry did not need creating.** Phase 6 listed "Catalog entry for `ChallengeRouted`" as a component; the entry **already exists**. What is stale is its `visibility` marking (`internal`).
+3. **Frozen-artifact finding, referred out:** `Canonical_Event_Catalog_v1.0.md` is **🧊 FROZEN** (*"Changes follow ADR-T5 — version, never mutate"*) and marks **three** now-published events as `internal` — `ChallengeRouted`, `ChallengeAdjudicated`, `ChallengeResolved`. Correcting the markings requires a **v1.1 catalog**, an ARB act. This slice implements against the ADR and records the staleness, following the precedent PB-005 set for two of these same events. **Not edited here.**
+
+**Progress:** ✔ Phases 1–9 · ✔ split finding · ✔ RED · ✔ **GREEN** · ✔ **merge-gate** · ✔ dev guide · ⏳ triple qualification + ARB slice acceptance. **WP-3B (Correlation Origin Relocation) deferred** — depends on the existence of a routing application service.
