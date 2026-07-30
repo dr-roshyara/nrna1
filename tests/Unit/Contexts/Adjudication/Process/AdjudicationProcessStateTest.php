@@ -191,7 +191,12 @@ final class AdjudicationProcessStateTest extends TestCase
         // PM-5: the conclusion, the evidence-set-as-considered and the authority
         // reference are one fact — a partially concluded process is unrepresentable.
         // (The PERMANENT fixation is the aggregate's, at issuance — ADR-T22/INV-4.)
+        // The lawful path to a second admission runs through the authority's
+        // decision to NOT-YET-decide (§6) — evidence cannot be slipped in while
+        // the basis is already before the authority. The guard proved this when an
+        // earlier draft of this test tried the shortcut.
         $process = $this->awaitingDecision()
+            ->returnForMoreEvidence($this->at())
             ->admitEvidence('envelope-sha256-def', $this->at())
             ->submitToAuthority($this->at())
             ->concludeRulingRequested(

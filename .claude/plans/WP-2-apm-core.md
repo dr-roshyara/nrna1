@@ -294,3 +294,46 @@ If the DA disagrees, Option B (decision paper -> ARB) remains available and
 ```
 
 **Principle reaffirmed (and now applied to my own reasoning twice in one slice):** *a good question does not become a decision by being well argued* — its general form: **evidence + reasoning ≠ decision; a decision is an explicit act by an authority.** What changed here was not the business rule but the *claim* the test makes about it.
+
+### 13.6 DA RULING on F-T1 (2026-07-30) — classification settled, wording corrected
+
+**Ruling: F-T1 is a DERIVED IMPLICATION** of approved architectural authority — **not** explicit authority (my §13.3 row overstated it: no sentence says *"after expiry a new process shall open"*), and not an assumption. The DA's traceable chain:
+
+> PM-1: *"open exactly one **active** process per challenge"* → "active" qualifies the **process**, not the challenge → a process is either active or terminal → uniqueness binds only active processes → Expired **is** terminal → a new process **may** open after expiry.
+
+**Wording corrected per the DA:** the earlier framing *"the evidence is decisive"* is replaced by **"classification revised after reviewing the governing authority"** — the classification changed because *stronger authority was found*, not because the reasoning became more persuasive. (§13.2's heading and §13.3's first row are read subject to this correction.)
+
+**Governance property recorded verbatim in substance:**
+
+> **F-T1 is a derived implication of approved architectural authority. No new business rule is introduced. If the Decision Authority later changes the business rule (for example, to one-process-per-challenge-forever), this implementation must be revised accordingly.**
+
+**The implementation never becomes the authority.** What RED asserts is the **capability** that follows from PM-1's wording; the **policy** (whether Contestation *should* re-route) remains WP-5's.
+
+### 13.7 The Business Assumption Review, as a repeatable pattern (DA-enhanced)
+
+| Classification | Meaning | Action |
+|---|---|---|
+| **Explicit authority** | Directly stated in approved architecture | Implement |
+| **Derived implication** | Logical consequence of approved authority | Implement **with traceability** |
+| **Architectural assumption** | Plausible but not established | Record + request confirmation **before** implementation |
+| **Open business question** | Business semantics cannot be derived | **Stop**; seek the Decision Authority |
+
+Inserted permanently between Architectural Traceability and RED. **GREEN AUTHORIZED.**
+
+---
+
+## 14. GREEN DONE + GATES PASS (2026-07-30) — STOP for ARB slice acceptance
+
+**All 25 RED tests GREEN** (20 unit + 5 Feature, incl. the DB-level race). **`composer merge-gate` PASS:** Architecture fitness 146✔/626 · **Deptrac 0 violations** · greenfield PHPStan **No errors** · widened regression 211✔/547/0 failed (62 risky = the recorded F-7C-6 artifact).
+
+**Implemented (Application):** `AdjudicationProcessStatus` (6 closed cases) · `AdjudicationProcessState` (immutable, §6 guards) · `AdjudicationProcessId` · `IllegalProcessTransition` · `AdjudicationProcessStore` port (4 ops) · `AdjudicationProcessManager` (PM-1..PM-8, idempotent). **(Infrastructure):** model (`BelongsToTenant`) · mapper · migration with **partial** unique index · Eloquent store · provider binding.
+
+**Two honest findings during GREEN:**
+1. **A test bug the guards caught.** `test_conclusion_fixes_…` admitted evidence while already `AwaitingDecision`; §6 correctly forbids it — the lawful second admission runs through the authority's *return for more evidence*. The test was wrong, not the code; corrected, and the reason recorded in the test itself.
+2. **The store port gained `nextIdentity()` during GREEN.** RED's constructor (`store`, `clock`) left identity minting unplaced; the house precedent (`DeterminationRepository::nextIdentity()`) puts minting on the store, which keeps the manager's constructor exactly as RED proposed. Test double updated; recorded rather than quietly absorbed.
+
+**PHPStan interaction worth keeping (guide pitfall):** `whereIn`/`whereNotIn` are forwarded to the query builder and erase the Eloquent model type — PHPStan then flagged an `instanceof` guard as dead code. Fixed at the root (`nonTerminalQuery()` chains typed `where('status','!=',…)`), not by suppressing the error.
+
+**Dev guide:** `developer_guide/adjudication/03_adjudication_process_manager_core.md` (+ index row).
+
+**Progress:** ✔ authority · ✔ domain · ✔ strategic DDD · ✔ business-model fidelity · ✔ tactical · ✔ traceability review · ✔ business assumption review · ✔ RED · ✔ **GREEN** · ✔ **merge-gate** · ✔ dev guide · ⏳ triple qualification + ARB slice acceptance.

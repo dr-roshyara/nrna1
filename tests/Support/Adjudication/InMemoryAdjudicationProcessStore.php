@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Support\Adjudication;
 
 use App\Contexts\Adjudication\Application\Port\AdjudicationProcessStore;
+use App\Contexts\Adjudication\Application\Process\AdjudicationProcessId;
 use App\Contexts\Adjudication\Application\Process\AdjudicationProcessState;
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
 use DateTimeImmutable;
@@ -27,6 +28,13 @@ final class InMemoryAdjudicationProcessStore implements AdjudicationProcessStore
 
     /** @var list<AdjudicationProcessState> every write, in order */
     public array $writes = [];
+
+    private int $minted = 0;
+
+    public function nextIdentity(): AdjudicationProcessId
+    {
+        return AdjudicationProcessId::fromString('apm-' . ++$this->minted);
+    }
 
     public function activeForChallenge(ChallengeRef $challenge): ?AdjudicationProcessState
     {

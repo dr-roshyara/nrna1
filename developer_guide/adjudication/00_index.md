@@ -9,6 +9,7 @@ Adjudication owns the **`Determination`** aggregate — the binding ruling on a 
 |-------|--------|
 | [`01_determination_contested_outcome_schema_v2.md`](./01_determination_contested_outcome_schema_v2.md) | The `Determination` carrying a **`ContestedOutcomeRef`** (Adjudication's own local VO, ADR-T16) and emitting it on **`DeterminationIssued` payload schema version 2** — additive, backward-compatible (ADR-PL-01). |
 | [`02_determination_evidence_set_schema_v3.md`](./02_determination_evidence_set_schema_v3.md) | **WP-1 (ADR-T22):** the **`EvidenceSet`** VO — the considered-evidence set fixed at issuance (R-4-expanded/INV-4 rider) — carried on **payload schema version 3**; hydrator window shifts to **(v3, v2), v1 retired**. |
+| [`03_adjudication_process_manager_core.md`](./03_adjudication_process_manager_core.md) | **WP-2 (EPIC-004K §§3/5/6/11):** the **Adjudication Process Manager** — the loop's HEAD (ADR-T8): six business states, §6 guards, conclude-time atomic fixation (PM-5), active-scoped uniqueness (partial unique index, INV-B1 mirrored), and its durable store (not a domain repository). |
 
 ## Authoritative architecture
 - Ubiquitous language: `docs/adr/ADR-UL-01-ContestedOutcome.md`.

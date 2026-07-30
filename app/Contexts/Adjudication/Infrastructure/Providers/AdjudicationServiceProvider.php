@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contexts\Adjudication\Infrastructure\Providers;
 
+use App\Contexts\Adjudication\Application\Port\AdjudicationProcessStore;
 use App\Contexts\Adjudication\Application\Port\EventOutbox;
 use App\Contexts\Adjudication\Application\Port\IdentityGenerator;
 use App\Contexts\Adjudication\Application\Port\TransactionManager;
@@ -14,6 +15,7 @@ use App\Contexts\Adjudication\Domain\Repository\DeterminationRepository;
 use App\Contexts\Adjudication\Infrastructure\Identity\UuidIdentityGenerator;
 use App\Contexts\Adjudication\Infrastructure\Outbox\DeterminationIssuedHydrator;
 use App\Contexts\Adjudication\Infrastructure\Outbox\OutboxEventAdapter;
+use App\Contexts\Adjudication\Infrastructure\Repositories\EloquentAdjudicationProcessStore;
 use App\Contexts\Adjudication\Infrastructure\Repositories\EloquentDeterminationRepository;
 use App\Contexts\Adjudication\Infrastructure\Transaction\LaravelTransactionManager;
 use App\Contexts\Shared\Infrastructure\Outbox\EventHydratorRegistry;
@@ -28,6 +30,8 @@ final class AdjudicationServiceProvider extends ServiceProvider
         $this->app->bind(TransactionManager::class, LaravelTransactionManager::class);
         $this->app->bind(EventOutbox::class, OutboxEventAdapter::class);
         $this->app->bind(DeterminationRepository::class, EloquentDeterminationRepository::class);
+        // WP-2: the APM's process store (orchestration state, not a domain repository — EPIC-004K §11).
+        $this->app->bind(AdjudicationProcessStore::class, EloquentAdjudicationProcessStore::class);
 
         // AdjudicationService = transactional decorator over the (frozen)
         // CoordinatesAdjudication coordinator.
