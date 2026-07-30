@@ -1,6 +1,6 @@
 # Work Plan — WP-1: EvidenceSet / DeterminationIssued v3 (first implementation slice)
 
-**Created:** 2026-07-26 (handoff session) · **Status:** AUTHORIZED — execution begins in a fresh session, RED first
+**Created:** 2026-07-26 (handoff session) · **Status:** **CLOSED — ACCEPTED by ARB (2026-07-27, nine gates PASS, evidence condition discharged).** WP-1 is historical record. **WP-2 AUTHORIZED — open WP-2 only in a fresh session under the established execution discipline.**
 **Authority:** WP-1 authorization (ARB 2026-07-26) · `docs/implementation/EPIC-004_Architecture_to_Implementation_Roadmap.md` §WP-1 · ADR-T22
 **Mode ruling (chair):** Auto mode — the discovery/planning work is done; this is disciplined execution of an approved slice. Plan mode returns for: architectural contradictions · missing invariants exposed by RED · ADR conflicts · EG-004/EG-005 · any later slice needing real design decisions.
 
