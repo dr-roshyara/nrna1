@@ -31,6 +31,17 @@ final class CorrelationIdMintingTest extends TestCase
 {
     /** Chain-origin producers approved to MINT (ADR-MP-06). Extending this list is an ARB decision. */
     private const CHAIN_ORIGIN_ALLOWLIST = [
+        // WP-5/WP-3B (ARB-approved 2026-07-31): the CORRECTION-LOOP origin. The
+        // integration conversation begins when the routing act publishes
+        // `ChallengeRouted` -- the loop's head trigger (ADR-T21).
+        'app/Contexts/Contestation/Application/Service/CoordinatesContestation.php',
+
+        // The AUTHORITY-DECISION origin. Intentionally still an originator: the
+        // authority's decision does not yet arrive as a message, so
+        // `issueDetermination` has nothing to derive provenance from. It becomes a
+        // reacting producer when that path is wired (WP-6). Two originators serving
+        // two different paths is by design -- the one-mint rule is per CONVERSATION,
+        // not per codebase.
         'app/Contexts/Adjudication/Application/Service/CoordinatesAdjudication.php',
     ];
 

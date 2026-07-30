@@ -150,7 +150,7 @@ Program-position orientation (misreading guard) · `Key:` block (hook contract) 
 
     **Updated:** 2026-07-30
 
-    ## Program position
+    ## Runtime Baseline
     Strategic + tactical baselines FROZEN; implementation EXECUTING. EPIC-001..004 formally closed;
     the governing baseline (Determination chain · APM ADR-T21/22/23 · Q-2 gate · 8-WP roadmap),
     durable constraints, and preferences live in `.claude/MEMORY.md`; history lives in
@@ -209,6 +209,10 @@ Program-position orientation (misreading guard) · `Key:` block (hook contract) 
 
 ☑ **Identify-and-convert path taken: draft v2 supersedes v1.** With v2: every removal traceable (§1, §7.1) · every retained section passes the usefulness test (§7.3) · density ~95% > 90% **PASS** · no historical narrative remains except the 2-line orientation guard · ES-004.3 untouched.
 
-## STOP
+## 8. PA RULING (2026-07-30): APPROVED WITH MINOR EDITORIAL AMENDMENTS — execution authorized
 
-**CONTEXT.md remains unedited.** Awaiting PA approval of draft v2 (§7.4) + the BACKLOG relocation (§7.5). On approval: re-read CONTEXT.md immediately before editing (R-4) → execute v2 → add the two BACKLOG lines → one SessionStart sanity check (R-2).
+1. **"Program position" renamed "Runtime Baseline"** (the section states runtime assumptions, not program narrative) — applied to §7.4 above.
+2. **Runtime Density = commission evidence ONLY, never a standing governance metric.** The ~95% figure stays in this report; no percentage target is institutionalized anywhere — the governing rule remains qualitative (*runtime artifacts contain only information operationally necessary for current execution*, ES-004.3 Runtime role). CONTEXT.md itself carries no density language (verified: draft v2 contains none).
+3. **Reusable observation recorded (not minted into a standard — evidence-before-promotion):** three distinct hygiene review lenses — Traceability (*removable safely?*) · Runtime Usefulness (*should it exist here?*) · Governance Consistency (*obeys ES-004.3?*) — kept separate, reusable for future repository hygiene beyond CONTEXT.md.
+
+**Executed per the ruling's instruction list:** amendments → R-4 re-read → v2 replacement → BACKLOG relocation → SessionStart sanity check → commit. (Push = user action; passphrase-protected key.)

@@ -62,6 +62,11 @@ Engineering-governance workstream — distinct from capability tickets (PB-xxx).
 | F-2 | Infection coverage driver | Infra | **Closed** — PB-007 7C + F-7D-2 (Xdebug per-invocation; validated 1-thread execution model) |
 | F-7C-1..6 | Pre-existing repo debt found by 7C sweeps (dead test class · 2 non-parsing scaffold files · legacy test failures · 57 risky Feature tests) | Retrospective | Recorded — PB-007 IDD §2c-ii |
 
+## Parked / future planning (relocated from CONTEXT.md — F-2 hygiene commission [ES-004.3 validation finding, distinct from the closed Infection F-2 above], 2026-07-30)
+
+- 38D-02 Capability Relationships — opens after the ARB digests 38D-01 (governance archive: `.claude/memory/`).
+- Docs candidates: Domain Model Catalogue · root `CLAUDE.md` tech-table refresh.
+
 ---
 
 ## NEXT ACTION (exactly one)
