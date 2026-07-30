@@ -129,3 +129,108 @@ RED (§6) → confirm RED for expected reasons → **STOP + report** → GREEN m
 ## 10. Next Authorized Step
 
 **Write the §6 RED tests and confirm they fail for the expected reasons. Report at the RED boundary before any production code.**
+
+---
+
+## 11. Architectural Traceability Review (PA checkpoint, 2026-07-30) — run BEFORE RED
+
+### 11.1 Component-to-Authority table
+
+| Component | Authority | Section / decision | Rationale |
+|---|---|---|---|
+| `AdjudicationProcessStatus` (6 cases, `isTerminal()`) | EPIC-004K | §5 States | Six business-derived states, closed set; an enum makes minting a 7th a compile-time act (ASP). Precedent: `DeterminationState` |
+| `AdjudicationProcessState` (immutable) + transitions/guards | EPIC-004K | §6 Transitions | The guards' seat; "exactly one conclusion of exactly one kind, or an expiry" |
+| `AdjudicationProcessId` | EPIC-004K | §6 guard ("no **active** process") + §11 | **Implicitly required** — see finding F-T1: uniqueness is scoped to *active* processes, so a challenge may have >1 row over time ⇒ row identity cannot be `challenge_ref` |
+| `IllegalProcessTransition` (exception) | House discipline | Determination precedent | Forbidden transition throws; no mutation, no event |
+| `AdjudicationProcessStore` (port, 5 operations) | EPIC-004K | §11 Persistence | Durable long-running coordination; surface fixed at create-on-open · append admission/demand · record conclusion · load-for-reaction · due-timer query. **No query zoo** |
+| `AdjudicationProcessManager` (Application) | EPIC-004K | §3 PM-1..PM-8 | The conduct's seat; the reason WP-2 exists |
+| Eloquent store impl + model (`BelongsToTenant`) | EPIC-004K §11 + layer rules | Application bans Eloquent | Infrastructure realizes the port; tenancy is an infrastructure concern (ADR-T16) |
+| Migration with **partial** unique index on active rows | **INV-B1** (EPIC-004E) + EPIC-004K §6 | Two-seat pattern | Guard at the boundary + DB backstop; precedent `uniq_determination_per_challenge`. Scoped to active per F-T1 |
+| Conclude-time atomicity (one write) | EPIC-004K | §3 PM-5, §11 | Conclusion + considered-set + authority ref inseparable |
+| Reuse of `EvidenceSet` | **ADR-T22** (delivered by WP-1) | §11 R-4-expanded | The considered-set carrier already exists — reuse, do not re-create |
+| Reuse of `ChallengeRef`, `IssuedByAuthority`, `Reason` | Reuse-before-create | Existing Adjudication VOs | Same context; no new VO where one exists |
+| Reuse of `ClockInterface` / `FrozenClock` | ER-03/04 (PB-004 clock ruling) | — | Time injected, never read; no new clock |
+| Horizon enforcement (→ `Expired`) | **Q-2** + **Policy 4** | MAD 60d bootstrap | The APM enforces a duration it does not own; a timer yields **Expired**, never a conclusion |
+| `AdjudicationFailureDeclared` (business occurrence) | EPIC-004K | §3 PM-7, §10 | Recorded in WP-2; **publication wiring is WP-4** |
+| Opaque evidence references only | **ADR-T11 / AT-Q7** | Anonymity | No voter↔vote linkage in state, store, or events |
+| Store **not** Repository | EPIC-004K §11 + RMSP by analogy | — | PM state is not an aggregate; divergence from Governance's `...Repository` naming is authority-driven |
+
+### 11.2 Completeness check
+
+Every planned component appears above with a named authority. **No component lacks authority → no STOP required.**
+
+**Finding F-T1 (surfaced by this review, flagged not silently decided).** §6's opening guard reads *"No **active** process exists for this challenge"*, and the ARB's horizon-expiry ruling returns an expired challenge **to Contestation** (which may re-route it — WP-5's path). Both readings agree that uniqueness binds **active** processes, not all processes ever. Consequences taken: (a) the unique index is **partial** (active rows only); (b) `AdjudicationProcessId` is required for row identity; (c) a RED test asserts a new process **may** open after expiry. *If the ARB instead intends one-process-per-challenge-forever, that is a stricter constraint than §6's wording and needs an explicit ruling — the literal reading is implemented and the alternative is recorded here.*
+
+### 11.3 Simplification check — *"can this be deleted while still satisfying the architecture?"*
+
+| Component | Deletable? | Finding / action |
+|---|---|---|
+| `AdjudicationProcessStatus` | No | Closed state set must be structurally closed (ASP) |
+| `AdjudicationProcessState` | No | Deleting it moves guards into the PM where they become bypassable |
+| `AdjudicationProcessId` | No | Required by F-T1's active-scoped uniqueness |
+| `AdjudicationProcessStore` port | No | Application may not touch Eloquent |
+| `AdjudicationProcessManager` | No | PM-1..PM-8 have no other seat |
+| Eloquent impl · model · migration | No | Realize the port and INV-B1's second seat |
+| **Separate `AdjudicationProcessMapper`** | **YES → CONSOLIDATE** | §11 mandates a *store*, never a mapper. The aggregate-purity motive for `DeterminationMapper`/`ChallengeMapper` does not apply — PM state is orchestration, not an aggregate. **Decision: no mapper class in WP-2**; the store implementation owns translation. Extract only if GREEN shows translation growing (then it is refactoring, not design) |
+| New `EvidenceSet` / `ChallengeRef` / `Reason` / authority VOs | **YES → REUSE** | All four already exist in-context (WP-1 delivered `EvidenceSet`). **Only two genuinely new value concepts remain: `AdjudicationProcessId`, `AdjudicationProcessStatus`** |
+
+**Net effect of the check: one planned class deleted (mapper), four VOs reused instead of created.**
+
+### 11.4 Component classification
+
+- **Directly required:** Status · State+guards · Store port · Process Manager · Eloquent store impl · model · migration/partial-unique-index · conclude-time atomicity.
+- **Implicitly required:** `AdjudicationProcessId` (F-T1) · `IllegalProcessTransition`.
+- **Supporting:** `InMemoryAdjudicationProcessStore` test double · dev guide `developer_guide/adjudication/03_*`.
+- **Strictly prohibited — guarded by RED and by review:** saga/compensation (ADR-T8) · any computation of legitimacy or sufficiency (K1/Q-1/ADR-T23) · a domain repository or aggregate for PM state (§11/RMSP) · `FinalizeDetermination*` (Q-2/DMT — WP-6) · any timer→conclusion path (Policy 4) · a seventh state (ASP) · voter↔vote linkage (ADR-T11) · transport wiring (WP-3/WP-4/WP-6).
+
+### 11.5 RED Readiness Statement
+
+```text
+Architectural Traceability Review — PASSED
+
+All planned components trace to architectural authority.
+No component lacks a constitutional reason to exist.
+Simplification check: 1 class deleted (mapper -> store owns translation);
+                      4 value objects reused instead of created.
+One finding flagged, not silently decided: F-T1 (uniqueness binds ACTIVE
+processes; partial unique index + process id + "may reopen after expiry" test).
+RED is authorized.
+
+Committed components:  Status · State(+guards) · ProcessId · IllegalProcessTransition ·
+                       Store port · ProcessManager · Eloquent store impl · model ·
+                       migration (partial unique index)
+Reused, not created:   EvidenceSet (WP-1) · ChallengeRef · IssuedByAuthority · Reason ·
+                       ClockInterface/FrozenClock
+Deferred:              WP-3 (ChallengeRouted published language) · WP-4 (wiring, crash-safe
+                       conclude->issue seam, FailureDeclared publication) · WP-6 (timer execution)
+Strictly prohibited:   saga/compensation · sufficiency or legitimacy computation · domain
+                       repository/aggregate for PM state · FinalizeDetermination* ·
+                       timer->conclusion path · 7th state · voter<->vote linkage
+```
+
+### 11.6 CORRECTION to §11.3 (self-caught before RED — the mapper)
+
+§11.3 concluded *"no mapper class in WP-2"*. **That overstepped.** Re-reading the authority: the roadmap's WP-2 row names the component list explicitly — *"process-store migration + model (+`BelongsToTenant`) + **mapper** · state machine …"*. EPIC-004K §11 neither mandates nor forbids a mapper (it forbids a *domain repository* and fixes the *store's surface*), so the roadmap — the approved implementation design — governs the component list here.
+
+**Corrected disposition:** the **mapper stays IN WP-2's scope**, as the approved plan names it. The simplification question is not discarded but **recorded for slice review**: if GREEN shows the translation is trivial, consolidating it into the store implementation is a candidate refinement to *propose*, never a unilateral deletion of an approved component.
+
+**Why this correction matters more than the mapper:** deleting a component the approved plan names — on my own reasoning, without a recorded decision — is precisely the architectural drift this review exists to prevent. The simplification check is a source of *proposals*, not of authority. Recorded so the pattern is visible: **a good question does not become a decision by being well-argued.**
+
+*(Net effect on §11.5's readiness statement: `AdjudicationProcessMapper` returns to the committed-components list; the reuse findings — 4 VOs reused, only 2 new — stand unchanged.)*
+
+---
+
+## 12. RED WRITTEN + CONFIRMED (2026-07-30) — STOP at the RED boundary
+
+**25 tests · 25 errors · 0 assertions — every failure is a missing, intentionally-unimplemented component** (`AdjudicationProcessState` · `AdjudicationProcessStatus` · `AdjudicationProcessId` · `IllegalProcessTransition` · `AdjudicationProcessStore` · `AdjudicationProcessManager` · the `adjudication_processes` table). No unexpected failure, no assertion failure masking a design error.
+
+| File | Tests | Covers |
+|---|---|---|
+| `tests/Unit/.../Process/AdjudicationProcessStateTest.php` | 15 | §6 lawful path (open → assembling → awaiting → each terminal, incl. authority's *not-yet-decide*) · **exactly one conclusion of exactly one kind** · **no admission after conclusion** · illegal transition leaves state untouched · **PM-5 conclude-time fixation** (considered-set + authority together) · **horizon → Expired** · **expiry never concludes (Policy 4)** · late decision refused · concluded cannot expire · **state set is exactly six (ASP)** |
+| `tests/Unit/.../Process/AdjudicationProcessManagerTest.php` | 5 | **PM-1** one active process per challenge · **KEYSTONE exactly-once conclusion under redelivery** (duplicate = idempotent no-op, Governance-precedent terminal guard) · conflicting late decision does not replace the conclusion · PM-4 records the deciding authority |
+| `tests/Feature/.../AdjudicationProcessUniquenessTest.php` | 5 | persistence + load-for-reaction · **KEYSTONE unique-active-per-challenge at the DB seam** · **F-T1 a new process may open after expiry** · terminal never returned as active · tenant scoping |
+| `tests/Support/Adjudication/InMemoryAdjudicationProcessStore.php` | — | store double; records writes so "exactly one conclusion" is assertable |
+
+**Design proposals the RED encodes** (RED is where the API is proposed — all authority-traceable): immutable state (Governance PM precedent ⇒ "no mutation on illegal transition" becomes structural) · store surface of 3 methods covering §11's 5 named operations (`activeForChallenge` · `save` · `dueForHorizon`) — RMSP spirit, no query zoo · duplicate decision = idempotent no-op, matching inbox replay semantics rather than throwing.
+
+**Progress:** ✔ authority · ✔ domain · ✔ strategic DDD · ✔ business-model fidelity · ✔ tactical · ✔ traceability review (+ self-caught mapper correction) · ✔ **RED confirmed** · ⏳ GREEN (awaiting report acceptance) · ⏳ gates · ⏳ dev guide · ⏳ ARB slice acceptance.
