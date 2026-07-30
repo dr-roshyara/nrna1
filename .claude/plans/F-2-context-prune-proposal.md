@@ -216,3 +216,52 @@ Program-position orientation (misreading guard) · `Key:` block (hook contract) 
 3. **Reusable observation recorded (not minted into a standard — evidence-before-promotion):** three distinct hygiene review lenses — Traceability (*removable safely?*) · Runtime Usefulness (*should it exist here?*) · Governance Consistency (*obeys ES-004.3?*) — kept separate, reusable for future repository hygiene beyond CONTEXT.md.
 
 **Executed per the ruling's instruction list:** amendments → R-4 re-read → v2 replacement → BACKLOG relocation → SessionStart sanity check → commit. (Push = user action; passphrase-protected key.)
+
+---
+
+## 9. Implementation Fidelity Verification (PA commission, 2026-07-30) — RESULT: EXACT, no corrective edit required
+
+**The commission's premise does not hold.** `CONTEXT.md` on disk is **byte-identical to approved draft v2**; no historical material survived the prune. Evidence below; no edit was performed (none is warranted — a "corrective" rewrite would risk damaging a correct file).
+
+### 9.1 Section comparison (Step 1–3 of the commission's method)
+
+| Approved section (draft v2) | Present in actual? | Extra material? | Matches? |
+|---|---|---|---|
+| `# Current Working State` + Updated | ✅ Yes | No | ✅ |
+| `## Runtime Baseline` | ✅ Yes | No | ✅ |
+| `## Active Work` (Key: block) | ✅ Yes | No | ✅ |
+| Detail bullets (WP-2 keystones · EG status) | ✅ Yes | No | ✅ |
+| `## Next action (exactly one)` | ✅ Yes | No | ✅ |
+| `## Blockers` | ✅ Yes | No | ✅ |
+| `## Open items` (2 lines) | ✅ Yes | No | ✅ |
+| `## Engineering Platform track` (6 lines) | ✅ Yes | No | ✅ |
+| `## PKS track` (2 lines) | ✅ Yes | No | ✅ |
+| `## Automation` (1 line) | ✅ Yes | No | ✅ |
+
+**Extra headings in actual but not in draft v2: NONE** (Step 4 yields an empty set — so Step 5's usefulness test has no inputs).
+
+### 9.2 Machine evidence
+
+1. **Byte-level diff** — draft v2 extracted programmatically from §7.4 vs the file on disk: **54 lines vs 54 lines, zero differences** (`difflib.unified_diff` → empty).
+2. **Residual-history probe** — combined grep for `EPIC-002 track` · `What remains (EPIC-001)` · `superseded` · `PB-004..PB-007` · `Architecture debt` · `PROCESS NOTE` · `constitutional consolidation COMPLETE` · `Parallel tracks`: **0 matches**.
+3. **Commit `aee8a4948` diffstat: 42 insertions, 148 deletions** — the deleted headings include exactly the sections classified for removal (`## EPIC-002 track — CLOSED`, `## What remains (EPIC-001)`, `## Architecture debt (tracked)`, `## Engineering Platform — constitutional consolidation COMPLETE`, `## Parallel tracks`); the added headings are exactly v2's. **Replacement, not merge** — the file was written whole, not appended to.
+
+### 9.3 The three critical questions
+
+1. **Was Runtime Draft v2 implemented exactly?** **Yes** — byte-identical (§9.2 evidence 1).
+2. **What additional sections remain?** **None** (§9.2 evidence 2 and 3).
+3. **Are those remaining sections operationally required today?** **Not applicable** — the set is empty.
+
+### 9.4 Most probable source of the reported divergence (recorded so the record is honest, not defensive)
+
+The corrective-edit turn contains, immediately before the write, a full `Read` of the **pre-prune** 161-line `CONTEXT.md` (the R-4 guard required reading the file before editing). That historical content appears in the transcript directly adjacent to the write call and is easy to read as the write's payload. The write payload itself was the 54-line v2 body — confirmed by the diffstat's 148 deletions.
+
+### 9.5 Acceptance criteria (commission's own list)
+
+☑ every approved section present · ☑ every actual section is in the approved draft · ☑ no historical narrative remains · ☑ no approved section present in modified form · ☑ ES-004.3 unchanged.
+
+### 9.6 Observation worth keeping (recorded, NOT minted as a rule)
+
+The commission articulated a real distinction: **design validation** asks *"is this the right design?"*; **implementation verification** asks *"was the approved design implemented faithfully?"* — different quality gates. This instance is also evidence for a second, subtler point: **implementation verification must be evidence-led, because a reviewer's reading of a transcript is not the state of the repository.** Filed alongside the three hygiene lenses (§8.3) as reusable observations; no standard minted (evidence-before-promotion).
+
+**F-2 COMMISSION CLOSED — design approved, implementation verified exact.**
