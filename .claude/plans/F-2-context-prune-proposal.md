@@ -28,7 +28,7 @@
 
 **161 lines → ~66 lines (≈59% fewer lines; ≈75–80% less content by volume — the removed bullets are the longest).** Injection cost per session start drops proportionally (~28k → ~8k tokens).
 
-## 3. Proposed Runtime CONTEXT.md (full replacement text)
+## 3. Proposed Runtime CONTEXT.md — **v1, SUPERSEDED by §7's draft v2** (the runtime-usefulness verification found v1 fails the 90% density target)
 
 ```markdown
 # Current Working State
@@ -110,6 +110,105 @@ None.
 
 ☐ CONTEXT.md contains only active execution context · ☐ historical narrative preserved elsewhere (destinations verified in §1; R-1 items in §5) · ☐ no knowledge lost · ☑ ES-004.3 unchanged (untouched by this commission).
 
+## 7. F-2 Final Verification Report — Runtime Usefulness Test (PA commission, 2026-07-30)
+
+**Test applied to every section of draft v1:** *if this section disappeared today, could a new engineering session still begin correctly from the remaining runtime artifacts?*
+
+### 7.1 Updated classification table (new column: Operationally Needed Today?)
+
+| Section (v1 draft) | Runtime? | Historical? | Traceable? | Needed Today? | Action |
+|---|---|---|---|---|---|
+| Header + Updated | Yes | No | — | **Yes** (artifact identity) | Keep |
+| Program position (4 lines) | Yes | Pointer only | — | **Yes** — prevents misreading MEMORY's closed-epic entries as pending work | Keep (already minimal) |
+| Active Work `Key:` block | Yes | No | — | **Yes** (hook-parsed contract) | Keep |
+| Detail bullets (WP-2 keystones · EG status) | Yes | No | Roadmap + repair plan hold full text | **Yes, as pointers** | Keep (already compressed) |
+| Next action / Blockers | Yes | No | — | **Yes** | Keep |
+| Open items (6 lines) | Mixed | No | AD-M2→ADR-MP-05/Q5 · Jurisdiction→EPIC-004F+MEMORY · O-2→validation report · parked candidates→logs 07-26/30 | **Partially** — none needed for WP-2 *today*, but the parked-candidate timers (~WP-3/4) must resurface at session start | **COMPRESS 6→2 lines** |
+| Engineering Platform block (15 lines verbatim) | Yes | Narrative-heavy | R-40 · decision papers · metamodel candidate · log 07-27 · reference map | **Yes, ~6 lines' worth** — a session opening on D-1..D-5 / C3 / OQ-ENG-004 / KnowledgeOS G-1 needs the pending-decision list + artifact pointers, NOT the narrative | **COMPRESS 15→6** |
+| PKS block (4 lines) | Yes — **ACTIVE, not paused** (gated on an explicit pending DA/PA choice: Capabilities Pass vs ARB review) | Synthesis detail is narrative | Reports + log 07-27 | **Yes, 2 lines' worth** | **COMPRESS 4→2** |
+| Parallel: C3/OQ-ENG-003 pointer (3 lines) | Yes — authorized-pending, fresh-session requirement | No | C3 plan holds the verbatim instruction ✔ | **Yes** | Keep (already 30→3) |
+| Parallel: 38D-02 line | No — **future planning** ("after ARB digests 38D-01") | Yes | `.claude/memory/` governance archive | **No** | **MOVE → BACKLOG.md** (never silently delete) |
+| Parallel: docs-candidates line | No — **future planning** | Yes | weak (logs only) | **No** | **MOVE → BACKLOG.md** |
+| Automation (3 lines) | Yes | No | `.claude/scripts/README.md` | **Yes, 1 line's worth** — the `Plan:`-line injection contract is load-bearing; the rest duplicates the README | **COMPRESS 3→1** |
+
+### 7.2 Runtime Density
+
+| Draft | Total lines | Runtime-necessary | Density | vs >90% target |
+|---|---|---|---|---|
+| v1 (§3) | ~66 | ~52 | **~79%** | **FAIL** |
+| **v2 (§7.4)** | **~44** | **~42** | **~95%** | **PASS** |
+
+v1's failing weight: the 15-line platform narrative, 4-line PKS synthesis, 6-line open items, 2 future-planning lines, 3-line automation block.
+
+### 7.3 Sections retained solely because operationally necessary
+
+Program-position orientation (misreading guard) · `Key:` block (hook contract) · WP-2 springboard + EG pointer · pending-DA decision list + fresh-session pointers (C3/OQ-ENG-004) · PKS gate · parked-candidate timers (~WP-3/4) · the `Plan:`-line injection contract.
+
+### 7.4 Draft v2 — the runtime-dense replacement (~44 lines)
+
+    # Current Working State
+
+    **Updated:** 2026-07-30
+
+    ## Program position
+    Strategic + tactical baselines FROZEN; implementation EXECUTING. EPIC-001..004 formally closed;
+    the governing baseline (Determination chain · APM ADR-T21/22/23 · Q-2 gate · 8-WP roadmap),
+    durable constraints, and preferences live in `.claude/MEMORY.md`; history lives in
+    `.claude/sessions/` and the EPIC/PB documents. Do not re-derive; do not reopen without a
+    recorded reversal condition.
+
+    ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
+    Ticket: WP-2 (EPIC-004 APM core) — AUTHORIZED, opens in a fresh session with its own work plan; WP-1 ACCEPTED+CLOSED (ARB 2026-07-27)
+    Plan: .claude/plans/WP-1-evidenceset-v3.md
+    Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
+    Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ accepted · WP-2 authorized (1/8 WPs closed)
+    Priority: High
+
+    - **Detail:** WP-2 keystones (roadmap §WP-2): exactly-once conclusion under concurrent redelivery ·
+      no admission after conclusion · unique-active-per-challenge under race. Execution-contract
+      pattern: `.claude/plans/WP-1-evidenceset-v3.md` (Auto mode · RED first · STOP conditions).
+      The WP-2 session creates its own plan and re-points the `Plan:` line.
+    - **Engineering platform:** operational for the identified defects (EG-001..003 ✔); EG-002b ·
+      EG-004 · EG-005 tracked in `docs/plans/20260726-2056-engineering-platform-repair-plan.md` — non-blocking.
+
+    ## Next action (exactly one)
+    **WP-2, fresh session, RED first** (slice acceptance before anything else opens).
+
+    ## Blockers
+    None.
+
+    ## Open items (inventory — full text at the cited homes)
+    - Tracked: AD-M2 (ADR-MP-05/Q5, only under business pressure) · G-1 release tag · Jurisdiction
+      semantics (EPIC-004F, non-blocking) · O-2 composite-artifact watch (ES-004.3 validation report).
+    - **Timers:** parked candidates resurface ~WP-3/WP-4 — slice ledger · Implementation Execution
+      Contract extraction (logs 2026-07-26/30).
+
+    ## Engineering Platform track (state 2026-07-27; full record: session log 07-27 + cited artifacts)
+    - **Awaiting DA (the track's next action):** Placement Rule decisions **D-1..D-5**
+      (`docs/implementation/Placement_Rule_Decision_Paper.md`) + the ES ratification batch; metamodel
+      stays CANDIDATE (`engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md`).
+    - **Then, each in a FRESH session:** C3 + OQ-ENG-003 (C3 plan APPROVED AS WRITTEN —
+      `.claude/plans/AIP-iteration-1-construction.md`) · OQ-ENG-004 (PD-10) · A5 Transition Plan → platform freeze.
+    - **KnowledgeOS:** prepared stack in `docs/implementation/KnowledgeOS_*`; ONE gate — G-1 charter
+      approval (three asks); nothing executes until it passes. Navigational map (consult, don't refine):
+      `engineering/architecture/c4/Engineering_Knowledge_System_Reference_Model.md`.
+
+    ## PKS track (Phase 1 COMPLETE, gated)
+    Two Phase-1 reports + PA-endorsed synthesis await the DA/PA choice: commission the **Capabilities
+    Pass** or convene the ARB review. Strategic Modeling unauthorized until then. (Record: log 2026-07-27.)
+
+    ## Automation
+    SessionStart injects MEMORY + CONTEXT + the plan the `Plan:` line above declares + today's log;
+    details and other hooks: `.claude/scripts/README.md`.
+
+### 7.5 Pre-edit conversions required (execution additions beyond CONTEXT.md)
+
+1. **BACKLOG.md gains two lines** (future planning relocated, not deleted): 38D-02 Capability Relationships (after ARB digests 38D-01) · docs candidates (Domain Model Catalogue · root CLAUDE.md tech-table refresh).
+
+### 7.6 Final recommendation
+
+☑ **Identify-and-convert path taken: draft v2 supersedes v1.** With v2: every removal traceable (§1, §7.1) · every retained section passes the usefulness test (§7.3) · density ~95% > 90% **PASS** · no historical narrative remains except the 2-line orientation guard · ES-004.3 untouched.
+
 ## STOP
 
-Awaiting PA review of: the classification table (§1) · the proposed removals · the traceability evidence (§1 destinations + §5) · the Runtime outline (§3). The cleanup executes only after approval.
+**CONTEXT.md remains unedited.** Awaiting PA approval of draft v2 (§7.4) + the BACKLOG relocation (§7.5). On approval: re-read CONTEXT.md immediately before editing (R-4) → execute v2 → add the two BACKLOG lines → one SessionStart sanity check (R-2).
