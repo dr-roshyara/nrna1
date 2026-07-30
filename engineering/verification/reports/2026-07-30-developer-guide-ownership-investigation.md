@@ -74,11 +74,39 @@
 | False negatives | ✗ Demonstrated (ENG-006) | ✓ | ✓ | ~ Unregistered artifact = silent |
 | Traceability | ✗ None | ~ Path→area only | ✓ Full five-question trace already in the schema | ~ Local only |
 
-**Not chosen on effort.** A is rejected as architecturally incorrect even though it is cheapest. B is *sufficient* but hides the model in a tool. **C is correct**: the ownership model already exists, is governed, is registry-first-binding, and already registers the very hook in question (`AST-006`).
+**Not evaluated on effort.** Architectural status of each option — wording corrected at DA review, 2026-07-30:
+
+| Option | Architectural status |
+|---|---|
+| **A** Extend prefix rules | **Rejected by evidence** (a category error cannot be fixed by more prefixes) |
+| **B** Explicit ownership table in the hook | **Architecturally valid fallback** — correct routing, but the model lives inside tooling |
+| **C** Extend the existing ownership registry | **Architecturally preferred — PENDING platform-governance approval** |
+| **D** Ownership declared at each artifact | **Not needed unless governance rejects C** |
 
 ## Phase 5 — Recommendation
 
-**Adopt Option C: the architectural ownership registry becomes the single source of artifact ownership, and the reminder becomes a *reader* of it rather than a holder of its own model.**
+*(Claim strength corrected at DA review, 2026-07-30 — the original wording said "Adopt Option C", which this investigation's evidence does not support.)*
+
+### What this investigation PROVED
+
+- ✓ Prefix routing is **architecturally incorrect** (the category error; `design-check.sh` vs `check_roles.php` in one directory, different owners).
+- ✓ Ownership is **architectural, not filesystem-based**.
+- ✓ The current reminder models **directories instead of ownership**.
+- ✓ The existing registry **already models ownership** — for *platform* assets.
+
+### What it did NOT prove
+
+- ✗ That the existing platform registry **should become** the ownership registry for **project** artifacts. That extends the registry's constitutional scope and **requires an explicit platform-architecture decision.** This investigation *identified* the question; it did not resolve it, and cannot.
+
+### The architectural invariant behind ANY chosen option
+
+> **Ownership is declared exactly once, and all engineering tooling derives its routing from that declaration.**
+
+This is not a protocol amendment and not a governance rule — it is the invariant that makes the reminder a *reader* rather than a second model-holder. It is the ubiquitous-language principle applied to ownership metadata: **the model lives once, and tooling projects from it.** Whether the single declaration lives in the platform registry, in a separate ownership registry, or in another governed artifact is precisely the open governance decision above.
+
+### Conditional recommendation
+
+**Option C is the architecturally preferred direction — conditional on a platform-governance decision that the registry's scope extends to project-side artifacts.** Until that decision exists, C is *not* an implementation path. **Option B remains the architecturally valid fallback**, with its cost stated honestly: it satisfies the invariant's routing behaviour while keeping the declaration inside tooling rather than in a governed model.
 
 - **Architectural decision.** Ownership is a property of the model, not of the filesystem. The registry already expresses exactly that (`path` → `component` → `trace`). Making the hook read it converts the reminder from an independent, drifting model into a projection of the governed one — and removes the class of defect rather than one instance of it.
 - **Implementation impact.** (1) Register the project-side gate assets with their owners as established in Phase 1 — **including the two corrections above**. (2) Add a *documentation-area* attribution per component (which `developer_guide/<area>/` discharges its DoD). (3) `dev-guide-reminder.sh` (AST-006) resolves changed paths through the registry instead of its three regexes. (4) Resolve the two ambiguities explicitly: migrations attributed to the owning table's context; shared libraries attributed to the chain they serve.
