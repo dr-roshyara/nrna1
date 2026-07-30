@@ -145,3 +145,46 @@ Nothing new but the handler and its registration. `ChallengeRef` · the PM · th
 - **(b) It is not cleanly provable under this harness.** On a malformed payload the relay's defensive `try/catch` around its **own** status update swallows a SQL error; PostgreSQL then refuses every later statement in the same transaction, so any post-relay assertion fails for a reason unrelated to the behaviour under test. **In production each statement autocommits, so nothing is poisoned — this is a test-harness interaction (the recorded F-7C-6 class), not a production defect.**
 
 **Progress:** ✔ Phases 1–9 · ✔ **G-2 decided** · ✔ **RED confirmed** · ⏳ GREEN (awaiting report acceptance) · ⏳ gates · ⏳ dev guide · ⏳ slice acceptance.
+
+---
+
+## WP-4 GREEN COMPLETE (2026-07-31) — STOP for slice acceptance
+
+**RED accepted by ARB 2026-07-31**, with one precision correction adopted verbatim: the claim is *"no new architectural uncertainty **within the authorized WP-4 scope** was exposed"* — a technical observation **was** made (relay failure path × single-transaction harness) and is now recorded as **AD-007** in `docs/implementation/Architecture_Debt_Backlog.md` rather than left to be forgotten. It is environment-specific, **not** architectural, and production code was correctly left unchanged.
+
+**Pre-GREEN traceability check (ARB-requested) — every RED failure maps to exactly one missing responsibility:**
+
+| RED failure | Missing production responsibility |
+|---|---|
+| No adjudication process opened | `ChallengeRoutedReactionHandler` |
+| Registration does not resolve | Consumer-side registration in `AdjudicationServiceProvider::boot()` |
+| No inbox row (audit continuity) | **Consequence** of the missing handler |
+| Redelivery / second-routing dedupe | **Consequence** of the same handler + PM-1's existing idempotency |
+| "Only Adjudication reacts" | Was vacuous; becomes meaningful once the handler exists |
+
+**No RED failure required an unrelated change** — confirmed *before* implementing. Two components, no more.
+
+### GREEN result — first run, no iteration
+
+`Tests: 6, Assertions: 10, OK.` Assertions rose 6 → 10 because the previously vacuous keystone now asserts real state.
+
+| Component | Lines of behaviour | Authority |
+|---|---|---|
+| `ChallengeRoutedReactionHandler` | `handle()` is one statement: reconstruct `ChallengeRef`, call `openFor()` | ADR-T21 · EPIC-004K §3 PM-1 |
+| Registration in `AdjudicationServiceProvider::boot()` | `(Adjudication, ChallengeRouted)` | PB-006 *Registration ≠ Delivery* |
+
+**Five defended absences, each recorded in the class docblock and the dev guide:** no outcome translator (G-2) · no `RoutedTo` VO · no import of Contestation's Domain (R-1) · no import of its hydrator (R-2/R-3 — the near-miss) · no provenance minting (R-6).
+
+**A sixth absence decided during GREEN:** no bespoke `PermanentInboxFailure` exception. The platform's exception-classification contract would require one *if the condition were reachable* — but a structurally invalid payload **cannot reach the handler**: the relay hydrates producer-side **before** dispatch, and `ChallengeRoutedHydrator` (WP-3A) already rejects a missing `challengeId` loudly. Confirmed by RED's own evidence (that hydration failure is exactly what withdrew keystone 5). `ChallengeRef` still refuses an empty identity, so the fallback is loud rather than a meaningless adjudication. Same enumeration discipline as G-2 — the absence is defended, not assumed.
+
+### Gates
+
+| Gate | Result |
+|---|---|
+| PHPStan max (`phpstan-greenfield.neon`) | ✅ **No errors** |
+| Deptrac (fail mode) | ✅ **0 violations** · 571 allowed — the cross-context Infrastructure import was avoided by design |
+| Architecture suite | ✅ 146 tests, 626 assertions green (5 PHPUnit deprecations, 1 legitimate skip) |
+| `tests/Feature/Contexts` | ⚠️ 17 Membership failures — **pre-existing, git-stash-verified** (identical counts with WP-4 stashed) → **AD-008** |
+| Developer guide (DoD) | ✅ `developer_guide/adjudication/04_challenge_routed_consumption.md` + index updated |
+
+**Progress:** ✔ Phases 1–9 · ✔ G-2 · ✔ RED accepted · ✔ **GREEN** · ✔ gates · ✔ dev guide · ⏳ **slice acceptance (STOP)**.

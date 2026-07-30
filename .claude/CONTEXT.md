@@ -10,7 +10,7 @@ durable constraints, and preferences live in `.claude/MEMORY.md`; history lives 
 recorded reversal condition.
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: WP-4 (APM wiring — Adjudication consumes ChallengeRouted) — OPEN, **G-2 DECIDED**, RED next; WP-3A GREEN awaiting slice acceptance; WP-1 + WP-2 ACCEPTED+CLOSED
+Ticket: WP-4 (APM wiring — Adjudication consumes ChallengeRouted) — **GREEN COMPLETE, gates pass, dev guide written; awaiting slice acceptance**; WP-3A GREEN also awaiting acceptance; WP-1 + WP-2 ACCEPTED+CLOSED
 Plan: .claude/plans/WP-4-apm-wiring.md
 Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ · WP-2 ✔ · WP-3A GREEN (acceptance pending) · WP-4 open · WP-3B deferred (needs a routing application service)

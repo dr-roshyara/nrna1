@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contexts\Adjudication\Infrastructure\Providers;
 
+use App\Contexts\Adjudication\Application\ChallengeRoutedReactionHandler;
 use App\Contexts\Adjudication\Application\Port\AdjudicationProcessStore;
 use App\Contexts\Adjudication\Application\Port\EventOutbox;
 use App\Contexts\Adjudication\Application\Port\IdentityGenerator;
@@ -18,6 +19,7 @@ use App\Contexts\Adjudication\Infrastructure\Outbox\OutboxEventAdapter;
 use App\Contexts\Adjudication\Infrastructure\Repositories\EloquentAdjudicationProcessStore;
 use App\Contexts\Adjudication\Infrastructure\Repositories\EloquentDeterminationRepository;
 use App\Contexts\Adjudication\Infrastructure\Transaction\LaravelTransactionManager;
+use App\Contexts\Shared\Infrastructure\Inbox\InboxHandlerRegistry;
 use App\Contexts\Shared\Infrastructure\Outbox\EventHydratorRegistry;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
@@ -62,5 +64,16 @@ final class AdjudicationServiceProvider extends ServiceProvider
         /** @var EventHydratorRegistry $registry */
         $registry = $this->app->make(EventHydratorRegistry::class);
         $registry->register(new DeterminationIssuedHydrator());
+
+        // WP-4: Adjudication registers ITSELF as a consumer of Contestation's
+        // published `ChallengeRouted`, so the relay/redrive resolves it by
+        // (consumerContext='Adjudication', eventType='ChallengeRouted').
+        // PB-006 *Registration =/= Delivery*: the CONSUMER decides that it
+        // consumes; Contestation never names Adjudication (contract R-7).
+        /** @var InboxHandlerRegistry $inboxRegistry */
+        $inboxRegistry = $this->app->make(InboxHandlerRegistry::class);
+        /** @var ChallengeRoutedReactionHandler $handler */
+        $handler = $this->app->make(ChallengeRoutedReactionHandler::class);
+        $inboxRegistry->register($handler);
     }
 }
