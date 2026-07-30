@@ -6,7 +6,7 @@
 |---|---|---|
 | Draft | Proposed only | — |
 | **Operational** | Currently followed | ✅ **HERE** (since 2026-07-30) |
-| Qualified | Demonstrated across N work packages (bar: 3+) | pending — 2 slices to date |
+| Qualified | Demonstrated through **sufficient operational evidence as determined by governance** — evidence-based, never numeric | pending (2 slices to date; sufficiency is governance's call, not a count) |
 | Governed | Official engineering standard | — |
 | Retired | Superseded | — |
 
@@ -96,7 +96,7 @@ This protocol is at **Operational Practice**, accumulating Operational Evidence.
 > **A good practice does not become a standard by being well liked.**
 > **Evidence + practice is not policy. A standard is an explicit act by governance.**
 
-Reasoning is subordinate to authority; authority is subordinate to the business. The second couplet is the first one applied to methodology — which is why this document is `OPERATIONAL`, not `GOVERNED`.
+**The pair is matched, and each half has its own domain:** the first governs **decisions** (architectural interpretation), the second governs **standards** (methodology promotion). Reasoning is subordinate to authority; authority is subordinate to the business. The second couplet is the first applied to methodology — which is why this document reads `OPERATIONAL` and not `GOVERNED`.
 
 ## Operational evidence register (DA refinement — mandatory for every protocol element)
 
@@ -138,11 +138,17 @@ Methodology here is an evidence-backed artifact: patterns are **discovered from 
 
 **If any answer becomes "no", the protocol itself is reconsidered through its own governance process** — a phase that costs more than it protects is a candidate for removal, not for defence.
 
+**Standing caution, sharper (DA, 2026-07-30): never let the sophistication of the protocol become a proxy for engineering quality.** The software is the primary artifact; the protocol exists to improve it. A more elaborate protocol is not a better one, and a session that produced governance refinement but no working software has produced less than it appears to.
+
 ## Artifact classes — FLAGGED, not defined here (a taxonomy already exists)
 
 The DA proposed three classes: **Runtime** (`.claude/`) · **Governance** (`engineering/governance/`) · **Historical evidence** (`.claude/sessions/`, `.claude/plans/`). The insight is right and this document obeys it — it sits in `.claude/` precisely because it is Runtime, not Governance.
 
-**But a governed taxonomy already exists and must not be forked.** **ES-004.3** defines **four artifact roles** — Runtime · Historical · **Reference** · **Decision** — where governance documents are classified *Reference* and rulings/acceptance records are *Decision*. The proposed "Governance" class therefore maps onto **Reference + Decision**, not onto a new fifth thing:
+> **The ubiquitous language lives once.**
+>
+> This is the DDD principle *underneath* "rules live once" — and the reason duplicate taxonomies are harmful: a second vocabulary for the same concepts splits the model, and a split model is the thing DDD exists to prevent. "Rules live once" is the filing consequence; the language is the cause.
+
+**A governed taxonomy already exists and must not be forked.** **ES-004.3** defines **four artifact roles** — Runtime · Historical · **Reference** · **Decision** — where governance documents are classified *Reference* and rulings/acceptance records are *Decision*. The proposed "Governance" class therefore maps onto **Reference + Decision**, not onto a new fifth thing:
 
 | DA's proposed class | ES-004.3 role(s) | Note |
 |---|---|---|
@@ -152,20 +158,82 @@ The DA proposed three classes: **Runtime** (`.claude/`) · **Governance** (`engi
 
 **Disposition:** no second taxonomy is created here (*rules live once* — ES-004.3 is the canonical home for artifact roles). The remaining question — *which physical location each role maps to* — is already the pending **Decision D-1** in `docs/implementation/Placement_Rule_Decision_Paper.md`, whose end-state is a hosted rule in **ES-005** (candidate ES-005.5), with moves deferred by **R-40/A3**. **Routed there, not decided here.**
 
-## Amendment log — this protocol governing its own amendment
+## Two feedback loops — distinct bounded contexts, deliberately not merged
 
-Its own rule: *amendments must themselves follow the protocol* (authority · evidence · traceability · explicit governance decision). Demonstrated, not merely declared:
+The project runs **two** control systems. They share vocabulary but not authority, and conflating them is how a process starts governing the thing it exists to serve.
 
-| # | Amendment | Authority | Evidence | Governance decision |
-|---|---|---|---|---|
-| A-1 | Formal `Status` field + lifecycle (Draft→Operational→Qualified→Governed→Retired) | DA instruction 2026-07-30 | Status was implicit; "level 1 of 3" conflated content maturity with lifecycle | DA ruling, explicit |
-| A-2 | Canonical hierarchy + precedence table | DA instruction 2026-07-30 | Precedence questions had been answered ad hoc in three separate turns | DA ruling, explicit |
-| A-3 | `Latest validation` column in the evidence register | DA instruction 2026-07-30 | Register recorded origin only; continued validity was unrepresentable | DA ruling, explicit |
-| A-4 | Outcome-based success criteria + the standing caution | DA instruction 2026-07-30 | No mechanism existed by which the protocol could be judged, or removed | DA ruling, explicit |
-| A-5 | Governing principle extended to methodology (practice→policy) | DA instruction 2026-07-30 | The reasoning→authority couplet had already been applied to methodology twice in practice (mapper, F-T1) before being stated | DA ruling, explicit |
-| A-6 | Artifact classes **flagged and routed** rather than defined | This protocol's Phase 16 + ES-004.3 | ES-004.3 already governs four artifact roles; D-1 already owns placement; a second taxonomy would fork a governed rule | **No decision taken** — routed to D-1 |
+**The engineering loop — governs software:**
 
-*A-6 is the log's most useful row: the protocol's own governance discipline stopped an amendment that would have duplicated a governed rule.*
+```
+Business  →  Architecture  →  Implementation  →  Operational Evidence
+```
+
+**The methodology loop — governs the engineering process:**
+
+```
+Observation  →  Protocol  →  Operational Practice  →  Evidence  →  Governance
+```
+
+| | Engineering loop | Methodology loop |
+|---|---|---|
+| Subject | the software | the process that produces it |
+| Authority | business → architecture | observation → governance |
+| Output | working, qualified software | a protocol at a recorded status |
+| Failure mode | architectural drift | **process becoming the objective** |
+
+**They are separate bounded contexts.** The methodology loop's output is *this document*; the engineering loop's output is *the software*. Only the second is the point. When the two compete for a session's attention, the engineering loop wins.
+
+## The protocol's own ubiquitous language (stabilized — resist renaming)
+
+These terms have stabilized through repeated use across WP-1, WP-2 and F-2. They are now vocabulary, not phrasing, and renaming any of them requires a domain reason — not a stylistic preference.
+
+| Term | Meaning |
+|---|---|
+| **Commission** | A bounded unit of work with its own authority, opened and closed explicitly |
+| **Authority** | The governing source: ADR · ARB ruling · DA decision · approved design |
+| **Business Model Fidelity** | Preservation of business semantics by a planned implementation |
+| **Traceability** | The component → authority mapping; nothing exists without one |
+| **Derived implication** | A logical consequence of explicit authority; implementable *with traceability* |
+| **Architectural assumption** | Plausible but not established; recorded and confirmed *before* implementation |
+| **Operational Practice** | What is currently followed (this document's status) |
+| **Operational Evidence** | Proof of repeated success, recorded per phase |
+| **Governance Review** | The explicit act that promotes practice to standard |
+
+## Separation of concerns — PREPARED, not executed
+
+This document currently mixes four concerns: execution (the phases) · evidence (the register) · governance (status, ladder, principles) · change history (the amendment log). **That is acceptable at `OPERATIONAL` status and is deliberately left as-is** — splitting now would create three artifacts to maintain for a protocol that may yet change shape.
+
+**Pre-governance preparation (a condition of promotion, not a task for today):** before any promotion to `GOVERNED`, split into —
+
+| Document | Concern |
+|---|---|
+| `IMPLEMENTATION_PROTOCOL.md` | the phases and their execution only |
+| `IMPLEMENTATION_PROTOCOL_EVIDENCE.md` | evidence register · validations · outcome metrics |
+| `IMPLEMENTATION_PROTOCOL_CHANGELOG.md` | the amendment log |
+
+Recorded here so promotion cannot quietly carry the mixed-concern shape into a governed standard. *(Same separation-of-concerns discipline applied to software design — and the same reason: one artifact, one responsibility.)*
+
+## Amendment log
+
+Its own rule: *amendments must themselves follow the protocol* (authority · evidence · traceability · explicit governance decision) — plus **Impact**, so a future reviewer sees at a glance why an amendment mattered.
+
+| # | Amendment | Authority | Evidence | Governance decision | **Impact** |
+|---|---|---|---|---|---|
+| A-1 | `Status` field + lifecycle | DA 2026-07-30 | Status implicit; "level 1 of 3" conflated content maturity with lifecycle | Explicit | Clarifies status; **no execution change** |
+| A-2 | Canonical hierarchy + precedence table | DA 2026-07-30 | Precedence answered ad hoc across three turns | Explicit | Clarifies precedence; **no execution change** |
+| A-3 | `Latest validation` column | DA 2026-07-30 | Register recorded origin only; continued validity unrepresentable | Explicit | Improves evidence tracking |
+| A-4 | Outcome-based success criteria | DA 2026-07-30 | No mechanism by which the protocol could be judged or removed | Explicit | **Adds a protocol evaluation (and termination) mechanism** |
+| A-5 | Governing principle extended to methodology | DA 2026-07-30 | The reasoning→authority couplet had been applied to methodology twice (mapper, F-T1) before being stated | Explicit | Completes the governance principle as a matched pair |
+| A-6 | Artifact classes **flagged and routed** | Protocol Phase 16 + ES-004.3 | ES-004.3 already governs four roles; D-1 already owns placement | **No decision taken** — routed to D-1 | **Prevented a duplicate governance taxonomy** |
+| A-7 | *"The ubiquitous language lives once"* elevated as the principle beneath *"rules live once"* | DA 2026-07-30 | A-6 was correct but under-explained: the harm is a split model, not untidy filing | Explicit | Names the DDD cause, not just the filing rule |
+| A-8 | `Qualified` de-numericized | DA 2026-07-30 | "3+ slices" hard-coded a governance judgement as a count | Explicit | **Sufficiency returns to governance**; no arithmetic gate |
+| A-9 | `Impact` column added to this log | DA 2026-07-30 | Log showed provenance but not consequence | Explicit | Future reviewers see *why* each amendment mattered |
+| A-10 | Two feedback loops documented as distinct bounded contexts | DA 2026-07-30 | Engineering and methodology loops had been described interchangeably | Explicit | **Names the failure mode: process becoming the objective** |
+| A-11 | Protocol ubiquitous-language glossary | DA 2026-07-30 | Nine terms stabilized through repeated use across WP-1/WP-2/F-2 | Explicit | Protects the vocabulary from stylistic renaming |
+| A-12 | Separation-of-concerns split **prepared, not executed** | DA 2026-07-30 | Four concerns share one document; acceptable at OPERATIONAL, not at GOVERNED | Explicit — **as a promotion condition** | Prevents promotion from carrying a mixed-concern shape into a standard |
+| A-13 | Caution: sophistication ≠ engineering quality | DA 2026-07-30 | The protocol grew materially in one day while one slice of software shipped | Explicit | **Keeps the software the primary artifact** |
+
+*The log's two most valuable rows record restraint rather than addition: **A-6** (an amendment the protocol stopped) and **A-13** (a caution against the protocol's own growth).*
 
 ## Traceability
 
