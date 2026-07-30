@@ -10,22 +10,23 @@ durable constraints, and preferences live in `.claude/MEMORY.md`; history lives 
 recorded reversal condition.
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: WP-3 (ChallengeRouted published language + mint relocation) — AUTHORIZED, assessment COMPLETE, RED next; WP-1 + WP-2 ACCEPTED+CLOSED (ARB 2026-07-27 / 2026-07-30)
-Plan: .claude/plans/WP-3-challengerouted-published-language.md
+Ticket: WP-4 (APM wiring — Adjudication consumes ChallengeRouted) — OPEN, **G-2 DECIDED**, RED next; WP-3A GREEN awaiting slice acceptance; WP-1 + WP-2 ACCEPTED+CLOSED
+Plan: .claude/plans/WP-4-apm-wiring.md
 Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
-Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ · WP-2 ✔ accepted · WP-3 authorized (2/8 WPs closed)
+Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ · WP-2 ✔ · WP-3A GREEN (acceptance pending) · WP-4 open · WP-3B deferred (needs a routing application service)
 Priority: High
 
-- **Detail:** WP-3 keystones (roadmap §WP-3): mint-at-route · `CorrelationIdMintingTest` green with the
-  relocated allowlist · catalog completeness green. Executed under
-  `.claude/IMPLEMENTATION_PROTOCOL.md` (**OPERATIONAL, frozen** — amendments only on operational
-  evidence from a completed WP). One flagged assumption to settle in RED: where the mint seats
-  without pre-building WP-5's raise path — if no seam exists, STOP and report.
+- **Detail:** WP-4 keystones: loop head fires (one process per routed challenge) · redelivery inert ·
+  registration resolves · correlation continuity (nothing minted) · malformed payload → permanent
+  failure · no cross-context import. **G-2 decided: no translator — a defended absence**, since a
+  chain-head consumption has no causal predecessor; reversal condition armed for the authority-decision
+  and evidence-admission slices. Crossing rules: `docs/architecture/Cross_Context_Integration_Contract.md`
+  (navigation) → ADR-T16/T3/T4/MP-06/PB-006.
 - **Engineering platform:** operational for the identified defects (EG-001..003 ✔); EG-002b ·
   EG-004 · EG-005 tracked in `docs/plans/20260726-2056-engineering-platform-repair-plan.md` — non-blocking.
 
 ## Next action (exactly one)
-**WP-3 RED** — write the Phase-10 keystone tests in `.claude/plans/WP-3-challengerouted-published-language.md`, confirm they fail for the expected reasons, report at the RED boundary before any production code.
+**WP-4 RED** — write the Phase-10 keystone tests in `.claude/plans/WP-4-apm-wiring.md`, confirm they fail for the expected reasons, report at the RED boundary before any production code.
 
 ## Blockers
 None.

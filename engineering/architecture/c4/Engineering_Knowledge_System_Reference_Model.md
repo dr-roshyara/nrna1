@@ -7,6 +7,8 @@
 **Revision 3 (2026-07-27, final clarifications — DA-reviewed form):** lifecycle-dimensions note added to §5 (orthogonal attributes; commissioned example corrected — no single artifact is Sealed+PROPOSED; the row aggregated two groups; canonical rule pointed to, not restated) · Engineering Theory consistently **EMERGING** (established only when its founding artifact exists) · Creation Note added to §10 **as revision provenance, not intrinsic property** (per DA rewording) · "fully clarified" claim not imported (completion-claim precedent).
 **Maintenance:** re-verified when any mapped artifact changes status; re-verification may conclude no change is required.
 
+**Change-Impact Verification 2026-07-31** (bounded maintenance under the rule above — **not** a refinement; the closed review stands). Findings: **2 stale references** — the rulings range `R-1..R-40` → **R-1..R-42** (R-41 ES-004.3 adoption · R-42 platform-registry scope), in both §4 and §5 · **1 unmapped artifact** — the implementation execution protocol, now inventoried under Runtime. **Verified as NOT requiring change:** ES-001..006 state (still PROPOSED; ES-004.3 is a clause within an already-mapped element, and this map inventories elements, not clauses) · Placement rule (still DRAFT, D-1..D-5 still with the DA) · Evidence corpus (*growing* remains accurate; 4 reports added). **Out of scope, deliberately not added:** the Cross-Context Integration Contract and the Artifact Ownership Decision Paper are **product**-side artifacts; this map covers the Engineering Knowledge System — the ownership paper's platform-facing outcome is already carried by R-42. **Conclusion: minor navigational updates only; no architectural change.**
+
 ---
 
 ## 1. What this model is for
@@ -47,7 +49,7 @@ graph TD
 DEPENDENCY CHAIN
 L1  Engineering Platform (reusable foundation)
       methodology modules (DDD adopted; more registerable) · governance (ES-001..006
-      PROPOSED · EEP STABLE · rulings R-1..R-40) · knowledge (metamodel CANDIDATE ·
+      PROPOSED · EEP STABLE · rulings R-1..R-42) · knowledge (metamodel CANDIDATE ·
       patterns candidate-tier · RQ-002 research, frozen, project-side) · runtime
       (registry CMP/AST · 7 hooks · merge gate; NO gateway — deferred by ruling)
       · qualification (OQ-ENG-001/002 executed · C3+OQ-ENG-003 · OQ-ENG-004 pending)
@@ -80,13 +82,14 @@ L6  Knowledge Evolution — the maturity ladder (§2 principle 4); promotion gat
 | Normative architecture | Engineering Platform Reference Architecture | DRAFT |
 | Knowledge ontology | Engineering Platform Knowledge Metamodel | **CANDIDATE** (gate: OQ-ENG-004) |
 | Placement rule | Placement Rule Decision Paper (→ ES-005.5) | DRAFT — **D-1..D-5** with the DA |
-| Rulings | ADR-AIP-LOG (R-1..R-40) | living, append-only |
+| Rulings | ADR-AIP-LOG (R-1..**R-42**) | living, append-only |
 | Theory layer | Engineering Foundations Reference | **EMERGING** — founding text queued; treated as established only when its foundational artifact exists |
 | Methodology modules | DDD Tactical Governance Principles | ADOPTED (R-39) — bind, never fork |
 | Learning | pattern cards EPC-001..018 + Evidence Register | candidate-tier; retrospective-gated |
 | Platform qualification | OQ-ENG-001/002 · C3+OQ-ENG-003 · OQ-ENG-004 | 2 executed · 2 awaiting fresh sessions |
 | Product governance stack | charter → binding (rev 3) → execution plan (rev 2) | PROPOSED → INERT → PREPARED; **one gate: the three asks** |
 | Runtime | registry + 7 hooks + CONTEXT/session machinery | operating |
+| Implementation execution protocol | `.claude/IMPLEMENTATION_PROTOCOL.md` (17 phases) | **OPERATIONAL · FROZEN for routine work** (R-41-adjacent; amendments require operational evidence from a completed WP) |
 | Evidence corpus | verification/ + session logs | append-only, growing |
 
 ## 6. The recurring pattern: two lifecycles, never conflated (GEP-F1, generalized)
