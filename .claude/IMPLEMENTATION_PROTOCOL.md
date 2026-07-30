@@ -11,6 +11,23 @@
 | Retired | Superseded | — |
 
 *The status is a lifecycle independent of the content: the protocol's text can change without its status changing, and its status can change without its text changing.*
+
+## FROZEN FOR ROUTINE WORK (DA, 2026-07-30)
+
+**The protocol is operationally complete.** No amendment will be considered unless justified by **operational evidence from a completed work package**.
+
+| Trigger | Action |
+|---|---|
+| Operational evidence from a completed WP | Propose an amendment through the amendment rule |
+| A design discussion in isolation | Record as an **observation** — do not amend |
+| A conceptual refinement without evidence | Record as a **candidate** — do not amend |
+| The same failure across 2+ WPs | **Strong trigger** — systemic deficiency |
+
+The trigger is *"WP-X exposed a recurring problem this protocol does not address"* — never *"we have a good idea."*
+
+> **Never let the sophistication of the protocol become a proxy for engineering quality.** The software is the primary artifact; the protocol exists to improve it. A session that produced governance refinement but no working software has produced less than it appears to. *(A-13, surfaced here because it guards against the protocol becoming self-referential.)*
+
+**From here the protocol proves itself by outcomes — better software, fewer architectural corrections, less rework — not by new sections.**
 **Issued by:** Principal Architect / Decision Authority, 2026-07-30 · **Applies to:** implementation execution (work packages)
 **Home rationale:** `.claude/` is the runtime mount point. This document records *what is currently being followed*, not what governance has ratified — so it deliberately does **not** live in `engineering/governance/`.
 
@@ -96,7 +113,10 @@ This protocol is at **Operational Practice**, accumulating Operational Evidence.
 > **A good practice does not become a standard by being well liked.**
 > **Evidence + practice is not policy. A standard is an explicit act by governance.**
 
-**The pair is matched, and each half has its own domain:** the first governs **decisions** (architectural interpretation), the second governs **standards** (methodology promotion). Reasoning is subordinate to authority; authority is subordinate to the business. The second couplet is the first applied to methodology — which is why this document reads `OPERATIONAL` and not `GOVERNED`.
+> **A good protocol does not grow by being refined.**
+> **Evidence + practice is not amendment. A change is justified only by operational deficiency.**
+
+**The three couplets are one principle at three altitudes** — decisions · standards · the protocol itself. Each half has its own domain: the first governs **decisions** (architectural interpretation), the second governs **standards** (methodology promotion). Reasoning is subordinate to authority; authority is subordinate to the business. The second couplet is the first applied to methodology — which is why this document reads `OPERATIONAL` and not `GOVERNED`.
 
 ## Operational evidence register (DA refinement — mandatory for every protocol element)
 
@@ -233,7 +253,9 @@ Its own rule: *amendments must themselves follow the protocol* (authority · evi
 | A-12 | Separation-of-concerns split **prepared, not executed** | DA 2026-07-30 | Four concerns share one document; acceptable at OPERATIONAL, not at GOVERNED | Explicit — **as a promotion condition** | Prevents promotion from carrying a mixed-concern shape into a standard |
 | A-13 | Caution: sophistication ≠ engineering quality | DA 2026-07-30 | The protocol grew materially in one day while one slice of software shipped | Explicit | **Keeps the software the primary artifact** |
 
-*The log's two most valuable rows record restraint rather than addition: **A-6** (an amendment the protocol stopped) and **A-13** (a caution against the protocol's own growth).*
+| A-14 | **Freeze for routine work** | DA 2026-07-30 | Thirteen amendments and one software slice in a single day; A-13's risk demonstrated by the log itself | Explicit | **Freezes the protocol for routine work**; amendment now requires operational evidence, not a good idea |
+
+**The log's arc is its own evidence.** Early amendments *added capability* (A-1..A-5: status, hierarchy, evidence tracking, evaluation, principle). Later ones *added restraint* (A-6 stopped a duplicate taxonomy · A-8 removed an arbitrary numeric gate · A-12 delayed a document split · A-13 constrained growth · A-14 froze it). A governance model whose amendments shift from adding mechanism to limiting unnecessary mechanism is maturing — and the most valuable rows remain the ones recording what did **not** happen.
 
 ## Traceability
 
