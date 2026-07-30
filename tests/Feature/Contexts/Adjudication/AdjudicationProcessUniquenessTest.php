@@ -105,16 +105,24 @@ final class AdjudicationProcessUniquenessTest extends TestCase
         $this->store()->save($this->opened('apm-2', 'ch-race'));
     }
 
-    // ── F-T1: the constraint binds ACTIVE processes, not all processes ever ──
+    // ── F-T1: the backstop is scoped EXACTLY like the guard it backs ────────
 
-    public function test_a_new_process_may_open_after_the_previous_one_expired(): void
+    public function test_the_uniqueness_constraint_does_not_forbid_what_the_guard_permits(): void
     {
-        $expired = $this->opened('apm-1', 'ch-reopen')->expire($this->at('2026-09-28T10:00:00+00:00'));
-        $this->store()->save($expired);
+        // SCOPE — what this test does and does not claim (Business Assumption
+        // Review, plan §13.4):
+        //   It DOES assert WP-2's storage obligation: the unique-index backstop is
+        //   scoped exactly like §6's guard, which reads "no ACTIVE process exists"
+        //   (and PM-1: "open exactly one ACTIVE process per challenge"). A backstop
+        //   stricter than its guard would fire on cases the guard permits.
+        //   It does NOT assert that an expired challenge is ever re-routed. Whether
+        //   Contestation re-routes is Contestation's business (WP-5); the ARB ruled
+        //   only that expiry RETURNS the challenge there. WP-2 asserts no business
+        //   behaviour it does not own.
+        $this->store()->save(
+            $this->opened('apm-1', 'ch-reopen')->expire($this->at('2026-09-28T10:00:00+00:00'))
+        );
 
-        // Horizon expiry returns the challenge to Contestation, which may route it
-        // again — so a fresh process is lawful. The uniqueness constraint must not
-        // forbid what the state machine's own guard permits.
         $this->store()->save($this->opened('apm-2', 'ch-reopen'));
 
         $active = $this->store()->activeForChallenge(ChallengeRef::fromString('ch-reopen'));

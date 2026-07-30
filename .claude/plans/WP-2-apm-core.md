@@ -234,3 +234,63 @@ Strictly prohibited:   saga/compensation · sufficiency or legitimacy computatio
 **Design proposals the RED encodes** (RED is where the API is proposed — all authority-traceable): immutable state (Governance PM precedent ⇒ "no mutation on illegal transition" becomes structural) · store surface of 3 methods covering §11's 5 named operations (`activeForChallenge` · `save` · `dueForHorizon`) — RMSP spirit, no query zoo · duplicate decision = idempotent no-op, matching inbox replay semantics rather than throwing.
 
 **Progress:** ✔ authority · ✔ domain · ✔ strategic DDD · ✔ business-model fidelity · ✔ tactical · ✔ traceability review (+ self-caught mapper correction) · ✔ **RED confirmed** · ⏳ GREEN (awaiting report acceptance) · ⏳ gates · ⏳ dev guide · ⏳ ARB slice acceptance.
+
+---
+
+## 13. Business Assumption Review (PA pre-GREEN checkpoint, 2026-07-30)
+
+### 13.1 A tension in the proposed three-way split, surfaced first
+
+The checkpoint classified F-T1's parts separately: *"uniqueness binds ACTIVE processes (partial index)"* = **Derived Implication (safe)**, while *"a new process may open after expiry"* = **Architectural Assumption (needs acceptance)**.
+
+**Those two are the same fact viewed twice.** A partial unique index **is** "reopening is permitted" at the storage level; a full unique index **is** "reopening is forbidden". There is no neutral index. So the parts cannot hold different classifications — F-T1 must be classified as one thing, and (were it an assumption) at the weakest classification of its parts.
+
+### 13.2 The decisive evidence — the constraint is EXPLICIT, not derived
+
+The word "active" appears in the authority **twice, independently**:
+
+| Source | Exact text |
+|---|---|
+| **EPIC-004K §3, PM-1** (the responsibility itself) | *"Receive the adjudication request for a routed challenge and **open exactly one active process per challenge**"* |
+| **EPIC-004K §6** (the ∅ → Opened guard) | *"No **active** process exists for this challenge (PM-1's uniqueness)"* |
+| **EPIC-004K §5**, Expired | *"a distinct **terminal fact**, never a silent disappearance"* — terminal for **that process**; the emphasis is that expiry is *recorded*, not that future processes are barred |
+
+The alternative reading ("one process per challenge forever") would require the guard to read *"no process exists"* — which **contradicts** the explicit word "active" in two independent places. It is therefore not an equally-supported interpretation; it is excluded by the text.
+
+### 13.3 Corrected classification
+
+| Interpretation | Classification | Evidence | Action |
+|---|---|---|---|
+| Uniqueness binds **active** processes | **EXPLICIT AUTHORITY** | §3 PM-1 + §6 guard (twice, independently) | Implement |
+| Partial unique index (backstop scoped like the guard it backs) | **Derived Implication** | A backstop stricter than its guard would fire on cases the guard permits — an incoherent two-seat pattern | Implement |
+| `AdjudicationProcessId` required | **Derived Implication** | >1 row per challenge over time ⇒ row identity ≠ `challenge_ref` | Implement |
+| **"A new process MAY open after expiry" as business behavior** | **NOT WP-2's to assert** | Whether Contestation re-routes an expired challenge is *Contestation's* business (WP-5); the ARB ruled only that expiry *returns* the challenge there | **RED claim narrowed — see 13.4** |
+| Immutable state; 3-method store surface | Derived Implication | Governance PM precedent · §11's 5 operations · RMSP | Implement |
+| Duplicate decision = idempotent no-op | Derived Implication | Exactly-once is explicit (§6); the *mechanism* follows the Governance terminal-guard precedent; dead-lettering a late decision is transport = **WP-4** | Implement |
+
+### 13.4 Action taken — the RED claim is narrowed, not deleted
+
+The checkpoint's concern is upheld in substance: RED must not assert business behavior WP-2 does not own. But deleting the test outright (Option C) would also drop a genuine WP-2 obligation — that the storage backstop is scoped **exactly** like §6's guard.
+
+**Both are satisfied by narrowing the claim.** The test is reframed from asserting *"a new process may open after expiry"* (business behavior, Contestation's, undecided) to asserting *"the uniqueness constraint does not forbid what §6's guard permits"* (WP-2's storage-seam obligation, explicit authority). The docblock states the boundary explicitly.
+
+### 13.5 Pre-GREEN Readiness Statement
+
+```text
+Business Assumption Review — COMPLETE
+
+All newly discovered interpretations classified (6).
+No architectural assumption remains encoded as settled business behavior:
+    the one over-claim (may-reopen-as-business-behavior) is narrowed to the
+    storage-seam obligation WP-2 actually owns.
+F-T1's constraint reclassified upward: EXPLICIT AUTHORITY (§3 PM-1 + §6),
+    not an assumption -- the alternative reading contradicts the text.
+Open, and deliberately NOT asserted by WP-2:
+    whether Contestation re-routes an expired challenge (Contestation's, WP-5).
+
+GREEN authorized — subject to the DA confirming the 13.2 derivation.
+If the DA disagrees, Option B (decision paper -> ARB) remains available and
+    nothing in WP-2 depends on the business behavior either way.
+```
+
+**Principle reaffirmed (and now applied to my own reasoning twice in one slice):** *a good question does not become a decision by being well argued* — its general form: **evidence + reasoning ≠ decision; a decision is an explicit act by an authority.** What changed here was not the business rule but the *claim* the test makes about it.
