@@ -237,6 +237,20 @@ Recorded here so promotion cannot quietly carry the mixed-concern shape into a g
 
 Its own rule: *amendments must themselves follow the protocol* (authority · evidence · traceability · explicit governance decision) — plus **Impact**, so a future reviewer sees at a glance why an amendment mattered.
 
+**Mandatory form of every FUTURE amendment (DA freeze commission, 2026-07-30 — this is not itself an amendment; it is the shape all subsequent ones must take):**
+
+> **Amendments shall describe the deficiency they correct before describing the solution they introduce.**
+
+| Field | Question it must answer |
+|---|---|
+| **Observed deficiency** | What failed or proved insufficient *during execution*? |
+| **Operational evidence** | Which **completed** work package demonstrated it? |
+| **Root cause** | Why did the existing protocol fail to prevent it? |
+| **Amendment** | What changes? |
+| **Expected impact** | What should improve? |
+
+Deficiency-first ordering is the point: an amendment that cannot name what broke has nothing to correct. *(The rows below predate this form; A-15 onward must use it.)*
+
 | # | Amendment | Authority | Evidence | Governance decision | **Impact** |
 |---|---|---|---|---|---|
 | A-1 | `Status` field + lifecycle | DA 2026-07-30 | Status implicit; "level 1 of 3" conflated content maturity with lifecycle | Explicit | Clarifies status; **no execution change** |
