@@ -337,3 +337,24 @@ Inserted permanently between Architectural Traceability and RED. **GREEN AUTHORI
 **Dev guide:** `developer_guide/adjudication/03_adjudication_process_manager_core.md` (+ index row).
 
 **Progress:** ✔ authority · ✔ domain · ✔ strategic DDD · ✔ business-model fidelity · ✔ tactical · ✔ traceability review · ✔ business assumption review · ✔ RED · ✔ **GREEN** · ✔ **merge-gate** · ✔ dev guide · ⏳ triple qualification + ARB slice acceptance.
+
+## 15. Triple Qualification (2026-07-30) — all three categories PASS
+
+**Architecture.** `composer merge-gate` PASS on a fresh run: Architecture fitness 146✔ (hexagonal completeness · event ownership · readonly events · **AT-Q7 anonymity scan**) · **Deptrac 0 violations** — the new files respect the per-context hexagonal layering (Application → own Domain only; Infrastructure → Domain+Application; no cross-context edge) · greenfield PHPStan **No errors** at max · widened regression 211✔/0 failed. No fitness rule needed changing, so no architectural defect was introduced.
+
+**DDD.** Ownership unchanged: the APM is Application-seated **orchestration**, not an aggregate (Candidate-2 ruling honoured — no `Domain/` class added, no domain repository). The `Determination` aggregate's eight invariants are untouched; the PM **requests** issuance and never issues. Four value objects reused in-context rather than duplicated (`EvidenceSet`, `ChallengeRef`, `IssuedByAuthority`, `Reason`); only two new value concepts. The slice touched **only** `app/Contexts/Adjudication` (+ its own tests and guide). No new pattern minted; no published language changed (WP-3 owns that).
+
+**Trustworthiness.**
+- *Anonymity:* evidence is opaque references only, in state, row and JSON columns — no voter↔vote linkage is representable (ADR-T11; AT-Q7 scan green).
+- *Forward-only:* terminal states admit no further conduct; no reverse or rescind exists.
+- *Immutability:* state transitions return new instances — a refused step cannot mutate anything.
+- *Replay safety:* every manager entry point is idempotent (duplicate request opens no second process; a decision for a concluded process is a no-op).
+- *Tenant isolation:* `BelongsToTenant` + tenant-scoped queries + a Feature test asserting a process is invisible to another organisation.
+- *Constitutional invariants:* Policy 4 pinned by test (expiry records no conclusion, no considered set, no authority) · exactly-one-conclusion-of-one-kind enforced by guard · K1/Q-1/ADR-T23 honoured structurally (nothing computes legitimacy or sufficiency).
+- *Causal ordering:* not applicable to this slice — no messaging is wired (WP-4).
+
+**Conformance gate (measurable):** no frozen-invariant test was touched; no frozen ADR was deviated from; every component cites an issued decision (plan §11.1); the two GREEN findings are recorded rather than absorbed.
+
+## 16. Next action (exactly one)
+
+**STOP — ARB slice acceptance of WP-2.** WP-3 opens only on that acceptance. Recorded for the review: the §11.3 mapper-consolidation *proposal* (not executed) · the F-T1 derived-implication record with its revision condition.
