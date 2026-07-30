@@ -265,3 +265,19 @@ The corrective-edit turn contains, immediately before the write, a full `Read` o
 The commission articulated a real distinction: **design validation** asks *"is this the right design?"*; **implementation verification** asks *"was the approved design implemented faithfully?"* — different quality gates. This instance is also evidence for a second, subtler point: **implementation verification must be evidence-led, because a reviewer's reading of a transcript is not the state of the repository.** Filed alongside the three hygiene lenses (§8.3) as reusable observations; no standard minted (evidence-before-promotion).
 
 **F-2 COMMISSION CLOSED — design approved, implementation verified exact.**
+
+---
+
+## 10. F-2 COMMISSION CLOSED (PA declaration, 2026-07-30)
+
+```text
+F-2 Status
+    Architecture:    CLOSED
+    Implementation:  VERIFIED
+    Repository:      VERIFIED
+    Outstanding improvements (owned elsewhere, NOT F-2 prerequisites):
+        • D-1 placement proposal          → Placement Rule Decision Paper
+        • Methodology harvest candidate   → ES-006
+```
+
+Nothing further belongs to F-2. Closed commissions are not reopened by refinement.

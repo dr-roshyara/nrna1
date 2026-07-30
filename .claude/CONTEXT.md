@@ -10,8 +10,8 @@ durable constraints, and preferences live in `.claude/MEMORY.md`; history lives 
 recorded reversal condition.
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: WP-2 (EPIC-004 APM core) — AUTHORIZED, opens in a fresh session with its own work plan; WP-1 ACCEPTED+CLOSED (ARB 2026-07-27)
-Plan: .claude/plans/WP-1-evidenceset-v3.md
+Ticket: WP-2 (EPIC-004 APM core) — EXECUTING: pre-implementation assessment COMPLETE, RED is next; WP-1 ACCEPTED+CLOSED (ARB 2026-07-27)
+Plan: .claude/plans/WP-2-apm-core.md
 Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ accepted · WP-2 authorized (1/8 WPs closed)
 Priority: High
@@ -19,12 +19,12 @@ Priority: High
 - **Detail:** WP-2 keystones (roadmap §WP-2): exactly-once conclusion under concurrent redelivery ·
   no admission after conclusion · unique-active-per-challenge under race. Execution-contract
   pattern: `.claude/plans/WP-1-evidenceset-v3.md` (Auto mode · RED first · STOP conditions).
-  The WP-2 session creates its own plan and re-points the `Plan:` line.
+  WP-2's plan carries its own authority register + business-model fidelity review; RED is the next step.
 - **Engineering platform:** operational for the identified defects (EG-001..003 ✔); EG-002b ·
   EG-004 · EG-005 tracked in `docs/plans/20260726-2056-engineering-platform-repair-plan.md` — non-blocking.
 
 ## Next action (exactly one)
-**WP-2, fresh session, RED first** (slice acceptance before anything else opens).
+**WP-2 RED** — write the §6 keystone tests in `.claude/plans/WP-2-apm-core.md`, confirm they fail for the expected reasons, report at the RED boundary before any production code.
 
 ## Blockers
 None.
