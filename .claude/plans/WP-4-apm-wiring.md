@@ -53,15 +53,27 @@
 
 ### Decision
 
-> **No translator is introduced in WP-4 — and this is a defended absence (ASP), not an omission.**
+> **No translator is introduced, because no application-owned outcome-translation responsibility exists within the currently authorized scope.** A defended absence (ASP), not an omission.
 >
-> Every condition a loop-head consumption can produce maps to **success**, to a **platform-owned seat** (dedupe, retry), or to the **already-existing loud validation failure**. There is no business condition left for a translator to translate. Building `ChallengeReactionOutcomeTranslator`'s counterpart now would be a class with **no case to handle** — a component without authority.
+> *(Rationale tightened at ARB review: this is the durable form. The chain-head property is **not** the justification — it is the **explanation of why** no such business condition currently exists. Stated as "responsibility does not exist", the decision survives refactoring; stated as "it is the chain head", it would need re-deriving every time the topology changed.)*
+>
+> Every condition maps to **success**, to a **platform-owned seat** (dedupe, retry), or to the **already-existing loud validation failure**. Building `ChallengeReactionOutcomeTranslator`'s counterpart now would be a class with **no case to handle** — a component without authority.
 
 **Why the PM needs no change (WP-2 stays accepted, untouched):** F-1 is satisfied *trivially and structurally* — the PM's entry points are `void` and name nothing; there is no messaging vocabulary to remove, and none is added. The readiness review's concern was that the PM might *acquire* such vocabulary; this decision guarantees it does not.
 
 **Reversal condition (recorded, armed):** the translator becomes **necessary** the moment Adjudication consumes a message with a genuine causal predecessor — specifically **the authority's decision** (which must not be honoured before a process is `AwaitingDecision`) or **evidence admissions** (which must not precede the process opening). Both are later slices. **When either lands, G-2 reopens and the translator is built then**, with real cases to handle. Precedent to follow at that point: `ChallengeReactionOutcomeTranslator` + its marker exceptions.
 
 *This mirrors PB-005's own history in reverse: Contestation needed parking because its reactions had predecessors; the loop head has none.*
+
+### The positive rule behind the absence (ARB refinement)
+
+> **Application-layer components are introduced only when they own a business decision or translation responsibility not already owned by the platform or the domain.**
+>
+> Future work packages then ask exactly one question: *does this component own unique business responsibility?* Yes → introduce it. No → do not create it.
+
+**This is not a new principle — it is a sharper formulation of the protocol's existing Phase 6**, which already binds: *"Every class, enum, port, mapper, event, migration and test answers 'which authority requires this?' No authority → do not create it."* The refinement adds the **ownership test** as the operational way to answer that question.
+
+**Disposition:** recorded here as the reasoning for G-2, **not** minted as a new rule — the protocol is FROZEN and amendments require operational evidence from a *completed* work package. **Candidate refinement to Phase 6's wording, proposable at WP-4's closure**, with this slice as its first evidence. *(Also compare: the Responsibility Traceability Rule — "responsibilities are discovered, not invented" — is the same instinct applied to aggregate duties.)*
 
 ## Phase 6 — Architectural Traceability
 
@@ -102,3 +114,34 @@ Nothing new but the handler and its registration. `ChallengeRef` · the PM · th
 ## Next action (exactly one)
 
 **Write the Phase-10 RED tests and confirm they fail for the expected reasons. Report at the RED boundary before any production code.**
+
+---
+
+## WP-4 RED WRITTEN + CONFIRMED (2026-07-31) — STOP at the RED boundary
+
+**6 tests · 5 failing for the expected reasons · 1 passing vacuously (declared as such).**
+
+| Keystone | Test | RED reason |
+|---|---|---|
+| 1 — the loop head fires | `…opens_exactly_one_adjudication_process` | `0 !== 1` — no consumer exists |
+| 2 — redelivery inert (dedupe) | `test_redelivery_opens_no_second_process` | same |
+| 2b — PM-1 idempotency across distinct messages | `…second_routing…opens_no_second_process` | same |
+| 3 — registration is consumer-side | `…registers_itself_as_a_consumer…` | `has('Adjudication','ChallengeRouted')` is false |
+| 4 — audit continuity | `…continues_the_incoming_conversation` | no inbox row exists |
+| 6 — only Adjudication reacts | `…no_contestation_side_effect` | **passes vacuously** — no consumer exists at all yet, so it is true for the wrong reason today; it becomes meaningful after GREEN |
+
+**Delivery runs the REAL path** — `ChallengeEventOutbox` (WP-3A's publication) → `OutboxEventProcessor::handle()` → dispatcher → inbox → handler. Nothing hand-stitched.
+
+### Findings recorded during RED authoring (three Phase-15 diagnoses, all "incorrect test")
+
+1. **`InboxHandlerRegistry` is `Shared\Infrastructure\Inbox`, not `…\Application\Inbox`** — wrong import.
+2. **`outbox_events` carries no Eloquent timestamps** — a hand-built row set `updated_at`; the schema guess was wrong.
+3. **The hand-built row also guessed `id`** (DB-generated). **Root fix rather than another patch:** the test now publishes through the real adapter and *corrupts the payload afterwards*, so it stops guessing the outbox schema entirely.
+
+### KEYSTONE 5 REMOVED — with the reason recorded, not silently dropped
+
+*"A malformed payload must never open a process"* is **not** tested at Feature level:
+- **(a) Its business content is already proven** by WP-3A's hydrator tests (`test_missing_required_field_fails_loudly`, `test_unsupported_schema_version_is_rejected`). A Feature repeat re-proves one rule through more machinery.
+- **(b) It is not cleanly provable under this harness.** On a malformed payload the relay's defensive `try/catch` around its **own** status update swallows a SQL error; PostgreSQL then refuses every later statement in the same transaction, so any post-relay assertion fails for a reason unrelated to the behaviour under test. **In production each statement autocommits, so nothing is poisoned — this is a test-harness interaction (the recorded F-7C-6 class), not a production defect.**
+
+**Progress:** ✔ Phases 1–9 · ✔ **G-2 decided** · ✔ **RED confirmed** · ⏳ GREEN (awaiting report acceptance) · ⏳ gates · ⏳ dev guide · ⏳ slice acceptance.
