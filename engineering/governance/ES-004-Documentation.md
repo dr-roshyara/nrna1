@@ -26,15 +26,42 @@
   - When citing a plan from long-lived documents, prefer the work-item id it serves (e.g. "the EPIC-002 discovery plan") over the raw filename. A superseding plan references the superseded plan's filename in its traceability section.
   - Existing plans in `.claude/plans/` / `claude/plans/` are historical records — they stand where they are (no migration; R-37). The convention applies from the next plan onward. *Bindings reconciled 2026-07-11 (user-authorized): root `CLAUDE.md` and `.claude/CLAUDE.md` plan sections are now pointers to this rule — the convention lives once, here.*
 
-**ES-004.3 — Artifact Lifecycle Consistency** *(Principal Architect instruction, 2026-07-30 — register R-41; provenance: the WP-1 closure inconsistency, a CLOSED work plan whose header still read "AUTHORIZED — execution begins…")*:
+**ES-004.3 — Artifact Lifecycle Consistency** *(Principal Architect instruction, 2026-07-30 — register R-41; provenance: the WP-1 closure inconsistency, a CLOSED work plan whose header still read "AUTHORIZED — execution begins…". Refined ROLE-BASED the same day per ARB review — structure and clarity only, substance unchanged.)*:
+
 - **Principle:** an artifact has **one authoritative lifecycle state at any moment**. When work crosses a lifecycle boundary (authorization → execution → acceptance → closure), every authoritative artifact transitions with it; stale execution wording never remains inside completed artifacts. Artifacts are engineering evidence — their lifecycle state must be as correct as their technical content.
-- **Work-plan lifecycle (exactly these stages):** Draft → Authorized → Executing → Accepted → **Closed (historical record)**. After a transition, the previous state no longer describes the artifact.
-- **Historical Record Rule:** an accepted work plan becomes historical evidence, not an execution document — its header is rewritten to the closed state; future execution references the successor plan.
-- **Separation of concerns:** the **work plan** states the *present* authoritative state; the **session log** preserves the *sequence of past states* (append-only, ES-004.2). "STOP — awaiting acceptance" may stand in a session log forever, because it happened; it may not stand in a closed work plan.
-- **Artifact Synchronization Rule — minimum checklist at every slice closure:** ☐ Work Plan · ☐ CONTEXT.md · ☐ Session Log · ☐ Developer Guide · ☐ Acceptance Record · ☐ ADR references. Every artifact must describe the same program state.
-- **Consistency review before the closure commit:** does any artifact still describe the slice as future work? execution as pending? authorization after acceptance? contradict the accepted lifecycle state? If yes — update the artifact before commit.
+- **Work-plan lifecycle (exactly these stages):** Draft → Authorized → Executing → Accepted → **Closed (historical record)**. After a transition, the previous state no longer describes the artifact. An accepted work plan becomes historical evidence, not an execution document — its header is rewritten to the closed state; future execution references the successor plan.
+
+**Artifact Roles** *(the architectural rationale — different artifact classes have different lifecycle semantics; the checklist is role-based, never a bare file list)*:
+
+| Role | Examples | Rule |
+|---|---|---|
+| **Runtime** | CONTEXT.md · the active Work Plan | Must describe **today's execution state** |
+| **Historical** | Session Logs · git history | Preserve **chronological truth** — never rewritten for consistency (ES-004.2) |
+| **Reference** | Developer Guides · governance documents | Describe **current engineering knowledge** — updated only when knowledge changes |
+| **Decision** | ADR logs · rulings registers · acceptance records | **Decision text immutable; status annotations may evolve** |
+
+**Mutable vs Immutable** *(the governing distinction)*: **synchronization updates only the mutable portion of an artifact; immutable historical or decision content is never rewritten.**
+
+| Mutable (may be updated) | Immutable (never rewritten) |
+|---|---|
+| Work-plan status · CONTEXT.md content · current implementation references · status annotations | Original ADR/ruling decision text · session history · historical review text |
+
+*(Demonstrated on first execution: ADR-T22's stale "Implementation NOT yet authorized" was corrected by evolving the status ANNOTATION — the decision text untouched. "We update ADRs when implementation changes" is exactly the misreading this distinction forbids.)*
+
+**Role-based synchronization checklist at every slice closure** — every artifact must describe the same program state:
+
+| Role | Check | Purpose |
+|---|---|---|
+| Runtime | Work-plan status matches the current lifecycle state | Execution state |
+| Runtime | CONTEXT.md reflects the current work | Current context |
+| Historical | Session log records the work (append-only) | Chronological truth |
+| Reference | Developer guide updated for the slice | Knowledge |
+| Decision | ADR status annotations reflect implementation reality | Decision status |
+| Decision | Acceptance record recorded | Governance |
+
+- **Consistency review before the closure commit:** does any artifact still describe the slice as future work? execution as pending? authorization after acceptance? contradict the accepted lifecycle state? If yes — update the artifact's **mutable portion** before commit.
 - **Historical Integrity Rule:** never rewrite history to manufacture consistency — history remains chronological (git + session logs); current documents remain current. (Same discipline as code: source has one current implementation, ADRs one current decision, work plans one current lifecycle state; evolution belongs in history, not in stale status fields.)
-- **Expected AI behavior at work-package closure:** detect the lifecycle transition → update the work-plan status → verify all authoritative artifacts (checklist above) → leave session history unchanged → commit only after lifecycle consistency is satisfied.
+- **Expected AI behavior at work-package closure:** detect the lifecycle transition → update the work-plan status → verify all authoritative artifacts by ROLE (checklist above) → leave session history unchanged → commit only after lifecycle consistency is satisfied.
 
 ## Registered (pointers)
 
