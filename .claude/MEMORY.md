@@ -58,7 +58,7 @@
   · Rule parsimony + documents-record-governance → **ES-001**
   · Implementation-first default + observation stop (EEP/EP/ER registered) → **ES-002**
   · Qualification lifecycle (never fix in-run; PASS-AFTER-CORRECTION; F-/CR-/OQ- series) + score-persistence stop + measurement conventions → **ES-003**
-  · Retrospectives-recommend + record conventions (append-only logs; ids not filenames; one responsibility per record type) → **ES-004**
+  · Retrospectives-recommend + record conventions (append-only logs; ids not filenames; one responsibility per record type) + **artifact lifecycle consistency at slice closure (ES-004.3, R-41: plans state the present, logs keep history; sync checklist Work Plan·CONTEXT·Log·Guide·Acceptance·ADR refs)** → **ES-004**
   · Three-concern separation + folder rule + placement litmus → **ES-005**
   · Promotion ladder + research freeze (no Level 5) + harvest discipline + harvest question ("did this work REVEAL reusable engineering knowledge?" — No is the healthy default) → **ES-006 Engineering Knowledge Governance**
   · **Plans are TWO concepts (ADOPTED 2026-07-11):** Work Plan (Runtime, ephemeral, `.claude/plans/` = plansDirectory) vs Engineering Plan (governed EP-01 deliverable, `docs/plans/`, `YYYYMMDD-HHMM-<what>-plan.md`) — paper: `docs/implementation/Plan_Concept_Decision_Paper.md`; rulings register now R-30..R-40 *(hint corrected 2026-07-28: the stale "..R-38" nearly caused real ruling R-40 to be dismissed as fabricated — the register is the truth, this line is a hint)*

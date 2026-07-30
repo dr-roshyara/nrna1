@@ -757,3 +757,4 @@ Never finish a work session without updating these files.
 - Keep plans and session logs concise but complete.
 - Never create randomly named plan files.
 - Treat planning and documentation as part of the implementation, not as optional work.
+- **Artifact lifecycle consistency (POINTER — canonical rule: ES-004.3, `engineering/governance/ES-004-Documentation.md`):** at every slice closure, run the synchronization checklist (Work Plan · CONTEXT.md · Session Log · Developer Guide · Acceptance Record · ADR references) — work plans state the present state; session logs keep history; never both mixed.

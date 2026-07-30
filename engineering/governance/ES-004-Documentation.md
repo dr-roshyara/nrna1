@@ -26,6 +26,16 @@
   - When citing a plan from long-lived documents, prefer the work-item id it serves (e.g. "the EPIC-002 discovery plan") over the raw filename. A superseding plan references the superseded plan's filename in its traceability section.
   - Existing plans in `.claude/plans/` / `claude/plans/` are historical records — they stand where they are (no migration; R-37). The convention applies from the next plan onward. *Bindings reconciled 2026-07-11 (user-authorized): root `CLAUDE.md` and `.claude/CLAUDE.md` plan sections are now pointers to this rule — the convention lives once, here.*
 
+**ES-004.3 — Artifact Lifecycle Consistency** *(Principal Architect instruction, 2026-07-30 — register R-41; provenance: the WP-1 closure inconsistency, a CLOSED work plan whose header still read "AUTHORIZED — execution begins…")*:
+- **Principle:** an artifact has **one authoritative lifecycle state at any moment**. When work crosses a lifecycle boundary (authorization → execution → acceptance → closure), every authoritative artifact transitions with it; stale execution wording never remains inside completed artifacts. Artifacts are engineering evidence — their lifecycle state must be as correct as their technical content.
+- **Work-plan lifecycle (exactly these stages):** Draft → Authorized → Executing → Accepted → **Closed (historical record)**. After a transition, the previous state no longer describes the artifact.
+- **Historical Record Rule:** an accepted work plan becomes historical evidence, not an execution document — its header is rewritten to the closed state; future execution references the successor plan.
+- **Separation of concerns:** the **work plan** states the *present* authoritative state; the **session log** preserves the *sequence of past states* (append-only, ES-004.2). "STOP — awaiting acceptance" may stand in a session log forever, because it happened; it may not stand in a closed work plan.
+- **Artifact Synchronization Rule — minimum checklist at every slice closure:** ☐ Work Plan · ☐ CONTEXT.md · ☐ Session Log · ☐ Developer Guide · ☐ Acceptance Record · ☐ ADR references. Every artifact must describe the same program state.
+- **Consistency review before the closure commit:** does any artifact still describe the slice as future work? execution as pending? authorization after acceptance? contradict the accepted lifecycle state? If yes — update the artifact before commit.
+- **Historical Integrity Rule:** never rewrite history to manufacture consistency — history remains chronological (git + session logs); current documents remain current. (Same discipline as code: source has one current implementation, ADRs one current decision, work plans one current lifecycle state; evolution belongs in history, not in stale status fields.)
+- **Expected AI behavior at work-package closure:** detect the lifecycle transition → update the work-plan status → verify all authoritative artifacts (checklist above) → leave session history unchanged → commit only after lifecycle consistency is satisfied.
+
 ## Registered (pointers)
 
 | Rule | Home |
