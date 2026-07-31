@@ -1,6 +1,6 @@
 # WP-6 — Temporal Machinery (horizon · demand deadlines · finality)
 
-**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **FRAMEWORK FROZEN · VERIFIED · VALIDATED · OPERATIONAL** (8 dimensions; governance external; survives governance change). **Refinement complete — application begins.** ⏳ **Only gate left: the ARB re-scope ruling, then GREEN.** ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
+**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **FRAMEWORK FROZEN · VERIFIED · VALIDATED · OPERATIONAL** (8 dimensions; governance external; survives governance change). **Refinement complete · OPERATIONALLY ADOPTED** (protocol + template recorded; four-outcome evidence set). ⏳ **Only gate left: the ARB re-scope ruling, then GREEN.** ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
 **Slice:** WP-6 (EPIC-004 roadmap) · **Contexts:** Adjudication (primary), config/infrastructure · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN)
 **Architecture status:** CLOSED for correction-loop integration. This plan **consumes** architecture; it produces none.
 
@@ -983,3 +983,60 @@ GREEN Readiness                   can implementation proceed today?
 > ### **Framework refinement is complete. Future evidence will come exclusively from operational application across independent slices.**
 
 **Applied unchanged from the next slice onward.** Reopening remains singular: a later **independent** slice where the framework fails to classify or fails to expose a real issue. Four consecutive passes have *reduced over-generalization* rather than added capability — the signal that the design phase is genuinely over.
+
+---
+
+# 📋 OPERATIONAL ADOPTION — the review protocol (2026-07-31)
+
+**No framework change is proposed here.** The eight dimensions, their vocabulary, their responsibilities and the governance model are **untouched**. This defines only *how evidence about the framework is collected while it stays unchanged.*
+
+## The protocol — five steps, run once at each work-package closure
+
+1. Complete the work package (GREEN · gates · dev guide · slice acceptance).
+2. Record the **framework outcome** — exactly one of the four categories below.
+3. Record any **classification failures** — a real finding the framework could not place in one taxonomy, one layer, one owner, one responsibility type.
+4. Determine whether the **reopening criteria** were met.
+5. Make exactly one **recommendation**: *continue unchanged* **or** *reopen framework*.
+
+**The four outcomes — closed set, no additions:**
+
+| Outcome | Meaning |
+|---|---|
+| **Exposed a previously unknown defect** | The framework found something real that was already in the work |
+| **Prevented a potential architectural defect** | The framework stopped a mistake before it landed |
+| **Required no framework changes** | It classified everything and needed no amendment |
+| **Failed to classify a finding** | A real issue it could not place — **the only outcome that can trigger reopening** |
+
+**Tie-break, so the "exactly one" rule stays usable:** where more than one applies, record the **strongest** — *Exposed* > *Prevented* > *Required no changes*. (A framework that exposed a defect trivially also required no changes; recording the weaker outcome would hide the stronger evidence.) *Failed to classify* is recorded **whenever it occurs**, regardless of what else did.
+
+**Reopening — unchanged and singular:** permitted **only** on evidence that the framework cannot correctly classify or expose an issue **in an independent slice**. **Never** for elegance, preference, simplification or theoretical improvement.
+
+## Reusable template — copy into each work package's closure record
+
+```markdown
+### Framework Operational Record — WP-nn
+
+| Field | Value |
+|---|---|
+| Work Package | WP-nn |
+| Framework Outcome | Exposed / Prevented / Required no changes / Failed to classify |
+| Evidence (1–2 lines, concrete) | |
+| Classification Failures | none · or: <finding> could not be placed in <dimension> |
+| Reopening Criteria Met? | Yes / No |
+| Recommendation | Continue unchanged / Reopen framework |
+```
+
+## WP-6's own record — opened, not yet closed
+
+| Field | Value |
+|---|---|
+| Work Package | **WP-6** |
+| Framework Outcome | ⏳ **recorded at closure** (GREEN + acceptance pending) |
+| Evidence so far | **N-5** — a committed RED test imported a **Domain** exception for an **Application-layer process** rule; the DDD-layer dimension exposed it. Plus **O-1 · O-4 · O-5 · S-1..S-3**, each a mis-record caught **before** GREEN |
+| Classification Failures | **none so far** — every finding placed in exactly one taxonomy, layer, owner and responsibility type, including the two whose owner is legitimately `UNASSIGNED` |
+| Reopening Criteria Met? | **No** |
+| Recommendation | **Continue unchanged** |
+
+**Independence honoured:** all of that evidence was gathered **without** changing a taxonomy, dimension, term or governance rule. *The framework is the measuring instrument, not the subject of measurement.*
+
+> ### **The framework is operationally adopted. Future confidence will come from repeated successful application across independent work packages, not from additional theoretical refinement.**
