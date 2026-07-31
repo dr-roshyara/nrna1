@@ -1,6 +1,6 @@
 # WP-6 — Temporal Machinery (horizon · demand deadlines · finality)
 
-**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **FRAMEWORK FROZEN · VERIFIED · VALIDATED · OPERATIONAL** (8 dimensions; governance external; survives governance change). **OPERATIONALLY READY — framework/protocol REFINEMENT CLOSED** (evolution requires cross-slice evidence) (frozen concepts · frozen evidence process · evolving evidence; refinement complete on both). ⏳ **Only gate left: the ARB re-scope ruling, then GREEN.** ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
+**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **FRAMEWORK FROZEN · VERIFIED · VALIDATED · OPERATIONAL** (8 dimensions; governance external; survives governance change). **OPERATIONALLY READY — framework/protocol REFINEMENT CLOSED** (further **refinement** requires cross-slice evidence; architectural **evolution** is unaffected). ⏳ **Only gate left: the ARB re-scope ruling, then GREEN.**
 **Slice:** WP-6 (EPIC-004 roadmap) · **Contexts:** Adjudication (primary), config/infrastructure · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN)
 **Architecture status:** CLOSED for correction-loop integration. This plan **consumes** architecture; it produces none.
 
@@ -1100,7 +1100,7 @@ Order: *Exposed* > *Prevented* > *Required no changes*. (A framework that expose
 | Evidence discipline verified | ✅ — observed / hypothesis / conclusion now distinguished, with the one overreach corrected |
 | Evidence Source remains **operational metadata** | ✅ — outside the framework, outside the taxonomy; no dimension added |
 | Future work packages need **no** framework or protocol refinement | ✅ — WP-7 requires only an operational record |
-| Operational records are the **sole** source of framework evolution | ✅ |
+| Operational records are the **sole** source of framework **refinement** | ✅ |
 
 **Nothing further is required before WP-7.** No framework work, no protocol work — only the closure record WP-6 will produce.
 
@@ -1142,7 +1142,7 @@ Order: *Exposed* > *Prevented* > *Required no changes*. (A framework that expose
 | Operational questions remain explicitly **open** | ✅ |
 | No framework or protocol change proposed | ✅ |
 
-> ### **The operational protocol satisfies the project's evidence discipline. FRAMEWORK/PROTOCOL REFINEMENT IS CLOSED. Future evolution requires cross-slice operational evidence.**
+> ### **The operational protocol satisfies the project's evidence discipline. FRAMEWORK/PROTOCOL REFINEMENT IS CLOSED. Future **refinement** requires cross-slice operational evidence.**
 
 **Every remaining improvement would be about expression, not architecture.** Architecture stable · governance stable · protocol stable. The only remaining source of meaningful evidence is **operational use across independent work packages**.
 
@@ -1156,7 +1156,7 @@ Order: *Exposed* > *Prevented* > *Required no changes*. (A framework that expose
 
 | Statement | Classification | Correction |
 |---|---|---|
-| *"The framework/protocol WORKSTREAM IS CLOSED"* | ⚠️ overstates — implies no further evolution | **"Framework/protocol REFINEMENT is closed. Future evolution requires cross-slice operational evidence."** |
+| *"The framework/protocol WORKSTREAM IS CLOSED"* | ⚠️ overstates — implies no further evolution | **"Framework/protocol REFINEMENT is closed. Future refinement requires cross-slice operational evidence."** |
 | *"EVIDENTIAL NORMALIZATION — WORKSTREAM CLOSED"* (heading) | ⚠️ same | **"— REFINEMENT CLOSED"** |
 | *"META-ENGINEERING CLOSES HERE"* | ⚠️ **found by the scan, not flagged** — evidence-based reopening *is* meta-engineering, so the activity cannot close | **"META-ENGINEERING REFINEMENT CLOSES HERE"** |
 
@@ -1183,8 +1183,59 @@ Order: *Exposed* > *Prevented* > *Required no changes*. (A framework that expose
 | Check | Status |
 |---|---|
 | Closure wording does not contradict the reopening principle | ✅ |
-| Closure reflects evidence-driven governance | ✅ — evolution requires **cross-slice operational evidence**, never preference or elegance |
+| Closure reflects evidence-driven governance | ✅ — **refinement** requires **cross-slice operational evidence**, never preference or elegance |
 | No new vocabulary appears in the closure | ✅ — only established terms: *refinement · operational evidence · cross-slice · work package* |
 | Workstream has transitioned to operational application | ✅ |
 
-> ### **Framework/protocol refinement is closed. Future evolution requires cross-slice operational evidence. From here, every independent work package becomes a validation exercise. If the framework consistently classifies findings, exposes meaningful issues, and requires no changes across multiple slices, that is the strongest possible evidence of its maturity — evidence derived from software delivery, not further refinement of the framework itself.**
+> ### **Framework/protocol refinement is closed. Future refinement requires cross-slice operational evidence. From here, every independent work package becomes a validation exercise. If the framework consistently classifies findings, exposes meaningful issues, and requires no changes across multiple slices, that is the strongest possible evidence of its maturity — evidence derived from software delivery, not further refinement of the framework itself.**
+
+---
+
+# ✅ GOVERNANCE CONSISTENCY REVIEW (2026-07-31) — the reopening rule was attached to the wrong scope
+
+## 1. Governance wording ambiguity — one, and it is mine
+
+| Statement | Ambiguity | Correction |
+|---|---|---|
+| *"Future **evolution** requires cross-slice operational evidence"* | **Evolution is broader than refinement.** As written, the rule would gate **architectural** evolution — a new bounded context, a new business capability, a new strategic domain — on evidence about a *review framework*. That is a nonsense dependency | **"Future REFINEMENT requires cross-slice operational evidence."** Applied in **six** places (status line · protocol verification · correction table · confirmation row · completion statement · the "sole source" row) |
+
+**I introduced the term and then attached the narrower rule to it** — the exact inversion of the previous correction, where a narrower word had carried a broader claim. Same failure mode, opposite direction.
+
+## 2. The project already recorded this discipline — my wording violated an existing rule
+
+`.claude/MEMORY.md` (R-37, 2026-07-10) states it in one line:
+
+> ***"baselines freeze; architectures evolve — never say 'the architecture is frozen'."***
+
+So the distinction between what **freezes** (an artifact, a baseline, a framework's refinement) and what **evolves** (the architecture) is **established project vocabulary**, not a new idea introduced by this review. **The correction restores an existing rule rather than adding one** — which is also why no new vocabulary enters the closure.
+
+## 3. Lifecycle vocabulary — one meaning per term, verified against usage
+
+| Term | Single meaning | Verified in this document |
+|---|---|---|
+| **Development** | building the framework | *"Framework development complete"* — accurate |
+| **Refinement** | changing the framework | now the **only** subject of the reopening rule |
+| **Operational adoption** | using the framework | *"used unchanged from the next slice"* |
+| **Evolution** | architectural change | left broad **on purpose**; explicitly **not** gated by framework evidence |
+| **Frozen** | refinement-frozen, never use-frozen | stated at first use, per R-37 |
+| **Complete** | a phase is finished | applied to *development* and *refinement* only |
+| **Closed** | refinement closed; evolution open | now consistent everywhere |
+
+## 4. DDD justification
+
+| Principle | Application |
+|---|---|
+| **Ubiquitous language** | *Evolution* and *refinement* denote different subjects with different scopes. Using the broader term for the narrower rule is the same imprecision corrected in code (N-5), in governance (T-1), and in the closure (three finality overstatements) |
+| **Bounded context** | The **framework** is one context; the **product architecture** is another. Refinement rules govern the framework; evolution belongs to the architecture — and a rule may not reach across that boundary |
+| **Evidence before conclusion** | Cross-slice evidence justifies **framework refinement**. Architectural evolution is justified by **business requirements** — a different authority, a different evidence base |
+
+## 5. Final confirmation
+
+| Check | Status |
+|---|---|
+| Lifecycle vocabulary has one meaning per term | ✅ |
+| Governance statements remain within intended scope | ✅ — the reopening rule now reaches only the framework |
+| Evidence discipline applies **only to refinement** | ✅ |
+| Control loop preserved (observation → verification → classification → correction → authority) | ✅ — this review ran it: grep, classify, correct, report |
+
+> ### **The framework's governance vocabulary is internally consistent with the framework's architectural principles. Future refinement requires cross-slice operational evidence. Operational application continues. Architectural evolution remains independent unless evidence requires framework refinement.**

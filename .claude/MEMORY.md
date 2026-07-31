@@ -18,7 +18,7 @@
 
 ## Review framework (refinement CLOSED + operationally adopted, 2026-07-31)
 - **Eight dimensions in two groups** — Architecture: *Taxonomy · DDD Layer · Business Owner · Responsibility Type* · Execution: *Execution Responsibility Owner · Authority · Artifact · GREEN Readiness*. One question each, one answer per finding.
-- **Frozen for REFINEMENT, not for use.** Reopens **only** when an *independent* slice shows it cannot classify or expose a real issue — never for elegance, preference or simplification. Governance stays **external**: the framework asks *who may authorize*, never states *who does* (Taxonomy selects the governance **rule**; the rule identifies the authority).
+- **Frozen for REFINEMENT, not for use** (per R-37: *baselines freeze; architectures evolve*). Further **refinement** reopens **only** when an *independent* slice shows it cannot classify or expose a real issue — **architectural evolution is never gated on framework evidence** — never for elegance, preference or simplification. Governance stays **external**: the framework asks *who may authorize*, never states *who does* (Taxonomy selects the governance **rule**; the rule identifies the authority).
 - **At every work-package closure, record one of four outcomes** (Exposed · Prevented · Required no changes · Failed to classify) using the template in `.claude/plans/WP-6-temporal-machinery.md` §Operational Adoption. *Failed to classify* is the only reopening trigger.
 - Portable rule worth remembering: **an assigned executor does not substitute for an unowned concept.**
 
