@@ -1,6 +1,6 @@
 # WP-6 — Temporal Machinery (horizon · demand deadlines · finality)
 
-**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **ARCHITECTURALLY NORMALIZED** (findings classified; four decision layers separated). ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
+**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **DDD-NORMALIZED** (taxonomy · DDD owner · authority path · resolving artifact, one each per finding). ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
 **Slice:** WP-6 (EPIC-004 roadmap) · **Contexts:** Adjudication (primary), config/infrastructure · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN)
 **Architecture status:** CLOSED for correction-loop integration. This plan **consumes** architecture; it produces none.
 
@@ -576,3 +576,50 @@ This follows the same discipline that produced WP-3A/WP-3B and Decision C's Opti
 **Not ready, and correctly out of GREEN:** the 🔷 Domain Modelling Gap and the 🔶 Integration Contract Gap. Each awaits its own authority, and neither can be resolved by writing code.
 
 **GREEN may begin on the ARB's re-scope ruling.** Nothing further in this document requires architectural work.
+
+---
+
+# 🧭 DDD NORMALIZATION — final pass before GREEN (2026-07-31)
+
+**Commission:** verify every finding against DDD responsibility · architectural layer · required authority · required artifact. No redesign · no new concepts · no roadmap change.
+
+## Remaining inconsistency found — one, and it was a real defect in my own RED test
+
+| # | Inconsistency | DDD justification |
+|---|---|---|
+| **N-5** | **The late-decision exception was placed in the wrong architectural layer.** My RED test imported `Domain\Exception\LateDecisionOnExpiredAdjudication`. The house places **process** exceptions in `Application\Process\Exception\` (`IllegalProcessTransition`) and **aggregate** exceptions in `Domain\Exception\` (`DeterminationAlreadyIssued`, `DeterminationNotFound`) | *"A late decision arrived for an **expired process**"* is a rule about the **process manager's lifecycle**, not about the `Determination` aggregate's invariants. WP-2 deliberately seated the APM and its state machine in the **Application** layer; its exceptions must follow, or the Domain layer would acquire a concept that belongs to orchestration. **Corrected; RED re-confirmed unchanged (10 tests · 2 errors · 5 failures).** |
+
+**This is exactly the defect the ARB's requested "DDD Layer" column was meant to surface** — the taxonomy classified *what* the finding was, and said nothing about *where it belongs*. Adding the column found a misplacement the four-category table could not.
+
+## Phases 1–4 — the complete classification
+
+| Finding | Taxonomy (Phase 1) | **DDD owner / layer** (Phase 2) | **Authority path** (Phase 3) | **Resolving artifact** (Phase 4) |
+|---|---|---|---|---|
+| **F-1** horizon cut-off is `now`, not `now − MAD` | Implementation Gap | **Application Layer** — the process manager orchestrates; MAD is injected, never owned | **Existing authority sufficient** (Q-2 · §81) | **Production code** |
+| **F-2** late decision silently swallowed | Implementation Gap | **Application Layer** — process lifecycle (hence N-5's correction) | **Existing authority sufficient** (§197, already ruled) | **Production code** |
+| **Expiry announcement** | authorized scope, not a gap | **Published Language** — producer-side publication + registration | **Existing** — Decisions A/B/C | **Production code** (event · outbox mapping · hydrator · allowlist entry) |
+| 🔷 **Evidence Demand / Deadline** | Domain Modelling Gap | **Domain Model / Aggregate** — the language itself lacks the concepts | **Modelling authority required** (ARB) | **ADR + domain model** |
+| 🔶 **Finality evaluation** | Integration Contract Gap | **Context Mapping** — a relationship between Adjudication and Contestation | **Integration authority required** (ARB) | **Context map / integration contract + ADR** |
+| Two Phase-15 diagnoses · N-5 | Test Gap | **Verification** | **Implementation authority sufficient** | **Test suite** |
+
+**Each row has exactly one taxonomy, one owner, one authority path, one artifact.** No overlaps: F-1/F-2 touch orchestration only; 🔷 touches language; 🔶 touches a relationship; test gaps touch verification. The artifact always matches the authority — *code where a rule already exists, an ADR where a concept must be minted, a context map where a relationship must be designed.*
+
+## Phase 5 — implementation readiness
+
+**GREEN contains only findings whose authority already exists.** Verified item by item:
+
+| GREEN item | New ubiquitous language? | New aggregate concept? | New bounded-context relationship? |
+|---|---|---|---|
+| MAD-aware horizon + duration resolver | **No** — *adjudication horizon* and *MAD* are §27/§81's own terms | No | No |
+| Late-decision conflict | **No** — §197's own words (*"dead-letters as a conflict"*) | No | No |
+| Expiry announcement | **No** — and this deserves the distinction: it introduces a new **event name** for an **existing** concept (`Expired`, §57 · `AdjudicationProcessStatus::Expired`). Naming an existing fact is not minting a new one | No | **No** — the crossing to Contestation is the established Published-Language edge; only the *consumer* would be new, and that is out of scope by Decision C |
+
+**Excluded from GREEN, correctly:** 🔷 requires new ubiquitous language; 🔶 requires a new bounded-context relationship. Neither can be resolved by writing code.
+
+## Final assessment
+
+> ### **The WP-6 planning package is DDD-NORMALIZED and ARCHITECTURALLY READY FOR GREEN.**
+
+☑ one taxonomy per finding · ☑ one DDD owner per finding · ☑ one authority path per finding · ☑ one governing artifact per finding · ☑ **GREEN contains only implementation work already authorized.**
+
+**Observation recorded, deliberately NOT promoted.** The five questions this pass converged on — *what kind of finding · where does it belong · who owns it · what artifact resolves it · can implementation proceed now* — are filed with the other un-promoted observations (Governance Verification Drift · the published-language necessity rule · discovery-does-not-create-architecture). Let them prove themselves across further work packages before any elevation is considered (R-38 · R-39). **N-5 is the first evidence in their favour: the fourth question found a defect the first four categories missed.**

@@ -14,7 +14,7 @@ use App\Contexts\Adjudication\Domain\Determination\EvidenceSet;
 use App\Contexts\Adjudication\Domain\Determination\IssuedByAuthority;
 use App\Contexts\Adjudication\Domain\Determination\Legitimacy;
 use App\Contexts\Adjudication\Domain\Determination\Reason;
-use App\Contexts\Adjudication\Domain\Exception\LateDecisionOnExpiredAdjudication;
+use App\Contexts\Adjudication\Application\Process\Exception\LateDecisionOnExpiredAdjudication;
 use App\Models\Organisation;
 use App\Services\TenantContext;
 use Illuminate\Foundation\Testing\RefreshDatabase;
