@@ -1,6 +1,6 @@
 # WP-6 — Temporal Machinery (horizon · demand deadlines · finality)
 
-**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **SEMANTICALLY NORMALIZED · FRAMEWORK FROZEN + FREEZE VERIFIED** (8 dimensions, 2 groups, one question each; frozen for refinement, not for use — reopens only on cross-slice evidence). ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
+**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **FRAMEWORK FROZEN · VERIFIED · VALIDATED** (8 dimensions; structure separated from governance; survives governance change). **Framework review ENDS.** ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
 **Slice:** WP-6 (EPIC-004 roadmap) · **Contexts:** Adjudication (primary), config/infrastructure · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN)
 **Architecture status:** CLOSED for correction-loop integration. This plan **consumes** architecture; it produces none.
 
@@ -841,7 +841,7 @@ Every GREEN finding carries **one taxonomy · one layer · one business owner ·
 
 | # | Clarification (not an inconsistency) | Why it matters |
 |---|---|---|
-| **V-1** | **Two dimensions are DERIVED, not independently asserted.** **Authority** follows from **Taxonomy** (Implementation Gap → existing authority · Domain Modelling Gap → modelling authority · Integration Contract Gap → integration authority · Test Gap → implementation). **GREEN Readiness** follows from **Business Owner ∧ Authority ∧ Artifact** | This is **causality, not contamination** — and recording it makes readiness **non-negotiable**. If GREEN Readiness were an independent judgement, someone could assert "ready" by opinion. As a derived value it can only change when an owner, an authority or an artifact changes |
+| **V-1** | **Two dimensions are DERIVED, not independently asserted** — but of **different kinds** (corrected below): **Authority** is **governance-derived** (Taxonomy *informs* it; governance rules mediate). **GREEN Readiness** is **derived from the execution dimensions** | Recording this makes readiness **non-negotiable**: it is an observable consequence, not a subjective judgement. Nobody can assert "ready" by opinion — it changes only when an execution dimension changes |
 
 ## Phase 2 — Architectural relationships (clarified, not redefined)
 
@@ -849,27 +849,36 @@ Every GREEN finding carries **one taxonomy · one layer · one business owner ·
 
 ```
 Taxonomy            classifies the finding
-     ↓
+     ↓  (structural)
 DDD Layer           locates it architecturally
-     ↓
-Business Owner      derives from that location — who owns the meaning there
-     ↓
-Responsibility Type describes that owner's accountability
+     ↓  (structural)
+Business Owner      who owns the meaning at that location
+     ↓  (structural)
+Responsibility Type that owner's kind of accountability
 ```
 
-**Group B — Execution: the same chain, ending in a computed verdict.**
+**Group B — Execution.**
 
 ```
 Execution Responsibility Owner    who performs it
-     ↓
-Authority (⟵ derived from Taxonomy)    who may authorize change
-     ↓
-Artifact                          what resolves it — must match the authority
-     ↓
-GREEN Readiness (= Owner ∧ Authority ∧ Artifact)    computed, never asserted
+     ⋯  (governance-mediated)
+Authority                         who may authorize change
+     ↓  (structural — an artifact must match its authority)
+Artifact                          what resolves it
+     ⋯  (derived from the execution dimensions)
+GREEN Readiness                   can implementation proceed today?
 ```
 
-**The two groups are linked at exactly one point: Taxonomy → Authority.** That single link is what makes the taxonomy load-bearing rather than decorative — classifying a finding *determines* who may decide about it. Nothing else crosses between the groups, which is why architecture can be described without settling execution.
+### Every dependency classified — structural · governance-derived · implementation-derived
+
+| Dependency | Classification | Evidence | Wording |
+|---|---|---|---|
+| Taxonomy → DDD Layer → Business Owner → Responsibility Type | **Structural** | Holds regardless of who decides anything; a location has an owner and an owner has a kind of accountability | *derives from* |
+| **Taxonomy ⋯ Authority** | **GOVERNANCE-DERIVED** *(corrected — previously overstated)* | Change governance — send Integration Contract changes to an Architecture Council instead of the ARB — and the **taxonomy is unchanged while the authority changes.** So taxonomy cannot *determine* authority | **"Taxonomy INFORMS Authority; governance rules mediate."** The real chain is *Finding → Taxonomy → **Governance Rules** → Authority* |
+| Authority → Artifact | **Structural** | An artifact that cannot express the decision its authority must make is the wrong artifact — true under any governance |
+| Owner · Authority · Artifact ⋯ GREEN Readiness | **IMPLEMENTATION-DERIVED** *(corrected — previously an equation)* | In WP-6 those three happened to encode scope, implementation boundary and open modelling questions **because Decision C settled the boundary and the ARB settled the scope**. That is a property of **this** work package, not of the framework | **"GREEN Readiness is derived from the execution dimensions."** No conjunction is asserted |
+
+**The single cross-group link is Taxonomy ⋯ Authority, and it is governance-mediated, not structural.** That is what keeps the taxonomy useful without making it authoritative: it tells you *which governance rule applies*, never *what that rule says*.
 
 ## Phase 3 — Freeze criteria, stated operationally
 
@@ -879,6 +888,9 @@ GREEN Readiness (= Owner ∧ Authority ∧ Artifact)    computed, never asserted
 
 **The freeze rests on evidence, recorded so a future reader can test it:**
 - three operational validations exist — **N-5** (Layer exposed a misplacement) · **O-1** (Ownership exposed an unowned location) · **O-4/O-5** (Responsibility Type exposed two *opposite* ownership errors);
+
+**What the freeze does NOT freeze:** today's **governance decisions**. Frozen are the **dimensions, the vocabulary and the responsibilities**. The *values* — who the authority is, which artifact is approved, what is in scope — change whenever governance changes, and the framework absorbs that without amendment. **Test:** if the ARB were replaced tomorrow by an Architecture Council for integration decisions, every dimension would still ask the same question; only the Authority column's *value* would change. A framework that broke under that substitution would have frozen governance, not structure.
+
 - **all three originate from ONE work package (WP-6)**;
 - therefore further refinement would lack independent evidence, and would be preference dressed as improvement.
 
@@ -901,3 +913,20 @@ GREEN Readiness (= Owner ∧ Authority ∧ Artifact)    computed, never asserted
 > **The framework should remain UNCHANGED for future work packages.** Attention returns to software delivery. Discussion of the framework should be triggered **only** by a later independent slice where it fails to classify or expose an issue — never by a theoretically cleaner formulation.
 
 **Nothing in the WP-6 planning package now requires architectural, ownership, semantic or framework work.** The single remaining gate is the ARB's re-scope ruling, after which GREEN implements three items whose authority already exists.
+
+## Final freeze validation (2026-07-31) — structure separated from governance
+
+| Check | Status |
+|---|---|
+| The frozen framework contains only **stable architectural concepts** | ✅ — dimensions, vocabulary, responsibilities. Governance *values* are not frozen |
+| The framework **survives governance changes** | ✅ — substitute an Architecture Council for the ARB on integration decisions and every dimension still asks the same question; only the Authority column's **value** changes |
+| **No operational observation is elevated to framework semantics** | ✅ — the two that were are corrected and reclassified |
+| Every dependency classified structural / governance-derived / implementation-derived | ✅ — table above |
+| The freeze is **operational, not declarative** | ✅ — reopens only on a later *independent* slice where the framework fails to classify or expose a real issue |
+
+**DDD justification for the two corrections:**
+
+- **Authority is governance-mediated, not structurally determined.** Taxonomy is a property of the *finding*; authority is a property of the *organisation deciding about it*. Collapsing them would embed an organisational arrangement into an architectural framework — the same category error N-5 corrected in code, where an orchestrator held a bounded context's meaning.
+- **GREEN Readiness must not be an equation.** Its three factors sufficed *in WP-6* only because Decision C settled the implementation boundary and the ARB settled the scope. Another slice could have an owner, an authority and an artifact and still be blocked by an unresolved modelling question elsewhere. A conjunction would generalize one slice's contingency into a law.
+
+> ### **VALIDATED. The framework contains only stable architectural concepts, survives governance change, and elevates no operational observation. Framework review ENDS here — the next evidence comes from applying it unchanged to independent slices.**
