@@ -279,3 +279,70 @@ Two consequences, stated plainly:
 ### RED plan — amended by this clarification
 
 Keystone 4 (*"expiry announces exactly one fact, once"*) now additionally asserts the payload is registered and hydratable (the WP-3A pattern), and keystone 11 becomes concrete: **the expiry announcement's `correlation_id` is newly minted and its `causation_id` is null** — a chain start, per Decision A. **No keystone asserts a Contestation reaction**, per Decision B.
+
+---
+
+## 🔍 DECISION A — *Does an expiry announcement exist as published language at all?*
+
+**Commissioned by the ARB (2026-07-31) as the governing question, ahead of provenance. Recommendation only — the ARB rules.**
+
+### The precedent is real, and stronger than one instance
+
+The codebase contains **two** event-free temporal transitions, not one:
+
+| Transition | Emits an event? | Source |
+|---|---|---|
+| `Challenge::lapse()` — decision-window timeout | **NO** — *"the Lapsed timeout emits NO domain event … Audit observes it via the decision-window timeout log, not an event"* | Round 50-07 v1.2 |
+| `Determination::finalize()` — window closed unchallenged | **NO** — *"Final emits no event"* | Round 50-07 v1.2 |
+
+So the architecture does distinguish **business events** from **system timeouts**, deliberately and repeatedly. The ARB's lean — *no publication unless explicitly decided otherwise* — is well founded on this evidence.
+
+### The discriminator that explains BOTH precedents — and separates this case
+
+Ask of each: **who bears the consequence?**
+
+| Case | Timer owner | Consequence owner | Same? | Crossing needed? |
+|---|---|---|---|---|
+| `Challenge::lapse()` | Contestation | **Contestation** (its own state) | ✔ same | **No** — nothing to tell |
+| `Determination::finalize()` | Adjudication | **Adjudication** (its own state) | ✔ same | **No** |
+| **Adjudication horizon expiry** | **Adjudication** | **Contestation** — *"the challenge's disposition is Contestation's"* (§197) | ✖ **DIFFERENT** | **Yes** |
+
+**Both event-free precedents share a property this case does not have:** the context that owns the clock also owns the consequence, so no one needs to be told. The adjudication horizon is the **only** one of the three where the timer fires in one bounded context and the consequence lands in another.
+
+### The architecture's own words point the same way
+
+- §197: *"Expiry **announces** the failure-to-conclude"* — announcement is publication; a state change that tells nobody announces nothing.
+- §111: *"An expired adjudication **is business-significant**; its **consumer set** is Q-2-adjacent — flagged, not invented."* A recorded *consumer set* presupposes something to consume.
+
+### The falsification test — could Contestation learn any other way?
+
+Every alternative was enumerated and each fails on an existing authority:
+
+| Alternative | Verdict |
+|---|---|
+| Contestation runs its **own** MAD timer | ✖ Duplicates a duration it does not own. Q-2/§81: *the APM is the horizon's **enforcer***. Two enforcers of one policy is worse than none |
+| Contestation **queries** Adjudication's process state | ✖ Reads another context's **internal process state**; the frozen contract admits only **published payloads** across a boundary. Also a new synchronous crossing — out of scope and unanalysed (per the strategic validation) |
+| **Scheduled reconciliation** reading Adjudication's tables | ✖ Same defect, plus it is the ungoverned projection mechanism (Phase 6b of the contract validation), not business collaboration |
+| **Adjudication calls Contestation** directly | ✖ Inverts dependency direction; the producer would name its consumer (contract R-7) |
+
+**Decisive consequence:** if expiry publishes nothing, **§197's ruling cannot be honoured at all** — Contestation would never learn that the adjudication of its routed challenge failed to conclude, and the disposition it has been assigned could never be exercised. *"No publication"* does not merely differ from §197; it **makes a ruled policy unimplementable.**
+
+### Recommendation
+
+> ### **Decision A: YES — the expiry announcement IS published integration language.**
+>
+> Grounds, in order of weight: (1) the consequence lands in **another** bounded context, which is the property both event-free precedents lack; (2) §197 uses *"announces"* and §111 records a *"consumer set"*; (3) every non-event mechanism is refuted by an existing authority; (4) *"No"* renders §197 unimplementable.
+>
+> **The `lapse()` precedent is respected, not overridden** — it governs same-context timeouts, and this is not one. Stated as a rule: **a temporal transition publishes only when the consequence crosses a boundary.** That single sentence explains all three cases and needs no new concept.
+
+**If the ARB rules NO regardless**, the honest consequence must be recorded: §197's *"return to Contestation"* would have to be **reopened as a business question**, because no conforming mechanism would remain to deliver it. That is an architecture-phase reopening — permitted only on contradictory implementation evidence, which this arguably is.
+
+### Decision B (provenance) — now well-founded, contingent on A = YES
+
+Unchanged from the earlier clarification: the announcement **begins a new conversation** (a timer consumes no message, so `fromConsumed()` has nothing to derive from), making the horizon enforcer a chain origin and requiring an **ARB-approved allowlist entry**. This is the invariant applying, not an exception.
+
+### Scope, restated
+
+Even with A = YES, **WP-6 publishes and registers; it does not consume** — Contestation has no `Routed → disposition` transition (`lapse()` guards `Raised`/`Admitted` only). Published language awaiting a consumer, exactly as WP-3A stood before WP-4.
+
+**Three ARB decisions now pending, in order:** **A** (publish at all — above) → **B** (allowlist entry, if A = YES) → **C** (scope split: WP-6 publishes, WP-6B consumes).

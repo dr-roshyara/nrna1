@@ -10,7 +10,7 @@ durable constraints, and preferences live in `.claude/MEMORY.md`; history lives 
 recorded reversal condition.
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: **WP-6 (temporal machinery) -- EP-01 APPROVED; pre-RED clarification RESOLVED (expiry IS published language and BEGINS a new conversation). Blocked on 2 ARB decisions: (A) add horizon enforcer to CHAIN_ORIGIN_ALLOWLIST, (B) scope split -- WP-6 publishes, a WP-6B consumes (Contestation has NO Routed-to-disposition transition).** WP-1 + WP-2 + WP-5 ACCEPTED+CLOSED; WP-3A + WP-4 complete, slice acceptance pending.
+Ticket: **WP-6 (temporal machinery) -- EP-01 APPROVED; blocked on 3 ARB decisions IN ORDER: (A) does expiry publish at all? [recommend YES -- the consequence lands in ANOTHER context, unlike lapse()/finalize()], (B) allowlist entry if A=YES, (C) scope split WP-6 publishes / WP-6B consumes.** WP-1 + WP-2 + WP-5 ACCEPTED+CLOSED; WP-3A + WP-4 complete, slice acceptance pending.
 Plan: .claude/plans/WP-6-temporal-machinery.md (WP-5 CLOSED)
 Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ · WP-2 ✔ · WP-3A GREEN (acceptance pending) · WP-4 open · WP-3B deferred (needs a routing application service)
