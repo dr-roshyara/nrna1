@@ -28,6 +28,15 @@
 - **Use the Write/Edit tools, not shell heredocs, for prose.** `cat >> file << 'EOF'` repeatedly failed on quoting (apostrophes, backticks, unicode) and produced `unexpected EOF`; the workaround was a temp buffer, which was the wrong fix. The Write tool takes arbitrary content with no shell parsing at all.
 - Shell append is fine for short, plain-ASCII additions; anything with quotes, backticks or tables goes through Write/Edit.
 
+## Authority LEVEL check (adopted 2026-08-01, with Authority Verification below)
+
+- **Before asserting a constraint, name its LAYER and confirm no higher layer speaks to the same question.** *"Which authority did I read?"* is necessary but insufficient -- the question is **"which authority GOVERNS?"** A correctly-read architecture document is the wrong source for a question constitutional policy answers.
+- **Documented hierarchy** (`.claude/IMPLEMENTATION_PROTOCOL.md`, A-2): Business Authority -> Architecture Decisions -> Governance (ES-00x) -> Implementation Protocol -> Implementation -> Operational Evidence. **Never derive a higher-level rule from a lower-level artifact.**
+- **`CLAUDE.md` and `.claude/MEMORY.md` have NO issuing authority.** They are Operational Guidance and may **point** to a constraint, never **be** one.
+- **A governing authority is interpreted INSIDE ITS GOVERNING CONTEXT** -- its related invariants, surrounding decisions, governing assumptions and bounded context. *(A one-line summary of Policy 4 could not carry Policy 3's CL-1/CL-2/CL-3, however accurate that line was.)*
+- **Practical test:** *can I quote it - do I know what governs it - do I know what it governs?*
+- **Open precedence question (ARB, H-3):** ADR-T11 is labelled *"constitutional"* while sitting in the ADR layer; its precedence against **Constitutional Policy 3** is undocumented. Do not assume either outranks the other.
+
 ## Authority Verification (adopted 2026-08-01, after a withdrawn conclusion)
 
 - **A conclusion that constrains, forbids or permits must cite the authority's OWN TEXT, read at the authority's OWN LOCATION.** A docblock, a charter summary, a MEMORY line or an earlier plan may **point** to an authority; none may **stand in for** one.
