@@ -1,6 +1,6 @@
 # WP-7 — Retention Alignment (`audit:cleanup` becomes EPW-aware)
 
-**Status:** 📋 **TACTICAL PLAN — awaiting EP-01 approval. No code, no config key, no test.**
+**Status:** 📋 **TACTICAL PLAN — ARCHITECTURE FROZEN FOR WP-7.** Strategic alignment ✔ · tactical planning ✔ · pattern verification ✔ · VO ownership ✔ · VO construction ✔. Awaiting EP-01 approval. **No code, no config key, no test.**
 **Gate note:** WP-6's ARB acceptance is still pending; the roadmap's rule is *"no slice starts before its predecessor's acceptance."* **Planning is the authorized activity; RED is not.**
 **Slice:** WP-7 (EPIC-004 roadmap) · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN) · **Repository Integrity Gate:** ✅ PASSED
 
@@ -65,7 +65,7 @@ The open question was *"does per-election EPW need Contestation or Adjudication 
 | Aggregates · entities · domain services | **none** | — |
 | **Domain events** | **none** | WP-7 publishes nothing |
 | **Value Object — `EvidencePreservationWindow`** | ✅ **YES (P-1, corrected)** | **Policy 2 names EPW *"a single DOMAIN CONCEPT, not a configuration value"*.** Immutable, no identity, answers *is this window still open at T?* -- a Value Object by definition. *(The earlier default of "no" was set against the authority own framing.)* **Owner: the ELECTION bounded context** -- Policy 2 attaches the window to *the election instance*, and a VO belongs to the context owning the QUESTION, not those supplying inputs. **Placement: `app/Contexts/Election/Domain/`** (a `Domain/Policy/` precedent already exists there, and the framework-purity guard scans that path automatically). *Ownership commission 2026-08-01; the earlier "beside the retention code" suggestion is withdrawn -- it would have been an orphan owned by nobody* |
-| **Application service** — the guard decision (**not** the EPW itself) | **yes, one** | roadmap §WP-7. It **coordinates**: resolve election, obtain durations, construct the VO, ask it. **It decides nothing** |
+| **Application service** — the guard decision (**not** the EPW itself) | **yes, one** | roadmap §WP-7. It **coordinates**: resolve election, obtain durations through ports, **INVOKE the VO's own static factory**, ask the window. **It decides nothing and validates nothing** — the value owns its validity. *(Construction commission 2026-08-01: "the Application Service constructs the VO" conflated who INVOKES construction with where the construction RULES live. Construction belongs to a **private constructor + named static factory ON the VO** — the house idiom: `ChallengeRef::fromString`, `EvidenceSet::fromRefs`, `ContestedOutcomeRef::of`. A separate Domain Factory class and aggregate construction were both **considered and rejected**. The constructor takes **business values only** — anchor, CW, MAD, LSM — never a port, config, model or clock; `is-open-at-T` takes the instant as an **argument**. Factory naming must be a **fact, not a procedure**: `forElection(...)` ✅, `calculate`/`build`/`createFrom` ❌.)* |
 | **Port** — retention durations (CW, LSM) | **yes, one** | Policy 2; mirrors WP-6's `AdjudicationDurations` pattern |
 | Repositories | **none** — reads the existing Eloquent model | — |
 
@@ -151,6 +151,12 @@ The open question was *"does per-election EPW need Contestation or Adjudication 
 2. ⚠️ **the EPW anchor decision** (§3) — or explicit approval of the **fail-closed** default, which needs no business ruling because it decides nothing.
 
 **No further strategic discussion is required.** Every tactical element traces to an approved strategic decision, and the one genuinely open item is a **business value**, not an architectural question.
+
+> ### 🧊 ARCHITECTURE FROZEN FOR WP-7 (2026-08-01)
+>
+> Strategic alignment ✔ · tactical planning ✔ · pattern verification ✔ · VO ownership ✔ · **VO construction ✔**. **Neither remaining gate is architectural.** **No further architectural commission is warranted unless implementation exposes a genuine design issue** — the same reopening standard applied when the correction-loop architecture was closed. **The next activity is RED.**
+>
+> **Five roles, five holders, no overlap:** Election owns the **concept** · the VO owns its **validity** · the Application Service **orchestrates** · Audit/Retention **consumes** (the guard) · Q-2/ARB owns the **values**.
 
 ---
 
