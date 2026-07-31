@@ -341,7 +341,9 @@ Every alternative was enumerated and each fails on an existing authority:
 
 **Earlier (mine, too weak):** *a temporal transition publishes only when the consequence crosses a boundary.*
 
-> ### **A temporal transition becomes published integration language only when another bounded context requires that fact to discharge one of its business responsibilities.**
+> ### **A temporal transition becomes published integration language only when another bounded context CANNOT discharge one of its assigned business responsibilities without learning that fact.**
+
+**The necessity constraint is the operative word (ARB refinement).** *Requires* was still too permissive — it is **not enough that another context would benefit**, be better informed, or find the fact useful. It must be **unable to fulfil an assigned responsibility without it**. That is exactly the shape of the §197 argument: Contestation *cannot* exercise the disposition it has been assigned while ignorant of the expiry. It also excludes the large class of **merely informative** events, which is where published-language inflation normally starts.
 
 **Why the refinement matters — boundary-crossing alone is not sufficient.** Plenty of cross-boundary information is projection, analytics, reporting or monitoring, and none of that earns published-language status; the contract validation already found an entire ungoverned projection mechanism doing exactly that. The refined rule covers all four cases:
 
@@ -352,7 +354,15 @@ Every alternative was enumerated and each fails on an existing authority:
 | **Adjudication horizon expiry** | **YES** — §197 assigns Contestation the challenge's disposition, which it cannot exercise unignorant of the expiry | ✅ |
 | Cross-boundary projections / monitoring / analytics | **No** — a read model's convergence is not a business responsibility discharged by *reacting* to the fact | ❌ |
 
-The discriminator is therefore **business responsibility**, not topology: *"who bears the consequence?"* was the right instinct, but it under-specified — it would have wrongly admitted the fourth row.
+The discriminator is therefore **business responsibility under a necessity test**, not topology: *"who bears the consequence?"* was the right instinct, but it under-specified — it would have wrongly admitted the fourth row.
+
+### Scope of this rule — accepted as reasoning, NOT promoted to a standard
+
+**Recorded at ARB direction, and consistent with the standing freeze discipline:**
+
+> The generalized rule is accepted **as the reasoning supporting Decision A**, **not** as a project-wide architectural standard. Its broader applicability must be confirmed through additional bounded-context implementations before promotion is even considered.
+
+**A candidate observation is noted without being promoted.** The rule appears to generalize beyond time — drop the word *temporal* and it reads: *a business fact becomes published language when another bounded context cannot fulfil one of its assigned responsibilities without learning it* — which would apply equally to determinations, appointments, evidence and payments. **Not promoted today:** R-38's conceptual freeze admits new concepts only on operational evidence, and R-39 preserved the multi-context bar for exactly this situation (one context's evidence is not a general standard). Recorded as a candidate for future validation, in the same register as *Governance Verification Drift* — named, useful, deliberately un-constitutionalized.
 
 **If the ARB rules NO regardless**, the honest consequence must be recorded: §197's *"return to Contestation"* would have to be **reopened as a business question**, because no conforming mechanism would remain to deliver it. That is an architecture-phase reopening — permitted only on contradictory implementation evidence, which this arguably is.
 
