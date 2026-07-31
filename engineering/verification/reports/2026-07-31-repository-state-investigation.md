@@ -111,7 +111,21 @@ git log -S"CoordinatesContestation" -- tests/Architecture/Messaging/CorrelationI
 - An **ARB-approved WP-5 change lives in a hygiene commit**, so slice traceability is broken for that one line.
 - The 6 **untracked** WP-5 GREEN files were untouched (a rebase does not move untracked files) and remain consistent with the plan.
 
-*Recommendation:* accept it in place and note it in WP-5's completion review rather than rewriting history — the change is ARB-approved and correct; only its commit location is wrong, and correcting that costs a history rewrite for no functional gain. **ARB's call, not mine.**
+**The ARB set a condition for "accept in place": the allowlist change must be *semantically independent* of the hygiene changes. It is NOT — verified:**
+
+```
+git show --stat 52b0f4a54
+  .claude/CONTEXT.md                              | 152 +++-----   ← runtime pruning
+  .claude/plans/F-2-context-prune-proposal.md     |  10 +-         ← documentation
+  .claude/sessions/2026-07-30.md                  |  13 ++         ← documentation
+  docs/implementation/backlog/BACKLOG.md          |   5 +          ← documentation
+  tests/…/CorrelationIdMintingTest.php            |  11 ++         ← IMPLEMENTATION AUTHORIZATION
+```
+
+The commit therefore mixes **documentation cleanup + runtime pruning + implementation authorization** — three purposes. So the condition fails, and the disposition follows the ARB's second branch, not the first:
+
+> **RECORDED AS AN ACCEPTED TRACEABILITY EXCEPTION** — *not* as an ordinary "accept in place".
+> The change is ARB-approved and semantically correct; only its commit location is wrong. **Published history is not rewritten for it** (the ARB's explicit instruction), and WP-5's completion review carries the exception so future archaeology finds the mint relocation under `52b0f4a54` rather than under a WP-5 commit.
 
 ## 7. Recovery options
 
@@ -127,7 +141,17 @@ git log -S"CoordinatesContestation" -- tests/Architecture/Messaging/CorrelationI
 
 > **Lift the suspension. Resume WP-5 GREEN from the current baseline.** No recovery action, no history rewrite.
 
-Awaiting the ARB on two small items before resuming: whether **F-B** is accepted in place (recommended), and whether **F-A**'s hash-citation practice should change in governed artifacts.
+**Method recommendation, adopted at ARB direction:**
+
+> **Future repository-state investigations begin with `git status` and `git reflog` — before drawing any conclusion from missing files or an intermediate tree.** Those commands establish whether the observed filesystem represents a **stable** repository state at all.
+
+**The broader lesson, stated independently of this project:**
+
+> **Never diagnose repository inconsistency from a transient working tree without first determining whether the repository is mid-way through a state-changing operation.**
+
+Operations that deliberately produce intermediate trees which are **not** valid long-term baselines: **rebase · merge · cherry-pick · revert · bisect · worktree checkout · interactive rebase stops · `apply`/`am` in progress.** Each announces itself in `git status`, and the reflog dates it. This investigation is the worked example: a mid-rebase tree was indistinguishable, by filesystem inspection alone, from a catastrophic reset — and completely distinguishable from the reflog in one command.
+
+**ARB dispositions recorded:** **F-A** — governed artifacts cite **slice names** (*"WP-4 GREEN"*), not SHAs; exact hashes belong in release metadata, since rebases preserve logical history but not hashes. **F-B** — an **accepted traceability exception** (its independence condition failed, §6), with no history rewrite.
 
 ## Success criteria (self-check)
 

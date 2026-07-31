@@ -10,7 +10,7 @@ durable constraints, and preferences live in `.claude/MEMORY.md`; history lives 
 recorded reversal condition.
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: **WP-5 (Contestation raise path) — PLAN PRODUCED, awaiting EP-01 approval; 3 ARB questions open (WP-3B model · mint site · allowlist move)**. WP-4 + WP-3A GREEN awaiting slice acceptance; WP-1 + WP-2 ACCEPTED+CLOSED. Architecture Phase CLOSED for correction-loop integration.
+Ticket: **WP-5 (Contestation raise path + WP-3B origin relocation) -- GREEN COMPLETE, all gates pass, dev guide written; awaiting slice acceptance**. WP-4 + WP-3A also awaiting acceptance; WP-1 + WP-2 ACCEPTED+CLOSED. Architecture Phase CLOSED for correction-loop integration. Repo baseline verified after rebase (nothing lost).
 Plan: .claude/plans/WP-5-raise-path.md (WP-4's plan closed)
 Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ · WP-2 ✔ · WP-3A GREEN (acceptance pending) · WP-4 open · WP-3B deferred (needs a routing application service)

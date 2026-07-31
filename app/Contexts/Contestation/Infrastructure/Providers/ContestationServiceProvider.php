@@ -6,7 +6,15 @@ namespace App\Contexts\Contestation\Infrastructure\Providers;
 
 use App\Contexts\Contestation\Application\AdjudicateChallengeHandler;
 use App\Contexts\Contestation\Application\Port\ChallengeEventOutbox;
+use App\Contexts\Contestation\Application\Port\IdentityGenerator;
+use App\Contexts\Contestation\Application\Port\TransactionManager;
 use App\Contexts\Contestation\Application\ResolveChallengeHandler;
+use App\Contexts\Contestation\Application\Service\ContestationService;
+use App\Contexts\Contestation\Application\Service\CoordinatesContestation;
+use App\Contexts\Contestation\Application\Service\TransactionalContestationService;
+use App\Contexts\Contestation\Infrastructure\Identity\UuidIdentityGenerator;
+use App\Contexts\Contestation\Infrastructure\Transaction\LaravelTransactionManager;
+use Illuminate\Contracts\Foundation\Application;
 use App\Contexts\Contestation\Domain\Repository\ChallengeRepository;
 use App\Contexts\Contestation\Infrastructure\Outbox\ChallengeAdjudicatedHydrator;
 use App\Contexts\Contestation\Infrastructure\Outbox\ChallengeOutboxAdapter;
@@ -27,6 +35,21 @@ final class ContestationServiceProvider extends ServiceProvider
     {
         $this->app->bind(ChallengeRepository::class, EloquentChallengeRepository::class);
         $this->app->bind(ChallengeEventOutbox::class, ChallengeOutboxAdapter::class);
+
+        // WP-5: the raise path. Context-LOCAL ports (Adjudication's identical ones
+        // may not be imported — contract R-1/R-2); the coordinator is wrapped in its
+        // transactional boundary so `route()` saves the aggregate and writes its
+        // outbox row atomically (ADR-T1).
+        $this->app->bind(IdentityGenerator::class, UuidIdentityGenerator::class);
+        $this->app->bind(TransactionManager::class, LaravelTransactionManager::class);
+        $this->app->bind(ContestationService::class, function (Application $app): ContestationService {
+            /** @var CoordinatesContestation $inner */
+            $inner = $app->make(CoordinatesContestation::class);
+            /** @var TransactionManager $transactions */
+            $transactions = $app->make(TransactionManager::class);
+
+            return new TransactionalContestationService($inner, $transactions);
+        });
     }
 
     public function boot(): void

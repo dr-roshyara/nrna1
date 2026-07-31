@@ -237,3 +237,38 @@ The plan claimed *"no new port"*. **The approved mint relocation makes that clai
 | 9 | the allowlist names Contestation's routing service | guard not yet updated |
 
 **Progress:** ✔ Phases 1–9 · ✔ EP-01 approval · ✔ **RED confirmed** · ⏳ GREEN (awaiting report acceptance) · ⏳ gates · ⏳ dev guide · ⏳ slice acceptance.
+
+---
+
+## WP-5 GREEN COMPLETE (2026-07-31) — STOP for slice acceptance
+
+**Suspension lifted** after the repository-state investigation proved nothing was lost.
+
+**GREEN passed on the first run: `OK (9 tests, 25 assertions)`** — including keystone 8, the loop head firing from a **production** mint, which retires WP-4's test-seeded provenance.
+
+| Component | Authority |
+|---|---|
+| `ContestationService` (port) + `CoordinatesContestation` | roadmap §WP-5 · TP-2 |
+| `TransactionalContestationService` | ADR-T1 |
+| `RaiseChallengeCommand` (VOs only; time not a caller parameter) | house Rule 4 |
+| `IdentityGenerator` + `UuidIdentityGenerator` (context-local) | ADR-MP-06 mint · house Rule 2 (no facades in Application) |
+| `TransactionManager` + `LaravelTransactionManager` (context-local) | ADR-T1 |
+| Allowlist: **two** originators | ADR-MP-06, ARB-approved |
+
+**Publication policy implemented as a decision, not a side effect:** `routedEventsOf()` selects `ChallengeRouted` **by type** instead of draining `pullEvents()`, so "only integration events are published" is owned by the coordinator rather than inherited from whatever the adapter maps.
+
+### Gates
+
+| Gate | Result |
+|---|---|
+| PHPStan max | PASS — no errors |
+| Deptrac (fail mode) | PASS — **0 violations** · 635 allowed; the two context-local ports avoided the R-1/R-2 import |
+| Architecture suite | PASS — **146 green**, including the relocated minting guard |
+| Contestation + Adjudication feature suites | PASS — **33 tests, 95 assertions** |
+| Developer guide | `developer_guide/contestation/06_raise_path_and_conversation_origin.md` + index |
+
+### Traceability exception carried into this slice's completion review
+
+The allowlist edit was swept into `52b0f4a54` (*chore(hygiene): F-2 executed*) by the rebase. That commit mixes documentation + runtime pruning + **implementation authorization**, so the ARB's independence condition for a plain "accept in place" FAILED. Recorded as an **accepted traceability exception**; published history is **not** rewritten (ARB instruction).
+
+**Progress:** Phases 1-9 done · EP-01 approval · RED · **GREEN** · gates · dev guide · **slice acceptance pending (STOP)**.
