@@ -28,6 +28,7 @@ final class EventRegistryCompletenessTest extends TestCase
     private const PRODUCED_EVENT_TYPES = [
         'FeePaid',              // Membership (OutboxWriter / OutboxService)
         'DeterminationIssued',  // Adjudication (OutboxEventAdapter)
+        'AdjudicationExpired',  // Adjudication (OutboxEventAdapter) -- WP-6
     ];
 
     public function test_every_produced_event_type_has_exactly_one_hydrator(): void

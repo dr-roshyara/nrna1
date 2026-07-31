@@ -4,7 +4,13 @@ declare(strict_types=1);
 
 namespace App\Contexts\Adjudication\Application\Process;
 
+use App\Contexts\Adjudication\Application\Port\AdjudicationDurations;
 use App\Contexts\Adjudication\Application\Port\AdjudicationProcessStore;
+use App\Contexts\Adjudication\Application\Port\EventOutbox;
+use App\Contexts\Adjudication\Application\Port\IdentityGenerator;
+use App\Contexts\Adjudication\Application\Process\Exception\LateDecisionOnExpiredAdjudication;
+use App\Contexts\Adjudication\Domain\Events\AdjudicationExpired;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceSet;
@@ -42,6 +48,9 @@ final class AdjudicationProcessManager
     public function __construct(
         private readonly AdjudicationProcessStore $store,
         private readonly ClockInterface $clock,
+        private readonly AdjudicationDurations $durations,
+        private readonly EventOutbox $outbox,
+        private readonly IdentityGenerator $identities,
     ) {
     }
 
@@ -102,7 +111,13 @@ final class AdjudicationProcessManager
     ): void {
         $process = $this->store->activeForChallenge($challenge);
         if ($process === null) {
-            return;   // already concluded (or expired): a redelivered decision is a no-op
+            // Two situations shared this branch before WP-6, and section 197 rules them
+            // differently: a REDELIVERED decision on a concluded process is an
+            // idempotent no-op (ADR-T3), while a LATE decision on an EXPIRED one is a
+            // conflict that must never be honored.
+            $this->refuseIfExpired($challenge);
+
+            return;   // redelivered decision on a concluded process: a no-op
         }
 
         $this->store->save($process->concludeRulingRequested(
@@ -139,6 +154,20 @@ final class AdjudicationProcessManager
     }
 
     /**
+     * Section 197: a post-expiry authority decision dead-letters as a conflict.
+     * Silence would be the one unacceptable response -- the authority must learn its
+     * ruling arrived too late.
+     */
+    private function refuseIfExpired(ChallengeRef $challenge): void
+    {
+        $latest = $this->store->latestForChallenge($challenge);
+
+        if ($latest !== null && $latest->status() === AdjudicationProcessStatus::Expired) {
+            throw LateDecisionOnExpiredAdjudication::forChallenge($challenge);
+        }
+    }
+
+    /**
      * PM-8: enforce the adjudication horizon. Expiry is a terminal fact, never a
      * conclusion — a timer must not adjudicate anything (Policy 4).
      */
@@ -146,8 +175,23 @@ final class AdjudicationProcessManager
     {
         $now = $this->clock->now();
 
-        foreach ($this->store->dueForHorizon($now) as $process) {
-            $this->store->save($process->expire($now));
+        // The CUT-OFF, not "now". `dueForHorizon()` selects processes opened at or
+        // before the instant it is given; passing `now` would make every non-terminal
+        // process due, expiring one opened a second ago. Q-2 owns the duration (section
+        // 81) -- this manager only subtracts it.
+        $cutOff = $now->sub($this->durations->maximumAdjudicationDuration());
+
+        foreach ($this->store->dueForHorizon($cutOff) as $process) {
+            $expired = $process->expire($now);
+            $this->store->save($expired);
+
+            // Section 197: expiry ANNOUNCES the failure-to-conclude. A clock consumed
+            // no message, so there is no incoming conversation to continue -- this
+            // publication BEGINS one (ADR-MP-06; ARB Decision B).
+            $this->outbox->enqueue(
+                EventProvenance::start($this->identities->next()),
+                new AdjudicationExpired($expired->challengeRef(), $now),
+            );
         }
     }
 }

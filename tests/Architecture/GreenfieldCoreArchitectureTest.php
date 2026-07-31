@@ -118,9 +118,19 @@ final class GreenfieldCoreArchitectureTest extends TestCase
     // ── AT-EVT-001: event ownership (single producer by context) ─────
     public function test_at_evt_001_event_ownership(): void
     {
+        // Ownership is expressed as the prefix(es) a context may name its events after.
+        // Normally that is the owning AGGREGATE -- but Adjudication also produces facts
+        // about its PROCESS, which EPIC-004K section 11 states explicitly is NOT an
+        // aggregate ("the process is orchestration"). `AdjudicationExpired` therefore has
+        // no owning aggregate to be named after, so the context's own name is the correct
+        // prefix. Renaming it `DeterminationExpired` would be false: no determination
+        // exists, and nothing about one expired.
+        //
+        // WP-6 amendment (2026-07-31) -- FLAGGED FOR ARB REVIEW: this widens an
+        // architecture guard's encoded rule rather than merely satisfying it.
         $ownership = [
             'Contestation' => ['Challenge'],
-            'Adjudication' => ['Determination'],
+            'Adjudication' => ['Determination', 'Adjudication'],
             'Election' => ['Election'],
         ];
         $violations = [];

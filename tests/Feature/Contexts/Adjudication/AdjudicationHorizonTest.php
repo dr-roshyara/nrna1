@@ -106,9 +106,11 @@ final class AdjudicationHorizonTest extends TestCase
 
         $mad = $durations->maximumAdjudicationDuration();
 
+        // NB `DateInterval::$days` is false unless the interval came from a diff();
+        // the day COMPONENT of a constructed interval is `->d`.
         $this->assertGreaterThan(
             0,
-            $mad->days,
+            $mad->d,
             'MAD must resolve to a positive duration (INTERIM value awaiting the Q-2 parameters)',
         );
     }
@@ -122,7 +124,7 @@ final class AdjudicationHorizonTest extends TestCase
      */
     public function test_a_process_opened_within_the_horizon_does_not_expire(): void
     {
-        $challenge = ChallengeRef::fromString('challenge-fresh');
+        $challenge = ChallengeRef::fromString('11111111-1111-4111-8111-111111111111')  /* challenge-fresh */;
         $this->openAgedProcess($challenge, '1 minute');
 
         $this->manager()->enforceHorizon();
@@ -137,7 +139,7 @@ final class AdjudicationHorizonTest extends TestCase
 
     public function test_a_process_opened_beyond_the_horizon_expires(): void
     {
-        $challenge = ChallengeRef::fromString('challenge-stale');
+        $challenge = ChallengeRef::fromString('22222222-2222-4222-8222-222222222222')  /* challenge-stale */;
         $this->openAgedProcess($challenge, '400 days');
 
         $this->manager()->enforceHorizon();
@@ -163,7 +165,7 @@ final class AdjudicationHorizonTest extends TestCase
      */
     public function test_expiry_concludes_nothing(): void
     {
-        $challenge = ChallengeRef::fromString('challenge-policy4');
+        $challenge = ChallengeRef::fromString('33333333-3333-4333-8333-333333333333')  /* challenge-policy4 */;
         $this->openAgedProcess($challenge, '400 days');
 
         $this->manager()->enforceHorizon();
@@ -182,7 +184,7 @@ final class AdjudicationHorizonTest extends TestCase
 
     public function test_expiry_announces_exactly_one_fact(): void
     {
-        $challenge = ChallengeRef::fromString('challenge-announce');
+        $challenge = ChallengeRef::fromString('44444444-4444-4444-8444-444444444444')  /* challenge-announce */;
         $this->openAgedProcess($challenge, '400 days');
 
         $this->manager()->enforceHorizon();
@@ -213,7 +215,7 @@ final class AdjudicationHorizonTest extends TestCase
 
     public function test_the_announcement_begins_a_new_conversation(): void
     {
-        $challenge = ChallengeRef::fromString('challenge-origin');
+        $challenge = ChallengeRef::fromString('55555555-5555-4555-8555-555555555555')  /* challenge-origin */;
         $this->openAgedProcess($challenge, '400 days');
 
         $this->manager()->enforceHorizon();
@@ -228,7 +230,7 @@ final class AdjudicationHorizonTest extends TestCase
 
     public function test_a_second_timer_run_announces_nothing_further(): void
     {
-        $challenge = ChallengeRef::fromString('challenge-idempotent');
+        $challenge = ChallengeRef::fromString('66666666-6666-4666-8666-666666666666')  /* challenge-idempotent */;
         $this->openAgedProcess($challenge, '400 days');
 
         $this->manager()->enforceHorizon();
@@ -246,7 +248,7 @@ final class AdjudicationHorizonTest extends TestCase
      */
     public function test_a_late_authority_decision_on_an_expired_process_is_a_conflict(): void
     {
-        $challenge = ChallengeRef::fromString('challenge-late');
+        $challenge = ChallengeRef::fromString('77777777-7777-4777-8777-777777777777')  /* challenge-late */;
         $this->openAgedProcess($challenge, '400 days');
         $this->manager()->enforceHorizon();
 
@@ -270,7 +272,7 @@ final class AdjudicationHorizonTest extends TestCase
      */
     public function test_a_redelivered_decision_on_a_concluded_process_is_a_no_op(): void
     {
-        $challenge = ChallengeRef::fromString('challenge-redelivered');
+        $challenge = ChallengeRef::fromString('88888888-8888-4888-8888-888888888888')  /* challenge-redelivered */;
         $this->manager()->openFor($challenge);
         // §6 guards the lawful path: evidence is admitted BEFORE the basis can be put
         // before the authority. Submitting from `opened` is an illegal transition.

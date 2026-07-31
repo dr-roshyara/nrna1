@@ -50,6 +50,12 @@ final class CorrelationIdMintingTest extends TestCase
         // intermediate state, not a list that grows. A third entry would have to
         // show a third distinct conversation, and needs an ARB decision (ADR-MP-06).
         'app/Contexts/Adjudication/Application/Service/CoordinatesAdjudication.php',
+
+        // WP-6 (ARB Decision B, 2026-07-31): the FAILURE-TO-CONCLUDE origin. A clock
+        // consumes no message, so fromConsumed() has nothing to derive from and this
+        // publication BEGINS a conversation. A third distinct conversation, therefore a
+        // third legitimate origin -- the invariant remains one origin per conversation.
+        'app/Contexts/Adjudication/Application/Process/AdjudicationProcessManager.php',
     ];
 
     private const SCAN_ROOT = 'app/Contexts';

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\Adjudication\Infrastructure\Providers;
 
 use App\Contexts\Adjudication\Application\ChallengeRoutedReactionHandler;
+use App\Contexts\Adjudication\Application\Port\AdjudicationDurations;
 use App\Contexts\Adjudication\Application\Port\AdjudicationProcessStore;
 use App\Contexts\Adjudication\Application\Port\EventOutbox;
 use App\Contexts\Adjudication\Application\Port\IdentityGenerator;
@@ -14,6 +15,8 @@ use App\Contexts\Adjudication\Application\Service\CoordinatesAdjudication;
 use App\Contexts\Adjudication\Application\Service\TransactionalAdjudicationService;
 use App\Contexts\Adjudication\Domain\Repository\DeterminationRepository;
 use App\Contexts\Adjudication\Infrastructure\Identity\UuidIdentityGenerator;
+use App\Contexts\Adjudication\Infrastructure\Config\ConfiguredAdjudicationDurations;
+use App\Contexts\Adjudication\Infrastructure\Outbox\AdjudicationExpiredHydrator;
 use App\Contexts\Adjudication\Infrastructure\Outbox\DeterminationIssuedHydrator;
 use App\Contexts\Adjudication\Infrastructure\Outbox\OutboxEventAdapter;
 use App\Contexts\Adjudication\Infrastructure\Repositories\EloquentAdjudicationProcessStore;
@@ -34,6 +37,8 @@ final class AdjudicationServiceProvider extends ServiceProvider
         $this->app->bind(DeterminationRepository::class, EloquentDeterminationRepository::class);
         // WP-2: the APM's process store (orchestration state, not a domain repository — EPIC-004K §11).
         $this->app->bind(AdjudicationProcessStore::class, EloquentAdjudicationProcessStore::class);
+        // WP-6: Q-2 owns the durations; the APM only enforces them (section 81).
+        $this->app->bind(AdjudicationDurations::class, ConfiguredAdjudicationDurations::class);
 
         // AdjudicationService = transactional decorator over the (frozen)
         // CoordinatesAdjudication coordinator.
@@ -64,6 +69,8 @@ final class AdjudicationServiceProvider extends ServiceProvider
         /** @var EventHydratorRegistry $registry */
         $registry = $this->app->make(EventHydratorRegistry::class);
         $registry->register(new DeterminationIssuedHydrator());
+        // WP-6: registration is the second half of published-language status.
+        $registry->register(new AdjudicationExpiredHydrator());
 
         // WP-4: Adjudication registers ITSELF as a consumer of Contestation's
         // published `ChallengeRouted`, so the relay/redrive resolves it by

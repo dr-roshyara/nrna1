@@ -43,6 +43,16 @@ final class EloquentAdjudicationProcessStore implements AdjudicationProcessStore
         return $row === null ? null : $this->mapper->toState($row);
     }
 
+    public function latestForChallenge(ChallengeRef $challenge): ?AdjudicationProcessState
+    {
+        $row = $this->model->newQuery()
+            ->where('challenge_ref', $challenge->toString())
+            ->orderByDesc('opened_at')
+            ->first();
+
+        return $row instanceof AdjudicationProcessModel ? $this->mapper->toState($row) : null;
+    }
+
     public function save(AdjudicationProcessState $state): void
     {
         $row = $this->mapper->toRow($state, TenantContext::require());

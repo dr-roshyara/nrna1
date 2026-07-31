@@ -6,6 +6,7 @@ namespace App\Contexts\Adjudication\Infrastructure\Outbox;
 
 use App\Contexts\Adjudication\Application\Port\EventOutbox;
 use App\Contexts\Adjudication\Domain\DomainEvent;
+use App\Contexts\Adjudication\Domain\Events\AdjudicationExpired;
 use App\Contexts\Adjudication\Domain\Events\DeterminationIssued;
 use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use App\Contexts\Shared\Infrastructure\Outbox\OutboxEvent;
@@ -25,11 +26,39 @@ final class OutboxEventAdapter implements EventOutbox
         foreach ($events as $event) {
             match (true) {
                 $event instanceof DeterminationIssued => $this->writeDeterminationIssued($event, $provenance),
+                $event instanceof AdjudicationExpired => $this->writeAdjudicationExpired($event, $provenance),
                 default => throw new \LogicException(
                     'No outbox mapping for event ' . $event::class
                 ),
             };
         }
+    }
+
+    /**
+     * Section 197 (RULED): expiry ANNOUNCES the failure-to-conclude, and Contestation
+     * owns the challenge's disposition -- so this is PUBLISHED LANGUAGE (ARB Decision A).
+     * The payload carries no outcome, no legitimacy and no reason: a horizon decides
+     * nothing (Constitutional Policy 4).
+     */
+    private function writeAdjudicationExpired(AdjudicationExpired $event, EventProvenance $provenance): void
+    {
+        (new OutboxEvent([
+            'event_id' => (string) Str::uuid(),
+            'organisation_id' => TenantContext::require(),
+            'aggregate_type' => 'AdjudicationProcess',
+            'aggregate_id' => $event->challengeRef->toString(),
+            'event_type' => 'AdjudicationExpired',
+            'correlation_id' => $provenance->correlationId,
+            'causation_id' => $provenance->causationId,
+            'payload' => [
+                'schema_version' => 1,
+                'challengeRef' => $event->challengeRef->toString(),
+                'expiredAt' => $event->expiredAt->format(DATE_ATOM),
+            ],
+            'status' => 'pending',
+            'attempts' => 0,
+            'available_at' => now(),
+        ]))->save();
     }
 
     private function writeDeterminationIssued(DeterminationIssued $event, EventProvenance $provenance): void
