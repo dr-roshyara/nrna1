@@ -43,8 +43,10 @@ final class CorrelationIdMintingTest extends TestCase
         // entry is expected to DISAPPEAR.
         //
         // The invariant is NOT the number of entries: EACH CONVERSATION HAS EXACTLY
-        // ONE ORIGIN. What exists today is two originators serving two DISTINCT
-        // conversations (correction loop; authority decision) -- a deliberate
+        // ONE ORIGIN. An ORIGIN BEGINS a conversation; it never TRANSFERS ownership
+        // of one -- established once, thereafter propagated via fromConsumed(), never
+        // recreated downstream. What exists today is two originators serving two
+        // DISTINCT conversations (correction loop; authority decision) -- a deliberate
         // intermediate state, not a list that grows. A third entry would have to
         // show a third distinct conversation, and needs an ARB decision (ADR-MP-06).
         'app/Contexts/Adjudication/Application/Service/CoordinatesAdjudication.php',

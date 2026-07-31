@@ -310,3 +310,18 @@ The allowlist edit was swept into `52b0f4a54` (*chore(hygiene): F-2 executed*) b
 **At WP-6, confirm whether Adjudication's authority-decision originator can be removed from the allowlist** — i.e. whether `issueDetermination` becomes a reacting producer using `fromConsumed()`. Not a WP-5 condition; the natural point to verify the planned convergence actually occurs. The invariant to hold throughout: **each conversation has exactly one origin.**
 
 **Status: CLOSED.** Runtime artifacts synchronized (this plan · CONTEXT) · Historical appended (session log) · Reference written (dev guide 06) · Decision records annotated (allowlist guard + coordinator docblock now state the invariant precisely, per ES-004.3 mutable-portion-only synchronization).
+
+### Origin lifecycle — the clarification that completes the invariant (ARB, 2026-07-31)
+
+> **Each conversation has exactly one origin.**
+> **An origin BEGINS a conversation; it never TRANSFERS ownership of one** — it is established once, then propagated with `EventProvenance::fromConsumed(...)`, never recreated downstream.
+
+This makes the lifecycle explicit and explains *why* a reacting producer must not call `start()`: doing so would not **continue** the conversation, it would silently begin a second one and **split the audit trail**. Applied in all four places the invariant lives (allowlist guard · coordinator docblock · dev guide · this plan) — Architecture suite re-verified **146 green** after the change.
+
+### WP-6 forward checkpoint — recorded in the ARB's evidence-based phrasing
+
+> **Verify that the authority-decision conversation now derives provenance from the consumed message. If confirmed, remove the remaining allowlist entry and demonstrate that the "one origin per conversation" invariant still holds.**
+
+Phrased as a **verification**, not a predetermined implementation: WP-6 establishes whether the convergence occurred, and the removal follows the evidence rather than the plan. **Not a WP-5 condition** — WP-5 has no outstanding work.
+
+**FINAL STATUS: WP-5 ACCEPTED + CLOSED.** ES-004.3 synchronization complete across all four artifact roles. Implementation accepted · documentation synchronized · runtime artifacts synchronized · governance synchronized · outstanding work: **none**.

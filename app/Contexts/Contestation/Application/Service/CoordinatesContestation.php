@@ -47,8 +47,11 @@ use App\Domain\Shared\Clock\ClockInterface;
  * entry is expected to disappear.
  *
  * The invariant is not the NUMBER of originators: **each conversation has exactly one
- * origin.** Today two originators serve two DISTINCT conversations (the correction
- * loop; the authority decision) — a deliberate intermediate state, not a growing list.
+ * origin.** An origin BEGINS a conversation; it never TRANSFERS ownership of one -
+ * it is established once and thereafter propagated via `fromConsumed()`, never
+ * recreated downstream. Today two originators serve two DISTINCT conversations (the
+ * correction loop; the authority decision) — a deliberate intermediate state, not a
+ * growing list.
  *
  * Traceability: roadmap §WP-5 + WP-3B (Option B) · TP-2 · ADR-T21 · ADR-MP-06 ·
  * ADR-T1 (atomicity supplied by {@see TransactionalContestationService}).

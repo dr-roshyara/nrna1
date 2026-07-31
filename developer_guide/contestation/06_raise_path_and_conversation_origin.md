@@ -1,6 +1,6 @@
 # WP-5 — The raise path, and where the integration conversation begins
 
-**Step:** WP-5 (raise → admit → route) + WP-3B (Correlation Origin Relocation, ARB Option B) · **Status:** GREEN, awaiting slice acceptance
+**Step:** WP-5 (raise → admit → route) + WP-3B (Correlation Origin Relocation, ARB Option B) · **Status:** ✅ **ACCEPTED + CLOSED** (ARB, 2026-07-31)
 
 Before this step the `Challenge` aggregate could do everything and *nobody could call it*: `raise`, `admit` and `route` existed and were test-pinned, with no application service. WP-3B was blocked on exactly that absence. This step supplies the callers — and with them, the place where the correction loop's conversation actually begins.
 
@@ -98,6 +98,8 @@ WP-5 relocated the **correction-loop** origin. Adjudication's `issueDeterminatio
 **State the invariant precisely — it is not about the number of entries:**
 
 > **Each conversation has exactly one origin.**
+>
+> **An origin BEGINS a conversation; it never TRANSFERS ownership of one.** It is established once, then propagated with `EventProvenance::fromConsumed(...)` — never recreated downstream. That is the whole reason a reacting producer must not call `start()`: doing so would not *continue* the conversation, it would silently start a second one and split the audit trail.
 
 What exists today is **two originators serving two distinct conversations** (the correction loop, and the authority decision). Do **not** read the list as licence for arbitrary originators: adding a third would require showing it opens a *third distinct conversation*, and extending the allowlist is an ARB decision either way (ADR-MP-06).
 
