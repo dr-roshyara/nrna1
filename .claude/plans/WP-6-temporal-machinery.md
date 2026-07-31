@@ -1321,7 +1321,7 @@ return new DateInterval('P'.max(1, $days).'D');   // ← the adapter chose a dur
 
 `60` appeared in `config/adjudication.php` **and** as the adapter's fallback. The interim MAD is the ARB's value with exactly one declared home; a second copy means a future ARB change could be silently shadowed. **Corrected:** the adapter reads the key and **throws if it is missing or non-numeric** rather than carrying a rival default.
 
-**Both leaks were mine, introduced during GREEN, and both were invisible to every gate** — PHPStan, Deptrac and 146 architecture tests all passed with them in place. They were found only by asking *"does policy still live where the architecture put it?"*
+**The implementation introduced two policy defects, and no technical gate reported either** — PHPStan, Deptrac and 146 architecture tests all passed with them in place. They surfaced only from asking *"does policy still live where the architecture put it?"* *(Reviews describe the artifact, not the author -- the finding scales to a team; the attribution does not.)*
 
 ## 2. Ownership verification
 
@@ -1390,3 +1390,106 @@ return new DateInterval('P'.max(1, $days).'D');   // ← the adapter chose a dur
 > ### **WP-6 GREEN preserves architectural ownership, policy layers, published language, and context boundaries. One architectural invariant changed: AT-EVT-001 was widened from aggregate-prefix only to context-or-aggregate prefix. This requires explicit ARB/ADR authority before the architecture test is considered canonical. The implementation itself is accepted; the architecture test change awaits authority.**
 
 **Post-correction verification:** `OK (10 tests, 22 assertions)` · PHPStan max **no errors** · behaviour unchanged by AP-1/AP-2 (they removed decisions, not capability).
+
+---
+
+# 🔬 ARCHITECTURE DECISION PRESERVATION REVIEW (ADPR) — WP-6 GREEN (2026-07-31)
+
+**The distinction this review adds (ARB refinement).** *Architecture* preservation and *decision* preservation are not the same question:
+
+| | Architecture Preservation | **Decision Preservation** |
+|---|---|---|
+| Asks | did boundaries · ownership · layers · contracts hold? | did the **approved decisions** hold? |
+| WP-6 result | ✅ **intact** — Deptrac 0, no cross-context import, layers respected | ⚠️ **two failures** (AP-1, AP-2) |
+
+**AP-1 and AP-2 were Decision-Preservation failures, not boundary failures.** The boundary never moved: `ConfiguredAdjudicationDurations` stayed in Infrastructure, imported nothing it shouldn't, and violated no layer rule. **What leaked was a decision** — *who may choose a duration* — and that is invisible to any tool measuring structure.
+
+## 1. Architectural decision inventory (approved decisions only — nothing inferred)
+
+| Decision | Authority | Business rationale | Expected location |
+|---|---|---|---|
+| MAD's **value** | **Q-2** (§187 parameter set) | durations are business policy; interim values are bootstraps | `config/adjudication.php` — **one home** |
+| MAD's **enforcement** | EPIC-004K **§81** | the APM enforces a duration it does not own | Application — the APM |
+| Expiry is a **fact, not a verdict** | **Constitutional Policy 4** · §57 | automated verification never determines significance | Domain event; no verdict fields |
+| **Late ≠ redelivered** | EPIC-004K **§197** | a post-expiry decision is a conflict; redelivery is a no-op | Application/Process |
+| Expiry is **published language** beginning a new conversation | **ARB Decisions A/B** | Contestation cannot discharge §197's disposition unknowing | outbox + hydrator + allowlist |
+| Slice ends at publication | **ARB Decision C** | aggregate completion; Registration ≠ Delivery | no consumer in this slice |
+
+## 2. Decision-preservation findings
+
+| Decision | Classification | Evidence |
+|---|---|---|
+| MAD's value | ⚠️ **DECISION DUPLICATION** → corrected (**AP-2**) | `60` existed in the config **and** as an adapter fallback; a value the ARB owns had two homes, so a future ARB change could be silently shadowed |
+| *Who may choose a duration* | ⚠️ **DECISION LEAK** → corrected (**AP-1**) | `max(1, $days)` had the adapter **substitute** a duration for any non-positive value — a business decision taken where no owner authorized one |
+| MAD's enforcement | ✅ **Preserved** | the APM contains no duration literal; it subtracts what the port returns |
+| Expiry is a fact | ✅ **Preserved** | the event has **no field** for outcome, legitimacy, reason or authority — preserved *structurally*, not by discipline |
+| Late ≠ redelivered | ✅ **Preserved** | two branches, two meanings, each pinned by its own keystone |
+| Published language | ✅ **Preserved** | event + mapping + hydrator + registration + allowlist entry |
+| Slice ends at publication | ✅ **Preserved** | no consumer exists; no Contestation file touched |
+
+**The asymmetry worth keeping:** both failures concerned **a policy's value or its chooser**; every decision expressed **structurally** (a missing field, an injected port, a separate branch) was preserved. **Decisions encoded in structure survive implementation; decisions encoded only in prose need a review to survive.**
+
+## 3. Ownership preservation — three owners, independent
+
+| Component | Business owner | Execution owner | Technical owner | Migration? |
+|---|---|---|---|---|
+| `AdjudicationDurations` | **Q-2 / ARB** | APM (enforces) | `ConfiguredAdjudicationDurations` | **None** — and AP-1 was precisely a *technical* owner briefly acting as a *business* owner |
+| `LateDecisionOnExpiredAdjudication` | Adjudication BC (§197) | APM | Application/Process code | None |
+| `AdjudicationExpired` | Adjudication BC (R-7) | APM (**emits**) | outbox adapter + hydrator | None |
+| `latestForChallenge()` | Adjudication BC | APM | Eloquent store | None |
+
+## 4. Policy preservation
+
+| Policy | Approved owner | Verified |
+|---|---|---|
+| MAD's value | Q-2 / config | ✅ single home |
+| A duration **floor** | **nobody** — never an approved decision | ✅ removed; the adapter fails closed |
+| A **substitute** default | **nobody** | ✅ removed |
+| Enforcement | APM | ✅ |
+| Policy 4 | constitutional | ✅ asserted as an absence |
+
+**All four detection targets the commission names were present in one 40-line adapter:** duplicated policy (AP-2) · hidden defaults (AP-2's fallback) · substituted business values (AP-1) · silent business decisions (AP-1). Worth recording as a warning about where policy hides: **small adapters attract defaults.**
+
+## 5. Boundary preservation
+
+✅ Adjudication → Contestation only via published language · ✅ no read of Contestation state (which is *why* the finality evaluator stayed out of scope) · ✅ no hidden dependency, shared state or knowledge leakage (Deptrac 0).
+
+## 6. Executable-architecture impact
+
+| Change | Classification | Authority |
+|---|---|---|
+| **AT-EVT-001** `Determination*` → `Determination* OR Adjudication*` | **ARCHITECTURAL EVOLUTION** | ⚠️ **ARB/ADR required** |
+| Mint allowlist third entry | implementation of ARB Decision B | ✅ authorized |
+| Registry-completeness list extended | implementation alignment | ✅ |
+
+## 7. Technical vs architectural verification — stated precisely
+
+| Gate | Result | What it measures | Could it have caught AP-1/AP-2? |
+|---|---|---|---|
+| PHPStan max | PASS | types | **No** — `max(1, $x)` is perfectly typed |
+| Deptrac | PASS | dependency direction | **No** — no dependency was violated |
+| Architecture suite (146) | PASS | structural properties | **No** — no structural property was violated |
+| Feature suites (91) | PASS | behaviour | **No** — behaviour was *correct*; the floor never fired |
+
+> **The gates were not blind; they were measuring something else.** Each passed correctly, because none measures *who is entitled to make a decision*. That is the gap an ADPR fills — and the reason it cannot be closed by adding another gate of the same kind.
+
+## 8. Decision-preservation summary
+
+| Decision | Preserved | Evidence | Authority |
+|---|---|---|---|
+| MAD value — one home | ✅ *after correction* | config only | Q-2 §187 |
+| Duration chooser — Q-2 only | ✅ *after correction* | adapter fails closed | §81 |
+| MAD enforcement — APM | ✅ | no literal in the manager | §81 |
+| Expiry ≠ verdict | ✅ | no verdict field exists | Policy 4 |
+| Late ≠ redelivered | ✅ | two branches | §197 |
+| Published language | ✅ | publication + registration | Decisions A/B |
+| Slice ends at publication | ✅ | no consumer | Decision C |
+
+## 9. Required ARB/ADR decision · recommendation
+
+| Item | Recommendation |
+|---|---|
+| **WP-6 GREEN** | **Accept** — every approved decision preserved; both failures corrected before acceptance |
+| **AT-EVT-001 widening** | **Refer to the ARB.** If accepted, the rule belongs in an ADR or recorded ruling — a test comment flags a gap, it does not host a rule |
+
+> ### **WP-6 GREEN preserves approved architectural decisions. Two decision-preservation failures — one DUPLICATION (AP-2) and one LEAK (AP-1) — were detected by ADPR, not by technical gates, and were corrected. One architectural evolution (AT-EVT-001) is referred for ARB authority. The ADPR is complete.**
