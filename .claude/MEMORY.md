@@ -28,6 +28,13 @@
 - **Use the Write/Edit tools, not shell heredocs, for prose.** `cat >> file << 'EOF'` repeatedly failed on quoting (apostrophes, backticks, unicode) and produced `unexpected EOF`; the workaround was a temp buffer, which was the wrong fix. The Write tool takes arbitrary content with no shell parsing at all.
 - Shell append is fine for short, plain-ASCII additions; anything with quotes, backticks or tables goes through Write/Edit.
 
+## Authority STATUS check (adopted 2026-08-01)
+
+- **Read the status column, not only the text.** An authority marked **Proposed / DEFERRED / POSTPONED** is **not binding** -- cite it as a *recorded limitation*, never as authority for what is permitted. *(ADR-T13 "DEFERRED (Proposed)" was cited as interpretive evidence once.)*
+- **Check for supersession BEFORE citing.** Supersession is **forward-linked only**: a successor cites what it replaces (ADR-T23 supersedes ADR-T17), but documents citing the old one carry no pointer forward. **ADR-T17 has 6 live references presenting it as still open.**
+- **Lifecycle states observed in this project:** Proposed -> Approved/Binding -> {Clarified (status annotation only; decision text immutable, ES-004.3) | Frozen | Superseded (old text preserved) | Deprecated -> Retired (one migration cycle, AST-008)}.
+- **Authority is created only by explicit issuance (R-34):** reviewer observations default to *observation*; **nothing becomes a ruling by inference from praise or suggestion.** Authority comes from governance, not from being widely cited.
+
 ## Authority LEVEL check (adopted 2026-08-01, with Authority Verification below)
 
 - **Before asserting a constraint, name its LAYER and confirm no higher layer speaks to the same question.** *"Which authority did I read?"* is necessary but insufficient -- the question is **"which authority GOVERNS?"** A correctly-read architecture document is the wrong source for a question constitutional policy answers.
