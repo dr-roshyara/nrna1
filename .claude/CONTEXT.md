@@ -10,7 +10,7 @@ durable constraints, and preferences live in `.claude/MEMORY.md`; history lives 
 recorded reversal condition.
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: **WP-6 (temporal machinery) -- Decisions A/B/C APPROVED; RED CONFIRMED; planning package SEMANTICALLY NORMALIZED and the review framework FROZEN (used unchanged on later slices; cross-slice evidence is the only promotion path). BLOCKED ON THE ARB's RE-SCOPE RULING ONLY -- then GREEN (MAD-aware horizon + late-decision conflict + expiry announcement).** WP-1 + WP-2 + WP-5 ACCEPTED+CLOSED; WP-3A + WP-4 complete, slice acceptance pending.
+Ticket: **WP-6 (temporal machinery) -- Decisions A/B/C APPROVED; RED CONFIRMED; review framework FROZEN + OPERATIONAL (refinement complete, applied unchanged from the next slice; governance stays external to it). ONLY GATE LEFT: the ARB re-scope ruling -> then GREEN (MAD-aware horizon + late-decision conflict + expiry announcement).** WP-1 + WP-2 + WP-5 ACCEPTED+CLOSED; WP-3A + WP-4 complete, slice acceptance pending.
 Plan: .claude/plans/WP-6-temporal-machinery.md (WP-5 CLOSED)
 Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ · WP-2 ✔ · WP-3A GREEN (acceptance pending) · WP-4 open · WP-3B deferred (needs a routing application service)
