@@ -10,8 +10,8 @@ durable constraints, and preferences live in `.claude/MEMORY.md`; history lives 
 recorded reversal condition.
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: **WP-5 ACCEPTED + CLOSED (2026-07-31)** -- raise path + WP-3B correction-loop origin relocation; the loop head now fires from a PRODUCTION mint. WP-1 + WP-2 also ACCEPTED+CLOSED; WP-3A + WP-4 complete, awaiting slice acceptance. **NEXT: WP-6 (temporal machinery) -- needs its EP-01 plan first.** Architecture Phase CLOSED for correction-loop integration.
-Plan: .claude/plans/WP-5-raise-path.md (CLOSED) -- next plan: WP-6
+Ticket: **WP-6 (temporal machinery) -- PLAN PRODUCED, awaiting EP-01 approval; 3 ARB questions open (INTERIM defaults · expiry-announcement provenance · published-language status)**. WP-1 + WP-2 + WP-5 ACCEPTED+CLOSED; WP-3A + WP-4 complete, slice acceptance pending. Architecture Phase CLOSED for correction-loop integration.
+Plan: .claude/plans/WP-6-temporal-machinery.md (WP-5 CLOSED)
 Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ · WP-2 ✔ · WP-3A GREEN (acceptance pending) · WP-4 open · WP-3B deferred (needs a routing application service)
 Priority: High

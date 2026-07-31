@@ -1,0 +1,218 @@
+# WP-6 — Temporal Machinery (horizon · demand deadlines · finality)
+
+**Status:** 📋 **PLAN — awaiting EP-01 approval. No code written, no RED yet.**
+**Slice:** WP-6 (EPIC-004 roadmap) · **Contexts:** Adjudication (primary), config/infrastructure · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN)
+**Architecture status:** CLOSED for correction-loop integration. This plan **consumes** architecture; it produces none.
+
+---
+
+## EP-03 Readiness
+
+| Check | Evidence |
+|---|---|
+| Predecessors accepted | WP-1 · WP-2 · WP-5 **ACCEPTED + CLOSED**; WP-3A · WP-4 complete, slice acceptance pending (neither blocks WP-6) |
+| Architecture frozen | ✔ Architecture Phase CLOSED |
+| Protocol operational | ✔ OPERATIONAL, FROZEN |
+| APM + store exist | ✔ WP-2: `AdjudicationProcessManager::enforceHorizon()` and `AdjudicationProcessStore::dueForHorizon(DateTimeImmutable $asOf)` |
+| `Expired` state exists | ✔ WP-2: `AdjudicationProcessStatus` + `AdjudicationProcessState::expire()` |
+| Horizon-expiry policy ruled | ✔ EPIC-004K §197 (quoted in Phase 2) |
+| Finality target exists | ✔ `Determination::finalize()` — guarded `Issued → Final`, **emits no event** (Round 50-07 v1.2) |
+| Q-2 numeric parameters | ⚠️ **ARB decision outstanding** (§187, five items). Roadmap pre-authorizes **INTERIM-marked** defaults — see Phase 8 |
+
+**Readiness: GO**, with the numeric parameters carried as INTERIM.
+
+## Phase 1 — Commission Reset
+
+**Closed:** all WP-5 commissions; all architecture commissions of this milestone.
+**Carried forward:** Q-2 (as enforced policy) · Constitutional Policy 4 · EPIC-004K §§3/6/7/15 · roadmap §WP-6 · ADR-T1 · ADR-T8 · ADR-MP-06 · the frozen contract · **the WP-5 forward checkpoint** (Phase 9b).
+**NOT carried:** any mandate to design new architecture. Architectural uncertainty ⇒ **stop and report**.
+
+## Phase 2 — Authority Register
+
+| Authority | Governs |
+|---|---|
+| **Q-2** | *The APM enforces a duration it does not own.* MAD's **definition** is business policy; the APM is its **enforcer** (EPIC-004K §41, §81) |
+| **Constitutional Policy 4** | *Automated verification never determines significance* — **no timer → conclusion path.** Expiry is a terminal fact, never an adjudication (§57, §142) |
+| **EPIC-004K §197 (RULED)** | *"Horizon-expiry policy RULED: return to Contestation; late decisions never honored. Expiry announces the failure-to-conclude; the challenge's disposition is Contestation's per its own rules; **a post-expiry authority decision dead-letters as a conflict**."* |
+| **EPIC-004K §80** | Evidence-demand deadline: *"a demand unanswered past its deadline returns to the process for re-decision … the reaction is the authority's/process's, **never automatic escalation to a conclusion**"* |
+| **EPIC-004K §142** | `finality(determination) = issued-at + Contestation Window(determination-type)`, *provided no challenge against it is open at closure* |
+| **ADR-T1 / ADR-T8** | One aggregate + its outbox rows per transaction; the loop stays choreography — no saga, no compensation |
+
+## Phase 3 — Business Understanding
+
+**Capability:** time itself becomes an actor — an adjudication may not run unbounded, an evidence demand may not hang forever, and a determination becomes final when its challenge window closes unchallenged.
+
+**Objective:** bound the conduct **without ever letting a clock decide a constitutional question.**
+
+**Business policies:** the horizon **expires** a process (a distinct terminal fact, never a conclusion) · an overdue demand **returns to the process for re-decision**, never auto-escalates · finality is **armed, not announced** (`finalize()` emits nothing) · **a late authority decision on an expired process is a conflict, not a no-op.**
+
+**Invariants:** *exactly one conclusion, of exactly one kind, or an expiry — never more than one, never a mix* (§74) · Policy 4 · one origin per conversation.
+
+**Ubiquitous language:** *adjudication horizon* · *Maximum Adjudication Duration (MAD)* · *evidence-demand deadline* · *Expired* · *finality* · *Evidence Preservation Window*.
+
+**Ownership:** Q-2/ARB own the **durations**; the APM owns **enforcement**; Contestation owns **what an expiry means for the challenge**; the Determination aggregate owns **finality's legality**.
+
+## Phase 4 — Strategic DDD
+
+Primary context **Adjudication**. One outward edge: the **expiry announcement**, whose consumer §197 fixes as **Contestation** ("return to Contestation"). That crossing follows the frozen contract exactly as WP-3A/WP-4 did — publication + registration producer-side, primitives only, `fromConsumed()` on the consumer side. **No new integration style, no new relationship pattern.**
+
+The **finality evaluator** is deliberately *not* an integration: it emits no event, so it creates no crossing at all (§142 + Round 50-07 v1.2).
+
+## Phase 5 — Business Model Fidelity
+
+| Dimension | Preserved how |
+|---|---|
+| Language | `MAD`, *horizon*, *Expired*, *deadline*, *finality* — the architecture's own words |
+| Ownership | numbers stay ARB's (config, INTERIM-marked); enforcement stays the APM's |
+| Boundaries | expiry **announces**; Contestation decides the challenge's disposition |
+| Invariants | Policy 4 enforced by construction — no code path leads from a timer to a conclusion |
+| Authority | a late ruling is refused as a **conflict**, not silently absorbed |
+| Lifecycle | `expire()` and `finalize()` remain aggregate/state decisions |
+| Anonymity | untouched |
+
+## Phase 6 — Architectural Traceability
+
+| Component | Authority |
+|---|---|
+| `config/adjudication.php` — MAD, demand deadline, Contestation Window (determination-type), Legal Safety Margin; **INTERIM-marked** | roadmap §WP-6 · Q-2 (§187 parameters) |
+| A **duration resolver** port + adapter (per-election-type, org-overridable) | roadmap §WP-6 ("per-election-type, org-overridable") |
+| `enforceHorizon()` becomes **MAD-aware** | Q-2 · §81 — see Finding F-1 |
+| **Expiry announcement** — domain event + outbox mapping + hydrator | §197 (ruled) · ADR-T21 pattern |
+| **Late-decision conflict** handling | §197 — see Finding F-2 |
+| Evidence-demand deadline tracking + `demandsDue()` query | §80 · PM-3 |
+| **Finality evaluator** (scheduled, no event) | §142 · Round 50-07 v1.2 |
+| Scheduled command(s) to drive the above | roadmap §WP-6 ("timer execution") |
+| **Nothing else** | no new VO for durations unless a keystone demands it; no saga; no compensation (ADR-T8) |
+
+## Phase 7 — Simplification Review (reuse before create)
+
+| Need | Existing asset | Create? |
+|---|---|---|
+| `Expired` terminal state + transition | `AdjudicationProcessStatus::Expired` · `AdjudicationProcessState::expire()` | ❌ |
+| Horizon enforcement loop | `AdjudicationProcessManager::enforceHorizon()` | ♻️ **make MAD-aware** |
+| Due-process query | `AdjudicationProcessStore::dueForHorizon($asOf)` — already takes a **caller-supplied cut-off**, by design | ❌ reuse as-is |
+| Finality transition | `Determination::finalize()` (guarded, event-free) | ❌ |
+| Publication machinery | `EventOutbox` + `OutboxEventAdapter` + `EventHydratorRegistry` | ♻️ one new mapping + hydrator |
+| Transaction boundary | `TransactionManager` + `TransactionalAdjudicationService` | ❌ reuse |
+| Config style | `config/election.php`, `config/voting.php` (`env()`-backed) | ♻️ mirror |
+| Clock | `ClockInterface` (injected — no `now()` in domain) | ❌ |
+
+**WP-2 built the horizon's *mechanism* deliberately without its *duration*.** WP-6 supplies the duration and the trigger — nothing more.
+
+## Phase 8 — Business Assumption Review
+
+| Interpretation | Class |
+|---|---|
+| Expiry is terminal, never a conclusion | **Explicit authority** (Policy 4 · §57) |
+| Expiry announcement goes to Contestation | **Explicit authority** (§197) |
+| A post-expiry authority decision dead-letters as a conflict | **Explicit authority** (§197) — and **currently not implemented**, see F-2 |
+| An overdue demand returns to the process, never auto-escalates | **Explicit authority** (§80) |
+| `finalize()` announces nothing | **Explicit authority** (Round 50-07 v1.2) |
+| The horizon cut-off is `now − MAD` | **Derived implication** of `dueForHorizon`'s contract (*"opened before the cut-off the caller passes"*) |
+| **The numeric values of MAD / demand deadline / Contestation Window / Legal Safety Margin** | **OPEN BUSINESS QUESTION — ARB's, five items per §187.** Roadmap pre-authorizes **INTERIM-marked** defaults so the machinery can ship; the numbers remain the ARB's to set |
+| Whether the finality evaluator's *"no challenge open at closure"* check may query Contestation | **ARCHITECTURAL ASSUMPTION to confirm at RED** — if it needs Contestation state, that is a **new crossing** and the answer is *stop and report*, not invent |
+
+## Phase 9 — Tactical DDD
+
+```
+config/adjudication.php            MAD · demand deadline · window · margin   (INTERIM)
+        │
+AdjudicationDurations (port)  ──►  resolve(electionType, organisationId): MAD etc.
+        │                          adapter reads config + org override
+        ▼
+AdjudicationProcessManager::enforceHorizon()
+        │   cut-off = clock->now() − MAD          ← F-1 fix
+        ├─► store->dueForHorizon(cut-off)         (unchanged)
+        ├─► state->expire(now)                    (unchanged)
+        └─► outbox->enqueue(fromConsumed?/…, <expiry announcement>)   ← §197
+        
+AdjudicationProcessManager::receiveRulingDecision()
+        └─► if process is EXPIRED → raise a CONFLICT (permanent) ← F-2, §197
+            (distinct from redelivery of the same decision, which stays a no-op)
+
+DemandDeadlines: store->demandsDue(asOf) → return to the process for re-decision (§80)
+
+FinalityEvaluator (scheduled, Determination-only, NO event)
+        └─► issued-at + window elapsed ∧ no open challenge → determination->finalize()
+```
+
+**Provenance question to settle at RED:** the expiry announcement is triggered by a **clock**, not by a consumed message. So which provenance does it carry? It is arguably a **new conversation** (nothing consumed it into being) — which would make the horizon enforcer a **chain origin** and require an allowlist entry. **Flagged, not decided:** this is exactly the kind of question the WP-5 invariant now answers precisely (*each conversation has exactly one origin*), and RED will expose which reading holds. **If it requires an allowlist change, that is an ARB decision (ADR-MP-06).**
+
+## Phase 9b — Carried checkpoint from WP-5 (verification, not mandate)
+
+> **Verify that the authority-decision conversation now derives provenance from the consumed message. If confirmed, remove the remaining allowlist entry and demonstrate that the "one origin per conversation" invariant still holds.**
+
+**The removal follows the evidence.** If WP-6 finds the authority decision still has no incoming message, **the entry stays and the invariant is unharmed** — that is a legitimate outcome, not a failure. Note the interaction with Phase 9's provenance question: WP-6 could plausibly *remove* one originator and *add* another; both moves are ARB decisions and both must preserve one-origin-per-conversation.
+
+---
+
+## Two findings from the existing code — both grounded, both WP-6's to resolve
+
+### F-1 — `enforceHorizon()` is not MAD-aware and would expire **everything**
+
+```php
+public function enforceHorizon(): void {
+    $now = $this->clock->now();
+    foreach ($this->store->dueForHorizon($now) as $process) {   // ← cut-off = NOW
+        $this->store->save($process->expire($now));
+    }
+}
+```
+
+`dueForHorizon($asOf)` selects `opened_at <= $asOf` — its docblock is explicit that the **caller** supplies the cut-off, and that *"timer execution + the configured MAD land in WP-6."* With `$asOf = now`, **every non-terminal process is due**, so the first call would expire all of them, including one opened a second ago.
+
+**Inert today** (nothing calls it — WP-6 delivers the scheduler), so this is **not a live defect**; it is the WP-2/WP-6 seam behaving exactly as WP-2 documented. **WP-6 must pass `now − MAD`, and a RED keystone must pin it:** *a process opened one minute ago does not expire under a 14-day MAD.*
+
+### F-2 — a late authority decision is currently a silent no-op; §197 rules it a **conflict**
+
+`receiveRulingDecision()` carries: `return; // already concluded (or expired): a redelivered decision is a no-op`. That is right for **redelivery** (ADR-T3 at-least-once) but §197 rules that *"a post-expiry authority decision dead-letters as a conflict."*
+
+**Two different situations share one branch today:**
+
+| Situation | Correct behaviour | Today |
+|---|---|---|
+| The **same** decision redelivered | idempotent no-op | ✔ no-op |
+| A **late** decision on an **Expired** process | **conflict → dead-letter** (§197) | ✖ silently swallowed |
+
+WP-6 must separate them. This is a **ruled-policy gap, not an architecture question** — §197 already decided it.
+
+---
+
+## RED plan (Phase 10) — written only after approval
+
+| # | Keystone | Authority |
+|---|---|---|
+| 1 | A process opened **within** MAD does **not** expire | F-1 · Q-2 |
+| 2 | A process opened **beyond** MAD **does** expire, to `Expired` | §57 · PM-8 |
+| 3 | Expiry is **terminal, never a conclusion** — no outcome, no legitimacy, no determination | **Policy 4** |
+| 4 | Expiry **announces** exactly one fact, once (idempotent across repeated timer runs) | §197 |
+| 5 | A **late** ruling on an Expired process raises a **conflict** (permanent, dead-lettered) | §197 · F-2 |
+| 6 | A **redelivered** decision on a concluded process stays a **no-op** | ADR-T3 — guards against over-correcting F-2 |
+| 7 | An **overdue demand** returns to the process for re-decision and **does not conclude** anything | §80 |
+| 8 | Finality: window elapsed ∧ unchallenged → `Final`, and **no event is emitted** | §142 · Round 50-07 v1.2 |
+| 9 | Finality does **not** fire while a challenge against the determination is open | §142 |
+| 10 | Durations resolve **per election type** and honour an **organisation override** | roadmap §WP-6 |
+| 11 | The minting guard still passes — whatever the Phase-9 provenance answer turns out to be | ADR-MP-06 |
+
+## Gates (13–17)
+
+`composer merge-gate` · PHPStan max · Deptrac 0 · Architecture suite (incl. the minting guard) · triple qualification · developer guide `developer_guide/adjudication/` + index · **STOP for ARB slice acceptance.**
+
+## Risks
+
+| Risk | Mitigation |
+|---|---|
+| A timer path reaching a conclusion (Policy 4 breach) | Keystone 3 + 7 assert the **absence** explicitly |
+| Over-correcting F-2 into breaking idempotency | Keystone 6 pins redelivery as a no-op |
+| The finality check needing Contestation state → a new crossing | Phase 8 marks it an assumption; if confirmed, **stop and report** rather than invent |
+| INTERIM numbers hardening into de-facto policy | Every default carries an `INTERIM` marker naming the ARB decision it awaits |
+
+## Open questions for the ARB
+
+1. **INTERIM defaults** — confirm that shipping INTERIM-marked numbers (MAD, demand deadline, window, margin) is authorized, and supply any values now if preferred.
+2. **The expiry announcement's provenance** — chain origin (needing an allowlist entry) or something else? *(Recommend deciding at the RED boundary, on evidence.)*
+3. **Expiry announcement's published-language status** — §111 flagged the kind as *"TBD by the horizon's business policy"* while §197 rules the consumer is Contestation. Confirm it is published language, hence hydrator + registration, as WP-3A did for `ChallengeRouted`.
+
+---
+
+**Traceability:** roadmap §WP-6 · Q-2 · Constitutional Policy 4 · EPIC-004K §§27/36/41/57/72/74/80/81/90/111/115/128/142/160/187/197 · ADR-T1 · ADR-T8 · ADR-MP-06 · Round 50-07 v1.2 (`finalize()` emits nothing) · WP-2 plan (horizon mechanism without duration) · WP-5 plan (carried checkpoint, one-origin invariant) · frozen `docs/architecture/Cross_Context_Integration_Contract.md`.
