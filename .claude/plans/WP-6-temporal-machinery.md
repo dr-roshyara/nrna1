@@ -1728,7 +1728,7 @@ The adapter's fallback would have produced the *same duration* the ARB ratified.
 
 **Nothing beyond the authorized three was implemented.** Evidence-demand deadlines and the finality evaluator remain out (unmodelled concept / undesigned crossing); the Contestation consumer remains WP-6B.
 
-| Verification | Result |
+| **Evidence** | **Result** |
 |---|---|
 | WP-6 keystones | ✅ **10 tests, 22 assertions** |
 | PHPStan max | ✅ no errors |
@@ -1763,7 +1763,7 @@ Decision authority now matches the approved architecture on every inventoried de
 | Contestation consumer of `AdjudicationExpired` | **Deferred Future Work** | next slice (WP-6B) | Consume + `Routed → disposition` transition | **NO** — ARB Decision C |
 | F-1 · F-2 · N-5 · AP-1 · AP-2 · DC-2 | **Completed** | — | — | No |
 
-**No item is an Implementation Defect. No item blocks acceptance.**
+**No item is an Implementation Defect within WP-6's approved scope. No item blocks acceptance.**
 
 ## 5. DDD traceability — complete
 
@@ -1785,12 +1785,24 @@ Decision authority now matches the approved architecture on every inventoried de
 
 ## 7. Acceptance recommendation
 
-> ### **ACCEPT WITH RECORDED GOVERNANCE GAPS**
+> ### **THE EVIDENCE INDICATES WP-6 IS READY FOR ARB ACCEPTANCE.**
+>
+> **Readiness is established by evidence; acceptance is established by authority — they are different acts, and this report performs only the first.**
 
-**Evidence:** implementation complete and verified across four independent gates · structural integrity preserved · governance integrity preserved after two corrections applied before acceptance · every remaining item classified with a named owner · **no implementation defect outstanding** · **no item blocking**. The two ARB decisions concern *governance artifacts and future rules*, not this slice's software.
+**Recommended formulation for the record, if the ARB accepts the evidence:**
 
-## 8. Next authorized work after acceptance
+> *The implementation, verification and governance evidence indicate that WP-6 is ready for ARB acceptance. If the ARB accepts the evidence, WP-6 may be recorded as **Accepted**; the remaining governance items (**AT-EVT-001** and **DC-1**) remain explicitly tracked as **non-blocking**; and the roadmap authorizes opening WP-7. The constitutional questions **B-1..B-6** remain a separate strategic governance matter and are **outside WP-6's acceptance scope**.*
 
-**WP-7 — Retention alignment** (`audit:cleanup` becomes EPW-aware; per-election arithmetic from the same config). It depends on WP-6's config existing, which it now does, and it is the roadmap's next item.
+| ARB Decision | Outcome |
+|---|---|
+| WP-6 slice acceptance | ⏳ **awaiting the ARB** |
+| AT-EVT-001 evolution | ⏳ awaiting (non-blocking) |
+| DC-1 invalid-MAD case | ⏳ awaiting (non-blocking) |
+
+**Evidence:** implementation complete and verified across four independent gates · structural integrity preserved · governance integrity preserved after two corrections applied before acceptance · every remaining item classified with a named owner · **no known implementation work remains within the approved scope of WP-6** · **no item blocking**. The two ARB decisions concern *governance artifacts and future rules*, not this slice's software.
+
+## 8. Next work the roadmap authorizes UPON ARB acceptance
+
+**Upon ARB acceptance of WP-6, the roadmap authorizes opening WP-7 — Retention alignment** (`audit:cleanup` becomes EPW-aware; per-election arithmetic from the same config). It depends on WP-6's config existing, which it now does, and it is the roadmap's next item.
 
 **Carried forward into WP-7:** the WP-5 checkpoint (can Adjudication's authority-decision originator leave the allowlist once `issueDetermination` derives provenance from a consumed message?) and the framework's **second** operational record — the first cross-slice evidence of whether the review framework holds unchanged.

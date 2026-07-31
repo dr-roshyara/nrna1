@@ -10,7 +10,7 @@ durable constraints, and preferences live in `.claude/MEMORY.md`; history lives 
 recorded reversal condition.
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: **CONSTITUTIONAL FINDING (outranks WP-7): the Voter Activity Trail links user_id -> candidate_id -> vote_id in one per-person file, contradicting the anonymity invariant (ADR-T11) and the charter's 'votes table has NO user_id'. One demo-tenant file (organisation_null, 2026-02-19); writers autoloaded but with ZERO call sites -- dormant capability, historical residue. OWNERSHIP DELIBERATELY NOT ASSIGNED: admissibility precedes ownership, and giving it a home would legitimise it. 6 ARB questions raised (B-1..B-6). WP-7 unaffected -- this REMOVES B from its horizon.** WP-7 blocker remains WP-6 slice acceptance.
+Ticket: **WP-6 -- EVIDENCE INDICATES READY FOR ARB ACCEPTANCE (readiness is evidence; acceptance is authority -- not yet granted). No known implementation work remains within WP-6's approved scope. Non-blocking and tracked: AT-EVT-001, DC-1. UPON acceptance the roadmap authorizes opening WP-7. SEPARATE strategic matter, OUTSIDE WP-6's acceptance scope: constitutional questions B-1..B-6 / C-1..C-6 on the Voter Activity Trail -- C-1 (does ADR-T11's scope reach a LOG FILE?) is decisive and UNDECIDABLE from evidence; my earlier violation conclusion is WITHDRAWN.**
 Plan: .claude/plans/WP-6-temporal-machinery.md (WP-5 CLOSED)
 Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ · WP-2 ✔ · WP-3A GREEN (acceptance pending) · WP-4 open · WP-3B deferred (needs a routing application service)
