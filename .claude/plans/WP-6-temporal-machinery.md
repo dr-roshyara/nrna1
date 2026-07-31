@@ -1292,3 +1292,101 @@ So the distinction between what **freezes** (an artifact, a baseline, a framewor
 | Recommendation | **Continue unchanged** |
 
 **Progress:** ✔ Decisions A/B/C · ✔ RED · ✔ **GREEN** · ✔ gates · ✔ dev guide · ✔ operational record · ⏳ **slice acceptance (STOP)**.
+
+---
+
+# 🔎 ARCHITECTURE PRESERVATION REVIEW — WP-6 GREEN (2026-07-31)
+
+**Commission:** did the implementation preserve the approved architecture? Verification by **inspection**, not assertion. No redesign · no code optimization.
+
+## 1. Preservation findings — two policy leaks found and fixed, one invariant change referred
+
+| Finding | Status |
+|---|---|
+| Ownership preserved | ✅ — the APM contains **no** duration literal (`grep` for `60`/`DateInterval`/`P…D` in the manager: **zero hits**) |
+| Policy in its intended layer | ⚠️→✅ — **two leaks found and corrected**, see AP-1/AP-2 |
+| Published language preserved | ✅ — `AdjudicationExpired` carries exactly `challengeRef` + `expiredAt`; **no outcome, legitimacy, reason or authority field exists to misuse** |
+| Context boundaries intact | ✅ — Deptrac **0 violations**; Adjudication imports nothing from Contestation |
+| Architecture tests represent the approved architecture | ⚠️ — **AT-EVT-001 was widened: referred to the ARB** (§6) |
+
+### AP-1 — a business floor had leaked into Infrastructure
+
+```php
+return new DateInterval('P'.max(1, $days).'D');   // ← the adapter chose a duration
+```
+
+`max(1, …)` is a **duration decision**: it silently substitutes one day for any non-positive configuration. **Q-2 owns durations** (§81), so an infrastructure adapter may not pick one — not even a floor, not even a safe-looking one. **Corrected:** the adapter now **fails closed** with an explicit error, matching the house config discipline already established by EG-002a (*a config value that cannot be trusted blocks; it does not get a substitute*).
+
+### AP-2 — the ARB's number had two homes
+
+`60` appeared in `config/adjudication.php` **and** as the adapter's fallback. The interim MAD is the ARB's value with exactly one declared home; a second copy means a future ARB change could be silently shadowed. **Corrected:** the adapter reads the key and **throws if it is missing or non-numeric** rather than carrying a rival default.
+
+**Both leaks were mine, introduced during GREEN, and both were invisible to every gate** — PHPStan, Deptrac and 146 architecture tests all passed with them in place. They were found only by asking *"does policy still live where the architecture put it?"*
+
+## 2. Ownership verification
+
+| Component | Business owner | Orchestration owner | Technical owner | Matches architecture? |
+|---|---|---|---|---|
+| `AdjudicationDurations` (port) | **Q-2 / ARB** | APM (enforces) | `ConfiguredAdjudicationDurations` | ✅ — and the port exists *because* those differ |
+| `LateDecisionOnExpiredAdjudication` | Adjudication BC (§197 ruled the meaning) | APM | Application/Process code | ✅ (layer per N-5) |
+| `AdjudicationExpired` | **Adjudication BC** (producer owns published language, R-7) | APM (**emits**, does not own) | outbox adapter + hydrator | ✅ — the business/execution split from O-3 |
+| `latestForChallenge()` | Adjudication BC | APM | Eloquent store | ✅ — added because §197 requires distinguishing *expired* from *concluded* |
+
+**No ownership migration.** The one place two accountabilities meet — the announcement — carries **two named owners**, not one absorbing the other.
+
+## 3. Policy verification
+
+| Policy | Intended layer | Verified |
+|---|---|---|
+| MAD's **value** | Q-2 / config | ✅ after AP-1/AP-2; the adapter now **decides nothing** |
+| MAD's **enforcement** | Application (APM) | ✅ — `$now->sub($this->durations->maximumAdjudicationDuration())` |
+| **Policy 4** — a timer concludes nothing | Constitutional | ✅ — asserted as an **absence**: no outcome, legitimacy, reason, authority or determination |
+| §197 — late ≠ redelivered | Application/Process | ✅ — two branches, two meanings, both pinned by keystones |
+| Expiry is terminal | Domain/process state | ✅ — `expire()` unchanged from WP-2 |
+
+## 4. Context-boundary verification
+
+| Interaction | Mechanism | Verified |
+|---|---|---|
+| Adjudication → Contestation | `AdjudicationExpired` **published language** (payload primitives, producer-side registration) | ✅ |
+| Adjudication reading Contestation state | **none** — and this is why the finality evaluator stayed OUT of the slice | ✅ |
+| Hidden dependency · shared state · knowledge leakage | none — Deptrac 0, and no cross-context import exists | ✅ |
+
+## 5. Published-language verification
+
+| Property | Value |
+|---|---|
+| Producer | Adjudication BC (emitted by the APM) |
+| Consumer | **none yet** — Contestation, in WP-6B (ARB Decision C) |
+| Business meaning | *the adjudication horizon elapsed without a conclusion* — a **fact**, never a verdict |
+| Payload | `schema_version: 1` · `challengeRef` · `expiredAt` — primitives only |
+| Registration | `AdjudicationExpiredHydrator`, v1-only window, rejects other versions loudly |
+
+**It communicates a fact, not implementation state:** nothing in the payload exposes the process's internal shape — no status string, no process id, no admitted-evidence list.
+
+## 6. Architecture-test impact — the one item needing authority
+
+| Change | Classification | Authority |
+|---|---|---|
+| **AT-EVT-001**: `Adjudication ⇒ Determination*` widened to `Determination* OR Adjudication*` | **ARCHITECTURAL EVOLUTION** — not implementation alignment, not clarification | ⚠️ **ARB / ADR authority required** |
+| Mint allowlist: third entry | Implementation of **ARB Decision B** | ✅ already authorized |
+| `EventRegistryCompletenessTest`: new produced type declared | Implementation alignment | ✅ |
+
+**The rule that changed, stated plainly:** *"an event is named after the aggregate that owns it"* became *"an event is named after the aggregate that owns it, **or after its context when no aggregate owns it**."*
+
+**Why the rule needed to evolve — the architectural reason, not the test-failure reason:** the ownership rule assumed **every event originates from an aggregate**. The process manager introduces **process-owned events**, and **EPIC-004K §11 states the process is orchestration, not an aggregate**. An event with no owning aggregate cannot be named after one. *"Otherwise the test fails"* is not a justification and is not offered as one.
+
+## 7. Required ADR / ARB decision
+
+> **One decision requested:** accept (or reverse) the AT-EVT-001 evolution — *process-owned events may carry the context prefix where no aggregate owns them.* If accepted, it belongs in an ADR or a recorded ARB ruling, **not** in a test comment; the comment is a stopgap that flags the gap, not a home for the rule.
+
+## 8. Recommendation
+
+| Item | Recommendation |
+|---|---|
+| **WP-6 GREEN implementation** | **Accept** — ownership, policy layers, published language and context boundaries all preserved, with AP-1/AP-2 corrected before acceptance |
+| **AT-EVT-001 widening** | **Refer to the ARB** for explicit authority; the implementation does not depend on the outcome, only the guard's canonical status does |
+
+> ### **WP-6 GREEN preserves architectural ownership, policy layers, published language, and context boundaries. One architectural invariant changed: AT-EVT-001 was widened from aggregate-prefix only to context-or-aggregate prefix. This requires explicit ARB/ADR authority before the architecture test is considered canonical. The implementation itself is accepted; the architecture test change awaits authority.**
+
+**Post-correction verification:** `OK (10 tests, 22 assertions)` · PHPStan max **no errors** · behaviour unchanged by AP-1/AP-2 (they removed decisions, not capability).

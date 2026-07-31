@@ -6,6 +6,7 @@ namespace App\Contexts\Adjudication\Infrastructure\Config;
 
 use App\Contexts\Adjudication\Application\Port\AdjudicationDurations;
 use DateInterval;
+use RuntimeException;
 use Illuminate\Contracts\Config\Repository as Config;
 
 /**
@@ -32,14 +33,40 @@ final class ConfiguredAdjudicationDurations implements AdjudicationDurations
             ?? $this->override("adjudication.per_election_type.{$electionType}", $electionType)
             ?? $this->configuredDefault();
 
-        return new DateInterval('P'.max(1, $days).'D');
+        // No clamping and no substitute value. A non-positive horizon is a CONFIGURATION
+        // ERROR, and silently correcting it would mean this adapter chose a duration --
+        // which is Q-2's to own, never infrastructure's. Fail closed, per the house
+        // config discipline (EG-002a: a config value that cannot be trusted blocks).
+        if ($days < 1) {
+            throw new RuntimeException(sprintf(
+                'adjudication.%s resolved to %d; a Maximum Adjudication Duration must be at '
+                . 'least one day. Fix the configuration -- this adapter will not choose one.',
+                self::KEY,
+                $days,
+            ));
+        }
+
+        return new DateInterval('P'.$days.'D');
     }
 
+    /**
+     * The declared default lives in `config/adjudication.php` and NOWHERE else — the
+     * number is the ARB's, so this adapter must not carry a second copy of it. A missing
+     * or non-numeric value is therefore a configuration error, not an invitation to
+     * substitute a value of our own.
+     */
     private function configuredDefault(): int
     {
-        $value = $this->config->get('adjudication.'.self::KEY, 60);
+        $value = $this->config->get('adjudication.'.self::KEY);
 
-        return is_numeric($value) ? (int) $value : 60;
+        if (!is_numeric($value)) {
+            throw new RuntimeException(
+                'adjudication.'.self::KEY.' is missing or non-numeric. The Maximum Adjudication '
+                . 'Duration is business policy (Q-2) and has exactly one home: config/adjudication.php.',
+            );
+        }
+
+        return (int) $value;
     }
 
     private function override(string $path, ?string $scope): ?int
