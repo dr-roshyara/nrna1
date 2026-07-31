@@ -1,6 +1,6 @@
 # WP-6 — Temporal Machinery (horizon · demand deadlines · finality)
 
-**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **DDD-NORMALIZED** (taxonomy · DDD owner · authority path · resolving artifact, one each per finding). ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
+**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **DDD-NORMALIZED + OWNERSHIP-VERIFIED** (taxonomy · layer · business owner · authority path · resolving artifact, one each per finding). ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
 **Slice:** WP-6 (EPIC-004 roadmap) · **Contexts:** Adjudication (primary), config/infrastructure · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN)
 **Architecture status:** CLOSED for correction-loop integration. This plan **consumes** architecture; it produces none.
 
@@ -622,4 +622,68 @@ This follows the same discipline that produced WP-3A/WP-3B and Decision C's Opti
 
 ☑ one taxonomy per finding · ☑ one DDD owner per finding · ☑ one authority path per finding · ☑ one governing artifact per finding · ☑ **GREEN contains only implementation work already authorized.**
 
-**Observation recorded, deliberately NOT promoted.** The five questions this pass converged on — *what kind of finding · where does it belong · who owns it · what artifact resolves it · can implementation proceed now* — are filed with the other un-promoted observations (Governance Verification Drift · the published-language necessity rule · discovery-does-not-create-architecture). Let them prove themselves across further work packages before any elevation is considered (R-38 · R-39). **N-5 is the first evidence in their favour: the fourth question found a defect the first four categories missed.**
+**Observation recorded, deliberately NOT promoted.** The five questions this pass converged on — *what kind of finding · where does it belong · who owns it · what artifact resolves it · can implementation proceed now* — are filed with the other un-promoted observations (Governance Verification Drift · the published-language necessity rule · discovery-does-not-create-architecture). Let them prove themselves across further work packages before any elevation is considered (R-38 · R-39). **N-5 is their first OPERATIONAL VALIDATION** (ARB wording): the added dimension detected a defect the previous framework **structurally could not** — stronger than supportive anecdote, still below the promotion threshold.
+
+---
+
+# 🧭 OWNERSHIP VERIFICATION — final pass before GREEN (2026-07-31)
+
+**Commission:** verify that documented **architectural layer** and actual **business owner** agree. No redesign · no new concepts · no roadmap change.
+
+## Remaining inconsistencies found — two, both created by leaving ownership implicit
+
+| # | Inconsistency | DDD justification |
+|---|---|---|
+| **O-1** | **The two blocked items were given a LAYER but have NO OWNER.** The previous table assigned 🔷 to *"Domain Model / Aggregate"* and 🔶 to *"Context Mapping"* — which reads as though an owner exists. **Neither does:** the aggregate that would own *Evidence Demand* has not been modelled, and the Adjudication ↔ Contestation relationship has no owner for a **query-shaped** crossing (the frozen contract governs event-carried async integration only) | Naming a layer for an **unowned** concern overstates readiness. A layer says *where a thing would live*; an owner says *who is answerable for it*. **Correction:** owner recorded as **UNASSIGNED — pending the modelling / integration decision.** This yields a mechanical readiness test, below |
+| **O-2** | **The expiry announcement risked TWO owners** — the Adjudication BC *as producer* (owns the published language) and the process manager *as emitter* (executes the publication). Left unstated, a reader could assign either | The frozen contract settles it: **the producing bounded context owns publication and registration** (R-7 — the producer never names its consumers, and owns both halves of published-language status). The APM is the **emitter**, not the owner. **Correction:** one owner — **Adjudication BC (producer)**; the APM emits under it |
+
+## Phase 1 + 2 — layer and business owner, one each
+
+| Finding | Architectural layer | **Business owner** | Consistent? |
+|---|---|---|---|
+| **F-1** horizon cut-off | Application | **Adjudication Process Manager** | ✔ orchestration stays in Application |
+| **F-2** late-decision conflict | Application | **Adjudication Process Manager** | ✔ same — and N-5's correction was exactly this alignment |
+| **MAD resolution** (config + port) | Application port · Infrastructure adapter | **Q-2 / ARB owns the DURATION; the APM owns ENFORCEMENT** | ✔ **This split is not a defect — it is Q-2's rule made visible:** *"the APM enforces a duration it does not own"* |
+| **Expiry announcement** | Published Language | **Adjudication BC (producer)** — the APM emits under it (O-2) | ✔ producer owns publication + registration |
+| 🔷 **Evidence Demand / Deadline** | Domain (where it *would* live) | ⛔ **UNASSIGNED** — the owning aggregate is not modelled | ⚠️ layer known, owner absent |
+| 🔶 **Finality evaluation** | Context Mapping | ⛔ **UNASSIGNED** — no owner exists for a query-shaped crossing | ⚠️ layer known, owner absent |
+| Phase-15 diagnoses · N-5 | Verification | **Test suite (development team)** | ✔ verification stays in verification |
+
+**No responsibility migrates across layers:** orchestration stays in Application · aggregate invariants stay in Domain · collaboration stays in Context Mapping · verification stays in the test suite. N-5 was the one violation and it is corrected.
+
+## Phase 3 — artifact alignment with the OWNER (not merely the layer)
+
+| Owner | Resolving artifact | Aligned? |
+|---|---|---|
+| Adjudication Process Manager | **Production code** | ✔ a process owner resolves its concerns by code |
+| Adjudication BC (producer) | **Production code** — event · outbox mapping · hydrator · registration | ✔ the producer owns both halves |
+| Q-2 / ARB (durations) | **Config value, INTERIM-marked, naming the decision it awaits** | ✔ the artifact records that the number is *not* the code's to choose |
+| ⛔ UNASSIGNED (🔷) | **ADR + domain model** — which *creates* the owner | ✔ the artifact's job is to establish ownership, not to work around its absence |
+| ⛔ UNASSIGNED (🔶) | **Context map / integration contract + ADR** — likewise | ✔ |
+| Test suite | **Tests** | ✔ |
+
+**No artifact resolves a concern outside its owner's responsibility.** Note the shape of the last two rows: where the owner is absent, the artifact's purpose is to **establish the owner** — which is precisely why code cannot substitute for it.
+
+## Phase 4 — GREEN readiness, with a mechanical test
+
+**The ownership column yields a sharper readiness test than any previous pass:**
+
+> ### **An item with no business owner cannot be implemented.**
+
+Not because implementation is technically hard, but because there would be **nobody answerable for the invariant the code would encode.** That test classifies WP-6 without judgement calls:
+
+| GREEN item | Owner | Existing authority | Correct artifact | New business concept? | **GREEN?** |
+|---|---|---|---|---|---|
+| MAD-aware horizon | APM (+ ARB owns the number) | ✔ Q-2 · §81 | code + INTERIM config | No | ✅ |
+| Late-decision conflict | APM | ✔ §197 | code | No | ✅ |
+| Expiry announcement | Adjudication BC (producer) | ✔ Decisions A/B/C | code | No — a new **name** for `Expired` (§57), not a new concept | ✅ |
+| 🔷 Evidence Demand | ⛔ none | ✖ | ADR + domain model | **Yes** | ❌ |
+| 🔶 Finality evaluation | ⛔ none | ✖ | context map + ADR | **Yes** (a relationship) | ❌ |
+
+## Final assessment
+
+> ### **The WP-6 planning package is DDD-NORMALIZED, OWNERSHIP-VERIFIED, and READY FOR GREEN.**
+
+Every GREEN finding carries **one taxonomy · one architectural layer · one business owner · one authority path · one resolving artifact.**
+
+**Wording corrected at ARB direction:** N-5 is the framework's **first OPERATIONAL VALIDATION**, not merely *"first evidence in its favour"* — the added dimension detected a defect the previous framework **structurally could not**. That is stronger than supportive anecdote, and still **below the promotion threshold** (R-38 · R-39): one validation in one work package. The framework's three stages — **taxonomy** (*what kind?*) → **layer** (*where does it belong?*) → **ownership** (*who is answerable?*) — stay in the un-promoted observation register until further work packages test them.
