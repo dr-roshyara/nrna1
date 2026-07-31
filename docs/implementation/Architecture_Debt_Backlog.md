@@ -29,9 +29,15 @@
 
 **Why it is dangerous:** its signature is a **green** gate. A failing test announces itself; a shrinking one does not, so drift outlives ordinary review and creates false confidence — AD-004's repair immediately exposed a real business defect that had been hidden behind a passing guard.
 
-**Counter-measure common to all three:** **a gate must enumerate its subject from the system, never from a constant.** Prefer deriving from registered adapters/handlers over maintaining a list; where a list is unavoidable, assert its completeness against a discovered set.
+**Counter-measure (wording corrected at ARB review, 2026-07-31):**
 
-*Recorded as recognized vocabulary and a review heuristic — not minted as a ruling (R-34 default classification) and not given its own document (R-38).*
+> **Verification should derive its scope from authoritative system metadata wherever possible, rather than from manually synchronized inventories.**
+
+The principle is **not** *"constants are bad"* — this codebase has legitimate ones (schema-version windows per ADR-T5, terminal statuses in `AdjudicationProcessStatus`, lifecycle state enums, immutable semantic vocabularies). Those are **authoritative definitions**, not inventories *of* something else. What the three instances actually demonstrate is narrower and sharper: **a list that must be kept in step with a growing system by hand will drift, and drift green.**
+
+The test to apply: *does this constant DEFINE the thing, or MIRROR a set that lives elsewhere?* `PRODUCED_EVENT_TYPES` mirrors the outbox adapters — so derive it. `AdjudicationProcessStatus`'s terminal cases define the terminal set — so a constant is correct there. Where a mirror is unavoidable, assert its completeness against a discovered set rather than trusting it.
+
+*Recorded as recognized vocabulary and a review heuristic — **deliberately NOT promoted to doctrine**. Three occurrences in one subsystem are enough to recognize a pattern, not to constitutionalize it (R-34 default classification; no new document per R-38; the multi-context promotion bar of R-39 stands).*
 
 ## Open items
 
