@@ -10,7 +10,7 @@ durable constraints, and preferences live in `.claude/MEMORY.md`; history lives 
 recorded reversal condition.
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: **WP-6 (temporal machinery) -- Decisions A/B/C APPROVED; RED CONFIRMED; review framework FROZEN + OPERATIONAL (refinement complete, applied unchanged from the next slice; governance stays external to it). ONLY GATE LEFT: the ARB re-scope ruling -> then GREEN (MAD-aware horizon + late-decision conflict + expiry announcement).** WP-1 + WP-2 + WP-5 ACCEPTED+CLOSED; WP-3A + WP-4 complete, slice acceptance pending.
+Ticket: **WP-6 -- ACCEPTANCE PACKAGE DELIVERED; recommendation ACCEPT WITH RECORDED GOVERNANCE GAPS. Nothing blocks acceptance. TWO ARB decisions pending, neither blocking: (1) AT-EVT-001 evolution needs an ADR/ruling, (2) DC-1 invalid-MAD case never decided (code fails closed). Repository Integrity Gate PASSED and now recorded in MEMORY.** NEXT after acceptance: **WP-7 (retention alignment)**. WP-1 + WP-2 + WP-5 ACCEPTED+CLOSED; WP-3A + WP-4 acceptance pending.
 Plan: .claude/plans/WP-6-temporal-machinery.md (WP-5 CLOSED)
 Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ · WP-2 ✔ · WP-3A GREEN (acceptance pending) · WP-4 open · WP-3B deferred (needs a routing application service)

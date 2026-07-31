@@ -1711,3 +1711,86 @@ The adapter's fallback would have produced the *same duration* the ARB ratified.
 > ### **WP-6 preserves structural integrity and governance integrity. One duplicated authority and one unauthorized decision were detected and corrected; one unspecified decision (DC-1) is recorded as a governance gap the ARB owns. One architectural evolution (AT-EVT-001) awaits authority. The AGIR is complete.**
 
 **Observation recorded, not acted on (the framework is refinement-closed):** the three dimensions may compress into two architectural layers — **Architectural Integrity** (structure · boundaries · layers · dependencies) and **Governance Integrity** (authority · ownership · authorization), with decision preservation as an *outcome* of the second rather than a peer of it. Filed with the other un-promoted observations; **no dimension is added, renamed or merged today.**
+
+---
+
+# 📦 WP-6 CLOSURE & ARB ACCEPTANCE PACKAGE (2026-08-01)
+
+**Repository Integrity Gate: PASSED.** Working tree == index == HEAD · no operation in progress · working tree clean. Evidence below is sourced from the **working tree at HEAD `3568bf47e`**, which are identical. *(The gate was added after a conflicted rebase briefly made evidence unsourceable; the incident cost no work — every artifact was recoverable from the pre-rebase tip.)*
+
+## 1. Implementation status — **COMPLETE**
+
+| Authorized item | Delivered |
+|---|---|
+| MAD-aware horizon | `config/adjudication.php` (INTERIM) · `AdjudicationDurations` port · `ConfiguredAdjudicationDurations` · **F-1 fixed** (cut-off `now − MAD`) |
+| Late-decision conflict | `LateDecisionOnExpiredAdjudication` (`PermanentInboxFailure`) · `latestForChallenge()` · **F-2 fixed** |
+| Expiry announcement | `AdjudicationExpired` · outbox mapping v1 · hydrator · registration · allowlist entry |
+
+**Nothing beyond the authorized three was implemented.** Evidence-demand deadlines and the finality evaluator remain out (unmodelled concept / undesigned crossing); the Contestation consumer remains WP-6B.
+
+| Verification | Result |
+|---|---|
+| WP-6 keystones | ✅ **10 tests, 22 assertions** |
+| PHPStan max | ✅ no errors |
+| Deptrac (fail mode) | ✅ **0 violations** |
+| Architecture suite | ✅ **146 green** |
+| Adjudication + Contestation + Election + Shared | ✅ **91 tests, 260 assertions** |
+| Developer guide | ✅ `05_adjudication_horizon_and_expiry.md` + index |
+| Operational record | ✅ filed (outcome *Exposed a previously unknown defect*; source *Architectural Review*) |
+
+## 2. Structural integrity — **PASS**
+
+Bounded contexts · layers · dependencies · ports · contracts · published language: **all preserved**. Deptrac 0 violations; zero cross-context imports. No structural, dependency or boundary drift.
+
+## 3. Governance integrity — **PASS after correction**
+
+| Finding | Resolution |
+|---|---|
+| **Duplicated authority** — `60` in config *and* as an adapter fallback | ✅ Corrected: the adapter reads the single declared home and throws if absent |
+| **Unauthorized decision** — `max(1, $days)` chose a duration no authority had ruled on | ✅ Corrected: fails closed, decides nothing |
+
+Decision authority now matches the approved architecture on every inventoried decision. **No authority migration.**
+
+## 4. Remaining open items — one classification each
+
+| Item | Classification | Owner | Required action | Blocks acceptance? |
+|---|---|---|---|---|
+| **AT-EVT-001 widened** — an event may carry its context's prefix where no aggregate owns it | **Architectural Evolution** | **ARB** | Accept or reverse; if accepted, host the rule in an **ADR or recorded ruling** (a test comment flags a gap, it does not host a rule) | **NO** — the implementation is unaffected either way; only the guard's canonical status depends on it |
+| **DC-1** — what happens when MAD resolves ≤ 0 was never decided by any authority | **Governance Gap** | **ARB / Q-2** | Rule, or deliberately decline to | **NO** — the code fails closed, deciding nothing on Q-2's behalf; safe indefinitely |
+| Q-2's five numeric parameters | **Governance Gap** | **ARB** | Replace INTERIM values when ready | **NO** — roadmap pre-authorized INTERIM defaults |
+| Evidence-demand deadlines (§80/PM-3) | **Deferred Future Work** | ARB (modelling) | Model *Evidence Demand* / *Deadline* first | **NO** — explicitly out of scope |
+| Finality evaluator (§142) | **Deferred Future Work** | ARB (integration) | Decide the cross-context crossing's shape | **NO** — explicitly out of scope |
+| Contestation consumer of `AdjudicationExpired` | **Deferred Future Work** | next slice (WP-6B) | Consume + `Routed → disposition` transition | **NO** — ARB Decision C |
+| F-1 · F-2 · N-5 · AP-1 · AP-2 · DC-2 | **Completed** | — | — | No |
+
+**No item is an Implementation Defect. No item blocks acceptance.**
+
+## 5. DDD traceability — complete
+
+| Layer | WP-6's chain |
+|---|---|
+| Business decision | bound the conduct; a clock never decides significance |
+| Strategic architecture | Q-2 owns durations · Policy 4 · §197 returns disposition to Contestation |
+| Approved design | EPIC-004K §57/§72/§81/§197 · ADR-T3/T5/T8 · ADR-MP-06 · ARB Decisions A/B/C |
+| Implementation | port + adapter · MAD-aware enforcement · conflict guard · published event |
+| Verification | 10 keystones (3 asserting absences) · 4 gates · 4 reviews (APR · ADPR · ADAPR · AGIR) |
+| Acceptance | this package |
+
+**Every implemented component traces to an approved authority.** The two exceptions were *found and closed*: AP-1/DC-2 (a decision without authority — removed) and AT-EVT-001 (an evolution — escalated, not absorbed). **No missing traceability remains.**
+
+## 6. Required ARB decisions — two, neither blocking
+
+1. **AT-EVT-001** — accept or reverse the ownership-map evolution; if accepted, place the rule in an ADR or recorded ruling.
+2. **DC-1** — rule on the invalid-MAD case, or record a deliberate decision not to.
+
+## 7. Acceptance recommendation
+
+> ### **ACCEPT WITH RECORDED GOVERNANCE GAPS**
+
+**Evidence:** implementation complete and verified across four independent gates · structural integrity preserved · governance integrity preserved after two corrections applied before acceptance · every remaining item classified with a named owner · **no implementation defect outstanding** · **no item blocking**. The two ARB decisions concern *governance artifacts and future rules*, not this slice's software.
+
+## 8. Next authorized work after acceptance
+
+**WP-7 — Retention alignment** (`audit:cleanup` becomes EPW-aware; per-election arithmetic from the same config). It depends on WP-6's config existing, which it now does, and it is the roadmap's next item.
+
+**Carried forward into WP-7:** the WP-5 checkpoint (can Adjudication's authority-decision originator leave the allowlist once `issueDetermination` derives provenance from a consumed message?) and the framework's **second** operational record — the first cross-slice evidence of whether the review framework holds unchanged.

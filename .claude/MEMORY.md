@@ -22,6 +22,14 @@
 - **At every work-package closure, record one of four outcomes** (Exposed · Prevented · Required no changes · Failed to classify) using the template in `.claude/plans/WP-6-temporal-machinery.md` §Operational Adoption. *Failed to classify* is the only reopening trigger.
 - Portable rule worth remembering: **an assigned executor does not substitute for an unowned concept.**
 
+## Repository Integrity Gate (adopted 2026-08-01, after a conflicted-rebase incident)
+
+- **Architectural verification depends on repository integrity.** The repository is the **evidence boundary** between implementation and verification: `Business -> Architecture -> Implementation -> **Repository** -> Verification -> Operational Evidence`.
+- **The gate:** before any Architecture / Preservation / Decision-Authority / Governance / Acceptance review, confirm **working tree == index == HEAD**, with **no operation in progress**. If they disagree, **STOP** -- restore integrity first. Never draw an architectural conclusion from a state where the evidence source is ambiguous.
+- **Run `git status` UNABRIDGED.** `git status -sb | head -1` shows only the branch line and **hides `UU` conflicts and staged deletions** -- this exact truncation caused a false conclusion once. Also check `.git/rebase-merge`, `.git/MERGE_HEAD` (a finished rebase can leave a **residual** unmerged index entry, where `--continue`/`--abort` do not apply).
+- **Every architectural conclusion names its evidence source** (working tree · index · HEAD · a historical commit). Never mix sources.
+- **Recovery rule:** before restoring a file from a commit, check for content unique to the working copy. Append-only artifacts (session logs, ES-004.2) are **appended to, never overwritten**.
+
 ## Constraints that bite (learned, verified)
 - **Hook commands in `.claude/settings.json` MUST use `bash "$CLAUDE_PROJECT_DIR"/.claude/scripts/…`, never a bare relative path** (all 8 fixed 2026-07-30). Relative paths resolve against the shell's **mutable cwd**, so any `cd` into a subdirectory silently breaks every hook with *No such file or directory* — the scripts are present; the wiring was fragile. **Safety rule, not tidiness: those failures print as NON-BLOCKING, but while the path is unresolvable the exit-2 `db-safety-check.sh` gate (which protects the dev DB from `migrate:fresh`/`migrate:refresh`/`test --seed`) does not run AT ALL. An absent gate blocks nothing and reports nothing — the cosmetic symptom was the loud part, the unenforced gate was the real one.** After any hook-wiring change, live-fire it: benign → exit 0; `php artisan migrate:fresh` → exit 2 with the block message.
 - **Engine is sovereign:** `Election.state` column is a compatibility cache; always assert/derive via `ElectionLifecycleEngine` / `currentState()`.
