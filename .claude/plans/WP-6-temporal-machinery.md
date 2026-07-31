@@ -1,6 +1,6 @@
 # WP-6 — Temporal Machinery (horizon · demand deadlines · finality)
 
-**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ⏳ **Blocked on DECISION C only** (scope split). No code written, no RED yet.
+**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ⏳ **Blocked on DECISION C only — an IMPLEMENTATION BOUNDARY decision** (where does WP-6's bounded-context responsibility end?). No code written, no RED yet.
 **Slice:** WP-6 (EPIC-004 roadmap) · **Contexts:** Adjudication (primary), config/infrastructure · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN)
 **Architecture status:** CLOSED for correction-loop integration. This plan **consumes** architecture; it produces none.
 
@@ -274,7 +274,7 @@ Two consequences, stated plainly:
 | **A** | **Add the horizon enforcer to `CHAIN_ORIGIN_ALLOWLIST`** as the origin of the failure-to-conclude conversation (ADR-MP-06 makes any extension an ARB decision) | **Approve.** Without it the guard fails the moment the enforcer publishes; with it, the invariant stays machine-enforced and the entry documents *which* conversation it begins |
 | **B** | **Scope split:** WP-6 = publication + registration; the **Contestation consumer + its `Routed → disposition` transition** = a separate slice (provisionally **WP-6B**) | **Approve.** The alternative — designing a new Challenge transition inside an implementation commission — would be exactly the "silently answering an architectural question during coding" this plan set out to avoid |
 
-**Note the interaction with the carried WP-5 checkpoint:** WP-6 may now **add** one originator (the horizon enforcer, Decision A) while the checkpoint asks whether it can **remove** another (the authority decision, if it becomes message-driven). Both moves are ARB decisions; both must preserve **one origin per conversation**. The allowlist could therefore legitimately end WP-6 with two entries again — a different two.
+**Note the interaction with the carried WP-5 checkpoint:** WP-6 may **add** an originator (the horizon enforcer) while the checkpoint asks whether another can be **removed** (the authority decision, if it becomes message-driven). Both moves are ARB decisions, and both are judged against conversation identity — **not** against the number of entries. The allowlist's size is an artifact of how many distinct conversations exist; it is never itself the rule.
 
 ### RED plan — amended by this clarification
 
@@ -415,12 +415,31 @@ Following from A rather than introducing a special case: provenance is treated *
 | `causation_id` | **null** | Chain start (ADR-MP-06) |
 | Allowlist | **the horizon enforcer is added** as the origin of the *failure-to-conclude* conversation | ADR-MP-06 — extension authorized under Decision A's basis |
 
-**Two originators after WP-6, each owning exactly one conversation** — the correction loop (Contestation's routing service) and the failure-to-conclude (the horizon enforcer). The WP-5 checkpoint separately asks whether the *authority-decision* originator can leave; if it can, the count returns to two by a different route. **The invariant never moves: one origin per conversation.**
+**The invariant is about conversation identity, not system cardinality (ARB correction).** Stated correctly:
 
-## ⏳ DECISION C — the one remaining gate before RED
+> **After WP-6, every integration conversation continues to satisfy "exactly one origin per conversation." Additional conversations may introduce additional origins without violating the invariant.**
 
-**Scope split:** WP-6 delivers **publication + registration**; the **Contestation consumer and its Routed-to-disposition transition** become a separate slice (**WP-6B**).
+The architecture does **not** prefer two origins, or any particular number — the count is an artifact of how many distinct conversations exist. Today: the correction loop (Contestation's routing service) and the failure-to-conclude (the horizon enforcer). The WP-5 checkpoint separately asks whether the *authority-decision* originator can leave. Whatever the count becomes, **the invariant does not move.**
 
-**Why it must be settled before RED, not during:** it decides WP-6's *definition of done*. If WP-6 must also deliver the consumer, then RED needs keystones for a Challenge transition **that does not yet exist** and whose shape is a modelling question — lapse, re-route, dismissal, or a new state — that only the ARB/business can answer. Writing RED first and discovering that mid-GREEN is exactly the failure this process exists to prevent.
+## ⏳ DECISION C — **IMPLEMENTATION BOUNDARY DECISION** (the one remaining gate before RED)
 
-**Recommendation: approve the split** (the WP-3A to WP-4 precedent, already run once successfully in this program). On approval, **RED begins immediately** — the 11 keystones are already planned and none asserts a Contestation reaction.
+**Reframed at ARB direction.** This was written as a *"scope split"*, which understated it — that phrasing makes it read as scheduling. The real question is a **DDD boundary** question:
+
+> ### **Where does WP-6's bounded-context implementation responsibility end?**
+
+| | **Option A — ends at publication** | **Option B — includes the consumer** |
+|---|---|---|
+| Flow | timer → expire → **publish → register** ▮END | timer → expire → publish → **consume → Challenge transition** ▮END |
+| Contexts touched | **Adjudication** only | **Adjudication + Contestation** |
+| Mirrors | **WP-3A** (producer-side) with **WP-6B** mirroring WP-4 | no precedent in this program |
+| Requires a modelling answer first? | **No** | **Yes** — the `Routed → disposition` transition does not exist, and its shape (lapse · re-route · dismissal · new state) is a business question |
+
+### Recommendation: **Option A**, on three DDD grounds rather than convenience
+
+1. **The two responsibilities belong to two different bounded contexts.** Adjudication owns *announcing that it failed to conclude*; Contestation owns *what that means for the challenge* (§197). A slice that implements both makes one commit the owner of two contexts' decisions.
+2. **Option B would couple the producer's completeness to a consumer's existence** — the precise coupling **PB-006's *Registration ≠ Delivery*** exists to prevent. Under Option B, WP-6 could not be "done" until Contestation reacted, which reintroduces the producer→consumer dependency the platform deliberately removed.
+3. **The consumer needs an authority that does not yet exist.** Option B would force the `Routed → disposition` modelling decision *inside an implementation commission* — exactly what this plan's Phase 1 forbids (*architectural uncertainty ⇒ stop and report*).
+
+**Evidence that Option A works here:** WP-3A published `ChallengeRouted` with **no consumer at all**; the contract audit ran in between; WP-4 added the consumer one slice later. Published language awaiting a consumer is a **complete** producer-side deliverable — the inbox simply resolves no handler.
+
+**On approval, RED begins immediately** — 11 keystones already planned, none asserting a Contestation reaction.
