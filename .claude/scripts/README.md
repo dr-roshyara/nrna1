@@ -1,5 +1,12 @@
 # .claude/scripts — Workflow Hooks
 
+> **Hook paths are project-root absolute — do not revert them to bare relative paths (fixed 2026-07-30).**
+> All eight commands invoke `bash "$CLAUDE_PROJECT_DIR"/.claude/scripts/<script>.sh`. They previously used the bare relative form `bash .claude/scripts/<script>.sh`, which resolves against the **shell's current working directory** — and that directory is mutable: any `cd` into a subdirectory during a session silently broke every hook with `No such file or directory`.
+>
+> **Why this was a safety issue and not just log noise:** the failures are reported as *non-blocking status code*, so they never interrupt the session — but while the path was unresolvable, **`db-safety-check.sh` did not run at all.** That is the exit-2 gate protecting the development database from `migrate:fresh` / `migrate:refresh` / `test --seed` (`CLAUDE.md`: *the user's development database is sacred*). **An absent gate reports nothing and blocks nothing** — the loudest symptom was cosmetic while the actual consequence was an unenforced destructive-command gate. The scripts were never renamed, moved, or deleted; the configuration was fragile.
+>
+> **Verified after the fix by live-firing the gate:** benign command → exit 0 (passes); `php artisan migrate:fresh` → exit **2** with the block message (blocks). Both hook-side behaviors confirmed, not assumed.
+
 Wired in `.claude/settings.json`. **Two are BLOCKING** (`db-safety-check.sh`, `project-knowledge-guard.sh` — both exit 2); the rest are non-blocking reminders. Windows/Git-Bash notes: local `jq` is a broken Node shim → scripts parse JSON with PHP; use `printf` not `echo` for paths (Git Bash echo interprets backslash escapes).
 
 | Script | Hook | Purpose |

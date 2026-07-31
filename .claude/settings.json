@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .claude/scripts/db-safety-check.sh \"$CLAUDE_TOOL_INPUT\""
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/db-safety-check.sh \"$CLAUDE_TOOL_INPUT\""
           }
         ]
       },
@@ -15,16 +15,16 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .claude/scripts/project-knowledge-guard.sh \"$CLAUDE_TOOL_INPUT\"",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/project-knowledge-guard.sh \"$CLAUDE_TOOL_INPUT\"",
             "statusMessage": "Checking project-memory boundary"
           },
           {
             "type": "command",
-            "command": "bash .claude/scripts/discipline-gate-reminder.sh \"$CLAUDE_TOOL_INPUT\""
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/discipline-gate-reminder.sh \"$CLAUDE_TOOL_INPUT\""
           },
           {
             "type": "command",
-            "command": "bash .claude/scripts/ddd-principles-reminder.sh \"$CLAUDE_TOOL_INPUT\""
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/ddd-principles-reminder.sh \"$CLAUDE_TOOL_INPUT\""
           }
         ]
       }
@@ -35,7 +35,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .claude/scripts/session-changes-logger.sh"
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/session-changes-logger.sh"
           }
         ]
       }
@@ -45,7 +45,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .claude/scripts/inject-context.sh",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/inject-context.sh",
             "statusMessage": "Loading project context (.claude/CONTEXT.md)"
           }
         ]
@@ -56,7 +56,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .claude/scripts/session-log-reminder.sh"
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/session-log-reminder.sh"
           }
         ]
       },
@@ -64,7 +64,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .claude/scripts/dev-guide-reminder.sh"
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/dev-guide-reminder.sh"
           }
         ]
       }
