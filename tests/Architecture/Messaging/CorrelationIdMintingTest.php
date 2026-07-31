@@ -39,9 +39,14 @@ final class CorrelationIdMintingTest extends TestCase
         // The AUTHORITY-DECISION origin. Intentionally still an originator: the
         // authority's decision does not yet arrive as a message, so
         // `issueDetermination` has nothing to derive provenance from. It becomes a
-        // reacting producer when that path is wired (WP-6). Two originators serving
-        // two different paths is by design -- the one-mint rule is per CONVERSATION,
-        // not per codebase.
+        // reacting producer when that path is wired (WP-6), at which point this
+        // entry is expected to DISAPPEAR.
+        //
+        // The invariant is NOT the number of entries: EACH CONVERSATION HAS EXACTLY
+        // ONE ORIGIN. What exists today is two originators serving two DISTINCT
+        // conversations (correction loop; authority decision) -- a deliberate
+        // intermediate state, not a list that grows. A third entry would have to
+        // show a third distinct conversation, and needs an ARB decision (ADR-MP-06).
         'app/Contexts/Adjudication/Application/Service/CoordinatesAdjudication.php',
     ];
 

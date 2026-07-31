@@ -272,3 +272,41 @@ The plan claimed *"no new port"*. **The approved mint relocation makes that clai
 The allowlist edit was swept into `52b0f4a54` (*chore(hygiene): F-2 executed*) by the rebase. That commit mixes documentation + runtime pruning + **implementation authorization**, so the ARB's independence condition for a plain "accept in place" FAILED. Recorded as an **accepted traceability exception**; published history is **not** rewritten (ARB instruction).
 
 **Progress:** Phases 1-9 done · EP-01 approval · RED · **GREEN** · gates · dev guide · **slice acceptance pending (STOP)**.
+
+---
+
+## ✅ WP-5 ACCEPTED + CLOSED (ARB, 2026-07-31)
+
+**Slice acceptance granted.** Evidence accepted: application-service implementation · context-local ports · transaction boundary · production conversation-origin relocation · explicit publication policy · feature + architecture + static-analysis gates.
+**Governance decisions accepted:** F-A (governed artifacts cite logical slice identities, not SHAs) · F-B (accepted traceability exception, no history rewrite).
+
+### Completion review (EP-02) — did we implement the approved plan?
+
+| Approved item | Delivered |
+|---|---|
+| raise / admit / route application services | ✔ one coordinator, three methods, as recommended and approved |
+| Mint at **ROUTE** (ARB decision) | ✔ `EventProvenance::start()` in `route()` only |
+| WP-3B as WP-5's final act (Option B) | ✔ correction-loop origin relocated; allowlist updated |
+| Allowlist move ARB-approved | ✔ two entries, two distinct conversations |
+| Keystone 6 strengthened to the invariant | ✔ *only integration events are published* |
+| Terminology: business process vs integration conversation origin | ✔ in the service port, coordinator, test, plan and dev guide |
+| **Plan deviation, recorded not absorbed** | The plan's *"no new port"* claim was corrected: two **context-local pattern-mirrors** were required (`IdentityGenerator`, `TransactionManager`). Amendment recorded before implementation, and ARB-accepted at acceptance |
+
+**Nothing was implemented that the approved plan did not authorize.**
+
+### Traceability exception — full record for future reviewers
+
+| Field | Value |
+|---|---|
+| **Affected commit** | `52b0f4a54` — *"chore(hygiene): F-2 executed — CONTEXT.md pruned to a Runtime artifact"* |
+| **What it wrongly contains** | `tests/Architecture/Messaging/CorrelationIdMintingTest.php` (+11) — the **WP-5/WP-3B mint-allowlist relocation**, an ARB-approved *implementation authorization* |
+| **Expected slice** | **WP-5 GREEN** (`feat(contestation): WP-5 GREEN — raise path + integration conversation origin at route`) |
+| **Cause** | A `git pull --rebase` folded an uncommitted tracked-file modification (made during the then-suspended GREEN) into a replayed hygiene commit |
+| **Why not corrected** | The ARB's independence condition for a plain "accept in place" **failed** (that commit mixes documentation + runtime pruning + implementation authorization — verified by `git show --stat`), so it is an **accepted exception**; rewriting **published** history was explicitly declined as costing more than it saves |
+| **Effect on the record** | `git log -S"CoordinatesContestation"` on the guard resolves to `52b0f4a54`, **not** to a WP-5 commit. Reviewers looking for the mint relocation should search the guard's history, not WP-5's diff |
+
+### Forward-looking checkpoint (ARB note, carried to WP-6)
+
+**At WP-6, confirm whether Adjudication's authority-decision originator can be removed from the allowlist** — i.e. whether `issueDetermination` becomes a reacting producer using `fromConsumed()`. Not a WP-5 condition; the natural point to verify the planned convergence actually occurs. The invariant to hold throughout: **each conversation has exactly one origin.**
+
+**Status: CLOSED.** Runtime artifacts synchronized (this plan · CONTEXT) · Historical appended (session log) · Reference written (dev guide 06) · Decision records annotated (allowlist guard + coordinator docblock now state the invariant precisely, per ES-004.3 mutable-portion-only synchronization).

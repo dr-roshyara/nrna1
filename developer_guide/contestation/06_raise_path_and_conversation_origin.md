@@ -93,7 +93,17 @@ private const CHAIN_ORIGIN_ALLOWLIST = [
 ];
 ```
 
-WP-5 relocated the **correction-loop** origin. Adjudication's `issueDetermination` still mints because the authority's decision **does not yet arrive as a message** — it has nothing to derive provenance from; it becomes a reacting producer when that path is wired (WP-6). **Two originators serving two different paths is by design:** the one-mint rule is per *conversation*, not per codebase.
+WP-5 relocated the **correction-loop** origin. Adjudication's `issueDetermination` still mints because the authority's decision **does not yet arrive as a message** — it has nothing to derive provenance from; it becomes a reacting producer when that path is wired (WP-6).
+
+**State the invariant precisely — it is not about the number of entries:**
+
+> **Each conversation has exactly one origin.**
+
+What exists today is **two originators serving two distinct conversations** (the correction loop, and the authority decision). Do **not** read the list as licence for arbitrary originators: adding a third would require showing it opens a *third distinct conversation*, and extending the allowlist is an ARB decision either way (ADR-MP-06).
+
+### Future simplification
+
+**When WP-6 converts the authority-decision path into a reacting producer, the second allowlist originator is expected to disappear** — `issueDetermination` will derive provenance with `EventProvenance::fromConsumed(...)` from the incoming authority message, exactly as `CoordinatesAdjudication:65` already anticipates in its own comment. The current two-entry arrangement is therefore a **deliberate intermediate state in the roadmap, not a list that grows**. WP-6 is the checkpoint at which that convergence should be confirmed.
 
 ## Testing
 

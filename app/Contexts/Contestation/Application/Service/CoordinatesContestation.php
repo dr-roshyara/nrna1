@@ -43,8 +43,12 @@ use App\Domain\Shared\Clock\ClockInterface;
  * `route()` is an allowlisted chain-origin producer: it calls
  * `EventProvenance::start()`. WP-5 relocates the CORRECTION-LOOP origin here.
  * Adjudication's `issueDetermination` mint stays in place intentionally until the
- * authority-decision path itself becomes message-driven (WP-6) — the two originators
- * serve different paths, so their coexistence is by design, not transitional debt.
+ * authority-decision path itself becomes message-driven (WP-6), at which point that
+ * entry is expected to disappear.
+ *
+ * The invariant is not the NUMBER of originators: **each conversation has exactly one
+ * origin.** Today two originators serve two DISTINCT conversations (the correction
+ * loop; the authority decision) — a deliberate intermediate state, not a growing list.
  *
  * Traceability: roadmap §WP-5 + WP-3B (Option B) · TP-2 · ADR-T21 · ADR-MP-06 ·
  * ADR-T1 (atomicity supplied by {@see TransactionalContestationService}).
