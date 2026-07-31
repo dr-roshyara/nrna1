@@ -1611,3 +1611,103 @@ The adapter's fallback would have produced the *same duration* the ARB ratified.
 **The principle this slice earned, recorded as an observation and not promoted:**
 
 > **Architecture is preserved by structure; governance is preserved by authority.** They are related but independent, and only the first is mechanically verifiable today.
+
+---
+
+# 🏛️ ARCHITECTURE GOVERNANCE INTEGRITY REVIEW (AGIR) — WP-6 (2026-07-31)
+
+**Structural and governance findings are reported in separate sections and never mixed.**
+
+## 1. Structural integrity — reported alone
+
+| Area | Status | Evidence |
+|---|---|---|
+| Bounded contexts | **Preserved** | zero Contestation imports in Adjudication |
+| Dependencies | **Preserved** | Deptrac **0 violations**, fail mode |
+| Layers | **Preserved** | Domain framework-free · Application ports-only · Infrastructure adapters |
+| Ports | **Preserved** | four injected, none bypassed |
+| Contracts | **Preserved** | payload primitives; producer-side registration |
+| Published language | **Preserved** | event + mapping + hydrator + registration |
+
+**No structural drift · no dependency drift · no boundary drift.** Nothing further belongs in this section.
+
+## 2. Governance integrity inventory (approved decisions only)
+
+| Decision | Business owner | Decision authority | Implementation owner | Execution owner | Expected location |
+|---|---|---|---|---|---|
+| MAD's value | Adjudication BC | **Q-2 / ARB** (§187) | config file | APM (applies) | `config/adjudication.php` |
+| MAD's enforcement | Adjudication BC | **§81** | APM | APM | Application |
+| Expiry ≠ verdict | constitutional | **Policy 4** | event shape | APM | Domain |
+| Late ≠ redelivered | Adjudication BC | **§197** | APM | APM | Application/Process |
+| Expiry is published language | Adjudication BC | **ARB Decision A** | outbox + hydrator | APM | Infrastructure |
+| Announcement begins a conversation | platform | **ARB Decision B** | APM + allowlist | APM | Application |
+| Slice ends at publication | — | **ARB Decision C** | scope | — | — |
+
+## 3. Governance integrity review
+
+| Decision | Classification | Who gained authority | Evidence |
+|---|---|---|---|
+| MAD's value | **DUPLICATED AUTHORITY** → corrected | the adapter, concurrently with the ARB | `60` in config **and** as adapter fallback |
+| MAD's enforcement | **Preserved** | — | no duration literal in the manager |
+| Expiry ≠ verdict | **Preserved** | — | no field exists to carry a verdict |
+| Late ≠ redelivered | **Preserved** | — | two branches, two meanings |
+| Published language | **Preserved** | — | publication + registration |
+| Conversation origin | **Preserved** | — | ARB-approved allowlist entry |
+| Slice boundary | **Preserved** | — | no consumer, no Contestation file touched |
+
+**No authority migration.** One duplication, corrected before acceptance.
+
+## 4. Decision completeness review — the invalid-MAD case is TWO findings, not one
+
+**Applying the ARB's split, the single line `max(1, $days)` produced two independent findings:**
+
+| # | Finding | Classification | Owner of the problem |
+|---|---|---|---|
+| **DC-1** | *What should happen when MAD resolves to ≤ 0 was never decided by any authority.* Q-2's parameter set (§187) ratifies **values**; it is silent on invalid ones | **UNSPECIFIED DECISION** — a **governance gap** | **The ARB / Q-2** — a question never put to them |
+| **DC-2** | The implementation **answered** that unanswered question by silently substituting one day | **UNAUTHORIZED DECISION** — **implementation overreach** | **The implementation** |
+
+**Why separating them matters, and it is not bookkeeping:** they have **different owners and different remedies.** DC-2 was fixed by code — the adapter now fails closed and decides nothing. **DC-1 cannot be fixed by code at all**; it is resolved only if the ARB rules on the case, or deliberately declines to. Merged into one finding, DC-1 would have looked closed the moment DC-2 was corrected — and the governance gap would have survived, invisible, behind a correct implementation.
+
+**Every implementation branch was reviewed against this question.** Other branches trace to explicit decisions: the horizon cut-off → §81 · the late-decision refusal → §197 · the version window rejection → ADR-T5 · the announcement → Decisions A/B. **`max(1, …)` was the only branch answering a question no authority had been asked.**
+
+## 5. Review-system coverage — intended responsibility and blind spots
+
+| Mechanism | Intended responsibility | Architectural blind spot |
+|---|---|---|
+| PHP compiler | syntax | everything semantic |
+| PHPStan max | type correctness | authority — `max(1, $x)` is perfectly typed |
+| Deptrac (fail mode) | dependency direction | duplicated authority — no dependency was violated |
+| Architecture suite (146) | structural properties | authority with no structural signature |
+| Feature suites (91) | behaviour | who was entitled to decide — the clamp never fired, so behaviour was *correct* |
+| **AGIR (this review)** | **governance integrity** | **see §6** |
+
+**No mechanism is criticized.** Each measured its own subject accurately, and the failures lay outside every one's designed responsibility.
+
+## 6. This review's own limits — declared, because a mature review must
+
+| Review | Detects | **Cannot detect** |
+|---|---|---|
+| **AGIR** | duplicated · migrated · unauthorized authority; unspecified decisions **that implementation forces into the open** | ① an unspecified decision that **no branch ever reaches** — it stays invisible until some future input hits it; ② a decision **absent from the inventory**, since only *approved* decisions participate; ③ whether an authority's ruling is *wise* — only whether it was theirs to make |
+
+**DC-1 is a live example of limit ①.** It surfaced only because an implementation branch touched it. Had the adapter simply trusted the config, the governance gap would still exist and this review would not have found it. **The review is only as complete as the code paths that force questions into the open.**
+
+## 7. Required ARB/ADR decisions
+
+| Item | Decision required |
+|---|---|
+| **AT-EVT-001 widening** | Accept or reverse: *process-owned events may carry the context prefix where no aggregate owns them.* If accepted, it belongs in an ADR or recorded ruling — not a test comment |
+| **DC-1 — the invalid-MAD case** | **Rule, or deliberately decline to rule.** The implementation currently **fails closed**, which decides nothing on Q-2's behalf and is safe indefinitely. **Recorded as a governance gap, not a defect** |
+
+## 8. Recommendation
+
+| Item | Recommendation |
+|---|---|
+| **Structural integrity** | ✅ **Accept** — no drift in any dimension |
+| **Governance integrity** | ✅ **Accept after correction** — one duplicated authority, one unauthorized decision, both corrected |
+| **Decision completeness** | ⚠️ **One governance gap recorded (DC-1)** — owner is the ARB; not a blocker, and not fixable in code |
+| **WP-6 GREEN** | ✅ **Accept** |
+| **AT-EVT-001** | ⚠️ **Refer to the ARB** |
+
+> ### **WP-6 preserves structural integrity and governance integrity. One duplicated authority and one unauthorized decision were detected and corrected; one unspecified decision (DC-1) is recorded as a governance gap the ARB owns. One architectural evolution (AT-EVT-001) awaits authority. The AGIR is complete.**
+
+**Observation recorded, not acted on (the framework is refinement-closed):** the three dimensions may compress into two architectural layers — **Architectural Integrity** (structure · boundaries · layers · dependencies) and **Governance Integrity** (authority · ownership · authorization), with decision preservation as an *outcome* of the second rather than a peer of it. Filed with the other un-promoted observations; **no dimension is added, renamed or merged today.**

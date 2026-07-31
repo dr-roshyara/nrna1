@@ -10,7 +10,7 @@ durable constraints, and preferences live in `.claude/MEMORY.md`; history lives 
 recorded reversal condition.
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: **WP-6 (re-scoped: horizon + expiry announcement) -- GREEN COMPLETE, all gates pass, dev guide written, first operational record filed; awaiting slice acceptance. ONE ITEM FLAGGED FOR ARB: the AT-EVT-001 event-ownership guard was WIDENED (Adjudication may name events after its context, since the process is not an aggregate -- EPIC-004K section 11).** Evidence-demand deadlines + finality evaluator remain OUT (modelling / integration gaps); Contestation consumer = WP-6B. WP-1 + WP-2 + WP-5 ACCEPTED+CLOSED; WP-3A + WP-4 complete, acceptance pending.
+Ticket: **WP-6 GREEN COMPLETE + reviewed (APR / ADPR / ADAPR / AGIR); awaiting slice acceptance. TWO ITEMS FOR ARB: (1) AT-EVT-001 widening -- process-owned events may use the context prefix (needs an ADR/ruling, not a test comment); (2) DC-1 -- the invalid-MAD case was never decided by any authority (a GOVERNANCE GAP the ARB owns; the adapter now fails closed and decides nothing).** Evidence-demand deadlines + finality evaluator remain OUT; Contestation consumer = WP-6B. WP-1 + WP-2 + WP-5 ACCEPTED+CLOSED; WP-3A + WP-4 acceptance pending.
 Plan: .claude/plans/WP-6-temporal-machinery.md (WP-5 CLOSED)
 Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ · WP-2 ✔ · WP-3A GREEN (acceptance pending) · WP-4 open · WP-3B deferred (needs a routing application service)
