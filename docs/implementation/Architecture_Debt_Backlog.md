@@ -17,6 +17,22 @@
 - The detectors themselves were platform-broken and created **false confidence** — guards reported "OK" while checking almost nothing. Repairing them immediately caught a real business defect. Architecture tests are executable governance, not documentation.
 - Behaviour tests can fail in the opposite direction: implementation correct, test assumptions stale. Both directions need the same discipline: verify, then fix the wrong side.
 
+## Recognized class — **Governance Verification Drift** (named by the ARB, 2026-07-31)
+
+**AD-004 · AD-009 · AD-010 form one class:** *the architecture stays correct while the mechanisms that verify it quietly become incomplete.*
+
+| Instance | How the verifier shrank |
+|---|---|
+| **AD-004** | Broken helpers made guards scan **zero files** while reporting OK |
+| **AD-009** | A hand-maintained completeness list covers **2 of 4** produced event types |
+| **AD-010** | Handler **registration** — the PB-006 failure mode — is asserted by nothing general |
+
+**Why it is dangerous:** its signature is a **green** gate. A failing test announces itself; a shrinking one does not, so drift outlives ordinary review and creates false confidence — AD-004's repair immediately exposed a real business defect that had been hidden behind a passing guard.
+
+**Counter-measure common to all three:** **a gate must enumerate its subject from the system, never from a constant.** Prefer deriving from registered adapters/handlers over maintaining a list; where a list is unavoidable, assert its completeness against a discovered set.
+
+*Recorded as recognized vocabulary and a review heuristic — not minted as a ruling (R-34 default classification) and not given its own document (R-38).*
+
 ## Open items
 
 | ID | Failing test | Issue | Owner |

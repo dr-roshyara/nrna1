@@ -1,5 +1,6 @@
 # WP-4 Post-Implementation Contract Validation
 
+**Status:** ✅ **ACCEPTED by the ARB (2026-07-31) as the ARCHITECTURAL BASELINE for the correction-loop integration pattern.** The Cross-Context Integration Contract is ruled sufficiently mature to govern subsequent **correction-loop** consumers; future implementations continue to validate — and where necessary refine — its **scope**, rather than assuming universal applicability.
 **Date:** 2026-07-31 · **Role:** Chief Software Architect / ARB · **Commission:** post-implementation validation — *did the contract predict the implementation that emerged?*
 **Constraints honored:** no production code changed · no ADR created · contract not redesigned · WP-4 not re-implemented · no new abstraction invented
 **Method:** the implementation is the evidence. Every row below cites what the committed code actually does, read after GREEN.
@@ -150,7 +151,25 @@ Tested by enumeration against the codebase and the roadmap, **not** by assertion
 | **react-and-ignore** | **Already inside Shape B** | PM-1 no-ops on a duplicate. "Ignore" is an *outcome* of the delegated owner, not a structural shape |
 | **projection / read-model consumer** | ⚠️ **EXISTS TODAY — and is governed by NOTHING in this contract** | Governance's `CommitteeGovernanceProjector` + `CommitteeMemberProjectionListener`, Membership's `MemberDirectoryProjector` / `…ProjectionWorker`, Finance's `FeePaidProjection`. **None implements `InboxHandler`** — the exhaustive scan returns exactly the four correction-loop consumers. They are driven by Laravel listeners/workers and keep their **own** dedupe store (`Governance\Infrastructure\Projections\ProcessedEventModel`) |
 
-**The material finding of this phase:** the platform has **two parallel event-consumption mechanisms with two independent dedupe stores** — the governed inbox path, and an older listener/projection path. The contract governs only the first. This is **concrete evidence for the scope statement** the strategic validation recommended on theoretical grounds; the second mechanism is exactly what an unscoped reading would wrongly claim authority over.
+**The material finding of this phase (wording sharpened at ARB review — the earlier "two parallel mechanisms" understated it):**
+
+> **The platform contains two INDEPENDENTLY GOVERNED event-processing models serving different architectural purposes.**
+
+They are not two implementations of one idea. They differ on every axis that matters:
+
+| | **Governed integration** | **Projection infrastructure** |
+|---|---|---|
+| Architectural intent | **Business collaboration** across bounded contexts | **Read-model maintenance** |
+| Path | producer → outbox → hydrator → inbox → `InboxHandler` → business reaction | event → Laravel listener → projection worker → read model |
+| Ownership | consuming **bounded context** (registers itself) | infrastructure/query side |
+| Correctness criterion | the business reaction happened **exactly once** | the projection **converges** to the source of truth |
+| Deduplication | inbox `(event_id, consumer_context)` | its own `ProcessedEventModel` |
+| Lifecycle | a fact consumed once, permanently | rebuildable — `GovernanceProjectionRebuilder` exists |
+| Governed by | **this contract** | **nothing in this contract** |
+
+The rebuildability row is the clinching difference: a projection may be **discarded and replayed**; a business reaction may not. **Different architectural purposes require different governance**, so no attempt is made here to unify them — and none should be made without a commission of its own.
+
+This is **concrete evidence for the scope statement** the strategic validation recommended on theoretical grounds; the second model is exactly what an unscoped reading would wrongly claim authority over.
 
 **Therefore the classification is narrowed as the ARB anticipated:** the two shapes are canonical **for the event-carried correction-loop family (all four inbox consumers)** — *not* for every consumer in the system. Extending them to projections would require analysing a mechanism this contract never covered. **No redesign is proposed here; the boundary is recorded.**
 
@@ -166,6 +185,7 @@ Tested by enumeration against the codebase and the roadmap, **not** by assertion
 | **L-4** | **"Defended absence" now has a validated method.** G-2's enumeration was independently confirmed by the translator's type signature (`Throwable → Throwable` has nothing to act on when no business condition exists). The method generalizes: to justify an absence, name the responsibility and show which existing owner holds it | Method learning |
 | **L-5** | **An inherited guarantee should be recorded as a dependency, not banked as a property.** WP-4's fail-loud behaviour comes from WP-3A's hydrator. That is fine today and fragile silently — hence the reversal condition in Phase 3 | Risk visibility |
 | **L-6** | **Hand-maintained fitness lists drift, and drift green.** F-1 is the second occurrence of the AD-004 class. Completeness gates should enumerate from the system, not from a constant | Verification opportunity |
+| **L-6b** | **The class now has a name (ARB, 2026-07-31): GOVERNANCE VERIFICATION DRIFT.** *The architecture stays correct while the mechanisms that verify it quietly become incomplete.* Three instances: **AD-004** (guards scanning zero files) · **AD-009** (completeness gate checking 2 of 4) · **AD-010** (registration unverified). Its signature is a **green** gate, which is why it outruns ordinary review — a failing test announces itself; a shrinking one does not. Counter-measure, drawn from all three: **gates must enumerate their subject from the system, never from a constant.** *(Named as recognized vocabulary, not minted as a ruling — R-34 default classification, and no new governance document per R-38.)* | Pattern recognition |
 | **L-7** | **The most valuable question after GREEN was not "is it correct?" but "what protects it?"** Correctness was provable in six tests; both real gaps appeared only when protection was audited | Process learning |
 
 ## Deliverable 8 — Final ARB recommendation
