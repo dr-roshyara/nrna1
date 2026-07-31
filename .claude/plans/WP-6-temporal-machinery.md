@@ -1,6 +1,6 @@
 # WP-6 — Temporal Machinery (horizon · demand deadlines · finality)
 
-**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ⏳ **Blocked on DECISION C only — an IMPLEMENTATION BOUNDARY decision** (where does WP-6's bounded-context responsibility end?). No code written, no RED yet.
+**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **ARCHITECTURALLY NORMALIZED** (findings classified; four decision layers separated). ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
 **Slice:** WP-6 (EPIC-004 roadmap) · **Contexts:** Adjudication (primary), config/infrastructure · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN)
 **Architecture status:** CLOSED for correction-loop integration. This plan **consumes** architecture; it produces none.
 
@@ -462,7 +462,7 @@ Verified against the code before writing a single test, per Phase 1 (*architectu
 | **Evidence-demand deadlines** (§80 · PM-3) | ⛔ **BLOCKED — no Demand concept exists** | `AdjudicationProcessState` has `admittedEvidence` (admissions) and `returnForMoreEvidence()` (the authority's not-yet-decide), but **no demand entity, no per-demand deadline, and no storage column** — the migration has `admitted_evidence` only. PM-3's *"express evidence demands and track them to satisfaction or deadline"* was **never modelled**. Implementing it means inventing a Demand aggregate-internal model + schema + deadline semantics — **new tactical modelling inside an implementation commission** |
 | **Finality evaluator** (§142) | ⛔ **BLOCKED — needs knowledge Adjudication does not have** | §142 conditions finality on *"provided no challenge against it is open at closure."* A challenge **against a determination** is a Contestation aggregate (`TargetType::Determination`). Adjudication cannot answer *"is a challenge open against this determination?"* locally — that requires a **new cross-context crossing**, which Phase 8 flagged as an assumption to confirm, with the recorded instruction to **stop and report, not invent** |
 
-**Neither finding is an implementation defect. Both identify architectural capabilities that have not yet been MODELLED** (ARB wording — *"absence"* can read as accidental; *"not yet modelled"* names the architectural reason). Both were flagged in this plan's own Phase 8 before RED began, which is the checkpoint working as designed.
+**Neither of THESE TWO findings is an implementation defect** *(F-1 and F-2 are — see the normalization table; the categories differ and so do their authority paths)*. **Both identify architectural capabilities that have not yet been MODELLED** (ARB wording — *"absence"* can read as accidental; *"not yet modelled"* names the architectural reason). Both were flagged in this plan's own Phase 8 before RED began, which is the checkpoint working as designed.
 
 ### Consequence for RED
 
@@ -518,3 +518,61 @@ This follows the same discipline that produced WP-3A/WP-3B and Decision C's Opti
 2. `receiveRulingDecision()`'s sixth argument is an **`EvidenceSet`**, not a timestamp — **the decision time is the manager's, taken from the injected clock, never a caller parameter.** I had guessed; the signature was read and the test corrected.
 
 **Progress:** ✔ EP-03 · ✔ Phases 1–9 · ✔ Decisions A/B/C · ✔ **RED confirmed** · ⏳ GREEN (awaiting report acceptance) · ⏳ gates · ⏳ dev guide · ⏳ slice acceptance.
+
+---
+
+# 🧭 ARCHITECTURAL NORMALIZATION (pre-GREEN consistency pass, 2026-07-31)
+
+**Commission:** classify every finding by DDD responsibility and governing authority. **No redesign · no new work packages · no new domain concepts · no roadmap amendment.** Corrections are textual only.
+
+## Remaining inconsistencies found in this document (four)
+
+| # | Inconsistency | Why it matters (DDD) |
+|---|---|---|
+| **N-1** | **Findings carried no common taxonomy.** F-1 and F-2 sat in one section; the two blocked items in another; the two Phase-15 corrections in a third. Nothing said which *kind* of finding each was | A finding's kind determines its **authority path**. Without a taxonomy, a reader cannot tell which findings can be fixed inside an implementation commission and which need a modelling decision |
+| **N-2** | **"Neither finding is an implementation defect" read as contradicting F-1/F-2**, which *are* implementation gaps | Both statements are true of *different* findings. Unclassified, they look inconsistent — the appearance of contradiction was created by the missing taxonomy, not by any error of fact |
+| **N-3** | **The two blocked items were grouped as "two capabilities."** They are **different categories** — one lacks *concepts*, the other lacks *collaboration* | They require **different authorities**: a domain-model extension vs an integration design decision. Grouping them would produce one muddled ADR instead of two clean ones |
+| **N-4** | **Evidence was not split by kind.** Repository facts and RED behaviour were presented as one undifferentiated "observed evidence" | Static structure and executable behaviour are **independent** forms of proof. Naming both makes the interpretation stronger: the concept is absent *and* the behaviour cannot be satisfied without inventing it |
+
+## Correction — the classification every finding now carries
+
+**Four categories, exactly one per finding:**
+
+| Finding | Category | Repository evidence | Behavioural evidence | Authority required |
+|---|---|---|---|---|
+| **F-1** `enforceHorizon()` uses `now` as the cut-off | **Implementation Gap** | `dueForHorizon($asOf)` selects `opened_at <= $asOf`; caller supplies `now` | RED keystone 2 **fails**: a process opened one minute ago expired | **None new** — Q-2/§81 already rule that the APM enforces MAD |
+| **F-2** a late decision is silently swallowed | **Implementation Gap** | `receiveRulingDecision()` returns early for "concluded **or expired**" in one branch | RED keystone 9 **fails**; keystone 10 **passes**, proving the two cases are distinguishable | **None new** — §197 already ruled it a conflict |
+| **Evidence-demand deadlines** (§80/PM-3) | 🔷 **DOMAIN MODELLING GAP** | No `Demand` entity · no deadline value object · no aggregate member · no column in the migration (`admitted_evidence` only) | RED **cannot proceed**: a keystone could not be written without first **minting domain concepts** | **Domain-model extension** — the ubiquitous language lacks *Evidence Demand* and *Evidence Demand Deadline* |
+| **Finality evaluation** (§142) | 🔶 **INTEGRATION CONTRACT GAP** | `Determination::finalize()` exists and is guarded; **nothing** in Adjudication can answer *"is a challenge open against this determination?"* — that state is a Contestation aggregate (`TargetType::Determination`) | RED **cannot proceed**: satisfying §142's proviso would require **reading another bounded context** | **Integration design decision** — the crossing's *shape* is undecided (the strategic validation predicted a query-shaped crossing would eventually arise) |
+| Two Phase-15 diagnoses (illegal transition · guessed signature) | **Test Gap** | — | Tests failed for reasons unrelated to the behaviour under test | **None** — corrected in the tests; production code untouched |
+
+**N-2 is resolved by the table itself:** F-1/F-2 **are** implementation gaps; the two blocked items **are not**. Both earlier statements stand once each is scoped to its own category.
+
+## Why N-3's split matters, in DDD terms
+
+| | 🔷 Domain Modelling Gap | 🔶 Integration Contract Gap |
+|---|---|---|
+| What is missing | **Concepts** inside one aggregate's language | **Collaboration** between two bounded contexts |
+| Who owns the decision | Adjudication's model — a **tactical DDD** question (aggregate members, invariants, lifecycle) | The **relationship** between Adjudication and Contestation — a **strategic DDD** question |
+| Blast radius | Adjudication only; no crossing created | A **new crossing**, and possibly a **new integration style** (query-shaped, which the frozen contract explicitly does not govern) |
+| If conflated | One ADR would have to both mint concepts *and* design a crossing — two unrelated decisions in one vote | |
+
+**One creates concepts; one creates collaboration.** Keeping them apart is what will make the eventual ADRs clean — and it is why the recommendation names them separately rather than as "two capabilities."
+
+## Governance discipline — verified, not assumed
+
+☑ No work-package identifier appears outside the correction record that exists to disown it (`grep "WP-6C\|WP-6D"` → two hits, both inside that record).
+☑ Every recommendation is phrased *"Recommendation to the ARB"*; none assigns names, numbering or sequencing.
+☑ No new domain concept is introduced by this pass — *Evidence Demand* etc. are named as **missing**, never defined.
+☑ Historical session entries are **not** rewritten (ES-004.2 append-only); corrections are recorded forward.
+☑ The four decision layers stay separate throughout: **evidence → interpretation → recommendation → authority**.
+
+## Final readiness assessment
+
+> ### **The WP-6 planning package is ARCHITECTURALLY NORMALIZED and READY FOR GREEN — for the two Implementation Gaps only.**
+
+**Ready now (no new authority required):** **F-1** (MAD-aware horizon) and **F-2** (late-decision conflict), plus the expiry announcement authorized by Decisions A/B/C. Every rule they must obey is already ruled: Q-2 · Policy 4 · §197 · ADR-MP-06 · ADR-T1.
+
+**Not ready, and correctly out of GREEN:** the 🔷 Domain Modelling Gap and the 🔶 Integration Contract Gap. Each awaits its own authority, and neither can be resolved by writing code.
+
+**GREEN may begin on the ARB's re-scope ruling.** Nothing further in this document requires architectural work.
