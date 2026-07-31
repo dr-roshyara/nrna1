@@ -10,7 +10,7 @@ durable constraints, and preferences live in `.claude/MEMORY.md`; history lives 
 recorded reversal condition.
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: **WP-7 READINESS: 'READY AFTER NAMED GOVERNANCE DECISIONS'. SINGLE BLOCKER = WP-6 slice acceptance (roadmap rule: no slice starts before its predecessor's acceptance). Two non-blocking ARB items: AT-EVT-001 (needs ADR/ruling), DC-1 (invalid-MAD, code fails closed). FINDING R-2: EPW needs THREE terms (CW + MAD + LSM) and only MAD exists in config -- WP-7 must ADD Contestation Window + Legal Safety Margin as INTERIM.** First authorized WP-7 action on acceptance: EP-03 + EP-01 plan only, no code. WP-6 acceptance package delivered.
+Ticket: **WP-7 SCOPE DEFINED (boundary only, no design). WP-7 owns ONE thing: the deletion guard; it consumes every duration as config and defines none. THREE prerequisites before implementation: (1) WP-6 slice acceptance, (2) I-1 -- WHICH AUDIT TREE the Retention Invariant covers (two trees exist and audit:cleanup reaches only `logs/audit`, NOT the per-voter trail under `logs/organisation_*`), (3) I-3 -- whether EPW needs Contestation/Adjudication STATE (if so, stop and report). CW + LSM enter as INTERIM config (R-2).** WP-6 acceptance package delivered; two non-blocking ARB items open.
 Plan: .claude/plans/WP-6-temporal-machinery.md (WP-5 CLOSED)
 Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ · WP-2 ✔ · WP-3A GREEN (acceptance pending) · WP-4 open · WP-3B deferred (needs a routing application service)
