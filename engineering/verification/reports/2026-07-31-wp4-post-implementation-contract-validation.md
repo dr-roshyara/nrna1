@@ -4,7 +4,9 @@
 **Constraints honored:** no production code changed · no ADR created · contract not redesigned · WP-4 not re-implemented · no new abstraction invented
 **Method:** the implementation is the evidence. Every row below cites what the committed code actually does, read after GREEN.
 
-> **Verdict in one line:** the contract **predicted reality on all nine invariants**, over-predicted on exactly **one specification row**, and the search for what *protects* it exposed **two pre-existing fitness gaps — one of them mine, from WP-3A.**
+> **Verdict in one line:** the first implementation provides **strong empirical support** for the contract — it predicted reality on all nine invariants, over-predicted on exactly **one specification row**, and the search for what *protects* it exposed **two pre-existing fitness gaps — one of them mine, from WP-3A.**
+
+**Scope of this claim (ARB refinement, 2026-07-31 — adopted):** one implementation validates **this interaction pattern**, not the contract's full generality. Consumer behaviours **not yet exercised**: asynchronous compensation · competing consumers · long-running orchestration · consumer-owned version negotiation. *(Multiple consumers of one event **is** already exercised — `DeterminationIssued` has two — but as derivation evidence, not as a post-contract test.)* The stronger claim becomes justified once further consumers follow the same contract.
 
 ---
 
@@ -136,6 +138,24 @@ The behaviour is correct — both missing hydrators *are* registered — so this
 
 **The axis that varies is whether the reaction produces a new fact** — and that single question determines outbox, provenance and translator all at once. WP-4 is the **canonical minimal consumer**; the earlier three are the canonical *publishing* consumer. Both are the same pattern under one conditional.
 
+### Phase 6b — *Are these the only architectural dimensions that vary?* (ARB question, 2026-07-31)
+
+Tested by enumeration against the codebase and the roadmap, **not** by assertion. Result: **two shapes are canonical for the correction-loop family — and a THIRD consumption mechanism exists outside the contract entirely.**
+
+| Candidate shape | Verdict | Evidence |
+|---|---|---|
+| **react-and-compensate** | **Architecturally EXCLUDED by decision** | ADR-T8: the loop is choreography from `DeterminationIssued` onward; the PM *"is not a saga and performs no compensation."* Not an unobserved gap — a ruled-out shape |
+| **react-and-schedule** | **Exists, but is NOT an inbox consumer** | WP-6's temporal machinery is **clock-triggered**, not event-triggered (`enforceHorizon` / `dueForHorizon`), and the finality evaluator is explicitly *"scheduled policy … **NO event** — the armed condition holds."* A scheduled reader is outside the contract's scope (event-carried async integration) |
+| **react-and-command** | **Collapses into Shape A** | A reaction that must drive another context cannot reach in (R-1/R-2) — it publishes. Not observed, and the contract itself forecloses the alternative |
+| **react-and-ignore** | **Already inside Shape B** | PM-1 no-ops on a duplicate. "Ignore" is an *outcome* of the delegated owner, not a structural shape |
+| **projection / read-model consumer** | ⚠️ **EXISTS TODAY — and is governed by NOTHING in this contract** | Governance's `CommitteeGovernanceProjector` + `CommitteeMemberProjectionListener`, Membership's `MemberDirectoryProjector` / `…ProjectionWorker`, Finance's `FeePaidProjection`. **None implements `InboxHandler`** — the exhaustive scan returns exactly the four correction-loop consumers. They are driven by Laravel listeners/workers and keep their **own** dedupe store (`Governance\Infrastructure\Projections\ProcessedEventModel`) |
+
+**The material finding of this phase:** the platform has **two parallel event-consumption mechanisms with two independent dedupe stores** — the governed inbox path, and an older listener/projection path. The contract governs only the first. This is **concrete evidence for the scope statement** the strategic validation recommended on theoretical grounds; the second mechanism is exactly what an unscoped reading would wrongly claim authority over.
+
+**Therefore the classification is narrowed as the ARB anticipated:** the two shapes are canonical **for the event-carried correction-loop family (all four inbox consumers)** — *not* for every consumer in the system. Extending them to projections would require analysing a mechanism this contract never covered. **No redesign is proposed here; the boundary is recorded.**
+
+**One corroboration worth noting:** WP-6's roadmap entry specifies that *"late decisions dead-letter per the ruled policy"* — a **permanent-failure classification**. That is precisely the seat WP-4 defended as absent-because-unreachable (Phase 3). The extension point was independently predicted by the roadmap, which strengthens the "future extension point, not closed omission" classification.
+
 ## Phase 7 — Architectural learning
 
 | # | Learning | Kind |
@@ -150,15 +170,18 @@ The behaviour is correct — both missing hydrators *are* registered — so this
 
 ## Deliverable 8 — Final ARB recommendation
 
-> ### **The Cross-Context Integration Contract is EMPIRICALLY VALIDATED. WP-5 may proceed.**
+> ### **The first implementation provides STRONG EMPIRICAL SUPPORT for the Cross-Context Integration Contract. WP-5 may proceed.**
 
-1. **Contract status: validated by first implementation.** Nine invariants predicted; nine observed; none forced; zero Deptrac violations. It has earned the authority to govern the next consumer.
+1. **Contract status: strongly supported by its first implementation** — not yet validated in full generality (see the scope note at the head of this report). Nine invariants predicted; nine observed; none forced; zero Deptrac violations. It has earned the authority to govern the next consumer **of this kind**.
 2. **One correction to §5 (not to the invariants):** its provenance row presumes a publishing consumer. Recommended wording — *"if the reaction publishes, provenance continues the conversation via `fromConsumed()`; a non-publishing consumer stamps nothing."* **A documentation correction the ARB may authorize; not taken here.**
 3. **Record R-8's second seat as "any consumer-side owner"** (handler, aggregate, **or process manager**) — a clarification of scope, not a change of rule.
 4. **Two fitness gaps recommended for repair, neither caused by WP-4 and both pre-existing:** **F-1** extend/derive `PRODUCED_EVENT_TYPES` (currently 2 of 4 — includes my own WP-3A miss); **F-2** add the inbox mirror of the hydrator completeness test. **Recommended as engineering work items, not created here.**
-5. **Adopt the two consumer shapes as the documented canonical pattern** (Phase 6), with *does the reaction produce a fact?* as the discriminator.
-6. **Arm one reversal condition:** if a `ChallengeRouted` producer ever publishes without hydrator-side validation, Adjudication must own its own `PermanentInboxFailure` classification.
-7. **WP-4 remains accepted as implemented.** Nothing in this validation asks for a change to its production code — the correct outcome for a commission that validates architecture *through* implementation rather than reshaping implementation to fit architecture.
+5. **Adopt the two consumer shapes as canonical FOR THE EVENT-CARRIED CORRECTION-LOOP FAMILY** (Phase 6 + 6b), with *does the reaction produce a fact?* as the discriminator — **explicitly not for all consumers**, because a third mechanism (listener/worker projections with their own dedupe store) exists outside this contract's scope.
+   - ☑ **compensate** — excluded by ADR-T8 · ☑ **schedule** — clock-triggered, out of scope · ☑ **command** — collapses into Shape A · ☑ **ignore** — inside Shape B · ⚠️ **projection** — **exists and is ungoverned by this contract**.
+
+6. **Convert F-1/F-2 to engineering work items, create no new document** (ARB direction). Filed in the existing register as **AD-009** and **AD-010** in `docs/implementation/Architecture_Debt_Backlog.md` — the same home as AD-004, the guard defect whose class F-1 repeats. Everything else in this report stays architectural *knowledge*.
+7. **Arm one reversal condition:** if a `ChallengeRouted` producer ever publishes without hydrator-side validation, Adjudication must own its own `PermanentInboxFailure` classification. *(Corroborated: WP-6 already specifies that late decisions dead-letter — the same seat, predicted independently by the roadmap.)*
+8. **WP-4 remains accepted as implemented.** Nothing in this validation asks for a change to its production code — the correct outcome for a commission that validates architecture *through* implementation rather than reshaping implementation to fit architecture.
 
 ## Success criteria (self-check)
 
