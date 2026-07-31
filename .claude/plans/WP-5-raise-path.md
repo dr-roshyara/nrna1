@@ -173,3 +173,67 @@ Keystone 8 is the slice's real prize: it replaces WP-4's test-seeded provenance 
 ---
 
 **Traceability:** roadmap `docs/implementation/EPIC-004_Architecture_to_Implementation_Roadmap.md` §WP-5 · TP-2 · ADR-T21 · ADR-MP-06 · ADR-T1 · frozen contract `docs/architecture/Cross_Context_Integration_Contract.md` · baseline report `engineering/verification/reports/2026-07-31-wp4-post-implementation-contract-validation.md` (ACCEPTED; architecture CLOSED) · WP-4 plan `.claude/plans/WP-4-apm-wiring.md` (WP-3B deferral recorded there) · protocol `.claude/IMPLEMENTATION_PROTOCOL.md`.
+
+---
+
+## ✅ EP-01 APPROVED (ARB, 2026-07-31) — decisions recorded, RED authorized
+
+| Question | Decision |
+|---|---|
+| WP-3B execution model | **Option B** — WP-3B is WP-5's final act |
+| Mint location | **ROUTE** (the first published act); no schema change |
+| `CHAIN_ORIGIN_ALLOWLIST` | **Approved** to move to Contestation's routing service in this slice |
+
+### The clarification, recorded verbatim as required
+
+> **Business process origin and integration conversation origin are intentionally different concepts.** The business process begins at `raise`; the integration conversation begins at `route`, when the first published event is emitted.
+
+**Terminology tightened at ARB direction:** the plan no longer says *"business chain head"* / *"conversation head"* — "chain" is ambiguous between business flow and message flow. The two terms are now **Business process origin** (`raise`) and **Integration conversation origin** (`route`).
+
+### Keystone strengthened at ARB direction
+
+Keystone 5 no longer asserts *"no `LogicException`"*. It asserts the **invariant**:
+
+> **Only integration events are published to the outbox.**
+
+Expressed as: after a full `raise → admit → route` sequence, **exactly one** outbox row exists and it is `ChallengeRouted`. This makes `ChallengeRaised`/`ChallengeAdmitted` **intentionally unpublished**, not merely *currently unmapped* — so a future engineer cannot silence an exception by adding a mapping without failing a test that states the intent.
+
+### Plan amendment — two pattern-mirrors the approved decisions require (Phase 6/7 correction)
+
+The plan claimed *"no new port"*. **The approved mint relocation makes that claim wrong, and the correction is recorded rather than quietly absorbed:**
+
+| Addition | Why authority requires it | Why not reuse |
+|---|---|---|
+| `Contestation\Application\Port\IdentityGenerator` + `Infrastructure\Identity\UuidIdentityGenerator` | The mint needs a correlation id **inside the Application layer**, where facades are banned (house Rule 2) | Adjudication's port cannot be imported — contract **R-1/R-2**. The *pattern* is reused; the class cannot be |
+| `Contestation\Application\Port\TransactionManager` + Laravel impl + `TransactionalContestationService` decorator | **ADR-T1** — `route()` saves the aggregate **and** writes its outbox row; they must be atomic. `EloquentChallengeRepository::save()` has no transaction of its own | Same reason |
+
+**Neither is a new architectural *concept*** — both are exact mirrors of Adjudication's existing ports (`IdentityGenerator`, `TransactionManager`, `TransactionalAdjudicationService`), which is what conformance to the frozen contract *requires* here.
+
+### Finding to report at the RED boundary (discovered while reading the mint site)
+
+`CoordinatesAdjudication:65` carries its own condition: `// When ChallengeRouted consumption lands, this becomes EventProvenance::fromConsumed.` WP-4 landed that consumption — **but WP-4's handler calls PM-1 (`openFor`), not `issueDetermination`.** So `issueDetermination` still has **no incoming message** to derive provenance from; the authority decision arrives on a path not yet wired (WP-6). **Consequence:** WP-5 can *add* Contestation's routing service to the allowlist, but **removing** Adjudication's entry would leave `issueDetermination` with no provenance source. Recorded as an implementation-evidence finding for the ARB; **not** acted on unilaterally.
+
+---
+
+## WP-5 RED WRITTEN + CONFIRMED (2026-07-31) — STOP at the RED boundary
+
+**`Tests: 9, Assertions: 2, Errors: 8, Failures: 1.`** Every failure is the *expected* one — the capability does not exist:
+
+- 8 errors: `Target class [App\Contexts\Contestation\Application\Service\ContestationService] does not exist.`
+- 1 failure: the mint allowlist does not name `CoordinatesContestation` (keystone 9).
+
+**No test needed correcting this time** — the WP-4 lesson (three Phase-15 "incorrect test" diagnoses from guessed APIs) was applied by reading every signature first: `Challenge::raise/admit/route`, `ChallengeState` cases, `RaiserStandingRef|SubmittedContent|ElectionId|TargetId::fromString`, `ContestedOutcomeRef::of`, `TargetType::ElectionResult`, `EventProvenance::start`, and the org/tenant setup copied from `ContestationReactionMessagingTest`.
+
+| # | Keystone | RED reason |
+|---|---|---|
+| 1 | raise persists `Raised` | service missing |
+| 2 | admit reaches `Admitted` | service missing |
+| 3 | illegal admit throws **without mutation** | service missing |
+| 4 | route publishes exactly one `ChallengeRouted` (v1 payload) | service missing |
+| 5 | refused route publishes **nothing** (ADR-T1 atomicity) | service missing |
+| 6 | **only integration events are published** (ARB-strengthened) | service missing |
+| 7 | route mints the **integration conversation origin**; `causation_id` null | service missing |
+| 8 | **production raise path opens an adjudication** (replaces WP-4's test-seeded mint) | service missing |
+| 9 | the allowlist names Contestation's routing service | guard not yet updated |
+
+**Progress:** ✔ Phases 1–9 · ✔ EP-01 approval · ✔ **RED confirmed** · ⏳ GREEN (awaiting report acceptance) · ⏳ gates · ⏳ dev guide · ⏳ slice acceptance.
