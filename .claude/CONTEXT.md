@@ -10,7 +10,7 @@ durable constraints, and preferences live in `.claude/MEMORY.md`; history lives 
 recorded reversal condition.
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: **DOMAIN AUDIT BOUNDARY REVIEW done: the 'audit' artifacts are THREE domain concepts, not one -- A Election Event Journal (Administrative Export, what audit:cleanup reaches) - B Voter Activity Trail (UNOWNED; candidate Constitutional Evidence; NO retention mechanism exists) - C constitutional_integrity log (Diagnostics, 365d rotation). WP-7 stays scoped to A ONLY -- this NARROWS the slice and dissolves I-1. New ARB question opened for B (does Policy 2 cover it, and which context owns its lifecycle?) -- not a WP-7 item.** Blocker for WP-7 remains WP-6 slice acceptance.
+Ticket: **CONSTITUTIONAL FINDING (outranks WP-7): the Voter Activity Trail links user_id -> candidate_id -> vote_id in one per-person file, contradicting the anonymity invariant (ADR-T11) and the charter's 'votes table has NO user_id'. One demo-tenant file (organisation_null, 2026-02-19); writers autoloaded but with ZERO call sites -- dormant capability, historical residue. OWNERSHIP DELIBERATELY NOT ASSIGNED: admissibility precedes ownership, and giving it a home would legitimise it. 6 ARB questions raised (B-1..B-6). WP-7 unaffected -- this REMOVES B from its horizon.** WP-7 blocker remains WP-6 slice acceptance.
 Plan: .claude/plans/WP-6-temporal-machinery.md (WP-5 CLOSED)
 Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ · WP-2 ✔ · WP-3A GREEN (acceptance pending) · WP-4 open · WP-3B deferred (needs a routing application service)
