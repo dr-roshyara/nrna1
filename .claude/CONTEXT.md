@@ -10,7 +10,7 @@ durable constraints, and preferences live in `.claude/MEMORY.md`; history lives 
 recorded reversal condition.
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: **WP-7 SCOPE DEFINED (boundary only, no design). WP-7 owns ONE thing: the deletion guard; it consumes every duration as config and defines none. THREE prerequisites before implementation: (1) WP-6 slice acceptance, (2) I-1 -- WHICH AUDIT TREE the Retention Invariant covers (two trees exist and audit:cleanup reaches only `logs/audit`, NOT the per-voter trail under `logs/organisation_*`), (3) I-3 -- whether EPW needs Contestation/Adjudication STATE (if so, stop and report). CW + LSM enter as INTERIM config (R-2).** WP-6 acceptance package delivered; two non-blocking ARB items open.
+Ticket: **DOMAIN AUDIT BOUNDARY REVIEW done: the 'audit' artifacts are THREE domain concepts, not one -- A Election Event Journal (Administrative Export, what audit:cleanup reaches) - B Voter Activity Trail (UNOWNED; candidate Constitutional Evidence; NO retention mechanism exists) - C constitutional_integrity log (Diagnostics, 365d rotation). WP-7 stays scoped to A ONLY -- this NARROWS the slice and dissolves I-1. New ARB question opened for B (does Policy 2 cover it, and which context owns its lifecycle?) -- not a WP-7 item.** Blocker for WP-7 remains WP-6 slice acceptance.
 Plan: .claude/plans/WP-6-temporal-machinery.md (WP-5 CLOSED)
 Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ · WP-2 ✔ · WP-3A GREEN (acceptance pending) · WP-4 open · WP-3B deferred (needs a routing application service)
