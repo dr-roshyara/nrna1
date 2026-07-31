@@ -1,6 +1,6 @@
 # WP-6 — Temporal Machinery (horizon · demand deadlines · finality)
 
-**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **DDD-NORMALIZED · OWNERSHIP-VERIFIED · SEMANTICALLY SEPARATED** (taxonomy · layer · business owner · execution owner · responsibility type · authority · artifact — one each per finding). ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
+**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **SEMANTICALLY NORMALIZED — review framework FROZEN** (8 dimensions in 2 groups: Architecture · Execution; one question each, one answer per finding). ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
 **Slice:** WP-6 (EPIC-004 roadmap) · **Contexts:** Adjudication (primary), config/infrastructure · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN)
 **Architecture status:** CLOSED for correction-loop integration. This plan **consumes** architecture; it produces none.
 
@@ -748,3 +748,83 @@ Every GREEN finding carries **one taxonomy · one layer · one business owner ·
 **The framework's dimensions, and what each answers:** *taxonomy* — what kind of finding · *layer* — where it belongs · *owner* — who is accountable · *responsibility type* — what kind of accountability · *artifact* — what resolves it · *authority* — who may decide.
 
 **Operational validations to date: three** — N-5 (layer found a misplacement), O-1 (ownership found a layer with no owner), and O-4/O-5 (responsibility type found ownership recorded at the wrong granularity in both directions — one overstated, one understated). **Still un-promoted** (R-38 · R-39): the validations come from **one** work package, and the promotion bar asks for evidence across several. Recorded in the observation register; elevation is not proposed.
+
+---
+
+# 🧭 SEMANTIC NORMALIZATION — the LAST pass; the framework is now FROZEN (2026-07-31)
+
+**Commission:** stabilize vocabulary. **No new dimension · no redesign · no new governance.** Clarity only.
+
+## Remaining semantic inconsistencies — three leaks, each a dimension answering another's question
+
+| # | Leak | DDD justification |
+|---|---|---|
+| **S-1** | 🔷's Responsibility Type read **"Business (future)"** — *"future"* is a **GREEN-readiness** statement smuggled into a responsibility classification | Responsibility Type must answer *what kind of accountability*, full stop. Whether it can proceed **today** is GREEN Readiness' question. Corrected to **Business**; the timing lives in its own column |
+| **S-2** | 🔷's DDD Layer read **"Domain (destination)"** — *"destination"* smuggles an **ownership** statement into a location classification | Layer answers *where it belongs*, which is knowable even when nothing lives there yet. That nothing does is already carried by **Business Owner = UNASSIGNED**. Corrected to **Domain** |
+| **S-3** | F-1's Business Owner read **"Adjudication BC · duration parameter: Q-2/ARB"** — **two owners in one cell**, and a duplicate: MAD's ownership already has its own row | One dimension, one answer. F-1 is a finding about **enforcement**, whose business meaning the BC owns. The duration's ownership is a *different concern*, already recorded. Corrected to **Adjudication BC** |
+
+**One redundancy noted and deliberately NOT corrected:** taxonomy *Test Gap* maps 1:1 to responsibility type *Verification*. They answer different questions (*what kind of finding* vs *what kind of accountability*) and simply coincide for this category. A 1:1 mapping is not an overlap — collapsing them would lose the distinction everywhere else.
+
+## The stabilized framework — two groups, eight dimensions, one question each
+
+### Group A — ARCHITECTURE (describes the architecture)
+
+| Dimension | Answers exactly |
+|---|---|
+| **Taxonomy** | What kind of finding is this? |
+| **DDD Layer** | Where does it belong architecturally? |
+| **Business Owner** | Who owns the business **meaning**? |
+| **Responsibility Type** | What kind of responsibility is involved? |
+
+### Group B — EXECUTION (describes implementation)
+
+| Dimension | Answers exactly |
+|---|---|
+| **Execution Responsibility Owner** | Who **performs** the implementation responsibility? |
+| **Authority** | Who may authorize change? |
+| **Artifact** | What resolves it? |
+| **GREEN Readiness** | Can implementation proceed **today**? |
+
+**Rename adopted (ARB):** *Execution Owner* → **Execution Responsibility Owner.** Placed beside *Business Owner*, the old name read as a **competing** owner; the new one makes explicit that they own **different responsibilities** — which is exactly O-3's finding, now carried by the vocabulary itself rather than by a footnote.
+
+## The normalized classification
+
+**Group A — Architecture**
+
+| Finding | Taxonomy | DDD Layer | Business Owner | Responsibility Type |
+|---|---|---|---|---|
+| **F-1** horizon cut-off | Implementation Gap | Application | **Adjudication BC** | Execution |
+| **F-2** late-decision conflict | Implementation Gap | Application | **Adjudication BC** | Execution |
+| **MAD resolution** | Implementation Gap | Application port · Infrastructure adapter | **Q-2 / ARB** (owns the duration) | Business |
+| **Expiry announcement** | authorized scope | Published Language | **Adjudication BC** | Business + Execution |
+| 🔷 **Evidence Demand / Deadline** | Domain Modelling Gap | **Domain** | ⛔ **UNASSIGNED** | **Business** |
+| 🔶 **Finality evaluation** | Integration Contract Gap | Context Mapping | Determination aggregate owns *legality*; ⛔ **collaboration UNASSIGNED** | Collaboration |
+| Phase-15 · N-5 | Test Gap | Verification | Development team | Verification |
+
+**Group B — Execution**
+
+| Finding | Execution Responsibility Owner | Authority | Artifact | GREEN today? |
+|---|---|---|---|---|
+| **F-1** | **Adjudication Process Manager** | Existing — Q-2 · §81 | Production code | ✅ |
+| **F-2** | **Adjudication Process Manager** | Existing — §197 | Production code | ✅ |
+| **MAD resolution** | APM (enforces) via the durations port | Existing — roadmap §WP-6 | Code + **INTERIM** config naming its pending decision | ✅ |
+| **Expiry announcement** | **Adjudication Process Manager** (emits) | Existing — Decisions A/B/C | Production code | ✅ |
+| 🔷 **Evidence Demand** | **APM** (assigned by PM-3) | **Modelling authority required** | ADR + domain model | ❌ |
+| 🔶 **Finality evaluation** | ⛔ UNASSIGNED | **Integration authority required** | Context map / contract + ADR | ❌ |
+| Phase-15 · N-5 | Test suite | Implementation | Tests | ✅ done |
+
+☑ Phase 3 — Business Owner owns meaning; Execution Responsibility Owner owns performance; **complementary, never competing** (O-3 is the reference case, and the expiry announcement is the row where both appear).
+☑ Phase 4 — an execution responsibility exists **without** a model (🔷); a model exists **without** collaboration (🔶); `UNASSIGNED` appears only where no accountable owner exists today. **No future owner invented.**
+☑ Phase 5 — no dimension answers another's question; architecture and execution are visually separated; terminology is internally consistent; **no dimension was added.**
+
+## 🔒 FRAMEWORK FROZEN — the next evidence must be stability, not sophistication
+
+**Adopted at ARB recommendation.** The framework has produced **three operational validations**, all from **one** work package: **N-5** (Layer exposed a misplacement) · **O-1** (Ownership exposed an unowned location) · **O-4/O-5** (Responsibility semantics exposed two *opposite* ownership errors).
+
+> **The framework is used UNCHANGED on the next work packages.** No dimension is added, renamed or subdivided. Cross-slice evidence — does it keep finding real issues in *independent* slices? — is the only evidence that could support promotion (R-38 · R-39). **Until then the most valuable property it can demonstrate is stability, not additional sophistication.**
+
+*One reusable insight is recorded verbatim as the framework's most portable output, still un-promoted:* **an assigned executor does not substitute for an unowned concept** — it prevents an implementation team from mistaking orchestration for modelling.
+
+## Final assessment
+
+> ### **The WP-6 planning package is SEMANTICALLY NORMALIZED and READY FOR GREEN. The review framework is frozen. No further architectural, ownership or semantic work remains.**
