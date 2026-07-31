@@ -1,6 +1,6 @@
 # WP-6 — Temporal Machinery (horizon · demand deadlines · finality)
 
-**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **DDD-NORMALIZED + OWNERSHIP-VERIFIED** (taxonomy · layer · business owner · authority path · resolving artifact, one each per finding). ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
+**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **DDD-NORMALIZED · OWNERSHIP-VERIFIED · SEMANTICALLY SEPARATED** (taxonomy · layer · business owner · execution owner · responsibility type · authority · artifact — one each per finding). ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
 **Slice:** WP-6 (EPIC-004 roadmap) · **Contexts:** Adjudication (primary), config/infrastructure · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN)
 **Architecture status:** CLOSED for correction-loop integration. This plan **consumes** architecture; it produces none.
 
@@ -687,3 +687,64 @@ Not because implementation is technically hard, but because there would be **nob
 Every GREEN finding carries **one taxonomy · one architectural layer · one business owner · one authority path · one resolving artifact.**
 
 **Wording corrected at ARB direction:** N-5 is the framework's **first OPERATIONAL VALIDATION**, not merely *"first evidence in its favour"* — the added dimension detected a defect the previous framework **structurally could not**. That is stronger than supportive anecdote, and still **below the promotion threshold** (R-38 · R-39): one validation in one work package. The framework's three stages — **taxonomy** (*what kind?*) → **layer** (*where does it belong?*) → **ownership** (*who is answerable?*) — stay in the un-promoted observation register until further work packages test them.
+
+---
+
+# 🧭 OWNERSHIP SEMANTICS — final pass before GREEN (2026-07-31)
+
+**Commission:** separate *architectural location* · *business ownership* · *execution responsibility*, and never let them collapse. No redesign · no new concepts · no invented future owners.
+
+## Remaining ambiguities found — three, and the first is a correction to my own previous correction
+
+| # | Ambiguity | DDD justification |
+|---|---|---|
+| **O-3** | **My O-2 resolution collapsed a distinction instead of resolving it.** I wrote *"one owner — the BC; the APM is the emitter, not the owner"*, treating the two as **competing**. They are **complementary** | Two different accountabilities: the **Adjudication BC** owns the *meaning* of "adjudication expired" (only a bounded context can own a business fact's meaning); the **APM** owns *performing* the publication. Recording only one erases a real responsibility. Corrected to **business owner + execution owner** |
+| **O-4** | **🔷 Evidence Demand was marked UNASSIGNED on BOTH axes — overstating the gap.** Its **execution owner is already assigned**: EPIC-004K **PM-3** gives the APM *"express evidence demands and track them to satisfaction or deadline"* | The executor is **known**; the **concept** is not. That asymmetry is precisely what makes this a **Domain Modelling Gap** rather than an execution gap — there is someone to run it and nothing yet for them to run |
+| **O-5** | **🔶 Finality was marked UNASSIGNED flatly — understating what exists.** Finality's *legality* **is** owned: `Determination::finalize()` guards `Issued → Final`, and this plan's Phase 3 already records *"the Determination aggregate owns finality's legality"* | What is unowned is **the collaboration** — answering *"is a challenge open against this determination?"* across a boundary. Naming it precisely is what distinguishes an **Integration Contract Gap** from a domain gap: the invariant has an owner; the **crossing** does not |
+
+## Phases 1 + 2 — location · business ownership · execution responsibility · responsibility type
+
+| Finding | Layer | **Business owner** | **Execution owner** | **Responsibility type** |
+|---|---|---|---|---|
+| **F-1** horizon cut-off | Application | **Adjudication BC** (the meaning of *Expired*) · *duration parameter: Q-2/ARB* | **Adjudication Process Manager** | **Execution** |
+| **F-2** late-decision conflict | Application | **Adjudication BC** (§197 ruled the meaning) | **Adjudication Process Manager** | **Execution** |
+| **Expiry announcement** | Published Language | **Adjudication BC** — owns the published fact | **Adjudication Process Manager** — emits it | **Business + Execution** |
+| 🔷 **Evidence Demand / Deadline** | Domain (destination) | ⛔ **UNASSIGNED** — no aggregate owns the concept | **APM** (assigned by **PM-3**) | **Business (future)** |
+| 🔶 **Finality evaluation** | Context Mapping | **Determination aggregate** owns finality's *legality*; ⛔ **the collaboration is UNASSIGNED** | ⛔ **UNASSIGNED** — no evaluator exists, and whether it may query is undecided | **Collaboration** |
+| Phase-15 diagnoses · N-5 | Verification | **Development team** | **Test suite** | **Verification** |
+
+**No future owner is invented.** `UNASSIGNED` appears only where no accountable owner exists today, and in each case the *reason* is named — an unmodelled concept (🔷) or an undesigned crossing (🔶). "A future aggregate" is an architectural **destination**, never an owner.
+
+## Phase 4 — consistency check
+
+| Rule | Holds? |
+|---|---|
+| A bounded context owns business **meaning** | ✔ Adjudication BC owns *Expired* and the §197 conflict rule |
+| Application services / process managers own **orchestration** | ✔ the APM executes horizon enforcement, the conflict guard, and the emission — and owns none of the meanings |
+| Aggregates own **invariants** | ✔ `Determination::finalize()` guards the `Issued → Final` legality |
+| Context mappings own **collaboration** | ✔ and this is exactly the slot that is empty for 🔶 |
+| Tests own **verification** | ✔ |
+
+**No responsibility overlaps without explicit distinction.** The one place two accountabilities meet — the expiry announcement — is now recorded as **Business + Execution with two named owners**, not as one owner absorbing the other.
+
+## Phase 3 — GREEN readiness
+
+| GREEN item | Business owner | Execution owner | Authority | Artifact approved? |
+|---|---|---|---|---|
+| MAD-aware horizon | ✔ Adjudication BC (+ Q-2/ARB parameter) | ✔ APM | ✔ Q-2 · §81 | ✔ code + INTERIM config |
+| Late-decision conflict | ✔ Adjudication BC | ✔ APM | ✔ §197 | ✔ code |
+| Expiry announcement | ✔ Adjudication BC | ✔ APM | ✔ Decisions A/B/C | ✔ code |
+| 🔷 Evidence Demand | ⛔ UNASSIGNED | ✔ APM | ✖ | ✖ |
+| 🔶 Finality evaluation | ⛔ collaboration UNASSIGNED | ⛔ UNASSIGNED | ✖ | ✖ |
+
+**Both UNASSIGNED items remain outside GREEN.** Note that 🔷 has an execution owner and is *still* excluded — **an assigned executor does not substitute for an unowned concept.** That is the sharper form of the earlier readiness test.
+
+## Final assessment
+
+> ### **The WP-6 planning package is DDD-NORMALIZED, OWNERSHIP-VERIFIED, SEMANTICALLY SEPARATED, and READY FOR GREEN.**
+
+Every GREEN finding carries **one taxonomy · one layer · one business owner · one execution owner · one responsibility type · one authority path · one resolving artifact.**
+
+**The framework's dimensions, and what each answers:** *taxonomy* — what kind of finding · *layer* — where it belongs · *owner* — who is accountable · *responsibility type* — what kind of accountability · *artifact* — what resolves it · *authority* — who may decide.
+
+**Operational validations to date: three** — N-5 (layer found a misplacement), O-1 (ownership found a layer with no owner), and O-4/O-5 (responsibility type found ownership recorded at the wrong granularity in both directions — one overstated, one understated). **Still un-promoted** (R-38 · R-39): the validations come from **one** work package, and the promotion bar asks for evidence across several. Recorded in the observation register; elevation is not proposed.
