@@ -64,14 +64,14 @@ The open question was *"does per-election EPW need Contestation or Adjudication 
 |---|---|---|
 | Aggregates · entities · domain services | **none** | — |
 | **Domain events** | **none** | WP-7 publishes nothing |
-| **Value object** — an EPW/duration result | ⚠️ **only if a keystone demands it**; otherwise `DateInterval`/`int` days | would need justification; **default is no** |
-| **Application service** — EPW calculation + the guard decision | **yes, one** | roadmap §WP-7 · Policy 2's arithmetic |
+| **Value Object — `EvidencePreservationWindow`** | ✅ **YES (P-1, corrected)** | **Policy 2 names EPW *"a single DOMAIN CONCEPT, not a configuration value"*.** Immutable, no identity, answers *is this window still open at T?* -- a Value Object by definition. *(The earlier default of "no" was set against the authority own framing.)* **Placement:** plain-PHP VO beside the retention code, **without** creating a bounded context |
+| **Application service** — the guard decision (**not** the EPW itself) | **yes, one** | roadmap §WP-7. It **coordinates**: resolve election, obtain durations, construct the VO, ask it. **It decides nothing** |
 | **Port** — retention durations (CW, LSM) | **yes, one** | Policy 2; mirrors WP-6's `AdjudicationDurations` pattern |
 | Repositories | **none** — reads the existing Eloquent model | — |
 
 **The decision that keeps AP-2 from recurring:** **MAD is NOT copied into a retention config.** It has exactly one home (`config/adjudication.php`) and WP-7 **consumes the existing `AdjudicationDurations` port**. Only CW and LSM — which have no home yet — get new keys. *A second copy of MAD would be precisely the Decision Duplication corrected in WP-6.*
 
-**No tactical concept is introduced for implementation convenience.**
+**No tactical concept is introduced for implementation convenience.** *(Tactical Pattern Verification, 2026-08-01: +1 Value Object, -1 responsibility inside the application service -- the model became simpler to describe. Report: `engineering/verification/reports/2026-08-01-wp7-tactical-pattern-verification.md`.)*
 
 ## 5. Implementation slices
 
@@ -91,7 +91,7 @@ The open question was *"does per-election EPW need Contestation or Adjudication 
 
 | Field | Content |
 |---|---|
-| **Objective** | compute `EPW(election) = CW + MAD + LSM` from the anchor, consuming `AdjudicationDurations` for MAD |
+| **Objective** | the **`EvidencePreservationWindow` Value Object** -- `CW + MAD + LSM` from the anchor, consuming `AdjudicationDurations` for MAD; exposes *is the window open at T?* |
 | **Business value** | Policy 2's arithmetic exists in code, once |
 | **Acceptance** | matches §142 exactly · MAD comes from the **existing** port (no second copy) · **an undecided/absent anchor yields "window open"** |
 | **Dependencies** | 7A · the anchor decision (§3) |
