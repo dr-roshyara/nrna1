@@ -477,9 +477,20 @@ RED is written for the **two ready items** — the horizon (with its config/reso
 | *These capabilities cannot be implemented under today's approved model* | ✅ **Yes** — evidence above |
 | *Therefore they become WP-6C and WP-6D* | ❌ **No** — that is an **authority decision**, and amending the roadmap is not the implementation team's to do |
 
-> **Recommendation:** re-scope WP-6 to *horizon + expiry announcement* — a coherent, complete slice — and create follow-on implementation slices for the remainder **after** the necessary modelling decisions are approved: one opening with the **Demand modelling question** (§80/PM-3), one opening with the **cross-context question** (§142) that the strategic validation already predicted would arise for a query-shaped crossing.
+**Stated in three separated layers (ARB form), so no layer is mistaken for another:**
 
-**No slice identifier is claimed here.** The implementation team discovered a boundary; **the ARB decides how the roadmap changes.** Any names, numbering and sequencing come from that amendment — this plan records the finding and stops.
+**1 — OBSERVED EVIDENCE (from RED, not interpretation).**
+`AdjudicationProcessState` has `admittedEvidence` and `returnForMoreEvidence()`; it has **no** demand entity, **no** per-demand deadline, and the migration has **no** column for either. §142 conditions finality on *"no challenge open against it"*, and a challenge against a determination is a Contestation aggregate (`TargetType::Determination`), which Adjudication cannot read.
+
+**2 — ARCHITECTURAL INTERPRETATION.**
+Two capabilities named by the roadmap **have not yet been modelled**: *Evidence Demand* and *Evidence Demand Deadline* (§80/PM-3), and *finality evaluation across a bounded-context boundary* (§142). The ubiquitous language currently lacks all three concepts. These are **modelling gaps, not coding defects** — implementing either would require minting domain concepts or a new crossing inside an implementation commission.
+
+**3 — AUTHORITY ACTION (the ARB's alone).**
+> **Recommendation to the ARB, derived from RED evidence:** RED identified two architectural capabilities that cannot be implemented under the currently approved model. **If the ARB agrees with this analysis**, it may amend the roadmap by re-scoping WP-6 to *horizon + expiry announcement* and introducing follow-on implementation slices **after** the required modelling decisions are approved:
+> - a follow-on slice for **evidence-demand deadlines**, opening with the Demand modelling question;
+> - a follow-on slice for the **finality evaluator**, opening with the cross-context question the strategic validation already predicted would arise for a query-shaped crossing.
+
+**Referred to descriptively on purpose — no identifier is claimed.** Formal names, numbering and sequencing arise **only** from the ARB's roadmap amendment; naming them here would let this document imply a decision that has not been made. The implementation team discovered a boundary; **the ARB decides how the roadmap changes.**
 
 This follows the same discipline that produced WP-3A/WP-3B and Decision C's Option A: **a slice ends where its authority ends** — and so does a plan.
 
