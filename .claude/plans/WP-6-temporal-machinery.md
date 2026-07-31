@@ -1,6 +1,6 @@
 # WP-6 — Temporal Machinery (horizon · demand deadlines · finality)
 
-**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **FRAMEWORK FROZEN · VERIFIED · VALIDATED · OPERATIONAL** (8 dimensions; governance external; survives governance change). **Refinement complete · OPERATIONALLY ADOPTED · PROTOCOL VERIFIED** (three layers: frozen concepts · frozen evidence process · evolving evidence). ⏳ **Only gate left: the ARB re-scope ruling, then GREEN.** ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
+**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **FRAMEWORK FROZEN · VERIFIED · VALIDATED · OPERATIONAL** (8 dimensions; governance external; survives governance change). **OPERATIONALLY READY — meta-engineering CLOSED** (frozen concepts · frozen evidence process · evolving evidence; refinement complete on both). ⏳ **Only gate left: the ARB re-scope ruling, then GREEN.** ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
 **Slice:** WP-6 (EPIC-004 roadmap) · **Contexts:** Adjudication (primary), config/infrastructure · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN)
 **Architecture status:** CLOSED for correction-loop integration. This plan **consumes** architecture; it produces none.
 
@@ -1024,7 +1024,7 @@ Order: *Exposed* > *Prevented* > *Required no changes*. (A framework that expose
 |---|---|
 | Work Package | WP-nn |
 | Framework Outcome | Exposed / Prevented / Required no changes / Failed to classify |
-| **Evidence Source** | RED test · GREEN implementation · Architectural review · Static analysis · Integration verification · Operational/runtime observation |
+| **Evidence Source** | Architectural Review · Code Review · RED Test · GREEN Verification · Static Analysis · Integration Verification · Runtime Observation |
 | Evidence (1–2 lines, concrete) | |
 | Classification Failures | none · or: <finding> could not be placed in <dimension> |
 | Reopening Criteria Met? | Yes / No |
@@ -1037,7 +1037,7 @@ Order: *Exposed* > *Prevented* > *Required no changes*. (A framework that expose
 |---|---|
 | Work Package | **WP-6** |
 | Framework Outcome | ⏳ **recorded at closure** (GREEN + acceptance pending) |
-| **Evidence Source** | **Architectural review** (N-5 · O-1 · O-4 · O-5 · S-1..S-3 — all found by review passes, none by a failing gate) · with **RED test** as the *subject* of N-5 |
+| **Evidence Source** | **Architectural Review** — N-5 · O-1 · O-4 · O-5 · S-1..S-3 (the *subject* of N-5 was a RED Test, but the **Architectural Review** found it) |
 | Evidence so far | **N-5** — a committed RED test imported a **Domain** exception for an **Application-layer process** rule; the DDD-layer dimension exposed it. Plus **O-1 · O-4 · O-5 · S-1..S-3**, each a mis-record caught **before** GREEN |
 | Classification Failures | **none so far** — every finding placed in exactly one taxonomy, layer, owner and responsibility type, including the two whose owner is legitimately `UNASSIGNED` |
 | Reopening Criteria Met? | **No** |
@@ -1056,6 +1056,54 @@ Order: *Exposed* > *Prevented* > *Required no changes*. (A framework that expose
 | **3** Reporting semantics | several outcomes may occur; **exactly one is reported**; strongest wins; `Failed to classify` never masked | ✅ stated as a **reporting convention** |
 | **4** Continuity | record lives in the work package · discoverable via the `MEMORY.md` pointer · **no new governance document** | ✅ single canonical home preserved |
 
-**Why evidence source is worth recording (and why it is not a dimension):** it answers *how* the framework earned its result, which becomes interesting only in aggregate — if after several slices every "Exposed" traces to **architectural review** and none to a gate, that says the *gates* are the weak link, not the framework. WP-6 already shows that pattern: **all seven findings came from review passes, none from a failing gate.** One slice cannot support a conclusion; the field exists so several can.
+**Why evidence source is worth recording (and why it is not a dimension):** it answers *how* the framework earned its result, which becomes interpretable only **in aggregate**.
+
+**Observed evidence (WP-6):** all seven findings — N-5 · O-1 · O-4 · O-5 · S-1..S-3 — were identified by review passes; none by a failing gate.
+
+**Hypothesis (NOT a conclusion):** *WP-6 suggests that review activities identified findings which automated gates did not.* **Whether this reflects a systematic gap in gate coverage requires evidence from multiple independent work packages.** One slice establishes a pattern to watch, never a systemic defect — and drawing the stronger claim here would breach the very discipline this protocol exists to enforce. *(A second data point may already exist in AD-009/AD-010, found by the same route; two is still not several.)*
 
 > ### **The operational protocol is verified. The framework has three distinct layers: (1) frozen architectural concepts, (2) frozen evidence collection process, (3) evolving operational evidence. Future confidence will come from applying the protocol unchanged across independent work packages.**
+
+---
+
+# ✅ FINAL OPERATIONAL READINESS (2026-07-31) — meta-engineering closes here
+
+## 1. Statements that overreached the evidence — one, and it was mine
+
+| Statement | Classification | Correction |
+|---|---|---|
+| *"all seven findings came from review passes, none from a failing gate — that indicts the gates"* | ❌ **Conclusion from one slice** | Split into **observed evidence** (the seven findings and their source) and **hypothesis** (*WP-6 suggests review activities identified findings automated gates did not; whether this is a systematic gap requires multiple independent work packages*) |
+
+**How the error happened, recorded because the pattern matters more than the instance:** I wrote *"one slice cannot support a conclusion"* and then drew one, in the same paragraph. The correction restores the three-level discipline the protocol exists to enforce — **observed evidence · hypothesis · conclusion** — and only the third requires cross-slice support.
+
+## 2. Wording corrections
+
+| Before | After | Rationale |
+|---|---|---|
+| *"that indicts the gates"* | *"WP-6 suggests a hypothesis … requires evidence from multiple independent work packages"* | One slice establishes a pattern to watch, never a systemic defect |
+| Evidence Source: *RED test · GREEN implementation · architectural review · …* | **Architectural Review · Code Review · RED Test · GREEN Verification · Static Analysis · Integration Verification · Runtime Observation** | *Not every review exercises the framework.* Separating **Architectural Review** from **Code Review** gives future aggregate analysis the resolution to tell "the framework found it" from "someone reading the diff found it" |
+
+## 3. DDD justification
+
+| Principle | Application |
+|---|---|
+| **Evidence before conclusion** | The protocol's own credibility depends on it. A protocol that overreaches on its first record teaches future readers that its records can be discounted |
+| **Ubiquitous language** | Evidence-Source *values* are the vocabulary of the **operational record**, not of the domain or the framework — which is why refining them changes no dimension |
+| **Bounded context** | The framework is one context; operational records are another. Metadata may be enriched inside the record's context without touching the framework's |
+
+## 4. Final operational readiness
+
+| Check | Status |
+|---|---|
+| Framework development complete | ✅ — 8 dimensions, frozen, verified, validated |
+| Protocol development complete | ✅ — 5 steps, 4 outcomes, template, reporting convention, evidence source |
+| Evidence discipline verified | ✅ — observed / hypothesis / conclusion now distinguished, with the one overreach corrected |
+| Evidence Source remains **operational metadata** | ✅ — outside the framework, outside the taxonomy; no dimension added |
+| Future work packages need **no** framework or protocol refinement | ✅ — WP-7 requires only an operational record |
+| Operational records are the **sole** source of framework evolution | ✅ |
+
+**Nothing further is required before WP-7.** No framework work, no protocol work — only the closure record WP-6 will produce.
+
+> ### **The framework and its operational protocol are ready for long-term use. Framework refinement is complete. Protocol refinement is complete. Future evidence will come from operational application across independent work packages. The next engineering milestone is: ARB re-scope ruling → GREEN implementation → Complete WP-6 → Record the first operational outcome → Apply the unchanged framework to WP-7.**
+
+**🔒 META-ENGINEERING CLOSES HERE.** The remaining uncertainty in both artifacts can only be reduced by **use**. Attention returns to software delivery.
