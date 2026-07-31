@@ -28,6 +28,14 @@
 - **Use the Write/Edit tools, not shell heredocs, for prose.** `cat >> file << 'EOF'` repeatedly failed on quoting (apostrophes, backticks, unicode) and produced `unexpected EOF`; the workaround was a temp buffer, which was the wrong fix. The Write tool takes arbitrary content with no shell parsing at all.
 - Shell append is fine for short, plain-ASCII additions; anything with quotes, backticks or tables goes through Write/Edit.
 
+## Authority Verification (adopted 2026-08-01, after a withdrawn conclusion)
+
+- **A conclusion that constrains, forbids or permits must cite the authority's OWN TEXT, read at the authority's OWN LOCATION.** A docblock, a charter summary, a MEMORY line or an earlier plan may **point** to an authority; none may **stand in for** one.
+- **Corollary -- read the NEIGHBOURS.** Constitutional rules arrive in sets, and a summary preserves the item while discarding the set. *This is not hypothetical: MEMORY's four-policies line was cited all session while **Policy 3's CL-1/CL-2/CL-3** -- the authority most specific to the artifact under investigation -- sat unread beside it.*
+- **Practical test before asserting a constraint:** *can I quote it, and do I know what stands next to it?* If either answer is no, the conclusion is not yet supportable.
+- Chain: `Observation -> Evidence -> AUTHORITY VERIFICATION -> Interpretation -> Recommendation -> Authority Decision`. Never bypass the third step.
+- **Primary locations worth knowing:** the four constitutional policies live in `docs/implementation/EPIC-003_Tactical_DDD_Entry_Assessment.md` §THE FOUR DECISIONS (**not** in MEMORY); ADR-T texts in `docs/adr/ADR-T-LOG-Tactical-Implementation.md`.
+
 ## Repository Integrity Gate (adopted 2026-08-01, after a conflicted-rebase incident)
 
 - **Architectural verification depends on repository integrity.** The repository is the **evidence boundary** between implementation and verification: `Business -> Architecture -> Implementation -> **Repository** -> Verification -> Operational Evidence`.
