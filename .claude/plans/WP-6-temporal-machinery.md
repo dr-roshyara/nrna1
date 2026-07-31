@@ -301,11 +301,11 @@ So the architecture does distinguish **business events** from **system timeouts*
 
 Ask of each: **who bears the consequence?**
 
-| Case | Timer owner | Consequence owner | Same? | Crossing needed? |
+| Case | Timer owner | Consequence owner | Another BC requires the fact to discharge a business responsibility? | Crossing needed? |
 |---|---|---|---|---|
-| `Challenge::lapse()` | Contestation | **Contestation** (its own state) | ✔ same | **No** — nothing to tell |
-| `Determination::finalize()` | Adjudication | **Adjudication** (its own state) | ✔ same | **No** |
-| **Adjudication horizon expiry** | **Adjudication** | **Contestation** — *"the challenge's disposition is Contestation's"* (§197) | ✖ **DIFFERENT** | **Yes** |
+| `Challenge::lapse()` | Contestation | **Contestation** (its own state) | **No** — same BC | **No** — nothing to tell |
+| `Determination::finalize()` | Adjudication | **Adjudication** (its own state) | **No** — same BC | **No** |
+| **Adjudication horizon expiry** | **Adjudication** | **Contestation** — *"the challenge's disposition is Contestation's"* (§197) | **YES** — §197 assigns it a responsibility it cannot discharge unknowingly | **Yes** |
 
 **Both event-free precedents share a property this case does not have:** the context that owns the clock also owns the consequence, so no one needs to be told. The adjudication horizon is the **only** one of the three where the timer fires in one bounded context and the consequence lands in another.
 
@@ -329,11 +329,30 @@ Every alternative was enumerated and each fails on an existing authority:
 
 ### Recommendation
 
-> ### **Decision A: YES — the expiry announcement IS published integration language.**
+> ### **RECOMMENDATION TO THE ARB — Decision A = YES:** the expiry announcement should be published integration language.
 >
-> Grounds, in order of weight: (1) the consequence lands in **another** bounded context, which is the property both event-free precedents lack; (2) §197 uses *"announces"* and §111 records a *"consumer set"*; (3) every non-event mechanism is refuted by an existing authority; (4) *"No"* renders §197 unimplementable.
+> *Phrasing is deliberate: this is a **recommendation**, not a decision. Evidence → recommendation → **authority decision** — the recommendation does not become the ruling by being well argued, and this analysis has no authority to collapse the two.*
 >
-> **The `lapse()` precedent is respected, not overridden** — it governs same-context timeouts, and this is not one. Stated as a rule: **a temporal transition publishes only when the consequence crosses a boundary.** That single sentence explains all three cases and needs no new concept.
+> Grounds, in order of weight: (1) **Contestation cannot discharge the business responsibility §197 assigns it** unless it learns the fact; (2) §197 uses *"announces"* and §111 records a *"consumer set"*; (3) every non-event mechanism is refuted by an existing authority; (4) *"No"* renders §197 unimplementable.
+>
+> **The `lapse()` precedent is respected, not overridden** — it governs same-context timeouts, and this is not one.
+
+### The generalized rule — refined at ARB direction to rest on business responsibility, not boundary-crossing
+
+**Earlier (mine, too weak):** *a temporal transition publishes only when the consequence crosses a boundary.*
+
+> ### **A temporal transition becomes published integration language only when another bounded context requires that fact to discharge one of its business responsibilities.**
+
+**Why the refinement matters — boundary-crossing alone is not sufficient.** Plenty of cross-boundary information is projection, analytics, reporting or monitoring, and none of that earns published-language status; the contract validation already found an entire ungoverned projection mechanism doing exactly that. The refined rule covers all four cases:
+
+| Case | Another BC requires the fact to discharge a business responsibility? | Publishes? |
+|---|---|---|
+| `Challenge::lapse()` | **No** — the consequence stays in Contestation | ❌ |
+| `Determination::finalize()` | **No** — stays in Adjudication | ❌ |
+| **Adjudication horizon expiry** | **YES** — §197 assigns Contestation the challenge's disposition, which it cannot exercise unignorant of the expiry | ✅ |
+| Cross-boundary projections / monitoring / analytics | **No** — a read model's convergence is not a business responsibility discharged by *reacting* to the fact | ❌ |
+
+The discriminator is therefore **business responsibility**, not topology: *"who bears the consequence?"* was the right instinct, but it under-specified — it would have wrongly admitted the fourth row.
 
 **If the ARB rules NO regardless**, the honest consequence must be recorded: §197's *"return to Contestation"* would have to be **reopened as a business question**, because no conforming mechanism would remain to deliver it. That is an architecture-phase reopening — permitted only on contradictory implementation evidence, which this arguably is.
 
