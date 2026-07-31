@@ -1,6 +1,6 @@
 # WP-6 — Temporal Machinery (horizon · demand deadlines · finality)
 
-**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **SEMANTICALLY NORMALIZED — review framework FROZEN** (8 dimensions in 2 groups: Architecture · Execution; one question each, one answer per finding). ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
+**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **SEMANTICALLY NORMALIZED · FRAMEWORK FROZEN + FREEZE VERIFIED** (8 dimensions, 2 groups, one question each; frozen for refinement, not for use — reopens only on cross-slice evidence). ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
 **Slice:** WP-6 (EPIC-004 roadmap) · **Contexts:** Adjudication (primary), config/infrastructure · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN)
 **Architecture status:** CLOSED for correction-loop integration. This plan **consumes** architecture; it produces none.
 
@@ -828,3 +828,76 @@ Every GREEN finding carries **one taxonomy · one layer · one business owner ·
 ## Final assessment
 
 > ### **The WP-6 planning package is SEMANTICALLY NORMALIZED and READY FOR GREEN. The review framework is frozen. No further architectural, ownership or semantic work remains.**
+
+---
+
+# ✅ FRAMEWORK FREEZE VERIFICATION (2026-07-31) — final; attention returns to delivery
+
+**Commission:** verify internal coherence and make the freeze criteria explicit. **No dimension added · none renamed · nothing redesigned.**
+
+## Phase 1 — Semantic independence: verified, with one clarification
+
+**No dimension's *description* depends on another's answer.** But the audit found something worth stating explicitly:
+
+| # | Clarification (not an inconsistency) | Why it matters |
+|---|---|---|
+| **V-1** | **Two dimensions are DERIVED, not independently asserted.** **Authority** follows from **Taxonomy** (Implementation Gap → existing authority · Domain Modelling Gap → modelling authority · Integration Contract Gap → integration authority · Test Gap → implementation). **GREEN Readiness** follows from **Business Owner ∧ Authority ∧ Artifact** | This is **causality, not contamination** — and recording it makes readiness **non-negotiable**. If GREEN Readiness were an independent judgement, someone could assert "ready" by opinion. As a derived value it can only change when an owner, an authority or an artifact changes |
+
+## Phase 2 — Architectural relationships (clarified, not redefined)
+
+**Group A — Architecture: each dimension constrains the next.**
+
+```
+Taxonomy            classifies the finding
+     ↓
+DDD Layer           locates it architecturally
+     ↓
+Business Owner      derives from that location — who owns the meaning there
+     ↓
+Responsibility Type describes that owner's accountability
+```
+
+**Group B — Execution: the same chain, ending in a computed verdict.**
+
+```
+Execution Responsibility Owner    who performs it
+     ↓
+Authority (⟵ derived from Taxonomy)    who may authorize change
+     ↓
+Artifact                          what resolves it — must match the authority
+     ↓
+GREEN Readiness (= Owner ∧ Authority ∧ Artifact)    computed, never asserted
+```
+
+**The two groups are linked at exactly one point: Taxonomy → Authority.** That single link is what makes the taxonomy load-bearing rather than decorative — classifying a finding *determines* who may decide about it. Nothing else crosses between the groups, which is why architecture can be described without settling execution.
+
+## Phase 3 — Freeze criteria, stated operationally
+
+> ### **The framework is FROZEN FOR REFINEMENT, NOT FOR USE.**
+>
+> Future work packages may produce evidence that challenges it, and **should**. But **no refinement is considered unless CROSS-SLICE OPERATIONAL EVIDENCE demonstrates that an existing dimension is insufficient** — not because a cleaner formulation can be imagined.
+
+**The freeze rests on evidence, recorded so a future reader can test it:**
+- three operational validations exist — **N-5** (Layer exposed a misplacement) · **O-1** (Ownership exposed an unowned location) · **O-4/O-5** (Responsibility Type exposed two *opposite* ownership errors);
+- **all three originate from ONE work package (WP-6)**;
+- therefore further refinement would lack independent evidence, and would be preference dressed as improvement.
+
+**Reopening condition (singular, mirroring the architecture-phase closure):** a later, **independent** slice in which the framework **fails to classify or fails to expose** a real issue. Anything else is not evidence.
+
+## Phase 4 — GREEN independence: verified
+
+**GREEN does not depend on any further framework refinement.** Checked per item — every GREEN row has all eight dimensions populated, with **no `UNASSIGNED` and no open question**:
+
+| GREEN item | All 8 dimensions populated? | Any dimension missing to proceed? |
+|---|---|---|
+| MAD-aware horizon (F-1) | ✔ | **No** |
+| Late-decision conflict (F-2) | ✔ | **No** |
+| Expiry announcement | ✔ | **No** |
+
+**The test applied honestly:** *if GREEN required another review dimension, the framework would not actually be frozen.* It does not. The two excluded items are excluded by **populated** dimensions (`Business Owner = UNASSIGNED`, `Authority = required`) — the framework **classified** them rather than failing to.
+
+## Deliverable 4 — recommendation
+
+> **The framework should remain UNCHANGED for future work packages.** Attention returns to software delivery. Discussion of the framework should be triggered **only** by a later independent slice where it fails to classify or expose an issue — never by a theoretically cleaner formulation.
+
+**Nothing in the WP-6 planning package now requires architectural, ownership, semantic or framework work.** The single remaining gate is the ARB's re-scope ruling, after which GREEN implements three items whose authority already exists.
