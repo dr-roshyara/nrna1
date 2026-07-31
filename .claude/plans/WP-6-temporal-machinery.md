@@ -462,17 +462,26 @@ Verified against the code before writing a single test, per Phase 1 (*architectu
 | **Evidence-demand deadlines** (§80 · PM-3) | ⛔ **BLOCKED — no Demand concept exists** | `AdjudicationProcessState` has `admittedEvidence` (admissions) and `returnForMoreEvidence()` (the authority's not-yet-decide), but **no demand entity, no per-demand deadline, and no storage column** — the migration has `admitted_evidence` only. PM-3's *"express evidence demands and track them to satisfaction or deadline"* was **never modelled**. Implementing it means inventing a Demand aggregate-internal model + schema + deadline semantics — **new tactical modelling inside an implementation commission** |
 | **Finality evaluator** (§142) | ⛔ **BLOCKED — needs knowledge Adjudication does not have** | §142 conditions finality on *"provided no challenge against it is open at closure."* A challenge **against a determination** is a Contestation aggregate (`TargetType::Determination`). Adjudication cannot answer *"is a challenge open against this determination?"* locally — that requires a **new cross-context crossing**, which Phase 8 flagged as an assumption to confirm, with the recorded instruction to **stop and report, not invent** |
 
-**Neither blocker is a defect.** Both are *absences* — capabilities the roadmap names and the frozen model has not yet modelled. Both were flagged in this plan's own Phase 8 before RED began, which is the checkpoint working as designed.
+**Neither finding is an implementation defect. Both identify architectural capabilities that have not yet been MODELLED** (ARB wording — *"absence"* can read as accidental; *"not yet modelled"* names the architectural reason). Both were flagged in this plan's own Phase 8 before RED began, which is the checkpoint working as designed.
 
 ### Consequence for RED
 
 RED is written for the **two ready items** — the horizon (with its config/resolver and the F-1 fix) and the expiry announcement (with the F-2 late-decision conflict). **Keystones 7, 8 and 9 are NOT written**, because writing them requires the two decisions above.
 
-**Recommended disposition (ARB's call):** re-scope WP-6 to *horizon + expiry announcement* — a coherent, complete slice — and split the remainder:
-- **WP-6C — Evidence-demand deadlines**, opening with the Demand modelling question (§80/PM-3);
-- **WP-6D — Finality evaluator**, opening with the cross-context question (§142) that the strategic validation already predicted would arise for a query-shaped crossing.
+### RECOMMENDATION TO THE ARB — not a roadmap change (governance correction)
 
-This is the same discipline that split WP-3 into 3A/3B and WP-6 into 6/6B: **a slice ends where its authority ends.**
+**The earlier draft named "WP-6C" and "WP-6D" as though they existed. They do not.** RED's evidence establishes only the first of these two statements:
+
+| Statement | Established by RED? |
+|---|---|
+| *These capabilities cannot be implemented under today's approved model* | ✅ **Yes** — evidence above |
+| *Therefore they become WP-6C and WP-6D* | ❌ **No** — that is an **authority decision**, and amending the roadmap is not the implementation team's to do |
+
+> **Recommendation:** re-scope WP-6 to *horizon + expiry announcement* — a coherent, complete slice — and create follow-on implementation slices for the remainder **after** the necessary modelling decisions are approved: one opening with the **Demand modelling question** (§80/PM-3), one opening with the **cross-context question** (§142) that the strategic validation already predicted would arise for a query-shaped crossing.
+
+**No slice identifier is claimed here.** The implementation team discovered a boundary; **the ARB decides how the roadmap changes.** Any names, numbering and sequencing come from that amendment — this plan records the finding and stops.
+
+This follows the same discipline that produced WP-3A/WP-3B and Decision C's Option A: **a slice ends where its authority ends** — and so does a plan.
 
 ---
 
