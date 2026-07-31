@@ -1,6 +1,6 @@
 # WP-6 — Temporal Machinery (horizon · demand deadlines · finality)
 
-**Status:** ✅ **EP-01 APPROVED (ARB, 2026-07-31)** — pre-RED clarification RESOLVED on evidence; **two ARB decisions requested (A: allowlist entry · B: scope split)**. No code written, no RED yet.
+**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ⏳ **Blocked on DECISION C only** (scope split). No code written, no RED yet.
 **Slice:** WP-6 (EPIC-004 roadmap) · **Contexts:** Adjudication (primary), config/infrastructure · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN)
 **Architecture status:** CLOSED for correction-loop integration. This plan **consumes** architecture; it produces none.
 
@@ -341,7 +341,17 @@ Every alternative was enumerated and each fails on an existing authority:
 
 **Earlier (mine, too weak):** *a temporal transition publishes only when the consequence crosses a boundary.*
 
-> ### **A temporal transition becomes published integration language only when another bounded context CANNOT discharge one of its assigned business responsibilities without learning that fact.**
+> ### **A temporal transition becomes published integration language only when another bounded context cannot CORRECTLY discharge one of its EXPLICITLY ASSIGNED business responsibilities without learning that BUSINESS FACT.**
+
+**Each of the three qualifiers earns its place (final ARB wording):**
+
+| Qualifier | What it excludes |
+|---|---|
+| **correctly** | Convenience masquerading as necessity — a context that could act, but would act *better* informed, fails the test |
+| **explicitly assigned** | Self-declared interest. The responsibility must trace to an **architectural authority** — a ruling, ADR, roadmap entry or the domain model. Here: §197 assigns it in so many words |
+| **business fact** | Technical notifications. A crossing must carry **domain language**, not a signal that some mechanism ran |
+
+The rule is strong **because it is hard to satisfy.** Most cross-context information fails it — which is the point: published language stays confined to facts other contexts genuinely depend upon, and does not inflate.
 
 **The necessity constraint is the operative word (ARB refinement).** *Requires* was still too permissive — it is **not enough that another context would benefit**, be better informed, or find the fact useful. It must be **unable to fulfil an assigned responsibility without it**. That is exactly the shape of the §197 argument: Contestation *cannot* exercise the disposition it has been assigned while ignorant of the expiry. It also excludes the large class of **merely informative** events, which is where published-language inflation normally starts.
 
@@ -375,3 +385,42 @@ Unchanged from the earlier clarification: the announcement **begins a new conver
 Even with A = YES, **WP-6 publishes and registers; it does not consume** — Contestation has no `Routed → disposition` transition (`lapse()` guards `Raised`/`Admitted` only). Published language awaiting a consumer, exactly as WP-3A stood before WP-4.
 
 **Three ARB decisions now pending, in order:** **A** (publish at all — above) → **B** (allowlist entry, if A = YES) → **C** (scope split: WP-6 publishes, WP-6B consumes).
+
+---
+
+## ✅ ARB DECISION A — **APPROVED** (2026-07-31)
+
+> **The expiry announcement IS published integration language.**
+
+**Justification as recorded by the ARB — four points, in order:**
+
+1. Another bounded context has an **explicitly assigned** business responsibility (§197: *"the challenge's disposition is Contestation's per its own rules"*).
+2. That responsibility **cannot be correctly discharged** without the expiry fact.
+3. **No existing conforming mechanism** delivers that fact (own timer · query · reconciliation · direct call — each refuted against an existing authority).
+4. Therefore published integration language is **architecturally justified**.
+
+**This is the formal basis for Decision B.** The generalized rule stands as the *reasoning* for this decision only — **not** a project-wide standard (promotion bar unchanged: R-38 · R-39).
+
+**Progression recorded, because the sequence is itself the method:** boundary crossing → responsibility → **necessity** → governance restraint. The final rule is strong *because it is difficult to satisfy*.
+
+## ✅ DECISION B — direction approved: the announcement BEGINS a new conversation
+
+Following from A rather than introducing a special case: provenance is treated **consistently with the established conversation-origin model**.
+
+| Property | Value | Grounds |
+|---|---|---|
+| Continues an existing conversation? | **No** | A timer consumes no message; `fromConsumed()` has nothing to derive from |
+| Begins one? | **Yes** | *An origin begins a conversation; it never transfers ownership of one* |
+| `correlation_id` | **newly minted** | `EventProvenance::start()` |
+| `causation_id` | **null** | Chain start (ADR-MP-06) |
+| Allowlist | **the horizon enforcer is added** as the origin of the *failure-to-conclude* conversation | ADR-MP-06 — extension authorized under Decision A's basis |
+
+**Two originators after WP-6, each owning exactly one conversation** — the correction loop (Contestation's routing service) and the failure-to-conclude (the horizon enforcer). The WP-5 checkpoint separately asks whether the *authority-decision* originator can leave; if it can, the count returns to two by a different route. **The invariant never moves: one origin per conversation.**
+
+## ⏳ DECISION C — the one remaining gate before RED
+
+**Scope split:** WP-6 delivers **publication + registration**; the **Contestation consumer and its Routed-to-disposition transition** become a separate slice (**WP-6B**).
+
+**Why it must be settled before RED, not during:** it decides WP-6's *definition of done*. If WP-6 must also deliver the consumer, then RED needs keystones for a Challenge transition **that does not yet exist** and whose shape is a modelling question — lapse, re-route, dismissal, or a new state — that only the ARB/business can answer. Writing RED first and discovering that mid-GREEN is exactly the failure this process exists to prevent.
+
+**Recommendation: approve the split** (the WP-3A to WP-4 precedent, already run once successfully in this program). On approval, **RED begins immediately** — the 11 keystones are already planned and none asserts a Contestation reaction.
