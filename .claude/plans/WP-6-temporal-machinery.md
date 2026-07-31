@@ -1427,7 +1427,7 @@ return new DateInterval('P'.max(1, $days).'D');   // ← the adapter chose a dur
 | Published language | ✅ **Preserved** | event + mapping + hydrator + registration + allowlist entry |
 | Slice ends at publication | ✅ **Preserved** | no consumer exists; no Contestation file touched |
 
-**The asymmetry worth keeping:** both failures concerned **a policy's value or its chooser**; every decision expressed **structurally** (a missing field, an injected port, a separate branch) was preserved. **Decisions encoded in structure survive implementation; decisions encoded only in prose need a review to survive.**
+**The asymmetry worth keeping:** both failures concerned **a policy's value or its chooser**; every decision expressed **structurally** (a missing field, an injected port, a separate branch) was preserved. **Decisions encoded in structure survive implementation; decisions encoded only in prose require CONTINUOUS INTERPRETATION** — which is why reviews become necessary, and why a structural encoding retires the need for one.
 
 ## 3. Ownership preservation — three owners, independent
 
@@ -1493,3 +1493,121 @@ return new DateInterval('P'.max(1, $days).'D');   // ← the adapter chose a dur
 | **AT-EVT-001 widening** | **Refer to the ARB.** If accepted, the rule belongs in an ADR or recorded ruling — a test comment flags a gap, it does not host a rule |
 
 > ### **WP-6 GREEN preserves approved architectural decisions. Two decision-preservation failures — one DUPLICATION (AP-2) and one LEAK (AP-1) — were detected by ADPR, not by technical gates, and were corrected. One architectural evolution (AT-EVT-001) is referred for ARB authority. The ADPR is complete.**
+
+---
+
+# 🏛️ ARCHITECTURE DECISION **AUTHORITY** PRESERVATION REVIEW (ADAPR) — WP-6 (2026-07-31)
+
+**The refinement that renames this review, and it is decisive.** Both failures were about **who was entitled to decide**, not about what was decided:
+
+> `MAD = 60` was **not wrong**. **Who selected it** was wrong.
+
+The adapter's fallback would have produced the *same duration* the ARB ratified. Nothing observable would have differed — and that is exactly why this is an **authority** failure rather than a correctness failure. A review that only asked *"is the value right?"* would have found nothing.
+
+## 1. Structural preservation (dimension 1, verified independently)
+
+| Dimension | Status | Evidence |
+|---|---|---|
+| Bounded contexts | ✅ Preserved | zero Contestation imports in Adjudication |
+| Layers | ✅ Preserved | Domain → no framework; Application → ports only; Infrastructure → adapters |
+| Dependencies | ✅ Preserved | Deptrac **0 violations**, fail mode |
+| Ports | ✅ Preserved | `AdjudicationDurations` · `EventOutbox` · `IdentityGenerator` · `AdjudicationProcessStore` all injected, none bypassed |
+| Contracts | ✅ Preserved | payload primitives; producer-side registration |
+| Published language | ✅ Preserved | event + mapping + hydrator + registration |
+
+**No boundary drift · no dependency drift · no layer drift.** The adapter that failed authority preservation never left Infrastructure.
+
+## 2. Decision authority inventory (approved decisions only)
+
+| Decision | Business owner | **Decision authority** | Implementation owner | Expected location |
+|---|---|---|---|---|
+| MAD's **value** | Adjudication BC (subject) | **Q-2 / ARB** (§187) | config file | `config/adjudication.php`, one home |
+| What happens when MAD is **invalid** | — | **Q-2 / ARB** (no decision issued) | — | **nowhere — the case was never decided** |
+| MAD's **enforcement** | Adjudication BC | EPIC-004K **§81** | APM | Application |
+| Expiry ≠ verdict | constitutional | **Constitutional Policy 4** | domain event shape | Domain |
+| Late ≠ redelivered | Adjudication BC | EPIC-004K **§197** | APM | Application/Process |
+| Expiry is published language | Adjudication BC | **ARB Decision A** | outbox + hydrator | Infrastructure |
+| Announcement begins a conversation | platform | **ARB Decision B** | APM + allowlist | Application |
+| Slice ends at publication | — | **ARB Decision C** | scope | — |
+
+## 3. Decision authority preservation
+
+| Decision | Classification | **Who became entitled to decide** | Evidence |
+|---|---|---|---|
+| MAD's value | ⚠️ **DECISION DUPLICATION** → corrected | **the adapter**, concurrently with the ARB — two components each asserting the interim value | `60` in config **and** as the adapter's fallback |
+| MAD invalid-case | ⚠️ **UNAUTHORIZED DECISION** → corrected | **the adapter**, deciding a case **no authority had ruled on** — `max(1, …)` answered *"what if MAD ≤ 0?"* by inventing one day | the clamp silently produced a duration nobody approved |
+| MAD's enforcement | ✅ Preserved | APM (as approved) | no duration literal in the manager |
+| Expiry ≠ verdict | ✅ Preserved | Policy 4 (as approved) | the event has **no field** to carry a verdict |
+| Late ≠ redelivered | ✅ Preserved | §197 (as approved) | two branches, two meanings |
+| Published language | ✅ Preserved | Decision A | publication + registration |
+| Conversation origin | ✅ Preserved | Decision B | allowlist entry, ARB-approved |
+| Slice boundary | ✅ Preserved | Decision C | no consumer, no Contestation file touched |
+
+**The sharper reclassification:** AP-1 is better named an **Unauthorized Decision** than a Decision Leak. Nothing *moved* — the invalid-MAD case had **never been decided by anyone**, and the adapter filled the vacuum. That is a distinct failure mode: **not authority drifting, but authority being created where none existed.**
+
+## 4. Structural vs authority analysis (independent dimensions)
+
+| Decision | Structure | Authority | Outcome |
+|---|---|---|---|
+| MAD's value | ✅ Preserved | ⚠️ **Drifted** (duplication) | **Preserved / Drifted** |
+| MAD invalid-case | ✅ Preserved | ⚠️ **Drifted** (unauthorized) | **Preserved / Drifted** |
+| MAD enforcement | ✅ | ✅ | Fully preserved |
+| Expiry ≠ verdict | ✅ | ✅ | Fully preserved |
+| Late ≠ redelivered | ✅ | ✅ | Fully preserved |
+| Published language | ✅ | ✅ | Fully preserved |
+| Conversation origin | ✅ | ✅ | Fully preserved |
+
+**Every failure landed in the same quadrant: Structure Preserved / Authority Drifted.** That quadrant is the one no technical gate can reach, and the reason the two dimensions must not be merged — a system can keep every layer, boundary and dependency while decision-making authority migrates into the wrong component.
+
+## 5. Structural invariant review
+
+| Decision | Structural? | Preservation method | Risk |
+|---|---|---|---|
+| Expiry ≠ verdict | ✅ **Yes** | **the field does not exist** — nothing to populate | **Low** — cannot be violated accidentally |
+| MAD enforcement not ownership | ✅ Yes | port injection; the manager has no way to author a duration | **Low** |
+| Late ≠ redelivered | ✅ Yes | two branches + a typed exception | **Low** |
+| Published language | ✅ Yes | hydrator registration is asserted by a test | **Low** |
+| Conversation origin | ✅ Yes | allowlist guard fails on an unlisted mint | **Low** |
+| **MAD's value has one home** | ❌ **No — prose only** | *"the numbers are the ARB's"* | **HIGH — and this is where both failures occurred** |
+| **Invalid MAD is undecided** | ❌ **No — not written anywhere** | — | **HIGHEST — an undecided case invites invention** |
+
+**Both authority failures occurred in the only two rows without structural expression.** Refined wording, per ARB:
+
+> **Decisions encoded only in prose require CONTINUOUS INTERPRETATION** — which is precisely why reviews become necessary, and why a structural encoding retires the need for one.
+
+## 6. Gate coverage review — each gate judged only within its own responsibility
+
+| Gate | Measures | **Can never detect** | Status |
+|---|---|---|---|
+| PHP compiler | syntax | anything semantic | correct |
+| PHPStan max | types | authority drift — `max(1, $x)` is perfectly typed | **correct, not deficient** |
+| Deptrac (fail mode) | dependency direction | decision duplication — no dependency was violated | **correct** |
+| Architecture suite (146) | structural properties | decision leaks with no structural signature | **correct** |
+| Feature suites (91) | behaviour | who was entitled to decide — behaviour was *right*, the clamp never fired | **correct** |
+| **ADAPR (this review)** | **authority** | **a decision nobody recorded** | see limit below |
+
+**No gate is criticized here.** Each measured its own subject accurately. The failures were outside every gate's *intended* scope, which makes them a coverage gap in the **review system**, not defects in the gates.
+
+**This review's own limit, stated honestly:** the ADAPR depends on the **decision inventory being complete**, and only *approved* decisions participate. **An authority failure over a decision nobody ever recorded is invisible to it too** — which is how the invalid-MAD case slipped in, and why it appears above as *"nowhere — the case was never decided."* The ADAPR caught it only because implementation forced the question.
+
+## 7. Required ARB/ADR decisions
+
+| Item | Decision required |
+|---|---|
+| **AT-EVT-001 widening** | Accept or reverse the architectural evolution: *process-owned events may carry the context prefix where no aggregate owns them.* If accepted, it belongs in an ADR or recorded ruling |
+| **Invalid-MAD case (optional)** | The implementation now **fails closed**, which decides nothing on Q-2's behalf. If the ARB wishes to *rule* on the case, that ruling would supersede the fail-closed behaviour — recorded, not requested |
+
+## 8. Recommendation
+
+| Item | Recommendation |
+|---|---|
+| **Structural preservation** | ✅ **Accept** — no drift in any dimension |
+| **Authority preservation** | ✅ **Accept after correction** — one duplication and one unauthorized decision, both corrected before acceptance |
+| **WP-6 GREEN** | ✅ **Accept** |
+| **AT-EVT-001** | ⚠️ **Refer to the ARB** |
+
+> ### **WP-6 preserves architectural structure and decision authority. Two authority failures — a Decision Duplication and an Unauthorized Decision — were detected by ADAPR, not by technical gates, and corrected. One architectural evolution (AT-EVT-001) awaits ARB authority. The ADAPR is complete.**
+
+**The principle this slice earned, recorded as an observation and not promoted:**
+
+> **Architecture is preserved by structure; governance is preserved by authority.** They are related but independent, and only the first is mechanically verifiable today.
