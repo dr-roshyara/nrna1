@@ -1,6 +1,6 @@
 # WP-7 — Retention Alignment (`audit:cleanup` becomes EPW-aware)
 
-**Status:** 📋 **TACTICAL PLAN — ARCHITECTURE FROZEN FOR WP-7.** Strategic alignment ✔ · tactical planning ✔ · pattern verification ✔ · VO ownership ✔ · VO construction ✔. Awaiting EP-01 approval. **No code, no config key, no test.**
+**Status:** 📋 **TACTICAL PLAN — 🧊 ARCHITECTURE FROZEN · TRANSITION TO IMPLEMENTATION AUTHORIZED (architecturally).** Six commissions complete; **zero architectural gates remain**. ⛔ **RED still blocked by WP-6 slice acceptance** — programme management, not architecture. Awaiting EP-01 approval. **No code, no config key, no test.**
 **Gate note:** WP-6's ARB acceptance is still pending; the roadmap's rule is *"no slice starts before its predecessor's acceptance."* **Planning is the authorized activity; RED is not.**
 **Slice:** WP-7 (EPIC-004 roadmap) · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN) · **Repository Integrity Gate:** ✅ PASSED
 
@@ -152,11 +152,19 @@ The open question was *"does per-election EPW need Contestation or Adjudication 
 
 **No further strategic discussion is required.** Every tactical element traces to an approved strategic decision, and the one genuinely open item is a **business value**, not an architectural question.
 
-> ### 🧊 ARCHITECTURE FROZEN FOR WP-7 (2026-08-01)
+> ### 🧊 ARCHITECTURE FROZEN FOR WP-7 — TRANSITION AUTHORIZED (2026-08-01)
 >
-> Strategic alignment ✔ · tactical planning ✔ · pattern verification ✔ · VO ownership ✔ · **VO construction ✔**. **Neither remaining gate is architectural.** **No further architectural commission is warranted unless implementation exposes a genuine design issue** — the same reopening standard applied when the correction-loop architecture was closed. **The next activity is RED.**
+> Strategic alignment ✔ · tactical planning ✔ · pattern verification ✔ · VO ownership ✔ · **VO construction ✔** · **transition authorization ✔** (`engineering/verification/reports/2026-08-01-wp7-architecture-to-implementation-transition.md` — **the final architectural commission**).
 >
-> **Five roles, five holders, no overlap:** Election owns the **concept** · the VO owns its **validity** · the Application Service **orchestrates** · Audit/Retention **consumes** (the guard) · Q-2/ARB owns the **values**.
+> **The freeze criterion is not "nothing more can be reviewed."** It is: **every architectural uncertainty is RESOLVED (12) or DELIBERATELY TRANSFERRED to a named non-architectural owner (4)**, with 2 explicitly out of scope. **Zero architectural gates remain.**
+>
+> **Seven responsibilities, seven holders, frozen:** business capability · **policy values → Q-2/ARB** · **concept → Election** · **construction → the VO's static factory** · **orchestration → the Application Service** (which validates nothing) · **the guard → Audit/Retention** · infrastructure mechanics. **Implementation realizes this allocation; it does not renegotiate it.**
+>
+> **⛔ RED IS NOT YET AUTHORIZED TO START** — **WP-6 slice acceptance** (programme management, the ARB's act) is the single blocking gate. The moment it is granted, **RED may begin at slice 7A with no further architectural act**. Everything else remaining is a business value or a governance item, none of them a WP-7 dependency.
+>
+> **Eleven implementation constraints** (what implementation must not violate) are listed in §Implementation Constraints of the transition record. **Reopening standard: only if implementation exposes a genuine design issue** — not for refinement, expression, or pattern preference. **Implementation consumes architecture; it does not continue it.**
+>
+> **One named reopening condition, with its blast radius:** if the ARB rules Election must not widen and Retention warrants its own context, **EPW relocates — a namespace move, not a redesign**; ownership, construction idiom, dependency rule and the guard all survive. That is why it does not block RED.
 
 ---
 

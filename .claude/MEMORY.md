@@ -22,6 +22,25 @@
 - **At every work-package closure, record one of four outcomes** (Exposed · Prevented · Required no changes · Failed to classify) using the template in `.claude/plans/WP-6-temporal-machinery.md` §Operational Adoption. *Failed to classify* is the only reopening trigger.
 - Portable rule worth remembering: **an assigned executor does not substitute for an unowned concept.**
 
+## Architecture freeze criterion (adopted 2026-08-01, ARB strengthening)
+
+- **"Architecture is frozen" is not a claim about review effort; it is a claim about residue.** State it as: **every architectural uncertainty is either RESOLVED or DELIBERATELY TRANSFERRED to a named non-architectural owner — no undecided architectural responsibility remains.** Without that, a later reader concludes *"frozen because nothing else can be reviewed,"* which is a much weaker and different claim.
+- **Discharge it by ENUMERATION, not assertion.** List every architectural question the commissions raised, each with exactly one outcome: **Resolved · Transferred (with the owner named) · Outside scope.** The count is checkable; confidence is not.
+- **Every transferred item needs a named owner AND a class** — Governance · Business Decision · Programme Management · Operational. **An item with no owner is not transferred, it is forgotten.**
+- **Name each reopening condition together with its BLAST RADIUS** — that is what makes it non-blocking. *(WP-7: if Retention becomes a context, EPW relocates — a namespace move, not a redesign, because ownership/construction/dependency rules don't depend on which context holds the value.)*
+- **Freeze must be enforceable, not aspirational:** pair it with an explicit list of **implementation constraints** (what implementation must not violate) and the **reopening standard** — *only if implementation exposes a genuine design issue*, never for refinement, expression or pattern preference.
+- **Architecturally authorizing a transition ≠ authorizing RED to start.** Programme gates (predecessor slice acceptance) are separate and belong to another authority. **Readiness is evidence; acceptance is authority.**
+- **Diminishing-returns signal:** when successive commissions refine *how* decisions are expressed rather than discovering new architectural responsibilities, the correct next act is a **transition/handover commission**, not another design review.
+
+## Sequence for a tactical concept (adopted 2026-08-01)
+
+**Business Meaning → Ownership → Tactical Pattern → Construction Responsibility → Implementation.** Each stage removes an ambiguity the next depends on. Two traps this closes: **ownership does not imply construction** (who *invokes* construction ≠ where the construction *rules* live), and **ownership precedes placement** (deciding a home before an owner produces an orphan owned by nobody).
+
+- **House VO construction idiom (verified, binding by precedent):** private constructor + **named static factory on the VO**, validating inside — `ChallengeRef::fromString`, `EvidenceSet::fromRefs`, `ContestedOutcomeRef::of`; coding-standard Rule 6.
+- **VO constructors take BUSINESS VALUES ONLY** — never a port, config, Eloquent model or clock. Time-dependent questions take the instant as an **argument**. This keeps configuration supplying *numbers* while the domain holds the *concept*.
+- **Factory names state a FACT, not a procedure:** `forElection(...)` ✅ · `calculate`/`build`/`createFrom` ❌ (orchestration verbs).
+- **Reject patterns introduced only for purity.** A separate Domain Factory for a four-value VO is pattern purity without a domain reason. **Rejections must be recorded with their reason** — an unrecorded rejection reads as an omission and gets "fixed" later.
+
 ## Artifact authoring convention (2026-08-01, user correction)
 
 - **Write governed artifacts DIRECTLY to their repository path.** Never stage them in a temp/scratchpad directory first. The repo is the single source of truth; an intermediate copy outside it makes the real location ambiguous -- the same ambiguity the Repository Integrity Gate exists to prevent.
