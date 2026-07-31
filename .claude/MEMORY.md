@@ -22,6 +22,12 @@
 - **At every work-package closure, record one of four outcomes** (Exposed · Prevented · Required no changes · Failed to classify) using the template in `.claude/plans/WP-6-temporal-machinery.md` §Operational Adoption. *Failed to classify* is the only reopening trigger.
 - Portable rule worth remembering: **an assigned executor does not substitute for an unowned concept.**
 
+## Artifact authoring convention (2026-08-01, user correction)
+
+- **Write governed artifacts DIRECTLY to their repository path.** Never stage them in a temp/scratchpad directory first. The repo is the single source of truth; an intermediate copy outside it makes the real location ambiguous -- the same ambiguity the Repository Integrity Gate exists to prevent.
+- **Use the Write/Edit tools, not shell heredocs, for prose.** `cat >> file << 'EOF'` repeatedly failed on quoting (apostrophes, backticks, unicode) and produced `unexpected EOF`; the workaround was a temp buffer, which was the wrong fix. The Write tool takes arbitrary content with no shell parsing at all.
+- Shell append is fine for short, plain-ASCII additions; anything with quotes, backticks or tables goes through Write/Edit.
+
 ## Repository Integrity Gate (adopted 2026-08-01, after a conflicted-rebase incident)
 
 - **Architectural verification depends on repository integrity.** The repository is the **evidence boundary** between implementation and verification: `Business -> Architecture -> Implementation -> **Repository** -> Verification -> Operational Evidence`.
