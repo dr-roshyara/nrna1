@@ -1,6 +1,6 @@
 # WP-6 — Temporal Machinery (horizon · demand deadlines · finality)
 
-**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **FRAMEWORK FROZEN · VERIFIED · VALIDATED · OPERATIONAL** (8 dimensions; governance external; survives governance change). **Refinement complete · OPERATIONALLY ADOPTED** (protocol + template recorded; four-outcome evidence set). ⏳ **Only gate left: the ARB re-scope ruling, then GREEN.** ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
+**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **FRAMEWORK FROZEN · VERIFIED · VALIDATED · OPERATIONAL** (8 dimensions; governance external; survives governance change). **Refinement complete · OPERATIONALLY ADOPTED · PROTOCOL VERIFIED** (three layers: frozen concepts · frozen evidence process · evolving evidence). ⏳ **Only gate left: the ARB re-scope ruling, then GREEN.** ⏳ **Blocked on the ARB's re-scope ruling only** — then GREEN.
 **Slice:** WP-6 (EPIC-004 roadmap) · **Contexts:** Adjudication (primary), config/infrastructure · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN)
 **Architecture status:** CLOSED for correction-loop integration. This plan **consumes** architecture; it produces none.
 
@@ -1007,7 +1007,11 @@ GREEN Readiness                   can implementation proceed today?
 | **Required no framework changes** | It classified everything and needed no amendment |
 | **Failed to classify a finding** | A real issue it could not place — **the only outcome that can trigger reopening** |
 
-**Tie-break, so the "exactly one" rule stays usable:** where more than one applies, record the **strongest** — *Exposed* > *Prevented* > *Required no changes*. (A framework that exposed a defect trivially also required no changes; recording the weaker outcome would hide the stronger evidence.) *Failed to classify* is recorded **whenever it occurs**, regardless of what else did.
+**Reporting semantics — the four outcomes are mutually exclusive FOR REPORTING, not mutually exclusive in reality:**
+
+> **Multiple outcomes may be true during a work package. The operational record reports only the STRONGEST applicable outcome, to keep slices comparable.**
+
+Order: *Exposed* > *Prevented* > *Required no changes*. (A framework that exposed a defect trivially also required no changes; reporting the weaker one would hide the stronger evidence.) **`Failed to classify` is recorded whenever it occurs, regardless of what else also applies** — it is the only reopening trigger, so it must never be masked by a stronger-sounding outcome. **This is a REPORTING CONVENTION, not a framework rule.**
 
 **Reopening — unchanged and singular:** permitted **only** on evidence that the framework cannot correctly classify or expose an issue **in an independent slice**. **Never** for elegance, preference, simplification or theoretical improvement.
 
@@ -1020,6 +1024,7 @@ GREEN Readiness                   can implementation proceed today?
 |---|---|
 | Work Package | WP-nn |
 | Framework Outcome | Exposed / Prevented / Required no changes / Failed to classify |
+| **Evidence Source** | RED test · GREEN implementation · Architectural review · Static analysis · Integration verification · Operational/runtime observation |
 | Evidence (1–2 lines, concrete) | |
 | Classification Failures | none · or: <finding> could not be placed in <dimension> |
 | Reopening Criteria Met? | Yes / No |
@@ -1032,6 +1037,7 @@ GREEN Readiness                   can implementation proceed today?
 |---|---|
 | Work Package | **WP-6** |
 | Framework Outcome | ⏳ **recorded at closure** (GREEN + acceptance pending) |
+| **Evidence Source** | **Architectural review** (N-5 · O-1 · O-4 · O-5 · S-1..S-3 — all found by review passes, none by a failing gate) · with **RED test** as the *subject* of N-5 |
 | Evidence so far | **N-5** — a committed RED test imported a **Domain** exception for an **Application-layer process** rule; the DDD-layer dimension exposed it. Plus **O-1 · O-4 · O-5 · S-1..S-3**, each a mis-record caught **before** GREEN |
 | Classification Failures | **none so far** — every finding placed in exactly one taxonomy, layer, owner and responsibility type, including the two whose owner is legitimately `UNASSIGNED` |
 | Reopening Criteria Met? | **No** |
@@ -1040,3 +1046,16 @@ GREEN Readiness                   can implementation proceed today?
 **Independence honoured:** all of that evidence was gathered **without** changing a taxonomy, dimension, term or governance rule. *The framework is the measuring instrument, not the subject of measurement.*
 
 > ### **The framework is operationally adopted. Future confidence will come from repeated successful application across independent work packages, not from additional theoretical refinement.**
+
+## Protocol verification (2026-07-31)
+
+| Phase | Check | Status |
+|---|---|---|
+| **1** Completeness | completion · framework outcome · classification failures · reopening evaluation · recommendation | ✅ all five, no framework concept added |
+| **2** Traceability | every outcome names its **evidence source** | ✅ added — **metadata about the record, not a ninth dimension** |
+| **3** Reporting semantics | several outcomes may occur; **exactly one is reported**; strongest wins; `Failed to classify` never masked | ✅ stated as a **reporting convention** |
+| **4** Continuity | record lives in the work package · discoverable via the `MEMORY.md` pointer · **no new governance document** | ✅ single canonical home preserved |
+
+**Why evidence source is worth recording (and why it is not a dimension):** it answers *how* the framework earned its result, which becomes interesting only in aggregate — if after several slices every "Exposed" traces to **architectural review** and none to a gate, that says the *gates* are the weak link, not the framework. WP-6 already shows that pattern: **all seven findings came from review passes, none from a failing gate.** One slice cannot support a conclusion; the field exists so several can.
+
+> ### **The operational protocol is verified. The framework has three distinct layers: (1) frozen architectural concepts, (2) frozen evidence collection process, (3) evolving operational evidence. Future confidence will come from applying the protocol unchanged across independent work packages.**
