@@ -434,12 +434,67 @@ The architecture does **not** prefer two origins, or any particular number — t
 | Mirrors | **WP-3A** (producer-side) with **WP-6B** mirroring WP-4 | no precedent in this program |
 | Requires a modelling answer first? | **No** | **Yes** — the `Routed → disposition` transition does not exist, and its shape (lapse · re-route · dismissal · new state) is a business question |
 
-### Recommendation: **Option A**, on three DDD grounds rather than convenience
+### Recommendation: **Option A**, on FOUR DDD grounds rather than convenience
 
-1. **The two responsibilities belong to two different bounded contexts.** Adjudication owns *announcing that it failed to conclude*; Contestation owns *what that means for the challenge* (§197). A slice that implements both makes one commit the owner of two contexts' decisions.
-2. **Option B would couple the producer's completeness to a consumer's existence** — the precise coupling **PB-006's *Registration ≠ Delivery*** exists to prevent. Under Option B, WP-6 could not be "done" until Contestation reacted, which reintroduces the producer→consumer dependency the platform deliberately removed.
-3. **The consumer needs an authority that does not yet exist.** Option B would force the `Routed → disposition` modelling decision *inside an implementation commission* — exactly what this plan's Phase 1 forbids (*architectural uncertainty ⇒ stop and report*).
+1. **The two responsibilities belong to two different bounded contexts.** Adjudication owns **determining and announcing** that it failed to conclude — the aggregate *first determines*, only then announces, so determination is never someone else's to claim later; Contestation owns *what that means for the challenge* (§197). A slice that implements both makes one commit the owner of two contexts' decisions.
+2. **Aggregate completion (ARB addition).** *A work package should end where the producing aggregate has fulfilled all of its responsibilities; everything beyond that belongs to a different aggregate's lifecycle.* At publication the adjudication process has expired, emitted the required business language, persisted and registered — **its responsibilities are complete.** This argues from the aggregate, not the context boundary, and it is the cleaner of the two: it would hold even if both aggregates lived in one context.
+3. **Option B would couple the producer's completeness to a consumer's existence** — the precise coupling **PB-006's *Registration ≠ Delivery*** exists to prevent. Under Option B, WP-6 could not be "done" until Contestation reacted, which reintroduces the producer→consumer dependency the platform deliberately removed.
+4. **The consumer needs an authority that does not yet exist.** Option B would force the `Routed → disposition` modelling decision *inside an implementation commission* — exactly what this plan's Phase 1 forbids (*architectural uncertainty ⇒ stop and report*).
 
 **Evidence that Option A works here:** WP-3A published `ChallengeRouted` with **no consumer at all**; the contract audit ran in between; WP-4 added the consumer one slice later. Published language awaiting a consumer is a **complete** producer-side deliverable — the inbox simply resolves no handler.
 
 **On approval, RED begins immediately** — 11 keystones already planned, none asserting a Contestation reaction.
+
+---
+
+## ✅ DECISION C APPROVED — Option A. RED AUTHORIZED.
+
+**WP-6 ends at publication + registration.** The consumer becomes **WP-6B**. Four DDD grounds accepted: bounded-context ownership · **aggregate completion** · Registration ≠ Delivery · architectural uncertainty belongs before implementation.
+
+## ⚠️ SCOPE FINDING AT RED ENTRY — two of WP-6's four items are NOT implementable under the frozen model
+
+Verified against the code before writing a single test, per Phase 1 (*architectural uncertainty ⇒ stop and report*) and Decision C's fourth ground.
+
+| WP-6 item | Ready? | Evidence |
+|---|---|---|
+| **Adjudication horizon** (MAD-aware, config + resolver, F-1) | ✅ **READY** | `enforceHorizon()` · `dueForHorizon($asOf)` · `expire()` · `Expired` all exist |
+| **Expiry announcement + late-decision conflict** (Decisions A/B, F-2, §197) | ✅ **READY** | Outbox/hydrator machinery exists; the policy is ruled |
+| **Evidence-demand deadlines** (§80 · PM-3) | ⛔ **BLOCKED — no Demand concept exists** | `AdjudicationProcessState` has `admittedEvidence` (admissions) and `returnForMoreEvidence()` (the authority's not-yet-decide), but **no demand entity, no per-demand deadline, and no storage column** — the migration has `admitted_evidence` only. PM-3's *"express evidence demands and track them to satisfaction or deadline"* was **never modelled**. Implementing it means inventing a Demand aggregate-internal model + schema + deadline semantics — **new tactical modelling inside an implementation commission** |
+| **Finality evaluator** (§142) | ⛔ **BLOCKED — needs knowledge Adjudication does not have** | §142 conditions finality on *"provided no challenge against it is open at closure."* A challenge **against a determination** is a Contestation aggregate (`TargetType::Determination`). Adjudication cannot answer *"is a challenge open against this determination?"* locally — that requires a **new cross-context crossing**, which Phase 8 flagged as an assumption to confirm, with the recorded instruction to **stop and report, not invent** |
+
+**Neither blocker is a defect.** Both are *absences* — capabilities the roadmap names and the frozen model has not yet modelled. Both were flagged in this plan's own Phase 8 before RED began, which is the checkpoint working as designed.
+
+### Consequence for RED
+
+RED is written for the **two ready items** — the horizon (with its config/resolver and the F-1 fix) and the expiry announcement (with the F-2 late-decision conflict). **Keystones 7, 8 and 9 are NOT written**, because writing them requires the two decisions above.
+
+**Recommended disposition (ARB's call):** re-scope WP-6 to *horizon + expiry announcement* — a coherent, complete slice — and split the remainder:
+- **WP-6C — Evidence-demand deadlines**, opening with the Demand modelling question (§80/PM-3);
+- **WP-6D — Finality evaluator**, opening with the cross-context question (§142) that the strategic validation already predicted would arise for a query-shaped crossing.
+
+This is the same discipline that split WP-3 into 3A/3B and WP-6 into 6/6B: **a slice ends where its authority ends.**
+
+---
+
+## WP-6 RED WRITTEN + CONFIRMED (2026-07-31) — STOP at the RED boundary
+
+**`Tests: 10, Assertions: 14, Errors: 2, Failures: 5`** — 7 failing for the expected reasons, 3 passing (each classified honestly below).
+
+| # | Keystone | Status | Reason |
+|---|---|---|---|
+| 1 | MAD resolves from configuration | **ERROR** | `AdjudicationDurations` port does not exist |
+| 2 | a process **inside** the horizon does not expire | **FAIL** | **F-1 PROVEN EMPIRICALLY** — a process opened *one minute ago* was expired, because the cut-off is `now`, not `now − MAD` |
+| 3 | a process **beyond** the horizon expires | **PASSES — for the WRONG reason** | Today `enforceHorizon()` expires *everything*, so this passes vacuously. It becomes meaningful only once keystone 2 passes too. Declared, not banked |
+| 4 | **Policy 4** — expiry concludes nothing | **PASSES legitimately** | WP-2's `expire()` already sets no outcome/legitimacy/reason/authority. This is a **regression guard on an existing constitutional guarantee**, not a new capability |
+| 5 | expiry announces exactly one fact | **FAIL** | no announcement exists |
+| 6 | the announcement is registered for hydration | **FAIL** | no hydrator registered — published language needs both halves |
+| 7 | the announcement begins a new conversation | **ERROR** | no outbox row to inspect |
+| 8 | a second timer run announces nothing further | **FAIL** | no announcement exists |
+| 9 | a **late** decision on an expired process is a **conflict** | **FAIL** | `LateDecisionOnExpiredAdjudication` does not exist — **F-2 confirmed**: the late decision is currently swallowed silently |
+| 10 | a **redelivered** decision stays a no-op | **PASSES legitimately** | ADR-T3 behaviour already correct. Its job is to **guard against over-correcting keystone 9** |
+
+**Two Phase-15 diagnoses during authoring, both "incorrect test":**
+1. `submitToAuthority()` from `opened` is an illegal transition — §6 requires evidence admitted first. *(Same class as the WP-2 error; the lawful path is `openFor → admitEvidence → submitToAuthority`.)*
+2. `receiveRulingDecision()`'s sixth argument is an **`EvidenceSet`**, not a timestamp — **the decision time is the manager's, taken from the injected clock, never a caller parameter.** I had guessed; the signature was read and the test corrected.
+
+**Progress:** ✔ EP-03 · ✔ Phases 1–9 · ✔ Decisions A/B/C · ✔ **RED confirmed** · ⏳ GREEN (awaiting report acceptance) · ⏳ gates · ⏳ dev guide · ⏳ slice acceptance.

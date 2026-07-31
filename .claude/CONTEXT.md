@@ -10,7 +10,7 @@ durable constraints, and preferences live in `.claude/MEMORY.md`; history lives 
 recorded reversal condition.
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: **WP-6 (temporal machinery) -- EP-01 APPROVED; DECISION A APPROVED (expiry IS published integration language); DECISION B direction approved (begins a NEW conversation -> horizon enforcer joins the allowlist). BLOCKED ON DECISION C ONLY -- reframed as an IMPLEMENTATION BOUNDARY decision: where does WP-6's bounded-context responsibility end? (recommend Option A: publish + register; WP-6B consumes) -- then RED begins immediately.** WP-1 + WP-2 + WP-5 ACCEPTED+CLOSED; WP-3A + WP-4 complete, slice acceptance pending.
+Ticket: **WP-6 (temporal machinery) -- Decisions A/B/C APPROVED; RED CONFIRMED (10 tests, 7 failing as expected); STOP at the RED boundary. RE-SCOPE PROPOSED: WP-6 = horizon + expiry announcement; evidence-demand deadlines (no Demand model exists) -> WP-6C; finality evaluator (needs Contestation knowledge) -> WP-6D.** WP-1 + WP-2 + WP-5 ACCEPTED+CLOSED; WP-3A + WP-4 complete, slice acceptance pending.
 Plan: .claude/plans/WP-6-temporal-machinery.md (WP-5 CLOSED)
 Branch: feature/pb003 (ACTIVE — baseline-release-1.1 tagged behind it)
 Milestone: EPIC-004 Architecture-to-Implementation roadmap — WP-1 ✔ · WP-2 ✔ · WP-3A GREEN (acceptance pending) · WP-4 open · WP-3B deferred (needs a routing application service)
