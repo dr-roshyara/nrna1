@@ -1,6 +1,6 @@
 # WP-6 — Temporal Machinery (horizon · demand deadlines · finality)
 
-**Status:** ✅ **EP-01 APPROVED · DECISION A APPROVED (expiry IS published integration language) · DECISION B direction approved (begins a NEW conversation).** ✅ **DECISION C APPROVED (Option A)** · ✅ **RED CONFIRMED** · ✅ **FRAMEWORK FROZEN · VERIFIED · VALIDATED · OPERATIONAL** (8 dimensions; governance external; survives governance change). **OPERATIONALLY READY — framework/protocol REFINEMENT CLOSED** (further **refinement** requires cross-slice evidence; architectural **evolution** is unaffected). ⏳ **Only gate left: the ARB re-scope ruling, then GREEN.**
+**Status:** ✅ **CLOSURE PACKAGE DELIVERED (2026-08-01)** — scope complete · four gates green · four reviews done (APR · ADPR · AGIR · authority commissions) · **the evidence supports ARB acceptance within the approved scope**. ⏳ **Acceptance is the ARB's act and is not yet granted.** Transition package: `engineering/verification/reports/2026-08-01-wp6-closure-wp7-transition.md`.
 **Slice:** WP-6 (EPIC-004 roadmap) · **Contexts:** Adjudication (primary), config/infrastructure · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN)
 **Architecture status:** CLOSED for correction-loop integration. This plan **consumes** architecture; it produces none.
 
