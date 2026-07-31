@@ -1,6 +1,6 @@
 # WP-6 — Temporal Machinery (horizon · demand deadlines · finality)
 
-**Status:** 📋 **PLAN — awaiting EP-01 approval. No code written, no RED yet.**
+**Status:** ✅ **EP-01 APPROVED (ARB, 2026-07-31)** — pre-RED clarification RESOLVED on evidence; **two ARB decisions requested (A: allowlist entry · B: scope split)**. No code written, no RED yet.
 **Slice:** WP-6 (EPIC-004 roadmap) · **Contexts:** Adjudication (primary), config/infrastructure · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN)
 **Architecture status:** CLOSED for correction-loop integration. This plan **consumes** architecture; it produces none.
 
@@ -216,3 +216,66 @@ WP-6 must separate them. This is a **ruled-policy gap, not an architecture quest
 ---
 
 **Traceability:** roadmap §WP-6 · Q-2 · Constitutional Policy 4 · EPIC-004K §§27/36/41/57/72/74/80/81/90/111/115/128/142/160/187/197 · ADR-T1 · ADR-T8 · ADR-MP-06 · Round 50-07 v1.2 (`finalize()` emits nothing) · WP-2 plan (horizon mechanism without duration) · WP-5 plan (carried checkpoint, one-origin invariant) · frozen `docs/architecture/Cross_Context_Integration_Contract.md`.
+
+---
+
+## ✅ EP-01 APPROVED (ARB, 2026-07-31) + PRE-RED CLARIFICATION RESOLVED
+
+**Approved:** planning quality · F-1 · F-2 · INTERIM defaults (each marked with the authority it awaits) · the published-language decision criterion.
+**Required before RED:** classify the expiry announcement. **Resolved below, on evidence.**
+
+### The criterion, applied
+
+> **Does Contestation need to react to Expiry as an external business fact?**
+
+**YES — and it is ruled, not inferred.** EPIC-004K §197: *"Horizon-expiry policy RULED: **return to Contestation**; late decisions never honored. Expiry announces the failure-to-conclude; **the challenge's disposition is Contestation's per its own rules**."*
+
+A ruling that assigns the disposition to another bounded context **is** a statement that the fact must cross the boundary.
+
+### Therefore — the classification, and why it is an application of the invariant, not an exception
+
+| Question | Answer | Grounds |
+|---|---|---|
+| Externally published integration event? | **YES** | §197 assigns Contestation the disposition |
+| Published language (hydrator + registration, producer-side)? | **YES** | The frozen contract: publication **and** registration are both producer-owned (the WP-3A rule) |
+| Does it continue an existing conversation? | **NO** | A timer consumes no message; there is no incoming correlation, so `fromConsumed()` has nothing to derive from |
+| Does it therefore **begin** one? | **YES** | By the invariant: *an origin begins a conversation; it never transfers ownership of one.* A publication with no antecedent **is** an origin |
+| Is the horizon enforcer a chain origin? | **YES** — requiring an allowlist entry | ADR-MP-06; **the extension is an ARB decision**, requested below |
+
+**This is the invariant behaving correctly, not an exception to it.** The clock-triggered publication is the second lawful case of a *new* conversation: the first (`route`) begins the correction loop; this one begins the *failure-to-conclude* conversation. Each has exactly one origin.
+
+### ⚠️ Applying the criterion exposed a gap that changes WP-6's scope
+
+**Contestation cannot currently consume this event.** Its only timeout transition is:
+
+```php
+public function lapse(DateTimeImmutable $at): void
+{
+    $this->guard('lapse', ChallengeState::Raised, ChallengeState::Admitted);   // ← NOT Routed
+    $this->state = ChallengeState::Lapsed;
+}
+```
+
+A challenge whose adjudication expires is in state **`Routed`** — and `lapse()` refuses `Routed`. **There is no `Routed → <disposition>` transition in the Challenge aggregate.** So §197's *"the challenge's disposition is Contestation's per its own rules"* names a rule whose **transition does not yet exist**.
+
+Two consequences, stated plainly:
+
+1. **The publication side is fully inside WP-6's authority** — Adjudication announces the expiry (domain event + outbox mapping + hydrator + registration). Nothing about that requires Contestation.
+2. **The consumption side is NOT** — it needs a new Contestation transition, which is a **Contestation domain change outside WP-6's stated scope** (*"Adjudication context; APM owns enforcement"*), and a modelling question (*is the disposition a lapse, a re-route, a dismissal, or a new state?*) that only the ARB/business can answer.
+
+**Recommendation — the WP-3A/WP-4 precedent, which this project has already run once successfully:** WP-6 delivers **publication + registration**; the **consumer is a separate slice**. That precedent is exact — WP-3A published `ChallengeRouted` with no consumer, and WP-4 added the consumer one slice later, with the contract audit in between. It also keeps WP-6 honest: an announced fact with no consumer is *published language awaiting a consumer*, not a broken loop, and the inbox simply resolves no handler.
+
+**I have not assumed this.** It is recorded as the second ARB decision requested below.
+
+### Two ARB decisions requested (both are ADR-MP-06 / scope decisions, not implementation choices)
+
+| # | Decision | Recommendation |
+|---|---|---|
+| **A** | **Add the horizon enforcer to `CHAIN_ORIGIN_ALLOWLIST`** as the origin of the failure-to-conclude conversation (ADR-MP-06 makes any extension an ARB decision) | **Approve.** Without it the guard fails the moment the enforcer publishes; with it, the invariant stays machine-enforced and the entry documents *which* conversation it begins |
+| **B** | **Scope split:** WP-6 = publication + registration; the **Contestation consumer + its `Routed → disposition` transition** = a separate slice (provisionally **WP-6B**) | **Approve.** The alternative — designing a new Challenge transition inside an implementation commission — would be exactly the "silently answering an architectural question during coding" this plan set out to avoid |
+
+**Note the interaction with the carried WP-5 checkpoint:** WP-6 may now **add** one originator (the horizon enforcer, Decision A) while the checkpoint asks whether it can **remove** another (the authority decision, if it becomes message-driven). Both moves are ARB decisions; both must preserve **one origin per conversation**. The allowlist could therefore legitimately end WP-6 with two entries again — a different two.
+
+### RED plan — amended by this clarification
+
+Keystone 4 (*"expiry announces exactly one fact, once"*) now additionally asserts the payload is registered and hydratable (the WP-3A pattern), and keystone 11 becomes concrete: **the expiry announcement's `correlation_id` is newly minted and its `causation_id` is null** — a chain start, per Decision A. **No keystone asserts a Contestation reaction**, per Decision B.
