@@ -1,6 +1,6 @@
 # WP-7 — Retention Alignment (`audit:cleanup` becomes EPW-aware)
 
-**Status:** 📋 **TACTICAL PLAN — 🧊 ARCHITECTURE FROZEN · TRANSITION TO IMPLEMENTATION AUTHORIZED (architecturally).** Six commissions complete; **zero architectural gates remain**. ⛔ **RED still blocked by WP-6 slice acceptance** — programme management, not architecture. Awaiting EP-01 approval. **No code, no config key, no test.**
+**Status:** 📋 **TACTICAL PLAN — 🧊 ARCHITECTURE FROZEN · TRANSITION AUTHORIZED (architecturally) · ⚠️ ENGINEERING READINESS CONDITIONAL.** Seven commissions complete; **zero architectural gates remain**. ⛔ **RED blocked by THREE items, none architectural: (1) WP-6 slice acceptance (programme) · (2) G-1 placement decision (engineering/ARB — blocks 7A) · (3) C-1 automation (the one constraint whose manual enforcement is insufficient).** Awaiting EP-01 approval. **No code, no config key, no test.**
 **Gate note:** WP-6's ARB acceptance is still pending; the roadmap's rule is *"no slice starts before its predecessor's acceptance."* **Planning is the authorized activity; RED is not.**
 **Slice:** WP-7 (EPIC-004 roadmap) · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN) · **Repository Integrity Gate:** ✅ PASSED
 
@@ -165,6 +165,24 @@ The open question was *"does per-election EPW need Contestation or Adjudication 
 > **Eleven implementation constraints** (what implementation must not violate) are listed in §Implementation Constraints of the transition record. **Reopening standard: only if implementation exposes a genuine design issue** — not for refinement, expression, or pattern preference. **Implementation consumes architecture; it does not continue it.**
 >
 > **One named reopening condition, with its blast radius:** if the ARB rules Election must not widen and Retention warrants its own context, **EPW relocates — a namespace move, not a redesign**; ownership, construction idiom, dependency rule and the guard all survive. That is why it does not block RED.
+
+### ⚠️ IMPLEMENTATION GUARD COMMISSION (2026-08-01) — enforceability is NARROWER than the constraint set
+
+`engineering/verification/reports/2026-08-01-wp7-implementation-guard-commission.md`. **The architecture is sound; its *protection* is partial.** Of the 11 constraints: **4 executably enforced · 7 manual**, of which **3 are cheaply automatable by existing precedent patterns** and **4 are accepted as manual with reasons**.
+
+**Verified fact that governs everything below:** all three structural gates (Deptrac · greenfield PHPStan · `GreenfieldCoreArchitectureTest`) scan **only** `app/Contexts/{Contestation,Adjudication,Election,Shared}`. **`app/Console/Commands/AuditCleanup.php` — where this plan places the guard — and `app/Helpers/` are covered by ZERO structural gates.** Election *is* in scope, so **the EPW Value Object inherits real enforcement** (Deptrac `ElectionDomain: ~` blocks any port import; framework-free blocks Illuminate/Carbon) — *with one hole: a **PSR `ClockInterface`** would enter the VO undetected.*
+
+> #### ⛔ G-1 — two frozen decisions collide at the enforcement layer (BLOCKS 7A)
+>
+> **"Consume Adjudication's existing `AdjudicationDurations` port" (AP-2)** and **Deptrac's approved model — `ElectionApplication: [ElectionDomain, Shared]`, contexts collaborate ONLY via events (TP-1)** — are **not simultaneously satisfiable** if the application service lives inside a context. Placed in `Election/Application` it **fails Deptrac**; placed where the plan puts the guard (`app/Console/`) it raises **no violation and receives no protection** — the constraint is not broken, it is **unobserved**.
+>
+> **Three factual options — (a)** service outside `app/Contexts/` *(consistent, unguarded)* · **(b)** inside `Election/Application` *(gated, but Deptrac fails on the MAD import)* · **(c)** extend the approved Deptrac model to admit the durations port *(preserves both — **requires ARB authority**)*. **Not chosen here:** choosing would be a ticket silently becoming architecture. **Must be settled before 7A**, which creates the retention port and faces the same question.
+
+**🔴 C-1 is the one constraint whose manual enforcement is INSUFFICIENT** — *"never define, default, clamp or substitute a duration."* No gate inspects for it, **and this exact defect already occurred** (`max(1,$days)` in Infrastructure, plus `60` in two homes): both were caught by a human preservation review and were **invisible to all four gates**. Recommended automation **as part of 7A**, where the adapter is written anyway. Also recommended (cheap, non-blocking, each reusing an existing pattern): **C-2** config-key uniqueness · **C-4** construction exclusivity, reusing `ConstitutionalAssertionsTest::test_capability_decision_construction_exclusive`.
+
+**Accepted as manual, deliberately:** **C-5** (a new aggregate/repository in a 3-slice change is unmissable in review, and automating absence over-fits) · **C-7** (a name is the most visible thing in a diff) · **C-10** (one named file) · **C-11** (release governance — not engineering's to enforce). *Domain events are already covered by `EventRegistryCompletenessTest` + AT-EVT-001.*
+
+**DDD alignment verdict:** the gates **reinforce** the model rather than replace it — `deptrac.yaml` states the correct direction of authority in its own words (*"the tool verifies the architecture; the architecture never evolves because the tool guessed something"*). **The deficiency is reach and granularity, not direction.**
 
 ---
 
