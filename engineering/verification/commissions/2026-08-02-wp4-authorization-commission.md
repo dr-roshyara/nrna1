@@ -1,8 +1,14 @@
 # ARB Commission — WP-4 Authorization
 
 **Date:** 2026-08-02 · **Prepared by:** Recording Architect
-**Status:** **CONVENED — awaiting Board deliberation.** **R-67 is not issued here.**
-**Question:** **Is WP-4 ready for authorization?**
+**Status:** ⛔ **SUPERSEDED ON ITS CENTRAL QUESTION (2026-08-02) — see `engineering/verification/reports/2026-08-02-wp4-state-correction.md`.** **R-67 is not issued here.**
+**Question as asked:** **Is WP-4 ready for authorization?**
+
+> ## ⛔ The question is moot. WP-4 is implemented, gated and awaiting slice acceptance.
+>
+> **`c3165ee88` (2026-07-31) — WP-4 GREEN: `ChallengeRoutedReactionHandler` is in `app/Contexts/Adjudication/Application/` and registered in `AdjudicationServiceProvider::boot()`. The ARB accepted its RED and authorized its GREEN on 2026-07-31.**
+>
+> **This commission quoted the WP-4 plan's stale status header — *"OPEN — G-2 DECIDED; next step is RED"* — and did not read the plan body recording RED acceptance, GREEN completion and the gates.** **The document below is retained as the record of what was verified and how it went wrong. Its Strategic DDD and Capability Readiness findings stand; its premise does not.**
 
 ---
 
