@@ -1,6 +1,6 @@
 # Work Plan — WP-3: `ChallengeRouted` as published language + correlation-mint relocation
 
-**Created:** 2026-07-30 · **Status:** AUTHORIZED (ARB, on WP-2 slice acceptance) — pre-implementation assessment COMPLETE; next step is RED
+**Created:** 2026-07-30 · **Status:** **WP-3A: GREEN COMPLETE + GATES + TRIPLE QUALIFICATION — AWAITING ARB SLICE ACCEPTANCE. WP-3B: DEFERRED** (needs a routing application service). *(Header corrected 2026-08-02 — it still read "next step is RED".)*
 **Executed under:** `.claude/IMPLEMENTATION_PROTOCOL.md` (**OPERATIONAL, frozen**) — first work package to run start-to-finish under a written, frozen protocol.
 
 ## Phase 1 — Commission Reset
@@ -239,3 +239,48 @@ GREEN is complete only when every row above has its evidence.
 3. **Frozen-artifact finding, referred out:** `Canonical_Event_Catalog_v1.0.md` is **🧊 FROZEN** (*"Changes follow ADR-T5 — version, never mutate"*) and marks **three** now-published events as `internal` — `ChallengeRouted`, `ChallengeAdjudicated`, `ChallengeResolved`. Correcting the markings requires a **v1.1 catalog**, an ARB act. This slice implements against the ADR and records the staleness, following the precedent PB-005 set for two of these same events. **Not edited here.**
 
 **Progress:** ✔ Phases 1–9 · ✔ split finding · ✔ RED · ✔ **GREEN** · ✔ **merge-gate** · ✔ dev guide · ⏳ triple qualification + ARB slice acceptance. **WP-3B (Correlation Origin Relocation) deferred** — depends on the existence of a routing application service.
+
+---
+
+## Triple Qualification — WP-3A (2026-08-02) — all three categories PASS
+
+**Performed as the Definition-of-Done gate WP-1 and WP-2 both cleared before acceptance (WP-2 plan §15). Evidence re-verified today, not quoted from July.**
+
+**Current evidence:** `composer merge-gate` → **PASS** (266 tests · 665 assertions · 101 pre-existing risky notices) · the eleven WP-3A tests re-run → **PASS** (part of 17 passed / 47 assertions with WP-4's six).
+
+### 1. Architecture — PASS
+
+| Check | Evidence |
+|---|---|
+| Gates | Deptrac **0 violations** · greenfield PHPStan **no errors** · architecture fitness suite green |
+| **No fitness rule or Deptrac rule was changed** to make the slice pass | the gate configuration is untouched by this slice |
+| Dependency direction | `ChallengeRoutedHydrator` is `Contestation/Infrastructure/Outbox` implementing the shared `EventHydrator`; `ChallengeOutboxAdapter` implements the Application port `ChallengeEventOutbox`. **Infrastructure → Application → Domain, never reversed** |
+| Composition root | registration lives in `ContestationServiceProvider::boot()` — the correct seat, not in the domain |
+
+### 2. DDD — PASS
+
+| Check | Evidence |
+|---|---|
+| Ownership | **unchanged.** Contestation owns `ChallengeRouted`; the hydrator is **context-owned Infrastructure** — contract R-2/R-3 forbids a consumer importing it, and WP-4 later honoured that |
+| Aggregates / entities / repositories / domain services | **none added.** `ChallengeRouted` itself is **unmodified** — WP-3A publishes an event that already existed |
+| Published Language | **established, both halves:** publication (`writeRouted`) + registration (the hydrator). Either alone would be incomplete |
+| Minimality (PB-005 F-2) | the reconstructed event carries **exactly the three facts routing records**; publication-time enrichment stays in the Application layer — `ChallengeResolvedIntegration` is the counter-example that proves the rule |
+| Ubiquitous Language | **unchanged** — no term renamed, introduced or redefined |
+| ADR-T16 | only primitives cross the wire; identity travels as a string |
+
+### 3. Trustworthiness — PASS
+
+| Property | Evidence |
+|---|---|
+| **Anonymity** (ADR-T11 · AT-Q7) | **two tests, contract and wire:** `test_the_wire_contract_carries_no_voter_or_vote_identifier` · `test_the_published_row_contains_no_voter_or_vote_identifier`. The payload is `schema_version` · `challengeId` · `routedTo` · `occurredAt` — **no voter, no vote** |
+| **Immutability** | `final readonly class ChallengeRouted` |
+| **Versioning / replay safety** (ADR-T5) | v1 accepted · **absent marker = v1** · v2 **rejected** · missing required field **fails loudly**. Reconstruction is deterministic |
+| **Provenance** (ADR-MP-06) | provenance is **supplied, never minted here** — `test_supplied_chain_start_provenance_is_stamped_unchanged`; `CorrelationIdMintingTest` stays green with the allowlist **unchanged at one entry** |
+| **Tenant isolation** | `organisation_id` via `TenantContext::require()` — **fails loudly rather than writing an unscoped row** |
+| **Forward-only** | an append-only outbox row at `status=pending`; nothing is mutated or removed |
+
+### Referred out, not resolved here
+
+**`Canonical_Event_Catalog_v1.0.md` is 🧊 FROZEN and still marks `ChallengeRouted` — with `ChallengeAdjudicated` and `ChallengeResolved` — as `internal`.** Correcting it requires a **v1.1 catalog, an ARB act**. WP-3A recorded the staleness and correctly did not edit a frozen artifact. **Whether it is material to acceptance is a governance question, not an engineering one.**
+
+**Progress:** ✔ RED · ✔ **GREEN** · ✔ **merge-gate** · ✔ dev guide · ✔ **triple qualification** · ⏳ ARB slice acceptance.

@@ -1,6 +1,6 @@
 # Work Plan — WP-4: APM wiring (Adjudication consumes `ChallengeRouted`)
 
-**Created:** 2026-07-31 · **Status:** OPEN — **G-2 DECIDED** (below); next step is RED
+**Created:** 2026-07-31 · **Status:** **GREEN COMPLETE + GATES + TRIPLE QUALIFICATION — AWAITING ARB SLICE ACCEPTANCE.** *(Header corrected 2026-08-02: it read "OPEN — G-2 DECIDED; next step is RED" for two days after GREEN landed, and a governance commission was convened on that stale line. See `engineering/verification/reports/2026-08-02-wp4-state-correction.md`.)*
 **Executed under:** `.claude/IMPLEMENTATION_PROTOCOL.md` (OPERATIONAL, frozen)
 **Governing map for the crossing:** `docs/architecture/Cross_Context_Integration_Contract.md` (navigation) → canonical rules in ADR-T16 · ADR-T3/T4/T5 · ADR-MP-06 · PB-006
 
@@ -188,3 +188,46 @@ Nothing new but the handler and its registration. `ChallengeRef` · the PM · th
 | Developer guide (DoD) | ✅ `developer_guide/adjudication/04_challenge_routed_consumption.md` + index updated |
 
 **Progress:** ✔ Phases 1–9 · ✔ G-2 · ✔ RED accepted · ✔ **GREEN** · ✔ gates · ✔ dev guide · ⏳ **slice acceptance (STOP)**.
+
+---
+
+## Triple Qualification — WP-4 (2026-08-02) — all three categories PASS
+
+**The same Definition-of-Done gate, performed on the same day for both packages awaiting acceptance. Evidence re-verified today.**
+
+**Current evidence:** `composer merge-gate` → **PASS** (266 · 665 · 101 pre-existing risky) · the six WP-4 tests re-run → **PASS**.
+
+### 1. Architecture — PASS
+
+| Check | Evidence |
+|---|---|
+| Gates | Deptrac **0 violations** · greenfield PHPStan **no errors** · architecture fitness suite green |
+| **The near-miss is the load-bearing result** | importing Contestation's hydrator would have been **the codebase's first cross-context Infrastructure dependency**. Deptrac enforces contract **R-2**; **no ADR states it** — the recorded gap, not a defect of this slice |
+| No new architectural concept | one `InboxHandler` + its registration — **the fourth instance of an established, machine-enforced pattern** |
+| Composition root | registration in `AdjudicationServiceProvider::boot()` |
+
+### 2. DDD — PASS
+
+| Check | Evidence |
+|---|---|
+| Ownership | **PM-1 (`AdjudicationProcessManager`) owns the rule, including its own idempotency.** The handler owns **only the wiring** |
+| ADR-T16 | Adjudication reconstructs its **own** `ChallengeRef` from an opaque identity string. **No import of Contestation's Domain or Infrastructure** |
+| PB-006 *Registration ≠ Delivery* · contract R-7 | **the consumer declares that it consumes**; Contestation never names Adjudication |
+| **Six defended absences, each recorded in the docblock and the dev guide** | no outcome translator (G-2) · no `RoutedTo` VO · no Domain import · no hydrator import · no provenance minting · no bespoke `PermanentInboxFailure` |
+| Ubiquitous Language | **unchanged** |
+
+### 3. Trustworthiness — PASS
+
+| Property | Evidence |
+|---|---|
+| **Correlation continuity** (ADR-MP-06) | `test_the_consumption_continues_the_incoming_conversation`; **nothing is minted** — `CorrelationIdMintingTest` stays green |
+| **Idempotency / replay safety** | `test_redelivery_opens_no_second_process` · `test_a_second_routing_of_the_same_challenge_opens_no_second_process` — **both seats exercised**: platform inbox dedupe and PM-1's own rule |
+| **Consumer isolation** | `test_routing_produces_no_contestation_side_effect` · `test_adjudication_registers_itself_as_a_consumer_of_challenge_routed` |
+| **Anonymity** (ADR-T11) | **only `challengeId` crosses.** No voter or vote identity enters Adjudication |
+| **Loud failure** | `ChallengeRef` refuses an empty identity rather than opening a meaningless adjudication |
+
+### Two debts carried, neither introduced by this slice
+
+**AD-007** — relay failure path × single-transaction harness; **environment-specific, not architectural**; production code correctly unchanged. **AD-008** — 17 pre-existing Membership feature failures, **git-stash-verified** as identical with WP-4 stashed.
+
+**Progress:** ✔ G-2 · ✔ RED · ✔ **GREEN** · ✔ gates · ✔ dev guide · ✔ **triple qualification** · ⏳ ARB slice acceptance.

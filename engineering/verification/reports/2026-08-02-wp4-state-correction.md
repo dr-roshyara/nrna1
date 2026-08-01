@@ -20,7 +20,7 @@
 |---|---|
 | WP-4 opened, **G-2 decided by analysis** | 2026-07-31 · session log · plan §G-2 |
 | **RED written and confirmed** | 2026-07-31 · plan §"WP-4 RED WRITTEN + CONFIRMED" |
-| **ARB accepted RED and authorized GREEN** | 2026-07-31 · session log: *"ARB accepted RED and authorized GREEN"*, with a precision correction adopted verbatim |
+| **An ARB authorization of GREEN is recorded** | 2026-07-31 · **session-log evidence only**: *"ARB accepted RED and authorized GREEN"*, with a precision correction adopted verbatim. **See §1a — this is not official governance evidence** |
 | **GREEN complete — first run, no iteration** | `Tests: 6, Assertions: 10, OK` |
 | **Gates** | PHPStan max **no errors** · Deptrac **0 violations** · Architecture suite **146/626** |
 | **Developer guide (DoD)** | `developer_guide/adjudication/04_challenge_routed_consumption.md` + index |
@@ -28,6 +28,20 @@
 | **Status** | **⏳ slice acceptance (STOP)** |
 
 **Confirmed independently today: `composer merge-gate` → PASS · 266 tests · 665 assertions · 101 pre-existing risky notices.**
+
+## 1a. ⚠️ Three evidence sources, three different authorities — do not collapse them
+
+**The rows above do not all carry the same weight, and the distinction decides what may be concluded:**
+
+| Source | What it proves | Authority |
+|---|---|---|
+| **Repository evidence** — commits, production classes, registration, passing tests, gate output | **What the software does.** Independently re-verifiable at any time | **Highest for state.** It is the software; nothing overrides it |
+| **Session-log evidence** — `.claude/sessions/2026-07-31.md` | **What was said to have happened.** A contemporaneous working record | **Corroborating, never constitutive.** It records governance; it is not governance |
+| **Official governance evidence** — the rulings register | **What was decided, by whom, under what authority** | **The only source of governance fact.** For WP-4 it is **silent** |
+
+> **Therefore the defensible statement is narrower than the table suggests:** **the repository contains implementation consistent with GREEN completion, and the session log records an ARB authorization of GREEN. The governance register should be reconciled so the official record matches the implementation history.**
+>
+> **What must not be claimed: that a recorded ARB act is established governance fact on session-log evidence alone.** **An entry in a working log is not a ruling.** **The register's silence is the defect to repair — and repairing it is an ARB act, not a clerical one.**
 
 ## 2. How the commission got it wrong — my error, stated plainly
 
@@ -69,7 +83,7 @@
 
 > **The two packages are in the same state, with the same two gaps, for the same reason.** **The programme's actual backlog is not one authorization — it is two acceptances.**
 
-**On authorization: the register has no WP-4 row, but the session log records the ARB accepting RED and authorizing GREEN.** **Absence from the register is a recording gap, not absence of an ARB act** — and it is the same class of defect R-62 corrected for R-43 and R-48.
+**On authorization: the register has no WP-4 row; a session log records an ARB acceptance of RED and authorization of GREEN.** **Absence from the register is consistent with a recording gap and does not by itself prove no ARB act occurred** — the same class of defect R-62 corrected for R-43 and R-48. **It equally does not prove one did.** **Only the ARB can say which, and §1a is why this report will not say it for them.**
 
 ## 5. Consequence for R-67
 
