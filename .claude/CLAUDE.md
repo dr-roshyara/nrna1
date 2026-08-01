@@ -554,6 +554,34 @@ Concretely:
 
 **Automation:** a non-blocking `PreToolUse` tripwire (`.claude/scripts/discipline-gate-reminder.sh`) reminds when a **new** test or production file is about to be created, to confirm the upstream artifacts exist. It is a checkpoint, not a wall — the rule above is the obligation.
 
+## The Operating Loop (runtime binding of the rule above — POINTERS, not restatements)
+
+**Every engineering conversation runs this sequence. Never reversed.**
+
+```
+Business Capability → Strategic DDD → Tactical DDD → Search Canon → Stewardship
+→ Impact Classification → Engineering Readiness → RED → GREEN → VERIFY → ACCEPT → Operational Evidence
+```
+
+| Phase | Obligation | Canonical home |
+|---|---|---|
+| **1 Business capability** | capability · objective · owning context · rule protected · policy. **If it cannot be identified: STOP and ask. Do not infer.** | the standing rule above |
+| **2 Strategic DDD** | does ownership, the context map, Published Language or Ubiquitous Language change? **Expected answer: No.** **Do not go looking for new bounded contexts or abstractions.** | the standing rule above |
+| **3 Tactical DDD** | consume only approved aggregates · VOs · services · ports · events. **Invent no tactical concept without governance.** | `engineering/knowledge/methodology/DDD_Tactical_Governance_Principles.md` |
+| **4 Search canon** | **Before creating any document, process, rule, checklist or standard — search for an existing canonical home. If one exists, EXTEND it; never create a second home.** If none exists, **name the missing classification and return the question to governance — do not invent one.** | **ES-005.4** (never a copy) · **ES-004** |
+| **5 Stewardship** | **Implementation is the default. Only a NO carrying implementation evidence of insufficiency opens an ADR/ARB discussion.** No opportunistic observation during ticket work. | **ES-002.1 · ES-002.2** |
+| **6 Impact classification** | classify every observation **before** recommending: Strategic Architecture · Tactical Architecture · Governance · Engineering · Repository · Documentation · Operational · PKS Observation · KnowledgeOS Candidate | protocol proposal §4a–4d |
+| **7 Readiness** | authorization · scope · dependencies · acceptance criteria · gates · RED boundary. **No authorization → STOP.** | **EP-01 · EP-01-Light · EP-03** |
+| **8 RED→GREEN→VERIFY** | approved scope only. **No redesign, no opportunistic refactor, no unrelated fixes.** **Reviews record deviations; implementation repairs them in a later authorized slice.** | the standing rule · **ER-08** |
+| **9 Acceptance** | **Engineering supplies evidence and never accepts its own work.** Keep evidence · recommendation · authority separate. | **EP-02** · **R-34** |
+| **10 Operational evidence** | none · PKS observation · repeated evidence · KnowledgeOS candidate. **Never promote methodology from a single occurrence.** | **ES-006.1** |
+
+**Documentation discipline.** **Establish classification — purpose · type · role · steward · lifecycle · maturity — BEFORE deriving placement. Never derive placement from scope alone.** Resolve with `php scripts/doc-placement.php`; **exit 2 means unruled — record `PENDING` and escalate.** **If the classification is unknown, raise a governance question; invent no category and no folder.**
+
+**Model integrity.** Before proposing any new attribute or dimension, determine whether it is **a new dimension**, **an overloaded existing dimension**, or **merely another value**. Introduce a new dimension only if **orthogonal · necessary · sufficient — all three.** *(Proposal: `docs/implementation/PublicDigit_Engineering_Protocol_Proposal.md`.)*
+
+> **The final rule: the strongest statement made must never exceed the strength of the available evidence.** **Keep facts, architectural conclusions, governance decisions, engineering actions and operational observations rigorously separate — never let one silently become another.**
+
 ---
 
 # 📘 Developer Guide — Definition of Done (STANDING RULE)
