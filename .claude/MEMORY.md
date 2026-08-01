@@ -73,6 +73,15 @@
 - **The guard obeys its own litmus:** it is runtime session tooling, so **ES-005.3 puts it in the runtime mount (`.claude/scripts/`), not in `engineering/`.**
 - **Non-blocking on purpose:** creating under `engineering/` is legitimate when governed, and **the hook cannot evaluate the answers to its own questions — only the author can.** A wall that is always dismissed teaches less than a checkpoint that is read *(same posture as `discipline-gate-reminder.sh`)*.
 
+## The repository is MULTI-DOMAIN — and the DDD unit is DOMAIN, never bounded context (verified 2026-08-01)
+
+- **PRODUCTIZATION ≠ DOMAIN EXISTENCE. A bounded context / domain may exist BEFORE productization — that is a strategic design fact, not a commercial gate.** So "KnowledgeOS's gate has not opened" answers *is it a product?* and **NEVER** *is it a domain?* **Do not let the gate answer the domain question.**
+- **⚠️ VOCABULARY, OFF BY ONE LEVEL — this matters structurally: PublicDigit / KnowledgeOS / PKS are DOMAINS, each CONTAINING bounded contexts.** `app/Contexts/` holds **11** (Adjudication · Committee · Contestation · Election · Elections · Finance · Geography · Governance · Membership · Shared · Trust); **PKS M6 discovers CBC-1..CBC-4 INSIDE "the PKS boundary"**. **"A documentation root per bounded context" would yield ~15 roots — artifact-scattering by another name.** The intended unit is **domain-first**.
+- **RULED vocabulary is AIP-14: "Core Domain" / "Supporting Subdomain". The phrase "repository = three bounded contexts" appears ONLY in R-37 and R-37 itself marks it "Context on record (Class A, NOT RULED)". Build on the ruled term.**
+- **THE REPOSITORY IS ALREADY MULTI-DOMAIN ON THE RECORD — canon ran Strategic DDD Discovery on THREE separately named domains:** `Strategic_DDD_Discovery_Engineering_Governance_Domain.md` · `Strategic_DDD_Discovery_Product_Knowledge_System_Domain.md` (Phase I ACCEPTED, Phase II consolidated through M5, M6 executed) · **AIP-14** Election System = Core Domain. **Not drift — deliberate, ARB-accepted work.**
+- **SO THE OPEN QUESTION IS THE IMPLICATION, NOT THE FACT: DOES DOMAIN MULTIPLICITY ENTAIL DOCUMENTATION-ROOT MULTIPLICITY?** Three domains, one root; **nothing on record says a domain is ENTITLED to a root** — that inference is the unmade decision.
+- **THE DEFECT IN ES-005 IS ONE WORD.** ES-005.3 cleanly carries two dimensions in one sentence (clause 1 = portability/engineering-vs-project · clause 2 = maturity); the third, **domain ownership, is ABSENT** — and its absence shows as **"the project"**, definite article, singular. **Unambiguous with one project; NO REFERENT with three.** **That is also WHY `docs/implementation/` filled with 89 PKS files: the rule routed correctly by its own terms; its terms stopped describing the world.**
+
 ## ⚠️ ES-005.1's premise is FALSIFIED BY THE REPOSITORY — `docs/` is no longer single-product (measured 2026-08-01)
 
 - **ES-005.1 says `docs/` + `architecture/` + `app/` + `tests/` = "Product (what PublicDigit is)".** Historically true — `docs/` was only for PublicDigit.
