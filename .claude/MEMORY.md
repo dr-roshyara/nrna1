@@ -36,14 +36,15 @@
 
 **Business Policy → Architectural Invariant → Mechanism → Implementation**, each with its own authority:
 
-| Level | Authority | Engineering may change? |
-|---|---|---|
-| **Business Policy** *(e.g. retention is governed by Q-2)* | **Q-2 / ARB** | ❌ never |
-| **Architectural Invariant** *(e.g. MAD has exactly one canonical home)* | **ARB** | ❌ never |
-| **Mechanism** *(e.g. consumer-side port vs importing the provider's port)* | engineering, **within** the invariant | ✅ **the ONLY substitutable level** |
-| **Implementation** | engineering | ✅ yes |
+| Level | **Role** | Authority | Engineering may change? |
+|---|---|---|---|
+| **Business Policy** *(e.g. retention is governed by Q-2)* | **decides WHAT** | **Q-2 / ARB** | ❌ never |
+| **Architectural Invariant** *(e.g. MAD has exactly one canonical home)* | **protects WHAT** | **ARB** | ❌ never |
+| **Mechanism** *(e.g. consumer-side port vs importing the provider's port)* | **decides HOW** | engineering, **within** the invariant | ✅ **the ONLY substitutable level** |
+| **Implementation** | **realizes HOW** | engineering | ✅ yes |
 
 - **It turns *"is this substitutable?"* from a judgement into a LOOKUP.** Before hunting for a clever fix, identify the level. **A level-3 collision dissolves without touching the model; a level-2 collision cannot be engineered around — return to the ARB.**
+- **🔍 LAYER VERIFICATION RULE:** **can this layer change WITHOUT changing the layer above it? YES → it belongs at this layer. NO → you are modifying the wrong abstraction.** **Validated retrospectively against this project's two worst defects, both of which passed every automated gate:** **AP-2** (a MAD key in a retention config) destroys *"one canonical home"* → an **invariant breach dressed as a mechanism choice**; **AP-1** (`max(1,$days)`) overrides *"Q-2 decides durations"* → an **implementation edit reaching two levels up**. **Apply this rule to any change that feels like "just a technical choice."**
 - **Plans routinely record an invariant and its mechanism in the SAME SENTENCE**, which is why they get read as one thing. **Split them before treating either as binding.**
 - **Analysis cannot ratify itself.** The sequence is **analysis → recommended realization → ARB ratification → resolution** — never analysis → resolution → ratification. A report that recommends *and* declares resolved while listing pending ratifications contradicts itself. *(Same class as "readiness is evidence, acceptance is authority" — check both directions: applying it to someone else's gate is not the same as applying it to your own recommendation.)*
 

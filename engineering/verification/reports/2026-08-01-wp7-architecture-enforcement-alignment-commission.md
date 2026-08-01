@@ -39,14 +39,30 @@
 
 The two-level *invariant / mechanism* split was right but incomplete: it left unstated **where the invariant came from** and therefore **who may change what**. The full chain, with the authority at each level:
 
-| Level | WP-7 instance | **Authority** | May engineering change it? |
-|---|---|---|---|
-| **Business Policy** | *Retention is governed by Q-2; a duration is a business policy, not a technical setting* | **Q-2 / ARB** | ❌ never |
-| **Architectural Invariant** | **MAD has exactly one canonical home** (AP-2) | **ARB** | ❌ never |
-| **Mechanism** | **a consumer-side port** *(was: import Adjudication's port)* | **engineering, within the invariant** | ✅ **yes — this is the only substitutable level** |
-| **Implementation** | `ConfiguredEvidencePreservationDurations` | engineering | ✅ yes |
+| Level | **Role** | WP-7 instance | **Authority** | May engineering change it? |
+|---|---|---|---|---|
+| **Business Policy** | **decides WHAT** | *Retention is governed by Q-2; a duration is a business policy, not a technical setting* | **Q-2 / ARB** | ❌ never |
+| **Architectural Invariant** | **protects WHAT** | **MAD has exactly one canonical home** (AP-2) | **ARB** | ❌ never |
+| **Mechanism** | **decides HOW** | **a consumer-side port** *(was: import Adjudication's port)* | **engineering, within the invariant** | ✅ **yes — the only substitutable level** |
+| **Implementation** | **realizes HOW** | `ConfiguredEvidencePreservationDurations` | engineering | ✅ yes |
 
 **Why the extra level earns its place:** it converts *"is this substitutable?"* from a judgement into a **lookup**. The whole of G-1 was a **level-3 substitution** — which is why it dissolved without touching the model. **Had the collision been at level 2, no amount of engineering ingenuity would have helped, and the honest answer would have been to go back to the ARB.** The four-level model tells you which situation you are in *before* you start looking for a clever fix.
+
+### The layer verification rule (ARB refinement — adopted)
+
+> **Can this layer change WITHOUT changing the layer above it?**
+> **YES → it belongs at this layer. NO → you are modifying the wrong abstraction.**
+
+**Tested against the cases this programme already has — it discriminates correctly, including retrospectively:**
+
+| Change | Does the layer above change? | Verdict |
+|---|---|---|
+| Import Adjudication's port → **Election's own consumer-side port** | ❌ *MAD still has exactly one canonical home* | ✅ **correctly a Mechanism change** — this is G-1, and the rule licenses it |
+| **AP-2's actual defect:** add a MAD key to a retention config | ✅ *the invariant "one canonical home" is destroyed* | ❌ **wrong abstraction** — presented as a mechanism choice, it was an invariant breach. **The rule retro-detects the defect the gates missed** |
+| **AP-1's actual defect:** `max(1,$days)` in the adapter | ✅ *the policy "Q-2 decides durations" is overridden* | ❌ **wrong abstraction** — an implementation-level edit reaching two levels up to level 1 |
+| Change the adapter's config key names | ❌ | ✅ Implementation |
+
+**That the rule independently flags both AP-1 and AP-2 — the two defects that passed every automated gate and were caught only by human review — is the strongest available evidence that it is a real heuristic and not a restatement.**
 
 ### 2.1 The mechanism/invariant distinction that unlocks it
 

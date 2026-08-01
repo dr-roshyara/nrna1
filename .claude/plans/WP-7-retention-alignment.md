@@ -192,14 +192,22 @@ The open question was *"does per-election EPW need Contestation or Adjudication 
 
 **THE FOUR-LEVEL MODEL (ARB refinement — adopted; reusable beyond WP-7).** The two-level invariant/mechanism split was right but incomplete: it left unstated *where the invariant came from* and therefore *who may change what*.
 
-| Level | WP-7 instance | Authority | Engineering may change? |
-|---|---|---|---|
-| **Business Policy** | retention is governed by Q-2; a duration is a business policy, not a technical setting | **Q-2 / ARB** | ❌ never |
-| **Architectural Invariant** | **MAD has exactly one canonical home** (AP-2) | **ARB** | ❌ never |
-| **Mechanism** | **a consumer-side port** *(was: import Adjudication's port)* | engineering, within the invariant | ✅ **the only substitutable level** |
-| **Implementation** | `ConfiguredEvidencePreservationDurations` | engineering | ✅ yes |
+| Level | **Role** | WP-7 instance | Authority | Engineering may change? |
+|---|---|---|---|---|
+| **Business Policy** | **decides WHAT** | retention is governed by Q-2; a duration is a business policy, not a technical setting | **Q-2 / ARB** | ❌ never |
+| **Architectural Invariant** | **protects WHAT** | **MAD has exactly one canonical home** (AP-2) | **ARB** | ❌ never |
+| **Mechanism** | **decides HOW** | **a consumer-side port** *(was: import Adjudication's port)* | engineering, within the invariant | ✅ **the only substitutable level** |
+| **Implementation** | **realizes HOW** | `ConfiguredEvidencePreservationDurations` | engineering | ✅ yes |
 
 **Why it earns its place:** it turns *"is this substitutable?"* from a judgement into a **lookup**. **All of G-1 was a level-3 substitution**, which is why it dissolved without touching the model. **Had the collision been at level 2, no engineering ingenuity would have helped and the honest answer would have been to return to the ARB.** The model tells you which situation you are in *before* you go looking for a clever fix.
+
+> #### 🔍 THE LAYER VERIFICATION RULE (ARB refinement — adopted)
+>
+> **Can this layer change WITHOUT changing the layer above it? YES → it belongs at this layer. NO → you are modifying the wrong abstraction.**
+>
+> **It discriminates correctly on this programme's own cases, retrospectively included:** consumer-side port instead of importing the provider's port → the invariant is untouched → ✅ a legitimate Mechanism change (**this is G-1**) · **AP-2's actual defect** (a MAD key in a retention config) → destroys *"one canonical home"* → ❌ **presented as a mechanism choice, it was an invariant breach** · **AP-1's actual defect** (`max(1,$days)`) → overrides *"Q-2 decides durations"* → ❌ an implementation edit reaching **two levels up**.
+>
+> **The rule independently flags both AP-1 and AP-2 — the two defects that passed every automated gate and were caught only by human review.** That is the strongest available evidence it is a real heuristic rather than a restatement.
 
 `engineering/verification/reports/2026-08-01-wp7-architecture-enforcement-alignment-commission.md`. **G-1 reclassified from "engineering placement" to an ARCHITECTURE–ENFORCEMENT ALIGNMENT GAP — architecture correct, enforcement correct, the MAPPING between them incomplete. The reclassification changed the answer, not just the label:** "placement" invites *"put the file where Deptrac doesn't look"* (option a — consistent, unguarded, and it would **look** like compliance); "alignment gap" forces the fix into the mapping, where the defect actually is.
 
