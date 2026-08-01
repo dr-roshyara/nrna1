@@ -25,6 +25,10 @@
           {
             "type": "command",
             "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/ddd-principles-reminder.sh \"$CLAUDE_TOOL_INPUT\""
+          },
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/engineering-placement-guard.sh \"$CLAUDE_TOOL_INPUT\""
           }
         ]
       }
