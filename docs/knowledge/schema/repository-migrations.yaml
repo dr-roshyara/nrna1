@@ -8,12 +8,20 @@ version: 1
 
 repository_migrations:
   - id: architecture-legacy
+    status: active
+    effective_from: 2026-08-01
+    authority: docs/adr/20260801_1712_legacy_folder_and_files.md
+    scope: repository
     from: architecture
     to: architecture_legacy
     kind: directory
     source: docs/adr/20260801_1712_legacy_folder_and_files.md
 
   - id: root-ai-documentation-normalization
+    status: active
+    effective_from: 2026-08-01
+    authority: docs/adr/20260801_1712_legacy_folder_and_files.md
+    scope: repository
     from: .
     to: developer_guide
     kind: root-normalization

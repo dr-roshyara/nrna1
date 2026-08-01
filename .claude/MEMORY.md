@@ -80,6 +80,19 @@
 - **ROOT READMEs STAY ~15-20 LINES:** purpose · holds · owner · internal-layout ownership · a pointer table (policy / configuration / resolver). **Everything else belongs in the ADR.**
 - **⛔ DO NOT CREATE A NEW PRINCIPLES DOCUMENT UNDER `engineering/` (e.g. a "DAP-001"): it would be a CROSS-PRODUCT artifact at RESEARCH maturity, which the resolver returns PENDING for — EXACTLY the `Layer_Verification_Rule.md` violation. Blocked by R-38 (no new standards), R-37 (bugfix/link/typo only) and R-38's own precedent ("where existing rulings already express a constraint, INTERPRET THEM rather than add another ruling"). THE PARSIMONIOUS MOVE IS TO STATE THE PRINCIPLES IN THE ADR — the approved policy home — AND REFERENCE THEM.**
 
+## A sequencing deviation is RECORDED, not reverted (governance note precedent, 2026-08-01)
+
+- **When work was applied before its authorization but the applied content SATISFIES the criteria later approved: AUDIT IT, RECORD A GOVERNANCE NOTE, DO NOT ROLL BACK.** Reverting and re-applying reproduces the identical repository state and only launders the sequence.
+- **This is ES-004.3 applied: "history is never rewritten to manufacture consistency." A revert would produce A CLEANER-LOOKING RECORD OF AN EVENT THAT STILL HAPPENED.**
+- **The note's three parts: (1) the deviation is acknowledged · (2) the applied changes are retrospectively AUDITED against the approved criteria, with counts · (3) the forward rule — future deterministic repairs shall not be applied before authorization.**
+
+## PKS receives operational evidence — and placement was DERIVED (2026-08-01)
+
+- **`docs/pks/2026-08-01-documentation-debt-observation.md` is the first real artifact in a derived root, and THE RESOLVER CHOSE ITS HOME** (`--scope=product-specific --domain=pks` -> `docs/pks`).
+- **⚠️ CONSEQUENCE NAMED RATHER THAN DISCOVERED LATER: THIS SPLITS THE PKS CORPUS — 89 PKS documents stay in `docs/implementation/` while new ones land in `docs/pks/`. Correct behaviour on NEW work while migration is blocked, but PKS documentation now lives in TWO PLACES until Phase 2 runs.**
+- **OBSERVATION SHAPE FOR PKS: Observation -> Evidence (with method) -> Classification -> Recommendation -> Reproduction command.**
+- **FINDING WORTH KEEPING: `knowledge-lint` validates `docs/knowledge/` ONLY, so the areas carrying the documentation debt (`developer_guide/`, `architecture_legacy/`) have NO LINK VALIDATION AT ALL. GREEN LINT WAS NEVER EVIDENCE OF A HEALTHY REPOSITORY.**
+
 ## Confidence model + DECLARATIVE migration registry for link repair (2026-08-01)
 
 - **CONFIDENCE BAR — ONLY >= 99 MAY BE AUTO-APPLIED:** **100** git rename record · documented migration · exact existing target · **99** exactly one file in the repo carries that basename · **75** several candidates = AMBIGUOUS · **0** no candidate = MISSING. **Ambiguous and missing are EVIDENCE, never repairs.**
