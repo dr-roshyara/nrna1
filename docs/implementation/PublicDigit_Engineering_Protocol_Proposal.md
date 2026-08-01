@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-01 · **Prepared by:** Engineering AI, under Principal Architect discipline
 **Status:** **PROPOSED — not adopted.** Adoption is an Engineering-Process act (see §Adoption).
-**Placement:** derived — `--scope=product-specific --domain=publicdigit` → `docs/publicdigit`
+**Classification:** **proposal paper** — pre-adoption process content. Home follows the `Placement_Rule_Decision_Paper` / `Artifact_Ownership_Decision_Paper` precedent: `docs/implementation/`. **On adoption its content moves into the EP section of the Implementation Process; it does not stay here as a second home.**
 **Scope:** the default operating model for every PublicDigit work package — WP-7C, WP-8, EPIC-005, EPIC-006 and successors.
 
 > ## This document POINTS. It does not restate.

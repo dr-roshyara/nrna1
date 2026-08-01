@@ -166,6 +166,15 @@
 - **NEVER INVENT A TARGET. 47 of the remaining links point at documents that DO NOT EXIST ANYWHERE — record them; do not author replacements. 6 are AMBIGUOUS (`./ARCHITECTURE.md`, `./INDEX.md`) and need A HUMAN CHOICE, not a repair.**
 - **`knowledge-lint` VALIDATES `docs/knowledge/` ONLY — a repo-wide scan found 121 broken links where the linter reported 9. GREEN LINT IS NOT GREEN REPOSITORY.**
 
+## ⛔ CLASSIFICATION BEFORE PLACEMENT — the resolver cannot read ROLE (2026-08-01)
+
+- **NEVER derive placement from SCOPE alone. Ask FIRST: what kind of artifact is this, and what ROLE does it carry?** The resolver answers the question it is asked; it does **not** ask what the artifact IS.
+- **ES-004.3 ARTIFACT ROLES — Runtime · Historical · Reference · Decision — CARRY PLACEMENT CONSEQUENCES, and the resolver CANNOT READ THEM.** Two models bear on placement (Scope/Steward/Maturity/Domain, and Role) and **nothing joins them**. *(One instance; extend the model on RECURRENCE, not on a single case.)*
+- **⭐ EXECUTION ARTIFACTS ARE ALREADY CLASSIFIED — ES-004.2 Plans clause + Plan Concept Decision Paper (ADOPTED): ENGINEERING PLAN = an APPROVED EP-01 deliverable -> `docs/plans/` `YYYYMMDD-HHMM-<what>-plan.md` · WORK PLAN = provider plan-mode, pre-approval, a RUNTIME artifact (ES-005.1) -> THE RUNTIME MOUNT. 'At EP-01 approval, plan content is PROMOTED into a governed Engineering Plan.' ES-004.3 lists 'the active Work Plan' under Runtime, lifecycle Draft->Authorized->Executing->Accepted-> Closed.**
+- **A DOCUMENTATION ROOT HOLDS PRODUCT KNOWLEDGE, NOT EXECUTION STATE.** Putting a work plan in `docs/<domain>/` makes the root mean two things.
+- **PROPOSAL PAPERS (pre-adoption process/architecture content) go to `docs/implementation/`** — precedent: `Placement_Rule_Decision_Paper.md` · `Artifact_Ownership_Decision_Paper.md` · `Plan_Concept_Decision_Paper.md`. **On adoption the content moves into its rule's home and does NOT remain as a second home.**
+- **AND CHECK WHETHER A LIVING PLAN ALREADY EXISTS: CLAUDE.md — 'plans are living documents; UPDATE THEM CONTINUOUSLY RATHER THAN CREATING NEW ONES.'**
+
 ## 📍 DOCUMENTATION PLACEMENT IS NOW EXECUTABLE — resolve it, never hard-code it (implemented 2026-08-01)
 
 - **SINGLE SOURCE OF TRUTH: `docs/knowledge/schema/documentation-placement.yaml`** (beside `statuses.yaml`/`authorities.yaml`/`bounded-contexts.yaml`, where enumerations already live). **SINGLE CONSULTED MECHANISM: `scripts/doc-placement.php`** — `npm run docs:placement` / `docs:placement:verify`.
