@@ -74,7 +74,9 @@ composer merge-gate                                         →  PASS
 | **Repeated operational evidence** | no |
 | **KnowledgeOS candidate** | no — one corpus |
 
-**Nothing is promoted.** **The §4 caveat is recorded here as evidence; whether it becomes a PKS observation is for the acceptance review, not for engineering to decide.**
+**Nothing is promoted.**
+
+> **ANNOTATION (acceptance review, 2026-08-01 — added, not rewritten):** the *PKS Observation candidate* framing is **withdrawn**. **One occurrence; an IMPLEMENTATION FINDING is the correct and sufficient record.** The gate-scope observation is reclassified as **Verification** — a characteristic of the verification architecture, pre-existing and unchanged by this slice — and the tenant-scope discovery as **Engineering**. **Observe; do not promote.** See `2026-08-01-slice-7c-acceptance-review.md` §5.
 
 ## 8. Next
 
