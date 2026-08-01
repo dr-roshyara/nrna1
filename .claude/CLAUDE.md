@@ -556,25 +556,27 @@ Concretely:
 
 ## The Operating Loop (runtime binding of the rule above — POINTERS, not restatements)
 
-**Every engineering conversation runs this sequence. Never reversed.**
+**Every engineering conversation runs this sequence. Never reversed. It is about building bounded contexts correctly, not about producing documents.**
 
 ```
-Business Capability → Strategic DDD → Tactical DDD → Search Canon → Stewardship
-→ Impact Classification → Engineering Readiness → RED → GREEN → VERIFY → ACCEPT → Operational Evidence
+1 Business Capability → 2 Strategic DDD → 3 Canonical Discovery → 4 Tactical DDD
+→ 5 Stewardship → 6 Impact Classification → 7 Readiness
+→ 8 RED → 9 GREEN → 10 VERIFY → 11 ACCEPT → 12 Operational Evidence
+→ 13 PKS Classification → 14 KnowledgeOS Promotion Check
 ```
 
 | Phase | Obligation | Canonical home |
 |---|---|---|
-| **1 Business capability** | capability · objective · owning context · rule protected · policy. **If it cannot be identified: STOP and ask. Do not infer.** | the standing rule above |
-| **2 Strategic DDD** | does ownership, the context map, Published Language or Ubiquitous Language change? **Expected answer: No.** **Do not go looking for new bounded contexts or abstractions.** | the standing rule above |
-| **3 Tactical DDD** | consume only approved aggregates · VOs · services · ports · events. **Invent no tactical concept without governance.** | `engineering/knowledge/methodology/DDD_Tactical_Governance_Principles.md` |
-| **4 Search canon** | **Before creating any document, process, rule, checklist or standard — search for an existing canonical home. If one exists, EXTEND it; never create a second home.** If none exists, **name the missing classification and return the question to governance — do not invent one.** | **ES-005.4** (never a copy) · **ES-004** |
-| **5 Stewardship** | **Implementation is the default. Only a NO carrying implementation evidence of insufficiency opens an ADR/ARB discussion.** No opportunistic observation during ticket work. | **ES-002.1 · ES-002.2** |
+| **1 Business capability** | capability · objective · business rule protected · constitutional policy. **If it cannot be identified: STOP and ask. Do not infer.** | the standing rule above |
+| **2 Strategic DDD** | **Answer all five before going further: which bounded context OWNS this capability? · is another context affected, and how? · is this a Published-Language interaction? · does ownership change? · does the context map change?** Expected answers: a named owner, and **No** to the rest. **Never proceed to tactical work with ownership unresolved** | the standing rule · **AIP-14** |
+| **3 Canonical Discovery** | **Search before modelling — and it is a DDD search, not a documentation search:** does the **capability** already exist? the **aggregate**? the **value object**? the **port**? the **domain event**? an **ADR**? an **engineering standard**? a **bounded context**? **If one exists, consume or extend it — never create a second.** If the classification genuinely has no home, **name what is missing and return it to governance; invent nothing** | **ES-005.4** (never a copy) · **ES-004** |
+| **4 Tactical DDD** | aggregate boundaries · value objects · domain services · application services · ports · events. **Only what Phase 3 found, or what governance has approved.** | `engineering/knowledge/methodology/DDD_Tactical_Governance_Principles.md` |
+| **5 Stewardship** | **What must remain stable? What may evolve? What evidence would justify change?** **Implementation is the default — only a NO carrying implementation evidence of insufficiency opens an ADR/ARB discussion.** No opportunistic observation during ticket work | **ES-002.1 · ES-002.2** |
 | **6 Impact classification** | classify every observation **before** recommending: Strategic Architecture · Tactical Architecture · Governance · Engineering · Repository · Documentation · Operational · PKS Observation · KnowledgeOS Candidate | protocol proposal §4a–4d |
 | **7 Readiness** | authorization · scope · dependencies · acceptance criteria · gates · RED boundary. **No authorization → STOP.** | **EP-01 · EP-01-Light · EP-03** |
-| **8 RED→GREEN→VERIFY** | approved scope only. **No redesign, no opportunistic refactor, no unrelated fixes.** **Reviews record deviations; implementation repairs them in a later authorized slice.** | the standing rule · **ER-08** |
-| **9 Acceptance** | **Engineering supplies evidence and never accepts its own work.** Keep evidence · recommendation · authority separate. | **EP-02** · **R-34** |
-| **10 Operational evidence** | none · PKS observation · repeated evidence · KnowledgeOS candidate. **Never promote methodology from a single occurrence.** | **ES-006.1** |
+| **8–10 RED → GREEN → VERIFY** | approved scope only. **No redesign, no opportunistic refactor, no unrelated fixes.** **Reviews record deviations; implementation repairs them in a later authorized slice.** | the standing rule · **ER-08** |
+| **11 Acceptance** | **Engineering supplies evidence and never accepts its own work.** Keep evidence · recommendation · authority separate | **EP-02** · **R-34** |
+| **12–14 Evidence → PKS → promotion check** | none · PKS observation · repeated evidence · KnowledgeOS candidate. **Never promote methodology from a single occurrence** | **ES-006.1** |
 
 **Documentation discipline.** **Establish classification — purpose · type · role · steward · lifecycle · maturity — BEFORE deriving placement. Never derive placement from scope alone.** Resolve with `php scripts/doc-placement.php`; **exit 2 means unruled — record `PENDING` and escalate.** **If the classification is unknown, raise a governance question; invent no category and no folder.**
 
