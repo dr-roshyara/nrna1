@@ -1,7 +1,7 @@
 # ARB Transition Authorization Package — WP-6 → WP-7
 
 **Date prepared:** 2026-08-01 · **Prepared by:** Recording Architect · **Purpose:** evidence and recommendations for the ARB Transition Authorization session
-**Status:** 📋 **PREPARED — AWAITING ARB AUTHORITY.** No outcome recorded · no state transition recorded.
+**Status:** 📋 **PREPARED — SESSION HELD 2026-08-01.** This package remains the **evidence source** and is **unmodified by the session**; every outcome lives in the **Record**: `2026-08-01-arb-transition-authorization-record.md` (rulings **R-43…R-47**). *No outcome is recorded in this file, by design — a package never becomes a record.*
 **Repository Integrity Gate:** ✅ PASSED — working tree clean; `feature/pb003`, 14 ahead.
 
 > ## ✍️ CORRECTION — this artifact was misnamed, and the misnomer WAS the boundary crossing
