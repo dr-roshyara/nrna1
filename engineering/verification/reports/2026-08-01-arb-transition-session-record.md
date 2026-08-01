@@ -14,11 +14,27 @@
 
 ---
 
-## 1. Programme State Machine (ARB refinement — adopted)
+## 1. Governance State Machine (ARB refinements — adopted)
 
-**Dependencies explain *why*; states record *what exists now*.** The ARB governs states, so the session is modelled as state transitions with **explicit guards**.
+**Renamed from "Programme State Machine."** The states below are **not programme progress** — *Pending Acceptance · Accepted · Approved · Authorized* are **governance concepts**. **The programme consumes them; it does not own them.** The earlier name described the consumer rather than the thing.
 
-### Current programme state — verified, not assumed
+> **Modelling principle:** *dependencies explain **why**; states record **what exists now**.* → **Model causality with dependencies. Model authority with state transitions.** *(Promoted to the methodology module — §3 of `Layer_Verification_Rule.md`.)*
+
+### 1.1 State classification — one category per state
+
+**Every state in the machine is classified, so the diagram is read with the right authority in mind:**
+
+| State | **Category** | Authority |
+|---|---|---|
+| WP-6 `Pending Acceptance` → `Accepted` | **Programme Governance** | ARB |
+| G-1 `Analysed` → `Resolved` | **Architecture Governance** | ARB |
+| Guard boundary `one` → `two` | **Architecture Governance** | ARB |
+| Plan `Awaiting EP-01` → `Approved` | **Planning Governance** | Decision Authority |
+| Execution `Not authorized` → `Slice 7A authorized` | **Execution Governance** | ARB |
+
+**What the classification exposes at a glance:** the machine spans **four distinct governance categories**, and **the Planning Governance state is the only one not owned by the ARB.** That is not a defect — **it is EP-01's separation made visible**, and it is precisely why item 4a is a separate vote with a separate authority (DD-1).
+
+### 1.2 Current governance state — verified, not assumed
 
 ```
 WP-6 ..................... DELIVERED / PENDING ACCEPTANCE
@@ -29,7 +45,7 @@ WP-7 execution ........... NOT AUTHORIZED
 RED ...................... BLOCKED
 ```
 
-### The state machine
+### 1.3 The state machine
 
 ```
         ┌──────────────────────────┐          ┌──────────────────────────┐
@@ -111,7 +127,7 @@ Adoption of the **Layer Verification Rule** methodology module *(PROPOSED — WP
 | `PLAN APPROVED` | ⬜ **not established** — item 4a unruled |
 | **⇒ execution authorization legal?** | ⬜ **CANNOT BE DETERMINED** |
 
-**Programme state is unchanged from §1.** **No transition has occurred. RED remains BLOCKED**, and the reason is not evidence — **the evidence is complete** — it is that **no authority has been exercised.**
+**Governance state is unchanged from §1.2.** **No transition has occurred. RED remains BLOCKED**, and the reason is not evidence — **the evidence is complete** — it is that **no authority has been exercised.**
 
 ## 4. What is required to close this session
 
@@ -144,9 +160,9 @@ Adoption of the **Layer Verification Rule** methodology module *(PROPOSED — WP
 | Criterion | Status |
 |---|---|
 | All decisions presented independently, in dependency order | ✅ |
-| Programme state modelled explicitly, with guards | ✅ |
+| **Governance** state modelled explicitly, with guards **and per-state categories** | ✅ |
 | **All approved decisions recorded** | ⬜ **none approved — none recorded** |
-| Resulting programme state explicit | ✅ **unchanged; no transition occurred** |
+| Resulting governance state explicit | ✅ **unchanged; no transition occurred** |
 | First authorized engineering activity identified | ✅ **conditionally** |
 | Governance responsibility transferred to engineering | ⬜ **NO — retained by the ARB** |
 

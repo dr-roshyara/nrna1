@@ -4,7 +4,7 @@
 **Status:** 🟡 **PROPOSED — NOT ADOPTED.** Authority requires an explicit Decision Authority ruling (**R-34**: authority is created only by explicit issuance; nothing becomes a ruling by inference from praise or suggestion). **Until issued, this module is non-binding and must be cited as a *recommended heuristic*, never as authority for what is permitted.**
 **Nature:** a **methodology module about the governance of change** — it classifies *which abstraction a proposed change actually modifies*, and therefore *whose authority is engaged*. It is **not** architecture, **not** a tactical-DDD rule, and it decides no design question.
 **Relationship to existing modules:** complements `DDD_Tactical_Governance_Principles.md` (tactical design) without overlapping it. That module governs *what to build*; this one governs *who may change it, and at which level*.
-**Provenance:** derived during EPIC-004 WP-7 (finding **G-1**), refined across four ARB iterations. Promotion to a reusable artifact requested by the ARB, 2026-08-01.
+**Provenance:** derived during EPIC-004 WP-7 (finding **G-1**), refined across successive ARB iterations. Promotion to a reusable artifact requested by the ARB, 2026-08-01.
 
 ---
 
@@ -40,9 +40,25 @@ The rule evaluates changes; this applies it to **proposals**, which is where it 
 2. **Which higher layer would also change?**
 3. **If any higher layer changes → ESCALATE before implementation.**
 
-**Apply it to any change that feels like "just a technical choice"** — that is precisely how both historical defects (§3) presented themselves.
+**Apply it to any change that feels like "just a technical choice"** — that is precisely how both historical defects (§4) presented themselves.
 
-## 3. Evidence base — and its limits, stated
+## 3. Companion principle — modelling causality vs modelling authority
+
+> ### **Model causality with dependencies. Model authority with state transitions.**
+>
+> **Dependencies explain *why*. States record *what exists now*.**
+
+**Added before adoption** *(ARB, 2026-08-01 — the module was already PROPOSED, so this amendment is part of what is put for ruling, not something added afterwards)*.
+
+**Why it belongs in this module rather than standing alone:** §1–2 classify *which abstraction a change touches*; this classifies *how to model the governance around it*. Both answer **"whose authority is engaged?"** — one for a change, one for a process.
+
+**What it prevents, concretely:** a dependency graph can say *"execution authorization requires plan approval."* **A state machine says *which states may legally coexist*** — making `execution AUTHORIZED ∧ plan AWAITING APPROVAL` **unreachable** rather than merely discouraged. **The first relies on someone remembering the rule; the second makes the illegal state unrepresentable.**
+
+**Companion — classify every governance state:** *Programme · Architecture · Planning · Execution* governance are distinct, and **a state machine mixing them without labels hides which authority owns each transition.** *(Applied in the WP-6→WP-7 session: labelling exposed that the Planning Governance state is the only one not owned by the ARB — EP-01's separation made visible, and the reason its vote is separate.)*
+
+**Limit:** like §2, this is a **modelling heuristic, not a gate.** It improves how governance is expressed; it enforces nothing.
+
+## 4. Evidence base — and its limits, stated
 
 The platform's own **Methodological Fitness Rule** sets the standard a criterion must meet: *"a criterion that never rejects or modifies a candidate over the lifetime of the methodology is presumed ceremonial until evidence shows otherwise."* **The rule is offered for adoption because it meets that standard — it both accepts and rejects.**
 
@@ -66,15 +82,15 @@ The platform's own **Methodological Fitness Rule** sets the standard a criterion
 
 **Two prospective applications outside EPIC-004**, at least one of which **rejects or escalates** a proposal that would otherwise have proceeded. **If, after that, the rule has never escalated anything, it is ceremonial by the platform's own fitness rule and should be retired** rather than retained out of attachment.
 
-## 4. Non-scope
+## 5. Non-scope
 
 **This module does not:** decide where code lives · select tactical patterns · assign bounded-context ownership · substitute for Deptrac, architecture tests or PHPStan (it reaches a *different* defect class) · grant any authority to the person applying it. **Its only output is a classification and, where warranted, an escalation.**
 
-## 5. Adoption
+## 6. Adoption
 
 **Requested of the Decision Authority.** If adopted:
 
-- record the ruling in the platform rulings register (as **R-39** was for the DDD module), including the thin-evidence exception and the validation expectation in §3;
+- record the ruling in the platform rulings register (as **R-39** was for the DDD module), including the thin-evidence exception and the validation expectation in §4;
 - index it in `engineering/governance/STANDARDS_INDEX.md`;
 - consider a non-blocking review reminder, matching the precedent of `.claude/scripts/ddd-principles-reminder.sh` (AST-014).
 
@@ -82,4 +98,4 @@ The platform's own **Methodological Fitness Rule** sets the standard a criterion
 
 ---
 
-**Traceability:** EPIC-004 WP-7 — implementation guard commission (**G-1**) · architecture–enforcement alignment commission (four-level model; rule; retrospective validation) · WP-6 findings **AP-1** (fail closed / no substituted business value) and **AP-2** (one home per parameter) · `DDD_Tactical_Governance_Principles.md` §1 Methodological Fitness Rule (the standard applied to this rule in §3) and §4 Architectural Silence Principle (rejections are recorded decisions) · **R-34** (authority only by explicit issuance) · **R-39** (precedent for promotion on a thin evidence base as a recorded exception). **Non-binding until issued.**
+**Traceability:** EPIC-004 WP-7 — implementation guard commission (**G-1**) · architecture–enforcement alignment commission (four-level model; rule; retrospective validation) · WP-6 findings **AP-1** (fail closed / no substituted business value) and **AP-2** (one home per parameter) · `DDD_Tactical_Governance_Principles.md` §1 Methodological Fitness Rule (the standard applied to this rule in §4) and §4 Architectural Silence Principle (rejections are recorded decisions) · **R-34** (authority only by explicit issuance) · **R-39** (precedent for promotion on a thin evidence base as a recorded exception). **Non-binding until issued.**
