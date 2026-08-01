@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Contexts\Adjudication\Process;
 
+use App\Contexts\Adjudication\Application\Port\AdjudicationDurations;
+use App\Contexts\Adjudication\Application\Port\IdentityGenerator;
 use App\Contexts\Adjudication\Application\Process\AdjudicationProcessManager;
 use App\Contexts\Adjudication\Application\Process\AdjudicationProcessStatus;
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
@@ -13,9 +15,11 @@ use App\Contexts\Adjudication\Domain\Determination\IssuedByAuthority;
 use App\Contexts\Adjudication\Domain\Determination\Legitimacy;
 use App\Contexts\Adjudication\Domain\Determination\Reason;
 use App\Infrastructure\Shared\Clock\FrozenClock;
+use DateInterval;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 use Tests\Support\Adjudication\InMemoryAdjudicationProcessStore;
+use Tests\Support\Adjudication\InMemoryEventOutbox;
 
 /**
  * WP-2 KEYSTONE — exactly-once conclusion under redelivery, and one active
@@ -46,7 +50,44 @@ final class AdjudicationProcessManagerTest extends TestCase
         $this->manager = new AdjudicationProcessManager(
             $this->store,
             new FrozenClock(new DateTimeImmutable('2026-07-30T10:00:00+00:00')),
+            $this->durations(),
+            new InMemoryEventOutbox(),
+            $this->identities(),
         );
+    }
+
+    /**
+     * WP-6 added the horizon collaborators to the constructor. These keystones exercise
+     * the CONDUCT (PM-1/PM-4/PM-5/PM-6), not the horizon — so the durations and identity
+     * collaborators are supplied as inert stand-ins rather than asserted on. The horizon
+     * itself is covered where it belongs, in `AdjudicationHorizonTest`.
+     *
+     * Deliberately local anonymous classes: two trivial collaborators used by one test do
+     * not justify new shared support classes, and the WP-6 remediation package authorizes
+     * repairing THIS file — not widening the test-support surface.
+     */
+    private function durations(): AdjudicationDurations
+    {
+        return new class implements AdjudicationDurations {
+            public function maximumAdjudicationDuration(
+                ?string $electionType = null,
+                ?string $organisationId = null,
+            ): DateInterval {
+                return new DateInterval('P60D');
+            }
+        };
+    }
+
+    private function identities(): IdentityGenerator
+    {
+        return new class implements IdentityGenerator {
+            private int $minted = 0;
+
+            public function next(): string
+            {
+                return sprintf('00000000-0000-4000-8000-%012d', ++$this->minted);
+            }
+        };
     }
 
     private function challenge(): ChallengeRef
