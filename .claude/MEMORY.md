@@ -32,6 +32,21 @@
 - **Architecturally authorizing a transition ≠ authorizing RED to start.** Programme gates (predecessor slice acceptance) are separate and belong to another authority. **Readiness is evidence; acceptance is authority.**
 - **Diminishing-returns signal:** when successive commissions refine *how* decisions are expressed rather than discovering new architectural responsibilities, the correct next act is a **transition/handover commission**, not another design review.
 
+## The four-level substitutability model (ARB refinement, adopted 2026-08-01)
+
+**Business Policy → Architectural Invariant → Mechanism → Implementation**, each with its own authority:
+
+| Level | Authority | Engineering may change? |
+|---|---|---|
+| **Business Policy** *(e.g. retention is governed by Q-2)* | **Q-2 / ARB** | ❌ never |
+| **Architectural Invariant** *(e.g. MAD has exactly one canonical home)* | **ARB** | ❌ never |
+| **Mechanism** *(e.g. consumer-side port vs importing the provider's port)* | engineering, **within** the invariant | ✅ **the ONLY substitutable level** |
+| **Implementation** | engineering | ✅ yes |
+
+- **It turns *"is this substitutable?"* from a judgement into a LOOKUP.** Before hunting for a clever fix, identify the level. **A level-3 collision dissolves without touching the model; a level-2 collision cannot be engineered around — return to the ARB.**
+- **Plans routinely record an invariant and its mechanism in the SAME SENTENCE**, which is why they get read as one thing. **Split them before treating either as binding.**
+- **Analysis cannot ratify itself.** The sequence is **analysis → recommended realization → ARB ratification → resolution** — never analysis → resolution → ratification. A report that recommends *and* declares resolved while listing pending ratifications contradicts itself. *(Same class as "readiness is evidence, acceptance is authority" — check both directions: applying it to someone else's gate is not the same as applying it to your own recommendation.)*
+
 ## Architecture–Enforcement Alignment Gap (named 2026-08-01, ARB reclassification)
 
 - **Definition:** every architectural decision is correct **and** every gate is correct, but **no artifact states how the decision is realised INSIDE the gates.** The failure is in the **mapping**, not in either side.

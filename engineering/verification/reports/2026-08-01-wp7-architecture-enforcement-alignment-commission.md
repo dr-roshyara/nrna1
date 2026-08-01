@@ -3,13 +3,19 @@
 **Date:** 2026-08-01 · **Role:** Senior Principal DDD Architect · **Commission:** resolve **G-1**; determine where the implementation belongs; ensure every architectural **responsibility** is protected by an engineering gate — **without changing the domain model unless absolutely necessary.**
 **Repository Integrity Gate:** ✅ PASSED — working tree clean; `feature/pb003` **in sync with origin** (the earlier 16 commits are pushed).
 
-> ## RESULT — **G-1 resolves with NO change to the domain model and NO change to the Deptrac model.**
+> ## RESULT — **a RECOMMENDED REALIZATION for G-1, pending ARB ratification.** It requires no change to the domain model and no change to the Deptrac model.
 >
-> **The reclassification the ARB proposed is the thing that solved it.** Once G-1 is read as an **Architecture–Enforcement Alignment Gap** — architecture correct, enforcement correct, *the mapping between them incomplete* — the question stops being *"which correct thing do we break?"* and becomes *"what did the plan state as a mechanism that was never a decision?"*
+> **The reclassification the ARB proposed is the thing that unlocked it.** Once G-1 is read as an **Architecture–Enforcement Alignment Gap** — architecture correct, enforcement correct, *the mapping between them incomplete* — the question stops being *"which correct thing do we break?"* and becomes *"what did the plan state as a mechanism that was never a decision?"*
 >
-> **The answer:** the plan said *"consume Adjudication's existing port."* **AP-2's invariant is "MAD keeps exactly one home" — a statement about the VALUE, not about the interface.** Election declares **its own consumer-side port**; its adapter reads **the one canonical config key**. TP-1 holds, AP-2 holds, Deptrac passes unmodified, and **every business-meaningful piece lands inside a gated path.**
+> **The analysis:** the plan said *"consume Adjudication's existing port."* **AP-2's invariant is "MAD keeps exactly one home" — a statement about the VALUE, not about the interface.** Election declares **its own consumer-side port**; its adapter reads **the one canonical config key**. TP-1 holds, AP-2 holds, Deptrac passes unmodified, and **every business-meaningful piece lands inside a gated path.**
 >
-> **Two items require ARB ratification** (§6) — neither reassigns a responsibility, and I am not treating my reasoning as authority.
+> **⚖️ G-1 is NOT yet resolved. Two items require ARB ratification** (§6). **Resolution is the ARB's act, not the analysis's** — the sequence is *analysis → recommended realization → ratification → resolution*, never the reverse.
+
+> ### ✍️ CORRECTION (recorded, not silently rewritten)
+>
+> **The first issue of this report declared "G-1 RESOLVED" in this block while §6 simultaneously recorded two items awaiting ARB ratification. Those cannot both be true.** The claim is corrected to **recommended realization pending ratification**; the analysis, the option judgements and §6 are unchanged.
+>
+> **This is the same error class the programme has already named:** *readiness is evidence, acceptance is authority.* I applied it correctly to WP-6 in the same session and then failed to apply it to my own recommendation. **An analysis cannot ratify itself.**
 
 ---
 
@@ -27,9 +33,22 @@
 
 **Generalised for reuse:** *an Architecture–Enforcement Alignment Gap exists where every decision and every gate is individually correct, but no artifact states how a decision is realised **within** the gates. It is resolved by completing the mapping — never by moving code out of the gates' reach, and never by weakening a gate.*
 
-## 2. G-1 resolution
+## 2. G-1 — recommended realization
 
-### The mechanism/invariant distinction that unlocks it
+### 2.0 The four-level model (ARB refinement — adopted, and reusable beyond WP-7)
+
+The two-level *invariant / mechanism* split was right but incomplete: it left unstated **where the invariant came from** and therefore **who may change what**. The full chain, with the authority at each level:
+
+| Level | WP-7 instance | **Authority** | May engineering change it? |
+|---|---|---|---|
+| **Business Policy** | *Retention is governed by Q-2; a duration is a business policy, not a technical setting* | **Q-2 / ARB** | ❌ never |
+| **Architectural Invariant** | **MAD has exactly one canonical home** (AP-2) | **ARB** | ❌ never |
+| **Mechanism** | **a consumer-side port** *(was: import Adjudication's port)* | **engineering, within the invariant** | ✅ **yes — this is the only substitutable level** |
+| **Implementation** | `ConfiguredEvidencePreservationDurations` | engineering | ✅ yes |
+
+**Why the extra level earns its place:** it converts *"is this substitutable?"* from a judgement into a **lookup**. The whole of G-1 was a **level-3 substitution** — which is why it dissolved without touching the model. **Had the collision been at level 2, no amount of engineering ingenuity would have helped, and the honest answer would have been to go back to the ARB.** The four-level model tells you which situation you are in *before* you start looking for a clever fix.
+
+### 2.1 The mechanism/invariant distinction that unlocks it
 
 | The plan said | Status |
 |---|---|
@@ -38,7 +57,7 @@
 
 **Consuming the *value* from its one home is what AP-2 requires. Importing the *interface* is one way to do that — and it is the way TP-1 forbids.**
 
-### Recommended resolution — **Election declares its own consumer-side port**
+### 2.2 Recommended realization — **Election declares its own consumer-side port**
 
 This is Hexagonal orthodoxy: **a port belongs to the consumer that needs it, expressed in the consumer's language** — not to the provider.
 
@@ -68,9 +87,9 @@ This is Hexagonal orthodoxy: **a port belongs to the consumer that needs it, exp
 | **(a)** Service outside `app/Contexts/` | ❌ **Rejected** — consistent but **unguarded**, and it would *look* like compliance. This is the trap the reclassification exposed |
 | **(b)** Inside `Election/Application`, importing Adjudication's port | ❌ **Rejected** — a **genuine TP-1 violation**; Deptrac would be right to fail |
 | **(c)** Extend the approved Deptrac model | ❌ **Not needed — and therefore not proposed.** It would have relaxed a correct gate to accommodate a mechanism that was never required |
-| **(d) Election's own port + adapter reading the one canonical key** | ⭐ **RECOMMENDED** — TP-1 ✔ AP-2 ✔ Deptrac unmodified ✔ fully gated ✔ **domain model unchanged** ✔ |
+| **(d) Election's own port + adapter reading the one canonical key** | ⭐ **RECOMMENDED REALIZATION** *(pending A-1 ratification)* — TP-1 ✔ AP-2 ✔ Deptrac unmodified ✔ fully gated ✔ **domain model unchanged** ✔ |
 
-**Option (d) was not visible while G-1 was framed as placement.** It only appears once the question is *"how is the decision realised inside the gates?"*
+**Option (d) was not visible while G-1 was framed as placement.** It only appears once the question is *"how is the decision realised inside the gates?"* **Recommending it is the end of this commission's authority; adopting it is the ARB's.**
 
 ## 3. Where the implementation belongs — **coverage follows meaning, not the reverse**
 
@@ -135,8 +154,9 @@ Neither reassigns a responsibility; both **sharpen** something already frozen. I
 
 | Check | Status |
 |---|---|
-| G-1 resolved | ✅ **YES** — option (d); domain model and Deptrac model both unchanged |
-| Implementation placement determined | ✅ **YES** — by meaning; coverage is the consequence |
+| G-1 **analysed**, with a recommended realization | ✅ **YES** — option (d); domain model and Deptrac model both unchanged |
+| G-1 **resolved** | ⚖️ **NOT YET — awaiting A-1 ratification.** *Resolution is the ARB's act* |
+| Implementation placement **recommended** | ✅ **YES** — by meaning; coverage is the consequence |
 | Every **responsibility** mapped to enforcement | ✅ **YES** — 8 rows, each with a named residual risk |
 | Every responsibility **adequately** protected | ❌ **NO** — **R2/R7 (C-1)** remains 🔴; R4/R5 (C-4) 🟠 |
 | Domain model unchanged | ✅ **YES** |
@@ -144,7 +164,7 @@ Neither reassigns a responsibility; both **sharpen** something already frozen. I
 
 > ### **RECOMMENDATION TO THE ARB**
 >
-> **Ratify A-1 and A-2. Then RED is blocked by exactly two items, and both are known:**
+> **Ratify A-1 and A-2 — that act, and only that act, resolves G-1. Then RED is blocked by exactly two items, and both are known:**
 > 1. ⛔ **WP-6 slice acceptance** — programme, the ARB's act;
 > 2. 🔴 **C-1 automation** — deliverable **inside 7A**, where the adapter is written anyway.
 >

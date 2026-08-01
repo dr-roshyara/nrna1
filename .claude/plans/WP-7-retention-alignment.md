@@ -1,6 +1,6 @@
 # WP-7 — Retention Alignment (`audit:cleanup` becomes EPW-aware)
 
-**Status:** 📋 **TACTICAL PLAN — 🧊 ARCHITECTURE FROZEN · TRANSITION AUTHORIZED · ✅ G-1 RESOLVED (no domain-model change, no Deptrac change).** Eight commissions complete. ⛔ **RED blocked by TWO items: (1) WP-6 slice acceptance (programme, ARB) · (2) C-1 automation (deliverable inside 7A).** ⚖️ **Two items awaiting ARB ratification: A-1 (mechanism substitution) · A-2 (guard boundary sharpening)** — neither reassigns a responsibility. Awaiting EP-01 approval. **No code, no config key, no test.**
+**Status:** 📋 **TACTICAL PLAN — 🧊 ARCHITECTURE FROZEN · TRANSITION AUTHORIZED · ⚖️ G-1 ANALYSED, recommended realization PENDING ARB RATIFICATION** (requires no domain-model change and no Deptrac change). Eight commissions complete. ⛔ **RED blocked by THREE items: (1) A-1/A-2 ratification — the act that resolves G-1 · (2) WP-6 slice acceptance (programme, ARB) · (3) C-1 automation (deliverable inside 7A).** *Resolution is the ARB's act; an analysis cannot ratify itself.* Awaiting EP-01 approval. **No code, no config key, no test.**
 **Gate note:** WP-6's ARB acceptance is still pending; the roadmap's rule is *"no slice starts before its predecessor's acceptance."* **Planning is the authorized activity; RED is not.**
 **Slice:** WP-7 (EPIC-004 roadmap) · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN) · **Repository Integrity Gate:** ✅ PASSED
 
@@ -186,13 +186,26 @@ The open question was *"does per-election EPW need Contestation or Adjudication 
 
 **DDD alignment verdict:** the gates **reinforce** the model rather than replace it — `deptrac.yaml` states the correct direction of authority in its own words (*"the tool verifies the architecture; the architecture never evolves because the tool guessed something"*). **The deficiency is reach and granularity, not direction.**
 
-### ✅ ARCHITECTURE–ENFORCEMENT ALIGNMENT COMMISSION (2026-08-01) — G-1 RESOLVED
+### ⚖️ ARCHITECTURE–ENFORCEMENT ALIGNMENT COMMISSION (2026-08-01) — G-1 ANALYSED; realization PENDING RATIFICATION
+
+> **Governance correction (ARB, recorded not silently rewritten):** the first issue of this section declared *"G-1 RESOLVED"* while simultaneously recording two items awaiting ratification — **those cannot both be true.** The sequence is **analysis → recommended realization → ARB ratification → resolution**, never the reverse. *Same error class the programme has already named: **readiness is evidence, acceptance is authority** — applied correctly to WP-6 in the same session, then not applied to my own recommendation. **An analysis cannot ratify itself.***
+
+**THE FOUR-LEVEL MODEL (ARB refinement — adopted; reusable beyond WP-7).** The two-level invariant/mechanism split was right but incomplete: it left unstated *where the invariant came from* and therefore *who may change what*.
+
+| Level | WP-7 instance | Authority | Engineering may change? |
+|---|---|---|---|
+| **Business Policy** | retention is governed by Q-2; a duration is a business policy, not a technical setting | **Q-2 / ARB** | ❌ never |
+| **Architectural Invariant** | **MAD has exactly one canonical home** (AP-2) | **ARB** | ❌ never |
+| **Mechanism** | **a consumer-side port** *(was: import Adjudication's port)* | engineering, within the invariant | ✅ **the only substitutable level** |
+| **Implementation** | `ConfiguredEvidencePreservationDurations` | engineering | ✅ yes |
+
+**Why it earns its place:** it turns *"is this substitutable?"* from a judgement into a **lookup**. **All of G-1 was a level-3 substitution**, which is why it dissolved without touching the model. **Had the collision been at level 2, no engineering ingenuity would have helped and the honest answer would have been to return to the ARB.** The model tells you which situation you are in *before* you go looking for a clever fix.
 
 `engineering/verification/reports/2026-08-01-wp7-architecture-enforcement-alignment-commission.md`. **G-1 reclassified from "engineering placement" to an ARCHITECTURE–ENFORCEMENT ALIGNMENT GAP — architecture correct, enforcement correct, the MAPPING between them incomplete. The reclassification changed the answer, not just the label:** "placement" invites *"put the file where Deptrac doesn't look"* (option a — consistent, unguarded, and it would **look** like compliance); "alignment gap" forces the fix into the mapping, where the defect actually is.
 
 **The unlock — mechanism vs invariant.** The plan recorded both in one sentence: **"MAD has exactly one home" is the INVARIANT (AP-2) and is preserved absolutely**; *"consume Adjudication's existing port"* was a **plan-level MECHANISM, never an architectural decision.** Consuming the *value* from its one home is what AP-2 requires; importing the *interface* is one way to do it — the way TP-1 forbids.
 
-> #### ⭐ RESOLUTION — option (d): **Election declares its OWN consumer-side port**
+> #### ⭐ RECOMMENDED REALIZATION *(pending A-1)* — option (d): **Election declares its OWN consumer-side port**
 > Hexagonal orthodoxy: **a port belongs to the consumer, in the consumer's language.** `EvidencePreservationDurations` → `app/Contexts/Election/Application/Port/` · `ConfiguredEvidencePreservationDurations` → `app/Contexts/Election/Infrastructure/Config/`, **mirroring `ConfiguredAdjudicationDurations` exactly** (injected `Config`, precedence resolution, fail-closed, no clamping). It reads **the one canonical MAD key**. **No cross-context code import anywhere.**
 >
 > **TP-1 ✔ · AP-2 ✔ · Deptrac UNMODIFIED ✔ · domain model UNCHANGED ✔ · fully gated ✔.** Options (a) unguarded, (b) a genuine TP-1 violation, and (c) relax the Deptrac model were all **rejected — (c) is not needed, so it is not proposed.**
