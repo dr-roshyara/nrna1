@@ -73,6 +73,14 @@
 - **The guard obeys its own litmus:** it is runtime session tooling, so **ES-005.3 puts it in the runtime mount (`.claude/scripts/`), not in `engineering/`.**
 - **Non-blocking on purpose:** creating under `engineering/` is legitimate when governed, and **the hook cannot evaluate the answers to its own questions — only the author can.** A wall that is always dismissed teaches less than a checkpoint that is read *(same posture as `discipline-gate-reminder.sh`)*.
 
+## `engineering/` means the PLATFORM, not "canon" — and its structure is frozen (verified 2026-08-01)
+
+- **ES-005.1 Three-Concern Separation:** `docs/` + `architecture/` + `app/` + `tests/` = **Product** · **`engineering/` = Engineering Platform** (how it is engineered) · `.claude/` = **runtime mount**. **Reading `engineering/` as "adopted canon" is wrong** — it is the platform's own tree, with its own lifecycle.
+- **ES-005.2 Folder Rule: a directory exists only when its FIRST ARTIFACT ARRIVES; reserved namespaces are documented in a README table, NEVER created speculatively.** So a maturity-tiered hierarchy cannot be pre-created — **the sanctioned way to express intended structure is a reserved-namespace table.**
+- **R-37 Architecture Freeze 2.0 (structural): "no new capability hierarchy · no more document reorganizations"** until C3 + PB-004 + retrospective, **with the burden of proof REVERSED** — expansion requires evidence the existing architecture was insufficient.
+- **⚠️ UNRESOLVED TENSION, recorded for the ARB: ES-005.3 sends research artifacts PROJECT-SIDE (`docs/implementation/`), but if `engineering/` is a product in its own right then ITS research is its own, not the product's.** The clause names a **PublicDigit path** for *all* research, which reads like a rule written before the platform was treated as a product. **Strong argument — but it is an argument to AMEND ES-005.3, never to act around it.**
+- **A generic `implementation/` folder is forbidden by ES-005.1** — it would collapse two bounded contexts (PublicDigit and the platform) into one directory.
+
 ## ⛔ PLACEMENT IS ALSO ALREADY RULED — ES-005.3 (verified 2026-08-01)
 
 - **`ES-005.3 — The Placement Litmus` (ARB 2026-07-10):** *could a different project adopt it **unchanged**? Yes -> `engineering/`; needs project context -> the project; active session state -> the runtime mount;* **and decisively: *"Research artifacts remain project-side (`docs/implementation/`) until promoted through qualification (ES-006 ladder)."***
