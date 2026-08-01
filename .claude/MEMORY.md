@@ -73,6 +73,17 @@
 - **The guard obeys its own litmus:** it is runtime session tooling, so **ES-005.3 puts it in the runtime mount (`.claude/scripts/`), not in `engineering/`.**
 - **Non-blocking on purpose:** creating under `engineering/` is legitimate when governed, and **the hook cannot evaluate the answers to its own questions — only the author can.** A wall that is always dismissed teaches less than a checkpoint that is read *(same posture as `discipline-gate-reminder.sh`)*.
 
+## ✅ APPROVED (Chair disposition 2026-08-01, NOT yet minted as R-nn) + the STEWARDSHIP route
+
+- **APPROVED AS THE CHAIR'S POSITION:** (1) the repository is a **workspace/container, NOT a domain** · (2) it **CONTAINS DOCUMENTATION FOR** multiple domains · (3) the repository organization unit is the **DOMAIN, not the bounded context** · (4) **`engineering/` is the RESULT of the cross-product Scope decision, not another domain** · (5) **ES-005 stays GENERIC — a domain-resolution rule, never an enumeration of domains.**
+- **⚠️ NOT MINTED AS RULINGS: R-34 — authority is created ONLY by explicit issuance; "what I would approve" is a disposition. `R-nn` identifiers are the DA's act. Do not cite these five as platform rulings until issued.**
+- **WITHDRAWN AS FRAMED: my "undefined cell". A cell two named shapes can fill is UNRULED, not UNDEFINED** — the stronger word claimed the model was broken when it was merely incomplete.
+- **THE STEWARDSHIP ROUTE (Chair): Scope -> STEWARDSHIP -> Maturity -> Domain (only if product-specific).** `Layer_Verification_Rule.md` = cross-product · **Engineering stewardship** · research · no domain. **Placement is resolved by GOVERNANCE, not by a new directory.**
+- **PRECEDENT THAT SETTLES IT — R-39: `DDD_Tactical_Governance_Principles.md` sits in `engineering/` as an EARLY PROMOTION UNDER A RECORDED GOVERNANCE EXCEPTION, evidence base "one context". THE PROGRAMME HAS ALREADY SOLVED "engineering-side placement of not-fully-qualified material" WITH A RULING, NOT A DIRECTORY.** The stewardship route has precedent; a staging root has none.
+- **n = 1 VERIFIED: `engineering/knowledge/methodology/` holds exactly two artifacts — DDD principles ADOPTED, Layer Verification Rule PROPOSED-NOT-ADOPTED. ONE unqualified cross-product artifact. R-29/R-37's burden of proof DOES bite against generalizing from it.**
+- **"`engineering/` = qualified" IS NOT MACHINE-ENFORCED TODAY — no Architecture test or gate asserts it; the ONLY status-reading mechanism is the non-blocking `.claude/scripts/engineering-placement-guard.sh`. So "location is testable, labels are not" is POTENTIAL, not current, and cannot carry weight against a reversed burden of proof.** Converts into: **should a gate assert maturity?**
+- **QUEUE ORDER (the narrowed question is a PREREQUISITE, not a sibling): R-37 scope -> STEWARDSHIP -> domain roots. If stewardship = YES, the cross-product/unqualified case NEVER REACHES project-side and never touches the roots question — which then rests purely on the 89 PKS + 3 KnowledgeOS PRODUCT-SPECIFIC documents, where the measured evidence actually is.**
+
 ## Placement has THREE dimensions: SCOPE -> DOMAIN -> MATURITY (a decision TREE, not orthogonal axes) — 2026-08-01
 
 - **The repository is a CONTAINER, never a domain. Correct phrasing: "the repository CONTAINS DOCUMENTATION FOR multiple domains" / a MULTI-DOMAIN WORKSPACE.** Same category error sits in R-37's aside (*"repository = three bounded contexts"*) — which R-37 itself marks **Class A, NOT RULED**, so nothing depends on it.
