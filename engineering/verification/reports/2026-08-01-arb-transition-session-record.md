@@ -20,19 +20,28 @@
 
 > **Modelling principle:** *dependencies explain **why**; states record **what exists now**.* → **Model causality with dependencies. Model authority with state transitions.** *(Promoted to the methodology module — §3 of `Layer_Verification_Rule.md`.)*
 
-### 1.1 State classification — one category per state
+### 1.1 Classification — two independent axes: state CATEGORY and transition TYPE
 
-**Every state in the machine is classified, so the diagram is read with the right authority in mind:**
+| # | State transition | **State category** | **Transition type** | Authority |
+|---|---|---|---|---|
+| D1 | WP-6 `Pending Acceptance` → `Accepted` | **Delivery Governance** | **Approval** | ARB |
+| D2 | G-1 `Analysed` → `Resolved` | **Architecture Governance** | **Ratification** | ARB |
+| D3 | Guard boundary `one` → `two` | **Architecture Governance** | **Ratification** | ARB |
+| D4a | Plan `Awaiting EP-01` → `Approved` | **Planning Governance** | **Planning** | **Decision Authority** |
+| D4b | Execution `Not authorized` → `Slice 7A authorized` | **Execution Governance** | **Execution** | ARB |
 
-| State | **Category** | Authority |
-|---|---|---|
-| WP-6 `Pending Acceptance` → `Accepted` | **Programme Governance** | ARB |
-| G-1 `Analysed` → `Resolved` | **Architecture Governance** | ARB |
-| Guard boundary `one` → `two` | **Architecture Governance** | ARB |
-| Plan `Awaiting EP-01` → `Approved` | **Planning Governance** | Decision Authority |
-| Execution `Not authorized` → `Slice 7A authorized` | **Execution Governance** | ARB |
+**Category definitions** *(ARB, adopted — "Programme Governance" renamed to **Delivery Governance**, since "programme" still reads as portfolio or schedule governance, while what is actually governed here is **work-package acceptance**)*:
+
+| Category | Governs |
+|---|---|
+| **Architecture Governance** | design decisions |
+| **Planning Governance** | plan approval |
+| **Delivery Governance** | work-package transitions |
+| **Execution Governance** | engineering authorization |
 
 **What the classification exposes at a glance:** the machine spans **four distinct governance categories**, and **the Planning Governance state is the only one not owned by the ARB.** That is not a defect — **it is EP-01's separation made visible**, and it is precisely why item 4a is a separate vote with a separate authority (DD-1).
+
+**What the TRANSITION column adds beyond the state column:** the state says *what changes*; **the transition type says *what kind of authority act* is being performed.** D2 and D3 share a category yet are both **Ratifications**, while D1 in a different category is an **Approval** — **the two axes are genuinely independent, so neither column is derivable from the other.** *(A ratification confirms an existing thing's reading; an approval admits a delivered thing; a planning act binds a forward commitment; an execution act unlocks work. Conflating them is how a "yes" comes to mean four different things in one minute-book.)*
 
 ### 1.2 Current governance state — verified, not assumed
 
@@ -82,14 +91,14 @@ RED ...................... BLOCKED
 **Presented independently. Not merged. Outcomes blank.**
 
 ### ▶ Item 1 — Accept WP-6 within its approved scope
-**Authority:** ARB (Programme Governance) · **State affected:** WP-6 · **Prerequisites:** none — **may be taken first or last**
+**Authority:** ARB · **Category:** Delivery Governance · **Transition type:** **Approval** · **State affected:** WP-6 · **Prerequisites:** none — **may be taken first or last**
 **Evidence:** closure package — 3/3 scope · keystones 10 tests / 22 assertions · contexts 91 / 260 · PHPStan max clean (4 root fixes, **none suppressed**) · Deptrac 0 · Architecture 146 green · APR · ADPR · AGIR · authority verification · dev guide + operational record. **Verified complete.**
 **Caveat the ARB should hold while reading it:** *"Deptrac 0 / 146 green"* **does not cover the AP-1/AP-2 class** (*a business value was invented*) — **no automated gate does.** Both were found and fixed before acceptance.
 **Recommendation (architect's, not a vote):** **accept within the approved scope.**
 > **OUTCOME: ☐ Approved ☐ Rejected ☐ Deferred — _______ · RATIONALE: _______**
 
 ### ▶ Item 2 — A-1: was AP-2's binding content the **invariant** or the **sentence**?
-**Authority:** ARB (Governance Interpretation) · **State affected:** G-1 · **Prerequisites:** none — **independent of item 1**
+**Authority:** ARB · **Category:** Architecture Governance · **Transition type:** **Ratification** · **State affected:** G-1 · **Prerequisites:** none — **independent of item 1**
 **Evidence:** alignment commission §2 — invariant/mechanism split; four-level model; TP-1 in `deptrac.yaml`.
 **Limit, labelled rather than hidden:** *"Deptrac passes unmodified"* is an **analytical prediction, not an executed result** — no code exists. Structurally sound; **not empirically demonstrated.**
 **⚠️ Rejection branch:** ruling that *the sentence* was binding mandates a direct cross-context import — **a TP-1 violation Deptrac would fail** — requiring **option (c) or a plan revision, neither on this agenda.** **Option (c) is NOT pre-authorized here.**
@@ -97,19 +106,19 @@ RED ...................... BLOCKED
 > **OUTCOME: ☐ Approved ☐ Rejected ☐ Deferred — _______ · RATIONALE: _______**
 
 ### ▶ Item 3 — A-2: Election **answers**; Audit/Retention **acts**
-**Authority:** ARB (Architectural Clarification) · **State affected:** guard boundary · **Prerequisites:** none · **Gates slice 7B only — no effect on 7A**
+**Authority:** ARB · **Category:** Architecture Governance · **Transition type:** **Ratification** · **State affected:** guard boundary · **Prerequisites:** none · **Gates slice 7B only — no effect on 7A**
 **Evidence:** the frozen allocation already assigns Audit/Retention *"Consumption (acting on the answer)"*; the ownership commission places **the question** in Election.
 **Recommendation:** **ratify.** It names as two what was described as one; **no responsibility holder changes.**
 > **OUTCOME: ☐ Approved ☐ Rejected ☐ Deferred — _______ · RATIONALE: _______**
 
 ### ▶ Item 4a — Approve the WP-7 plan (EP-01)
-**Authority:** Decision Authority · **State affected:** plan status · **Guard: item 2 approved**
+**Authority:** **Decision Authority** · **Category:** Planning Governance · **Transition type:** **Planning** · **State affected:** plan status · **Guard: item 2 approved**
 **Evidence:** `.claude/plans/WP-7-retention-alignment.md` — **current text, amended today.** Approving a superseded text would be worse than not approving.
 **Recommendation:** **approve, conditional on item 2.**
 > **OUTCOME: ☐ Approved ☐ Rejected ☐ Deferred — _______ · RATIONALE: _______**
 
 ### ▶ Item 4b — Authorize execution of **slice 7A**
-**Authority:** ARB (Programme Governance) · **State affected:** execution status · **Guard: `WP-6 ACCEPTED` ∧ `PLAN APPROVED`**
+**Authority:** ARB · **Category:** Execution Governance · **Transition type:** **Execution** · **State affected:** execution status · **Guard: `WP-6 ACCEPTED` ∧ `PLAN APPROVED`**
 **Scope:** **slice 7A only.** 7B and 7C follow their own gates — a blanket WP-7 authorization would authorize more than the evidence supports.
 **Recommendation:** **authorize slice 7A**, conditional on the guard.
 > **OUTCOME: ☐ Approved ☐ Rejected ☐ Deferred — _______ · RATIONALE: _______**

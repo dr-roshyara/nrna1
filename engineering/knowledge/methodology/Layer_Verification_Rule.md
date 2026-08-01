@@ -5,6 +5,7 @@
 **Nature:** a **methodology module about the governance of change** — it classifies *which abstraction a proposed change actually modifies*, and therefore *whose authority is engaged*. It is **not** architecture, **not** a tactical-DDD rule, and it decides no design question.
 **Relationship to existing modules:** complements `DDD_Tactical_Governance_Principles.md` (tactical design) without overlapping it. That module governs *what to build*; this one governs *who may change it, and at which level*.
 **Provenance:** derived during EPIC-004 WP-7 (finding **G-1**), refined across successive ARB iterations. Promotion to a reusable artifact requested by the ARB, 2026-08-01.
+**Refinement:** 🧊 **FROZEN 2026-08-01** — no further refinement without new evidence. **Frozen ≠ adopted, and the distinction is load-bearing:** *freezing* ends **my** refinement of the text; *adoption* is **the Decision Authority's act** and has not occurred. **A frozen module that is not adopted is still non-binding.** The stopping rationale is the ARB's own: successive iterations had begun improving **expression** rather than adding **explanatory power**.
 
 ---
 
@@ -54,7 +55,11 @@ The rule evaluates changes; this applies it to **proposals**, which is where it 
 
 **What it prevents, concretely:** a dependency graph can say *"execution authorization requires plan approval."* **A state machine says *which states may legally coexist*** — making `execution AUTHORIZED ∧ plan AWAITING APPROVAL` **unreachable** rather than merely discouraged. **The first relies on someone remembering the rule; the second makes the illegal state unrepresentable.**
 
-**Companion — classify every governance state:** *Programme · Architecture · Planning · Execution* governance are distinct, and **a state machine mixing them without labels hides which authority owns each transition.** *(Applied in the WP-6→WP-7 session: labelling exposed that the Planning Governance state is the only one not owned by the ARB — EP-01's separation made visible, and the reason its vote is separate.)*
+**Companion — classify on TWO independent axes.** **State category:** *Architecture* (design decisions) · *Planning* (plan approval) · **Delivery** (work-package transitions) · *Execution* (engineering authorization). **Transition type:** *Approval* (admits a delivered thing) · *Ratification* (confirms an existing thing's reading) · *Planning* (binds a forward commitment) · *Execution* (unlocks work).
+
+**Neither axis is derivable from the other** — two transitions can share a category and differ in type, or share a type across categories. **A state machine that labels neither hides which authority owns each transition and what kind of act it is** — which is how a single "yes" comes to mean four different things in one minute-book. *(Applied in the WP-6→WP-7 session: labelling exposed that the Planning Governance state is the only one not owned by the ARB — EP-01's separation made visible, and the reason its vote is separate.)*
+
+**Naming note:** prefer **Delivery Governance** over "Programme Governance" — *programme* still reads as portfolio or schedule governance, while what is governed is **work-package acceptance**.
 
 **Limit:** like §2, this is a **modelling heuristic, not a gate.** It improves how governance is expressed; it enforces nothing.
 
