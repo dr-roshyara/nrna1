@@ -59,7 +59,11 @@
 | WP-5 — raise path | recorded closed |
 | WP-6 · WP-7 | ✅ accepted |
 
-> **WP-8 validates a loop whose wiring does not yet exist.** **WP-4 supplies the inbox handler, the issuance request path, the failure-declared event and the authority-decision intake port — every one of which WP-8's suites must exercise.**
+> ### Why the dependency exists — the rationale, not just the arrow
+>
+> **WP-4 provides operational capabilities that WP-8's validation requires.** It supplies the inbox handler, the issuance request path, the `AdjudicationFailureDeclared` event and the authority-decision intake port.
+>
+> **WP-8's four keystone suites — upheld · dismissed · failure-declared · expired — each traverse at least one of them.** **Therefore WP-8 cannot verify behaviour that does not yet exist.** The dependency is not sequencing preference; **it is the difference between validating a system and validating an absence.**
 >
 > **Authorizing WP-8 now would authorize validating something unbuilt.**
 
