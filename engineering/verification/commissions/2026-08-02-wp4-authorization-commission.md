@@ -55,20 +55,24 @@ WP-3 (ChallengeRouted pub) ─────────┘
 
 **Programme state:** ✅ synchronised — the roadmap specifies, CONTEXT states current state.
 
-## 2b. Capability Readiness — the last strategic check before RED
+## 2b. Strategic Capability Readiness — the last strategic check before RED
 
 **Not *are the classes ready* — is the capability complete enough to begin?**
 
 | Check | Status | Basis |
 |---|---|---|
 | Capability definition | ✅ | roadmap §WP-4 — inbox handler · issuance request path · `AdjudicationFailureDeclared` · authority-decision intake port |
-| Capability owner | ✅ | **Adjudication** — the APM is its process manager |
+| Capability **owner** | ✅ | the **Adjudication bounded context** |
+| Capability **realization** | ✅ | the **APM coordinates** this capability |
+| **Process Manager** | ✅ | the APM **orchestrates the capability's implementation** — it realizes, it does not own |
 | Capability boundaries | ✅ | EPIC-004K §§8–10, §12 · ADR-T23 |
 | Consumed capabilities | ✅ | `ChallengeRouted` as published language (WP-3A, **implemented**) · APM core (WP-2, accepted) |
 | Published Language | ✅ | `ChallengeRouted` exists; `AdjudicationFailureDeclared` is **added by this package**, per its authorized scope |
 | Strategic invariants | ✅ | unchanged — see §3 |
 
 > **The capability is ready. What is not ready is its governance.**
+>
+> **Strategic DDD conclusion: the capability can now enter Tactical DDD implementation without revisiting Strategic DDD decisions.**
 
 ## 3. Strategic DDD confirmation
 
