@@ -467,7 +467,7 @@ Before merging to main:
 
 - [TESTING_GUIDE.md](./TESTING_GUIDE.md) - Comprehensive testing documentation
 - [COMPREHENSIVE_TESTING_SUMMARY.md](./docs/COMPREHENSIVE_TESTING_SUMMARY.md) - Detailed implementation guide
-- [tests/Feature/](./tests/Feature/) - Feature test directory
+- [tests/Feature/](../tests/Feature/) - Feature test directory
 
 ---
 

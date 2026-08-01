@@ -80,6 +80,15 @@
 - **ROOT READMEs STAY ~15-20 LINES:** purpose · holds · owner · internal-layout ownership · a pointer table (policy / configuration / resolver). **Everything else belongs in the ADR.**
 - **⛔ DO NOT CREATE A NEW PRINCIPLES DOCUMENT UNDER `engineering/` (e.g. a "DAP-001"): it would be a CROSS-PRODUCT artifact at RESEARCH maturity, which the resolver returns PENDING for — EXACTLY the `Layer_Verification_Rule.md` violation. Blocked by R-38 (no new standards), R-37 (bugfix/link/typo only) and R-38's own precedent ("where existing rulings already express a constraint, INTERPRET THEM rather than add another ruling"). THE PARSIMONIOUS MOVE IS TO STATE THE PRINCIPLES IN THE ADR — the approved policy home — AND REFERENCE THEM.**
 
+## Confidence model + DECLARATIVE migration registry for link repair (2026-08-01)
+
+- **CONFIDENCE BAR — ONLY >= 99 MAY BE AUTO-APPLIED:** **100** git rename record · documented migration · exact existing target · **99** exactly one file in the repo carries that basename · **75** several candidates = AMBIGUOUS · **0** no candidate = MISSING. **Ambiguous and missing are EVIDENCE, never repairs.**
+- **MIGRATIONS ARE DECLARATIVE, NOT CODED: `docs/knowledge/schema/repository-migrations.yaml`** (id · from · to · kind · source ADR), read by **`scripts/link-check.php`**. Adding a future migration is a REGISTRY ENTRY, not a code change.
+- **DOCUMENTED MIGRATIONS ON RECORD: (1) `architecture` -> `architecture_legacy` · (2) repository-root AI-generated developer docs -> `developer_guide/` (root-normalization: repository-root file only, EXACT filename, relocated file must exist, and NO other candidate may exist).** Source for both: `docs/adr/20260801_1712_legacy_folder_and_files.md`.
+- **A DOCUMENTED MIGRATION IS EVIDENCE; A FILENAME HEURISTIC IS NOT. "Capital letters means developer_guide" would be a heuristic — the RULE is the documented relocation, and every use is existence-verified.**
+- **REPOSITORY NORMALIZATION CHANGES ORGANIZATION ONLY — never artifact identity, architectural meaning, or ownership.**
+- **EVIDENCE VERDICT ON THE 47 UNRESOLVED REFERENCES: 0 deleted · 0 renamed · 0 archived · 47 NEVER WRITTEN (verified with `git log --all -- <path>`). They are promised-but-unwritten documents — DOCUMENTATION DEBT PREDATING the refactoring, NOT migration damage.**
+
 ## Link repair: repair only on EVIDENCE, never on the best-looking candidate (2026-08-01)
 
 - **FOUR RULES, EACH REQUIRING THE DESTINATION TO EXIST BEFORE REWRITING:** git's own rename record · the link was written REPO-ROOT-RELATIVE and that path exists · **EXACTLY ONE** file in the repo carries that basename · a DOCUMENTED directory rename (`architecture/` -> `architecture_legacy/`, recorded in `docs/adr/20260801_1712_legacy_folder_and_files.md`), still existence-checked.

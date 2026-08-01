@@ -1,0 +1,25 @@
+# Documented repository migrations — CONFIGURATION ONLY.
+# Evidence for link repair. Consumed by scripts/link-check.php.
+# A migration changes repository organization only: never artifact identity,
+# architectural meaning, or ownership.
+#
+# Only DOCUMENTED migrations belong here. Filename heuristics do not.
+version: 1
+
+repository_migrations:
+  - id: architecture-legacy
+    from: architecture
+    to: architecture_legacy
+    kind: directory
+    source: docs/adr/20260801_1712_legacy_folder_and_files.md
+
+  - id: root-ai-documentation-normalization
+    from: .
+    to: developer_guide
+    kind: root-normalization
+    source: docs/adr/20260801_1712_legacy_folder_and_files.md
+    note: >
+      Repository normalization relocated AI-generated developer documentation that
+      sat directly at the repository root into the legacy developer_guide/ folder.
+      Applies to a repository-root file only, matched by exact filename, and only
+      when the relocated file exists and no other candidate does.

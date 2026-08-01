@@ -1919,4 +1919,4 @@ GET  /v/{vslug}/vote/complete               → Completion/receipt
 
 ---
 
-**Need Help?** Check the [ADR_20260203_voting_security.md](../../docs/adr/ADR_20260203_voting_security.md) for architectural decisions and [tests/](../tests/) for working examples.
+**Need Help?** Check the [ADR_20260203_voting_security.md](../../docs/adr/ADR_20260203_voting_security.md) for architectural decisions and [tests/](../../tests/) for working examples.
