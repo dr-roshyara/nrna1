@@ -14,7 +14,7 @@
 |---|---|
 | **Decision** | ✅ **ACCEPTED** |
 | **Reason** | Criteria 1–4 satisfied — scope · verification · architectural conformance · Definition of Done |
-| **Effect** | Slice 7B **ACCEPTED and CLOSED**; the `EvidencePreservationWindow` enters the **accepted architecture baseline** |
+| **Effect** | Slice 7B **ACCEPTED and CLOSED**; the `EvidencePreservationWindow` enters the **accepted IMPLEMENTATION baseline** *(corrected — see the note below)* |
 
 ### Criterion 5 — the interim anchor, recorded as debt rather than treated as a blocker
 
@@ -30,7 +30,7 @@
 
 ## ARB Decision — R-60 · WP-7B-R1 opened
 
-**Category:** Delivery Governance · **Transition type:** Approval · **Produces:** an opened work package
+**Category:** **Planning Governance** *(corrected — see the note below)* · **Transition type:** Approval · **Produces:** an approved work package
 
 | Field | Value |
 |---|---|
@@ -51,13 +51,25 @@
 
 **Resolved in favour of the operative text and filed as R-60**, because two independent statements declare it open and a package that exists only in a note would be unenforceable. **The discrepancy is recorded so the register never shows a work package opened by a note.**
 
+## 📝 Two corrections from the issuing authority — applied, and one consequence flagged
+
+**1 · R-60's category is Planning Governance, not Delivery.** **Opening or approving a work package is a *planning* act; delivery governance is the later act of tracking and *accepting* it.** Conflating them would make *opening* and *accepting* the same category — and the whole point of the two-axis classification is that they are not.
+
+**2 · "accepted IMPLEMENTATION baseline", not "architecture baseline".** *Architecture baseline* denotes architectural **decisions**; what R-59 accepted is a **realization**. **Q-2 still owns architectural evolution here**, so the wording must not imply the design itself is frozen. *(A precision point, not a disagreement — but on this programme, wording that overstates what was frozen is exactly how a later reader inherits a false constraint.)*
+
+### ⚠️ The consequence: **R-52 carries the identical misclassification**
+
+`R-52` opened the WP-6 remediation package and is also typed **Delivery Governance · Approval**. **By the correction just applied to R-60, that is a planning act too.**
+
+**Flagged, not corrected.** The issuing authority addressed R-60 only, and normalising R-52 on my own reading would be the Recording Architect amending a ruling nobody asked to amend. **Whether to correct it is the ARB's** — the register now carries the inconsistency where it can be seen.
+
 ---
 
 ## Governance State
 
 | Item | Before | **After** |
 |---|---|---|
-| **Slice 7B** | GREEN, awaiting acceptance | ✅ **ACCEPTED & CLOSED — in the baseline** |
+| **Slice 7B** | GREEN, awaiting acceptance | ✅ **ACCEPTED & CLOSED — in the implementation baseline** |
 | **Interim anchor** | undeclared debt | ✅ **recorded debt, owner Q-2** |
 | **WP-7B-R1** | — | ✅ **OPEN — not started** |
 | Slice 7C | unauthorized | ⬜ unchanged — queue 10 |
@@ -76,7 +88,7 @@
 
 ## Handover
 
-> **Slice 7B is ACCEPTED and CLOSED. The Evidence Preservation Window is part of the accepted architecture baseline. The interim anchor is recorded as explicit architectural debt owned by Q-2. WP-7B-R1 is opened to extract it into a replaceable resolver. Slice 7C remains unauthorized.**
+> **Slice 7B is ACCEPTED and CLOSED. The Evidence Preservation Window is part of the accepted IMPLEMENTATION baseline. The interim anchor is recorded as explicit architectural debt owned by Q-2. WP-7B-R1 is opened to extract it into a replaceable resolver. Slice 7C remains unauthorized.**
 
 **Two candidate activities, neither started:** **WP-7B-R1** (open under R-60) · **Slice 7C** (requires authorization, queue 10). **Sequencing is the ARB's.**
 
