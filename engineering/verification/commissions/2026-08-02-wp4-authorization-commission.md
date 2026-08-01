@@ -29,15 +29,46 @@ WP-3 (ChallengeRouted pub) ─────────┘
 
 > **So the commission's claim holds for WP-3B and not for WP-3A — and WP-3A's gap is one ARB act, not engineering work.**
 
-## 2. Evidence
+## 2. Position, prerequisites and blockers — separated
 
-| Element | Evidence |
+**Roadmap position.** *According to the accepted roadmap, WP-4 is the next candidate work package* in the implementation order `WP-1 → WP-2 → WP-3 → WP-4 → …`. **That is roadmap evidence, not a priority claim.**
+
+### Prerequisites
+
+| Prerequisite | State |
 |---|---|
-| **Roadmap position** | ✅ WP-4 is next in the implementation order `WP-1 → WP-2 → WP-3 → WP-4 → …` |
-| **Prerequisites** | WP-1 ✅ · WP-2 ✅ accepted · **WP-3A GREEN, acceptance pending** (§1) · WP-3B does not block |
-| **Authorization** | ⬜ none exists. `.claude/plans/WP-4-apm-wiring.md` reads *"OPEN — G-2 DECIDED; next step is RED"*. **No WP-4 ruling is in the register** |
-| **Architecture** | ✅ **No architectural deficiency identified that would prevent authorization** |
-| **Programme state** | ✅ synchronised — roadmap specifies, CONTEXT states current state |
+| WP-1 accepted | ✅ |
+| WP-2 accepted | ✅ |
+| **WP-3A accepted** | ⚠️ **not yet — GREEN, acceptance pending** |
+| WP-3B | not a prerequisite (§1) |
+
+### Architectural blockers
+
+**None identified.** *(Stated as **blocker**, not as absence of deficiency: what bears on authorization is whether architecture prevents execution, not whether architecture is complete.)*
+
+### Governance blockers
+
+| # | Blocker |
+|---|---|
+| **1** | **WP-3A acceptance** — required by *"no slice starts before its predecessor's acceptance"* |
+| **2** | **WP-4 authorization** — none exists. The plan reads *"OPEN — G-2 DECIDED; next step is RED"*; no WP-4 ruling is in the register |
+
+**Programme state:** ✅ synchronised — the roadmap specifies, CONTEXT states current state.
+
+## 2b. Capability Readiness — the last strategic check before RED
+
+**Not *are the classes ready* — is the capability complete enough to begin?**
+
+| Check | Status | Basis |
+|---|---|---|
+| Capability definition | ✅ | roadmap §WP-4 — inbox handler · issuance request path · `AdjudicationFailureDeclared` · authority-decision intake port |
+| Capability owner | ✅ | **Adjudication** — the APM is its process manager |
+| Capability boundaries | ✅ | EPIC-004K §§8–10, §12 · ADR-T23 |
+| Consumed capabilities | ✅ | `ChallengeRouted` as published language (WP-3A, **implemented**) · APM core (WP-2, accepted) |
+| Published Language | ✅ | `ChallengeRouted` exists; `AdjudicationFailureDeclared` is **added by this package**, per its authorized scope |
+| Strategic invariants | ✅ | unchanged — see §3 |
+
+> **The capability is ready. What is not ready is its governance.**
 
 ## 3. Strategic DDD confirmation
 
