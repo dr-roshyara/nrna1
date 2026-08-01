@@ -166,6 +166,17 @@
 - **NEVER INVENT A TARGET. 47 of the remaining links point at documents that DO NOT EXIST ANYWHERE — record them; do not author replacements. 6 are AMBIGUOUS (`./ARCHITECTURE.md`, `./INDEX.md`) and need A HUMAN CHOICE, not a repair.**
 - **`knowledge-lint` VALIDATES `docs/knowledge/` ONLY — a repo-wide scan found 121 broken links where the linter reported 9. GREEN LINT IS NOT GREEN REPOSITORY.**
 
+## ⛔ `session-state` IS A ROLE MASQUERADING AS A SCOPE — a defect in the placement registry (found 2026-08-01)
+
+- **`docs/knowledge/schema/documentation-placement.yaml` matches `scope: session-state` alongside `cross-product` and `product-specific`. SCOPE answers 'could another project adopt this unchanged?' — SESSION-STATE ANSWERS WHAT ROLE THIS PLAYS, and ES-004.3 names that role RUNTIME.** **The model already needed the Role dimension and faked it inside the Scope field. Fixing this is a DEFECT FIX, not the ES-005 amendment.**
+
+## PENDING is an absent RULE, not an absent INPUT (2026-08-01)
+
+- **Adding classification inputs CANNOT resolve a PENDING cell.** The unruled `cross-product + research` cases need a **RULING** (stewardship); the two 2026-08-01 misplacements need an **INPUT** (role/type). **TWO DIFFERENT GAPS — never present them as one body of evidence for one change.**
+- **THE THREE-QUALITY TEST for any proposed classification input: ORTHOGONALITY (independent of Scope/Domain/Steward/Maturity?) · NECESSITY (does its absence explain EVERY observed failure?) · SUFFICIENCY (do these alone resolve them, with no further dimension?). ALL THREE, OR THE AMENDMENT DOES NOT PROCEED.** Run 2026-08-01: orthogonality YES · **necessity PARTIAL (2 of 5)** · sufficiency YES over two cases -> **amendment does not proceed.**
+- **CAPABILITY FRAMING: the capability is REPOSITORY DOCUMENTATION CLASSIFICATION; PLACEMENT IS ONE CONSUMER.** A capability is extended when it cannot answer a question put to it — **failing for want of a RULING is not a capability gap.**
+- **SAY 'three independent classification DIMENSIONS', not 'three taxonomies' — Type, Role and Record Responsibility answer different questions and vary independently.**
+
 ## The documentation classification gap — THREE taxonomies, none joined to placement (measured 2026-08-01)
 
 - **(1) DOCUMENT TYPE: `docs/knowledge/schema/knowledge-types.yaml` — 26 machine-validated values, SCOPED TO `docs/knowledge/` ONLY. (2) ARTIFACT ROLE: ES-004.3 — Runtime/Historical/Reference/Decision, REPO-WIDE but DECLARED ON NOTHING. (3) RECORD RESPONSIBILITY: ES-004.2 — IDD/ADR/retrospective/CONTEXT.**
