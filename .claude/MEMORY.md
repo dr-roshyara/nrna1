@@ -73,6 +73,14 @@
 - **The guard obeys its own litmus:** it is runtime session tooling, so **ES-005.3 puts it in the runtime mount (`.claude/scripts/`), not in `engineering/`.**
 - **Non-blocking on purpose:** creating under `engineering/` is legitimate when governed, and **the hook cannot evaluate the answers to its own questions — only the author can.** A wall that is always dismissed teaches less than a checkpoint that is read *(same posture as `discipline-gate-reminder.sh`)*.
 
+## Placement has THREE dimensions: SCOPE -> DOMAIN -> MATURITY (a decision TREE, not orthogonal axes) — 2026-08-01
+
+- **The repository is a CONTAINER, never a domain. Correct phrasing: "the repository CONTAINS DOCUMENTATION FOR multiple domains" / a MULTI-DOMAIN WORKSPACE.** Same category error sits in R-37's aside (*"repository = three bounded contexts"*) — which R-37 itself marks **Class A, NOT RULED**, so nothing depends on it.
+- **SCOPE** (*"could a different project adopt it unchanged?"* = ES-005.3 clause 1) -> yes: `engineering/` · no: project-side. **`engineering/` IS THE OUTCOME OF THE SCOPE DECISION — IT IS NOT A DOMAIN.** · **DOMAIN** — applies **ONLY on the product-specific branch** (a cross-product artifact HAS no domain, by definition) · **MATURITY** (ES-005.3 clause 2) — applies to **BOTH** branches.
+- **INTERACTION THAT BITES: for an UNQUALIFIED artifact, MATURITY OVERRIDES SCOPE for placement** — cross-product + unqualified is still staged project-side.
+- **⚠️ UNDEFINED CELL: CROSS-PRODUCT + UNQUALIFIED HAS NOWHERE TO GO once project-side becomes domain-partitioned** — Maturity says stage it project-side, Domain says project-side is partitioned, and the artifact has no domain. **`Layer_Verification_Rule.md` IS that cell** (cross-product · PROPOSED-NOT-ADOPTED per R-34 · currently sitting in `engineering/knowledge/methodology/`, its QUALIFIED destination reached BEFORE qualification). **The model had no cell for it, so neither did the repository. Any amendment MUST define this cell explicitly.**
+- **DOMAINS ARE CONFIGURATION, NOT RULE TEXT** — the generic form is *"place a project-specific artifact under the documentation root of the domain to which it belongs"*; **precedent is inside ES-005 itself** (ES-005.2 keeps its enumeration in a **README table**, home `engineering/README.md`). **PKS membership therefore RELOCATES to a registry rather than disappearing — it still needs a home and a naming authority, and R-42 FORECLOSES the Platform Registry** (AI-platform assets only; project-side artifacts carry no AIP lineage).
+
 ## The repository is MULTI-DOMAIN — and the DDD unit is DOMAIN, never bounded context (verified 2026-08-01)
 
 - **PRODUCTIZATION ≠ DOMAIN EXISTENCE. A bounded context / domain may exist BEFORE productization — that is a strategic design fact, not a commercial gate.** So "KnowledgeOS's gate has not opened" answers *is it a product?* and **NEVER** *is it a domain?* **Do not let the gate answer the domain question.**
