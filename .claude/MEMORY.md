@@ -166,9 +166,18 @@
 - **NEVER INVENT A TARGET. 47 of the remaining links point at documents that DO NOT EXIST ANYWHERE — record them; do not author replacements. 6 are AMBIGUOUS (`./ARCHITECTURE.md`, `./INDEX.md`) and need A HUMAN CHOICE, not a repair.**
 - **`knowledge-lint` VALIDATES `docs/knowledge/` ONLY — a repo-wide scan found 121 broken links where the linter reported 9. GREEN LINT IS NOT GREEN REPOSITORY.**
 
-## ⛔ `session-state` IS A ROLE MASQUERADING AS A SCOPE — a defect in the placement registry (found 2026-08-01)
+## ⚠️ `session-state` — a CANDIDATE SEMANTIC CORRECTION, not a defect fix (2026-08-01)
 
-- **`docs/knowledge/schema/documentation-placement.yaml` matches `scope: session-state` alongside `cross-product` and `product-specific`. SCOPE answers 'could another project adopt this unchanged?' — SESSION-STATE ANSWERS WHAT ROLE THIS PLAYS, and ES-004.3 names that role RUNTIME.** **The model already needed the Role dimension and faked it inside the Scope field. Fixing this is a DEFECT FIX, not the ES-005 amendment.**
+- **CLAIM AT THE STRENGTH THE EVIDENCE SUPPORTS: the current implementation TREATS `session-state` AS IF IT WERE A SCOPE, while its observed semantics ALIGN MORE CLOSELY with the RUNTIME role defined by ES-004.3. THIS INDICATES A POSSIBLE MODELLING INCONSISTENCY REQUIRING GOVERNANCE CONFIRMATION BEFORE CORRECTION.**
+- **⛔ DO NOT CALL IT A DEFECT FIX. Changing a registry value CHANGES THE CLASSIFICATION MODEL — the registry is the EXECUTABLE FORM of the model, so a change to it is a SEMANTIC ACT. ARCHITECTURE REPORTS EVIDENCE; GOVERNANCE CONFIRMS SEMANTICS. 'Probably right' is not a mandate.**
+
+## ⭐ THE MODEL INTEGRITY RULE — general modelling discipline (extracted 2026-08-01, CANDIDATE)
+
+- **Whenever a new attribute or dimension is proposed, FIRST DETERMINE WHICH OF THREE THINGS IT IS: a NEW DIMENSION · an OVERLOADED EXISTING DIMENSION (the concept is already there, carried by the wrong field) · or MERELY ANOTHER VALUE of an existing dimension.**
+- **Introduce a new dimension ONLY if ORTHOGONAL + NECESSARY + SUFFICIENT — ALL THREE, or the change does not proceed.**
+- **If an existing dimension contains MIXED CONCEPTS, that is a MODELLING DEFECT — surface it BEFORE architectural evolution, not as part of it.**
+- **IT IS GENERAL: applies to any proposed value object, aggregate, classification attribute, engineering capability or architectural dimension — not just documentation.** **Applied once, it FALSIFIED A PROPOSAL I HAD ALREADY RECOMMENDED.** Recorded in `docs/implementation/PublicDigit_Engineering_Protocol_Proposal.md` (cross-product + research resolves to PENDING — the FOURTH arrival at the unruled cell — so it lives inside a document that has a home).
+- **COMPANION CHECKS 4a-4d in the same proposal: CAPABILITY INTEGRITY (consumed / extended / invented?) · MODEL INTEGRITY (the rule above) · CLASSIFICATION INTEGRITY (type and role established BEFORE placement) · GOVERNANCE SEPARATION (which findings are architecture's to conclude, which are governance's to decide).**
 
 ## PENDING is an absent RULE, not an absent INPUT (2026-08-01)
 

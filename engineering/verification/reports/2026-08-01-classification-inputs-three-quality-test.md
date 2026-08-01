@@ -5,6 +5,8 @@
 *(Classification stated before placement, per the standing correction.)*
 **Repository Integrity Gate:** ✅ PASSED. **No standard amended · nothing proposed for adoption.**
 
+> **ANNOTATION (2026-08-01, ARB review — added, not rewritten):** the claim *"`session-state` **is** a Role"* is **weakened**. **Evidence supports only:** *the current implementation treats `session-state` as if it were a Scope, while its observed semantics align more closely with the **Runtime** Role defined by ES-004.3. This indicates a possible **modelling inconsistency requiring governance confirmation before correction**.* **Consequently the §Recommendation item 1 is reclassified from "defect fix" to "CANDIDATE SEMANTIC CORRECTION" — changing a registry value changes the classification model, which is a semantic act, not configuration hygiene. Architecture reports evidence; governance confirms semantics.**
+
 ---
 
 > # RESULT — **the test does not return an unqualified yes. On the ARB's own rule, the ES-005 amendment should NOT proceed to include these inputs yet.**

@@ -111,6 +111,47 @@
 
 ---
 
+## Cross-cutting ⭐ · The Model Integrity Rule — NEW, and general
+
+**Extracted from the classification exercise of 2026-08-01, where it disproved a proposal I had already made.** **It is not specific to documentation** — it applies whenever a new **value object, aggregate, classification attribute, engineering capability, or architectural dimension** is proposed.
+
+> **Whenever a new attribute or dimension is proposed, first determine which of three things it actually is:**
+>
+> | | |
+> |---|---|
+> | **a new dimension** | genuinely independent of every existing one |
+> | **an overloaded existing dimension** | the concept is already present, carried by the wrong field |
+> | **another value of an existing dimension** | no model change is required at all |
+>
+> **Introduce a new dimension only if it passes all three qualities:**
+>
+> | Quality | Question |
+> |---|---|
+> | **Orthogonality** | is it genuinely independent of the existing dimensions? |
+> | **Necessity** | does its absence explain **every** observed failure? |
+> | **Sufficiency** | do the proposed additions **alone** resolve those failures, with no further dimension? |
+>
+> **All three, or the change does not proceed.**
+>
+> **And if an existing dimension is found to contain mixed concepts, that is a modelling defect — to be surfaced before, not as part of, architectural evolution.**
+
+**Why it earns a place here rather than in a report:** applied once, it **falsified a proposal that had already been recommended and looked reasonable.** **A discipline that catches its author is worth more than the conclusion it overturned.**
+
+**Placement note, recorded rather than acted on:** this rule is **cross-product methodology at research maturity** — `--scope=cross-product --maturity=research` resolves to **PENDING**, the **fourth arrival** at that unruled cell. **It is therefore recorded inside this proposal, which has a home, rather than given one of its own.**
+
+## Phases 4a–4d ⭐ · Integrity checks — NEW
+
+**Refines Phase 4 from a single classification step into four checks, each answering a different question:**
+
+| | Check | Question |
+|---|---|---|
+| **4a** | **Capability Integrity** | is the capability being consumed, extended, or invented? **Only the first needs no authority.** |
+| **4b** | **Model Integrity** | the rule above — new dimension, overloaded dimension, or new value? |
+| **4c** | **Classification Integrity** | is the artifact's **type and role** established *before* its placement is derived? |
+| **4d** | **Governance Separation** | which findings are architecture's to conclude, and which are governance's to decide? |
+
+**4c is the check whose absence caused two misplacements on 2026-08-01.** **4d is the check whose absence let a recommendation and an architectural conclusion travel in the same sentence.**
+
 ## What is actually new here
 
 | Element | Status |
@@ -119,6 +160,8 @@
 | **Phase 4** — impact classification taxonomy | ⭐ **NEW** — one prior use, no adoption |
 | **Phase 6** — enumerated stop-and-refer triggers | ⭐ **NEW** — principle canonical, enumeration new |
 | **Phase 11** — four-outcome evaluation at ACCEPT | ⭐ **NEW** — ladder canonical, gate new |
+| **Phases 4a–4d** — the four integrity checks | ⭐ **NEW** — added 2026-08-01 |
+| **The Model Integrity Rule** (cross-cutting) | ⭐ **NEW** — general modelling discipline; **cross-product, resolves to PENDING, so recorded here rather than homed separately** |
 
 ## Adoption
 
