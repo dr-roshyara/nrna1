@@ -232,6 +232,26 @@
 
 **Nothing inside an open EPW is deleted · deletion resumes after closure · an unresolvable folder→election mapping is not deleted · `composer merge-gate` green · developer guide updated.**
 
+## Architectural Handover — issued 2026-08-01
+
+> **Architectural verification is complete for WP-7C. No further architectural refinement is warranted unless implementation exposes a genuine deficiency. The architecture has fulfilled its role for this work package; the next meaningful artifacts come from engineering execution, and any future architectural evolution is driven by the operational evidence that execution produces.**
+
+**Standing constraint from here:** *do not propose architectural refinements unless implementation exposes new evidence that the current architecture is insufficient.* **Already binding via ES-002.1** (only a NO carrying implementation evidence of insufficiency opens an ADR/ARB discussion) **and the methodology freeze**; recorded here as the handover's terms, not as a third home.
+
+**Identifiers named in the handover:** authorization **R-65** · acceptance **R-66**. **Authorization itself has not been issued.**
+
+### Protected boundaries — engineering stops and refers if any is touched
+
+| Boundary | Position |
+|---|---|
+| Deletion decisions | **Audit / Retention owns the guard** |
+| EPW Resolution capability | **Election owns it** — consumed, not modified |
+| Adjudication | **unchanged** — supplies MAD as configuration |
+| Bounded-context ownership · capability ownership | **no change** |
+| Tactical model | **no change** — VO · service · port consumed only |
+
+**The slice was verified to need none of them.**
+
 ## Standing position
 
 **Slice 7C is architecturally ready and governance-blocked. The first authorized activity is RED, and it begins only after C-1…C-4 are disposed and authorization issues.** **No implementation has been performed.**
