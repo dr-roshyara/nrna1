@@ -4,7 +4,7 @@
 
 **Date:** 2026-08-02 · **Prepared by:** Principal Architect / DDD Steward / Recording Architect
 **Purpose:** determine whether WP-4's implementation satisfies its authorized scope and preserves the approved architecture.
-**Status:** **RECOMMENDATION ONLY — no ruling issued. Acceptance is the ARB's act (R-34).**
+**Status:** ✅ **SPLIT APPROVED (R-68) · WP-4A ACCEPTED (R-69) — ARB, 2026-08-02.** Both recommendations were adopted; the rulings are recorded in the register.
 
 > **This review exists because `2026-08-02-wp4-state-correction.md` established that WP-4 is not awaiting authorization — it is awaiting acceptance.** **Triple qualification was performed 2026-08-02** (`.claude/plans/WP-4-apm-wiring.md` §Triple Qualification).
 
@@ -125,13 +125,13 @@
 
 ## 7. Recommendation
 
-> **The ARB is recommended to adopt the §1 split as written and to accept WP-4A** — the `(Adjudication, ChallengeRouted)` inbox handler and its consumer-side registration — **leaving §WP-4 open until WP-4B, WP-4C and WP-4D are disposed of.**
+> ✅ **ADOPTED — R-68 (split) and R-69 (acceptance), 2026-08-02.** **The ARB was recommended to adopt the §1 split as written and to accept WP-4A** — the `(Adjudication, ChallengeRouted)` inbox handler and its consumer-side registration — **leaving §WP-4 open until WP-4B, WP-4C and WP-4D are disposed of.**
 >
 > **Dependency order matters: WP-3A's published language is what WP-4 consumes. Accept WP-3A first.**
 >
 > **Engineering supplied the evidence; architecture supplies this recommendation; the ARB decides.**
 
-**Identifier:** **not assigned here.** **R-67 was reserved for *WP-4 authorization*, and authorization is moot.** **Rulings are not minted by inference (R-34).**
+**Identifiers:** **R-68** (Architecture Governance · Approval — the subdivision) and **R-69** (Delivery Governance · Acceptance — WP-4A). **Two acts, deliberately not merged: the subdivision changes what the roadmap means; the acceptance disposes of delivered work. Recording them as one ruling would hide the first inside the second.**
 
 ---
 

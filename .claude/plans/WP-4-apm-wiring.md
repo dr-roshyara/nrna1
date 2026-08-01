@@ -1,6 +1,6 @@
 # Work Plan — WP-4: APM wiring (Adjudication consumes `ChallengeRouted`)
 
-**Created:** 2026-07-31 · **Status:** **GREEN COMPLETE + GATES + TRIPLE QUALIFICATION — AWAITING ARB SLICE ACCEPTANCE.** *(Header corrected 2026-08-02: it read "OPEN — G-2 DECIDED; next step is RED" for two days after GREEN landed, and a governance commission was convened on that stale line. See `engineering/verification/reports/2026-08-02-wp4-state-correction.md`.)*
+**Created:** 2026-07-31 · **Status:** ✅ **WP-4A ACCEPTED AND CLOSED — R-69 (ARB, 2026-08-02), after R-68 subdivided WP-4 into WP-4A…WP-4D. §WP-4 REMAINS OPEN on WP-4B (conclude→issue seam), WP-4C (`AdjudicationFailureDeclared`) and WP-4D (authority-decision intake port).** *(Header corrected 2026-08-02: it read "OPEN — G-2 DECIDED; next step is RED" for two days after GREEN landed, and a governance commission was convened on that stale line. See `engineering/verification/reports/2026-08-02-wp4-state-correction.md`.)*
 **Executed under:** `.claude/IMPLEMENTATION_PROTOCOL.md` (OPERATIONAL, frozen)
 **Governing map for the crossing:** `docs/architecture/Cross_Context_Integration_Contract.md` (navigation) → canonical rules in ADR-T16 · ADR-T3/T4/T5 · ADR-MP-06 · PB-006
 
@@ -230,4 +230,4 @@ Nothing new but the handler and its registration. `ChallengeRef` · the PM · th
 
 **AD-007** — relay failure path × single-transaction harness; **environment-specific, not architectural**; production code correctly unchanged. **AD-008** — 17 pre-existing Membership feature failures, **git-stash-verified** as identical with WP-4 stashed.
 
-**Progress:** ✔ G-2 · ✔ RED · ✔ **GREEN** · ✔ gates · ✔ dev guide · ✔ **triple qualification** · ⏳ ARB slice acceptance.
+**Progress:** ✔ G-2 · ✔ RED · ✔ **GREEN** · ✔ gates · ✔ dev guide · ✔ **triple qualification** · ✅ **ARB slice acceptance — R-68 (split) + R-69 (WP-4A accepted), 2026-08-02. WP-4A IS CLOSED; 4B/4C/4D remain.**
