@@ -104,6 +104,36 @@ Next governance cycle
 
 **Unchanged from the path Phase II established.** *No new instrument is created by this charter.*
 
+### 6.1 ⭐ The three assets and their DISTINCT responsibilities *(Authority, 2026-08-01)*
+
+| Asset | Responsibility |
+|---|---|
+| **KnowledgeOS** | *defines* **reusable engineering governance** |
+| **PKS** | *holds* **PublicDigit's structured knowledge** |
+| **⭐ PublicDigit** | ***the REFERENCE IMPLEMENTATION and EVIDENCE GENERATOR — the proving ground, not merely the consumer*** |
+
+```
+KnowledgeOS  →  PublicDigit engineering  →  Operational evidence  →  PKS  →  KnowledgeOS refinement
+      ▲                                                                              │
+      └──────────────────────────────────────────────────────────────────────────────┘
+```
+
+> ### **PublicDigit is the VALIDATION ENGINE for KnowledgeOS.**
+
+***Each asset gains a distinct responsibility and the evidence flow between them becomes explicit — stronger than treating the three as independent projects.***
+
+### 6.2 ⚠️ What this does NOT decide — **the loop is materially D-3**
+
+| | |
+|---|---|
+| ⛔ **It does NOT decide EAD-1's D-3** | *"should the evolution rule become governing?" — **the loop above IS that rule, closed into a cycle**. Recording it as governing here would decide D-3 BY ASSERTION* |
+| ⛔ **It does NOT decide D-5** | *the three names do not become governed terms by being given roles* |
+| ✅ **What it IS** | **Phase III's OPERATING POSTURE** — how the work is organized, adopted at Authority direction |
+
+> ### **⚠️ EAD-1 §E.1 found this link **NEVER TRAVERSED**: the corpus's own provenance runs the other way — the framework was built from REVIEW PRACTICE, not from product evidence.**
+
+***So the loop is not a description of how the corpus came to exist. It is the FIRST TRAVERSAL, and Phase III is the traversal. That is precisely why D-3 must stay open: the traversal is the evidence that would decide it, and it has not happened yet.***
+
 ---
 
 ## 7. Operating Rules
@@ -115,6 +145,9 @@ Next governance cycle
 | **Deferred matters stay deferred** | *PMR-2 · PMR-3 · PMR-7b/7c · PMR-8 · ES-005.4 · ES-001..ES-006's adoption — each on its own stated condition* |
 | **⛔ Phase III must not become Phase II under a new name** | ***If a Phase III act produces a governance artifact without producing operational evidence, that act has failed the mandate — regardless of the artifact's quality*** |
 | **Administrative work is normal maintenance** | *editorial cleanup · repository organization · documentation · onboarding · indexes are no longer constitutional work* |
+| **⭐ Effort goes to PublicDigit engineering** | ***no further governance document unless NEW EVIDENCE requires it. Per §6.1, PublicDigit is where the evidence is generated*** |
+| **⭐ Observe during real feature work** | *did the governance help? · **which rule PREVENTED a defect?** · **which rule created UNNECESSARY FRICTION?** · which capability is missing? · **which assumption turned out WRONG?*** |
+| **⏳ Give it TIME before changing KnowledgeOS** | ***months of real engineering, not weeks — the strengthened admission filter already requires REPEATED evidence, and a single project's early impressions are not repetition*** |
 
 ---
 
@@ -126,4 +159,4 @@ Next governance cycle
 
 ---
 
-*Traceability: **PKS PHASE III OPERATIONAL VALIDATION CHARTER ISSUED** (Authority mandate, 2026-07-31), label collision-checked under PMR-10 · **a NEW GOVERNANCE ACT establishing a new cycle's purpose and success criteria, expressly not a continuation of Phase II** · guiding principle: ***internal soundness establishes nothing about whether the methodology WORKS***, and Operational Evidence stands at zero-independent because **a certification dimension derives credibility from being outside the unilateral control of the programme it certifies — only USE can move it** · purpose, scope, success criteria and feedback path taken from the mandate as issued · **⚠️ §5.1 TWO GUARDS ADDED under the programme's own discipline: (1) the criteria must ADMIT NEGATIVE FINDINGS — *every criterion is written in the improvement direction, and a validation that can only observe success is not a validation* — with each negative form stated; (2) they are OBSERVATIONS, NOT TARGETS — *a criterion treated as a target can be met by changing behaviour to satisfy the measure*** · **§5.2 HONEST FAILURE DIRECTION named in advance: the baseline's likeliest failure is not being WRONG but being TOO EXPENSIVE FOR THE VALUE IT DELIVERS — correct governance no one can afford to follow** · **§7: backlog items wait for a constitutional reason to move; deferrals stay deferred; and *if a Phase III act produces a governance artifact without producing operational evidence, that act has FAILED THE MANDATE regardless of the artifact's quality*** · operational use may begin; no further governance act is required to start.*
+*Traceability: **PKS PHASE III OPERATIONAL VALIDATION CHARTER ISSUED** (Authority mandate, 2026-07-31), label collision-checked under PMR-10 · **a NEW GOVERNANCE ACT establishing a new cycle's purpose and success criteria, expressly not a continuation of Phase II** · guiding principle: ***internal soundness establishes nothing about whether the methodology WORKS***, and Operational Evidence stands at zero-independent because **a certification dimension derives credibility from being outside the unilateral control of the programme it certifies — only USE can move it** · purpose, scope, success criteria and feedback path taken from the mandate as issued · **⚠️ §5.1 TWO GUARDS ADDED under the programme's own discipline: (1) the criteria must ADMIT NEGATIVE FINDINGS — *every criterion is written in the improvement direction, and a validation that can only observe success is not a validation* — with each negative form stated; (2) they are OBSERVATIONS, NOT TARGETS — *a criterion treated as a target can be met by changing behaviour to satisfy the measure*** · **§5.2 HONEST FAILURE DIRECTION named in advance: the baseline's likeliest failure is not being WRONG but being TOO EXPENSIVE FOR THE VALUE IT DELIVERS — correct governance no one can afford to follow** · **§7: backlog items wait for a constitutional reason to move; deferrals stay deferred; and *if a Phase III act produces a governance artifact without producing operational evidence, that act has FAILED THE MANDATE regardless of the artifact's quality*** · **⭐ §6.1 ADDED (Authority, 2026-08-01) — THE THREE ASSETS AND THEIR DISTINCT RESPONSIBILITIES: KnowledgeOS *defines* reusable engineering governance · PKS *holds* PublicDigit's structured knowledge · **PublicDigit is the REFERENCE IMPLEMENTATION and EVIDENCE GENERATOR — the VALIDATION ENGINE for KnowledgeOS, a proving ground rather than merely a consumer**, closing the loop KnowledgeOS → PublicDigit engineering → operational evidence → PKS → KnowledgeOS refinement** · **⚠️ §6.2 SCOPED: the loop IS materially EAD-1's D-3 ("should the evolution rule become governing?"), so recording it as governing would DECIDE D-3 BY ASSERTION — it is adopted as Phase III's OPERATING POSTURE only; D-3 and D-5 both stay OPEN, and the three names do not become governed terms by being given roles** · **⭐ EAD-1 §E.1 found this link NEVER TRAVERSED — the corpus's provenance runs the OTHER way, built from review practice rather than product evidence; the loop is therefore the FIRST TRAVERSAL and Phase III IS that traversal, which is exactly why D-3 must stay open: the traversal is the evidence that would decide it** · **§7 gains three rules: effort goes to PublicDigit engineering with no further governance document unless new evidence requires it · five observation questions during real feature work (which rule PREVENTED a defect · which created UNNECESSARY FRICTION) · MONTHS not weeks before changing KnowledgeOS, since the strengthened filter requires REPEATED evidence and one project's early impressions are not repetition** · operational use may begin; no further governance act is required to start.*

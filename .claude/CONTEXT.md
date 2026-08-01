@@ -362,3 +362,10 @@ details and other hooks: `.claude/scripts/README.md`.
 
 **▶ PHASE III NEXT: run the experiments during real PublicDigit work. No more governance documents.**
 
+### ⭐ Three assets fixed (Charter §6.1, Authority 2026-08-01)
+**KnowledgeOS** *defines governance* · **PKS** *holds PublicDigit knowledge* · **PublicDigit = REFERENCE IMPLEMENTATION + EVIDENCE GENERATOR = the VALIDATION ENGINE.** Loop: `KnowledgeOS → PublicDigit engineering → operational evidence → PKS → KnowledgeOS refinement`.
+
+**⚠️ The loop IS materially EAD-1's D-3 — adopted as Phase III's OPERATING POSTURE only. D-3 and D-5 stay OPEN; recording it as governing would decide D-3 by assertion. EAD-1 §E.1 found the link NEVER TRAVERSED (corpus provenance runs the other way, from review practice) — so this is the FIRST TRAVERSAL and Phase III IS it.**
+
+**▶ NOW: PublicDigit engineering only. No further governance document unless new evidence requires it. MONTHS before changing KnowledgeOS.**
+
