@@ -37,7 +37,15 @@
 
 **Four of five map cleanly.** The proposed lifecycle is very largely a restatement of ES-006.1 in different words — **and adopting the different words would leave the programme with two vocabularies for one ladder.**
 
-## 2. The genuine gap — narrower than "a missing state"
+## 2. ~~The genuine gap~~ — ✍️ **CORRECTED 2026-08-01: there is no placement gap either**
+
+> **This section concluded that placement was the genuine gap. That is wrong.** **`ES-005.3 — The Placement Litmus` (ARB 2026-07-10)** already governs it: *"Research artifacts remain project-side (`docs/implementation/`) until promoted through qualification (ES-006 ladder)."*
+>
+> **All four commissioned deliverables were already canonical. The rules were not absent — they were not followed.** See `engineering/verification/reports/2026-08-01-engineering-placement-policy-assessment.md`.
+>
+> *The observation below (two maturities in one directory) stands as a **symptom**; it is not the underlying defect.*
+
+### The symptom, as originally recorded
 
 **ES-006 governs *maturity* thoroughly. It does not make *location* carry a maturity signal.**
 
