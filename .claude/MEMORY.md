@@ -73,6 +73,15 @@
 - **The guard obeys its own litmus:** it is runtime session tooling, so **ES-005.3 puts it in the runtime mount (`.claude/scripts/`), not in `engineering/`.**
 - **Non-blocking on purpose:** creating under `engineering/` is legitimate when governed, and **the hook cannot evaluate the answers to its own questions — only the author can.** A wall that is always dismissed teaches less than a checkpoint that is read *(same posture as `discipline-gate-reminder.sh`)*.
 
+## ⚠️ AMENDING an ES is NOT covered by the commissioned-exception precedent (verified 2026-08-01)
+
+- **R-37 operational terms: `engineering/` permits ONLY bug fixes, broken-link fixes, typo corrections.** The recognized workaround is the **explicitly-commissioned exception**, cited in a "Freeze note" row (`AI_Engineering_Platform_Architecture_Baseline_Current_State.md`, the Engineering Theory reference, the 2026-07-12 reports).
+- **BUT BOTH PRECEDENTS JUSTIFY THEMSELVES AS DESCRIPTIVE: "introduces NO new concept, rule, capability, or structure — it RECORDS WHAT ALREADY EXISTS." AN ES AMENDMENT CHANGES A RULE. So PREPARING a package is covered; APPLYING it (editing `engineering/governance/ES-005-Repository.md`) IS NOT — no precedent exists for a standards amendment under the freeze.**
+- **THEREFORE: APPROVING AN AMENDMENT PACKAGE ≠ PERMISSION TO APPLY IT. Applying needs its own explicit R-37 authorization.** *(This corrects my earlier "Package 1 is not blocked" — accurate about the REORGANIZATION clause, incomplete about the OPERATIONAL TERMS.)*
+- **`bounded_context` vs `Domain` IS NOT A RENAME — they are two properties at two granularities and BOTH ARE VALID** (bounded contexts genuinely live INSIDE domains; 11 inside PublicDigit). **ADD `domain:` + a new `schema/domains.yaml` (none exists; `bounded-contexts.yaml` does); KEEP `bounded_context:` unchanged, `global` retains its role.** **Renaming a correct field to fix a MISREADING would destroy a distinction the schema had right.**
+- **CARRIER RECOMMENDATION: the ARTIFACT'S OWN HEADER is the carrier; the card schema supplies the FIELD VOCABULARY; cards are NOT extended repo-wide** (40 cards today; repo-wide would oblige ~900 documents, and duplicating classification in card AND header strains **ES-005.4 never-a-copy**).
+- **THE AMENDMENT'S ONE REAL INCOMPATIBILITY: on issuance, 92 artifacts (89 PKS + 3 KnowledgeOS) are IMMEDIATELY NON-CONFORMANT — their derived location is a domain root that does not exist, and creating it is Package 2, blocked. PREFER recording a TRANSITIONAL NON-CONFORMANCE (the R-39 pattern) over a conditional fallback that makes the rule SELF-NULLIFYING.** A standard that records its own non-conformance is enforceable; one that dissolves on contact is not.
+
 ## The APPROVED classification model — Location is an OUTPUT, Domain is a MEMBER (2026-08-01)
 
 ```
