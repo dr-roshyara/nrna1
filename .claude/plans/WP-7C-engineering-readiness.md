@@ -3,7 +3,7 @@
 **Date:** 2026-08-01 · **Prepared by:** Engineering AI, under Principal Architect discipline
 **Classification:** **Work Plan** — a pre-approval execution-state artifact. **Role: Runtime** (ES-004.3), therefore the **runtime mount** (ES-005.1), not a documentation root.
 **Note:** at EP-01 approval its content is promoted into the governed WP-7 Engineering Plan (ES-004.2, Plan Concept Decision Paper). **It exists beside `WP-7-retention-alignment.md`, not instead of it.**
-**Status:** readiness artifact. **Slice 7C is unauthorized. No implementation has begun.**
+**Status:** ⏸️ **AWAITING AUTHORIZATION — work plan FROZEN.** No further architectural, governance or methodology change until authorization issues. **Slice 7C is unauthorized. No implementation has begun.**
 
 > **Correction carried forward.** My earlier statement *"WP-8 is undefined"* overreached. **The evidence supports only: no accepted artifact defining WP-8 was found in the sources examined** (the WP-7 plan, the backlog, CONTEXT). **Absence in searched artifacts is not non-existence** — and the narrower claim is the one the evidence supports. **Consequence, also narrowed: if WP-8 is to become the next authorized work package, it should be defined before authorization. It is not a blocker today.**
 
@@ -157,6 +157,82 @@
 > **Architecture does not block Slice 7C. The sole remaining prerequisite is governance, and it is two decisions on the critical path.**
 
 **Nothing was redesigned to produce this statement.**
+
+## ARB Authorization Package — minimum required to dispose C-1 and C-3
+
+**Architecture has finished speaking. This is its input to governance; the decisions are the ARB's.**
+
+### C-1 · authorization wording
+
+| Option | Effect |
+|---|---|
+| **(a) as originally proposed** — *"shall not alter deletion mechanics"* | **forecloses 7C's own approved acceptance and test list** (`--days` no longer overrides the invariant; nothing inside an open EPW is deleted) |
+| **(b) precision** — *"shall not alter **how deletion is performed** (folder traversal, filesystem removal, reporting) … the guard gates the deletion **decision**"* | authorization and approved acceptance are consistent; mechanics stay frozen |
+| **(c)** other wording | ARB's to formulate |
+
+**Architecture's only constraint: the wording must leave the approved acceptance criterion achievable.**
+
+### C-3 · does authorization cover amending accepted tests?
+
+**Unavoidable either way** — `AuditCleanupTest` creates directories with no `Election` records, which the approved criterion requires to be **retained**, while the tests assert deletion.
+
+| Option | Effect |
+|---|---|
+| **(a) silent** | engineering amends under general RED discretion; **the change to accepted behavioural evidence is invisible in the authorization** |
+| **(b) explicit, limited to what the criterion requires** | visible and bounded at authorization |
+| **(c) separately reviewed step** | highest visibility; adds a review cycle inside the slice |
+
+### Ready to issue — two slots, both the ARB's
+
+> **Slice 7C is authorized to implement the decision service that determines whether evidence may be deleted**, consuming only the **Evidence Preservation Window Resolution** capability.
+>
+> **⟨C-1 wording⟩**
+>
+> **⟨C-3 disposition on amending `tests/Feature/Audit/AuditCleanupTest.php`⟩**
+>
+> **Slice 7C shall not absorb, implement or anticipate WP-7B-R1** (independent under R-60).
+>
+> **Authorization covers implementation and acceptance only; release requires a named announcement owner (C-2, not on the engineering critical path).**
+>
+> **Sequence: RED → GREEN → VERIFY → ACCEPT. WP-7 closes on acceptance.**
+
+**C-4 is needed only to record the ruling under a non-reused identifier.**
+
+## RED Backlog — prepared, NOT executed
+
+**No test written · no code written · no production source modified.**
+
+### New failing tests (4) — the approved list
+
+| # | Test | Intent |
+|---|---|---|
+| 1 | open window ⇒ **retained** | a folder whose election's EPW is open survives cleanup |
+| 2 | closed window ⇒ **deleted** | the guard releases once the window closes — it is a guard, not a freeze |
+| 3 | unmappable folder ⇒ **retained** | fail closed when folder→election resolution yields nothing |
+| 4 | **`--days` no longer overrides the invariant** | an age cutoff cannot delete inside an open window |
+
+### Existing tests requiring authorized amendment (gated on C-3)
+
+**`tests/Feature/Audit/AuditCleanupTest.php`** — six methods; **fixtures create bare directories with no `Election` records.**
+
+| Method | Expected effect |
+|---|---|
+| `test_it_deletes_folders_older_than_specified_days` | **will fail** — asserts deletion of an unmappable folder |
+| `test_it_respects_custom_retention_days` | **will fail** — same |
+| `test_it_reports_deletion_count` | **will fail** — same |
+| `test_it_keeps_folders_within_retention_window` | **expected to pass** — asserts retention |
+| `test_it_handles_empty_audit_directory` | **expected to pass** — no folders |
+| `test_it_handles_nonexistent_audit_directory` | **expected to pass** — no directory |
+
+**Amendment limited to giving the three deletion-asserting fixtures a resolvable election with a closed window.** **No assertion is weakened; no test is deleted.**
+
+### Implementation boundary
+
+**`app/Console/Commands/AuditCleanup.php` only.** Folder traversal, filesystem removal and reporting unchanged — the guard gates the **decision**.
+
+### Acceptance criteria
+
+**Nothing inside an open EPW is deleted · deletion resumes after closure · an unresolvable folder→election mapping is not deleted · `composer merge-gate` green · developer guide updated.**
 
 ## Standing position
 
