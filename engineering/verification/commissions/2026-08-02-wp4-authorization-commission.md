@@ -130,15 +130,17 @@ WP-3 (ChallengeRouted pub) ─────────┘
 
 **Recorded for evaluation after the decision, not now. Nothing is promoted, and a single occurrence remains an observation.**
 
-## 9. On the review pattern
-
-**The flow used here has demonstrated strong architectural quality in this exercise. It is a *candidate* pattern.**
-
-> **Promotion to a reusable Engineering Standard requires successful application across multiple commissions.** **The pattern should be *exercised consistently* in future authorization commissions — it should not yet be called the reference model.** **Exercised once; extraction after repeated successful use (ES-006.1).**
-
-## 10. Not in this commission
+## 9. Not in this commission
 
 WP-8 authorization (blocked on WP-4) · the C-2 release owner · **WP-3B's deferral** · **WP-7B-R1** — for which **R-60 *opened* the package (Delivery Governance · Approval, *"opened, not delivered"*) rather than authorizing execution**, unlike R-65's *"Slice 7C is authorized to implement"*. **Recorded as a distinction, not raised for decision here.**
+
+---
+
+> ## Architecture has completed its contribution.
+>
+> ## No architectural blocker has been identified.
+>
+> ## The remaining act is an ARB decision.
 
 ---
 
