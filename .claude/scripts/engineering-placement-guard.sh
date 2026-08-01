@@ -1,27 +1,37 @@
 #!/usr/bin/env bash
-# PreToolUse hook (Write|Edit) — NON-BLOCKING checkpoint for canonical placement.
-#
-# Fires when a NEW file is about to be created under engineering/.
+# PreToolUse hook (Write|Edit) — NON-BLOCKING checkpoint for a governed action:
+# creating a new artifact under engineering/.
 #
 # WHY THIS EXISTS. On 2026-08-01 a methodology module was written straight into
-# engineering/knowledge/methodology/ — the canon directory — while sitting at the
-# Research stage of the ES-006.1 promotion ladder, never piloted and never
-# qualified. Three successive commissions then searched for the "missing rule"
-# that would have prevented it. There was none: ES-006.1 governs maturity and
-# ES-005.3 governs placement, and both already said what to do.
+# the canon directory while still at the first stage of the promotion ladder.
+# Three commissions then searched for the "missing rule" that would have
+# prevented it. There was none — the governing standards already said what to do
+# and were simply not consulted. The defect was not absent governance but a
+# governed action performed without consulting its governing standards. Rules
+# could not fix that; only the workflow can.
 #
-# The defect was NOT absent governance. It was a governed action performed
-# without consulting its governing standards. Rules cannot fix that — the rules
-# were already correct. Only the workflow can, which is what this is.
+# ── DESIGN RULE THIS SCRIPT OBEYS ──────────────────────────────────────────
+#   RUNTIME TOOLING ENFORCES GOVERNANCE. IT NEVER DUPLICATES GOVERNANCE.
 #
-# Placement of this guard, by its own litmus: it is runtime session tooling, so
-# ES-005.3 puts it in the runtime mount (.claude/scripts/), NOT in engineering/.
+#   So this hook asks GENERIC questions and DERIVES which standards answer them
+#   by reading the canonical index at runtime. It quotes no rule text and hard-
+#   codes no standard number. If a standard is renumbered, superseded or
+#   rehomed, the hook follows automatically — because it reads canon rather than
+#   restating it. An earlier version embedded the rule text and the ES numbers;
+#   that made runtime tooling a second home for governance, which is the very
+#   duplication the standards forbid.
 #
-# NON-BLOCKING by design (exit 1, never 2): creating a file under engineering/ is
-# legitimate when governed. The hook cannot evaluate the answers to its own
-# questions — only the author can — and a wall that is always dismissed teaches
-# less than a checkpoint that is read. Same posture as
-# discipline-gate-reminder.sh: "a checkpoint, not a wall".
+#   Not registered in .claude/platform/registry.yaml: R-42 ruled the registry
+#   governs platform assets only, and a project-side workflow hook has no AIP
+#   lineage. Registering it would require fabricating traceability.
+#
+# Placement of this script, by the same litmus it enforces: runtime session
+# tooling belongs in the runtime mount, not in engineering/.
+#
+# NON-BLOCKING (exit 1, never 2): creating under engineering/ is legitimate when
+# governed, and the hook cannot evaluate the answers to its own questions — only
+# the author can. A wall that is always dismissed teaches less than a checkpoint
+# that is read. Same posture as discipline-gate-reminder.sh.
 set -u
 
 input="$(cat 2>/dev/null)"
@@ -38,14 +48,12 @@ target="$(php -r '
   if ($file === "") exit(0);
   $file = str_replace(chr(92), "/", $file);
   if (strpos($file, "/engineering/") === false && strpos($file, "engineering/") !== 0) exit(0);
-  // Only NEW files: an edit to something already placed is not a placement act.
-  if (file_exists($file)) exit(0);
+  if (file_exists($file)) exit(0);   // an edit is not a placement act
   echo $file;
 ' "$input" 2>/dev/null)"
 
 [ -z "$target" ] && exit 0
 
-# Patterns must match BOTH absolute and repo-relative paths — the tool sends either.
 case "$target" in
   engineering/verification/reports/*|*/engineering/verification/reports/*)
       exit 0 ;;                                     # verification output, not a governed placement
@@ -54,33 +62,39 @@ case "$target" in
   *)  canon=0 ;;
 esac
 
+# Derive the governing standards from the canonical index — never assert them.
+index="${CLAUDE_PROJECT_DIR:-.}/engineering/governance/STANDARDS_INDEX.md"
+derive() {  # $1 = concept named in the index's "Hosts" column
+  [ -f "$index" ] || return 0
+  grep -i -- "$1" "$index" 2>/dev/null \
+    | grep -o '\[ES-[0-9]\{3\}\]([^)]*)' | head -1 \
+    | sed 's/^\[\(ES-[0-9]*\)\](\(.*\))$/\1 — engineering\/governance\/\2/'
+}
+maturity="$(derive 'promotion ladder')"
+placement="$(derive 'placement litmus')"
+
 {
   printf '\n'
-  printf 'CANONICAL PLACEMENT CHECKPOINT — new file under engineering/\n'
+  printf 'GOVERNED ACTION — creating a new artifact under engineering/\n'
   printf '   %s\n' "$target"
-  if [ "$canon" = "1" ]; then
-    printf '\n   *** This is the CANON directory. It is for ADOPTED Engineering Standards. ***\n'
+  [ "$canon" = "1" ] && printf '\n   *** Canon directory: reserved for ADOPTED standards. ***\n'
+  printf '\n'
+  printf '   Answer all four before writing:\n'
+  printf '     1. What governs the artifact MATURITY?%s\n' "${maturity:+  -> $maturity}"
+  printf '     2. What governs its PLACEMENT?%s\n'        "${placement:+  -> $placement}"
+  printf '     3. What EVIDENCE supports this location — at what maturity is this artifact,\n'
+  printf '        and does that maturity belong here?\n'
+  printf '     4. If it does not comply, what EXCEPTION authorizes it, and is that exception\n'
+  printf '        ruled, named as an exception, and given a validation expectation?\n'
+  if [ -z "$maturity$placement" ]; then
+    printf '\n   (Could not read %s — consult it directly.)\n' "engineering/governance/STANDARDS_INDEX.md"
   fi
   printf '\n'
-  printf '   Placement is a GOVERNED ACTION. Answer all four before writing:\n'
-  printf '     1. Which standard governs MATURITY?    -> ES-006.1 promotion ladder\n'
-  printf '        Research -> Pilot -> Qualification -> Engineering Standard -> Stable Capability\n'
-  printf '     2. Which standard governs PLACEMENT?   -> ES-005.3 Placement Litmus\n'
-  printf '     3. Does this location COMPLY?\n'
-  printf '        ES-005.3: "Research artifacts remain project-side (docs/implementation/)\n'
-  printf '                   until promoted through qualification (ES-006 ladder)."\n'
-  printf '        Maturity governs, not reusability: domain-independent but UNPROVEN is\n'
-  printf '        still Research, and Research does not belong in engineering/.\n'
-  printf '     4. If it does not comply, is there an APPROVED EXCEPTION on the record?\n'
-  printf '        Precedent: R-39 — ruled, named as an exception, given a validation\n'
-  printf '        expectation. All three, or it is not an exception.\n'
-  printf '\n'
   printf '   Record one outcome: COMPLIANT / APPROVED EXCEPTION / REQUIRES ARB DECISION.\n'
-  printf '   If the answer is the third, stop and refer it.\n'
+  printf '   If it is the third, stop and refer it.\n'
   printf '\n'
-  printf '   Provenance: on 2026-08-01 a Research-stage module was written into the canon\n'
-  printf '   directory. The rules already forbade it; they were simply not consulted.\n'
-  printf '   (non-blocking checkpoint — the obligation is ES-005.3 and ES-006.1 themselves)\n'
+  printf '   (non-blocking checkpoint — the obligation is the standards themselves, which\n'
+  printf '    this hook points at and deliberately does not restate)\n'
   printf '\n'
 } 1>&2
 exit 1
