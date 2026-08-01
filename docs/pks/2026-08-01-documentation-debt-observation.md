@@ -43,6 +43,23 @@
 - **The gap survived indefinitely** because `knowledge-lint` validates `docs/knowledge/` only. **The areas carrying the debt — `developer_guide/`, `architecture_legacy/` — have no link validation at all.** Green lint was never evidence of a healthy repository.
 - **Debt is invisible until it is counted.** The count did not exist until a repo-wide scan was run for an unrelated commission.
 
+## Reusable rule — CANDIDATE, not adopted
+
+**The observation generalizes beyond this repository. Recorded as a candidate at ARB direction (2026-08-01); adoption requires the ES-006.1 ladder and an explicit ruling (R-34).**
+
+> **CANDIDATE:** *A documentation index shall not reference an artifact that does not yet exist, unless the reference is explicitly marked as planned.*
+
+**Why it is recorded here rather than in its own file.** The candidate is **cross-product** (any project could adopt it unchanged) at **research** maturity. Run through the resolver, that classification returns:
+
+```
+php scripts/doc-placement.php --scope=cross-product --maturity=research
+PENDING — placement unruled (rule: cross-product-research, ref: ADR:OQ-2).
+```
+
+> **It lands in the one cell the placement model does not yet rule** — the same cell as `engineering/knowledge/methodology/Layer_Verification_Rule.md`. **Rather than invent a home or repeat that placement, the candidate is recorded inside this observation, which is the evidence that produced it and is already correctly placed.**
+
+**⚠️ Decision-relevant consequence: the unruled cell now holds two artifacts, not one.** The stewardship decision was deferred on the explicit ground that *"the evidence is one artifact"* and one example does not justify generalizing. **That ground has changed.**
+
 ## Recommendation
 
 **Backlog item, not remediation.** The three available dispositions each change meaning and belong to an owner, not to a repair tool:

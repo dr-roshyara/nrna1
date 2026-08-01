@@ -80,6 +80,23 @@
 - **ROOT READMEs STAY ~15-20 LINES:** purpose · holds · owner · internal-layout ownership · a pointer table (policy / configuration / resolver). **Everything else belongs in the ADR.**
 - **⛔ DO NOT CREATE A NEW PRINCIPLES DOCUMENT UNDER `engineering/` (e.g. a "DAP-001"): it would be a CROSS-PRODUCT artifact at RESEARCH maturity, which the resolver returns PENDING for — EXACTLY the `Layer_Verification_Rule.md` violation. Blocked by R-38 (no new standards), R-37 (bugfix/link/typo only) and R-38's own precedent ("where existing rulings already express a constraint, INTERPRET THEM rather than add another ruling"). THE PARSIMONIOUS MOVE IS TO STATE THE PRINCIPLES IN THE ADR — the approved policy home — AND REFERENCE THEM.**
 
+## ✅ `classification -> placement` is OPERATIONALLY VALIDATED — first execution 2026-08-01
+
+- **A new artifact was CLASSIFIED FIRST and its location DERIVED by the resolver** (`--scope=product-specific --domain=pks` -> `docs/pks`), then written where the machinery said — **no path chosen, argued, or hard-coded.** Until now the model was a governance rule; **it now has an execution record.**
+- **CLAIM BOUNDED HONESTLY: ONE EXECUTION, NOT ROUTINE USE.** The platform's own L5 test — *"one script proves possibility; routine use proves capability"* — so the recorded claim is **"operationally validated, first execution"** and nothing stronger.
+- **A SECOND, WEAKER EXECUTION THE SAME DAY: the resolver returned PENDING for a cross-product research artifact AND THE RESPONSE WAS TO STOP, NOT INVENT A LOCATION. A MODEL THAT REFUSES IS AS MUCH EVIDENCE AS ONE THAT ANSWERS** — the failure mode the tooling exists to prevent, exercised for real.
+
+## ⚠️ THE UNRULED CELL NOW HOLDS TWO ARTIFACTS — the stewardship deferral's stated ground has changed (2026-08-01)
+
+- **Stewardship was deferred on an explicit basis: "the evidence is one artifact", and R-29/R-37 reject generalizing from a single example. THAT WAS CORRECT AND IT IS NO LONGER THE SITUATION.**
+- **Artifact 1: `engineering/knowledge/methodology/Layer_Verification_Rule.md`. Artifact 2: the ES candidate — *a documentation index shall not reference an artifact that does not yet exist unless explicitly marked as planned* — cross-product, research maturity, resolver returns PENDING.**
+- **THE SECOND ARRIVED WITHIN A DAY, FROM AN UNRELATED COMMISSION, AS A DIRECT CONSEQUENCE OF AN ARB INSTRUCTION: the ARB asked for a candidate, and the candidate had nowhere to go. IT WAS RECORDED INSIDE THE PKS OBSERVATION (the evidence that produced it, already correctly placed) RATHER THAN GIVEN A NEW FILE WITH NO RULED HOME.**
+- **DO NOT TREAT THIS AS A REQUEST TO DECIDE — it is a report that the deferral's stated PRECONDITION IS NOW MET.**
+
+## Abstraction waits for a SECOND CONSUMER (2026-08-01)
+
+- **ENG-008 (externalize the link-repair confidence policy) stays closed FOR A STATED REASON, not "later": it would introduce ABSTRACTION BEFORE A SECOND CONSUMER EXISTS.** `link-check.php` is the only consumer today. **R-29/R-37's reversed burden of proof applies to the platform's own TOOLING as much as to its architecture** — the same discipline that kept documentation roots as reserved namespaces rather than pre-created directories. **TRIGGER: a second consumer of the confidence model.**
+
 ## A sequencing deviation is RECORDED, not reverted (governance note precedent, 2026-08-01)
 
 - **When work was applied before its authorization but the applied content SATISFIES the criteria later approved: AUDIT IT, RECORD A GOVERNANCE NOTE, DO NOT ROLL BACK.** Reverting and re-applying reproduces the identical repository state and only launders the sequence.
