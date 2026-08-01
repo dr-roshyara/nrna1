@@ -5,7 +5,7 @@
 **Nature:** a **methodology module about the governance of change** — it classifies *which abstraction a proposed change actually modifies*, and therefore *whose authority is engaged*. It is **not** architecture, **not** a tactical-DDD rule, and it decides no design question.
 **Relationship to existing modules:** complements `DDD_Tactical_Governance_Principles.md` (tactical design) without overlapping it. That module governs *what to build*; this one governs *who may change it, and at which level*.
 **Provenance:** derived during EPIC-004 WP-7 (finding **G-1**), refined across successive ARB iterations. Promotion to a reusable artifact requested by the ARB, 2026-08-01.
-**Refinement:** 🧊 **FROZEN 2026-08-01** — no further refinement without new evidence. *(Amended three times after freezing, all at ARB direction: (1) the `Produces` column and the one-category invariant in §3; (2) **opening** moved from Delivery to Planning; (3) the categories re-derived from **lifecycle transitions**, with the artifact demoted to *evidence* of the transition rather than the organizing idea. Recorded rather than glossed: **the freeze binds the author, not the Authority** — and because the module is still unadopted, the ruling will cover this final text.)* **Frozen ≠ adopted, and the distinction is load-bearing:** *freezing* ends **my** refinement of the text; *adoption* is **the Decision Authority's act** and has not occurred. **A frozen module that is not adopted is still non-binding.** The stopping rationale is the ARB's own: successive iterations had begun improving **expression** rather than adding **explanatory power**.
+**Refinement:** 🧊 **FROZEN 2026-08-01** — no further refinement without new evidence. *(Amended three times after freezing, all at ARB direction: (1) the `Produces` column and the one-category invariant in §3; (2) **opening** moved from Delivery to Planning; (3) the categories re-derived from **lifecycle transitions**, with the artifact demoted to *evidence*; (4) **authority** made an explicit element, since categories do not act. **Four post-freeze amendments is itself worth noting: the freeze bound the AUTHOR against unprompted refinement, and every amendment came at ARB direction with a stated reason — but a module amended four times was, on the evidence, frozen before it was finished.** Recorded rather than glossed: **the freeze binds the author, not the Authority** — and because the module is still unadopted, the ruling will cover this final text.)* **Frozen ≠ adopted, and the distinction is load-bearing:** *freezing* ends **my** refinement of the text; *adoption* is **the Decision Authority's act** and has not occurred. **A frozen module that is not adopted is still non-binding.** The stopping rationale is the ARB's own: successive iterations had begun improving **expression** rather than adding **explanatory power**.
 
 ---
 
@@ -66,24 +66,48 @@ The rule evaluates changes; this applies it to **proposals**, which is where it 
 > **A governance category owns exactly one business transition. The durable artifact is the EVIDENCE that the transition occurred — it exists *because* the transition happened, never the other way round.**
 >
 > ```
-> Lifecycle transition  →  Governance category  →  Durable artifact
->       (the event)          (who owns it)           (the evidence)
+> Lifecycle transition → Governance category → Governance authority → Durable artifact
+>     (what happened)      (who governs it)      (who exercised it)     (what remains)
 > ```
+>
+> **Categories do not act. Authorities act.** A category says *whose kind of decision this is*; only an authority can exercise it. Omitting that step makes the model read as though a category could decide something, which no category can.
 >
 > **Categories are derived from lifecycle events, not from terminology.** Asking *"which label sounds right?"* is how the model drifts; asking *"which business transition is being exercised?"* is how it holds.
 
-| Category | **Lifecycle transition it owns** | Durable artifact *(evidence)* |
-|---|---|---|
-| **Architecture Governance** | a design question is **decided or interpreted** | an **approved architectural decision** |
-| **Planning Governance** | a bounded work package is **opened**, or the plan bounding it **approved** | an **approved work package** |
-| **Execution Governance** | engineering is **authorized to begin** approved work | an **authorized engineering activity** |
-| **Delivery Governance** | completed work is **accepted and closed** | an **accepted implementation baseline** |
+| Category | **Lifecycle transition it owns** | Typical authority | Durable artifact *(evidence)* |
+|---|---|---|---|
+| **Architecture Governance** | a design question is **decided or interpreted** | ARB | an **approved architectural decision** |
+| **Planning Governance** | a bounded work package is **opened**, or the plan bounding it **approved** | Decision Authority *(plans)* · ARB *(packages)* | an **approved work package** |
+| **Execution Governance** | engineering is **authorized to begin** approved work | ARB | an **authorized engineering activity** |
+| **Delivery Governance** | completed work is **accepted and closed** | ARB | an **accepted implementation baseline** |
+
+*"Typical" is deliberate: the category does not determine the authority. **Planning Governance alone spans two** — EP-01 plan approval is the Decision Authority's, opening a work package is the ARB's — which is exactly why authority must be named per transition rather than inferred from the category.*
 
 ### The invariant
 
-> **One governance category = one lifecycle transition = one durable artifact.**
+> **One lifecycle transition → one governance category → one exercising authority → one durable governance artifact.**
 >
-> **If a category cannot demonstrate all three, it is incorrectly modelled.** Two distinct transitions cannot share a category, and a category leaving no durable artifact records nothing.
+> **If any element cannot be identified, the governance model is incomplete.** Two distinct transitions cannot share a category; a category leaving no durable artifact records nothing; and a transition with no named authority **did not actually occur** — it was only described.
+
+**Every governance decision must answer four questions:**
+
+| Question | Answers with |
+|---|---|
+| **What happened?** | the lifecycle transition |
+| **Who governs it?** | the governance category |
+| **Who exercised it?** | the **authority** |
+| **What remains?** | the durable artifact |
+
+### ⚠️ A naming hazard this creates — flagged before it costs anything
+
+**"Lifecycle transition" and "transition type" are different axes with confusingly similar names.**
+
+| Axis | Answers | Values |
+|---|---|---|
+| **Lifecycle transition** | *what happened to the work* | opened · authorized · accepted · decided |
+| **Transition type** | *what kind of authority act was performed* | Approval · Ratification · Authorization · Acceptance |
+
+**They are independent** — Architecture Governance takes **Approval** for a new ADR and **Ratification** for confirming an existing one's reading, from the same lifecycle transition. **Keep both; do not collapse them.** *(Recorded now because a pair of near-identical names in a shared definition is precisely the shape that mis-filed R-52 and R-60.)*
 
 ### Root-cause record — model evolution, not human error
 
