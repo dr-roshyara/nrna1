@@ -131,7 +131,9 @@ Adoption of the **Layer Verification Rule** methodology module *(PROPOSED — WP
 | `PLAN APPROVED` | ⬜ **not established** — item 4a unruled |
 | **⇒ execution authorization legal?** | ⬜ **CANNOT BE DETERMINED** |
 
-**Governance state is unchanged from §1.2.** **No transition has occurred. RED remains BLOCKED**, and the reason is not evidence — **the evidence is complete** — it is that **no authority has been exercised.**
+**Governance state is unchanged from §1.2.** **No transition has occurred. RED remains BLOCKED**, and the reason is not evidence — **the evidence prepared for these five decisions is complete** — it is that **no authority has been exercised.**
+
+**Scope of that claim, stated precisely** *(ARB correction — the earlier wording "nothing else is incomplete" was broader than the evidence supports)*: **within the governance methodology and the WP-6→WP-7 transition, no further architectural or methodological preparation appears necessary, and the remaining recorded actions are authority decisions.** That is **not** a claim that every aspect of the programme is complete — the governance register still carries ARB-owned items, and **C-1 automation remains an engineering deliverable inside 7A.**
 
 ## 4. What is required to close this session
 

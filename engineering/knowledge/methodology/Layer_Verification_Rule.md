@@ -5,7 +5,7 @@
 **Nature:** a **methodology module about the governance of change** — it classifies *which abstraction a proposed change actually modifies*, and therefore *whose authority is engaged*. It is **not** architecture, **not** a tactical-DDD rule, and it decides no design question.
 **Relationship to existing modules:** complements `DDD_Tactical_Governance_Principles.md` (tactical design) without overlapping it. That module governs *what to build*; this one governs *who may change it, and at which level*.
 **Provenance:** derived during EPIC-004 WP-7 (finding **G-1**), refined across successive ARB iterations. Promotion to a reusable artifact requested by the ARB, 2026-08-01.
-**Refinement:** 🧊 **FROZEN 2026-08-01** — no further refinement without new evidence. **Frozen ≠ adopted, and the distinction is load-bearing:** *freezing* ends **my** refinement of the text; *adoption* is **the Decision Authority's act** and has not occurred. **A frozen module that is not adopted is still non-binding.** The stopping rationale is the ARB's own: successive iterations had begun improving **expression** rather than adding **explanatory power**.
+**Refinement:** 🧊 **FROZEN 2026-08-01** — no further refinement without new evidence. *(Amended once after freezing, at ARB direction, to add the `Produces` column and the one-category invariant in §3. Recorded rather than glossed: **the freeze binds the author, not the Authority** — and because the module is still unadopted, the ruling will cover this final text.)* **Frozen ≠ adopted, and the distinction is load-bearing:** *freezing* ends **my** refinement of the text; *adoption* is **the Decision Authority's act** and has not occurred. **A frozen module that is not adopted is still non-binding.** The stopping rationale is the ARB's own: successive iterations had begun improving **expression** rather than adding **explanatory power**.
 
 ---
 
@@ -61,12 +61,18 @@ The rule evaluates changes; this applies it to **proposals**, which is where it 
 
 **Canonical category definitions** *(this is their single home — cite, never restate)*:
 
-| Category | Governs |
-|---|---|
-| **Architecture Governance** | design decisions and their interpretation |
-| **Planning Governance** | approval of a plan as the binding statement of intended work |
-| **Delivery Governance** | **acceptance and progression of bounded work packages through the engineering lifecycle** |
-| **Execution Governance** | authorization for engineering to begin authorized work |
+| Category | Governs | **Produces** |
+|---|---|---|
+| **Architecture Governance** | design decisions and their interpretation | **architectural decisions** |
+| **Planning Governance** | approval of a plan as the binding statement of intended work | **approved implementation plans** |
+| **Delivery Governance** | **acceptance and progression of bounded work packages through the engineering lifecycle** | **accepted work-package baselines** |
+| **Execution Governance** | authorization for engineering to begin authorized work | **authorized engineering work** |
+
+**The `Produces` column is the operative one when classifying:** *what does this transition leave behind?* A category that produced nothing durable was not a governance act.
+
+> ### **Invariant: every governance transition belongs to exactly ONE governance category.**
+>
+> A transition that appears to belong to two is **two transitions**, and they require **two authority acts**. *(This is the general form of DD-1, where "approve the plan and authorize execution" was one vote spanning Planning and Execution governance — the split was not stylistic, it was this invariant asserting itself.)*
 
 **Naming note:** prefer **Delivery Governance** over "Programme Governance" — *programme* still reads as portfolio, funding or schedule governance, whereas the definition above fixes where delivery begins and ends: **it starts at a bounded work package and ends at its acceptance or progression.**
 
