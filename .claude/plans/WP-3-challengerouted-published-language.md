@@ -1,6 +1,6 @@
 # Work Plan — WP-3: `ChallengeRouted` as published language + correlation-mint relocation
 
-**Created:** 2026-07-30 · **Status:** **WP-3A: GREEN COMPLETE + GATES + TRIPLE QUALIFICATION — AWAITING ARB SLICE ACCEPTANCE. WP-3B: DEFERRED** (needs a routing application service). *(Header corrected 2026-08-02 — it still read "next step is RED".)*
+**Created:** 2026-07-30 · **Status:** ✅ **WP-3A: ACCEPTED AND CLOSED — R-67 (ARB, 2026-08-02), no condition attached. WP-3B: DEFERRED** (needs a routing application service). *(Header corrected 2026-08-02 — it still read "next step is RED".)*
 **Executed under:** `.claude/IMPLEMENTATION_PROTOCOL.md` (**OPERATIONAL, frozen**) — first work package to run start-to-finish under a written, frozen protocol.
 
 ## Phase 1 — Commission Reset
@@ -285,4 +285,4 @@ GREEN is complete only when every row above has its evidence.
 
 **`Canonical_Event_Catalog_v1.0.md` is 🧊 FROZEN and still marks `ChallengeRouted` — with `ChallengeAdjudicated` and `ChallengeResolved` — as `internal`.** Correcting it requires a **v1.1 catalog, an ARB act**. WP-3A recorded the staleness and correctly did not edit a frozen artifact. **Whether it is material to acceptance is a governance question, not an engineering one.**
 
-**Progress:** ✔ RED · ✔ **GREEN** · ✔ **merge-gate** · ✔ dev guide · ✔ **triple qualification** · ⏳ ARB slice acceptance.
+**Progress:** ✔ RED · ✔ **GREEN** · ✔ **merge-gate** · ✔ dev guide · ✔ **triple qualification** · ✅ **ARB slice acceptance — R-67, 2026-08-02. WP-3A IS CLOSED.**

@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-02 · **Prepared by:** Principal Architect / DDD Steward / Recording Architect
 **Purpose:** determine whether WP-3A's implementation satisfies its authorized scope and preserves the approved architecture.
-**Status:** **RECOMMENDATION ONLY — no ruling issued. Acceptance is the ARB's act (R-34).**
+**Status:** ✅ **ACCEPTED — R-67 issued by the ARB, 2026-08-02.** The recommendation below was adopted **without condition**; the ruling is recorded in the register.
 
 > **Engineering ended at VERIFY on 2026-07-30. Triple qualification was performed 2026-08-02** (`.claude/plans/WP-3-challengerouted-published-language.md` §Triple Qualification). **This review consumes that evidence rather than reproducing it.**
 
@@ -106,13 +106,13 @@
 
 ## 8. Recommendation
 
-> **The ARB is recommended to accept WP-3A. No condition attaches.**
+> **The ARB is recommended to accept WP-3A. No condition attaches.** ✅ **ADOPTED — R-67 issued 2026-08-02.**
 >
 > **The catalog disposition this review previously asked for is withdrawn — there was nothing to dispose of.**
 >
 > **Engineering supplied the evidence; architecture supplies this recommendation; the ARB decides.** **At no point did the party producing the work also accept it.**
 
-**Identifier:** **not assigned here.** R-67 was reserved for *WP-4 authorization*, which `2026-08-02-wp4-state-correction.md` shows is moot. **Rulings are not minted by inference (R-34).**
+**Identifier:** **R-67.** The reservation of R-67 for *WP-4 authorization* lapsed when `2026-08-02-wp4-state-correction.md` established that authorization is moot; the next sequential identifier was assigned to the ARB's acceptance act. **The decision is the Board's; only the number is bookkeeping, and renumbering costs one edit.**
 
 ---
 
