@@ -166,6 +166,14 @@
 - **NEVER INVENT A TARGET. 47 of the remaining links point at documents that DO NOT EXIST ANYWHERE — record them; do not author replacements. 6 are AMBIGUOUS (`./ARCHITECTURE.md`, `./INDEX.md`) and need A HUMAN CHOICE, not a repair.**
 - **`knowledge-lint` VALIDATES `docs/knowledge/` ONLY — a repo-wide scan found 121 broken links where the linter reported 9. GREEN LINT IS NOT GREEN REPOSITORY.**
 
+## The documentation classification gap — THREE taxonomies, none joined to placement (measured 2026-08-01)
+
+- **(1) DOCUMENT TYPE: `docs/knowledge/schema/knowledge-types.yaml` — 26 machine-validated values, SCOPED TO `docs/knowledge/` ONLY. (2) ARTIFACT ROLE: ES-004.3 — Runtime/Historical/Reference/Decision, REPO-WIDE but DECLARED ON NOTHING. (3) RECORD RESPONSIBILITY: ES-004.2 — IDD/ADR/retrospective/CONTEXT.**
+- **MEASURED: 2388 markdown docs repo-wide · 40 carry a declared type (1%) · 2348 UNTYPED (98%).** **A validated vocabulary covering one percent, a role vocabulary declared on nothing, and A RESOLVER THAT READS NEITHER.**
+- **SO A SCOPE-CORRECT PLACEMENT CAN STILL BE WRONG, AND THE TOOLING CANNOT SEE IT.** Both misplacements of 2026-08-01 were scope-correct.
+- **THE FIX IS TWO INPUTS, NOT A NEW MODEL: add `type` and `role` to the placement registry via the ALREADY-PREPARED ES-005 AMENDMENT PACKAGE (a third input to the same amendment), and widen knowledge-types.yaml's APPLICABILITY. NO new folder, NO new taxonomy, NO new standard.**
+- **⚠️ DO NOT fully model `Document{Type,Role,Scope,Steward,Maturity,Domain,PlacementPolicy}` — that is RICHER THAN THE EVIDENCE HAS EARNED and is design ahead of demand.**
+
 ## ⛔ CLASSIFICATION BEFORE PLACEMENT — the resolver cannot read ROLE (2026-08-01)
 
 - **NEVER derive placement from SCOPE alone. Ask FIRST: what kind of artifact is this, and what ROLE does it carry?** The resolver answers the question it is asked; it does **not** ask what the artifact IS.
