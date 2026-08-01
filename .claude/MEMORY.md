@@ -194,6 +194,14 @@
 - **THE FIX IS TWO INPUTS, NOT A NEW MODEL: add `type` and `role` to the placement registry via the ALREADY-PREPARED ES-005 AMENDMENT PACKAGE (a third input to the same amendment), and widen knowledge-types.yaml's APPLICABILITY. NO new folder, NO new taxonomy, NO new standard.**
 - **⚠️ DO NOT fully model `Document{Type,Role,Scope,Steward,Maturity,Domain,PlacementPolicy}` — that is RICHER THAN THE EVIDENCE HAS EARNED and is design ahead of demand.**
 
+## ⭐ THE EPIC-004 ROADMAP DEFINES ALL EIGHT WORK PACKAGES — search it FIRST (2026-08-02)
+
+- **`docs/implementation/EPIC-004_Architecture_to_Implementation_Roadmap.md` defines WP-1..WP-8**, their dependency graph, implementation order, per-WP KEYSTONE TESTS, rollout sequence and the Phase DoD. **Slice plans cite it as 'roadmap §WP-n'.**
+- **BEFORE claiming a work package is undefined, READ THE ROADMAP THE SLICE PLANS CITE.** I claimed WP-8 undefined several times while the citation sat in the WP-7 plan I was quoting from.
+- **WP-8 = END-TO-END OPERATIONAL VALIDATION** — the full loop with its head over the real path, plus the failure-declared path; triple qualification; CI green. **Keystones: four IT-style full-loop suites (upheld · dismissed · failure-declared · expired) with ONE CorrelationId per conversation asserted end-to-end.** **It VALIDATES; it constructs nothing and owns no new bounded context.**
+- **⛔ WP-8 DEPENDS ON WP-4 (APM wiring), WHICH IS OPEN.** Standing rule: **no slice starts before its predecessor's acceptance.** Also outstanding: WP-3A acceptance pending, WP-3B deferred.
+- **FULL-LOOP PRODUCTION ACTIVATION IS GATED ON WP-8's ACCEPTANCE** — and the challenge-filing entry point is product work OUTSIDE this roadmap.
+
 ## ✅ WP-7 RETENTION ALIGNMENT IS CLOSED — R-66 (2026-08-02)
 
 - **`audit:cleanup` is EPW-AWARE.** Nothing inside an open Evidence Preservation Window is deleted · deletion resumes once it closes · **an unresolvable folder-to-election mapping is PRESERVED (fail closed)** · `--days` can no longer override the invariant.
