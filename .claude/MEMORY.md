@@ -73,6 +73,13 @@
 - **The guard obeys its own litmus:** it is runtime session tooling, so **ES-005.3 puts it in the runtime mount (`.claude/scripts/`), not in `engineering/`.**
 - **Non-blocking on purpose:** creating under `engineering/` is legitimate when governed, and **the hook cannot evaluate the answers to its own questions — only the author can.** A wall that is always dismissed teaches less than a checkpoint that is read *(same posture as `discipline-gate-reminder.sh`)*.
 
+## KnowledgeOS is NOT yet a product — already ruled (verified 2026-08-01)
+
+- **`engineering/README.md`, DA clarification 2026-07-27:** capabilities serve *"all PublicDigit products (Online Voting today; **KnowledgeOS and future products if their gates open**)"* · *"the Election System is the Core Domain; **this platform is a Supporting Subdomain**"* (**AIP-14 Product Primacy**) · *"**a second real adopting product is the recorded trigger for the Platform-Adoption split — pre-positioned, not executed**."*
+- **So: KnowledgeOS's gate has NOT opened, the platform is a Supporting Subdomain rather than a product, and the split people keep re-deriving is ALREADY DESIGNED and deliberately unexecuted with a named trigger.**
+- **Consequence: ES-005.3 STANDS; research artifacts remain project-side.** ES-005.3 is not an outdated rule that slipped through — **it is the current rule for the current architecture, with its successor pre-positioned.** The tension is **a transition held open on purpose**, not an inconsistency to repair.
+- **PATTERN, FOUR FOR FOUR:** *lifecycle missing* -> ES-006.1 defines it · *placement policy missing* -> ES-005.3 defines it · *maturity structure needed* -> ES-005.2 + R-37 govern when · *KnowledgeOS is a product* -> the DA already ruled not yet. **Four searches for a missing decision; four already on the record. The failure mode is PROPOSING BEFORE SEARCHING. Search canon first — `engineering/README.md` and the ES set — before proposing any structural or governance change.**
+
 ## `engineering/` means the PLATFORM, not "canon" — and its structure is frozen (verified 2026-08-01)
 
 - **ES-005.1 Three-Concern Separation:** `docs/` + `architecture/` + `app/` + `tests/` = **Product** · **`engineering/` = Engineering Platform** (how it is engineered) · `.claude/` = **runtime mount**. **Reading `engineering/` as "adopted canon" is wrong** — it is the platform's own tree, with its own lifecycle.
