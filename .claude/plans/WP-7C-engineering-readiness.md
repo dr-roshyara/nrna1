@@ -72,7 +72,8 @@
 
 | | |
 |---|---|
-| **Business capability** | *audit evidence is not deleted while it is still constitutionally required* |
+| **Owning bounded context / capability owner** | **Audit / Retention** — consuming the Evidence Preservation Window Resolution capability (Election). **No ownership moves.** |
+| **Business capability** | **prevent deletion of constitutionally retained audit evidence** — *evidence is not deleted while it is still constitutionally required* |
 | **Owning bounded context** | **Audit / Retention owns the guard.** Adjudication and Q-2 are **providers of parameters**, not participants |
 | **Capability ownership** | **WP-7 owns one thing: the deletion guard.** It defines no duration and creates no crossing |
 | **Ubiquitous language** | **Unchanged.** Verified: no new domain term, no rename, no changed meaning. *"Published language — untouched"* |
