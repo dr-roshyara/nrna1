@@ -43,6 +43,21 @@ final class InMemoryAdjudicationProcessStore implements AdjudicationProcessStore
         return $existing !== null && !$existing->status()->isTerminal() ? $existing : null;
     }
 
+    /**
+     * The LATEST process for a challenge, terminal or not — deliberately unfiltered,
+     * unlike `activeForChallenge()`. WP-6's late-decision guard needs to distinguish a
+     * redelivered decision on a concluded process (idempotent no-op, ADR-T3) from a late
+     * decision on an EXPIRED one (a conflict); both are invisible to the active query.
+     *
+     * Added 2026-08-01 as a mechanical repair: WP-6 GREEN added this method to the port
+     * and to the production adapter but not to this double, which left the class
+     * abstract and fatal-errored the whole unit test from 2026-07-31 onward.
+     */
+    public function latestForChallenge(ChallengeRef $challenge): ?AdjudicationProcessState
+    {
+        return $this->active[$challenge->toString()] ?? null;
+    }
+
     public function save(AdjudicationProcessState $state): void
     {
         $this->active[$state->challengeRef()->toString()] = $state;
