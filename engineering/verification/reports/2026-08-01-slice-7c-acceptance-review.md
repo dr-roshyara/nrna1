@@ -2,7 +2,7 @@
 
 **Prepared by:** Principal Architect / DDD Steward / Recording Architect · **Revision 2** (refined 2026-08-02; conclusions unchanged)
 **Purpose:** determine whether the implementation satisfies **R-65** and preserves the approved architecture.
-**Status:** **recommendation only. R-66 is not issued here** — acceptance is the ARB's act (R-34).
+**Status:** ✅ **ACCEPTED — R-66 issued by the ARB, 2026-08-02.** The recommendation below was adopted; the ruling is recorded in the rulings register.
 
 > **Engineering ends at VERIFY; acceptance begins here.**
 >
@@ -67,21 +67,21 @@
 
 ## 7. Recommendation
 
-> **The ARB is recommended to issue R-66 accepting Slice 7C.**
+> **The ARB is recommended to issue R-66 accepting Slice 7C.** ✅ **ADOPTED — R-66 issued 2026-08-02.**
 >
 > **Unresolved but not blocking:** the release announcement owner blocks **release**, not acceptance; the gate-scope limitation pre-exists this slice and belongs to whoever owns the gate's composition.
 >
-> **R-66 is not issued here.** Engineering supplies evidence; architecture supplies this recommendation; **only the ARB accepts.**
+> **Engineering supplied the evidence; architecture supplied this recommendation; the ARB accepted.** The separation held throughout: **at no point did the party producing the work also accept it.**
 
 ## 8. Status of WP-7
 
 | | |
 |---|---|
-| **Slice 7C** | implemented and verified — **not yet accepted** |
-| **WP-7** | ⏳ **OPEN. Only R-66 closes it.** |
+| **Slice 7C** | ✅ **ACCEPTED — R-66** |
+| **WP-7** | ✅ **CLOSED by R-66, 2026-08-02** |
 
-**On acceptance, and only then:** WP-7 closes · **WP-7B-R1** opens as an independent refinement under R-60 · WP-8 is formally defined and authorized through governance.
+**On acceptance — now effective:** WP-7 is closed · **WP-7B-R1** opens as an independent refinement under R-60 · WP-8 is formally defined and authorized through governance.
 
 ---
 
-**Traceability:** **R-65** · **R-59 · R-60 · R-44 · R-34** · **Constitutional Policy 2** · `2026-08-01-slice-7c-completion-evidence.md` (primary engineering source) · `2026-08-01-slice-7c-authorization.md` · `developer_guide/election/08_retention_guard.md`. **No architecture redesigned · no methodology proposed · no engineering verification re-run · no ruling issued.**
+**Traceability:** **R-65** · **R-59 · R-60 · R-44 · R-34** · **Constitutional Policy 2** · `2026-08-01-slice-7c-completion-evidence.md` (primary engineering source) · `2026-08-01-slice-7c-authorization.md` · `developer_guide/election/08_retention_guard.md`. **No architecture redesigned · no methodology proposed · no engineering verification re-run. R-66 issued by the ARB and recorded in the register.**

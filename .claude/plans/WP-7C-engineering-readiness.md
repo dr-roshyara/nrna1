@@ -3,7 +3,7 @@
 **Date:** 2026-08-01 · **Prepared by:** Engineering AI, under Principal Architect discipline
 **Classification:** **Work Plan** — a pre-approval execution-state artifact. **Role: Runtime** (ES-004.3), therefore the **runtime mount** (ES-005.1), not a documentation root.
 **Note:** at EP-01 approval its content is promoted into the governed WP-7 Engineering Plan (ES-004.2, Plan Concept Decision Paper). **It exists beside `WP-7-retention-alignment.md`, not instead of it.**
-**Status:** ✅ **AUTHORIZED — R-65 (ARB, 2026-08-01).** Engineering is executing: RED → GREEN → VERIFY → ACCEPT.
+**Status:** ✅ **CLOSED — accepted by R-66 (ARB, 2026-08-02).** This is now a historical record, not an execution document. RED → GREEN → VERIFY → ACCEPT complete.
 
 > **Correction carried forward.** My earlier statement *"WP-8 is undefined"* overreached. **The evidence supports only: no accepted artifact defining WP-8 was found in the sources examined** (the WP-7 plan, the backlog, CONTEXT). **Absence in searched artifacts is not non-existence** — and the narrower claim is the one the evidence supports. **Consequence, also narrowed: if WP-8 is to become the next authorized work package, it should be defined before authorization. It is not a blocker today.**
 

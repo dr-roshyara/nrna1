@@ -194,6 +194,16 @@
 - **THE FIX IS TWO INPUTS, NOT A NEW MODEL: add `type` and `role` to the placement registry via the ALREADY-PREPARED ES-005 AMENDMENT PACKAGE (a third input to the same amendment), and widen knowledge-types.yaml's APPLICABILITY. NO new folder, NO new taxonomy, NO new standard.**
 - **⚠️ DO NOT fully model `Document{Type,Role,Scope,Steward,Maturity,Domain,PlacementPolicy}` — that is RICHER THAN THE EVIDENCE HAS EARNED and is design ahead of demand.**
 
+## ✅ WP-7 RETENTION ALIGNMENT IS CLOSED — R-66 (2026-08-02)
+
+- **`audit:cleanup` is EPW-AWARE.** Nothing inside an open Evidence Preservation Window is deleted · deletion resumes once it closes · **an unresolvable folder-to-election mapping is PRESERVED (fail closed)** · `--days` can no longer override the invariant.
+- **Three slices: 7A durations port · 7B `EvidencePreservationWindow` (R-59) · 7C the retention guard (R-65 authorized, R-66 accepted).**
+- **OWNERSHIP, unchanged and worth remembering: AUDIT/RETENTION owns the deletion decision · ELECTION owns the Evidence Preservation Window Resolution capability · ADJUDICATION supplies MAD AS CONFIGURATION and is never called.**
+- **⚠️ THE GUARD DEPENDS ON `withoutGlobalScopes()`: `Election` is tenant-scoped and a CLI run has NO TENANT SESSION. Remove it and the command PRESERVES EVERYTHING AND SILENTLY STOPS WORKING — it fails safe, which is exactly why the failure is easy to miss.**
+- **⛔ NOT YET RELEASED: 7C is the FIRST EXTERNALLY VISIBLE BEHAVIOUR CHANGE and RELEASE REQUIRES A NAMED ANNOUNCEMENT OWNER (C-2, still unnamed). Acceptance is not release.**
+- **⚠️ `tests/Feature/Audit/` IS NOT IN THE `GreenfieldCore` SUITE, so `composer merge-gate` DOES NOT RUN THE 7C TESTS.** Run them directly: `php artisan test tests/Feature/Audit/AuditCleanupTest.php`.
+- **Dev guide: `developer_guide/election/08_retention_guard.md`.**
+
 ## ⛔ ENGINEERING METHODOLOGY IS FROZEN (2026-08-01)
 
 - **NO protocol refinement · NO review-model evolution · NO documentation-architecture evolution · NO KnowledgeOS proposals — UNLESS PUBLICDIGIT IMPLEMENTATION EXPOSES A GENUINE DEFICIENCY.** **EXECUTE THE PROTOCOL; DO NOT IMPROVE IT.**
