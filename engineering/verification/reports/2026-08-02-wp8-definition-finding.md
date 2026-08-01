@@ -8,7 +8,7 @@
 
 > # FINDING — **WP-8 is already defined in canon, and its prerequisites are not met.**
 >
-> **A Definition Package is not required. WP-8 is specified in `docs/implementation/EPIC-004_Architecture_to_Implementation_Roadmap.md`** — the same roadmap WP-7 was executed against.
+> **A Definition Package is not required. THE ROADMAP IS THE CANONICAL SPECIFICATION FOR WP-8** — `docs/implementation/EPIC-004_Architecture_to_Implementation_Roadmap.md`, the same roadmap WP-7 was executed against.
 >
 > **And WP-8 cannot be authorized yet: it depends on WP-4, which is open.**
 
@@ -38,7 +38,7 @@
 | Field | Answer — **from canon, not composed** |
 |---|---|
 | **Business capability** | the correction loop proven end to end over the real path, including the failure-declared branch |
-| **Owning bounded context** | **none newly** — WP-8 validates the loop across Contestation · Adjudication · Election; it is **validation, not construction** |
+| **Owning bounded context** | **WP-8 introduces no new business capability. It validates capabilities already owned by their respective bounded contexts** — Contestation · Adjudication · Election. **Ownership belongs to the bounded contexts; validation belongs to the engineering process.** |
 | **Strategic boundaries** | unchanged by definition — *"zero frozen-invariant tests modified"* is a stated DoD condition |
 | **Tactical model** | **consume only.** WP-8 introduces no element; it qualifies the elements the earlier WPs built |
 | **Acceptance criteria** | the four full-loop suites green · one CorrelationId per conversation asserted end-to-end · triple qualification of every new element |
