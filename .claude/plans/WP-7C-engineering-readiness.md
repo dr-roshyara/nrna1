@@ -164,35 +164,25 @@
 
 ### C-1 · authorization wording
 
-| Option | Effect |
-|---|---|
-| **(a) as originally proposed** — *"shall not alter deletion mechanics"* | **forecloses 7C's own approved acceptance and test list** (`--days` no longer overrides the invariant; nothing inside an open EPW is deleted) |
-| **(b) precision** — *"shall not alter **how deletion is performed** (folder traversal, filesystem removal, reporting) … the guard gates the deletion **decision**"* | authorization and approved acceptance are consistent; mechanics stay frozen |
-| **(c)** other wording | ARB's to formulate |
+> **Architecture's requirement: the authorization wording must not invalidate the already-approved acceptance criteria** — *nothing inside an open EPW is deleted* and *`--days` no longer overrides the invariant*.
 
-**Architecture's only constraint: the wording must leave the approved acceptance criterion achievable.**
+**The wording is governance's to draft.**
 
-### C-3 · does authorization cover amending accepted tests?
+### C-3 · amending accepted tests
 
-**Unavoidable either way** — `AuditCleanupTest` creates directories with no `Election` records, which the approved criterion requires to be **retained**, while the tests assert deletion.
+> **Architecture's finding: the amendment is unavoidable.** `AuditCleanupTest` creates directories with no `Election` records, which the approved criterion requires to be **retained**, while three of its methods assert deletion.
 
-| Option | Effect |
-|---|---|
-| **(a) silent** | engineering amends under general RED discretion; **the change to accepted behavioural evidence is invisible in the authorization** |
-| **(b) explicit, limited to what the criterion requires** | visible and bounded at authorization |
-| **(c) separately reviewed step** | highest visibility; adds a review cycle inside the slice |
+**Whether the authorization covers it explicitly, implicitly, or by separate review is governance's to decide.**
 
-### Ready to issue — two slots, both the ARB's
+### Ready to issue — two slots, both governance's
 
 > **Slice 7C is authorized to implement the decision service that determines whether evidence may be deleted**, consuming only the **Evidence Preservation Window Resolution** capability.
 >
-> **⟨C-1 wording⟩**
->
-> **⟨C-3 disposition on amending `tests/Feature/Audit/AuditCleanupTest.php`⟩**
+> **⟨C-1 wording⟩** · **⟨C-3 disposition on amending `tests/Feature/Audit/AuditCleanupTest.php`⟩**
 >
 > **Slice 7C shall not absorb, implement or anticipate WP-7B-R1** (independent under R-60).
 >
-> **Authorization covers implementation and acceptance only; release requires a named announcement owner (C-2, not on the engineering critical path).**
+> **Authorization covers implementation and acceptance only; release requires a named announcement owner (C-2, off the engineering critical path).**
 >
 > **Sequence: RED → GREEN → VERIFY → ACCEPT. WP-7 closes on acceptance.**
 
@@ -201,6 +191,13 @@
 ## RED Backlog — prepared, NOT executed
 
 **No test written · no code written · no production source modified.**
+
+| | |
+|---|---|
+| **Business capability** | *audit evidence is not deleted while it is still constitutionally required* |
+| **Acceptance criterion** | nothing inside an open EPW is deleted · deletion resumes after closure · an unresolvable folder→election mapping is not deleted |
+| **Required behaviour** | `audit:cleanup` consults each folder's election's preservation window and **refuses deletion while that window is open**; the age cutoff can no longer override the invariant |
+| **Tests** | the four below express that behaviour — they follow from it, they do not define it |
 
 ### New failing tests (4) — the approved list
 
