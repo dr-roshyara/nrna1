@@ -1,6 +1,6 @@
 # Slice 7C — Authorization
 
-**Proposed identifier:** **R-65** · **Acceptance:** R-66
+**Role:** authorization **instrument** — supports Board deliberation. **Expected identifier on issuance, subject to ARB: R-65** (acceptance R-66).
 **Status:** ⏸️ **PREPARED FOR ISSUANCE — NOT ISSUED.** Issuance is an act of the Decision Authority (**R-34**); this document is unsigned.
 **Prepared by:** Recording Architect, on ARB guidance.
 
@@ -45,16 +45,23 @@
 | **AC-8** | **No new port, aggregate, entity, repository or domain term** |
 | **AC-9** | **Slice 7C shall not absorb, implement or anticipate WP-7B-R1** |
 
-## Section 3 — ARB Decisions
+## Section 3 — Proposed Authorization
 
-> **The following decisions are exercises of ARB authority, constrained by the verified facts and architectural constraints above.**
+*Proposed text for the Board's consideration. **It is not a ruling and confers nothing until authority is exercised.***
 
-| | Decision |
-|---|---|
-| **D-1** | **Slice 7C is authorized to implement the decision service that determines whether evidence may be deleted**, consuming only the **Evidence Preservation Window Resolution** capability. **Engineering shall implement Slice 7C subject to the Architectural Constraints recorded in Section 2.** |
-| **D-2** | **Authorization covers the amendment of `tests/Feature/Audit/AuditCleanupTest.php`**, limited to giving the three deletion-asserting fixtures a resolvable election with a closed window. **No assertion weakened; no test deleted.** |
-| **D-3** | **Authorization covers implementation and acceptance only.** **Release requires a named announcement owner**, 7C being the first externally visible behaviour change. |
-| **D-4** | **Sequence: RED → GREEN → VERIFY → ACCEPT.** WP-7 closes on acceptance; **WP-7B-R1 resumes only afterwards.** |
+> Slice 7C is authorized to implement the decision service that determines whether evidence may be deleted, consuming only the **Evidence Preservation Window Resolution** capability.
+>
+> Engineering shall implement Slice 7C subject to the **Architectural Constraints recorded in Section 2**.
+>
+> Slice 7C shall not absorb, implement, or anticipate **WP-7B-R1** (independent under R-60).
+>
+> Authorization covers implementation and acceptance only. **Release requires a named announcement owner** — not on the engineering critical path.
+>
+> RED includes amending `tests/Feature/Audit/AuditCleanupTest.php` — **limited to what the acceptance criterion requires**.
+>
+> **Sequence: RED → GREEN → VERIFY → ACCEPT. WP-7 closes on acceptance.**
+
+**On issuance this text is transcribed into the rulings register as R-65.** **It is not recorded there now, because authority has not been exercised.**
 
 ## Section 4 — Engineering Handover
 
@@ -80,11 +87,7 @@
 
 **If engineering discovers it needs a new bounded context, aggregate, repository, port, domain term, context crossing, or an architectural policy change — it stops and refers.** **The slice was verified to need none of them.**
 
-## Section 5 — Transition
-
-> **Engineering now implements the authorized business capability within the approved architectural boundaries.**
-
-## Section 6 — Scope of Authority
+## Section 5 — Scope of Authority
 
 > **This authorization exercises Execution Governance only.**
 >
