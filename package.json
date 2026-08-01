@@ -22,6 +22,8 @@
     "knowledge-lint": "php scripts/knowledge-lint.php",
     "knowledge-lint:strict": "php scripts/knowledge-lint.php --strict",
     "knowledge-graph": "php scripts/knowledge-graph.php",
+    "docs:placement": "php scripts/doc-placement.php",
+    "docs:placement:verify": "php scripts/doc-placement.php --verify",
     "migration-progress": "bash scripts/migration-progress.sh",
     "verify": "bash scripts/verify.sh",
     "prepare": "husky"

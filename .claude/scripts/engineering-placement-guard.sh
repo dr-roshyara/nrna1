@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 # PreToolUse hook (Write|Edit) — NON-BLOCKING checkpoint for a governed action:
-# creating a new artifact under engineering/.
+# creating a new artifact whose PLACEMENT is governed — under engineering/, or in
+# one of the documentation locations the roots ADR measured as domain-mixed.
+#
+# Two branches, one purpose. Under engineering/ the governing rules are prose, so
+# the hook asks generic questions and derives which standards answer them. Under
+# docs/ the derivation is EXECUTABLE (scripts/doc-placement.php over the registry
+# at docs/knowledge/schema/documentation-placement.yaml), so the hook points at
+# the resolver instead of asking. Neither branch restates a rule.
 #
 # WHY THIS EXISTS. On 2026-08-01 a methodology module was written straight into
 # the canon directory while still at the first stage of the promotion ladder.
@@ -47,12 +54,51 @@ target="$(php -r '
   }
   if ($file === "") exit(0);
   $file = str_replace(chr(92), "/", $file);
-  if (strpos($file, "/engineering/") === false && strpos($file, "engineering/") !== 0) exit(0);
   if (file_exists($file)) exit(0);   // an edit is not a placement act
-  echo $file;
+
+  if (preg_match("#(?:^|/)engineering/#", $file)) { echo "eng " . $file; exit(0); }
+
+  // docs/ — only the locations the roots ADR measured as domain-mixed:
+  //   docs/implementation/** and files DIRECTLY under docs/ (no subdirectory).
+  // Anything already inside a declared root, or in another docs/ subtree, is quiet.
+  if (preg_match("#(?:^|/)docs/(.*)$#", $file, $m)) {
+      $rel = $m[1];
+      if (strpos($rel, "implementation/") === 0 || strpos($rel, "/") === false) {
+          echo "docsmix " . $file;
+      }
+  }
 ' "$input" 2>/dev/null)"
 
 [ -z "$target" ] && exit 0
+kind="${target%% *}"
+target="${target#* }"
+
+# ── docs/ branch: the derivation is executable, so point at the resolver ──────
+# Scoped to where the roots ADR MEASURED domain mixing: docs/implementation/
+# (89 PKS + 3 KnowledgeOS of 183 files) and docs/ root-level files ("mixed, no
+# clear domain"). Elsewhere under docs/ the hook stays quiet until migration —
+# a checkpoint that fires on every document is a checkpoint nobody reads.
+if [ "$kind" = "docsmix" ]; then
+      registry="${CLAUDE_PROJECT_DIR:-.}/docs/knowledge/schema/documentation-placement.yaml"
+      {
+        printf '\n'
+        printf 'GOVERNED PLACEMENT — creating documentation in a domain-mixed location\n'
+        printf '   %s\n\n' "$target"
+        printf '   Placement is DERIVED from classification, and the derivation is executable:\n'
+        printf '     php scripts/doc-placement.php --scope=... [--maturity=...] [--domain=...]\n'
+        printf '     php scripts/doc-placement.php --list        # roots and rules\n\n'
+        if [ -f "$registry" ]; then
+          printf '   Declared roots (from the registry — this hook hardcodes none):\n'
+          sed -n 's/^ *root: *\(.*\)$/     \1/p' "$registry"
+          printf '\n'
+        fi
+        printf '   Exit code 2 means the classification is real but its placement is UNRULED.\n'
+        printf '   Record PENDING and escalate — do not invent a destination.\n\n'
+        printf '   Classification precedes placement. Placement is never evidence of\n'
+        printf '   classification. (non-blocking checkpoint)\n\n'
+      } 1>&2
+      exit 1
+fi
 
 case "$target" in
   engineering/verification/reports/*|*/engineering/verification/reports/*)

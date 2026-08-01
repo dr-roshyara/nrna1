@@ -8,6 +8,12 @@ knowledge_id:                       # REQUIRED, stable & unique. PREFIX-ID, e.g.
 title:                              # REQUIRED
 knowledge_type:                     # REQUIRED, one of schema/knowledge-types.yaml (e.g. adr, aggregate, guide)
 bounded_context:                    # REQUIRED, one of schema/bounded-contexts.yaml (or `global`)
+                                    #   NOTE: a bounded context is NOT a domain — contexts live INSIDE
+                                    #   domains. WHERE a document belongs is derived, not chosen:
+                                    #     php scripts/doc-placement.php --list
+                                    #   Registry: schema/documentation-placement.yaml. A `domain:` field
+                                    #   is proposed by the prepared ES-005 amendment and is NOT yet a
+                                    #   validated card field — do not add it until that amendment issues.
 status: draft                       # REQUIRED, one of schema/statuses.yaml (lifecycle position)
 authority: provisional              # REQUIRED, one of schema/authorities.yaml (trust/source — independent of status)
 audience: []                        # RECOMMENDED, list from schema/knowledge-audiences.yaml (e.g. [developer, ai])

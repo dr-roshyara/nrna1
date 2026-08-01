@@ -73,6 +73,21 @@
 - **The guard obeys its own litmus:** it is runtime session tooling, so **ES-005.3 puts it in the runtime mount (`.claude/scripts/`), not in `engineering/`.**
 - **Non-blocking on purpose:** creating under `engineering/` is legitimate when governed, and **the hook cannot evaluate the answers to its own questions — only the author can.** A wall that is always dismissed teaches less than a checkpoint that is read *(same posture as `discipline-gate-reminder.sh`)*.
 
+## 📍 DOCUMENTATION PLACEMENT IS NOW EXECUTABLE — resolve it, never hard-code it (implemented 2026-08-01)
+
+- **SINGLE SOURCE OF TRUTH: `docs/knowledge/schema/documentation-placement.yaml`** (beside `statuses.yaml`/`authorities.yaml`/`bounded-contexts.yaml`, where enumerations already live). **SINGLE CONSULTED MECHANISM: `scripts/doc-placement.php`** — `npm run docs:placement` / `docs:placement:verify`.
+```
+php scripts/doc-placement.php --scope=<product-specific|cross-product|session-state> [--maturity=<research|qualified|adopted>] [--domain=<id>]
+php scripts/doc-placement.php --list | --self-test | --verify
+```
+- **NEVER HARD-CODE A DOCUMENTATION ROOT in a template, script or prompt — RESOLVE IT.** Adding a domain or renaming a root = one registry edit, zero script edits.
+- **EXIT CODE 2 = the classification is real but its PLACEMENT IS UNRULED (cross-product + research, awaiting the stewardship decision). RECORD `PENDING` AND ESCALATE — NEVER INVENT A DESTINATION.** Tooling that guesses a destination is how the mixing happened.
+- **ROOTS: `docs/publicdigit/` · `docs/knowledgeos/` · `docs/pks/` — each created WITH A README AS ITS FIRST ARTIFACT, because ES-005.2 forbids speculative empty directories. The README satisfies the folder rule rather than working around it.**
+- **⚠️ CROSS-PRODUCT ARTIFACTS STILL ROUTE TO `engineering/` — ES standards and methodology are NOT pulled into `docs/knowledgeos/`, which is exactly what OQ-5 leaves open** (is KnowledgeOS the same thing as the Engineering Platform? canon separates them; R-67 says `engineering/` = cross-product SCOPE, not a domain).
+- **`.claude/scripts/engineering-placement-guard.sh` EXTENDED, NOT DUPLICATED: under `engineering/` the rules are PROSE so it asks generic questions and derives the standards; under `docs/` the derivation is EXECUTABLE so it points at the resolver. Roots read from the registry at runtime — the hook hardcodes none.** Fires only on the MEASURED domain-mixed locations (`docs/implementation/**`, files directly under `docs/`).
+- **LESSON, BASH: `case` globs SPAN `/` — `docs/pks/x.md` matches `docs/*.md`. Path tests that need precision belong in PHP, not in a case glob. Caught by testing the NEGATIVE cases.**
+- **`npm run knowledge-lint` BASELINE = 9 errors / 0 warnings — all nine are broken `architecture/` links from today's `architecture_legacy/` move, PRE-EXISTING. ALWAYS RECORD THE BASELINE BEFORE AND AFTER: my first pass took it to 10 (a new `docs/knowledge/` doc needs a knowledge card), the linter caught it, fixed.**
+
 ## ✅ ES AMENDMENTS **ARE** PERMITTED UNDER THE FREEZE — by explicit ruling (R-41 is the controlling precedent; verified 2026-08-01)
 
 - **⛔ CORRECTS THE ENTRY BELOW AND MY OWN PACKAGE CLAIM ("no precedent for a standards amendment under the freeze") — THE PRECEDENT EXISTS AND IS RECENT. `git log -- 'engineering/governance/ES-*.md'` shows repeated post-R-37 amendments: **R-41/ES-004.3 (2026-07-30, "adopted ... Principal Architect instruction", then refined same day at ARB review) · ES-006.4 Harvest Question ("ARB harvest amendment") · ES-004.2 plan naming ("overridden ... Decision Authority") · ES-002 pointer registration**. **I searched the freeze-note convention and the rulings register but NEVER RAN GIT LOG ON THE ES FILES. That is the obvious search.**
