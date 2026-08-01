@@ -52,7 +52,21 @@ Rejecting A-1 means ruling that *the sentence* was binding → a direct cross-co
 >
 > I had typed D4a as *"Planning"* and D4b as *"Execution"*. **Those merely restated the category column** — which **violates the very independence I claimed for the two axes.** A column derivable from its neighbour is not a second dimension.
 >
-> **The corrected set — Approval · Ratification · Approval · Authorization — is genuinely independent, and the table now carries its own proof: D1 and D4a share the type *Approval* across two different categories.**
+> **The corrected set — Approval · Ratification · Approval · Authorization — is a genuine improvement:** D1 and D4a share the type *Approval* across two different categories, so **Type does not determine Category.**
+>
+> ### ⚠️ But the independence test, applied mechanically, does NOT fully clear this table — and I over-claimed when I said it "carries its own proof"
+>
+> Running the test in **both** directions over these five rows:
+>
+> | Pair | Derivable? | Verdict |
+> |---|---|---|
+> | Type from **Category** | ⚠️ **YES, in this sample** — Delivery→Approval · Architecture→Ratification · Planning→Approval · Execution→Authorization | **not demonstrated independent here** |
+> | Category from Type | ❌ no — *Approval* maps to both Delivery and Planning | ✅ independent in this direction |
+> | **`Produces` from Category** | ❌ **YES — 1:1, by construction** | **`Produces` is NOT a third dimension** |
+>
+> **Two honest conclusions:**
+> 1. **Type ⟂ Category holds in principle but is not proven by this sample.** An *Architecture Governance* transition **could** be an **Approval** — approving a *new* ADR, as opposed to *ratifying the reading of an existing one*. These five rows simply never exercise that case. **The independence is real; my "proof" was directional.**
+> 2. **`Produces` is a definitional expansion of Category, not an independent axis** — each category is *defined* by what it produces, so the mapping is necessarily 1:1. **It earns its place as a classifying aid** *(the operative question when sorting a transition: what durable outcome remains?)*, **not as a third dimension.** The instruction's independence table listed all three pairs as independent; **on this evidence, two of the three do not hold.**
 >
 > *(Category definitions live once, in `engineering/knowledge/methodology/Layer_Verification_Rule.md` §3, and are cited here, never restated.)*
 

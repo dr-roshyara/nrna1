@@ -57,7 +57,7 @@ The rule evaluates changes; this applies it to **proposals**, which is where it 
 
 **Companion — classify on TWO independent axes.** **State category:** *Architecture* (design decisions) · *Planning* (plan approval) · **Delivery** (work-package transitions) · *Execution* (engineering authorization). **Transition type:** *Approval* (admits a delivered thing) · *Ratification* (confirms an existing thing's reading) · *Planning* (binds a forward commitment) · *Execution* (unlocks work).
 
-**Neither axis is derivable from the other** — two transitions can share a category and differ in type, or share a type across categories. **A state machine that labels neither hides which authority owns each transition and what kind of act it is** — which is how a single "yes" comes to mean four different things in one minute-book. *(Applied in the WP-6→WP-7 session: labelling exposed that the Planning Governance state is the only one not owned by the ARB — EP-01's separation made visible, and the reason its vote is separate.)*
+**Neither axis is derivable from the other IN PRINCIPLE** — an *Architecture Governance* transition can be an **Approval** (approving a **new** ADR) or a **Ratification** (confirming the reading of an **existing** one), and a type can recur across categories. **But check the direction you are claiming:** in the WP-6→WP-7 sample, *Type* happened to be derivable **from** Category while Category was **not** derivable from Type. **One-directional non-derivability is not independence** — say which direction the evidence supports. **A state machine that labels neither hides which authority owns each transition and what kind of act it is** — which is how a single "yes" comes to mean four different things in one minute-book. *(Applied in the WP-6→WP-7 session: labelling exposed that the Planning Governance state is the only one not owned by the ARB — EP-01's separation made visible, and the reason its vote is separate.)*
 
 **Canonical category definitions** *(this is their single home — cite, never restate)*:
 
@@ -69,6 +69,8 @@ The rule evaluates changes; this applies it to **proposals**, which is where it 
 | **Execution Governance** | authorization for engineering to begin authorized work | **authorized engineering work** |
 
 **The `Produces` column is the operative one when classifying:** *what does this transition leave behind?* A category that produced nothing durable was not a governance act.
+
+**What `Produces` is NOT** *(verified 2026-08-01 by applying §2's own independence test to this table)*: **it is not a third dimension.** It maps **1:1 with Category by construction** — each category is *defined* by what it produces — so it is a **definitional expansion**, valuable for classifying but derivable, and therefore failing the independence test. **Recorded rather than glossed, because a model that exempts itself from its own test is ceremonial.**
 
 > ### **Invariant: every governance transition belongs to exactly ONE governance category.**
 >
