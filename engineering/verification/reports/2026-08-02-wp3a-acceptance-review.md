@@ -92,7 +92,9 @@
 | The catalog records no published-language status for any event | **Documentation** — a registry gap, not a defect of this slice |
 | The slice's authorization is recorded in the plan and session log, **not in the rulings register** | **Governance — recording gap.** Same class R-62 corrected for R-43/R-48 |
 
-**No finding is classified as Architecture — none was observed.** **No PKS or KnowledgeOS classification: single occurrences.**
+**No finding is classified as Architecture — none was observed.**
+
+> **One PKS observation is recorded** (ARB, 2026-08-02): `docs/pks/2026-08-02-triple-qualification-timing-observation.md` — **Triple Qualification was completed retrospectively, before acceptance, unlike WP-1 and WP-2 where it formed part of the engineering flow.** **The acceptance record stands; the process variation becomes operational evidence.** **Nothing is promoted — one occurrence is not methodology (ES-006.1).**
 
 ## 7. Decision Matrix
 
