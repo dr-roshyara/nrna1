@@ -28,3 +28,4 @@ storage/framework/
 /infection-summary.txt
 /.deptrac.cache
 /build/
+.claude/runtime/
