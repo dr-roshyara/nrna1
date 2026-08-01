@@ -1,7 +1,7 @@
 # Slice 7C — Authorization
 
 **Role:** authorization **instrument** — supports Board deliberation. **Expected identifier on issuance, subject to ARB: R-65** (acceptance R-66).
-**Status:** ⏸️ **PREPARED FOR ISSUANCE — NOT ISSUED.** Issuance is an act of the Decision Authority (**R-34**); this document is unsigned.
+**Status:** ✅ **ISSUED as R-65 (ARB, 2026-08-01).** The ruling is recorded in `engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md`; this instrument is its supporting record.
 **Prepared by:** Recording Architect, on ARB guidance.
 
 > **What this document is, and is not.** It is a **preparing instrument for ARB use — not an ARB ruling.** **The ruling exists only when the Decision Authority exercises authority**, and its text is then recorded in the rulings register (`engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md`) as **R-65**.
@@ -45,13 +45,15 @@
 | **AC-8** | **No new port, aggregate, entity, repository or domain term** |
 | **AC-9** | **Slice 7C shall not absorb, implement or anticipate WP-7B-R1** |
 
-## Section 3 — Proposed Authorization
+## Section 3 — Authorization (adopted as R-65)
 
-*Proposed text for the Board's consideration. **It is not a ruling and confers nothing until authority is exercised.***
+*Adopted by the Board as **R-65**. **C-1 resolved: the literal clause (option a). C-3 resolved: explicit. C-4 resolved: R-65.***
 
 > Slice 7C is authorized to implement the decision service that determines whether evidence may be deleted, consuming only the **Evidence Preservation Window Resolution** capability.
 >
-> Engineering shall implement Slice 7C subject to the **Architectural Constraints recorded in Section 2**.
+> Engineering shall implement Slice 7C subject to the **Architectural Constraints** recorded in this instrument.
+>
+> Slice 7C **shall not alter how deletion is performed** (folder traversal, filesystem removal, reporting). **The guard gates the deletion decision.**
 >
 > Slice 7C shall not absorb, implement, or anticipate **WP-7B-R1** (independent under R-60).
 >
@@ -61,7 +63,7 @@
 >
 > **Sequence: RED → GREEN → VERIFY → ACCEPT. WP-7 closes on acceptance.**
 
-**On issuance this text is transcribed into the rulings register as R-65.** **It is not recorded there now, because authority has not been exercised.**
+**Transcribed into the rulings register as R-65 on issuance.**
 
 ## Section 4 — Engineering Handover
 
