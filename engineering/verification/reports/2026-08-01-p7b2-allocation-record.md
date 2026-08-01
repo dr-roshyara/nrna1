@@ -82,3 +82,41 @@
 ---
 
 **Traceability:** **R-56** (which flagged P7B-2 and made it engineering's) · construction commission (business values only; the VO validates itself) · ownership commission (Election owns EPW) · WP-7 plan §4 and §5 (the texts P7B-3 rests on) · **R-44** (the mechanism P7B-1 must restore). **No architecture redesigned · no ruling reinterpreted · no slice boundary redrawn · P7B-1 and P7B-3 not resolved.**
+
+
+---
+
+## 5. ✍️ **P7B-3 WITHDRAWN (2026-08-01)** — it was an inference, and verification did not support it
+
+**The ARB required verification before P7B-3 became a governance item. That was the right call, and the verification does not support the finding.**
+
+**What I inferred:** §4 names *"the guard decision (**not** the EPW itself)"*, so the plan defines **one** application service, it is 7C's, and K9 therefore leaves 7B.
+
+**What the plan actually says — two pieces of evidence I did not weigh:**
+
+| Evidence | Text | Consequence |
+|---|---|---|
+| **§2, Application orchestration** | *"**compute an election's EPW**; decide *may this folder be deleted yet*"* | **The plan lists TWO application-orchestration responsibilities, and the FIRST is computing the EPW.** §4's row describes the second; it never says there is only one |
+| **§5, 7B objective** | *"the Value Object — CW + MAD + LSM from the anchor, **consuming `AdjudicationDurations` for MAD**"* | The construction commission forbids the VO from touching a port — *"never a port, config, model or clock"*. **So 7B's own objective is unachievable by a pure VO: 7B necessarily includes an application-layer collaborator that resolves durations and invokes the factory** |
+
+> ### **§4's parenthetical is descriptive, not definitional.** *"Not the EPW itself"* distinguishes **that row** from the VO's row. **It does not say "no application-layer work in 7B."** I read a boundary into a clarification.
+
+**And the same evidence answers the question P7B-3 was really about — where K9 goes:**
+
+**7B must contain the collaborator that resolves the anchor and durations and invokes the factory. That collaborator is precisely the party that meets a missing anchor.** So **K9 stays in 7B**, hosted by 7B's own application-layer piece — which is also the plainest reading of 7B's approved **test list** (*"anchor-absent ⇒ open"*) and **acceptance criterion**, taken at face value with no reinterpretation.
+
+**📝 Recording Note — why this route matters.** Conclusion A can be reached two ways. One says *the 7B test list is descriptive, not prescriptive*, and places K9 in **7C**. The other — the one the evidence supports — is that **7B genuinely contains application-layer work**, which places K9 in **7B**. **Both withdraw P7B-3, but they leave K9 in different slices**, and K9's slice is exactly what RED needs to know. **The second route requires no reinterpretation of the approved text and answers the RED question directly**, so it is the one recorded here.
+
+**P7B-2 is unaffected** — the fallback still belongs to the application service. **What changes is only that the service in question is 7B's, not 7C's.**
+
+### Readiness — corrected
+
+| Item | Owner | Status |
+|---|---|---|
+| **P7B-2** | engineering | ✅ settled — application service |
+| **P7B-3** | — | ✅ **WITHDRAWN — not a governance item** |
+| **P7B-1** | **ARB** | ⬜ open (queue 12) |
+| **Execution authorization** | **ARB** | ⬜ open (queue 13) |
+| EPW anchor | Q-2 | ⬜ open, non-blocking |
+
+**Two ARB items stand between here and RED, not three. Engineering has none.**
