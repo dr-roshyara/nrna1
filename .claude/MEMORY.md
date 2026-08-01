@@ -71,6 +71,14 @@
 - **Placement rule: COVERAGE FOLLOWS MEANING, never the reverse.** Do not pull code into a context to obtain gate coverage — that is the tool guessing the architecture. Place by business meaning; coverage is the consequence. **"Everything carrying policy is gated; everything ungated carries none" is a stronger claim than "everything is gated."**
 - **Inventory RESPONSIBILITIES, not just rules.** A rule inventory asks *"is this checked?"*; a responsibility inventory asks *"could this responsibility silently move?"* — the failure mode DDD actually cares about. It also collapses duplicates: *policy ownership* and *infrastructure* are the same defect from both ends (**infrastructure deciding a value IS the violation of policy ownership** — that was AP-1), and *construction* + *orchestration* are one drift with two symptoms.
 
+## Historical claims need historical evidence (adopted 2026-08-01, ARB correction)
+
+- **Distinguish a claim about CODE from a claim about WHAT SOMEONE DID.** *"A defect exists and predates my change"* is provable from commit dates and a diff. *"The gate was run and failed at acceptance time"* is a claim about **history** and requires **reproducing the historical run** — checking out that commit and executing the gate.
+- **The conflation to avoid:** *"the gate WOULD have failed"* ⇒ *"the evidence WAS inaccurate."* **If the gate was never executed, the evidence line is UNSUPPORTED, not FALSE** — a materially different finding, and the two call for different remedies.
+- **Say what you reproduced.** Commit dates prove a *file-level* inconsistency existed from date X. They do **not** prove any *suite outcome* on date X — suite composition, environment and whether anyone ran it are all separate facts.
+- **Preferred wording when a stale artifact surfaces:** *"the current execution uncovered a pre-existing inconsistency; it appears to predate this slice and should be investigated before relying on earlier gate evidence."* **Refer it; do not adjudicate an issued ruling from inference.**
+- **The cheap decisive test, when it matters:** reproduce the gate at the historical commit. Until that is run, **make no claim in either direction.**
+
 ## Enforcement reach — the gates cover LESS than people assume (verified 2026-08-01)
 
 - **All three structural gates scan the SAME four paths and nothing else:** `app/Contexts/{Contestation,Adjudication,Election,Shared}` — `deptrac.yaml` `paths:`, `phpstan-greenfield.neon` `paths:`, `GreenfieldCoreArchitectureTest::CONTEXTS`. **`app/Console/`, `app/Helpers/`, `app/Models/` and every other legacy path have ZERO structural coverage.** Before claiming a constraint is enforced, **check that the code will land inside a scanned path.**

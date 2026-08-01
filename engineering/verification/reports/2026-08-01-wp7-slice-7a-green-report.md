@@ -1,10 +1,10 @@
 # WP-7 Slice 7A — GREEN Report
 
 **Date:** 2026-08-01 · **Phase:** GREEN · **Authorization:** R-47 (ARB) · ARB verdict *"RED accepted; engineering may proceed with GREEN within the existing architectural authorization."*
-**Status:** ✅ **7A GREEN — all 11 keystones pass, first run.** ⛔ **But the merge gate cannot complete, for a PRE-EXISTING defect in accepted work.**
+**Status:** ✅ **7A GREEN — all 11 keystones pass, first run.** ⛔ **But the merge gate cannot complete, for an inconsistency that appears to PREDATE 7A** *(wording corrected after ARB review — see F-7A-1)*.
 **Repository Integrity Gate:** ✅ PASSED.
 
-> ## ⛔ FINDING F-7A-1 — the merge gate has been RED since 2026-07-31, and it is not mine
+> ## ⛔ FINDING F-7A-1 — a WP-6 interface/test inconsistency, surfaced today, dating from 2026-07-31 — and not introduced by 7A
 >
 > `composer merge-gate` **fatals** in the GreenfieldCore suite:
 >
@@ -24,11 +24,30 @@
 >
 > **A class last edited on the 30th cannot implement a method added on the 31st.** WP-6 updated the port and the production adapter **but not the test double**.
 >
-> **It is worse than the fatal suggests.** After repairing the double, the test file *itself* fails: it constructs `AdjudicationProcessManager` **with 2 arguments where WP-6's constructor takes 5**. **`AdjudicationProcessManagerTest` — 4 tests — has been entirely dead since 2026-07-31.**
+> **It is worse than the fatal suggests.** After repairing the double, the test file *itself* fails: it constructs `AdjudicationProcessManager` **with 2 arguments where WP-6's constructor takes 5**. **`AdjudicationProcessManagerTest` — 4 tests — cannot execute today, and the file-level mismatch dates from 2026-07-31.** *(Whether the suite was actually run in the interval is not something this execution can show.)*
 >
-> ### ⚠️ Governance consequence, stated plainly
+> ### ⚠️ Governance consequence — **wording corrected after ARB review**
 >
-> **R-43 accepted WP-6 on evidence reading *"all gates pass."* That was inaccurate at the time it was recorded** — `composer merge-gate` could not have completed. **I am not reopening R-43**; acceptance is the ARB's act and stands until the ARB says otherwise. **I am reporting that one line of its evidence does not hold, because concealing it would be the Governance Verification Drift this programme has already named.**
+> **What this execution establishes:** *the current execution uncovered a pre-existing inconsistency between WP-6's production interface and its supporting tests. It appears to predate slice 7A and should be investigated before relying on earlier gate evidence.*
+>
+> **What my first draft claimed, and should not have:** *"R-43's evidence was inaccurate at the time it was recorded."*
+>
+> **The flaw in that reasoning was specific: I conflated *"the gate would have failed"* with *"the evidence was inaccurate."*** The first is a claim about **code**; the second is a claim about **what someone did**. **If the gate was never executed at closure, the evidence line is *unsupported*, not *false*** — a materially different finding, and I cannot tell which from here.
+>
+> **What I can and cannot show:**
+>
+> | Claim | Status |
+> |---|---|
+> | The interface/test mismatch exists **today** | ✅ **proven** — reproduced |
+> | It **predates slice 7A** | ✅ **proven** — my diff touches Election only |
+> | The two files were mutually inconsistent **from 2026-07-31** | ✅ **proven** — commit dates |
+> | The GreenfieldCore suite **has included that path throughout** | ✅ **corroborated** — `phpunit.xml` unchanged since before 2026-07-30 |
+> | **The gate was run at WP-6 closure and failed** | ❌ **NOT established** — I never reproduced the historical run |
+> | **R-43's evidence was inaccurate when recorded** | ❌ **NOT established** — it requires the line above |
+>
+> **Establishing the last two means reproducing the gate at the WP-6 closure commit. I have not done that, and I will not assert a historical state I did not observe.**
+>
+> **Referred to the ARB for investigation. R-43 is not reopened, and no claim is made about its evidence.**
 
 ---
 
@@ -88,14 +107,14 @@ The package labelled one limit on D2: *"Deptrac passes unmodified" is an **analy
 |---|---|
 | 7A's keystones pass | ✅ **yes** |
 | Deptrac · PHPStan · Architecture pass | ✅ **yes** |
-| **`composer merge-gate` completes** | ⛔ **NO — blocked by F-7A-1, which predates 7A** |
+| **`composer merge-gate` completes** | ⛔ **NO — blocked by F-7A-1, an inconsistency that appears to predate 7A** |
 
 **7A's own Definition of Done is not fully demonstrable until F-7A-1 is repaired**, and that repair is not mine to authorize. **I am not claiming a green gate I do not have.**
 
 ## 6. Recommendation to the ARB
 
 1. **Authorize WP-6 remediation** as a small corrective slice — repair `AdjudicationProcessManagerTest` against the 5-argument constructor and re-run the gate. *(4 dead tests, one file.)*
-2. **Note against R-43** that its *"all gates pass"* line did not hold. **Whether that affects the acceptance is the ARB's call, not mine** — the delivered *production* code was independently verified by the Architecture suite, Deptrac and PHPStan, all of which do pass; what failed is a **unit test double**, not shipped behaviour.
+2. **Investigate the pre-existing inconsistency** before relying on earlier gate evidence. **A definitive answer is cheap: reproduce `composer merge-gate` at the WP-6 closure commit.** Until that is done, **no claim should be made about R-43's evidence in either direction.** Note in mitigation either way: the delivered *production* code was independently verified by the Architecture suite, Deptrac and PHPStan, **all of which pass**; what is broken is a **unit test double**, not shipped behaviour.
 3. **7A GREEN otherwise stands for review.**
 
 **Note on C-1's classification, recorded as the ARB framed it:** the guard is **good enough for WP-7, not the final architectural solution** — it is regex-based over a hand-maintained adapter list, and should evolve toward an **AST-based fitness function**. Recorded as a known limitation, not presented as a finished mechanism.
