@@ -4,6 +4,10 @@
 **Status:** ⏸️ **PREPARED FOR ISSUANCE — NOT ISSUED.** Issuance is an act of the Decision Authority (**R-34**); this document is unsigned.
 **Prepared by:** Recording Architect, on ARB guidance.
 
+> **What this document is, and is not.** It is a **preparing instrument for ARB use — not an ARB ruling.** **The ruling exists only when the Decision Authority exercises authority**, and its text is then recorded in the rulings register (`engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md`) as **R-65**.
+>
+> **Placement verified against precedent, not asserted:** Slice 7B's authorization package and acceptance record sit in `engineering/verification/reports/`, while its ruling **R-59** sits in the register. **The register holds rulings; verification reports hold the instruments that prepare and record them.** This document follows that split.
+
 > **Note on provenance:** no prior single authorization document existed in the repository. This instrument consolidates the governance decisions from `2026-08-01-slice-7c-arb-disposition-package.md` and the ready-to-issue text held in `.claude/plans/WP-7C-engineering-readiness.md`, with the five ARB refinements applied. **Nothing was reopened; content was moved, not re-derived.**
 
 ---
