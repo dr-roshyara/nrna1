@@ -343,3 +343,17 @@ details and other hooks: `.claude/scripts/README.md`.
 
 **Operational use may begin. The next governance commission should be triggered by EVIDENCE FROM OPERATIONAL WORK — not by this charter and not by the backlog.**
 
+## 🔐 CLAUDE CODE PERMISSIONS CONFIGURED (2026-07-31)
+**`.claude/settings.json`: 19 deny · 22 ask · 8 allow, merged with existing hooks/plugins.** **⚠️ The conceptual `permissions.layers.*` JSON would have been ACCEPTED AND SILENTLY IGNORED — *a repository that looks governed and enforces nothing.*** **Layer 2 uses `ask` NOT `deny`: *deny says IMPOSSIBLE, governance says POSSIBLE AFTER AUTHORIZATION* — validated against M7-CC1, a lawful edit to a promoted artifact that deny would have blocked.** Layer 1 encodes CLAUDE.md's DB rule (`migrate:fresh` etc. denied) and denies secrets at READ.
+
+**⭐ ARCHITECTURAL INVERSION recorded (`PKS_Phase_III_Governance_Runtime_Adapter_Record.md`): *Governance Policy → Capability Mapping → Tool Adapter → Concrete Configuration.* `.claude/settings.json` is an ADAPTER, not the governance model — another runtime would require rewriting only the adapter.** *`ask` is the closest available IMPLEMENTATION of the governance layer, not the layer.* **Filename-pattern protection documented as a LIMITATION, status DEFERRED. Hook-based execution engine + KnowledgeOS Runtime Adapters layer recorded as OBSERVATION only.**
+
+**⚠️ NOTE FOR FUTURE SESSIONS: the Integrity Model / Method / Discipline are now behind BOTH the freeze and the `ask` gate. Appending principles to them is now a change-control-class act.**
+
+**COMMIT UNBLOCKED.**
+
+### Adapter record tightened (Authority)
+**"closed" → "the DEFAULT PATH is closed"** *(frozen ≠ immutable; amendment remains available via Authority + change control)* · **"operational rather than merely documentary"** *(bounded: not every contributor, not every pathway)* · **⭐ Capability Mapping is NOT an adapter — a SECOND portability layer holding abstract capabilities so Claude vocabulary cannot leak UPWARD** · **no `RuntimeAdapters/` directory until a SECOND runtime exists — one implementation is a hypothesis, not a demonstrated abstraction** · **⭐ EVIDENCE STATUS section: 4 demonstrated, 5 not yet demonstrated, each a Phase III validation candidate.**
+
+**⚠️ NEW LIMITATION §4.1 — enforcement is TOOL-SCOPED: a governed file written via a `Bash` heredoc does NOT trigger the `ask` gate. Self-incriminating — this session's artifacts were written that way. Protection should bind to the OBJECT, not the VERB. DEFERRED.** ***Bounds the headline claim: the tool did not stop the amendment; the governance did.***
+
