@@ -5,7 +5,7 @@
 **Nature:** a **methodology module about the governance of change** — it classifies *which abstraction a proposed change actually modifies*, and therefore *whose authority is engaged*. It is **not** architecture, **not** a tactical-DDD rule, and it decides no design question.
 **Relationship to existing modules:** complements `DDD_Tactical_Governance_Principles.md` (tactical design) without overlapping it. That module governs *what to build*; this one governs *who may change it, and at which level*.
 **Provenance:** derived during EPIC-004 WP-7 (finding **G-1**), refined across successive ARB iterations. Promotion to a reusable artifact requested by the ARB, 2026-08-01.
-**Refinement:** 🧊 **FROZEN 2026-08-01** — no further refinement without new evidence. *(Amended twice after freezing, both at ARB direction: (1) the `Produces` column and the one-category invariant in §3; (2) the four category definitions sharpened so **opening** a work package sits in Planning, not Delivery. Recorded rather than glossed: **the freeze binds the author, not the Authority** — and because the module is still unadopted, the ruling will cover this final text.)* **Frozen ≠ adopted, and the distinction is load-bearing:** *freezing* ends **my** refinement of the text; *adoption* is **the Decision Authority's act** and has not occurred. **A frozen module that is not adopted is still non-binding.** The stopping rationale is the ARB's own: successive iterations had begun improving **expression** rather than adding **explanatory power**.
+**Refinement:** 🧊 **FROZEN 2026-08-01** — no further refinement without new evidence. *(Amended three times after freezing, all at ARB direction: (1) the `Produces` column and the one-category invariant in §3; (2) **opening** moved from Delivery to Planning; (3) the categories re-derived from **lifecycle transitions**, with the artifact demoted to *evidence* of the transition rather than the organizing idea. Recorded rather than glossed: **the freeze binds the author, not the Authority** — and because the module is still unadopted, the ruling will cover this final text.)* **Frozen ≠ adopted, and the distinction is load-bearing:** *freezing* ends **my** refinement of the text; *adoption* is **the Decision Authority's act** and has not occurred. **A frozen module that is not adopted is still non-binding.** The stopping rationale is the ARB's own: successive iterations had begun improving **expression** rather than adding **explanatory power**.
 
 ---
 
@@ -59,32 +59,57 @@ The rule evaluates changes; this applies it to **proposals**, which is where it 
 
 **Neither axis is derivable from the other IN PRINCIPLE** — an *Architecture Governance* transition can be an **Approval** (approving a **new** ADR) or a **Ratification** (confirming the reading of an **existing** one), and a type can recur across categories. **But check the direction you are claiming:** in the WP-6→WP-7 sample, *Type* happened to be derivable **from** Category while Category was **not** derivable from Type. **One-directional non-derivability is not independence** — say which direction the evidence supports. **A state machine that labels neither hides which authority owns each transition and what kind of act it is** — which is how a single "yes" comes to mean four different things in one minute-book. *(Applied in the WP-6→WP-7 session: labelling exposed that the Planning Governance state is the only one not owned by the ARB — EP-01's separation made visible, and the reason its vote is separate.)*
 
-**Canonical category definitions** *(this is their single home — cite, never restate)*:
+**Canonical governance categories** *(this is their single home — cite, never restate)*.
 
-| Category | Governs | **Produces** |
+> ### The organizing idea is the LIFECYCLE TRANSITION, not the artifact.
+>
+> **A governance category owns exactly one business transition. The durable artifact is the EVIDENCE that the transition occurred — it exists *because* the transition happened, never the other way round.**
+>
+> ```
+> Lifecycle transition  →  Governance category  →  Durable artifact
+>       (the event)          (who owns it)           (the evidence)
+> ```
+>
+> **Categories are derived from lifecycle events, not from terminology.** Asking *"which label sounds right?"* is how the model drifts; asking *"which business transition is being exercised?"* is how it holds.
+
+| Category | **Lifecycle transition it owns** | Durable artifact *(evidence)* |
 |---|---|---|
-| **Architecture Governance** | architectural decisions and their interpretation | an **approved architectural decision** |
-| **Planning Governance** | **approval AND OPENING** of bounded work packages, and approval of the plans that bound them | an **approved work package** |
-| **Execution Governance** | **authorization for engineering to begin** approved work | an **authorized engineering activity** |
-| **Delivery Governance** | **acceptance and CLOSURE** of completed work | an **accepted implementation baseline** |
+| **Architecture Governance** | a design question is **decided or interpreted** | an **approved architectural decision** |
+| **Planning Governance** | a bounded work package is **opened**, or the plan bounding it **approved** | an **approved work package** |
+| **Execution Governance** | engineering is **authorized to begin** approved work | an **authorized engineering activity** |
+| **Delivery Governance** | completed work is **accepted and closed** | an **accepted implementation baseline** |
 
-**Each category is one distinct business event leaving one distinct durable artifact.** That is the test a category must pass — **a label that produces nothing durable is not a governance category.**
+### The invariant
 
-> ### WARNING - why an earlier version of this table caused two misclassifications
+> **One governance category = one lifecycle transition = one durable artifact.**
 >
-> Delivery Governance previously read *"acceptance **and progression** of bounded work packages."* **"Progression" silently covered opening**, so *opening a work package* was filed under Delivery **twice** (**R-52**, **R-60**) before the ARB caught it.
->
-> **The misclassification followed from the definition, not from carelessness** — the strongest argument for one canonical home: **a loose word in a shared definition reproduces itself in every artifact that cites it.**
->
-> **Opening creates INTENT. Acceptance creates COMPLETION.** Different lifecycle events; they cannot share a category.
+> **If a category cannot demonstrate all three, it is incorrectly modelled.** Two distinct transitions cannot share a category, and a category leaving no durable artifact records nothing.
 
-**The `Produces` column is the operative one when classifying:** *what does this transition leave behind?* A category that produced nothing durable was not a governance act.
+### Root-cause record — model evolution, not human error
 
-**What `Produces` is NOT** *(verified 2026-08-01 by applying §2's own independence test to this table)*: **it is not a third dimension.** It maps **1:1 with Category by construction** — each category is *defined* by what it produces — so it is a **definitional expansion**, valuable for classifying but derivable, and therefore failing the independence test. **Recorded rather than glossed, because a model that exempts itself from its own test is ceremonial.**
+**This model was not refined for style. It was refined because operational evidence showed the previous definition could not classify repeated behaviour consistently:**
 
-> ### **Invariant: every governance transition belongs to exactly ONE governance category.**
->
-> A transition that appears to belong to two is **two transitions**, and they require **two authority acts**. *(This is the general form of DD-1, where "approve the plan and authorize execution" was one vote spanning Planning and Execution governance — the split was not stylistic, it was this invariant asserting itself.)*
+```
+Two rulings (R-52, R-60) opened work packages and were filed under Delivery
+        ↓
+Both were internally consistent; the governance process was followed
+        ↓
+The canonical definition read "acceptance AND PROGRESSION"
+        ↓
+"Progression" admitted "opening" — two lifecycle events under one category
+        ↓
+Definition refined: opening is a PLANNING transition; Delivery is acceptance and CLOSURE
+        ↓
+Future rulings inherit the corrected language from this single source
+```
+
+**The repeated misclassification followed from the shared definition, not from the rulings.** That is the case for one canonical home: **a loose word in a shared definition reproduces itself in every artifact that cites it** — here, twice, before anyone noticed.
+
+**Opening creates INTENT. Acceptance creates COMPLETION.** Different events; different categories.
+
+### When this vocabulary may change again
+
+**Only when operational evidence shows the model cannot classify repeated behaviour consistently — the same bar that produced this refinement. Never for style.** Any proposed category must demonstrate its transition and its artifact; if it cannot, it is not a category.
 
 **Naming note:** prefer **Delivery Governance** over "Programme Governance" — *programme* still reads as portfolio, funding or schedule governance, whereas the definition above fixes where delivery begins and ends: **it starts at a bounded work package and ends at its acceptance or progression.**
 
