@@ -44,27 +44,52 @@
 
 **RED was genuine and two Phase-15 diagnoses returned *"incorrect test"* — including one where the corrected assertion is stronger than the draft** (a chain start has `causationId = null`, and that is ADR-MP-06 behaving correctly).
 
-## 5. ⚠️ One item the ARB must dispose of before or with acceptance
+## 5. ⛔ WITHDRAWN — the "frozen catalog discrepancy" does not exist
 
-> **`Canonical_Event_Catalog_v1.0.md` is 🧊 FROZEN and still marks `ChallengeRouted` — with `ChallengeAdjudicated` and `ChallengeResolved` — as `internal`.**
->
-> **The code publishes the event. The canonical registry records it as internal.** Correcting the marking requires a **v1.1 catalog — an ARB act**. WP-3A recorded the staleness and correctly did not edit a frozen artifact, following the precedent PB-005 set for two of these same events.
+**This section previously asked the ARB to choose between *documentation lag* and *contract-affecting*. Both options rested on a misreading of the catalog. The question dissolves.**
 
-**Two readings are available and architecture does not choose between them:**
+### What the column actually is
 
-| Reading | Consequence |
+**`Canonical_Event_Catalog_v1.0.md` has no `visibility` column.** Its columns are:
+
+```
+| Event | Producer (only) | Classification | Stability | Security | SchemaVer |
+```
+
+**`internal` is a value of the SECURITY column**, whose other value is `restricted`. It is a **data-sensitivity classification**, not a publication marking. `restricted` is carried by `VoteAccepted`, `EvidenceRecorded` and `DeterminationIssued` — the vote, evidence and determination data. **`internal` is what everything else carries.**
+
+**The proof that the column cannot mean "not published": `ElectionCorrectionApplied` is classified `Integration` — the catalog's own legend defines that as *"cross-context reaction"* — and it is marked `internal`.** **A column that marks an explicitly cross-context event `internal` is not recording publication status.**
+
+### The authoritative contract already authorizes exactly what was built
+
+**Round50-05 is the authoritative payload/delivery/security contract** (the v1.0 catalog names it as such). For `ChallengeRaised…Resolved`, which includes `ChallengeRouted`:
+
+| | Round50-05 §2 |
 |---|---|
-| **Documentation lag** | accept WP-3A; record the catalog correction as follow-up governance |
-| **The Published Language contract is affected** | the marking is part of the contract, and acceptance should wait on v1.1 |
+| Security | **internal** |
+| **Consumers (allowed)** | **AdjudicationService · Audit · NOT Voting** |
 
-**This is a governance question about the authority of a frozen artifact, not an engineering defect.**
+**And §1 gives the payload as `challengeId · routedTo · at` — exactly the three fields WP-3A publishes.**
+
+> **The frozen artifact does not contradict the implementation. It specifies it, and it names Adjudication as an authorized consumer — which is precisely what WP-4 then built.**
+
+### What remains — smaller, real, and not a blocker
+
+**The catalog records no published-language status at all.** ADR-T21 declares `ChallengeRouted` published language; **the registry has no column for that dimension**, so the declaration has no counterpart there. **That is a gap in what the registry records, applying to the whole catalog — not a discrepancy about three events, and not a reason to withhold acceptance.**
+
+### Provenance of the error
+
+**The misreading originates in WP-3A's own plan (2026-07-30, finding 3), which called it *"its `visibility` marking"* — a column name the artifact does not have.** **I carried that finding forward into this review, CONTEXT and the session log without opening the catalog.** **Same pattern as the WP-4 header: I quoted a claim about an artifact instead of reading the artifact.**
+
+**No ARB disposition is required. No v1.1 catalog is required on this ground.**
 
 ## 6. Classification
 
 | Finding | Classification |
 |---|---|
 | Hydrator + publication mapping | **Engineering** |
-| Frozen catalog marks a published event `internal` | **Governance** — undisposed since 2026-07-30 |
+| ~~Frozen catalog marks a published event `internal`~~ | ⛔ **WITHDRAWN (§5)** — the `Security` column was read as a visibility marking. **No finding** |
+| The catalog records no published-language status for any event | **Documentation** — a registry gap, not a defect of this slice |
 | The slice's authorization is recorded in the plan and session log, **not in the rulings register** | **Governance — recording gap.** Same class R-62 corrected for R-43/R-48 |
 
 **No finding is classified as Architecture — none was observed.** **No PKS or KnowledgeOS classification: single occurrences.**
@@ -77,11 +102,13 @@
 | Architecture preserved? | ✅ | §2–3 |
 | Definition of Done complete? | ✅ | triple qualification performed 2026-08-02 — **the gap that blocked this review is closed** |
 | Unauthorized changes introduced? | ❌ | none observed |
-| Outstanding items? | ⚠️ | **the frozen-catalog disposition (§5)** |
+| Outstanding items? | ❌ | **none.** The frozen-catalog item is **withdrawn** (§5); the authoritative contract specifies this event and authorizes Adjudication as its consumer |
 
 ## 8. Recommendation
 
-> **The ARB is recommended to accept WP-3A, and to dispose of the frozen-catalog marking in the same act — either as follow-up governance (documentation lag) or as a precondition (contract-affecting).**
+> **The ARB is recommended to accept WP-3A. No condition attaches.**
+>
+> **The catalog disposition this review previously asked for is withdrawn — there was nothing to dispose of.**
 >
 > **Engineering supplied the evidence; architecture supplies this recommendation; the ARB decides.** **At no point did the party producing the work also accept it.**
 
