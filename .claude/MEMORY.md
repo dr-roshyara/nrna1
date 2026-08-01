@@ -86,6 +86,19 @@
 - **CLAIM BOUNDED HONESTLY: ONE EXECUTION, NOT ROUTINE USE.** The platform's own L5 test — *"one script proves possibility; routine use proves capability"* — so the recorded claim is **"operationally validated, first execution"** and nothing stronger.
 - **A SECOND, WEAKER EXECUTION THE SAME DAY: the resolver returned PENDING for a cross-product research artifact AND THE RESPONSE WAS TO STOP, NOT INVENT A LOCATION. A MODEL THAT REFUSES IS AS MUCH EVIDENCE AS ONE THAT ANSWERS** — the failure mode the tooling exists to prevent, exercised for real.
 
+## ✅ WORKSTREAM CLOSED: documentation placement & link integrity (2026-08-01)
+
+- **CLOSED: documentation roots implementation · migration registry implementation · deterministic link repair. VALIDATED: the placement mechanism (first execution). COMPLETE: PKS evidence recording.** **OPEN AS DELIBERATE SUCCESSOR WORK: ENG-008 (trigger: second consumer) · ENG-009 (BLOCKED on OQ-5) · ENG-010 (documentation integrity) · ENG-011 (repo-wide validation) · the 6 ambiguous references (editorial/governance).**
+- **CLOSURE WORDING MATTERS — NEVER SAY "all broken links were fixed". SAY: "All deterministic link repairs have been completed. Remaining unresolved references have been classified and transferred to backlog or governance."** 53 references remain broken; they are **classified, counted, attributed and owned — not repaired**, and the record says so.
+- **A CLOSED WORKSTREAM WITH EXPLICIT SUCCESSORS IS FINISHED; ONE WITH HIDDEN TODOs IS NOT.** The four ENG items are NEW work the workstream created, not unfinished work it left.
+
+## ⭐ FIRST OPERATIONAL VALIDATION OF THE KNOWLEDGEOS FEEDBACK LOOP — with its boundary (2026-08-01)
+
+- **One full traversal in one day: Observation -> Classification -> Placement -> Validation -> Operational Evidence -> Backlog.**
+- **BOUNDARY 1: ONE TRAVERSAL, NOT A DEMONSTRATED CAPABILITY** (the platform's own test: one script proves possibility, routine use proves capability).
+- **BOUNDARY 2, AND IT IS THE IMPORTANT ONE: THE LOOP HAS NOT YET CLOSED ON THE MODEL. It delivered evidence TO the decision point and stopped — no ruling issued, no standard amended, no candidate promoted. IT SHOWED THAT EVIDENCE REACHES AUTHORITY; IT HAS NOT YET SHOWN THAT EVIDENCE CHANGES THE MODEL.**
+- **Recorded claim: "first operational validation of the KnowledgeOS feedback loop, UP TO THE DECISION POINT."**
+
 ## ⭐ A RECURRING UNRULED CLASSIFICATION IS A MODEL GAP — not a count (governing framing, 2026-08-01)
 
 - **SUPERSEDES the "now there are two artifacts" phrasing below.** *Two artifacts* is an INVENTORY fact and invites *"and two is still small"*. **THE SAME UNRESOLVED CLASSIFICATION RECURRING DURING ORDINARY WORK IS A PROPERTY OF THE MODEL, not of the artifacts — it does not weaken with a small count, because THE OBSERVATION IS THE RECURRENCE, NOT THE POPULATION.**
