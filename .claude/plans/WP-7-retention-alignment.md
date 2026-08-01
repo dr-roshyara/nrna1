@@ -1,6 +1,6 @@
 # WP-7 — Retention Alignment (`audit:cleanup` becomes EPW-aware)
 
-**Status:** 📋 **TACTICAL PLAN — 🧊 ARCHITECTURE FROZEN · TRANSITION AUTHORIZED (architecturally) · ⚠️ ENGINEERING READINESS CONDITIONAL.** Seven commissions complete; **zero architectural gates remain**. ⛔ **RED blocked by THREE items, none architectural: (1) WP-6 slice acceptance (programme) · (2) G-1 placement decision (engineering/ARB — blocks 7A) · (3) C-1 automation (the one constraint whose manual enforcement is insufficient).** Awaiting EP-01 approval. **No code, no config key, no test.**
+**Status:** 📋 **TACTICAL PLAN — 🧊 ARCHITECTURE FROZEN · TRANSITION AUTHORIZED · ✅ G-1 RESOLVED (no domain-model change, no Deptrac change).** Eight commissions complete. ⛔ **RED blocked by TWO items: (1) WP-6 slice acceptance (programme, ARB) · (2) C-1 automation (deliverable inside 7A).** ⚖️ **Two items awaiting ARB ratification: A-1 (mechanism substitution) · A-2 (guard boundary sharpening)** — neither reassigns a responsibility. Awaiting EP-01 approval. **No code, no config key, no test.**
 **Gate note:** WP-6's ARB acceptance is still pending; the roadmap's rule is *"no slice starts before its predecessor's acceptance."* **Planning is the authorized activity; RED is not.**
 **Slice:** WP-7 (EPIC-004 roadmap) · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN) · **Repository Integrity Gate:** ✅ PASSED
 
@@ -69,7 +69,9 @@ The open question was *"does per-election EPW need Contestation or Adjudication 
 | **Port** — retention durations (CW, LSM) | **yes, one** | Policy 2; mirrors WP-6's `AdjudicationDurations` pattern |
 | Repositories | **none** — reads the existing Eloquent model | — |
 
-**The decision that keeps AP-2 from recurring:** **MAD is NOT copied into a retention config.** It has exactly one home (`config/adjudication.php`) and WP-7 **consumes the existing `AdjudicationDurations` port**. Only CW and LSM — which have no home yet — get new keys. *A second copy of MAD would be precisely the Decision Duplication corrected in WP-6.*
+**The decision that keeps AP-2 from recurring:** **MAD is NOT copied into a retention config.** It has exactly one home (`config/adjudication.php`). Only CW and LSM — which have no home yet — get new keys. *A second copy of MAD would be precisely the Decision Duplication corrected in WP-6.*
+
+> ⚠️ **MECHANISM SUPERSEDED (alignment commission, 2026-08-01 — pending ARB ratification as A-1).** This section originally read *"WP-7 **consumes the existing `AdjudicationDurations` port**"*. **The invariant above stands unchanged; the mechanism does not.** Importing Adjudication's port from Election is a direct cross-context code dependency, which **TP-1 forbids and Deptrac would correctly fail**. **Replacement: Election declares its own `EvidencePreservationDurations` port, and its own `Infrastructure/Config/` adapter reads the one canonical MAD key.** Consuming the *value* from its single home is what AP-2 requires; importing the *interface* was never the binding part. See §ARCHITECTURE–ENFORCEMENT ALIGNMENT above.
 
 **No tactical concept is introduced for implementation convenience.** *(Tactical Pattern Verification, 2026-08-01: +1 Value Object, -1 responsibility inside the application service -- the model became simpler to describe. Report: `engineering/verification/reports/2026-08-01-wp7-tactical-pattern-verification.md`.)*
 
@@ -183,6 +185,29 @@ The open question was *"does per-election EPW need Contestation or Adjudication 
 **Accepted as manual, deliberately:** **C-5** (a new aggregate/repository in a 3-slice change is unmissable in review, and automating absence over-fits) · **C-7** (a name is the most visible thing in a diff) · **C-10** (one named file) · **C-11** (release governance — not engineering's to enforce). *Domain events are already covered by `EventRegistryCompletenessTest` + AT-EVT-001.*
 
 **DDD alignment verdict:** the gates **reinforce** the model rather than replace it — `deptrac.yaml` states the correct direction of authority in its own words (*"the tool verifies the architecture; the architecture never evolves because the tool guessed something"*). **The deficiency is reach and granularity, not direction.**
+
+### ✅ ARCHITECTURE–ENFORCEMENT ALIGNMENT COMMISSION (2026-08-01) — G-1 RESOLVED
+
+`engineering/verification/reports/2026-08-01-wp7-architecture-enforcement-alignment-commission.md`. **G-1 reclassified from "engineering placement" to an ARCHITECTURE–ENFORCEMENT ALIGNMENT GAP — architecture correct, enforcement correct, the MAPPING between them incomplete. The reclassification changed the answer, not just the label:** "placement" invites *"put the file where Deptrac doesn't look"* (option a — consistent, unguarded, and it would **look** like compliance); "alignment gap" forces the fix into the mapping, where the defect actually is.
+
+**The unlock — mechanism vs invariant.** The plan recorded both in one sentence: **"MAD has exactly one home" is the INVARIANT (AP-2) and is preserved absolutely**; *"consume Adjudication's existing port"* was a **plan-level MECHANISM, never an architectural decision.** Consuming the *value* from its one home is what AP-2 requires; importing the *interface* is one way to do it — the way TP-1 forbids.
+
+> #### ⭐ RESOLUTION — option (d): **Election declares its OWN consumer-side port**
+> Hexagonal orthodoxy: **a port belongs to the consumer, in the consumer's language.** `EvidencePreservationDurations` → `app/Contexts/Election/Application/Port/` · `ConfiguredEvidencePreservationDurations` → `app/Contexts/Election/Infrastructure/Config/`, **mirroring `ConfiguredAdjudicationDurations` exactly** (injected `Config`, precedence resolution, fail-closed, no clamping). It reads **the one canonical MAD key**. **No cross-context code import anywhere.**
+>
+> **TP-1 ✔ · AP-2 ✔ · Deptrac UNMODIFIED ✔ · domain model UNCHANGED ✔ · fully gated ✔.** Options (a) unguarded, (b) a genuine TP-1 violation, and (c) relax the Deptrac model were all **rejected — (c) is not needed, so it is not proposed.**
+>
+> **Not a disguised crossing:** **MAD is not Adjudication's data — it is Q-2's policy** housed in `config/adjudication.php`. Both contexts are downstream of *governance*, not of each other. No model, type, lifecycle or deployment coupling.
+>
+> **Honest cost — 🔴 R-D1:** the *precedence logic* (organisation → election type → default) would exist twice and could **drift**, so MAD could resolve differently in the two contexts. **Recommended gate: a test asserting both adapters resolve the same MAD for the same `(electionType, organisationId)` — it protects AP-2's INTENT rather than its letter.** Extracting precedence into `Shared` on first repetition is **declined** (two ~10-line adapters don't justify a platform abstraction; Shared *"must never degrade into a general utility layer"*).
+
+**Placement principle — coverage follows MEANING, not the reverse.** Code was **not** pulled into contexts to obtain coverage. Business-meaningful pieces (VO · port · service · adapter) are in Election and gated; **the folder→election parser, traversal, deletion and the CLI stay with the audit code and remain ungated — correctly, because they carry no policy.** `--days` (C-9) is behaviour, protected by a behavioural test. *Everything carrying policy or domain meaning is gated; everything ungated carries neither — a stronger claim than "everything is gated."*
+
+**Responsibility inventory (8 rows) replaces the rule inventory as the unit of protection.** It revealed what the constraint view could not: **R2 (policy ownership) and R7 (infrastructure) are the SAME defect from both ends** — *policy ownership is violated at the moment infrastructure decides a value*, which is precisely AP-1. **So C-1 is not one fix among three; it is the single gate protecting the responsibility the constitution cares about most.** Likewise **R4/R5 are one drift with two symptoms** (construction sliding into orchestration), closed by the one construction-exclusivity precedent.
+
+**Coverage delta:** business-meaningful code in gated paths goes from *the VO only* → *VO + port + service + adapter*; **C-6 moves from "unobserved" to actively enforced (4/11 → 5/11)**. **Alignment makes existing gates apply; it does not add gates** — C-1 🔴, C-4 and R-D1 remain the substantive additions.
+
+**⚖️ Two items referred to the ARB, not assumed** — **A-1** mechanism substitution *(confirm the **invariant**, not the sentence, was binding)* · **A-2** boundary sharpening *(**Election answers**, **Audit/Retention acts** — consistent with the frozen "Consumption (acting on the answer)", but the guard was described as one thing and this names it as two; **no holder changes**)*. **If A-1 is declined, the fallback is option (c) — relaxing a correct gate — which must be a deliberate recorded act, not a default.**
 
 ---
 
