@@ -357,3 +357,8 @@ details and other hooks: `.claude/scripts/README.md`.
 
 **⚠️ NEW LIMITATION §4.1 — enforcement is TOOL-SCOPED: a governed file written via a `Bash` heredoc does NOT trigger the `ask` gate. Self-incriminating — this session's artifacts were written that way. Protection should bind to the OBJECT, not the VERB. DEFERRED.** ***Bounds the headline claim: the tool did not stop the amendment; the governance did.***
 
+### Round-2 tightening (committed)
+**§4.1.1** *the **Claude permission gate** was not on the path taken — this does NOT show no enforcement exists elsewhere, only that **the current ADAPTER does not mediate every modification path*** · **§4.1.2** tool enforcement = *"you couldn't"* (channel) vs behavioral governance = *"you could have and you didn't"* (discipline) — **evidence STRONGER, not weaker** · **classified a Phase III VALIDATION TARGET, not a Phase II defect** · **⭐ §6.2 the five deferred items are VALIDATION EXPERIMENTS, not problems** *(a bug backlog would recreate the pressure Phase II resisted: control before evidence)* · **§6.3 baseline genuinely CLOSED — reopened ONLY by concrete operational evidence from PublicDigit, never by internal analysis.**
+
+**▶ PHASE III NEXT: run the experiments during real PublicDigit work. No more governance documents.**
+
