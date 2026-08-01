@@ -151,13 +151,15 @@ Adoption of the **Layer Verification Rule** methodology module *(PROPOSED — WP
 
 ## 5. On approval — the first authorized engineering activity
 
-*(Stated now so the handoff needs no further governance step. **Conditional. Not authorized.**)*
+*(Stated now so that **no further governance PREPARATION is required after the outstanding authority decisions are exercised**. **Conditional. Not authorized.** — Corrected from *"needs no further governance step"*: the five outstanding items **are** governance acts, so that wording contradicted the list above it. **Preparation, authority and execution are separate phases; what is complete is preparation.**)*
 
 > **Slice 7A — RED.** Failing tests for retention-duration resolution: **per election type** · **organisation override** · **fail closed on missing or invalid** — against **Election's own `EvidencePreservationDurations` port**, mirroring the verified `AdjudicationDurations` shape.
 > **In the same slice:** the **C-1** guard *(engineering's call — the one constraint whose manual enforcement is insufficient)* and, recommended, **R-D1** *(both adapters resolve the same MAD for the same `(electionType, organisationId)`)*.
 > **7A is inert** — nothing consumes it; **no observable behaviour changes until 7C.**
 
 **Governance responsibility transfers to engineering only when items 1, 2, 4a and 4b are approved.** Until then it remains with the ARB.
+
+**Sequence after the rulings, with the roles kept apart:** the **Authority** exercises the decisions → the **Recording Architect** updates this record with each outcome and rationale and files them to the rulings register → **engineering** begins the first authorized activity, slice 7A. **Three roles, three acts — recording is not deciding, and deciding is not executing.**
 
 ---
 
