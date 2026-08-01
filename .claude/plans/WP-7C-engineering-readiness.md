@@ -124,6 +124,40 @@
 
 ---
 
+## Governance Closure — which decisions actually gate ENGINEERING
+
+**Narrowed strictly to engineering blockers. No architecture reopened, no new governance question introduced.**
+
+| | Decision | Gates RED? | Why |
+|---|---|---|---|
+| **C-1** | authorization wording | ✅ **YES** | **The authorization cannot issue without its text, and engineering cannot begin without the authorization.** Its wording also fixes what engineering may change |
+| **C-3** | does authorization cover amending accepted tests? | ✅ **YES** | **RED includes amending `AuditCleanupTest`.** Until this is settled, engineering does not know whether it may touch that file — **it constrains RED's scope directly** |
+| **C-4** | identifier allocation | ⚠️ **transitively** | A ruling needs an identifier to exist as a ruling, so it gates the **issuing act**. **It constrains nothing about engineering's scope and is trivially satisfiable** |
+| **C-2** | release governance | ❌ **NO** | **Release follows ACCEPT.** Naming an announcement owner is a **pre-release** prerequisite, not a pre-engineering one. **It does not gate RED, GREEN, VERIFY or ACCEPT** |
+
+> ### The critical path is three decisions, not four.
+>
+> **C-1 and C-3 gate engineering. C-4 gates the paperwork of issuing. C-2 gates release, which is downstream of everything in this slice.**
+>
+> **Whether to defer C-2 is the ARB's call, not architecture's.** **What is stated here is only the classification: C-2 is not an engineering blocker.**
+
+## Authorization Readiness Statement
+
+**Every architectural prerequisite is satisfied. Verified, not assumed.**
+
+| Prerequisite | Status | Evidence |
+|---|---|---|
+| **Bounded-context ownership** | ✅ **Audit / Retention owns the guard.** Adjudication and Q-2 are **providers of parameters**; the consumer is the guard in `AuditCleanup`. **No crossing, no consumer, no producer added** | plan §1, §3 |
+| **Capability ownership** | ✅ **WP-7 owns one thing: the deletion guard.** 7C consumes the **Evidence Preservation Window Resolution** capability and no other | plan §1 · Rev 2 verification |
+| **Strategic invariants** | ✅ **Policy 2 Retention Invariant · EPW = CW + MAD + LSM** — preserved, not touched. **Published and Ubiquitous Language unchanged** | plan §1 · A5 |
+| **Tactical boundaries** | ✅ **No aggregate, entity, repository or port introduced.** VO · service · port **consumed only**. Dependency direction Infrastructure → Application → Domain, **never reversed** | Phase 3 above |
+| **Engineering readiness** | ✅ merge gate **PASS** (266 tests · 665 assertions · 0 failures) · working tree clean · 7B artifacts present · RED scope known | Rev 2 verification |
+| **Authorization** | ⬜ **ABSENT** | C-1, C-3 undisposed |
+
+> **Architecture does not block Slice 7C. The sole remaining prerequisite is governance, and it is two decisions on the critical path.**
+
+**Nothing was redesigned to produce this statement.**
+
 ## Standing position
 
 **Slice 7C is architecturally ready and governance-blocked. The first authorized activity is RED, and it begins only after C-1…C-4 are disposed and authorization issues.** **No implementation has been performed.**
