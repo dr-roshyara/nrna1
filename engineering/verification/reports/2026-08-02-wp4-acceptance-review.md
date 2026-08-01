@@ -25,7 +25,17 @@
 
 > **The plan flagged this before RED — *"flagged now rather than discovered mid-slice"*. It is disciplined slicing, not scope silently dropped.**
 >
-> **But it has a consequence the ARB must settle: accepting "WP-4" accepts one of four roadmap items under that name.** **Either the acceptance names the executed scope explicitly, or the roadmap's §WP-4 is re-scoped and the remainder renumbered.** **Architecture does not choose; leaving it unstated is the only unacceptable option.**
+> **It has one consequence: accepting "WP-4" would otherwise accept one of four roadmap items under that name.**
+
+**The Board should not have to assemble the scope statement. Architecture supplies it; the Board approves, defers or rejects it:**
+
+> ### Proposed scope of acceptance — for approval as written
+>
+> **What is accepted:** the `(Adjudication, ChallengeRouted)` **inbox handler and its consumer-side registration** — `ChallengeRoutedReactionHandler` and its registration by `(consumerContext='Adjudication', eventType='ChallengeRouted')`.
+>
+> **What is not accepted, because it was never built:** the crash-safe conclude→issue seam · `AdjudicationFailureDeclared` and its integration counterpart, hydrator and catalog entry · the authority-decision intake port and its interim administrative adapter. **These remain roadmap §WP-4 scope, carried as their own slices, each dependent on the authority-decision intake — a recorded external.**
+
+**Approving that statement settles the question in one act. Rejecting or amending it is equally available. Leaving it unstated is the only outcome that would make the acceptance ambiguous.**
 
 ## 2. Strategic DDD Verification
 
@@ -87,7 +97,7 @@
 
 ## 7. Recommendation
 
-> **The ARB is recommended to accept WP-4 *as executed* — the `(Adjudication, ChallengeRouted)` inbox handler and its registration — and to state in the same act how the three deferred roadmap items are carried: renumbered slices, or a re-scoped §WP-4.**
+> **The ARB is recommended to accept WP-4 *as executed*, adopting the scope statement in §1 as written — the `(Adjudication, ChallengeRouted)` inbox handler and its registration, with the three unbuilt items carried as their own slices.**
 >
 > **Dependency order matters: WP-3A's published language is what WP-4 consumes. Accept WP-3A first.**
 >
