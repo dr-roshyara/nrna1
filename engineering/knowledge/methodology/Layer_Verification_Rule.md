@@ -5,7 +5,7 @@
 **Nature:** a **methodology module about the governance of change** — it classifies *which abstraction a proposed change actually modifies*, and therefore *whose authority is engaged*. It is **not** architecture, **not** a tactical-DDD rule, and it decides no design question.
 **Relationship to existing modules:** complements `DDD_Tactical_Governance_Principles.md` (tactical design) without overlapping it. That module governs *what to build*; this one governs *who may change it, and at which level*.
 **Provenance:** derived during EPIC-004 WP-7 (finding **G-1**), refined across successive ARB iterations. Promotion to a reusable artifact requested by the ARB, 2026-08-01.
-**Refinement:** 🧊 **FROZEN 2026-08-01** — no further refinement without new evidence. *(Amended once after freezing, at ARB direction, to add the `Produces` column and the one-category invariant in §3. Recorded rather than glossed: **the freeze binds the author, not the Authority** — and because the module is still unadopted, the ruling will cover this final text.)* **Frozen ≠ adopted, and the distinction is load-bearing:** *freezing* ends **my** refinement of the text; *adoption* is **the Decision Authority's act** and has not occurred. **A frozen module that is not adopted is still non-binding.** The stopping rationale is the ARB's own: successive iterations had begun improving **expression** rather than adding **explanatory power**.
+**Refinement:** 🧊 **FROZEN 2026-08-01** — no further refinement without new evidence. *(Amended twice after freezing, both at ARB direction: (1) the `Produces` column and the one-category invariant in §3; (2) the four category definitions sharpened so **opening** a work package sits in Planning, not Delivery. Recorded rather than glossed: **the freeze binds the author, not the Authority** — and because the module is still unadopted, the ruling will cover this final text.)* **Frozen ≠ adopted, and the distinction is load-bearing:** *freezing* ends **my** refinement of the text; *adoption* is **the Decision Authority's act** and has not occurred. **A frozen module that is not adopted is still non-binding.** The stopping rationale is the ARB's own: successive iterations had begun improving **expression** rather than adding **explanatory power**.
 
 ---
 
@@ -63,10 +63,20 @@ The rule evaluates changes; this applies it to **proposals**, which is where it 
 
 | Category | Governs | **Produces** |
 |---|---|---|
-| **Architecture Governance** | design decisions and their interpretation | **architectural decisions** |
-| **Planning Governance** | approval of a plan as the binding statement of intended work | **approved implementation plans** |
-| **Delivery Governance** | **acceptance and progression of bounded work packages through the engineering lifecycle** | **accepted work-package baselines** |
-| **Execution Governance** | authorization for engineering to begin authorized work | **authorized engineering work** |
+| **Architecture Governance** | architectural decisions and their interpretation | an **approved architectural decision** |
+| **Planning Governance** | **approval AND OPENING** of bounded work packages, and approval of the plans that bound them | an **approved work package** |
+| **Execution Governance** | **authorization for engineering to begin** approved work | an **authorized engineering activity** |
+| **Delivery Governance** | **acceptance and CLOSURE** of completed work | an **accepted implementation baseline** |
+
+**Each category is one distinct business event leaving one distinct durable artifact.** That is the test a category must pass — **a label that produces nothing durable is not a governance category.**
+
+> ### WARNING - why an earlier version of this table caused two misclassifications
+>
+> Delivery Governance previously read *"acceptance **and progression** of bounded work packages."* **"Progression" silently covered opening**, so *opening a work package* was filed under Delivery **twice** (**R-52**, **R-60**) before the ARB caught it.
+>
+> **The misclassification followed from the definition, not from carelessness** — the strongest argument for one canonical home: **a loose word in a shared definition reproduces itself in every artifact that cites it.**
+>
+> **Opening creates INTENT. Acceptance creates COMPLETION.** Different lifecycle events; they cannot share a category.
 
 **The `Produces` column is the operative one when classifying:** *what does this transition leave behind?* A category that produced nothing durable was not a governance act.
 
