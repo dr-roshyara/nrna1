@@ -122,9 +122,11 @@ WP-3 (ChallengeRouted pub) ─────────┘
 
 > **If the Board authorizes WP-4, Engineering becomes *eligible* to begin RED, subject to all recorded governance preconditions.** **Authorization creates permission; engineering still runs its own process.**
 
-## 8. Operational Evidence → PKS
+## 8. Operational Evidence Review → PKS Classification *(if applicable)*
 
-**After the decision, the commission itself is engineering evidence.** Evaluate whether convening it produced an implementation observation · engineering friction · reusable engineering knowledge · a PKS candidate.
+**The commission *may* produce operational evidence.** After the decision, **evaluate whether convening it generated reusable architectural, governance or engineering observations suitable for PKS recording** — an implementation observation · engineering friction · reusable engineering knowledge.
+
+> **PKS classification is conditional, not implied.** ***"No reusable observation"* is a valid and complete outcome of this review** — the review always runs; the classification step runs only if the review finds something.
 
 **Recorded for evaluation after the decision, not now. Nothing is promoted, and a single occurrence remains an observation.**
 
