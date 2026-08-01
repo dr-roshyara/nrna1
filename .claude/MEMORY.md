@@ -52,6 +52,15 @@
 - **Plans routinely record an invariant and its mechanism in the SAME SENTENCE**, which is why they get read as one thing. **Split them before treating either as binding.**
 - **Analysis cannot ratify itself.** The sequence is **analysis → recommended realization → ARB ratification → resolution** — never analysis → resolution → ratification. A report that recommends *and* declares resolved while listing pending ratifications contradicts itself. *(Same class as "readiness is evidence, acceptance is authority" — check both directions: applying it to someone else's gate is not the same as applying it to your own recommendation.)*
 
+## Preparation vs Recording — two artifacts, never one (adopted 2026-08-01)
+
+- **A governance session needs TWO artifacts, and conflating them is a real boundary crossing — including in the FILENAME.** **PACKAGE** (before): evidence · recommendations · traceability · **blank** templates. **RECORD** (after): rulings · outcomes · state transitions. *(Learned the hard way: I named an artifact a "Record" before any ruling existed. The body correctly recorded nothing — **the body held the line; the name did not**.)*
+- **Lifecycle:** `Evidence → Recommendation → Authority Decision → Recorded Outcome → Engineering Handover → RED`. **A preparation commission ENDS at the boundary before authority is exercised.**
+- **Three roles, three acts:** the **Authority** decides · the **Recording Architect** records · **engineering** executes. **Recording is not deciding; deciding is not executing.**
+- **Never write "is accepted" / "is ratified" in a package**, and never pre-fill an outcome — not even the recommended one.
+- **"No further governance act needed" is almost always wrong wording.** If outstanding authority decisions are listed, those ARE governance acts. Say **"no further governance PREPARATION is required."**
+- **Independence test for any two-column classification:** if column B is derivable from column A, it is not a second dimension. *(My transition-type column once restated the category column — Planning/Execution — and had to be re-typed to Approval/Ratification/Authorization, which yields a genuine proof: two rows share a TYPE across different CATEGORIES.)*
+
 ## Architecture–Enforcement Alignment Gap (named 2026-08-01, ARB reclassification)
 
 - **Definition:** every architectural decision is correct **and** every gate is correct, but **no artifact states how the decision is realised INSIDE the gates.** The failure is in the **mapping**, not in either side.
