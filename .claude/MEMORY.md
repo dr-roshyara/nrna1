@@ -86,6 +86,24 @@
 - **CLAIM BOUNDED HONESTLY: ONE EXECUTION, NOT ROUTINE USE.** The platform's own L5 test — *"one script proves possibility; routine use proves capability"* — so the recorded claim is **"operationally validated, first execution"** and nothing stronger.
 - **A SECOND, WEAKER EXECUTION THE SAME DAY: the resolver returned PENDING for a cross-product research artifact AND THE RESPONSE WAS TO STOP, NOT INVENT A LOCATION. A MODEL THAT REFUSES IS AS MUCH EVIDENCE AS ONE THAT ANSWERS** — the failure mode the tooling exists to prevent, exercised for real.
 
+## ⭐ A RECURRING UNRULED CLASSIFICATION IS A MODEL GAP — not a count (governing framing, 2026-08-01)
+
+- **SUPERSEDES the "now there are two artifacts" phrasing below.** *Two artifacts* is an INVENTORY fact and invites *"and two is still small"*. **THE SAME UNRESOLVED CLASSIFICATION RECURRING DURING ORDINARY WORK IS A PROPERTY OF THE MODEL, not of the artifacts — it does not weaken with a small count, because THE OBSERVATION IS THE RECURRENCE, NOT THE POPULATION.**
+- **DDD FORM: you evolve a model when reality REPEATEDLY EXPOSES THE SAME MISSING CONCEPT — not when instances accumulate, but when the same gap keeps being reached FROM UNRELATED DIRECTIONS.**
+- **THREE INDEPENDENT ARRIVALS AT `cross-product + research` IN ONE DAY, from three unrelated commissions, NONE OF WHICH WAS LOOKING FOR THE GAP:** (1) `Layer_Verification_Rule.md` from WP-7 finding G-1 · (2) the documentation-index candidate from a link-integrity commission · (3) the recurring-unruled-classification principle from the governance commission. **The third is SELF-DEMONSTRATING: the principle saying "recurrence is evidence" is itself the third occurrence.**
+- **GOVERNANCE PRINCIPLE CANDIDATE (not adopted):** *An unruled classification that repeatedly appears during normal engineering work becomes architectural evidence for extending the classification model.* **It RULES OUT extending because "this seems useful"; it ADMITS extension because engineering repeatedly reached the same unresolved state. The trigger is OBSERVED RECURRENCE, NOT JUDGMENT.**
+
+## Candidate promotion bars — one corpus is one observation (2026-08-01)
+
+- **A rule generalized from one corpus is A RULE FITTED TO ONE CORPUS**, however many instances that corpus produced. 47 references and 30 targets are still ONE CLASS OF FAILURE IN ONE REPOSITORY. (The programme already records this ceiling elsewhere: *"one corpus, one lineage — never citable as independently confirmed"*.)
+- **Documentation-index candidate: promotion waits until ANOTHER UNRELATED REPOSITORY produces the same observation.**
+- **Recurring-unruled-classification principle: at least the same bar.**
+- **A CANDIDATE WITH NO RULED HOME IS NOT GIVEN AN INVENTED ONE — record it inside the evidence record that produced it.**
+
+## Triggers belong IN the backlog item, not in a report (2026-08-01)
+
+- **ENG-008 now carries its own binding trigger: A SECOND CONSUMER of the confidence model.** **A trigger recorded only in a report is a trigger nobody will see when the item is next read.** Write activation conditions INTO the item.
+
 ## ⚠️ THE UNRULED CELL NOW HOLDS TWO ARTIFACTS — the stewardship deferral's stated ground has changed (2026-08-01)
 
 - **Stewardship was deferred on an explicit basis: "the evidence is one artifact", and R-29/R-37 reject generalizing from a single example. THAT WAS CORRECT AND IT IS NO LONGER THE SITUATION.**

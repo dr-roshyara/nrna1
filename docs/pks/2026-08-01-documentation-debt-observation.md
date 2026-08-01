@@ -47,6 +47,8 @@
 
 **The observation generalizes beyond this repository. Recorded as a candidate at ARB direction (2026-08-01); adoption requires the ES-006.1 ladder and an explicit ruling (R-34).**
 
+> **PROMOTION CONDITION (ARB, 2026-08-01): the candidate stays a candidate until *another unrelated repository produces the same observation*.** One repository has produced **one class of failure** — that is a single observation however many links it generated, and **a rule generalized from one corpus is a rule fitted to one corpus.**
+
 > **CANDIDATE:** *A documentation index shall not reference an artifact that does not yet exist, unless the reference is explicitly marked as planned.*
 
 **Why it is recorded here rather than in its own file.** The candidate is **cross-product** (any project could adopt it unchanged) at **research** maturity. Run through the resolver, that classification returns:
