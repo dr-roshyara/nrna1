@@ -11,7 +11,7 @@
 | **Purpose** | Issue Slice 7C authorization |
 | **Inputs** | Authorization instrument (`engineering/verification/reports/2026-08-01-slice-7c-authorization.md`) · Readiness and RED backlog (`.claude/plans/WP-7C-engineering-readiness.md`) · Work plan (`.claude/plans/WP-7-retention-alignment.md`) |
 | **Decisions requested** | **C-1** authorization wording · **C-3** amendment of accepted tests · **C-4** identifier allocation |
-| **Expected outcome** | Issue **R-65** |
+| **Expected outcome (if the Board approves)** | Issue **R-65** |
 | **Next step** | Board deliberation |
 
 ## Decisions requested
