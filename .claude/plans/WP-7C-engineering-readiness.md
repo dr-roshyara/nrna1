@@ -238,7 +238,7 @@
 
 **Standing constraint from here:** *do not propose architectural refinements unless implementation exposes new evidence that the current architecture is insufficient.* **Already binding via ES-002.1** (only a NO carrying implementation evidence of insufficiency opens an ADR/ARB discussion) **and the methodology freeze**; recorded here as the handover's terms, not as a third home.
 
-**Identifiers named in the handover:** authorization **R-65** · acceptance **R-66**. **Authorization itself has not been issued.**
+**Expected identifiers, subject to ARB issuance:** authorization **R-65** · acceptance **R-66**. **Neither exists yet; authorization has not been issued.**
 
 ### Protected boundaries — engineering stops and refers if any is touched
 
