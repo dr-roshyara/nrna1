@@ -269,8 +269,8 @@ These tests verify critical security boundaries:
 
 ## Related Documents
 
-- [TESTING_GUIDE.md](../TESTING_GUIDE.md) - Comprehensive testing documentation
-- [TESTING_TODO.md](../TESTING_TODO.md) - Overall testing progress
+- [TESTING_GUIDE.md](../developer_guide/TESTING_GUIDE.md) - Comprehensive testing documentation
+- [TESTING_TODO.md](../developer_guide/TESTING_TODO.md) - Overall testing progress
 - [tests/Feature/VoteSubmissionWorkflowTest.php](../tests/Feature/VoteSubmissionWorkflowTest.php) - Test implementation
 
 ---

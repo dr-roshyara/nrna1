@@ -12,14 +12,14 @@ Welcome to the Public Digit Developer Guide. This is a comprehensive reference f
 
 | File | Description |
 |------|-------------|
-| [01-overview.md](election_management/01-overview.md) | What was built, authorization matrix, file map |
-| [02-election-officer-model.md](election_management/02-election-officer-model.md) | Schema, roles, soft-delete restore pattern, `markAccepted()` |
-| [03-invitation-flow.md](election_management/03-invitation-flow.md) | Flow diagram, signed URL, guest handling, `OfficerAppointedNotification` |
-| [04-election-policy.md](election_management/04-election-policy.md) | 5 policy methods, route usage, tenant isolation, why policies over gates |
-| [05-routes-and-controller.md](election_management/05-routes-and-controller.md) | Route table, all controller methods, `voter_stats` format |
-| [06-vue-components.md](election_management/06-vue-components.md) | Management.vue + Viewboard.vue, Inertia 2.0 compliance checklist |
-| [07-testing.md](election_management/07-testing.md) | 3 test suites (30 tests), `makeOfficer()`, `orgSession()`, cross-org isolation |
-| [08-voter-management.md](election_management/08-voter-management.md) | Approve/suspend voters, architecture doc critique, FK constraint pitfall, 10 new tests |
+| [01-overview.md](election/election_management/01-overview.md) | What was built, authorization matrix, file map |
+| [02-election-officer-model.md](election/election_management/02-election-officer-model.md) | Schema, roles, soft-delete restore pattern, `markAccepted()` |
+| [03-invitation-flow.md](election/election_management/03-invitation-flow.md) | Flow diagram, signed URL, guest handling, `OfficerAppointedNotification` |
+| [04-election-policy.md](election/election_management/04-election-policy.md) | 5 policy methods, route usage, tenant isolation, why policies over gates |
+| [05-routes-and-controller.md](election/election_management/05-routes-and-controller.md) | Route table, all controller methods, `voter_stats` format |
+| [06-vue-components.md](election/election_management/06-vue-components.md) | Management.vue + Viewboard.vue, Inertia 2.0 compliance checklist |
+| [07-testing.md](election/election_management/07-testing.md) | 3 test suites (30 tests), `makeOfficer()`, `orgSession()`, cross-org isolation |
+| [08-voter-management.md](election/election_management/08-voter-management.md) | Approve/suspend voters, architecture doc critique, FK constraint pitfall, 10 new tests |
 
 **Quick start:**
 ```bash

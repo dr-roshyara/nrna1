@@ -36,19 +36,19 @@
    - Design patterns
    - Module structure
 
-5. **[database-schema.md](./database-schema.md)**
+5. **[database-schema.md](../database-schema.md)**
    - Complete database schema
    - Table relationships
    - Indexes and constraints
 
 ### Setup & Migration
 
-6. **[migration-guide.md](./migration-guide.md)**
+6. **[migration-guide.md](../migration-guide.md)**
    - Step-by-step migration process
    - Database changes
    - Model updates
 
-7. **[PHASE_2C_IMPLEMENTATION.md](./PHASE_2C_IMPLEMENTATION.md)**
+7. **[PHASE_2C_IMPLEMENTATION.md](../PHASE_2C_IMPLEMENTATION.md)**
    - Implementation details
    - Configuration
    - Deployment
@@ -59,12 +59,12 @@
    - Extended documentation index
    - Module breakdown
 
-9. **[troubleshooting.md](./troubleshooting.md)**
+9. **[troubleshooting.md](../troubleshooting.md)**
    - Common issues and solutions
    - Debug procedures
    - FAQ
 
-10. **[query-examples.md](./query-examples.md)**
+10. **[query-examples.md](../query-examples.md)**
     - SQL query examples
     - Database queries for common tasks
 

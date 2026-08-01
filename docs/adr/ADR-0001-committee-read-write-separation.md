@@ -272,7 +272,7 @@ This directory contains ADRs for PublicDigit's architectural decisions.
 
 | ADR | Title | Status | Date |
 |-----|-------|--------|------|
-| [0001](0001-committee-read-write-separation.md) | Committee Context Read/Write Separation (CQRS Boundary) | Accepted | 2025-03-15 |
+| [0001](../knowledge/archive/superseded-adrs/0001-committee-read-write-separation.md) | Committee Context Read/Write Separation (CQRS Boundary) | Accepted | 2025-03-15 |
 
 ## Proposed ADRs
 

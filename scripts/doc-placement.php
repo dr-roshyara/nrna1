@@ -3,27 +3,19 @@
 declare(strict_types=1);
 
 /**
- * doc-placement — resolve WHERE a documentation artifact belongs from WHAT it is.
+ * doc-placement — resolve a documentation location from an artifact's classification.
  *
- * The single consulted mechanism for documentation placement. Templates, generators and helper
- * scripts call this script; they never hard-code a root. Adding a domain or renaming a root is a
- * change to docs/knowledge/schema/documentation-placement.yaml and to nothing else.
- *
- * Governed by: docs/adr/ADR_20260801_1740_ Documentation Roots and Artifact Placement.md (APPROVED)
- * Invariants: classification precedes placement; placement is derived exclusively from
- *   classification and is never evidence of it; artifact identity is independent of location.
- *
- * SCOPE LIMIT: routes documentation only. Decides nothing about the architecture of engineering/,
- *   KnowledgeOS as a product, or PKS as a product.
+ * Behaviour only. Policy lives in
+ *   docs/adr/ADR_20260801_1740_ Documentation Roots and Artifact Placement.md
+ * Configuration lives in
+ *   docs/knowledge/schema/documentation-placement.yaml
  *
  * Usage:
- *   php scripts/doc-placement.php --scope=product-specific --domain=pks
- *   php scripts/doc-placement.php --scope=cross-product --maturity=adopted
- *   php scripts/doc-placement.php --list
- *   php scripts/doc-placement.php --self-test
- *   php scripts/doc-placement.php --verify
+ *   php scripts/doc-placement.php --scope=<product-specific|cross-product|session-state>
+ *                                 [--maturity=<research|qualified|adopted>] [--domain=<id>]
+ *   php scripts/doc-placement.php --list | --self-test | --verify
  *
- * Exit codes: 0 resolved · 1 usage/unknown value · 2 PENDING (unruled) · 3 self-test/verify failed.
+ * Exit: 0 resolved | 1 usage/unknown | 2 PENDING (unruled) | 3 self-test/verify failed.
  */
 
 use Symfony\Component\Yaml\Yaml;
@@ -76,7 +68,7 @@ function resolve(array $classification, array $rules, array $domains): array
         }
 
         $location = $rule['location'] ?? null;
-        $note     = isset($rule['note']) ? trim((string) $rule['note']) : null;
+        $note     = isset($rule['ref']) ? (string) $rule['ref'] : null;
 
         if ($location === 'PENDING') {
             return ['status' => 'pending', 'location' => null, 'rule' => $rule['id'], 'note' => $note];
@@ -109,9 +101,6 @@ if (isset($args['list'])) {
     echo "Documentation roots (registry: docs/knowledge/schema/documentation-placement.yaml)\n\n";
     foreach ($domains as $id => $d) {
         printf("  %-14s %-22s %s\n", $id, $d['root'] ?? '?', $d['label'] ?? '');
-        if (isset($d['open_question'])) {
-            echo "                 ⚠️  open question recorded — see registry\n";
-        }
     }
     echo "\nDerivation rules (first match wins):\n\n";
     foreach ($rules as $rule) {
@@ -157,8 +146,7 @@ if (isset($args['self-test'])) {
 }
 
 // ---- --verify ---------------------------------------------------------------
-// Registry/root integrity only. A PER-FILE placement validator cannot exist yet: it needs each
-// artifact's declared classification, which is what the Phase 1 classification map produces.
+// Registry/root integrity only. A per-file validator needs declared classifications (Phase 1 map).
 if (isset($args['verify'])) {
     $problems = [];
     echo "doc-placement --verify (registry and root integrity)\n\n";
@@ -172,16 +160,15 @@ if (isset($args['verify'])) {
         $exists   = is_dir($root . '/' . $rootPath);
         $hasFirst = $exists && glob($root . '/' . $rootPath . '/*') !== [];
         printf("  %s  %-14s %-22s %s\n", $exists ? '✅' : '❌', $id, $rootPath,
-            $exists ? ($hasFirst ? 'exists, has a first artifact (ES-005.2 satisfied)' : 'EXISTS BUT EMPTY — ES-005.2 forbids speculative directories')
-                    : 'MISSING');
+            $exists ? ($hasFirst ? 'ok' : 'EMPTY') : 'MISSING');
         if (!$exists)   { $problems[] = "root '{$rootPath}' does not exist"; }
-        if ($exists && !$hasFirst) { $problems[] = "root '{$rootPath}' is empty (ES-005.2)"; }
+        if ($exists && !$hasFirst) { $problems[] = "root '{$rootPath}' is empty"; }
     }
 
     $pending = array_values(array_filter($rules, static fn ($r) => ($r['location'] ?? null) === 'PENDING'));
     echo "\n  Unruled classifications: " . count($pending) . "\n";
     foreach ($pending as $rule) {
-        echo "    ⚠️  {$rule['id']} — callers must stop rather than guess\n";
+        echo "    ⚠️  {$rule['id']}  (ref: " . ($rule['ref'] ?? '—') . ")\n";
     }
 
     echo "\n" . ($problems === [] ? "Registry and roots consistent.\n" : "Problems:\n  - " . implode("\n  - ", $problems) . "\n");
@@ -207,9 +194,8 @@ switch ($result['status']) {
         echo $result['location'] . "\n";
         exit(0);
     case 'pending':
-        fwrite(STDERR, "PENDING — placement for this classification is not ruled (rule: {$result['rule']}).\n"
-            . ($result['note'] ? "  {$result['note']}\n" : '')
-            . "  Do not guess a location. Escalate; the pre-amendment behaviour stands until a ruling issues.\n");
+        fwrite(STDERR, "PENDING — placement unruled (rule: {$result['rule']}, ref: {$result['note']}).\n"
+            . "  Record PENDING and escalate. Do not guess a location.\n");
         exit(2);
     default:
         fwrite(STDERR, "doc-placement: cannot derive a location — {$result['note']}\n");

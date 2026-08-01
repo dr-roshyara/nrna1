@@ -5,9 +5,8 @@
 #
 # Two branches, one purpose. Under engineering/ the governing rules are prose, so
 # the hook asks generic questions and derives which standards answer them. Under
-# docs/ the derivation is EXECUTABLE (scripts/doc-placement.php over the registry
-# at docs/knowledge/schema/documentation-placement.yaml), so the hook points at
-# the resolver instead of asking. Neither branch restates a rule.
+# docs/ the derivation is executable, so it points at scripts/doc-placement.php.
+# Neither branch restates a rule.
 #
 # WHY THIS EXISTS. On 2026-08-01 a methodology module was written straight into
 # the canon directory while still at the first stage of the promotion ladder.
@@ -73,31 +72,17 @@ target="$(php -r '
 kind="${target%% *}"
 target="${target#* }"
 
-# ── docs/ branch: the derivation is executable, so point at the resolver ──────
-# Scoped to where the roots ADR MEASURED domain mixing: docs/implementation/
-# (89 PKS + 3 KnowledgeOS of 183 files) and docs/ root-level files ("mixed, no
-# clear domain"). Elsewhere under docs/ the hook stays quiet until migration —
-# a checkpoint that fires on every document is a checkpoint nobody reads.
+# ── docs/ branch: point at the resolver ──────────────────────────────────────
 if [ "$kind" = "docsmix" ]; then
-      registry="${CLAUDE_PROJECT_DIR:-.}/docs/knowledge/schema/documentation-placement.yaml"
-      {
-        printf '\n'
-        printf 'GOVERNED PLACEMENT — creating documentation in a domain-mixed location\n'
-        printf '   %s\n\n' "$target"
-        printf '   Placement is DERIVED from classification, and the derivation is executable:\n'
-        printf '     php scripts/doc-placement.php --scope=... [--maturity=...] [--domain=...]\n'
-        printf '     php scripts/doc-placement.php --list        # roots and rules\n\n'
-        if [ -f "$registry" ]; then
-          printf '   Declared roots (from the registry — this hook hardcodes none):\n'
-          sed -n 's/^ *root: *\(.*\)$/     \1/p' "$registry"
-          printf '\n'
-        fi
-        printf '   Exit code 2 means the classification is real but its placement is UNRULED.\n'
-        printf '   Record PENDING and escalate — do not invent a destination.\n\n'
-        printf '   Classification precedes placement. Placement is never evidence of\n'
-        printf '   classification. (non-blocking checkpoint)\n\n'
-      } 1>&2
-      exit 1
+  {
+    printf '\nPLACEMENT — domain-mixed location; placement is derived, not chosen.\n'
+    printf '   %s\n\n' "$target"
+    printf '   php scripts/doc-placement.php --scope=... [--maturity=...] [--domain=...]\n'
+    printf '   php scripts/doc-placement.php --list\n\n'
+    printf '   Exit 2 = unruled: record PENDING and escalate.\n'
+    printf '   Policy: the documentation-roots ADR (docs/adr/).\n\n'
+  } 1>&2
+  exit 1
 fi
 
 case "$target" in

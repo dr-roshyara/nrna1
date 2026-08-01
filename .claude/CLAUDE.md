@@ -35,7 +35,7 @@ Project knowledge is a governed engineering asset under `docs/knowledge/`, with 
 - **Reference model:** the **Adjudication** pilot at [`docs/knowledge/domains/adjudication/`](../docs/knowledge/domains/adjudication/README.md).
 - Legacy folders during transition: `architecture/` = Think, `docs/` = Official Truth, `developer_guide/` = Build.
 
-**Documentation placement (POINTER — the rule is EXECUTABLE, so it is not restated here).** **Where a document belongs is DERIVED from what it is, never chosen:**
+**Documentation placement (POINTER — the rule is EXECUTABLE, so it is not restated here).** **Where a document belongs is derived, never chosen — resolve it, never hard-code a root:**
 
 ```bash
 php scripts/doc-placement.php --scope=<product-specific|cross-product|session-state> \
@@ -43,7 +43,7 @@ php scripts/doc-placement.php --scope=<product-specific|cross-product|session-st
 php scripts/doc-placement.php --list      # domains, roots, rules
 ```
 
-Single source of truth: `docs/knowledge/schema/documentation-placement.yaml` · decision: `docs/adr/ADR_20260801_1740_ Documentation Roots and Artifact Placement.md`. **Never hard-code a documentation root in a template, script, or prompt — resolve it.** **Exit code 2 means the placement is UNRULED: record `PENDING` and escalate; never invent a destination.** Invariants: *classification precedes placement, and placement is never evidence of classification* · *artifact identity is independent of physical location — a move changes no classification, ownership, authority, maturity, or domain.*
+Policy: `docs/adr/ADR_20260801_1740_ Documentation Roots and Artifact Placement.md` · configuration: `docs/knowledge/schema/documentation-placement.yaml`. **Exit code 2 = unruled: record `PENDING` and escalate.**
 
 ---
 

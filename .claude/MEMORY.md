@@ -73,6 +73,20 @@
 - **The guard obeys its own litmus:** it is runtime session tooling, so **ES-005.3 puts it in the runtime mount (`.claude/scripts/`), not in `engineering/`.**
 - **Non-blocking on purpose:** creating under `engineering/` is legitimate when governed, and **the hook cannot evaluate the answers to its own questions — only the author can.** A wall that is always dismissed teaches less than a checkpoint that is read *(same posture as `discipline-gate-reminder.sh`)*.
 
+## Layer discipline for governance artifacts — WHO SAYS WHAT, and where (2026-08-01)
+
+- **ADRs GOVERN POLICY · ES documents EXPLAIN STANDARDS · the REGISTRY STORES CONFIGURATION · SCRIPTS EXECUTE BEHAVIOUR · REPORTS RECORD EVIDENCE.** Each fact lives in exactly one layer.
+- **DUAL TRUTH IS THE FAILURE MODE: if the registry explains WHY a rule holds, then ES-005 AND the registry both express policy.** A registry row carries a `ref:` (`ES-005.3`, `ADR:OQ-2`) — **it stores WHAT and points at WHO SAYS SO.** Same for scripts: **no governance prose, no historical commentary, no rule text in executable tooling.**
+- **ROOT READMEs STAY ~15-20 LINES:** purpose · holds · owner · internal-layout ownership · a pointer table (policy / configuration / resolver). **Everything else belongs in the ADR.**
+- **⛔ DO NOT CREATE A NEW PRINCIPLES DOCUMENT UNDER `engineering/` (e.g. a "DAP-001"): it would be a CROSS-PRODUCT artifact at RESEARCH maturity, which the resolver returns PENDING for — EXACTLY the `Layer_Verification_Rule.md` violation. Blocked by R-38 (no new standards), R-37 (bugfix/link/typo only) and R-38's own precedent ("where existing rulings already express a constraint, INTERPRET THEM rather than add another ruling"). THE PARSIMONIOUS MOVE IS TO STATE THE PRINCIPLES IN THE ADR — the approved policy home — AND REFERENCE THEM.**
+
+## Link repair: repair only on EVIDENCE, never on the best-looking candidate (2026-08-01)
+
+- **FOUR RULES, EACH REQUIRING THE DESTINATION TO EXIST BEFORE REWRITING:** git's own rename record · the link was written REPO-ROOT-RELATIVE and that path exists · **EXACTLY ONE** file in the repo carries that basename · a DOCUMENTED directory rename (`architecture/` -> `architecture_legacy/`, recorded in `docs/adr/20260801_1712_legacy_folder_and_files.md`), still existence-checked.
+- **⚠️ A FIRST ATTEMPT WAS DISCARDED: it picked the "best" candidate when several files shared a basename and rewrote `election_management/01-overview.md` to a same-directory `01-overview.md` — A PLAUSIBLE-LOOKING WRONG ANSWER that would have silently corrupted navigation. TIGHTENED TO UNIQUE-CANDIDATE-ONLY; the multi-candidate cases were then resolved correctly by git-rename evidence.**
+- **NEVER INVENT A TARGET. 47 of the remaining links point at documents that DO NOT EXIST ANYWHERE — record them; do not author replacements. 6 are AMBIGUOUS (`./ARCHITECTURE.md`, `./INDEX.md`) and need A HUMAN CHOICE, not a repair.**
+- **`knowledge-lint` VALIDATES `docs/knowledge/` ONLY — a repo-wide scan found 121 broken links where the linter reported 9. GREEN LINT IS NOT GREEN REPOSITORY.**
+
 ## 📍 DOCUMENTATION PLACEMENT IS NOW EXECUTABLE — resolve it, never hard-code it (implemented 2026-08-01)
 
 - **SINGLE SOURCE OF TRUTH: `docs/knowledge/schema/documentation-placement.yaml`** (beside `statuses.yaml`/`authorities.yaml`/`bounded-contexts.yaml`, where enumerations already live). **SINGLE CONSULTED MECHANISM: `scripts/doc-placement.php`** — `npm run docs:placement` / `docs:placement:verify`.

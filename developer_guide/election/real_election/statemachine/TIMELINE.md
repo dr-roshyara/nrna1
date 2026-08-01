@@ -601,7 +601,7 @@ No performance concerns identified.
 - [ARCHITECTURE.md](ARCHITECTURE.md) - State machine design patterns
 - [STATES.md](STATES.md) - Phase definitions and transitions
 - [MODELS.md](MODELS.md) - Election model methods
-- [tests/Feature/ElectionTimelineSettingsTest.php](../../tests/Feature/ElectionTimelineSettingsTest.php) - Test examples
+- [tests/Feature/ElectionTimelineSettingsTest.php](../../../../tests/Feature/ElectionTimelineSettingsTest.php) - Test examples
 
 ---
 

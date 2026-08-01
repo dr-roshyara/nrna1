@@ -16,10 +16,10 @@
 
 - [✅ Phase D Architectural Review](architecture_fitness_functions_recommendation.md) — replay determinism, sovereignty convergence, immutable law preserved without meta-framework inflation
 - [✅ Constitutional Governance Systems Engineering](phase1_constitutional_parity_strategy.md) — sovereign equivalence validation; five critical corrections (CapabilityParitySnapshot, DivergenceType, DivergenceLedger); architect warnings: don't downgrade resolver, hidden procedural coupling, each scenario = jurisprudence
-- [📋 Phase 1 Specification](phase1_parity_verification_specification.md) — 432-combination scenario matrix, extraction methods, governance classification
-- [🚧 Phase D.5 Architecture](fancy-tinkering-newell.md) — TrustEvaluationEnvelope, TrustCapabilityPolicy (35/35 tests)
-- [🚧 Phase C.5a Constitutional Failure Classification](../audits/C5a_ConstitutionalFailureClassification.md) — 754 tests examined; failures = vocabulary mismatch, zero constitutional corruption
-- [🚧 Phase C.5b Hidden Sovereignty Audit](../audits/C5b_HiddenSovereigntyAudit.md) — 6 hidden sovereignty paths (H.1-H.6); D.0 retirement sequencing
+- [📋 Phase 1 Specification](../../claude/plans/phase1_parity_verification_specification.md) — 432-combination scenario matrix, extraction methods, governance classification
+- [🚧 Phase D.5 Architecture](../../claude/plans/fancy-tinkering-newell.md) — TrustEvaluationEnvelope, TrustCapabilityPolicy (35/35 tests)
+- [🚧 Phase C.5a Constitutional Failure Classification](../../claude/audits/C5a_ConstitutionalFailureClassification.md) — 754 tests examined; failures = vocabulary mismatch, zero constitutional corruption
+- [🚧 Phase C.5b Hidden Sovereignty Audit](../../claude/audits/C5b_HiddenSovereigntyAudit.md) — 6 hidden sovereignty paths (H.1-H.6); D.0 retirement sequencing
 - [✅ D.0.2 Convergence Certification](d0_2_convergence_certification.md) — telemetry existence → certifiability; 7+10 tests passing
 - [✅ H.2 Projection Sovereignty Cleanup](h2_projection_sovereignty_cleanup.md) — IP fields removed from Inertia props; 9 tests passing
 - [Phase 2 Semantic Modeling](phase2_semantic_modeling.md) — descriptive vs executable; ontology collapse prevention

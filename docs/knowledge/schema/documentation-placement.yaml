@@ -1,97 +1,35 @@
-# Documentation placement registry — the SINGLE source of truth for documentation roots.
-#
-# Governed by: docs/adr/ADR_20260801_1740_ Documentation Roots and Artifact Placement.md (APPROVED)
-# Consulted by: scripts/doc-placement.php (`npm run docs:placement`). Templates, generators and
-#   helper scripts resolve locations THROUGH that script — they never hard-code a root.
-#
-# Governing invariants (ADR):
-#   1. Classification precedes placement. Placement is derived exclusively from classification.
-#      Placement is NEVER evidence of classification.
-#   2. Artifact identity is independent of physical location. A move changes no classification,
-#      ownership, authority, maturity, or domain.
-#
-# Companion vocabularies: statuses.yaml (maturity/lifecycle) · authorities.yaml (trust — INDEPENDENT
-#   of status) · bounded-contexts.yaml (contexts live INSIDE domains; not the same unit as `domain`).
-#
-# ⚠️ SCOPE LIMIT — this registry routes DOCUMENTATION produced during engineering work. It does NOT
-#   decide the architectural location of the engineering/ subtree, whether KnowledgeOS becomes a
-#   standalone product, where PKS as a product will reside, or any future repository decomposition.
-#   Those are separate architecture decisions.
+# Documentation placement — CONFIGURATION ONLY.
+# Policy home: docs/adr/ADR_20260801_1740_ Documentation Roots and Artifact Placement.md
+# Consumed by: scripts/doc-placement.php
+# This file stores WHAT. It never explains WHY.
 version: 1
 
-# ---- domains -----------------------------------------------------------------
-# Domains are CONFIGURATION. The classification rules below are domain-independent:
-# adding a domain means adding an entry here, and changing no rule and no script.
 domains:
   publicdigit:
     label: PublicDigit
     root: docs/publicdigit
-    description: >
-      Product documentation for the PublicDigit voting and constitutional governance platform.
-      The domain contains many bounded contexts (see app/Contexts/); this root groups all of them.
-
   knowledgeos:
     label: KnowledgeOS
     root: docs/knowledgeos
-    description: >
-      Documentation belonging to the KnowledgeOS domain.
-    open_question: >
-      OQ-5 (ADR, raised 2026-08-01, UNRESOLVED): whether KnowledgeOS is the same thing as the
-      Engineering Platform (engineering/). Canon separates them — the DA clarification of
-      2026-07-27 names KnowledgeOS a prospective product "if their gates open", and R-67 holds
-      that engineering/ expresses cross-product SCOPE, not a domain. Until OQ-5 is dispositioned,
-      cross-product standards and methodology are routed by the `cross-product-*` rules below
-      (to engineering/, unchanged) and NOT into this root.
-
   pks:
     label: PKS — Product Knowledge System
     root: docs/pks
-    description: >
-      Documentation belonging to the Product Knowledge System domain: strategic discovery,
-      operational evidence, phase records.
-    open_question: >
-      Domain membership of the PKS corpus is not ruled (`EKA -> KnowledgeOS` is a confirmed
-      invariant; `PKS -> KnowledgeOS` is not). This entry names a root for artifacts already
-      classified as PKS; it does not decide whether PKS is a constituent of another domain.
 
-# ---- derivation rules --------------------------------------------------------
-# Evaluated in order; FIRST MATCH WINS. `location` is the derived output:
-#   - a literal path            -> that path
-#   - `domain_root`             -> domains[<domain>].root
-#   - `PENDING`                 -> no rule yet; the caller must not invent one
+# First match wins. location: a path | domain_root | PENDING
 rules:
   - id: session-state
-    match:
-      scope: session-state
+    match: { scope: session-state }
     location: .claude
-    note: Runtime mount (ES-005.1). Never "the architecture"; it holds active session state only.
-
+    ref: ES-005.1
   - id: cross-product-qualified
-    match:
-      scope: cross-product
-      maturity: [qualified, adopted]
+    match: { scope: cross-product, maturity: [qualified, adopted] }
     location: engineering
-    note: >
-      Cross-product means adoptable unchanged by another project (ES-005.3 clause 1). Qualified or
-      adopted cross-product artifacts live in the Engineering Platform tree. This rule reproduces
-      today's behaviour exactly and moves nothing.
-
+    ref: ES-005.3
   - id: cross-product-research
-    match:
-      scope: cross-product
-      maturity: research
+    match: { scope: cross-product, maturity: research }
     location: PENDING
-    note: >
-      UNRULED, awaiting the stewardship decision: are cross-product research artifacts
-      Engineering-stewarded before qualification, or do they stay project-side? Until it is issued,
-      PRE-AMENDMENT BEHAVIOUR STANDS (project-side). Tooling must surface PENDING and stop, never
-      guess. Currently exactly one artifact is in this state.
-
+    ref: ADR:OQ-2
   - id: product-specific
-    match:
-      scope: product-specific
+    match: { scope: product-specific }
     location: domain_root
-    note: >
-      Placed under the documentation root of the domain to which the artifact belongs. The root is
-      an architectural boundary: it defines ownership and placement only, and prescribes nothing
-      about the internal information architecture of the domain.
+    ref: ADR:Decision
