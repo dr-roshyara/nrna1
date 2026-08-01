@@ -74,7 +74,24 @@ method and must therefore be declared abstract or implement the remaining method
 
 **Both participating files resolved inside the worktree.** The suite **terminated**; it did not complete.
 
-**`composer merge-gate` runs GreenfieldCore as its final step**, so a fatal there means the gate could not complete at this commit. *(Stated as the mechanical consequence of the gate's composition, which is itself byte-identical to the closure commit.)*
+### The conclusion, tied to the protocol rather than to history in general
+
+> **Under the reproduced execution environment described in this report, the GreenfieldCore suite terminated with a fatal error. Because GreenfieldCore is the final step of `composer merge-gate`, the gate would not complete successfully under those reproduced conditions.**
+
+*(Worded this way deliberately: it binds the conclusion to §1–§3 and claims nothing broader than the reproduction supports.)*
+
+### Same-failure comparison — auditable rather than asserted
+
+| Observation | Current checkout (HEAD) | Historical reproduction (`22d604844`) |
+|---|---|---|
+| **Failing class** | `Tests\Support\Adjudication\InMemoryAdjudicationProcessStore` | **same** |
+| **Missing method** | `AdjudicationProcessStore::latestForChallenge` | **same** |
+| **Failure location** | line 24 | **same** |
+| **Failure type** | PHP Fatal error — unimplemented abstract method | **same** |
+| **Suite** | GreenfieldCore | **same** |
+| **Effect on the suite** | terminates, does not complete | **same** |
+
+**Six attributes, all identical.** *(The file paths differ only by checkout root — main checkout vs. worktree — which is the intended difference, not a discrepancy.)*
 
 ## 5. Rejected run — disclosed, not silently discarded
 
@@ -96,8 +113,8 @@ Cannot redeclare App\Helpers\voter_log() (previously declared in <main>/app/Help
 | Claim | Status |
 |---|---|
 | The GreenfieldCore suite **fatals at the closure commit** | ✅ **REPRODUCED** |
-| `composer merge-gate` **could not have completed** at that commit | ✅ follows from the gate's composition |
-| The failure is the **same** one observed today | ✅ same class, same method, same line |
+| The gate **would not complete successfully under the reproduced conditions** | ✅ follows from the gate's composition, which is byte-identical to the closure commit |
+| The failure is the **same** one observed today | ✅ **six attributes compared, all identical** — see §4 |
 | **The gate was executed at closure and observed to fail** | ❌ **NOT established** — this shows what the gate *would* have done, not what anyone *did* |
 | **R-43's evidence line was false rather than unsupported** | ❌ **NOT established** — distinguishing the two requires evidence that is *human*, not repository |
 
