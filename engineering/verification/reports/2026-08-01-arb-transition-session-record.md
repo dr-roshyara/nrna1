@@ -30,14 +30,9 @@
 | D4a | Plan `Awaiting EP-01` → `Approved` | **Planning Governance** | **Planning** | **Decision Authority** |
 | D4b | Execution `Not authorized` → `Slice 7A authorized` | **Execution Governance** | **Execution** | ARB |
 
-**Category definitions** *(ARB, adopted — "Programme Governance" renamed to **Delivery Governance**, since "programme" still reads as portfolio or schedule governance, while what is actually governed here is **work-package acceptance**)*:
+**Category definitions live in ONE place** — `engineering/knowledge/methodology/Layer_Verification_Rule.md` §3 — and are **cited here, not restated**, per the project's rules-live-once principle. The load-bearing one for this session:
 
-| Category | Governs |
-|---|---|
-| **Architecture Governance** | design decisions |
-| **Planning Governance** | plan approval |
-| **Delivery Governance** | work-package transitions |
-| **Execution Governance** | engineering authorization |
+> **Delivery Governance governs the acceptance and progression of bounded work packages through the engineering lifecycle.** *(Renamed from "Programme Governance": that term still reads as portfolio, funding or schedule governance. The definition fixes where delivery begins and ends — **it starts at a bounded work package and ends at its acceptance or progression**.)*
 
 **What the classification exposes at a glance:** the machine spans **four distinct governance categories**, and **the Planning Governance state is the only one not owned by the ARB.** That is not a defect — **it is EP-01's separation made visible**, and it is precisely why item 4a is a separate vote with a separate authority (DD-1).
 

@@ -59,7 +59,16 @@ The rule evaluates changes; this applies it to **proposals**, which is where it 
 
 **Neither axis is derivable from the other** — two transitions can share a category and differ in type, or share a type across categories. **A state machine that labels neither hides which authority owns each transition and what kind of act it is** — which is how a single "yes" comes to mean four different things in one minute-book. *(Applied in the WP-6→WP-7 session: labelling exposed that the Planning Governance state is the only one not owned by the ARB — EP-01's separation made visible, and the reason its vote is separate.)*
 
-**Naming note:** prefer **Delivery Governance** over "Programme Governance" — *programme* still reads as portfolio or schedule governance, while what is governed is **work-package acceptance**.
+**Canonical category definitions** *(this is their single home — cite, never restate)*:
+
+| Category | Governs |
+|---|---|
+| **Architecture Governance** | design decisions and their interpretation |
+| **Planning Governance** | approval of a plan as the binding statement of intended work |
+| **Delivery Governance** | **acceptance and progression of bounded work packages through the engineering lifecycle** |
+| **Execution Governance** | authorization for engineering to begin authorized work |
+
+**Naming note:** prefer **Delivery Governance** over "Programme Governance" — *programme* still reads as portfolio, funding or schedule governance, whereas the definition above fixes where delivery begins and ends: **it starts at a bounded work package and ends at its acceptance or progression.**
 
 **Limit:** like §2, this is a **modelling heuristic, not a gate.** It improves how governance is expressed; it enforces nothing.
 
