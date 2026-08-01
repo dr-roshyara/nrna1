@@ -558,6 +558,8 @@ Concretely:
 
 **Every engineering conversation runs this sequence. Never reversed. It is about building bounded contexts correctly, not about producing documents.**
 
+> ⛔ **THE METHODOLOGY IS FROZEN (2026-08-01).** No protocol refinement · no review-model evolution · no documentation-architecture evolution · no KnowledgeOS proposals — **unless PublicDigit implementation exposes a genuine deficiency.** **Primary focus is PublicDigit delivery: WP-7C → WP-8 → EPIC-005.** **Execute the protocol; do not improve it.**
+
 ```
 1 Business Capability → 2 Strategic DDD → 3 Canonical Discovery → 4 Tactical DDD
 → 5 Stewardship → 6 Impact Classification → 7 Readiness
@@ -582,7 +584,7 @@ Concretely:
 
 **Full protocol (the fillable form of this loop):** `docs/implementation/PublicDigit_Engineering_Protocol_Proposal.md` — **PROPOSED, not adopted.** This section is the runtime binding; that document is the template. **Worked instance: `.claude/plans/WP-7C-engineering-readiness.md`.**
 
-**Model integrity.** Before proposing any new attribute or dimension, determine whether it is **a new dimension**, **an overloaded existing dimension**, or **merely another value**. Introduce a new dimension only if **orthogonal · necessary · sufficient — all three.** *(Proposal: `docs/implementation/PublicDigit_Engineering_Protocol_Proposal.md`.)*
+**Model integrity (⚠️ OBSERVATION, not promoted — one use).** Before proposing any new attribute or dimension, determine whether it is **a new dimension**, **an overloaded existing dimension**, or **merely another value**. Introduce a new dimension only if **orthogonal · necessary · sufficient — all three.** *(Proposal: `docs/implementation/PublicDigit_Engineering_Protocol_Proposal.md`.)*
 
 > **The final rule: the strongest statement made must never exceed the strength of the available evidence.** **Keep facts, architectural conclusions, governance decisions, engineering actions and operational observations rigorously separate — never let one silently become another.**
 

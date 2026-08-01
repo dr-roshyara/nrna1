@@ -194,6 +194,13 @@
 - **THE FIX IS TWO INPUTS, NOT A NEW MODEL: add `type` and `role` to the placement registry via the ALREADY-PREPARED ES-005 AMENDMENT PACKAGE (a third input to the same amendment), and widen knowledge-types.yaml's APPLICABILITY. NO new folder, NO new taxonomy, NO new standard.**
 - **⚠️ DO NOT fully model `Document{Type,Role,Scope,Steward,Maturity,Domain,PlacementPolicy}` — that is RICHER THAN THE EVIDENCE HAS EARNED and is design ahead of demand.**
 
+## ⛔ ENGINEERING METHODOLOGY IS FROZEN (2026-08-01)
+
+- **NO protocol refinement · NO review-model evolution · NO documentation-architecture evolution · NO KnowledgeOS proposals — UNLESS PUBLICDIGIT IMPLEMENTATION EXPOSES A GENUINE DEFICIENCY.** **EXECUTE THE PROTOCOL; DO NOT IMPROVE IT.**
+- **FROZEN ≠ ADOPTED.** The freeze stops refinement; it does not confer authority. Phases 0-14 are fixed and **Phase 5, Phase 7's trigger list and Phases 12-14 REMAIN PROPOSED AND UNADOPTED**.
+- **THE MODEL INTEGRITY RULE IS AN OBSERVATION, NOT PROMOTED — one use.** **Its own necessity test rejects it: a single application is not evidence of general applicability.**
+- **THE FAILURE MODE TO WATCH IN MYSELF: the protocol went 12 -> 14 -> 15 phases in three turns. Each addition answered a prompt AND grew the methodology. THE DIRECTION IS PublicDigit -> Operational Evidence -> PKS -> KnowledgeOS, NEVER KnowledgeOS -> KnowledgeOS.**
+
 ## ⛔ CLASSIFICATION BEFORE PLACEMENT — the resolver cannot read ROLE (2026-08-01)
 
 - **NEVER derive placement from SCOPE alone. Ask FIRST: what kind of artifact is this, and what ROLE does it carry?** The resolver answers the question it is asked; it does **not** ask what the artifact IS.

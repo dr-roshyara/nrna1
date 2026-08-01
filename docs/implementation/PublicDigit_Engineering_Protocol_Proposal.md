@@ -1,7 +1,7 @@
 # PublicDigit Bounded Context Engineering Protocol
 
 **Date:** 2026-08-01 · **Prepared by:** Engineering AI, under Principal Architect discipline
-**Status:** **PROPOSED — not adopted.** Adoption is an Engineering-Process act (§Adoption).
+**Status:** ✅ **FROZEN (2026-08-01)** — **no further changes unless PublicDigit implementation exposes a genuine deficiency.** Still **PROPOSED, not adopted**; adoption is an Engineering-Process act (§Adoption). **Frozen and adopted are different states: the freeze stops refinement, not the absence of authority.**
 **Classification:** proposal paper · **Role:** Reference · **Scope:** product-specific · **Domain:** publicdigit · **Maturity:** research
 **Applies to:** every future work package — WP-7C · WP-8 · EPIC-005 (Evidence) · EPIC-006 (Voting) · EPIC-007 (Appointment) · EPIC-008 (Read Models) and beyond.
 
@@ -110,11 +110,13 @@ The **Engineering AI**, under the **Principal Architect**. Implements approved w
 
 `Strategic Architecture` · `Tactical Architecture` · `Governance` · `Engineering` · `Repository` · `Documentation` · `Operational` · `PKS Observation` · `KnowledgeOS Candidate`
 
-### ⭐ The Model Integrity Rule *(cross-cutting; general, not documentation-specific)*
+### The Model Integrity Rule — ⚠️ **OBSERVATION, NOT PROMOTED**
+
+> **Status: one use. Promotion requires repeated operational evidence.** It is recorded here as an observation, **not** as an adopted element of the protocol — the ⭐ marker is withdrawn. *(Its own necessity test would reject it: a single application is not evidence of general applicability.)*
 
 > **Whenever a new attribute or dimension is proposed, first determine whether it is a *new dimension*, an *overloaded existing dimension*, or *merely another value*. Introduce a new dimension only if it is orthogonal · necessary · sufficient — all three, or the change does not proceed. If an existing dimension is found to contain mixed concepts, that is a modelling defect, to be surfaced before architectural evolution rather than as part of it.**
 
-**Applies to any proposed value object, aggregate, classification attribute, engineering capability or architectural dimension.** **Applied once (2026-08-01), it falsified a proposal that had already been recommended and looked reasonable.**
+**Applied once (2026-08-01), it falsified a proposal that had already been recommended.** **One occurrence. Not promoted.**
 
 **Placement note:** the rule is cross-product at research maturity, which resolves to **PENDING** — the fourth arrival at that unruled cell. **It is recorded here, inside a document that has a home, rather than given one of its own.**
 
@@ -185,13 +187,15 @@ The **Engineering AI**, under the **Principal Architect**. Implements approved w
 → 13 PKS Classification → 14 KnowledgeOS Promotion Check
 ```
 
+> **FROZEN.** Phases 0–14 are fixed in their current state. **Phase 5, Phase 7's trigger list and Phases 12–14 remain PROPOSED and unadopted; the Model Integrity Rule remains an unpromoted observation.** **The protocol is sufficient for the work ahead — it is not to be optimised further.**
+
 ## What is actually new
 
 | Element | Status |
 |---|---|
 | Phases 0–4, 6, 8–11 | **already canonical** — this document points and adds an operating checklist |
 | **Phase 5** — impact classification | ⭐ **NEW** |
-| **The Model Integrity Rule** | ⭐ **NEW** — general modelling discipline |
+| **The Model Integrity Rule** | ⚠️ **OBSERVATION — not promoted** (one use) |
 | **Phase 7** — enumerated stop-and-refer triggers | ⭐ **NEW** — principle canonical, enumeration new |
 | **Phases 12–14** — the evaluation gate | ⭐ **NEW** — ladder canonical, gate new |
 
