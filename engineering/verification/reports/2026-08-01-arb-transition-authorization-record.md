@@ -61,7 +61,7 @@
 | **Guard satisfied?** | ✅ **YES** — R1 established `WP-6 ACCEPTED`; R4 established `PLAN APPROVED`. *(`PLAN APPROVED`'s own guard `G-1 RESOLVED` was established by R2.)* |
 | **Decision** | **Execution of Slice 7A is AUTHORIZED** |
 | **Reason** | The guard `WP-6 ACCEPTED ∧ PLAN APPROVED` is satisfied. Zero architectural gates remain. |
-| **Effect** | **WP-7 opens. RED begins at slice 7A with no further architectural act.** |
+| **Effect** | **WP-7 opens. Engineering is AUTHORIZED to begin RED for slice 7A**, with no further architectural act. *(Authorization creates permission; **engineering chooses when to execute** — the two are not identical.)* |
 
 ### Item not put to a decision — recorded as such
 **Adoption of the `Layer Verification Rule` methodology module** was offered as optional and **non-blocking**; **no ruling was issued.** It therefore **remains 🟡 PROPOSED — NOT ADOPTED, and non-binding** (R-34: authority only by explicit issuance). **WP-7 does not depend on it. Silence is not adoption**, and recording it as unruled is part of recording the session faithfully.
@@ -104,7 +104,7 @@
 
 ## 5. Handover
 
-> **Governance authorization is complete for the approved scope. Responsibility for execution transfers to engineering in accordance with the approved WP-7 plan.** *(Governance does not disappear — it has completed this transition.)*
+> **Governance authorization is complete for the approved scope. EXECUTION responsibility transfers to engineering in accordance with the approved WP-7 plan.** *(Not "governance responsibility" — **governance never disappears**; it has completed this transition. And authorization creates **permission**, not execution: engineering chooses when to begin.)*
 
 **First authorized engineering activity — RED at slice 7A:**
 
@@ -127,7 +127,7 @@
 
 ---
 
-> ## **The ARB Transition Authorization Record is complete. The five rulings are recorded. The governance state is updated. Governance authorization is complete for the approved scope, and responsibility for execution transfers to engineering in accordance with the approved WP-7 plan (Slice 7A). RED may begin.**
+> ## **The ARB Transition Authorization Record is complete. The five rulings are recorded. The governance state is updated. Governance authorization is complete for the approved scope, and EXECUTION responsibility transfers to engineering in accordance with the approved WP-7 plan. Engineering is AUTHORIZED to begin RED for Slice 7A.**
 
 ---
 
