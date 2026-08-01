@@ -73,6 +73,22 @@
 - **The guard obeys its own litmus:** it is runtime session tooling, so **ES-005.3 puts it in the runtime mount (`.claude/scripts/`), not in `engineering/`.**
 - **Non-blocking on purpose:** creating under `engineering/` is legitimate when governed, and **the hook cannot evaluate the answers to its own questions — only the author can.** A wall that is always dismissed teaches less than a checkpoint that is read *(same posture as `discipline-gate-reminder.sh`)*.
 
+## The APPROVED classification model — Location is an OUTPUT, Domain is a MEMBER (2026-08-01)
+
+```
+Classification (what is this artifact?)
+    Scope     cross-product | product-specific
+    Steward   who curates it
+    Maturity  research | qualified | adopted
+    Domain    the domain it belongs to  (N/A when Scope = cross-product)
+
+Location = f(Classification)   (where does it live?)  -- DERIVED, NOT A MEMBER
+```
+- **TWO DEFECTS CORRECTED in the model as first drawn: (1) `Location` was nested INSIDE Classification — which re-couples exactly what the model exists to divide; it is an OUTPUT · (2) `Domain` was MISSING though already approved as the organizing unit — it IS a classification property (*which domain's knowledge is this?* is answerable without knowing where the file sits).**
+- **WHAT "PLACEMENT IS DERIVED" BUYS (the teeth): a placement argument that cannot be grounded in a classification property is OUT OF ORDER — "it's useful here", "easier to find", "it already lives there" cease to be reasons.** It does **NOT** amend ES-005, oblige a re-audit of existing placements, or authorize any structural change.
+- **CLAIM STATED AT TRUE STRENGTH: the concepts all exist in THREE SEPARATE PLACES and NO SINGLE COHERENT IMPLEMENTATION EXISTS** — ES-005.3's derivation is implicit with incomplete inputs; the card schema is richer but scoped to `docs/knowledge/` and uses `bounded_context` (wrong unit); the header fields are prose read by nothing. **Enough to show the model is DESCRIPTIVE not speculative; NOT enough to claim it is already in force.**
+- **⚠️ THE CARD SCHEMA CARRIES FIVE PROPERTIES, NOT FOUR: `status` (maturity) AND `authority` (*trust/source*) are SEPARATE and EXPLICITLY INDEPENDENT. The model has no slot for TRUST/PROVENANCE. Whether trust is a fifth property or a facet of Maturity matters only once a carrier is chosen — routed to step 2, NOT decided.**
+
 ## CLASSIFICATION ≠ PLACEMENT — and BOTH are already implemented in the repo (verified 2026-08-01)
 
 - **FOUR INDEPENDENT PROPERTIES: Scope · Steward · Maturity · Location — where LOCATION IS DERIVED, never identical to Steward.** Classification answers *what is this?*; placement answers *where does it live?* **Keep them independent.** *(My earlier "stewardship resolves placement ONLY IF stewardship implies location" was a FALSE DICHOTOMY — the third branch, DERIVATION, is the good one, and omitting it made coupling look necessary.)*
