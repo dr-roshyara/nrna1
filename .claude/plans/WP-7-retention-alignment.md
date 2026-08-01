@@ -1,6 +1,6 @@
 # WP-7 — Retention Alignment (`audit:cleanup` becomes EPW-aware)
 
-**Status:** 📋 **TACTICAL PLAN — 🧊 ARCHITECTURE FROZEN · TRANSITION AUTHORIZED · ⚖️ G-1 ANALYSED, recommended realization PENDING ARB RATIFICATION** (requires no domain-model change and no Deptrac change). Eight commissions complete. ⛔ **RED blocked by THREE items: (1) A-1/A-2 ratification — the act that resolves G-1 · (2) WP-6 slice acceptance (programme, ARB) · (3) C-1 automation (deliverable inside 7A).** *Resolution is the ARB's act; an analysis cannot ratify itself.* Awaiting EP-01 approval. **No code, no config key, no test.**
+**Status:** 📋 **TACTICAL PLAN — ⏳ PROGRAMME STATE: `AWAITING GOVERNANCE`** (ARB Transition Authorization Commission, 2026-08-01). 🧊 Architecture frozen · zero architectural gates · G-1 analysed with a recommended realization **pending ratification**. ⛔ **RED blocked by: (1) WP-6 slice acceptance · (2) A-1/A-2 ratification — MUTUALLY INDEPENDENT, grantable in either order or in parallel · (3) C-1 automation (engineering's call, recommended-blocking, deliverable inside 7A).** *Architecture provides readiness; governance grants authorization.* Awaiting EP-01 approval. **No code, no config key, no test.**
 **Gate note:** WP-6's ARB acceptance is still pending; the roadmap's rule is *"no slice starts before its predecessor's acceptance."* **Planning is the authorized activity; RED is not.**
 **Slice:** WP-7 (EPIC-004 roadmap) · **Protocol:** `.claude/IMPLEMENTATION_PROTOCOL.md` (FROZEN) · **Repository Integrity Gate:** ✅ PASSED
 
