@@ -580,6 +580,8 @@ Concretely:
 
 **Documentation discipline.** **Establish classification — purpose · type · role · steward · lifecycle · maturity — BEFORE deriving placement. Never derive placement from scope alone.** Resolve with `php scripts/doc-placement.php`; **exit 2 means unruled — record `PENDING` and escalate.** **If the classification is unknown, raise a governance question; invent no category and no folder.**
 
+**Full protocol (the fillable form of this loop):** `docs/implementation/PublicDigit_Engineering_Protocol_Proposal.md` — **PROPOSED, not adopted.** This section is the runtime binding; that document is the template. **Worked instance: `.claude/plans/WP-7C-engineering-readiness.md`.**
+
 **Model integrity.** Before proposing any new attribute or dimension, determine whether it is **a new dimension**, **an overloaded existing dimension**, or **merely another value**. Introduce a new dimension only if **orthogonal · necessary · sufficient — all three.** *(Proposal: `docs/implementation/PublicDigit_Engineering_Protocol_Proposal.md`.)*
 
 > **The final rule: the strongest statement made must never exceed the strength of the available evidence.** **Keep facts, architectural conclusions, governance decisions, engineering actions and operational observations rigorously separate — never let one silently become another.**
