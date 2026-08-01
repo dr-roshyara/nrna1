@@ -73,6 +73,17 @@
 - **The guard obeys its own litmus:** it is runtime session tooling, so **ES-005.3 puts it in the runtime mount (`.claude/scripts/`), not in `engineering/`.**
 - **Non-blocking on purpose:** creating under `engineering/` is legitimate when governed, and **the hook cannot evaluate the answers to its own questions — only the author can.** A wall that is always dismissed teaches less than a checkpoint that is read *(same posture as `discipline-gate-reminder.sh`)*.
 
+## ⚠️ ES-005.1's premise is FALSIFIED BY THE REPOSITORY — `docs/` is no longer single-product (measured 2026-08-01)
+
+- **ES-005.1 says `docs/` + `architecture/` + `app/` + `tests/` = "Product (what PublicDigit is)".** Historically true — `docs/` was only for PublicDigit.
+- **MEASURED TODAY: of 183 files in `docs/implementation/`, 89 are `PKS_*` (49%) and 3 are `KnowledgeOS_*`. HALF OF PUBLICDIGIT'S PRODUCT FOLDER IS NOT PUBLICDIGIT'S.** The premise was **not changed by decision — it was falsified by accretion**, 92 documents at a time, with no rule ever amended to admit them.
+- **This is the FORM OF EVIDENCE R-37 REQUIRES** (expansion needs *proof the existing architecture was insufficient*). **Measured insufficiency, not asserted improvement** — that is what distinguishes it from the proposals R-37 rejects by default.
+- **ES-005.3's litmus is CROSS-PRODUCT vs PRODUCT-SPECIFIC, NEVER which-product-owns:** *"could a different project adopt the document unchanged?"* Canon already applied it (`PKS_Brainstorming_Documents_Assessment.md` §1.3): *methodology (cross-product) -> `engineering/` AFTER QUALIFICATION ≠ PKS (product-specific) -> `docs/`*. **So project-side placement of unqualified cross-product methodology is a MATURITY statement, NOT AN OWNERSHIP STATEMENT.**
+- **Consequence for `Layer_Verification_Rule.md`: it is cross-product methodology bound for `engineering/` on qualification — it would NOT move to a product folder under ANY product-first tree. It must not be used as evidence for reorganizing `docs/`.**
+- **A product-first `docs/` has an UNMET PREREQUISITE: you cannot sort by product until every artifact HAS one. `EKA -> KnowledgeOS` is a confirmed invariant; `PKS -> KnowledgeOS` is NOT — the largest block (89 files) has no ruled destination.**
+- **Sharpest objection on record (R-37, same ruling): "maturity ladder ... L6 multi-project; NEITHER L5 NOR L6 IS REACHED BY MOVING FILES."** A product-first `docs/` is the L6 move executed by moving files. **Also unsettled: whether R-37's "no more document reorganizations" binds `docs/` at all — its operational terms name only `engineering/`.**
+- **Blast radius if ever executed: 501 inbound refs to `docs/implementation/` (119 to `PKS_*`), 51 to `docs/plans/`; ES-005.4 forbids leaving copies behind.**
+
 ## KnowledgeOS is NOT yet a product — already ruled (verified 2026-08-01)
 
 - **`engineering/README.md`, DA clarification 2026-07-27:** capabilities serve *"all PublicDigit products (Online Voting today; **KnowledgeOS and future products if their gates open**)"* · *"the Election System is the Core Domain; **this platform is a Supporting Subdomain**"* (**AIP-14 Product Primacy**) · *"**a second real adopting product is the recorded trigger for the Platform-Adoption split — pre-positioned, not executed**."*
