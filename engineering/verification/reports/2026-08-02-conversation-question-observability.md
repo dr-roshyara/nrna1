@@ -36,14 +36,15 @@
 
 **So the question restates as: *is the correction loop one constitutional decision process, or two?*** **That is a question about the constitutional model, not about plumbing** — even though, today, nothing observable turns on the answer.
 
-**The two possible states are not symmetric:**
+> ### ⚠️ Corrected — no present violation is established, and the earlier wording claimed one
+>
+> **Today's implementation is compatible with one interpretation of the constitutional invariant and potentially inconsistent with another. Resolving which interpretation is normative is deferred until WP-8, when the invariant becomes executable through end-to-end assertions.**
+>
+> **The evidence supports a CONDITIONAL statement, not a conformance finding.** *If* Answer A is adopted, the current implementation **appears inconsistent** with the invariant; *if* Answer B is adopted, it **appears consistent**. **The modelling decision determines how the existing invariant APPLIES — it does not establish that the invariant is being breached today.**
+>
+> **Concluding a violation before the definition it depends on has been decided would be circular**: the invariant speaks of *one constitutional conversation*, and what counts as one conversation here **is the open question itself.**
 
-| | If A is right | If B is right |
-|---|---|---|
-| Today's system | **currently violates** a constitutional invariant — two mints in one conversation | **currently conformant** |
-| The decision is | **a conformance finding** | **a confirmation** |
-
-> **This is the part the five tests do not capture: the decision does not choose an invariant, it determines whether the system already complies with one.** **A question about compliance with a constitutional invariant is not obviously an implementation-allocation matter, however invisible its current effects.**
+**What the five tests do not capture:** the decision does not *choose* an invariant — **it determines how an existing one applies.** **A question about the application of a constitutional invariant is not obviously an implementation-allocation matter, however invisible its current effects.**
 
 ## 3. Why the horizon matters
 
@@ -66,7 +67,7 @@ at WP-8        →  strategic: it defines what the end-to-end assertion asserts
 
 ## 5. What is not concluded
 
-**Whether the loop is one decision process or two.** **Whether today's two mints are a violation or a design.** **Whether the decision belongs to the ARB or to implementation governance** — §2 argues the constitutional framing pulls one way and the five tests pull the other, **and the Board is better placed than this report to weigh them.**
+**Whether the loop is one decision process or two.** **Whether today's two mints are a violation or a design — and note that this cannot be settled BEFORE the definition it depends on is settled.** **Whether the decision belongs to the ARB or to implementation governance** — §2 argues the constitutional framing pulls one way and the five tests pull the other, **and the Board is better placed than this report to weigh them.**
 
 ---
 
