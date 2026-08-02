@@ -64,6 +64,8 @@ $this->store->save($process->concludeRulingRequested(...));
 
 **`receiveRulingDecision()` is a public method already invoked directly by existing tests** (`AdjudicationProcessManagerTest`, `AdjudicationHorizonTest`). **The seam begins *after* that call returns.** **On the evidence, WP-4B's seam appears buildable and testable against the existing entry point, with WP-4D supplying the *production trigger* rather than the *capability being wired*.**
 
+> **⛔ SUPERSEDED 2026-08-02 by `2026-08-02-wp4b-dependency-investigation.md`: NEITHER reading holds. `IssueDeterminationCommand` requires three inputs — `Jurisdiction`, `EvidenceEnvelopeRef`, `ContestedOutcomeRef` — that the concluded record does not hold and `receiveRulingDecision()` does not accept, so WP-4D would not close the gap and WP-4B is not buildable now. §6's verdict is unchanged; its reason is sharper.**
+>
 > **This is an observation, not a finding, and it is deliberately not resolved.** **The accepted planning artifact says the dependency exists; the code suggests it may be a dependency on production triggering rather than on implementability.** **Which reading governs is the ARB's to settle — and settling it changes WP-4B's sequencing.**
 
 ## 4. Engineering Readiness
@@ -95,7 +97,18 @@ $this->store->save($process->concludeRulingRequested(...));
 
 > # ⏳ AUTHORIZATION READINESS CANNOT YET BE DETERMINED — one sequencing assumption remains unresolved
 
-**Single evidence-based reason:** **the accepted planning artifact records WP-4B as depending on the authority-decision intake, and the repository shows a callable entry point that suggests the seam could be built without it (§3, dependency 6).** **Until that assumption is verified, no RED boundary can be drawn** — §2's scope ambiguity compounds it, but does not cause it.
+**Single evidence-based reason:** **the accepted planning artifact records WP-4B as depending on the authority-decision intake, and the repository shows a callable entry point that suggests the seam could be built without it (§3, dependency 6).** **Until that assumption is resolved, the appropriate RED boundary cannot be established with confidence** — §2's scope ambiguity compounds it, but does not cause it.
+
+### Classification of the unresolved assumption — so it is not mistaken for a defect
+
+| Observation | Classification |
+|---|---|
+| **The repository and the roadmap disagree about dependency sequencing** | **Engineering Planning Assumption** |
+| Strategic architecture | **unchanged** |
+| Tactical architecture | **one implementation question** (§5, the store query) |
+| Governance | **authorization decision required** |
+
+> **The unresolved item is a planning assumption requiring governance disposition. It is NOT an architectural defect, and nothing in this package should be read as reporting one.**
 
 ### Why the verdict is not stated as "not ready"
 
