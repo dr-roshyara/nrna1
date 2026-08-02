@@ -2,6 +2,7 @@
 
 **Date:** 2026-08-02 · **Prepared by:** Principal DDD Architect
 **Status:** **CONVENED — one question, no recommendation, no ruling issued here.**
+**⚠️ QUALIFIED 2026-08-02 by `engineering/verification/reports/2026-08-02-conversation-question-observability.md`: on the five business-observability tests, **nothing in the business model changes today** — no invariant, no user-visible behaviour, no published contract, no downstream context. **This package asked the Board to decide now, and elevating it without first showing it was strategic was premature.** It is therefore **DEFERRABLE — but not past WP-8**, whose keystone cannot be written without the answer.**
 
 ---
 
