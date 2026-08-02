@@ -64,7 +64,7 @@ $this->store->save($process->concludeRulingRequested(...));
 
 **`receiveRulingDecision()` is a public method already invoked directly by existing tests** (`AdjudicationProcessManagerTest`, `AdjudicationHorizonTest`). **The seam begins *after* that call returns.** **On the evidence, WP-4B's seam appears buildable and testable against the existing entry point, with WP-4D supplying the *production trigger* rather than the *capability being wired*.**
 
-> **⛔ SUPERSEDED 2026-08-02 by `2026-08-02-wp4b-dependency-investigation.md`: NEITHER reading holds. `IssueDeterminationCommand` requires three inputs — `Jurisdiction`, `EvidenceEnvelopeRef`, `ContestedOutcomeRef` — that the concluded record does not hold and `receiveRulingDecision()` does not accept, so WP-4D would not close the gap and WP-4B is not buildable now. §6's verdict is unchanged; its reason is sharper.**
+> **⛔ SUPERSEDED 2026-08-02 by `2026-08-02-wp4b-issuance-input-provenance-investigation.md`: NEITHER reading is established. `IssueDeterminationCommand` requires three inputs — `Jurisdiction`, `EvidenceEnvelopeRef`, `ContestedOutcomeRef` — that the concluded record does not hold and `receiveRulingDecision()` does not accept, so WP-4D would not close the gap and WP-4B is not buildable now. **What the gap MEANS is not settled**; §5 of that report enumerates candidate producers without choosing. §6's verdict here is unchanged; its reason is sharper.**
 >
 > **This is an observation, not a finding, and it is deliberately not resolved.** **The accepted planning artifact says the dependency exists; the code suggests it may be a dependency on production triggering rather than on implementability.** **Which reading governs is the ARB's to settle — and settling it changes WP-4B's sequencing.**
 
