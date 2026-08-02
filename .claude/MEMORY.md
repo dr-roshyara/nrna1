@@ -221,8 +221,7 @@
   `repository evidence → plausible domain models → ARB modelling decision → normative interpretation → conformance assessment`
   **Never `repository evidence → violation`. That skips three steps.**
 - **Corollary that caught a real error:** a modelling decision may determine **HOW AN EXISTING INVARIANT APPLIES** without establishing that the invariant is **breached today**. Concluding a breach before deciding the definition the invariant depends on is **circular**.
-- **Why it is worth keeping beyond its occasion:** it prevents an architect from treating **an emerging idea as though it were already constitutional** — the failure mode this programme met repeatedly on 2026-08-02.
-- Occasion: `engineering/verification/reports/2026-08-02-conversation-question-observability.md`.
+- **Why it matters:** it prevents an architect from treating **an emerging idea as though it were already constitutional.**
 
 ## ⛔ ENGINEERING METHODOLOGY IS FROZEN (2026-08-01)
 
