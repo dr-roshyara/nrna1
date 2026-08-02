@@ -21,6 +21,24 @@
 
 **Checked and not found:** no ruling, plan or roadmap section assigns 1b or 2b to WP-4B, WP-4D, or any other package. **WP-4D's recorded scope is *"authority-decision intake port + interim administrative adapter"* — it does not mention the mint.**
 
+## 1a. Who governs allocation — and does silence retain ownership?
+
+**Asked because *“no ruling reassigns it”* is a fact about the record, not by itself a statement about ownership.**
+
+| Question | Answer from the record |
+|---|---|
+| **Which artifact currently allocates the responsibility?** | **The WP-3 plan's split table**, which records the ARB's act of 2026-07-30 dividing WP-3 into 3A and 3B. **It is the only artifact that names 1b and 2b at all.** Note what this means: **the allocation lives in a plan, not in the rulings register** — the same R-62-class recording gap already carried for WP-3A's and WP-4A's authorizations |
+| **Which artifact has authority over allocation?** | **The ARB.** The precedent is **R-68**, which subdivided §WP-4 and was typed **Architecture Governance · Approval** — subdivision is an ARB act, exercised in the register |
+| **Does the canonical governance model contain a transition for this?** | ⚠️ **No.** **R-63** declares the model governs the work-package lifecycle and enumerates the supported transitions: *opened · authorized · accepted & closed · design decided*. **Reallocating a responsibility between two existing packages is not among them** |
+
+> ### Two readings of the silence, and the evidence does not choose
+>
+> **Reading 1 — ownership is retained.** No declared transition can move an allocation, so on the record it has not moved: 1b and 2b remain WP-3B's.
+>
+> **Reading 2 — ownership already moved and was never recorded.** 1a and 2a *were in fact* delivered under WP-5 and annotated *"WP-5/WP-3B"*. **If that was a de facto reallocation, then a reallocation has already happened once without a ruling — and the question is not whether it may happen but whether the first one should be recorded retrospectively.**
+>
+> **R-63 declared a scope boundary, not a complete taxonomy**, so the absence of a transition is **not proof that reallocation is forbidden** — only that the model does not currently name it. **Inferring a prohibition from an absence would be exactly the over-reading this programme keeps catching.**
+
 ## 2. Is the replacement technically dependent on WP-4B's seam?
 
 **The port's signature decides this:**
@@ -64,21 +82,36 @@ public static function fromConsumed(?string $incomingCorrelationId, string $trig
 
 **Therefore: ARB clarification is required.** **The underlying question is not "which comment wins" but *"does `DeterminationIssued` belong to the conversation `ChallengeRouted` began, or to a distinct authority-decision conversation?"*** **The allowlist's third-entry note already frames this as the test for a legitimate origin, and roadmap §WP-8's keystone — *one CorrelationId per conversation asserted end-to-end* — is the executable form of the same question.**
 
-## 4. Options — evidence-supported, none recommended
+## 4. Two decisions, kept apart
+
+**The options below were previously presented as one list. They answer two different questions, and conflating them would let a sequencing constraint masquerade as an ownership argument.**
+
+| Decision | Question | Nature |
+|---|---|---|
+| **Allocation** | **who owns 1b and 2b?** | governance — ARB, per the R-68 precedent |
+| **Sequencing** | **when may that work be implemented?** | **already answered by §2, and answered identically under every allocation** |
+
+> **The sequencing answer does not depend on the allocation answer.** **Implementation cannot precede a provenance carrier — that is a property of the code.** **So sequencing is not an argument for any particular owner, and must not be used as one.**
+
+### 4a. Allocation options — evidence-supported, none recommended
 
 | | Option | Evidence for | Evidence against |
 |---|---|---|---|
-| **A** | **Remaining work stays in WP-3B** | 1b and 2b are **allocated to WP-3B and reallocated by nothing**; WP-3's keystone *"reacting handlers never mint"* is WP-3's own acceptance criterion | **WP-3B cannot complete alone** — §2 shows no provenance carrier exists, so WP-3B would block on a seam it does not own |
+| **A** | **Remaining work stays in WP-3B** | 1b and 2b are **allocated to WP-3B and reallocated by nothing**; WP-3's keystone *"reacting handlers never mint"* is WP-3's own acceptance criterion | **§WP-3 then stays open until a seam WP-3B does not own exists.** *(A sequencing consequence, not an ownership objection — see the note above)* |
 | **B** | **Transfers to WP-4B** | the missing carrier spans exactly the conclude→issue seam; **the change becomes possible only when that path exists** | **no ruling reassigns it**, and WP-4B's scope as recorded is the seam, **not the Adjudication mint's removal**. Transferring is a boundary change, which is a governance act |
 | **C** | **Amend the roadmap allocation** | the two comments encode **two different architectural triggers**, and **neither is normative** (§3) — the ambiguity is in the record itself, which is what an amendment repairs | it is the heaviest instrument, and **A or B may settle it without one** |
 
 **No option is recommended.** **The repository supports the *existence* of all three; it does not select among them, because selection turns on the conversation question in §3 — and that is a modelling decision the ARB owns.**
 
-## 5. Sequencing consequence
+### 4b. Sequencing — one answer, invariant across the allocation options
 
-**Whichever option is chosen, one thing does not change: implementation of 1b/2b cannot precede the provenance carrier.** **§2's dependency is a property of the code, not of the allocation** — it holds under Option A, B and C alike.
+**Implementation of 1b/2b cannot precede the provenance carrier.** §2 establishes this from signatures and carriers; **it holds identically under A, B and C.**
 
-**And §WP-3 cannot close until 1b and 2b are disposed of, by delivery or by explicit reallocation.**
+**And §WP-3 cannot close until 1b and 2b are disposed of — by delivery or by explicit reallocation.**
+
+## 5. The question that governs all of it
+
+**Both decisions above are downstream of one modelling question**, now put to the Board separately: `engineering/verification/commissions/2026-08-02-determination-conversation-decision.md`.
 
 ---
 
