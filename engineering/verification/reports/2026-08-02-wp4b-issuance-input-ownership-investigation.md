@@ -1,9 +1,10 @@
-# WP-4B — Issuance Input Provenance Investigation
+# WP-4B — Issuance Input Ownership Investigation
 
-*(Opened as the “dependency investigation”; retitled 2026-08-02 once the evidence showed it was studying provenance, not sequencing.)*
+*(Opened as the “dependency investigation”, then briefly the “provenance investigation”. **Retitled again 2026-08-02: even “provenance” presupposes that provenance is the root cause.** The neutral question is simply where the inputs come from — and whether they should be there at all.)*
 
 **Date:** 2026-08-02 · **Prepared by:** Principal Engineer
-**Question:** **Is the authority-decision intake a true implementation prerequisite for the conclude→issue seam, or only its production trigger?**
+**Question as opened:** **is the authority-decision intake a true implementation prerequisite for the conclude→issue seam, or only its production trigger?**
+**Question as it turned out to be:** **where do `IssueDeterminationCommand`'s unsourced inputs come from — and is each of them rightly there?**
 **Status:** investigation only. **No redesign · no governance proposal · no authorization recommendation.**
 
 ---
@@ -86,7 +87,11 @@ public function receiveRulingDecision(
 >
 > **`IssueDeterminationCommand` requires three inputs — `Jurisdiction`, `EvidenceEnvelopeRef`, `ContestedOutcomeRef` — that the concluded process record does not hold and the PM's decision entry point does not accept.**
 
-**Stated at the strength the evidence supports — and no further:** **the observable gap is proven.** **Its cause is not.** **Calling it a *provenance* problem is already one level of interpretation, and the evidence does not compel it.** The three values might be supplied upstream, **derived**, **loaded**, **resolved through a service**, **owned by another aggregate** — or **the command may simply be oversized**. **None of those is ruled out.** §5 enumerates the candidates without choosing among them.
+### The strongest statement the evidence supports
+
+> **The repository does not currently identify an authoritative producer for these three inputs at determination issuance.**
+
+**Nothing stronger holds.** It does **not** establish that the correct producer is any particular context, and it does **not** establish that the model is wrong. **Even calling this a *provenance* problem is one level of interpretation** — the three values might be supplied upstream, **derived**, **loaded**, **resolved through a service**, **owned by another aggregate**, or **the command may simply be oversized**. **None of those is ruled out.** §5 enumerates candidates without choosing among them.
 
 ## 4. Effect on WP-4B sequencing
 
@@ -101,7 +106,7 @@ public function receiveRulingDecision(
 **One consequence worth stating plainly, because it is the useful part:** **ordering 4D before 4B, or 4B before 4D, does not on its own close the gap** — the three inputs are absent in both orders. **Sequencing is therefore not sufficient to explain or resolve what was observed.**
 
 
-## 5. Model-ownership enumeration — candidates only, no recommendation
+## 5. Ownership enumeration — candidates only, no recommendation
 
 **Scope of this section: for each of the three values, enumerate every plausible producer visible in the repository, name the bounded context that owns each candidate today, and state the architectural consequence of that option.** **No option is selected. Selecting one is a model-ownership decision, and engineering does not take it.**
 
