@@ -7,11 +7,13 @@ namespace App\Contexts\Election\Infrastructure\Providers;
 use App\Contexts\Election\Application\DeterminationIssuedReactionHandler;
 use App\Contexts\Election\Application\Port\AppliedDeterminationLedger;
 use App\Contexts\Election\Application\Port\ElectionExistencePort;
+use App\Contexts\Election\Application\Port\EvidenceAnchorResolver;
 use App\Contexts\Election\Application\Port\EvidencePreservationDurations;
 use App\Contexts\Election\Application\Port\ReactionEventOutbox;
 use App\Contexts\Election\Domain\Repository\ElectionRepository;
 use App\Contexts\Election\Infrastructure\Acl\LegacyElectionExistenceAdapter;
 use App\Contexts\Election\Infrastructure\Config\ConfiguredEvidencePreservationDurations;
+use App\Contexts\Election\Infrastructure\Config\TemporaryDefaultAnchorResolver;
 use App\Contexts\Election\Infrastructure\Outbox\ElectionCorrectionAppliedHydrator;
 use App\Contexts\Election\Infrastructure\Outbox\ReactionOutboxAdapter;
 use App\Contexts\Election\Infrastructure\Persistence\EloquentAppliedDeterminationLedger;
@@ -39,6 +41,10 @@ final class ElectionServiceProvider extends ServiceProvider
         // `config/adjudication.php` — without importing Adjudication's port, which TP-1
         // forbids and Deptrac would fail.
         $this->app->bind(EvidencePreservationDurations::class, ConfiguredEvidencePreservationDurations::class);
+
+        // WP-7B-R1: the EPW ANCHOR is an open Q-2 decision. Binding it here is what makes
+        // that ruling a one-line substitution instead of a service edit (R-60 · R-70).
+        $this->app->bind(EvidenceAnchorResolver::class, TemporaryDefaultAnchorResolver::class);
     }
 
     public function boot(): void

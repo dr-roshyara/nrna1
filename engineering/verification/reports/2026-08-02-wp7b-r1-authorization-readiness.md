@@ -2,11 +2,11 @@
 
 **Date:** 2026-08-02 · **Prepared by:** Principal Architect
 **Question:** **does sufficient evidence exist for the ARB to authorize implementation?**
-**Status:** verification only. **No architecture redesigned · no Tactical DDD performed · no ADR modified · no code written · no work package created · no priority reordered.**
+**Status:** ✅ **ADOPTED — R-70 issued by the ARB, 2026-08-02. WP-7B-R1 is authorized to implement.** Verification only; **No architecture redesigned · no Tactical DDD performed · no ADR modified · no code written · no work package created · no priority reordered.**
 
 ---
 
-> ## DECISION — **Option A: WP-7B-R1 is READY FOR AUTHORIZATION**
+> ## DECISION — **Option A: WP-7B-R1 is READY FOR AUTHORIZATION** ✅ **ADOPTED — R-70, 2026-08-02**
 >
 > **With one thing the Board should read before agreeing: the open Q-2 decision is the *reason* for this work, not a blocker to it. §2 sets out why.**
 
