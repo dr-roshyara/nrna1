@@ -2,6 +2,7 @@
 
 **Date:** 2026-08-02 · **Prepared by:** Principal Engineer, under the Principal Architect
 **Question:** **What must exist before WP-4B can legitimately be authorized?**
+**Verdict:** ⏳ **authorization readiness cannot yet be determined — one sequencing assumption remains unresolved (§6).**
 **Status:** discovery only. **No architecture redesigned · no governance modified · nothing implemented · no ruling drafted.**
 
 > **Placement note.** `php scripts/doc-placement.php --scope=product-specific --domain=publicdigit` returns `docs/publicdigit`. **This package is filed with the WP-4 artifacts instead, at ARB direction** — the WP-4 state correction and the WP-4A acceptance review live here. **Recorded rather than silently resolved.**
@@ -92,11 +93,25 @@ $this->store->save($process->concludeRulingRequested(...));
 
 ## 6. Authorization Readiness
 
-> # ⛔ NOT READY
+> # ⏳ AUTHORIZATION READINESS CANNOT YET BE DETERMINED — one sequencing assumption remains unresolved
 
-**Single evidence-based reason:** **WP-4B has no defined RED boundary, and one cannot be drawn while §2's scope ambiguity and §3's dependency-6 question are open** — the two together determine both *what* the slice must prove and *whether it can be proved now*.
+**Single evidence-based reason:** **the accepted planning artifact records WP-4B as depending on the authority-decision intake, and the repository shows a callable entry point that suggests the seam could be built without it (§3, dependency 6).** **Until that assumption is verified, no RED boundary can be drawn** — §2's scope ambiguity compounds it, but does not cause it.
 
-**Everything else is favourable and is recorded as such:** the capability is defined in accepted artifacts · both ends of the seam exist in code · the acceptance keystone is already written in the roadmap · no strategic change is implied · exactly one tactical change is identified.
+### Why the verdict is not stated as "not ready"
+
+**"Not ready" is a governance conclusion, and the evidence does not compel it.** What the evidence establishes is narrower and, in every other respect, favourable:
+
+| Established | |
+|---|---|
+| Capability defined in accepted artifacts | ✅ |
+| **Both ends of the seam exist in code** | ✅ |
+| Acceptance keystone already written in the roadmap | ✅ |
+| Strategic change required | ❌ **none** |
+| Architectural blocker | ❌ **none identified** |
+| Tactical change | **exactly one, identified and not designed** (§5) |
+| **Dependency assumption** | ⚠️ **unresolved — the one open item** |
+
+> **A package with no architectural blocker, both ends built and its acceptance criterion already written is not fairly described as "not ready."** **It is a package whose *sequencing* is undetermined.** **Whether that warrants deferral, or authorization with the assumption resolved as the slice's first act, is the ARB's to decide — engineering's contribution ends at naming the unresolved assumption.**
 
 ## 7. Next Engineering Step
 
