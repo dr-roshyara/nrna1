@@ -5,7 +5,11 @@
 
 ---
 
-> # ⛔ FINDING FIRST — **WP-3B is not deferred. Its scope was delivered under WP-5 and ARB-approved on 2026-07-31.**
+> ## ⛔ CORRECTED 2026-08-02 by `engineering/verification/reports/2026-08-02-wp3b-closure-verification.md`
+>
+> **WP-3B is PARTIALLY delivered, not delivered.** Its scope was *"**move** `start()` **from** `CoordinatesAdjudication` to the routing act + update the allowlist"* — **the addition landed under WP-5; the REMOVAL did not.** `CoordinatesAdjudication::issueDetermination()` still calls `EventProvenance::start()`, and the allowlist still carries its entry. **The finding below stands on the addition and overstated the conclusion.** **§WP-3 cannot close on one ruling.**
+
+> # ⛔ FINDING FIRST — **WP-3B is not deferred for the reason recorded. Its ADDITION half was delivered under WP-5 and ARB-approved on 2026-07-31.**
 >
 > **`tests/Architecture/Messaging/CorrelationIdMintingTest.php`, the allowlist comment, verbatim:**
 >
