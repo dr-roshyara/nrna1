@@ -1,7 +1,7 @@
 # WP-7B-R1 — Completion Evidence
 
 **Date:** 2026-08-02 · **Prepared by:** Engineering, under **R-70**
-**Status:** **RED → GREEN → VERIFY complete. ACCEPT is the ARB's act (R-34); engineering does not accept its own work.**
+**Status:** ✅ **ACCEPTED — R-71 issued by the ARB, 2026-08-02. WP-7B-R1 is CLOSED.** RED → GREEN → VERIFY complete; **ACCEPT was the ARB's act (R-34) and engineering did not accept its own work.**
 
 > **Slice record kept here rather than in a new plan file.** WP-7 s plan is closed and R-60 defines this package separately; **delivery mode discourages creating governance artifacts that implementation does not need.** Triple qualification is in §5, where WP-1/WP-2 precedent puts it in the plan.
 
@@ -57,7 +57,7 @@ GATE  composer merge-gate  →  PASS
 
 **The four new tests are not among the risky entries** — verified twice: standalone, `vendor/bin/phpunit …EvidenceAnchorResolutionTest.php` → `OK (4 tests, 6 assertions)` with no risky flag; and in the full `GreenfieldCore` run, `EvidenceAnchorResolutionTest` appears nowhere in the risky list.
 
-**So the four additional notices fall on pre-existing tests, and their cause is not established.** The house pattern for these notices is *"Test code or tested code removed error handlers other than its own"*, and adding a test to this namespace changes execution order — **a plausible explanation, not a demonstrated one. Recorded as an open observation, not a claim.**
+**So the four additional notices fall on pre-existing tests, and their cause is not established.** **Carried as `ENG-012` by R-71 — tracked, not resolved here.** The house pattern for these notices is *"Test code or tested code removed error handlers other than its own"*, and adding a test to this namespace changes execution order — **a plausible explanation, not a demonstrated one. Recorded as an open observation, not a claim.**
 
 ## 4. Architectural invariants preserved
 
@@ -71,15 +71,17 @@ GATE  composer merge-gate  →  PASS
 | **Q-2 not pre-empted** | the resolver **reports** a date; it **decides** nothing. No test asserts *which* candidate is correct |
 | Dependency direction | Infrastructure → Application → Domain; the port is declared by the consumer |
 
-## 5. Triple Qualification — all three categories PASS
+## 5. Evidence supporting Triple Qualification
 
-### Architecture — PASS
+> **Wording corrected at ARB direction (R-71): engineering PRODUCES the evidence; the QUALIFICATION belongs to the acceptance package. What follows is evidence offered, not a self-certification.**
+
+### Architecture
 Deptrac **0 violations** · greenfield PHPStan **no errors** · architecture fitness suite green. **No fitness rule and no Deptrac rule was changed to make the slice pass.** The new adapter sits in `Election/Infrastructure/Config/` beside `ConfiguredEvidencePreservationDurations`, which `ElectionInfrastructure: [ElectionDomain, ElectionApplication, Shared]` already permits.
 
-### DDD — PASS
+### DDD
 **Ownership unchanged** — Election owns Evidence Preservation Window Resolution; Audit/Retention owns the deletion decision; Adjudication supplies MAD as configuration and is not called. **No aggregate, entity, value object, repository or domain service added** — one port and one adapter, both Application/Infrastructure. **Ubiquitous Language unchanged:** *anchor* was already the word the code and the docblocks used; **the port names an existing concept rather than introducing one.** **No published language, no event, no crossing.**
 
-### Trustworthiness — PASS
+### Trustworthiness
 **Fail-closed preserved** (AP-1) and still asserted by an unmodified test · **no substituted date** — absence returns `null`, so a missing fact can never shorten a legally-mandated retention period · **replay/idempotence untouched** — the resolver is pure and deterministic over one model · **tenant isolation untouched** — the slice adds no query; 7C's `withoutGlobalScopes()` read is unchanged · **anonymity not implicated** — no voter or vote data is read or carried · **loud failure** — an unbound port fails at container resolution, never silently.
 
 ## 6. Operational evidence — evaluated per the four outcomes
@@ -95,7 +97,7 @@ Deptrac **0 violations** · greenfield PHPStan **no errors** · architecture fit
 
 ## 7. Next
 
-**ACCEPT is the ARB's act.** On acceptance, WP-7B-R1 closes. **It does not advance §WP-4 and does not move WP-8 closer** — R-70 records that it is parallel work.
+**ACCEPT was the ARB's act.** ✅ **R-71 issued 2026-08-02 — WP-7B-R1 is CLOSED.** **It does not advance §WP-4 and does not move WP-8 closer** — R-70 records that it is parallel work.
 
 ---
 
