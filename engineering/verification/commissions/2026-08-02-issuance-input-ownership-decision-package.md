@@ -2,8 +2,8 @@
 
 **Date:** 2026-08-02 · **Prepared by:** Recording Architect
 **Purpose:** enable ARB deliberation on **bounded-context ownership**. **Not to redesign the system.**
-**Status:** ✅ **ARB-READY — CONVENED AND FROZEN (Chief Architect, 2026-08-02).** No recommendation is made and no ruling is issued here.
-**⛔ No further architectural decomposition is authorized unless new implementation evidence emerges.**
+**Status:** ✅ **SUFFICIENT FOR ARB DELIBERATION (Chief Architect, 2026-08-02).** No recommendation is made and no ruling is issued here.
+**⛔ Frozen — but frozen RELATIVE TO THE CURRENT EVIDENCE BASE, not absolutely. It reopens if implementation or governance produces materially new evidence; architecture is never permanently frozen.**
 
 > **The engineering investigation has completed its mandate** (`engineering/verification/reports/2026-08-02-wp4b-issuance-input-ownership-investigation.md`). **This package reframes its evidence as a decision, and adds one thing engineering did not supply: which issued decisions each option would touch.**
 
@@ -125,9 +125,9 @@
 
 ---
 
-> ## ⛔ Architecture stops here
+> ## ⛔ Architecture stops here — for this evidence base
 >
-> **This package is ARB-ready and frozen.** **The next activities are, in order: the ARB's ownership decision on `Jurisdiction` · the ARB's choice of integration path for the remaining two · tactical design · RED · GREEN · VERIFY · ACCEPT · close §WP-4 · and only then WP-8 planning.**
+> **The current architectural investigation is considered sufficient for ARB deliberation. It remains frozen unless implementation or governance produces materially new evidence.** **The next activities are, in order: the ARB's ownership decision on `Jurisdiction` · the ARB's choice of integration path for the remaining two · tactical design · RED · GREEN · VERIFY · ACCEPT · close §WP-4 · and only then WP-8 planning.**
 >
 > **No further architectural decomposition is authorized unless implementation produces new evidence.**
 
