@@ -2,7 +2,8 @@
 
 **Date:** 2026-08-02 · **Prepared by:** Recording Architect
 **Purpose:** enable ARB deliberation on **bounded-context ownership**. **Not to redesign the system.**
-**Status:** **CONVENED — no recommendation is made and no ruling is issued here.**
+**Status:** ✅ **ARB-READY — CONVENED AND FROZEN (Chief Architect, 2026-08-02).** No recommendation is made and no ruling is issued here.
+**⛔ No further architectural decomposition is authorized unless new implementation evidence emerges.**
 
 > **The engineering investigation has completed its mandate** (`engineering/verification/reports/2026-08-02-wp4b-issuance-input-ownership-investigation.md`). **This package reframes its evidence as a decision, and adds one thing engineering did not supply: which issued decisions each option would touch.**
 
@@ -40,7 +41,7 @@
 | Dimension | The question | Who decides |
 |---|---|---|
 | **Ownership** | **which bounded context is the authoritative owner of the concept?** | **ARB — strategic** |
-| **Transport / source** | **by what path does the value reach issuance?** | **ARB or architecture — tactical, and constrained by TP-1 / ADR-T5 / ADR-T16** |
+| **Transport / Integration Path** | **by what path does the value reach issuance?** | **ARB or architecture — tactical, and constrained by TP-1 / ADR-T5 / ADR-T16** |
 | **Model simplification** | **should the field exist at all?** | **ARB — it touches frozen artifacts** |
 
 > **Ownership and transport are compatible, not competing. Contestation may *own* `ContestedOutcomeRef` while the authority's decision *carries* it. Evidence may *own* `EvidenceEnvelopeRef` while Adjudication *receives* it by integration event.** **Deciding one does not decide the other.**
@@ -50,22 +51,24 @@
 | Value | Candidate owners | Evidence bearing on ownership |
 |---|---|---|
 | **`Jurisdiction`** | **the deciding authority** (Governance-delegated, via Q-1) · **Membership** · **Adjudication itself** | Adjudication holds only a **bare string with no producer**. **Membership holds a structurally richer, same-named model** with **no recorded relationship**. ADR-T23/K1 place what the authority *decides* with the authority |
-| **`EvidenceEnvelopeRef`** | **the Evidence context** — *"owned by the Evidence context"*, per the VO's own docblock | **Not genuinely contested.** The documented owner is explicit; **the difficulty is that `app/Contexts/` has no `Evidence/` directory** |
-| **`ContestedOutcomeRef`** | **Contestation** | **Not genuinely contested either.** ADR-UL-01 defines the term, Contestation's `Challenge` holds it, and Adjudication's copy is documented as a **local reconstruction** under ADR-T16 |
+| **`EvidenceEnvelopeRef`** | **the Evidence context** — *"owned by the Evidence context"*, per the VO's own docblock | **No conflicting ownership evidence found.** The intended owner is explicit; **the difficulty is that `app/Contexts/` has no `Evidence/` directory** |
+| **`ContestedOutcomeRef`** | **Contestation** | **No conflicting ownership evidence found either.** ADR-UL-01 defines the term, Contestation's `Challenge` holds it, and Adjudication's copy is documented as a **local reconstruction** under ADR-T16 |
 
 > ### ⚠️ Separating the dimensions changes what the Board is actually being asked
 >
-> **Only `Jurisdiction` presents a real ownership question.** **For the other two, ownership is already settled by issued decisions and by the code's own documentation — what is unresolved is *transport*.**
+> **Only `Jurisdiction` presents a real ownership question.** **For the other two, repository evidence currently identifies an INTENDED owner and no conflicting ownership evidence has been found — what is unresolved is the *integration path*.**
+>
+> **Deliberately not stated as *settled*.** ADRs, VO docblocks and documented local reconstructions are **strong evidence, but they are artifacts.** **Whether they represent the canonical strategic model is the ARB's to affirm — architecture must not speak more strongly than the governance authority.**
 >
 > **That is a materially smaller decision than the earlier draft implied.**
 
-| Value | Ownership | Transport |
+| Value | Ownership | Integration path |
 |---|---|---|
 | `Jurisdiction` | ⚠️ **open** | ⚠️ open — and dependent on the ownership answer |
-| `EvidenceEnvelopeRef` | ✅ documented (Evidence) | ⚠️ **open — and the owner is unbuilt** |
-| `ContestedOutcomeRef` | ✅ documented (Contestation) | ⚠️ **open — a path is missing, nothing else** |
+| `EvidenceEnvelopeRef` | ✅ **intended owner identified** (Evidence); no conflicting evidence | ⚠️ **open — and the intended owner is unbuilt** |
+| `ContestedOutcomeRef` | ✅ **intended owner identified** (Contestation); no conflicting evidence | ⚠️ **open — a path is missing, nothing else** |
 
-## 5. Dimension 2 — Transport / source options, with consequences
+## 5. Dimension 2 — Transport / Integration Path options, with consequences
 
 ### 5.1 `Jurisdiction`
 
@@ -109,16 +112,24 @@
 
 **Two cross-cutting consequences the Board should weigh once, not three times:**
 
-1. **Every authority-carried *transport* option widens `receiveRulingDecision()`** — today six parameters, and the whole of what the APM accepts from an authority. **How wide that signature should be is the same question WP-4D must answer when it defines the intake port.** **Deciding these three inputs partly decides WP-4D.**
-2. **Two transport options change a context boundary** — consuming Membership's jurisdiction model, and extending Contestation's published payload. **Both are strategic, not tactical, and neither is engineering's to take.**
+1. **Every authority-carried *integration path* widens `receiveRulingDecision()`** — today six parameters, and the whole of what the APM accepts from an authority. **How wide that signature should be is the same question WP-4D must answer when it defines the intake port.** **Deciding these three inputs partly decides WP-4D.**
+2. **Two integration paths change a context boundary** — consuming Membership's jurisdiction model, and extending Contestation's published payload. **Both are strategic, not tactical, and neither is engineering's to take.**
 
 ## 8. Scope of this package
 
-**Included:** repository-supported observations · **ownership candidates** · **transport options** · **model-simplification hypotheses**, kept as three distinct dimensions · architectural consequences · the issued decisions each option would affect.
+**Included:** repository-supported observations · **ownership candidates** · **transport / integration-path options** · **model-simplification hypotheses**, kept as three distinct dimensions · architectural consequences · the issued decisions each option would affect.
 
 **Deliberately excluded:** **any preferred solution · any model change · any implementation guidance · any ruling.** **No option in §4, §5 or §6 is marked as favoured, and the ordering within each table carries no preference.**
 
 **Not in this package:** WP-4B's authorization · WP-4C · WP-4D's definition · WP-8 · the register-recording gap on WP-3A/WP-4A · contract R-2's missing ADR home.
+
+---
+
+> ## ⛔ Architecture stops here
+>
+> **This package is ARB-ready and frozen.** **The next activities are, in order: the ARB's ownership decision on `Jurisdiction` · the ARB's choice of integration path for the remaining two · tactical design · RED · GREEN · VERIFY · ACCEPT · close §WP-4 · and only then WP-8 planning.**
+>
+> **No further architectural decomposition is authorized unless implementation produces new evidence.**
 
 ---
 
