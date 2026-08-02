@@ -10,7 +10,7 @@ durable constraints, and preferences live in `.claude/MEMORY.md`; history lives 
 recorded reversal condition.
 
 ## Active Work (structured — hooks parse these `Key:` lines; keep the format)
-Ticket: **⏹️ INVESTIGATION CLOSED FOR THE CURRENT EVIDENCE BASE (ARB, 2026-08-02). NOT BLOCKED BY ARCHITECTURE — BLOCKED BY GOVERNANCE DECISIONS. Those are different, and the distinction is the day's result.** **⚠️ STATED PRECISELY: ENGINEERING HAS A BACKLOG (WP-4B onward) — WHAT IT HAS NO EXECUTABLE WORK. 'Nothing is pending from engineering' would be false; NO FURTHER ENGINEERING WORK CAN BEGIN UNTIL THE CURRENT GOVERNANCE PREREQUISITES ARE RESOLVED.** **REOPEN ONLY IF: (1) IMPLEMENTATION PRODUCES NEW EVIDENCE, or (2) THE ARB ADOPTS ONE OF THE COMPETING DOMAIN INTERPRETATIONS. Until one of those occurs, further refinement is DOCUMENTATION CHURN, NOT ARCHITECTURE.** **🧭 PRINCIPLE RECORDED IN MEMORY.md, stated by the ARB and to be preserved permanently: A MODEL IS NORMATIVE ONLY ONCE IT HAS BEEN ADOPTED. Repository evidence is DESCRIPTIVE; the adopted ubiquitous language is NORMATIVE; until the normative model is adopted, IMPLEMENTATION CANNOT BE JUDGED AGAINST IT. The order that must not be short-circuited: evidence → plausible models → ARB modelling decision → normative interpretation → conformance assessment. IT IS A PRINCIPLE, NOT A MINTED RULE — no identifier, and it needs none.** **⛔ FOUR GOVERNANCE ACTS BLOCK ALL DELIVERY, AND NONE IS ENGINEERING'S: (1) ownership of Jurisdiction · (2) integration path for EvidenceEnvelopeRef · (3) integration path for ContestedOutcomeRef · (4) WP-4B's SCOPE AMBIGUITY (is PM-6's issuance-confirmation half inside the slice?). WHEN THEY LAND, R-72's CONTINGENCY IS SATISFIED and engineering runs RED → GREEN → VERIFY → acceptance evidence for WP-4B — THEN 4C IS CONSIDERED ONLY AFTER 4B IS ACCEPTED, then 4D, then §WP-4 CLOSES BY ACCEPTANCE (never by authorization), then WP-8.** **DEFERRED WITH A HARD HORIZON: the CONVERSATION QUESTION — deferrable today, MANDATORY BEFORE WP-8, because the keystone 'one CorrelationId per conversation asserted end-to-end' CANNOT BE WRITTEN WITHOUT IT.** **TODAY'S LEDGER: THREE DELIVERY SLICES ACCEPTED (R-67 WP-3A · R-69 WP-4A · R-71 WP-7B-R1) · ONE SUBDIVISION (R-68) · ONE AUTHORIZATION-WITH-UNMET-PROVISO (R-72) · AND ZERO TOP-LEVEL ROADMAP WORK PACKAGES CLOSED.** **CARRIED: ENG-012 (unexplained risky delta) · WP-3B PARTIALLY DELIVERED, 2 of 4, allocation unresolved · the REGISTER'S SILENCE on WP-3A's and WP-4A's authorizations (R-62 class) · CONTRACT R-2 IS DEPTRAC-ENFORCED WITH NO ADR HOME.** **⚠️ 50 COMMITS UNPUSHED — the entire day is local only; the SSH key is passphrase-protected and the push needs the user.** **METHODOLOGY REMAINS FROZEN. PublicDigit remains the primary product.**
+Ticket: **🏁 FOUR ARB DECISIONS RECORDED — R-73 · R-74 · R-75 · R-76 (2026-08-03). ⛔ WP-4B IS STILL NOT EXECUTABLE, AND THE REASON HAS CHANGED IN KIND: it was blocked by AMBIGUITY (three inputs with no decided source); it is now blocked by UNBUILT WORK (three inputs whose sources are decided and do not exist). engineering/verification/reports/2026-08-03-wp4b-executability-determination.md** **THE ADOPTED GOVERNING MODEL: Jurisdiction ← THE DECIDING AUTHORITY, carried on the authority's decision (R-73) · EvidenceEnvelopeRef ← THE EVIDENCE BOUNDED CONTEXT, by integration event (R-74) · ContestedOutcomeRef ← CONTESTATION, by PUBLISHING ChallengeRaised (R-75) · WP-4B SCOPE = REQUEST PATH ONLY, confirmation EXCLUDED (R-76). The model is INTERNALLY CONSISTENT: every value has exactly one owner, each owner is the context the ubiquitous language already assigns it to, and no value is derived by a context that does not own it.** **THREE PREREQUISITES CREATED, NONE INSIDE WP-4B: P1 receiveRulingDecision() MUST WIDEN to accept Jurisdiction — AND THAT SIGNATURE IS WP-4D'S INTAKE PORT, so R-73 PLACES WP-4D UPSTREAM OF WP-4B · P2 THE EVIDENCE BOUNDED CONTEXT MUST EXIST — app/Contexts/ HAS NO Evidence/ DIRECTORY and Evidence IS NOT ONE OF THE EIGHT ROADMAP WORK PACKAGES · P3 CONTESTATION MUST PUBLISH ChallengeRaised (outbox mapping · hydrator · catalog visibility · an Adjudication-side consumer) — none exists, and this is CONTESTATION-SIDE WORK ALLOCATED TO NO WORK PACKAGE. P4 (scope) IS CLOSED BY R-76 — RED carries FOUR keystones, not six.** **⚠️ SO UNDER THE ADOPTED MODEL WP-4B IS THE LAST OF FOUR BUILDS, NOT THE NEXT ONE. R-76's answer alone would have released it; R-73, R-74 and R-75 EACH ADDED A BUILD. ARCHITECTURE PROPOSES NO RE-SEQUENCING, NO NEW WORK PACKAGES AND NO INTERIM SUBSTITUTES — those are governance acts and the Board has not been asked for them.** **ENGINEERING MAY DO NOTHING ON WP-4B: RED can be written, it CANNOT REACH GREEN, and writing RED against three absent producers would produce a boundary that must be discarded when they arrive. IDLE BY CONSEQUENCE OF THE ADOPTED MODEL, NOT BY DISAGREEMENT WITH IT.** **✅ R-75 IS WORTH NOTING: the alternative path would have REOPENED THE PUBLISHED LANGUAGE ACCEPTED UNDER R-67 THE PREVIOUS DAY. The adopted path leaves ChallengeRouted's payload CLOSED.** **SETTLED BY IMPLICATION: H1 rejected (Jurisdiction is not a residue — it has an owner) · H2 and H3 rejected (EvidenceEnvelopeRef is neither redundant with EvidenceSet nor a projection over it) · H4 untouched.** **STILL UNALLOCATED AFTER THIS SESSION: PM-6's ISSUANCE-CONFIRMATION responsibility (R-76 excludes it from WP-4B and assigns it to no successor) · the CONTESTATION-SIDE PUBLICATION work (R-75) · THE EVIDENCE CONTEXT ITSELF (R-74).** **RATIONALE RECORDING: R-76 carries THE BOARD'S OWN WORDS. R-73/74/75 record the EVIDENCE BASIS for each adopted option and state explicitly that the Board gave a selection without reasons — NONE WERE INVENTED.** **PROGRAMME STATE: WP-3A ✅ R-67 · WP-4A ✅ R-69 · WP-7B-R1 ✅ R-71 · WP-4B AUTHORIZED (R-72) AND NOT EXECUTABLE · WP-3B 2 of 4, allocation unresolved · 4C/4D not authorized · §WP-3 OPEN · §WP-4 OPEN · WP-8 BLOCKED.** **METHODOLOGY REMAINS FROZEN. PublicDigit remains the primary product.**
 **EVIDENCE OTHERWISE: roadmap position ✅ · WP-1/WP-2 accepted ✅ · architecture NO deficiency ✅ · state synchronised ✅ · AUTHORIZATION ⬜ none exists (the WP-4 plan reads 'OPEN — G-2 DECIDED; next step is RED'; no WP-4 ruling in the register).** **STRATEGIC DDD: no change to bounded-context ownership, capability ownership, context map, Published Language, Ubiquitous Language or strategic invariants — WP-4 is IMPLEMENTATION, NOT ARCHITECTURE EVOLUTION.** **TWO PATHS RECORDED WITHOUT RECOMMENDATION: accept WP-3A then authorize WP-4 (the rule as written), OR authorize WP-4 without it — WHICH IS A DEPARTURE FROM A STANDING RULE AND SHOULD BE RECORDED AS SUCH RATHER THAN LEFT IMPLICIT. ARCHITECTURE RECOMMENDS NEITHER.** **ALSO RECORDED, NOT RAISED FOR DECISION: R-60 OPENED WP-7B-R1 ('Delivery Governance · Approval', 'opened, not delivered') rather than AUTHORIZING EXECUTION, unlike R-65's 'Slice 7C IS AUTHORIZED TO IMPLEMENT'.**
 **IMPLEMENTATION GUARD COMMISSION (2026-08-01) -- NOT a clean bill; enforceability is NARROWER than the constraint set.** Of 11 constraints: **4 executably enforced, 7 manual** (3 cheaply automatable via existing precedent patterns, 4 accepted manual with reasons). **VERIFIED: all three structural gates (Deptrac, greenfield PHPStan, GreenfieldCoreArchitectureTest) scan ONLY app/Contexts/{Contestation,Adjudication,Election,Shared} -- app/Console/Commands/AuditCleanup.php (where the plan puts the guard) and app/Helpers/ have ZERO structural coverage.** Election IS in scope, so the EPW VO inherits real enforcement (Deptrac ElectionDomain:~ blocks port imports; framework-free blocks Illuminate/Carbon) -- **one hole: a PSR ClockInterface would enter the VO undetected.** **⛔ G-1 BLOCKS 7A: 'consume Adjudication's existing AdjudicationDurations port' (AP-2) and Deptrac's approved model (ElectionApplication: [ElectionDomain, Shared]; TP-1 = contexts collaborate ONLY via events) are NOT simultaneously satisfiable if the service lives inside a context** -- in Election/Application it FAILS Deptrac; in app/Console it raises no violation and gets no protection (unobserved, not broken). Three factual options recorded (outside contexts / inside Election / extend the Deptrac model -- the last needs ARB authority); **deliberately NOT chosen -- that would be a ticket silently becoming architecture.** **🔴 C-1 ('never define/default/clamp a duration') is the one constraint whose manual enforcement is INSUFFICIENT -- the exact defect already occurred (max(1,$days); 60 in two homes) and was invisible to all four gates.** Automate as part of 7A. Non-blocking cheap adds: C-2 config-key uniqueness, C-4 construction exclusivity (reuse ConstitutionalAssertionsTest::test_capability_decision_construction_exclusive). Accepted manual: C-5, C-7, C-10, C-11. **The completion statement was deliberately NOT recorded -- asserting full enforcement would be Governance Verification Drift.** **RED now blocked by THREE non-architectural items: WP-6 acceptance (programme) + G-1 (engineering/ARB) + C-1 automation.** Report: engineering/verification/reports/2026-08-01-wp7-implementation-guard-commission.md
 **⚖️ ARCHITECTURE-ENFORCEMENT ALIGNMENT COMMISSION (2026-08-01) -- G-1 ANALYSED; recommended realization PENDING ARB RATIFICATION (requires NO domain-model change and NO Deptrac change). GOVERNANCE CORRECTION recorded: the first issue said 'G-1 RESOLVED' while also recording two pending ratifications -- those cannot both be true. Sequence is analysis -> recommended realization -> ratification -> RESOLUTION, never the reverse; an analysis cannot ratify itself (same class as 'readiness is evidence, acceptance is authority', which I applied to WP-6 in the same session and then failed to apply to my own recommendation).** **FOUR-LEVEL MODEL ADOPTED (reusable): Business Policy (Q-2/ARB) -> Architectural Invariant (ARB) -> Mechanism (engineering, the ONLY substitutable level) -> Implementation. It turns 'is this substitutable?' into a LOOKUP; all of G-1 was a level-3 substitution, which is why it dissolved without touching the model -- had it been level 2, the honest answer would have been to return to the ARB.** G-1 reclassified from 'engineering placement' to an **ARCHITECTURE-ENFORCEMENT ALIGNMENT GAP** (architecture correct, enforcement correct, the MAPPING incomplete) -- **the reclassification changed the answer, not just the label**: 'placement' invites 'put the file where Deptrac doesn't look' (option a: unguarded, and it would LOOK like compliance). **THE UNLOCK: mechanism vs invariant.** 'MAD has exactly one home' is the INVARIANT (AP-2, preserved absolutely); *'consume Adjudication's existing port'* was a **plan-level MECHANISM, never an architectural decision**. **RESOLUTION (option d): Election declares its OWN consumer-side port** -- `EvidencePreservationDurations` in Election/Application/Port/ + `ConfiguredEvidencePreservationDurations` in Election/Infrastructure/Config/, **mirroring ConfiguredAdjudicationDurations exactly** (injected Config, precedence, fail-closed), reading **the one canonical MAD key**. No cross-context import anywhere. **MAD is not Adjudication's data -- it is Q-2's POLICY housed in config/adjudication.php; both contexts are downstream of governance, not of each other.** Options (b) genuine TP-1 violation and (c) relax Deptrac both rejected -- **(c) not needed, so not proposed.** **🔴 R-D1 honest cost:** precedence logic would exist twice and could DRIFT -> recommended gate asserting both adapters resolve the same MAD for the same (electionType, organisationId), **protecting AP-2's INTENT not its letter**; extracting to Shared on first repetition DECLINED. **PLACEMENT PRINCIPLE: coverage follows MEANING, not the reverse** -- VO/port/service/adapter are gated because they carry policy; the folder parser, traversal, deletion and CLI stay ungated **correctly, because they carry none**. **RESPONSIBILITY INVENTORY (8 rows) replaces the rule inventory** and revealed that **R2 (policy ownership) and R7 (infrastructure) are the SAME defect from both ends -- policy ownership is violated the moment infrastructure decides a value, which is exactly AP-1; so C-1 is THE gate, not one of three.** R4/R5 likewise one drift, two symptoms. **Coverage 4/11 -> 5/11 (C-6 becomes actively enforced); alignment makes existing gates APPLY, it does not add gates.** **⚖️ TWO ARB RATIFICATIONS PENDING, neither reassigning a responsibility: A-1 mechanism substitution (confirm the INVARIANT, not the sentence, was binding) · A-2 boundary sharpening (Election ANSWERS, Audit/Retention ACTS). If A-1 declined, fallback is option (c) -- relaxing a correct gate, which must be a deliberate recorded act.** **RED blocked by THREE items: (1) A-1/A-2 ratification -- the act that RESOLVES G-1 · (2) WP-6 acceptance (programme) · (3) C-1 automation (deliverable inside 7A).** **📄 THE LAYER VERIFICATION RULE IS PROMOTED OUT OF WP-7 into a platform methodology module: engineering/knowledge/methodology/Layer_Verification_Rule.md** (beside DDD_Tactical_Governance_Principles.md -- that module governs WHAT TO BUILD, this one governs WHO MAY CHANGE IT AND AT WHICH LEVEL). Includes **the DUAL** (*if changing this layer forces a change above it, you have found an ARCHITECTURAL dependency, not an implementation one* -- so **a failing rule ESCALATES, it does not block**) and **the PROPOSAL CHECKLIST** (which layer changes / which higher layer would also change / escalate before implementation). **STATUS: PROPOSED, NOT ADOPTED -- non-binding until an explicit Decision Authority ruling (R-34); the artifact requesting indexing does not index itself. Justified against the platform's OWN Methodological Fitness Rule (it accepts G-1 and rejects AP-1/AP-2, so it discriminates). Limits recorded: one work package, two of three cases retrospective, level assignment is a judgement, unenforceable by tooling. If it never escalates in two prospective uses outside EPIC-004, it is ceremonial and should be RETIRED.** **NO FURTHER ARCHITECTURAL COMMISSION unless new architectural evidence appears -- the domain model, bounded contexts, ownership and tactical patterns are all unchanged; what remains is GOVERNANCE RATIFICATION and IMPLEMENTATION SAFEGUARDS.** Report: engineering/verification/reports/2026-08-01-wp7-architecture-enforcement-alignment-commission.md
@@ -912,3 +912,140 @@ MISSION → STRATEGY → PRINCIPLE → DESIGN POLICY (DP-n) → CAPABILITY → K
 > **Multi-tenancy and external legal authority both EXIST in PublicDigit and are both INVISIBLE in the model.** ⛔ *A single-product validation could never have found them — cross-product projection is now justified by **evidence**, not by principle.*
 
 **→ OPEN: CV-1 is `I-4` scoped or withdrawn (DP-2/CAP-002 states the falsified form) · CV-2 PRODUCT vs DEPLOYMENT · CV-3 where does EXTERNAL authority attach · CV-4 admit the four transformational relationships as a GROUP · CV-5 adopt "Strategic Ontology Candidate" status.**
+
+
+### ⭐⭐⭐ LIFECYCLE GAP ANALYSIS — only 1 of 4 "ontology failures" was ontological
+
+**`docs/knowledgeos/KnowledgeOS_Lifecycle_Gap_Analysis.md`.** ⛔ **Ontology FROZEN throughout.**
+
+**⛔ CONCEDED: `I-4` IS NOT FALSIFIED. I misdiagnosed a LIFECYCLE gap as an ONTOLOGY falsification — my FOURTH level confusion** *(flat-vs-dimensional → artifact-vs-concept → layer-vs-sibling → **lifecycle-vs-structure**)*.
+*A discharge summary is not authoritative **because it was projected** — it became authoritative via `DERIVED → REVIEWED → ATTESTED → RELEASED`. **Governance created the authority.*** ⭐ **So DP-2 does not state a falsehood — it CONFLATES DERIVATION WITH ATTESTATION.** *Both prior documents annotated.*
+
+**⭐ A FIFTH "X does not exist" CLAIM WAS AVOIDED BY CHECKING.** `docs/knowledge/_meta/lifecycle.md` (`status: baseline`, `authority: authoritative`, v1.1) already supplies:
+- §1 **two independent dimensions** — *"most projects wrongly conflate them"*
+- §2 **a WHO-MAY-MOVE-IT role table** for every status transition *(Author · Peer reviewer · ARB/Chief Architect · Knowledge/Release Manager · Governance Board · **ADR-only** for frozen→superseded)*
+- §3 **transition GUARDS** — *"each transition has guards `knowledge-lint` can check"*
+- §4 **Knowledge Quality Gates** — *"'Approved' is objective"*
+**Plus EIGHT more lifecycles** *(statuses.yaml · ES-006.1 ladder · EEP · capability · ADR-M status · methodology maturity · 4 identifier lifecycles · Observation Protocol)*.
+
+> # ⭐⭐⭐ **THE GAP, LOCATED MECHANICALLY IN TWO YAML FILES**
+> | | `statuses.yaml` | `authorities.yaml` |
+> |---|---|---|
+> | progression field | ⭐ **`order`** | ⛔ **none** |
+> | terminal marker | ⭐ **`settled`** | ⛔ **none** |
+> | who may move it | ⭐ **§2 role table** | ⛔⛔ **NOT DEFINED** |
+> | transition guards | ⭐ **§3, lint-checkable** | ⛔⛔ **NOT DEFINED** |
+>
+> ### **STATUS HAS A GOVERNED STATE MACHINE. AUTHORITY DOES NOT.** ⭐ *Attestation **is** an authority transition (`derived → authoritative`). Because authority transitions are ungoverned, "attested" is inexpressible — so the model collapses "derived" into "never authoritative".*
+> ⭐⭐ **One asymmetry between two YAML files explains the single most consequential failure in the cross-product validation.**
+
+**⭐ CLASSIFICATION — the commission's hypothesis CONFIRMED:**
+
+| Gap | Category | Cause | Belongs to |
+|---|---|---|---|
+| **G-1 `I-4`/ATTESTS** | **EVOLUTIONARY** | **missing LIFECYCLE** | ⭐⭐ **LIFECYCLE** |
+| **G-2 `SPECIALIZES`** | **EVOLUTIONARY** | missing relationship | ⭐ **ONTOLOGY** *(the only one)* |
+| **G-3 external authority** | **BEHAVIORAL** | missing relationship — *obligation ≠ ownership* | ⭐ **GOVERNANCE** |
+| ⭐ **G-4 PRODUCT vs DEPLOYMENT** | STRUCTURAL | ⭐⭐ **DISSOLVES — a deployment IS a nested Knowledge Space** | **resolved, no new concept** |
+| **G-5 Runtime Adapter vanished** | STRUCTURAL | ⛔ **not a failure — a CONFIRMATION** | — |
+
+> ⭐⭐ **ONLY 1 OF 4 IS GENUINELY ONTOLOGICAL.** *Most of what looked like ontology failure was lifecycle and governance wearing ontology's clothes.*
+> ⭐ **G-4 closes `H-3` on evidence: Knowledge Spaces NEST, and a deployment is the nested case.**
+
+**⚠️ NEW OBSERVATION found while checking:** `lifecycle.md`'s §1 diagram shows **`idea → research → draft → …`** but `statuses.yaml` **does not define `idea` or `research`** — ⛔ **they exist as `knowledge_type` values instead.** *A type/status conflation inside the very document whose §1 warns against exactly that.* ⚠️ *Recorded as an observation, not a defect claim.*
+**⚠️ Five lifecycle vocabularies — two pairs declared orthogonal (HEALTHY), two pairs possibly duplicated:** statuses.yaml(8) vs ADR-M(5); ES-006.1(4) vs methodology maturity(5).
+
+**→ OPEN: LG-1 should `authority` get a governed state machine with roles and guards · LG-2 restate DP-2 to separate derivation from attestation · LG-3 is `idea`/`research` a status or a type · LG-4 two axes or two names · LG-5 admit `SPECIALIZES` · LG-6 where does obligation attach.**
+
+
+### ⭐⭐⭐ ENGINEERING PROGRESSION MODEL — LG-1 DISSOLVED, and `authority` decomposed
+
+**`docs/knowledgeos/KnowledgeOS_Engineering_Progression_Model.md`** (CANDIDATE). ⛔ **Pure discovery — ontology, governance, lifecycle, both YAMLs frozen.**
+
+**⛔ CONCEDED: LG-1 was SOLUTION DESIGN** — *"missing transitions → need state machine" infers a model from a missing implementation, which DDD forbids.* **Withdrawn as ill-posed.**
+**⭐ CONFIRMED: the reviewer's "that chain is QUALIFICATION"** — the repository already owns the vocabulary (ES-006.1's `qualification` stage · ES-003) **and already records a UL collision on the word**, which now carries a third candidate sense.
+
+> # ⭐⭐⭐ **FLAGSHIP: `authority` IS TWO DIMENSIONS IN ONE FIELD — AND ITS OWN HEADER SAYS SO**
+> *`authorities.yaml`: "how much should I trust this **and** where did it come from?"* — **TWO questions, ONE field.**
+>
+> | Values | Kind | Can it change? |
+> |---|---|---|
+> | `generated` · `derived` | ⭐⭐ **PROVENANCE** | ⛔⛔ **NEVER — origin is an immutable historical fact** |
+> | `authoritative` · `provisional` *("no authority **yet**")* · `historical` | ⭐ **STANDING** | ✅ **by a GOVERNANCE ACT** |
+>
+> ### ⭐⭐ **WHY `authority` HAS NO STATE MACHINE: half of it CANNOT have one, and the other half changes by ACTS — which the platform records as act-logs, not workflows.** *The asymmetry is now EXPLAINED, not repaired.*
+> ### ⭐ **"What is authority?" answered: an immutable PROVENANCE fact × a mutable STANDING judgment. Attestation changes standing. Nothing changes provenance.**
+> *Also explains I-4's persistence: a financial statement is `derived` in provenance and `authoritative` in standing — **simultaneously, without contradiction**.*
+
+**⭐ FOUR KINDS OF PROGRESSION + ONE NON-PROGRESSION** *(10 mechanisms answered against the 7 commissioned questions)*:
+| Kind | Moved by | Instances |
+|---|---|---|
+| **GOVERNANCE-ACT** | a decision by a named role | status · ADR-M · identifiers · standing-changes |
+| ⭐⭐ **EVIDENTIAL** | **accumulating evidence — nobody can decree it** | methodology maturity · evidence n-counts |
+| **WORK-EXECUTION** | time; has a clock | EEP · Observation Protocol |
+| **COMPOSITE trajectory** | crosses the above | ES-006.1 ladder · capability lifecycle |
+| ⛔ **PROVENANCE (non-progression)** | **nothing — immutable** | half of `authority` |
+
+> # ⭐⭐ **THE PLATFORM'S CENTRAL MECHANISM, NAMED AT LAST:**
+> ### **evidence EARNS · governance GRANTS · promotion requires BOTH.**
+> *No ruling can make an observation `Replicated`. No evidence can make a document `frozen`.*
+
+**⭐ LG-4 answered by KIND:** status vs ADR-M = **same kind, two instances** (parsimony question) · ES-006.1 vs maturity = **different kinds, correctly separate** (composite-with-gate vs purely evidential).
+**⭐ Coupling by GUARD is healthy:** `baseline` requires `authority ∈ {authoritative, derived}` — dimensions stay separate; a transition in one consults the other.
+**⭐ Prior art honoured:** GEP-F1's two-lifecycle rule + two declared orthogonalities = **three prior refusals of lifecycle fusion. This extends canon; it does not found it.**
+
+**→ OPEN: PM-1 separate authority's two questions (supersedes LG-1) · PM-2 role/guard treatment for standing-changes · PM-3 one vocabulary for status+ADR-M · PM-4 rule on the "Qualification" collision (third sense now) · PM-5 model capability as an explicit composite · LG-5 admit SPECIALIZES.**
+
+
+### ⭐⭐⭐ PHASE A + PHASE B (2026-08-02/03) — CORPUS FROZEN; INDEPENDENT REVIEW EXECUTED
+
+**PA roadmap adopted: A freeze · B independent review · C canonical Strategic Architecture · D platform engineering.**
+
+> # ⛔ **PHASE A — THE DISCOVERY CORPUS IS FROZEN (historical engineering evidence)**
+> The `docs/knowledgeos/*` discovery/validation documents and `docs/pks/*` Phase III records. **No rewriting · no consolidation · no polish · factual corrections only.** *The reasoning paths — including withdrawn claims — ARE the evidence.*
+
+> # ⭐⭐⭐ **PHASE B — BLIND REVIEW, verdict: CONTINUE DISCOVERY**
+> **`docs/knowledgeos/KnowledgeOS_Independent_Review_Phase_B.md`.** Method: **isolated session, conclusion corpus BLOCKED** (same contamination logic as the MVK experiment — I authored every conclusion under test and could not review them).
+> Split verdict: internal Engineering Platform alone = *"Adopt with Reservations"*; **KnowledgeOS = "a well-governed hypothesis with a demonstrated internal ancestor."**
+
+**⭐ 12 CONCLUSIONS REPRODUCED BLIND** — incl. the kernel list (*"surprisingly small and clean"*, near-identical to ours), PD-3/EKP with `owner: nab.raj.sharma`, Product-Primacy-not-laboratory (**independently flagged against ADR-AIP-02**), designed≠demonstrated (*"exactly one binding exists"*), three unreconciled ontologies, the split mission/vision verdict.
+
+**⛔⛔ THREE CORRECTIONS TO THIS TRACK:**
+| # | Correction |
+|---|---|
+| ⛔⛔ **D-1** | **"0 traversals" FALSIFIED as generalized.** *The back-edge is DEMONSTRATED at n≈3: R-36 (six behaviours promoted from PB evidence) · R-41/ES-004.3 · R-63.* EAD-1's claim was narrow (PublicDigit→PKS); **we widened it improperly.** ⭐ *Retire "the flywheel has never turned"; adopt "it turns rarely and informally"* |
+| ⛔⛔ **D-2** | ⭐⭐ **OCCURRENCE #11: the frozen Phase-02 SIX-CONTEXT MAP (BC-1..BC-6, `engineering/architecture/baseline/Phase-02-Domain-Model.md`) was NEVER CONSULTED by our entire D-1..D-7/PD-1..PD-6 track.** The blind reviewer used it as baseline immediately. *Plus drift: the R-63/R-64 work-package/meta-governance boundary is absent from the frozen map; BC-5 shows no live signature. AIP-13 amendment path unused* |
+| ⛔ **D-3** | **CAP-001's authorization is NOT in the rulings register** (catalog: "unauthorized"; README: "REALIZED"; register: silent). *"The register is provably not the complete record of authorizations."* **Self-indicting — this session built it** |
+
+**⛔ TWO NEW FINDINGS WE MISSED:** ⭐ **E-1 — ES-006's register records the EKP's "consumption model FALSIFIED by E-1, disposition PENDING ARB"** (*"the single biggest architectural liability for any KnowledgeOS ambition"*) · the unratified-constitution contradiction (*"the platform governs by a proposed constitution"*).
+**⚠️ Also: our I-8 over-granted "governance precedes automation" — canon deliberately leaves it unnumbered, "an invariant-in-waiting".**
+
+> # ⭐⭐ **THE STRONGEST RESULT: the blind reviewer PRESCRIBED the MVK bootstrap experiment as the missing evidence — not knowing it had been run.** *Their predicted measurement and our actual measurement agree (kernel does not bootstrap: genesis · solo roles · SD-1).* **Method cross-validated.**
+
+**→ PHASE C inputs fixed:** build on the 12 doubly-derived conclusions · carry the 3 corrections · **IR-1 mint CAP-001's authorization or record the register's incompleteness (DA)** · **IR-2 dispose E-1 (ARB)** · **IR-3 amend the frozen Phase-02 map via AIP-13 (ARB)** · IR-4 acknowledge session-simulated role separation · IR-5 retire the generalized "0 traversals". *(One evidence flag on the review itself: it misquoted the commission prompt about "laboratory" — flagged, immaterial, its handling was correct.)*
+
+
+### ⭐⭐⭐ PHASE B.5 — EVIDENCE RECONCILIATION: THE GATE BEFORE PHASE C
+
+**`docs/knowledgeos/KnowledgeOS_Phase_B_Evidence_Reconciliation.md`** (CANDIDATE — the gate; it opens nothing by itself). ⛔ **Phase C does NOT begin until the DA says so.**
+
+**Every Phase B finding classified into EXACTLY ONE category** *(spanning findings SPLIT: a defect (C) and its decision (D) are different things)*:
+
+| Cat | Count | Led by |
+|---|---|---|
+| **A · Validated architecture** | **12** | the double-derived kernel · A-2 Product Primacy · A-3 EKP+owner · A-6 designed≠demonstrated · ⭐ **A-12 the isolated-session instrument itself doubly validated** |
+| **B · Factual corrections** | **4** | ⭐⭐ **"0 traversals" RETIRED — agreed fact: back-edge n≈3 informal (R-36 · R-41 · R-63), ≈2 formal ladder, PublicDigit→PKS none** · I-8 downgraded to invariant-in-waiting |
+| **C · Process defects** | **8** | ⭐⭐⭐ **C-1 MODEL AMNESIA at n=11** — *"discover → model → FORGET → rediscover" is the disease KnowledgeOS exists to cure, and this programme HAS it → elevated to PLATFORM DESIGN-REQUIREMENT CANDIDATE* · **C-2 commissions authorize work without minting rulings** · C-6 role separation session-simulated and stated nowhere |
+| **D · Decisions required** | **10** | each with a named authority |
+
+> # ⭐⭐ **THE GATE:**
+> **Phase C may proceed on A + B for:** frame (A-1/A-2) · kernel & reuse boundary (A-5/A-6) · invariants (A-10 with B-2 applied) · lifecycle (B-1's n≈3 fact).
+> ⛔ **Phase C is BLOCKED at three doors:**
+> | Door | Decision | Authority |
+> |---|---|---|
+> | ⭐⭐ **knowledge-model section** | **D-1 dispose E-1** *(EKP consumption model recorded FALSIFIED, disposition PENDING)* **+ D-8 reconcile the three ontologies** | ARB |
+> | ⭐ **context-map section** | **D-3 amend the frozen Phase-02 map via AIP-13** *(admit/reject the R-63/R-64 boundary; dispose BC-5 dormancy)* | ARB |
+> | ⚠️ **whether Phase C runs AT ALL now** | **D-9 derive the Platform Cost metric / run the AIP-14 over-evolution check** — *this track's own output density is the trigger evidence, and B.5 itself counts* | ARB |
+> **Plus:** D-2 mint CAP-001's authorization (DA) · D-4 ratify the ES set · D-5 ratify the mission (sponsor) · D-6 acknowledge session-simulated separation (DA) · D-7 issue the canonical register list · D-10 admit C-1 as a requirement candidate.
+
+**⭐ The transition is explicit: Strategic DDD discovery is substantially complete. This phase was KNOWLEDGE GOVERNANCE** — what we learned (A), what corrected us (B), what changed our process (C), what awaits decision (D). **No unresolved evidence flows into canonical architecture.**
