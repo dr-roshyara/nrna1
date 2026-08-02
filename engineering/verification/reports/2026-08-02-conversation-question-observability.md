@@ -43,6 +43,19 @@
 > **The evidence supports a CONDITIONAL statement, not a conformance finding.** *If* Answer A is adopted, the current implementation **appears inconsistent** with the invariant; *if* Answer B is adopted, it **appears consistent**. **The modelling decision determines how the existing invariant APPLIES — it does not establish that the invariant is being breached today.**
 >
 > **Concluding a violation before the definition it depends on has been decided would be circular**: the invariant speaks of *one constitutional conversation*, and what counts as one conversation here **is the open question itself.**
+>
+> ### The separation this rests on
+>
+> **Repository evidence alone does not determine which interpretation is normative. That determination belongs to the ARB as part of the domain model, not to implementation verification.**
+>
+> **A model is normative only once it has been adopted.** Until the ubiquitous language settles whether `ChallengeRouted` and `DeterminationIssued` belong to one business conversation or two, **implementation cannot be judged against that distinction at all** — there is no adopted standard to judge it by.
+>
+> ```
+> repository evidence  →  two plausible domain models  →  ARB modelling decision
+>                      →  normative interpretation     →  conformance assessment
+> ```
+>
+> **Not:** `repository evidence → immediate constitutional violation`. **The earlier wording skipped three steps.**
 
 **What the five tests do not capture:** the decision does not *choose* an invariant — **it determines how an existing one applies.** **A question about the application of a constitutional invariant is not obviously an implementation-allocation matter, however invisible its current effects.**
 
