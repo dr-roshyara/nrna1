@@ -212,6 +212,18 @@
 - **⚠️ `tests/Feature/Audit/` IS NOT IN THE `GreenfieldCore` SUITE, so `composer merge-gate` DOES NOT RUN THE 7C TESTS.** Run them directly: `php artisan test tests/Feature/Audit/AuditCleanupTest.php`.
 - **Dev guide: `developer_guide/election/08_retention_guard.md`.**
 
+## 🧭 A MODEL IS NORMATIVE ONLY ONCE IT HAS BEEN ADOPTED (ARB, 2026-08-02)
+
+**Stated by the ARB as a general architectural principle, to be preserved permanently. Recorded as a principle, not minted as a rule — it has no identifier and needs none.**
+
+- **Repository evidence is DESCRIPTIVE. The ubiquitous language the business adopts is NORMATIVE.** **Until the normative model is adopted, implementation cannot be judged against it** — there is no adopted standard to judge it by.
+- **The order that must not be short-circuited:**
+  `repository evidence → plausible domain models → ARB modelling decision → normative interpretation → conformance assessment`
+  **Never `repository evidence → violation`. That skips three steps.**
+- **Corollary that caught a real error:** a modelling decision may determine **HOW AN EXISTING INVARIANT APPLIES** without establishing that the invariant is **breached today**. Concluding a breach before deciding the definition the invariant depends on is **circular**.
+- **Why it is worth keeping beyond its occasion:** it prevents an architect from treating **an emerging idea as though it were already constitutional** — the failure mode this programme met repeatedly on 2026-08-02.
+- Occasion: `engineering/verification/reports/2026-08-02-conversation-question-observability.md`.
+
 ## ⛔ ENGINEERING METHODOLOGY IS FROZEN (2026-08-01)
 
 - **NO protocol refinement · NO review-model evolution · NO documentation-architecture evolution · NO KnowledgeOS proposals — UNLESS PUBLICDIGIT IMPLEMENTATION EXPOSES A GENUINE DEFICIENCY.** **EXECUTE THE PROTOCOL; DO NOT IMPROVE IT.**
