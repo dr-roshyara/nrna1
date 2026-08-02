@@ -2,6 +2,7 @@
 
 **Date:** 2026-08-03 · **Prepared by:** Recording Architect
 **Basis:** **R-73 · R-74 · R-75 · R-76** (ARB, 2026-08-03) and **R-72** (authorization).
+**⛔ CORRECTED 2026-08-03 by `2026-08-03-wp4b-implementation-dependency-verification.md`: of the three prerequisites below, **only P3 survives verification**. **P1 does not block** — WP-4B needs `receiveRulingDecision()` to accept `Jurisdiction`, which is a signature and a field inside `Adjudication/Application`, **not WP-4D's port**. **P2 does not block construction** — the reference already reaches the PM as a string via `admitEvidence()`, and its producer gap was **deferred by EPIC-004K §8 long before R-74**. **The claim *“WP-4B is the last of four builds”* is WITHDRAWN.**
 **Question the Board set:** *after the four decisions are recorded, has WP-4B become executable?*
 
 ---
