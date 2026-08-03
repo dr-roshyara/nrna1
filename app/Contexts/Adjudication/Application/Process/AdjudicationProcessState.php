@@ -8,6 +8,7 @@ use App\Contexts\Adjudication\Application\Process\Exception\IllegalProcessTransi
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
 use App\Contexts\Adjudication\Domain\Determination\ContestedOutcomeRef;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceEnvelopeRef;
+use App\Contexts\Adjudication\Domain\Determination\Jurisdiction;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceSet;
 use App\Contexts\Adjudication\Domain\Determination\IssuedByAuthority;
@@ -57,6 +58,8 @@ final class AdjudicationProcessState
         private readonly ?DateTimeImmutable $concludedAt,
         private readonly ?ContestedOutcomeRef $contestedOutcome = null,
         private readonly ?EvidenceEnvelopeRef $evidenceEnvelopeRef = null,
+        private readonly ?Jurisdiction $jurisdiction = null,
+        private readonly ?DateTimeImmutable $issuanceRequestedAt = null,
     ) {
     }
 
@@ -101,6 +104,8 @@ final class AdjudicationProcessState
         ?DateTimeImmutable $concludedAt,
         ?ContestedOutcomeRef $contestedOutcome = null,
         ?EvidenceEnvelopeRef $evidenceEnvelopeRef = null,
+        ?Jurisdiction $jurisdiction = null,
+        ?DateTimeImmutable $issuanceRequestedAt = null,
     ): self {
         return new self(
             $id,
@@ -116,6 +121,8 @@ final class AdjudicationProcessState
             $concludedAt,
             $contestedOutcome,
             $evidenceEnvelopeRef,
+            $jurisdiction,
+            $issuanceRequestedAt,
         );
     }
 
@@ -289,6 +296,45 @@ final class AdjudicationProcessState
         return $this->concludedAt;
     }
 
+    /** The authority's fact, retained as it arrived — never derived here (R-73). */
+    public function jurisdiction(): ?Jurisdiction
+    {
+        return $this->jurisdiction;
+    }
+
+    /**
+     * WP-4B: when issuance was requested. **`null` means CONCLUDED BUT NOT YET REQUESTED**
+     * — the crash window EPIC-004K §11 makes possible by design, and the only thing the
+     * redrive query needs to distinguish.
+     *
+     * **A timestamp rather than a seventh status**, because `AdjudicationProcessStatus`
+     * declares its set closed and *"adding a seventh case is an ARCHITECTURAL ACT, not a
+     * coding one"*. **This slice is not authorized to take that act**, and the timestamp
+     * answers the question without it.
+     */
+    public function issuanceRequestedAt(): ?DateTimeImmutable
+    {
+        return $this->issuanceRequestedAt;
+    }
+
+    /** WP-4B: record that issuance was requested, so a redrive does not request it twice. */
+    public function markIssuanceRequested(DateTimeImmutable $at): self
+    {
+        return $this->with($this->status, issuanceRequestedAt: $at);
+    }
+
+    /**
+     * WP-4B: retain the authority's jurisdiction as delivered with its decision (R-73).
+     *
+     * Separate from `retainIssuanceContext()` deliberately: **that method lands the two
+     * facts other contexts own; this one lands the fact the authority supplies.** Merging
+     * them would blur three different producers into one arrival point.
+     */
+    public function retainJurisdiction(Jurisdiction $jurisdiction): self
+    {
+        return $this->with($this->status, jurisdiction: $jurisdiction);
+    }
+
     /** Contestation's fact, retained — never derived here (R-75). */
     public function contestedOutcome(): ?ContestedOutcomeRef
     {
@@ -313,6 +359,8 @@ final class AdjudicationProcessState
         ?DateTimeImmutable $concludedAt = null,
         ?ContestedOutcomeRef $contestedOutcome = null,
         ?EvidenceEnvelopeRef $evidenceEnvelopeRef = null,
+        ?Jurisdiction $jurisdiction = null,
+        ?DateTimeImmutable $issuanceRequestedAt = null,
     ): self {
         return new self(
             $this->id,
@@ -328,6 +376,8 @@ final class AdjudicationProcessState
             $concludedAt ?? $this->concludedAt,
             $contestedOutcome ?? $this->contestedOutcome,
             $evidenceEnvelopeRef ?? $this->evidenceEnvelopeRef,
+            $jurisdiction ?? $this->jurisdiction,
+            $issuanceRequestedAt ?? $this->issuanceRequestedAt,
         );
     }
 
