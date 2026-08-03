@@ -65,7 +65,7 @@ interface AdjudicationProcessStore
      * WP-4B: processes that CONCLUDED with a ruling requested but whose issuance has not
      * yet been requested — the crash window EPIC-004K §11 makes possible by design.
      *
-     * **This is the question the five original methods could not answer**, and it is not a
+     * **The existing application port did not expose this business capability**, and it is not a
      * "query zoo" addition: §11 enumerates *record conclusion* and *load-for-reaction*, and
      * a concluded-but-unissued process is exactly a process awaiting reaction.
      *

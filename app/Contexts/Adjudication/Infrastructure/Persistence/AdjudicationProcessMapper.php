@@ -8,11 +8,17 @@ use App\Contexts\Adjudication\Application\Process\AdjudicationProcessId;
 use App\Contexts\Adjudication\Application\Process\AdjudicationProcessState;
 use App\Contexts\Adjudication\Application\Process\AdjudicationProcessStatus;
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
+use App\Contexts\Adjudication\Domain\Determination\ContestedOutcomeRef;
+use App\Contexts\Adjudication\Domain\Determination\ElectionId;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
+use App\Contexts\Adjudication\Domain\Determination\EvidenceEnvelopeRef;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceSet;
 use App\Contexts\Adjudication\Domain\Determination\IssuedByAuthority;
+use App\Contexts\Adjudication\Domain\Determination\Jurisdiction;
 use App\Contexts\Adjudication\Domain\Determination\Legitimacy;
 use App\Contexts\Adjudication\Domain\Determination\Reason;
+use App\Contexts\Adjudication\Domain\Determination\TargetId;
+use App\Contexts\Adjudication\Domain\Determination\TargetType;
 use App\Contexts\Adjudication\Infrastructure\Models\AdjudicationProcessModel;
 use DateTimeImmutable;
 
@@ -42,6 +48,14 @@ final class AdjudicationProcessMapper
             'reason' => $state->reason()?->toString(),
             'opened_at' => $state->openedAt(),
             'concluded_at' => $state->concludedAt(),
+
+            // WP-4B issuance context. Written as delivered -- this mapper derives nothing.
+            'contested_election_id' => $state->contestedOutcome()?->electionId->toString(),
+            'contested_type' => $state->contestedOutcome()?->type->value,
+            'contested_target_id' => $state->contestedOutcome()?->targetId->toString(),
+            'evidence_envelope_ref' => $state->evidenceEnvelopeRef()?->toString(),
+            'jurisdiction' => $state->jurisdiction()?->toString(),
+            'issuance_requested_at' => $state->issuanceRequestedAt(),
         ];
     }
 
@@ -64,6 +78,38 @@ final class AdjudicationProcessMapper
             $model->legitimacy === null ? null : Legitimacy::from($model->legitimacy),
             $model->reason === null ? null : Reason::fromString($model->reason),
             $this->toDateTime($model->concluded_at),
+            $this->toContestedOutcome($model),
+            $model->evidence_envelope_ref === null
+                ? null
+                : EvidenceEnvelopeRef::fromString($model->evidence_envelope_ref),
+            $model->jurisdiction === null ? null : Jurisdiction::fromString($model->jurisdiction),
+            $this->toDateTime($model->issuance_requested_at),
+        );
+    }
+
+    /**
+     * Rebuild Adjudication's LOCAL ContestedOutcomeRef from its three wire parts (ADR-T16).
+     *
+     * All three or none: the three columns are only ever written together, by one method,
+     * so a partially-populated row is data corruption rather than a legitimate state.
+     *
+     * **This mapper does not currently distinguish a partial row from an absent one** -- it
+     * returns null for both. Detecting corruption here would mean introducing a failure mode
+     * and an exception type, which is a design act outside this slice's authorized scope.
+     * Recorded so the limitation is visible rather than silently absorbed.
+     */
+    private function toContestedOutcome(AdjudicationProcessModel $model): ?ContestedOutcomeRef
+    {
+        if ($model->contested_election_id === null
+            || $model->contested_type === null
+            || $model->contested_target_id === null) {
+            return null;
+        }
+
+        return ContestedOutcomeRef::of(
+            ElectionId::fromString($model->contested_election_id),
+            TargetType::from($model->contested_type),
+            TargetId::fromString($model->contested_target_id),
         );
     }
 

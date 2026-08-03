@@ -26,6 +26,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $reason
  * @property \DateTimeImmutable $opened_at
  * @property \DateTimeImmutable|null $concluded_at
+ * @property string|null $contested_election_id
+ * @property string|null $contested_type
+ * @property string|null $contested_target_id
+ * @property string|null $evidence_envelope_ref
+ * @property string|null $jurisdiction
+ * @property \DateTimeImmutable|null $issuance_requested_at
  */
 final class AdjudicationProcessModel extends Model
 {
@@ -50,6 +56,12 @@ final class AdjudicationProcessModel extends Model
         'reason',
         'opened_at',
         'concluded_at',
+        'contested_election_id',
+        'contested_type',
+        'contested_target_id',
+        'evidence_envelope_ref',
+        'jurisdiction',
+        'issuance_requested_at',
     ];
 
     /** @var array<string, string> */
@@ -58,5 +70,6 @@ final class AdjudicationProcessModel extends Model
         'considered_evidence' => 'array',
         'opened_at' => 'immutable_datetime',
         'concluded_at' => 'immutable_datetime',
+        'issuance_requested_at' => 'immutable_datetime',
     ];
 }
