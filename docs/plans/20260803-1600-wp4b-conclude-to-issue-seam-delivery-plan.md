@@ -54,7 +54,9 @@
 - **an `issuedAt`/`issuanceRequestedAt` timestamp on the record** — **no new state, so no architectural act**; or
 - **a seventh status** — **explicitly an architectural act by the enum's own docblock.**
 
-> **Engineering will implement the timestamp form**, because it satisfies the keystone without triggering an act the model reserves to the Board. **If RED demonstrates the timestamp form cannot express the invariant, that is materially new implementation evidence and work stops for a governance question.** *(Decision discipline step 3: safely deferrable — so deferred, not escalated.)*
+> **Engineering INTENDS to implement the timestamp form as the INITIAL IMPLEMENTATION STRATEGY**, because it satisfies the current governing model without introducing a new architectural state. **If RED demonstrates that this representation cannot satisfy the invariant, implementation stops and the issue returns to governance as materially new evidence.**
+>
+> **Phrased as an intention rather than a decision on purpose: the timestamp form has NOT been validated — RED has not run.** Saying *“engineering will implement”* would claim a validation that does not exist yet. *(Decision discipline step 3: safely deferrable — so deferred, not escalated.)*
 
 ## 3. RED Test Plan — four keystones
 
@@ -70,6 +72,31 @@
 **Deliberately absent:** any assertion about *which* producer supplies the three inputs. **Test doubles supply them; the seam must not care.** **A test that pinned a producer would silently re-decide R-73/R-74/R-75.**
 
 **RED is genuine when all four fail for the stated reasons and none passes by accident.**
+
+### 3a. RED WRITTEN AND RUN (2026-08-03) — STOP at the RED boundary
+
+**File:** `tests/Feature/Contexts/Adjudication/ConcludeToIssuanceSeamTest.php` · **Result: `4 failed (0 assertions)`.**
+
+**All four fail at the same first absence:** *Interface `App\Contexts\Adjudication\Application\Port\RequestsDeterminationIssuance` not found.*
+
+> ### ⚠️ Reported honestly: the failures are NOT YET DISCRIMINATING
+>
+> **The plan's own genuineness criterion is *“all four fail FOR THEIR STATED REASONS”*. They do not yet — the missing collaborator masks the rest.** **What is established is that the seam is absent, which is one reason, not four.**
+>
+> **Each keystone becomes discriminating only as the piece above it is supplied:** K1 once the port and the seam exist · **K2 once the redrive query and the marker exist — this is the keystone, and it is currently the least proven** · K3 once reconciliation exists · K4 once the three retention fields exist.
+>
+> **This is normal for a first RED against a wholly absent seam, and it would be wrong to report it as four independent failures.**
+
+**Surface the tests name — the minimum the governing model implies, with producers deliberately unnamed:**
+
+| Named | Purpose |
+|---|---|
+| `RequestsDeterminationIssuance` port + `request(IssueDeterminationCommand)` | the seam's collaborator, so the PM does not depend on the issuance service directly |
+| `admitIssuanceContext(ChallengeRef, ContestedOutcomeRef, EvidenceEnvelopeRef)` | **the arrival point for the two non-authority values. It names WHERE they land, not WHO calls it** — R-74's and R-75's producers stay outside this slice |
+| `receiveRulingDecision(…, Jurisdiction)` | R-73's value arrives with the decision |
+| `redriveIssuance()` | the crash-recovery entry point |
+
+**No production code has been written. GREEN is not attempted, because three producers are absent (§1b).**
 
 ## 4. GREEN Implementation Sequence
 
