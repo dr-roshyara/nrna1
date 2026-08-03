@@ -14,9 +14,11 @@
 >
 > **ADR-T2/TP-1 (accepted) forbids it: *"Cross-aggregate collaboration via domain events only… no foreign repo calls."***
 >
-> **Two accepted ADRs specify incompatible mechanisms for the same interaction, and the implementation followed the later, stricter one — which is why `ContestedOutcomeRef` has no inbound path today.**
+> **Two accepted ADRs APPEAR TO PRESCRIBE DIFFERENT INTERACTION MECHANISMS for the issuance interaction. NO SUPERSEDING ADR AND NO EXPLICIT PRECEDENCE DECISION HAS BEEN IDENTIFIED.** **The implementation follows one of them; `ContestedOutcomeRef` has no inbound path as a result.**
 
-**This was never a missing decision. It is two decisions that cannot both hold.**
+**⚠️ SOFTENED AT ARB DIRECTION.** The earlier wording — *"specify incompatible mechanisms"* — was already an architectural conclusion. **Whether this is a genuine contradiction, an intentional supersession, a refinement, or two statements at different levels of abstraction is the Board's to determine. Verification must not silently become adjudication.**
+
+**⛔ AND ONE EXPLANATION IS WITHDRAWN: this report said the implementation *"followed the later, stricter"* ADR. IT IS NOT LATER. ADR-T2 and ADR-T14 are in the SAME accepted log, dated the SAME DAY (2026-06-26) — there is NO SENIORITY between them, so chronology neither resolves the tension nor excuses the implementation choice.** See `2026-08-03-adr-t14-governance-provenance.md`.
 
 ## 2. Evidence Matrix
 
@@ -45,7 +47,7 @@
 | **3. Producer contract** | **Explicit, not implied — and this is the discovery.** **E6 names the mechanism: Adjudication LOADS the Challenge and reads it.** The producer is Contestation's `Challenge` aggregate, obtained by a **synchronous read** |
 | **4. Transport contract** | see §4a |
 | **5. Implementation consistency** | **CONTRADICTORY — with respect to ADR-T14, and CONSISTENT with respect to TP-1/ADR-T16.** The code (E10) does not load the Challenge; it satisfies E7/E8/E13 and violates E6. **The implementation chose one accepted ADR over another** |
-| **6. Architecture consistency** | **ONE inconsistency, between `ADR-T14` and `ADR-T2/TP-1` (+ ADR-T16).** *(A second candidate — R-75 versus E3/E4/E9/E12 — is a **consequence** of the first, not an independent conflict: R-75 selected the path it did because the ADR-T14 path had already been foreclosed in practice.)* |
+| **6. Architecture consistency** | **ONE apparent divergence, between `ADR-T14` and `ADR-T2/TP-1` (+ ADR-T16) — its CHARACTER (contradiction · supersession · refinement · differing abstraction levels) is the Board's to determine.** *(A second candidate — R-75 versus E3/E4/E9/E12 — is a **consequence** of the first, not an independent conflict: R-75 selected the path it did because the ADR-T14 path had already been foreclosed in practice.)* |
 | **7. Classification** | see §5 |
 
 ### 4a. Transport contract — every path, classified
