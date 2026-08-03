@@ -72,12 +72,12 @@ Priority: High
   EG-004 · EG-005 tracked in `docs/plans/20260726-2056-engineering-platform-repair-plan.md` — non-blocking.
 
 ## Next action (exactly one)
-**Obtain the ARB ruling on crash-window semantics (Q1–Q5)** — `engineering/verification/commissions/2026-08-03-crash-window-semantics-decision-package.md`. **Batch 7 does not begin before it.** Q3 and Q4 are free-standing and may be ruled first; Q4 in particular needs no crash-model decision.
+**WP-4B batch 7 — RESUME under R-81..R-85.** Sequence: (a) R-81's per-process isolation in `redriveIssuance()` · (b) R-84's §12 reconcile — ack on self-redelivery, dead-letter + escalate otherwise · (c) R-85's K2 setup amendment **plus a NEW model-B keystone** (determination exists, marker absent ⇒ reconcile ⇒ exactly one determination). **Mechanism is engineering's (F-B) — the ARB authorized slices, not constructs.** Cadence unchanged: Change → Compile → Static analysis → Relevant tests → Commit.
 
 ## Blockers
-- **WP-4B batch 7 — FROZEN pending the ARB ruling above.** Not a code defect: Batch 6's production code stands, and no candidate answer invalidates it (Q2/Q4 would ADD to it; Q5 touches only a test).
-- **The currently implemented request path does not realize §12's reconciliation behaviour.** EPIC-004K §12 specifies it (reconcile: ack on self-redelivery, else dead-letter + escalate); on the request path `DeterminationAlreadyIssued` escapes unhandled. **Evidential scope stated: the exception appears in 3 files (declaration · @throws · throw) and `grep -rn "catch (DeterminationAlreadyIssued" app/` returns NOTHING** — no assertion is made about paths outside `app/`. **§12's cited precedent DOES exist as working code, in Contestation (`Application/Inbox/ChallengeReactionOutcomeTranslator.php`: replay→ack · conflicting→dead-letter+escalate), so an ESTABLISHED TRANSLATION PATTERN FOR ANALOGOUS FAILURE HANDLING EXISTS — but EXISTENCE IS ESTABLISHED, SUITABILITY IS NOT: it is seated at an INBOX boundary translating CONTESTATION'S OWN exceptions, while `redriveIssuance()` is not an inbox handler and `DeterminationAlreadyIssued` is Adjudication's. Whether the pattern is REUSED, ADAPTED OR DEPARTED FROM is a design decision downstream of Q2, and DDD warrants reuse of CONCEPTS, never automatic reuse of IMPLEMENTATIONS.** **Behaviour is specified; ALLOCATION is open (Q2) — R-76 scoped WP-4B to the request path only, and only the Board may widen it.**
-- **`redriveIssuance()` has no per-process isolation** — one throwing process aborts the whole pass, and the query orders by `concluded_at`, so the oldest stuck process starves every newer one. **True under every crash model** (Q4).
+- **None blocking WP-4B batch 7.** Q1–Q5 were ruled 2026-08-04 as **R-81 (isolation authorized) · R-82 (marker = “a request was made”) · R-83 (crash models A+B+C all in scope) · R-84 (§12's reconcile is INSIDE WP-4B; R-76 NOT widened) · R-85 (K2 amended, not confirmed; seam unchanged)**.
+- **⚠️ Still open, and NOT blocking batch 7:** `ChallengeRaised` **promotion** (permission) and **allocation** (ownership) — under R-76 and the delivery analysis these bear on the PRODUCTION PRODUCER PATH and §WP-4 closure, not on batch 7's execution. **PM-6's confirmation half remains unallocated** (R-82 explicitly declined to allocate it).
+- **Governance maintenance NOT entered** at session 1's close — B-4 · B-5 · B-6 (R-77) · B-7 · B-8 · B-9 (ENG-012) · B-10 · B-11 · B-12 require **a fresh Board decision to open session 2**, per the agenda's §5a.
 
 ## Open items (inventory — full text at the cited homes)
 - Tracked: AD-M2 (ADR-MP-05/Q5, only under business pressure) · G-1 release tag · Jurisdiction
@@ -1628,3 +1628,73 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - **`docs/knowledgeos/AI_Workflow_Observation_Log.md` opened** (both reviews approved immediate start): per-cycle entries + the seven COST signals (copy/paste count · approvals · iterations · wrong routing · overrides · AI disagreement · wait time). ⛔ The log's growth is the ONLY path to an AI-Orchestration ADR.
 - **ADR disposition confirmed by both reviews:** no automation ADR now (canon governs); separate ADR later, evidence-gated; never merged into the separation ADR. Consistency-table row added conceptually: automate-a-workflow | trigger = observed practice + reasoning-fails evidence.
 - Vision-Register idea NOT created (the reviewer's objection honored — no new governance artifact; the incubator is explicitly non-governance).
+
+
+### Incubator review: approved; two refinements applied (2026-08-03)
+
+- **"Why ideas die" added to `docs/ideas/README.md`** — *"Ideas do not fail by staying here. They fail only if promoted without evidence."* Permission to capture without obligation to build.
+- **Workflow log: relocation note added** — it is ENGINEERING EVIDENCE, not KnowledgeOS; future home `engineering/observations|evidence/`, moved at repository-separation time (no churn now, zero entries).
+- The lifecycle shift the review names, recorded: Idea → Incubator → Evidence → Commission → Discovery → Decision → Architecture → Implementation.
+
+
+### Trigger amended + ADR direction line (2026-08-03, user-confirmed) — state + pointers only
+
+- **Spike plan:** second-collector trigger AMENDED — fires the PYTHON EXTRACTION, not a PHP restructure. **PHP tool's final form fixed: collector · runner · JSON — done; becomes the platform's PHP ADAPTER; growth budget zero permanently.** LCOM4 row updated (lands Python-side as first native collector).
+- **ADR REV 3:** the one direction sentence added, verbatim per review — Python preferred IF extraction happens; architectural direction, not implementation decision; gated by repository-separation criteria; no structure/API/modules recorded.
+- Adapter-not-port strategy recorded: "build a PHP tool that becomes the PHP adapter of a Python platform, never a PHP platform you port." "Everything emits observations" abstraction noted as converging with the Engineering Observation Service idea + the earlier candidate name.
+
+
+### Two cautions applied (2026-08-03) — state + pointers only
+
+- **Trigger GENERALIZED (spike plan):** a second INDEPENDENT OBSERVATION SOURCE (any — LCOM4/Java/git/ADR/AI-workflow) fires extraction EVALUATION — technology-independent rule; LCOM4 demoted to one possible instance.
+- **"Everything emits observations" GRADED as candidate direction** (n=3 internal instances; some capabilities may emit richer domain events) — grading note in the Engineering Observation Service idea file.
+- **ADR REV 3 gains the adapter picture:** PHP/Java/.NET/Go adapters → one platform — *Python is not replacing PHP; Python hosts the language-neutral platform all languages feed.*
+
+
+### Trigger made FUNCTIONAL (2026-08-03, final refinement of the series) — state + pointers only
+
+- **Extraction trigger rephrased from numerical to functional:** *evaluated when the current implementation can no longer accommodate new observation sources without accumulating accidental complexity; multiple heterogeneous sources = common indicator, never the rule.* Not `count == 2` — emergent complexity / demonstrated need decides.
+- The future platform picture (Normalizer/Store/API/Dashboard fan-out) explicitly NOT documented per the reviewer's own staging discipline — mentioned in session log only as rationale for the Python direction.
+
+
+### Adapter-vocabulary practice adopted PROSPECTIVELY (2026-08-03) — state + pointers only
+
+- **Practice (engineering, forward-only):** new engineering scripts/outputs are named as what they will become — collectors, emitters, Observation JSON — *"build today's solution so it can become tomorrow's adapter."* ⛔ **The frozen metrics tool is NOT renamed** (churn on a frozen spike buys nothing; its adapter identity is already recorded in the plan). Convention applies from the next script onward.
+- **Shelf:** the three-products refinement (PublicDigit · KnowledgeOS · Engineering Observation Platform) = the incubator's product list minus SaaS — convergence, not new; the reviewer's self-correction of their earlier coarser layering noted (KnowledgeOS consumes, never produces observations — the standing boundary doing the correcting). *"Become-tomorrow's-adapter"* = candidate principle, n growing (metrics · PKS · workflow).
+
+
+### ENGINEERING EXECUTION: metrics tool now TESTED (2026-08-03) — engineering event; state + pointers only
+
+- **`tests/Unit/MetricsReportTest.php` — 4 tests / 24 assertions GREEN**, pinning frozen behaviour (stereotype banding · v3 snapshot schema · append-only deltas · exit codes). One bug-fix-class seam added: `METRICS_TREND_DIR` env override — **tests can never pollute the real evidence file** (verified: trend.jsonl untouched, 3 snapshots).
+- **Mindset shift acknowledged and recorded:** architecture exploration phase COMPLETE; standing rule for the coming weeks: *no new architectural concepts unless engineering evidence forces one*. Role from here: engineering executes · evidence accumulates · the human decides (Product Owner / Chief Architect / ARB).
+- **The one active task:** the spike's usage phase (real commits · real warnings · real observations). Everything else awaits evidence or rulings.
+
+
+### Tests approved (9.8–10/10); EV-1 candidate rule opened in state (2026-08-03)
+
+- **Reviews approved the test work** ("the policy is tested, not only the code" · the failure-then-fix loop praised as proof the tests exercise reality). `composer test:metrics` alias BACKLOGGED per the review's own "not immediately" (plan note: do at next natural composer.json touch).
+- ⭐ **EV-1 opened as candidate rule IN STATE (DG-1 precedent — joins the register watch table at the next genuine entry):** *"Every engineering artifact must be accompanied by executable verification appropriate to its type."* **Enumerated same-day instances (n=3):** characterization tests pinning a frozen tool · the advisory CONTRACT tested ("never fails the build" as assertion) · the evidence-pollution seam (verifiability as bug-fix class). **Check-before: this EXTENDS existing canon, never replaces it** — TDD-first standing rule · ES-003 qualification-method-per-standard · the 14-box DoD · fitness tests. The reviewer's DONE formula and work-type table (feature/bugfix/refactor/collector × required verification) staged as EV-1's elaboration. ⛔ **Promotion is the ARB's, via the ladder — urged "soon" by the review, decided by nobody here.**
+- Standing loop unchanged: PublicDigit work → metrics → tests → evidence → retrospective → KnowledgeOS learns.
+
+
+### EV-1 REGRADED (2026-08-03) — concession + the day's real insight named
+
+- ⛔ **Conceded: my "n=3" counted three FACETS of ONE artifact** (the metrics tool). For a universal rule, the evidence unit is independent artifact classes — **EV-1's true count: n=1 artifact class.** Today demonstrates *"executable verification is valuable"*, NOT YET *"every artifact needs it."*
+- **EV-1 regraded: CANDIDATE PRINCIPLE** on the ladder (Observation → Candidate Principle ← today → Engineering Standard → Governance Rule). **Rediscovery targets that would promote it (recorded, not scheduled):** PKS contract tests · KnowledgeOS API tests · collector fixture tests · executable policy verification. *Four or five independent convergences and it promotes itself.*
+- ⭐⭐ **Strong engineering observation (n=1): a governance rule was expressed as an executable assertion** ("never fails the build" tested). **This demonstrates the POSSIBILITY of executable governance but does not yet establish it as a recurring engineering pattern.** *(Wording per review 2026-08-03: observation, not "insight" — insight sounds like a conclusion.)*
+
+
+### VERIFICATION-INSTITUTIONALIZATION ANALYSIS EXECUTED (2026-08-04) — engineering event; state + pointers only
+
+- **The five-layer proposal dispositioned by the standing rules:** L1 Constitution rule = **EV-1's promotion draft** (staged; ARB via ladder — the reviewer chain's own regrading governs; the two reviewer messages contradicted and the ladder resolved it) · L2 DoD = exists (frozen 14-box + TDD-first standing rule) · L3 refuse-to-close = advisory→enforcing promotion, EVIDENCE-GATED (the discipline-gate tripwire already exists non-blocking) · **L4/L5 = BUILT TODAY, advisory** · Part B Governance-as-a-Service = staged into the Cloud idea file (rules-as-data ≡ XACML PAP/PDP/PEP — R-2 convergence).
+- ⭐ **BUILT, TDD-FIRST (RED shown, then GREEN):** `scripts/observations/TestPresenceCollector.php` + runner — advisory, verdict-free (tested: no 'violation'/'passed'/'blocked' keys), OBS_DIR seam from birth · **5 tests / 15 assertions GREEN** (`tests/Unit/TestPresenceCollectorTest.php`) · first real observation appended (`engineering/verification/observations/test-presence.jsonl`; last commit = docs-only, honestly reported).
+- ⭐⭐ **EV-1 evidence advanced HONESTLY: this is a SECOND artifact class with fixture tests — n=2 of the four rediscovery targets** (collector fixture tests ✓). *The rule institutionalizing verification was itself built verification-first.*
+- Merge-gate untouched (ARB R3); blocking status must be earned through observed violations — the collector now counts them.
+
+
+### Collector approved 9.8/10; four evolutions staged on ONE gate (2026-08-04) — state + pointers only
+
+- **All four improvements (observation schema · observation type · collector interface · git-adapter separation) staged on the reviewer's OWN gate: "wait until several genuinely different collectors exist — the common model reveals itself from usage."** Nothing built. **OBS-1 shelved: *Observation as first-class domain concept* — the emerging abstraction, n=2 collectors today (metrics · test-presence), waits for the model to reveal itself.**
+- **Prohibition confirmed ALREADY TEST-ENFORCED:** no policy in the collector — `test_observation_is_verdict_free` pins it (no violation/passed/blocked keys). *WARN vs BLOCK vs IGNORE belongs to configured governance, never the collector.*
+- **Retrospective's three maturations recorded as the standing self-description:** an engineering LEARNING system (not just governance) · behavioral triggers everywhere ("when…", never counts) · the confidence ladder operating (Observation → Candidate → Direction → Practice → Standard → Rule). Year-ahead API vision left exactly where the reviewer left it: VISION. **The durable asset is the observation model — languages are implementation details.**
+- **Standing conclusion (external-architect wording, recorded):** *the project moved from designing governance to exercising governance; next phase prioritizes operational evidence over governance expansion.*
