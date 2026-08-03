@@ -116,6 +116,41 @@
 
 **One consequence of run 3 to carry into GREEN:** the manager's constructor still takes five parameters, so **the issuance spy passed as a sixth is silently ignored by PHP.** GREEN's first step must add the constructor parameter, or K1 could appear to pass while requesting nothing.
 
+### 3c. Two implementation principles, recorded before GREEN
+
+#### K2 is not one keystone among four — it is the behavioural invariant of the slice
+
+> **`concluded-but-unissued → redrive → EXACTLY ONE determination`**
+>
+> **K1, K3 and K4 exist to support it.** K1 proves the request happens · K3 proves the redrive is safe to repeat · K4 proves the request carries the record's facts. **None of them is the invariant; K2 is.**
+
+**Consequence for GREEN's order — strictly this, and not "all four keystones in parallel":**
+
+| # | Step | Serves |
+|---|---|---|
+| 1 | `admitIssuanceContext()` | the record can hold what issuance needs |
+| 2 | the three retention fields + accessors | same |
+| 3 | the `issuanceRequestedAt` marker | **K2's precondition becomes expressible** |
+| 4 | `concludedAwaitingIssuance()` | **K2 becomes askable** |
+| 5 | redrive behaviour | **K2** |
+| 6 | INV-B1 reconciliation | **K2's exactly-once half** |
+
+#### ⛔ No producer logic in the seam
+
+**The seam consumes an already-completed process record. It must never ask where `Jurisdiction`, `EvidenceEnvelopeRef` or `ContestedOutcomeRef` came from, and must never derive, reconstruct, default or look them up.**
+
+**Those ownership decisions belong to other bounded contexts and are already settled (R-73 · R-74 · R-75).** **If the seam begins reconstructing them it violates the separation the RED suite was written to preserve — and it would do so invisibly, because the tests supply the values and would still pass.**
+
+> **That is the specific danger: this is a violation the current tests CANNOT catch.** **It is prevented by discipline, not by the suite** — which is why it is recorded here rather than left implicit.
+
+### 3d. Cost finding from reading the code — recorded before paying it
+
+**`AdjudicationProcessState` rebuilds itself through an **11-parameter private constructor** at every transition (`admitEvidence`, `submitToAuthority`, `returnForMoreEvidence`, `concludeRulingRequested`, `concludeFailureDeclared`, `expire`), plus `open()` and `reconstitute()`.**
+
+**Adding the retention fields is therefore not local: two new fields touch every rebuild site and both factories — around eight call sites for a change the plan described in one line (S2/S3).**
+
+**Recorded rather than absorbed silently, because it changes the shape of step 2, not its correctness.** **No refactor of that pattern is proposed** — it is the class's established form, and changing it is not in this slice's authorized scope.
+
 ## 4. GREEN Implementation Sequence
 
 **Application first, then Infrastructure — the house order (WP-2 precedent).**
