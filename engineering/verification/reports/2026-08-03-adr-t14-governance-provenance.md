@@ -2,6 +2,7 @@
 
 **Date:** 2026-08-03 · **Prepared by:** Recording Architect
 **Question:** **did the programme already decide this?** Was ADR-T14 superseded, amended, narrowed, implicitly replaced, or is it still fully normative?
+**Status:** ✅ **CONSIDERED — R-77 (ARB, 2026-08-03): the inconsistency characterization is NOT ADOPTED and ADR-T14 is NOT SUPERSEDED.** **⛔ And one clause of the option text I offered was expressly declined: I wrote that *“the readiness review's tick was not wrong.”* THE EVIDENCE DOES NOT SUPPORT THAT, AND I SHOULD NOT HAVE OFFERED IT — §4 of this report argues the review's scope was NARROWER than the ADR's full behaviour, which is not the same as the review being correct. **The Board will not declare the review fully correct without examining the review METHODOLOGY, and §6 Q4 remains OPEN.**
 **Status:** provenance verification only. **No remedy · no ADR recommended · no transport path · no ownership · no implementation advice.**
 
 ---

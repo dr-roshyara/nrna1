@@ -64,16 +64,22 @@
 
 | | ADR-T14 (E6) | ADR-T2/TP-1 (E7) | ADR-T16 (E8) | ADR-UL-01 (E2/E3) | ADR-PL-01 (E4/E5) | Implementation (E10–E13) |
 |---|---|---|---|---|---|---|
-| **ADR-T14 (E6)** | — | ⛔ **CONFLICT** | ⚠️ tension — a read implies loading a foreign aggregate | ✅ compatible (supplies the "inherits" mechanism) | ✅ **PL-01 CITES T14** as the mechanism | ⛔ **CONFLICT** — not implemented |
-| **ADR-T2/TP-1 (E7)** | ⛔ **CONFLICT** | — | ✅ | ✅ | ⚠️ inherited via E5's citation of T14 | ✅ satisfied |
+| **ADR-T14 (E6)** | — | ⛔ **APPARENT CONFLICT** | ⚠️ tension — a read implies loading a foreign aggregate | ✅ compatible (supplies the "inherits" mechanism) | ✅ **PL-01 CITES T14** as the mechanism | ⛔ **NOT IMPLEMENTED** |
+| **ADR-T2/TP-1 (E7)** | ⛔ **APPARENT CONFLICT** | — | ✅ | ✅ | ⚠️ inherited via E5's citation of T14 | ✅ satisfied |
 | **ADR-UL-01 / ADR-PL-01** | ✅ | ⚠️ | ✅ | — | ✅ mutually consistent | ⚠️ **the consumer contract (E2/E5) is unsatisfied** |
 | **Implementation** | ⛔ | ✅ | ✅ | ⚠️ unsatisfied | ⚠️ unsatisfied | — |
 
-> **One cell carries the whole finding: `ADR-T14 × ADR-T2/TP-1`.** **Everything else in this matrix is either agreement or a downstream effect of that cell.**
+> **One cell carries the whole finding: `ADR-T14 × ADR-T2/TP-1` — and whether that cell reads CONFLICT, SUPERSESSION, REFINEMENT or DIFFERING ABSTRACTION LEVELS is the single question this report puts to the Board.** **Everything else in this matrix is either agreement or a downstream effect of that cell.**
 
 ## 5. Classification
 
-> ### **ADR inconsistency** — with an implementation gap as its *consequence*, not its cause.
+> ### ⛔ **NOT ADOPTED — R-77 (ARB, 2026-08-03).**
+>
+> **The Board did not adopt the characterization that ADR-T2/TP-1 and ADR-T14 are inconsistent, and did not supersede ADR-T14.** Its reasoning: **not that the two are compatible, but that INCOMPATIBILITY WAS NEVER ESTABLISHED.** *“No supersession exists, implementation differs, governance traceability is missing”* is **not sufficient to supersede an accepted ADR.**
+>
+> **The classification below is retained as the evidence that was offered and declined — not as a finding.** *(Proposed: **ADR inconsistency**, with the implementation gap as its consequence rather than its cause.)*
+>
+> **R-77's governing model: both statements stand · the tactical architecture governs practice · supersession requires an EXPLICIT ACT, NEVER INFERENCE.**
 
 **Justification:**
 
