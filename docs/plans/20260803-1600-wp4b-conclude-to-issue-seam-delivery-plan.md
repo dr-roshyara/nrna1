@@ -186,6 +186,29 @@
 
 **An architecture test asserting the seam has no producer dependency is the right complement to the behavioural keystones. Deptrac already forbids the CROSS-CONTEXT half** (`AdjudicationApplication: [AdjudicationDomain, Shared]`), **so what an ADV would add is the INTRA-context constraint: no repository lookup, no aggregate load, no derivation inside the seam.** **It becomes assertable once the seam's body exists — writing it now would constrain code that has not been written.**
 
+### 3f. Sequence amended — round-trip persistence is verified BEFORE behaviour
+
+**The order now inserts a verification step between storage and mechanism:**
+
+| # | Step | Why here |
+|---|---|---|
+| 1 | `issuanceRequestedAt` on `AdjudicationProcessState` | the marker K2's precondition needs |
+| 2 | `concludedAwaitingIssuance()` on the port | the query the five-method port cannot answer |
+| 3 | **both** store implementations — in-memory and Eloquent | an interface method obliges both |
+| 4 | mapper + migration for the retained columns | the Eloquent query needs the columns to exist |
+| **5** | **⭐ ROUND-TRIP PERSISTENCE TEST** — build a state carrying all four retained values, persist, reload, assert every field equals the original | **inserted here deliberately** |
+| 6 | the seam body | K1 |
+| 7 | `redriveIssuance()` | K2's capability |
+| 8 | INV-B1 behaviour verified | the invariant itself |
+
+> ### Why step 5 comes before step 7
+>
+> **Once redrive logic exists, a persistence defect can masquerade as a behavioural defect.** A state that failed to retain `contestedOutcome` and a redrive that failed to find the process **produce the same symptom: no determination**. **Verifying storage first isolates the two.**
+>
+> **This matters more than usual here, because three of the four retained values have no production producer** — so the only thing standing between a silently-dropped column and a green suite is a test that looks at persistence directly. **The keystones would not catch it: the doubles hold the values in memory and never round-trip them.**
+
+**Recorded as an amendment to §4 rather than a rewrite of it — §4's steps are unchanged, the verification is inserted.**
+
 ## 4. GREEN Implementation Sequence
 
 **Application first, then Infrastructure — the house order (WP-2 precedent).**
