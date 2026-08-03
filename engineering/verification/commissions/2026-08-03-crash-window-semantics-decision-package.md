@@ -56,13 +56,22 @@ if ($this->determinations->findByChallengeRef($command->challengeRef) !== null) 
 
 ---
 
-## 3. FINDING — Model B is already ruled by accepted architecture, and is not implemented
+## 3. FINDING — §12 already specifies the required behaviour on an INV-B1 refusal; WP-4B has not implemented it
 
 This is the finding that changes the shape of the Board's question, and it is not engineering's opinion. EPIC-004K **§12, Failure handling** (accepted):
 
 > **Issuance request meets INV-B1 refusal** (a determination already exists for the challenge): not an error to escalate blindly — **reconcile**: if this process itself concluded-and-requested earlier (redelivery), **ack**; if another writer issued (should be impossible under PM-1 + INV-B1 together), **dead-letter + escalate** — the conflicting-determination translation precedent (`ConflictingDetermination → PermanentFailure`) applies unchanged.
 
-**Model B's handling is therefore not an open architectural question — it is a ruled policy that WP-4B has not implemented.** Today the refusal is neither reconciled, acked, nor dead-lettered: it escapes as an unhandled exception.
+**Two questions live here, and they must not be collapsed into one:**
+
+| | Status |
+|---|---|
+| **The required behaviour** on an INV-B1 refusal — reconcile: ack on self-redelivery, dead-letter + escalate otherwise | ✅ **already specified** by §12. Not open, and not engineering's to reinterpret |
+| **Where that behaviour is implemented** — inside WP-4B under R-76's request-path-only scope, or in a later authorized slice | ⚠️ **still open.** This is **Q2**, and it is the Board's |
+
+An earlier draft of this package said *"Model B's handling is not an open architectural question."* **Withdrawn as over-strong** — it collapsed the two rows above, and contradicted this package's own Q2. **Behaviour specified does not entail allocation settled.**
+
+Today the refusal is neither reconciled, acked, nor dead-lettered: it escapes as an unhandled exception.
 
 **How this was missed, stated plainly:** the batch plan derived the seam from §11 (persistence, conclude-time atomicity) and R-72/R-76, and did not carry §12 into the RED boundary. §12 was cited in `CoordinatorIssuanceRequest`'s traceability line **as justification for the adapter adding nothing** — the sentence about INV-B1 owning uniqueness at the boundary — while the *obligation* §12 places on the requester was not read across. **A citation was treated as coverage.** This is the same failure mode as the ADR-T14 readiness tick: a document referenced for the half that supported the design, with the other half unexamined.
 
@@ -106,6 +115,22 @@ So K2's setup yields **marked-but-never-requested** — which is **none of A, B 
 | **Q3** | Confirm the canonical meaning of `issuance_requested_at` as **"a request was made"** (§6 shows R-76 forces it) — or rule that the marker must mean *confirmed*, which relocates it to PM-6 | Fixes what *"unissued"* means in the redrive predicate |
 | **Q4** | Should `redriveIssuance()` isolate failures per process (§5)? | A one-process failure currently starves every later process |
 | **Q5** | Given Q1–Q3: is **K2 amended to express its stated intent, or confirmed as written**? | The keystone's setup is currently unreachable (§4) |
+
+---
+
+## 7a. Decision dependencies — which answers are independent, and which must wait
+
+| Question | Turns on | Governs | Order |
+|---|---|---|---|
+| **Q1** models in scope | §12's interpretation — **what it requires is settled (§3); whether B is in *this slice's* recovery set is not** | redrive semantics | **first** |
+| **Q2** allocation of §12's reconcile | **R-76's scope** — only the Board may widen it | WP-4B's scope | after Q1 (moot if B is out) |
+| **Q3** the marker's canonical meaning | **PM-6's ownership** of the confirmation half | the redrive predicate — what *"unissued"* means | **independent**; may be taken first |
+| **Q4** per-process redrive isolation | operational resilience | the redrive implementation | **independent of Q1–Q3** — the defect (§5) holds under every model |
+| **Q5** K2's disposition | **Q1 + Q3** | test design only — **no production code** | **last** |
+
+**Two are free-standing: Q3 and Q4.** Q4 in particular needs no crash-model ruling — §5's starvation defect is true under A, B and C alike, so it can be authorized independently and would not be invalidated by any later answer.
+
+**Q5 is strictly downstream** and touches only a test, so it cannot block anything but itself.
 
 ---
 
