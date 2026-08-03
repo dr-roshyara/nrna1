@@ -139,7 +139,21 @@ The manager does not hold `CoordinatesAdjudication` directly for the same reason
 
 **Keystone K2 currently fails, and it is not a defect in this seam.** K2 and K3 cannot both pass: K3 requires the durable marker set by the conclude path, K2 requires its absence, and the store state after concluding is identical in both — K2's only mutation is on its spy, which erases the *record* of a request but never its *durable effect*. **Do not "fix" the seam to make K2 pass.** Its disposition is Q5.
 
-**v2 of this guide completes these sections once the Board rules.** Until then, treat redrive as *"exists, and is exercised by K3 for the already-requested case"* — nothing stronger.
+Until the Board rules, treat redrive as *"exists, and is exercised by K3 for the already-requested case"* — nothing stronger.
+
+### How this guide evolves — **update this file, do not add another**
+
+**This is the one authoritative developer guide for the conclude→issue seam.** It is a **Reference artifact** and therefore living (ES-004.3): revisions replace content **in place**.
+
+| Version | Content |
+|---|---|
+| **v1** (this) | the implemented seam + this explicit list of pending decisions |
+| **v2** | **this section is replaced** by the adopted crash-window semantics and reconciliation behaviour, and the status banner drops the 🔶 |
+| v3+ | ordinary maintenance as the implementation evolves |
+
+**Do not create `07_conclude_to_issue_seam_v2.md`.** Two files on one subject fragment the knowledge and guarantee that one of them goes stale unread — and the stale one is always the one the next engineer opens first.
+
+**Note the contrast with the ARB package**, which is *frozen* rather than living: that is a **Decision** artifact serving a single ruling, so it closes on the ruling and is never rewritten (corrections are recorded in place). **Different artifact role, different lifecycle** — do not apply this guide's living-document rule to it, or that one's freeze to this guide.
 
 ---
 
