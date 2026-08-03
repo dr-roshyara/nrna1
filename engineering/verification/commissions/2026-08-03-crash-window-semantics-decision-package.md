@@ -1,6 +1,8 @@
 # Crash-Window Semantics — ARB Decision Package (WP-4B)
 
-**Status:** OPEN — awaiting Board ruling. **Batch 7 is frozen.**
+**Status:** 🔒 **READY FOR ARB — EDITORIALLY FROZEN.** Awaiting Board ruling; **Batch 7 is frozen.**
+
+> **Further edits require new implementation evidence or new governance evidence — not refinement.** An ARB package exists to enable a decision, not to become a living document. Corrections of fact remain admissible and are recorded in place (never by rewriting); wording polish is closed.
 **Convened by:** the Board's Batch-6 review ("open a short ARB review on the crash-window semantics; decide which crash model is canonical").
 **Supplied by:** engineering. **Contains no recommendation on the canonical model** — evidence, findings, and the questions the answers turn on.
 **Subject:** the persistence state that defines *"concluded but unissued"*, and which crash models WP-4B's redrive must recover.
@@ -71,7 +73,23 @@ This is the finding that changes the shape of the Board's question, and it is no
 
 An earlier draft of this package said *"Model B's handling is not an open architectural question."* **Withdrawn as over-strong** — it collapsed the two rows above, and contradicted this package's own Q2. **Behaviour specified does not entail allocation settled.**
 
-Today the refusal is neither reconciled, acked, nor dead-lettered: it escapes as an unhandled exception.
+**Precise claim, and the search that supports it.** The earlier phrasing — *"§12's reconcile obligation is unimplemented"* — implies an exhaustive repository search that had not been performed. **Corrected to what was actually established:**
+
+> **The currently implemented request path does not realize the reconciliation behaviour specified by §12.** On that path the refusal is neither reconciled, acked, nor dead-lettered: it escapes as an unhandled exception.
+
+**Search performed to support it, with its scope stated:** `DeterminationAlreadyIssued` appears in exactly three files — its own declaration, the `@throws` on `AdjudicationService`, and the `throw` in `CoordinatesAdjudication`. **`grep -rn "catch (DeterminationAlreadyIssued" app/` returns nothing.** No handler exists anywhere under `app/`. The claim is therefore evidential for `app/`, and makes no assertion about any path outside it.
+
+**AND A CORRECTION IN ENGINEERING'S OWN FAVOUR — §12's cited precedent is real and implemented, just not here.** §12 says *"the conflicting-determination translation precedent (`ConflictingDetermination → PermanentFailure`) applies unchanged."* That precedent exists as working code — in **Contestation**, at `Application/Inbox/ChallengeReactionOutcomeTranslator.php`:
+
+```
+AwaitingAdjudication         → CausalPreconditionMissing (park + re-drive)
+DeterminationAlreadyApplied  → IdempotentReplay          (ack, no-op)
+ConflictingDetermination     → PermanentInboxFailure     (dead-letter + escalate)
+```
+
+**Its shape maps onto §12's reconcile almost exactly** — self-redelivery → ack; another writer issued → dead-letter + escalate. **This bears directly on Q2:** whatever the Board rules, the eventual implementation has an established house pattern and need invent nothing.
+
+**One caveat against reading that as a ready-made answer:** the precedent is seated at an **inbox** boundary, translating a *consumed message's* failure. `redriveIssuance()` is not an inbox handler — it is invoked directly. **The precedent's shape transfers; whether its seat does is part of Q2, and is not settled here.**
 
 **How this was missed, stated plainly:** the batch plan derived the seam from §11 (persistence, conclude-time atomicity) and R-72/R-76, and did not carry §12 into the RED boundary. §12 was cited in `CoordinatorIssuanceRequest`'s traceability line **as justification for the adapter adding nothing** — the sentence about INV-B1 owning uniqueness at the boundary — while the *obligation* §12 places on the requester was not read across. **A citation was treated as coverage.** This is the same failure mode as the ADR-T14 readiness tick: a document referenced for the half that supported the design, with the other half unexamined.
 

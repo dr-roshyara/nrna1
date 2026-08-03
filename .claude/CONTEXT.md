@@ -76,7 +76,7 @@ Priority: High
 
 ## Blockers
 - **WP-4B batch 7 — FROZEN pending the ARB ruling above.** Not a code defect: Batch 6's production code stands, and no candidate answer invalidates it (Q2/Q4 would ADD to it; Q5 touches only a test).
-- **§12's reconcile obligation is unimplemented.** EPIC-004K §12 specifies the behaviour on an INV-B1 refusal (reconcile: ack on self-redelivery, else dead-letter + escalate). Today `DeterminationAlreadyIssued` escapes unhandled. **Behaviour is specified; ALLOCATION is open (Q2) — R-76 scoped WP-4B to the request path only, and only the Board may widen it.**
+- **The currently implemented request path does not realize §12's reconciliation behaviour.** EPIC-004K §12 specifies it (reconcile: ack on self-redelivery, else dead-letter + escalate); on the request path `DeterminationAlreadyIssued` escapes unhandled. **Evidential scope stated: the exception appears in 3 files (declaration · @throws · throw) and `grep -rn "catch (DeterminationAlreadyIssued" app/` returns NOTHING** — no assertion is made about paths outside `app/`. **§12's cited precedent DOES exist as working code, in Contestation (`Application/Inbox/ChallengeReactionOutcomeTranslator.php`: replay→ack · conflicting→dead-letter+escalate), so the eventual implementation need invent nothing — but it is seated at an INBOX boundary and `redriveIssuance()` is not an inbox handler, so whether its SEAT transfers is part of Q2.** **Behaviour is specified; ALLOCATION is open (Q2) — R-76 scoped WP-4B to the request path only, and only the Board may widen it.**
 - **`redriveIssuance()` has no per-process isolation** — one throwing process aborts the whole pass, and the query orders by `concluded_at`, so the oldest stuck process starves every newer one. **True under every crash model** (Q4).
 
 ## Open items (inventory — full text at the cited homes)
@@ -1580,3 +1580,10 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - **Directive tension resolved by principle and recorded (plan REV 5):** "restructure immediately" vs "stop and use" → stop wins (structure follows need); the collectors/analyzers/reporters split TRIGGERS on the second collector.
 - **Staged with gates:** DDD metrics · drift · ADR-compliance observations ("ADR-17 may deserve review" — observation-grade phrasing preserved) · provider separation. **Boundary restated: KnowledgeOS stays CONSUMER, never producer.**
 - **Everything now waits on real engineering.** Canonical source: spike plan REV 5.
+
+
+### REV 5 APPROVED — usage-observation log opened; the engineering arc rests (2026-08-03)
+
+- Final review approved REV 5 ("structure follows demonstrated need" endorsed; the second-collector trigger endorsed; "KnowledgeOS stays consumer, never producer" to be preserved verbatim).
+- **Usage-phase observation log opened in the spike plan** (append-only; five kinds: IGNORED · ACTED · FALSE+ · MUTED · PERSISTENT) — observations about the TOOL, captured as they happen. Log starts with real usage.
+- **Standing picture:** every thread waits on real engineering evidence — usage log · 20–50 commits · WP-4B GREEN · docket rulings. Nothing else is mine to move.
