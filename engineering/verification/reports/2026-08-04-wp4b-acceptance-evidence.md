@@ -160,7 +160,9 @@ Categories per the WP-3A precedent (`.claude/plans/WP-3-challengerouted-publishe
 
 ## 7. Engineering recommendation
 
-## **READY FOR ACCEPTANCE**
+> **Based on the available implementation and verification evidence, Engineering concludes that WP-4B satisfies its approved scope and recommends the work for acceptance. The acceptance decision remains exclusively with the accepting authority.**
+
+**Verdict token: READY FOR ACCEPTANCE.**
 
 **Grounds, evidence only:**
 
@@ -168,6 +170,8 @@ Categories per the WP-3A precedent (`.claude/plans/WP-3-challengerouted-publishe
 2. All three obligations adopted by R-86 are implemented and each has a passing keystone (§3).
 3. `composer merge-gate` **PASS**, exit 0; greenfield PHPStan clean; Adjudication suite 80 passed / **0 failed** (§2).
 4. No item in §6 is demonstrated to be a defect in WP-4B's delivered scope: three are expressly outside it (`ChallengeRaised`, PM-6, `enforceHorizon()`), one is a pre-existing open observation (ENG-012), one is a recorded in-code limitation, one is operational (push), and one is a disclosed process deviation with a working test.
+
+**Capability milestone, for the accepting authority to record if it accepts.** Before this slice the realized architecture ended at `Concluded`. It now spans **`Concluded → Issue Request → Recovery → Replay`** — a capability rather than a set of commits. **No new artifact was created to hold this**: no documentation root is ruled for a capability-realization milestone, and the constraint on this package forbids inventing one. **The acceptance ruling is the appropriate place to record it once**, in the register that already serves as governance and architecture history.
 
 **What this recommendation is not:** it is not an acceptance, and it does not close §WP-4. **§WP-4 closes by acceptance, never by authorization**, and WP-4C is *considered* only after WP-4B is accepted.
 
