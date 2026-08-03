@@ -67,11 +67,48 @@ B-12 ──► requires completion evidence before an acceptance ruling
 B-9, B-10 ──► carried
 ```
 
-## 3. Rulable independently, today
+## 3. Classification — **rulable ≠ recommended**
 
-**A-3 · A-4 · B-7 · B-8 · B-11.** None prejudges another; each rests on established evidence.
+These are four independent properties and collapsing any two of them mis-plans the session. *Rulable* is a statement about **evidence**; *recommended* is a statement about **this session's time**.
 
-**A-4 is the highest-value independent ruling.** The starvation defect holds under crash models A, B and C alike, so authorizing its repair **cannot** pre-empt A-1. It converts a frozen engineering track into one executable slice at zero governance cost.
+| Item | Rulable (evidence sufficient) | Recommended **this session** | Blocking (prevents engineering) | Safely deferred |
+|---|---|---|---|---|
+| **A-1** Q1 models | ✅ | ✅ | ✅ | ⛔ |
+| **A-2** Q2 allocation | ✅ after A-1 | ✅ | ✅ *if* B in scope | ⛔ |
+| **A-3** Q3 marker | ✅ | ✅ | ⛔ | ⛔ |
+| **A-4** Q4 isolation | ✅ | ✅ **first** | ✅ | ⛔ |
+| **A-5** Q5 K2 | ✅ after A-1+A-3 | ✅ | ✅ | ⛔ |
+| **A-6** promotion | ✅ | ⚠️ **not required this session** | ⛔ | ✅ |
+| **A-7** allocation | ✅ after A-6 | ⚠️ not required this session | ⛔ | ✅ |
+| **B-4** WP-3B | ⛔ reconciliation first | ⛔ | ⛔ | ✅ |
+| **B-5** PM-6 | ✅ after A-3 | ⛔ | ⛔ | ✅ |
+| **B-6** R-77 | ✅ | ⛔ | ⛔ | ✅ |
+| **B-7** register silence | ✅ | ⛔ | ⛔ | ✅ |
+| **B-8** contract R-2 | ✅ | ⛔ | ⛔ | ✅ |
+| **B-9** ENG-012 | ⛔ evidence insufficient | ⛔ | ⛔ | ✅ |
+| **B-10** conversation question | ✅ | ⛔ | ⛔ | ✅ (R-79) |
+| **B-11** R-52 classification | ✅ | ⛔ | ⛔ | ✅ |
+| **B-12** R-52 closure | ⛔ evidence insufficient | ⛔ | ⛔ | ✅ |
+
+**The distinction earns its place immediately: B-7, B-8 and B-11 are all rulable on established evidence and none is recommended for this session.** Spending Board time on recording hygiene before Q1 would delay the only rulings that restart delivery. **Rulable means "the Board *can*", not "the Board *should now*".**
+
+**A-4 remains the highest-value ruling and should be taken first.** The starvation defect holds under crash models A, B and C alike, so authorizing its repair **cannot** pre-empt A-1. It converts a frozen engineering track into one executable slice at zero governance cost.
+
+## 3a. Horizons
+
+| Horizon | Items | What it buys |
+|---|---|---|
+| **Immediate — restarts delivery** | **A-4 · A-3 · A-1 · A-2 · A-5** | batches 7–9 become executable |
+| **Current release — closes §WP-4** | **A-6 · A-7 · B-4 · B-5** + batches 7–11 + acceptance | §WP-4 closes *by acceptance*, then WP-8 is reachable (R-79) |
+| **Governance maintenance** | **B-6 · B-7 · B-8 · B-9 · B-10 · B-11 · B-12** | debt retired; no delivery consequence either way |
+
+**One deviation from the suggested grouping, with its reason.** The proposed horizons placed **promotion and allocation (A-6/A-7) in *Immediate*.** This agenda places them in **Current release**, on §4's finding: **R-76 scoped WP-4B to the request path, and the seam *reads* `contestedOutcome` from the record — so the absent producer makes the production path incomplete without making Batch 7 unbuildable.** They are on §WP-4's critical path, not on Batch 7's. **Recorded as a deviation rather than applied silently.**
+
+## 3b. Held: the artifact split (not performed)
+
+The recommendation to separate **ARB Session Agenda · Programme Governance Backlog · Decision Dependency Map** is accepted **and deliberately not performed now** — the recommendation itself scheduled it for after the current governance cycle closes.
+
+**A second reason to hold it:** splitting one artifact into three *while items are mid-deliberation* is precisely when an item falls between the new documents. The correct moment is when the Immediate horizon is empty. **Held, with its trigger named — not deferred indefinitely.**
 
 ## 4. Blocking analysis
 
