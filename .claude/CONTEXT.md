@@ -1464,3 +1464,26 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - ⭐ **Two check-before notes staged for that commission** (in the backlog's new Tier-2 row): observation instruments already exist (knowledge-lint ×18 · design-check · tripwire · OQ · fitness tests) — the genuine gap is SYNTHESIS→assessment→DA (the platform's own ladder projected onto metrics). ⛔ **PGP-01 collision: "Engineering Quality Assessment" as ONE capability violates one-capability-one-invariant — it is a capability FAMILY/bounded context, never a single CAP.**
 - **"Engineering Intelligence"** recorded as a candidate NAME only — a UL act; the freeze forbids new terminology; adoption is governance's.
 - **Phase unchanged:** Operational Validation. Canonical source: the Research Backlog (Tier-2, new row).
+
+
+### Staged commission refined (2026-08-03) — state + pointers only
+
+- **Tier-2 row amended per review (≈95% approval):** renamed → **Engineering Assessment Commission** (quality = one kind of assessment) · five charter questions staged · ⭐ three-level separation staged (OBSERVATION ≠ ASSESSMENT ≠ DECISION SUPPORT) · ⛔ **conceded: my "instruments exist" was half-true — STATIC only; DYNAMIC observation (change coupling · rollback rate · review duration · drift · documentation aging) does not exist. Gap is twofold: dynamic observation + synthesis→assessment→DA.**
+- Reviewer's three-concerns decomposition (Observation / Assessment / Governance) noted at n=1 in the row — the commission's opening question, not today's architecture.
+- Commission remains NOT opened; trigger unchanged (operational evidence of recurring assessment-class decisions made without evidence).
+- Canonical source: Research Backlog, Tier-2 row (REV'd).
+
+
+### Staging trimmed — over-design conceded (2026-08-03) — state + pointers only
+
+- ⛔ **Conceded: commission PRE-SOLVING.** Across two turns I staged decompositions, a three-level model and naming rationale for a commission that has not opened — speculative architecture returning as speculative commission design. **Tier-2 row TRIMMED to exactly: Question · Trigger · Known constraints · Known collisions · Model: UNKNOWN (deliberately).**
+- **Standing staging rule adopted:** future commission entries stage ONLY those four elements. Models emerge IN commissions, from evidence, or not at all.
+- Three-horizons observation (current engineering / decision-ready ideas / architecture-after-commission) noted as convergent with the existing gate structure; remembered, nothing minted.
+- Phase unchanged: Operational Validation — operate, collect evidence (especially beyond static analysis), watch whether assessment-class decisions actually recur.
+
+
+### CHAPTER CLOSED (final verdict 2026-08-03, 10/10) — the last governance-track state entry
+
+- **Meta-rule adopted as discipline (not artifact):** *a backlog item becomes LESS detailed over time unless new evidence arrives.* Remembered alongside: decision-readiness ≠ solution-readiness · the three unknowns (no-evidence→wait · no-commission→stage-only · no-ruling→record-don't-promote) · the staging question ("am I preparing discovery or quietly solving it?").
+- **From here: effort shifts to real engineering.** This track's state changes only on: a PublicDigit engineering event (→ OE entry) · a DA ruling (→ dashboard/docket) · a trigger firing (→ a commission opens, empty-handed on purpose).
+- **The standing full picture:** Commission 1 CLOSED · synthesis matrix = inventory (12 canonical · 15 candidate · 9 hypothesis · 12 rejected) · docket 0/11 ruled (D-9a first) · OE register frozen, 2 entries · watch MO-1(1) IF-1(1) DG-1(state) · Engineering Assessment Commission staged (4 fields, model unknown) · WP-4B honestly RED.
