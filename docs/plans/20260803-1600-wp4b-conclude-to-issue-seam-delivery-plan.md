@@ -4,6 +4,24 @@
 **Authorized by:** **R-72** · **Scope fixed by R-76** (request path only) · **Governing model: R-73 · R-74 · R-75**
 **Type:** delivery artefact. **Not a governance document · no architecture proposed · no ADR reinterpreted · no Board decision improved.**
 
+**Status (2026-08-03):** ⏸ **BATCHES 1–6 DELIVERED · BATCH 7 FROZEN** by Board direction pending the ARB ruling on crash-window semantics (Q1–Q5).
+
+| Batch | State |
+|---|---|
+| 1 state fields · 2+3 port + both stores | ✅ `fdd09babf` · `1a6f3c4d3` — **2 and 3 merged**: an interface method with no implementation is a fatal error at class load, so 2 alone could not leave the repository buildable |
+| 4 persistence + 5 round-trip | ✅ `c3409d69f` — **merged**: the Board's strengthened gate made the round-trip test *this* batch's verification. Mutation-checked |
+| 6 the seam | ✅ `f2ac054c8` — K1 · K3 · K4 green; **PHPStan 1 → 0, cleared by consumption** |
+| 7 `redriveIssuance()` hardening · 8 INV-B1 · 9 VERIFY | ⛔ **FROZEN** — awaiting Q1–Q5 |
+| 10 developer guide | 🔶 **v1 delivered early** (`fd14639a1` · `8d7bdb8d4`) covering stable content only; v2 completes it after the ruling |
+| 11 acceptance evidence | ⛔ blocked by 7–9 |
+
+**Deviations from this plan, recorded not silently absorbed:**
+1. **§3's keystone K2 cannot pass as written** — its setup mutates the spy, not the store, yielding *marked-but-never-requested*, which is no crash state the design can produce. **Not repaired**: amending a keystone selects a crash model. Disposition is **Q5**.
+2. **§4's sequence was not followed batch-for-batch** — 2+3 and 4+5 merged on implementation evidence (above), and batch 10 ran early at Board direction.
+3. **EPIC-004K §12 was not carried into §3's RED boundary.** §12 specifies *reconcile* on an INV-B1 refusal; the implemented request path does not realize it. **This plan's omission**, surfaced by GREEN.
+
+**Open questions are NOT in this plan** — they are the Board's: `engineering/verification/commissions/2026-08-03-crash-window-semantics-decision-package.md` (🔒 READY FOR ARB).
+
 ---
 
 ## 1. Implementation Readiness Review
