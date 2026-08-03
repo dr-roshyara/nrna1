@@ -21,15 +21,41 @@ use DomainException;
  * **Minimal identity, deliberately: an id and the deciding authority — NOT the aggregate.**
  * An exception may carry enough context to support recovery; it must not become a transport
  * object for a `Determination`.
+ *
+ * ⚠️ **`IssuedByAuthority` IS THE CURRENT RECONCILIATION DISCRIMINATOR. IT IS NOT THE
+ * CANONICAL BUSINESS IDENTITY.** §12's actual question is *"did THIS PROCESS previously
+ * request issuance?"* — a question about **process identity**, not about authority identity.
+ * The two coincide today only because the `Determination` carries no process reference, and
+ * giving it one would change the constitutional record and its published payload
+ * (ADR-PL-01 · ADR-T5) — an architectural act, not an engineering one.
+ *
+ * **Do not infer that authority identity is the invariant.** If a process reference or an
+ * issuance correlation is ever adopted onto the determination, THAT becomes the
+ * discriminator and this one is retired.
  */
 final class DeterminationAlreadyIssued extends DomainException
 {
     private function __construct(
         string $message,
-        public readonly ?DeterminationId $existingDeterminationId = null,
-        public readonly ?IssuedByAuthority $existingIssuedByAuthority = null,
+        private readonly ?DeterminationId $existingDeterminationId = null,
+        private readonly ?IssuedByAuthority $existingIssuedByAuthority = null,
     ) {
         parent::__construct($message);
+    }
+
+    /**
+     * Accessors rather than public readonly properties, deliberately: the reconciliation
+     * discriminator is expected to CHANGE (see the note on the class), and a method keeps
+     * that evolution from being a breaking change for every catch site.
+     */
+    public function existingDeterminationId(): ?DeterminationId
+    {
+        return $this->existingDeterminationId;
+    }
+
+    public function existingIssuedByAuthority(): ?IssuedByAuthority
+    {
+        return $this->existingIssuedByAuthority;
     }
 
     /**

@@ -368,28 +368,68 @@ final class ConcludeToIssuanceSeamTest extends TestCase
     // ── K2: crash between the transactions ⇒ redrive issues exactly one ──────
 
     /**
-     * The keystone. The conclusion transaction committed and the issuance transaction
-     * did not — the state EPIC-004K §11 makes possible by design. Redrive must find
-     * the process and complete it, and the result must be ONE determination, never two.
+     * The keystone. The conclusion transaction committed and the issuance transaction did
+     * not — crash model A, which EPIC-004K §11 makes possible by design (R-83). Redrive must
+     * find the process and complete it, and the result must be ONE determination, never two.
+     *
+     * **AMENDED UNDER R-85.** The original setup concluded through the manager and then
+     * cleared the spy's `requests` array. That mutated the SPY, not the STORE — it erased the
+     * RECORD of the request while leaving its DURABLE EFFECT, the marker, in place. The
+     * resulting state was *marked-but-never-requested*: **none of crash models A, B or C, and
+     * one the design cannot produce.** The intent recorded in this docblock was always model
+     * A; only the mechanism failed to reach it.
+     *
+     * **The seam was NOT changed to make this pass** (R-85). The amendment restores the
+     * test's own recorded intent — it does not relax it.
      */
     public function test_k2_a_concluded_but_unissued_process_is_completed_by_redrive(): void
     {
-        $crashed = $this->issuanceSpy();
-        $manager = $this->manager($crashed);
-        $this->concludeFor($manager);
-
-        // Simulate the crash: the request never reached issuance.
-        $crashed->requests = [];
+        // Model A, reached honestly: transaction 1 committed, transaction 2 never ran.
+        $this->saveConcludedAwaiting('apm-k2', $this->challenge->toString());
 
         $redriven = $this->issuanceSpy();
         $this->manager($redriven)->redriveIssuance();
 
-        $this->assertCount(1, $redriven->requests, 'redrive must re-request issuance for a concluded-but-unissued process');
+        $this->assertCount(1, $redriven->requests, 'redrive must request issuance for a concluded-but-unissued process');
         $this->assertSame(
             $this->challenge->toString(),
             $redriven->requests[0]->challengeRef->toString(),
             'the redriven request must be for the concluded challenge',
         );
+
+        // ONE determination, never two: the process has left the redrive set, so a second
+        // pass requests nothing further.
+        $this->manager($redriven)->redriveIssuance();
+        $this->assertCount(1, $redriven->requests, 'a second redrive pass must request nothing further');
+    }
+
+    /**
+     * R-83's model-B keystone, required by R-85: the determination EXISTS and the marker is
+     * absent, because the earlier request succeeded and only the marker was lost.
+     *
+     * **The obligation is EXACTLY ONE DETERMINATION, NEVER TWO** — and the mechanism that
+     * guarantees it is INV-B1 at the issuance boundary, not anything this seam remembers.
+     * The refusal is reconciled per §12 (R-84) and the process leaves the redrive set, so no
+     * later pass can produce a second.
+     */
+    public function test_r83_model_b_yields_exactly_one_determination_never_two(): void
+    {
+        $this->saveConcludedAwaiting('apm-modelb', 'ch-modelb');
+
+        // INV-B1 refuses every request: a determination for this challenge already exists,
+        // issued under the same authority this process concluded with.
+        $refusing = $this->refusingIssuance('constitutional-authority-1');
+
+        $this->manager($refusing)->redriveIssuance();
+        $this->manager($refusing)->redriveIssuance();
+        $this->manager($refusing)->redriveIssuance();
+
+        $this->assertSame(
+            1,
+            $refusing->attempts,
+            'after reconciliation the process must leave the redrive set, so repeated passes attempt nothing further',
+        );
+        $this->assertSame([], $this->store->concludedAwaitingIssuance());
     }
 
     // ── K3: redrive after issuance is inert ─────────────────────────────────

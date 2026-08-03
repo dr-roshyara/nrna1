@@ -285,13 +285,18 @@ final class AdjudicationProcessManager
      *   competing writer → **DEAD-LETTER + ESCALATE**: a determination exists that this
      *                      process's conclusion did not produce.
      *
-     * **THE DISCRIMINATOR IS THE DECIDING AUTHORITY**, compared against the authority this
-     * process recorded at conclusion. It is not the process id: **the `Determination`
-     * carries none, and giving it one would change the constitutional record and its
-     * published payload (ADR-PL-01 · ADR-T5) — architecture, not engineering.** The
-     * authority is the right comparison on its own terms, not merely the available one: a
-     * determination bearing a DIFFERENT authority's ruling is precisely *"another writer
-     * issued"*, whoever wrote it.
+     * **THE CURRENT DISCRIMINATOR IS THE DECIDING AUTHORITY**, compared against the authority
+     * this process recorded at conclusion.
+     *
+     * ⚠️ **It is a DISCRIMINATOR, not the invariant.** §12 asks *"did THIS PROCESS previously
+     * request issuance?"* — a question about **process identity**. The `Determination` carries
+     * no process reference, and adding one would change the constitutional record and its
+     * published payload (ADR-PL-01 · ADR-T5): architecture, not engineering. **The two
+     * questions coincide only under today's model, and a future reader must not infer that
+     * authority identity IS the business invariant.**
+     *
+     * Within that limit the comparison is sound on its own terms: a determination bearing a
+     * DIFFERENT authority's ruling is *"another writer issued"*, whoever performed the write.
      *
      * **A refusal carrying no identity is treated as UNRECONCILABLE and escalated.** Acking
      * it would mark the process on an assumption, and §12 asks for reconciliation, not for a
@@ -301,7 +306,7 @@ final class AdjudicationProcessManager
         AdjudicationProcessState $process,
         DeterminationAlreadyIssued $refusal,
     ): void {
-        $existingAuthority = $refusal->existingIssuedByAuthority;
+        $existingAuthority = $refusal->existingIssuedByAuthority();
         $concludedBy = $process->concludedByAuthority();
 
         if ($existingAuthority === null || $concludedBy === null) {
