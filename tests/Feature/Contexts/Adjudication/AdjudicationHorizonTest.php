@@ -12,6 +12,7 @@ use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceSet;
 use App\Contexts\Adjudication\Domain\Determination\IssuedByAuthority;
+use App\Contexts\Adjudication\Domain\Determination\Jurisdiction;
 use App\Contexts\Adjudication\Domain\Determination\Legitimacy;
 use App\Contexts\Adjudication\Domain\Determination\Reason;
 use App\Contexts\Adjudication\Application\Process\Exception\LateDecisionOnExpiredAdjudication;
@@ -261,6 +262,7 @@ final class AdjudicationHorizonTest extends TestCase
             Reason::fromString('The authority ruled after the horizon elapsed.'),
             IssuedByAuthority::fromString('constitutional-council'),
             EvidenceSet::fromRefs('ev-1'),
+            Jurisdiction::fromString('federal'),
         );
     }
 
@@ -286,6 +288,7 @@ final class AdjudicationHorizonTest extends TestCase
             Reason::fromString('The challenge is upheld.'),
             IssuedByAuthority::fromString('constitutional-council'),
             EvidenceSet::fromRefs('ev-1'),
+            Jurisdiction::fromString('federal'),
         );
 
         $decide();

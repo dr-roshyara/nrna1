@@ -14,6 +14,7 @@ use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceSet;
 use App\Contexts\Adjudication\Domain\Determination\IssuedByAuthority;
+use App\Contexts\Adjudication\Domain\Determination\Jurisdiction;
 use App\Contexts\Adjudication\Domain\Determination\Legitimacy;
 use App\Contexts\Adjudication\Domain\Determination\Reason;
 use App\Infrastructure\Shared\Clock\FrozenClock;
@@ -130,6 +131,7 @@ final class AdjudicationProcessManagerTest extends TestCase
             Reason::fromString('Tally dispute upheld.'),
             IssuedByAuthority::fromString('authority-cab-01'),
             EvidenceSet::fromRefs('envelope-sha256-abc'),
+            Jurisdiction::fromString('federal'),
         );
     }
 

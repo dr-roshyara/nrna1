@@ -90,13 +90,18 @@ final class AdjudicationProcessMapper
     /**
      * Rebuild Adjudication's LOCAL ContestedOutcomeRef from its three wire parts (ADR-T16).
      *
-     * All three or none: the three columns are only ever written together, by one method,
-     * so a partially-populated row is data corruption rather than a legitimate state.
+     * All three or none: the three columns are only ever written together, by one method, so
+     * **a partially populated contested outcome violates the persistence invariant this slice
+     * establishes.** Not "corruption" -- that word implies storage damage, and this is an
+     * invariant violation, which is a different thing with a different remedy.
      *
      * **This mapper does not currently distinguish a partial row from an absent one** -- it
-     * returns null for both. Detecting corruption here would mean introducing a failure mode
-     * and an exception type, which is a design act outside this slice's authorized scope.
+     * returns null for both. Detecting the violation here would mean introducing a failure
+     * mode and an exception type, which is a design act outside this slice's authorized scope.
      * Recorded so the limitation is visible rather than silently absorbed.
+     *
+     * FUTURE ARCHITECTURAL CANDIDATE (traceability only, not a commitment): detect partial
+     * reconstruction through a dedicated persistence invariant, once authorized.
      */
     private function toContestedOutcome(AdjudicationProcessModel $model): ?ContestedOutcomeRef
     {

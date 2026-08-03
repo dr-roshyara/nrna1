@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contexts\Adjudication\Application\Process;
 
+use App\Contexts\Adjudication\Application\Command\IssueDeterminationCommand;
 use App\Contexts\Adjudication\Application\Port\AdjudicationDurations;
 use App\Contexts\Adjudication\Application\Port\AdjudicationProcessStore;
 use App\Contexts\Adjudication\Application\Port\EventOutbox;
@@ -18,6 +19,7 @@ use App\Contexts\Adjudication\Domain\Determination\EvidenceEnvelopeRef;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceSet;
 use App\Contexts\Adjudication\Domain\Determination\IssuedByAuthority;
+use App\Contexts\Adjudication\Domain\Determination\Jurisdiction;
 use App\Contexts\Adjudication\Domain\Determination\Legitimacy;
 use App\Contexts\Adjudication\Domain\Determination\Reason;
 use App\Domain\Shared\Clock\ClockInterface;
@@ -135,6 +137,7 @@ final class AdjudicationProcessManager
         Reason $reason,
         IssuedByAuthority $authority,
         EvidenceSet $consideredEvidence,
+        Jurisdiction $jurisdiction,
     ): void {
         $process = $this->store->activeForChallenge($challenge);
         if ($process === null) {
@@ -147,14 +150,101 @@ final class AdjudicationProcessManager
             return;   // redelivered decision on a concluded process: a no-op
         }
 
-        $this->store->save($process->concludeRulingRequested(
-            $consideredEvidence,
-            $authority,
+        // TRANSACTION 1 (ADR-T1) — the conclusion, recorded ALONE. The jurisdiction is
+        // retained here because it arrived WITH the decision: it is the deciding
+        // authority's fact (R-73), landing at the moment the authority speaks.
+        $concluded = $process
+            ->concludeRulingRequested(
+                $consideredEvidence,
+                $authority,
+                $outcome,
+                $legitimacy,
+                $reason,
+                $this->clock->now(),
+            )
+            ->retainJurisdiction($jurisdiction);
+
+        $this->store->save($concluded);
+
+        // TRANSACTION 2 — the issuance request. SEPARATE by ADR-T1: one aggregate per
+        // transaction, so the conclusion is durable before issuance is attempted. The
+        // window between the two is exactly what `redriveIssuance()` closes.
+        $this->requestIssuanceFor($concluded);
+    }
+
+    /**
+     * WP-4B: complete every process that CONCLUDED but never got its issuance requested.
+     *
+     * This is the crash-window recovery EPIC-004K §11 makes necessary by designing the
+     * two commits as separate transactions. It is not a retry loop and holds no schedule
+     * — it is idempotent and safe to invoke as often as an operator or a timer chooses.
+     *
+     * **Requesting issuance twice is prevented by the DURABLE marker, not by anything
+     * this method remembers.** In-memory de-duplication would be destroyed by the very
+     * crash this method exists to recover from.
+     */
+    public function redriveIssuance(): void
+    {
+        foreach ($this->store->concludedAwaitingIssuance() as $process) {
+            $this->requestIssuanceFor($process);
+        }
+    }
+
+    /**
+     * The CONCLUDE -> ISSUE seam. One place, reached by both the live path and redrive,
+     * so the two can never diverge.
+     *
+     * AP-2 AT THE SEAM: every field is the value the record holds. The seam DEFINES,
+     * DEFAULTS and CLAMPS nothing — it does not fetch a contested outcome, does not
+     * invent a jurisdiction, and does not substitute a fallback envelope. Each of those
+     * facts belongs to a different producer (R-73 · R-74 · R-75), and this method is a
+     * READER of them.
+     *
+     * FAILS CLOSED (AP-1): if any required fact is absent the request is NOT made and
+     * the marker is NOT written, so the process stays in the redrive set and becomes
+     * issuable the moment its missing input arrives. **Silence, not a guess** — a
+     * determination issued on an invented input would be a constitutional defect far
+     * worse than a delayed one.
+     */
+    private function requestIssuanceFor(AdjudicationProcessState $process): void
+    {
+        $contestedOutcome = $process->contestedOutcome();
+        $evidenceEnvelopeRef = $process->evidenceEnvelopeRef();
+        $jurisdiction = $process->jurisdiction();
+        $authority = $process->concludedByAuthority();
+        $outcome = $process->outcome();
+        $legitimacy = $process->legitimacy();
+        $reason = $process->reason();
+        $consideredEvidence = $process->consideredEvidence();
+
+        if ($contestedOutcome === null
+            || $evidenceEnvelopeRef === null
+            || $jurisdiction === null
+            || $authority === null
+            || $outcome === null
+            || $legitimacy === null
+            || $reason === null
+            || $consideredEvidence === null) {
+            return;
+        }
+
+        $this->issuance->request(new IssueDeterminationCommand(
+            $process->challengeRef(),
             $outcome,
             $legitimacy,
             $reason,
+            $authority,
+            $jurisdiction,
+            $evidenceEnvelopeRef,
+            $contestedOutcome,
+            $consideredEvidence,
             $this->clock->now(),
         ));
+
+        // Written only AFTER the request was made, and in the same transaction as it:
+        // the marker's meaning is *"issuance was requested"*, so writing it earlier would
+        // let a failure between the two silently drop the process out of the redrive set.
+        $this->store->save($process->markIssuanceRequested($this->clock->now()));
     }
 
     /**
