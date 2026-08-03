@@ -66,6 +66,34 @@ final class EloquentAdjudicationProcessStore implements AdjudicationProcessStore
     }
 
     /** @return list<AdjudicationProcessState> */
+    /**
+     * WP-4B's redrive query. Tenant-scoped like every other read here, and ordered oldest
+     * first so a redrive clears the longest-standing crash window before newer ones.
+     *
+     * @return list<AdjudicationProcessState>
+     */
+    public function concludedAwaitingIssuance(): array
+    {
+        $states = [];
+
+        // Built from $this->model->newQuery() rather than a static call, mirroring
+        // nonTerminalQuery() -- the injected instance is what carries the model's type
+        // through to the mapper, and BelongsToTenant applies the organisation scope.
+        /** @var \Illuminate\Database\Eloquent\Collection<int, AdjudicationProcessModel> $rows */
+        $rows = $this->model->newQuery()
+            ->where('status', AdjudicationProcessStatus::ConcludedRulingRequested->value)
+            ->whereNull('issuance_requested_at')
+            ->orderBy('concluded_at')
+            ->get();
+
+        foreach ($rows as $row) {
+            $states[] = $this->mapper->toState($row);
+        }
+
+        return $states;
+    }
+
+    /** @return list<AdjudicationProcessState> */
     public function dueForHorizon(DateTimeImmutable $asOf): array
     {
         // The horizon's DURATION is Q-2's business policy; this store answers only

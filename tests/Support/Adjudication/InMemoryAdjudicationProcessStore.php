@@ -7,6 +7,7 @@ namespace Tests\Support\Adjudication;
 use App\Contexts\Adjudication\Application\Port\AdjudicationProcessStore;
 use App\Contexts\Adjudication\Application\Process\AdjudicationProcessId;
 use App\Contexts\Adjudication\Application\Process\AdjudicationProcessState;
+use App\Contexts\Adjudication\Application\Process\AdjudicationProcessStatus;
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
 use DateTimeImmutable;
 
@@ -62,6 +63,16 @@ final class InMemoryAdjudicationProcessStore implements AdjudicationProcessStore
     {
         $this->active[$state->challengeRef()->toString()] = $state;
         $this->writes[] = $state;
+    }
+
+    /** @return list<AdjudicationProcessState> */
+    public function concludedAwaitingIssuance(): array
+    {
+        return array_values(array_filter(
+            $this->active,
+            static fn (AdjudicationProcessState $s): bool => $s->status() === AdjudicationProcessStatus::ConcludedRulingRequested
+                && $s->issuanceRequestedAt() === null,
+        ));
     }
 
     /** @return list<AdjudicationProcessState> */
