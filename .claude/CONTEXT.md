@@ -72,13 +72,14 @@ Priority: High
   EG-004 · EG-005 tracked in `docs/plans/20260726-2056-engineering-platform-repair-plan.md` — non-blocking.
 
 ## Next action (exactly one)
-**WP-4B ACCEPTANCE DECISION by the accepting authority** — evidence: `engineering/verification/reports/2026-08-04-wp4b-acceptance-evidence.md` (engineering recommendation: **READY FOR ACCEPTANCE**). **Engineering does not accept its own work (EP-02 · R-34), and §WP-4 closes BY ACCEPTANCE, never by authorization.** WP-4C is considered only after WP-4B is accepted.
+**CONSIDER WP-4C** — `AdjudicationFailureDeclared`. **R-87 permits CONSIDERATION under normal governance; consideration is NOT authorization** (R-80). The first act is therefore an Engineering Readiness Review / EP-01 plan, then authorization — not implementation. **§WP-4 is still OPEN**: WP-4C and WP-4D are undelivered, and WP-4D remains unauthorized.
 
 ## Blockers
-- **None blocking WP-4B.** All batches delivered; R-81–R-85 adopted by R-86 and implemented. `composer merge-gate` **PASS** (281 · 729, exit 0) · greenfield PHPStan **[OK] No errors** · Adjudication suite **80 passed / 0 failed / 26 risky** · seam keystones **8/8**.
-- **OPERATIONAL: 1 commit unpushed** — `git rev-list --count @{u}..HEAD` = **1** (`0e7935da6`), measured 2026-08-04; `origin/feature/pb003` is at `e15269674`. `git push` from a non-interactive shell returns `Permission denied (publickey)` (passphrase-protected key), so pushing requires the human. **Earlier entries said 15 — wrong: incremented from a stale measurement instead of re-measured. RE-MEASURE, never increment.**
-- **Open, outside WP-4B's scope (R-86 adopted none of these):** `ChallengeRaised` **promotion** (permission) and **allocation** (ownership) · **PM-6's confirmation half** (R-82 declined to allocate it) · **`enforceHorizon()` isolation** (identical defect; R-81 names `redriveIssuance()` only — ER-08, later slice) · **ENG-012** (risky 105→108, cause unestablished).
-- **Governance maintenance B-4..B-12 remains UNOPENED** — opening Session 2 requires a fresh decision.
+- **WP-4B is ACCEPTED and CLOSED — R-87 (2026-08-04).** Capability milestone recorded once in the register: the realized architecture now spans **`Concluded → Issue Request → Recovery → Replay`**.
+- **§WP-4 remains OPEN** — WP-4C undelivered (may be CONSIDERED), WP-4D undelivered and **unauthorized**. **WP-8 remains DEFERRED (R-79)** and the **conversation boundary question** is due before it.
+- **Outside R-87, expressly:** `ChallengeRaised` **promotion** + **allocation** · **PM-6's confirmation half** (R-82) · **`enforceHorizon()` isolation** (ER-08, later slice) · **ENG-012** (open, cause unestablished; did not block acceptance) · the mapper's partial-row limitation (recorded in code).
+- **Governance maintenance B-4..B-12 remains UNOPENED** — Session 2 requires a fresh decision; acceptance did not imply it.
+- **No standing delegation of adoption or acceptance authority exists** — R-86 and R-87 each decided once. Any future ruling issued by the ARB Chief remains **PREPARED, NOT ADOPTED**, until the authority acts.
 
 ## Open items (inventory — full text at the cited homes)
 - Tracked: AD-M2 (ADR-MP-05/Q5, only under business pressure) · G-1 release tag · Jurisdiction
@@ -1844,3 +1845,18 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - ⭐ **The gate interplay declared in the plan, not dodged:** the staged Engineering Assessment Commission owns "which observations earn recommendations" — **the spike is scoped as the commission's INSTRUMENTATION** (generates the accept/ignore evidence its trigger needs; rules-as-data; no assessment model; three-level separation observe/recommend/decide enforced by construction).
 - **The chicken-and-egg named:** outcome cells can never fill while zero recommendations exist — the loop needs its first recommendation source.
 - Roadmap position per the review: Observation ✅ · Measurement ✅ · Projection ✅ · **Recommendation 🟡 this plan** · Learning ⛔ future (needs the outcome data this spike would start producing).
+
+
+### Plan assessed; REASON field added; ⏳ APPROVAL STILL PENDING (2026-08-04) — state + pointers only
+
+- **Review assessed the plan positively (scope "exactly right for a first version") — but did NOT approve execution. EP-01 status unchanged: the Recommendation Engine v1 plan AWAITS EXPLICIT APPROVAL.**
+- **One amendment applied to the awaiting plan:** decision capture upgraded from optional-note to **prompted REASON** — *"ignored: deadline this sprint" is the difference between WHAT and WHY; reasons are the future learning layer's most valuable data.*
+- **Shelved: the four-generations model** (G1 observation ✅ · G2 recommendation = the plan · G3 learning = outcomes update confidence · G4 adaptive = profile-dependent recommendations) — the intelligence definition recorded with it: **KnowledgeOS becomes intelligent NOT when the engine ships but when accumulated decisions+outcomes let it say "R1 is accepted 87% of the time" — evidence-based, never handcrafted.**
+- The protected sentence's endorsement noted (it survives another review unchanged — activity metrics are vanity; engineering change is the product).
+
+
+### EP-01A AMENDMENT APPLIED to the Recommendation plan (2026-08-04) — state + pointers only
+
+- **ARB verdict executed:** capability elevated above implementation — the plan now carries the **Domain Capability Ownership section** (capability stable; Rule/ML/LLM engines replaceable) · **the five-contract chain defined before code** (Observation · Recommendation Record · Developer Decision · **Decision Rationale as a SEPARATE concept** · Outcome) · **reason-code taxonomy** (ALREADY_PLANNED · DEADLINE_PRESSURE · FALSE_POSITIVE · DUPLICATE · WAITING_DEPENDENCY … + DEFERRED as decision value).
+- ⛔ **Two check-before findings flagged IN the plan, not hidden:** 1) **term collision — the FROZEN Capability Pattern's "capability" (invariant-protecting) ≠ the chain's business-capability sense; disambiguation = UL act for governance** · 2) **canon refuted "Domains own Capabilities" — DP-n anchors them; the ownership question is put to the human in BOTH readings** (which context? or which DP?).
+- ⏳ **STATUS: awaiting FINAL approval + the ownership answer.** Two human decisions pending on this thread: (a) context-or-DP ownership of the Recommendation capability, (b) the final EP-01 go.
