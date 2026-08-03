@@ -1,7 +1,8 @@
 # Implementation Delivery Commission — WP-4B
 
 **Date:** 2026-08-03 · **Prepared by:** Recording Architect
-**Question:** **what is the smallest implementation change that satisfies the already-adopted governing model?**
+**Question:** **what implementation is sufficient to satisfy the already-adopted governing model?**
+**⚠️ Not *the smallest*. Minimality is an OPTIMIZATION CLAIM and this report has not evaluated and ruled out every alternative sequence. It states that the sequence below is CONFORMING and SUFFICIENT — nothing about it being optimal.**
 **Framing:** delivery, not architecture. **No architecture selected · no ADR reinterpreted · no option-selection exercise reopened (R-78).**
 
 ---
@@ -9,6 +10,8 @@
 ## 1. Executive Summary
 
 > ### The adopted model names its own precondition. It is not an amendment and not a redesign.
+>
+> *(And the sequence in §3 is offered as **conforming**, not as **minimal** — see the note above.)*
 >
 > **ADR-PL-01 — the same accepted artifact that classifies `ChallengeRaised` internal — states the mechanism for changing that classification:**
 >
@@ -28,9 +31,9 @@
 | **ADR-T5** — version, never mutate | mutating a **published** contract | ✅ **not engaged.** Promotion makes it published *going forward*; there is no prior published version to break |
 | **ADR-T16 · TP-1** | importing another context's types · non-event collaboration | ✅ **satisfied** — an event crossing with primitives is exactly the sanctioned form |
 
-## 3. The smallest conforming change
+## 3. One conforming delivery sequence under the adopted governing model
 
-**Stated as delivery scope, in dependency order. This is what the adopted model requires, not a proposal among alternatives:**
+**Stated in dependency order. Conforming and sufficient; not asserted to be minimal:**
 
 | # | Change | Layer |
 |---|---|---|
@@ -46,7 +49,7 @@
 
 ## 4. What this commission does not do
 
-**It does not select among candidate paths.** **This commission assumes the governing model adopted by the ARB and identifies the minimum implementation required to realize it.** *(Phrased independently of ruling numbers deliberately: the report should stay readable if identifiers are renumbered, and its authority is the adopted model, not a citation.)*
+**It does not select among candidate paths.** **This commission assumes the governing model adopted by the ARB and identifies a conforming implementation sufficient to realize it.** *(Phrased independently of ruling numbers deliberately: the report should stay readable if identifiers are renumbered, and its authority is the adopted model, not a citation.)*
 
 ### ⚠️ Two governance acts, and they must not be conflated
 
