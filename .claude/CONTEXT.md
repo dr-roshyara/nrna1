@@ -76,7 +76,7 @@ Priority: High
 
 ## Blockers
 - **None blocking WP-4B.** All batches delivered; R-81–R-85 adopted by R-86 and implemented. `composer merge-gate` **PASS** (281 · 729, exit 0) · greenfield PHPStan **[OK] No errors** · Adjudication suite **80 passed / 0 failed / 26 risky** · seam keystones **8/8**.
-- **⚠️ OPERATIONAL: 15 commits unpushed** on `feature/pb003`, measured against `origin/feature/pb003`. `git push` returns `Permission denied (publickey)` in a non-interactive shell because the key is passphrase-protected — **this requires the human.**
+- **OPERATIONAL: 1 commit unpushed** — `git rev-list --count @{u}..HEAD` = **1** (`0e7935da6`), measured 2026-08-04; `origin/feature/pb003` is at `e15269674`. `git push` from a non-interactive shell returns `Permission denied (publickey)` (passphrase-protected key), so pushing requires the human. **Earlier entries said 15 — wrong: incremented from a stale measurement instead of re-measured. RE-MEASURE, never increment.**
 - **Open, outside WP-4B's scope (R-86 adopted none of these):** `ChallengeRaised` **promotion** (permission) and **allocation** (ownership) · **PM-6's confirmation half** (R-82 declined to allocate it) · **`enforceHorizon()` isolation** (identical defect; R-81 names `redriveIssuance()` only — ER-08, later slice) · **ENG-012** (risky 105→108, cause unestablished).
 - **Governance maintenance B-4..B-12 remains UNOPENED** — opening Session 2 requires a fresh decision.
 

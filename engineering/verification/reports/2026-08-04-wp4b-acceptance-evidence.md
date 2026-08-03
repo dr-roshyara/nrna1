@@ -148,7 +148,7 @@ Categories per the WP-3A precedent (`.claude/plans/WP-3-challengerouted-publishe
 | Item | Status | Evidence |
 |---|---|---|
 | **ENG-012** | OPEN, cause unestablished | risky notices 105 → 108. The captured gate tail shows entries 104–108 are all pre-existing `Shared/Messaging` and `Shared/Outbox` tests, not the new ones. **Not resolved by this work and not claimed to be.** Opened by R-71. |
-| **Push outstanding** | OPEN, operational | 14 commits on `feature/pb003` ahead of `origin/feature/pb003` (measured). `git push` returns `Permission denied (publickey)` in a non-interactive shell; the key is passphrase-protected. |
+| **Push outstanding** | **1 commit** — operational | Measured at 2026-08-04 after this package was committed: `git rev-list --count @{u}..HEAD` = **1** (`0e7935da6`, this package). `origin/feature/pb003` is at `e15269674`. **CORRECTION recorded in place:** an earlier draft of this row stated **14**, and CONTEXT stated **15**. Both were derived by INCREMENTING a previously measured figure rather than re-measuring — in a row that claimed *(measured)*. The upstream advanced during the session. **`git push` from a non-interactive shell returns `Permission denied (publickey)`** because the key is passphrase-protected, so pushing requires the human. |
 | **Acceptance** | PENDING | this package is its input |
 | **Mapper partial-row limitation** | OPEN, recorded in code | `AdjudicationProcessMapper::toContestedOutcome()` returns `null` for both an absent and a partially populated contested outcome. Recorded in its docblock as a future architectural candidate. |
 | **`enforceHorizon()` isolation** | OPEN, out of scope | identical unisolated loop; **R-81 names `redriveIssuance()` only.** Recorded per ER-08 for a later authorized slice. |
