@@ -72,7 +72,7 @@ Priority: High
   EG-004 · EG-005 tracked in `docs/plans/20260726-2056-engineering-platform-repair-plan.md` — non-blocking.
 
 ## Next action (exactly one)
-**GOVERNANCE DECISION on WP-4C's SUBDIVISION** — `engineering/verification/reports/2026-08-04-wp4c-engineering-readiness-review.md`. Engineering recommends **WP-4C-1** (event + hydrator + catalog entry, executable now) and **WP-4C-2** (Contestation's challenge disposition, blocked on EPIC-004K §15.3). **Subdividing a work package is a governance act (R-68 precedent), not engineering's** — no plan is produced and nothing is built until authorization exists.
+**CONFIRMATION OF R-88 BY THE DECISION AUTHORITY.** R-88 subdivides WP-4C into **WP-4C-1** (Adjudication: event + hydrator + catalog entry — candidate for authorization) and **WP-4C-2** (Contestation: challenge disposition — blocked on EPIC-004K §15.3). **It is PREPARED, not ADOPTED** — issued by the ARB Chief, and R-86/R-87 created no standing delegation. **Neither package is authorized, and subdivision is not authorization (R-80).**
 
 ## Blockers
 - **WP-4B is ACCEPTED and CLOSED — R-87 (2026-08-04).** Capability milestone recorded once in the register: the realized architecture now spans **`Concluded → Issue Request → Recovery → Replay`**.
