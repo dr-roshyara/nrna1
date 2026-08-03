@@ -75,7 +75,8 @@ Priority: High
 **WP-4B batch 7 — RESUME under R-81..R-85.** Sequence: (a) R-81's per-process isolation in `redriveIssuance()` · (b) R-84's §12 reconcile — ack on self-redelivery, dead-letter + escalate otherwise · (c) R-85's K2 setup amendment **plus a NEW model-B keystone** (determination exists, marker absent ⇒ reconcile ⇒ exactly one determination). **Mechanism is engineering's (F-B) — the ARB authorized slices, not constructs.** Cadence unchanged: Change → Compile → Static analysis → Relevant tests → Commit.
 
 ## Blockers
-- **None blocking WP-4B batch 7.** Q1–Q5 were ruled 2026-08-04 as **R-81 (isolation authorized) · R-82 (marker = “a request was made”) · R-83 (crash models A+B+C all in scope) · R-84 (§12's reconcile is INSIDE WP-4B; R-76 NOT widened) · R-85 (K2 amended, not confirmed; seam unchanged)**.
+- **⚠️ BATCH 7 RELEASE IS CONDITIONAL — AWAITING CONFIRMATION OF R-81..R-85 BY THE DECISION AUTHORITY.** The five rulings were **filed by the ARB Chief under the Session-1 mandate**; every prior ruling R-1..R-80 was issued by the human authority. **Until one sentence of confirmation lands, treat them as PREPARED, NOT ADOPTED — and engineering HOLDS.** Provenance annotations are recorded on all five register rows so the artifact, not the conversation, carries this status. **The symmetry is deliberate: a recommendation in conditional voice was refused as an authorization, so a self-issued ruling must meet the identical test.**
+- Subject to that confirmation, Q1–Q5 are ruled 2026-08-04 as **R-81 (isolation authorized) · R-82 (marker = “a request was made”) · R-83 (crash models A+B+C all in scope) · R-84 (§12's reconcile is INSIDE WP-4B; R-76 NOT widened) · R-85 (K2 amended, not confirmed; seam unchanged)**.
 - **⚠️ Still open, and NOT blocking batch 7:** `ChallengeRaised` **promotion** (permission) and **allocation** (ownership) — under R-76 and the delivery analysis these bear on the PRODUCTION PRODUCER PATH and §WP-4 closure, not on batch 7's execution. **PM-6's confirmation half remains unallocated** (R-82 explicitly declined to allocate it).
 - **Governance maintenance NOT entered** at session 1's close — B-4 · B-5 · B-6 (R-77) · B-7 · B-8 · B-9 (ENG-012) · B-10 · B-11 · B-12 require **a fresh Board decision to open session 2**, per the agenda's §5a.
 
@@ -1698,3 +1699,12 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - **Prohibition confirmed ALREADY TEST-ENFORCED:** no policy in the collector — `test_observation_is_verdict_free` pins it (no violation/passed/blocked keys). *WARN vs BLOCK vs IGNORE belongs to configured governance, never the collector.*
 - **Retrospective's three maturations recorded as the standing self-description:** an engineering LEARNING system (not just governance) · behavioral triggers everywhere ("when…", never counts) · the confidence ladder operating (Observation → Candidate → Direction → Practice → Standard → Rule). Year-ahead API vision left exactly where the reviewer left it: VISION. **The durable asset is the observation model — languages are implementation details.**
 - **Standing conclusion (external-architect wording, recorded):** *the project moved from designing governance to exercising governance; next phase prioritizes operational evidence over governance expansion.*
+
+
+### LCOM4 COLLECTOR BUILT (2026-08-04) — engineering event; state + pointers only
+
+- **TDD-first (RED→GREEN): 8 tests / 24 assertions.** Pure Hitz&Montazeri collector (php-parser reused) + advisory runner. Check-before comedy recorded: pdepend's "lcom" hits were We**lcom**eDashboardController.
+- ⭐⭐ **`Election` LCOM4=29 — now flagged FOUR independent ways (CBO 57 · WMC 257 · 30 changes · 29 clusters). `Committee` LCOM4=16.** Cross-collector corroboration = the convergence epistemology operating on code.
+- **Extraction evaluation FED, not fired:** runner boilerplate ×3 + diverging snapshot schemas = accumulating-but-tolerable accidental complexity; first real data point for the functional trigger. OBS-1 pressure visible.
+- **EV-1 kept honest: still n=2 categories** (lcom4 = second collector within the same category — facet-lesson applied prospectively).
+- **Canonical source:** spike plan REV 6.
