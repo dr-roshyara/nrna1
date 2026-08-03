@@ -38,8 +38,17 @@ final class CoordinatesAdjudication implements AdjudicationService
     {
         // Precondition (business decision made HERE, not in the repository):
         // logical uniqueness — one determination per challenge.
-        if ($this->determinations->findByChallengeRef($command->challengeRef) !== null) {
-            throw DeterminationAlreadyIssued::forChallenge($command->challengeRef);
+        $existing = $this->determinations->findByChallengeRef($command->challengeRef);
+        if ($existing !== null) {
+            // R-84: the refusal carries the EXISTING determination's minimal identity.
+            // The guard is unchanged in what it FORBIDS; it is changed only in what it
+            // REPORTS. §12 obliges the requester to reconcile, and it cannot reconcile
+            // against a bare challenge reference.
+            throw DeterminationAlreadyIssued::forExistingDetermination(
+                $command->challengeRef,
+                $existing->id(),
+                $existing->issuedByAuthority(),
+            );
         }
 
         $id = $this->determinations->nextIdentity();

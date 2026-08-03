@@ -10,8 +10,10 @@ use App\Contexts\Adjudication\Application\Port\AdjudicationProcessStore;
 use App\Contexts\Adjudication\Application\Port\EventOutbox;
 use App\Contexts\Adjudication\Application\Port\IdentityGenerator;
 use App\Contexts\Adjudication\Application\Port\RequestsDeterminationIssuance;
+use App\Contexts\Adjudication\Application\Process\Exception\ConflictingDeterminationForChallenge;
 use App\Contexts\Adjudication\Application\Process\Exception\LateDecisionOnExpiredAdjudication;
 use App\Contexts\Adjudication\Domain\Events\AdjudicationExpired;
+use App\Contexts\Adjudication\Domain\Exception\DeterminationAlreadyIssued;
 use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
 use App\Contexts\Adjudication\Domain\Determination\ContestedOutcomeRef;
@@ -248,22 +250,81 @@ final class AdjudicationProcessManager
             return;
         }
 
-        $this->issuance->request(new IssueDeterminationCommand(
-            $process->challengeRef(),
-            $outcome,
-            $legitimacy,
-            $reason,
-            $authority,
-            $jurisdiction,
-            $evidenceEnvelopeRef,
-            $contestedOutcome,
-            $consideredEvidence,
-            $this->clock->now(),
-        ));
+        try {
+            $this->issuance->request(new IssueDeterminationCommand(
+                $process->challengeRef(),
+                $outcome,
+                $legitimacy,
+                $reason,
+                $authority,
+                $jurisdiction,
+                $evidenceEnvelopeRef,
+                $contestedOutcome,
+                $consideredEvidence,
+                $this->clock->now(),
+            ));
+        } catch (DeterminationAlreadyIssued $refusal) {
+            // R-84: INV-B1 refused. §12 forbids escalating this blindly — RECONCILE.
+            $this->reconcileIssuanceRefusal($process, $refusal);
+
+            return;
+        }
 
         // Written only AFTER the request was made, and in the same transaction as it:
         // the marker's meaning is *"issuance was requested"*, so writing it earlier would
         // let a failure between the two silently drop the process out of the redrive set.
+        $this->store->save($process->markIssuanceRequested($this->clock->now()));
+    }
+
+    /**
+     * EPIC-004K §12's reconciliation, in its two ruled branches (R-84).
+     *
+     *   self-redelivery  → **ACK**: this process's own earlier request succeeded and only the
+     *                      marker was lost (crash model B, R-83). The determination is
+     *                      correct and complete; nothing is owed but the marker.
+     *   competing writer → **DEAD-LETTER + ESCALATE**: a determination exists that this
+     *                      process's conclusion did not produce.
+     *
+     * **THE DISCRIMINATOR IS THE DECIDING AUTHORITY**, compared against the authority this
+     * process recorded at conclusion. It is not the process id: **the `Determination`
+     * carries none, and giving it one would change the constitutional record and its
+     * published payload (ADR-PL-01 · ADR-T5) — architecture, not engineering.** The
+     * authority is the right comparison on its own terms, not merely the available one: a
+     * determination bearing a DIFFERENT authority's ruling is precisely *"another writer
+     * issued"*, whoever wrote it.
+     *
+     * **A refusal carrying no identity is treated as UNRECONCILABLE and escalated.** Acking
+     * it would mark the process on an assumption, and §12 asks for reconciliation, not for a
+     * guess that happens to keep the queue moving.
+     */
+    private function reconcileIssuanceRefusal(
+        AdjudicationProcessState $process,
+        DeterminationAlreadyIssued $refusal,
+    ): void {
+        $existingAuthority = $refusal->existingIssuedByAuthority;
+        $concludedBy = $process->concludedByAuthority();
+
+        if ($existingAuthority === null || $concludedBy === null) {
+            throw ConflictingDeterminationForChallenge::forChallenge(
+                $process->challengeRef(),
+                'the refusal carried no identifying authority, so the two §12 branches cannot be told apart',
+            );
+        }
+
+        if ($existingAuthority->toString() !== $concludedBy->toString()) {
+            throw ConflictingDeterminationForChallenge::forChallenge(
+                $process->challengeRef(),
+                sprintf(
+                    'the existing determination was issued by authority "%s" while this process concluded under "%s"',
+                    $existingAuthority->toString(),
+                    $concludedBy->toString(),
+                ),
+            );
+        }
+
+        // Ack. The marker IS written: leaving it absent would return this process to the
+        // redrive set to refuse again on every pass — the self-poisoning loop R-81 addressed
+        // from the other direction.
         $this->store->save($process->markIssuanceRequested($this->clock->now()));
     }
 

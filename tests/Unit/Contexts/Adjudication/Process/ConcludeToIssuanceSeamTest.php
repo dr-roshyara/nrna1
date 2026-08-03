@@ -9,6 +9,9 @@ use App\Contexts\Adjudication\Application\Port\RequestsDeterminationIssuance;
 use App\Contexts\Adjudication\Application\Process\AdjudicationProcessId;
 use App\Contexts\Adjudication\Application\Process\AdjudicationProcessManager;
 use App\Contexts\Adjudication\Application\Process\AdjudicationProcessState;
+use App\Contexts\Adjudication\Application\Process\Exception\ConflictingDeterminationForChallenge;
+use App\Contexts\Adjudication\Domain\Determination\DeterminationId;
+use App\Contexts\Adjudication\Domain\Exception\DeterminationAlreadyIssued;
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
 use App\Contexts\Adjudication\Domain\Determination\ContestedOutcomeRef;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
@@ -261,6 +264,96 @@ final class ConcludeToIssuanceSeamTest extends TestCase
 
         $this->assertNotNull($thrown, 'isolation must not swallow the failure');
         $this->assertSame('issuance refused for the poisoned process', $thrown->getMessage());
+    }
+
+    /**
+     * A collaborator that refuses every request with INV-B1's refusal, reporting the given
+     * authority as the one that issued the EXISTING determination.
+     */
+    private function refusingIssuance(string $existingAuthority): RequestsDeterminationIssuance
+    {
+        return new class($existingAuthority) implements RequestsDeterminationIssuance {
+            public int $attempts = 0;
+
+            public function __construct(private readonly string $existingAuthority)
+            {
+            }
+
+            public function request(IssueDeterminationCommand $command): void
+            {
+                ++$this->attempts;
+
+                throw DeterminationAlreadyIssued::forExistingDetermination(
+                    $command->challengeRef,
+                    DeterminationId::fromString('det-existing-1'),
+                    IssuedByAuthority::fromString($this->existingAuthority),
+                );
+            }
+        };
+    }
+
+    // -- R-84 / EPIC-004K section 12, branch 1: self-redelivery => ACK ------------
+
+    /**
+     * The crash window closed by someone else's success: the determination EXISTS because
+     * THIS process's earlier request succeeded, and only the marker was lost (crash model B,
+     * R-83). §12 rules this a **redelivery: ack**.
+     *
+     * Acking means the refusal does NOT propagate AND the marker IS written — otherwise the
+     * process stays in the redrive set and refuses forever, which is the poisoned pass R-81
+     * was ruled against.
+     */
+    public function test_r84_a_self_redelivery_refusal_is_acked_and_leaves_the_redrive_set(): void
+    {
+        $this->saveConcludedAwaiting('apm-redeliv', 'ch-redeliv');
+
+        // Same authority as the process concluded with -> this process's own determination.
+        $refusing = $this->refusingIssuance('constitutional-authority-1');
+
+        $this->manager($refusing)->redriveIssuance();
+
+        $this->assertSame(1, $refusing->attempts, 'the request must have been attempted');
+        $this->assertSame(
+            [],
+            $this->store->concludedAwaitingIssuance(),
+            'an acked self-redelivery must leave the redrive set, or the pass poisons itself',
+        );
+    }
+
+    // -- R-84 / section 12, branch 2: a competing writer => DEAD-LETTER + ESCALATE --
+
+    /**
+     * A determination exists that this process's conclusion did NOT produce. PM-1 + INV-B1
+     * should make this impossible, which is exactly why it must be loud rather than acked.
+     *
+     * The marker must NOT be written: marking would bury the conflict.
+     */
+    public function test_r84_a_competing_determination_escalates_and_does_not_mark(): void
+    {
+        $this->saveConcludedAwaiting('apm-conflict', 'ch-conflict');
+
+        // A DIFFERENT authority issued the existing determination.
+        $refusing = $this->refusingIssuance('some-other-authority-99');
+
+        $thrown = null;
+
+        try {
+            $this->manager($refusing)->redriveIssuance();
+        } catch (\Throwable $e) {
+            $thrown = $e;
+        }
+
+        $this->assertInstanceOf(
+            ConflictingDeterminationForChallenge::class,
+            $thrown,
+            'a competing determination must escalate as a permanent failure, never be acked',
+        );
+
+        $this->assertCount(
+            1,
+            $this->store->concludedAwaitingIssuance(),
+            'the marker must NOT be written for a conflict -- marking would bury it',
+        );
     }
 
     public function test_k1_a_concluded_process_requests_issuance_exactly_once(): void
