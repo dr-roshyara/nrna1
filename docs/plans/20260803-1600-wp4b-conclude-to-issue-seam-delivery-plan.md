@@ -207,6 +207,29 @@
 >
 > **This matters more than usual here, because three of the four retained values have no production producer** — so the only thing standing between a silently-dropped column and a green suite is a test that looks at persistence directly. **The keystones would not catch it: the doubles hold the values in memory and never round-trip them.**
 
+#### Step 5's assertion contract, enumerated
+
+**Persist → reload → assert:**
+
+1. **identity** unchanged
+2. **status** unchanged
+3. **`issuanceRequestedAt`** unchanged
+4. **`ContestedOutcomeRef`** unchanged — including **all three of its parts** (`electionId` · `type` · `targetId`)
+5. **`EvidenceEnvelopeRef`** unchanged
+6. **`Jurisdiction`** unchanged *(once retained — it arrives with the decision, so it is persisted from step 1)*
+7. **timestamps preserved** — `openedAt` and `concludedAt`, not merely present
+8. **⭐ value objects reconstituted to the correct TYPES, not merely to equal strings**
+
+> **Point 8 is the one that earns the test.** **A mapper that hands back raw strings passes every equality check in points 1–7 while violating the domain model** — `assertSame('el-1', …)` succeeds whether the value is an `ElectionId` or a `string`. **`assertInstanceOf` is what makes the assertion a domain assertion rather than a data assertion.**
+
+#### And a complementary structural check — both stores, one contract
+
+> **Round-trip through either store implementation must produce semantically equivalent state from the application service's perspective.**
+
+**Why it is worth its own assertion: every behavioural keystone runs against the in-memory double, and the production path runs against Eloquent.** **If the two diverge, the keystones prove something about a double rather than about the system** — and nothing currently detects that divergence.
+
+**Structurally, the in-memory store CANNOT detect what the Eloquent one can:** it retains object references, never serializes and never rehydrates, so **dropped columns, mapper omissions, migration mistakes and serialization defects are all invisible to it.** **The new test is therefore not redundant with the keystones; it covers a failure mode the doubles are incapable of exposing.**
+
 **Recorded as an amendment to §4 rather than a rewrite of it — §4's steps are unchanged, the verification is inserted.**
 
 ## 4. GREEN Implementation Sequence
