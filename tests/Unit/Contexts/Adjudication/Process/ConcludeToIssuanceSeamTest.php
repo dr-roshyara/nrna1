@@ -6,7 +6,9 @@ namespace Tests\Unit\Contexts\Adjudication\Process;
 
 use App\Contexts\Adjudication\Application\Command\IssueDeterminationCommand;
 use App\Contexts\Adjudication\Application\Port\RequestsDeterminationIssuance;
+use App\Contexts\Adjudication\Application\Process\AdjudicationProcessId;
 use App\Contexts\Adjudication\Application\Process\AdjudicationProcessManager;
+use App\Contexts\Adjudication\Application\Process\AdjudicationProcessState;
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
 use App\Contexts\Adjudication\Domain\Determination\ContestedOutcomeRef;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
@@ -170,6 +172,96 @@ final class ConcludeToIssuanceSeamTest extends TestCase
     }
 
     // ── K1: concluding requests issuance, exactly once ───────────────────────
+
+    /**
+     * A process that CONCLUDED with every issuance fact retained and issuance NOT yet
+     * requested -- crash model A, exactly as R-83 names it: transaction 1 committed and
+     * transaction 2 never ran.
+     *
+     * **Built and saved WITHOUT traversing the seam, deliberately.** Driving the manager
+     * would request issuance and write the marker, and model A is defined by that marker's
+     * ABSENCE. This is the construction R-85 authorizes.
+     */
+    private function saveConcludedAwaiting(string $id, string $challenge): AdjudicationProcessState
+    {
+        $state = AdjudicationProcessState::open(
+            AdjudicationProcessId::fromString($id),
+            ChallengeRef::fromString($challenge),
+            new DateTimeImmutable('2026-08-04T09:00:00+00:00'),
+        )
+            ->admitEvidence('envelope-sha256-abc', new DateTimeImmutable('2026-08-04T09:10:00+00:00'))
+            ->submitToAuthority(new DateTimeImmutable('2026-08-04T09:20:00+00:00'))
+            ->concludeRulingRequested(
+                EvidenceSet::fromRefs('envelope-sha256-abc'),
+                IssuedByAuthority::fromString('constitutional-authority-1'),
+                DeterminationOutcome::Upheld,
+                Legitimacy::Legitimate,
+                Reason::fromString('the contested result is unsupported'),
+                new DateTimeImmutable('2026-08-04T09:30:00+00:00'),
+            )
+            ->retainIssuanceContext(
+                ContestedOutcomeRef::of(
+                    ElectionId::fromString('el-1'),
+                    TargetType::ElectionResult,
+                    TargetId::fromString('res-1'),
+                ),
+                EvidenceEnvelopeRef::fromString('envelope-sha256-abc'),
+            )
+            ->retainJurisdiction(Jurisdiction::fromString('federal'));
+
+        $this->store->save($state);
+
+        return $state;
+    }
+
+    /**
+     * R-81's keystone. `concludedAwaitingIssuance()` orders by `concluded_at`, so before
+     * isolation the OLDEST stuck process aborted the pass and starved every newer one
+     * indefinitely. **Every process must be attempted.**
+     *
+     * The failure is also asserted to PROPAGATE: isolation must not become silence.
+     */
+    public function test_r81_a_failing_process_does_not_prevent_the_others_from_being_requested(): void
+    {
+        $this->saveConcludedAwaiting('apm-poison', 'ch-poison');
+        $this->saveConcludedAwaiting('apm-healthy', 'ch-healthy');
+
+        $spy = new class implements RequestsDeterminationIssuance {
+            /** @var list<IssueDeterminationCommand> */
+            public array $requests = [];
+
+            public function request(IssueDeterminationCommand $command): void
+            {
+                if ($command->challengeRef->toString() === 'ch-poison') {
+                    throw new \RuntimeException('issuance refused for the poisoned process');
+                }
+
+                $this->requests[] = $command;
+            }
+        };
+
+        $thrown = null;
+
+        try {
+            $this->manager($spy)->redriveIssuance();
+        } catch (\Throwable $e) {
+            $thrown = $e;
+        }
+
+        $requested = array_map(
+            static fn (IssueDeterminationCommand $c): string => $c->challengeRef->toString(),
+            $spy->requests,
+        );
+
+        $this->assertContains(
+            'ch-healthy',
+            $requested,
+            'a process ordered after a failing one must still have its issuance requested',
+        );
+
+        $this->assertNotNull($thrown, 'isolation must not swallow the failure');
+        $this->assertSame('issuance refused for the poisoned process', $thrown->getMessage());
+    }
 
     public function test_k1_a_concluded_process_requests_issuance_exactly_once(): void
     {

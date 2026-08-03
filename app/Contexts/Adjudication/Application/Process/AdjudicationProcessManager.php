@@ -185,8 +185,28 @@ final class AdjudicationProcessManager
      */
     public function redriveIssuance(): void
     {
+        $failures = [];
+
         foreach ($this->store->concludedAwaitingIssuance() as $process) {
-            $this->requestIssuanceFor($process);
+            // R-81: FAILURE ISOLATION PER PROCESS. Without this, one throwing process
+            // aborts the pass — and because the query orders by `concluded_at`, the
+            // OLDEST stuck process would starve every newer one indefinitely.
+            try {
+                $this->requestIssuanceFor($process);
+            } catch (\Throwable $failure) {
+                $failures[] = $failure;
+            }
+        }
+
+        // Isolated, but NOT swallowed. Every process is attempted before any failure
+        // propagates, so no process is starved; the first failure is then rethrown
+        // UNCHANGED so its type and stack survive for the caller's translation. A
+        // silent catch would convert a starvation defect into an invisible one.
+        //
+        // Rethrowing is safe against a retry: a process whose issuance was requested
+        // has its marker written and has therefore left the redrive set (R-82).
+        if ($failures !== []) {
+            throw $failures[0];
         }
     }
 
