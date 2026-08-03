@@ -75,10 +75,10 @@ Priority: High
 **WP-4B batch 7 — RESUME under R-81..R-85.** Sequence: (a) R-81's per-process isolation in `redriveIssuance()` · (b) R-84's §12 reconcile — ack on self-redelivery, dead-letter + escalate otherwise · (c) R-85's K2 setup amendment **plus a NEW model-B keystone** (determination exists, marker absent ⇒ reconcile ⇒ exactly one determination). **Mechanism is engineering's (F-B) — the ARB authorized slices, not constructs.** Cadence unchanged: Change → Compile → Static analysis → Relevant tests → Commit.
 
 ## Blockers
-- **⚠️ BATCH 7 RELEASE IS CONDITIONAL — AWAITING CONFIRMATION OF R-81..R-85 BY THE DECISION AUTHORITY.** The five rulings were **filed by the ARB Chief under the Session-1 mandate**; every prior ruling R-1..R-80 was issued by the human authority. **Until one sentence of confirmation lands, treat them as PREPARED, NOT ADOPTED — and engineering HOLDS.** Provenance annotations are recorded on all five register rows so the artifact, not the conversation, carries this status. **The symmetry is deliberate: a recommendation in conditional voice was refused as an authorization, so a self-issued ruling must meet the identical test.**
-- Subject to that confirmation, Q1–Q5 are ruled 2026-08-04 as **R-81 (isolation authorized) · R-82 (marker = “a request was made”) · R-83 (crash models A+B+C all in scope) · R-84 (§12's reconcile is INSIDE WP-4B; R-76 NOT widened) · R-85 (K2 amended, not confirmed; seam unchanged)**.
-- **⚠️ Still open, and NOT blocking batch 7:** `ChallengeRaised` **promotion** (permission) and **allocation** (ownership) — under R-76 and the delivery analysis these bear on the PRODUCTION PRODUCER PATH and §WP-4 closure, not on batch 7's execution. **PM-6's confirmation half remains unallocated** (R-82 explicitly declined to allocate it).
-- **Governance maintenance NOT entered** at session 1's close — B-4 · B-5 · B-6 (R-77) · B-7 · B-8 · B-9 (ENG-012) · B-10 · B-11 · B-12 require **a fresh Board decision to open session 2**, per the agenda's §5a.
+- **NONE blocking WP-4B batch 7.** **R-81–R-85 were ADOPTED WITHOUT AMENDMENT by the Decision Authority on 2026-08-04 (adoption act: R-86).** They are **GOVERNING**; the provenance annotations stand as historical record of the preparation process. **Batch 7 is RELEASED and engineering is AUTHORIZED.**
+- **⚠️ ADOPTION AUTHORITY WAS NOT DELEGATED.** Option C was available and declined — *“constitutional changes deserve their own deliberation.”* **R-86 adopts five named rulings ONCE and creates NO standing delegation: any future ruling issued by the ARB Chief remains PREPARED, NOT ADOPTED, until the Decision Authority acts on it.**
+- **Open, and NOT blocking batch 7:** `ChallengeRaised` **promotion** (permission) and **allocation** (ownership) — under R-76 and the recorded delivery analysis these bear on the production producer path and §WP-4 closure. **PM-6's confirmation half remains unallocated** (R-82).
+- **Governance maintenance B-4..B-12 remains UNOPENED** — expressly outside R-86; opening Session 2 requires a **fresh** decision and is not implied by the adoption.
 
 ## Open items (inventory — full text at the cited homes)
 - Tracked: AD-M2 (ADR-MP-05/Q5, only under business pressure) · G-1 release tag · Jurisdiction
@@ -1708,3 +1708,32 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - **Extraction evaluation FED, not fired:** runner boilerplate ×3 + diverging snapshot schemas = accumulating-but-tolerable accidental complexity; first real data point for the functional trigger. OBS-1 pressure visible.
 - **EV-1 kept honest: still n=2 categories** (lcom4 = second collector within the same category — facet-lesson applied prospectively).
 - **Canonical source:** spike plan REV 6.
+
+
+### VERIFICATION SUITE GREEN; COLLECTORS PAUSE (2026-08-04) — engineering event; state + pointers only
+
+- **Collector Verification Suite built and GREEN (23 assertions):** seven language-neutral golden fixtures + expected.json = **the conformance contract for any future implementation** · variant decisions PINNED as data (ctor excluded · statics isolated — inflates · traits unresolved · inheritance excluded) · completeness check (no unasserted fixtures).
+- ⚠️ **Election=29 now carries its caveats formally:** Eloquent statics/magic inflate LCOM4 under the pinned decisions — observation with caveats, never verdict. *Metric validated on canonical shapes; real-class interpretation stays human.*
+- ⛔ **Collector-building PAUSED (review directive).** Three streams operating (metrics · test-presence · LCOM4). **Next evidence: USE on PublicDigit development.** Canonical source: spike plan REV 7.
+
+
+### OBSERVATION RUNTIME parked with its gate (2026-08-04) — state + pointers only
+
+- **New idea file (recorded, NOT built): `docs/ideas/2026-08-observation-runtime.md`** — the missing fourth concern (who runs collectors, when, how developers learn). Gate verbatim: *runtime only when MANUAL EXECUTION becomes a MEASURABLE source of friction* — and the measuring instruments already exist (usage log · workflow log). Boundary extended: KnowledgeOS never triggers collection. N-10 guards the machinery class.
+- **First evidence already on file:** runner-boilerplate ×3 (REV 6's duplication finding) = the runtime idea's opening data point.
+- **Suite evolution staged as data:** `_future_layout` note in expected.json (specification/ + implementations/{php,python,...} when a second language arrives; spec = source of truth). Suite re-verified GREEN after the edit.
+- **The emergent four-concern shape recorded as vision:** Specification → Collectors → Runtime → Store (→ Developer Feedback · KnowledgeOS). *The Specification layer now EXISTS; the Runtime is parked; the rest operates.*
+
+
+### COLLECTOR BIRTH CONVENTION adopted (2026-08-04) — practice, forward-only; state + pointers only
+
+- ⭐ **Practice adopted (applies to the NEXT collector, whenever its gate opens; wording strengthened per review 2026-08-04): every OBSERVATION SPECIFICATION carries four artifacts from day one — specification (expected.json) · golden fixtures · reference implementation · conformance test.** *The specification is permanent; collectors are implementations — the wording survives extraction.* *TDD applied to collectors themselves. Zero cost today (collector-building is paused); binding when it resumes.*
+- **Deferred by the review's own "later":** the generalized `collector-conformance/` layout (per-collector spec dirs) — gate: the second conformance suite's arrival · the `variant` field in observation JSON — travels with OBS-1 (schema unification); meanwhile the variant IS pinned in expected.json's `_variant`.
+- **The reframe recorded:** *metrics → measurement platform* — a metric answers one question; a platform defines how questions are specified, verified, implemented, compared. **The spec→reference→conformance pattern flagged as a future core engineering convention IF KnowledgeOS productizes** (candidate convention; shelf).
+
+
+### Runtime phrase corrected; spec-first pattern on watch (2026-08-04) — state + pointers only
+
+- **Idea file rephrased:** runtime = *potential* future execution center IF evidence justifies extraction; today's center is PublicDigit (AIP-14). Vision-graded, gate-listed.
+- **Watch opened (shelf): the Idea → Specification → Reference → Conformance → Implementations pattern** — n=1 (LCOM4); candidate future applications: CBO · fitness rules · governance policies · PKS/KnowledgeOS APIs. Rediscovery promotes; not before.
+- **Reviewer's maturity snapshot recorded** (spec ✅ · collector ✅ · conformance ✅ · runtime 💡gated · store 🟡 · consumer 🟡 · multi-language 💡 · SDK 💡) — *"the architecture has been earned incrementally rather than assumed up front"* stands as the current-state description.
