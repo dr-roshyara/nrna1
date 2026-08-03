@@ -1,6 +1,6 @@
 # WP-4B — The conclude→issue seam, and the six facts it carries
 
-**Step:** WP-4B batches 1–6 · **Status:** 🔶 **v1 — documents the STABLE implementation only.** Crash-window recovery semantics are under ARB review; see [Pending ARB decision](#pending-arb-decision) before relying on redrive behaviour.
+**Step:** WP-4B · **Status:** **v2 — COMPLETE.** The crash-window semantics v1 deferred are **adopted and implemented** (R-81 · R-82 · R-83 · R-84 · R-85, adopted by R-86). Nothing in this guide awaits a governance decision.
 
 WP-2 built the process manager and carried it to a conclusion. It stopped there: `receiveRulingDecision()` ended at `store->save($process->concludeRulingRequested(...))` and **nothing followed it** — no production caller connected a concluded process to issuance. This step builds that seam.
 
@@ -111,8 +111,10 @@ The manager does not hold `CoordinatesAdjudication` directly for the same reason
 
 | Test | Asserts |
 |---|---|
-| `tests/Unit/…/Process/ConcludeToIssuanceSeamTest.php` | K1 concluding requests issuance once · K3 redrive after issuance is inert · K4 the command is built only from the record (**K2 — see below**) |
+| `tests/Unit/…/Process/ConcludeToIssuanceSeamTest.php` | **K1** concluding requests issuance once · **K2** a concluded-but-unissued process is completed by redrive (**crash model A**) · **K3** redrive after issuance is inert · **K4** the command is built only from the record · **R-81** a failing process does not starve the others, and the failure still propagates · **R-84** self-redelivery is acked and leaves the redrive set · **R-84** a competing determination escalates and does not mark · **R-83** model B yields exactly one determination, never two |
 | `tests/Feature/…/Adjudication/IssuanceContextRoundTripTest.php` | all six facts survive a real PostgreSQL round trip · the marker persists · the in-memory double and the database agree |
+
+**A test-authoring lesson, kept because it cost a governance cycle.** K2 originally simulated the crash by clearing its spy's `requests` array. That mutated the **spy**, not the **store** — erasing the *record* of a request while leaving its *durable effect*, the marker, in place. The state produced was *marked-but-never-requested*: **no crash model at all, and one the design cannot produce.** K2 and K3 were consequently unsatisfiable together, which surfaced only during GREEN. **A double that records is not a double that persists** — when a test simulates a partial failure, check which half it actually undid. Amended under R-85; the seam was never changed to make it pass.
 
 **Two harness lessons worth inheriting.**
 
@@ -126,20 +128,56 @@ The manager does not hold `CoordinatesAdjudication` directly for the same reason
 
 ---
 
-## Pending ARB decision
+## Crash-window recovery — the adopted semantics
 
-**The crash-window recovery semantics of this seam are under ARB review (Q1–Q5).** Package: [`engineering/verification/commissions/2026-08-03-crash-window-semantics-decision-package.md`](../../engineering/verification/commissions/2026-08-03-crash-window-semantics-decision-package.md) — 🔒 READY FOR ARB.
+**Three crash windows exist because §11 seats the conclusion and the issuance in separate transactions.** All three must be recovered (**R-83**):
 
-**This guide intentionally does not specify replay or reconciliation behaviour until the Board adopts the governing model.** Specifically undocumented here, and not to be inferred from the code:
+| | Crash | Persisted state | Determination? | Recovery |
+|---|---|---|---|---|
+| **A** | TX1 committed, TX2 never started | concluded · marker `NULL` | no | redrive requests it, then marks |
+| **B** | request **succeeded**, marker not written | concluded · marker `NULL` | **yes** | redrive requests → INV-B1 refuses → **§12 reconcile → ack** → marks |
+| **C** | request **failed**, marker not written | concluded · marker `NULL` | no | as A |
 
-- which crash models `redriveIssuance()` is required to recover;
-- what happens when an issuance request meets an **INV-B1 refusal** — EPIC-004K §12 specifies *reconcile* (ack on self-redelivery, else dead-letter + escalate), and **the currently implemented request path does not realize it**: `DeterminationAlreadyIssued` escapes unhandled;
-- whether `redriveIssuance()` must isolate failures per process — today one throwing process aborts the whole pass, and the query orders by `concluded_at`, so the oldest stuck process starves every newer one;
-- the canonical meaning of `issuanceRequestedAt` beyond *"a request was made"* (R-76 excluded PM-6's confirmation half from this slice, so nothing here learns whether a determination was written).
+**A and C are indistinguishable in persistence** — same row, no determination — so any redrive recovering A recovers C. **B is the one that needs §12.**
 
-**Keystone K2 currently fails, and it is not a defect in this seam.** K2 and K3 cannot both pass: K3 requires the durable marker set by the conclude path, K2 requires its absence, and the store state after concluding is identical in both — K2's only mutation is on its spy, which erases the *record* of a request but never its *durable effect*. **Do not "fix" the seam to make K2 pass.** Its disposition is Q5.
+### What `issuance_requested_at` means (R-82)
 
-Until the Board rules, treat redrive as *"exists, and is exercised by K3 for the already-requested case"* — nothing stronger.
+**"An issuance request was made." NOT "issuance was confirmed."** This is *forced*, not chosen: R-76 excluded PM-6's confirmation half, so nothing in this slice observes whether a `Determination` was written.
+
+**Consequence, adopted rather than treated as a defect:** the marker **cannot** distinguish A from B — in both a request was attempted and in neither was the marker written. **That is why §12's reconcile exists.** Do not try to make the marker carry confirmation semantics; that belongs to PM-6, which is unallocated.
+
+### §12's reconcile, in two branches (R-84)
+
+```
+issuance->request(command)
+    └─ DeterminationAlreadyIssued (INV-B1 refused)
+         ├─ same deciding authority   → SELF-REDELIVERY → ack: write the marker, no throw
+         └─ different / absent        → CONFLICT → ConflictingDeterminationForChallenge
+                                          (PermanentInboxFailure: dead-letter + escalate;
+                                           the marker is NOT written)
+```
+
+**The guard is unchanged in what it FORBIDS — only in what it REPORTS.** `CoordinatesAdjudication` still owns uniqueness; it now raises `DeterminationAlreadyIssued::forExistingDetermination(...)` carrying the existing determination's **minimal identity** (id + authority) so the requester can reconcile. **No repository was injected into the process manager**, and the information travels the existing dependency direction:
+
+```
+CoordinatesAdjudication → DeterminationAlreadyIssued → requestIssuanceFor()
+```
+
+⚠️ **`IssuedByAuthority` IS THE CURRENT DISCRIMINATOR, NOT THE BUSINESS INVARIANT.** §12's real question is *"did THIS PROCESS previously request issuance?"* — a question about **process identity**. The `Determination` carries no process reference, and adding one would change the constitutional record and its published payload (**ADR-PL-01 · ADR-T5**): architecture, not engineering. **The two questions coincide only under today's model. If a process reference or issuance correlation is ever adopted, THAT becomes the discriminator and this one retires.**
+
+**A refusal carrying no identity is escalated, not acked** — `forChallenge()` is retained for callers with no determination in hand, and such a refusal cannot be reconciled. §12 asks for reconciliation, not for a guess that keeps the queue moving.
+
+**Why the ack must write the marker:** without it the process returns to the redrive set and refuses on every pass — a self-poisoning loop.
+
+### Failure isolation (R-81)
+
+`redriveIssuance()` isolates failures **per process**: each is attempted inside its own `try`, throwables are collected, and **the first is rethrown unchanged after the loop.**
+
+**Why isolation matters here specifically:** `concludedAwaitingIssuance()` orders by `concluded_at`, so without it **the oldest stuck process starved every newer one indefinitely.**
+
+**Why it is not a silent catch:** that would convert a starvation defect into an invisible one. A starved queue is at least observable as a backlog. Rethrowing is safe against a retry, because a process whose issuance was requested has left the redrive set.
+
+**Related, and deliberately NOT fixed here:** `enforceHorizon()` has the same unisolated loop. **R-81 names `redriveIssuance()` only**; repairing the other is a later authorized slice (ER-08).
 
 ### How this guide evolves — **update this file, do not add another**
 
@@ -147,9 +185,11 @@ Until the Board rules, treat redrive as *"exists, and is exercised by K3 for the
 
 | Version | Content |
 |---|---|
-| **v1** (this) | the implemented seam + this explicit list of pending decisions |
-| **v2** | **this section is replaced** by the adopted crash-window semantics and reconciliation behaviour, and the status banner drops the 🔶 |
+| v1 | the implemented seam + an explicit list of pending governance decisions |
+| **v2** (this) | the pending section **replaced in place** by the adopted crash-window semantics (R-81–R-86); banner marker dropped |
 | v3+ | ordinary maintenance as the implementation evolves |
+
+**v1 → v2 is what this lifecycle prescribed, performed as prescribed:** the *Pending ARB decision* section was **replaced**, not appended to, and no second file was created.
 
 **Do not create `07_conclude_to_issue_seam_v2.md`.** Two files on one subject fragment the knowledge and guarantee that one of them goes stale unread — and the stale one is always the one the next engineer opens first.
 
@@ -159,4 +199,4 @@ Until the Board rules, treat redrive as *"exists, and is exercised by K3 for the
 
 ## Traceability
 
-EPIC-004K §11 (persistence · conclude-time atomicity) · §12 (failure handling — **specified, not yet realized on this path**) · R-72 (WP-4B authorized) · R-73 · R-74 · R-75 (the three producers) · R-76 (**request path only**) · ADR-T1 · ADR-T11 · ADR-T16 · AP-1 · AP-2 · INV-B1 · commits `fdd09babf` · `1a6f3c4d3` · `c3409d69f` · `f2ac054c8` · plan `docs/plans/20260803-1600-wp4b-conclude-to-issue-seam-delivery-plan.md`.
+EPIC-004K §11 (persistence · conclude-time atomicity) · **§12 (failure handling — IMPLEMENTED, R-84)** · R-72 (WP-4B authorized) · **R-81** (isolation) · **R-82** (marker semantics) · **R-83** (crash models A/B/C) · **R-84** (§12 inside WP-4B; R-76 unamended) · **R-85** (K2 amended) · **R-86** (adoption) · R-73 · R-74 · R-75 (the three producers) · R-76 (**request path only**) · ADR-T1 · ADR-T11 · ADR-T16 · AP-1 · AP-2 · INV-B1 · commits `fdd09babf` · `1a6f3c4d3` · `c3409d69f` · `f2ac054c8` · `c966fa6e2` · `a51f24190` · `2f8087bf2` · plan `docs/plans/20260803-1600-wp4b-conclude-to-issue-seam-delivery-plan.md`.
