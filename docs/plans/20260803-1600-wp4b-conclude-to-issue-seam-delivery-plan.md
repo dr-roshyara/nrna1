@@ -153,7 +153,9 @@
 
 **No refactor of that pattern is proposed, and none is needed.**
 
-### 3e. GREEN STEP 1 DONE — RED IS NOW DISCRIMINATING (2026-08-03)
+### 3e. GREEN STEP 1 IMPLEMENTED — BEHAVIOURAL GREEN REMAINS INCOMPLETE (2026-08-03)
+
+**Precise wording, corrected: *“step 1 done”* would read as progress toward passing. K1–K4 all still fail.** **What is done is the step; what is not done is GREEN.**
 
 **Written:** the constructor parameter · `AdjudicationProcessManager::admitIssuanceContext()` · `AdjudicationProcessState::retainIssuanceContext()` with two retention fields and accessors · **`CoordinatorIssuanceRequest`** (the port's adapter) · its binding in `AdjudicationServiceProvider`.
 
@@ -161,7 +163,7 @@
 
 **⚠️ One pre-existing test file was modified:** `AdjudicationProcessManagerTest` now supplies an inert issuance stand-in, in the same form WP-6's horizon collaborators took. **Disclosed here because acceptance must see it — a required constructor parameter cannot be added without it.**
 
-#### The failures are now discriminating
+#### The failures are now discriminating — and all four still fail
 
 | K | Failure | Kind |
 |---|---|---|
@@ -176,7 +178,9 @@
 
 #### Next, unchanged in order
 
-**The `issuanceRequestedAt` marker → `concludedAwaitingIssuance()` → redrive → INV-B1 reconciliation.** **K2 is still the invariant and still the least proven.**
+**The `issuanceRequestedAt` marker → `concludedAwaitingIssuance()` → redrive → INV-B1 reconciliation.** **K2 remains the next architectural CAPABILITY required to satisfy the issuance invariant — it is not itself the invariant.**
+
+> **⛔ Corrected: I had written *“K2 is the invariant.”* It is not.** **The invariants are *exactly one determination per challenge* (INV-B1) and *redrive is idempotent*.** **`redriveIssuance()` is a mechanism that serves them.** **Conflating the test with the rule it protects is the same category error as conflating a ruling with the evidence for it** — and it would let a passing K2 be mistaken for a proven invariant.
 
 #### The structural safeguard, sequenced deliberately
 
