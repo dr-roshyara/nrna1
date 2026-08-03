@@ -34,7 +34,7 @@
 
 | # | Change | Layer |
 |---|---|---|
-| **1** | **The promotion act** — `ChallengeRaised` reclassified from *internal domain event* to *published integration event* | **governance** — ADR-PL-01's clause requires it to be **explicit** |
+| **1** | **The promotion act** — `ChallengeRaised` reclassified from *internal domain event* to *published integration event* | **governance** — ADR-PL-01's clause requires it to be **explicit**. **Permission only; it allocates nothing** |
 | **2** | `ChallengeOutboxAdapter` gains a `writeRaised()` mapping (payload: `challengeId · contestedOutcome{electionId,type,targetId} · occurredAt`, `schema_version 1`) | Contestation Infrastructure |
 | **3** | `ChallengeRaisedHydrator` + registration — **publication and registration together, per the WP-3A precedent** | Contestation Infrastructure |
 | **4** | Canonical catalog: `ChallengeRaised`'s row gains published status | documentation governance |
@@ -46,11 +46,18 @@
 
 ## 4. What this commission does not do
 
-**It does not select among the four candidate paths** — R-75 already did that, and R-78 forbids reopening it. **It reports what R-75's adopted path requires in order to be delivered.**
+**It does not select among candidate paths.** **This commission assumes the governing model adopted by the ARB and identifies the minimum implementation required to realize it.** *(Phrased independently of ruling numbers deliberately: the report should stay readable if identifiers are renumbered, and its authority is the adopted model, not a citation.)*
 
-**It does not perform the promotion.** **ADR-PL-01 requires that act to be explicit, and an explicit act is a governance act.**
+### ⚠️ Two governance acts, and they must not be conflated
 
-**It does not allocate items 1–6 to a work package.** **§WP-3's scope was `ChallengeRouted`'s publication; §WP-4B's is the seam. Items 2–6 belong to neither as recorded** — an allocation the Board owns.
+| Act | The question it answers | What it does NOT answer |
+|---|---|---|
+| **Promotion** | **may `ChallengeRaised` become a published integration event?** | **who implements it** |
+| **Allocation** | **which work package owns the implementation?** | **whether it is permitted** |
+
+> **Recorded explicitly so that no future reader concludes that authorizing the promotion assigned engineering ownership. It would not.** **A promotion could be granted and the work remain unallocated indefinitely — the two acts are independent, and either may be taken without the other.**
+
+**This commission performs neither.** **ADR-PL-01 requires the promotion to be explicit, which makes it the Board's.** **And on allocation: §WP-3's scope was `ChallengeRouted`'s publication; §WP-4B's is the seam. Items 2–6 belong to neither as recorded.**
 
 ## 5. Correction carried forward
 
