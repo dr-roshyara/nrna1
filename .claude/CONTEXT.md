@@ -72,7 +72,7 @@ Priority: High
   EG-004 · EG-005 tracked in `docs/plans/20260726-2056-engineering-platform-repair-plan.md` — non-blocking.
 
 ## Next action (exactly one)
-**CONSIDER WP-4C** — `AdjudicationFailureDeclared`. **R-87 permits CONSIDERATION under normal governance; consideration is NOT authorization** (R-80). The first act is therefore an Engineering Readiness Review / EP-01 plan, then authorization — not implementation. **§WP-4 is still OPEN**: WP-4C and WP-4D are undelivered, and WP-4D remains unauthorized.
+**GOVERNANCE DECISION on WP-4C's SUBDIVISION** — `engineering/verification/reports/2026-08-04-wp4c-engineering-readiness-review.md`. Engineering recommends **WP-4C-1** (event + hydrator + catalog entry, executable now) and **WP-4C-2** (Contestation's challenge disposition, blocked on EPIC-004K §15.3). **Subdividing a work package is a governance act (R-68 precedent), not engineering's** — no plan is produced and nothing is built until authorization exists.
 
 ## Blockers
 - **WP-4B is ACCEPTED and CLOSED — R-87 (2026-08-04).** Capability milestone recorded once in the register: the realized architecture now spans **`Concluded → Issue Request → Recovery → Replay`**.
@@ -1860,3 +1860,12 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - **ARB verdict executed:** capability elevated above implementation — the plan now carries the **Domain Capability Ownership section** (capability stable; Rule/ML/LLM engines replaceable) · **the five-contract chain defined before code** (Observation · Recommendation Record · Developer Decision · **Decision Rationale as a SEPARATE concept** · Outcome) · **reason-code taxonomy** (ALREADY_PLANNED · DEADLINE_PRESSURE · FALSE_POSITIVE · DUPLICATE · WAITING_DEPENDENCY … + DEFERRED as decision value).
 - ⛔ **Two check-before findings flagged IN the plan, not hidden:** 1) **term collision — the FROZEN Capability Pattern's "capability" (invariant-protecting) ≠ the chain's business-capability sense; disambiguation = UL act for governance** · 2) **canon refuted "Domains own Capabilities" — DP-n anchors them; the ownership question is put to the human in BOTH readings** (which context? or which DP?).
 - ⏳ **STATUS: awaiting FINAL approval + the ownership answer.** Two human decisions pending on this thread: (a) context-or-DP ownership of the Recommendation capability, (b) the final EP-01 go.
+
+
+### Plan REV: outcome back-refs, capability-vs-service question, EIS staged (2026-08-04) — state + pointers only
+
+- **Outcome contract amended:** refers back to BOTH recommendation AND decision — the joins that make "accepted→improved?" and "ignored→unnecessary?" answerable.
+- **Inform-not-answer list added to the plan:** ⭐ **Domain Capability vs Application Service** (lifecycle/confidence/versioning → domain; mere transformation → service; the spike's operational shape is the evidence) · ownership (standing) · **recommendation→INTERVENTION generalization** (one kind among future assistance types; measuring interventions keeps the framework stable — staged with Run-2, not renamed now).
+- ⭐ **EIS staged as candidate headline KPI:** Engineering Improvement Score — % of interventions with measurable engineering improvement. Every recommendation = a small experiment (problem→recommendation→decision+rationale→commit→metric-delta→status). *v1 ships only the record fields that make it computable later.*
+- **The commercial sentence shelved as the product's north star:** what DG Nexolution would buy is "41% fewer violations, 18% faster delivery, 76% of accepted recommendations measurably improved engineering" — never "12,000 recommendations generated."
+- ⏳ **STATUS UNCHANGED: final approval + ownership answer still pending.**
