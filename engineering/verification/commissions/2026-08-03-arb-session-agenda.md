@@ -102,7 +102,13 @@ These are four independent properties and collapsing any two of them mis-plans t
 | **Current release — closes §WP-4** | **A-6 · A-7 · B-4 · B-5** + batches 7–11 + acceptance | §WP-4 closes *by acceptance*, then WP-8 is reachable (R-79) |
 | **Governance maintenance** | **B-6 · B-7 · B-8 · B-9 · B-10 · B-11 · B-12** | debt retired; no delivery consequence either way |
 
-**One deviation from the suggested grouping, with its reason.** The proposed horizons placed **promotion and allocation (A-6/A-7) in *Immediate*.** This agenda places them in **Current release**, on §4's finding: **R-76 scoped WP-4B to the request path, and the seam *reads* `contestedOutcome` from the record — so the absent producer makes the production path incomplete without making Batch 7 unbuildable.** They are on §WP-4's critical path, not on Batch 7's. **Recorded as a deviation rather than applied silently.**
+**One deviation from the suggested grouping, with its reason.** The proposed horizons placed **promotion and allocation (A-6/A-7) in *Immediate*.** This agenda places them in **Current release**:
+
+> **Under the adopted governing model (R-76: the request path only) and the delivery analysis recorded in this agenda, the absent producer does not prevent execution of Batch 7, but remains on the critical path to completing §WP-4.**
+
+**Stated that way deliberately, and the reason is this claim's own history.** An earlier phrasing read *"…without making Batch 7 unbuildable"* — **withdrawn as stronger than the evidence.** Engineering's position on this question moved twice before settling: first that `ContestedOutcomeRef`'s absence blocked construction of the command; then a **withdrawn sequencing inference**; then the production-path-versus-request-seam reading. **A conclusion twice revised is an architectural conclusion drawn under an adopted model — not a verified fact — and must carry the model it depends on.** If R-76's scope changes, this grouping changes with it.
+
+**Recorded as a deviation rather than applied silently.** Overruling it is the Chief's call.
 
 ## 3b. Held: the artifact split (not performed)
 
@@ -126,6 +132,16 @@ The recommendation to separate **ARB Session Agenda · Programme Governance Back
 2. **EPIC-004K §12** — cited in `CoordinatorIssuanceRequest`'s traceability for the half that justified the adapter adding nothing, while the obligation it places on the requester went unread.
 
 **Both are: a governing document referenced for the portion that supported the design, with the remainder unexamined.** Whether two occurrences meet the promotion threshold is the ARB's determination — **the threshold rule is ES-006.1's, and this agenda does not apply it.** Recorded because the evidence base moved, which is the only thing that reopens a frozen methodology question (`.claude/CLAUDE.md`: *"unless PublicDigit implementation exposes a genuine deficiency"*).
+
+## 5a. Session 1 scope — approved for deliberation
+
+**Session 1 rules the Immediate horizon and then stops: A-4 → A-3 → A-1 → A-2 → A-5.**
+
+**Governance maintenance (B-6…B-12) is NOT in Session 1's scope** — it is entered only if time remains *and* the Board explicitly decides to. This is the `rulable ≠ recommended` rule applied to the session itself: those items are rulable, and ruling them ahead of A-1 would delay the only decisions that release engineering.
+
+**Later sessions**, as advised: **S2** architecture (A-1 · A-2) · **S3** consequences (A-5 · A-6 · A-7) · **S4** programme governance (B-4 · B-5 · B-6 and the remaining recording matters). *(S1 opens with A-4/A-3 because both are independent and A-3 is already constrained by R-76; where the Board prefers to seat A-1 is its own sequencing call.)*
+
+**No omnibus motion.** Each item is a distinct governance act with its own evidence dependency — architecture adoption · execution authorization · delivery adjudication · recording correction · allocation. **Ruling them in one motion would merge act types the programme has spent the whole cycle separating**, and would leave no record of which evidence supported which decision.
 
 ## 6. Recommended ruling sequence
 
