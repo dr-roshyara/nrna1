@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Contexts\Adjudication;
+namespace Tests\Unit\Contexts\Adjudication\Process;
 
 use App\Contexts\Adjudication\Application\Command\IssueDeterminationCommand;
 use App\Contexts\Adjudication\Application\Port\RequestsDeterminationIssuance;
@@ -19,8 +19,14 @@ use App\Contexts\Adjudication\Domain\Determination\Legitimacy;
 use App\Contexts\Adjudication\Domain\Determination\Reason;
 use App\Contexts\Adjudication\Domain\Determination\TargetId;
 use App\Contexts\Adjudication\Domain\Determination\TargetType;
+use App\Contexts\Adjudication\Application\Port\AdjudicationDurations;
+use App\Contexts\Adjudication\Application\Port\IdentityGenerator;
+use App\Infrastructure\Shared\Clock\FrozenClock;
+use DateInterval;
 use DateTimeImmutable;
-use Tests\TestCase;
+use PHPUnit\Framework\TestCase;
+use Tests\Support\Adjudication\InMemoryAdjudicationProcessStore;
+use Tests\Support\Adjudication\InMemoryEventOutbox;
 
 /**
  * WP-4B RED — the conclude→issue seam and its crash-safe redrive.
@@ -54,12 +60,43 @@ use Tests\TestCase;
 final class ConcludeToIssuanceSeamTest extends TestCase
 {
     private ChallengeRef $challenge;
+    private InMemoryAdjudicationProcessStore $store;
 
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->challenge = ChallengeRef::fromString('ch-4b-seam-1');
+        $this->store = new InMemoryAdjudicationProcessStore();
+    }
+
+    /**
+     * Inert stand-ins, following the WP-2 precedent: these keystones exercise the SEAM,
+     * not the horizon, so the duration and identity collaborators are supplied and not
+     * asserted on.
+     */
+    private function durations(): AdjudicationDurations
+    {
+        return new class implements AdjudicationDurations {
+            public function maximumAdjudicationDuration(
+                ?string $electionType = null,
+                ?string $organisationId = null,
+            ): DateInterval {
+                return new DateInterval('P60D');
+            }
+        };
+    }
+
+    private function identities(): IdentityGenerator
+    {
+        return new class implements IdentityGenerator {
+            private int $n = 0;
+
+            public function next(): string
+            {
+                return 'id-'.++$this->n;
+            }
+        };
     }
 
     /** Records every issuance request without performing one — the seam's collaborator, doubled. */
@@ -110,11 +147,26 @@ final class ConcludeToIssuanceSeamTest extends TestCase
         );
     }
 
+    /**
+     * Constructed directly, not resolved from the container.
+     *
+     * WHY, recorded because the first RED run proved it: resolving the manager through the
+     * container drags in the outbox adapter, which calls `TenantContext::require()` and
+     * fails with *"Tenant context not set"*. That failure is the HARNESS, not the seam —
+     * it would have masked every behavioural assertion below. Direct construction with
+     * in-memory doubles keeps these keystones about the seam, which is also the WP-2
+     * precedent for this manager.
+     */
     private function manager(RequestsDeterminationIssuance $issuance): AdjudicationProcessManager
     {
-        $this->app->instance(RequestsDeterminationIssuance::class, $issuance);
-
-        return $this->app->make(AdjudicationProcessManager::class);
+        return new AdjudicationProcessManager(
+            $this->store,
+            new FrozenClock(new DateTimeImmutable('2026-08-03T10:00:00+00:00')),
+            $this->durations(),
+            new InMemoryEventOutbox(),
+            $this->identities(),
+            $issuance,
+        );
     }
 
     // ── K1: concluding requests issuance, exactly once ───────────────────────

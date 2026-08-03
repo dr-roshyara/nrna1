@@ -25,9 +25,11 @@
 
 ### 1c. Readiness verdict
 
-> **PLANNABLE NOW. NOT GREEN-ABLE NOW.**
+> **PLANNABLE NOW. THE SEAM IS IMPLEMENTABLE NOW. THE SLICE IS NOT PRODUCTION-COMPLETE NOW.**
 >
-> **RED can be written and will fail honestly. GREEN cannot complete, because three of ten command inputs have no production producer.** **All three prerequisites were previously identified — no new governance question arises here, and this is not a stop condition.**
+> **⚠️ CORRECTED 2026-08-03, after RED ran.** The earlier verdict said *“GREEN cannot complete.”* **That conflated two things.** **The seam's own tests CAN reach GREEN — the three values are supplied to the record by doubles, and the seam only reads the record.** **What cannot complete is the slice EXERCISED END TO END IN PRODUCTION, because the three producers are absent.**
+>
+> **This is the same distinction WP-4A recorded as *“registration ≠ delivery”*: a seam can be built and proven while nothing yet feeds it.** **All three prerequisites remain previously identified, and this is still not a stop condition.**
 
 **What is in this slice:** the seam, the redrive, the store query, the retention fields, and the signature widening.
 **What is upstream of it:** the three producers.
@@ -97,6 +99,22 @@
 | `redriveIssuance()` | the crash-recovery entry point |
 
 **No production code has been written. GREEN is not attempted, because three producers are absent (§1b).**
+
+### 3b. RED ITERATIONS (2026-08-03) — three runs, each revealing the next absence
+
+**The Board directed the ratchet: introduce the shape, re-run, capture the NEXT discriminating failure, repeat.** Result:
+
+| Run | Failure | What it was |
+|---|---|---|
+| **1** | *Interface `RequestsDeterminationIssuance` not found* | **the collaborator's absence**, masking everything |
+| **2** | *“Tenant context not set”* — `TenantContext::require()` | ⚠️ **MY HARNESS, NOT THE SEAM.** Resolving the manager from the container dragged in the outbox adapter. **It would have masked every behavioural assertion.** Corrected by constructing the manager directly with in-memory doubles — **the WP-2 precedent for this class** — and relocating the file to `tests/Unit/Contexts/Adjudication/Process/` |
+| **3** | *Call to undefined method `AdjudicationProcessManager::admitIssuanceContext()`* | ✅ **a genuine seam absence.** The arrival point for the two non-authority values does not exist |
+
+**Run 2 is the one worth recording.** A container-resolved manager made the suite fail for an infrastructural reason that had nothing to do with the seam — **a RED that looks red for the wrong cause is worse than no RED, because it cannot be distinguished from progress.**
+
+**Still not discriminating:** all four keystones share run 3's failure. **The ratchet continues: `admitIssuanceContext` → retention fields → the marker → `concludedAwaitingIssuance()` → the seam → reconciliation.** **K2 remains the least proven and is the roadmap's keystone.**
+
+**One consequence of run 3 to carry into GREEN:** the manager's constructor still takes five parameters, so **the issuance spy passed as a sixth is silently ignored by PHP.** GREEN's first step must add the constructor parameter, or K1 could appear to pass while requesting nothing.
 
 ## 4. GREEN Implementation Sequence
 
