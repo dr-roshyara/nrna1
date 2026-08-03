@@ -76,7 +76,7 @@ Priority: High
 
 ## Blockers
 - **WP-4B batch 7 — FROZEN pending the ARB ruling above.** Not a code defect: Batch 6's production code stands, and no candidate answer invalidates it (Q2/Q4 would ADD to it; Q5 touches only a test).
-- **The currently implemented request path does not realize §12's reconciliation behaviour.** EPIC-004K §12 specifies it (reconcile: ack on self-redelivery, else dead-letter + escalate); on the request path `DeterminationAlreadyIssued` escapes unhandled. **Evidential scope stated: the exception appears in 3 files (declaration · @throws · throw) and `grep -rn "catch (DeterminationAlreadyIssued" app/` returns NOTHING** — no assertion is made about paths outside `app/`. **§12's cited precedent DOES exist as working code, in Contestation (`Application/Inbox/ChallengeReactionOutcomeTranslator.php`: replay→ack · conflicting→dead-letter+escalate), so the eventual implementation need invent nothing — but it is seated at an INBOX boundary and `redriveIssuance()` is not an inbox handler, so whether its SEAT transfers is part of Q2.** **Behaviour is specified; ALLOCATION is open (Q2) — R-76 scoped WP-4B to the request path only, and only the Board may widen it.**
+- **The currently implemented request path does not realize §12's reconciliation behaviour.** EPIC-004K §12 specifies it (reconcile: ack on self-redelivery, else dead-letter + escalate); on the request path `DeterminationAlreadyIssued` escapes unhandled. **Evidential scope stated: the exception appears in 3 files (declaration · @throws · throw) and `grep -rn "catch (DeterminationAlreadyIssued" app/` returns NOTHING** — no assertion is made about paths outside `app/`. **§12's cited precedent DOES exist as working code, in Contestation (`Application/Inbox/ChallengeReactionOutcomeTranslator.php`: replay→ack · conflicting→dead-letter+escalate), so an ESTABLISHED TRANSLATION PATTERN FOR ANALOGOUS FAILURE HANDLING EXISTS — but EXISTENCE IS ESTABLISHED, SUITABILITY IS NOT: it is seated at an INBOX boundary translating CONTESTATION'S OWN exceptions, while `redriveIssuance()` is not an inbox handler and `DeterminationAlreadyIssued` is Adjudication's. Whether the pattern is REUSED, ADAPTED OR DEPARTED FROM is a design decision downstream of Q2, and DDD warrants reuse of CONCEPTS, never automatic reuse of IMPLEMENTATIONS.** **Behaviour is specified; ALLOCATION is open (Q2) — R-76 scoped WP-4B to the request path only, and only the Board may widen it.**
 - **`redriveIssuance()` has no per-process isolation** — one throwing process aborts the whole pass, and the query orders by `concluded_at`, so the oldest stuck process starves every newer one. **True under every crash model** (Q4).
 
 ## Open items (inventory — full text at the cited homes)
@@ -1587,3 +1587,44 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - Final review approved REV 5 ("structure follows demonstrated need" endorsed; the second-collector trigger endorsed; "KnowledgeOS stays consumer, never producer" to be preserved verbatim).
 - **Usage-phase observation log opened in the spike plan** (append-only; five kinds: IGNORED · ACTED · FALSE+ · MUTED · PERSISTENT) — observations about the TOOL, captured as they happen. Log starts with real usage.
 - **Standing picture:** every thread waits on real engineering evidence — usage log · 20–50 commits · WP-4B GREEN · docket rulings. Nothing else is mine to move.
+
+
+### CHAPTER CLOSED — final spike review approved (2026-08-03)
+
+- **Success criterion sharpened (behavioral, not numeric): the FIRST developer who changes code BECAUSE of a warning.** Commits are the window; the behavioral event is the evidence.
+- ⛔ **Category freeze:** the five observation kinds are final for the usage phase; expansion earns itself only on a "yes" to the one question (can static observations influence developer behavior?).
+- ⏳ Staged for phase end: the one-table retrospective (counts per kind).
+- **The three-layer closing picture recorded:** PublicDigit → Observation Tool → KnowledgeOS; each observes the layer below; none reaches down.
+- **The emergent progression noted (not designed upfront — emerged through review): Metric → Observation → Evidence → Engineering Decision — mirroring KnowledgeOS's own ladder.**
+
+> # ⛔ **ALL TRACKS AT REST. Every next step belongs to real engineering or to the humans. No further design turns.**
+
+
+### ADR DRAFTED: Repository Separation Strategy (2026-08-03) — state + pointers only
+
+- **`docs/adr/ADR_20260803_2200_Repository_Separation_Strategy.md` — PROPOSED, awaiting DA.** Decision: ONE repository through discovery/validation; separation follows VALIDATED architecture. Readiness Levels 0–4 with gates; Level-4 exit = the second-adopter gate (same gate as everything).
+- **Check-before finding recorded in the ADR: Level 1 is substantially ACHIEVED already** (ES-005.1 three concerns · three registered doc roots · app/Contexts · split test suites) — the repo is further along the ladder than the proposal assumed.
+- **Standing coding rule from the ADR: code as if separated (contracts/adapters), live as if never separating.** Language mapping = anticipated direction, not decided.
+
+
+### ADR REV 2 applied (2026-08-03) — state + pointers only
+
+- **Review 9.8/10; two refinements applied to the PROPOSED draft:** 1) the rule broadened to its true breadth — *PHYSICAL separation (repos · deployments · DBs · images · services · APIs) follows validated architectural boundaries* · 2) exit criterion added — *INDEPENDENT OWNERSHIP AND OPERATION* (operable independently, not merely buildable).
+- "Code as if already separated; live as if never separating" endorsed as a recurring principle — stands in the ADR; candidate for the engineering canon at acceptance.
+- The reviewer's consistency table (promote/commission/capability/split/extract — all evidence-triggered) noted: *"structural change is earned through operational evidence, not driven by anticipation"* — the platform's one philosophy, now visibly uniform across five decision types. Interpretation shelf; nothing minted.
+- ADR remains PROPOSED, awaiting DA. KnowledgeOS-Cloud ecosystem sketch = vision-level, no action.
+
+
+### ADR rated 10/10 as proposed; two observations shelved with one GUARD (2026-08-03)
+
+- **ADR final: no further changes; awaits the DA** alongside the docket.
+- ⛔ **GUARD on the review's three-layer model ("PublicDigit is not the center anymore"):** recorded as VISION-LEVEL ONLY — **it contradicts ruled canon as of today: AIP-14 Product Primacy (the platform exists solely to improve PublicDigit delivery; Election System = Core Domain; DA clarification 2026-07-27).** The inversion the layering implies is exactly what the second-adopter gate exists to decide. *Recording it unguarded would smuggle an unearned inversion — the layering waits at the same gate as everything else.*
+- **"Earned architecture" doctrine:** remembered per the reviewer's own deferral — the pattern (five decision types, one question: "when has this change been EARNED?") accumulates; the doctrine emerges from observed practice or not at all. No artifact.
+
+
+### IDEA INCUBATOR CREATED; workflow log opened (2026-08-03) — state + pointers only
+
+- **`docs/ideas/` created at the user's direction** ("write them down so I don't forget"): README (disclaimer: nothing here is architecture/governance/decision; "Ideas are free. Architecture is expensive."; four maturity states: adr=decided · architecture=built · plans=doing · ideas=someday) + three vision files, each with gate · not-allowed-today · canon guards: **AI Engineering Orchestration** (gate: months of workflow-log evidence; N-10 governs) · **KnowledgeOS Cloud** (gate: second adopter→customer→independent operation; AIP-14 guard) · **Engineering Observation Service** (gate: multi-product usage; adds no scope — points at existing staged items).
+- **`docs/knowledgeos/AI_Workflow_Observation_Log.md` opened** (both reviews approved immediate start): per-cycle entries + the seven COST signals (copy/paste count · approvals · iterations · wrong routing · overrides · AI disagreement · wait time). ⛔ The log's growth is the ONLY path to an AI-Orchestration ADR.
+- **ADR disposition confirmed by both reviews:** no automation ADR now (canon governs); separate ADR later, evidence-gated; never merged into the separation ADR. Consistency-table row added conceptually: automate-a-workflow | trigger = observed practice + reasoning-fails evidence.
+- Vision-Register idea NOT created (the reviewer's objection honored — no new governance artifact; the incubator is explicitly non-governance).

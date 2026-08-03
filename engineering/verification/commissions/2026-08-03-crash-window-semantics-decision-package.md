@@ -87,9 +87,15 @@ DeterminationAlreadyApplied  → IdempotentReplay          (ack, no-op)
 ConflictingDetermination     → PermanentInboxFailure     (dead-letter + escalate)
 ```
 
-**Its shape maps onto §12's reconcile almost exactly** — self-redelivery → ack; another writer issued → dead-letter + escalate. **This bears directly on Q2:** whatever the Board rules, the eventual implementation has an established house pattern and need invent nothing.
+**Its shape is analogous to §12's reconcile** — self-redelivery → ack; another writer issued → dead-letter + escalate.
 
-**One caveat against reading that as a ready-made answer:** the precedent is seated at an **inbox** boundary, translating a *consumed message's* failure. `redriveIssuance()` is not an inbox handler — it is invoked directly. **The precedent's shape transfers; whether its seat does is part of Q2, and is not settled here.**
+**Stated at the strength the evidence carries** (correction recorded in place, per the freeze's exception — an earlier line read *"the eventual implementation has an established house pattern and need invent nothing"*, which bundled two claims):
+
+> **The repository already contains an established translation pattern for analogous failure handling.** Whatever allocation the Board adopts, engineering can then evaluate whether that pattern should be **reused, adapted, or deliberately departed from**.
+
+**Existence of the pattern is established. Its suitability here is not** — that is a design decision, and DDD warrants reuse of *concepts*, never automatic reuse of *implementations*.
+
+**Two concrete reasons suitability cannot be assumed:** the precedent is seated at an **inbox** boundary, translating a *consumed message's* failure, whereas `redriveIssuance()` is not an inbox handler — it is invoked directly; and the precedent translates **Contestation's own** domain exceptions inside Contestation, while `DeterminationAlreadyIssued` is Adjudication's. **The shape may transfer; the seat and the ownership are open, and both belong to Q2.**
 
 **How this was missed, stated plainly:** the batch plan derived the seam from §11 (persistence, conclude-time atomicity) and R-72/R-76, and did not carry §12 into the RED boundary. §12 was cited in `CoordinatorIssuanceRequest`'s traceability line **as justification for the adapter adding nothing** — the sentence about INV-B1 owning uniqueness at the boundary — while the *obligation* §12 places on the requester was not read across. **A citation was treated as coverage.** This is the same failure mode as the ADR-T14 readiness tick: a document referenced for the half that supported the design, with the other half unexamined.
 
