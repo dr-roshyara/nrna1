@@ -137,7 +137,9 @@
 
 #### ⛔ No producer logic in the seam
 
-**The seam consumes an already-completed process record. It must never ask where `Jurisdiction`, `EvidenceEnvelopeRef` or `ContestedOutcomeRef` came from, and must never derive, reconstruct, default or look them up.**
+**The application service consumes domain facts that have already crossed bounded-context boundaries through approved integration contracts. It neither establishes those facts nor derives them.**
+
+**Concretely: the seam must never ask where `Jurisdiction`, `EvidenceEnvelopeRef` or `ContestedOutcomeRef` came from, and must never derive, reconstruct, default or look them up.**
 
 **Those ownership decisions belong to other bounded contexts and are already settled (R-73 · R-74 · R-75).** **If the seam begins reconstructing them it violates the separation the RED suite was written to preserve — and it would do so invisibly, because the tests supply the values and would still pass.**
 
@@ -145,11 +147,40 @@
 
 ### 3d. Cost finding from reading the code — recorded before paying it
 
-**`AdjudicationProcessState` rebuilds itself through an **11-parameter private constructor** at every transition (`admitEvidence`, `submitToAuthority`, `returnForMoreEvidence`, `concludeRulingRequested`, `concludeFailureDeclared`, `expire`), plus `open()` and `reconstitute()`.**
+> **⛔ WITHDRAWN — the cost was measured and it is much lower than I claimed.** I wrote *“around eight call sites”* from counting **transition methods**. **`grep -n "new self("` returns THREE**: `open()`, `reconstitute()`, and a **private `with(...)` funnel** every transition routes through.
+>
+> **Two fields therefore touch four places — the constructor, `open()`, `reconstitute()` and `with()` — not eight.** **The class is better designed than I credited: the funnel is exactly what makes field addition cheap, and I inferred a cost instead of measuring one.**
 
-**Adding the retention fields is therefore not local: two new fields touch every rebuild site and both factories — around eight call sites for a change the plan described in one line (S2/S3).**
+**No refactor of that pattern is proposed, and none is needed.**
 
-**Recorded rather than absorbed silently, because it changes the shape of step 2, not its correctness.** **No refactor of that pattern is proposed** — it is the class's established form, and changing it is not in this slice's authorized scope.
+### 3e. GREEN STEP 1 DONE — RED IS NOW DISCRIMINATING (2026-08-03)
+
+**Written:** the constructor parameter · `AdjudicationProcessManager::admitIssuanceContext()` · `AdjudicationProcessState::retainIssuanceContext()` with two retention fields and accessors · **`CoordinatorIssuanceRequest`** (the port's adapter) · its binding in `AdjudicationServiceProvider`.
+
+**⚠️ The adapter arrived earlier than the plan sequenced it, and the container forced it:** adding a required parameter broke boot, because **WP-4A's registration resolves the manager in `AdjudicationServiceProvider::boot()`**. *(A consequence of R-69's own delivery — worth noting, not a defect.)*
+
+**⚠️ One pre-existing test file was modified:** `AdjudicationProcessManagerTest` now supplies an inert issuance stand-in, in the same form WP-6's horizon collaborators took. **Disclosed here because acceptance must see it — a required constructor parameter cannot be added without it.**
+
+#### The failures are now discriminating
+
+| K | Failure | Kind |
+|---|---|---|
+| **K1** | *“Failed asserting that actual size 0 matches expected size 1”* | ✅ **behavioural** — concluding does not yet request issuance |
+| **K2** | `redriveIssuance()` undefined | ✅ the redrive entry point is absent |
+| **K3** | `redriveIssuance()` undefined | ✅ **same cause as K2, correctly** — both need that one entry point |
+| **K4** | consequential on K1 — nothing was requested, so there is no command to inspect | ✅ |
+
+**Three distinct causes, and one assertion now executes (0 → 1).** **That is the milestone: the suite is testing the seam rather than reporting missing symbols.**
+
+**Adjudication suites after the change: 72 passed · 4 failed (only the new keystones) · 23 risky (pre-existing).**
+
+#### Next, unchanged in order
+
+**The `issuanceRequestedAt` marker → `concludedAwaitingIssuance()` → redrive → INV-B1 reconciliation.** **K2 is still the invariant and still the least proven.**
+
+#### The structural safeguard, sequenced deliberately
+
+**An architecture test asserting the seam has no producer dependency is the right complement to the behavioural keystones. Deptrac already forbids the CROSS-CONTEXT half** (`AdjudicationApplication: [AdjudicationDomain, Shared]`), **so what an ADV would add is the INTRA-context constraint: no repository lookup, no aggregate load, no derivation inside the seam.** **It becomes assertable once the seam's body exists — writing it now would constrain code that has not been written.**
 
 ## 4. GREEN Implementation Sequence
 

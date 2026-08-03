@@ -6,6 +6,8 @@ namespace App\Contexts\Adjudication\Application\Process;
 
 use App\Contexts\Adjudication\Application\Process\Exception\IllegalProcessTransition;
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
+use App\Contexts\Adjudication\Domain\Determination\ContestedOutcomeRef;
+use App\Contexts\Adjudication\Domain\Determination\EvidenceEnvelopeRef;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceSet;
 use App\Contexts\Adjudication\Domain\Determination\IssuedByAuthority;
@@ -53,6 +55,8 @@ final class AdjudicationProcessState
         private readonly ?Legitimacy $legitimacy,
         private readonly ?Reason $reason,
         private readonly ?DateTimeImmutable $concludedAt,
+        private readonly ?ContestedOutcomeRef $contestedOutcome = null,
+        private readonly ?EvidenceEnvelopeRef $evidenceEnvelopeRef = null,
     ) {
     }
 
@@ -95,6 +99,8 @@ final class AdjudicationProcessState
         ?Legitimacy $legitimacy,
         ?Reason $reason,
         ?DateTimeImmutable $concludedAt,
+        ?ContestedOutcomeRef $contestedOutcome = null,
+        ?EvidenceEnvelopeRef $evidenceEnvelopeRef = null,
     ): self {
         return new self(
             $id,
@@ -108,6 +114,27 @@ final class AdjudicationProcessState
             $legitimacy,
             $reason,
             $concludedAt,
+            $contestedOutcome,
+            $evidenceEnvelopeRef,
+        );
+    }
+
+    /**
+     * WP-4B (R-72): retain the two issuance inputs this context does not produce.
+     *
+     * **The process records what arrived; it does not fetch, derive or default it.**
+     * `ContestedOutcomeRef` is Contestation's (R-75) and `EvidenceEnvelopeRef` is the
+     * Evidence context's (R-74) — this method is where those facts LAND, never where
+     * they are established.
+     */
+    public function retainIssuanceContext(
+        ContestedOutcomeRef $contestedOutcome,
+        EvidenceEnvelopeRef $evidenceEnvelopeRef,
+    ): self {
+        return $this->with(
+            $this->status,
+            contestedOutcome: $contestedOutcome,
+            evidenceEnvelopeRef: $evidenceEnvelopeRef,
         );
     }
 
@@ -262,6 +289,18 @@ final class AdjudicationProcessState
         return $this->concludedAt;
     }
 
+    /** Contestation's fact, retained — never derived here (R-75). */
+    public function contestedOutcome(): ?ContestedOutcomeRef
+    {
+        return $this->contestedOutcome;
+    }
+
+    /** The Evidence context's fact, retained — never derived here (R-74). */
+    public function evidenceEnvelopeRef(): ?EvidenceEnvelopeRef
+    {
+        return $this->evidenceEnvelopeRef;
+    }
+
     /** @param list<string>|null $admittedEvidence */
     private function with(
         AdjudicationProcessStatus $status,
@@ -272,6 +311,8 @@ final class AdjudicationProcessState
         ?Legitimacy $legitimacy = null,
         ?Reason $reason = null,
         ?DateTimeImmutable $concludedAt = null,
+        ?ContestedOutcomeRef $contestedOutcome = null,
+        ?EvidenceEnvelopeRef $evidenceEnvelopeRef = null,
     ): self {
         return new self(
             $this->id,
@@ -285,6 +326,8 @@ final class AdjudicationProcessState
             $legitimacy ?? $this->legitimacy,
             $reason ?? $this->reason,
             $concludedAt ?? $this->concludedAt,
+            $contestedOutcome ?? $this->contestedOutcome,
+            $evidenceEnvelopeRef ?? $this->evidenceEnvelopeRef,
         );
     }
 

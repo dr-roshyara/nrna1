@@ -142,7 +142,7 @@ final class ConcludeToIssuanceSeamTest extends TestCase
             Legitimacy::Legitimate,
             Reason::fromString('the contested result is unsupported'),
             IssuedByAuthority::fromString('constitutional-authority-1'),
-            EvidenceSet::of(['envelope-sha256-abc']),
+            EvidenceSet::fromRefs('envelope-sha256-abc'),
             Jurisdiction::fromString('federal'),
         );
     }

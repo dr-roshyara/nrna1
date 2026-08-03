@@ -8,10 +8,13 @@ use App\Contexts\Adjudication\Application\Port\AdjudicationDurations;
 use App\Contexts\Adjudication\Application\Port\AdjudicationProcessStore;
 use App\Contexts\Adjudication\Application\Port\EventOutbox;
 use App\Contexts\Adjudication\Application\Port\IdentityGenerator;
+use App\Contexts\Adjudication\Application\Port\RequestsDeterminationIssuance;
 use App\Contexts\Adjudication\Application\Process\Exception\LateDecisionOnExpiredAdjudication;
 use App\Contexts\Adjudication\Domain\Events\AdjudicationExpired;
 use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
+use App\Contexts\Adjudication\Domain\Determination\ContestedOutcomeRef;
+use App\Contexts\Adjudication\Domain\Determination\EvidenceEnvelopeRef;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceSet;
 use App\Contexts\Adjudication\Domain\Determination\IssuedByAuthority;
@@ -51,6 +54,7 @@ final class AdjudicationProcessManager
         private readonly AdjudicationDurations $durations,
         private readonly EventOutbox $outbox,
         private readonly IdentityGenerator $identities,
+        private readonly RequestsDeterminationIssuance $issuance,
     ) {
     }
 
@@ -73,6 +77,29 @@ final class AdjudicationProcessManager
         $this->store->save($process);
 
         return $process->id();
+    }
+
+    /**
+     * WP-4B (R-72): the arrival point for the two issuance inputs Adjudication does not
+     * produce — `ContestedOutcomeRef` (Contestation, R-75) and `EvidenceEnvelopeRef`
+     * (the Evidence context, R-74).
+     *
+     * **It names WHERE those facts land, never WHO delivers them.** The producers are
+     * outside this slice, and this method must never acquire, derive or default what it
+     * is given: the process records facts that have already crossed a boundary through an
+     * approved contract; it does not establish them.
+     */
+    public function admitIssuanceContext(
+        ChallengeRef $challenge,
+        ContestedOutcomeRef $contestedOutcome,
+        EvidenceEnvelopeRef $evidenceEnvelopeRef,
+    ): void {
+        $process = $this->store->activeForChallenge($challenge);
+        if ($process === null) {
+            return;
+        }
+
+        $this->store->save($process->retainIssuanceContext($contestedOutcome, $evidenceEnvelopeRef));
     }
 
     /** PM-2: admit an opaque evidence reference into this judgment. */

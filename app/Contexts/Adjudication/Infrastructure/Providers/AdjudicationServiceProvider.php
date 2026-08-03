@@ -9,6 +9,7 @@ use App\Contexts\Adjudication\Application\Port\AdjudicationDurations;
 use App\Contexts\Adjudication\Application\Port\AdjudicationProcessStore;
 use App\Contexts\Adjudication\Application\Port\EventOutbox;
 use App\Contexts\Adjudication\Application\Port\IdentityGenerator;
+use App\Contexts\Adjudication\Application\Port\RequestsDeterminationIssuance;
 use App\Contexts\Adjudication\Application\Port\TransactionManager;
 use App\Contexts\Adjudication\Application\Service\AdjudicationService;
 use App\Contexts\Adjudication\Application\Service\CoordinatesAdjudication;
@@ -18,6 +19,7 @@ use App\Contexts\Adjudication\Infrastructure\Identity\UuidIdentityGenerator;
 use App\Contexts\Adjudication\Infrastructure\Config\ConfiguredAdjudicationDurations;
 use App\Contexts\Adjudication\Infrastructure\Outbox\AdjudicationExpiredHydrator;
 use App\Contexts\Adjudication\Infrastructure\Outbox\DeterminationIssuedHydrator;
+use App\Contexts\Adjudication\Infrastructure\Issuance\CoordinatorIssuanceRequest;
 use App\Contexts\Adjudication\Infrastructure\Outbox\OutboxEventAdapter;
 use App\Contexts\Adjudication\Infrastructure\Repositories\EloquentAdjudicationProcessStore;
 use App\Contexts\Adjudication\Infrastructure\Repositories\EloquentDeterminationRepository;
@@ -39,6 +41,11 @@ final class AdjudicationServiceProvider extends ServiceProvider
         $this->app->bind(AdjudicationProcessStore::class, EloquentAdjudicationProcessStore::class);
         // WP-6: Q-2 owns the durations; the APM only enforces them (section 81).
         $this->app->bind(AdjudicationDurations::class, ConfiguredAdjudicationDurations::class);
+
+        // WP-4B: the conclude->issue seam's second half. The manager REQUESTS issuance
+        // through this port so the conclusion write and the issuance transaction never
+        // sit in one collaborator's reach (ADR-T1 - EPIC-004K section 11).
+        $this->app->bind(RequestsDeterminationIssuance::class, CoordinatorIssuanceRequest::class);
 
         // AdjudicationService = transactional decorator over the (frozen)
         // CoordinatesAdjudication coordinator.

@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Tests\Unit\Contexts\Adjudication\Process;
 
 use App\Contexts\Adjudication\Application\Port\AdjudicationDurations;
+use App\Contexts\Adjudication\Application\Command\IssueDeterminationCommand;
 use App\Contexts\Adjudication\Application\Port\IdentityGenerator;
+use App\Contexts\Adjudication\Application\Port\RequestsDeterminationIssuance;
 use App\Contexts\Adjudication\Application\Process\AdjudicationProcessManager;
 use App\Contexts\Adjudication\Application\Process\AdjudicationProcessStatus;
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
@@ -53,6 +55,7 @@ final class AdjudicationProcessManagerTest extends TestCase
             $this->durations(),
             new InMemoryEventOutbox(),
             $this->identities(),
+            $this->inertIssuance(),
         );
     }
 
@@ -66,6 +69,22 @@ final class AdjudicationProcessManagerTest extends TestCase
      * not justify new shared support classes, and the WP-6 remediation package authorizes
      * repairing THIS file — not widening the test-support surface.
      */
+    /**
+     * WP-4B added the issuance collaborator to the constructor. These keystones exercise
+     * the CONDUCT (PM-1/PM-4/PM-5/PM-6), not the conclude->issue seam, so it is supplied
+     * as an inert stand-in rather than asserted on -- the same treatment WP-6's horizon
+     * collaborators received above. The seam has its own keystones in
+     * `ConcludeToIssuanceSeamTest`.
+     */
+    private function inertIssuance(): RequestsDeterminationIssuance
+    {
+        return new class implements RequestsDeterminationIssuance {
+            public function request(IssueDeterminationCommand $command): void
+            {
+            }
+        };
+    }
+
     private function durations(): AdjudicationDurations
     {
         return new class implements AdjudicationDurations {
