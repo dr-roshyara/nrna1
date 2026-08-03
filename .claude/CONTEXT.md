@@ -72,13 +72,13 @@ Priority: High
   EG-004 · EG-005 tracked in `docs/plans/20260726-2056-engineering-platform-repair-plan.md` — non-blocking.
 
 ## Next action (exactly one)
-**WP-4B batch 7 — RESUME under R-81..R-85.** Sequence: (a) R-81's per-process isolation in `redriveIssuance()` · (b) R-84's §12 reconcile — ack on self-redelivery, dead-letter + escalate otherwise · (c) R-85's K2 setup amendment **plus a NEW model-B keystone** (determination exists, marker absent ⇒ reconcile ⇒ exactly one determination). **Mechanism is engineering's (F-B) — the ARB authorized slices, not constructs.** Cadence unchanged: Change → Compile → Static analysis → Relevant tests → Commit.
+**WP-4B ACCEPTANCE DECISION by the accepting authority** — evidence: `engineering/verification/reports/2026-08-04-wp4b-acceptance-evidence.md` (engineering recommendation: **READY FOR ACCEPTANCE**). **Engineering does not accept its own work (EP-02 · R-34), and §WP-4 closes BY ACCEPTANCE, never by authorization.** WP-4C is considered only after WP-4B is accepted.
 
 ## Blockers
-- **NONE blocking WP-4B batch 7.** **R-81–R-85 were ADOPTED WITHOUT AMENDMENT by the Decision Authority on 2026-08-04 (adoption act: R-86).** They are **GOVERNING**; the provenance annotations stand as historical record of the preparation process. **Batch 7 is RELEASED and engineering is AUTHORIZED.**
-- **⚠️ ADOPTION AUTHORITY WAS NOT DELEGATED.** Option C was available and declined — *“constitutional changes deserve their own deliberation.”* **R-86 adopts five named rulings ONCE and creates NO standing delegation: any future ruling issued by the ARB Chief remains PREPARED, NOT ADOPTED, until the Decision Authority acts on it.**
-- **Open, and NOT blocking batch 7:** `ChallengeRaised` **promotion** (permission) and **allocation** (ownership) — under R-76 and the recorded delivery analysis these bear on the production producer path and §WP-4 closure. **PM-6's confirmation half remains unallocated** (R-82).
-- **Governance maintenance B-4..B-12 remains UNOPENED** — expressly outside R-86; opening Session 2 requires a **fresh** decision and is not implied by the adoption.
+- **None blocking WP-4B.** All batches delivered; R-81–R-85 adopted by R-86 and implemented. `composer merge-gate` **PASS** (281 · 729, exit 0) · greenfield PHPStan **[OK] No errors** · Adjudication suite **80 passed / 0 failed / 26 risky** · seam keystones **8/8**.
+- **⚠️ OPERATIONAL: 15 commits unpushed** on `feature/pb003`, measured against `origin/feature/pb003`. `git push` returns `Permission denied (publickey)` in a non-interactive shell because the key is passphrase-protected — **this requires the human.**
+- **Open, outside WP-4B's scope (R-86 adopted none of these):** `ChallengeRaised` **promotion** (permission) and **allocation** (ownership) · **PM-6's confirmation half** (R-82 declined to allocate it) · **`enforceHorizon()` isolation** (identical defect; R-81 names `redriveIssuance()` only — ER-08, later slice) · **ENG-012** (risky 105→108, cause unestablished).
+- **Governance maintenance B-4..B-12 remains UNOPENED** — opening Session 2 requires a fresh decision.
 
 ## Open items (inventory — full text at the cited homes)
 - Tracked: AD-M2 (ADR-MP-05/Q5, only under business pressure) · G-1 release tag · Jurisdiction
@@ -1737,3 +1737,110 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - **Idea file rephrased:** runtime = *potential* future execution center IF evidence justifies extraction; today's center is PublicDigit (AIP-14). Vision-graded, gate-listed.
 - **Watch opened (shelf): the Idea → Specification → Reference → Conformance → Implementations pattern** — n=1 (LCOM4); candidate future applications: CBO · fitness rules · governance policies · PKS/KnowledgeOS APIs. Rediscovery promotes; not before.
 - **Reviewer's maturity snapshot recorded** (spec ✅ · collector ✅ · conformance ✅ · runtime 💡gated · store 🟡 · consumer 🟡 · multi-language 💡 · SDK 💡) — *"the architecture has been earned incrementally rather than assumed up front"* stands as the current-state description.
+
+
+### SEI watch opened (2026-08-04) — state + pointers only
+
+- **New watch (reviewer request): SPECIFICATION / EXECUTION / INTERPRETATION as a recurring three-way separation.** Honest count: **n=2 real** (LCOM4: expected.json/collector/KnowledgeOS · governance: rule/executable-assertion/ARB) **+ 1 shape-only** (PKS: policy/implementation/KnowledgeOS — asserted, not yet exercised). *Facet-lesson applied at intake: instances counted only where all three roles are real.* Not architecture; watching for independent re-emergence.
+- The universal-lifecycle observation (Brainstorm→Idea→Spec→Reference→Conformance→Evidence→Promotion) noted as CONVERGENT with the recorded operating lifecycle + the spec-first watch — one shelf entry, not two.
+- All other items in the review = confirmations of already-recorded state; no deltas.
+
+
+### Outward-measurement design staged; watch-count caution recorded (2026-08-04) — state + pointers only
+
+- **Run-2+ measurement design STAGED (the frozen Validation Report is untouched):** six outcome dimensions for the outward question — delivery speed · code quality trends · decision quality (recommendation-followed→no-later-refactor) · knowledge reuse (ADR hits, rediscovery avoided) · governance effectiveness (violations prevented) · ⭐ **ENGINEERING CONFIDENCE (new category: confident-vs-guessing)**. Framed as a LONGITUDINAL STUDY (intervention→outcomes→trend→attribution), never "platform exists → platform successful". **Unit of measurement: engineering BEHAVIOR, not KnowledgeOS.**
+- **"Engineering Intelligence" resurfaced with a NARROWER responsibility** (outcome attribution: "did engineering improve BECAUSE the platform intervened?") — converges with the shelved candidate name + the parked Assessment commission; future bounded context, NOT built; evidence collection is today's whole job.
+- ⛔ **Watch-count caution adopted:** current active watches ≈7 (MO-1 · IF-1 · DG-1 · EV-1 · spec-first · SEI · OBS-1) — manageable; **a review/merge/retire mechanism for watches is designed only when ≈15–20 makes the list itself a burden** — the evidence-first rule applied to the watch system itself.
+- Shelf: phase snapshot (P1–P2 100% · P3 ~85% · P4 ~35% · P5 ~10%) · three rediscovery engines (technical/governance/architectural) · the standing transition sentence: **from architecting KnowledgeOS to RUNNING AN EXPERIMENT ON KnowledgeOS itself.**
+
+
+### Loop made explicit; fourth engine shelved (2026-08-04) — state + pointers only
+
+- **The staged Run-2+ design gains its missing piece: the EXPLICIT closed loop — and it closes at ENGINEERING OUTCOME, not at KnowledgeOS:** Developer → PublicDigit → Observation Platform → KnowledgeOS → PKS Recommendation → Developer Decision → **Engineering Outcome → back to the Observation Platform.** *Recommendations are not results; outcomes are — and outcomes are themselves observed.*
+- **Fourth rediscovery engine shelved as OBSERVATION (per the reviewer's own grading): the Product Learning Engine** (engineering → observations → KnowledgeOS learns → better recommendations → engineering) — distinct from the technical/governance/architecture engines: it improves the product, not the architecture. n=0 exercised (the loop's PKS-recommendation edge has no formal instances yet).
+- **The standing characterization, upgraded once and finally: the architecture is becoming FALSIFIABLE** — *"we have defined how to observe whether KnowledgeOS improves engineering, and we'll accept whatever the evidence shows."* Recorded as the programme's epistemic position.
+
+
+### DEV-GUIDE AUDIT (user): obligation skipped + net blind spot — both fixed; OE-KOS-3 recorded (2026-08-04)
+
+- ⛔ **Conceded: the Developer-Guide DoD was SKIPPED for every engineering-tooling step** (metrics v1–v3 · collectors · suite — zero guides). The rule binds without reminders; I relied on the silent net.
+- **Root cause of the silent net (verified in source): the Stop hook's area derivation had NO `scripts/` pattern** — file log recorded the files; derivation produced zero areas. Blind spot, not malfunction.
+- **Remediated same turn:** ⭐ 4 guides written (`developer_guide/engineering_observations/00–03`: index · metrics tool · test-presence · LCOM4+conformance) · ⭐ hook extended (`scripts/<seg>/` + aliases metrics/observations→engineering_observations) · **verified twice** (real log: adjudication nudged — a real gap from the delivery track — and engineering_observations matched-silent; synthetic: NUDGE fired).
+- ⭐⭐ **OE-KOS-3 recorded (first NON-WP-4B entry — a Run-2 comparable lands):** and it carries the arc's first **FORMAL BACK-EDGE traversal at the INSTRUMENTATION level** (observed deficiency → recorded evidence → platform-machinery change with records; canon-level formal = still 0). **DG-1's watch row joined the register at this entry (pre-authorized), first instance = FAILURE-MODE.** Dashboard updated (OE=3; back-edge row regraded).
+- **Note honestly: the platform did NOT catch this — the USER's audit did.** Recorded in the entry verbatim.
+
+
+### OE-KOS-3 review: new candidate principle OI-1; two futures shelved (2026-08-04) — state + pointers only
+
+- ⭐ **New candidate principle OI-1 (from OE-KOS-3's generalization): every governance obligation should have corresponding instrumentation that checks it.** Honest intake count: **n=4 obligation↔instrument pairs already operating** (TDD↔test-presence · dev-guide↔hook(now fixed) · session-log↔reminder · discipline↔tripwire) **+ 1 failure-instance proving the cost of a gap** (OE-KOS-3). **Corollary staged with it: obligations MIGRATE from human-audit to executable verification as evidence accumulates** — sibling of EV-1 (artifacts→verification), distinct scope (obligations→instrumentation). Ladder-bound; not promoted.
+- **The standing lesson recorded verbatim:** *governance obligations must never depend on reminder coverage — the reminder is instrumentation; the obligation exists independently* (and must survive runtime changes: Actions/Claude/GPT/IDE/CLI).
+- **Shelved with convergence pointers:** DoD-as-merge-contract inversion (→ already-routed Layer-3/4 advisory→enforcing gate; this is its fuller form) · **Verification Engine** (policy→engine→checks; reminders become implementations of one capability) → ⭐ **converges with the Cloud idea's rules-as-data governance engine — the same engine seen from the local side.** Neither built; the reviewer's own "hasn't earned itself yet" is the gate.
+
+
+### OI-1 refined (2026-08-04) — state + pointers only
+
+- **OI-1 REWORDED (survives longer):** *every governance obligation should have a DEFINED VERIFICATION MECHANISM* — mechanisms include executable checks · human review · periodic audits · measurements · observations; **instrumentation is ONE implementation strategy, not the principle.**
+- **Hierarchy hypothesis recorded (reviewer's, graded as interpretation):** OI-1 as the PARENT — EV-1 · DG-1 · test-presence · ADR checks as specializations beneath it. *Plausible (OI-1 explains why EV-1 exists); the ladder decides structure, not the shelf.*
+- ⭐ **The layering distinction preserved verbatim:** `Governance Rules → Verification Mechanisms → Runtime Instrumentation → Observations` — **the Verification-Mechanisms layer is NOT runtime instrumentation**; the policy exists independently of every runtime (the deep principle: *policy → verification → instrumentation → runtime, never reminder → policy*).
+- Verification Engine: shelf confirmed — today it would wrap four shell scripts; it becomes the simplest architecture only when independent obligations multiply.
+
+
+### The layering's canonical formulation preserved (2026-08-04) — state + pointers only
+
+> ⭐ **PRESERVED VERBATIM (the technology-free essence):** *"Governance defines obligations. Verification mechanisms determine how obligations are evaluated. Runtime instrumentation executes those mechanisms and produces observations."*
+
+- **Migration corollary refined into the MECHANISM-MATURATION ladder:** human review → checklist → executable check → continuous monitoring — **the rule never changes; only its verification mechanism matures.** (Rule→mechanism→instrumentation worked examples recorded: TDD/test-existence/PHPUnit · boundaries/dependency-verification/Deptrac-or-ArchUnit · review/human/PR — the multi-language implication: producers change, the observation contract does not.)
+- **Verification Engine shelf entry gains EXPLICIT trigger conditions (per review):** several independent mechanisms · multiple execution environments · duplicated orchestration logic · recurring maintenance pain — extraction then SIMPLIFIES rather than anticipates.
+- **Spec-first watch EXTENDED (same entry, longer chain):** Spec → Reference → Conformance → Verification Mechanism → Instrumentation → Observation → Learning — rediscovered in collectors · governance · dev-guides · executable assertions · observation collection; **emerging pattern, not architectural law** (the reviewer's own grading).
+
+
+### The layering proves itself on its own origin incident (2026-08-04) — state + pointers only
+
+- ⭐⭐ **OE-KOS-3 re-read in the four-layer model, precisely (recorded in state; the append-only entry stands unedited):** Governance Rule ✔ · Verification Mechanism ✔ (documentation verification existed) · **Runtime Instrumentation ✘ (coverage bug)** · Observation ✔ (OE-KOS-3). **The rule did not fail; the hook did — and before the middle layer existed, the architecture could not SAY that.** *A real failure exposed the missing abstraction; the refinement exists to describe the failure correctly — evidence-driven architecture in one incident.*
+- **Maturation ladder upgraded in meaning:** not manual-vs-automatic but a CONFIDENCE maturity model — the rule constant, confidence increasing (human review → checklist → executable → continuous).
+- **New sub-watch (attached to the layering entry, honest convergence note):** the **G/V/O responsibility split** (governance defines · verification determines · observation records) — ⚠️ *likely the four-layer model re-sliced as responsibilities; counted separately ONLY if it emerges with independent content. Distinct from SEI (artifact roles vs runtime-loop responsibilities).*
+- **OBS-1 gains staged fields:** the future observation contract wants `rule` + `mechanism` + `status` alongside collector/value — staged with the schema unification, not bolted on now.
+
+
+### Model correction: observation sits BESIDE the path (2026-08-04) — state + pointers only
+
+- ⭐ **Layering corrected per review: OBSERVATION is not a fourth stage on the execution line — it sits BESIDE the path, recording success AND failure alike.** *It is evidence ABOUT the failure, never a participant in it.* (The OE-KOS-3 four-check reading stands; the ✔ on Observation means "recorded", not "passed".) This matters when observations arrive from many sources.
+- **OBS-1 staged contract extended:** `rule · mechanism · instrumentation · status · collector · value · timestamp · project · artifact` — KnowledgeOS understands ONLY this contract; everything tool-shaped stays below it.
+- ⭐⭐ **New candidate heuristic, preserved verbatim (n=1, OE-KOS-3 as its proof-instance):** *"A useful architectural abstraction increases EXPLANATORY PRECISION"* (reworded per review: precision = the SAME incident explained at finer resolution; breadth = MORE phenomena explained — separate axes, earned separately) — the test is not more classes/diagrams/patterns but: **can the architecture explain real engineering events more precisely than before?** Before/after on OE-KOS-3: "the process failed" → "rule held · mechanism existed · instrumentation had a coverage defect · observation captured it."
+- G/V/O confirmed as a VIEW of the four-layer model (independence only if it explains what the layers cannot) — grading unchanged.
+- **Mode statement recorded:** from DESIGNING KnowledgeOS to DISCOVERING recurring structures by observing our own engineering — patterns uncovered by practice stay stable; patterns introduced by preference don't.
+
+
+### Heuristic reworded; process inversion recorded (2026-08-04) — state + pointers only
+
+- **Heuristic wording fixed: explanatory PRECISION** (see amended entry above) · the orthogonal-observation diagram confirmed as the standing picture (observation records both branches; never participates).
+- ⛔ **The uniform-candidate-schema caution MERGED with the existing watch-mechanism gate** (one future mechanism, not two): when watches/candidates/heuristics multiply (~15–20), they get uniform representation — **the reviewer's proposed shape staged with it: candidate · evidence count · independent rediscoveries · counterexamples · promotion gate · confidence · owner.** Not built; the shape is decision-readiness for that day.
+- ⭐⭐ **The process inversion recorded as the era's defining line: ARCHITECTURE IS BECOMING AN OUTPUT OF ENGINEERING RATHER THAN AN INPUT** (engineering event → observation → candidate → rediscovery → architecture).
+- **The three inflection points shelved as the programme's self-summary:** 1) evidence before architecture · 2) specification owns truth · 3) **abstractions judged by explanatory precision** — the third being the newest and the removal-test too: *an abstraction that adds no precision is a candidate for removal, not promotion.*
+
+
+### ⛔ META-PRINCIPLE FREEZE (2026-08-04) — the shelf closes; contact-with-engineering begins
+
+> # ⛔ **No new meta-principles, heuristics, watches, or candidate patterns are DISCOVERED from here.** The existing set (EV-1 · OI-1 · SEI · spec-first · G/V/O · explanatory-precision · engineering-confidence · OBS-1 · …) must now **SURVIVE CONTACT WITH MONTHS OF ENGINEERING.** Counting, corrections, and evidence intake continue; minting stops. *(The same move as every prior freeze: the set is complete enough to be tested; further additions dilute the test.)*
+
+- ⭐⭐ **THE PROTECTED SENTENCE (preserved verbatim, per the reviewer's "protect this most"):** *"KnowledgeOS is measured by changes in engineering behavior, not by its own activity."* — kills vanity metrics, self-referential dashboards, and "AI generated 300 recommendations" forever.
+- **The staged candidate schema RECLASSIFIED: it is a KNOWLEDGE LIFECYCLE, not a watch mechanism** — same seven fields, deeper identity; still gated on the ~15–20 threshold.
+- **The programme's self-summary is now FOUR inflection points:** 1) evidence before architecture · 2) specification owns truth · 3) **architecture is an OUTPUT of engineering** · 4) **abstractions judged by explanatory precision — and removable when it lapses** *(architectural evolution made REVERSIBLE)*.
+- **Maturity honestly stated:** governance/process very mature · observation platform prototype-validated · **the one remaining uncertainty: does the learning loop actually improve engineering** — designed, not yet exercised. Everything else exists to answer that.
+
+
+### ⛔ ARCHITECTURE DISCOVERY FREEZE v1.0 + THE EVIDENCE DASHBOARD (2026-08-04) — the phase boundary
+
+> # ⛔ **ARCHITECTURE DISCOVERY FREEZE v1.0 (adopted, superseding the meta-principle freeze with the stronger rule):** no discovering principles · watches · heuristics · meta-models · candidate patterns · abstractions — **UNLESS months of engineering produce evidence THE EXISTING MODEL CANNOT EXPLAIN** *(the reopening condition binds to the explanatory-precision heuristic: only an explanatory failure reopens discovery).* Refinements of existing knowledge ("EV-1 wasn't broad enough") are the expected future — and they are not discovery.
+
+- ⭐ **THE EVIDENCE DASHBOARD BUILT (the one thing the review said to build) — TDD-first (RED→GREEN, 4 tests/16 assertions):** `scripts/observations/EvidenceDashboardRenderer.php` + runner → **`engineering/verification/observations/DASHBOARD.md` — generated from LIVE data** (3 metric snapshots · mean CBO 3.98 · 17 WARN · 19 hotspots · LCOM4 worst · OE=3) **+ the eight OUTCOME questions as HONEST EMPTY CELLS, each naming its filling source.** Verdict-free pinned by test. Developer guide 04 shipped WITH it (DoD lesson applied). Regenerate: `php scripts/observations/dashboard-renderer.php`.
+- **Phase 3 (Engineering Validation) formally begins:** the loop (work → observation → recommendation → decision → outcome → learning) is to EXECUTE hundreds of times, not be redesigned. Expected future discoveries: refinements, exceptions, failures of existing principles — mature-discipline material.
+- **The dashboard's correct current state, stated in its own guide:** impressive streams + all-empty outcomes table = HONEST. *Resist filling cells with anything but evidence.*
+
+
+### RECOMMENDATION ENGINE v1: PLAN AWAITING EP-01 APPROVAL (2026-08-04) — state + pointers only
+
+- **`docs/plans/20260804-1200-recommendation-engine-v1-spike-plan.md`** — deterministic rule engine (5 YAML rules · recommendations.jsonl with IDs · manual ACCEPTED/IGNORED capture · dashboard acceptance counters). ⛔ **NOT executed — EP-01: plan first, explicit approval required.**
+- ⭐ **The gate interplay declared in the plan, not dodged:** the staged Engineering Assessment Commission owns "which observations earn recommendations" — **the spike is scoped as the commission's INSTRUMENTATION** (generates the accept/ignore evidence its trigger needs; rules-as-data; no assessment model; three-level separation observe/recommend/decide enforced by construction).
+- **The chicken-and-egg named:** outcome cells can never fill while zero recommendations exist — the loop needs its first recommendation source.
+- Roadmap position per the review: Observation ✅ · Measurement ✅ · Projection ✅ · **Recommendation 🟡 this plan** · Learning ⛔ future (needs the outcome data this spike would start producing).
