@@ -2157,3 +2157,8 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 
 - Incident: `git add -A` pulled two Adjudication test files from the concurrently running delivery session into an observations commit. Caught in the same turn (stat review), split out via soft reset + explicit recommit; the delivery files remain in the working tree untouched.
 - **Rule adopted: commits enumerate explicit paths — never `add -A` — while parallel sessions may be active.** The per-turn-commit practice stands; only the staging discipline changed.
+
+### Track A extensions staged with the 'deterministic ≠ demanded' distinction (review 2026-08-04)
+
+- Review ratified the Track A/B split and init's planner/runner design. Its three extensions STAGED, not built — each is deterministic but waits on its OBJECT existing: `enable <collector>` (needs real toggle variation; today one fixed set) · init scope extension (installing rules/config/templates needs a repo LACKING them — which is the second adopter again) · environment-adaptive install (npm→husky / no-npm→native / GitHub→workflow; capability=CommitTrigger, adapter by detection — needs a non-npm environment actually appearing).
+- ⭐ **The distinction recorded as the staging principle: DETERMINISTIC ≠ DEMANDED.** Track A membership requires determinism; ACTIVATION still requires the object of the automation to exist. Init passed both tests; its extensions pass only the first today.
