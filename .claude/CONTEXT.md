@@ -2270,3 +2270,9 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - **Design held:** detects and delegates (zero metric logic) · ephemeral (publication rule) · silent when clean · always exit 0 (advisory, never blocking) · `--source=` parameterized so every trigger self-identifies.
 - **`doctor --live` extended** (5/21 green): 'Claude Code trigger installed' is now a named check — the live acceptance instrument covers the AI-session surface. Current reading: 5/6 ✓; the sole ✗ remains the uninstalled VS Code extension.
 - Register: ClaudeCodeTrigger row → Implemented (incident + commission). The adapter list now: commit · file-save poll · VS Code events · Claude Code hook — four live adapters, one port, runtime untouched throughout.
+
+### PlatformProvisioner: the real slice built into init; the framework gated on its objects (2026-08-04)
+
+- **The capability accepted; the scope tested by the three questions.** What has a real object TODAY: Claude-platform detection + **merge-never-overwrite** hook provisioning (user hooks preserved; idempotent — pinned by test: wired→zero actions, unwired→one merge, no .claude→nothing). Built into init (5/13 green; dry-run on this repo: all ✓, nothing to do). Init now provisions BOTH platforms present here (Claude + VS Code).
+- ⛔ **The generalized framework (discoverPlatforms → for-each provision/verify; Cursor/JetBrains/Codespaces provisioners) GATED:** none of those platforms is installed; this repo's settings.json is version-controlled so clones inherit the hook anyway — the framework's objects don't exist yet. *Deterministic ≠ demanded, applied to its own proposer's design.* Register row: PARTIALLY ACTIVE.
+- The reviewer's safety rule adopted verbatim in code: READ → MERGE → PRESERVE user hooks → WRITE — never overwrite. DDD placement confirmed: Track A infrastructure provisioning, zero business rules.

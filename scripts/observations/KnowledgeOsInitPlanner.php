@@ -27,6 +27,10 @@ final class KnowledgeOsInitPlanner
             // installed only where VS Code actually exists, never forced elsewhere
             ['action' => 'install VS Code watch task (.vscode/tasks.json — FileSaveTrigger adapter)',
              'needed' => ($state['vscode_present'] ?? false) && !($state['vscode_watch_task'] ?? false)],
+            // PlatformProvisioner slice: Claude Code platform detected → merge
+            // the ClaudeCodeTrigger hook (preserve user hooks, never overwrite)
+            ['action' => 'merge ClaudeCodeTrigger hook into .claude/settings.json (preserving user hooks)',
+             'needed' => ($state['claude_present'] ?? false) && !($state['claude_trigger_wired'] ?? false)],
         ];
     }
 }

@@ -65,6 +65,25 @@ final class KnowledgeOsInitPlannerTest extends TestCase
         $this->assertSame('install commit-trigger delegate (.husky/post-commit)', $needed[0]['action']);
     }
 
+    public function test_claude_hook_provisioned_only_when_claude_platform_detected(): void
+    {
+        // PlatformProvisioner slice (review 2026-08-04): detect the AI
+        // platform, MERGE the trigger hook if absent — never overwrite,
+        // never provision a platform that isn't there
+        $claudeNoHook = $this->initialized();
+        $claudeNoHook['claude_present'] = true;
+        $claudeNoHook['claude_trigger_wired'] = false;
+
+        $needed = array_column(array_filter(\KnowledgeOsInitPlanner::plan($claudeNoHook), fn ($s) => $s['needed']), 'action');
+        $this->assertSame(['merge ClaudeCodeTrigger hook into .claude/settings.json (preserving user hooks)'], $needed);
+
+        $claudeWired = $claudeNoHook;
+        $claudeWired['claude_trigger_wired'] = true;
+        $this->assertSame([], array_filter(\KnowledgeOsInitPlanner::plan($claudeWired), fn ($s) => $s['needed']), 'idempotent when already wired');
+
+        $this->assertSame([], array_filter(\KnowledgeOsInitPlanner::plan($this->initialized()), fn ($s) => $s['needed']), 'no Claude platform → nothing provisioned');
+    }
+
     public function test_vscode_watch_task_planned_only_when_vscode_detected(): void
     {
         // environment-adaptive: the adapter is installed only where its environment exists

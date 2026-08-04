@@ -27,6 +27,9 @@ $state = [
     'hooks_path_set'     => str_contains(trim((string) shell_exec('git config --get core.hooksPath')), '.husky'),
     'vscode_present'     => is_dir($root . '/.vscode'),
     'vscode_watch_task'  => is_file($root . '/.vscode/tasks.json'),
+    'claude_present'     => is_dir($root . '/.claude'),
+    'claude_trigger_wired' => is_file($root . '/.claude/settings.json')
+        && str_contains((string) file_get_contents($root . '/.claude/settings.json'), 'claude-code-trigger.sh'),
 ];
 
 $plan = KnowledgeOsInitPlanner::plan($state);
@@ -60,6 +63,26 @@ if ($needed === []) {
                 break;
             case 'configure hook path (run npm install — husky prepare)':
                 echo "  (manual: run `npm install` — the husky prepare script configures core.hooksPath)\n";
+                break;
+            case 'merge ClaudeCodeTrigger hook into .claude/settings.json (preserving user hooks)':
+                $sf = $root . '/.claude/settings.json';
+                $settings = is_file($sf) ? (json_decode((string) file_get_contents($sf), true) ?: []) : [];
+                $hookEntry = ['type' => 'command',
+                    'command' => 'bash "$CLAUDE_PROJECT_DIR"/.claude/scripts/claude-code-trigger.sh',
+                    'statusMessage' => 'KnowledgeOS: observing changed class'];
+                $merged = false;
+                foreach ($settings['hooks']['PostToolUse'] ?? [] as $i => $group) {
+                    if (str_contains((string) ($group['matcher'] ?? ''), 'Edit')) {
+                        $settings['hooks']['PostToolUse'][$i]['hooks'][] = $hookEntry;   // MERGE: user hooks preserved
+                        $merged = true;
+                        break;
+                    }
+                }
+                if (!$merged) {
+                    $settings['hooks']['PostToolUse'][] = ['matcher' => 'Write|Edit', 'hooks' => [$hookEntry]];
+                }
+                file_put_contents($sf, json_encode($settings, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+                echo "  (restart the Claude Code session for the hook to load)\n";
                 break;
             case 'install VS Code watch task (.vscode/tasks.json — FileSaveTrigger adapter)':
                 file_put_contents($root . '/.vscode/tasks.json', json_encode([
