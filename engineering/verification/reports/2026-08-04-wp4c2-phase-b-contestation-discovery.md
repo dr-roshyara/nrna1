@@ -46,7 +46,10 @@ lapse(…)        guard: Raised, Admitted                    ← NOT reachable f
 
 **The `Challenge` aggregate cannot produce that sequence.** Nothing leaves `Routed` except `adjudicate()`, so a challenge can be routed exactly once, ever.
 
-> **So the gap is NOT specific to declared failure. The same missing transition blocks the EXPIRY path (WP-6/Q-2), whose return-and-re-route intent is already recorded and accepted.** **INFERENCE, from two accepted artefacts that presuppose a transition neither provides.**
+> **REFINED WORDING (ARB, 2026-08-04) — stated at the strength the evidence supports:**
+> **The current implementation does not expose a transition supporting either declared-failure or expiry re-routing. Whether both ultimately share the SAME transition remains a design decision for Contestation.**
+>
+> *(An earlier phrasing said “the same missing transition blocks the expiry path”, which asserted that one transition would serve both. The evidence shows only that NEITHER is expressible today.)* **INFERENCE, from two accepted artefacts that presuppose a capability neither provides.**
 
 **This is why Phase A's A-3 was right to refuse to assume one reaction could serve both events — and it now cuts the other way too: the two paths share a missing capability even if they need different dispositions.**
 
@@ -86,3 +89,29 @@ lapse(…)        guard: Raised, Admitted                    ← NOT reachable f
 ## 6. Traceability
 
 `Challenge.php:73-133` (**the guards — the load-bearing evidence**) · `ChallengeState.php:15-22` · **EPIC-002** COL-5a · **EPIC-004K §10 · §15.3** · **Q-2** horizon ruling · `2026_07_30_000001_create_adjudication_processes_table.php` (the partial unique index and its recorded rationale) · **R-88** · R-80 · ES-006.1 · Phase A `2026-08-04-wp4c2-responsibility-analysis.md` · discovery `2026-08-04-wp4c2-discovery.md`.
+
+---
+
+## 7. Phase C — the criteria, recorded before the work
+
+**Phase C resolves BUSINESS SEMANTICS. It is not authorized to design.**
+
+**Constraint (ARB, 2026-08-04):** **do not design workflow transitions or implementation mechanisms.** Business semantics unavoidably refer to responsibility changes — *what fact transfers responsibility, what outcome ends waiting, whether responsibility returns* — and **discussing those is in scope; specifying a transition is not.**
+
+**Completion criteria — Phase C is complete when it can answer:**
+
+1. **What business fact ends the waiting period?**
+2. **Does the original challenge survive that period?**
+3. **Which bounded context owns the challenge before and after that fact?**
+4. **Does the existing Contestation model already express that business meaning?**
+5. **If not, what evidence — not implementation convenience — demonstrates that the model must change?**
+
+### ⚠️ Engineering's readiness statement for Phase C
+
+**Phases A and B were answerable from accepted artefacts. Questions 1 and 2 above are not.**
+
+**Evidence exhausted:** the Context Map settles ownership of the corrective path (COL-5a) · EPIC-004K §10/§15.3 names the disposition question and leaves it open · the aggregate guards settle reachability. **No examined artefact states what business fact ends the waiting period, or whether a challenge survives a failed adjudication.**
+
+> **So Phase C is NOT an evidence-gathering exercise engineering can complete. It requires the domain owner — Contestation — to state a business meaning that no artefact currently records.** Producing candidate answers here would be inventing business semantics under a discovery label, which is the same defect Phase B refused when it declined to choose a state.
+
+**Question 3 is already answered** (Phase A: Contestation owns the challenge, Collection the correction). **Question 4 is answered in the negative** (§0: `Routed` asserts a fact that is false after a declared failure). **Questions 1, 2 and therefore 5 need the domain owner.**
