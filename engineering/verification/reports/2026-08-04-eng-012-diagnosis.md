@@ -106,8 +106,35 @@ The gate reports `risky: 112`. All 112 are framework app-boot artefacts. **So if
 | **Framework-integration understanding** | **IMPROVED** — the app-boot handler mechanism is now located and one plausible cause eliminated |
 | **Engineering verification SIGNAL QUALITY** | **WEAKEST** — the gate emits one aggregate `risky` count blending framework and product signals, with **no baseline** against which a change would be visible |
 
-**Highest-leverage next capability — recommended, not begun:** a verification-signal classification that separates **framework · application · infrastructure · business** signals, or at minimum **records the expected framework-signal baseline so a DELTA is legible.** Every future gate reading depends on it, and no dashboard built on the current aggregate can be trusted.
+## 11. Capability gap — stated without a solution
 
-**Deliberately NOT recommended as the next work: `enforceHorizon()`'s isolation defect.** It is a known, recorded, ER-08-deferred *fix*. **Choosing it would be managing defects; the signal-quality gap is a capability, and it gates the trustworthiness of every future defect report** — including that one's verification.
+**Revised 2026-08-04 at the ARB's refinement.** An earlier version of this section named a *"verification-signal classification"* and the files it would touch. **Both were solution design wearing the label of assessment**, and the second put implementation surface inside a capability report. The gap is stated below **technology-independently**; how it is closed is not this report's to say.
 
-**Authorization required for either:** signal classification touches `phpunit.xml` and the gate script (execution governance) · `enforceHorizon()` touches production behaviour and is outside R-81's scope. **Neither is begun.**
+> ### The gap
+>
+> **Engineering currently cannot distinguish, from its verification output:**
+>
+> - **framework runtime signals** — artefacts of how the application is booted for testing;
+> - **application failures** — defects in product code;
+> - **infrastructure failures** — environment, database, transport;
+> - **business verification failures** — an invariant or rule genuinely violated.
+>
+> **All four arrive in one aggregate count.** **Any future solution must eliminate that ambiguity.**
+
+**Why it matters, in capability terms:** verification exists to make failure *legible*. A verification capability that cannot separate a framework artefact from a violated business invariant **cannot discharge its purpose**, however many tests it runs. **The maturity of the seam-verification capability (§10) is therefore bounded by this gap, not by its own test coverage** — it can prove behaviour and cannot prove that a new problem would be noticed.
+
+**What is observably missing:** the ability to answer *"did the verification signal change because the product changed?"* — today unanswerable, because benign growth and genuine regression are the same number moving.
+
+**Deliberately not stated here:** any mechanism, file, configuration, tool or classification scheme. **Those are solution design, and no implementation is authorized.**
+
+## 12. Authorization boundary
+
+**Am I describing a capability gap?** §11, yes. **Am I describing a solution?** Deliberately not — removed at revision. **Has implementation been authorized?** **No.**
+
+| | |
+|---|---|
+| Governance domain for any future work | **Execution Governance** — authorization of implementation work |
+| Responsible authority | the **ARB**, on an execution-governance act |
+| Status | **stopped at assessment.** No design, no plan, no files named |
+
+**Also withdrawn at this revision:** the recommendation that `enforceHorizon()`'s isolation defect *not* be next. **That was still roadmap sequencing, which is not this report's business either.** The defect stands recorded under ER-08; **what comes next is a planning decision, taken elsewhere.**
