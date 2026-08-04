@@ -23,7 +23,7 @@ Plan: .claude/plans/WP-6-temporal-machinery.md (WP-5 CLOSED)
 
 **No engineering commission is open.** Engineering delivered implementation, verification, discovery, constitutional evidence, capability analysis and traceability; **no engineering uncertainty remains before handover.** **If Q1–Q4 are answered AND tactical work is authorized, that is a NEW `WP-4C-2 Tactical DDD Commission` with a fresh mandate — NOT a continuation.** **Development is complete for the AUTHORIZED SCOPE** — not a claim that the product is finished. **Stewardship remains available for factual corrections only.**
 
-**⏸️ R-99 (audit-system closure) is HELD FOR A REFERENT** — ‘Audit System v1.x’ resolves to no delimited artifact set; four candidates checked, none matching (notably `developer_guide/audit_system/` is titled **“Inbox Messaging Subsystem”** — the folder name is a misnomer). **The authority must name the subject; the ruling then takes effect unamended.**
+**✅ R-99 EFFECTIVE (2026-08-04): `Engineering Verification Framework v1.x` is CLOSED.** The ARB named the referent; the ruling took effect unamended and the label ‘Audit System v1.x’ is not used. **Extent:** the `engineering/verification/` tree (145 artifacts, counted). **Future audits are USES of the framework — operational, not development.** **⚠️ No specification document defines it** (`ES-006` is Knowledge Governance and PROPOSED), so ‘v1.x’ denotes the practice as exercised — **gap named, not filled.** **Reopening requires implementation evidence of insufficiency (ES-002.2), not preference.**
 
 ### ARB DISPOSITIONS 2026-08-04 — R-92..R-97 (the programme is governance-driven, not engineering-driven)
 

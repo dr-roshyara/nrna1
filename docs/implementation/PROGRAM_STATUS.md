@@ -48,7 +48,7 @@ Technical Debt      AD-006 open · one UNREPAIRED defect
 | **D3** (catalog) · **D4** (publication call site) | **HELD** | `R-97` | Board — **E1** · **E2** |
 | **COL-5a mechanism** | **RE-ANCHORED to COL-1** — accepted architecture subsumes it; owner **vacated**, no strategic-architecture backlog exists | `R-96` (corrected) | governance must name a home |
 | **WP-8** | **DEFERRED** — do not reopen because nearby work closed | `R-79` | — |
-| **Audit-system closure** | **HELD FOR A REFERENT** — subject undefined | `R-99` | ARB must name the governed object |
+| **`Engineering Verification Framework v1.x`** | **✅ CLOSED · EFFECTIVE** — referent named 2026-08-04; extent = the `engineering/verification/` tree (145 artifacts). **Future audits are USES of it, not work on it.** ⚠️ **No specification document defines it** — ‘v1.x’ is the practice as exercised, and that gap is named, not filled | `R-99` | — |
 | **7 local commits** | **UNPUSHED** — operational, not a governance gate | — | repository operator |
 
 ---
