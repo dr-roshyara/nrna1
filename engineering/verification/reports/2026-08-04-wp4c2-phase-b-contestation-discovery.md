@@ -81,7 +81,7 @@ lapse(…)        guard: Raised, Admitted                    ← NOT reachable f
 
 | Item | Status |
 |---|---|
-| **The expiry path (WP-6/Q-2) shares the missing transition** | Its return-and-re-route intent is accepted and equally unimplemented. **Whichever way §15.3 is decided, this gap should be resolved once for both paths, not twice** — **INFERENCE** |
+| **The expiry path (WP-6/Q-2) is equally unexpressible** | Its return-and-re-route intent is accepted and **also has no transition behind it**. **Whether one transition serves both paths is a design decision for Contestation, NOT a conclusion of this report** — corrected here to match §2's refined wording, which withdrew the shared-transition claim. **INFERENCE limited to: neither path is expressible today** |
 | **COL-5a's mechanism** | still unallocated (Phase A) |
 | **D4** | still held — nothing publishes the event |
 | **A-4 / COL-5a's second consumer** | still unassessed |
