@@ -72,7 +72,7 @@ Priority: High
   EG-004 · EG-005 tracked in `docs/plans/20260726-2056-engineering-platform-repair-plan.md` — non-blocking.
 
 ## Next action (exactly one)
-**EP-01 APPROVAL of the WP-4C-1 plan, AND a Board ruling on escalation E1** — `docs/plans/20260804-1900-wp4c1-adjudicationfailuredeclared-plan.md`. **E1 (HARD):** the catalog deliverable cannot be planned further — the catalog is FROZEN, `AdjudicationExpired` is absent from it yet WP-6 shipped hydrated and was ACCEPTED, and `ChallengeRouted`'s row predates WP-3A, so **no package has been shown to have added a row.** Three options are put; engineering chose none. **E2 (dependency):** the publication call site's provenance — `start()` would likely breach the one-mint invariant, and `fromConsumed()` needs WP-4D's intake. **The event and hydrator are executable now regardless.**
+**WP-4C-1 ACCEPTANCE DECISION (authorized scope only)** — evidence: `engineering/verification/reports/2026-08-04-wp4c1-acceptance-evidence.md`; engineering recommends the **D1+D2 scope** for acceptance. **D3 (catalog, §6/E1) and D4 (publication call site, §6/E2) are HELD and NOT offered.** **Accepting this closes neither WP-4C nor §WP-4.** Engineering does not accept its own work (EP-02 · R-34).
 
 ## Blockers
 - **WP-4B ACCEPTED and CLOSED (R-87).** Capability milestone recorded: `Concluded → Issue Request → Recovery → Replay`.
@@ -1932,3 +1932,27 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - ⛔ **THE ROADMAP FROZEN with true statuses:** P1 Observation ✅ · P2 Engine V1 ✅ · P3 Decision Capture ✅-built/⏳-unused · **P4 Outcome Recording = the next BUILD (only after decisions exist)** · P5 Dashboard v2 · P6 Python Learning · P7 Adaptive. **No new architectural discoveries until P4 has produced months of evidence** (the review's own rule, adopted).
 - ⭐⭐ **NEW RISK RECORDED (the sharpest point): the biggest remaining risk is SOCIOTECHNICAL — KnowledgeOS becoming another ignored dashboard.** The 10 open recommendations are that risk's FIRST LIVE TEST: if nobody ever decides, that non-decision is itself the finding. Everything optimizes for "did the developer change behavior?" — the protected sentence as primary architectural invariant, reaffirmed.
 - Falsifiability reaffirmed as the biggest achievement; intervention watch confirmed staged; the decomposition stays engineering-pattern-not-universal-law.
+
+
+### ⭐⭐ THE FIRST DECISION LANDED (2026-08-04)
+
+- **REC-eaf245474a (R1 · Election · LCOM4 29) → ACCEPTED · IMMEDIATE_VALUE** (4-way corroboration; Claude at user direction — attribution in rationale comment). Decision+rationale as separate records; learning event 3/5 (commit ✗ outcome ✗).
+- **Dashboard moved:** issued 10 · decided 2 · accepted 2 · open 8 — skew visible and honest (duplicate).
+- ⭐⭐ **Two domain findings from one decision: RD-6 actor provenance · RD-7 duplicate decisions possible** (unguarded; ⛔ guard NOT patched — exactly-once vs last-wins = domain semantics awaiting evidence). Run 2 executed per protocol (UL upgrades; time-to-decision 6.5h).
+- **Next: a real commit touching Election, then the outcome delta — the 5/5 learning event.**
+
+
+### ⭐⭐ PHASE 4 BUILT; THE FIRST COMPLETE CHAIN EXISTS (2026-08-04) — engineering event
+
+- **Outcome Recording built as authorized, TDD-first (RED→GREEN, 3 tests/13 assertions):** pure recorder (refuses commits_since<1; ⛔ **assessment-free PINNED BY TEST** — no successful/status/verdict keys possible; assessment is the separate next stage per the review's inserted roadmap stage) + runner (R1/LCOM4 v1; baseline at-issuance; commits-since via decision commit field, ts-fallback) + guide 06.
+- ⭐⭐ **FIRST REAL OUTCOME RECORD: REC-eaf245474a · Election · 29 → 29 · Δ+0 after 1 commit** — the first STRUCTURALLY COMPLETE chain (recommendation→decision→rationale→commit→outcome), its content honestly saying "the codebase moved; Election didn't." Δ+0 is a real datum, never a failed run.
+- **Also executed from the review:** decision records now carry `commit` (traceability, 1-line enrichment) · **the freeze reworded: proactive exploration frozen, evidence-response never** · **ASSESSMENT inserted as the roadmap stage after Outcome** (converges with the staged Engineering Assessment Commission — its trigger's natural home) · usage/adoption stream staged (decision+timing already computable; "viewed" needs a view surface that doesn't exist — with the Outcome/P5 work) · sociotechnical risk standing.
+- **Roadmap truth: P1–P4 ✅ built · P4.5 Assessment staged · P5 dashboard v2 · P6 Python (still nothing to learn from — correctly).**
+
+
+### ⭐⭐ ASSESSMENT STAGE BUILT — the pipeline now interprets (2026-08-04)
+
+- **Gate-check first:** this is recommendation-EFFECTIVENESS assessment — DISTINCT from the parked Engineering Assessment Commission (code-quality ground) and scoped away from the ES-003/CAP-001 verdict sets (no third collision).
+- **TDD (RED→GREEN, 6 tests/13 assertions):** deterministic AssessmentService — closed verdict set **SUPPORTED · PARTIALLY_SUPPORTED · NOT_SUPPORTED · INCONCLUSIVE**, thresholds as named constants, min-commits guard, every verdict carries its basis. ⭐ **INCONCLUSIVE was demanded BY the first real datum before code existed** (Δ+0 fits neither supported nor unsupported) — evidence shaping vocabulary at design time.
+- ⭐⭐ **FIRST REAL ASSESSMENT: REC-eaf245474a · Election → INCONCLUSIVE ("only 1 commit since decision, min 3")** — the honest verdict the evidence warranted. **The pipeline now executes END-TO-END THROUGH INTERPRETATION on real code:** Observation → Recommendation → Decision → Rationale → Outcome → Assessment.
+- Guide 07 shipped with the step. **Shelf:** two-bounded-contexts observation (Observation vs Assessment emerging) · intervention (still staged) · EIS = next after assessment HISTORY accumulates. **Python: needs hundreds of assessments; has one INCONCLUSIVE. Correctly waiting.**

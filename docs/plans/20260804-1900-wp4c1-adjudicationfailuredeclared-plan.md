@@ -3,7 +3,7 @@
 **Created:** 2026-08-04 19:00 · **Author:** Chief Software Architect / DDD Technical Lead
 **Authorized by:** **R-89** (WP-4C-1 authorized to plan and implement) · **Subdivided by R-88** · Owner: **Adjudication**
 **Type:** delivery artefact. **No architecture proposed · no ADR reinterpreted · no governance decided.**
-**Status (2026-08-04):** ✅ **EP-01 APPROVED FOR ITS EXECUTABLE SCOPE — D1 · D2 · provider registration · RED K1–K4.** **D3 (catalog) is HELD pending a Board ruling on §6/E1. D4 (enqueue) is HELD pending provenance resolution (§6/E2) — expressly NOT authorized for implementation.** Detailed specification: §11–§16 (carried work: §16). **Nothing is implemented yet.**
+**Status (2026-08-04):** ✅ **EP-01 APPROVED FOR ITS EXECUTABLE SCOPE — D1 · D2 · provider registration · RED K1–K4.** **D3 (catalog) is HELD pending a Board ruling on §6/E1. D4 (enqueue) is HELD pending provenance resolution (§6/E2) — expressly NOT authorized for implementation.** Detailed specification: §11–§17 (carried work: §16 · RED observations: §17). **B1–B3, B6 and B7 are COMPLETE (`e4724a444` · `939e35dcb` + guide/package); D3 and D4 remain HELD.** Acceptance evidence: `engineering/verification/reports/2026-08-04-wp4c1-acceptance-evidence.md`. **Nothing is implemented yet.**
 
 **Out of scope, expressly:** Contestation work of any kind · WP-4C-2 · WP-4D · any edit to the frozen catalog · creating a new catalog version.
 
