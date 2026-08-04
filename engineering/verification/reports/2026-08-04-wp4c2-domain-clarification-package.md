@@ -1,6 +1,7 @@
 # WP-4C-2 — Domain Clarification Package
 
 **For:** the **Contestation domain owner**. **From:** engineering, 2026-08-04.
+**Authority:** **the Domain Owner is the AUTHORITATIVE SOURCE for these business decisions. Engineering may clarify the questions and their evidence but shall neither ANSWER nor REINTERPRET the resulting decisions** — and shall record them exactly as given.
 **Status:** engineering discovery for **WP-4C-2** is **closed**; **WP-4C-2** waits on these decisions. **No other work package is blocked by this.**
 
 > **This package contains four things only: the unresolved business questions · the engineering evidence bearing on each · the engineering constraints · the decisions required.**
