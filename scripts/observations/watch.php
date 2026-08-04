@@ -84,17 +84,16 @@ do {
         FILE_APPEND
     );
 
-    // Observable chain trace (review 2026-08-04): every stage emits — the
-    // first stage missing from this line is the real defect, never a guess.
-    $collectorTrace = implode(' ', array_map(
-        fn ($c) => sprintf('%s(%dobs,%drec,%dms)', $c['collector'], $c['observations'], $c['recommendations'], $c['runtime_ms']),
-        $result['collectors'] ?? []
-    ));
-    printf("trace: event=file-save → changeset=%d file(s) → runtime=%dms → collectors: %s → recommendations=%d → presented=terminal\n",
-        count($changed), $latencyMs, $collectorTrace, count($result['recommendations']));
-
-    printf("[%s] saved: %s  (runtime: %dms · worst-case with poll: %ds + %dms)\n",
-        date('H:i:s'), implode(' · ', $changed), $latencyMs, $intervalSeconds, $latencyMs);
+    // Observable staged trace (review 2026-08-04): every stage emits its own
+    // block — the first missing stage is the real defect, never a guess.
+    printf("\n[WATCH]     %s — file saved: %s\n", date('H:i:s'), implode(' · ', $changed));
+    printf("[CHANGESET] %d file(s)\n", count($changed));
+    foreach ($result['collectors'] ?? [] as $c) {
+        printf("[COLLECTOR] %s — %d observation(s), %d recommendation(s), %dms\n",
+            $c['collector'], $c['observations'], $c['recommendations'], $c['runtime_ms']);
+    }
+    printf("[RESULT]    %d recommendation(s) · %dms runtime · presented=terminal\n",
+        count($result['recommendations']), $latencyMs);
     if ($result['recommendations'] === []) {
         echo "  ✓ no advisories\n\n";
         continue;
