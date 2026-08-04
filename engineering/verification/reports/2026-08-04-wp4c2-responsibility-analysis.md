@@ -32,6 +32,7 @@
 | Claim | Label | Source |
 |---|---|---|
 | Collection receives an insufficiency finding / correction demand on the declare-failure path | **EVIDENCE** | `EPIC-002_Canonical_Context_Map.md:75` |
+| **Ownership of the corrective path was already decided strategically, so discovery's obligation was to VERIFY that decision before introducing alternatives** | **EVIDENCE, scoped to this edge** | COL-5a. *(Scoped wording adopted 2026-08-04 at the ARB's refinement. **The unscoped version — “discovery needed to read the map, not reason it out” — appeared only in a commit message and in conversation; it was never in this report.** Recorded because the refinement was offered as a correction TO the report, and the report did not contain the sentence.)* |
 | That flow is the **return channel of COL-1**, not a new relationship | **EVIDENCE** | `EPIC-002_Relationship_Pattern_Selection.md:87` |
 | Adjudication may demand *more or better evidence* but **may not direct how Collection works** | **EVIDENCE** | ibid., *Consequences* |
 | Contestation owns challenge disposition on declared failure, and it is **open** | **EVIDENCE** | EPIC-004K §10 · §15.3 |
@@ -80,3 +81,7 @@
 ## 6. Traceability
 
 **EPIC-002** `Canonical_Context_Map.md` (COL-1:70 · **COL-5a:75**) · `Relationship_Pattern_Selection.md` (**COL-5a §85-93** · COL-5b) · **EPIC-004K §10 · §15.3** · PM-7 · **R-88** (WP-4C-2 → Contestation) · R-80 · ADR-T20 · `ChallengeAdjudicationReaction.php` · `ChallengeState.php` · discovery report `2026-08-04-wp4c2-discovery.md` (A-0…A-5).
+
+---
+
+**✅ PHASE B COMPLETE — `2026-08-04-wp4c2-phase-b-contestation-discovery.md`.** The transition guards answer it: **from `Routed`, exactly one transition exists (`adjudicate(DeterminationId)`)** — so `Dismissed` and `Lapsed` are **unreachable**, re-routing is **not expressible**, and the only exit requires the one thing a declared failure never has. **A new TRANSITION is definitely required; whether a new STATE is depends on the destination, which is Contestation's call.** **The same missing transition blocks the accepted EXPIRY re-route intent — the gap should be resolved once for both paths.**
