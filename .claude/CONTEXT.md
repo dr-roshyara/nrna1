@@ -72,7 +72,7 @@ Priority: High
   EG-004 · EG-005 tracked in `docs/plans/20260726-2056-engineering-platform-repair-plan.md` — non-blocking.
 
 ## Next action (exactly one)
-**WP-4C-1 ACCEPTANCE DECISION (authorized scope only)** — evidence: `engineering/verification/reports/2026-08-04-wp4c1-acceptance-evidence.md`; engineering recommends the **D1+D2 scope** for acceptance. **D3 (catalog, §6/E1) and D4 (publication call site, §6/E2) are HELD and NOT offered.** **Accepting this closes neither WP-4C nor §WP-4.** Engineering does not accept its own work (EP-02 · R-34).
+**CONTESTATION DOMAIN OWNER answers the Domain Clarification Package** — `engineering/verification/reports/2026-08-04-wp4c2-domain-clarification-package.md`. **Q1** what business fact ends the waiting period · **Q2** does the challenge survive corrective work (two accepted artefacts conflict) · **Q3** responsibility owner after that fact · **Q4** is the meaning already in the domain. **Engineering is STOPPED on WP-4C-2, not slowed** — discovery is closed, and inferring these answers is expressly prohibited. **Separately open: the WP-4C-1 ACCEPTANCE DECISION** (`2026-08-04-wp4c1-acceptance-evidence.md`).
 
 ## Blockers
 - **WP-4B ACCEPTED and CLOSED (R-87).** Capability milestone recorded: `Concluded → Issue Request → Recovery → Replay`.
@@ -1956,3 +1956,101 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - **TDD (RED→GREEN, 6 tests/13 assertions):** deterministic AssessmentService — closed verdict set **SUPPORTED · PARTIALLY_SUPPORTED · NOT_SUPPORTED · INCONCLUSIVE**, thresholds as named constants, min-commits guard, every verdict carries its basis. ⭐ **INCONCLUSIVE was demanded BY the first real datum before code existed** (Δ+0 fits neither supported nor unsupported) — evidence shaping vocabulary at design time.
 - ⭐⭐ **FIRST REAL ASSESSMENT: REC-eaf245474a · Election → INCONCLUSIVE ("only 1 commit since decision, min 3")** — the honest verdict the evidence warranted. **The pipeline now executes END-TO-END THROUGH INTERPRETATION on real code:** Observation → Recommendation → Decision → Rationale → Outcome → Assessment.
 - Guide 07 shipped with the step. **Shelf:** two-bounded-contexts observation (Observation vs Assessment emerging) · intervention (still staged) · EIS = next after assessment HISTORY accumulates. **Python: needs hundreds of assessments; has one INCONCLUSIVE. Correctly waiting.**
+
+
+### ⛔ ARCHITECTURE RE-FROZEN after Assessment (2026-08-04) — the collection era
+
+- **The review's re-freeze adopted:** the pipeline is conceptually complete for this phase — **nothing between Assessment and Python requires another architectural layer; everything between them is COLLECTING EVIDENCE.** Roadmap: assessment history → Dashboard v2 → EIS → Python learning → adaptive.
+- **Two concepts staged with the reviewer's own gates (neither built):** ⏳ **AssessmentPolicy** (thresholds are policy, not logic; service orchestrates, policies decide — evolves when a SECOND metric family needs different thresholds) · ⏳ **AssessmentEvidence** (Assessment-has-Evidence: delta · commits · files · rationale · review comments — waits until multiple assessment types make evidence vary).
+- **Roadmap ordering refinement recorded: LEARNING LEARNS FROM ASSESSMENTS, never from raw metric deltas** — the dataset is recommendation+decision+outcome+assessment+reason+context, which is what makes Python meaningful.
+- **The standing three-concept separation (the review's closing distinction, preserved):** *Outcome = what objectively changed · Assessment = deterministic interpretation · Learning = future statistical adaptation over many assessments.* One responsibility each; UL clean; Python enters without being forced.
+
+
+### ⛔ MONTHS-LONG ARCHITECTURE FREEZE + DASHBOARD v2 (2026-08-04) — the Evidence Collection Era formally opens
+
+- **The review's mindset shift adopted as the era's charter:** *"Stop trying to make KnowledgeOS smarter. Start collecting enough trustworthy evidence that future versions can become smarter for demonstrable reasons."* Architecture frozen for MONTHS; work becomes observe→collect→measure→improve; Python's trigger is now precisely evidence-driven ("after enough assessments exist"), never time-driven.
+- ⭐ **Dashboard v2 built (the one authorized implementation), TDD (6 tests/23 assertions green):** the **LIFECYCLE FUNNEL KPI** + **per-rule EFFECTIVENESS table** (issued/decisions/verdicts).
+- ⭐⭐ **The first real funnel — the organizational mirror's first reflection:** **issued 10 → decided 1 → outcomes 1 → assessments 1.** The break is LOCATED on day one: **the largest measured drop-off is between recommendation issuance and decision (9 undecided). ⚠️ The organizational CAUSE remains an open hypothesis pending evidence** — the funnel shows WHERE, never WHY (wording corrected per ARB refinement; my 'adoption is the bottleneck' exceeded the data). Effectiveness: R1 1/1 accepted→INCONCLUSIVE · R5 9 issued, 0 decided.
+- **Commercial reframing shelved:** Engineering Improvement Platform — "we continuously measure whether interventions actually improve software" (candidate story; sponsor's).
+
+
+### ARB verdict executed: wording conceded, lead times built (2026-08-04)
+
+- ⛔ **Conceded:** "adoption is the bottleneck" exceeded the evidence — corrected in place to the ARB's exact strength: *drop-off located between issuance and decision; cause = open hypothesis.*
+- ⭐ **Stage lead times built TDD (7 tests/26 assertions green), from EXISTING timestamps only:** first real measurements — **recommendation→decision 6.5h (n=1) · decision→outcome 8.8h (n=1) · outcome→assessment 0.1h (n=1)** — sample sizes always rendered; measurements, never conclusions.
+- Commercial positioning ⏸ HELD (outside engineering governance, per verdict). Freeze verified intact throughout: no new concepts, no ADRs — implementation only.
+
+
+### OE-KOS-4: the WP-4C-2 discovery discipline recorded (2026-08-04) — state + pointers only
+
+- **Provenance verified, then recorded:** the WP-4C-2 discovery refused to answer §15.3 (missing business decision, not missing code; no RED plan — "TDD validates business decisions; it must not create them"). **R-6 guides-edge → n=3, enumerated** (planning obeyed · RED implementation obeyed · discovery refused to legislate).
+- **ARB record appended to the report (§8):** discovery APPROVED · implementation NOT authorized · next = Contestation modeling session ("what is the UL for 'no ruling could be issued'?") · ⭐ **the added pre-question staged: WHO OWNS the unresolved responsibility? — state follows responsibility, never the reverse.**
+- Dashboard OE counter → 4. The modeling session is the human's/domain's; nothing here is mine to answer.
+
+### OE-KOS-4 review dispositions executed (2026-08-04)
+
+- Review verdict: 10/10 across DDD/ownership/governance/evidence (knowledge engineering 9.5). Strongest contribution named by the reviewer = the OWNERSHIP QUESTION, not the OE entry: responsibility → behaviour → lifecycle → state, never the reverse.
+- ⭐ **R-6 scope check PERFORMED** (the review's one caution): edge wording `guides product engineering` is activity-broad — planning/implementation/discovery all inside it; **n=3 stands without stretching.** Recorded as a register annotation.
+- ⚠️ **MO-2 staged** (candidate modelling heuristic, n=1, OE-KOS-4): *ownership-before-state* with the reviewer's five-question form quoted as its shape. ⛔ **NOT promoted** — single occurrence; trigger = recurrence across multiple bounded contexts. Evidence-path minting (produced by WP-4C-2, not discussion) — the sanctioned route under the freeze.
+- ⭐ **Explanatory-precision heuristic n=1→2**, enumerated: OE-KOS-3 incident analysis (minting) · OE-KOS-4 reframing (*"needs another state" → "responsibility has become ownerless"*). Count movement only; still shelved with its removal test.
+- Register REV 3 rules untouched — dispositions recorded as an append-only annotation section.
+
+### Review round closed: candidate-volume trigger recorded; behavioural-shift observation on record (2026-08-04)
+
+- Review confirmed all three dispositions (R-6 scope check = "the verification itself becomes evidence" · MO-2 stays candidate · explanatory-precision n=2 justified as two genuinely different incidents).
+- ⚠️ **Candidate-volume watch recorded in the register** (not policy): at ~10–15 staged candidates the full lifecycle machinery (Candidate→Evidence→Counterexamples→Promotion→Retirement) becomes operationally NECESSARY — arm the Pattern Evidence Register then. **Count today: 4** (MO-1 · MO-2 · IF-1 · DG-1).
+- ⭐ **Reviewer observation on record (n=1, unadopted):** the repository has shifted from documenting COMPONENTS (aggregates, services, events, ADRs) to documenting ENGINEERING BEHAVIOUR (planning obeyed · implementation obeyed · discovery refused to legislate · instrumentation blind spot · recommendations accepted/ignored) — converges with the protected sentence: *KnowledgeOS is measured by changes in engineering behavior, not by its own activity.*
+- Maturity conclusion restated and held: **the system knows how to collect trustworthy evidence; it does not yet know enough to learn from it.** Python learning stays correctly deferred until assessments/decisions/rationales/outcomes accumulate real history.
+
+### ⛔ DISCOVERY FREEZE v2 ADOPTED + EXECUTION PHASE DECLARED (ARB review 2026-08-04)
+
+> # ⛔ **DISCOVERY FREEZE v2 (adopted — COMPOSES with v1.0, does not supersede it):** every new architectural concept must ORIGINATE FROM AN ENGINEERING EVENT. Not discussion · not brainstorming · not theoretical elegance. The only legal path: **Engineering event → Observation → Candidate → Evidence → Promotion.** v1.0's reopening condition (explanatory failure of the existing model) still gates WHETHER discovery reopens; v2 names the only sanctioned SOURCE when it does.
+
+- ⭐ **Self-consistency verified before adopting:** v2 itself originates from an engineering event — MO-2's evidence-path minting (WP-4C-2 incident → observation → candidate, promotion withheld) demonstrated the pattern before the rule named it. v2 codifies observed practice; it satisfies its own rule.
+- **Phase declaration: architectural discovery STOPS; engineering validation begins.** The standing loop, verbatim from the directive: *Developer → Recommendation → Decision → Outcome → Assessment → Dashboard → Repeat. Again. Again. Again.* Python advances only after dozens—preferably hundreds—of recommendation/decision/outcome cycles exist (learning consumes assessments, never raw metric deltas — unchanged).
+- ⚠️ **One precision note on the review's status table:** "Outcome recording: next implementation" — outcome recording is ALREADY operational (OutcomeRecorder + outcomes.jsonl, Election entry recorded). The limiting factor is outcome HISTORY VOLUME (1 outcome, 1 assessment, both n=1) — which the review itself states correctly later ("outcome history is still the limiting factor"). Recorded so status never drifts.
+- The review's maturity verdict held as the phase's opening line: **engineering work itself has become the producer of architectural knowledge** — recent "discoveries" were only four activities (refining terminology · tightening evidence rules · staging behind gates · recording observations), which is maturity, not stagnation.
+
+### ⛔ FINAL ARB DIRECTIVES ENACTED: era name ratified · four-category rule · EIS elevated · the standing question (2026-08-04)
+
+- ⭐ **CHECK-BEFORE-CREATE, both passed:** (1) an era was ALREADY open — the Evidence Collection Era (CONTEXT § 2026-08-04). The directive's "**Engineering Validation Era**" is the SAME operational phase (run · collect · assess · repeat; months; Python after volume) — **one era, name ratified by the later ARB directive; NO new phase boundary crossed.** (2) **EIS already staged** in the approved recommendation-engine plan (§ measurement staging: "candidate headline KPI — % of interventions with measurable engineering improvement"). The directive ELEVATES the staged concept to THE one KPI — consumed, not created. ⛔ *EIS still fills from evidence only; computable population today = 1 intervention — the KPI is on the wall, not yet meaningful.*
+- **Four-category classification adopted FOR KNOWLEDGEOS-ERA WORK:** everything new is Engineering · Observation · Evidence · Validation — nothing else (no discoveries, no meta discussions, no pattern naming). ⚠️ **Collision checked and scoped:** the FROZEN runtime binding (`.claude/CLAUDE.md` operating loop Phase 6) carries a nine-way impact classification for PublicDigit delivery work — **the four-category rule governs KnowledgeOS programme work and does NOT amend the frozen protocol.** Recorded so the two classification schemes never silently merge.
+- ⭐ **ARB standing question adopted as the runtime binding of Freeze v1+v2:** *"Which engineering event produced the evidence requiring this change?"* No concrete event + no observed evidence + no explanatory gap → **the proposal remains an IDEA, not architecture** — and it routes to the existing incubator (`docs/ideas/`), which was built for exactly this disposition.
+- **The era's six-month success criteria recorded — BOTH outcomes are findings:** high decision volume (→ Python becomes almost inevitable) · low decision volume despite issuance (→ the finding is delivery/timing/relevance/workflow-integration of recommendations, NOT the learning algorithm). The funnel already shows where to look: 9 undecided today.
+- **The inversion held as the programme's defining sentence:** *engineering work itself has become the producer of architectural knowledge* — Engineering → Evidence → Architecture, no longer the reverse.
+
+### ⛔ ARB CLOSING RESOLUTION — the architecture phase ends (chair's review, 2026-08-04)
+
+> **"Suspend architectural expansion. Continue implementation, evidence collection, and longitudinal validation. The next architecture change shall be considered only when repeated engineering evidence exposes an explanatory gap in the current model."**
+
+- **Declared STABLE (the constitutional set):** Freeze v1 *(when discovery reopens: explanatory failure)* · Freeze v2 *(where architecture originates: engineering events)* · the ARB standing question *(the runtime binding)* — complementary, non-overlapping. The engineering loop is COMPLETE through Assessment; everything between Assessment and Learning is accumulation, not invention. The evidence hierarchy *(Engineering Event → Observation → Evidence → Assessment → Learning)* now outranks any individual bounded context — it governs how knowledge is produced.
+- ⭐ **UL EXEMPTION adopted — the one thing NOT frozen:** the ubiquitous language remains REFINABLE whenever real engineering reveals ambiguity *(e.g. Recommendation may become Intervention; Assessment may split)*. **Vocabulary refinement driven by engineering evidence ≠ architectural discovery** — the freezes do not gag the language.
+- **The ONE remaining architectural uncertainty, recorded verbatim:** *"Will developers actually change their behavior because of KnowledgeOS?"* — everything else has supporting implementation; this has only TIME. It is the behavioural success criterion the spike plan already carries ("first developer changes code because of a warning"), now elevated to the programme's single open question.
+- ⭐ **Monthly ARB review = five charts; coverage CHECKED against dashboard v2: 4 of 5 already render** — funnel ✓ (issued/decided/accepted/ignored/deferred) · response latency ✓ (lead times, recommendation→decision) · assessment distribution ✓ (verdict columns per rule) · per-rule effectiveness ✓. **EIS is the sole gap — deliberately: population = 1 intervention; it renders when evidence exists, never before.** The monthly review can run off the existing dashboard today.
+- **The future DDD milestone STAGED, not planned:** Recommendation/Decision/Outcome/Assessment will either remain application-level workflow objects or reveal a genuine bounded context — **engineering will force the question; the decision is postponed until operational evidence exists** *(already the approved plan's stance — confirmed, not created)*.
+
+### ⭐ EVIDENCE VELOCITY BUILT + THE PROGRAMME OBJECTIVE REDEFINED (chief-architect review, 2026-08-04)
+
+- ⭐ **Objective REDEFINED (ratified):** no longer *"Build KnowledgeOS"* — now **"Demonstrate that KnowledgeOS changes engineering behaviour."** Everything else is subordinate. *(Converges with the protected sentence — the objective is now its imperative form.)*
+- ⭐ **Evidence Velocity implemented TDD (9 tests / 32 assertions green):** the operational KPI ABOVE EIS — completed cycles (rec → decision → outcome → assessment, id in all four streams) per week, computed from EXISTING timestamps. **Honesty rule pinned by test: a window under 7 days WITHHOLDS the rate** — never extrapolated. Real value today: **1 completed cycle · 0.6-day window · rate withheld.** Rationale recorded verbatim: *the bottleneck is not AI, metrics, or architecture — it is how quickly evidence accumulates.*
+- **Operational rule adopted: recommendations REQUIRE decisions** — a recommendation with no decision is now MEANINGFUL OPERATIONAL DATA, not a gap to hide. The 9 undecided are data points already.
+- ⛔ **Python entry criterion HARDENED from elapsed-time to evidence thresholds (CANDIDATE values — the reviewer: exact numbers matter less than having explicit thresholds):** ≥100 completed cycles · ≥50 assessed outcomes · ≥20 accepted-with-measurable-improvement · multi-rule-type span. Data quality gates the transition, never the calendar.
+- ⚠️ **Bounded-context WATCH refined (watch, never create):** the Observation/Recommendation/Decision/Outcome/Assessment/Evidence/Learning space earns its own BC only if six months of operation give those concepts lifecycle · invariants · versioning · policies · effectiveness · history · analytics; if they stay orchestration, they stay an application service. *(Criteria now attached to the already-staged DDD milestone.)*
+- ⭐ **The named achievement is a PROPERTY, not a component: the system is FALSIFIABLE** — it can demonstrate a recommendation was ignored, an accepted one produced no improvement, a heuristic is ineffective, or that KnowledgeOS itself does not improve engineering.
+- Closing recommendation held: *treat every recommendation as an experiment, every decision as evidence, every assessment as knowledge, every month as an opportunity to validate — or falsify — the current model.*
+
+### ⭐ WP-NEXT DELIVERED: Loop Completion monitor + the Engineering Improvement Cycle published (2026-08-04)
+
+- ⭐ **Loop Completion monitor built TDD (11 tests / 39 assertions green):** per-recommendation stage-gap buckets — needs decision · needs outcome · needs assessment · complete · closed-by-IGNORED · deferred. **Two DDD semantics pinned by test:** the LATEST decision classifies a re-decided recommendation, and **IGNORED is closure, not an outcome gap** (`needs_outcome` counts ACCEPTED decisions only — the projection must never invent an expectation the domain never set).
+- **The real data names the bottleneck with total precision: needs decision = 9 · everything else 0 · complete = 1.** The entire gap is ONE bucket — developer decisions. Evidence Velocity rises only when that bucket empties.
+- ⭐ **`KnowledgeOS_Engineering_Improvement_Cycle.md` published** — a PUBLISHED DOMAIN PROCESS (deliberately NOT a bounded context, NOT aggregates, NOT a layer): the seven-stage process with its four pre-existing rules restated, evidence-linked to the lifecycle discovery (RD-1..RD-7). The staged BC decision stays owned by the six-month watch criteria, not by the document. **Freeze check: describes an existing process from existing records — no concept minted.**
+- **Backlog reframed per the review: not "Dashboard v3 → Python → Learning" but "INCREASE COMPLETED LOOPS" — everything else follows.** The named risk stands: recommendation → no decision → no outcome → no assessment turns KnowledgeOS into a reporting system instead of a behaviour-changing system — exactly what the protected sentence guards against.
+- Dev guide 04 updated (fold-in). Domain model untouched — read-side projections and one process document only, per WP-Next constraints.
+
+### WP-Next review accepted: two projections STAGED, nothing built — the phase asks for evidence, not concepts (2026-08-04)
+
+- Review verdict: the IGNORED-is-closure refinement named the strongest modelling decision (*"the projection now reflects the ubiquitous language instead of imposing workflow assumptions"*); the monitor's reading called the right observability outcome — *the pipeline is NOT broken; a single operational constraint is isolated: developer decisions.* The dashboard has moved from measuring software to measuring workflow.
+- ⚠️ **STAGED, deliberately not built** (the review's own instruction: "I would not add another dashboard widget"):
+  1. **Bucket AGING** — oldest-item age per loop-completion bucket, from existing timestamps ("9 created yesterday" vs "9 ignored for six weeks" are different situations). Genuinely new; builds when operations make age meaningful.
+  2. **Flow efficiency** — ⭐ **check-before-create: SUBSTANTIALLY EXISTS as the lead-times section** (per-stage transition hours, n shown). What data growth adds is distribution/variance over means — a refinement of the existing projection, not a new one. Reconciled so a duplicate never gets built.
+- **Priority is now entirely OPERATIONS (not mine to manufacture):** decisions on the 9 outstanding recommendations → outcomes on accepted ones → assessments → Evidence Velocity rises naturally. The closing sentence held as the phase's posture: *the architecture is no longer asking for new concepts — it is asking for more evidence.*

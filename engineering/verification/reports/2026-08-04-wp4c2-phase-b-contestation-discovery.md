@@ -1,6 +1,7 @@
 # WP-4C-2 — Phase B: Contestation Discovery
 
 **Produced by:** engineering, 2026-08-04. **Discovery only — no state invented, no transition designed.**
+**Status: ✅ COMMISSION ACCEPTED · ⛔ DISCOVERY CLOSED · Phase C HANDED TO THE CONTESTATION DOMAIN OWNER** (ARB, 2026-08-04). **Engineering is in a waiting state pending authoritative business decisions.** Handover artefact: `2026-08-04-wp4c2-domain-clarification-package.md`.
 **The one question:** given that **Collection** owns the corrective action (COL-5a, established in Phase A), what is the **business standing of the challenge** while correction is outstanding?
 **Method:** **EVIDENCE** (accepted artefact) · **INFERENCE** (derived) · **HYPOTHESIS** (needs validation).
 
