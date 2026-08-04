@@ -6,7 +6,7 @@
 >
 > **EPIC-001 is closed; EPIC-004 (Adjudication tactical) has delivered and had accepted everything it was authorized to build; the WP-4 engineering commission is CLOSED and ARCHIVED (`R-98`); and the programme is now GOVERNANCE-DRIVEN — the next act belongs to the Contestation Domain Owner, the Board, or Execution Governance, not to engineering.**
 
-**Engineering is in REPOSITORY STEWARDSHIP MODE.** It may explain evidence, maintain traceability, correct factual defects and preserve repository integrity. **It may not continue discovery, extend modelling, invent governance, or implement without authorization.**
+**Engineering is in REPOSITORY STEWARDSHIP MODE — for the CURRENT AUTHORIZED SCOPE, not permanently.** It may explain evidence, maintain traceability, correct factual defects and preserve repository integrity. **It may not continue discovery, extend modelling, invent governance, or implement without authorization.** **When a new implementation commission is authorized, engineering leaves this mode legitimately — stewardship is a state of the current scope, not a standing constraint on engineering.**
 
 ---
 
