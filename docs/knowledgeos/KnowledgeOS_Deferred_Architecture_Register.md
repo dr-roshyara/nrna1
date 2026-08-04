@@ -1,5 +1,7 @@
 # KnowledgeOS — Deferred Architecture Register
 
+> ⭐ **CONSTITUTIONAL (review 2026-08-04): The purpose of this register is to delay architecture until engineering evidence justifies it. It is not itself a source of architecture.**
+
 | | |
 |---|---|
 | **Kind** | ⭐ **PROJECTION — a governance VIEW** *(consolidates activation criteria already recorded elsewhere; derived, non-authoritative, regenerable; on conflict the cited source wins)* |
