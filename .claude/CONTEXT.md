@@ -72,14 +72,15 @@ Priority: High
   EG-004 · EG-005 tracked in `docs/plans/20260726-2056-engineering-platform-repair-plan.md` — non-blocking.
 
 ## Next action (exactly one)
-**CONFIRMATION OF R-88 BY THE DECISION AUTHORITY.** R-88 subdivides WP-4C into **WP-4C-1** (Adjudication: event + hydrator + catalog entry — candidate for authorization) and **WP-4C-2** (Contestation: challenge disposition — blocked on EPIC-004K §15.3). **It is PREPARED, not ADOPTED** — issued by the ARB Chief, and R-86/R-87 created no standing delegation. **Neither package is authorized, and subdivision is not authorization (R-80).**
+**AUTHORIZATION DECISION on WP-4C-1** — `AdjudicationFailureDeclared`: the domain event, its outbox hydrator, and its catalog entry (Adjudication). **R-88 is ADOPTED and GOVERNING, but subdivision is NOT authorization (R-80)** — WP-4C-1 is a *candidate*. The next engineering act after authorization is an **EP-01 plan**, not implementation. **WP-4C-2** (Contestation's challenge disposition) stays **blocked on EPIC-004K §15.3** and is not Adjudication's to progress.
 
 ## Blockers
-- **WP-4B is ACCEPTED and CLOSED — R-87 (2026-08-04).** Capability milestone recorded once in the register: the realized architecture now spans **`Concluded → Issue Request → Recovery → Replay`**.
-- **§WP-4 remains OPEN** — WP-4C undelivered (may be CONSIDERED), WP-4D undelivered and **unauthorized**. **WP-8 remains DEFERRED (R-79)** and the **conversation boundary question** is due before it.
-- **Outside R-87, expressly:** `ChallengeRaised` **promotion** + **allocation** · **PM-6's confirmation half** (R-82) · **`enforceHorizon()` isolation** (ER-08, later slice) · **ENG-012** (open, cause unestablished; did not block acceptance) · the mapper's partial-row limitation (recorded in code).
-- **Governance maintenance B-4..B-12 remains UNOPENED** — Session 2 requires a fresh decision; acceptance did not imply it.
-- **No standing delegation of adoption or acceptance authority exists** — R-86 and R-87 each decided once. Any future ruling issued by the ARB Chief remains **PREPARED, NOT ADOPTED**, until the authority acts.
+- **WP-4B ACCEPTED and CLOSED (R-87).** Capability milestone recorded: `Concluded → Issue Request → Recovery → Replay`.
+- **R-88 ADOPTED (2026-08-04):** WP-4C → **WP-4C-1** (Adjudication, candidate for authorization) + **WP-4C-2** (Contestation, blocked on §15.3). **Neither authorized.**
+- **⚠️ NO STANDING DELEGATION EXISTS.** R-88 was adopted as a SINGLE ACT; standing delegation (R-86's declined Option C) and role-collapse were both offered and not chosen. **A future ruling issued by the ARB Chief is again PREPARED, NOT ADOPTED, until the Decision Authority acts. The PREPARED→ADOPTED mechanism stands.**
+- **§WP-4 remains OPEN** — WP-4C-1 unauthorized, WP-4C-2 blocked, WP-4D undelivered and unauthorized. **WP-8 remains DEFERRED (R-79)**; the conversation boundary question is due before it.
+- **Outside all of the above:** `ChallengeRaised` promotion + allocation · PM-6's confirmation half · `enforceHorizon()` isolation (ER-08) · ENG-012 · the mapper's partial-row limitation · §10's COL-5a consumer (**unassessed** — no evidence gathered).
+- **Governance maintenance B-4..B-12 remains UNOPENED.**
 
 ## Open items (inventory — full text at the cited homes)
 - Tracked: AD-M2 (ADR-MP-05/Q5, only under business pressure) · G-1 release tag · Jurisdiction
@@ -1869,3 +1870,11 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - ⭐ **EIS staged as candidate headline KPI:** Engineering Improvement Score — % of interventions with measurable engineering improvement. Every recommendation = a small experiment (problem→recommendation→decision+rationale→commit→metric-delta→status). *v1 ships only the record fields that make it computable later.*
 - **The commercial sentence shelved as the product's north star:** what DG Nexolution would buy is "41% fewer violations, 18% faster delivery, 76% of accepted recommendations measurably improved engineering" — never "12,000 recommendations generated."
 - ⏳ **STATUS UNCHANGED: final approval + ownership answer still pending.**
+
+
+### Priority order recorded; ownership default proposed (2026-08-04) — state + pointers only
+
+- **Review's build order recorded (no new architecture):** 1 collectors → 2 engine v1 → 3 decision capture → 4 outcomes → 5 dashboard → 6 Python learning (only after history). ⭐ **Priority 1 is ALREADY COMPLETE** (metrics v3 · test-presence · LCOM4 — built, tested, paused by directive); priority 5 partially exists (Evidence Dashboard). **The actual next build = priority 2, the engine.**
+- **The intelligence definition re-recorded in its sharpest form yet:** intelligence = *"R3 accepted 84% of the time, reduced CBO 17%, but only for large aggregates"* — requiring all five data kinds accumulated. Python has nothing to learn until that history exists; **the next milestone is trustworthy evidence, not AI.**
+- ⭐ **Ownership default PROPOSED (so one word can unblock):** at SPIKE level, the engine is engineering observation tooling (same area/guide family as the collectors); **capability-level ownership stays the open question the spike informs** (capability-vs-service · context-vs-DP) — consistent with the spike-as-commission-instrumentation scoping. **If accepted, the EP-01A ownership gate is satisfied at spike level and only the final GO remains.**
+- ⏳ **Status: the plan awaits the final word.**
