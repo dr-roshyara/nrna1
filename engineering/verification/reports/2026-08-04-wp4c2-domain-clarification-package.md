@@ -1,7 +1,7 @@
 # WP-4C-2 — Domain Clarification Package
 
 **For:** the **Contestation domain owner**. **From:** engineering, 2026-08-04.
-**Status:** engineering discovery is **closed**; engineering is **waiting**. Nothing proceeds until these decisions are returned.
+**Status:** engineering discovery for **WP-4C-2** is **closed**; **WP-4C-2** waits on these decisions. **No other work package is blocked by this.**
 
 > **This package contains four things only: the unresolved business questions · the engineering evidence bearing on each · the engineering constraints · the decisions required.**
 > **It contains no proposed solutions, no candidate workflow states, and no implementation recommendations — by instruction and by design.**
@@ -87,7 +87,7 @@ Collection owes more or better evidence. **What event, decision, or deadline con
 
 **Will not:** infer business intent · resolve the Q2 conflict · propose states, transitions, events or aggregates · begin tactical design.
 
-**Until these answers return, engineering is stopped on WP-4C-2 — not slowed.**
+**Scope of the stop, stated precisely:** **engineering DISCOVERY for WP-4C-2 is COMPLETE, and TACTICAL MODELLING for WP-4C-2 is intentionally SUSPENDED pending these decisions.** **Engineering remains free to work on unrelated authorized work packages.** *(Refined 2026-08-04: an earlier line read “engineering is stopped”, which could be read as a programme-wide halt. It is not — only this commission has reached its boundary. WP-4C-1's acceptance decision, for one, is separately open.)*
 
 ---
 

@@ -72,7 +72,7 @@ Priority: High
   EG-004 · EG-005 tracked in `docs/plans/20260726-2056-engineering-platform-repair-plan.md` — non-blocking.
 
 ## Next action (exactly one)
-**CONTESTATION DOMAIN OWNER answers the Domain Clarification Package** — `engineering/verification/reports/2026-08-04-wp4c2-domain-clarification-package.md`. **Q1** what business fact ends the waiting period · **Q2** does the challenge survive corrective work (two accepted artefacts conflict) · **Q3** responsibility owner after that fact · **Q4** is the meaning already in the domain. **Engineering is STOPPED on WP-4C-2, not slowed** — discovery is closed, and inferring these answers is expressly prohibited. **Separately open: the WP-4C-1 ACCEPTANCE DECISION** (`2026-08-04-wp4c1-acceptance-evidence.md`).
+**CONTESTATION DOMAIN OWNER answers the Domain Clarification Package** — `engineering/verification/reports/2026-08-04-wp4c2-domain-clarification-package.md`. **Q1** what business fact ends the waiting period · **Q2** does the challenge survive corrective work (two accepted artefacts conflict) · **Q3** responsibility owner after that fact · **Q4** is the meaning already in the domain. **WP-4C-2's discovery is COMPLETE and its TACTICAL MODELLING is SUSPENDED pending these answers — this commission only. Engineering is NOT programme-wide blocked**, and inferring these answers is expressly prohibited. **Separately open: the WP-4C-1 ACCEPTANCE DECISION** (`2026-08-04-wp4c1-acceptance-evidence.md`).
 
 ## Blockers
 - **WP-4B ACCEPTED and CLOSED (R-87).** Capability milestone recorded: `Concluded → Issue Request → Recovery → Replay`.
