@@ -2236,3 +2236,9 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 
 - ⭐ **The taxonomy upgraded from 'kind of thing' to FAILURE MODE:** every gate protects against a specific risk — VO→complexity · Port→over-abstraction · Service→wrong boundaries · BC→wrong language · Analytics→invalid conclusions · Learning→unstable behavior. Recorded in the register's principles block WITH the reviewer's cap as its guard: **~5–6 canonical families, no more** — twenty gate types would make the governance itself hard to reason about. Provenance honest: emerged from two absorbed corrections, not designed.
 - Maturity table held: activation criteria 'becoming systematic'; the DX layer remains the named next milestone; both learning capabilities correctly locked.
+
+### ⭐ IDE ADAPTER SHIPPED: JSON API + minimal VS Code extension — zero polling for VS Code users (2026-08-04)
+
+- **Commission steps 1–5 executed** (1–2 already existed): ⭐ **`observe.php --json`** — the adapter API any editor calls (verified on real code: Election.php → 2 advisories, 116ms, severity always 'advisory' — collectors never judge) · ⭐ **`scripts/observations/vscode-knowledgeos/`** — plain-JS extension (no build step; node-syntax-checked): `onDidSaveTextDocument` → observe.php → warning toast + output channel. **Native events — zero polling.** Ephemeral by design; decision buttons deliberately absent until DecisionCaptureService (step 6, staged); JetBrains evidence-gated (step 7).
+- ⭐ **Register transition #4 is the log's FIRST CRITERION FIRE:** the Real-Time adapter row's own named condition ('an IDE-extension adapter arriving anyway') fired — the p95-latency branch never needed to. Poller retained as fallback adapter for non-VS-Code contexts. Transition #3: IDE-extension adapter, authority commission.
+- Runtime untouched (10/24 regression green); the ObservationTrigger port absorbed its third adapter without a single downstream change — the port contract earning its keep.
