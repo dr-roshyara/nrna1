@@ -51,7 +51,9 @@ Corroborating check: `grep -rln "AdjudicationExpired\|AdjudicationFailureDeclare
 
 > **Line 58 remains valid within the scope accepted by PB-006.** IT-1..IT-8 proved what IT-1..IT-8 was defined to prove, and that acceptance stands.
 >
-> **The row is historically accurate but no longer reflects the current implementation boundary.** The **PB-006 implementation scope** has since been extended by two terminal exits that its evidence predates.
+> **The row remains accurate for the implementation boundary accepted under PB-006.** Subsequent implementation has expanded that boundary. **Whether programme reporting should now distinguish historical acceptance scope from current implementation scope is a Delivery Governance decision.**
+
+*(Wording set by the ARB, 2026-08-04. An earlier version read "historically accurate but no longer reflects the current implementation boundary" — accurate, but it carried an unintended implication that the row **had become incorrect**. It has not. The correction removes the implication and leaves the engineering finding unchanged.)*
 
 **Explicitly NOT claimed:**
 
