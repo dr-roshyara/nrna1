@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Contexts\Shared\Outbox;
 
+use App\Contexts\Adjudication\Infrastructure\Outbox\AdjudicationExpiredHydrator;
 use App\Contexts\Adjudication\Infrastructure\Outbox\AdjudicationFailureDeclaredHydrator;
 use App\Contexts\Adjudication\Infrastructure\Outbox\DeterminationIssuedHydrator;
 use App\Contexts\Shared\Infrastructure\Outbox\EventHydratorRegistry;
@@ -30,6 +31,28 @@ final class EventHydratorRegistryWiringTest extends TestCase
         $second = $this->app->make(EventHydratorRegistry::class);
 
         $this->assertSame($first, $second);
+    }
+
+    /**
+     * Coverage written after the fact: `AdjudicationExpiredHydrator` shipped with WP-6, is
+     * registered at `AdjudicationServiceProvider::boot()` line 81, and **had no wiring assertion**.
+     *
+     * **Publication without registration is not published language** (the WP-3A rule), so an
+     * unregistered hydrator is invisible until a consumer cannot hydrate a payload already in the
+     * outbox. That is precisely the failure this assertion makes impossible to reach unnoticed.
+     */
+    public function test_adjudication_provider_registers_adjudication_expired_hydrator(): void
+    {
+        $registry = $this->app->make(EventHydratorRegistry::class);
+
+        $this->assertTrue(
+            $registry->has('AdjudicationExpired'),
+            'publication without registration is not published language (WP-3A)',
+        );
+        $this->assertInstanceOf(
+            AdjudicationExpiredHydrator::class,
+            $registry->hydratorFor('AdjudicationExpired'),
+        );
     }
 
     /**
