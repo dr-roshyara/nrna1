@@ -119,12 +119,26 @@ It proves nothing (not Verification) · interprets nothing (not Observability) �
 | **C3 inside Verification** | the C3↔C2 tension becomes **intra-domain** — a trade-off one domain owner manages alone |
 | **C3 as its own domain** *(adopted)* | the tension becomes **cross-domain** — a negotiation with two owners, visible at a boundary |
 
-**Adopted: a fifth domain, `Execution Environment`.** Grounds: **a tension is easier to lose inside a domain than across a boundary**, and this specific tension has already produced two structural findings by being invisible. **Recorded as a classification decision with its reason, not presented as the only option.**
+**⚠️ DOWNGRADED 2026-08-04 at the ARB's correction: `Execution Environment` is a CANDIDATE taxonomy, NOT the canonical one.**
+
+An earlier version *adopted* it, on the grounds that a tension is easier to lose inside a domain than across a boundary. **That is an argument from CONSEQUENCE, not evidence that C3 is peer-level to Verification or Observability** — and the two are not the same claim.
+
+**An equally supported alternative exists:**
+
+```
+Platform
+  ├── C6  Framework-integration knowledge
+  └── C3  Test isolation          ← an operational platform capability
+```
+
+**The evidence establishes that C3 is DIFFERENT in kind from the other seven. It does not establish which taxonomy is superior.** Both placements are recorded; **neither is canonical**, and §8's tree shows the candidate form with that status marked.
 
 ## 8. The taxonomy
 
+**⚠️ CANDIDATE form — the `Execution Environment` domain is not canonical (see §7).**
+
 ```
-Engineering Verification (reference architecture)
+Engineering Verification (candidate reference architecture)
 │
 ├── Verification
 │     ├── C1  Behaviour verification
@@ -138,7 +152,7 @@ Engineering Verification (reference architecture)
 ├── Platform Understanding
 │     └── C6  Framework-integration knowledge
 │
-├── Execution Environment
+├── Execution Environment  ⚠️ CANDIDATE domain — C3 may instead sit under Platform
 │     └── C3  Test isolation
 │
 └── Evidence Generation
@@ -211,3 +225,89 @@ Engineering Verification (reference architecture)
 | Status | **stopped at classification** |
 
 **This taxonomy is offered as the reference architecture for engineering verification capabilities**, so that future implementation proposals can be evaluated against a stable model rather than against whichever investigation happened to surface them.
+
+---
+
+# PART III — Architectural significance (added 2026-08-04, ARB-required)
+
+**Moves from classification to significance: why each capability exists and how it affects resilience.** No implementation, no prioritization, no taxonomy expansion.
+
+## 13. Capability role model
+
+**The platform's primary value is DECISION CONFIDENCE — an authority able to act on verification output.** Roles are assigned against that value, from evidence.
+
+| | Role | Grounds |
+|---|---|---|
+| **C1** Behaviour verification | **Strategic** | produces the verdicts that *are* the platform's product |
+| **C2** Production-path verification | **Strategic** | a verdict about code that does not ship has no value; C2 makes verdicts *about the product* |
+| **C8** Evidence generation | **Strategic** | delivers the value to its consumer — **without it, verification results exist and cannot be acted on** |
+| **C4** Mutation confidence | **Supporting** | changes what a C1 verdict is *worth*; adds no verdict of its own |
+| **C5** Verification observability | **Supporting** | strengthens C8's output; interprets, does not verify |
+| **C7** Execution diagnostics | **Supporting** | strengthens response to failure; produces no verdict |
+| **C3** Test isolation | **Enabling** | provides conditions under which any verdict is meaningful |
+| **C6** Framework-integration knowledge | **Enabling** | provides the conditions C5 requires to classify at all |
+
+**Note on C2's role.** It is rated Strategic while assessed *Experimental* (§11). **Those are orthogonal: role is about architectural significance, readiness about current state.** **A strategic capability at experimental readiness is the most consequential combination in the model** — and it is exactly where both of this session's structural findings arose.
+
+## 14. Architectural criticality matrix
+
+**Consequences, not solutions.**
+
+| | If **absent** | If **degraded** | Capabilities affected | Architectural risk introduced |
+|---|---|---|---|---|
+| **C1** | no verdict about behaviour exists | verdicts become unreliable without announcing it | C8 | defects ship believed verified |
+| **C2** | verdicts describe code that may not run | verified behaviour and shipped behaviour diverge silently | C8 · release decisions | **a correct verdict about the wrong artefact** |
+| **C8** | verification exists and cannot be acted on | authorities decide on partial evidence | governance · acceptance | **decisions made outside the evidence they cite** |
+| **C4** | a green suite means only that it ran | untested tests accumulate unnoticed | C1 | **coverage mistaken for verification** |
+| **C5** | signals cannot be interpreted | real signals hide among benign ones | C8 | **detection blindness** — a regression indistinguishable from growth |
+| **C7** | failures are known but not attributable | attribution costs grow with change size | C2 · response | debugging cost scales with batch size, not defect size |
+| **C3** | results depend on execution order | intermittent results erode trust in all verdicts | C1 · C2 | **the whole verdict corpus becomes unfalsifiable** |
+| **C6** | runtime effects are attributed by guess | classification rests on assumption | C5 | framework behaviour misread as product defect |
+
+## 15. Capability influence map — influence, kept separate from dependency
+
+**A capability may influence another without providing it anything.**
+
+| | Influence | On | Nature of the influence |
+|---|---|---|---|
+| **C4** | **amplifies** | C1 | does not feed C1 — changes the *value* of what C1 already produces |
+| **C5** | **amplifies** | C8 | the same evidence becomes more or less actionable without changing |
+| **C6** | **constrains** | C5 | sets a **ceiling**: C5 can classify no better than C6 understands |
+| **C3** | **constrains** | C2 | **isolation achieved by doubling reduces what C2 can observe** |
+| **C7** | **supports** | C2 | assists response; neither amplifies nor constrains the verdict |
+| **C1** ↔ **C6** | **independent** | — | neither affects the other in either direction |
+| **C4** ↔ **C5** | **independent** | — | discrimination and interpretability do not interact |
+
+### 15a. The influence vocabulary resolves what Part I had to invent
+
+**Part I recorded C3↔C2 as a `TENSION`, a category coined because dependency did not fit.** In influence terms it is simply **`C3 constrains C2`** — a standard relationship, no special case required.
+
+> **The "tension" was a missing vocabulary, not a novel phenomenon.** Separating influence from dependency, as Phase 3 required, supplied the word. **Part I's category is superseded; the finding it recorded is unchanged and remains correct.**
+
+## 16. Architectural stability
+
+**Assessed on collected evidence. No capability's stability is inferred from another's weakness.**
+
+| | Stability | Evidence |
+|---|---|---|
+| **C3** Test isolation | **Foundational** | every verdict in the corpus rests on it; per-test refresh and deliberate container avoidance have held across every run this session |
+| **C1** Behaviour verification | **Stable** | 8 keystones · reconcile branches · round trips · gate at exit 0 |
+| **C8** Evidence generation | **Stable** | repeated acceptance packages with consistent labelling discipline |
+| **C7** Execution diagnostics | **Stable** | localised two distinct faults to their causing batch |
+| **C5** Verification observability | **Evolving** | gap diagnosed and named; mechanism partly characterised |
+| **C6** Framework-integration knowledge | **Evolving** | mechanism located; one hypothesis eliminated; acting cause unestablished |
+| **C2** Production-path verification | **Experimental** | one deliberate instance, added today |
+| **C4** Mutation confidence | **Experimental** | one deliberate instance, applied by choice |
+
+**C3 is the only Foundational capability**, and that is the model's most load-bearing claim: **it is Enabling in role, Foundational in stability, and constrains a Strategic capability.** A change to C3 therefore reaches further than its role alone suggests.
+
+## 17. Authorization boundary for Part III
+
+**Describing significance?** Yes. **Describing implementation?** No. **Expanding the taxonomy?** No — §7's fifth domain was *downgraded*, not extended. **Authorized?** No implementation is.
+
+| | |
+|---|---|
+| Governance domain | **Execution Governance** |
+| Responsible authority | the **ARB** |
+| Authorization needed | an execution-governance act for any work arising from §14 or §16 |
+| Status | **stopped at architectural significance** |
