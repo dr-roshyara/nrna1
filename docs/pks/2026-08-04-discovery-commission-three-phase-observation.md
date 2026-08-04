@@ -17,7 +17,7 @@ WP-4C-2's discovery commission was not planned as a three-phase process. **It co
 
 ## Why it is recorded
 
-**Phase 1 changed the shape of the problem twice.** A-0 was found mis-framed (two responsibilities, not one owner to choose), and the Context Map turned out to answer half of it already. **Neither was discoverable by reasoning; both required reading accepted artefacts first.**
+**Phase 1 changed the shape of the problem twice.** A-0 was found mis-framed (two responsibilities, not one owner to choose), and the Context Map turned out to answer half of it already. **Neither was discoverable by reasoning; both required INTEGRATING accepted artefacts that already held material information.**
 
 **Phase 2 was what made the hand-off small.** Without the dependency ordering, four questions would have gone to the domain owner as a flat list; with it, two are prerequisites and the other two follow.
 
@@ -27,7 +27,7 @@ WP-4C-2's discovery commission was not planned as a three-phase process. **It co
 
 **Two specific reasons to distrust generalizing this one:**
 
-1. **Phase 1's payoff depended on there BEING an unread decision.** The Context Map happened to contain COL-5a. A commission in a genuinely unmapped area would find nothing there, and the phase would look like wasted motion rather than the decisive step it was here.
+1. **Phase 1's payoff depended on previously accepted artefacts containing materially relevant information that had not yet been incorporated into the current reasoning.** In this commission that information was **COL-5a**; in another it might be an ADR, a policy, or a context-map edge. **A commission whose accepted corpus holds nothing material would find nothing there, and the phase would look like wasted motion rather than the decisive step it was here.** *(Broadened 2026-08-04 at the ARB's refinement, from “there being an unread decision” — the transferable lesson is that ACCEPTED EVIDENCE EXISTED AND HAD NOT BEEN INTEGRATED, not that a decision specifically went unread. The narrower phrasing would have failed to match a future commission that found its material in an ADR rather than a map.)*
 2. **Phase 2 was cheap only because the questions were few.** Four questions have a tractable dependency graph; twenty may not, and mandating the analysis could turn a useful check into a ritual.
 
 ## What would make it promotable
