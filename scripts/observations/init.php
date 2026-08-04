@@ -1,0 +1,69 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Runner: knowledgeos init — initialize a repository for KnowledgeOS.
+ *
+ * Idempotent: an already-initialized repository plans zero actions.
+ * Executes the plan, then hands off to the doctor for verification.
+ *
+ * Usage: php scripts/observations/init.php [--dry-run]
+ */
+
+require_once __DIR__ . '/KnowledgeOsInitPlanner.php';
+
+$root = dirname(__DIR__, 2);
+chdir($root);
+$dryRun = in_array('--dry-run', $argv, true);
+
+$obsDir = $root . '/engineering/verification/observations';
+$metricsDir = $root . '/engineering/verification/metrics';
+
+$state = [
+    'obs_dir_exists'     => is_dir($obsDir),
+    'metrics_dir_exists' => is_dir($metricsDir),
+    'husky_post_commit'  => is_file($root . '/.husky/post-commit'),
+    'hooks_path_set'     => str_contains(trim((string) shell_exec('git config --get core.hooksPath')), '.husky'),
+];
+
+$plan = KnowledgeOsInitPlanner::plan($state);
+$needed = array_values(array_filter($plan, fn ($s) => $s['needed']));
+
+echo "KnowledgeOS init" . ($dryRun ? ' (dry run)' : '') . "\n\n";
+foreach ($plan as $step) {
+    printf("%s %s\n", $step['needed'] ? '→' : '✓', $step['action']);
+}
+
+if ($needed === []) {
+    echo "\nalready initialized — nothing to do\n";
+} elseif (!$dryRun) {
+    foreach ($needed as $step) {
+        switch ($step['action']) {
+            case 'create observations directory':
+                mkdir($obsDir, 0777, true);
+                break;
+            case 'create metrics directory':
+                mkdir($metricsDir, 0777, true);
+                break;
+            case 'install commit-trigger delegate (.husky/post-commit)':
+                if (!is_dir($root . '/.husky')) {
+                    mkdir($root . '/.husky', 0777, true);
+                }
+                file_put_contents(
+                    $root . '/.husky/post-commit',
+                    "# post-commit — CommitTrigger instrumentation (installed by knowledgeos init)\n"
+                    . "bash scripts/observations/git-hooks/post-commit || true\n"
+                );
+                break;
+            case 'configure hook path (run npm install — husky prepare)':
+                echo "  (manual: run `npm install` — the husky prepare script configures core.hooksPath)\n";
+                break;
+        }
+    }
+    echo "\ninitialized — verifying:\n\n";
+    passthru('php ' . escapeshellarg(__DIR__ . '/doctor.php'), $exit);
+    exit($exit);
+}
+
+exit(0);
