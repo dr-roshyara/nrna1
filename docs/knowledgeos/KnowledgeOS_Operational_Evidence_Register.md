@@ -87,6 +87,25 @@ Safety nets built for one area class (app/) go blind when work moves to a new on
 
 ---
 
+## OE-KOS-4 · WP-4C-2: discovery refused to invent a business decision *(2026-08-04)*
+
+### 1 · Observation
+The WP-4C-2 discovery (Contestation: challenge disposition on `AdjudicationFailureDeclared`) **gathered evidence and explicitly refused to answer the design question it uncovered**: the existing `Challenge::adjudicate` transition requires a `DeterminationId` the failure event deliberately lacks — **a missing business decision, not a missing if-statement.** The report kept the boundary in its own words (*"producing those would be answering §15.3 — the one thing this discovery must not do"*), listed adjacent states without recommending one, and surfaced an unrequested adjacent finding (`AdjudicationExpired` also has no consumer) without assuming both problems share an answer. **No RED plan was written** — *"a RED plan written now would encode a disposition engineering invented."*
+
+### 2 · Provenance *(verified first-hand)*
+`engineering/verification/reports/2026-08-04-wp4c2-discovery.md` — boundary section (§0), the evidence tables, and the not-recommended line read directly; content matches the review's characterization. ARB record appended as §8 (report body unmodified).
+
+### 3 · Architectural claims affected
+⭐ **R-6 `guides product engineering`: THIRD formal behavioural record — n=3, enumerated** *(planning obeyed constraints · RED implementation obeyed them · **discovery refused to legislate**)*. The maturity marker the review names: *the process can now say "we know enough to know implementation would be premature."* ⛔ Not the back-edge; not an outcome — a governance-behaviour instance.
+
+### 4 · Interpretation *(marked)*
+The review's reading: uncertainty was recognized as a **modeling decision owned by the domain**, where many teams would have seen an implementation task. The ARB's added question (*who owns the unresolved responsibility? — state follows responsibility*) is staged in the report's §8 for the modeling session.
+
+### 5 · Promotion decision
+⛔ **Left to the Decision Authority.**
+
+---
+
 ## Register rules — REV 2 *(review 2026-08-03; OE-KOS-1 untouched per append-only discipline)*
 
 ### ⭐ The normalized entry template *(binding from OE-KOS-2 onward)*
@@ -146,3 +165,38 @@ Safety nets built for one area class (app/) go blind when work moves to a new on
 
 **Review 1 approved:** register · append-only · provenance-first · DA separation. **Deferred:** MO-1 promotion · four-capability reading · any rule before multiple entries. **New observation recorded (n=1, unadopted): two complementary feedback loops** — Discovery Loop *(creates architecture)* · Operational Learning Loop *(validates and improves it)* — *converges with SP-5 and the three-capability observation.*
 **Review 2 verdict: "approved architectural maintenance, not architectural discovery"** — forward normalization · EPC reuse over duplication · clean OE/pattern separation · no new artifacts. ⭐ *Its caution adopted operationally: `CONTEXT.md` records state + pointers only — canonical content lives in canonical documents.*
+
+---
+
+## Register annotations — OE-KOS-4 review dispositions *(2026-08-04 · append-only annotation; the REV 3 rules stand UNCHANGED — this is not a register revision)*
+
+### ⭐ R-6 scope check — PERFORMED, not assumed *(the review's one caution)*
+
+The review conditioned the n=3 count on R-6 being defined broadly enough to cover planning, implementation, and discovery. **Checked against the canonical wording:** the edge is `guides product engineering` (Relationship Validation Matrix — "protocol used; effect unmeasured"), defined at the ACTIVITY level, not the implementation level. Planning (OE-KOS-1), implementation (OE-KOS-2), and discovery (OE-KOS-4) are all product-engineering behaviours; **the count stands without stretching the edge.** *Had R-6 been implementation-scoped, the count would have been trimmed to n=1 — the check was real.*
+
+### ⚠️ MO-2 STAGED — ownership-before-state *(candidate modelling heuristic · n=1 · ⛔ NOT promoted)*
+
+Joins the pattern-candidate staging view (append, never edit — the REV 3 table stands as written):
+
+| Pattern candidate | Observations | Status |
+|---|---:|---|
+| **MO-2** *(ownership-before-state: when an integration event cannot be modelled, ask WHO owns the unresolved responsibility before proposing aggregate state — responsibility → behaviour → lifecycle → state, never the reverse)* | **1** *(OE-KOS-4 / WP-4C-2)* | **Recorded** |
+
+The reviewer's operational form, quoted as the candidate's shape *(a shape on the shelf, not a rule)*:
+
+> Before proposing a new aggregate state: 1. What responsibility became unresolved? 2. Who owns it now? 3. Is ownership transferred? 4. Is ownership shared? 5. Is ownership suspended? Only then discuss state.
+
+⛔ **Not promoted — by the reviewer's own instruction and by standing rule:** single occurrence (ES-006.1) · meta-principle freeze. ⭐ *Provenance path is the sanctioned one: this candidate was PRODUCED by an engineering incident (WP-4C-2), not minted in discussion — recording the candidate is legal; promotion waits for recurrence across MULTIPLE bounded contexts (its stated trigger).*
+
+### ⭐ Explanatory-precision heuristic: count moves 1 → 2
+
+Instance 2, named by the review: *"Challenge needs another state"* → *"responsibility has become ownerless"* — the reframing explains the design tension more precisely. **n=2, enumerated:** the OE-KOS-3 incident analysis *(the minting instance — four-layer reading increased precision)* · the OE-KOS-4 reframing. Still a shelved candidate heuristic with its removal test; a count movement, not a promotion.
+
+### ⚠️ Candidate-volume watch *(review 2026-08-04 · a TRIGGER recorded, no machinery built)*
+
+The reviewer's operational threshold, recorded as a watch signal — ⛔ **not policy** *(REV 3: "no thresholds are policy today" stands)*:
+
+> Once the staging view reaches roughly **10–15 candidates**, the full candidate lifecycle *(Candidate → Evidence count → Counterexamples → Promotion → Retirement)* becomes **operationally necessary rather than merely architecturally interesting** — that is when the Pattern Evidence Register machinery gets armed and this table migrates.
+
+**Count today: 4** *(MO-1 · MO-2 · IF-1 · DG-1)* — the trigger is behavioural (operational necessity at volume), matching the platform's functional-trigger discipline. *Nothing armed here; the count arriving at the threshold — not this note — opens the question.*
+

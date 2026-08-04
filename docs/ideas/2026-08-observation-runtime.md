@@ -41,6 +41,17 @@ Observation Store → Developer Feedback (console · PR comment · dashboard)
 
 ⚠️ **Watch-for at gate-opening (review 2026-08-04): keep SCHEDULER distinct from TRIGGER.** *Commit is an external event ("what happened?"); Nightly is a scheduling policy ("when should we run?") — two reasons to change. Not needed now; the Trigger must never quietly absorb scheduling when the runtime evolves.* Also recorded: the trigger side now mirrors the canonical governance layering (Rule→Mechanism→Instrumentation ≙ Event→Trigger→Instrumentation) — **the architectural style is becoming internally consistent, which is itself evidence the layering is real.**
 
+## Third enrichment (2026-08-04): ARB verdict on the full EDA proposal — *"approve the conceptual direction, reject the infrastructure timing"*
+
+An external proposal (event bus · Kafka/RabbitMQ/Redis Streams · domain events `ClassChanged`/`MetricCalculated`/…) was reviewed. The verdict, recorded here because this idea is where the EDA vision lives:
+
+- ✅ **The canonical behavioral event chain RATIFIED** *(it is the published Engineering Improvement Cycle, event-named)*: `EngineeringEvent → ObservationProduced → RecommendationIssued → DeveloperDecisionRecorded → OutcomeRecorded → AssessmentRecorded`. **Two corrections to the proposal:** these are **Engineering Observation Events belonging to KnowledgeOS** — NOT domain events (PublicDigit's domain is elections, not `ClassChanged`); and **Assessment was missing** — it belongs in the chain (Python learns from Assessment, never from Outcome — the frozen rule).
+- ✅ **`ObservationProduced` named the central stable concept** — producer-agnostic (LCOM4 · CBO · ArchUnit · Roslyn · Ruff · human review · ADR check all emit *Observation*, never "metric"). ⭐ *Converges with the existing OBS-1 observation contract — the common contract is already implemented practice.*
+- ✅ **Collector latency classes adopted into the trigger profiles:** fast (LCOM4 · test presence · formatting) → pre-commit/on-save · medium (architecture rules · fitness functions) → PR · slow (repo/trend/cross-project analysis) → nightly.
+- ⛔ **REJECTED FOR NOW — no engineering event requires them:** event bus · async messaging · event store. One repository, one developer, one pipeline: no scalability problem exists. **EDA entry criterion recorded:** multiple producers/consumers (repos · CI systems · IDE plugin · CLI · dashboard) needing the same observations, making a bus *simpler* than point-to-point — the standing rule (*engineering event → observation → evidence → architectural evolution*) applied to infrastructure.
+- ⭐ **The proposal accidentally CONFIRMED the earlier decomposition** — each box in Event→Trigger→Instrumentation→Observation→Recommendation→Decision→Outcome→Assessment has exactly one reason to change; the layering absorbed the proposal without conflict.
+- ✅ **The "implement NOW" slice BUILT (TDD):** `scripts/observations/recommendation-inbox.php` — the developer's decision inbox (list open recommendations with age; `--decide` prompts a/i/d + reason code and appends the standard decision+rationale records). *Attacks the measured bottleneck directly: needs-decision = 9.*
+
 ## Why interesting
 
 Answers the four questions the collectors deliberately don't: who runs it · when · how developers are notified · how observations are published. Once it exists, every future collector plugs into one pipeline instead of inventing its own runner — *the runner-boilerplate-×3 duplication already observed is this idea's first evidence.*

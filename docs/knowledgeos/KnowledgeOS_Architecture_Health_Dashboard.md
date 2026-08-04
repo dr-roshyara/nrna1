@@ -21,7 +21,7 @@
 | **Viewpoints** *(siblings, no arrows)* | reconciled; structural slot contested | **Candidate** *(presentation)* | D-8 | ARB |
 | ⛔ **`generates → PKS`** *(the distinctive bet)* | ⛔ **n=0 — inside AND outside** | **Hypothesis** | a real generation attempt *(Stream 4 / MVP — gated)* | evidence, then ARB |
 | **Evidence back-edge** *(work improves platform)* | **n≈3 informal** *(R-36 · R-41 · R-63)* · ⭐ **FORMAL n=1 at the INSTRUMENTATION level: OE-KOS-3** *(observed net blind spot → recorded evidence → hook fixed, with records — canon-level formal traversal still n=0)* | **Evidenced at instrumentation level** | a formal traversal at the CANON level *(a rule/standard changed by recorded evidence)* | evidence, then DA |
-| ⭐ **R-6 `guides product engineering`** *(the composite's guides-edge)* | ⭐ **n=2 FORMAL: OE-KOS-1** *(planning obeyed constraints)* **+ OE-KOS-2** *(RED-ratchet implementation obeyed them — invariant isolated, cost pre-recorded, honest RED stop)* | **Evidenced, unmeasured** *(no unguided baseline)* | WP-4B GREEN + runtime *(the two ❌ rows, still ❌)* | evidence, then DA |
+| ⭐ **R-6 `guides product engineering`** *(the composite's guides-edge)* | ⭐ **n=3 FORMAL, enumerated: OE-KOS-1** *(planning obeyed constraints)* **· OE-KOS-2** *(RED-ratchet implementation obeyed them)* **· OE-KOS-4** *(discovery refused to legislate — "we know enough to know implementation would be premature")* | **Evidenced, unmeasured** *(no unguided baseline)* | WP-4B GREEN + runtime *(the two ❌ rows, still ❌)* | evidence, then DA |
 | **Space map = the real context map** | n=1 platform | **Hypothesis** | KnowledgeOS applied elsewhere | evidence |
 | **"Knowledge Architecture Platform"** | n=1 | **Hypothesis** *(branding deferred by review)* | second adopter | evidence, then sponsor |
 | **FREEZE / RETIRE as missing decisions** | FREEZE n≥3 undeclared · PM-6 open | **Insufficiency evidence submitted** | the EDM's own ladder | ARB |
@@ -38,7 +38,7 @@
 | EKP lint rules operating / graph | **18 / generated** | EKP schema layer |
 | Enforced runtime controls | **deny×19 · ask×22 · advisory×16** | Operational Knowledge Principles |
 | ⛔ **Docket packages ruled** | **0 of 11** *(D-9a first)* | the ARB Decision Docket |
-| ⭐ **Formal operational-evidence entries** | **3** *(OE-KOS-1 · OE-KOS-2 · **OE-KOS-3 — first non-WP-4B event**)* | the Operational Evidence Register |
+| ⭐ **Formal operational-evidence entries** | **4** *(OE-KOS-1 · OE-KOS-2 · OE-KOS-3 · **OE-KOS-4 — discovery refused to legislate**)* | the Operational Evidence Register |
 | ⛔ **Operating-unowned assets** | **1** *(Runtime Adapter — RO-4)* | Viewpoint Ownership |
 | **Second adopting product** *(THE gate)* | **none** | DA clarification 2026-07-27 |
 
