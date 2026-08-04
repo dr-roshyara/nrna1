@@ -31,7 +31,7 @@ class BulkApproveVoters extends Command
      */
     public function handle() 
     {
-        $this->info('🗳️  Bulk Voter Approval Tool ');
+        $this->info('🗳️  Bulk Voter Approval Tool  ');
         $this->info('============================');
 
         // Get current admin user info
