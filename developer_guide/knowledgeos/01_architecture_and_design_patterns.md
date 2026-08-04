@@ -49,6 +49,32 @@ is reachable through a conceptual **port**; technology sits outside as an
 capability and adapter, e.g. CommitTrigger → Git → Husky. Use it in
 explanation if it adds precision; discard it if it never does.)*
 
+## The ObservationTrigger Port — the canonical contract
+
+Not a class, not an interface — a documented contract every trigger adapter
+implements. *(Legitimately documented as of 2026-08-04: TWO adapters exist —
+commit and file-save — so the port is proven duplication, not anticipation.)*
+
+```
+ObservationTrigger
+
+Input:      ChangeSet   (technology-neutral: changed files · source · timestamp · optional commit id)
+Output:     ObservationRuntime.run(ChangeSet)
+
+Guarantees: deterministic            — identical ChangeSet + identical sources → identical recommendations
+            non-blocking             — never blocks a commit, a save, or typing
+            trigger-independent      — the runtime never knows how it was triggered
+            no collector logic       — adapters detect and delegate, nothing else
+            no recommendation logic  — thresholds live in rules-as-data only
+
+Publication: the ADAPTER's decision, not the runtime's —
+            commit publishes to the evidence streams · file-save displays ephemerally
+```
+
+Adapters today: commit (husky) · file-save (`watch.php` poller + VS Code task).
+Staged: PR/CI · real-time (FS events / IDE extension) — each drops in against
+this contract without touching anything downstream.
+
 ## The deterministic pipeline
 
 ```
