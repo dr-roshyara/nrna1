@@ -36,8 +36,12 @@ $decisionsFile = $obsDir . '/decisions.jsonl';
 $actor = trim((string) shell_exec('git config user.name')) ?: 'unknown';
 $ts = date('c');
 
+// commit_id: where the codebase stood when the decision was made — the
+// traceability link Outcome Recording joins on (review 2026-08-04).
+$commit = trim((string) shell_exec('git rev-parse --short HEAD')) ?: null;
+
 $records = [
-    ['type' => 'decision',  'recommendation_id' => $id, 'decision' => $decision, 'ts' => $ts, 'actor' => $actor],
+    ['type' => 'decision',  'recommendation_id' => $id, 'decision' => $decision, 'ts' => $ts, 'actor' => $actor, 'commit' => $commit],
     ['type' => 'rationale', 'recommendation_id' => $id, 'reason_code' => $reason, 'comment' => $comment],
 ];
 if (!is_dir($obsDir)) {

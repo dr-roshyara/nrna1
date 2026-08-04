@@ -71,4 +71,116 @@ final class EvidenceDashboardRendererTest extends TestCase
         $this->assertStringContainsString('no snapshots yet', strtolower($md));
         $this->assertStringContainsString('OE entries: 0', $md);
     }
+
+    public function test_lifecycle_funnel_shows_where_the_pipeline_breaks(): void
+    {
+        $md = \EvidenceDashboardRenderer::render([
+            'oe_entries' => 0,
+            'funnel' => ['issued' => 100, 'decided' => 80, 'outcomes' => 5, 'assessments' => 5],
+        ]);
+
+        // the funnel is the KPI: each stage count visible, drop-offs computable at a glance
+        $this->assertStringContainsString('issued 100', $md);
+        $this->assertStringContainsString('decided 80', $md);
+        $this->assertStringContainsString('outcomes 5', $md);
+        $this->assertStringContainsString('assessments 5', $md);
+    }
+
+    public function test_stage_lead_times_render_as_measurements_only(): void
+    {
+        $md = \EvidenceDashboardRenderer::render([
+            'oe_entries' => 0,
+            'lead_times' => [
+                'recommendation_to_decision' => ['mean_hours' => 6.5, 'n' => 1],
+                'decision_to_outcome'        => ['mean_hours' => 2.0, 'n' => 1],
+                'outcome_to_assessment'      => ['mean_hours' => 0.1, 'n' => 1],
+            ],
+        ]);
+
+        $this->assertStringContainsString('Lead times', $md);
+        $this->assertStringContainsString('6.5h', $md);
+        $this->assertStringContainsString('n=1', $md); // sample size always shown — measurements, never conclusions
+    }
+
+    public function test_evidence_velocity_renders_rate_when_window_is_a_week_or_more(): void
+    {
+        $md = \EvidenceDashboardRenderer::render([
+            'oe_entries' => 0,
+            'evidence_velocity' => ['completed_cycles' => 12, 'window_days' => 21.0, 'per_week' => 4.0],
+        ]);
+
+        $this->assertStringContainsString('Evidence Velocity', $md);
+        $this->assertStringContainsString('completed cycles: 12', $md);
+        $this->assertStringContainsString('4.0 cycles/week', $md);
+    }
+
+    public function test_evidence_velocity_withholds_rate_for_short_windows(): void
+    {
+        $md = \EvidenceDashboardRenderer::render([
+            'oe_entries' => 0,
+            'evidence_velocity' => ['completed_cycles' => 1, 'window_days' => 0.6, 'per_week' => null],
+        ]);
+
+        $this->assertStringContainsString('completed cycles: 1', $md);
+        // a sub-week window must never be extrapolated into a weekly rate
+        $this->assertStringContainsString('rate withheld', strtolower($md));
+        $this->assertStringNotContainsString('cycles/week**', $md);
+    }
+
+    public function test_loop_completion_section_shows_stage_gaps(): void
+    {
+        $md = \EvidenceDashboardRenderer::render([
+            'oe_entries' => 0,
+            'loop_completion' => [
+                'needs_decision'   => 7,
+                'needs_outcome'    => 3,
+                'needs_assessment' => 2,
+                'complete'         => 4,
+                'closed_ignored'   => 1,
+                'deferred'         => 2,
+            ],
+        ]);
+
+        $this->assertStringContainsString('Loop Completion', $md);
+        $this->assertStringContainsString('needs decision: **7**', $md);
+        $this->assertStringContainsString('needs outcome: **3**', $md);
+        $this->assertStringContainsString('needs assessment: **2**', $md);
+        $this->assertStringContainsString('complete: **4**', $md);
+    }
+
+    public function test_loop_completion_never_counts_ignored_as_missing_outcome(): void
+    {
+        // an IGNORED recommendation's lifecycle ends at its decision — the
+        // projection must show it as closed, not as an outcome gap
+        $md = \EvidenceDashboardRenderer::render([
+            'oe_entries' => 0,
+            'loop_completion' => [
+                'needs_decision'   => 0,
+                'needs_outcome'    => 0,
+                'needs_assessment' => 0,
+                'complete'         => 0,
+                'closed_ignored'   => 5,
+                'deferred'         => 0,
+            ],
+        ]);
+
+        $this->assertStringContainsString('closed by IGNORED decision: **5**', $md);
+        $this->assertStringContainsString('no outcome expected', strtolower($md));
+    }
+
+    public function test_per_rule_effectiveness_table_renders(): void
+    {
+        $md = \EvidenceDashboardRenderer::render([
+            'oe_entries' => 0,
+            'effectiveness' => [
+                'R1' => ['issued' => 1, 'accepted' => 1, 'ignored' => 0, 'deferred' => 0,
+                         'SUPPORTED' => 0, 'PARTIALLY_SUPPORTED' => 0, 'NOT_SUPPORTED' => 0, 'INCONCLUSIVE' => 1],
+            ],
+        ]);
+
+        $this->assertStringContainsString('| R1 |', $md);
+        $this->assertStringContainsString('Effectiveness', $md);
+        // verdict columns present
+        $this->assertStringContainsString('INCONCLUSIVE', $md);
+    }
 }

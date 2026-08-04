@@ -13,12 +13,14 @@ platform activity (the protected sentence, enforced by content).
 ## Key files
 - `scripts/observations/EvidenceDashboardRenderer.php` — pure `render(array): string`
 - `scripts/observations/dashboard-renderer.php` — runner (gathers streams → writes `engineering/verification/observations/DASHBOARD.md`)
-- `tests/Unit/EvidenceDashboardRendererTest.php` — 4 tests / 16 assertions (TDD-first: RED shown)
+- `tests/Unit/EvidenceDashboardRendererTest.php` — 9 tests / 32 assertions (TDD-first: RED shown; grown with each dashboard extension)
 
 ## Design decisions
 - **Honest empty cells:** every outcome question appears from day one with `NO DATA YET` + the source that fills it — the dashboard asks; it never judges (verdict-free pinned by test).
 - Data sources read-only: metrics `trend.jsonl` · `test-presence.jsonl` · `lcom4.jsonl` · OE register heading count. `OBS_DIR` override for tests.
 - The page is overwritten on each run — projections are rebuilt, never edited.
+- **v2 extensions (ARB-commissioned, from EXISTING timestamps only):** lifecycle funnel (unique recommendations per stage) · stage lead times (mean hours, `n` always shown) · per-rule effectiveness table (decision + verdict columns) · **Evidence Velocity** — the operational KPI: completed cycles (recommendation→decision→outcome→assessment, id present in all four streams) per week. A window under 7 days **withholds the rate** rather than extrapolating it — measurements, never projections.
+- **Loop Completion (WP-Next):** per-recommendation stage-gap buckets — needs decision / needs outcome / needs assessment / complete / closed-by-IGNORED / deferred. Two semantics matter: the **latest** decision classifies a re-decided recommendation, and **IGNORED is closure, not an outcome gap** (its lifecycle legitimately ends at the decision; `needs_outcome` counts ACCEPTED decisions only). Pinned by test. The process itself is documented in `docs/knowledgeos/KnowledgeOS_Engineering_Improvement_Cycle.md` (a published domain process — not a BC).
 
 ## How it works / use
 ```
