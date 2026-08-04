@@ -11,7 +11,7 @@ WP-4C-2's discovery commission was not planned as a three-phase process. **It co
 
 | Phase | Activity | Output |
 |---|---|---|
-| **1** | **Evidence collection** | what the accepted artefacts already settle — and, in this case, that one question (ownership of the corrective path) **had already been decided and merely not read** |
+| **1** | **Evidence collection** | what the accepted artefacts already settle — and, in this case, that one question (ownership of the corrective path) **was already answered by material the current reasoning had not integrated** |
 | **2** | **Dependency analysis** | which remaining questions are independent and which are consequences — here, Q1 and Q2 are prerequisites; Q3 and Q4 are downstream |
 | **3** | **Authority transfer** | a clarification package handed to the domain owner, containing questions, evidence and constraints — and **no candidate answers** |
 
