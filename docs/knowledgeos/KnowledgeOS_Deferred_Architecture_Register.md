@@ -28,6 +28,7 @@
 | **EIS rendering** (the wall KPI) | record fields already make it computable later | computable population stops being n≈1 | accumulated interventions | **GATED** (fills from evidence) |
 | **MO-2 promotion** (ownership-before-state heuristic) | staged candidate with the five-question shape quoted | recurrence across MULTIPLE bounded contexts | a second incident, different BC | **STAGED** (n=1) |
 | **Engineering Assessment Commission** | backlog entry trimmed to Question/Trigger/Constraints/Collisions (Model: UNKNOWN) | its recorded trigger *(not fired)* | per backlog entry | **PARKED** |
+| **FileSaved / IDE trigger** *(live feedback while coding — another `ObservationTrigger` instrumentation; collectors unchanged)* | **CommitTrigger, ACTIVE since 2026-08-04** (`.husky/post-commit` → canonical script; fires on every commit) | empirical evidence that commit-time feedback is TOO LATE: the same recommendation repeatedly triggered-then-fixed-in-the-next-commit · developers saying "I wish I had seen this while coding" | usage/workflow-log entries showing the pattern | **STAGED** (review 2026-08-04: "an engineering question, not an architectural one") |
 
 ## The register's own deferred fields *(review 2026-08-04 — "not now, later"; the register obeys its own pattern)*
 
