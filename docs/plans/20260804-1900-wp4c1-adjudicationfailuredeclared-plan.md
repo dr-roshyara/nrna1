@@ -3,7 +3,7 @@
 **Created:** 2026-08-04 19:00 · **Author:** Chief Software Architect / DDD Technical Lead
 **Authorized by:** **R-89** (WP-4C-1 authorized to plan and implement) · **Subdivided by R-88** · Owner: **Adjudication**
 **Type:** delivery artefact. **No architecture proposed · no ADR reinterpreted · no governance decided.**
-**Status:** 🔶 **PLAN — awaiting EP-01 approval. Nothing is implemented. Contains ONE HARD ESCALATION (§6/E1) that must be ruled before deliverable 3 can be planned further.**
+**Status (2026-08-04):** ✅ **EP-01 APPROVED FOR ITS EXECUTABLE SCOPE — D1 · D2 · provider registration · RED K1–K4.** **D3 (catalog) is HELD pending a Board ruling on §6/E1. D4 (enqueue) is HELD pending provenance resolution (§6/E2) — expressly NOT authorized for implementation.** Detailed specification: §11–§16 (carried work: §16). **Nothing is implemented yet.**
 
 **Out of scope, expressly:** Contestation work of any kind · WP-4C-2 · WP-4D · any edit to the frozen catalog · creating a new catalog version.
 
@@ -91,6 +91,7 @@ AdjudicationFailureDeclared
 | **`AdjudicationExpired` is NOT in the catalog** — yet WP-6 shipped it with a registered hydrator and **was accepted** | `grep` of the catalog · `AdjudicationExpiredHydrator.php` |
 | **`ChallengeRouted` IS in the catalog — at v1.0, dated 2026-06-26, predating WP-3A** | catalog line 15 |
 | **Published-language status requires publication + REGISTRATION** — not a catalog row | `AdjudicationExpiredHydrator` docblock: *"the WP-3A rule: published language requires BOTH publication and registration"* |
+| ⚠️ **The `EventHydrator` contract itself points at the catalog:** `eventType()` is documented as *"Canonical event type name **exactly as in the Event Catalog v1.0**."* **`AdjudicationExpiredHydrator::eventType()` returns `'AdjudicationExpired'`, which is not in that catalog** — so either the docblock is aspirational or WP-6 carries a latent inconsistency. **A docblock, not an enforced rule; added as E1 evidence, NOT as a defect claim** | `app/Contexts/Shared/Infrastructure/Outbox/EventHydrator.php` · `AdjudicationExpiredHydrator.php` |
 
 **Engineering's resolution, stated at the strength the evidence supports:** **published-language status for `AdjudicationFailureDeclared` is achievable by D1+D2+D4 alone**, on the WP-6 precedent and the WP-3A rule. **Whether the roadmap's *"catalog entry"* additionally obliges WP-4C-1 to produce a NEW CATALOG VERSION cannot be answered from the evidence** — no work package has been shown to have added a row, and the artifact is frozen.
 
@@ -125,3 +126,86 @@ D1+D2 delivered with K1–K4 green · merge gate PASS · developer guide · **D3
 ## 10. Traceability
 
 **R-88** (subdivision) · **R-89** (authorization + the E1 obligation) · R-67 · R-79 · R-80 · EPIC-004K **§10** · §15.3 · **ADR-T5** · ADR-T11 · ADR-MP-06 · AP-2 · Constitutional Audit Invariant (one mint per conversation) · `Canonical_Event_Catalog_v1.0.md` (frozen) · WP-6 precedent (`AdjudicationExpired` + hydrator) · WP-3A rule (publication **and** registration) · EP-01 · EP-03 report `2026-08-04-wp4c-engineering-readiness-review.md`.
+
+---
+
+# APPROVED-SCOPE SPECIFICATION (added 2026-08-04 after EP-01 approval)
+
+## 11. Field provenance — VERIFIED, not asserted
+
+Every proposed field resolves to an existing accessor on `AdjudicationProcessState`. **Nothing is derived, defaulted or computed** (AP-2):
+
+| Event field | Source accessor | Line | Nullable? |
+|---|---|---|---|
+| `challengeRef` | `challengeRef(): ChallengeRef` | 248 | **no** |
+| `reason` | `reason(): ?Reason` | 284 | **yes** |
+| `declaredByAuthority` | `concludedByAuthority(): ?IssuedByAuthority` | 269 | **yes** |
+| `declaredAt` | `concludedAt(): ?DateTimeImmutable` | 294 | **yes** |
+
+**⚠️ FINDING — three of four sources are nullable, and the event's fields are not.** They are non-null *after* `concludeFailureDeclared()`, which sets all three together; but the type system does not know that.
+
+**Resolution, following AP-1 and the seam precedent:** whatever constructs the event **fails closed** — if any source is `null` the process did not conclude a failure, so **no event is produced and none is guessed at.** **This is a construction-site rule, not an event-class rule:** `AdjudicationFailureDeclared` takes non-nullable constructor parameters, so the null case cannot reach it. **Recorded because it is exactly the shape of defect that passes review and fails at runtime.**
+
+## 12. Final RED specification — K1…K4
+
+**File:** `tests/Unit/Contexts/Adjudication/Events/AdjudicationFailureDeclaredTest.php` (K1) · `tests/Unit/Contexts/Adjudication/Infrastructure/AdjudicationFailureDeclaredHydratorTest.php` (K2, K3) · `tests/Feature/Contexts/Shared/Outbox/EventHydratorRegistryWiringTest.php` (K4 — **extend the existing file**, do not create a second).
+
+| K | Assertion | Fails today because |
+|---|---|---|
+| **K1** | the event exposes exactly `challengeRef · reason · declaredByAuthority · declaredAt`, each returning the value passed in, as its VO type (`assertInstanceOf`, not only value equality) | the class does not exist |
+| **K2** | the hydrator reconstructs an **equal** event from a v1 payload, and returns **value objects**, not strings | the hydrator does not exist |
+| **K3** | a payload whose `schema_version` is anything other than `1` is **rejected with `InvalidArgumentException`** — and separately, a payload **missing a required field** is rejected. **Two distinct assertions: an unsupported version and an incomplete payload are different failures** | the hydrator does not exist |
+| **K4** | `EventHydratorRegistry` resolves `'AdjudicationFailureDeclared'` after the provider boots | no registration exists |
+
+**K3 carries the load.** `AdjudicationExpiredHydrator` establishes the v1-only window and rejects *"loudly rather than guessed at (ADR-T5)"* — K3 is what keeps that promise honest for this event.
+
+**K4 is the one most easily forgotten.** Publication without registration is not published language (the WP-3A rule), and the failure is invisible until a consumer cannot hydrate.
+
+## 13. Implementation checklist — D1 and D2
+
+**D1 — the event** · `app/Contexts/Adjudication/Domain/Events/AdjudicationFailureDeclared.php`
+- [ ] `final readonly class`, public promoted properties — the `AdjudicationExpired` shape
+- [ ] four non-nullable constructor parameters (§11)
+- [ ] docblock: the §10 business occurrence, the four fields' producers, **ADR-T11** (references only — `Reason` is the authority's stated ground, never evidence content), and that `consideredEvidence` is **deliberately absent** with its reason
+- [ ] **no** `schemaVersion` property — the envelope carries it (catalog header §1)
+
+**D2 — the hydrator + registration**
+- [ ] `app/Contexts/Adjudication/Infrastructure/Outbox/AdjudicationFailureDeclaredHydrator.php` implementing `EventHydrator`
+- [ ] `eventType(): string` → `'AdjudicationFailureDeclared'`. **⚠️ The interface documents this as *"exactly as in the Event Catalog v1.0"* — see E1. Proceed on the WP-6 precedent and DO NOT touch the catalog**
+- [ ] `hydrate()` — v1-only window; unsupported version and missing field both throw `InvalidArgumentException`
+- [ ] private `required()` helper, mirroring the precedent
+- [ ] register in `AdjudicationServiceProvider::boot()` beside `$registry->register(new AdjudicationExpiredHydrator());` (line 80)
+
+**Batch order:** B1 RED → B2 D1 → B3 D2+registration. **Each leaves the repository buildable.** Cadence: Change → Compile → Static analysis → Relevant tests → Commit.
+
+## 14. Verification checklist
+
+- [ ] `php -l` on each new/changed file
+- [ ] `vendor/bin/phpstan -c phpstan-greenfield.neon` → **[OK] No errors** at every batch
+- [ ] K1–K4 RED before implementation, GREEN after — **and at least one mutation check** proving K2 discriminates (the WP-4B lesson: a test that has not been shown to fail has demonstrated nothing)
+- [ ] `composer merge-gate` → **PASS**, with the test/assertion counts recorded and compared against the current baseline (**281 · 729**)
+- [ ] `CorrelationIdMintingTest` **green and UNMODIFIED** — nothing in D1/D2 mints, and if that test needs changing, the boundary of §6/E2 has been crossed and work stops
+- [ ] risky-notice count recorded and compared (ENG-012 remains open; new notices are disclosed, not absorbed)
+
+## 15. Acceptance evidence checklist
+
+- [ ] commits mapped to D1, D2 and the RED batch
+- [ ] actual execution output: K1–K4, Adjudication suite, merge gate, PHPStan
+- [ ] triple-qualification **evidence** under Architecture · DDD · Trustworthiness (**the qualification itself is the acceptance package's — R-71**)
+- [ ] Definition of Done walked item by item: COMPLETE / NOT COMPLETE / NOT APPLICABLE, each citing evidence
+- [ ] developer guide `developer_guide/adjudication/07_adjudication_failure_declared.md` + index row
+- [ ] **carried work stated explicitly** (§16), so the package cannot read as more complete than it is
+- [ ] engineering recommendation only — **acceptance is the accepting authority's (EP-02 · R-34)**
+
+## 16. Carried work — NOT in the executable scope
+
+| Item | State | Gate to release it |
+|---|---|---|
+| **D3 — the catalog deliverable** | **HELD** | a Board ruling on **§6/E1**. No catalog file is touched; no catalog version is created |
+| **D4 — the enqueue / publication** | **HELD, expressly not authorized** | resolution of **§6/E2**: `start()` would likely breach the one-mint invariant, and `fromConsumed()` needs WP-4D's intake |
+| **K5** (the enqueue keystone) | not written | follows D4 |
+| **WP-4C-2** | blocked | EPIC-004K §15.3, Contestation-side |
+
+**Consequence to state plainly at acceptance:** with D3 and D4 held, WP-4C-1 delivers **a registered, hydratable event that nothing yet publishes.** That is the WP-4B position — *"buildable while nothing feeds it"* — and it must be described that way rather than as a completed announcement.
+
+**Escalation rule for implementation:** if work reaches **catalog versioning** or **provenance continuation**, stop immediately, reference E1 or E2, and do not resolve it inside engineering.
