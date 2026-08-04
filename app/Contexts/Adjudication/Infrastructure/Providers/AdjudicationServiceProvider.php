@@ -18,6 +18,7 @@ use App\Contexts\Adjudication\Domain\Repository\DeterminationRepository;
 use App\Contexts\Adjudication\Infrastructure\Identity\UuidIdentityGenerator;
 use App\Contexts\Adjudication\Infrastructure\Config\ConfiguredAdjudicationDurations;
 use App\Contexts\Adjudication\Infrastructure\Outbox\AdjudicationExpiredHydrator;
+use App\Contexts\Adjudication\Infrastructure\Outbox\AdjudicationFailureDeclaredHydrator;
 use App\Contexts\Adjudication\Infrastructure\Outbox\DeterminationIssuedHydrator;
 use App\Contexts\Adjudication\Infrastructure\Issuance\CoordinatorIssuanceRequest;
 use App\Contexts\Adjudication\Infrastructure\Outbox\OutboxEventAdapter;
@@ -78,6 +79,7 @@ final class AdjudicationServiceProvider extends ServiceProvider
         $registry->register(new DeterminationIssuedHydrator());
         // WP-6: registration is the second half of published-language status.
         $registry->register(new AdjudicationExpiredHydrator());
+        $registry->register(new AdjudicationFailureDeclaredHydrator());
 
         // WP-4: Adjudication registers ITSELF as a consumer of Contestation's
         // published `ChallengeRouted`, so the relay/redrive resolves it by

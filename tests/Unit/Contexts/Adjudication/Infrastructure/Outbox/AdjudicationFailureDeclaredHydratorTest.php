@@ -11,6 +11,7 @@ use App\Contexts\Adjudication\Domain\Events\AdjudicationFailureDeclared;
 use App\Contexts\Adjudication\Infrastructure\Outbox\AdjudicationFailureDeclaredHydrator;
 use DateTimeImmutable;
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -107,9 +108,7 @@ final class AdjudicationFailureDeclaredHydratorTest extends TestCase
 
     // ── K3b: an incomplete payload is refused — a DIFFERENT failure ──────────
 
-    /**
-     * @dataProvider requiredFields
-     */
+    #[DataProvider('requiredFields')]
     public function test_k3_a_payload_missing_a_required_field_is_rejected(string $field): void
     {
         $payload = $this->payloadV1();
