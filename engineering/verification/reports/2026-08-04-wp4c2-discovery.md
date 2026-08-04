@@ -72,7 +72,7 @@ The brief's Step 3 asks for scope, RED plan, verification strategy and acceptanc
 
 **Two things additionally block it, independent of §15.3:**
 1. **D4 is held**, so nothing publishes the event a consumer would consume (§3).
-2. **A-1 changes the answer, not merely its wording** — terminal versus re-routable is upstream of every other choice.
+2. **A-0 changes the answer, not merely its wording** — and it is upstream of every other choice, including A-1. *(An earlier draft of this line named A-1 as the upstream question; corrected in place when A-0 was recorded — ownership precedes terminality, and leaving the old ordering would have contradicted §4.)*
 
 ## 6. What engineering recommends — one act, not a package
 
