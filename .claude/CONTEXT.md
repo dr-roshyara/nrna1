@@ -72,7 +72,7 @@ Priority: High
   EG-004 · EG-005 tracked in `docs/plans/20260726-2056-engineering-platform-repair-plan.md` — non-blocking.
 
 ## Next action (exactly one)
-**CONFIRMATION OF R-89, then the WP-4C-1 EP-01 PLAN.** R-89 authorizes WP-4C-1 — `AdjudicationFailureDeclared`: the domain event, its outbox hydrator, and its catalog deliverable — and is **PREPARED, not ADOPTED** (Chief-issued; R-88 created no standing delegation). **The plan must resolve the catalog deliverable against ADR-T5's *“version, never mutate”* and the WP-6 precedent — `AdjudicationExpired` ships hydrated but is ABSENT from the frozen catalog — and must ESCALATE rather than decide if a new catalog version is required.** **WP-4C-2 is not authorized** and stays blocked on EPIC-004K §15.3.
+**EP-01 APPROVAL of the WP-4C-1 plan, AND a Board ruling on escalation E1** — `docs/plans/20260804-1900-wp4c1-adjudicationfailuredeclared-plan.md`. **E1 (HARD):** the catalog deliverable cannot be planned further — the catalog is FROZEN, `AdjudicationExpired` is absent from it yet WP-6 shipped hydrated and was ACCEPTED, and `ChallengeRouted`'s row predates WP-3A, so **no package has been shown to have added a row.** Three options are put; engineering chose none. **E2 (dependency):** the publication call site's provenance — `start()` would likely breach the one-mint invariant, and `fromConsumed()` needs WP-4D's intake. **The event and hydrator are executable now regardless.**
 
 ## Blockers
 - **WP-4B ACCEPTED and CLOSED (R-87).** Capability milestone recorded: `Concluded → Issue Request → Recovery → Replay`.
@@ -1887,3 +1887,17 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - ⭐⭐ **FIRST REAL RUN: 10 recommendations issued.** R1 on Election (LCOM4 29>20; Committee 16 correctly silent) · R5 on 9 hotspots — **incl. 2 KNOWN provider false-positive candidates (flat CBO bar, deliberate): marking them IGNORED:FALSE_POSITIVE is the designed feedback loop, not a bug** · R2/R3/R4 honestly silent.
 - **Dashboard now shows the loop's starting state: issued 10 · decided 0 · OPEN 10.** Guide 05 shipped with the step.
 - ⭐ **The celebrated milestone is now REACHABLE: the first complete learning event** (recommendation→decision→reason→commit→outcome) **needs exactly one developer decision on one of the 10 open items.** The decide command is one line.
+
+
+### EP-02 LIFECYCLE DISCOVERY: Run 1 baseline delivered (2026-08-04) — state + pointers only
+
+- **`docs/knowledgeos/KnowledgeOS_Recommendation_Lifecycle_Discovery.md`** (living instrument). **Run 1 = honest baseline over one engine run:** 5 observed behaviors (issuance ×10 · dedup held · honest silence ×4 · 2 false-positive candidates) · UL graded (issued/open/rule OBSERVED · decision-vocabulary UNEXERCISED · viewed/expired/superseded HYPOTHESIZED-not-introduced) · discovery log opened (RD-1..3, all held at observe) · ⛔ **DDD classification REFUSED: none yet — insufficient evidence** (one day of issuance, zero responses) · impact: insufficient evidence, stated explicitly.
+- **Run-2 trigger: THE FIRST DECISION** — then per-rule acceptance, rationale distributions, first outcome joins. Constraints standing: no ML/ranking/confidence/adaptive unless deterministic v1 demonstrably fails.
+- **Everything on the board now converges on one event: a developer deciding on one of the 10 open recommendations.**
+
+
+### Lifecycle discovery enriched; the next 20–30 moves are the developer's (2026-08-04) — state + pointers only
+
+- **RD-4 staged (hypothesis, think-never-implement):** Definition/Instance/Revision identity layers — waits for a real question to require it. **RD-5 recorded:** AGE is computable from existing timestamps (no new fields); Run 2 computes time-to-decision; future: mean-time-to-decision · recommendation half-life.
+- **Intervention abstraction confirmed not-earned** (Recommendation = the only observed intervention type). Python readiness 2/10 — "correctly": nothing to learn from yet.
+- ⭐⭐ **THE NEXT PHASE BELONGS TO THE DEVELOPER, EXPLICITLY: create 20–30 REAL recommendation decisions** — one command each: `php scripts/observations/recommendation-decide.php <REC-id> accepted|ignored|deferred <REASON_CODE> [comment]`. The research questions those decisions answer are recorded (per-rule acceptance · rationale dominance · never-acted-on · accepted→improved · ignored→later-accepted). **DDD classification revisits only after that history exists.**
