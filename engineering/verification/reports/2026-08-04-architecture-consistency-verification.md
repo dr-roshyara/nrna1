@@ -1,7 +1,7 @@
 # Architecture Consistency Verification Report
 
 **Date:** 2026-08-04 · **Mode:** Repository Stewardship (R-98, scope-qualified) · **Author:** Engineering
-**Scope:** the five checks commissioned by the ARB. **Read-only verification plus the factual corrections the ARB itself directed.**
+**Scope:** the **seven** checks commissioned by the ARB — five in the original commission, **two added when the ARB extended the check list rather than commissioning a second review** (see the Addendum). **Read-only verification plus the factual corrections the ARB itself directed.**
 **Type:** engineering verification evidence — **no new architecture, no reinterpretation of business meaning, no new governance recommended**
 
 > **Not a duplicate of `2026-08-03-contestedoutcomeref-architecture-consistency.md`** — that report is scoped to `ContestedOutcomeRef`. This one is repository-wide over programme-status and governance references.
