@@ -2162,3 +2162,9 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 
 - Review ratified the Track A/B split and init's planner/runner design. Its three extensions STAGED, not built — each is deterministic but waits on its OBJECT existing: `enable <collector>` (needs real toggle variation; today one fixed set) · init scope extension (installing rules/config/templates needs a repo LACKING them — which is the second adopter again) · environment-adaptive install (npm→husky / no-npm→native / GitHub→workflow; capability=CommitTrigger, adapter by detection — needs a non-npm environment actually appearing).
 - ⭐ **The distinction recorded as the staging principle: DETERMINISTIC ≠ DEMANDED.** Track A membership requires determinism; ACTIVATION still requires the object of the automation to exist. Init passed both tests; its extensions pass only the first today.
+
+### Staging principle refined: three orthogonal questions (review 2026-08-04)
+
+- **Register principle upgraded (practice made explicit — init answered all three):** Can we build it? (deterministic) · Should we build it NOW? (object exists — deterministic ≠ demanded) · Should it join the PLATFORM? (cross-repo — Track B, a separate later decision). Activation = yes to the first two only.
+- **`enable` operates on CAPABILITIES, never adapters** (`enable commit-trigger`, not `enable husky`) — adapter chosen by environment detection. Detection's deterministic half already lives in the doctor; the adaptive INSTALL branch stays staged until a non-husky environment exists. `enable` itself stays staged (reviewer's own closing verdict: no real variation to manage yet).
+- **Capability-vs-adapter separation named the cycle's biggest insight:** CommitTrigger/ObservationTrigger/EvidenceAnalytics/AdaptiveRecommendation are capabilities; husky/native-hook/GitHub-Action/IDE are adapters — the same boundary the Evidence-Analytics renaming drew, now platform-wide.

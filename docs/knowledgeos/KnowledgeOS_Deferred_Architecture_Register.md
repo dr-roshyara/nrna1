@@ -9,6 +9,8 @@
 
 > ⛔ **Standing rule (review 2026-08-04):** no new services, bounded contexts, policies, buses, or layers **unless a documented activation criterion below is actually met.** A firing criterion is an engineering event — the Freeze v2 path. A proposal with no row here and no engineering event goes to `docs/ideas/`.
 
+> ⭐ **Staging principle — three ORTHOGONAL questions (review 2026-08-04, practice made explicit — `init` answered all three):** **Can we build it?** *(deterministic? → engineering capability)* · **Should we build it now?** *(does its object/use case exist? → prioritization — deterministic ≠ demanded)* · **Should it join the platform?** *(reusable across repositories? → architecture, Track B)*. A row activates only when the first two are yes; the third is a separate, later decision. **`enable` operates on CAPABILITIES, never adapters** *(`enable commit-trigger`, not `enable husky` — the adapter is chosen by environment detection, whose deterministic half already lives in the doctor's checks; the adaptive INSTALL branch stays staged until a non-husky environment exists).*
+
 ## The register
 
 | Deferred concept | Current invariant (what protects the need TODAY) | Activation criterion (the engineering event) | Evidence required | Status |
