@@ -110,8 +110,27 @@ lapse(…)        guard: Raised, Admitted                    ← NOT reachable f
 
 **Phases A and B were answerable from accepted artefacts. Questions 1 and 2 above are not.**
 
-**Evidence exhausted:** the Context Map settles ownership of the corrective path (COL-5a) · EPIC-004K §10/§15.3 names the disposition question and leaves it open · the aggregate guards settle reachability. **No examined artefact states what business fact ends the waiting period, or whether a challenge survives a failed adjudication.**
+**ENGINEERING-ACCESSIBLE DOCUMENTARY EVIDENCE HAS BEEN EXHAUSTED. Further progress requires domain-owner business clarification rather than additional engineering discovery.** *(Refined 2026-08-04 from “evidence exhausted”, which claimed too much: evidence could still emerge from domain experts, business workshops, constitutional clarification, or an accepted artefact this sweep did not surface. What is exhausted is what ENGINEERING CAN READ.)*
+
+**What was read and what it settles:** the Context Map settles ownership of the corrective path (COL-5a) · EPIC-004K §10/§15.3 names the disposition question and leaves it open · the aggregate guards settle reachability. **No artefact examined states what business fact ends the waiting period, or whether a challenge survives a failed adjudication.**
 
 > **So Phase C is NOT an evidence-gathering exercise engineering can complete. It requires the domain owner — Contestation — to state a business meaning that no artefact currently records.** Producing candidate answers here would be inventing business semantics under a discovery label, which is the same defect Phase B refused when it declined to choose a state.
 
 **Question 3 is already answered** (Phase A: Contestation owns the challenge, Collection the correction). **Question 4 is answered in the negative** (§0: `Routed` asserts a fact that is false after a declared failure). **Questions 1, 2 and therefore 5 need the domain owner.**
+
+### 7a. The Phase C clarification package — questions with their evidence attached
+
+**No separate Phase C artifact is created.** The questions, their constraint and their evidence belong together, and this section already holds them; a second document would split one package across two homes (ES-005.4). **This section IS the package put to the domain owner.**
+
+| # | Question for the domain owner | Evidence engineering can attach | Status |
+|---|---|---|---|
+| **1** | **What business fact ends the waiting period?** | **Nothing found.** COL-5a establishes that Collection owes *more or better evidence*; **no artefact says what arrival, decision or deadline concludes that owing** | ⛔ **needs the domain owner** |
+| **2** | **Does the original challenge remain the same business object through corrective work?** | **Nothing direct.** Two accepted artefacts point opposite ways: the process table's partial index **permits** a challenge to accumulate processes (suggesting the same object persists), while `route()`'s guard **forbids** re-routing (suggesting it cannot) | ⛔ **needs the domain owner** — and **the tension itself is evidence the question is real** |
+| **3** | **Which context owns responsibility before and after that fact?** | **Before:** Contestation owns the challenge · Collection owns the correction (COL-5a, §10). **After:** unknown, because the fact in Q1 is unknown | ◐ **half answered** |
+| **4** | **Does the existing model express that meaning?** | **NO.** From `Routed` exactly one transition exists and it requires a `DeterminationId`; `Dismissed` and `Lapsed` are unreachable; `route()` is not re-enterable | ✅ **answered — negative** |
+| **5** | **What business evidence requires the model to change?** | **Derivable only once Q1 and Q2 are answered.** Engineering can say what each answer would COST (re-routing ⇒ possibly transition-only; terminating ⇒ a new state is required, since none is reachable) — **but cost is not business evidence, and must not be mistaken for it** | ⛔ **downstream of Q1/Q2** |
+
+**Classification discipline for the answers when they arrive:** each becomes a **CONFIRMED DOMAIN DECISION** — not an Observed Evidence item, an Inference, or a Business Hypothesis. **Engineering must record which of the four each answer is, and must not upgrade a hypothesis by using it.**
+
+**The one thing engineering must not do while waiting:** answer Q1 or Q2 by extrapolating from the two artefacts in Q2's row. **They conflict, and a conflict is not a hint** — resolving it in either direction would be inventing the business meaning this phase exists to obtain.
+
