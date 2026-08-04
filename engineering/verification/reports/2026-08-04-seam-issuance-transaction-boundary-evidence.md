@@ -1,4 +1,8 @@
-# Implementation Evidence — the seam's issuance path has no transaction boundary
+# Implementation Evidence — the container resolves an UNDECORATED `CoordinatesAdjudication` for the seam's issuance path
+
+> **Evidence ordering, corrected 2026-08-04 at the ARB's refinement.** An earlier title read *“the seam's issuance path has no transaction boundary”*, which **led with the consequence rather than the observation.** What was observed is the **runtime wiring**; the absent transaction boundary is its **architectural consequence**, and the lost-event scenario is an **inference** from that. The correct order is:
+>
+> **observed runtime wiring → observed execution path → architectural consequence → potential failure mode** — and each step is labelled accordingly in §7.
 
 **Produced by:** engineering, 2026-08-04. **Event D package: implementation evidence that an accepted decision is not realized on a code path.**
 **Engineering proposes no remedy and no replacement governance.** The ARB determines whether governance reopens.
@@ -31,9 +35,9 @@ RequestsDeterminationIssuance::class → CoordinatorIssuanceRequest
 
 **Consequence on that path:** `CoordinatesAdjudication::issueDetermination()` performs two writes — `$this->determinations->save($determination)` and `$this->outbox->enqueue(...)` — **with no enclosing transaction.**
 
-## 3. Observed deficiency
+## 3. Architectural consequence of the observed wiring
 
-**The two writes the decorator exists to make atomic are not atomic on the seam's path.**
+**Because the resolved collaborator is undecorated, the two writes the decorator exists to make atomic are not atomic on that path.** *(Consequence, not observation — no execution was run that lost an event.)*
 
 | | |
 |---|---|
