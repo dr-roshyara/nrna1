@@ -278,6 +278,12 @@ Engineering Verification (candidate reference architecture)
 | **C1** ↔ **C6** | **independent** | — | neither affects the other in either direction |
 | **C4** ↔ **C5** | **independent** | — | discrimination and interpretability do not interact |
 
+### 15b. ✅ The `C3 constrains C2` relationship PREDICTED where the real gap was
+
+**Validation, from the completed sweep (§16's C2 row).** Five Adjudication classes were named by no test. **Four were false positives** — indirectly exercised through the container. **The single genuine gap, `CoordinatorIssuanceRequest`, was exactly the one where a double had been substituted for a shipped collaborator to achieve isolation.**
+
+> **The model said C3 constrains C2 on paths where doubling occurs. The sweep found the gap precisely there, and nowhere else.** **This is the first instance of the capability model identifying WHERE to look rather than merely describing what was already found** — and it is one instance, so it establishes that the relationship has predictive value on this occasion, not that the model is predictive in general.
+
 ### 15a. The influence vocabulary resolves what Part I had to invent
 
 **Part I recorded C3↔C2 as a `TENSION`, a category coined because dependency did not fit.** In influence terms it is simply **`C3 constrains C2`** — a standard relationship, no special case required.
@@ -296,7 +302,7 @@ Engineering Verification (candidate reference architecture)
 | **C7** Execution diagnostics | **Stable** | localised two distinct faults to their causing batch |
 | **C5** Verification observability | **Evolving** | gap diagnosed and named; mechanism partly characterised |
 | **C6** Framework-integration knowledge | **Evolving** | mechanism located; one hypothesis eliminated; acting cause unestablished |
-| **C2** Production-path verification | **Experimental** | one deliberate instance, added today |
+| **C2** Production-path verification | **Experimental** | one deliberate instance, added today. **Plus a completed sweep of Adjudication's container-bound classes (2026-08-04): five named by no test — `TransactionalAdjudicationService` · `LaravelTransactionManager` · `UuidIdentityGenerator` · `ChallengeRoutedReactionHandler` · `CoordinatorIssuanceRequest`. FOUR were indirectly exercised** (`AdjudicationServiceIntegrationTest:53` resolves `AdjudicationService::class`, reaching the decorator, its transaction manager and the identity generator; `ChallengeRoutedConsumptionTest` drives the handler through `InboxHandlerRegistry`). **ONE was a genuine gap and is closed.** Still Experimental: **a sweep is not a practice** — nothing prevents the next gap appearing unnoticed |
 | **C4** Mutation confidence | **Experimental** | one deliberate instance, applied by choice |
 
 **C3 is the only capability rated Foundational.** **Current evidence indicates C3 is among the most architecturally influential capabilities**, because it enables verification (C1, C2) while constraining production-path verification (C2) — a combination no other capability exhibits. **Further comparative evidence is required before ranking it above other capabilities.**
