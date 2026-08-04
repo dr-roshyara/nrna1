@@ -278,11 +278,21 @@ Engineering Verification (candidate reference architecture)
 | **C1** ↔ **C6** | **independent** | — | neither affects the other in either direction |
 | **C4** ↔ **C5** | **independent** | — | discrimination and interpretability do not interact |
 
-### 15b. ✅ The `C3 constrains C2` relationship PREDICTED where the real gap was
+### 15b. The `C3 constrains C2` relationship GUIDED the sweep — one validation instance
 
 **Validation, from the completed sweep (§16's C2 row).** Five Adjudication classes were named by no test. **Four were false positives** — indirectly exercised through the container. **The single genuine gap, `CoordinatorIssuanceRequest`, was exactly the one where a double had been substituted for a shipped collaborator to achieve isolation.**
 
-> **The model said C3 constrains C2 on paths where doubling occurs. The sweep found the gap precisely there, and nowhere else.** **This is the first instance of the capability model identifying WHERE to look rather than merely describing what was already found** — and it is one instance, so it establishes that the relationship has predictive value on this occasion, not that the model is predictive in general.
+> **The capability model successfully guided investigation toward the only confirmed production-path verification gap in this commission.** The model says C3 constrains C2 on paths where doubling occurs; the sweep found the gap there and nowhere else.
+>
+> **This is ONE successful application, and it demonstrates EXPLANATORY USEFULNESS — not predictive capability.** *(Narrowed 2026-08-04: an earlier version said the relationship “PREDICTED” the gap and claimed a first instance of the model identifying where to look. **Guiding an investigation that then confirms a gap is weaker than prediction**, and one instance cannot distinguish the two.)*
+>
+> **This commission provides additional supporting evidence for the capability model. Continued application across future engineering work will determine whether it demonstrates sustained architectural value.**
+
+**SECOND APPLICATION — Shared inbox/outbox, 2026-08-04.** One class named by no test: `InboxExecutionEngine`. **False positive** — it is a constructor dependency of `Inbox`, and `ContestationReactionMessagingTest:53` resolves `Inbox::class` from the container, injecting the real engine. **Zero genuine gaps.**
+
+> **This instance is a NEGATIVE confirmation, which is the more useful kind.** Adjudication: a gap, exactly where a double had been substituted. Shared: no gap, and no doubling on that path. **A model that only ever finds problems where it looks is unfalsifiable** — this is the case where it implied nothing would be found and nothing was.
+>
+> **Two instances, one negative, still do not establish predictive capability. No promotion is recommended.**
 
 ### 15a. The influence vocabulary resolves what Part I had to invent
 
