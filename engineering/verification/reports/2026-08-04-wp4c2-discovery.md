@@ -20,8 +20,8 @@
 | `Challenge::adjudicate(DeterminationId, DateTimeImmutable)` | exists — guards `Routed`, sets `Adjudicated`, **stores the determination id**, records `ChallengeAdjudicated` | `Challenge.php:105-111` |
 | `ChallengeAdjudicationReaction::on(ChallengeId, DeterminationId, DeterminationOutcome, …)` | exists — the business reaction to a **binding determination** | `Application/ChallengeAdjudicationReaction.php:35` |
 | Inbox translation | exists — `ChallengeReactionOutcomeTranslator`: replay → ack · conflicting → dead-letter + escalate · precondition missing → park+redrive | `Application/Inbox/` |
-| **A consumer for `AdjudicationFailureDeclared`** | ⛔ **does not exist** | this is WP-4C-2 |
-| **A consumer for `AdjudicationExpired`** | ⛔ **does not exist either** | `grep -rln AdjudicationExpired app/Contexts/Contestation/` → no matches |
+| **A consumer for `AdjudicationFailureDeclared`** | ⛔ **no production consumer is currently implemented** | this is WP-4C-2 |
+| **A consumer for `AdjudicationExpired`** | ⛔ **no production consumer is currently implemented IN CONTESTATION** | `grep -rln AdjudicationExpired app/Contexts/Contestation/` → no matches. ⚠️ **Scope corrected 2026-08-04: an earlier line read “does not exist either”, which asserted universal absence from a search of ONE context.** **That contradicted this report's own A-4**, which records §10's second consumer (Collection-side, COL-5a) as **never assessed**. Absence elsewhere is not established |
 
 ## 2. 🛑 FINDING — the existing reaction cannot be reused, and this is why §15.3 is a design question
 
