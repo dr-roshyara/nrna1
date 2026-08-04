@@ -81,6 +81,6 @@ if (!$allOk) {
     exit(1);
 }
 
-echo "\n=== 3. OWN (watch loop — Ctrl+C ends the session) ===\n\n";
+echo "\n=== 3. OBSERVE (waiting for engineering events — Ctrl+C ends the session) ===\n\n";
 passthru('php ' . escapeshellarg(__DIR__ . '/watch.php'), $watchExit);
 exit($watchExit);

@@ -65,9 +65,9 @@ if ($needed === []) {
                 file_put_contents($root . '/.vscode/tasks.json', json_encode([
                     'version' => '2.0.0',
                     'tasks'   => [[
-                        'label'          => 'KnowledgeOS: watch (live advisory feedback)',
+                        'label'          => 'KnowledgeOS: dev session (verify + prove + observe)',
                         'type'           => 'shell',
-                        'command'        => 'php scripts/observations/watch.php',
+                        'command'        => 'php scripts/observations/dev.php',
                         'isBackground'   => true,
                         'problemMatcher' => [],
                         // auto-start on workspace open (VS Code asks once: "Allow Automatic Tasks")

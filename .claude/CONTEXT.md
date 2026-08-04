@@ -2249,3 +2249,10 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - **Observable chain traces on every live event** (watch.php): `trace: event=file-save → changeset=1 → runtime=91ms → collectors: lcom4(1obs,1rec,90ms) test_presence(1obs,1rec,0ms) → recommendations=2 → presented=terminal` — the seven-step investigation is now permanent instrumentation, never a one-off debugging effort.
 - **Register transition #6: Session ownership, INCIDENT-FIRED demand** (the real session where the watcher never ran = the demand evidence). Orchestration only — zero collector/rule logic; the inversion honored: the RUNTIME is the center, the session is an adapter around it.
 - The reviewer's narrow objective adopted as the verification standard: *every engineering event reaches ObservationRuntime::run() automatically during an active session, each stage traced — collectors untouched until the pipeline is proven.* It was proven before the session handed off.
+
+### Zero-memory startup closed; OBSERVE phase adopted; stack ownership staged (2026-08-04)
+
+- ⭐ **The reviewer's 9/10 DevEx gap was already half-closed by an earlier commit** (folderOpen auto-start existed) — **now fully closed by upgrading it: workspace open → the FULL dev lifecycle** (verify → prove → observe) with no human memory involved. init template matched. The target experience achieved for VS Code users: *git clone → npm install → open IDE → quality feedback appears.*
+- **OBSERVE phase adopted:** dev.php's third phase renamed — VERIFY → PROVE → OBSERVE (waiting for engineering events) — the lifecycle now names what the session actually does.
+- ⚠️ **Full dev-stack ownership STAGED** (PHP server · queue · Vite · logs · graceful shutdown — the `next dev` model): expanding KnowledgeOS into GENERAL dev tooling is a scope decision — gate: demand observed from real sessions, not assumed.
+- Scores recorded (10s except DevEx 9 · platform 8.5); the closing verdict held: *the architectural problem is essentially solved; remaining work is platform automation and DevEx.*
