@@ -1901,3 +1901,34 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - **RD-4 staged (hypothesis, think-never-implement):** Definition/Instance/Revision identity layers — waits for a real question to require it. **RD-5 recorded:** AGE is computable from existing timestamps (no new fields); Run 2 computes time-to-decision; future: mean-time-to-decision · recommendation half-life.
 - **Intervention abstraction confirmed not-earned** (Recommendation = the only observed intervention type). Python readiness 2/10 — "correctly": nothing to learn from yet.
 - ⭐⭐ **THE NEXT PHASE BELONGS TO THE DEVELOPER, EXPLICITLY: create 20–30 REAL recommendation decisions** — one command each: `php scripts/observations/recommendation-decide.php <REC-id> accepted|ignored|deferred <REASON_CODE> [comment]`. The research questions those decisions answer are recorded (per-rule acceptance · rationale dominance · never-acted-on · accepted→improved · ignored→later-accepted). **DDD classification revisits only after that history exists.**
+
+
+### LCOM4 = heuristic-not-authority applied; minimal automation staged (2026-08-04) — state + pointers only
+
+- **R1 reworded (rules are data):** LCOM4 raises a CANDIDATE for domain-responsibility review — "consider reviewing whether clusters represent separate DOMAIN responsibilities; semantic cohesion may still be one responsibility." The DDD order pinned in the yaml comment: *evidence triggers governance; it never determines it.* Business Responsibility → Model → Design → Static Analysis — never reversed.
+- **Post-commit hook CREATED as versioned file** (`scripts/observations/git-hooks/post-commit` — runs ONLY the instant observation, test-presence; advisory; never blocks). ⛔ **Installation into .git/hooks was DECLINED at the permission prompt — respected; installing stays the user's one-command choice** (`cp scripts/observations/git-hooks/post-commit .git/hooks/`).
+- **Runtime idea enriched:** the event-driven model (engineering events → observation plugins → evidence payloads → "consider reviewing" recommendations) + the sponsor directive ("should automatically happen") recorded as PRESSURE on the friction gate; existing Claude hooks noted as prior art for event-triggered instrumentation. Slow collectors + event bus stay gated.
+- **Staged (evidence-of-need):** cluster-membership payloads in LCOM4 observations (which methods share which fields) — built when the first developer decision actually needs it.
+
+
+### Trigger concept staged in the Runtime idea (2026-08-04) — state + pointers only
+
+- **`ObservationTrigger` staged as the gate-opening design's FIRST question** (a DOMAIN concept — Commit/PR/Merge/Nightly/Release/Manual are engineering events; hooks/Actions/Jenkins are instrumentations) + **the when/how/what split** (Trigger owns WHEN · Runtime owns HOW · Collector owns WHAT — three single-reasons-to-change). The current post-commit hook = one CommitTrigger instrumentation, prior art in place.
+- Review scored the correction round 10/10 across the board; the runtime stays PARKED (their own emphasis: "the important thing is what the hook does NOT do").
+- Reusable-platform reading (PublicDigit as first customer; ArchUnit/Roslyn/Ruff collectors, one contract) reaffirmed under the standing AIP-14 guard.
+
+
+### ⛔ THE DECOMPOSITION FROZEN (2026-08-04) — the arc's closing ruling
+
+- **The recurring three-layer style FROZEN for USE, not discussion:** *Stable Domain Concept → Execution Mechanism → Runtime Instrumentation.* **Honest count at freeze: n=3 independent emergences** (Governance: Rule→Verification-Mechanism→Instrumentation · Observation: Event→Trigger→Instrumentation · Specification: Spec→Collector→Language-Implementation) — *nobody designed them to match; weeks apart, different problems, same shape. Rediscovery, the strongest evidence this methodology recognizes.*
+- **Promotion condition recorded:** *use it · break it · observe it — if six months of engineering it still explains every new capability with minimal changes, it promotes from observed pattern to ENGINEERING STANDARD.* Until then: no naming (governance's act), no further refinement turns.
+- **Maturity transition noted:** the architecture now describes RELATIONSHIPS, not components — the full chain (Event→Trigger→Runtime→Collector→Observation→Recommendation→Decision→Outcome→Learning) with every arrow implemented, gated, or staged.
+- ⭐⭐ **THE STANDING FINAL SENTENCE OF THE ARC: the remaining uncertainty is not architecture — it is EMPIRICAL: does the recommendation-and-learning loop measurably improve engineering outcomes in PublicDigit?** All instruments point at it. The next entries in every log belong to real work.
+
+
+### ROADMAP FROZEN (2026-08-04) — reconciled against reality; the sociotechnical risk recorded
+
+- **Stale-review reconciliation (verified before recording):** the review authorized "Recommendation Engine V1, nothing else" as next — ⭐ **Phases 2 AND 3 are ALREADY DONE today** (engine: approved plan · TDD 6/17 green · 10 issued · recommendations.jsonl confirmed · decision CLI with ACCEPTED/IGNORED/DEFERRED + reason codes exists — exactly the sketched shape). No build this turn; the commissioned item pre-exists.
+- ⛔ **THE ROADMAP FROZEN with true statuses:** P1 Observation ✅ · P2 Engine V1 ✅ · P3 Decision Capture ✅-built/⏳-unused · **P4 Outcome Recording = the next BUILD (only after decisions exist)** · P5 Dashboard v2 · P6 Python Learning · P7 Adaptive. **No new architectural discoveries until P4 has produced months of evidence** (the review's own rule, adopted).
+- ⭐⭐ **NEW RISK RECORDED (the sharpest point): the biggest remaining risk is SOCIOTECHNICAL — KnowledgeOS becoming another ignored dashboard.** The 10 open recommendations are that risk's FIRST LIVE TEST: if nobody ever decides, that non-decision is itself the finding. Everything optimizes for "did the developer change behavior?" — the protected sentence as primary architectural invariant, reaffirmed.
+- Falsifiability reaffirmed as the biggest achievement; intervention watch confirmed staged; the decomposition stays engineering-pattern-not-universal-law.

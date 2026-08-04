@@ -13,6 +13,7 @@
 #   app/Contexts/<X>/...      -> <x>            (the bounded context)
 #   app/<seg>/...             -> <seg>
 #   database/migrations/...   -> database
+#   scripts/<seg>/...         -> <seg>          (engineering tooling — blind spot fixed 2026-08-04, see OE-KOS-3)
 #   developer_guide/<area>/.. -> <area>         (guide areas touched)
 # Alias map handles non-obvious code->guide folder names (e.g. Shared messaging
 # lives under developer_guide/audit_system/). Non-blocking; docs-only/discussion
@@ -31,7 +32,12 @@ php -r '
   $lines = array_filter(array_map("trim", file($log) ?: []));
 
   // Known non-obvious code-area -> guide-folder aliases.
-  $alias = ["shared" => "audit_system"];
+  $alias = [
+      "shared"       => "audit_system",
+      // engineering observation tooling (2026-08-04): both script areas share one guide area
+      "metrics"      => "engineering_observations",
+      "observations" => "engineering_observations",
+  ];
 
   $codeAreas  = [];   // expected guide-area => true (from code changes)
   $guideAreas = [];   // guide-area => true (from developer_guide/ changes)
@@ -45,6 +51,10 @@ php -r '
           $codeAreas[$alias[$a] ?? $a] = true;
       } elseif (preg_match("~^database/migrations/~", $f)) {
           $codeAreas["database"] = true;
+      } elseif (preg_match("~^scripts/([^/]+)/~", $f, $m)) {
+          // Engineering tooling is implementation too (blind spot fixed 2026-08-04).
+          $a = strtolower($m[1]);
+          $codeAreas[$alias[$a] ?? $a] = true;
       }
       if (preg_match("~^developer_guide/([^/]+)/~", $f, $m)) {
           $guideAreas[strtolower($m[1])] = true;

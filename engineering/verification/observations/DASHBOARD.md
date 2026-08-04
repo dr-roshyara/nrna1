@@ -12,7 +12,7 @@
 
 ## Recommendations (advisory — the developer decides)
 
-- issued: 10 · decided: 0 (accepted 0 · ignored 0 · deferred 0) · **open: 10**
+- issued: 10 · decided: 1 (accepted 1 · ignored 0 · deferred 0) · **open: 9**
 - *acceptance is measured, never assumed — issuance counts alone are vanity*
 
 ## Outcome questions — the loop is measured HERE

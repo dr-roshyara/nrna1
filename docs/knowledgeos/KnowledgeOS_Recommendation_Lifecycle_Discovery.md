@@ -39,7 +39,19 @@
 | RD-3 | **Rules produce structurally honest silence** *(absence of grounds → absence of advice)* | 4 silence behaviors, Run 1 | 1 run | none | MEDIUM | none |
 | RD-4 *(hypothesis staged, review 2026-08-04)* | **identity may need THREE layers: RecommendationDefinition / Instance / Revision** — *(rule,subject) dedup cannot answer "did the rule change?" · "re-issued after conditions changed?" · "v1 ignored but v2 accepted?"* | none yet — the questions have never been ASKED by real usage | 0 | — | HYPOTHESIZED | ⛔ **think, never implement, until a real question requires it** |
 | RD-5 *(protocol note, review 2026-08-04)* | **recommendations accumulate AGE — and age is already computable from existing timestamps** *(issued ts vs decision ts; no new fields)* | structural | — | — | OBSERVED-computable | **Run 2 computes time-to-decision from existing records; future: mean-time-to-decision · recommendation half-life** |
-| *(next entries when decisions exist)* | | | | | | |
+| RD-6 *(Run 2, 2026-08-04)* | ⭐ **ACTOR PROVENANCE GAP: the decision record's `actor` stamps the git user, but the decider was the AI at the user's direction** — *when AI participates in decisions, the actor model needs to distinguish who-executed from who-authorized; today the honest attribution lives only in the rationale comment* | the first real decision record | 1 | — | **OBSERVED** | ⛔ observe — a second AI-mediated decision makes this a real modeling question |
+| *(next entries as decisions accumulate)* | | | | | | |
+
+## Run 2 (2026-08-04) — fired by the first decision, per protocol
+
+| What changed | Evidence |
+|---|---|
+| ⭐ **DECIDING observed for the first time** — `ACCEPTED` with reason code + comment | `decisions.jsonl`: REC-eaf245474a → ACCEPTED (IMMEDIATE_VALUE) |
+| **UL upgrades:** decision · ACCEPTED · rationale · reason code → **OBSERVED-exercised** *(were vocabulary-only)*. IGNORED · DEFERRED remain unexercised | the records |
+| ⭐ **RD-5 validated on first use: time-to-decision = 6.5 hours, computed from EXISTING timestamps, zero new fields** | issued 00:01 → decided 06:30 |
+| **The two-record separation held in practice** — decision and rationale written as distinct records, exactly as contracted | two JSONL lines, two types |
+| ⛔ **Impact: STILL insufficient** — the first learning event is **3/5 complete** *(recommendation ✓ decision ✓ rationale ✓ · commit ✗ outcome ✗)*. The celebrated milestone record needs a real code change and a metric delta after N commits | — |
+| **DDD classification: unchanged (none yet)** — one decision cannot reclassify | — |
 
 ## 4. DDD Assessment *(answered only from evidence)*
 
