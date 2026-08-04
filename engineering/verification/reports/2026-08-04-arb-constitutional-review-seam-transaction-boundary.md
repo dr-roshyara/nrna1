@@ -48,7 +48,9 @@ Reviewed: runtime observation · container resolution · dependency graph · exe
 
 **This corrects the engineering finding it replaces.** R-91 recorded an *"option-set gap"* in the architecture-governance outcomes. **There was no gap: the case simply belongs to a different domain, and Phase 3 exists to route it.** A framework that offers *no action · clarification · reopen* for architecture decisions is complete for architecture decisions.
 
-## Phase 4 — Constitutional determination
+## Phase 4 — PROPOSED Constitutional Determination (subject to Decision Authority adoption)
+
+**Labelled “proposed” deliberately.** Until adopted, this is a review conclusion and not governance — the ambiguity between the two is what R-91 was held for.
 
 > ## **ARCHITECTURE REMAINS VALID.**
 >
