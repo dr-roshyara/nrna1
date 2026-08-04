@@ -6,8 +6,10 @@
 # Slow collectors (pdepend ~7min, LCOM4 over trees) stay on-demand until the
 # Observation Runtime idea earns its gate. Advisory: never blocks a commit.
 #
-# Install:   cp scripts/observations/git-hooks/post-commit .git/hooks/post-commit
-# Uninstall: rm .git/hooks/post-commit
+# ⚠️ This repo uses Husky (core.hooksPath = .husky/_), so .git/hooks is IGNORED.
+# Active instrumentation: .husky/post-commit delegates to this script — the
+# version-controlled route every developer shares (diagnosis 2026-08-04).
+# Deactivate: delete .husky/post-commit (this canonical script stays).
 cd "$(git rev-parse --show-toplevel)" || exit 0
 php scripts/observations/test-presence-observer.php HEAD~1..HEAD 2>/dev/null || true
 exit 0
