@@ -51,7 +51,7 @@ While closing an unrelated coverage gap, engineering observed that **the contain
 | Engineering Evidence | ✅ separate artefact, unchanged, ends at *evidence validated* |
 | ARB Review | ✅ separate artefact; its determination labelled **PROPOSED** |
 | Constitutional Determination | ✅ stated as D-1…D-4, **not adopted** |
-| Adoption Decision | ⏳ **this package requests it** |
+| Adoption Decision | ⏳ **outstanding — presented in §6, not requested** |
 
 **Does any determination still rest on engineering judgement rather than ARB review?** **No.** D-1, D-2 and D-3 are ARB acts on submitted evidence. **D-4 rests on a factual absence — no caller exists — not on an engineering opinion about likelihood**, and no severity is attached to it.
 
