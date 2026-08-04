@@ -55,9 +55,9 @@ While closing an unrelated coverage gap, engineering observed that **the contain
 
 **Does any determination still rest on engineering judgement rather than ARB review?** **No.** D-1, D-2 and D-3 are ARB acts on submitted evidence. **D-4 rests on a factual absence — no caller exists — not on an engineering opinion about likelihood**, and no severity is attached to it.
 
-## 6. Requested adoption action
+## 6. Decision Authority Decision
 
-**Exactly three outcomes are available. No recommendation is offered.**
+**Exactly three outcomes are available. No recommendation is offered, and this package requests none** — it PRESENTS the constitutional outcomes. *(Renamed 2026-08-04 from “Requested adoption action”: a package that appears to REQUEST an outcome has already leaned toward one.)*
 
 | | Outcome | Consequence |
 |---|---|---|
