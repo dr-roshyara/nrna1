@@ -57,7 +57,8 @@ public function adjudicate(DeterminationId $determinationId, DateTimeImmutable $
 
 | # | Assumption | Why it must be verified, not assumed |
 |---|---|---|
-| **A-1** | that a declared failure is a **terminal** disposition for the challenge | if the challenge may be **re-routed** after an insufficiency (as an expired one is returned to Contestation), the disposition is not terminal and the state choice changes entirely |
+| **A-0** | ⚠️ **that the question is “which state?” at all.** The prior blocking question is **WHO OWNS THE UNRESOLVED RESPONSIBILITY** once adjudication has been attempted and no ruling is possible — Contestation · Election · Collection-side · or a human authority | **In DDD, STATE FOLLOWS RESPONSIBILITY, not the reverse.** A state chosen before the owner is named would encode a responsibility nobody accepted. **This supersedes A-1 in ordering: terminality is a CONSEQUENCE of ownership, not an independent question** — e.g. if Collection-side owns the next move under COL-5a, the disposition is not terminal *because someone else must act* |
+| **A-1** | that a declared failure is a **terminal** disposition for the challenge | **downstream of A-0.** If the challenge may be **re-routed** after an insufficiency (as an expired one is returned to Contestation), the disposition is not terminal and the state choice changes entirely |
 | **A-2** | that `AdjudicationFailureDeclared` reaches Contestation as an **integration event** over the inbox | asserted nowhere; §10 names Contestation as a consumer but the transport is not fixed |
 | **A-3** | that **one** reaction can serve both `AdjudicationFailureDeclared` and `AdjudicationExpired` | both consumers are missing (§1). They may share a disposition or need two — **and answering that for expiry is Q-2-adjacent business policy, not WP-4C-2** |
 | **A-4** | that the **second consumer** in §10 (Collection-side, COL-5a — the renewed-collection demand) is out of WP-4C-2's scope | **never assessed.** EP-03 gathered no evidence; this report gathers none either. **Recorded as unassessed, not as excluded** |
@@ -77,9 +78,12 @@ The brief's Step 3 asks for scope, RED plan, verification strategy and acceptanc
 
 **Route §15.3 to Contestation for a disposition decision**, with this report as its evidence. **The blocking question is small and specific:**
 
-> **When an adjudication concludes that no ruling can issue, what becomes of the challenge — and is that disposition terminal or re-routable?**
+> **1. When an adjudication concludes that no ruling can issue, WHO OWNS THE NEXT MOVE** — Contestation, Election, Collection-side, or a human authority?
+> **2. Given that owner, what becomes of the challenge, and is the disposition terminal or re-routable?**
+>
+> **In that order. State follows responsibility** — naming a state before naming the owner would encode a responsibility nobody accepted, and the state would then have to be re-decided when the owner was.
 
-**Once answered, WP-4C-2 becomes plannable in one pass**, because everything else is already in place: the event exists, the hydrator is registered, the translator pattern is established, and the reaction's shape is precedented.
+**Once BOTH are answered, WP-4C-2 becomes plannable in one pass**, because everything else is already in place: the event exists, the hydrator is registered, the translator pattern is established, and the reaction's shape is precedented.
 
 **Not recommended:** authorizing WP-4C-2 now, or writing a RED plan against an assumed disposition.
 
