@@ -2185,3 +2185,9 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - **Publication decision:** live results EPHEMERAL (displayed, never stream-written) — a save is not an engineering event worth recording; commit stays the stream writer. Stream hygiene preserved while satisfying identical-recommendations.
 - **Environment-adaptive init extension (TDD):** VS Code detected → watch task installed into .vscode/tasks.json (executed for real: this repo has .vscode; init installed it and doctor verified READY). Adapters never forced onto foreign environments.
 - **UL correction adopted:** capability = **ObservationTrigger** (one level above any trigger); commit/file-save/PR/CI are ADAPTERS. Guide 01 table corrected; PR/CI adapters remain STAGED (architecture supports them; activation evidence still absent). Dev guide 11 + index.
+
+### Live-feedback review accepted (9.8–10s); two follow-ups staged with converging criteria (2026-08-04)
+
+- Review confirmed the implementation (runtime/ChangeSet/adapters all 10s; polling scored 8.5 as 'acceptable for a spike, not the final solution').
+- ⚠️ **Native FS-event watcher STAGED:** plain PHP has no cross-platform FS-event API — a native adapter means Node/chokidar, Python/watchdog, or an IDE extension. Criterion: observed friction from REAL watch sessions (latency · CPU) or an IDE extension arriving anyway. The runtime is untouched either way — only the adapter changes.
+- ⭐ **Live decision capture STAGED — and it converges: an IDE decision popup IS DecisionCaptureService's long-waiting trigger** (the second decision-recording surface). The two rows activate together: service boundary first, then the surface consumes it. Until then the loop is deliberately split: live advisories display; decisions go through the inbox CLI.
