@@ -78,6 +78,7 @@ do {
             'latency_ms'      => $latencyMs,
             'poll_interval_s' => $intervalSeconds,
             'advisories'      => count($result['recommendations']),
+            'collector_ms'    => $result['timings_ms'] ?? [],
         ], JSON_UNESCAPED_SLASHES) . "\n",
         FILE_APPEND
     );

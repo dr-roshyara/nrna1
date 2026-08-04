@@ -1,1 +1,2 @@
 {"ts":"2026-08-04T19:16:10+00:00","files":1,"latency_ms":156,"poll_interval_s":2,"advisories":2}
+{"ts":"2026-08-04T19:22:28+00:00","files":1,"latency_ms":102,"poll_interval_s":2,"advisories":2,"collector_ms":{"lcom4":101,"test_presence":0}}

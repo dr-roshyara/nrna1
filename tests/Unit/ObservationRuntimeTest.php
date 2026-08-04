@@ -84,6 +84,21 @@ PHP;
         $this->assertCount(1, $r2);
     }
 
+    public function test_reports_per_collector_timings(): void
+    {
+        // operational gold (review 2026-08-04): "which collector became slow?"
+        // must be answerable from the record, not guessed
+        $result = \ObservationRuntime::run($this->changeSet(), $this->rules(), fn () => self::LOW_COHESION_SOURCE);
+
+        $this->assertArrayHasKey('timings_ms', $result);
+        $this->assertArrayHasKey('lcom4', $result['timings_ms']);
+        $this->assertArrayHasKey('test_presence', $result['timings_ms']);
+        foreach ($result['timings_ms'] as $ms) {
+            $this->assertIsInt($ms);
+            $this->assertGreaterThanOrEqual(0, $ms);
+        }
+    }
+
     public function test_identical_changesets_produce_identical_recommendations(): void
     {
         $a = \ObservationRuntime::run($this->changeSet(), $this->rules(), fn () => self::LOW_COHESION_SOURCE);

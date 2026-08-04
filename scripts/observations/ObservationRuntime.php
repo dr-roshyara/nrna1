@@ -33,7 +33,9 @@ final class ObservationRuntime
 
         $facts = [];
         $lcom4Observations = [];
+        $timings = [];
 
+        $lcom4Start = microtime(true);
         foreach ($changeSet->phpClassFiles() as $file) {
             $source = $read($file);
             if ($source === null) {
@@ -50,7 +52,11 @@ final class ObservationRuntime
             }
         }
 
+        $timings['lcom4'] = (int) round((microtime(true) - $lcom4Start) * 1000);
+
+        $tpStart = microtime(true);
         $testPresence = TestPresenceCollector::classify($changeSet->changedFiles);
+        $timings['test_presence'] = (int) round((microtime(true) - $tpStart) * 1000);
         $facts['test_presence'][] = [
             'subject'                  => $changeSet->source . ':' . implode(',', $changeSet->changedFiles),
             'production_without_tests' => (bool) ($testPresence['production_without_tests'] ?? false),
@@ -60,6 +66,7 @@ final class ObservationRuntime
         return [
             'observations'    => ['lcom4' => $lcom4Observations, 'test_presence' => $testPresence],
             'recommendations' => RecommendationEngine::evaluate($facts, $rules),
+            'timings_ms'      => $timings,   // per-collector: "which collector became slow?" is answerable, never guessed
         ];
     }
 }
