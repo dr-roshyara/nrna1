@@ -209,3 +209,30 @@ Every proposed field resolves to an existing accessor on `AdjudicationProcessSta
 **Consequence to state plainly at acceptance:** with D3 and D4 held, WP-4C-1 delivers **a registered, hydratable event that nothing yet publishes.** That is the WP-4B position — *"buildable while nothing feeds it"* — and it must be described that way rather than as a completed announcement.
 
 **Escalation rule for implementation:** if work reaches **catalog versioning** or **provenance continuation**, stop immediately, reference E1 or E2, and do not resolve it inside engineering.
+
+---
+
+## 17. RED observations (B1, 2026-08-04) — recorded, not resolved
+
+**B1 is complete: 12 new tests, all RED for their intended reasons, and the 2 pre-existing wiring assertions still pass** (no false positives introduced).
+
+| K | Failure | Specific? |
+|---|---|---|
+| K1 ×3 | `Class "…\Events\AdjudicationFailureDeclared" not found` | ✅ the class is absent — the intended reason |
+| K2 ×3 · K3 ×5 | `Class "…\Outbox\AdjudicationFailureDeclaredHydrator" not found` | ✅ the hydrator is absent |
+| K4 | **assertion** failure: *"publication without registration is not published language (WP-3A)"* | ✅ an assertion, not an error — the registry genuinely lacks the entry |
+
+### ⚠️ O-1 — AMBIGUITY DISCOVERED: the payload shape has no writer in the authorized scope
+
+`OutboxEventAdapter` exposes **one public method, `enqueue()`**, and dispatches to **private per-event writers**: `writeAdjudicationExpired()` (line 43) and `writeDeterminationIssued()` (line 64). **A new event therefore needs a new private writer for its payload to exist at all.**
+
+**The consequence for this slice:** the payload shape is **a contract between two halves — the writer and the hydrator — and only the hydrator is in the authorized scope.** K2/K3 assert a v1 shape that **I defined**; until a writer produces it, that shape is **an engineering proposal, not a verified contract.** A hydrator that agrees only with itself proves nothing about what will be in the outbox.
+
+**Question for review, not resolved here:** does `writeAdjudicationFailureDeclared()` belong to **D2** (the registration/serialization pair) or to **D4** (publication, HELD on §6/E2)?
+
+- **If D2:** the writer is authorized, the shape becomes verifiable in this slice, and K2/K3 gain real force.
+- **If D4:** the hydrator ships against an unverified shape, and **that limitation must appear in the acceptance evidence** rather than being discovered when D4 lands and the shapes disagree.
+
+**Engineering has not written the adapter method and has not chosen.** Recorded per R-89's escalation discipline: a scope question is returned, not absorbed.
+
+**Not a stop condition for D1/D2** — the event class and hydrator remain executable either way; only the *strength of K2/K3's evidence* depends on the answer.
