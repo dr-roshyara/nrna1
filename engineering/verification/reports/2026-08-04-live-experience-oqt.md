@@ -1,6 +1,6 @@
 # Operational Qualification Test — Live Developer Experience
 
-**Status: OPEN — evidence partial.** Commissioned by review 2026-08-04
+**Status: OPEN — Terminal presentation QUALIFIED. IDE presentation adapter not yet qualified.** (Wording per review: the presentation CAPABILITY is proven and presenting; what remains is ONE adapter, not the capability.) Reviewer split (2026-08-04): runtime pipeline ✅ proven · live save detection ✅ proven (terminal) · IDE inline diagnostics ⏳ not yet. The remaining OQT step is the pure developer test: edit in VS Code, Ctrl+S, no terminal touched, trace appears. Commissioned by review 2026-08-04
 ("an ACTIVE state is only a declaration without an execution trace").
 Implemented ≠ operationally validated; this protocol closes that gap
 step by step, with evidence, and states plainly what remains.
@@ -42,6 +42,21 @@ No adapter calculates anything.
 5. Attach the trace lines + a screenshot/paste of the toast to this report,
    change Status to **PASSED**, and record the OE entry (first live IDE
    feedback in a real session = the behavioral-milestone evidence source).
+
+## FINAL MILESTONE — Operational Qualification (declared 2026-08-04)
+
+The real finish line, verbatim from the closing review — no manual steps, no
+documentation, no remembering commands:
+
+\`\`\`
+clone → knowledgeos init → open VS Code → auto-start → edit class → save
+→ advice appears → commit → recommendation enters lifecycle → assessment
+\`\`\`
+
+Runtime Architecture v1.0 is COMPLETE and frozen; this scenario is what the
+Operational Validation & Developer Adoption phase must demonstrate. Measured
+by: adoption · latency · acceptance rate · false positives · developer
+satisfaction · engineering outcomes — never by new constructs.
 
 ## What passing means — and what it does not
 

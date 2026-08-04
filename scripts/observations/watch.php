@@ -92,8 +92,10 @@ do {
         printf("[COLLECTOR] %s — %d observation(s), %d recommendation(s), %dms\n",
             $c['collector'], $c['observations'], $c['recommendations'], $c['runtime_ms']);
     }
-    printf("[RESULT]    %d recommendation(s) · %dms runtime · presented=terminal\n",
+    printf("[RESULT]    %d recommendation(s) · %dms runtime\n",
         count($result['recommendations']), $latencyMs);
+    // presentation is an adapter too — vscode diagnostics / claude hook / terminal
+    printf("[PRESENTATION] terminal\n");
     if ($result['recommendations'] === []) {
         echo "  ✓ no advisories\n\n";
         continue;

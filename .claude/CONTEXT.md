@@ -2295,3 +2295,18 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - ⭐ **Adapter-purity audit PASSED:** 0 collector/engine references in all six adapters; the runtime alone holds the three calls. The regression the review guarded against does not exist.
 - **`engineering/verification/reports/2026-08-04-live-experience-oqt.md` opened (Status: OPEN):** per-adapter execution-chain evidence — commit ✓ (real commits + the migration demo) · watcher ✓ (live save, full trace) · dev session ✓ (chain PROVEN) · Claude trigger 🟡 script-verified, fires in the NEXT session (hooks load at session start) · **VS Code extension ✗ — the open item (human install)**. The reviewer's five-step OQT is written as the runnable protocol; passing flips the report to PASSED and opens the OE entry that begins tracking the behavioral milestone.
 - The distinction adopted into the register's reading rule: **ACTIVE rows are implementation claims until their OQT row says YES.** No new capabilities added — per the review's own stop instruction.
+
+### ⛔ KNOWLEDGEOS RUNTIME ARCHITECTURE v1.0 — COMPLETE (closing declaration, 2026-08-04)
+
+> **Architecture: CLOSED · Domain model: CLOSED · Runtime implementation: CLOSED · Trigger pipeline: QUALIFIED · Presentation pipeline: QUALIFIED (terminal) · ARCHITECTURE documentation: FROZEN (operational documentation — onboarding · troubleshooting · playbooks — continues to evolve; refinement 2026-08-04) · Future architectural evolution: EVIDENCE-GATED.**
+
+- The stable v1.0 shape: ObservationTrigger (4 live adapters) → ChangeSet → ObservationRuntime → Collectors → RecommendationEngine → PresentationPort (3 live adapters) — self-tracing at every boundary.
+- **New phase: OPERATIONAL VALIDATION & DEVELOPER ADOPTION.** Measured by adoption · latency · acceptance rate · false positives · satisfaction · engineering outcomes — never by new constructs. The final milestone (Operational Qualification, in the OQT report): clone → init → open → edit → save → advice → commit → lifecycle → assessment, zero manual steps.
+- ⛔ **Stop-architecting compliance: this is the LAST documentation round for the runtime subsystem.** Remaining DevEx questions (2s acceptable? squiggles? renderer preference?) are PRODUCT questions answered by users; remaining gates (Evidence Analytics · Adaptive Recommendation · DecisionCaptureService · all register rows) open on evidence only.
+
+### Sign-off received; closure invariant recorded (2026-08-04)
+
+- **The v1.0 closure invariant, verbatim, now at the top of the architecture guide:** *'The Runtime is closed for feature-driven modification. New developer experiences must be introduced as adapters or operational tooling unless empirical evidence demonstrates the Runtime itself is insufficient.'*
+- Documentation wording split per the sign-off: architecture docs frozen; operational docs evolve.
+- The discriminating-governance observation ratified: BootstrapPort (1 impl, staged) vs PresentationPort (3 impls, named) — same rule, different evidence, different outcomes.
+- Sign-off table recorded; program phase: OPERATIONAL VALIDATION & DEVELOPER ADOPTION.

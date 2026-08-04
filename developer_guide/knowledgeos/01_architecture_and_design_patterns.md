@@ -1,5 +1,14 @@
 # 01 — KnowledgeOS Architecture & Design Patterns
 
+> ⛔ **v1.0 CLOSURE INVARIANT (2026-08-04): The Runtime is closed for
+> feature-driven modification. New developer experiences must be introduced as
+> adapters or operational tooling unless empirical evidence demonstrates the
+> Runtime itself is insufficient.** Don't modify ObservationRuntime for
+> prettier UI · don't modify RecommendationEngine because an IDE needs another
+> renderer · don't modify Collectors because a CI job needs different output —
+> those belong in adapters. *(Architecture documentation is frozen; operational
+> documentation — onboarding, troubleshooting, playbooks — continues to evolve.)*
+
 ## Purpose
 
 Explain how KnowledgeOS is built and *why it is built that way*, so that any
@@ -71,9 +80,16 @@ Publication: the ADAPTER's decision, not the runtime's —
             commit publishes to the evidence streams · file-save displays ephemerally
 ```
 
-Adapters today: commit (husky) · file-save (`watch.php` poller + VS Code task).
-Staged: PR/CI · real-time (FS events / IDE extension) — each drops in against
-this contract without touching anything downstream.
+Adapters today: commit (husky) · file-save (`watch.php` poller + VS Code task) ·
+Claude Code (PostToolUse hook). Staged: PR/CI · real-time (FS events / IDE
+extension) — each drops in against this contract without touching anything
+downstream.
+
+**PresentationPort** *(named 2026-08-04 — legitimately: THREE adapters exist)*:
+the runtime returns results; a presentation adapter renders them. Adapters:
+terminal (watch/dev/hook output) · Claude session (hook stdout) · VS Code toast
+(extension). Staged: VS Code inline diagnostics/Problems panel. Publication
+remains the TRIGGER's decision; presentation is only rendering.
 
 ## The deterministic pipeline
 
