@@ -106,6 +106,11 @@ final class KnowledgeOsDoctor
              'detail' => ($state['extension_installed'] ?? false)
                  ? 'in-editor popups available (rendering itself not verifiable headlessly)'
                  : 'NOT installed — terminal feedback only; F5 dev-mode or vsce package + install'],
+            ['name' => 'Claude Code trigger installed',
+             'ok' => (bool) ($state['claude_trigger'] ?? false),
+             'detail' => ($state['claude_trigger'] ?? false)
+                 ? 'PostToolUse hook: AI edits observe automatically'
+                 : 'not wired — AI-session edits produce no live feedback'],
             ['name' => 'observation chain proven end-to-end',
              'ok' => (bool) ($state['chain_proven'] ?? false),
              'detail' => ($state['chain_proven'] ?? false)

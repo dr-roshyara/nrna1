@@ -27,6 +27,12 @@ $root = dirname(__DIR__, 2);
 chdir($root);
 
 $json = in_array('--json', $argv, true);
+$source = 'ide-save';
+foreach ($argv as $arg) {
+    if (str_starts_with($arg, '--source=')) {
+        $source = substr($arg, 9);
+    }
+}
 $files = array_values(array_filter(array_slice($argv, 1), fn ($a) => !str_starts_with($a, '--')));
 
 if ($files === []) {
@@ -38,12 +44,12 @@ $files = array_map(fn ($f) => str_replace('\\', '/', $f), $files);
 $rules = Yaml::parseFile(__DIR__ . '/recommendation-rules.yaml')['rules'];
 
 $startedAt = microtime(true);
-$result = ObservationRuntime::run(new ChangeSet($files, 'ide-save', date('c')), $rules);
+$result = ObservationRuntime::run(new ChangeSet($files, $source, date('c')), $rules);
 $latencyMs = (int) round((microtime(true) - $startedAt) * 1000);
 
 if ($json) {
     echo json_encode([
-        'trigger'         => 'ide-save',
+        'trigger'         => $source,
         'files'           => $files,
         'latency_ms'      => $latencyMs,
         'advisories'      => count($result['recommendations']),

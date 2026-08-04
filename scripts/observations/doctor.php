@@ -74,11 +74,14 @@ try {
 } catch (Throwable) {
 }
 
+$settings = is_file($root . '/.claude/settings.json') ? (string) file_get_contents($root . '/.claude/settings.json') : '';
+
 $live = KnowledgeOsDoctor::diagnoseLive([
     'task_installed'      => is_file($tasksFile),
     'task_runs_dev'       => str_contains($taskCmds, 'dev.php'),
     'extension_source'    => is_file(__DIR__ . '/vscode-knowledgeos/extension.js'),
     'extension_installed' => $extDirs !== [],
+    'claude_trigger'      => str_contains($settings, 'claude-code-trigger.sh'),
     'chain_proven'        => $chainRecs !== null,
     'chain_recs'          => (int) $chainRecs,
 ]);

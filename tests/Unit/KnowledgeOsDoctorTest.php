@@ -64,6 +64,7 @@ final class KnowledgeOsDoctorTest extends TestCase
             'task_runs_dev'       => true,
             'extension_source'    => true,
             'extension_installed' => false,   // honest: source exists, user hasn't installed the vsix
+            'claude_trigger'      => true,
             'chain_proven'        => true,
             'chain_recs'          => 2,
         ]);
@@ -82,6 +83,7 @@ final class KnowledgeOsDoctorTest extends TestCase
             'task_runs_dev'       => true,
             'extension_source'    => true,
             'extension_installed' => true,
+            'claude_trigger'      => true,
             'chain_proven'        => true,
             'chain_recs'          => 2,
         ]);

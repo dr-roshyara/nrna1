@@ -299,7 +299,9 @@ Engineering Verification (candidate reference architecture)
 | **C2** Production-path verification | **Experimental** | one deliberate instance, added today |
 | **C4** Mutation confidence | **Experimental** | one deliberate instance, applied by choice |
 
-**C3 is the only Foundational capability**, and that is the model's most load-bearing claim: **it is Enabling in role, Foundational in stability, and constrains a Strategic capability.** A change to C3 therefore reaches further than its role alone suggests.
+**C3 is the only capability rated Foundational.** **Current evidence indicates C3 is among the most architecturally influential capabilities**, because it enables verification (C1, C2) while constraining production-path verification (C2) — a combination no other capability exhibits. **Further comparative evidence is required before ranking it above other capabilities.**
+
+*(Refined 2026-08-04: an earlier line called this “the model's most load-bearing claim”. **A superlative requires comparative evidence across the whole architecture, which has not been gathered** — what the evidence shows is an unusual COMBINATION of role, stability and influence, not a demonstrated ranking.)*
 
 ## 17. Authorization boundary for Part III
 

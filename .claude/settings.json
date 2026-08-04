@@ -40,6 +40,11 @@
           {
             "type": "command",
             "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/session-changes-logger.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/claude-code-trigger.sh",
+            "statusMessage": "KnowledgeOS: observing changed class"
           }
         ]
       }
