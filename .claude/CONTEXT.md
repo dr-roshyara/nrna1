@@ -72,7 +72,7 @@ Priority: High
   EG-004 · EG-005 tracked in `docs/plans/20260726-2056-engineering-platform-repair-plan.md` — non-blocking.
 
 ## Next action (exactly one)
-**AUTHORIZATION DECISION on WP-4C-1** — `AdjudicationFailureDeclared`: the domain event, its outbox hydrator, and its catalog entry (Adjudication). **R-88 is ADOPTED and GOVERNING, but subdivision is NOT authorization (R-80)** — WP-4C-1 is a *candidate*. The next engineering act after authorization is an **EP-01 plan**, not implementation. **WP-4C-2** (Contestation's challenge disposition) stays **blocked on EPIC-004K §15.3** and is not Adjudication's to progress.
+**CONFIRMATION OF R-89, then the WP-4C-1 EP-01 PLAN.** R-89 authorizes WP-4C-1 — `AdjudicationFailureDeclared`: the domain event, its outbox hydrator, and its catalog deliverable — and is **PREPARED, not ADOPTED** (Chief-issued; R-88 created no standing delegation). **The plan must resolve the catalog deliverable against ADR-T5's *“version, never mutate”* and the WP-6 precedent — `AdjudicationExpired` ships hydrated but is ABSENT from the frozen catalog — and must ESCALATE rather than decide if a new catalog version is required.** **WP-4C-2 is not authorized** and stays blocked on EPIC-004K §15.3.
 
 ## Blockers
 - **WP-4B ACCEPTED and CLOSED (R-87).** Capability milestone recorded: `Concluded → Issue Request → Recovery → Replay`.
@@ -1878,3 +1878,12 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - **The intelligence definition re-recorded in its sharpest form yet:** intelligence = *"R3 accepted 84% of the time, reduced CBO 17%, but only for large aggregates"* — requiring all five data kinds accumulated. Python has nothing to learn until that history exists; **the next milestone is trustworthy evidence, not AI.**
 - ⭐ **Ownership default PROPOSED (so one word can unblock):** at SPIKE level, the engine is engineering observation tooling (same area/guide family as the collectors); **capability-level ownership stays the open question the spike informs** (capability-vs-service · context-vs-DP) — consistent with the spike-as-commission-instrumentation scoping. **If accepted, the EP-01A ownership gate is satisfied at spike level and only the final GO remains.**
 - ⏳ **Status: the plan awaits the final word.**
+
+
+### ⭐⭐ RECOMMENDATION ENGINE v1: BUILT AND RUNNING (2026-08-04) — engineering event; state + pointers only
+
+- **Approval read from the review** (ownership default endorsed · conceptual freeze · "ready to implement" · mission "Implement") — plan status → APPROVED; executed same day.
+- **TDD-first (RED→GREEN): 6 tests / 17 assertions.** Pure engine (knows no tools/files/thresholds) · 5 rules as YAML data · runner (facts→evaluate→dedup→recommendations.jsonl) · decision CLI (decision+rationale as SEPARATE records, reason codes) · dashboard recommendations section (all suites: 10 tests/33 assertions green).
+- ⭐⭐ **FIRST REAL RUN: 10 recommendations issued.** R1 on Election (LCOM4 29>20; Committee 16 correctly silent) · R5 on 9 hotspots — **incl. 2 KNOWN provider false-positive candidates (flat CBO bar, deliberate): marking them IGNORED:FALSE_POSITIVE is the designed feedback loop, not a bug** · R2/R3/R4 honestly silent.
+- **Dashboard now shows the loop's starting state: issued 10 · decided 0 · OPEN 10.** Guide 05 shipped with the step.
+- ⭐ **The celebrated milestone is now REACHABLE: the first complete learning event** (recommendation→decision→reason→commit→outcome) **needs exactly one developer decision on one of the 10 open items.** The decide command is one line.
