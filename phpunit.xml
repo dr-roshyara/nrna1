@@ -41,6 +41,9 @@
             <directory suffix="Test.php">./tests/Feature/Contexts/Shared</directory>
             <directory suffix="Test.php">./tests/Replay</directory>
         </testsuite>
+        <testsuite name="EngineeringKnowledge">
+            <directory suffix="Test.php">./scripts/lib/EngineeringKnowledge</directory>
+        </testsuite>
     </testsuites>
     <!-- PB-007 7C: migrated from the PHPUnit 9 <coverage processUncoveredFiles> form to the
          PHPUnit 10+ <source> element (installed: PHPUnit 11). The stale form was latent —

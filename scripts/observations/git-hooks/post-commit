@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Post-commit observation hook — the MINIMAL automatic step ("observations
+# should happen automatically", user directive 2026-08-04).
+#
+# Runs ONLY the fast observation (test-presence: a git diff, ~instant).
+# Slow collectors (pdepend ~7min, LCOM4 over trees) stay on-demand until the
+# Observation Runtime idea earns its gate. Advisory: never blocks a commit.
+#
+# Install:   cp scripts/observations/git-hooks/post-commit .git/hooks/post-commit
+# Uninstall: rm .git/hooks/post-commit
+cd "$(git rev-parse --show-toplevel)" || exit 0
+php scripts/observations/test-presence-observer.php HEAD~1..HEAD 2>/dev/null || true
+exit 0
