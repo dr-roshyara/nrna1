@@ -70,6 +70,9 @@ if ($needed === []) {
                         'command'        => 'php scripts/observations/watch.php',
                         'isBackground'   => true,
                         'problemMatcher' => [],
+                        // auto-start on workspace open (VS Code asks once: "Allow Automatic Tasks")
+                        // — closes the "watcher was never running" gap found 2026-08-04
+                        'runOptions'     => ['runOn' => 'folderOpen'],
                     ]],
                 ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
                 break;
