@@ -2152,3 +2152,8 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - ⭐ **`init` built TDD (3 tests / 8 assertions; RED shown):** pure idempotent planner + runner — fresh state plans all 4 steps · **this repo plans ZERO ("already initialized — nothing to do", the real output)** · partial state plans only gaps. `--dry-run` supported; ends by chaining into the doctor. The synthetic-repo objection dissolved: idempotency is testable purely. The hook-path step is advisory (husky `prepare` owns it — init never competes). Dev guide 10 + index.
 - ⭐ **The register's staged history fields ACTIVATED by their own criterion** ("the first actual row transition"): the Transition log exists with entry #1 — init GATED→ACTIVE, event = the accepted governance correction, disposition = Implemented. **The register absorbed a correction and recorded its own first history in the same turn — self-governance demonstrated on real traffic.**
 - `upgrade`/`config` stay gated on their OBJECTS existing (no versioned migrations, no config beyond rules-as-data). Track B unchanged: BootstrapPort · packaging · runtime extraction wait for the second adopter.
+
+### Practice correction: git add -A swept a parallel session's files (2026-08-04)
+
+- Incident: `git add -A` pulled two Adjudication test files from the concurrently running delivery session into an observations commit. Caught in the same turn (stat review), split out via soft reset + explicit recommit; the delivery files remain in the working tree untouched.
+- **Rule adopted: commits enumerate explicit paths — never `add -A` — while parallel sessions may be active.** The per-turn-commit practice stands; only the staging discipline changed.
