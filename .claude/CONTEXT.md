@@ -29,7 +29,7 @@ Plan: .claude/plans/WP-6-temporal-machinery.md (WP-5 CLOSED)
 | PB-006 programme reporting | **ANNOTATED** (R-94), executed at `IMPLEMENTATION_PROGRESS.md:58` | — |
 | WP-4C-2 (Q1–Q4) | **WAITING** — engineering must NOT answer | **Contestation Domain Owner** |
 | Signal classification · `enforceHorizon()` | **PLAN authorized, implement NOT** (R-95) | Execution Governance |
-| COL-5a mechanism | **STRATEGIC BACKLOG** (R-96) — ownership known, mechanism not | Architecture Backlog |
+| COL-5a mechanism | **RE-ANCHORED to COL-1** (R-96, corrected) — accepted architecture records **COL-5a subsumed into COL-1, CONFIRMED**: *the return channel of one contract, not a second relationship*. **Do NOT carry it as a separate item.** Classification stands (architectural); **owner VACATED — no strategic-architecture backlog artifact exists** (the similarly-named `Architecture_Debt_Backlog.md` is a CLEARED test-failure register) | **governance — a home must be named** |
 | D3 · D4 | **HELD** (R-97) | Board — E1 · E2 |
 | R-91 (Event D) | **HELD** (R-97) | Board |
 | WP-8 | **DEFERRED** under R-79 — do not reopen because nearby work closed | — |
