@@ -63,10 +63,30 @@ final class ObservationRuntime
             'evidence_refs'            => $changeSet->changedFiles,
         ];
 
+        $recommendations = RecommendationEngine::evaluate($facts, $rules);
+
+        // Per-collector telemetry: runtime, productivity, hit rate — answerable
+        // from the record, never guessed. Rich format adopted before dashboards
+        // exist so the logging format never migrates (review 2026-08-04).
+        $sourceOfRule = [];
+        foreach ($rules as $rule) {
+            $sourceOfRule[$rule['id']] = $rule['source'];
+        }
+        $recsBySource = [];
+        foreach ($recommendations as $rec) {
+            $src = $sourceOfRule[$rec['rule']] ?? 'unknown';
+            $recsBySource[$src] = ($recsBySource[$src] ?? 0) + 1;
+        }
+
         return [
             'observations'    => ['lcom4' => $lcom4Observations, 'test_presence' => $testPresence],
-            'recommendations' => RecommendationEngine::evaluate($facts, $rules),
-            'timings_ms'      => $timings,   // per-collector: "which collector became slow?" is answerable, never guessed
+            'recommendations' => $recommendations,
+            'collectors'      => [
+                ['collector' => 'lcom4',         'runtime_ms' => $timings['lcom4'],
+                 'observations' => count($lcom4Observations), 'recommendations' => $recsBySource['lcom4'] ?? 0],
+                ['collector' => 'test_presence', 'runtime_ms' => $timings['test_presence'],
+                 'observations' => 1,             'recommendations' => $recsBySource['test_presence'] ?? 0],
+            ],
         ];
     }
 }

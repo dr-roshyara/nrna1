@@ -84,18 +84,22 @@ PHP;
         $this->assertCount(1, $r2);
     }
 
-    public function test_reports_per_collector_timings(): void
+    public function test_reports_per_collector_telemetry_records(): void
     {
-        // operational gold (review 2026-08-04): "which collector became slow?"
-        // must be answerable from the record, not guessed
+        // operational gold (review 2026-08-04): runtime, productivity, and hit
+        // rate per collector — answerable from the record, never guessed.
+        // Rich format adopted BEFORE dashboards exist: no migration later.
         $result = \ObservationRuntime::run($this->changeSet(), $this->rules(), fn () => self::LOW_COHESION_SOURCE);
 
-        $this->assertArrayHasKey('timings_ms', $result);
-        $this->assertArrayHasKey('lcom4', $result['timings_ms']);
-        $this->assertArrayHasKey('test_presence', $result['timings_ms']);
-        foreach ($result['timings_ms'] as $ms) {
-            $this->assertIsInt($ms);
-            $this->assertGreaterThanOrEqual(0, $ms);
+        $this->assertArrayHasKey('collectors', $result);
+        $byName = array_column($result['collectors'], null, 'collector');
+
+        $this->assertSame(1, $byName['lcom4']['observations']);       // one class observed
+        $this->assertSame(1, $byName['lcom4']['recommendations']);    // R1 fired
+        $this->assertSame(1, $byName['test_presence']['recommendations']); // R2 fired
+        foreach ($result['collectors'] as $c) {
+            $this->assertIsInt($c['runtime_ms']);
+            $this->assertGreaterThanOrEqual(0, $c['runtime_ms']);
         }
     }
 
