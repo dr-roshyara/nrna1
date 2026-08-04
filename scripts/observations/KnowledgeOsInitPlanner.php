@@ -23,6 +23,10 @@ final class KnowledgeOsInitPlanner
             ['action' => 'create metrics directory',                               'needed' => !($state['metrics_dir_exists'] ?? false)],
             ['action' => 'install commit-trigger delegate (.husky/post-commit)',   'needed' => !($state['husky_post_commit'] ?? false)],
             ['action' => 'configure hook path (run npm install — husky prepare)',  'needed' => !($state['hooks_path_set'] ?? false)],
+            // environment-adaptive (capability = FileSaveTrigger; adapter chosen by detection):
+            // installed only where VS Code actually exists, never forced elsewhere
+            ['action' => 'install VS Code watch task (.vscode/tasks.json — FileSaveTrigger adapter)',
+             'needed' => ($state['vscode_present'] ?? false) && !($state['vscode_watch_task'] ?? false)],
         ];
     }
 }

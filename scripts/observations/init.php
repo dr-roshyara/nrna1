@@ -25,6 +25,8 @@ $state = [
     'metrics_dir_exists' => is_dir($metricsDir),
     'husky_post_commit'  => is_file($root . '/.husky/post-commit'),
     'hooks_path_set'     => str_contains(trim((string) shell_exec('git config --get core.hooksPath')), '.husky'),
+    'vscode_present'     => is_dir($root . '/.vscode'),
+    'vscode_watch_task'  => is_file($root . '/.vscode/tasks.json'),
 ];
 
 $plan = KnowledgeOsInitPlanner::plan($state);
@@ -58,6 +60,18 @@ if ($needed === []) {
                 break;
             case 'configure hook path (run npm install — husky prepare)':
                 echo "  (manual: run `npm install` — the husky prepare script configures core.hooksPath)\n";
+                break;
+            case 'install VS Code watch task (.vscode/tasks.json — FileSaveTrigger adapter)':
+                file_put_contents($root . '/.vscode/tasks.json', json_encode([
+                    'version' => '2.0.0',
+                    'tasks'   => [[
+                        'label'          => 'KnowledgeOS: watch (live advisory feedback)',
+                        'type'           => 'shell',
+                        'command'        => 'php scripts/observations/watch.php',
+                        'isBackground'   => true,
+                        'problemMatcher' => [],
+                    ]],
+                ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
                 break;
         }
     }

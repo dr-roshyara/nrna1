@@ -64,4 +64,18 @@ final class KnowledgeOsInitPlannerTest extends TestCase
         $this->assertCount(1, $needed);
         $this->assertSame('install commit-trigger delegate (.husky/post-commit)', $needed[0]['action']);
     }
+
+    public function test_vscode_watch_task_planned_only_when_vscode_detected(): void
+    {
+        // environment-adaptive: the adapter is installed only where its environment exists
+        $withVscode = $this->initialized();
+        $withVscode['vscode_present'] = true;
+        $withVscode['vscode_watch_task'] = false;
+
+        $needed = array_column(array_filter(\KnowledgeOsInitPlanner::plan($withVscode), fn ($s) => $s['needed']), 'action');
+        $this->assertSame(['install VS Code watch task (.vscode/tasks.json — FileSaveTrigger adapter)'], $needed);
+
+        // no VS Code → the step is not needed (never forced on a foreign environment)
+        $this->assertSame([], array_filter(\KnowledgeOsInitPlanner::plan($this->initialized()), fn ($s) => $s['needed']));
+    }
 }

@@ -51,6 +51,7 @@
 | Row | Transition | Activated on (the engineering event) | Disposition |
 |---|---|---|---|
 | **Platform Bootstrap → Track A (`init`)** | GATED (second adopter) → **ACTIVE** | governance correction accepted (review 2026-08-04): the second-adopter gate was OVER-APPLIED to deterministic infrastructure automation — init's real gate (determinism, steps known from the manual 2026-08-04 sequence) was already met. Built TDD same day; idempotent on this repo | **Implemented** |
+| **FileSaved / IDE trigger** | STAGED (criterion: commit-time too late) → **ACTIVE** | **AUTHORITY re-ruling, not a criterion fire** — the Chief Architect commissioned the implementation directly (2026-08-04, "add a new ObservationTrigger adapter"). Built TDD same day: `ChangeSet` (technology-neutral) + `ObservationRuntime.run(ChangeSet)` (reuses collectors/engine unchanged; changed-files-only; trigger-independence pinned by test) + `FileSaveTrigger` + `watch.php` poller + VS Code task installed by environment-aware init. Live results EPHEMERAL (displayed, never stream-written — commit stays the stream writer). UL corrected: capability = **ObservationTrigger**; commit/file-save/PR/CI are adapters. PR/CI adapters remain STAGED — the commission's architecture supports them; their activation evidence is still absent | **Implemented** |
 
 ## How to use this view
 

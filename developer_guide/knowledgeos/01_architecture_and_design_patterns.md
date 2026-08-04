@@ -26,7 +26,7 @@ is reachable through a conceptual **port**; technology sits outside as an
 
 | Capability (UL) | Port (conceptual) | Adapter(s) today | Key files |
 |---|---|---|---|
-| **CommitTrigger** | Trigger | husky (`.husky/post-commit` → canonical script) | `scripts/observations/git-hooks/post-commit` |
+| **ObservationTrigger** *(UL correction 2026-08-04: the capability sits one level above any single trigger)* | Trigger — every adapter produces a `ChangeSet`; the runtime never knows how it was triggered | commit (husky `.husky/post-commit` → canonical script) · file-save (`watch.php` poller + VS Code task) · PR/CI (staged) | `ChangeSet.php` · `ObservationRuntime.php` · `FileSaveTrigger.php` · `scripts/observations/git-hooks/post-commit` |
 | **Observation** | Collector | LCOM4 · test-presence · metrics | `Lcom4Collector.php` · `test-presence-observer.php` · `metrics-report.php` |
 | **Recommendation** | Rules | rules-as-data (YAML) + pure engine | `RecommendationEngine.php` · `recommendation-rules.yaml` |
 | **Decision Capture** | Decision | two CLIs, one record format | `recommendation-decide.php` · `recommendation-inbox.php` |
