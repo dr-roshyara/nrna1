@@ -83,3 +83,31 @@ The notice text, in every case: **`Test code or tested code removed error handle
 ## 8. Traceability
 
 **R-71** (ENG-012 opened) · `vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php:47, 49, 327-351, 353` · `phpunit.xml` (no `beStrict*` settings) · this session's test runs · WP-4C-1 acceptance evidence §6 (ENG-012 recorded as open).
+
+---
+
+## 9. Architectural learning — one lesson, and it is not "a handler was removed"
+
+> **Merge-gate metrics must distinguish FRAMEWORK-GENERATED runtime signals from PRODUCT-QUALITY signals. A metric that mixes them cannot be read.**
+
+**And the consequence is sharper than "the number is meaningless."**
+
+The gate reports `risky: 112`. All 112 are framework app-boot artefacts. **So if a genuinely risky test appeared tomorrow — one leaking global state, or depending on execution order — it would arrive as `risky: 113`.** Indistinguishable from adding one Feature test.
+
+> **The defect is not that the number carries no information. It is that a real signal cannot be seen against it.** A metric that only ever grows for benign reasons provides **detection blindness**, not merely noise — and it is worse than having no metric, because it looks like coverage of a risk that is in fact unmonitored.
+
+**Evidenced by my own behaviour, not hypothesised:** for a week I reported *"risky 108 → 111, consistent with ENG-012"* beside genuine results. **The phrase was true, said nothing, and read as diligence** — which is exactly how a blind spot survives review.
+
+## 10. Capability impact
+
+| Capability | State after this investigation |
+|---|---|
+| **Adjudication seam verification** | **MATURE** — keystones, real-database round trips, mutation-checked, adapter covered |
+| **Framework-integration understanding** | **IMPROVED** — the app-boot handler mechanism is now located and one plausible cause eliminated |
+| **Engineering verification SIGNAL QUALITY** | **WEAKEST** — the gate emits one aggregate `risky` count blending framework and product signals, with **no baseline** against which a change would be visible |
+
+**Highest-leverage next capability — recommended, not begun:** a verification-signal classification that separates **framework · application · infrastructure · business** signals, or at minimum **records the expected framework-signal baseline so a DELTA is legible.** Every future gate reading depends on it, and no dashboard built on the current aggregate can be trusted.
+
+**Deliberately NOT recommended as the next work: `enforceHorizon()`'s isolation defect.** It is a known, recorded, ER-08-deferred *fix*. **Choosing it would be managing defects; the signal-quality gap is a capability, and it gates the trustworthiness of every future defect report** — including that one's verification.
+
+**Authorization required for either:** signal classification touches `phpunit.xml` and the gate script (execution governance) · `enforceHorizon()` touches production behaviour and is outside R-81's scope. **Neither is begun.**
