@@ -95,3 +95,11 @@ Collection owes more or better evidence. **What event, decision, or deadline con
 ## 6. Evidence sources
 
 `engineering/verification/reports/2026-08-04-wp4c2-discovery.md` · `…-responsibility-analysis.md` (Phase A) · `…-phase-b-contestation-discovery.md` (Phase B) · **EPIC-002** Canonical Context Map (COL-1 · COL-5a · COL-5b) · **EPIC-004K §10 · §15.3** · PM-1 · PM-7 · INV-B1 · ADR-T8 · `Challenge.php` · `ChallengeState.php` · `2026_07_30_000001_create_adjudication_processes_table.php`.
+
+---
+
+## 7. Closing
+
+**The determination sequence for this package:** the **Domain Owner** answers Q1–Q4 → engineering records, classifies and verifies them, producing a Verification Report → the **ARB Decision Gate** determines whether Tactical DDD is authorized. **Verification does not imply authorization**, and engineering makes no recommendation at that gate.
+
+> **Engineering evidence is complete. Constitutional determination remains with the ARB.**
