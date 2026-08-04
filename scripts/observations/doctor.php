@@ -48,4 +48,46 @@ foreach ($report['checks'] as $c) {
     printf("%s %s — %s\n", $c['ok'] ? '✓' : '✗', $c['name'], $c['detail']);
 }
 printf("\n%s\n", $report['ready'] ? 'KnowledgeOS READY' : 'KnowledgeOS NOT READY — fix the ✗ checks above');
-exit($report['ready'] ? 0 : 1);
+
+if (!in_array('--live', $argv, true)) {
+    exit($report['ready'] ? 0 : 1);
+}
+
+// ---- --live: verify the complete live developer experience ----
+require_once $root . '/vendor/autoload.php';
+require_once __DIR__ . '/ChangeSet.php';
+require_once __DIR__ . '/ObservationRuntime.php';
+
+$tasksFile = $root . '/.vscode/tasks.json';
+$tasks = is_file($tasksFile) ? (json_decode((string) file_get_contents($tasksFile), true) ?: []) : [];
+$taskCmds = implode(' ', array_column($tasks['tasks'] ?? [], 'command'));
+
+$extDirs = glob((getenv('USERPROFILE') ?: getenv('HOME')) . '/.vscode/extensions/*knowledgeos*') ?: [];
+
+$chainRecs = null;
+try {
+    $rules = Symfony\Component\Yaml\Yaml::parseFile(__DIR__ . '/recommendation-rules.yaml')['rules'];
+    $probe = is_file($root . '/app/Models/Election.php') ? 'app/Models/Election.php' : (glob('app/Models/*.php')[0] ?? null);
+    if ($probe !== null) {
+        $chainRecs = count(ObservationRuntime::run(new ChangeSet([$probe], 'doctor-live', date('c')), $rules)['recommendations']);
+    }
+} catch (Throwable) {
+}
+
+$live = KnowledgeOsDoctor::diagnoseLive([
+    'task_installed'      => is_file($tasksFile),
+    'task_runs_dev'       => str_contains($taskCmds, 'dev.php'),
+    'extension_source'    => is_file(__DIR__ . '/vscode-knowledgeos/extension.js'),
+    'extension_installed' => $extDirs !== [],
+    'chain_proven'        => $chainRecs !== null,
+    'chain_recs'          => (int) $chainRecs,
+]);
+
+echo "\nLive developer experience\n\n";
+foreach ($live['checks'] as $c) {
+    printf("%s %s — %s\n", $c['ok'] ? '✓' : '✗', $c['name'], $c['detail']);
+}
+printf("\n%s\n", $live['ready']
+    ? 'Live developer experience READY'
+    : 'Live experience NOT fully ready — architectural pieces in place; the ✗ items are the operational gap');
+exit($report['ready'] && $live['ready'] ? 0 : 1);

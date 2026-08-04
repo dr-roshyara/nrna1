@@ -79,4 +79,43 @@ final class KnowledgeOsDoctor
             'checks' => $checks,
         ];
     }
+
+    /**
+     * Live-pipeline diagnosis (`doctor --live`, review 2026-08-04): verifies
+     * the complete live developer experience, not just installation.
+     * "IDE diagnostics received" cannot be verified headlessly — the closest
+     * honest checks are extension-installed + chain-proven.
+     *
+     * @param array<string,mixed> $state
+     * @return array{ready: bool, checks: array<int,array{name:string,ok:bool,detail:string}>}
+     */
+    public static function diagnoseLive(array $state): array
+    {
+        $checks = [
+            ['name' => 'VS Code task installed',
+             'ok' => (bool) ($state['task_installed'] ?? false),
+             'detail' => ($state['task_installed'] ?? false) ? '.vscode/tasks.json present' : 'missing — run init'],
+            ['name' => 'folderOpen task runs the dev lifecycle',
+             'ok' => (bool) ($state['task_runs_dev'] ?? false),
+             'detail' => ($state['task_runs_dev'] ?? false) ? 'auto-starts dev.php on workspace open' : 'task exists but does not run dev.php'],
+            ['name' => 'VS Code extension source present',
+             'ok' => (bool) ($state['extension_source'] ?? false),
+             'detail' => ($state['extension_source'] ?? false) ? 'scripts/observations/vscode-knowledgeos' : 'extension source missing'],
+            ['name' => 'VS Code extension installed',
+             'ok' => (bool) ($state['extension_installed'] ?? false),
+             'detail' => ($state['extension_installed'] ?? false)
+                 ? 'in-editor popups available (rendering itself not verifiable headlessly)'
+                 : 'NOT installed — terminal feedback only; F5 dev-mode or vsce package + install'],
+            ['name' => 'observation chain proven end-to-end',
+             'ok' => (bool) ($state['chain_proven'] ?? false),
+             'detail' => ($state['chain_proven'] ?? false)
+                 ? sprintf('runtime → collectors → %d recommendation(s)', (int) ($state['chain_recs'] ?? 0))
+                 : 'chain self-test FAILED — run dev.php for per-stage traces'],
+        ];
+
+        return [
+            'ready'  => !in_array(false, array_column($checks, 'ok'), true),
+            'checks' => $checks,
+        ];
+    }
 }

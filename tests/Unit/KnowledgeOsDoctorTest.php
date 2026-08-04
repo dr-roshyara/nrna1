@@ -57,6 +57,38 @@ final class KnowledgeOsDoctorTest extends TestCase
         $this->assertSame('commit trigger active (.husky/post-commit)', $failed[0]['name']);
     }
 
+    public function test_live_diagnosis_verifies_the_full_pipeline_not_just_installation(): void
+    {
+        $report = \KnowledgeOsDoctor::diagnoseLive([
+            'task_installed'      => true,
+            'task_runs_dev'       => true,
+            'extension_source'    => true,
+            'extension_installed' => false,   // honest: source exists, user hasn't installed the vsix
+            'chain_proven'        => true,
+            'chain_recs'          => 2,
+        ]);
+
+        $byName = array_column($report['checks'], null, 'name');
+        $this->assertTrue($byName['folderOpen task runs the dev lifecycle']['ok']);
+        $this->assertTrue($byName['observation chain proven end-to-end']['ok']);
+        $this->assertFalse($byName['VS Code extension installed']['ok']);
+        $this->assertFalse($report['ready'], 'live experience is NOT ready while the extension is uninstalled');
+    }
+
+    public function test_live_diagnosis_ready_when_every_stage_verifies(): void
+    {
+        $report = \KnowledgeOsDoctor::diagnoseLive([
+            'task_installed'      => true,
+            'task_runs_dev'       => true,
+            'extension_source'    => true,
+            'extension_installed' => true,
+            'chain_proven'        => true,
+            'chain_recs'          => 2,
+        ]);
+
+        $this->assertTrue($report['ready']);
+    }
+
     public function test_hooks_path_not_owned_by_husky_is_reported_not_assumed(): void
     {
         $state = $this->healthy();

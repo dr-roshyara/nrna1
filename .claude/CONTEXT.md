@@ -2256,3 +2256,10 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - **OBSERVE phase adopted:** dev.php's third phase renamed — VERIFY → PROVE → OBSERVE (waiting for engineering events) — the lifecycle now names what the session actually does.
 - ⚠️ **Full dev-stack ownership STAGED** (PHP server · queue · Vite · logs · graceful shutdown — the `next dev` model): expanding KnowledgeOS into GENERAL dev tooling is a scope decision — gate: demand observed from real sessions, not assumed.
 - Scores recorded (10s except DevEx 9 · platform 8.5); the closing verdict held: *the architectural problem is essentially solved; remaining work is platform automation and DevEx.*
+
+### ⛔ WORDING CONCEDED + `doctor --live` built: implemented ≠ operationally validated (2026-08-04)
+
+- ⛔ **Conceded: 'DevEx gap closed' exceeded the evidence** — the correct claim, adopted verbatim: *the ARCHITECTURAL DevEx gap is closed; the OPERATIONAL gap closes only after the end-to-end workflow is repeatedly demonstrated on fresh developer environments.* The maturity distinction 'Implemented ≠ operationally validated' joins the evidence ladder's working vocabulary.
+- ⭐ **`doctor --live` built TDD (5/21 green)** — verifies the complete live pipeline, not just installation: task installed · folderOpen runs dev lifecycle · extension source · extension INSTALLED · chain proven end-to-end. **First real run: 4/5 ✓ — the single ✗ is the uninstalled extension, i.e. the instrument itself now names the operational gap** instead of prose claiming closure. ('IDE diagnostics received' honestly marked as not verifiable headlessly.)
+- ⭐ **`doctor --live`'s exit code IS the executable acceptance test** (the reviewer's scenario, to the extent headless verification allows): it goes green exactly when the live experience is operationally ready on a machine. The fresh-clean-machine demonstration remains a human/operational milestone — recorded, not simulated.
+- One defect found by building the instrument: doctor.php lacked the composer autoloader for the chain probe — fixed. Scope guard held: no collector, rule, or runtime logic touched.
