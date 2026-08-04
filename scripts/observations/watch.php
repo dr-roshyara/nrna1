@@ -84,6 +84,15 @@ do {
         FILE_APPEND
     );
 
+    // Observable chain trace (review 2026-08-04): every stage emits — the
+    // first stage missing from this line is the real defect, never a guess.
+    $collectorTrace = implode(' ', array_map(
+        fn ($c) => sprintf('%s(%dobs,%drec,%dms)', $c['collector'], $c['observations'], $c['recommendations'], $c['runtime_ms']),
+        $result['collectors'] ?? []
+    ));
+    printf("trace: event=file-save → changeset=%d file(s) → runtime=%dms → collectors: %s → recommendations=%d → presented=terminal\n",
+        count($changed), $latencyMs, $collectorTrace, count($result['recommendations']));
+
     printf("[%s] saved: %s  (runtime: %dms · worst-case with poll: %ds + %dms)\n",
         date('H:i:s'), implode(' · ', $changed), $latencyMs, $intervalSeconds, $latencyMs);
     if ($result['recommendations'] === []) {

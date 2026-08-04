@@ -28,9 +28,16 @@ was triggered.
 
 ## How it works / use
 ```
-php scripts/observations/watch.php          # live loop (Ctrl+C to stop)
+php scripts/observations/dev.php            # THE dev session: verify → prove chain → own watch loop
+php scripts/observations/watch.php          # watch loop only (Ctrl+C to stop)
 php scripts/observations/watch.php --once   # single poll cycle
+php scripts/observations/observe.php --json <file>   # the JSON API (IDE adapters call this)
 ```
+`dev.php` owns the session (review 2026-08-04: the developer never asks "did I
+start the watcher?"): doctor first (refuses an unready environment), then a
+chain self-test with per-stage traces (the first failing stage IS the defect),
+then the watch loop. Every live event also emits a one-line chain trace:
+`trace: event → changeset → runtime → collectors → recommendations → presented`.
 Or in VS Code: Run Task → "KnowledgeOS: watch (live advisory feedback)".
 Verified live on real code: saving `app/Models/Election.php` produces the R1
 cohesion advisory (LCOM4 29) and R2 missing-tests advisory in under a second.
