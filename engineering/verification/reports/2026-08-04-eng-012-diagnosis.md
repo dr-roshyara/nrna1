@@ -121,7 +121,12 @@ The gate reports `risky: 112`. All 112 are framework app-boot artefacts. **So if
 >
 > **All four arrive in one aggregate count.** **Any future solution must eliminate that ambiguity.**
 
-**Why it matters, in capability terms:** verification exists to make failure *legible*. A verification capability that cannot separate a framework artefact from a violated business invariant **cannot discharge its purpose**, however many tests it runs. **The maturity of the seam-verification capability (§10) is therefore bounded by this gap, not by its own test coverage** — it can prove behaviour and cannot prove that a new problem would be noticed.
+**Why it matters, in capability terms:** verification exists to make failure *legible*. A verification capability that cannot separate a framework artefact from a violated business invariant **cannot discharge its purpose**, however many tests it runs. **Two DISTINCT capabilities are involved, and an earlier version of this line conflated them** by saying seam verification's maturity was *bounded by* the observability gap. **That made one capability's rating depend on another's weakness, which is a category error.** Stated properly:
+>
+> - **Behaviour verification** — **mature with respect to behavioural verification.** It proves what the code does.
+> - **Verification observability** — **immature with respect to signal interpretation.** It cannot say whether a change in the signal means the product changed.
+>
+> **They are related by DEPENDENCY, not by shared maturity:** `Behaviour Verification → Verification Observability → Engineering Decision Confidence`. **A mature provider feeding an immature consumer yields low decision confidence without making the provider less mature.** The dependency is mapped in `2026-08-04-engineering-capability-map.md`.
 
 **What is observably missing:** the ability to answer *"did the verification signal change because the product changed?"* — today unanswerable, because benign growth and genuine regression are the same number moving.
 
