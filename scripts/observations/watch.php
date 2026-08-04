@@ -74,6 +74,7 @@ do {
         $root . '/engineering/verification/observations/watch-usage.jsonl',
         json_encode([
             'ts'              => date('c'),
+            'trigger'         => 'file-save',
             'files'           => count($changed),
             'latency_ms'      => $latencyMs,
             'poll_interval_s' => $intervalSeconds,
