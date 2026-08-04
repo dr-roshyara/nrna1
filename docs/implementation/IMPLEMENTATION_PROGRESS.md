@@ -55,7 +55,7 @@ Production Hardening          ███░░░░░░░░░░░░░�
 | EventProvenance (correlation/causation — Constitutional Audit Invariant) | ✅ Complete (PB-006 6B-1) | 100% |
 | Election Reaction (ElectionCorrectionApplied, Aggregate Reconstruction) | ✅ Complete (PB-004) | 100% |
 | Contestation Reaction (adjudicate/resolve, parking, short-circuit) | ✅ Complete (PB-005) | 100% |
-| End-to-end correction loop (IT-1..IT-8 over the REAL path) | ✅ Proven (PB-006 6B-2) | 100% |
+| End-to-end correction loop (IT-1..IT-8 over the REAL path) | ✅ Proven (PB-006 6B-2) — **scope as ACCEPTED AT PB-006 CLOSURE, 2026-07-10** (annotation per **R-94**). **Two terminal exits were introduced later and are OUTSIDE this accepted boundary:** `AdjudicationExpired` (2026-07-31) · `AdjudicationFailureDeclared` (2026-08-04). **PB-006 is not reopened and no defect is asserted** — WP-8 validates the failure-declared branch | 100% |
 | Greenfield Merge Gate (`composer merge-gate` + CI) | ✅ Complete (PB-007; first real CI run pending push) | 100% |
 | Mutation measurement (validated 1-thread model, non-blocking tier) | ✅ Baseline established (F-7D-2) | measured |
 

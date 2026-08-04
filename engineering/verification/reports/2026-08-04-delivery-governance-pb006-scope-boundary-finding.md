@@ -4,7 +4,7 @@
 **Author:** Engineering
 **Owning authority:** **Delivery Governance** (PB-006 was closed by the ARB; the progress artifact records that acceptance)
 **Type:** engineering verification finding — **evidence only, no recommendation**
-**Status:** OPEN — awaiting disposition by Delivery Governance
+**Status:** **DISPOSED — ANNOTATE (R-94, ARB Chief, 2026-08-04).** Executed at `IMPLEMENTATION_PROGRESS.md:58`
 
 ---
 
@@ -12,7 +12,7 @@
 
 It was **not** produced by a sweep. It surfaced while applying an ARB wording refinement — narrowing a conversational claim about the correction loop to the path actually verified. The search for that phrasing returned a row in a **live program artifact**, and the row was inspected before being escalated.
 
-**Engineering has not modified the artifact.** The row records a **Delivery-Governance acceptance**; only the owning authority may dispose of it.
+**Engineering did not modify the artifact when reporting this.** The row records a **Delivery-Governance acceptance**, and only the owning authority may dispose of it. **The annotation now present at line 58 was executed AFTER and UNDER `R-94`, not by engineering initiative** — see §7.
 
 ---
 
@@ -49,9 +49,9 @@ Corroborating check: `grep -rln "AdjudicationExpired\|AdjudicationFailureDeclare
 
 ## 5. The finding, stated at the strength the evidence supports
 
-> **Line 58 remains valid within the scope accepted by PB-006.** IT-1..IT-8 proved what IT-1..IT-8 was defined to prove, and that acceptance stands.
+> **The row remains accurate for the implementation boundary accepted under PB-006.** IT-1..IT-8 proved what IT-1..IT-8 was defined to prove, and that acceptance stands.
 >
-> **The row remains accurate for the implementation boundary accepted under PB-006.** Subsequent implementation has expanded that boundary. **Whether programme reporting should now distinguish historical acceptance scope from current implementation scope is a Delivery Governance decision.**
+> **Subsequent implementation introduced behaviour outside that accepted boundary.** **Whether programme reporting should now distinguish historical acceptance scope from current implementation scope is a Delivery Governance decision.**
 
 *(Wording set by the ARB, 2026-08-04. An earlier version read "historically accurate but no longer reflects the current implementation boundary" — accurate, but it carried an unintended implication that the row **had become incorrect**. It has not. The correction removes the implication and leaves the engineering finding unchanged.)*
 
@@ -78,15 +78,15 @@ Read together, the two artifacts describe different boundaries: one records the 
 
 ---
 
-## 7. Disposition — for Delivery Governance, no engineering recommendation
+## 7. Disposition — **DECIDED: O-1 (annotate), per `R-94`, ARB Chief, 2026-08-04**
 
 | | Outcome | What it would mean |
 |---|---|---|
-| **O-1** | **Annotate the row with its accepted scope** | line 58 keeps its ✅ and gains an explicit "as accepted at PB-006 closure, 2026-07-10" boundary marker |
+| **O-1** ✅ **ADOPTED** | **Annotate the row with its accepted scope** | line 58 keeps its ✅ and gains an explicit "as accepted at PB-006 closure, 2026-07-10" boundary marker |
 | **O-2** | **Leave the row unchanged** | the parenthetical `(IT-1..IT-8 over the REAL path)` is judged sufficient scoping already |
 | **O-3** | **Refer the boundary question to WP-8** | resolve it when WP-8 validates the failure-declared branch, rather than now |
 
-**Engineering supplies the evidence and does not select an outcome** (EP-02 · R-34).
+**Engineering supplied the evidence and selected no outcome** (EP-02 · R-34). **The authority selected O-1**, on the recorded grounds that *the historical acceptance remains correct, superseding would blur chronology, and leaving it unchanged risks future readers assuming today's implementation was the accepted scope.*
 
 ---
 
@@ -94,10 +94,11 @@ Read together, the two artifacts describe different boundaries: one records the 
 
 | | |
 |---|---|
-| Artifact modified by engineering | **none** |
-| New governance ruling proposed | **none** — this is Delivery-Governance maintenance, not constitutional or architectural |
+| Artifact modified by engineering **on its own initiative** | **none** |
+| Artifact modified **under `R-94`'s disposition** | **`IMPLEMENTATION_PROGRESS.md:58`** — annotated, ✅ and 100% retained |
+| New governance ruling **proposed by engineering** | **none** — `R-94` was issued by the authority, not requested |
 | Implementation proposed | **none** |
-| Engineering status | **complete; stopped at evidence** |
+| Engineering status | **complete; evidence supplied, disposition executed as directed** |
 
 ---
 
