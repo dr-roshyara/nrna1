@@ -17,6 +17,8 @@
 | **3** | No document implies engineering authority beyond the authorized scope | ✅ **VERIFIED** |
 | **4** | No stale programme-status statements remain in canonical documentation | ⚠️ **ONE, NARROW** — F-2 |
 | **5** | No duplicate governance guidance has been introduced | ✅ **VERIFIED** |
+| **6** | No superseded governance wording remains in force | ✅ **VERIFIED** |
+| **7** | Every outstanding engineering task has an identified governing authority | ✅ **VERIFIED** |
 
 ---
 
@@ -98,3 +100,51 @@
 ---
 
 **Traceability:** `R-79` · `R-87` · `R-90`…`R-100` · `PROGRAM_STATUS.md` · `.claude/CONTEXT.md` · `.claude/CLAUDE.md:5` · `.claude/MEMORY.md:6` · `docs/implementation/backlog/BACKLOG.md:3,6` · `Implementation_Process_v1.0.md` · `Implementation_Process_v1.1_Draft.md` · `DDD_Tactical_Governance_Principles.md` · `2026-08-03-contestedoutcomeref-architecture-consistency.md`
+
+---
+
+# ADDENDUM — checks 6 and 7, and the scope qualification (added 2026-08-04, same commission)
+
+**The ARB extended the check list rather than commissioning a second review, so this report is extended in place** — one canonical consistency report, per the principle the ARB accepted about `PROGRAM_STATUS.md`.
+
+## 7. Check 6 — no superseded governance wording remains in force ✅
+
+`Audit System v1.x` — the label the ARB required abandoned — occurs in exactly **two** places, and **both are provenance records, not wording in force**:
+
+| Location | What it is |
+|---|---|
+| `ADR-AIP-LOG-Platform-Rulings.md` `R-99` | the ruling text **preserved verbatim as issued**, alongside the explicit statement that the label is **not used** |
+| `.claude/CONTEXT.md` | the note recording that the label is **not used** |
+
+**A record that a label was superseded is not the label remaining in force.** Deleting these would destroy the provenance of a governance correction, which the artifact-lifecycle rule forbids: decision text and history are never rewritten.
+
+Also re-verified: **zero** occurrences of `HELD FOR A REFERENT` remain — R-99's hold status was fully superseded when it became effective.
+
+## 8. Check 7 — every outstanding item has exactly one governing authority ✅
+
+| Open item | Authority |
+|---|---|
+| WP-4C-2 (Q1–Q4) | **Contestation Domain Owner** |
+| ENG-012 · ER-08 (planning only) | **Execution Governance** |
+| Transaction-boundary repair (D-1…D-4) | **Decision Authority** |
+| D3 · D4 | **Board** — E1 · E2 |
+| COL-5a's home | **governance** (F-1-style naming act) |
+| F-1 canonical process document | **governance** |
+| F-2 `BACKLOG.md` synchronization | **Delivery Governance** |
+| Unpushed commits | **repository operator** (operational, not a gate) |
+
+**No orphan.** Seven further rows in the canonical table show no owner — WP-4B · WP-4C-1 · the seam review · PB-006 reporting · the WP-4 commission · WP-8 · the Verification Framework — and in every case the absence is correct: each is **closed, accepted, or deferred**, so an owner would imply an open obligation that does not exist.
+
+## 9. Scope qualification applied — an artifact count is not a definition
+
+**The ARB did not adopt the artifact count as the framework's scope**, and the correction is applied in all three artifacts that carried it (`R-99` · `PROGRAM_STATUS.md` · `CONTEXT.md`):
+
+> **The Engineering Verification Framework consists of the verification architecture, practices, evidence model, traceability conventions, and the verification artifacts maintained under the verification namespace.**
+
+**The count (145 as of 2026-08-04) is retained only as cited inventory, never as scope.** The reasoning is worth recording because it generalizes: **a definition that changes with every commit cannot delimit a closed object.** My original delimitation was sound in intent — a closure needs a determinate subject — but I reached for a *measurement* where a *structure* was required.
+
+## 10. Conclusion
+
+**The repository is consistent with the accepted rulings**, with exactly two recorded inconsistencies — **F-1** (canonical process document) and **F-2** (`BACKLOG.md`'s synchronization stamp) — **both owned, neither engineering's to resolve.**
+
+**No further governance artifacts are required.** No ADR, no PKS note, no governance principle, no methodology was created by this review, and none is recommended. **Engineering's role here is complete: the baseline is coherent, and what remains is its faithful execution by the authorities named above.**
