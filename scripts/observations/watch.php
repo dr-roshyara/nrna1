@@ -63,9 +63,27 @@ do {
         continue;
     }
 
+    $startedAt = microtime(true);
     $result = ObservationRuntime::run(FileSaveTrigger::changeSet($changed, date('c')), $rules);
+    $latencyMs = (int) round((microtime(true) - $startedAt) * 1000);
 
-    printf("[%s] saved: %s\n", date('H:i:s'), implode(' · ', $changed));
+    // Usage measurement (NOT recommendation records — content stays ephemeral):
+    // latency + counts only. This is the evidence source the Real-Time
+    // ObservationTrigger register row names as its activation criterion.
+    file_put_contents(
+        $root . '/engineering/verification/observations/watch-usage.jsonl',
+        json_encode([
+            'ts'              => date('c'),
+            'files'           => count($changed),
+            'latency_ms'      => $latencyMs,
+            'poll_interval_s' => $intervalSeconds,
+            'advisories'      => count($result['recommendations']),
+        ], JSON_UNESCAPED_SLASHES) . "\n",
+        FILE_APPEND
+    );
+
+    printf("[%s] saved: %s  (runtime: %dms · worst-case with poll: %ds + %dms)\n",
+        date('H:i:s'), implode(' · ', $changed), $latencyMs, $intervalSeconds, $latencyMs);
     if ($result['recommendations'] === []) {
         echo "  ✓ no advisories\n\n";
         continue;
