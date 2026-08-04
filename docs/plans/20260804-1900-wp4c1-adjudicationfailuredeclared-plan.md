@@ -236,3 +236,51 @@ Every proposed field resolves to an existing accessor on `AdjudicationProcessSta
 **Engineering has not written the adapter method and has not chosen.** Recorded per R-89's escalation discipline: a scope question is returned, not absorbed.
 
 **Not a stop condition for D1/D2** — the event class and hydrator remain executable either way; only the *strength of K2/K3's evidence* depends on the answer.
+
+### 🛑 O-2 — STOP CONDITION ENGAGED: the private writer is not serialization-only
+
+**O-1 was resolved by interpretation: *writer + hydrator = serialization pair (D2); `enqueue()` = the publication boundary (D4)*, on the reasoning that a private writer "merely converts Domain Event → Payload" while `enqueue()` "persists an Outbox message."**
+
+**The code does not support that division of labour.** Read before implementing:
+
+```php
+public function enqueue(EventProvenance $provenance, DomainEvent ...$events): void
+{
+    foreach ($events as $event) {
+        match (true) {
+            $event instanceof DeterminationIssued => $this->writeDeterminationIssued($event, $provenance),
+            $event instanceof AdjudicationExpired => $this->writeAdjudicationExpired($event, $provenance),
+            default => throw new \LogicException('No outbox mapping for event ' . $event::class),
+        };
+    }
+}
+
+private function writeAdjudicationExpired(AdjudicationExpired $event, EventProvenance $provenance): void
+{
+    (new OutboxEvent([
+        'event_id' => (string) Str::uuid(),
+        'organisation_id' => TenantContext::require(),
+        ...
+        'correlation_id' => $provenance->correlationId,
+        'causation_id'   => $provenance->causationId,
+        'payload' => [...],
+        'status' => 'pending',
+    ]))->save();          // ← the WRITER persists. enqueue() only dispatches.
+}
+```
+
+**Two facts follow, and each engages a stop condition:**
+
+| Fact | Stop condition engaged |
+|---|---|
+| **`enqueue()` is a `match(true)` dispatch.** A new event needs a new arm **inside `enqueue()`** — the private writer is otherwise unreachable | *"changes to `enqueue()`"* |
+| **The writer takes `EventProvenance` and stamps `correlation_id` / `causation_id`, then `->save()`s the row.** It does not merely serialize: **it performs the publication write and handles provenance** | *"provenance continuation"* — and this is exactly §6/E2's concern |
+
+**So the writer as it exists today is not the serialization half of a pair; it is the publication act itself.** `enqueue()` is a dispatcher, not the boundary.
+
+**Engineering has written nothing and chosen nothing.** Two shapes exist that would honour the interpretation's *intent* while respecting its stated boundary — **both are for the Board, not for engineering:**
+
+- **(a) Split the writer.** A pure payload function — `AdjudicationFailureDeclared → array` — in **D2**, with row construction, provenance stamping and `save()` left in **D4**. This makes the payload shape verifiable now (answering O-1's real concern) without touching provenance. **It does still require the one dispatch arm in `enqueue()`.**
+- **(b) Accept the writer as D4.** The hydrator then ships against a shape no writer has produced, and **that limitation is disclosed in the acceptance evidence** rather than discovered when D4 lands.
+
+**Recorded rather than resolved because the interpretation rested on a factual premise the code contradicts** — and an interpretation cannot be applied faithfully by ignoring the fact that falsifies its premise. **D1 remains fully executable and unaffected.**
