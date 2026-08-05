@@ -133,7 +133,25 @@
                                         </svg>
                                         <div>
                                             <p class="font-bold text-primary-900 mb-2">🎮 Demo Mode - Your Verification Code:</p>
-                                            <p class="text-2xl md:text-3xl font-mono font-bold text-primary-600 tracking-widest">{{ debug_code }}</p>
+                                            <div class="flex flex-col sm:flex-row sm:items-center gap-3">
+                                                <p class="text-2xl md:text-3xl font-mono font-bold text-primary-600 tracking-widest select-all">{{ debug_code }}</p>
+                                                <!-- PBDIGIT-26: type="button" is required — this block sits inside the verify form (PBDIGIT-25) -->
+                                                <button
+                                                    type="button"
+                                                    @click="copyDebugCodeToClipboard"
+                                                    :class="codeCopied ? 'bg-primary-600 text-white shadow-lg border-primary-600' : 'bg-white text-primary-600 hover:bg-primary-50 hover:shadow-md border-primary-400 hover:border-primary-500'"
+                                                    class="font-bold py-2 px-4 rounded-lg transition-all flex items-center justify-center gap-2 border-2 whitespace-nowrap self-start sm:self-auto"
+                                                    title="Copy code to clipboard"
+                                                >
+                                                    <svg v-if="!codeCopied" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                                    </svg>
+                                                    <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                    <span>{{ codeCopied ? 'Copied!' : 'Copy' }}</span>
+                                                </button>
+                                            </div>
                                             <p class="text-xs md:text-sm text-primary-700 mt-2">Enter the code above to verify your vote</p>
                                         </div>
                                     </div>
@@ -475,6 +493,7 @@
 
 <script>
 import VotingLayout from "@/Components/Election/VotingLayout.vue";
+import { ref } from "vue";
 import { useForm } from "@inertiajs/vue3";
 import WorkflowStepIndicator from "@/Components/Workflow/WorkflowStepIndicator.vue"; 
 
@@ -551,7 +570,35 @@ export default {
             }
         }
 
-        return { form, submit };
+        // PBDIGIT-26: copy the demo verification code — same behaviour as the
+        // Copy action on /public-demo/{slug}/code (Code/DemoCode/Create.vue).
+        const codeCopied = ref(false);
+
+        function copyDebugCodeToClipboard() {
+            if (!props.debug_code) return;
+
+            const markCopied = () => {
+                codeCopied.value = true;
+                setTimeout(() => {
+                    codeCopied.value = false;
+                }, 2000);
+            };
+
+            navigator.clipboard.writeText(props.debug_code)
+                .then(markCopied)
+                .catch(() => {
+                    // Fallback for older browsers
+                    const textarea = document.createElement('textarea');
+                    textarea.value = props.debug_code;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    markCopied();
+                });
+        }
+
+        return { form, submit, codeCopied, copyDebugCodeToClipboard };
     },
 
     computed: {
