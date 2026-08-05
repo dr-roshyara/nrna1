@@ -22,7 +22,7 @@ final class GetCommitteeDashboard
 
     public function execute(CommitteeId $id, TenantId $tenantId): CommitteeDashboardDTO
     {
-        // Load committee via repository (not DB::table)
+        // Load committee via repository (avoid raw database queries)
         $committee = $this->committeeRepository->findById($id);
 
         if (!$committee) {
