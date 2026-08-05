@@ -91,11 +91,26 @@ Every story answers one question: **"Could a customer complete this step today?"
 | `VERIFIED` | a human ran it and recorded the result |
 | `BLOCKED` | waiting on a named dependency |
 
-## Review process per story (6 phases — never reversed)
+## Review process per capability (8 phases — never reversed)
 
-`1 Customer journey (no code)` → `2 Process discovery (business step → code)` → `3 Runtime verification (actually run it)` → `4 Product review (can a customer do this?)` → `5 Technical review (quality/DDD, only if it affects this story)` → `6 Improvement backlog (bug · missing · UX · debt · nice-to-have)`
+The standard product review, reusable for **any** capability (Elections, Membership, Finance, Appointments, …). Established by `PBDIGIT-29`; **business-first, framework-last.**
 
-**The route is a consequence of the business step, never the starting point.**
+| Phase | Question it answers | Output |
+|---|---|---|
+| **1 Business lifecycle** | what does the customer do, in order? *(no code)* | the yardstick everything else is measured against |
+| **2 Business events** | which business events exist, who owns each consequence? | event table: class exists? · dispatched? · **listened to?** · who actually carries the consequence |
+| **3 Route map** | which routes correspond to each business step? | step → route |
+| **4 Controller / implementation map** | route → controller → service → domain → model → persistence | step-by-step mapping with `file:line` |
+| **5 DDD analysis** | is there one authority? is the concept modelled? is responsibility duplicated? | interpretation, kept separate from facts |
+| **6 Code quality** | duplication · dead code · complexity — **only where it affects this capability** | findings, not a general audit |
+| **7 Runtime verification** | does a customer actually get through it? | observed behaviour, or an explicit *not verified* |
+| **8 Improvement backlog** | what follows? | new `PBDIGIT-nn` items — never prose advice |
+
+**Every review closes with a Business Rule Matrix:** `rule · implemented · verified · evidence`. It is the bridge from discovery to testing — it shows at a glance what is implemented-but-untested, missing, or merely incidental.
+
+**Two rules that make the difference:**
+- **The route is a consequence of the business step, never the starting point.**
+- **Facts · interpretation · decisions stay in separate sections.** State the evidence ("no class of that name was found"), then the reading of it ("the concept appears implicit") — never one as the other.
 
 ---
 
