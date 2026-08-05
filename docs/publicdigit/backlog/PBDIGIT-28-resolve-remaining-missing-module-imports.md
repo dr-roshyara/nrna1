@@ -1,56 +1,69 @@
 # PBDIGIT-28 — Resolve the remaining missing-module imports
 
-**Type:** Bug (latent — one confirmed runtime failure) · **Epic:** cross-cutting
-**Created:** 2026-08-06 · **Status:** `OPEN — BLOCKED ON INTENT DECISIONS`
-**Origin:** discovered by the `PBDIGIT-27` sweep; **deliberately excluded from that commission** because every remaining site needs a decision, not a repair.
+**Type:** Bug (dead code) · **Epic:** cross-cutting
+**Created:** 2026-08-06 · **Closed:** 2026-08-06 · **Status:** `FIXED — 0 unresolved live imports; build green`
+**Origin:** the `PBDIGIT-27` sweep. **Revision 2** — the first issue of this story overstated the defect; see §0.
 
 ---
 
-## Why this is a separate story
+## 0. Correction to Revision 1 (recorded, not hidden)
 
-`PBDIGIT-27` fixed 17 **case-mismatch** imports — mechanical, provably correct, because a correctly-cased target existed in every case. The six sites below are different: **no target exists in any casing.** Fixing them means choosing what the code *should* import, which is a product/intent decision, not a defect repair. Extending PBDIGIT-27 to cover them would have meant inventing intent inside a bug fix.
+| Claim in rev 1 | Status | Cause |
+|---|---|---|
+| *"`Pages/Post/IndexPost.vue` **will fail at runtime** when opened"* | **WITHDRAWN — FALSE.** Both imports were **commented out** (`// import …`), the identifiers appeared nowhere else, and the page renders inside `<nrna-layout>` with `NrnaLayout` correctly registered (`:136`). The page was never broken | my scan matched **commented-out lines**. It reported dead code as live defects |
+| *"6 findings: 5 real + 1 false positive"* | **CORRECTED to: 0 live defects in reachable code.** 3 findings were comments · 2 were live imports inside unreferenced `_backup` files · 1 was a scanner false positive | same cause |
+| Severity | **downgraded** from "build/run blocking" to **dead-code cleanup** | — |
 
-## Customer impact
+> **The irony is worth recording:** the scanner made exactly the mistake `PBDIGIT-25` was about — a text search matching a **comment** and reporting it as code. A grep found `DB::table` in a comment there; my scanner found `import …` in a comment here. **Same defect class, committed by the tool built to find defects.** The scanner was fixed (comment stripping + package-manifest resolution) before this story was closed.
 
-| | |
-|---|---|
-| **Confirmed** | `Pages/Post/IndexPost.vue` **will fail at runtime when that page is opened.** The production build survives it only because Inertia resolves page components lazily — so the failure is invisible to `vite build` and to CI |
-| **Latent** | the remaining five are in dead/backup files or unvisited paths; no confirmed customer impact |
+## 1. Why this was a separate story from PBDIGIT-27
 
-## The six findings (evidence from the 429-file / 877-import scan)
+`PBDIGIT-27` fixed 17 **case-mismatch** imports — mechanical and provably correct, since a correctly-cased target existed. These sites had **no target in any casing**, so closing them required deciding intent (repair? delete? re-point?). That decision belonged in its own story, not inside a bug fix.
 
-| # | Site | Missing import | Nearest existing | Decision needed |
+## 2. Findings and disposition
+
+| # | Site | Import | Truth | Disposition |
 |---|---|---|---|---|
-| **1** | `resources/js/Pages/Post/IndexPost.vue:124` | `@/Components/Jetstream/Header.vue` | `Components/Jetstream/NrnaHeader.vue` | point at `NrnaHeader`, or another header, or remove the import? |
-| **2** | `resources/js/Pages/Post/IndexPost.vue:125` | `@/Components/Jetstream/Footer.vue` | `Components/Jetstream/NrnaFooter.vue` | same question |
-| **3** | `resources/js/Components/Jetstream/Header_backup.vue:20` | `@/Jetstream/NrnaFooter` | `Components/Jetstream/NrnaFooter.vue` (path missing the `Components/` segment) | **delete the `_backup` file**, or repair the path? |
-| **4** | `resources/js/Layouts/Applayout_backup.vue:300` | `@/Components/Jetstream/Footer.vue` | `NrnaFooter.vue` | **delete the `_backup` file**, or repair? |
-| **5** | `resources/js/Pages/Voter/IndexVoter.vue:246` | `../User.vue` | `Pages/User/Index.vue` (a `Pages/User/` **directory** exists; `Pages/User.vue` does not) | is `../User/Index.vue` intended? |
-| **6** | `resources/js/app.js:7` | `../../vendor/tightenco/ziggy` | directory exists | **no defect** — scanner false positive; Vite resolves it via the package manifest. Listed only so the count reconciles |
+| 1 | `Pages/Post/IndexPost.vue:124` | `@/Components/Jetstream/Header.vue` | **commented out**; page already has chrome via `<nrna-layout>` | **dead line deleted** |
+| 2 | `Pages/Post/IndexPost.vue:125` | `@/Components/Jetstream/Footer.vue` | commented out | **dead line deleted** |
+| 3 | `Components/Jetstream/Header_backup.vue:20` | `@/Jetstream/NrnaFooter` | **live** broken import, but the file has **0 references** anywhere | **file deleted** |
+| 4 | `Layouts/Applayout_backup.vue:300` | `@/Components/Jetstream/Footer.vue` | live broken import, **0 references** | **file deleted** |
+| 5 | `Pages/Voter/IndexVoter.vue:246` | `../User.vue` | commented out | **dead line deleted** |
+| 6 | `app.js:7` | `../../vendor/tightenco/ziggy` | **no defect** — resolves via the package manifest | **scanner taught** to resolve directories with a `package.json` |
 
-**So: 5 real findings + 1 false positive.**
+### Decision recorded (the question rev 1 asked)
 
-## Acceptance criteria
+> *"Point `IndexPost.vue` at `NrnaHeader`/`NrnaFooter`?"* — **No.** The imports were comments, so re-pointing them would be a no-op; and activating them would render a **second** header and footer inside `NrnaLayout`, which already supplies both. **Deleting the dead lines is the correct resolution**, and it changes no rendering.
 
-* [ ] For each of findings 1–5, the intended target is decided and recorded in this story.
-* [ ] Each site either imports an existing module or the import (or the dead file) is removed.
-* [ ] The import scan reports **0 real unresolved imports** (the ziggy false positive may remain, or the scanner is taught about package manifests).
-* [ ] `npx vite build` stays green.
-* [ ] `Pages/Post/IndexPost.vue` is **opened in a browser** and renders — the only way to confirm finding 1/2, since the build cannot see it.
+## 3. Verification
 
-## Out of scope
+| Check | Before | After |
+|---|---|---|
+| Unresolved **live** imports (comments excluded) | 2 | ✅ **0** |
+| Files scanned · live imports | 429 · 847 | 427 · 839 (2 dead files removed) |
+| `npx vite build` | green | ✅ green — **3490 modules · 9.74 s** |
+| Rendering behaviour | — | unchanged: only comments and unreferenced files were removed |
 
-* Case-mismatch imports — done in `PBDIGIT-27`.
-* Deleting unrelated `_backup` / `copy` files across the repository (there are several: `NrnaHeader copy.vue`, `NrnaFooter.vue_backup`, `ElectionLayout_backup.backup.vue`, `Create_backup.bak`, `Register_backup`, `Applayout_backup`, `Header_backup`). **A dead-file cleanup is its own story** — do not fold it in here.
+## 4. Acceptance criteria
 
-## Recommended follow-up, not part of this story
+* [x] Intent decided and recorded for every finding (§2).
+* [x] Each site either imports an existing module or the dead import/file is removed.
+* [x] The scan reports **0** real unresolved imports.
+* [x] `npx vite build` stays green.
+* [x] ~~`IndexPost.vue` opened in a browser~~ — **no longer required**: the imports were comments, so there is no runtime risk to confirm. *(Criterion retired with its reason, not silently dropped.)*
 
-The scan used by `PBDIGIT-27`/`PBDIGIT-28` is ~40 lines and runs in seconds. Wiring an equivalent check into CI would make this whole defect class impossible to reintroduce from a case-insensitive dev machine. **That is a new quality gate, which is a governance decision — recorded as a suggestion only.**
+## 5. Out of scope — remaining dead files (a separate story if wanted)
 
-## Reproduction (read-only)
+**15 further backup/copy files carry 0 live references** and were **not** deleted; repo-wide dead-file cleanup was declared out of scope in rev 1 and stays that way:
 
-Resolve every relative/aliased import in `resources/js` against the filesystem (`@` → `resources/js`, per `vite.config.js:48`), trying each plausible extension and `index.*`. Current result: **429 files · 877 imports · 7 unresolved** (6 listed above + the ziggy false positive).
+`Components/Jetstream/{AuthenticationCardLogo_backup.vue, NrnaHeader_backup.vue, NrnaHeader copy.vue, NrnaHeader.vue.backup, NrnaFooter.vue_backup}` · `Components/Profile/MainContent copy.vue` · `Components/Upload/{IconUpload copy.vue, ImageUpload copy.vue}` · `Layouts/{ElectionLayout_backup.backup.vue, LoginLayout.vue_backup, NrnaLayout.vue_backup}` · `Pages/Auth/Register_backup.vue` · `Pages/Election/ElectionPage.vue.bak` · `Pages/Vote/{CreateVotingPage.vue.bak, DemoVote/Create_backup.bak.vue}`
+
+⚠️ **Caveat for whoever takes that story:** a naive `grep <basename>` overstates references — `NrnaLayout.vue_backup` appears to have 34 "references" because its basename matches the **live** `NrnaLayout.vue` imports. Files with odd extensions (`.vue_backup`, `.vue.bak`, `.vue.backup`) cannot be imported as components anyway. **Check by exact filename, not basename.**
+
+## 6. Recommended follow-up (not implemented)
+
+Wiring the (now comment-aware) import scan into CI would make the `PBDIGIT-27` defect class unable to return from a case-insensitive dev machine. **A new quality gate is a governance decision** — recorded as a suggestion only.
 
 ---
 
-**Traceability:** `PBDIGIT-27` (the sweep that found these; its residual-findings table points here) · `vite.config.js:48` · the six sites listed above · `.claude/CLAUDE.md` §Source Code Editing Policy (why each fix must be a deliberate edit, not a pattern replace)
+**Traceability:** `PBDIGIT-27` (the sweep) · `PBDIGIT-25` (the same comment-matching defect class) · `resources/js/Pages/Post/IndexPost.vue:124,125` (deleted) · `resources/js/Pages/Voter/IndexVoter.vue:246` (deleted) · `resources/js/Components/Jetstream/Header_backup.vue` · `resources/js/Layouts/Applayout_backup.vue` (both files deleted, 0 references) · `vite.config.js:48` · `.claude/CLAUDE.md` §Source Code Editing Policy

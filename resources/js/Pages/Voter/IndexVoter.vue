@@ -243,7 +243,6 @@
     </nrna-layout>
 </template>
 <script>
-// import User from "../User.vue";
 import NrnaLayout from "@/Layouts/ElectionLayout.vue";
 import { router } from "@inertiajs/vue3";
 import Sendmessage from "@/Pages/Message/Sendmessage.vue";
