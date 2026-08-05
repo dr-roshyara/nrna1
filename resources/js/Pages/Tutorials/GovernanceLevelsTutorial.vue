@@ -196,7 +196,7 @@ import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import MetaTags from '@/Components/SEO/MetaTags.vue'
 import Card from '@/Components/Card.vue'
 import { Link } from '@inertiajs/vue3'
-import ExampleCard from '@/components/GovernanceLevels/ExampleCard.vue'
+import ExampleCard from '@/Components/GovernanceLevels/ExampleCard.vue'
 
 const { t } = useI18n()
 

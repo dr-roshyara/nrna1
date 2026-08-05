@@ -802,3 +802,25 @@ Never finish a work session without updating these files.
 - Never create randomly named plan files.
 - Treat planning and documentation as part of the implementation, not as optional work.
 - **Artifact lifecycle consistency (POINTER — canonical rule: ES-004.3, `engineering/governance/ES-004-Documentation.md`):** at every slice closure, run the ROLE-BASED synchronization checklist (Runtime: plan status + CONTEXT · Historical: session log, append-only · Reference: dev guide · Decision: ADR status annotations + acceptance record). Synchronization touches only the MUTABLE portion of an artifact — decision text and history are never rewritten.
+
+---
+
+# ✋ Source Code Editing Policy (STANDING RULE — this repository)
+
+**Automation for discovery and verification. Deliberate, reviewable edits for change.**
+
+| Activity | Automation |
+|---|---|
+| Search · navigation · discovery · analysis | ✅ encouraged (`grep`, `rg`, `find`, `git grep`, reading files) |
+| Verification after a change | ✅ encouraged (resolve-every-import loops, gates, tests, `design-check`) |
+| Documentation generation | ✅ |
+| Code generation, when explicitly requested | ✅ |
+| **Editing existing production code** | **manual by default** |
+
+**Do NOT use automated search-and-replace on source code** — no `sed -i`, no `perl -pi`, no mass rewrite scripts, no regex sweeps over `app/`, `resources/`, `routes/`, `tests/`, `database/`.
+
+**Required sequence for every source change:** **locate** the exact site → **explain** the root cause → **open the file and edit it deliberately** (Read then Edit; smallest scope that fixes the cause) → **show the diff** → **verify** (search/gates/tests).
+
+**Why:** an automated replace treats code as text, so the change succeeds without the author understanding it, and a slightly-too-broad pattern corrupts look-alike sites silently. A targeted edit cannot. It also keeps every hunk in the git diff intentional and reviewable. *(Evidence: `resources/js/i18n.js` case-sensitivity fix, 2026-08-05 — adjacent lines contained `voting-election/` and `ElectionNavigation/` paths that a broader pattern would have hit.)*
+
+**Scope:** binding for this repository. **Maturity: one repository of evidence — a KnowledgeOS CANDIDATE, not an engineering standard** (`docs/pks/2026-08-05-manual-code-editing-observation.md`). Promotion needs a second independent adopter (ES-006.1); if promoted it **extends an existing implementation-discipline standard — it does not become a standard of its own** (ES-005.4, never a copy).

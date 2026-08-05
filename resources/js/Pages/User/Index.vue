@@ -553,7 +553,6 @@
 </template>
 <script>
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
-import Electionlayout from "@/Layouts/Electionlayout.vue";
 import { router } from "@inertiajs/vue3";
 import { Link } from "@inertiajs/vue3";
 import Sendmessage from "@/Pages/Message/Sendmessage.vue";

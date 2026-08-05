@@ -62,9 +62,9 @@ import electionDe from './locales/pages/Election/de.json';
 import electionEn from './locales/pages/Election/en.json';
 import electionNp from './locales/pages/Election/np.json';
 
-import electionShowDe from './locales/pages/election/show/de.json';
-import electionShowEn from './locales/pages/election/show/en.json';
-import electionShowNp from './locales/pages/election/show/np.json';
+import electionShowDe from './locales/pages/Election/show/de.json';
+import electionShowEn from './locales/pages/Election/show/en.json';
+import electionShowNp from './locales/pages/Election/show/np.json';
 
 import electionNavigationDe from './locales/pages/ElectionNavigation/de.json';
 import electionNavigationEn from './locales/pages/ElectionNavigation/en.json';

@@ -221,7 +221,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { route } from 'ziggy-js'
 import { useI18n } from 'vue-i18n'
-import { useElectionCapabilities } from '@/Composables/useElectionCapabilities'
+import { useElectionCapabilities } from '@/composables/useElectionCapabilities'
 import { ElectionActions } from '@/Constants/ElectionActions'
 import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 import { phaseFor } from '@/Domain/Election/ElectionPhaseService'

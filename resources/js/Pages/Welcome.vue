@@ -75,17 +75,17 @@
 </template>
 
 <script>
-import Dashboard from "@/pages/Dashboard.vue";
+import Dashboard from "@/Pages/Dashboard.vue";
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 
 // Import Welcome section components
-import HeroSection from "@/components/Welcome/HeroSection.vue";
-import NGOFeaturesSection from "@/components/Welcome/NGOFeaturesSection.vue";
-import HowItWorksSection from "@/components/Welcome/HowItWorksSection.vue";
-import SecurityComplianceSection from "@/components/Welcome/SecurityComplianceSection.vue";
-import ValuePropositionSection from "@/components/Welcome/ValuePropositionSection.vue";
-import TestimonialsSection from "@/components/Welcome/TestimonialsSection.vue";
-import CTASection from "@/components/Welcome/CTASection.vue";
+import HeroSection from "@/Components/Welcome/HeroSection.vue";
+import NGOFeaturesSection from "@/Components/Welcome/NGOFeaturesSection.vue";
+import HowItWorksSection from "@/Components/Welcome/HowItWorksSection.vue";
+import SecurityComplianceSection from "@/Components/Welcome/SecurityComplianceSection.vue";
+import ValuePropositionSection from "@/Components/Welcome/ValuePropositionSection.vue";
+import TestimonialsSection from "@/Components/Welcome/TestimonialsSection.vue";
+import CTASection from "@/Components/Welcome/CTASection.vue";
 import { useMeta } from "@/composables/useMeta";
 
 // Import Welcome locale files for array data
