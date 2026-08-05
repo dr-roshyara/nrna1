@@ -1,8 +1,15 @@
 # PBDIGIT-30 — Active Organisation Business Lifecycle Discovery
 
 **Type:** Discovery (business) · **Epic:** `PBDIGIT-EPIC-01` Organisation Management
-**Created:** 2026-08-06 · **Status:** `OPEN — awaiting business answers`
-**Predecessor:** `PBDIGIT-29` (implementation discovery — complete)
+**Created:** 2026-08-06 · **Predecessor:** `PBDIGIT-29` (implementation discovery — complete)
+
+| | |
+|---|---|
+| **Status** | **BLOCKED** |
+| **Reason** | **Business decision required.** B1–B9 are questions about how the product should behave; none is answerable from the repository |
+| **Owner** | **Product Owner** — not engineering |
+| **Engineering** | **cannot continue.** No organisation-context design, modelling or implementation may begin until B1–B9 are answered |
+| **Unblocks** | a tactical-modelling story *(only if the answers show a concept is warranted)*, then implementation, then verification |
 
 ---
 

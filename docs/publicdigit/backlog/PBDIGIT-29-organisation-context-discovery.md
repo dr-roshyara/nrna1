@@ -114,18 +114,34 @@ A mailable `OrganisationCreatedMail` exists (`app/Mail/OrganisationCreatedMail.p
 
 # 5. Business Rule Matrix
 
-| # | Business rule | Implemented | Verified | Evidence |
-|---|---|---|---|---|
-| **R1** | Every user belongs to at least one organisation (default) | ✅ | ⬜ | `migrations/…create_uuid_users_table.php:13,23` — `NOT NULL` + FK; `Registered` → `CreateUserOrganisationRole` |
-| **R2** | Creating an organisation makes the user a member/owner | ✅ | ⬜ | `OrganisationController::store()`; role read `:109` |
-| **R3** | After *Organisation Created*, that organisation becomes active | ⚠️ **in effect, not by design** | ⬜ | `:338` imperative update; event at `:351` has **no listeners** (§2) |
-| **R4** | Single organisation on login → enter it automatically | ⚠️ **conditional** | ⬜ | `DashboardResolver` P5 → `organisations.show`, but P2 (mid-ballot) and P3 (elections) take precedence |
-| **R5** | Multiple organisations → selection page | ❌ **not implemented** | ⬜ | no organisation-selection/switch route found; `role.selection` selects **roles** |
-| **R6** | Active organisation is explicit, never guessed | ❌ | ⬜ | 4 stores · no precedence · 15+ writers (§3.2) |
+Four independent levels of confidence: **designed** (a recorded intent) · **implemented** (code exists) · **verified** (observed running) · **automated test** (protected against regression).
 
-**Legend:** ✅ implemented · ⚠️ partial/conditional · ❌ not implemented · **Verified column is empty for every row** — no runtime verification was performed in this discovery (no browser, no reproduction). Verification is `PBDIGIT-00`'s job.
+| # | Business rule | Designed | Implemented | Verified | Automated test | Evidence |
+|---|---|---|---|---|---|---|
+| **R1** | Every user belongs to ≥1 organisation (default) | ✅ schema constraint | ✅ | ⬜ | *Evidence not found* for a rule-level test | `migrations/…create_uuid_users_table.php:13,23` (`NOT NULL` + FK) · `Registered` → `CreateUserOrganisationRole` |
+| **R2** | Creating an organisation makes the user a member/owner | ✅ | ✅ | ⬜ | *Evidence not found* | `OrganisationController::store()`; role read `:109` |
+| **R3** | After *Organisation Created*, that organisation becomes active | ⚠️ **modelled as an event, realised imperatively** | ⚠️ in effect | ⬜ | ❌ none found | `:338` update · `:351` dispatch with **no listeners** (§2) |
+| **R4** | Single organisation on login → enter it automatically | ✅ | ⚠️ conditional — P2/P3 outrank it | ⬜ | ✅ **`test_user_with_single_org_role_redirects_to_organisation`** | `tests/Feature/Auth/DashboardResolverTest.php:44` · `DashboardResolver` P5 |
+| **R5** | Multiple organisations → selection page | ❌ no surface designed | ❌ | ⬜ | ⚠️ **a test exists — for the wrong question**: `test_user_with_multiple_roles_redirects_to_role_selection` asserts **role** selection | `DashboardResolverTest.php:66` |
+| **R6** | Active organisation is explicit, never guessed | ❌ | ❌ | ⬜ | ⬜ | 4 stores · no precedence · 15+ writers (§3.2) |
 
-**What the matrix makes visible immediately:** two rules are unmet (R5, R6), two are met only incidentally (R3, R4), and **nothing at all is verified** — so even the ✅ rows are claims about code, not about behaviour.
+**Legend:** ✅ present · ⚠️ partial / present-but-misaligned · ❌ absent · ⬜ not assessed. **The Verified column is empty for every row** — no runtime verification was performed here (no browser, no reproduction). That is `PBDIGIT-00`'s job.
+
+**What the matrix makes visible:**
+- Two rules are unmet (R5, R6); two are met only incidentally (R3, R4).
+- **Nothing is verified** — so even ✅ rows are claims about code, not behaviour.
+- **R5's row is the sharpest finding in this story:** a regression test exists and it *locks in the substitute*. `DashboardResolverTest:66` asserts that multiple **roles** lead to **role** selection. So the code isn't merely missing organisation selection — the current behaviour is **protected by a test that encodes the wrong question**. Changing it will require changing a passing test, which is exactly why the behaviour keeps reverting.
+
+## ⚖️ Correction to §4.4 — the caching is deliberate, not accidental
+
+`tests/Feature/Auth/DashboardResolverTest.php` contains **`test_dashboard_resolution_is_cached`** (`:100`) and **`test_stale_cache_not_used`** (`:120`), plus `test_active_voting_session_takes_priority` (`:141`) and `test_tenant_context_is_set_on_organisation_redirect` (`:239`).
+
+**This materially tempers interpretation §4.4 and inconsistency I-7.** Cached routing and the priority order are **intentional, tested design decisions** — someone considered staleness explicitly. So:
+
+- The honest statement is **not** *"caching causes instability"* but *"caching is intended, and whether the intent matches the business rule is an open question (Q6)"*.
+- I-7 (implicit priority policy) stands as an observation about *where* the policy is expressed, **not** as a claim that it was unconsidered.
+
+*(Recorded as a correction rather than edited away — the earlier reading was weaker than the evidence now supports.)*
 
 ---
 

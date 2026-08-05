@@ -2359,12 +2359,44 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 
 **Working rules added today (`.claude/CLAUDE.md`):** Source Code Editing Policy (search automated · edits deliberate, no `sed -i`) · End of Commission checklist (mandatory) · commit-ID convention (product work carries `PBDIGIT-nn`; chores state that no story applies).
 
-**Product story state (end of 2026-08-06):** `PBDIGIT-25` FIXED · `PBDIGIT-26` IMPLEMENTED · `PBDIGIT-27` FIXED (home page + build unblocked) · `PBDIGIT-28` FIXED (0 unresolved live imports) — all four **awaiting browser verification** · `PBDIGIT-29` DISCOVERY COMPLETE rev 3 (Q1–Q6 open) · `PBDIGIT-30` OPEN, **awaiting business answers B1–B9**.
+## CURRENT PRODUCT (what is true right now)
 
-**⛔ NEXT ACTION IS NOT ENGINEERING — it is a business decision.** `PBDIGIT-30` (Active Organisation Business Lifecycle, B1–B9) is **not answerable by search**; it needs the product owner. Nothing about organisation context may be designed or implemented before those answers exist — that is the discipline `PBDIGIT-29` rev 3 exists to protect.
+| Story | State |
+|---|---|
+| `PBDIGIT-25` Copy button submits form | **FIXED** — awaiting browser verification |
+| `PBDIGIT-26` Copy action on verify page | **IMPLEMENTED** — awaiting browser verification |
+| `PBDIGIT-27` case-sensitive imports | **FIXED** — home page + build unblocked; awaiting browser verification |
+| `PBDIGIT-28` missing-module imports | **FIXED** — 0 unresolved live imports |
+| `PBDIGIT-29` Organisation Context Discovery | **DISCOVERY COMPLETE** (rev 3) — Q1–Q6 open |
+| `PBDIGIT-30` Active Organisation Business Lifecycle | **BLOCKED — business decision required (B1–B9)** |
+| `PBDIGIT-00` end-to-end journey | **BLOCKED** — gate on all 24 journey stories |
 
-**Then, in order:** browser-verify `PBDIGIT-25`/`26`/`27`/`28` (reload `/`, click the two Copy actions) → `PBDIGIT-00` end-to-end journey run (still the gate on all 24 journey stories) → only then any tactical modelling arising from `PBDIGIT-30`.
+**⛔ NEXT ACTION IS NOT ENGINEERING.**
 
-**Standing method (adopted today):** the **8-phase capability review** — business lifecycle → business events → routes → implementation → DDD → code quality → runtime verification → backlog — closing with a **Business Rule Matrix** (`rule · implemented · verified · evidence`). Canonical home: `docs/publicdigit/backlog/README.md`. Reusable for Membership, Finance, Appointments.
+| | |
+|---|---|
+| **Blocked item** | `PBDIGIT-30` — Active Organisation Business Lifecycle |
+| **Reason** | business decision required; B1–B9 are not answerable from the repository |
+| **Owner** | **Product Owner** |
+| **Engineering** | cannot continue — no organisation-context design, modelling or implementation before B1–B9 are answered |
+
+**Then, in order:** browser-verify `PBDIGIT-25`/`26`/`27`/`28` (reload `/`, click both Copy actions) → **`PBDIGIT-00`** end-to-end journey run → only then any modelling arising from `PBDIGIT-30`.
+
+**Nothing is runtime-verified.** Every ✅ in the backlog is a claim about code, not behaviour.
+
+---
+
+## ENGINEERING PROCESS (how work is done — stable, rarely changes)
+
+| Rule | Canonical home |
+|---|---|
+| **8-phase capability review** — business lifecycle → events → routes → implementation → DDD → code quality → runtime verification → backlog; closes with a **Business Rule Matrix** (`designed · implemented · verified · automated test · evidence`) | `docs/publicdigit/backlog/README.md` |
+| **Source Code Editing Policy** — automation for discovery/verification; edits deliberate and manual (no `sed -i`, `perl -pi`, regex sweeps) | `.claude/CLAUDE.md` |
+| **End of Commission checklist** — session log · CONTEXT · plan · story commit · clean tree · next action | `.claude/CLAUDE.md` |
+| **Commit IDs** — product work carries `(PBDIGIT-nn)`; chores state that no story applies | `.claude/CLAUDE.md` |
+| **Discovered work becomes a backlog item**, never prose advice | `.claude/CLAUDE.md` |
+| Product backlog (customer capability) vs engineering backlog (`PB-nnn`/`ENG-nnn`) | `docs/publicdigit/backlog/` vs `docs/implementation/backlog/` |
+
+**Process is now FROZEN for exercise, not extension.** The 8-phase review has one application (Election). It becomes a KnowledgeOS promotion candidate only after **three** independent applications (Election → Organisation → Membership). **Do not extend the methodology; use it.**
 
 **Governance state is UNCHANGED by all of this** — the WP-4 commission remains CLOSED (R-98), the prepared five-vote ARB session is still unconvened, and Q1–Q4 still belong to the Contestation Domain Owner. Product work does not reopen any of it.
