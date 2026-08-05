@@ -23,6 +23,32 @@ Two supporting facts:
 
 ---
 
+# 0. Customer journey (goals and expectations — no rules, no events, no code)
+
+What the customer is *trying to accomplish*. This is the human story the rules are supposed to serve:
+
+```
+"I represent an association. I want us to govern ourselves on this platform."
+        ↓
+I register                        → I expect to be let in
+        ↓
+I receive an email                → I expect to confirm and continue
+        ↓
+I log in                          → I expect to see something relevant to me
+        ↓
+I create my organisation          → I expect to be INSIDE it immediately, not somewhere generic
+        ↓
+I work (members, committees…)     → I expect everything I do to belong to that organisation
+        ↓
+I log out and come back tomorrow  → I expect to land where I left off
+        ↓
+Later I belong to TWO organisations → I expect to be ASKED which one, not guessed at
+```
+
+**Two expectations from this journey carry all the weight** — *"be inside it immediately"* and *"land where I left off"*. §5 shows neither is verified, and §1 turns them into business events.
+
+---
+
 # 1. The intended business lifecycle (from rules R1–R6 — the reference, not a finding)
 
 ```
@@ -176,9 +202,51 @@ Four independent levels of confidence: **designed** (a recorded intent) · **imp
 
 **Successor:** `PBDIGIT-30 — Active Organisation Business Lifecycle Discovery` (B1–B9) answers the *business* side before any of this becomes design.
 
+---
+
+# 8. Business Outcome
+
+```
+Business Outcome
+
+Today     A customer who creates an organisation is placed in it, but on returning
+          the next day may land somewhere else — an election, a role-selection
+          screen, or a cached destination. A customer who belongs to two
+          organisations is asked which ROLE they want, never which ORGANISATION.
+
+Expected  The customer lands in the organisation they last worked in, and when they
+          belong to more than one, they are asked which one — explicitly.
+```
+
+**The gap in one sentence:** the product can tell the customer *what they are* (a role), but not *where they are* (an organisation).
+
+---
+
+# 9. Findings Table — what happens next
+
+| # | Finding | Type | Priority | Needs business decision | Needs code | Verified |
+|---|---|---|---|---|---|---|
+| **F-1** | Organisation selection missing for multi-organisation customers (R5) | **Product** | **High** | **Yes** (Q3 / B7) | Yes | No |
+| **F-2** | A green test protects the substitute behaviour — `DashboardResolverTest:66` asserts **role** selection, so implementing R5 requires changing a passing test | **Product** | **High** | **Yes** (Q3) | Yes | No |
+| **F-3** | Customer may not return to the organisation they last worked in (cached destination + priority order) | **Product** | **High** | **Yes** (Q6 / B4) | Maybe | No |
+| **F-4** | Two competing stores: `TenantContext` reads the column, everything else reads the session (I-2) | **Technical** | **High** | **Yes** (Q2) | Yes | No |
+| **F-5** | Priority order encodes product policy implicitly — mid-ballot and elections outrank organisation context (I-7) | **Product** | Medium | **Yes** (B6) | Maybe | No |
+| **F-6** | 15+ classes write the context key directly; no authority (I-1) | **Technical** | Medium | No | Yes | No |
+| **F-7** | Rendering a page rewrites the active organisation (I-5) | **Technical** | Medium | **Yes** (Q5) | Yes | No |
+| **F-8** | Active organisation is not explicit — 4 stores, no precedence (R6) | **Technical** | Medium | **Yes** (Q2) | Yes | No |
+| **F-9** | `OrganisationCreated` dispatched with zero listeners; consequence hard-coded (I-8) | **Architecture** | Low | Maybe (Q4) | Yes | No |
+| **F-10** | No logout teardown of organisation context (I-9) | **Technical** | Low | **Yes** (B4) | Yes | No |
+| **F-11** | Two framework defaults name `/dashboard/roles` but are bypassed — dead config that looks authoritative (I-6) | **Technical** | Low | No | Yes | No |
+
+**Product findings: F-1, F-2, F-3, F-5** — these are what a customer would notice, and every one needs a business answer first.
+**Technical / architecture findings: F-4, F-6…F-11** — these raise the cost of *changing* the behaviour, not of *using* it.
+**Verified column: entirely "No".** Nothing in this table has been observed at runtime.
+
+---
+
 ## Explicitly not done
 
-no code changed · no refactoring · no ADR · no architecture proposed · no source of truth chosen · no redirect altered · **no concept named** · **no runtime verification** (see the empty Verified column, §5).
+no code changed · no refactoring · no ADR · no architecture proposed · no source of truth chosen · no redirect altered · **no concept named** · **no runtime verification** (see §5's empty Verified column and §9's Verified column).
 
 ---
 

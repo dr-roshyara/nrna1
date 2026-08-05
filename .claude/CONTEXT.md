@@ -2390,13 +2390,13 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 
 | Rule | Canonical home |
 |---|---|
-| **8-phase capability review** — business lifecycle → events → routes → implementation → DDD → code quality → runtime verification → backlog; closes with a **Business Rule Matrix** (`designed · implemented · verified · automated test · evidence`) | `docs/publicdigit/backlog/README.md` |
+| **9-phase capability review** — customer journey → business lifecycle → events → routes → implementation → DDD → code quality → runtime verification → backlog; closes with **three artifacts**: Business Outcome · Business Rule Matrix (`designed · implemented · verified · automated test · evidence`) · Findings Table (`type · priority · needs business decision · needs code · verified`), with **Product and Technical findings never mixed** | `docs/publicdigit/backlog/README.md` |
 | **Source Code Editing Policy** — automation for discovery/verification; edits deliberate and manual (no `sed -i`, `perl -pi`, regex sweeps) | `.claude/CLAUDE.md` |
 | **End of Commission checklist** — session log · CONTEXT · plan · story commit · clean tree · next action | `.claude/CLAUDE.md` |
 | **Commit IDs** — product work carries `(PBDIGIT-nn)`; chores state that no story applies | `.claude/CLAUDE.md` |
 | **Discovered work becomes a backlog item**, never prose advice | `.claude/CLAUDE.md` |
 | Product backlog (customer capability) vs engineering backlog (`PB-nnn`/`ENG-nnn`) | `docs/publicdigit/backlog/` vs `docs/implementation/backlog/` |
 
-**Process is now FROZEN for exercise, not extension.** The 8-phase review has one application (Election). It becomes a KnowledgeOS promotion candidate only after **three** independent applications (Election → Organisation → Membership). **Do not extend the methodology; use it.**
+**⛔ THE METHOD IS FROZEN — no further phases, templates or refinements.** Applications so far: **Election ✅** (`PBDIGIT-29`) · Organisation ⬜ · Membership ⬜. It becomes eligible as a KnowledgeOS promotion candidate (ES-006.1) only after **three independent applications**. Until then it is a project convention at n=1. **Use it; do not improve it.** *(This freeze was requested after the Phase-0/outcome/findings-table additions — those were the last.)*
 
 **Governance state is UNCHANGED by all of this** — the WP-4 commission remains CLOSED (R-98), the prepared five-vote ARB session is still unconvened, and Q1–Q4 still belong to the Contestation Domain Owner. Product work does not reopen any of it.

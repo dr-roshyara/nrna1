@@ -91,13 +91,14 @@ Every story answers one question: **"Could a customer complete this step today?"
 | `VERIFIED` | a human ran it and recorded the result |
 | `BLOCKED` | waiting on a named dependency |
 
-## Review process per capability (8 phases — never reversed)
+## Review process per capability (9 phases — never reversed)
 
-The standard product review, reusable for **any** capability (Elections, Membership, Finance, Appointments, …). Established by `PBDIGIT-29`; **business-first, framework-last.**
+The standard capability review, reusable for **any** capability (Elections, Membership, Finance, Appointments, …) — and, because it starts from the customer rather than from aggregates, for domains other than governance. Established by `PBDIGIT-29`; **customer-first, business-second, framework-last.**
 
 | Phase | Question it answers | Output |
 |---|---|---|
-| **1 Business lifecycle** | what does the customer do, in order? *(no code)* | the yardstick everything else is measured against |
+| **0 Customer journey** | what is the customer *trying to accomplish*? goals and expectations — **not** rules, **not** events, **no code** | the human story: "I want my association on the platform… I come back tomorrow and expect to be where I left off" |
+| **1 Business lifecycle** | which **business events** happen, in order? | the yardstick everything else is measured against |
 | **2 Business events** | which business events exist, who owns each consequence? | event table: class exists? · dispatched? · **listened to?** · who actually carries the consequence |
 | **3 Route map** | which routes correspond to each business step? | step → route |
 | **4 Controller / implementation map** | route → controller → service → domain → model → persistence | step-by-step mapping with `file:line` |
@@ -106,11 +107,42 @@ The standard product review, reusable for **any** capability (Elections, Members
 | **7 Runtime verification** | does a customer actually get through it? | observed behaviour, or an explicit *not verified* |
 | **8 Improvement backlog** | what follows? | new `PBDIGIT-nn` items — never prose advice |
 
-**Every review closes with a Business Rule Matrix:** `rule · implemented · verified · evidence`. It is the bridge from discovery to testing — it shows at a glance what is implemented-but-untested, missing, or merely incidental.
+### Every review closes with these three artifacts
 
-**Two rules that make the difference:**
+**1 · Business Outcome** — the finding in one customer sentence, not one engineering sentence:
+
+```
+Business Outcome
+
+Today     the customer cannot return to the organisation they were working in.
+Expected  the customer always returns to the organisation they last chose.
+```
+
+**2 · Business Rule Matrix** — five independent levels of confidence:
+
+`rule · designed · implemented · verified · automated test · evidence`
+
+It is the bridge from discovery to testing. It separates *"code exists"* from *"it runs"* from *"a regression would be caught"* — and it asks of each test **which business rule it actually protects**, not merely whether a test exists.
+
+**3 · Findings Table** — what happens next, for every finding:
+
+| Finding | Type | Priority | Needs business decision | Needs code | Verified |
+|---|---|---|---|---|---|
+| *(one row per finding)* | Product · Technical · Architecture | High/Med/Low | Yes / No / Maybe | Yes / No | Yes / No |
+
+**Product findings and Technical findings are never mixed.** A customer landing in the wrong organisation is a *product* finding; fifteen writers of a session key is a *technical* one. They compete for different attention and are prioritised differently.
+
+### Three rules that make the method work
+
 - **The route is a consequence of the business step, never the starting point.**
-- **Facts · interpretation · decisions stay in separate sections.** State the evidence ("no class of that name was found"), then the reading of it ("the concept appears implicit") — never one as the other.
+- **Facts · interpretation · decisions stay in separate sections.** State the evidence (*"no class of that name was found"*), then the reading of it (*"the concept appears implicit"*) — never one as the other.
+- **Ask what a test protects, not whether one exists.** A green test can lock in the wrong behaviour (`PBDIGIT-29` §5, R5).
+
+### ⛔ This method is FROZEN
+
+**No further phases, templates or refinements** until it has been applied to **three** capabilities independently: **Election** ✅ (`PBDIGIT-29`) → **Organisation** ⬜ → **Membership** ⬜.
+
+After three applications, it becomes eligible as a KnowledgeOS promotion candidate under `ES-006.1` — repository-independent, evidence-backed. Before that, it is a project convention with n=1. **Use it; do not improve it.**
 
 ---
 
