@@ -41,9 +41,9 @@ Unresolved: 26   →   after fixes: 7
 
 **The `User/Index.vue` case was not a case fix.** `:555` already imported `ElectionLayout` from the correctly-cased path and `:676` registers it; the lowercase line was a **dead duplicate import** — the identifier appeared nowhere else in the file. Correcting its case would have left a redundant second import, so the line was removed instead. *(Found by checking identifier usage before editing, not by pattern-matching the path.)*
 
-### Residual findings — NOT fixed, deliberately (6)
+### Residual findings — NOT fixed, deliberately (6) → **carried to [`PBDIGIT-28`](PBDIGIT-28-resolve-remaining-missing-module-imports.md)**
 
-These are **genuinely missing modules**, not case mismatches. No correctly-cased target exists, so any fix would require **deciding intent** — which would be inventing, not repairing.
+These are **genuinely missing modules**, not case mismatches. No correctly-cased target exists, so any fix would require **deciding intent** — which would be inventing, not repairing. **They are now a backlog story of their own (`PBDIGIT-28`), not an open loose end of this one.** The table below stays as this story's evidence; `PBDIGIT-28` owns their disposition.
 
 | Site | Missing import | Note |
 |---|---|---|

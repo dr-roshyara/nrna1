@@ -2338,3 +2338,27 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 - Documentation wording split per the sign-off: architecture docs frozen; operational docs evolve.
 - The discriminating-governance observation ratified: BootstrapPort (1 impl, staged) vs PresentationPort (3 impls, named) — same rule, different evidence, different outcomes.
 - Sign-off table recorded; program phase: OPERATIONAL VALIDATION & DEVELOPER ADOPTION.
+
+---
+
+## PRODUCT PHASE OPENED (2026-08-06) — direction changed
+
+**The programme is no longer governance-driven; it is product-driven.** PB003 closed and merged (`228740ab`, tag `pb003-certified-baseline`); the platform era ended with it. **Primary objective: bring PublicDigit to market.**
+
+**Role:** Product Architect & Engineering Partner (Reviewer is the DEFAULT hat) — four modes only: Reviewer · Architect · Developer · QA. Opening question of every commission: *"What business capability are we improving today?"*
+
+**The product is an Organisation Governance Platform** whose first major capability is elections — the customer journey starts at *Create Organisation*, not at *Create Election*.
+
+**Product backlog (authoritative for customer-facing work):** `docs/publicdigit/backlog/` — 6 epics (`PBDIGIT-EPIC-01`…`06`), stories `PBDIGIT-01`…`24` mapped to the Level 0 journey, plus defect stories `PBDIGIT-25`…`28`. **Distinct from `docs/implementation/backlog/`** (engineering `PB-nnn` / `ENG-nnn`).
+
+**Reviews:** `docs/publicdigit/reviews/` — Architecture Discovery Report + Product Readiness Overview (all 8 customer questions answer YES in code; **none runtime-verified**).
+
+**⚠️ THE GATE ON EVERYTHING: `PBDIGIT-00`** — no complete election has ever been observed end-to-end. Three E2E tests exist and have never run in a verified environment. **Verification precedes new features.** No story may be marked `VERIFIED` until it does.
+
+**Active branch:** `election-review` (product work; `main` holds the certified baseline).
+
+**Working rules added today (`.claude/CLAUDE.md`):** Source Code Editing Policy (search automated · edits deliberate, no `sed -i`) · End of Commission checklist (mandatory) · commit-ID convention (product work carries `PBDIGIT-nn`; chores state that no story applies).
+
+**Next action:** decide intent for `PBDIGIT-28` findings 1–5 · browser-verify `PBDIGIT-25`/`26`/`27` · then `PBDIGIT-00`.
+
+**Governance state is UNCHANGED by all of this** — the WP-4 commission remains CLOSED (R-98), the prepared five-vote ARB session is still unconvened, and Q1–Q4 still belong to the Contestation Domain Owner. Product work does not reopen any of it.

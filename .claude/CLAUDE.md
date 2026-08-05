@@ -824,3 +824,29 @@ Never finish a work session without updating these files.
 **Why:** an automated replace treats code as text, so the change succeeds without the author understanding it, and a slightly-too-broad pattern corrupts look-alike sites silently. A targeted edit cannot. It also keeps every hunk in the git diff intentional and reviewable. *(Evidence: `resources/js/i18n.js` case-sensitivity fix, 2026-08-05 — adjacent lines contained `voting-election/` and `ElectionNavigation/` paths that a broader pattern would have hit.)*
 
 **Scope:** binding for this repository. **Maturity: one repository of evidence — a KnowledgeOS CANDIDATE, not an engineering standard** (`docs/pks/2026-08-05-manual-code-editing-observation.md`). Promotion needs a second independent adopter (ES-006.1); if promoted it **extends an existing implementation-discipline standard — it does not become a standard of its own** (ES-005.4, never a copy).
+
+---
+
+# ✅ End of Commission — mandatory checklist (product phase)
+
+**Run this before declaring any commission finished. It is a checklist, not a reminder — an unchecked box means the commission is not closed.**
+
+```
+□ Session log written        .claude/sessions/YYYY-MM-DD.md
+□ CONTEXT updated            .claude/CONTEXT.md — only if direction/state changed
+□ Active plan updated        if one is open
+□ Story committed            one story → one commit → its ID in the subject
+□ Working tree clean         no stray tracked changes
+□ Next action recorded       in the story, CONTEXT, or a NEW backlog item
+```
+
+**Discovered work never becomes a sentence in a reply.** If a commission surfaces work outside its scope: **create a backlog item** (`docs/publicdigit/backlog/PBDIGIT-nn-*.md`), point the originating story at it, and say *"I found work outside this story's scope; I recommend `PBDIGIT-nn` rather than extending this commission."* **One story · one implementation · one commit · one review · the rest becomes backlog.**
+
+## Commit message IDs
+
+| Change | Subject carries |
+|---|---|
+| Product story work | **`(PBDIGIT-nn)`** — always |
+| Dependency bumps · lockfiles · tooling upkeep with no story behind them | `chore(...)` / `MAINT`, and **say explicitly that no story applies** |
+
+**Never attach a product story ID to work that story did not cause** — forcing an ID where none is true produces false traceability, which is worse than an unlabelled chore commit.
