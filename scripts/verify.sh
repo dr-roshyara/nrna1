@@ -99,12 +99,16 @@ if ! run_gate "Component Audit (anti-inline linting)" \
   OVERALL_STATUS=$FAIL
 fi
 
-# ── Gate 4: Role & Permission Governance ────────────────
-if ! run_gate "Role & Permission Governance" \
-  "php \"$SCRIPT_DIR/check_roles.php\" --strict" \
-  "fail"; then
-  OVERALL_STATUS=$FAIL
-fi
+# ── Gate 4: Role & Permission Governance — RELOCATED (EG-003, ARB 2026-07-26) ──
+# Moved to CI verification against a seeded database:
+#   .github/workflows/role-permission-verification.yml
+# Rationale: the enforcement point must match what is validated — pre-push
+# validates repository content and static engineering policy; the role check
+# validates runtime configuration (seeded roles/permissions), which local
+# pre-push cannot evaluate consistently across machines and branches.
+# Enforcement is NOT weakened: scripts/check_roles.php --strict runs unchanged in CI.
+# Ruling + evidence: docs/plans/20260726-2056-engineering-platform-repair-plan.md (EG-003),
+# docs/implementation/20260726_PrePush_Governance_Gate_Audit.md (F-GATE-5).
 
 # ── Gate 5: Domain Purity (warning only) ────────────────
 if ! run_gate "Domain Purity (warning only)" \

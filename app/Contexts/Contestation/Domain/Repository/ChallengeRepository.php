@@ -6,6 +6,7 @@ namespace App\Contexts\Contestation\Domain\Repository;
 
 use App\Contexts\Contestation\Domain\Challenge\Challenge;
 use App\Contexts\Contestation\Domain\Challenge\ChallengeId;
+use App\Contexts\Contestation\Domain\Challenge\DeterminationId;
 use App\Contexts\Contestation\Domain\Exception\ChallengeNotFound;
 
 /**
@@ -47,4 +48,15 @@ interface ChallengeRepository
      * Use get() when existence is required.
      */
     public function find(ChallengeId $id): ?Challenge;
+
+    /**
+     * Correlate to the Challenge that was adjudicated with the given determination, or
+     * null if none is (used by the resolution reaction, since `ElectionCorrectionApplied`
+     * carries no challengeId).
+     *
+     * This is a CORRELATION capability only — NOT an alternative aggregate identity. The
+     * Challenge's identity remains `ChallengeId`; `DeterminationId` is merely a lookup
+     * index (a Challenge holds exactly one determination once adjudicated).
+     */
+    public function findByDeterminationId(DeterminationId $id): ?Challenge;
 }

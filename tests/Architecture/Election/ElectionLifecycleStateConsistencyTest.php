@@ -49,9 +49,10 @@ class ElectionLifecycleStateConsistencyTest extends TestCase
                 'expected_voter_count' => 10,
             ]);
 
-        // Verify state is correctly recognized after refresh
+        // The engine is sovereign; the state column is a compatibility cache
+        // (see ElectionLifecycleState docblock). Assert the engine's derivation.
         $election->refresh();
-        $this->assertEquals('counting', $election->state,
+        $this->assertEquals('counting', $election->currentState()->value,
             'Lifecycle engine must compute counting state when voting window has ended');
     }
 
@@ -79,7 +80,7 @@ class ElectionLifecycleStateConsistencyTest extends TestCase
 
         // Lifecycle engine computes state from business facts, not column
         $election->refresh();
-        $this->assertEquals('voting_active', $election->state,
+        $this->assertEquals('voting_active', $election->currentState()->value,
             'Lifecycle engine computes voting_active when voting window is currently open');
     }
 }

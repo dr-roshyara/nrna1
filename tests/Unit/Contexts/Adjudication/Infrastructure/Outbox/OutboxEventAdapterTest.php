@@ -17,6 +17,7 @@ use App\Contexts\Adjudication\Infrastructure\Outbox\OutboxEventAdapter;
 use App\Services\TenantContext;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Application;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -80,6 +81,8 @@ class OutboxEventAdapterTest extends TestCase
             evidenceEnvelopeRef: EvidenceEnvelopeRef::fromString('550e8400-e29b-41d4-a716-446655440003'),
             issuedByAuthority: IssuedByAuthority::fromString('550e8400-e29b-41d4-a716-446655440004'),
             jurisdiction: Jurisdiction::fromString('test-jurisdiction'),
+            contestedOutcome: null,   // S7 tenant test — contested outcome not exercised here
+            evidenceSet: null,        // S7 tenant test — considered set not exercised here
             occurredAt: new \DateTimeImmutable('2026-01-01T00:00:00Z'),
         );
     }
@@ -110,7 +113,7 @@ class OutboxEventAdapterTest extends TestCase
         $this->expectExceptionMessage('Tenant context not set');
 
         // Act
-        $adapter->enqueue($this->makeDeterminationIssued());
+        $adapter->enqueue(EventProvenance::start('corr-1'), $this->makeDeterminationIssued());
     }
 
     // -----------------------------------------------------------------------
@@ -154,7 +157,7 @@ class OutboxEventAdapterTest extends TestCase
         $adapter = new OutboxEventAdapter();
 
         try {
-            $adapter->enqueue($this->makeDeterminationIssued());
+            $adapter->enqueue(EventProvenance::start('corr-1'), $this->makeDeterminationIssued());
         } catch (\RuntimeException $e) {
             // The S7 bug would surface as "Tenant context not set"
             $this->assertStringNotContainsString(

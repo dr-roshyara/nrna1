@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\Adjudication\Application\Port;
 
 use App\Contexts\Adjudication\Domain\DomainEvent;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 
 /**
  * Application Port (NOT an infrastructure service): the application service
@@ -17,5 +18,10 @@ use App\Contexts\Adjudication\Domain\DomainEvent;
  */
 interface EventOutbox
 {
-    public function enqueue(DomainEvent ...$events): void;
+    /**
+     * Provenance is supplied EXPLICITLY at publish time (ADR-MP-06 invariant): a chain-
+     * starting producer passes EventProvenance::start(); a reacting producer propagates
+     * the consumed message's correlation + records it as the cause.
+     */
+    public function enqueue(EventProvenance $provenance, DomainEvent ...$events): void;
 }

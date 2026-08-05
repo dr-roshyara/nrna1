@@ -54,7 +54,7 @@ We **evolve, not revolutionise** — existing folders keep their meaning and the
 
 | Folder | Role | Lifecycle |
 |---|---|---|
-| [`architecture/`](../../../architecture/) | **Think** — exploration, AI work, drafts | draft / discovery |
+| [`architecture/`](../../../architecture_legacy/) | **Think** — exploration, AI work, drafts | draft / discovery |
 | [`docs/`](../../) | **Official Truth** — ADRs, discovery, decisions | approved / baseline |
 | [`developer_guide/`](../../../developer_guide/) | **Build** — operational guides | authoritative (operational) |
 

@@ -54,5 +54,8 @@ Schedule::job(CleanupExpiredInvitations::class)->daily()->at('02:00');   // 2 AM
 // Phase 4A: Outbox event processor (process pending events every minute)
 Schedule::command('outbox:process')->everyMinute();
 
+// PB-003-C5: Inbox re-drive (recover due parked events; deadline → dead) every minute
+Schedule::command('inbox:redrive')->everyMinute();
+
 // Audit: delete election audit folders older than 30 days (daily at 3 AM)
 Schedule::command('audit:cleanup')->dailyAt('03:00');

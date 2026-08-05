@@ -1,0 +1,294 @@
+Architecture Upgrade Assessment
+
+Assessment Date: 2026-07-08
+Reviewer: Chief AI Engineering Architect
+Status: NO UPGRADES WARRANTED BEFORE PB-004
+Governing Rule: R-27 (Governance Freeze) + R-29 (Insufficiency Exception)
+
+---
+Part 1: Freeze Terms (Restated)
+
+Before assessing any upgrade, the freeze's own terms must bind the analysis:
+
+R-27 (Governance Freeze, 2026-07-08):
+
+▎ No new platform principles until the PB-004 retrospective. Clarifications legal, additions not. No further architectural expansion. C3's sole success criterion: can AST-010 help deliver PB-004 with greater determinism, traceability, and honesty than before?
+
+R-29 (Foundation Complete, 2026-07-08):
+
+▎ No platform change shall be made unless PB-004 or a subsequent feature demonstrates that the current platform is insufficient.
+
+Exception clause: The singular exception to the freeze is demonstrated insufficiency — and the burden of demonstration falls on PB-004 itself, not on predictions, harvests, or audits. PB-004 has not yet been implemented through the platform. The RED tests exist; the feature's end-to-end traversal does not.
+
+This analysis exists because the freeze demands it: if any gap is structural enough to be freeze's own exception clause would authorize an upgrade. If no gap meets that bar, thefreeze holds — and that is success, not inaction.
+
+---
+Part 2: Candidate Assessments
+
+Candidate 1: F3 — Standard Promotion Event
+
+┌────────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────┐
+│       Criterion        │                                                          Assessment                                                           │                    Evidence                     │
+├────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────┤
+│ Structural vs          │ Structural — the pattern lifecycle has a defined terminal gap. The Standard state is unreachable by design.                   │ Knowledge-architecture audit F3; ARB            │
+│ Implementation         │                                                                                                  │ "HIGH-PRIORITY retrospective candidate"         │
+├────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────┤
+│ Insufficiency          │ No — PB-004 has produced zero pattern promotion evidence. No on and been blocked. The gap is     │ All register entries from 2026-07-08; no PB-004 │
+│ Demonstrated?          │ identified but untriggered.                                                                                                   │  entries yet                                    │
+├────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────┤
+│ Necessary Before       │ No — F3 does not block PB-004's execution. PB-004 will produce evidence; the retrospective defines how that evidence          │ F3 does not prevent RED tests, GREEN            │
+│ PB-004?                │ promotes. The promotion mechanism is downstream of the eviden                                    │ implementation, or verification                 │
+├────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────┤
+│                        │ No — defining the promotion mechanism would create a new govetly forbids new platform principles │ R-27 text; R-29: PB-004 must demonstrate        │
+│ Freeze-Compliant?      │  until the retrospective. The freeze assigned F3 to the retrospective; overriding that assignment would be a freeze           │ insufficiency first                             │
+│                        │ violation.                                                                                       │                                                 │
+└────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴─────────────────────────────────────────────────┘
+
+Decision: DEFER to retrospective. F3 is the platform's most important process gap, and its resolution belongs exactly where the freeze placed it — at the retrospective, informed by PB-004 evidence. The gap
+does not block PB-004; it is downstream of it.
+
+---
+Candidate 2: EPC-001 — Layered Bootstrap
+
+┌──────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬────────────────────────────────────────────┐
+│      Criterion       │                                                             Ass                                        │                  Evidence                  │
+├──────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────┤
+│ Structural vs        │ Implementation — the architecture defines the loading order (co rules → hooks → commands → agents).    │ Loading order in registry.yaml line 35;    │
+│ Implementation       │ The gap is that inject-context.sh (AST-002) loads everything unconditionally. This is an execution deficiency, not an architecture  │ inject-context.sh source reviewed          │
+│                      │ flaw. The architecture principle (layered loading) exists and i                                        │                                            │
+├──────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────┤
+│ Insufficiency        │ No — three harvests predict the gap (ev=3), which is strong cor not demonstration. PB-004 must         │ EPC-001 ev=3 (all predictions, no PB-004   │
+│ Demonstrated?        │ actually show that the current bootstrap causes a problem — and the measurement (bootstrap size vs. referenced size) must come FROM │ measurements)                              │
+│                      │  PB-004 sessions.                                                                                      │                                            │
+├──────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────┤
+│ Necessary Before     │ No — PB-004 can proceed with the current bootstrap. The evidence must come from PB-004 observations.   │ If the bootstrap is truly too large,       │
+│ PB-004?              │ Implementing layered loading before measuring the problem would violate the platform's evidence-before-design principle.            │ PB-004 will demonstrate it. That evidence  │
+│                      │                                                                                                        │ is required.                               │
+├──────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────┤
+│                      │                                                                                                        │ ARB priority list (Harvest #2): 1.         │
+│ Freeze-Compliant?    │ No — this is a new platform improvement, not a defect fix. The freeze's own priority list placed EPC-001 at #2 (post-PB-004).       │ Budgets, 2. Bootstrap, 3-5. All            │
+│                      │                                                                                                        │ post-PB-004                                │
+└──────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴────────────────────────────────────────────┘
+
+Decision: DEFER to retrospective. EPC-001 has the strongest evidence of any candidate (ev=3), but all evidence is predictive, not demonstrated. PB-004 is the proving ground — and implementing before
+measuring would be design-before-evidence, the exact anti-pattern the platform exists to
+
+---
+Candidate 3: EPC-002 — Context Budgets
+
+┌────────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬─────────────────────────────────────┐
+│       Criterion        │                                                                                                             │              Evidence               │
+├────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────┤
+│ Structural vs          │ Implementation — budgets are defined (CONTEXT ≤250 lines, booage ≤10 KB, etc.). Enforcement is missing.     │ EPC-002 card; ARB concrete budgets  │
+│ Implementation         │ Implementation deficiency.                                                                                                               │ recorded in Harvest #2              │
+├────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────┤
+│ Insufficiency          │ No — no PB-004 session has demonstrated that unbudgeted context degrades decision quality. The 2026-07-08 session log (54KB) is the      │ PB-004 has no sessions yet; the one │
+│ Demonstrated?          │ largest single artifact — but that session was the architectu not a typical engineering session.            │  data point is an outlier           │
+├────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────┤
+│ Necessary Before       │ No — EPC-002 is the mechanism for EPC-001, not an independentimplemented together when EPC-001 is built.    │ ARB priority: EPC-002 (#1) is the   │
+│ PB-004?                │                                                                                                                                          │ mechanism for EPC-001 (#2)          │
+├────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────┤
+│ Freeze-Compliant?      │ No — same as EPC-001. New platform improvement, not defect fix. The ARB explicitly assigned it to post-PB-004.                           │ ARB priority list — all post-PB-004 │
+└────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────┴─────────────────────────────────────┘
+
+Decision: DEFER to retrospective. EPC-002 is the mechanism that makes EPC-001 work. Implootstrap architecture is like installing a speedometer before building the car.
+
+---
+Candidate 4: F1/F2 — Knowledge Home Consolidation
+
+┌───────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬──────────────────────────────────────────────────────────────┐
+│       Criterion       │                                                    Assessment                        │                           Evidence                           │
+├───────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ Structural vs         │ Structural — the knowledge home ambiguity is a genuine DDD bouneering Knowledge?"    │ Audit F1/F2; ARB: "What is Engineering Knowledge? —          │
+│ Implementation        │ and where does it belong? This is an unresolved modeling question, not an execution gap.                          │ genuinely open, same question as the emerging third-domain   │
+│                       │                                                                                      │ observation"                                                 │
+├───────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ Insufficiency         │ No — three harvests have been conducted successfully in the cuest has been lost,     │ 3 harvests, 18 cards, 6 register rows — all from the current │
+│ Demonstrated?         │ duplicated, or degraded because of the knowledge home ambiguity. The harvest workflow (EPC-010) is producing      │  ambiguous structure                                         │
+│                       │ consistent artifact shapes.                                                          │                                                              │
+├───────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ Necessary Before      │ No — PB-004's harvest (from its learnings) will operate fine iact, PB-004's harvest  │ ARB: "PB-004 + one more harvest decides which location       │
+│ PB-004?               │ evidence is what the ARB said would inform the consolidation decision.                                            │ survives"                                                    │
+├───────────────────────┼──────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ Freeze-Compliant?     │ No — resolving F1/F2 would be a new architecture decision (which knowledge home to keep, whether to create a new  │ ARB: "Retrospective candidate — not solved now"              │
+│                       │ bounded context). That's freeze-violating — the ARB assigned i                       │                                                              │
+└───────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴──────────────────────────────────────────────────────────────┘
+
+Decision: DEFER to retrospective. F1/F2 are the right questions, at the right time (post-PB-004), for the right reason (evidence from actual harvests). Consolidating before PB-004 would be making an
+architecture decision without the evidence that should drive it.
+
+---
+Candidate 5: PI-1 — Literal .claude/ Path References
+
+┌─────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────┐
+│        Criterion        │                                                       Assess                               │                      Evidence                       │
+├─────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ Structural vs           │ Implementation/Cosmetic — the alias is a documentation qualiure is provider-independent;   │ PI-1 identified in all three audits; all classified │
+│ Implementation          │ the path references are a documentation convenience, not an architecture flaw.                                          │  as "minor" or "low-priority"                       │
+├─────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ Insufficiency           │ No — .claude/ paths work correctly for the current provider. No provider swap is planned. No process ambiguity has been │ Provider swap is a strategic item, not an           │
+│ Demonstrated?           │  caused by the literal paths.                                                              │ operational need                                    │
+├─────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ Necessary Before        │ No — does not block any PB-004 work. The alias would only ma                               │ Provider swap is post-Operational Readiness v1.0    │
+│ PB-004?                 │                                                                                                                         │                                                     │
+├─────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ Freeze-Compliant?       │ No — would require editing the Implementation Process v1.1 Draft (which is frozen-in-draft-status) and                  │ Process documents are governed; change requires ADR │
+│                         │ .claude/CLAUDE.md. The change is purely cosmetic and would tts.                            │  or ratification                                    │
+└─────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴─────────────────────────────────────────────────────┘   
+Decision: DEFER to R-32 execution. PI-1 is cosmetic and low-priority. The natural vehicle is the Engineering Standards document creation (R-32), where {platform-runtime} is defined as part of the standards vocabulary. No benefit to doing it sooner.
+
+---
+Candidate 6: PI-3 — FF-15 Automation
+
+┌───────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬──────────────────────────────────────────┐
+│       Criterion       │                                                              A                                           │                 Evidence                 │
+├───────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────┤
+│ Structural vs         │ Implementation — FF-15 exists as a definition (phase-02 Domaincution. The fitness function is defined,   │ Three successful manual audits; no       │
+│ Implementation        │ checked manually, and proven effective (zero hits, three audits). The gap is that checking is manual.                                 │ automated gate                           │
+├───────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────┤
+│ Insufficiency         │ Partial — three manual audits in a single day is evidence that manual execution is labor-intensive for high-frequency checking. BUT   │ 3 audits/1 day = low-efficiency. But 0   │
+│ Demonstrated?         │ all three audits returned instantly (zero hits). The automatiocurrently-missed defects.                  │ hits = no defects missed.                │
+├───────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────┤
+│ Necessary Before      │ No — PB-004 will not introduce provider vocabulary (PB-004 is ot a platform feature). The quarterly      │ A grep audit takes ~30 seconds. Even     │
+│ PB-004?               │ audit cadence is sufficient.                                                                                                          │ weekly cadence is negligible effort.     │
+├───────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────┤
+│                       │ Arguable — but not authorized. A Tier 1 grep script (15 lines) added to C3's gate runner could be argued as a measuring instrument    │ C3 plan: "implement ONLY AST-010,        │
+│ Freeze-Compliant?     │ extension (R-26 compliant). HOWEVER, C3's scope is already ARB (greenfield PHPStan + Architecture suite  │ verify, EP-02, stop; any deviation →     │
+│                       │ + capture + PASS/FAIL + stop). Extending scope requires ARB re-approval.                                                              │ Planning Stage"                          │
+└───────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────┴──────────────────────────────────────────┘
+
+Decision: PROPOSE (conditional). The most freeze-justifiable argument is that a 15-line strument extension of C3 — and the platform has evidence of insufficiency (three manualaudits in one day IS operational friction). However, this is an ARB decision, not an implementer decision. If proposed to the ARB as a C3 scope extension, the case is:
+
+- For: FF-15 automation is a measuring instrument, not a principle. R-26 explicitly sanctions measuring instruments. The grep script has no interpretation (run → PASS/FAIL → stop). Three manual audits in one
+day is insufficiency evidence.
+- Against: C3's scope was explicitly approved as "AST-010 only." Extending scope violates R-21 slice discipline. A 30-second quarterly manual audit is not genuine insufficiency.
+
+Recommendation: Do NOT propose it. The manual audit is adequate at current scale. If PB-004 reveals that the manual audit is a bottleneck (e.g., biweekly audits required), that demonstrated insufficiency
+would justify automation. Wait for PB-004 evidence.
+
+---
+Candidate 7: Runtime Implementation (C3)
+
+This candidate is unique — it was APPROVED by the ARB before the freeze and is the one action the freeze explicitly sanctions.
+
+┌───────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────┬───────────────────────────────────────────────────────────────────────────────────┐
+│       Criterion       │                                          Assessment             │                                     Evidence                                      │
+├───────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────┤
+│ Structural vs         │ Implementation — the architecture is defined and frozen. C3 ex  │ AST-010 registered as planned in registry; CMP-005 version 0.1; Iteration 1 plan  │
+│ Implementation        │ Engine's first implementation.                                                               │                                                                                   │
+├───────────────────────┼─────────────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────┤
+│ Insufficiency         │ Yes — by the ARB. The ARB's C3 approval at 10/10 is an explicit finding that the current     │ C3 approved Option 2 ("approved as written, execute next session"); ARB "PASS     │
+│ Demonstrated?         │ verification state (manual gates) is insufficient for PB-004's  │ WITH RECOMMENDATIONS" at 9/10                                                     │
+│                       │ immediate action: execute C3."                                                               │                                                                                   │
+├───────────────────────┼─────────────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────┤
+│ Necessary Before      │ Yes — C3 provides the measuring instrument that makes verification deterministic,            │                                                                                   │
+│ PB-004?               │ repeatable, and evidence-producing. PB-004's DoD requires exec  │ R-26 measuring-instrument rule; PB-004 DoD requires gate evidence                 │
+│                       │ C3, verification is manual.                                                                  │                                                                                   │
+├───────────────────────┼─────────────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────┤
+│                       │ ✅ Yes — C3 was authorized by the ARB as Iteration 1 committed work, explicitly before the   │ R-27: "C3's sole success criterion: can AST-010 help deliver PB-004 with greater  │
+│ Freeze-Compliant?     │ freeze was enacted. The freeze does not revoke prior ARB appro  │ determinism, traceability, and honesty than before?" — C3 is the freeze's own     │
+│                       │                                                                                              │ sanctioned exception                                                              │
+└───────────────────────┴─────────────────────────────────────────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────┘
+
+Decision: APPROVE — execute as planned. C3 is the one upgrade the freeze authorizes. It e, is explicitly mentioned in R-27 as the freeze's success criterion, and is necessary for PB-004's qualification.
+
+Important boundary: ONLY C3. No C2 (deferred by R-25). No commands. No agents. No additional capabilities. The ARB's definition of C3 is binding: "implement ONLY AST-010, verify, EP-02, stop."
+
+---
+Candidate 8: Engineering Process v1.1 Ratification
+
+┌─────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────────────────────────────────────────┐
+│      Criterion      │                                                              Assessment                                                               │                 Evidence                  │
+├─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────────────────────────────────────────┤
+│ Structural vs       │ Governance/Process — the v1.1 draft exists and is being followed in practice. EP-01/02/03 are operational; ER-05/06/07 are being      │ Session log 2026-07-08: EP-01/02/03       │
+│ Implementation      │ practiced (origin stories reference real events). Ratification wced behavior.                            │ operational; PB-004 step 2 corrected      │
+│                     │                                                                                                                                       │ under EP-01 norms                         │
+├─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────────────────────────────────────────┤
+│ Insufficiency       │ No — the draft is "as good as" ratified for practical purposes. The process is being followed. The formal status (draft vs ratified)  │ The v1.0 is still authoritative; the      │
+│ Demonstrated?       │ does not change behavior. No engineer has refused to follow a ru draft.                                  │ draft is additive. No behavioral gap.     │
+├─────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────────────────────────────────────────┤
+│ Necessary Before    │ No — PB-004 is operating under EP-01/02/03 norms regardless of tification changes the document's header, │ EP-01 steps are already being practiced   │
+│ PB-004?             │  not the behavior.                                                                                                                    │ in PB-004 prerequisite chain              │
+├─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────────────────────────────────────────┤
+│                     │ Avoid — no benefit, procedural risk. Ratification could be argued as a "clarification" (freeze-legal). ER-05/06/07 are already        │ R-27 intent: nothing that looks like      │
+│ Freeze-Compliant?   │ practiced. HOWEVER, the freeze was explicitly designed to stop aPB-004 proves or disproves the platform. │ governance expansion. The ARB's closing   │
+│                     │  Ratifying mid-freeze would create a procedural precedent that the freeze can be circumvented by reclassifying changes as             │ instruction: "no further architectural    │
+│                     │ "clarifications." The safest course: ratify at the retrospectivece review.                               │ expansion."                               │
+└─────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────────────────┘
+
+Decision: DEFER to retrospective. Ratification is low-risk but zero-urgency. The processes are being followed. Ratifying at the retrospective alongside the PB-004 evidence review is the cleaner procedural
+path — it avoids any perception of freeze circumvention and ties the ratification to theprocess.
+
+---
+Part 3: Decision Matrix
+
+┌─────────────────────────┬─────────────────────────┬───────────────────────────────────────────────────────────┬─────────────────────────────────────┬─────────────────────────────────────────┬──────────┐
+│        Candidate        │   Structural vs Impl.   │                      Insufficiency  Necessary Before PB-004?       │            Freeze-Compliant?            │ Decision │
+├─────────────────────────┼─────────────────────────┼───────────────────────────────────────────────────────────┼─────────────────────────────────────┼─────────────────────────────────────────┼──────────┤
+│ F3: Standard Promotion  │ Structural              │ No — predicted, not demonstrated  — downstream of evidence         │ No — new governance artifact            │  DEFER   │
+├─────────────────────────┼─────────────────────────┼───────────────────────────────────────────────────────────┼─────────────────────────────────────┼─────────────────────────────────────────┼──────────┤
+│ EPC-001: Layered        │ Implementation          │ No — ev=3 predictive, not demonstr— evidence must come FROM PB-004 │ No — new platform improvement           │  DEFER   │
+│ Bootstrap               │                         │                                                           │                                     │                                         │          │
+├─────────────────────────┼─────────────────────────┼────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────┼──────────┤
+│ EPC-002: Context        │ Implementation          │ No — no PB-004 measurement yet                            │ No — mechanism for EPC-001          │ No — new platform improvement           │  DEFER   │
+│ Budgets                 │                         │                                                                    │                                         │          │
+├─────────────────────────┼─────────────────────────┼───────────────────────────────────────────────────────────┼─────────────────────────────────────┼─────────────────────────────────────────┼──────────┤
+│ F1/F2: Knowledge Homes  │ Structural              │ No — current dual structure works — PB-004's harvests inform the   │ No — new architecture decision          │  DEFER   │
+│                         │                         │                                                           │ decision                            │                                         │          │
+├─────────────────────────┼─────────────────────────┼────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────┼──────────┤
+│ PI-1: Path Aliases      │ Implementation/Cosmetic │ No — cosmetic documentation                               │ No — cosmetic; no provider swap     │ No — touches governed docs              │  DEFER   │
+│                         │                         │                                   inent                            │                                         │          │
+├─────────────────────────┼─────────────────────────┼───────────────────────────────────────────────────────────┼─────────────────────────────────────┼─────────────────────────────────────────┼──────────┤
+│ PI-3: FF-15 Automation  │ Implementation          │ Partial — 3 manual audits = fricti— adequate at current scale      │ Arguable — but scope would extend       │  DEFER   │
+│                         │                         │ missed defects                                            │                                     │ approved C3                             │          │
+├─────────────────────────┼─────────────────────────┼────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────┼──────────┤
+│ Runtime (C3 only)       │ Implementation          │ ✅ Yes — ARB found insufficiency                          │ ✅ Yes — PB-004 needs gate runner   │ ✅ Yes — approved before freeze         │ APPROVE  │
+├─────────────────────────┼─────────────────────────┼────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────┼──────────┤
+│ Process v1.1            │ Governance              │ No — draft functions as ratified                          │ No — behavior unchanged             │ Avoid — procedural risk                 │  DEFER   │
+│ Ratification            │                         │                                                                    │                                         │          │
+└─────────────────────────┴─────────────────────────┴───────────────────────────────────────────────────────────┴─────────────────────────────────────┴─────────────────────────────────────────┴──────────┘
+
+Summary
+
+┌─────────┬───────┬────────────────────────────────────────────────────────────────────┐
+│ Outcome │ Count │                             Candidates                             │
+├─────────┼───────┼────────────────────────────────────────────────────────────────────┤
+│ APPROVE │ 1     │ C3 execution (runtime implementation)                              │
+├─────────┼───────┼────────────────────────────────────────────────────────────────────┤
+│ DEFER   │ 7     │ F3, EPC-001, EPC-002, F1/F2, PI-1, PI-3, Process v1.1 ratification │
+└─────────┴───────┴────────────────────────────────────────────────────────────────────┘
+
+---
+Part 4: The Singular Immediate Action
+
+The decision matrix is unambiguous: only C3 is approved for immediate execution.
+
+This is not a close call. Every other candidate fails at least one criterion — most failh the strongest evidence (EPC-001 ev=3, F3 structural gap) are the most clearly deferred:they require PB-004 evidence to exist before they can be responsibly addressed. Implementing them before PB-004 would be design-before-evidence, the exact anti-pattern the platform exists to prevent.
+
+Why the Freeze is Holding Correctly
+
+┌────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                     Claim                      │                                                                    │
+├────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ "The architecture is sufficient for PB-004"    │ ✅ All 8 candidates assessed; zero fo                              │
+├────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ "The identified gaps are downstream of PB-004" │ ✅ F3, EPC-001, EPC-002, F1/F2 all prat feeds back into resolution │
+├────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ "No upgrade is warranted before PB-004"        │ ✅ — proven by the decision matrix ab                              │
+├────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ "C3 is the sole sanctioned action"             │ ✅ — and it's the one the freeze name                              │
+└────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+What Success Looks Like
+
+The platform is in exactly the right state for this moment:
+
+1. The architecture is validated — two independent reviews (ARB 9/10, DeepSeekAI 8.8/10) reached the same verdict: structurally sound, provider-independent, governed.
+2. The gaps are identified and tracked — 12 gaps across both reviews, all with known vehequirements.
+3. The freeze is holding — zero upgrades attempted before PB-004 evidence exists.
+4. The singular action is clear — C3.
+
+The platform's principle — "evidence, never authority" — is not just a statement about og design constraint on when change is justified. Every candidate above would requirePB-004's evidence to justify it. That is the loop working correctly.
+
+Final Statement                                                                                                                                                                                              
+▎ The architecture is sufficient for PB-004. No architecture upgrade is warranted before PB-004 evidence exists. The governance freeze (R-27) is correctly scoped and correctly holding. The singular action remains: execute C3.

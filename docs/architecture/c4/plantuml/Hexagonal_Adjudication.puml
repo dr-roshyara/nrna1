@@ -1,0 +1,26 @@
+@startuml Hexagonal_Adjudication
+title Hexagonal Architecture — representative context: Adjudication (all greenfield contexts follow this shape)
+
+hexagon "DOMAIN (pure PHP — zero Illuminate)\n\nDetermination aggregate\nValue Objects · DeterminationIssued\nLegitimacyDecision (domain service)\nDeterminationRepository (port)\nexceptions" as DOM #lightgreen
+
+rectangle "APPLICATION (orchestration only, ADR-T17)\nAdjudicationService (port) ← TransactionalAdjudicationService ← CoordinatesAdjudication\nports: TransactionManager · IdentityGenerator · EventOutbox" as APP #lightblue
+
+rectangle "INFRASTRUCTURE (Laravel allowed)\nEloquentDeterminationRepository + Model + Mapper\nLaravelTransactionManager · UuidIdentityGenerator\nOutboxEventAdapter · DeterminationIssuedHydrator\nAdjudicationServiceProvider" as INF #lightyellow
+
+rectangle "DRIVING adapters\nHTTP controller / console / future handlers" as DRV
+rectangle "DRIVEN systems\nPostgreSQL · outbox_events\nEventHydratorRegistry (shared)" as EXT
+
+DRV --> APP : commands (IssueDeterminationCommand — DTO, no arrays)
+APP --> DOM : invokes aggregate + domain service
+APP --> DOM : depends on repository PORT (interface in Domain)
+INF --> DOM : implements ports (dependency points INWARD)
+INF --> EXT : SQL / rows
+APP ..> INF : never directly — only via container-bound ports
+
+note bottom
+  Rule of the shape: Domain depends on NOTHING. Application depends on Domain.
+  Infrastructure depends on both and is the only place Laravel exists.
+  Enforced by: GreenfieldCoreArchitectureTest · phpstan-greenfield.neon ·
+  Deptrac (pending F-1) · domain-purity architecture tests.
+end note
+@enduml

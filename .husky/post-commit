@@ -1,0 +1,5 @@
+# post-commit — CommitTrigger instrumentation (Trigger → Runtime → Collector)
+# Delegates to the version-controlled canonical script; advisory, never blocks.
+# Diagnosis 2026-08-04: .git/hooks is ignored here (husky owns core.hooksPath),
+# so this file is the ONLY correct activation point for commit observations.
+bash scripts/observations/git-hooks/post-commit || true

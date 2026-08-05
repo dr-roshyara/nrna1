@@ -7,6 +7,11 @@
     <testsuites>
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
+            <!-- PB-007 7C: pre-existing defect (recorded, not repaired here) — file declares
+                 class OverlayInfluenceTest, so PHPUnit can NOT load it: it contributes zero
+                 executed tests today, only a suite-load warning that aborts Infection's
+                 stopOnDefect initial run. Exclusion is behaviour-preserving. -->
+            <exclude>./tests/Unit/Domain/Election/Security/OverlaySignalCategoryTest.php</exclude>
         </testsuite>
         <testsuite name="Replay">
             <directory suffix="Test.php">./tests/Replay</directory>
@@ -17,12 +22,46 @@
         <testsuite name="Architecture">
             <directory suffix="Test.php">./tests/Architecture</directory>
         </testsuite>
+        <!-- PB-007 7C (additive): the tests that can KILL greenfield-core mutants —
+             exactly the Infection mutation scope (Contestation/Adjudication/Election/
+             Shared, per IDD A-3) plus Replay. Used by the quality gate's initial
+             coverage run. Deliberately excluded: other contexts (Membership, Elections,
+             Geography, Governance — outside A-3 scope, and carrying pre-existing test
+             debt) and tests/Architecture (file-scanning fitness tests read source from
+             disk, so they cannot detect in-memory mutations — zero mutation signal).
+             Existing suites unchanged. -->
+        <testsuite name="GreenfieldCore">
+            <directory suffix="Test.php">./tests/Unit/Contexts/Contestation</directory>
+            <directory suffix="Test.php">./tests/Unit/Contexts/Adjudication</directory>
+            <directory suffix="Test.php">./tests/Unit/Contexts/Election</directory>
+            <directory suffix="Test.php">./tests/Unit/Contexts/Shared</directory>
+            <directory suffix="Test.php">./tests/Feature/Contexts/Contestation</directory>
+            <directory suffix="Test.php">./tests/Feature/Contexts/Adjudication</directory>
+            <directory suffix="Test.php">./tests/Feature/Contexts/Election</directory>
+            <directory suffix="Test.php">./tests/Feature/Contexts/Shared</directory>
+            <directory suffix="Test.php">./tests/Replay</directory>
+        </testsuite>
+        <testsuite name="EngineeringKnowledge">
+            <directory suffix="Test.php">./scripts/lib/EngineeringKnowledge</directory>
+        </testsuite>
     </testsuites>
-    <coverage processUncoveredFiles="true">
+    <!-- PB-007 7C: migrated from the PHPUnit 9 <coverage processUncoveredFiles> form to the
+         PHPUnit 10+ <source> element (installed: PHPUnit 11). The stale form was latent —
+         coverage was never generated until Infection (first coverage consumer) hit XSD validation. -->
+    <source>
         <include>
             <directory suffix=".php">./app</directory>
         </include>
-    </coverage>
+        <!-- PB-007 7C: the only 2 of 1511 app/ files that fail `php -l` (pre-existing,
+             recorded, not repaired here): ElectionUser.php is a scaffold document with a
+             second `<?php` at line 11; VoterSlugStep.php is a markdown document saved as
+             .php (git-recovery batch, 86468d3d7). Coverage's static analyzer cannot parse
+             them; they were never coverable, so exclusion is behaviour-preserving. -->
+        <exclude>
+            <file>./app/Domain/Election/Models/ElectionUser.php</file>
+            <file>./app/Http/Middleware/VoterSlugStep.php</file>
+        </exclude>
+    </source>
     <php>
         <server name="APP_ENV" value="testing"/>
         <server name="DB_CONNECTION" value="pgsql"/>

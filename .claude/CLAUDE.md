@@ -1,3 +1,13 @@
+# ⚙️ Engineering Process — EP-01 Plan First (POINTER, not a restatement)
+
+**Follow the PublicDigit Engineering Process.** For every **non-trivial engineering task**: perform the **Engineering Readiness Review (EP-03)** — derive the business/DDD/architecture/TDD/design/impact/verification answers from the repository, ask the human only what cannot be derived — then the **Planning Stage (EP-01)**: produce the plan → **wait for explicit human approval (APPROVAL APPLIES TO THE PLAN, not merely to the task request)** → implement only the approved plan → **Completion Review (EP-02): did we implement the approved plan?** **If implementation invalidates the approved plan: STOP, explain why, present the revised plan, wait for approval — never silently change direction.** *(Provider binding: in Claude Code the Planning Stage maps to Plan Mode.)*
+
+Rule text, exception tiers (plan required/optional/not-required), and ratification status live **once**, in `docs/implementation/Implementation_Process_v1.1_Draft.md` §"Execution Rules — Engineering Process (EP)". This section is provider-agnostic: any assistant (Claude, Copilot, Cursor, Gemini, Codex) obeys the same process.
+
+**Engineering Decisions (POINTER — this runtime binding is FROZEN; it grows no further):** Before acting, resolve the required Engineering Decisions. See `engineering/architecture/reference/Engineering_Decision_Model.md`. Canonical rules: `engineering/governance/STANDARDS_INDEX.md` → ES-001..ES-006. MEMORY carries hints; the ES documents are the truth.
+
+---
+
 # 🎨 BEFORE ANYTHING: READ UI_GUIDELINES.md
 
 All UI/Vue changes must follow the design system in `.claude/UI_GUIDELINES.md`.
@@ -24,6 +34,16 @@ Project knowledge is a governed engineering asset under `docs/knowledge/`, with 
 - **Validate:** `npm run knowledge-lint` (PHPStan-for-knowledge) · regenerate graph with `npm run knowledge-graph`.
 - **Reference model:** the **Adjudication** pilot at [`docs/knowledge/domains/adjudication/`](../docs/knowledge/domains/adjudication/README.md).
 - Legacy folders during transition: `architecture/` = Think, `docs/` = Official Truth, `developer_guide/` = Build.
+
+**Documentation placement (POINTER — the rule is EXECUTABLE, so it is not restated here).** **Where a document belongs is derived, never chosen — resolve it, never hard-code a root:**
+
+```bash
+php scripts/doc-placement.php --scope=<product-specific|cross-product|session-state> \
+                              [--maturity=<research|qualified|adopted>] [--domain=<id>]
+php scripts/doc-placement.php --list      # domains, roots, rules
+```
+
+Policy: `docs/adr/ADR_20260801_1740_ Documentation Roots and Artifact Placement.md` · configuration: `docs/knowledge/schema/documentation-placement.yaml`. **Exit code 2 = unruled: record `PENDING` and escalate.**
 
 ---
 
@@ -507,3 +527,278 @@ If you see `HTTP 302 Found` with HTML response:
 - Integration tests MUST use actual tenant database connections
 - Test tenant switching scenarios explicitly
 ```
+
+---
+
+# 🧭 Development Discipline — Business → DDD → Architecture → Tests → Implementation (STANDING RULE)
+
+**Every change follows this order. Do not skip upstream stages. Do not jump to a test or to code before the stage that justifies it exists.**
+
+```
+Business need  →  DDD model (ubiquitous language, boundaries, ownership)  →
+Architecture (decision recorded)  →  Tests (executable architecture / TDD RED)  →  Implementation (GREEN)
+```
+
+Concretely:
+1. **Business first** — know the business/constitutional need a change serves. No change is "just technical" if it touches behavior.
+2. **DDD before architecture** — model it: what is it, which bounded context/subdomain owns it, what does it *own* vs merely *preserve*? Resolve ownership of every invariant **before** protecting it. (E.g. anonymity is a *constitutional* invariant that Messaging *preserves* — not one it owns.)
+3. **Architecture decision before tests** — record the decision (ADR / Decision Log `D-nn`) that the model produces. A test encodes a decision; the decision must exist first.
+4. **Tests before implementation (TDD)** — RED first, then minimal GREEN. Architecture/fitness tests verify **properties**, not class names.
+5. **For a discovered gap, the sequence is:** `Finding → Architecture Decision → RED → GREEN → Certification`. Never `Finding → Implementation → Certification`.
+
+**Anti-pattern to avoid (DDD):** never let a *ticket* or an *observation* silently *become* architecture. Architecture **produces** tickets; tickets do not accrete into architecture. When several tickets have produced a reusable capability, **model it as a platform capability first**, then let tests/consumers follow.
+
+**When in doubt, stop and model.** Producing a strategic model / ADR is real work, not a detour — it is the first stage, not a delay before "the real work."
+
+**Tactical DDD work is additionally governed by the seven DDD Tactical Governance Principles** — canonical home `engineering/knowledge/methodology/DDD_Tactical_Governance_Principles.md` (ADOPTED, ARB 2026-07-26; PublicDigit binding: `docs/architecture/governance/DDD_PRINCIPLES.md`); this line is a pointer, never the rule text.
+
+**Automation:** a non-blocking `PreToolUse` tripwire (`.claude/scripts/discipline-gate-reminder.sh`) reminds when a **new** test or production file is about to be created, to confirm the upstream artifacts exist. It is a checkpoint, not a wall — the rule above is the obligation.
+
+## The Operating Loop (runtime binding of the rule above — POINTERS, not restatements)
+
+**Every engineering conversation runs this sequence. Never reversed. It is about building bounded contexts correctly, not about producing documents.**
+
+> ⛔ **THE METHODOLOGY IS FROZEN (2026-08-01).** No protocol refinement · no review-model evolution · no documentation-architecture evolution · no KnowledgeOS proposals — **unless PublicDigit implementation exposes a genuine deficiency.** **Primary focus is PublicDigit delivery: WP-7C → WP-8 → EPIC-005.** **Execute the protocol; do not improve it.**
+
+```
+1 Business Capability → 2 Strategic DDD → 3 Canonical Discovery → 4 Tactical DDD
+→ 5 Stewardship → 6 Impact Classification → 7 Readiness
+→ 8 RED → 9 GREEN → 10 VERIFY → 11 ACCEPT → 12 Operational Evidence
+→ 13 PKS Classification → 14 KnowledgeOS Promotion Check
+```
+
+| Phase | Obligation | Canonical home |
+|---|---|---|
+| **1 Business capability** | capability · objective · business rule protected · constitutional policy. **If it cannot be identified: STOP and ask. Do not infer.** | the standing rule above |
+| **2 Strategic DDD** | **Answer all five before going further: which bounded context OWNS this capability? · is another context affected, and how? · is this a Published-Language interaction? · does ownership change? · does the context map change?** Expected answers: a named owner, and **No** to the rest. **Never proceed to tactical work with ownership unresolved** | the standing rule · **AIP-14** |
+| **3 Canonical Discovery** | **Search before modelling — and it is a DDD search, not a documentation search:** does the **capability** already exist? the **aggregate**? the **value object**? the **port**? the **domain event**? an **ADR**? an **engineering standard**? a **bounded context**? **If one exists, consume or extend it — never create a second.** If the classification genuinely has no home, **name what is missing and return it to governance; invent nothing** | **ES-005.4** (never a copy) · **ES-004** |
+| **4 Tactical DDD** | aggregate boundaries · value objects · domain services · application services · ports · events. **Only what Phase 3 found, or what governance has approved.** | `engineering/knowledge/methodology/DDD_Tactical_Governance_Principles.md` |
+| **5 Stewardship** | **What must remain stable? What may evolve? What evidence would justify change?** **Implementation is the default — only a NO carrying implementation evidence of insufficiency opens an ADR/ARB discussion.** No opportunistic observation during ticket work | **ES-002.1 · ES-002.2** |
+| **6 Impact classification** | classify every observation **before** recommending: Strategic Architecture · Tactical Architecture · Governance · Engineering · Repository · Documentation · Operational · PKS Observation · KnowledgeOS Candidate | protocol proposal §4a–4d |
+| **7 Readiness** | authorization · scope · dependencies · acceptance criteria · gates · RED boundary. **No authorization → STOP.** | **EP-01 · EP-01-Light · EP-03** |
+| **8–10 RED → GREEN → VERIFY** | approved scope only. **No redesign, no opportunistic refactor, no unrelated fixes.** **Reviews record deviations; implementation repairs them in a later authorized slice.** | the standing rule · **ER-08** |
+| **11 Acceptance** | **Engineering supplies evidence and never accepts its own work.** Keep evidence · recommendation · authority separate | **EP-02** · **R-34** |
+| **12–14 Evidence → PKS → promotion check** | none · PKS observation · repeated evidence · KnowledgeOS candidate. **Never promote methodology from a single occurrence** | **ES-006.1** |
+
+**Documentation discipline.** **Establish classification — purpose · type · role · steward · lifecycle · maturity — BEFORE deriving placement. Never derive placement from scope alone.** Resolve with `php scripts/doc-placement.php`; **exit 2 means unruled — record `PENDING` and escalate.** **If the classification is unknown, raise a governance question; invent no category and no folder.**
+
+**Full protocol (the fillable form of this loop):** `docs/implementation/PublicDigit_Engineering_Protocol_Proposal.md` — **PROPOSED, not adopted.** This section is the runtime binding; that document is the template. **Worked instance: `.claude/plans/WP-7C-engineering-readiness.md`.**
+
+**Model integrity (⚠️ OBSERVATION, not promoted — one use).** Before proposing any new attribute or dimension, determine whether it is **a new dimension**, **an overloaded existing dimension**, or **merely another value**. Introduce a new dimension only if **orthogonal · necessary · sufficient — all three.** *(Proposal: `docs/implementation/PublicDigit_Engineering_Protocol_Proposal.md`.)*
+
+> **The final rule: the strongest statement made must never exceed the strength of the available evidence.** **Keep facts, architectural conclusions, governance decisions, engineering actions and operational observations rigorously separate — never let one silently become another.**
+
+---
+
+# 📘 Developer Guide — Definition of Done (STANDING RULE)
+
+**Every implementation step ships with a developer guide. This is part of the Definition of Done — do it without being asked.**
+
+A "step" is a code slice (a `PB-xxx-Cn`-style commit, or any self-contained implementation change). For each step:
+
+1. **Write or update** a developer guide under `developer_guide/<area>/` (e.g. `developer_guide/audit_system/`). One area folder per subsystem/ticket; **one file per step**, numbered for reading order (`00_index.md`, `01_step_...md`, …). Keep an `00_index.md` that maps the steps.
+2. **Ground every snippet in the committed code** — no invented APIs. Match the house voice of the area's existing guides.
+3. **Each guide covers:** purpose · where it fits (layer/namespace) · key files · design decisions (with ADR/D-refs) · how it works (with code) · how to use/extend · testing · pitfalls · a **Traceability** line.
+4. **Honor the invariants** in the docs too: anonymity (ADR-T11 — no voter↔vote linkage in examples), and messaging/business-boundary rules.
+5. **Commit** the guide with the step (or as a paired `docs(<area>): …` commit alongside the code/`-DOC` commit). Update the area `00_index.md`.
+
+**Cadence:** per step, updated as slices land, finalized at ticket certification. Small/mechanical fixes may fold into the nearest step guide rather than a new file — use judgment, but never skip silently.
+
+**Automation:** a `Stop` hook (`.claude/scripts/dev-guide-reminder.sh`) prints a non-blocking, **area-aware** reminder — it nudges per code-*area* changed today (e.g. `app/Contexts/Contestation` → `developer_guide/contestation/`) that has no matching guide update, so a guide written for an unrelated track can't silence a real gap. The reminder is a safety net — **the rule above is the obligation, and it is a judgment I should not skip**: when an ADR already captures the design, still add a short developer-facing guide (the ADR records the *decision*; the guide is the developer *how-to*).
+
+---
+
+# Planning, Memory and Session Management
+
+## Principle
+
+The project repository is the single source of truth.
+
+Do not use Claude's global project memory (`~/.claude/...`) for project-specific plans, progress, or memory whenever it can be stored inside this repository.
+
+All project planning and memory must live inside:
+
+.claude/
+
+This allows the entire development history to be version controlled, reviewed, and shared with every developer and AI assistant.
+
+---
+
+# Directory Structure
+
+.claude/
+    MEMORY.md
+    CONTEXT.md
+    sessions/
+    plans/
+
+---
+
+# MEMORY.md
+
+MEMORY.md stores stable project memory.
+
+It should contain information that remains useful across many sessions.
+
+Examples:
+
+- important project conventions
+- coding standards adopted by the project
+- important implementation constraints
+- recurring user preferences
+- project-wide assumptions
+- frequently referenced facts
+
+Do NOT store:
+
+- temporary tasks
+- daily progress
+- implementation plans
+- debugging notes
+
+Always update MEMORY.md when long-term project knowledge changes.
+
+---
+
+# CONTEXT.md
+
+CONTEXT.md represents the current working state.
+
+It should answer:
+
+- What are we currently working on?
+- Which ticket is active?
+- What remains to be done?
+- What blockers exist?
+- What should be done next?
+
+This file should always reflect the latest project state.
+
+Whenever work starts or finishes, update CONTEXT.md.
+
+---
+
+# Plans
+
+**Runtime work plans are ephemeral. Engineering plans are governed artifacts created only after EP-01 approval.**
+
+Every significant task must have its own plan document.
+
+**Storage and naming are governed by ES-004.2** (`engineering/governance/ES-004-Documentation.md` — the canonical rule; this section is a pointer):
+
+Store plans in:
+
+./docs/plans/
+
+Naming:
+
+YYYYMMDD-HHMM-<what_is_it_about>-plan.md
+
+Example:
+
+20260711-1830-evidence-context-strategic-discovery-plan.md
+
+The timestamp preserves chronological history; the -plan.md suffix marks the type. A superseding plan cites the superseded plan's filename in its traceability section. Existing plans in .claude/plans/ are historical records — they stand; the convention applies from the next plan onward.
+
+Avoid randomly generated filenames.
+
+Each plan should include:
+
+- Objective
+- Background
+- Scope
+- Design decisions
+- Task checklist
+- Progress
+- Risks
+- Open questions
+- Next actions
+
+Plans are living documents.
+
+Update them continuously rather than creating new ones.
+
+---
+
+# Session Logs
+
+Every work session must create or update a session log.
+
+Location:
+
+.claude/sessions/
+
+Filename:
+
+YYYY-MM-DD.md
+
+Example:
+
+2026-07-06.md
+
+Each session log should contain:
+
+## Summary
+
+Short description of today's work.
+
+## Completed
+
+Completed tasks.
+
+## Decisions
+
+Important decisions made.
+
+## Problems
+
+Issues encountered.
+
+## Next Steps
+
+Recommended starting point for the next session.
+
+Append to the current day's session log instead of creating multiple logs for the same day.
+
+---
+
+# Workflow
+
+At the beginning of every work session:
+
+1. Read MEMORY.md.
+2. Read CONTEXT.md.
+3. Read the relevant plan document(s).
+4. Read today's session log if it already exists.
+
+Before starting implementation:
+
+- Update the plan if requirements changed.
+- Update CONTEXT.md if priorities changed.
+
+During implementation:
+
+- Keep the plan progress current.
+- Record important decisions.
+
+At the end of every work session:
+
+- Update the plan.
+- Update CONTEXT.md.
+- Update MEMORY.md if long-term knowledge changed.
+- Update today's session log.
+
+Never finish a work session without updating these files.
+
+---
+
+# General Rules
+
+- The repository is the authoritative memory.
+- Avoid duplicate information.
+- Update existing documents instead of creating unnecessary new ones.
+- Use clear, descriptive filenames.
+- Keep plans and session logs concise but complete.
+- Never create randomly named plan files.
+- Treat planning and documentation as part of the implementation, not as optional work.
+- **Artifact lifecycle consistency (POINTER — canonical rule: ES-004.3, `engineering/governance/ES-004-Documentation.md`):** at every slice closure, run the ROLE-BASED synchronization checklist (Runtime: plan status + CONTEXT · Historical: session log, append-only · Reference: dev guide · Decision: ADR status annotations + acceptance record). Synchronization touches only the MUTABLE portion of an artifact — decision text and history are never rewritten.

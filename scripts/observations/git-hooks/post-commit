@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Post-commit observation hook — the MINIMAL automatic step ("observations
+# should happen automatically", user directive 2026-08-04).
+#
+# Runs ONLY the fast observation (test-presence: a git diff, ~instant).
+# Slow collectors (pdepend ~7min, LCOM4 over trees) stay on-demand until the
+# Observation Runtime idea earns its gate. Advisory: never blocks a commit.
+#
+# ⚠️ This repo uses Husky (core.hooksPath = .husky/_), so .git/hooks is IGNORED.
+# Active instrumentation: .husky/post-commit delegates to this script — the
+# version-controlled route every developer shares (diagnosis 2026-08-04).
+# Deactivate: delete .husky/post-commit (this canonical script stays).
+cd "$(git rev-parse --show-toplevel)" || exit 0
+
+# 1. Persist the test-presence observation (stream writer — as always).
+php scripts/observations/test-presence-observer.php HEAD~1..HEAD 2>/dev/null || true
+
+# 2. UNIFIED pipeline on the commit's changed files (migration completed
+#    2026-08-04: this hook predated ObservationRuntime and only ran
+#    test-presence; changed-files analysis is ~100ms, the old "slow
+#    collectors stay on-demand" rationale expired). Display advisories;
+#    persistent recommendation issuance still flows via the observer.
+changed=$(git diff-tree --no-commit-id --name-only -r --diff-filter=AM HEAD | grep '^app/.*\.php$' | grep -v '\.blade\.php$' || true)
+if [ -n "$changed" ]; then
+  # shellcheck disable=SC2086
+  php scripts/observations/observe.php --source=commit $changed 2>/dev/null || true
+fi
+exit 0

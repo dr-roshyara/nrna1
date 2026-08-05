@@ -1,0 +1,25 @@
+# Static Engineering Metrics — spike configuration (advisory tool; plan 20260803-2130)
+# Everything here is an OBSERVATION policy: bands label numbers, they never block builds.
+
+risk:
+  weights:            # normalized within stereotype before weighting
+    cbo: 0.4
+    wmc: 0.4
+    instability: 0.2
+
+# Per-stereotype CBO bands: [ok_up_to, watch_up_to] — above watch => warning.
+# A Controller and a Value Object must never share a baseline.
+thresholds:
+  domain:     { ok: 8,  watch: 15 }
+  model:      { ok: 10, watch: 20 }
+  controller: { ok: 12, watch: 25 }
+  other:      { ok: 10, watch: 20 }
+  provider:   { ok: 40, watch: 80 }   # wiring classes — coupling is their job
+
+watchlist:
+  min_cbo: 15
+  min_wmc: 100
+
+hotspots:
+  git_commits: 300     # look-back window for change frequency
+  min_changes: 5       # watchlist file changed >= this many times => hotspot

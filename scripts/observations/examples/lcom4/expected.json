@@ -1,0 +1,20 @@
+{
+  "_purpose": "Collector Verification Suite — LCOM4 golden fixtures. ANY implementation (PHP today; Python/Java/Rust tomorrow) must produce identical observations on these examples. Language-neutral by design.",
+  "_variant": "Hitz & Montazeri LCOM4: connected components over methods; edges = shared instance variable OR intra-class call.",
+  "_variant_decisions_pinned": {
+    "constructors": "EXCLUDED (__construct/__destruct) — they touch everything and mask splits",
+    "static_methods": "INCLUDED as nodes; a static touching no $this is an isolated component (inflates LCOM4 — known, pinned, revisitable)",
+    "trait_methods": "NOT resolved — only methods declared in the class body are analyzed (known limitation)",
+    "inherited_methods": "NOT included — the class is analyzed in isolation (known limitation)",
+    "magic_methods": "no special handling beyond constructor/destructor exclusion"
+  },
+  "_caution": "Validate the metric before validating the code: values on real classes (e.g. Election=29) are observations pending this suite's conformance, never verdicts.",
+  "_future_layout": "When a second implementation language arrives, this evolves to specification/ + fixtures/ + implementations/{php,python,...} — the specification becomes the source of truth, every implementation executes it. Recorded 2026-08-04; not a refactor instruction.",
+  "cohesive-class.php": [{"class": "CohesiveExample", "value": 1}],
+  "split-class.php": [{"class": "SplitExample", "value": 2}],
+  "call-chain.php": [{"class": "ChainExample", "value": 1}],
+  "constructor-glue.php": [{"class": "ConstructorGlueExample", "value": 2}],
+  "isolated-methods.php": [{"class": "IsolatedExample", "value": 2}],
+  "static-methods.php": [{"class": "StaticExample", "value": 2}],
+  "trait-user.php": [{"class": "TraitUserExample", "value": 1}]
+}

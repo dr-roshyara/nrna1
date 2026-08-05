@@ -803,7 +803,7 @@ $eligible = $service->unassignedEligibleQuery($org, [])->get();
 - [Database Migrations](./migrations.md)
 - [API Reference](./api_reference.md)
 - [Frontend Components](./frontend_components.md)
-- [Testing Guide](./testing.md)
+- [Testing Guide](../../election/real_election/election-administration/testing.md)
 
 ---
 

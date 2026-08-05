@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metrics>
+  <package name="App\Contexts\Demo\Domain">
+    <class fqname="App\Contexts\Demo\Domain\HeavyAggregate" name="HeavyAggregate" cbo="30" ca="4" ce="26" wmc="120" dit="1">
+      <file name="app/Contexts/Demo/Domain/HeavyAggregate.php"/>
+    </class>
+    <class fqname="App\Contexts\Demo\Domain\TinyValueObject" name="TinyValueObject" cbo="2" ca="5" ce="1" wmc="4" dit="0">
+      <file name="app/Contexts/Demo/Domain/TinyValueObject.php"/>
+    </class>
+  </package>
+  <package name="App\Http\Controllers">
+    <class fqname="App\Http\Controllers\BusyController" name="BusyController" cbo="18" ca="0" ce="18" wmc="90" dit="1">
+      <file name="app/Http/Controllers/BusyController.php"/>
+    </class>
+  </package>
+  <package name="App\Providers">
+    <class fqname="App\Providers\WiringServiceProvider" name="WiringServiceProvider" cbo="30" ca="0" ce="30" wmc="3" dit="2">
+      <file name="app/Providers/WiringServiceProvider.php"/>
+    </class>
+  </package>
+  <package name="App\Models">
+    <class fqname="App\Models\PlainModel" name="PlainModel" cbo="6" ca="3" ce="3" wmc="12" dit="1">
+      <file name="app/Models/PlainModel.php"/>
+    </class>
+  </package>
+</metrics>

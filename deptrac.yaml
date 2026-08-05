@@ -1,48 +1,81 @@
-# Deptrac — architecture conformance for the greenfield Core (ADR-T7).
-# Enforces hexagonal layering (Domain<-Application<-Infrastructure) and
-# bounded-context isolation (no direct cross-context domain dependency; the
-# event is the seam — TP-1). Scoped to the greenfield Core to avoid flagging
-# pre-existing contexts; widen as contexts are migrated.
+# Deptrac — architecture conformance for the greenfield Core (ADR-T7 · PB-007 7A).
 #
-# Activate:  composer require --dev deptrac/deptrac
-# Run:       vendor/bin/deptrac analyse --config-file=deptrac.yaml
+# PRINCIPLE (ARB, PB-007): rules are derived from the APPROVED ARCHITECTURE
+# (bounded contexts, hexagonal layers, approved dependencies) — never from the
+# incidental filesystem/package layout. The tool verifies the architecture; the
+# architecture never evolves because the tool guessed something.
+#
+# Approved model (encoded as per-context hexagonal layers — one axis, so no class
+# is in more than one layer; cross-context isolation follows because no context's
+# layers appear in another context's ruleset):
+#   - Hexagonal: Domain <- Application <- Infrastructure (dependencies point inward).
+#   - Bounded contexts (Contestation · Adjudication · Election) collaborate ONLY via
+#     events (TP-1) — no direct cross-context code dependency.
+#   - Shared is a PLATFORM LAYER, not a business layer and not a dumping ground: only
+#     approved cross-context technical concepts (messaging, inbox/outbox,
+#     infrastructure abstractions) — never bounded-context business logic.
+#   - Shared may depend only on itself and approved external libraries; it must
+#     never depend on any bounded context.
+#
+# Distribution note (engineering evidence, PB-007 7A): the canonical
+# `deptrac/deptrac` Composer package is unresolvable against this dependency
+# graph; the officially supported PHAR shim `qossmic/deptrac-shim` (deptrac 1.0.2)
+# is used instead. Same tool, same gate.
+#
+# Uncovered dependencies (ARB 7A refinement 1): the ~90 uncovered targets are
+# APPROVED EXTERNAL PLATFORM DEPENDENCIES — ClockInterface (PB-004 clock ruling),
+# Illuminate\* (framework, Infrastructure layer), BelongsToTenant/TenantContext
+# (app-wide tenant mechanism). Uncovered != approved: these are intentionally
+# outside the analysed paths TODAY; an explicit ExternalPlatform layer is a
+# recorded future refinement so everything becomes covered-or-intentionally-ignored.
+#
+# Shared admission rule (ARB 7A refinement 2): Shared exists ONLY to host technical
+# concepts that would otherwise duplicate across bounded contexts. Business
+# concepts migrate into Shared only through EXPLICIT ARB APPROVAL — Shared must
+# never degrade into a general utility layer.
+#
+# Run (report mode): vendor/bin/deptrac analyse --config-file=deptrac.yaml
 deptrac:
   paths:
     - ./app/Contexts/Contestation
     - ./app/Contexts/Adjudication
+    - ./app/Contexts/Election
+    - ./app/Contexts/Shared
   layers:
-    # --- hexagonal layers ---
-    - name: Domain
-      collectors:
-        - type: directory
-          value: app/Contexts/.*/Domain/.*
-    - name: Application
-      collectors:
-        - type: directory
-          value: app/Contexts/.*/Application/.*
-    - name: Infrastructure
-      collectors:
-        - type: directory
-          value: app/Contexts/.*/Infrastructure/.*
-    # --- bounded contexts ---
-    - name: Contestation
-      collectors:
-        - type: directory
-          value: app/Contexts/Contestation/.*
-    - name: Adjudication
-      collectors:
-        - type: directory
-          value: app/Contexts/Adjudication/.*
+    - name: ContestationDomain
+      collectors: [{ type: directory, value: app/Contexts/Contestation/Domain/.* }]
+    - name: ContestationApplication
+      collectors: [{ type: directory, value: app/Contexts/Contestation/Application/.* }]
+    - name: ContestationInfrastructure
+      collectors: [{ type: directory, value: app/Contexts/Contestation/Infrastructure/.* }]
+    - name: AdjudicationDomain
+      collectors: [{ type: directory, value: app/Contexts/Adjudication/Domain/.* }]
+    - name: AdjudicationApplication
+      collectors: [{ type: directory, value: app/Contexts/Adjudication/Application/.* }]
+    - name: AdjudicationInfrastructure
+      collectors: [{ type: directory, value: app/Contexts/Adjudication/Infrastructure/.* }]
+    - name: ElectionDomain
+      collectors: [{ type: directory, value: app/Contexts/Election/Domain/.* }]
+    - name: ElectionApplication
+      collectors: [{ type: directory, value: app/Contexts/Election/Application/.* }]
+    - name: ElectionInfrastructure
+      collectors: [{ type: directory, value: app/Contexts/Election/Infrastructure/.* }]
+    # Platform layer (single layer; its own purity is fitness-guarded).
+    - name: Shared
+      collectors: [{ type: directory, value: app/Contexts/Shared/.* }]
   ruleset:
-    # Domain depends on nothing (pure PHP). Application on Domain only.
-    # Infrastructure on Domain + Application.
-    Domain: ~
-    Application:
-      - Domain
-    Infrastructure:
-      - Domain
-      - Application
-    # Cross-context: contexts collaborate ONLY via domain events (no direct
-    # code dependency). Empty rulesets => any cross-context import is a violation.
-    Contestation: ~
-    Adjudication: ~
+    # Domain depends on NOTHING (pure PHP — not even Shared).
+    ContestationDomain: ~
+    AdjudicationDomain: ~
+    ElectionDomain: ~
+    # Application on its OWN Domain + the Shared platform.
+    ContestationApplication: [ContestationDomain, Shared]
+    AdjudicationApplication: [AdjudicationDomain, Shared]
+    ElectionApplication: [ElectionDomain, Shared]
+    # Infrastructure on its OWN Domain + Application + the Shared platform.
+    ContestationInfrastructure: [ContestationDomain, ContestationApplication, Shared]
+    AdjudicationInfrastructure: [AdjudicationDomain, AdjudicationApplication, Shared]
+    ElectionInfrastructure: [ElectionDomain, ElectionApplication, Shared]
+    # Shared may depend only on itself (and approved external libraries) — NEVER on
+    # any bounded context (no context layer listed here).
+    Shared: ~

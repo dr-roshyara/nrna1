@@ -268,16 +268,16 @@ developer_guide/
 ## Next Steps for Users
 
 ### Want to Start Using Governance?
-→ Read [INDEX.md](developer_guide/governence_contexts/INDEX.md) → Follow quick start path
+→ Read [INDEX.md](../../../../developer_guide/governence_contexts/INDEX.md) → Follow quick start path
 
 ### Want to Understand the Architecture?
-→ Read [CONTEXT_RELATIONSHIPS.md](developer_guide/governence_contexts/CONTEXT_RELATIONSHIPS.md)
+→ Read [CONTEXT_RELATIONSHIPS.md](../../../../developer_guide/governence_contexts/CONTEXT_RELATIONSHIPS.md)
 
 ### Want Code Examples?
-→ See [IMPLEMENTATION_EXAMPLES.md](developer_guide/governence_contexts/IMPLEMENTATION_EXAMPLES.md)
+→ See [IMPLEMENTATION_EXAMPLES.md](../../../../developer_guide/governence_contexts/IMPLEMENTATION_EXAMPLES.md)
 
 ### Want Complete Reference?
-→ Read [README.md](developer_guide/governence_contexts/README.md)
+→ Read [README.md](../../../../developer_guide/governence_contexts/README.md)
 
 ---
 
@@ -322,12 +322,12 @@ git log --oneline -- developer_guide/governence_contexts/
 
 | Need | Document | Section |
 |------|----------|---------|
-| Quick start | INDEX.md | [Quick Start](developer_guide/governence_contexts/INDEX.md#-quick-start) |
-| Understand Governance | CONTEXT_RELATIONSHIPS.md | [Overview](developer_guide/governence_contexts/CONTEXT_RELATIONSHIPS.md#executive-summary) |
-| API reference | README.md | [REST API](developer_guide/governence_contexts/README.md#rest-api) |
+| Quick start | INDEX.md | [Quick Start](../../../../developer_guide/governence_contexts/INDEX.md#-quick-start) |
+| Understand Governance | CONTEXT_RELATIONSHIPS.md | [Overview](../../../../developer_guide/governence_contexts/CONTEXT_RELATIONSHIPS.md#executive-summary) |
+| API reference | README.md | [REST API](../../../../developer_guide/governence_contexts/README.md#rest-api) |
 | Code examples | IMPLEMENTATION_EXAMPLES.md | Any section |
-| Architecture | README.md | [Architecture](developer_guide/governence_contexts/README.md#architecture) |
-| Troubleshooting | README.md | [Troubleshooting](developer_guide/governence_contexts/README.md#troubleshooting) |
+| Architecture | README.md | [Architecture](../../../../developer_guide/governence_contexts/README.md#architecture) |
+| Troubleshooting | README.md | [Troubleshooting](../../../../developer_guide/governence_contexts/README.md#troubleshooting) |
 
 ---
 
@@ -361,4 +361,4 @@ Developers can now self-serve through comprehensive documentation rather than as
 
 ---
 
-See: [`developer_guide/governence_contexts/INDEX.md`](developer_guide/governence_contexts/INDEX.md) to get started.
+See: [`developer_guide/governence_contexts/INDEX.md`](../../../../developer_guide/governence_contexts/INDEX.md) to get started.

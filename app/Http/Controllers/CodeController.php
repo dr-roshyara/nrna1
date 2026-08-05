@@ -116,7 +116,7 @@ class CodeController extends Controller
 
         // Check basic eligibility
         if (!$this->isUserEligible($user, $request)) {
-            return $this->redirectToDashboard('You are not eligible to vote.');
+            return $this->redirectToDashboard('You are not registered as a voter for this election.');
         }
 
         // Get or create code record for this election
@@ -262,7 +262,7 @@ class CodeController extends Controller
 
         // Check basic eligibility
         if (!$this->isUserEligible($user, $request)) {
-            return $this->redirectToDashboard('You are not eligible to vote.');
+            return $this->redirectToDashboard('You are not registered as a voter for this election.');
         }
 
         // Get code record for this election

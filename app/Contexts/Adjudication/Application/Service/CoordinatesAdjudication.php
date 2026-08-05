@@ -6,6 +6,8 @@ namespace App\Contexts\Adjudication\Application\Service;
 
 use App\Contexts\Adjudication\Application\Command\IssueDeterminationCommand;
 use App\Contexts\Adjudication\Application\Port\EventOutbox;
+use App\Contexts\Adjudication\Application\Port\IdentityGenerator;
+use App\Contexts\Shared\Application\Messaging\EventProvenance;
 use App\Contexts\Adjudication\Domain\Determination\Determination;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationId;
 use App\Contexts\Adjudication\Domain\Exception\DeterminationAlreadyIssued;
@@ -28,6 +30,7 @@ final class CoordinatesAdjudication implements AdjudicationService
     public function __construct(
         private readonly DeterminationRepository $determinations,
         private readonly EventOutbox $outbox,
+        private readonly IdentityGenerator $identities,
     ) {
     }
 
@@ -35,8 +38,17 @@ final class CoordinatesAdjudication implements AdjudicationService
     {
         // Precondition (business decision made HERE, not in the repository):
         // logical uniqueness — one determination per challenge.
-        if ($this->determinations->findByChallengeRef($command->challengeRef) !== null) {
-            throw DeterminationAlreadyIssued::forChallenge($command->challengeRef);
+        $existing = $this->determinations->findByChallengeRef($command->challengeRef);
+        if ($existing !== null) {
+            // R-84: the refusal carries the EXISTING determination's minimal identity.
+            // The guard is unchanged in what it FORBIDS; it is changed only in what it
+            // REPORTS. §12 obliges the requester to reconcile, and it cannot reconcile
+            // against a bare challenge reference.
+            throw DeterminationAlreadyIssued::forExistingDetermination(
+                $command->challengeRef,
+                $existing->id(),
+                $existing->issuedByAuthority(),
+            );
         }
 
         $id = $this->determinations->nextIdentity();
@@ -47,16 +59,23 @@ final class CoordinatesAdjudication implements AdjudicationService
             $command->issuedByAuthority,
             $command->jurisdiction,
             $command->evidenceEnvelopeRef,
+            $command->contestedOutcome,
         );
         $determination->issue(
             $command->outcome,
             $command->legitimacy,
             $command->reason,
+            $command->evidenceSet,
             $command->occurredAt,
         );
 
         $this->determinations->save($determination);
-        $this->outbox->enqueue(...$determination->pullEvents());
+        // Chain start (raise path not yet implemented): mint the loop's correlation here.
+        // When ChallengeRouted consumption lands, this becomes EventProvenance::fromConsumed.
+        $this->outbox->enqueue(
+            EventProvenance::start($this->identities->next()),
+            ...$determination->pullEvents(),
+        );
 
         return $id;
     }

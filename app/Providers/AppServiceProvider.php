@@ -26,6 +26,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Event Registry (Blueprint Push B §6, §16 step 4 · ADR-T3/T5):
+        // container singleton — each context's provider registers its own
+        // hydrators; adding a context event never edits shared infrastructure.
+        $this->app->singleton(\App\Contexts\Shared\Infrastructure\Outbox\EventHydratorRegistry::class);
+
+        // Inbox Handler Registry (Blueprint Push B §6, §16 step 6 · ADR-T4 · PB-003-C4):
+        // container singleton — consuming contexts register their inbox handlers
+        // from their own providers; adding a context never edits shared infrastructure.
+        $this->app->singleton(\App\Contexts\Shared\Infrastructure\Inbox\InboxHandlerRegistry::class);
+
+        // Messaging delivery capability (ADR-MP-06 · PB-006-6A): Consumer Discovery is a
+        // Messaging-owned port; the registry is the implementation behind it.
+        $this->app->bind(
+            \App\Contexts\Shared\Infrastructure\Messaging\ConsumerResolver::class,
+            \App\Contexts\Shared\Infrastructure\Messaging\RegistryConsumerResolver::class
+        );
+
         // Membership context: Committee creation ports
         $this->app->bind(
             \App\Contexts\Membership\Application\Committee\Ports\CommitteeRepositoryPort::class,
@@ -317,6 +334,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Messaging delivery (ADR-MP-06, D-2): the dispatcher is a LISTENER on the
+        // relay's dispatched IntegrationEvent — the relay stays byte-identical; the
+        // dispatcher is simply another consumer of relay output.
+        \Illuminate\Support\Facades\Event::listen(
+            \App\Contexts\Shared\Infrastructure\Outbox\IntegrationEvent::class,
+            [\App\Contexts\Shared\Infrastructure\Messaging\IntegrationEventDispatcher::class, 'handle']
+        );
+
         // Load migrations from context directories
         $this->loadMigrationsFrom(app_path('Contexts/Membership/Infrastructure/Database/Migrations/Tenant'));
         $this->loadMigrationsFrom(app_path('Contexts/Geography/Infrastructure/Database/Migrations'));

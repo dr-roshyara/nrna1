@@ -122,10 +122,10 @@ Each voter has their own log file containing:
 
 | Component | Technology | Purpose |
 |-----------|------------|---------|
-| **Backend** | Laravel 9.x | PHP framework, business logic |
-| **Frontend** | Vue 3 + Inertia.js | Reactive SPA experience |
-| **Database** | MySQL/PostgreSQL | Data persistence |
-| **Authentication** | Laravel Fortify | Login, registration, 2FA |
+| **Backend** | Laravel 11 (PHP 8.2) | PHP framework, business logic |
+| **Frontend** | Vue 3 + Inertia.js 2.0 | Reactive SPA experience |
+| **Database** | PostgreSQL | Data persistence |
+| **Authentication** | Laravel Sanctum + Socialite | Login, API tokens, social auth |
 | **Permissions** | Spatie Permission | Role-based access control |
 | **Multi-tenancy** | Custom implementation | Organisation isolation |
 | **Testing** | PHPUnit | TDD-first approach |
@@ -372,27 +372,16 @@ In an era of increasing remote participation, the ability to conduct **secure, v
 
 ## 🗂️ **Development Practices**
 
-### **Plan Storage Convention**
+### **Plan Storage Convention (POINTER — canonical rule: ES-004.2)**
 
-Implementation plans are stored in `./claude/plans/` with datetime-stamped filenames.
+Plans follow **ES-004.2** (`engineering/governance/ES-004-Documentation.md`): stored in `./docs/plans/`, named `YYYYMMDD-HHMM-<what_is_it_about>-plan.md` (e.g. `20260711-1830-evidence-context-strategic-discovery-plan.md`).
 
-**Naming Convention:**
-```
-./claude/plans/YYYYMMDD-HHMM-<phase-or-task-name>.md
-```
+*(Existing plans under `claude/plans/` and `.claude/plans/` stand as historical records, no migration.)*
 
-**Example:**
-```
-./claude/plans/20260514-1200-phase-b-corrections.md
-./claude/plans/20260514-1430-voting-eligibility-policy.md
-./claude/plans/20260515-0900-elections-gateway-integration.md
-```
-
-**Purpose:**
+**Purpose (unchanged):**
 - Each major implementation phase gets its own plan document
 - Datetime stamps preserve chronological history
 - Plans are committed to git alongside implementation
-- Enables easy reference in commit messages: "see ./claude/plans/20260514-1200-..."
 
 ---
 

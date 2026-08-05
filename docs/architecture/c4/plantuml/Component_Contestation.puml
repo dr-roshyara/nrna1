@@ -1,0 +1,39 @@
+@startuml Component_Contestation
+!include <C4/C4_Component>
+title Component (C3) — Contestation Context [Domain IMPLEMENTED · App/Infra = PB-005 PLANNED]
+
+Container_Boundary(ctx, "Contestation (app/Contexts/Contestation)") {
+  Boundary(appl, "Application Layer [PLANNED PB-005]") {
+    Component(raiseH, "RaiseChallenge handler", "planned", "orchestrates raise/admit/route")
+    Component(adjH, "AdjudicateChallenge handler", "planned", "reacts to DeterminationIssued (via Inbox) → Challenge::adjudicate(); on Dismissed also resolve() (T4+T5')")
+    Component(resH, "ResolveChallenge handler", "planned", "reacts to ElectionCorrectionApplied (via Inbox) → Challenge::resolve()")
+  }
+  Boundary(dom, "Domain Layer [IMPLEMENTED — pure PHP]") {
+    Component(agg, "Challenge (Aggregate Root)", "raise/admit/dismiss/beginInvestigation/route/adjudicate/resolve/lapse; guard→mutate→event; illegal transition = throw, no mutation")
+    Component(state, "ChallengeState", "enum", "Raised/Admitted/Investigating/Routed/Adjudicated/Resolved/Dismissed/Lapsed")
+    Component(vos, "Value Objects", "ChallengeId · DeterminationId (LOCAL, ADR-T16) · RaiserStandingRef · TargetRef · SubmittedContent")
+    Component(events, "Domain Events", "ChallengeRaised/Admitted/Dismissed/Routed/Adjudicated/Resolved")
+    Component(repoPort, "ChallengeRepository (Port)", "interface", "nextIdentity/save/get/find — implementation MISSING (Gap G-4)")
+    Component(exc, "IllegalChallengeTransition, ChallengeNotFound", "exceptions")
+  }
+  Boundary(infra, "Infrastructure Layer [PLANNED PB-005 — Gap G-4]") {
+    Component(eloq, "EloquentChallengeRepository + challenges migration + ContestationServiceProvider + OutboxAdapter + Hydrators", "planned")
+  }
+}
+ComponentDb_Ext(outbox, "outbox_events", "shared table")
+Component_Ext(inbox, "Inbox wrapper", "Shared Infrastructure — PB-003")
+
+Rel(raiseH, agg, "invokes")
+Rel(adjH, agg, "adjudicate()/resolve()")
+Rel(resH, agg, "resolve()")
+Rel(agg, events, "records")
+Rel(raiseH, repoPort, "save via port")
+Rel(eloq, repoPort, "implements")
+Rel(eloq, outbox, "appends events in same txn (ADR-T1)")
+Rel(adjH, inbox, "consumes through (idempotent, ADR-T4)")
+Rel(resH, inbox, "consumes through")
+
+SHOW_LEGEND()
+' Dependency direction: Infrastructure → Domain; Application → Domain; Domain → nothing.
+' Policies (Standing/Content/Admissibility/Routing — Round 50-06) are designed, not yet implemented.
+@enduml

@@ -1,0 +1,35 @@
+# Documentation placement — CONFIGURATION ONLY.
+# Policy home: docs/adr/ADR_20260801_1740_ Documentation Roots and Artifact Placement.md
+# Consumed by: scripts/doc-placement.php
+# This file stores WHAT. It never explains WHY.
+version: 1
+
+domains:
+  publicdigit:
+    label: PublicDigit
+    root: docs/publicdigit
+  knowledgeos:
+    label: KnowledgeOS
+    root: docs/knowledgeos
+  pks:
+    label: PKS — Product Knowledge System
+    root: docs/pks
+
+# First match wins. location: a path | domain_root | PENDING
+rules:
+  - id: session-state
+    match: { scope: session-state }
+    location: .claude
+    ref: ES-005.1
+  - id: cross-product-qualified
+    match: { scope: cross-product, maturity: [qualified, adopted] }
+    location: engineering
+    ref: ES-005.3
+  - id: cross-product-research
+    match: { scope: cross-product, maturity: research }
+    location: PENDING
+    ref: ADR:OQ-2
+  - id: product-specific
+    match: { scope: product-specific }
+    location: domain_root
+    ref: ADR:Decision

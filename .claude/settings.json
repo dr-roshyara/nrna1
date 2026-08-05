@@ -2,35 +2,143 @@
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Bash",
+        "matcher": "Bash|PowerShell",
         "hooks": [
           {
             "type": "command",
-            "command": "bash .claude/scripts/db-safety-check.sh \"$CLAUDE_TOOL_INPUT\""
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/db-safety-check.sh \"$CLAUDE_TOOL_INPUT\""
           }
         ]
       },
       {
-        "matcher": "PowerShell",
+        "matcher": "Write|Edit",
         "hooks": [
           {
             "type": "command",
-            "command": "bash .claude/scripts/db-safety-check.sh \"$CLAUDE_TOOL_INPUT\""
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/project-knowledge-guard.sh \"$CLAUDE_TOOL_INPUT\"",
+            "statusMessage": "Checking project-memory boundary"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/discipline-gate-reminder.sh \"$CLAUDE_TOOL_INPUT\""
+          },
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/ddd-principles-reminder.sh \"$CLAUDE_TOOL_INPUT\""
+          },
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/engineering-placement-guard.sh \"$CLAUDE_TOOL_INPUT\""
           }
         ]
       }
     ],
     "PostToolUse": [
       {
-        "matcher": "PlanCreate",
+        "matcher": "Write|Edit",
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/hooks/timestamp-plan.sh"
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/session-changes-logger.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/claude-code-trigger.sh",
+            "statusMessage": "KnowledgeOS: observing changed class"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/inject-context.sh",
+            "statusMessage": "Loading project context (.claude/CONTEXT.md)"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/session-log-reminder.sh"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/dev-guide-reminder.sh"
           }
         ]
       }
     ]
   },
-  "plansDirectory": "./claude/plans"
+  "plansDirectory": "./.claude/plans",
+  "autoMemoryEnabled": false,
+  "enabledPlugins": {
+    "skill-creator@claude-plugins-official": true
+  },
+  "permissions": {
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(rm -r *)",
+      "Bash(chmod *)",
+      "Bash(chown *)",
+      "Bash(git push --force*)",
+      "Bash(git reset --hard*)",
+      "Bash(git clean *)",
+      "Bash(php artisan migrate:fresh*)",
+      "Bash(php artisan migrate:refresh*)",
+      "Bash(php artisan db:wipe*)",
+      "Bash(php artisan migrate --seed*)",
+      "Read(.env)",
+      "Read(.env.back*)",
+      "Read(.env.backup*)",
+      "Read(.env.testing)",
+      "Read(**/*.key)",
+      "Read(**/*.pem)",
+      "Read(**/*credentials*)",
+      "Read(storage/**)"
+    ],
+    "ask": [
+      "Edit(docs/implementation/PKS_Phase_IIB_Architecture_Definition.md)",
+      "Edit(docs/implementation/PKS_Phase_IIB_Architecture_Fidelity_Verification.md)",
+      "Edit(docs/implementation/PKS_Phase_IIC_C4_Architecture_Views.md)",
+      "Edit(docs/implementation/PKS_Phase_II_M7_Strategic_Relationship_Model.md)",
+      "Edit(docs/implementation/PKS_Phase_II_M8_Strategic_Modeling_Report.md)",
+      "Edit(docs/implementation/PKS_Phase_II_Retrospective.md)",
+      "Edit(docs/implementation/PKS_Phase_II_Methodology_Baseline_v1_*.md)",
+      "Edit(docs/implementation/PKS_Methodology_Refinement_Candidates.md)",
+      "Edit(docs/implementation/PKS_Knowledge_Integrity_Model.md)",
+      "Edit(docs/implementation/PKS_Knowledge_Contract_Review_Method.md)",
+      "Edit(docs/implementation/PKS_ARB_Review_Discipline.md)",
+      "Edit(engineering/governance/ES-*.md)",
+      "Edit(engineering/governance/STANDARDS_INDEX.md)",
+      "Edit(engineering/architecture/adr/*.md)",
+      "Edit(docs/implementation/PKS_Phase_II_Method_Certification_Assessment.md)",
+      "Edit(docs/implementation/PKS_Phase_II_CDR*.md)",
+      "Edit(docs/implementation/PKS_Phase_II_MCA*.md)",
+      "Edit(docs/implementation/PKS_Phase_II_Governance_Baseline_Complete.md)",
+      "Edit(docs/implementation/PKS_Phase_II_Baseline_Freeze.md)",
+      "Edit(docs/implementation/PKS_BRM_1_Decision.md)",
+      "Write(docs/implementation/PKS_*)",
+      "Write(engineering/governance/*)"
+    ],
+    "allow": [
+      "Edit(.claude/CONTEXT.md)",
+      "Edit(.claude/sessions/*.md)",
+      "Edit(.claude/plans/*.md)",
+      "Edit(docs/plans/*.md)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git add*)"
+    ]
+  }
 }

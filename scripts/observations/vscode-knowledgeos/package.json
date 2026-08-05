@@ -1,0 +1,12 @@
+{
+    "name": "knowledgeos",
+    "displayName": "KnowledgeOS — live advisory feedback",
+    "description": "On save, runs the KnowledgeOS observation runtime and shows advisory recommendations. Ephemeral: displays advice, records nothing.",
+    "version": "0.1.0",
+    "publisher": "publicdigit",
+    "engines": { "vscode": "^1.60.0" },
+    "main": "./extension.js",
+    "activationEvents": ["onLanguage:php"],
+    "contributes": {},
+    "private": true
+}

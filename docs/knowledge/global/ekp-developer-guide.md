@@ -123,7 +123,7 @@ npm run knowledge-graph           # regenerate docs/knowledge/portal/graph/
 
 | Folder | Role | Lifecycle |
 |---|---|---|
-| [`architecture/`](../../../architecture/README.md) | **Think** — exploration, AI work, drafts | draft / discovery |
+| [`architecture/`](../../../architecture_legacy/README.md) | **Think** — exploration, AI work, drafts | draft / discovery |
 | [`docs/`](../../) | **Official Truth** — ADRs, decisions, baselines | approved / baseline |
 | [`developer_guide/`](../../../developer_guide/) | **Build** — operational app guides | authoritative (operational) |
 

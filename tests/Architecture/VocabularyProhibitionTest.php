@@ -29,7 +29,9 @@ class VocabularyProhibitionTest extends TestCase
         $forbidden = ['allow', 'deny', 'authorize', 'permit', 'capability', 'eligible', 'vote', 'trusted', 'untrusted'];
         $files = $this->getAllPhpFiles('app/Domain/Election/Security/Simplified/Interpretation');
 
-        if (empty($files)) return; // Skip if directory doesn't exist
+        if (empty($files)) {
+            $this->markTestSkipped('Layer 3 (Interpretation) directory does not exist yet');
+        }
 
         foreach ($files as $file) {
             $content = file_get_contents($file);

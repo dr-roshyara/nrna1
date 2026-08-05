@@ -1,0 +1,37 @@
+@startuml Component_Voting_Evidence_Appointment
+!include <C4/C4_Component>
+title Component (C3) — Voting · Evidence · Appointment [DESIGNED, NOT IMPLEMENTED in greenfield]
+
+' Source: Round 50-01/02 (aggregates), 50-05 (events), 50-06 (policies), 50-07 (state
+' machines), Traceability Matrix rows. Operational legacy voting code exists in the old
+' architecture; these diagrams show the APPROVED greenfield design awaiting strangler migration.
+
+Container_Boundary(voting, "Voting Context [DESIGNED]") {
+  Component(vote, "Vote (Aggregate Root)", "Draft→Cast→Verified/Abandoned (50-07)")
+  Component(vevt, "VoteAccepted", "Domain Event (Catalog v1.0)")
+  Component(vpol, "EligibilityPolicy · AdmissibilityPolicy · AnonymityPolicy", "policies", "AnonymityPolicy realizes VO-1/CI-5: NO voter↔vote linkage — constitutional, always-invariant")
+  Component(vrepo, "VoteRepository (Port)", "interface")
+}
+Container_Boundary(evidence, "Evidence Context [DESIGNED]") {
+  Component(env, "EvidenceEnvelope (Aggregate Root)", "Open→Frozen (50-07)")
+  Component(eevt, "EvidenceRecorded", "Domain Event")
+  Component(epol, "RecordingPolicy · ImmutabilityPolicy · HashCalculation", "policies", "evidence referenced by hash only")
+  Component(erepo, "EvidenceRepository (Port)", "interface")
+}
+Container_Boundary(appointment, "Appointment Context [DESIGNED]") {
+  Component(mandate, "Mandate (Aggregate Root)", "Active→Revoked/Expired (50-07)")
+  Component(mevt, "MandateGranted · MandateRevoked", "Domain Events")
+  Component(mpol, "AuthorityPolicy · ScopePolicy · LifecyclePolicy", "policies", "scope/holder shape pending Mandate-vs-Committee question (open)")
+  Component(mrepo, "MandateRepository (Port)", "interface")
+}
+Component_Ext(adjRef, "Adjudication", "consumes EvidenceEnvelopeRef (opaque, ADR-T16)")
+
+Rel(vote, vevt, "records")
+Rel(env, eevt, "records")
+Rel(mandate, mevt, "records")
+Rel(adjRef, env, "references by hash ref only — never loads across boundary")
+
+SHOW_LEGEND()
+' NOT Voting: DeterminationIssued is explicitly NOT consumed by Voting (Catalog v1.0) —
+' corrections are anonymity-bounded (ContainedOnly): votes can never be un-cast.
+@enduml

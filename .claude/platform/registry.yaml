@@ -1,0 +1,333 @@
+# PublicDigit AI Engineering Platform — Platform Registry
+#
+# RUNTIME CONFIGURATION, machine-readable (ARB amendment 1, 2026-07-08).
+# Human documentation is GENERATED from this file — never the reverse.
+# Governed by ADR-AIP-01 (Baseline v1.0 — Reference Implementation Pending).
+#
+# Identity rule (ARB C1 review, 2026-07-08): components carry stable ids
+# CMP-nnn, assets carry stable ids AST-nnn. Paths change; ids never do.
+# ADRs and reviews reference ids, not paths.
+#
+# Registry-first workflow (ARB strategic rule, 2026-07-08 — BINDING):
+#   1. register the component/asset (with full five-question traceability)
+#   2. review + approve the registry entry
+#   3. implement the artifact
+#   4. verify the implementation matches the registered intent
+# Every asset answers the five questions (R-17): capability -> bounded context
+# -> architecture principle -> platform decision -> ADR. An asset that cannot
+# answer them shall not be registered — and shall not exist.
+# Changes: governed construction slices only (plan + review + merge, R-21).
+# Keep this file small, authoritative, machine-readable. No documentation here.
+
+schema:
+  version: 1
+  name: publicdigit-platform-registry
+
+platform:
+  name: publicdigit-ai-engineering-platform
+  baseline:
+    adr: ADR-AIP-01
+    designation: "Baseline v1.0 - Reference Implementation Pending"
+  iteration: 1
+  # OI-1 renames apply by supersession (ARB 2026-07-08: OI-1 does not block construction)
+  vocabulary: engineering/architecture/baseline/Phase-02.6-Ubiquitous-Language.md
+  # ARB amendment 3 (2026-07-08): knowledge loads before rules (rules depend on knowledge, never the reverse)
+  loading_order: [configuration, registry, knowledge, rules, hooks, commands, agents]
+  # Normalized runtime moments (enum) — the only legal values for assets.runtime_moments:
+  runtime_moment_enum: [SESSION_START, PRE_ACTION, POST_ARTIFACT, SESSION_END, ON_DEMAND]
+
+# Components are ABSTRACTIONS (Phase-03A section 1) with stable identity and
+# their own version. A component is never bound to a technology; concrete
+# scripts/files are its *implementations* (ARB amendment 2).
+# bounded_context = architectural placement · owner = governance accountability.
+components:
+  - id: CMP-001
+    name: composition_root
+    version: 1.0
+    bounded_context: none            # the root wires contexts; owns no domain
+    owner: Architecture Review Board
+    status: adopted
+
+  - id: CMP-002
+    name: session_manager
+    version: 1.0
+    bounded_context: session-continuity
+    owner: Session Continuity
+    realizes: [CAP-01, CAP-02]
+    status: adopted
+
+  - id: CMP-003
+    name: knowledge_manager
+    version: 0.0                     # not yet constructed
+    bounded_context: knowledge-governance
+    owner: Knowledge Governance
+    realizes: [CAP-03]
+    status: deferred                 # Iteration 1: plan files declare their reading lists; no gap evidenced by PB-004
+
+  - id: CMP-004
+    name: workflow_engine
+    version: 1.0
+    bounded_context: implementation-guidance
+    owner: Implementation Guidance
+    realizes: [CAP-05, CAP-06]
+    status: adopted                  # minimal form: tripwires + plans/progress convention
+
+  - id: CMP-005
+    name: verification_engine
+    version: 0.1                     # guard surface adopted; gate execution planned (C3)
+    bounded_context: verification-evidence
+    owner: Verification & Evidence
+    realizes: [CAP-07, CAP-08, CAP-09]
+    status: under-construction
+    implementations:
+      - asset: AST-007               # db-safety-check.sh — guard surface (Tier-1 blocking), adopted
+      - asset: AST-010               # run-gates.sh — gate execution + evidence recording, planned (slice C3)
+
+  - id: CMP-006
+    name: review_engine
+    version: 0.0
+    bounded_context: adversarial-review-support
+    owner: Adversarial Review Support
+    realizes: [CAP-11]
+    status: deferred                 # PB-004 reviews are human; automation waits for evidenced recurring need
+
+  - id: CMP-007
+    name: drafting_studio
+    version: 1.0
+    bounded_context: design-decision-support
+    owner: Design & Decision Support
+    realizes: [CAP-10, CAP-12]
+    status: adopted-by-reference     # consumes frozen templates in docs/; creates no parallel copies
+
+  - id: CMP-008
+    name: platform_registry
+    version: 1.0
+    bounded_context: design-decision-support
+    owner: Design & Decision Support
+    realizes: [CAP-13]
+    status: active
+    implementations:
+      - asset: AST-009               # this file
+
+# Adoption states (ARB amendment 4): adopted | verify | deprecated | planned.
+# Nothing is part of Baseline v1.0 automatically — each asset carries the
+# VERIFY evidence that earned its adoption. assets.component references CMP id.
+assets:
+  - id: AST-001
+    path: .claude/settings.json
+    component: CMP-001
+    adoption: adopted
+    verified:
+      date: 2026-07-08
+      method: "full read + wiring trace (Iteration 1 C1)"
+    runtime_moments: [SESSION_START, PRE_ACTION, POST_ARTIFACT, SESSION_END]
+    trace:
+      capability: CAP-13
+      context: design-decision-support
+      principle: AIP-03
+      decision: PD-12
+      adr: ADR-AIP-01
+    notes: "PlanCreate hook references machine-local ~/.claude/hooks/timestamp-plan.sh — relocation in slice C2 (AIP-03)"
+
+  - id: AST-002
+    path: .claude/scripts/inject-context.sh
+    component: CMP-002
+    adoption: adopted
+    verified:
+      date: 2026-07-08
+      method: "full read (Iteration 1 C1) — deterministic plan resolution (CONTEXT.md Plan-line authority), self-healing structure, governed sources only"
+    runtime_moments: [SESSION_START]
+    trace:
+      capability: CAP-01
+      context: session-continuity
+      principle: AIP-03
+      decision: PD-18
+      adr: ADR-AIP-01
+
+  - id: AST-003
+    path: .claude/scripts/session-changes-logger.sh
+    component: CMP-002
+    adoption: adopted
+    verified:
+      date: 2026-07-08
+      method: "full read (Iteration 1 C1) — recursion-safe, repo-relative fact log, derived state json"
+    runtime_moments: [POST_ARTIFACT]
+    trace:
+      capability: CAP-02
+      context: session-continuity
+      principle: AIP-03
+      decision: PD-16
+      adr: ADR-AIP-01
+
+  - id: AST-004
+    path: .claude/scripts/session-log-reminder.sh
+    component: CMP-002
+    adoption: adopted
+    governance_tier: 2               # non-blocking reminder
+    verified:
+      date: 2026-07-08
+      method: "full read (Iteration 1 C1) — fires only on real staleness; discussion sessions silent"
+    runtime_moments: [SESSION_END]
+    trace:
+      capability: CAP-02
+      context: session-continuity
+      principle: AIP-03
+      decision: PD-19
+      adr: ADR-AIP-01
+
+  - id: AST-005
+    path: .claude/scripts/discipline-gate-reminder.sh
+    component: CMP-004
+    adoption: adopted
+    governance_tier: 2
+    verified:
+      date: 2026-07-08
+      method: "full read (Iteration 1 C1) — triggers only on NEW tests/** or app/**.php; edits silent; never blocks"
+    runtime_moments: [PRE_ACTION]
+    trace:
+      capability: CAP-06
+      context: implementation-guidance
+      principle: AIP-09
+      decision: PD-13
+      adr: ADR-AIP-01
+
+  - id: AST-006
+    path: .claude/scripts/dev-guide-reminder.sh
+    component: CMP-004
+    adoption: adopted
+    governance_tier: 2
+    verified:
+      date: 2026-07-08
+      method: "full read (Iteration 1 C1) — fires only when app/ or migrations changed and no developer_guide/ touched"
+    runtime_moments: [SESSION_END]
+    trace:
+      capability: CAP-05
+      context: implementation-guidance
+      principle: AIP-09
+      decision: PD-19
+      adr: ADR-AIP-01
+
+  - id: AST-007
+    path: .claude/scripts/db-safety-check.sh
+    component: CMP-005
+    adoption: adopted
+    governance_tier: 1               # blocking gate
+    verified:
+      date: 2026-07-08
+      method: "full read (Iteration 1 C1) — blocks migrate:fresh/refresh/db:seed unless testing env; observation — strict mode + positional arg assumes CLAUDE_TOOL_INPUT always set (holds as wired)"
+    runtime_moments: [PRE_ACTION]
+    trace:
+      capability: CAP-09
+      context: verification-evidence
+      principle: AIP-06
+      decision: PD-06
+      adr: ADR-AIP-01
+
+  - id: AST-008
+    path: "~/.claude/hooks/timestamp-plan.sh"
+    component: CMP-001
+    adoption: deprecated
+    verified:
+      date: 2026-07-08
+      method: "existence check (Iteration 1 C1) — machine-local, outside the repository"
+    trace:
+      capability: CAP-13
+      context: design-decision-support
+      principle: AIP-03
+      decision: PD-12
+      adr: ADR-AIP-01
+    notes: "violates AIP-03 (hidden machine state) and Phase-03A section 3 (project scope authoritative); superseded by in-repo relocation in slice C2. R-36 (2026-07-09): removal scheduled for the NEXT release (deprecate -> remove; one release cycle for any remaining local consumer to migrate). UNWIRED from .claude/settings.json 2026-07-11 by explicit ARB retrospective decision D-2 (EPIC-001 retrospective; supersedes C2 sequencing for the unwire step only — machine-local file removal stays with the R-36 release cycle)"
+
+  - id: AST-009
+    path: .claude/platform/registry.yaml
+    component: CMP-008
+    adoption: adopted
+    verified:
+      date: 2026-07-08
+      method: "self-registration (Iteration 1 C1, ARB-accepted); parse + five-question + falsifiability checks recorded in session log"
+    runtime_moments: [SESSION_START, ON_DEMAND]
+    trace:
+      capability: CAP-13
+      context: design-decision-support
+      principle: AIP-12
+      decision: PD-13
+      adr: ADR-AIP-01
+
+  - id: AST-010
+    path: .claude/scripts/run-gates.sh
+    component: CMP-005
+    adoption: planned                # registry-first workflow: registered BEFORE implementation (slice C3)
+    runtime_moments: [ON_DEMAND]
+    trace:
+      capability: CAP-07
+      context: verification-evidence
+      principle: AIP-01
+      decision: PD-16
+      adr: ADR-AIP-01
+    notes: "first implementation of the Verification Engine's gate execution — never the engine itself (ARB amendment 2). Measuring instrument, no interpretation (R-26): run -> capture output -> PASS/FAIL -> stop; no explanations/recommendations/summaries inside the instrument"
+
+  - id: AST-012
+    path: .claude/CLAUDE.md
+    component: CMP-004
+    adoption: adopted
+    governance_tier: 3             # standing rules / doctrine surface (advisory text, gates live elsewhere)
+    verified:
+      date: 2026-07-08
+      method: "registered at first governed modification (registry-first backfill — asset predates the registry, was listed in C1 plan REUSE table without an AST id). Modification: added EP-01 Plan First POINTER only; rule text lives once in Implementation_Process_v1.1_Draft.md (rules-live-once)"
+    runtime_moments: [SESSION_START]
+    trace:
+      capability: CAP-06
+      context: implementation-guidance
+      principle: AIP-09
+      decision: PD-13
+      adr: ADR-AIP-01
+
+  - id: AST-013
+    path: .claude/platform/OPERATING_INSTRUCTIONS.md
+    component: CMP-004
+    adoption: adopted
+    governance_tier: 3             # operating doctrine for the AI engineer during Construction; binding by explicit ARB adoption
+    verified:
+      date: 2026-07-08
+      method: "verbatim record of ARB-issued operating instructions (explicit adoption, session log 2026-07-08); registered at creation (registry-first); revised same day merging the ARB Evidence-First rules (default-temporary, four economies, DDD-think/TDD-implement/Clean-Hex-structure mindset, success criterion) — one asset, no new artifacts"
+    runtime_moments: [SESSION_START]
+    trace:
+      capability: CAP-06
+      context: implementation-guidance
+      principle: AIP-14
+      decision: PD-13
+      adr: ADR-AIP-01
+    notes: "R-36 (2026-07-09, ARB Promotion Review): appended section 'Promoted Engineering Behaviours' — 6 one-line reasoning behaviours promoted from repeated PB-004/005/006 evidence (AIP-13 amendment path; approved with refinements). Full promotion matrix: claude/plans/swirling-jingling-blossom.md + session log 2026-07-09"
+
+  # Consumed by reference (no platform copies; Drafting Studio source):
+  - id: AST-011
+    path: docs/implementation/IDD_Prompt_Template_Push_Implementation_Design.md
+    component: CMP-007
+    adoption: adopted
+    verified:
+      date: 2026-07-08
+      method: "authority check — frozen project artifact, consumed unchanged"
+    runtime_moments: [ON_DEMAND]
+    trace:
+      capability: CAP-12
+      context: design-decision-support
+      principle: AIP-09
+      decision: PD-13
+      adr: ADR-AIP-01
+
+  - id: AST-014
+    path: .claude/scripts/ddd-principles-reminder.sh
+    component: CMP-004
+    adoption: adopted
+    governance_tier: 2
+    verified:
+      date: 2026-07-26
+      method: "manual 4-case test at creation — Domain-layer file fires once per session-day (marker); second same-day trigger silent; non-Domain path silent; empty input silent; never blocks"
+    runtime_moments: [PRE_ACTION]
+    trace:
+      capability: CAP-06
+      context: implementation-guidance
+      principle: AIP-09
+      decision: PD-13
+      adr: ADR-AIP-01
+    notes: "Ordered by explicit DA ruling 2026-07-26 (with the R-39 early promotion of the DDD Tactical Governance Principles). Non-blocking reminder of the 7 principles when tactical-DDD surface files (app/Contexts/*/Domain/, app/Domain/) are created or edited. Canonical rules: engineering/knowledge/methodology/DDD_Tactical_Governance_Principles.md — the hook points, never restates. Matrix note: the 'zero new hooks' position was evidence-based default; this hook exists by explicit DA order, the override path the matrix itself names."

@@ -44,10 +44,18 @@ echo ""
 # ──────────────────────────────────────────────
 # Read baseline
 # ──────────────────────────────────────────────
+# Fail-closed: refuse to run on unreadable policy (EG-002a)
+source "$SCRIPT_DIR/lib/config-guard.sh"
+
 BASELINE_BUTTONS=$(jq -r '.baseline.raw_button_tags // 0' "$CONFIG_FILE")
 BASELINE_INPUTS=$(jq -r '.baseline.raw_input_tags // 0' "$CONFIG_FILE")
 BASELINE_SELECTS=$(jq -r '.baseline.raw_select_tags // 0' "$CONFIG_FILE")
 BASELINE_TEXTAREAS=$(jq -r '.baseline.raw_textarea_tags // 0' "$CONFIG_FILE")
+
+require_int ".baseline.raw_button_tags" "$BASELINE_BUTTONS"
+require_int ".baseline.raw_input_tags" "$BASELINE_INPUTS"
+require_int ".baseline.raw_select_tags" "$BASELINE_SELECTS"
+require_int ".baseline.raw_textarea_tags" "$BASELINE_TEXTAREAS"
 
 EXCLUDED_DIRS=$(jq -r '.excluded_dirs[] // empty' "$CONFIG_FILE" | tr -d '\r')
 EXCLUDED_FILES=$(jq -r '.excluded_files[] // empty' "$CONFIG_FILE" | tr -d '\r')
@@ -106,6 +114,7 @@ echo "✅ Design System Component Usage:"
 echo "────────────────────────────────"
 
 COMPONENT_COUNT=$(jq '.components | length' "$CONFIG_FILE")
+require_int ".components|length" "$COMPONENT_COUNT"
 TOTAL_COMPONENT_USAGE=0
 
 for ((i = 0; i < COMPONENT_COUNT; i++)); do
@@ -204,6 +213,7 @@ if [ "$ADOPTION_REQUIRED" = "true" ]; then
     NAME=$(jq -r ".components[$i].name // \"Component_$i\"" "$CONFIG_FILE")
     PRIORITY=$(jq -r ".components[$i].adoption_priority // \"low\"" "$CONFIG_FILE")
     TARGET=$(jq -r ".components[$i].target_usage // 0" "$CONFIG_FILE")
+    require_int ".components[$i].target_usage" "$TARGET"
 
     # Re-count current usage (not using stored count — always live)
     CURRENT=$(grep -rn "<$NAME[[:space:]>]" "$SCAN_DIR" --include="*.vue" $GREP_EXCLUDE 2>/dev/null | wc -l || true)

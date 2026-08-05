@@ -19,6 +19,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $evidence_envelope_ref
  * @property string $issued_by_authority
  * @property string $jurisdiction
+ * @property string|null $contested_election_id
+ * @property string|null $contested_target_type
+ * @property string|null $contested_target_id
  */
 final class DeterminationModel extends Model
 {
@@ -42,5 +45,10 @@ final class DeterminationModel extends Model
         'evidence_envelope_ref',
         'issued_by_authority',
         'jurisdiction',
+        // ADR-UL-01 / ADR-PL-01: contested-outcome reference (nullable — rows
+        // written before payload schema v2 have none).
+        'contested_election_id',
+        'contested_target_type',
+        'contested_target_id',
     ];
 }

@@ -717,8 +717,8 @@ class OrderCreationTest extends TestCase {
 
 - [README.md](./README.md) - General architecture overview
 - [BACKEND_IMPLEMENTATION.md](./BACKEND_IMPLEMENTATION.md) - Backend details
-- [../../DUPLICATE_FIX_SUMMARY.md](../../DUPLICATE_FIX_SUMMARY.md) - Historical fix summary
-- [../../UNIQUE_EMAIL_CONSTRAINT_APPLIED.md](../../UNIQUE_EMAIL_CONSTRAINT_APPLIED.md) - Constraint details
+- [../../DUPLICATE_FIX_SUMMARY.md](../election/result/DUPLICATE_FIX_SUMMARY.md) - Historical fix summary
+- [../../UNIQUE_EMAIL_CONSTRAINT_APPLIED.md](../election/result/UNIQUE_EMAIL_CONSTRAINT_APPLIED.md) - Constraint details
 
 ---
 

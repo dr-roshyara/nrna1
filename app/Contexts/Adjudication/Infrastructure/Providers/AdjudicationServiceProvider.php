@@ -4,17 +4,29 @@ declare(strict_types=1);
 
 namespace App\Contexts\Adjudication\Infrastructure\Providers;
 
+use App\Contexts\Adjudication\Application\ChallengeRoutedReactionHandler;
+use App\Contexts\Adjudication\Application\Port\AdjudicationDurations;
+use App\Contexts\Adjudication\Application\Port\AdjudicationProcessStore;
 use App\Contexts\Adjudication\Application\Port\EventOutbox;
 use App\Contexts\Adjudication\Application\Port\IdentityGenerator;
+use App\Contexts\Adjudication\Application\Port\RequestsDeterminationIssuance;
 use App\Contexts\Adjudication\Application\Port\TransactionManager;
 use App\Contexts\Adjudication\Application\Service\AdjudicationService;
 use App\Contexts\Adjudication\Application\Service\CoordinatesAdjudication;
 use App\Contexts\Adjudication\Application\Service\TransactionalAdjudicationService;
 use App\Contexts\Adjudication\Domain\Repository\DeterminationRepository;
 use App\Contexts\Adjudication\Infrastructure\Identity\UuidIdentityGenerator;
+use App\Contexts\Adjudication\Infrastructure\Config\ConfiguredAdjudicationDurations;
+use App\Contexts\Adjudication\Infrastructure\Outbox\AdjudicationExpiredHydrator;
+use App\Contexts\Adjudication\Infrastructure\Outbox\AdjudicationFailureDeclaredHydrator;
+use App\Contexts\Adjudication\Infrastructure\Outbox\DeterminationIssuedHydrator;
+use App\Contexts\Adjudication\Infrastructure\Issuance\CoordinatorIssuanceRequest;
 use App\Contexts\Adjudication\Infrastructure\Outbox\OutboxEventAdapter;
+use App\Contexts\Adjudication\Infrastructure\Repositories\EloquentAdjudicationProcessStore;
 use App\Contexts\Adjudication\Infrastructure\Repositories\EloquentDeterminationRepository;
 use App\Contexts\Adjudication\Infrastructure\Transaction\LaravelTransactionManager;
+use App\Contexts\Shared\Infrastructure\Inbox\InboxHandlerRegistry;
+use App\Contexts\Shared\Infrastructure\Outbox\EventHydratorRegistry;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,6 +38,15 @@ final class AdjudicationServiceProvider extends ServiceProvider
         $this->app->bind(TransactionManager::class, LaravelTransactionManager::class);
         $this->app->bind(EventOutbox::class, OutboxEventAdapter::class);
         $this->app->bind(DeterminationRepository::class, EloquentDeterminationRepository::class);
+        // WP-2: the APM's process store (orchestration state, not a domain repository — EPIC-004K §11).
+        $this->app->bind(AdjudicationProcessStore::class, EloquentAdjudicationProcessStore::class);
+        // WP-6: Q-2 owns the durations; the APM only enforces them (section 81).
+        $this->app->bind(AdjudicationDurations::class, ConfiguredAdjudicationDurations::class);
+
+        // WP-4B: the conclude->issue seam's second half. The manager REQUESTS issuance
+        // through this port so the conclusion write and the issuance transaction never
+        // sit in one collaborator's reach (ADR-T1 - EPIC-004K section 11).
+        $this->app->bind(RequestsDeterminationIssuance::class, CoordinatorIssuanceRequest::class);
 
         // AdjudicationService = transactional decorator over the (frozen)
         // CoordinatesAdjudication coordinator.
@@ -37,8 +58,11 @@ final class AdjudicationServiceProvider extends ServiceProvider
             /** @var TransactionManager $transactions */
             $transactions = $app->make(TransactionManager::class);
 
+            /** @var IdentityGenerator $identities */
+            $identities = $app->make(IdentityGenerator::class);
+
             return new TransactionalAdjudicationService(
-                new CoordinatesAdjudication($repository, $outbox),
+                new CoordinatesAdjudication($repository, $outbox, $identities),
                 $transactions,
             );
         });
@@ -47,5 +71,25 @@ final class AdjudicationServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations/Tenant');
+
+        // Event Registry (Blueprint Push B §6, §16 step 4): Adjudication owns
+        // the hydrators for the events it produces.
+        /** @var EventHydratorRegistry $registry */
+        $registry = $this->app->make(EventHydratorRegistry::class);
+        $registry->register(new DeterminationIssuedHydrator());
+        // WP-6: registration is the second half of published-language status.
+        $registry->register(new AdjudicationExpiredHydrator());
+        $registry->register(new AdjudicationFailureDeclaredHydrator());
+
+        // WP-4: Adjudication registers ITSELF as a consumer of Contestation's
+        // published `ChallengeRouted`, so the relay/redrive resolves it by
+        // (consumerContext='Adjudication', eventType='ChallengeRouted').
+        // PB-006 *Registration =/= Delivery*: the CONSUMER decides that it
+        // consumes; Contestation never names Adjudication (contract R-7).
+        /** @var InboxHandlerRegistry $inboxRegistry */
+        $inboxRegistry = $this->app->make(InboxHandlerRegistry::class);
+        /** @var ChallengeRoutedReactionHandler $handler */
+        $handler = $this->app->make(ChallengeRoutedReactionHandler::class);
+        $inboxRegistry->register($handler);
     }
 }

@@ -33,21 +33,39 @@ final class Challenge
     /** @var list<DomainEvent> */
     private array $recordedEvents = [];
 
+    private ?DeterminationId $determinationId = null;
+
     private function __construct(
         private readonly ChallengeId $id,
         private ChallengeState $state,
     ) {
     }
 
+    /**
+     * Rehydrate a Challenge from persisted state (Infrastructure mapper only). The
+     * optional determinationId is the one it was adjudicated with — a correlation index,
+     * NOT an alternative identity (the identity is always ChallengeId).
+     */
+    public static function reconstitute(
+        ChallengeId $id,
+        ChallengeState $state,
+        ?DeterminationId $determinationId = null,
+    ): self {
+        $challenge = new self($id, $state);
+        $challenge->determinationId = $determinationId;
+
+        return $challenge;
+    }
+
     public static function raise(
         ChallengeId $id,
         RaiserStandingRef $raiser,
-        TargetRef $target,
+        ContestedOutcomeRef $contestedOutcome,
         SubmittedContent $content,
         DateTimeImmutable $at,
     ): self {
         $challenge = new self($id, ChallengeState::Raised);
-        $challenge->record(new ChallengeRaised($id, $raiser, $target, $content, $at));
+        $challenge->record(new ChallengeRaised($id, $raiser, $contestedOutcome, $content, $at));
 
         return $challenge;
     }
@@ -88,6 +106,7 @@ final class Challenge
     {
         $this->guard('adjudicate', ChallengeState::Routed);
         $this->state = ChallengeState::Adjudicated;
+        $this->determinationId = $determinationId;
         $this->record(new ChallengeAdjudicated($this->id, $determinationId, $at));
     }
 
@@ -121,6 +140,15 @@ final class Challenge
     public function state(): ChallengeState
     {
         return $this->state;
+    }
+
+    /**
+     * The determination this Challenge was adjudicated with, or null if not yet
+     * adjudicated. A correlation index for the resolution reaction — NOT an identity.
+     */
+    public function adjudicatedDeterminationId(): ?DeterminationId
+    {
+        return $this->determinationId;
     }
 
     /**

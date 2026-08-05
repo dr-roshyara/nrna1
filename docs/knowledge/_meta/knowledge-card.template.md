@@ -8,6 +8,8 @@ knowledge_id:                       # REQUIRED, stable & unique. PREFIX-ID, e.g.
 title:                              # REQUIRED
 knowledge_type:                     # REQUIRED, one of schema/knowledge-types.yaml (e.g. adr, aggregate, guide)
 bounded_context:                    # REQUIRED, one of schema/bounded-contexts.yaml (or `global`)
+                                    #   A bounded context is not a domain. For WHERE the document
+                                    #   belongs: php scripts/doc-placement.php --list
 status: draft                       # REQUIRED, one of schema/statuses.yaml (lifecycle position)
 authority: provisional              # REQUIRED, one of schema/authorities.yaml (trust/source — independent of status)
 audience: []                        # RECOMMENDED, list from schema/knowledge-audiences.yaml (e.g. [developer, ai])

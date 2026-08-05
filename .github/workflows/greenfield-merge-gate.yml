@@ -1,0 +1,66 @@
+# PB-007 7E — the Greenfield Merge Gate as CI (blocking tier).
+#
+# STABLE INTERFACE (ARB R3): this workflow runs `composer merge-gate` and NOTHING
+# else — the gate's composition (fitness suites → Deptrac fail mode → greenfield
+# PHPStan → widened regression) lives in composer.json, never here. Internal
+# tooling may change; neither the command contract nor this workflow does.
+#
+# The quality tier (Infection measurement) is deliberately SEPARATE and scheduled:
+# see greenfield-quality-tier.yml. It measures; it never blocks a merge (A-3).
+#
+# Postgres credentials mirror tests/bootstrap-test-database.php, which forces
+# these exact values for every test run (test-database isolation guard).
+
+name: Greenfield Merge Gate
+
+on:
+  pull_request:
+  push:
+    branches: [main, postgressql]
+  workflow_dispatch:
+
+jobs:
+  merge-gate:
+    name: composer merge-gate (blocking)
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: publicdigit_user
+          POSTGRES_PASSWORD: 'Rudolfvogt%27%'
+          POSTGRES_DB: nrna_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U publicdigit_user -d nrna_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP 8.3
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: pdo, pdo_pgsql, pgsql, mbstring, intl, bcmath
+          tools: composer
+          coverage: none
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Greenfield Merge Gate (one command, one PASS/FAIL)
+        run: composer merge-gate

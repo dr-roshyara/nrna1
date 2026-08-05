@@ -1,0 +1,88 @@
+# EG-003 (ARB ruling, 2026-07-26): the Role & Permission governance check moved
+# OUT of pre-push INTO CI verification against a seeded database.
+#
+# Rationale (recorded with the ruling): the enforcement point must match what is
+# being validated. Pre-push validates repository content and static engineering
+# policy; this check validates RUNTIME CONFIGURATION (seeded roles/permissions)
+# and operational readiness — it can only give consistent verdicts against a
+# known, seeded database. Enforcement is NOT weakened: the same policy script
+# (scripts/check_roles.php --strict) runs unchanged, against a database seeded
+# by the policy's own seeder (PermissionSeeder).
+#
+# Provenance: docs/plans/20260726-2056-engineering-platform-repair-plan.md (EG-003)
+#             docs/implementation/20260726_PrePush_Governance_Gate_Audit.md (F-GATE-5)
+# Postgres credentials mirror greenfield-merge-gate.yml / tests/bootstrap-test-database.php.
+
+name: Role & Permission Verification
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  role-permission-check:
+    name: check_roles.php --strict (seeded database)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: publicdigit_user
+          POSTGRES_PASSWORD: 'Rudolfvogt%27%'
+          POSTGRES_DB: nrna_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U publicdigit_user -d nrna_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      APP_ENV: testing
+      DB_CONNECTION: pgsql
+      DB_HOST: 127.0.0.1
+      DB_PORT: 5432
+      DB_DATABASE: nrna_test
+      DB_USERNAME: publicdigit_user
+      DB_PASSWORD: 'Rudolfvogt%27%'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP 8.3
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: pdo, pdo_pgsql, pgsql, mbstring, intl, bcmath
+          tools: composer
+          coverage: none
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Prepare application environment
+        run: |
+          cp .env.example .env
+          php artisan key:generate --force
+
+      - name: Migrate (fresh CI database)
+        run: php artisan migrate --force
+
+      - name: Seed governance roles & permissions
+        run: php artisan db:seed --class=PermissionSeeder --force
+
+      - name: Role & Permission governance check (strict)
+        run: php scripts/check_roles.php --strict

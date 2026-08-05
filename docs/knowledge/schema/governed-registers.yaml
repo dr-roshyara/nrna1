@@ -1,0 +1,61 @@
+# Governed register(ns) — configuration for CAP-001 Identifier Integrity.
+#
+# ⚠️⚠️ THIS FILE IS CONFIGURATION, NOT A RULING.
+#
+# G-1 is OPEN: no canonical enumeration of governed registers exists. M4 names the
+# "bare, unregistered series" liability but lists no registers, and supplying that list
+# is an AUTHORITY act — it is also the first limb of M6 §7.5's reopening trigger.
+#
+# House rule observed (ADRs govern policy · the registry stores configuration):
+#   every row stores WHAT and carries a `ref:` pointing at WHO SAYS SO.
+#   Nothing here authors a criterion (AP-7 · DR-4 — criteria are used here, owned elsewhere).
+#
+# Placement: beside statuses.yaml / authorities.yaml / bounded-contexts.yaml /
+# repository-migrations.yaml, where enumerations already live.
+# ⛔ NOT under `engineering/registers/` — that would be a new folder under R-37's
+#    structural freeze ("no new top-level folders").
+#
+# Behaviour when a series is absent below: INCONCLUSIVE. That is CORRECT — it measures
+# G-1 rather than hiding it. Absence of evidence is never PASS.
+#
+# Consumed by: scripts/identifier-check.php (CAP-001)
+version: 1
+
+registers:
+
+  R:
+    label: Platform rulings
+    ref: 'R-30 — "Proposals sealed permanently… From R-30 onward, rulings live HERE."'
+    # ⚠️ SPLIT ACROSS TWO FILES, on the register's own statement:
+    #    "R-1..R-29 remain there as the historical record of the program."
+    # ⚠️ FINDING: R-30 cites the sealed half at
+    #    docs/architecture/proposals/ai-platform/Phase-02.5-Certification-Plan.md
+    #    but EM-001 moved it to engineering/architecture/baseline/. The register is
+    #    APPEND-ONLY, so that citation cannot be corrected in place — it needs an
+    #    annotation (R-53 pattern) or a repository-migrations.yaml entry.
+    files:
+      - engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md
+      - engineering/architecture/baseline/Phase-02.5-Certification-Plan.md
+
+  PMR:
+    label: Methodology refinement candidates
+    ref: 'PMR-10 is cited as GOVERNED from this register'
+    files:
+      - docs/implementation/PKS_Methodology_Refinement_Candidates.md
+
+# ─────────────────────────────────────────────────────────────────────────────
+# DELIBERATELY ABSENT — each with the reason, so it is not "fixed" by guessing.
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# ADR   `ADR-T22` parses as series ADR + ordinal T22, which collapses FOUR distinct
+#       registers (ADR-T · ADR-MP · ADR-PL · ADR-UL) plus bare ADR-001..008 into one
+#       namespace. That is exactly M4's recorded "bare-ADR unregistered series"
+#       liability. Modelling it is an IDENTITY question for the Authority, not a
+#       parser change.
+#
+# ES    ES-001..006 are standards, not a minted ordinal series with a register table.
+#       Whether they form a register(ns) is undecided.
+#
+# CBC · OQ · PS · ENG · CAP · D · Q · F
+#       No governed register file identified. OQ- overload is itself one of M4's
+#       named liabilities.

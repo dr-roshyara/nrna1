@@ -4,8 +4,9 @@
 #
 # Runs the FULL design governance gate:
 #   UI Layer:    Token compliance + component audit
-#   Security:    Role & permission governance
 #   Domain:      Purity check + structure visibility (warning only)
+# (Role & permission governance RELOCATED to CI against a seeded DB —
+#  EG-003 ARB ruling 2026-07-26; see role-permission-verification.yml)
 #
 # This is the HARD gate — blocks push if violations exceed threshold.
 # Passes even if domain checks warn (non-zero exit suppressed).

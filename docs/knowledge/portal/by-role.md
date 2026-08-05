@@ -38,7 +38,7 @@ related_to: [PORTAL-INDEX]
 
 1. [Knowledge Constitution](../Knowledge-Constitution.md) + [Lifecycle & Governance](../_meta/lifecycle.md).
 2. [ADR index](adr-index.md) — all decisions of record.
-3. Architecture baselines: [`architecture/ARCHITECTURE_BASELINE_V1.md`](../../../architecture/ARCHITECTURE_BASELINE_V1.md).
+3. Architecture baselines: [`architecture/ARCHITECTURE_BASELINE_V1.md`](../../../architecture_legacy/ARCHITECTURE_BASELINE_V1.md).
 4. Context map / domains: [domains/](../domains/).
 5. The [knowledge graph](graph/) to see how it all connects.
 

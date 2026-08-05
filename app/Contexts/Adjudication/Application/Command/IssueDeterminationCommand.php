@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Contexts\Adjudication\Application\Command;
 
 use App\Contexts\Adjudication\Domain\Determination\ChallengeRef;
+use App\Contexts\Adjudication\Domain\Determination\ContestedOutcomeRef;
 use App\Contexts\Adjudication\Domain\Determination\DeterminationOutcome;
 use App\Contexts\Adjudication\Domain\Determination\EvidenceEnvelopeRef;
+use App\Contexts\Adjudication\Domain\Determination\EvidenceSet;
 use App\Contexts\Adjudication\Domain\Determination\IssuedByAuthority;
 use App\Contexts\Adjudication\Domain\Determination\Jurisdiction;
 use App\Contexts\Adjudication\Domain\Determination\Legitimacy;
@@ -29,6 +31,8 @@ final readonly class IssueDeterminationCommand
         public IssuedByAuthority $issuedByAuthority,
         public Jurisdiction $jurisdiction,
         public EvidenceEnvelopeRef $evidenceEnvelopeRef,
+        public ContestedOutcomeRef $contestedOutcome,
+        public EvidenceSet $evidenceSet,   // ADR-T22 (WP-1): the considered set, fixed at issuance
         public DateTimeImmutable $occurredAt,
     ) {
     }

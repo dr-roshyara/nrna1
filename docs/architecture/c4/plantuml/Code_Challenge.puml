@@ -1,0 +1,78 @@
+@startuml Code_Challenge
+title Code (C4) — Challenge Aggregate (Contestation Domain) [IMPLEMENTED]
+' Source: app/Contexts/Contestation/Domain — verified inventory 2026-07-06. No framework classes.
+
+package "Contestation\\Domain\\Challenge" {
+  class Challenge <<AggregateRoot>> {
+    -ChallengeId id
+    -ChallengeState state
+    -events : DomainEvent[]
+    +{static} raise(id, raiser, target, content, at) : self
+    +admit(at) : void
+    +dismiss(reason, at) : void
+    +beginInvestigation(at) : void
+    +route(routedTo, at) : void
+    +adjudicate(determinationId, at) : void
+    +resolve(determinationId, at) : void
+    +lapse(at) : void
+    +canProceedToAdjudication() : bool
+    +pullEvents() : DomainEvent[]
+  }
+  enum ChallengeState {
+    Raised
+    Admitted
+    Investigating
+    Routed
+    Adjudicated
+    Resolved
+    Dismissed
+    Lapsed
+    +isTerminal() : bool
+  }
+  class ChallengeId <<ValueObject>>
+  class DeterminationId <<ValueObject>> #lightyellow
+  note right of DeterminationId : LOCAL opaque ref (ADR-T16)\nNOT Adjudication's DeterminationId\ncrosses boundary as string only
+  class RaiserStandingRef <<ValueObject>>
+  class TargetRef <<ValueObject>>
+  class SubmittedContent <<ValueObject>>
+}
+package "Contestation\\Domain\\Events" {
+  class ChallengeRaised <<DomainEvent>>
+  class ChallengeAdmitted <<DomainEvent>>
+  class ChallengeDismissed <<DomainEvent>>
+  class ChallengeRouted <<DomainEvent>>
+  class ChallengeAdjudicated <<DomainEvent>>
+  class ChallengeResolved <<DomainEvent>>
+  note bottom of ChallengeAdjudicated : ADR-T20 — Adjudicated (legal finality)\n≠ Resolved (operational completion)
+}
+package "Contestation\\Domain\\Repository" {
+  interface ChallengeRepository <<Port>> {
+    +nextIdentity() : ChallengeId
+    +save(Challenge) : void
+    +get(ChallengeId) : Challenge
+    +find(ChallengeId) : ?Challenge
+  }
+}
+package "Contestation\\Domain\\Exception" {
+  class IllegalChallengeTransition <<Exception>>
+  class ChallengeNotFound <<Exception>>
+}
+
+Challenge --> ChallengeState
+Challenge --> ChallengeId
+Challenge ..> DeterminationId : adjudicate/resolve
+Challenge ..> ChallengeRaised : records
+Challenge ..> ChallengeAdjudicated : records
+Challenge ..> ChallengeResolved : records
+Challenge ..> IllegalChallengeTransition : throws (no mutation, no event)
+ChallengeRepository ..> Challenge
+
+note as N1
+  State machine (50-07 v1.2.1):
+  Raised → Admitted|Dismissed▣|Lapsed▣
+  Admitted → Investigating|Routed|Lapsed▣
+  Investigating → Routed
+  Routed → Adjudicated → Resolved▣
+  lapse() and beginInvestigation() emit NO event (by design)
+end note
+@enduml

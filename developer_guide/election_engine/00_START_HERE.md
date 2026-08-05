@@ -12,9 +12,9 @@ This folder contains comprehensive guides for the **5-step anonymous voting syst
 
 **Need implementation details?** → [`IMPLEMENTATION_SUMMARY_2026.md`](./IMPLEMENTATION_SUMMARY_2026.md)
 
-**Having issues?** → [`TROUBLESHOOTING_2026.md`](./TROUBLESHOOTING_2026.md)
+**Having issues?** → [`TROUBLESHOOTING_2026.md`](../TROUBLESHOOTING_2026.md)
 
-**Want to test?** → [`TESTING_GUIDE_2026.md`](./TESTING_GUIDE_2026.md)
+**Want to test?** → [`TESTING_GUIDE_2026.md`](../TESTING_GUIDE_2026.md)
 
 ---
 
@@ -32,8 +32,8 @@ This folder contains comprehensive guides for the **5-step anonymous voting syst
 
 | File | Purpose | Read Time |
 |------|---------|-----------|
-| [`TESTING_GUIDE_2026.md`](./TESTING_GUIDE_2026.md) | Complete testing procedures | 20 min |
-| [`TROUBLESHOOTING_2026.md`](./TROUBLESHOOTING_2026.md) | Solutions to common issues | 10 min |
+| [`TESTING_GUIDE_2026.md`](../TESTING_GUIDE_2026.md) | Complete testing procedures | 20 min |
+| [`TROUBLESHOOTING_2026.md`](../TROUBLESHOOTING_2026.md) | Solutions to common issues | 10 min |
 
 ### Architecture Deep Dives
 
@@ -41,7 +41,7 @@ This folder contains comprehensive guides for the **5-step anonymous voting syst
 |------|---------|-----------|
 | [`ARCHITECTURE.md`](./ARCHITECTURE.md) | System architecture | 20 min |
 | [`VOTING_ARCHITECTURE.md`](./VOTING_ARCHITECTURE.md) | Voting system design | 15 min |
-| [`database-schema.md`](./database-schema.md) | Complete DB schema | 15 min |
+| [`database-schema.md`](../database-schema.md) | Complete DB schema | 15 min |
 
 ### Additional Resources
 
@@ -60,18 +60,18 @@ This folder contains comprehensive guides for the **5-step anonymous voting syst
 
 1. Read: [`01_OVERVIEW.md`](./01_OVERVIEW.md) (5 min)
 2. Read: [`IMPLEMENTATION_SUMMARY_2026.md`](./IMPLEMENTATION_SUMMARY_2026.md) (15 min)
-3. Reference: [`TROUBLESHOOTING_2026.md`](./TROUBLESHOOTING_2026.md) when needed
+3. Reference: [`TROUBLESHOOTING_2026.md`](../TROUBLESHOOTING_2026.md) when needed
 
 ### For QA/Testers
 
-1. Read: [`TESTING_GUIDE_2026.md`](./TESTING_GUIDE_2026.md) (20 min)
-2. Read: [`TROUBLESHOOTING_2026.md`](./TROUBLESHOOTING_2026.md) (10 min)
+1. Read: [`TESTING_GUIDE_2026.md`](../TESTING_GUIDE_2026.md) (20 min)
+2. Read: [`TROUBLESHOOTING_2026.md`](../TROUBLESHOOTING_2026.md) (10 min)
 3. Run: Tinker verification commands (5 min)
 
 ### For DevOps
 
-1. Read: [`database-schema.md`](./database-schema.md)
-2. Read: [`migration-guide.md`](./migration-guide.md)
+1. Read: [`database-schema.md`](../database-schema.md)
+2. Read: [`migration-guide.md`](../migration-guide.md)
 3. Reference: Query examples
 
 ### For Architects
@@ -203,8 +203,8 @@ app/Models/VoterSlug.php (election_id, steps relationship)
 
 1. **Check logs**: `tail -f storage/logs/laravel.log`
 2. **Use tinker**: `php artisan tinker` (see examples above)
-3. **Read troubleshooting**: [`TROUBLESHOOTING_2026.md`](./TROUBLESHOOTING_2026.md)
-4. **Run tests**: [`TESTING_GUIDE_2026.md`](./TESTING_GUIDE_2026.md)
+3. **Read troubleshooting**: [`TROUBLESHOOTING_2026.md`](../TROUBLESHOOTING_2026.md)
+4. **Run tests**: [`TESTING_GUIDE_2026.md`](../TESTING_GUIDE_2026.md)
 
 ---
 

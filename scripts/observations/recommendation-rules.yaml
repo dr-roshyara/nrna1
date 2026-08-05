@@ -1,0 +1,40 @@
+# Recommendation Engine v1 — rules as DATA (approved plan 20260804-1200).
+# The engine knows none of these thresholds; edit here, never in code.
+# Every recommendation is ADVISORY: the developer decides, always.
+
+rules:
+  # DDD order (review 2026-08-04): LCOM4 is a code-level HEURISTIC, never a DDD
+  # authority. LCOM4 > 1 marks a CANDIDATE for review — cohesion is semantic,
+  # the metric is structural. Evidence triggers governance; it never determines it.
+  - id: R1
+    description: cohesion review candidate on high LCOM4
+    source: lcom4
+    op: ">"
+    threshold: 20
+    recommend: "LCOM4 of {value}: {subject} appears to contain multiple independent method clusters — consider reviewing whether they represent separate DOMAIN responsibilities (semantic cohesion may still be one responsibility; the metric only raises the question)."
+
+  - id: R2
+    description: tests missing for production change
+    source: test_presence
+    op: flag
+    field: production_without_tests
+    recommend: "Production behavior changed without accompanying tests in {subject} — recommend writing tests."
+
+  - id: R3
+    description: dependency review on rising mean CBO
+    source: cbo_trend
+    op: flag
+    field: rising
+    recommend: "Mean CBO is rising across snapshots ({subject}) — recommend a dependency review."
+
+  - id: R4
+    description: refactoring priority on persistent hotspot
+    source: persistent_hotspot
+    op: flag
+    recommend: "{subject} has stayed a hotspot across runs — recommend a refactoring-priority review."
+
+  - id: R5
+    description: architecture attention on WARN + hotspot
+    source: warn_hotspot
+    op: flag
+    recommend: "{subject} is WARN-banded AND a change hotspot — recommend architecture attention."

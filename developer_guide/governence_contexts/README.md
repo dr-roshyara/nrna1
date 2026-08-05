@@ -862,7 +862,7 @@ Currently, POST and DELETE endpoints return 202 (queued) but don't execute comma
 
 ## References
 
-- **Architecture Decision Record:** [docs/adr/PHASE-3-COMPLETE.md](../../docs/adr/PHASE-3-COMPLETE.md)
+- **Architecture Decision Record:** [docs/adr/PHASE-3-COMPLETE.md](../../docs/knowledge/archive/status-reports/ADR-FOLDER-PHASE-3-COMPLETE.md)
 - **Domain Aggregate:** `app/Contexts/Governance/Domain/Committee/Committee.php`
 - **REST API:** `app/Http/Controllers/Api/Governance/CommitteeMemberController.php`
 - **Vue Component:** `resources/js/Components/CommitteeMemberManager.vue`

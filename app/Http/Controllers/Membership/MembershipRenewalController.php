@@ -33,7 +33,7 @@ class MembershipRenewalController extends Controller
 
         // Self-renewal window check
         if ($isSelf && !$member->canSelfRenew()) {
-            return back()->withErrors(['error' => 'You are not eligible to self-renew at this time.']);
+            return back()->withErrors(['error' => 'Self-renewal is not available for your membership at this time.']);
         }
 
         // Admin renewing a lifetime member (no expiry) is not allowed

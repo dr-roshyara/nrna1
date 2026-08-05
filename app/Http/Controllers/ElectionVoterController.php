@@ -112,7 +112,7 @@ class ElectionVoterController extends Controller
                     $user = \App\Models\User::find($value);
                     $mode = VoterSourceStrategy::fromElection($election);
                     if (! $user || ! $this->eligibilityService->isEligibleVoter($organisation, $user, $mode)) {
-                        $fail('The selected user is not eligible to vote in this election.');
+                        $fail('The selected user does not meet the voter eligibility requirements for this election.');
                     }
                 },
             ],

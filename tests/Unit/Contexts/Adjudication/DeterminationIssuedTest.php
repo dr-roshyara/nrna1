@@ -56,6 +56,8 @@ final class DeterminationIssuedTest extends TestCase
             EvidenceEnvelopeRef::fromString('ev-789'),
             IssuedByAuthority::fromString('ARB'),
             Jurisdiction::fromString('National'),
+            null,   // contestedOutcome (schema v2) — not exercised by this VO/shape test
+            null,   // evidenceSet (schema v3) — not exercised by this VO/shape test
             new DateTimeImmutable('2026-06-27T10:00:00+00:00'),
         );
     }

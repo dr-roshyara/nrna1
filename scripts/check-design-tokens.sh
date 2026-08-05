@@ -23,10 +23,16 @@ if [ ! -f "$CONFIG_FILE" ]; then
   exit 1
 fi
 
+# Fail-closed: refuse to run on unreadable policy (EG-002a)
+source "$SCRIPT_DIR/lib/config-guard.sh"
+
 # Read config
 THRESHOLD=$(jq -r '.enforcement.current_threshold // 150' "$CONFIG_FILE")
 EXIT_ON_FAIL=$(jq -r '.enforcement.exit_on_fail // false' "$CONFIG_FILE")
 BASELINE=$(jq -r '.baseline // 613' "$CONFIG_FILE")
+
+require_int ".enforcement.current_threshold" "$THRESHOLD"
+require_int ".baseline" "$BASELINE"
 
 # Build grep exclusion args from config
 EXCLUDED_DIRS=$(jq -r '.excluded_dirs[] // empty' "$CONFIG_FILE" | tr -d '\r')
@@ -42,11 +48,13 @@ done
 # Count violations across ALL rule patterns from design-rules.json (skip -1 informational)
 total_violations=0
 RULE_COUNT=$(jq '.rules | length' "$CONFIG_FILE")
+require_int ".rules|length" "$RULE_COUNT"
 
 for ((i = 0; i < RULE_COUNT; i++)); do
   PATTERN=$(jq -r ".rules[$i].pattern // \"\"" "$CONFIG_FILE")
   TARGET=$(jq -r ".rules[$i].target // 0" "$CONFIG_FILE")
   LABEL=$(jq -r ".rules[$i].label // \"Rule $i\"" "$CONFIG_FILE")
+  require_int ".rules[$i].target" "$TARGET"
 
   [ -z "$PATTERN" ] && continue
   # Skip informational-only rules (target = -1)

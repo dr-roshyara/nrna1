@@ -36,11 +36,18 @@ fi
 # ──────────────────────────────────────────────
 # Parse configuration from JSON
 # ──────────────────────────────────────────────
+# Fail-closed: refuse to run on unreadable policy (EG-002a)
+source "$SCRIPT_DIR/lib/config-guard.sh"
+
 BASELINE=$(jq -r '.baseline // 613' "$CONFIG_FILE")
 THRESHOLD=$(jq -r '.enforcement.current_threshold // 150' "$CONFIG_FILE")
 SOFT_BOUNDARY=$(jq -r '.enforcement.soft_boundary // 50' "$CONFIG_FILE")
 EXIT_ON_FAIL=$(jq -r '.enforcement.exit_on_fail // false' "$CONFIG_FILE")
 ACTIVE_PHASE=$(jq -r '.active_phase // "unknown"' "$CONFIG_FILE")
+
+require_int ".baseline" "$BASELINE"
+require_int ".enforcement.current_threshold" "$THRESHOLD"
+require_int ".enforcement.soft_boundary" "$SOFT_BOUNDARY"
 
 if [ "$STRICT_MODE" = "--strict" ]; then
   EXIT_ON_FAIL="true"
@@ -73,6 +80,7 @@ done
 # Iterate through each rule
 # ──────────────────────────────────────────────
 RULE_COUNT=$(jq '.rules | length' "$CONFIG_FILE")
+require_int ".rules|length" "$RULE_COUNT"
 TOTAL_VIOLATIONS=0
 declare -a FAILED_RULES=()
 declare -A RULE_VIOLATIONS
@@ -86,6 +94,7 @@ for ((i = 0; i < RULE_COUNT; i++)); do
   PATTERN=$(jq -r ".rules[$i].pattern // \"\"" "$CONFIG_FILE")
   SEVERITY=$(jq -r ".rules[$i].severity // \"info\"" "$CONFIG_FILE")
   TARGET=$(jq -r ".rules[$i].target // 0" "$CONFIG_FILE")
+  require_int ".rules[$i].target" "$TARGET"
 
   # Skip rules with empty patterns
   if [ -z "$PATTERN" ]; then
@@ -179,7 +188,8 @@ echo ""
 echo "🎯 Phase Targets:"
 echo "───────────────"
 jq -r '.phase_targets | to_entries[] | "\(.key)=\(.value)"' "$CONFIG_FILE" 2>/dev/null | tr -d '\r' | while IFS='=' read -r phase target; do
-  [ -z "$target" ] && continue
+  # display-only path: skip (don't fail) non-integer targets — enforcement values are guarded above
+  [[ "$target" =~ ^-?[0-9]+$ ]] || continue
   phase_label=$(echo "$phase" | tr '_' ' ' | sed 's/[a-z]/\u&/g')
 
   if [ "$TOTAL_VIOLATIONS" -le "$target" ]; then

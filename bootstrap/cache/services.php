@@ -48,6 +48,8 @@
     44 => 'App\\Contexts\\Membership\\Infrastructure\\Providers\\MembershipServiceProvider',
     45 => 'App\\Contexts\\Governance\\Infrastructure\\Providers\\GovernanceServiceProvider',
     46 => 'App\\Contexts\\Adjudication\\Infrastructure\\Providers\\AdjudicationServiceProvider',
+    47 => 'App\\Contexts\\Election\\Infrastructure\\Providers\\ElectionServiceProvider',
+    48 => 'App\\Contexts\\Contestation\\Infrastructure\\Providers\\ContestationServiceProvider',
   ),
   'eager' => 
   array (
@@ -82,6 +84,8 @@
     28 => 'App\\Contexts\\Membership\\Infrastructure\\Providers\\MembershipServiceProvider',
     29 => 'App\\Contexts\\Governance\\Infrastructure\\Providers\\GovernanceServiceProvider',
     30 => 'App\\Contexts\\Adjudication\\Infrastructure\\Providers\\AdjudicationServiceProvider',
+    31 => 'App\\Contexts\\Election\\Infrastructure\\Providers\\ElectionServiceProvider',
+    32 => 'App\\Contexts\\Contestation\\Infrastructure\\Providers\\ContestationServiceProvider',
   ),
   'deferred' => 
   array (

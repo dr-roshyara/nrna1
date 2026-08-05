@@ -1,0 +1,29 @@
+@startuml SystemContext
+!include <C4/C4_Context>
+title System Context (C1) — NRNA Governance Platform
+
+Person(member, "Diaspora Member", "Registers, pays fees, votes, raises challenges (standing S-1)")
+Person(candidate, "Candidate", "Applies for candidacy during nomination")
+Person(officer, "Election Officer", "Chief/officers: administer election setup, suspend/resume")
+Person(committee, "Committee Member", "Organisation governance roles")
+Person(auditor, "Auditor / Constitutional Observer", "Standing S-2/S-3: observes, challenges, reads audit trail")
+Person(admin, "Platform Administrator", "Approves/rejects submitted elections (platform tier)")
+
+System(nrna, "NRNA Governance Platform", "Multi-tenant election, membership, contestation and adjudication platform. Laravel modular monolith + Vue3/Inertia. Correction loop per Push B Blueprint v1.0.")
+
+System_Ext(mail, "Email (SMTP)", "Voting codes, notifications")
+
+Rel(member, nrna, "votes, pays, raises challenges", "HTTPS")
+Rel(candidate, nrna, "applies for candidacy", "HTTPS")
+Rel(officer, nrna, "administers elections", "HTTPS")
+Rel(committee, nrna, "manages organisation", "HTTPS")
+Rel(auditor, nrna, "audits, challenges, verifies", "HTTPS")
+Rel(admin, nrna, "approves elections", "HTTPS")
+Rel(nrna, mail, "sends codes/notifications", "SMTP")
+
+SHOW_LEGEND()
+' EXCLUDED by prompt rule "only approved relationships":
+' - External Identity Provider: not documented in any frozen artifact (session auth via Laravel Fortify/Sanctum is internal)
+' - External Trust Anchor: 38C-15 ARB ruling adopted Option B (Functional Independence, single
+'   sovereign source + safeguards S-1..S-5) — there is deliberately NO external trust anchor system.
+@enduml

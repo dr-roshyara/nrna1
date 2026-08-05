@@ -31,8 +31,8 @@ related_to: [PORTAL-INDEX]
 | `guide` / `tutorial` | How-to | [`developer_guide/`](../../../developer_guide/) |
 | `playbook` / `recipe` | "How we do X" | [Recipes](recipes/) |
 | `prompt` / `package` | AI assets | [`ai/`](../ai/) · [Packages](packages/) |
-| `research` / `idea` | Exploration | [`research/`](../research/) · [`architecture/brain_storming/`](../../../architecture/brain_storming/) |
-| `review` | Review records | `docs/architecture/contexts/Round*_ARB_*` |
+| `research` / `idea` | Exploration | [`research/`](../research/) · [`architecture/brain_storming/`](../../../architecture_legacy/brain_storming/) |
+| `review` | Review records | `docs/architecture_legacy/contexts/Round*_ARB_*` |
 | `reference` | Stable reference | [Lifecycle](../_meta/lifecycle.md) · [Naming](../_meta/naming-conventions.md) |
 | `runbook` | Operations | [`developer_guide/`](../../../developer_guide/) deployment guides |
 | `checklist` / `template` | Reusable | [Knowledge card template](../_meta/knowledge-card.template.md) |

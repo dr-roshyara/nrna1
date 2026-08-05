@@ -1,0 +1,31 @@
+@startuml Container
+!include <C4/C4_Container>
+title Container Diagram (C2) — Modular Monolith (NOT microservices)
+
+Person(user, "Users", "Members, officers, auditors, admins")
+
+System_Boundary(nrna, "NRNA Governance Platform") {
+  Container(spa, "Vue 3 + Inertia SPA", "Vue 3, Inertia.js, Vite", "Server-driven SPA; pages rendered via Inertia responses; router.post() for forms")
+  Container(app, "Laravel Application", "PHP 8.3, Laravel 11", "THE modular monolith. ALL bounded contexts live inside as modules (app/Contexts/*): Contestation, Adjudication, Membership, Elections + legacy election core. Hexagonal: Domain/Application/Infrastructure per context. Bounded contexts are NOT deployment units (BDR).")
+  Container(worker, "Queue Worker", "artisan queue:work", "Async jobs (mail, imports)")
+  Container(scheduler, "Scheduler", "artisan schedule:run (cron)", "outbox:process every minute (relay); inbox:redrive (PB-003, planned)")
+  ContainerDb(db, "PostgreSQL", "RDBMS", "Tenant-scoped business tables + messaging tables: outbox_events (transactional outbox), inbox_events (planned PB-003), determinations, challenges (planned PB-005)")
+  ContainerDb(redis, "Redis", "cache/session/queue", "ASSUMPTION: used in production per deployment convention; tests use array drivers")
+}
+System_Ext(mail, "Email (SMTP)")
+
+Rel(user, spa, "uses", "HTTPS")
+Rel(spa, app, "Inertia requests", "HTTPS/JSON")
+Rel(app, db, "reads/writes; aggregate + outbox row in ONE transaction (ADR-T1/T3)", "SQL")
+Rel(scheduler, app, "invokes outbox:process → OutboxEventProcessor (relay)")
+Rel(worker, app, "executes queued jobs")
+Rel(app, redis, "cache/sessions/queues")
+Rel(app, mail, "sends", "SMTP")
+
+SHOW_LEGEND()
+' Why bounded contexts are INSIDE the Laravel container:
+' BDR 1.1 chose a modular monolith — context isolation is enforced by package
+' boundaries (Deptrac/fitness tests), ports & adapters, and the event catalog,
+' not by network boundaries. The "Outbox" is a table + relay inside this
+' container/DB, not a separate deployable.
+@enduml

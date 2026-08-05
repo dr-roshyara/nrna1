@@ -16,8 +16,21 @@
       "Bash(grep:*)",
       "Bash(git commit -m 'refactor: Improve timezone validation and slug generation in ElectionController *)",
       "Bash(APP_ENV=testing vendor/bin/phpunit *)",
-      "Bash(Select-String \"FAILED|Tests:\")"
+      "Bash(Select-String \"FAILED|Tests:\")",
+      "Bash(curl -s https://xdebug.org/download)",
+      "WebSearch",
+      "WebFetch(domain:www.mdpi.com)",
+      "WebFetch(domain:www.w3.org)",
+      "WebFetch(domain:www.sciencedirect.com)",
+      "WebFetch(domain:arxiv.org)",
+      "WebFetch(domain:dl.acm.org)",
+      "WebFetch(domain:ar5iv.labs.arxiv.org)",
+      "WebFetch(domain:www.usenix.org)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:electionguard-python.readthedocs.io)",
+      "WebFetch(domain:eprint.iacr.org)",
+      "WebFetch(domain:electionguard.vote)"
     ]
   },
-  "plansDirectory": "./claude/plans"
+  "plansDirectory": "./.claude/plans"
 }

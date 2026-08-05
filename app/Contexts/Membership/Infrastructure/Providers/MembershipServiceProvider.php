@@ -577,6 +577,11 @@ class MembershipServiceProvider extends ServiceProvider
         // Load migrations from context (both tests and production)
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations/Tenant');
 
+        // Event Registry (Blueprint Push B §6, §16 step 5): Membership owns
+        // the hydrators for the events it produces.
+        $this->app->make(\App\Contexts\Shared\Infrastructure\Outbox\EventHydratorRegistry::class)
+            ->register(new \App\Contexts\Membership\Infrastructure\Outbox\FeePaidHydrator());
+
         // Register routes (if needed in future)
         // $this->loadRoutesFrom(__DIR__ . '/../Http/Routes/membership.php');
     }

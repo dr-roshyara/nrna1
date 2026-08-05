@@ -1,0 +1,76 @@
+# PB-007 7E — the quality tier (NON-blocking): Infection mutation measurement.
+#
+# Runs `composer quality-gate` on a schedule — never on PRs, never blocking a
+# merge (A-3 baseline-then-ratchet; thresholds rise only at deliberate milestones).
+# Execution model: --threads=1 (the model that passed the F-7D-2 evidence
+# validation — parallel threads produced false kills via concurrent migrate:fresh
+# races on the shared test database; fast+valid via per-thread TEST_TOKEN
+# databases is recorded future work).
+#
+# Coverage driver on Linux: setup-php loads Xdebug via ini. The composer script's
+# per-invocation `-d zend_extension=php_xdebug-...dll` flag targets the Windows
+# dev machine and degrades to a harmless startup notice here; `-d
+# xdebug.mode=coverage` applies to the ini-loaded Xdebug either way.
+
+name: Greenfield Quality Tier
+
+on:
+  schedule:
+    - cron: '0 3 * * 0'   # weekly, Sunday 03:00 UTC
+  workflow_dispatch:
+
+jobs:
+  quality-gate:
+    name: composer quality-gate (measures, never blocks)
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: publicdigit_user
+          POSTGRES_PASSWORD: 'Rudolfvogt%27%'
+          POSTGRES_DB: nrna_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U publicdigit_user -d nrna_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP 8.3 (with Xdebug for the coverage step)
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: pdo, pdo_pgsql, pgsql, mbstring, intl, bcmath
+          tools: composer
+          coverage: xdebug
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Quality gate (two-step Infection, validated 1-thread model)
+        run: composer quality-gate
+
+      - name: Upload mutation reports (evidence artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: infection-reports
+          path: |
+            infection-log.txt
+            infection-summary.txt
+          if-no-files-found: warn

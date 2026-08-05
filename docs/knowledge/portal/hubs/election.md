@@ -26,11 +26,11 @@ The core domain: an Election runs a 5-step anonymous voting workflow (Code → A
 
 ## Architecture & discovery (Think)
 
-- [Voting workflow architecture](../../../../architecture/election/20260302_0946_voting_workflow_architecture.md)
-- [Election domain inventory](../../../../architecture/backend/discoveries/20260613-election-domain-inventory.md)
-- [Election state-machine analysis](../../../../architecture/backend/discoveries/20260613-election-state-machine-analysis.md)
-- [Voting domain discovery](../../../../architecture/backend/discoveries/20260613-voting-domain-discovery.md)
-- [Analysis of current system](../../../../architecture/election/analysis_of_current_system.md)
+- [Voting workflow architecture](../../../../architecture_legacy/election/20260302_0946_voting_workflow_architecture.md)
+- [Election domain inventory](../../../../architecture_legacy/backend/discoveries/20260613-election-domain-inventory.md)
+- [Election state-machine analysis](../../../../architecture_legacy/backend/discoveries/20260613-election-state-machine-analysis.md)
+- [Voting domain discovery](../../../../architecture_legacy/backend/discoveries/20260613-voting-domain-discovery.md)
+- [Analysis of current system](../../../../architecture_legacy/election/analysis_of_current_system.md)
 
 ## Decisions (Truth)
 

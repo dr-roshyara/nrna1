@@ -247,7 +247,7 @@ public function create(Request $request)
 
     // Check election-aware eligibility
     if (!$this->isUserEligibleToVote($auth_user, $election)) {
-        Log::warning('User not eligible to vote', [
+        Log::warning('User lacks voting eligibility', [
             'user_id' => $auth_user->id,
             'election_id' => $election->id,
             'can_vote_now' => $auth_user->can_vote_now,
@@ -255,7 +255,7 @@ public function create(Request $request)
 
         // Redirect to dashboard (slug is only for voting path)
         return redirect()->route('dashboard')
-            ->with('error', 'You are not eligible to vote in this election.');
+            ->with('error', 'You are not registered as a voter for this election.');
     }
 
     // Get the appropriate code model based on election type

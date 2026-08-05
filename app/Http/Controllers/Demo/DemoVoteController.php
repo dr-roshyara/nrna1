@@ -323,14 +323,14 @@ public function create(Request $request)
 
     // Check election-aware eligibility
     if (!$this->isUserEligibleToVote($auth_user, $election)) {
-        Log::warning('User not eligible to vote', [
+        Log::warning('User lacks voting eligibility', [
             'user_id' => $auth_user->id,
             'election_id' => $election->id,
             'can_vote_now' => $auth_user->can_vote_now,
         ]);
 
         return redirect()->route('dashboard')
-            ->with('error', 'You are not eligible to vote in this election.');
+            ->with('error', 'You are not registered as a voter for this election.');
     }
 
     // Get code for this election
@@ -3583,7 +3583,7 @@ public function verify_final_vote(Request $request)
                 'isDemoElection' => $isDemoElection,
                 'auth_user.can_vote' => $auth_user->can_vote ?? null
             ]);
-            $errors['can_vote'] = 'You are not eligible to vote.';
+            $errors['can_vote'] = 'You are not registered as a voter for this election.';
         } else {
             \Log::debug('✅ CHECK 3 PASSED: can_vote', [
                 'isDemoElection' => $isDemoElection,
