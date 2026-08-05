@@ -2359,6 +2359,12 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 
 **Working rules added today (`.claude/CLAUDE.md`):** Source Code Editing Policy (search automated · edits deliberate, no `sed -i`) · End of Commission checklist (mandatory) · commit-ID convention (product work carries `PBDIGIT-nn`; chores state that no story applies).
 
-**Next action:** decide intent for `PBDIGIT-28` findings 1–5 · browser-verify `PBDIGIT-25`/`26`/`27` · then `PBDIGIT-00`.
+**Product story state (end of 2026-08-06):** `PBDIGIT-25` FIXED · `PBDIGIT-26` IMPLEMENTED · `PBDIGIT-27` FIXED (home page + build unblocked) · `PBDIGIT-28` FIXED (0 unresolved live imports) — all four **awaiting browser verification** · `PBDIGIT-29` DISCOVERY COMPLETE rev 3 (Q1–Q6 open) · `PBDIGIT-30` OPEN, **awaiting business answers B1–B9**.
+
+**⛔ NEXT ACTION IS NOT ENGINEERING — it is a business decision.** `PBDIGIT-30` (Active Organisation Business Lifecycle, B1–B9) is **not answerable by search**; it needs the product owner. Nothing about organisation context may be designed or implemented before those answers exist — that is the discipline `PBDIGIT-29` rev 3 exists to protect.
+
+**Then, in order:** browser-verify `PBDIGIT-25`/`26`/`27`/`28` (reload `/`, click the two Copy actions) → `PBDIGIT-00` end-to-end journey run (still the gate on all 24 journey stories) → only then any tactical modelling arising from `PBDIGIT-30`.
+
+**Standing method (adopted today):** the **8-phase capability review** — business lifecycle → business events → routes → implementation → DDD → code quality → runtime verification → backlog — closing with a **Business Rule Matrix** (`rule · implemented · verified · evidence`). Canonical home: `docs/publicdigit/backlog/README.md`. Reusable for Membership, Finance, Appointments.
 
 **Governance state is UNCHANGED by all of this** — the WP-4 commission remains CLOSED (R-98), the prepared five-vote ARB session is still unconvened, and Q1–Q4 still belong to the Contestation Domain Owner. Product work does not reopen any of it.
