@@ -42,6 +42,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-26`](PBDIGIT-26-copy-code-action-on-verification-page.md) | Add "Copy Code" action to the Voter Verification page | `EPIC-05` | `IMPLEMENTED — AWAITING BROWSER VERIFICATION` |
 | [`PBDIGIT-27`](PBDIGIT-27-case-sensitive-import-paths-break-the-app-on-linux.md) | Case-sensitive import paths break the app on Linux (home page + build) | cross-cutting | `FIXED` — build green |
 | [`PBDIGIT-28`](PBDIGIT-28-resolve-remaining-missing-module-imports.md) | Resolve the remaining missing-module imports (dead code, not runtime failures) | cross-cutting | `FIXED` — 0 unresolved live imports |
+| [`PBDIGIT-29`](PBDIGIT-29-organisation-context-discovery.md) | **Organisation Context Discovery** (DDD discovery — no code) | `EPIC-01` | `DISCOVERY COMPLETE — awaiting 6 decisions` |
 
 ---
 
