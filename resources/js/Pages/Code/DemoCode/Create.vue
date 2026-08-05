@@ -175,6 +175,7 @@
                                     {{ verification_code }}
                                 </span>
                                 <button
+                                    type="button"
                                     @click="copyCodeToClipboard"
                                     :class="codeCopied ? 'bg-green-500 text-white shadow-lg' : 'bg-white text-green-600 hover:bg-green-50 hover:shadow-md'"
                                     class="font-bold py-3 px-6 rounded-lg transition-all flex items-center justify-center gap-2 border-2 border-green-400 hover:border-green-500 whitespace-nowrap"

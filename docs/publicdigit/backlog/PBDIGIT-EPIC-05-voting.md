@@ -54,6 +54,8 @@
 | `PBDIGIT-16` | Open the ballot | `IMPLEMENTED — NOT VERIFIED` | low — clearest constitutional coverage in the product |
 | `PBDIGIT-17` | Voter casts a vote | `IMPLEMENTED — NOT VERIFIED` | **HIGH — P-5 duplicate route definitions on the voter path; anonymity must be re-confirmed at runtime** |
 
+**Related defect story:** [`PBDIGIT-25`](PBDIGIT-25-copy-button-must-not-submit-the-form.md) — Copy button submitted the form on `/public-demo/{slug}/code` (step 1 of the demo voter journey). **Fixed 2026-08-05**, awaiting runtime verification.
+
 **Recommended order:** `PBDIGIT-17` first, and within it the two checks that matter most: **which handler actually serves `/vote/submit`** (P-5), and **that no voter identity reaches the votes table** (the product's central promise — currently guaranteed by a fitness test, but never observed in a live run).
 
 **Nothing is authorized by this epic.**

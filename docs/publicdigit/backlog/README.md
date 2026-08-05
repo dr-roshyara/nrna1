@@ -32,6 +32,14 @@ Every epic below is a segment of this one journey. Nothing in the backlog exists
 | [`PBDIGIT-EPIC-05`](PBDIGIT-EPIC-05-voting.md) | Voting | `PBDIGIT-15`…`17` | `IMPLEMENTED — NOT VERIFIED` |
 | [`PBDIGIT-EPIC-06`](PBDIGIT-EPIC-06-results-and-audit.md) | Results & Audit | `PBDIGIT-18`…`24` | `IMPLEMENTED — NOT VERIFIED` |
 
+### Standalone defect stories
+
+Small, low-risk defects get their own story file rather than waiting for their epic's review. They keep the same flat ID sequence.
+
+| ID | Story | Epic | Status |
+|---|---|---|---|
+| [`PBDIGIT-25`](PBDIGIT-25-copy-button-must-not-submit-the-form.md) | Copy button must not scroll or submit the voting form (public demo) | `EPIC-05` | `FIXED — AWAITING RUNTIME VERIFICATION` |
+
 ---
 
 ## 🚧 PBDIGIT-00 — Verify the journey end-to-end *(gates every epic above)*
