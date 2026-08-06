@@ -739,3 +739,26 @@ Conventions proven in PB003: certification decisions are scope-qualified ("PB003
 **⚠️ The "canonical metadata → generated views → uniqueness validation" architecture ALREADY EXISTS — do not rebuild it.** EKP schema (`docs/knowledge/schema/`: knowledge-schema · authorities · statuses · knowledge-types · knowledge-relationships + 5 more) declares card fields (`knowledge_id`, `authority`, `status`, `owner`, `related_to`); `knowledge-lint.php` already enforces **`knowledge_id_unique: severity error`** (fails on duplicates, `knowledge-lint.php:107`); `knowledge-graph.php` already generates the derived graph. **The ENTIRE delta of the proposed vocabulary system is: add a `terms:` field to the card schema + a `term_owner_unique` rule** — one field, one lint rule, zero new tooling. That would also make M-3 (EP-rule dual home) a mechanical build failure.
 **⛔ Blocked before that delta: EKP's own disposition is PENDING ARB (debt M-4).** Do not extend the schema of an artifact whose future is unruled — the ruling comes first.
 **Metrics split (adopted):** **objective** (externally observable, the acceptance measure) = human corrections · wrong placement · wrong storage location · missed mandatory workflow step · doc-inconsistency build failures. **diagnostic only** (agent self-reported, never acceptance) = searches · tool invocations · files opened.
+
+## Product phase — durable facts (2026-08-06)
+
+**Vocabulary is settled: the term is "Working Organisation", never "Active Organisation".** *(The organisation within which the authenticated user is currently operating.)* "Active" collides with an organisation's **own** lifecycle states (active · suspended · archived); "Working" describes the **user's context**. **All stories, reviews and code use "Working Organisation".** Canonical home: `docs/publicdigit/backlog/PBDIGIT-30-*.md` §Terminology decision.
+
+**Approved business rules of that concept (Product Owner, 2026-08-06) — the rule text lives in `PBDIGIT-30`; these are pointers:**
+
+| Rule | What it settles |
+|---|---|
+| **B1** | identity + `0 → Create or Join` · `1 → enter it` · `2+ → ask`. **PublicDigit is a BOOTSTRAP organisation and is never a working context** — excluded from every count. Invariant: *every authenticated request executes inside exactly one Working Organisation*; with several, the platform **never guesses** |
+| **B2** | it changes **only** by an authorised act — **never as a side effect** of navigation, rendering, routing, elections, caching or middleware |
+| **B3** | authority: user (primary) · platform **only** on invalidity · administrator **No** · anything else **Never**. **No mechanism may *establish* one — only validate, consume or store it.** *The platform shall always be able to explain why the current Working Organisation was established* |
+| **B10** | one eligible election today → enter it, **only** at login or platform root |
+
+**B5–B9 need no additional business rules — they are derived consequences of B1–B3** (B8/B9 keep an open *experience* question, which is design). **B4 was withdrawn** as design-not-discovery → `PBDIGIT-34`, an unprioritised question that blocks nothing.
+
+**⚠️ Unresolved and load-bearing: two eligibility mechanisms exist and neither is authoritative** — `User::getActiveElection()` vs `VoterEligibilityService`/`EligibilityEvaluator`/`EligibilitySnapshot`. B10 forbids a second mechanism, so this must be settled inside `PBDIGIT-32` (`PBDIGIT-EPIC-02` MB-5 records the same concern).
+
+**Routing mechanism: sound, not deficient.** `DashboardResolver`'s nine-priority model reviewed at **robustness 4/5** (`PBDIGIT-31`); it is **missing two destinations**, not wrong in kind. **The evidence does not justify a Working Organisation service, aggregate or value object** — `PBDIGIT-29` Q1 (field or concept?) and Q2 (which of four stores is authoritative?) are **undecided and are not prerequisites for implementation.** Extend; do not redesign.
+
+**Standing product discipline (both at n=1, both FILED not adopted, both would extend an existing standard per ES-005.4):** *deliberate manual source edits, no `sed -i`* (`docs/pks/2026-08-05-manual-code-editing-observation.md`) · ***business discovery finds the rules a product already implies; it does not design the product's future*** (`docs/pks/2026-08-06-discovery-does-not-design-candidate.md`). **Diagnostic for the second: a discovered rule describes work the product already owes — a rule that *creates* work is a requirement wearing a discovery's clothes.**
+
+**Nothing in the product is runtime-verified.** Every ✅ in `docs/publicdigit/backlog/` is a claim about code. `PBDIGIT-00` (one observed end-to-end election) remains the gate, and **verification precedes new features.**
