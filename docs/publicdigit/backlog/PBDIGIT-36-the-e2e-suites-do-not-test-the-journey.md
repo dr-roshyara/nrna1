@@ -54,7 +54,7 @@ The test asserts `TenantContext` appears in the **`web` middleware group** (`:27
 * [ ] `RealWorldVotingFlowTest` builds voters through the authoritative mechanism, and reaches its assertions.
 * [ ] `Phase6EndToEndIntegrationTest` uses `posts.id`; the `CLAUDE.md` domain model corrected to match the schema.
 * [ ] `test_middleware_order_critical` asserts **middleware priority**, and names the property it protects.
-* [ ] **At least one test actually casts a vote end-to-end** and asserts the anonymity invariant (no voter↔vote linkage, ADR-T11).
+* [ ] **At least one test actually casts a vote end-to-end** and asserts the anonymity invariant (no voter↔vote linkage, ADR-T11). *(Now possible: `PBDIGIT-38` is fixed, and `tests/Feature/AuditEventTransactionIsolationTest.php` shows the shape.)*
 * [ ] The suites' names match what they cover — **or they are renamed.** A suite called `…EndToEnd…` that tests middleware is a false signal, and false signals are worse than absent ones.
 
 ## Explicitly out of scope

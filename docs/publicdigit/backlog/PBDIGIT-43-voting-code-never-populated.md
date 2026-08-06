@@ -12,7 +12,7 @@
 
 ## What was observed
 
-The first vote ever persisted in this repository (`PBDIGIT-38` verification) has:
+The vote persisted during `PBDIGIT-38`'s verification has:
 
 ```
 demo_votes.voting_code = NULL

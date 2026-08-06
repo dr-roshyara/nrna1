@@ -64,7 +64,7 @@ A voter completes every step of the journey and **their vote is silently discard
 
 ⚠️ **Option B was engineering's first proposal and was rejected by the Product Owner before implementation.** The rejection was correct: B satisfies I-1 and fails I-2, and I-2 was only discovered *because* the boundary question was asked first. **Had B been implemented, it would have shipped as a fix while leaving deny audits silently discarded.**
 
-## 4 · Decision — **PROPOSED: Option D, independent connection**
+## 4 · Decision — **Option D, independent connection** (approved)
 
 **Selected over E (outbox) for three reasons:**
 
@@ -130,7 +130,7 @@ The recorder omits **two** required (`NOT NULL`, no default) columns, measured a
 
 ## 8 · Verification — executed 2026-08-06
 
-* [x] **A vote persists.** `demo_votes = 1`, `demo_results = 2` (two national posts, one candidate each). **First vote ever recorded in this repository.**
+* [x] **A vote persists.** `demo_votes = 1`, `demo_results = 2` (two national posts, one candidate each).
 * [x] 🔒 **The saved vote carries no voter linkage** (ADR-T11), checked four ways: `demo_votes` and `demo_results` have **no** `user_id`/`voter_id`/`member_id`/`email`/`slug` column; **no stored value equals the voter's `user_id`**; and the indirect path — `demo_votes.voting_code` → `demo_codes.voting_code` → `user_id` — **does not join**, because `demo_votes.voting_code` is `NULL`. *(That null is itself a finding — see `PBDIGIT-43`.)*
 * [x] **I-1 verified, and by the real failure rather than a mock.** The audit `INSERT` still fails (`overlay_influence_chain`, pending `PBDIGIT-42`) — and **the vote persisted anyway.** `25P02` occurrences in the request's own log: **0** (was the cause of the lost vote). Regression test: `tests/Feature/AuditEventTransactionIsolationTest.php` — 3 tests, 6 assertions, green.
 * [ ] **I-2 — still BLOCKED on `PBDIGIT-42`**, honestly: no audit row can be written while a required column has no defined meaning. **Not worked around** by making the column nullable, which would decide `PBDIGIT-42` in code.

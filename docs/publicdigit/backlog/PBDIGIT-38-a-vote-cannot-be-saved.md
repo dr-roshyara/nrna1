@@ -1,12 +1,12 @@
 # PBDIGIT-38 — A vote cannot be saved: a security-audit write blocks the business operation
 
 **Type:** Defect (blocking) · **Epic:** `PBDIGIT-EPIC-05` Voting · **Created:** 2026-08-06
-**Found by:** `PBDIGIT-00` part (b) — the first end-to-end journey ever walked in this repository
+**Found by:** `PBDIGIT-00` part (b) — the end-to-end journey walk
 
 | | |
 |---|---|
 | **Status** | ✅ **FIXED AND VERIFIED 2026-08-06** — implemented per `ADR_20260806_1340` (APPROVED). **Ready to close** |
-| **Customer impact** | **Resolved.** A vote now persists: `demo_votes = 1`, `demo_results = 2` — **the first vote ever recorded in this repository** |
+| **Customer impact** | **Resolved.** A vote now persists: `demo_votes = 1`, `demo_results = 2`, and the journey completes |
 | **Was** | 🔴 Blocking — a voter completed every step and their vote was silently discarded |
 | **Residual** | **Invariant I-2 remains unsatisfied**, blocked on **`PBDIGIT-42`** (audit-schema semantics). **Not worked around** |
 

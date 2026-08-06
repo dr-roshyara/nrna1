@@ -10,20 +10,13 @@ class ElectionSecurityEvent extends Model
     public $timestamps = false;
 
     /**
-     * Audit persistence is decoupled from the Vote transaction.
+     * An observational projection of voting — not part of the Vote aggregate, so it
+     * must not share the Vote's transaction.
      *
-     * This model is an observational projection of the voting process. It is not
-     * part of the Vote aggregate and does not participate in its consistency
-     * boundary, so it must not share its transactional lifetime.
+     * Bound here rather than at the call site so readers and writers stay on the
+     * same connection.
      *
-     * Bound at the MODEL rather than at the call site on purpose: there is one
-     * writer (SecurityEventRecorder) and one reader (IpVelocityOverlay). Binding
-     * only the write would leave reads on the default connection — harmless while
-     * both point at one database, and silently wrong as soon as the DB_AUDIT_*
-     * overrides move audit traffic elsewhere, because the velocity overlay would
-     * then read an empty table and trust decisions would change with no error.
-     *
-     * See docs/publicdigit/adr/ADR_20260806_1340_Audit_Event_Transaction_Boundary.md
+     * ADR: docs/publicdigit/adr/ADR_20260806_1340_Audit_Event_Transaction_Boundary.md
      */
     protected $connection = 'pgsql_audit';
 
