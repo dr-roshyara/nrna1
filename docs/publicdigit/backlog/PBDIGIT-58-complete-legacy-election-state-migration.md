@@ -7,8 +7,10 @@
 | | |
 |---|---|
 | **Status** | ⬜ **AWAITING AUTHORISATION** — the strategy is approved; the work is not |
-| **Decision implemented** | **Option B — complete the migration.** Approved by the Product Owner, 2026-08-06 |
-| **Rejected** | Option A (transitional synchronisation) — would preserve two representations and contradict `DeprecationPolicy` |
+| **Decision implemented** | **Option B — migrate the legacy consumers.** Approved by the Product Owner, 2026-08-06 |
+| **Permitted during migration** | ✅ **A Legacy Compatibility Adapter.** Legacy fields *may* be written from the lifecycle **while remaining consumers are migrated** — see §Legacy Compatibility Adapter |
+| **Rejected** | **Option A — permanent synchronisation.** Maintaining the legacy fields *indefinitely* so old readers can stay. That recreates today's condition rather than ending it |
+| **Definition of Done** | 🎯 **Zero production readers of the legacy fields.** At that point the compatibility writes are removed and the fields retired |
 | **Domain changes** | **None.** The aggregate, `ElectionLifecycleState`, the engine and the projection are correct. **This is application- and infrastructure-layer work only** |
 
 ---
@@ -22,6 +24,14 @@ No production capability may interpret lifecycle from legacy persistence fields.
 ```
 
 **That single invariant explains the whole epic.** Every slice below either establishes it for one capability, or enforces it.
+
+### The work is migrating consumers, not replacing variables
+
+**`status`, `is_active` and `state` are persistence. They are not the problem — they are where the problem is visible.**
+
+> **The work is moving *consumers of the Election State capability* from a legacy representation to the authoritative lifecycle model. Once no consumer remains, the legacy representation becomes removable as a consequence — not as a task.**
+
+**Why the wording matters:** "replace the legacy fields" invites someone to start with a migration that drops columns. **"Migrate the legacy consumers" puts the columns last, where they belong** — and makes the Definition of Done a property of the *consumers* (zero readers), not of the schema.
 
 ---
 
@@ -61,6 +71,31 @@ No production capability may interpret lifecycle from legacy persistence fields.
 | `elections.is_active` | `ElectionLifecycleEngine::compute($election)->isActive()` |
 
 ⚠️ **One capability has no mapping, and it must be settled inside `58C` — not invented.** **Member Communication** filters `status != 'deleted'`. **`'deleted'` is not an `ElectionLifecycleState` member.** Whether it means `archived`, a soft-delete, or a concept the lifecycle deliberately omits is **unknown**. **This is the single place where the existing API may be insufficient.**
+
+## Legacy Compatibility Adapter — permitted, bounded, and not Option A
+
+**Migrating every consumer in one change is not realistic.** During migration an **adapter** may write the legacy representation *from* the authoritative lifecycle, so unmigrated consumers keep working. **That is precisely what an Adapter does: it presents a new model in an old shape, for a bounded period.**
+
+**This is not Option A. The difference is the exit condition, and it is the only difference that matters:**
+
+| | Legacy Compatibility Adapter (permitted) | Permanent synchronisation (rejected) |
+|---|---|---|
+| Purpose | present the lifecycle in the legacy shape **while consumers are migrated** | keep legacy readers working **indefinitely** |
+| Ends when | **zero production readers remain** | never |
+| Consumers | shrinking, tracked | stable, untracked |
+| Outcome | legacy fields retired | two representations forever |
+
+**If the adapter is used it carries three obligations — otherwise "temporary" becomes permanent by default, which is how this situation arose:**
+
+* [ ] **A named owner and a review date.** An adapter with neither is Option A with better manners.
+* [ ] **The reader count is visible and falling** — `58A`'s guard already measures it, so this is free.
+* [ ] **The adapter is removed in `58F`, not left to lapse.** Its removal is a task, not an assumption.
+
+⚠️ **The loophole this closes explicitly:**
+
+> **The Legacy Compatibility Adapter exists solely to protect *existing* legacy consumers during migration. It must never justify creating a new legacy consumer. Every new capability must consume the constitutional lifecycle directly.**
+
+**Without that sentence, the adapter becomes an argument** — *"the field is still maintained, so I'll read it just this once."* **Each such once resets the migration**, because the Definition of Done is a reader count, and a new reader moves it the wrong way.
 
 ---
 
@@ -107,6 +142,7 @@ Advance `DeprecationPolicy::STRICT_LEVEL` one level at a time, honouring its own
 
 ### `58F` · Remove Legacy State
 
+* [ ] **The Legacy Compatibility Adapter removed first** — its writes exist only to serve readers, so it goes when the last reader does.
 * [ ] `elections.status` and `elections.is_active` removed.
 * [ ] **`elections.state` reconsidered** — a manually-backfilled cache of the engine (`PBDIGIT-48` §5). Either provably derived, or removed. **`BackfillElectionState` becomes unnecessary and goes with it.**
 * [ ] Divergent rows stop mattering, because the fields are gone. **This is the only correct moment to stop caring about them.**
@@ -116,13 +152,16 @@ Advance `DeprecationPolicy::STRICT_LEVEL` one level at a time, honouring its own
 ## Architectural Definition of Done
 
 ```
-[ ] No production capability reads elections.status
-[ ] No production capability reads elections.is_active
+[ ] ZERO production readers of elections.status          <- the target
+[ ] ZERO production readers of elections.is_active       <- the target
 [ ] Every capability obtains election state from the constitutional lifecycle
+[ ] Legacy Compatibility Adapter removed (it exists only while readers remain)
 [ ] DeprecationPolicy::STRICT_LEVEL at full strict, with no violations
 [ ] Legacy fields removed from the schema
 [ ] elections.state provably derived, or removed
 ```
+
+**Read the first two lines as the definition and the rest as consequences.** Retiring a field is easy; **having no reader left to break is the achievement.**
 
 ## Ordering constraint
 
@@ -140,7 +179,7 @@ Advance `DeprecationPolicy::STRICT_LEVEL` one level at a time, honouring its own
 ## Explicitly out of scope
 
 * **Any domain change.** The lifecycle enum, engine, projection and constitution are correct.
-* **Transitional synchronisation.** Rejected — **re-introducing a sync path mid-migration recreates the condition this epic exists to end.**
+* **Permanent synchronisation of the legacy fields** (Option A). **A Legacy Compatibility Adapter is permitted and is scoped above** — what is out of scope is a sync path with no exit condition.
 * **Hand-repairing `namaste 2026`'s columns.** `58B` makes it unnecessary; doing it sooner destroys the live evidence.
 * **The other two instances of this pattern** — `PBDIGIT-45` (votes per IP) and `PBDIGIT-49` (voter eligibility). **Same shape, separate epics.** *(If this epic works, it is the template for both — a claim to make afterwards, on evidence, not now.)*
 

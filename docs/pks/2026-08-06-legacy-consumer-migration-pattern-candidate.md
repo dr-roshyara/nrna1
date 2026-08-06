@@ -12,6 +12,30 @@
 
 > **When a domain evolves a new authoritative model, the work that remains is not redesign — it is migrating the consumers that still read the old one.**
 
+### The sentence the pattern reduces to
+
+> **Move the consumers of the capability from the legacy representation to the authoritative model.**
+
+**It generalises without modification, and the generalisation is the test of whether this belongs in KnowledgeOS at all:**
+
+| Migration | Move… | not… |
+|---|---|---|
+| Authentication | **consumers** | passwords |
+| Payments | **consumers** | tables |
+| Membership | **consumers** | entities |
+| Audit | **consumers** | events |
+| Election state *(the source case)* | **consumers** | columns |
+
+**And the wording is part of the pattern.** Say *"migrate the legacy consumers"*, never *"replace the legacy fields"*: the fields are persistence, and naming them as the work invites someone to begin by dropping a column. **The unit of work is a consumer of a business capability.**
+
+### The Definition of Done follows from that
+
+| Wrong target | Right target |
+|---|---|
+| *the legacy field is removed* | **zero production readers of the legacy representation** |
+
+**They are not the same, and the order is not interchangeable.** Remove the field while twenty consumers still read it and production breaks. **Reach zero readers first and removal is nearly trivial** — which is why the target is a property of the consumers, and retirement is a consequence.
+
 ### The six steps
 
 | Step | Action | Why in this order |
@@ -24,6 +48,28 @@
 | **6** | **Retire the legacy model** | Only once enforcement is clean |
 
 **Step 2 is the step most often skipped, and the one that carries the pattern's value.**
+
+### The Legacy Compatibility Adapter — the nuance the pattern must not blur
+
+**Steps 3–4 rarely happen in one change.** A **Legacy Compatibility Adapter** — presenting the authoritative model in the legacy shape, so unmigrated consumers keep working — is legitimate and usually necessary. *(Named for the Adapter pattern deliberately: it adapts a new model to an old interface, for a bounded period.)*
+
+**It is separated from permanent synchronisation by one thing only — an exit condition:**
+
+| | Legacy Compatibility Adapter | Permanent synchronisation |
+|---|---|---|
+| Ends when | **no consumer reads the legacy representation** | never |
+| Consumer count | shrinking, measured | stable, unmeasured |
+| Result | the legacy representation is retired | two representations, indefinitely |
+
+**Three obligations, or "temporary" becomes permanent by default:** a **named owner**, a **review date**, and a **visible, falling reader count** — plus removal as an explicit **task**, never a lapse.
+
+> **An adapter with no owner, no review date and no falling reader count is permanent synchronisation with better manners** — and permanent synchronisation is the condition this pattern exists to end.
+
+⚠️ **The loophole that must be closed in words, because it will otherwise be argued:**
+
+> **The adapter exists solely to protect *existing* legacy consumers during migration. It must never justify creating a new legacy consumer. Every new capability must consume the authoritative model directly.**
+
+**Otherwise the adapter becomes a permission slip** — *"the field is still maintained, so I'll read it just this once"* — and each such once moves the reader count the wrong way.
 
 ## The distinction the pattern rests on
 
