@@ -2,12 +2,10 @@
   "title": "Mitglieder-Import Tutorial",
   "subtitle": "Erfahren Sie, wie Sie Mitglieder per CSV-Datei in Ihre Organisation importieren.",
   "back": "Zurück zum Import",
-
   "section_overview": {
     "heading": "Übersicht",
     "body": "Mit dem Mitglieder-Import können Organisationsadministratoren mehrere Mitglieder in einem Schritt hinzufügen, indem sie eine CSV-Datei hochladen. Das System erstellt automatisch Benutzerkonten, verknüpft sie mit der Organisation und legt den formellen Mitgliedschaftseintrag an. Bestehende Mitglieder werden aktualisiert, nicht dupliziert."
   },
-
   "section_requirements": {
     "heading": "Was muss die CSV-Datei enthalten?",
     "intro": "Die Datei muss mindestens eine Spalte enthalten:",
@@ -25,7 +23,6 @@
       "expires_at - Ablaufdatum der Mitgliedschaft, z.B. 2025-12-31"
     ]
   },
-
   "section_file_format": {
     "heading": "CSV-Dateiformat",
     "intro": "Die Datei muss eine CSV-Datei mit Komma (,) oder Semikolon (;) als Trennzeichen sein - das System erkennt es automatisch.",
@@ -38,10 +35,9 @@
       "Maximale Dateigröße: 50 MB. Unterstützt bis zu 50.000 Mitglieder pro Import."
     ],
     "example_heading": "Beispiel Dateiinhalt (semikolon-getrennt):",
-    "example": "email;firstname;lastname;membership_number;joined_at;status;fees_status;expires_at\njohn.doe@example.com;John;Doe;MEM-001;2024-01-15;active;paid;2025-12-31\njane.smith@example.com;Jane;Smith;;2024-02-01;active;unpaid;\nbob.wilson@example.com;Bob;Wilson;;2024-03-10;active;exempt;2026-03-10",
+    "example": "email;firstname;lastname;membership_number;joined_at;status;fees_status;expires_at\njohn.doe{'@'}example.com;John;Doe;MEM-001;2024-01-15;active;paid;2025-12-31\njane.smith{'@'}example.com;Jane;Smith;;2024-02-01;active;unpaid;\nbob.wilson{'@'}example.com;Bob;Wilson;;2024-03-10;active;exempt;2026-03-10",
     "download_hint": "Verwenden Sie die Schaltflaeche 'Vorlage herunterladen' auf der Import-Seite, um eine vorformatierte CSV-Datei mit Beispieldaten zu erhalten."
   },
-
   "section_upsert": {
     "heading": "Neue vs. bestehende Mitglieder",
     "body": "Der Import behandelt neue und bestehende Mitglieder intelligent:",
@@ -60,7 +56,6 @@
       }
     ]
   },
-
   "section_steps": {
     "heading": "Schritt-für-Schritt Import-Prozess",
     "steps": [
@@ -86,7 +81,6 @@
       }
     ]
   },
-
   "section_faq": {
     "heading": "Häufig gestellte Fragen",
     "items": [
@@ -116,9 +110,7 @@
       }
     ]
   },
-
   "back_btn": "Zur Import-Seite",
-
   "seo": {
     "title": "Mitglieder-Import Tutorial | Public Digit",
     "description": "Schritt-für-Schritt-Anleitung zum Import von Organisationsmitgliedern per CSV auf Public Digit. Pflichtfelder, Datumsformate, Upsert-Regeln und Umgang mit bestehenden Mitgliedern.",

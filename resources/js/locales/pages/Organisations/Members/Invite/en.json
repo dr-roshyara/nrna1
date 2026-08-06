@@ -5,7 +5,7 @@
   "form": {
     "title": "Send Invitation",
     "email_label": "Email Address",
-    "email_placeholder": "member@example.com",
+    "email_placeholder": "member{'@'}example.com",
     "role_label": "Role",
     "message_label": "Personal Message",
     "message_optional": "(optional)",

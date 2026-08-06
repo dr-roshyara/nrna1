@@ -3,30 +3,30 @@
   "title": "सहभागी आमन्त्रण गर्नुहोस्",
   "description": "{organisation} मा कर्मचारी, अतिथि वा निर्वाचन समिति सदस्यहरू आमन्त्रण गर्नुहोस्।",
   "types": {
-    "staff":              "कर्मचारी",
-    "guest":              "अतिथि",
+    "staff": "कर्मचारी",
+    "guest": "अतिथि",
     "election_committee": "निर्वाचन समिति"
   },
   "form": {
-    "title":               "आमन्त्रण पठाउनुहोस्",
-    "email_label":         "इमेल ठेगाना",
-    "email_placeholder":   "naam@udaharana.com",
-    "type_label":          "सहभागी प्रकार",
-    "message_label":       "व्यक्तिगत सन्देश",
-    "message_optional":    "(ऐच्छिक)",
+    "title": "आमन्त्रण पठाउनुहोस्",
+    "email_label": "इमेल ठेगाना",
+    "email_placeholder": "naam{'@'}udaharana.com",
+    "type_label": "सहभागी प्रकार",
+    "message_label": "व्यक्तिगत सन्देश",
+    "message_optional": "(ऐच्छिक)",
     "message_placeholder": "आमन्त्रणसँगै छोटो सन्देश थप्नुहोस्…",
-    "submit":              "आमन्त्रण पठाउनुहोस्",
-    "submitting":          "पठाउँदै…"
+    "submit": "आमन्त्रण पठाउनुहोस्",
+    "submitting": "पठाउँदै…"
   },
   "pending": {
-    "title":       "प्रतीक्षारत आमन्त्रणहरू",
-    "empty":       "कुनै प्रतीक्षारत आमन्त्रण छैन।",
-    "col_email":   "इमेल",
-    "col_type":    "प्रकार",
+    "title": "प्रतीक्षारत आमन्त्रणहरू",
+    "empty": "कुनै प्रतीक्षारत आमन्त्रण छैन।",
+    "col_email": "इमेल",
+    "col_type": "प्रकार",
     "col_invited_by": "आमन्त्रण गर्नेले",
     "col_expires": "म्याद",
-    "col_action":  "कार्य",
-    "cancel":      "रद्द गर्नुहोस्"
+    "col_action": "कार्य",
+    "cancel": "रद्द गर्नुहोस्"
   },
   "info_panel": {
     "title": "सहभागी प्रकारहरू",

@@ -91,7 +91,7 @@
     "contact_support": "समर्थन सम्पर्क गर्नुहोस्",
     "documentation": "दस्तावेजीकरण",
     "book_training": "प्रशिक्षण बुक गर्नुहोस्",
-    "contact_support_email": "support@publicdigit.eu",
+    "contact_support_email": "support(at)publicdigit.eu",
     "contact_support_phone": "+49 (0) 30 123456"
   },
   "compliance": {
@@ -108,9 +108,18 @@
     "subtitle": "PublicDigit जर्मन गोपनीयता मानकहरूसँग विकास गरिएको हो",
     "description": "सबै डेटा सुरक्षित र पारदर्शी तरिकाले प्रक्रिया गरिन्छ।",
     "points": [
-      {"id": "gdpr", "text": "✓ डेटा संरक्षण अनुपालनशील डेटा प्रसंस्करण"},
-      {"id": "servers", "text": "✓ एनक्रिप्ट गरिएको डेटा भण्डारण (जर्मन सर्भर)"},
-      {"id": "certification", "text": "✓ अन्त-अन्त सुरक्षा प्रमाणीकरण"}
+      {
+        "id": "gdpr",
+        "text": "✓ डेटा संरक्षण अनुपालनशील डेटा प्रसंस्करण"
+      },
+      {
+        "id": "servers",
+        "text": "✓ एनक्रिप्ट गरिएको डेटा भण्डारण (जर्मन सर्भर)"
+      },
+      {
+        "id": "certification",
+        "text": "✓ अन्त-अन्त सुरक्षा प्रमाणीकरण"
+      }
     ]
   },
   "user_cases": {
@@ -119,16 +128,28 @@
       "title": "जर्मन संगठनहरू",
       "description": "ट्रेड यूनियनहरू, कार्य परिषदहरू, र जर्मन संस्थाहरूले सुरक्षित, पारदर्शी निर्वाचनको लागि PublicDigit प्रयोग गर्छन्।",
       "points": [
-        {"id": "works_council", "text": "कार्य परिषद निर्वाचनहरू"},
-        {"id": "association", "text": "संस्था मतदानहरू"}
+        {
+          "id": "works_council",
+          "text": "कार्य परिषद निर्वाचनहरू"
+        },
+        {
+          "id": "association",
+          "text": "संस्था मतदानहरू"
+        }
       ]
     },
     "diaspora": {
       "title": "प्रवासी समुदायहरू",
       "description": "यूरोप भरको प्रवासी संस्थाहरूले पूर्ण पारदर्शिताको साथ कई भाषामा निर्वाचन आयोजना गर्छन्।",
       "points": [
-        {"id": "leadership", "text": "सामुदायिक नेतृत्व निर्वाचनहरू (एकाधिक देशहरू)"},
-        {"id": "referendums", "text": "सदस्य मतदानहरू (8+ भाषा समर्थन)"}
+        {
+          "id": "leadership",
+          "text": "सामुदायिक नेतृत्व निर्वाचनहरू (एकाधिक देशहरू)"
+        },
+        {
+          "id": "referendums",
+          "text": "सदस्य मतदानहरू (8+ भाषा समर्थन)"
+        }
       ]
     }
   },
@@ -168,9 +189,18 @@
   "tips": {
     "title": "💡 सुरुवात गर्ने सुझावहरू",
     "points": [
-      {"id": "setup", "text": "संगठनहरू 5 मिनिटभन्दा कम समयमा सेटअप गर्न सकिन्छ"},
-      {"id": "invite", "text": "निर्वाचनमा भाग लिनको लागि असीमित सदस्यहरूलाई आमन्त्रण गर्नुहोस्"},
-      {"id": "analytics", "text": "प्रत्येक निर्वाचनको लागि विस्तृत विश्लेषण र अडिट ट्रेलहरूमा पहुँच प्राप्त गर्नुहोस्"}
+      {
+        "id": "setup",
+        "text": "संगठनहरू 5 मिनिटभन्दा कम समयमा सेटअप गर्न सकिन्छ"
+      },
+      {
+        "id": "invite",
+        "text": "निर्वाचनमा भाग लिनको लागि असीमित सदस्यहरूलाई आमन्त्रण गर्नुहोस्"
+      },
+      {
+        "id": "analytics",
+        "text": "प्रत्येक निर्वाचनको लागि विस्तृत विश्लेषण र अडिट ट्रेलहरूमा पहुँच प्राप्त गर्नुहोस्"
+      }
     ]
   },
   "metrics": {
@@ -306,7 +336,7 @@
     "trust_level_label": "विश्वास स्तर",
     "trust_level_excellent": "उत्कृष्ट - सभी मानकहरूसँग पूरी तरह अनुपालनशील",
     "dpo_contact": "डेटा संरक्षण अधिकारी",
-    "dpo_email": "dpo@publicdigit.eu",
+    "dpo_email": "dpo(at)publicdigit.eu",
     "dpo_authority": "बर्लिन डेटा संरक्षण प्राधिकरण",
     "compliance_badge_gdpr": "डेटा संरक्षण अनुपालनशील",
     "compliance_badge_data": "जर्मनीमा होस्ट गरिएको",
@@ -350,7 +380,7 @@
       "name_placeholder": "उदा. नेपाल संघ",
       "name_helper": "दर्तामा जस्तै",
       "email_label": "आधिकारिक संचारको लागि ईमेल",
-      "email_placeholder": "board@sangathan.np",
+      "email_placeholder": "board{'@'}sangathan.np",
       "email_helper": "कानुनी रूपमा बाध्यकारी संचार",
       "info_title": "अगली के छ?",
       "street_label": "सडक र घर नम्बर",
@@ -371,7 +401,7 @@
       "rep_role_placeholder": "अध्यक्ष",
       "rep_role_helper": "उदा. अध्यक्ष, कार्यकारी निर्देशक, आदि",
       "rep_email_label": "प्रतिनिधि ईमेल",
-      "rep_email_placeholder": "raj@sangathan.np",
+      "rep_email_placeholder": "raj{'@'}sangathan.np",
       "rep_email_helper": "यदि संगठन पता भन्दा अलग छ भने",
       "is_self_representative": "मैं आफै प्रतिनिधि हूँ",
       "is_self_representative_help": "यदि तपाई आफै प्रतिनिधि हुनुहुन्छ भने यो जाँच गर्नुहोस्। कुनै अलग ईमेल पठाइने छैन।",

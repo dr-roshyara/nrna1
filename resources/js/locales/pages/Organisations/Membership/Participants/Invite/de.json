@@ -3,30 +3,30 @@
   "title": "Teilnehmer einladen",
   "description": "Laden Sie Mitarbeiter, Gäste oder Wahlkomiteemitglieder zu {organisation} ein.",
   "types": {
-    "staff":              "Mitarbeiter",
-    "guest":              "Gast",
+    "staff": "Mitarbeiter",
+    "guest": "Gast",
     "election_committee": "Wahlkomitee"
   },
   "form": {
-    "title":               "Einladung senden",
-    "email_label":         "E-Mail-Adresse",
-    "email_placeholder":   "name@beispiel.de",
-    "type_label":          "Teilnehmertyp",
-    "message_label":       "Persönliche Nachricht",
-    "message_optional":    "(optional)",
+    "title": "Einladung senden",
+    "email_label": "E-Mail-Adresse",
+    "email_placeholder": "name{'@'}beispiel.de",
+    "type_label": "Teilnehmertyp",
+    "message_label": "Persönliche Nachricht",
+    "message_optional": "(optional)",
     "message_placeholder": "Kurze Nachricht zur Einladung hinzufügen…",
-    "submit":              "Einladung senden",
-    "submitting":          "Wird gesendet…"
+    "submit": "Einladung senden",
+    "submitting": "Wird gesendet…"
   },
   "pending": {
-    "title":       "Ausstehende Einladungen",
-    "empty":       "Keine ausstehenden Einladungen.",
-    "col_email":   "E-Mail",
-    "col_type":    "Typ",
+    "title": "Ausstehende Einladungen",
+    "empty": "Keine ausstehenden Einladungen.",
+    "col_email": "E-Mail",
+    "col_type": "Typ",
     "col_invited_by": "Eingeladen von",
     "col_expires": "Läuft ab",
-    "col_action":  "Aktion",
-    "cancel":      "Abbrechen"
+    "col_action": "Aktion",
+    "cancel": "Abbrechen"
   },
   "info_panel": {
     "title": "Teilnehmertypen",

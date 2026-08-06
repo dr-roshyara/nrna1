@@ -2,7 +2,6 @@
   "title": "Wähler-Import Tutorial",
   "subtitle": "Erfahren Sie, wie Sie Wähler für eine Wahl registrieren können.",
   "back": "Zurück zum Import",
-
   "section_overview": {
     "heading": "Übersicht",
     "body": "Die Wähler-Import-Funktion ermöglicht es Wahlverwaltern, mehrere Wähler in einem Schritt durch den Upload einer CSV-Datei zu registrieren. Je nach Mitgliedschaftsmodus Ihrer Organisation funktioniert der Importprozess unterschiedlich:",
@@ -17,7 +16,6 @@
       }
     }
   },
-
   "section_requirements": {
     "heading": "Wer kann als Wähler importiert werden?",
     "intro_full": "Im Vollständigen Mitgliedschaftsmodus muss die Person alle drei Bedingungen erfüllen:",
@@ -34,7 +32,6 @@
     "warning_full": "E-Mails, die nicht alle drei Bedingungen erfüllen, werden beim Import automatisch übersprungen. Kein Fehler stoppt den Import — gültige Zeilen werden immer verarbeitet.",
     "warning_election": "Alle gültigen E-Mail-Adressen werden verarbeitet. Bestehende Benutzer werden mit der Wahl verknüpft. Neue Benutzer erhalten Einladungs-E-Mails — überprüfen Sie Ihre E-Mail-Konfiguration vor dem Import."
   },
-
   "section_file_format": {
     "heading": "CSV-Dateiformat",
     "intro": "Das Importdateiformat hängt von Ihrem Mitgliedschaftsmodus ab:",
@@ -50,7 +47,7 @@
         "Unterstützt sowohl Komma (,) als auch Semikolon (;) als Trennzeichen."
       ],
       "example_heading": "Beispiel:",
-      "example": "email\njohn.doe@example.com\njane.smith@example.com\nbob.wilson@example.com"
+      "example": "email\njohn.doe{'@'}example.com\njane.smith{'@'}example.com\nbob.wilson{'@'}example.com"
     },
     "format_election": {
       "title": "Nur-Wahl-Modus",
@@ -65,11 +62,10 @@
         "Namen können leer sein (E-Mail-only-Zeilen werden akzeptiert)."
       ],
       "example_heading": "Beispiel:",
-      "example": "firstname;lastname;email\nJohn;Doe;john.doe@example.com\nJane;Smith;jane.smith@example.com\n;Wilson;bob.wilson@example.com"
+      "example": "firstname;lastname;email\nJohn;Doe;john.doe{'@'}example.com\nJane;Smith;jane.smith{'@'}example.com\n;Wilson;bob.wilson{'@'}example.com"
     },
     "download_hint": "Verwenden Sie die Schaltfläche \"Vorlage herunterladen\" auf der Import-Seite, um das richtige Format für den Mitgliedschaftsmodus Ihrer Organisation zu erhalten."
   },
-
   "section_steps": {
     "heading": "Schritt-für-Schritt Import-Prozess",
     "steps_full": [
@@ -113,7 +109,6 @@
       }
     ]
   },
-
   "section_faq": {
     "heading": "Häufig gestellte Fragen",
     "items": [
@@ -155,9 +150,7 @@
       }
     ]
   },
-
   "back_btn": "Zur Import-Seite",
-
   "seo": {
     "title": "Wähler-Import Anleitung & Leitfaden | Public Digit",
     "description": "Beherrschen Sie den Wählerimport für Wahlen. Vollständiger Leitfaden zu Vollständigem Mitgliedschaftsmodus vs. Nur-Wahl-Modus, CSV-Dateiformat, Schritt-für-Schritt-Importprozess und Massenregistrierung von Wählern auf Public Digit.",

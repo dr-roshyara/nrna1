@@ -91,7 +91,7 @@
     "contact_support": "Contact Support",
     "documentation": "Documentation",
     "book_training": "Book Training",
-    "contact_support_email": "support@publicdigit.eu",
+    "contact_support_email": "support(at)publicdigit.eu",
     "contact_support_phone": "+49 (0) 30 123456"
   },
   "compliance": {
@@ -108,9 +108,18 @@
     "subtitle": "PublicDigit is built with German privacy standards in mind",
     "description": "All data is processed securely and transparently.",
     "points": [
-      {"id": "gdpr", "text": "GDPR-compliant data processing"},
-      {"id": "servers", "text": "Encrypted data storage (German servers)"},
-      {"id": "certification", "text": "End-to-end security certification"}
+      {
+        "id": "gdpr",
+        "text": "GDPR-compliant data processing"
+      },
+      {
+        "id": "servers",
+        "text": "Encrypted data storage (German servers)"
+      },
+      {
+        "id": "certification",
+        "text": "End-to-end security certification"
+      }
     ]
   },
   "user_cases": {
@@ -119,16 +128,28 @@
       "title": "German Organizations",
       "description": "Trade unions, works councils, and German associations use PublicDigit for secure, transparent elections.",
       "points": [
-        {"id": "works_council", "text": "Works council elections"},
-        {"id": "association", "text": "Association votes"}
+        {
+          "id": "works_council",
+          "text": "Works council elections"
+        },
+        {
+          "id": "association",
+          "text": "Association votes"
+        }
       ]
     },
     "diaspora": {
       "title": "Diaspora Communities",
       "description": "Diaspora associations across Europe organize elections in multiple languages with complete transparency.",
       "points": [
-        {"id": "leadership", "text": "Community leadership elections (multiple countries)"},
-        {"id": "referendums", "text": "Member votes (8+ language support)"}
+        {
+          "id": "leadership",
+          "text": "Community leadership elections (multiple countries)"
+        },
+        {
+          "id": "referendums",
+          "text": "Member votes (8+ language support)"
+        }
       ]
     }
   },
@@ -168,9 +189,18 @@
   "tips": {
     "title": "💡 Getting Started Tips",
     "points": [
-      {"id": "setup", "text": "Organizations can be set up in less than 5 minutes"},
-      {"id": "invite", "text": "Invite unlimited members to participate in elections"},
-      {"id": "analytics", "text": "Access detailed analytics and audit trails for every election"}
+      {
+        "id": "setup",
+        "text": "Organizations can be set up in less than 5 minutes"
+      },
+      {
+        "id": "invite",
+        "text": "Invite unlimited members to participate in elections"
+      },
+      {
+        "id": "analytics",
+        "text": "Access detailed analytics and audit trails for every election"
+      }
     ]
   },
   "metrics": {
@@ -306,7 +336,7 @@
     "trust_level_label": "Trust Level",
     "trust_level_excellent": "Excellent - Fully compliant with all standards",
     "dpo_contact": "Data Protection Officer",
-    "dpo_email": "dpo@publicdigit.eu",
+    "dpo_email": "dpo(at)publicdigit.eu",
     "dpo_authority": "Berlin Data Protection Authority",
     "compliance_badge_gdpr": "GDPR Compliant",
     "compliance_badge_data": "Hosted in Germany",
@@ -350,7 +380,7 @@
       "name_placeholder": "e.g., Munich Gymnastics Club 1860 e.V.",
       "name_helper": "exactly as in the association register",
       "email_label": "Email for Official Communication",
-      "email_placeholder": "board@gymnastics-club.de",
+      "email_placeholder": "board{'@'}gymnastics-club.de",
       "email_helper": "Legally binding communication",
       "info_title": "What's next?",
       "street_label": "Street and House Number",
@@ -371,7 +401,7 @@
       "rep_role_placeholder": "Chair",
       "rep_role_helper": "e.g., Chair, Executive Director, etc.",
       "rep_email_label": "Representative Email",
-      "rep_email_placeholder": "t.schmidt@gymnastics-club.de",
+      "rep_email_placeholder": "t.schmidt{'@'}gymnastics-club.de",
       "rep_email_helper": "If different from the organization address",
       "is_self_representative": "I am the representative",
       "is_self_representative_help": "Check this if you are the representative yourself. No separate email will be sent.",

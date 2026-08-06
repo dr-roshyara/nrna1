@@ -5,7 +5,7 @@
   "form": {
     "title": "आमन्त्रण पठाउनुहोस्",
     "email_label": "इमेल ठेगाना",
-    "email_placeholder": "sadashya@udaharan.com",
+    "email_placeholder": "sadashya{'@'}udaharan.com",
     "role_label": "भूमिका",
     "message_label": "व्यक्तिगत सन्देश",
     "message_optional": "(वैकल्पिक)",

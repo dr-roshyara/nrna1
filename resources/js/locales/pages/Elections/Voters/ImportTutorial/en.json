@@ -2,7 +2,6 @@
   "title": "Voter Import Tutorial",
   "subtitle": "Learn how to bulk-register voters for an election.",
   "back": "Back to Import",
-
   "section_overview": {
     "heading": "Overview",
     "body": "The voter import feature lets election administrators register multiple voters in one step by uploading a CSV file. Depending on your organisation's membership mode, the import process works differently:",
@@ -17,7 +16,6 @@
       }
     }
   },
-
   "section_requirements": {
     "heading": "Who Can Be Imported as a Voter?",
     "intro_full": "In Full Membership Mode, the person must fulfil all three conditions:",
@@ -34,7 +32,6 @@
     "warning_full": "Emails that do not meet all three conditions will be automatically skipped during import. No error will stop the import — valid rows are always processed.",
     "warning_election": "All valid email addresses will be processed. Existing users are linked to the election. New users receive invitation emails — be sure to check your email configuration before importing."
   },
-
   "section_file_format": {
     "heading": "CSV File Format",
     "intro": "The import file format depends on your membership mode:",
@@ -50,7 +47,7 @@
         "Supports both comma (,) and semicolon (;) delimiters."
       ],
       "example_heading": "Example:",
-      "example": "email\njohn.doe@example.com\njane.smith@example.com\nbob.wilson@example.com"
+      "example": "email\njohn.doe{'@'}example.com\njane.smith{'@'}example.com\nbob.wilson{'@'}example.com"
     },
     "format_election": {
       "title": "Election-Only Mode",
@@ -65,11 +62,10 @@
         "Names can be empty (email-only rows are accepted)."
       ],
       "example_heading": "Example:",
-      "example": "firstname;lastname;email\nJohn;Doe;john.doe@example.com\nJane;Smith;jane.smith@example.com\n;Wilson;bob.wilson@example.com"
+      "example": "firstname;lastname;email\nJohn;Doe;john.doe{'@'}example.com\nJane;Smith;jane.smith{'@'}example.com\n;Wilson;bob.wilson{'@'}example.com"
     },
     "download_hint": "Use the Download Template button on the import page to get the correct format for your organisation's membership mode."
   },
-
   "section_steps": {
     "heading": "Step-by-Step Import Process",
     "steps_full": [
@@ -113,7 +109,6 @@
       }
     ]
   },
-
   "section_faq": {
     "heading": "Frequently Asked Questions",
     "items": [
@@ -155,9 +150,7 @@
       }
     ]
   },
-
   "back_btn": "Go to Import Page",
-
   "seo": {
     "title": "Voter Import Tutorial & Guide | Public Digit",
     "description": "Master voter importing for elections. Complete guide on Full Membership vs Election-Only modes, CSV file formats, step-by-step import process, and how to bulk-register voters on Public Digit.",

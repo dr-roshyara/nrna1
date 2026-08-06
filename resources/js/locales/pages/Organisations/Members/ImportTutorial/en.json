@@ -2,12 +2,10 @@
   "title": "Member Import Tutorial",
   "subtitle": "Learn how to bulk-import members into your organisation using a CSV file.",
   "back": "Back to Import",
-
   "section_overview": {
     "heading": "Overview",
     "body": "The member import feature allows organisation administrators to add multiple members in one step by uploading a CSV file. The system creates user accounts, links them to the organisation, and creates their formal membership record automatically. Existing members are updated, not duplicated."
   },
-
   "section_requirements": {
     "heading": "What does the CSV file need?",
     "intro": "The file must contain at minimum one column:",
@@ -25,7 +23,6 @@
       "expires_at — membership expiry date, e.g. 2025-12-31"
     ]
   },
-
   "section_file_format": {
     "heading": "CSV File Format",
     "intro": "The file must be a CSV with comma (,) or semicolon (;) as the delimiter — the system detects it automatically.",
@@ -38,10 +35,9 @@
       "Maximum file size: 50 MB. Supports up to 50,000 members per import."
     ],
     "example_heading": "Example file content (semicolon-separated):",
-    "example": "email;firstname;lastname;membership_number;joined_at;status;fees_status;expires_at\njohn.doe@example.com;John;Doe;MEM-001;2024-01-15;active;paid;2025-12-31\njane.smith@example.com;Jane;Smith;;2024-02-01;active;unpaid;\nbob.wilson@example.com;Bob;Wilson;;2024-03-10;active;exempt;2026-03-10",
+    "example": "email;firstname;lastname;membership_number;joined_at;status;fees_status;expires_at\njohn.doe{'@'}example.com;John;Doe;MEM-001;2024-01-15;active;paid;2025-12-31\njane.smith{'@'}example.com;Jane;Smith;;2024-02-01;active;unpaid;\nbob.wilson{'@'}example.com;Bob;Wilson;;2024-03-10;active;exempt;2026-03-10",
     "download_hint": "Use the 'Download Template' button on the import page to get a pre-formatted CSV file with sample data."
   },
-
   "section_upsert": {
     "heading": "New vs Existing Members",
     "body": "The import intelligently handles both new and existing members:",
@@ -60,7 +56,6 @@
       }
     ]
   },
-
   "section_steps": {
     "heading": "Step-by-Step Import Process",
     "steps": [
@@ -86,7 +81,6 @@
       }
     ]
   },
-
   "section_faq": {
     "heading": "Frequently Asked Questions",
     "items": [
@@ -116,9 +110,7 @@
       }
     ]
   },
-
   "back_btn": "Go to Import Page",
-
   "seo": {
     "title": "Member Import Tutorial | Public Digit",
     "description": "Step-by-step guide to importing organisation members via CSV on Public Digit. Learn required columns, date formats, upsert rules, and how to handle existing members.",

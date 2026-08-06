@@ -2,12 +2,10 @@
   "title": "सदस्य आयात ट्युटोरियल",
   "subtitle": "CSV फाइल मार्फत आफ्नो संगठनमा सदस्यहरू थोकमा आयात गर्ने तरिका जान्नुहोस्।",
   "back": "आयातमा फर्कनुहोस्",
-
   "section_overview": {
     "heading": "अवलोकन",
     "body": "सदस्य आयात सुविधाले संगठन प्रशासकहरूलाई CSV फाइल अपलोड गरेर एकै चरणमा धेरै सदस्यहरू थप्न दिन्छ। प्रणालीले स्वचालित रूपमा प्रयोगकर्ता खाताहरू बनाउँछ, तिनीहरूलाई संगठनसँग जोड्छ र औपचारिक सदस्यता रेकर्ड बनाउँछ। अवस्थित सदस्यहरू अपडेट गरिन्छन्, नक्कल गरिदैन।"
   },
-
   "section_requirements": {
     "heading": "CSV फाइलमा के चाहिन्छ?",
     "intro": "फाइलमा कम्तीमा एउटा स्तम्भ हुनु पर्छ:",
@@ -25,7 +23,6 @@
       "expires_at - सदस्यता समाप्ति मिति, जस्तै 2025-12-31"
     ]
   },
-
   "section_file_format": {
     "heading": "CSV फाइल ढाँचा",
     "intro": "फाइल अल्पविराम (,) वा सेमिकोलन (;) विभाजकसहितको CSV हुनु पर्छ - प्रणालीले स्वचालित रूपमा पहिचान गर्छ।",
@@ -38,10 +35,9 @@
       "अधिकतम फाइल आकार: 50 MB। प्रति आयात 50,000 सम्म सदस्यहरू समर्थन गर्छ।"
     ],
     "example_heading": "उदाहरण फाइल सामग्री (सेमिकोलन-विभाजित):",
-    "example": "email;firstname;lastname;membership_number;joined_at;status;fees_status;expires_at\njohn.doe@example.com;John;Doe;MEM-001;2024-01-15;active;paid;2025-12-31\njane.smith@example.com;Jane;Smith;;2024-02-01;active;unpaid;\nbob.wilson@example.com;Bob;Wilson;;2024-03-10;active;exempt;2026-03-10",
+    "example": "email;firstname;lastname;membership_number;joined_at;status;fees_status;expires_at\njohn.doe{'@'}example.com;John;Doe;MEM-001;2024-01-15;active;paid;2025-12-31\njane.smith{'@'}example.com;Jane;Smith;;2024-02-01;active;unpaid;\nbob.wilson{'@'}example.com;Bob;Wilson;;2024-03-10;active;exempt;2026-03-10",
     "download_hint": "पूर्व-स्वरूपित CSV फाइल प्राप्त गर्न आयात पृष्ठमा 'टेम्प्लेट डाउनलोड गर्नुहोस्' बटन प्रयोग गर्नुहोस्।"
   },
-
   "section_upsert": {
     "heading": "नया बनाम अवस्थित सदस्यहरू",
     "body": "आयातले नया र अवस्थित सदस्यहरू दुवैलाई बुद्धिमानीपूर्वक ह्यान्डल गर्छ:",
@@ -60,7 +56,6 @@
       }
     ]
   },
-
   "section_steps": {
     "heading": "चरण-दर-चरण आयात प्रक्रिया",
     "steps": [
@@ -86,7 +81,6 @@
       }
     ]
   },
-
   "section_faq": {
     "heading": "बारम्बार सोधिने प्रश्नहरू",
     "items": [
@@ -116,9 +110,7 @@
       }
     ]
   },
-
   "back_btn": "आयात पृष्ठमा जानुहोस्",
-
   "seo": {
     "title": "सदस्य आयात ट्युटोरियल | Public Digit",
     "description": "Public Digit मा CSV मार्फत संगठन सदस्यहरू आयात गर्ने चरण-दर-चरण मार्गदर्शन। चाहिन्छ स्तम्भहरू, मिति ढाँचाहरू, अपसर्ट नियमहरू र अवस्थित सदस्यहरू ह्यान्डल गर्ने तरिका।",
