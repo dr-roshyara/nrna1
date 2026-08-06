@@ -334,6 +334,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // PBDIGIT-33: attach the routing-cache invalidator. The observer and its model
+        // were already imported above but never attached, so a login routing decision
+        // (cached 300s, config/login-routing.php) survived membership changes.
+        UserOrganisationRole::observe(UserOrganisationObserver::class);
+
         // Messaging delivery (ADR-MP-06, D-2): the dispatcher is a LISTENER on the
         // relay's dispatched IntegrationEvent — the relay stays byte-identical; the
         // dispatcher is simply another consumer of relay output.

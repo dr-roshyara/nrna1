@@ -510,3 +510,131 @@ For example:
 > "The Working Organisation is the organisation within which the authenticated user is currently operating."
 
 That terminology is much less ambiguous than "active organisation," especially in a system where organisations themselves may later have states like *Active*, *Suspended*, or *Archived*.
+#
+I actually think this is an important business rule, and it belongs in **PBDIGIT-30** because it answers one of the unanswered business questions rather than describing an implementation.
+
+I would write it as a business rule, not as a routing algorithm.
+
+---
+
+# Business Rule B10 — Election-Day Exception
+
+**Name:** Election-Day Direct Entry
+
+**Business intent**
+
+When a member logs into the platform, the platform should minimise unnecessary navigation while ensuring the member never enters the wrong election.
+
+---
+
+## Rule
+
+When a user signs in:
+
+1. Determine all **elections that are active today**.
+2. Determine which of those elections the user is **eligible to participate in**.
+3. Apply the following rules:
+
+| Eligible elections today | Behaviour                                             |
+| ------------------------ | ----------------------------------------------------- |
+| **0**                    | Continue with the normal organisation routing rules.  |
+| **1**                    | Redirect the user directly to that election.          |
+| **2 or more**            | Do **not** guess. Present an election selection page. |
+
+---
+
+## Important constraint
+
+An election is considered **eligible** only if the user is allowed to participate in it.
+
+The platform must never redirect merely because an election exists.
+
+Examples of eligibility include:
+
+* member belongs to the organisation
+* member has voting rights
+* election is currently open
+* any additional constitutional eligibility rules
+
+The implementation should use the existing election eligibility rules rather than creating a second eligibility mechanism.
+
+---
+
+# Relationship to Organisation Routing
+
+This is **an exception**, not a replacement.
+
+Normal routing remains:
+
+```text
+Login
+
+↓
+
+Working Organisation
+```
+
+The exception becomes:
+
+```text
+Login
+
+↓
+
+Exactly one eligible election today?
+
+        │
+   Yes  ▼
+Election page
+
+        │
+   No   ▼
+Working Organisation routing
+```
+
+---
+
+# Priority
+
+The routing priority becomes:
+
+```text
+Login
+
+↓
+
+Exactly one eligible election today?
+
+        │
+   Yes
+        ▼
+Election
+
+        │
+   No
+        ▼
+How many real organisations?
+
+0
+→ Create / Join Organisation
+
+1
+→ Redirect to that organisation
+
+2+
+→ Organisation Selection
+```
+
+---
+
+## Why I like this rule
+
+This is not a technical optimization.
+
+It reflects the user's intent.
+
+On election day, the user's goal is usually **to vote**, not to navigate through organisations and dashboards first. At the same time, the rule is safe because it only auto-redirects when there is exactly one eligible election. As soon as there is any ambiguity (zero or multiple eligible elections), the platform asks the user instead of guessing.
+
+I would add one refinement to keep the behaviour predictable:
+
+> **Only apply the election-day exception immediately after login (or when entering the platform root).** Once the user is already working inside an organisation, changing pages should not unexpectedly redirect them into an election. That keeps the exception limited to the initial entry into the platform.

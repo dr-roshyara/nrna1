@@ -130,10 +130,10 @@ class UserOrganisationObserver
      * - user_active_vote:{user_id} - Active voting session
      * - user_dashboard_preferences:{user_id} - User preferences
      *
-     * @param int $userId
+     * @param string $userId UUID — see user_organisation_roles.user_id
      * @return void
      */
-    protected function invalidateUserCaches(int $userId): void
+    protected function invalidateUserCaches(string $userId): void
     {
         $cacheKeys = [
             // Login routing caches

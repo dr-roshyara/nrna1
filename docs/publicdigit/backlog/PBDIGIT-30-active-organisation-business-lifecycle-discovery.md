@@ -129,3 +129,76 @@ One question only, separate from login. Candidate triggers to rule on (**not** d
 **B3–B9 remain unanswered.** Engineering stays blocked; see the status block at the top of this story.
 
 **Implementation note (evidence only, decides nothing):** `PBDIGIT-31` reviews how the *current* redirection mechanism measures against B1. Its finding in one line: **B1's bootstrap-exclusion rule is already partly implemented, while B1.3's 0-org and 2+-org destinations do not exist.**
+
+---
+
+## B10 — Election-Day Direct Entry — ✅ **APPROVED**
+
+*(Added to the record after B1. Numbered B10 because it is a new business question, not a revision of B1–B9.)*
+
+### Business intent
+
+When a member signs in, the platform should **minimise unnecessary navigation while never entering the wrong election.**
+
+### Rule
+
+On sign-in:
+
+1. Determine all elections **active today**.
+2. Determine which of those the user is **eligible to participate in**.
+3. Then:
+
+| Eligible elections today | Behaviour |
+|---:|---|
+| **0** | continue with the normal Working Organisation routing (B1.3) |
+| **1** | **redirect directly to that election** |
+| **2 or more** | **do not guess** — present an **election selection** page |
+
+### Constraint
+
+An election counts only if the user **may participate**: belongs to the organisation · has voting rights · the election is open · plus any constitutional eligibility rules.
+
+> **The platform must never redirect merely because an election exists.**
+> **Reuse the existing election-eligibility rules — do not create a second eligibility mechanism.**
+
+### Relationship to Working Organisation routing — an **exception**, not a replacement
+
+```
+Login
+  ↓
+Exactly one eligible election today?
+  ├── yes → that election
+  └── no  → Working Organisation routing (B1.3)
+                0  → Create or Join
+                1  → enter it
+                2+ → ask
+```
+
+### 🔒 B10 scope refinement (part of the approved rule)
+
+**The exception applies only immediately after login, or when entering the platform root.** Once the user is already working inside an organisation, ordinary navigation must **never** divert them into an election. This keeps the exception limited to platform entry and the behaviour predictable.
+
+### Why this rule is safe
+
+It auto-redirects **only** when there is exactly one eligible election. At any ambiguity — zero or several — the platform **asks** instead of guessing. It reflects the member's actual intent on election day (*to vote*), without ever choosing a ballot on their behalf.
+
+---
+
+### Implementation note for B10 (evidence only — decides nothing, and is not authorisation)
+
+`PBDIGIT-31`'s evidence shows **B10 is largely implemented already**:
+
+| B10 step | Existing implementation | Status |
+|---|---|---|
+| elections **active today** | `User::getActiveElection()` — `status='active'` · `type='real'` (demo excluded) · `start_date <= now()` · `end_date >= now()` | ✅ `User.php:1301-1306` |
+| **organisation-scoped** to the user, bootstrap excluded | `->where('type','tenant')` on the user's organisations | ✅ `:1289-1292` |
+| **not already voted** | `whereDoesntHave('voterSlugs', status='voted')` | ✅ `:1307-1310` |
+| **0 eligible → organisation routing** | P3 is skipped when the count is 0 | ✅ `DashboardResolver:~104` |
+| **1 eligible → that election** | `route('elections.show', $activeElection->slug)` | ✅ `:120` |
+| **2+ eligible → election selection** | currently routes to `organisations.show` | ❌ **the one gap** — `:130` |
+| an election **selection page** to route to | `GET /election/select` → `ElectionController@selectElection` **already exists** *(and is declared twice — `routes/web.php:205` and `routes/election/electionRoutes.php:41`)* | ✅ exists |
+| exception applies **only at login/root** | `DashboardResolver` runs from `LoginResponse` and after email verification — not on ordinary page loads | ✅ already login-scoped |
+
+**So B10 reduces to one branch change plus verification.**
+
+**One open point, deliberately not answered here:** `getActiveElection()`'s filter covers membership, status, date window and already-voted — but the platform also has `VoterEligibilityService` / `EligibilityEvaluator` / `EligibilitySnapshot`. **Whether that filter *is* the eligibility mechanism or a second one alongside it is unresolved** (`PBDIGIT-EPIC-02` MB-5 records the same concern). B10's constraint forbids creating a second mechanism — so this must be settled before implementation, and it is **not** settled by this record.

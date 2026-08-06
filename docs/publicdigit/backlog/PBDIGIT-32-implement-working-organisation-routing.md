@@ -62,13 +62,21 @@ Make the routing mechanism answer the question B1 asks: **ignore the bootstrap o
 
 ---
 
-## Exception candidate — RD-12, the unwired invalidator
+## RD-12 — separated out, no longer part of this story
 
-`PBDIGIT-31` §10 found that `UserOrganisationObserver` clears `dashboard_resolution:{userId}` on `created`/`updated`/`deleted`/`restored` of `UserOrganisationRole`, is **imported** at `AppServiceProvider:18`, and is **never attached** (no `::observe()`, no `booted()`, no `#[ObservedBy]`).
+The unwired cache invalidator became **[`PBDIGIT-33`](PBDIGIT-33-fix-routing-cache-invalidation.md)** and is **fixed**. It was a technical defect, not business behaviour, so it did not belong behind this story's block.
 
-**This is a defect with a one-line remedy, not a business rule awaiting decision.** Its consequence is customer-visible for up to 300 s after any organisation change.
+**It also turned out not to be a one-line fix:** attaching the observer alone would have thrown a `TypeError` on organisation creation, because `invalidateUserCaches(int $userId)` was typed `int` while `user_organisation_roles.user_id` is a UUID. See `PBDIGIT-33`.
 
-**Recommendation:** treat it as its own small story (`PBDIGIT-33`) so it can be fixed and verified without waiting for B2–B9 — **but that is an authorisation decision, not an engineering one.** It is recorded here, not acted upon.
+## B10 — Election-Day Direct Entry (added to scope)
+
+`PBDIGIT-30` **B10 is approved**, and it changes this story's routing order: *exactly one eligible election today → that election; otherwise → Working Organisation routing.* The exception applies **only at login or platform root**, never during ordinary navigation.
+
+**B10 is largely implemented already** (`PBDIGIT-30` §B10 implementation note): `User::getActiveElection()` already scopes to the user's non-bootstrap organisations, to real (non-demo) elections, to `status='active'`, to today's date window, and excludes elections already voted in. P3 already routes 1 → `elections.show`.
+
+**The gap is one branch:** the `2+` case routes to `organisations.show` (`DashboardResolver:130`) instead of the **existing** `GET /election/select` page.
+
+⚠️ **One prerequisite inside this story's scope:** B10 forbids a second eligibility mechanism. `getActiveElection()`'s filter and `VoterEligibilityService`/`EligibilityEvaluator`/`EligibilitySnapshot` must be reconciled — **which is authoritative is unresolved** (`PBDIGIT-EPIC-02` MB-5 records the same concern). Settle it before implementing B10's branch.
 
 ---
 
@@ -89,3 +97,4 @@ PBDIGIT-00  end-to-end journey run
 ---
 
 **Traceability:** `PBDIGIT-30` (B1 approved; terminology *Working Organisation*; B2–B9 open) · `PBDIGIT-31` (I-1 two additive priorities · I-2/RD-12 unwired invalidator · I-3 one definition of "real organisation" · robustness 4/5 · the refusal to propose a new concept) · `PBDIGIT-29` (Q1/Q2 undecided) · `app/Services/DashboardResolver.php` · `app/Observers/UserOrganisationObserver.php` · `app/Providers/AppServiceProvider.php:18`
+
