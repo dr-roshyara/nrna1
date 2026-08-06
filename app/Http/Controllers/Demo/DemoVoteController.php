@@ -3392,12 +3392,13 @@ public function verify_final_vote(Request $request)
         return $_error;
     }
 
-    // 2. NO IP address check in demo elections.
+    // 2. No IP restriction here.
     //
-    // Business rule (PBDIGIT-39): MAX_USE_IP_ADDRESS applies to REAL elections only.
-    // A voter may vote repeatedly in a demo election — that is what demo mode is for —
-    // and the route group states the same thing (electionRoutes.php: "No IP
-    // restrictions (allows testing from same IP) / Allows multiple test votes").
+    // Business rule: demo elections exist for experimentation and learning, so they do
+    // not enforce production voting restrictions. Production safeguards are opt-in for
+    // demo, never inherited.
+    //
+    // ADR: docs/publicdigit/adr/ADR_20260806_1520_Demo_And_Production_Policy_Contexts.md
 
     // // 3. Code is not usable
     // if (!$code->is_code_to_save_vote_usable) {
