@@ -55,7 +55,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-42`](PBDIGIT-42-define-audit-schema-semantics.md) | **Define `overlay_influence_chain` semantics** — decision required, not engineering's to make | `EPIC-06` | `OPEN` — blocks invariant I-2 only |
 | [`PBDIGIT-43`](PBDIGIT-43-voting-code-never-populated.md) | **`demo_votes.voting_code` is never populated** — must derive from `vote_id`, never `code_id` (anonymity) | `EPIC-05` | `OPEN` — found verifying `PBDIGIT-38` |
 | [`PBDIGIT-44`](PBDIGIT-44-locale-messages-break-pages-with-no-gate.md) | 🔴 **A locale string broke a public page** (`@` is vue-i18n syntax) — **fixed**; the missing i18n gate is open | cross-cutting | ✅ `@` class **FIXED — verified in production** · `{{ }}` class + gate `OPEN` |
-| [`PBDIGIT-39`](PBDIGIT-39-unset-config-blocks-every-voter.md) | 🔴 **An unset config value blocks every voter**, reported as a rate limit (`0 >= null`) | `EPIC-05` | `OPEN` — found by `PBDIGIT-00` (b) |
+| [`PBDIGIT-39`](PBDIGIT-39-unset-config-blocks-every-voter.md) | **IP vote limit wrongly applied to demo elections** + no safe default for real ones | `EPIC-05` | ✅ demo exemption **FIXED & VERIFIED** · real-election default `OPEN` |
 | [`PBDIGIT-40`](PBDIGIT-40-completion-page-has-never-worked.md) | **`thank-you` route 500s** — undefined `$vote`. **NOT on the happy path** (severity corrected) | `EPIC-05` | `OPEN` — **Low** |
 | [`PBDIGIT-41`](PBDIGIT-41-demo-provisioning-has-two-paths.md) | **Demo provisioning has two paths and the documented one is broken** | `EPIC-03` | `OPEN` — found by `PBDIGIT-00` (b) |
 

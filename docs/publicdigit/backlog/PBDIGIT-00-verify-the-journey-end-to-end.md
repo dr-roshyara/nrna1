@@ -157,7 +157,11 @@ The original status said *"no Postgres credentials in the review environment"*. 
 
 ## Environment additions needed for (b) — all in `.env.testing`, none committed
 
-`phpunit.xml` supplies test config that `artisan serve` never reads, so serving the app in the testing environment required three keys `.env.testing` did not have: **`APP_KEY`** (without it every request 500s), **`MAIL_MAILER=log`** (it pointed at real Mailgun SMTP, so step 3.5's verification email failed), and **`MAX_USE_IP_ADDRESS`**. **This is the same split-configuration defect as the password** — one environment's truth living in a file only one runner reads. → `PBDIGIT-37`.
+`phpunit.xml` supplies test config that `artisan serve` never reads, so serving the app in the testing environment required two keys `.env.testing` did not have: **`APP_KEY`** (without it every request 500s) and **`MAIL_MAILER=log`** (it pointed at real Mailgun SMTP, so step 3.5's verification email failed). **This is the same split-configuration defect as the password** — one environment's truth living in a file only one runner reads. → `PBDIGIT-37`.
+
+> ⚠️ **CORRECTION, 2026-08-06.** This section originally listed **`MAX_USE_IP_ADDRESS`** as a third environment need. **It was not one.** The Product Owner has since stated the rule: **the IP limit applies to REAL elections only — a demo voter may vote repeatedly.** This walk exercised a *demo* election, so no IP limit should ever have been consulted. **Setting that variable did not fill an environment gap; it masked a defect** (`PBDIGIT-39`), which is now fixed and verified with the variable **unset**.
+>
+> **The lesson, recorded because it will recur: making a blocked test pass is not the same as establishing that it should have passed.** I treated a product defect as missing configuration, and only a stated business rule made the difference visible.
 
 ## Verdict
 

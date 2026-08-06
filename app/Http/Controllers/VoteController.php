@@ -3070,15 +3070,24 @@ public function verify_final_vote(Request $request)
         return $_error;
     }
 
-    // 2. IP address check — scoped to THIS election to prevent cross-election false positives
+    // 2. IP address check — scoped to THIS election to prevent cross-election false positives.
+    //
+    // Business rule (PBDIGIT-39): the limit applies to REAL elections only. Demo
+    // elections allow repeated voting from one IP, so they are exempt entirely rather
+    // than merely counted against a different table.
+    // Demo-ness is derived from the code that was submitted, NOT from an $election
+    // variable: $election is not a parameter of this method, so the previous
+    // `isset($election) && $election->type === 'demo'` could never be true and the
+    // demo-aware table selection it guarded was unreachable.
     $clientIP         = \Request::getClientIp(true);
     $max_use_clientIP = config('app.max_use_clientIP');
     $electionId       = $code ? $code->election_id : null;
+    $isDemoElection   = $code instanceof \App\Models\DemoCode;
 
-    if ($electionId) {
-        $codeModel   = isset($election) && $election->type === 'demo'
-            ? \App\Models\DemoCode::withoutGlobalScopes()
-            : \App\Models\Code::withoutGlobalScopes();
+    if ($isDemoElection) {
+        // No IP restriction in demo. Fall through to the remaining checks.
+    } elseif ($electionId) {
+        $codeModel   = \App\Models\Code::withoutGlobalScopes();
 
         $votesFromIP = $codeModel
             ->where('client_ip', $clientIP)

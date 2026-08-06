@@ -3392,16 +3392,12 @@ public function verify_final_vote(Request $request)
         return $_error;
     }
 
-    // 2. IP address check
-    $clientIP = \Request::getClientIp(true);
-    $max_use_clientIP = config('app.max_use_clientIP');
-    $_message = check_ip_address($clientIP, $max_use_clientIP, 'demo_codes');
-
-    if (!empty($_message['error_message'])) {
-        // Just return the error, let the controller handle the redirect/flash
-        $_error['error_message'] = $_message['error_message'];
-        return $_error;
-    }
+    // 2. NO IP address check in demo elections.
+    //
+    // Business rule (PBDIGIT-39): MAX_USE_IP_ADDRESS applies to REAL elections only.
+    // A voter may vote repeatedly in a demo election — that is what demo mode is for —
+    // and the route group states the same thing (electionRoutes.php: "No IP
+    // restrictions (allows testing from same IP) / Allows multiple test votes").
 
     // // 3. Code is not usable
     // if (!$code->is_code_to_save_vote_usable) {
