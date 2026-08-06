@@ -5,11 +5,14 @@
 
 | | |
 |---|---|
-| **Status** | **BLOCKED** |
-| **Reason** | **Business decision required.** B1–B9 are questions about how the product should behave; none is answerable from the repository |
-| **Owner** | **Product Owner** — not engineering |
-| **Engineering** | **cannot continue.** No organisation-context design, modelling or implementation may begin until B1–B9 are answered |
-| **Unblocks** | a tactical-modelling story *(only if the answers show a concept is warranted)*, then implementation, then verification |
+| **Status** | ✅ **COMPLETE — closed 2026-08-06** |
+| **Delivered** | **B1** identity · **B2** lifecycle · **B3** authority · **B10** election-day exception — the core business rules of the Working Organisation |
+| **Closed by** | Product Owner. **Rationale:** the remaining topics — persistence across logins, expiry, per-device vs per-person, concurrent sessions — describe **additional product capabilities**, not the discovery of the existing Working Organisation concept |
+| **Withdrawn** | **B4** — drifted into product design (see §B4) → `PBDIGIT-34` |
+| **Reclassified** | **B5 · B6 · B7** are already answered by B1–B3 (see §Closure) · **B8 · B9** retain only an *experience* question, which is design, not discovery |
+| **Unblocks** | **`PBDIGIT-32`** — implement and verify B1–B3 (+B10) |
+
+> **The purpose of this story was to discover the business rules the product already implies — not to design every future enhancement before the current product is made robust.** It stopped at the point where the two diverge.
 
 ---
 
@@ -389,9 +392,17 @@ So an administrator has real power over *what a user may access*, and none over 
 
 ---
 
-## B4 — Is the Working Organisation remembered between logins? — 📝 **PROPOSED, NOT APPROVED**
+## B4 — Is the Working Organisation remembered between logins? — ❌ **WITHDRAWN — NOT A DISCOVERY QUESTION**
 
-> **⚠️ Provenance.** Engineering draft, awaiting a Product Owner decision *(PREPARED → ADOPTED, cf. `R-90`)*. One sentence of confirmation adopts it; until then it binds nothing. Derived from B1–B3, B10 and the customer expectation recorded in `PBDIGIT-29` §0 — **not** from current behaviour.
+> **⛔ Withdrawn by the Product Owner, 2026-08-06. It binds nothing and no part of it is approved.** The draft is retained below **only** as the reasoning trail; it must not be cited as a rule.
+>
+> **Why withdrawn — engineering drifted from discovery into design.** B1–B3 *discovered* rules the product already implies. B4 began that way and then **invented product requirements nobody had asked for**: no expiry · per person rather than per device · memory that carries its reason across logout. Each is a defensible design; **none was discovered.** Customers might legitimately want *remember for 30 days*, *remember until logout*, or *remember forever* — that has not been established, and choosing among them is **product design**.
+>
+> **The clearest symptom** was the draft's own sentence *"that is a gap B4 creates work for."* A business rule had begun driving architecture. **Architecture supports the business; a Product Owner should never be obliged to invent features because engineering found a gap.**
+>
+> **Where it goes instead:** `PBDIGIT-34` — a product **enhancement** story, unblocked and unprioritised, to be considered *after* B1–B3 are implemented and verified.
+>
+> **The one part worth carrying forward** *(as reasoning, not as a rule)*: **"remembering is not guessing."** If the platform is ever asked to resume a previous choice, that resolves the apparent tension between B1.3 (*ask when there are several*) and B1.4 (*never guess*) — reproducing a user's own explicit decision is the opposite of a guess. **Recorded in `PBDIGIT-34`.**
 >
 > **The question as originally phrased asks two things.** *"Is it remembered?"* is a business question and is answered below. ***"Where is it remembered?"* is not a business question** — storage is a mechanism, and B3 already forbids any mechanism from becoming the authority. It is left to `PBDIGIT-32` / `PBDIGIT-29` Q2.
 
@@ -463,3 +474,56 @@ If B4 is approved as drafted, two things follow for `PBDIGIT-32`:
 2. **A returning user with several organisations should not meet the selection page again.** Whether today's mechanism can distinguish *"never chose"* from *"chose, and we forgot"* is **not established** — `PBDIGIT-29` found no store that records the user's *choice* as such, only stores that hold *an* organisation. **That is a gap B4 creates work for, and it is stated as a question, not a finding.**
 
 **Decision needed:** approve, amend, or reject. **B5–B9 remain open.** `PBDIGIT-32` stays blocked.
+
+---
+
+# CLOSURE RECORD — PBDIGIT-30 complete after B1, B2, B3, B10
+
+**Closed by the Product Owner, 2026-08-06.** The story achieved its purpose: it discovered the business rules the Working Organisation concept already implies.
+
+## What was delivered
+
+| Rule | Question | Status |
+|---|---|---|
+| **B1** | **Identity** — what is a Working Organisation, and when does one begin? | ✅ APPROVED |
+| **B2** | **Lifecycle** — when does it change? | ✅ APPROVED |
+| **B3** | **Authority** — who may establish or change it (+ traceability)? | ✅ APPROVED |
+| **B10** | **Exception** — election-day direct entry | ✅ APPROVED |
+
+**Identity → lifecycle → authority → auditability.** Together these are sufficient to implement and verify the concept.
+
+## Disposition of B4–B9 — nothing dropped silently
+
+| # | Original question | Disposition |
+|---|---|---|
+| **B4** | Is it remembered between logins? | ❌ **WITHDRAWN** — product design, not discovery → **`PBDIGIT-34`** |
+| **B5** | What happens after *Organisation Created*? | ✅ **already answered** — **B1.2** (it becomes the Working Organisation) + **B2.1a** (a voluntary change) + **B3 A-1** (the user's own authority). No open question remains |
+| **B6** | What happens with exactly one organisation? | ✅ **already answered** — **B1.3** (enter it automatically) + **B3 Clarification 2** (one valid outcome is not a choice) |
+| **B7** | What happens with multiple organisations? | ✅ **already answered** — **B1.3** (show selection) + **B1.4** (never guess) + **B3 A-1** (only the user may choose) |
+| **B8** | What if the current organisation is deleted? | ⚠️ **rule answered, experience open** — **B2.1e** (a forced change) + **B3 A-2** (platform authority on invalidity) + **B1.3** (deterministic destination). What the user *sees* is **UX design**, not business discovery |
+| **B9** | What if membership is revoked? | ⚠️ **rule answered, experience open** — identical treatment to B8 |
+
+**So B5, B6 and B7 required no separate ruling: B1–B3 already decide them.** B8 and B9 have their *rule* decided; only the *experience* is open, and an experience is designed, not discovered.
+
+## What this closure deliberately does **not** claim
+
+- **It does not claim the product is complete.** Cross-login memory, expiry policy, per-device behaviour and concurrent sessions are **real product questions** — they are simply **enhancements**, and they belong after the current rules are implemented and verified.
+- **It does not claim B8/B9's experience is unimportant** — only that designing it is not this story's job.
+- **It does not resolve `PBDIGIT-29` Q1/Q2** (is the concept a field or a type; which store is authoritative). Those remain open and are **not** prerequisites for implementing B1–B3.
+
+## The discipline this closure protects
+
+> **Business discovery finds the rules a product already implies. It does not design the product's future.** When a discovery story begins answering *"what would be a good product?"* instead of *"what does this product already require?"*, it has become a design activity and should be split.
+
+**Recorded because engineering crossed that line in B4 and the Product Owner caught it.** The sequence this restores:
+
+```
+Business discovery → business rules → implementation review → implementation
+        → verification → enhancement stories
+```
+
+**Enhancements come last, not during discovery.**
+
+## Next
+
+**`PBDIGIT-32` is unblocked:** implement and verify B1–B3 (+B10). **`PBDIGIT-34`** holds the cross-login memory question as an unprioritised enhancement.

@@ -5,12 +5,11 @@
 
 | | |
 |---|---|
-| **Status** | **BLOCKED** |
-| **Reason** | **B2–B9 are unanswered.** B1 is approved; the remaining eight business questions are not |
-| **Owner of the block** | **Product Owner** (`PBDIGIT-30`) |
-| **Engineering** | **may not start.** Implementing B1 alone would encode a partial ruleset and require re-work when B2–B9 land |
-| **Unblocks when** | `PBDIGIT-30` records decisions for **B2–B9** |
-| **Exception (candidate)** | **I-2 / RD-12** — the unwired cache invalidator — is a **defect**, not a rule implementation. It may warrant its own immediate story rather than waiting (see §Exception) |
+| **Status** | ✅ **UNBLOCKED — ready for authorisation** |
+| **Business rules settled** | **B1** identity · **B2** lifecycle · **B3** authority (+ traceability) · **B10** election-day exception — all approved, `PBDIGIT-30` **closed** 2026-08-06 |
+| **Why implementable now** | B5/B6/B7 needed no separate ruling — B1–B3 already decide them. B8/B9 have their *rule* decided; only the *experience* is open, and that is design. **B4 was withdrawn** (product design, not discovery) → `PBDIGIT-34` |
+| **Still open, and NOT prerequisites** | `PBDIGIT-34` cross-login memory *(an enhancement — this story must not implement it)* · `PBDIGIT-29` Q1/Q2 *(is the concept a field or a type; which store is authoritative)* · B8/B9 experience design |
+| **Needs** | **authorisation to begin** — the rules are settled; the work is not yet approved |
 
 ---
 
