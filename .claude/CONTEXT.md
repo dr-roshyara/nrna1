@@ -2359,7 +2359,7 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 
 **Working rules added today (`.claude/CLAUDE.md`):** Source Code Editing Policy (search automated · edits deliberate, no `sed -i`) · End of Commission checklist (mandatory) · commit-ID convention (product work carries `PBDIGIT-nn`; chores state that no story applies).
 
-## CURRENT PRODUCT (what is true right now)
+## CURRENT PRODUCT (what is true right now — updated 2026-08-06)
 
 | Story | State |
 |---|---|
@@ -2367,22 +2367,27 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 | `PBDIGIT-26` Copy action on verify page | **IMPLEMENTED** — awaiting browser verification |
 | `PBDIGIT-27` case-sensitive imports | **FIXED** — home page + build unblocked; awaiting browser verification |
 | `PBDIGIT-28` missing-module imports | **FIXED** — 0 unresolved live imports |
-| `PBDIGIT-29` Organisation Context Discovery | **DISCOVERY COMPLETE** (rev 3) — Q1–Q6 open |
-| `PBDIGIT-30` Active Organisation Business Lifecycle | **BLOCKED — business decision required (B1–B9)** |
+| `PBDIGIT-29` Organisation Context Discovery | **DISCOVERY COMPLETE** (rev 3) — Q1/Q2 still open, and **not** prerequisites for `PBDIGIT-32` |
+| `PBDIGIT-30` Working Organisation business lifecycle | ✅ **DISCOVERY OF THE BUSINESS CONCEPT COMPLETE** — closed after **B1** identity · **B2** lifecycle · **B3** authority · **B10** election-day exception. **B4 withdrawn** → `PBDIGIT-34`; **B5–B7 need no additional rules** (derived consequences of B1–B3); **B8/B9** rule decided, *experience* open (design) |
+| `PBDIGIT-31` redirection-mechanism review | **COMPLETE** — robustness 4/5; the mechanism is sound and **missing two destinations**, not wrong in kind |
+| `PBDIGIT-32` implement Working Organisation routing | ⬜ **UNBLOCKED, NOT AUTHORISED** — the rules are settled; the work is not approved |
+| `PBDIGIT-33` routing-cache invalidation | **FIXED** — observer wired + UUID type corrected; awaiting browser verification |
+| `PBDIGIT-34` remember across logins? | **OPEN, unprioritised** — a *question*, blocks nothing |
 | `PBDIGIT-00` end-to-end journey | **BLOCKED** — gate on all 24 journey stories |
 
-**⛔ NEXT ACTION IS NOT ENGINEERING.**
+**⛔ NEXT ACTION IS A PRODUCT OWNER DECISION, NOT ENGINEERING.**
 
 | | |
 |---|---|
-| **Blocked item** | `PBDIGIT-30` — Active Organisation Business Lifecycle |
-| **Reason** | business decision required; B1–B9 are not answerable from the repository |
-| **Owner** | **Product Owner** |
-| **Engineering** | cannot continue — no organisation-context design, modelling or implementation before B1–B9 are answered |
+| **Awaiting** | authorisation of `PBDIGIT-32` (implement B1–B3 + B10) — **or** a decision to run `PBDIGIT-00` first |
+| **Hard scope boundary if authorised** | **extend** `DashboardResolver` with the two missing destinations. **No** redesign · **no** Working Organisation service/aggregate/VO (`PBDIGIT-29` Q1 undecided) · **no** cross-login memory (that is `PBDIGIT-34`) |
+| **Recommendation** | `PBDIGIT-00` first — verification precedes new features, and `PBDIGIT-32`'s acceptance criteria all end in *browser-verified* |
 
-**Then, in order:** browser-verify `PBDIGIT-25`/`26`/`27`/`28` (reload `/`, click both Copy actions) → **`PBDIGIT-00`** end-to-end journey run → only then any modelling arising from `PBDIGIT-30`.
+**Then:** browser-verify `PBDIGIT-25`/`26`/`27`/`33` → **`PBDIGIT-00`** → `PBDIGIT-32` → only then anything from `PBDIGIT-34`, B8/B9 experience design, or `PBDIGIT-29` Q1/Q2.
 
 **Nothing is runtime-verified.** Every ✅ in the backlog is a claim about code, not behaviour.
+
+**⚠️ One prerequisite hides inside `PBDIGIT-32`:** B10 forbids a second eligibility mechanism, and `User::getActiveElection()` vs `VoterEligibilityService`/`EligibilityEvaluator`/`EligibilitySnapshot` — **which is authoritative is unresolved** (`PBDIGIT-EPIC-02` MB-5 records the same concern).
 
 ---
 
@@ -2397,6 +2402,15 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 | **Discovered work becomes a backlog item**, never prose advice | `.claude/CLAUDE.md` |
 | Product backlog (customer capability) vs engineering backlog (`PB-nnn`/`ENG-nnn`) | `docs/publicdigit/backlog/` vs `docs/implementation/backlog/` |
 
-**⛔ THE METHOD IS FROZEN — no further phases, templates or refinements.** Applications so far: **Election ✅** (`PBDIGIT-29`) · Organisation ⬜ · Membership ⬜. It becomes eligible as a KnowledgeOS promotion candidate (ES-006.1) only after **three independent applications**. Until then it is a project convention at n=1. **Use it; do not improve it.** *(This freeze was requested after the Phase-0/outcome/findings-table additions — those were the last.)*
+**⛔ THE METHOD IS FROZEN — no further phases, templates or refinements.** Applications so far: **Election ✅** · **Organisation ✅** · **Membership ✅** · **`PBDIGIT-31` redirection mechanism ✅** (four). **The freeze GATE (`docs/publicdigit/backlog/README.md`): a retrospective is permitted only after THREE FURTHER applications — six total.** Validation being complete does **not** make it promotable: `Validation complete → Evidence available → Decision Authority review → possible promotion`, and the review is not engineering's act (R-34). **Use it; do not improve it.**
+
+**KnowledgeOS candidates filed from product work — FILED, NOT ADOPTED, no action requested:**
+
+| Candidate | n | Home |
+|---|---|---|
+| Source Code Editing Policy (deliberate edits, no `sed -i`) | 1 | `docs/pks/2026-08-05-manual-code-editing-observation.md` |
+| **Discovery does not design** — *"business discovery finds the rules a product already implies; it does not design the product's future"* | 1 | `docs/pks/2026-08-06-discovery-does-not-design-candidate.md` |
+
+Both sit at ES-006.1 rung **observation**, both record `PLACEMENT: PENDING` (ADR:OQ-2), and both would **extend an existing standard rather than become one** (ES-005.4). **The next legitimate step for each is waiting for a second independent occurrence.**
 
 **Governance state is UNCHANGED by all of this** — the WP-4 commission remains CLOSED (R-98), the prepared five-vote ARB session is still unconvened, and Q1–Q4 still belong to the Contestation Domain Owner. Product work does not reopen any of it.
