@@ -1,4 +1,4 @@
-# PBDIGIT-60 — Result visibility was modelled as a lifecycle action: one field conflates two business concepts
+# PBDIGIT-60 — Result Visibility never became a first-class capability during the constitutional migration
 
 **Type:** Domain model correction + defect · **Epic:** `PBDIGIT-EPIC-03` Election Management · **Created:** 2026-08-06 · **Revised:** 2026-08-06 (rev 2)
 **Found by:** the Product Owner, pointing at a "legacy voting button" on `/elections/namaste-2026-74d3721c/management`
@@ -7,27 +7,48 @@
 | | |
 |---|---|
 | **Status** | 🔴 **D-2 is a defect against an already-decided rule — fixable now** · 🟢 **D-1's bounded-context question is ANSWERED; the design that follows is open** |
-| **Diagnosis** | **The legacy visibility control was implemented as a lifecycle action instead of a visibility capability.** The button is labelled "Unpublish Results"; what the business meant was *hide the public results page during a dispute* |
-| **Integrity impact** | 🔴 **A deputy can write `results_published_at` directly through the timeline form** — fabricating the constitutional fact that results were published, at an arbitrary date, with no transition |
+| **Diagnosis** | **Publication migrated into the constitutional lifecycle. Visibility never received its own capability — so the legacy boolean continued to be used as a surrogate for the missing one.** The button is labelled "Unpublish Results"; what the business meant was *hide the results during a dispute* |
+| **Integrity impact** | 🔴 **A deputy can write `results_published_at` through the timeline form**, fabricating the constitutional publication fact with no transition — **and because the results page gates on the boolean alone, this can expose results for an election still in `voting_active`.** See invariant **V-1** |
 | **Operational impact** | 🟡 **`namaste 2026`'s results are hidden with no supported way to show them again.** The lifecycle is *correct*; the missing thing is the capability |
 
 ---
 
 ## The domain model (Product Owner ruling, 2026-08-06)
 
-> **"Result Publication" is two business concepts, not one.**
+> **What was treated as one capability is two: a constitutional fact and an operational control.**
 
-| Capability | Meaning | Mutability |
-|---|---|---|
-| **Election Lifecycle** | *This election reached `results_published`.* A constitutional fact. | **Immutable once true.** `counting → results_published → archived`. You cannot pretend publication never happened. |
-| **Result Visibility** | *The public results page is currently reachable.* An operational control. | **Toggleable** — hidden while a dispute is investigated, shown again afterwards. |
+| Capability | Meaning | Mutability | The verbs |
+|---|---|---|---|
+| **Election Lifecycle** | *This election reached `results_published`.* A constitutional fact. | **Immutable once true.** `counting → results_published → archived`. You cannot pretend publication never happened. | `publish_results` — **once** |
+| **Result Visibility** | *The results are currently reachable by members/public.* An operational control. | **Toggleable**, repeatedly. | **`hide results` / `show results`** |
+
+**Language rule for this ticket:** *publication* refers only to the constitutional fact (`results_published_at`, the `publish_results` transition). The control being redesigned is **hide results / show results** — never "unpublish", never "hide publication". Publication already happened and does not change.
 
 The legacy behaviour was never "undo publication":
 
 ```
-Results published → dispute → hide the public page → dispute resolved → show it again
+Results published → dispute → hide the results → dispute resolved → show them again
                               (the election stays published throughout)
 ```
+
+### The dependency — Visibility exists only downstream of Publication
+
+```
+Election Lifecycle          draft → … → counting → RESULTS PUBLISHED → archived
+                                                          │
+                                                          │ prerequisite
+                                                          ▼
+Result Visibility                              visible ⇄ hidden
+```
+
+> **Invariant V-1: Result Visibility is defined only when the lifecycle has reached `results_published`.** Before that the capability does not exist — there is nothing to show or hide. **`draft + visible results` is not a permitted state; it is an impossible one.**
+
+**V-1 is currently unenforced, and the violation is reachable — this is a finding, not a hypothetical:**
+
+* `ResultController:23` gates the results page on the **boolean alone** — `if (! $election->results_published)` — with **no lifecycle check**.
+* `validatePhaseUpdatePermissions()` `:1478-1503` guards the `administration`, `nomination` and `voting` date groups. **It has no guard for `results_published_at`.**
+
+**So a deputy filling `results_published_at` on a `draft` election makes a public results page render for an election that never reached publication — and on a `voting_active` election, it exposes results while voting is still open.** That is the strongest reason D-2 is a defect rather than an untidiness, and it is why V-1 must be enforced at the visibility gate, not merely documented.
 
 ## The conflation, proven
 
@@ -45,7 +66,7 @@ Results published → dispute → hide the public page → dispute resolved → 
 
 ## The two defects
 
-| | **D-1 — Result Visibility has no capability** | **D-2 — The timeline form writes publication state** |
+| | **D-1 — Result Visibility never became a capability** | **D-2 — The timeline form writes the constitutional publication fact** |
 |---|---|---|
 | **Site** | `ElectionManagementController::unpublish()` `:873-889` | `ElectionManagementController::updateTimeline()` `:1418, :1452, :1459-1463` |
 | **What it does** | `$election->update(['results_published' => false])` under the label "Unpublish Results" | accepts `results_published_at` as editable input, and sets `results_published = true` when it is filled |
@@ -79,25 +100,31 @@ Rev 1 read the boolean and the timestamp as competing authorities. Under the cor
 
 ## Scope
 
-**D-2 (fix now):** `results_published_at` becomes non-editable input — removed from `updateTimeline()`'s validation, `$validated`, and the auto-publish coupling at `:1459-1461`. Publication state changes only via `publish_results`.
+**D-2 (fix now):** `results_published_at` becomes non-editable input — removed from `updateTimeline()`'s validation, `$validated`, and the auto-publish coupling at `:1459-1461`. **The constitutional fact changes only via the `publish_results` transition.**
 
-**D-1 (design, then implement):** model **Result Visibility** as its own capability — a named control ("Hide results" / "Show results"), its own authorisation, its own audit record, and a UI gated on it rather than on a lifecycle-sounding label. The lifecycle is not touched.
+**D-1 (design, then implement):** make **Result Visibility** a first-class capability — the controls **`hide results` / `show results`**, its own authorisation (A-1), its own audit record (A-2), and **V-1 enforced at the visibility gate** so results cannot be reachable for an election that never published. The lifecycle is not touched.
 
 **Eventual (with `PBDIGIT-48`'s retirement, not here):** rename `results_published` → `results_visible` / `results_publicly_visible`, so the field says what it means. Renaming before consumers are inventoried would repeat the mistake this ticket documents.
 
-## Open design questions (the *bounded-context* question is answered; these follow from it)
+## No open domain questions remain
 
-* **Who may hide and show results?** Chief only, or chief and deputy? Hiding is an operational act; publishing is constitutional — they need not share an authority.
-* **Must hiding carry a reason?** The legacy motivation was *dispute*. If a reason is required, visibility gains its own small audit trail (`hidden_at`, `hidden_by`, `reason`) — which is what `ResultsUnpublishedEvent` was groping toward.
-* **Is visibility constitutional at all**, or purely operational? This decides whether it enters `ElectionConstitution::RULES` or stays an application-layer capability.
+**The domain model is settled: two capabilities, one dependency (V-1), verbs `hide results` / `show results`.** What is left is not modelling:
+
+| | Kind | Item |
+|---|---|---|
+| **A-1** | **Authorization policy** — a rule to set, not a model to discover | **who may hide and show results**: chief · chief + deputy · a dispute committee. Hiding is operational and publishing is constitutional, so **they need not share an authority** |
+| **A-2** | **Design detail, follows from the dispute use case** | whether hiding carries a **reason**, and therefore its own small audit record (`hidden_at`, `hidden_by`, `reason`) — which is what `ResultsUnpublishedEvent` was already groping toward |
+
+**Neither blocks implementation of D-2, and neither is a bounded-context question.** A-1 needs one sentence from the Product Owner whenever the visibility control is built.
 
 ## Acceptance criteria
 
 - [ ] **D-2:** a **deputy** saving the timeline form cannot change `results_published` or `results_published_at` — asserted by test
 - [ ] `results_published_at` has exactly one writer: the `publish_results` transition — asserted by test, not inspection
-- [ ] **D-1:** Result Visibility exists as a named capability with its own authorisation, and hiding then showing results leaves the lifecycle state untouched — asserted by test
-- [ ] `namaste 2026`'s results made visible again through the new control (**not** through the timeline form, and not by a database write)
-- [ ] The management UI labels the control as visibility, and stops offering "Publish Results" for an already-published election
+- [ ] **V-1 enforced:** the results page is unreachable whenever the lifecycle has not reached `results_published`, **regardless of the boolean** — asserted by a test that sets `results_published = true` on a `draft` election and on a `voting_active` one
+- [ ] **D-1:** Result Visibility exists as a named capability (`hide results` / `show results`) with its own authorisation, and **hiding then showing results leaves the lifecycle state untouched** — asserted by test
+- [ ] `namaste 2026`'s results shown again through the new control (**not** through the timeline form, and not by a database write)
+- [ ] The management UI labels the control **hide/show results**, and stops offering "Publish Results" for an already-published election
 
 ## Relations
 

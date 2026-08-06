@@ -144,7 +144,9 @@ Coexistence is the *intended* transitional state; it is not the defect. The defe
 
 `results_published` encoded **two**: *the election reached publication* (a constitutional fact) and *the public results page is reachable* (an operational control). Publication set both in one statement, so nothing ever revealed the seam. The migration moved the field's authority to the lifecycle — correct for the first concept, and it left the second **with no authority at all**, hence unimplementable except by writing the deprecated field.
 
-**Diagnostic value: this explains a class of "the migration broke a feature" reports.** If a capability can only be expressed by writing the legacy field, that is evidence the legacy field carried **more than one concept** and only one of them was migrated. **Symptom → look for a missing capability, not a missing column.**
+**Diagnostic value: this explains a class of "the migration broke a feature" reports.** If a capability can only be expressed by writing the legacy field, that is evidence the legacy field carried **more than one concept**, and only one of them **became a first-class capability**. The other keeps using the legacy field as a **surrogate** for the capability it never got. **Symptom → look for a missing capability, not a missing column.**
+
+**And when a conflated field is split, the *dependency* between the separated concepts must be modelled too.** In the source case visibility exists **only** once publication has happened, so `draft + visible results` is impossible — but the gate was inherited from the legacy field and checks the boolean alone, leaving the impossible state **reachable**. **Splitting a conflation without stating the dependency converts a hidden conflation into a reachable invalid state** — which is worse, because the single field at least made the two concepts move together.
 
 ### Evidence count, stated honestly
 
