@@ -2373,7 +2373,9 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 | `PBDIGIT-32` implement Working Organisation routing | ⬜ **UNBLOCKED, NOT AUTHORISED** — the rules are settled; the work is not approved |
 | `PBDIGIT-33` routing-cache invalidation | **FIXED** — observer wired + UUID type corrected; awaiting browser verification |
 | `PBDIGIT-34` remember across logins? | **OPEN, unprioritised** — a *question*, blocks nothing |
-| `PBDIGIT-00` end-to-end journey | **BLOCKED** — gate on all 24 journey stories |
+| `PBDIGIT-00` end-to-end journey | ✅ **CLOSED 2026-08-06** — journey verified; result was negative. Gate handed to `PBDIGIT-38` |
+| `PBDIGIT-38` a vote cannot be saved | ✅ **FIXED & VERIFIED** — `demo_votes=1`, `demo_results=2`, **first vote ever recorded**; journey completes at `verify-show`. Residual: invariant I-2 → `PBDIGIT-42` |
+| `PBDIGIT-35`…`43` | **OPEN** — found by `PBDIGIT-00`. Next: `PBDIGIT-39` (blocks every voter where `MAX_USE_IP_ADDRESS` unset) · `PBDIGIT-42` (PO decision) · `PBDIGIT-36` (a test that casts a vote) |
 
 **⛔ NEXT ACTION IS A PRODUCT OWNER DECISION, NOT ENGINEERING.**
 
