@@ -5,8 +5,9 @@
 
 | | |
 |---|---|
-| **Status** | **`@` class FIXED · `{{ }}` class OPEN · the gate OPEN** |
-| **Customer impact** | 🔴 **A public page threw a `SyntaxError` and its content did not render.** Any locale string can do this, in any language, with no build-time warning |
+| **Status** | ✅ **`@` class FIXED and CONFIRMED IN PRODUCTION** by the Product Owner, 2026-08-06 · **`{{ }}` class OPEN** · **the gate OPEN** |
+| **Customer impact** | **Resolved.** The page renders. *(Was: a public page threw a `SyntaxError` and its content did not render.)* |
+| **Verification** | **Production, in a browser.** Not a local claim — the page was broken for real users and is now not |
 
 ---
 
@@ -67,10 +68,28 @@ The check that found all 45 problems is ~20 lines: walk every locale JSON, hand 
 * [ ] It runs in CI.
 * [ ] A short note in the developer guide: **`@`, `|`, `{`, `}` are vue-i18n syntax** — use `(at)` in prose, `{'@'}` when the literal character must be shown.
 
-## Deployment note
+## Deployment note — the part that actually fixed it
 
 **The source fix alone changed nothing in production.** `public/build/` is tracked and no CI job builds assets, so the running site served `app-Bu_oS0vX.js` from before the change. The fix required `npm run build` and committing the emitted assets — **worth knowing for every future frontend fix in this repository.**
 
 ---
 
 **Traceability:** production console error, 2026-08-06 · `resources/js/locales/pages/OrganisationCreateTutorial/{de,en,np}.json:114` · 9 further namespaces (see the commit) · `resources/js/locales/pages/Vote/DemoVote/Create/*.json` · `resources/js/Pages/Organisations/Membership/Participants/Import.vue:172` · `resources/js/Pages/Tutorials/OrganisationCreateTutorial.vue:334` (the mailto, correctly untouched) · vue-i18n 9.14.5 · `PBDIGIT-27` (same shape: no gate saw it)
+
+---
+
+## Closing note — what took the longest was not the fix
+
+The defect was one character. Three things cost the time, and each is worth remembering:
+
+1. **The first verification used the wrong tool.** `@intlify/message-compiler`'s `baseCompile()` accepted **all 14,341 messages**, including every string that fails in a browser. Only `createI18n(...).t(key)` — the runtime path — reproduces the error. **A gate built on the compiler package would pass a broken build.**
+2. **A source fix is invisible until the assets are rebuilt.** `public/build/` is tracked, no CI job builds it, and the browser kept loading `app-Bu_oS0vX.js`. The reported console output was itself the proof, once read as evidence rather than as a repeat of the same complaint: **the filename in the stack trace names the build being served.**
+3. **One directive needed two implementations.** *"Write `(at)`"* is right for prose and wrong for form placeholders and CSV import examples, where it would teach users a broken email format — those took `{'@'}` instead. **The `mailto:` href kept a literal `@`, because an href is not a message.**
+
+**The single most useful diagnostic, for next time:**
+
+```
+curl -s <page-url> | grep -o 'app-[A-Za-z0-9_-]*\.js'
+```
+
+If that filename is not the one in your repo, no source change can possibly be live, and every further edit is wasted motion.
