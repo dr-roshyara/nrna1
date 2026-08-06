@@ -7,7 +7,10 @@
 |---|---|
 | **Status** | 🟡 **REFRAMED 2026-08-06 after an ownership discovery — and the question changed.** Engineering must not implement |
 | **The reframing** | **This is not a missing policy. It is an unfinished migration.** The Constitution already owns "votes per IP" — per election, with defaults, and with `'none'` as a first-class "no restriction" strategy. The controller check is the codebase's own **legacy H.3 path**, designed to be retired behind a feature flag that was **never wired up** |
-| **Discovery** | [`2026-08-06-who-owns-the-votes-per-ip-rule.md`](../reviews/2026-08-06-who-owns-the-votes-per-ip-rule.md) — **read this before answering anything below** |
+| **Discovery** | [`2026-08-06-who-owns-the-votes-per-ip-rule.md`](../reviews/2026-08-06-who-owns-the-votes-per-ip-rule.md) **rev 2** — **read this before answering anything below** |
+| **Owner of the rule** | **`ElectionConstitutionSnapshot`** (hashed, versioned, per election) — `networkBindingStrategy` + `maxVotesPerIp`. `NetworkBindingPolicy` evaluates; it does not own |
+| **`MAX_USE_IP_ADDRESS`** | 🔴 **Not the rule, and never read by the constitutional layer.** Six readers apply four different defaults (`null`, `0`, `7`, `4`) |
+| **Three new findings** | **N-1** demo feeds the evaluator a count from the *real* `codes` table · **N-2** six readers, four defaults · **N-3** `IpVelocityOverlay` counts election-wide events but labels them per-IP, **and reads 0 always** because `election_security_events` cannot be written (`PBDIGIT-42`) |
 | **What is settled** | The implementation is broken **and** the correct owner is already identified in the code |
 | **What is NOT settled** | **Whether the legacy path may now be retired** — which needs the divergence evidence read, not a new policy invented |
 | **Does NOT block** | demo elections — settled by `ADR_20260806_1520` and already fixed |
