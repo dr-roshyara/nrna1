@@ -33,7 +33,8 @@ export default {
     components: {
         SocialLayout,
         AppLayout,
-        Welcome,
+        // Welcome was registered here but never imported, and is not used in
+        // the template — an undefined identifier that threw a ReferenceError.
         JoinNetwork,
         Timeline,
         Openions,

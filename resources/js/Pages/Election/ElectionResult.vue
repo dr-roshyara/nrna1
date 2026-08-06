@@ -17,7 +17,8 @@ import { useMeta } from "@/composables/useMeta";
 
 export default {
     components: {
-        AppLayout,
+        // AppLayout was registered here but never imported, and is not used in
+        // the template — an undefined identifier that threw a ReferenceError.
         EventSchema,
     },
     props: {

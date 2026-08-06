@@ -479,8 +479,12 @@ import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
 
 export default {
     components: {
-        PublicDigitHeader,
-        PublicDigitFooter,
+        // The page renders inside PublicDigitLayout, which provides the header and
+        // footer. PublicDigitHeader/PublicDigitFooter were registered here but never
+        // imported — an undefined identifier that threw a ReferenceError and stopped
+        // the page loading. Adding imports for them would duplicate the layout's chrome,
+        // so the registrations are removed and the layout is registered instead.
+        PublicDigitLayout,
         VoteFinal,
         WorkflowStepIndicator,
         JetValidationErrors,

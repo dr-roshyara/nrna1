@@ -151,7 +151,9 @@ import PostResult from '@/Pages/Result/PostResult.vue'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 
 export default {
-  components: { Button, PostResult, PublicDigitFooter },
+  // PublicDigitFooter was registered here but never imported, and is not used in the
+  // template — an undefined identifier that threw a ReferenceError on page load.
+  components: { Button, PostResult },
 
   props: {
     final_result: { type: Object, default: null },
