@@ -218,11 +218,15 @@ Expected  One definition of a member, one set of member states, one identity typ
 
 # Cross-capability patterns after three applications
 
-| Pattern | Election | Organisation | Membership | Count | Verdict |
+The abstraction matters more than the symptom. Each pattern is stated at the level that explains **all three** observations, not at the level of the first one seen.
+
+| Pattern (abstracted) | Election | Organisation | Membership | Count | Verdict |
 |---|---|---|---|---|---|
 | Event dispatched with **no listeners**, consequence hard-coded in the controller | ✅ | ✅ | ❌ **refuted** — records, releases, listens properly | 2 / 3 | **NOT universal.** A legacy-code trait, not a repository trait |
-| **A declared state that cannot be reached / is not authoritative** | ✅ `begin_setup` no route | ✅ governance `active`/`suspended` never written | ✅ **new form** — two `MemberStatus` sets, neither authoritative | **3 / 3** | **Recurs in every capability reviewed** |
-| **The same concept defined twice** | ✅ two `ResultsPublished`; four context stores | ✅ two route-binding styles | ✅ 2× Member · 2× MemberRegistered · 2× MemberStatus · 2× TenantId | **3 / 3** | **Recurs in every capability reviewed** |
+| **The business lifecycle has no single authoritative representation** | ✅ `begin_setup` reachable by no route | ✅ governance `active`/`suspended` written by nothing | ✅ two `MemberStatus` types, 8 values vs 4, neither authoritative | **3 / 3** | repeated observation |
+| **Multiple competing representations of one business concept** | ✅ two `ResultsPublished`; four context stores | ✅ two route-binding styles for one concept | ✅ 2× `Member` · 2× `MemberRegistered` · 2× `MemberStatus` · 2× `TenantId` | **3 / 3** | repeated observation |
+
+*(The first two rows were originally phrased as "a declared state that cannot be reached" and "the same concept defined twice". Both were the **symptom of the first sighting**, not the abstraction: they could not explain Membership's competing-state-models form. Re-abstracted after application #3.)*
 
 **Two patterns now have 3/3 evidence; one has been refuted at 2/3.**
 
@@ -231,6 +235,15 @@ Per `ES-006.1`, three independent observations is *repeated observation*, not a 
 ---
 
 # Method assessment — application #3 of 3
+
+**Validation cycle COMPLETE.** Three planned applications executed across three structurally different capabilities.
+
+**What this establishes:** the evidence is now **sufficient for a Decision Authority review** of whether the method carries repository-independent value.
+**What it does not establish:** promotion. *Three applications inside one repository cannot demonstrate repository-independence* — that is precisely the question the Decision Authority must weigh, and `OQ-2` (where cross-product research lives) is still unruled.
+
+```
+Validation complete  →  Evidence available  →  Decision Authority review  →  possible promotion
+```
 
 **The method produced high-value findings without any of the five parked refinements.**
 
@@ -241,6 +254,20 @@ Per `ES-006.1`, three independent observations is *repeated observation*, not a 
 | Did the Product/Technical split earn its place? | **Yes** — it showed this capability's diagnosis differs in *kind* from Organisation's |
 | Did the method discriminate? | **Yes** — it **refuted** its own leading hypothesis (pattern 1) |
 | Were the parked refinements missed? | **C-2 (Capability Readiness) was mildly missed**; the other four were not needed. Recorded as evidence for the post-freeze decision, not acted on |
+
+## What surprised us
+
+The highest-value column in a method assessment, because a surprise is evidence the method is investigating rather than confirming.
+
+| | Expected | Observed | Why it matters |
+|---|---|---|---|
+| **#3 Membership** | Pattern 1 would recur a third time — the zero-listener event with an inline consequence | **It was refuted.** Membership records, releases and listens properly | The pattern is a **legacy-code trait, not a repository trait**. Had this review confirmed it, we would have generalised a false rule from two samples |
+| **#3 Membership** | The best-modelled capability would produce the fewest findings | It produced the **most**, and the *worst* test signal (~21 failing) | Good modelling and consistent modelling are different properties. Being well built did not prevent being built twice |
+| **#3 Membership** | Findings would be mostly Product, as in Organisation | Only **one** Product finding (MB-5, eligibility authority) | The Product/Technical split earned its place by showing the diagnosis differs in *kind* between capabilities |
+| **#2 Organisation** | A configuration gap | An entire **declared, permissioned, unreachable lifecycle** | Reading schema + controller + policy + routing *together* produced a conclusion no single file could |
+| **#1 Election** | Route tracing would explain the instability | The concept was **never modelled at all** | The business-first order changed the answer, not just the presentation |
+
+**Three of my own findings were wrong or overstated before verification** (Election rev 1's "no domain events"; PBDIGIT-28's "will fail at runtime"; this review's first "0 dispatch sites"). All three were narrow text patterns asserting a negative. **That is now the method's most reliable failure mode — and the reason "verify before asserting a negative" is worth more than any additional phase.**
 
 **The freeze held: no phase, template or artifact was added during this review.**
 
