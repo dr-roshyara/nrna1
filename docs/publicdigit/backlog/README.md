@@ -54,6 +54,10 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-35`](PBDIGIT-35-retire-the-legacy-global-voter-flags.md) | **Production code reads retired global voter flags** — `is_voter`/`can_vote` exist in no database; eligibility is org+election scoped | `EPIC-02` | `OPEN` — found by `PBDIGIT-00` F-1 |
 | [`PBDIGIT-36`](PBDIGIT-36-the-e2e-suites-do-not-test-the-journey.md) | **The "end-to-end" suites do not test the journey** — 10 of 21 tests never reach an assertion | cross-cutting | `OPEN` — found by `PBDIGIT-00` F-2/F-3 |
 | [`PBDIGIT-37`](PBDIGIT-37-test-credential-and-safety-claim-hygiene.md) | **Committed test credentials + a safety claim that is false on PostgreSQL** | cross-cutting | `OPEN` — credential deduplicated; the rest open |
+| [`PBDIGIT-38`](PBDIGIT-38-a-vote-cannot-be-saved.md) | 🔴 **A vote cannot be saved** — a NOT NULL audit column poisons the vote transaction | `EPIC-05` | `OPEN` — **blocking**, found by `PBDIGIT-00` (b) |
+| [`PBDIGIT-39`](PBDIGIT-39-unset-config-blocks-every-voter.md) | 🔴 **An unset config value blocks every voter**, reported as a rate limit (`0 >= null`) | `EPIC-05` | `OPEN` — found by `PBDIGIT-00` (b) |
+| [`PBDIGIT-40`](PBDIGIT-40-completion-page-has-never-worked.md) | **The completion page has never worked** — `thankyou()` renders an undefined `$vote` | `EPIC-05` | `OPEN` — after `PBDIGIT-38` |
+| [`PBDIGIT-41`](PBDIGIT-41-demo-provisioning-has-two-paths.md) | **Demo provisioning has two paths and the documented one is broken** | `EPIC-03` | `OPEN` — found by `PBDIGIT-00` (b) |
 
 ---
 
@@ -65,10 +69,11 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | **Why it is first** | every story below is evidenced in code and **none has been observed working**. Verification converts 24 inferences into facts at near-zero cost; building on unverified ground does not |
 | **Evidence that already exists** | `tests/Feature/Phase6EndToEndIntegrationTest.php` · `tests/Feature/RealWorldVotingFlowTest.php` · `tests/Integration/CompleteVotingFlowIntegrationTest.php` · demo mode (`organisation_id = NULL`) · `docs/DEMO_ELECTION_GUIDE.md` |
 | **Verification** | (a) run the three E2E suites against a provisioned Postgres; (b) walk the Level 0 journey once manually in demo mode, recording at each step: page · controller · DB rows · events · log files |
-| **Status** | ✅ **(a) DONE 2026-08-06** — the suites ran. ⬜ **(b) PARTIAL** — needs a seeded demo election. **The environment block is lifted** |
-| 🔴 **What (a) established** | **There is still NO automated end-to-end coverage of a complete election.** 21 tests: **10 errored before asserting anything**, 1 failed, 10 passed — and the 10 that pass test the *middleware chain*, not an election. Three findings became `PBDIGIT-35` · `PBDIGIT-36` · `PBDIGIT-37` |
+| **Status** | ✅ **(a) DONE · (b) DONE — 2026-08-06.** Both verifications ran. **The result is negative, and that is the deliverable** |
+| 🔴 **What (a) established** | **There is NO automated end-to-end coverage of a complete election.** 21 tests: **10 errored before asserting anything**, 1 failed, 10 passed — and the 10 that pass test the *middleware chain*, not an election. → `PBDIGIT-35` · `PBDIGIT-36` · `PBDIGIT-37` |
+| 🔴 **What (b) established** | **The journey was walked end to end for the first time. Steps 1–4 work; the vote is never saved; the completion page 500s.** The security middleware chain and step-order enforcement work correctly. → `PBDIGIT-38` (blocking) · `PBDIGIT-39` · `PBDIGIT-40` · `PBDIGIT-41` |
 
-**Until `PBDIGIT-00` completes, no story may be marked `VERIFIED`.** **It has not completed** — (b) is outstanding.
+**Until `PBDIGIT-00` completes, no story may be marked `VERIFIED`.** **It has now run — and nothing may be marked `VERIFIED`, because the journey does not complete.** `PBDIGIT-38` is the gate that replaced it.
 
 **One box did close as a side effect:** `GET /` returns **200 / 89 550 bytes**, so the home page renders — `PBDIGIT-27`'s last unchecked item.
 

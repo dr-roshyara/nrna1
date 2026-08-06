@@ -105,7 +105,67 @@ The original status said *"no Postgres credentials in the review environment"*. 
 
 **Your organisation-scoping point is what makes this a design finding rather than a missing-column bug:** a *global* `is_voter` flag on `users` cannot express voter status in a multi-tenant product, because eligibility is per organisation **and** per election. The columns were not lost — they were **outgrown**. **Re-adding them would be the wrong repair.**
 
-## Result — (b) the manual walk, as far as it went
+## Result — (b) the demo journey, walked 2026-08-06
+
+**Provisioned with `php artisan demo:setup --env=testing`** (Product Owner): 1 active demo election, 10 posts (2 national · 8 regional), 30 candidates. Walked over real HTTP against `nrna_test` with a genuine authenticated session.
+
+**`/organisations/publicdigit/demo/start` issues a voter slug and redirects to `/v/{vslug}/…` — the slug chain is the journey a real voter takes.** The non-slug routes are convenience aliases and correctly bounce back to the current step.
+
+| Step | Route | Result | DB after |
+|---|---|---|---|
+| 0 | `POST /login` | ✅ 302 → `/dashboard/welcome` | — |
+| 0b | `GET /organisations/publicdigit/demo/start` | ✅ 302 → `/v/{slug}/demo-code/create`; slug issued | `demo_voter_slugs` = 1, `current_step` = 1 |
+| **1** | `GET /v/{s}/demo-code/create` | ✅ 200 · renders `Code/DemoCode/Create` | `demo_codes` row created, `code1` issued, usable |
+| **1.5** | `POST /v/{s}/demo-code` | ✅ 302 → agreement | **`can_vote_now` → true** |
+| **2** | `GET /v/{s}/demo-code/agreement` | ✅ 200 · renders `Code/DemoCode/Agreement` | — |
+| **2.5** | `POST /v/{s}/demo-code/agreement` | ✅ 302 → vote form | **`has_agreed_to_vote` → true** |
+| **3** | `GET /v/{s}/demo-vote/create` | ✅ 200 · renders `Vote/DemoVote/Create`, offering **2 national posts** with candidates | — |
+| **3.5** | `POST /v/{s}/demo-vote/submit` | ✅ 302 → verify | **`vote_submitted` → true** |
+| **4** | `GET /v/{s}/demo-vote/verify` | ✅ 200 · renders `Vote/DemoVote/Verify` | — |
+| **4.5** | `POST /v/{s}/demo-vote/final` | 🔴 **302 back to verify — the vote is NOT saved** | **`demo_votes` = 0** |
+| **5** | `GET /v/{s}/demo-vote/thank-you` | 🔴 **500** | — |
+
+**Middleware evidence (from the logs, all passing):** `VerifyVoterSlug` → `ValidateVoterSlugWindow` (30-minute window, 29.98 min remaining) → `VerifyVoterSlugConsistency` → `EnsureVoterStepOrder` → `VoteEligibility` → `EnsureRealVoteOrganisation` → `EnsureDemoElection`. **The security chain works.** Step-order enforcement was observed rejecting out-of-order access repeatedly.
+
+### 🔴 The headline: a vote cannot be cast
+
+**Steps 1 through 4 all work. The vote is never persisted.** `demo_votes` = 0, `demo_results` = 0.
+
+**Cause — `PBDIGIT-38`:** `election_security_events.overlay_influence_chain` is **`NOT NULL` with no default** (`2026_05_26_000001_create_election_security_events_table.php:23` — `$table->json(...)` without `->nullable()`), while every sibling overlay column *is* nullable. `SecurityEventRecorder:52` inserts without it → `SQLSTATE[23502]` → the surrounding transaction is poisoned → `SQLSTATE[25P02] In failed sql transaction` → `store()` aborts and redirects back. **A security-audit write failure silently blocks the business operation it was meant to observe.**
+
+⚠️ **The recorder is not demo-specific** — its caller is `TrustPolicyEvaluator`, on the shared trust-evaluation path. **The real voting flow is therefore likely affected too. NOT VERIFIED** — no real-election vote was attempted, and it must not be assumed.
+
+### Two further defects found by the walk
+
+| # | Finding | Story |
+|---|---|---|
+| 🔴 **A blocked journey masquerading as a rate limit** | `config('app.max_use_clientIP')` reads `MAX_USE_IP_ADDRESS`, which was **unset**. `check_ip_address()` then evaluates `0 >= null`, which is **true** in PHP — so **every** voter was blocked at step 4 with *"Voting Limit Exceeded — There are already more than  votes cast from your IP"* (note the empty number). **Proved by causation, not inference:** setting `MAX_USE_IP_ADDRESS=25` changed step 4 from a redirect to a rendered page. Also `helpers.php:112-113` shows `>` was changed to `>=`, so a limit of *n* blocks the *n*-th vote | **`PBDIGIT-39`** |
+| 🔴 **Step 5 always 500s** | `DemoVoteController::thankyou()` (`:3142`) renders `'vote' => $vote` where **`$vote` is never defined**. The route's `thankYou` resolves to it (PHP method names are case-insensitive), so the completion page has never worked | **`PBDIGIT-40`** |
+
+### Minor observations — recorded, not stories of their own
+
+* **Malformed vote payloads return 500, not 422.** Validation is `nullable|array`; `sanitize_selection()` (`DemoVoteController:1254`) then indexes elements as arrays, so a flat list of IDs throws `Cannot access offset of type string on string`. **This was my own bad payload, not an app defect** — but a 500 where a 422 belongs is a real robustness gap. → noted in `PBDIGIT-39`.
+* **Two routes share the name `election.select`** (`routes/election/electionRoutes.php:41` and `routes/web.php:205`); the later registration silently wins. → noted in `PBDIGIT-41`.
+* **`demo:setup` prints a stale access URL** (`/election/demo/start`; the real route is `/organisations/{slug}/demo/start`). → `PBDIGIT-41`.
+* **`TWO_CODES_SYSTEM` is effectively off here** — the log says *"Using first verification code for second verification"*, `code_to_save_vote` stays `NULL`, and step 4.5 accepts code1. Consistent with configuration, **not** a defect; recorded because the two-code design in the root `CLAUDE.md` is not what this environment exercises.
+
+### What I nearly reported and did not
+
+**"The vote form offers zero posts."** It offers two. The `posts` prop is `{national: […], regional: […]}`, and my extractor looked for `national_posts`/`regional_posts`. **My bug, not the app's.** Likewise `voter_slugs` was empty because demo slugs live in `demo_voter_slugs`. Both were checked before reporting — the same discipline that the `is_voter` finding in (a) required, applied in the opposite direction.
+
+**Regional posts legitimately offered 0** — the test user has `region = null`, and regional posts filter by voter region. Expected behaviour, not a gap.
+
+## Environment additions needed for (b) — all in `.env.testing`, none committed
+
+`phpunit.xml` supplies test config that `artisan serve` never reads, so serving the app in the testing environment required three keys `.env.testing` did not have: **`APP_KEY`** (without it every request 500s), **`MAIL_MAILER=log`** (it pointed at real Mailgun SMTP, so step 3.5's verification email failed), and **`MAX_USE_IP_ADDRESS`**. **This is the same split-configuration defect as the password** — one environment's truth living in a file only one runner reads. → `PBDIGIT-37`.
+
+## Verdict
+
+**(b) is COMPLETE as an observation and NEGATIVE as a result.** The journey was walked end to end for the first time in this repository. **Steps 1–4 work; the vote cannot be saved; the completion page cannot render.**
+
+> **`PBDIGIT-00` has done its job: it converted "all 24 stories are implemented" into "the journey stops at step 4.5, for three specific reasons."** No story may be marked `VERIFIED` on the strength of this run.
+
+## Superseded — the earlier partial probe (kept for the record)
 
 **Verified by HTTP against a dev server on port 8123 (started and stopped within this story):**
 
