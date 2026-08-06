@@ -109,6 +109,8 @@ The standard capability review, reusable for **any** capability (Elections, Memb
 
 ### Every review closes with these three artifacts
 
+*(plus a **Method Assessment** that must answer **"what surprised us?"** — an expected-vs-observed table. A surprise is evidence the method investigated rather than confirmed; its absence is a warning sign.)*
+
 **1 · Business Outcome** — the finding in one customer sentence, not one engineering sentence:
 
 ```
@@ -142,19 +144,27 @@ It is the bridge from discovery to testing. It separates *"code exists"* from *"
 
 **Applied to three capabilities independently — the freeze's condition is now met:** **Election** ✅ (`PBDIGIT-29`) → **Organisation** ✅ (`../reviews/2026-08-06-organisation-capability-review.md`) → **Membership** ✅ (`../reviews/2026-08-06-membership-capability-review.md`).
 
-**The method is eligible as a KnowledgeOS promotion candidate (ES-006.1) — eligible, not promoted.** Promotion is a Decision Authority act, and the placement question (`OQ-2`) is still unruled. Evidence from application #3: the method produced high-value findings **without** any of the five parked refinements, and it **refuted its own leading hypothesis** — see the method assessment in the Membership review.
+**The planned validation cycle is COMPLETE. Evidence is now sufficient for a Decision Authority review** — *not* for promotion, which does not follow automatically from validation:
 
-**Cross-capability patterns after three applications (observation only — nothing promoted):**
+```
+Validation complete  →  Evidence available  →  Decision Authority review  →  possible promotion
+```
 
-| Pattern | Election | Organisation | Membership | Verdict |
+**Three applications inside one repository cannot demonstrate repository-independence** — that is exactly the question the Decision Authority must weigh, and `OQ-2` (where cross-product research lives) remains unruled. Evidence from application #3: high-value findings **without** any of the five parked refinements, and the method **refuted its own leading hypothesis**.
+
+**Cross-capability patterns after three applications (observation only — nothing promoted).** Each is stated at the abstraction that explains **all three** sightings, not the symptom of the first:
+
+| Pattern (abstracted) | Election | Organisation | Membership | Verdict |
 |---|---|---|---|---|
 | Event dispatched with no listeners, consequence hard-coded in the controller | ✅ | ✅ | ❌ | **refuted at 2/3** — a legacy-code trait, not a repository trait |
-| A declared state that cannot be reached or is not authoritative | ✅ | ✅ | ✅ | **3/3** — repeated observation |
-| The same concept defined twice | ✅ | ✅ | ✅ | **3/3** — repeated observation |
+| **The business lifecycle has no single authoritative representation** | ✅ | ✅ | ✅ | **3/3** — repeated observation |
+| **Multiple competing representations of one business concept** | ✅ | ✅ | ✅ | **3/3** — repeated observation |
+
+*(Rows 2–3 were first phrased as "a declared state that cannot be reached" and "the same concept defined twice" — the symptoms of their first sighting, which could not explain Membership's competing-state-models form. Re-abstracted after application #3; recorded rather than silently substituted.)*
 
 Three observations is *repeated observation*, not a standard (`ES-006.1`). The **refutation** is the most useful row: it shows the method discriminates rather than confirming what it looked for first.
 
-After three applications, it becomes eligible as a KnowledgeOS promotion candidate under `ES-006.1` — repository-independent, evidence-backed. Before that, it is a project convention with n=1. **Use it; do not improve it.**
+**Process status: ROUTINE USE.** Further improvement comes from repeated use on future capabilities — never from designing additional phases or templates.
 
 ---
 
