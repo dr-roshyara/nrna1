@@ -343,7 +343,7 @@ class AppServiceProvider extends ServiceProvider
         // voting_security.observe_legacy_election_state. Records which code paths still
         // read the deprecated election-state fields so the migration inventory is
         // measured rather than inferred.
-        \App\Application\Election\Deprecation\LegacyElectionStateProbe::register();
+        \App\Application\Election\Deprecation\LegacyElectionStateObserver::register();
 
         // Messaging delivery (ADR-MP-06, D-2): the dispatcher is a LISTENER on the
         // relay's dispatched IntegrationEvent — the relay stays byte-identical; the

@@ -5,37 +5,58 @@ namespace App\Application\Election\Deprecation;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 /**
  * PBDIGIT-58A — observation only.
  *
- * Records which code paths still read the deprecated election-state fields, so the
- * migration inventory is measured rather than inferred. Text search could not settle
- * it: `status` and `is_active` appear in ~520 statements across the app, and two
- * consumers were wrongly attributed before this existed.
+ * Mission: discover which BUSINESS CAPABILITIES still make decisions using the
+ * deprecated election-state representation, so the migration inventory is measured
+ * rather than inferred.
  *
- * Behaviour-preserving by construction:
- *   - a query listener cannot alter a query or its results;
- *   - it is registered only when observation is switched on;
- *   - it never throws — a probe must not be able to break what it observes.
+ * A legacy consumer is a capability that makes a business decision using the
+ * deprecated representation — NOT any code path that obtains the value. Obtaining is
+ * not depending: `return $election->status` does not prevent migration;
+ * `if ($election->status === 'active')` does.
  *
- * Deliberately NOT implemented as model accessors. `is_active` is cast to boolean,
- * so an accessor would have to reproduce the cast to avoid changing what callers
- * receive. Attribute reads ($election->status) are therefore not covered here; the
- * static inventory in PBDIGIT-48 lists those sites, and all of them are display-only.
- * What this probe covers is query predicates, which is where both Critical
- * capabilities read.
+ * Phase 1 observes SQL predicates only, because that is the highest-signal access
+ * path: code filters on a value because it is deciding something, and a predicate
+ * never fires during serialisation. Attribute interception is deliberately NOT
+ * implemented — it would fire on every toArray(), and the three attribute-based
+ * decisions already known are recorded statically in PBDIGIT-48. Extend this only if
+ * the observed inventory proves incomplete.
  *
+ * Behaviour-preserving by construction: a query listener cannot alter a query or its
+ * results; it is registered only when observation is switched on; and it never throws.
+ *
+ * @see docs/publicdigit/reviews/2026-08-06-58A-observation-mechanism-review.md
  * @see docs/publicdigit/backlog/PBDIGIT-58-complete-legacy-election-state-migration.md
  */
-final class LegacyElectionStateProbe
+final class LegacyElectionStateObserver
 {
     /** Deprecated fields, per DeprecationPolicy::FIELDS. */
     private const FIELDS = ['status', 'is_active'];
 
-    private const LOG_TAG = '[legacy-election-state]';
+    private const LOG_TAG = '[58A]';
 
-    /** Caller signatures already reported this process, to keep the log readable. */
+    /**
+     * Calling code → the capability it serves, using PBDIGIT-58's capability names.
+     * The report is capability-first because that is what the migration slices migrate.
+     */
+    private const CAPABILITIES = [
+        'Models/User.php' => 'Election Entry Resolution',
+        'Middleware/ElectionMiddleware.php' => 'Election Context Resolution',
+        'Controllers/OrganisationController.php' => 'Organisation Reporting',
+        'Controllers/Election/ElectionManagementController.php' => 'Election Management',
+        'Controllers/CommissionDashboardController.php' => 'Commission Dashboard',
+        'Controllers/Membership/OrganisationNewsletterController.php' => 'Member Communication',
+        'Controllers/Demo/' => 'Demo Platform',
+        'Console/Commands/Setup' => 'Demo Platform',
+        'Console/Commands/ListAllElections.php' => 'Demo Platform',
+        'Policies/ElectionPolicy.php' => 'Authorisation',
+    ];
+
+    /** Observed hits this process, keyed by capability + caller. */
     private static array $seen = [];
 
     public static function isEnabled(): bool
@@ -56,7 +77,7 @@ final class LegacyElectionStateProbe
             try {
                 self::inspect($query);
             } catch (\Throwable $e) {
-                // A probe must never break the thing it observes.
+                // An observer must never break the thing it observes.
             }
         });
     }
@@ -65,14 +86,14 @@ final class LegacyElectionStateProbe
     {
         $sql = $query->sql;
 
-        // Only queries touching the elections table.
         if (! preg_match('/\belections\b/i', $sql)) {
             return;
         }
 
+        // A predicate, not a mention: the field must be compared against something.
         $fields = [];
         foreach (self::FIELDS as $field) {
-            if (preg_match('/["`\']?\b' . $field . '\b["`\']?\s*(=|!=|<>|is|in|>|<)/i', $sql)) {
+            if (preg_match('/["`\']?\b' . $field . '\b["`\']?\s*(=|!=|<>|is\b|in\b|>|<)/i', $sql)) {
                 $fields[] = $field;
             }
         }
@@ -80,45 +101,74 @@ final class LegacyElectionStateProbe
             return;
         }
 
-        $caller = self::caller();
-        $signature = implode(',', $fields) . '|' . ($caller[0] ?? 'unknown');
+        $frames = self::appFrames();
+        $capability = self::capabilityFor($frames);
+        $signature = $capability . '|' . implode(',', $fields) . '|' . ($frames[0] ?? 'unknown');
+
         if (isset(self::$seen[$signature])) {
             self::$seen[$signature]['count']++;
 
             return;
         }
-        self::$seen[$signature] = ['count' => 1];
 
-        Log::warning(self::LOG_TAG . ' deprecated field read in an elections query', [
+        self::$seen[$signature] = [
+            'capability' => $capability,
             'fields' => $fields,
-            'caller' => $caller,
-            'sql' => \Illuminate\Support\Str::limit($sql, 220),
-            'note' => 'PBDIGIT-58A observation — behaviour unchanged',
+            'caller' => $frames[0] ?? 'unknown',
+            'stack' => $frames,
+            'count' => 1,
+        ];
+
+        Log::warning(self::LOG_TAG . ' legacy election-state predicate', [
+            'capability' => $capability,
+            'fields' => $fields,
+            'caller' => $frames[0] ?? 'unknown',
+            'stack' => array_slice($frames, 0, 4),
+            'sql' => Str::limit($sql, 200),
         ]);
     }
 
     /**
-     * Application frames only. Vendor frames say nothing about which capability read
-     * the field, and the caller is the only thing that makes a hit actionable.
+     * The capability behind a call stack. An UNMAPPED result is itself a finding: a
+     * code path exists that PBDIGIT-58's capability table does not describe, which is
+     * precisely what 58A was commissioned to surface.
+     *
+     * @param  list<string>  $frames
+     */
+    private static function capabilityFor(array $frames): string
+    {
+        foreach ($frames as $frame) {
+            foreach (self::CAPABILITIES as $needle => $capability) {
+                if (str_contains($frame, $needle)) {
+                    return $capability;
+                }
+            }
+        }
+
+        return 'UNMAPPED — not in the capability table';
+    }
+
+    /**
+     * Application frames only. Vendor frames cannot name a capability.
      *
      * @return list<string>
      */
-    private static function caller(): array
+    private static function appFrames(): array
     {
         $base = base_path() . '/';
         $frames = [];
 
-        foreach (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 40) as $frame) {
+        foreach (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 50) as $frame) {
             $file = $frame['file'] ?? '';
             if ($file === '' || str_contains($file, '/vendor/')) {
                 continue;
             }
             $relative = str_replace($base, '', $file);
-            if (str_contains($relative, 'Deprecation/LegacyElectionStateProbe.php')) {
+            if (str_contains($relative, 'LegacyElectionStateObserver.php')) {
                 continue;
             }
             $frames[] = $relative . ':' . ($frame['line'] ?? 0);
-            if (count($frames) >= 4) {
+            if (count($frames) >= 6) {
                 break;
             }
         }
@@ -127,12 +177,17 @@ final class LegacyElectionStateProbe
     }
 
     /**
-     * What has been observed this process. Used by the reporting command.
+     * What has been observed in this process, grouped by capability.
      *
-     * @return array<string, array{count: int}>
+     * @return array<string, mixed>
      */
-    public static function observed(): array
+    public static function report(): array
     {
-        return self::$seen;
+        $byCapability = [];
+        foreach (self::$seen as $hit) {
+            $byCapability[$hit['capability']][] = $hit;
+        }
+
+        return $byCapability;
     }
 }

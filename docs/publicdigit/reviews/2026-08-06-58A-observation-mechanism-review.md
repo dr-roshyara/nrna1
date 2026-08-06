@@ -1,6 +1,6 @@
 # Mechanism review — where to observe legacy election-state reads (`PBDIGIT-58A`)
 
-**Date:** 2026-08-06 · **Type:** Design review — ✅ **CONCLUDED.** No implementation yet; the mechanism is selected and the preconditions are listed
+**Date:** 2026-08-06 · **Type:** Design review — ✅ **CONCLUDED AND APPROVED.** Mechanism: **Phase 1, SQL listener only**. Definition: **a capability that makes a business decision using the deprecated representation**
 **Commissioned:** Product Owner — *"Review the architectural options for observing legacy attribute reads… Recommend the observation point that best satisfies 58A's requirement of 'zero production readers' while remaining behaviour-preserving. Do not implement yet."*
 **Why it deserves a review:** `58A` does not only serve this migration. **It creates an observation mechanism intended for reuse** on `PBDIGIT-45`, `PBDIGIT-49`, and any future legacy-consumer migration.
 
@@ -37,7 +37,18 @@
 
 **This matters because a mechanism that reports serialisation as a consumer will produce a list nobody can act on, while one that ignores it may miss a Vue component branching on `election.status`.**
 
-> **Recommendation on the definition, for the Product Owner to confirm:** a reader is **any code path that obtains the value**, and the report must **classify** each hit — `decision` · `serialisation` · `display` — using the call stack. **Serialisation hits are not noise; they are a pointer to a possible frontend consumer**, which is a category the static inventory never covered at all.
+> ⚠️ **My proposed definition was rejected by the Product Owner, and rightly.** I proposed *"a reader is any code path that obtains the value."* **Obtaining is not depending:**
+>
+> ```php
+> return $election->status;              // obtains — does not prevent migration
+> if ($election->status === 'active')    // DEPENDS — prevents migration
+> ```
+>
+> **The approved definition:**
+>
+> > **A legacy consumer is a capability that makes a business decision using the deprecated representation.**
+>
+> **This changes what `58A` hunts.** Not every attribute access — **business decisions, filters and branching**. Serialisation is **supporting evidence that a consumer might exist downstream**, never a consumer itself. **So the migration never chases serialisation, debug output or Blade rendering.**
 
 ## Evaluation criteria
 
@@ -84,7 +95,20 @@
 
 ## Recommendation
 
-> **A pair: the SQL listener (1) as the high-signal core, plus a per-field attribute interceptor for coverage — a custom cast for `is_active` (3), an accessor for `status` (2) — and the attribute half is only admissible with call-stack classification.**
+> ⚠️ **My recommendation was also narrowed by the Product Owner: *"that is one mechanism too many."*** I proposed a listener **plus** a custom cast **plus** an accessor.
+>
+> **APPROVED — Phase 1: the SQL listener alone.**
+>
+> **Reasoning I had not weighted properly:** `58A`'s purpose is `observe → inventory → remove`, **not perfect instrumentation.** Every mechanism added is another thing to remove later, and **signal quality beats completeness**:
+>
+> | | |
+> |---|---|
+> | ✅ preferred | **20 true positives · 0 false positives** |
+> | 🔴 rejected | 25 positives, 17 of them serialisation noise |
+>
+> **Extend to attribute observation only if the observed inventory proves incomplete.**
+>
+> **Why one mechanism is defensible against the approved definition:** a SQL predicate *is* a business filter — code filters because it is deciding. And of the seven attribute-read sites in `PBDIGIT-48`, **only three are decisions** (`PublicDemoController:454`, `SetupDemoElection:362`, `SetupPublicDemoElection:295`); the rest are display or serialisation. **Those three are already known and verified statically**, so Phase 1 leaves no *decision* unaccounted for.
 
 ### 🔑 The consequence signal quality forces: the report's unit is a capability
 
@@ -124,9 +148,10 @@
 
 ## What must be true before implementation
 
-* [ ] **The Product Owner confirms the reader definition** and that serialisation hits are **classified rather than suppressed**.
-* [ ] **The report is capability-first** — `PBDIGIT-58`'s capability names, not `file:line` lists. **A hit with no capability is itself a finding.**
-* [ ] **A behaviour-preservation test lands first**, asserting that for both fields, with observation **on and off**, the value and its **type** are identical across `null` · `true` · `false` · `'1'` · `'planned'` · `'active'`. **The test is the evidence for "behaviour-preserving" — not the docblock claiming it.**
+* [x] **Reader definition approved** — *a capability that makes a business decision using the deprecated representation.*
+* [x] **Mechanism approved** — Phase 1, SQL listener only.
+* [x] **The report is capability-first** — `PBDIGIT-58`'s capability names, not `file:line` lists. **A hit with no capability is itself a finding.**
+* [x] **No behaviour-preservation test is required for Phase 1** — and the reason is structural, not an exemption. **A query listener has no return path into the application:** it cannot alter a query, its bindings or its results. The test was needed for the cast/accessor options, which Phase 1 does not use. **If attribute observation is added later, that test becomes a precondition again.**
 * [ ] The report classifies each hit as `decision` · `serialisation` · `display`, from the call stack.
 * [ ] Observation stays default-off (`voting_security.observe_legacy_election_state`).
 

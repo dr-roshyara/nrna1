@@ -103,7 +103,9 @@ No production capability may interpret lifecycle from legacy persistence fields.
 
 ### `58A` · Observe Legacy Consumers — **first, and it is not optional**
 
-> ⏸️ **Mechanism under review.** [`2026-08-06-58A-observation-mechanism-review.md`](../reviews/2026-08-06-58A-observation-mechanism-review.md) — **the SQL-listener-only design was insufficient**: `PBDIGIT-48`'s own inventory lists consumers that read the field after load, with no query predicate. **A mechanism that cannot see `$election->status` cannot certify "zero production readers".**
+> ✅ **Mechanism approved — Phase 1: SQL listener only.** Definition approved: **a legacy consumer is a capability that makes a business decision using the deprecated representation** — *obtaining is not depending*. Serialisation is supporting evidence, never a consumer. **Extend to attribute observation only if the observed inventory proves incomplete.**
+>
+> ⏸️ **Superseded review detail:** [`2026-08-06-58A-observation-mechanism-review.md`](../reviews/2026-08-06-58A-observation-mechanism-review.md) — **the SQL-listener-only design was insufficient**: `PBDIGIT-48`'s own inventory lists consumers that read the field after load, with no query predicate. **A mechanism that cannot see `$election->status` cannot certify "zero production readers".**
 >
 > **Recommended:** SQL listener **plus** a per-field attribute interceptor — a **custom cast** for `is_active` (which is cast to `boolean`, and a get-mutator would bypass that cast) and an **accessor** for `status` (no cast to bypass). **Awaiting the Product Owner's confirmation of the reader definition before implementation.**
 
