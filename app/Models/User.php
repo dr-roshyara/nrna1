@@ -13,6 +13,7 @@ use App\Traits\HasOrganisation;
 use App\Traits\HasAuditFields;
 
 use Laravel\Sanctum\HasApiTokens;
+use App\Application\Election\Facades\ElectionLifecycle;
 use App\Models\Member;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -1295,12 +1296,16 @@ public function getVoterState(): string
             return null;
         }
 
-        // Find active REAL elections in those orgs (exclude demo elections)
+        // Find REAL elections in those orgs the voter can vote in (exclude demo elections)
         // withoutGlobalScopes() bypasses BelongsToTenant which requires session context
         // — not set yet when DashboardResolver runs at login time.
+        //
+        // SQL selects the candidates (organisation, type, not already voted); the lifecycle
+        // decides whether an election is currently accepting votes. The legacy `status`
+        // column cannot answer that: a voting window opens because TIME passed, and nothing
+        // writes `status` at that moment. (PBDIGIT-58B)
         return Election::withoutGlobalScopes()
             ->whereIn('organisation_id', $orgIds)
-            ->where('status', 'active')
             ->where('type', 'real')
             ->where('start_date', '<=', now())
             ->where('end_date', '>=', now())
@@ -1309,14 +1314,15 @@ public function getVoterState(): string
                     ->where('status', 'voted');
             })
             ->orderBy('start_date')
-            ->first();
+            ->get()
+            ->first(fn (Election $election) => ElectionLifecycle::of($election)->canVote());
     }
 
     /**
-     * Count elections with status=active for routing decisions.
+     * Count elections currently accepting votes, for routing decisions.
      *
-     * Counts ALL elections where status='active', regardless of date window.
-     * This drives the Priority 3 routing branch:
+     * Votability is asked of the lifecycle (PBDIGIT-58B), not the legacy `status`
+     * column. This drives the Priority 3 routing branch:
      *   0  → skip (no active election)
      *   1  → send to election.dashboard (ElectionPage)
      *   2+ → send to organisations.show (user chooses)
@@ -1342,7 +1348,6 @@ public function getVoterState(): string
         // — not set yet when DashboardResolver runs at login time.
         return Election::withoutGlobalScopes()
             ->whereIn('organisation_id', $orgIds)
-            ->where('status', 'active')
             ->where('type', 'real')
             ->where('start_date', '<=', now())
             ->where('end_date', '>=', now())
@@ -1350,6 +1355,8 @@ public function getVoterState(): string
                 $query->where('user_id', $this->id)
                     ->where('has_voted', true);
             })
+            ->get()
+            ->filter(fn (Election $election) => ElectionLifecycle::of($election)->canVote())
             ->count();
     }
 

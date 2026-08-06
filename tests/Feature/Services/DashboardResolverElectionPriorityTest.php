@@ -45,11 +45,14 @@ class DashboardResolverElectionPriorityTest extends TestCase
         return Election::withoutGlobalScopes()->create([
             'organisation_id' => $org->id,
             'type'            => 'real',
-            'status'          => 'active',
             'name'            => 'Test Election ' . uniqid(),
             'slug'            => 'test-election-' . uniqid(),
             'start_date'      => now()->subDay(),
             'end_date'        => now()->addDay(),
+            // Votability is derived from the lifecycle (voting window), not the legacy
+            // status column.
+            'voting_starts_at' => now()->subDay(),
+            'voting_ends_at'   => now()->addDay(),
         ]);
     }
 

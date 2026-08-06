@@ -51,9 +51,13 @@ class HasActiveElectionTest extends TestCase
             'organisation_id' => $this->tenantOrg->id,
             'name' => 'Test Election',
             'slug' => 'test-election',
-            'status' => 'active',
+            'type' => 'real',
+            // Votability is derived from the lifecycle (voting window), not the legacy
+            // status column.
             'start_date' => now()->subDay(),
             'end_date' => now()->addDay(),
+            'voting_starts_at' => now()->subDay(),
+            'voting_ends_at' => now()->addDay(),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -86,7 +90,7 @@ class HasActiveElectionTest extends TestCase
             'organisation_id' => $this->tenantOrg->id,
             'name' => 'Future Election',
             'slug' => 'future-election',
-            'status' => 'active',
+            'type' => 'real',
             'start_date' => now()->addMonth(),
             'end_date' => now()->addMonths(2),
             'created_at' => now(),
@@ -120,9 +124,12 @@ class HasActiveElectionTest extends TestCase
             'organisation_id' => $this->tenantOrg->id,
             'name' => 'Test Election',
             'slug' => 'test-election-voted',
-            'status' => 'active',
+            'type' => 'real',
             'start_date' => now()->subDay(),
             'end_date' => now()->addDay(),
+            // Votable by the lifecycle, so the assertion isolates the already-voted rule.
+            'voting_starts_at' => now()->subDay(),
+            'voting_ends_at' => now()->addDay(),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -194,9 +201,11 @@ class HasActiveElectionTest extends TestCase
             'organisation_id' => $this->tenantOrg->id,
             'name' => 'Election 1',
             'slug' => 'election-1',
-            'status' => 'active',
+            'type' => 'real',
             'start_date' => now()->subDay(),
             'end_date' => now()->addDay(),
+            'voting_starts_at' => now()->subDay(),
+            'voting_ends_at' => now()->addDay(),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -206,9 +215,11 @@ class HasActiveElectionTest extends TestCase
             'organisation_id' => $this->tenantOrg->id,
             'name' => 'Election 2',
             'slug' => 'election-2',
-            'status' => 'active',
+            'type' => 'real',
             'start_date' => now()->subDay(),
             'end_date' => now()->addDay(),
+            'voting_starts_at' => now()->subDay(),
+            'voting_ends_at' => now()->addDay(),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -238,7 +249,7 @@ class HasActiveElectionTest extends TestCase
             'organisation_id' => $this->tenantOrg->id,
             'name' => 'Future Election',
             'slug' => 'future-election',
-            'status' => 'active',
+            'type' => 'real',
             'start_date' => now()->addDay(),
             'end_date' => now()->addDays(5),
             'created_at' => now(),
@@ -272,9 +283,11 @@ class HasActiveElectionTest extends TestCase
             'organisation_id' => $this->tenantOrg->id,
             'name' => 'Election 1',
             'slug' => 'election-1',
-            'status' => 'active',
+            'type' => 'real',
             'start_date' => now()->subDay(),
             'end_date' => now()->addDay(),
+            'voting_starts_at' => now()->subDay(),
+            'voting_ends_at' => now()->addDay(),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -285,9 +298,11 @@ class HasActiveElectionTest extends TestCase
             'organisation_id' => $this->tenantOrg->id,
             'name' => 'Election 2',
             'slug' => 'election-2',
-            'status' => 'active',
+            'type' => 'real',
             'start_date' => now(),
             'end_date' => now()->addDays(3),
+            'voting_starts_at' => now(),
+            'voting_ends_at' => now()->addDays(3),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -332,15 +347,63 @@ class HasActiveElectionTest extends TestCase
             'organisation_id' => $org2->id,
             'name' => 'Test Election',
             'slug' => 'test-election',
-            'status' => 'active',
+            'type' => 'real',
             'start_date' => now()->subDay(),
             'end_date' => now()->addDay(),
+            'voting_starts_at' => now()->subDay(),
+            'voting_ends_at' => now()->addDay(),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
         // User should find the election
         $this->assertTrue($user->hasActiveElection());
+        $this->assertEquals($electionId, $user->getActiveElection()->id);
+        $this->assertEquals(1, $user->countActiveElections());
+    }
+
+    /**
+     * PBDIGIT-47 regression: a stale legacy `status` must not hide a running election.
+     *
+     * This is the exact production shape — `namaste 2026` sat at status='planned' while
+     * its voting window was open, and the voter was routed to the organisation homepage
+     * instead of the ballot. The legacy column cannot self-correct: a voting window opens
+     * because time passed, and nothing writes `status` at that moment.
+     */
+    public function test_stale_legacy_status_does_not_hide_a_running_election(): void
+    {
+        $user = User::factory()->create();
+
+        DB::table('user_organisation_roles')->insertOrIgnore([
+            'id' => (string) \Illuminate\Support\Str::uuid(),
+            'user_id' => $user->id,
+            'organisation_id' => $this->tenantOrg->id,
+            'role' => 'member',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $electionId = (string) \Illuminate\Support\Str::uuid();
+        DB::table('elections')->insert([
+            'id' => $electionId,
+            'organisation_id' => $this->tenantOrg->id,
+            'name' => 'Running Election With Stale Status',
+            'slug' => 'stale-status-election',
+            'type' => 'real',
+            // The defect condition, stated explicitly rather than left to a column default.
+            'status' => 'planned',
+            'start_date' => now()->subHour(),
+            'end_date' => now()->addHour(),
+            'voting_starts_at' => now()->subHour(),
+            'voting_ends_at' => now()->addHour(),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $this->assertTrue(
+            $user->hasActiveElection(),
+            'A running election must be found even though the legacy status says "planned".'
+        );
         $this->assertEquals($electionId, $user->getActiveElection()->id);
         $this->assertEquals(1, $user->countActiveElections());
     }

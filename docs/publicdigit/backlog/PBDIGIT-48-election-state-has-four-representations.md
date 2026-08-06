@@ -225,13 +225,17 @@ Recommendation:
   consumers are migrated.
 ```
 
-## Acceptance criteria — discovery only
+## Acceptance criteria — implementation/consolidation
 
-* [x] **All candidate representations identified** — engine/projection · `state` · `status` · `is_active`.
-* [x] **Consumer inventory verified** — with its completeness limit stated explicitly, and the guard-based measurement named as the way to close it.
-* [x] **Authority identified** — already declared in the repository (`DeprecationPolicy` + “SSOT engine”). **Nothing to approve.**
-* [x] **Migration strategy recorded** — five phases above. **Option B approved by the Product Owner, 2026-08-06.**
-* [x] **`ElectionPolicy` and `ProcessElectionAutoTransitions` assessed** — **neither reads these fields.** Both earlier claims withdrawn above.
+**Reframed by the Product Owner, 2026-08-06: this is an implementation story, not a discovery story.** The architectural decision is established; discovery language has been retired.
+
+* [ ] **Every consumer of legacy election state has been inventoried** — static inventory complete; measured inventory delivered by `PBDIGIT-58A`.
+* [x] **Login routing no longer depends on the legacy `status` field** — `User::getActiveElection()` and `User::countActiveElections()` migrated to `ElectionLifecycle::of($e)->canVote()` (`PBDIGIT-58B`, 2026-08-06).
+* [ ] **Each migrated consumer has regression tests** — done for the two above (9 tests green, incl. a named `PBDIGIT-47` regression).
+* [ ] **Browser verification confirms the expected behaviour** — **outstanding for `58B`**: no real election is currently inside a voting window, so the defect condition cannot be reproduced live.
+* [ ] **No remaining production code depends on the retired representation before it is removed.**
+
+**Discovery findings retained as evidence (not criteria):** all four candidate representations identified · authority already declared in-repo (`DeprecationPolicy` + "SSOT engine") · Option B approved · `ElectionPolicy` and `ProcessElectionAutoTransitions` assessed and **neither reads these fields** (both earlier claims withdrawn above).
 
 **Implementation — migrating consumers, removing fields, repairing divergent rows — belongs to [`PBDIGIT-58`](PBDIGIT-58-complete-legacy-election-state-migration.md) and must not begin here.**
 
