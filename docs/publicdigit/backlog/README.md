@@ -48,9 +48,6 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-32`](PBDIGIT-32-implement-working-organisation-routing.md) | **Implement Working Organisation Routing** — extend the resolver, do not redesign it | `EPIC-01` | ✅ **UNBLOCKED** — awaiting authorisation |
 | [`PBDIGIT-34`](PBDIGIT-34-remember-the-working-organisation-across-logins.md) | **Remember the Working Organisation across logins?** — product *question*, not a requirement | `EPIC-01` | `OPEN — unprioritised`, blocks nothing |
 | [`PBDIGIT-33`](PBDIGIT-33-fix-routing-cache-invalidation.md) | **Fix routing-cache invalidation** — observer was imported but never attached (+ UUID type fix) | cross-cutting | `FIXED — AWAITING RUNTIME VERIFICATION` |
-
----
-
 | [`PBDIGIT-35`](PBDIGIT-35-retire-the-legacy-global-voter-flags.md) | **Production code reads retired global voter flags** — `is_voter`/`can_vote` exist in no database; eligibility is org+election scoped | `EPIC-02` | `OPEN` — found by `PBDIGIT-00` F-1 |
 | [`PBDIGIT-36`](PBDIGIT-36-the-e2e-suites-do-not-test-the-journey.md) | **The "end-to-end" suites do not test the journey** — 10 of 21 tests never reach an assertion | cross-cutting | `OPEN` — found by `PBDIGIT-00` F-2/F-3 |
 | [`PBDIGIT-37`](PBDIGIT-37-test-credential-and-safety-claim-hygiene.md) | **Committed test credentials + a safety claim that is false on PostgreSQL** | cross-cutting | `OPEN` — credential deduplicated; the rest open |
@@ -73,7 +70,8 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | **Verification** | (a) run the three E2E suites against a provisioned Postgres; (b) walk the Level 0 journey once manually in demo mode, recording at each step: page · controller · DB rows · events · log files |
 | **Status** | ✅ **(a) DONE · (b) DONE — 2026-08-06.** Both verifications ran. **The result is negative, and that is the deliverable** |
 | 🔴 **What (a) established** | **There is NO automated end-to-end coverage of a complete election.** 21 tests: **10 errored before asserting anything**, 1 failed, 10 passed — and the 10 that pass test the *middleware chain*, not an election. → `PBDIGIT-35` · `PBDIGIT-36` · `PBDIGIT-37` |
-| 🔴 **What (b) established** | **The journey was walked end to end for the first time. Steps 1–4 work; the vote is never saved; the completion page 500s.** The security middleware chain and step-order enforcement work correctly. → `PBDIGIT-38` (blocking) · `PBDIGIT-39` · `PBDIGIT-40` · `PBDIGIT-41` |
+| 🔴 **What (b) established** | **The journey was walked end to end for the first time. Steps 1–4 worked; the vote was never saved.** The security middleware chain and step-order enforcement work correctly. → `PBDIGIT-38` · `PBDIGIT-39` · `PBDIGIT-40` · `PBDIGIT-41` |
+| ✅ **Since resolved** | **`PBDIGIT-38` is FIXED and VERIFIED (2026-08-06): a vote now persists and the journey completes.** This record is historical and is **not** rewritten — a closed verification is evidence with a date on it. Re-walking after a fix verifies *that fix*, not `PBDIGIT-00` |
 
 **Until `PBDIGIT-00` completes, no story may be marked `VERIFIED`.** **It has now run — and nothing may be marked `VERIFIED`, because the journey does not complete.** `PBDIGIT-38` is the gate that replaced it.
 
