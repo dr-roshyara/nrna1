@@ -202,3 +202,66 @@ It auto-redirects **only** when there is exactly one eligible election. At any a
 **So B10 reduces to one branch change plus verification.**
 
 **One open point, deliberately not answered here:** `getActiveElection()`'s filter covers membership, status, date window and already-voted — but the platform also has `VoterEligibilityService` / `EligibilityEvaluator` / `EligibilitySnapshot`. **Whether that filter *is* the eligibility mechanism or a second one alongside it is unresolved** (`PBDIGIT-EPIC-02` MB-5 records the same concern). B10's constraint forbids creating a second mechanism — so this must be settled before implementation, and it is **not** settled by this record.
+
+---
+
+## B2 — When does the Working Organisation change? — 📝 **PROPOSED, NOT APPROVED**
+
+> **⚠️ Provenance.** This draft was written by **engineering**, not by the Product Owner. B1 and B10 are marked ✅ APPROVED because the Product Owner supplied their text; **this one is a proposal awaiting a decision.** One sentence of confirmation adopts it *(the PREPARED → ADOPTED mechanism this repository already uses, cf. `R-90`)*. Until then it binds nothing.
+>
+> **It is derived from B1/B10's own principles — deterministic, never guess, never divert mid-work — and NOT from current behaviour.** What the code does today is the thing under question, so it is cited below only to show why the question matters, never as an answer.
+
+### Proposed rule
+
+> **The Working Organisation changes on exactly two occasions: when the user performs an act that says "I am working here now", or when the current one stops being valid for them. It never changes as a side effect of anything else.**
+
+### B2.1 · Triggers that DO change it
+
+| # | Trigger | Changes it? | Reasoning |
+|---|---|---|---|
+| **a** | **The user creates an organisation** | **Yes** — it becomes the Working Organisation | Creating is an unambiguous statement of intent; already established by **B1.2** |
+| **b** | **The user explicitly selects/switches** organisation | **Yes** | The explicit act B1.4 exists to provide |
+| **c** | **The user joins their *first* real organisation** | **Yes** | **B1.2** — they had no working context; now they do |
+| **d** | **Membership in the current one is revoked** | **Yes — forced** | The context is no longer valid, so it cannot remain. *The resulting **experience** is **B9**, not this rule* |
+| **e** | **The current organisation stops being available** (deleted · suspended · archived) | **Yes — forced** | Same reasoning as (d). *Detail belongs to **B8*** |
+
+**When a change is *forced* (d, e), the destination follows B1.3 deterministically:** 0 remaining real organisations → *Create or Join* · 1 → enter it · 2+ → **ask**. **A forced change must never silently pick one.**
+
+### B2.2 · Triggers that DO **NOT** change it
+
+*(The more important half of this rule.)*
+
+| # | Trigger | Changes it? | Reasoning |
+|---|---|---|---|
+| **f** | **The user joins an *additional* organisation** while already working in one | **No** | Joining grants *membership*; it does not say *"move me"*. The user may switch (b) whenever they wish. Yanking them out of their current work would be a guess |
+| **g** | **Viewing, browsing or rendering any page** — including another organisation's page | **No** | A page is something you *look at*; changing context by looking is the definition of a side effect |
+| **h** | **Election activity** — opening a ballot, voting, being routed to an election by **B10** | **No** | **B10 is a *routing* exception, not a context change.** The user is *sent to* an election; their Working Organisation is untouched |
+| **i** | **Ownership transfer, or any role change** within the current organisation | **No** | A different *role* in the same organisation is still the same working context. *(Unless it removes membership entirely — then (d))* |
+| **j** | **Anything done by another person or by the system** — admin action on another user, background job, import, projection | **No** | Only the user's own act, or invalidity, may move them |
+
+### 🔒 B2 business invariant
+
+> **The Working Organisation changes only by an explicit act of the user, or because it has become invalid for them. Never as a side effect.**
+
+### Why this proposal is shaped this way
+
+- It keeps B1's determinism: every change has a **named trigger** and, when forced, a **defined destination**.
+- It preserves B1.4's *"never guess"* — including in the forced case, which is where guessing is most tempting.
+- It extends B10's refinement (*"don't divert a user who is already working"*) from navigation to context.
+- It draws the line at **explicit act vs. side effect**, which is a line a Product Owner can apply to a trigger nobody has thought of yet.
+
+### What B2 deliberately does not decide
+
+| Question | Belongs to |
+|---|---|
+| **Who** may change it (user? admin? system?) | **B3** |
+| Whether the choice survives logout, and where it is remembered | **B4** |
+| What the user *experiences* when their organisation is deleted | **B8** |
+| What the user *experiences* when membership is revoked | **B9** |
+| Any implementation, mechanism, source of truth, or naming | not a business question — `PBDIGIT-32` / `PBDIGIT-29` Q1–Q2 |
+
+### Why this question was worth asking (context only — not evidence for the answer)
+
+`PBDIGIT-29` recorded that the working context is currently written in **15+ places**, including while *rendering* an organisation page (I-1, I-5). If B2 is approved as drafted, those writes are not merely untidy — **(g) makes most of them contrary to a business rule**, which turns a technical observation into a product requirement.
+
+**Decision needed:** approve, amend, or reject. Engineering will not treat this as settled until it is marked ✅ APPROVED.
