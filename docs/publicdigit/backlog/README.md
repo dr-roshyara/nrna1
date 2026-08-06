@@ -140,7 +140,9 @@ It is the bridge from discovery to testing. It separates *"code exists"* from *"
 
 ### ⛔ This method is FROZEN
 
-**No further phases, templates or refinements** until it has been applied to **three** capabilities independently: **Election** ✅ (`PBDIGIT-29`) → **Organisation** ⬜ → **Membership** ⬜.
+**No further phases, templates or refinements** until it has been applied to **three** capabilities independently: **Election** ✅ (`PBDIGIT-29`) → **Organisation** ✅ (`../reviews/2026-08-06-organisation-capability-review.md`) → **Membership** ⬜.
+
+**Cross-capability patterns so far (observation only, 2 occurrences each — not promoted):** an event dispatched with **no listeners** whose consequence is hard-coded in the dispatching controller · a **declared state that no code can reach**. The third review confirms or refutes them.
 
 After three applications, it becomes eligible as a KnowledgeOS promotion candidate under `ES-006.1` — repository-independent, evidence-backed. Before that, it is a project convention with n=1. **Use it; do not improve it.**
 
