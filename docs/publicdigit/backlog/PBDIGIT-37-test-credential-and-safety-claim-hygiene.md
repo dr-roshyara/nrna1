@@ -36,16 +36,19 @@ The stale value's origin: it is the **CI Postgres service container's** `POSTGRE
 
 **Consequence, stated plainly:** the `PBDIGIT-00` run wrote the **live development database password** into `.env.testing`. **That change was deliberately NOT committed.** It remains an uncommitted working-tree modification, so no live credential entered history.
 
-**Why it was not repaired on the spot:** `git rm --cached .env.testing` is the correct fix, but committing a tracked-file deletion **removes the file from every other developer's working tree on their next pull**, breaking their local test setup until they recreate it. **That is a team decision, not a side effect of a verification story.**
+### ✅ RESOLVED 2026-08-06 — the Product Owner authorised it by adding `.env.testing` to `.gitignore`
 
-**Recommended sequence (needs authorisation):**
+**Done:**
 
-1. `git rm --cached .env.testing` — stops tracking, keeps the local file.
-2. Add `.env.testing`, `.env.*.bak` and `.env.back_*` to `.gitignore`.
-3. Add a tracked **`.env.testing.example`** listing the required keys with **empty values**, so a fresh clone knows what to provide.
-4. Announce it — every developer must copy the example to `.env.testing` once.
+1. ✅ `git rm --cached .env.testing` — untracked; the local file is kept.
+2. ✅ `.gitignore` carries `.env.testing` (trailing whitespace trimmed).
+3. ✅ **`.env.testing.example`** added — tracked, 10 keys, **`DB_PASSWORD` and `APP_KEY` blank**; only non-sensitive environment-defining values are filled in.
 
-**Until this is done, `.env.testing` cannot hold the password on a shared branch.** The only credential homes that are simultaneously *single* and *untracked* are `.env.testing` **after** untracking, or the developer's shell environment.
+**⚠️ One consequence every developer must know:** because a tracked file was removed, **the next `git pull` deletes `.env.testing` from their working tree.** Each developer must run `cp .env.testing.example .env.testing` once and fill in the two blanks. **This is expected, not a fault** — but it is silent, and it will look like a broken checkout to anyone not told.
+
+**History note:** `.env.testing`'s committed history contains only the **stale CI throwaway** value, never the live password (the live value was never committed). So untracking is sufficient; **no history rewrite is indicated.**
+
+**Still outstanding:** `.env.back_20260419_0138` remains **tracked** — see Part 2. `.gitignore` does not untrack an already-tracked file, so ignoring `.env.*` patterns would not remove it.
 
 ⚠️ **History note:** `.env.testing`'s committed history already contains the **stale CI throwaway** value, not a live secret — so untracking is sufficient and a history rewrite is not indicated.
 
