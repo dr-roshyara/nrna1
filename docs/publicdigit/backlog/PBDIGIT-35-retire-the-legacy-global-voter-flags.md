@@ -15,7 +15,11 @@
 
 `users.is_voter`, `users.can_vote`, `users.wants_to_vote` and `users.has_voted` **exist in no database** — verified against **both** the development database and a database freshly built from `database/migrations/`. They are identical, so this is not environment drift.
 
-**Voter status lives in the `voters` table, and it is organisation- and election-scoped:**
+> ⚠️ **CORRECTION, 2026-08-06 — see [`PBDIGIT-49`](PBDIGIT-49-voter-eligibility-has-two-homes.md).** This story named `voters` as the authoritative home **by inferring from schema shape, without checking which table is populated.** On the live election `namaste 2026`, voter eligibility is in **`election_memberships` (3 rows)** and **`voters` is empty (0)**.
+>
+> **This story's finding still stands** — the retired `is_voter` / `can_vote` columns exist in no database and code still reads them. **Its conclusion about where eligibility should move does not.** Do not implement the acceptance criteria below until `PBDIGIT-49` settles which store is authoritative.
+
+**Voter status was expected to live in the `voters` table, which is organisation- and election-scoped:**
 
 ```
 voters: id, organisation_id, member_id, election_id, status,
