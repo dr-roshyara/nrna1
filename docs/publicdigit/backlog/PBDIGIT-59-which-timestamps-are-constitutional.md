@@ -8,7 +8,7 @@
 |---|---|
 | **Status** | 🟡 **ARCHITECTURE DECISION REQUIRED** |
 | **Question** | **Which timestamps define the voting window — and are the others derived, legacy, or independent?** |
-| **Customer impact** | 🔴 **An election closed ~31 minutes before its stated end time.** Whether that is this defect or an operator action is **not established** — see §Observation |
+| **Customer impact** | 🟡 **The four elections' legacy and lifecycle states all disagree, and demo elections can never reach a voting state** (`voting_*` is `NULL`). The ~31-minute early close that prompted this ticket is **resolved as an operator action, not a defect** — see §Cause ESTABLISHED |
 | **Blocks** | **`PBDIGIT-58B`'s implementation** — not its scope. Consumers should read the authority either way; **what is undecided is what the authority reads** |
 
 ---
@@ -37,7 +37,7 @@
 
 **4 of 4 disagree.** The demo elections cannot reach any voting state at all, because the pair the engine reads is `NULL`.
 
-## ⚠️ Observation — cause NOT established
+## ✅ Cause ESTABLISHED (2026-08-06, from `election_state_transitions`) — no timing defect
 
 | Fact | Value |
 |---|---|
@@ -48,11 +48,21 @@
 
 **So voting closed ~31 minutes before its stated end, and results published immediately after.**
 
-**The likeliest explanation is two deliberate clicks in the management UI** (`close_voting`, then `publish_results`), 24 seconds apart. **That has not been confirmed, and no autonomous mechanism has been shown to do it.** *(No scheduler exists — verified: no `schedule->` entries.)*
+**It was two deliberate clicks in the management UI, by the same human officer, 24 seconds apart.** `election_state_transitions` for this election:
 
-> **This is recorded as an observation, not a finding.** If it *was* an operator action, there is no defect in the timing — only the unanswered question of why `voting_ends_at` did not match `end_date` beforehand. **If it was not, that is a serious defect and this ticket is its home.**
+| Timestamp | Target state | Actor |
+|---|---|---|
+| `14:14:28` | `approved` | *(null)* |
+| `14:14:31` | `setup_administration` | `a26ed09e…` |
+| `14:23:36` | `setup_nomination` | `a26ed09e…` |
+| **`15:28:44`** | **`counting`** | **`a26ed09e…`** |
+| **`15:29:08`** | **`results_published`** | **`a26ed09e…`** |
 
-**First task: establish which it was.** `elections.state_audit_log` and `election_state_transitions` exist and should answer it.
+**`15:28:44` is the `close_voting` transition itself** — and `Election::applySideEffectsForCloseVoting()` `:1850-1861` writes `voting_ends_at = $currentTime`. So `voting_ends_at` did not drift from `end_date`; **it was overwritten by the act of closing.**
+
+> **Resolved: there is no autonomous timing defect.** The officer closed voting ~31 minutes early and published 24 seconds later. **The serious-defect branch of this observation is closed.**
+
+**Consequence for the decision below: `voting_ends_at` is written by the lifecycle to record the *actual* close, while `end_date` holds the *scheduled* close. That is Option C's premise, now evidenced rather than merely possible** — the two column pairs were being used for two different purposes. **The decision itself remains the Product Owner's** (`R-34`); what has changed is that C is no longer a hypothesis.
 
 ## The decision required
 
@@ -68,8 +78,8 @@
 
 ## What must be established
 
-* [ ] **Who set `voting_ends_at` to `15:28:44`, and when** — from `state_audit_log` / `election_state_transitions`.
-* [ ] Whether `voting_*` is written by the lifecycle transitions, by the management UI, or derived on save.
+* [x] **Who set `voting_ends_at` to `15:28:44`, and when** — the officer `a26ed09e…`, via the `close_voting` transition at that instant.
+* [x] Whether `voting_*` is written by the lifecycle transitions, by the management UI, or derived on save — **two paths write it** — the lifecycle (`applySideEffectsForCloseVoting` `:1850-1861`) and the timeline form (`ElectionManagementController::updateTimeline` `:1450-1451`). **It is never derived.**
 * [ ] Why the three demo elections have `NULL` — never set, or a provisioning gap in `demo:setup`.
 * [ ] Which pair the officer-facing UI edits, and which it displays.
 * [ ] **The decision, recorded.** Then `PBDIGIT-58B` proceeds.
