@@ -117,6 +117,60 @@ Wire `ElectionReadModel` / `DeprecationAccessGuard` so every legacy read announc
 * [ ] The product exercised, including `PBDIGIT-00`'s journey, and the log reviewed.
 * [ ] `PBDIGIT-48`'s capability table confirmed **or extended**. **Extensions are the expected outcome, not a failure of the discovery.**
 
+### `58A` RESULT — observed 2026-08-06
+
+**Mechanism ran with observation on, exercising: voter login · organisation page · election selection · election page · dashboards · officer login · election management · public demo · CLI listing.**
+
+#### ✅ It found a decision site the static inventory missed
+
+```
+capability : Election Entry Resolution
+fields     : status
+caller     : app/Models/User.php:1353
+stack      : User.php:1353 -> DashboardResolver.php:102 -> LoginController.php:97
+sql        : select count(*) as aggregate from "elections" ...
+```
+
+**`User.php:1343-1353` is a SECOND decision site in the same capability** — a `count()` query filtering `status = 'active'`, distinct from `getActiveElection():1303`. **`PBDIGIT-48` listed only the latter.**
+
+> **This is the justification for `58A` in one line: the static inventory was wrong about a Critical capability, and one login request proved it.** `Election Entry Resolution` has at least two decision sites, not one — and a migration that fixed only `getActiveElection()` would have left the other behind.
+
+**Zero false positives.** Every hit mapped to a capability; no serialisation, no display noise.
+
+#### 🔴 Two blind spots — characterised, so they can be closed without more instrumentation
+
+**1 · In-memory Collection filters are invisible to a query listener.**
+
+`OrganisationController:192-193` — `$realElections->where('status', 'active')->count()`. `$realElections` is **already fetched**, so this is `Illuminate\Support\Collection::where`, evaluated in PHP. **No SQL is emitted, so no listener can see it — and it is unambiguously a business filter** (it produces the dashboard counts).
+
+**2 · Attribute-based decisions**, as anticipated: `PublicDemoController:454` · `SetupDemoElection:362` · `SetupPublicDemoElection:295`.
+
+#### Recommendation — do NOT extend the mechanism
+
+**Phase 1 proved incomplete, but the gap is enumerable statically, which the original problem was not.**
+
+| | Text-searchable? |
+|---|---|
+| `where('status', 'active')` on a builder | 🔴 **no** — 520 candidates, indistinguishable from other models' `status` |
+| `->where('status', …)` on a **Collection** | ✅ **yes** — the receiver is a fetched collection, syntactically distinctive |
+| `$election->status ===` / `if (!$election->is_active)` | ✅ **yes** — an attribute access on an election variable |
+
+**So the remaining consumers are findable by reading, and the ambiguous class is exactly the one the listener already covers.** Adding attribute interception would buy little and cost a mechanism to remove later — **signal quality beats completeness.**
+
+⚠️ **What `58A` cannot claim:** coverage is limited to the flows exercised. **Queues, scheduled jobs and the voting flow itself were not exercised**, and the dev database holds one organisation and two elections. **`58A` extends the inventory; it does not close it.** The listener stays available (default off) for the next flow anyone runs.
+
+#### Inventory going into `58B`
+
+| Capability | Decision sites | Source |
+|---|---|---|
+| **Election Entry Resolution** | `User.php:1303` · **`User.php:1353`** | static · **observed** |
+| **Election Context Resolution** | `ElectionMiddleware:113-114, 127-128` | static |
+| **Organisation Reporting** | `OrganisationController:192, 193, 565` *(collection filters)* | static |
+| **Demo Platform** | `PublicDemoController:454` · `SetupDemoElection:362` · `SetupPublicDemoElection:295` | static |
+| **Member Communication** | `OrganisationNewsletterController:46, 115` | static |
+
+**Display-only, not decisions — migrate for tidiness, never for correctness:** `CommissionDashboardController:28` · `ListAllElections:38` · `DemoVoteController:573, 2461` · `PublicDemoController:239`.
+
 ### `58B` · Restore Election Resolution — the two Critical capabilities
 
 **Election Entry Resolution** and **Election Context Resolution** both derive from the lifecycle.
