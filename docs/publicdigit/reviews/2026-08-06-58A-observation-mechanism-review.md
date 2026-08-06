@@ -1,6 +1,6 @@
 # Mechanism review — where to observe legacy election-state reads (`PBDIGIT-58A`)
 
-**Date:** 2026-08-06 · **Type:** Design review — **no implementation, no recommendation acted on**
+**Date:** 2026-08-06 · **Type:** Design review — ✅ **CONCLUDED.** No implementation yet; the mechanism is selected and the preconditions are listed
 **Commissioned:** Product Owner — *"Review the architectural options for observing legacy attribute reads… Recommend the observation point that best satisfies 58A's requirement of 'zero production readers' while remaining behaviour-preserving. Do not implement yet."*
 **Why it deserves a review:** `58A` does not only serve this migration. **It creates an observation mechanism intended for reuse** on `PBDIGIT-45`, `PBDIGIT-49`, and any future legacy-consumer migration.
 
@@ -39,6 +39,37 @@
 
 > **Recommendation on the definition, for the Product Owner to confirm:** a reader is **any code path that obtains the value**, and the report must **classify** each hit — `decision` · `serialisation` · `display` — using the call stack. **Serialisation hits are not noise; they are a pointer to a possible frontend consumer**, which is a category the static inventory never covered at all.
 
+## Evaluation criteria
+
+**The Product Owner supplied six, and added a seventh that turned out to be decisive.**
+
+| Criterion | Why it matters |
+|---|---|
+| Detects business consumers | required by `58A` |
+| Avoids serialisation noise | prevents false positives |
+| Behaviour-preserving | must not change semantics |
+| Low runtime overhead | safe to run in production observation |
+| Reusable for future migrations | `PBDIGIT-45`, `PBDIGIT-49`, and the KnowledgeOS candidate |
+| Easy to remove afterwards | this is temporary infrastructure |
+| 🔑 **Signal quality** | **does a hit identify a capability that still depends on the legacy representation, or merely a framework implementation detail?** |
+
+### Why signal quality is decisive, and how it changed this review
+
+> **`58A` exists to discover remaining legacy *capabilities*, not remaining Eloquent *attribute accesses*.**
+
+**Framework serialisation is not `Election Entry Resolution`.** A mechanism that reports both with equal weight produces a list whose length is dominated by the framework, and the migration cannot be planned from it.
+
+**Applying this criterion inverted my earlier ranking:**
+
+| | Signal quality |
+|---|---|
+| **SQL predicate** — `where('status', 'active')` | 🟢 **high.** Code filters on a value **because it is deciding something.** A predicate is close to a business intent, and **it never fires during serialisation** |
+| **Attribute read** — `$election->status` | 🟡 **mixed.** The same interception fires for a decision, for CLI display, and for every `toArray()`. **Unusable without classification** |
+| **`getAttribute` override** | 🔴 **lowest** — every attribute, every access |
+| **Compatibility adapter** | 🟢 **highest in principle** — every call is deliberate — 🔴 **and zero in practice**, because nothing calls it yet |
+
+**So the SQL listener is not a cheap extra to be supplemented; it is the high-signal core.** Attribute interception is **coverage completion** — necessary to reach "zero readers", and **worthless as raw output.**
+
 ## The options
 
 | | Mechanism | Covers predicates | Covers attribute reads | Behaviour-preserving | Reusable | Cost |
@@ -53,7 +84,21 @@
 
 ## Recommendation
 
-> **A pair: keep the SQL listener (1), and add a per-field attribute interceptor chosen by whether the field is cast — a custom cast for `is_active` (3), an accessor for `status` (2).**
+> **A pair: the SQL listener (1) as the high-signal core, plus a per-field attribute interceptor for coverage — a custom cast for `is_active` (3), an accessor for `status` (2) — and the attribute half is only admissible with call-stack classification.**
+
+### 🔑 The consequence signal quality forces: the report's unit is a capability
+
+**A report of `file:line` hits answers the wrong question.** `58A` must produce **which capabilities still depend on the legacy representation** — because that is what `58B`–`58D` migrate, and it is how `PBDIGIT-58`'s slices are already named.
+
+**So the observer must map each hit to a capability** (via the calling frame → `PBDIGIT-58`'s capability table), and classify it:
+
+| Class | Meaning | Migration consequence |
+|---|---|---|
+| `decision` | a capability branched or filtered on the value | 🔴 **must migrate** |
+| `display` | rendered to a human, no branch | migrate, low risk |
+| `serialisation` | the model was converted to array/JSON | ⚠️ **not itself a consumer — a pointer to a possible frontend consumer** |
+
+**A hit that cannot be attributed to a capability is a finding in its own right** — it means a code path exists that the capability table does not describe, which is exactly what `58A` was commissioned to surface.
 
 **Why the pair rather than one mechanism:** predicates and attribute reads are genuinely different access paths, and no single interception point covers both without cost. `DB::listen` is free and catches every predicate from every code path — including queues, CLI and packages that no static pass associates with elections. Attribute interception catches the rest.
 
@@ -62,13 +107,25 @@
 * **`is_active`** → **custom cast.** The observer becomes the cast, so the `boolean` contract is preserved *by construction* rather than by me re-implementing it.
 * **`status`** → **accessor.** No cast exists to bypass, so an accessor returning the raw value is exactly behaviour-preserving. **Adding a cast here would introduce a cast surface where none existed** — the smaller change is the accessor.
 
-**Rejected, with reasons:** **(5)** intercepts every attribute on Eloquent's hottest path for a two-field question. **(6)** cannot measure what has not yet been migrated to it. **(7)** has already produced three inventories, each correcting the last.
+### Scored against the criteria
+
+| Mechanism | Business consumers | No serialisation noise | Behaviour-preserving | Overhead | Reusable | Removable | **Signal** |
+|---|---|---|---|---|---|---|---|
+| **SQL listener** | partial | ✅ | ✅ by construction | low | ✅ | ✅ one line | 🟢 **high** |
+| **Custom cast** (`is_active`) | ✅ | 🔴 needs classification | ✅ by construction | low | ✅ | ✅ revert one cast entry | 🟡 mixed |
+| **Accessor** (`status`) | ✅ | 🔴 needs classification | ✅ nothing to bypass | low | ⚠️ per field | ✅ delete method | 🟡 mixed |
+| `getAttribute` override | ✅ | 🔴 worst | ⚠️ widest blast radius | **medium** | ✅ | ✅ | 🔴 low |
+| Compatibility adapter | 🔴 zero today | ✅ | ✅ | low | ✅ | n/a | 🟢/🔴 |
+| Static analysis | ⚠️ | ✅ | ✅ | none | ✅ | ✅ | 🔴 **disproven three times** |
+
+**Rejected, with reasons:** **(5)** intercepts every attribute on Eloquent's hottest path for a two-field question, and scores lowest on the decisive criterion. **(6)** cannot measure what has not yet been migrated to it. **(7)** has already produced three inventories, each correcting the last.
 
 **Uniformity was the tempting choice and it is the wrong one:** one mechanism for both fields means either reproducing a cast by hand, or adding a cast where none belongs.
 
 ## What must be true before implementation
 
-* [ ] **The Product Owner confirms the reader definition** and that serialisation hits are classified rather than suppressed.
+* [ ] **The Product Owner confirms the reader definition** and that serialisation hits are **classified rather than suppressed**.
+* [ ] **The report is capability-first** — `PBDIGIT-58`'s capability names, not `file:line` lists. **A hit with no capability is itself a finding.**
 * [ ] **A behaviour-preservation test lands first**, asserting that for both fields, with observation **on and off**, the value and its **type** are identical across `null` · `true` · `false` · `'1'` · `'planned'` · `'active'`. **The test is the evidence for "behaviour-preserving" — not the docblock claiming it.**
 * [ ] The report classifies each hit as `decision` · `serialisation` · `display`, from the call stack.
 * [ ] Observation stays default-off (`voting_security.observe_legacy_election_state`).
