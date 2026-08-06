@@ -253,7 +253,26 @@ Recommendation:
 
 > **A column name is not a consumer** — the lesson that produced two withdrawn claims in this ticket. **Classification must name the query subject, never the column.**
 
-**The measuring instrument already exists:** `PBDIGIT-58A`'s `LegacyElectionStateObserver` reports *decisions* at runtime rather than *mentions* in text, and it already found a site three static passes missed. **Closing this inventory means running it over the real journeys, not grepping harder.**
+### 🔬 Measured — 58A observer run over real journeys, 2026-08-06
+
+**Journeys walked** (HTTP, observer enabled): public home · sitemap · voter login → dashboard → election page · organisation show · officer login → election management · results (403) · `demo/vote/create` · `public-demo` start/guide/results.
+
+**3 observations. One genuine consumer, one false positive.**
+
+| Verdict | Capability | Site | Field |
+|---|---|---|---|
+| ✅ **GENUINE — migrate** | **Election Context Resolution** | `ElectionMiddleware:113-116` (and the fallback at `:127-130`) | **`is_active`** |
+| ❌ **FALSE POSITIVE — strike** | *reported as* Election Entry Resolution | `User.php:1317` | "status" |
+
+**The genuine one:** `Election::where('type','real')->where('is_active', true)->orderBy('id')->first()` — "which election is this request about?" decided on the deprecated field. **`is_active` carries severity `strict` in `DeprecationPolicy`**, so this blocks enforcement escalation.
+
+### ⚠️ The instrument has the defect it was built to detect
+
+`User.php:1317` is `->where('status','voted')` on **`voter_slugs`**, inside a `whereDoesntHave` subquery whose *outer* table is `elections`. The observer matched `elections` and a `status` predicate **in the same SQL string** and attributed it to the elections table.
+
+> **A column name is not a consumer — and the measuring instrument cannot tell the difference either.** Laravel emits unqualified `where "status" = ?` for the outer table too, so qualification cannot be required. **Before its counts are trusted, the observer must treat statements containing a subquery or join as AMBIGUOUS rather than attributing them.** Until then it over-reports, exactly like the text scan it was built to replace.
+
+**Coverage limits — absence of evidence is not evidence of absence.** No full voting flow (code entry → ballot → verify), no candidacy paths, no commission/admin dashboards, and the results page returned 403. **The static scan's other candidate sites were not exonerated by this run; they were simply not exercised.**
 
 ### Clarification of an earlier claim
 
