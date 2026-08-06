@@ -318,9 +318,9 @@ Stated explicitly because the product flow may say *"Welcome to Organisation X"*
 
 ---
 
-## B3 — Who has the authority to establish or change the Working Organisation? — ✅ **APPROVED** *(two clarifications flagged)*
+## B3 — Who has the authority to establish or change the Working Organisation? — ✅ **APPROVED**
 
-> **Provenance.** The Product Owner supplied the rulings below (2026-08-06), reframing the question from *"who may change it?"* to **"who has the authority to establish or change it?"** — which leads to business authority rather than implementation. Two items are flagged for confirmation: an **A-3 hedge** the Product Owner marked *"probably"*, and a **consistency clarification** engineering identified between B3 and B1.3.
+> **Provenance.** The Product Owner supplied the rulings below and reframed the question from *"who may change it?"* to **"who has the authority to establish or change it?"** — which leads to business authority rather than implementation. Both items engineering flagged were then settled by the Product Owner: the A-3 hedge was **removed** (business rules do not hedge), and Clarification 2 was **simplified** — there is no contradiction to resolve. A **traceability requirement** was added to the invariant. Approved 2026-08-06.
 
 ### B3 · The authorities
 
@@ -328,12 +328,24 @@ Stated explicitly because the product flow may say *"Welcome to Organisation X"*
 |---|---|---|---|
 | **A-1** | **The user, for themselves** | ✅ **Yes — the primary authority** | This is *their* working context. Every voluntary change under B2 originates here |
 | **A-2** | **The platform** | ⚠️ **Only when the current Working Organisation is no longer valid** — organisation deleted · suspended · membership revoked | The platform acts to preserve consistency, never to express a preference. Forced changes follow B1.3 deterministically |
-| **A-3** | **An administrator, acting on another person** | ❌ **No** *(flagged — see below)* | An administrator may change **memberships**. They do not remotely decide where another person is currently working |
+| **A-3** | **An administrator, acting on another person** | ❌ **No** | **An administrator may change memberships and permissions. An administrator may not choose another person's Working Organisation.** |
 | **A-4** | **Anyone or anything else** | ❌ **Never** | See the general principle below |
 
 ### 🔒 B3 business invariant
 
 > **The Working Organisation is personal execution context. Only the user may choose it. The platform may replace it only when it has become invalid. No one may choose it on another person's behalf.**
+>
+> **The platform shall always be able to explain why the current Working Organisation was established.**
+
+**Every Working Organisation must be attributable to exactly one of three causes — and to nothing else:**
+
+| Attribution | Authority |
+|---|---|
+| **the user selected it** | A-1 |
+| **the user created the organisation** | A-1 |
+| **the platform replaced one that had become invalid** | A-2 |
+
+**"Nothing else" is the operative half.** If the current Working Organisation cannot be attributed to one of these three, it was established without authority — which is a defect by definition, not a state to be interpreted. *(This makes B3 auditable rather than merely declarative: the rule can be checked against reality instead of trusted.)*
 
 ### B3 · The general principle — why no mechanism is named here
 
@@ -349,23 +361,15 @@ Stated as a principle rather than a list, because *background jobs · routing ·
 
 *(This is the same design property as B2's explicit-act-vs-side-effect line: it rules on cases nobody has thought of yet.)*
 
-### B3 · Clarification 1 — the administrator hedge *(flagged: the Product Owner said "probably")*
+### B3 · Clarification 1 — the administrator boundary *(settled: no hedge)*
 
-**Proposed resolution, which makes A-3 unhedged without weakening it:**
+> An administrator changes **memberships and permissions**, not contexts. If an administrator's action **invalidates** the organisation a user is currently working in — by revoking membership, or by suspending or deleting the organisation — that is **not the administrator choosing a new context**. It is an **A-2 forced change**, and the destination follows B1.3 deterministically.
 
-> An administrator changes **memberships**, not contexts. If an administrator's action **invalidates** the organisation a user is currently working in — by revoking membership, or by suspending or deleting the organisation — that is **not the administrator choosing a new context**. It is an **A-2 forced change**, and the destination follows B1.3 deterministically.
+So an administrator has real power over *what a user may access*, and none over *where that user is working*. **A-3 is "No" without qualification, and nothing is lost.**
 
-So the administrator has real power over *what the user may access*, and none over *where the user is working*. **A-3 stays "No" and nothing is lost.**
+### B3 · Clarification 2 — B1.3 does not conflict with B3
 
-### B3 · Clarification 2 — B3 vs B1.3, a consistency question engineering must raise
-
-**Apparent contradiction:** B3 says the platform may act **only** when the current context is invalid. But **B1.3** says a user with **exactly one** real organisation is *entered automatically* — which looks like the platform choosing.
-
-**Proposed resolution:**
-
-> **Determinism is not discretion.** Where exactly one valid outcome exists, the platform is not exercising authority — it is applying a rule that admits no alternative. Authority is only engaged where a **choice** exists, and B1.3 already forbids the platform from choosing: with two or more organisations it must **ask**.
-
-**If this reading is wrong, B1.3 or B3 must be amended** — the two cannot both stand as written without it. Recorded rather than resolved by assumption.
+> **Where exactly one valid outcome exists, no choice is being made. The platform is applying a deterministic business rule. Business authority is only exercised where alternatives exist. B1.3 therefore does not conflict with B3.**
 
 ### B3 · Open edge, deliberately unanswered
 
