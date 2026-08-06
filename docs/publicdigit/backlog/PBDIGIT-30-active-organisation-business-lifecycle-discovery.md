@@ -315,3 +315,70 @@ Stated explicitly because the product flow may say *"Welcome to Organisation X"*
 `PBDIGIT-29` recorded that the working context is written in **15+ places, including while rendering an organisation page** (I-1, I-5). **Under B2 as approved, those writes are contrary to a business rule** — not merely untidy. They move from *architecture debt* into `PBDIGIT-32`'s scope.
 
 **B3–B9 remain unanswered.** `PBDIGIT-32` stays blocked.
+
+---
+
+## B3 — Who has the authority to establish or change the Working Organisation? — ✅ **APPROVED** *(two clarifications flagged)*
+
+> **Provenance.** The Product Owner supplied the rulings below (2026-08-06), reframing the question from *"who may change it?"* to **"who has the authority to establish or change it?"** — which leads to business authority rather than implementation. Two items are flagged for confirmation: an **A-3 hedge** the Product Owner marked *"probably"*, and a **consistency clarification** engineering identified between B3 and B1.3.
+
+### B3 · The authorities
+
+| # | Authority | May establish or change the Working Organisation? | Scope |
+|---|---|---|---|
+| **A-1** | **The user, for themselves** | ✅ **Yes — the primary authority** | This is *their* working context. Every voluntary change under B2 originates here |
+| **A-2** | **The platform** | ⚠️ **Only when the current Working Organisation is no longer valid** — organisation deleted · suspended · membership revoked | The platform acts to preserve consistency, never to express a preference. Forced changes follow B1.3 deterministically |
+| **A-3** | **An administrator, acting on another person** | ❌ **No** *(flagged — see below)* | An administrator may change **memberships**. They do not remotely decide where another person is currently working |
+| **A-4** | **Anyone or anything else** | ❌ **Never** | See the general principle below |
+
+### 🔒 B3 business invariant
+
+> **The Working Organisation is personal execution context. Only the user may choose it. The platform may replace it only when it has become invalid. No one may choose it on another person's behalf.**
+
+### B3 · The general principle — why no mechanism is named here
+
+**Nothing that is not a named authority may establish a Working Organisation. Anything else may only validate or consume the one that already exists.**
+
+Stated as a principle rather than a list, because *background jobs · routing · caching · request handling · page rendering* are **mechanisms, not authorities** — and a business rule that enumerates today's mechanisms cannot rule on tomorrow's. The principle covers them all by construction:
+
+| A mechanism may… | A mechanism may never… |
+|---|---|
+| **validate** the Working Organisation | **choose** one |
+| **consume** it | **create** one |
+| **store** a previously determined answer | **become** the authority for it |
+
+*(This is the same design property as B2's explicit-act-vs-side-effect line: it rules on cases nobody has thought of yet.)*
+
+### B3 · Clarification 1 — the administrator hedge *(flagged: the Product Owner said "probably")*
+
+**Proposed resolution, which makes A-3 unhedged without weakening it:**
+
+> An administrator changes **memberships**, not contexts. If an administrator's action **invalidates** the organisation a user is currently working in — by revoking membership, or by suspending or deleting the organisation — that is **not the administrator choosing a new context**. It is an **A-2 forced change**, and the destination follows B1.3 deterministically.
+
+So the administrator has real power over *what the user may access*, and none over *where the user is working*. **A-3 stays "No" and nothing is lost.**
+
+### B3 · Clarification 2 — B3 vs B1.3, a consistency question engineering must raise
+
+**Apparent contradiction:** B3 says the platform may act **only** when the current context is invalid. But **B1.3** says a user with **exactly one** real organisation is *entered automatically* — which looks like the platform choosing.
+
+**Proposed resolution:**
+
+> **Determinism is not discretion.** Where exactly one valid outcome exists, the platform is not exercising authority — it is applying a rule that admits no alternative. Authority is only engaged where a **choice** exists, and B1.3 already forbids the platform from choosing: with two or more organisations it must **ask**.
+
+**If this reading is wrong, B1.3 or B3 must be amended** — the two cannot both stand as written without it. Recorded rather than resolved by assumption.
+
+### B3 · Open edge, deliberately unanswered
+
+**Support or impersonation:** may a support agent, acting *as* a user with permission, establish that user's Working Organisation? Not covered by A-1–A-4, because such an actor is neither "the user themselves" nor "an administrator acting on another person". **Left open — no such capability is assumed to exist, and inventing a rule for a capability that may not exist would be guessing.**
+
+### B3 · What B3 does not decide
+
+**Where** the choice is remembered and whether it survives logout → **B4**. The **experience** of a forced change → **B8** (deletion) and **B9** (revocation). Any mechanism, storage or naming → not a business question.
+
+### B3 · Consequence for existing work
+
+`PBDIGIT-29` recorded **15+ writers** of the working context, including request handling and page rendering. Under **B2** those writes are contrary to a business rule; under **B3** they are also **unauthorised** — none of them is a named authority. Together the two rules mean `PBDIGIT-32` is not tidying a mechanism, it is **restoring an authority**.
+
+---
+
+**Business policy now complete for identity · lifecycle · authority:** **B1** what exists → **B2** when it changes → **B3** who may change it. **B4–B9 remain open** (B10 approved separately). `PBDIGIT-32` stays blocked.
