@@ -5,10 +5,10 @@
 
 | | |
 |---|---|
-| **Status** | 🟡 **DISCOVERY — no implementation decisions belong in this story** |
+| **Status** | ✅ **DISCOVERY COMPLETE 2026-08-06.** Consumer inventory verified; migration strategy recorded. **Implementation → [`PBDIGIT-58`](PBDIGIT-58-complete-legacy-election-state-migration.md)** |
 | **Diagnosis** | **The domain successfully evolved to a constitutional lifecycle. The migration of legacy consumers remained incomplete.** The business rule never changed — only how "open" is computed |
 | **Customer impact** | **`PBDIGIT-47` is the first customer-visible consequence** — a voter could not reach a ballot during an open voting period |
-| **Completion** | **Complete when the consumer inventory is complete and a migration strategy is approved.** The authority half of the Authority Analysis is already answered. Implementation follows as a separate story |
+| **Completion** | ✅ **Met.** The authority was already declared; the consumer inventory is verified with its limits stated; the migration strategy is recorded. **No further discovery belongs here** |
 
 ---
 
@@ -119,19 +119,66 @@ public const FIELDS = [
 |---|---|---|---|---|---|
 | **Election state** — *“is this election open for voting?”* | ✅ `ElectionLifecycleEngineImpl` / `ElectionLifecycleProjection` | `elections.state` — manual backfill | `elections.status` (`warning`) · `elections.is_active` (`strict`) | **inventory below — incomplete** | ⬜ |
 
-### Consumer inventory — partial; completing it is this story's work
+### Consumer inventory — VERIFIED 2026-08-06
 
-| Consumer | Reads | Note |
+**Each row below was confirmed by reading the statement and identifying its query subject.** Rows I previously asserted and could not confirm are listed as corrections underneath.
+
+#### Reads `elections.status` (deprecated, severity `warning`)
+
+| Consumer | Business capability | Risk | Priority |
+|---|---|---|---|
+| `User::getActiveElection():1303` | **Login routing** | 🔴 **Critical** — caused `PBDIGIT-47`; a voter cannot reach a live ballot | **1** |
+| `OrganisationController` ~192, 193, 565 | Organisation dashboard statistics (`active_elections`, `completed_elections`) | 🟡 Medium — **counts are silently wrong**, no error | 2 |
+| `OrganisationNewsletterController:46, 115` | Newsletter audience selection (`status != 'deleted'`) | 🟢 Low — excludes a value the lifecycle has no equivalent for | 3 |
+| `CommissionDashboardController:28` | Commission dashboard display (`$election->status ?? 'active'`) | 🟢 Low — display only, **but it displays a stale value** | 3 |
+| `ElectionReadModel:127` | the deprecation wrapper itself | ✅ **legitimate** — this is the shim | — |
+| `SetupDemoElection:167,362` · `SetupPublicDemoElection:295` · `ListAllElections:38` | demo provisioning + dev CLI output | 🟢 Low — dev tooling | 4 |
+
+#### Reads `elections.is_active` (deprecated, severity **`strict`**)
+
+| Consumer | Business capability | Risk | Priority |
+|---|---|---|---|
+| 🔴 **`ElectionMiddleware:113-114, 127-128`** | **Election resolution for the voting flow** — `Election::where('type','real')->where('is_active', true)` picks the default election for a request | 🔴 **Critical** — **this decides which election a voter is operating in**, and it reads the field marked `strict` | **1** |
+| `ElectionManagementController:381` | management listing | 🟡 Medium | 2 |
+| `Demo/DemoVoteController:223, 573, 2461` · `Demo/PublicDemoController:239, 451-454` | demo voting + public demo gating | 🟡 Medium | 2 |
+| `ElectionReadModel:140` | the deprecation wrapper itself | ✅ **legitimate** | — |
+
+> 🔴 **`ElectionMiddleware` is the consumer this discovery nearly missed, and it is as important as login routing.** `PBDIGIT-47` was reported as "login sends me to the wrong page"; **election *resolution* reads a different deprecated field**, so the same class of divergence can misidentify which election a request belongs to.
+
+### ⚠️ Corrections — two consumers I asserted earlier do NOT read these fields
+
+| Previously claimed | Actually reads |
+|---|---|
+| `ElectionPolicy:30,51,63` — *"authorisation decisions on a deprecated field"* | **`ElectionOfficer.status`** — officer activation, unrelated |
+| `ProcessElectionAutoTransitions:141` — *"automatic transitions driven by the legacy field"* | **`election_memberships.status`** — voter membership, unrelated |
+
+**Both claims came from matching `where('status', 'active')` without checking the query subject.** They were the two items flagged as *"potentially more serious than the reported symptom"* — **and neither exists.** Recorded rather than quietly deleted, because the error is instructive: **a column name is not a consumer.**
+
+*(Also not a consumer: `User::voterElections():307` uses `wherePivot('status','active')` — the pivot, not the election.)*
+
+### 🔴 The limit of this inventory — and why the next step is not more grepping
+
+**This inventory is verified but cannot be proven complete.** `status` and `is_active` are among the most common column names in the codebase — **520 candidate statements** app-wide, the overwhelming majority on other models. Three successive text-based passes each corrected the previous one, and two false claims survived two of them.
+
+> **A column name is not a consumer, and text search cannot tell the difference at this scale.**
+
+**The repository already contains the right instrument.** `DeprecationAccessGuard` + `ElectionReadModel` exist precisely to detect legacy field access, and `DeprecationPolicy::STRICT_LEVEL` graduates from warning to throwing. **Wiring the guard converts the inventory from a static guess into a runtime measurement** — every real access announces itself, including from code paths no grep would associate with elections (queues, notifications, exports, packages).
+
+**So the first migration slice is not "migrate login routing". It is "make the consumers observable."** That is both cheaper and more certain than any inventory I can produce by reading.
+
+## Migration Strategy — phases
+
+**This is a controlled modernisation, not a bug fix.** Recorded so a future reader does not mistake one slice for the whole.
+
+| Phase | Goal | Note |
 |---|---|---|
-| `User::getActiveElection():1303` | **`status`** | 🔴 **caused `PBDIGIT-47`** |
-| `ElectionPolicy:30,51,63` | **`status`** | 🔴 **authorisation** decisions on a deprecated field — **impact not assessed** |
-| `ProcessElectionAutoTransitions:141` | **`status`** | 🔴 an **automatic transition** command driven by the legacy field |
-| `ElectionManagementController:182,1297,1302` | `status` | the same controller also reads the engine |
-| `ElectionManagementController` (state-machine panel) | **engine / projection** | the officer UI |
-| `SetupDemoElection:362` · `SetupPublicDemoElection:295` | `status` | demo provisioning |
-| ⬜ background jobs · API endpoints · notifications · exports | **not yet inventoried** | |
+| **1** | **Inventory legacy consumers** | ✅ verified list above · ⬜ **completed definitively by wiring the guard** |
+| **2** | Migrate the highest-risk consumers | `User::getActiveElection()` and `ElectionMiddleware` — both Critical |
+| **3** | Enable deprecation enforcement | raise `STRICT_LEVEL` one level at a time, per its own documented 12–24 h observation |
+| **4** | Migrate remaining readers | dashboards, demo tooling, CLI |
+| **5** | Remove the legacy fields | `status`, `is_active`, and reconsider `state` |
 
-⚠️ **`ElectionPolicy` and `ProcessElectionAutoTransitions` were not part of the reported symptom and are potentially more serious than it** — one gates authorisation, the other performs automatic transitions on a field nothing maintains. **Neither has been assessed.**
+**Phases 3–5 are only reachable after 1 and 2.** `STRICT_LEVEL` cannot be raised while consumers bypass the wrapper, because the levels govern access *through* it.
 
 ## The solution space — two options, neither chosen here
 
@@ -181,12 +228,12 @@ Recommendation:
 ## Acceptance criteria — discovery only
 
 * [x] **All candidate representations identified** — engine/projection · `state` · `status` · `is_active`.
-* [ ] **Consumer inventory completed** — background jobs, API, notifications and exports are not yet covered.
+* [x] **Consumer inventory verified** — with its completeness limit stated explicitly, and the guard-based measurement named as the way to close it.
 * [x] **Authority identified** — already declared in the repository (`DeprecationPolicy` + “SSOT engine”). **Nothing to approve.**
-* [ ] **Migration strategy approved** — Option A, Option B, or another. **This is the only decision this story asks for.**
-* [ ] **Impact on `ElectionPolicy` and `ProcessElectionAutoTransitions` assessed**, since both read a deprecated field outside the reported symptom.
+* [x] **Migration strategy recorded** — five phases above. **Option B approved by the Product Owner, 2026-08-06.**
+* [x] **`ElectionPolicy` and `ProcessElectionAutoTransitions` assessed** — **neither reads these fields.** Both earlier claims withdrawn above.
 
-**Implementation — migrating consumers, removing fields, repairing divergent rows — belongs to a separate story and must not begin here.**
+**Implementation — migrating consumers, removing fields, repairing divergent rows — belongs to [`PBDIGIT-58`](PBDIGIT-58-complete-legacy-election-state-migration.md) and must not begin here.**
 
 ⚠️ **One shortcut that must be refused:** hand-correcting `namaste 2026`'s columns. It would clear the symptom, leave every cause in place, and destroy the only live evidence of the divergence. *(`app:backfill-election-state --audit-only` reports it. Note the command repairs `state` only — so it would **not** fix `PBDIGIT-47`, which reads `status`.)*
 
