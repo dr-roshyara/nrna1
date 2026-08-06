@@ -71,3 +71,61 @@ verification
 ---
 
 **Traceability:** `PBDIGIT-29` (§0 key insight, §2 event trace, §5 inconsistencies I-1…I-9, §6 Q1–Q6) · business rules R1–R6 as stated in the `PBDIGIT-29` commission
+
+---
+
+# BUSINESS DECISION RECORD
+
+**Product Owner decisions, recorded verbatim in business language.** Engineering remains blocked on the unanswered questions. Source: `docs/publicdigit/business_rules/20260806_0818_how_many_organisation.md`.
+
+## Terminology decision (applies to B1–B9)
+
+**The term is "Working Organisation", not "Active Organisation".**
+
+> *"The Working Organisation is the organisation within which the authenticated user is currently operating."*
+
+**Reason:** "active" collides with an *organisation's own* lifecycle states (active · suspended · archived). "Working" describes the **user's context**, not the organisation's state. **All later stories and reviews use "Working Organisation".**
+
+## B1 — When does a Working Organisation begin? — ✅ **APPROVED**
+
+### The bootstrap organisation
+
+The **PublicDigit** organisation is a **bootstrap organisation**. It exists to provide the platform's public capabilities and to satisfy the requirement that every user belongs to at least one organisation. **It is never a user's working organisation.**
+
+### B1.1 · Bootstrap
+On registration the user automatically belongs to **PublicDigit**. That membership is **infrastructure**, not a working context.
+
+### B1.2 · First real organisation
+When the user creates or joins their first **real** organisation they become a member (and creator, if applicable), and **that organisation immediately becomes their Working Organisation**.
+
+### B1.3 · Login behaviour — the bootstrap organisation is ignored when determining where the user works
+
+| Real organisations (excluding PublicDigit) | Behaviour |
+|---:|---|
+| **0** | Redirect to **Create or Join Organisation** |
+| **1** | **Automatically enter** that organisation |
+| **2 or more** | Show the **Organisation Selection** page |
+
+### B1.4 · Organisation Selection
+With multiple real organisations the system **must never guess**. It asks: *"Which organisation would you like to work in?"* — and the user chooses explicitly.
+
+### B1.5 · Remembering the choice
+The chosen organisation remains the Working Organisation until the user explicitly changes it, or another business rule changes it. *(Persistence detail overlaps B4 — refined there.)*
+
+### 🔒 B1 business invariant (the strengthened form)
+
+> **Every authenticated request must execute inside exactly one Working Organisation.**
+
+Everything else — redirects, sessions, URLs, middleware — is a *consequence* of that invariant, never a substitute for it.
+
+**Why this rule is strong:** it is **deterministic**. `Login → ignore PublicDigit → count real organisations → 0 / 1 / 2+ → act.` No ambiguity, and **no "last writer wins."**
+
+---
+
+## B2 — When does the Working Organisation change? — ⬜ **NEXT**
+
+One question only, separate from login. Candidate triggers to rule on (**not** decided): the user creates a new organisation · the user joins another organisation · the user explicitly switches · an administrator transfers ownership · membership is revoked.
+
+**B3–B9 remain unanswered.** Engineering stays blocked; see the status block at the top of this story.
+
+**Implementation note (evidence only, decides nothing):** `PBDIGIT-31` reviews how the *current* redirection mechanism measures against B1. Its finding in one line: **B1's bootstrap-exclusion rule is already partly implemented, while B1.3's 0-org and 2+-org destinations do not exist.**
