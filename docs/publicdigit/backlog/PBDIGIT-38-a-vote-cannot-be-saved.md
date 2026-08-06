@@ -73,7 +73,11 @@ That is an architectural point, not a typo: an observation path must not be able
 | `TrustPolicyEvaluator:68` | `$this->eventRecorder->record(…)` — called from inside `evaluate()` |
 | `DemoVoteController:1785` | `DB::commit()` |
 
-**Nobody decided that the audit joins the vote transaction.** It is inside only because the controller opened a transaction earlier in the same method. **The participation is accidental, not designed** — which is why it must be settled as a boundary question rather than patched.
+> **No explicit design evidence was found that audit recording belongs to the Vote transaction. It currently participates because it is invoked after the transaction begins.**
+
+**That is the whole claim, and it is deliberately narrow.** Nothing in the migration, the recorder, the evaluator or the controller states a decision either way — and the absence of evidence is not evidence of absence. *(An earlier draft of this section said "nobody decided" and "the participation is accidental, not designed." Both were **inferences about intent** that the repository cannot support. What can be shown is the call order; what cannot be shown is what anyone meant.)*
+
+**Either way, the boundary question must be settled rather than patched** — because the observable behaviour depends on the boundary, not on the intent.
 
 ## D-2 · Is the Security Event inside the Vote consistency boundary? — **No**, and the code proves it
 
@@ -115,9 +119,24 @@ But the recorder's stated policy is:
 | **Outbox + async** *(the repo already has `outbox_events` + `EventProvenance`)* | ✅ | ✅ — and survives process death | high |
 | Make the columns nullable and change nothing else | 🔴 no — the next audit failure poisons the transaction again | 🔴 No | trivial |
 
-**Recommendation (engineering evidence, not a decision):** an **independent transaction on its own connection** is the smallest option that satisfies **both** directions. The outbox is stronger and already exists in this repository, but it is a larger change and a bigger claim than the evidence requires.
+### ⛔ ARCHITECTURE DECISION REQUIRED — discovery stops here
 
-**Note the two rejected low-cost options both fail the same half of the invariant** — and it is the half nobody knew was broken until D-3. **That is why the boundary had to be established first: the cheap fix looked adequate against a one-directional invariant.**
+```text
+ELIMINATED on evidence (D-3), not on preference:
+  · SAVEPOINT / nested transaction   — rolls back with its parent
+  · after-commit listener            — never fires for denials
+  · nullable columns alone           — fails both directions
+
+REMAIN:
+  · independent transaction on its own connection
+  · outbox + async  (outbox_events + EventProvenance already exist here)
+
+→ ARCHITECTURE DECISION REQUIRED
+```
+
+**No option is recommended.** Both survivors satisfy the invariant in both directions; choosing between them trades durability against change size, and that trade is not engineering's to make (**`R-34`** — evidence, recommendation and authority stay separate; **`ES-002`** — the decision belongs to whoever owns ADRs).
+
+**Both eliminated low-cost options fail the same half of the invariant** — the half that was invisible until D-3. **That is the concrete cost of choosing an implementation before establishing the boundary:** the cheap fix looked adequate against a one-directional invariant, and would have been shipped as a fix while leaving deny audits still silently discarded.
 
 ## D-5 · Separately, and regardless of where the write happens — two required columns are never written
 
@@ -140,7 +159,9 @@ But the recorder's stated policy is:
 
 ## What this discovery deliberately does NOT do
 
-**It proposes no code.** The boundary question is answered (D-2), a second defect is recorded (D-3), the options are costed (D-4), and two are eliminated on evidence. **The choice among the remaining options is an architecture decision, and engineering does not make it** (`R-34`: evidence and authority stay separate).
+**It proposes no code, and it recommends no option.** The boundary question is answered (D-2), a second defect is recorded (D-3), and three options are eliminated on evidence (D-4). **Two remain, and discovery stops at "architecture decision required."**
+
+**It also claims nothing about intent.** D-1 states the call order, not what anyone meant by it.
 
 ---
 

@@ -2410,6 +2410,7 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 |---|---|---|
 | Source Code Editing Policy (deliberate edits, no `sed -i`) | 1 | `docs/pks/2026-08-05-manual-code-editing-observation.md` |
 | **Discovery does not design** — *"business discovery finds the rules a product already implies; it does not design the product's future"* | 1 | `docs/pks/2026-08-06-discovery-does-not-design-candidate.md` |
+| **Consistency boundary before transaction boundary** — *"transaction boundaries should implement consistency boundaries, not define them"* | 1 | `docs/pks/2026-08-06-consistency-boundary-before-transaction-boundary-candidate.md` |
 
 Both sit at ES-006.1 rung **observation**, both record `PLACEMENT: PENDING` (ADR:OQ-2), and both would **extend an existing standard rather than become one** (ES-005.4). **The next legitimate step for each is waiting for a second independent occurrence.**
 
