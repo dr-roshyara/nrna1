@@ -6,7 +6,7 @@
 **Mode:** Reviewer. No code changed · no architecture proposed · no refactoring · no ADR · no solutions.
 **Baseline:** `main` @ `9158ef11` (post-PB003 certified baseline)
 **Placement:** derived — `doc-placement.php --scope=product-specific --domain=publicdigit` → `docs/publicdigit`
-**Revision:** **2** — see §0. Revision 1 contained a false negative; it is corrected here with its provenance preserved rather than silently overwritten.
+**Revision:** **3** — rev 1 contained a false negative, corrected in rev 2 with provenance preserved (§0). **Rev 3 retrofits the three closing artifacts** the method acquired later (event summary · Business Outcome · Findings Table) as an **appendix** — see §A. **The body of rev 2 is deliberately unchanged:** this report predates Phase 0 and the later structure, and rewriting it would destroy the record of how the method evolved. It is aligned by addition, not by revision.
 **Evidence rule applied:** every claim cites a file/line. Where evidence was not obtained, this report says **"Evidence not found"** rather than inferring.
 
 ---
@@ -264,3 +264,87 @@ Constitutional role rules, verbatim: *"Only committees (chief, deputy) can admin
 **Phase 2 is not authorized by this document.** Candidates *if* commissioned: per-action trace to persistence and read models · `route:list` verification of R-2 precedence · counting/tally mechanism · candidate-verification step · the voter-journey ↔ lifecycle relationship · election-lifecycle audit trail.
 
 **Traceability:** `app/Domain/Election/Constitution/ElectionConstitution.php` · `app/Domain/Election/Enum/{ElectionAction,ElectionLifecycleState,ElectionState}.php` · `app/Domain/Election/Events/` (11 classes) · `app/Domain/Election/StateMachine/{ElectionStateMachine,TransitionMatrix}.php` · `app/Models/Election.php:29,1360,1396,1559-1563,1644,1675,~1695,1804,2276` · `app/Http/Controllers/Election/ElectionManagementController.php:5,214,232,855` · `app/Contexts/Elections/Application/Handlers/{AssignVoterHandler:97,BulkAssignVotersHandler:132}.php` · `app/Contexts/Election{,s}/Domain/Events/` · `app/Console/Commands/UnpublishResults.php` · `app/Policies/ElectionPolicy.php` · `routes/{election/electionRoutes,organisations,platform}.php` · `docs/architecture/contexts/ObservedEventInventory.md` · `docs/election-management-tutorial.md` · `tests/Architecture/ElectionStateMachineConsistencyTest.php` + the constitutional test family
+
+---
+
+# §A — Rev 3 appendix: the method's closing artifacts, retrofitted
+
+**Why an appendix and not a rewrite.** This report was written before the method acquired Phase 0 (customer journey), the Business Outcome, the Findings Table and the Method Assessment. Restructuring it now would erase the evidence of how the method evolved — and that evolution is itself a finding. **The body above stands as written; the artifacts below are added.**
+
+*(A Phase 0 customer journey is deliberately **not** back-written here. Inventing the customer's expectations after the fact would be exactly the inference this report's own evidence rule forbids. The Election journey is stated properly in `PBDIGIT-29` §0, which was written with the method in place.)*
+
+## A.1 — Event summary (the one-glance table)
+
+| Business step | Event | Implemented |
+|---|---|---|
+| Submit for approval | `ElectionSubmittedForApproval` | ✅ |
+| Approve | `ElectionApproved` | ✅ |
+| Reject | `ElectionRejected` | ✅ |
+| Begin setup | — | ⚠️ action exists, **no HTTP route**; invoked internally only |
+| Complete administration | `AdministrationCompleted` | ✅ |
+| Complete nomination | `NominationCompleted` | ✅ |
+| Apply candidacy | — | ⚠️ route exists, **no event** |
+| Open voting | `VotingOpened` | ✅ |
+| Close voting | `VotingClosed` | ✅ |
+| Publish results | `ResultsPublishedEvent` *(plural `Elections` context)* | ✅ |
+| **Unpublish results** | `ResultsUnpublishedEvent` | ⚠️ **implemented, outside the constitution** |
+| Archive | — | ⚠️ route exists, no event |
+| Voter verification | — | ⚠️ routes exist, **no constitutional action, no event** |
+| Vote cast (5-step journey) | — | ⚠️ implemented in a **separate model** with no shared vocabulary |
+| *(any other transition)* | `ElectionStateChangedEvent` | ✅ generic fallback — no transition is silent |
+| — | `ResultsPublished` *(legacy, singular context)* | ❌ **orphan — imported, never dispatched** |
+
+The detailed dispatch/fallback evidence remains in §1c above.
+
+## A.2 — Business Outcome
+
+```
+Business Outcome
+
+Today     A customer can create an election, get it approved, configure posts,
+          run nomination, open and close voting, count, publish results, and audit.
+          But a published result can be WITHDRAWN through a path the constitution
+          does not describe, and the voter's own journey is governed by a second,
+          disconnected model that shares no vocabulary with the election lifecycle.
+
+Expected  Every customer-visible election capability — including unpublishing —
+          is governed by one constitutional lifecycle, and the voter journey is
+          part of it rather than parallel to it.
+```
+
+**In one sentence:** the election lifecycle is constitutional; the things done *to* a finished election, and the things done *by* a voter, are not.
+
+## A.3 — Findings Table
+
+| # | Finding | Type | Priority | Needs business decision | Needs code | Verified |
+|---|---|---|---|---|---|---|
+| **U-1** | Unpublishing a published result sits **outside the constitution** — implemented in 6 places, documented for customers, authorised only by `ElectionPolicy` | **Product** | **High** | **Yes** — who may withdraw a result, and is it recorded? | Yes | No |
+| **E-3** | Voter journey and election lifecycle are **two disjoint models** with no shared vocabulary | **Product** | **High** | **Yes** — what does closing voting mean for a voter mid-ballot? | Yes | No |
+| **R-2** | Voter-journey paths defined **twice** in one route file; precedence unverified — a voter action may reach the wrong handler | **Product** | Medium | No | Yes | No |
+| **C-1** | No constitution→code reachability guard — which is why `begin_setup`'s missing route and the orphan event went unnoticed | **Technical** | Medium | No | Yes | No |
+| **L-1** | Two rival transition tables remain, one **live-instantiable** via `Election::getStateMachine()`, while the constitution claims transitions live "NOWHERE ELSE" | **Architecture** | Medium | No | Yes | No |
+| **L-2** | Near-dead `ElectionState` enum whose 7-state vocabulary matches neither live source | **Architecture** | Medium | No | Yes | No |
+| **E-4** | Duplicate `ResultsPublished` concept — legacy class imported but never dispatched | **Architecture** | Medium | No | Yes | No |
+| **E-1** | Election events live in **three namespaces**, two differing only by pluralisation | **Architecture** | Medium | No | Yes | No |
+| **R-3** | `/vote/submit_seleccted` — misspelling in a public voter path | **Product** | Low | No | Yes | No |
+| **E-5** | Two dispatch idioms (`event()` / `Event::dispatch()`) in one model | **Technical** | Low | No | Yes | No |
+| **R-1** | One lifecycle spread over three route files with two naming schemes | **Technical** | Low | No | Yes | No |
+| **R-4** | Commented-out route blocks retained | **Technical** | Low | No | Yes | No |
+
+**Product: U-1, E-3, R-2, R-3** — the four a customer could encounter. **Architecture: L-1, L-2, E-4, E-1.** **Technical: C-1, E-5, R-1, R-4.**
+**Verified column: "No" on every row** — nothing in this report was observed at runtime.
+
+## A.4 — Retrospective note on the two 3/3 patterns
+
+This report is the **first sighting** of both patterns later confirmed across Organisation and Membership:
+
+| Pattern (as abstracted after 3 applications) | Its form here |
+|---|---|
+| **The business lifecycle has no single authoritative representation** | `begin_setup` reachable by no route · three transition tables · a 7-state enum matching neither live source (L-1, L-2) |
+| **Multiple competing representations of one business concept** | two `ResultsPublished` classes · three event namespaces · voter-journey routes defined twice (E-4, E-1, R-2) |
+
+Recorded here so the first sighting is findable from the pattern, not only the pattern from the sighting.
+
+---
+
+**Rev 3 authorization boundary:** no code changed · no architecture proposed · no solutions recommended · **body of rev 2 unaltered** · appendix added only.

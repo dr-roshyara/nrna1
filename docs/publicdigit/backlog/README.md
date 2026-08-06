@@ -107,9 +107,20 @@ The standard capability review, reusable for **any** capability (Elections, Memb
 | **7 Runtime verification** | does a customer actually get through it? | observed behaviour, or an explicit *not verified* |
 | **8 Improvement backlog** | what follows? | new `PBDIGIT-nn` items — never prose advice |
 
-### Every review closes with these three artifacts
+### Every review closes with these four artifacts
 
 *(plus a **Method Assessment** that must answer **"what surprised us?"** — an expected-vs-observed table. A surprise is evidence the method investigated rather than confirmed; its absence is a warning sign.)*
+
+**4 · Authorization Boundary** — mandatory, and stated as a table of negatives:
+
+```
+Code changed          none
+Architecture proposed none
+Solutions recommended none
+Status                STOPPED — awaiting <named decision>
+```
+
+It makes the commission's scope unambiguous *afterwards*, not only in intent — and it is the artifact that stops a review from quietly becoming a redesign.
 
 **1 · Business Outcome** — the finding in one customer sentence, not one engineering sentence:
 
