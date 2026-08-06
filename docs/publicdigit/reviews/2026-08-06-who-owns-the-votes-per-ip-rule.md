@@ -131,7 +131,9 @@ Giving `config('app.max_use_clientIP')` a "safe default" would have:
 
 **Commissioned:** *"Continue discovery only. Do not modify the controller. Determine whether `MAX_USE_IP_ADDRESS` is merely configuration consumed by the constitutional policy, or whether the controller has accidentally duplicated a rule already owned by `NetworkBindingPolicy`."*
 
-**Verdict: the controller duplicates a rule the Constitution owns. `MAX_USE_IP_ADDRESS` is not configuration *for* the constitutional policy — the constitutional layer never reads it.**
+**Verdict: the controller evaluates behaviour that appears to overlap with a rule owned by the constitutional snapshot, using a value the constitutional layer never reads.**
+
+⚠️ **Deliberately not called "duplication".** *Duplication* would assert semantic equivalence — that the two paths decide the same question the same way. **That is not proven.** What is proven: the controller reads `MAX_USE_IP_ADDRESS`; the constitutional layer does not; both gate a vote on votes-per-IP. **They are very likely equivalent in intent and demonstrably not equivalent in inputs** (trust level, whitelisting, `'none'`, per-election limit). **The divergence data exists precisely to settle equivalence, and it has not been read.**
 
 ## Q1 · Who owns the constitutional rule?
 
@@ -247,7 +249,11 @@ NetworkBindingPolicy::evaluate()   "Article 1/4"               EVALUATES
 
 ## 🔴 N-3 · A third finding: the constitutional observation is currently blind
 
-`IpVelocityOverlay:38-41` counts recent rows in `election_security_events` **filtered by election and time only — with no IP predicate** — then reports the result as `'recent_votes_from_ip'`.
+**✅ VERIFIED by reading the whole class** (the Product Owner asked for confirmation rather than accepting the claim).
+
+`IpVelocityOverlay::evaluate()` queries `election_security_events` with **exactly two predicates — `election_id` and `recorded_at`** — then reports the count as `'recent_votes_from_ip'`. **There is no IP predicate anywhere in the file**, and `$ctx->network->currentIpHash` **is available and unused**.
+
+**A third detail, visible only on the full read:** the threshold is `env('IP_VELOCITY_THRESHOLD', 10)` **read in the constructor** — so it is (a) **global, not constitutional**, and (b) read via `env()` at construction, which bypasses config caching. **So the drift is not only controller-versus-Constitution: a value inside the constitutional layer is itself global rather than per-election.**
 
 **Two consequences:**
 
@@ -256,7 +262,9 @@ NetworkBindingPolicy::evaluate()   "Article 1/4"               EVALUATES
 
 ## The defect, recorded — not repaired
 
-> **The controller duplicates a rule owned by the Election's constitutional snapshot, using a global variable the constitutional layer never reads, with a default that differs in each of six call sites, inside a migration whose retirement flag was defined nowhere and consulted by nothing.**
+> **The controller evaluates a votes-per-IP restriction from a global variable the constitutional layer never reads, with a default that differs in each of six call sites, while the Election's constitutional snapshot holds a per-election rule for the same concern.**
+
+**And on retirement, stated at the strength the evidence supports:** *no repository evidence was found showing how or when the legacy implementation is retired.* The flag name `voting_security.enable_legacy_middleware_ip_check` is **referenced** by the observer, the aggregation command and the summary model, and is **not defined in `config/`** — but **that a flag was the intended retirement mechanism is an inference, not a finding.** Retirement could equally have been planned via an ADR, a deployment step, or a commit. **What is certain is only that both paths are live and their divergence is instrumented.**
 
 **`PBDIGIT-38` and `PBDIGIT-45` are therefore not about a comparison operator.** They are about **restoring ownership of a business rule to the authority that already holds it.**
 
@@ -268,3 +276,120 @@ NetworkBindingPolicy::evaluate()   "Article 1/4"               EVALUATES
 * **Whether `ip_strict` and `whitelist_only` are implemented**, or names in a VO with no evaluator branch. **Not checked.**
 
 **No code proposed. No behaviour changed. Four questions answered; three new findings recorded.**
+
+---
+
+# REVISION 3 — ownership traceability
+
+**This section is traceability, not a proposal.** Every box on the left is a file and line that exists today. The right-hand column states the target ownership the discovery implies. **Nothing here authorises a change.**
+
+## Current ownership — two authorities, one concern
+
+```
+┌─ AUTHORITY A · global configuration ────────────────────────────────┐
+│                                                                     │
+│   MAX_USE_IP_ADDRESS  (env)                                         │
+│        │                                                            │
+│        ▼                                                            │
+│   config/app.php:149        'max_use_clientIP' => env(...)   no default
+│        │                                                            │
+│        ├──► VoteController:3084          default: none  → NULL      │
+│        │      └─ :3099  if ($votesFromIP >= $max)  ── ENFORCES ──┐  │
+│        │      └─ :3114  check_ip_address(...)      ── ENFORCES ──┤  │
+│        ├──► ElectionVotingController:226 default: 0              │  │
+│        ├──► CodeController:39            default: 7              │  │
+│        ├──► Demo/DemoCodeController:44   default: 7              │  │
+│        └──► ElectionSettingsService:58   default: 4              │  │
+│                                                                  │  │
+│   helpers.php:92  check_ip_address()   ← catalogued as H.3        │  │
+│        └─ :113  >=   (original 2022; commented-out `>` beside it) │  │
+└──────────────────────────────────────────────────────────────────┼──┘
+                                                                   │
+                                                          ALLOW / DENY
+                                                                   │
+┌─ AUTHORITY B · the Constitution ─────────────────────────────────┼──┐
+│                                                                  │  │
+│   Election (aggregate)                                           │  │
+│        │  Election.php:2255-2268  builds + persists the snapshot │  │
+│        ▼                                                         │  │
+│   ElectionConstitutionSnapshot          ◄── OWNS THE RULE        │  │
+│     · networkBindingStrategy  'none'|'ip_count'|'ip_strict'|...  │  │
+│     · maxVotesPerIp                                              │  │
+│        │   hashed  → elections.constitutional_hash               │  │
+│        │   versioned → security_articles_version                 │  │
+│        │   validated → ElectionConstitutionValidator             │  │
+│        ▼                                                         │  │
+│   elections.network_binding_strategy   default 'ip_count'        │  │
+│   elections.max_votes_per_ip           default 6                 │  │
+│        │                                                         │  │
+│        ▼                                                         │  │
+│   TrustPolicyEvaluator::evaluate(..., votesFromThisIp)           │  │
+│        │   :137  maxVotesPerIp      = $election->max_votes_per_ip│  │
+│        │   :139  restrictionEnabled = strategy !== 'none'        │  │
+│        │                                                         │  │
+│        │   ◄── votesFromThisIp SUPPLIED BY CONTROLLER            │  │
+│        │        VoteController:1534      Code::where(...)     ✅  │  │
+│        │        DemoVoteController:1485  Code::where(...)     🔴 N-1
+│        ▼                                                         │  │
+│   NetworkEvidence (domain VO)                                    │  │
+│        ▼                                                         │  │
+│   NetworkBindingPolicy   "Article 1/4"          ◄── EVALUATES    │  │
+│     · restrictionEnabled?  · isWhitelisted?                      │  │
+│     · exceedsLimit($currentTrustLevel)                           │  │
+│        ▼                                                         │  │
+│   PolicyFinding → LegitimacyOutcome                              │  │
+│        ▼                                                         │  │
+│   D.0.3a gate   VoteController:1585-1601      ── ENFORCES ────────┘  │
+│        └─ DemoVoteController:1493,1507  evaluated, LOGGED ONLY       │
+│                                                                     │
+│   OverlayRegistry ─► IpVelocityOverlay                              │
+│        · env('IP_VELOCITY_THRESHOLD', 10)  ← global, not per-election│
+│        · counts election_security_events by election+time, NO IP  🔴 N-3
+│        · that table is unwritable (PBDIGIT-42) ⇒ always 0            │
+└─────────────────────────────────────────────────────────────────────┘
+
+   trackSovereigntyDivergence(constitutionalOutcome, legacyOutcome)
+        └─► SovereigntyDivergenceSummary   ◄── NEVER READ
+```
+
+## Target ownership — what the discovery implies
+
+```
+Election (aggregate)
+     │
+     ▼
+ElectionConstitutionSnapshot          owns the rule — hashed, versioned, per election
+     │
+     ▼
+NetworkBindingPolicy                  evaluates it
+     │
+     ▼
+TrustPolicyEvaluator                  orchestrates the policy sequence
+     │
+     ▼
+LegitimacyOutcome                     one verdict
+     │
+     ▼
+Controller                            supplies evidence · acts on the verdict · decides nothing
+```
+
+## The delta, stated as facts rather than intentions
+
+| # | Observed today | Target |
+|---|---|---|
+| 1 | Two authorities can deny a vote on the same concern | One |
+| 2 | The rule's number comes from a global env var in the controller path | From the election's snapshot |
+| 3 | Six readers apply four different defaults (`null`, `0`, `7`, `4`) | One value, one owner |
+| 4 | `'none'`, whitelisting and trust level are honoured by **one** path only | Honoured because only that path decides |
+| 5 | `votesFromThisIp` is computed by controllers — **one from the wrong table** | Supplied correctly, or derived inside the boundary |
+| 6 | A global `IP_VELOCITY_THRESHOLD` sits inside the constitutional layer | Constitutional if it gates a vote |
+| 7 | Divergence between the two is instrumented but never read | Read once, to decide; then unnecessary |
+
+**Item 7 is the cheapest and comes first:** the mechanism to answer *"do the two authorities actually disagree?"* already exists, has never been run, and **is the evidence any retirement decision needs.**
+
+## What this traceability does NOT claim
+
+* **Not** that the two paths are semantically equivalent — see the softened verdict in rev 2.
+* **Not** that a feature flag is the intended retirement mechanism.
+* **Not** that `ip_strict` / `whitelist_only` have evaluator branches — **unchecked.**
+* **Not** that the target ownership is authorised. **It is the input to an ADR, not a decision.**
