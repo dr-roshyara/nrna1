@@ -225,6 +225,40 @@ Recommendation:
   consumers are migrated.
 ```
 
+## Consumer inventory — the artifact that closes this ticket (started 2026-08-06)
+
+**Status: OPEN. One capability migrated of an unknown-but-bounded total.**
+
+### ✅ Migrated
+
+| Consumer | Was | Now | Evidence |
+|---|---|---|---|
+| `User::getActiveElection()` | `where('status','active')` | `ElectionLifecycle::of($e)->canVote()` | `PBDIGIT-58B`, 9 tests green |
+| `User::countActiveElections()` | `where('status','active')` | `ElectionLifecycle::of($e)->canVote()` | same |
+| `DashboardResolver` | — | **never read it**; it calls the two above | verified `PBDIGIT-58B` |
+
+**Browser-verified 2026-08-06:** a real election with `status='planned'` and an open voting window routes the voter to `/elections/{slug}` (HTTP 302 → 200), not the organisation homepage. **`PBDIGIT-47` is fixed.** Test election created and removed; dev data left at 4 elections.
+
+### ⏳ Remaining — raw scan, NOT yet classified
+
+**46 candidate sites in 26 files** (subject-aware scan, 2026-08-06). **This is an upper bound, not a consumer count.** The output demonstrably includes other tables (`candidacies.status`, `voter_slugs.status`, `election_memberships.status`, `ElectionOfficer.status`, organisation pivots), doc comments, and one commented-out line.
+
+**Per-site classification is the remaining work**, and each site resolves to exactly one of:
+
+| Class | Meaning | Action |
+|---|---|---|
+| **Decision** | `if ($election->status === 'active')` — a business decision on the deprecated representation | **migrate** |
+| **Display** | `"Status: {$election->status}"` — shown, not decided on | migrate with the read model, or accept until field removal |
+| **Not elections** | a different table that happens to have a `status` column | **strike from the inventory** |
+
+> **A column name is not a consumer** — the lesson that produced two withdrawn claims in this ticket. **Classification must name the query subject, never the column.**
+
+**The measuring instrument already exists:** `PBDIGIT-58A`'s `LegacyElectionStateObserver` reports *decisions* at runtime rather than *mentions* in text, and it already found a site three static passes missed. **Closing this inventory means running it over the real journeys, not grepping harder.**
+
+### Clarification of an earlier claim
+
+**"`status` absent entirely" was scoped to the fixtures of `HasActiveElectionTest`** — verified there by grep (only `voter_slugs.status` remained). **It was never a claim about the codebase**, where the scan above shows the field is still widely referenced.
+
 ## Acceptance criteria — implementation/consolidation
 
 **Reframed by the Product Owner, 2026-08-06: this is an implementation story, not a discovery story.** The architectural decision is established; discovery language has been retired.
