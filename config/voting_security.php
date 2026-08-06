@@ -106,4 +106,21 @@ return [
     |
     */
     'constitutional_mode' => env('VOTING_CONSTITUTIONAL_MODE', true),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Observe reads of deprecated election-state fields (PBDIGIT-58A)
+    |--------------------------------------------------------------------------
+    |
+    | When true, queries against the elections table that filter on the
+    | deprecated `status` or `is_active` fields are logged with their calling
+    | code path, so the migration inventory is measured rather than inferred.
+    |
+    | Observation only: it cannot change a query or its results, and it never
+    | throws. Default false, so behaviour is unchanged unless switched on.
+    |
+    | See docs/publicdigit/backlog/PBDIGIT-58-complete-legacy-election-state-migration.md
+    |
+    */
+    'observe_legacy_election_state' => env('OBSERVE_LEGACY_ELECTION_STATE', false),
 ];

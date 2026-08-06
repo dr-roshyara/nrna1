@@ -339,6 +339,12 @@ class AppServiceProvider extends ServiceProvider
         // (cached 300s, config/login-routing.php) survived membership changes.
         UserOrganisationRole::observe(UserOrganisationObserver::class);
 
+        // PBDIGIT-58A: observation only, and a no-op unless switched on via
+        // voting_security.observe_legacy_election_state. Records which code paths still
+        // read the deprecated election-state fields so the migration inventory is
+        // measured rather than inferred.
+        \App\Application\Election\Deprecation\LegacyElectionStateProbe::register();
+
         // Messaging delivery (ADR-MP-06, D-2): the dispatcher is a LISTENER on the
         // relay's dispatched IntegrationEvent — the relay stays byte-identical; the
         // dispatcher is simply another consumer of relay output.

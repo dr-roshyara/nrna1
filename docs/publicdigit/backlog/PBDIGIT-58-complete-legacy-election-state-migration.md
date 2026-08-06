@@ -103,6 +103,10 @@ No production capability may interpret lifecycle from legacy persistence fields.
 
 ### `58A` · Observe Legacy Consumers — **first, and it is not optional**
 
+> ⏸️ **Mechanism under review.** [`2026-08-06-58A-observation-mechanism-review.md`](../reviews/2026-08-06-58A-observation-mechanism-review.md) — **the SQL-listener-only design was insufficient**: `PBDIGIT-48`'s own inventory lists consumers that read the field after load, with no query predicate. **A mechanism that cannot see `$election->status` cannot certify "zero production readers".**
+>
+> **Recommended:** SQL listener **plus** a per-field attribute interceptor — a **custom cast** for `is_active` (which is cast to `boolean`, and a get-mutator would bypass that cast) and an **accessor** for `status` (no cast to bypass). **Awaiting the Product Owner's confirmation of the reader definition before implementation.**
+
 Wire `ElectionReadModel` / `DeprecationAccessGuard` so every legacy read announces itself, exercise the product, and read the log.
 
 **Why observation precedes migration:** `status` and `is_active` appear in **520 candidate statements** app-wide. `PBDIGIT-48` produced **three successive text-based inventories, each correcting the last**, and two false claims survived two of them. **A runtime guard turns the inventory from a guess into a measurement**, and finds capabilities no text search associates with elections — queues, notifications, exports, scheduled work, packages.
