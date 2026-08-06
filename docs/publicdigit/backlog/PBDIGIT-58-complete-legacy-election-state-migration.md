@@ -171,7 +171,16 @@ sql        : select count(*) as aggregate from "elections" ...
 
 **Display-only, not decisions — migrate for tidiness, never for correctness:** `CommissionDashboardController:28` · `ListAllElections:38` · `DemoVoteController:573, 2461` · `PublicDemoController:239`.
 
-### `58B` · Restore **Election Entry Resolution** — 🔴 **BLOCKED: the migration is not behaviour-preserving**
+### `58B` · Restore **Election Entry Resolution** — ⏸️ **READY, sequenced behind one decision (`PBDIGIT-59`)**
+
+> ⚠️ **Correction to my own framing.** I first recorded this slice as **BLOCKED because the migration is not behaviour-preserving**. That conflated two separable concerns:
+>
+> | Concern | Home |
+> |---|---|
+> | **Move the consumers onto the authority** | **this slice** — correct regardless of what the authority reads |
+> | **What the authority computes from** — which timestamps define the voting window | **[`PBDIGIT-59`](PBDIGIT-59-which-timestamps-are-constitutional.md)** |
+>
+> **`58B` is not blocked in scope; it is sequenced.** Its scope is unchanged and small: two methods. **It waits only because migrating first would change voting windows silently** — not because the migration itself is in doubt.
 
 **Capability boundary established first, per the rule that a capability is the migration unit and must never be left half-migrated.**
 
@@ -185,7 +194,7 @@ sql        : select count(*) as aggregate from "elections" ...
 
 > **The Product Owner's caller/implementation/duplicate distinction cut this slice by a third**: what looked like three query sites is two live consumers plus one corpse.
 
-#### 🔴 Why it is blocked — the two representations disagree for **every election in the database**
+#### Why it is sequenced — the two representations disagree for **every election in the database**
 
 **Measured, not inferred (2026-08-06 19:16 UTC):**
 
@@ -198,7 +207,7 @@ sql        : select count(*) as aggregate from "elections" ...
 
 **4 of 4 disagree, and in both directions.** So `where('status','active')` → lifecycle is **not a substitution; it is a behaviour change for every row.**
 
-#### The underlying cause — the *window* has two representations too
+#### The underlying cause — extracted to `PBDIGIT-59`, not solved here
 
 `VotingActive` is derived from **`voting_starts_at` / `voting_ends_at`** (`ElectionClockService::isVotingOpen`), while the legacy queries filter **`start_date` / `end_date`**:
 
@@ -211,13 +220,20 @@ sql        : select count(*) as aggregate from "elections" ...
 
 ⚠️ **And a customer-visible consequence, recorded as an observation because its cause is not established:** `voting_ends_at` = `15:28:44` and `results_published_at` = `15:29:08` — **24 seconds apart** — while the officer stated the election ran until **18:00 Berlin (16:00 UTC)**. **The election closed ~31 minutes before its stated end and results followed immediately.** The likeliest explanation is two deliberate clicks in the management UI; **that has not been confirmed, and no autonomous cause has been shown.**
 
-#### What must be decided before `58B` proceeds
+#### The single prerequisite
 
-1. **Which column pair defines the voting window** — `start_date`/`end_date` or `voting_starts_at`/`voting_ends_at`?
-2. **What happens to demo elections**, whose lifecycle window is `NULL` and which the engine therefore reports as `draft` while `status` says `active`?
-3. **Is a behaviour change acceptable here?** *"Preserve behaviour first"* **cannot be satisfied** — there is no behaviour both representations agree on. **The migration is the behaviour change**, so it needs sign-off rather than care.
+**[`PBDIGIT-59`](PBDIGIT-59-which-timestamps-are-constitutional.md) — which timestamps are constitutional?** That ticket owns the three questions (which pair is authoritative · what happens to demo elections whose lifecycle window is `NULL` · whether the resulting behaviour change is acceptable).
 
-**Engineering has written no code for `58B`.** Establishing the capability boundary and this blocker was the slice's first task, and it produced a decision rather than a diff.
+**On decision, `58B` implements immediately:**
+
+* [ ] `User::getActiveElection()` reads the lifecycle.
+* [ ] `User::countActiveElections()` reads the lifecycle. **Both, in one change — a capability is never left half-migrated.**
+* [ ] `DashboardResolver` untouched — it is a caller, and already delegates.
+* [ ] Browser-verified: a voter logging in during an open window reaches the ballot (**closes `PBDIGIT-47`**).
+* [ ] Regression test with a stale `status` and a `voting_active` lifecycle.
+* [ ] **No optimisation, no cleanup, no refactoring** in the same change.
+
+**Engineering has written no code for `58B`.** Establishing the capability boundary and extracting `PBDIGIT-59` was the slice's first task, and it produced a decision rather than a diff — **which is a legitimate output, not a stall.**
 
 
 **Election Entry Resolution** and **Election Context Resolution** both derive from the lifecycle.
