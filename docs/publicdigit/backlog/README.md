@@ -44,7 +44,8 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-28`](PBDIGIT-28-resolve-remaining-missing-module-imports.md) | Resolve the remaining missing-module imports (dead code, not runtime failures) | cross-cutting | `FIXED` — 0 unresolved live imports |
 | [`PBDIGIT-29`](PBDIGIT-29-organisation-context-discovery.md) | **Organisation Context Discovery** — implementation discovery, no code (rev 2) | `EPIC-01` | `DISCOVERY COMPLETE — Q1–Q6 open` |
 | [`PBDIGIT-30`](PBDIGIT-30-active-organisation-business-lifecycle-discovery.md) | **Working Organisation Business Lifecycle** — business decision record | `EPIC-01` | **B1 ✅ APPROVED** · B2 next · B3–B9 open |
-| [`PBDIGIT-31`](PBDIGIT-31-redirection-mechanism-review.md) | **Redirection Mechanism Review** — discovery only ([report](../reviews/2026-08-06-pbdigit-31-redirection-mechanism-review.md)) | `EPIC-01` | `REVIEW COMPLETE — awaiting decision on I-2, authorisation for I-1` |
+| [`PBDIGIT-31`](PBDIGIT-31-redirection-mechanism-review.md) | **Redirection Mechanism Review** — discovery only ([report](../reviews/2026-08-06-pbdigit-31-redirection-mechanism-review.md)) | `EPIC-01` | `REVIEW COMPLETE` — I-1 awaits authorisation; I-2 is now a one-line defect fix (RD-12) |
+| [`PBDIGIT-32`](PBDIGIT-32-implement-working-organisation-routing.md) | **Implement Working Organisation Routing** — extend the resolver, do not redesign it | `EPIC-01` | **BLOCKED** — B2–B9 unanswered |
 
 ---
 

@@ -222,7 +222,8 @@ LoginResponse::toResponse()                                    :83
 |---|---|---|---|---|---|---|---|---|
 | **RD-1** | **A user with several organisations is never asked which one to work in** — they are asked which *role*. B1.4's "never guess" is not implemented | **MISSING** | **Product** | **High** | **High** — no route exists | No — B1 already decided | Yes | No |
 | **RD-2** | **A user with no real organisation is not invited to create or join one** — they land on a welcome or generic dashboard | **MISSING** | **Product** | **High** | **High** | No — B1 decided | Yes | No |
-| **RD-3** | **Where a user lands can depend on a decision taken up to 5 minutes earlier**, not on their current data | **INCONSISTENT** | **Product** | **High** | **High** — TTL 300 s in config | **Yes** — is cached navigation acceptable? | Yes | No |
+| **RD-3** | **Where a user lands can depend on a decision taken up to 5 minutes earlier**, not on their current data — **because the invalidation written for exactly this purpose is never wired** (see RD-12) | **BROKEN** | **Product** | **High** | **High** — TTL 300 s in config; observer unattached | **No** — the business intent is already evident from the code that was written | Yes | No |
+| **RD-12** | **The routing-cache invalidation exists and is not connected.** `UserOrganisationObserver` handles `created`/`updated`/`deleted`/`restored` on `UserOrganisationRole` and clears eight keys including `dashboard_resolution:{userId}` — it is **imported** at `AppServiceProvider:18` and **never attached**: no `::observe()` call anywhere in `app/`, `bootstrap/`, `config/`; the model has no `booted()` and no `#[ObservedBy]`. **So joining, leaving or changing an organisation does not clear the routing decision** | **BROKEN** | **Product** | **High** | **High** — repo-wide search for the attachment | No | Yes — **one line** | No |
 | **RD-4** | **A user whose membership is revoked mid-session meets a hard 403** rather than being moved to another organisation | **INCONSISTENT** | **Product** | Medium | **High** | **Yes** — B9 | Yes | No |
 | **RD-5** | Business policy (*a ballot outranks organisation context*) is expressed only as priority order in code | INCONSISTENT | **Architecture** | Medium | **High** | **Yes** — B6 | Yes | No |
 | **RD-6** | **Two competing definitions of "a real organisation"** (`is_default` vs `type='tenant'`) | INCONSISTENT | **Architecture** | Medium | **High** | No | Yes | No |
@@ -241,7 +242,7 @@ LoginResponse::toResponse()                                    :83
 | # | Improvement | Evidence | Business impact | Risk | Priority |
 |---|---|---|---|---|---|
 | **I-1** | Add the two missing destinations (*Create or Join*, *Organisation Selection*) as **new priorities inside the existing resolver**, keyed on the count of real organisations | RD-1, RD-2; the resolver already has a priority mechanism and already excludes the platform org (`:967+`) | **High** — makes B1.3 real; removes guessing | **Low** — additive; no existing priority changes | **1** |
-| **I-2** | Decide (business) whether navigation may be cached; if not, exclude the destination decision from the cache or cut its TTL | RD-3; `config:20` makes this a **configuration change**, not a redesign | **High** — removes "why did it send me there?" | **Very low** — one config value | **2** |
+| **I-2** | **Attach `UserOrganisationObserver` to `UserOrganisationRole`** — the invalidation already written for the routing cache | RD-12; observer clears `dashboard_resolution:{userId}` on created/updated/deleted/restored; imported but never attached | **High** — the routing decision stops outliving the business facts | **Very low** — one line, and the code it activates was written for this purpose | **2** |
 | **I-3** | Choose **one** definition of "real organisation" and have both call sites use it | RD-6 — `is_default` vs `type='tenant'` | Medium — prevents the two rules diverging | Low | **3** |
 | **I-4** | Decide (business) the revoked-membership experience, then align middleware to it | RD-4, S-6 | Medium — affects trust at a sensitive moment | Medium — touches authorisation paths | **4** |
 | **I-5** | Extract the destination decision from the resolver's other four responsibilities | RD-8 | Low for the customer; Medium for change-cost | Medium — the class is central and heavily used | **5** |
@@ -296,3 +297,37 @@ The frozen 9-phase method was applied with the commission's own phase names, whi
 ---
 
 **Traceability:** `app/Http/Responses/LoginResponse.php:83,96,110,115,149,161,165` · `app/Services/DashboardResolver.php:48,64,68,89,94,120,130,131,156,159,179,185,198,216,233,247,267,315,341-346,606,626,683,702,713,903,967+` · `config/login-routing.php:15-38,45-92,99-117,124-155,163-180` · `app/Http/Middleware/TenantContext.php:52,53,65,73,79,83` · `app/Http/Middleware/EnsureOrganisationMember.php:56,78,81,95,98,112,115,135-137` · `app/Models/Organisation.php:177,196` · `app/Models/User.php:1216-1221` · `app/Traits/BelongsToTenant.php:36,52-57,75` · `app/Http/Controllers/OrganisationController.php:111,338,406` · `app/Http/Controllers/Auth/VerificationController.php:38,69,87` · `app/Http/Controllers/EmergencyDashboardController.php:27` · `app/Providers/RouteServiceProvider.php:24` · `config/fortify.php:63` · `routes/web.php:332,466,494,496,498,503` · `database/migrations/2026_03_05_000002_create_uuid_users_table.php:23-26` · business input: `PBDIGIT-30` B1
+
+---
+
+# §10 — Amendment: the cache question, reframed and answered (2026-08-06)
+
+**The reframing, from review of this report:** the right question is not *"should navigation be cached?"* but
+
+> **"Should a routing decision ever outlive the business state that produced it?"**
+
+— and the answer depends entirely on whether the cache is **invalidated when those business facts change**. That reframing is better than the original I-2, and it turned out to be **directly testable**.
+
+## The evidence
+
+| Fact | Where |
+|---|---|
+| A routing decision is cached for **300 s** (configurable) | `DashboardResolver:341-346` · `config/login-routing.php:20` |
+| The cache key prefix is `dashboard_resolution:` | `config/login-routing.php:38` |
+| **An invalidator was written for exactly this** — `UserOrganisationObserver` clears `dashboard_resolution:{userId}` plus seven related keys, on `created` / `updated` / `deleted` / `restored` of `UserOrganisationRole` | `app/Observers/UserOrganisationObserver.php:27,47,68,88,135-150` |
+| It is **imported** into the service provider | `AppServiceProvider:18` — `use App\Observers\UserOrganisationObserver;` |
+| **It is never attached.** No `::observe()` call in `app/`, `bootstrap/` or `config/`; `UserOrganisationRole` has no `booted()` and no `#[ObservedBy]` | repo-wide search |
+| A *neighbouring* cache **is** invalidated at organisation creation | `OrganisationController:362` — `Cache::forget("user.{$user->id}.organisation_id")` (the TenantContext cache, **not** the routing cache) |
+
+## What this changes
+
+1. **The answer to the reframed question, for this codebase, is: *yes, it does outlive it* — up to 300 s, on every business change that should have reset it.** Joining, leaving, or changing an organisation does not clear the routing decision.
+2. **RD-3 is re-classed from `INCONSISTENT` to `BROKEN`** and no longer needs a business decision: the intent is already visible in the code that was written. The defect is a missing wire, not an undecided policy.
+3. **I-2 changes from a policy question to a one-line fix** — attach the observer. Its own docblock names `dashboard_resolution:{user_id}` as *"Main routing cache"*.
+4. The deeper cache-policy discussion (*is any navigation caching acceptable at all?*) is **deferred to the implementation review**, as recommended — because once invalidation actually fires, the question may not need answering.
+
+## Correction to this report
+
+**My original RD-3 and I-2 were weaker than the evidence supports.** I framed a stale-cache *risk* and asked for a *business decision*; the reality is an **unwired invalidator**, which is a defect with an owner and a one-line remedy. I also stated in the first version of §7 (S-5) that the freshness check "mitigates but does not eliminate" — that stands, but it understated the cause.
+
+**This is the third instance in the same domain of the pattern *"written, imported/declared, never wired"*:** `GovernanceSetupController` (exists, no route) · `OrganisationCreated` (dispatched, no listeners) · `UserOrganisationObserver` (imported, not attached). **Three instances, one capability.**
