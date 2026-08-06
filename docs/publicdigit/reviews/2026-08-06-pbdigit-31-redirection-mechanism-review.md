@@ -331,3 +331,36 @@ The frozen 9-phase method was applied with the commission's own phase names, whi
 **My original RD-3 and I-2 were weaker than the evidence supports.** I framed a stale-cache *risk* and asked for a *business decision*; the reality is an **unwired invalidator**, which is a defect with an owner and a one-line remedy. I also stated in the first version of §7 (S-5) that the freshness check "mitigates but does not eliminate" — that stands, but it understated the cause.
 
 **Observation:** this review and its companions identified **three independent cases where functionality had been implemented but never connected to the execution path** — `GovernanceSetupController` (exists, no route) · `OrganisationCreated` (dispatched, no listeners) · `UserOrganisationObserver` (imported, not attached). **Each should be verified and resolved individually**, on its own evidence; they are listed together only because the same check finds them, not because they share a remedy. *(No pattern count is claimed here — pattern accounting belongs to a method retrospective, not to a product review.)*
+
+---
+
+# §11 — Method correction: this report drifted from discovery into design (2026-08-06)
+
+**Recorded, not edited away.** Three faults were identified in review of this report. They are one fault wearing three costumes.
+
+| # | Fault | Where in this report |
+|---|---|---|
+| **A** | **A discovery report prescribed solutions.** §8b names *mechanisms* — "add two priorities", "extract the destination decision" — when a reviewer's job ends at *finding → business impact → evidence* | §8b I-1, I-5 |
+| **B** | **Over-specified the remedy.** §10 called RD-12 a "one-line fix — attach the observer". *Whether* the invalidation is connected via `observe()`, `booted()`, an attribute or a provider is an implementation choice. **The over-specification was also wrong** — it turned out to need two changes, and attaching it as described would have broken organisation creation (`PBDIGIT-33`) | §10, I-2 |
+| **C** | **Led with class names instead of customer impact** in executive findings — a Product Owner does not care about `DashboardResolver`, `AppServiceProvider` or `UserOrganisationObserver` until *after* they know what the customer experiences | §9 criteria table, §10 |
+
+**The single underlying fault:** the report answered *"what should we do?"* when it was commissioned to answer *"what is true, and why does it matter?"* Prescribing a remedy feels helpful and quietly transfers a decision from the implementation story to the reviewer.
+
+### The corrected form, applied to this report's own findings
+
+| Instead of (design language) | The discovery form |
+|---|---|
+| *"Add two priorities to `DashboardResolver`"* | **Customer:** a user with several organisations is never asked which one; a user with none is not invited to create one. **Business impact:** B1.3 is unmet in two of its three branches. **Evidence:** no such routes exist. **Decision required:** none — B1 already decided; authorise the work |
+| *"Attach the observer — one line"* | **Customer:** after changing organisations, the platform can send the user to where they used to belong, for up to five minutes. **Business impact:** contradicts B2's "never as a side effect". **Evidence:** the invalidator exists and is not connected. **Decision required:** none — it is a defect |
+| *"Extract the destination decision from the resolver"* | **Customer:** none today. **Business impact:** raises the cost of changing routing behaviour. **Evidence:** five responsibilities in ~1000 lines. **Decision required:** whether that cost is worth paying — a prioritisation call, not a review conclusion |
+
+**Retained deliberately:** §8b's *evidence and priority ranking* stay, because ranking findings by business impact and risk **is** a reviewer's job. Only the mechanism prescriptions were out of bounds.
+
+### Also recorded — two reframings, deliberately NOT adopted
+
+| Reframing | Why it is parked |
+|---|---|
+| **The subject is larger than redirection.** Election routing, organisation routing, role routing, maintenance routing and onboarding routing are all **Entry Decisions** — *"how does the platform decide where work begins?"* is the more business-oriented question than *"how does redirection work?"* | A better framing for a **future** review, not a change to this one. Parked as a candidate; the freeze gate governs method changes |
+| **`Working Organisation` may be one kind of a larger concept — an *execution context*** (sometimes an organisation, sometimes an election, sometimes role selection, sometimes organisation creation) | **Explicitly not introduced.** Whether the abstraction is useful should be decided only if a future capability needs it. `PBDIGIT-29` Q1 remains open; nothing here presupposes its answer |
+
+**Both are observations for a retrospective, not conclusions of this review** — which is the same discipline this correction is about.

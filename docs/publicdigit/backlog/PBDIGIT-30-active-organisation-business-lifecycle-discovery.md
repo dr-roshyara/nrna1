@@ -205,9 +205,11 @@ It auto-redirects **only** when there is exactly one eligible election. At any a
 
 ---
 
-## B2 — When does the Working Organisation change? — 📝 **PROPOSED, NOT APPROVED**
+## B2 — When does the Working Organisation change? — ✅ **APPROVED, WITH AMENDMENTS**
 
-> **⚠️ Provenance.** This draft was written by **engineering**, not by the Product Owner. B1 and B10 are marked ✅ APPROVED because the Product Owner supplied their text; **this one is a proposal awaiting a decision.** One sentence of confirmation adopts it *(the PREPARED → ADOPTED mechanism this repository already uses, cf. `R-90`)*. Until then it binds nothing.
+> **⚠️ Read the authoritative text first: §B2 · As approved, at the end of this section.** The material below is the **engineering draft** that produced it, retained as the reasoning trail. Where the two differ, **the approved wording governs.**
+>
+> **Provenance.** The draft was written by engineering and marked PROPOSED; the Product Owner **amended and approved** it (2026-08-06). The amendments are recorded in §B2 · Amendments — they are not silently folded in.
 >
 > **It is derived from B1/B10's own principles — deterministic, never guess, never divert mid-work — and NOT from current behaviour.** What the code does today is the thing under question, so it is cited below only to show why the question matters, never as an answer.
 
@@ -265,3 +267,51 @@ It auto-redirects **only** when there is exactly one eligible election. At any a
 `PBDIGIT-29` recorded that the working context is currently written in **15+ places**, including while *rendering* an organisation page (I-1, I-5). If B2 is approved as drafted, those writes are not merely untidy — **(g) makes most of them contrary to a business rule**, which turns a technical observation into a product requirement.
 
 **Decision needed:** approve, amend, or reject. Engineering will not treat this as settled until it is marked ✅ APPROVED.
+
+---
+
+### B2 · As approved — the authoritative text
+
+**Approved by the Product Owner, 2026-08-06. This wording governs.**
+
+> **The platform maintains exactly one Working Organisation for every authenticated session.**
+>
+> **The Working Organisation changes only when:**
+>
+> * **the user performs an explicit business action indicating they intend to work in another organisation; or**
+> * **the current Working Organisation is no longer valid.**
+>
+> **Navigation, page rendering, routing, elections, caching, middleware, or any other technical mechanism must never change the Working Organisation as a side effect.**
+>
+> **When a forced change occurs, the platform applies the deterministic B1 routing rules (0 / 1 / many) rather than guessing.**
+
+### B2 · Change classes — voluntary vs forced (first-class, for auditability)
+
+| Class | Meaning | Triggers |
+|---|---|---|
+| **Voluntary** | expresses **user intent** | the user creates an organisation · the user selects/switches to another organisation · the user joins their **first** real organisation |
+| **Forced** | preserves **platform consistency** | membership revoked · organisation deleted · organisation suspended |
+
+**These are different business events with different meanings, and they are recorded as different classes** — the distinction matters for auditability. A voluntary change answers *"who chose this?"*; a forced change answers *"why was this necessary?"*
+
+### B2 · Explicit clarification — accepting an invitation
+
+**Accepting an invitation to an additional organisation does NOT change the Working Organisation.** The user stays where they were working.
+
+Stated explicitly because the product flow may say *"Welcome to Organisation X"*, which reads like an entry. It is not: joining grants **membership**, not **context**. The user may switch whenever they wish (a voluntary change). **Consistent with B1.4's "never guess."**
+
+### B2 · Amendments to the engineering draft (recorded, not folded in silently)
+
+| # | Amendment | Effect |
+|---|---|---|
+| **1** | **Navigation and Working Context are separated as concepts.** *"Navigation must never be interpreted as a Working Organisation change."* | B10 already established that a user can be **routed to an election without changing their Working Organisation**. The amended wording makes that a general rule, protecting against a future regression where someone updates the context because a page was visited |
+| **2** | **Voluntary vs forced becomes a first-class distinction**, not merely two lists | different business meanings — intent vs consistency — and it will matter for audit |
+| **3** | **B2 is expressed as an extension of B1**, opening with B1's invariant rather than standing alone | B2 is no longer an independent rule that could drift from B1 |
+| **4** | **Invitation acceptance clarified explicitly** rather than left implicit | the draft assumed *"stay where I am"*; the approved text says so out loud |
+| **5** | Wording kept **entirely in business language** — no controllers, sessions, middleware or mechanisms | engineering receives an unambiguous rule without being told how to build it |
+
+### B2 · Consequence for existing work
+
+`PBDIGIT-29` recorded that the working context is written in **15+ places, including while rendering an organisation page** (I-1, I-5). **Under B2 as approved, those writes are contrary to a business rule** — not merely untidy. They move from *architecture debt* into `PBDIGIT-32`'s scope.
+
+**B3–B9 remain unanswered.** `PBDIGIT-32` stays blocked.

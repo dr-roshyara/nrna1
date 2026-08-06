@@ -43,7 +43,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-27`](PBDIGIT-27-case-sensitive-import-paths-break-the-app-on-linux.md) | Case-sensitive import paths break the app on Linux (home page + build) | cross-cutting | `FIXED` — build green |
 | [`PBDIGIT-28`](PBDIGIT-28-resolve-remaining-missing-module-imports.md) | Resolve the remaining missing-module imports (dead code, not runtime failures) | cross-cutting | `FIXED` — 0 unresolved live imports |
 | [`PBDIGIT-29`](PBDIGIT-29-organisation-context-discovery.md) | **Organisation Context Discovery** — implementation discovery, no code (rev 2) | `EPIC-01` | `DISCOVERY COMPLETE — Q1–Q6 open` |
-| [`PBDIGIT-30`](PBDIGIT-30-active-organisation-business-lifecycle-discovery.md) | **Working Organisation Business Lifecycle** — business decision record | `EPIC-01` | **B1 ✅** · **B10 ✅** · **B2 📝 proposed, awaiting approval** · B3–B9 open |
+| [`PBDIGIT-30`](PBDIGIT-30-active-organisation-business-lifecycle-discovery.md) | **Working Organisation Business Lifecycle** — business decision record | `EPIC-01` | **B1 ✅** · **B2 ✅** · **B10 ✅** · B3–B9 open |
 | [`PBDIGIT-31`](PBDIGIT-31-redirection-mechanism-review.md) | **Redirection Mechanism Review** — discovery only ([report](../reviews/2026-08-06-pbdigit-31-redirection-mechanism-review.md)) | `EPIC-01` | `REVIEW COMPLETE` — I-1 awaits authorisation; I-2 is now a one-line defect fix (RD-12) |
 | [`PBDIGIT-32`](PBDIGIT-32-implement-working-organisation-routing.md) | **Implement Working Organisation Routing** — extend the resolver, do not redesign it | `EPIC-01` | **BLOCKED** — B2–B9 unanswered |
 | [`PBDIGIT-33`](PBDIGIT-33-fix-routing-cache-invalidation.md) | **Fix routing-cache invalidation** — observer was imported but never attached (+ UUID type fix) | cross-cutting | `FIXED — AWAITING RUNTIME VERIFICATION` |
@@ -161,6 +161,8 @@ It makes the commission's scope unambiguous *afterwards*, not only in intent —
 - **The route is a consequence of the business step, never the starting point.**
 - **Facts · interpretation · decisions stay in separate sections.** State the evidence (*"no class of that name was found"*), then the reading of it (*"the concept appears implicit"*) — never one as the other.
 - **Ask what a test protects, not whether one exists.** A green test can lock in the wrong behaviour (`PBDIGIT-29` §5, R5).
+- **A discovery report describes reality; it never prescribes implementation.** Every finding states *what is true · why it matters to the business · what decision is required* — and stops. Naming a mechanism ("add these priorities", "attach this observer", "extract this responsibility") quietly moves a decision from the implementation story to the reviewer, and it is often wrong: `PBDIGIT-31` called one such remedy a "one-line fix" that turned out to need two changes, the first of which would have broken organisation creation. **Rank findings by impact and risk — that is the reviewer's job; choosing the mechanism is not.**
+- **Lead with customer impact, not class names.** *"The customer may return to the wrong organisation for up to five minutes"* comes before `DashboardResolver`. Evidence follows the impact; it never replaces it.
 
 ### ⛔ This method is FROZEN
 
