@@ -1,14 +1,14 @@
 # PBDIGIT-48 — Login routing still reads a deprecated field instead of the constitutional lifecycle
 
-**Type:** Discovery (architecture · legacy consolidation) · **Epic:** `PBDIGIT-EPIC-03` Election Management · **Created:** 2026-08-06 · **Rewritten 2026-08-06** after verification
+**Type:** Discovery (architecture · **legacy consumer migration**) · **Epic:** `PBDIGIT-EPIC-03` Election Management · **Created:** 2026-08-06 · **Rewritten 2026-08-06** after verification
 **Found by:** diagnosing `PBDIGIT-47` on the live election `namaste 2026`
 
 | | |
 |---|---|
 | **Status** | 🟡 **DISCOVERY — no implementation decisions belong in this story** |
-| **Diagnosis** | **The repository is mid-migration from a legacy election-status field to the constitutional lifecycle. The business rule never changed; one implementation was never retired** |
+| **Diagnosis** | **The domain successfully evolved to a constitutional lifecycle. The migration of legacy consumers remained incomplete.** The business rule never changed — only how "open" is computed |
 | **Customer impact** | **`PBDIGIT-47` is the first customer-visible consequence** — a voter could not reach a ballot during an open voting period |
-| **Completion** | **This story is complete when the Authority Analysis table is complete.** Implementation follows as a separate story |
+| **Completion** | **Complete when the consumer inventory is complete and a migration strategy is approved.** The authority half of the Authority Analysis is already answered. Implementation follows as a separate story |
 
 ---
 
@@ -21,6 +21,18 @@ The original title was *"Election state has four representations and they disagr
 > **The business rule never changed.** It has always been: *if exactly one election is currently open for this voter, send the voter to that election.* **What changed is how "open" is computed. The old computation kept its readers.**
 
 **Why the distinction is not cosmetic:** "competing authorities" invites a decision about who *should* own the concept. **That decision was already made and recorded.** What remains is consolidation — a smaller, better-defined problem with a documented target.
+
+### Architectural classification
+
+> **This is not a Single-Source-of-Truth discovery. It is a Legacy Consumer Migration discovery.**
+
+| | SSOT discovery asks | Legacy-migration discovery asks |
+|---|---|---|
+| Question | **Who owns the business concept?** | **The owner is known — which consumers still read the obsolete representation?** |
+| Work | model the domain, declare an owner | **inventory consumers and migrate them** |
+| Risk | designing the wrong owner | **missing a consumer** |
+
+**The classification changes the work.** No part of the domain needs redesigning here: the aggregate, the lifecycle enum, the engine and the projection are all in place and correct. **What is needed is a complete consumer inventory and a migration** — which is why this story's completion criterion is a table, not a design.
 
 ## Verification — five pieces of evidence, all from the repository
 
@@ -96,9 +108,16 @@ public const FIELDS = [
 
 ## Authority Analysis — **this story is complete when this table is complete**
 
-| Business concept | Declared authority | Derived / cached | Deprecated | Consumers | Approved authority | Retirement strategy |
-|---|---|---|---|---|---|---|
-| **Election state** — *“is this election open for voting?”* | `ElectionLifecycleEngineImpl` / `ElectionLifecycleProjection` (named “SSOT engine” in `BackfillElectionState`) | `elections.state` — manual backfill | `elections.status` (`warning`) · `elections.is_active` (`strict`) | **inventory below — incomplete** | ⬜ | ⬜ |
+**Two questions, and only one of them is open:**
+
+| Question | Status |
+|---|---|
+| **Who owns election state** (the engineering authority) | ✅ **Already declared** — `ElectionLifecycleEngineImpl`, named “SSOT engine” in `BackfillElectionState`, with per-field replacements in `DeprecationPolicy`. **The Product Owner does not need to approve this** |
+| **How the migration is completed** | 🟡 **Requires approval** — see the options below |
+
+| Business concept | Declared authority | Derived / cached | Deprecated | Consumers | Migration strategy |
+|---|---|---|---|---|---|
+| **Election state** — *“is this election open for voting?”* | ✅ `ElectionLifecycleEngineImpl` / `ElectionLifecycleProjection` | `elections.state` — manual backfill | `elections.status` (`warning`) · `elections.is_active` (`strict`) | **inventory below — incomplete** | ⬜ |
 
 ### Consumer inventory — partial; completing it is this story's work
 
@@ -116,14 +135,15 @@ public const FIELDS = [
 
 ## The solution space — two options, neither chosen here
 
-### Option A · Compatibility — keep the legacy field synchronised
+### Option A · Transitional synchronisation — keep the legacy field in step while consumers migrate
 
 When the engine reports `voting_active`, write `status = 'active'`.
 
-* **For:** every existing reader keeps working unchanged; smallest immediate risk.
-* **Against:** preserves two representations permanently, adds a synchronisation path that can itself fail, and **contradicts `DeprecationPolicy`, which marks `status` for replacement rather than maintenance.**
+* **For:** every existing reader keeps working unchanged; smallest immediate risk; **buys time to migrate consumers one at a time.**
+* **Against:** adds a synchronisation path that can itself fail, and **`DeprecationPolicy` marks `status` for replacement, not maintenance.**
+* ⚠️ **Only defensible as a transition, never as a destination.** If adopted it needs an explicit end date and a named successor step — **otherwise "transitional synchronisation" becomes the architecture by default**, which is how this situation arose in the first place.
 
-### Option B · Migration — move the readers
+### Option B · Complete the migration — move the readers
 
 Stop reading `status`; read the engine, via **the replacement the repository already documents**:
 
@@ -152,16 +172,18 @@ Risk:
   wrapper, because the levels only govern access THROUGH it.
 
 Recommendation:
-  No new consumer may read elections.status or elections.is_active until the
-  approved authority is declared. New code reads the lifecycle engine.
+  No new consumer may read elections.status or elections.is_active. The
+  authority is already declared, so this needs no decision - new code reads
+  the lifecycle engine. What awaits approval is only HOW the existing
+  consumers are migrated.
 ```
 
 ## Acceptance criteria — discovery only
 
 * [x] **All candidate representations identified** — engine/projection · `state` · `status` · `is_active`.
 * [ ] **Consumer inventory completed** — background jobs, API, notifications and exports are not yet covered.
-* [ ] **Approved authority recorded** by the Product Owner / ARB.
-* [ ] **Retirement strategy approved** — Option A, Option B, or another.
+* [x] **Authority identified** — already declared in the repository (`DeprecationPolicy` + “SSOT engine”). **Nothing to approve.**
+* [ ] **Migration strategy approved** — Option A, Option B, or another. **This is the only decision this story asks for.**
 * [ ] **Impact on `ElectionPolicy` and `ProcessElectionAutoTransitions` assessed**, since both read a deprecated field outside the reported symptom.
 
 **Implementation — migrating consumers, removing fields, repairing divergent rows — belongs to a separate story and must not begin here.**
@@ -174,9 +196,9 @@ Recommendation:
 |---|---|
 | Votes per IP (`PBDIGIT-45`) | constitutional snapshot owns it; a legacy global is still read; retirement instrumented, never completed |
 | Voter eligibility (`PBDIGIT-49`) | two stores, one populated; authority undeclared |
-| **Election state (this story)** | **engine owns it; deprecated fields still read; deprecation scaffolded, never completed** |
+| **Election state (this story)** | **engine owns it; deprecated fields still read; deprecation scaffolded, migration of consumers never completed** |
 
-> **The recurring problem is not any of these concerns. It is that a business concept acquires a newer implementation while the older one keeps its readers.**
+> **The recurring problem is not any of these concerns. It is that a domain evolves successfully and its legacy consumers are not migrated with it.**
 
 **Recorded as an observation at n=3 within one repository.** A KnowledgeOS **candidate** only if it recurs in another domain (Finance, Membership) — not a promotion (`ES-006.1`).
 
