@@ -101,7 +101,7 @@ No production capability may interpret lifecycle from legacy persistence fields.
 
 ## Slices — each restores one capability
 
-### `58A` · Observe Legacy Consumers — **first, and it is not optional**
+### `58A` · Observe Legacy Consumers — ✅ **COMPLETE** (2026-08-06)
 
 > ✅ **Mechanism approved — Phase 1: SQL listener only.** Definition approved: **a legacy consumer is a capability that makes a business decision using the deprecated representation** — *obtaining is not depending*. Serialisation is supporting evidence, never a consumer. **Extend to attribute observation only if the observed inventory proves incomplete.**
 >
@@ -171,7 +171,54 @@ sql        : select count(*) as aggregate from "elections" ...
 
 **Display-only, not decisions — migrate for tidiness, never for correctness:** `CommissionDashboardController:28` · `ListAllElections:38` · `DemoVoteController:573, 2461` · `PublicDemoController:239`.
 
-### `58B` · Restore Election Resolution — the two Critical capabilities
+### `58B` · Restore **Election Entry Resolution** — 🔴 **BLOCKED: the migration is not behaviour-preserving**
+
+**Capability boundary established first, per the rule that a capability is the migration unit and must never be left half-migrated.**
+
+| Site | Verdict |
+|---|---|
+| `User::getActiveElection():1303` | ✅ **live consumer — migrate** |
+| `User::countActiveElections():1345` | ✅ **live consumer — migrate** *(found by `58A`, missing from the static inventory)* |
+| `User::hasActiveElection():1276` | delegates to `getActiveElection()` — **not a separate site** |
+| `DashboardResolver:102, 105` | **callers, not consumers.** They already delegate to the two methods above — **do not touch** |
+| `DashboardResolver::getActiveElectionForUser():751` + its own `where('status','active')` at `:781` | 🪦 **DEAD CODE.** `private`, and its only two occurrences in the entire repository are its own declaration and a log string inside itself. **No caller in `app/`, `tests/` or `routes/`.** → separate cleanup ticket, **not migrated** |
+
+> **The Product Owner's caller/implementation/duplicate distinction cut this slice by a third**: what looked like three query sites is two live consumers plus one corpse.
+
+#### 🔴 Why it is blocked — the two representations disagree for **every election in the database**
+
+**Measured, not inferred (2026-08-06 19:16 UTC):**
+
+| Election | legacy `status` | engine state |
+|---|---|---|
+| Demo Election | `planned` | **`draft`** |
+| Demo Election — Namaste Nepal GmbH | **`active`** | **`draft`** |
+| Demo Election — Public Digit | **`active`** | **`draft`** |
+| namaste 2026 | `planned` | **`results_published`** |
+
+**4 of 4 disagree, and in both directions.** So `where('status','active')` → lifecycle is **not a substitution; it is a behaviour change for every row.**
+
+#### The underlying cause — the *window* has two representations too
+
+`VotingActive` is derived from **`voting_starts_at` / `voting_ends_at`** (`ElectionClockService::isVotingOpen`), while the legacy queries filter **`start_date` / `end_date`**:
+
+| Election | `start_date` → `end_date` | `voting_starts_at` → `voting_ends_at` |
+|---|---|---|
+| namaste 2026 | `14:56` → **`16:00`** | `14:56` → **`15:28:44`** |
+| all three demo elections | set | **`NULL` / `NULL`** |
+
+**So this is `PBDIGIT-48`'s pattern one level down: the same concept — "when is voting open?" — held in two column pairs that disagree.** For `namaste 2026` the two windows differ by **31 minutes**; for demo elections the lifecycle window does not exist at all.
+
+⚠️ **And a customer-visible consequence, recorded as an observation because its cause is not established:** `voting_ends_at` = `15:28:44` and `results_published_at` = `15:29:08` — **24 seconds apart** — while the officer stated the election ran until **18:00 Berlin (16:00 UTC)**. **The election closed ~31 minutes before its stated end and results followed immediately.** The likeliest explanation is two deliberate clicks in the management UI; **that has not been confirmed, and no autonomous cause has been shown.**
+
+#### What must be decided before `58B` proceeds
+
+1. **Which column pair defines the voting window** — `start_date`/`end_date` or `voting_starts_at`/`voting_ends_at`?
+2. **What happens to demo elections**, whose lifecycle window is `NULL` and which the engine therefore reports as `draft` while `status` says `active`?
+3. **Is a behaviour change acceptable here?** *"Preserve behaviour first"* **cannot be satisfied** — there is no behaviour both representations agree on. **The migration is the behaviour change**, so it needs sign-off rather than care.
+
+**Engineering has written no code for `58B`.** Establishing the capability boundary and this blocker was the slice's first task, and it produced a decision rather than a diff.
+
 
 **Election Entry Resolution** and **Election Context Resolution** both derive from the lifecycle.
 

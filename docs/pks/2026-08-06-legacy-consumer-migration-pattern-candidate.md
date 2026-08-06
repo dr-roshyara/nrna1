@@ -49,13 +49,15 @@
 | Step | Action | Why in this order |
 |---|---|---|
 | **1** | **Identify the authoritative model** | Often already declared. **Check before deciding** — the decision may exist in code |
-| **2** | **Observe legacy consumers at runtime** | Text search cannot identify consumers of a common field name |
-| **3** | **Migrate the highest-risk consumers** | Restores the capabilities that are actually broken, first |
+| **2** | **Observe legacy consumers at runtime — and expect to DISCOVER HIDDEN ONES** | Text search cannot identify consumers of a common field name. **Demonstrated: one login request found a decision site three static passes had missed, in a Critical capability** |
+| **3** | **Migrate complete CAPABILITIES, never individual call sites** | A half-migrated capability is a capability with two behaviours. **The capability is the migration boundary** |
 | **4** | **Migrate remaining consumers** | Including the tooling that *writes* the legacy field |
 | **5** | **Raise enforcement** | The mechanism certifies completeness — not a review |
 | **6** | **Retire the legacy model** | Only once enforcement is clean |
 
 **Step 2 is the step most often skipped, and the one that carries the pattern's value.**
+
+⚠️ **A caution the source case produced immediately: step 3 may reveal that migration is not behaviour-preserving.** If the authoritative model and the legacy representation *disagree for existing data*, then migrating **is** a behaviour change, and *"preserve behaviour first"* cannot be satisfied — it needs a product decision, not more care. **Establishing that is legitimate output from a migration slice: a decision rather than a diff.**
 
 ### The Legacy Compatibility Adapter — the nuance the pattern must not blur
 
