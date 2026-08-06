@@ -1,12 +1,12 @@
-# ADR — Where security-audit events are written relative to the vote transaction
+# ADR — Transactional isolation of security-audit persistence
 
-**Status: 🟡 PROPOSED — awaiting Product Owner approval. No code has been written.**
+**Status: ✅ APPROVED 2026-08-06** (Product Owner, *"approve with one restructuring request"*) — **restructured as requested; implementation authorised for the accepted scope only.**
 **Date:** 2026-08-06 · **Origin:** `PBDIGIT-38` (defect) ← `PBDIGIT-00` (runtime verification)
-**Decision owner:** Product Owner / whoever owns ADRs · **Author:** engineering (evidence and drafting only — `R-34`)
+**Decision owner:** Product Owner · **Author:** engineering (evidence and drafting only — `R-34`)
 
-> ⚠️ **Placement, recorded because it was not purely derived.** `php scripts/doc-placement.php --scope=product-specific --maturity=adopted --domain=publicdigit` derives the root **`docs/publicdigit`**; the resolver has no rule for artifact *type*, so it names a root and not a subfolder. **The Product Owner directed `docs/publicdigit/adr/`** — consistent with the derived root and with the existing `backlog/` and `reviews/` subfolders under it.
->
-> **The open governance question is unchanged and is not resolved here:** every *other* ADR in this repository lives in **`docs/adr/`**, which is **not a registered root** (`docs/knowledge/schema/documentation-placement.yaml` knows only `publicdigit`, `knowledgeos`, `pks`). **So ADRs now have two homes** — the dual-home defect `ES-005.4` warns about. **Escalated, not fixed:** whether the legacy `docs/adr/` becomes a registered root, or its contents migrate under the product roots, is a governance decision.
+**Scope — one decision, deliberately:** *where security-audit events are persisted relative to the Vote transaction.*
+
+**Explicitly NOT in this ADR:** the **meaning of the audit schema's fields**. That was extracted on review into **[`PBDIGIT-42`](../backlog/PBDIGIT-42-define-audit-schema-semantics.md)** so that approving *transactional isolation* does not implicitly approve *audit semantics* — two unrelated decisions deserving separate review cycles.
 
 ---
 
@@ -40,7 +40,15 @@ A voter completes every step of the journey and **their vote is silently discard
 
 **What is currently true, stated without claiming intent:** *no explicit design evidence was found that audit recording belongs to the Vote transaction. It participates because it is invoked after the transaction begins* — `DemoVoteController:1456` opens it, `:1493` calls `trustEvaluator->evaluate()`, which calls the recorder, and `:1785` commits.
 
-> **Therefore: the transaction boundary should be narrowed to the Vote. The audit write should sit outside it.**
+### Architectural classification
+
+> **`ElectionSecurityEvent` is an observational projection of the voting process.** It is **not** part of the **Vote** aggregate, does **not** participate in its consistency boundary, and therefore **must not share its transactional lifetime.**
+
+### The principle this decision applies
+
+> **The Vote aggregate defines the consistency boundary. Transaction boundaries should *implement* consistency boundaries rather than extend beyond them. Because `ElectionSecurityEvent` is observational rather than transactional, its persistence must be decoupled from the Vote transaction.**
+
+**That is the rationale in one sentence, and it is deliberately stated as a principle rather than as a local repair** — the same reasoning applies to any observational write that has drifted inside a business transaction. *(Filed as a repository-independent candidate at n=1: `docs/pks/2026-08-06-consistency-boundary-before-transaction-boundary-candidate.md`. **Not adopted** — one occurrence.)*
 
 ## 3 · Alternatives considered
 
@@ -86,42 +94,50 @@ A voter completes every step of the journey and **their vote is silently discard
 
 **Decision: bind at the model.** *(This is why the trace mattered: the call-site binding is the more obvious choice and is the unsafe one.)*
 
-## 6 · Consequences and trade-offs — including the unwelcome ones
+## 6 · Architectural consequences
 
-**Accepted:**
+**These change what the system means, not merely how it is built.**
+
+1. **`election_security_events` becomes one row per *evaluation*, not per vote.** A rolled-back vote now leaves an audit row. **This is intended — it is invariant I-2** — but it is a semantic change to the table: **anyone reading it as "one row per vote" will be wrong.**
+2. **Audit persistence no longer shares the Vote's atomicity.** An audit row can exist for a vote that does not, and (in principle) a vote can commit while its audit row failed. **That asymmetry is the deliberate consequence of classifying the event as observational** — it is the price of I-1, and it is the correct price.
+3. **The audit store becomes relocatable.** Because reads and writes are bound together (§5), audit traffic can later move to another host or database without touching the vote path.
+4. **A stronger guarantee remains available.** Option E (outbox) is not foreclosed; the recorder is the single write site.
+
+## 6b · Implementation notes
+
+**These are build-time cautions, not architectural properties.**
 
 * **An extra PDO connection** is opened per request that records an event (≈10 % of allows, plus all denials).
-* **A rolled-back vote now leaves an audit row.** This is intended (I-2) but it is a **visible behaviour change**: `election_security_events` will contain events for votes that do not exist. **Anyone reading the table as "one row per vote" will be wrong** — it is one row per *evaluation*.
-* **In-transaction read-after-write is lost.** An event written during a request is no longer visible to a read on the default connection in that same transaction. **Checked: no such dependency exists** — `IpVelocityOverlay` reads previously-committed events, and only one event is written per evaluation, at the end.
-* **Tests that rely on transaction rollback will see audit rows persist.** This project's `TestCase` already skips transactions for PostgreSQL and uses `migrate:fresh`, so the practical impact is nil here — **but it is a real trap for any future transactional test.**
+* **In-transaction read-after-write is lost.** An event written during a request is no longer visible to a read on the default connection in the same transaction. **Checked: no such dependency exists** — `IpVelocityOverlay` reads previously-committed events, and only one event is written per evaluation, at the end.
+* ⚠️ **Trap for future tests:** a test relying on transaction rollback will now see audit rows persist. This project's `TestCase` already skips transactions for PostgreSQL and uses `migrate:fresh`, so the impact here is nil — **but the trap is real for any future transactional test.**
+* **Pre-existing layer debt, not fixed here and not approved by this ADR:** the Application-layer rules (`.claude/CLAUDE.md` Rule 2) forbid Facades and Eloquent in `app/Application/`. **`SecurityEventRecorder` already violates both** (`Log::`, `ElectionSecurityEvent::create`). Correcting it means introducing a port — a larger change than this defect warrants.
 
-**Rejected as out of scope:** the Application-layer rules (`.claude/CLAUDE.md` Rule 2) forbid Facades and Eloquent in `app/Application/`. **`SecurityEventRecorder` already violates both** (`Log::` and `ElectionSecurityEvent::create`). This ADR does not fix that — **it is pre-existing debt, and correcting it means introducing a port, which is a larger change than this defect warrants.** Recorded so the deviation is not mistaken for approval.
+## 7 · Boundary with the audit-schema decision — **extracted, not decided here**
 
-## 7 · A second decision this ADR requires — `overlay_influence_chain`
+The recorder omits **two** required (`NOT NULL`, no default) columns, measured against the live schema:
 
-The recorder omits **two** required (`NOT NULL`, no default) columns, measured against the live schema: `overlay_influence_chain` **and** `trust_state_transition`. *(A fix supplying only the first would pass review and fail again at runtime.)*
+| Column | Status for this ADR |
+|---|---|
+| `trust_state_transition` (varchar 100) | ✅ **in scope** — unambiguous, and no semantics are invented: the recorder already writes `trust_level_before` and `trust_level_after`, so the transition is `'<before>-><after>'` |
+| 🟡 `overlay_influence_chain` (json) | ⛔ **OUT of scope → [`PBDIGIT-42`](../backlog/PBDIGIT-42-define-audit-schema-semantics.md)**. It has **no meaning anywhere in the codebase** — a migration, a `$fillable` entry, a cast, and nothing that constructs one |
 
-* **`trust_state_transition`** (varchar 100) — unambiguous: the recorder already writes `trust_level_before` and `trust_level_after`, so the transition is `'<before>-><after>'`.
-* 🟡 **`overlay_influence_chain`** (json) — **has no meaning anywhere in the codebase.** It appears only in the migration, `$fillable`, and a cast. **Nothing constructs an influence chain.**
+**Consequence for implementation, stated plainly so it is not mistaken for a failure:** because `overlay_influence_chain` stays unwritten, **the audit `INSERT` will still fail** until `PBDIGIT-42` is decided. **That is now harmless to the voter and is the entire point of this ADR** — the failure is isolated, so:
 
-**Decision required — three options:**
+* **I-1 is satisfied** — the vote persists despite the audit failure;
+* **I-2 is NOT yet satisfiable** — no audit row can be written at all, so deny audits remain absent for a *different* reason.
 
-| | Option | Comment |
-|---|---|---|
-| **i** | Write the ordered identifiers of overlays that produced observations | the only meaning the available data supports |
-| **ii** | Make the column nullable | honest about the fact that the concept does not exist |
-| **iii** | Drop the column | if no consumer is ever intended |
+**Engineering does not invent the meaning of an audit field.** Writing a placeholder into an audit column whose semantics nobody can state would be worse than leaving it unwritten and visible.
 
-**Engineering does not choose.** Writing a placeholder into an *audit* column whose semantics nobody can state would be worse than either (ii) or (iii).
+## 8 · Verification — executed 2026-08-06
 
-## 8 · Verification required before this ADR is marked accepted
+* [x] **A vote persists.** `demo_votes = 1`, `demo_results = 2` (two national posts, one candidate each). **First vote ever recorded in this repository.**
+* [x] 🔒 **The saved vote carries no voter linkage** (ADR-T11), checked four ways: `demo_votes` and `demo_results` have **no** `user_id`/`voter_id`/`member_id`/`email`/`slug` column; **no stored value equals the voter's `user_id`**; and the indirect path — `demo_votes.voting_code` → `demo_codes.voting_code` → `user_id` — **does not join**, because `demo_votes.voting_code` is `NULL`. *(That null is itself a finding — see `PBDIGIT-43`.)*
+* [x] **I-1 verified, and by the real failure rather than a mock.** The audit `INSERT` still fails (`overlay_influence_chain`, pending `PBDIGIT-42`) — and **the vote persisted anyway.** `25P02` occurrences in the request's own log: **0** (was the cause of the lost vote). Regression test: `tests/Feature/AuditEventTransactionIsolationTest.php` — 3 tests, 6 assertions, green.
+* [ ] **I-2 — still BLOCKED on `PBDIGIT-42`**, honestly: no audit row can be written while a required column has no defined meaning. **Not worked around** by making the column nullable, which would decide `PBDIGIT-42` in code.
+* [x] **The journey completes end to end.** The final submission redirects to `/v/{slug}/demo-vote/verify-show`, which renders `Vote/DemoVote/VerifyVotingCode` (**200**). ⚠️ **Correction to `PBDIGIT-40`:** `thank-you` still 500s, but it is **not on the redirect path**, so it is a reachable-but-unused route — *not* "the last thing a voter sees". That story's severity was overstated and has been corrected.
+* [x] **The real voting path shared the defect — confirmed.** `VoteController::store()` (`:1513`) has the identical shape: `beginTransaction` `:1515` → `trustEvaluator->evaluate()` `:1542` → `commit` `:1892`. **Because the fix binds the connection at the model, both paths are fixed by the same change** — no second edit was required, and none was made.
 
-* [ ] A vote persists: `demo_votes` gains a row, `demo_results` gains rows.
-* [ ] 🔒 **The saved vote carries no voter linkage** (ADR-T11). `PBDIGIT-00` could not check this, because no vote row ever existed.
-* [ ] **I-1 tested:** an induced audit-write failure does not lose the vote.
-* [ ] **I-2 tested:** a rejected vote still leaves a deny audit record.
-* [ ] The journey re-walked end to end. *(Step 5 will still fail on **`PBDIGIT-40`** — an undefined `$vote` in `thankyou()`. **That is a separate story and must not be folded into this one.**)*
-* [ ] Whether the **real** voting path shared the defect — answered either way.
+**Deviations from the ADR as approved: none.** Scope held to transactional isolation plus `trust_state_transition`; `overlay_influence_chain` was left unwritten and visible.
 
 ## 9 · Reversal conditions
 
@@ -129,4 +145,12 @@ The recorder omits **two** required (`NOT NULL`, no default) columns, measured a
 
 ---
 
-**Traceability:** `docs/publicdigit/backlog/PBDIGIT-38-a-vote-cannot-be-saved.md` §DISCOVERY D-1…D-6 · `docs/publicdigit/backlog/PBDIGIT-00-verify-the-journey-end-to-end.md` · `app/Application/Election/Security/SecurityEventRecorder.php:15-19,26-28,52,55` · `app/Application/Election/Security/Overlays/IpVelocityOverlay.php:38` · `app/Models/ElectionSecurityEvent.php:12,18,40` · `app/Http/Controllers/Demo/DemoVoteController.php:1456,1493,1785` + nine `rollBack()` sites · `database/migrations/2026_05_26_000001_create_election_security_events_table.php:23,26` · `config/database.php:70-97` · ADR-T11 (anonymity) · `R-34` · `ES-002` · `ES-005.4` · `docs/pks/2026-08-06-consistency-boundary-before-transaction-boundary-candidate.md`
+## Appendix · Placement note (governance, not architecture)
+
+`php scripts/doc-placement.php --scope=product-specific --maturity=adopted --domain=publicdigit` derives the **root** `docs/publicdigit`; the resolver has no rule for artifact *type*, so it names a root, not a subfolder. **The Product Owner directed `docs/publicdigit/adr/`** — consistent with that root and with the existing `backlog/` and `reviews/` subfolders.
+
+**The governance question stands and is not resolved here:** every *other* ADR lives in **`docs/adr/`**, which is **not a registered root** (`docs/knowledge/schema/documentation-placement.yaml` knows only `publicdigit`, `knowledgeos`, `pks`). **So ADRs now have two homes** — the dual-home defect `ES-005.4` warns about. Whether `docs/adr/` becomes a registered root or its contents migrate under the product roots is a governance decision. **Escalated, not fixed.**
+
+---
+
+**Traceability:** `docs/publicdigit/backlog/PBDIGIT-38-a-vote-cannot-be-saved.md` §DISCOVERY D-1…D-6 · `docs/publicdigit/backlog/PBDIGIT-42-define-audit-schema-semantics.md` (extracted §7) · `docs/publicdigit/backlog/PBDIGIT-00-verify-the-journey-end-to-end.md` · `app/Application/Election/Security/SecurityEventRecorder.php:15-19,26-28,52,55` · `app/Application/Election/Security/Overlays/IpVelocityOverlay.php:38` · `app/Models/ElectionSecurityEvent.php:12,18,40` · `app/Http/Controllers/Demo/DemoVoteController.php:1456,1493,1785` + nine `rollBack()` sites · `database/migrations/2026_05_26_000001_create_election_security_events_table.php:23,26` · `config/database.php:70-97` · ADR-T11 (anonymity) · `R-34` · `ES-002` · `ES-005.4` · `docs/pks/2026-08-06-consistency-boundary-before-transaction-boundary-candidate.md`

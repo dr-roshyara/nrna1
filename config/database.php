@@ -82,6 +82,34 @@ return [
             'sslmode' => 'prefer',
         ],
 
+        /*
+        |----------------------------------------------------------------------
+        | Audit database connection
+        |----------------------------------------------------------------------
+        |
+        | Separate connection for security-audit event recording.
+        |
+        | Uses the same database as the primary connection by default, but
+        | allows audit writes to execute independently of business
+        | transactions. Override the DB_AUDIT_* variables to move audit
+        | traffic to another host or database.
+        |
+        | See docs/publicdigit/adr/ADR_20260806_1340_Audit_Event_Transaction_Boundary.md
+        */
+        'pgsql_audit' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_AUDIT_HOST', env('DB_HOST', '127.0.0.1')),
+            'port' => env('DB_AUDIT_PORT', env('DB_PORT', '5432')),
+            'database' => env('DB_AUDIT_DATABASE', env('DB_DATABASE', 'forge')),
+            'username' => env('DB_AUDIT_USERNAME', env('DB_USERNAME', 'forge')),
+            'password' => env('DB_AUDIT_PASSWORD', env('DB_PASSWORD', '')),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
+
         'pgsql_geo' => [
             'driver' => 'pgsql',
             'host' => env('DB_PGSQL_GEO_HOST', '127.0.0.1'),

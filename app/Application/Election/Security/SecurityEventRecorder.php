@@ -28,8 +28,16 @@ final class SecurityEventRecorder
             if ($isDenial || rand(0, 100) / 100 <= $sampleRate) {
                 $this->writeEvent($result, $ctx, $overlayObservations);
             }
-        } catch (\Exception $e) {
-            // Never propagate audit failures — log and continue
+        } catch (\Throwable $e) {
+            // Never propagate audit failures — log and continue.
+            // \Throwable rather than \Exception: the invariant above says "never
+            // throws", and an Error (e.g. a TypeError) would otherwise reach the voter.
+            //
+            // Catching here is necessary but was NOT sufficient on its own: while this
+            // write shared the caller's connection, a failed statement aborted the whole
+            // PostgreSQL transaction (SQLSTATE 25P02), so the vote INSERT failed too even
+            // though the exception was swallowed here. ElectionSecurityEvent is now bound
+            // to its own connection, which is what makes the invariant hold.
             Log::warning('ElectionSecurityEvent recording failed', [
                 'election_id' => $ctx->election?->id,
                 'error' => $e->getMessage(),
@@ -64,6 +72,10 @@ final class SecurityEventRecorder
             ] : [],
             'trust_level_before' => 'unverified',
             'trust_level_after' => $result->trustLevel->value,
+            // Required column (NOT NULL, no default) that was never written. No semantics
+            // are invented here: both endpoints are already recorded on the two lines
+            // above, so the transition is simply their composition.
+            'trust_state_transition' => 'unverified->' . $result->trustLevel->value,
             'policy_evaluated' => implode(', ', array_keys($result->policyOutcomeSequence)),
             'policy_evaluation_sequence' => $result->policyOutcomeSequence,
             'overlay_observations' => $observationSignalTypes,

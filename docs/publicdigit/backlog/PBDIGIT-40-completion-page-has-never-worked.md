@@ -6,8 +6,14 @@
 | | |
 |---|---|
 | **Status** | **OPEN — not authorised** |
-| **Customer impact** | **The last thing a voter sees after voting is a 500 error page** |
-| **Severity** | Medium — but it is the final impression of the entire journey |
+| **Customer impact** | **A reachable route returns 500. It is NOT on the voting happy path** |
+| **Severity** | **Low** — downgraded 2026-08-06 (was Medium) |
+
+> ⚠️ **CORRECTION, 2026-08-06 — this story's original claim was wrong.** It said *"The last thing a voter sees after voting is a 500 error page."* **It is not.** After `PBDIGIT-38` was fixed and a vote was cast successfully, the final submission was observed redirecting to **`/v/{slug}/demo-vote/verify-show`**, which renders `Vote/DemoVote/VerifyVotingCode` with **HTTP 200**. **`thank-you` is not on the redirect path.**
+>
+> **Cause of the error:** the original claim was inferred from *"this route 500s"* plus *"it is named thank-you"*. **Route naming is not evidence of flow position** — the flow had never been walked when the claim was written, so the position was assumed. It has now been walked.
+>
+> **What remains true:** the route exists, is reachable by URL, and returns 500. So the defect is real — it is just **not** the end of the journey.
 
 ---
 

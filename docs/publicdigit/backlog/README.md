@@ -54,9 +54,11 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-35`](PBDIGIT-35-retire-the-legacy-global-voter-flags.md) | **Production code reads retired global voter flags** — `is_voter`/`can_vote` exist in no database; eligibility is org+election scoped | `EPIC-02` | `OPEN` — found by `PBDIGIT-00` F-1 |
 | [`PBDIGIT-36`](PBDIGIT-36-the-e2e-suites-do-not-test-the-journey.md) | **The "end-to-end" suites do not test the journey** — 10 of 21 tests never reach an assertion | cross-cutting | `OPEN` — found by `PBDIGIT-00` F-2/F-3 |
 | [`PBDIGIT-37`](PBDIGIT-37-test-credential-and-safety-claim-hygiene.md) | **Committed test credentials + a safety claim that is false on PostgreSQL** | cross-cutting | `OPEN` — credential deduplicated; the rest open |
-| [`PBDIGIT-38`](PBDIGIT-38-a-vote-cannot-be-saved.md) | 🔴 **A vote cannot be saved** — a NOT NULL audit column poisons the vote transaction | `EPIC-05` | `OPEN` — **blocking**, found by `PBDIGIT-00` (b) |
+| [`PBDIGIT-38`](PBDIGIT-38-a-vote-cannot-be-saved.md) | ✅ **A vote cannot be saved** — audit write poisoned the vote transaction | `EPIC-05` | ✅ **FIXED & VERIFIED** — first vote ever recorded; I-2 residual → `PBDIGIT-42` |
+| [`PBDIGIT-42`](PBDIGIT-42-define-audit-schema-semantics.md) | **Define `overlay_influence_chain` semantics** — decision required, not engineering's to make | `EPIC-06` | `OPEN` — blocks invariant I-2 only |
+| [`PBDIGIT-43`](PBDIGIT-43-voting-code-never-populated.md) | **`demo_votes.voting_code` is never populated** — must derive from `vote_id`, never `code_id` (anonymity) | `EPIC-05` | `OPEN` — found verifying `PBDIGIT-38` |
 | [`PBDIGIT-39`](PBDIGIT-39-unset-config-blocks-every-voter.md) | 🔴 **An unset config value blocks every voter**, reported as a rate limit (`0 >= null`) | `EPIC-05` | `OPEN` — found by `PBDIGIT-00` (b) |
-| [`PBDIGIT-40`](PBDIGIT-40-completion-page-has-never-worked.md) | **The completion page has never worked** — `thankyou()` renders an undefined `$vote` | `EPIC-05` | `OPEN` — after `PBDIGIT-38` |
+| [`PBDIGIT-40`](PBDIGIT-40-completion-page-has-never-worked.md) | **`thank-you` route 500s** — undefined `$vote`. **NOT on the happy path** (severity corrected) | `EPIC-05` | `OPEN` — **Low** |
 | [`PBDIGIT-41`](PBDIGIT-41-demo-provisioning-has-two-paths.md) | **Demo provisioning has two paths and the documented one is broken** | `EPIC-03` | `OPEN` — found by `PBDIGIT-00` (b) |
 
 ---

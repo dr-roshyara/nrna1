@@ -5,9 +5,10 @@
 
 | | |
 |---|---|
-| **Status** | **OPEN — not authorised.** Found by verification; the repair is a separate decision |
-| **Customer impact** | 🔴 **A voter completes every step and their vote is silently discarded.** The UI returns them to the verification page with no explanation |
-| **Severity** | **Blocking.** This is the defect that stops the product working |
+| **Status** | ✅ **FIXED AND VERIFIED 2026-08-06** — implemented per `ADR_20260806_1340` (APPROVED). **Ready to close** |
+| **Customer impact** | **Resolved.** A vote now persists: `demo_votes = 1`, `demo_results = 2` — **the first vote ever recorded in this repository** |
+| **Was** | 🔴 Blocking — a voter completed every step and their vote was silently discarded |
+| **Residual** | **Invariant I-2 remains unsatisfied**, blocked on **`PBDIGIT-42`** (audit-schema semantics). **Not worked around** |
 
 ---
 
@@ -52,11 +53,48 @@ SQLSTATE[25P02]: In failed sql transaction: current transaction is aborted
 
 That is an architectural point, not a typo: an observation path must not be able to fail the path it observes. **Whether the recorder should participate in the vote transaction at all is the real design question** — and it is a bigger question than the missing column.
 
-## ⚠️ Scope is probably wider than demo — NOT VERIFIED
+## ✅ Scope was wider than demo — CONFIRMED 2026-08-06
 
-`SecurityEventRecorder` is **not** demo-specific. Its caller is `app/Application/Election/Security/TrustPolicyEvaluator.php`, on the shared trust-evaluation path.
+`SecurityEventRecorder` is **not** demo-specific; its caller is `TrustPolicyEvaluator`, on the shared trust-evaluation path. **When this story was written that made real elections "likely affected", and the story said so without asserting it. It has now been established:**
 
-**So real elections are likely affected identically.** **This was NOT tested** — no real-election vote was attempted, and it must not be assumed either way. **Establishing it is the first task of this story**, because it decides whether this is "demo mode is broken" or "the product cannot hold an election."
+| | `VoteController::store()` (real) | `DemoVoteController::store()` (demo) |
+|---|---|---|
+| transaction opens | `:1515` | `:1456` |
+| `trustEvaluator->evaluate()` | `:1542` | `:1493` |
+| commit | `:1892` | `:1785` |
+
+**Identical shape.** So this was not *"demo mode is broken"* — **the product could not hold an election at all.**
+
+**Both paths are fixed by the same change, and this is why the binding point mattered:** the connection is bound at the **model**, which both paths share, so no second edit was required and none was made. *(A call-site binding in `DemoVoteController` would have fixed demo and left real elections broken — while appearing to fix "the" bug.)*
+
+---
+
+# OUTCOME — implemented and verified 2026-08-06
+
+**Architecture decision:** [`ADR_20260806_1340_Audit_Event_Transaction_Boundary`](../adr/ADR_20260806_1340_Audit_Event_Transaction_Boundary.md) — **APPROVED**, then implemented exactly as recorded. **No deviations.**
+
+**Four functional lines of production change:**
+
+| Change | Where |
+|---|---|
+| `pgsql_audit` connection — same database, separate PDO connection, inheriting `DB_*` so no environment needs new configuration | `config/database.php` |
+| `protected $connection = 'pgsql_audit';` — **the line that makes the config live** | `app/Models/ElectionSecurityEvent.php` |
+| `trust_state_transition` now written *(no semantics invented — both endpoints were already recorded)* | `SecurityEventRecorder` |
+| `\Exception` -> `\Throwable` | `SecurityEventRecorder` |
+
+**Verified:**
+
+* ✅ **The vote persists** — `demo_votes = 1`, `demo_results = 2`.
+* ✅ **I-1 proven by the real failure, not a mock:** the audit `INSERT` still fails (`overlay_influence_chain`, pending `PBDIGIT-42`) and **the vote survived**. `25P02` occurrences in that request's own log: **0**.
+* ✅ 🔒 **Anonymity holds** (ADR-T11) — no linkage column, no stored value equal to the voter's `user_id`, and the indirect `voting_code` join returns zero rows.
+* ✅ **The journey completes** — the final submission redirects to `verify-show`, which renders **200**.
+* ✅ **The real path is fixed by the same change** — `VoteController::store()` has the identical shape, and the binding is at the model, so no second edit was needed.
+* ⛔ **I-2 still blocked on `PBDIGIT-42`** — no audit row can be written at all.
+* 🧪 `tests/Feature/AuditEventTransactionIsolationTest.php` — 3 tests, 6 assertions, green.
+
+**Discovered while verifying, recorded not fixed:** `demo_votes.voting_code` is never populated -> **`PBDIGIT-43`**, which also carries the Product Owner's rule that the code must be derived from `vote_id` and never from `code_id` *(an anonymity rule, not a naming preference)*.
+
+**Correction issued:** `PBDIGIT-40`'s severity was **overstated** — `thank-you` is reachable and broken, but it is **not** on the voting happy path. Downgraded to Low, with the reasoning recorded there.
 
 ---
 
