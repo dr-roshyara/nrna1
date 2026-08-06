@@ -118,3 +118,109 @@ Each per-capability review would answer: implemented? · quality? · tested? · 
 | Status | overview complete — **STOPPED**, awaiting selection of the next review or of the verification run |
 
 **Traceability:** `app/Http/Controllers/{ResultController:18,29,36,38,67,74,106,170,225 · CandidacyController · CandidacyApplicationController · Election/CandidacyReviewController · Election/CandidacyManagementController · Election/ElectionManagementController:855 · VoterlistController}` · `app/Services/{RealVotingService,DemoVotingService,VotingService}.php` · `app/Helpers/ElectionAudit.php` · `app/Models/{ElectionAuditLog,Result,Candidacy}.php` · `app/Http/Middleware/VoterSlugStep.php` · `app/Console/Commands/{PublishResults,UnpublishResults}.php` · `routes/election/electionRoutes.php:151-163,202,203,280,487-520` · `routes/organisations.php:281` · `routes/platform.php:21,24` · `tests/Feature/{Phase6EndToEndIntegrationTest,RealWorldVotingFlowTest}.php` · `tests/Integration/CompleteVotingFlowIntegrationTest.php` · `docs/DOUBLE_VOTE_PREVENTION_ANALYSIS.md` · `docs/election/`, `docs/election_management/`
+
+---
+
+# §B — Appendix: alignment with the completed method (added 2026-08-06)
+
+This document predates the method's four mandatory closing artifacts. **Aligned by addition; the body above is unchanged.** Unlike the Architecture Discovery Report, a customer journey *is* legitimately derivable here — the eight customer questions in §1 already are one, in question form. It is restated as a journey below, not invented.
+
+## B.1 — Customer journey
+
+```
+Organisation created
+        ↓
+Election created                    → approved by the platform
+        ↓
+Election configured                 → posts, selection rules
+        ↓
+Candidates register                 → and are approved
+        ↓
+Voters registered                   → and verified, codes issued
+        ↓
+Voting opened  →  votes cast  →  voting closed
+        ↓
+Votes counted                       → and the count verified
+        ↓
+Results published                   → and exportable
+        ↓
+Election audited                    → and archived
+```
+
+Each step maps 1:1 to a question in §1 and a row in §2.
+
+## B.2 — Capability readiness verdict
+
+One line per capability — the executive answer the dashboard implied but never stated.
+
+| Capability | Verdict |
+|---|---|
+| Create election | **Ready for verification** |
+| Configure election | **Ready for verification** |
+| Candidate registration | **Ready for verification** |
+| Candidate approval | **Ready for verification** |
+| Voter registration | **Ready for verification** |
+| Voter verification | **Ready for verification** |
+| Open / close voting | **Ready for verification** |
+| Vote (5-step journey) | **Ready for verification — with a known route defect** (P-5) |
+| **Count votes** | **⚠️ HIGH RISK** — no domain model, no named test (P-2) |
+| Verify the count | **Ready for verification** |
+| Publish results | **Ready for verification — governance gap** (P-3 unpublish) |
+| Export results | **PARTIAL** — live PDF route unconfirmed |
+| Audit | **Ready for verification** — best-tested capability |
+
+**No capability is "Ready".** Eleven are *ready for verification*, one is high-risk, one is partial.
+
+## B.3 — Risk heat map (business risk, not code severity)
+
+| Risk | Finding | Why it ranks here |
+|---|---|---|
+| **Critical** | **Counting has no domain model** (P-2) — a query-builder aggregation in a controller, no named test | a wrong count is the worst possible failure for a voting product, and this is its least-protected capability |
+| **High** | **No end-to-end run has ever been recorded** (P-1) | product readiness is *unknown*, not merely unproven — every other judgement inherits this |
+| **High** | **Unpublishing sits outside the constitution** (P-3) | a published result can be withdrawn through an ungoverned path — a customer-trust question |
+| Medium | Voter journey ↔ lifecycle vocabularies disjoint (P-4) | closing voting mid-ballot has no defined meaning in the model |
+| Medium | Duplicate voter-journey route definitions (P-5) | a voter action may reach the wrong handler; precedence unverified |
+| Medium | No deployment documentation (P-6) | blocks going live, not using the product |
+| Low | `/vote/submit_seleccted` typo | cosmetic on a public path |
+| Low | Architecture debt (§3b) | raises the cost of *changing*, not of *using* |
+
+## B.4 — Business Outcome
+
+```
+Business Outcome
+
+Today     The software appears capable of supporting a complete election —
+          every one of the eight customer questions answers YES in code.
+          But nobody has demonstrated that the complete journey succeeds at
+          runtime, and the capability that produces the RESULT is the least
+          protected part of the system.
+
+Therefore Product readiness is UNKNOWN — not low, not high. Unknown.
+
+Expected  One recorded end-to-end run, after which readiness becomes a fact
+          instead of an inference, and counting is protected in proportion to
+          its consequence.
+```
+
+## B.5 — Findings Table
+
+| # | Finding | Type | Priority | Needs business decision | Needs code | Verified |
+|---|---|---|---|---|---|---|
+| **P-1** | No recorded end-to-end run — readiness is unknown | **Product** | **Critical** | No — needs an *environment*, not a decision | No | No |
+| **P-2** | Counting has no domain model, service or named test | **Product** | **Critical** | Maybe — how defensible must the count be? | Yes | No |
+| **P-3** | `unpublish_results` outside the constitution | **Product** | **High** | **Yes** — who may withdraw a result? | Yes | No |
+| **P-4** | Voter journey ↔ lifecycle vocabularies disjoint | **Product** | Medium | **Yes** — what happens to a mid-ballot voter? | Yes | No |
+| **P-5** | Voter-journey routes defined twice; precedence unverified | **Product** | Medium | No | Yes | No |
+| **P-6** | No deployment documentation | **Technical** | Medium | No | Yes | No |
+| **P-7** | `/vote/submit_seleccted` misspelled public path | **Product** | Low | No | Yes | No |
+| — | Architecture debt register (§3b: `L-1`, `L-2`, `E-1`, `E-4`, `E-5`, `R-1`, `R-4`, `C-1`, `M-1`…`M-4`) | **Architecture / Technical** | Low–Medium | No | Yes | No |
+
+## B.6 — Authorization boundary (appendix)
+
+| | |
+|---|---|
+| Code changed | **none** |
+| Architecture proposed | **none** |
+| Solutions recommended | **none** — B.2/B.3 rank existing findings, they do not add any |
+| Body of the original report | **unchanged** |
+| Status | **STOPPED** — awaiting the verification run (`PBDIGIT-00`) |

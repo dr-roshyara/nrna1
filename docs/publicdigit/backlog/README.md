@@ -91,9 +91,11 @@ Every story answers one question: **"Could a customer complete this step today?"
 | `VERIFIED` | a human ran it and recorded the result |
 | `BLOCKED` | waiting on a named dependency |
 
-## Review process per capability (9 phases — never reversed)
+## Product Capability Review — 9 phases, never reversed
 
-The standard capability review, reusable for **any** capability (Elections, Membership, Finance, Appointments, …) — and, because it starts from the customer rather than from aggregates, for domains other than governance. Established by `PBDIGIT-29`; **customer-first, business-second, framework-last.**
+**Name (proposed, 2026-08-06):** *Product Capability Review*. Earlier working names — "Architecture Discovery", "Capability Review" — no longer describe it: every application now starts from the customer, measures a business capability, separates product issues from technical debt, and ends in evidence-based product readiness. **The name is proposed for use at promotion time; the documents already written keep their titles** (renaming them would break the record of the method's evolution).
+
+Reusable for **any** capability (Elections, Membership, Finance, Appointments, …) — and, because it starts from the customer rather than from aggregates, for domains other than governance. Established by `PBDIGIT-29`; **customer-first, business-second, framework-last.**
 
 | Phase | Question it answers | Output |
 |---|---|---|
@@ -110,17 +112,6 @@ The standard capability review, reusable for **any** capability (Elections, Memb
 ### Every review closes with these four artifacts
 
 *(plus a **Method Assessment** that must answer **"what surprised us?"** — an expected-vs-observed table. A surprise is evidence the method investigated rather than confirmed; its absence is a warning sign.)*
-
-**4 · Authorization Boundary** — mandatory, and stated as a table of negatives:
-
-```
-Code changed          none
-Architecture proposed none
-Solutions recommended none
-Status                STOPPED — awaiting <named decision>
-```
-
-It makes the commission's scope unambiguous *afterwards*, not only in intent — and it is the artifact that stops a review from quietly becoming a redesign.
 
 **1 · Business Outcome** — the finding in one customer sentence, not one engineering sentence:
 
@@ -144,6 +135,17 @@ It is the bridge from discovery to testing. It separates *"code exists"* from *"
 | *(one row per finding)* | Product · Technical · Architecture | High/Med/Low | Yes / No / Maybe | Yes / No | Yes / No |
 
 **Product findings and Technical findings are never mixed.** A customer landing in the wrong organisation is a *product* finding; fifteen writers of a session key is a *technical* one. They compete for different attention and are prioritised differently.
+
+**4 · Authorization Boundary** — mandatory, stated as a table of negatives:
+
+```
+Code changed          none
+Architecture proposed none
+Solutions recommended none
+Status                STOPPED — awaiting <named decision>
+```
+
+It makes the commission's scope unambiguous *afterwards*, not only in intent — and it is the artifact that stops a review from quietly becoming a redesign.
 
 ### Three rules that make the method work
 
