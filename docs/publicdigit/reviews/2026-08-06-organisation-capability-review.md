@@ -194,23 +194,45 @@ Expected  A customer declares how their organisation is governed, activates it,
 
 ---
 
+# Capability Verdict
+
+One line per area — the thirty-second read.
+
+| Area | Verdict |
+|---|---|
+| Organisation creation | **Ready for verification** |
+| Ownership assignment | **Ready for verification** |
+| Configuration (membership mode · language · geography) | **Ready for verification** |
+| Joining & invitations | **Ready for verification** |
+| Roles & participants | **Ready for verification** |
+| **Governance configuration** | **NOT OPERATIONAL** — the code exists and cannot be reached |
+| **Governance activation** | **IMPOSSIBLE** — requires a state nothing can write |
+| Organisation dashboard | **PARTIAL** — self-reported 40% |
+
+**No area is "Ready"** — nothing in this capability has been observed running. Two areas are worse than unverified: they cannot run at all.
+
+---
+
 # Findings Table
 
-| # | Finding | Type | Priority | Needs business decision | Needs code | Verified |
-|---|---|---|---|---|---|---|
-| **G-1** | **Governance lifecycle unreachable** — `GovernanceSetupController` has no route; `governance_status` never leaves `pending_setup` | **Product** | **High** | **Yes** — is Lifecycle B still wanted? | Yes | No |
-| **G-2** | **`activateGovernance` is permanently false** — it requires `governance_configured`, which nothing can write | **Product** | **High** | Yes (follows G-1) | Yes | No |
-| **G-3** | Two of four declared governance states (`active`, `suspended`) are written by nothing | **Product** | **High** | **Yes** — are they real states? | Yes | No |
-| **G-4** | Organisation dashboard self-reported at **40%** — the owner's "state at a glance" is incomplete | **Product** | Medium | **Yes** — what must it show? | Yes | No |
-| **G-5** | `OrganisationCreated` dispatched with zero listeners; consequence inline in the controller — **the second occurrence of this pattern** (also `PBDIGIT-29` F-9) | **Architecture** | Medium | Maybe | Yes | No |
-| **G-6** | `Organisation` is a 21-attribute data aggregate with no state-transition behaviour | **Architecture** | Medium | No | Yes | No |
-| **G-7** | Dead production code: `GovernanceSetupController` (unreachable) | **Technical** | Low | No | Yes | No |
-| **G-8** | Two route-binding styles for one concept across two route files (`{slug}` vs `{organisation:slug}`) | **Technical** | Low | No | Yes | No |
-| **G-9** | `store()` does seven things in one method (validate · slug · persist · role · context · log · dispatch) | **Technical** | Low | No | Yes | No |
-| **G-10** | `.bak` duplicates of four organisation test files | **Technical** | Low | No | Yes | No |
+**Class** distinguishes remediation paths: **BROKEN** = the feature exists but cannot execute · **MISSING** = the business wants it and it was never built · **INCONSISTENT** = it works, but is described more than one way. **Confidence** = how strongly the evidence supports the conclusion.
 
-**Product findings: G-1…G-4** — all four need a business answer before code.
-**Architecture: G-5, G-6** · **Technical: G-7…G-10.**
+| # | Finding — *Product findings lead with customer impact* | Class | Type | Priority | Confidence | Needs business decision | Needs code | Verified |
+|---|---|---|---|---|---|---|---|---|
+| **G-1** | **The customer cannot declare how their organisation is governed.** The setup screen cannot be reached at all: `GovernanceSetupController` has no route, so `governance_status` never leaves `pending_setup` | **BROKEN** | **Product** | **High** | **High** — controller has zero references repo-wide | **Yes** — is Lifecycle B still wanted? | Yes | No |
+| **G-2** | **The customer can never activate governance.** The organisation stays permanently in setup: `activateGovernance` requires `governance_configured`, which nothing can write | **BROKEN** | **Product** | **High** | **High** — policy condition + absent writer both verified | Yes (follows G-1) | Yes | No |
+| **G-3** | **Two governance states the customer might expect — "active" and "suspended" — do not exist in practice.** They are declared in the schema comment and written by nothing | **MISSING** | **Product** | **High** | **High** — repo-wide search for both writes | **Yes** — are they real business states? | Yes | No |
+| **G-4** | **The owner cannot see the state of their organisation at a glance.** The dashboard is self-reported at 40% | **MISSING** | **Product** | Medium | **Medium** — 40% is the project's own estimate, not measured here | **Yes** — what must it show? | Yes | No |
+| **G-5** | `OrganisationCreated` dispatched with zero listeners; consequence inline in the controller — **second occurrence** (also `PBDIGIT-29` F-9) | INCONSISTENT | **Architecture** | Medium | **High** — `$listen` absence + `shouldDiscoverEvents(): false` | Maybe | Yes | No |
+| **G-6** | `Organisation` is a 21-attribute data aggregate with no state-transition behaviour | INCONSISTENT | **Architecture** | Medium | **Medium** — an interpretation of the model's shape, not a defect | No | Yes | No |
+| **G-7** | Dead production code: `GovernanceSetupController` is unreachable | BROKEN | **Technical** | Low | **High** | No | Yes | No |
+| **G-8** | Two route-binding styles for one concept across two route files (`{slug}` vs `{organisation:slug}`) | INCONSISTENT | **Technical** | Low | **High** | No | Yes | No |
+| **G-9** | `store()` does seven things in one method (validate · slug · persist · role · context · log · dispatch) | INCONSISTENT | **Technical** | Low | **High** | No | Yes | No |
+| **G-10** | `.bak` duplicates of four organisation test files | INCONSISTENT | **Technical** | Low | **High** | No | Yes | No |
+
+**By class:** BROKEN — G-1, G-2, G-7 (a path exists; wire it or delete it) · MISSING — G-3, G-4 (decide whether it is wanted, then build) · INCONSISTENT — G-5, G-6, G-8, G-9, G-10 (consolidate).
+**By type:** Product G-1…G-4 (all need a business answer first) · Architecture G-5, G-6 · Technical G-7…G-10.
+**Confidence:** eight High, two Medium — and both Medium items are marked so because they rest on an interpretation or on someone else's estimate, not on a file:line fact.
 
 ---
 

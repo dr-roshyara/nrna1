@@ -128,11 +128,17 @@ Expected  the customer always returns to the organisation they last chose.
 
 It is the bridge from discovery to testing. It separates *"code exists"* from *"it runs"* from *"a regression would be caught"* — and it asks of each test **which business rule it actually protects**, not merely whether a test exists.
 
-**3 · Findings Table** — what happens next, for every finding:
+**3 · Capability Verdict + Findings Table** — the thirty-second read, then what happens next:
 
-| Finding | Type | Priority | Needs business decision | Needs code | Verified |
-|---|---|---|---|---|---|
-| *(one row per finding)* | Product · Technical · Architecture | High/Med/Low | Yes / No / Maybe | Yes / No | Yes / No |
+*Capability Verdict* — one line per area: `Ready for verification` · `PARTIAL` · `NOT OPERATIONAL` · `IMPOSSIBLE`. **Never "Ready"** without runtime evidence.
+
+| Finding | Class | Type | Priority | Confidence | Needs business decision | Needs code | Verified |
+|---|---|---|---|---|---|---|---|
+| *(one row)* | BROKEN · MISSING · INCONSISTENT | Product · Architecture · Technical | High/Med/Low | High/Med/Low | Yes / No / Maybe | Yes / No | Yes / No |
+
+- **Class** encodes the **remediation path**, which Type does not: *BROKEN* = exists but cannot execute (wire it or delete it) · *MISSING* = wanted but never built (decide, then build) · *INCONSISTENT* = works, described more than once (consolidate).
+- **Confidence** states how strongly the evidence supports the conclusion. Anything resting on an interpretation, or on someone else's estimate rather than a `file:line` fact, is **not High**.
+- **Product findings lead with customer impact** — *"the customer cannot declare how their organisation is governed"*, not *"`activateGovernance` is unreachable"*. Technical findings stay technical.
 
 **Product findings and Technical findings are never mixed.** A customer landing in the wrong organisation is a *product* finding; fifteen writers of a session key is a *technical* one. They compete for different attention and are prioritised differently.
 
@@ -177,7 +183,26 @@ Validation complete  →  Evidence available  →  Decision Authority review  �
 
 Three observations is *repeated observation*, not a standard (`ES-006.1`). The **refutation** is the most useful row: it shows the method discriminates rather than confirming what it looked for first.
 
-**Process status: ROUTINE USE.** Further improvement comes from repeated use on future capabilities — never from designing additional phases or templates.
+## ⛔ The freeze, with an actual gate
+
+**Honest record: the freeze has been declared and then breached four times** (Phase 0 + Business Outcome + Findings Table → "what surprised us" + pattern re-abstraction → Authorization Boundary + naming → Capability Verdict + Class + Confidence). Every round was individually justified. **That is what methodology inflation looks like from the inside** — nobody ever adds a phase for a bad reason.
+
+**The cause is structural, and it is the same defect this method keeps finding in the code:** a rule that is *declared* but has no *enforcement point*. See the 3/3 pattern *"the business lifecycle has no single authoritative representation"* — our own process had exactly that shape.
+
+**So the freeze now has a gate rather than an intention:**
+
+| | |
+|---|---|
+| **Refinements may only be adopted** | at a **Method Retrospective**, never during or immediately after a review |
+| **A retrospective may be held** | after **three further applications** (target capabilities: Finance · Appointment · Audit · Notification · Authentication — any three) |
+| **Applications to date** | **3** — Election · Organisation · Membership |
+| **Next retrospective eligible at** | **6 applications** |
+| **In between** | refinement candidates are **parked in writing** (see the parked list above) and **not applied**, no matter how well justified |
+| **Exception** | a refinement may be adopted mid-cycle **only** if a review could not be completed without it — a blocking defect, not an improvement |
+
+**Promotion is further out still:** ~8–10 applications, then a Decision Authority review of whether the value is repository-independent. Validation ≠ promotion.
+
+**Process status: ROUTINE USE — parked, not evolving.**
 
 ---
 
