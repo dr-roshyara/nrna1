@@ -38,7 +38,13 @@ Closing `PBDIGIT-30` showed why the discipline pays rather than merely constrain
 
 > **Discover the fundamental rules first, and many scenario questions disappear on their own.**
 
-**Candidate corollary:** discovery that answers scenarios one by one *manufactures* decisions. Discovery that finds the fundamental rules *dissolves* them. And a derived consequence needs **no ruling, no owner and no maintenance** — it cannot drift from its parents, because it *is* its parents applied to a case. An independently answered scenario can drift.
+**Candidate corollary — and it is a triage rule, not a prohibition:**
+
+> **When a scenario question cannot be derived from the fundamental rules, it reveals either a missing business rule or a new product decision. Discovery should distinguish those two cases rather than invent an answer.**
+
+*(Earlier drafting said "answering scenarios one by one manufactures decisions." That is too strong: some scenarios genuinely need their own rule, and the failure is not answering them — it is failing to ask which of the two kinds they are. B4 was the second kind answered as though it were the first.)*
+
+The pay-off, when derivation does succeed: a derived consequence needs **no ruling, no owner and no maintenance** — it cannot drift from its parents, because it *is* its parents applied to a case. An independently answered scenario can drift.
 
 ## Assessment against the four promotion tests
 

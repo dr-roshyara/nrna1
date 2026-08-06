@@ -2368,7 +2368,7 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 | `PBDIGIT-27` case-sensitive imports | **FIXED** — home page + build unblocked; awaiting browser verification |
 | `PBDIGIT-28` missing-module imports | **FIXED** — 0 unresolved live imports |
 | `PBDIGIT-29` Organisation Context Discovery | **DISCOVERY COMPLETE** (rev 3) — Q1/Q2 still open, and **not** prerequisites for `PBDIGIT-32` |
-| `PBDIGIT-30` Working Organisation business lifecycle | ✅ **DISCOVERY OF THE BUSINESS CONCEPT COMPLETE** — closed after **B1** identity · **B2** lifecycle · **B3** authority · **B10** election-day exception. **B4 withdrawn** → `PBDIGIT-34`; **B5–B7 need no additional rules** (derived consequences of B1–B3); **B8/B9** rule decided, *experience* open (design) |
+| `PBDIGIT-30` Working Organisation business lifecycle | ✅ **DISCOVERY OF THE BUSINESS CONCEPT COMPLETE** — closed after **B1** identity · **B2** lifecycle · **B3** authority · **B10** election-day exception. **B4 withdrawn** → `PBDIGIT-34`; **B5–B7 need no additional rules** (derived consequences of B1–B3); **B8/B9** need no further discovery **under B1–B3 as they stand** — new business behaviour would reopen them |
 | `PBDIGIT-31` redirection-mechanism review | **COMPLETE** — robustness 4/5; the mechanism is sound and **missing two destinations**, not wrong in kind |
 | `PBDIGIT-32` implement Working Organisation routing | ⬜ **UNBLOCKED, NOT AUTHORISED** — the rules are settled; the work is not approved |
 | `PBDIGIT-33` routing-cache invalidation | **FIXED** — observer wired + UUID type corrected; awaiting browser verification |

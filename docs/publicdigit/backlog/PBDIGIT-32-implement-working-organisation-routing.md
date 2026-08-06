@@ -7,7 +7,7 @@
 |---|---|
 | **Status** | ✅ **UNBLOCKED — ready for authorisation** |
 | **Business rules settled** | **B1** identity · **B2** lifecycle · **B3** authority (+ traceability) · **B10** election-day exception — all approved, `PBDIGIT-30` **closed** 2026-08-06 |
-| **Why implementable now** | B5/B6/B7 require **no additional business rules — they are derived consequences of B1–B3**. B8/B9 have their *rule* decided by the same derivation; only the *experience* is open, and that is design. **B4 was withdrawn** (product design, not discovery) → `PBDIGIT-34` |
+| **Why implementable now** | B5/B6/B7 require **no additional business rules — they are derived consequences of B1–B3**. B8/B9 need **no further discovery under B1–B3 as they stand** (only the *experience* is open, and that is design) — **but new business behaviour, e.g. an appeal flow before redirect, would reopen them**. **B4 was withdrawn** (product design, not discovery) → `PBDIGIT-34` |
 | **Still open, and NOT prerequisites** | `PBDIGIT-34` cross-login memory *(an enhancement — this story must not implement it)* · `PBDIGIT-29` Q1/Q2 *(is the concept a field or a type; which store is authoritative)* · B8/B9 experience design |
 | **Needs** | **authorisation to begin** — the rules are settled; the work is not yet approved |
 

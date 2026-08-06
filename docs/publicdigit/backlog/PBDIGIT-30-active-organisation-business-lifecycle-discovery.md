@@ -9,7 +9,7 @@
 | **Delivered** | **B1** identity · **B2** lifecycle · **B3** authority · **B10** election-day exception — the core business rules of the Working Organisation |
 | **Closed by** | Product Owner. **Rationale:** the remaining topics — persistence across logins, expiry, per-device vs per-person, concurrent sessions — describe **additional product capabilities**, not the discovery of the existing Working Organisation concept |
 | **Withdrawn** | **B4** — drifted into product design (see §B4) → `PBDIGIT-34` |
-| **Reclassified** | **B5 · B6 · B7** require **no additional business rules — they are derived consequences of B1–B3** (see §Closure) · **B8 · B9** retain only an *experience* question, which is design, not discovery |
+| **Reclassified** | **B5 · B6 · B7** require **no additional business rules — they are derived consequences of B1–B3** (see §Closure) · **B8 · B9** need **no further discovery under B1–B3 as they stand**, leaving only an *experience* question — **but new business behaviour would reopen them** |
 | **Unblocks** | **`PBDIGIT-32`** — implement and verify B1–B3 (+B10) |
 
 > **The purpose of this story was to discover the business rules the product already implies — not to design every future enhancement before the current product is made robust.** It stopped at the point where the two diverge.
@@ -511,8 +511,8 @@ If B4 is approved as drafted, two things follow for `PBDIGIT-32`:
 | **B5** | What happens after *Organisation Created*? | ✅ **no additional rule required — a derived consequence** of **B1.2** (it becomes the Working Organisation) + **B2.1a** (a voluntary change) + **B3 A-1** (the user's own authority) |
 | **B6** | What happens with exactly one organisation? | ✅ **no additional rule required — a derived consequence** of **B1.3** (enter it automatically) + **B3 Clarification 2** (one valid outcome is not a choice) |
 | **B7** | What happens with multiple organisations? | ✅ **no additional rule required — a derived consequence** of **B1.3** (show selection) + **B1.4** (never guess) + **B3 A-1** (only the user may choose) |
-| **B8** | What if the current organisation is deleted? | ⚠️ **rule answered, experience open** — **B2.1e** (a forced change) + **B3 A-2** (platform authority on invalidity) + **B1.3** (deterministic destination). What the user *sees* is **UX design**, not business discovery |
-| **B9** | What if membership is revoked? | ⚠️ **rule answered, experience open** — identical treatment to B8 |
+| **B8** | What if the current organisation is deleted? | ⚠️ **no further discovery needed under B1–B3 as they stand** — **B2.1e** (a forced change) + **B3 A-2** (platform authority on invalidity) + **B1.3** (deterministic destination). What the user *sees* is **UX design**. **Reopens as discovery if the Product Owner introduces new business behaviour** |
+| **B9** | What if membership is revoked? | ⚠️ **identical treatment to B8, and the same condition applies** — e.g. an appeal flow before redirect would be *new business behaviour*, not an experience choice |
 
 ### Why B5–B7 needed no ruling — the lesson worth carrying forward
 
@@ -524,14 +524,26 @@ Nobody ruled on *"what happens when the user has exactly one organisation?"* Wha
 
 That is the distinction between *"already answered"* and *"a derived consequence"*, and it is worth stating precisely: a derived consequence needs **no ruling, no owner and no maintenance** — it cannot drift from B1–B3, because it *is* B1–B3 applied to a case. An independently answered question could drift.
 
-**Practical implication:** the original nine questions overestimated how many decisions were needed. **Three fundamental rules retired five scenario questions.** A future discovery story should expect the same and resist answering scenarios one by one.
+**Practical implication:** the original nine questions overestimated how many decisions were needed. **Three fundamental rules retired five scenario questions.**
 
-B8 and B9 have their *rule* decided by the same derivation; only the *experience* remains open, and an experience is designed, not discovered.
+**The rule this yields is a triage rule, not "never answer scenarios":**
+
+> **When a scenario question cannot be derived from the fundamental rules, it reveals either a missing business rule or a new product decision. Discovery should distinguish those two cases rather than invent an answer.**
+
+B4 is precisely a **new product decision** that was being answered as though it were a **missing business rule** — which is why it drifted.
+
+### B8 and B9 — derived under the rules as they stand today
+
+**Given the currently approved B1–B3, B8 and B9 no longer require additional discovery — unless the Product Owner introduces new business behaviour.**
+
+That qualifier is not decoration. The derivation *deleted organisation → forced change* and *revoked membership → forced change* follows from B2.1e and B3 A-2, but it is still an **interpretation** of approved rules. **If the Product Owner decides, say, that a revoked member should meet a temporary appeal flow rather than an immediate redirect, that is new business behaviour and a new business rule follows** — B8/B9 would reopen as discovery, not merely as design.
+
+**So B8/B9 are closed conditionally, and the condition is recorded rather than assumed.** What remains open **today** is the *experience*, and an experience is designed, not discovered.
 
 ## What this closure deliberately does **not** claim
 
 - **It does not claim the product is complete.** Cross-login memory, expiry policy, per-device behaviour and concurrent sessions are **real product questions** — they are simply **enhancements**, and they belong after the current rules are implemented and verified.
-- **It does not claim B8/B9's experience is unimportant** — only that designing it is not this story's job.
+- **It does not claim B8/B9's experience is unimportant** — only that designing it is not this story's job. **Nor does it claim B8/B9 are settled for all time:** they are derived from B1–B3 *as approved today*, and new business behaviour would reopen them as discovery.
 - **It does not resolve `PBDIGIT-29` Q1/Q2** (is the concept a field or a type; which store is authoritative). Those remain open and are **not** prerequisites for implementing B1–B3.
 
 ## The discipline this closure protects

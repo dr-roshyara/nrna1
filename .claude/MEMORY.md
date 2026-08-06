@@ -753,7 +753,9 @@ Conventions proven in PB003: certification decisions are scope-qualified ("PB003
 | **B3** | authority: user (primary) · platform **only** on invalidity · administrator **No** · anything else **Never**. **No mechanism may *establish* one — only validate, consume or store it.** *The platform shall always be able to explain why the current Working Organisation was established* |
 | **B10** | one eligible election today → enter it, **only** at login or platform root |
 
-**B5–B9 need no additional business rules — they are derived consequences of B1–B3** (B8/B9 keep an open *experience* question, which is design). **B4 was withdrawn** as design-not-discovery → `PBDIGIT-34`, an unprioritised question that blocks nothing.
+**B5–B7 need no additional business rules — they are derived consequences of B1–B3.** **B8/B9 need no further discovery *under B1–B3 as they stand*** (only the experience is open, which is design) — **but new business behaviour reopens them as discovery**, e.g. if a revoked member should meet an appeal flow rather than an immediate redirect. **B4 was withdrawn** as design-not-discovery → `PBDIGIT-34`, an unprioritised question that blocks nothing.
+
+**Modelling vocabulary — adopted term: "derived consequence".** Not *"already answered"* (which only means somebody ruled earlier), but *"no longer an independent rule"*. A derived consequence has **no owner, no maintenance and cannot drift**, because it *is* its parents applied to a case. **Triage rule that goes with it:** *when a scenario question cannot be derived from the fundamental rules, it reveals either a **missing business rule** or a **new product decision** — distinguish the two rather than invent an answer.* B4 was the second answered as though it were the first.
 
 **⚠️ Unresolved and load-bearing: two eligibility mechanisms exist and neither is authoritative** — `User::getActiveElection()` vs `VoterEligibilityService`/`EligibilityEvaluator`/`EligibilitySnapshot`. B10 forbids a second mechanism, so this must be settled inside `PBDIGIT-32` (`PBDIGIT-EPIC-02` MB-5 records the same concern).
 
