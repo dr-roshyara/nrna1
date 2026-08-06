@@ -14,7 +14,15 @@
 
 ### The sentence the pattern reduces to
 
-> **Move the consumers of the capability from the legacy representation to the authoritative model.**
+> **Move consumers of the business capability from the legacy representation to the authoritative representation.**
+
+**Every clause is load-bearing:**
+
+| Clause | Why it is there |
+|---|---|
+| *consumers* | the unit of work — not fields, not tables, not the schema |
+| *of the business capability* | anchors the migration in **what the system does for someone**, so slices are named by capability restored rather than by file touched |
+| *from the legacy representation to the authoritative representation* | both are **representations**. Neither is the concept. **The capability is what matters; the representation is implementation** |
 
 **It generalises without modification, and the generalisation is the test of whether this belongs in KnowledgeOS at all:**
 
@@ -83,6 +91,28 @@
 | Domain changes | likely | **none** |
 
 > **Misclassifying the second as the first produces a redesign nobody needed.** In the source case the domain model was already correct and complete; every hour spent debating ownership was an hour not spent finding readers.
+
+## The Legacy Modernization Principle — the sequence the pattern implies
+
+**The six steps reduce to one ordering, and the ordering is the whole discipline:**
+
+```
+        Authority  ->  Consumers  ->  Persistence
+
+   1. establish the authoritative model
+   2. migrate the consumers
+   3. retire the persistence
+```
+
+**Never the reverse:**
+
+```
+        Persistence  ->  Authority          <-  wrong
+```
+
+**Reasoning from persistence is what produces the classic failures:** dropping a column to force callers to change, synchronising two representations because both "exist", or debating which *table* is right when the question is which *model* is authoritative. **Each of those starts at step 3 and works backwards.**
+
+⚠️ **In the source case step 1 was already complete and nobody had noticed** — the authority was declared in code, with per-field replacements and an enforcement plan. **The first framing still opened a debate about ownership.** So the principle's first instruction is not "decide the authority" but **"check whether it has already been decided."**
 
 ## Evidence from the source case
 

@@ -6,7 +6,7 @@
 
 | | |
 |---|---|
-| **Status** | ⬜ **AWAITING AUTHORISATION** — the strategy is approved; the work is not |
+| **Status** | ✅ **STRATEGY APPROVED** by the Product Owner, 2026-08-06 · ⬜ **`58A` not yet started** — it is the first slice and changes only the guard wiring |
 | **Decision implemented** | **Option B — migrate the legacy consumers.** Approved by the Product Owner, 2026-08-06 |
 | **Permitted during migration** | ✅ **A Legacy Compatibility Adapter.** Legacy fields *may* be written from the lifecycle **while remaining consumers are migrated** — see §Legacy Compatibility Adapter |
 | **Rejected** | **Option A — permanent synchronisation.** Maintaining the legacy fields *indefinitely* so old readers can stay. That recreates today's condition rather than ending it |
@@ -29,7 +29,7 @@ No production capability may interpret lifecycle from legacy persistence fields.
 
 **`status`, `is_active` and `state` are persistence. They are not the problem — they are where the problem is visible.**
 
-> **The work is moving *consumers of the Election State capability* from a legacy representation to the authoritative lifecycle model. Once no consumer remains, the legacy representation becomes removable as a consequence — not as a task.**
+> **Move consumers of the Election State capability from the legacy representation to the authoritative representation.** Once no consumer remains, the legacy representation becomes removable as a consequence — **not as a task.**
 
 **Why the wording matters:** "replace the legacy fields" invites someone to start with a migration that drops columns. **"Migrate the legacy consumers" puts the columns last, where they belong** — and makes the Definition of Done a property of the *consumers* (zero readers), not of the schema.
 
