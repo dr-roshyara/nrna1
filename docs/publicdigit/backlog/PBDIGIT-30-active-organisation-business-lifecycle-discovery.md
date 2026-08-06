@@ -386,3 +386,80 @@ So an administrator has real power over *what a user may access*, and none over 
 ---
 
 **Business policy now complete for identity · lifecycle · authority:** **B1** what exists → **B2** when it changes → **B3** who may change it. **B4–B9 remain open** (B10 approved separately). `PBDIGIT-32` stays blocked.
+
+---
+
+## B4 — Is the Working Organisation remembered between logins? — 📝 **PROPOSED, NOT APPROVED**
+
+> **⚠️ Provenance.** Engineering draft, awaiting a Product Owner decision *(PREPARED → ADOPTED, cf. `R-90`)*. One sentence of confirmation adopts it; until then it binds nothing. Derived from B1–B3, B10 and the customer expectation recorded in `PBDIGIT-29` §0 — **not** from current behaviour.
+>
+> **The question as originally phrased asks two things.** *"Is it remembered?"* is a business question and is answered below. ***"Where is it remembered?"* is not a business question** — storage is a mechanism, and B3 already forbids any mechanism from becoming the authority. It is left to `PBDIGIT-32` / `PBDIGIT-29` Q2.
+
+### B4.1 · Is it remembered? — **Yes**
+
+> **A user's Working Organisation is remembered across logins. When a returning user signs in, the platform resumes the organisation they last worked in.**
+
+**Grounded in the customer's own expectation**, recorded in `PBDIGIT-29` §0: *"I log out and come back tomorrow — I expect to land where I left off."*
+
+### B4.2 · The crux — memory versus B1.3's "ask when there are several"
+
+**The apparent conflict:** B1.3 says a user with two or more real organisations is **shown the selection page**. B1.5 says the chosen organisation **persists**. For a returning user with three organisations, which governs?
+
+**Proposed resolution:**
+
+> **Remembering is not guessing.**
+>
+> **B1.3 governs when there is no valid remembered choice** — first entry, or the remembered organisation is gone. **A valid remembered choice governs otherwise**, and the user is resumed into it without being asked again.
+
+B1.4 forbids the platform from **guessing** among alternatives. Reproducing the user's **own** explicit decision is not a guess — it is the opposite of one. *(The same reasoning the Product Owner applied in B3: authority is exercised where a choice exists; here the choice was already made, by the user.)*
+
+**Consequence:** a user with several organisations is asked **once**, not on every login. Being asked repeatedly after having answered would be the platform forgetting, not the platform being careful.
+
+### B4.3 · When memory ends
+
+| Memory ends when… | Then |
+|---|---|
+| the user **explicitly chooses** a different organisation | that becomes the remembered choice (B2 voluntary) |
+| the remembered organisation is **no longer valid** — deleted · suspended · membership revoked | **forced change** (B2 forced, B3 A-2); destination follows B1.3 |
+| the user **creates** an organisation | that becomes the remembered choice (B1.2) |
+
+### B4.4 · Memory does not expire with time
+
+> **A remembered Working Organisation has no expiry. It ends because it was changed or became invalid — never because time passed.**
+
+A business fact about *where a person works* does not become false after an interval. **Any timeout is a mechanism artefact, and B3 forbids a mechanism from becoming the authority** — so a stored copy that ages out may cause the platform to *re-derive* the answer, but it may never cause the platform to *forget the user's choice*.
+
+*(Recorded because the platform currently keeps a **routing decision** for 300 s — see the consequence note below. A cached routing decision and a remembered choice are different things: one is an implementation artefact, the other a business fact.)*
+
+### B4.5 · Memory carries its reason
+
+> **Whatever remembers the choice must also remember why it was established** — user selected it · user created the organisation · platform replaced an invalid one.
+
+Direct consequence of **B3's traceability requirement**: an unattributable Working Organisation is a defect by definition, and that must remain true after a logout, not only during the session that created it.
+
+### B4.6 · Whose memory — the person, not the device
+
+> **The Working Organisation is remembered per person, not per device or per browser.**
+
+It is the user's working context (B3: *personal execution context*), so signing in elsewhere resumes the same organisation. **Flagged for the Product Owner:** some products deliberately scope this per device. If that is preferred here, B4.6 is the sentence to change — nothing else in B4 depends on it.
+
+### 🔒 B4 business invariant
+
+> **A user's Working Organisation persists until they change it or it becomes invalid. The platform asks which organisation to work in only when it has no valid remembered choice — never to re-confirm one the user has already made.**
+
+### B4 · Open edge, deliberately unanswered
+
+**Concurrent sessions.** If the same person is signed in twice and switches organisation in one place, what happens in the other? Not answered — no assumption is made about whether concurrent sessions are supported, and inventing a rule for a capability that may not exist would be guessing.
+
+### B4 · What B4 does not decide
+
+**Where** the memory lives, and in which of the four stores `PBDIGIT-29` found → **mechanism**, not business. The **experience** of returning to find the organisation deleted → **B8**, or membership revoked → **B9**. Whether a *routing* decision may be cached at all → an implementation question, deferred by `PBDIGIT-31` §10 to the implementation review.
+
+### B4 · Consequence for existing work
+
+If B4 is approved as drafted, two things follow for `PBDIGIT-32`:
+
+1. **Resuming a remembered organisation must not be confused with re-deriving a destination.** The platform currently keeps a **routing decision** for 300 s (`PBDIGIT-31` BR-4); under B4.4 that artefact may expire freely, but the user's **choice** must not.
+2. **A returning user with several organisations should not meet the selection page again.** Whether today's mechanism can distinguish *"never chose"* from *"chose, and we forgot"* is **not established** — `PBDIGIT-29` found no store that records the user's *choice* as such, only stores that hold *an* organisation. **That is a gap B4 creates work for, and it is stated as a question, not a finding.**
+
+**Decision needed:** approve, amend, or reject. **B5–B9 remain open.** `PBDIGIT-32` stays blocked.
