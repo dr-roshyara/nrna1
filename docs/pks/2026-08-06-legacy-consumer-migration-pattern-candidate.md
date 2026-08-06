@@ -4,7 +4,7 @@
 **Classification:** KnowledgeOS Candidate (operating-loop phases 13–14) — **FILED, NOT ADOPTED**
 **⚠️ PLACEMENT: `PENDING` — acknowledged, escalated, not hidden.** `scope: cross-product · maturity: research`; the resolver returns **`PENDING — placement unruled (rule: cross-product-research, ref: ADR:OQ-2)`**. Placed in `docs/pks/` on the **same interim, time-bounded exception** already recorded by the three existing candidates. **No new namespace invented** (ES-005.2). Expires when OQ-2/OQ-5 are ruled.
 
-**Why filed and not adopted:** the *problem* shape has n=3 **within one repository**; the *pattern* — the remedy — has been **applied zero times**. `PBDIGIT-58` is authorised-pending, not executed. **A pattern whose first application has not finished is a hypothesis.** Adoption is a Decision Authority act (`R-34`).
+**Why filed and not adopted:** the *problem* shape has **n=4 within one repository** (see §Evidence count); the *pattern* — the remedy — has been **applied zero times**. `PBDIGIT-58` is authorised-pending, not executed. **A pattern whose first application has not finished is a hypothesis.** Adoption is a Decision Authority act (`R-34`).
 
 ---
 
@@ -129,6 +129,34 @@
 > **A column name is not a consumer, and at scale text search cannot tell the difference.**
 
 **Step 5 is what makes completeness checkable.** The enforcement level advancing to strict *without violations* is a stronger claim than any inventory or review — **the mechanism proves the migration, rather than someone asserting it.**
+
+## Two corollaries added 2026-08-06 (from `PBDIGIT-60`) — same pattern, sharper failure modes
+
+**Corollary 1 — new functionality gets built against the deprecated representation.**
+
+> **During a legacy migration, defects arise not because two representations exist, but because new functionality is implemented against the deprecated one instead of the authoritative one.**
+
+Coexistence is the *intended* transitional state; it is not the defect. The defect is that the deprecated representation stays **writable and welcoming**, so the next feature reaches for it — and each such feature adds a consumer to the set the migration must move. **A migration that does not close the deprecated representation to *new* writers is not converging.** *(Observed: an "Unpublish Results" control written against the legacy boolean, after the authority had moved to the timestamp and the lifecycle engine.)*
+
+**Corollary 2 — a migration can inherit a conflation.**
+
+> **Before deciding where a legacy field's authority moved, establish how many business concepts it encodes.**
+
+`results_published` encoded **two**: *the election reached publication* (a constitutional fact) and *the public results page is reachable* (an operational control). Publication set both in one statement, so nothing ever revealed the seam. The migration moved the field's authority to the lifecycle — correct for the first concept, and it left the second **with no authority at all**, hence unimplementable except by writing the deprecated field.
+
+**Diagnostic value: this explains a class of "the migration broke a feature" reports.** If a capability can only be expressed by writing the legacy field, that is evidence the legacy field carried **more than one concept** and only one of them was migrated. **Symptom → look for a missing capability, not a missing column.**
+
+### Evidence count, stated honestly
+
+| | Count |
+|---|---|
+| **Problem shape**, documented in this candidate | **n=4** — `PBDIGIT-48` (election state) · `PBDIGIT-45` (votes-per-IP: env → snapshot) · `PBDIGIT-49` (voter eligibility) · `PBDIGIT-60` (results publication/visibility) |
+| **Conflation** specifically (Corollary 2) | **n=1** — `PBDIGIT-60`. `PBDIGIT-59` (`end_date` vs `voting_ends_at` = scheduled vs actual) is a **candidate second instance**, but it is undecided, so it is not counted |
+| **Remedy applied** | **n=0** — unchanged. `PBDIGIT-58` is authorised, not executed |
+
+**The Product Owner additionally cites the Working Organisation writers as an instance.** It is **not counted above**, because no ticket in `docs/publicdigit/backlog/` records that inventory, and an uncited instance cannot carry promotion weight (`ES-006.1`). If it is real it should be pointed at a ticket first.
+
+> **Four sightings of a problem is not four confirmations of a remedy.** The rung is unchanged: **observation**.
 
 ## Why this is not simply "delete the old field"
 

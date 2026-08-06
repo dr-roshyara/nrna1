@@ -1,107 +1,110 @@
-# PBDIGIT-60 — Results publication can be changed without a constitutional transition, and unpublishing is a one-way door
+# PBDIGIT-60 — Result visibility was modelled as a lifecycle action: one field conflates two business concepts
 
-**Type:** Defect (D-2) + governance decision required (D-1) · **Epic:** `PBDIGIT-EPIC-03` Election Management · **Created:** 2026-08-06
+**Type:** Domain model correction + defect · **Epic:** `PBDIGIT-EPIC-03` Election Management · **Created:** 2026-08-06 · **Revised:** 2026-08-06 (rev 2)
 **Found by:** the Product Owner, pointing at a "legacy voting button" on `/elections/namaste-2026-74d3721c/management`
-**Capability:** **Results Publication** — one capability, two write paths that bypass the state machine
+**Domain model supplied by:** the Product Owner — **it could not be derived from the repository**, and rev 1 of this ticket was wrong without it
 
 | | |
 |---|---|
-| **Status** | 🔴 **D-2 is a defect against an already-decided rule — fixable now** · 🟡 **D-1 requires a governance decision** |
-| **Customer impact** | 🔴 **The live real election `namaste 2026` is stuck.** Its results are unpublished, the lifecycle says `results_published`, and **the only remaining constitutional action is `archive`** — the chief cannot publish results again through the UI |
-| **Integrity impact** | 🔴 **A deputy can publish election results**, bypassing the chief-only gate, the `counting` precondition, and the pre-publish vote-integrity sweep |
-| **Does NOT belong in** | `PBDIGIT-58` (migrates consumers of `status`/`is_active`) · `PBDIGIT-59` (the *voting window* timestamps). Same disease, different concept — see §Relations |
+| **Status** | 🔴 **D-2 is a defect against an already-decided rule — fixable now** · 🟢 **D-1's bounded-context question is ANSWERED; the design that follows is open** |
+| **Diagnosis** | **The legacy visibility control was implemented as a lifecycle action instead of a visibility capability.** The button is labelled "Unpublish Results"; what the business meant was *hide the public results page during a dispute* |
+| **Integrity impact** | 🔴 **A deputy can write `results_published_at` directly through the timeline form** — fabricating the constitutional fact that results were published, at an arbitrary date, with no transition |
+| **Operational impact** | 🟡 **`namaste 2026`'s results are hidden with no supported way to show them again.** The lifecycle is *correct*; the missing thing is the capability |
+
+---
+
+## The domain model (Product Owner ruling, 2026-08-06)
+
+> **"Result Publication" is two business concepts, not one.**
+
+| Capability | Meaning | Mutability |
+|---|---|---|
+| **Election Lifecycle** | *This election reached `results_published`.* A constitutional fact. | **Immutable once true.** `counting → results_published → archived`. You cannot pretend publication never happened. |
+| **Result Visibility** | *The public results page is currently reachable.* An operational control. | **Toggleable** — hidden while a dispute is investigated, shown again afterwards. |
+
+The legacy behaviour was never "undo publication":
+
+```
+Results published → dispute → hide the public page → dispute resolved → show it again
+                              (the election stays published throughout)
+```
+
+## The conflation, proven
+
+`Election::applySideEffectsForPublishResults()` `:1905-1911` writes **both fields in a single statement**:
+
+```php
+->update([
+    'results_published'    => true,          // ← visibility
+    'results_published_at' => $currentTime,  // ← the constitutional fact
+```
+
+**Because publication set both at once, nothing ever revealed that they were two concepts.** The lifecycle then reads only the timestamp (`ElectionLifecycleEngineImpl::getState()` `:79`), and the public page reads only the boolean (`ResultController:23`). So the field pair already implements the correct model **by accident** — the boolean *is* the visibility flag, and it is misnamed.
 
 ---
 
 ## The two defects
 
-| | **D-1 — Unpublish bypasses the constitution** | **D-2 — The timeline form publishes results** |
+| | **D-1 — Result Visibility has no capability** | **D-2 — The timeline form writes publication state** |
 |---|---|---|
-| **Site** | `ElectionManagementController::unpublish()` `:873-889` | `ElectionManagementController::updateTimeline()` `:1459-1461` |
-| **What it does** | `$election->update(['results_published' => false])` | `if ($request->filled('results_published_at')) { $validated['results_published'] = true; }` |
-| **State machine** | not used | not used |
+| **Site** | `ElectionManagementController::unpublish()` `:873-889` | `ElectionManagementController::updateTimeline()` `:1418, :1452, :1459-1463` |
+| **What it does** | `$election->update(['results_published' => false])` under the label "Unpublish Results" | accepts `results_published_at` as editable input, and sets `results_published = true` when it is filled |
+| **Why it is wrong** | it presents a **visibility** change as a **lifecycle** action, so the capability is unnamed, unauthorised as itself, unaudited, and **one-way** | it lets a **deputy** write the constitutional publication fact, bypassing the chief-only gate, the `counting` precondition, and the integrity sweep `:820-838` |
 | **Authorised by** | `publishResults` (chief) | **`manageSettings` (chief *or deputy*)** |
-| **Nature** | an action the constitution never defined | a violation of a rule the constitution already decided |
-| **Needs** | **a governance decision** | **a fix** |
+| **Needs** | **design** — the model is now decided | **a fix** — the rule was already decided |
+
+**D-2 is the more severe of the two, and it is independent of the visibility redesign.** Publishing is chief-only by two decided rules (`ElectionPolicy:58-65`; `ElectionConstitution::RULES['publish_results']['allowed_roles'] = ['chief']`). `results_published_at` is the immutable constitutional fact — **it must be writable only by the `publish_results` transition, and never editable from a settings form.**
+
+**Verified, not assumed:** `Election` has `$guarded = []` and 72 fillable attributes, and **`results_published`, `results_published_at`, `state` and `status` are all mass-assignable** — so the timeline form's write does reach the database.
+
+> **Adjacent observation, deliberately not a new ticket** (discovery is frozen): **the constitutional `state` column is itself mass-assignable.** Any `update()` reached by validated input could write it. Nothing observed does — this is an unexercised gap, not a defect — but it is the protection that would have made both defects here impossible. It belongs with `PBDIGIT-48`'s retirement work, where the fields' writability is already the subject.
+
+**Note the irony:** the timeline form is currently the *only* working way to restore visibility on `namaste 2026`. **The escalation defect is also the accidental recovery path** — which is why D-2 must not be fixed by itself without D-1's control existing, or the election's results become unreachable by any supported route.
 
 ---
 
-## Verified facts
+## ⚠️ Withdrawn from rev 1 — two claims were wrong
 
-**F1 — `unpublish()` does not transition.** It writes the boolean directly. Its neighbours all use the state machine:
+Rev 1 read the boolean and the timestamp as competing authorities. Under the correct model they are **two different facts, both true**:
 
-| Method | Line | Mechanism |
-|---|---|---|
-| `publish()` | `:841-849` | `transitionTo(Transition::manual(action: 'publish_results', …))` |
-| `openVoting()` | `:894` | `transitionTo(… 'open_voting' …)` |
-| `closeVoting()` | `:919` | `transitionTo(… 'close_voting' …)` |
-| **`unpublish()`** | **`:879`** | **`$election->update(['results_published' => false])`** |
-
-**F2 — `unpublish_results` is not a constitutional action.** It appears in neither `ElectionAction` nor `ElectionConstitution::RULES`. **The UI offers a governance power that was never granted.** The `state` column is also left untouched, so the `ResultsUnpublishedEvent` it fires reports a `previousState` identical to the current one.
-
-**F3 — the engine derives state from the timestamp, which `unpublish()` never clears.** `ElectionLifecycleEngineImpl::getState()` `:79`:
-
-```php
-if ($election->results_published_at !== null) {
-```
-
-**F4 — measured on the live election, 2026-08-06 (after the Product Owner clicked the button):**
-
-| | |
+| Rev 1 claim | Corrected |
 |---|---|
-| `results_published` (written by `unpublish()`) | **`false`** |
-| `results_published_at` (what `getState()` reads) | **`2026-08-06 15:29:08`** |
-| engine state | **`results_published`** |
-| allowed actions | **`archive`** — nothing else |
+| "the engine reports `results_published` while the boolean says otherwise — a divergence" | **Not a divergence.** *The election is published* (timestamp) and *its results are hidden* (boolean) are simultaneously true. No inconsistency exists. |
+| "unpublish is a one-way door whose only exit is `archive` — the election is stuck" | **The lifecycle is correct.** Publication *should* be irreversible, and `archive` *should* be the only exit. Nothing is stuck at the lifecycle level. |
+| "the chief cannot publish results again" | **The chief should not be able to.** They were never unpublished. The real gap: **no control exists to make the results visible again**, and the UI offers a disabled "Publish Results" button instead — mislabelled *and* correctly refused. |
 
-**F5 — the way back does not exist.** `ElectionConstitution::RULES['publish_results']` requires `allowed_states => ['counting']`. The engine reports `results_published`, and nothing in the codebase clears `results_published_at` except the timeline form (D-2). **Unpublish is a one-way door whose only exit is `archive`.**
-
-**F6 — viewers *are* blocked, so results did not leak.** `ResultController:23` gates on the boolean; measured live: officer → `403`, anonymous → `302`. The harm is not disclosure — it is an **unrecoverable state** plus a lifecycle that reports "published" when nothing is published.
-
-**F7 — D-2 is a role escalation.** Publishing is chief-only by two independent decided rules — `ElectionPolicy::publishResults()` `:58-65` (`role = 'chief'`) and `ElectionConstitution::RULES['publish_results']['allowed_roles'] = ['chief']`. `updateTimeline()` authorises `manageSettings` `:46-53`, which admits **`['chief', 'deputy']`**. Filling one date field on a *timeline* form therefore publishes results — skipping the chief-only gate, the `counting` precondition, and **the pre-publish integrity sweep at `:820-838`** that verifies votes and calls `syncResults()`.
-
-**F8 — the UI is driven by the boolean, its neighbours by the engine.** `Management.vue` gates Publish on `!election.results_published` `:854`, and Unpublish `:872` / the results link `:886` on `election.results_published` — whereas the voting buttons gate on the engine's allowed-action set. In the current stuck state the Publish button renders but is `:disabled="!canPublishResults"` `:857` with a no-op click `:860`, beside a denial message `:867`. **The officer is told publishing is not allowed, while the results sit unpublished.**
-
----
-
-## The governance question (D-1) — engineering must not answer this
-
-> **May published election results be withdrawn at all?**
-
-The constitution's only edge out of `results_published` is `archive`, i.e. **as decided today, publication is final.** Nobody decided that withdrawal is permitted; a button was built. Two coherent answers, and the choice is the Product Owner's:
-
-| | Answer | Consequence |
-|---|---|---|
-| **A** | **Withdrawal is legitimate** | `unpublish_results` becomes a constitutional action with explicit `allowed_states`, `allowed_roles`, `preconditions` and a `target_state` (`counting`? a new `results_withdrawn`?), and `unpublish()` routes through `transitionTo()` |
-| **B** | **Publication is final** | the button and the route are removed; a mistaken publication is handled by a named governance process, not a toggle |
-
-**Recovery of `namaste 2026` depends on this answer.** A direct database write would restore it today — but that is precisely the non-constitutional write this ticket exists to stop, so it is not being done unilaterally.
+**What survives rev 1 unchanged:** the mechanism of `unpublish()` `:879`; that `unpublish_results` exists in neither `ElectionAction` nor `ElectionConstitution::RULES`; that viewers are correctly blocked (officer `403`, anonymous `302`); the D-2 escalation; and the UI gating (`Management.vue:854/872/886` gate on the boolean while the voting buttons gate on the engine's action set).
 
 ---
 
 ## Scope
 
-**D-2 (fix — no new governance needed):** a timeline edit must not change publication state. Remove the auto-publish coupling at `:1459-1461`; publication happens only through `publish_results`.
+**D-2 (fix now):** `results_published_at` becomes non-editable input — removed from `updateTimeline()`'s validation, `$validated`, and the auto-publish coupling at `:1459-1461`. Publication state changes only via `publish_results`.
 
-**D-1 (after the decision):** implement answer A or B. Either way, **every write to results-publication state goes through the state machine**, and the boolean stops being an independent authority.
+**D-1 (design, then implement):** model **Result Visibility** as its own capability — a named control ("Hide results" / "Show results"), its own authorisation, its own audit record, and a UI gated on it rather than on a lifecycle-sounding label. The lifecycle is not touched.
 
-**Out of scope:** migrating `results_published` → derived-from-`results_published_at` (that is the retirement question, and it belongs with `PBDIGIT-48`'s legacy-field retirement once consumers are migrated).
+**Eventual (with `PBDIGIT-48`'s retirement, not here):** rename `results_published` → `results_visible` / `results_publicly_visible`, so the field says what it means. Renaming before consumers are inventoried would repeat the mistake this ticket documents.
+
+## Open design questions (the *bounded-context* question is answered; these follow from it)
+
+* **Who may hide and show results?** Chief only, or chief and deputy? Hiding is an operational act; publishing is constitutional — they need not share an authority.
+* **Must hiding carry a reason?** The legacy motivation was *dispute*. If a reason is required, visibility gains its own small audit trail (`hidden_at`, `hidden_by`, `reason`) — which is what `ResultsUnpublishedEvent` was groping toward.
+* **Is visibility constitutional at all**, or purely operational? This decides whether it enters `ElectionConstitution::RULES` or stays an application-layer capability.
 
 ## Acceptance criteria
 
-- [ ] **D-2:** saving the timeline form cannot change `results_published` or `results_published_at`-driven state — covered by a test that saves a timeline as a **deputy** and asserts publication state is unchanged
-- [ ] **D-1 decided** by the Product Owner (A or B), recorded in an ADR
-- [ ] No write path to results-publication state bypasses `transitionTo()` — asserted by a test, not by inspection
-- [ ] The lifecycle state and the `results_published` boolean cannot disagree; a regression test pins the pairing that produced F4
-- [ ] `namaste 2026` recovered through whichever path the decision authorises
-- [ ] The management UI gates publication buttons on the engine's allowed-action set, as the voting buttons already do
+- [ ] **D-2:** a **deputy** saving the timeline form cannot change `results_published` or `results_published_at` — asserted by test
+- [ ] `results_published_at` has exactly one writer: the `publish_results` transition — asserted by test, not inspection
+- [ ] **D-1:** Result Visibility exists as a named capability with its own authorisation, and hiding then showing results leaves the lifecycle state untouched — asserted by test
+- [ ] `namaste 2026`'s results made visible again through the new control (**not** through the timeline form, and not by a database write)
+- [ ] The management UI labels the control as visibility, and stops offering "Publish Results" for an already-published election
 
 ## Relations
 
-- **`PBDIGIT-48`** — same disease, **fourth concept**: two representations of one fact, with consumers split across them (`results_published` boolean vs `results_published_at` timestamp). Retirement of the boolean belongs there; this ticket is about the write paths.
-- **`PBDIGIT-59`** — same flag-vs-timestamp family, different concept (the voting window). **Do not merge.**
-- **`docs/pks/2026-08-06-legacy-consumer-migration-pattern-candidate.md`** — additional evidence: the authority moved to the timestamp, the consumers did not follow, and a *new* feature was then built against the stale representation. Evidence for the **Legacy Modernization Principle** (Authority → Consumers → Persistence).
+- **`PBDIGIT-48`** — owns retirement and the eventual rename. **This ticket adds the reason the rename matters:** the legacy name encoded the conflation.
+- **`PBDIGIT-59`** — same shape once more: a *scheduled* fact and an *actual* fact sharing a name. `end_date`/`voting_ends_at` there, publication/visibility here.
+- **`docs/pks/2026-08-06-legacy-consumer-migration-pattern-candidate.md`** — this instance contributes the sharper heuristic: **a migration can inherit a conflation.** Before deciding where a legacy field's authority moved, establish **how many business concepts it encodes** — otherwise both concepts migrate to one authority and the second becomes unimplementable.
 
 ## Traceability
 
-Reported by the Product Owner ("there is a legacy voting button"), 2026-08-06 · sites `ElectionManagementController:873-889` · `:1459-1461` · `ElectionLifecycleEngineImpl:79` · `ElectionConstitution::RULES['publish_results']` · `ElectionPolicy:46-65` · `ResultController:23` · `Management.vue:852-894` · live measurement on `namaste-2026-74d3721c`
+Reported by the Product Owner, 2026-08-06 · domain model supplied by the Product Owner (rev 2), correcting rev 1 · sites `ElectionManagementController:873-889`, `:1418`, `:1452`, `:1459-1463` · `Election.php:1905-1911` · `ElectionLifecycleEngineImpl:79` · `ElectionPolicy:46-65` · `ResultController:23` · `Management.vue:852-894` · live measurement on `namaste-2026-74d3721c`

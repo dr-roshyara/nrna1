@@ -2378,6 +2378,21 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 | `PBDIGIT-44` locale string broke a public page | ✅ **FIXED — verified in production.** `@` is vue-i18n syntax; 30 messages across 9 namespaces. **Assets are tracked and no CI builds them: a frontend fix is not live until `npm run build` is committed and deployed** |
 | `PBDIGIT-35`…`44` | **OPEN** — found by `PBDIGIT-00`. Next: `PBDIGIT-39` (blocks every voter where `MAX_USE_IP_ADDRESS` unset) · `PBDIGIT-42` (PO decision) · `PBDIGIT-36` (a test that casts a vote) |
 
+### 🧊 DISCOVERY FROZEN 2026-08-06 (Product Owner) — the legacy-state roadmap is settled; move it into implementation
+
+**No further discovery tickets in this area until these begin moving.** Four tickets, one coherent sequence:
+
+| | Ticket | Owns | State |
+|---|---|---|---|
+| 1 | **`PBDIGIT-48`** | retire the legacy election-state fields (and the eventual `results_published` → `results_visible` rename) | authority already declared; **Option B approved** |
+| 2 | **`PBDIGIT-58`** | **migrate consumers** to the authoritative representation | `58A` ✅ complete (observation); **`58B` sequenced behind `PBDIGIT-59`** |
+| 3 | **`PBDIGIT-59`** | **define authority semantics** — which timestamps are constitutional | 🟡 **PO decision.** Cause of the early close **resolved as an operator action** (`election_state_transitions`: `15:28:44 → counting`, `15:29:08 → results_published`, same actor). **Option C is now evidenced:** `voting_ends_at` = actual close, `end_date` = scheduled close |
+| 4 | **`PBDIGIT-60`** | **remove the non-constitutional write paths** to results publication | 🔴 **`D-2` fixable now** (a deputy can write `results_published_at` via the timeline form) · 🟢 `D-1` bounded-context question **answered by the PO**: publication and visibility are two concepts; the design follows |
+
+**`PBDIGIT-60`'s domain model came from the Product Owner and could not be derived from the repository** — rev 1 was wrong without it. The legacy "Unpublish Results" control meant *hide the public results page during a dispute*, never *undo publication*. `Election.php:1905-1911` sets `results_published` (visibility) and `results_published_at` (the constitutional fact) in one statement, **which is why the conflation was invisible**.
+
+**The recurring smell, now n=4:** authority moved, consumers did not follow — election state · votes-per-IP (env → snapshot) · voter eligibility · results publication. Recorded as an **observation**, remedy applied **n=0**: `docs/pks/2026-08-06-legacy-consumer-migration-pattern-candidate.md`.
+
 **⛔ NEXT ACTION IS A PRODUCT OWNER DECISION, NOT ENGINEERING.**
 
 | | |
