@@ -140,9 +140,19 @@ It is the bridge from discovery to testing. It separates *"code exists"* from *"
 
 ### ⛔ This method is FROZEN
 
-**No further phases, templates or refinements** until it has been applied to **three** capabilities independently: **Election** ✅ (`PBDIGIT-29`) → **Organisation** ✅ (`../reviews/2026-08-06-organisation-capability-review.md`) → **Membership** ⬜.
+**Applied to three capabilities independently — the freeze's condition is now met:** **Election** ✅ (`PBDIGIT-29`) → **Organisation** ✅ (`../reviews/2026-08-06-organisation-capability-review.md`) → **Membership** ✅ (`../reviews/2026-08-06-membership-capability-review.md`).
 
-**Cross-capability patterns so far (observation only, 2 occurrences each — not promoted):** an event dispatched with **no listeners** whose consequence is hard-coded in the dispatching controller · a **declared state that no code can reach**. The third review confirms or refutes them.
+**The method is eligible as a KnowledgeOS promotion candidate (ES-006.1) — eligible, not promoted.** Promotion is a Decision Authority act, and the placement question (`OQ-2`) is still unruled. Evidence from application #3: the method produced high-value findings **without** any of the five parked refinements, and it **refuted its own leading hypothesis** — see the method assessment in the Membership review.
+
+**Cross-capability patterns after three applications (observation only — nothing promoted):**
+
+| Pattern | Election | Organisation | Membership | Verdict |
+|---|---|---|---|---|
+| Event dispatched with no listeners, consequence hard-coded in the controller | ✅ | ✅ | ❌ | **refuted at 2/3** — a legacy-code trait, not a repository trait |
+| A declared state that cannot be reached or is not authoritative | ✅ | ✅ | ✅ | **3/3** — repeated observation |
+| The same concept defined twice | ✅ | ✅ | ✅ | **3/3** — repeated observation |
+
+Three observations is *repeated observation*, not a standard (`ES-006.1`). The **refutation** is the most useful row: it shows the method discriminates rather than confirming what it looked for first.
 
 After three applications, it becomes eligible as a KnowledgeOS promotion candidate under `ES-006.1` — repository-independent, evidence-backed. Before that, it is a project convention with n=1. **Use it; do not improve it.**
 
