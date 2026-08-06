@@ -83,7 +83,7 @@ projectionAvailable        = true
 
 ## Related
 
-* **`PBDIGIT-48`** — the four disagreeing state representations. **That is the underlying condition; this ticket is its first customer-visible consequence.**
+* **`PBDIGIT-48`** — **an unfinished migration**, not competing authorities: `elections.status` is a **formally deprecated field** (`DeprecationPolicy::FIELDS`) whose documented replacement is `ElectionLifecycleEngine::compute($election)->state->value`. **That is the underlying condition; this ticket is its first customer-visible consequence.**
 * **`PBDIGIT-32`** — B10 implementation, still unauthorised. This defect is evidence for its priority.
 * **`PBDIGIT-33`** — the routing cache, already fixed but relevant to the last criterion.
 
