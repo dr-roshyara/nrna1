@@ -69,7 +69,12 @@
         <server name="DB_PORT" value="5432"/>
         <server name="DB_DATABASE" value="nrna_test"/>
         <server name="DB_USERNAME" value="publicdigit_user"/>
-        <server name="DB_PASSWORD" value="Rudolfvogt%27%"/>
+        <!-- PBDIGIT-00: DB_PASSWORD is deliberately NOT set here. It resolves from the
+             environment (.env / .env.testing / the shell). Two reasons: a plaintext
+             database password must not live in a tracked file, and a <server> entry
+             overrides the environment unconditionally, so a hardcoded value here went
+             stale and silently broke every DB-backed test run. -->
+
         <server name="APP_KEY" value="base64:hI6EHt29D8WPl/MQdFYSg6uE/MK/5j5n5Rj7+OXK8QI="/>
         <server name="APP_DEBUG" value="false"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
