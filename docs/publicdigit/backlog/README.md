@@ -162,3 +162,17 @@ After three applications, it becomes eligible as a KnowledgeOS promotion candida
 **Architecture debt is deliberately excluded from this backlog** (`L-1`, `L-2`, `E-1`, `E-4`, `E-5`, `R-1`, `R-4`, `C-1`, and the PB003 register `M-1`…`M-4`). It raises the cost of *changing* the software, not of *using* it — see `../reviews/2026-08-05-election-process-review-phase1.md`.
 
 **Source reviews:** `../reviews/2026-08-05-election-product-readiness-overview.md` (product lens) · `../reviews/2026-08-05-election-process-review-phase1.md` (architecture discovery)
+
+### 🅿️ Post-freeze refinement candidates — RECORDED, NOT APPLIED
+
+Proposed during the review of application #2 (Organisation). **Deliberately not applied: the freeze forbids refinement before three applications.** Re-evaluate only after Membership, and only if the third application shows they are needed.
+
+| # | Candidate | Rationale offered |
+|---|---|---|
+| C-1 | **Capability Summary** right after Phase 0 — purpose · primary actor · business value · success criteria · current status | a reader knows what the capability *is* before reading 20 pages |
+| C-2 | **Capability Readiness** verdict — *can a customer use this today: YES / PARTIALLY / NO*, with "customer can / customer cannot" lists | one executive answer instead of inference across sections |
+| C-3 | Split the confidence ladder further: **designed → implemented → reachable → used → verified** | the Organisation governance finding proves *implemented ≠ reachable* |
+| C-4 | Structured **cross-capability pattern table** with a count column across all reviewed capabilities | accumulated evidence, not prose observations |
+| C-5 | Rename/duplicate `Verified` as **`Observed`** — someone actually watched it happen, vs. a test asserting it | *(the proposer's own note: consider after more applications, not now)* |
+
+**Do not apply these while the freeze stands.** If the Membership review produces high-value findings without them, that is evidence they are optional — which is itself worth knowing.
