@@ -7,7 +7,7 @@
 |---|---|
 | **Status** | ✅ **UNBLOCKED — ready for authorisation** |
 | **Business rules settled** | **B1** identity · **B2** lifecycle · **B3** authority (+ traceability) · **B10** election-day exception — all approved, `PBDIGIT-30` **closed** 2026-08-06 |
-| **Why implementable now** | B5/B6/B7 needed no separate ruling — B1–B3 already decide them. B8/B9 have their *rule* decided; only the *experience* is open, and that is design. **B4 was withdrawn** (product design, not discovery) → `PBDIGIT-34` |
+| **Why implementable now** | B5/B6/B7 require **no additional business rules — they are derived consequences of B1–B3**. B8/B9 have their *rule* decided by the same derivation; only the *experience* is open, and that is design. **B4 was withdrawn** (product design, not discovery) → `PBDIGIT-34` |
 | **Still open, and NOT prerequisites** | `PBDIGIT-34` cross-login memory *(an enhancement — this story must not implement it)* · `PBDIGIT-29` Q1/Q2 *(is the concept a field or a type; which store is authoritative)* · B8/B9 experience design |
 | **Needs** | **authorisation to begin** — the rules are settled; the work is not yet approved |
 
@@ -27,7 +27,7 @@ Make the routing mechanism answer the question B1 asks: **ignore the bootstrap o
 
 1. **Extend the existing `DashboardResolver`** with the two missing destinations, as additional priorities keyed on the count of *real* organisations (`PBDIGIT-31` I-1).
 2. Build the two missing surfaces: **Create or Join Organisation** and **Organisation Selection** (`PBDIGIT-31` RD-1, RD-2).
-3. Implement whatever B2–B9 decide, once they exist.
+3. Implement **B2** (the Working Organisation changes only by an authorised act, never as a side effect) and **B3** (only the user establishes it; the platform only on invalidity — and the platform can always explain which applied), plus **B10**'s single missing branch.
 4. **Regression tests** for each business rule, at the rule level — not merely at the class level.
 5. **Browser verification** of the complete journey: 0 orgs · 1 org · 2+ orgs · after creating an organisation · logout → login.
 
@@ -53,7 +53,8 @@ Make the routing mechanism answer the question B1 asks: **ignore the bootstrap o
 * [ ] A user with **2+ real organisations** is **asked which one** — and the system never guesses (B1.4).
 * [ ] The **bootstrap organisation is excluded** from every count *(already partly implemented — `handleMissingOrganisation`, `hasOwnOrganisation()`; consolidate onto **one** definition of "real organisation", `PBDIGIT-31` I-3)*.
 * [ ] After creating an organisation, the user is **inside it** (B1.2).
-* [ ] After logout → login, the user **returns to the organisation they last worked in** (B1.5 / B4 — pending B4).
+* [ ] The Working Organisation **holds for the whole session** — it changes only by an act B3 authorises, never as a side effect of navigation, rendering or caching (B1.5 / B2).
+* [ ] After logout → login, the user is routed by **B1.3 applied afresh** (`0 → Create or Join` · `1 → enter it` · `2+ → ask`). **Resuming the previously chosen organisation is NOT a criterion** — B4 was withdrawn and cross-login memory is `PBDIGIT-34`.
 * [ ] The routing decision **does not outlive the business state that produced it** (RD-12 / I-2).
 * [ ] Existing priorities (mid-ballot resume, elections, roles, fallbacks) still behave as before — **no regression**.
 * [ ] Regression tests exist per business rule, and **each test names the rule it protects** *(the lesson of `PBDIGIT-29` F-2: a green test can lock in the wrong question)*.
@@ -82,9 +83,9 @@ The unwired cache invalidator became **[`PBDIGIT-33`](PBDIGIT-33-fix-routing-cac
 ## Sequence
 
 ```
-PBDIGIT-30  B1 ✅ · B2–B9 ⬜        ← the block
+PBDIGIT-30  B1 · B2 · B3 · B10 ✅   business discovery CLOSED — the block is lifted
         ↓
-PBDIGIT-32  this story (implementation)
+PBDIGIT-32  this story (implementation)  ← needs authorisation
         ↓
 regression tests per business rule
         ↓

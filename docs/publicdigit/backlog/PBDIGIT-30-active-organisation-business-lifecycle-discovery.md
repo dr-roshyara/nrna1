@@ -5,11 +5,11 @@
 
 | | |
 |---|---|
-| **Status** | ✅ **COMPLETE — closed 2026-08-06** |
+| **Status** | ✅ **The discovery of the Working Organisation business concept is COMPLETE** — closed 2026-08-06. **The implementation is not complete, and the enhancements are not begun. That is intentional** |
 | **Delivered** | **B1** identity · **B2** lifecycle · **B3** authority · **B10** election-day exception — the core business rules of the Working Organisation |
 | **Closed by** | Product Owner. **Rationale:** the remaining topics — persistence across logins, expiry, per-device vs per-person, concurrent sessions — describe **additional product capabilities**, not the discovery of the existing Working Organisation concept |
 | **Withdrawn** | **B4** — drifted into product design (see §B4) → `PBDIGIT-34` |
-| **Reclassified** | **B5 · B6 · B7** are already answered by B1–B3 (see §Closure) · **B8 · B9** retain only an *experience* question, which is design, not discovery |
+| **Reclassified** | **B5 · B6 · B7** require **no additional business rules — they are derived consequences of B1–B3** (see §Closure) · **B8 · B9** retain only an *experience* question, which is design, not discovery |
 | **Unblocks** | **`PBDIGIT-32`** — implement and verify B1–B3 (+B10) |
 
 > **The purpose of this story was to discover the business rules the product already implies — not to design every future enhancement before the current product is made robust.** It stopped at the point where the two diverge.
@@ -477,9 +477,20 @@ If B4 is approved as drafted, two things follow for `PBDIGIT-32`:
 
 ---
 
-# CLOSURE RECORD — PBDIGIT-30 complete after B1, B2, B3, B10
+# CLOSURE RECORD — the discovery of the Working Organisation business concept is complete
 
-**Closed by the Product Owner, 2026-08-06.** The story achieved its purpose: it discovered the business rules the Working Organisation concept already implies.
+**Closed by the Product Owner, 2026-08-06 after B1, B2, B3 and B10.** The story achieved its purpose: it discovered the business rules the Working Organisation concept already implies.
+
+**What is complete and what is not — stated so the closure cannot be misread:**
+
+| | |
+|---|---|
+| the **business concept** | ✅ complete |
+| the **implementation** | ⬜ not begun — `PBDIGIT-32` |
+| **runtime verification** | ⬜ not begun — `PBDIGIT-00` |
+| **enhancements** | ⬜ not begun — `PBDIGIT-34`, unprioritised |
+
+**All three gaps are intentional.** Closing a discovery story says the rules are known, not that the product is finished.
 
 ## What was delivered
 
@@ -497,13 +508,25 @@ If B4 is approved as drafted, two things follow for `PBDIGIT-32`:
 | # | Original question | Disposition |
 |---|---|---|
 | **B4** | Is it remembered between logins? | ❌ **WITHDRAWN** — product design, not discovery → **`PBDIGIT-34`** |
-| **B5** | What happens after *Organisation Created*? | ✅ **already answered** — **B1.2** (it becomes the Working Organisation) + **B2.1a** (a voluntary change) + **B3 A-1** (the user's own authority). No open question remains |
-| **B6** | What happens with exactly one organisation? | ✅ **already answered** — **B1.3** (enter it automatically) + **B3 Clarification 2** (one valid outcome is not a choice) |
-| **B7** | What happens with multiple organisations? | ✅ **already answered** — **B1.3** (show selection) + **B1.4** (never guess) + **B3 A-1** (only the user may choose) |
+| **B5** | What happens after *Organisation Created*? | ✅ **no additional rule required — a derived consequence** of **B1.2** (it becomes the Working Organisation) + **B2.1a** (a voluntary change) + **B3 A-1** (the user's own authority) |
+| **B6** | What happens with exactly one organisation? | ✅ **no additional rule required — a derived consequence** of **B1.3** (enter it automatically) + **B3 Clarification 2** (one valid outcome is not a choice) |
+| **B7** | What happens with multiple organisations? | ✅ **no additional rule required — a derived consequence** of **B1.3** (show selection) + **B1.4** (never guess) + **B3 A-1** (only the user may choose) |
 | **B8** | What if the current organisation is deleted? | ⚠️ **rule answered, experience open** — **B2.1e** (a forced change) + **B3 A-2** (platform authority on invalidity) + **B1.3** (deterministic destination). What the user *sees* is **UX design**, not business discovery |
 | **B9** | What if membership is revoked? | ⚠️ **rule answered, experience open** — identical treatment to B8 |
 
-**So B5, B6 and B7 required no separate ruling: B1–B3 already decide them.** B8 and B9 have their *rule* decided; only the *experience* is open, and an experience is designed, not discovered.
+### Why B5–B7 needed no ruling — the lesson worth carrying forward
+
+**B5, B6 and B7 were never answered directly. They stopped being questions.**
+
+Nobody ruled on *"what happens when the user has exactly one organisation?"* What was ruled on was **what a Working Organisation is** (B1), **when it changes** (B2), and **who may change it** (B3). B6 then follows with no further decision — as do B5 and B7.
+
+> **Discover the fundamental rules first, and many scenario questions disappear on their own.**
+
+That is the distinction between *"already answered"* and *"a derived consequence"*, and it is worth stating precisely: a derived consequence needs **no ruling, no owner and no maintenance** — it cannot drift from B1–B3, because it *is* B1–B3 applied to a case. An independently answered question could drift.
+
+**Practical implication:** the original nine questions overestimated how many decisions were needed. **Three fundamental rules retired five scenario questions.** A future discovery story should expect the same and resist answering scenarios one by one.
+
+B8 and B9 have their *rule* decided by the same derivation; only the *experience* remains open, and an experience is designed, not discovered.
 
 ## What this closure deliberately does **not** claim
 
