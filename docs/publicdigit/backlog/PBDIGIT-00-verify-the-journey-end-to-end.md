@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | ✅ **(a) COMPLETE — the suites ran.** ⬜ **(b) NOT COMPLETE** — the authenticated walk needs a seeded demo election. **The environment block is lifted** |
+| **Status** | ✅ **CLOSED 2026-08-06.** Both (a) and (b) ran. **Outcome: the journey is verified. Result: it does not complete.** Gate for release → **`PBDIGIT-38`** |
 | **Headline** | 🔴 **There is still NO automated end-to-end coverage of a complete election.** The three suites ran; **10 of 21 tests never reached a single assertion**. The journey is *still* unobserved — but now that is a measured fact rather than a suspicion |
 | **Customer goal** | *"Prove that one complete journey works before anything is improved."* |
 | **Why it is first** | all 24 journey stories are evidenced **in code** and **none has been observed working**. Verification converts 24 inferences into facts at near-zero cost; building on unverified ground does not |
@@ -161,9 +161,29 @@ The original status said *"no Postgres credentials in the review environment"*. 
 
 ## Verdict
 
-**(b) is COMPLETE as an observation and NEGATIVE as a result.** The journey was walked end to end for the first time in this repository. **Steps 1–4 work; the vote cannot be saved; the completion page cannot render.**
+```text
+PBDIGIT-00 is CLOSED.
 
-> **`PBDIGIT-00` has done its job: it converted "all 24 stories are implemented" into "the journey stops at step 4.5, for three specific reasons."** No story may be marked `VERIFIED` on the strength of this run.
+Outcome:
+  The customer journey has been verified — (a) automated suites and
+  (b) an observed end-to-end walk.
+
+Result:
+  The product cannot currently complete an election, because of PBDIGIT-38.
+
+Therefore:
+
+  Gate for Release
+  → PBDIGIT-38
+```
+
+**A verification story does not succeed because the software works. It succeeds because it establishes the truth.** This one established it: **steps 1–4 work; the vote cannot be saved; the completion page cannot render.**
+
+> **`PBDIGIT-00` converted "all 24 stories are implemented" into "the journey stops at step 4.5, for four specific reasons."** That is the whole product of the story, and it is delivered.
+
+**No story may be marked `VERIFIED` on the strength of this run** — and none may be until `PBDIGIT-38` is fixed and this walk is re-run.
+
+**This story does not reopen.** It is closed with a recorded result. **Re-running the walk after `PBDIGIT-38` is verification of `PBDIGIT-38`, not a continuation of `PBDIGIT-00`** — a closed verification is evidence with a date on it, not a permanently open task.
 
 ## Superseded — the earlier partial probe (kept for the record)
 

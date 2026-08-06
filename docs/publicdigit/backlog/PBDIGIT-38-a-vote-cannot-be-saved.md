@@ -58,9 +58,99 @@ That is an architectural point, not a typo: an observation path must not be able
 
 **So real elections are likely affected identically.** **This was NOT tested** — no real-election vote was attempted, and it must not be assumed either way. **Establishing it is the first task of this story**, because it decides whether this is "demo mode is broken" or "the product cannot hold an election."
 
+---
+
+# DISCOVERY — 2026-08-06 (commissioned before any implementation)
+
+**A first patch was proposed and rejected by the Product Owner for committing to an implementation (a nested transaction / SAVEPOINT) before the transaction boundary had been established.** That was the right call, and the discovery below **changed the answer** — the rejected implementation would not have been sufficient.
+
+## D-1 · Who starts the transaction, and what is inside it
+
+| Line | Event |
+|---|---|
+| `DemoVoteController:1456` | **`DB::beginTransaction()`** — the controller opens it |
+| `DemoVoteController:1493` | `$this->trustEvaluator->evaluate(…)` — **37 lines later, inside the transaction** |
+| `TrustPolicyEvaluator:68` | `$this->eventRecorder->record(…)` — called from inside `evaluate()` |
+| `DemoVoteController:1785` | `DB::commit()` |
+
+**Nobody decided that the audit joins the vote transaction.** It is inside only because the controller opened a transaction earlier in the same method. **The participation is accidental, not designed** — which is why it must be settled as a boundary question rather than patched.
+
+## D-2 · Is the Security Event inside the Vote consistency boundary? — **No**, and the code proves it
+
+| Evidence | Where |
+|---|---|
+| *"**Fire-and-forget** audit recording — observation semantics only"* · *"**Invariant: … Never affects trust outcome**"* | `SecurityEventRecorder:15-17` |
+| 🔑 **ALLOW events are ~10% sampled** — deliberately discarded 90% of the time | `SecurityEventRecorder:26-28` |
+| Independent lifecycle: `retention_days` default **730** | migration `:26` |
+| `voter_slug_id` deliberately `null` — no voter linkage by design | `SecurityEventRecorder:55` |
+
+**The sampling is decisive.** A record the system intentionally throws away nine times out of ten **cannot** be part of a transactional invariant. You cannot have a consistency rule that holds 10% of the time.
+
+> **Conclusion: the Security Event is an OBSERVATION of the vote, not a PART of it. It belongs outside the Vote aggregate's consistency boundary.**
+
+## D-3 · 🔴 A second defect the discovery uncovered — deny audits are silently discarded
+
+`evaluate()` runs at `:1493`. **Nine `DB::rollBack()` calls follow it** — `:1517, 1551, 1567, 1593, 1608, 1651, 1668, 1687, 1699`.
+
+**Every one of them rolls back the security event written at 1493.**
+
+But the recorder's stated policy is:
+
+> `SecurityEventRecorder:18` — *"**DENY events: always record immediately**"*
+
+**So for every rejected vote — organisation mismatch, ineligibility, code failure, any of the nine — the security audit row is created and then destroyed with the transaction.** The audit trail is *guaranteed absent* exactly for the events it most needs to capture.
+
+**This is the finding that decides the implementation**, because it means the invariant is **two-directional**:
+
+1. An audit failure must never block a legitimate vote *(the bug that stopped the journey)*.
+2. **An audit record must survive a vote rollback** *(the bug nobody had noticed)*.
+
+## D-4 · Options, judged against both directions of the invariant
+
+| Option | (1) Audit failure can't block the vote | (2) Deny audit survives rollback | Cost |
+|---|---|---|---|
+| **SAVEPOINT / nested transaction** *(the rejected patch)* | ✅ | 🔴 **No** — a savepoint rolls back with its parent | low |
+| **`DB::afterCommit` / after-commit listener** | ✅ | 🔴 **No** — denials never commit, so they are never written | low |
+| **Independent connection / independent transaction** | ✅ | ✅ | medium |
+| **Outbox + async** *(the repo already has `outbox_events` + `EventProvenance`)* | ✅ | ✅ — and survives process death | high |
+| Make the columns nullable and change nothing else | 🔴 no — the next audit failure poisons the transaction again | 🔴 No | trivial |
+
+**Recommendation (engineering evidence, not a decision):** an **independent transaction on its own connection** is the smallest option that satisfies **both** directions. The outbox is stronger and already exists in this repository, but it is a larger change and a bigger claim than the evidence requires.
+
+**Note the two rejected low-cost options both fail the same half of the invariant** — and it is the half nobody knew was broken until D-3. **That is why the boundary had to be established first: the cheap fix looked adequate against a one-directional invariant.**
+
+## D-5 · Separately, and regardless of where the write happens — two required columns are never written
+
+**Live-schema measurement, not inspection:** of the `NOT NULL`-without-default columns on `election_security_events`, the recorder omits **two**:
+
+* `overlay_influence_chain` (json) — the failure observed in `PBDIGIT-00`
+* `trust_state_transition` (varchar 100) — **would have failed next**
+
+⚠️ **A fix supplying only `overlay_influence_chain` would appear correct in review and fail again at runtime.** *(Later migrations — `2026_05_27_120001_ensure_election_security_events_schema` and `…_add_evaluation_summary_…` — made other columns nullable, which is why only these two remain.)*
+
+**Also unresolved: `overlay_influence_chain` has no meaning anywhere in the codebase.** It appears only in the migration, `$fillable`, and a cast (`ElectionSecurityEvent:29,44`). **Nothing constructs an "influence chain".** So the honest options are to write the ordered overlay identifiers actually observed, or `[]` — **and to decide whether the column should exist at all.** Writing a placeholder into an audit column whose semantics nobody can state is worse than leaving it nullable.
+
+## D-6 · Business context supplied by the Product Owner (2026-08-06)
+
+> **There are two demos: a PUBLIC demo (no login), where results are NOT persisted, and a PRIVATE demo (authenticated), where results ARE persisted — exactly like production.**
+
+**This confirms the defect rather than explaining it away.** `PBDIGIT-00`'s walk was **authenticated** (`admin@publicdigit.org`, full session), so persistence was required and did not happen. *(A `/public-demo/start` route exists, consistent with the two-mode model.)*
+
+⚠️ **Whether the code actually distinguishes the two modes at the persistence boundary is NOT established** — the walk only exercised the authenticated path. **If a single code path serves both, then "public demo must not persist" is an unverified claim about behaviour**, and that is its own discovery, not part of this fix.
+
+## What this discovery deliberately does NOT do
+
+**It proposes no code.** The boundary question is answered (D-2), a second defect is recorded (D-3), the options are costed (D-4), and two are eliminated on evidence. **The choice among the remaining options is an architecture decision, and engineering does not make it** (`R-34`: evidence and authority stay separate).
+
+---
+
 ## Acceptance criteria
 
+* [ ] **An architecture decision on D-4 is recorded before any code is written** — independent transaction, outbox, or something else. **SAVEPOINT and after-commit are eliminated on evidence (D-3), not on preference.**
+* [ ] **Both directions of the invariant hold**, and each has its own test: an audit failure does not lose a legitimate vote; a rejected vote still leaves a deny audit record.
+* [ ] **Both** missing required columns are written (D-5) — or `overlay_influence_chain`'s existence is decided, since nothing in the codebase gives it meaning.
 * [ ] Determine whether the real voting path hits the same failure. **Answer recorded either way.**
+* [ ] Whether one code path serves both the public and private demo, and where persistence is suppressed for the public one (D-6). **If the distinction is not implemented, that is a separate story, not this fix.**
 * [ ] A vote is persisted end to end: `demo_votes` gains a row, `demo_results` gains rows.
 * [ ] **The anonymity invariant is asserted on the saved vote** — no `user_id`, no voter linkage (ADR-T11). *`PBDIGIT-00` could not check this, because no vote row was ever created.*
 * [ ] Decide, and record, whether security-event recording belongs inside the vote transaction. **If it stays inside, a recorder failure must still not lose the vote; if it moves outside, the audit gap must be acknowledged.**
