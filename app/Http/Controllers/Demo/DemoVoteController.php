@@ -217,7 +217,10 @@ class DemoVoteController extends Controller
         // Third, default to first real election
         $election = Election::where('type', 'real')->first();
 
-        // If no real election found, try any active election (including demo)
+        // If no real election found, try any active election (including demo).
+        // LEGACY COMPATIBILITY (PBDIGIT-48): for demo elections `is_active` means
+        // "the demo platform is switched on", not "voting is open" — demo runs
+        // outside the constitutional lifecycle (PBDIGIT-59).
         if (!$election) {
             $election = Election::withoutGlobalScopes()
                 ->where('is_active', true)

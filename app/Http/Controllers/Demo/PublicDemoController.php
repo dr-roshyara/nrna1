@@ -450,7 +450,10 @@ class PublicDemoController extends Controller
             return redirect()->route('public-demo.guide');
         }
 
-        // Only show results if the election is active and has data
+        // Only show results if the demo is available and has data.
+        // LEGACY COMPATIBILITY (PBDIGIT-48): for demo elections `is_active` means
+        // "the demo platform is switched on", not "voting is open" — demo runs
+        // outside the constitutional lifecycle (PBDIGIT-59).
         if (!$election->is_active) {
             return redirect()->route('public-demo.guide');
         }

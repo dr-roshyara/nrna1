@@ -374,7 +374,10 @@ class ElectionManagementController extends Controller
                 'organisation_slug' => $organisation->slug,
             ]);
 
-            // Get the demo election for this specific organisation
+            // Get the demo election for this specific organisation.
+            // LEGACY COMPATIBILITY (PBDIGIT-48): for demo elections `is_active`
+            // means "the demo platform is switched on", not "voting is open" —
+            // demo runs outside the constitutional lifecycle (PBDIGIT-59).
             $demoElection = Election::withoutGlobalScopes()
                 ->where('type', 'demo')
                 ->where('organisation_id', $organisation->id)
