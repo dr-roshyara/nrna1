@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Application\Election\Facades\ElectionLifecycle;
 use App\Models\User;
 use App\Models\Candidacy;
 use App\Models\Post;
@@ -115,10 +116,14 @@ class SitemapController extends Controller
     public function elections(): Response
     {
         try {
-            // Get active and recent elections
-            $elections = Election::where('is_active', true)
-                ->orderBy('start_date', 'desc')
-                ->get();
+            // Get publicly discoverable elections: currently voting or upcoming
+            // (setup complete, window ahead) — the two cases the priority styling
+            // below already distinguishes. The lifecycle decides, not the legacy
+            // is_active column (PBDIGIT-48).
+            $elections = Election::orderBy('start_date', 'desc')
+                ->get()
+                ->filter(fn (Election $e) => ElectionLifecycle::of($e)->isVotingPhase())
+                ->values();
 
             $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
             $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' .
