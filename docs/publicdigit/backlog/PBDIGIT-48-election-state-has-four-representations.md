@@ -5,7 +5,7 @@
 
 | | |
 |---|---|
-| **Status** | ✅ **DISCOVERY COMPLETE 2026-08-06.** Consumer inventory verified; migration strategy recorded. **Implementation → [`PBDIGIT-58`](PBDIGIT-58-complete-legacy-election-state-migration.md)** |
+| **Status** | ✅ **IMPLEMENTATION COMPLETE & PO-APPROVED 2026-08-07.** 5 capabilities migrated to the lifecycle; all 46 scan hits four-bucket-classified (see §Completion Report); ADR recorded (`ADR_20260807_1500_Election_Lifecycle_Single_Source_Of_Truth.md`). **Remains OPEN for field retirement only**, sequenced behind [`PBDIGIT-59`](PBDIGIT-59-which-timestamps-are-constitutional.md) → demo family → display fields → enforcement escalation → column drop |
 | **Diagnosis** | **The domain successfully evolved to a constitutional lifecycle. The migration of legacy consumers remained incomplete.** The business rule never changed — only how "open" is computed |
 | **Customer impact** | **`PBDIGIT-47` is the first customer-visible consequence** — a voter could not reach a ballot during an open voting period |
 | **Completion** | ✅ **Met.** The authority was already declared; the consumer inventory is verified with its limits stated; the migration strategy is recorded. **No further discovery belongs here** |

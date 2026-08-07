@@ -6,7 +6,7 @@
 
 | | |
 |---|---|
-| **Status** | ✅ **STRATEGY APPROVED** by the Product Owner, 2026-08-06 · ⬜ **`58A` not yet started** — it is the first slice and changes only the guard wiring |
+| **Status** | ✅ **STRATEGY APPROVED** 2026-08-06 · ✅ **`58A` COMPLETE** (observation ran; found `countActiveElections()` + instrument defect) · ✅ **`58B` COMPLETE 2026-08-06/07** — both critical capabilities migrated, browser-verified, **`PBDIGIT-47` closed** · 🟡 **`58C` PARTIAL** — Organisation Reporting ✅ · Commission Dashboard classified display-only ✅ · **Member Communication deferred behind [`PBDIGIT-61`](PBDIGIT-61-newsletter-suite-fails-before-any-change.md)**, and its `'deleted'` question is answered by evidence (no writer + `SoftDeletes` ⇒ the predicate is a no-op, no lifecycle equivalent needed) · ⏸️ **`58D` gated by `PBDIGIT-59`** *(note: `58B`/`58C` work was committed under `(PBDIGIT-48)` subjects during the consolidated implementation run — see `PBDIGIT-48` §Completion Report for the commit map)* |
 | **Decision implemented** | **Option B — migrate the legacy consumers.** Approved by the Product Owner, 2026-08-06 |
 | **Permitted during migration** | ✅ **A Legacy Compatibility Adapter.** Legacy fields *may* be written from the lifecycle **while remaining consumers are migrated** — see §Legacy Compatibility Adapter |
 | **Rejected** | **Option A — permanent synchronisation.** Maintaining the legacy fields *indefinitely* so old readers can stay. That recreates today's condition rather than ending it |
@@ -171,7 +171,7 @@ sql        : select count(*) as aggregate from "elections" ...
 
 **Display-only, not decisions — migrate for tidiness, never for correctness:** `CommissionDashboardController:28` · `ListAllElections:38` · `DemoVoteController:573, 2461` · `PublicDemoController:239`.
 
-### `58B` · Restore **Election Entry Resolution** — ⏸️ **READY, sequenced behind one decision (`PBDIGIT-59`)**
+### `58B` · Restore **Election Entry Resolution** — ✅ **COMPLETE 2026-08-06/07** (the `PBDIGIT-59` sequencing dissolved: both consumers filter `type='real'`, so demo `NULL` windows never reach them)
 
 > ⚠️ **Correction to my own framing.** I first recorded this slice as **BLOCKED because the migration is not behaviour-preserving**. That conflated two separable concerns:
 >

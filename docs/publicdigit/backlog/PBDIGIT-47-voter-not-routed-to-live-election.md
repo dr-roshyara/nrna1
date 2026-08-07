@@ -5,7 +5,7 @@
 
 | | |
 |---|---|
-| **Status** | **OPEN — reproduced, root cause established, not repaired** |
+| **Status** | ✅ **FIXED AND BROWSER-VERIFIED 2026-08-06/07** — closed by `PBDIGIT-58B` as designed (commits `2343b783`, `b6e16a04`). A real election with stale `status='planned'` and an open voting window routes the voter to the ballot: `POST /login → 302 → /elections/{slug} → 200`, verified twice. Regression pinned by `test_stale_legacy_status_does_not_hide_a_running_election` |
 | **Customer impact** | 🔴 **A voter logging in during an open voting period lands on the organisation homepage and is given no route to the ballot.** For a real election, that is a lost vote unless the voter finds the election themselves |
 | **Severity** | **Blocking** — it happened in a real election with a live voting window |
 
