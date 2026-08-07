@@ -101,6 +101,17 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
+        // Login-routing analytics — config/login-routing.php names this channel
+        // (analytics.channel, default 'login') and UserOrganisationObserver logs
+        // to it, but it was never defined, so every such log fell back to the
+        // emergency logger.
+        'login' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/login.log'),
+            'level' => env('LOG_LEVEL', 'info'),
+            'days' => 90,
+        ],
+
         'voter_audit' => [
             'driver' => 'daily',
             'path' => storage_path('logs/voter_audit.log'),
