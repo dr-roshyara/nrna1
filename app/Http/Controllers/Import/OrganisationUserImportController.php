@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Import;
 
+use App\Application\Election\Facades\ElectionLifecycle;
 use App\Http\Controllers\Controller;
 use App\Services\OrganisationUserImportService;
 use App\Models\Organisation;
@@ -46,9 +47,16 @@ class OrganisationUserImportController extends Controller
                 'name' => $organisation->name,
                 'slug' => $organisation->slug,
             ],
+            // Elections users may be imported into: the constitution already decides
+            // this — canManageVoters() is true only while voters are not locked
+            // (draft/approved/rejected/setup-administration). The legacy status
+            // column offered import into elections whose voters the constitution
+            // forbids changing. (PBDIGIT-48)
             'elections' => $organisation->elections()
-                ->where('status', 'active')
-                ->get(['id', 'name']),
+                ->get()
+                ->filter(fn ($e) => ElectionLifecycle::of($e)->canManageVoters())
+                ->map(fn ($e) => ['id' => $e->id, 'name' => $e->name])
+                ->values(),
         ]);
     }
 
