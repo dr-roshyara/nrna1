@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Application\Election\Facades\ElectionLifecycle;
 use App\Models\Election;
 use Closure;
 use Illuminate\Http\Request;
@@ -108,12 +109,18 @@ class ElectionMiddleware
             }
         }
 
-        // Priority 4: DEFAULT - No election selected - use first REAL active election
+        // Priority 4: DEFAULT - No election selected - use first REAL election
+        // currently accepting votes.
+        //
+        // The lifecycle decides "is voting open now", not the legacy is_active
+        // column: a voting window opens because time passed, and nothing writes
+        // is_active at that moment. (PBDIGIT-48; DeprecationPolicy maps
+        // is_active -> ElectionLifecycle->isActive().)
         if (!$election) {
             $election = Election::where('type', 'real')
-                ->where('is_active', true)
                 ->orderBy('id')
-                ->first();
+                ->get()
+                ->first(fn (Election $e) => ElectionLifecycle::of($e)->isActive());
 
             \Log::info('🔍 [ElectionMiddleware] Looking for REAL election', [
                 'found' => $election ? true : false,
@@ -123,6 +130,14 @@ class ElectionMiddleware
             // If no real election found, try any active election
             // CRITICAL: Use withoutGlobalScopes() because demo elections are accessible
             // to ALL users regardless of organisation context (organisation_id=NULL)
+            //
+            // LEGACY COMPATIBILITY — intentionally NOT migrated to the lifecycle
+            // (PBDIGIT-48). For demo elections `is_active` does not mean "voting is
+            // open"; it means "the demo platform is switched on". Demo elections run
+            // outside the constitutional lifecycle (their voting-window columns are
+            // NULL, so the engine reports `draft` — PBDIGIT-59), and migrating this
+            // read would take down the entire demo flow. Revisit when PBDIGIT-59
+            // settles demo window semantics.
             if (!$election) {
                 $election = Election::withoutGlobalScopes()
                     ->where('is_active', true)
