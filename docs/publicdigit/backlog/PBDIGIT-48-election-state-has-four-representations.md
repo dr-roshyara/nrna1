@@ -278,6 +278,44 @@ Recommendation:
 
 **"`status` absent entirely" was scoped to the fixtures of `HasActiveElectionTest`** — verified there by grep (only `voter_slugs.status` remained). **It was never a claim about the codebase**, where the scan above shows the field is still widely referenced.
 
+## 📋 COMPLETION REPORT — every scan hit classified (2026-08-07, Product Owner's four-bucket rubric)
+
+**The decision-site inventory is exhausted.** All 46 candidate sites from the static scan are classified; every migratable business decision on the deprecated fields has been migrated.
+
+### Bucket 1 — Constitutional voting → MIGRATED to `ElectionLifecycle`
+
+| Consumer | Capability | Replacement | Commit |
+|---|---|---|---|
+| `User::getActiveElection()` / `countActiveElections()` | Election Entry Resolution | `canVote()` | `2343b783` (58B) — browser-verified twice |
+| `ElectionMiddleware` Priority-4 real branch | Election Context Resolution | `isActive()` | `65980f24` — before/after HTTP identical; both-directions proof |
+| `SitemapController::elections()` | Public Discoverability | `isVotingPhase()` | `032da4ca` — predicate proven both directions |
+| `OrganisationUserImportController` | Voter Import Targeting | `canManageVoters()` | `cf0f77a2` — suite 8/8 green; legacy list offered import where the constitution forbids voter changes |
+| `OrganisationController` (3 stat blocks) | Organisation Reporting | `isActive()` · `state() ∈ {ResultsPublished, Archived}` | `54a4424c` — both legacy counts were structurally 0; browser-verified, payload shape preserved |
+
+**⏸ One deferred:** `OrganisationNewsletterController:46/115` — `status != 'deleted'` is a **no-op** (nothing writes `'deleted'`; deletion belongs to `SoftDeletes`), but the edit was **reverted under the TDD rule**: its guarding suite fails 6/6 at HEAD for unrelated pre-existing reasons → **`PBDIGIT-61`**, which now blocks this one line.
+
+### Bucket 2 — Demo platform switch → KEPT, documented in code (`93a49263`)
+
+`ElectionMiddleware` fallback · `ElectionManagementController:381` · `DemoVoteController` context fallback · `PublicDemoController` results gate · Setup*Demo* commands. For demo elections `is_active` means *"the demo platform is switched on"* — a different business concept, outside the constitutional lifecycle (**sixth conflation sighting**). Each site carries a `LEGACY COMPATIBILITY` marker naming `PBDIGIT-59` as the unblock.
+
+### Bucket 3 — UI/console projection → KEPT until field retirement
+
+`CommissionDashboardController:28` · `OrganisationController` commission payload `status` · `DemoVoteController:573/2461` · `ElectionManagementController:792` (+ `:77` commented-out) · `ListAllElections:38` · `SetupDemoElection:167` · `ElectionVoterController` election payload · newsletter `select(...'status')`. **Display, not decisions** — they render the field, they do not branch on it. Retire together with the columns.
+
+### Bucket 4 — Dead code → cleanup ticket, not migration
+
+`CacheService::getActiveElectionsForOrganisation()` (**the entire service has zero callers**) · `DashboardResolver::getActiveElectionForUser():781` (call-graph-proven dead) · the newsletter no-op predicate (with `PBDIGIT-61`).
+
+### Struck — not `elections` columns at all (the scanner's false positives)
+
+`voter_slugs` (×3) · `candidacies` (×4) · `election_memberships` (×2) · `ElectionOfficer` (×4) · `voter_verifications` (×1) · organisation pivots (×2) · doc-comments (×3). **A column name is not a consumer** — 19 of 46 hits were other tables or comments.
+
+### Recommendation on removing `status` / `is_active` / `state`
+
+**Not yet — and this is sequencing, not hesitation.** (1) Bucket 2 reads are live and intentional until **`PBDIGIT-59`** gives demo elections a lifecycle answer; (2) Bucket 3 renders the fields; (3) the Legacy Compatibility Adapter (state-machine side effects) still writes them for real elections, which is Option B's intended bridge. **Removal order: `PBDIGIT-59` decision → migrate Bucket 2 to a demo-availability concept → retire Bucket 3 payload fields → escalate `DeprecationPolicy` enforcement with zero violations → drop the columns.**
+
+**Test state after all migrations:** every touched suite green — `HasActiveElectionTest` 9/9 · `DashboardResolverElectionPriorityTest` unchanged (its 2 failures pre-date this work, stash-verified, owned by `PBDIGIT-59`'s date semantics and the already-voted defect) · `OrganisationUserImportTest` 8/8 · `LoginAnalyticsChannelTest` 2/2.
+
 ## Acceptance criteria — implementation/consolidation
 
 **Reframed by the Product Owner, 2026-08-06: this is an implementation story, not a discovery story.** The architectural decision is established; discovery language has been retired.
