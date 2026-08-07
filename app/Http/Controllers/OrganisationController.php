@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Application\Election\Facades\ElectionLifecycle;
+use App\Domain\Election\Enum\ElectionLifecycleState;
 use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\ElectionOfficer;
@@ -160,11 +162,14 @@ class OrganisationController extends Controller
         $canPublishResults   = $isChief;
 
         // Real elections for this organisation
+        // Full models: the lifecycle needs the state-bearing columns. The page
+        // payload keeps its original column subset — see the explicit map where
+        // 'elections' is emitted below. (PBDIGIT-48)
         $realElections = Election::withoutGlobalScopes()
             ->where('organisation_id', $organisation->id)
             ->where('type', 'real')
             ->orderByDesc('created_at')
-            ->get(['id', 'name', 'slug', 'state', 'start_date', 'end_date', 'results_published']);
+            ->get();
 
         // Voter membership context for the current user across these elections
         $electionIds = $realElections->pluck('id')->toArray();
@@ -189,8 +194,16 @@ class OrganisationController extends Controller
                                             ->where('status', 'active')
                                             ->count(),
             'elections_count'        => $realElections->count(),
-            'active_elections_count' => $realElections->where('status', 'active')->count(),
-            'completed_elections'    => $realElections->where('status', 'completed')->count(),
+            // The lifecycle decides, not the legacy status column (PBDIGIT-48).
+            // Both legacy counts here were structurally zero: the fetch above did
+            // not even select `status`, and nothing ever writes status='completed'.
+            'active_elections_count' => $realElections
+                ->filter(fn ($e) => ElectionLifecycle::of($e)->isActive())->count(),
+            'completed_elections'    => $realElections
+                ->filter(fn ($e) => in_array(ElectionLifecycle::of($e)->state(), [
+                    ElectionLifecycleState::ResultsPublished,
+                    ElectionLifecycleState::Archived,
+                ], true))->count(),
             'new_members_30d'        => 0,
             'exited_members_30d'     => 0,
         ];
@@ -249,7 +262,10 @@ class OrganisationController extends Controller
             'officerElectionNames'=> $officerElectionNames,
             'officers'           => $officers,
             'orgMembers'         => $orgMembers,
-            'elections'          => $realElections->values(),
+            // Original payload column subset, preserved after the full fetch above.
+            'elections'          => $realElections->map(fn ($e) => $e->only([
+                'id', 'name', 'slug', 'state', 'start_date', 'end_date', 'results_published',
+            ]))->values(),
             'voterMemberships'   => $voterMemberships,
             'membership'         => $membershipData,
         ]);
@@ -411,12 +427,19 @@ class OrganisationController extends Controller
             'active_members' => $organisation->users()
                 ->where('email_verified_at', '!=', null)
                 ->count(),
+            // The lifecycle decides, not the legacy status column (PBDIGIT-48).
+            // Nothing ever writes status='completed', so that count was always 0.
             'elections' => \App\Models\Election::where('organisation_id', $organisation->id)->count(),
             'active_elections' => \App\Models\Election::where('organisation_id', $organisation->id)
-                ->where('status', 'active')
+                ->get()
+                ->filter(fn ($e) => ElectionLifecycle::of($e)->isActive())
                 ->count(),
             'completed_elections' => \App\Models\Election::where('organisation_id', $organisation->id)
-                ->where('status', 'completed')
+                ->get()
+                ->filter(fn ($e) => in_array(ElectionLifecycle::of($e)->state(), [
+                    ElectionLifecycleState::ResultsPublished,
+                    ElectionLifecycleState::Archived,
+                ], true))
                 ->count(),
         ];
 
@@ -548,21 +571,26 @@ class OrganisationController extends Controller
 
         abort_if(! in_array($role, ['owner', 'admin']) && ! $isOfficer, 403);
 
-        $elections = Election::withoutGlobalScopes()
+        $electionModels = Election::withoutGlobalScopes()
             ->where('organisation_id', $organisation->id)
             ->where('type', 'real')
             ->orderBy('created_at', 'desc')
-            ->get()
-            ->map(fn ($e) => [
-                'id'     => $e->id,
-                'name'   => $e->name,
-                'slug'   => $e->slug,
-                'status' => $e->status,
-            ]);
+            ->get();
+
+        // Payload keeps the legacy `status` field for display (Bucket 3 —
+        // UI projection; retire with the field). The COUNT below is a decision
+        // and asks the lifecycle. (PBDIGIT-48)
+        $elections = $electionModels->map(fn ($e) => [
+            'id'     => $e->id,
+            'name'   => $e->name,
+            'slug'   => $e->slug,
+            'status' => $e->status,
+        ]);
 
         $stats = [
             'elections_count'  => $elections->count(),
-            'active_elections' => $elections->where('status', 'active')->count(),
+            'active_elections' => $electionModels
+                ->filter(fn ($e) => ElectionLifecycle::of($e)->isActive())->count(),
             'total_voters'     => ElectionMembership::where('organisation_id', $organisation->id)
                 ->where('status', 'active')->count(),
             'officers_count'   => ElectionOfficer::where('organisation_id', $organisation->id)
