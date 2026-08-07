@@ -2384,8 +2384,8 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 
 | | Ticket | Owns | State |
 |---|---|---|---|
-| 1 | **`PBDIGIT-48`** | retire the legacy election-state fields (and the eventual `results_published` → `results_visible` rename) | authority already declared; **Option B approved** |
-| 2 | **`PBDIGIT-58`** | **migrate consumers** to the authoritative representation | `58A` ✅ complete (observation); **`58B` sequenced behind `PBDIGIT-59`** |
+| 1 | **`PBDIGIT-48`** | retire the legacy election-state fields (and the eventual `results_published` → `results_visible` rename) | ✅ **IMPLEMENTED & PO-APPROVED 2026-08-07** — 5 capabilities migrated, all 46 scan hits four-bucket-classified, ADR written (`ADR_20260807_1500_Election_Lifecycle_Single_Source_Of_Truth.md`). **Field removal stays open, sequenced behind `PBDIGIT-59`** |
+| 2 | **`PBDIGIT-58`** | **migrate consumers** to the authoritative representation | `58A` ✅ · **`58B` ✅ COMPLETE — browser-verified twice; `PBDIGIT-47` fixed** |
 | 3 | **`PBDIGIT-59`** | **define authority semantics** — which timestamps are constitutional | 🟡 **PO decision.** Cause of the early close **resolved as an operator action** (`election_state_transitions`: `15:28:44 → counting`, `15:29:08 → results_published`, same actor). **Option C is now evidenced:** `voting_ends_at` = actual close, `end_date` = scheduled close |
 | 4 | **`PBDIGIT-60`** | **remove the non-constitutional write paths** to results publication | 🔴 **`D-2` fixable now** (a deputy can write `results_published_at` via the timeline form) · 🟢 `D-1` bounded-context question **answered by the PO**: publication and visibility are two concepts; the design follows |
 

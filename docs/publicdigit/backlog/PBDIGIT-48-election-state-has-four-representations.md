@@ -280,7 +280,7 @@ Recommendation:
 
 ## 📋 COMPLETION REPORT — every scan hit classified (2026-08-07, Product Owner's four-bucket rubric)
 
-**The decision-site inventory is exhausted.** All 46 candidate sites from the static scan are classified; every migratable business decision on the deprecated fields has been migrated.
+**Based on the current inventory, no further production business-decision consumers remain that can be migrated without first resolving `PBDIGIT-59` or other deferred work.** All 46 candidate sites from the static scan are classified. *(Deliberately not "zero remain": a static inventory is an instrument with known error — this one mis-attributed 19 of 46 hits — and future code can add decision sites. The `58A` observer and `DeprecationPolicy` escalation exist precisely to catch what inventories miss.)*
 
 ### Bucket 1 — Constitutional voting → MIGRATED to `ElectionLifecycle`
 
