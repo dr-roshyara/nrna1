@@ -672,3 +672,27 @@ WHY                 "complete" presupposes a contract stating which
 **Applied form:** *"Scope actually examined: three relationship investigations plus one 136-line test file — **not** 826 and **not** ~3,688."*
 
 **These two rules are recorded here and nowhere else.** Per the Product Owner's direction, **no further methodology layer is to be added unless a concrete problem arises that the existing rules cannot handle.**
+
+#### `BD-1` dependency analysis — **SUBSET BLOCKER CONFIRMED, and it is narrower than the correction assumed**
+
+**Report: [`docs/publicdigit/reviews/2026-08-08-bd1-dependency-analysis.md`](../publicdigit/reviews/2026-08-08-bd1-dependency-analysis.md).** Authorised as a subset investigation independent of `SD-1`/`SD-2`.
+
+**The candidate set was incomplete.** Relationship 5 named **three** files; the reference set is **eight** (69 test-shaped methods) — out of ~491 files / ~3,688 methods referencing Election. **All eight assert on the record; none merely imports it.**
+
+**The dependency is narrower than "blocks classification of history tests":**
+
+> **`BD-1` changes no test's pass/fail.** Every one passes or fails identically under either branch — the record is written the same way. **What changes is what a passing test *means*:** matrix **#5 Business invariant** (*"every governed transition is attributable"* vs **None identified**) and **#26 Verification strength** (business invariant vs technical). **Two columns. No others.**
+
+| | |
+|---|---|
+| **6 files** fully dependent | assert *"a transition produces a record"* |
+| **1 file** dependent in one test | `ElectionStateTransitionMigrationTest::test_has_no_updated_at_column` — immutability is a business invariant under A, a persistence choice under B. Its other three tests are schema mechanics |
+| **1 file** independent | `ElectionStateTransitionModelTest` — UUID PK, timestamps flag, metadata cast: persistence mechanics under either branch |
+
+**Consequence: `BD-1` does not block matrix construction at all.** Rows for these files can be built now with **#5 and #26 marked `Pending BD-1`**. **The earlier framing — *"BD-1 should precede Step 2"* — overstated a two-column dependency in one subset as a gate on the whole step.**
+
+**Method correction worth carrying into matrix construction:** a first count returned **0** for two files, because they use PHPUnit's `#[Test]` attribute rather than a `test_` prefix. **The corrected pattern raised the total from 49 to 69.** **Any matrix built with a `test_`-prefix scan will silently undercount.**
+
+**Still not established:** per-method dependency (69 is a file-total) · whether any of the eight currently pass (**no test executed**) · indirect dependencies via helpers (searched by class and table name only).
+
+**Status: `BD-1` = SUBSET BLOCKER over 7 of 8 referencing files, affecting matrix columns #5 and #26. NOT a programme blocker. `SD-1` and `SD-2` remain the only programme blockers.**
