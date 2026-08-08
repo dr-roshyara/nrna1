@@ -38,7 +38,9 @@ Expected  A customer creates their organisation and reaches its homepage as
 
 ### Verdict — stated as four separate facts, not one label
 
-> **Statically wired · runtime unverified · the verification estate contains identified contract drift · several business decisions remain unresolved.**
+> **🟢 RUNTIME-VERIFIED end to end (server-side, 2026-08-08) · browser hydration not observed · the verification estate contains identified contract drift · several business decisions remain unresolved.**
+
+**Updated 2026-08-08 after Product Owner authorisation of runtime verification.** The first clause previously read *"statically wired · runtime unverified"*. **It has now been executed and observed** — see *Runtime verification* below. **The other three clauses are unchanged, and that is the point:** proving the journey runs says nothing about whether the tests would catch its regression, and nothing about the open business decisions.
 
 **⚠️ `Ready for verification` is withdrawn as this journey's verdict (third correction, 2026-08-08).** It reads as a status but is a **readiness judgement** — and *ready* is normative, exactly like *missing* in `F-6`: it asserts that nothing further is required before verification, which this report cannot support while `D-1`…`D-5` are open. **The four clauses above say strictly what was found and nothing more.** *(The label is retained in the 2026-08-06 capability review, which is a dated record and is not rewritten.)*
 
@@ -221,6 +223,82 @@ Governance permanently `pending_setup` (**G-1…G-3**) — and consistent with *
 
 ---
 
+# 🟢 Runtime verification — EXECUTED 2026-08-08
+
+**Authorised by the Product Owner. Scope: the `PBDIGIT-63` journey only.** No production code, tests, fixtures, migrations or configuration were modified. Every line below is `OBSERVED AT RUNTIME`.
+
+## 🔴 First, a correction that unblocked everything
+
+**The claim "no browser, no database in this environment" — repeated by `PBDIGIT-29`, the 2026-08-06 capability review, and by the first version of *this* report — is false, and was false when each of them said it.** None re-checked; each inherited it.
+
+```
+PHP 8.5.8 · Laravel 11.41.3 · PostgreSQL 18.3 reachable
+database "publicdigit" · 95 tables · 5.43 MB · connection OK
+```
+
+**Three reviews deferred runtime verification on an environmental assumption that a single command would have refuted.** *That is the same failure mode this report kept finding in the code — an inherited claim nobody re-derived — occurring in the method itself.*
+
+## The journey, executed
+
+Logged in as an existing verified user, then walked the journey with a cookie jar and real CSRF tokens against `php artisan serve`.
+
+| # | Step | Observed |
+|---|---|---|
+| 1 | `GET /login` | **200** · CSRF token issued |
+| 2 | `POST /login` | **302** → `/organisations/namaste-nepal-gmbh` — precondition met, person is logged in |
+| 3 | `GET /my-organisations/create` | **200** · Inertia component **`Organisations/Create`** |
+| 4 | `POST /organisations` *(name only — every other field omitted)* | **302** → `/organisations/pbdigit63-runtime-verification-org` |
+| 5 | `GET` that URL | **200** · component **`Organisations/Show`** · organisation name present in payload · **`userRole: "owner"`** |
+| 6 | `POST /organisations` *(identical name again)* | **302** → `…-org-1` — de-duplication works |
+| 7 | `GET` the second homepage | **200** · **both homepages remain reachable; neither displaced the other** |
+
+## Business outcome verified in the database — not merely HTTP 200
+
+| Checked | Observed |
+|---|---|
+| organisation row | created, `id=a274c197-…` |
+| tenant classification | **`type = tenant`**, `is_default = false` |
+| unique slug | `pbdigit63-runtime-verification-org` · exactly **1** row for that slug |
+| ownership relationship | exactly **1** `user_organisation_roles` row · **`role = owner`** · correct `user_id` |
+| user ↔ organisation assignment | `users.organisation_id` **switched to the new organisation** (matched by id) |
+| current-organisation context | session context set; the homepage rendered behind `ensure.organisation`, which requires it |
+| zero-state behaviour | `members_count 0 · elections_count 0 · active_elections_count 0 · completed_elections 0` — **rendered, not crashed** |
+
+**`Question 2 — does the implementation realize the capability?` is now answered: YES, server-side, observed.**
+
+## Three findings upgraded from code-reading to runtime observation — none reclassified
+
+| Finding | Was | Now | Classification |
+|---|---|---|---|
+| **F-6** `created_by` never written | `OBSERVED IN CODE` | **`OBSERVED AT RUNTIME`** — the created row's `created_by` is **`NULL`** | **unchanged** — still `UNDETERMINED` pending `D-3`. *Observing the absence does not create the obligation* |
+| **F-2** session cookie + CSRF token reach the log | `OBSERVED IN CODE` | **`OBSERVED AT RUNTIME`** — `laravel.log` gained cookie-header and XSRF-token entries for each attempt | **unchanged** — still `BUSINESS / GOVERNANCE DECISION REQUIRED` (`D-6`). *No invariant appeared just because the write was witnessed* |
+| Governance permanently `pending_setup` (**G-1/G-2**, capability review) | **predicted** | **`OBSERVED AT RUNTIME`** — the new organisation's `governance_status` is **`pending_setup`** | **not re-investigated.** Recorded as confirmation of another review's prediction; that review's findings are not reopened here |
+
+## ⚠️ What runtime verification did NOT establish
+
+1. **Browser rendering was not observed.** The server-side Inertia response is correct — right component, right payload — but the HTML references a **Vite dev server at `localhost:5173`, which is not listening.** In a browser right now the JavaScript and CSS would fail to load and the Vue app would not mount.
+   **This is an environment condition, not a product defect:** it is caused by a stale **`public/hot`** file, which is **gitignored and untracked** (`.gitignore:2`) — a local artifact of someone having run `npm run dev`. **Built assets exist** (`public/build/manifest.json`), so without that file Laravel would serve them. **I did not delete or move it** — it belongs to the local environment and possibly to a concurrent session, and the isolation rule says do not clean up what is not mine.
+   **Therefore: "the customer sees the homepage" remains `NOT VERIFIED` at the browser level.** What is verified is that the server produces the correct page for it.
+2. **`F-5` was not exercised.** The account used is **verified**, so the unverified-user path was not walked. `F-5` remains exactly as recorded, and `D-1` is untouched.
+3. **`Question 3 — can the verification estate be trusted?` is unchanged and still `UNDETERMINED`.** **The test suite was not run.** A journey that works at runtime tells you nothing about whether a regression in it would be caught. **These two must not be allowed to bleed into one another** — that conflation is what produced this report's first withdrawn summary.
+
+## 🗑️ Residue created in the development database — for Product Owner disposal
+
+**Two organisations were created and deliberately NOT deleted:**
+
+```
+pbdigit63-runtime-verification-org     (id a274c197-de05-4136-b733-f4e7d69de848)
+pbdigit63-runtime-verification-org-1
+```
+
+plus their two `user_organisation_roles` rows, and **`users.organisation_id` for `roshyara@gmail.com` now points at the second one.**
+
+**They are named so they are unmistakable.** They were not removed for two reasons: **deleting is destructive against the development database**, which the repository's standing rule protects; and **they are the evidence for the table above.** *Disposal — including restoring the user's previous working organisation — is a Product Owner decision.*
+
+**Credential handling:** the account password supplied for this verification was used only in the request that authenticated it and **appears in no file, no artifact and no commit.** Recording it would have reproduced precisely the hygiene defect `PBDIGIT-37` exists to document.
+
+---
+
 ## 3a · Interpretation — kept separate from the facts above
 
 **Nothing in this section is evidence.** It is the reading of the evidence, and it can be wrong without any fact in sections 1–2 being wrong.
@@ -254,9 +332,10 @@ Governance permanently `pending_setup` (**G-1…G-3**) — and consistent with *
 
 Stated plainly, because a discovery report's honesty is measured by this list:
 
-1. **That a customer can complete the journey.** No runtime execution was observed. `NOT VERIFIED`
-2. **That a customer cannot.** Equally unestablished — no blocker was found.
-3. **Whether the test suite would catch a regression here.** Six assertions were read; the suite was **not run** and its coverage **not measured**. `UNDETERMINED`
+1. ~~**That a customer can complete the journey.**~~ **✅ SETTLED 2026-08-08 at the server level** — executed and observed end to end, with the persisted outcome verified in the database. **Struck through rather than deleted:** the record that it was once unestablished is part of the history.
+1b. **That a customer *sees* the homepage in a browser.** Still `NOT VERIFIED` — the served page points at a Vite dev server that is not running (a stale gitignored `public/hot`, an environment condition).
+2. ~~**That a customer cannot.**~~ **Moot** — the journey ran.
+3. **Whether the test suite would catch a regression here.** Six assertions were read; the suite was **not run** and its coverage **not measured**. `UNDETERMINED` — **and running the journey did not change this by one inch.**
 4. **Why the drift exists.** No history analysis. `MECHANISM NOT ESTABLISHED`
 5. **Whether any of F-4, F-5, F-6 is a defect.** Each awaits a business answer; until then they are differences, not faults.
 6. **The realised impact of F-2** — the write is certain, the exposure is not.

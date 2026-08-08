@@ -2,7 +2,7 @@
 
 **Type:** Verification + classification (**not** a repair ticket) · **Epic:** `PBDIGIT-EPIC-01` Organisation Management
 **Created:** 2026-08-08 · **Reframed the same day** after Product Owner review — see *Correction* below
-**Evidence:** [`20260808-create-organisation-and-visit-homepage-journey-report.md`](20260808-create-organisation-and-visit-homepage-journey-report.md) — static evidence only, zero files modified
+**Evidence:** [`20260808-create-organisation-and-visit-homepage-journey-report.md`](20260808-create-organisation-and-visit-homepage-journey-report.md) — static discovery + **runtime verification executed 2026-08-08**; zero files modified in either
 
 ---
 
@@ -25,17 +25,17 @@
 
 ## Why this matters
 
-This is the **first segment of the Level 0 customer journey**. Everything downstream — committees, members, elections, votes — presumes an organisation exists and its owner can reach it. **It has never been observed running**, and the tests that describe its creation contract describe a different contract from the one the controller implements. The risk is not a known failure; **the risk is that a failure here would be invisible.**
+This is the **first segment of the Level 0 customer journey**. Everything downstream — committees, members, elections, votes — presumes an organisation exists and its owner can reach it. **It ran end to end on 2026-08-08 and was observed doing so** — the first recorded execution. **The remaining risk is not that it fails, but that a future failure would be invisible:** the tests describing its creation contract describe a different contract from the one the controller implements.
 
 ## Current state — at evidence strength
 
-> **Statically wired · runtime unverified · the verification estate contains identified contract drift · several business decisions remain unresolved.**
+> **🟢 Runtime-verified end to end (server-side, 2026-08-08) · browser rendering not observed · the verification estate contains identified contract drift · several business decisions remain unresolved.**
 
 **Four separate facts, deliberately not compressed into one verdict** — because this ticket exists to keep three different questions apart:
 
 ```
 1. Does the business capability exist?        -- creation yes; its rules are open (D-1..D-6)
-2. Does the implementation realize it?        -- statically wired; NOT VERIFIED at runtime
+2. Does the implementation realize it?        -- YES, OBSERVED AT RUNTIME (server-side)
 3. Can the verification estate be trusted?    -- six assertions drifted; suite-level UNDETERMINED
 ```
 
@@ -45,8 +45,8 @@ This is the **first segment of the Level 0 customer journey**. Everything downst
 |---|---|
 | Every step is present in code and statically wired end to end | `OBSERVED IN CODE` |
 | No statically detectable blocker on the happy path | `OBSERVED IN CODE` |
-| **A customer can complete the journey** | **`NOT VERIFIED`** — never executed |
-| **A customer cannot complete the journey** | **`NOT VERIFIED`** — no blocker found |
+| **A customer can complete the journey** | **`OBSERVED AT RUNTIME`** 2026-08-08 — executed, persisted outcome verified |
+| **A customer *sees* the homepage in a browser** | **`NOT VERIFIED`** — served page targets a Vite dev server that is not running (stale gitignored `public/hot`; environment, not product) |
 | Six creation assertions describe a different contract from the controller | `CONTRACT DRIFT` — confirmed per row, `file:line` both sides |
 | Whether the suite would catch a regression in this journey | **`UNDETERMINED`** — the suite was not run |
 | Why the drift exists | **`MECHANISM NOT ESTABLISHED`** — no history analysis |
@@ -60,26 +60,33 @@ This is the **first segment of the Level 0 customer journey**. Everything downst
 
 ## Unverified findings
 
-* Whether the journey executes at all (Part A exists to settle this).
+* ~~Whether the journey executes at all~~ — **settled by Part A** at the server level; browser rendering remains unverified.
 * Whether the drift has one cause or six (H-1 in the report).
 * The realised exposure of F-2 — log retention and readership were not examined.
 
 ---
 
-## Part A — Execute the journey and record what happens
+## Part A — ✅ EXECUTED 2026-08-08 (Product Owner authorised)
 
-**No code. This produces the evidence the ticket is missing.** Record page · route · DB rows · session at each step, **and record a negative result as faithfully as a positive one** — that is what `PBDIGIT-00` established.
+**The journey ran end to end at the server level.** Full evidence in the [report](20260808-create-organisation-and-visit-homepage-journey-report.md) → *Runtime verification*. No code, tests, fixtures or configuration were modified.
 
-* [ ] The creator reaches the create form, submits **name only**, and arrives on the new organisation's homepage.
-* [ ] The organisation exists exactly once, with a unique slug, as a tenant organisation.
-* [ ] The creator holds the ownership relationship the business intends *(which role that is, is a decision in `D-2` below — record what is observed, do not correct it)*.
-* [ ] The creator's working-organisation context is the new organisation, in both the user record and the session.
-* [ ] Creating two organisations with the same name yields two reachable, distinctly-addressed homepages.
-* [ ] The same walk with an **unverified** e-mail account — **observe and record; do not treat either outcome as a fault** (`D-1`).
+* [x] The creator reaches the create form, submits **name only**, and arrives on the new organisation's homepage — `200 → 302 → 200`, components `Organisations/Create` then `Organisations/Show`.
+* [x] The organisation exists exactly once, with a unique slug, as a tenant organisation — `type=tenant`, one row for that slug.
+* [x] The creator holds the ownership relationship — **observed `role = owner`**, one row. *(Recorded, not corrected: whether `owner` is what the business intends remains `D-2`.)*
+* [x] The creator's working-organisation context is the new organisation — `users.organisation_id` switched; the homepage rendered behind `ensure.organisation`, which requires the session context.
+* [x] Creating two organisations with the same name yields two reachable, distinctly-addressed homepages — `…-org` and `…-org-1`, both `200`.
+* [ ] The same walk with an **unverified** e-mail account — **NOT DONE.** The authorised account is verified. `F-5`/`D-1` are untouched.
+
+**🔴 Not established by Part A, and it must not be read as if it were:**
+
+* **Browser rendering.** The server returns the correct page, but the HTML points at a Vite dev server that is not listening — a **stale, gitignored `public/hot`**, i.e. an environment condition, not a product defect. `public/hot` was deliberately not touched.
+* **Anything about Part B.** Running the journey says nothing about whether a regression in it would be caught.
+
+**Residue for disposal:** two organisations remain in the development database, named `pbdigit63-runtime-verification-org` and `…-org-1`, and `roshyara@gmail.com`'s working organisation now points at the second. **Not deleted** — deletion is destructive against the development database and would remove the evidence. **Disposal, including restoring the prior working organisation, is a Product Owner decision.**
 
 ## Part B — Classify the verification estate *(no changes to it)*
 
-**Blocked on Part A.** For every test touching this journey, answer — **before anyone proposes changing a line of it**:
+**✅ UNBLOCKED — Part A is done.** **Still not authorised to change anything.** For every test touching this journey, answer — **before anyone proposes changing a line of it**:
 
 1. What business outcome was it written to protect?
 2. What invariant does it assert, and is that invariant still the business's?
@@ -156,8 +163,10 @@ Each names **the layer that owns the answer**, not the file that would change.
 Authorised now      F-7 only — and only because it needs no business contract
                     (a controller branch unreachable behind middleware is a
                     control-flow fact, not a claim about what the product owes)
-Awaiting            Part A — a runtime environment and authorisation to use it
-                    Part B — follows A
+Done                Part A — EXECUTED 2026-08-08; journey verified server-side
+Awaiting            Part B — now unblocked; classification of the estate
+                    Browser-level render check (needs `npm run dev` or no
+                    stale public/hot); F-5/D-1 unverified-user walk
                     Part C — NOT SPECIFIABLE until B and D-1..D-6 complete
                     F-2    — blocked on D-6 (no logging policy exists to breach)
                     F-3    — no stated expectation was found; UNDETERMINED
