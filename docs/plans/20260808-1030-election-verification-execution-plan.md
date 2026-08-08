@@ -262,3 +262,28 @@ relationship established → identify which tests exercise that relationship →
 **Consequence for scope:** an HTTP test is in scope when it exercises enforcement or the composition; it is not in scope merely because it renders a page containing a capability flag.
 
 **Relationships: 3 established (Membership · Security · HTTP) · 3 outstanding** — Services → lifecycle operations · Models → persistence of authoritative decisions · Demo (`PBDIGIT-59`-adjacent).
+
+#### 4. Application Services → lifecycle operations — ESTABLISHED, and the answer is *no such layer*
+
+**Traced the actual mutation path rather than inferring from imports.** Every caller of `transitionTo()` in `app/`:
+
+| Caller | Layer |
+|---|---|
+| `ElectionManagementController` `:235, :849, :906, :937` | **HTTP controller** |
+| `Election` model `:1274, :1286, :1300, :1326` | **Domain model** (internal) |
+
+**No application service, use case, or handler mutates Election lifecycle state.** The path is **HTTP → Domain model directly**, with no application layer in between.
+
+**This is not an absence of application layer generally** — `AssignVoterHandler` exists in `Contexts/Elections/Application/Handlers` and *does* mediate voter assignment. So the Election application layer exists for **some** operations and **not** for lifecycle transitions.
+
+| Operation | Application layer? | Decision owner for the transition |
+|---|---|---|
+| Voter assignment | **yes** — `AssignVoterHandler` | Application (orchestration) + Domain (policy) |
+| **Lifecycle transition** | **no** | **Domain model, invoked directly by HTTP** |
+
+**Consequences for scope:**
+1. **There are no lifecycle-transition service tests to include, because no service performs them.** Tests exercising transitions are necessarily **controller/HTTP tests or model/domain tests** — searching `tests/Unit/Services` for lifecycle verification would find nothing, and its absence would prove nothing.
+2. **`Business Decision Ownership` for transition tests is `Domain`, with the caveat that the *invocation* is `Interface`.** The constitution (`ElectionConstitution` allowed-states/roles) is consulted inside `transitionTo()`, not by the controller.
+3. **Recorded, not repaired:** a controller calling a domain-model mutator directly is an architectural observation. Whether that is a boundary weakness is **not** a Slice 1 question. **NO CHANGE.**
+
+**Relationships: 4 established (Membership · Security · HTTP · Services) · 2 outstanding** — Models → persistence of authoritative decisions · Demo (`PBDIGIT-59`-adjacent).
