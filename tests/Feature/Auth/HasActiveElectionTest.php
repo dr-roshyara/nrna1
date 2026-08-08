@@ -363,6 +363,91 @@ class HasActiveElectionTest extends TestCase
     }
 
     /**
+     * PBDIGIT-62 regression: the already-voted exclusion must hold with NO tenant context.
+     *
+     * Both consumers run at login time, before any organisation is in session. The
+     * exclusion is a `whereDoesntHave` over tenant-scoped models, and lifting the scope
+     * on the outer query does not reach the subquery — so the scope resolved to a
+     * non-matching organisation, the subquery returned nothing, and the guard FAILED
+     * OPEN: a voter who had already voted was routed back to the ballot.
+     *
+     * This test pins the login-time condition itself, which is what made the defect
+     * invisible in ordinary requests.
+     */
+    public function test_already_voted_is_excluded_when_no_tenant_context_is_set(): void
+    {
+        \App\Services\TenantContext::clear();
+        session()->forget('current_organisation_id');
+
+        $user = User::factory()->create();
+
+        DB::table('user_organisation_roles')->insertOrIgnore([
+            'id' => (string) \Illuminate\Support\Str::uuid(),
+            'user_id' => $user->id,
+            'organisation_id' => $this->tenantOrg->id,
+            'role' => 'member',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $electionId = (string) \Illuminate\Support\Str::uuid();
+        DB::table('elections')->insert([
+            'id' => $electionId,
+            'organisation_id' => $this->tenantOrg->id,
+            'name' => 'Voted Election',
+            'slug' => 'voted-election-62',
+            'type' => 'real',
+            'start_date' => now()->subDay(),
+            'end_date' => now()->addDay(),
+            'voting_starts_at' => now()->subDay(),
+            'voting_ends_at' => now()->addDay(),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Positive control: with no vote recorded, the election IS resolvable.
+        $this->assertNotNull(
+            $user->getActiveElection(),
+            'Precondition: the election must be votable before the vote is recorded.'
+        );
+        $this->assertEquals(1, $user->countActiveElections());
+
+        // Record the vote on BOTH representations the two consumers read.
+        DB::table('voter_slugs')->insert([
+            'id' => (string) \Illuminate\Support\Str::uuid(),
+            'user_id' => $user->id,
+            'election_id' => $electionId,
+            'organisation_id' => $this->tenantOrg->id,
+            'slug' => 'voted-slug-62',
+            'status' => 'voted',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('election_memberships')->insert([
+            'id' => (string) \Illuminate\Support\Str::uuid(),
+            'user_id' => $user->id,
+            'election_id' => $electionId,
+            'organisation_id' => $this->tenantOrg->id,
+            'role' => 'voter',
+            'status' => 'active',
+            'has_voted' => true,
+            'voted_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $this->assertNull(
+            $user->getActiveElection(),
+            'A voter who has already voted must not be routed to the ballot.'
+        );
+        $this->assertEquals(
+            0,
+            $user->countActiveElections(),
+            'An election the voter has completed must not count as active.'
+        );
+    }
+
+    /**
      * PBDIGIT-47 regression: a stale legacy `status` must not hide a running election.
      *
      * This is the exact production shape — `namaste 2026` sat at status='planned' while

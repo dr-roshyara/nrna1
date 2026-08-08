@@ -1309,8 +1309,18 @@ public function getVoterState(): string
             ->where('type', 'real')
             ->where('start_date', '<=', now())
             ->where('end_date', '>=', now())
+            // The tenant scope must be lifted INSIDE the subquery too: dropping it on
+            // the outer query does not reach a relationship subquery, and at login time
+            // there is no tenant context, so the scope resolves to a non-matching
+            // organisation and the subquery returns nothing. `whereDoesntHave` would
+            // then be trivially true and this exclusion would FAIL OPEN — routing a
+            // voter who has already voted back to the ballot. (PBDIGIT-62)
+            //
+            // Only 'tenant' is lifted; SoftDeletingScope stays, so a deleted slug does
+            // not count as a vote.
             ->whereDoesntHave('voterSlugs', function ($query) {
-                $query->where('user_id', $this->id)
+                $query->withoutGlobalScope('tenant')
+                    ->where('user_id', $this->id)
                     ->where('status', 'voted');
             })
             ->orderBy('start_date')
@@ -1351,8 +1361,11 @@ public function getVoterState(): string
             ->where('type', 'real')
             ->where('start_date', '<=', now())
             ->where('end_date', '>=', now())
+            // Tenant scope lifted inside the subquery — see getActiveElection().
+            // Without this the already-voted exclusion fails open. (PBDIGIT-62)
             ->whereDoesntHave('memberships', function ($query) {
-                $query->where('user_id', $this->id)
+                $query->withoutGlobalScope('tenant')
+                    ->where('user_id', $this->id)
                     ->where('has_voted', true);
             })
             ->get()

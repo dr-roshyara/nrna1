@@ -133,12 +133,19 @@ class DashboardResolverElectionPriorityTest extends TestCase
 
     /**
      * @test
-     * Future election with status=active IS counted.
-     * countActiveElections() is for routing only — it counts by status, not date window.
-     * If an admin marks an upcoming election as 'active', the org dashboard is shown
-     * so the user is not silently routed to a ballot they can't vote on yet.
+     * A future election is NOT counted as active for voting routing.
+     *
+     * Rewritten for PBDIGIT-48/62: this test previously asserted "counted because
+     * status=active — date range is irrelevant", i.e. the retired representation. That
+     * expectation was never satisfied — countActiveElections() has always filtered
+     * start_date <= now() — and it is doubly excluded now that votability comes from
+     * ElectionLifecycle, which reports ReadyForVoting/Draft until the window opens.
+     *
+     * A count of 0 also serves the original intent better than the original assertion:
+     * 0 skips the routing branch, so the voter is not sent to a ballot they cannot use,
+     * whereas 1 would have routed them to the election dashboard.
      */
-    public function future_active_election_is_counted(): void
+    public function future_election_is_not_counted_as_active_for_voting_routing(): void
     {
         $user = $this->makeVerifiedUser();
         $org  = Organisation::factory()->create(['type' => 'tenant']);
@@ -153,8 +160,9 @@ class DashboardResolverElectionPriorityTest extends TestCase
             'end_date'        => now()->addDays(10),
         ]);
 
-        // Counted because status=active — date range is irrelevant for routing decisions
-        $this->assertEquals(1, $user->countActiveElections());
+        // Excluded twice over: the date window has not opened, and the lifecycle does
+        // not consider a not-yet-open election votable.
+        $this->assertEquals(0, $user->countActiveElections());
     }
 
     /**
