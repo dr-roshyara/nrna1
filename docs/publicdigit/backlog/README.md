@@ -288,7 +288,7 @@ Proposed by the Product Owner at the review of the organisation-creation journey
 |---|---|---|
 | C-12 | **Governance precedence — the commission defers to the repository's adopted method and forbids implicit governance** | *"Governance must never be inferred from the fact that a better method would be useful"* — **the proposal limits itself**, which is what makes it safe to park *and* safer to adopt |
 | C-13 | **Coverage ≠ completeness** — *complete · missing · gap* are **normative** claims requiring a business contract; without one, record `UNDETERMINED` | applied immediately in the claim-weakening direction: it withdrew `F-6`'s `MISSING` class |
-| C-14 | **Persisted-record classification by writers *and readers*, never by shape** — immutable + actor + reason ≠ audit record; a reader's decision is what confers meaning | directly relevant to `PBDIGIT-42` (`overlay_influence_chain` semantics) and `PBDIGIT-59` |
+| C-14 | **Persisted-record classification by writers *and readers*, never by shape** — immutable + actor + reason ≠ audit record; a reader's decision is what confers meaning | **an observation only.** It resembles questions open in `PBDIGIT-42` and `PBDIGIT-59`, **and it does not govern them** — those belong to a different workstream and are not reinterpreted from here |
 | C-15 | **`GREEN` ≠ verified · `RED` ≠ production defect** — trace the mechanism before classifying either | a test can pass because middleware was bypassed or a compatibility shim supplied the value |
 | C-16 | **Summary calibration as a first-class discipline** with its own pre-write interrogation of every sentence | the 2026-08-08 evidence: findings held, the summary did not |
 | C-17 | **Keep three questions apart** — *does the capability exist? · does the implementation realize it? · can the verification estate be trusted?* | all three held different values on one journey; a single verdict overstates at least two |
@@ -312,6 +312,14 @@ At the 2026-08-08 review the Product Owner wrote of `C-17`: *"I would make this 
 > **A technically observable difference is not yet a business defect. A business obligation must exist before its absence can be called a defect.**
 
 **Applied to itself the same day, it withdrew four of this report's own classifications:** `Ready for verification` (readiness is normative), `F-6 MISSING` (completeness is normative), **`F-2` as a security defect** (the invariant cited turned out to be `PBDIGIT-37`, which concerns credentials in *tracked files* and never mentions logging, plus a line from the operator's *private* AI-instruction file — **not a PublicDigit contract**), and **Part D as a pre-authorised repair list** (two of its three items had no obligation behind them). **`D-6` now asks whether the platform has any policy on secrets in application logs. None was found.**
+
+### 🔀 Workstream boundary — `PBDIGIT-63` and `PBDIGIT-48` are separate, and one rule now has two governance states
+
+**Two investigations ran concurrently on 2026-08-08:** `PBDIGIT-63` (organisation-creation journey — this backlog) and `PBDIGIT-48` (election verification estate — `docs/plans/…election-verification-execution-plan.md`). **Both independently reached similar analytical conclusions. That is methodological convergence, and convergence is evidence, not authorisation.**
+
+**Observed, and deliberately left unresolved:** the rule *"coverage is descriptive, completeness is normative"* is **`BOUND`** in the `PBDIGIT-48` execution plan (commit `5e9dc5f5`) and **`PARKED` as `C-13`** here. **One rule, two governance states, one repository.** Whether that is a contradiction or simply two streams legitimately governed by their own adopted rules **is a governance question, not an engineering one** — recorded so a future reader does not find the two states and assume one is a mistake.
+
+**The boundary has held so far, and was checked rather than assumed:** `5e9dc5f5` touched only that stream's plan and nothing in `docs/publicdigit/backlog/`; the `PBDIGIT-63` artifacts have been touched only by the four `PBDIGIT-63` commits. **Neither stream's findings are absorbed, superseded or reinterpreted by the other**, and nothing here claims authority over `PBDIGIT-42`, `PBDIGIT-59` or the election plan.
 
 ### ⚠️ A practical cost of `OQ-2` is now visible
 
