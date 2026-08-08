@@ -324,3 +324,31 @@ Vote cast                              none — so no runtime claim about double
 Test suite                             NOT RUN
 Classification                         B or C — UNDETERMINED between them, deliberately
 ```
+
+## Appendix 3a — the step taken; classification resolved to **C**
+
+**`ElectionVotingController::start():155-185` was traced forward. It does not persist a vote at all.** It creates or **refreshes a `VoterSlug`** and redirects to **`slug.code.create`** — handing the voter into the **`VoterSlug` + `Code`** flow that `VoteController` serves.
+
+```
+start()  -- reads election_memberships.has_voted (entitlement gate)
+   |
+   +-> VoterSlug created/refreshed:  status=active, is_active=true,
+   |                                 can_vote_now=true, expires_at=+30min
+   |
+   +-> redirect slug.code.create  ->  VoteController  ->  writes has_voted on
+                                                          voter_slugs / codes
+```
+
+**This falsifies hypothesis (1) in the appendix above:** `VoteController` is **not** a different, older path — **it is the path `start()` leads to.**
+
+### Classification: **C — CURRENT ENFORCEMENT STILL DEPENDS ON LEGACY**
+
+**The new representation is read and never written; the mechanism that actually records having voted is the one described as legacy.** `ElectionMembership::markAsVoted()` — which would close the loop — remains **dead code by call-graph**.
+
+**Additional observation, and it is the one I would look at first:** the reuse branch **re-arms** an existing slug (`status=active`, `can_vote_now=true`, fresh 30-minute expiry) **before** any check of that slug's own voting state. **Whatever prevents a second vote is therefore not in `start()`** — it must live inside the `Code` flow, or nowhere. **`MECHANISM NOT ESTABLISHED`; hypotheses (2) and (3) — an observer, or code-exhaustion/constraint enforcement inside the `Code` flow — remain untested, and (3) is now the likely candidate given the two-use code design.**
+
+> **No vote has been cast, so this is NOT a claim that double voting is possible.** It is a claim about which representation the current path writes: **not `election_memberships`.**
+
+**Consequence for `PBDIGIT-66` `D-1`/`D-2`:** `ElectionMembership` is the authority for **entitlement** (proven) but demonstrably **not** for **"has exercised the vote"**. **The collapse of registration/eligibility/entitlement into one row does not extend to the one-vote invariant** — which strengthens the case that these are separate business decisions rather than one.
+
+**Next step (unchanged in kind, narrower in scope):** trace the `Code` flow's one-vote enforcement — `codes.has_voted`, code exhaustion, or a constraint — and determine whether the invariant holds without `election_memberships` participating at all.
