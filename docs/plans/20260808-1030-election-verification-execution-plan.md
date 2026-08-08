@@ -390,3 +390,28 @@ Note also a **data-source divergence** on the same concept: the guard's `has_app
 **Recorded, not repaired. No code, test or fixture changed.**
 
 **Status: Relationship 4 ESTABLISHED (re-opened and completed). Relationships established: 4 (Membership · Security · HTTP · Services/lifecycle). Outstanding: 2 — Models → persistence of authoritative decisions · Demo (`PBDIGIT-59`-adjacent).**
+
+---
+
+### ⛔ STANDING SLICE 1 DISCIPLINE — added 2026-08-08 after Relationship 4
+
+> **Do not refactor duplicate business rules merely because duplication has been discovered during the Master Matrix. Discovery establishes ownership and inconsistency; it does not authorize consolidation.**
+
+**Specifically forbidden as a Slice 1 response to Finding 4a/4b:** *"the same rule is in two places, therefore move it into `ElectionConstitution`."* The two mechanisms answer **different conceptual questions** — *is this action constitutionally legal for this actor from this state?* versus *is this election's data ready?* — and collapsing them would erase that distinction before anyone has decided which rules belong to the **constitutional contract** and which are **aggregate invariants**. **That is a DDD ownership question, not a refactoring question.**
+
+**The investigation answers these ten, in order. Only the tenth authorises change, and it is not engineering's to take:**
+
+| # | Question |
+|---|---|
+| 1 | What business invariant exists? |
+| 2 | Who owns it? |
+| 3 | Where is it currently represented? |
+| 4 | Which mechanism enforces it? |
+| 5 | Are multiple mechanisms enforcing it? |
+| 6 | Do they have identical semantics? |
+| 7 | Can one mechanism bypass another? |
+| 8 | What happens when they disagree? |
+| 9 | Which tests actually verify the invariant? |
+| **10** | **Only after PO / architecture review: is consolidation required?** |
+
+**Q8 carries its own evidentiary rule, established by Finding 4b:** *potential* inconsistency is an architectural finding; *actual* inconsistency requires evidence. **Recording that two sources could disagree is discovery. Claiming they do disagree requires a measurement.**
