@@ -23,6 +23,62 @@
 
 **Reproduced concretely.** `Election 2026` (`election-2026-ea560731`, organisation `iervp-election-only-org`) was left in `setup_nomination` with **1 post (President) and 0 candidacies**. Its voting window opened and the election auto-transitioned to **`voting_active`**, whose only remaining action is `close_voting`. A voter logging in was then routed to that election's page, which reports `lifecycle.state = voting_active` and `lifecycle.canVote = true` — **for an election with no candidate to vote for.**
 
+---
+
+# 🔬 Root cause — ESTABLISHED 2026-08-09 (read-only investigation, no code changed)
+
+**The first framing in this ticket — *"the automatic transition skips the guard"* — is WITHDRAWN. It was close, but wrong, and the truth is more serious.**
+
+**Nothing transitioned this election. Its state is COMPUTED from the clock.**
+
+`ElectionLifecycleEngineImpl::compute()` is a **priority-ordered derivation**, not a state machine (`app/Application/Election/Services/ElectionLifecycleEngineImpl.php:99-107`):
+
+```php
+// 5. Voting active — voting window is open NOW
+if ($this->isVotingWindowOpenNow($election)) {
+    return ElectionLifecycleState::VotingActive;      //  <-- consults ONLY the clock
+}
+
+// 6. Ready for voting — setup complete, awaiting voting window
+if ($election->administration_completed && $election->nomination_completed) { … }
+```
+
+`isVotingWindowOpenNow()` delegates to `ElectionClockService::isVotingOpen($election)` — **time and nothing else** (`:166-169`). **Completeness is only consulted at priority 6, which is unreachable once the window is open.**
+
+### The consequence, stated plainly
+
+> **An election IS `voting_active` for as long as its voting window is open — regardless of nomination completeness, approved candidates, or whether any guarded transition was ever invoked.**
+
+**No actor performed `open_voting`. The console auto-transition command (`ProcessElectionAutoTransitions`) was never run.** The election simply became `voting_active` because `voting_starts_at` passed.
+
+### Why the existing guards did not help
+
+| Guard | What it requires | Why it did not fire |
+|---|---|---|
+| `complete_nomination` | **`has_approved_candidates`** — evaluated as `candidacies()->where('status','approved')->exists()` (`ConstitutionalTransitionGuard:188-190`) | ✅ It **works** — it refused us, correctly. **But it guards a transition that the clock makes optional** |
+| `open_voting` | `voting_window_defined`, `timezone_set` · source states `setup_nomination`\|`ready_for_voting` (`ElectionConstitution:94-100`) | **Never invoked.** Note it carries **no candidate precondition at all**, and our election's `timezone` was `NULL`, so it would have *failed* this guard — yet the election reached voting anyway |
+
+**So this is not "a missing check on one path". It is two competing authorities over one business concept:** a **guarded transition system** that enforces candidate rules, and a **computed temporal projection** that outranks it and consults nothing. The projection wins, because everything downstream — routing, `canVote`, the voter's ballot — reads the projection.
+
+*(The engine already anticipates this: at priority 4 it logs a `"Constitutional anomaly: voting ended without setup completion"` warning — **it detects the condition and proceeds anyway**, `:89-96`.)*
+
+### Answers to the commissioned questions
+
+| | |
+|---|---|
+| **A · Confirmed invariant** | *Voting must not begin unless the election has at least one valid (approved) candidate.* **"Valid" is already defined by the product** as `candidacies.status = 'approved'` — taken from `has_approved_candidates`, **not invented here** |
+| **B · Runtime evidence** | `election-2026-ea560731`: `setup_nomination`, 1 post, **0 candidacies** → became **`voting_active`** when its window opened; voter page reports `lifecycle.canVote = true` |
+| **C · Accepting boundary** | `ElectionLifecycleEngineImpl::compute()` **priority 5** |
+| **D · Current preconditions** | `complete_nomination`: `has_approved_candidates` ✅ · `open_voting`: `voting_window_defined`, `timezone_set` — **no candidate rule** · **computed path: none** |
+| **E · Root cause** | **The lifecycle state is derived from the voting window before any completeness condition is evaluated.** Not a bypass, not a missing branch — a **competing authority** |
+| **F · Impact** | Any election with a window is `voting_active` during it. Voters are routed there (`PBDIGIT-47` routing reads this projection) and shown a ballot for an election that may have no candidate |
+| **G · Tests that should exist** | An election in `setup_nomination` with **zero approved candidacies** whose voting window is open **must not** compute to `voting_active`. Also: window open + nomination incomplete; window open + only `draft`/`pending` candidacies |
+| **H · Existing coverage** | **Not established** — the suite was not run. `UNDETERMINED` |
+| **I · Independent of other IERVP findings?** | **Yes** — distinct from `IERVP-1` (facade/snapshot method), `IERVP-2`, `IERVP-3`. **Interacts with `IERVP-6`**: the projection says the *election* can accept votes while the voter is computed ineligible by a different authority |
+| **J · Recommended repair location** | The decision belongs at **`ElectionLifecycleEngineImpl::compute()` priority 5** — the temporal check must be conditioned on setup completeness. **NOT IMPLEMENTED, and the precise form is a domain decision** (does an unready election hold, warn, or refuse?) |
+
+---
+
 ## Why this is a defect and not a configuration mistake
 
 **The rule already exists in the product** — `complete_nomination` enforces exactly it. So the business obligation is not in doubt, and it is not newly invented by this ticket. **The defect is that the obligation is enforced on one path out of the state and not on the other(s).** An election therefore reaches voting with no candidates **without any actor doing anything wrong**: the window simply arrived.
