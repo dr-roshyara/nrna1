@@ -54,6 +54,42 @@ business invariant → domain meaning → authoritative authority → applicatio
 
 **Cluster 6 is intentional migration evidence, not defects.**
 
+#### ⛔ Slice 1 is investigation and classification only — NOT remediation
+
+**Slice 1 is investigation and classification only, not remediation.** Findings such as defective fixtures, production defects, legacy consumers, missing coverage, or architectural smells **must be recorded** in the matrix and the appropriate finding registers, but **must not be repaired during Slice 1**. No code, test, fixture, production, or legacy-migration changes are authorised by Slice 1. **Remediation begins only in a later authorised slice, after the Product Owner review gate.**
+
+**The prohibition applies even — especially — when the repair looks obvious.** "This fixture clearly uses the old `status` field" is a *finding*, not a licence.
+
+**Operating rule when something actionable is discovered:**
+
+```
+DISCOVER → UNDERSTAND BUSINESS INTENT → IDENTIFY DECISION OWNER
+        → MEASURE ACTUAL MECHANISM → CLASSIFY → RECORD FINDING → STOP
+
+                       ⛔ NO REPAIR IN SLICE 1
+```
+
+**Worked example of the required output shape:**
+
+| Field | Value |
+|---|---|
+| Observation | fixture writes legacy `status` |
+| Business intent | test intends `SetupAdministration` |
+| Authoritative authority | `ElectionLifecycle` |
+| Actual derived state | `draft` |
+| Classification | fixture does not establish the intended state |
+| Impact | test does not exercise the intended business scenario |
+| Candidate remediation | recorded for a later authorised slice |
+| **Action** | **NO CHANGE** |
+
+**The Slice 1 contract, stated once:**
+
+> **Slice 1 answers:** what does the Election test estate claim to verify, what business decision does each test protect, who owns that decision, what mechanism actually executes it, and where are the verification gaps?
+>
+> **Slice 1 does not answer by changing code:** how should we fix those gaps? — that belongs to subsequent authorised slices.
+
+*(This is a programme-level separation of concerns, mirroring the separation of responsibilities the matrix is mapping inside the system.)*
+
 #### ⚠️ The columns are not the point — the lens is
 
 **30 columns must not become a bureaucratic exercise.** A row is valuable only if it answers:
