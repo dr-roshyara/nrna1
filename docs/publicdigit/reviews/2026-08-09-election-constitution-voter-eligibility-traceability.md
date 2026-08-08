@@ -416,3 +416,69 @@ and `markUserAsVoted($code, …)` (`:1977-1981`) sets **`has_voted=true`, `can_v
 ## Implication for the Manifesto discovery (`PBDIGIT-66`)
 
 **`D-2` now has evidence rather than speculation: registration/eligibility/entitlement and the one-vote invariant are already separate in the implementation, and anonymity forces them apart.** A constitution that fused them would contradict the anonymity invariant. **Recorded as evidence for the decision — not as the decision.**
+
+---
+
+# Appendix 5 — CORRECTION to Finding 0, and the start of the authority map (2026-08-09)
+
+## ⚠️ Finding 0 is materially corrected
+
+**I concluded "there is no Election Manifesto in this repository" from a search for the literal phrase.** The Product Owner states an Election Manifesto **does** exist as intended business authority and that the system is **mid-migration toward it**. **That reframes the whole programme: this is a constitutional *migration/convergence* phase, not a constitutional *vacuum*.**
+
+**What my search actually established, stated correctly:** *no document containing the phrase "Election Manifesto" exists in this repository.* **That is not the same as "no constitutional authority exists"** — and searching for a *name* rather than for *authority* is precisely the "infer from the label" error this programme keeps catching. **The stronger claim is withdrawn.**
+
+**Constitutional authority is in fact distributed across accepted ADRs**, which I had not searched. Located so far:
+
+* `docs/architecture/decisions/003-lifecycle-vs-phase-projection.md`
+* **`docs/architecture/decisions/005-projection-sovereignty.md` — Status: Accepted 2026-05-23**
+* `docs/architecture/decisions/001-constitutional-capability-sovereignty.md`
+* `docs/architecture/decisions/004-deterministic-capability-resolver.md`
+
+## 🔴 This changes `PBDIGIT-64` — read before acting on that ticket
+
+**ADR-005 "Projection Sovereignty" (Accepted) states:**
+
+> *"Frontend renders projections derived from **authoritative lifecycle state**; frontend never defines or derives the lifecycle→phase mapping."*
+> *"**Frontend cannot determine state completion from timestamps** · cannot determine state advancement from flags · receives `stateMachine.currentState` as ground truth."*
+
+**`OBSERVED IN CODE` + `INTERPRETATION`:** the ADR forbids **the frontend** from deriving lifecycle truth **from timestamps**. `PBDIGIT-64`'s defect is that **the backend engine does exactly that** — `ElectionLifecycleEngineImpl::compute()` priority 5 returns `VotingActive` from the clock alone.
+
+**Two readings, and I cannot choose between them on this evidence:**
+
+| Reading | Consequence for `PBDIGIT-64` |
+|---|---|
+| **The ADR's prohibition is about the *frontend only***, and backend temporal derivation is the intended design | `PBDIGIT-64` remains a defect, but of the *precondition* (no candidate check), **not** of temporal derivation itself |
+| **The principle is general** — lifecycle truth is never derived from timestamps, at any layer | `PBDIGIT-64` is **larger than recorded**: the engine itself violates an accepted ADR |
+
+**`MECHANISM NOT ESTABLISHED` — which reading is intended is a `BUSINESS DECISION REQUIRED`.** **`PBDIGIT-64` should not be repaired until this is settled**, because the two readings imply different fixes in different layers.
+
+## Authority map — the rows I can already fill from proven evidence
+
+**Classification per the commission's nine categories.**
+
+| Business decision | Current authority (proven) | Legacy / other | Classification |
+|---|---|---|---|
+| **Lifecycle state** | `ElectionLifecycleEngineImpl::compute()` — **temporal derivation, priority 5** | `ConstitutionalTransitionGuard` + `ElectionConstitution::RULES` (16 actions) | **7 · COMPETING AUTHORITY** — both can independently determine `voting_active`; the projection wins |
+| **Voter entitlement** | **`ElectionMembership{role,status}`** — `ElectionVotingController::start():106-113` | `Member` / `User::isEligibleVoter()` (full-membership only, **not consulted by `start()`**) | **1 · CURRENT AUTHORITATIVE MECHANISM** |
+| **Voting access (arming)** | **`codes.can_vote_now`** ← `CodeController::markCodeAsVerified()` | `voter_slugs.can_vote_now` (session only) | **1 · CURRENT AUTHORITATIVE MECHANISM** |
+| **One-vote invariant** | **`codes UNIQUE(election_id,user_id)` + exhaustion** | `election_memberships.has_voted` — **read by `start():116`, written by nothing** | **5 · LEGACY CONSUMER, NOT AUTHORITATIVE** (and **6 · inert**) |
+| **Anonymous ballot** | `votes` — **no `user_id`, no voter-scoped unique index** | — | **2 · CONSTITUTIONAL IMPLEMENTATION** (anonymity is a stated invariant) |
+| **Election-Only mode** | `voter_source_strategy` snapshot + `importElectionOnly` | — | **8 · UNDOCUMENTED BUSINESS BEHAVIOUR** — *pending re-check against the ADR set* |
+| **Tenant boundary in eligibility** | `BelongsToTenant` global scope | — | **7 · COMPETING AUTHORITY** — infrastructure overrides a correct domain rule (`PBDIGIT-65`) |
+
+## What this appendix does NOT establish
+
+* **The ADR set was not read beyond ADR-005's decision statement.** Rows marked *pending re-check* may change once `001`, `003` and `004` are read. **`UNDETERMINED`.**
+* **Whether the ADRs *are* the Manifesto**, or implement one that lives elsewhere. `BUSINESS DECISION REQUIRED`.
+* **No runtime verification** was performed in this appendix. No vote cast; no data created.
+
+## Recommended next discovery — one step, replacing my earlier recommendation
+
+**Read `001`, `003`, `004`, `005` in full and complete the authority matrix against them.** That is now a prerequisite for `PBDIGIT-64`, `PBDIGIT-65` **and** `PBDIGIT-66` — **all three were written on the premise that no constitutional authority existed for these decisions, and that premise is now known to be wrong.**
+
+```
+Code / tests / fixtures / config changed   none
+Runtime data created                       none
+Votes cast                                 none
+Status                                     STOPPED — Finding 0 corrected; matrix incomplete
+```
