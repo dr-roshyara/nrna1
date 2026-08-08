@@ -76,3 +76,57 @@ Missing `success` / `info` keys. **Almost certainly downstream of sub-cause A** 
 **Nothing modified.** The 22 "unknowns" are now **17 unknowns across three unrelated causes**, with one sub-cause reduced to a single named question and 5 attributed.
 
 **The durable lesson: an aggregate error message is not a root cause.** Clustering by PHPUnit's generic assertion text created a 22-test mystery that did not exist; the real messages were one line away the whole time.
+
+---
+
+# ADDENDUM — Sub-cause A RESOLVED (2026-08-07)
+
+**Classification: TEST DEFECT — a workaround that became the defect. Not a production authorisation defect.**
+
+## The evidence
+
+`ElectionCreationTest::setUp()` contains:
+
+```php
+// Bypass all middleware — POST tests have pre-existing infrastructure issue
+$this->withoutMiddleware();
+```
+
+**`withoutMiddleware()` with no arguments disables `SubstituteBindings` as well.** The route is `organisations/{organisation}/elections`, so without binding `$organisation` never becomes an `Organisation` — and `authorize('create', [Election::class, $organisation])` receives an unbound value that cannot satisfy `ElectionPolicy::create(User, Organisation)`. Gate denies. **403.**
+
+**Proven by direct experiment** on an identical fixture (probe, since deleted):
+
+| Measurement | Result |
+|---|---|
+| `ElectionPolicy::create()` called directly | **true** |
+| `Gate::forUser($admin)->allows('create', [Election::class, $org])` | **true** |
+| `Gate::getPolicyFor(Election::class)` | `App\Policies\ElectionPolicy` ✓ |
+| POST **with** middleware | **302** — the success path |
+| POST **with `withoutMiddleware()`** | **403** — `AuthorizationException` at `ElectionManagementController:121` |
+
+**The policy, its registration, the fixture rows and the role data are all correct.** The only variable that changes the outcome is the middleware bypass the test performs on itself.
+
+## Why this also explains the 7 `Session is missing expected key [errors]`
+
+Confirmed as predicted: a 403 aborts before `FormRequest` validation, so no error bag is ever flashed. **The two groups are one root cause — 14 of 22.**
+
+## The irony worth recording
+
+The bypass was added to work around *"a pre-existing infrastructure issue"* with POST tests. **That workaround is now the sole cause of 14 failures.** A test that disables the framework's binding layer cannot exercise a controller that depends on it.
+
+**Third sighting of route-binding as a failure source** — after `PBDIGIT-61` (controller typed `string $slug` against a bound route) and `PBDIGIT-62` (scope not lifted inside a relationship subquery). **Route-model binding is this repository's most under-tested seam.**
+
+## Recommended repair — NOT performed
+
+Remove `withoutMiddleware()` and let the tests run the real stack; if a genuine infrastructure obstacle remains, disable **named** middleware rather than the whole stack, never `SubstituteBindings`. **Requires authorisation**, and the original *"pre-existing infrastructure issue"* should be re-verified first — it may itself have been the `PBDIGIT-61`-class binding defect, now fixed.
+
+## Revised cluster status
+
+| Sub-cause | Count | Status |
+|---|---|---|
+| **A** 403 + missing errors | **14** | ✅ **RESOLVED — test defect** (`withoutMiddleware()`) |
+| **B** election-only assignment | 2 | likely fixture/mode — unverified |
+| **C** notification not sent | 3 | UNKNOWN |
+| **D** flash keys | 2 | downstream of A |
+
+**17 unknowns → 3.** Still **zero** attributable to `PBDIGIT-48`.
