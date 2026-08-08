@@ -528,3 +528,55 @@ what business value? → what business invariant? → who owns the decision?
 2. **Never call a persisted record a *"decision record"*, *"audit log"* or *"domain event"* from its shape.** `election_state_transitions` is immutable and carries `actor_id`/`reason`/`trigger` — **accountability-shaped, and that is evidence about intent, not proof of it.** Until **BD-1** is answered its business meaning is **UNRESOLVED**.
 
 **Where a business decision is open, record both branches with their consequences** rather than the decision in the abstract — see the BD-1 A/B table in the Relationship 5 report. **The same observations mean opposite things under each branch; that is what makes the decision necessary and what stops engineering from making it by default.**
+
+---
+
+### ⛔ META-GOVERNANCE RULE — binding on ALL discovery in this programme (2026-08-08)
+
+> **Coverage is descriptive. Completeness is normative.**
+
+```
+OBSERVED            only transitionTo() produces transition records
+NOT YET JUSTIFIED   "the record is incomplete"
+WHY                 "complete" presupposes a contract stating which
+                    operations MUST produce records — and no such
+                    contract has been established (BD-1)
+```
+
+**This generalises the language rule above rather than repeating it.** The language rule forbade certain *words*; this states *why*: **counting what a mechanism covers is measurement; judging that coverage sufficient or deficient is a claim about an obligation.** One is available from the repository; the other never is.
+
+**The test to apply, and it is short:** *does this sentence describe what exists, or assert what ought to exist?* If the latter, name the contract that requires it. **If the contract cannot be named, the sentence is a business decision wearing a finding's clothes.**
+
+**Worked instance — `R5-6`, and it is the reason this rule exists.** *"Transition history is incomplete by construction"* was classified **OBSERVED FACT**. The coverage was fact; *"incomplete"* was a verdict against an obligation nobody had established. **The same observation — `ActivateElectionCommand` produces no transition record — is a governance gap under BD-1 Branch A and entirely harmless under Branch B.** A finding whose meaning inverts depending on an unmade decision is not yet a finding.
+
+---
+
+### 🏛️ THE PERMANENT HIERARCHY — the order every investigation reasons in
+
+```
+                 BUSINESS VALUE
+                       │
+               BUSINESS INVARIANT
+                       │
+              DECISION OWNERSHIP
+                       │
+                DOMAIN AUTHORITY
+                       │
+            APPLICATION CAPABILITY
+                       │
+                 AUTHORIZATION
+                       │
+                  PERSISTENCE
+                       │
+                  PROJECTION
+                       │
+                 VERIFICATION
+                       │
+           IMPLEMENTATION JUDGEMENT
+```
+
+**`IMPLEMENTATION JUDGEMENT` is deliberately last.** It prevents the failure mode this programme has hit repeatedly: **starting from *"what does the code do?"* and then inventing the business model from the code.** Every correction recorded in this plan — Relationship 4's *"caller ≠ owner"*, Relationship 5's four withdrawn claims, `R5-6`'s *"incomplete"* — is the same mistake at a different altitude: **reading a business meaning off a technical structure.**
+
+**Reversing the order is the defect, not the conclusion it produces.** A conclusion reached bottom-up may happen to be correct; it is still unsupported, because the evidence for a business claim cannot come from an implementation detail.
+
+**Not filed as a KnowledgeOS candidate, deliberately.** Both rules are repository-independent and would pass the four promotion tests — **but three candidates have already been filed from this programme, and the distillation principle warns that KnowledgeOS should be *the result of* successful engineering, not something engineering goes looking for** (`docs/pks/2026-08-05-knowledgeos-distillation-principle-candidate.md`). **They are recorded here as binding programme rules. If a second, independent programme needs them, that is the occurrence that justifies filing.**
