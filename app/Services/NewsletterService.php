@@ -365,7 +365,10 @@ class NewsletterService
 
             $recipientRows = $audience->map(function ($recipient) use ($newsletter) {
                 return [
-                    'id'                         => Str::uuid(),
+                    // No 'id': newsletter_recipients.id is a bigint sequence
+                    // (nextval), and NewsletterRecipient declares no UUID key.
+                    // Supplying a UUID raised 22P02 on the first insert, which
+                    // retry() then masked as an aborted transaction. (PBDIGIT-61)
                     'organisation_newsletter_id' => $newsletter->id,
                     'member_id'                  => $recipient->member_id,
                     'user_id'                    => $recipient->user_id,

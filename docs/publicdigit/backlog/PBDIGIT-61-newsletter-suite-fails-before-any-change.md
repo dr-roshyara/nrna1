@@ -5,7 +5,8 @@
 
 | | |
 |---|---|
-| **Status** | ✅ **RESOLVED 2026-08-07** — `NewsletterCreationTest` 6/6 green; root cause was a **feature defect**. ⚠️ **One residual, newly diagnosed:** 2 pre-existing failures in `NewsletterUnsubscribeTest` (see §Residual) |
+| **Status** | ✅ **RESOLVED 2026-08-07 — all five newsletter suites green (25 passed, 45 assertions).** Two **production feature defects** found, both previously invisible |
+| **🔴 Headline finding** | **Newsletter dispatch has never worked.** `NewsletterService::dispatch()` inserted `'id' => Str::uuid()` into `newsletter_recipients.id`, a **bigint sequence** — `SQLSTATE[22P02]` on the first insert, every time, in production too. **No newsletter could ever be sent** |
 | **Symptom** | `tests/Feature/Organisation/NewsletterCreationTest.php` — **6 of 6 fail at HEAD**, with no working-tree changes (stash-verified twice) |
 | **Consequence** | **Member Communication has no working safety net.** Any change to the newsletter controller ships unverifiable — which is why a `PBDIGIT-48` edit to it was reverted rather than shipped |
 
@@ -37,7 +38,37 @@ The route prefix is **`organisations/{organisation:slug}`**, so Laravel *binds* 
 
 **Result: `NewsletterCreationTest` 6/6 green.** The deferred `PBDIGIT-48` predicate removal was then re-applied and the suites re-run — still green.
 
-## ⚠️ Residual — 2 pre-existing failures, newly diagnosed, NOT introduced here
+## ✅ Residual RESOLVED — and it was a second production defect
+
+**The two dispatch tests were correct all along; they were reporting a broken feature.**
+
+Investigated exactly as instructed — **assert the audience query directly against the fixture rows, change nothing first.** That immediately exonerated two suspects and found the real one:
+
+| Measurement | Result |
+|---|---|
+| `queryAllMembers` against the fixture | **1** — the audience query is **correct** |
+| `newsletter.audience_type` in the **database** | `'all_members'` (column is `NOT NULL DEFAULT 'all_members'`) |
+| → the earlier `NULL` reading | an **unhydrated in-memory model**, not stored data — which is why the speculative fixture edit changed nothing, and why reverting it was right |
+| `send` status | **500** |
+| raw exception | `QueryException 25P02` — *"current transaction is aborted"* |
+
+**`25P02` is a secondary error.** `dispatch()` wraps the insert in `retry(2, …)`; the *first* insert failed, aborting the transaction, and the retry then reported only the abort. **The retry masked the real error** — which is why this survived undiagnosed.
+
+**The real error, proven by direct insert:**
+
+```
+SQLSTATE[22P02]: invalid input syntax for type bigint: "d2556557-4ee2-40fb-a83b-402199ba2659"
+```
+
+`newsletter_recipients.id` is **`bigint DEFAULT nextval(...)`**, and `NewsletterRecipient` is a plain `Model` — no `HasUuids`, no custom `$keyType`. **The schema and the model agree; only `dispatch()` disagreed**, generating a UUID for an auto-increment key.
+
+**Fix:** drop the `'id'` key from the recipient rows and let the sequence assign it. **All five suites: 25 passed, 45 assertions.**
+
+### Recorded, not fixed (out of scope)
+
+**`retry(2, …)` around a transactional insert converts a precise failure into an opaque one.** Retrying a statement inside an aborted Postgres transaction can only ever produce `25P02`. That pattern hid a total feature outage; worth a look wherever else `retry()` wraps a statement inside `DB::transaction()`.
+
+## ⚠️ Original residual note (superseded by the section above)
 
 `NewsletterUnsubscribeTest::unsubscribed_members_excluded_from_recipients_on_dispatch` and `…bounced_members…` assert 1 recipient and get **0**. **Stash-verified as pre-existing** (identical with this ticket's changes removed).
 
