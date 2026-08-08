@@ -206,3 +206,24 @@ Developer guides for `developer_guide/http/` and `developer_guide/models/` — p
 **Cross-context relationships still to be established** (the Product Owner's named examples): Membership → voter eligibility · Security → voter/ballot integrity · Application services → lifecycle operations · Models → persistence of authoritative decisions · HTTP → enforcement vs projection.
 
 **Status: SCOPE DEFINITION STARTED — pre-filter only. Categories A–E not assigned. No scope decision made or implied.**
+
+#### Cross-context relationships — first two ESTABLISHED (evidence, not inference)
+
+**1. Membership → Election voter eligibility — CONFIRMED participant**
+
+`FullMembershipPolicy::decideForContext()` `:60-61`:
+```php
+&& in_array($context->membershipStatus, ['active'], true)
+&& in_array($context->feesStatus, ['paid', 'exempt'], true);
+```
+**Member state directly determines whether a voter may be assigned to an election.** Membership is therefore **inside** the Election verification boundary as a supporting dependency — **Category B at minimum**, and **Category A** for any test targeting that eligibility rule. `tests/Feature/Membership` (8 files) **must not be excluded on directory name.**
+
+**2. Election Security → the voting decision — CONFIRMED participant**
+
+`VoteController:39,59` injects `TrustPolicyEvaluator` as a constructor dependency. **The Election security layer participates in the vote path**, so `tests/Unit/Domain/Election/Security` (35) and `tests/Unit/Application/Election/Security` (17) are **not** outside the boundary by virtue of being "Security". Where they protect ballot-integrity invariants they are **Category A candidates**.
+
+> **52 security files + 8 membership files — 60 in total — would have been wrongly excluded by directory-name reasoning.** That is 12% of the population, and it validates the Product Owner's instruction that location must never determine scope.
+
+**Still to establish:** Application services → lifecycle operations · Models → persistence of authoritative decisions · HTTP → enforcement versus projection · Demo → whether demo semantics constitute Election business decisions (`PBDIGIT-59`-adjacent).
+
+**Status unchanged: SCOPE DEFINITION IN PROGRESS.** Categories A–E not assigned per file; no scope decision made.
