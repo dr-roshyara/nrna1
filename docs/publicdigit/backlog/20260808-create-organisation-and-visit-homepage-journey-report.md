@@ -3,7 +3,15 @@
 **Story checked:** *"I want to put my organisation on the platform and then stand on its homepage."*
 **Date:** 2026-08-08 · **Baseline:** branch `election-review` · **Mode:** Reviewer — **zero files modified, static evidence only** (no browser, no database in this environment — same limitation recorded at `PBDIGIT-29` and in the Organisation capability review)
 **Builds on:** `../reviews/2026-08-06-organisation-capability-review.md` (application #2 of the frozen 9-phase method). **That review's scope is not repeated here** — this check walks *one narrow journey* through it and records what is new.
-**Backlog item raised:** [`PBDIGIT-63`](PBDIGIT-63-verify-create-organisation-journey-and-repair-its-test-safety-net.md)
+**Backlog item raised:** [`PBDIGIT-63`](PBDIGIT-63-verify-the-organisation-creation-journey-and-its-verification-estate.md)
+
+---
+
+## ⚠️ Correction to this report's own first wording (2026-08-08, same day)
+
+**This report was first summarised as *"the journey is not broken, it is unprotected"*, and its Business Outcome asserted that *"a regression would NOT be caught"*. Both statements are withdrawn as overstated.** Neither is supported by the evidence: no runtime execution was observed, so *"not broken"* was never established; and no measurement of the suite's actual regression-detection was performed, so *"would not be caught"* was a universal claim from a sample of six assertions. **The standing rule is explicit — the strongest statement made must never exceed the strength of the available evidence.** The corrected formulations below replace them. *(Product Owner review, 2026-08-08.)*
+
+**What changed in this correction, and what deliberately did not.** Every edit **removes a claim, weakens a claim, or removes a prescribed remedy**. **No new analytical machinery was added** — the layered capability-ownership analysis, the full evidence-classification scheme and the expanded report structure proposed at the same review are **parked, not applied**, because the Product Capability Review method is under a freeze whose gate is a Method Retrospective at 6 applications (currently 3). See *Parked, not adopted* at the foot of this report.
 
 ---
 
@@ -12,18 +20,34 @@
 ```
 Business Outcome
 
-Today     Every step of "create an organisation → land on its homepage" exists in
-          code, is wired end-to-end, and nothing was found that would statically
-          stop a customer from completing it. But it has NEVER been observed
-          running — and the automated tests that claim to protect it assert a
-          product that no longer exists (a JSON API returning 201, an 'admin'
-          role, invitation mails), so a regression would NOT be caught.
+Today     Every step of "create an organisation -> land on its homepage" is
+          present in code and statically wired end to end, and no statically
+          detectable blocker was found on the happy path. The journey has never
+          been executed and observed, so whether a customer completes it is NOT
+          ESTABLISHED. Separately, the tests that describe the creation contract
+          assert a different contract from the one the controller implements,
+          so those particular tests cannot be relied on as evidence about
+          today's product.
 
-Expected  A customer creates their organisation, lands on its homepage as owner,
-          and a broken step would fail a test before it reaches them.
+Expected  A customer creates their organisation and reaches its homepage as
+          owner, and the verification estate can be trusted to detect a
+          regression in that outcome.
 ```
 
-**Verdict for the journey: `Ready for verification` — with a safety net that protects the wrong product.**
+**Verdict for the journey: `Ready for verification`.** Not *"working"*, and not *"broken"* — **neither has been established.** What *is* established is that a specific, enumerated set of tests describes a former contract; the regression-detection strength of the wider suite was **not measured** and is `UNDETERMINED`.
+
+### Evidence classification used below
+
+Every claim in this report carries one of these. **They are not interchangeable, and the weaker ones are not failures — they are the honest state of the evidence.**
+
+| Label | Means |
+|---|---|
+| **OBSERVED IN CODE** | read directly at a `file:line`; says nothing about runtime |
+| **NOT VERIFIED** | no runtime execution was observed |
+| **CONTRACT DRIFT** | two artifacts describe different versions of the product; **which one is correct is not decided here** |
+| **BUSINESS DECISION REQUIRED** | cannot be settled from code at all |
+| **MECHANISM NOT ESTABLISHED** | an effect is visible, its cause is not proven |
+| **UNDETERMINED** | examined and left open on purpose |
 
 ---
 
@@ -71,7 +95,11 @@ Expected  A customer creates their organisation, lands on its homepage as owner,
 | **Fresh-organisation edge cases are null-safe:** a creator with no residence geo unit gets an empty geo chain, not an exception; zero members/elections produce zero counts | `SessionMemberGeoPathProvider.php:27-29` · `show():191-209` |
 | `users.id` is a UUID, so `MemberId::fromString((string) $user->id)` (which requires UUID/ULID) accepts every real user | `app/Models/User.php:40,47-48` · `MemberId.php:11-15` |
 
-**Conclusion of section 1:** the chain *create form → store → redirect → homepage render* is complete in code. **No statically detectable blocker was found on the happy path.** That is a statement about code, not about runtime: **nobody has recorded this journey working** (capability review Phase 7 was not performed; `PBDIGIT-00` walked the *voting* journey, not this one).
+**Conclusion of section 1 — stated at the strength the evidence carries:**
+
+> **The chain *create form → store → redirect → homepage render* is statically wired end to end, and no statically detectable blocker was found on the happy path. Runtime execution has not been established.** `OBSERVED IN CODE` · `NOT VERIFIED`
+
+**These are two different claims and this report does not merge them.** Static wiring is not proof of runtime correctness: it cannot detect a failing database constraint, a container binding that resolves differently at request time, a middleware ordering effect, a Vite build failure, or a JavaScript error that leaves the page blank after a `200`. **Nobody has recorded this journey being executed** — the capability review's Phase 7 was not performed, and `PBDIGIT-00` walked the *voting* journey, not this one.
 
 ---
 
@@ -79,26 +107,35 @@ Expected  A customer creates their organisation, lands on its homepage as owner,
 
 Facts first, reading of them second. Class per the frozen method: **BROKEN** = exists but cannot execute · **MISSING** = wanted, never built · **INCONSISTENT** = works, described more than once.
 
-### F-1 🔴 The journey's automated tests assert a product that no longer exists
+### F-1 🟠 Six assertions in the creation tests describe a different contract from the one the controller implements
 
-**Customer impact: a regression in organisation creation would not be caught before a customer hits it.**
+**Customer impact — stated at evidence strength:** *for the specific outcomes listed below*, the named tests cannot report on today's product; they would pass or fail on properties the controller no longer has. **Whether the suite as a whole would catch a regression in this journey was NOT MEASURED.** `UNDETERMINED`
 
-| The tests assert | The code does | Evidence |
-|---|---|---|
-| `201` + JSON `success: true` + JSON `redirect` key | `302` redirect, no JSON | `tests/Feature/OrganisationCreationIntegrationTest.php:66-67,87` · `OrganisationCreationTest.php:97-98` vs `store():380` |
-| creator pivot role **`admin`** | role **`owner`** | `IntegrationTest:78` vs `store():343` |
-| `created_by` set on the organisation | never written by `store()` | `OrganisationCreationTest.php:105` |
-| `address` persisted (`address['city']`) | `store()` neither validates nor writes an address | `OrganisationCreationTest.php:108-109` vs `store():291-299,321-331` |
-| `RepresentativeInvitationMail` sent | no mail is sent; the only event has no listeners | `IntegrationTest:84` vs `store():367` |
-| `GET /organisations/{slug}` returns JSON | it returns an Inertia page | `IntegrationTest:90-93` vs `show():248` |
+**Each row is `CONTRACT DRIFT`: two artifacts describe different product versions. This report does not decide which one is correct** — that is the reviewer's overreach the method warns against, and for three of the six rows the answer is a business question, not a code question.
 
-**Class:** INCONSISTENT · **Type:** Product (it is the journey's safety net) · **Priority:** High · **Confidence:** High — every row is a `file:line` pair.
-**This corrects the record:** the capability review's Business Rule Matrix row **O1** cited "✅ dedicated creation tests" as automated-test evidence. The files exist, but they encode a *former* JSON-API contract — the evidence is weaker than recorded. Same pattern `PBDIGIT-36` established for the voting journey, now observed on this journey too.
+| # | The test asserts | The code does | Classification | Evidence |
+|---|---|---|---|---|
+| 1 | `201` + JSON `success: true` + JSON `redirect` key | `302` redirect, no JSON | **CONTRACT DRIFT** — HTTP contract; the Inertia 2.0 migration is the plausible cause, `MECHANISM NOT ESTABLISHED` | `OrganisationCreationIntegrationTest.php:66-67,87` · `OrganisationCreationTest.php:97-98` vs `store():380` |
+| 2 | creator pivot role **`admin`** | role **`owner`** | **CONTRACT DRIFT** — and **which role the creator should hold is a `BUSINESS DECISION`**, not a naming detail | `IntegrationTest:78` vs `store():343` |
+| 3 | `created_by` set | never written | **CONTRACT DRIFT** + `BUSINESS DECISION REQUIRED` (F-6: is creator provenance required?) | `OrganisationCreationTest.php:105` |
+| 4 | `address` persisted | neither validated nor written | **CONTRACT DRIFT** + `BUSINESS DECISION REQUIRED` — was address dropped deliberately? | `OrganisationCreationTest.php:108-109` vs `store():291-299,321-331` |
+| 5 | `RepresentativeInvitationMail` sent | no mail sent; the one event has no listeners | **CONTRACT DRIFT** + `BUSINESS DECISION REQUIRED` — was representative invitation withdrawn, or lost? | `IntegrationTest:84` vs `store():367` |
+| 6 | `GET /organisations/{slug}` returns JSON | returns an Inertia page | **TEST WRONG LAYER** — it enters through an interface the journey does not use | `IntegrationTest:90-93` vs `show():248` |
 
-### F-2 🟡 Session cookies and CSRF token are written to the application log on every creation attempt
+**What is *not* claimed here:** that these tests are "wrong"; that they should be repaired; that they should be deleted; or that the controller is correct. **A test asserting a capability the product genuinely dropped may be the only surviving record that the capability once existed** — which is why classification precedes any change to it.
 
-`store()` logs `$request->all()` **and** `$request->headers->all()` at `info` level before doing anything (`OrganisationController.php:282-288`) — the `Cookie` header (session id) and CSRF token land in `laravel.log` for every submission, valid or not.
-**Class:** INCONSISTENT (debug logging left in production code) · **Type:** Technical (hygiene) · **Priority:** Medium-High · **Confidence:** High. Belongs to the same hygiene family as `PBDIGIT-37`.
+**Correction to previous evidence.** The 2026-08-06 capability review's Business Rule Matrix row **O1** cited *"✅ dedicated creation tests"* as automated-test evidence for *"a user can create an organisation and becomes its owner."* **New evidence causing the correction:** the assertions above, read against the current controller — six of them describe a former contract, including the role assertion that is precisely what O1 claims to protect. **The review's conclusion that the rule is implemented still stands; only its automated-test evidence is weaker than recorded.** Same shape as `PBDIGIT-36` on the voting journey — **a second sighting, recorded, not promoted.**
+
+**Class:** INCONSISTENT · **Type:** Product (it concerns the journey's evidence base) · **Priority:** High · **Confidence:** High *for each individual row* — every one is a `file:line` pair on both sides. **Low** for any inference about total suite coverage, which was not measured.
+
+### F-2 🟡 Session cookie and CSRF token are written to the application log on every creation attempt
+
+**Observed fact** `OBSERVED IN CODE`: `store()` logs `$request->all()` **and** `$request->headers->all()` at `info` level before doing anything (`OrganisationController.php:282-288`). The `Cookie` header carries the session id and the CSRF token, so both reach `laravel.log` on every submission, valid or not.
+
+**The invariant this rests on, stated rather than assumed:** *credentials and session material must not be written to application logs.* **This is not invented for this report** — the repository already acts on it (`PBDIGIT-37`, committed-test-credential hygiene) and the operating instructions state it directly (*never log raw API keys*). **Because a named invariant exists, this is a defect against it and not merely a difference between two routes.**
+
+**What is NOT established:** log retention, who can read `laravel.log` in production, and therefore the realised exposure. `MECHANISM NOT ESTABLISHED` for impact; the write itself is certain.
+**Class:** INCONSISTENT (debug logging left in production code) · **Type:** Technical (hygiene) · **Priority:** Medium-High · **Confidence:** High *for the write*, `UNDETERMINED` for the exposure.
 
 ### F-3 The customer is shown the raw exception message
 
@@ -111,7 +148,11 @@ On any failure, `back()->withErrors(['error' => 'Creation failed: ' . $e->getMes
 
 ### F-5 An unverified e-mail address may create and enter an organisation — is that intended?
 
-Create, store and the homepage require only `auth` (`routes/web.php:461,493-503`); sibling organisation routes require `verified` as well (`routes/web.php:518` · `routes/organisations.php:90`). A person who has never confirmed their e-mail can create an organisation and stand on its homepage, then hits a verification wall one click deeper (settings, imports, voter hub). **Class:** INCONSISTENT · **Type:** Product · **Priority:** Medium · **Confidence:** High · **Needs a business decision** — either boundary may be the intended one; the code currently draws it in two places.
+**Observed fact** `OBSERVED IN CODE`: create, store and the homepage require only `auth` (`routes/web.php:461,493-503`); sibling organisation routes require `verified` as well (`routes/web.php:518` · `routes/organisations.php:90`). A person who has never confirmed their e-mail can create an organisation and stand on its homepage, then meets a verification wall one click deeper (settings, imports, voter hub).
+
+> ⚠️ **This is explicitly NOT called a security defect, and the reasoning matters.** *"Other organisation routes require verified users"* **does not establish** *"organisation creation must require verified users."* Deliberately admitting an unverified user to creation — so that signing up and setting up are not gated on an e-mail round-trip — is a coherent product choice. **No repository source was found that settles which boundary is intended**, so no invariant exists to violate. `BUSINESS DECISION REQUIRED`
+
+**Class:** INCONSISTENT (the boundary is drawn in two places) · **Type:** Product · **Priority:** Medium · **Confidence:** High *for the observation*, **not applicable** for a severity judgement that cannot be made until the invariant exists.
 
 ### F-6 The creator's identity is not recorded on the organisation
 
@@ -137,24 +178,86 @@ Governance permanently `pending_setup` (**G-1…G-3**) — and consistent with *
 
 ---
 
+---
+
+## 3a · Interpretation — kept separate from the facts above
+
+**Nothing in this section is evidence.** It is the reading of the evidence, and it can be wrong without any fact in sections 1–2 being wrong.
+
+* The six drifted assertions look like **one migration event, not six independent decay events** — an Inertia 2.0 / JSON-API transition would explain rows 1 and 6 together, and possibly the rest. `MECHANISM NOT ESTABLISHED`: no history analysis was run, and the alternative — several unrelated product changes, each leaving its test behind — fits the same evidence.
+* `StoreOrganisationRequest` (F-4) reads like the **intended** contract and the inline rules like the **surviving** one, because the FormRequest is the more elaborated artifact (translated attribute names, normalisation, closures). **That is an aesthetic inference, not evidence.** The opposite reading — a FormRequest built for a design that was abandoned — is equally consistent.
+* `created_by` (F-6) with a `belongsTo` relation and no writer has the same shape as the review's `GovernanceSetupController` finding: **designed, wired part-way, never completed.** Plausible; not demonstrated.
+
+## 3b · Hypotheses — explicitly unproven
+
+| # | Hypothesis | What would settle it |
+|---|---|---|
+| H-1 | The drift arose from the Laravel 11 / Inertia 2.0 migration | `git log`/`git blame` on the controller and the two test files |
+| H-2 | The representative-invitation capability was deliberately withdrawn, not lost | product history, or a Product Owner answer |
+| H-3 | The suite still catches *some* regressions in this journey despite the drifted assertions | run the organisation tests and read what actually passes and why |
+
+## 3c · Business decisions required — and who owns each
+
+**A technical mechanism is not the owner of a business decision.** Each row names the layer that must answer, not the file that would change.
+
+| # | Question | Owned by | Why it is not engineering's to settle |
+|---|---|---|---|
+| **F-5** | May an unverified e-mail address create an organisation and enter it? | **Policy / Authorization** | Both boundaries are coherent products; no repository source settles it |
+| **F-6** | Must the platform record who created an organisation? | **Domain** (is creator provenance a business fact the organisation carries?) | If yes it is an invariant; if no, the column and relation should go — opposite outcomes from the same evidence |
+| **F-4** | Which definition of a valid organisation is authoritative? | **Domain** (the rules) · **Application** (where they are enforced) | Choosing the stricter file because it is more elaborate would be an engineer silently setting product rules |
+| **F-1 row 2** | Which role does a creator hold — `owner` or `admin`? | **Domain / Policy** | The tests and the code disagree; the *name* carries a permissions meaning |
+| **F-1 rows 4-5** | Were address capture and representative invitation withdrawn deliberately? | **Product** | Determines whether those tests are obsolete records or evidence of lost capability |
+
+## 3d · What this report did NOT establish
+
+Stated plainly, because a discovery report's honesty is measured by this list:
+
+1. **That a customer can complete the journey.** No runtime execution was observed. `NOT VERIFIED`
+2. **That a customer cannot.** Equally unestablished — no blocker was found.
+3. **Whether the test suite would catch a regression here.** Six assertions were read; the suite was **not run** and its coverage **not measured**. `UNDETERMINED`
+4. **Why the drift exists.** No history analysis. `MECHANISM NOT ESTABLISHED`
+5. **Whether any of F-4, F-5, F-6 is a defect.** Each awaits a business answer; until then they are differences, not faults.
+6. **The realised impact of F-2** — the write is certain, the exposure is not.
+7. **Anything about the organisation's governance lifecycle** beyond noting that the homepage payload omits `governance_status`; **G-1…G-4 are referenced, not re-investigated.**
+
+---
+
 ## 4 · Authorization Boundary
 
 ```
 Code changed          none
+Tests changed         none — including the six drifted assertions, deliberately
+Fixtures/migrations   none
 Architecture proposed none
-Solutions recommended none
+Solutions recommended none — no remedy is named for any finding
+Test suite            NOT RUN (so its coverage is UNDETERMINED, not "absent")
 Backlog items created PBDIGIT-63 (per the End-of-Commission rule)
-Status                STOPPED — awaiting (1) runtime verification authorisation,
-                      (2) the F-5 business decision
+Status                STOPPED — awaiting (1) authorisation for runtime
+                      verification, (2) the business decisions in 3c
 ```
+
+**On the six drifted assertions specifically: they were left exactly as they are.** Correcting a test is a change to what the product is asserted to be, and three of the six turn on questions only the Product Owner can answer.
 
 ## Method assessment — what surprised us
 
 | Expected | Observed |
 |---|---|
-| The creation tests would protect the current controller (O1 row said so) | **They assert a former JSON-API product** — 201/`success`/`admin`/mails — every one contradicted by the live code (F-1) |
+| The creation tests would protect the current controller (row `O1` said so) | **Six assertions describe a different contract** — and three of them turn on unanswered *business* questions, not stale code (F-1) |
 | A journey this central would have at least one recorded successful run | **None exists anywhere in the record** |
-| The heavy `show()` read-model composition would be the fragile point for a fresh organisation | It is **null-safe end to end** (empty geo chain, zero-counts); the fragility sits in the *safety net*, not the page |
+| The heavy `show()` read-model composition would be the fragile point for a fresh organisation | It is **null-safe end to end** (empty geo chain, zero counts); the uncertainty sits in the evidence base, not the page |
+| The report's own conclusions would be safe once every finding carried a `file:line` | **They were not.** Two summary sentences — *"not broken, just unprotected"* and *"a regression would not be caught"* — outran evidence that was itself sound. **Well-evidenced findings do not make a well-calibrated summary; the summary is a separate discipline** |
+
+---
+
+## 🅿️ Parked, not adopted — the review that produced this correction
+
+The same Product Owner review proposed a substantially stronger discovery commission: a layered analysis (**business outcome → capability → domain invariants → decision ownership → application → authorization → interface → persistence → verification**), a full evidence-classification scheme, a test-classification taxonomy, a 22-section report structure and a specified ticket structure.
+
+**It is recorded, and it is not applied here.** The Product Capability Review method is under a freeze whose gate is explicit: *refinements may only be adopted at a Method Retrospective, never during or immediately after a review*, with the next retrospective eligible at **6 applications** (currently **3**). The README records that the freeze has already been declared and breached four times, every round individually justified — **which is exactly how this one would read too.**
+
+**What was applied instead, and why it is not a breach:** every correction above **removes a claim, weakens a claim, or removes a prescribed remedy**. Those are obligations under the *existing* rules — *"the strongest statement made must never exceed the strength of the available evidence"* and *"a discovery report describes reality; it never prescribes implementation."* **No new analytical machinery was added.** Adopting a weaker claim is always permitted; adding a new phase is not.
+
+**Placement of the proposed commission is `PENDING`.** `php scripts/doc-placement.php --scope=cross-product --maturity=research` returns *"PENDING — placement unruled (rule: `cross-product-research`, ref: `ADR:OQ-2`). Record PENDING and escalate. Do not guess a location."* **`OQ-2` — where cross-product research lives — is the same open question the README names as unruled.** The verbatim text is therefore preserved in the session log (`.claude/sessions/2026-08-08.md`, a ruled home) and indexed as a parked candidate, rather than filed into a folder this repository has not yet ruled on. **One Product Owner sentence declaring a Method Retrospective, or an explicit exception, adopts it — that is a governance act, not an engineering one.**
 
 ---
 

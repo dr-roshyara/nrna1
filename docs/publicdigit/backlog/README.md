@@ -67,7 +67,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-39`](PBDIGIT-39-unset-config-blocks-every-voter.md) | **IP vote limit wrongly applied to demo elections** + no safe default for real ones | `EPIC-05` | ✅ demo exemption **FIXED & VERIFIED** · real-election default `OPEN` |
 | [`PBDIGIT-40`](PBDIGIT-40-completion-page-has-never-worked.md) | **`thank-you` route 500s** — undefined `$vote`. **NOT on the happy path** (severity corrected) | `EPIC-05` | `OPEN` — **Low** |
 | [`PBDIGIT-41`](PBDIGIT-41-demo-provisioning-has-two-paths.md) | **Demo provisioning has two paths and the documented one is broken** | `EPIC-03` | `OPEN` — found by `PBDIGIT-00` (b) |
-| [`PBDIGIT-63`](PBDIGIT-63-verify-create-organisation-journey-and-repair-its-test-safety-net.md) | **"Create an organisation → land on its homepage" is unverified, and its tests assert a former JSON-API product** — corrects rule `O1`'s automated-test evidence ([report](20260808-create-organisation-and-visit-homepage-journey-report.md)) | `EPIC-01` | `OPEN` — Part A needs runtime; F-4/F-5/F-6 need business decisions |
+| [`PBDIGIT-63`](PBDIGIT-63-verify-the-organisation-creation-journey-and-its-verification-estate.md) | **"Create an organisation → land on its homepage" — statically wired, never executed; six creation assertions describe a different contract from the controller.** Classify before repairing; corrects rule `O1`'s automated-test *evidence* ([report](20260808-create-organisation-and-visit-homepage-journey-report.md)) | `EPIC-01` | `OPEN` — Part A needs runtime · Part C unspecifiable · `D-1`…`D-5` need business answers |
 
 ---
 
@@ -266,3 +266,22 @@ Proposed during the review of application #2 (Organisation). **Deliberately not 
 | C-5 | Rename/duplicate `Verified` as **`Observed`** — someone actually watched it happen, vs. a test asserting it | *(the proposer's own note: consider after more applications, not now)* |
 
 **Do not apply these while the freeze stands.** If the Membership review produces high-value findings without them, that is evidence they are optional — which is itself worth knowing.
+
+### 🅿️ Second parked set — proposed 2026-08-08 (Principal Architect / DDD discovery commission)
+
+Proposed by the Product Owner at the review of the organisation-creation journey check ([report](20260808-create-organisation-and-visit-homepage-journey-report.md) · `PBDIGIT-63`). **Recorded verbatim in `.claude/sessions/2026-08-08.md`; NOT applied.**
+
+| # | Candidate | Rationale offered |
+|---|---|---|
+| C-6 | **Start from the business outcome, never from "is it broken?"** — the latter frames discovery around implementation failure before the capability is defined | a journey is a business object; the route is evidence |
+| C-7 | **Layered ownership analysis** — business outcome → capability → domain invariants → **decision ownership** → application → authorization → interface → persistence → verification, never inverted | prevents a technical mechanism being mistaken for the owner of a business decision |
+| C-8 | **Explicit evidence classification** — `OBSERVED IN CODE` · `OBSERVED AT RUNTIME` · `TESTED` · `INFERRED` · `NOT VERIFIED` · `BUSINESS DECISION REQUIRED` · `MECHANISM NOT ESTABLISHED` | makes "statically wired" structurally impossible to report as "works" |
+| C-9 | **Test-classification taxonomy** — `VALID` · `OBSOLETE` · `CONTRACT DRIFT` · `FIXTURE DRIFT` · `WRONG LAYER` · `IMPLEMENTATION-COUPLED` · `COVERAGE GAP` · `UNDETERMINED`, applied *before* any repair is contemplated | a divergent test has ~8 possible causes; "repair it" presumes one |
+| C-10 | **Specified report structure** (22 sections) and **specified ticket structure**, with acceptance criteria stated as business behaviour rather than mechanism | *"the creator reaches the homepage without reconstructing the URL"*, not *"the controller returns 302"* |
+| C-11 | **Severity discipline** — *absence of verification is not proof of failure* · *static wiring is not proof of runtime correctness* · *a failing test is not proof production is wrong* · establish the business invariant **before** naming a security defect | the 2026-08-08 review found the report's *summary* outran evidence its *findings* had earned |
+
+**Three of these (C-8, C-9, C-11) were partially exercised in the 2026-08-08 correction — and that is not adoption.** They were used only in the *claim-weakening* direction the existing rules already require (*"the strongest statement made must never exceed the strength of the available evidence"*). **No new phase, section or mandatory artifact was added.** Adopting a weaker claim is always permitted; adding machinery is what the gate governs.
+
+**Placement of the full commission text is `PENDING`** — `php scripts/doc-placement.php --scope=cross-product --maturity=research` returns *unruled, ref `ADR:OQ-2`*, the same open question this README already records. **Escalated, not guessed at.**
+
+**Applications to date remain 3.** The retrospective is still eligible at **6**. **One Product Owner sentence — declaring a Method Retrospective, or an explicit mid-cycle exception — adopts any of C-1…C-11. That is a governance act and engineering will not perform it implicitly.**
