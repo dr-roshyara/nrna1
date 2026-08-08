@@ -696,3 +696,50 @@ WHY                 "complete" presupposes a contract stating which
 **Still not established:** per-method dependency (69 is a file-total) · whether any of the eight currently pass (**no test executed**) · indirect dependencies via helpers (searched by class and table name only).
 
 **Status: `BD-1` = SUBSET BLOCKER over 7 of 8 referencing files, affecting matrix columns #5 and #26. NOT a programme blocker. `SD-1` and `SD-2` remain the only programme blockers.**
+
+---
+
+## 🔴 GOVERNANCE FINDING — this programme is being carried under a ticket that disclaims it
+
+**Raised 2026-08-08 by reading `PBDIGIT-48`'s story before continuing its work, as the session commission required.**
+
+### The evidence
+
+| Source | Says |
+|---|---|
+| **`PBDIGIT-48` story, Status** | *"✅ **IMPLEMENTATION COMPLETE & PO-APPROVED 2026-08-07** … **Remains OPEN for field retirement only**, sequenced behind `PBDIGIT-59`"* |
+| **`PBDIGIT-48` story, Completion** | *"✅ **Met.** … **No further discovery belongs here**"* |
+| **This plan, header** | *"**Implements:** `docs/publicdigit/backlog/full_discovery.md` (Product Owner's Full Discovery Plan)"* · *"**Does not reopen:** `PBDIGIT-48` Option B"* |
+| **The commits** | **every commit of this programme carries `(PBDIGIT-48)`** — including all ten made this session |
+
+**OBSERVED FACT.** The programme is **entirely discovery**; the ticket it is filed under says **no further discovery belongs there**; and this plan's own header says it implements a *different* authority and **does not reopen** that ticket.
+
+**OBSERVED FACT.** `docs/publicdigit/backlog/full_discovery.md` — the authority this plan implements — **has no ID, no story header, and is not indexed in `backlog/README.md`.** It is a pasted Product Owner directive saved to a file.
+
+### Why this matters, stated as consequence rather than blame
+
+1. 🔴 **False traceability.** The repository's own convention: *"**Never attach a product story ID to work that story did not cause** — forcing an ID where none is true produces false traceability, which is worse than an unlabelled chore commit."* **~20 commits do exactly that**, and I added ten of them this session without checking.
+2. **`PBDIGIT-48` reads as COMPLETE while accumulating open decisions that are not its** — `SD-1`, `SD-2`, `BD-1`…`BD-7`. Anyone reading the ticket sees *"Completion ✅ Met"*; anyone reading the log sees an active programme. **Both are true, which is the defect.**
+3. **The programme's actual authority is unfindable.** A fresh session told *"continue `PBDIGIT-48`"* reads a closed ticket; the governing document is an unindexed file with no title.
+
+### What is NOT claimed
+
+* **Not** that any investigation was wrong — the six relationships, the schema, the calibration and the `BD-1` analysis stand on their own evidence.
+* **Not** that `PBDIGIT-48`'s own closure is wrong — its field-retirement remainder is correctly sequenced behind `PBDIGIT-59`.
+* **Not** that history should be rewritten. **Commit history is a record, not a draft.**
+
+### `SD-3` — BUSINESS / GOVERNANCE DECISION REQUIRED
+
+> **Under which identity does the Election Verification & Closure Programme run?**
+
+| Option | Consequence |
+|---|---|
+| **(i)** Mint a new `PBDIGIT-nn` for the programme; index `full_discovery.md` under it | Cleanest. Future commits carry a true ID; `PBDIGIT-48` returns to meaning what its story says |
+| **(ii)** Formally re-open and re-scope `PBDIGIT-48` to include the programme | Makes the existing labels true retrospectively — **but contradicts *"no further discovery belongs here"*, which the Product Owner approved** |
+| **(iii)** Leave it | Every future commit deepens the false traceability |
+
+**Engineering must not mint the identity.** ID assignment is a backlog governance act (*"never reuse a number — an ID names one thing permanently"*), and choosing between (i), (ii) and (iii) decides what `PBDIGIT-48` *means*.
+
+**Recorded, not corrected. No commit re-labelled, no history rewritten, no ID minted.**
+
+**Status: `SD-3` added. `SD-1` and `SD-2` remain the programme blockers for Step 2; `SD-3` blocks nothing technically — it governs how the work is filed.**
