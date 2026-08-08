@@ -213,3 +213,68 @@ Votes cast                                 none
 Test suite                                 NOT RUN
 Status                                     STOPPED — Parts D-M outstanding
 ```
+
+---
+
+# Appendix B — Experiment A, part 1: entitlement → armed credential (2026-08-09)
+
+**Controlled single-voter journey on the clean Experiment B election (`election-2026-65b26848`, organisation `iervp-experiment-b`, `voting_active`, one approved President candidate).** No code, tests, fixtures or schema changed. **One vote NOT yet cast.**
+
+**Credential values are deliberately omitted.** The issued voting code and session slug are live runtime credentials; recording them here would reproduce the hygiene defect this programme has been auditing. **The next session recovers experiment state from the runtime, not from a document.**
+
+## Steps — all `OBSERVED AT RUNTIME`
+
+| # | Step | Observed |
+|---|---|---|
+| 1 | Voter authenticates | `302` |
+| 2 | Organisation page visited — **establishes tenant context** | `200` |
+| 3 | `POST /elections/{slug}/start` — **the server-side entitlement gate** | `302` → `/v/{slug}/code/create` |
+| 4 | `GET /v/{slug}/code/create` — **credential issuance** | `200` · a `codes` row appears where **none existed before** |
+| 5 | Credential state **on issue** | **`can_vote_now = false`** · `has_voted = false` |
+| 6 | `POST /v/{slug}/code` with the issued code — **verification** | `302` → `/vote/agreement` |
+| 7 | Credential state **after verification** | **`can_vote_now = TRUE`** · `has_voted = false` |
+
+## What this establishes
+
+**The credential-arming model, previously traced only in code, is now confirmed at runtime:**
+
+```
+entitlement (ElectionMembership)  ->  credential ISSUED, unarmed
+                                  ->  voter proves possession
+                                  ->  credential ARMED  ->  voting access
+```
+
+**Steps 5 → 7 are the decisive pair:** the credential exists and is **not** armed until the voter verifies it. **`CodeController::markCodeAsVerified()` is confirmed as the arming event.**
+
+> **Voter import does not grant the ability to vote. Entitlement does not either. Possession, proved, does.**
+
+**This also confirms, at runtime, that entitlement and voting access are separate decisions with separate representations** — `ElectionMembership` and `codes.can_vote_now`. A fourth independent confirmation that the product does not fuse these concerns.
+
+## ⚠️ This does NOT close `PBDIGIT-65`
+
+**Step 2 was necessary.** The journey succeeded **only because the organisation page was visited first**, which set tenant context. Without it, the `start()` entitlement gate refuses the voter — that is the defect `PBDIGIT-65` records, **at the enforcement boundary**.
+
+**The correct conclusion is narrow:**
+
+> **Voting path verified *under correctly established tenant context*.**
+
+**`PBDIGIT-65` remains open and is not disproved by this run.** A real voter arriving from a login redirect does not reliably pass step 2.
+
+## NOT reached — all `NOT VERIFIED`
+
+**Agreement → ballot · first vote · vote persistence · credential exhaustion · second-vote rejection · anonymity of the persisted ballot · results.**
+
+**No vote was cast.** Nothing here claims the invariant composes into a working anonymous voting operation — only that the voter now holds an armed credential.
+
+## Resume point
+
+**The experiment is paused mid-journey, not abandoned.** The controlled voter is authenticated, entitled, and holds an **armed** credential sitting at the agreement step. **Resuming needs no setup** — only agreement → ballot → one vote → the three checks after it.
+
+**Reason for pausing:** session context exhaustion. **Casting a vote that could not then be verified and recorded would have been worse than stopping one step short** — it would put a vote in the database with its most important evidence unexamined.
+
+```
+Code / tests / fixtures / schema changed   none
+Votes cast                                 none
+Data created                               one codes row (credential), one voter slug
+Status                                     PAUSED mid-experiment — resume at /vote/agreement
+```
