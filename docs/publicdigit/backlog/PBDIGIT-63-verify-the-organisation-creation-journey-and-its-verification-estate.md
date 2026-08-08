@@ -188,3 +188,49 @@ Code changed so far none
 
 **Traceability:** `app/Http/Controllers/OrganisationController.php:54-57,69-271,280-388` · `app/Http/Middleware/EnsureOrganisationMember.php:62-149` · `app/Http/Middleware/TenantContext.php:66` · `app/Http/Requests/StoreOrganisationRequest.php` (unused) · `app/Models/Organisation.php:81` · `app/Models/User.php:40,47-48` · `routes/web.php:461,493-503,518` · `routes/organisations.php:90` · `resources/js/Pages/Organisations/Create.vue:288-355` · `resources/js/Pages/Organisations/Show.vue:422-441` · `tests/Feature/OrganisationCreation{,Integration}Test.php`
 **Supersedes:** `PBDIGIT-63-verify-create-organisation-journey-and-repair-its-test-safety-net.md` (same ID, renamed 2026-08-08 — the ID names one thing permanently; only the framing changed).
+
+---
+
+# PART A — EXECUTED 2026-08-08. **The journey works end to end.**
+
+**The recorded blocker was stale.** Part A's dependency read *"needs a runtime environment — its absence is the same limitation recorded at PB003 certification"*. **A runtime was built earlier the same day for `PBDIGIT-00`** (served app on `nrna_test`), so Part A became executable under its own standing authorisation — *"Part A where a runtime exists"*.
+
+**Method:** real HTTP against a served application, two accounts (verified · unverified), page · route · DB rows · session recorded at each step. **No production code, test or fixture changed. No test executed.**
+
+## Result — all six criteria
+
+| # | Criterion | Observed |
+|---|---|---|
+| 1 | create form → submit **name only** → arrive on the new organisation's homepage | ✅ `GET /my-organisations/create` **200** `Organisations/Create` → `POST /organisations` **302 → `/organisations/acme-society`** → follow **200** `Organisations/Show` |
+| 2 | exists exactly once · unique slug · tenant organisation | ✅ one row per creation · `type='tenant'` · `is_default=false` |
+| 3 | creator holds the ownership relationship | ✅ `user_organisation_roles.role = **'owner'**` — **this is the observation `D-2` asked for** |
+| 4 | working-organisation context is the new organisation, **in the user record and the session** | ✅ **both** — `users.organisation_id` updated, and the `sessions` payload carries `current_organisation_id` equal to the new organisation |
+| 5 | two organisations with the same name → two reachable, distinctly-addressed homepages | ✅ `Acme Society` ×3 → `acme-society` · `acme-society-1` · `acme-society-2`, each rendering `Organisations/Show` |
+| 6 | same walk with an **unverified** e-mail — observe, do not judge | ⚠️ **login redirects to `/email/verify`, and creation still succeeds**: `GET …/create` **200**, `POST /organisations` **302 → `/organisations/unverified-guild`**, organisation created, role `owner` |
+
+> **The withdrawn framing is now settled on evidence rather than assumption: the journey is not merely "statically wired" — it executes, and it produces the intended business outcome.**
+
+## What Part A adds to the open business decisions
+
+| | |
+|---|---|
+| **`D-1`** | **Observed, not judged.** An unverified account **can** create an organisation and enter it — *and* its login redirects to `/email/verify`. **Both are true simultaneously**, which is the sharpest form of the question: the product both asks for verification and does not require it here. **Still a Policy decision** |
+| **`D-2`** | **Observed: `owner`.** Code and runtime agree; **the tests asserting `admin` are the side that diverges.** *(Which is correct remains `D-2`'s to settle — this establishes only which side moved.)* |
+| 🔴 **`D-3`** | **Its premise is wrong and is corrected here.** `D-3` reads *"`created_by` exists with a relation and no writer"*. **Measured: `organisations.created_by` exists in NEITHER the development NOR the fresh-migration schema.** What exists is `Organisation::creator()` (`app/Models/Organisation.php:81`) — `belongsTo(User::class, 'created_by')` — **a relation over a column that does not exist, with no caller found.** So the option *"no → remove the column and relation"* has **no column to remove**, and *"yes → an invariant to enforce"* means **adding a column, not writing to one** |
+
+**`D-3`'s corrected form:** *does the platform record who created an organisation?* — **today it cannot**, and the relation implying it does is dead. **If ever called it would raise `SQLSTATE[42703]`.**
+
+## Recorded, not judged
+
+* Every account also holds `role='voter'` in the **bootstrap** organisation (`publicdigit`, `type='platform'`). Consistent with `PBDIGIT-30` B1.1 — bootstrap membership is infrastructure, not a working context.
+* **Slug disambiguation is positional** (`-1`, `-2`), not creator- or date-derived. **No business rule for slug collision was found**; recorded as an observation, not a gap.
+
+## Evidence limitations — stated so the result is not over-read
+
+* **Executed against `nrna_test`**, not production or development data.
+* **Via HTTP, not a browser** — no JavaScript executed, so **client-side validation and any SPA-only behaviour were not exercised.**
+* **`Organisations/Show` renders** — its *content* was not asserted beyond the component name.
+* The `Acme Society` count of three includes one organisation from an aborted first run; **the same-name behaviour is unaffected**, but the number is not "three deliberate attempts".
+* **No test was executed.** Part A is a journey observation, not a suite run.
+
+**PART A COMPLETE — THE JOURNEY EXECUTES AND PRODUCES THE INTENDED OUTCOME · `D-1` AND `D-2` NOW HAVE OBSERVATIONS · `D-3`'s PREMISE CORRECTED · PART B UNBLOCKED, NOT STARTED.**
