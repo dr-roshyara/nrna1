@@ -29,6 +29,18 @@ This is the **first segment of the Level 0 customer journey**. Everything downst
 
 ## Current state — at evidence strength
 
+> **Statically wired · runtime unverified · the verification estate contains identified contract drift · several business decisions remain unresolved.**
+
+**Four separate facts, deliberately not compressed into one verdict** — because this ticket exists to keep three different questions apart:
+
+```
+1. Does the business capability exist?        -- creation yes; its rules are open (D-1..D-5)
+2. Does the implementation realize it?        -- statically wired; NOT VERIFIED at runtime
+3. Can the verification estate be trusted?    -- six assertions drifted; suite-level UNDETERMINED
+```
+
+**Each part of this ticket answers exactly one of them: Part A answers 2, Part B answers 3, and D-1…D-5 answer 1.** Collapsing them is what produced this ticket's withdrawn first framing.
+
 | Claim | Status |
 |---|---|
 | Every step is present in code and statically wired end to end | `OBSERVED IN CODE` |

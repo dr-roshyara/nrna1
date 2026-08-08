@@ -280,6 +280,27 @@ Proposed by the Product Owner at the review of the organisation-creation journey
 | C-10 | **Specified report structure** (22 sections) and **specified ticket structure**, with acceptance criteria stated as business behaviour rather than mechanism | *"the creator reaches the homepage without reconstructing the URL"*, not *"the controller returns 302"* |
 | C-11 | **Severity discipline** — *absence of verification is not proof of failure* · *static wiring is not proof of runtime correctness* · *a failing test is not proof production is wrong* · establish the business invariant **before** naming a security defect | the 2026-08-08 review found the report's *summary* outran evidence its *findings* had earned |
 
+**Revised twice more the same day.** The commission went through three drafts on 2026-08-08: **v1** (filed verbatim, commit `b6467e35`) → **v2** (general; added the self-limiting governance clause — never filed, superseded before it was) → **v3** (the operative one: scoped to the *next session* on this journey; verbatim in `.claude/sessions/2026-08-08.md`). **v2 is recorded but not reproduced** — it was an unfiled intermediate draft, and reproducing every draft would bury the operative one. Its one durable contribution is `C-12`.
+
+**Additional candidates from v2/v3 — same freeze, same parking:**
+
+| # | Candidate | Rationale offered |
+|---|---|---|
+| C-12 | **Governance precedence — the commission defers to the repository's adopted method and forbids implicit governance** | *"Governance must never be inferred from the fact that a better method would be useful"* — **the proposal limits itself**, which is what makes it safe to park *and* safer to adopt |
+| C-13 | **Coverage ≠ completeness** — *complete · missing · gap* are **normative** claims requiring a business contract; without one, record `UNDETERMINED` | applied immediately in the claim-weakening direction: it withdrew `F-6`'s `MISSING` class |
+| C-14 | **Persisted-record classification by writers *and readers*, never by shape** — immutable + actor + reason ≠ audit record; a reader's decision is what confers meaning | directly relevant to `PBDIGIT-42` (`overlay_influence_chain` semantics) and `PBDIGIT-59` |
+| C-15 | **`GREEN` ≠ verified · `RED` ≠ production defect** — trace the mechanism before classifying either | a test can pass because middleware was bypassed or a compatibility shim supplied the value |
+| C-16 | **Summary calibration as a first-class discipline** with its own pre-write interrogation of every sentence | the 2026-08-08 evidence: findings held, the summary did not |
+| C-17 | **Keep three questions apart** — *does the capability exist? · does the implementation realize it? · can the verification estate be trusted?* | all three held different values on one journey; a single verdict overstates at least two |
+
+### 🔴 Open governance question raised by the proposal itself
+
+**`OQ-M1` — the commission forbids adopting the machinery it simultaneously instructs.** v3 §1 and §20 say *"do not adopt the parked C-6…C-11"* and *"do not introduce new taxonomies"*; v3 §7, §10 and §19 then **require** a test-classification taxonomy, an evidence taxonomy and a 17-item completion checklist — which **are** `C-8`, `C-9` and `C-10`. A fresh session meets a direct contradiction and will resolve it silently, **which is the exact implicit-governance failure §1 exists to prevent.**
+
+**Engineering will not resolve this.** Two clean resolutions exist, and both are Product Owner acts: **(a)** invoke the freeze's own mid-cycle clause — *"only if a review could not be completed without it"* — and adopt `C-8`/`C-9`/`C-10` **scoped to this journey**, or **(b)** mark those sections as applying **only in the claim-weakening direction**, which is already permitted and needs no adoption at all. **(b) costs nothing and is available today.**
+
+**Also parked, and noted rather than acted on:** the method's own Capability Verdict vocabulary includes **`Ready for verification`**, which `C-13` shows is itself a **normative** label — *ready* asserts nothing further is required. The 2026-08-08 report withdrew it as *its own* verdict and replaced it with four factual clauses, **but the method's vocabulary at *Capability Verdict* above is untouched**: changing adopted method vocabulary is governance, not engineering. **Retrospective candidate.**
+
 **Three of these (C-8, C-9, C-11) were partially exercised in the 2026-08-08 correction — and that is not adoption.** They were used only in the *claim-weakening* direction the existing rules already require (*"the strongest statement made must never exceed the strength of the available evidence"*). **No new phase, section or mandatory artifact was added.** Adopting a weaker claim is always permitted; adding machinery is what the gate governs.
 
 **Placement of the full commission text is `PENDING`** — `php scripts/doc-placement.php --scope=cross-product --maturity=research` returns *unruled, ref `ADR:OQ-2`*, the same open question this README already records. **Escalated, not guessed at.**

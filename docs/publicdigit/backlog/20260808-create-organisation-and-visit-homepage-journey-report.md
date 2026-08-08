@@ -11,7 +11,9 @@
 
 **This report was first summarised as *"the journey is not broken, it is unprotected"*, and its Business Outcome asserted that *"a regression would NOT be caught"*. Both statements are withdrawn as overstated.** Neither is supported by the evidence: no runtime execution was observed, so *"not broken"* was never established; and no measurement of the suite's actual regression-detection was performed, so *"would not be caught"* was a universal claim from a sample of six assertions. **The standing rule is explicit — the strongest statement made must never exceed the strength of the available evidence.** The corrected formulations below replace them. *(Product Owner review, 2026-08-08.)*
 
-**What changed in this correction, and what deliberately did not.** Every edit **removes a claim, weakens a claim, or removes a prescribed remedy**. **No new analytical machinery was added** — the layered capability-ownership analysis, the full evidence-classification scheme and the expanded report structure proposed at the same review are **parked, not applied**, because the Product Capability Review method is under a freeze whose gate is a Method Retrospective at 6 applications (currently 3). See *Parked, not adopted* at the foot of this report.
+**A second correction followed** (same day, second Product Owner review): **`F-6`'s class `MISSING` is withdrawn**, because *missing* is a **normative** claim requiring a business contract that was never found — see F-6. **Two rounds of correction on one short report, both in the same direction: the findings held, the labels and the summary did not.**
+
+**What changed in these corrections, and what deliberately did not.** Every edit **removes a claim, weakens a claim, or removes a prescribed remedy**. **No new analytical machinery was added** — the layered capability-ownership analysis, the full evidence-classification scheme and the expanded report structure proposed at the same review are **parked, not applied**, because the Product Capability Review method is under a freeze whose gate is a Method Retrospective at 6 applications (currently 3). See *Parked, not adopted* at the foot of this report.
 
 ---
 
@@ -34,7 +36,28 @@ Expected  A customer creates their organisation and reaches its homepage as
           regression in that outcome.
 ```
 
-**Verdict for the journey: `Ready for verification`.** Not *"working"*, and not *"broken"* — **neither has been established.** What *is* established is that a specific, enumerated set of tests describes a former contract; the regression-detection strength of the wider suite was **not measured** and is `UNDETERMINED`.
+### Verdict — stated as four separate facts, not one label
+
+> **Statically wired · runtime unverified · the verification estate contains identified contract drift · several business decisions remain unresolved.**
+
+**⚠️ `Ready for verification` is withdrawn as this journey's verdict (third correction, 2026-08-08).** It reads as a status but is a **readiness judgement** — and *ready* is normative, exactly like *missing* in `F-6`: it asserts that nothing further is required before verification, which this report cannot support while `D-1`…`D-5` are open. **The four clauses above say strictly what was found and nothing more.** *(The label is retained in the 2026-08-06 capability review, which is a dated record and is not rewritten.)*
+
+### The three questions this journey keeps collapsing into one
+
+**This is the report's most useful structural finding — more useful than any individual `F-n`:**
+
+```
+1. DOES THE BUSINESS CAPABILITY EXIST?          -- partly: creation yes; the rules
+                                                   around it are unresolved (D-1..D-5)
+                 |
+2. DOES THE IMPLEMENTATION REALIZE IT?          -- statically wired; NOT VERIFIED at runtime
+                 |
+3. CAN THE VERIFICATION ESTATE BE TRUSTED
+   TO PROTECT IT?                               -- six assertions drifted; suite-level
+                                                   strength UNDETERMINED
+```
+
+**All three can hold different values at once, and this journey proves it:** the implementation can be wired while the tests describe a former contract while the journey has never run. **A single verdict for the journey necessarily overstates at least two of the three** — which is precisely how `Ready for verification` and *"not broken, just unprotected"* both went wrong.
 
 ### Evidence classification used below
 
@@ -154,9 +177,15 @@ On any failure, `back()->withErrors(['error' => 'Creation failed: ' . $e->getMes
 
 **Class:** INCONSISTENT (the boundary is drawn in two places) · **Type:** Product · **Priority:** Medium · **Confidence:** High *for the observation*, **not applicable** for a severity judgement that cannot be made until the invariant exists.
 
-### F-6 The creator's identity is not recorded on the organisation
+### F-6 The creator's identity is not written to the organisation record
 
-`organisations.created_by` exists as a column with a `belongsTo` relation (`app/Models/Organisation.php:81`), but the live creation path never writes it (and it is not fillable). Creator identity survives only as the owner pivot row — which a later role change would overwrite. **Class:** MISSING · **Type:** Product (audit trail) · **Priority:** Low-Medium · **Confidence:** High.
+**Observed fact** `OBSERVED IN CODE`: `organisations.created_by` exists as a column with a `belongsTo` relation (`app/Models/Organisation.php:81`); the live creation path never writes it, and it is not fillable. Creator identity survives only as the owner pivot row, which a later role change would overwrite.
+
+> ⚠️ **Second correction (2026-08-08).** This finding was first classified **`MISSING`** and typed *"Product (audit trail)"*. **Both are withdrawn.** *Missing* is a **normative** claim: it asserts that something which ought to be recorded is not. **That requires a business contract stating creator provenance must be retained — and no such contract was found.** Likewise *audit trail* classifies the record's business meaning from its **shape** (a nullable id column plus a relation), which is not evidence of what it is for: nobody reads it, so no business decision depends on it today.
+>
+> **Corrected statement:** *the creation path writes no creator reference to the organisation record, and whether that constitutes a gap is `UNDETERMINED` pending `D-3`.* Coverage is an observed fact; completeness is a judgement against a contract that does not yet exist.
+
+**Class:** ⛔ **not classifiable yet** — `MISSING` and `INCONSISTENT` presuppose opposite answers to `D-3`, and choosing either here would answer a business question by picking a label. **Type:** Product · **Confidence:** High *for the observation*; **no severity is asserted.**
 
 ### F-7 The homepage guard runs twice, and one of the two can never fire
 
