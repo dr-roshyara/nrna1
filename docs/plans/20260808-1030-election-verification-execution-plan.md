@@ -499,9 +499,32 @@ authority ──▶ derive from business facts   (never reads the cache)
 
 * **Two production paths write `elections.state` outside `transitionTo()`** — `ActivateElectionCommand:30` (no guard, no history) and `BackfillElectionState:67`. *(This answers an open item the interim entry left.)*
 * **`election_state_transitions` has no production reader** — every occurrence in `app/` is a creation, a return type, or its own immutability hook.
-* **Transition history is incomplete by construction:** `ActivateElectionCommand` transitions leave no record.
+* **Observed transition records do not cover all state-writing paths:** `ActivateElectionCommand` writes `elections.state` and produces no transition record. **Whether that is a gap depends on BD-1** — *"incomplete"* would judge against a contract nobody has established.
 * **Event emission is inconsistent between writers** of the same column (`updateQuietly` vs `update`) — recorded, **not** called a defect.
 
 **Three business decisions are raised, none taken** — chiefly **BD-1: is `election_state_transitions` intended as constitutional audit evidence?** The same fact means opposite things depending on the answer: if it is evidence, the missing records are a governance gap; if it is implementation history, they are harmless. **BD-1 should be answered before Step 2**, because it decides whether the audit tests verify a business invariant or an implementation detail.
 
 **Status: Relationship 5 COMPLETE. Relationships established: 5. Outstanding: 1 — Demo (`PBDIGIT-59`-adjacent). Awaiting Product Owner review; not proceeding to Relationship 6 or Step 2 automatically.**
+
+---
+
+### ⛔ STANDING RULE — added 2026-08-08 after the Relationship 5 review
+
+> **Business meaning precedes persistence meaning. Persistence meaning precedes implementation judgement.**
+
+```
+what business value? → what business invariant? → who owns the decision?
+→ what is authoritative? → how is it persisted? → how is it consumed?
+→ how is it verified? →  ONLY THEN:  is the implementation correct?
+```
+
+**Corollary, and the one this programme keeps needing:**
+
+> **Technical structure can provide evidence about a business concept. It cannot silently become the business concept.**
+
+**Two language rules follow, and they are binding on every relationship report:**
+
+1. **Never describe coverage as *"incomplete"*, *"missing"* or *"a gap"* before the business contract requiring that coverage is established.** Say **"observed records do not cover all X paths"**, then say **whether that matters is undetermined pending <decision>**. *(Violated once already: `R5-6` called transition coverage "incomplete by construction" and classified it OBSERVED FACT — conflating the coverage, which is a fact, with its significance, which is not.)*
+2. **Never call a persisted record a *"decision record"*, *"audit log"* or *"domain event"* from its shape.** `election_state_transitions` is immutable and carries `actor_id`/`reason`/`trigger` — **accountability-shaped, and that is evidence about intent, not proof of it.** Until **BD-1** is answered its business meaning is **UNRESOLVED**.
+
+**Where a business decision is open, record both branches with their consequences** rather than the decision in the abstract — see the BD-1 A/B table in the Relationship 5 report. **The same observations mean opposite things under each branch; that is what makes the decision necessary and what stops engineering from making it by default.**

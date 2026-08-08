@@ -5,6 +5,12 @@
 **Carried forward, not re-derived:** `PBDIGIT-48` (three generations of representation; consumer inventory) · `ADR_20260807_1500_Election_Lifecycle_Single_Source_Of_Truth` (lifecycle authority, PO-approved)
 
 > **Governing principle adopted for this report:** **Persistence is not authority merely because it is durable. A persisted representation derives its architectural meaning from the business decision it represents and the component that owns that decision.**
+>
+> **And its ordering rule:** **Business meaning precedes persistence meaning. Persistence meaning precedes implementation judgement.**
+>
+> **Operationally:** *what business value? → what business invariant? → who owns the decision? → what is authoritative? → how is it persisted? → how is it consumed? → how is it verified? →* **only then:** *is the implementation correct?*
+>
+> **The corollary this report exists to demonstrate:** **technical structure can provide evidence about a business concept; it cannot silently become the business concept.** Every correction in §0 is an instance of that rule being broken and repaired.
 
 ---
 
@@ -124,7 +130,24 @@ The plan entry of 2026-08-08 (`d419ff80`) recorded four claims that **exceeded t
 
 **Explicitly NOT concluded** (this is correction C-1): that it is *the* record of a business decision, an audit log in the governance sense, a domain event, or a source of truth. **A record whose only consumer is its own write path cannot be shown to function as evidence.** Whether it is *intended* as constitutional audit evidence is a **BUSINESS DECISION REQUIRED** (§11), not a technical reading.
 
-**⚠️ Note the coverage boundary this creates:** because it is written only by `transitionTo()`, transitions performed by `ActivateElectionCommand` leave **no record at all** — the history is silent about them.
+**⚠️ Coverage boundary — stated without presuming a contract:** because it is written only by `transitionTo()`, **observed transition records do not cover all state-writing paths**; `ActivateElectionCommand` writes `elections.state` and produces no record.
+
+**Whether that is a gap requires BD-1 first.** *"Incomplete"* would be a judgement against a contract that has not been established — an earlier draft of this report used that word and classified it as an OBSERVED FACT, which conflated the **coverage** (a fact) with its **significance** (undetermined).
+
+### BD-1's two branches — consequences separated, neither selected
+
+**No branch is chosen. Both are recorded so the decision is made against its consequences rather than in the abstract.**
+
+| | **Branch A — the records ARE constitutional evidence** | **Branch B — they are implementation history** |
+|---|---|---|
+| `ActivateElectionCommand` producing no record | 🔴 a **governance gap** requiring investigation | harmless — no completeness obligation exists |
+| Completeness | becomes a **governance invariant** | not a requirement |
+| Immutability (`:35-42`) | **semantically meaningful** — evidence must not be alterable | a defensible persistence choice, nothing more |
+| Having **no reader** | 🔴 **more serious** — evidence nobody can consult is not serving its purpose | expected; implementation history need not be read |
+| `StateMachineTransitionAuditTest` et al. | **constitutional verification tests** | **implementation tests** |
+| `actor_id` / `reason` / `trigger` | required accountability fields | incidental metadata |
+
+> **The same six observations mean opposite things under A and B.** That is precisely why BD-1 cannot be answered by further code reading, and why answering it changes the classification of every history test in the estate.
 
 ## 8 · Test implications
 
@@ -153,7 +176,7 @@ The plan entry of 2026-08-08 (`d419ff80`) recorded four claims that **exceeded t
 | **R5-3** | **Two production paths write `elections.state` outside `transitionTo()`** — `ActivateElectionCommand` (no guard, no history) and `BackfillElectionState` (reconciliation) | OBSERVED FACT |
 | **R5-4** | Event emission is **inconsistent across writers** of the same column | OBSERVED FACT |
 | **R5-5** | `election_state_transitions` is **immutable, attributed, and unconsumed** | OBSERVED FACT + CONCLUSION |
-| **R5-6** | Transition history is **incomplete by construction** — `ActivateElectionCommand` transitions leave no record | OBSERVED FACT |
+| **R5-6** | **Observed transition records do not cover all state-writing paths** — `ActivateElectionCommand` writes `elections.state` and produces no transition record. **Whether that constitutes a defect depends on BD-1** | OBSERVED FACT (the coverage) · **UNDETERMINED** (its significance) |
 | **R5-7** | Divergence is **possible, expected, manually repaired, and has already caused customer impact** (`PBDIGIT-47`); **frequency unmeasured** | CONCLUSION |
 | **R5-8** | The evaluated lifecycle state changes when an authoritative business fact changes — **this is the design, not a defect** | INTERPRETATION |
 
