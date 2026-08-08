@@ -580,3 +580,30 @@ WHY                 "complete" presupposes a contract stating which
 **Reversing the order is the defect, not the conclusion it produces.** A conclusion reached bottom-up may happen to be correct; it is still unsupported, because the evidence for a business claim cannot come from an implementation detail.
 
 **Not filed as a KnowledgeOS candidate, deliberately.** Both rules are repository-independent and would pass the four promotion tests — **but three candidates have already been filed from this programme, and the distillation principle warns that KnowledgeOS should be *the result of* successful engineering, not something engineering goes looking for** (`docs/pks/2026-08-05-knowledgeos-distillation-principle-candidate.md`). **They are recorded here as binding programme rules. If a second, independent programme needs them, that is the occurrence that justifies filing.**
+
+#### 6 · Demo → do demo semantics constitute Election business decisions? — **ESTABLISHED: yes**
+
+**Full report: [`docs/publicdigit/reviews/2026-08-08-relationship-6-demo-semantics.md`](../publicdigit/reviews/2026-08-08-relationship-6-demo-semantics.md).**
+
+**Scope taken from plan line 227, not from the relationship's name:** *whether demo semantics constitute Election business decisions*. **Not** a review of how demo mode works or whether it is correct.
+
+**Answer: yes — and the split is clean.**
+
+| | |
+|---|---|
+| **Constitutional lifecycle** | 🟢 **demo-agnostic** — no demo branching in `ElectionConstitution`, `ElectionLifecycleEngineImpl` or `ConstitutionalTransitionGuard`. **A demo fixture is a faithful substitute for lifecycle verification** |
+| **Capabilities** | 🔴 **demo changes business behaviour** — four `abort_if(type === 'demo', 404)` exclusions (candidacy review · management · application · voter import), two `$forceNew` repeatability branches, one votes-per-IP exemption |
+| **Where those decisions live** | **entirely the Interface layer.** `elections.type` is domain *data*; **no domain or application artifact expresses what a demo may do differently** |
+| **Persistence** | three regimes — real → `votes` · private demo → `demo_votes` · **public demo → the session, not the database** (`PublicDemoController:325`). **The Product Owner's public/private rule is implemented as stated** *(precisely: the vote is not persisted; a `PublicDemoSession` row is)* |
+
+**Sharpest observation — `BD-4`:** `PBDIGIT-45` established that **the Constitution owns votes-per-IP**. The demo exemption is expressed by **which controller calls a helper** (`838817bd`), so **a rule the Constitution owns is switched off by code with no constitutional standing.** **Whether that is a defect is not established** — the exemption may be exactly the intended rule.
+
+**⚠️ Supersedes an earlier entry in this programme.** The `PBDIGIT-00` walk recorded the demo path calling `check_ip_address` and being blocked by it. **True then, false now** — `838817bd` removed it under `PBDIGIT-39`. **Superseded, not wrong**; recorded so the entries are not read as contradictory.
+
+**Method note worth keeping:** a name-based scan reported demo branching in the lifecycle engine that does not exist — the matches were the word **"democratic"**. Excluded rather than counted.
+
+**Three new business decisions recorded, none taken:** **BD-4** (is the votes-per-IP exemption constitutional?) · **BD-5** (is *demo* a domain concept or an interface concern?) · **BD-6** (are the four exclusions one business rule or four?). **BD-1/2/3 untouched.**
+
+**Step 2 consequence:** demo fixtures are safe for lifecycle invariants and **not** safe for the four capability behaviours. Which of `tests/Feature/Demo`'s 18 tests fall on each side is **UNDETERMINED** and requires per-test reading.
+
+**Status: Relationship 6 COMPLETE. 🏁 ALL SIX RELATIONSHIPS ESTABLISHED — the Slice 1 Step 1 relationship map is closed. Step 2 (Master Matrix classification) NOT started; awaiting Product Owner review.**
