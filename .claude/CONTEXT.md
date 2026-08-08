@@ -2454,3 +2454,29 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 Both sit at ES-006.1 rung **observation**, both record `PLACEMENT: PENDING` (ADR:OQ-2), and both would **extend an existing standard rather than become one** (ES-005.4). **The next legitimate step for each is waiting for a second independent occurrence.**
 
 **Governance state is UNCHANGED by all of this** — the WP-4 commission remains CLOSED (R-98), the prepared five-vote ARB session is still unconvened, and Q1–Q4 still belong to the Contestation Domain Owner. Product work does not reopen any of it.
+
+---
+
+## PBDIGIT-48 ELECTION VERIFICATION PROGRAMME — Slice 1 state (2026-08-08)
+
+**🏁 Step 1 relationship map CLOSED — all six established:** Membership · Security · HTTP · Services/lifecycle · Models/persistence · Demo.
+**🔴 Step 2 (Master Matrix) NOT STARTED — blocked on two Product Owner decisions.**
+
+| | |
+|---|---|
+| **`SD-1`** | **Scope:** (a) 826-test constitutional core · (b) all ~3,688 · (c) capability-first cut. **The gate Step 1 set and nobody answered** |
+| **`SD-2`** | **Evidence depth:** static reading, execution, or both. **~5 of 30 matrix columns cannot be filled without running the tests.** Not among the original three options |
+
+**Delivered instead (scope-independent):** the 30-dimension schema with an **evidence rule per column**, and a two-row calibration proving intent-first classification is necessary — *one test looked constitutional and was an N+1 probe that swallows the authorization result; one asserts a business invariant blocked on an unresolved data-authority question.* `docs/publicdigit/reviews/2026-08-08-master-matrix-schema-and-calibration.md`
+
+**⛔ Do not manufacture progress with a partial matrix.** The plan forbids *"a partial matrix called complete"*.
+
+**Load-bearing findings from the closed relationships:**
+
+* **R4** — the constitution is **not** the complete precondition set; guard and model **overlap** on `open_voting`; **system-triggered transitions bypass the guard entirely**.
+* **R5** — `elections.state` is a **cache**; the authority derives from business facts and never reads it. **Two production paths write it outside `transitionTo()`** (`ActivateElectionCommand`, `BackfillElectionState`). **`election_state_transitions` has no production reader.**
+* **R6** — demo **does** change business decisions, all of it Interface-layer; the **lifecycle is demo-agnostic**, so demo fixtures are faithful substitutes for lifecycle verification and **not** for the four capability behaviours.
+
+**Open business decisions — engineering must not take them:** `BD-1` (is the transition log constitutional audit evidence? **should precede Step 2**) · `BD-2` · `BD-3` · `BD-4` (is the demo votes-per-IP exemption constitutional?) · `BD-5` (is *demo* a domain concept or interface concern?) · `BD-6` · `BD-7` candidate (which store defines committee membership?).
+
+**Standing rules bound into the plan this session:** *coverage is descriptive, completeness is normative* · *business meaning precedes persistence meaning; persistence meaning precedes implementation judgement* · the permanent hierarchy with **implementation judgement last** · *never call a persisted record a decision/audit record from its shape*.
