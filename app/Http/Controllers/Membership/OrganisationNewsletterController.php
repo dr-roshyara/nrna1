@@ -22,9 +22,15 @@ class OrganisationNewsletterController extends Controller
         private readonly NewsletterService $service
     ) {}
 
-    public function index(Request $request, string $slug)
+    /**
+     * The route prefix is `organisations/{organisation:slug}`, so Laravel binds and
+     * injects the Organisation. The parameter must therefore be named $organisation
+     * and type-hinted — a `string $slug` parameter receives the bound model, not the
+     * slug, and re-querying by it fails with a 404. (PBDIGIT-61)
+     */
+    public function index(Request $request, Organisation $organisation)
     {
-        $org = Organisation::where('slug', $slug)->firstOrFail();
+        $org = $organisation;
         $this->authorizeAdmin($org, $request->user());
 
         $newsletters = OrganisationNewsletter::where('organisation_id', $org->id)
@@ -37,13 +43,15 @@ class OrganisationNewsletterController extends Controller
         ]);
     }
 
-    public function create(Request $request, string $slug)
+    public function create(Request $request, Organisation $organisation)
     {
-        $org = Organisation::where('slug', $slug)->firstOrFail();
+        $org = $organisation;
         $this->authorizeAdmin($org, $request->user());
 
+        // No status predicate: nothing ever writes elections.status='deleted', and
+        // deletion is SoftDeletes' concern (deleted_at global scope), not a lifecycle
+        // value. The retained `status` column is display-only. (PBDIGIT-48)
         $elections = Election::where('organisation_id', $org->id)
-            ->where('status', '!=', 'deleted')
             ->select('id', 'name', 'status')
             ->get();
 
@@ -72,9 +80,9 @@ class OrganisationNewsletterController extends Controller
         ]);
     }
 
-    public function store(Request $request, string $slug)
+    public function store(Request $request, Organisation $organisation)
     {
-        $org = Organisation::where('slug', $slug)->firstOrFail();
+        $org = $organisation;
         $this->authorizeAdmin($org, $request->user());
 
         $key = 'newsletters:' . $request->user()->id;
@@ -97,12 +105,12 @@ class OrganisationNewsletterController extends Controller
 
         $newsletter = $this->service->createDraft($org, $request->user(), $data, $request);
 
-        return redirect()->route('organisations.membership.newsletters.show', [$slug, $newsletter->id]);
+        return redirect()->route('organisations.membership.newsletters.show', [$org, $newsletter->id]);
     }
 
-    public function show(Request $request, string $slug, int $id)
+    public function show(Request $request, Organisation $organisation, int $id)
     {
-        $org = Organisation::where('slug', $slug)->firstOrFail();
+        $org = $organisation;
         $this->authorizeAdmin($org, $request->user());
 
         $newsletter = OrganisationNewsletter::where('organisation_id', $org->id)
@@ -111,8 +119,10 @@ class OrganisationNewsletterController extends Controller
 
         $recipients = $newsletter->recipients()->paginate(20);
 
+        // No status predicate: nothing ever writes elections.status='deleted', and
+        // deletion is SoftDeletes' concern (deleted_at global scope), not a lifecycle
+        // value. The retained `status` column is display-only. (PBDIGIT-48)
         $elections = Election::where('organisation_id', $org->id)
-            ->where('status', '!=', 'deleted')
             ->select('id', 'name', 'status')
             ->get();
 
@@ -124,9 +134,9 @@ class OrganisationNewsletterController extends Controller
         ]);
     }
 
-    public function edit(Request $request, string $slug, int $id)
+    public function edit(Request $request, Organisation $organisation, int $id)
     {
-        $org = Organisation::where('slug', $slug)->firstOrFail();
+        $org = $organisation;
         $this->authorizeAdmin($org, $request->user());
 
         $newsletter = OrganisationNewsletter::where('organisation_id', $org->id)
@@ -140,9 +150,9 @@ class OrganisationNewsletterController extends Controller
         ]);
     }
 
-    public function update(Request $request, string $slug, int $id)
+    public function update(Request $request, Organisation $organisation, int $id)
     {
-        $org = Organisation::where('slug', $slug)->firstOrFail();
+        $org = $organisation;
         $this->authorizeAdmin($org, $request->user());
 
         $newsletter = OrganisationNewsletter::where('organisation_id', $org->id)
@@ -161,13 +171,13 @@ class OrganisationNewsletterController extends Controller
             'plain_text'   => $data['plain_text'] ?? null,
         ]);
 
-        return redirect()->route('organisations.membership.newsletters.show', [$slug, $newsletter->id])
+        return redirect()->route('organisations.membership.newsletters.show', [$org, $newsletter->id])
             ->with('success', 'Draft updated.');
     }
 
-    public function previewRecipients(Request $request, string $slug, int $id)
+    public function previewRecipients(Request $request, Organisation $organisation, int $id)
     {
-        $org = Organisation::where('slug', $slug)->firstOrFail();
+        $org = $organisation;
         $this->authorizeAdmin($org, $request->user());
 
         $newsletter = OrganisationNewsletter::where('organisation_id', $org->id)->findOrFail($id);
@@ -177,9 +187,9 @@ class OrganisationNewsletterController extends Controller
         ]);
     }
 
-    public function previewCount(Request $request, string $slug)
+    public function previewCount(Request $request, Organisation $organisation)
     {
-        $org = Organisation::where('slug', $slug)->firstOrFail();
+        $org = $organisation;
         $this->authorizeAdmin($org, $request->user());
 
         // Rate limit: 30 requests per minute per user
@@ -218,9 +228,9 @@ class OrganisationNewsletterController extends Controller
         return response()->json(['count' => $count, 'sample' => $sample]);
     }
 
-    public function send(Request $request, string $slug, int $id)
+    public function send(Request $request, Organisation $organisation, int $id)
     {
-        $org = Organisation::where('slug', $slug)->firstOrFail();
+        $org = $organisation;
         $this->authorizeAdmin($org, $request->user());
 
         $newsletter = OrganisationNewsletter::where('organisation_id', $org->id)->findOrFail($id);
@@ -231,13 +241,13 @@ class OrganisationNewsletterController extends Controller
             return response()->json(['error' => $e->getMessage()], 422);
         }
 
-        return redirect()->route('organisations.membership.newsletters.show', [$slug, $newsletter->id])
+        return redirect()->route('organisations.membership.newsletters.show', [$org, $newsletter->id])
             ->with('success', 'Newsletter has been queued for delivery.');
     }
 
-    public function cancel(Request $request, string $slug, int $id)
+    public function cancel(Request $request, Organisation $organisation, int $id)
     {
-        $org = Organisation::where('slug', $slug)->firstOrFail();
+        $org = $organisation;
         $this->authorizeAdmin($org, $request->user());
 
         $newsletter = OrganisationNewsletter::where('organisation_id', $org->id)->findOrFail($id);
@@ -248,13 +258,13 @@ class OrganisationNewsletterController extends Controller
             return response()->json(['error' => $e->getMessage()], 422);
         }
 
-        return redirect()->route('organisations.membership.newsletters.show', [$slug, $newsletter->id])
+        return redirect()->route('organisations.membership.newsletters.show', [$org, $newsletter->id])
             ->with('success', 'Newsletter cancelled.');
     }
 
-    public function destroy(Request $request, string $slug, int $id)
+    public function destroy(Request $request, Organisation $organisation, int $id)
     {
-        $org = Organisation::where('slug', $slug)->firstOrFail();
+        $org = $organisation;
         $this->authorizeAdmin($org, $request->user());
 
         $newsletter = OrganisationNewsletter::where('organisation_id', $org->id)
@@ -263,13 +273,13 @@ class OrganisationNewsletterController extends Controller
 
         $newsletter->delete();
 
-        return redirect()->route('organisations.membership.newsletters.index', $slug)
+        return redirect()->route('organisations.membership.newsletters.index', $org)
             ->with('success', 'Newsletter deleted.');
     }
 
-    public function storeAttachment(Request $request, string $slug, int $id)
+    public function storeAttachment(Request $request, Organisation $organisation, int $id)
     {
-        $org = Organisation::where('slug', $slug)->firstOrFail();
+        $org = $organisation;
         $this->authorizeAdmin($org, $request->user());
 
         $newsletter = OrganisationNewsletter::where('organisation_id', $org->id)->findOrFail($id);
@@ -311,9 +321,9 @@ class OrganisationNewsletterController extends Controller
         return response()->json($attachment->only(['id', 'original_name', 'mime_type', 'size']));
     }
 
-    public function destroyAttachment(Request $request, string $slug, int $id, int $attachmentId)
+    public function destroyAttachment(Request $request, Organisation $organisation, int $id, int $attachmentId)
     {
-        $org = Organisation::where('slug', $slug)->firstOrFail();
+        $org = $organisation;
         $this->authorizeAdmin($org, $request->user());
 
         $attachment = NewsletterAttachment::whereHas('newsletter', function ($q) use ($org) {

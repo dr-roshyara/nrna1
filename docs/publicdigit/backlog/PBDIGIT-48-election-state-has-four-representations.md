@@ -292,7 +292,7 @@ Recommendation:
 | `OrganisationUserImportController` | Voter Import Targeting | `canManageVoters()` | `cf0f77a2` — suite 8/8 green; legacy list offered import where the constitution forbids voter changes |
 | `OrganisationController` (3 stat blocks) | Organisation Reporting | `isActive()` · `state() ∈ {ResultsPublished, Archived}` | `54a4424c` — both legacy counts were structurally 0; browser-verified, payload shape preserved |
 
-**⏸ One deferred:** `OrganisationNewsletterController:46/115` — `status != 'deleted'` is a **no-op** (nothing writes `'deleted'`; deletion belongs to `SoftDeletes`), but the edit was **reverted under the TDD rule**: its guarding suite fails 6/6 at HEAD for unrelated pre-existing reasons → **`PBDIGIT-61`**, which now blocks this one line.
+**✅ The deferred one is now applied (2026-08-07).** `OrganisationNewsletterController` — `status != 'deleted'` removed as a proven **no-op** (nothing writes `'deleted'`; deletion belongs to `SoftDeletes`). It was correctly held back under the TDD rule until **`PBDIGIT-61`** made its guarding suite green (6/6), then re-applied and re-verified. **Member Communication is migrated; Bucket 1 has no remaining deferrals.**
 
 ### Bucket 2 — Demo platform switch → KEPT, documented in code (`93a49263`)
 

@@ -36,8 +36,10 @@ class NewsletterCreationTest extends TestCase
     {
         $this->actingAs($this->admin)
              ->post(route('organisations.membership.newsletters.store', $this->organisation->slug), [
-                 'subject'      => 'Monthly Update',
-                 'html_content' => '<p>Hello members!</p>',
+                 'subject'       => 'Monthly Update',
+                 'html_content'  => '<p>Hello members!</p>',
+                 // Required by the controller: a newsletter must state its audience.
+                 'audience_type' => 'all_members',
              ])
              ->assertRedirect();
 
@@ -64,8 +66,9 @@ class NewsletterCreationTest extends TestCase
 
         $this->actingAs($owner)
              ->post(route('organisations.membership.newsletters.store', $this->organisation->slug), [
-                 'subject'      => 'Owner Message',
-                 'html_content' => '<p>From the owner</p>',
+                 'subject'       => 'Owner Message',
+                 'html_content'  => '<p>From the owner</p>',
+                 'audience_type' => 'all_members',
              ])
              ->assertRedirect();
 
@@ -97,8 +100,9 @@ class NewsletterCreationTest extends TestCase
     {
         $this->actingAs($this->admin)
              ->post(route('organisations.membership.newsletters.store', $this->organisation->slug), [
-                 'subject'      => 'XSS Test',
-                 'html_content' => '<p>Hello</p><script>alert(1)</script>',
+                 'subject'       => 'XSS Test',
+                 'html_content'  => '<p>Hello</p><script>alert(1)</script>',
+                 'audience_type' => 'all_members',
              ]);
 
         $newsletter = OrganisationNewsletter::withoutGlobalScopes()
@@ -118,11 +122,13 @@ class NewsletterCreationTest extends TestCase
 
     public function test_preview_recipient_count_returns_active_member_count(): void
     {
-        // Create 3 active members, 1 inactive, 1 unsubscribed
+        // Create 3 active members, 1 no longer active, 1 unsubscribed.
+        // 'expired' rather than 'inactive': members_status_check permits only
+        // active | expired | suspended | ended.
         $this->createNewsletterMember(status: 'active');
         $this->createNewsletterMember(status: 'active');
         $this->createNewsletterMember(status: 'active');
-        $this->createNewsletterMember(status: 'inactive');
+        $this->createNewsletterMember(status: 'expired');
         $this->createNewsletterMember(status: 'active', unsubscribed: true);
 
         $newsletter = OrganisationNewsletter::create([
