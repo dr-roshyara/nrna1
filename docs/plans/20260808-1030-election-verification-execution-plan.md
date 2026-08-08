@@ -148,3 +148,36 @@ Developer guides for `developer_guide/http/` and `developer_guide/models/` — p
 ## Traceability
 
 `docs/publicdigit/backlog/full_discovery.md` · `PBDIGIT-48` · `PBDIGIT-58` · `PBDIGIT-62` · `ADR_20260807_1500` · handover in `.claude/sessions/2026-08-07.md` §HANDOVER
+
+---
+
+## SLICE 1 — STEP 1 (scope determination) — STARTED 2026-08-08
+
+**The plan requires scope be determined before any matrix is built** (*"Do not produce a partial matrix and call it complete"*). That step ran first, and its result materially changes the programme's shape.
+
+### 🔴 The estate is ~4.5× larger than the working set measured all session
+
+| Measure | Value |
+|---|---|
+| Test files referencing Election | **491** |
+| Test methods in those files | **~3,688** |
+| Files in the 5 suites measured this session | **180** |
+| Tests in those suites | **826** (668 passed / 146 → 105 failed / 12 incomplete) |
+
+**The `146 → 105` trajectory describes a subset, not the Election estate.** Every failure figure quoted in this programme so far — including the handover — is scoped to those five suites.
+
+**Distribution beyond the measured set:** `tests/Feature` (74) · `tests/Unit/Domain/Election/Security` (35) · `tests/Feature/Demo` (18) · `tests/Unit/Models` (17) · `tests/Unit/Application/Election/Security` (17) · `tests/Unit/Services` (8) · `tests/Feature/Membership` (8) — none of which were in the measured suites.
+
+### What this means for Slice 1
+
+1. **The 30-column matrix over ~3,688 tests is not a single-session artifact.** Scoping it as such would guarantee the partial-but-authoritative outcome the plan forbids.
+2. **A scope decision is required from the Product Owner before matrix construction**, e.g.:
+   - **(a)** the 826-test constitutional core already measured — coherent, bounded, already partly classified; or
+   - **(b)** all 491 files — complete, but a multi-session programme needing its own slicing; or
+   - **(c)** a capability-first cut: matrix the tests covering the constitutional invariants and journeys, and inventory the rest by file without per-test mapping.
+3. **"491 files reference Election" is an upper bound, not a consumer count** — the same distinction that reduced 46 legacy sites to a much smaller true set. Many will reference Election incidentally.
+
+### Status
+
+**SLICE 1 STEP 1 COMPLETE — SCOPE DECISION REQUIRED BEFORE MATRIX CONSTRUCTION.**
+**Slice 1 is NOT complete.** No matrix rows have been produced. No code, test or fixture changed.
