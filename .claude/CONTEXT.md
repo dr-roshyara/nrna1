@@ -2378,6 +2378,26 @@ Tier 2 opens only when its trigger goes live *(Package 11 → SPL/EA · Stream 4
 | `PBDIGIT-44` locale string broke a public page | ✅ **FIXED — verified in production.** `@` is vue-i18n syntax; 30 messages across 9 namespaces. **Assets are tracked and no CI builds them: a frontend fix is not live until `npm run build` is committed and deployed** |
 | `PBDIGIT-35`…`44` | **OPEN** — found by `PBDIGIT-00`. Next: `PBDIGIT-39` (blocks every voter where `MAX_USE_IP_ADDRESS` unset) · `PBDIGIT-42` (PO decision) · `PBDIGIT-36` (a test that casts a vote) |
 
+### 🔬 ELECTION VERIFICATION PROGRAMME — ACTIVE (checkpoint `b4edd850`, 2026-08-08)
+
+**Estate: 105 failed / 668 passed / 3655 assertions** · `146 → 135 → 116 → 114 → 109 → 105`, **passing count never dropped**.
+
+**Next action:** `ElectionGracePeriodUITest` — `Authorize:manageSettings,election` returns 403 while `ElectionPolicy::manageSettings($user,$election)` returns **true** called directly; controller never entered; binding proven to succeed. **Measure the request-time Gate subject before forming a hypothesis.**
+
+**Standing rules (earned this session, do not relax):**
+1. **`ElectionLifecycle` is the sole lifecycle authority** — never repair a test by writing `status` / `state` / `is_active`.
+2. **Prove the rejecting mechanism before repairing.** Four plausible hypotheses dissolved under measurement; recognition of a familiar shape is a hypothesis generator, never a classification.
+3. **Lifecycle-sensitive fixtures must establish state via constitutional preconditions** and assert the resulting state before asserting behaviour.
+4. **Never optimise for a lower failure count.** Rising assertions matter as much as falling failures.
+5. **Cluster 6 (deprecation ladder) must NOT be "fixed"** — `STRICT_LEVEL=1` makes level-2+ guards inactive by design; those tests encode `PBDIGIT-48`'s completion criterion.
+6. **The legacy-consumer audit is a separate phase**, after the estate is classified.
+
+**Full record:** `.claude/sessions/2026-08-07.md` (§HANDOVER) · day file `.claude/sessions/2026-08-08.md`.
+**Planning layer:** `docs/publicdigit/backlog/full_discovery.md` — Product Owner's Full Discovery Plan, **untracked**; committing it is a governance decision.
+**Outstanding:** developer guides for `developer_guide/http/` and `developer_guide/models/` — deferred, not discharged.
+
+---
+
 ### 🧊 DISCOVERY FROZEN 2026-08-06 (Product Owner) — the legacy-state roadmap is settled; move it into implementation
 
 **No further discovery tickets in this area until these begin moving.** Four tickets, one coherent sequence:
