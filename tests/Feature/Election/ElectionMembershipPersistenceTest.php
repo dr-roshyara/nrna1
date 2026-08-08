@@ -47,7 +47,14 @@ class ElectionMembershipPersistenceTest extends TestCase
     {
         parent::setUp();
 
-        $this->organisation = Organisation::factory()->create();
+        // Election-only mode, which is what this fixture has always expressed: the
+        // setUp below registers voters in `organisation_users` and creates no member
+        // records. The factory defaults to uses_full_membership => true, so
+        // VoterSourceStrategy::fromOrganisation() resolved to MembershipRegistry and
+        // eligibility correctly demanded an active member with paid/exempt fees —
+        // rejecting every assignment. The mode is stated explicitly here rather than
+        // inherited from a factory default. (PBDIGIT-48 estate assessment)
+        $this->organisation = Organisation::factory()->create(['uses_full_membership' => false]);
         $this->election = Election::factory()->create(['organisation_id' => $this->organisation->id]);
         $this->user = User::factory()->create();
         $this->assignedBy = User::factory()->create();
