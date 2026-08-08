@@ -321,3 +321,72 @@ $freshElection->validateTransitionRules($transition);
 **Status: Relationship 4 is INCOMPLETE/CORRECTED — treat as a corrected hypothesis, not as evidence. Relationships established: 3 (Membership · Security · HTTP). Outstanding: 3 — Services/lifecycle (re-open), Models → persistence, Demo.**
 
 **Methodological rule, now fifth occurrence:** *never infer decision ownership from the first class or method encountered in the call path — trace the decision itself.* Applied "caller ≠ owner" to the controller and then failed to apply it to the model.
+
+#### 4 (RE-OPENED) · Application guard vs Domain validation — **ESTABLISHED, and they overlap**
+
+**The corrected hypothesis is now measured.** The three questions left open — *what does the guard decide, what does `validateTransitionRules()` decide, do they overlap* — are answered from the code, not inferred.
+
+**Execution order (`Election::transitionTo`, `app/Models/Election.php:1614`):**
+
+```
+:1641  getTargetStateForAction()            Domain — what state does this action target?
+:1649  if (!$transition->isSystemTriggered())
+:1650      $guard->assertAllowed(...)        Application — CONDITIONAL
+:1655  $freshElection->validateTransitionRules()   Domain — ALWAYS
+```
+
+**Each mechanism's decision:**
+
+| | `ConstitutionalTransitionGuard` (Application) | `validateTransitionRules()` (Domain model) |
+|---|---|---|
+| Runs | **only when NOT system-triggered** (`:1649`) | **always** |
+| Decides | action exists · action legal **in this state** · **actor holds a required role** · declared preconditions met | per-action **readiness of this election's own data**, dispatched by naming convention (`open_voting` → `validateOpenVoting`) |
+| Rule content owned by | `ElectionConstitution` — the guard owns **no rule**; its own contribution is **actor identity** (`Auth::user()`) | the **model**, in hand-written methods (`whyCannotOpenVoting()` …) |
+| Failure | `InvalidTransitionException` | `\DomainException` / `\InvalidArgumentException` |
+
+> **The guard answers "is this action constitutionally legal for this actor from this state?" The model answers "is this election's data ready?" Those are different questions — but their *answers* are not disjoint.**
+
+##### 🔴 Finding 4a — two mechanisms enforce the same rules, with different exceptions
+
+`ElectionConstitution::RULES['open_voting']['preconditions'] = ['voting_window_defined', 'timezone_set']`, and `whyCannotOpenVoting()` checks **both again**:
+
+| Business rule | Guard | Model |
+|---|---|---|
+| Timezone set | `'timezone_set' => !empty($election->timezone)` | `if (!$this->timezone) return 'Timezone must be set…'` |
+| Voting window defined | `voting_starts_at !== null && voting_ends_at !== null` | `if (!$this->voting_starts_at \|\| !$this->voting_ends_at)` |
+
+**Consequence for the matrix:** for a non-system `open_voting`, the guard runs first, so **the model's duplicate checks are unreachable** — and a test asserting `DomainException` for a missing timezone would be asserting a branch that cannot execute on that path. **Exception type silently binds a test to a mechanism.**
+
+##### 🔴 Finding 4b — the constitution does not hold all preconditions
+
+`whyCannotOpenVoting()` enforces **three rules the constitution never declares**: `nomination_completed`, `candidates_count === 0`, `pending_candidacies_count > 0`.
+
+> **`ElectionConstitution::RULES[...]['preconditions']` is not the complete set of preconditions for an action.** A reader treating it as authoritative would be wrong.
+
+Note also a **data-source divergence** on the same concept: the guard's `has_approved_candidates` **queries** `candidacies` where status = approved; the model uses the **counter columns** `candidates_count` / `pending_candidacies_count`. **If a counter is stale the two mechanisms disagree** — recorded, not investigated.
+
+##### 🔴 Finding 4c — system-triggered transitions bypass constitutional validation entirely
+
+`if (!$transition->isSystemTriggered())` means a system transition receives **no state-legality check, no role check and no constitutional-precondition check**. Only the model's data-readiness rules apply.
+
+**Whether that is correct is a business question, not a Slice 1 verdict** — system actions may legitimately be trusted. **What is established is that two different validation regimes exist depending on the trigger**, and `ConstitutionalTransitionGuardSystemRoleBypassTest` exists, so the behaviour is deliberate rather than accidental.
+
+##### Tests that exercise each — the classification input
+
+| Mechanism | Tests |
+|---|---|
+| **Guard** (Application) | `Unit/Application/Election/ConstitutionalTransitionGuardTest` · `…GuardPreconditionsTest` · `…GuardSystemRoleBypassTest` · `Feature/Election/ElectionTransitionToMethodTest` · `Feature/Election/VotingButtonsStateMachineTest` |
+| **Model validation** (Domain) | `Feature/ElectionStateMachineTest` · `Feature/Election/StateMachineTransitionAuditTest` · `Feature/Election/VoterImportStateGateTest` · `Feature/Election/ConstitutionalVotingProtectionTest` · `Feature/Console/ProcessElectionAutoTransitionsTest` |
+| **Constitution as data** | `Unit/Domain/Election/ElectionConstitutionTest` · `Unit/Application/Election/LifecycleCapabilityBaselinePolicyTest` · `Feature/Election/StateMachine/CurrentBehaviorTest` |
+
+**Ownership consequence:** a lifecycle test's `Business Decision Ownership` **cannot be read from its directory**. `tests/Unit/Application/…GuardPreconditionsTest` verifies preconditions whose **content is Domain-owned** (`ElectionConstitution`) through an **Application mechanism**. **Owner and mechanism are separate columns, and this is the clearest case so far.**
+
+##### What remains NOT established
+
+* Whether any test asserts the **unreachable** model-side duplicate (4a) — that requires reading the tests, which is Step 2.
+* Whether the counter columns ever go stale in practice (4b).
+* Whether the system bypass (4c) is exercised by any path other than `ProcessElectionAutoTransitions`.
+
+**Recorded, not repaired. No code, test or fixture changed.**
+
+**Status: Relationship 4 ESTABLISHED (re-opened and completed). Relationships established: 4 (Membership · Security · HTTP · Services/lifecycle). Outstanding: 2 — Models → persistence of authoritative decisions · Demo (`PBDIGIT-59`-adjacent).**
