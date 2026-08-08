@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Election;
 
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use App\Models\Election;
 use App\Models\ElectionOfficer;
 use App\Models\Member;
@@ -151,7 +152,14 @@ class ElectionOnlyModeTest extends TestCase
         // Election-only mode: user should still be eligible
         // This will fail until VoterEligibilityService is implemented
         $eligible = app(\App\Services\VoterEligibilityService::class)
-            ->isEligibleVoter($this->electionOnlyOrg, $this->user1);
+            // The mode is passed from the election context, never derived inside the
+            // service — see VoterEligibilityService::isEligibleVoter(). These call
+            // sites predate that third parameter. (PBDIGIT-48 estate triage)
+            ->isEligibleVoter(
+                $this->electionOnlyOrg,
+                $this->user1,
+                VoterSourceStrategy::fromOrganisation($this->electionOnlyOrg)
+            );
 
         $this->assertTrue($eligible, 'User without Member record should be eligible in election-only mode');
     }
@@ -167,7 +175,11 @@ class ElectionOnlyModeTest extends TestCase
 
         // Full membership mode: user should NOT be eligible
         $eligible = app(\App\Services\VoterEligibilityService::class)
-            ->isEligibleVoter($this->fullMembershipOrg, $user);
+            ->isEligibleVoter(
+                $this->fullMembershipOrg,
+                $user,
+                VoterSourceStrategy::fromOrganisation($this->fullMembershipOrg)
+            );
 
         $this->assertFalse($eligible, 'User without Member record should NOT be eligible in full membership mode');
     }
@@ -196,7 +208,11 @@ class ElectionOnlyModeTest extends TestCase
 
         // Should be eligible
         $eligible = app(\App\Services\VoterEligibilityService::class)
-            ->isEligibleVoter($this->fullMembershipOrg, $user);
+            ->isEligibleVoter(
+                $this->fullMembershipOrg,
+                $user,
+                VoterSourceStrategy::fromOrganisation($this->fullMembershipOrg)
+            );
 
         $this->assertTrue($eligible, 'User with active Member and exempt fees should be eligible in full membership mode');
     }
