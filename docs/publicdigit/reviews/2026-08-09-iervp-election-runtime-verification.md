@@ -130,3 +130,86 @@ Status                                                  STOPPED — awaiting Pro
 ---
 
 **Traceability:** `.claude/sessions/2026-08-08.md` (full runtime narrative) · `PBDIGIT-64` · `PBDIGIT-65` · `PBDIGIT-66` · companion constitutional review + appendices 1–4 · `app/Application/Election/Services/ElectionLifecycleEngineImpl.php:99-107` · `app/Http/Controllers/ElectionVotingController.php:98-185` · `app/Http/Controllers/VoteController.php:172-176,1977-1981` · `app/Traits/BelongsToTenant.php:44-60` · PostgreSQL unique indexes on `votes`, `codes`, `voter_slugs`, `election_memberships`.
+
+---
+
+# Appendix A — Part B: how a voting credential is initially armed (read-only, 2026-08-09)
+
+**The single question everything downstream hung on:** *how does an entitled voter first get `codes.can_vote_now = true`?* **Answered. No code changed, no vote cast, no runtime data created.**
+
+## The answer
+
+**`CodeController::markCodeAsVerified()` (`:910-920`) is the sole authoritative arming write:**
+
+```php
+$code->update([
+    'can_vote_now'                       => true,
+    'is_code_to_open_voting_form_usable' => two_codes_system ? false : true,
+    'code_to_open_voting_form_used_at'   => now(),
+    'client_ip'                          => $this->clientIP,
+]);
+```
+
+**It is reached only by successfully verifying the emailed code**, and the caller guards it twice, in this order (`:288-300`):
+
+1. **already-voted check** → *"You have already voted in this election. Each voter can only vote once."*
+2. **already-verified check** → `if ($code->can_vote_now === true) return handleAlreadyVerified(...)`
+3. then, and only then, `verifyCode()` → `markCodeAsVerified()`
+
+## Writer/reader matrix — `can_vote_now` on each table
+
+| Table | Writers (production, non-demo) | Read by |
+|---|---|---|
+| **`codes`** | **`CodeController::markCodeAsVerified():916`** — *the arming event* · `CodeController:167` — regeneration, **preserves** the prior value and is gated on `!$code->has_voted` · `VoteController::markUserAsVoted():1978` — sets **false** (exhaustion) | **`VoteController:172-176`** — the credential guard · `ElectionProcessController` / `EndVotingPeriod` — counting only |
+| **`voter_slugs`** | **`ElectionVotingController::start():167`** — session re-arm | slug/session flow |
+
+> **They are different columns on different tables and only one of them gates voting.** `start()` writes the slug's; the vote guard reads the code's. **That is why credential re-arming is impossible via `start()`** (Appendix 4 / classification **A**).
+
+## Part C — the business event that grants the ability to vote
+
+**`OBSERVED IN CODE`:**
+
+> **Voter import does NOT grant the ability to vote. Neither does entitlement, nor the voting window opening. The credential is armed by one event only: *the voter successfully verifying the code sent to them*.**
+
+**Decision ownership:**
+
+| | |
+|---|---|
+| **Business meaning** | *"This person has proved possession of the credential issued to them for this election."* |
+| **Decision owner** | **Application** (`CodeController`), on evidence the **voter** supplies |
+| **Authoritative representation** | **`codes.can_vote_now`** |
+| **Enforcement** | `VoteController:172-176`, server-side, scoped `(user_id, election_id)` |
+| **Constitutional status** | **ABSENT** — the constitution defines no credential, verification or arming event |
+
+**This closes the loop opened in Appendix 4:** *how a second vote is prevented* was known; **how a first becomes possible is now known too.** Entitlement (`ElectionMembership`) and ability-to-vote (`codes.can_vote_now`) are **separate decisions with separate owners and separate triggers** — a third confirmation that the product does not fuse these concerns.
+
+## The Voting Right Lifecycle — as the implementation actually defines it
+
+| Step | Authority | Enforced by |
+|---|---|---|
+| Voter provisioned | `VoterImportService::importElectionOnly` | Application |
+| **Entitlement established** | **`ElectionMembership{role, status}`** | `ElectionVotingController::start():106-113` |
+| Session opened | `VoterSlug` (re-armable) | `start():155-185` |
+| **Credential armed** | **`codes.can_vote_now`** ← **code verification** | `CodeController::markCodeAsVerified()` |
+| Window open | computed lifecycle projection | `start():122` — **and `PBDIGIT-64` shows the clock alone can set this** |
+| Ballot accessed | credential guard | `VoteController:172-176` |
+| **Vote exercised** | anonymous `votes` row (**no `user_id`**) | vote persistence |
+| **Credential exhausted** | `markUserAsVoted()` → `can_vote_now = false` | `VoteController:1978` |
+| **Second vote prohibited** | `codes UNIQUE(election_id,user_id)` + exhaustion | guard + DB |
+| Closed / counted | `close_voting` | **`NOT VERIFIED`** |
+
+**Every row is `OBSERVED IN CODE`. None is `OBSERVED AT RUNTIME` beyond the lifecycle steps already executed** — **no vote was cast in this programme.**
+
+## Explicitly NOT done from this commission
+
+**Parts D–I (the controlled five-voter runtime experiment), Part J, K, L and the full Part M report were not performed.** Reason: **session context exhaustion, not evidence**. **No fresh election was created, no voter voted, no anonymity inspection of persisted ballots, no results verification.** All remain `NOT VERIFIED`.
+
+**Recommended next step, unchanged:** Parts D–I as written, now unblocked — **the credential-arming mechanism they depended on is established, so a runtime run can verify each of the ten lifecycle rows above rather than discover them.**
+
+```
+Code / tests / fixtures / config changed   none
+Runtime data created                       none
+Votes cast                                 none
+Test suite                                 NOT RUN
+Status                                     STOPPED — Parts D-M outstanding
+```
