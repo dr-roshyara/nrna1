@@ -181,3 +181,28 @@ Developer guides for `developer_guide/http/` and `developer_guide/models/` — p
 
 **SLICE 1 STEP 1 COMPLETE — SCOPE DECISION REQUIRED BEFORE MATRIX CONSTRUCTION.**
 **Slice 1 is NOT complete.** No matrix rows have been produced. No code, test or fixture changed.
+
+### SCOPE DEFINITION — mechanical pre-filter only (2026-08-08)
+
+**This is NOT a scope classification.** It is a signal-strength pre-filter to make the ~491-file inventory tractable. **No file has been placed in categories A–E**, and directory names were not used as criteria.
+
+| Signal | Files |
+|---|---|
+| References `election` (population) | **491** |
+| Constructs an Election (`Election::factory` / `::create`) | **220** |
+| Touches `ElectionOfficer` / `ElectionMembership` | **68** |
+| **Touches `ElectionLifecycle` — the authority** | **61** |
+| Touches `VoterSourceStrategy` / `VoterEligibility` | **21** |
+| **Never touches the Election model or lifecycle at all** | **197** |
+
+#### ⚠️ How this must NOT be used
+
+**"Never touches the Election model" ≠ excluded.** A test can exercise an Election business decision entirely through HTTP, a controller, a policy or a service without naming the model — the `ElectionGracePeriodUITest` 403 and the `VoterImportController` phase rule are both of that shape. **Category D requires evidence of incidental reference, not absence of a class name.**
+
+**"Touches `ElectionLifecycle`" ≠ constitutional core.** A test may reference the authority only to build a fixture.
+
+**Legitimate use:** allocating investigation effort — the 61 lifecycle-touching and 21 eligibility-touching files are the densest place to *start* evidence-gathering, not the answer to where the boundary lies.
+
+**Cross-context relationships still to be established** (the Product Owner's named examples): Membership → voter eligibility · Security → voter/ballot integrity · Application services → lifecycle operations · Models → persistence of authoritative decisions · HTTP → enforcement vs projection.
+
+**Status: SCOPE DEFINITION STARTED — pre-filter only. Categories A–E not assigned. No scope decision made or implied.**
