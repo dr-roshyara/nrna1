@@ -34,12 +34,12 @@ This is the **first segment of the Level 0 customer journey**. Everything downst
 **Four separate facts, deliberately not compressed into one verdict** — because this ticket exists to keep three different questions apart:
 
 ```
-1. Does the business capability exist?        -- creation yes; its rules are open (D-1..D-5)
+1. Does the business capability exist?        -- creation yes; its rules are open (D-1..D-6)
 2. Does the implementation realize it?        -- statically wired; NOT VERIFIED at runtime
 3. Can the verification estate be trusted?    -- six assertions drifted; suite-level UNDETERMINED
 ```
 
-**Each part of this ticket answers exactly one of them: Part A answers 2, Part B answers 3, and D-1…D-5 answer 1.** Collapsing them is what produced this ticket's withdrawn first framing.
+**Each part of this ticket answers exactly one of them: Part A answers 2, Part B answers 3, and D-1…D-6 answer 1.** Collapsing them is what produced this ticket's withdrawn first framing.
 
 | Claim | Status |
 |---|---|
@@ -54,7 +54,7 @@ This is the **first segment of the Level 0 customer journey**. Everything downst
 ## Verified findings
 
 * **F-1** Six assertions in `OrganisationCreation{,Integration}Test.php` diverge from `store()`/`show()` — each pinned to a `file:line` pair on both sides. **Classified as drift; no verdict on which side is correct.**
-* **F-2** `store()` writes the session cookie and CSRF token to `laravel.log` on every attempt (`OrganisationController.php:282-288`). **A defect against a named, pre-existing invariant** (`PBDIGIT-37`; *never log credentials*) — not merely a difference between routes.
+* **F-2** `store()` writes the session cookie and CSRF token to `laravel.log` on every attempt (`OrganisationController.php:282-288`). **The write is certain. Its classification is not** — see `D-6`. *(This was first recorded as "a defect against a named, pre-existing invariant"; **withdrawn** — `PBDIGIT-37` concerns credentials in tracked files and never mentions logging, and the *"never log credentials"* rule came from the operator's private AI-instruction file, not from a PublicDigit contract. **No repository-wide logging policy was found.**)*
 * **F-3** The raw exception message is shown to the customer on failure (`:387`).
 * **F-7** `show():74-113` re-resolves the organisation, re-checks membership and re-sets the session — all already done by `ensure.organisation`; that controller branch is unreachable over HTTP.
 
@@ -99,11 +99,13 @@ Classify each as: `VALID` · `OBSOLETE` · `CONTRACT DRIFT` · `FIXTURE DRIFT` �
 
 Scope is whatever Part B's classification and the business decisions below justify — **and no more.** A test asserting a capability the product genuinely dropped may be the last surviving record that the capability existed; **deleting it to make a suite green destroys evidence.**
 
-## Part D — Independent hygiene defects *(separable from all of the above)*
+## Part D — Independent observations *(separable from A–C; **not** a pre-authorised repair list)*
 
-* [ ] **F-2** — session cookie and CSRF token in `laravel.log`. **Proceeds on its own evidence; it does not wait for Part A.**
-* [ ] **F-3** — raw exception text shown to the customer.
-* [ ] **F-7** — duplicated, partly unreachable guard in `show()`.
+**Renamed from "hygiene defects".** Two of the three cannot be called defects yet, for the same reason `F-6` could not be called `MISSING`: **no established obligation exists to be in breach of.**
+
+* [ ] **F-2** — session cookie and CSRF token in `laravel.log`. **Blocked on `D-6`**, not independent. *(Previously listed here as "proceeds on its own evidence" — withdrawn with its invariant.)*
+* [ ] **F-3** — raw exception text shown to the customer. **Is there an established expectation about what a customer sees on failure?** None was searched for. `UNDETERMINED`.
+* [ ] **F-7** — duplicated, partly unreachable guard in `show()`. **The only item here needing no business contract:** the controller's non-member branch is unreachable over HTTP because middleware already rejected the request — that is a statement about control flow, not about what the product ought to do.
 
 ---
 
@@ -118,6 +120,7 @@ Each names **the layer that owns the answer**, not the file that would change.
 | **D-3** | Must the platform record **who created** an organisation? | **Domain** | `created_by` exists with a relation and no writer. Yes → an invariant to enforce; no → remove the column and relation |
 | **D-4** | Which definition of a valid organisation is authoritative — `StoreOrganisationRequest` (unused, 193 lines) or the inline rules? | **Domain** (rules) · **Application** (enforcement) | Choosing the more elaborate file *because* it is more elaborate would be an engineer silently setting product rules |
 | **D-5** | Were **address capture** and **representative invitation** withdrawn deliberately, or lost? | **Product** | Decides whether those tests are obsolete records or evidence of lost capability |
+| **D-6** | **Does PublicDigit have a policy on secrets and session material in application logs?** | **Policy / Governance** | **None was found anywhere in the repository.** Until one exists, `F-2` is an observed condition with no obligation to breach. **Engineering inventing the policy — however obviously sensible — is engineering setting security policy** |
 
 ---
 
@@ -131,31 +134,37 @@ Each names **the layer that owns the answer**, not the file that would change.
 * [ ] **A person entering an organisation sees only that organisation's information** — tenant context follows them from creation onward.
 * [ ] **For every business outcome above, the platform detects a regression before a customer does** — and the evidence for that claim is a classification, not a count of test files.
 * [ ] **No credential or session material is written to application logs** during any of it.
-* [ ] **Every decision D-1…D-5 is answered by its owner**, and the answer is recorded where the next reader will find it.
+* [ ] **Every decision D-1…D-6 is answered by its owner**, and the answer is recorded where the next reader will find it.
 
 ## Explicit non-goals
 
 * **Not** making any test suite green.
 * **Not** repairing, rewriting or deleting tests — Part C is unauthorised and unspecifiable until Part B runs.
 * **Not** deciding which side of any divergence is correct from code alone.
-* **Not** implementing D-1…D-5.
+* **Not** implementing D-1…D-6.
 * **Not** re-opening the organisation governance lifecycle (**G-1…G-4**) — referenced only, and the reason the new homepage shows its owner nothing about governance.
 * **Not** refactoring `store()` (**G-9**), the route-binding styles (**G-8**), or the event with no listeners (**G-5**).
 
 ## Dependencies
 
 * **Part A needs a runtime environment** — browser + provisioned PostgreSQL. Its absence is the same limitation recorded at PB003 certification, `PBDIGIT-29`, and the 2026-08-06 capability review.
-* **Part B depends on Part A.** **Part C depends on Part B *and* on D-1…D-5.** **Part D depends on nothing.**
+* **Part B depends on Part A.** **Part C depends on Part B *and* on D-1…D-6.** **Part D is no longer independent: F-2 waits on D-6, F-3 on an expectation nobody has stated; only F-7 stands alone.**
 
 ## Authorization status
 
 ```
-Authorised now      nothing beyond Part D (independent hygiene defects)
+Authorised now      F-7 only — and only because it needs no business contract
+                    (a controller branch unreachable behind middleware is a
+                    control-flow fact, not a claim about what the product owes)
 Awaiting            Part A — a runtime environment and authorisation to use it
                     Part B — follows A
-                    Part C — NOT SPECIFIABLE until B and D-1..D-5 complete
+                    Part C — NOT SPECIFIABLE until B and D-1..D-6 complete
+                    F-2    — blocked on D-6 (no logging policy exists to breach)
+                    F-3    — no stated expectation was found; UNDETERMINED
 Code changed so far none
 ```
+
+**This block shrank on 2026-08-08 rather than grew, and that is the honest direction.** It previously authorised all of Part D as *"independent hygiene defects"*. **Two of the three were not defects — they were differences with no established obligation behind them.**
 
 ## Related
 

@@ -155,10 +155,22 @@ Facts first, reading of them second. Class per the frozen method: **BROKEN** = e
 
 **Observed fact** `OBSERVED IN CODE`: `store()` logs `$request->all()` **and** `$request->headers->all()` at `info` level before doing anything (`OrganisationController.php:282-288`). The `Cookie` header carries the session id and the CSRF token, so both reach `laravel.log` on every submission, valid or not.
 
-**The invariant this rests on, stated rather than assumed:** *credentials and session material must not be written to application logs.* **This is not invented for this report** — the repository already acts on it (`PBDIGIT-37`, committed-test-credential hygiene) and the operating instructions state it directly (*never log raw API keys*). **Because a named invariant exists, this is a defect against it and not merely a difference between two routes.**
+> ⚠️ **Fourth correction (2026-08-08).** This finding was classified **a defect against a named, pre-existing invariant**, citing `PBDIGIT-37` and a *"never log credentials"* rule. **That classification is withdrawn — the invariant was imported, not found.**
+>
+> | What was cited | What it actually is |
+> |---|---|
+> | `PBDIGIT-37` | **Never mentions logging.** It concerns credentials committed to **tracked files** and version control — a *different* invariant that happens to share the word "credential" |
+> | *"never log raw API keys"* | A line in the **operator's private global AI-assistant instruction file**. **That is not a PublicDigit business or security contract**, and treating it as one imports an obligation the product never adopted |
+> | A repository-wide search for a logging-secrets policy | **Found none.** The nearest artifacts are `EvidenceContext_00.md:554-558` (*"do NOT log routes/controllers/requests"* — a scoping rule for the Evidence context, not a security invariant) and `EvidenceContextDecisionOwnership.md` **D5**, which lists *"what redaction is required"* as an **open, unowned decision**. A documented `Log::debug` of cookie state also exists in `TRANSLATION_ARCHITECTURE.md:999` |
+>
+> **This is the report's own rule turned on its own strongest security claim:** *a business obligation must exist before its absence can be called a defect.* **No such obligation is established in this repository.**
 
-**What is NOT established:** log retention, who can read `laravel.log` in production, and therefore the realised exposure. `MECHANISM NOT ESTABLISHED` for impact; the write itself is certain.
-**Class:** INCONSISTENT (debug logging left in production code) · **Type:** Technical (hygiene) · **Priority:** Medium-High · **Confidence:** High *for the write*, `UNDETERMINED` for the exposure.
+**Corrected statement.** `OBSERVED SECURITY CONDITION` — the write is certain: session cookie and CSRF token reach `laravel.log` on every submission. **`SECURITY INVARIANT NOT ESTABLISHED`** — no PublicDigit contract states that they must not. **Whether this is a defect is `BUSINESS / GOVERNANCE DECISION REQUIRED` (`D-6`).**
+
+**Worth naming without overstating it:** *that a platform running elections has no stated policy on session material in application logs* is itself a finding — **but it is a governance gap, not a defect**, and this report does not upgrade it.
+
+**What remains NOT established either way:** log retention, who can read `laravel.log` in production, and therefore any realised exposure. `MECHANISM NOT ESTABLISHED`.
+**Class:** ⛔ **not classifiable until `D-6`** · **Type:** Technical observation + governance gap · **Confidence:** High *for the write*; **no severity asserted.**
 
 ### F-3 The customer is shown the raw exception message
 
@@ -234,6 +246,7 @@ Governance permanently `pending_setup` (**G-1…G-3**) — and consistent with *
 | **F-5** | May an unverified e-mail address create an organisation and enter it? | **Policy / Authorization** | Both boundaries are coherent products; no repository source settles it |
 | **F-6** | Must the platform record who created an organisation? | **Domain** (is creator provenance a business fact the organisation carries?) | If yes it is an invariant; if no, the column and relation should go — opposite outcomes from the same evidence |
 | **F-4** | Which definition of a valid organisation is authoritative? | **Domain** (the rules) · **Application** (where they are enforced) | Choosing the stricter file because it is more elaborate would be an engineer silently setting product rules |
+| **F-2 → `D-6`** | **Does PublicDigit have a policy on secrets and session material in application logs?** | **Policy / Governance** | **No such policy was found anywhere in the repository.** Until one exists there is no obligation to be in breach of — and engineering inventing one, however obviously sensible, is engineering setting security policy |
 | **F-1 row 2** | Which role does a creator hold — `owner` or `admin`? | **Domain / Policy** | The tests and the code disagree; the *name* carries a permissions meaning |
 | **F-1 rows 4-5** | Were address capture and representative invitation withdrawn deliberately? | **Product** | Determines whether those tests are obsolete records or evidence of lost capability |
 

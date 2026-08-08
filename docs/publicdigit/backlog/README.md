@@ -301,6 +301,22 @@ Proposed by the Product Owner at the review of the organisation-creation journey
 
 **Also parked, and noted rather than acted on:** the method's own Capability Verdict vocabulary includes **`Ready for verification`**, which `C-13` shows is itself a **normative** label — *ready* asserts nothing further is required. The 2026-08-08 report withdrew it as *its own* verdict and replaced it with four factual clauses, **but the method's vocabulary at *Capability Verdict* above is untouched**: changing adopted method vocabulary is governance, not engineering. **Retrospective candidate.**
 
+### 🔴 `OQ-M2` — the three-question separation is simultaneously "a permanent programme principle" and on the do-not-adopt list
+
+At the 2026-08-08 review the Product Owner wrote of `C-17`: *"I would make this a permanent programme principle. It is more fundamental than any particular taxonomy."* **The same message's commission §1 lists `C-17` among the candidates not to be silently adopted.**
+
+**Engineering will not resolve this either — it is the same class of question as `OQ-M1`.** What engineering *has* done needs no adoption: the distinction is **used descriptively** in the 2026-08-08 report and in `PBDIGIT-63` to state findings more precisely. **Using an analytical distinction to make a weaker, truer claim is always permitted; declaring it a permanent programme principle is a governance act and requires one explicit sentence.** *"I would"* is an intention; it is not read as ratification.
+
+### 📌 The governing rule this review produced, recorded verbatim
+
+> **A technically observable difference is not yet a business defect. A business obligation must exist before its absence can be called a defect.**
+
+**Applied to itself the same day, it withdrew four of this report's own classifications:** `Ready for verification` (readiness is normative), `F-6 MISSING` (completeness is normative), **`F-2` as a security defect** (the invariant cited turned out to be `PBDIGIT-37`, which concerns credentials in *tracked files* and never mentions logging, plus a line from the operator's *private* AI-instruction file — **not a PublicDigit contract**), and **Part D as a pre-authorised repair list** (two of its three items had no obligation behind them). **`D-6` now asks whether the platform has any policy on secrets in application logs. None was found.**
+
+### ⚠️ A practical cost of `OQ-2` is now visible
+
+**Four commission drafts were produced on 2026-08-08.** Because `doc-placement.php --scope=cross-product --maturity=research` returns **unruled (`OQ-2`)**, each operative draft has been parked verbatim in the **append-only** session log. **That log now carries two full commissions and will carry more.** This is a workaround, not a home: **the placement question has moved from theoretical to costly, and ruling `OQ-2` would let successive drafts supersede one another in one artifact instead of accumulating.** Recorded as evidence for that ruling; **no folder was invented in the meantime.**
+
 **Three of these (C-8, C-9, C-11) were partially exercised in the 2026-08-08 correction — and that is not adoption.** They were used only in the *claim-weakening* direction the existing rules already require (*"the strongest statement made must never exceed the strength of the available evidence"*). **No new phase, section or mandatory artifact was added.** Adopting a weaker claim is always permitted; adding machinery is what the gate governs.
 
 **Placement of the full commission text is `PENDING`** — `php scripts/doc-placement.php --scope=cross-product --maturity=research` returns *unruled, ref `ADR:OQ-2`*, the same open question this README already records. **Escalated, not guessed at.**
