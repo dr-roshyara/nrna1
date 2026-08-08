@@ -642,3 +642,33 @@ WHY                 "complete" presupposes a contract stating which
 **Also surfaced, not investigated: `BD-7` (candidate)** — which store defines committee membership, `election_officers` or `election_memberships`?
 
 **Status: SLICE 1 STEP 2 NOT STARTED — BLOCKED ON SD-1 AND SD-2. Schema and calibration delivered. No matrix rows beyond the two calibration rows. No test executed, no code, test or fixture changed. BD-1…BD-6 untouched.**
+
+---
+
+### ⛔ TWO PROGRAMME INVARIANTS — added 2026-08-08 after the Step 2 review
+
+#### 1 · Blockers are `PROGRAMME` or `SUBSET`, and a subset blocker names its subset
+
+**`BD-1` was recorded as *"should precede Step 2"*, which reads as a programme blocker. It is not one on present evidence.** It changes how **history/audit tests** are classified; **nothing establishes that rows outside that subset depend on it.**
+
+> **Do not convert *"important decision"* into *"global blocker"* without proof.** It is the same error class as promoting coverage to completeness, and it has the same effect: **it stops work that the evidence does not require stopping.**
+
+**If `BD-1` is to gate matrix construction, the dependency must be demonstrated first:** *which tests actually depend on the meaning of `election_state_transitions`?* **That dependency analysis is itself evidence** — and it is cheap, because Relationship 5 already found the candidate set (`StateMachineTransitionAuditTest`, `ElectionStateTransitionMigrationTest`, `CapacityApprovalTest`).
+
+**Current classification:**
+
+| Blocker | Class |
+|---|---|
+| **`SD-1`** scope · **`SD-2`** evidence depth | 🔴 **PROGRAMME** — both gate Step 2 in full |
+| **`BD-1`** | **SUBSET** — history/audit tests, pending a dependency analysis |
+| `BD-2` · `BD-3` · `BD-4` · `BD-5` · `BD-6` · `BD-7` | **SUBSET** or **not yet classified** — none demonstrated to gate the programme |
+
+#### 2 · Never report the scope of the programme as the scope of the current evidence
+
+**Every report and handover states what was *actually examined*, never what the programme *covers*.**
+
+**The precedent this prevents:** the `146 → 105` failure trajectory described **826 tests in five suites** and was carried through the programme in language that could be read as the Election estate — which is **~3,688 tests across ~491 files**, roughly 4.5× larger. **A subset's numbers quoted without their denominator become the whole estate's numbers within two hand-offs.**
+
+**Applied form:** *"Scope actually examined: three relationship investigations plus one 136-line test file — **not** 826 and **not** ~3,688."*
+
+**These two rules are recorded here and nowhere else.** Per the Product Owner's direction, **no further methodology layer is to be added unless a concrete problem arises that the existing rules cannot handle.**

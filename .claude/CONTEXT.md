@@ -2477,6 +2477,12 @@ Both sit at ES-006.1 rung **observation**, both record `PLACEMENT: PENDING` (ADR
 * **R5** — `elections.state` is a **cache**; the authority derives from business facts and never reads it. **Two production paths write it outside `transitionTo()`** (`ActivateElectionCommand`, `BackfillElectionState`). **`election_state_transitions` has no production reader.**
 * **R6** — demo **does** change business decisions, all of it Interface-layer; the **lifecycle is demo-agnostic**, so demo fixtures are faithful substitutes for lifecycle verification and **not** for the four capability behaviours.
 
-**Open business decisions — engineering must not take them:** `BD-1` (is the transition log constitutional audit evidence? **should precede Step 2**) · `BD-2` · `BD-3` · `BD-4` (is the demo votes-per-IP exemption constitutional?) · `BD-5` (is *demo* a domain concept or interface concern?) · `BD-6` · `BD-7` candidate (which store defines committee membership?).
+**Open business decisions — engineering must not take them:** `BD-1` (is the transition log constitutional audit evidence?) · `BD-2` · `BD-3` · `BD-4` (is the demo votes-per-IP exemption constitutional?) · `BD-5` (is *demo* a domain concept or interface concern?) · `BD-6` · `BD-7` candidate (which store defines committee membership?).
+
+**⚠️ Blocker taxonomy — `BD-1` was overstated here and is corrected.** An earlier version of this entry said `BD-1` *"should precede Step 2"*, which reads as a **programme blocker**. **It is a SUBSET blocker on present evidence:** it changes how **history/audit tests** are classified, and **no evidence establishes that rows outside that subset depend on it.**
+
+> **Every blocker must be recorded as `PROGRAMME BLOCKER` or `SUBSET BLOCKER`, and a subset blocker must name its subset.** Promoting *"important decision"* to *"global blocker"* without proof is the same error class as promoting coverage to completeness. **If BD-1 is to gate the matrix, the dependency must first be demonstrated: which tests actually depend on the meaning of `election_state_transitions`?**
+
+**Programme blockers (both unresolved):** `SD-1` scope · `SD-2` evidence depth. **These do gate Step 2 in full.**
 
 **Standing rules bound into the plan this session:** *coverage is descriptive, completeness is normative* · *business meaning precedes persistence meaning; persistence meaning precedes implementation judgement* · the permanent hierarchy with **implementation judgement last** · *never call a persisted record a decision/audit record from its shape*.
