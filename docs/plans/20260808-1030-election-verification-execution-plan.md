@@ -27,9 +27,34 @@ Turn the Full Discovery Plan into executable slices **without re-deriving what i
 
 ## Sequenced slices
 
-### Slice 1 — Master Matrix *(the plan's authorised next step; investigation only)*
-Inventory every Election test · map test → capability/state/invariant · mark coverage gaps · fold the existing cluster classifications in. **Output: one matrix document. No code, no fixes.**
-**Gate:** PO review before Slice 2.
+### Slice 1 — Master Matrix *(AUTHORISED; investigation only)*
+
+**Ordering is mandatory and must not be inverted:**
+
+```
+business invariant → domain meaning → authoritative authority → application capability
+→ application authorization → interface/HTTP entry → persistence → test
+```
+
+**Determine test *intent* before interpreting its *failure*.** Never start from a PHPUnit message and reason backwards into a business explanation.
+
+**Per-test mapping** — the 30 columns in the directive, plus one added by the Product Owner:
+
+> **`Business Decision Ownership`** — `Domain` · `Application` · `Policy/Authorization` · `Infrastructure` · `Interface/Projection` · `Unknown`.
+>
+> **Why it matters:** several mechanisms can answer *"can this happen?"* while owning entirely different responsibilities — lifecycle answers *what state*, capability answers *what is legitimate in that state*, policy answers *is this actor permitted*, the use case *executes*, persistence *stores*, the UI *projects*. **This column is the foundation for Slice 5**: it turns the legacy question from *"does this reference `status`?"* into *"does this code make a decision that belongs to the Election domain authority, or merely transport, persist or display it?"*
+
+**Non-equivalent legacy categories — never collapse:** field exists · fixture writes it · production reads it · **production decides from it** · persisted/displayed only · explicitly retained by decision.
+
+**Evidence discipline:** separate OBSERVED FACT · INTERPRETATION · HYPOTHESIS · CONCLUSION. Where a mechanism was not measured, write **"Mechanism not yet established."** **"Undetermined" is a preferred outcome over a forced classification.**
+
+**Carry forward, do not re-derive:** `PBDIGIT-48`, `ElectionCreationTest`, clusters 8c, 8d, 8a import-preview. Reference the evidence; reproducing the investigation destroys traceability.
+
+**Coverage is a business question**, not a test count: for each capability — allowed path · forbidden path · correct state · correct actor · **server-side enforcement** · negative case · persistence where it matters.
+
+**Cluster 6 is intentional migration evidence, not defects.**
+
+**Gate:** produce matrix, coverage summary, failure classification, legacy-observation register, architectural findings, gaps, open questions · run the 18-item self-audit · then state **"SLICE 1 COMPLETE — AWAITING PRODUCT OWNER REVIEW"** and stop.
 
 ### Slice 2 — Finish failure classification (~95 unclassified + GracePeriod)
 Evidence-first protocol, unchanged: intent → actual lifecycle state → trace → rejecting boundary → classify. **Repair only after classification.**
