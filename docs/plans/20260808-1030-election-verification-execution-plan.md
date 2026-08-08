@@ -227,3 +227,38 @@ Developer guides for `developer_guide/http/` and `developer_guide/models/` — p
 **Still to establish:** Application services → lifecycle operations · Models → persistence of authoritative decisions · HTTP → enforcement versus projection · Demo → whether demo semantics constitute Election business decisions (`PBDIGIT-59`-adjacent).
 
 **Status unchanged: SCOPE DEFINITION IN PROGRESS.** Categories A–E not assigned per file; no scope decision made.
+
+#### ⚠️ Correction to the previous entry (self-audit)
+
+The phrase *"60 files that directory-name reasoning would have wrongly excluded"* **overstated the finding**. What is established is a **relationship**, not a scope verdict. `FullMembershipPolicy` reading `feesStatus` proves Membership *participates* in an Election decision; it says nothing about whether any given Membership test *verifies* that participation.
+
+**The correct chain — and the guard against swinging from under- to over-inclusion:**
+
+```
+relationship established → identify which tests exercise that relationship → classify those tests
+```
+
+**NOT:** *context X relates to Election → all of context X's tests are in scope.*
+
+#### 3. HTTP → enforcement vs projection — ESTABLISHED, and the two are different owners
+
+`ElectionVotingController`:
+
+```php
+:51   $canVote = $isEligible && !$hasVoted && $lifecycle->canVote();   // PROJECTION
+:53   if (! $lifecycle->canVote()) { … }                              // ENFORCEMENT
+:123  if (! $lifecycle->canVote()) { … }                              // ENFORCEMENT
+```
+
+**The HTTP layer does both, and they are not the same decision.**
+
+| | Value | Owner |
+|---|---|---|
+| `$canVote` at `:51` | `isEligible && !hasVoted && lifecycle->canVote()` — a **three-input composition** | **Application** (composition), not Domain |
+| `lifecycle->canVote()` at `:53`/`:123` | the constitutional capability alone | **Domain** |
+
+> **The UI's `canVote` is not the lifecycle's `canVote()`.** A test asserting the projected flag verifies an *application composition*; a test asserting the guard verifies a *domain capability*. **Mapping both to `Domain` would erase the distinction the ownership column exists to capture** — and would hide that voter eligibility and already-voted status are folded in at the application layer.
+
+**Consequence for scope:** an HTTP test is in scope when it exercises enforcement or the composition; it is not in scope merely because it renders a page containing a capability flag.
+
+**Relationships: 3 established (Membership · Security · HTTP) · 3 outstanding** — Services → lifecycle operations · Models → persistence of authoritative decisions · Demo (`PBDIGIT-59`-adjacent).
