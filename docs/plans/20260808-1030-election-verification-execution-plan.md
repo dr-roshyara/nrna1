@@ -479,3 +479,29 @@ authority ──▶ derive from business facts   (never reads the cache)
 **Recorded, not repaired. No code, test or fixture changed.**
 
 **Status: Relationship 5 ESTABLISHED. Relationships established: 5 (Membership · Security · HTTP · Services/lifecycle · Models/persistence). Outstanding: 1 — Demo (`PBDIGIT-59`-adjacent).**
+
+#### 5 (CORRECTED) · Relationship 5 report issued — four claims withdrawn
+
+**Full report: [`docs/publicdigit/reviews/2026-08-08-relationship-5-models-to-persistence.md`](../publicdigit/reviews/2026-08-08-relationship-5-models-to-persistence.md).**
+
+**The interim entry above overstated four things. They are corrected in the report, and the corrections are the substance rather than footnotes:**
+
+| # | Withdrawn | Replaced by |
+|---|---|---|
+| **C-1** | `ElectionStateTransition` is *"the only durable record **of the decision**"* | an **immutable, attributed record of executed transition operations that nothing consumes** — *"decision"* is a business concept I named from the record's shape without establishing its meaning or a single reader |
+| **C-2** | *"state can change with **no decision**"* | **the evaluated lifecycle state changes because an authoritative business fact changed** — no decision is implied or missing |
+| **C-3** | current state and transition history treated as one authority | **four separate questions** (A current · B history · C executed transition · D evidence-of-decision), whose equivalence is not established |
+| **C-4** | *"setting `['state' => …]` primes the cache, not the truth"* as a general rule | **intent determines correctness** — persistence, compatibility and legacy-consumer tests legitimately arrange that column |
+
+**C-2 mattered most:** left standing it invites *"every lifecycle-state change must have a transition record"*, which would convert an approved **derived-state model** into a **state-machine persistence requirement**.
+
+**New evidence the report adds beyond the interim entry:**
+
+* **Two production paths write `elections.state` outside `transitionTo()`** — `ActivateElectionCommand:30` (no guard, no history) and `BackfillElectionState:67`. *(This answers an open item the interim entry left.)*
+* **`election_state_transitions` has no production reader** — every occurrence in `app/` is a creation, a return type, or its own immutability hook.
+* **Transition history is incomplete by construction:** `ActivateElectionCommand` transitions leave no record.
+* **Event emission is inconsistent between writers** of the same column (`updateQuietly` vs `update`) — recorded, **not** called a defect.
+
+**Three business decisions are raised, none taken** — chiefly **BD-1: is `election_state_transitions` intended as constitutional audit evidence?** The same fact means opposite things depending on the answer: if it is evidence, the missing records are a governance gap; if it is implementation history, they are harmless. **BD-1 should be answered before Step 2**, because it decides whether the audit tests verify a business invariant or an implementation detail.
+
+**Status: Relationship 5 COMPLETE. Relationships established: 5. Outstanding: 1 — Demo (`PBDIGIT-59`-adjacent). Awaiting Product Owner review; not proceeding to Relationship 6 or Step 2 automatically.**
