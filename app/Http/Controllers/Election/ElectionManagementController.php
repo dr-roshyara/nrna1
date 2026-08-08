@@ -140,10 +140,14 @@ class ElectionManagementController extends Controller
         $startDate = null;
         $endDate = null;
 
-        if ($validated['voting_starts_at']) {
+        // Both fields are `nullable` above, so Laravel omits them from $validated when
+        // they are not submitted — creating a draft election with no voting window is a
+        // valid business case. Direct array access raised "Undefined array key" and
+        // returned 500 before the election was ever persisted. (PBDIGIT-48)
+        if ($validated['voting_starts_at'] ?? null) {
             $startDate = Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_starts_at']);
         }
-        if ($validated['voting_ends_at']) {
+        if ($validated['voting_ends_at'] ?? null) {
             $endDate = Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_ends_at']);
         }
 
@@ -162,12 +166,12 @@ class ElectionManagementController extends Controller
             'end_date'        => $endDate,
             'expected_voter_count'          => $validated['expected_voter_count'],
             'timezone'                      => $validated['timezone'] ?? null,
-            'administration_suggested_start' => $validated['administration_suggested_start'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['administration_suggested_start'])->format('Y-m-d H:i:00') : null,
-            'administration_suggested_end'   => $validated['administration_suggested_end'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['administration_suggested_end'])->format('Y-m-d H:i:00') : null,
-            'nomination_suggested_start'     => $validated['nomination_suggested_start'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['nomination_suggested_start'])->format('Y-m-d H:i:00') : null,
-            'nomination_suggested_end'       => $validated['nomination_suggested_end'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['nomination_suggested_end'])->format('Y-m-d H:i:00') : null,
-            'voting_starts_at'               => $validated['voting_starts_at'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_starts_at'])->format('Y-m-d H:i:00') : null,
-            'voting_ends_at'                 => $validated['voting_ends_at'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_ends_at'])->format('Y-m-d H:i:00') : null,
+            'administration_suggested_start' => ($validated['administration_suggested_start'] ?? null) ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['administration_suggested_start'])->format('Y-m-d H:i:00') : null,
+            'administration_suggested_end'   => ($validated['administration_suggested_end'] ?? null) ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['administration_suggested_end'])->format('Y-m-d H:i:00') : null,
+            'nomination_suggested_start'     => ($validated['nomination_suggested_start'] ?? null) ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['nomination_suggested_start'])->format('Y-m-d H:i:00') : null,
+            'nomination_suggested_end'       => ($validated['nomination_suggested_end'] ?? null) ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['nomination_suggested_end'])->format('Y-m-d H:i:00') : null,
+            'voting_starts_at'               => ($validated['voting_starts_at'] ?? null) ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_starts_at'])->format('Y-m-d H:i:00') : null,
+            'voting_ends_at'                 => ($validated['voting_ends_at'] ?? null) ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_ends_at'])->format('Y-m-d H:i:00') : null,
             'allow_auto_transition'          => true,
             'auto_transition_grace_days'     => 7,
         ]);
