@@ -18,7 +18,7 @@ Clustered by **error signature and reached code**, not by filename, per the comm
 | # | Cluster (error signature) | Count | Class | Business invariant at stake | Authority | Risk | Proposed action |
 |---|---|---|---|---|---|---|---|
 | 1 | **Undefined methods** — `ElectionMembership::bulkAssignVoters`, `VotingTrustResult::allow`, `ElectionLifecycle::canTransitionTo` (`BadMethodCallException`, `Call to undefined method`) | **~26** | **F** | none — the API the test calls does not exist | n/a | 🟢 none | Decide per method: unbuilt feature vs renamed API. **Do not delete tests** — several may be specifications for unbuilt capabilities |
-| 2 | **`VoterNotEligibleException`** | **16** | **D or B — UNRESOLVED** | *only eligible voters may vote* | `VoterEligibilityService` / `EligibilityEvaluator` (**authority unresolved — MB-5 / `PBDIGIT-49`**) | 🔴 **high** | **Investigate before anything else.** Either fixtures fail to make voters eligible, or eligibility genuinely rejects valid voters. `PBDIGIT-62` is the precedent for assuming the latter is possible |
+| 2 | **`VoterNotEligibleException`** | **~~16~~ → 8** *(corrected 2026-08-07: the 16 were exception mentions, not tests — see the eligibility investigation)* | **D or B — UNRESOLVED** | *only eligible voters may vote* | `VoterEligibilityService` / `EligibilityEvaluator` (**authority unresolved — MB-5 / `PBDIGIT-49`**) | 🔴 **high** | **Investigate before anything else.** Either fixtures fail to make voters eligible, or eligibility genuinely rejects valid voters. `PBDIGIT-62` is the precedent for assuming the latter is possible |
 | 3 | **Database integrity** — `QueryException`, FK violations (23503), unique violations (23505) | **~29** | **B / F** | none directly — fixture construction | n/a | 🟡 medium | Fixture repair. **Same family as the `members_status_check` and `type` defaults already fixed** — these fixtures never expressed valid domain state |
 | 4 | **`Failed asserting that false is true`** | **22** | **G — UNKNOWN** | unknown without per-test reading | — | ⚠️ unknown | **Must be opened individually.** This signature is exactly what `PBDIGIT-62` looked like from the outside |
 | 5 | **Deprecation-enforcement tests** — `DeprecatedQueryException` / `DeprecatedFieldException` not thrown | **8** | **E — ahead of the ladder** | *the guard blocks deprecated access at the configured level* | `DeprecationPolicy` | 🟢 none | **Do not "fix".** `STRICT_LEVEL = 1`; `isEnforcementActive($n)` returns `STRICT_LEVEL >= $n`, so level-2+ guards are **inactive by design**. These tests assert a **future authorised state** and will pass when `PBDIGIT-48` step 4 raises the level. **They are a readiness signal, not debt** |
@@ -36,7 +36,7 @@ Clustered by **error signature and reached code**, not by filename, per the comm
 | **A** Legacy representation assumption | **0 confirmed** *(cluster 7 may contribute)* |
 | **B** Stale fixture | **~29 likely** (cluster 3), plus part of 6 and 8 |
 | **C** Genuine migration regression | **0 — proven by the revert experiment** |
-| **D** Pre-existing production defect | **0 confirmed, 2 clusters suspected** (2 and 6) |
+| **D** Pre-existing production defect | **0 confirmed, 1 cluster suspected** (6). *Cluster 2 investigated and cleared — fixture, not defect* |
 | **E** Obsolete/ahead-of-ladder contract | **8 confirmed** (cluster 5), plus likely part of 7 |
 | **F** Infrastructure / harness | **~44** (clusters 1 and 9) |
 | **G** Unknown | **22** (cluster 4) — plus every unconfirmed item above |
