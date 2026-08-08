@@ -415,3 +415,67 @@ Note also a **data-source divergence** on the same concept: the guard's `has_app
 | **10** | **Only after PO / architecture review: is consolidation required?** |
 
 **Q8 carries its own evidentiary rule, established by Finding 4b:** *potential* inconsistency is an architectural finding; *actual* inconsistency requires evidence. **Recording that two sources could disagree is discovery. Claiming they do disagree requires a measurement.**
+
+#### 5 · Models → persistence of authoritative decisions — **ESTABLISHED**
+
+**Incorporates `PBDIGIT-48`'s proven classification rather than re-deriving it** (three generations of representation; the lifecycle declared SSOT in `ADR_20260807_1500`). What was **not** established there, and is established here, is the **mechanical relationship between a decision and what it persists**.
+
+##### What a successful transition writes (`Election::transitionTo`, `app/Models/Election.php`)
+
+| Line | Write | Nature |
+|---|---|---|
+| `:1658` | `ElectionStateTransition::create(['from_state','to_state', …])` | **the durable record of the decision itself** |
+| `:1670` | `$this->updateQuietly(['state' => $toState])` | **a cache** — and `updateQuietly` **bypasses Eloquent events**, so nothing can observe it |
+
+##### What the authority reads — and it is not that column
+
+`ElectionLifecycleEngineImpl` states its own contract:
+
+> *"**CRITICAL: Derives state ONLY from business facts. State column is compatibility cache, not truth.**"*
+
+`getState()` walks a **12-step constitutional priority order** (suspended → archived → results published → counting → voting active → … → draft), deriving from dates, flags and counts. **It does not read `elections.state`.**
+
+```
+decision ──▶ ElectionStateTransition   (history — the only durable record OF the decision)
+        └──▶ elections.state           (cache — written quietly, read by legacy consumers)
+
+authority ──▶ derive from business facts   (never reads the cache)
+```
+
+##### 🔴 Finding 5a — state can change with no decision and no audit row
+
+**Because state is a pure function of business facts, editing a fact changes the state.** A `voting_ends_at` edit can move an election from `VotingActive` to a later state **without any transition being invoked**, so:
+
+* no `ElectionStateTransition` row is written — **the audit log records transitions, not state changes**;
+* no guard runs — `ConstitutionalTransitionGuard` is only reached through `transitionTo()` (Relationship 4);
+* `elections.state` still holds the old value.
+
+> **The constitutional guard protects the *transition operation*, not the *state*.** Anything that edits the underlying facts changes the state without passing any of it.
+
+**This is recorded as a property of the design, not as a defect** — a derived model behaves this way by definition. **Whether every fact-edit path *should* be constitutionally guarded is a business question**, and it is the same shape as Finding 4c (two authorization regimes).
+
+##### 🔴 Finding 5b — the cache is known to diverge, and reconciliation is manual
+
+`PBDIGIT-48` established that `app:backfill-election-state` exists **to detect and repair `state` divergence** and that **no scheduler invokes it**. Combined with 5a, divergence is not hypothetical but *expected*: the cache is written only by transitions, while the truth moves with the facts.
+
+**Consistent with `PBDIGIT-47`** (routing read the stale `status` column) and `PBDIGIT-59` (lifecycle reads `voting_*`, legacy queries read `start_date`/`end_date`). **No new claim is made about how often divergence occurs — that would need a measurement** (Q8 evidentiary rule).
+
+##### Test consequence — three groups verifying three different things
+
+| Group | Verifies | Examples |
+|---|---|---|
+| Asserts the **column** | the **cache**, not the decision | `ElectionActivationTest` · `ElectionStateMachineCapabilitiesTest` · `ResultsPublicationTest` · `ElectionStateMachineProjectionTest` · `ElectionDashboardCapabilitiesTest` |
+| Asserts the **snapshot** (`ElectionLifecycle::of(…)->snapshot()`) | the **derivation** — the authority | `ElectionStateMachineTest` · `ElectionManagementConstitutionalTest` · `ConstitutionalVotingProtectionTest` · `ElectionPolicyStateAwareTest` · `VoterEligibilityTest` |
+| Asserts `ElectionStateTransition` | the **decision history** | `StateMachineTransitionAuditTest` · `ElectionStateTransitionMigrationTest` · `CapacityApprovalTest` |
+
+> **A test that sets `['state' => 'voting_active']` in a fixture and then asserts behaviour is priming the cache, not the truth** — and the behaviour it observes may come from either, depending on which the code under test consults. **This is the single most likely cause of "passes for the wrong reason" in the Election estate**, and it must be checked per test in Step 2 rather than assumed.
+
+##### What remains NOT established
+
+* **Which** of the column-asserting tests depend on the cache being read back, versus merely setting up a fixture — per-test reading, Step 2.
+* Whether any production path other than `transitionTo()` writes `elections.state`.
+* How often cache and derivation actually diverge — **needs a measurement, not an inference.**
+
+**Recorded, not repaired. No code, test or fixture changed.**
+
+**Status: Relationship 5 ESTABLISHED. Relationships established: 5 (Membership · Security · HTTP · Services/lifecycle · Models/persistence). Outstanding: 1 — Demo (`PBDIGIT-59`-adjacent).**
