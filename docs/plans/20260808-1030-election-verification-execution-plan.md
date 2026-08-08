@@ -287,3 +287,37 @@ relationship established → identify which tests exercise that relationship →
 3. **Recorded, not repaired:** a controller calling a domain-model mutator directly is an architectural observation. Whether that is a boundary weakness is **not** a Slice 1 question. **NO CHANGE.**
 
 **Relationships: 4 established (Membership · Security · HTTP · Services) · 2 outstanding** — Models → persistence of authoritative decisions · Demo (`PBDIGIT-59`-adjacent).
+
+#### 🔴 RELATIONSHIP 4 — CORRECTED. The finding above is WRONG and must not be reused as evidence.
+
+**The conclusion "no application-service lifecycle layer exists" was reached by tracing `transitionTo()` *callers* and stopping at the first apparent domain boundary. `transitionTo()` was itself a caller.** Measuring what it does:
+
+```php
+$toState = ElectionConstitution::getTargetStateForAction($transition->action);
+// ── 1-2. Validate & Authorize: Delegate to ConstitutionalTransitionGuard ──
+$guard = app(ConstitutionalTransitionGuard::class);
+$freshElection->validateTransitionRules($transition);
+```
+
+**`ConstitutionalTransitionGuard` lives in `app/Application/Election/Services/` and participates in every lifecycle transition.** An Application-layer decision mechanism therefore *does* exist — it is invoked *from inside the model* rather than sitting between controller and model.
+
+**The real path is not `HTTP → Domain`. It is `HTTP → Domain → Application guard → Domain`.**
+
+**Ownership is distributed, not singular:**
+
+| Business concern | Owner | Mechanism |
+|---|---|---|
+| What state does this action target? | **Domain** | `ElectionConstitution::getTargetStateForAction()` |
+| Is the actor authorised, is execution valid here? | **Application** | `ConstitutionalTransitionGuard` |
+| Do the business transition rules permit it? | **Domain** | `validateTransitionRules()` |
+| Who invokes the operation? | **Interface** | controller |
+
+> **A single lifecycle test can legitimately cross multiple owners.** This is the clearest evidence yet for why `Business Decision Ownership` cannot be a single value assigned by inspection.
+
+**Scope consequence — and why this correction was urgent:** the superseded finding stated that no service performs lifecycle work, which would have **excluded `ConstitutionalTransitionGuard` tests from the Election verification scope**. They are lifecycle-authorization tests.
+
+**Still not established (do not assume):** what the guard *actually decides* versus what `validateTransitionRules()` decides; whether they overlap; and which concrete tests exercise each. **Mechanism not yet established.**
+
+**Status: Relationship 4 is INCOMPLETE/CORRECTED — treat as a corrected hypothesis, not as evidence. Relationships established: 3 (Membership · Security · HTTP). Outstanding: 3 — Services/lifecycle (re-open), Models → persistence, Demo.**
+
+**Methodological rule, now fifth occurrence:** *never infer decision ownership from the first class or method encountered in the call path — trace the decision itself.* Applied "caller ≠ owner" to the controller and then failed to apply it to the model.
