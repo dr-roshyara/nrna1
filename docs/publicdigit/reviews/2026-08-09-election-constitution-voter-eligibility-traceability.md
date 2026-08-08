@@ -352,3 +352,67 @@ start()  -- reads election_memberships.has_voted (entitlement gate)
 **Consequence for `PBDIGIT-66` `D-1`/`D-2`:** `ElectionMembership` is the authority for **entitlement** (proven) but demonstrably **not** for **"has exercised the vote"**. **The collapse of registration/eligibility/entitlement into one row does not extend to the one-vote invariant** — which strengthens the case that these are separate business decisions rather than one.
 
 **Next step (unchanged in kind, narrower in scope):** trace the `Code` flow's one-vote enforcement — `codes.has_voted`, code exhaustion, or a constraint — and determine whether the invariant holds without `election_memberships` participating at all.
+
+---
+
+# Appendix 4 — The one-vote invariant: where it is actually enforced (read-only, 2026-08-09)
+
+**Invariant investigated, not a column:** *a voter may cast at most one valid vote in an election.* **No vote cast · no data written · no new election · nothing modified.**
+
+## The structural finding — and it explains the whole design
+
+**Unique indexes, read from PostgreSQL:**
+
+```
+codes             UNIQUE (election_id, user_id)        <-- one credential per voter per election
+voter_slugs       UNIQUE (election_id, user_id)        <-- one session slug per voter per election
+election_memberships UNIQUE (user_id, election_id) WHERE deleted_at IS NULL
+votes             UNIQUE (id), (vote_hash), (receipt_hash)   <-- and NOTHING tying a vote to a voter
+```
+
+> **`votes` carries no uniqueness against a voter, and it cannot — the table has no `user_id` by constitutional design (anonymity).**
+
+**Therefore the one-vote invariant is structurally forced off the ballot and onto the credential.** This is not an accident or a legacy leftover: **anonymity makes credential-exhaustion the only place the invariant can live.** `OBSERVED IN DATABASE` + `INTERPRETATION`.
+
+## The three facts, kept separate as commissioned
+
+| | Question | Representation | Owner |
+|---|---|---|---|
+| **A · Entitlement** | May this person vote here? | **`ElectionMembership`** (`role`, `status`) | Application — proven earlier |
+| **B · Execution** | May *this request* submit now? | **`Code.can_vote_now`** (+ `VoterSlug` state, window, IP) | Application |
+| **C · One-vote invariant** | Has the right already been exercised? | **the `codes` row — `UNIQUE(election_id, user_id)` + exhaustion** | **Infrastructure (uniqueness) + Application (exhaustion)** |
+
+**These have different owners and different representations. The product does NOT collapse them** — which contradicts the earlier working assumption that `ElectionMembership` might own all three.
+
+## The enforcement point
+
+`VoteController:172-176` gates the real-election path on:
+
+```php
+Code::withoutGlobalScopes()
+    ->where('user_id', $user->id)->where('election_id', $election->id)
+    ->where('can_vote_now', true)->exists();
+```
+
+and `markUserAsVoted($code, …)` (`:1977-1981`) sets **`has_voted=true`, `can_vote_now=false`, `is_code_to_save_vote_usable=false`.**
+
+**So the mechanism is credential exhaustion, scoped correctly to `(election_id, user_id)`** — the commission's §6 election-scoping check **passes**: the guard, the exhaustion write and the unique index are all keyed on the election, not user-global.
+
+## Classification: **B — CURRENT MECHANISM ENFORCES IT, BUT LEGACY STATE IS STILL CONSULTED**
+
+*(Revising Appendix 3a's **C**, which asked a narrower question — "does the current path consult legacy state?" — and answered it correctly. Asked about **the invariant** rather than the field, the answer differs.)*
+
+* **The invariant has a real mechanism** — one credential row per voter per election, exhausted on use, guarded server-side, election-scoped. **`ElectionMembership.has_voted` is not required for it.**
+* **But `ElectionVotingController::start():115-118` still consults `election_memberships.has_voted`** — a field **nothing writes**. That coupling is unnecessary and, being permanently `false`, that particular guard is **inert**.
+
+> **The architectural fault is not a missing mechanism. It is that the entitlement model is asked a question that belongs to the exercise-of-vote history.** Exactly the separation the commission anticipated.
+
+## What is NOT established
+
+* **`can_vote_now` must be set to `true` somewhere before voting** (code verification). **I did not trace that arming step**, so I cannot prove a voter can complete a first vote — only how a second is prevented. `MECHANISM NOT ESTABLISHED`.
+* **Failure modes 1–7 were not exercised.** No vote was cast. Whether `start()` re-arming a `VoterSlug` can re-arm the *code* is **`UNDETERMINED`** and is the single most important open question, because it is the one path that could defeat exhaustion.
+* **Existing test evidence: `Existing verification not established`** — suite not run.
+
+## Implication for the Manifesto discovery (`PBDIGIT-66`)
+
+**`D-2` now has evidence rather than speculation: registration/eligibility/entitlement and the one-vote invariant are already separate in the implementation, and anonymity forces them apart.** A constitution that fused them would contradict the anonymity invariant. **Recorded as evidence for the decision — not as the decision.**
