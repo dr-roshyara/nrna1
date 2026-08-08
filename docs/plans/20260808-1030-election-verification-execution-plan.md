@@ -607,3 +607,38 @@ WHY                 "complete" presupposes a contract stating which
 **Step 2 consequence:** demo fixtures are safe for lifecycle invariants and **not** safe for the four capability behaviours. Which of `tests/Feature/Demo`'s 18 tests fall on each side is **UNDETERMINED** and requires per-test reading.
 
 **Status: Relationship 6 COMPLETE. 🏁 ALL SIX RELATIONSHIPS ESTABLISHED — the Slice 1 Step 1 relationship map is closed. Step 2 (Master Matrix classification) NOT started; awaiting Product Owner review.**
+
+---
+
+## SLICE 1 — STEP 2 (Master Matrix) — **BLOCKED ON THE SCOPE GATE THIS PLAN SET**
+
+**Report: [`docs/publicdigit/reviews/2026-08-08-master-matrix-schema-and-calibration.md`](../publicdigit/reviews/2026-08-08-master-matrix-schema-and-calibration.md).**
+
+**Step 2 was commissioned and was not started.** Step 1 closed with *"SCOPE DECISION REQUIRED BEFORE MATRIX CONSTRUCTION"* (lines 174, 182), offering three options. **No such decision exists** — verified against this plan, `CONTEXT.md` and the session logs. **Choosing one silently would take a programme decision and produce the "partial matrix called complete" outcome this plan forbids.**
+
+**Delivered instead — both scope-independent:**
+
+1. **The 30-dimension matrix schema**, with an **evidence rule per column**. Three columns carry the programme's hard-won distinctions and must never be merged: **#15** ownership ≠ location · **#17** persistence role · **#27/28** coverage ≠ completeness.
+2. **A two-row calibration** on `ConstitutionalTransitionGuardPreconditionsTest` — the file Relationship 4 named as the sharpest ownership case.
+
+**What the calibration showed, and it justifies the intent-first rule empirically:**
+
+| | |
+|---|---|
+| Row 1 `…use_cached_columns` | **By location and name, a constitutional authorization test. By intent, an N+1 performance probe** — it counts SQL and asserts 0, and **explicitly swallows the authorization outcome** (`catch (\Exception $e) { // May fail for role check }`). **Business invariant: none identified.** A test that discards the authorization result cannot be evidence about authorization |
+| Row 2 `…checks_correct_table` | A **candidate business-invariant** test, blocked on *which store defines committee membership* — **the same shape as `PBDIGIT-49`** (two homes, no recorded authority) |
+
+> **Two tests, one file, one class under test — one has no business invariant, the other is blocked on an unresolved data-authority question. No file-level or directory-level rule could have separated them.**
+
+**Cost, measured rather than estimated:** two rows from one 136-line file; ~14 of 30 columns confidently populated, **~9 legitimately `Unknown`**, and **~5 unfillable without executing the test**. **Option (b) at ~3,688 rows is a multi-session programme** — as this plan already predicted.
+
+### 🔴 Two decisions now gate Step 2
+
+| # | Decision |
+|---|---|
+| **SD-1** | **Scope: (a) 826 constitutional core · (b) all ~3,688 · (c) capability-first cut** — the unmet Step 1 prerequisite |
+| **SD-2** | **Static reading, executed, or both?** Columns 19–21 (actual behaviour · result · failure classification) and part of 23 **cannot be filled without running the tests.** **This was not among the three original options and should be**, because it changes the cost of every row |
+
+**Also surfaced, not investigated: `BD-7` (candidate)** — which store defines committee membership, `election_officers` or `election_memberships`?
+
+**Status: SLICE 1 STEP 2 NOT STARTED — BLOCKED ON SD-1 AND SD-2. Schema and calibration delivered. No matrix rows beyond the two calibration rows. No test executed, no code, test or fixture changed. BD-1…BD-6 untouched.**
