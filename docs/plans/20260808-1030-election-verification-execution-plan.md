@@ -743,3 +743,55 @@ WHY                 "complete" presupposes a contract stating which
 **Recorded, not corrected. No commit re-labelled, no history rewritten, no ID minted.**
 
 **Status: `SD-3` added. `SD-1` and `SD-2` remain the programme blockers for Step 2; `SD-3` blocks nothing technically — it governs how the work is filed.**
+
+---
+
+## 📌 PRESERVATION MANIFEST — what survives `SD-3`, and one correction to the accepted status
+
+**`SD-3` is accepted as a governance finding. All programme work is PAUSED pending the Product Owner's decision on programme identity.** This manifest exists for one reason: **`SD-3` changes where the work is filed, not whether it happened.** Without it, resolving the identity risks a fresh programme starting from zero.
+
+> **We are not restarting Election discovery. We are changing its governance home while preserving its evidence and continuing from the established checkpoint.**
+
+### ⚠️ One factual correction to the accepted status
+
+The accepted summary records *"Relationships 1–5 established · 1 outstanding — Demo."* **Relationship 6 (Demo) was completed earlier the same session** — commit `736a2f90`, report `docs/publicdigit/reviews/2026-08-08-relationship-6-demo-semantics.md`, and this plan line 609 reads *"ALL SIX RELATIONSHIPS ESTABLISHED."*
+
+**Recorded because it changes the inheritance, not to score a point:** the next identity inherits a **closed relationship map**, not a map with one relationship outstanding.
+
+### Status — stated precisely, because *"the Election discovery is complete"* would be false
+
+| Area | Status |
+|---|---|
+| Relationships 1–6 · relationship map | ✅ **CLOSED** |
+| Business Decision register `BD-1`…`BD-7` | ✅ established · ⬜ **decisions open** |
+| Decision-ownership model · evidence protocol · programme rules | ✅ established |
+| Master Matrix **definition** (30 dimensions + evidence rule per column) | ✅ established |
+| Master Matrix **execution** | 🔴 **not started** — gated by `SD-1`/`SD-2` |
+| Election test-estate classification · coverage · completeness | 🔴 not started |
+| Legacy-consumer audit as a programme phase | 🔴 not started |
+| Runtime Election-2026 journey | 🔴 **separate programme**, not executed |
+| **Programme identity** | 🔴 **`SD-3` — unresolved** |
+
+### What the resolved identity inherits — pointers, not restatements
+
+| # | Inherited | Where |
+|---|---|---|
+| 1 | Relationships 1–6 | plan §Relationship entries · `reviews/2026-08-08-relationship-{5,6}-*.md` |
+| 2 | `BD-1`…`BD-6`, `BD-7` candidate, **and `BD-1`'s dependency analysis** (subset blocker, 7 of 8 files, two matrix columns) | `reviews/2026-08-08-bd1-dependency-analysis.md` |
+| 3 | `SD-1` scope · `SD-2` evidence depth — **the two programme blockers** | plan §Step 2 |
+| 4 | Master Matrix schema + calibration + measured cost | `reviews/2026-08-08-master-matrix-schema-and-calibration.md` |
+| 5 | Programme rules — *coverage is descriptive, completeness is normative* · *business meaning precedes persistence meaning* · the permanent hierarchy · `PROGRAMME` vs `SUBSET` blockers · **never report programme scope as evidence scope** | plan §standing rules |
+| 6 | `PBDIGIT-48`'s own findings — **as historical evidence, not as work to redo** | `PBDIGIT-48` · `ADR_20260807_1500` |
+| 7 | The four closed clusters and `PBDIGIT-58`/`59`/`62` results | as already recorded |
+
+### The three programmes this finding separates — **recorded as a proposal, not adopted**
+
+| | Answers |
+|---|---|
+| **A · Full Discovery** | *What is the Election system supposed to mean, and where does each business decision belong?* — substantially progressed |
+| **B · Verification & Closure** | *Does the implementation and test estate establish that the intended system is correct?* — Master Matrix and failure classification live here |
+| **C · Runtime Journey** | *Can a real actor perform the business journey end to end?* — organisation → Election 2026 → chief → voters → candidate → voting → results |
+
+**Their separation is `SD-3`'s substance:** whether these are one identity or three is part of the decision, **and engineering is not making it.**
+
+**No further programme work is authorised until `SD-3` is decided. Historical commits and evidence remain intact — nothing re-labelled, nothing rewritten, no ID minted.**
