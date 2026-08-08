@@ -54,6 +54,25 @@ business invariant → domain meaning → authoritative authority → applicatio
 
 **Cluster 6 is intentional migration evidence, not defects.**
 
+#### ⚠️ The columns are not the point — the lens is
+
+**30 columns must not become a bureaucratic exercise.** A row is valuable only if it answers:
+
+> **What business rule is this test supposed to protect, who owns that decision, and does the implementation actually exercise that authority?**
+
+| The naive question | The architectural question |
+|---|---|
+| Is the election in Counting? | What does **`ElectionLifecycle` derive**? |
+| Can the operation occur? | What **capability/invariant** governs it? |
+| May this officer perform it? | What **authorization/policy** governs the actor? |
+| Can the HTTP request reach it? | What **application/interface gates** exist? |
+| Does the operation happen? | Which **use case/service** executes it? |
+| Is the result stored? | Which **persistence responsibility** owns storage? |
+| Does the UI show it? | Is the UI **projecting** authoritative information? |
+| Is `status` involved? | Is it **making a business decision**, or merely transported/stored/displayed? |
+
+**A column filled in without answering its architectural question is noise.** Prefer fewer rows reasoned through to thirty columns completed mechanically.
+
 **Gate:** produce matrix, coverage summary, failure classification, legacy-observation register, architectural findings, gaps, open questions · run the 18-item self-audit · then state **"SLICE 1 COMPLETE — AWAITING PRODUCT OWNER REVIEW"** and stop.
 
 ### Slice 2 — Finish failure classification (~95 unclassified + GracePeriod)
