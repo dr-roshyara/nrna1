@@ -27,9 +27,11 @@ class ElectionCreationTest extends TestCase
     {
         parent::setUp();
 
-        // Bypass all middleware — POST tests have pre-existing infrastructure issue
-        $this->withoutMiddleware();
-
+        // The middleware stack runs. A previous blanket `withoutMiddleware()` also
+        // disabled SubstituteBindings, so {organisation} never bound and
+        // authorize('create', [Election::class, $organisation]) denied every request
+        // — 403 instead of the expected redirect, and no validation errors flashed.
+        // The bypass was the defect, not the workaround. (PBDIGIT-48)
         $this->org = Organisation::factory()->create(['type' => 'tenant']);
 
         $this->owner         = $this->createUserWithRole('owner');
