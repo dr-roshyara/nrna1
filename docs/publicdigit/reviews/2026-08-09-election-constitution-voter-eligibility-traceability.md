@@ -269,3 +269,58 @@ Runtime data created                        none — no election, voter, candida
 Test suite                                  NOT RUN
 Status                                      STOPPED — awaiting Product Owner
 ```
+
+---
+
+# Appendix 3 — Legacy `has_voted` vs current one-vote enforcement (read-only, 2026-08-09)
+
+**Business invariant (given, not inferred):** *a voter may cast at most one valid vote in an election.* **Kept separate from any mechanism throughout.**
+
+## Classification: **B / C — and which one is `UNDETERMINED`**
+
+**I cannot return a single letter honestly, and the reason is itself the finding.**
+
+### What is proven
+
+| Observation | Evidence |
+|---|---|
+| **The current enforcement READS `election_memberships.has_voted`** | `ElectionVotingController::start():115-118` — *"You have already voted."* |
+| **`ElectionMembership::markAsVoted()` has ZERO callers** | `grep '\->markAsVoted(' app/` returns **nothing** outside model definitions |
+| **No production code writes `election_memberships.has_voted`** | `'has_voted' => true` outside `app/Models/` appears only in: `PublicDemoController:337` (demo), `DemoVoteController:1794,1802` (demo), `VoteController:1845` (**`$voterSlug`**), `VoteController:1978` (**`markUserAsVoted($code, …)` — a `Code`/`DemoCode`**), `VoteController:2201` (**an Inertia render prop, not persistence**) |
+| **Four other models each define their own `markAsVoted()`** | `Voter:80` · `VoterRegistration:182` · `VoterSlug:113` · `User:1006` |
+
+### The reading, stated at evidence strength
+
+**The read side and the write side appear to target different representations.** The current election path *reads* `election_memberships.has_voted`; every writer found *writes* `codes` / `voter_slugs` / demo tables. **`ElectionMembership::markAsVoted()` — the method that would close the loop — is dead code by call-graph.**
+
+**If that holds, the one-vote guard at `start():116` would never fire, because the flag it reads is never set by the path that casts the vote.**
+
+### ⚠️ Why I will not assert that
+
+**No vote has ever been cast in this programme.** `INTERPRETATION`, not `CONCLUSION`. Three things could falsify it and none was measured:
+
+1. **`VoteController` is a different, older vote path** than the one `ElectionVotingController::start()` leads to — **I never traced `start()` past the entitlement checks to the actual submission**, so I do not know which controller ultimately persists an election vote.
+2. A model event, observer, or listener could set the flag without a literal `has_voted => true`.
+3. The submission path may enforce uniqueness by a mechanism I did not look for — a vote lookup or a database constraint.
+
+**`MECHANISM NOT ESTABLISHED.`**
+
+## Answering the commissioned questions
+
+* **Is `has_voted` legacy?** **On `codes` and `voter_slugs`: yes** — written by the older `VoteController`/demo paths. **On `election_memberships`: it is the *current* representation, and it is read by current enforcement.** So "legacy" splits by table, not by field name — **exactly the trap the commission warned about.**
+* **Has the legacy mechanism been superseded?** **Partially at best.** The new representation exists and is read; **its writer was not found.**
+* **Is `ElectionMembership` merely the participation relationship, with the invariant enforced elsewhere?** **Possible and untested** — that is precisely hypothesis (3) above, and it would make `ElectionMembership.has_voted` a vestigial read rather than an authority.
+* **Existing verification:** `Existing verification not established` — the suite was not run.
+
+## The one next step that settles it
+
+**Trace `ElectionVotingController::start()` forward to the controller that actually persists an election vote, and identify what that path writes.** Everything above collapses to a single letter once that is known. **Do not delete, migrate or "clean up" `has_voted` before then** — on this evidence it is impossible to say which representation would be removed.
+
+## Boundary
+
+```
+Code / tests / fixtures / DB changed   none
+Vote cast                              none — so no runtime claim about double voting
+Test suite                             NOT RUN
+Classification                         B or C — UNDETERMINED between them, deliberately
+```
