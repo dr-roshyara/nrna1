@@ -145,3 +145,50 @@ Status                   STOPPED — awaiting Product Owner / Architecture Board
 ```
 
 **Traceability:** `app/Domain/Election/Constitution/ElectionConstitution.php:7-21,35,49,72,87` · `app/Application/Election/Services/ConstitutionalTransitionGuard.php:182-186` · `app/Http/Controllers/ElectionVotingController.php:41-44` · repository-wide searches for *"Election Manifesto"*, `election_only`, `ElectionMembership`, `voter_source`, `enroll` · `PBDIGIT-64` · `PBDIGIT-65` · `PBDIGIT-49`
+
+---
+
+# Appendix — Legacy Authority Register (read-only, 2026-08-09)
+
+**Scope note, stated first:** the commission that requested this ran to 18 sections. **Only the Legacy Authority Register below was newly measured.** Sections already answered by earlier proven work are cross-referenced rather than repeated, and **everything else is explicitly NOT DONE** (see the boundary at the end). **The session's context budget, not the evidence, is what limited this.**
+
+## E · Legacy Authority Register
+
+**Schema measured directly via `Schema::hasColumn`:**
+
+| Field | `users` | `election_memberships` | Production readers/writers | Classification |
+|---|---|---|---|---|
+| `can_vote` | **❌ absent** | **❌ absent** | `ResetElection.php:197` (`DB::table('users')->where('can_vote',1)`), `DebugVoterSlug.php:60,92,93` | **LEGACY — refers to a column that does not exist** |
+| `is_voter` | **❌ absent** | **❌ absent** | `AddHimaniCandidateCommand.php:32`, `BulkDisapproveVoters.php:58` | **LEGACY — same** |
+| `can_vote_now` | ❌ absent | ❌ absent | — | **LEGACY / unused** |
+| `is_eligible` | ❌ absent | ❌ absent | — | **not persisted at all** |
+| `has_voted` | ❌ absent | **✅ present** | read in `ElectionVotingController`; also read on the **`Code`** model (`EndVotingPeriod.php:64`, `ElectionProcessController.php:353`) | **PROJECTION on `election_memberships`; a *separate* `has_voted` exists on `codes`** |
+
+### Findings from the register
+
+1. **`can_vote` and `is_voter` are read and written by production console code against columns that do not exist.** `ResetElection.php:197` would fail at runtime. **`OBSERVED IN CODE`; not executed here.** This corroborates **`PBDIGIT-35`** with fresh schema evidence, and **`PBDIGIT-49`'s** correction stands: eligibility is org+election scoped, not a global user flag.
+2. **`isEligible` is not persisted anywhere.** It is computed per request in `ElectionVotingController:41-44`. **It is therefore a projection, never an authority** — which is exactly why `PBDIGIT-65` could flip it by changing session context alone.
+3. **`has_voted` exists on two different tables** (`election_memberships` and `codes`) — two representations of "this person has voted". **Business authority not yet established** for which is canonical. **Not investigated further.**
+
+## B · What currently makes a voter eligible — answered from proven work
+
+**Mechanism (proven, `PBDIGIT-65`):** `ElectionVotingController:41-44` computes it live from `$user->electionMemberships()->where('election_id', …)->first()`, requiring `role === 'voter' && status !== 'removed'`. **That query is tenant-scoped via `BelongsToTenant`, so the answer depends on session organisation.** **Decision ownership:** the *rule* is Application-layer; the *data* is `ElectionMembership`; **the deciding input is Infrastructure** — which is the defect.
+
+## C · What Election-Only means in the current system
+
+**IMPLEMENTATION ESTABLISHED, NOT CONSTITUTIONALLY ESTABLISHED.** It is a real, coherent, working mechanism — `organisations.uses_full_membership` → snapshot to `elections.voter_source_strategy` at creation → `VoterImportService::importElectionOnly` creates users + `ElectionMembership` directly, bypassing `Member` entirely. **It executed end to end at runtime.** The constitution mentions **none** of it (Findings 1–4 above).
+
+> **This is existing business behaviour whose constitutional ownership has not been documented — NOT legacy behaviour to be removed.** The commission's §8 distinction is the correct reading here, and this appendix records it as such.
+
+## Authorization boundary for this appendix
+
+```
+Code changed            none
+Tests changed           none
+Database rows changed   none — no eligibility manufactured, no flag set
+New runtime data        none — no organisation, election, voter, candidate or vote created
+Test suite              NOT RUN
+Sections NOT DONE       Track A re-run · §6 full writer/reader trace of the import→ballot
+                        path · §11 lifecycle-vs-ballot-access separation · §17 A/D/F/G/H/I
+Status                  STOPPED
+```
