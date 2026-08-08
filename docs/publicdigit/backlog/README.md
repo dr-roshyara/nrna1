@@ -67,6 +67,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-39`](PBDIGIT-39-unset-config-blocks-every-voter.md) | **IP vote limit wrongly applied to demo elections** + no safe default for real ones | `EPIC-05` | ✅ demo exemption **FIXED & VERIFIED** · real-election default `OPEN` |
 | [`PBDIGIT-40`](PBDIGIT-40-completion-page-has-never-worked.md) | **`thank-you` route 500s** — undefined `$vote`. **NOT on the happy path** (severity corrected) | `EPIC-05` | `OPEN` — **Low** |
 | [`PBDIGIT-41`](PBDIGIT-41-demo-provisioning-has-two-paths.md) | **Demo provisioning has two paths and the documented one is broken** | `EPIC-03` | `OPEN` — found by `PBDIGIT-00` (b) |
+| [`PBDIGIT-63`](PBDIGIT-63-verify-create-organisation-journey-and-repair-its-test-safety-net.md) | **"Create an organisation → land on its homepage" is unverified, and its tests assert a former JSON-API product** — corrects rule `O1`'s automated-test evidence ([report](20260808-create-organisation-and-visit-homepage-journey-report.md)) | `EPIC-01` | `OPEN` — Part A needs runtime; F-4/F-5/F-6 need business decisions |
 
 ---
 
