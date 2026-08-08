@@ -47,10 +47,25 @@ class VoterEligibilityTest extends TestCase
         $this->org = Organisation::factory()->create(['type' => 'tenant']);
         session(['current_organisation_id' => $this->org->id]);
 
+        // Voter import is permitted only during setup_administration
+        // (VoterImportController:192). The lifecycle derives that state from
+        // setup_started_at being set while administration is not yet complete
+        // (ElectionLifecycleEngineImpl) — not from the legacy `status` column,
+        // which nothing consults. Previously this fixture wrote status='active'
+        // and produced `draft`, so every import request was correctly refused.
         $this->election = Election::factory()
             ->forOrganisation($this->org)
             ->real()
-            ->create(['status' => 'active']);
+            ->create([
+                'setup_started_at' => now()->subDay(),
+                'administration_completed' => false,
+            ]);
+
+        $this->assertSame(
+            \App\Domain\Election\Enum\ElectionLifecycleState::SetupAdministration,
+            \App\Application\Election\Facades\ElectionLifecycle::of($this->election)->state(),
+            'Precondition: the fixture must establish setup_administration.'
+        );
 
         $this->officer = $this->makeOfficer('chief', 'active');
     }
