@@ -192,3 +192,80 @@ Sections NOT DONE       Track A re-run · §6 full writer/reader trace of the im
                         path · §11 lifecycle-vs-ballot-access separation · §17 A/D/F/G/H/I
 Status                  STOPPED
 ```
+
+---
+
+# Appendix 2 — The Election-Only voter-entitlement chain (read-only, 2026-08-09)
+
+**Correction first:** the previous appendix was signed off *"DISCOVERY COMPLETE"* for a commission of which **one section** had been done. **That wording is withdrawn** — it is the same overstatement this programme has repeatedly caught. This appendix answers the narrow question that was actually outstanding.
+
+## A · The current voter-entitlement chain — ESTABLISHED
+
+**The enforcement boundary is `ElectionVotingController::start()` (`:98-133`), not the page that renders `isEligible`.** In order:
+
+```
+1. membership   $user->electionMemberships()->where('election_id',…)->first()
+                must exist AND role === 'voter' AND status !== 'removed'
+2. uniqueness   $membership->has_voted            -> "You have already voted."
+3. lifecycle    ElectionLifecycle::of($election)->canVote()
+4. IP           resolveIpBlock($election, $request->ip())
+```
+
+## B · Decision ownership
+
+| Decision | Authoritative representation | Owner | Evidence | Constitutional? |
+|---|---|---|---|---|
+| Is this person a voter here? | **`ElectionMembership.role`** | Application | `start():106-113` | ❌ absent |
+| Is the registration still valid? | **`ElectionMembership.status`** | Application | `start():112` | ❌ absent |
+| Has this person already voted? | **`election_memberships.has_voted`** | Application | `start():115-118` | ❌ absent |
+| May voting happen at all now? | **computed lifecycle projection** | Domain (nominally) | `start():122-124` | ⚠️ partially — but `PBDIGIT-64` shows the clock outranks it |
+| May this request vote from here? | election IP config | Infrastructure/Policy | `start():136+` | ❌ absent |
+| *Displayed* eligibility | `isEligible` | **Interface projection** | `show():41-44` | n/a — not an authority |
+
+## C · Election-Only vs Membership mode — **THEY CONVERGE COMPLETELY**
+
+**`start()` never consults `voter_source_strategy`, `uses_full_membership`, `Member`, or `User::isEligibleVoter()`.** It reads **only `ElectionMembership`.**
+
+```
+Full-membership import ─┐
+                        ├─►  ElectionMembership  ─►  entitlement + uniqueness  ─►  ballot
+Election-only import  ──┘
+```
+
+**Convergence point: `ElectionMembership`.** The modes differ **only in how that row is created** — `importElectionOnly()` creates `User` + `ElectionMembership` directly, bypassing `Member`. **After import the two modes are indistinguishable to the voting path.**
+
+> **`ElectionMembership` *is* the voter-entitlement model in the current implementation.** There is **no separate entitlement concept**: registration, eligibility and one-vote enforcement are all carried by one row. **Whether the business intends them to be one decision or three is undecided** — that is the constitutional gap, not a code gap.
+
+**This also resolves the `has_voted` duplication for the voting path:** the enforcement boundary reads **`election_memberships.has_voted`**. The `codes.has_voted` column is read by other code (`EndVotingPeriod`, `ElectionProcessController`) and **its relationship to this one is still `UNDETERMINED`.**
+
+## D · Legacy transition assessment
+
+**SAFE TRANSITION — with one caveat.**
+
+Historical Election-Only behaviour is already fully expressible in the current model: `ElectionMembership{role: voter, status: active}` is created by the supported import and is the sole input the enforcement boundary reads. **No legacy field needs restoring as authority**, and none could be — `can_vote`/`is_voter` are absent from the schema.
+
+**Caveat:** the transition is safe *technically*; **it is not yet safe *semantically***, because nothing declares that `ElectionMembership` **means** voting entitlement. Today that is true by implementation only.
+
+## E · Open business decisions
+
+1. **Is `ElectionMembership` the constitutional voter-entitlement authority**, or merely a registration relationship with entitlement to be decided separately?
+2. **Are registration · eligibility · entitlement one decision or three?** The code says one; the business has not said.
+3. **Which `has_voted` is canonical** — `election_memberships` or `codes`?
+4. **Should Election-Only appear in the constitution at all**, given the modes converge immediately after import?
+
+## F · Next discovery — one step
+
+**Trace `codes.has_voted` against `election_memberships.has_voted`**: writers, readers, and whether any path can mark one without the other. **That is the remaining unmeasured duplication, and it sits directly on the anonymity-critical vote path.**
+
+## ⚠️ One consequence worth stating plainly
+
+**`PBDIGIT-65` is worse than recorded.** The tenant-scoped membership lookup it proved is used **not only by the display query but by `start():106` — the enforcement boundary itself.** A voter whose session points at another organisation is therefore **refused the ballot server-side**, not merely shown a discouraging page. **`OBSERVED IN CODE`; the runtime refusal was not executed** (no vote was attempted).
+
+## Boundary
+
+```
+Code / tests / fixtures / DB rows changed   none
+Runtime data created                        none — no election, voter, candidate or vote
+Test suite                                  NOT RUN
+Status                                      STOPPED — awaiting Product Owner
+```
