@@ -227,7 +227,15 @@ class ElectionOnlyModeTest extends TestCase
         $assignedUserIds = [];
 
         $voters = app(\App\Services\VoterEligibilityService::class)
-            ->unassignedEligibleQuery($this->electionOnlyOrg, $assignedUserIds)
+            // The mode is passed explicitly: unassignedEligibleQuery()'s third
+            // parameter is optional and silently defaults to MembershipRegistry, so
+            // omitting it applies full-membership rules to an election-only
+            // organisation. (PBDIGIT-48 estate triage)
+            ->unassignedEligibleQuery(
+                $this->electionOnlyOrg,
+                $assignedUserIds,
+                VoterSourceStrategy::fromOrganisation($this->electionOnlyOrg)
+            )
             ->get();
 
         // Should include both user1 and user2 (no Member check needed)

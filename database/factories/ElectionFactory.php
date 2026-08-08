@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Domain\Election\Enum\VoterSourceStrategy;
 use App\Domain\Election\StateMachine\Transition;
 use App\Models\Election;
 use App\Models\ElectionMembership;
@@ -79,8 +80,20 @@ class ElectionFactory extends Factory
      */
     public function forOrganisation(Organisation $organisation)
     {
+        // The voter_source_strategy snapshot must agree with the organisation the
+        // election is created for. Production establishes it this way at creation
+        // (ElectionManagementController::store), and VoterSourceStrategy::fromElection()
+        // reads the snapshot rather than the organisation — deliberately, so that an
+        // organisation changing its membership model later cannot retroactively change
+        // a running election's eligibility rules.
+        //
+        // Without this, the factory's hard-coded 'full_membership' default silently
+        // contradicted an election-only organisation, and voters were rejected under
+        // rules their organisation does not use. (PBDIGIT-48 estate triage)
         return $this->state([
             'organisation_id' => $organisation->id,
+            'voter_source_strategy' => VoterSourceStrategy::fromOrganisation($organisation)
+                ->toPersistenceValue(),
         ]);
     }
 
