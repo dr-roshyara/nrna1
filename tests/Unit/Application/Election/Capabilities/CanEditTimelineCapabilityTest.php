@@ -129,13 +129,26 @@ class CanEditTimelineCapabilityTest extends TestCase
     #[\PHPUnit\Framework\Attributes\Test]
     public function cannot_edit_timeline_in_counting_state()
     {
+        // Counting requires the full constitutional precondition set, not just a
+        // past voting_ends_at: getState() only returns Counting when setup was
+        // completed legitimately (approved + administration + nomination).
+        // Without them the engine reports `draft` — where editing the timeline is
+        // correctly permitted — so the assertion never reached the state it names.
         $election = Election::factory()->create([
             'voting_ends_at' => now()->subHour(),        // Voting ended
+            'approved_at' => now()->subDays(2),
+            'administration_completed' => true,
+            'nomination_completed' => true,
             'results_published_at' => null,
         ]);
 
         $snapshot = $this->engine->compute($election);
 
+        $this->assertSame(
+            \App\Domain\Election\Enum\ElectionLifecycleState::Counting,
+            $snapshot->state,
+            'Precondition: the fixture must actually establish Counting.'
+        );
         $this->assertFalse($snapshot->canEditTimeline, 'Cannot edit timeline during counting (audit trail immutability)');
     }
 
@@ -199,9 +212,20 @@ class CanEditTimelineCapabilityTest extends TestCase
         $votingSnapshot = $this->engine->compute($election);
         $this->assertFalse($votingSnapshot->canEditTimeline, 'VotingActive: not editable');
 
-        // Close voting → Counting
-        $election->update(['voting_ends_at' => now()->subMinute()]);
+        // Close voting → Counting. Unlike VotingActive, which the clock alone
+        // determines, Counting additionally requires setup to have completed
+        // legitimately — including the nomination step skipped above. Without it the
+        // engine reports a constitutional anomaly and stays out of Counting.
+        $election->update([
+            'voting_ends_at' => now()->subMinute(),
+            'nomination_completed' => true,
+        ]);
         $countingSnapshot = $this->engine->compute($election);
+        $this->assertSame(
+            \App\Domain\Election\Enum\ElectionLifecycleState::Counting,
+            $countingSnapshot->state,
+            'Precondition: this step must actually reach Counting.'
+        );
         $this->assertFalse($countingSnapshot->canEditTimeline, 'Counting: not editable');
 
         // Publish results
