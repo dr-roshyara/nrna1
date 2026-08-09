@@ -2,6 +2,28 @@
 
 **Updated:** 2026-08-04
 
+---
+
+## 🔀 TWO CONCURRENT WORKSTREAMS — read this before assuming what "current work" means
+
+**Everything below this block, from `## Runtime Baseline` onward, is the programme / `PBDIGIT-48` state. It is unchanged and is NOT rewritten by this block.**
+
+**A second, independent workstream is also active** and is not represented anywhere else in this file:
+
+| | |
+|---|---|
+| **Programme** | **IERVP** — Independent Election Runtime Verification Programme, carried under **`PBDIGIT-63`** |
+| **Relationship to `PBDIGIT-48`** | **Separate.** IERVP produces runtime evidence that `PBDIGIT-48` *may later consume*. **The direction is IERVP → evidence → `PBDIGIT-48`, never reversed.** Neither modifies, supersedes or reinterprets the other |
+| **State as of 2026-08-09** | Runtime verification **PAUSED mid-experiment**; a controlled voter holds an armed credential at the agreement step. **No vote has ever been cast** |
+| **Authoritative record** | `docs/publicdigit/reviews/2026-08-09-iervp-election-runtime-verification.md` · `docs/publicdigit/reviews/2026-08-09-election-constitution-voter-eligibility-traceability.md` · session logs `.claude/sessions/2026-08-08.md` (narrative) and `2026-08-09.md` (state) |
+| **Open tickets** | `PBDIGIT-64` (voting with no candidate) · `PBDIGIT-65` (tenant context decides eligibility) · `PBDIGIT-66` (constitutionalise Election-Only) |
+| ⚠️ **Blocking caveat on all three** | **They were written on the premise that no constitutional authority existed for these decisions. That premise is now known false** — authority exists in accepted ADRs `001`/`003`/`004`/`005`. **Re-read them against those ADRs before acting.** |
+| **Code changed by IERVP** | **None.** No production code, tests, fixtures, migrations, schema or configuration, at any point |
+
+**Why this block is additive:** the section below is owned by the concurrent `PBDIGIT-48` stream and was last written by it. **Its content and its `Updated:` date are deliberately left untouched** rather than reconciled into one narrative — rewriting another stream's state would be the absorption both streams have agreed to avoid. *(Added 2026-08-09 by the IERVP stream.)*
+
+---
+
 ## Runtime Baseline
 Strategic + tactical baselines FROZEN; implementation EXECUTING. EPIC-001..004 formally closed;
 the governing baseline (Determination chain · APM ADR-T21/22/23 · Q-2 gate · 8-WP roadmap),
