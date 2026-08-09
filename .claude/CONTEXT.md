@@ -22,6 +22,22 @@
 
 **Why this block is additive:** the section below is owned by the concurrent `PBDIGIT-48` stream and was last written by it. **Its content and its `Updated:` date are deliberately left untouched** rather than reconciled into one narrative — rewriting another stream's state would be the absorption both streams have agreed to avoid. *(Added 2026-08-09 by the IERVP stream.)*
 
+### ⚠️ Identifier collision — `C-nn` means different things in the two streams
+
+**Both streams use `C-nn` identifiers, for unrelated things, and this file now contains both.** Grepping an ID here returns the wrong artifact.
+
+| ID | In the programme / `PBDIGIT-48` content below | In IERVP |
+|---|---|---|
+| **`C-13`** | a CCP-1 change item, and separately the `identifier-check.php` advisory gate (`:584`) | **a parked method candidate** — *"coverage is descriptive, completeness is normative"* |
+
+**IERVP's `C-n` candidates live in `docs/publicdigit/backlog/README.md`, not here.** Same class as the `R-89`/`R-90` collision that backlog already records as precedent. **No renumbering is proposed** — renaming another stream's identifiers, or my own after they are cited in commits, would break traceability. **The collision is recorded so it is not mistaken for agreement.**
+
+### 🔀 One known cross-stream discrepancy — recorded, NOT reconciled
+
+**The rule *"coverage is descriptive, completeness is normative"* is `BOUND` in the `PBDIGIT-48` execution plan (commit `5e9dc5f5`) and `PARKED` as candidate `C-13` in the IERVP backlog.** **One rule, two governance states, one repository.**
+
+**This may be entirely legitimate** — two streams governed by their own adopted rules. **It is recorded rather than resolved**, so a reader finding both states does not assume one is an error, and so neither stream silently adopts the other's position. **Reconciling it is a Product Owner act.** Full note: `docs/publicdigit/backlog/README.md`.
+
 ---
 
 ## Runtime Baseline
