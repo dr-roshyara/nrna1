@@ -795,3 +795,55 @@ The accepted summary records *"Relationships 1–5 established · 1 outstanding 
 **Their separation is `SD-3`'s substance:** whether these are one identity or three is part of the decision, **and engineering is not making it.**
 
 **No further programme work is authorised until `SD-3` is decided. Historical commits and evidence remain intact — nothing re-labelled, nothing rewritten, no ID minted.**
+
+---
+
+## SLICE 1 STEP 2 — first act: establish the matrix's row count. **It is not 826.**
+
+**Operating scope, recorded as an assumption because `SD-1` is still formally unanswered:** the Product Owner's framing (*"105 failed / 668 passed"*, *"Slice 1 authorised"*) points at **the measured constitutional core**, i.e. `SD-1` option **(a)**. **Cheap to correct if wrong — no row has been classified yet.**
+
+### 🔴 The denominator this programme has been quoting describes a run, not the estate
+
+| Source | Figure | What it counts |
+|---|---:|---|
+| Programme record (failure-estate assessment, plan) | **826** *(814 completed — 668 passed · 146 failed · +12 incomplete)* | **tests that reported a result in one run** |
+| **`phpunit --list-tests` over the same five paths** | **1,376** | **tests that exist** |
+
+```
+tests/Unit/Domain/Election                      428
+tests/Unit/Application/Election                 485
+tests/Feature/Election                          446
+tests/Architecture/ElectionStateMachineConsistencyTest  12
+tests/Architecture/Election                       5
+                                               ————
+                                               1,376
+```
+
+**~550 tests in the measured universe did not report a result in the run whose numbers this programme has been carrying.** **The cause is NOT established** — candidates include classes erroring before any test reports, data-provider expansion differences, or the run covering less than the stated universe. **It must be established before any coverage or completeness claim**, because it is the matrix's denominator.
+
+> **This is the programme's own invariant applied to itself — *never report the scope of the programme as the scope of the current evidence*. "826" has travelled through this work as though it described the Election estate. It describes one run's completions.**
+
+### ⚠️ Method correction — my first two counts were both wrong, and validating is what caught it
+
+| Attempt | `tests/Architecture/Election` | Verdict |
+|---|---:|---|
+| grep `public function test_…` | 5 | matched PHPUnit **by luck** — misses `#[Test]` files entirely (returned **0** for two of them earlier) |
+| "improved" scanner (`test_` + `#[Test]`/`@test`) | **17** | 🔴 **3.4× overcount** — the `@test` regex matches the string inside prose docblocks and mis-attributes the next function |
+| **`phpunit --list-tests`** | **5** | ✅ ground truth |
+
+**Both regex approaches were wrong in opposite directions, and the second was worse than the first.** The scanner reported **1,239** across the universe — plausible-looking, and **not** the answer.
+
+> **Binding for matrix construction: the row set comes from `phpunit --list-tests`, never from a source scan.** A regex cannot know what PHPUnit considers a test — attributes, inheritance, abstract bases, traits and data providers all defeat it. **This was caught only because a small path could be checked against a real run.**
+
+### Status
+
+**No matrix rows classified.** The first act of Step 2 was to establish its row set, and doing so produced a finding that changes the denominator of every later claim.
+
+**Open, and now sharper:**
+
+| | |
+|---|---|
+| **`SD-1`** | still formally unanswered; **(a) assumed** for this work |
+| **`SD-2`** | unanswered — and the 826/1,376 gap is **evidence that static reading alone cannot settle it**: only a run says which tests report |
+| **`SD-3`** | programme identity — unresolved |
+| 🔴 **new** | **why do ~550 tests in the measured universe not report a result?** Not established, not guessed |
