@@ -1,8 +1,15 @@
 # Handover — Session 2 → Session 3 · Election-Only admission
 
 **Type:** Cross-stream handover · **Date:** 2026-08-12 · **From:** Session 2 (governance) · **To:** Session 3 (implementation)
-**Status:** 🟡 **READY WITH ONE EXPLICIT BLOCKER — `BR-1.12`**
+**Status:** ✅ **FINAL** *(Session 2 governance closed)* · 🟡 **READY WITH ONE EXPLICIT BLOCKER — `BR-1.12`**
 **⛔ NO IMPLEMENTATION IS AUTHORISED BY THIS DOCUMENT.** It transfers authority and questions; it does not authorise changes.
+
+> ### ⏸️ PAUSE INSTRUCTION — the admission slice specifically
+>
+> **The Election-Only ADMISSION slice should PAUSE until `BR-1.12` is decided** *(Product Owner, 2026-08-12)*.
+> **Reason: keeping current behaviour would itself decide `BR-1.12`** — production is the only evidence for Option A, so *"we left it as it was"* selects A by default.
+> **Other already-authorised Election-Only slices that do not depend on `BR-1.12` are not paused.**
+> **Session 2 closure:** [`final governance closure`](2026-08-12-session-2-final-governance-closure.md) — which also raises **`D-MANIFEST`**: the adopted Election rules currently have **no canonical home** and live only in review documents.
 **Basis:** [`Election-Only Admission Governance Gate`](2026-08-12-election-only-admission-governance-gate.md) · [`Session 3 readiness report`](2026-08-12-session-3-governance-readiness-report.md) · [`Election-Only-first baseline`](2026-08-12-election-only-first-governance-baseline.md)
 
 ---
