@@ -70,6 +70,30 @@ Plus routes: `propose-suspension` · `confirm-suspension` · `cancel-proposal` �
 
 ---
 
+## ✅ `D-ENT-1` APPROVED — Model B (Product Owner, 2026-08-12)
+
+**Consequences package: [`../reviews/2026-08-12-d-ent-1-approval-and-consequences-package.md`](../reviews/2026-08-12-d-ent-1-approval-and-consequences-package.md)**
+
+| Item | Status |
+|---|---|
+| **`D-ENT-1`** | ✅ **APPROVED — Model B** |
+| **`D-ENT-1a`** ADR-002 | ✅ **approved to amend explicitly** · amendment **PROPOSED, `ADR-002` NOT edited** |
+| **`D-ENT-1b`** / **`Q3`** | 🔓 **OPEN** |
+| Constitutional alignment | **PROPOSED**, Constitution not edited |
+| **Implementation** | ⛔ **NOT AUTHORISED** |
+
+**The approved rule, in the Product Owner's corrected wording** — note it is *not* "durable" unqualified:
+
+> **`ElectionMembership` is the election-specific entitlement record. Admission creates an election-specific entitlement. That entitlement remains associated with the election unless a defined election-level revocation/removal rule terminates it. Whether that entitlement is currently *exercisable* is governed by the election's voting rules and voter-level suspension/governance state.**
+
+> ⚠️ **The correction has teeth: the approved rule REQUIRES a defined revocation/removal rule to be complete.** Without one there is no termination condition and the entitlement becomes unconditional by omission. **`BR-1`/revocation is therefore a BLOCKING PREREQUISITE (`P-3`), not an open question.**
+
+**`Q3` gained a domain-derived candidate (D).** Measured: election-level suspension is recorded as **`elections.suspended_at` + `suspended_by`** — a timestamped **fact** — with state **derived** by `ElectionLifecycleEngineImpl:68-70` and reversal by clearing the flag, so *"no lifecycle state is directly mutated."* **The voter level has no such column at all** (`election_memberships` has no `suspended_at`, `suspended_by`, `suspension_reason` or capability field). **So the constitutional principle is honoured one level up and violated one level down — because there is nothing to freeze.** Mirroring the in-force overlay is candidate **D**, recommended for ARB consideration **because the domain already runs it**, not because it is easiest.
+
+**Status discipline:** **Model B is the APPROVED BUSINESS MODEL, not "proven"** — Full Membership has zero runtime evidence (`members` = 0 rows). **And the current implementation is not asserted to implement it.**
+
+---
+
 ## ⚖️ ARB DECISION PACKAGE — `D-ENT-1`, awaiting decision
 
 **[`../reviews/2026-08-12-arb-decision-package-election-entitlement-retention.md`](../reviews/2026-08-12-arb-decision-package-election-entitlement-retention.md)** · **Status: MODEL B DOMAIN ANALYSIS COMPLETE — AWAITING PRODUCT OWNER / ARB DECISION. No implementation may begin until `D-ENT-1` is decided.**
