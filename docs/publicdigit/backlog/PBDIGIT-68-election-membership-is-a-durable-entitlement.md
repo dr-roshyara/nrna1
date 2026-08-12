@@ -3,11 +3,19 @@
 **Type:** Business decision **RECORDED** + consequence analysis · **Epic:** `PBDIGIT-EPIC-03` Election Management
 **Created:** 2026-08-12 · **Ruling by:** Product Owner, 2026-08-12
 **Evidence:** [`../reviews/2026-08-09-iervp-election-runtime-verification.md`](../reviews/2026-08-09-iervp-election-runtime-verification.md) — Appendices **D** (two-mode entitlement) and **E** (semantics verdict) · [`../reviews/2026-08-09-election-constitution-voter-eligibility-traceability.md`](../reviews/2026-08-09-election-constitution-voter-eligibility-traceability.md)
-**Status:** ✅ **DECISION RECORDED** · ⬜ **consequences NOT IMPLEMENTED** · **the Constitution is NOT amended by this ticket**
+**Status:** ✅ **`D-ENT-1` APPROVED — Model B** · **`ADR-002` amendment PROPOSED (not applied)** · **`Q3`/`D-ENT-1b` OPEN** · ⛔ **IMPLEMENTATION NOT AUTHORISED** · **Constitution NOT amended**
+
+> ### ⚠️ Read the approved wording first — the ruling below was CORRECTED
+>
+> **The wording in "The ruling" section immediately below is the ORIGINAL, and the Product Owner has since narrowed it.** It is retained as the record of what was first recorded. **The binding wording is:**
+>
+> > **`ElectionMembership` is the election-specific entitlement record. Admission creates an election-specific entitlement. That entitlement remains associated with the election unless a defined election-level revocation/removal rule terminates it. Whether that entitlement is currently *exercisable* is governed by the election's voting rules and voter-level suspension/governance state.**
+>
+> **Why the correction matters:** *"durable entitlement"* unqualified would drift into `import voter → permanent unconditional right to vote`, which is **not** what was decided. See [`the D-ENT-1 approval package`](../reviews/2026-08-12-d-ent-1-approval-and-consequences-package.md) — and note the consequence that **a defined revocation/removal rule is now a BLOCKING PREREQUISITE**, not an open question.
 
 ---
 
-## The ruling — Model B, approved
+## The ruling — Model B, as ORIGINALLY recorded (superseded in wording by the block above)
 
 > **`ElectionMembership` is an election-specific, durable entitlement created when a person is admitted to an election.**
 >
