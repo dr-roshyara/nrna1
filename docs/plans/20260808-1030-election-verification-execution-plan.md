@@ -958,3 +958,60 @@ two of the five named paths      874   >   historical total 814
 **Manifest:** [`2026-08-08-election-test-universe-manifest.tsv`](../publicdigit/reviews/2026-08-08-election-test-universe-manifest.tsv) — 1,376 rows, per-test `status · assertions · time · first detail line`, all from PHPUnit's own output.
 
 **Status: EXECUTION BASELINE ESTABLISHED. Master Matrix classification NOT started — it is the next authorised step, and no row carries a business intent, invariant, owner or failure classification yet.**
+
+---
+
+## MASTER MATRIX — BUILT. **Not complete, and the gap is the point.**
+
+**Artifact: [`docs/publicdigit/reviews/2026-08-08-election-master-matrix.tsv`](../publicdigit/reviews/2026-08-08-election-master-matrix.tsv)** — **1,376 rows, 26 columns**, one row per authoritative test. Rows come from the manifest (`--list-tests` + JUnit), **never from a source scan.**
+
+### The matrix is built in three visibly separated layers, so the weaker never passes for the stronger
+
+| Layer | Columns | Coverage | Source |
+|---|---|---:|---|
+| **L1 · MEASURED** | result · assertions · time · first detail line | **1,376 / 1,376 (100%)** | PHPUnit's own JUnit output |
+| **L2 · STRUCTURAL** | structural layer · structural area | **1,376 / 1,376 (100%)** | the class's **own namespace position** — evidence about *structure*, **not** about business intent |
+| **L3 · JUDGEMENT** | business intent · invariant · lifecycle state · capability · actor · authorization · entry point · decision source · **ownership** · fixture · expected · failure classification · coverage · gap · legacy · open question | 🔴 **37 / 1,376 (2.7%)** | **requires reading the test.** Everything else reads `NOT_ESTABLISHED` |
+
+> **`SLICE 1 COMPLETE` is NOT claimed.** The matrix *exists* with a measured result for every row; **business classification stands at 2.7%.** Filling those columns from names or namespaces is exactly what the commission forbids, so they were left empty rather than plausibly populated.
+
+### Failure classification — 102 failing, 24 classified on evidence
+
+| Classification | Tests | Basis |
+|---|---:|---|
+| **Mechanism not yet established** | **78** | no evidence gathered yet — Slice 2 work |
+| Test/fixture defect — missing permission seed | 8 | `Spatie PermissionDoesNotExist`: **the guard was never reached**, so this is *not* evidence of an authorization defect |
+| Mechanism **partly** established | 7 | references `…Security\OverlayInfluenceContext`, which **exists nowhere in `app/`**. Removed vs never built — **not established**, so obsolete-reference vs unbuilt-capability cannot be chosen |
+| Test/obsolete-reference defect | 5 | test names `…Security\OverlaySignal`; the class lives at `…Security\**Simplified**\OverlaySignal`. Namespace reorganisation the test did not follow |
+| **EXPECTED MIGRATION FAILURE — PROTECTED** | 4 | `DeprecationAccessGuardTest`, whose own docblock says *"RED tests"*; `STRICT_LEVEL = 1` makes level-2+ guards inactive **by design**. **Must not be "fixed"** |
+
+**Failing by structural area:** Election — general **71** · Election Security **20** · Timeline editing **8** · Security overlays **3**.
+
+### Coverage — expressed as business consequence, and deliberately thin
+
+**Only where evidence permits:**
+
+* 🔴 **Server-side timeline authorization is UNVERIFIED** — `canEditTimeline` enforcement at `PATCH /elections/{slug}/timeline` has **8 tests that all abort before reaching the guard.** *"8 tests exist"* and *"the invariant is protected"* are different statements, and only the first is true.
+* 🔴 **Three security areas contribute nothing at present** — `OverlaySignal` (5), `OverlayInfluenceContext` (7), `EvaluationEnvelope`/D5 resolver (8): 20 tests that cannot load or bind.
+* 🟢 **The deprecation ladder's readiness signal is intact** — 4 tests failing **by design**.
+* **Everything else: `NOT_ESTABLISHED`.** 1,256 tests pass; **whether they pass for the right reason is unexamined**, and a green test is not evidence of business correctness.
+
+### Architectural findings
+
+1. **The largest structural area is `Election — general` (692 of 1,376, 50%)** — tests whose namespace gives no capability signal. **L2 cannot classify half the estate**, which is itself the argument for L3 rather than a shortcut.
+2. **`Election Security` holds 392 rows (28.5%) and 23 of the 102 failures.** Security is the estate's heaviest concentration by a wide margin — **recorded as a distribution fact, not a risk claim.**
+3. **A namespace reorganisation left tests behind** (`Security\Simplified`). Established for `OverlaySignal`; **whether it is systemic is not established.**
+
+### Open questions
+
+* Which permission is missing for timeline authorization — absent from the seeder, or renamed?
+* Was `OverlayInfluenceContext` withdrawn or never built? **Possibly a business question, the `PBDIGIT-48` shape.**
+* Which side of the `EvaluationEnvelope` contract moved — test expectation or production signature? **A TypeError is a contract mismatch; direction not established.**
+* Of the 1,256 passing tests, how many verify a business invariant versus an implementation detail? **The calibration showed one passing-looking test was an N+1 probe that swallowed its authorization result.**
+
+### ⚠️ Two errors of my own, recorded because both nearly entered the matrix as facts
+
+1. **I read recursive `find` output as a path assertion.** `find app/Domain/Election/Security -name OverlaySignal.php` matched `Security/**Simplified**/OverlaySignal.php`; I reported *"EXISTS"* at the non-nested path. **The class had moved — the opposite conclusion from the same output.**
+2. **Earlier, two regex test-counters were both wrong** (5 by luck; 17 as a 3.4× overcount). **`phpunit --list-tests` is the row source for this matrix precisely because of that.**
+
+**Status: MASTER MATRIX BUILT — 1,376 rows, L1/L2 complete, L3 at 2.7%. SLICE 1 NOT COMPLETE. No production code, test, fixture or configuration changed. `SD-3` still unresolved; Session 2 / IERVP untouched.**
