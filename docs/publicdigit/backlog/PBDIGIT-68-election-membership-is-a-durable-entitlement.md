@@ -78,6 +78,28 @@ Plus routes: `propose-suspension` · `confirm-suspension` · `cancel-proposal` �
 
 ---
 
+## 🔍 GOVERNANCE WEIGHT ASSESSMENT — the Officer Guide: **D, mixed authority**
+
+**[`../reviews/2026-08-12-officer-guide-governance-weight-assessment.md`](../reviews/2026-08-12-officer-guide-governance-weight-assessment.md)** · **Recommendation: `D` — MIXED AUTHORITY; SECTION-LEVEL REVIEW REQUIRED.** **Nothing promoted; the guide was not edited.**
+
+**By the repository's own executable test of governedness it is NOT a governed document:** no knowledge card (*"every governed doc needs a knowledge card"*), **not a registered documentation root**, and **cited as authoritative by nothing** — not the Constitution, not an ADR, not a test, not a code comment. Provenance: **one commit, 2026-03-22, bundled into a feature commit as "docs"**, never revised, no steward, no change control.
+
+🔑 **The provenance chain decides its character.** An architecture document (`architecture_legacy/.../Voterlist.md`) **specified dedicated `approved_at`/`approved_by`/`suspended_at`/`suspended_by` columns and voter-suspension audit logging.** The developer guide records that its *"errors were corrected before implementation"* — the decision being *"None exist → **used existing `status` column**."* **So:**
+
+1. **The guide is DESCRIPTIVE of an implementation that deliberately deviated from its own architecture document.**
+2. 🔑 **The `status` overload was a deliberate, recorded decision — not drift.** Rationale: *"None exist"* — **availability, not modelling. `Q3` candidate D is the ORIGINAL design, rejected on cost grounds.**
+3. 🔑 **The audit gap is a deviation from documented design intent**, not an omission — the audit logging was specified and dropped.
+
+*(And `Voterlist.md` is not an authored spec either: it opens "✅ You're Absolutely Right!" — an assistant-conversation transcript, in a folder an ADR declares legacy.)*
+
+**Impact on `BR-1`: the guide speaks to 6 of 13 questions and authoritatively settles 0.** It would specify `BR-1.2` and `BR-1.8` *as statements awaiting ratification*. **Recognition alone would settle nothing** — every business rule in it still needs constitutional/ADR ratification.
+
+**Two contradictions must be resolved before any recognition:** 🔴 **`invited`** is documented as a real state with **no implementation**; 🔴 **"permanent" removal is defeated** by `approve()` having no guard against a `removed` row. Plus the guide twice describes suspension as an *undo/ineligibility device*, which conflicts with the approved separation of entitlement from eligibility.
+
+**Proposed (not performed):** recognise **only** the business statements as the *operational expression* of rules ratified elsewhere; recognise **none** of the UI content — otherwise badge colours, button labels and a CSV filename become business rules. **The guide should derive authority, never hold it.**
+
+---
+
 ## 🏛️ GOVERNANCE DECISION PACKAGE — `BR-1` partially resolved, 11 decisions await
 
 **[`../reviews/2026-08-12-election-membership-governance-decision-package.md`](../reviews/2026-08-12-election-membership-governance-decision-package.md)**
