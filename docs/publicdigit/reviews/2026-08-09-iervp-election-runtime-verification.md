@@ -351,3 +351,109 @@ membership (tenant = namaste-nepal-gmbh)   VISIBLE
 **Restore the account's working organisation and retest on `test-election-1-62a8be36`.** That separates the residue-induced `PBDIGIT-65` symptom from any genuine entitlement-vs-capability question, which cannot be observed until the election reaches `voting_active`.
 
 **Not done here — changing a user's working organisation is a data change, and this commission is read-only.**
+
+---
+
+# Appendix D — Voter entitlement under the two organisation modes (2026-08-12)
+
+**Commission:** the Product Owner's eight-step correction — establish entitlement against the **election's voter-source strategy**, not against "membership" generically.
+**Read-only. No code, tests, fixtures, configuration or data changed.** All rows **MEASURED**.
+
+**This supersedes Appendix C's recommendation** (*"restore the org context and retest"*), which was too narrow: it would have tested the symptom without establishing the entitlement rule.
+
+## The eight steps
+
+| # | Question | Answer |
+|---|---|---|
+| **1** | Organisation mode of `namaste-nepal-gmbh` | **`uses_full_membership = false` → Election-Only** |
+| **2** | `test election 1` persisted strategy | **`election_only`** |
+| **3** | Was the strategy snapshotted at creation? | ✅ **Yes, and it matches the org mode.** `VoterSourceStrategy::fromElection()` **throws** on `NULL` rather than deriving — honouring *"must be passed from election context, never derived internally"* |
+| **4** | `ElectionMembership` for `roshyara@gmail.com`? | ✅ **`role=voter, status=active`** |
+| **5** | Full Membership → org Member required? | **Not applicable here** — this election is Election-Only |
+| **6** | Election-Only → is `ElectionMembership` sufficient? | ✅ **Yes — and confirmed at data level** (below) |
+| **7** | **Does the voting page's `isEligible` respect the strategy?** | ❌ **No — zero references.** See below; **this is not automatically a defect** |
+| **8** | Lifecycle / access / authority | `test election 1` is **`setup_nomination`** — no ballot exists yet regardless |
+
+> **Entitlement verdict for `roshyara@gmail.com` on `test election 1`: ✅ ENTITLED, per the Product Owner's own table (Election-Only + ElectionMember = entitled).** **The refusal was never an entitlement decision.**
+
+## Step 6 confirmed against real data
+
+Voters per election, and how many lack an organisation `Member` record:
+
+| Election | Strategy | Voters | Without org `Member` |
+|---|---|---:|---:|
+| `namaste 2026` | `election_only` | 3 | **3** |
+| `test election 1` | `election_only` | 2 | **2** |
+| `Election 2026` (iervp-experiment-b) | `election_only` | 5 | **5** |
+| `Election 2026 Round 2` | `election_only` | 5 | **5** |
+| `Election 2026` (iervp-election-only-org) | `election_only` | 5 | **5** |
+| `Election 2026` (pbdigit63-…-org) | **`full_membership`** | **0** | 0 |
+| `Election 2026` (pbdigit63-…-org-1) | **`full_membership`** | **0** | 0 |
+
+**Every Election-Only voter lacks an organisation `Member` record — and that is exactly correct.** The Product Owner's model is confirmed by data:
+
+```
+Election-Only:     ElectionMember  ->  entitlement          (no org Member required)
+Full Membership:   org Member  ->  ElectionMember  ->  entitlement
+```
+
+## 🔑 Step 7 in full — where the strategy *is* enforced
+
+**The strategy is consulted at ASSIGNMENT time, and never at EXERCISE time.**
+
+```
+IMPORT / VOTER MANAGEMENT              VOTING PAGE / start()
+VoterImportService, ElectionVoter-     ElectionVotingController
+Controller::store()                    :41-44, :106-113
+        |                                      |
+        v  VoterSourceStrategy::fromElection    v  reads ElectionMembership ONLY
+        v  eligibilityService->isEligibleVoter  v  role === 'voter' && status !== 'removed'
+        v  (mode-aware: org Member for full,        ZERO strategy references
+           org user for election-only)
+        |                                      |
+        +----------> ElectionMembership <-------+
+```
+
+**Consequences, stated separately because they differ by mode:**
+
+* **Election-Only — correct.** `ElectionMembership` *is* the entitlement; re-consulting the strategy would add nothing.
+* **Full Membership — a point-in-time grant, not a continuous invariant.** The org-Member condition is verified **once, at assignment**, and **never re-checked when the ballot is served.** If a person's organisation membership lapses, is revoked, or has its fees fall out of `paid|exempt` **after** import, **their election entitlement survives unchanged.**
+
+> **The open DDD question this raises — and it is the Product Owner's, not engineering's:**
+> **Is voter entitlement a point-in-time grant made at assignment, or a continuous invariant that must hold at the moment the ballot is served?**
+> The implementation currently answers *point-in-time*. **Nothing records that as a decision.**
+
+## ⚠️ Full Membership mode has never been exercised end to end
+
+**Both `full_membership` elections have zero voters.** So the Product Owner's table row —
+
+| Full Membership | org Member ❌ | ElectionMember ✅ | should be **NOT entitled** |
+
+— **has never been tested in this system, and cannot be tested today**, because two prerequisites are independently blocked:
+
+* **`IERVP-3`** — `POST /organisations/{org}/members` can never authorise (no `MemberPolicy`, `Gate::allows` false even for the owner → 403). **No member can be created through the supported route.**
+* **`IERVP-2`** — `grants_voting_rights` defaults `false` and **is written by no controller, request or UI field**, so any member created another way would still fail the full-membership eligibility predicate.
+
+> **Full Membership mode is configured, snapshotted, documented and eligibility-checked — and is currently unreachable through supported journeys.** `OBSERVED`. **This is the strongest argument yet for prioritising `IERVP-2` and `IERVP-3`, which were both deliberately left unticketed.**
+
+## Latent hazard — three elections carry a `NULL` strategy
+
+`Demo Election`, `Demo Election - Public Digit`, `Demo Election - Namaste Nepal` have **`voter_source_strategy = NULL`**. Any path calling `VoterSourceStrategy::fromElection()` on them **throws a `RuntimeException`**. A backfill command exists (`app:backfill-voter-source-strategy`, with `--audit-only`). **Not run — that would be a data change.**
+
+## What this establishes, and what it does not
+
+| Claim | Verdict |
+|---|---|
+| The two-mode entitlement model is implemented as the Product Owner describes | ✅ **CONFIRMED** for Election-Only, at data level |
+| `ElectionMembership` is election-scoped, distinct from organisation `Member` | ✅ **CONFIRMED** — every Election-Only voter has the former and not the latter |
+| The strategy snapshot is respected at assignment | ✅ **CONFIRMED** — mode passed from election context, `NULL` fails closed |
+| The voting page respects the strategy | ❌ **It does not consult it** — correct under Election-Only, **unvalidated under Full Membership** |
+| Full-Membership entitlement behaves per the table | ❌ **NOT VERIFIED — no data exists, and the mode is unreachable** |
+| The Constitution is wrong about eligibility | ❌ **STILL NOT DEMONSTRATED** — the constitution remains absent from this path (see the companion review) |
+| `roshyara@gmail.com` is entitled on `test election 1` | ✅ **YES** — the refusal was `PBDIGIT-65` plus a pre-voting lifecycle |
+
+**Decisions A–E from the Product Owner's model map cleanly onto the code, except that D and E are not reached in the reported case, and C is enforced only at assignment.**
+
+## Recommended next step — one
+
+**Make Full Membership mode reachable** (`IERVP-3`, then `IERVP-2`), then test the four-row table directly. **Until then, half the entitlement model is unverifiable — and no conclusion about the Constitution's adequacy can be drawn from a mode that cannot run.**
