@@ -1,0 +1,95 @@
+# Manifesto canonicalization — validation report and Session-3 handover
+
+**Type:** Governance validation + handover · **Date:** 2026-08-12 · **Programme:** IERVP (Session 2)
+**Subject:** [`docs/publicdigit/business_rules/ELECTION_MANIFESTO.md`](../business_rules/ELECTION_MANIFESTO.md)
+**⛔ No production code, test, fixture, schema or migration change. `ADR-002` not amended. `ElectionConstitution` not modified. `BR-1.12` not resolved. Full Membership not resolved. No suspension question resolved. Session 1's Master Matrix not read, classified, consumed or modified.**
+
+---
+
+## 1 · Placement and naming — derived, with one judgement declared
+
+| | |
+|---|---|
+| **Root** | **Derived, not chosen:** `php scripts/doc-placement.php --scope=product-specific --domain=publicdigit` → **`docs/publicdigit`**, exit **0** *(ruled; not `PENDING`)* |
+| **Sub-root** | **`business_rules/`** — the existing sub-root for business rules in that root. **Not `reviews/`** *(evidence)*, **not `adr/`** *(architectural decisions)*, **not `architecture/`* |
+| **Competing Manifesto?** | **None.** A filename search for *manifesto* across `docs/`, `architecture/`, `engineering/` and `architecture_legacy/` returns nothing. **No second Manifesto was created** |
+| ⚠️ **Naming — a declared judgement** | The sole precedent in `business_rules/` is **timestamped** (`20260806_0818_how_many_organisation.md`). I used a **stable** name, `ELECTION_MANIFESTO.md`, because **stable rule IDs must resolve to a stable path** — a canonical artifact referenced as `EM-EO-001` cannot live behind a moving filename, and the precedent is a dated *decision record* rather than a standing authority. **This is a convention judgement the Product Owner may override; the file can be renamed with no loss** |
+| **Knowledge card** | **Not added.** The template states it applies to *"every governed document **under `docs/knowledge/`**"*; this artifact is under `docs/publicdigit/`, and no artifact in that root carries one. **Adding one unasked would invent a convention** — flagged rather than assumed |
+
+## 2 · Governance validation — the pre-commit checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | **Every adopted rule has an explicit prior authority** | ✅ §8 traceability table — 26 rules, each with prior authority, adoption date, scope, status |
+| 2 | **No new business rule invented** | ✅ Every rule traces to `D-ENT-1`, an `A`-series adopted rule, a hierarchy clause, the `Q-B1` closure, or the sequencing decision |
+| 3 | **No unresolved question accidentally promoted** | ✅ 17 open items are in §9, **explicitly marked as not business rules**. `BR-1.12` appears **only** as `EM-OPEN-001` |
+| 4 | **No Full Membership rule leaked into Election-Only** | ✅ `EM-FM-001`…`006` are in a **separate section**, marked **DEFERRED**, with `EM-SEQ-002` forbidding inference |
+| 5 | **No implementation detail became a business rule** | ✅ No table, column, class, service or controller is named in any rule. **`EM-VOC-002` was deliberately phrased without naming tables**, to state the business meaning without importing schema |
+| 6 | **No Officer Guide statement promoted without authority** | ✅ Excluded in §10; the `D` assessment stands; retained as evidence only |
+| 7 | **Every rule has a stable ID** | ✅ `EM-ENT-`, `EM-EO-`, `EM-GOV-`, `EM-VOC-`, `EM-SEQ-`, `EM-FM-`, `EM-OPEN-`. **No collision with existing identifiers** (`PBDIGIT-`, `ADR-`, `ES-`, `EM-` was unused) |
+| 8 | **Obsolete wording not silently rewritten** | ✅ Where the Product Owner corrected wording, the **corrected** form is used and the correction is noted *(`EM-ENT-003`)* |
+| 9 | **Historical source remains traceable** | ✅ §8 and the closing note point at `PBDIGIT-68` and the review artifacts as the record of **how** each decision was reached |
+| 10 | **Rules with an existing canonical home not duplicated** | ✅ §7 **references** `ADR-T11`, `ElectionConstitution`, `ADR-002`, `ADR-001`/`003`, `VoterSourceStrategy` rather than copying them — **duplication is the failure mode this artifact exists to end** |
+
+## 3 · Migrated — 26 adopted rules
+
+**Entitlement (7):** `EM-ENT-001`…`007` · **Election-Only (4):** `EM-EO-001`…`004` · **Governance (3):** `EM-GOV-001`…`003` · **Vocabulary (3):** `EM-VOC-001`…`003` · **Sequencing (2):** `EM-SEQ-001`, `002` · **Full Membership, deferred (6):** `EM-FM-001`…`006`.
+
+**One annotation carried, not resolved:** `EM-ENT-003`'s *"unless a defined election-level removal rule terminates it"* **forward-references an unratified rule** (`EM-OPEN-004`). It is recorded as ADOPTED because the Product Owner adopted that wording — **with the incompleteness marked rather than smoothed over.**
+
+## 4 · Deliberately NOT migrated
+
+Production behaviour · test names, comments and fixtures · Officer Guide statements · model docblocks and `architecture_legacy/` documents · schema and column semantics · proposed decisions, recommendations and options · unresolved questions · `FM-1`…`FM-15` as Election-Only rules · Session 1's findings · **and any Session 2 *finding* that was not an adopted decision.**
+
+> **The most consequential exclusion:** **production currently yields `active` on admission — and that was NOT migrated.** It is the only evidence for one side of `EM-OPEN-001`, so migrating it would have **decided `BR-1.12` by default.** That is precisely the outcome the canonicalization had to avoid.
+
+## 5 · One thing I did not do, and will not
+
+> **`EM-OPEN-017`: this Manifesto's own ratification is not recorded.**
+>
+> It was created under an instruction to canonicalize. **Whether this artifact, at this location and under this name, is *the* ratified canonical home is `D-MANIFEST` — a governance decision that has not been separately taken.** The Manifesto says so in its own §9.
+>
+> **I have not declared it authoritative by its own authority.** It is offered as the canonical home.
+
+---
+
+## 6 · Session-3 handover
+
+### 6.1 What changed for Session 3
+
+| Before | Now |
+|---|---|
+| Business rules had to be read from **review documents** | **Read them from the Manifesto.** Review documents are evidence and history |
+| Tests had no stable rule identifiers | **Every rule has a stable ID** — cite `@see EM-EO-003` etc. |
+| `D-ENT-1` / proposal v2 were being considered as an **interim** source | ❌ **Do not.** That was declined by the Product Owner, and it would recreate the scattering the Manifesto ends |
+
+### 6.2 Rules available for Slice 1
+
+**Election-Only + both-modes rules are available now:** `EM-EO-001`…`004` · `EM-ENT-001`…`002`, `004`…`007` · `EM-GOV-001` · `EM-VOC-001`…`003` · `EM-SEQ-001`, `002`.
+
+**Conditionally available:** `EM-ENT-003` *(termination clause blocked by `EM-OPEN-004`)* · `EM-GOV-002`/`003` *(actor count blocked by `EM-OPEN-002`)*.
+
+**Not available:** `EM-FM-001`…`006` — **DEFERRED.**
+
+### 6.3 🔴 Hard stops
+
+1. **`EM-OPEN-001` (`BR-1.12`) blocks the ADMISSION slice.** **A test asserting that admission yields `active` would DECIDE that question, not verify it** — production is the only evidence for that option. **STOP if the slice reaches it.**
+2. **If a test cannot be mapped to a Manifesto rule: STOP.** Do not invent the rule. **Do not modify the Manifesto.** Return the missing-authority question to Session 2 / the Product Owner.
+3. **Never add or alter a Manifesto rule to make a test pass.** A missing rule is a governance question, not a gap to fill.
+4. **Cross-mode stop:** if a change would simultaneously define Full Membership semantics — **STOP and report the cross-mode impact.** *(Admission is mode-parameterised, so this should not trigger for Slice 1; it will trigger on suspension or removal work.)*
+
+### 6.4 Guardrails carried forward
+
+Do not restore the deliberately dropped organisation foreign key · do not create `Member` rows · do not activate the Full Membership admission policy · do not activate the dormant organisation-membership eligibility query *(it would deny every voter)* · do not vacate the current non-exercisability representation before a replacement enforces · **`ADR-T11`** — nothing may identify or mutate a cast ballot · do not cite `ElectionUser` as prior art *(a dead legacy model built on a retired flag; now parseable, which makes the mistake easier)*.
+
+### 6.5 Session boundaries
+
+**Session 2** establishes and canonicalizes **what is authoritative** · **Session 3** implements **what is authoritative** · **Session 1** independently verifies **whether it is verified**. **No session performs another's job.** The five conformance questions `B-1`…`B-5` remain **engineering** questions, **not** business decisions, and **must not be auto-converted into tickets**.
+
+---
+
+## 7 · Boundary
+
+**No production code · no test · no fixture · no schema · no migration change. `ADR-002` not amended. `ElectionConstitution` not modified. No second Manifesto created. No knowledge card invented. `BR-1.12`, `BR-1.13`, `Q3`, `Q-E1`, `Q-E2`, `BR-1.1`/`1.2`, `BR-1.8` and `FM-1`…`FM-15` not resolved. Officer Guide not promoted. Session 1's Master Matrix not read, classified, consumed or modified.**
+
+**Next action belongs to the Product Owner / ARB: `EM-OPEN-001` (`BR-1.12`) and `EM-OPEN-017` (`D-MANIFEST` — ratify this artifact).**
