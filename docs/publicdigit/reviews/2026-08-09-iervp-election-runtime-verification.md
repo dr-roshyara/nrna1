@@ -457,3 +457,97 @@ Controller::store()                    :41-44, :106-113
 ## Recommended next step — one
 
 **Make Full Membership mode reachable** (`IERVP-3`, then `IERVP-2`), then test the four-row table directly. **Until then, half the entitlement model is unverifiable — and no conclusion about the Constitution's adequacy can be drawn from a mode that cannot run.**
+
+---
+
+# Appendix E — Is `ElectionMembership` a durable entitlement or a projection? (2026-08-12)
+
+**Commission:** determine the business semantics, and **do not choose an interpretation merely because the code behaves that way.**
+**Read-only. No code, tests, fixtures, configuration or data changed. The backfill command was NOT run.**
+
+## Verdict
+
+> ## **NOT SPECIFIED**
+>
+> **The runtime behaves as point-in-time entitlement. No artifact decides that it should. The behaviour arises from the absence of a revocation mechanism, not from a rule.**
+
+**This is deliberately not classified as `POINT-IN-TIME`.** Recording the observed behaviour as the rule would be exactly the error this programme has withdrawn ten claims for: **implementation is evidence of what the system does, never of what the business decided.**
+
+## Evidence, source by source
+
+| Source | What it says about **remaining** entitled | Verdict |
+|---|---|---|
+| **Election Constitution** (`ElectionConstitution.php`) | **`ElectionMembership` appears 0 times** (companion review, Finding 3) | **silent** |
+| **ADRs** (`001`, `003`, `004`, `005`) | nothing on voter entitlement duration | **silent** |
+| **Cited design doc** — `architecture_legacy/election/voter/20260317_2208_Voter_model.md`, referenced by the live model's `@see` | Covers **hard `ON DELETE CASCADE`** for user/organisation deletion and a **manual `remove($reason)`**. **Nothing on a person ceasing to be an organisation `Member` while the organisation still exists** | **silent on the actual question** — and it is **archived under `architecture_legacy/` while live code cites it** |
+| **Model docblock** | *"Tracks who is **eligible to vote** in which election"* — asserts eligibility, **does not say when it is evaluated** | **ambiguous** |
+| **Tests** | `VoterEligibilityTest` header: *"A user **can become** a voter ONLY IF they are an active formal member…"* | **specifies BECOMING, never REMAINING** |
+| **Runtime** | **no observer, no listener, no provider** references `ElectionMembership` for revocation; **no foreign key to `members` or `organisation_users` exists at all** (only `elections` CASCADE and `assigned_by` SET NULL) | **enforces nothing — by omission** |
+
+### The test evidence is the sharpest, and it points one way
+
+Three tests exercise an expired/invalid membership. **All three gate assignment; none gates the ballot:**
+
+* `test_ineligible_if_membership_expired` — the eligibility predicate
+* `test_store_rejects_member_with_expired_membership` — **rejects at `store()`**
+* `test_import_preview_marks_expired_member_as_invalid` — **at import preview**
+
+> **The estate specifies the gate three times over and the ballot not once.** No test assigns a voter, invalidates their organisation membership, and then re-checks whether they may still vote.
+
+## The two candidate rules, stated so the decision has alternatives
+
+```
+Day 1   org Member  ->  assigned  ->  ElectionMembership(role=voter, status=active)
+Day 20  org membership removed / expires / fees lapse
+```
+
+| | Model A — point-in-time grant | Model B — continuous eligibility |
+|---|---|---|
+| **Meaning** | assignment **confers** entitlement; the election owns it thereafter | `ElectionMembership` is a **projection**; the underlying condition must still hold |
+| **Day 20 result** | still entitled | no longer eligible |
+| **Argues for it** | an electorate should be **stable once an election is under way**; late revocation is a disenfranchisement risk and an audit problem | membership is the basis of the franchise; someone who left the organisation should not vote in its election |
+| **Current code** | ✅ **this is what happens** | ❌ nothing implements it |
+| **Any artifact deciding it** | ❌ **none** | ❌ **none** |
+
+**Both are defensible. The difference is a franchise rule, not a technical preference** — and it becomes visible precisely when an election is long-running, which is when it matters most.
+
+**Note the asymmetry that makes this urgent:** under Model B the current system **over-enfranchises** (a departed member keeps a ballot). Under Model A it is correct. **The system cannot currently tell you which it is doing on purpose.**
+
+## Scope of the exposure — measured, and narrow *today*
+
+**The question is only reachable in Full Membership mode**, because Election-Only mode has no organisation-`Member` precondition to lapse.
+
+**Both `full_membership` elections have zero voters** (Appendix D), and the mode is **currently unreachable** (`IERVP-3`, `IERVP-2`).
+
+> **So the ambiguity is live in the model and dormant in the data.** That is the best possible moment to decide it — **before** any election runs in a mode where it bites, and **before** `IERVP-2`/`IERVP-3` make the path reachable.
+
+## Separate finding — election configuration integrity
+
+**Recorded apart from the entitlement model, as instructed.**
+
+```
+Election configuration integrity
+  ├── voter_source_strategy present  ->  valid          (7 elections)
+  └── voter_source_strategy NULL     ->  invalid/incomplete (3 elections)
+```
+
+`Demo Election`, `Demo Election - Public Digit`, `Demo Election - Namaste Nepal` carry **`NULL`**. `VoterSourceStrategy::fromElection()` **throws** rather than deriving — **good governance**: a missing constitutional configuration is treated as an invalid state, not silently inferred. **But the estate contains elections that do not satisfy the current invariant.**
+
+**A backfill command exists (`app:backfill-voter-source-strategy`, with `--audit-only`). It was NOT run. A backfill is a business-data mutation and needs its own authorisation.**
+
+## What this establishes
+
+| Claim | Verdict |
+|---|---|
+| The semantics are written down somewhere | ❌ **No** — five sources, all silent or ambiguous |
+| Tests specify the entry condition | ✅ **Yes, three times** |
+| Tests specify the continuing condition | ❌ **No, never** |
+| Runtime enforces revocation | ❌ **No mechanism exists** |
+| Therefore the rule is point-in-time | ❌ **Does not follow** — that is behaviour, not decision |
+| The Constitution is defective on this point | ❌ **NOT ESTABLISHED** — it is **silent**, and silence is only a defect once the business says the rule belongs there |
+
+## Recommended next step — one, and it is a decision, not code
+
+**Answer the franchise question — Model A or Model B — and record it where the next reader will find it.** Only then does it become possible to say whether `ElectionMembership` is an entitlement or a projection, and therefore whether the voting page's omission of the strategy is correct or a gap.
+
+**Do not amend the Constitution yet.** Both halves of Appendix D's diagram still need proving, and **an unreachable mode cannot validate a rule.**
