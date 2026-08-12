@@ -3,13 +3,25 @@
 **Type:** Repository hygiene · **Epic:** cross-cutting · **Created:** 2026-08-12
 **Found by:** IERVP `D-ENT-1` consequences package — **incidentally, while probing for a `Q3` precedent**
 **Evidence:** [`../reviews/2026-08-12-d-ent-1-approval-and-consequences-package.md`](../reviews/2026-08-12-d-ent-1-approval-and-consequences-package.md)
-**Status:** `OPEN — not fixed by the finding commission` (it was governance-scoped; this is code)
+**Status:** ⚠️ **PARTIALLY RESOLVED** — `ElectionUser.php` repaired by the Product Owner 2026-08-12; `VoterSlugStep.php` still unparseable (it was governance-scoped; this is code)
 
 | | |
 |---|---|
 | **Customer impact** | **None observed.** Both files are unreachable at runtime |
 | **Real cost** | **Any full-autoload or static-analysis pass over `app/` fails on them**, so tooling that would sweep the whole tree cannot run clean |
 | **Confidence** | **High** — `php -l` on every `.php` file under `app/`: exactly 2 failures |
+
+---
+
+## ✅ PARTIALLY RESOLVED — 1 of 2 repaired by the Product Owner (2026-08-12)
+
+**`app/Domain/Election/Models/ElectionUser.php` now parses.** The Product Owner removed the duplicate `<?php` (2 lines), stating *"it was must to edit"*. **Verified:** `php -l` clean; the full `app/` sweep is down from **2 unparseable to 1**.
+
+**So the disposition question this ticket recorded is answered for that file: REPAIR, not delete** — chosen by the Product Owner, not inferred by engineering.
+
+> ⚠️ **The `Q3` prior-art warning below STILL STANDS, and arguably matters more now that the file loads.** `ElectionUser` remains a **legacy flat voter model** built on `is_voter` — a flag `PBDIGIT-35` established **exists in no database** — and it has **no production callers.** **A parseable dead model is easier to mistake for prior art than an unparseable one.** It must not be cited as a precedent for the exercisability decision.
+
+**Still open:** `app/Http/Middleware/VoterSlugStep.php` — stray backtick, line 279; **unregistered** in any middleware stack.
 
 ---
 
