@@ -1638,3 +1638,57 @@ $table->foreign(['user_id','organisation_id'])
 **Status: 🎯 39 / 39 COMPLETE — AFFECTED 0 · NOT AFFECTED 39 · UNDETERMINED 0.** Plus `ElectionVoterSuspensionTest` (7) from the re-derivation. **`PBDIGIT-49` / `D-ENT-1` — original or amended — has ZERO measured impact on the Master Matrix.** L3 = **109 / 1,376**. `ADR-002` unamended · no production, schema, migration, test or fixture change.
 
 > **The estate never encoded the assumption `D-ENT-1` was convened to settle — so the decision changes no existing verification. It creates NEW verification obligations (workflow A, Phase 2) and exposes TWO conformance gaps, one of which is in PHASE 1's path.**
+
+---
+
+## ⛔ CORRECTION — `CF-1` and `CF-2` are WITHDRAWN. Both were wrong.
+
+**I read the CREATE migration and reported its foreign key as the live schema without checking for later ALTERs.** There is one: **`2026_05_19_000001_harden_election_memberships_for_election_only_mode.php` (Phase C.1) DROPPED the composite FK** — for exactly the reason I "discovered":
+
+> *"Drop composite FK to user_organisation_roles — **Root bug: FK blocks election-only mode** (users only have `OrganisationUser`, not `UserOrganisationRole`) — Application-level `VoterQualificationPolicy` takes over this validation."*
+
+**Verified against the live database, not a file:**
+
+```sql
+SELECT conname FROM pg_constraint WHERE conrelid='election_memberships'::regclass AND contype='f';
+  election_memberships_assigned_by_foreign
+  election_memberships_election_id_organisation_id_foreign     -- and nothing else
+```
+
+| | Was reported | Actually |
+|---|---|---|
+| **`CF-2`** | *"no ElectionMembership can exist without a `user_organisation_roles` row — Election-Only admission blocked"* | 🔴 **WITHDRAWN. The FK does not exist. The schema does NOT block Election-Only admission** — and it was removed *deliberately, for this purpose,* in May |
+| **`CF-1`** | *"the schema CASCADE-DELETES where the rule says suspend"* | 🔴 **WITHDRAWN. There is no cascade from organisation-membership deletion.** `onDelete('cascade')` existed only on the dropped FK; `down()` would restore it as `restrict` |
+
+**Why I believed it:** the CREATE migration **and** `ElectionShowControllerTest`'s comment *(`// FK constraint: (user_id, organisation_id) must exist in user_organisation_roles`)* agreed. **They agreed because both are stale — the test comment describes a constraint dropped three months ago.** > **Two stale sources agreeing is not corroboration.** **Lesson recorded: a schema claim must be queried from the live database, never read from a migration file.** *(Same class as the earlier recursive-`find` misread: one source, structural claim, opposite conclusion.)*
+
+**What survives the withdrawal:** **workflow A's coverage gap.** Its basis was never the FK — it was the measurement that **no test removes organisation membership at all.** That measurement stands. Indeed the withdrawal *strengthens* it: with no FK and no cascade, **workflow A has no database mechanism whatsoever** — it must be application-level, and nothing exercises it.
+
+### 🔴 `CF-3` (new, and the real finding) — the FK's named replacement does not exist
+
+The migration transferred integrity to the application and warned: *"**The database FK is gone. Integrity is now application responsibility.**"* — naming **`VoterQualificationPolicy`**.
+
+```
+find app -iname "*VoterQualification*"   →   (nothing)
+```
+
+> **`VoterQualificationPolicy` does not exist under that name.** **A structural guarantee was removed in favour of a named application-level policy, and the named artifact is absent.**
+
+⚠️ **NOT claimed:** that the validation is absent. **`app/Domain/Election/Enum/VoterSourceStrategy.php` consumes `uses_full_membership` and is a strong candidate for discharging it.** **Whether it does is `MECHANISM NOT ESTABLISHED` — and it sits OUTSIDE the 1,376 universe** (SD-4A class B, *"voter source strategy"*, never read).
+
+### `Q-B1` — the modes are already implemented; the PO still decides, but conformance may already hold
+
+**OBSERVED IMPLEMENTATION, explicitly NOT promoted to business authority:**
+
+| Concern | Table | Mode |
+|---|---|---|
+| Account/tenant association | **`organisation_users`** | what an **Election-Only** participant has *(per the migration's own words)* |
+| **Organisation Membership** | **`members`** — with `membership_types`, `membership_fees`, `renewals`, `applications`, **`grants_voting_rights`** | **Full Membership** — *"members table with paid/exempt fees"* |
+| Roles | `user_organisation_roles` | orthogonal to both |
+| Mode switch | **`organisations.uses_full_membership`** (2026-04-15) — consumed by `VoterSourceStrategy`, `VoterImportController`, `OrganisationSettingsController` | both |
+
+> **The implemented answer to `Q-B1` corresponds to the reviewer's OPTION B: an Election-Only participant holds an `organisation_users` association but is NOT a `Member` of the organisation.** **This does NOT settle `Q-B1`** — *"the code does it"* has never been allowed to mean *"the business requires it"* in this programme. **It means the PO's likely answer and the implemented reality appear to agree**, and Session 3 is not designing greenfield: **Election-Only Mode already exists in the schema with a designated mode switch.**
+
+**Still not chosen by engineering, and now moot as posed:** nullable `organisation_id` · dropping the FK *(already dropped)* · a different association · auto-creating organisation membership. **Recorded so no session harvests a design from this report.**
+
+**Status: `CF-1` WITHDRAWN · `CF-2` WITHDRAWN · `CF-3` OPEN · workflow A coverage gap STANDS (strengthened) · `Q-B1` still the PO's, with implemented evidence attached. 39/39 unaffected — no row classification depended on the FK. L3 = 109/1,376. No production, schema, migration, test or fixture change.**
