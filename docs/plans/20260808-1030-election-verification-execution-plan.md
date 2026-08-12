@@ -1750,3 +1750,46 @@ My first pass reported `CodeController` as a second, **ungated** `ElectionMember
 > **All four tests of the ENFORCING components sit outside the 1,376-test universe; the two inside test persistence.** **The mechanism guaranteeing admission integrity is verified — but not by the population this programme adopted to verify Election correctness.** **Direct, measured evidence for `SD-4`** *(SD-4A class B, *"voter source strategy"*, predicted-relevant and now confirmed relevant).* **Not imported. `SD-1` unchanged.**
 
 **Status: `CF-3` CONFIRMED (A) · `CF-1`/`CF-2` withdrawn · no `VoterQualificationPolicy` created · no schema, production, test or fixture change · nothing classified for Session 3. `Q-B1` remains the PO's; the implemented separation (`organisation_users` vs `members`) is now traced to the enforcing code, not just the table list. L3 = 109/1,376.**
+
+---
+
+## `SD-4` admission-boundary evidence produced · `CF-3` closure preserved · one overstatement corrected
+
+**Correction accepted, and it was a real overstatement.** I wrote *"there is nothing to build here."* **What `CF-3` established is narrower: no missing admission-INTEGRITY mechanism exists to build.** **It did NOT establish that the Election-Only admission workflow is complete** — **`BR-1.12` is unresolved**, and the organisation-linkage behaviour still needs interpretation. **`CF-3` remains CLOSED/DISCHARGED and will not be reopened; `VoterQualificationPolicy` will not be created.**
+
+**Full evidence: `docs/publicdigit/reviews/2026-08-12-sd4-admission-verification-boundary-evidence.md`.**
+
+### 🔴 The measured headline
+
+> **The adopted universe verifies the DEFERRED mode and excludes the mode being implemented FIRST.**
+
+| | Rows | Universe | Mode |
+|---|---:|---|---|
+| `VoterEligibilityTest` | **27** | **IN** | 🔴 **Full Membership ONLY** — mode-token count: `election_only` **0**, full-membership **6**; all 27 names are fees/type/expiry/member-record concepts |
+| `EloquentVoterEligibilityQueryServiceTest` | 8 | OUT | **both** — incl. the **only 4 Election-Only** eligibility rows anywhere |
+| `BulkAssignVotersHandlerTest` · `AssignVoterHandlerTest` | 7 · 4 | OUT | enforcement wiring — **incl. the row that verifies `CF-3`'s filter-before-write guarantee** |
+| `VoterEligibilityPolicyContractTest` | 3 | OUT | **structural — NOT capability boundary** (SD-4A class C; the boundary report's own §6 excludes it) |
+
+**Boundary verdict: 19 of 22 are capability-boundary rows; 3 are excludable.** **Not duplicates of the 27** — they differ in **mode** *and* **level** (HTTP surface vs service). **`test_tenant_isolation_respected` is excluded from a universe adopted to verify Election correctness, though CLAUDE.md RULE 9 makes tenant isolation mandatory test territory.**
+
+**Answer to the commission's question:** ✅ **Yes — *"Election test estate verification"* is misleading, specifically as to Election-Only admission and eligibility tenancy isolation.** **It is NOT misleading as to Full-Membership admission**, which the 27 rows do cover.
+
+### Blast radius — and why nothing stops
+
+| | Rows |
+|---|---:|
+| **Existing matrix rows blocked by `SD-4`** | 🔴 **0** |
+| Rows re-classified if SD-4 excludes | **0** |
+| Rows added if SD-4 includes | **+19 new** (and a new denominator, with 1,376 preserved) |
+
+> **`SD-4` blocks the programme's CLAIM, not its CLASSIFICATION.** **"Important" is not "blocking."**
+
+**`BR-1.12` (Session 2's open decision) — bounded, NOT inferred from production:** in-universe radius lies **entirely inside `VoterEligibilityTest`**, at most **~7 rows** that assert a created membership's resulting state; rejection rows are independent. **Exact count NOT ESTABLISHED** (that class is the deferred batch). **Recorded as `BUSINESS RULE NOT YET AUTHORIZED` — not classified against Option A or B.** The 27 rows carry **`DEFERRED — FULL MEMBERSHIP`**; their existence is **not** an Election-Only defect.
+
+### Root cause of my `CF-1`/`CF-2` error, now fully traced
+
+`VoterEligibilityTest:110` — *"seeds the `UserOrganisationRole` row **required by the election_memberships FK**"* — is the **third** stale reference to the FK dropped on 2026-05-19, with the CREATE migration and `ElectionShowControllerTest:54`. **Three stale artifacts agreeing is what made the wrong finding feel corroborated.** **Repository classification, not a defect. Not changed — Session 1 does not edit tests.**
+
+**Status: `SD-4` evidence delivered, decision withheld from engineering · `SD-1` unchanged · 1,376 frozen · baseline NOT re-run · denominator NOT altered · L3 = 109/1,376 · no production, schema, migration, test or fixture change.**
+
+**Next authority-settled batch:** B2 continues per-test — `ElectionPolicyStateAwareTest` (10) then `VotingButtonsStateMachineIntegrationTest` (9). **`VoterEligibilityTest` (27) stays deferred — now for a second, stronger reason: it is Full-Membership-only *and* `BR-1.12`-dependent.**
