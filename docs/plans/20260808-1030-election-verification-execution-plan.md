@@ -1793,3 +1793,72 @@ My first pass reported `CodeController` as a second, **ungated** `ElectionMember
 **Status: `SD-4` evidence delivered, decision withheld from engineering · `SD-1` unchanged · 1,376 frozen · baseline NOT re-run · denominator NOT altered · L3 = 109/1,376 · no production, schema, migration, test or fixture change.**
 
 **Next authority-settled batch:** B2 continues per-test — `ElectionPolicyStateAwareTest` (10) then `VotingButtonsStateMachineIntegrationTest` (9). **`VoterEligibilityTest` (27) stays deferred — now for a second, stronger reason: it is Full-Membership-only *and* `BR-1.12`-dependent.**
+
+---
+
+## B2 continued — `ElectionPolicyStateAwareTest` (10) · `VotingButtonsStateMachineIntegrationTest` (9) → **L3 = 128 / 1,376**
+
+**Authority:** `ElectionConstitution::RULES` (C7 open · C9 close) + `ADR_20260807_1500` (state derived from facts). **`SD-1` unchanged · 1,376 frozen · nothing added · `VoterEligibilityTest` NOT touched.**
+
+### 🔴 The batch-level finding: **6 of 19 row names misdescribe their own assertions**
+
+| Row name claims | The assertion actually does |
+|---|---|
+| `..._for_officer` (×4) | **no actor participates** — `$this->officer` is created in `setUp` and never used; the assertion reads `snapshot->canEdit` |
+| `test_view_results_allowed_in_results_state` | asserts `state->value === 'results_published'` — **the state it just set up.** Verifies derivation, **not result viewing** |
+| `test_view_results_denied_before_publication` | asserts `canPublishResults === false` **and** `results_published_at === null` *(its own fixture)* — **publishing ≠ viewing** |
+| `open_voting_transitions_from_nomination_to_voting` | asserted pre-state is **`ready_for_voting`**, not nomination |
+| `close_voting_..._to_results_pending` | asserted post-state is **`counting`**; `results_pending` **is not one of the 12 `ElectionLifecycleState` members** |
+| `open_voting_is_idempotent_with_concurrent_requests` | two **sequential** HTTP calls — **repeat-request safety is verified; concurrency is not** |
+
+> **~32% of this batch's names overstate or misstate what is verified.** **Direct measured justification for the standing rule that a name is a candidate, never a classification.** **Consequence for C11: neither `view_results` row verifies whether results may be VIEWED before publication — a results-visibility gap concealed behind two PASSED rows.**
+
+**`ElectionPolicyStateAwareTest`'s class name is also stale** — the docblock records migration *"from deprecated `allowsAction()`"*; it tests **`ElectionCapabilityResolver` snapshots**, not `ElectionPolicy`. Fixtures write `'state' => …` even though the resolver recomputes from facts — **inert, and one docblock says so**, but it invites a reader to think the column drives behaviour.
+
+### Classification
+
+| Rows | Verifies | Ownership | Shape |
+|---:|---|---|---|
+| **8** | `canEdit` ×5 · `canVote` ×3 derived from constitutional facts | Domain/Application (resolver) | **capability projection from facts — no actor, no authorisation** |
+| **2** | state derivation + `canPublishResults` | Domain | 🔴 **name/assertion divergence — C11 viewing NOT verified** |
+| **6** | open/close transitions · wrong-state rejection · double-close prevention | Domain + Application guard | genuine C7/C9 state-guard verification |
+| **2** | `ElectionStateTransition.actor_id` = actor | Infrastructure | genuine audit verification — **relevant to `BD-1`** |
+| **1** | repeat-request safety | Application | verified; **concurrency NOT verified** |
+
+### 🔴 The FAILURE row — executed for evidence, and it is not what its name says
+
+```
+open_voting_rejects_if_missing_candidates
+Failed asserting that 'Action 'open_voting' cannot proceed.
+   Unmet preconditions: voting_window_defined' contains "candidates".
+```
+
+**`assertSessionHas('error')` PASSED.** The guard fired — but for **`voting_window_defined`**, never reaching any candidate check.
+
+**OBSERVED FACTS:**
+* `RULES['open_voting'].preconditions = ['voting_window_defined', 'timezone_set']` — **no candidate precondition.**
+* `RULES['open_voting'].allowed_states = ['setup_nomination', 'ready_for_voting']` — **voting may be opened directly from `setup_nomination`.**
+* `complete_nomination` is the **only** candidate-gated action (`has_approved_candidates`) — and its `target_state` is **`setup_nomination`**, i.e. **a self-transition**, so performing it is **not a state prerequisite for `open_voting`.**
+* The four precondition names that exist anywhere: `has_approved_candidates` · `has_chief` · `has_posts` · `has_voters`.
+* **`grep has_candidates` across all in-universe paths → nothing.**
+
+**INTERPRETATION (not a conclusion):** the constitutional path does not appear to require any candidate before voting opens.
+⚠️ **`MECHANISM NOT ESTABLISHED`:** whether `ConstitutionalTransitionGuard` or `Election::validateTransitionRules()` adds a candidate check beyond the Constitution — **not read for this action.** *(Previously observed: the guard is skipped when `isSystemTriggered()`.)*
+**`IMPLEMENTATION DEFECT`: none demonstrated.** The precondition engine works and names its unmet precondition.
+**`VERIFICATION GAP`:** the candidate-before-voting expectation is verified **nowhere**; the one row claiming it fails for an unrelated reason.
+
+> ⚠️ **A trap worth naming: "fixing" this row by changing the expected string to `voting_window_defined` would make it green and permanently erase the only trace in the estate that anyone expected candidates to be required.** **The failing test is the evidence. It must not be greened.**
+
+### ❓ Genuine business decision — STOPPING as instructed
+
+| | Decision |
+|---|---|
+| **SD-14** | **May an election open voting with ZERO candidates?** The Constitution does not forbid it, and `open_voting` is reachable from `setup_nomination` without ever completing nomination. **Either answer is a coherent product** — an election with no candidates may be legitimate (a pure referendum) or an obvious defect. **Engineering must not decide, and must not add a precondition to the Constitution.** **Blast radius: 1 row** (the FAILURE); **0 PASSED rows change meaning** |
+
+### `SD-4` amendment PREPARED, NOT EXECUTED — with one arithmetic caveat the decision needs
+
+**If and only if `SD-4` Option A is approved, the sequence is: record amendment → define the universe → preserve 1,376 as historical → new manifest → execute the whole amended universe → reconcile listed = reported → record the new baseline → only then classify. The 1,376 baseline is never silently replaced.**
+
+⚠️ **CAVEAT ON `1,395`.** **`1,376 + 19 = 1,395` is arithmetically right and conceptually incomplete.** **SD-4A found 155 out-of-universe capability-named FILES; I have examined 4.** **So 1,395 would be *"the old boundary plus one capability's worth of enforcement tests"* — NOT the business-capability boundary.** **If the programme then claimed to verify "the Election test estate", it would again claim more than it verifies — the precise failure this programme exists to prevent.** **Recommend the amendment record 1,395 as `admission-enforcement expansion`, explicitly NOT as the capability boundary, leaving ~151 files unexamined and stated as such.** *(Engineering states the consequence; the Product Owner chooses.)*
+
+**Status: L3 = 128/1,376 · `SD-1` unchanged · denominator unchanged · baseline NOT re-run · `1,395` NOT adopted · `CF-3` closed · `D-ENT-1` not reopened · `ADR-002` untouched · `BR-1.12` not inferred · `VoterEligibilityTest` still `DEFERRED — FULL MEMBERSHIP · BR-1.12 DEPENDENT · NOT CLASSIFIED` · no production, schema, migration, test or fixture change.**
