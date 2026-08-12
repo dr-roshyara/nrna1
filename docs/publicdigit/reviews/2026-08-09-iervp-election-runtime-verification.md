@@ -278,3 +278,76 @@ Votes cast                                 none
 Data created                               one codes row (credential), one voter slug
 Status                                     PAUSED mid-experiment — resume at /vote/agreement
 ```
+
+---
+
+# Appendix C — Diagnosis of a reported "not eligible" (2026-08-12)
+
+**Report:** *"I import voters as election chief, they are emailed, they are added as voters — but they cannot start voting. `roshyara@gmail.com` is a voter, yet `/elections/election-2026-65b26848` says **You are not eligible to vote in this election**."*
+
+**Read-only. No code, tests, fixtures, configuration or data changed.** Every line below is **MEASURED**.
+
+## The decision chain (Step 7 — which authority answers)
+
+```
+Election page  ->  ElectionVotingController::show():41-44
+                   $membership = $user->electionMemberships()->where('election_id', …)->first();
+                   $isEligible = $membership !== null && role === 'voter' && status !== 'removed';
+                        |
+                        v  Inertia prop  isEligible
+                   Show.vue :297,369  ->  locales/pages/Election/en.json:67
+                                          "You are not eligible to vote in this election"
+```
+
+**The authority is the tenant-scoped `ElectionMembership` lookup.** Not a policy, not the constitution, not `VoterEligibilityService`, not `User::isEligibleVoter()`.
+
+## Three measurements, three different answers
+
+### 1 · On the URL visited, the message is **correct**
+`election-2026-65b26848` (org `iervp-experiment-b`) — **`roshyara@gmail.com` holds ZERO membership rows there.** Its five voters are `iervp.voter1..5@example.test`, imported by this programme during Experiment B. **That account is the chief/candidate there, never a voter.**
+
+> **On that election the system is right and the premise of the report is not met.**
+
+### 2 · The account **is** a voter — on a different election
+| Election | Org | Role | Status |
+|---|---|---|---|
+| `namaste 2026` | `namaste-nepal-gmbh` | **voter** | active |
+| **`test election 1`** (`test-election-1-62a8be36`) | `namaste-nepal-gmbh` | **voter** | active |
+
+**Import worked.** `role=voter`, `status=active` — entitlement was created correctly, alongside `krish.hari.sharma@gmail.com`.
+
+### 3 · On the right election, `PBDIGIT-65` hides it — **reproduced on real data**
+```
+election org              namaste-nepal-gmbh
+user working org          iervp-experiment-b        <-- IERVP Experiment B residue
+membership (unscoped)     EXISTS   role=voter status=active
+membership (tenant = iervp-experiment-b)   INVISIBLE  -> isEligible = false
+membership (tenant = namaste-nepal-gmbh)   VISIBLE
+```
+
+> **`PBDIGIT-65` is no longer only reproducible on synthetic accounts. It is now confirmed on the Product Owner's own account against real election data.**
+
+### 4 · And voting is not open there anyway
+`test election 1` lifecycle = **`setup_nomination`**. **Even with tenant context correct, no ballot is available.**
+
+## ⚠️ This programme caused part of the symptom
+
+**Experiment B changed `users.organisation_id` for `roshyara@gmail.com` to `iervp-experiment-b`.** That was recorded as disposal-pending residue in §7 of this review — **it is now actively interfering with Product Owner testing.** The residue is not merely untidy; **it is the tenant context that triggers `PBDIGIT-65` for this account.**
+
+## What this does and does not establish
+
+| Claim | Verdict |
+|---|---|
+| Import fails to create voter entitlement | ❌ **DISPROVEN** — `role=voter, status=active` created correctly |
+| Import must grant immediate voting capability | **Not demonstrated either way** by this report |
+| The Election Constitution is wrong about eligibility | ❌ **NOT DEMONSTRATED** — the constitution was never consulted on this path |
+| An adapter/context defect blocks an entitled voter | ✅ **CONFIRMED** — `PBDIGIT-65`, on real data |
+| The reported ticket can be closed | ❌ **NO** — but for reasons other than those hypothesised |
+
+**The Product Owner's four-concept model — entitlement · eligibility · voting access · vote authority — is *not* contradicted by this report.** The failure occurred **before** any of those distinctions were reached: **the membership was never seen.**
+
+## Recommended next step — one, and it is cheap
+
+**Restore the account's working organisation and retest on `test-election-1-62a8be36`.** That separates the residue-induced `PBDIGIT-65` symptom from any genuine entitlement-vs-capability question, which cannot be observed until the election reaches `voting_active`.
+
+**Not done here — changing a user's working organisation is a data change, and this commission is read-only.**
