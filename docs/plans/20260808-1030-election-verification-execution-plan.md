@@ -1065,3 +1065,38 @@ business capability scope  CandidacyApplicationTest, ElectionCandidacyRelationsh
 **A failure-driven pass would never have found this.** `PHPUnit → failure → code → presumed cause → fix` had nothing to work with: **the one in-scope test passes.** The finding came from the other direction — *business capability → authoritative rule → decision ownership → execution path → test intent → evidence* — and the answer was not a failing test but **"the verification universe does not contain the tests that matter for this capability."**
 
 **Status: B1 ACCEPTED. `SD-4` OPEN — blocks B2–B7. `SD-1` unamended; the universe remains 1,376. `SD-2` satisfied (baseline exists). `SD-3` still unresolved. No production code, test, fixture or configuration changed.**
+
+---
+
+## ⛔ AUTHORITY BLOCKS ARE ROW-SCOPED, NOT PROGRAMME-SCOPED — rule adopted 2026-08-12
+
+**Product Owner correction, accepted:** *"Resolve an authority question when it blocks classification of that particular capability."* **The matrix must not be hostage to every unresolved business question.**
+
+> **An unresolved authority question blocks the ROWS whose verification shape depends on it. It does not block the matrix.**
+
+### `SD-11a`'s actual blast radius — measured
+
+| | |
+|---|---|
+| Candidate rows by name (`Result·Count·Tally·Publicat`) | 13 |
+| 🔴 **False positive removed** | **`VotingTrustResultTest` (5 rows)** — tests `App\Domain\Election\Security\VotingTrustResult`, i.e. **security trust evaluation, not election results.** A collision on the word *"Result"* |
+| **Genuinely blocked on `SD-11a`** | **`ResultsPublicationTest` — 8 rows** |
+| **Share of the universe** | **8 / 1,376 = 0.6%** |
+
+**So `SD-11a` blocks 0.6% of the matrix.** Describing the Master Matrix as *"blocked"* on it — as the C10 report's §8 did — **overstated the dependency by more than two orders of magnitude.** Corrected here.
+
+**Fifth name-collision catch today** (after recursive `find`, two test counters, and the `resume`/`complete_nomination` parser). **Consistent lesson: a name match is a candidate, never a classification.**
+
+### The isolation rule, stated for reuse
+
+| Blocker | Blocks |
+|---|---|
+| **`SD-1` / `SD-2`** (scope · evidence depth) | ✅ **PROGRAMME** — every row's identity and result |
+| **`SD-4`** (candidacy boundary) | **the boundary itself** — resolved or not, existing rows stay valid |
+| **`SD-11a`** (counting authority) | **8 rows** (`ResultsPublicationTest`) |
+| `BD-1` (audit evidence) | **7 of 8** referencing files — established by the BD-1 dependency analysis |
+| `PBDIGIT-49` (eligibility home) | C6-related rows — **not yet enumerated** |
+
+**Every future authority question must state its blast radius in rows before it is allowed to pause work.** *"Important"* is not *"blocking"* — the same distinction `BD-1` required, now generalised.
+
+**Status: matrix classification may proceed for capabilities whose authority is established. `SD-11a` isolates 8 rows. L3 remains 41/1,376 pending further batches.**
