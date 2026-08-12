@@ -78,6 +78,23 @@ Plus routes: `propose-suspension` · `confirm-suspension` · `cancel-proposal` �
 
 ---
 
+## 📋 GOVERNANCE PREPARATION COMPLETE — decision register + 2 ARB packages
+
+**[Decision register](../reviews/2026-08-12-election-governance-decision-register.md)** · **[ARB package `V-1`/`V-2`/`V-3`](../reviews/2026-08-12-arb-package-adr-002-v1-v2-v3.md)** · **[Officer Guide governance-source analysis](../reviews/2026-08-12-officer-guide-governance-source-analysis.md)**
+
+**14 decisions registered with owner, evidence, conflict, blast radius, options and recommendation. Three are load-bearing for the rest: `D-APPLY-2` · `BR-1.1` · `Q3`.**
+
+**Two new findings from the folder-wide Officer Guide analysis** *(which closed the gap I had recorded — I had assessed only `04-voter-list.md`)*:
+
+1. 🔑 **The guide set cites NO authority anywhere** — not one ADR, constitutional article or standard across all seven files; every cross-reference points at a sibling guide. **So no statement can be `AUTHORITATIVE` on its own terms; at most `SUPPORTED`.**
+2. 🔴 **`G-PUB` — a results-integrity contradiction outside the voter domain.** The guide documents an *"Unpublish Results"* button and states *"you can publish and unpublish **as many times as needed**"* — but **the Constitution has NO `unpublish` action** (the only action from `results_published` is `archive`), and the sole implementation found is an **artisan console command**. **Raised for ARB; deliberately NOT investigated** — outside `D-ENT-1` and outside the commission.
+
+**Also strengthened:** a **second, more explicit** statement of administrative reversal — *"contact your system administrator to manually **restore the membership record**"* — whose wording implies **the record persists**, consistent with `BR-1.1` **Option B**. And a **second** statement treating `invited` as real (*"Voters with 'Invited' or 'Suspended' status cannot vote"*), reinforcing that `invited` is an **implementation gap**, not stale prose.
+
+**Officer Guide: `D` — do not promote.** Recognition would settle **zero** rules by itself.
+
+---
+
 ## 🟡 `D-APPLY` — the decision is now on the Product Owner's desk
 
 **[Application decision package](../reviews/2026-08-12-adr-002-application-decision-package.md)** · **[Session-1 handover](../reviews/2026-08-12-governance-handover-session2-to-session1.md)**
