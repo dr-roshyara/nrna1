@@ -131,7 +131,12 @@
 | Referenced rule | Canonical home |
 |---|---|
 | **No voter↔vote linkage** in any aggregate, event payload or projection | **`ADR-T11`** *(constitutional, build-breaking)* |
-| Election lifecycle states, transitions, allowed roles and preconditions | **`ElectionConstitution`** |
+| **Election lifecycle states, transitions, allowed roles and preconditions** — all transitions defined there **and nowhere else** | **`ElectionConstitution`** |
+| **Only committees (chief, deputy) may administer elections** | **`ElectionConstitution`** |
+| **Only the chief may open voting or publish results** | **`ElectionConstitution`** |
+| **The approval workflow** — `draft → submitted → approved/rejected → setup` | **`ElectionConstitution`** |
+| **Capacity-based approval** — a free plan auto-approves below a voter threshold; above it, manual review / payment authorisation is required ⚠️ **the threshold itself is disputed — see `EM-OPEN-019`** | **`ElectionConstitution`** |
+| **Every action carries preconditions that must be verified** | **`ElectionConstitution`** |
 | **Suspension freezes capabilities only; it does not mutate business facts** | **`ElectionConstitution`** *(architectural principle)* |
 | **Verified ≠ Eligible ≠ Authorized** | **`ADR-002`** *(Accepted; a v2 amendment is proposed and NOT applied)* |
 | **Revocation** = withdrawal of **identity-trust attestation**, and does not itself block voting | **`ADR-001`, `ADR-003`** |
@@ -193,6 +198,7 @@
 | **EM-OPEN-014** | **`W-8`** — which organisation role is the "Organisation Chief" of `EM-FM-005`? | Full Membership |
 | **EM-OPEN-015** | **`W-1`…`W-7`** — Full Membership trigger, restoration, expiry-vs-removal, override and post-vote questions | Full Membership |
 | **EM-OPEN-016** | **`FM-1`…`FM-15`** — the frozen Full Membership register | Full Membership |
+| **EM-OPEN-019** | 🔴 **What is the voter threshold below which an election is auto-approved without administrator review?** **The implementation and the Constitution's own docblock both say ≤ 40** *(`ConstitutionalTransitionGuard`: "Free plan (≤40 voters) always eligible")*. **The Product Owner stated ≤ 30 during runtime verification on 2026-08-09** — *"election with voters under 30 can be accepted automatically."* **Two figures, two sources. NOT resolved here: I cannot choose between a Product Owner statement and the implementation, and the statement may have been operational rather than a rule declaration** | election approval |
 | **EM-OPEN-018** | **`PBDIGIT-50` — in which timezone are election times displayed, and what is the fallback when detection fails?** *(A narrow Product Owner steer is on record — **device timezone, not residence** — but the ticket is **`OPEN — not authorised`** with the fallback undecided, so it is **NOT migrated as an adopted rule**.)* | election display |
 | **EM-OPEN-017** | **`D-MANIFEST`** — is this artifact, at this location and name, the ratified canonical home? | 🟡 **this document's own status** |
 
@@ -209,6 +215,7 @@
 | **Swept** | every ticket in `docs/publicdigit/backlog/` for explicit business-rule statements, *"stated by the Product Owner"*, *"(PO decision)"* and approval markers |
 | **Gap found and closed** | **`EM-VOT-001`** — the candidate rule from `PBDIGIT-64`, adopted **2026-08-08**. **It was missing from the first version of this Manifesto**, which had canonicalized only the entitlement/admission decision thread |
 | **Candidate found and NOT migrated** | **`EM-OPEN-018`** — the timezone display decision (`PBDIGIT-50`), because the ticket is **`OPEN — not authorised`** |
+| **Also swept** | **`ElectionConstitution`** itself, at the Product Owner's prompting. It **homes six business rules** — now enumerated in §7 rather than referenced as one line, so a reader of this Manifesto can see that those rules exist and where they live. **They are NOT restated here** — the Constitution is their canonical home. **The sweep also surfaced `EM-OPEN-019`, a disputed numeric threshold** |
 | **Correctly out of scope** | `PBDIGIT-30`'s approved **organisation** lifecycle rules (`B1`, `B2`, `B3`, `B10`). They are **Organisation-scope, not Election**, and they **already have a canonical home** in this same folder — `20260806_0818_how_many_organisation.md` |
 
 > ⚠️ **Coverage limit, stated rather than implied: this artifact is complete for the ENTITLEMENT, ADMISSION and VOTING-PHASE rules it lists, plus the sequencing decisions. It is NOT proven to contain every adopted Election business rule.** The sweep raised confidence but is not a guarantee — decisions stated in conversation and recorded only in narrative reviews may still be unmigrated. **Two known candidates of that kind, needing Product Owner confirmation before migration:** whether a voter must be routed directly to the election during the voting period, and whether elections below a voter threshold are auto-accepted without administrator approval. **Neither is migrated on my reading of a conversation.**

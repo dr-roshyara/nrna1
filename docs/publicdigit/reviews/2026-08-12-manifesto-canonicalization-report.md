@@ -65,6 +65,35 @@ Production behaviour · test names, comments and fixtures · Officer Guide state
 | ⚠️ **Candidate found, NOT migrated** | **`PBDIGIT-50`** timezone display. The backlog index annotates it *"(PO decision)"*, **but the ticket's own status is `OPEN — not authorised`** with the fallback undecided. **Migrating it would have promoted a partially-decided item.** Recorded as **`EM-OPEN-018`** |
 | ✅ **Correctly out of scope** | `PBDIGIT-30`'s approved rules `B1`, `B2`, `B3`, `B10` — **Organisation-scope, not Election**, and they **already have a canonical home in this same folder** (`20260806_0818_how_many_organisation.md`). *Their presence there independently corroborates the placement choice* |
 
+### 5a.1 Second sweep — `ElectionConstitution`, at the Product Owner's prompting
+
+**The Product Owner then pointed at `app/Domain/Election/Constitution/ElectionConstitution.php`. That produced two results.**
+
+**1 · A structural improvement.** My §7 referenced the Constitution with a single line — *"lifecycle states, transitions, allowed roles and preconditions"*. **That was too coarse: it left the Manifesto reading as though the Constitution held only mechanics.** Its docblock in fact states **six business rules**, now **enumerated** in §7:
+
+* all transitions defined there **and nowhere else**;
+* **only committees (chief, deputy) may administer elections**;
+* **only the chief may open voting or publish results**;
+* the approval workflow `draft → submitted → approved/rejected → setup`;
+* **capacity-based approval** — auto-approval below a voter threshold, manual review above it;
+* every action carries preconditions that must be verified.
+
+**They are enumerated, NOT restated.** The Constitution remains their canonical home — **an index is not duplication, and a reader who cannot see that a rule exists cannot know to look for it.**
+
+**2 · 🔴 A disputed business rule — `EM-OPEN-019`.**
+
+| Source | Threshold |
+|---|---|
+| **Implementation** — `ConstitutionalTransitionGuard` *("Free plan (≤40 voters) always eligible", "≤40 → auto-approved")* | **≤ 40** |
+| **The Constitution's own docblock** — *"free plan (≤40 voters) auto-approves"* | **≤ 40** |
+| **The Product Owner, 2026-08-09** *(runtime verification)* — *"election with voters under 30 can be accepted automatically. no approve necessary from administrator side."* | **≤ 30** |
+
+> **Two figures, two kinds of source. I have NOT resolved it.**
+>
+> **I cannot choose between a Product Owner statement and the implementation** — and the statement may well have been **operational** (unblocking a 5-voter test election) rather than a rule declaration. **Either reading is plausible, which is exactly why it is a question and not a finding.**
+>
+> **This is also a case where the Manifesto's standing clause bites in my own favour:** the implementation is not the source of the rule, so *"the code says 40"* does not settle it either.
+
 ### Why the first version was incomplete — the honest cause
 
 **I canonicalized the thread I had been working in.** The Manifesto drew from `PBDIGIT-68` and the Session-2 governance artifacts — the entitlement and admission decisions — **and I did not sweep the wider backlog before declaring the artifact canonical.** Its title claims *"canonical Election business rules"*, which **overstated its coverage on first commit.**
