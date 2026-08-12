@@ -89,7 +89,7 @@
 | # | Decision | Blocks |
 |---|---|---|
 | **`BR-1.12`** | admission state | 🔴 **the Election-Only ADMISSION slice** |
-| **`D-MANIFEST`** | canonical home for Election rules | nothing technically — **but every rule currently lives only in review documents** |
+| **`D-MANIFEST`** | canonical home for Election rules | ⚠️ **Corrected wording (Product Owner, 2026-08-12): distinguish TECHNICAL BLOCKING from GOVERNANCE READINESS.** It blocks no slice *technically*; **but for Election-Only ADMISSION it is part of governance readiness**, because the sequence must be `BR-1.12` decided → rule canonicalised → **then** TDD. **Otherwise the first test Session 3 writes — `it('creates an active ElectionMembership')` — encodes the business rule before it has a home.** My earlier phrasing *"blocks nothing technically"* understated that |
 | `BR-1.13` | suspension actor count | the **suspension** slice only |
 | `Q3` | exercisability representation | changes to non-exercisability |
 | `Q-E1` · `Q-E2` | credential control · distinguishability | coherence, schedulable |
@@ -114,12 +114,49 @@ Additionally: **do not restore the dropped FK** · do not create `Member` rows �
 
 ---
 
-## 6 · Recommended immediate next action
+## 6 · Recorded closure state
 
-> **Decide `BR-1.12`. Then pause nothing else.**
+**The six items this closure records, per the Product Owner's stop condition:**
+
+| # | State |
+|---|---|
+| **1** | **`BR-1.12` — OPEN.** Blocks the **Election-Only ADMISSION** implementation slice |
+| **2** | **`D-MANIFEST` — OPEN.** No Election Manifesto artifact exists |
+| **3** | **Election-Only-first — ADOPTED** |
+| **4** | **Full Membership — FROZEN** (`FM-1`…`FM-15`); **no `Organisation Membership → ElectionMembership` lifecycle coupling may be introduced into Election-Only implementation** |
+| **5** | **Session 3 boundary** — owns implementation; may proceed on authorised Election-Only slices **not** depending on `BR-1.12`; `B-1`…`B-5` remain **engineering** questions, **not** business decisions, and **must not be auto-converted into tickets** |
+| **6** | **Session 1 boundary** — owns independent verification; its Master Matrix **not read, classified, consumed or modified** by Session 2, and its `SD-4` evidence consumable **only** under a separate PO/ARB decision |
+
+### 6.1 Artifact roles — boundaries to preserve
+
+| Artifact | Purpose |
+|---|---|
+| **Election Constitution** | constitutional / sovereign constraints |
+| **Election Manifesto** | canonical Election **business rules** — ⚠️ **does not exist; candidate only, pending `D-MANIFEST`** |
+| **ADR** | **architectural** decisions — *not* a home for every Election business rule |
+| **Review documents** *(including all of Session 2's)* | investigation evidence and historical reasoning — **must not become business-rule authority** |
+| **Session 3 code** | implementation |
+| **Session 1 Master Matrix** | verification evidence |
+
+**The candidate architecture — `Election Constitution → Election Manifesto → Election domain/application → Tests` — is recorded as a CANDIDATE and is NOT treated as adopted.** Adoption is `D-MANIFEST`.
+
+### 6.2 The two suspension workflows — distinct, and neither implemented by Session 2
+
+| | Workflow |
+|---|---|
+| **A** | **Election Chief** → `ElectionMembership` suspension — **both modes** |
+| **B** | **Organisation** *(Organisation Chief)* → Organisation Membership removal → **automatic** `ElectionMembership` suspension — **Full Membership Mode only** |
+
+**Not to be combined into one generic suspension business rule. Neither is implemented, and `BR-1.13` blocks workflow A's slice only — not admission.**
+
+### 6.3 Recommended immediate next action
+
+> **Decide `BR-1.12`, and `D-MANIFEST` alongside it.**
 >
-> **Session 3** may proceed on Election-Only slices that do not depend on `BR-1.12`; **the admission slice specifically should pause until it is decided** — because *keeping current behaviour* would decide it.
+> **`D-MANIFEST` is not merely parallel housekeeping for this slice:** the admission rule needs a canonical home **before** Session 3's first test encodes it. **Sequence: `BR-1.12` decided → rule canonicalised → strict TDD.**
+> **Session 3** may proceed meanwhile on authorised Election-Only slices that do not depend on `BR-1.12`.
 > **Session 1** continues independent verification, unblocked.
-> **`D-MANIFEST`** can be decided in parallel; it blocks no implementation, but it determines whether the adopted rules acquire a durable home.
+
+**STOP. The next action belongs to the Product Owner / ARB.**
 
 **Traceability (pointers only — no rules restated):** [`admission gate`](2026-08-12-election-only-admission-governance-gate.md) · [`Session-3 handover`](2026-08-12-handover-session2-to-session3-election-only-admission.md) · [`Election-Only baseline`](2026-08-12-election-only-first-governance-baseline.md) · [`readiness report`](2026-08-12-session-3-governance-readiness-report.md) · [`hierarchy refinement`](2026-08-12-arb-package-membership-hierarchy-refinement.md) · [`ADR-002 v2 proposal`](2026-08-12-adr-002-amendment-proposal-v2-from-adopted-d-ent-1.md) · [`decision register`](2026-08-12-election-governance-decision-register.md) · [`Officer Guide analysis`](2026-08-12-officer-guide-governance-source-analysis.md) · [`Session-1 handover`](2026-08-12-governance-handover-session2-to-session1.md) · `PBDIGIT-68`

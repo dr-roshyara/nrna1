@@ -6,7 +6,8 @@
 
 > ### ⏸️ PAUSE INSTRUCTION — the admission slice specifically
 >
-> **The Election-Only ADMISSION slice should PAUSE until `BR-1.12` is decided** *(Product Owner, 2026-08-12)*.
+> **`BR-1.12` BLOCKS ELECTION-ONLY ADMISSION IMPLEMENTATION.** The slice PAUSES until it is decided *(Product Owner, 2026-08-12)*.
+> **And the adopted rule needs a canonical home before the first test encodes it** — sequence: **`BR-1.12` decided → rule canonicalised (`D-MANIFEST`) → strict TDD.** Otherwise `it('creates an active ElectionMembership')` becomes the business decision.
 > **Reason: keeping current behaviour would itself decide `BR-1.12`** — production is the only evidence for Option A, so *"we left it as it was"* selects A by default.
 > **Other already-authorised Election-Only slices that do not depend on `BR-1.12` are not paused.**
 > **Session 2 closure:** [`final governance closure`](2026-08-12-session-2-final-governance-closure.md) — which also raises **`D-MANIFEST`**: the adopted Election rules currently have **no canonical home** and live only in review documents.
