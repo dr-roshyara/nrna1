@@ -88,24 +88,34 @@
 >
 > **Finding 8 bounds what any classification can conclude:** the mode the decision concerns has **no runtime evidence at all**.
 
-## 7 · Sequencing
+## 7 · Sequencing — **Product Owner ruling, 2026-08-12: Session 1 does NOT wait**
+
+> **RULING (Product Owner):** *"Session 1 should **not wait** for `ADR-002`. It should begin the 213-row intent classification, using `D-ENT-1` as the adopted external business decision, while explicitly recording `ADR-002` as not yet amended."*
+
+**This supersedes the sequencing originally drafted here, which placed the `ADR-002` amendment before Session 1's classification. The two tracks are independent:**
 
 ```
-Product Owner decides D-APPLY  (apply the ADR-002 amendment?)
-            │
-            ▼
-   ADR-002 amended  ──────────────►  Session 1 consumes an APPLIED ADR
-            │
-            │  until then: D-ENT-1 is an adopted PO decision,
-            │  and ADR-002 does not yet reflect it
-            ▼
-Session 1 classifies the 213 rows BY TEST INTENT, using §3
-            │
-            ▼
-   Which tests actually verify the adopted rule?  → coverage / architectural gap
+ARB / Product Owner
+      D-ENT-1 / Model B ADOPTED
+              │
+    ┌─────────┴──────────────────────────────┐
+    │                                        │
+    ▼ (proceeds NOW)                         ▼ (separate, later)
+Session 1                             D-APPLY decision
+  classify the 213 rows                 apply the ADR-002 amendment?
+  BY TEST INTENT, using §3              settle V-1 / V-2 / V-3
+    │                                        │
+    ▼                                        ▼
+which tests actually verify            ADR-002 amended
+the adopted rule?                            │
+    │                                        ▼
+    └──► coverage / architectural    implementation decisions
+         gap                          (Q3, Q-E1, Q-E2 …)
 ```
 
-**Session 1 is not blocked.** Rows whose business authority is already established and which do not depend on `D-ENT-1` can proceed independently. **The 213 are not a reason to pause the Matrix.**
+**What Session 1 must record while classifying:** **`D-ENT-1` is an adopted Product Owner decision; `ADR-002` is NOT yet amended.** So `ADR-002`'s standing clause *"eligibility computed from membership at check time"* remains the current ADR text, and a row must not be classified against the amendment as though it were in force.
+
+**Session 1 is not blocked, and was never blocked.** Rows independent of `D-ENT-1` proceed regardless; **the 213 are not a reason to pause the Matrix.**
 
 ## 8 · Boundaries of this handover
 
