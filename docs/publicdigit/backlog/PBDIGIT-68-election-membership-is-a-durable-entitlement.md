@@ -3,7 +3,7 @@
 **Type:** Business decision **RECORDED** + consequence analysis · **Epic:** `PBDIGIT-EPIC-03` Election Management
 **Created:** 2026-08-12 · **Ruling by:** Product Owner, 2026-08-12
 **Evidence:** [`../reviews/2026-08-09-iervp-election-runtime-verification.md`](../reviews/2026-08-09-iervp-election-runtime-verification.md) — Appendices **D** (two-mode entitlement) and **E** (semantics verdict) · [`../reviews/2026-08-09-election-constitution-voter-eligibility-traceability.md`](../reviews/2026-08-09-election-constitution-voter-eligibility-traceability.md)
-**Status:** ✅ **`D-ENT-1` RESOLVED · `Q-A0` = `F1`** (organisation membership = admission prerequisite only) · **`ADR-002` amendment PROPOSED, not applied** · **`Q3` OPEN** · ⛔ **IMPLEMENTATION NOT AUTHORISED** · **`BR-1` PARTIALLY RESOLVED — Option B recommended; 11 PO decisions await** · **`ADR-002` amendment PROPOSED (not applied)** · **`Q3`/`D-ENT-1b` OPEN** · ⛔ **IMPLEMENTATION NOT AUTHORISED** · **Constitution NOT amended**
+**Status:** ✅ **`D-ENT-1` RESOLVED · `Q-A0` = `F1`** (organisation membership = admission prerequisite only) · **`ADR-002` amendment PROPOSED — `D-APPLY` awaiting PO, with `V-1`/`V-2`/`V-3` to settle** · **`Q3` OPEN** · ⛔ **IMPLEMENTATION NOT AUTHORISED** · **`BR-1` PARTIALLY RESOLVED — Option B recommended; 11 PO decisions await** · **`ADR-002` amendment PROPOSED (not applied)** · **`Q3`/`D-ENT-1b` OPEN** · ⛔ **IMPLEMENTATION NOT AUTHORISED** · **Constitution NOT amended**
 
 > ### ⚠️ Read the approved wording first — the ruling below was CORRECTED
 >
@@ -75,6 +75,26 @@ proposeSuspension(User $proposer)   confirmSuspension(User $confirmer)
 Plus routes: `propose-suspension` · `confirm-suspension` · `cancel-proposal` · `suspend` · `approve` · `DELETE`.
 
 **Two distinct named actors imply a four-eyes control** — exactly the shape a franchise-withdrawal power should have.
+
+---
+
+## 🟡 `D-APPLY` — the decision is now on the Product Owner's desk
+
+**[Application decision package](../reviews/2026-08-12-adr-002-application-decision-package.md)** · **[Session-1 handover](../reviews/2026-08-12-governance-handover-session2-to-session1.md)**
+
+**Verification against the six criteria: `Q3` not pre-empted ✅ · no tactical prescription ✅ · four-way separation maintained ✅ — and three issues that need your answer:**
+
+| | Issue |
+|---|---|
+| **`V-1`** | The `Entitled` axis persists *"until an election-level termination rule ends it"* — **and no such rule is ratified** (`BR-1.1` recommended, open). **The amendment inherits this from your own adopted wording**, so it is faithful; but applying it commits `ADR-002` to a rule that does not yet exist. → **`D-APPLY-1`: apply now, or ratify `BR-1.1` first?** |
+| **`V-2`** | 🔴 **The adopted wording says *"revocation/removal rule"* — using the term the amendment forbids for the election object**, since `ADR-001`/`ADR-003` reserve *Revocation* for identity-trust withdrawal *(which explicitly does not block voting)*. **So the ratified sentence contains the very ambiguity §5.5 removes.** → **`D-APPLY-2`: restate as "termination/removal", record the phrase as superseded, or accept two meanings (not recommended)?** |
+| **`V-3`** | `ElectionMembership` and `Entitled` are not explicitly separated. **Proposed wording: the record is a fact; the axis is the decision that reads it.** |
+
+**`invited` — investigated independently, and my earlier characterisation is corrected.** It is supported by **schema, UI *(status pill, label, an `invited → active` action)*, tests *(`makeMembership('invited')`)* and documentation** — and **written by no production path**. **So it is an INTENDED workflow state and an IMPLEMENTATION GAP, not obsolete documentation:** the approval gate that four layers assume **does not exist in production**; assignment lands directly in `active`. `BR-1.12` remains yours.
+
+**Officer Guide: NOT promoted, NOT modified, no knowledge card added** — your ruling recorded. It stands as an **operational-expression candidate** only: *Constitution → ADRs → ratified rules → Officer Guide → screen instructions*. **It must derive authority, never hold it.**
+
+**Session-1 handover created** — the explicit governance handoff artifact whose absence was previously recorded. It transfers the decision plus **one discriminator**: *a test is relevant only if its assertion depends on organisation membership being **continuously** required **after** `ElectionMembership` exists.* **Admission-time assertions are governed by `F1`; exercise-time re-derivation is potentially affected.** **No row classified; Session 1 remains sole authority over its artifacts.**
 
 ---
 
