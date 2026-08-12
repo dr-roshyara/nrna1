@@ -1862,3 +1862,62 @@ Failed asserting that 'Action 'open_voting' cannot proceed.
 ⚠️ **CAVEAT ON `1,395`.** **`1,376 + 19 = 1,395` is arithmetically right and conceptually incomplete.** **SD-4A found 155 out-of-universe capability-named FILES; I have examined 4.** **So 1,395 would be *"the old boundary plus one capability's worth of enforcement tests"* — NOT the business-capability boundary.** **If the programme then claimed to verify "the Election test estate", it would again claim more than it verifies — the precise failure this programme exists to prevent.** **Recommend the amendment record 1,395 as `admission-enforcement expansion`, explicitly NOT as the capability boundary, leaving ~151 files unexamined and stated as such.** *(Engineering states the consequence; the Product Owner chooses.)*
 
 **Status: L3 = 128/1,376 · `SD-1` unchanged · denominator unchanged · baseline NOT re-run · `1,395` NOT adopted · `CF-3` closed · `D-ENT-1` not reopened · `ADR-002` untouched · `BR-1.12` not inferred · `VoterEligibilityTest` still `DEFERRED — FULL MEMBERSHIP · BR-1.12 DEPENDENT · NOT CLASSIFIED` · no production, schema, migration, test or fixture change.**
+
+---
+
+## B2 CONDITIONALLY CLOSED · `ConstitutionalTransitionGuardTest` (13) → **L3 = 141 / 1,376**
+
+**B2 = 41 / 41 classifiable rows complete.** The remaining 27 (`VoterEligibilityTest`) stay **`DEFERRED — FULL MEMBERSHIP · BR-1.12 DEPENDENT · NOT CLASSIFIED`**. **B2 is conditionally closed on that deferral, not finished.**
+
+### ✅ `SD-14`'s open mechanism question is now CLOSED — and the answer strengthens the decision request
+
+**`ConstitutionalTransitionGuard::assertAllowed()` reads preconditions from ONE source:**
+
+```php
+:77   $preconditions = ElectionConstitution::getPreconditionsForAction($action);
+:201  default => throw new \LogicException("Unknown precondition: {$condition}"),
+```
+
+> **`MECHANISM NOT ESTABLISHED` → `MECHANISM ESTABLISHED`: the guard adds NOTHING beyond the Constitution, and it throws on an unknown precondition name — so an unratified precondition cannot silently pass.**
+>
+> **Therefore CONFIRMED: no candidate requirement is enforced for `open_voting` anywhere on the constitutional path.** **`SD-14` is a genuinely unspecified business rule, not a mechanism I failed to find.**
+
+### 🔴 A SECOND unratified precondition — the same pattern, a different action
+
+`guard_validates_preconditions` **(FAILURE)** asserts `complete_administration` requires `has_posts` · `has_voters` · **`has_committee_members`**.
+
+| | |
+|---|---|
+| **Constitution** | `preconditions => ['has_posts', 'has_voters', 'has_chief']` |
+| **Asserted but absent** | 🔴 **`has_committee_members`** — not among the only four names that exist anywhere (`has_approved_candidates` · `has_chief` · `has_posts` · `has_voters`) |
+| **And yet** | the action's own `description` reads *"Complete voter import **and committee setup**"* |
+
+> **The Constitution's own description says committee setup is part of the action; its preconditions do not require it.** **Here the intent is documented in the Constitution itself — stronger evidence than `SD-14`, where only a test asserted the rule.**
+
+**PATTERN OBSERVATION — 2 measured instances, deliberately NOT promoted:** two independent tests, two different actions, both asserting a precondition the Constitution lacks (`open_voting`→candidates · `complete_administration`→committee members); plus the earlier `complete_nomination` undocumented self-transition. **INTERPRETATION: the rule set appears narrower than the intent recorded in tests and in its own descriptions.** **Two instances is an observation, never a promoted finding** *(ES-006.1)*. **No rule invented, no precondition added.**
+
+### ❓ `SD-15` — second business decision, stopping as instructed
+
+| | Decision | Competing readings |
+|---|---|---|
+| **SD-15** | **Must an election have committee members before administration can be completed?** | **A · YES** → the precondition is missing from the Constitution and the test is right (governance change required, **ARB**) · **B · NO** → the test and the description are wrong (test + description correction) |
+| **SD-14** *(restated with both readings, per commission)* | **May voting open with zero candidates?** | **A · NO** → candidates required; the Constitution lacks the rule · **B · YES** → legitimate (referendum/abstention); **the test expectation is wrong** |
+
+**Blast radius: 1 row each. 2 rows of 1,376 total (0.15%). No PASSED row changes meaning. B2 and the matrix continue.**
+
+### Classification of the 13 rows
+
+| Rows | Verifies | Category |
+|---:|---|---|
+| **3** | undefined action throws · disallowed state throws · allowed state passes | genuine constitutional **state** authority |
+| **3** | `guard_verifies_user_role` · **`only_chief_can_open_voting`** · `chief_and_deputy_can_administer` | genuine constitutional **role** authority |
+| **4** | `suspend` from `voting_active` / not from `archived` · `resume` from `suspended` / not from `draft` | genuine **C14** state rules |
+| **1** | `system_actions_allowed_without_authenticated_user` — `auto_submit` succeeds with `Auth::logout()` because `system` is a valid role | **intentional bypass, verified.** *(Closes my earlier `isSystemTriggered` concern: designed and tested, not a hole. Weak form — `assertTrue(true)`; the real assertion is that `assertAllowed` does not throw)* |
+| **1** | `guard_is_injectable` | **structural/DI — not business behaviour** *(like `VoterEligibilityPolicyContractTest`)* |
+| **1** | `guard_validates_preconditions` | 🔴 **BUSINESS RULE NOT SPECIFIED — `SD-15`** |
+
+### ⚠️ Correction to my own earlier B2 finding — it was a NAMING problem, not a coverage hole
+
+I recorded that `ElectionPolicyStateAwareTest`'s four `..._for_officer` rows verify **no actor**. **That stands as a fact about those rows** — **but I must not let it read as "role authority is unverified".** **`only_chief_can_open_voting`, `guard_verifies_user_role` and `chief_and_deputy_can_administer` verify role authority directly.** > **Constitutional role authority IS verified — just not in the rows whose names promised it.** **The finding is a naming/verification-shape defect, NOT a coverage gap.** *(Stating this prevents my own finding from being cited as a hole that does not exist.)*
+
+**Status: L3 = 141/1,376 · B2 conditionally closed (41/41, 27 deferred) · `SD-14` mechanism CLOSED, decision OPEN · `SD-15` OPEN · `SD-1` unchanged · denominator unchanged · `1,395` NOT adopted · `1,376` frozen · baseline NOT re-run · no Constitution, production, schema, migration, test or fixture change · no failing test repaired.**
