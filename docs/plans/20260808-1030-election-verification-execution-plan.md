@@ -1328,3 +1328,47 @@ an election-specific relationship
 **And the constraint that matters most:** **the 213-row population is evidence about blast radius. It is NOT evidence that the current implementation is wrong.** Nothing in this programme has established that.
 
 **Status: `SD-12` withdrawn as an independent decision → folded into `D-ENT-1`. Master Matrix continues on the ~1,163 uncontested rows. L3 41/1,376. `SD-4` still open and still gates B3+.**
+
+---
+
+## B2 per-test classification — batch 1 of 5: `ConstitutionalVotingProtectionTest` (12 of 68)
+
+**Chosen first because B2's coverage claim rested on it.** B2 recorded *"server-side enforcement ✅ plausibly — name and population suggest it; **intent not read**."* **It is now read.**
+
+**The class declares its own invariants** (`ConstitutionalVotingProtectionTest:16-26`) — *"VERIFIES: Election administration and voting are constitutionally connected. A voter cannot bypass administration to start voting"* — with four named groups and lettered invariants **A · B · C · E · H**. **Business intent came from the class, not from me.**
+
+| # | Test | Business intent | Invariant | Lifecycle state | Ownership | Entry point | Result |
+|---|---|---|---|---|---|---|---|
+| 1 | `cannot_vote_during_setup_administration` | ballot refused before administration completes | **A + B** | `setup_administration` | Application (capability) | `GET slug.vote.create` | PASSED |
+| 2 | `cannot_vote_during_nomination_phase` | ballot refused during nomination | A + B | `setup_nomination` | Application | same | PASSED |
+| 3 | `cannot_vote_during_suspended_overlay` | 🔑 **suspension overrides lifecycle** | **H** | `suspended` | Application | same | PASSED |
+| 4 | `cannot_vote_after_election_closed` | ballot refused after the window closes | A + B | post-window | Application | same | PASSED |
+| 5 | `can_vote_when_voting_active` | 🔑 **positive control** | A | `voting_active` | Application | same | PASSED |
+| 6 | `code_creation_allowed_during_setup` | **code creation is preparatory, deliberately NOT gated** | **E** | `setup_administration` | Application | code route | PASSED |
+| 7 | `agreement_allowed_during_ready_for_voting` | agreement is preparatory, deliberately not gated | **E** | `ready_for_voting` | Application | agreement route | PASSED |
+| 8 | `expired_slug_can_reach_code_creation_during_non_voting` | expired slug may renew | — *(regression, "Fix 1")* | non-`voting_active` | Application | code route | PASSED |
+| 9 | `direct_post_to_vote_store_blocked_when_not_voting_active` | 🔑 **direct POST cannot bypass the gate** | A + B | non-`voting_active` | Application | **`POST` vote store** | PASSED |
+| 10 | `skipping_steps_blocked_when_not_voting_active` | step order enforced | — | non-`voting_active` | **Interface (middleware)** — `EnsureVoterStepOrder` | slug routes | PASSED |
+| 11 | `direct_route_to_elections_show_blocked_when_not_voting_active` | **the show page reports `canVote()` correctly** | **A** | non-`voting_active` | **Interface/Projection** | `elections.show` | PASSED |
+| 12 | `slug_possession_does_not_imply_voting_authority` | 🔑 **voter slug ≠ voting authority** | **C** | — | Application | slug routes | PASSED |
+
+### What this batch establishes — and it upgrades B2's coverage claim
+
+* ✅ **Server-side enforcement is genuinely verified**, not merely plausible. **Row 9 asserts a direct `POST` is blocked** — that is enforcement, not projection.
+* ✅ **Negative and positive cases both present** (rows 1–4 negative, row 5 positive control).
+* ✅ **Row 11 is the exact distinction B2 identified** — it verifies the *projection* reports `canVote()` correctly, and is classified **Interface/Projection**, not Domain. **B2's three-decision model is confirmed by a test that was written to it.**
+* 🔑 **Row 3 verifies `suspended` overrides lifecycle** — and does so **without depending on `ElectionMembership`**. **This row is NOT in the 213 population**, so suspension-over-lifecycle is verified *independently* of `D-ENT-1`.
+
+### Dependencies
+
+| | |
+|---|---|
+| `SD-12`/`PBDIGIT-49` | 🟢 **none of the 12.** The class references no contested mechanism — it gates on **lifecycle**, not entitlement |
+| `SD-11a` | 🟢 none |
+| **Invariant letters A · B · C · E · H** | ⚠️ **the class names them; no authoritative source defining them was located.** **`MECHANISM NOT ESTABLISHED` for the letter scheme** — whether they map to a governing document is unknown |
+
+### 🔴 One new governance question
+
+**`SD-13`: what are Election invariants A · B · C · E · H, and where are they defined?** **A test class asserting lettered invariants implies a register; none was found.** *(Recorded as a question — the tests may be self-documenting rather than citing an external scheme.)*
+
+**Status: B2 per-test 12 / 68. L3 = 53 / 1,376. `SD-12` blast radius unchanged (213). Next batch: `VotingButtonsStateMachineTest` (10) — also lifecycle-gated, so likewise independent of `SD-12`. `VoterEligibilityTest` (27) is deliberately LAST: all 27 sit in the 213 population and depend on the pending handover.**
