@@ -1452,7 +1452,35 @@ an election-specific relationship
 ### What this does NOT establish
 
 * **Not** that the 39 are wrong, or affected — **only that they are the population to read.**
-* **Not** that the 174 excluded rows are *verified* — only that **`D-ENT-1` does not change their meaning.** Their own L3 classification is still outstanding.
+* **Not** that the 174 excluded rows are *verified*, and the earlier wording was too broad. Precisely: **excluded from `D-ENT-1` potential impact under the measured discriminator; business correctness remains subject to their independent Master Matrix classification.** *(The evidence establishes only that they are not candidates under **this** discriminator — not that `D-ENT-1` cannot touch them under a different reading, and not that they are correct.)*
 * **Stage 2's mechanism list is a heuristic.** A test could reach exercise-time behaviour without naming any of those six tokens — **the same detection weakness that made `BD-1` look like 8 rows and `apply_candidacy` look like one file.** **The 39 is a lower bound.**
 
 **Status: `D-ENT-1` consumed. 213 → **39 REQUIRES INTENT READING** · 174 `NOT AFFECTED` (56 by entailment, 118 by F1). `AFFECTED` still NOT ESTABLISHED. `ADR-002` UNAMENDED. L3 unchanged at 63/1,376 — this narrowed a dependency, it did not classify rows.**
+
+## 39-row intent verification — class 1 of 3: `LegacyVoteRouteTest` (3 of 39)
+
+**Read in full (120 lines). All 3 rows PASSED.**
+
+**Intent, from the class's own docblock:** *"The legacy `POST /votes` route uses `VoteEligibility` middleware which only checks `is_voter`/`can_vote` flags on the users table — not whether the user is registered as a voter for THIS specific election. Fix: `VoteEligibility` must verify `isVoterInElection($electionId)`."*
+
+| # | Test | What it asserts | `D-ENT-1` classification |
+|---|---|---|---|
+| 1 | `…rejects_user_not_registered_for_any_election` | `403` + *"not registered as a voter for this election"* | 🟢 **NOT AFFECTED** |
+| 2 | `…accepts_user_registered_for_the_election` | not `403` when an `ElectionMembership` exists | 🟢 **NOT AFFECTED** |
+| 3 | `…rejects_user_registered_for_different_election` | 🔑 `403` — membership in **another** election does not admit | 🟢 **NOT AFFECTED** |
+
+**Evidence for NOT AFFECTED — the discriminator turns on organisation membership, and this class never consults it.** All three assert **election-scoped `ElectionMembership` presence at exercise time**. The question *"must organisation membership continue after `ElectionMembership` exists?"* **is never asked**: the fixture creates an `ElectionMembership` and the assertions turn on **which election** it belongs to. **`D-ENT-1`/Model B is silent on that, and F1 does not touch it.**
+
+**Business Decision Ownership:** **Policy/Authorization** (`VoteEligibility` middleware) · **authoritative rule:** election-scoped registration · **entry point:** `POST route('vote.store')`.
+
+### 🔴 But the class carries a separate, significant finding
+
+**Its docblock states the legacy middleware *"only checks `is_voter`/`can_vote` flags on the users table"*** — **the columns `PBDIGIT-35` established exist in NO database.** So the middleware's documented pre-fix behaviour reads **retired columns**.
+
+**Three rows pass, which means the `isVoterInElection` check now fires first.** **Whether the retired-flag branch is still reachable is NOT ESTABLISHED** — not investigated, and not repaired. **Recorded as `PBDIGIT-35` corroboration from an independent source**, and as a **coverage observation: the tests prove the new check works; they do not prove the retired branch is unreachable.**
+
+### Discovery-limitation check
+
+**This class was found by the six-token heuristic** (`vote.store`). ✅ **Correctly detected.** **It is also a case where the heuristic's *inclusion* was right and its *implication* was wrong** — exercise-time tokens were present, but the assertion is election-scoped registration, not organisation continuity. **The heuristic finds candidates; only reading decides.**
+
+**Status: 39-row verification 3 / 39. AFFECTED 0 · NOT AFFECTED 3 · UNDETERMINED 0. Remaining: `ElectionShowControllerTest` (334 lines) · `StateMachine\CurrentBehaviorTest` (841 lines). No new candidates outside the 39 discovered. L3 = 66 / 1,376.**
