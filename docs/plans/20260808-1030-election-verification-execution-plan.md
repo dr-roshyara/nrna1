@@ -1282,3 +1282,49 @@ B2  ── established ──────────► continue where authorit
 **`SD-12`/`PBDIGIT-49` now outranks `SD-4` on measured impact:** **213 candidate rows (15.5%)** versus `SD-4`'s **29 tests** in one capability. **Recommendation: put `SD-12` before `SD-4`.** **Both remain the Product Owner's; neither is taken.**
 
 **PBDIGIT-49 BLAST RADIUS ESTABLISHED — as a POTENTIALLY-AFFECTED population of 213 rows (15.5%). `AFFECTED` and `BLOCKED` remain NOT ESTABLISHED.**
+
+### ⚠️ Correction — `ElectionMembership`'s 19 classes is an estate observation, not an ownership finding
+
+**I wrote:** *"`ElectionMembership` … touches C4 candidacy · C6 admission · C8 casting — i.e. **every capability that decides who participates**."* **That reads as an architectural conclusion. It is not one.**
+
+**What is established:** `ElectionMembership` is **referenced by tests spanning multiple capabilities**. **What is NOT established:** that `ElectionMembership` **owns** any of those decisions.
+
+**The decisions it might or might not own must stay separate:**
+
+```
+ElectionMembership
+      │ stores / represents
+      ▼
+an election-specific relationship
+      ├── entitlement?           ← domain decision        NOT ESTABLISHED
+      ├── suspension?            ← domain/application     NOT ESTABLISHED
+      ├── exercisability?        ← application composition (B2 decision 3)
+      ├── authorization?         ← policy                 NOT ESTABLISHED
+      └── credential possession? ← voting mechanism       NOT ESTABLISHED
+```
+
+**Seventh occurrence of the same error class today** — after recursive `find`, two test counters, the constitution parser, the `Result` name collision, and `$canVote`'s layer. **The pattern is now unmistakable: a reference count tells me where a name appears; it never tells me what owns a decision.**
+
+### ⛔ `SD-12` is NOT an independent decision — it is `D-ENT-1`'s question
+
+**Product Owner directive, adopted.** `SD-12` is **not** *"should the eligibility implementation change?"* It is *"what is the business meaning of `Member`, `ElectionMembership`, entitlement and exercisability?"* — **which is precisely what Session 2 is establishing as `D-ENT-1`.**
+
+> **Creating `SD-12` as a separate decision would produce two competing authorities for one question.** It is therefore **folded into `D-ENT-1`** and tracked as a dependency, not raised for independent ruling.
+
+**Three levels, kept distinct:**
+
+| Level | Owner | Status |
+|---|---|---|
+| **1 · Measurement** — 213 rows potentially reference the contested mechanisms | Session 1 | ✅ **established** |
+| **2 · Business/domain meaning** — what should `ElectionMembership` mean across both modes | **Session 2 (`D-ENT-1`)** | ⬜ **in progress** |
+| **3 · Architectural decision** — adopt Model B, amend `ADR-002` | **Product Owner** | 🔴 **not authorised** |
+
+**Session 1's standing constraints until level 3 is reached:**
+
+1. 213 rows stay **`POTENTIALLY AFFECTED`** · 2. `AFFECTED` stays **NOT ESTABLISHED** · 3. `BLOCKED` stays **NOT ESTABLISHED** · 4. **no `ADR-002` amendment** · 5. no production or test change · 6. **continue classifying rows whose authority is already settled** · 7. **`PBDIGIT-49` does not block the ~1,163 uncontested rows** · 8. `D-ENT-1` recorded as **CROSS-STREAM EVIDENCE — REQUIRES EXPLICIT RECONCILIATION**.
+
+> **When Session 2 delivers its proposed `D-ENT-1`, Session 1 STOPS and waits for Product Owner approval before treating it as authoritative or classifying the 213 rows against it.**
+
+**And the constraint that matters most:** **the 213-row population is evidence about blast radius. It is NOT evidence that the current implementation is wrong.** Nothing in this programme has established that.
+
+**Status: `SD-12` withdrawn as an independent decision → folded into `D-ENT-1`. Master Matrix continues on the ~1,163 uncontested rows. L3 41/1,376. `SD-4` still open and still gates B3+.**
