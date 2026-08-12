@@ -23,7 +23,39 @@
 | Implementation code | implements rules; **never their canonical home** |
 | Verification artifacts | evidence of whether rules hold |
 
-**Rules that already have a canonical home are REFERENCED here, never copied** — see §5. Duplication is the failure mode this artifact exists to end.
+**Rules that already have a canonical home are REFERENCED here, never copied** — see §7. Duplication is the failure mode this artifact exists to end.
+
+### The direction of authority — a standing clause
+
+> **The implementation must conform to the applicable Manifesto rules. It must never become the source from which the Manifesto is derived.**
+> *(Product Owner, 2026-08-12.)*
+
+**Corollary, and the question every session should ask:**
+
+| Session | The question | **NOT** the question |
+|---|---|---|
+| **Session 3** *(implementation)* | *"What does the Manifesto require, and does the implementation satisfy it?"* | ❌ *"What does the implementation do, and shall I record that as a rule?"* |
+| **Session 1** *(verification)* | *"What does the test estate actually verify against the Manifesto?"* | ❌ *"What do the tests assert, and is that therefore the rule?"* |
+| **Session 2** *(governance)* | *"What has been adopted, and where is it recorded?"* | ❌ *"What does the code imply the rule must be?"* |
+
+### Two independent status dimensions — and only one of them lives here
+
+**A rule's GOVERNANCE status and its CONFORMANCE status are different things, and conflating them was the error this clause prevents.**
+
+| Dimension | Values | **Owner** | Recorded in this Manifesto? |
+|---|---|---|---|
+| **Governance status** | `ADOPTED` · `DEFERRED` · `OPEN` | **Product Owner / ARB**, recorded by Session 2 | ✅ **Yes — §1–§9** |
+| **Conformance status** | *implemented* · *partially implemented* · *not implemented* · *verified* | **Session 3** *(implementation)* and **Session 1** *(verification)* | ❌ **No — deliberately** |
+
+**Why conformance status is deliberately absent:**
+
+1. **A specification that tracks code becomes derived from code.** Per-rule implementation status would have to be updated on every change, and the artifact would drift toward describing the system instead of governing it — **the exact direction the standing clause forbids.**
+2. **Session 2 is not the authority on it.** *Implemented* is Session 3's determination; *verified* is Session 1's. **Stamping either here would be one session performing another's job.**
+3. **`ADOPTED` already carries what implementers need:** the rule is in force. **A rule does not become less authoritative for being unimplemented** — an adopted-but-unimplemented rule is a **conformance gap**, not a weaker rule.
+
+> **So: an adopted rule may be fully implemented, partly implemented, or not implemented at all, and its authority is identical in each case.** Where a rule must **not yet** be implemented, that is stated as **`DEFERRED`** — a governance status, which *is* Session 2's to set.
+>
+> **`VERIFIED` ≠ `IMPLEMENTED` ≠ `CONFORMANT` ≠ `TESTED`.** These are distinct determinations belonging to Sessions 1 and 3; **this Manifesto asserts none of them about any rule.**
 
 ---
 
@@ -63,6 +95,14 @@
 | **EM-VOC-001** | **"Organisation Membership" means the `Member` aggregate** — the organisation-side membership concept that carries membership identity, type, fees and term. | ADOPTED |
 | **EM-VOC-002** | **A technical organisation association or role assignment is not Organisation Membership**, whatever its name or role value. | ADOPTED |
 | **EM-VOC-003** | **`ElectionMember` and `Organisation Member` are different concepts. `ElectionMembership` does not imply Organisation Membership.** | ADOPTED |
+
+## 4a · Adopted rules — voting phase
+
+| ID | Rule | Status |
+|---|---|---|
+| **EM-VOT-001** | **Without a candidate, an election must not proceed to the next phase. Voting must not begin unless the election has at least one valid (approved) candidate.** | ADOPTED *(Product Owner, **2026-08-08**)* |
+
+**Note on canonical overlap:** the Constitution **partially** expresses this, as the `has_approved_candidates` precondition on one nomination transition. **The adopted rule is broader** — it constrains entry to the voting phase however that entry occurs. Recorded here because the business rule is broader than the single constitutional precondition; **the precondition itself remains canonical in the Constitution and is not restated.**
 
 ## 5 · Adopted sequencing
 
@@ -121,6 +161,7 @@
 | EM-VOC-001 | `Q-B1` closure | 2026-08-12 | global | ADOPTED |
 | EM-VOC-002 | `Q-B1` closure | 2026-08-12 | global | ADOPTED |
 | EM-VOC-003 | admission-gate adopted rules 1, 2, 5 | 2026-08-12 | global | ADOPTED |
+| EM-VOT-001 | `PBDIGIT-64` — *"Without a candidate an election must not go into the next phase"*, stated by the Product Owner | **2026-08-08** | election lifecycle | ADOPTED |
 | EM-SEQ-001 | Election-Only-first sequencing decision | 2026-08-12 | programme | ADOPTED |
 | EM-SEQ-002 | Election-Only-first sequencing decision | 2026-08-12 | programme | ADOPTED |
 | EM-FM-001…005 | hierarchy clauses 1, 2, 3, 4, 7 | 2026-08-12 | Full Membership | ADOPTED · DEFERRED |
@@ -152,11 +193,25 @@
 | **EM-OPEN-014** | **`W-8`** — which organisation role is the "Organisation Chief" of `EM-FM-005`? | Full Membership |
 | **EM-OPEN-015** | **`W-1`…`W-7`** — Full Membership trigger, restoration, expiry-vs-removal, override and post-vote questions | Full Membership |
 | **EM-OPEN-016** | **`FM-1`…`FM-15`** — the frozen Full Membership register | Full Membership |
+| **EM-OPEN-018** | **`PBDIGIT-50` — in which timezone are election times displayed, and what is the fallback when detection fails?** *(A narrow Product Owner steer is on record — **device timezone, not residence** — but the ticket is **`OPEN — not authorised`** with the fallback undecided, so it is **NOT migrated as an adopted rule**.)* | election display |
 | **EM-OPEN-017** | **`D-MANIFEST`** — is this artifact, at this location and name, the ratified canonical home? | 🟡 **this document's own status** |
 
 **`EM-OPEN-017` is stated plainly:** this Manifesto was created under a Product-Owner instruction to canonicalize, and **its ratification as *the* canonical artifact is itself a governance decision that has not been separately recorded.** **It is offered as the canonical home, not declared to be one by its own authority.**
 
 ---
+
+## 9a · Coverage of this artifact — stated honestly
+
+**A backlog sweep was performed on 2026-08-12 to test this Manifesto's completeness, after it was first written.**
+
+| | |
+|---|---|
+| **Swept** | every ticket in `docs/publicdigit/backlog/` for explicit business-rule statements, *"stated by the Product Owner"*, *"(PO decision)"* and approval markers |
+| **Gap found and closed** | **`EM-VOT-001`** — the candidate rule from `PBDIGIT-64`, adopted **2026-08-08**. **It was missing from the first version of this Manifesto**, which had canonicalized only the entitlement/admission decision thread |
+| **Candidate found and NOT migrated** | **`EM-OPEN-018`** — the timezone display decision (`PBDIGIT-50`), because the ticket is **`OPEN — not authorised`** |
+| **Correctly out of scope** | `PBDIGIT-30`'s approved **organisation** lifecycle rules (`B1`, `B2`, `B3`, `B10`). They are **Organisation-scope, not Election**, and they **already have a canonical home** in this same folder — `20260806_0818_how_many_organisation.md` |
+
+> ⚠️ **Coverage limit, stated rather than implied: this artifact is complete for the ENTITLEMENT, ADMISSION and VOTING-PHASE rules it lists, plus the sequencing decisions. It is NOT proven to contain every adopted Election business rule.** The sweep raised confidence but is not a guarantee — decisions stated in conversation and recorded only in narrative reviews may still be unmigrated. **Two known candidates of that kind, needing Product Owner confirmation before migration:** whether a voter must be routed directly to the election during the voting period, and whether elections below a voter threshold are auto-accepted without administrator approval. **Neither is migrated on my reading of a conversation.**
 
 ## 10 · Rules deliberately NOT migrated
 
@@ -173,6 +228,8 @@
 | Unresolved questions | §9, explicitly not rules |
 | `FM-1`…`FM-15` | Deferred register — **not migrated as Election-Only rules** |
 | Session 1's verification findings | Another stream's evidence; **not read as authority** |
+| `PBDIGIT-30`'s approved organisation-lifecycle rules (`B1`, `B2`, `B3`, `B10`) | **Organisation scope, not Election** — and they already have a canonical home in this folder |
+| The timezone display decision (`PBDIGIT-50`) | Ticket is **`OPEN — not authorised`**; recorded as `EM-OPEN-018` |
 | Anything in Session 2's own review reports that was a *finding* rather than an adopted decision | **The distinction this artifact exists to enforce** |
 
 ---

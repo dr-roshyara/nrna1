@@ -31,7 +31,7 @@
 | 9 | **Historical source remains traceable** | ✅ §8 and the closing note point at `PBDIGIT-68` and the review artifacts as the record of **how** each decision was reached |
 | 10 | **Rules with an existing canonical home not duplicated** | ✅ §7 **references** `ADR-T11`, `ElectionConstitution`, `ADR-002`, `ADR-001`/`003`, `VoterSourceStrategy` rather than copying them — **duplication is the failure mode this artifact exists to end** |
 
-## 3 · Migrated — 26 adopted rules
+## 3 · Migrated — 27 adopted rules *(26 initially + `EM-VOT-001` from the completeness sweep, §5a)*
 
 **Entitlement (7):** `EM-ENT-001`…`007` · **Election-Only (4):** `EM-EO-001`…`004` · **Governance (3):** `EM-GOV-001`…`003` · **Vocabulary (3):** `EM-VOC-001`…`003` · **Sequencing (2):** `EM-SEQ-001`, `002` · **Full Membership, deferred (6):** `EM-FM-001`…`006`.
 
@@ -52,6 +52,26 @@ Production behaviour · test names, comments and fixtures · Officer Guide state
 > **I have not declared it authoritative by its own authority.** It is offered as the canonical home.
 
 ---
+
+## 5a · ⚠️ Completeness sweep — the first version of the Manifesto was INCOMPLETE
+
+**Prompted by the Product Owner: *"check the jira tickets in backlog and investigate if it is complete."* I did, and it was not.**
+
+**Swept:** every ticket in `docs/publicdigit/backlog/` for explicit business-rule statements, *"stated by the Product Owner"*, *"(PO decision)"* and approval markers.
+
+| Result | Detail |
+|---|---|
+| 🔴 **Gap found and closed** | **`PBDIGIT-64:9`** carries an explicit adopted rule — *"**Without a candidate an election must not go into the next phase**"* — **stated by the Product Owner on 2026-08-08**, and labelled *"Business rule"* in the ticket itself. **It was missing.** Migrated as **`EM-VOT-001`** |
+| ⚠️ **Candidate found, NOT migrated** | **`PBDIGIT-50`** timezone display. The backlog index annotates it *"(PO decision)"*, **but the ticket's own status is `OPEN — not authorised`** with the fallback undecided. **Migrating it would have promoted a partially-decided item.** Recorded as **`EM-OPEN-018`** |
+| ✅ **Correctly out of scope** | `PBDIGIT-30`'s approved rules `B1`, `B2`, `B3`, `B10` — **Organisation-scope, not Election**, and they **already have a canonical home in this same folder** (`20260806_0818_how_many_organisation.md`). *Their presence there independently corroborates the placement choice* |
+
+### Why the first version was incomplete — the honest cause
+
+**I canonicalized the thread I had been working in.** The Manifesto drew from `PBDIGIT-68` and the Session-2 governance artifacts — the entitlement and admission decisions — **and I did not sweep the wider backlog before declaring the artifact canonical.** Its title claims *"canonical Election business rules"*, which **overstated its coverage on first commit.**
+
+**The Manifesto now states its coverage limit explicitly (§9a) rather than implying completeness**, and names two further candidates that exist only in conversation and narrative reviews — the voting-period voter redirect, and auto-acceptance of elections below a voter threshold. **Neither is migrated on my reading of a conversation; both need Product Owner confirmation.**
+
+> **A canonical artifact that silently overstates its coverage is worse than one that states its limit.** The limit is now stated.
 
 ## 6 · Session-3 handover
 
