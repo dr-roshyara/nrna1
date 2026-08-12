@@ -70,6 +70,22 @@ Plus routes: `propose-suspension` · `confirm-suspension` · `cancel-proposal` �
 
 ---
 
+## ⚖️ ARB DECISION PACKAGE — `D-ENT-1`, awaiting decision
+
+**[`../reviews/2026-08-12-arb-decision-package-election-entitlement-retention.md`](../reviews/2026-08-12-arb-decision-package-election-entitlement-retention.md)** · **Status: MODEL B DOMAIN ANALYSIS COMPLETE — AWAITING PRODUCT OWNER / ARB DECISION. No implementation may begin until `D-ENT-1` is decided.**
+
+**Model B is recorded there as the Product Owner's PREFERRED CANDIDATE — not as an implemented or constitutionally ratified rule.** Its refined wording, adopted verbatim: *"`ElectionMembership` is the election-specific entitlement record. Its existence and identity are election-specific. Whether that entitlement is currently **exercisable** is governed by the election's voting rules and suspension state."*
+
+**Three findings there change what this ticket's gaps mean:**
+
+1. 🔑 **Four eligibility definitions exist for this one concept.** `scopeEligible()` implements **Model A** (requires an active `members` row); `isEligible()` implements **Model B**; both have **0 callers**. The live gate is a third, weaker predicate; a fourth reads columns that exist in no database. **The ARB is not choosing in a vacuum — both models are already written, and the live path implements neither faithfully.** Measured: `scopeEligible()` returns **0 of 20** rows, because `members` is empty.
+2. 🔑 **`status` is an accidental mixture of three axes** — entitlement existence, current capability, and vote consumption — plus `invited`, which **has no producer** yet is filtered and counted in the UI.
+3. 🔑 **Why the code mutates the entitlement:** `can_vote_now` lives on `VoterSlug`, a 30-minute credential the voter re-creates on demand. **There is no durable capability field on the entitlement, so a Chief's decision has nowhere to live but `status`.** That is why `ElectionConstitution:126-128` ("freezes capabilities only… does NOT mutate business facts") is violated — **the structure offers no capability to freeze.** Recorded as **`Q3`, the true blocker: an architecture decision, not a refactor.**
+
+**`D-ENT-1` is a Full Membership question, and Full Membership is the one mode with zero runtime evidence — `members` has 0 rows, so no admission or retention scenario has ever occurred. Election-Only evidence CANNOT validate Model B's core claim.**
+
+---
+
 ## 📘 Model B domain analysis — COMPLETE, awaiting ARB
 
 **[`../reviews/2026-08-12-model-b-election-membership-domain-analysis.md`](../reviews/2026-08-12-model-b-election-membership-domain-analysis.md)** — the governance/domain-modelling analysis the Product Owner commissioned before any implementation. **Status: MODEL B DOMAIN ANALYSIS COMPLETE — AWAITING PRODUCT OWNER / ARB REVIEW.**
