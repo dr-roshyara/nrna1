@@ -3,13 +3,13 @@
 **Type:** Repository hygiene · **Epic:** cross-cutting · **Created:** 2026-08-12
 **Found by:** IERVP `D-ENT-1` consequences package — **incidentally, while probing for a `Q3` precedent**
 **Evidence:** [`../reviews/2026-08-12-d-ent-1-approval-and-consequences-package.md`](../reviews/2026-08-12-d-ent-1-approval-and-consequences-package.md)
-**Status:** ⚠️ **PARTIALLY RESOLVED** — `ElectionUser.php` repaired by the Product Owner 2026-08-12; `VoterSlugStep.php` still unparseable (it was governance-scoped; this is code)
+**Status:** ⚠️ **PARTIALLY RESOLVED** — `ElectionUser.php` repaired by the Product Owner 2026-08-12; `VoterSlugStep.php` still unparseable
 
 | | |
 |---|---|
 | **Customer impact** | **None observed.** Both files are unreachable at runtime |
 | **Real cost** | **Any full-autoload or static-analysis pass over `app/` fails on them**, so tooling that would sweep the whole tree cannot run clean |
-| **Confidence** | **High** — `php -l` on every `.php` file under `app/`: exactly 2 failures |
+| **Confidence** | **High** — `php -l` on every `.php` file under `app/`. **Originally 2 failures; now 1** after the Product Owner's repair |
 
 ---
 
