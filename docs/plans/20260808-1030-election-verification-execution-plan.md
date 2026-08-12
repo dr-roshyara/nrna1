@@ -1100,3 +1100,76 @@ business capability scope  CandidacyApplicationTest, ElectionCandidacyRelationsh
 **Every future authority question must state its blast radius in rows before it is allowed to pause work.** *"Important"* is not *"blocking"* — the same distinction `BD-1` required, now generalised.
 
 **Status: matrix classification may proceed for capabilities whose authority is established. `SD-11a` isolates 8 rows. L3 remains 41/1,376 pending further batches.**
+
+---
+
+## B2 — `open_voting` · `canVote` · PARTIALLY CLASSIFIED. **They are three decisions, not one.**
+
+**Population:** 68 rows across 5 classes — `VoterEligibilityTest` (27) · `ConstitutionalVotingProtectionTest` (12) · `VotingButtonsStateMachineTest` (10) · `ElectionPolicyStateAwareTest` (10) · `VotingButtonsStateMachineIntegrationTest` (9). **60 PASSED · 4 ERROR · 4 FAILURE.**
+
+### The B2 answer — `open_voting` ≠ `canVote`, and `canVote` is itself two things
+
+**Verified in `ElectionVotingController` (carried forward from Relationship 3 and re-confirmed):**
+
+```php
+:41  $hasVoted   = $membership?->has_voted ?? false;
+:42  $isEligible = $membership !== null …
+:51  $canVote    = $isEligible && !$hasVoted && $lifecycle->canVote();   // PROJECTION
+:53  if (! $lifecycle->canVote()) { … }                                  // ENFORCEMENT
+:71  'canVote' => $canVote,                                              // shipped to the UI
+```
+
+| # | Decision | Business meaning | Authority | Ownership |
+|---|---|---|---|---|
+| **1** | **`open_voting`** | *may this election's voting phase begin?* | `ElectionConstitution` — **chief only**, preconditions `voting_window_defined` + `timezone_set` | **Domain** (rules) + **Application** (guard) |
+| **2** | **`$lifecycle->canVote()`** | *is voting constitutionally permitted right now?* — state machine + window + administration completion | `ElectionLifecycleEngineImpl` (derived) | **Application** (derivation) |
+| **3** | 🔑 **`$canVote` (the UI prop)** | *may **this voter** vote right now?* — a **three-input composition** | **none** — composed inline in the controller | 🔴 **Interface/Projection** |
+
+> **The UI's `canVote` is not the lifecycle's `canVote()`.** Decision 3 folds **entitlement** (`$membership !== null`) and **already-voted** (`has_voted`) into a constitutional capability — and **that composition has no owner outside the controller.**
+
+**So a test asserting the UI flag verifies an application composition; a test asserting the guard verifies a domain capability. Mapping both to "Domain" would erase exactly the distinction the ownership column exists to capture.**
+
+### Where the concepts sit — and three are NOT collapsed
+
+| Concept | Established? |
+|---|---|
+| lifecycle/voting phase | ✅ constitutional |
+| capability `canVote()` | ✅ derived by the engine |
+| **voter entitlement** | 🔴 `$membership !== null` — and **which store is authoritative is CONTESTED** (`PBDIGIT-49`) |
+| **voter eligibility** | ⚠️ **conflated with entitlement here** — `$isEligible` is computed *from membership presence*. **Whether entitlement and eligibility are the same business concept is `BUSINESS RULE NOT SPECIFIED`** |
+| already-voted | `membership->has_voted` — **note: C8's gate keys on `codes.has_voted`, a DIFFERENT column.** Two representations of "has voted" |
+| actor authorization | `open_voting` = chief only; **voting itself has no role check here** |
+| ballot/code/device/IP | out of B2 |
+
+### 🔴 B2's two findings
+
+1. **`$isEligible` is derived from membership presence alone.** Eligibility and entitlement are **not distinguished** in the composition. **Not a defect claim** — it may be the intended model — but **no source specifies it**, and `PBDIGIT-49` shows the membership store itself is contested.
+2. **"Has voted" exists in two places:** `election_memberships.has_voted` (B2, decision 3) and `codes.has_voted` (C8's one-vote gate). **Whether they can disagree is NOT ESTABLISHED** — and a disagreement would mean the UI and the submission gate answer differently.
+
+### Coverage — the 8 failures are NOT the story
+
+**60 of 68 pass. The gap is what none of them covers.**
+
+| Dimension | Covered? |
+|---|---|
+| correct lifecycle state | ✅ plausibly — `VotingButtonsStateMachine*`, `ElectionPolicyStateAware` |
+| server-side enforcement | ✅ `ConstitutionalVotingProtectionTest` (12, all passing) — **name and population suggest it; intent not read** |
+| **the decision-3 composition** | 🔴 **NOT ESTABLISHED** — whether any test asserts that the UI flag agrees with the guard |
+| **entitlement vs eligibility distinction** | 🔴 **cannot be covered — the rule does not exist** |
+| **the two `has_voted` representations agreeing** | 🔴 **NOT ESTABLISHED** |
+
+**8 failures:** 7 in `VoterEligibilityTest` (4 ERROR + 3 FAILURE) and 1 in `VotingButtonsStateMachineIntegrationTest`. **Mechanism not yet established for all 8** — not investigated, per the no-repair rule.
+
+> **The most valuable B2 observation is not a failure.** `VoterEligibilityTest` is the largest B2 class (27 rows) **and eligibility is the concept B2 found to be unspecified.** 27 tests exercise a distinction no source defines.
+
+### Blast radius
+
+| Blocker | Rows | Capabilities |
+|---|---:|---|
+| `PBDIGIT-49` (entitlement store) | **≥27** — all of `VoterEligibilityTest`; **more not enumerated** | C6 · B2 decision 3 |
+| `SD-11a` | 8 | C10 |
+
+**`SD-12` raised:** are **entitlement** and **eligibility** the same business concept? **`BUSINESS RULE NOT SPECIFIED`; the code treats them as identical.**
+**CROSS-STREAM EVIDENCE — REQUIRES EXPLICIT RECONCILIATION:** Session 2's `D-ENT-1`/Model B concerns precisely this. **Not imported; nothing above depends on it.**
+
+**Status: B2 — PARTIALLY CLASSIFIED (68 rows populated at L2/structural + decision-level L3; per-test intent read for 0 of 68). MASTER MATRIX — CONTINUING. `SD-11a` — BLOCKS ONLY THE 8 MEASURED C10 ROWS. IMPLEMENTATION — NOT AUTHORISED.**
