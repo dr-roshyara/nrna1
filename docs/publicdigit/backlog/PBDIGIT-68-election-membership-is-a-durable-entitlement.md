@@ -3,7 +3,7 @@
 **Type:** Business decision **RECORDED** + consequence analysis · **Epic:** `PBDIGIT-EPIC-03` Election Management
 **Created:** 2026-08-12 · **Ruling by:** Product Owner, 2026-08-12
 **Evidence:** [`../reviews/2026-08-09-iervp-election-runtime-verification.md`](../reviews/2026-08-09-iervp-election-runtime-verification.md) — Appendices **D** (two-mode entitlement) and **E** (semantics verdict) · [`../reviews/2026-08-09-election-constitution-voter-eligibility-traceability.md`](../reviews/2026-08-09-election-constitution-voter-eligibility-traceability.md)
-**Status:** ✅ **`D-ENT-1` APPROVED — Model B** · **`ADR-002` amendment PROPOSED (not applied)** · **`Q3`/`D-ENT-1b` OPEN** · ⛔ **IMPLEMENTATION NOT AUTHORISED** · **Constitution NOT amended**
+**Status:** ✅ **`D-ENT-1` APPROVED — Model B** · **`BR-1` INVESTIGATED (`BR-1.1`…`BR-1.13` open)** · **`ADR-002` amendment PROPOSED (not applied)** · **`Q3`/`D-ENT-1b` OPEN** · ⛔ **IMPLEMENTATION NOT AUTHORISED** · **Constitution NOT amended**
 
 > ### ⚠️ Read the approved wording first — the ruling below was CORRECTED
 >
@@ -75,6 +75,28 @@ proposeSuspension(User $proposer)   confirmSuspension(User $confirmer)
 Plus routes: `propose-suspension` · `confirm-suspension` · `cancel-proposal` · `suspend` · `approve` · `DELETE`.
 
 **Two distinct named actors imply a four-eyes control** — exactly the shape a franchise-withdrawal power should have.
+
+---
+
+## 📗 `BR-1` INVESTIGATED — the entitlement lifecycle
+
+**[`../reviews/2026-08-12-election-membership-entitlement-lifecycle.md`](../reviews/2026-08-12-election-membership-entitlement-lifecycle.md)**
+**Report: `D-ENT-1` APPROVED · `BR-1` INVESTIGATED · `Q3` UNDECIDED · `ADR-002` UNCHANGED · CONSTITUTION UNCHANGED · IMPLEMENTATION NOT AUTHORISED.**
+
+**`BR-1` has no ratified rule, but it is not a blank slate — three authoritative constraints already bound the answer:**
+
+1. **A documented officer-facing lifecycle exists** — `docs/election_management/04-voter-list.md`: four states, suspension **reversible by re-approval**, removal **"permanent"** at officer level but administratively recoverable. **Class E — documented intent, never ratified.** *(Found only this commission; I had never searched that folder — see the review's self-audit.)*
+2. 🔴 **`revoke` is already taken, with an INVERTED meaning.** The governing vocabulary defines Revocation as withdrawing *identity trust* and says it **does NOT** *"block future voting"*. Entitlement revocation would exist precisely to block voting. **Recommend the naming decision not reuse `revoke`** — fourth collision.
+3. 🔴 **`ADR-T11` (constitutional, build-breaking) makes one answer impossible.** *"No voter↔vote linkage in any aggregate, event payload, or projection."* **So terminating an entitlement after the voter has voted CANNOT reach that ballot** — the system cannot identify which vote was theirs. Post-vote termination has **election-level governance consequences only** (`ADR-003`). **A hard boundary, not a gap.**
+
+**And the organisation side supplies a complete template** (class D): `SUSPENDED` reversible vs `TERMINATED` terminal and irreversible, **mandatory actor and mandatory reason**, guarded transitions, domain events.
+
+**Two findings that change earlier characterisations of this ticket's own gaps:**
+
+* **The single-actor `suspend` is the DOCUMENTED path; the four-eyes flow is UNDOCUMENTED** in the officer guide. So *"four-eyes protects the franchise"* is not yet true — which is intended is **`BR-1.13`**, a Product Owner question.
+* **No test anywhere asserts that a suspended VOTER cannot vote.** Every such test concerns the *election* being suspended or the *organisation member* being suspended. **So the test estate would not notice if voter-suspension enforcement disappeared** — confirming the `G-5` load-bearing warning independently, from the test side.
+
+**Open:** `BR-1.1`…`BR-1.13`, with **termination semantics (`BR-1.1`/`BR-1.2`) first — everything else hangs off it.**
 
 ---
 
