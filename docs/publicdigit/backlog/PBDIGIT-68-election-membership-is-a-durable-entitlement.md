@@ -3,7 +3,7 @@
 **Type:** Business decision **RECORDED** + consequence analysis · **Epic:** `PBDIGIT-EPIC-03` Election Management
 **Created:** 2026-08-12 · **Ruling by:** Product Owner, 2026-08-12
 **Evidence:** [`../reviews/2026-08-09-iervp-election-runtime-verification.md`](../reviews/2026-08-09-iervp-election-runtime-verification.md) — Appendices **D** (two-mode entitlement) and **E** (semantics verdict) · [`../reviews/2026-08-09-election-constitution-voter-eligibility-traceability.md`](../reviews/2026-08-09-election-constitution-voter-eligibility-traceability.md)
-**Status:** ✅ **`D-ENT-1` APPROVED — Model B** · **`BR-1` PARTIALLY RESOLVED — Option B recommended; 11 PO decisions await** · **`ADR-002` amendment PROPOSED (not applied)** · **`Q3`/`D-ENT-1b` OPEN** · ⛔ **IMPLEMENTATION NOT AUTHORISED** · **Constitution NOT amended**
+**Status:** ⚠️ **`D-ENT-1` — `Q-A0` OPEN: two PO formulations disagree on whether organisation membership is continuously required** · ✅ **Model B approved in principle** · **`BR-1` PARTIALLY RESOLVED — Option B recommended; 11 PO decisions await** · **`ADR-002` amendment PROPOSED (not applied)** · **`Q3`/`D-ENT-1b` OPEN** · ⛔ **IMPLEMENTATION NOT AUTHORISED** · **Constitution NOT amended**
 
 > ### ⚠️ Read the approved wording first — the ruling below was CORRECTED
 >
@@ -75,6 +75,36 @@ proposeSuspension(User $proposer)   confirmSuspension(User $confirmer)
 Plus routes: `propose-suspension` · `confirm-suspension` · `cancel-proposal` · `suspend` · `approve` · `DELETE`.
 
 **Two distinct named actors imply a four-eyes control** — exactly the shape a franchise-withdrawal power should have.
+
+---
+
+## 🔴 `Q-A0` — TWO PRODUCT OWNER FORMULATIONS DIFFER ON CONTINUITY
+
+**[`../reviews/2026-08-12-d-ent-1-two-mode-domain-decision-report.md`](../reviews/2026-08-12-d-ent-1-two-mode-domain-decision-report.md)**
+**Report: `D-ENT-1` INVESTIGATION COMPLETE — `ADR-002` AMENDMENT PROPOSED — IMPLEMENTATION NOT AUTHORISED.**
+
+**The two questions are now kept strictly apart, per the Product Owner's correction:**
+
+* **Question A** — must a person remain an organisation `Member` **throughout** the election? *(Full Membership only)*
+* **Question B** — may the Election Chief suspend the election-specific entitlement? *(both modes)*
+
+**They are independent:** no suspension or removal path in the system branches on organisation membership or on `voter_source_strategy`. **A "yes" to B says nothing about A.**
+
+> 🔴 **But two Product Owner formulations now disagree on Question A, and I have not chosen between them:**
+>
+> * **`F1`** (approved 2026-08-12, recorded above as binding): organisation membership is an **admission prerequisite — NOT continuously evaluated.** → **Question A ANSWERED.**
+> * **`F2`** (this commission): *"organisation membership **remains relevant**"* and *"whether it is **continuously required remains to be established**."* → **Question A DECLARED OPEN.**
+>
+> **This blocks the `ADR-002` amendment.** The amendment's whole substance is an **Entitled** axis whose defining property is that it is *not* re-derived from organisation membership — **correct under `F1`, premature under `F2`.** **`Q-A0` is the decision everything downstream waits on.**
+
+**Two new measured results on suspension:**
+
+* 🔴 **Suspension does NOT prevent credential issuance** — a confirmed-suspended voter was **issued a fresh `VoterSlug`** at runtime; and **no suspension or removal path touches `VoterSlug` or `Code` at all**, so an existing credential is never invalidated. **The system issues an instrument it will not honour.**
+* **Of the five required distinguishability cases, two fail.** The consequential one: **suspended vs already-voted is indistinguishable at the enforcing predicate** — both are `status='inactive'`, and `isVoterInElection()` reads only `role` + `status`.
+
+**Also established:** the two mode formulae are **identical in every component except one** — *"organisation `Member` required"*. **So the modes differ only at admission**, which is the strongest available argument that `ElectionMembership` means the same thing in both. And *"credential requirements"* fails a business test as an entitlement component: **the credential is voter-refreshable**, so it is an authentication step, not an entitlement condition.
+
+**`PBDIGIT-49`: concept-level mapping offered as evidence only — no row classified, Session 1's artifacts untouched.** The discriminator offered: **a test is affected only if it asserts a *voting-time* consequence of *organisation* status**; an admission-time assertion is unaffected under either formulation.
 
 ---
 
