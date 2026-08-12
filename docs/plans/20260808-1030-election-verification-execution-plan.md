@@ -1015,3 +1015,53 @@ two of the five named paths      874   >   historical total 814
 2. **Earlier, two regex test-counters were both wrong** (5 by luck; 17 as a 3.4× overcount). **`phpunit --list-tests` is the row source for this matrix precisely because of that.**
 
 **Status: MASTER MATRIX BUILT — 1,376 rows, L1/L2 complete, L3 at 2.7%. SLICE 1 NOT COMPLETE. No production code, test, fixture or configuration changed. `SD-3` still unresolved; Session 2 / IERVP untouched.**
+
+---
+
+## B1 ACCEPTED · `SD-4` RAISED — the verification boundary does not follow the business boundary
+
+**B1 accepted by the Product Owner.** Report: [`2026-08-08-b1-apply-candidacy-classification.md`](../publicdigit/reviews/2026-08-08-b1-apply-candidacy-classification.md).
+
+**B2 is NOT started, and must not be** until `SD-4` is decided. **Continuing B2–B7 with an unresolved scope error would make the Master Matrix exactly the artifact this programme exists to avoid: apparently rigorous, carrying a hidden scope defect.**
+
+### 🔴 `SD-4` — BUSINESS / GOVERNANCE DECISION REQUIRED
+
+> **Should the Master Matrix include the 29 candidacy-application tests currently outside the adopted `SD-1` five-path universe?**
+
+**The contradiction, stated plainly:**
+
+```
+programme scope (SD-1)     tests/Feature/Election/          → 1,376 tests
+business capability scope  CandidacyApplicationTest, ElectionCandidacyRelationshipTest,
+                           ElectionCandidacyApplyPageTest, CandidacyApplicationMigrationTest,
+                           DebugCandidacyTest              → 29 tests, ALL in tests/Feature/
+```
+
+**`apply_candidacy` is the only constitutional action performed by a *participant*, and the adopted universe excludes every test that exercises it.**
+
+| | Option | Consequence |
+|---|---|---|
+| **A** | **Expand the universe** to include the five candidacy files | The only participant-performed capability becomes measurable · the matrix reflects the business capability landscape · **but the denominator changes**, `SD-1` needs formal amendment, the baseline must be regenerated for the added population, and **the original 1,376 must be preserved as historical evidence rather than silently replaced** |
+| **B** | **Keep `SD-1` unchanged** | Defensible **only if the exclusion is intentional** — and then the programme **may never claim "the Election estate has been verified"** without stating that candidacy application was excluded |
+
+**Architect's recommendation: Option A** — *"the verification boundary should follow the business capability boundary, not an accidental filesystem boundary."* **Recorded as a recommendation. Engineering has not adopted it, and the decision is not taken.**
+
+### ⛔ If Option A is chosen, the sequence is NOT "add 29 tests and continue"
+
+1. formally amend `SD-1`; 2. define the new universe; 3. **`phpunit --list-tests` as the authority**; 4. establish the new denominator; 5. execute the newly added population; 6. **preserve the 1,376 baseline**; 7. update the matrix scope; 8. **only then** resume B2.
+
+**Adding the tests without steps 1–7 would repeat the 826/1,376 defect** — a denominator changed without a recorded contract.
+
+### B1's other outcomes, dispositioned
+
+| | |
+|---|---|
+| `complete_nomination`'s undocumented self-transition | **An architectural QUESTION, not a constitutional defect.** *Is it intentionally a capability check with derived state, like `resume` and `apply_candidacy`, or is the declaration an oversight?* **Enough for the matrix; do not open a defect** |
+| `voter` vs `member` in `allowed_roles` | **BUSINESS RULE NOT SPECIFIED** — the constitution lists both and never distinguishes them. **Session 2 is separately investigating `ElectionMembership` vs organisation `Member`; that evidence was correctly NOT imported** |
+| duplicate candidacy | **BUSINESS RULE NOT SPECIFIED** — no declared precondition. **Not a bug** |
+
+### Why B1 was worth doing before scaling
+
+**A failure-driven pass would never have found this.** `PHPUnit → failure → code → presumed cause → fix` had nothing to work with: **the one in-scope test passes.** The finding came from the other direction — *business capability → authoritative rule → decision ownership → execution path → test intent → evidence* — and the answer was not a failing test but **"the verification universe does not contain the tests that matter for this capability."**
+
+**Status: B1 ACCEPTED. `SD-4` OPEN — blocks B2–B7. `SD-1` unamended; the universe remains 1,376. `SD-2` satisfied (baseline exists). `SD-3` still unresolved. No production code, test, fixture or configuration changed.**
