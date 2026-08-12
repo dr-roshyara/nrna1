@@ -1372,3 +1372,40 @@ an election-specific relationship
 **`SD-13`: what are Election invariants A · B · C · E · H, and where are they defined?** **A test class asserting lettered invariants implies a register; none was found.** *(Recorded as a question — the tests may be self-documenting rather than citing an external scheme.)*
 
 **Status: B2 per-test 12 / 68. L3 = 53 / 1,376. `SD-12` blast radius unchanged (213). Next batch: `VotingButtonsStateMachineTest` (10) — also lifecycle-gated, so likewise independent of `SD-12`. `VoterEligibilityTest` (27) is deliberately LAST: all 27 sit in the 213 population and depend on the pending handover.**
+
+## B2 per-test — batch 2: `VotingButtonsStateMachineTest` (10) → **22 of 68**
+
+**Independence established from content, not the name:** grep for contested mechanisms (`ElectionMembership` · `election_memberships` · `isEligible` · `VoterSourceStrategy` · `VoterEligibilityService`) returns **0**. **So `SD-12` does not reach this class** — measured, not assumed.
+
+**Intent, from the class's own docblocks:** it tests `Election::transitionTo()` and the `open_voting`/`close_voting` actions — *"MODEL TEST … bridge to state machine"*. **This is a C7/C9 transition class, not a voter-capability class** — despite sitting in B2 because it references `canVote`.
+
+| # | Test | Business intent | Invariant | Ownership | Result |
+|---|---|---|---|---|---|
+| 1 | `…transition_to_voting_creates_transition_record` | a transition **writes a record** | 🔗 **`BD-1`-dependent** | Infrastructure | PASSED |
+| 2 | `…locks_voting_and_completes_nomination` | transition **sets flags** as side effects | side-effect contract | Domain (model) | PASSED |
+| 3 | `open_voting_transitions_from_nomination_to_voting` | `open_voting` reaches `voting_active`, **setting window facts as a side effect** | Constitutional target state | Domain + Application guard | PASSED |
+| 4 | `open_voting_rejects_if_not_in_nomination_state` | 🔑 **`allowed_states` enforced** | Constitutional | Domain (rules) + Application (guard) | PASSED |
+| 5 | `open_voting_creates_state_transition_record` | record written | 🔗 **`BD-1`** | Infrastructure | PASSED |
+| 6 | `open_voting_locks_voting_immediately` | voting locked on entry | side-effect contract | Domain | PASSED |
+| 7 | `close_voting_transitions_from_voting_to_results_pending` | `close_voting` → `counting` | Constitutional | Domain + Application | PASSED |
+| 8 | `close_voting_rejects_if_not_in_voting_state` | 🔑 `allowed_states` enforced | Constitutional | Domain + Application | PASSED |
+| 9 | `close_voting_creates_state_transition_record` | record written | 🔗 **`BD-1`** | Infrastructure | PASSED |
+| 10 | `close_voting_prevents_double_close_when_already_locked_and_ended` | ⚠️ **guard blocks closing from the wrong state** — and its docblock records that **when `voting_ends_at` is past, the engine derives `counting`, not `voting_active`** | Constitutional + **derivation** | Application (derivation) | PASSED |
+
+### Findings
+
+* 🔗 **Rows 1, 5 and 9 are `BD-1`-dependent** — three tests assert *"a transition creates a record"*, which is precisely the population the `BD-1` dependency analysis identified. **`BD-1`'s blast radius therefore extends beyond the 8 files it named: +3 rows here.** **`BD-1` = SUBSET blocker over `≥11` rows, not 8.** *(Correcting my own earlier figure.)*
+* ✅ **Rows 4 and 8 verify `allowed_states` enforcement** — the constitution's core invariant, and **the first direct per-test evidence of it in this programme.**
+* 🔑 **Row 10 is the most interesting.** Its docblock states that a past `voting_ends_at` makes the engine derive **`counting`**, not `voting_active` — **so the test author encountered Relationship 5's derived-state behaviour and documented it.** **Independent corroboration** of the derivation finding, from a test written before this programme began.
+* ⚠️ **This class is misplaced in B2.** It verifies **C7/C9 transitions**, not C8 voter capability. **B2's population was assembled from `canVote` references** — which this class contains incidentally. **Recorded as a batching observation; the rows stay valid.**
+
+### Dependencies
+
+| Blocker | This batch |
+|---|---:|
+| `SD-12`/`PBDIGIT-49` | **0 rows** — measured |
+| `SD-11a` | 0 |
+| **`BD-1`** | 🔴 **3 rows** |
+| `SD-13` | **0** — this class uses no lettered invariants, so `SD-13` was **not** investigated (per the directive: only if materially depended upon) |
+
+**Status: B2 per-test 22 / 68. L3 = 63 / 1,376. `BD-1` corrected to ≥11 rows. Next: `ElectionPolicyStateAwareTest` (10) then `VotingButtonsStateMachineIntegrationTest` (9). `VoterEligibilityTest` (27) still deferred.**
