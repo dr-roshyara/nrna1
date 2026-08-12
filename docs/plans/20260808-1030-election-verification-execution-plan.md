@@ -1581,3 +1581,60 @@ Previously: the `election_memberships → user_organisation_roles` FK seemed **i
 | **Q-A4** | In Election-Only Mode, does the Organisation Chief hold **any** authority over ElectionMembers? |
 
 **Status: amended `D-ENT-1` recorded as external authority. 39-row verification stands at 15/39 with all classifications surviving. `ElectionVoterSuspensionTest` (7 rows) additionally read → NOT AFFECTED. New invariant coverage: ABSENT — recorded as a finding, not repaired. `ADR-002` unamended. No schema, code or test change. `CurrentBehaviorTest` (24 rows) remains, now to be read against the AMENDED rule.**
+
+---
+
+## 🏛️ Election-Only Mode recorded as external authority · phased delivery adopted
+
+**PO decision (2026-08-12), recorded as authority, nothing inferred beyond it:** **ELECTION-ONLY MODE** — Organisation Membership **not required** · ElectionMembership is election-specific and governed by the **Election context** · **Election Chief** holds suspension/removal authority · **the Organisation Chief has NO authority over ElectionMembership merely because the person belongs to that organisation** · ElectionMembership operations must not remove or modify Organisation Membership.
+
+**Delivery order adopted: PHASE 1 Election-Only → PHASE 2 Full Membership.** `Q-A1` (does org *suspension* cascade) · `Q-A2` (reversibility) · `Q-A3` (post-vote) are **Full-Membership concerns, deferred by the PO and not investigated.** **`Q-A4` answered by the decision above.**
+
+**Workflow A's zero coverage is re-filed as a PHASE 2 FUTURE VERIFICATION REQUIREMENT. No test written.**
+
+## 39-row verification — class 3 of 3: `StateMachine\CurrentBehaviorTest` (24 rows) → **39 / 39 COMPLETE**
+
+**24 rows, all PASSED.** Three behavioural groups, read individually:
+
+| Group | Rows | What is verified | Authority |
+|---|---:|---|---|
+| **Lifecycle derivation** | 11 | each state **derived from business facts** (`approved_at`, `setup_started_at`, nomination/voting windows, `published`, `rejected_at`, `archived_at`) | `ADR_20260807_1500` — *state column is a cache, not truth* |
+| **Constitutional transitions** | 7 | `submit_for_approval · approve · begin_setup · complete_administration · open_voting · close_voting · publish_results` reach their `target_state` | **`ElectionConstitution::RULES`** — genuine business authority |
+| **Capability snapshot** | 6 | `canVote` ×2 · `canEditTimeline` · `allowedActions` ×3 | `RULES` + engine contract |
+
+**`D-ENT-1` (either variant): all 24 `NOT AFFECTED`.** Evidence: membership appears **once**, at `:526` under the comment **`// Add precondition: has_voters`** — an `ElectionMembership` row created to satisfy the **constitutional precondition** of `complete_administration`. **Nothing asserts a consequence of organisation-membership loss, in either direction.**
+
+**Mode relevance:** **23 rows mode-INDEPENDENT** — lifecycle derivation and constitutional transitions do not depend on how a voter came to exist. **`test_complete_administration_transition` touches BOTH modes** via `has_voters`, since the two modes differ in *how* that precondition is satisfied.
+
+**Corroboration of C8, independently arrived at:** both `canVote` rows construct an election with **no voter at all** and assert `$lifecycle->canVote()` on windows/locks alone. > **`ElectionLifecycle::canVote()` is authority over the VOTING WINDOW, not over voter entitlement** — exactly the C8 split, now measured in the estate rather than inferred from `ElectionVotingController`.
+
+**Minor structural observation:** `test_submitted_for_approval_allowed_actions` asserts `allowedActions()` is **empty** and documents why — *approve/reject are platform-admin only, not tracked in lifecycle allowedActions*. **`allowedActions()` is chief-scoped, not a complete projection of `RULES`.** Not a defect; a scope fact worth knowing before it is used as one.
+
+### 🔴 Conformance findings — mechanism OBSERVED, no mechanism CHOSEN
+
+**Verified in `database/migrations/2026_03_17_213212_create_election_memberships_table.php`:**
+
+```php
+$table->uuid('organisation_id');                       // NOT NULL
+// Ensures user_id + organisation_id exists in user_organisation_roles
+$table->foreign(['user_id','organisation_id'])
+      ->references(['user_id','organisation_id'])->on('user_organisation_roles')
+      ->onDelete('cascade');                           // ← CASCADE
+```
+
+| # | Finding | Phase |
+|---|---|---|
+| **CF-1** | **The adopted rule says removal SUSPENDS. The schema CASCADE-DELETES.** A deleted row cannot be a suspended row — **and it carries away `has_voted`**, which the estate calls the *"new single source of truth"*. *(The anonymous ballot in `votes` survives, so a tally is unaffected; the record that the person voted does not.)* **This feeds the PO's deferred `Q-A3`; it does not answer it.** | **2** |
+| **CF-2** | 🔴 **`organisation_id` is NOT NULL and the FK is enforced, so NO `ElectionMembership` can exist without a `user_organisation_roles` row.** **Election-Only Mode says organisation membership is not required — the schema currently requires it for every admission.** | **1 — NOW** |
+
+**Per the PO's instruction, no `CASCADE`/`RESTRICT`/other mechanism is proposed, and nothing was changed.** Reporting that the existing mechanism is CASCADE, and that CASCADE does not produce the adopted outcome, is **conformance evidence, not a design choice.**
+
+### ❓ Genuine Election-Only business question — STOPPING as instructed
+
+| | Question |
+|---|---|
+| **Q-B1** | **In Election-Only Mode, does an ElectionMember stand in ANY data relationship to the organisation running the election?** The election belongs to an organisation, so `election_memberships.organisation_id` is populated — but **if satisfying the FK means writing a `user_organisation_roles` row, Election-Only participants become organisation members in the data**, which may grant organisation-level visibility the rule intends to withhold. **Either answer is a coherent product; engineering must not pick.** |
+
+**Status: 🎯 39 / 39 COMPLETE — AFFECTED 0 · NOT AFFECTED 39 · UNDETERMINED 0.** Plus `ElectionVoterSuspensionTest` (7) from the re-derivation. **`PBDIGIT-49` / `D-ENT-1` — original or amended — has ZERO measured impact on the Master Matrix.** L3 = **109 / 1,376**. `ADR-002` unamended · no production, schema, migration, test or fixture change.
+
+> **The estate never encoded the assumption `D-ENT-1` was convened to settle — so the decision changes no existing verification. It creates NEW verification obligations (workflow A, Phase 2) and exposes TWO conformance gaps, one of which is in PHASE 1's path.**
