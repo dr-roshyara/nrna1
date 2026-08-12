@@ -1,14 +1,91 @@
 # Election-Only Admission — Governance Gate
 
 **Type:** Governance decision package · **Date:** 2026-08-12 · **Programme:** IERVP (Session 2)
-**Verdict:** ## 🔴 **NOT READY — BUSINESS DECISION REQUIRED** *(two decisions, both cheap; neither needs further analysis)*
+**Verdict (UPDATED 2026-08-12):** ## 🟡 **READY WITH ONE EXPLICIT BLOCKER — `BR-1.12`**
+*(`Q-B1` is now **CLOSED** at the business level by the Product Owner — see §0. The original verdict below, `NOT READY — BUSINESS DECISION REQUIRED`, stood on two open decisions; one has been answered.)*
 
 **⛔ NO PRODUCTION CODE CHANGED · NO SCHEMA CHANGED · NO MIGRATION CHANGED · NO TEST CHANGED · NO FULL-MEMBERSHIP DESIGN AUTHORIZED.**
 `ADR-002` not amended · Constitution untouched · Officer Guide not promoted · no FK repaired · no `Member` created · `FullMembershipPolicy` not activated · `scopeEligible()` not implemented · suspension, voting gates and credential behaviour untouched · **Session 1's Master Matrix not read, classified, consumed or modified.**
 
 ---
 
-## ⚠️ First — a correction to my own previous report
+## 0 · CLOSURE UPDATE — `Q-B1` closed · `CG-1`…`CG-4` reclassified · and a correction I owe
+
+### 0.1 🔴 I was wrong about `CG-3`, and the Product Owner was right
+
+**The Product Owner stated that the FK to `user_organisation_roles` was *"deliberately removed for Election-Only support."* I replied that my investigation had NOT established that and that the reason was unknown. That reply was WRONG — I had not searched the migration history.**
+
+**Found: `database/migrations/2026_05_19_000001_harden_election_memberships_for_election_only_mode.php` — "Phase C.1":**
+
+> *"**Drop composite FK to `user_organisation_roles`** — Root bug: **FK blocks election-only mode** (users only have `OrganisationUser`, not `UserOrganisationRole`) — **Application-level `VoterQualificationPolicy` takes over this validation.**"*
+>
+> *"**WARNING:** After this migration, application code MUST validate that users exist in: `organisation_users` (election-only mode) · `members` with paid/exempt fees (full membership mode). **The database FK is gone. Integrity is now application responsibility.**"*
+
+**The removal was deliberate, documented, and explicitly FOR Election-Only support.** And my earlier characterisation of the create-table migration's comment as *"false as a business statement"* is **superseded**: the guarantee **was** enforced, then **intentionally dropped**, with responsibility **explicitly transferred to the application layer.** **A documented handover, not a silent gap.**
+
+> **Following this up produced two better findings — which is the argument for checking rather than deferring:**
+>
+> 1. 🔑 **The documented design premise is that Election-Only users have `OrganisationUser` but NOT `UserOrganisationRole`.** **Measured: the 5 Election-Only voters have BOTH (5/5 each).** **So the `user_organisation_roles` rows contradict the stated design intent** — which sharpens `CG-2`, and *supports* the adopted business rule.
+> 2. ⚠️ **The designated successor `VoterQualificationPolicy` DOES NOT EXIST** — the name appears nowhere in `app/`. The validation it was to perform **is** carried out by differently-named components (`EloquentVoterEligibilityQueryService`, which *"queries `organisation_users` table only"*, and `VoterEligibilityService`). **So the responsibility was picked up, but not by the named policy — and whether it is actually wired remains `MECHANISM NOT ESTABLISHED`, because the domain policies are stubs returning `true`.**
+
+### 0.2 `Q-B1` — CLOSED at the business level
+
+**Adopted Product Owner decision:**
+
+> **Election-Only admission does NOT create Organisation Membership.**
+
+**The semantic distinction, recorded as authoritative:**
+
+| Term | Means |
+|---|---|
+| **Organisation Membership** | **the `Member` aggregate** |
+| **`ElectionMembership`** | **election-specific election participation** |
+| `organisation_users` | **technical organisation/tenant association**, unless separately established otherwise |
+| `user_organisation_roles` | **organisation role assignment**, unless separately established otherwise |
+
+**`Q-B1` is therefore no longer posed as *"which of three concepts does Organisation Membership mean?"*** — the Product Owner has answered: **the `Member` aggregate.** **Measured `members` = 0 of 5 → the system CONFORMS to the adopted rule.**
+
+**I do not infer that the technical rows may be removed, design no replacement schema, and do not decide whether admission should create them.** That is implementation conformance work for Session 3.
+
+### 0.3 `CG-1`…`CG-4` reclassified
+
+| # | Finding | **Classification** | Basis |
+|---|---|---|---|
+| **CG-1** | `ElectionOnlyPolicy` requires `organisation_users`; admission creates it | **IMPLEMENTATION CONFORMANCE QUESTION** | **Not a business violation.** The May migration's WARNING explicitly requires application code to *validate* `organisation_users` for Election-Only, so a tenant-enrolment **prerequisite** is the documented design. Whether admission should **create** it or require it to **pre-exist** is for Session 3 |
+| **CG-2** | `user_organisation_roles.role = 'member'` | **IMPLEMENTATION CONFORMANCE QUESTION** *(strengthened)* | **The literal role value is NOT equated with the `Member` aggregate.** Whether the role carries organisation-membership semantics or is merely an authorisation/linkage role is **`SEMANTIC NOT ESTABLISHED`** — no authoritative source defines it. ⚠️ **But the May migration's premise says Election-Only users have *only* `OrganisationUser`, and they also have the role row — so its presence contradicts the documented design.** **Not renamed, not removed** |
+| **CG-3** | Absence of the FK | ✅ **NO LONGER RELEVANT — BUSINESS-CONFORMANT** | **Deliberate and documented** (§0.1). **Closed; not reopened** |
+| **CG-4** | Officer Guide and tests encode the organisation linkage | **OBSERVED LEGACY / AMBIGUOUS BEHAVIOUR** | Retained as **evidence** about existing implementation and documentation. **Not authority** |
+
+**No repair proposed for any of them.**
+
+### 0.4 Full Membership — not reopened
+
+**`FM-1`…`FM-15` remain frozen.** Nothing here investigates or designs Full Membership admission, the `Member`→`ElectionMember` lifecycle, organisation-driven suspension, Full Membership restoration or Full Membership import.
+
+### 0.5 What remains
+
+> **`BR-1.12` is the ONLY remaining Election-Only admission business decision.** §4 below states it; §0.6 puts it as a single question.
+
+### 0.6 The question for the Product Owner / ARB
+
+> ## `BR-1.12`
+> **In Election-Only Mode, when the Election Chief imports a person as an ElectionMember, is that ElectionMembership immediately `ACTIVE`, or is it initially `INVITED` and requiring explicit Election Chief approval before becoming `ACTIVE`?**
+
+| | **Option A — immediately `ACTIVE`** | **Option B — `INVITED` → approval → `ACTIVE`** |
+|---|---|---|
+| **Consequence: officer workload** | Import is one step; no approval pass needed | Every imported voter needs an explicit approval before they can vote |
+| **Consequence: risk** | A mis-imported person is **immediately** a voter | A mis-imported person **cannot vote** until approved — an error-catching gate |
+| **Consequence: existing estate** | Tests that construct `invited` assert a state the business has abolished; the UI's `invited` pill and `invited → active` action become dead; documentation must change **twice** *(guide + dashboard)* | An approval step must be built that **has never operated**; the four layers that already expect it become correct |
+| **Consequence: the voter's experience** | Appears on the roll able to vote as soon as import completes | Appears on the roll unable to vote until an officer acts — **and the officer guide already tells officers to "approve voters before opening voting"** |
+| **Evidence for** | **Production behaviour only** — import writes `'active'`; assignment uses the model default `'active'`; **no production path writes `'invited'`** | **Schema** (enum value) · **UI** (label, blue pill, `invited → active` action) · **Tests** (`makeMembership('invited')`, one asserting persistence) · **Documentation** (twice) |
+
+**Authority: `BUSINESS RULE NOT SPECIFIED.`** `ElectionConstitution` is silent (`admit` = **0** occurrences) · `ADR-002` is silent · clause 10's *"directly"* addresses the **absence of an organisation prerequisite**, not an approval step · the Officer Guide's claim is **`CONTRADICTED`** and carries **no authority**.
+
+> **I do not choose. Note the direction the discipline cuts here: production is the ONLY evidence for Option A, so deferring to the implementation would select A by default — which is exactly what must not happen.**
+
+---
+
+## ⚠️ Earlier in this package — a correction to my own previous report
 
 **The Product Owner challenged my classification of `BR-1.13` (suspension actor count) as an unconditional blocker "before ANY Election-Only work". The challenge is correct, and my report was internally inconsistent:** it listed `BR-1.13` in Tier 1 as blocking *any* work, then said Tier 1 lets Session 3 *"begin, starting with admission"*. **Both cannot be true.**
 
