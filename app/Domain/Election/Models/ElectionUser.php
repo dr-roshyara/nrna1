@@ -8,8 +8,6 @@
  */
 
 // app/Domain/Election/Models/ElectionUser.php
-<?php
-
 namespace App\Domain\Election\Models;
 
 use App\Models\ElectionAwareModel;
