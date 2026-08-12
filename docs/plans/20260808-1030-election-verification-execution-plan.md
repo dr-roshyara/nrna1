@@ -896,3 +896,65 @@ two of the five named paths      874   >   historical total 814
 **Manifest column honesty:** `reported_in_historical_run` = **`UNRECOVERABLE`** for all 1,376 rows. `current_result` = `RAN_2026-08-08` for **457** rows (the two paths actually executed) and **`NOT_MEASURED`** for **919**. **No row carries an inferred status.**
 
 **Status: DENOMINATOR ESTABLISHED (1,376, under a recorded contract). Master Matrix classification NOT started. `SD-1` formally unanswered — the five-path universe was adopted because the assessment named it. `SD-2` unanswered, and now consequential: 919 of 1,376 rows have no measured result.**
+
+---
+
+## ✅ SD-1 and SD-2 DECIDED · STAGE 2 EXECUTION BASELINE ESTABLISHED
+
+**Product Owner decisions, recorded verbatim in effect:**
+
+| | Decision |
+|---|---|
+| **`SD-1`** | ✅ **ADOPTED** — the five named paths / **1,376 PHPUnit tests** are the formal Slice 1 programme universe. **With the qualification:** *"this is the current Election verification estate for this programme, based on the five paths the assessment named. It is NOT a claim that these are every Election-related test in the repository."* |
+| **`SD-2`** | ✅ **ADOPTED** — **execution evidence precedes behavioural classification.** The 919 unmeasured rows were **not** to be classified as *"not executed"*; they were `NOT_MEASURED` until measured. **They are now measured.** |
+
+### The baseline — 1,376 listed, 1,376 reported
+
+**Command:** `vendor/bin/phpunit --log-junit <file> <path>`, each path **sequentially** — *required*, because `tests/TestCase.php` uses `migrate:fresh` per test on PostgreSQL, so concurrent runs against `nrna_test` would destroy each other.
+**Run:** 2026-08-12 14:08:01→14:09:12 (**71s**) · checkpoint **`03846d03`** · PHP 8.5.8 · PHPUnit 11.5.6 · `phpunit.xml` unmodified.
+
+| Status | Count |
+|---|---:|
+| **PASSED** | **1,256** |
+| ERROR | 65 |
+| FAILURE | 37 |
+| SKIPPED | 18 |
+| **FAILING (error + failure)** | **102** |
+| **Total** | **1,376** |
+
+**🔑 Every test in the universe produced a result.** This **completes** the elimination that §C of the reconciliation could only demonstrate on two of five paths: **listed = reported across all five.** Hypotheses (b), (e) and (f) are now closed on full-universe evidence rather than generalisation.
+
+**Label honesty:** JUnit reports *incomplete* as `skipped`. The console summaries were Skipped 6 + Incomplete 12 = **18** — the same population under a different label, not a discrepancy.
+
+### What this does to the historical figures
+
+| | Failing | Denominator | Rate |
+|---|---:|---:|---|
+| Historical (unrecorded subset, 2026-08-07) | 146 → 105 | **814** | 17.9% → 12.9% |
+| **Baseline (full universe, measured)** | **102** | **1,376** | **7.4%** |
+
+**⚠️ These rates are NOT comparable, and the resemblance of 102 to 105 is not evidence of continuity.** Different denominators over different — and for the historical figure, *unknown* — test sets. **The baseline supersedes the trajectory rather than continuing it.**
+
+### Failing population — signatures only, NOT classified
+
+**Recorded as raw evidence. No test has been assigned a business intent, an owner, or a failure classification** — that is Master Matrix work and it has not begun.
+
+| Signature | Count |
+|---|---:|
+| `TypeError: …Simplified\EvaluationEnvelope` | 8 |
+| `PermissionDoesNotExist: There is no permission …` | 8 |
+| `QueryException SQLSTATE[23503]` foreign-key violation | 7 |
+| `Class "App\Domain\Election\Security\OverlayInfluenceContext" not found` | 6 |
+| `ModelNotFoundException` | 5 |
+| `Class "App\Domain\Election\Security\OverlaySignal" not found` | 5 |
+| `Failed asserting that exception of type "DeprecatedQuery…"` | 4 |
+| `Undefined constant …Deprecation\Deprecation…` | 4 |
+
+**⚠️ Two cautions carried forward, both from earlier programme findings:**
+
+1. **The `DeprecatedQuery…` group is `Cluster 6`-shaped** — the deprecation ladder runs at `STRICT_LEVEL = 1`, so level-2+ guards are **inactive by design**. **Those tests may be asserting a future authorised state. They must not be "fixed" to reduce the failure count.**
+2. **`Class … not found` (11 tests across two classes)** looks like a missing-class/harness issue. **Looks like is not is** — the mechanism is **not established**, and `PBDIGIT-62` is the precedent for a familiar-looking signature concealing a live defect.
+
+**Manifest:** [`2026-08-08-election-test-universe-manifest.tsv`](../publicdigit/reviews/2026-08-08-election-test-universe-manifest.tsv) — 1,376 rows, per-test `status · assertions · time · first detail line`, all from PHPUnit's own output.
+
+**Status: EXECUTION BASELINE ESTABLISHED. Master Matrix classification NOT started — it is the next authorised step, and no row carries a business intent, invariant, owner or failure classification yet.**

@@ -129,7 +129,9 @@ two of the five paths            874     >    historical total 814
 
 ---
 
-**DENOMINATOR RECONCILIATION COMPLETE — AWAITING PRODUCT OWNER REVIEW**
+**TEST-UNIVERSE RECONCILIATION COMPLETE — EXECUTION BASELINE NOT ESTABLISHED — AWAITING PRODUCT OWNER REVIEW**
+
+> ⚠️ **Deliberately narrower than the earlier wording.** An earlier version of this line read *"DENOMINATOR RECONCILIATION COMPLETE"* without qualification. **Two different things were being conflated:** the **test universe** is reconciled (1,376, under a recorded contract); the **execution baseline** is not — **919 of 1,376 rows have no measured result.** *"Denominator complete"* would have implied both.
 
 **No test row classified. No production code, test, fixture or PHPUnit configuration changed.**
 
