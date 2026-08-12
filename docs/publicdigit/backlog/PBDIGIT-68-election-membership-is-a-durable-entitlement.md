@@ -70,6 +70,18 @@ Plus routes: `propose-suspension` · `confirm-suspension` · `cancel-proposal` �
 
 ---
 
+## 📘 Model B domain analysis — COMPLETE, awaiting ARB
+
+**[`../reviews/2026-08-12-model-b-election-membership-domain-analysis.md`](../reviews/2026-08-12-model-b-election-membership-domain-analysis.md)** — the governance/domain-modelling analysis the Product Owner commissioned before any implementation. **Status: MODEL B DOMAIN ANALYSIS COMPLETE — AWAITING PRODUCT OWNER / ARB REVIEW.**
+
+**It changes the question this ticket asks.** The vocabulary gaps recorded below (`admit`/`revoke`/`restore` absent) are real for the *Election* Constitution — **but the concepts already exist, fully modelled, in the Membership context** (`MembershipLineage`: `ACTIVE → SUSPENDED → ACTIVE`, `→ TERMINATED` terminal, guarded transitions; `Member::suspend()`/`reactivate()`), together with `VotingEligibilityPolicy`, which declares itself *"the authoritative eligibility engine — all Elections voting decisions flow through this policy"* and has **zero production callers.**
+
+> **So the pivotal decision is not what to name, but whether the election entitlement EXTENDS that existing lifecycle or is a separate one.** Per **ES-005.4** (consume or extend, never create a second) the analysis recommends the ARB answer that **first** — every other gap is downstream of it.
+
+**Also surfaced there (not in this ticket, and not defects I may declare):** suspension takes two people while `approve` undoes it single-handedly and leaves `suspension_status='confirmed'`; a parallel single-actor `suspend` route reaches the same outcome as the governed flow; `ADR-002` (Accepted) and Model B **disagree** on whether organisation membership is re-evaluated at every action — recorded as **D — AMBIGUOUS**, deliberately unresolved.
+
+---
+
 ## ⚠️ G-1 HAS BEEN MEASURED — the section below is superseded
 
 **Runtime verification, 2026-08-12, authorised by the Product Owner: [`../reviews/2026-08-12-g1-voter-suspension-enforcement.md`](../reviews/2026-08-12-g1-voter-suspension-enforcement.md).**
