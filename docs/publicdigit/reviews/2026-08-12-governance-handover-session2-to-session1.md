@@ -117,11 +117,36 @@ the adopted rule?                            │
 
 **Session 1 is not blocked, and was never blocked.** Rows independent of `D-ENT-1` proceed regardless; **the 213 are not a reason to pause the Matrix.**
 
+## 7a · Two authority layers exist temporarily — **preserve the discrepancy, do not erase it**
+
+**Product Owner instruction, 2026-08-12:**
+
+| Layer | Current state |
+|---|---|
+| **Business authority** | **`D-ENT-1` / Model B — ADOPTED** |
+| **Architectural record** | **`ADR-002` — still carries the OLD wording** (*"eligibility computed from membership at check time"*) |
+
+> **These disagree right now, and that is a fact to record, not a problem to smooth over.** *"Session 1 must **not erase** that discrepancy. It should **record it whenever relevant**. That is actually useful evidence for the governance process."*
+
+**So where a row's classification turns on this, say so explicitly** — e.g. *"expected behaviour per adopted `D-ENT-1`; `ADR-002` as written would imply the opposite; amendment proposed, not applied."* **A row classified silently against either layer alone loses the evidence.**
+
+## 7b · Record shape required for each classification
+
+**Product Owner instruction — preserve this chain for every classification:**
+
+```
+OBSERVED FACT → BUSINESS INTENT → AUTHORITATIVE RULE → DECISION OWNER
+   → EXPECTED BEHAVIOUR → ACTUAL BEHAVIOUR → COVERAGE VERDICT
+```
+
+**Transferred as received. The method is Session 1's to apply on its own authority; Session 2 neither prescribes nor audits it.**
+
 ## 8 · Boundaries of this handover
 
 * **Session 2 has not read, used, classified or modified** Session 1's Master Matrix, denominator, `SD-1`, `SD-2`, `SD-4`, Slice 1 classification, the 1,376-test baseline, or the 213 rows. The **213/1,376** figure is taken as given from the Product Owner's message.
 * **Session 1 is not authority for Session 2**, and this handover does not make Session 2 authority for Session 1: it transfers **an adopted Product Owner decision plus a discriminator**, which Session 1 applies on its own authority.
 * **Nothing in this document is an implementation instruction.**
+* **The open ARB/Product Owner decisions must NOT be smuggled into verification work.** `D-APPLY` (+`V-1`/`V-2`/`V-3`) · `Q3` · `Q-E1` · `Q-E2` · `BR-1.1`/`1.2` · `BR-1.5`/`1.6` · `BR-1.12` · `BR-1.13` · `Q-D1` · Officer-Guide recognition **are governance decisions pending elsewhere.** A row must not be classified as though any of them were settled.
 * **The decision may be superseded**: if the Product Owner declines `D-APPLY`, or answers `D-APPLY-2` by restating the adopted wording, **this handover must be re-read before use.**
 
 **Related:** [`ADR-002 application decision package`](2026-08-12-adr-002-application-decision-package.md) · [`amendment proposal`](2026-08-12-adr-002-amendment-proposal.md) · [`two-mode domain decision report`](2026-08-12-d-ent-1-two-mode-domain-decision-report.md) (`Q-A0` verification) · `PBDIGIT-68`
