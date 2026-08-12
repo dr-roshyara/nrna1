@@ -70,7 +70,35 @@ Plus routes: `propose-suspension` · `confirm-suspension` · `cancel-proposal` �
 
 ---
 
-## 🔴 The finding that most affects the ruling
+## ⚠️ G-1 HAS BEEN MEASURED — the section below is superseded
+
+**Runtime verification, 2026-08-12, authorised by the Product Owner: [`../reviews/2026-08-12-g1-voter-suspension-enforcement.md`](../reviews/2026-08-12-g1-voter-suspension-enforcement.md).**
+
+> **G-1 was half right, and the wrong half was the headline. A confirmed-suspended voter IS refused the ballot — HTTP 403 at every real slug route — but not by the gate this ticket examined, and not because anything reads `suspension_status`.**
+
+| This ticket claimed | Measured |
+|---|---|
+| A suspended voter *"appears eligible and passes the server-side entry check"* | ✅ **CONFIRMED** — and is additionally **issued a fresh `VoterSlug`** |
+| *"Suspension may not block voting"* | ❌ **DISPROVEN** — `EnsureElectionVoter` → `User::isVoterInElection()` (`status === 'active'`) refuses them |
+
+**The voting path has two predicates of opposite polarity; this ticket found only one:**
+
+```
+ElectionVotingController   status !== 'removed'   ALLOW unless removed   -> suspended PASSES
+User::isVoterInElection()  status === 'active'    DENY unless active     -> suspended FAILS
+```
+
+**What survives of G-1, narrower and still real:** the **entry surface does not enforce suspension** — it reports `isEligible: true` to a suspended voter and issues a voting credential. **`OBSERVED AT RUNTIME`.**
+
+🔴 **And the consequence that now dominates: enforcement is INCIDENTAL.** No code expresses *"a suspended voter must not vote"*; it works only because suspension writes `status='inactive'` and one predicate demands `'active'`. **So `G-5` is load-bearing: "clean up the `status` overload" would, if `status` were left `'active'`, silently delete the only enforcement of the Chief's authority.** See the review before touching either.
+
+**Also corrected by measurement:** **`G-6` is WITHDRAWN** — four-eyes **is** enforced at `ElectionVoterController:342` via `canConfirmSuspension()`; measured proposer-refused / second-actor-allowed. My original claim was true of the domain method and false of the system, because I read the method and not its caller.
+
+**Also raised:** **`PBDIGIT-69`** — the voter predicate's cache key is tenant-unaware, poisoning in both directions for 300s. Found while restoring state; it is not G-1.
+
+---
+
+## 🔴 The finding that most affects the ruling — AS ORIGINALLY WRITTEN (superseded above, retained for the record)
 
 **The Election Chief's suspension authority — the safeguard this ruling explicitly relies on — may not prevent voting.**
 
@@ -96,20 +124,22 @@ Plus routes: `propose-suspension` · `confirm-suspension` · `cancel-proposal` �
 
 | # | Gap | Class |
 |---|---|---|
-| **G-1** | 🔴 **Suspension may not block voting** (above) | **Defect candidate** — needs runtime confirmation first |
+| **G-1** | ✅ **MEASURED 2026-08-12.** The ballot **is** protected (403). **Narrowed to:** the entry surface reports a suspended voter as eligible **and issues them a credential**, and **enforcement is incidental** — nothing reads `suspension_status` | **CONFIRMED (entry surface)** · original claim **DISPROVEN (ballot)** |
 | **G-2** | **`admit` has no name.** The ruling makes admission a distinct authoritative act; the Constitution has no such action, and import/assign is application-level only | **Constitutional gap** |
 | **G-3** | **`revoke` / `restore` have no names**, though `DELETE {membership}` and `approve` exist in the application | **Constitutional gap** |
 | **G-4** | **`suspend` is ambiguous across layers** — election-level constitutionally, voter-level in the application | **Vocabulary collision** |
-| **G-5** | **`status` is overloaded** (`inactive` = voted *or* suspended) | **Model defect candidate** |
-| **G-6** | **Four-eyes not enforced** on suspension confirmation | **Governance gap** |
+| **G-5** | 🔴 **`status` is overloaded** (`inactive` = voted *or* suspended) — **and measurement showed the overload is LOAD-BEARING: it is the only thing enforcing suspension.** Do not "clean it up" without replacing the enforcement first | **ESCALATED** — model defect **with a live dependency** |
+| **G-6** | ~~Four-eyes not enforced on suspension confirmation~~ | ❌ **WITHDRAWN** — enforced at `ElectionVoterController:342`; measured. Residual: compares `->name` not `->id`, and the domain method itself is unguarded |
 | **G-7** | **Full Membership mode remains unreachable** (`IERVP-2`, `IERVP-3`), so the ruling's admission-prerequisite half **cannot be exercised** | **Reachability gap** |
 
 ---
 
 ## Acceptance criteria — business behaviour
 
+> ⚠️ **These are CONSEQUENCES OF THE RULING proposed as acceptance criteria. They are NOT established constitutional rules.** The ruling grants the Election Chief suspension/revocation authority; **it does not yet specify the enforcement semantics.** The criteria below are engineering's reading of what that authority implies — **a reading the Product Owner/ARB must confirm before it binds anything.** *(Labelled at the Product Owner's instruction, 2026-08-12, to stop an engineering interpretation quietly becoming constitutional authority.)*
+
 * [ ] **A voter admitted to an election stays entitled when their organisation membership later lapses** — the ruling's core statement, demonstrated.
-* [ ] **A voter the Election Chief suspends cannot reach or submit a ballot** — enforced **server-side**, not only hidden in the UI.
+* [ ] **A voter the Election Chief suspends cannot reach or submit a ballot** — enforced **server-side**, not only hidden in the UI. *(Measurement 2026-08-12: the ballot is already protected. What is unmet is that the entry surface still calls them eligible and issues a credential — and that the protection is incidental rather than expressed.)*
 * [ ] **Suspension is distinguishable from having voted** — one stored value cannot mean both.
 * [ ] **The vocabulary is unambiguous**: whatever names the four voter-level acts, *suspending an election* and *suspending a voter* are not the same word at the same layer.
 * [ ] **Both modes are exercisable**, so the admission-prerequisite rule can actually be tested (`G-7`).
