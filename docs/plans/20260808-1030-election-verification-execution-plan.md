@@ -1217,3 +1217,68 @@ B2  ── established ──────────► continue where authorit
 ```
 
 **`SD-4` is requested and not taken.** **B3 is not started.**
+
+---
+
+## `PBDIGIT-49` BLAST RADIUS — measured. **213 candidate rows, not 27.**
+
+**Detection method — deliberately not the word "eligibility".** Candidates were found by reference to the **mechanisms `PBDIGIT-49` contests**: `election_memberships` · `ElectionMembership` · `VoterEligibilityService` · `isEligible` · `VoterSourceStrategy`. **Rows mapped to PHPUnit identities from the 1,376 manifest — no grep/file/class count used as a denominator.**
+
+| Mechanism | In-universe classes referencing it |
+|---|---:|
+| `ElectionMembership` | **19** |
+| `VoterSourceStrategy` | 6 |
+| `election_memberships` | 4 |
+| `isEligible` | 4 |
+| `VoterEligibilityService` | 1 |
+| `EligibilityEvaluator` · `EligibilitySnapshot` · `'voters'` | **0** |
+
+### A · Blast radius table
+
+| | Count | Share of 1,376 |
+|---|---:|---|
+| **Candidate classes** | **25** | — |
+| **POTENTIALLY AFFECTED rows** | **213** | **15.5%** |
+| — PASSED | 180 | |
+| — FAILURE | 17 | |
+| — ERROR | 11 | |
+| — SKIPPED | 5 | |
+| **AFFECTED (confirmed direct dependency)** | 🔴 **NOT ESTABLISHED** | — |
+| **BLOCKED** | 🔴 **NOT ESTABLISHED** | — |
+
+> **The four terms are kept distinct, and only one is measured.** **`POTENTIALLY AFFECTED` = 213** is a *mechanism-reference* population. **`AFFECTED` and `BLOCKED` require reading each test's intent, which was not done** — so they are **not** reported as numbers. **Calling 213 "blocked" would repeat the exact error the programme has been correcting.**
+
+### B · Reconciliation with the earlier ≥27
+
+| | |
+|---|---|
+| Earlier lower bound | **≥27** — `VoterEligibilityTest` alone |
+| Measured candidates | **213** across 25 classes |
+| **Verdict** | The lower bound was **~8× low**. **`VoterEligibilityTest` was the most obviously-named class, not the population** — the same shape as `apply_candidacy`, where the obvious name held 1 of 30 tests |
+
+**`EligibilityEvaluator`, `EligibilitySnapshot` and `'voters'` return ZERO in-universe references** — notable, because `PBDIGIT-49` names `voters` as one of the two contested homes. **The in-universe estate references `election_memberships` and not `voters`,** which is *consistent* with `PBDIGIT-49`'s finding that `voters` is empty in production. **Recorded as consistency, not confirmation.**
+
+### C · Affected capability summary
+
+`ElectionMembership` at **19 classes** makes this **the widest single concept found in the estate so far** — wider than counting (8), candidacy (0 in-universe), and timeline authorization (8). It touches **C4 candidacy · C6 admission · C8 casting** — i.e. **every capability that decides who participates.**
+
+### D/E · Matrix impact
+
+**Rows that can continue:** the **~1,163** with no reference to a contested mechanism — **84.5% of the universe.** **Classification is not blocked.**
+**Rows requiring `SD-12`/`PBDIGIT-49` before their *verification shape* can be settled:** **a subset of the 213, size NOT ESTABLISHED.**
+
+### F · Cross-stream relevance
+
+**CROSS-STREAM RELEVANCE — SESSION 2.** `ElectionMembership`, `VoterSourceStrategy` and Full-Membership vs Election-Only mode are exactly Session 2's `D-ENT-1`/Model B territory. **The shared question:** *does `ElectionMembership` constitute voting entitlement, and is entitlement the same as exercisability?* **Not resolved here. Not imported.** **19 candidate classes sit on that question.**
+
+### G · Open questions
+
+* How many of the 213 have a **direct** dependency? **Requires per-test reading.**
+* Does `ElectionMembership` == voting entitlement? **`BUSINESS RULE NOT SPECIFIED`** — `SD-12`.
+* Why does the in-universe estate never reference `'voters'`? *(Consistent with it being empty; **not established** as deliberate.)*
+
+### H · Recommendation for the next governance decision — **`SD-4` is NOT decided here**
+
+**`SD-12`/`PBDIGIT-49` now outranks `SD-4` on measured impact:** **213 candidate rows (15.5%)** versus `SD-4`'s **29 tests** in one capability. **Recommendation: put `SD-12` before `SD-4`.** **Both remain the Product Owner's; neither is taken.**
+
+**PBDIGIT-49 BLAST RADIUS ESTABLISHED — as a POTENTIALLY-AFFECTED population of 213 rows (15.5%). `AFFECTED` and `BLOCKED` remain NOT ESTABLISHED.**
