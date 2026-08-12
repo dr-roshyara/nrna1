@@ -1692,3 +1692,61 @@ find app -iname "*VoterQualification*"   →   (nothing)
 **Still not chosen by engineering, and now moot as posed:** nullable `organisation_id` · dropping the FK *(already dropped)* · a different association · auto-creating organisation membership. **Recorded so no session harvests a design from this report.**
 
 **Status: `CF-1` WITHDRAWN · `CF-2` WITHDRAWN · `CF-3` OPEN · workflow A coverage gap STANDS (strengthened) · `Q-B1` still the PO's, with implemented evidence attached. 39/39 unaffected — no row classification depended on the FK. L3 = 109/1,376. No production, schema, migration, test or fixture change.**
+
+---
+
+## `CF-3` conformance investigation — **OUTCOME A · CONFIRMED**
+
+**Withdrawals accepted and re-affirmed:** `CF-1` — no live cascade · `CF-2` — the FK was dropped in Phase C.1 *specifically* to support Election-Only Mode. **Neither the CREATE migration nor `ElectionShowControllerTest`'s FK comment may be cited as current schema behaviour again; both are stale.**
+
+> **The responsibility IS discharged. `VoterQualificationPolicy` was a NAME that never shipped; the OBLIGATION shipped under a different name, in the right layer, wired to the only write path.**
+
+### The traced chain — responsibility, not filename
+
+```
+Domain port          VoterEligibilityPolicy            isEligible() · qualifyingSubset()
+                            ▲ implements
+Infrastructure       EloquentVoterEligibilityQueryService
+                            ▲ injected (AppServiceProvider)
+Application  ┌── AssignVoterHandler:57   if (!policy->isEligible(…)) throw VoterNotEligibleException
+             └── BulkAssignVotersHandler:56  $eligibleIds = policy->qualifyingSubset(…)
+                            │ then, and only then
+Infrastructure       EloquentVoterRepository::create() / ::bulkInsert()   ← the ONLY writes
+```
+
+**The migration's obligation, checked clause by clause against the implementation:**
+
+| Migration requires | `EloquentVoterEligibilityQueryService` does | ✓ |
+|---|---|---|
+| *"users exist in `organisation_users` (election-only mode)"* | `DB::table('organisation_users')… where('status','active')` | ✅ **exact** |
+| *"`members` table with paid/exempt fees (full membership)"* | `DB::table('members')` + `whereIn('fees_status',['paid','exempt'])` + `grants_voting_rights` + `membership_expires_at` + `whereNull('deleted_at')` | ✅ **exact, and stricter** |
+
+**Write-path closure — the check that makes this a verdict rather than an impression:**
+
+* **`grep -rnE "ElectionMembership::(create|updateOrCreate|insert)|= new ElectionMembership"` over `app/`, excluding the repository → ZERO other production writes.**
+* **`VoterRepository` is referenced by exactly two handlers, and both gate on the policy first.** There is no ungated route to the table.
+* **Layering is correct** — Domain port · Infrastructure implementation · **Application enforces** · Infrastructure persists. **Notably this is the OPPOSITE of the C8/C10 pattern**, where the decision sat in Interface code. **Admission is the programme's first observed example of a business decision in its proper layer.**
+
+### ⚠️ Disclosure — my own slip, caught inside the investigation
+
+My first pass reported `CodeController` as a second, **ungated** `ElectionMembership` write path. **It is not.** Line 690 is a *comment* reading *"…the **new ElectionMembership** voter-slug middleware"* — **my pattern `new ElectionMembership` matched prose.** Re-run word-boundary-safe: **CodeController performs no membership write.** > **Same class as the `@test`-matched-prose miscount: my greps locate reliably and attribute unreliably.** Caught before it entered a finding, and recorded rather than quietly dropped — had it stood, it would have manufactured a false integrity gap in **Phase 1's** path.
+
+### Observations recorded, NOT defect claims
+
+| | Observation |
+|---|---|
+| **O-1** | **The two gates have different failure semantics:** `AssignVoterHandler` **throws** `VoterNotEligibleException`; `BulkAssignVotersHandler` **silently filters** to the eligible subset. **Whether a bulk import must REPORT which people it skipped is a business question** — the enforcement is sound either way |
+| **O-2** | `app/Services/VoterEligibilityService.php` also references the policy — **a possible second representation of the same decision** *(cf. the two `has_voted` columns)*. **Not traced; outside this commission** |
+| **O-3** | `voter_source_strategy` is **snapshotted on the Election and immutable** — *"Elections own their voter participation rules; org mutations don't retroactively change them."* **That is a genuine, explicitly-stated business authority**, and it means a later mode switch cannot retroactively disenfranchise an existing election's voters |
+| **O-4** | The enum's own docblocks mark the mode names **transitional, pending a Phase 4 governance-language review** — so **`ImportedVoterRegistry`/`MembershipRegistry` must not be treated as settled vocabulary** |
+
+### 🔴 Boundary finding — the guarantee is verified OUTSIDE the programme's universe
+
+| Test | Universe |
+|---|---|
+| `AssignVoterHandlerTest` · `BulkAssignVotersHandlerTest` · `EloquentVoterEligibilityQueryServiceTest` · `VoterEligibilityPolicyContractTest` | 🔴 **OUT ×4** |
+| `ElectionMembershipInfrastructureTest` · `ElectionMembershipPersistenceTest` | IN ×2 |
+
+> **All four tests of the ENFORCING components sit outside the 1,376-test universe; the two inside test persistence.** **The mechanism guaranteeing admission integrity is verified — but not by the population this programme adopted to verify Election correctness.** **Direct, measured evidence for `SD-4`** *(SD-4A class B, *"voter source strategy"*, predicted-relevant and now confirmed relevant).* **Not imported. `SD-1` unchanged.**
+
+**Status: `CF-3` CONFIRMED (A) · `CF-1`/`CF-2` withdrawn · no `VoterQualificationPolicy` created · no schema, production, test or fixture change · nothing classified for Session 3. `Q-B1` remains the PO's; the implemented separation (`organisation_users` vs `members`) is now traced to the enforcing code, not just the table list. L3 = 109/1,376.**
