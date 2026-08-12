@@ -847,3 +847,52 @@ tests/Architecture/Election                       5
 | **`SD-2`** | unanswered — and the 826/1,376 gap is **evidence that static reading alone cannot settle it**: only a run says which tests report |
 | **`SD-3`** | programme identity — unresolved |
 | 🔴 **new** | **why do ~550 tests in the measured universe not report a result?** Not established, not guessed |
+
+---
+
+## DENOMINATOR RECONCILIATION — COMPLETE. The historical figure measured a subset of the universe it named.
+
+**Report: [`docs/publicdigit/reviews/2026-08-08-denominator-reconciliation.md`](../publicdigit/reviews/2026-08-08-denominator-reconciliation.md) · Manifest: [`…-election-test-universe-manifest.tsv`](../publicdigit/reviews/2026-08-08-election-test-universe-manifest.tsv) (1,376 rows)**
+
+### The answer, and it is arithmetic rather than interpretive
+
+```
+tests/Unit/Domain/Election      428
+tests/Feature/Election          446
+                                ———
+two of the five named paths      874   >   historical total 814
+```
+
+**Neither path has grown since 2026-08-07** (`git log --diff-filter=A` → **0** test files added). **So the historical run cannot have covered even two of the five paths it named.** The stated universe and the measured universe were never the same.
+
+### Hypotheses eliminated by measurement, not by argument
+
+| Hypothesis | Verdict |
+|---|---|
+| (b) discovered but not executed · (e) data-provider expansion · (f) classes erroring before execution | 🔴 **eliminated.** `--list-tests` and a real run agree exactly in **two** families: `Unit/Domain/Election` **428 = 428** (including 13 errors, which PHPUnit still counts) and `Feature/Election/StateMachine` **24 = 24** |
+| (c) tests added since the historical run | 🔴 **eliminated** — 0 files added |
+| **(a) the historical run covered less than the stated universe** | ✅ **established** by the arithmetic above |
+| **which** subset it covered | **MECHANISM NOT ESTABLISHED** — no command, filter, suite selection or test list was recorded anywhere. **Unrecoverable, and not guessed** |
+
+### Consequences for the programme's own figures
+
+* **826 was an execution number over an unrecorded scope** — never a count of the Election estate.
+* **668 / 146 may be retained only as** *"one run's result over an unrecorded subset, 2026-08-07."* **Every claim derived from them requires re-qualification, including the `146 → 105` trajectory.**
+* **The earlier "~550 gap" was itself imprecise:** 1,376 − 826 = 550 uses the *reported total*; 1,376 − 814 = 562 uses *completions*. **Both subtract incomparable quantities** — which is the finding, not a correction to it.
+
+### The scope contract — so "1,376" cannot become the next unreproducible number
+
+| Field | Value |
+|---|---|
+| Command | `vendor/bin/phpunit --list-tests <path>` |
+| Paths | the five above |
+| Configuration | repository `phpunit.xml`, **unmodified** |
+| Checkpoint | **`9533bcfe`**, re-captured at **`cdd93d65`** — **1,376 both times** |
+| Identifier form | PHPUnit's own `Class::method` |
+| **Denominator** | **1,376** |
+
+**The re-capture at a later checkpoint is deliberate evidence:** Session 2's intervening commits did not change the Election test universe.
+
+**Manifest column honesty:** `reported_in_historical_run` = **`UNRECOVERABLE`** for all 1,376 rows. `current_result` = `RAN_2026-08-08` for **457** rows (the two paths actually executed) and **`NOT_MEASURED`** for **919**. **No row carries an inferred status.**
+
+**Status: DENOMINATOR ESTABLISHED (1,376, under a recorded contract). Master Matrix classification NOT started. `SD-1` formally unanswered — the five-path universe was adopted because the assessment named it. `SD-2` unanswered, and now consequential: 919 of 1,376 rows have no measured result.**
