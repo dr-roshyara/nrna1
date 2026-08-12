@@ -1409,3 +1409,50 @@ an election-specific relationship
 | `SD-13` | **0** — this class uses no lettered invariants, so `SD-13` was **not** investigated (per the directive: only if materially depended upon) |
 
 **Status: B2 per-test 22 / 68. L3 = 63 / 1,376. `BD-1` corrected to ≥11 rows. Next: `ElectionPolicyStateAwareTest` (10) then `VotingButtonsStateMachineIntegrationTest` (9). `VoterEligibilityTest` (27) still deferred.**
+
+---
+
+## `D-ENT-1` CONSUMED — the 213 narrows to **39 rows requiring intent reading**
+
+**Authority:** `docs/publicdigit/reviews/2026-08-12-governance-handover-session2-to-session1.md` — **verified present** and carrying `F1` · Model B · the discriminator. **Consumed as an adopted external business decision. `ADR-002` remains UNAMENDED, and Session 1 did not amend it.**
+
+**Discriminator applied verbatim:** *a test is relevant to `D-ENT-1` only when its business assertion depends on organisation membership being **continuously required after `ElectionMembership` has been established**.*
+
+### Two-stage filter — each stage measured
+
+| Stage | Result |
+|---|---:|
+| Candidate population (`PBDIGIT-49` mechanism reference) | **213 rows / 25 classes** |
+| **Stage 1** — classes referencing **any organisation-membership mechanism** (`user_organisation_roles` · `organisation_users` · `UserOrganisationRole` · `->members(` · `Member::` · `isMemberOf`) | **15 classes / 157 rows** |
+| → **NOT AFFECTED** | 🟢 **10 classes / 56 rows** |
+| **Stage 2** — of the 15, classes also referencing **exercise-time** voting (`canVote` · `vote.create` · `vote.store` · `ballot` · `castVote` · `slug.vote`) | 🔴 **3 classes / 39 rows** |
+| → **NOT AFFECTED (admission-time only)** | 🟢 **12 classes / 118 rows** |
+
+**Stage 1's logic is the strong one:** **a test that never references organisation membership cannot be asserting that organisation membership is continuously required.** That is entailment, not inference — **56 rows are `NOT AFFECTED` on logic alone.**
+
+**Stage 2 rests on F1 itself:** admission-time assertions are **governed by F1 and unaffected** — organisation membership *is* required at admission. **118 rows are `NOT AFFECTED` because F1 endorses what they assert.**
+
+### The remaining 39 — `REQUIRES INTENT READING`, not "affected"
+
+| Class | Rows | Status |
+|---|---:|---|
+| `ElectionShowControllerTest` | — | 3 exercise refs |
+| `LegacyVoteRouteTest` | — | 4 exercise refs |
+| `StateMachine\CurrentBehaviorTest` | — | 3 exercise refs |
+| **Total** | **39** | **34 PASSED · 5 FAILURE** |
+
+> **These 39 are NOT classified as affected.** They are the only rows where **both** conditions co-occur, so they are the only rows whose intent must be read to decide. **`AFFECTED` remains `NOT ESTABLISHED` until that reading happens.**
+
+### The prediction, tested
+
+**I predicted the discriminator would "shrink the 213 substantially" and that most `ElectionMembership` classes would prove admission-time.** **Measured: 213 → 39, an 82% reduction, and 12 of 15 organisation-referencing classes are admission-time only.** **The prediction held — and it was recorded as a prediction before the measurement, not after.**
+
+**`PBDIGIT-49`'s blast radius on the matrix is therefore ≤39 rows (2.8%), not 213 (15.5%).** The 213 was a *mechanism-reference* population; **the discriminator is what turned it into a business-relevant one.**
+
+### What this does NOT establish
+
+* **Not** that the 39 are wrong, or affected — **only that they are the population to read.**
+* **Not** that the 174 excluded rows are *verified* — only that **`D-ENT-1` does not change their meaning.** Their own L3 classification is still outstanding.
+* **Stage 2's mechanism list is a heuristic.** A test could reach exercise-time behaviour without naming any of those six tokens — **the same detection weakness that made `BD-1` look like 8 rows and `apply_candidacy` look like one file.** **The 39 is a lower bound.**
+
+**Status: `D-ENT-1` consumed. 213 → **39 REQUIRES INTENT READING** · 174 `NOT AFFECTED` (56 by entailment, 118 by F1). `AFFECTED` still NOT ESTABLISHED. `ADR-002` UNAMENDED. L3 unchanged at 63/1,376 — this narrowed a dependency, it did not classify rows.**
