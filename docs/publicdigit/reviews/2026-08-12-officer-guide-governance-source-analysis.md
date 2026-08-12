@@ -31,7 +31,7 @@ Combined with the earlier findings — no knowledge card · not a registered doc
 | *"Suspended voters show an Approve button… to restore their eligibility"* | **SUPPORTED** | the guide is **more specific than any authority** — `restore` exists nowhere else |
 | Removal is *"permanent"*; *"cannot be restored **through the voter list UI**"* | **UNSUPPORTED** | permanence is asserted on a **UI fact**; `approve()` has no `removed` guard |
 | Assignment yields `invited`, approval then required | 🔴 **CONTRADICTED** | **no production path writes `invited`** |
-| *"Only organisation members can be assigned as voters"* | **SUPPORTED** *(ambiguous)* | the FK enforces a **role linkage**; the `Member` aggregate has **0 rows** |
+| *"Only organisation members can be assigned as voters"* | 🔴 **UNSUPPORTED** *(reclassified 2026-08-12)* | **Originally classed `SUPPORTED` on the grounds that "the FK enforces a role linkage". MEASURED against the live schema: that FK DOES NOT EXIST.** `election_memberships` has exactly two foreign keys — to `users` (`SET NULL`) and to `elections` (`CASCADE`) — **and none to `user_organisation_roles`.** So the guarantee the migration comment claims is **not enforced**. The import path *does* create `role='member'` rows (measured), but that is **behaviour, not an invariant**; and the `Member` aggregate has **0 rows** |
 | *"Suspend any ineligible members"* / *"click Suspend to undo an approval"* | 🔴 **CONTRADICTED** | treats suspension as an **eligibility/undo device**, conflicting with adopted `A-2` (existence ≠ exercisability) |
 
 ### 2.2 Officer roles and appointment — `01-your-role.md`, `02-accepting-invitation.md`

@@ -29,6 +29,27 @@
 
 ---
 
+## 0 · ⚠️ SUPERSEDING REFINEMENT — `D-ENT-2` (2026-08-12)
+
+**The Product Owner refined the hierarchy after this register was written. See [`ARB package — membership hierarchy refinement`](2026-08-12-arb-package-membership-hierarchy-refinement.md). Entries below are read subject to it.**
+
+> **Full Membership: Organisation Membership is superior; its removal AUTOMATICALLY SUSPENDS the ElectionMembership — distinct from Chief suspension. Removing ElectionMembership does not remove Organisation Membership. Election-Only: no Organisation Membership required.**
+
+**Reconciliation:** organisation membership is **not** continuously required for the entitlement to **EXIST** (`F1` and `A-3` survive) but **IS** continuously required, in Full Membership mode, for it to be **EXERCISABLE** (new). **`Q-A0`'s recorded answer was too coarse and is restated accordingly.**
+
+**Mechanism — VERIFIED at both layers: there is no organisation→election trigger.** No event subscription, and **no foreign key** — measured: `election_memberships` has FKs only to `users` (`SET NULL`) and `elections` (`CASCADE`). The organisation side already emits `MembershipSuspended` / `MembershipTerminated` / `MembershipRestored`; **nothing subscribes.** So **`D-ENT-2` has never operated and currently has an empty domain of application** (`members` = 0 rows).
+
+**Register changes:**
+
+* **`BR-1.1` now spans three transitions** — organisation-driven automatic · Chief · removal.
+* **`Q3`'s blast radius grows** — exercisability must compose a cause whose actor is **not an election officer**.
+* **`Q-D1`'s recommendation stands, its REASON withdrawn** — it no longer "contradicts the adopted rule"; the objection is that it is the **wrong mechanism** and would return **0/20**.
+* **New `W-1`…`W-7`** business-workflow questions — asked, not answered; **`W-7` first**.
+* **New `FK-1`** — the declared organisation FK is **absent from the live schema**, so the linkage guarantee is **unenforced**. *(This corrects earlier statements of mine that "the FK enforces a role linkage"; `R7` in the Officer Guide analysis is reclassified `SUPPORTED` → `UNSUPPORTED`.)*
+* **New `FK-2`** — deleting an election **hard-deletes** its membership records and their audit metadata, bypassing `SoftDeletes`. Recorded, not investigated.
+
+---
+
 ## 1 · Resolved — recorded once, not re-opened
 
 `D-ENT-1` ✅ resolved · `Q-A0` ✅ = `F1` · Model B ✅ adopted · `A-1`…`A-6` ✅ adopted business rules · Officer Guide governance **status** ✅ assessed as `D` *(the recognition decision `G-REC` remains open)*.
