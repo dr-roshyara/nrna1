@@ -1484,3 +1484,48 @@ an election-specific relationship
 **This class was found by the six-token heuristic** (`vote.store`). ✅ **Correctly detected.** **It is also a case where the heuristic's *inclusion* was right and its *implication* was wrong** — exercise-time tokens were present, but the assertion is election-scoped registration, not organisation continuity. **The heuristic finds candidates; only reading decides.**
 
 **Status: 39-row verification 3 / 39. AFFECTED 0 · NOT AFFECTED 3 · UNDETERMINED 0. Remaining: `ElectionShowControllerTest` (334 lines) · `StateMachine\CurrentBehaviorTest` (841 lines). No new candidates outside the 39 discovered. L3 = 66 / 1,376.**
+
+## 39-row verification — class 2 of 3: `ElectionShowControllerTest` (12 rows → **15 of 39**)
+
+**12 rows: 7 PASSED · 5 FAILURE.** Read with the discriminator, not the class name.
+
+### The decisive evidence is in the fixture helper, and it settles all 12
+
+```php
+private function makeVoterMember(User $user, Election $election): ElectionMembership
+{
+    // FK constraint: (user_id, organisation_id) must exist in user_organisation_roles
+    $alreadyAttached = DB::table('user_organisation_roles')…
+    return ElectionMembership::create([…]);
+}
+```
+
+> **Organisation membership appears here ONLY as a foreign-key prerequisite for creating the `ElectionMembership` row** — the comment says so explicitly. **That is admission-time necessity imposed by the schema, which is exactly what F1 governs.**
+>
+> **No test asserts that organisation membership must CONTINUE after `ElectionMembership` exists.**
+
+**D-ENT-1 classification: all 12 rows `NOT AFFECTED`.**
+
+| Rows | Evidence |
+|---|---|
+| 8 using `makeVoterMember` | organisation reference is **FK-only, at creation** |
+| `non_member_sees_can_vote_false` (`:197` *"No ElectionMembership created"*) | asserts absence of **`ElectionMembership`**, not of organisation membership |
+| `guest_is_redirected_to_login` · `unknown_slug_returns_404` · `demo_election_returns_404` · `renders_election_show_inertia_component` | no membership concern at all |
+
+**Honest limit:** the **fixture** was read and the membership sites traced; **per-method business intent was NOT read for all 12.** The `D-ENT-1` classification rests on a class-level structural fact (FK-only organisation reference) that holds for every method — **but the 5 FAILURE rows' own failure mechanisms remain `MECHANISM NOT ESTABLISHED`**, and that is separate work.
+
+### 🔴 Independent finding — recorded separately, and it does NOT change the classification
+
+**The schema requires `(user_id, organisation_id)` in `user_organisation_roles` as a foreign key for `election_memberships`.**
+
+> **So at the database level, an `ElectionMembership` cannot exist without an organisation-membership row.**
+
+**That is potentially in tension with F1/Model B**, which hold that organisation membership is an **admission prerequisite, not continuously required for retaining the entitlement**. **If the FK prevents (or cascades) deletion of the organisation-membership row, the schema may enforce a continuity the adopted business rule says is not required.**
+
+⚠️ **NOT a defect claim, and deliberately not investigated:** the FK's `ON DELETE` behaviour was **not checked**, so whether it blocks, cascades or nulls is **`MECHANISM NOT ESTABLISHED`**. **This is a question for whoever applies `ADR-002`, not a Session 1 finding to act on** — and it is exactly the kind of thing `D-APPLY`'s `V-1` (unratified termination rule) should consider.
+
+**Second independent finding:** `:87-88` — *"Primary: set `has_voted` on `ElectionMembership` (**new single source of truth**)"*. **Corroborates B2's two-`has_voted` observation and names `ElectionMembership` as the intended SSOT** — while C8's one-vote gate keys on `codes.has_voted`. **Whether they can disagree remains NOT ESTABLISHED.**
+
+**Status: 39-row verification 15 / 39. AFFECTED 0 · NOT AFFECTED 15 · UNDETERMINED 0. No new candidates outside the 39. Remaining: `StateMachine\CurrentBehaviorTest` (841 lines, 24 rows). L3 = 78 / 1,376.**
+
+> **Two of three classes read; `D-ENT-1` has produced ZERO affected rows so far.** If the third also comes back clear, **`PBDIGIT-49`'s measured impact on the matrix would be nil** — which would be a substantive result, not an anticlimax: it would mean the estate never encoded the assumption `D-ENT-1` was convened to settle.
