@@ -122,3 +122,96 @@ DB::table('results')
 **Remaining Product Owner decisions: `SD-11a` · `SD-11b` · `SD-11c` · `SD-11d`** — plus previously open `SD-9`, `SD-10`, `SD-5`, `SD-7`, `SD-8`, `SD-3`, `BD-1`, `PBDIGIT-49`.
 
 **Traceability:** `app/Http/Controllers/ResultController.php:29-113` · root `CLAUDE.md` domain model (`RESULT { vote_id, candidate_id, post_id }`) · `votes` schema (no `user_id`) · `ADR-T11` · `ElectionConstitution::RULES` (`close_voting`, `publish_results`) · `app/Contexts/Adjudication/Domain/Determination/*` · C8/C10 report
+
+---
+
+# SD-11a — DECISION PACKAGE
+
+**Added 2026-08-12 · investigation only · nothing implemented, no ADR, no Constitution change, no test**
+
+## 10 · The fact that makes SD-11a practical rather than philosophical
+
+**OBSERVED FACT.** `publish_results` runs `applySideEffectsForPublishResults()`, which sets **`results_published = true`** and **`results_published_at`** (`Election.php:1680,1910`). **Searched for a persisted tally snapshot — `published_results`, `result_snapshot`, `final_tally`, `results_snapshot` — across `app/` and `database/migrations`: none exists.**
+
+> 🔴 **Publication records THAT results were published. It does not record WHAT was published.**
+>
+> The tally is recomputed from `results` rows on **every page load, indefinitely, including after publication.**
+
+**CONSEQUENCE — the sharpest in this report.** If a `results` row were added, removed or altered after publication, **the "published" tally would change silently, and no record of the originally published figures would exist.** Nothing in the estate would detect it: `statisticalVerification` compares `results` against `votes`, so a change consistent across both passes.
+
+**This is stated as a structural property, not an allegation.** No evidence was sought or found that rows *do* change post-publication. **What is established is that the design does not preclude it and would not record it.**
+
+## 11 · Option A — the tally is the authoritative result
+
+**What would have to become true.** *(None of these exists today; each is `H · BUSINESS RULE NOT SPECIFIED`.)*
+
+| Requirement | Today |
+|---|---|
+| A definition of a **countable** vote independent of "a row exists" | `G` — a row *is* the definition |
+| **Exclusion** semantics (invalid · spoiled · withdrawn candidate) | 🔴 **no concept found anywhere** |
+| A **finality point** after which the result cannot change | 🔴 none — `results_published_at` marks publication, not immutability |
+| **A persisted record of the published figures** | 🔴 **none — §10** |
+| **Recount** semantics: permitted? by whom? does it supersede? | 🔴 none |
+| A defined **reconciliation** consequence | 🔴 none — `statisticalVerification` detects, decides nothing |
+| A named **authority** who declares the result | partially: `publish_results` is **chief only** — but that authorises *publication*, not *declaration* |
+| Audit evidence of the count | 🔴 none — and `BD-1` shows the transition log itself has no reader |
+
+**Verification consequence:** C10 would need **invariant** tests — exclusion applied, finality enforced, recount governed, mismatch handled. **None of these tests can exist today, because none of the rules do.**
+
+## 12 · Option B — the tally is a projection
+
+**What would have to be true, and most of it already is.**
+
+| Requirement | Today |
+|---|---|
+| The **authoritative facts** are the recorded `results` rows | ✅ matches the design — written at casting |
+| Those records are trustworthy | ⚠️ **partially** — anonymity is structural (`ADR-T11`, no `user_id`); **but immutability of `results` rows is NOT established** |
+| Recount = **re-reading the same facts** | ✅ literally what happens |
+| Something *else* declares the official result | 🔴 **`BUSINESS RULE NOT SPECIFIED`** — and this is Option B's real cost |
+
+> **Option B is architecturally coherent and cheaper, but it does not remove the question — it relocates it.** If the tally is only a display, **what makes the election result official?** *"Whatever the page renders"* cannot be the answer for a governance platform.
+
+**Verification consequence:** C10 would be verified by **projection** tests — the aggregation is arithmetically correct, respects tenancy, and preserves anonymity. **A much smaller and cheaper suite than Option A.**
+
+## 13 · Close · Cast · Count · Result · Publish — final separation
+
+| | Nature | Authority | Status |
+|---|---|---|---|
+| **CLOSE** | lifecycle transition | Constitutional (chief · deputy) | ✅ governed |
+| **CAST** | records the voter's candidate decision | C8 — anonymity `A`, window `B`, one-vote `G` | ⚠️ partial |
+| **COUNT** | computation over stored rows | `ResultController` | `G` only |
+| **RESULT** | 🔴 **not a distinct business concept in this system** | — | **`H`** |
+| **PUBLISH** | governance act that flips two flags | Constitutional (**chief only**) | ✅ governed — **but publishes no artifact** |
+
+> **`RESULT` is the missing concept.** The system has a *count* and a *publication*, and **nothing in between that names the outcome.** That absence is what `SD-11a` is really about.
+
+## 14 · Product Owner decision required
+
+> **`SD-11a` — Is the computed tally an authoritative election result, or a projection of recorded facts?**
+
+| | If A | If B |
+|---|---|---|
+| Instrument | a **domain concept** (+ one ADR) — **not** a constitutional action | none required |
+| Must specify | exclusion · finality · recount · reconciliation · published-figure record | **only**: what declares the official result |
+| C10 verification | invariant tests, **none of which can exist yet** | projection tests |
+| Cost | high | low, **plus one unavoidable specification** |
+
+**Dependent decisions:** `SD-11b` exclusion · `SD-11c` reconciliation consequence · `SD-11d` recount-after-publication. **All three are `H` today and all resolve differently under A and B.**
+
+## 15 · Open business questions
+
+* **What makes an election result official?** — **must be answered under either option.**
+* Are `results` rows immutable after publication? **Not established.**
+* Should the published figures be recorded as an artifact? *(Under A, necessarily. Under B, still arguably — see §10.)*
+* Does `publish_results` **declare** or merely **announce**? The constitution grants it to `chief` alone, which suggests declaration; **the side effects only announce.**
+
+**Determination boundary preserved:** `Adjudication::Determination` is **not** the counting result and is not imported. **Anonymity preserved:** no proposed interpretation identifies a voter's ballot; both options operate on `vote_id` only.
+
+**Master Matrix:** **C10 rows blocked on `SD-11a`. No other rows are blocked by it** — the dependency is C10's verification *shape*, not the matrix as a whole.
+
+---
+
+**SD-11 — OPEN**
+**SD-11a — PRODUCT OWNER DECISION REQUIRED**
+**IMPLEMENTATION — NOT AUTHORISED**
+**MASTER MATRIX — C10 BLOCKED ONLY**
