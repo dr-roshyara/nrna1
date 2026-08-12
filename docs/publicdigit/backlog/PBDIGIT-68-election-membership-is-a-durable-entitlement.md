@@ -3,7 +3,7 @@
 **Type:** Business decision **RECORDED** + consequence analysis · **Epic:** `PBDIGIT-EPIC-03` Election Management
 **Created:** 2026-08-12 · **Ruling by:** Product Owner, 2026-08-12
 **Evidence:** [`../reviews/2026-08-09-iervp-election-runtime-verification.md`](../reviews/2026-08-09-iervp-election-runtime-verification.md) — Appendices **D** (two-mode entitlement) and **E** (semantics verdict) · [`../reviews/2026-08-09-election-constitution-voter-eligibility-traceability.md`](../reviews/2026-08-09-election-constitution-voter-eligibility-traceability.md)
-**Status:** ✅ **`D-ENT-1` APPROVED — Model B** · **`BR-1` INVESTIGATED (`BR-1.1`…`BR-1.13` open)** · **`ADR-002` amendment PROPOSED (not applied)** · **`Q3`/`D-ENT-1b` OPEN** · ⛔ **IMPLEMENTATION NOT AUTHORISED** · **Constitution NOT amended**
+**Status:** ✅ **`D-ENT-1` APPROVED — Model B** · **`BR-1` PARTIALLY RESOLVED — Option B recommended; 11 PO decisions await** · **`ADR-002` amendment PROPOSED (not applied)** · **`Q3`/`D-ENT-1b` OPEN** · ⛔ **IMPLEMENTATION NOT AUTHORISED** · **Constitution NOT amended**
 
 > ### ⚠️ Read the approved wording first — the ruling below was CORRECTED
 >
@@ -75,6 +75,30 @@ proposeSuspension(User $proposer)   confirmSuspension(User $confirmer)
 Plus routes: `propose-suspension` · `confirm-suspension` · `cancel-proposal` · `suspend` · `approve` · `DELETE`.
 
 **Two distinct named actors imply a four-eyes control** — exactly the shape a franchise-withdrawal power should have.
+
+---
+
+## 🏛️ GOVERNANCE DECISION PACKAGE — `BR-1` partially resolved, 11 decisions await
+
+**[`../reviews/2026-08-12-election-membership-governance-decision-package.md`](../reviews/2026-08-12-election-membership-governance-decision-package.md)**
+**Report: `D-ENT-1` APPROVED · `BR-1` PARTIALLY RESOLVED · `ADR-002` UNCHANGED · CONSTITUTION UNCHANGED · IMPLEMENTATION NOT AUTHORISED.**
+
+**`BR-1.1`/`BR-1.2` — recommendation, for ratification or rejection:**
+
+> **Termination withdraws the exercisability of an `ElectionMembership` permanently by officer authority. The entitlement remains historically associated with the election, together with the actor, reason and time of termination. Reversal is not available to election officers and requires a separately authorised administrative act.**
+
+**Option B, and every layer already behaves this way:** removal **retains** the row and writes actor/reason/timestamp (`destroy()` → `remove()`, **no delete**, though `SoftDeletes` is available and deliberately unused); `destroy()` takes a **row lock explicitly to avoid racing a live vote**; the officer guide says *permanent* **and** *"contact your system administrator if a removal was made in error"*; the organisation side retains terminated episodes. **The strongest argument is integrity: under Option A, erasing an entitlement retroactively changes the denominator of a possibly-published result**, and it would break replay-divergence detection, which needs the record to persist.
+
+**Two findings that are governance questions, not defects I may declare:**
+
+* 🔴 **The gradient of authority does not follow the gradient of consequence.** All six voter-governance operations share **one** check (`manageVoters` = active chief|deputy). **Permanent removal needs the same authority as suspension and FEWER actors than the governed suspension path** (1 vs 2).
+* 🔴 **No voter-governance act reaches the election's own audit trail** — and `ElectionAuditService` exists with `'voters'` as its **default category**, unused. Four of six acts log nothing at all; removal's log is **conditional on a legacy column** `PBDIGIT-58` is migrating away from. `ElectionMembership` emits no domain events.
+
+**Also:** *"permanent" is not enforced* — `approve` has no guard against a `removed` row, so permanence rests on a hidden button (`MECHANISM NOT ESTABLISHED`; read, not executed). And the Product Owner's draft suspension rule says *"**temporarily** non-exercisable"* — **that word asserts a time bound nothing specifies** (`BR-1.7`), so it is flagged rather than silently kept or dropped.
+
+**Consumption is the one non-exercisable cause no officer authorises** — the voter causes it. That alone distinguishes it from suspension and termination, and is why sharing `status='inactive'` is a modelling problem rather than a cosmetic one. **Deliberately not fixed.**
+
+**11 Product Owner decisions listed, `BR-1.1`/`BR-1.2` first.** One ruling would close more of `BR-1` than any other: **whether the officer guide carries governance weight.**
 
 ---
 
