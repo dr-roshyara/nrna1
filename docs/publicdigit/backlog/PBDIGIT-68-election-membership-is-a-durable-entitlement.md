@@ -3,7 +3,7 @@
 **Type:** Business decision **RECORDED** + consequence analysis · **Epic:** `PBDIGIT-EPIC-03` Election Management
 **Created:** 2026-08-12 · **Ruling by:** Product Owner, 2026-08-12
 **Evidence:** [`../reviews/2026-08-09-iervp-election-runtime-verification.md`](../reviews/2026-08-09-iervp-election-runtime-verification.md) — Appendices **D** (two-mode entitlement) and **E** (semantics verdict) · [`../reviews/2026-08-09-election-constitution-voter-eligibility-traceability.md`](../reviews/2026-08-09-election-constitution-voter-eligibility-traceability.md)
-**Status:** ⚠️ **`D-ENT-1` — `Q-A0` OPEN: two PO formulations disagree on whether organisation membership is continuously required** · ✅ **Model B approved in principle** · **`BR-1` PARTIALLY RESOLVED — Option B recommended; 11 PO decisions await** · **`ADR-002` amendment PROPOSED (not applied)** · **`Q3`/`D-ENT-1b` OPEN** · ⛔ **IMPLEMENTATION NOT AUTHORISED** · **Constitution NOT amended**
+**Status:** ✅ **`D-ENT-1` RESOLVED · `Q-A0` = `F1`** (organisation membership = admission prerequisite only) · **`ADR-002` amendment PROPOSED, not applied** · **`Q3` OPEN** · ⛔ **IMPLEMENTATION NOT AUTHORISED** · **`BR-1` PARTIALLY RESOLVED — Option B recommended; 11 PO decisions await** · **`ADR-002` amendment PROPOSED (not applied)** · **`Q3`/`D-ENT-1b` OPEN** · ⛔ **IMPLEMENTATION NOT AUTHORISED** · **Constitution NOT amended**
 
 > ### ⚠️ Read the approved wording first — the ruling below was CORRECTED
 >
@@ -75,6 +75,33 @@ proposeSuspension(User $proposer)   confirmSuspension(User $confirmer)
 Plus routes: `propose-suspension` · `confirm-suspension` · `cancel-proposal` · `suspend` · `approve` · `DELETE`.
 
 **Two distinct named actors imply a four-eyes control** — exactly the shape a franchise-withdrawal power should have.
+
+---
+
+## ✅ `Q-A0` RESOLVED = `F1` · `ADR-002` AMENDMENT PROPOSED
+
+**Proposal: [`../reviews/2026-08-12-adr-002-amendment-proposal.md`](../reviews/2026-08-12-adr-002-amendment-proposal.md)** · verification: [`../reviews/2026-08-12-d-ent-1-two-mode-domain-decision-report.md`](../reviews/2026-08-12-d-ent-1-two-mode-domain-decision-report.md)
+**Report: `D-ENT-1` DOMAIN DECISION RESOLVED · `Q-A0` = `F1` · `ADR-002` AMENDMENT PROPOSED · IMPLEMENTATION NOT AUTHORISED · SESSION-1 MATRIX UNTOUCHED.**
+
+> **ADOPTED BUSINESS RULE — in Full Membership mode, organisation membership is an admission prerequisite, NOT a continuously evaluated prerequisite for retaining the entitlement.** Not to be reinterpreted as continuous validation, and **strictly separate** from the Chief's suspension authority.
+
+**Verification performed as instructed — three consistent recordings, and the outlier has no earlier provenance:**
+
+| Recording | Commit | On continuity |
+|---|---|---|
+| `PBDIGIT-68` ruling block | **`fc53f78a`** (2026-08-12 14:32) | **explicit** — *"admission prerequisite — not a continuously evaluated prerequisite"* |
+| Corrected wording | **`3530a234`** | **silent** on organisation membership; termination restricted to *"a defined **election-level** rule"* → org loss cannot terminate. Consistent **by implication** |
+| Approved rule list `A-3` | **`0fafdd50`** | *"Organisation membership changes do **not** automatically destroy the entitlement"* |
+
+**`F2`'s phrase appears in no repository artifact earlier than today.** ⚠️ **Honest qualification:** all three are **my transcriptions of conversational instructions**, committed under this session's configured git identity — **authoritative by repository convention, not by independent attestation.**
+
+**The seven concepts are now separated and must never be collapsed:** **A** admission entitlement · **B** durable `ElectionMembership` · **C** Chief suspension · **D** voting exercisability · **E** credential possession · **F** credential issuance/revocation · **G** already-voted.
+
+🔑 **The credential finding reinforces the model rather than blurring it.** A suspended voter *was* issued a fresh credential — **and the ballot was still refused.** So if possession were entitlement, the right would have been restored; it was not. **The finding is a gap in `F` (a security concern), not evidence about `B` or `D`.**
+
+**Amendment proposal:** adds **Entitled** as axis 0 (*"not re-derived from organisation membership"*), amends the three incompatible statements, splits admission-time from check-time, and yields `CanCastVote = Entitled && Exercisable && Verified && Permission` — **with credential possession deliberately excluded**, since a voter-refreshable condition is authentication, not entitlement. **Names no storage, class, field or event; `Q3` stays open. `ADR-002` NOT edited.**
+
+**All 🔴 implementation failures are recorded as FINDINGS, explicitly not approved repairs.**
 
 ---
 

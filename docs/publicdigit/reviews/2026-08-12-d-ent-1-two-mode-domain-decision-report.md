@@ -1,7 +1,7 @@
 # `D-ENT-1` two-mode domain decision report
 
 **Type:** Domain decision investigation · **Date:** 2026-08-12 · **Programme:** IERVP (Session 2)
-**Report:** **`D-ENT-1` INVESTIGATION COMPLETE — `ADR-002` AMENDMENT PROPOSED — IMPLEMENTATION NOT AUTHORISED**
+**Report:** **`D-ENT-1` DOMAIN DECISION RESOLVED · `Q-A0` = `F1` · `ADR-002` AMENDMENT PROPOSED · IMPLEMENTATION NOT AUTHORISED · SESSION-1 MATRIX UNTOUCHED**
 **Mode:** investigation only. **No production code, test, fixture, migration, schema, Constitution or ADR change. `ADR-002` untouched. Session 1's Master Matrix, `SD-4` and the 213 rows NOT read as authority, NOT classified, NOT modified.**
 
 **Evidence classes:** `AUTHORITATIVE` · `PROPOSED BY PRODUCT OWNER` · `SUPPORTED BY EVIDENCE` · `OBSERVED IMPLEMENTATION BEHAVIOUR` · `UNSPECIFIED` · `CONTRADICTED` · `UNKNOWN`.
@@ -9,7 +9,32 @@
 
 ---
 
-## 🔴 Before anything else — two Product Owner formulations differ, and I have not chosen between them
+## ✅ `Q-A0` RESOLVED — `Q-A0 = F1` (Product Owner, 2026-08-12)
+
+**The Product Owner made resolution conditional on verifying the recorded approval. Verification performed; it holds. `Q-A0` is closed as `F1`.**
+
+> **ADOPTED BUSINESS RULE:** **In Full Membership mode, organisation membership is an admission prerequisite — NOT a continuously evaluated prerequisite for retaining the `ElectionMembership` entitlement.**
+>
+> **Not to be reinterpreted as continuous organisation-membership validation.**
+> **Strictly separate from the Election Chief's suspension authority.**
+
+### Verification — three independent recordings agree; the outlier has no earlier provenance
+
+| # | Recording | Commit | What it says on continuity |
+|---|---|---|---|
+| 1 | `PBDIGIT-68` ruling block | **`fc53f78a`**, 2026-08-12 14:32 | **Explicit:** *"organisation membership is an **admission prerequisite** — **not** a continuously evaluated prerequisite for retaining the entitlement"* |
+| 2 | Corrected wording, approval package §1 | **`3530a234`** | **Silent on organisation membership**, and constrains termination to *"a defined **election-level** revocation/removal rule"* — **so organisation-membership loss cannot terminate it.** Consistent with (1) **by implication, not restatement** |
+| 3 | Approved rule list, governance package §1 | **`0fafdd50`** | **`A-3`: "Organisation membership changes do NOT automatically destroy the entitlement."** Recorded as an **APPROVED BUSINESS RULE** |
+
+**And `F2`'s phrase *"continuously required remains to be established"* appears in NO repository artifact earlier than today's report** — it entered the record only when I transcribed this commission's framing. **It has no independent provenance.**
+
+**Honest qualification about the nature of this evidence.** All three recordings are **my transcriptions of the Product Owner's conversational instructions**, committed under the repository owner's git identity — which is this session's configured committer, so **git authorship does not independently attest Product Owner authorship.** Authority rests on the repository's convention that the human is the Product Owner and decisions are recorded in tickets. **That convention makes it authoritative; it is not independent attestation, and I will not describe it as such.**
+
+**Conclusion: `Q-A0 = F1`. The three recordings are consistent, none contradicts, and `F2` is the sole outlier with no earlier record.** The section below is **retained unchanged** as the record of the ambiguity as I found it.
+
+---
+
+## ~~Before anything else — two Product Owner formulations differ, and I have not chosen between them~~ *(SUPERSEDED by the resolution above; retained as the record)*
 
 **This is the most consequential finding of the commission, and it is a governance matter, not a technical one.**
 
@@ -71,7 +96,7 @@ Organisation Member                      (no organisation Member required)
 
 | Component | Full Membership | Election-Only | Verdict |
 |---|---|---|---|
-| **Organisation `Member` required** | **Question A — OPEN** (`F1` says admission only; `F2` reopens) | **Not required** | FM: `UNSPECIFIED` pending `Q-A0` · EO: `AUTHORITATIVE` |
+| **Organisation `Member` required** | ✅ **RESOLVED `Q-A0`=`F1`: required at ADMISSION ONLY**, not re-derived afterwards | **Not required** | FM: **`ADOPTED BUSINESS RULE`** · EO: `AUTHORITATIVE` |
 | **`ElectionMembership` required** | yes | yes | `AUTHORITATIVE` — it is the entitlement record |
 | **Election-specific active/suspended status** | yes | yes | `PROPOSED BY PRODUCT OWNER`; representation is `Q3` |
 | **Lifecycle permits voting** | yes | yes | `AUTHORITATIVE` — `ElectionLifecycle::canVote()`, constitutionally owned |
