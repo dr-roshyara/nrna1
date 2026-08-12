@@ -1529,3 +1529,55 @@ private function makeVoterMember(User $user, Election $election): ElectionMember
 **Status: 39-row verification 15 / 39. AFFECTED 0 · NOT AFFECTED 15 · UNDETERMINED 0. No new candidates outside the 39. Remaining: `StateMachine\CurrentBehaviorTest` (841 lines, 24 rows). L3 = 78 / 1,376.**
 
 > **Two of three classes read; `D-ENT-1` has produced ZERO affected rows so far.** If the third also comes back clear, **`PBDIGIT-49`'s measured impact on the matrix would be nil** — which would be a substantive result, not an anticlimax: it would mean the estate never encoded the assumption `D-ENT-1` was convened to settle.
+
+---
+
+## 🏛️ `D-ENT-1` AMENDED BY THE PRODUCT OWNER — the adopted rule is hierarchical, and it changes the discriminator
+
+**Adopted as external business authority (PO/ARB, 2026-08-12), recorded verbatim in effect:**
+
+> **FULL MEMBERSHIP MODE:** Organisation Membership is **superior** to ElectionMembership. A person may be an ElectionMember **only while** an active Organisation Member. **If Organisation Membership is removed, the ElectionMembership is automatically suspended.** That automatic suspension is caused by the Organisation-Membership lifecycle and is **NOT** the same business operation as Election Chief suspension. The Election Chief may independently suspend for election-specific reasons. **Removing/suspending ElectionMembership must NOT remove Organisation Membership.** Organisation Membership is governed by the Organisation Chief; ElectionMembership by the Election context, subject to the superior prerequisite.
+>
+> **ELECTION-ONLY MODE:** no Organisation Member required; the cascade does not apply; Chief suspension remains independent.
+
+**Two causes, one state — never collapsed:** `OrganisationMembershipRemoved → automatic suspension` (workflow **A**) ≠ `ElectionChiefSuspendedVoter` (workflow **B**).
+
+### 1 · Obsolete `D-ENT-1` statements
+
+| Superseded | By |
+|---|---|
+| *"Organisation membership is an admission prerequisite — **not a continuously evaluated prerequisite** for retaining the entitlement"* (F1 as handed over) | **too broad.** In Full Membership Mode the prerequisite **is continuous**, with a defined consequence: **automatic suspension**, not entitlement re-derivation |
+| The discriminator *"…continuously required after ElectionMembership has been established"* | **amended:** a test is relevant if its assertion depends on **the consequence of organisation-membership loss after ElectionMembership exists** — in **either** direction |
+| `D-ENT-1` as one universal rule | **two mode-specific rules** |
+
+### 2 · What survives, what must be re-derived — measured, not assumed
+
+| Population | Verdict |
+|---|---|
+| **Stage 1 exclusions (56 rows)** | ✅ **survive by entailment** — a test that never references organisation membership cannot assert the consequence of losing it |
+| **The 15 read rows** (`LegacyVoteRouteTest` 3 · `ElectionShowControllerTest` 12) | ✅ **survive** — verified: none asserts loss consequences in either direction |
+| **Stage 2 exclusions (118 rows)** | ⚠️ **filter invalidated in principle** — the exercise-token filter was derived from the OLD question. The NEW invariant (removal → auto-suspension) is not exercise-token-shaped. **Re-derived:** the new invariant requires org-membership *removal*, so candidates must sit in the 15 org-referencing classes. The suspension-relevant one is `ElectionVoterSuspensionTest` — **read in full** |
+| **`ElectionVoterSuspensionTest` (7 rows)** | ✅ **NOT AFFECTED — it tests workflow B only** (Chief propose → second-officer confirm → cancel; proposer cannot self-confirm; voted voters cannot be proposed). `UserOrganisationRole` appears **only in fixture creation**. **Workflow A never occurs in it** |
+
+### 3 · 🔴 The new invariant has ZERO in-universe coverage
+
+**Measured:** no test in the 1,376-row universe **removes organisation membership** at all (`grep` for role deletion/detach across all five paths: **empty**).
+
+> **Workflow A — the rule the Product Owner just adopted — is exercised by no test.** Coverage for *"organisation-membership removal automatically suspends the ElectionMembership"*: **ABSENT.** *(And whether production implements the cascade at all is `MECHANISM NOT ESTABLISHED` — the schema FK may even make removal impossible; see below.)*
+
+**Adjacent observation from the read:** confirm-suspension sets `status='inactive'` **and** `suspension_status='confirmed'` — so **the record distinguishes suspension from other inactivity**; Session 2's indistinguishability finding concerned **the enforcing predicate**, and both can be true. **No cause distinction (A vs B) exists anywhere**, because A exists nowhere.
+
+### 4 · The FK finding, reframed under the amended rule
+
+Previously: the `election_memberships → user_organisation_roles` FK seemed **in tension** with F1. **Under the amended rule the direction now aligns** (org membership required while ElectionMembership exists) — **but the mechanism differs**: the business rule says **suspend on removal**; a restrictive FK would **prevent removal**, a cascading one would **delete** rather than suspend. **`ON DELETE` behaviour deliberately not checked, and per the PO's instruction no CASCADE/RESTRICT choice is made here.** Conformance investigation belongs after the rule is recorded — which it now is.
+
+### 5 · Remaining ambiguities — put to the Product Owner before conformance work
+
+| | Question |
+|---|---|
+| **Q-A1** | Does *"removed"* include **suspension** of Organisation Membership, or only removal? |
+| **Q-A2** | Is automatic suspension **reversible** — does restoring Organisation Membership auto-lift it, or is re-admission required? |
+| **Q-A3** | Timing: does automatic suspension take effect **during an open voting window**, and does it matter if the person **has already voted**? |
+| **Q-A4** | In Election-Only Mode, does the Organisation Chief hold **any** authority over ElectionMembers? |
+
+**Status: amended `D-ENT-1` recorded as external authority. 39-row verification stands at 15/39 with all classifications surviving. `ElectionVoterSuspensionTest` (7 rows) additionally read → NOT AFFECTED. New invariant coverage: ABSENT — recorded as a finding, not repaired. `ADR-002` unamended. No schema, code or test change. `CurrentBehaviorTest` (24 rows) remains, now to be read against the AMENDED rule.**
