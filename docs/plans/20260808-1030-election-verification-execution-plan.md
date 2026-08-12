@@ -1173,3 +1173,47 @@ business capability scope  CandidacyApplicationTest, ElectionCandidacyRelationsh
 **CROSS-STREAM EVIDENCE — REQUIRES EXPLICIT RECONCILIATION:** Session 2's `D-ENT-1`/Model B concerns precisely this. **Not imported; nothing above depends on it.**
 
 **Status: B2 — PARTIALLY CLASSIFIED (68 rows populated at L2/structural + decision-level L3; per-test intent read for 0 of 68). MASTER MATRIX — CONTINUING. `SD-11a` — BLOCKS ONLY THE 8 MEASURED C10 ROWS. IMPLEMENTATION — NOT AUTHORISED.**
+
+### ⚠️ B2 correction — `$canVote`'s ownership was stated wrongly, and the correct version is a stronger finding
+
+**I wrote:** *"`$canVote` (the UI prop) … Ownership: **Interface/Projection**."* **That is wrong, and it would have entered the matrix as a fact.**
+
+**The Interface does not own the business decision. It projects one.** The correct model:
+
+```
+Domain          Election lifecycle rules (constitution)
+Application     derive voter exercisability — combine entitlement +
+                lifecycle permission + vote consumption + credentials
+Authorization   officer/actor permission
+Interface       PROJECT the already-derived capability
+```
+
+**So the corrected classification of decision 3 is:**
+
+| | |
+|---|---|
+| **Business Decision Ownership** | **Application** — deriving voter exercisability is an application concern |
+| **Where it is executed** | 🔴 **`ElectionVotingController:51` — Interface-layer code** |
+| **The finding** | **An Application-layer decision is composed inside an Interface-layer class.** There is no application service, no use case, no named concept — the composition exists only as a controller expression |
+
+> **"The Interface owns this decision" and "an Application decision is being made in the Interface" are different claims. The first excuses the placement; the second identifies it.** My original wording made the weaker, wrong one.
+
+**Consequence for the matrix:** decision 3's rows carry **`Business Decision Ownership = Application`** with a **placement observation**, not `Interface/Projection`. **Recording ownership as Interface would have made the misplacement invisible** — the column would have said "correct layer" about the thing it exists to catch.
+
+**Same shape as Relationship 4's fifth-occurrence rule:** *never infer decision ownership from the first class encountered in the call path.* **I inferred it from the class the code sits in.** Sixth occurrence.
+
+### Vocabulary held distinct — none of these is a synonym
+
+**entitlement · eligibility · exercisability · authorization · credential possession · lifecycle permission · vote consumption.**
+
+**B2 established only that `$isEligible` derives from membership presence.** Whether that represents **entitlement** or **exercisability** is `SD-12`, and **the code's use of the word "eligibility" is not evidence of the business rule.**
+
+### Next-action dependency
+
+```
+B2  ── established ──────────► continue where authority is settled
+    ├─ SD-12 / PBDIGIT-49 ───► blast radius ≥27, NOT fully enumerated
+    └─ SD-4 ─────────────────► programme-boundary decision, GATES B3+
+```
+
+**`SD-4` is requested and not taken.** **B3 is not started.**
