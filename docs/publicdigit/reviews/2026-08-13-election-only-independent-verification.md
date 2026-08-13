@@ -501,3 +501,19 @@ Whether a NEW candidacy/application can be created and approved in this configur
 **Nothing repaired · nothing greened · nothing deleted · no production, test, fixture, configuration, Constitution, schema or migration change · `SD-1` = 1,376 · `L3` = 240 · Session 2's decisions and Session 3's implementation not consumed as authority**
 
 **Traceability:** `InvalidElectionStateException` *(plain `\DomainException`, no `render()`)* · `bootstrap/app.php:134` `withExceptions` *(`dontFlash` only)* · `CandidacyReviewController::review()` *(4 guards, `pending` required, no lifecycle read)* · `CandidacyManagementController:52` *(`nominationLocked` = UI prop only)* · `Election::forceCloseNomination()` *(auto-rejects pending, no approved-candidate guard)* · `EnsureVotingActive:47` · `VoteEligibility:62,79` · `EnsureElectionState:54` · `ElectionLifecycleEngineImpl::getState()` rules 1–12
+
+---
+
+## 12.6 · ⚠️ Guard against misreading this report
+
+**`approve a NEW candidacy` is `NOT ESTABLISHED`. That is NOT a recovery mechanism, and it must not be cited as one.**
+
+> **`NOT ESTABLISHED` means unmeasured — it means neither "available" nor "unavailable".** **Any downstream document, board or plan that treats new-candidacy creation as an escape from the anomalous state would be reading an absence of evidence as evidence.** **The only PROVEN exit remains the passage of the voting window.**
+
+**And the measured obstruction should be stated in its precise form, not a paraphrase:**
+
+| ❌ Do not say | ✅ Say |
+|---|---|
+| *"force-close locks nomination, so candidates cannot be approved"* | *"`forceCloseNomination()` sets every `pending` candidacy to `rejected`; the approval endpoint then refuses them because it requires `pending`. No lock exists."* |
+
+**The distinction matters because a lock would be a policy to reason about, whereas this is a side effect of a data mutation — and only the second is what the code does.**

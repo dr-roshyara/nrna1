@@ -2380,3 +2380,29 @@ InvalidElectionStateException: Election … in invalid constitutional state
 **I ran ONE independently chosen class, not 1,376 rows.** **The true regression count is `NOT ESTABLISHED` and may exceed 4** — every class asserting a window-open election without an approved candidate is a candidate. **`L3` remains 240: verification is not classification.**
 
 **Status: `EM-VOT-002` VERIFIED both paths · 1 consequence escalated · `EM-OPEN-021` urgent · `SD-15` · `BR-1.12` · `SD-4` · `EM-OPEN-019` open · P1–P4 not started · nothing repaired, greened, renamed or deleted · 1,376 frozen · no production, Constitution, schema, migration, test or fixture change.**
+
+---
+
+## P1 · P2 · P3 complete — Session 1 STOPPING on instruction
+
+**All detail in `docs/publicdigit/reviews/2026-08-13-election-only-independent-verification.md` §§8–12.** **Plan entry is a pointer; the report is the record.**
+
+| | Outcome |
+|---|---|
+| **`EM-VOT-002`** | ✅ **VERIFIED and CLOSED** — both enforcement paths, approval-correct predicate, no lifecycle state invented |
+| **Regression surface** | **19 rows** newly non-passing; **at most 10 attributable** to `EM-VOT-002` (3 throw · 7 asserted the repealed rule); 3 unread; **6 almost certainly environmental** |
+| **The exposed problem** | **`nomination_completed = true` + 0 approved + window open has NO derivable lifecycle state.** **Production-reachable via `forceCloseNomination()`** using only permitted operations |
+| **HTTP consequence** | ✅ **PROVEN 500** — plain `\DomainException`, no `render()`, no global mapping, no middleware `catch`; includes the voter-facing path |
+| **Recovery** | `close_voting` **disproven (measured)** · `suspend` **disproven by trace** · re-approval **disproven** (auto-rejection consumed the `pending` rows) · new candidacy **NOT ESTABLISHED — not a recovery mechanism** · **the clock is the only proven exit** |
+| **`EM-OPEN-021`** | ❓ **UNDECIDED — and evidence is now sufficient for the ruling** |
+
+**Corrections I issued during P0–P3, all recorded in-report:** the surface was 13 → **19** (my parser truncated testcase bodies) · **the two "architecture" tests assert the REPEALED rule, not a structural invariant — my hardest escalation, wrong because I read their class names** · the dashboard row does not throw *(the real request-path consumer is `VoterImportStateGateTest`)* · *"36 baseline rows lost"* was my own XML-entity bug — **0 were lost** · *"unrecoverable"* → **time-bounded** · *"EM-OPEN-021 has an observable answer"* → **observable BEHAVIOUR, undecided SEMANTICS**.
+
+**Ten tooling/reasoning incidents are now recorded across this programme. The pattern is stable and worth carrying forward: my searches locate reliably and ATTRIBUTE unreliably, and every incident that reached a published claim did so by inferring shape from a NAME or by trusting a single unreconciled parse.**
+
+**Next action — by session, recorded per the End-of-Commission rule:**
+* **PO / ARB:** rule **`EM-OPEN-021`** *(choice set observed in-code, no recommendation from me)* · then `SD-15` · `SD-4` · `BR-1.12` · `EM-OPEN-019` *(implemented threshold observably 40)* · `Q-B1` · `SD-3`
+* **Session 3:** remains **STOPPED** — do not choose a fallback state
+* **Session 1 (on the next grant):** the bounded post-ruling follow-ups — new-candidacy path · `suspend` in execution · `VoterStrategySnapshotTest` ×3 · isolation-test the 6 Security rows · then resume matrix classification from **L3 = 240/1,376**
+
+**Frozen throughout: `SD-1` = 1,376 · `L3` = 240 · disposition register unexecuted · nothing repaired, greened, renamed, deleted or skipped · no production, test, fixture, configuration, Constitution, schema or migration change.**
