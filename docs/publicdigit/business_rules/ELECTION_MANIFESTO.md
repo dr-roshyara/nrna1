@@ -102,7 +102,7 @@
 |---|---|---|
 | **EM-VOT-001** | **Without a candidate, an election must not proceed to the next phase. Voting must not begin unless the election has at least one valid (approved) candidate.** | ADOPTED *(Product Owner, **2026-08-08**)* |
 
-**Note on canonical overlap:** the Constitution **partially** expresses this, as the `has_approved_candidates` precondition on one nomination transition. **The adopted rule is broader** — it constrains entry to the voting phase however that entry occurs. Recorded here because the business rule is broader than the single constitutional precondition; **the precondition itself remains canonical in the Constitution and is not restated.**
+**Note on canonical overlap:** the Constitution **partially** expresses this, as the `has_approved_candidates` precondition on one nomination transition. **Whether the rule binds at the `open_voting` boundary — i.e. whether *"next phase"* includes VOTING — is `EM-OPEN-020` (`SD-14`), awaiting Product Owner confirmation.** Recorded here because the business rule is broader than the single constitutional precondition; **the precondition itself remains canonical in the Constitution and is not restated.**
 
 ## 5 · Adopted sequencing
 
@@ -200,7 +200,8 @@
 | **EM-OPEN-016** | **`FM-1`…`FM-15`** — the frozen Full Membership register | Full Membership |
 | **EM-OPEN-019** | 🔴 **What is the voter threshold below which an election is auto-approved without administrator review?** **The implementation and the Constitution's own docblock both say ≤ 40** *(`ConstitutionalTransitionGuard`: "Free plan (≤40 voters) always eligible")*. **The Product Owner stated ≤ 30 during runtime verification on 2026-08-09** — *"election with voters under 30 can be accepted automatically."* **Two figures, two sources. NOT resolved here: I cannot choose between a Product Owner statement and the implementation, and the statement may have been operational rather than a rule declaration** | election approval |
 | **EM-OPEN-018** | **`PBDIGIT-50` — in which timezone are election times displayed, and what is the fallback when detection fails?** *(A narrow Product Owner steer is on record — **device timezone, not residence** — but the ticket is **`OPEN — not authorised`** with the fallback undecided, so it is **NOT migrated as an adopted rule**.)* | election display |
-| **EM-OPEN-017** | **`D-MANIFEST`** — is this artifact, at this location and name, the ratified canonical home? | 🟡 **this document's own status** |
+| **EM-OPEN-017** | **`D-MANIFEST`** — is this artifact, at this location and name, the ratified canonical home? **ARB 2026-08-12: deliberately NOT ratified yet.** Ruled useful and non-redundant *(it holds rule kinds the Constitution must not absorb — see the authority investigation)*, but its canonical status and its **name** (*"Manifesto" risks reading as a second Constitution*) await an explicit decision | 🟡 **this document's own status** |
+| **EM-OPEN-020** | **`SD-14`** — does *"the next phase"* in `EM-VOT-001` include VOTING, i.e. is the candidate requirement binding at the `open_voting` boundary? **Until confirmed, `EM-VOT-001` is established only at the nomination transition.** Moving/encoding it constitutionally is *accepted in principle*, **blocked on this confirmation** | 🔴 **the `open_voting` candidate-precondition work** |
 
 **`EM-OPEN-017` is stated plainly:** this Manifesto was created under a Product-Owner instruction to canonicalize, and **its ratification as *the* canonical artifact is itself a governance decision that has not been separately recorded.** **It is offered as the canonical home, not declared to be one by its own authority.**
 
