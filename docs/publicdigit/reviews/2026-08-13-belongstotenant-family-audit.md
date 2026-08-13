@@ -112,3 +112,15 @@ Per-site audit of the 375 bypass calls **not performed** (inventory + counts onl
 **How to fix them is NOT answered here. Nothing repaired · no production, test, fixture, configuration, Constitution, schema or migration change · `SD-1` = 1,376 · `L3` = 240 · `EM-OPEN-021` untouched.**
 
 **Traceability:** `BelongsToTenant.php:46` · corrected enumeration (41 of 62 mentioning files; misfiled doc `app/Http/Middleware/VoterSlugStep.php`; dead trait `ScopedByOrganisation`) · `User.php:315-328` · `ElectionVotingController:37-44` · `Election.php:70-90,307-317,336-390,470-480,497-500` · `VerifyVoterSlug:38,47` · `ElectionMembership.php:32,89,243-248` · `ConstitutionalTransitionGuard:178-200` · P6 runtime A/B (`fc86049f`) · Decision A/B record (Session 2) · `PBDIGIT-65`/`69` tickets
+
+---
+
+## 11 · Corrections — appended after Principal Architect review, not silently applied
+
+**Both errors below are mine. The original text above is left standing so the discrepancy remains visible; this section is the corrected record.**
+
+1. **Class-C arithmetic:** the heading says **8**; the list contains **9 names** (`Election` · `Candidacy` · `Post` · `BaseResult` · `DeligateCandidacy` · `DeligatePost` · `DeligateVote` · `DemoCandidacy` · `DemoPost`). **9 is correct.** Additionally, the class totals must **not** be summed to 41, because `OrganisationUser` is deliberately dual-listed (B and E). **The 41 true-consumer total is independently derived from the corrected enumeration and is unaffected by either point.**
+
+2. **One summary sentence overstated the evidence.** §1 says *"the sites that remembered are compliant."* **Too strong.** What §4 actually establishes is: **the individually audited bypass sites are compliant-by-bypass; the other ~370 `withoutGlobalScopes()` call-sites were counted, not audited.** **375 bypass calls ≠ 375 proven-correct sites** — a bypass can itself be wrong (too broad, wrong model, wrong layer). The accurate statement is: *"compliance was demonstrated only at the audited sites; the bypass count measures how widely correctness depends on per-site developer memory, not how often it was achieved."*
+
+**Nothing else in the report changes. The core findings — 41 consumers · 2 proven Decision-A violations sharing 1 mechanism · 1 potential cache site · 1 constitutional-predicate hybrid · 19 models outside Decision A — stand as written.**
