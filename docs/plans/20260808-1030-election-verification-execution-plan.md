@@ -2331,3 +2331,52 @@ use ReflectionClass;
 **Note on `.claude/CONTEXT.md`: deliberately NOT touched.** **Sessions 2 and 3 are active in this repository and CONTEXT is a single shared current-state file; a blind rewrite would clobber their state.** **Session 1's state lives in this plan and in the appended section of `.claude/sessions/2026-08-13.md`.**
 
 **Status: L3 = 240/1,376 · sampling registered, EXECUTION NOT STARTED · frame 539/76 corrected and reconciled · disposition candidates registered, NOTHING EXECUTED · `SD-15` OPEN · `SD-4` unreframed · `SD-1` unchanged · `1,376` frozen · Session 3's implementation NOT consumed · no production, schema, migration, Constitution, test or fixture change.**
+
+---
+
+## 🔴 P0 · Independent verification of `EM-VOT-002` (`f2c2cc4e`) — enforced, but the fall-through THROWS
+
+**Mission accepted; priority changed. The 54-row Security sample is REGISTERED AND NOT EXECUTED — it stays P4.** **Full report: `docs/publicdigit/reviews/2026-08-13-election-only-independent-verification.md`.**
+
+**Session 3's GREEN report was not consumed.** Code read · both predicates compared · an **independently chosen** regression target executed.
+
+### Verified
+
+**Both enforcement points use the identical predicate `->where('status','approved')->exists()`** — command path (`RULES['open_voting'].preconditions += has_approved_candidates`) and computed path (`isVotingWindowOpenNow() && hasCandidatesApproved()`). ✅ **A PENDING or DRAFT candidacy does NOT satisfy it — the *candidate exists* vs *approved candidate exists* distinction is correct in both places.** ✅ **`ElectionLifecycleState` unmodified, still exactly 12 members — no substitute state invented.**
+
+### 🔴 The unreported consequence
+
+**Target chosen because I had myself identified `test_election_with_voting_window_open_derives_to_voting_active` as the in-universe proof that `voting_active` is reachable with no action and no candidates.** **If the computed path is now guarded, that row must change. It did:**
+
+| `CurrentBehaviorTest` | Baseline | Measured now |
+|---|---|---|
+| | **24 / 24 PASSED** | **20 PASSED · 2 ERROR · 2 FAILURE** |
+
+```
+InvalidElectionStateException: Election … in invalid constitutional state
+   at ElectionLifecycleEngineImpl.php:164
+   → test_election_with_voting_window_open_derives_to_voting_active
+   → test_close_voting_transition
+```
+
+**The commit states *"no substitute state is chosen here: derivation falls through to the existing rules below."*** > **Declining to CHOOSE a state is correct governance — but the fall-through does not reach a safe default, it reaches a TERMINAL THROW.** **So `EM-OPEN-021` already has an observable answer: an election with an open window and zero approved candidates has NO DERIVABLE STATE and raises `InvalidElectionStateException`.**
+
+⚠️ **HYPOTHESIS, NOT ESTABLISHED — and the item I would raise first:** because state is derived on **every read**, such an election may be **unmanageable — unable even to close voting**, since derivation throws before any action is evaluated. **`test_close_voting_transition` erroring is consistent with that. I have not traced every consumer, so it is a hypothesis with real operational risk, not a demonstrated defect.**
+
+### Kept separate
+
+| | |
+|---|---|
+| **VERIFIED RULE** | `EM-VOT-002`, both paths, approval-correct |
+| **TEST VERIFICATION** | **2 of the 4 regressions are arguably CORRECT new behaviour** — a candidate-less election should not be votable; **their fixtures are legitimately obsolete (Mission 9's permitted category)** |
+| 🔴 **UNREPORTED REGRESSION** | 4 in-universe rows off a 24/24 baseline; the commit reports only its own **8/8** — **the in-universe regression appears not to have been run** |
+| **BUSINESS DECISION** | **`EM-OPEN-021` — previously deferrable, now NOT NEUTRAL**, because deferral leaves *throw* as the effective behaviour |
+| **IMPLEMENTATION DEFECT** | **NOT CLAIMED** — whether *throw* is wrong depends on `EM-OPEN-021`, which is the PO's |
+
+**Cross-reference recorded, not decided: `EM-OPEN-019`'s implemented threshold is observably 40** — `capacity_eligibility`, *"Free plan (≤40 voters)"*. **Consistent with the `35 → auto-approval` test name I flagged earlier. Observed implementation, not authority.**
+
+### Honest limits
+
+**I ran ONE independently chosen class, not 1,376 rows.** **The true regression count is `NOT ESTABLISHED` and may exceed 4** — every class asserting a window-open election without an approved candidate is a candidate. **`L3` remains 240: verification is not classification.**
+
+**Status: `EM-VOT-002` VERIFIED both paths · 1 consequence escalated · `EM-OPEN-021` urgent · `SD-15` · `BR-1.12` · `SD-4` · `EM-OPEN-019` open · P1–P4 not started · nothing repaired, greened, renamed or deleted · 1,376 frozen · no production, Constitution, schema, migration, test or fixture change.**
