@@ -66,20 +66,24 @@ This violates the accepted Decision-A rule and the adopted entitlement model (Mo
 
 > **☐ NOT GRANTED.** If the PO selects Option A, this becomes the grant by one signature; until then it authorizes nothing.
 >
-> **Scope:** restore Decision-A-conformant behaviour at exactly two sites — `User::isVoterInElection()` (`User.php:315-328`, including its cache key/behaviour) and the `isEligible`/`canVote` projection (`ElectionVotingController.php:37-44`). **The mechanism of conformance is Session 3's design question under strict TDD** — the grant prescribes the invariant (*same voter + same election ⇒ same answer, independent of ambient organisation/tenant context and of cache state across contexts*), not the technique.
+> **Scope:** repair of **the two confirmed voting-time entitlement violations identified by the Decision-B audit** — scoped by the violations, **not by file prescription**. *(The observed sites — `User::isVoterInElection()` `User.php:315-328` incl. its cache behaviour, and the `isEligible`/`canVote` projection `ElectionVotingController.php:37-44` — are cited as EVIDENCE of where the violations manifest, not as instructions to edit those files.)*
+> **Invariant to preserve (the grant's real content):** *for the same voter and the same election, voting-time entitlement must produce the same answer regardless of ambient organisation/tenant context and regardless of cache state across contexts* (Decision A).
+> **Boundary presentation:** Session 3 determines the **smallest implementation boundary and technique** under strict TDD — and **must present that boundary before production implementation** (six-question reconciliation), so the design is reviewed as a boundary, not discovered in a diff.
 > **Test obligation:** RED first; tests cite **Decision A** and `PBDIGIT-65`/`69`; the P6 three-step A/B (wrong tenant/cold · correct tenant/warm · correct tenant/cleared) becomes the acceptance scenario and must pass with a single consistent answer.
-> **Out of scope:** `BelongsToTenant` itself · cache keys beyond site 1 · `voter_count` (unless the PO's signature says otherwise per §4.1) · `has_voters` · `EM-VOT-003` implementation · EM-OPEN-021 · class B–F consumers · any refactor of the 375 bypass sites.
+> **Out of scope (explicit):** `voter_count` · `has_voters` · the broader `BelongsToTenant` family · `EM-VOT-003` implementation · `EM-OPEN-021` · class B–F consumers · cache keys beyond the violating mechanism · any refactor of the 375 bypass sites. **No broader infrastructure refactoring is authorized.**
 > **Verification:** Session 1 verifies independently; Session 3 does not self-certify. Baseline `SD-1` = 1,376 respected.
+>
+> *Template revision v2 (2026-08-13): rewritten to the Principal-Architect-recommended ruling shape — violations-scoped rather than file-prescriptive; boundary-presentation step added. v1 named the two sites as scope; that prescription is withdrawn (sites are evidence, the invariant is the scope).*
 
 Options B and C have **no draftable grant yet** — B needs a recorded architecture design decision (home + shape), C needs its own programme ruling.
 
-## 6 · Questions for the PO *(the disposition, unbundled)*
+## 6 · Questions for the PO *(the disposition, unbundled — Principal-Architect recommendations now on record, 2026-08-13; recommendations ≠ rulings)*
 
-1. **Which option** — A / B / C / a composition (e.g., "A now; B as recorded follow-up intent")?
-2. **`voter_count`** — inside the A-grant or left to the pattern track?
-3. **`has_voters`** — ruled with this repair, or its own item?
-4. **The PKS cache observation** — record it (observation only)?
-5. **On A: sign the §5 template** (or amend, then sign).
+1. **Which option** — A / B / C / a composition? *(PA recommends: **A**; do not turn a confirmed Election defect into a premature infrastructure refactoring project.)*
+2. **`voter_count`** — inside the A-grant or the pattern track? *(PA recommends: **OUT** — static evidence only; do not enlarge a runtime-proven defect on a static suspicion.)*
+3. **`has_voters`** — with this repair or its own item? *(PA recommends: **OUT**, but recorded as an explicit **follow-up governance item** — EM-VOT-003 will make voter presence relevant at the voting boundary.)*
+4. **The PKS cache observation** — *(PA: yes, record as OBSERVATION, do not promote → **DONE**: recorded at n=2, NOT promoted — `docs/pks/2026-08-13-tenant-qualified-cache-key-observation.md`; recording an observation is within engineering's remit, promotion stays Human-decides per ES-006.1.)*
+5. **On A: sign the §5 template (v2)** — one signature converts it into the bounded grant.
 
 ## 7 · Authorization state *(unchanged by this package)*
 
