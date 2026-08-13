@@ -3,6 +3,8 @@
 **Type:** Implementation-stream readiness reconciliation · **Date:** 2026-08-13 · **Author:** Session 3
 **⛔ Analysis only. No production, test, fixture, schema, lifecycle, Constitution, or policy change. No decision resolved. No implementation performed or authorized by this document.**
 
+> **Document status (PO, 2026-08-13): ACCEPTED AS READINESS / RECONCILIATION EVIDENCE — NOT accepted architecture, NOT an accepted domain model, NOT a business decision, NOT authorization for implementation.**
+
 **Streams consumed as evidence (kept separate):** Session 1 = verification (`2026-08-13-election-only-independent-verification.md`, incl. its §10 self-corrections) · Session 2 = governance/authority (`…-ticket-authority-matrix.md`, `…-domain-ownership-analysis.md`, Manifesto) · Session 3 = implementation (`f2c2cc4e`, `db5ec7a8`, boundary audit).
 
 ---
@@ -22,7 +24,7 @@
 
 ## 2 · Session 1 regression surface — Session 3's disposition view (classification only, nothing fixed)
 
-Surface per Session 1 §10 (corrected): **19 newly non-passing rows; attributable to EM-VOT-002 ≤ 10.** Classified per the commissioned A–F taxonomy, consuming Session 1's row-level evidence:
+Surface per Session 1 §10 (corrected): **19 newly non-passing rows; attributable to EM-VOT-002 ≤ 10.** **Terminology rule (PO): Session 3 may classify the implementation consequences; Session 1 remains the source of truth for regression MEASUREMENT.** The table below is Session 3's disposition view over Session 1's numbers — it does not re-measure anything:
 
 | Class | Rows | Session 3 disposition view |
 |---|---:|---|
@@ -45,6 +47,8 @@ Surface per Session 1 §10 (corrected): **19 newly non-passing rows; attributabl
 ## 4 · Election-Only readiness matrix
 
 GREEN = implemented + independently verified · YELLOW = implemented, verification incomplete · RED = known failure/blocker · BLUE = governance/architecture decision required · GREY = outside scope.
+
+**Reading rule (PO):** this matrix answers *"can Election-Only safely proceed through this capability?"* — programme-level readiness. It does **NOT** answer *"which bounded context owns this capability?"*; ownership statements live only in Session 2's accepted ownership analysis, and no row here is a DDD bounded-context conclusion.
 
 | # | Capability | Status | Basis (evidence · authority · open item) |
 |---|---|---|---|
@@ -101,7 +105,7 @@ Per Session 2's accepted ownership analysis: the **Election context owns voting-
 
 > **Gate result: NO item satisfies all six conditions unambiguously today → per the commission, Session 3 STOPS and does not choose a ticket.**
 >
-> The single decision that unblocks the most is **EM-OPEN-021** (urgent, operational stake). The cheapest implementation unblock is a one-line PO confirmation on **Slice 2** (does the conditional EP-01 grant stand, with the adopted admission workflow as its rule basis?). The largest readiness lever is the **AD-2 + BR-1.12** pair, which together unblock capabilities 1, 7 and 16.
+> **EM-OPEN-021 is the most immediate lifecycle-SAFETY decision** (a live election in the anomalous shape is unmanageable for its window). **AD-2 + BR-1.12 is the largest ARCHITECTURAL/READINESS dependency** (together they gate capabilities 1, 7 and 16 — the Election-Only eligibility/admission model itself). These are different kinds of urgency and neither is ranked above the other here. The cheapest implementation unblock is a one-line PO confirmation on **Slice 2** (does the conditional EP-01 grant stand, with the adopted admission workflow as its rule basis?).
 
 ---
 
