@@ -186,6 +186,23 @@ No generic Eligibility bounded context is created under any disposition.
 
 **Boundary of this reconciliation:** business rule and DDD ownership clarified — **implementation authorization untouched**: no `app/` or `tests/` edit, no Constitution change, no policy, no cache-key or `BelongsToTenant` change, no `User.php` fix, no repair scope selected, no tickets created, Session 3 not reopened.
 
+### 5d · ACCEPTANCE RECORD (2026-08-13 — two performative PO rulings, verbatim)
+
+> **A —** *"I accept sentences (i) and (ii) as written."*
+> **B —** *"Adopted: an election may enter Voting Active only when it has at least one approved candidate and at least one admitted voter."*
+
+**Consequences registered (and nothing more):**
+
+| Act | Effect |
+|---|---|
+| **A** | **Decision A is CLOSED (`AD-2` resolved):** voting-time voter entitlement is **owned by the Election bounded context**; ambient organisation/tenant context is a **forbidden dependency** for its resolution; ADR-002's "Eligibility Context" is **clarified to admission-time evaluation** — a dated status annotation now sits on `docs/adr/ADR-002-verified-eligible-authorized.md` (decision text untouched) |
+| **B** | Recorded in the Manifesto as **`EM-VOT-003`** (§4a + traceability), ID assigned by the established process (EM-VOT-002 precedent). Voter half new; **`ElectionConstitution` identified as expression home, both paths**; `EM-OPEN-021` and the zero-voter analog untouched |
+| **Neither** | **creates any implementation authorization.** Grants remain NONE; `PBDIGIT-65`/`69` remain NOT AUTHORIZED; Session 3 remains STOPPED |
+
+**Register after A + B:** the §5c three-dimension table rows update to — *Voting-time entitlement:* business **decided** · architecture **ACCEPTED (Election BC, 2026-08-13)** · authorization **none**. *Election-start voter half:* business **decided** · architecture **adopted as `EM-VOT-003`, home identified** · authorization **none**.
+
+**Remaining before any grant:** **Decision B** (65/69 repair scope — next per PO sequencing) · **`EM-OPEN-021`** (separate lifecycle-recovery decision) · then an explicit bounded implementation grant.
+
 ## 6 · Decision B package — 65/69 repair scope *(OPEN DECISION; follows A; neither scope chosen)*
 
 **Why B follows A:** implementation location and ownership must be known before a repair boundary can be legitimate — otherwise the repair is a guess wearing a grant.

@@ -239,3 +239,14 @@ Decision formalizes the implicit separation.
 
 **Last Updated:** May 30, 2026  
 **Related Files:** docs/architecture/trust-domain/UBIQUITOUS_LANGUAGE.md, TRUST_CHAIN.md
+
+---
+
+## Clarification (2026-08-13 — PO/ARB ruling; status annotation only, decision text above unchanged)
+
+The PO accepted the following clarification verbatim (*"I accept sentences (i) and (ii) as written"*, Decision A / AD-2 closure; recorded in `docs/publicdigit/reviews/2026-08-13-election-only-governance-decision-package.md` §5d):
+
+> **(i)** Voting-time voter entitlement is owned by the Election context; its resolution derives organisational scope from the election itself; ambient organisation context is a forbidden dependency for this resolution.
+> **(ii)** This ADR's "Eligibility Context" responsibility is clarified to govern **admission-time (process-requirements) evaluation**; the voting-time entitlement decision of clause (i) is **Election-context-owned** and is not an "Eligible" evaluation in this ADR's sense.
+
+This annotation resolves the ambiguity between this ADR's process-scoped "Eligible" (whose examples — membership status, fees, timing — describe requirements evaluation) and the later-adopted durable election entitlement model (Model B / `PBDIGIT-68`, `EM-ENT-001`…`007`, `EM-GOV-001`). It authorizes no implementation.

@@ -128,6 +128,10 @@ TEST                          zero approved candidates → open_voting rejected 
 
 | **EM-VOT-002** | **An election must have at least one approved candidate before voting may be opened.** *(`open_voting` must not succeed with zero approved candidates.)* | ADOPTED *(ARB/PO ruling **`SD-14` = YES**, 2026-08-13)* |
 
+| **EM-VOT-003** | **An election may enter Voting Active only when it has at least one approved candidate and at least one admitted voter.** | ADOPTED *(PO ruling, verbatim, **2026-08-13**)* |
+
+**Note on `EM-VOT-003`:** the candidate half restates `EM-VOT-002`'s requirement at the same boundary (same rule at two granularities, not duplication — see §9); the **voter half is new**: no earlier adopted rule required ≥ 1 admitted voter at voting start. Evidence at adoption: `has_voters` exists as a `complete_administration` precondition only (an upstream gate, not a boundary invariant), and **neither path into `voting_active` checks voters** (guard preconditions and computed derivation both candidate-and-window-only). Per the `EM-VOT-002` precedent, **`ElectionConstitution` is the identified authoritative expression home**, with the both-paths lesson applying symmetrically. **Implementation is NOT authorised by this adoption** — the ruling closes the business question only. This rule does **not** resolve `EM-OPEN-021`, and the zero-voter analog question remains open with no semantics chosen.
+
 **Note on canonical overlap:** the Constitution **partially** expresses `EM-VOT-001`, as the `has_approved_candidates` precondition on the nomination transition; the precondition itself remains canonical in the Constitution and is not restated. **`SD-14` = YES (ARB/PO, 2026-08-13) resolved the boundary question:** *"the next phase"* **includes the voting phase**, so the requirement binds at `open_voting` as well — adopted as **`EM-VOT-002`**, deliberately phrased with the Constitution's own precise vocabulary (*"at least one **approved** candidate"*) so business rule and implementation vocabulary stay aligned. **`ElectionConstitution` is the authoritative implementation home for this precondition. Implementation is NOT yet authorised** — the ruling closes the business question only; implementation authorization is a separate act.
 
 ## 5 · Adopted sequencing
@@ -194,6 +198,7 @@ TEST                          zero approved candidates → open_voting rejected 
 | EM-VOC-003 | admission-gate adopted rules 1, 2, 5 | 2026-08-12 | global | ADOPTED |
 | EM-VOT-001 | `PBDIGIT-64` — *"Without a candidate an election must not go into the next phase"*, stated by the Product Owner | **2026-08-08** | election lifecycle | ADOPTED |
 | EM-VOT-002 | **`SD-14` = YES** ruling — *"next phase"* includes voting; vocabulary aligned to the Constitution's `has_approved_candidates` | **2026-08-13** | `open_voting` boundary | ADOPTED |
+| EM-VOT-003 | PO ruling, verbatim: *"Adopted: an election may enter Voting Active only when it has at least one approved candidate and at least one admitted voter"* — recorded per the decision package §5b/§5c determination (voter half new; expression home identified; implementation not authorised) | **2026-08-13** | `voting_active` boundary, both paths | ADOPTED |
 | EM-SEQ-001 | Election-Only-first sequencing decision | 2026-08-12 | programme | ADOPTED |
 | EM-SEQ-002 | Election-Only-first sequencing decision | 2026-08-12 | programme | ADOPTED |
 | EM-FM-001…005 | hierarchy clauses 1, 2, 3, 4, 7 | 2026-08-12 | Full Membership | ADOPTED · DEFERRED |
