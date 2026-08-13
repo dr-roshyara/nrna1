@@ -49,7 +49,7 @@ BUSINESS / ARCHITECTURE DECISION → bounded implementation scope → explicit i
 | # | Decision | Kind | Label |
 |---|---|---|---|
 | 1 | `EM-OPEN-021` — lifecycle meaning of the anomalous configuration (§4) | business/domain | OPEN DECISION — **evidence sufficient to decide** |
-| 2 | **Decision A** — voting-time eligibility ownership (§5) | architecture | OPEN DECISION |
+| 2 | **Decision A** — voting-time entitlement ownership (§5, §5a) | architecture | **PO BUSINESS RULE ESTABLISHED (2026-08-13) · ownership SUPPORTED/ASSESSED (Election BC) · formal acceptance OUTSTANDING (AD-2)** |
 | 3 | **Decision B** — 65/69 repair scope (§6) | architecture/governance | OPEN DECISION — sequenced after A |
 | 4 | `BR-1.12` — admission state | business | OPEN DECISION |
 | 5 | `59` — which clock is constitutional | business | OPEN DECISION *(presented with 67; decided as two)* |
@@ -97,6 +97,47 @@ Facts proven: §2. The current `InvalidElectionStateException` is **MEASURED EVI
 > *"Voting-time voter eligibility is owned by the Election context; its resolution derives organisational scope from the election itself; ambient organisation context is a forbidden dependency for this resolution."* — **adopt / adopt-with-changes / reject.**
 
 **A business concept is not owned by a bounded context because** a class lives there, a policy is instantiated there, a DI binding points there, a folder is named after it, or a legacy implementation is the current runtime path. **Deciding A authorizes no implementation.**
+
+### 5a · Decision A reconciliation (dated addendum, 2026-08-13 — PO business rule received)
+
+**1 · PO business rule (verbatim):** *"Once a person is a voter for an election, that person can vote for that election within the voting period unless it is suspended before the voting starts."* — **PO BUSINESS RULE ESTABLISHED.** Suspension clause read exactly as given: *suspension **before voting starts** prevents voting.* **Not broadened** — what suspension *during* voting means is NOT ruled here and is not invented here.
+
+**2 · Precise business invariant:** an admitted voter of election E belongs to E's voting population and may exercise the vote during E's voting period, subject to E's constitutional/lifecycle rules; **ambient organisation/tenant context must not revoke that entitlement.** Every fact the invariant references — membership-in-E, E's voting period, E's suspension state — is Election-context data; no organisation/tenant term appears in the rule.
+
+**3 · Admission ≠ voting-time entitlement (preserved):** *"May this person become a voter for this election?"* (admission — Contexts/Elections chain, `DB::table()`, measured unaffected by P6) vs *"may this already-admitted voter exercise the vote in THIS election now?"* (**this decision; where 65/69 live**). Not merged with Full Membership, organisation membership, voter-source strategy, or ambient tenant resolution. **No generic Eligibility BC is created.**
+
+**4 · P6 evidence (MEASURED, cited, not re-run):** both defects reproduced on the voting-time predicate; ambient tenant context is the confirmed mechanism; tenant-blind cache replays the wrong denial; correct context + cleared cache restores the correct answer; admission-time unimplicated; HTTP replay not re-run; testing DB, throwaway rows, no changes. **The measured behaviour directly violates the now-established PO rule** — the entitlement's answer today depends on which page the voter visited last. *(Evidence of defect against the rule — still not ownership authority, and no repair location is inferred from `User.php` or `BelongsToTenant`.)*
+
+**5 · Proposed bounded-context owner:** **the Election bounded context** — per the standing Decision A wording (unchanged): *"Voting-time voter eligibility is owned by the Election context; its resolution derives organisational scope from the election itself; ambient organisation context is a forbidden dependency for this resolution."*
+
+**6 · Accepted architecture authority, assessed (accepted-first; PROPOSED artifacts not used as authority):**
+
+| Accepted evidence | Bearing |
+|---|---|
+| **PO rule above** + Model B / `PBDIGIT-68` (durable election entitlement) + `EM-GOV-001` (*the election governs exercisability*) | the invariant is stated wholly in Election ubiquitous language — SUPPORTS |
+| **`ADR_20260807_1500` (ACCEPTED)** — Election lifecycle/state SSOT = the Election engine/façade | the invariant's *"subject to constitutional/lifecycle rules"* clause is already owned by the Election context by accepted decision — SUPPORTS |
+| **ADR-001 (Accepted)** — constitutional capability sovereignty (`ElectionConstitution` home) | voting period and suspension are constitutional facts of E — SUPPORTS |
+| **`ADR-002-verified-eligible-authorized` (Accepted)** — assigns "Eligible" to an "Eligibility Context" | **read against its own definition**: its "Eligible" = *"meets requirements for a specific process (membership status, fees, timing)"* — an **admission-style evaluation**. Under the PO rule, voting-time entitlement is **not** a fresh requirements evaluation: admission already happened; what remains is honoring a durable election-scoped entitlement subject to E's lifecycle. **Read this way, ADR-002 does not compete** — but that reading is Session 2's assessment, and the "Eligibility Context" phrase deserves explicit disposition in the ruling. *(The named context never materialised beyond a 0-caller policy — measured.)* |
+| Dependency direction (measured): `Contexts/Elections → Domain/Election`, one-way; 1 election : 1 organisation at schema level; three production sites derive context from the election | SUPPORTS — the election can determine its own organisational scope |
+
+**7 · Remaining uncertainty, named — certainty not manufactured:** **no accepted ADR names an owner for voting-time entitlement** (`AD-2` never ratified), and ADR-002's "Eligibility Context" phrase, while assessed non-competing, has not been formally disposed. **The missing authority is one explicit ARB/PO acceptance of the Decision A wording, including that disposition.**
+
+**8 · Decision A status:** `PO BUSINESS RULE ESTABLISHED · ownership hypothesis SUPPORTED — assessed as ELECTION BOUNDED-CONTEXT RESPONSIBILITY · formal ARB/PO acceptance of the ownership wording OUTSTANDING (AD-2)`. The business rule and the architecture ownership decision are **not conflated**: the first is decided; the second is assessed and awaits its signature.
+
+**9 · Separation from Decision B (explicit):** Decision A settles *ownership*; **Decision B (instances vs `BelongsToTenant`-family audit) remains OPEN** unless separately ruled — P6 proves two instances, not the blast radius. Nothing here selects a repair scope or location.
+
+**10 · NO implementation grant exists.** This reconciliation authorizes nothing. Sequence: PO business rule ✅ → ownership acceptance (AD-2 signature) ⬜ → Decision B ⬜ → explicit grant ⬜ → Session 3 six-question reconciliation → smallest TDD slice → PO approval of the implementation boundary → implementation. **Session 3 remains STOPPED.**
+
+### 5b · Election-start readiness — a SEPARATE invariant (recorded, not conflated with Decision A)
+
+**PO rule:** *"To start voting, there must be at least 1 approved candidate AND at least 1 eligible/admitted voter."* — **PO BUSINESS RULE ESTABLISHED.** Two categories kept apart: **election readiness** (may THIS election enter Voting Active? — `EM-VOT-002` belongs here) vs **voter entitlement** (may THIS admitted voter vote? — 65/69 belong here). They interact; they are not the same decision.
+
+| Half of the rule | State |
+|---|---|
+| ≥ 1 approved candidate | `EM-VOT-002` — ADOPTED · IMPLEMENTED · VERIFIED · CLOSED |
+| ≥ 1 eligible/admitted voter **at voting start** | **PO rule established · NOT IMPLEMENTED at the voting boundary.** `has_voters` already exists as constitutional vocabulary — but as a `complete_administration` precondition (an earlier gate). An upstream guard ≠ a boundary invariant: the EM-VOT-002 lesson (the computed path bypasses guarded transitions) applies symmetrically. **Recording as a Manifesto rule (stable `EM-*` ID) + Constitution expression + any implementation each await their own steps: PO one-line adoption confirmation → expression-home decision → explicit grant. Nothing authorized here.** |
+
+**`EM-OPEN-021` stays separate and unresolved:** the readiness rule is *evidence relevant to* lifecycle readiness; it does **not** answer the recovery semantics of *nomination-completed + window-open + zero candidates* — and its voter-half raises the analogous zero-voter question, whose semantics are **also not invented here**. No HOLD, cancellation, postponement, fallback, new state, or extension is proposed.
 
 ## 6 · Decision B package — 65/69 repair scope *(OPEN DECISION; follows A; neither scope chosen)*
 
