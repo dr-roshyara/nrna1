@@ -62,7 +62,7 @@ Classes: **A** accepted authority already exists · **B** evidence/observation �
 | 1 | **Decision A** — voting-time eligibility ownership |
 | 2 | **Decision B** — 65/69 repair scope (instances vs pattern) |
 | 3 | **`BR-1.12`** — admission state |
-| 4 | **`EM-OPEN-021`** — urgent (PO's marking); evidence now includes Session 1 P3+P4: HTTP 500 **proven**, state **production-reachable**, `close_voting` **disproven** as recovery, re-approval obstructed by the auto-rejection data destruction; the new-candidacy exit was **deliberately fenced out** (`30d2c528`) — *unmeasurable until this decision supplies an expected outcome*. **Nothing further gates the decision.** |
+| 4 | **`EM-OPEN-021`** — urgent (PO's marking); evidence now includes Session 1 P3+P4: HTTP 500 **proven**, state **production-reachable**, `close_voting` **disproven** as recovery, re-approval obstructed by the auto-rejection data destruction; the new-candidacy exit was **deliberately fenced out** (`30d2c528`) — *unmeasurable until this decision supplies an expected outcome*. **Nothing further gates the decision.** *(Correction, PO 2026-08-13: read precisely — the evidence is sufficient to MAKE the business decision; it does not mean every technical question around the scenario is exhausted. Targeted verification of the CHOSEN semantics may still follow the ruling. You cannot verify an expected business behaviour before the business has defined it.)* |
 | 5 | **`EM-OPEN-019`** — nomination threshold 30 vs 40 (implemented behaviour observably 40) |
 | 6 | **`59`** — which clock is constitutional |
 | 7 | **`67`** — what an entered time means (presented with 59, decided as two) |
