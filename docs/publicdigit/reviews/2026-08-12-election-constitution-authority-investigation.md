@@ -1,7 +1,7 @@
 # `ElectionConstitution` authority investigation — findings and ARB disposition
 
 **Type:** Governance / authority investigation · **Date:** 2026-08-12 · **Programme:** IERVP (Session 2)
-**Status:** **INVESTIGATION ACCEPTED (ARB). Findings accepted. No implementation authorised.**
+**Status:** ✅ **ARB-ACCEPTED (Product Owner, 2026-08-12 — §5a, verbatim). Findings accepted. NO implementation authorised.** *"Accept in principle" on the candidate requirement settled its HOME only — the gate is `SD-14`, and implementation needs its own authorisation even after it (§5a.1).*
 **⛔ No production code, test, schema or migration change. `ElectionConstitution` NOT modified. The Manifesto NOT renamed, deleted or rewritten. `EM-VOT-001` NOT moved. No settled business decision reopened. Session 1's Master Matrix not read, classified, consumed or modified.**
 
 > **Why this artifact exists:** the findings below were first delivered only in conversation. **A finding that exists only in chat is the failure mode this programme exists to prevent** — this document is the durable record, together with the ARB disposition the Product Owner has now given.
@@ -80,6 +80,48 @@ ADR / PO decision  ──►  authoritative business rule  ──►  ElectionCo
 | **Name** | 🟡 **"Manifesto" risks reading as a second Constitution** — renaming is on the table. **Not renamed** *(and not deleted, not rewritten)* per instruction |
 | `EM-VOT-001` | **Stays where it is.** Moving it into the Constitution is *accepted in principle* — **blocked on `SD-14`** |
 | Second constitutional registry | ❌ **REJECTED — none was created, and none will be.** The Manifesto's §7 *references* the Constitution rather than duplicating it, which is what keeps it from being one |
+
+## 5a · ✅ ARB ACCEPTANCE — recorded verbatim (Product Owner, 2026-08-12)
+
+> **ACCEPT — Investigation and findings accepted.**
+>
+> `ElectionConstitution` remains the canonical implementation home for constitutional election workflow rules, as established by ADR-001.
+>
+> **This acceptance does NOT authorize implementation changes.**
+>
+> Do not create a second constitutional registry.
+>
+> Do not move ElectionMembership, entitlement, suspension, credential or participation rules into `ElectionConstitution`.
+>
+> Election-Only implementation may proceed only for already-authorized slices.
+>
+> **`SD-14` remains unresolved and must not be inferred.**
+>
+> Full Membership implementation remains deferred.
+>
+> **Any extension of `ElectionConstitution` requires an adopted business rule and strict TDD.**
+
+### 5a.1 ⚠️ The clarification that must not be lost
+
+**The ARB explicitly corrected how one row of §6 is to be read:**
+
+> ***"Candidate requirement belongs in the Constitution — Accept in principle"* does NOT mean "Session 3 is authorised to add `has_approved_candidates` now."**
+
+**The binding reading:**
+
+```
+Candidate requirement
+        ↓
+Business decision SD-14        ←  the gate
+        ↓
+IF the Product Owner says YES
+        ↓
+ElectionConstitution is the correct implementation HOME   ←  what "in principle" settled
+        ↓
+Session 3 may implement — strict TDD                       ←  a separate authorisation
+```
+
+**"Accept in principle" settled the HOME. It authorised nothing.** The gate is `SD-14` (`EM-OPEN-020`), and implementation needs its own authorisation even after that gate opens.
 
 ## 6 · ARB disposition table — verbatim
 
