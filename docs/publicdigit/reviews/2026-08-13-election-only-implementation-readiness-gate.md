@@ -105,7 +105,7 @@ Per Session 2's accepted ownership analysis: the **Election context owns voting-
 
 > **Gate result: NO item satisfies all six conditions unambiguously today → per the commission, Session 3 STOPS and does not choose a ticket.**
 >
-> **EM-OPEN-021 is the most immediate lifecycle-SAFETY decision** (a live election in the anomalous shape is unmanageable for its window). **AD-2 + BR-1.12 is the largest ARCHITECTURAL/READINESS dependency** (together they gate capabilities 1, 7 and 16 — the Election-Only eligibility/admission model itself). These are different kinds of urgency and neither is ranked above the other here. The cheapest implementation unblock is a one-line PO confirmation on **Slice 2** (does the conditional EP-01 grant stand, with the adopted admission workflow as its rule basis?).
+> **EM-OPEN-021 is the most immediate lifecycle-SAFETY decision** (a live election in the anomalous shape is unmanageable for its window). **AD-2 + BR-1.12 is the largest ARCHITECTURAL/READINESS dependency** (together they gate capabilities 1, 7 and 16 — the Election-Only eligibility/admission model itself). These are different kinds of urgency and neither is ranked above the other here. **Slice 2's status is recorded as a fact, not a recommendation (PO, 2026-08-13):** its EP-01 grant is conditional and its rule basis is an interpretation this document may not settle; whether and when to confirm it is entirely the PO's, and this gate does not propose a decision path.
 
 ---
 
