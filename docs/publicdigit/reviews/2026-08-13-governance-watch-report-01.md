@@ -50,6 +50,9 @@
 **Recommendation:** **none** — the evidence supports neither reading over the other; the runtime observation is behaviour, not intent. **Phrased to avoid the `SD-14` polarity trap: answer by choosing A or B's rule text, not YES/NO.**
 **PO/ARB DECISION REQUIRED.**
 
+> ### ⚠️ SUPERSEDED IN PART (2026-08-13, current-state reconciliation)
+> **My "no authority anywhere states a committee-members existence rule" was incomplete — I had not searched commit history.** **Commit `086cb3f5` (2026-05-22)** shows the precondition was **deliberately changed FROM `has_committee_members` TO `has_chief`**, documented as *"only one active chief officer is now required"* and explicitly tied to *"enabling election-only mode"* — the same deliberate-decision pattern as the FK drop, and the same search omission on my part. That commit also claims it updated the unit test, yet **the current test still asserts `has_committee_members`**. **Evidence balance now favours reading B (chief suffices), with a documented deliberate decision behind it — PO ratification still required.** See the current-state report §18.1.
+
 ### 3.2 `BR-1.12` — admission state (`active` vs `invited` → approval)
 
 **Already decision-ready** — full package with consequences per option: admission gate §0.6 and the final-closure §3 *(officer workload · risk posture · effect on the existing estate · voter experience; evidence: production-only for `active` vs schema+UI+tests+docs for `invited`)*. **Unchanged; re-presented, not re-investigated. Blocks the admission slice.**
