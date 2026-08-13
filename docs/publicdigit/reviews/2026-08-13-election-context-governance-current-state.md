@@ -196,3 +196,145 @@ NOW ──► Session 1 independently verifies f2c2cc4e (cap 7)          [only v
 > **Answer in the required terms: the layers are ALIGNED for voting activation (pending independent verification), MISALIGNED for eligibility resolution (implementation contradicts adopted rules), and UNDECIDED for admission state and time semantics (authority absent, implementation waiting). That — not test counts — is the current definition of Election-Only readiness.**
 
 **Traceability:** `f2c2cc4e` *(full message quoted in §8)* · `086cb3f5` (2026-05-22, `SD-15` history) · `9ee15cc6` (§14 flag) · `tests/Unit/Application/Election/ConstitutionalTransitionGuardTest.php:190-197` *(assertion unaltered — pre-registered check PASS)* · the ticket authority matrix · Watch reports 01/02 · the G-1 review · the `65`/`69`/`62`/`59`/`60`/`67` tickets · Manifesto §§4a, 9 · measured this pass: no membership concept in the `f2c2cc4e` delta.
+
+
+---
+
+# GOVERNANCE WATCH — POST `EM-VOT-002` INDEPENDENT VERIFICATION *(dated update, 2026-08-13 — history above unchanged)*
+
+**⛔ Analysis only. Nothing implemented, repaired, resolved or authorized. `EM-OPEN-021` remains open as a hard boundary.**
+
+## U1 · Corrected `EM-VOT-002` status
+
+| | |
+|---|---|
+| **Business rule** | **ADOPTED** |
+| **Implementation** | **COMPLETED WITHIN AUTHORIZATION** (`f2c2cc4e`) |
+| **Independent verification** | ✅ **VERIFIED ON BOTH PATHS by Session 1** — command (`open_voting`) and computed lifecycle, same approved-candidacy predicate |
+| **Remaining** | **`EM-OPEN-021`** — unresolved lifecycle-semantics question. **`EM-VOT-002` is NOT reopened or weakened by it** |
+
+**§1/§16's "pending verification" is superseded; the earlier "critical path" sequencing is WITHDRAWN as over-compressed (U3).**
+
+## U2 · `EM-VOT-002` ≠ `EM-OPEN-021` — with the new observable behaviour
+
+| | `EM-VOT-002` | `EM-OPEN-021` |
+|---|---|---|
+| Question | *Can an election become `VotingActive` without an approved candidate?* | *What is the legitimate lifecycle meaning of an election whose window is open but which cannot satisfy the invariant?* |
+| Status | **ADOPTED · IMPLEMENTED · VERIFIED — NO** | **NOT YET DECIDED** |
+
+**New evidence (Session 1):** window open + zero approved candidates → `VotingActive` correctly refused → derivation falls through → **`InvalidElectionStateException`**.
+
+> **That is CURRENT TECHNICAL BEHAVIOUR, not an adopted business rule.** `EM-OPEN-021` upgrades from *"we don't know what happens"* to *"we know what the implementation does; we do not know whether that is the intended domain semantics."* **The exception must not become the de facto answer** — no fallback state (`setup_nomination`, holding state, cancellation, special `close_voting`, new lifecycle state) is recommended or authorized. ⚠️ **Session 1's "may be unmanageable — unable even to close voting" is a POTENTIAL LIFECYCLE DEAD-END, untraced — measurement assigned to Session 1, not called a defect.**
+
+## U3 · Critical path UNBUNDLED — seven independent concerns
+
+*(The previous "verify → authorize 65+69 → decide BR-1.12 → decide 59+67" sequencing bundled distinct concerns; each now stands alone.)*
+
+| | Business question | Authority | Architectural owner | EO-relevant? | Implementation | Evidence | Open decision | Impl. authorization required? |
+|---|---|---|---|---|---|---|---|---|
+| **A · EM-VOT-002** | candidate before voting | adopted + grant | Constitution (expression) + lifecycle engine (computed) | YES — core | ✅ complete | RED→GREEN→regression + independent verification | none | ✅ **was granted; consumed** |
+| **B · EM-OPEN-021** | lifecycle meaning of window-open/zero-candidate | **none** | lifecycle semantics — **owner is the PO decision itself** | YES — user-visible | exception by fall-through | Session 1 observation | ✅ **the lifecycle-state decision** | ⛔ none until decided |
+| **C · 65** | must a valid entitlement be recognised regardless of ambient context? | adopted entitlement rules (`EM-ENT-001`, `EM-EO-*`) | **contested — see U4 Q4** | YES — measured on the EO runtime path | defect present | controlled A/B | repair scope (U4) | ⛔ **NOT YET — evidence package only** |
+| **D · 69** | may a cached eligibility answer cross tenant/context boundaries? | same rules; options A/B/C on record | same as C | YES | defect present | measured both directions | design choice (`69 D-1`) | ⛔ **NOT YET** |
+| **E · BR-1.12** | admission state: `active` vs `invited`→approval | **BUSINESS RULE NOT SPECIFIED** | admission workflow | YES — blocks admission slice | production=`active`; 4 layers expect `invited` | full package on record | ✅ the decision | after the decision |
+| **F · 59** | which timestamp set is constitutional? | **DECISION REQUIRED** | election lifecycle (clock authority) | YES — the engine + `EM-VOT-002` gate read it | two clock sets disagree 4/4 | measured | ✅ timestamp authority | after |
+| **G · 67** | what does an officer-entered time MEAN? | `D-1`…`D-4` reserved | scheduling input boundary | YES — stored instants wrong 60–120 min | defect present | measured (Carbon executed) | ✅ `D-1`…`D-4` | after |
+
+**F and G remain SEPARATE decisions** — F is *lifecycle-boundary clock authority*, G is *input interpretation* (with display split out as `EM-OPEN-018`). They **interact** (deciding one constrains the other) and should be *presented together*, **decided as themselves** — the earlier "one set" phrasing is corrected to *"one presentation, two decisions."*
+
+## U4 · `65`+`69` — evidence assessment (NOT an authorization)
+
+**The eleven questions:**
+
+| # | Question | Answer |
+|---|---|---|
+| 1 | Exact adopted rule `65` violates | `EM-ENT-001` *(entitlement is the election-specific record)* + `EM-EO-001`…`003` — nothing in the adopted set makes recognition depend on ambient browser/tenant context |
+| 2 | Exact adopted rule `69` violates | the same, in cached form — plus it defeats *any* future fix of `65` for 300s windows |
+| 3 | Business capability | **voter-eligibility resolution** (readiness cap 8) |
+| 4 | **Bounded-context owner** | 🟡 **UNRESOLVED — deliberately.** The live gate is `app/Models/User::isVoterInElection()`; candidate owners exist in `app/Contexts/Elections` (stub policies) and `app/Contexts/Membership` (`VotingEligibilityPolicy`, 0 callers); `AD-2` (authoritative engine) is an open ARB question. **Folder structure is not accepted as authority (U8)** |
+| 5 | Required by Election-Only? | **YES** — it is the ballot gate on every real slug route |
+| 6 | On the EO runtime path? | **YES — measured at runtime** (G-1: the gate refused/admitted real requests) |
+| 7 | Defect class | **(d) infrastructure/context-propagation defect** *(the `BelongsToTenant` platform fallback + a tenant-blind cache key)* **surfacing as (b) a shared eligibility defect.** NOT (a) EO-specific *(the mechanism is mode-blind)*, NOT (c) Membership *(no `Member` concept involved)*, NOT (e) *(the rules are clear; the mechanism disobeys them)* |
+| 8 | Would fixing require changing Membership concepts? | **NO** — on current evidence, the fix is in resolution/caching, not in any membership model |
+| 9 | Would it change `ElectionConstitution`? | **NO** |
+| 10 | New aggregate/entity/repository? | **Not necessarily** — options range from key-scoping to context-free resolution; **the choice is design, deferred** |
+| 11 | Would it alter Full Membership behaviour? | ⚠️ **The mechanism is shared, so a fix touches both modes' resolution path.** Under `EM-ENT-005` (one entitlement concept) that is *consistent*, not contamination — **but the authorization must say so explicitly** |
+| — | **Local defect vs systemic pattern** | **SYSTEMIC PATTERN, scope unbounded**: 3 confirmed instances (`62` fixed · `65` · `69`); other `BelongsToTenant` consumers **unaudited**. **Proposed scope definition required BEFORE authorization: (i) fix the two eligibility instances only, or (ii) audit-then-fix the pattern.** Neither selected |
+
+> **Authorization status: ⛔ NOT GRANTED, NOT REQUESTED.** Package-completeness blockers: the **owner question (Q4)** — which the architecture archaeology must settle — and the **scope question (i vs ii)**. Both are named; neither is decided here.
+
+## U5 · `BR-1.12`
+
+**KNOWN:** production admission writes `active` (import explicit, assignment by default); schema, UI, tests and documentation all expect `invited`→approval; no production writer of `invited`; the Constitution and `ADR-002` are silent; clause 10's "directly" does not settle it. **UNKNOWN:** which workflow the business intends; what the approval gate's risk/workload trade is worth. **DECISION FOR THE PO:** Option A *(immediately `ACTIVE`)* vs Option B *(`INVITED`→approval→`ACTIVE`)* — consequences tabled in the admission gate §0.6. **Not inferred from anything; not encoded.**
+
+## U6 · `59` + `67`
+
+**What each actually concerns:** `59` = **lifecycle-boundary clock authority** *(which stored set governs)* · `67` = **scheduling-input interpretation** *(what the officer's entry means; storage is currently mislabelled UTC)* · display = **`EM-OPEN-018`**, separate · fallback-on-detection-failure = part of `EM-OPEN-018`. **EO-required?** `59`: **YES-conditional** — the engine and the now-verified `EM-VOT-002` gate read this clock; with 4/4 disagreement its authority is undecided, so window meaning is undecided. `67`: **YES-conditional** — stored instants measurably wrong. **Neither blocks admission or activation *mechanics*; both block trustworthy window semantics.** Presented together, decided as two.
+
+## U7 · Election-Only readiness — rebuilt
+
+| Capability | Business rule | Owner (bounded context) | Current implementation | EO-required? | Status | Decision req.? | Impl. authorized? |
+|---|---|---|---|---|---|---|---|
+| Election creation | approval workflow (Constitution) | Election | works (runtime-verified) | **REQUIRED** | OK | no | n/a |
+| Admission / approval | `EM-EO-001`…`003`; state = `BR-1.12` | Election | works; state semantics undecided | **REQUIRED** | 🟡 decision-gated | ✅ `BR-1.12` | ⛔ no |
+| Nomination | Constitution (`apply_candidacy`) | Election | works (runtime-verified) | **REQUIRED** | OK | no | n/a |
+| Candidate approval | Constitution + `has_approved_candidates` | Election | works | **REQUIRED** | OK | no | n/a |
+| Lifecycle | Constitution + engine | Election | works; fall-through semantics open | **REQUIRED** | 🟡 `EM-OPEN-021` | ✅ lifecycle-state | ⛔ no |
+| Voting activation | **`EM-VOT-002`** | Election | ✅ both paths | **REQUIRED** | ✅ **VERIFIED** | no | consumed |
+| Voter assignment | admission rules | Election | works | **REQUIRED** | OK *(state per `BR-1.12`)* | via `BR-1.12` | ⛔ no |
+| Voter eligibility | `EM-ENT-001`+ | 🟡 **UNRESOLVED owner** (U4 Q4) | 🔴 context-corrupted (`65`+`69`) | **REQUIRED** | 🔴 misaligned | scope (i)/(ii) + `AD-2` | ⛔ **no** |
+| Voter verification | credential chain (≠ entitlement) | credential/security | works | **REQUIRED** | OK *(coherence `Q-E1` deferred)* | no *(deferred)* | ⛔ no |
+| Vote casting | one-vote via codes; `ADR-T11` | Voting | works (`38` verified) | **REQUIRED** | OK | no | n/a |
+| Suspension (voter) | `EM-GOV-002`/`003`; `BR-1.13`/`Q3` open | Election governance | works incidentally | **SHARED** *(mode-blind)* — not first-delivery-gating unless PO says | 🟡 | ✅ `BR-1.13`+`Q3` later | ⛔ no |
+| Suspension (election) | Constitution `suspend`/`resume` | Election | ✅ works, tested | **REQUIRED** | OK | no | n/a |
+| Counting | Constitution (`close_voting`→counting) | Election | implemented | **REQUIRED** | verification = Session 1 | no | n/a |
+| Results | publication immutable · visibility hide/show (PO 2026-08-06) | Election | partial; `V-1` defect (`60`) | **REQUIRED** *(publication)* / visibility **SHARED** | 🟡 | ✅ `60 D-2` + `EM-OPEN-013` confirm | ⛔ no |
+| Audit | `BR-1.5`/`1.6` open (defaultable) | Election governance | governance acts unaudited | **SHARED** | 🟡 | defaultable | ⛔ no |
+| Entitlement | 27 adopted rules | Election | record exists; expression gaps (`IG-*`) | **REQUIRED** *(record + admission)*; deeper expression via `Q3` | 🟡 | `Q3` later | ⛔ no |
+| Membership | `EM-VOC-001` (Member aggregate) | Organisation | dormant (0 rows) | **OUTSIDE ELECTION-ONLY** | frozen | no | ⛔ frozen |
+| Credentials | possession ≠ entitlement (adopted) | security | works | **REQUIRED** *(possession)*; control (`Q-E1`) **SHARED** | OK / 🟡 | `Q-E1` later | ⛔ no |
+
+## U8 · Architectural authority — **UNRESOLVED, deliberately**
+
+Four parallel roots exist: `app/Models/` *(holds the live eligibility gate)* · `app/Domain/Election/` *(Constitution, enums, security VOs)* · `app/Application/Election/` *(engine, guard, capabilities — the verified `EM-VOT-002` home)* · `app/Contexts/Elections/` + `app/Contexts/Membership/` *(DDD-shaped; contains stubs and 0-caller policies)*. **Measured repeatedly: RUNTIME AUTHORITY does not coincide with the `Contexts/` folders** *(the declared "authoritative eligibility engine" has zero callers; the admission domain policies are stubs)*. **Therefore: `app/Contexts/Elections/Domain` is NOT accepted as authoritative from folder structure. Classification per component (current-runtime vs target vs transitional vs adapter) awaits the architecture archaeology — marked UNRESOLVED, not guessed.**
+
+## U9 · Session 3 governance status
+
+**Completed implementation confirmed WITHIN its boundary** against every grant term: EO programme scope *(mode-independent lifecycle rule — recorded reading)* · strict TDD, RED first *(4+2)* · both paths · no other rule · no Full Membership *(measured)* · no new registry · tests cite `EM-VOT-002` · handed to Session 1, no self-certification · **`EM-OPEN-021` not decided by it.** **No redesign performed or proposed; no `EM-OPEN-021` solution prescribed.**
+
+## U10 · Session 1 security fix — **PROVENANCE ESTABLISHED, my earlier flag CORRECTED**
+
+🔴 **My §14 flag was wrong in its implication, and I withdraw it.** Measured: **commit `9ee15cc6` changed exactly ONE file — the verification execution plan (70 doc lines). Zero production code.** The phrase *"found, fixed and guarded"* describes the **discovered state**: the S5 fix itself landed in **`ec8ee295` (2026-06-27, "fix(security): restore authorization and workflow correctness (S4-S8)")** — **weeks before Session 1's batch.** Session 1 *found that it had been fixed and guarded*, and documented that. **Verdict: NO separation deviation occurred. Session 1 behaved exactly as the verification stream should.** *(Residual, historical only: whether `ec8ee295` itself was authorized is a pre-programme provenance question — classify `GOVERNANCE PROVENANCE HISTORICAL`, no current action.)* **I read a commit subject instead of its diff — the exact attribution error Session 1 warns about in that same commit.**
+
+## U11 · `SD-15` evidence — verified, decision still the PO's
+
+| Question | Answer |
+|---|---|
+| Was the 2026-05-22 change deliberate? | ✅ **YES** — `086cb3f5` documents intent (*"only one active chief officer is now required"*, *"enabling election-only mode"*), touched Constitution + guard + tutorial |
+| Does the current Constitution match it? | ✅ **YES** — `has_chief` is what stands and what the guard evaluates |
+| Does the current test represent stale behaviour? | ✅ **YES, now proven:** `git log -S has_committee_members` on the test shows the assertion **introduced 2026-05-19 (`ba4cfa9c`) and NEVER modified since** — so `086cb3f5`'s claim *"updated unit test"* is **contradicted by the diff history for this file** *(it may have updated a different test — the message is not evidence; the diff is)* |
+| Is the commit authoritative? | It is a **documented deliberate engineering decision** — strong evidence, **not PO ratification** |
+| Does `SD-15` still require a PO/ARB decision? | ✅ **YES** — evidence now clearly favours reading **B** *(chief suffices; the test assertion is stale)*, and **the ratification remains the PO's. Not silently resolved.** |
+
+## U12 · Decisions & authorizations board
+
+**Decisions requiring PO/ARB:** `EM-OPEN-021` *(lifecycle semantics — now with observed exception behaviour)* · `BR-1.12` · `59` and `67` *(presented together, decided as two)* · `65`/`69` **scope** (i vs ii) — *pre-authorization decision* · `SD-15` ratification *(evidence favours B)* · `EM-OPEN-013` confirmation *(via the 2026-08-06 ruling)* · standing: `EM-OPEN-017`, `EM-OPEN-019`.
+
+**Implementation authorizations ACTIVE:** **none.** *(The `EM-VOT-002` grant is consumed — implemented and verified.)*
+**Implementation authorizations NOT granted:** `65`/`69` repair · anything `EM-OPEN-021` · admission slice (`BR-1.12`) · time-semantics changes · `60 D-2` · suspension/credential/audit work · everything Full Membership.
+
+---
+
+## FINAL BOARD STATE
+
+| Category | Items |
+|---|---|
+| **IMPLEMENTED + VERIFIED** | `EM-VOT-002` *(both paths, independent verification)* · `PBDIGIT-62` *(repaired + protecting tests; estate confirmation = Session 1)* · S4–S8 security fixes *(historical, `ec8ee295`)* |
+| **DECIDED + NOT IMPLEMENTED** | `Q-B1` vocabulary *(adopted; expression gaps unauthorized)* · the 27 adopted rules' unimplemented aspects (`IG-*`) · publication/visibility model *(PO 2026-08-06; capability unbuilt)* |
+| **IMPLEMENTATION AUTHORIZED** | **none currently active** |
+| **OPEN BUSINESS DECISION** | `EM-OPEN-021` · `BR-1.12` · `59` · `67` · `EM-OPEN-018` · `EM-OPEN-019` · `SD-15` *(ratification)* · `EM-OPEN-013` *(confirmation)* · `BR-1.x` set · `Q-E1`/`Q-E2` · `EM-OPEN-017` |
+| **ARCHITECTURE UNRESOLVED** | eligibility-resolution **owner** (U4 Q4 / `AD-2`) · the four-root authority map (U8) · `65`/`69` fix **scope** (instance vs pattern) · `Q3` exercisability |
+| **GOVERNANCE PROVENANCE UNKNOWN** | **none current** — the §14 flag is withdrawn (U10); `ec8ee295` is `HISTORICAL` |
+| **OUTSIDE CURRENT ELECTION-ONLY SCOPE** | Full Membership (`EM-FM-*`, `FM-1`…`15`, `W-*`) · `Member` aggregate · organisation-driven suspension · newsletter (`61`) |
+
+**Traceability (this update):** `9ee15cc6` *(1 file, docs only — measured)* · `ec8ee295` (2026-06-27, S4–S8) · `ba4cfa9c` (2026-05-19, assertion introduced; `-S` shows no modification since) · `086cb3f5` (2026-05-22) · Session 1's verification finding and exception observation *(consumed as evidence, not authority — the lifecycle-semantics conclusion is mine only insofar as it says "undecided")* · `f2c2cc4e`.
