@@ -221,7 +221,7 @@ TEST                          zero approved candidates → open_voting rejected 
 | **EM-OPEN-010** | **`Q-D1`** — disposition of the dormant organisation-membership eligibility query | — |
 | **EM-OPEN-011** | **`D-APPLY`** (+`V-1`, `V-2`, `V-3`) — apply the proposed `ADR-002` amendment? | — |
 | **EM-OPEN-012** | **`G-REC`** — section-level recognition of the Officer Guide *(assessed `D` — mixed authority; not promoted)* | — |
-| **EM-OPEN-013** | **`G-PUB`** — may a published result be unpublished? *(no constitutional `unpublish` action exists)* | — |
+| **EM-OPEN-013** | **`G-PUB`** — may a published result be unpublished? *(no constitutional `unpublish` action exists)* ⚠️ **ANSWERED-BY-EXISTING-AUTHORITY CANDIDATE (2026-08-13):** a **PO domain ruling recorded in `PBDIGIT-60` (2026-08-06)** predates this question and substantially answers it — *publication is an immutable constitutional fact; visibility is a separate toggleable control (hide/show, never "unpublish")*. **Awaiting one-line PO confirmation that the ruling disposes of this item; not closed by Session 2** | — |
 | **EM-OPEN-014** | **`W-8`** — which organisation role is the "Organisation Chief" of `EM-FM-005`? | Full Membership |
 | **EM-OPEN-015** | **`W-1`…`W-7`** — Full Membership trigger, restoration, expiry-vs-removal, override and post-vote questions | Full Membership |
 | **EM-OPEN-016** | **`FM-1`…`FM-15`** — the frozen Full Membership register | Full Membership |
