@@ -5,6 +5,8 @@
 
 ---
 
+> ⚠️ **POLARITY NOTE (added 2026-08-13, governance watch):** the identifier `SD-14` was posed with **opposite polarity** in the two streams — Session 1 posed it as *"MAY voting open with zero candidates?"* (adopted answer: **NO**), while the ruling below answers *"does 'the next phase' include voting?"* (**YES**). **The substance is identical and unambiguous. Never cite the bare polarity — always cite `EM-VOT-002`'s text:** *"an election must have at least one approved candidate before voting may be opened."* *(Session 1 independently recorded the same warning.)*
+
 ## 1 · The ruling — recorded verbatim
 
 > **ARB/PO Decision — `SD-14` = YES** *(2026-08-13)*
