@@ -2193,3 +2193,52 @@ if (in_array('system', $requiredRoles, true)) {
 **Contrast worth recording on the two "concurrent" rows in this programme:** this class **pre-acquires `Cache::lock("election_transition:{id}")` and then calls `transitionTo()`** — a legitimate single-process way to exercise the lock guard. **The earlier `open_voting_is_idempotent_with_concurrent_requests` made two sequential HTTP calls with no lock manipulation.** > **Same word in two names; one row genuinely verifies the lock, the other verifies only repeat-safety.**
 
 **Status: L3 = 240/1,376 (17.4%) · bypass branch **C · NOT ESTABLISHED** (candidate gap, not a defect) · **S5 closed** with a regression guard · `SD-15` OPEN · `SD-1` unchanged · `1,395` NOT adopted · `1,376` frozen · Session 3's implementation and new tests NOT consumed · no Constitution, production, schema, migration, test or fixture change · nothing repaired.**
+
+---
+
+## 🔴 Universe-shape measurement — **39% of the adopted universe is the Security/sovereignty subsystem**
+
+**L3 remains 240/1,376 — this batch produced a MEASUREMENT, not classifications.** I read only `SovereigntyConvergenceFitnessTest`'s header before the shape question became the more valuable target. **No rows classified; the count is not inflated.**
+
+### What the largest class in the universe actually is
+
+```php
+use ReflectionClass;
+/** Machine-enforced constitutional invariants for sovereignty convergence.
+ *  Each fitness function (F1-F6) protects against regression of D.R.2, D.R.3…
+ *  CONSTITUTIONAL LAW: Violation means constitutional regression — NOT a test failure. */
+```
+
+**`SovereigntyConvergenceFitnessTest` — 33 rows, the single largest class in the 1,376 — is a Reflection-based ARCHITECTURE FITNESS class** (forbidden field names, topology semantics). **SD-4A class C**, which the boundary report §6 proposed to **exclude** from a business-verification universe.
+
+### The measurement
+
+| | Rows | Share of 1,376 |
+|---|---:|---:|
+| **`Tests\Unit\Domain\Election\Security\*`** | 🔴 **539** | **39.2%** |
+| Of the 38 files enumerated, using `ReflectionClass`/`method_exists`/`class_exists` | **16 files** | incl. the **largest (33)** and **second-largest (22)** |
+
+**And the 14-capability business map contains NO capability named for sovereignty convergence, trust overlays or divergence.**
+
+> **The largest single block of the adopted verification universe — nearly two rows in five — belongs to a subsystem that does not appear in the business-capability map at all.**
+
+### Held to the evidence — what this does NOT establish
+
+* **NOT** that these 539 rows are non-business. **NONE was read.** **Several names are plainly outcome-relevant** — `BallotAuthorizationProtocolTest` · `CommitAuthorizationFreshnessTest` · `ParticipationEligibilityEvidenceTest` · `VotingSessionTrustContinuityTest`. **Reflection usage is an INDICATOR of structural testing, never a verdict.**
+* **NOT** a defect. **A universe composed 39% of one subsystem is a SCOPE fact, not a code fault.**
+* **NOT** a proposal to remove them. **`SD-4` is the Product Owner's.**
+
+⚠️ **DISCLOSURE — my decomposition is incomplete.** The per-file enumeration (38 files) sums to **≈343 rows**, but the namespace total is **539**. **So ≈196 rows sit in files my `find … -name '*Test.php'` pattern did not enumerate** (nested paths). **The 539 total is reliable — it is a direct count of matrix column 2. The per-file breakdown is NOT complete, and I am not presenting it as such.** *(An earlier attempt at a universe-wide sweep was discarded outright: `awk` mangled the backslashed class names and emitted escape warnings. **Rather than trust a flooded pipeline I threw the measurement away** — the sixth tooling incident, and the second I have discarded instead of reporting.)*
+
+### Why this matters more than the 19-row admission question
+
+| `SD-4` input | Scale |
+|---|---:|
+| Admission-enforcement tests **outside** the universe | **19 rows** |
+| **Security/sovereignty rows INSIDE the universe, absent from the capability map** | 🔴 **539 rows** |
+
+> **`SD-4` has been framed as *"which tests are missing from the universe?"* The larger question is *"what is the universe mostly MADE OF?"*** **A boundary decision that adds 19 rows while leaving 539 unexamined would settle the smaller half of the problem.**
+>
+> **RECOMMENDED NEXT MEASUREMENT — not started, and it needs no decision to begin:** read a **sample** of the Security cluster to establish whether it is class A (business), class C (fitness) or mixed. **Until then the 39% is `SHAPE NOT ESTABLISHED`, and no claim about the universe's business coverage can be made in either direction.**
+
+**Status: L3 = 240/1,376 (unchanged this batch, by design) · Security cluster 539 rows `SHAPE NOT ESTABLISHED` · `SD-15` OPEN · `SD-1` unchanged · `1,395` NOT adopted · `1,376` frozen · no rows added, none reclassified · Session 3's implementation and new tests NOT consumed · no Constitution, production, schema, migration, test or fixture change.**
