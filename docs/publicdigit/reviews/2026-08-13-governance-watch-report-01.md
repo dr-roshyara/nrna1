@@ -66,6 +66,23 @@
 
 ☑ Separation clause present *("Manifesto = the governed home … **when ratified by ARB**")* · ☑ header states **PROPOSED / NOT YET RATIFIED** · ☑ Constitution's six docblock rules **enumerated, not restated** (§7) · ☑ no Constitution `RULES` structure copied into the Manifesto · ☑ no entitlement/membership/suspension/credential/participation rule has entered `ElectionConstitution` *(file unchanged since `675df4e9`; the transient paste-corruption was reverted externally and is on record)* · ☑ `EM-VOT-002` traceability runs Manifesto → Constitution *(future, authorized)* → guard → tests, **one rule at two levels, no duplication.**
 
+## 4a · ⚡ ADDENDUM — the `EM-VOT-002` work began landing DURING this watch pass
+
+**Minutes after §2 was measured, three files appeared modified in the working tree** *(uncommitted, in flight — observed, not reviewed as implementation)*:
+
+| File | Change | Checklist |
+|---|---|---|
+| `ElectionConstitution.php` | `has_approved_candidates` added to `open_voting.preconditions`, **with an `EM-VOT-002` citation comment** | ☑ constitutional home · ☑ cites the rule |
+| `ElectionLifecycleEngineImpl.php` | the **computed** priority-5 path now also requires approved candidates — comment cites `EM-VOT-002` **and `PBDIGIT-64`**, and **explicitly declines to invent fallback-state semantics**, naming them *"an open PO decision"* | ☑ both paths covered · ☑ limited to the invariant · ☑ no rule invented |
+| `tests/Support/ElectionScenarioFactory.php` | scenarios that produce `VotingActive` now include an approved candidate — *"part of what VotingActive means (EM-VOT-002)"* | ☑ test-support consistent with the rule |
+
+**Boundary verdict on visible evidence: WITHIN THE GRANT.** No Full Membership behaviour · no `ElectionMembership`/suspension/credential change · no new registry · no unrelated refactoring · every change cites `EM-VOT-002` · **the RED pre-exists in the estate** (`open_voting_rejects_if_missing_candidates`). **TDD process evidence (RED/GREEN runs) is Session 3's deliverable and Session 1's verification — not assessed here.**
+
+**Two governance notes, flagged rather than adjudicated:**
+
+1. **Mode scope reading.** The grant says *"Scope: Election-Only mode only"*, while this invariant is **mode-independent by nature** — `EM-VOT-002`'s Manifesto scope is the **election lifecycle**, not a membership mode, and the change touches no membership concept. **My reading: consistent — the grant's mode line guards against Full Membership *behaviour*, which this is not.** Recorded so the reading is visible; the PO may overrule it.
+2. 🆕 **A genuine business question surfaced by the implementation, registered as `EM-OPEN-021`:** **what state IS an election in when its voting window is open but it has no approved candidates?** The engine now (correctly) refuses `VotingActive` and **falls through** — so some other derived state results **by fall-through order, not by decision.** Session 3's own comment flags this honestly. **Registered, not decided.**
+
 ## 5 · Report
 
 | Required item | Result |
@@ -73,7 +90,7 @@
 | **Authority changes** | **None.** One **annotation** added (the `SD-14` polarity note) — a reading aid, not a change of any decision |
 | **Open decisions ready for PO/ARB** | **`SD-15`** *(new package, §3.1)* · **`BR-1.12`** · **`EM-OPEN-019`** · **`EM-OPEN-017`** |
 | **Architecture-boundary risks** | **One, prospective:** the `EM-VOT-002` work will touch the computed-lifecycle path, which sits beside the **mode-blind** shared code identified earlier; the §2 checklist exists precisely for that moment |
-| **Session 3 boundary violations** | **None — no Session 3 production work has landed since the grant** *(measured)* |
-| **New business ambiguity discovered** | **One:** the cross-stream `SD-14` polarity split — **annotated in the ruling artifact**, and `SD-15`'s package is phrased to avoid repeating it |
+| **Session 3 boundary violations** | **None.** §2 measured no landed work; **§4a then observed work arriving in flight — WITHIN the grant on all visible evidence** |
+| **New business ambiguity discovered** | **Two:** 🆕 **`EM-OPEN-021`** — the fall-through state of a window-open, zero-candidate election (§4a) · and the cross-stream `SD-14` polarity split — **annotated in the ruling artifact**, and `SD-15`'s package is phrased to avoid repeating it |
 
 **Traceability:** `app/Domain/Election/Constitution/ElectionConstitution.php:69-75` *(complete_administration)* · `app/Application/Election/Services/ConstitutionalTransitionGuard.php:180-195` *(precondition evaluators — no `has_committee_members`)* · `tests/Unit/Application/Election/ConstitutionalTransitionGuardTest.php:177-185` *(the `SD-15` assertion)*, `:205` *("Free plan" comment)* · `docs/plans/20260808-1030-election-verification-execution-plan.md:1899-1904` *(Session 1's `SD-15` framing — read as the question's source, not as matrix authority)* · `git diff aaf21a90..HEAD -- app/ database/ routes/` *(empty)* · prior packages: admission gate §0.6 · final closure §3 · Manifesto §9.
