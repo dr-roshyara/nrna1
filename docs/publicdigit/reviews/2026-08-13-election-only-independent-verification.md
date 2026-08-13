@@ -256,3 +256,77 @@ return $election->candidacies()->where('status','approved')->exists();
 **P0 COMPLETE · REGRESSION SURFACE = 13 ROWS · BASELINE INTACT (0 LOST) · `EM-VOT-002` VERIFIED BOTH PATHS**
 **`EM-OPEN-021`: current implementation behaviour is observable; the intended business lifecycle semantics remain UNRESOLVED**
 **NOTHING REPAIRED · NOTHING GREENED BY ME · NOTHING DELETED · `L3` STILL 240 · `SD-1` STILL 1,376**
+
+---
+
+# 10 · P1 analysis — **three corrections, and the two "architecture" tests are NOT what I said**
+
+## 10.1 · ⛔ Correction 1 — the regression surface is **19**, not 13
+
+**My §9 script captured each `<testcase>` body with `(.*?)(?:</testcase>|/>)`. The `/>` alternative TRUNCATED bodies at the first self-closing child element, hiding `<failure>`/`<error>` tags that followed.** **Re-parsed with `</testcase>` only: 19 newly non-passing rows.** **Tenth incident; the third caused by my own parsing rather than by the estate.**
+
+## 10.2 · ⛔ Correction 2 — the two "architecture" tests assert the OLD BUSINESS RULE, not a structural invariant
+
+**This is the correction that matters most, because I escalated these as the strongest finding.**
+
+| Row | Its actual assertion |
+|---|---|
+| `ElectionLifecycleStateConsistencyTest::test_lifecycle_engine_computes_voting_active_state_when_voting_window_is_open` | message: *"**Lifecycle engine computes voting_active when voting window is currently open**"* |
+| `ElectionStateMachineConsistencyTest::test_engine_uses_election_clock_service_for_voting_window` | *"Engine should use ElectionClockService logic and **derive VotingActive state**"* — expected `VotingActive`, got **`Draft`** |
+
+> 🔴 **Both assert *"window open ⇒ `VotingActive`"* — which is EXACTLY the rule `EM-VOT-002` REPEALS.**
+>
+> **I wrote that these are *"materially stronger evidence than a failing fixture"* because they *"assert declared invariants ABOUT the state machine."* THAT WAS WRONG.** **I inferred their nature from `Architecture\…ConsistencyTest` in their names — the precise error this programme has documented nine times, and I committed it on the finding I had escalated hardest.**
+>
+> **Corrected classification: category C/A — tests encoding the SUPERSEDED business rule. NOT evidence of a broken structural invariant, and NOT evidence that derivation's totality is architecturally asserted anywhere.** **My §9.2 claim that they "independently corroborate the rule-6 diagnosis" is WITHDRAWN — they corroborate nothing of the kind; they simply expected the old outcome.**
+
+## 10.3 · ⛔ Correction 3 — the dashboard row does not throw, but a different consumer does
+
+**`ElectionDashboardAccessTest::test_chief_can_open_and_close_voting` expected `'counting'` and got a different state — an ASSERTION MISMATCH, no exception.** Its workflow (chief opens, then closes voting) now legitimately requires an approved candidate. **Category A.** **So *"a real consumer is affected by the exception"* was wrong as stated.**
+
+**But the escalation survives on different evidence:**
+
+| **Rows that genuinely THROW `InvalidElectionStateException`** | 3 |
+|---|---|
+| `CurrentBehaviorTest::test_election_with_voting_window_open_derives_to_voting_active` | derivation |
+| `CurrentBehaviorTest::test_close_voting_transition` | **`close_voting` unreachable** |
+| 🔴 **`VoterImportStateGateTest::import_page_is_forbidden_in_voting_active_state`** | **A REAL CONSUMER — an HTTP page** |
+
+> **The exception blast radius is 3 rows, and one of them IS a real request-path consumer** — a voter-import page. **So the operational concern stands, but the correct evidence is `VoterImportStateGateTest`, not the dashboard.**
+
+## 10.4 · The 19, decomposed as far as the evidence allows
+
+| Category | Rows | Evidence |
+|---|---:|---|
+| **C · depends on unresolved `EM-OPEN-021`** *(throws; no expected state has been decided)* | **3** | the three above |
+| **A · obsolete fixture / superseded rule** *(asserted the old "window ⇒ VotingActive", or a workflow requiring it)* | **7** | `ElectionLifecycleStateConsistencyTest` · `ElectionStateMachineConsistencyTest` · `ElectionDashboardAccessTest` · `ElectionPolicyStateAwareTest` ×2 *(`cast_vote_allowed_during_voting`, `manage_settings_denied_during_voting`)* · `CurrentBehaviorTest` ×2 *(`can_vote`, `allowed_actions`)* |
+| **`NOT ESTABLISHED`** | **3** | `VoterStrategySnapshotTest` ×3 — **not read.** Their names concern snapshot immutability, and one expects a THROW when the snapshot is null. **Assigning them by name is the error above; deliberately unclassified** |
+| 🔴 **D · almost certainly UNRELATED to `EM-VOT-002`** | **6** | `D2_5ConstitutionalArticlesSnapshotTest` · `D5ResolverIntegrationTest` · `D6SovereigntyConvergenceTest` · `CapabilityPolicyLayerTest` ×2 · `DeviceBindingPolicyTest` — **enum/structural Security-cluster rows.** `test_enum_has_all_required_cases` cannot plausibly be affected by a candidate precondition. **Consistent with the documented execution-order/isolation fragility** *(the same effect that made two facade rows ERROR when paired and pass when run alone)*. **`MECHANISM NOT ESTABLISHED`** |
+
+> **So `EM-VOT-002`'s attributable surface is at most 10 of 19 rows (3 C + 7 A), with 3 unclassified and 6 probably environmental.** **My §9 framing — "13 rows, all newly non-passing after EM-VOT-002" — overstated the causal attribution by conflating "changed status" with "caused by the change."**
+
+## 10.5 · Was the old `VotingActive` semantically legitimate? — the question that decides A vs B
+
+**No, and this is the substantive architectural finding:**
+
+> **Before `EM-VOT-002`, an election with an open window and zero approved candidates DERIVED `VotingActive`, and `canVote` returned TRUE. Voters could have been admitted to a ballot with nothing on it.** **The adopted rule declares that state illegitimate.** **Therefore the 7 category-A rows were asserting a state the business has now declared invalid — they are not regressions; they were encoding a defect as an expectation.**
+
+**Consequence: `EM-VOT-002` did not BREAK the state machine. It revealed that the state machine's derivation was never TOTAL over legitimate configurations — rule 6 has no branch for *"setup complete, window open, invariant unmet"* (§8.1), and nothing anywhere asserts that derivation must be total.** **That gap is now reachable. It is a genuine domain-model completeness question, not an implementation slip.**
+
+## 10.6 · Verdict on the commissioned question
+
+> ✅ **`EM-OPEN-021` IS demonstrably a domain decision, not a documentation question.** **Evidence: three rows reach a state with NO derivable lifecycle value, one of them through an HTTP consumer, and one of them being `close_voting` — the very operation an administrator would need. No adopted rule says what that state should be.**
+
+**And equally: `EM-VOT-002` itself is correctly implemented.** **The invariant is right; the state model is incomplete beneath it.**
+
+**Election-Only relevance: the anomaly is mode-INDEPENDENT** — derivation reads windows and candidacy approval, neither of which is mode-specific. **It is a lifecycle-engine matter, not an Election-Only one**, though it blocks Election-Only readiness because Election-Only elections traverse the same derivation.
+
+## 10.7 · Recommended next authority action
+
+| Authority | Action |
+|---|---|
+| **PO / ARB** | **Rule `EM-OPEN-021`.** The choice set is *observed in the codebase, and I recommend none*: an existing state · a new holding state · soft-warn-and-continue *(rule 4's existing precedent)* · administrative-intervention-required. **Note the operational stake: until it is ruled, an election in this configuration cannot be closed or suspended.** |
+| **Session 3** | **no change** — the grant covered `EM-VOT-002`, which is verified. **Do NOT choose a fallback state.** |
+| **Session 1** | read `VoterStrategySnapshotTest` ×3; then establish whether the 6 Security rows are order-dependent by running them in isolation |
+
+**Unchanged: nothing repaired, greened, renamed, deleted or skipped · `SD-1` = 1,376 · `L3` = 240 · `ElectionOnlyEntitlementPinTest` (6 ERROR, untracked, not mine) remains OUTSIDE the frozen universe as external evidence for `PBDIGIT-65`/`69`.**
