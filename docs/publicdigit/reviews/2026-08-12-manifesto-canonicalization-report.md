@@ -102,6 +102,23 @@ Production behaviour · test names, comments and fixtures · Officer Guide state
 
 > **A canonical artifact that silently overstates its coverage is worse than one that states its limit.** The limit is now stated.
 
+## 5b · Defect report — the six ARB questions, answered precisely (2026-08-13)
+
+**The ARB accepted the verification conclusion but, correctly, did not accept the artifact merely because the verification passed. The six questions, answered with git evidence:**
+
+| # | Question | Answer |
+|---|---|---|
+| **1** | **What was the defect?** | **Self-declaration of unratified authority.** The Manifesto asserted canonical status through its own text while its own governance section (`EM-OPEN-017`) recorded ratification as OPEN and the ARB had ruled *"do not ratify yet"* (2026-08-12). **Three instances of the same defect class, caught in two rounds:** the header, the authority-table row *(both caught by my verification)*, and the separation clause's self-definition *(caught by the Product Owner)* |
+| **2** | **What did it originally claim?** | Header: *"**Status: ACTIVE — canonical home** for adopted Election business rules"*. Authority table: *"**canonical Election business rules**"*. Separation clause: *"Manifesto **= adopted business rules and invariants**"* — a definition that conferred the authority the document did not yet hold |
+| **3** | **What evidence contradicted it?** | **The document's own `EM-OPEN-017`** (*"is this artifact… the ratified canonical home?" — open*) and **the recorded ARB disposition of 2026-08-12**: *"Manifesto as canonical authority — ⏸ do not ratify yet."* **The contradiction was internal — the artifact disagreed with itself** |
+| **4** | **What was changed?** | Header → *"BUSINESS-RULE CATALOGUE — **PROPOSED** canonical home; **NOT YET RATIFIED** (`EM-OPEN-017`)"* · table row → *"catalogue of adopted Election business rules (**proposed** canonical home — unratified)"* · separation clause → *"the governed home … **when ratified by ARB**"*. **Each correction is noted inline, not silently swapped** |
+| **5** | **Did the correction change any previously accepted business decision — or only documentation?** | **Documentation only — verified against git, not asserted.** Commits `a58f9201` and `aaf21a90` touched only `docs/` and `.claude/`; **a diff-grep for rule rows (`EM-*`) in the Manifesto shows ZERO rule IDs, rule texts, statuses, adoption dates or traceability rows changed.** The **rules'** adoption was never in question — their authority derives from the PO decisions traced in §8, **not** from the artifact's own status. What was wrong was only the artifact's claim about **itself** |
+| **6** | **Was any implementation affected?** | **No.** No production code, test, schema or migration in either commit. And **no downstream consumer had relied on the over-claim**: the `EM-VOT-002` grant cites the rule ID and the SD-14 package — a rule whose adoption is independent of the artifact's ratification — and Session 3's test-citation requirement (`@see EM-VOT-002`) is likewise unaffected |
+
+**Disposition per the ARB's rule — *"if documentation correction only, accept and move on"*: it is documentation only. Accepted; moving on.**
+
+**One honest note on detection:** my verification caught two of the three instances; **the third was caught by the Product Owner, not me.** The defect class is now named — *an artifact must not confer its own authority through header, table, or definition* — which is what makes the next occurrence findable.
+
 ## 6 · Session-3 handover
 
 ### 6.1 What changed for Session 3
