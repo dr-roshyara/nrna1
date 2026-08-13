@@ -69,6 +69,7 @@ class ElectionLifecycleFacadeTest extends TestCase
             'voting_starts_at' => now()->subHour(),
             'voting_ends_at' => now()->addHour(),
         ]);
+        $this->addApprovedCandidate($election); // EM-VOT-002: part of VotingActive facts
 
         $facade = ElectionLifecycle::of($election);
 
@@ -146,6 +147,7 @@ class ElectionLifecycleFacadeTest extends TestCase
             'voting_starts_at' => now()->subHour(),
             'voting_ends_at' => now()->addHour(),
         ]);
+        $this->addApprovedCandidate($election); // EM-VOT-002: part of VotingActive facts
 
         $facade = ElectionLifecycle::of($election);
 
@@ -277,5 +279,24 @@ class ElectionLifecycleFacadeTest extends TestCase
         $facade = ElectionLifecycle::of($election);
 
         $this->assertInstanceOf(ElectionLifecycle::class, $facade);
+    }
+
+    /**
+     * EM-VOT-002 (adopted): at least one approved candidate is part of the
+     * facts of a legitimately VotingActive election. Used only by the two
+     * voting-phase fixtures above; no assertion here concerns candidates.
+     */
+    private function addApprovedCandidate(Election $election): void
+    {
+        $post = \App\Models\Post::factory()->create([
+            'election_id'     => $election->id,
+            'organisation_id' => $election->organisation_id,
+        ]);
+        \App\Models\Candidacy::factory()->create([
+            'post_id'         => $post->id,
+            'organisation_id' => $election->organisation_id,
+            'user_id'         => \App\Models\User::factory()->create()->id,
+            'status'          => 'approved',
+        ]);
     }
 }

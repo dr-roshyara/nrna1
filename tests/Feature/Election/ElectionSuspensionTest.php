@@ -59,6 +59,19 @@ class ElectionSuspensionTest extends TestCase
             'suspended_lifecycle_context' => null,
         ]);
 
+        // EM-VOT-002 (adopted): VotingActive requires an approved candidate —
+        // this test's premise is an election actively voting when suspended.
+        $post = \App\Models\Post::factory()->create([
+            'election_id'     => $election->id,
+            'organisation_id' => $election->organisation_id,
+        ]);
+        \App\Models\Candidacy::factory()->create([
+            'post_id'         => $post->id,
+            'organisation_id' => $election->organisation_id,
+            'user_id'         => \App\Models\User::factory()->create()->id,
+            'status'          => 'approved',
+        ]);
+
         // Election should be in VotingActive state
         $this->assertEquals(ElectionLifecycleState::VotingActive, $election->currentState());
 

@@ -194,6 +194,32 @@ final class ElectionScenarioFactory
                 'results_published_at' => null,
             ]);
 
+        // EM-VOT-002 (adopted): an approved candidate is part of the facts
+        // that constitute a legitimately VotingActive election — this scenario's
+        // declared contract (assertDerivedState below). Domain-fixture
+        // correction, not test convenience; no consumer observes candidates
+        // (34-call-site classification, 2026-08-13).
+        $post = \App\Models\Post::factory()
+            ->create([
+                'election_id' => $election->id,
+                'organisation_id' => $org->id,
+                'name' => 'Test Position',
+                'is_national_wide' => true,
+            ]);
+        $candidate = User::factory()->forOrganisation($org)->create();
+        \App\Models\Candidacy::factory()
+            ->create([
+                'organisation_id' => $org->id,
+                'post_id' => $post->id,
+                'user_id' => $candidate->id,
+                'status' => 'approved',
+            ]);
+        $election->update([
+            'candidates_count' => 1,
+            'posts_count' => 1,
+            'pending_candidacies_count' => 0,
+        ]);
+
         // Verify engine derives correct state and SYNC IT TO DATABASE
         self::assertDerivedState($election, ElectionLifecycleState::VotingActive);
         $election->update(['state' => ElectionLifecycleState::VotingActive->value]);

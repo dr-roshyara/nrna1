@@ -120,6 +120,18 @@ class CanEditTimelineCapabilityTest extends TestCase
             'voting_starts_at' => now()->subHour(),  // Started
             'voting_ends_at' => now()->addHour(),     // Not yet ended
         ]);
+        // EM-VOT-002 (adopted): VotingActive requires an approved candidate —
+        // this test's premise is an election actively voting.
+        $post = \App\Models\Post::factory()->create([
+            'election_id'     => $election->id,
+            'organisation_id' => $election->organisation_id,
+        ]);
+        \App\Models\Candidacy::factory()->create([
+            'post_id'         => $post->id,
+            'organisation_id' => $election->organisation_id,
+            'user_id'         => \App\Models\User::factory()->create()->id,
+            'status'          => 'approved',
+        ]);
 
         $snapshot = $this->engine->compute($election);
 
@@ -205,6 +217,17 @@ class CanEditTimelineCapabilityTest extends TestCase
         $this->assertTrue($setupSnapshot->canEditTimeline, 'Setup: editable');
 
         // Move directly to voting (skip nomination for this test)
+        // EM-VOT-002 (adopted): VotingActive requires an approved candidate.
+        $post = \App\Models\Post::factory()->create([
+            'election_id'     => $election->id,
+            'organisation_id' => $election->organisation_id,
+        ]);
+        \App\Models\Candidacy::factory()->create([
+            'post_id'         => $post->id,
+            'organisation_id' => $election->organisation_id,
+            'user_id'         => \App\Models\User::factory()->create()->id,
+            'status'          => 'approved',
+        ]);
         $election->update([
             'voting_starts_at' => now()->subMinute(),
             'voting_ends_at' => now()->addHour(),

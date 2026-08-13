@@ -130,6 +130,18 @@ class ElectionActivationTest extends TestCase
             'voting_starts_at' => now()->subHour(),
             'voting_ends_at' => now()->addHour(),
         ]);
+        // EM-VOT-002 (adopted): VotingActive additionally requires an approved
+        // candidate — this test's premise is an ALREADY-ACTIVE election.
+        $post = \App\Models\Post::factory()->create([
+            'election_id'     => $this->election->id,
+            'organisation_id' => $this->org->id,
+        ]);
+        \App\Models\Candidacy::factory()->create([
+            'post_id'         => $post->id,
+            'organisation_id' => $this->org->id,
+            'user_id'         => \App\Models\User::factory()->create()->id,
+            'status'          => 'approved',
+        ]);
 
         $response = $this->actingAs($this->chief)
             ->withSession($this->orgSession())

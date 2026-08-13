@@ -94,7 +94,9 @@ final class ElectionConstitution
         'open_voting' => [
             'allowed_states' => ['setup_nomination', 'ready_for_voting'],
             'allowed_roles' => ['chief'],
-            'preconditions' => ['voting_window_defined', 'timezone_set'],
+            // EM-VOT-002 (Election Manifesto §4a): open_voting must not succeed
+            // with zero approved candidates (SD-14 = YES).
+            'preconditions' => ['voting_window_defined', 'timezone_set', 'has_approved_candidates'],
             'target_state' => 'voting_active',
             'description' => 'Open voting period (chief only)',
         ],

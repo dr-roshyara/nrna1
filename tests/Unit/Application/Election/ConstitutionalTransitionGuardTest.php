@@ -38,6 +38,18 @@ class ConstitutionalTransitionGuardTest extends TestCase
             'voting_ends_at' => now()->addDays(2),
             'timezone' => 'UTC',  // Required precondition for open_voting
         ]);
+        // EM-VOT-002 (adopted): open_voting requires at least one approved
+        // candidate — part of a permissible open_voting's domain preconditions.
+        $post = \App\Models\Post::factory()->create([
+            'election_id'     => $election->id,
+            'organisation_id' => $election->organisation_id,
+        ]);
+        \App\Models\Candidacy::factory()->create([
+            'post_id'         => $post->id,
+            'organisation_id' => $election->organisation_id,
+            'user_id'         => \App\Models\User::factory()->create()->id,
+            'status'          => 'approved',
+        ]);
         $user = \App\Models\User::factory()->create();
 
         // Create and assign chief role so guard allows the action

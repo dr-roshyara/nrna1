@@ -56,6 +56,21 @@ class VotingClosureValidationTest extends TestCase
             'candidates_count' => 5,
         ]);
 
+        // EM-VOT-002 (adopted): a legitimately VotingActive election has at
+        // least one approved candidate — required for the engine to derive
+        // VotingActive below. Domain-fixture correction; no assertion in this
+        // class concerns candidates.
+        $post = \App\Models\Post::factory()->create([
+            'election_id'     => $this->election->id,
+            'organisation_id' => $this->org->id,
+        ]);
+        \App\Models\Candidacy::factory()->create([
+            'post_id'         => $post->id,
+            'organisation_id' => $this->org->id,
+            'user_id'         => \App\Models\User::factory()->create()->id,
+            'status'          => 'approved',
+        ]);
+
         // Sync persisted state to match engine derivation
         $engine = app(ElectionLifecycleEngineImpl::class);
         $derivedState = $engine->getState($this->election);

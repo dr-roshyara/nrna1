@@ -97,7 +97,12 @@ final class ElectionLifecycleEngineImpl implements ElectionLifecycleEngine
         }
 
         // 5. Voting active — voting window is open NOW
-        if ($this->isVotingWindowOpenNow($election)) {
+        // EM-VOT-002 (Election Manifesto §4a): voting requires at least one
+        // approved candidate on EVERY path into voting_active — including this
+        // computed one, which no command guard can reach (PBDIGIT-64). When
+        // unmet, no substitute state is chosen here: derivation falls through
+        // to the existing rules below (fallback semantics are an open PO decision).
+        if ($this->isVotingWindowOpenNow($election) && $this->hasCandidatesApproved($election)) {
             return ElectionLifecycleState::VotingActive;
         }
 
