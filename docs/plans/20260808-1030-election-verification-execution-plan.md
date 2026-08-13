@@ -2123,3 +2123,73 @@ Election.php:1651   if (! $transition->isSystemTriggered()) { $guard->assertAllo
 **Status: L3 = 225/1,376 (16.4%) · `SD-15` OPEN (only open decision from this stream) · `SD-1` unchanged · `1,395` NOT adopted · `1,376` frozen · Session 3's implementation and new tests NOT consumed · no Constitution, production, schema, migration, test or fixture change · nothing repaired.**
 
 > **Progress-number discipline restated, since the figure is now sizeable: `225 / 1,376` means *"225 rows have been read and classified"* — it does NOT mean 16.4% of the Election is verified.** **This batch's 14 rows carry more business weight than the facade's 19; the count cannot express that, which is precisely why the matrix records SHAPE alongside status.**
+
+---
+
+## `ElectionTransitionToMethodTest` (15) → **L3 = 240 / 1,376** · the bypass-branch question answered · **S5 discovered**
+
+### ⛔ TWO corrections to my own tooling, both caught inside this batch
+
+1. **A narrow grep produced a false claim.** I swept for `Transition::automatic(|isSystemTriggered` and reported *"`TransitionTest` is the ONLY in-universe file touching the system path."* **Adding `auto_submit` to the pattern found SEVEN more in-universe files** — including one named **`ConstitutionalTransitionGuardSystemRoleBypassTest`**. **My conclusion was an artifact of my pattern, not a fact about the estate.**
+2. **My universe classifier mislabelled a file.** It printed `tests/Architecture/ElectionStateMachineConsistencyTest.php` as **`[OUT]`** — but that single file **IS the fifth adopted path**, i.e. **IN**. My `case` statement omitted it.
+
+> **The standing pattern holds and is now at five instances: my greps LOCATE reliably and ATTRIBUTE unreliably.** **Both slips were caught before entering a finding — the first would have recorded a verification gap that does not exist.**
+
+### Bypass-branch verdict: **C · NOT ESTABLISHED** — with the argument, not an impression
+
+**The branch requires BOTH (a) a system-triggered `Transition` AND (b) that it be passed through `Election::transitionTo()`.**
+
+| Evidence | |
+|---|---|
+| `Transition::automatic(` in-universe | **only `TransitionTest`** — which never calls `transitionTo()` |
+| The seven system-role in-universe files | **all call `$guard->assertAllowed(…)` DIRECTLY**, or concern capabilities/capacity — **none routes through `transitionTo()`** |
+| `ElectionTransitionToMethodTest` itself | **zero** `automatic` / `isSystemTriggered` / `'system'` tokens |
+
+> **Verdict C: no in-universe row exercises `Election.php:1651`'s `if (! $transition->isSystemTriggered())` branch.** **NOT D — no defect is demonstrated; the branch is intentional and, as measured earlier, not implicitly reachable in production.**
+>
+> ⚠️ **Residual, stated rather than glossed: I swept `app/` for `manual(…, 'system')` but did NOT sweep `tests/`.** **The verdict is C on the evidence gathered, not a proof of absence.**
+
+### 🔴 The batch's real finding — **S5: a privilege escalation, documented, fixed, and regression-guarded**
+
+**`ConstitutionalTransitionGuardSystemRoleBypassTest` records verbatim:**
+
+> *"`userHasAnyRole()` returns true unconditionally when `'system'` is the sole required role — `Auth::user()` is never consulted. **Any authenticated human making an HTTP request can call `auto_submit` (draft → approved) without officer knowledge.**"*
+
+**That is a privilege escalation on `C2` (platform approval): a human could move an election `draft → approved` through a route reserved for queue jobs.**
+
+**Fix state — verified in the source, not assumed:**
+
+```php
+if (in_array('system', $requiredRoles, true)) {
+    if (count($requiredRoles) === 1) {
+        return Auth::user() === null;          // ← S5 fix APPLIED
+    }
+    $userRoles = array_diff($requiredRoles, ['system']);   // multi-role case also handled
+    if (empty($userRoles)) { return Auth::user() === null; }
+    $requiredRoles = $userRoles;
+}
+```
+
+| Category | |
+|---|---|
+| **IMPLEMENTATION DEFECT** | ✅ **real, and CLOSED** — the prescribed fix is present, including correct multi-role handling |
+| **TEST VERIFICATION** | ✅ **in-universe regression guard exists** and passes |
+| **Business rule** | not affected — `auto_submit`'s `allowed_roles: ['system']` was always the rule; the guard failed to enforce it |
+
+> **This is the programme's first encounter with a genuine security defect that was found, fixed AND regression-guarded — the estate's healthiest pattern so far, and worth recording as such rather than only recording gaps.**
+
+### Classification of the 15 rows (all PASSED)
+
+| Rows | Verifies |
+|---:|---|
+| **2** | 🔑 `missing_timezone_rejects_open_voting` · `missing_voting_window_rejects_open_voting` — **`open_voting`'s TWO ACTUAL constitutional preconditions.** **Directly relevant to `EM-VOT-002`: the existing preconditions ARE verified in-universe; the newly adopted candidate precondition is not — which is expected, since implementation is Session 3's in-flight work** |
+| **2** | `deputy_cannot_perform_chief_only_actions` · `unauthenticated_user_cannot_perform_user_role_actions` — role authority |
+| **3** | invalid transition throws · valid target reached · **`cannot_open_voting_twice`** |
+| **2** | immutable audit record · `ElectionStateChanged` event dispatched |
+| **2** | `transition_uses_database_transaction` · **`rollback_on_validation_failure_restores_original_flags`** — transactional integrity |
+| **2** | voting locked immediately · `nomination_completed` set — side effects |
+| **2** | **cache-lock contention blocked · lock released after success** |
+
+**Contrast worth recording on the two "concurrent" rows in this programme:** this class **pre-acquires `Cache::lock("election_transition:{id}")` and then calls `transitionTo()`** — a legitimate single-process way to exercise the lock guard. **The earlier `open_voting_is_idempotent_with_concurrent_requests` made two sequential HTTP calls with no lock manipulation.** > **Same word in two names; one row genuinely verifies the lock, the other verifies only repeat-safety.**
+
+**Status: L3 = 240/1,376 (17.4%) · bypass branch **C · NOT ESTABLISHED** (candidate gap, not a defect) · **S5 closed** with a regression guard · `SD-15` OPEN · `SD-1` unchanged · `1,395` NOT adopted · `1,376` frozen · Session 3's implementation and new tests NOT consumed · no Constitution, production, schema, migration, test or fixture change · nothing repaired.**
