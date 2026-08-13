@@ -1921,3 +1921,61 @@ Failed asserting that 'Action 'open_voting' cannot proceed.
 I recorded that `ElectionPolicyStateAwareTest`'s four `..._for_officer` rows verify **no actor**. **That stands as a fact about those rows** — **but I must not let it read as "role authority is unverified".** **`only_chief_can_open_voting`, `guard_verifies_user_role` and `chief_and_deputy_can_administer` verify role authority directly.** > **Constitutional role authority IS verified — just not in the rows whose names promised it.** **The finding is a naming/verification-shape defect, NOT a coverage gap.** *(Stating this prevents my own finding from being cited as a hole that does not exist.)*
 
 **Status: L3 = 141/1,376 · B2 conditionally closed (41/41, 27 deferred) · `SD-14` mechanism CLOSED, decision OPEN · `SD-15` OPEN · `SD-1` unchanged · denominator unchanged · `1,395` NOT adopted · `1,376` frozen · baseline NOT re-run · no Constitution, production, schema, migration, test or fixture change · no failing test repaired.**
+
+---
+
+## `SD-14` CLOSED by adopted authority · `ElectionSuspensionTest` (26) → **L3 = 167 / 1,376**
+
+### `SD-14` — consumed as adopted authority, with a polarity warning
+
+**Found in the ARB ruling artifact `docs/publicdigit/reviews/2026-08-13-sd14-ruling-and-implementation-authorization-package.md`, whose disposition the record explicitly assigns to Session 1:**
+
+> *"an election must have **at least one approved candidate** before voting may be opened; this closes `SD-14`; `ElectionConstitution` is the implementation home; **do not implement yet**."* → **Manifesto `EM-VOT-002` ADOPTED.**
+
+⚠️ **POLARITY WARNING — recorded so no one is misled later.** The ruling is logged as **"`SD-14` = YES"**, but **I posed `SD-14` as *"MAY voting open with zero candidates?"*, for which the adopted answer is **NO***. **The substance is settled and unambiguous — candidates ARE required** — **but "SD-14 = YES" read against my phrasing means the opposite of the ruling.** **Always cite `EM-VOT-002`'s text, never the bare polarity.**
+
+**Row disposition** (`open_voting_rejects_if_missing_candidates`, 1 row):
+
+| Was | Now |
+|---|---|
+| `BUSINESS RULE NOT SPECIFIED` | ✅ **`BUSINESS RULE ADOPTED — EM-VOT-002`** |
+
+**It becomes a legitimate RED test for an adopted-but-unimplemented rule.** **The Constitution still does not encode the precondition, and implementation is UNAUTHORISED** (*"do not implement yet"*). **It must NOT be greened** — and note that even after implementation its assertion would still fail, because its fixture never defines a voting window (`voting_window_defined` fires first). **Fixture work belongs to whoever implements `EM-VOT-002`, under strict TDD. Not Session 1's, and not now.**
+
+### 🔴 My already-classified rows independently corroborate `PBDIGIT-64`
+
+The authorization package records that **the computed/clock path BYPASSES the guarded transition** — an election reached voting candidate-less **without `open_voting` ever running**. **My own B-batch evidence proves this from inside the universe, and I had not connected it:**
+
+> **`CurrentBehaviorTest::test_election_with_voting_window_open_derives_to_voting_active` (PASSED, classified earlier as lifecycle derivation) derives `voting_active` from THE WINDOW ALONE** — no action, no guard, no candidates. **It is the in-universe proof that `voting_active` is reachable without any constitutional action.**
+
+**CONSEQUENCE for verification, stated as scope not as design:** **`EM-VOT-002` cannot be verified by testing `open_voting` alone.** Its verification obligation spans **the derivation engine** as well as the guarded action. **HOW to cover the computed path is Session 3's design question; Session 1 records only that a single-precondition test would be insufficient evidence of the rule.**
+
+### `ElectionSuspensionTest` — 26 rows, all PASSED, and the estate's strongest-verified capability
+
+**Authority: `RULES['suspend'|'resume']` (C14) + `ADR_20260807_1500`.** Six declared RED intents, all genuinely asserted:
+
+| Rows | Verifies | Note |
+|---:|---|---|
+| **2** | context captured **for audit, not restoration**; **resume RE-DERIVES** | 🔑 `test_resume_does_not_restore_from_context_column` captures `VotingActive`, then after resume asserts **`Counting`** — the window elapsed during suspension, so re-derivation and restoration give **different** answers, and the test proves which one happens. **Genuine architectural invariant, correctly discriminated** |
+| **1** | suspension **does not mutate business facts** — 7 before/after equalities | the invariant that makes derivation safe |
+| **2** | flags set/cleared; engine derives `Suspended` | `resume` nulls all 5 suspension fields and stamps `resumed_at`/`resumed_by` |
+| **4** | **role authority** — chief ✅ · platform_admin ✅ · **deputy ❌** · ordinary user ❌ | **matches `RULES['suspend'].allowed_roles` exactly** |
+| **3** | governance metadata · audit record | ⚠️ `suspend_stores_governance_metadata` **and** `test_suspend_stores_governance_metadata` are **two rows asserting the same claim** — probable duplication. Observation, not defect |
+| **4** | category valid/invalid · reason required/min-length | Interface validation |
+| **3** | capability overlay short-circuits all but `resume`; blocked during suspension (**via `assertInertia`** — projection verified); full map restored after resume | |
+| **3** | lifecycle position preserved across `setup_administration` · `setup_nomination` · `voting_active` | |
+| **2** | suspension neither alters nor appears in lifecycle progression | |
+| **1** | route redirect | |
+| **1** | `suspend_fails_when_already_suspended` | idempotency guard |
+
+### 🔴 Programme-level observation — verification depth runs OPPOSITE to outcome criticality
+
+| Capability | Authority | Rows verifying it |
+|---|---|---|
+| **C14 suspension** | constitutional | **26 rows**, incl. derivation-vs-restoration and facts-immutability invariants |
+| **C8 vote casting** | one-vote rule **unspecified** *(`SD-9`)* | anonymity tests sit **outside** the universe |
+| **C10 counting** | 🔴 **no authority found at all** *(`SD-11`)* | inline `DB::table()` in a controller |
+
+> **The estate verifies an operational control more rigorously than it verifies casting and counting a vote.** **OBSERVED FACT about the estate — not a criticism of the suspension work, which is exemplary, and not a defect claim.** **It is evidence for how `SD-4`, `SD-9` and `SD-11` should be prioritised.**
+
+**Status: L3 = 167/1,376 · `SD-14` CLOSED (business rule adopted; implementation unauthorised; row kept RED) · `SD-15` OPEN · `SD-1` unchanged · `1,395` NOT adopted · `1,376` frozen · baseline NOT re-run · no Constitution, production, schema, migration, test or fixture change · no failing test repaired · nothing implemented.**
