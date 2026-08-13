@@ -139,6 +139,53 @@ Facts proven: §2. The current `InvalidElectionStateException` is **MEASURED EVI
 
 **`EM-OPEN-021` stays separate and unresolved:** the readiness rule is *evidence relevant to* lifecycle readiness; it does **not** answer the recovery semantics of *nomination-completed + window-open + zero candidates* — and its voter-half raises the analogous zero-voter question, whose semantics are **also not invented here**. No HOLD, cancellation, postponement, fallback, new state, or extension is proposed.
 
+### 5c · FINAL governance reconciliation — Decision A + election-start rule (dated 2026-08-13; normalization, not investigation)
+
+**1 · The invariant, in final DDD form (two concepts, never merged):**
+
+> **Admission (separate concept, not this decision):** *may this person become a voter for election E?* — evaluated by the admission chain; measured unaffected by P6.
+>
+> **Voting-time entitlement (INV-A, this decision):** *a person admitted as a voter of election E holds a durable, election-scoped entitlement to cast a vote in E while E's voting period is open, subject only to E's constitutional/lifecycle rules. The entitlement's answer is a function of E and the voter's admitted status in E — never of ambient organisation/tenant context at exercise time. Suspension of E before voting starts prevents exercise.* *(Suspension DURING voting: not ruled, not invented.)*
+
+**2 · Ownership conclusion:**
+
+> ## **"Voting-time voter entitlement is owned by the ELECTION bounded context."**
+
+Supported by accepted authority (§5a table: `ADR_20260807_1500` · ADR-001 · Model B/`PBDIGIT-68` · `EM-GOV-001`) and by measured evidence (P6; dependency direction; 1 election : 1 organisation). Not inferred from `User.php`, `BelongsToTenant`, middleware, DI bindings, or folders.
+
+**`ADR-002-verified-eligible-authorized` (Accepted), classified explicitly — not silently reinterpreted: D — REQUIRES FORMAL CLARIFICATION.** Its own text is ambiguous between the two moments (C): "Eligible" is *"meets requirements for a specific process"*, scoped *"different for Voting vs. Candidacy vs. Delegation"* — which contemplates a voting-process eligibility — while its enabling examples (*membership status, fees, timing*) describe an admission-style requirements evaluation. It predates Model B and the PO rule. Under the PO rule, nothing remains to *evaluate* at voting time except E's own lifecycle facts; but that reading is a clarification the ARB must make, not one Session 2 may assume.
+
+**Sufficiency verdict:** the accepted architecture **supports but does not fully establish** the ownership conclusion. **Exactly two sentences require formal ARB/PO acceptance (this is the entire outstanding act):**
+
+> **(i)** *"Voting-time voter entitlement is owned by the Election context; its resolution derives organisational scope from the election itself; ambient organisation context is a forbidden dependency for this resolution."*
+> **(ii)** *"ADR-002's 'Eligibility Context' responsibility is clarified to govern admission-time (process-requirements) evaluation; the voting-time entitlement decision of clause (i) is Election-context-owned and is not an ADR-002 'Eligible' evaluation."*
+
+No generic Eligibility bounded context is created under any disposition.
+
+**3 · Election-start rule, voter half — determined, not implemented:**
+
+| Question | Finding |
+|---|---|
+| Does an adopted Manifesto rule already express it? | **NO** — checked: `EM-VOT-001`/`EM-VOT-002` are candidate-only; no adopted rule requires ≥ 1 admitted voter at voting start |
+| Does a stable `EM-*` ID exist? | **NO** — **a new Manifesto rule/adoption is required — exactly that**; the ID is assigned at adoption, **not invented here** |
+| Where should the authoritative constitutional expression live? | by accepted pattern (ADR-001 + the recorded `EM-VOT-002` precedent — *"`ElectionConstitution` is the authoritative implementation home for this precondition"*): the `open_voting` preconditions, **with the both-paths lesson applying symmetrically** (the computed path must also be covered) — an identified home, NOT an implementation instruction |
+| What evidence exists today? | `has_voters` exists as a `complete_administration` precondition (upstream gate only); **neither voting-boundary path checks voters** — guard preconditions: `voting_window_defined · timezone_set · has_approved_candidates`; engine rule: window + candidates (`ElectionLifecycleEngineImpl:105`) |
+
+**4 · Kept separate:** `EM-OPEN-021` (zero-candidate recovery semantics — undecided; nothing chosen) · the zero-voter analog (distinguished, unanswered) · **Decision B** (OPEN: instances vs `BelongsToTenant`-family audit; P6 proves the defects, not the scope; not chosen, not authorized).
+
+**5 · Clean decision register (three dimensions, never collapsed):**
+
+| Item | Business status | Architecture status | Implementation authorization |
+|---|---|---|---|
+| `EM-VOT-002` | **decided** | **settled** (Constitution + both paths) | **completed** (grant consumed; verified; closed) |
+| **Voting-time entitlement** (Decision A) | **decided** (PO rule, verbatim §5a) | **Election-BC ownership — assessed & supported; formal acceptance of sentences (i)+(ii) above REMAINS OUTSTANDING** | **none** |
+| **Election-start, voter half** | **decided** (PO rule §5b) | **expression home IDENTIFIED** (Constitution `open_voting`, both paths); Manifesto adoption + ID pending | **none** |
+| `PBDIGIT-65`/`69` | **defect measured** (P6) — violates the decided rule | **repair scope OPEN** (follows A + B) | **NOT AUTHORIZED** |
+| **Decision B** | open | open | none |
+| `EM-OPEN-021` | **open** — domain decision (evidence complete for deciding) | n/a until decided | none |
+
+**Boundary of this reconciliation:** business rule and DDD ownership clarified — **implementation authorization untouched**: no `app/` or `tests/` edit, no Constitution change, no policy, no cache-key or `BelongsToTenant` change, no `User.php` fix, no repair scope selected, no tickets created, Session 3 not reopened.
+
 ## 6 · Decision B package — 65/69 repair scope *(OPEN DECISION; follows A; neither scope chosen)*
 
 **Why B follows A:** implementation location and ownership must be known before a repair boundary can be legitimate — otherwise the repair is a guess wearing a grant.
