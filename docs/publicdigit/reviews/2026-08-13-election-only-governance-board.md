@@ -3,6 +3,10 @@
 **Type:** Governance board (freeze + decision packages) · **Date:** 2026-08-13 · **Programme:** IERVP (Session 2, board secretary / architectural gatekeeper)
 **⛔ No production code, test, or fixture change. No implementation grant created. No unresolved business decision closed. No decisions merged.**
 
+> **Status (PO / Principal Architect, 2026-08-13): ACCEPTED as the current PROGRAMME CONTROL ARTIFACT — a governance register, NOT a source of domain truth.** The authority hierarchy stands above it: *business rules/accepted decisions → domain model/bounded-context architecture → ADRs → implementation → tests → this board.* The board **records** the state of those things; it never replaces them. Two posture corrections were applied on acceptance (§2 and §4, dated annotations). Standing directions issued with the acceptance: **Session 2 receives no new analysis mission and stays stopped on the trigger rule** · **Session 1's residual mission is bounded to exit-2 + reading the 3 `VoterStrategySnapshotTest` failures — no fixes, no semantic recommendations, no restart of the full-suite investigation** · **Session 4 continues its architecture-authority work separately; its PROPOSED ADR/PKS artifacts are not promoted automatically** · **Session 3 remains STOPPED** · the 8 decisions in §7 are confirmed as genuinely the PO/ARB's · **do not reopen `PBDIGIT-64`/`EM-VOT-002` because Session 1 found consequences of the rule — the rule is verified; the open question is lifecycle semantics when the rule prevents `VotingActive`.**
+>
+> **Standing anti-pattern, recorded verbatim in substance (PO, §6 of the acceptance):** *"Model B was decided, therefore implement 65/69" — **NO.*** A domain decision (`PBDIGIT-68`) does not automatically authorize implementation of its consequences; each consequence still needs ownership + scope + an explicit implementation grant.
+
 ---
 
 ## 1 · Current Election-Only Governance Board *(the freeze)*
@@ -42,6 +46,8 @@
 
 **Strongest supported interpretation: (i)** — by adopted business language, by schema, and by production precedent. **What remains uncertain:** whether the ARB wants (i) formalised directly or wants the `ADR-002` "Eligibility Context" phrase disposed of in the same act (a wording, not substance, question).
 
+> ⚠️ **Guard (PO acceptance, 2026-08-13):** interpretation (i) is an **evidence-supported architecture HYPOTHESIS, not an accepted architecture decision.** No session may shorten it to *"the Election context owns eligibility"* until the appropriate authority actually accepts Decision A.
+
 > **EXACT DECISION REQUIRED (ARB/PO):** *"Voting-time voter eligibility is owned by the Election context; its resolution derives organisational scope from the election itself; ambient organisation context is a forbidden dependency for this resolution."* — **adopt, adopt-with-changes, or reject.** **NOT decided by Session 2.**
 
 ## 3 · Decision B — REPAIR SCOPE *(package, not a decision)*
@@ -73,6 +79,8 @@
 | 3 regression rows are undecidable until this rule is decided (category D, incl. one HTTP consumer) | measured (Session 1 §10 / gate §2) |
 
 **The decision is a business meaning, not a mechanism.** Candidate meanings exist (remain in nomination · a defined holding condition · window invalid until a candidate exists · closable/cancellable) — **none is recommended, none has authority, and the exception must not become the answer by repetition.** **The PO has marked this urgent — a live election in this shape is unmanageable for its whole window; with the trace landed, the decision is now actionable** (exit-2 evidence would sharpen it, not gate it).
+
+> ⚠️ **Posture correction (PO acceptance, 2026-08-13) — "actionable" defined precisely:** the evidence is **sufficient to put the DECISION before the PO** and **NOT sufficient to implement any semantic solution.** *Actionable* must never be read as *ready for Session 3 implementation* — the board's own register stands: no active grant exists, and the candidate meanings above are **domain semantics, not implementation choices.**
 
 ## 5 · Session-3 Stop / Authorization Register
 
