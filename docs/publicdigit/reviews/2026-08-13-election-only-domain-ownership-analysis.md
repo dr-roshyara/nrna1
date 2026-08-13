@@ -149,4 +149,21 @@ ElectionMembership created                       admit / deny
 
 Container wiring: `AppServiceProvider:125-145` *(interface→`EloquentVoterEligibilityQueryService`; stubs self-bound)* · live admission chain: `ElectionVoterController:74`, `VoterEligibilityService:53`, `BulkAssignVotersHandler:56`, `AssignVoterHandler:34` · tenant writers: `Http/Middleware/TenantContext:54,85`, `IdentifyTenantFromHeader:48`, **`ElectionManagementController:228,686,1125` (from-the-election precedent)** · voting-time gate: `User:315-328`, middleware, G-1 runtime A/B · `69` cache measurements · `f2c2cc4e` + Session 1's both-paths verification · `086cb3f5`/`ba4cfa9c` (SD-15) · `ec8ee295` (S4–S8) · PO ruling in `PBDIGIT-60` (2026-08-06) · Manifesto §§1–9 · ticket authority matrix · current-state report + U-addendum.
 
+---
+
+## ✅ ARB ACCEPTANCE (Product Owner, 2026-08-13)
+
+**The analysis is ACCEPTED.** The operative rulings, recorded:
+
+1. **The corrected finding stands** — admission-time eligibility is mechanically enforced via container wiring.
+2. **The two eligibility authorities are RECORDED as the governing architecture fact** — admission-time (Contexts/Elections chain) vs voting-time (legacy `app/Models` gate).
+3. ⛔ **The `65`/`69` repair is NOT authorized** until the two `D` decisions (ownership + scope) are made.
+4. **Eligibility is NOT to be treated as one concept** — any future repair is **scoped to the voting-time gate only**.
+
+### ⚠️ One transcription slip in the acceptance text — flagged so it cannot propagate
+
+The acceptance's category table reads *"B — `EM-OPEN-021` | adopted answer, capability lacks owner."* **That is `EM-OPEN-013`'s classification** *(the publication/visibility ruling of 2026-08-06)*. **`EM-OPEN-021` remains `C` — business decision required** *(lifecycle semantics of the window-open/zero-candidate state)* — **it has NO adopted answer**, and reading it as "adopted" would quietly close the very question the ARB has repeatedly held open. **The operative rulings above are unaffected; the register in §4 is authoritative for categories.** *(Same shorthand-hazard family as the `SD-14` polarity split — annotated, not silently corrected, not attributed as a decision.)*
+
+**Standing posture after acceptance:** `65`/`69` blocked on two `D` decisions · `BR-1.12` blocks G3 · `EM-OPEN-021` conditional on Session 1's recoverability measurement · no active implementation authorizations.
+
 **STOP. Nothing authorized. Decision-ready for the Product Owner / ARB.**
