@@ -1979,3 +1979,42 @@ The authorization package records that **the computed/clock path BYPASSES the gu
 > **The estate verifies an operational control more rigorously than it verifies casting and counting a vote.** **OBSERVED FACT about the estate — not a criticism of the suspension work, which is exemplary, and not a defect claim.** **It is evidence for how `SD-4`, `SD-9` and `SD-11` should be prioritised.**
 
 **Status: L3 = 167/1,376 · `SD-14` CLOSED (business rule adopted; implementation unauthorised; row kept RED) · `SD-15` OPEN · `SD-1` unchanged · `1,395` NOT adopted · `1,376` frozen · baseline NOT re-run · no Constitution, production, schema, migration, test or fixture change · no failing test repaired · nothing implemented.**
+
+---
+
+## `ElectionLifecycleFacadeTest` (19) → **L3 = 186 / 1,376**
+
+**Wording corrected:** I wrote that covering the computed path *"is Session 3's design question."* **Session 3 already holds the `EM-VOT-002` implementation grant and has investigated that path.** **Session 1 records the verification obligation only:**
+
+> **`EM-VOT-002` — *"an election must have at least one approved candidate before voting may be opened"* — requires verification on BOTH (1) the explicit `open_voting` command path and (2) the computed lifecycle path that derives `VotingActive` without invoking `open_voting`.** **Stated as obligation, not design. Session 3's implementation will NOT be consumed as business authority.**
+
+### Neither non-passing row is a business question — so no decision is raised
+
+**Both executed individually for evidence:**
+
+| Row | Evidence | Category |
+|---|---|---|
+| `facade_guards_queries_against_deprecated_fields` **FAILURE** | *"Failed asserting that exception of type `App\Exceptions\DeprecatedQueryException` is thrown"* — `assertQueryAllowed(['status' => 'active'], …)` **does not throw**. The method exists; it does not reject `status` | **TACTICAL ARCHITECTURE.** The intent is **already adopted** — `ADR_20260807_1500`: the state/status column is a compatibility cache, not truth. **Adopted intent, absent enforcement.** **No business decision needed** |
+| `facade_preserves_canTransitionTo_for_backward_compatibility` **ERROR** | *"Call to undefined method `ElectionLifecycle::canTransitionTo()`"* | **STALE TEST.** It asserts a backward-compatibility affordance **that does not exist**. **This row verifies nothing at all.** Not a business question, not an architecture question |
+
+**Per the commission: the rule behind the FAILURE is already adopted, so it is classified against that authority rather than escalated. Nothing invented, nothing repaired.**
+
+### 🔴 17 of 19 rows verify DELEGATION, not business behaviour
+
+`canEdit`/`canVote`/`canManageVoters`/`canPublishResults` **delegate to snapshot** · `exposes` `allowedActions`/`blockedReason`/`isLocked`/`isTerminal`/`isVotingPhase`/`isInSetup`/`isActionAllowed`/`election` · returns current state · wraps election · accepts a pre-computed snapshot · usable in type hints · permits non-deprecated field queries.
+
+> **These verify that the facade FORWARDS correctly — Application-layer plumbing.** **They would all still pass if every underlying business rule were wrong.** **Classified `STRUCTURAL / DELEGATION`, joining `guard_is_injectable` and `VoterEligibilityPolicyContractTest`.**
+>
+> **Consequence for `SD-4`: the adopted universe carries substantial STRUCTURAL mass** — a 19-row class contributing **2** rows of business-relevant verification (both non-passing) **and 17 of delegation.** **The denominator is not a measure of business coverage.** **Quantifying the structural share across all 1,376 is not yet done and is NOT claimed.**
+
+### ⚠️ Measurement caveat discovered — per-row evidence depends on execution GROUPING
+
+**Run as a pair, both rows ERRORed inside `RefreshDatabase` → `migrate:fresh` (`tests/TestCase.php:47`), never reaching their bodies — 0 assertions.** **Run individually, each produced its true result** (FAILURE with the real assertion · ERROR with the real cause).
+
+> **The same two tests yield different outcomes depending on how they are grouped**, because `TestCase` skips transaction isolation for pgsql and re-migrates. **Methodological consequence: per-row evidence must come from an individual run or from the full-run baseline — NEVER from an arbitrary `--filter` subset.** **Recorded before it corrupted a classification; had I accepted the paired run, I would have recorded two ERRORs and missed both real causes.**
+
+### Universe-integrity note — the 1,376 is a SNAPSHOT, and `tests/` has moved
+
+**Session 3 has added untracked test files** (`EmVot002ApprovedCandidateBeforeVotingTest` · `EmVot002OpenVotingPreconditionTest` · `ElectionOnlyEntitlementPinTest`). **They are OUTSIDE the 1,376 universe and the denominator is unaffected — it is frozen by contract.** **But the universe no longer equals the contents of `tests/`.** **Stated precisely so no future run mistakes a changed tree for a changed denominator** — the 826/1,376 defect began exactly that way. **No production file is modified in the tree; execution evidence gathered above remains valid.**
+
+**Status: L3 = 186/1,376 · `SD-15` OPEN (the only outstanding decision from this stream's batches) · `SD-14` closed · `SD-1` unchanged · `1,395` NOT adopted · `1,376` frozen · baseline NOT re-run · Session 3's implementation NOT consumed as authority · no Constitution, production, schema, migration, test or fixture change · no failing test repaired.**
