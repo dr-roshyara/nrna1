@@ -52,4 +52,12 @@
 
 **Stop-condition scan:** none triggered. No scope excess · no new rule required · no new lifecycle state appearing necessary · no `EM-OPEN-021` decision being forced · no Full Membership introduction · no registry proposal · no Manifesto/Constitution collapse · no implementation detail being promoted.
 
+## ✅ ARB acceptance (2026-08-13) — and the standing trigger rule
+
+**Watch Pass 02 accepted as-is.** Standing instruction, verbatim:
+
+> *"Continue governance watch only. Do not act on any of the open decisions unless I explicitly decide them. Do not consume Session 3's implementation as authority. **Trigger the next watch only when: Session 3 commits · a governance stop condition occurs · or I make a new decision.**"*
+
+**Also confirmed by the ARB:** the developer-guide stop-hook message is a **non-blocking repository discipline reminder** — it is not a reason for the governance stream to become an implementation session. **Session 2 is now IDLE on the trigger rule.** The next substantive action belongs to **Session 3** *(finish the authorized `EM-VOT-002` implementation and its fixture repairs)*; **Session 1** continues its independent matrix work **without using Session 3's work as evidence until the proper handoff.**
+
 **Traceability:** `git log 217f2fe5..HEAD` *(empty)* · `git diff aaf21a90 -- app/ database/ routes/ tests/` *(2 files, 11 insertions)* · `git diff HEAD -- tests/Support/ElectionScenarioFactory.php` *(empty — withdrawn)* · `ElectionLifecycleEngineImpl:185` *(`hasCandidatesApproved` pre-exists in HEAD)* · contamination grep over the full delta *(empty)*.
