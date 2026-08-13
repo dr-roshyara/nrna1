@@ -41,6 +41,11 @@
    - Table relationships
    - Indexes and constraints
 
+6. **[EM_VOT_002_APPROVED_CANDIDATE_GATE.md](./EM_VOT_002_APPROVED_CANDIDATE_GATE.md)**
+   - EM-VOT-002: voting requires ≥1 approved candidate (adopted rule)
+   - Two enforcement points: `open_voting` precondition + computed lifecycle path
+   - EM-OPEN-021 fall-through observation (deliberately undecided)
+
 ### Setup & Migration
 
 6. **[migration-guide.md](../migration-guide.md)**
