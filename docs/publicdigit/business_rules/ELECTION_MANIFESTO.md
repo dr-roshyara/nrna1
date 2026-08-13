@@ -27,7 +27,7 @@
 
 ### Manifesto ≠ Constitution — standing separation (Principal Architect ruling, 2026-08-13)
 
-> **Manifesto = adopted business rules and invariants.**
+> **Manifesto = the governed home for adopted business rules and invariants, when ratified by ARB** *(ratification is `EM-OPEN-017`, open — corrected 2026-08-13 from "adopted business rules and invariants", which let the document declare its own authority through its definitions)*.
 > **`ElectionConstitution` = existing canonical implementation home for constitutional election workflow rules** *(established by ADR-001; valuable — to be extended carefully, never redesigned)*.
 > **Manifesto rules may be enforced through the Constitution where appropriate, but the Manifesto must not duplicate the Constitution's implementation structure.**
 > **Entitlement, ElectionMembership, suspension, credentials and voter-participation rules must remain OUTSIDE `ElectionConstitution` unless a future architectural decision explicitly establishes otherwise.**

@@ -1,7 +1,7 @@
 # `SD-14` ruling — record, and implementation-authorization package (PREPARED, NOT GRANTED)
 
-**Type:** ARB/PO ruling record + prepared authorization · **Date:** 2026-08-13 · **Programme:** IERVP (Session 2)
-**⛔ IMPLEMENTATION IS NOT AUTHORISED BY THIS DOCUMENT.** §3 is a package awaiting the Product Owner's explicit grant. **No production code, test, schema, migration or Constitution change was made.** Session 1's Master Matrix not read, classified, consumed or modified.
+**Type:** ARB/PO ruling record + implementation authorization · **Date:** 2026-08-13 · **Programme:** IERVP (Session 2)
+**Status:** ✅ **§3 AUTHORIZATION GRANTED by the Product Owner, 2026-08-13** — recorded verbatim, with the domain-invariant correction and the design-around-the-invariant constraint. **Session 3 may implement `EM-VOT-002` within the granted scope. Session 2 itself changed no production code, test, schema, migration or Constitution.** Session 1's Master Matrix not read, classified, consumed or modified.
 
 ---
 
@@ -55,11 +55,39 @@ Session 1: independent verification      ⬜
 
 ## 3 · Implementation-authorization package — **PREPARED FOR THE PRODUCT OWNER'S GRANT**
 
-> ### ☐ AUTHORIZATION — *unsigned until the Product Owner explicitly grants it*
+> ### ☑ **AUTHORIZATION GRANTED — Product Owner, 2026-08-13. Recorded verbatim:**
 >
-> **Scope:** encode `EM-VOT-002` at the `open_voting` boundary of `ElectionConstitution`, and wherever else is **necessary and sufficient** for the rule to hold on **every** path into `voting_active`.
+> **Implementation of EM-VOT-002 is authorized for Session 3.**
 >
-> **Grant wording, when given:** *"Implementation of EM-VOT-002 is authorized for Session 3."*
+> Scope: **Election-Only mode only.**
+>
+> Business rule: An election must have at least one approved candidate before voting may be opened.
+>
+> `ElectionConstitution` remains the constitutional implementation home for the `open_voting` precondition.
+>
+> Session 3 must use **strict TDD**: establish RED evidence first, then implement the minimum change necessary to make the invariant GREEN.
+>
+> The implementation must enforce EM-VOT-002 on **every path that can result in `voting_active`**, including the computed lifecycle path identified by `PBDIGIT-64`.
+>
+> **Do not assume that adding `has_approved_candidates` to `open_voting` is sufficient.**
+>
+> Do not invent or modify any other business rule. Do not implement Full Membership behaviour. Do not modify ElectionMembership entitlement, credential, suspension, or Organisation Membership rules. Do not create another Constitution or rules registry.
+>
+> Tests must reference **EM-VOT-002**, not review documents.
+>
+> After implementation, **Session 1 independently verifies the result. Session 3 does not self-certify** the architectural correctness.
+
+> ### The Product Owner's conceptual correction — binding on the implementation
+>
+> *"The Constitution is the authoritative implementation home"* is to be read as: **the authoritative architectural home for EXPRESSING the constitutional `open_voting` precondition** — **not** as a claim that the Constitution is the only place the rule is enforced.
+>
+> **The real requirement is a DOMAIN INVARIANT, not a command authorization:**
+>
+> > **`EM-VOT-002` must hold at the business boundary where an election becomes `voting_active`, regardless of which technical path produces that state.**
+>
+> **And the final DDD constraint, verbatim:** *"Do not design around the current test failure. Design around the adopted domain invariant."* The failing test is **evidence** that the invariant is unenforced — **it is not the specification.**
+>
+> **Implementation flow:** `EM-VOT-002` → RED test → **discover the actual `voting_active` transition paths** → identify the correct domain/application enforcement point → minimal implementation → GREEN → regression → **Session 1 independent verification.**
 
 **What the package contains, so the grant is informed:**
 
