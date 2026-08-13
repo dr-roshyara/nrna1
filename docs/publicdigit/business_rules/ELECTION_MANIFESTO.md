@@ -102,7 +102,9 @@
 |---|---|---|
 | **EM-VOT-001** | **Without a candidate, an election must not proceed to the next phase. Voting must not begin unless the election has at least one valid (approved) candidate.** | ADOPTED *(Product Owner, **2026-08-08**)* |
 
-**Note on canonical overlap:** the Constitution **partially** expresses this, as the `has_approved_candidates` precondition on one nomination transition. **Whether the rule binds at the `open_voting` boundary — i.e. whether *"next phase"* includes VOTING — is `EM-OPEN-020` (`SD-14`), awaiting Product Owner confirmation.** Recorded here because the business rule is broader than the single constitutional precondition; **the precondition itself remains canonical in the Constitution and is not restated.**
+| **EM-VOT-002** | **An election must have at least one approved candidate before voting may be opened.** *(`open_voting` must not succeed with zero approved candidates.)* | ADOPTED *(ARB/PO ruling **`SD-14` = YES**, 2026-08-13)* |
+
+**Note on canonical overlap:** the Constitution **partially** expresses `EM-VOT-001`, as the `has_approved_candidates` precondition on the nomination transition; the precondition itself remains canonical in the Constitution and is not restated. **`SD-14` = YES (ARB/PO, 2026-08-13) resolved the boundary question:** *"the next phase"* **includes the voting phase**, so the requirement binds at `open_voting` as well — adopted as **`EM-VOT-002`**, deliberately phrased with the Constitution's own precise vocabulary (*"at least one **approved** candidate"*) so business rule and implementation vocabulary stay aligned. **`ElectionConstitution` is the authoritative implementation home for this precondition. Implementation is NOT yet authorised** — the ruling closes the business question only; implementation authorization is a separate act.
 
 ## 5 · Adopted sequencing
 
@@ -167,6 +169,7 @@
 | EM-VOC-002 | `Q-B1` closure | 2026-08-12 | global | ADOPTED |
 | EM-VOC-003 | admission-gate adopted rules 1, 2, 5 | 2026-08-12 | global | ADOPTED |
 | EM-VOT-001 | `PBDIGIT-64` — *"Without a candidate an election must not go into the next phase"*, stated by the Product Owner | **2026-08-08** | election lifecycle | ADOPTED |
+| EM-VOT-002 | **`SD-14` = YES** ruling — *"next phase"* includes voting; vocabulary aligned to the Constitution's `has_approved_candidates` | **2026-08-13** | `open_voting` boundary | ADOPTED |
 | EM-SEQ-001 | Election-Only-first sequencing decision | 2026-08-12 | programme | ADOPTED |
 | EM-SEQ-002 | Election-Only-first sequencing decision | 2026-08-12 | programme | ADOPTED |
 | EM-FM-001…005 | hierarchy clauses 1, 2, 3, 4, 7 | 2026-08-12 | Full Membership | ADOPTED · DEFERRED |
@@ -201,7 +204,7 @@
 | **EM-OPEN-019** | 🔴 **What is the voter threshold below which an election is auto-approved without administrator review?** **The implementation and the Constitution's own docblock both say ≤ 40** *(`ConstitutionalTransitionGuard`: "Free plan (≤40 voters) always eligible")*. **The Product Owner stated ≤ 30 during runtime verification on 2026-08-09** — *"election with voters under 30 can be accepted automatically."* **Two figures, two sources. NOT resolved here: I cannot choose between a Product Owner statement and the implementation, and the statement may have been operational rather than a rule declaration** | election approval |
 | **EM-OPEN-018** | **`PBDIGIT-50` — in which timezone are election times displayed, and what is the fallback when detection fails?** *(A narrow Product Owner steer is on record — **device timezone, not residence** — but the ticket is **`OPEN — not authorised`** with the fallback undecided, so it is **NOT migrated as an adopted rule**.)* | election display |
 | **EM-OPEN-017** | **`D-MANIFEST`** — is this artifact, at this location and name, the ratified canonical home? **ARB 2026-08-12: deliberately NOT ratified yet.** Ruled useful and non-redundant *(it holds rule kinds the Constitution must not absorb — see the authority investigation)*, but its canonical status and its **name** (*"Manifesto" risks reading as a second Constitution*) await an explicit decision | 🟡 **this document's own status** |
-| **EM-OPEN-020** | **`SD-14`** — does *"the next phase"* in `EM-VOT-001` include VOTING, i.e. is the candidate requirement binding at the `open_voting` boundary? **Until confirmed, `EM-VOT-001` is established only at the nomination transition.** Moving/encoding it constitutionally is *accepted in principle*, **blocked on this confirmation** | 🔴 **the `open_voting` candidate-precondition work** |
+| ~~**EM-OPEN-020**~~ | ✅ **CLOSED — `SD-14` = YES** *(ARB/PO, 2026-08-13)*: *"the next phase"* **includes the voting phase**. Adopted as **`EM-VOT-002`** (§4a). **Implementation remains separately gated** — the ruling explicitly says *"do not implement yet"* | ✅ resolved |
 
 **`EM-OPEN-017` is stated plainly:** this Manifesto was created under a Product-Owner instruction to canonicalize, and **its ratification as *the* canonical artifact is itself a governance decision that has not been separately recorded.** **It is offered as the canonical home, not declared to be one by its own authority.**
 
