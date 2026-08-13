@@ -2242,3 +2242,43 @@ use ReflectionClass;
 > **RECOMMENDED NEXT MEASUREMENT — not started, and it needs no decision to begin:** read a **sample** of the Security cluster to establish whether it is class A (business), class C (fitness) or mixed. **Until then the 39% is `SHAPE NOT ESTABLISHED`, and no claim about the universe's business coverage can be made in either direction.**
 
 **Status: L3 = 240/1,376 (unchanged this batch, by design) · Security cluster 539 rows `SHAPE NOT ESTABLISHED` · `SD-15` OPEN · `SD-1` unchanged · `1,395` NOT adopted · `1,376` frozen · no rows added, none reclassified · Session 3's implementation and new tests NOT consumed · no Constitution, production, schema, migration, test or fixture change.**
+
+---
+
+## Security-cluster sample — **4 of 4 files structural; my own "outcome-relevant" caution was WRONG**
+
+**Bounded sample: 4 files · 36 of 539 rows · 6.7% of the cluster. `L3` unchanged at 240 — sampling establishes SHAPE, it does not classify rows.** **Files chosen to span the apparent spectrum, deliberately including the most business-sounding names rather than the convenient ones.**
+
+| File | Rows | Sampled assertions | Shape |
+|---|---:|---|---|
+| **`BallotAuthorizationProtocolTest`** | 5 | `assertEquals(1, …UnifiedTokenProtocol->authorizationSteps())` · `assertFalse(…->requiresSeparateCommit())` | 🔹 **enum contract** |
+| **`ParticipationEligibilityEvidenceTest`** | 5 | `assertTrue($reflection->isReadOnly())` · `assertTrue($evidence->hasActiveMembership)` *(asserts what the constructor was handed)* | 🔹 **VO structure + tautological property reads** |
+| **`DivergenceSeverityTest`** | 22 | `assertCount(5, $cases)` · `assertSame('info', DivergenceSeverity::Info->value)` | 🔹 **pure enum-value assertions** |
+| **`TrustLevelTest`** | 4 | `assertEquals('attested', TrustLevel::Attested->value)` | 🔹 **pure enum-value assertions** |
+
+### ⛔ Correcting myself — the specific examples I offered were wrong
+
+**Last turn I wrote that several Security names are *"plainly outcome-relevant"*, naming `BallotAuthorizationProtocolTest` and `ParticipationEligibilityEvidenceTest` first.** **The sample refutes both.**
+
+> **`BallotAuthorizationProtocolTest` contains no ballot, no vote and no election.** It asserts that an enum's `authorizationSteps()` returns **1 or 2**. **`ParticipationEligibilityEvidenceTest` asserts a value object is `readonly` and holds the values its constructor was given.**
+>
+> **I hedged correctly in kind — I claimed nothing and labelled the cluster `SHAPE NOT ESTABLISHED` — but my illustrative examples were chosen from names alone, which is the very error this programme forbids.** **Recorded as the seventh incident, and the first where the mistake was a REASONING shortcut rather than a tooling slip.**
+
+**This is now the programme's strongest evidence for its own standing rule:** *a name is a candidate, never a classification.* **The most business-sounding name in a 539-row cluster verifies an enum constant.**
+
+### Measured composition — and the extrapolation NOT made
+
+* **OBSERVED:** **4 of 4 sampled files are enum/VO contract tests.** **Zero business-behaviour verification in the sample.**
+* **OBSERVED:** these rows share the facade's property — **they would all still pass if every election business rule were wrong.**
+* **CONSISTENT WITH:** the reflection indicator (16 of 38 files) and the fitness class's own docblock.
+* 🔴 **NOT ESTABLISHED — and deliberately not extrapolated:** **6.7% sampled cannot characterise 539 rows.** **No claim is made about the un-read 503.** **The remaining files are NOT classified by name** — that is exactly what just went wrong.
+
+### `SD-4` — composition reported, reframing NOT proposed
+
+**Per the commission, I report the composition and stop.** **A proposal to reframe `SD-4` would need broader sampling than 6.7%, and `SD-4` remains the Product Owner's either way.**
+
+> **What can be said now, and no more: the adopted universe's largest block has produced, in every sampled file, tests that verify TYPE CONTRACTS rather than election behaviour. If that holds across the cluster, the 1,376 figure describes the estate's structural surface far more than its business coverage — but that conditional is not yet evidence, and I will not present it as one.**
+
+**Scope discipline acknowledged: this investigation is SECONDARY to Election-Only delivery and blocks nothing.** **`EM-VOT-002` verification remains Session 3's to finish and mine to check afterwards — not to be pre-empted by universe-shape research.**
+
+**Status: L3 = 240/1,376 (unchanged) · Security cluster 6.7% sampled, 4/4 structural, 503 rows `SHAPE NOT ESTABLISHED` · `SD-15` OPEN · `SD-4` unreframed · `SD-1` unchanged · `1,395` NOT adopted · `1,376` frozen · Session 3's implementation NOT consumed · no Constitution, production, schema, migration, test or fixture change.**
