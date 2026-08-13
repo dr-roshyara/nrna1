@@ -330,3 +330,174 @@ return $election->candidacies()->where('status','approved')->exists();
 | **Session 1** | read `VoterStrategySnapshotTest` ×3; then establish whether the 6 Security rows are order-dependent by running them in isolation |
 
 **Unchanged: nothing repaired, greened, renamed, deleted or skipped · `SD-1` = 1,376 · `L3` = 240 · `ElectionOnlyEntitlementPinTest` (6 ERROR, untracked, not mine) remains OUTSIDE the frozen universe as external evidence for `PBDIGIT-65`/`69`.**
+
+---
+
+# 11 · P2 evidence — **the anomalous state is REACHABLE IN PRODUCTION through legitimate operations**
+
+> **Session 1 does not recommend or select the domain semantics.** **This section reports what the current system does. Every `EM-OPEN-021` answer remains open.**
+
+## 11.1 · 🔴 The production path — found, and it uses only guarded, legitimate calls
+
+**The throw requires `nomination_completed = true` with ZERO approved candidates. Two production writers exist:**
+
+| Writer | Guard |
+|---|---|
+| `Election::completeNomination()` | ✅ **explicitly blocks it** — `if (approved count === 0) throw new \InvalidArgumentException('Cannot complete nomination: No candidates approved')` |
+| 🔴 **`Election::forceCloseNomination()`** | **NO approved-candidate guard.** Its only guard is *"Cannot modify nomination after voting has started"*. It **auto-rejects every pending candidacy** and then sets `nomination_completed = true` |
+
+**So the reachable sequence, entirely within permitted operations:**
+
+```
+1. election has only PENDING candidacies (none approved yet)
+2. chief calls forceCloseNomination()  BEFORE voting_starts_at   ← permitted by its own guard
+3. all pending → REJECTED · zero approved · nomination_completed = true
+4. the clock reaches voting_starts_at  → window OPEN
+5. derivation: rule 5 refused (EM-VOT-002) · rule 6 matches but returns nothing
+6. → InvalidElectionStateException
+```
+
+> ⚠️ **This is NOT a fixture artifact. It is reachable in production via a legitimate administrative action.** **And note the irony: `forceCloseNomination`'s guard exists to prevent disruption AFTER voting starts, yet the call CREATES the configuration that becomes undecidable WHEN voting starts.**
+
+## 11.2 · Where the exception escapes — **there is no handler anywhere**
+
+| Layer | Evidence |
+|---|---|
+| **3 middlewares derive state** | `EnsureVotingActive:47` · **`VoteEligibility:62,79` (VOTER-FACING)** · `EnsureElectionState:54` |
+| `catch` blocks in those three | 🔴 **0 · 0 · 0** |
+| Handler for `InvalidElectionStateException` in `app/Exceptions/` or `bootstrap/app.php` | 🔴 **NONE** |
+
+> **PROVEN: the exception propagates out of middleware unhandled → HTTP 500 on any gated route, before the controller runs.** **The measured row confirms the shape: `import_page_is_forbidden_in_voting_active_state` expected **403** and instead ERRORed — in deployment that is a **500 where a clean 403 was intended**.** **`VoteEligibility` being affected means the VOTER-facing path is included.**
+
+## 11.3 · Recovery / reachability matrix
+
+| | Operation | Verdict | Basis |
+|---|---|---|---|
+| **A** | closed normally (`close_voting`) | 🔴 **DISPROVEN** | **measured** — `test_close_voting_transition` throws |
+| **B** | suspended | 🔴 **DISPROVEN BY TRACE** | `Election::transitionTo()` computes `ElectionLifecycle::of()->snapshot()` **unconditionally before** the system-trigger check, so every transition derives state first. **Traced, NOT executed — so "by trace", not "measured"** |
+| **C** | administratively repaired | **NOT ESTABLISHED** | no repair path examined |
+| **D** | returned to a setup state | **NOT ESTABLISHED** | would require a transition → same mechanism as B |
+| **E** | advanced by approving a candidate | **NOT ESTABLISHED** | ⚠️ `CandidacyManagementController:52` exposes `nominationLocked => (bool) nomination_completed` — **which `forceCloseNomination` has just set true.** **If nomination being locked prevents new approvals, this exit is closed too — NOT VERIFIED, and it is the single most decision-relevant unknown left** |
+| **F** | **the clock** | ✅ **PROVEN BY TRACE** | at `now >= voting_ends_at`, **rule 4 returns `Counting`** (its inner check — approved · admin · nomination complete — is satisfied). **The election becomes derivable again with no intervention** |
+
+> **The only established exit is the passage of the voting window.** **Maximum stuck interval = `[voting_starts_at, voting_ends_at)`.**
+
+## 11.4 · Five-state matrix — **static trace of rules 1–12, not executed**
+
+| | Configuration | Derived result |
+|---|---|---|
+| **A** | window open · no approved · **nomination INCOMPLETE** | ✅ **`SetupNomination`** — rule 7 catches it. **No throw** |
+| **B** | window open · no approved · **nomination COMPLETE** | 🔴 **THROW** — rule 6 matches, returns nothing; 7–12 all skip |
+| **C** | window open · **≥1 approved** | ✅ **`VotingActive`** — rule 5 |
+| **D** | **window CLOSED** · no approved | ✅ **`Counting`** — rule 4. ⚠️ **`Counting` carries NO candidate requirement, so a candidate-less election proceeds to counting zero votes.** *Observation only* |
+| **E** | window open · **only pending/rejected** | **identical to A or B** — `hasCandidatesApproved()` is false either way, so the outcome turns entirely on `nomination_completed` |
+
+> 🔑 **`nomination_completed` is the sole discriminator between a safe fall-through (`SetupNomination`) and the throw.** **The anomalous state has a precise domain description: *"nomination was declared complete, yet no candidate is approved."***
+
+## 11.5 · Existing domain precedent — **reported only, NOT selected**
+
+| Precedent | Where |
+|---|---|
+| **Soft handling of a constitutional anomaly** | **Rule 4**: *"Setup incomplete but voting closed → constitutional limbo (soft enforcement)"* — `Log::warning` and **continue**, no throw |
+| **`SetupNomination` used as a fall-back** | **Rule 6**, when the voting window is undefined |
+| **`SetupAdministration` used as a fall-back** | **Rule 7**, when the nomination window is pending |
+| **Suspension as an explicit operational pause** | Rule 1, checked first — **an already-suspended election always derives cleanly** |
+| **Hard refusal** | `InvalidElectionStateException` · `InvalidTransitionException` · `LogicException` on an unknown precondition |
+
+🔴 **The codebase therefore already answers comparable questions in BOTH directions — soft-warn-and-continue AND hard-throw.** **Their existence authorises none of them as the meaning of this state. I select none.**
+
+## 11.6 · Proven vs not established
+
+**PROVEN:** `EM-VOT-002` enforced on both paths with the approval-correct predicate · the anomaly is reachable in production via `forceCloseNomination()` · no `catch` and no global handler exist · `close_voting` throws (measured) · a voter-facing middleware derives state · `nomination_completed` is the discriminator · the clock resolves it at `voting_ends_at`.
+
+**NOT ESTABLISHED:** whether a candidate can still be approved once nomination is locked *(exit E — the most decision-relevant gap)* · whether `suspend` fails in execution as the trace predicts · whether any UI surfaces the 500 gracefully · the 3 `VoterStrategySnapshotTest` rows · whether the 6 Security-cluster rows are order-dependent · how many additional production consumers derive state.
+
+## 11.7 · Is the evidence sufficient for the `EM-OPEN-021` ruling?
+
+> ✅ **YES for the ruling itself.** The decision-maker now knows: **the state is production-reachable through a legitimate action; it has no derivable lifecycle value; every gated route 500s including a voter-facing one; the election cannot be closed and (by trace) cannot be suspended; it self-resolves only when the voting window elapses; and the codebase contains precedents for both soft and hard handling.**
+>
+> **The one gap that could change the URGENCY — not the ruling — is exit E.** **If a candidate can still be approved, an administrator has a manual escape and this is serious-but-recoverable. If nomination-locked blocks approval, the only escape is waiting out the voting window.** **I did not verify it, because doing so would mean constructing a scenario whose intended semantics are precisely what `EM-OPEN-021` has not yet decided.**
+
+**Session 1 does not recommend or select the domain semantics.**
+
+---
+
+**P2 EVIDENCE COMPLETE · STOPPING AS INSTRUCTED**
+**Nothing repaired · nothing greened · nothing deleted · no fixture, production, Constitution, schema or migration change · `SD-1` = 1,376 · `L3` = 240 · `65`/`69` not investigated · `ElectionOnlyEntitlementPinTest` remains outside the frozen universe**
+
+**Traceability:** `Election::forceCloseNomination()` · `Election::completeNomination()` (guarded) · `ElectionLifecycleEngineImpl::getState()` rules 1–12 · `:164` throw · `EnsureVotingActive:47` · `VoteEligibility:62,79` · `EnsureElectionState:54` · `CandidacyManagementController:52` · measured JUnit run `post-emvot002.xml` (1,390 rows)
+
+---
+
+# 12 · P3 — recoverability closed, and the HTTP 500 is **PROVEN**
+
+## 12.1 · The HTTP consequence — no longer an inference
+
+**Checked the framework path, not only `grep`:**
+
+```php
+final class InvalidElectionStateException extends \DomainException { … }   // no render(), no report(), no status
+```
+
+| Layer | Finding |
+|---|---|
+| Exception class | **plain `\DomainException`** — **no `render()`**, so Laravel cannot derive a response from it |
+| `bootstrap/app.php` → `withExceptions` | configures **only `dontFlash`** for password fields — **no mapping, no handler** |
+| The 3 deriving middlewares | **no `catch`** *(P2)* |
+
+> ✅ **PROVEN — not traced, established: an election in the anomalous state returns HTTP 500 on any gated route, including the voter-facing `VoteEligibility` path.** **Laravel's default handling applies because nothing anywhere claims the exception.**
+
+## 12.2 · 🔑 Exit E resolved — and the obstruction is NOT a lock
+
+**Approval path: `CandidacyReviewController::review()` → sets `'status' => 'approved'`.**
+
+**Its complete guard set:** `demo → 404` · `election_id` mismatch → 403 · `organisation_id` mismatch → 403 · **`abort_if($application->status !== 'pending', 422, 'Application has already been processed.')`**
+
+| Question | Answer |
+|---|---|
+| **A · Does `forceCloseNomination()` lock nomination?** | 🔴 **NO.** `nominationLocked` exists **only as an Inertia prop** (`CandidacyManagementController:52`, `(bool) nomination_completed`) — **a UI hint with NO enforcement anywhere.** `store`/`update`/`destroy` guard only demo-type and tenancy |
+| **B · What approves a candidacy?** | `CandidacyReviewController::review()` |
+| **C · Guards?** | the four above — **none concerns nomination completion** |
+| **D · Does `nomination_completed` prevent approval?** | 🔴 **NO — nothing enforces it** |
+| **Does approval derive lifecycle state?** | ✅ **NO** — no `ElectionLifecycle`, no `snapshot` in that controller. **So approval would NOT throw, even in the anomalous state** |
+
+> **So the recovery obstruction is NOT a lock — it is DATA DESTRUCTION.** **`forceCloseNomination()` set every `pending` candidacy to `rejected`, and `review()` refuses anything that is not `pending` (422).** **The applications that could have been approved were consumed by the very call that created the anomaly.**
+>
+> **That distinction is material for the ruling: a lock would be a deliberate policy decision; this is a SIDE EFFECT.** *(Reported as fact — I do not judge whether the side effect is correct.)*
+
+## 12.3 · Recovery-path matrix — final
+
+| Path | Verdict | Basis |
+|---|---|---|
+| `close_voting` | 🔴 **DISPROVEN** | **measured** — throws |
+| `suspend` | 🔴 **DISPROVEN BY TRACE** | `transitionTo()` derives the snapshot unconditionally first |
+| **re-approve an EXISTING candidacy** | 🔴 **DISPROVEN** | all were set to `rejected`; `review()` aborts **422** unless `pending` |
+| **approve a NEW candidacy/application** | ⚠️ **NOT ESTABLISHED** | **no lock blocks it and the path does not throw** — but whether a new application can be CREATED after force-close, with the nomination window elapsed and voting open, is **unverified** |
+| administrative repair · return to setup | **NOT ESTABLISHED** | both require a transition → same mechanism as `suspend` |
+| **the clock** | ✅ **PROVEN BY TRACE** | rule 4 → `Counting` at `voting_ends_at` |
+
+**No candidate path was chosen between; each is classified independently, per the commission.**
+
+## 12.4 · ESTABLISHED · NOT ESTABLISHED · UNDECIDED
+
+**ESTABLISHED**
+`EM-VOT-002` enforced on both paths with the approval-correct predicate · the anomalous state is **production-reachable** via `forceCloseNomination()` using only permitted operations · **`nomination_completed` is the sole discriminator** · **HTTP 500 is proven**, with no `catch`, no `render()`, no global mapping · `close_voting` disproven as recovery (measured) · **no nomination lock exists anywhere** · **the obstruction to re-approval is the auto-rejection side effect** · the clock resolves the state at `voting_ends_at`.
+
+**NOT ESTABLISHED**
+Whether a NEW candidacy/application can be created and approved in this configuration *(the last open recovery question)* · whether `suspend` fails in execution as traced · whether any UI degrades the 500 gracefully · how many further production consumers derive state · the 3 `VoterStrategySnapshotTest` rows · whether the 6 Security-cluster rows are order-dependent.
+
+**UNDECIDED**
+**`EM-OPEN-021`** — the intended lifecycle semantics.
+
+## 12.5 · Why I stopped short of the last unknown
+
+**Verifying the new-application path would require constructing an election in the anomalous configuration and attempting a candidacy submission — and the expected outcome of that attempt IS the semantics `EM-OPEN-021` has not decided.** **Measuring it would mean asserting an intended result. I declined for the same reason I declined exit E in P2.** **It is a bounded, cheap follow-up ONCE the ruling exists.**
+
+> **`EM-OPEN-021` remains a domain/business decision. This verification does not select its semantics.**
+
+---
+
+**P3 COMPLETE · STOPPING · EVIDENCE PACKAGE RETURNED**
+**Nothing repaired · nothing greened · nothing deleted · no production, test, fixture, configuration, Constitution, schema or migration change · `SD-1` = 1,376 · `L3` = 240 · Session 2's decisions and Session 3's implementation not consumed as authority**
+
+**Traceability:** `InvalidElectionStateException` *(plain `\DomainException`, no `render()`)* · `bootstrap/app.php:134` `withExceptions` *(`dontFlash` only)* · `CandidacyReviewController::review()` *(4 guards, `pending` required, no lifecycle read)* · `CandidacyManagementController:52` *(`nominationLocked` = UI prop only)* · `Election::forceCloseNomination()` *(auto-rejects pending, no approved-candidate guard)* · `EnsureVotingActive:47` · `VoteEligibility:62,79` · `EnsureElectionState:54` · `ElectionLifecycleEngineImpl::getState()` rules 1–12
