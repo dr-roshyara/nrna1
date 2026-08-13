@@ -2072,3 +2072,54 @@ $this->assertFalse($this->regularMember->can('create', [Election::class, $this->
 * **Tenancy verification balance:** C1 has **3 in-universe tenancy rows**, while C6's eligibility tenancy row sits **outside** the universe *(SD-4 evidence §2)*. **Tenancy is not uniformly excluded — it is excluded for eligibility specifically.** **A precision that strengthens the SD-4 evidence rather than restating it.**
 
 **Status: L3 = 211/1,376 (15.3%) · `SD-15` OPEN · `SD-8` affects 25 rows' membership only · `EM-OPEN-019` blocks 0 rows · `SD-1` unchanged · `1,395` NOT adopted · `1,376` frozen · Session 3's implementation and new tests NOT consumed · no Constitution, production, schema, migration, test or fixture change.**
+
+---
+
+## `Unit\Domain\Election\TransitionTest` (14, all PASSED) → **L3 = 225 / 1,376**
+
+**A pure-PHP Domain value-object test** (plain `PHPUnit\Framework\TestCase`, no Laravel) — **compliant with the project's Domain-layer rule, and the batch's counterpoint to the facade's 17 delegation rows: every row here asserts a real invariant.**
+
+| Rows | Verifies |
+|---:|---|
+| **4** | **immutability** — `readonly` properties reject modification · `withMetadata()` returns a NEW instance · metadata chainable · `getMetadata()` returns value-or-default |
+| **4** | **factory semantics** — `manual()` sets `MANUAL` · `automatic()` sets the system actor · custom trigger · grace-period trigger |
+| **3** | **actor normalisation** — int cast to string · **null defaults to `'system'`** · trigger defaults to `MANUAL` |
+| **2** | `isSystemTriggered()` true for a system actor · trigger value accessible |
+| **1** | **empty action throws `InvalidArgumentException`** |
+
+### 🔑 These rows are security-load-bearing, and I traced what they gate
+
+```php
+Transition.php:24   $this->actorId = (string) ($actorId ?? 'system');
+Transition.php:72   public function isSystemTriggered(): bool { return $this->actorId === 'system'; }
+Election.php:1651   if (! $transition->isSystemTriggered()) { $guard->assertAllowed(…); }
+```
+
+> **`isSystemTriggered()` is what decides whether the CONSTITUTIONAL GUARD runs at all.** The 14 rows verify the mechanism that controls constitutional enforcement — **this is the most consequential value object the programme has classified.**
+
+**ARCHITECTURAL OBSERVATION — latent hazard, NOT a defect, and NOT live:**
+
+**The bypass keys on `actorId === 'system'` — a string sentinel with a silent null default — rather than on the `trigger` enum that exists precisely to express intent.** **Consequence: `Transition::manual('open_voting', 'system')` would be MANUAL by trigger yet system by actor, and would bypass the guard.**
+
+**Measured, before claiming anything:**
+
+| Check | Result |
+|---|---|
+| Direct `new Transition(` in `app/` | **ZERO** — every production path goes through a factory |
+| `Transition::manual(…)` with `'system'` | **ZERO** |
+| `manual()`'s signature | `string\|int $actorId` — **non-nullable, so null cannot silently reach the bypass** |
+| `automatic()` | passes `'system'` **explicitly** — an intentional, visible bypass |
+
+> **CONCLUSION: the hazard is LATENT, not live.** **No production caller can reach the bypass implicitly.** **Recorded as an architectural observation for whoever owns the state machine — not a defect claim, not a business question, and nothing to change.** *(I nearly reported a live bypass; the four checks above closed it. Stating the checks, not just the conclusion.)*
+
+### ⚠️ A bounded verification-gap question — the MECHANISM is verified, the CONSEQUENCE may not be
+
+**These 14 rows verify that `isSystemTriggered()` returns the right boolean. No row here verifies what that boolean CAUSES** — that a system-triggered transition **skips `assertAllowed`**.
+
+**And the nearest candidate does not cover it:** `ConstitutionalTransitionGuardTest::system_actions_allowed_without_authenticated_user` calls `$this->guard->assertAllowed(…)` **directly**, proving the `system` **ROLE** is accepted — **it never exercises `Election::transitionTo()`'s bypass branch at all.**
+
+> **`NOT ESTABLISHED`: whether any in-universe row verifies that the bypass branch behaves as intended.** **Bounded honestly — I checked the two obvious candidate classes, not all 1,376 rows.** **This is a candidate gap for a later batch, NOT a finding.**
+
+**Status: L3 = 225/1,376 (16.4%) · `SD-15` OPEN (only open decision from this stream) · `SD-1` unchanged · `1,395` NOT adopted · `1,376` frozen · Session 3's implementation and new tests NOT consumed · no Constitution, production, schema, migration, test or fixture change · nothing repaired.**
+
+> **Progress-number discipline restated, since the figure is now sizeable: `225 / 1,376` means *"225 rows have been read and classified"* — it does NOT mean 16.4% of the Election is verified.** **This batch's 14 rows carry more business weight than the facade's 19; the count cannot express that, which is precisely why the matrix records SHAPE alongside status.**
