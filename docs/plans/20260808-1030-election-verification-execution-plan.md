@@ -2282,3 +2282,52 @@ use ReflectionClass;
 **Scope discipline acknowledged: this investigation is SECONDARY to Election-Only delivery and blocks nothing.** **`EM-VOT-002` verification remains Session 3's to finish and mine to check afterwards — not to be pre-empted by universe-shape research.**
 
 **Status: L3 = 240/1,376 (unchanged) · Security cluster 6.7% sampled, 4/4 structural, 503 rows `SHAPE NOT ESTABLISHED` · `SD-15` OPEN · `SD-4` unreframed · `SD-1` unchanged · `1,395` NOT adopted · `1,376` frozen · Session 3's implementation NOT consumed · no Constitution, production, schema, migration, test or fixture change.**
+
+---
+
+## Frame corrected · sampling PRE-REGISTERED · disposition candidates consolidated
+
+**Two artifacts added, no rows classified — `L3` stays 240/1,376.**
+
+### ⛔ Frame correction — my published namespace label was wrong
+
+**I reported *"`Tests\Unit\Domain\Election\Security\*` holds 539 rows."*** **My pattern `grep -F 'Election\Security'` matched THREE namespaces, while my `find` searched only the Domain path — which is why 38 of 76 files looked "missing".**
+
+| Namespace | Rows | Files |
+|---|---:|---:|
+| `Unit\Domain\Election\Security\*` | **312** | 37 |
+| `Unit\Application\Election\Security\*` | **218** | 38 |
+| `Feature\Election\Security\SecuritySchemaTest` | **9** | 1 |
+| **TOTAL** | **539** | **76** |
+
+**Both dimensions reconcile (312+218+9 · 37+38+1).** **The 539 was always right; the attribution was not.** **Eighth incident, fifth of attribution.** **And the error concealed something material: the cluster spans BOTH Domain and Application layers, which answer different questions.** **Three basenames occur twice in different sub-namespaces, so the frame is keyed on the full class name.**
+
+### Sampling pre-registered — `docs/publicdigit/reviews/2026-08-13-security-cluster-sampling-preregistration.md`
+
+**Registered BEFORE reading, so the result cannot be steered by which files I open.** **Frame 539 rows · unit = the ROW, not the file · systematic selection every 10th row from start 5 ⇒ n = 54 (10.0%) · substitution FORBIDDEN · six categories fixed in advance (S1 type contract · S2 VO structure · S3 fitness · B1 business invariant · B2 trust-with-consequence · X).**
+
+**The discriminator, fixed now so it cannot drift:** > **"Would this assertion still pass if every Election business rule were implemented wrongly?" YES → structural. NO → business.**
+
+**And the limitation stated in advance, against my own likely result:** **clustering dominates precision** (a 22-row enum test contributes 22 near-identical rows, so effective *n* ≈ classes hit, not 54), and **a stride of 10 over a name-sorted frame under-samples small classes, biasing the estimate TOWARD the shape of LARGE classes — which carry the reflection indicator.** > **So the bias runs TOWARD "structural": a structural result must be discounted for it, and a business-heavy result would be the more surprising finding.** **My earlier 4-file probe is excluded from the measurement — it was file-selected, name-selected, and cannot estimate a row proportion.**
+
+### Disposition candidates consolidated — `docs/publicdigit/reviews/2026-08-13-test-estate-disposition-candidates.md`
+
+**Confirmed: nothing has been deleted, renamed, rewritten or repaired.** **The three-phase boundary is recorded — `EVIDENCE (Session 1) → DISPOSITION (PO/ARB) → CLEANUP (separate session, re-baselined)` — and the frozen 1,376 is precisely what makes phase 1 answerable.**
+
+| | Candidates |
+|---|---|
+| **A · Retirement** | `facade_preserves_canTransitionTo…` — stale, verifies nothing. **Not auto-deleted: removal presumes the BC affordance was dropped deliberately, which I have not established** |
+| **B · Conformance — must NOT be removed** | `facade_guards_queries_against_deprecated_fields` — **the test is right; `ADR_20260807_1500` is adopted and unenforced** |
+| **C · Keep RED** | `open_voting_rejects_if_missing_candidates` — backed by adopted `EM-VOT-002` |
+| **D · Blocked** | `guard_validates_preconditions` — **`SD-15` open; premature either way** |
+| **E · Duplication** | 2 pairs — **names/subjects compared, NOT full assertion sets** |
+| **F · Rename** | **8 measured** misleading names — **valid tests; deletion would be wrong** |
+| **G · Coverage gap** | 2 `view_results` rows — **disposition is ADDITION or REWRITE, not deletion** |
+| **H · Comment hygiene** | 2 test comments citing the FK dropped in May *(the migration is history — must not be edited)* |
+| **I · Anomaly** | `OverlaySignalCategoryTest` — in the filesystem, **zero rows in the matrix.** Cause NOT ESTABLISHED |
+
+> **Categories B and C are flagged explicitly as MUST-NOT-REMOVE, because a *"failing test → delete test"* reflex would destroy exactly the evidence this programme was convened to produce.**
+
+**Note on `.claude/CONTEXT.md`: deliberately NOT touched.** **Sessions 2 and 3 are active in this repository and CONTEXT is a single shared current-state file; a blind rewrite would clobber their state.** **Session 1's state lives in this plan and in the appended section of `.claude/sessions/2026-08-13.md`.**
+
+**Status: L3 = 240/1,376 · sampling registered, EXECUTION NOT STARTED · frame 539/76 corrected and reconciled · disposition candidates registered, NOTHING EXECUTED · `SD-15` OPEN · `SD-4` unreframed · `SD-1` unchanged · `1,376` frozen · Session 3's implementation NOT consumed · no production, schema, migration, Constitution, test or fixture change.**
