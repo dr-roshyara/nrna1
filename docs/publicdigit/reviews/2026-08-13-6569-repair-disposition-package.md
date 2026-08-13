@@ -23,6 +23,8 @@
 
 **Documentation arithmetic discrepancies — preserved, NOT silently fixed (PO instruction):** ① audit §3 class C says **"8"** but lists **9** names (the audit's own parenthetical partially acknowledges the Demo pair); ② `OrganisationUser` is deliberately dual-listed (B+E), so class totals must not be summed; ③ audit §1's headline says **"ONE demonstrated violation (runtime-proven)"** while §4/§8 record **"2 sites, 1 mechanism"** — consistent once proof provenance is stated (site 1 proven by P6 now; site 2 by the ticket's own earlier runtime A/B + verbatim-unchanged static check). None of these invalidates the 41-consumer count, which is independently stated.
 
+> **Update (2026-08-13, `67ace629`):** Session 1 has appended its own §11 correction record — original text left standing, corrections not silently applied: **class C = 9 confirmed**; totals must not be summed (dual-listing); and the §1 sentence *"the sites that remembered are compliant"* **withdrawn as too strong** — the accurate statement is now on their record: *"the bypass count measures how widely correctness depends on per-site developer memory, not how often it was achieved."* Core findings unchanged. Items ① and ② of this list are thereby resolved by their author; item ③ (proof provenance) stands as explained here.
+
 ## 2 · The repair subject, precisely
 
 One mechanism, two expressions, one live stack:
