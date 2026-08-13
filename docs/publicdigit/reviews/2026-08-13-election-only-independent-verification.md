@@ -517,3 +517,72 @@ Whether a NEW candidacy/application can be created and approved in this configur
 | *"force-close locks nomination, so candidates cannot be approved"* | *"`forceCloseNomination()` sets every `pending` candidacy to `rejected`; the approval endpoint then refuses them because it requires `pending`. No lock exists."* |
 
 **The distinction matters because a lock would be a policy to reason about, whereas this is a side effect of a data mutation — and only the second is what the code does.**
+
+---
+
+# 13 · P4 — the 19 rows fully decomposed; **9 are execution artifacts, and the arithmetic closes**
+
+> **The new-candidacy path was NOT investigated. Fenced out of this mission, per instruction, because measuring it requires an expected outcome that `EM-OPEN-021` has not decided.**
+
+## 13.1 · P4-A — `VoterStrategySnapshotTest` ×3
+
+| Test | Actual assertion | Failure cause | Baseline | `EM-VOT-002` attribution | Election-Only relevance |
+|---|---|---|---|---|---|
+| `test_org_strategy_change_after_election_creation_does_not_alter_election_snapshot` | creates org with `uses_full_membership=false`, election snapshots `election_only`, **flips the org to `true`**, refreshes, asserts the snapshot **still** `election_only` | 🔴 **ORDER-DEPENDENT** — **PASSES in isolation** (2 assertions) | PASSED | 🔴 **NONE** | ✅ **HIGH** — verifies the immutability invariant `O-3`: *"elections own their voter participation rules; org mutations don't retroactively change them"* |
+| `test_election_mode_from_election_uses_snapshot_when_present` | org says `full_membership`, snapshot says `election_only` → **`fromElection()` returns `ImportedVoterRegistry`; the SNAPSHOT WINS** | 🔴 **ORDER-DEPENDENT** — **PASSES in isolation** | PASSED | 🔴 **NONE** | ✅ **HIGH** — snapshot sovereignty over ambient org config |
+| `test_election_mode_from_election_throws_when_snapshot_null` | `expectException(RuntimeException)` + message *"missing voter_source_strategy snapshot"* | 🔴 **ORDER-DEPENDENT** — **PASSES in isolation** | PASSED | 🔴 **NONE** | ✅ **MEDIUM** — a missing snapshot is a hard error, not a silent default |
+
+**Concept placement, stated without inferring ownership:** all three exercise **admission-time voter-source strategy** — **NOT voting-time eligibility, NOT lifecycle derivation.** **None touches candidacies, voting windows or `getState()`.** **The three concepts are kept distinct, and no bounded-context ownership is assigned.**
+
+> ✅ **These three are Election-Only-RELEVANT and currently VERIFIED — they pass.** **Their suite failure was an execution artifact, and it was masking the fact that the estate genuinely verifies snapshot sovereignty (`O-3`), which is load-bearing for Election-Only mode.**
+
+## 13.2 · P4-B — the six Security rows, falsified rather than assumed
+
+**Every one PASSES in isolation:**
+
+| Test | Lifecycle dependency | `EM-VOT-002` attribution | Classification |
+|---|---|---|---|
+| `D2_5ConstitutionalArticlesSnapshotTest::test_schema_defines_valid_network_strategies` | none | 🔴 NONE | **structural · order-dependent** |
+| `D5ResolverIntegrationTest::test_envelope_has_no_behavioral_methods` | none | 🔴 NONE | **structural · order-dependent** |
+| `D6SovereigntyConvergenceTest::test_domain_objects_have_no_authority_flags` | none | 🔴 NONE | **structural · order-dependent** |
+| `CapabilityPolicyLayerTest::test_enum_has_all_required_cases` | none | 🔴 NONE | **structural · order-dependent** |
+| `CapabilityPolicyLayerTest::test_overlay_dominates_other_layers` | none | 🔴 NONE | **structural · order-dependent** |
+| `DeviceBindingPolicyTest::test_reports_no_concern_when_fingerprint_not_required` | none | 🔴 NONE | **structural · order-dependent** |
+
+**My earlier wording was *"almost certainly unrelated"* — an inadequate verification category, correctly rejected. Now established by execution: not "probably", but MEASURED.**
+
+## 13.3 · 🔑 The 19 rows now decompose completely — and the arithmetic closes
+
+| Category | Rows | Attributable to `EM-VOT-002`? |
+|---|---:|---|
+| **Throws — depends on unresolved `EM-OPEN-021`** | **3** | ✅ yes |
+| **Asserted the REPEALED rule** *("window open ⇒ VotingActive")* | **7** | ✅ yes |
+| 🔴 **Pass in isolation — execution/order artifacts** | **9** | ❌ **NO** |
+| | **19** ✓ | |
+
+> ✅ **3 + 7 + 9 = 19. Every newly non-passing row is now accounted for, with nothing left as *"probably"*.**
+>
+> **`EM-VOT-002`'s attributable surface is EXACTLY 10 of 19 — and my earlier *"at most 10"* is now tight rather than an upper bound.** **The other 9 are a property of how the suite executes, not of the change.**
+
+**⚠️ MECHANISM `NOT ESTABLISHED`:** the *cause* of the order-dependence. **A candidate is visible — all three `VoterStrategySnapshotTest` rows create `Organisation` with the identical `name`/`slug` (`'Test Org'`/`'test-org'`), and `ConstitutionalTransitionGuardTest` uses `firstOrCreate` on the same name — so a leftover row would break a later `create()`.** **That is a HYPOTHESIS. I established ORDER-DEPENDENCE, not its cause, and I did not investigate further because the attribution question is answered either way.** *(Consistent with the previously documented `TestCase` isolation fragility: pgsql skips transaction isolation and relies on `migrate:fresh`.)*
+
+## 13.4 · Conclusions, by category
+
+**OBSERVED (execution):** all 9 rows pass individually · all 3 snapshot rows assert admission-time strategy sovereignty · the 6 Security rows carry no lifecycle dependency.
+**BASELINE:** all 19 were `PASSED` in the frozen manifest.
+**ATTRIBUTION:** **exactly 10** rows causally attributable to `EM-VOT-002`; **9 are NOT.**
+**RELEVANCE:** the 3 snapshot rows are **Election-Only-relevant and passing**; the 6 Security rows are **structural, not Election-Only-relevant**.
+**NOT ESTABLISHED:** the mechanism of the order-dependence · whether other suite rows share it · `suspend` in execution · the new-candidacy path *(fenced)*.
+
+**`L3` remains 240/1,376 — verification is not classification, and no new rows were classified.** **`SD-1` remains 1,376.**
+
+## 13.5 · Required conclusion
+
+> **`EM-OPEN-021` remains unresolved.**
+> **No semantic recommendation was made.**
+> **The new-candidacy recovery path remains `NOT ESTABLISHED`.**
+
+---
+
+**P4 COMPLETE · STOPPING · EVIDENCE PACKAGE RETURNED**
+**Nothing repaired · nothing greened · nothing deleted · no production, test, fixture, configuration, Constitution, schema or migration change**
