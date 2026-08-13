@@ -1,7 +1,7 @@
 # Election Manifesto — canonical Election business rules
 
 **Type:** Canonical business-rule artifact · **Created:** 2026-08-12 · **Prepared by:** Session 2 (governance canonicalization)
-**Status:** **ACTIVE — canonical home for adopted Election business rules**
+**Status:** **BUSINESS-RULE CATALOGUE — PROPOSED canonical home; NOT YET RATIFIED (`EM-OPEN-017`)** *(the ARB ruled 2026-08-12: useful, non-redundant, deliberately unratified — an earlier header here said "ACTIVE — canonical home", which contradicted `EM-OPEN-017` and is corrected)*
 **Placement:** derived — `php scripts/doc-placement.php --scope=product-specific --domain=publicdigit` → `docs/publicdigit` (exit 0, ruled); `business_rules/` is the existing sub-root for business rules in that root.
 
 > ## What this document is, and is not
@@ -16,14 +16,38 @@
 
 | Artifact | Purpose |
 |---|---|
-| **Election Constitution** (`ElectionConstitution` + accepted ADRs) | constitutional / sovereign constraints |
-| **Election Manifesto** *(this document)* | **canonical Election business rules** |
+| **Election Constitution** (`ElectionConstitution` + accepted ADRs) | **canonical implementation home for constitutional election WORKFLOW rules** *(established — ADR-001)* |
+| **Election Manifesto** *(this document)* | **catalogue of adopted Election BUSINESS rules** *(proposed canonical home — unratified, `EM-OPEN-017`)* |
 | **ADRs** | architectural decisions |
 | **Review reports** | investigation evidence and historical reasoning — **not authority** |
 | Implementation code | implements rules; **never their canonical home** |
 | Verification artifacts | evidence of whether rules hold |
 
 **Rules that already have a canonical home are REFERENCED here, never copied** — see §7. Duplication is the failure mode this artifact exists to end.
+
+### Manifesto ≠ Constitution — standing separation (Principal Architect ruling, 2026-08-13)
+
+> **Manifesto = adopted business rules and invariants.**
+> **`ElectionConstitution` = existing canonical implementation home for constitutional election workflow rules** *(established by ADR-001; valuable — to be extended carefully, never redesigned)*.
+> **Manifesto rules may be enforced through the Constitution where appropriate, but the Manifesto must not duplicate the Constitution's implementation structure.**
+> **Entitlement, ElectionMembership, suspension, credentials and voter-participation rules must remain OUTSIDE `ElectionConstitution` unless a future architectural decision explicitly establishes otherwise.**
+
+**A rule expressed at both levels is NOT duplication — it is the same rule at two architectural levels**, and the traceability between them is what makes the system auditable:
+
+```
+ELECTION MANIFESTO            EM-VOT-002  "voting requires an approved candidate"   (business language)
+        │
+        ▼
+ELECTION CONSTITUTION         open_voting → has_approved_candidates                 (constitutional enforcement)
+        │
+        ▼
+CONSTITUTIONAL GUARD          the enforcement mechanism                             (application)
+        │
+        ▼
+TEST                          zero approved candidates → open_voting rejected       (verification)
+```
+
+**Each artifact has one job. Not every Constitution entry needs a Manifesto rule** — workflow mechanics can be purely constitutional — **and no Manifesto rule prescribes implementation.**
 
 ### The direction of authority — a standing clause
 
