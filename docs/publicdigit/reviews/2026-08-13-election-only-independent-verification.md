@@ -176,3 +176,83 @@ return $election->candidacies()->where('status','approved')->exists();
 | | **B · genuine regression: NONE identified in this class.** **D · unrelated pre-existing failures: none in this class (baseline was 24/24).** |
 
 **No fixture repaired. No test greened. Category A rows are NOT to be "fixed" by adding a candidate until the Product Owner disposes of them** — that is Phase 2, and Mission 9's distinction applies.
+
+---
+
+# 9 · Full regression surface — **measured across the whole frozen universe**
+
+**Method:** the five adopted paths executed sequentially with `--log-junit`, then a **per-test** diff against the frozen manifest. **XML entities decoded** *(see §9.3 — my first pass did not, and that mattered)*.
+
+## 9.1 · Reconciliation — the baseline is INTACT
+
+| | |
+|---|---:|
+| Baseline rows (frozen manifest) | **1,376** |
+| Baseline rows **no longer present** | ✅ **0** |
+| Genuinely new rows | **+14** |
+| **Total now** | **1,390** |
+
+> ✅ **NOT ONE ROW OF THE FROZEN BASELINE HAS BEEN LOST.** **1,376 − 0 + 14 = 1,390 reconciles exactly.** **The programme's historical evidence is fully intact — which was the reason for freezing it.**
+
+⚠️ **But the DENOMINATOR CONTRACT and the PATHS have diverged: re-running the five paths now yields 1,390, not 1,376.** **`SD-1` remains frozen at 1,376 as the contract; 1,390 is what the paths currently contain.** **Anyone re-running must not read 1,390 as a corrected denominator** — that conflation is precisely how the 826/1,376 defect began.
+
+## 9.2 · The regression surface — **13 rows, not 4**
+
+| Rows | Class | Note |
+|---:|---|---|
+| **4** | `StateMachine\CurrentBehaviorTest` | measured earlier |
+| **3** | `VoterStrategySnapshotTest` | 🔴 **new area** |
+| **2** | `ElectionPolicyStateAwareTest` | the `canEdit`/`canVote` capability rows |
+| **1** | 🔴 **`Architecture\Election\ElectionLifecycleStateConsistencyTest`** | **architecture fitness** |
+| **1** | 🔴 **`Architecture\ElectionStateMachineConsistencyTest`** | **architecture fitness** |
+| **1** | `ElectionDashboardAccessTest` | 🔴 **projection/access — a real consumer** |
+| **1** | `VoterImportStateGateTest` | 🔴 **new area** |
+
+> **My single-class estimate of 4 was 3.25× too low — I had flagged it as possibly exceeding 4, and it does.**
+>
+> 🔴 **TWO ARCHITECTURE/CONSISTENCY tests now fail. These do not assert fixtures — they assert declared invariants ABOUT the state machine.** **That independently corroborates the §8.1 diagnosis: derivation is no longer TOTAL, because rule 6 matches without returning.** **A failing consistency test is materially stronger evidence than a failing fixture.**
+>
+> **`ElectionDashboardAccessTest` confirms the §8.2 inference was not merely theoretical: a REAL consumer of the lifecycle projection is affected, not just state-machine tests.**
+
+## 9.3 · ⛔ My comparison bug, disclosed — and why it mattered
+
+**My first diff reported *"36 baseline rows gone, 50 added"*, which looked like evidence destruction.** **It was my own bug: JUnit writes `&quot;` where the manifest holds `"`, so every data-provider row (`test_from_divergence with data set "SovereigntyLeak is Critical"`) failed to match.** **All 36 were in two data-provider classes, matched 1:1 by "additions" — the giveaway I checked before publishing.**
+
+**Consequence had I not caught it: I would have reported that 36 rows of the frozen baseline were destroyed — alarming, and false.** **It also made the 13 a lower bound, since unmatched rows were silently excluded.** **After decoding: gone = 0, and 13 is exact.** **Ninth incident, and the second where the reconciliation arithmetic itself exposed the error.**
+
+## 9.4 · One row went GREEN — legitimately, and it corrects a prediction of mine
+
+**`VotingButtonsStateMachineIntegrationTest::open_voting_rejects_if_missing_candidates` — the row I insisted must NOT be greened — now PASSES.**
+
+**I predicted it would still fail after implementation, because its fixture never defines a voting window. That prediction was WRONG.** The guard reports **all** unmet preconditions, so the message now reads *"Unmet preconditions: voting_window_defined, has_approved_candidates"* — and `assertStringContainsString('candidates', …)` matches.
+
+> ✅ **And the pass is legitimate, not coincidental: `voting_window_defined` does not contain the substring `candidates`, so the assertion succeeds ONLY when `has_approved_candidates` is genuinely unmet.** **The row greened because the RULE WAS IMPLEMENTED — exactly the outcome my warning was meant to protect. No assertion was weakened and no fixture was touched.** **It moves from disposition category C to a genuine passing business verification.**
+
+## 9.5 · The 14 new rows — Session 3's evidence is real; a second stream's is RED
+
+| Rows | Class | Status |
+|---:|---|---|
+| 5 | `EmVot002ApprovedCandidateBeforeVotingTest` | ✅ **all PASSED** — computed path, incl. *only-unapproved-candidacies* and *zero-candidacies* |
+| 3 | `EmVot002OpenVotingPreconditionTest` | ✅ **all PASSED** — command path |
+| **6** | 🔴 **`ElectionOnlyEntitlementPinTest`** | **all ERROR** |
+
+✅ **Session 3's claimed 8/8 is independently confirmed, and the test names show the approved-vs-unapproved distinction is genuinely exercised.**
+
+⚠️ **`ElectionOnlyEntitlementPinTest` is UNTRACKED and all 6 rows ERROR** — subjects include *credential possession does not override suspension* · *membership in one election grants nothing in another* · *election-only voter without member aggregate passes the ballot gate*. **That is exactly the `PBDIGIT-65`/`69` entitlement territory of my P1 mission.** **Authorship NOT ESTABLISHED — it is not mine, and I have not touched it.** **Whether these are intentional RED pins or broken is for their author; I record only that they exist, are untracked, and all error.**
+
+## 9.6 · Corrected regression classification
+
+| Category | Count | Rows |
+|---|---:|---|
+| **A · obsolete fixture** *(scenario claims a legitimately votable election but establishes no approved candidate)* | **≤6** | `CurrentBehaviorTest` ×2 · `ElectionPolicyStateAwareTest` ×2 · plausibly `VoterImportStateGateTest`, `ElectionDashboardAccessTest` — **per-row confirmation NOT done** |
+| **B · genuine regression** | **`NOT ESTABLISHED`** | ⚠️ **the 2 ARCHITECTURE rows are the strongest candidates** — a declared consistency invariant now fails, which no fixture change can explain |
+| **C · dependent on unresolved `EM-OPEN-021`** | **≥2** | `test_election_with_voting_window_open_derives_to_voting_active` · `test_close_voting_transition` |
+| **D · unrelated pre-existing** | **0 of the 13** | all 13 were PASSED in the baseline |
+
+**Not decomposed further: `VoterStrategySnapshotTest` ×3 were not read.** **Assigning them to A/B/C by name is exactly the error this programme forbids.**
+
+---
+
+**P0 COMPLETE · REGRESSION SURFACE = 13 ROWS · BASELINE INTACT (0 LOST) · `EM-VOT-002` VERIFIED BOTH PATHS**
+**`EM-OPEN-021`: current implementation behaviour is observable; the intended business lifecycle semantics remain UNRESOLVED**
+**NOTHING REPAIRED · NOTHING GREENED BY ME · NOTHING DELETED · `L3` STILL 240 · `SD-1` STILL 1,376**
