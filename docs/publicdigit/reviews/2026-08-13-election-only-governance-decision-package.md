@@ -203,6 +203,24 @@ No generic Eligibility bounded context is created under any disposition.
 
 **Remaining before any grant:** **Decision B** (65/69 repair scope — next per PO sequencing) · **`EM-OPEN-021`** (separate lifecycle-recovery decision) · then an explicit bounded implementation grant.
 
+### 5e · DECISION B RULING (2026-08-13 — performative PO ruling, verbatim)
+
+> **"Decision B — audit the `BelongsToTenant` family first, then repair."**
+
+**Decision B is DECIDED: Scope 2 — audit-first.** *(Interpretation note, per register-and-report practice: the ruling arrived as the standalone opening line of a PO message whose remainder is Principal-Architect review text; registered as performed on that reading, flagged for correction if misread.)*
+
+**Consequences registered:**
+
+| What is now decided | What is NOT decided or created |
+|---|---|
+| The 65/69 repair scope is the **`BelongsToTenant` / ambient-context / tenant-blind-cache family**, entered through an **audit deliverable BEFORE any repair** (the §6 Scope-2 prerequisite; Decision A prerequisite already satisfied — closed 2026-08-13) | **The audit is not yet commissioned:** no executor named (Session 1 / other), no deliverable definition, no schedule — that tasking is a separate PO act |
+| Repair follows the audit — *"then repair"* records intent that repair work comes after audit results | **No implementation grant exists** — neither for the audit-driven repairs nor for 65/69 directly; Session 3 remains STOPPED |
+| Register row: *Decision B — business **decided** (Scope 2) · architecture **audit-first, family-scoped** · authorization **none*** | The audit's findings do not self-authorize fixes: **audit → PO/ARB disposition → explicit bounded grant → Session 3** |
+
+**Sequencing clarification also registered (PO):** *"two decisions stand between here and any grant"* is **governance sequencing, not a universal gate** — a future grant may explicitly authorize a bounded slice wherever the necessary business/architecture authority already exists; for **65/69 specifically**, Decision B (now decided) had to come first because it determines repair scope. `EM-OPEN-021` stays independent and must not block or contaminate the entitlement track.
+
+**Next single act available to the PO:** commission the audit — name the executor, the deliverable (enumerate every `BelongsToTenant` consumer; classify each against the accepted Decision-A rule; measure blast radius; **no fixes**), and the stop condition. Session 2 can draft that audit charter on request; it is not self-commissioned.
+
 ## 6 · Decision B package — 65/69 repair scope *(OPEN DECISION; follows A; neither scope chosen)*
 
 **Why B follows A:** implementation location and ownership must be known before a repair boundary can be legitimate — otherwise the repair is a guess wearing a grant.
