@@ -36,6 +36,14 @@ BUSINESS / ARCHITECTURE DECISION → bounded implementation scope → explicit i
 
 **Regression arithmetic (closed):** 19 rows = 7 superseded-rule expectations + 3 blocked on `EM-OPEN-021` + 9 execution artifacts.
 
+### 2a · P6 reconciliation (dated addendum, 2026-08-13 — `fc86049f`) — MEASURED EVIDENCE, not architectural authority
+
+**`PBDIGIT-65` and `PBDIGIT-69` are REPRODUCED at runtime** — no longer suspected defects. One controlled A/B, same valid `ElectionMembership` (`role=voter`, `status=active`) throughout, only tenant context and cache state varied: wrong tenant + cold cache → `isVoterInElection = false` (**65**: the tenant scope hides a valid membership) · correct tenant + warm cache → still `false` (**69**: tenant-unaware cache replays the wrong answer into the correct context) · correct tenant + cleared cache → `true` (proves scope+cache, not the row). **The reproduced predicate is the VOTING-TIME gate** (`isVoterInElection`, called by `EnsureElectionVoter` on the live middleware stack); **admission-time is measured UNAFFECTED** (`DB::table()` queries — no Eloquent global scope). **Ambient tenant context IS the defect mechanism** — confirmed; Session 1 withdrew its own P5 "no ambient contamination" headline (the model-level global scope injects the tenant filter invisibly). Also measured: `ElectionMembership::booted()` cache clearing addresses stale-after-WRITE only — it **cannot** prevent 69's deny-poisoning, which a READ in the wrong context creates.
+
+**Evidence limitations (cited as Session 1 states them):** the HTTP-level replay was **NOT re-run** in P6 (the ticket's own 2026-08-09 A/B proved the HTTP entry; P6 proves the mechanism persists one level below it) · run on the **testing** database with throwaway rows · no production/test/configuration/Constitution/schema change was made · the untracked entitlement-pin tests were not used, run, or modified.
+
+**What P6 does NOT decide:** ownership (Decision A) · repair scope (Decision B) · repair location (the ticket's three candidate locations each remain defensible, **none selected**) · `EM-OPEN-021` (independent, untouched) · Session 4's ADR/PKS (statuses unaffected — P6 is evidence, not validation of a proposed rule). **P6 creates no authorization: grants remain NONE; 65/69 remain NOT AUTHORIZED; Session 3 remains STOPPED.**
+
 ## 3 · Open decisions *(each separate; none combined)*
 
 | # | Decision | Kind | Label |
@@ -81,7 +89,7 @@ Facts proven: §2. The current `InvalidElectionStateException` is **MEASURED EVI
 | Adopted business language points toward the Election context (`EM-GOV-001` *the election governs exercisability*; `EM-ENT-007`) | ACCEPTED AUTHORITY (the rules) — their *ownership consequence* remains OPEN |
 | `MB-5`/`PBDIGIT-49`: multiple implementations, **no named authority** | MEASURED EVIDENCE |
 | Runtime placement (`ElectionOnlyPolicy::decideForContext()` behind the DI-bound port) | MEASURED EVIDENCE of **current execution — NOT proof of bounded-context ownership** (Session 4's own C-1; pending F6 falsification) |
-| Ambient organisation context forbidden by adopted entitlement rules; the measured 65/69 defects are exactly ambient-context intrusions; three production sites already derive context from the election; 1 election : 1 organisation at schema level | MEASURED EVIDENCE supporting the **hypothesis** |
+| Ambient organisation context forbidden by adopted entitlement rules; the 65/69 defects are **now runtime-REPRODUCED as exactly ambient-context intrusions on the voting-time gate, with admission-time measured unaffected** (P6, §2a); three production sites already derive context from the election; 1 election : 1 organisation at schema level | MEASURED EVIDENCE supporting the **hypothesis** — *stronger after P6, still NOT ownership authority* |
 | `AD-2` — the formal deciding item | OPEN DECISION |
 
 **The wording awaiting authority (unchanged from the accepted board; still a HYPOTHESIS until accepted):**
@@ -93,6 +101,8 @@ Facts proven: §2. The current `InvalidElectionStateException` is **MEASURED EVI
 ## 6 · Decision B package — 65/69 repair scope *(OPEN DECISION; follows A; neither scope chosen)*
 
 **Why B follows A:** implementation location and ownership must be known before a repair boundary can be legitimate — otherwise the repair is a guess wearing a grant.
+
+**P6's contribution to B (dated 2026-08-13):** the two instances are **proven** (MEASURED EVIDENCE, §2a) — but **P6 does NOT prove how many other `BelongsToTenant` consumers exist**; the pattern's blast radius remains unaudited. The write-path cache clearing in `ElectionMembership::booted()` is measured insufficient against read-created deny-poisoning — evidence that partial fixes at the instance level leave the mechanism intact. **Neither fact chooses a scope.**
 
 | | **Scope 1 — demonstrated instances only** (`65`/`69`; `62` already fixed) | **Scope 2 — pattern as architectural defect** (`BelongsToTenant` / ambient-context / tenant-blind-cache family: audit, then repair all affected consumers) |
 |---|---|---|
