@@ -100,3 +100,79 @@ return $election->candidacies()->where('status','approved')->exists();
 **`EM-OPEN-021` UNRESOLVED AND NO LONGER NEUTRAL · NOTHING REPAIRED**
 
 **Traceability:** `f2c2cc4e` · `ConstitutionalTransitionGuard::isPreconditionMet` · `ElectionLifecycleEngineImpl::hasCandidatesApproved` · `:164` throw · `ElectionConstitution::RULES['open_voting']` · `ElectionLifecycleState` (12 members, unmodified) · `CurrentBehaviorTest` baseline 24/24 (matrix) vs measured 20/2/2 · EM-VOT-002 ruling artifact · disposition register `2026-08-13-test-estate-disposition-candidates.md`
+
+---
+
+# 8 · Lifecycle trace of the anomalous state — **the dead-end is TEMPORARY, and the mechanism is a pre-existing gap**
+
+**Wording corrected, per the Product Owner.** I previously wrote *"`EM-OPEN-021` already has an observable answer."* **Replaced by the precise formulation:**
+
+> **Current implementation behaviour is observable, but the intended business lifecycle semantics remain unresolved.**
+
+**Two different questions, kept apart and NOT merged:**
+
+| | Question | Answer |
+|---|---|---|
+| **`EM-VOT-002`** | Can an election become `VotingActive` without an approved candidate? | ✅ **NO — verified, both paths** |
+| **`EM-OPEN-021`** | What is the legitimate lifecycle MEANING of an election whose window is open but which cannot satisfy that invariant? | ❓ **NOT YET DECIDED** |
+
+## 8.1 · The exact fall-through — traced rule by rule
+
+**State: `approved_at` set · `setup_started_at` set · `administration_completed` · `nomination_completed` · window OPEN · ZERO approved candidates.**
+
+| Rule | Outcome |
+|---|---|
+| 1 `suspended_at` | skip |
+| 2 `archived_at` | skip |
+| 3 `results_published_at` | skip |
+| 4 `now >= voting_ends_at` → **Counting** | **skip — window still open** |
+| 5 window open **&& hasCandidatesApproved** | 🔑 **skip — the `EM-VOT-002` guard** |
+| 6 `administration_completed && nomination_completed` | ⚠️ **CONDITION MATCHES, BUT RETURNS NOTHING.** Its two inner branches are *"window not yet opened"* → `ReadyForVoting`, and *"window undefined"* → `SetupNomination`. **Neither applies to an OPEN window, so control falls out of a matched branch** |
+| 7 | skip — `nomination_completed` is true |
+| 8 | skip — `administration_completed` is true |
+| 9 | skip — `setup_started_at` is not null |
+| 10 · 11 · 12 | skip — already approved |
+| → | 🔴 **`InvalidElectionStateException`** |
+
+> **DIAGNOSIS: this is NOT a new defect introduced by `EM-VOT-002`. Rule 6 has always lacked a branch for *"setup complete AND window open"* — because rule 5 unconditionally caught every open window, that gap was UNREACHABLE. `EM-VOT-002` made it reachable.** **A pre-existing latent gap, newly exposed — which is a materially different finding from a regression, and matters for how it is dispositioned.**
+
+## 8.2 · Operation matrix for the anomalous state
+
+**One mechanism governs almost all of it:** `Election::transitionTo()` computes `ElectionLifecycle::of($e)->snapshot()` **unconditionally, before** the system-trigger check — so **any** action that routes through `transitionTo()` derives state first and therefore throws.
+
+| Operation | Available? |
+|---|---|
+| `getState()` · `snapshot()` · `canVote` · `allowedActions` · `isLocked` | 🔴 **THROW** |
+| `open_voting` | 🔴 THROW *(and would be refused anyway — the precondition is correctly unmet)* |
+| **`close_voting`** | 🔴 **THROW** — measured: `test_close_voting_transition` ERRORs |
+| **`suspend`** | 🔴 **THROW.** ⚠️ **Note the asymmetry: rule 1 checks `suspended_at` FIRST, so an ALREADY-suspended election derives cleanly — but BECOMING suspended requires a transition, which derives state first.** **Suspension is an escape hatch you cannot reach from inside.** |
+| `resume` · `archive` · `publish_results` | 🔴 THROW — same mechanism |
+| Any consumer of the lifecycle facade *(controllers · middleware · dashboards)* | 🔴 **THROW** — `NOT individually traced`, inferred from the shared `getState()` dependency |
+
+## 8.3 · Recoverability — **TWO exits exist, so this is a temporary trap, not a permanent one**
+
+| Exit | Mechanism | Confidence |
+|---|---|---|
+| **1 · The clock** | When `now >= voting_ends_at`, **rule 4 returns `Counting`** *(setup was completed legitimately, so its inner check passes)*. **The election becomes manageable again with no intervention.** | ✅ **traced in code** |
+| **2 · Approve a candidacy** | One approved candidacy makes rule 5 match, restoring `VotingActive` immediately | ⚠️ **CONDITIONAL — `NOT ESTABLISHED` whether the candidate-approval path can execute without deriving lifecycle state.** If approval routes through a controller that reads the snapshot, this exit is also blocked, and only the clock remains |
+
+> **So the maximum extent of the trap is the interval `[voting_starts_at, voting_ends_at)`.** **REVISION of my earlier hypothesis: I flagged a possible permanent *"lifecycle dead-end"*. The trace shows it is TIME-BOUNDED — bounded by the configured voting window.** **Still operationally serious for a live election — an administrator could be locked out of their own election for the entire voting period, unable even to suspend it — but *"unrecoverable"* was too strong, and I withdraw it.**
+
+## 8.4 · Two precedents already in the code — **evidence for the decision, NOT recommendations**
+
+**Recorded because `EM-OPEN-021`'s decision-maker should know the codebase already answers similar questions in two different ways:**
+
+1. **Rule 4 handles a comparable anomaly SOFTLY:** *"Setup incomplete but voting closed → constitutional limbo (soft enforcement)"* — it emits `Log::warning` and continues **rather than throwing.**
+2. **Rule 6 already uses `SetupNomination` as a fall-back** when the voting window is undefined.
+
+🔴 **I do NOT conclude that either is correct here.** **I do NOT propose `SetupNomination`, a holding state, `Cancelled`, soft-warn, or catching the exception.** **These are observed precedents in the implementation, presented so the Product Owner decides with full sight of them.**
+
+## 8.5 · Regression classification — the four measured rows
+
+| Row | Category |
+|---|---|
+| `test_voting_active_can_vote` · `test_voting_active_allowed_actions` | **A · obsolete fixture** — the scenario claims a legitimately `VotingActive` election but establishes no approved candidate. **Under the adopted invariant the fixture is now incomplete.** *(FAILURE, not ERROR — they reach a clean assertion)* |
+| `test_election_with_voting_window_open_derives_to_voting_active` · `test_close_voting_transition` | 🔴 **C · behaviour dependent on unresolved `EM-OPEN-021`** — they enter *window-open + zero-candidates* and throw. **NOT classifiable as regressions, because no expected state has been decided** |
+| | **B · genuine regression: NONE identified in this class.** **D · unrelated pre-existing failures: none in this class (baseline was 24/24).** |
+
+**No fixture repaired. No test greened. Category A rows are NOT to be "fixed" by adding a candidate until the Product Owner disposes of them** — that is Phase 2, and Mission 9's distinction applies.
