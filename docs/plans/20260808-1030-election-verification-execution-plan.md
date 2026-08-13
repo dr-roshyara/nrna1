@@ -2018,3 +2018,57 @@ The authorization package records that **the computed/clock path BYPASSES the gu
 **Session 3 has added untracked test files** (`EmVot002ApprovedCandidateBeforeVotingTest` · `EmVot002OpenVotingPreconditionTest` · `ElectionOnlyEntitlementPinTest`). **They are OUTSIDE the 1,376 universe and the denominator is unaffected — it is frozen by contract.** **But the universe no longer equals the contents of `tests/`.** **Stated precisely so no future run mistakes a changed tree for a changed denominator** — the 826/1,376 defect began exactly that way. **No production file is modified in the tree; execution evidence gathered above remains valid.**
 
 **Status: L3 = 186/1,376 · `SD-15` OPEN (the only outstanding decision from this stream's batches) · `SD-14` closed · `SD-1` unchanged · `1,395` NOT adopted · `1,376` frozen · baseline NOT re-run · Session 3's implementation NOT consumed as authority · no Constitution, production, schema, migration, test or fixture change · no failing test repaired.**
+
+---
+
+## `ElectionCreationTest` (25, all PASSED) → **L3 = 211 / 1,376**
+
+**C1 · creation & configuration.** ⚠️ **These 25 rows are IN the adopted universe but PROPOSED FOR EXCLUSION from the capability boundary** (boundary report §6: *"pre-constitutional; a misconfigured election cannot yet affect an outcome"*). **`SD-8` unresolved. Blast radius of `SD-8`: 25 rows' BOUNDARY MEMBERSHIP — 0 rows' CLASSIFICATION.**
+
+### 🔑 C1 has an authority home, and it is NOT the Constitution
+
+```php
+// test_policy_only_allows_owner_and_admin_to_create
+$this->assertTrue ($this->owner       ->can('create', [Election::class, $this->org]));
+$this->assertTrue ($this->admin       ->can('create', [Election::class, $this->org]));
+$this->assertFalse($this->chief       ->can('create', [Election::class, $this->org]));
+$this->assertFalse($this->deputy      ->can('create', [Election::class, $this->org]));
+$this->assertFalse($this->commissioner->can('create', [Election::class, $this->org]));
+$this->assertFalse($this->regularMember->can('create', [Election::class, $this->org]));
+```
+
+> **A real and non-obvious business rule, genuinely verified: ELECTION OFFICERS CANNOT CREATE ELECTIONS.** Chief, deputy and commissioner are all denied; only **organisation owner/admin** may create. **Authority home: a Laravel Policy, not `ElectionConstitution`.**
+>
+> **This refines the boundary report: *"pre-constitutional" ≠ "ungoverned".*** **C1's ownership was recorded as *"Application"*; the evidence says **Policy/Authorization**, and it is the estate's clearest authorization verification so far** (8 of 25 rows, including one tenancy row).
+
+### 🔴 Two more name/intent divergences — and the decision touches the NAME, not the assertion
+
+| Row | Asserts |
+|---|---|
+| `test_small_election_saves_expected_voter_count_for_auto_approval` | **only** `assertDatabaseHas('elections', ['expected_voter_count' => 35])` |
+| `test_large_election_saves_expected_voter_count_for_manual_review` | **only** `… ['expected_voter_count' => 100]` |
+
+**Neither asserts any approval routing.** **So the capacity-based auto-approval / manual-review capability their names describe is NOT verified** — divergences **7 and 8** in this programme.
+
+⚠️ **A precise consequence for Session 2's open `EM-OPEN-019` (threshold 30 vs 40):** the row uses **35**, and calls it *"small / auto-approval"*. **35 is between the two candidate thresholds.**
+
+> **`EM-OPEN-019` blocks NEITHER row — the assertions are pure persistence, so they hold under either threshold. But if the threshold is 30, this row's NAME becomes false** (35 would be large / manual review). **Blast radius: 0 rows blocked; 1 row's NAME made misleading.** **A test-hygiene consequence of a business decision, not a classification dependency — recorded, not repaired.**
+
+### Classification of the 25
+
+| Rows | Verifies | Category |
+|---:|---|---|
+| **8** | owner/admin may create · chief/deputy/commissioner/regular member may not · policy directly · **officer from a different org may not** | ✅ **genuine authorization + tenancy** |
+| **7** | name required · voter count required · count ≥ 1 · description optional · **name unique within org** · **same name allowed in a different org** · **demo type cannot be submitted** | input validation + **2 tenancy** |
+| **6** | draft state on creation ×2 · null dates · slug generated · `type` always `real` · count persisted | creation invariants |
+| **2** | capacity persistence | 🔴 **named for approval routing they do not verify** |
+| **2** | timezone field renders · success flash | projection/UI |
+
+⚠️ **`test_draft_election_state_is_draft` and `test_election_defaults_to_draft_state` appear to assert the same claim** — probable duplication, the second such pair *(cf. the suspension metadata pair)*. **Observation, not defect.**
+
+### Cross-references recorded, not resolved
+
+* **`test_election_type_is_always_real` + `test_cannot_submit_demo_type`** → **demo elections cannot be created through the HTTP path.** **Bears on `SD-10`** (*may a demo election accept repeat votes?* — the one-vote gate is `type === 'real'`): **the demo population originates elsewhere (`demo:setup`), so `SD-10`'s subject is not reachable through the verified creation path.** **Recorded as a cross-reference; `SD-10` remains the Product Owner's.**
+* **Tenancy verification balance:** C1 has **3 in-universe tenancy rows**, while C6's eligibility tenancy row sits **outside** the universe *(SD-4 evidence §2)*. **Tenancy is not uniformly excluded — it is excluded for eligibility specifically.** **A precision that strengthens the SD-4 evidence rather than restating it.**
+
+**Status: L3 = 211/1,376 (15.3%) · `SD-15` OPEN · `SD-8` affects 25 rows' membership only · `EM-OPEN-019` blocks 0 rows · `SD-1` unchanged · `1,395` NOT adopted · `1,376` frozen · Session 3's implementation and new tests NOT consumed · no Constitution, production, schema, migration, test or fixture change.**
