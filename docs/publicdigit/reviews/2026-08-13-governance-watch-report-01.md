@@ -83,6 +83,20 @@
 1. **Mode scope reading.** The grant says *"Scope: Election-Only mode only"*, while this invariant is **mode-independent by nature** — `EM-VOT-002`'s Manifesto scope is the **election lifecycle**, not a membership mode, and the change touches no membership concept. **My reading: consistent — the grant's mode line guards against Full Membership *behaviour*, which this is not.** Recorded so the reading is visible; the PO may overrule it.
 2. 🆕 **A genuine business question surfaced by the implementation, registered as `EM-OPEN-021`:** **what state IS an election in when its voting window is open but it has no approved candidates?** The engine now (correctly) refuses `VotingActive` and **falls through** — so some other derived state results **by fall-through order, not by decision.** Session 3's own comment flags this honestly. **Registered, not decided.**
 
+## 4b · ✅ ARB ACCEPTANCE of Watch 01 — with the `EM-OPEN-021` qualification (2026-08-13)
+
+**Verdict, verbatim:** *"ACCEPT Session 2's Governance Watch 01, with `EM-OPEN-021` remaining explicitly unresolved and not actionable until you make the lifecycle-state decision."*
+
+**The qualification, recorded where it binds** *(the Manifesto's `EM-OPEN-021` row now carries it)*:
+
+* `EM-OPEN-021` is an **unresolved domain decision — NOT evidence that Session 3 made an architectural mistake.** Session 3 did the right thing by refusing to silently invent the answer.
+* **The DDD point that governs it:** *the implementation must not accidentally turn a technical fallback into a business rule.* The state the fall-through currently yields is **not** a domain decision.
+* **Session 3 must not resolve it implicitly** — no new lifecycle state, no fallback selection — without explicit authorization. **Session 2 recommends no fallback state.**
+
+**Standing instruction adopted (ten points, applied henceforth):** ① `EM-VOT-002` stays closed — cite the rule text, never the `SD-14 = YES` shorthand · ② `EM-OPEN-021` = unresolved domain decision, not a defect · ③ no fallback recommendation · ④ no implicit resolution via implementation · ⑤ `EM-VOT-002` not reopened or reinterpreted · ⑥ the business-decision / constitutional-expression / enforcement / verification boundary protected · ⑦ Session 3 monitored against its explicit authorization, no expansion into Full Membership or entitlement/membership/suspension/credential rules · ⑧ Session 3's implementation and tests not modified · ⑨ **a new business decision exposed by implementation is REGISTERED, and Session 2 stops at the decision boundary** · ⑩ **the Definition-of-Done developer-guide reminder must not turn the governance stream into an implementation stream** — governance artifacts are this stream's deliverable; no developer guide will be written for implementation Session 2 did not do.
+
+**Also per the ARB: the open decisions (`SD-15`, `EM-OPEN-019`, `EM-OPEN-021`, `BR-1.12`, …) are SEPARATE decisions and will not be bundled.** Each is decision-ready on its own; the PO takes them one at a time.
+
 ## 5 · Report
 
 | Required item | Result |
