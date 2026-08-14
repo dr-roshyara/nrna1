@@ -56,3 +56,9 @@ Implementation of discovery · any `workflow-state.php` change · hooks, automat
 **A-3 verification:** terse but unambiguous, imperative, in the PO's own words, in this stream's conversation record — **a performed human act, durably preserved here** (unlike the preceding message, which only *asserted* an act performed elsewhere and was correctly held). Registered as the human START act for `S4-architecture-discovery`; G-3 conjunction complete (intake handoff seq 2 + this act).
 
 **Scope carried (unchanged):** grant `G-KOS-DISC-ARCH` — architecture design only, per intake §D/§G. **Provenance treatment accompanying this start (per the commissioning context and Session 4's own adopted stance):** `cee1ee6b` is **prior/untrusted architectural input**, not governed S4 output — the now-ACTIVE assignment reviews/revalidates it rather than inheriting it. *(The Option-② disposition ruling as a separate signed text was never received in this stream; this start under registration-first sequencing is consistent with and operationally equivalent to it — recorded as the operative reading, not as a manufactured ruling.)*
+
+**Formal confirmation received same day (registered verbatim; NO second START performed — the seq-3 transition stands):**
+
+> *"hereby authorize and start the S4-architecture-discovery session for KOS-SESSION-DISCOVERY-001, limited to the registered architecture-design scope."* — PO, 2026-08-14.
+
+Same act, full form: it confirms the seq-3 START and pins the scope limit in the act's own words ("limited to the registered architecture-design scope" = `G-KOS-DISC-ARCH`, design-only). Both texts — the terse imperative and the formal confirmation — are now the act's complete durable record.
