@@ -64,3 +64,17 @@ Election track:        unchanged (start()/A-2 commission pending · EM-OPEN-021 
 ```
 
 **Traceability:** the signed commission (§1, this artifact + its commit = `humanActRef`) · OQ authorization ruling (closure §8, `b6ff24ac`) · ownership analysis (closure §9) · PA review corrections (vocabulary; qualified-for-scope) · A-3 (`604f4578`) · G-KOS-INC1-OQ (`5db67fc6`) · `workflow-state.php` (AST-015).
+
+## 5 · TASK DESIGNATION — performative, verified, REGISTERED VERBATIM (2026-08-14)
+
+> *"PO/ARB TASK DESIGNATION — KOS-OQ-001. I hereby designate the task for KOS-OQ-001:*
+>
+> ***"Add a new configuration parameter to the system, including its documented default behavior, configuration handling, and automated verification, following the Governance → Architecture → Implementation → Verification lifecycle."***
+>
+> *This designation completes the task designation for the OQ commission. It does not itself start implementation or any other execution activity; execution remains subject to the applicable workflow gates. — Signed: PO/ARB Chief, 2026-08-14"*
+
+**Verification (step 1):** performative ("I hereby designate"), signed, exact wording — ✅ a registrable human act under A-3. **The §3/§3a gap is CLOSED: the task is DESIGNATED.** This section + its registration commit = the `humanActRef` for the record write.
+
+**Record updates (via the mechanism, existing vocabulary only — no schema change):** the contract has no task field/transition type (observed for the evidence file, not repaired); the designation is carried into the machine record as grant **`G-KOS-OQ-001-TASK`** (task verbatim in scope; the designation's own no-start clause preserved) + the **bootstrap HANDOFF (`from: null`)** to the Governance session carrying the commission+designation as token — the Inc-1 precedent pattern exactly.
+
+**Next applicable gate (determined from the contract, NOT performed):** **START of `S2-governance-2026-08-14-oq`** — the contract requires the G-3 conjunction: the bootstrap handoff (now recorded) **AND a recorded human START act, which does not exist**. The designation is NOT that act (its own text says so; the transition principle stands). **Execution: NOT STARTED. No session activated. Sessions 1/3/4 unchanged.**
