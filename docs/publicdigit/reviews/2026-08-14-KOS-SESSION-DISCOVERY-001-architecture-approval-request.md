@@ -42,6 +42,10 @@ Building it (that is the next, separate decision) · giving anyone permission to
 
 `docs/publicdigit/reviews/2026-08-14-KOS-SESSION-DISCOVERY-001-fresh-architecture-proposal.md` (`696a4316`) — the full design, including the state-by-state behaviour table, the six permission facts and which two cannot be answered, the risk list, and the six deferred record improvements. Governance boundary: the intake (`15f4f484`).
 
+## Programme sequencing (PO intent, registered 2026-08-14)
+
+**Deliberate: finish the KnowledgeOS session/orchestration capability to end-to-end completion — architecture approval → implementation → verification → qualification → closure — BEFORE returning to Election-only work.** Rationale, in the PO's own framing: *finish the mechanism that makes the four-terminal workflow reliable, prove it end-to-end, then use that mechanism to govern the Election implementation.* Constraint carried: finish the **minimum viable** governed session architecture — not an endlessly expanding one; the §O non-goals and the six deferred dependencies (D-1…D-6) are what keeps it minimal. **The Election items (voting-page fix · elections with no approved candidate) stay registered and untouched at the front of the queue that follows.**
+
 ## Decision
 
 **APPROVE / AMEND / DECLINE** — and, if approving, your answers to boundary choices 1–4 and whether the precedence rule above is binding.
