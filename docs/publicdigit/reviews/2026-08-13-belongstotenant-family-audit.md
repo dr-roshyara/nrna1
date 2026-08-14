@@ -124,3 +124,38 @@ Per-site audit of the 375 bypass calls **not performed** (inventory + counts onl
 2. **One summary sentence overstated the evidence.** §1 says *"the sites that remembered are compliant."* **Too strong.** What §4 actually establishes is: **the individually audited bypass sites are compliant-by-bypass; the other ~370 `withoutGlobalScopes()` call-sites were counted, not audited.** **375 bypass calls ≠ 375 proven-correct sites** — a bypass can itself be wrong (too broad, wrong model, wrong layer). The accurate statement is: *"compliance was demonstrated only at the audited sites; the bypass count measures how widely correctness depends on per-site developer memory, not how often it was achieved."*
 
 **Nothing else in the report changes. The core findings — 41 consumers · 2 proven Decision-A violations sharing 1 mechanism · 1 potential cache site · 1 constitutional-predicate hybrid · 19 models outside Decision A — stand as written.**
+
+---
+
+## 12 · Re-evaluation under the CLARIFIED Decision-A rule *(2026-08-14 addendum)*
+
+**This audit was performed under the superseded formulation** (*"ambient tenant context is a forbidden dependency"*). **The clarified rule:** *the Election determines which organisation must match; the active tenant context is a **comparison**, not the **source** of the entitlement; and a result produced under a different organisational context must never be reused.* **Every verdict below is re-stated against that rule. No repair is recommended; nothing was changed.**
+
+### 12.1 · P6 reinterpreted — outcome vs mechanism
+
+| Step | Business outcome | Mechanism |
+|---|---|---|
+| 1 · wrong tenant → FALSE | ✅ **CORRECT** under the clarified rule (mismatched context must not vote) | ❌ wrong — denial produced by an accidental scope filter, not by an election-derived comparison |
+| 2 · correct tenant + warm cache → FALSE | 🔴 **WRONG — the definite defect** (`PBDIGIT-69`) | wrong-context answer transported across contexts |
+| 3 · correct tenant, cache cleared → TRUE | ✅ correct | |
+
+> **Precise formulation adopted:** *the system correctly denies voting in a mismatching tenant, but cannot distinguish that legitimate denial from one produced by an incorrect context and then cached.* **Both violations therefore REMAIN violations under the clarified rule — the reclassification changes the reason, not the verdict.**
+
+### 12.2 · 🔴 The re-evaluation's own finding — where the required comparison actually lives
+
+**Measured:** the only DELIBERATE organisation comparison on the voting stack is **`VerifyVoterSlugConsistency:58`** — `election.organisation_id === voterSlug.organisation_id` — an **election-derived** comparison carried by the voting-session slug. **`EnsureRealVoteOrganisation`, despite its name, performs NO organisation comparison** — it verifies a slug *exists* and delegates (its own comment: *"VerifyVoterSlugConsistency already validated voter_slug ↔ election org consistency"*).
+
+> **Consequence: NO site on the voting stack deliberately compares the AMBIENT SESSION tenant to the election's organisation. The only participation of the session tenant is the accidental global scope in the two violating sites.**
+>
+> **My "compliant-by-bypass" labels (§4) must therefore be read as: *"no ambient-tenant comparison occurs at this site."* Under one reading of the clarified rule that is compliance; under another it is an absent required check.**
+
+### 12.3 · ❓ Open semantic questions — for the PO, not for any session
+
+| | Question |
+|---|---|
+| **Q-TEN-1** | **What is the "active execution context" the clarified rule compares?** (a) the **session tenant** — then no site deliberately enforces the rule today, and the accidental scope is the only enforcement; (b) the **voting-session (slug) context** — then the comparison exists, is election-derived, and sits at `VerifyVoterSlugConsistency:58`. **Materially different repairs follow; implementation evidence must not choose** |
+| **Q-TEN-2** | **NULL/absent tenant context:** deny · derive from the election · fall back to the platform organisation? **The trait's platform-org fallback is implementation evidence, not authority.** OPEN — Session 3 must not choose from current behaviour |
+
+**Adjacent observation, not a defect claim:** `VerifyVoterSlugConsistency:59-60` treats `organisation_id === 1` as "platform" — an integer comparison, while organisation ids are UUIDs in current data. **Whether that branch is reachable is `NOT ESTABLISHED`.**
+
+**Status: audit verdicts re-stated; both violations stand; two semantic questions surfaced; nothing repaired; `SD-1` = 1,376 · `L3` = 240 · `EM-OPEN-021` untouched.**
