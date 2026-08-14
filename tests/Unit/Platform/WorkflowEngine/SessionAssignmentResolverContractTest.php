@@ -344,6 +344,72 @@ class SessionAssignmentResolverContractTest extends TestCase
             'non-zero is reserved for usage/refusal');
     }
 
+    // ─── T-14 · C-1 interpreter identity, every verdict, both renderings ────
+
+    /**
+     * The report must say WHICH workflow interpreter supplied the answer.
+     * Identity is INFORMATION ONLY: reported, never validated, never compared
+     * against the registry, never a ground for refusal (grant G-KOS-DISC-C12-IMPL).
+     */
+    public function test_t14_interpreter_identity_is_reported_for_every_verdict(): void
+    {
+        $this->requireResolver();
+        $this->record('WI-14', 'S-q', 'implementation', 'ACTIVE');
+        $this->record('WI-14b', 'S-r', 'implementation', 'ACTIVE');
+        file_put_contents($this->dir . '/WI-14c.json', '{ corrupt');
+
+        $expected = $this->repoRoot . '/' . self::MECHANISM;
+
+        $paths = [
+            'RESOLVED'     => ['--session=S-q'],
+            'UNASSIGNED'   => ['--role=nobody'],
+            'AMBIGUOUS'    => ['--role=implementation'],
+            'UNRESOLVABLE' => ['--work-item=WI-14c'],
+        ];
+
+        foreach ($paths as $verdict => $args) {
+            $json = $this->resolve($args);
+            $this->assertSame($verdict, $json['out']['verdict'], "precondition: {$verdict} path");
+            $this->assertSame($expected, $json['out']['interpreter']['path'] ?? null,
+                "C-1: machine output must name the interpreter on {$verdict}");
+        }
+
+        // Human rendering (no --json) must name it too — same four verdicts.
+        foreach ($paths as $verdict => $args) {
+            $cmd = array_merge(['php', $this->repoRoot . '/' . self::RESOLVER, '--dir=' . $this->dir], $args);
+            $proc = proc_open($cmd, [1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes);
+            $human = stream_get_contents($pipes[1]);
+            fclose($pipes[1]);
+            fclose($pipes[2]);
+            proc_close($proc);
+
+            $this->assertStringContainsString($expected, $human,
+                "C-1: human output must name the interpreter on {$verdict}");
+        }
+    }
+
+    // ─── T-15 · C-1 identity tracks a deliberately substituted interpreter ──
+
+    public function test_t15_reported_identity_changes_when_the_interpreter_is_substituted(): void
+    {
+        $this->requireResolver();
+        $this->record('WI-15', 'S-s', 'implementation', 'ACTIVE');
+
+        $substitute = sys_get_temp_dir() . '/kos-substitute-' . bin2hex(random_bytes(4)) . '.php';
+        copy($this->repoRoot . '/' . self::MECHANISM, $substitute);
+
+        try {
+            $r = $this->resolve(['--work-item=WI-15'], ['KOS_MECHANISM_PATH' => $substitute]);
+
+            $this->assertSame($substitute, $r['out']['interpreter']['path'] ?? null,
+                'C-1: the reported identity must follow the interpreter actually used');
+            $this->assertSame('RESOLVED', $r['out']['verdict'],
+                'identity is information only — a substituted interpreter is reported, never refused');
+        } finally {
+            @unlink($substitute);
+        }
+    }
+
     // ─── T-13 · AMENDMENT 2 delegation / precedence integrity ───────────────
 
     public function test_t13_resolver_delegates_interpretation_to_the_qualified_mechanism(): void

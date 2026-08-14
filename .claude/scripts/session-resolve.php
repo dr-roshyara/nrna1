@@ -74,13 +74,18 @@ foreach (array_slice($argv, 1) as $arg) {
 $recordDir = rtrim($opts['dir'] ?? (dirname(__DIR__) . '/runtime/workflow'), '/');
 
 /**
- * Path to the qualified mechanism (AST-015).
+ * Path to the workflow interpreter. Default: the sibling AST-015 script.
  *
- * Production default is the sibling AST-015 script. KOS_MECHANISM_PATH is a
- * TEST SEAM for dependency substitution only (it exists so T-13(b) can prove
- * this resolver cannot answer without the authoritative interpreter). It is
- * deliberately NOT a runtime configuration contract: it is undocumented for
- * operators, has no registry entry, and no platform concept depends on it.
+ * C-2 (truthful documentation): KOS_MECHANISM_PATH is a RUNTIME-SELECTABLE
+ * mechanism path. Its intended purpose is verification/testing — it exists so
+ * the delegation contract (T-13) and interpreter-identity reporting (T-14/T-15)
+ * can be exercised against a substituted interpreter. It is honest to state
+ * that it is technically capable of substituting the workflow interpreter at
+ * runtime: anything that can set this environment variable selects which
+ * interpreter answers. It is NOT a hardened boundary and must not be described
+ * as one. The resolver REPORTS which interpreter was used (C-1) precisely so
+ * that substitution is visible rather than silent; it performs no legitimacy
+ * assessment, registry comparison, warning, or refusal on that basis.
  */
 $mechanism = getenv('KOS_MECHANISM_PATH') ?: (__DIR__ . '/workflow-state.php');
 
@@ -282,6 +287,16 @@ $report = [
     'readOnlyParticipation' => READ_ONLY_PARTICIPATION,
     'interpretationAuthority' => 'AST-015 workflow-state.php — this resolver performs no independent '
         . 'interpretation of workflow records',
+    // C-1: WHICH interpreter supplied the answer. Information only — reported,
+    // never validated, never compared against the registry, never a ground for
+    // refusal. Present on every verdict, including UNRESOLVABLE.
+    'interpreter' => [
+        'path' => $mechanism,
+        'available' => $mechanismAvailable,
+        'isDefault' => $mechanism === (__DIR__ . '/workflow-state.php'),
+        'note' => 'Identity is reported, not judged: this resolver makes no legitimacy '
+            . 'assessment of the interpreter and refuses nothing on its account.',
+    ],
     'reasons' => $reasons,
     'caveat' => CAVEAT,
 ];
@@ -295,6 +310,10 @@ fwrite(STDOUT, "Session Assignment Resolution\n");
 fwrite(STDOUT, str_repeat('=', 60) . "\n");
 fwrite(STDOUT, "verdict:  {$report['verdict']}\n");
 fwrite(STDOUT, 'operable: ' . ($report['operable'] ? 'true' : 'false') . "\n");
+// C-1: interpreter identity on every human-rendered answer, including UNRESOLVABLE.
+fwrite(STDOUT, 'interpreter: ' . $mechanism
+    . ($mechanismAvailable ? '' : ' (unavailable)')
+    . ($report['interpreter']['isDefault'] ? ' [default AST-015]' : ' [substituted]') . "\n");
 foreach ($candidates as $c) {
     fwrite(STDOUT, "  · {$c['workItem']} :: {$c['session']} [{$c['role']}] = {$c['state']}"
         . ($c['mutationOwner'] === $c['session'] ? ' (mutation owner)' : '') . "\n");
