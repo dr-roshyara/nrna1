@@ -224,4 +224,26 @@ class VotingEntitlementAmbientInvarianceTest extends TestCase
         $this->assertFalse($this->voter->isVoterInElection($electionY->id),
             'ENT negative: not admitted → FALSE (ambient B)');
     }
+
+    public function test_te6_soft_deleted_election_does_not_resolve_entitlement(): void
+    {
+        // The organisation lookup bypasses ONLY the 'tenant' scope — SoftDeletes
+        // stays in force, so a soft-deleted election is not authoritative and
+        // the predicate fails closed (under every ambient value).
+        TenantContext::set($this->orgA->id);
+        $this->assertTrue($this->voter->isVoterInElection($this->electionA->id),
+            'Precondition: entitled while the election is live');
+
+        $this->electionA->delete(); // soft delete
+        $this->voter->invalidateVoterCache($this->electionA->id);
+
+        TenantContext::set($this->orgA->id);
+        $this->assertFalse($this->voter->isVoterInElection($this->electionA->id),
+            'A soft-deleted election must not resolve voting entitlement (ambient A)');
+
+        $this->voter->invalidateVoterCache($this->electionA->id);
+        TenantContext::set($this->orgB->id);
+        $this->assertFalse($this->voter->isVoterInElection($this->electionA->id),
+            'A soft-deleted election must not resolve voting entitlement (ambient B)');
+    }
 }
