@@ -1,6 +1,51 @@
 # Current Working State
 
-**Updated:** 2026-08-04
+**Updated:** 2026-08-15 *(state-synchronization act — Governance, Session 2. Additive: nothing below is deleted; the block immediately following is the authoritative current position, and any older row it contradicts is superseded by it.)*
+
+---
+
+## 📍 CURRENT POSITION (2026-08-15) — two independent lanes
+
+### Lane 1 · KnowledgeOS platform — `KOS-AI-ORCH-001`
+
+| | |
+|---|---|
+| Rule | **ACCEPTED** + amendments G-1…G-4 (orchestration), A-1 (role-bound execution), A-2 (role journals), A-3 (human-act precondition) |
+| Increment 1 (workflow state record) | **implemented · independently verified · operationally qualified · terminally closed** |
+| `KOS-SESSION-DISCOVERY-001` | architecture approved → implemented → verified with findings → **QUALIFIED WITH CONDITION** → C-1/C-2 corrective increment implemented (`84100bb0`, 17 tests/170 assertions) |
+| Now | **corrective verification ACTIVE** (`S1-verify-discovery-corrective`), scope = the six checks **+** classifying finding **V-3** (the resolver may report a missing predecessor handoff without checking) |
+| `AST-016` | **`planned`** — not adopted |
+| Waiting on | **Session 1's corrective verification report** (not a PO act) |
+
+### Lane 2 · Election — implementation lane **paused at an authorization gate, not half-implemented**
+
+| Item | State |
+|---|---|
+| `EM-VOT-002` (approved candidate before voting) | **CLOSED** — implemented both paths, independently verified |
+| `PBDIGIT-65/69` (entitlement decided by ambient context) | **CLOSED** — RED → GREEN → soft-delete pin → independently verified |
+| **A-2** (same defect at the voting-start page) | defect **runtime-reproduced**; boundary re-presented 2026-08-15; **NOT GRANTED — awaiting the PO** |
+| `EM-OPEN-021` (voting opens, no approved candidate) | **business/domain ruling required.** Decisive fact: the state is **reachable through `forceCloseNomination()`, a legitimate administrative action** — not merely a theoretical derivation gap. Evidence complete |
+| `EM-VOT-003` (≥1 approved candidate **and** ≥1 admitted voter) | **adopted rule, implementation ABSENT — verified against code**: no production trace of the voter half; `has_voters` appears only on `complete_administration`; **`open_voting` has no voter precondition on either path** |
+| Election grants | **NONE** |
+| Also registered, individually classified | `BR-1.12` · `59` · `67` · `SD-15` · `EM-OPEN-019` · `EM-OPEN-013` confirmation · `EM-OPEN-017` · `Q3` · Session-4 ADR/PKS disposition · F1–F6 tasking |
+
+### Three dimensions of Election correctness — kept separate
+
+```
+DOMAIN STATE          ENTITLEMENT AUTHORITY        VOTING PRECONDITIONS
+EM-OPEN-021                   A-2                        EM-VOT-003
+```
+
+**Separate architectural track (never folded in):** voter-source sovereignty — Phase 2 complete, **Phase 3 reconciliation remains its own concern.**
+
+### Standing cautions (registered)
+
+- **No invented completion criterion.** *"Election-Only completion"* must not drive work until its criteria are formally established; we have **specific governed work items**, not a proven global completion definition.
+- **Platform-first is a sequencing decision, not an A-2 dependency** — A-2 and EM-VOT-003 are independently implementable; revising the order is legitimate but must be recorded as a revision.
+- **This file changes only as an explicit governance/state-synchronization act** — never opportunistically.
+- **The quarantined test** `tests/Feature/Election/ElectionOnlyEntitlementPinTest.php` stays untouched; the red it causes in a directory run is **by ruling**.
+
+---
 
 ---
 
