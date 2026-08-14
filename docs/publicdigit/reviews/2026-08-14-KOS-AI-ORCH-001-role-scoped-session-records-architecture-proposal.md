@@ -95,6 +95,18 @@ One directory per work item; one journal per role; entries sectioned by **Sessio
 
 **Format:** Markdown, append-only per assignment section; a section is closed by its assignment's HANDOFF/STOP and never edited afterwards (matching the platform's append-only doctrine, CAP-02).
 
+**Role file ≠ session identity (Principal Architect challenge, 2026-08-14 — adopted).** The per-role file is an *organizational* grouping; **identity lives only in the assignment sections**. A journal MUST NOT carry a session-identity header, because role ≠ session identity (R8):
+
+```markdown
+✅ architecture.md          ❌ architecture.md
+   ## S4-A1 · 2026-08-14       # Session 4
+   …                           …
+   ## S7-A9 · 2026-09-02
+   …
+```
+
+The correct form makes visible that *different* assignments — potentially different processes, different days — wrote the same role's journal; the wrong form silently fuses role, session, and process into one identity, which is the exact conflation R8 and the terminal-agnosticism principle exist to prevent.
+
 ## 7 · Human decision model
 
 **Recommendation: do NOT create a `human-decisions.md` that *holds* decisions.** Human acts already have durable homes — performative rulings recorded verbatim in committed artifacts (commission §15, registration `f5981933`) and registered grants carrying `humanActRef`. A second prose home would be a copy (ES-005.4) and, worse, an **authority-laundering surface**: an editable file that *looks* like the source of authorization.
@@ -216,6 +228,20 @@ Smallest conceivable increment: **a convention, not a build** — (1) Governance
 | Q-4 | Work-item journal lifecycle: archived on governance closure (G-1)? retention? |
 | Q-5 | Daily-log relationship long-term: keep both views permanently, or revisit the daily log once journals have operational evidence? (Separate decision, per G-4 — flagged only.) |
 | Q-6 | Should INV-ORCH-EVID-1 extend to *all* Markdown (CONTEXT.md included) as the general "no machine parses prose for authority" rule? (It is the F5 lesson generalized — but that touches `inject-context.sh`'s plan-line convention, so it needs its own analysis.) |
+
+### 20.1 · Review feedback received (Principal Architect, 2026-08-14 — preliminary positions, NOT the PO ruling)
+
+Recorded so the eventual ruling reviews an accurate state; **nothing below changes this document's PROPOSED status**:
+
+| Item | PA preliminary position |
+|---|---|
+| Q-1 role journals / Option C | **accept in principle** (one per role, provisionally; assignment sections; work-item namespace) |
+| Machine parses journals | **absolutely no** (EVID-1 endorsed, incl. the staleness-not-ambiguity clause) |
+| `human-decisions.md` as authority | **no** (rejection endorsed) |
+| Q-2 reference index · Q-4 lifecycle · Q-5 daily log · Option D generated journals | **defer** — open until discussed |
+| New KOS-AI-ORCH-002 | **no** — avoid a new rule merely because a new design document exists (aligns with Q-3's parsimony route) |
+| Implementation now | **no** — Session 3 remains in the Increment-1 verification chain; this stays a future increment behind its own gate |
+| Role file ≠ session identity | challenge raised and **adopted into §6** (this revision) |
 
 ---
 
