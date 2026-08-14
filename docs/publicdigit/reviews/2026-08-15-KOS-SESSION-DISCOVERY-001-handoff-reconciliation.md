@@ -76,4 +76,6 @@ The qualified mechanism's *validation* is correct (it recomputes `handoffsTo` fr
 
 **The classification/disposition boundary, registered:** Session 1 **determines the classification** — that is its finding, and it is authoritative as a finding. **The disposition remains the PO's** (accept · follow-up increment · other), because the act itself withholds adoption, qualification, and closure. **Governance does not classify V-3** and has not.
 
+**Option (c) elected — the three-way disposition question is answered (PO, same day, verbatim):** *"Proceed with option (c) — start the corrective verification lane. The verification team may independently investigate and classify V-3. No implementation changes are authorized by this act."* This confirms the act above and settles Governance's §Consequences question: **(a) accept-as-is and (b) fold-into-the-current-increment are both declined; V-3 is investigated and classified now, and disposed at final qualification.** **No second START was performed** — seq 17 stands; duplicating it would falsify the record.
+
 **Also carried:** no implementation changes are authorized by this act — the corrective code stands as delivered (`84100bb0`); **the resolver must not be modified to make V-3 disappear during its own verification.**
