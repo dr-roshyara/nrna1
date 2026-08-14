@@ -34,8 +34,14 @@ class ElectionVotingController extends Controller
 
         $user = auth()->user();
 
+        // Election-derived lookup: the election determines the required
+        // organisation; ambient tenant context must not filter entitlement
+        // (PBDIGIT-65 site 2, grant f6bb5504). Predicate semantics below are
+        // deliberately unchanged. Only the 'tenant' scope is removed.
         $membership = $user->electionMemberships()
+            ->withoutGlobalScope('tenant')
             ->where('election_id', $election->id)
+            ->where('organisation_id', $election->organisation_id)
             ->first();
 
         $hasVoted   = $membership?->has_voted ?? false;

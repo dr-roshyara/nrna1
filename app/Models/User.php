@@ -316,13 +316,22 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $ttl = config('election.voter_cache_ttl', 300);
 
+        // Voting-time entitlement is a fact of (voter, election): the election
+        // determines the required organisation; ambient tenant context must not
+        // filter the answer (PBDIGIT-65/69, grant f6bb5504). Only the 'tenant'
+        // scope is removed — SoftDeletes stays in force. Key is namespaced .v2
+        // so results produced under ambient contexts pre-repair are never reused.
         return \Illuminate\Support\Facades\Cache::remember(
-            "user.{$this->id}.voter.{$electionId}",
+            "user.{$this->id}.voter.v2.{$electionId}",
             $ttl,
             fn () => $this->electionMemberships()
+                ->withoutGlobalScope('tenant')
                 ->where('election_id', $electionId)
                 ->where('role', 'voter')
                 ->where('status', 'active')
+                ->where('organisation_id', Election::withoutGlobalScope('tenant')
+                    ->select('organisation_id')
+                    ->whereKey($electionId))
                 ->exists()
         );
     }
@@ -333,7 +342,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function invalidateVoterCache(string $electionId): void
     {
-        \Illuminate\Support\Facades\Cache::forget("user.{$this->id}.voter.{$electionId}");
+        \Illuminate\Support\Facades\Cache::forget("user.{$this->id}.voter.v2.{$electionId}");
     }
 
      /**

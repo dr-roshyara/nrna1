@@ -246,7 +246,7 @@ class ElectionMembership extends Model
             Cache::forget("election.{$membership->election_id}.voter_count");
             Cache::forget("election.{$membership->election_id}.voter_stats");
             // Also clear per-user voter eligibility cache
-            Cache::forget("user.{$membership->user_id}.voter.{$membership->election_id}");
+            Cache::forget("user.{$membership->user_id}.voter.v2.{$membership->election_id}");
         };
 
         $syncVoterCount = function (self $membership) {
