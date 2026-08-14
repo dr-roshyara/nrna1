@@ -347,3 +347,16 @@ assets:
       decision: D-2                  # boundary HUMAN-APPROVED WITH R8 (PO/ARB 2026-08-14, f5981933)
       adr: KOS-AI-ORCH-001           # accepted rule + G-1..G-4 (51ba56fd); boundary 2026-08-14 proposal §12
     notes: "CMP-004's first implementation asset: authoritative per-work-item workflow state record (sessionRegistry ≠ authorityState, append-only, state = fold). Contract pinned by tests/Unit/Platform/WorkflowEngine/WorkflowStateRecordContractTest.php (R1–R8, RED-first). Advisory record only — violations are visible/adjudicable, not physically prevented (Increment 2 not authorized). Runtime files live gitignored at .claude/runtime/workflow/<work-item>.json; the registry never carries runtime state (boundary §9-3)."
+
+  - id: AST-016
+    path: .claude/scripts/session-resolve.php
+    component: CMP-004
+    adoption: planned                # registry-first: entry precedes implementation (KOS-SESSION-DISCOVERY-001)
+    governance_tier: 2
+    runtime_moments: [ON_DEMAND]     # on-request read-only query; no hook, no SESSION_START wiring (D-5 excluded)
+    trace:
+      capability: CAP-05
+      context: implementation-guidance
+      decision: G-KOS-DISC-IMPL      # boundary approved with amendments 1-2 (PO/ARB, commit 46c51ddc)
+      adr: KOS-SESSION-DISCOVERY-001
+    notes: "CMP-004's SECOND implementation asset: read-only Session Assignment Resolver. Answers 'which assignment does the record permit this host to operate as?' with verdict RESOLVED|UNASSIGNED|AMBIGUOUS|UNRESOLVABLE. Structurally write-free. Obtains ALL workflow interpretation by invoking AST-015 (workflow-state.php fold/identity) as a subprocess — no second fold, no independent state determination (T-13). Resolution is not activation: creates no authority, no ownership, no state change; G-3 gates untouched."
