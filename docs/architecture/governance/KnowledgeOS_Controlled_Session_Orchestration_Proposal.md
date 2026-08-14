@@ -272,3 +272,29 @@ Sequential role reassignment within the same process is **allowed** — each rea
 ## A-1.5 · What this amendment does NOT change
 
 The invariant INV-ORCH-1 · the authority model and chain · one-mutation-owner · Session Registry ≠ Authority State (G-2 writer rule) · sticky STOPPED · G-1/G-3 · the Increment-1/Increment-2 separation — **enforcement of any kind, including role gating, remains Increment 2: NOT AUTHORIZED.** No `workflow_engine`/`session_manager`/`platform_registry`/`.claude` mechanism is created by this amendment.
+
+---
+
+# Amendment A-2 — Role-Scoped Session Records (signed PO/ARB ruling Q-1–Q-6, 2026-08-14; registered by Governance)
+
+**Provenance:** Session 4's architecture proposal (`2026-08-14-KOS-AI-ORCH-001-role-scoped-session-records-architecture-proposal.md`, `7444a52d`) → **signed PO/ARB ruling** (registered verbatim in `2026-08-14-KOS-AI-ORCH-001-role-records-ruling-registration.md` §1, with the numbering reconciliation in its §2). **Per ruling Q-6: an amendment to KOS-AI-ORCH-001 — no ORCH-002 exists.** Conflict/parsimony check performed by Governance: no conflicts (registration §3).
+
+## A-2.1 · Role journals (ruled Q-1/Q-2 — provisional)
+
+**One role-scoped journal per canonical role** (Option C). The **role owns the journal**; individual **SessionAssignments appear as distinct sections** (R8-compatible: sections per assignment, roles never mutate). Adopted **provisionally — operational evidence may later require revision.**
+
+## A-2.2 · Journal identity (ruled Q-3)
+
+**Role identity and session identity are distinct. A role journal MUST NOT use a session-level identity as its file identity.**
+
+## A-2.3 · Machine-truth invariant for journals (ruled Q-4)
+
+**A machine MUST NOT parse role journals to determine workflow state, authorization, ownership, or other machine-truth. The workflow-state record remains the sole machine-truth.** Journals are **evidence/projection artifacts — never workflow state, never authority, never a second state store.** *(Scope as ruled: role journals. The generalization to all Markdown/CONTEXT.md — proposal §20 Q-6 — remains OPEN and is deliberately NOT registered here.)*
+
+## A-2.4 · Human authority mechanism (ruled Q-5)
+
+**No `human-decisions.md` second authority source.** Human authority remains in the existing performative/committed artifacts; **Governance registers those acts by reference** (`humanActRef`). *(Whether a Governance-maintained reference-INDEX file exists — proposal §20 Q-2 — remains OPEN.)*
+
+## A-2.5 · What A-2 does NOT do
+
+**It authorizes NO implementation** (the ruling's own words: *"does NOT authorize implementation; a separate implementation commission and boundary approval are required before any role-journal mechanism is built"*). No journal directory or file is created by this amendment. Increment 1 is a separate work item, not reopened. Increment-2 enforcement remains NOT AUTHORIZED. Open proposal questions preserved: §20 Q-2 (reference index) · Q-4 (lifecycle/archival) · Q-5 (daily-log relationship) · Q-6 (prose-authority generalization — touches `inject-context.sh`, needs its own analysis).

@@ -1,4 +1,6 @@
 # KOS-AI-ORCH-001 — Role-Scoped Session Records
+
+> **Registration annotation (Governance, 2026-08-14 — content untouched):** the signed PO/ARB ruling on this proposal's core questions is REGISTERED — see `2026-08-14-KOS-AI-ORCH-001-role-records-ruling-registration.md` (ruling verbatim + numbering reconciliation) and **Amendment A-2** on KOS-AI-ORCH-001. **Ruled:** Option C adopted (one journal per role, provisional, assignment sections) · role ≠ session identity for file identity · no machine parsing of journals (workflow-state = sole machine-truth) · no `human-decisions.md` · no ORCH-002 (amendment route). **Still OPEN (unchanged):** §20 Q-2 reference index · Q-4 lifecycle · Q-5 daily-log relationship · Q-6 prose-authority generalization. **Implementation: NOT AUTHORIZED.**
 # Architecture Proposal (Projection / Evidence Layer)
 
 **Session 4 (ARCHITECTURE) · 2026-08-14 · design proposal for a FUTURE increment**
