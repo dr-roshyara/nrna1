@@ -331,3 +331,19 @@ assets:
       decision: PD-13
       adr: ADR-AIP-01
     notes: "Ordered by explicit DA ruling 2026-07-26 (with the R-39 early promotion of the DDD Tactical Governance Principles). Non-blocking reminder of the 7 principles when tactical-DDD surface files (app/Contexts/*/Domain/, app/Domain/) are created or edited. Canonical rules: engineering/knowledge/methodology/DDD_Tactical_Governance_Principles.md — the hook points, never restates. Matrix note: the 'zero new hooks' position was evidence-based default; this hook exists by explicit DA order, the override path the matrix itself names."
+
+  - id: AST-015
+    path: .claude/scripts/workflow-state.php
+    component: CMP-004
+    adoption: adopted                # registry-first honored: entry preceded implementation in-session (KOS-AI-ORCH-001 Inc-1)
+    governance_tier: 2
+    verified:
+      date: 2026-08-14
+      method: "RED-first contract tests R1-R8 (11 tests, all RED by absence, then GREEN) + the §16 65/69 replay criterion (12/12, 142 assertions); zero change to the six existing CMP-002/CMP-004 script surfaces (git-verified). Session-1 independent verification pending."
+    runtime_moments: [ON_DEMAND]     # CLI read/fold/append helper; no hook, no lock, no enforcement (Inc-2 excluded)
+    trace:
+      capability: CAP-05
+      context: implementation-guidance
+      decision: D-2                  # boundary HUMAN-APPROVED WITH R8 (PO/ARB 2026-08-14, f5981933)
+      adr: KOS-AI-ORCH-001           # accepted rule + G-1..G-4 (51ba56fd); boundary 2026-08-14 proposal §12
+    notes: "CMP-004's first implementation asset: authoritative per-work-item workflow state record (sessionRegistry ≠ authorityState, append-only, state = fold). Contract pinned by tests/Unit/Platform/WorkflowEngine/WorkflowStateRecordContractTest.php (R1–R8, RED-first). Advisory record only — violations are visible/adjudicable, not physically prevented (Increment 2 not authorized). Runtime files live gitignored at .claude/runtime/workflow/<work-item>.json; the registry never carries runtime state (boundary §9-3)."
