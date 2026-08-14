@@ -226,3 +226,24 @@ Sessions 1 / 4:                STOPPED
 ```
 
 **Session 2 implements nothing. This package records rulings and the grant; the boundary review that the gate requires is the next human touchpoint.**
+
+---
+
+## 8 · `start()` out-of-grant observation — governance disposition (2026-08-14; Option A stays CLOSED)
+
+**Context:** the Option-A track is **CLOSED and independently verified** (Session 1, `a8f5afc7`: 8 tests / 27 assertions GREEN; P6 mirror B→A→B→A = TRUE×4; non-member FALSE under every ambient; cache identity `(voter, election)` with `.v2` isolation; no demonstrated regression). Session 1 also confirmed one **out-of-grant** observation — `ElectionVotingController::start()` reads `electionMemberships()->where('election_id',…)->first()` **without bypassing the ambient scope** — and correctly did **not** repair it. **Detected ≠ authorized.** This section is the commissioned disposition; nothing here reopens the verified result, modifies code, or authorizes Session 3.
+
+**The six commissioned questions, answered from the code (`ElectionVotingController.php:96-150`, read in full by Session 2):**
+
+| # | Question | Answer |
+|---|---|---|
+| 1 | What business operation does `start()` perform? | **Ballot-opening**: resolve election (bypassed, ✅) → **evaluate voting-time entitlement** (`!membership ∥ role≠voter ∥ status=removed` → deny *"You are not registered as a voter for this election"*) → `has_voted` check → lifecycle `canVote()` → IP check → **create/reuse the VoterSlug credential** → redirect into the flow |
+| 2 | Is it evaluating the same (voter, election) entitlement fact? | **YES — the flagged lookup feeds an inline entitlement evaluation with identical predicate content** to the repaired sites (existence ∧ role=voter ∧ status≠removed), producing a voter-facing denial |
+| 3 | Or a separate credential/ballot-opening responsibility? | It *also* performs credential issuance — **downstream of the gate**. Decisive nuance: **at `start()` no credential exists yet (this operation creates it)**, so the credential-correspondence layer (Q-TEN-1/Q-TEN-2's deny-duty) **cannot** cover this point — the entitlement gate is **load-bearing pre-credential** |
+| 4 | Does the accepted Decision-A rule apply? | **YES** — the Decision-A test (*"does this operation determine whether this person is entitled to vote in THIS election at voting time?"*) is answered affirmatively by the code itself; the ruled ENT invariance applies to every entitlement evaluation wherever it occurs |
+| 5 | Classification | **A — another manifestation of the already-established entitlement violation** (same fact · same mechanism · same relation · same missing bypass · same false-denial family — the third site of the 65-family). **Scope note:** no cache at this site, so the 69-family (replay) is **not** implicated here. **Evidence strength stated exactly:** static (code read); runtime reproduction **NOT performed** — the same strength at which audit site 2 was carried before its confirmation |
+| 6 | Smallest next governance action | **One PO line choosing between:** **(i)** a **new bounded grant "Option A-2"** — extend the already-ruled invariant's enforcement to `start()`'s entitlement gate (no new business rule or architecture decision is needed: Decision A, Q-TEN-1, Q-TEN-2 and the v5 invariant already govern; RED mirrors TE2's method for `start()`; Session 1 verifies) — **or (ii)** a **pre-grant bounded runtime verification** by Session 1 first: one measurement — *valid membership in election E of org A; ambient context org B; POST `start()`; ticket-family prediction: redirect with "not registered" denial* — then (i) on confirmation |
+
+**What this disposition does NOT do:** repair anything · authorize Session 3 (the Option-A grant is CONSUMED — similarity of code confers no authorization) · reopen the verified Option-A result · touch `EM-OPEN-021` (separate, still the open Track-B business ruling) · promote the PKS observation · extend to the other 36 unaudited class-B–F consumers (the family audit's boundaries stand).
+
+**Register effect:** `start()` entitlement gate = **classification-A manifestation, static evidence, NOT AUTHORIZED** — awaiting the PO's §8.6 choice.
