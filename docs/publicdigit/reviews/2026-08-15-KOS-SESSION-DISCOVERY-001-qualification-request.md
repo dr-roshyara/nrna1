@@ -90,3 +90,24 @@ The PO's item 5 is a **correction of a claim Governance itself relied on.** My V
 **Sequence from here:** your approval of *this* boundary → Governance registers new implementation and verification assignments (R8: the previous ones are terminal — new work is a new assignment) with their grants → **TDD-first** implementation → independent re-verification → **then** Governance presents the final qualification/adoption/closure decision.
 
 **Decision on the boundary: APPROVE / AMEND / DECLINE.**
+
+---
+
+## C-1/C-2 BOUNDARY APPROVED — corrective increment authorized (PO/ARB, 2026-08-15, verbatim)
+
+> *"The PO/ARB approves the C-1/C-2 corrective boundary exactly as presented. … Register my approval verbatim as the human decision. Treat this as a new corrective increment of KOS-SESSION-DISCOVERY-001. Do not reopen, rewrite, or reinterpret the completed implementation lifecycle. Create a fresh implementation assignment for Session 3 and a fresh verification assignment for Session 1. Issue the implementation grant with exactly this scope: **C-1:** Add the interpreter identity to the ResolutionReport in both machine and human renderings, for every answer including UNRESOLVABLE. **C-2:** Correct the documentation so KOS_MECHANISM_PATH is described truthfully as a runtime-selectable mechanism path whose intended purpose is verification. Preserve these invariants: no change to resolution semantics; no second workflow interpretation; workflow-state.php remains untouched; no authorization decision; no activation; no ownership logic; no startup wiring; no hooks, locks or leases; no D-1…D-6 work; no Election work; no removal of KOS_MECHANISM_PATH. Require TDD-first implementation. The existing 13 tests must remain green. Add the smallest necessary assertions for interpreter identity, including verification that the identity changes when the mechanism is deliberately substituted. Do not implement anything yourself. Do not mark AST-016 adopted. Do not qualify or close the work item. Do not let this become another architecture-design exercise."*
+
+**A-3 verification:** the approval is **stated in the PO's own voice within the delivered text** (*"The PO/ARB approves … exactly as presented"* · *"Register **my** approval"*) — the act's content is present, not merely asserted to exist elsewhere. ✅ Registrable. *(Contrast with the audited error, where the referenced act existed in no record.)*
+
+**Lifecycle treatment:** a **new corrective increment**. The completed lifecycle (architecture → implementation → verification → conditional qualification) is **not reopened, rewritten, or reinterpreted** — the previous assignments stay terminal exactly as recorded, and R8 makes this new work new assignments.
+
+### Lanes registered
+
+| | Assignment | Grant | Scope |
+|---|---|---|---|
+| Implementation | `S3-impl-discovery-corrective` (predecessor: `S1-verification-discovery`) | **`G-KOS-DISC-C12-IMPL`** | **C-1 + C-2 exactly**, TDD-first, existing 13 tests green, smallest new assertions incl. **identity changes under deliberate substitution**; all eleven invariants carried verbatim |
+| Verification | `S1-verify-discovery-corrective` (predecessor: the above) | **`G-KOS-DISC-C12-VERIFY`** | the **six named checks** verbatim: interpreter identity present · normal AST-015 resolution still works · substituted-mechanism testing still works · no second fold · read purity intact · no authorization or state mutation introduced. **Excludes** implementation, repair, registry adoption, qualification, closure, self-certification |
+
+**The verification grant is registered now, at assignment time** — deliberately applying the **E-14 process lesson**: pre-establishing role authorization is what prevents the verification-gate stall this programme has hit twice. **It authorizes nothing until a human start; the G-3 gate is untouched.**
+
+**Handoff recorded** to the implementation lane (bootstrap form — ownership was unheld). **Neither lane is started: both starts remain the PO's acts.** `AST-016` **`planned`** · work item **OPEN** · nothing qualified, adopted, or closed · Governance implemented nothing.
