@@ -58,4 +58,15 @@ Session 3 does not self-certify. On GREEN: handoff to independent verification, 
 
 ---
 
+## Acceptance property — sharpened (PA, 2026-08-15; recorded, adopted on grant)
+
+The three tests of §5 discharge a single **universally-quantified property**, which is the stronger and better acceptance statement:
+
+```
+admitted voter     + this election + ANY ambient organisation context  →  ALLOW
+non-admitted voter + this election + ANY ambient organisation context  →  DENY
+```
+
+**Why the second line is not optional:** without it, a "fix" could satisfy the reproduction by removing the organisational restriction broadly — turning *wrong context wrongly denies* into *any context allows*. That is **a security regression wearing the shape of a repair.** The overshoot guard is therefore part of the acceptance property, not an extra test. *(Scope unchanged — this sharpens the criterion, it widens nothing.)*
+
 **Boundary re-presented. Decision required: GRANT / AMEND / DECLINE.** *(Unchanged from the proposal of 2026-08-14; nothing added, nothing widened.)*
