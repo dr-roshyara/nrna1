@@ -247,3 +247,49 @@ Sessions 1 / 4:                STOPPED
 **What this disposition does NOT do:** repair anything · authorize Session 3 (the Option-A grant is CONSUMED — similarity of code confers no authorization) · reopen the verified Option-A result · touch `EM-OPEN-021` (separate, still the open Track-B business ruling) · promote the PKS observation · extend to the other 36 unaudited class-B–F consumers (the family audit's boundaries stand).
 
 **Register effect:** `start()` entitlement gate = **classification-A manifestation, static evidence, NOT AUTHORIZED** — awaiting the PO's §8.6 choice.
+
+### 8a · §8.6 RULED: option (ii) — runtime verification first (2026-08-14; commission registered verbatim)
+
+**PO ruling:** *"Proceed with option (ii)."* Classification A endorsed (*"start() is a third manifestation of the PBDIGIT-65 entitlement problem"*; not 69 — no cache), with the correct restraint: **static evidence alone does not warrant a grant** — *"before changing it, let's prove that a legitimate voter can actually be wrongly blocked."* **Option A-2: ⛔ NOT GRANTED.**
+
+**Commission for Session 1 — PO-AUTHORED, VERBATIM (delivery to Session 1 is the PO's act in that stream; this registration starts nothing):**
+
+```text
+Commission Session 1 to perform exactly one bounded runtime verification of the
+start() observation before any new implementation grant.
+
+Verification scenario:
+
+- Election belongs to Organisation A.
+- Voter is validly admitted to that Election.
+- Voter credential/membership is valid for Organisation A.
+- Ambient/session tenant is Organisation B.
+- POST the existing start() endpoint for the Election.
+- Determine whether start() incorrectly denies the voter because the
+  membership lookup is filtered by ambient Organisation B.
+
+Expected business result under the already accepted Decision-A rule:
+
+The entitlement decision for the same voter + election must not change merely
+because the ambient session tenant is different.
+
+Constraints:
+
+- Verification only.
+- No production changes.
+- No test changes unless explicitly required and separately authorized.
+- Do not reopen Option A.
+- Do not authorize Session 3.
+- Do not investigate or modify the wider BelongsToTenant family.
+- Do not combine this with EM-OPEN-021.
+- Record the exact observed result and evidence strength.
+
+If runtime reproduction confirms the defect, return a decision-ready proposal
+for a separate bounded Option-A-2 grant.
+
+If it does not reproduce, report that fact and stop.
+
+No implementation authorization is implied by this commission.
+```
+
+**Register effect:** `start()` = 🟡 static defect candidate, runtime verification COMMISSIONED (execution pending in Session 1) · Option A-2 ⛔ not granted · Session 3 🛑 stopped · Option A ✅ closed/verified, untouched.
