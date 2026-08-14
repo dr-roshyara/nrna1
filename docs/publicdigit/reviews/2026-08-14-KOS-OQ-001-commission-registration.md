@@ -42,6 +42,14 @@
 
 > **Required: one line from the PO naming the real task KOS-OQ-001 performs.** (Adopting the example verbatim is one valid line — *"The task is: add a new configuration parameter to the system"* — but it must be said, not inferred.)
 
+## 3a · REVISED COMMISSION (rev 2, same day — registered; the gap PERSISTS)
+
+A second signed commission arrived during registration. **Newly performed and registered:** the task shall proceed through the applicable governed lifecycle (Governance → Architecture → Implementation → Verification) · **qualification protocol** — *"after the evidence is compiled, I will decide whether KOS-AI-ORCH-001 is operationally qualified for the scope defined by this commission"* · **closure protocol** — *"after my qualification decision, Session 2 shall register the decision and perform G-1 governance closure"* · **implementation limit** — *"this commission does not authorize implementation beyond what is strictly required by the existing approved Increment-1 boundary."*
+
+**Unchanged: the task is STILL a placeholder — `[ONE SPECIFIC, REAL ENGINEERING TASK]`.** The §3 gap persists across both revisions; one PO line naming the task remains the sole blocker.
+
+**Mechanism observations during record creation (OQ evidence, accumulating):** the contract refused Governance's own writes **three times** before accepting — invalid grant status vocabulary (`active`→`AUTHORIZED`, on the Inc-1 record) · missing `recordedBy` on REGISTER · wrong identity field name (`sessionId`→`session`). Each refusal was precise, corrective, and exit-coded; each acceptance followed the corrected vocabulary. **The record now stands: Governance session `CREATED`, grant `G-KOS-OQ-001 AUTHORIZED`, `mutationOwner: null`, state `OPEN`.**
+
 ## 4 · Authority state after registration
 
 ```
