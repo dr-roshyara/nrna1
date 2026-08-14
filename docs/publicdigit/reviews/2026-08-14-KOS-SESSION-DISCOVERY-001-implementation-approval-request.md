@@ -47,3 +47,32 @@ Implementation plan: `docs/publicdigit/reviews/2026-08-14-KOS-SESSION-DISCOVERY-
 **APPROVE / APPROVE WITH AMENDMENTS / AMEND / DECLINE** — and, if approving, whether amendments ① and ② are included.
 
 *Nothing is built on this approval alone until Governance registers it and issues the build permission.*
+
+---
+
+## DECISION RECORDED — BOUNDARY APPROVED WITH AMENDMENTS ① AND ② (PO/ARB, 2026-08-14, verbatim)
+
+> *"approve the implementation boundary with amendments ① and ②.*
+>
+> *Preserve the architecture's success semantics: UNASSIGNED and AMBIGUOUS are valid answers, not command failures.*
+> *Add the test proving that the resolver delegates interpretation to the existing qualified workflow mechanism and cannot independently determine workflow state.*
+>
+> *The approved architecture remains unchanged. Implementation may proceed only within this amended boundary.*
+>
+> *— PO/ARB"*
+
+### Amendment ① — success semantics (binding, resolves the unresolved question)
+
+**UNASSIGNED and AMBIGUOUS are valid answers, not command failures.** The architecture's convention is restored: **the command succeeds whenever a ResolutionReport was produced**, with the verdict carried *in the report*; non-zero exit is reserved for usage error and refusal, never for a successfully-produced verdict. **Boundary §2's verdict-dependent mapping is superseded on this point, and T-12 must pin the amended contract** (a report on every verdict path → success; UNRESOLVABLE remains STOP-shaped **in the report's verdict and operability**, not by pretending the command failed).
+
+### Amendment ② — the precedence test (binding, becomes T-13)
+
+**A test must prove the resolver delegates interpretation to the qualified mechanism and cannot independently determine workflow state.** Two assertions satisfy it: the resolver's state values **equal** the qualified mechanism's own output for the same record, **and** the resolver **cannot answer** when the mechanism is unavailable. This is the binding precedence rule's own test — the constraint is now enforced by the suite, not only by design intent.
+
+### What is now authorized
+
+**Implementation, strictly within the amended boundary** — the three capability paths (resolver · contract tests T-1…T-13 · one registry entry) plus standing bookkeeping, RED before GREEN, no self-certification, handoff to independent verification. **The approved architecture is unchanged.** All §6 exclusions stand unchanged: no `workflow-state.php` modification · no second interpretation · no authorization engine · no automatic activation · no startup wiring · no hooks/locks/leases · no D-1…D-6 · no Increment-2 · no Election work · no registry schema change.
+
+### Governance's three carried confirmations
+
+Script name `session-resolve.php` ✅ · no developer-guide entry (register entry + file header is the documentation surface) ✅ · "separate tool" reading of Q-B stands ✅ — all confirmed by the approval's *"only within this amended boundary"*, which adopts the boundary as presented except where amended.
