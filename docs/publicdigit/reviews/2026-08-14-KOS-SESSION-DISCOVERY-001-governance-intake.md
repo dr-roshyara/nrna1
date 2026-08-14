@@ -46,3 +46,13 @@ Registered accordingly: **work item `KOS-SESSION-DISCOVERY-001` created via the 
 Implementation of discovery · any `workflow-state.php` change · hooks, automatic session activation, automatic role switching · Session 5 or any new role · Increment-2 enforcement · remediation of O-1/O-2/L-1/E-15 (separate future items — discovery must *work within* them, not fix them) · the role-records implementation (separately ruled, unauthorized) · Election work · reopening KOS-OQ-001 or Increment 1.
 
 **Traceability:** the intake commission (this artifact §header) · Session 4's read-side-G-3 formulation and edge-case list (its own stopped response, PA-endorsed) · OQ evidence O-1/O-2/E-9/E-10/E-11/E-14/E-15 · qualification ruling (evolution clause) · `workflow-state.php:22,354` (identity's precondition) · `inject-context.sh` inspection · A-1/D-3 (canonical roles) · A-3 · G-3 · E-14 lesson.
+
+---
+
+## H · S4 START ACT — performative, REGISTERED VERBATIM (2026-08-14)
+
+> **"register the session 4 start act"** — *PO, 2026-08-14, issued directly in the Governance session's record.*
+
+**A-3 verification:** terse but unambiguous, imperative, in the PO's own words, in this stream's conversation record — **a performed human act, durably preserved here** (unlike the preceding message, which only *asserted* an act performed elsewhere and was correctly held). Registered as the human START act for `S4-architecture-discovery`; G-3 conjunction complete (intake handoff seq 2 + this act).
+
+**Scope carried (unchanged):** grant `G-KOS-DISC-ARCH` — architecture design only, per intake §D/§G. **Provenance treatment accompanying this start (per the commissioning context and Session 4's own adopted stance):** `cee1ee6b` is **prior/untrusted architectural input**, not governed S4 output — the now-ACTIVE assignment reviews/revalidates it rather than inheriting it. *(The Option-② disposition ruling as a separate signed text was never received in this stream; this start under registration-first sequencing is consistent with and operationally equivalent to it — recorded as the operative reading, not as a manufactured ruling.)*
