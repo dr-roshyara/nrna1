@@ -195,7 +195,7 @@ No generic Eligibility bounded context is created under any disposition.
 
 | Act | Effect |
 |---|---|
-| **A** | **Decision A is CLOSED (`AD-2` resolved):** voting-time voter entitlement is **owned by the Election bounded context**; ambient organisation/tenant context is a **forbidden dependency** for its resolution; ADR-002's "Eligibility Context" is **clarified to admission-time evaluation** — a dated status annotation now sits on `docs/adr/ADR-002-verified-eligible-authorized.md` (decision text untouched) |
+| **A** | **Decision A is CLOSED (`AD-2` resolved):** voting-time voter entitlement is **owned by the Election bounded context**; ambient organisation/tenant context is a **forbidden dependency** for its resolution; ADR-002's "Eligibility Context" is **clarified to admission-time evaluation** — a dated status annotation now sits on `docs/adr/ADR-002-verified-eligible-authorized.md` (decision text untouched). *(Reading clarified by PO 2026-08-14, recorded in the disposition package §2a: forbidden as the SOURCE of scope derivation — the election defines which organisation must match; the active context participates as an explicit correspondence COMPARAND. Matching context permits; non-matching denies; cache never transports cross-context answers.)* |
 | **B** | Recorded in the Manifesto as **`EM-VOT-003`** (§4a + traceability), ID assigned by the established process (EM-VOT-002 precedent). Voter half new; **`ElectionConstitution` identified as expression home, both paths**; `EM-OPEN-021` and the zero-voter analog untouched |
 | **Neither** | **creates any implementation authorization.** Grants remain NONE; `PBDIGIT-65`/`69` remain NOT AUTHORIZED; Session 3 remains STOPPED |
 

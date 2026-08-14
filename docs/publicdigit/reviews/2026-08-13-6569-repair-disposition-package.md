@@ -41,6 +41,30 @@ and the wrong answer transported across contexts by the cache
 
 This violates the accepted Decision-A rule and the adopted entitlement model (Model B; `EM-ENT-004`; `EM-GOV-001`): *the entitlement's answer must be a function of the election and the voter's admitted status in it — never of ambient context.*
 
+### 2a · PO INVARIANT CLARIFICATION (2026-08-14 — performative; supersedes the §2 phrasing above and template v2's invariant)
+
+**The PO clarified the rule** — it is **NOT** *"a voter may vote regardless of tenant context"*. It is, verbatim:
+
+> **"For a given voter and election, voting-time entitlement must be evaluated against the organisation/tenant context belonging to that election. A matching context may permit voting; a non-matching context must not. The result must not be corrupted by cache state from another context."**
+
+With the PO's expected-behaviour table (verbatim in substance):
+
+| Situation | Expected |
+|---|---|
+| Voter belongs to Election **and** tenant matches Election | ✅ may vote |
+| Voter belongs to Election, tenant does **not** match Election | ❌ may not vote |
+| Voter belongs to another Election | ❌ may not vote |
+| Correct tenant, but cached result originated from another tenant | **must be recalculated correctly — never reuse the wrong-context answer** |
+
+**Consequences — registered, not silently absorbed:**
+
+1. **Decision A sentence (i) is CLARIFIED, not repealed:** ambient context is forbidden **as the SOURCE of scope derivation** (the election defines which organisation must match — the election still owns resolution); the active context participates **as an explicit correspondence COMPARAND**. *"The problem is not that tenant context exists"* (PO) — it is that the current implementation lets an arbitrary ambient value act as an invisible filter, and lets a cache transport answers across contexts.
+2. **`PBDIGIT-65`'s ticket acceptance criterion is SUPERSEDED IN PART by this ruling.** The ticket said *"a voter's right to vote must not depend on which page they visited last"*; the PO now rules that **exercise requires the matching context** (the durable *entitlement* persists — Model B — but wrong-context *exercise* is denied). **Tests must encode the PO's four-row table, not the ticket's sentence.** Tickets are evidence, never authority — this is that rule operating.
+3. **P6's evidence re-reads under the clarified invariant:** step 1 (wrong tenant → FALSE) is **outcome-CONSISTENT with row 2** — though produced by a non-conformant mechanism (implicit ambient filter + platform-org fallback, not an election-derived correspondence check); step 2 (correct tenant + warm cache → FALSE) **remains the proven outcome defect — row 4 violated** (`PBDIGIT-69`); step 3 (correct tenant, cleared → TRUE) is row 1, correct.
+4. **Open sub-question, NOT invented here:** the table does not specify the **null/absent-context** case (no tenant set; `BelongsToTenant` then falls back to the platform org). Expected behaviour for a voter reaching the election with no ambient context needs one PO line when the boundary is presented.
+
+## 3a · *(renumbering note: §3 below and all option analysis stand; where v2 text says "same answer regardless of ambient context", the §2a invariant governs)*
+
 ## 3 · The three repair options — evaluated, NONE chosen
 
 | | **Option A — repair the two confirmed sites** | **Option B — Election-owned voting-time access pattern** | **Option C — broader infrastructure remediation** |
@@ -67,13 +91,14 @@ This violates the accepted Decision-A rule and the adopted entitlement model (Mo
 > **☐ NOT GRANTED.** If the PO selects Option A, this becomes the grant by one signature; until then it authorizes nothing.
 >
 > **Scope:** repair of **the two confirmed voting-time entitlement violations identified by the Decision-B audit** — scoped by the violations, **not by file prescription**. *(The observed sites — `User::isVoterInElection()` `User.php:315-328` incl. its cache behaviour, and the `isEligible`/`canVote` projection `ElectionVotingController.php:37-44` — are cited as EVIDENCE of where the violations manifest, not as instructions to edit those files.)*
-> **Invariant to preserve (the grant's real content):** *for the same voter and the same election, voting-time entitlement must produce the same answer regardless of ambient organisation/tenant context and regardless of cache state across contexts* (Decision A).
+> **Invariant to preserve (the grant's real content — PO wording, 2026-08-14, verbatim):** *"For a given voter and election, voting-time entitlement must be evaluated against the organisation/tenant context belonging to that election. A matching context may permit voting; a non-matching context must not. The result must not be corrupted by cache state from another context."* The §2a four-row expected-behaviour table is part of this invariant; **tests encode the table, not `PBDIGIT-65`'s superseded sentence.** The null/absent-context case (§2a.4) is flagged for one PO line at boundary presentation.
 > **Boundary presentation:** Session 3 determines the **smallest implementation boundary and technique** under strict TDD — and **must present that boundary before production implementation** (six-question reconciliation), so the design is reviewed as a boundary, not discovered in a diff.
-> **Test obligation:** RED first; tests cite **Decision A** and `PBDIGIT-65`/`69`; the P6 three-step A/B (wrong tenant/cold · correct tenant/warm · correct tenant/cleared) becomes the acceptance scenario and must pass with a single consistent answer.
+> **Test obligation:** RED first; tests cite **Decision A (as clarified §2a)** and `PBDIGIT-65`/`69`; the acceptance scenario is the **§2a four-row table** — the P6 three-step A/B maps onto it as: step 1 → row 2 (❌, and via an election-derived correspondence check, not an accidental ambient filter) · step 2 → row 4 (recompute, never replay) · step 3 → row 1 (✅).
 > **Out of scope (explicit):** `voter_count` · `has_voters` · the broader `BelongsToTenant` family · `EM-VOT-003` implementation · `EM-OPEN-021` · class B–F consumers · cache keys beyond the violating mechanism · any refactor of the 375 bypass sites. **No broader infrastructure refactoring is authorized.**
 > **Verification:** Session 1 verifies independently; Session 3 does not self-certify. Baseline `SD-1` = 1,376 respected.
 >
 > *Template revision v2 (2026-08-13): rewritten to the Principal-Architect-recommended ruling shape — violations-scoped rather than file-prescriptive; boundary-presentation step added. v1 named the two sites as scope; that prescription is withdrawn (sites are evidence, the invariant is the scope).*
+> *Template revision v3 (2026-08-14): invariant replaced with the PO's clarified wording (§2a) — v2's "same answer regardless of ambient context" was **too strong** and is withdrawn: the ruled behaviour is context-CORRESPONDENCE (matching context permits; non-matching denies; cache never transports cross-context answers). Correction noted, not silently swapped.*
 
 Options B and C have **no draftable grant yet** — B needs a recorded architecture design decision (home + shape), C needs its own programme ruling.
 
