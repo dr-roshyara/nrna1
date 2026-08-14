@@ -1,5 +1,8 @@
 # Election-Only Governance Decision Package — decision-ready, nothing decided
 
+> ## ⚠️ CURRENCY BANNER (2026-08-14) — this package is LAYERED ADDENDA; early sections show the state at writing time. **The current state is the LATEST dated section, not §3/§6's original "OPEN" labels:**
+> **Decision A: CLOSED** (§5d, sentences (i)+(ii) accepted; reading clarified 2026-08-14) · **EM-VOT-003: ADOPTED** (§5d) · **Decision B: DECIDED — audit-first** (§5e) · **family audit: EXECUTED** (`9cf441fc` + §11 corrections) · **65/69: CONFIRMED, NOT AUTHORIZED — grant template v3 UNSIGNED** ([disposition package](2026-08-13-6569-repair-disposition-package.md)) · **EM-OPEN-021: OPEN** · **Session 3: STOPPED · grants: NONE.**
+
 **Type:** Governance decision package (Session 2, gatekeeper) · **Date:** 2026-08-13
 **⛔ Nothing implemented · nothing decided on the PO/ARB's behalf · no grant created · EM-VOT-002 not reopened · archaeology not redone · Session 1 not duplicated · board not edited (proposed wording only, §9).**
 
@@ -50,7 +53,7 @@ BUSINESS / ARCHITECTURE DECISION → bounded implementation scope → explicit i
 |---|---|---|---|
 | 1 | `EM-OPEN-021` — lifecycle meaning of the anomalous configuration (§4) | business/domain | OPEN DECISION — **evidence sufficient to decide** |
 | 2 | **Decision A** — voting-time entitlement ownership (§5, §5a) | architecture | **PO BUSINESS RULE ESTABLISHED (2026-08-13) · ownership SUPPORTED/ASSESSED (Election BC) · formal acceptance OUTSTANDING (AD-2)** |
-| 3 | **Decision B** — 65/69 repair scope (§6) | architecture/governance | OPEN DECISION — sequenced after A |
+| 3 | **Decision B** — 65/69 repair scope (§6) | architecture/governance | ~~OPEN~~ **DECIDED 2026-08-13 (§5e): audit-first** — audit executed (`9cf441fc`); disposition delivered; grant unsigned |
 | 4 | `BR-1.12` — admission state | business | OPEN DECISION |
 | 5 | `59` — which clock is constitutional | business | OPEN DECISION *(presented with 67; decided as two)* |
 | 6 | `67` — what an entered time means | business | OPEN DECISION |
