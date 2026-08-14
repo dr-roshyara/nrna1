@@ -117,3 +117,15 @@
 **Boundaries:** nothing implemented · nothing granted · nothing closed · decisions kept unbundled · folder structure not used as authority · current behaviour not promoted · Session 1 not directed (a request is recorded; classification is theirs) · Session 3 explicitly stopped · Session 4's untracked artifacts and its handoff to Session 2 observed but not read, classified, or committed by this stream.
 
 **Evidence by pointer:** [domain ownership analysis](2026-08-13-election-only-domain-ownership-analysis.md) *(two authorities · thirteen questions · §5 ownership evidence)* · [current-state report + U-addendum](2026-08-13-election-context-governance-current-state.md) · [ticket authority matrix](2026-08-13-election-only-ticket-authority-matrix.md) · admission gate §0.6 (`BR-1.12`) · `69`/`67`/`59` tickets · Manifesto §9.
+
+---
+
+## Board update — 2026-08-14 · Q-TEN-2 ruled · Option A GRANTED (gated)
+
+**Supersedes the ⛔ "SESSION 3 HAS NO ACTIVE IMPLEMENTATION GRANT" block above for the 65/69 track only.**
+
+* **Q-TEN-1 CLOSED · Q-TEN-2 CLOSED** — six-clause voting-time organisation boundary rule complete (disposition package §2c/§2d).
+* **Option A GRANTED — v5, disposition package §5a** — by the PO's explicit words *"Accept Option A"*, with the PO's own disambiguation recorded (*acceptance of reasoning ≠ grant; this wording removes the ambiguity*).
+* **Grant history:** `EM-VOT-002` — granted 2026-08-13, consumed, closed · **Option A (65/69) — granted 2026-08-14, OPEN, gated.** Grants active: **one**.
+* **The gate:** Session 3's first task is the **six-question boundary reconciliation**, presented for review **before any production edit**. Sites are evidence, not file instructions. RED after the reviewed boundary.
+* **Unchanged:** `EM-OPEN-021` open and independent · `EM-VOT-003` adopted, ungrated · `voter_count` / `has_voters` / family-pattern questions remain their own items · Sessions 1 and 4 stopped.

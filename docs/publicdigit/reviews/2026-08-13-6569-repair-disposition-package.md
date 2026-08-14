@@ -155,3 +155,57 @@ Sessions 1 / 3 / 4:            STOPPED
 ```
 
 **Traceability:** family audit (`9cf441fc`) · audit charter (PO-authored, verbatim) · P6 (`fc86049f`) · Decision A acceptance + ADR-002 annotation (`dc105c5d`) · Decision B ruling (§5e, `23b6becd`) · `EM-VOT-003` (Manifesto §4a) · decision package §§5a–5e · `PBDIGIT-65`/`69` tickets.
+
+---
+
+## 2d · Q-TEN-2 RULED (2026-08-14 — performative PO ruling, verbatim)
+
+> **"The Q-TEN-2 decision is also accepted: if no voting-session/credential context exists, voting must be denied."**
+
+**Fail-closed, and grounded in the ruled model:** the business rule requires a credential belonging to the Election's organisation; **with no credential there is no organisation correspondence to establish.** Deriving a context from the Election was explicitly considered and **not** chosen — it could bypass the very organisational boundary the rule enforces. **The trait's platform-org fallback remains implementation evidence and acquires no authority from this ruling.**
+
+**The complete voting-time organisation boundary rule — six clauses, now all ruled:**
+
+1. The **Election** determines the required organisation.
+2. The **voting credential** provides the organisation to compare.
+3. Matching organisation → voting **may proceed**, subject to the other voting rules.
+4. Non-matching organisation → voting is **denied**.
+5. **No voting credential/context → voting is denied.**
+6. **A cached result from another context must never be reused.**
+
+## 2e · OPTION A ACCEPTED — explicit authorization (2026-08-14, verbatim)
+
+> **"So Accept Option A. … Please register both as formal rulings, update the Option-A grant accordingly, and prepare the final bounded implementation authorization. Do not begin implementation. Session 3 must first perform the six-question boundary reconciliation and present the proposed implementation boundary for review."**
+
+**Disambiguation, recorded at the PO's own instruction:** *"'Accept Option A' is now an explicit authorization, whereas your earlier 'I agree with your argument' was agreement with the reasoning, not necessarily a grant. This wording removes that ambiguity."* **The grant below is therefore GRANTED — not merely ready for signature — with a mandatory pre-implementation gate.**
+
+## 5a · Grant — **Option A · v5 · GRANTED, gated on boundary presentation** *(supersedes §5's status line; §5's v2–v4 history stands unmodified)*
+
+> **☑ GRANTED (2026-08-14, §2e verbatim authorization) — with ONE mandatory sequencing gate:**
+>
+> **GATE: Session 3's FIRST task is the six-question boundary reconciliation** — *given Q-TEN-1 + Q-TEN-2 + Decision A + Decision B, what is the smallest Election-owned implementation boundary that satisfies the invariant?* — **and it must PRESENT that boundary for review BEFORE any production edit.** The two observed sites remain **evidence, not file instructions.** RED tests follow the reviewed boundary, never precede it.
+>
+> **Invariant (v5 — v4 extended by the Q-TEN-2 ruling):** *"A voter may vote in an election only through a voting session/credential that belongs to the same organisation as that election. The Election is authoritative for the required organisation; the voting-session/credential supplies the organisation against which that requirement is compared. **If no voting-session/credential context exists, voting is denied.** The voting-time entitlement evaluation must not be filtered by ambient session/tenant context, and a result produced under any other context must never be reused."*
+>
+> **Acceptance scenarios:** the §2c credential table **plus row 5 (no credential → deny)** and row 6 (cache never replays cross-context). The P6 mapping stands (step 1 → deny via election-derived correspondence, not accidental filter · step 2 → recompute, never replay · step 3 → permit).
+>
+> **Out-of-scope list of §5 carries forward unchanged:** `voter_count` · `has_voters` · the wider `BelongsToTenant` family · `EM-VOT-003` · `EM-OPEN-021` · class B–F consumers · the 375 bypass sites. **No broader infrastructure refactoring is authorized.**
+>
+> **Verification:** Session 1 verifies independently after GREEN; Session 3 does not self-certify.
+>
+> *Revision v5 (2026-08-14): status ☐→☑ per §2e; invariant gains the ruled clause 5; boundary-presentation step promoted from template text to a HARD GATE. Nothing else altered; v2–v4 revision notes stand.*
+
+## 7a · Authorization state — superseding §7's table as of 2026-08-14
+
+```
+Active implementation grants:  ONE — Option A v5 (§5a), GATED on boundary presentation
+Q-TEN-1: CLOSED (§2c)          Q-TEN-2: CLOSED (§2d)       Decision A: CLOSED     Decision B: COMPLETED
+PBDIGIT-65/69:                 CONFIRMED DEFECTS · repair AUTHORIZED under §5a's gate
+EM-VOT-002: CLOSED             EM-VOT-003: ADOPTED — implementation pending its own grant
+EM-OPEN-021:                   OPEN — independent lifecycle track; NOT mixed with this grant
+Session 3:                     REOPENED FOR THE §5a GATE ONLY — boundary reconciliation + presentation;
+                               production implementation begins only after the boundary is reviewed
+Sessions 1 / 4:                STOPPED
+```
+
+**Session 2 implements nothing. This package records rulings and the grant; the boundary review that the gate requires is the next human touchpoint.**
