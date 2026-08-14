@@ -298,3 +298,21 @@ The invariant INV-ORCH-1 · the authority model and chain · one-mutation-owner 
 ## A-2.5 · What A-2 does NOT do
 
 **It authorizes NO implementation** (the ruling's own words: *"does NOT authorize implementation; a separate implementation commission and boundary approval are required before any role-journal mechanism is built"*). No journal directory or file is created by this amendment. Increment 1 is a separate work item, not reopened. Increment-2 enforcement remains NOT AUTHORIZED. Open proposal questions preserved: §20 Q-2 (reference index) · Q-4 (lifecycle/archival) · Q-5 (daily-log relationship) · Q-6 (prose-authority generalization — touches `inject-context.sh`, needs its own analysis).
+
+---
+
+# Amendment A-3 — Human-Act Precondition (signed PO/ARB ruling, 2026-08-14; registered by Governance)
+
+**Provenance:** Session 2's commissioned governance audit (`2026-08-14-human-act-precondition-governance-audit.md`, `4e9efa19` — claims (a)/(b)/(c) found already normative in G-2/A-2.4; claim (d) precedent-only) → **signed PO/ARB ruling** (registered verbatim below). Parsimony per the ruling itself: **amendment to ORCH-001 — no ORCH-002.**
+
+## A-3 · The rule (added by ruling, verbatim)
+
+> **"A registrable Human/PO/ARB act is one that has already been performed and durably recorded. A statement of intent, recommendation, preliminary position, or template is not a registrable act. A registration artifact can never serve as its own `humanActRef` — registration preserves authority; it never creates it."**
+
+## A-3.1 · The ruling's own limits (verbatim in substance)
+
+*"This ruling authorizes Governance to REGISTER this amendment. This ruling does NOT authorize implementation. The verified R5b mechanism remains correct under Q-4. Increment 1 remains closed and is not reopened. — Signed: PO/ARB Chief, 2026-08-14."*
+
+## A-3.2 · Registration notes (Governance)
+
+The rule closes exactly the audit's claim (d) — the twice-exercised precedent (intent-vs-ruling; no self-reference) is now rule text. **The R5b mechanism is unchanged and correct by design**: it checks reference presence; act-existence verification is the Governance role's duty, unautomatable under ruled Q-4. **First application of A-3, same day:** the review accompanying this ruling recommended dispositions for F-3, F-1, and operational qualification — those are recommendations, **not performed acts, and are NOT registered**; they remain on the PO desk.

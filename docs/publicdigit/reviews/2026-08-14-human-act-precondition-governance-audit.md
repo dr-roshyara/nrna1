@@ -43,4 +43,10 @@
 
 Enact A-3 · touch the helper or any mechanism (the R5b reference-only check is correct under ruled Q-4) · reopen Increment 1 (verification gate closed, `a8477f5a`) · touch the role-records track, Increment 2, or Election matters.
 
+## 6 · ACCEPTANCE RECORD (signed PO/ARB ruling, 2026-08-14 — verbatim)
+
+> *"PO/ARB RULING — KOS-AI-ORCH-001 — A-3 Human-Act Precondition Amendment — Date: 2026-08-14. I rule as follows: **A-3 is ACCEPTED.** The following text is added to KOS-AI-ORCH-001: 'A registrable Human/PO/ARB act is one that has already been performed and durably recorded. A statement of intent, recommendation, preliminary position, or template is not a registrable act. A registration artifact can never serve as its own humanActRef — registration preserves authority; it never creates it.' Parsimony check: Amendment to ORCH-001. No ORCH-002. This ruling authorizes Governance to REGISTER this amendment. This ruling does NOT authorize implementation. The verified R5b mechanism remains correct under Q-4. Increment 1 remains closed and is not reopened. — Signed: PO/ARB Chief, 2026-08-14."*
+
+**Registered as Amendment A-3 on KOS-AI-ORCH-001 (same commit as this record). §4's candidate is thereby consumed; this audit's §3 stands as the analysis of record.**
+
 **Traceability:** G-2 (`51ba56fd`) · A-2.4 (`57dbf419`) · §10a/§15 (accepted rule) · R5a/R5b (verified `aac62274`; source `workflow-state.php:321-326`) · D-4/A-1.3 (`f5981933`) · intent-vs-ruling precedents (session logs 2026-08-13 "Twenty-second/Twenty-third entries", 2026-08-14 role-records STOP report) · ES-001.1.
