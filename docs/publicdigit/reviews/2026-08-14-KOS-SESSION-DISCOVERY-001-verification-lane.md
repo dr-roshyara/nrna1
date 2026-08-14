@@ -48,3 +48,13 @@ AST-016:                     planned (unchanged)
 ```
 
 **Next: a human start for the verification session. Nothing verifies until then.**
+
+---
+
+## 6 · VERIFICATION START ACT — performative, REGISTERED VERBATIM (2026-08-15)
+
+> *"I approve the verification team to independently test the Session Assignment Discovery implementation, including deliberate attempts to break the two approved safeguards. — Signed, PO/ARB"*
+
+**A-3 verification:** performative, signed, **permission addressed to the verification team** — operationally an activation permission, the same reading applied to the implementation session's start (and distinct from the audited error, where the text was an instruction addressed to the registrar). Recorded as the human START for `S1-verification-discovery`; G-3 complete with the seq-9 handoff.
+
+**Notably explicit:** the act authorizes **deliberate attempts to break the two approved safeguards** — amendment ① (success semantics: a produced report is a success; UNASSIGNED/AMBIGUOUS are answers, not failures) and amendment ②/T-13 (delegation: answers equal the qualified mechanism's; cannot answer without it). **Adversarial falsification of those two is therefore named authority, not merely permitted.** The grant's exclusions stand unchanged: no implementation, repair, registry adoption, workflow change, qualification, closure, or self-certification.
