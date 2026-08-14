@@ -93,7 +93,7 @@ Session 1 re-evaluated the audit under the clarified rule: **both violations STA
 
 **Q-TEN-2 restated under ruling (b) — OPEN, now the SOLE blocker (PA-directed: do not sign until explicitly resolved):** *what must the system do when there is no voting-session/credential context at all?* — **deny** (explicit boundary) · **derive from the Election** · **platform/default** (current implementation behaviour, evidence not authority).
 
-### 2d · Q-TEN-2 RULED (2026-08-14 — performative PO ruling) — ALL semantic blockers now CLOSED; only the signature remains
+### 2d · Q-TEN-2 RULED (2026-08-14 — performative PO ruling) — ALL semantic blockers now CLOSED *(the signature followed the same day: §2e)*
 
 > **PO ruling:** *"Q-TEN-2 — no voting credential/context → deny."*
 > **Formal wording (PA-drafted, ruled in substance by the line above):** *"If no voting-session/credential context exists, the voter must be denied voting. The system must not derive the context from the Election and must not fall back to the platform/default organisation."*
@@ -132,7 +132,8 @@ Session 1 re-evaluated the audit under the clarified rule: **both violations STA
 
 ## 5 · Grant template — Option A, PREPARED AND EXPLICITLY UNSIGNED *(EM-VOT-002 package precedent)*
 
-> **☐ NOT GRANTED — ALL semantic blockers CLOSED (Q-TEN-1 §2c; Q-TEN-2 §2d). This is the FINAL-FORM grant (v5), presented for the PO's EXPLICIT SIGNATURE. Until signed it authorizes nothing; Session 3 remains stopped.**
+> ~~**☐ NOT GRANTED — ALL semantic blockers CLOSED (Q-TEN-1 §2c; Q-TEN-2 §2d). This is the FINAL-FORM grant (v5), presented for the PO's EXPLICIT SIGNATURE. Until signed it authorizes nothing; Session 3 remains stopped.**~~
+> **⚠️ SUPERSEDED SAME DAY — concurrent-write reconciliation (2026-08-14):** this status line was written in parallel with the PO's acceptance commit (`f6bb5504`) and is **overtaken by §2e/§5a: the grant is ☑ GRANTED, gated on boundary presentation.** Kept struck-through for the record; the authoritative status is §5a.
 >
 > **Invariant (v5 — the ruled wording, complete):** *"A voter may vote in an election only through a voting session/credential that belongs to the same organisation as that election. The Election is authoritative for the required organisation; the voting-session/credential supplies the organisation against which that requirement is compared. If no voting-session/credential context exists, the voter must be denied voting — the system must not derive the context from the Election and must not fall back to the platform/default organisation. The voting-time entitlement evaluation must not be filtered by ambient session/tenant context, and a result produced under any other context must never be reused."*
 > **Acceptance encodes:** the §2c credential table · the §2d no-credential→deny rule · the cache-never-replays rule. **At boundary presentation:** the predicate's session-independence derived reading (§2c.2, one-line confirm) · the `=== 1` platform-branch semantics (§2d.3, scrutiny against the rulings).
