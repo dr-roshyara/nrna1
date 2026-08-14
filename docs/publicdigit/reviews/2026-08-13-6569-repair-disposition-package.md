@@ -77,6 +77,22 @@ Session 1 re-evaluated the audit under the clarified rule: **both violations STA
 
 **Adjacent observation carried (not a defect claim):** `VerifyVoterSlugConsistency:59-60` treats `organisation_id === 1` as "platform" — an integer comparison while organisation ids are UUIDs in current data; branch reachability NOT ESTABLISHED (Session 1).
 
+### 2c · Q-TEN-1 RULED (2026-08-14 — performative PO ruling, verbatim) — Q-TEN-2 is now the sole blocker
+
+> **"Q-TEN-1 DECIDED: The voting-session/credential organisation must match the Election's organisation. The Election is authoritative for the required organisation; the voting-session/credential supplies the organisation against which that requirement is compared."**
+
+**Business rule (PO wording):** *a voter may vote in an election only through a voting session/credential that belongs to the same organisation as that election.* Credential table (verbatim in substance): election-org A + credential-org A → ✅ · A + B → ❌ · B + B → ✅ · B + A → ❌. **The Election determines the required organisation — infrastructure context never owns this rule.**
+
+**Consequences traced:**
+
+1. **The required comparison already exists at the authoritative site** — `VerifyVoterSlugConsistency:58` is election-derived and credential-compared. *(Measured evidence of current enforcement — NOT an instruction that the repair must live there.)*
+2. **The ambient SESSION tenant now has NO legitimate role anywhere in voting-time entitlement:** it is neither the comparand (the credential is) nor a permissible filter (the accidental scope is the defect at both violating sites). **Derived reading (Session 2, from the ruling — cheap one-line confirm at boundary presentation):** for an admitted voter, the *entitlement predicate's* correct answer is independent of session-tenant state — `PBDIGIT-65`'s original "independent of navigation" criterion is effectively **reinstated at the predicate layer**, while the deny-duty for organisation mismatch lives at the **credential layer** (already enforced). *(This is P6 step 1's third reading: defect → outcome-consistent under reading (a) → defect again at the predicate layer under ruling (b). The verdicts on both sites never changed; the reason now settles.)*
+3. **`PBDIGIT-69` unchanged and unambiguous:** a cached FALSE produced under any wrong context must never be replayed — the warm-cache failure remains the proven defect under every reading.
+4. **The `=== 1` platform branch (§2b observation) now sits ON the authoritative comparison site** — its reachability/correctness becomes a targeted-verification candidate once Q-TEN-2 is ruled. Not commissioned here.
+5. **No mechanism is prescribed** — "change the cache key in `User.php`" remains explicitly un-said; the invariant is the authority, the technique is Session 3's design under TDD.
+
+**Q-TEN-2 restated under ruling (b) — OPEN, now the SOLE blocker (PA-directed: do not sign until explicitly resolved):** *what must the system do when there is no voting-session/credential context at all?* — **deny** (explicit boundary) · **derive from the Election** · **platform/default** (current implementation behaviour, evidence not authority).
+
 ## 3a · *(renumbering note: §3 below and all option analysis stand; where v2 text says "same answer regardless of ambient context", the §2a invariant governs)*
 
 ## 3 · The three repair options — evaluated, NONE chosen
@@ -102,7 +118,11 @@ Session 1 re-evaluated the audit under the clarified rule: **both violations STA
 
 ## 5 · Grant template — Option A, PREPARED AND EXPLICITLY UNSIGNED *(EM-VOT-002 package precedent)*
 
-> **☐ NOT GRANTED — and as of 2026-08-14 additionally ⛔ BLOCKED ON `Q-TEN-1` (§2b):** the clarified invariant's "matching context" is ambiguous between session-tenant and voting-session/slug context, and **materially different repairs follow from each answer.** The PA's direction is explicit: do not sign v3 until Q-TEN-1 is settled. Q-TEN-2 (null context) is answerable at boundary presentation, but Q-TEN-1 defines the invariant itself.
+> **☐ NOT GRANTED — Q-TEN-1 block LIFTED (ruled 2026-08-14, §2c); now ⛔ BLOCKED ON `Q-TEN-2` ONLY** (PA-directed: update the grant to the ruling, do not sign until Q-TEN-2 is explicitly resolved).
+>
+> **Invariant (v4 — the ruled wording):** *"A voter may vote in an election only through a voting session/credential that belongs to the same organisation as that election. The Election is authoritative for the required organisation; the voting-session/credential supplies the organisation against which that requirement is compared. The voting-time entitlement evaluation must not be filtered by ambient session/tenant context, and a result produced under any other context must never be reused."* Acceptance encodes the §2c credential table + the cache-never-replays rule; the predicate's session-independence derived reading (§2c.2) gets its one-line confirm at boundary presentation.
+>
+> *Template revision v4 (2026-08-14): invariant replaced with the Q-TEN-1-ruled wording; v3's "organisation/tenant context belonging to that election" made precise — the comparand is the CREDENTIAL organisation, and the session tenant is excluded from entitlement evaluation entirely. Corrections noted, never silently swapped.*
 >
 > **Scope:** repair of **the two confirmed voting-time entitlement violations identified by the Decision-B audit** — scoped by the violations, **not by file prescription**. *(The observed sites — `User::isVoterInElection()` `User.php:315-328` incl. its cache behaviour, and the `isEligible`/`canVote` projection `ElectionVotingController.php:37-44` — are cited as EVIDENCE of where the violations manifest, not as instructions to edit those files.)*
 > **Invariant to preserve (the grant's real content — PO wording, 2026-08-14, verbatim):** *"For a given voter and election, voting-time entitlement must be evaluated against the organisation/tenant context belonging to that election. A matching context may permit voting; a non-matching context must not. The result must not be corrupted by cache state from another context."* The §2a four-row expected-behaviour table is part of this invariant; **tests encode the table, not `PBDIGIT-65`'s superseded sentence.** The null/absent-context case (§2a.4) is flagged for one PO line at boundary presentation.
