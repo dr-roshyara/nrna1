@@ -90,3 +90,29 @@ Election authority:                    unchanged — grants NONE; start()/A-2 pe
 **The existing definition (commission §13) assigns the OQ activity to NO single session.** What it defines: **the activity** — *"the mechanism runs alongside the manual conventions for at least one real governed work item without replacing them"* — i.e., an **operational period** in which every role of a real governed work item USES the record during normal gated work; and **the decider** — *"the PO/ARB rules on qualification with that evidence."* What it does **not** define: who compiles the evidence package at period end, and which work item serves as the vehicle.
 
 **Therefore (reported, not decided):** the OQ commission needs two PO designations — **(i) the vehicle** (the natural candidate: the next real governed work item, e.g. the Election `start()`/Option-A-2 track when commissioned, run with the record alongside the manual conventions) and **(ii) the evidence-compiler** (candidates: Session 1, by the independence precedent; or Governance compiles and the PO rules). **Neither Session 1 nor Session 3 is started by this registration.**
+
+---
+
+## 10 · OPERATIONAL QUALIFICATION RULED — and TERMINAL G-1 CLOSURE (2026-08-14)
+
+> *"PO/ARB RULING — KOS-AI-ORCH-001 — Operational Qualification. I hereby rule that KOS-AI-ORCH-001 is operationally qualified for the scope defined by the KOS-AI-ORCH-001 OQ commission. This qualification is based on the independently compiled Session 1 verification evidence and the completed KOS-OQ-001 operational-qualification record. I accept O-1, O-2, L-1, and E-15 as recorded observations or limitations of the Increment-1 mechanism and not as defects requiring remediation as a condition of this qualification. This ruling does not authorize Increment-2, hooks, locks, leases, changes to workflow-state.php, or any other mechanism evolution. Any remediation or evolution arising from O-1, O-2, L-1, or E-15 requires a separate future analysis and authorization. — Signed: PO/ARB Chief, 2026-08-14"*
+
+**A-3 verification:** performative, signed, scope-exact ("for the scope defined by the OQ commission" — the qualified-for-defined-scope semantics adopted at commissioning, never "production-ready"), observation-acceptances explicit, evolution expressly ungated. ✅ Registered.
+
+> ## **KOS-AI-ORCH-001 INCREMENT 1 — TERMINAL G-1 CLOSURE.**
+> The gate chain is complete: PO authorization ✅ (§15, `7cbe5984`) → boundary ✅ (D-2 + R8, `f5981933`) → RED/GREEN ✅ (`c2f5a831`) → independent verification ✅ (`aac62274`) → verification-gate closure ✅ (`a8477f5a`) → **operational qualification ✅ (this ruling; vehicle KOS-OQ-001, itself governance-closed `aad0395c`)** → **G-1 terminal closure: PERFORMED HERE**, by the Governance role, on the registered human ruling — Verification reported and compiled; Governance closes.
+>
+> **The historical INC1 record is deliberately NOT mutated** — its states (S3-impl `HANDED_OFF`, S1-verify `CREATED`) remain standing evidence of the pre-OQ bootstrap (reconciliation classification B; O-4), per the PO's own expose-don't-repair instruction. Closure lives in this governance record.
+
+**Post-closure authority state:**
+
+```
+KOS-AI-ORCH-001:      rule ACCEPTED + A-1 + A-2 + A-3 · Increment 1 IMPLEMENTED, VERIFIED,
+                      GOVERNANCE-CLOSED, OPERATIONALLY QUALIFIED (for the commission's scope)
+Interim conventions:  REMAIN IN FORCE — retirement of "same terminal" etc. requires its own
+                      explicit ruling (commission §13; NOT performed by this qualification)
+Increment 2 / evolution: NOT AUTHORIZED — O-1, O-2, L-1, E-15 (+E-1…E-14, S1 compilations)
+                      form the evidence basket for a SEPARATE future analysis + authorization
+Role-records track:   HUMAN-RULED, registered (A-2), implementation NOT authorized (unchanged)
+Platform grants:      all consumed or closed with their work · none active
+```
