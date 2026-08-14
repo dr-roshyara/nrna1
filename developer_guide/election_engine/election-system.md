@@ -440,6 +440,31 @@ $user->canVoteInDemo();            // false
    Committee reviews remaining pending voters
 ```
 
+#### Invitation delivery retries — `election.invitation_send_attempts`
+
+Imported voters are emailed an invitation by the queued job `SendVoterInvitation`.
+How many times a **failed send** is retried is configurable:
+
+| | |
+|---|---|
+| Config key | `election.invitation_send_attempts` (`config/election.php`) |
+| Environment | `ELECTION_INVITATION_SEND_ATTEMPTS` |
+| Default | `3` — the long-standing behaviour |
+
+**When to change it:** raise it for a flaky mail provider, lower it to fail fast in a
+staging environment. The backoff schedule between attempts (`30s · 60s · 120s`) is
+separate and is not configurable.
+
+**What it does NOT change:** how long an invitation stays valid, who may be invited,
+voter eligibility, or any election rule. It is operational tuning only.
+
+**Implementation note (important if you edit the job):** the value is exposed via the
+`tries()` method. Laravel resolves `$job->tries ?? $job->tries()`
+(`Illuminate\Queue\Queue::getJobTries()`), so re-adding a `public $tries` property
+would take precedence and silently make this configuration inert. A regression test
+(`tests/Unit/Jobs/SendVoterInvitationRetryConfigTest.php`, T4) guards against that.
+The value is read at dispatch time and travels in the queued payload.
+
 ---
 
 ## Query Examples

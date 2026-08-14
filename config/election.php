@@ -49,6 +49,10 @@ return [
     // Set VOTER_CACHE_TTL=0 to disable caching (use in performance-sensitive tests).
     'voter_cache_ttl' => env('VOTER_CACHE_TTL', 300),
 
+    // Delivery attempts for a queued voter-invitation email (SendVoterInvitation).
+    // Operational tuning only — it does not change invitation validity or eligibility.
+    'invitation_send_attempts' => env('ELECTION_INVITATION_SEND_ATTEMPTS', 3),
+
     // Cache TTL (seconds) for election settings via ElectionSettingsService.
     // Settings include IP restrictions, voting rules, and display options.
     'settings_cache_ttl' => env('ELECTION_SETTINGS_CACHE_TTL', 300),

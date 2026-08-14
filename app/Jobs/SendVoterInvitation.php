@@ -15,8 +15,19 @@ class SendVoterInvitation implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $tries = 3;
     public $backoff = [30, 60, 120];
+
+    /**
+     * Delivery attempts for this invitation email — configuration-backed.
+     *
+     * Read at dispatch by Illuminate\Queue\Queue::getJobTries(), which resolves
+     * `$job->tries ?? $job->tries()`. A `tries` PROPERTY would take precedence
+     * and make this method (and the configuration) inert — hence there is none.
+     */
+    public function tries(): int
+    {
+        return (int) config('election.invitation_send_attempts', 3);
+    }
 
     public function __construct(private VoterInvitation $invitation) {}
 
