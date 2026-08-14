@@ -119,3 +119,26 @@ The designated task is generic by the PO's deliberate choice (two placeholder ro
 ### 7.4 · OQ evidence observations (for Session 1's compilation — recorded, not assessed, not fixed)
 
 **E-1** three contract refusals of Governance's own writes (grant-status vocabulary · missing `recordedBy` · `sessionId` vs `session`) — precise, corrective, exit-coded · **E-2** fold *projection* displays less than the validation fold computes (`handoffsTo` omitted from output; durably present in the log) · **E-3** no task-designation vocabulary in the contract (task carried via grant scope — interpretation was required) · **E-4** G-3 conjunction enforced in practice: handoff alone never yielded ACTIVE; the START succeeded only with both halves · **E-5** the two-acts separation (designation ≠ start) held under a real attempt-shaped sequence · **E-6** next-role determination required interpretation (resolved by the designation's own lifecycle clause — the process needed a human-text anchor, and had one) · **E-7** bootstrap handoff (`from: null`) validated only while ownerless — the contract prevented a second bootstrap. **None of this is qualification; OBSERVATION ≠ DEFECT ≠ HUMAN DECISION.**
+
+## 7a · GOVERNANCE DETERMINATION REVISED (2026-08-14, under the PO's role-activation clarification — correction narrated, §7 left standing)
+
+**What changed:** the PO's governance commission clarifies that the lifecycle clause names the *applicable* lifecycle (rev-2's own word) and that **Architecture activates only on a genuine architectural question** — the §3C tests. §7's ground (a) (lifecycle-text-mandates-Architecture) is **withdrawn as a mechanical reading**. Ground (b) re-examined against §3C:
+
+| §3C test | Answer for this task |
+|---|---|
+| New architectural component? | NO |
+| Crosses a bounded-context boundary? | NO on the §7.2-preferred path — **making an existing hardcoded value configurable inherits the value's existing ownership; the ownership question dissolves** |
+| Changes an architectural contract? | NO |
+| Requires a new ADR? | NO — the configuration pattern is established and evidenced (`config/election.php` → consumers) |
+| Alters an existing architectural decision? | NO |
+| Platform architecture vs application configuration? | application configuration (the platform mechanism is OQ-frozen and excluded) |
+
+> ## **REVISED DETERMINATION: existing architecture is SUFFICIENT · NO genuine architectural question exists on the boundary's preferred path · NEXT LEGITIMATE ROLE: IMPLEMENTATION.**
+
+The remaining choices (which existing value, its name, default = current value, its test) are **implementation-boundary content, presented for HUMAN APPROVAL before any production edit** — the 65/69 precedent exactly. **Standing escalation guards (unchanged from §7.2):** if Implementation's candidate breaches any §3C line → Architecture activates then, on a concrete question · if every viable candidate carries business meaning → Business Decision Request. §7.2's constraints 1–8 stand unchanged (they were role-agnostic).
+
+**Record correction (mechanism):** the §7.3 handoff to Architecture was recorded but **never activated — G-3's human half gated it, which is what made this revision safe**. The `S4-architecture-2026-08-14-oq` assignment is **CANCELLED** (session-scoped; reason: determination revised before activation; a future genuine architecture need = a NEW assignment per R8). `S3-implementation-oq` assignment REGISTERED; **bootstrap handoff** (`from: null`, valid while ownerless) recorded with this §7a as token.
+
+**Disambiguation:** this implementation assignment exists under **KOS-OQ-001's platform grant** — a distinct R8 SessionAssignment. **The Election stop-register is untouched; Election grants remain NONE**; the §7.2 Election guard binds this work.
+
+**New OQ evidence (recorded, not fixed):** **E-8** a governance determination was revised BEFORE activation and the mechanism supported the correction cleanly — the recorded-but-unstarted handoff is safely revisable precisely because ACTIVE requires the human half · **E-9** the contract has **no handoff-revoke vocabulary** — the stale `handoffsTo[S4…]` entry remains in the validation fold forever · **E-10** START validation checks registration + humanAct + handoff but **not the session's current state** — a CANCELLED session could be STARTed if a human act existed for it (mitigated here: none will exist; observation for Session 1, mechanism unchanged).
