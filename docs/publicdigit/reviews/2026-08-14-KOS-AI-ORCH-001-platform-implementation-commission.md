@@ -1,7 +1,12 @@
 # KOS-AI-ORCH-001 — Proposed Platform Implementation Commission
 
 **Type:** Governance preparation (Session 2) · **Date:** 2026-08-14
-> ## **"This artifact is a proposed implementation commission and does not itself create implementation authority."** *(commission-required statement, §14)*
+> ## **"This artifact is a proposed implementation commission and does not itself create implementation authority."** *(commission-required statement, §14 — TRUE at writing and still true: the authority below was created by the PO's ruling, not by this artifact.)*
+>
+> ## ☑ AUTHORIZED (PO, 2026-08-14 — performative, verbatim in §15) — INCREMENT 1 EXACTLY AS PRESENTED, gates uncollapsed.
+> **G-6 RULED:** *"KOS-AI-ORCH-001 implementation proceeds under reading (ii)+(iii), with the F1–F9 evidence set recorded as the qualifying operational evidence where required."* — the methodology-freeze exception (2026-08-01) is formally invoked with F1–F9 as the qualifying "genuine deficiency", AND R-37's burden of proof is ruled met by the same evidence; where `engineering/` is touched, this commission is the "explicitly commissioned by the Decision Authority" act its freeze names.
+> **Explicit exclusions restated by the authorization:** no scope expansion · no Increment-2 enforcement · no locks, leases, hooks, `.claude` restructuring, per-stream logging, Election changes, or unrelated platform work.
+> **Gate state:** PO authorization ✅ → **NEXT: Session 4 architecture/design boundary** (delivery of this commission to Session 4 is the PO's act in that stream) → human boundary approval ⬜ → RED ⬜ → implementation ⬜ → GREEN ⬜ → regression ⬜ → Session 1 independent verification ⬜ → operational qualification ⬜ → Governance closure (G-1) ⬜. **Session 2 registers and reconciles; it does not implement.**
 **⛔ Nothing implemented · no `workflow_engine`/`session_manager`/`platform_registry`/`.claude` change · no hook, lock, lease, or registry created · no terminal/session behavior changed · the stage chain is preserved uncollapsed: GOVERNANCE RULE → IMPLEMENTATION AUTHORIZATION → IMPLEMENTATION DESIGN → IMPLEMENTATION → INDEPENDENT VERIFICATION → OPERATIONAL QUALIFICATION.**
 
 ---
@@ -114,3 +119,28 @@ After verification: the mechanism runs alongside the manual conventions for at l
 ---
 
 **Traceability:** accepted rule + amendments (`51ba56fd`) · acceptance verbatim (ARB review §Acceptance) · ARB review (`fb9cee29`) · proposal @ `30e125e5` · Platform Baseline (CMP states; R-34/R-37/R-38; "governance precedes automation") · methodology freeze (`.claude/CLAUDE.md`, 2026-08-01) · F1–F9 evidence set · ADR:OQ-2 (placement, open) · the 65/69 track as the gate-discipline precedent.
+
+---
+
+## 15 · AUTHORIZATION RECORD (PO, 2026-08-14 — performative, verbatim)
+
+> *"G-6 ruling: KOS-AI-ORCH-001 implementation proceeds under reading (ii)+(iii), with the F1–F9 evidence set recorded as the qualifying operational evidence where required.*
+>
+> *I authorize the proposed Increment-1 Platform Implementation Commission exactly as presented.*
+>
+> *Do not expand the scope. Do not authorize Increment 2 enforcement. Do not authorize locks, leases, hooks, .claude restructuring, per-stream logging, Election changes, or unrelated platform work.*
+>
+> *Register the ruling and authorization, then proceed only through the defined gates: PO authorization → Session 4 architecture/design boundary → human boundary approval → RED → implementation → GREEN → regression → Session 1 independent verification → operational qualification → Governance closure.*
+>
+> *Session 2 remains the governance/authority stream and must not implement the mechanism itself."*
+
+**Authority-State effect (registered by Session 2, the Governance role, per the accepted G-2 rule — registering a recorded PO act):**
+
+```
+Platform grants:  ONE — KOS-AI-ORCH-001 Increment 1 (§5–§9 boundary), ☑ AUTHORIZED,
+                  gated: nothing begins before the Session-4 boundary and its HUMAN approval
+G-6:              CLOSED — reading (ii)+(iii); F1–F9 = the qualifying operational evidence
+G-5:              unchanged — placement provisional (ADR:OQ-2 open); the rule is not moved
+Increment 2+:     ⛔ NOT AUTHORIZED (enforcement mechanics)
+Election grants:  NONE (unchanged) — start()/A-2 pending PO commission · EM-OPEN-021 open · Session 3 stopped
+```
