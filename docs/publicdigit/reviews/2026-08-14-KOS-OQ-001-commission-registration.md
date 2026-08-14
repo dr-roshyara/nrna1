@@ -78,3 +78,11 @@ Election track:        unchanged (start()/A-2 commission pending · EM-OPEN-021 
 **Record updates (via the mechanism, existing vocabulary only — no schema change):** the contract has no task field/transition type (observed for the evidence file, not repaired); the designation is carried into the machine record as grant **`G-KOS-OQ-001-TASK`** (task verbatim in scope; the designation's own no-start clause preserved) + the **bootstrap HANDOFF (`from: null`)** to the Governance session carrying the commission+designation as token — the Inc-1 precedent pattern exactly.
 
 **Next applicable gate (determined from the contract, NOT performed):** **START of `S2-governance-2026-08-14-oq`** — the contract requires the G-3 conjunction: the bootstrap handoff (now recorded) **AND a recorded human START act, which does not exist**. The designation is NOT that act (its own text says so; the transition principle stands). **Execution: NOT STARTED. No session activated. Sessions 1/3/4 unchanged.**
+
+## 6 · START ACT — performative, verified, REGISTERED VERBATIM (2026-08-14)
+
+> *"PO/ARB START ACT — KOS-OQ-001. I hereby authorize and start the Governance session for KOS-OQ-001. Session 2 is authorized to perform only its Governance responsibilities within the approved KOS-OQ-001 Operational Qualification scope and the designated task. This START does not authorize architecture changes, implementation, verification, Increment-2 enforcement, hooks, locks, leases, or unrelated work. — Signed: PO/ARB Chief, 2026-08-14"*
+
+**Verification:** performative ("I hereby authorize and start"), signed, scope-limited — ✅ a registrable human act (A-3). **Distinct from the §5 designation — the two-acts separation held.** START transition performed through the mechanism with this section + its commit as the recorded `humanAct`; G-3 conjunction complete (bootstrap handoff §5 + this act). **Expected effect: Governance session ACTIVE, mutation owner = Governance. Sessions 1/3/4: unchanged — this START authorizes Governance work only.**
+
+**Governance's first bounded work (next, per the adopted next-role-by-work discipline):** determine and register the governance boundary for the designated task — what governance the configuration-parameter work actually requires — then hand off to whichever role the work genuinely needs. Not performed in this registration step.
