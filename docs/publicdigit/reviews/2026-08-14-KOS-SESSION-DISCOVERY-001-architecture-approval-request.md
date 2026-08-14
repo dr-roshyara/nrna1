@@ -88,3 +88,17 @@ Building it (that is the next, separate decision) · giving anyone permission to
 ### Machine-record effect
 
 The architecture assignment's bounded work is delivered and human-approved; the assignment is recorded **COMPLETED** (governance act) and mutation ownership released. **No implementation grant is issued. No implementation assignment is registered.** The next gate is a separate PO implementation authorization.
+
+---
+
+## BOUNDARY-PRESENTATION STAGE AUTHORIZED (PO/ARB, 2026-08-14, verbatim)
+
+> *"I authorize the implementation boundary presentation stage."*
+
+**A-3 verification:** performative, in the PO's own words, in the Governance record — ✅ registrable. **Read exactly as written: it authorizes the STAGE (determine + present the implementation boundary). It is not a session START act** — under G-3, activation additionally requires a recorded human start; Governance does not manufacture one (the precedent set by today's audited registration error).
+
+**Registered effects:** implementation assignment `S3-implementation-discovery` REGISTERED · stage-scoped grant **`G-KOS-DISC-IMPL-BOUNDARY`** issued (`humanActRef` = this section + its commit) · HANDOFF recorded (bootstrap form, valid while ownerless after the architecture assignment's completion; token = this authorization + the approved architecture).
+
+**Grant scope, exactly:** determine and present the implementation boundary for the approved architecture — which file, which tests, which registry entry, and the verification surface — **for human approval before any code exists.** **NOT authorized by this grant:** writing production code or tests · any `workflow-state.php` change · a second interpretation of workflow records (the **binding precedence rule** applies to whatever is eventually built) · startup wiring (D-5) · authorization evaluation · Increment-2 · Election work.
+
+**Remaining to activate: one recorded human start.** State until then: assignment CREATED · grant AUTHORIZED · owner null · nothing begun.
