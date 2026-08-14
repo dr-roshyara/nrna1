@@ -63,3 +63,17 @@ The qualified mechanism's *validation* is correct (it recomputes `handoffsTo` fr
 **V-3 is now a finding about the very capability under qualification**, discovered by using it — the same way V-1 and V-2 were. It is **outside the approved C-1/C-2 corrective scope** and Governance does not expand that scope. **Three dispositions are open to the PO** *(Governance recommends the third)*: **(a)** accept as a documented limitation and adopt as-is; **(b)** fold a further corrective into the current increment — *not recommended: it re-opens an approved boundary*; **(c)** proceed with the C-1/C-2 verification now, and register V-3 for a **separate disposition** at the final qualification, where the honest options are a follow-up increment or an accepted limitation.
 
 **Traceability:** transition log seq 12–16 · `workflow-state.php` fold/START rules and the `fold` command's emit list · `session-resolve.php:227-231` · OQ observation **E-2** · approved architecture §H · C-1/C-2 grant `G-KOS-DISC-C12-IMPL` · corrective evidence `84100bb0`.
+
+---
+
+## CORRECTIVE-VERIFICATION START ACT + V-3 SCOPE EXTENSION (PO/ARB, 2026-08-15, verbatim)
+
+> *"I authorize the verification team to independently test the completed Session Assignment Discovery capability, including the newly identified finding that it may report a missing predecessor handoff without actually verifying that condition against the authoritative record. The verification team may determine whether this is a defect, a specification limitation, or an acceptable limitation. No implementation changes, adoption, qualification, or closure are authorized by this act."*
+
+**A-3:** performative, **permission addressed to the verification team** → recorded human START for `S1-verify-discovery-corrective`; G-3 complete with the **seq-16 handoff** (the one this reconciliation established was valid all along).
+
+**Scope effect — registered as an extension, not a reinterpretation.** The existing grant `G-KOS-DISC-C12-VERIFY` covers the six named checks. This act **adds** the V-3 assessment, recorded as a separate grant so both scopes stay exact and traceable: **`G-KOS-DISC-V3-ASSESS`** — *assess V-3 (the resolver may report a missing predecessor handoff without verifying that condition against the record) and **determine its classification**: defect · specification limitation · acceptable limitation.*
+
+**The classification/disposition boundary, registered:** Session 1 **determines the classification** — that is its finding, and it is authoritative as a finding. **The disposition remains the PO's** (accept · follow-up increment · other), because the act itself withholds adoption, qualification, and closure. **Governance does not classify V-3** and has not.
+
+**Also carried:** no implementation changes are authorized by this act — the corrective code stands as delivered (`84100bb0`); **the resolver must not be modified to make V-3 disappear during its own verification.**
