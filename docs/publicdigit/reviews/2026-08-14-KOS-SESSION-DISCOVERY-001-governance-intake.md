@@ -62,3 +62,9 @@ Implementation of discovery · any `workflow-state.php` change · hooks, automat
 > *"hereby authorize and start the S4-architecture-discovery session for KOS-SESSION-DISCOVERY-001, limited to the registered architecture-design scope."* — PO, 2026-08-14.
 
 Same act, full form: it confirms the seq-3 START and pins the scope limit in the act's own words ("limited to the registered architecture-design scope" = `G-KOS-DISC-ARCH`, design-only). Both texts — the terse imperative and the formal confirmation — are now the act's complete durable record.
+
+### H.1 · RATIFICATION OF THE seq-3 START (signed performative PO/ARB ruling, 2026-08-14 — registered verbatim)
+
+> *"I ratify the seq-3 START of S4-architecture-discovery on the basis of my formal act of 2026-08-14 ('hereby authorize and start…', intake §H, `2b125a7a`); the provenance defect stands on record; no history is rewritten."*
+
+**Registration effects, exactly the ruling's terms:** the seq-3 START transition is **RATIFIED** — its acknowledged human authority is the formal act durably recorded in §H (*"hereby authorize and start the S4-architecture-discovery session … limited to the registered architecture-design scope"*), not the terse registrar-instruction its `humanAct` field cites. **The provenance defect (A-3 audit classification B: instruction-conflated-with-act, Governance's own error) STANDS on record as evidence** — for the audit trail, and as motivation evidence for the discovery capability's provenance-visibility requirement. **No history is rewritten:** the seq-3 record, the §H registration, and the audit all remain verbatim; this ratification annotates, it does not replace. **Consequence: `S4-architecture-discovery` is legitimately ACTIVE** under ratified authority, within the design-only scope of `G-KOS-DISC-ARCH`, with `cee1ee6b` as prior/untrusted input to review and revalidate.
