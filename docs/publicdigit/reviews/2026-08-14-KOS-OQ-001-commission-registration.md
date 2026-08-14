@@ -86,3 +86,36 @@ Election track:        unchanged (start()/A-2 commission pending · EM-OPEN-021 
 **Verification:** performative ("I hereby authorize and start"), signed, scope-limited — ✅ a registrable human act (A-3). **Distinct from the §5 designation — the two-acts separation held.** START transition performed through the mechanism with this section + its commit as the recorded `humanAct`; G-3 conjunction complete (bootstrap handoff §5 + this act). **Expected effect: Governance session ACTIVE, mutation owner = Governance. Sessions 1/3/4: unchanged — this START authorizes Governance work only.**
 
 **Governance's first bounded work (next, per the adopted next-role-by-work discipline):** determine and register the governance boundary for the designated task — what governance the configuration-parameter work actually requires — then hand off to whichever role the work genuinely needs. Not performed in this registration step.
+
+## 7 · GOVERNANCE BOUNDARY DETERMINATION (the ACTIVE session's bounded work, 2026-08-14)
+
+### 7.1 · What the task actually requires (analysis, not diagram)
+
+The designated task is generic by the PO's deliberate choice (two placeholder rounds preceded it): *"a configuration parameter"* — no name, no purpose, no surface. **Turning that into a specific parameter (name · purpose · owning context · placement · default semantics · verification surface) is genuine DESIGN work that nobody has performed.** Letting Implementation choose it silently would be the placement-by-convenience anti-pattern this programme's whole Election evidence base refutes; Governance choosing it would be Governance doing design.
+
+**Decisive, and independent of any diagram:** the PO's designated task text itself prescribes the lifecycle — *"following the Governance → Architecture → Implementation → Verification lifecycle."* **Architecture is in the path by the performative designation's own words.** The analysis above independently agrees: a genuine (small) architectural question exists — parameter selection, placement, and ownership under constraints. **Not manufactured; doubly grounded.**
+
+**Existing architecture coverage (evidence):** the *mechanics* are covered — the repository has an approved configuration pattern (Laravel `config/*.php` + `env()` + default + consumer; e.g. `config/election.php:50` → `User.php:317`; Infrastructure layer, framework-allowed by the standing layer rules). **What is NOT covered: which parameter, where, owned by what.** So Architecture's step is small: selection + placement + boundary, not a new pattern.
+
+**Human decision required NOW? NO.** The START authorization + the designated task cover this determination. The reserved human decision points downstream: **(i)** approval of Architecture's boundary (the established gate pattern, and implied by the designated lifecycle), **(ii)** the S4 START act (G-3's human half), **(iii)** the qualification decision. No Business Decision Request is needed at this gate — nothing here is outside recorded authorization.
+
+### 7.2 · The governance boundary (binding on the work; the handoff token)
+
+1. **Exactly ONE configuration parameter.** Real and useful — the OQ vehicle is real governed work, not a toy.
+2. **Behavior-preserving default:** the parameter's default MUST preserve current system behavior, and that default MUST be documented (the designation's "documented default behavior").
+3. **Surface constraint (evidence-resolved, escalation-guarded):** the established Laravel configuration pattern is the presumptive surface ("the system" = the product application; the platform mechanism is frozen under OQ and `.claude` config is excluded by standing rules). **Architecture selects the parameter by evidence — preference: making an existing hardcoded operational value configurable** (adds configurability without inventing behavior). **If every viable candidate carries business meaning (changes what the product means, not how it is tuned): STOP and return a Business Decision Request** — a parameter must never become a silent business decision.
+4. **Election guard:** the parameter must NOT touch Election-critical semantics, any adopted-rule enforcement surface (EM-VOT-002/003 predicates, entitlement evaluation, credential checks), or anything under the Election stop-register. Election grants remain NONE; the OQ creates no side door.
+5. **OQ freeze restated:** no `workflow-state.php` or platform-script change · no Inc-2/hooks/locks/leases · observations recorded, never fixed.
+6. **Verification:** automated verification of the parameter is part of the task (Implementation writes it; Session 1's OQ evidence compilation remains separate and independent).
+7. **Commit hygiene:** product-code commits carry no product-story ID (no false traceability); label as the OQ task. Developer-guide DoD applies to the implementation step.
+8. **Lifecycle gates:** Architecture presents its boundary for **human approval** before Implementation; RED before GREEN; Session 1 verifies independently; Governance closes.
+
+### 7.3 · Determination and handoff
+
+> **NEXT ROLE: ARCHITECTURE (Session 4).** Work: select and specify the ONE parameter (name · purpose · owning context · placement · default + documented behavior · verification surface) under §7.2, presented as a small boundary for human approval. **Not activated by this handoff** — the contract's G-3 conjunction still requires the PO's START act for the architecture session; the handoff records only Governance's completed determination and transfers nothing until then.
+
+**Recorded through the mechanism:** REGISTER of the architecture session assignment (predecessor: this Governance session) + HANDOFF (from this session, token = this §7 + its commit). Per the contract, this session becomes HANDED_OFF and releases mutation ownership — **its assignment's bounded work is complete** (R8: later Governance acts are new assignments or registrar acts, never a role mutation).
+
+### 7.4 · OQ evidence observations (for Session 1's compilation — recorded, not assessed, not fixed)
+
+**E-1** three contract refusals of Governance's own writes (grant-status vocabulary · missing `recordedBy` · `sessionId` vs `session`) — precise, corrective, exit-coded · **E-2** fold *projection* displays less than the validation fold computes (`handoffsTo` omitted from output; durably present in the log) · **E-3** no task-designation vocabulary in the contract (task carried via grant scope — interpretation was required) · **E-4** G-3 conjunction enforced in practice: handoff alone never yielded ACTIVE; the START succeeded only with both halves · **E-5** the two-acts separation (designation ≠ start) held under a real attempt-shaped sequence · **E-6** next-role determination required interpretation (resolved by the designation's own lifecycle clause — the process needed a human-text anchor, and had one) · **E-7** bootstrap handoff (`from: null`) validated only while ownerless — the contract prevented a second bootstrap. **None of this is qualification; OBSERVATION ≠ DEFECT ≠ HUMAN DECISION.**
