@@ -91,3 +91,25 @@ Sequential-by-default lifecycle with token-carrying handoffs (§9's per-transiti
 ---
 
 **Traceability:** proposal @ `30e125e5` (`e689e597` + clarifications) · Platform Baseline (R-34/R-37/R-38, component states) · F1–F9 evidence set (proposal §2) · `.claude/CLAUDE.md` session/governance conventions · ADR:OQ-2 (placement PENDING) · KOS-AI-ORCH-001 candidate text (proposal §13).
+
+---
+
+## Acceptance record (PO/ARB, 2026-08-14 — performative, verbatim)
+
+> *"I accept the KnowledgeOS Controlled Session Orchestration Proposal with amendments G-1, G-2, G-3 and G-4 as proposed.*
+>
+> *I also accept the following principles:*
+> *1. One governed work item has one authoritative workflow state.*
+> *2. Same-work-item sessions normally operate in one coordinated execution context with explicit mutation ownership and token-based handoff.*
+> *3. Session Registry and Authority State remain separate.*
+> *4. ACTIVE SESSION ≠ AUTHORIZED SESSION. MUTATION OWNERSHIP ≠ IMPLEMENTATION AUTHORITY. SESSION EXISTENCE ≠ IMPLEMENTATION PERMISSION.*
+> *5. "Same terminal" is not an architectural or governance rule. It remains an interim operational convention until KnowledgeOS provides the governed execution mechanism.*
+> *6. Isolated execution contexts for the same work item are exceptional and require explicit KnowledgeOS coordination and preservation of one authoritative workflow state.*
+> *7. The workflow engine coordinates execution but never creates, interprets, or promotes business/architecture authority.*
+>
+> *G-5: I accept the directed placement provisionally pending the ADR:OQ-2 placement ruling.*
+> *G-6: I accept that the freeze-exception interpretation must be explicitly recorded as part of the acceptance/implementation authority decision.*
+>
+> *This acceptance authorizes the governance RULE only. It does NOT authorize implementation of any orchestration mechanism. A separate bounded Platform Implementation commission is required before implementation begins."*
+
+**Registration acts performed by Session 2 (same day):** amendments G-1–G-4 applied inline to the proposal, each marked with its acceptance date · proposal status → **ACCEPTED WITH AMENDMENTS (RULE ONLY)**, original status preserved struck · provisos G-5/G-6 carried in the status header — **the G-6 freeze-exception reading itself remains unstated and is deliberately not invented; it must appear in the implementation-authority decision** · `KOS-AI-ORCH-001` is now the accepted rule identity (proposal §13). **Open follow-ups for the decision authority:** the ADR:OQ-2 placement ruling (G-5) · whether `.claude/CLAUDE.md` should carry a POINTER to the accepted rule (proposal §13 contemplated it; Session 2 does not edit the project instruction file unilaterally) · the separate Platform Implementation commission, when desired.

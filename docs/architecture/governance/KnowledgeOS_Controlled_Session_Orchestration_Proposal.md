@@ -1,6 +1,8 @@
 # KnowledgeOS Controlled Session Orchestration — Governance Proposal
 
-**Status: 🟡 PROPOSED — awaiting Human/ARB review (accept / reject / modify). Nothing in this document authorizes implementation.**
+**Status: ✅ ACCEPTED WITH AMENDMENTS G-1–G-4 (PO/ARB, 2026-08-14) — GOVERNANCE RULE ONLY. This acceptance authorizes the RULE; it does NOT authorize implementation of any orchestration mechanism. A separate bounded Platform Implementation commission is required before implementation begins.**
+**Acceptance provisos:** placement accepted **provisionally pending the ADR:OQ-2 ruling** (G-5) · the **freeze-exception interpretation must be explicitly recorded as part of the implementation-authority decision** (G-6 — the reading itself is not yet stated and is NOT invented here). Acceptance record: ARB review document, §Acceptance. Amendments G-1–G-4 are applied inline below, each marked.
+*(Original status, superseded 2026-08-14: 🟡 PROPOSED — awaiting Human/ARB review.)*
 **Date:** 2026-08-14 · **Author:** Session 2 (governance stream), commissioned by the PO · **Type:** platform governance principle (execution policy), proposal
 **Placement note (recorded, not rationalised):** `php scripts/doc-placement.php --scope=cross-product --maturity=research` returns **PENDING — unruled (ADR:OQ-2)**. Location `docs/architecture/governance/` was **directed by the commissioning authority**; the PENDING derivation is recorded per the placement rule and per the precedent set by the Platform Architecture Baseline's own placement note. `engineering/` was NOT used: it is under structural freeze (R-37/R-38) and this commission does not invoke the freeze exception.
 
@@ -80,7 +82,8 @@ Three corollaries:
                               any role: STOPPED / FAILED / CANCELLED
 ```
 
-- **Who creates:** KnowledgeOS creates the session *set* when a work item enters governed execution; the Human/PO starts each session (starting is an authorization-adjacent act and stays human).
+- **Who creates:** KnowledgeOS creates the session *set* when a work item enters governed execution; the Human/PO starts each session (starting is an authorization-adjacent act and stays human). **[G-3, accepted 2026-08-14]: a session start requires BOTH the predecessor's recorded handoff AND the human start act — neither alone unblocks a role.**
+- **[G-1, accepted 2026-08-14]: Completion is recorded by the Governance role (or the Human) — Verification REPORTS, it does not close.** The lifecycle's terminal transition is a governance act, so "verification success → business acceptance" can never occur by omission.
 - **Sequential by default.** A later role starts only on the previous role's recorded handoff. Overlap is permitted **only** as read-only observation (§8) or in an isolated context (§12).
 - **Not all roles always exist:** a docs-only work item may need Governance+Verification only; the workflow declares its role set at creation. (Evidence: this programme ran 4–5 roles, not 3.)
 - **STOPPED is sticky (§11):** a stopped session does not imply permission for any other session to continue; continuation is an explicit workflow transition recorded by Governance or the Human.
@@ -111,7 +114,7 @@ The originating human requirement was *"create sessions … and instruct to run 
 > **RECOMMENDED (smallest sufficient): Option C per execution context, with Option B as the isolation rule BETWEEN work items.**
 > *Within a work item:* any session may read; **exactly one session at a time holds mutation ownership** of the shared execution context, acquired and released only through handoff (§9).
 > *Between work items:* concurrency is permitted iff execution contexts are isolated (separate worktree/branch and separate state-file namespaces).
-> Shared append-only files (session logs) get per-stream sections or per-stream files — the hunk-splitting workaround (F3) must not become the permanent design.
+> The hunk-splitting workaround for shared append-only files (F3) must not become the permanent design. **[G-4, accepted 2026-08-14: the earlier sentence "session logs get per-stream sections or per-stream files" is reclassified as a CANDIDATE MECHANISM (see §10/§16) — it is design direction, not part of this rule.]**
 
 ## 9 · Handoff protocol *(codifying what this programme actually proved workable — reconciled with EP-01/02, R-34, ES-004.3; not a parallel system)*
 
@@ -158,7 +161,7 @@ MUTATION ownership    ≠  IMPLEMENTATION authority
 SESSION existence     ≠  IMPLEMENTATION permission
 ```
 
-The workflow engine may coordinate both records; **it must not manufacture authority merely because a session is active.** A session holding mutation ownership of the execution context still implements nothing without an active, in-scope authorization in the Authority State — and an authorization existing grants nothing to a session that does not hold ownership. The two records answer different questions by design, and their separation is the structural form of the standing chain: **Human/PO/ARB → governance decision → explicit bounded authorization → implementation → independent verification.** The workflow engine automates the choreography; it does not become the source of business or architecture authority (§15).
+**[G-2, accepted 2026-08-14]: Only the Governance role writes the Authority State, and only to register a recorded Human/PO/ARB act.** The workflow engine may coordinate both records; **it must not manufacture authority merely because a session is active.** A session holding mutation ownership of the execution context still implements nothing without an active, in-scope authorization in the Authority State — and an authorization existing grants nothing to a session that does not hold ownership. The two records answer different questions by design, and their separation is the structural form of the standing chain: **Human/PO/ARB → governance decision → explicit bounded authorization → implementation → independent verification.** The workflow engine automates the choreography; it does not become the source of business or architecture authority (§15).
 
 ## 11 · Recovery and interruption
 
@@ -234,5 +237,5 @@ The Election-Only 65/69 track as the worked evidence base: `f6bb5504`/`104f729a`
 
 ---
 
-**Status: PROPOSED · No implementation authorized · No platform code changed · No `workflow_engine`/`session_manager` changes · No `.claude` changes · No Election changes.**
-**Next: Human/ARB review → accept/reject/modify → a separate Platform Implementation commission (not created here).**
+**Status: ✅ ACCEPTED WITH AMENDMENTS G-1–G-4 (PO/ARB, 2026-08-14) — RULE ONLY · No implementation authorized · No platform code changed · No `workflow_engine`/`session_manager` changes · No `.claude` changes · No Election changes.**
+**Next: a separate bounded Platform Implementation commission (humanly issued — not created by this acceptance) → its own verification → operational qualification. Until then, sessions remain governed manually under the existing conventions, with "same terminal" as the interim operational convention (accepted principle 5).**
