@@ -162,3 +162,17 @@ The remaining choices (which existing value, its name, default = current value, 
 **Two-stage clause honored:** implementation begins only now that (a) the grant is registered AND (b) the machine state confirms S3's authorization — verified by the mechanism's own `authorized` query (R6): **`{"authorized": true}`** for `S3-implementation-oq` against the grant's exact scope.
 
 **OQ evidence E-13 (recorded, not fixed):** the first `authorized` query returned **false** — correctly: the matcher is **exact scope-string equality**, and the query used a paraphrase ("Rev-2 implementation boundary") rather than the grant's literal scope. The mechanism refused to confirm authority for a scope nobody granted — precise behavior — but it also means **consumers must query with the grant's exact scope text** (or a future increment might consider grantId-based queries — observation for Session 1, mechanism unchanged).
+
+## 10 · VERIFICATION-GATE RECONCILIATION (2026-08-14 — Governance; S1's STOP treated as evidence, machine state read directly)
+
+**Machine state confirmed (transitions 9–10 + fold):** S3 `HANDED_OFF` after GREEN (`3419d08d`, exact Rev-2 boundary per its commit) · `S1-verification-oq` REGISTERED with the S3→S1 handoff (token `T-OQ-IMPL-EVIDENCE`) · **no START for S1 — CREATED, not ACTIVE** · `mutationOwner: null` · grants = OQ/TASK/IMPL only — **no verification-scoped grant existed**. Session 1's startup refusal was correct on every point.
+
+**A-3 applied:** the missing START is a genuine missing human act — **Governance cannot and does not start S1.**
+
+**§3 determination — is existing human authority sufficient for a verification-scoped grant? YES.** The signed OQ commission (§1, registered, `44db8036`) performs the designation in the PO's own words: *"Evidence compiler: Session 1 (Verification)"* and *"Evidence period: one complete governed work item, from initiation through handoff and independent verification."* A grant scoped exactly to that activity **registers an already-performed, durably recorded human act — it creates nothing and broadens nothing.** Grant **`G-KOS-OQ-001-VERIFY`** issued: scope = independent verification of the Rev-2 implementation + OQ evidence compilation; **explicitly excludes** implementation, repair, self-certification, the qualification decision (PO/ARB's), and any production change; `humanActRef` = the OQ commission (§1 + `44db8036`). This corrects the authorization linkage: S1's role-appropriate authority now exists in the Authority State.
+
+**START remains a separate human act (§4):** the resulting intermediate state is deliberate — **S1 = CREATED · verification grant = AUTHORIZED · human START = ABSENT · execution = NOT STARTED.**
+
+**INC1 historical gap (§5):** untouched — prior classification stands (reconciliation finding **B**: recording gap only; no retroactive START; expose-don't-repair).
+
+**OQ evidence E-14 (recorded, not fixed, not qualification):** the third record-over-prose refusal, now at the verification gate — handoff present, role known, prose commissioned verification, yet S1 refused because START + authorization were incomplete in machine truth. Also the **governance-process observation** distinct from any mechanism defect: the bootstrap procedure established implementation authorization rigorously but did not pre-establish the verification assignment's authorization at registration time — a **process design gap** for a future (post-OQ) improvement: role-scoped grants at assignment-registration time.
