@@ -95,7 +95,7 @@ The originating human requirement was *"create sessions … and instruct to run 
 | Same terminal is the architectural requirement | **NO.** Every §2 failure is a *shared-mutable-context* failure. A single terminal serializes mutation as a side effect of serializing attention — it treats the symptom |
 | Same worktree is the real concern | **YES** — shared worktree + shared index + shared state files without ownership is the mechanism of F1–F6, F8 |
 | An execution lock would suffice | for repository integrity, largely yes (F1/F2/F4/F6); **not** for F5/F7/F9, which need session identity + a coordination point, not just a mutex |
-| Separate terminals with isolated worktrees could safely work | **YES, for isolated work items** (§12). For the *same* work item, isolation reintroduces F5 (divergent governance state) at merge time — so same-item roles coordinate rather than isolate |
+| Separate terminals with isolated worktrees could safely work | **YES, for isolated work items** (§12). For the *same* work item, uncoordinated isolation reintroduces F5 (divergent governance state) at merge time — so same-item roles coordinate by default; isolated same-item contexts exist only as §12's explicitly-coordinated exceptional case *(consistency wording updated with Clarification A, 2026-08-14)* |
 | KnowledgeOS should abstract the terminal entirely | **YES — recommended.** The rule speaks of execution contexts and ownership; terminals are one human arrangement among several |
 
 **Therefore: the human UI arrangement ("one terminal") is one possible *realization* of INV-ORCH-1 — acceptable as an interim practice, wrong as the encoded rule.**
@@ -139,20 +139,56 @@ Handoffs are **workflow state transitions carrying a token (the grant / the evid
 | Stop-the-world transition between roles | **unnecessary as a rule** — sequential-by-default (§6) already provides it; keeping it as a named rule would duplicate §6 |
 | Removing `.git/index.lock` automatically | **unnecessary and forbidden** — waiting is the rule (existing practice) |
 
+### 10a · Session registry ≠ authority registry *(Clarification B, 2026-08-14 — the two required records above are DIFFERENT concepts and must never merge)*
+
+> **Session existence, session state, and mutation ownership are NOT equivalent to implementation authorization.**
+
+| **Session Registry** answers | **Authority State** answers |
+|---|---|
+| Who exists? | What has actually been authorized? |
+| What role? | By whom? |
+| What workflow? | For what scope? |
+| What execution context? | Under which decision? |
+| What state? | Within which boundary? |
+| Who currently owns mutation? | Is the authorization currently active? |
+
+```
+ACTIVE session        ≠  AUTHORIZED session
+MUTATION ownership    ≠  IMPLEMENTATION authority
+SESSION existence     ≠  IMPLEMENTATION permission
+```
+
+The workflow engine may coordinate both records; **it must not manufacture authority merely because a session is active.** A session holding mutation ownership of the execution context still implements nothing without an active, in-scope authorization in the Authority State — and an authorization existing grants nothing to a session that does not hold ownership. The two records answer different questions by design, and their separation is the structural form of the standing chain: **Human/PO/ARB → governance decision → explicit bounded authorization → implementation → independent verification.** The workflow engine automates the choreography; it does not become the source of business or architecture authority (§15).
+
 ## 11 · Recovery and interruption
 
 Survivable events and the governed behaviour: terminal closed / session interrupted / usage limit — the session state remains whatever the register last recorded; **re-entry resumes the same logical session** (session_manager's continuity injection already supports this for one session). Failed implementation or verification → `FAILED`, register updated, **return to Governance** — never a silent retry by another session. Accidental human-started session → it has no workflow identity (C-2) and therefore **no mutation ownership**; it may read and must report. Unrelated repository modifications / existing Git lock → record, wait, escalate — never absorb, never remove (F2/F6 practice). Another workflow active → §12.
 
 > **The load-bearing sentence (commission §11, adopted verbatim in substance): a stopped session must not automatically imply permission for another session to continue. Continuation requires an explicit workflow state transition.** *(This programme's precedent: Session 3's stop register; the trigger rule; watch-only postures — all explicit transitions.)*
 
-## 12 · Multi-workflow model
+## 12 · Multi-workflow model *(Clarification A applied 2026-08-14 — the earlier "DISALLOWED by default" wording for same-item isolated contexts is refined, not reversed)*
+
+> **A governed work item has ONE authoritative workflow state. Its sessions normally operate within one coordinated execution context. Isolated execution contexts for the same work item are permitted only when KnowledgeOS explicitly coordinates them and preserves one authoritative workflow state and explicit ownership/handoff semantics.**
 
 ```
-same work item  + same execution context   → §8-C coordination (one mutator, handoffs)
-same work item  + isolated contexts        → DISALLOWED by default (F5: governance-state divergence) — requires explicit ARB exception
+same work item
+    │
+    ├── shared/controlled execution context
+    │       → NORMAL CASE (§8-C: reads free, one mutator, token handoffs)
+    │
+    └── isolated execution contexts
+            → EXCEPTIONAL CASE — permitted ONLY when:
+                 · KnowledgeOS explicitly coordinates them
+                 · ONE authoritative workflow state is preserved
+                 · ownership is explicit per context
+                 · re-entry to the shared state is an explicit handoff
+                 · NO independent governance decisions occur inside an isolated context
+
 different items + isolated contexts        → concurrent freely (Option B isolation)
 different items + same execution context   → serialized (the context is the scarce resource, not the terminal)
 ```
+
+**What the exceptional case exists for** (future capabilities, none designed here): isolated analysis workers · sandboxed implementation · CI workers · remote execution · parallel read-only research · controlled specialist agents. **What it never permits:** uncontrolled parallel implementation, or a second source of governance state — the invariant that F5 (divergent authorization states) taught remains: *divergence of the authoritative workflow state is the failure; isolation of computation is not.* **No implementation mechanism for coordinated isolation is invented here.**
 
 This preserves parallel engineering across work items while closing the observed same-item hazards.
 
