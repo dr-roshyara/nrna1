@@ -102,3 +102,16 @@ The architecture assignment's bounded work is delivered and human-approved; the 
 **Grant scope, exactly:** determine and present the implementation boundary for the approved architecture — which file, which tests, which registry entry, and the verification surface — **for human approval before any code exists.** **NOT authorized by this grant:** writing production code or tests · any `workflow-state.php` change · a second interpretation of workflow records (the **binding precedence rule** applies to whatever is eventually built) · startup wiring (D-5) · authorization evaluation · Increment-2 · Election work.
 
 **Remaining to activate: one recorded human start.** State until then: assignment CREATED · grant AUTHORIZED · owner null · nothing begun.
+
+### Fuller authorization act, same day — REGISTERED VERBATIM and read as the recorded human START
+
+> *"I authorize the implementation-boundary preparation for KOS-SESSION-DISCOVERY-001.*
+> *Session 3 may prepare and present the exact implementation boundary derived from the approved architecture.*
+> *This authorization does not authorize production or test code changes.*
+> *Session 3 must present the exact files, components, tests, documentation, and exclusions before implementation begins.*
+> *No implementation code may be changed until that boundary has been presented and separately approved.*
+> *— PO/ARB"*
+
+**Reading, stated openly for correction:** *"Session 3 may prepare and present…"* is a permission **addressed to the session**, authorizing it to act now — operationally an activation permission. Governance therefore records it as the **human START act** for `S3-implementation-discovery`, completing the G-3 conjunction with the seq-6 handoff. *(This differs from the earlier audited error, where the text was an instruction addressed to the registrar, not a permission addressed to a session. If the PO intended otherwise, one line reverses it and the assignment returns to CREATED.)*
+
+**Binding presentation content (from the act itself):** the boundary must enumerate **exact files · components · tests · documentation · exclusions** — presented **before** implementation begins. **No implementation code may change until that boundary is separately approved.** Reaffirmed: no production or test code under this authorization; the **binding precedence rule** governs whatever is eventually built.
