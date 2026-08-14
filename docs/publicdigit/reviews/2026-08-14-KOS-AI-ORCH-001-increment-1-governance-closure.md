@@ -72,3 +72,21 @@ Election authority:                    unchanged — grants NONE; start()/A-2 pe
 **On the PO's desk from this closure:** ① F-3 final disposition (one line) · ② optionally, overrule of the F-1 interpretation · ③ the operational-qualification commissioning, when desired.
 
 **Traceability:** `aac62274` (verification, §§12–15) · `c2f5a831` (+899/−0) · closure re-measurements (11/120 · 1/22 · 22/10) · `AST-015` correction (this commit) · commission `7cbe5984` §15 · boundary `f5981933` (D-2 + R8) · runtime fold (read-only) · R-34 · G-1/G-2/G-3 · ES-004.3 (mutable-record correction discipline).
+
+---
+
+## 8 · THREE PERFORMATIVE PO/ARB RULINGS (2026-08-14 — registered verbatim; texts formulated by the Principal Architect, adopted performatively by the PO: *"Agreed. These are now three performative PO/ARB decisions"*)
+
+> **F-3:** *"The quarantined premature draft is **retained in quarantine**. It shall not be deleted, modified, grandfathered, or treated as implementation/verification evidence."*
+>
+> **F-1:** *"I **do not overrule** the Governance disposition. The RED-ordering evidence remains **UNPROVEN**."*
+>
+> **Operational Qualification:** *"**AUTHORIZED.** Proceed with Operational Qualification of KOS-AI-ORCH-001 Increment 1 under the existing approved boundary. This authorization does not reopen Increment 1 implementation, authorize Increment 2, or authorize unrelated work."*
+
+**Registration effects:** §4's escalation is **CLOSED** — the draft's final disposition is quarantine-retained (still untracked, unmodified, never evidence; directory-red visibility persists by ruling, not by neglect) · §2's interpretation **STANDS** — UNPROVEN is permanent record · **the OQ gate advances to AUTHORIZED** — registered in the Authority State via the verified mechanism (grant `G-KOS-INC1-OQ`, `humanActRef` = this section + its registration commit), per G-2/R5 and the A-3 precedent pattern (a grant cites the durable registration of the act; the registration itself creates nothing). **Session 2 does not perform the qualification.**
+
+## 9 · Who owns Operational Qualification? — answered from the existing definition, not assumed
+
+**The existing definition (commission §13) assigns the OQ activity to NO single session.** What it defines: **the activity** — *"the mechanism runs alongside the manual conventions for at least one real governed work item without replacing them"* — i.e., an **operational period** in which every role of a real governed work item USES the record during normal gated work; and **the decider** — *"the PO/ARB rules on qualification with that evidence."* What it does **not** define: who compiles the evidence package at period end, and which work item serves as the vehicle.
+
+**Therefore (reported, not decided):** the OQ commission needs two PO designations — **(i) the vehicle** (the natural candidate: the next real governed work item, e.g. the Election `start()`/Option-A-2 track when commissioned, run with the record alongside the manual conventions) and **(ii) the evidence-compiler** (candidates: Session 1, by the independence precedent; or Governance compiles and the PO rules). **Neither Session 1 nor Session 3 is started by this registration.**
