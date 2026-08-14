@@ -51,3 +51,40 @@ Building it (that is the next, separate decision) · giving anyone permission to
 **APPROVE / AMEND / DECLINE** — and, if approving, your answers to boundary choices 1–4 and whether the precedence rule above is binding.
 
 *(Implementation is a separate decision that follows this one. Nothing is built on this approval alone.)*
+
+---
+
+## DECISION RECORDED — ARCHITECTURE APPROVED (PO/ARB, 2026-08-14, verbatim)
+
+> *"I approve the Session Assignment Discovery architecture as the basis for implementation.*
+>
+> *I approve the following architectural choices:*
+>
+> *Session Assignment Discovery will be implemented as a separate read-only capability and will not modify the existing workflow mechanism.*
+> *It will initially be invoked on request, not automatically at every session start.*
+> *Where the existing records cannot establish a fact reliably, the capability will report unknown rather than infer or invent an answer. Those underlying record limitations remain separate future work.*
+> *The related record improvements are not prerequisites for this implementation and must remain separately governed.*
+>
+> *Binding precedence rule: the already-qualified workflow mechanism is the authoritative interpretation of workflow records. Session Assignment Discovery must reuse or conform to that interpretation and must not create a competing interpretation of workflow state.*
+>
+> *This approval is for the architecture only. It does not authorize implementation, session activation, authorization changes, workflow changes, or any Increment-2 work.*
+>
+> *— PO/ARB"*
+
+### The four boundary choices — DECIDED as recommended
+
+**1** separate read-only capability; the qualified mechanism untouched (Q-B) · **2** on-request invocation, not startup-wired (Q-C; D-5 stays deferred) · **3** report **unknown** rather than infer; the underlying record limitations (incl. the grant↔session linkage gap / L-2) remain separate future work (Q-D) · **4** the six record improvements (D-1…D-6) are **not prerequisites** and remain separately governed (Q-E).
+
+### BINDING PRECEDENCE RULE — registered as a constraint on implementation
+
+> **The already-qualified workflow mechanism (`workflow-state.php`, AST-015) is the authoritative interpretation of workflow records. Session Assignment Discovery must reuse or conform to that interpretation and must not create a competing interpretation of workflow state.**
+
+**Consequence for implementation, binding:** the resolver **consumes** the mechanism's own reading surface (`fold`/`identity`) and must contain **no second folding/validation implementation**. Where the resolver's output could diverge from the mechanism's reading, the mechanism is correct by definition and the resolver is defective. *(This is the item Governance surfaced as absent from the proposal's own question list; the PO has now made it binding.)*
+
+### What is explicitly NOT authorized by this approval
+
+**Implementation** (its own separate authorization is required) · session activation · authorization changes · workflow changes · any Increment-2 work.
+
+### Machine-record effect
+
+The architecture assignment's bounded work is delivered and human-approved; the assignment is recorded **COMPLETED** (governance act) and mutation ownership released. **No implementation grant is issued. No implementation assignment is registered.** The next gate is a separate PO implementation authorization.
