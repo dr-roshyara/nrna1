@@ -93,6 +93,20 @@ Session 1 re-evaluated the audit under the clarified rule: **both violations STA
 
 **Q-TEN-2 restated under ruling (b) — OPEN, now the SOLE blocker (PA-directed: do not sign until explicitly resolved):** *what must the system do when there is no voting-session/credential context at all?* — **deny** (explicit boundary) · **derive from the Election** · **platform/default** (current implementation behaviour, evidence not authority).
 
+### 2d · Q-TEN-2 RULED (2026-08-14 — performative PO ruling) — ALL semantic blockers now CLOSED; only the signature remains
+
+> **PO ruling:** *"Q-TEN-2 — no voting credential/context → deny."*
+> **Formal wording (PA-drafted, ruled in substance by the line above):** *"If no voting-session/credential context exists, the voter must be denied voting. The system must not derive the context from the Election and must not fall back to the platform/default organisation."*
+
+**Consequences traced:**
+
+1. **The deny boundary is explicit:** absent credential/context is a denial, never an inference. The two rejected alternatives are rejected *by ruling*, not by preference: no derive-from-Election, no platform/default fallback.
+2. **The trait's platform-org fallback is now ruled NON-CONFORMANT for voting-time entitlement paths** — previously "implementation evidence, not authority"; now measured behaviour that the ruled rule forbids on this path. *(How the repair achieves conformance remains Session 3's design; other paths' fallback semantics belong to their own contexts — nothing family-wide is ruled here.)*
+3. **The `=== 1` platform branches at `VerifyVoterSlugConsistency:59-61`** ("valid if same org OR election is platform OR user is platform") now warrant scrutiny **at boundary presentation**: they sit on the authoritative comparison site, their reachability is NOT ESTABLISHED (integer vs UUID), and their bypass semantics must be checked against the Q-TEN-1/Q-TEN-2 rulings. **Flagged, not adjudicated.**
+4. **Scope-of-statement guard (PA, registered):** *"the session tenant has no legitimate role"* holds **for the entitlement predicate** — it must not be overread as "tenant context has no role anywhere in the voting workflow." The clean model, on the record: **Election → determines the required organisation · Credential → provides the organisation to compare · Ambient session tenant → must not determine entitlement.**
+
+**Track A semantic state: Decision A CLOSED · Decision B CLOSED (audit executed) · Q-TEN-1 CLOSED · Q-TEN-2 CLOSED. The grant (v5, §5) is final-form and awaits ONE explicit PO signature. Session 3 reopens only after it.**
+
 ## 3a · *(renumbering note: §3 below and all option analysis stand; where v2 text says "same answer regardless of ambient context", the §2a invariant governs)*
 
 ## 3 · The three repair options — evaluated, NONE chosen
@@ -118,11 +132,13 @@ Session 1 re-evaluated the audit under the clarified rule: **both violations STA
 
 ## 5 · Grant template — Option A, PREPARED AND EXPLICITLY UNSIGNED *(EM-VOT-002 package precedent)*
 
-> **☐ NOT GRANTED — Q-TEN-1 block LIFTED (ruled 2026-08-14, §2c); now ⛔ BLOCKED ON `Q-TEN-2` ONLY** (PA-directed: update the grant to the ruling, do not sign until Q-TEN-2 is explicitly resolved).
+> **☐ NOT GRANTED — ALL semantic blockers CLOSED (Q-TEN-1 §2c; Q-TEN-2 §2d). This is the FINAL-FORM grant (v5), presented for the PO's EXPLICIT SIGNATURE. Until signed it authorizes nothing; Session 3 remains stopped.**
 >
-> **Invariant (v4 — the ruled wording):** *"A voter may vote in an election only through a voting session/credential that belongs to the same organisation as that election. The Election is authoritative for the required organisation; the voting-session/credential supplies the organisation against which that requirement is compared. The voting-time entitlement evaluation must not be filtered by ambient session/tenant context, and a result produced under any other context must never be reused."* Acceptance encodes the §2c credential table + the cache-never-replays rule; the predicate's session-independence derived reading (§2c.2) gets its one-line confirm at boundary presentation.
+> **Invariant (v5 — the ruled wording, complete):** *"A voter may vote in an election only through a voting session/credential that belongs to the same organisation as that election. The Election is authoritative for the required organisation; the voting-session/credential supplies the organisation against which that requirement is compared. If no voting-session/credential context exists, the voter must be denied voting — the system must not derive the context from the Election and must not fall back to the platform/default organisation. The voting-time entitlement evaluation must not be filtered by ambient session/tenant context, and a result produced under any other context must never be reused."*
+> **Acceptance encodes:** the §2c credential table · the §2d no-credential→deny rule · the cache-never-replays rule. **At boundary presentation:** the predicate's session-independence derived reading (§2c.2, one-line confirm) · the `=== 1` platform-branch semantics (§2d.3, scrutiny against the rulings).
 >
-> *Template revision v4 (2026-08-14): invariant replaced with the Q-TEN-1-ruled wording; v3's "organisation/tenant context belonging to that election" made precise — the comparand is the CREDENTIAL organisation, and the session tenant is excluded from entitlement evaluation entirely. Corrections noted, never silently swapped.*
+> *Template revision v4 (2026-08-14): invariant replaced with the Q-TEN-1-ruled wording; v3's "organisation/tenant context belonging to that election" made precise — the comparand is the CREDENTIAL organisation, and the session tenant is excluded from entitlement evaluation entirely.*
+> *Template revision v5 (2026-08-14): Q-TEN-2 clause added (absent credential/context → deny; no derivation; no platform fallback). No open semantic question remains inside the grant. Corrections noted, never silently swapped.*
 >
 > **Scope:** repair of **the two confirmed voting-time entitlement violations identified by the Decision-B audit** — scoped by the violations, **not by file prescription**. *(The observed sites — `User::isVoterInElection()` `User.php:315-328` incl. its cache behaviour, and the `isEligible`/`canVote` projection `ElectionVotingController.php:37-44` — are cited as EVIDENCE of where the violations manifest, not as instructions to edit those files.)*
 > **Invariant to preserve (the grant's real content — PO wording, 2026-08-14, verbatim):** *"For a given voter and election, voting-time entitlement must be evaluated against the organisation/tenant context belonging to that election. A matching context may permit voting; a non-matching context must not. The result must not be corrupted by cache state from another context."* The §2a four-row expected-behaviour table is part of this invariant; **tests encode the table, not `PBDIGIT-65`'s superseded sentence.** The null/absent-context case (§2a.4) is flagged for one PO line at boundary presentation.
