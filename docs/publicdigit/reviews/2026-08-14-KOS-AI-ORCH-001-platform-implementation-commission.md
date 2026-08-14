@@ -144,3 +144,33 @@ G-5:              unchanged — placement provisional (ADR:OQ-2 open); the rule 
 Increment 2+:     ⛔ NOT AUTHORIZED (enforcement mechanics)
 Election grants:  NONE (unchanged) — start()/A-2 pending PO commission · EM-OPEN-021 open · Session 3 stopped
 ```
+
+---
+
+## 16 · BOUNDARY APPROVAL + ROLE-BOUND RULING (PO/ARB, 2026-08-14 — performative, verbatim in substance)
+
+> **D-1** Amend KOS-AI-ORCH-001; do NOT create KOS-AI-ORCH-002 at this stage.
+> **D-2** Approve the Increment-1 implementation boundary **WITH the R8 refinement** *(R8: role is immutable for the lifetime of a SessionAssignment; a role change is not mutation — it creates a new assignment with predecessor linkage via the existing HANDOFF → START machinery)*.
+> **D-3** Four canonical roles — ARCHITECTURE · GOVERNANCE · IMPLEMENTATION · VERIFICATION — with the role set remaining workflow-declared; explicitly declared workflow-specific extensions allowed; NOT a closed enum.
+> **D-4** The eight-question startup check is adopted **immediately as an operating convention** (work item · role · workflow state · mutation owner · authorization · boundary · predecessor/handoff · prohibitions; missing/contradictory → STOP, read-only, report, escalate, never infer authority). Convention, NOT runtime enforcement.
+> **D-5** Sequential role reassignment within one process is allowed; **R-34 remains binding** — a process that implemented may NOT independently verify that same implementation; process/terminal identity must not become the authority mechanism.
+
+**Registered by Governance (Session 2):** the ruling verbatim + Amendment **A-1** on KOS-AI-ORCH-001 (roles · R8 with provenance · startup convention · D-5/R-34 · unchanged-items list). **Conflict check performed: no ruled item conflicts with the accepted rule text** — D-3 matches the accepted per-workflow role declaration; R8 sharpens identity corollary C-2; the startup check is the articulated consultation duty.
+
+**Gate state after this ruling:**
+
+```
+PO authorization                        ✅  (§15)
+Session 4 architecture/design boundary  ✅  (9b69ab76 + addendum 641d4112)
+Human boundary approval                 ✅  D-2 — WITH R8 (R8 joins R1–R7 as a contract)
+NEXT →  RED (contracts R1–R8)           ⬜  Session 3 (IMPLEMENTATION role) may begin,
+                                            applying the D-4 startup convention first
+Minimal implementation                  ⬜
+GREEN (+ 65/69 replay criterion)        ⬜
+Regression                              ⬜
+Session 1 independent verification      ⬜  (R-34: must not have implemented)
+Operational qualification               ⬜
+Governance closure (G-1)                ⬜
+```
+
+**Still excluded (unchanged):** Increment-2 enforcement of any kind (incl. role gating and startup-check hooks) · locks/leases/hooks · `.claude` restructuring · per-stream logging · Election work.

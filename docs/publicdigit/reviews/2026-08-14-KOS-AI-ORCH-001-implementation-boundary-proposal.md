@@ -3,7 +3,9 @@
 
 **Session 4 (architecture/design stream) · 2026-08-14 · rev 2 — restructured to the commissioned 16-section form; supersedes this session's rev 1 at the same path (uncommitted).**
 
-> ## PROPOSED — NOT HUMAN APPROVED
+> ## ~~PROPOSED — NOT HUMAN APPROVED~~
+> ## ☑ HUMAN-APPROVED WITH R8 (PO/ARB ruling D-2, 2026-08-14 — status annotation by Governance; content untouched)
+> R8 (role immutable per SessionAssignment; role change = new assignment via HANDOFF → START) joins R1–R7 as an approved contract. Ruling record: platform implementation commission §16 · Amendment A-1 on KOS-AI-ORCH-001. Next gate: RED.
 > Every mechanism below is a proposal for PO review. This document creates no implementation authority, and its existence does not make the architecture authoritative. Next gate: **PO explicitly approves / amends / rejects → only then Session 3 may create RED tests.**
 
 **⛔ Produced read-only: no production code, no RED tests, no `workflow_engine`/`session_manager`/`platform_registry` change, no `.claude` change, no lock/lease/hook, no Election change.**

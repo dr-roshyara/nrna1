@@ -1,6 +1,7 @@
 # KnowledgeOS Controlled Session Orchestration — Governance Proposal
 
 **Status: ✅ ACCEPTED WITH AMENDMENTS G-1–G-4 (PO/ARB, 2026-08-14) — GOVERNANCE RULE ONLY. This acceptance authorizes the RULE; it does NOT authorize implementation of any orchestration mechanism. A separate bounded Platform Implementation commission is required before implementation begins.**
+**Amendment A-1 (PO/ARB ruling D-1–D-5, 2026-08-14): ROLE-BOUND EXECUTION — see the amendment section at the end of this document. Per D-1 this is an amendment to KOS-AI-ORCH-001; no KOS-AI-ORCH-002 exists.**
 **Acceptance provisos:** placement accepted **provisionally pending the ADR:OQ-2 ruling** (G-5) · the **freeze-exception interpretation must be explicitly recorded as part of the implementation-authority decision** (G-6 — the reading itself is not yet stated and is NOT invented here). Acceptance record: ARB review document, §Acceptance. Amendments G-1–G-4 are applied inline below, each marked.
 *(Original status, superseded 2026-08-14: 🟡 PROPOSED — awaiting Human/ARB review.)*
 **Date:** 2026-08-14 · **Author:** Session 2 (governance stream), commissioned by the PO · **Type:** platform governance principle (execution policy), proposal
@@ -239,3 +240,35 @@ The Election-Only 65/69 track as the worked evidence base: `f6bb5504`/`104f729a`
 
 **Status: ✅ ACCEPTED WITH AMENDMENTS G-1–G-4 (PO/ARB, 2026-08-14) — RULE ONLY · No implementation authorized · No platform code changed · No `workflow_engine`/`session_manager` changes · No `.claude` changes · No Election changes.**
 **Next: a separate bounded Platform Implementation commission (humanly issued — not created by this acceptance) → its own verification → operational qualification. Until then, sessions remain governed manually under the existing conventions, with "same terminal" as the interim operational convention (accepted principle 5).**
+
+---
+
+# Amendment A-1 — Role-Bound Execution (PO/ARB ruling D-1–D-5, 2026-08-14; registered by Governance)
+
+**Provenance:** Session 4's role-bound-execution architecture addendum (`2026-08-14-KOS-AI-ORCH-001-role-bound-execution-architecture-addendum.md`, `641d4112`), reviewed and ruled by the PO/ARB. **Per D-1 this content amends KOS-AI-ORCH-001 — deliberately NOT a new rule (no ORCH-002): the addendum is ~95% already covered by this rule; the genuinely new content is below.** Registered by Session 2 (Governance) under the accepted G-2 discipline: registering a recorded PO/ARB act.
+
+## A-1.1 · Canonical role model (D-3)
+
+The platform has **four canonical roles**: **ARCHITECTURE · GOVERNANCE · IMPLEMENTATION · VERIFICATION**. The role set remains **workflow-declared**: a workflow MAY declare additional, explicitly named workflow-specific roles, which follow the same governance discipline. **The platform is NOT a closed four-role enum** — the canonical four are the default vocabulary, not a ceiling. *(Consistent with §6's "not all roles always exist"; no conflict found on registration.)*
+
+## A-1.2 · R8 — role immutability per assignment (D-2)
+
+> **R8: Role is immutable for the lifetime of a SessionAssignment. A role change is not mutation of the existing assignment. A legitimate role change creates a NEW assignment with predecessor linkage, using the existing HANDOFF → START machinery.**
+
+Consequences: a `sessionRegistry.sessions[]` entry is a **SessionAssignment**; its `role` field never changes; no transition mutates role (one added fold rule); an informal "now I'll also verify" has **no record path** — role immutability is structural, like single-ownership. **R8 joins R1–R7 as a contract of the approved Increment-1 boundary** (D-2: boundary approved WITH R8). Provenance note: the refinement originated with the human reviewer during Session 4's architecture work and was adopted by explicit ruling.
+
+## A-1.3 · Startup convention (D-4 — IN EFFECT IMMEDIATELY as an operating convention; NOT runtime enforcement)
+
+Before beginning work, every session answers **eight questions**: **1** work item · **2** role · **3** workflow state · **4** mutation owner · **5** authorization · **6** boundary · **7** predecessor/handoff · **8** prohibitions.
+
+> **If any required answer is missing or contradictory: STOP · remain read-only · report and escalate to Governance · never infer authority.**
+
+This is the articulated form of the consultation duty this rule already carries. As protocol text it is convention, effective now; **as enforced gating (blocking hooks) it is Increment 2 — NOT authorized.**
+
+## A-1.4 · Sequential reassignment (D-5)
+
+Sequential role reassignment within the same process is **allowed** — each reassignment being a NEW SessionAssignment per R8. **R-34 remains binding: a process that implemented a work item may NOT independently verify that same implementation.** Permitted sequences include architecture→implementation and architecture→verification (if it did not implement); **implementation→verification of the same work is prohibited.** **Process/terminal identity must not become the authority mechanism** — terminal/process agnosticism (accepted principle 5) is unchanged.
+
+## A-1.5 · What this amendment does NOT change
+
+The invariant INV-ORCH-1 · the authority model and chain · one-mutation-owner · Session Registry ≠ Authority State (G-2 writer rule) · sticky STOPPED · G-1/G-3 · the Increment-1/Increment-2 separation — **enforcement of any kind, including role gating, remains Increment 2: NOT AUTHORIZED.** No `workflow_engine`/`session_manager`/`platform_registry`/`.claude` mechanism is created by this amendment.
