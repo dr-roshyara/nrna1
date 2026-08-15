@@ -132,4 +132,36 @@ Then Architecture runs its startup check, reads §3, and reconstructs. **Governa
 
 ---
 
-*Technical references: `KOS-ARCH-BASELINE-001` seq 1–2 · `G-KOS-ARCHBASE-A` · intake and provenance reconciliation `428a2f34` · `A-8` (Election boundary) · `A-7`/`GOV-HUMAN-01` · `INV-ATTR-1`/`INV-ATTR-2` · `C-3` · open findings register · `AST-015`/`AST-016` checksums above.*
+---
+
+# 6 · Addendum — PO/ARB guidance for the incoming session (2026-08-15)
+
+**Recorded as guidance, attributed to the PO/ARB. Not a grant amendment — `G-KOS-ARCHBASE-A` is unchanged.**
+
+## 6.1 · Startup sequence for the fresh Architecture session
+
+> *"The new Session 4 must be a **fresh Architecture session**, not this current session continuing."*
+
+Before any reconstruction: **read the commission → read the evidence handover (§3) → perform the startup check → confirm** that the assignment exists · the grant exists · **Phase A only** · **no redesign authority** · **no implementation authority** · **no verification authority**. **Only then begin.**
+
+## 6.2 · Suggested shape of the Phase A deliverable
+
+> *It should not be "here is the improved KnowledgeOS architecture." It should be:* **KnowledgeOS Current Architecture Baseline v1.0.**
+
+**A** context map (evidence-backed bounded contexts) · **B** capability map · **C** ownership model — state · knowledge · decisions · authority · **D** dependency model (actual direction) · **E** invariants · **F** evidence classification on **every** conclusion (`Observed`/`Declared`/`Inferred`/`Unknown`) · **G** **architecture unknowns — what cannot yet be proven.**
+
+**Section G is not a weakness of the deliverable; it is part of it.** A baseline that reports no unknowns has almost certainly inferred something it could not observe.
+
+## 6.3 · ⚙️ Mechanics of the START — so it does not stall
+
+**A question the sequence raises but does not answer: who *records* the START if the performing session is elsewhere?**
+
+> **Registering a START is a Governance act; performing the reconstruction is an Architecture act. They are different, and only the second is subject to the separation condition.**
+
+So **either** works: this process registers the START when the PO/ARB issues it, **or** the fresh session's Governance does. **Neither compromises Option A**, because neither is the reconstruction. What must not happen is **this process performing the Phase A work**.
+
+**Known limit, stated rather than glossed:** whichever registers it, the record will show `recordedBy: human` and cannot say which process did so. **Separation remains declared, not attested** — as §2 already records.
+
+---
+
+*Technical references: `KOS-ARCH-BASELINE-001` seq 1–2 · `G-KOS-ARCHBASE-A` · intake and provenance reconciliation `428a2f34` · `A-8` (Election boundary) · `A-7`/`GOV-HUMAN-01` · `INV-ATTR-1`/`INV-ATTR-2` · `C-3` · open findings register · `AST-015`/`AST-016` checksums above · PO/ARB guidance 2026-08-15 (§6).*
