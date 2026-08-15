@@ -4,7 +4,8 @@
 **Amendment A-1 (PO/ARB ruling D-1–D-5, 2026-08-14): ROLE-BOUND EXECUTION — see the amendment section at the end of this document. Per D-1 this is an amendment to KOS-AI-ORCH-001; no KOS-AI-ORCH-002 exists.**
 **Amendment A-4 (PO/ARB ruling DEC-1/DEC-2, 2026-08-15): EXECUTION TOPOLOGY OPERATING CONVENTION + Engineering→Governance DISCLOSURE DUTY — see A-4 at the end. Convention and duty only; authorizes no implementation and changes no mechanism. A-1.4/D-5, principle 5 and INV-ORCH-1 are unchanged; the two-terminal model is explicitly NOT an authority mechanism.**
 **Amendment A-5 (PO/ARB ruling P-1–P-6, 2026-08-15): PROCESS ATTRIBUTION + STRENGTHENED DISCLOSURE — see A-5 at the end. Adopts INV-ATTR-1/INV-ATTR-2 as governing principles; A-5.2 SUPERSEDES A-4.3's prose duty with a required four-part disclosure (permission unchanged); machine verifiability is REPORTING-ONLY, never a gate; AST-015 is NOT reopened and DEP-1/D-2/D-6 stay a separately commissioned family. Authorizes no implementation. ⚠️ OB-1 OUTSTANDING: A5's escalation trigger is undefined, so A5 is NOT yet operational policy. *(STATUS ANNOTATION 2026-08-15, per ES-004.3 — decision text unchanged: **OB-1 DISCHARGED by A-6**; A5 is now operational policy.)***
-**Amendment A-6 (PO/ARB ruling, 2026-08-15): OB-1 ESCALATION TRIGGER ADOPTED (T-3) — see A-6 at the end. Discharges A-5.1's precondition; A5 becomes operational policy. Adds a standing Governance duty to compile and present accumulated A5 disclosure evidence PROACTIVELY at the review point. Authorizes no implementation; no reopening of AST-015/AST-016. 🔴 OB-2 OPEN: no not-to-exceed date or evaluation-period endpoint is defined anywhere, so threshold arm (a) cannot yet arrive and the trigger currently operates as arm (b) alone — the standalone form the adopted analysis found insufficient.**
+**Amendment A-6 (PO/ARB ruling, 2026-08-15): OB-1 ESCALATION TRIGGER ADOPTED (T-3) — see A-6 at the end. Discharges A-5.1's precondition; A5 becomes operational policy. Adds a standing Governance duty to compile and present accumulated A5 disclosure evidence PROACTIVELY at the review point. Authorizes no implementation; no reopening of AST-015/AST-016. 🔴 OB-2 OPEN: no not-to-exceed date or evaluation-period endpoint is defined anywhere, so threshold arm (a) cannot yet arrive and the trigger currently operates as arm (b) alone — the standalone form the adopted analysis found insufficient. *(STATUS ANNOTATION 2026-08-15, per ES-004.3 — decision text unchanged: **OB-2 DISCHARGED by A-6.8**; endpoint set to **2026-08-30**; the T-3 guarantee now holds and the trigger is structurally complete.)***
+**📅 STANDING DATED OBLIGATION — `A5` evaluation period 2026-08-15 → 2026-08-30. At the EARLIER of 2026-08-30 or a qualifying harm/dispute event (A-6.3), Governance SHALL PROACTIVELY compile and present the accumulated A5 disclosure evidence to the PO/ARB (A-6.4). Governance does not decide the outcome.**
 **Acceptance provisos:** placement accepted **provisionally pending the ADR:OQ-2 ruling** (G-5) · the **freeze-exception interpretation must be explicitly recorded as part of the implementation-authority decision** (G-6 — the reading itself is not yet stated and is NOT invented here). Acceptance record: ARB review document, §Acceptance. Amendments G-1–G-4 are applied inline below, each marked.
 *(Original status, superseded 2026-08-14: 🟡 PROPOSED — awaiting Human/ARB review.)*
 **Date:** 2026-08-14 · **Author:** Session 2 (governance stream), commissioned by the PO · **Type:** platform governance principle (execution policy), proposal
@@ -521,6 +522,8 @@ The ruling adopts *"the defined harm/dispute condition"*. **Pinned verbatim from
 
 **`OB-2` (open): the PO/ARB must set the not-to-exceed date (or define the evaluation-period endpoint).** Until then the trigger is **structurally incomplete**, though **adopted and in force** as ruled. **Governance did not invent a date and will not.**
 
+> **STATUS ANNOTATION (2026-08-15, `ES-004.3` — the text above is unchanged): `OB-2` is DISCHARGED by `A-6.8`.** The endpoint is set to **2026-08-30**. **Arm (a) now has a determinate date, so the `T-3` guarantee holds and the trigger is structurally complete** — it no longer operates as `T-2` in effect.
+
 ## A-6.6 · `OB-1` discharged · `A5` operational
 
 **`OB-1` is DISCHARGED** — a threshold, owner and review point are adopted and registered. **Per the ruling, `A5` is now OPERATIONAL POLICY**, and per `P-6` the **`A5` evaluation period begins**, subject to `A-6.5`.
@@ -530,3 +533,27 @@ The ruling adopts *"the defined harm/dispute condition"*. **Pinned verbatim from
 ## A-6.7 · What A-6 does NOT do
 
 **No implementation authorized.** No reopening of `AST-015` or `AST-016`. No change to hooks, `SESSION_START`, workflow semantics, git configuration or `executionContext`. `DEP-1`/`D-2`/`D-6` remain a separately commissioned family (`P-6`); `DEP-3`/`FU-1` remains approved-for-investigation only, **not commissioned**. `A-5.2`'s disclosure duty, `INV-ATTR-1`, `INV-ATTR-2`, `A-5.5`'s reporting-only constraint and all prior amendments are **unchanged**. `V-3`, `D-2`, `D-6`, `E-1`, `O-CLOSURE-VOCAB` and the bootstrap gap are **not resolved**.
+
+## A-6.8 · `OB-2` DISCHARGED — the evaluation-period endpoint is set (PO/ARB ruling, 2026-08-15)
+
+> *"Set the A5 evaluation-period endpoint to 30.08.2026. This date is the not-to-exceed date for A-6 threshold arm (a). Governance shall register this date against A-6/OB-2 and shall not invent or infer any alternative date. The existing A-6 harm/dispute arm remains unchanged. At the earlier of the defined date or a qualifying harm/dispute event, Governance shall proactively compile and present the accumulated A5 disclosure evidence to PO/ARB. No implementation, AST-015/AST-016 reopening, hook change, SESSION_START wiring, or mechanism change is authorized by this act."*
+
+| Element | Registered value |
+|---|---|
+| **`A5` evaluation-period endpoint / not-to-exceed date (arm (a))** | **2026-08-30** *(as ruled: `30.08.2026`, DD.MM.YYYY — recorded in ISO form for unambiguity; no alternative date was inferred)* |
+| **Evaluation period** | **2026-08-15 → 2026-08-30** (begins at `A-6.6`'s adoption; 15 days) |
+| **Arm (b)** | **Unchanged** — the harm/dispute condition of `A-6.3` stands exactly as pinned |
+| **Review point** | The **earlier** of 2026-08-30 or a qualifying harm/dispute event |
+| **Governance obligation at that point** | **PROACTIVELY compile and present** the accumulated `A5` disclosure evidence to the PO/ARB (`A-6.4`). **Governance does not decide the outcome** |
+
+### The consequence that matters — `T-3`'s guarantee now holds
+
+> **`A-6.5`'s defect is cured.** Arm (a) now has a **determinate date**, so it **will** arrive. The property that made `T-3` preferable — *"a date always arrives, so the trigger always fires at least once"* — **now holds.** **The trigger is structurally complete**, and is no longer operating as `T-2` in effect.
+
+### ⚠️ Observation on evidence availability — recorded, not a blocker
+
+The `P-6` evaluation is defined over **three** things: `A5` · strengthened `A-4.3` · `DEP-3`. **`DEP-3` has no lane** — `FU-1` is *approved for investigation* (`A-5.4`) but **was never commissioned**, so it can produce **no evidence by 2026-08-30** unless commissioned first.
+
+> **Consequence, stated so it is not discovered at the review:** on the current record the 2026-08-30 review will carry evidence for **`A5` and `A-4.3` only**, and **`DEP-3` will be evidence-empty**. **If the PO/ARB wants `DEP-3` evidence at that review, `FU-1` must be commissioned with enough time to produce it.** **Governance has not commissioned it and does not do so here.**
+
+**Nothing else changes.** No implementation · no `AST-015`/`AST-016` reopening · no hook change · no `SESSION_START` wiring · no mechanism change. `A-6.3`, `A-6.4`, `A-6.6`, `A-6.7` and all prior amendments stand.
