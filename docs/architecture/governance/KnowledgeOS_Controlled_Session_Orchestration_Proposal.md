@@ -3,6 +3,7 @@
 **Status: ✅ ACCEPTED WITH AMENDMENTS G-1–G-4 (PO/ARB, 2026-08-14) — GOVERNANCE RULE ONLY. This acceptance authorizes the RULE; it does NOT authorize implementation of any orchestration mechanism. A separate bounded Platform Implementation commission is required before implementation begins.**
 **Amendment A-1 (PO/ARB ruling D-1–D-5, 2026-08-14): ROLE-BOUND EXECUTION — see the amendment section at the end of this document. Per D-1 this is an amendment to KOS-AI-ORCH-001; no KOS-AI-ORCH-002 exists.**
 **Amendment A-4 (PO/ARB ruling DEC-1/DEC-2, 2026-08-15): EXECUTION TOPOLOGY OPERATING CONVENTION + Engineering→Governance DISCLOSURE DUTY — see A-4 at the end. Convention and duty only; authorizes no implementation and changes no mechanism. A-1.4/D-5, principle 5 and INV-ORCH-1 are unchanged; the two-terminal model is explicitly NOT an authority mechanism.**
+**Amendment A-5 (PO/ARB ruling P-1–P-6, 2026-08-15): PROCESS ATTRIBUTION + STRENGTHENED DISCLOSURE — see A-5 at the end. Adopts INV-ATTR-1/INV-ATTR-2 as governing principles; A-5.2 SUPERSEDES A-4.3's prose duty with a required four-part disclosure (permission unchanged); machine verifiability is REPORTING-ONLY, never a gate; AST-015 is NOT reopened and DEP-1/D-2/D-6 stay a separately commissioned family. Authorizes no implementation. ⚠️ OB-1 OUTSTANDING: A5's escalation trigger is undefined, so A5 is NOT yet operational policy.**
 **Acceptance provisos:** placement accepted **provisionally pending the ADR:OQ-2 ruling** (G-5) · the **freeze-exception interpretation must be explicitly recorded as part of the implementation-authority decision** (G-6 — the reading itself is not yet stated and is NOT invented here). Acceptance record: ARB review document, §Acceptance. Amendments G-1–G-4 are applied inline below, each marked.
 *(Original status, superseded 2026-08-14: 🟡 PROPOSED — awaiting Human/ARB review.)*
 **Date:** 2026-08-14 · **Author:** Session 2 (governance stream), commissioned by the PO · **Type:** platform governance principle (execution policy), proposal
@@ -379,3 +380,92 @@ The rule closes exactly the audit's claim (d) — the twice-exercised precedent 
 **First application of A-4.3, same day:** the Governance review that produced this ruling **disclosed** that the same process acted as Architecture and then as Governance on the same evidence (`e77fa724` §4). The duty was met before it was rule text.
 
 **Follow-up commissioned by DEC-2:** `KOS-GOV-ATTRIBUTION-001` — process attribution for Governance acts · whether a stronger Engineering→Governance independence invariant should be adopted · how such an invariant could be machine-verifiable rather than declaration-based.
+
+---
+
+# Amendment A-5 — Process Attribution and Strengthened Disclosure (PO/ARB ruling P-1…P-6, 2026-08-15; registered by Governance)
+
+**Origin:** work item `KOS-GOV-ATTRIBUTION-001` — ADP (`988c3593`) and Governance review + §8 addendum (`184d2745`, `e0a9d31c`). **This amendment registers PRINCIPLES, a STRENGTHENED DUTY, and CONSTRAINTS. It authorizes no implementation and changes no mechanism.**
+
+## A-5.1 · P-1 — Attribution direction: `A5` hybrid, as a DEFERRAL (ruling verbatim)
+
+> *"A5 — hybrid/defer, but only with a mandatory escalation trigger to be defined and recorded before the deferral becomes operational policy. A5 must explicitly be treated as a deferral, not as a solution to current Governance attribution."*
+
+**Registered with its precondition intact:**
+
+| | |
+|---|---|
+| **What `A5` is** | Continue the `C-3` convention now (`A3`); hold `A2` (an `actor` field in `AST-015`) and `A4` (external attestation) as **unauthorized future options** |
+| **What `A5` is NOT** | **It is NOT a solution to Governance attribution.** Its only immediate component is `A3`, and `A3` cannot attribute governance acts, because **Governance performs no `REGISTER`.** Governance acts remain **unattributed** under `A5` |
+| **🔴 `OB-1` — blocking precondition** | **A mandatory escalation trigger MUST be defined and recorded BEFORE the deferral becomes operational policy.** It is **not yet defined.** **Until it is, `A5` is NOT operational policy** — the status quo continues as unruled practice, not as an adopted position |
+
+**Rationale preserved:** the Governance review found `A5`'s trigger as proposed (*"if and when evidence shows the convention insufficient"*) defined **no threshold, owner or review point**, so `A5` could never demonstrably fail. `OB-1` closes exactly that.
+
+## A-5.2 · P-2 — Strengthened disclosure duty (ruling verbatim) — **SUPERSEDES `A-4.3`'s prose form**
+
+> *"STRENGTHEN A-4.3. Keep permission-with-disclosure; make disclosure structured and mandatory, including identification of the prior Engineering act and the Governance review's independent contribution. Do not introduce a blanket prohibition."*
+
+**The permission is unchanged** (`A-4.3` stands): a process may act in a Governance capacity on evidence it produced in an Engineering capacity. **The duty is raised from prose to a required, shaped disclosure.**
+
+**REQUIRED — every Governance review artifact where the overlap exists MUST carry a disclosure section containing all four items:**
+
+| # | Required item |
+|---|---|
+| **D-a** | **The overlap, stated plainly** — which capacities the process held, and on which work item |
+| **D-b** | **Identification of the prior Engineering act** — by **commit SHA and/or artifact path**, not by description |
+| **D-c** | **The evidential status of the independence claim** — `asserted` or `attested`. Per `INV-ATTR-2`, a self-declared identity **must never be presented as attested**. A review **must not** be called independent merely because the role changed |
+| **D-d** | **The review's independent contribution** — what it checked **that the producer could not check itself** |
+
+**Non-disclosure, or disclosure missing any of `D-a`–`D-d`, is a governance defect.**
+
+**Known limitation, carried forward honestly:** this duty remains **declaration-based**. `A-5.4`/`P-4` may improve provenance; per `P-5` it can never establish independent judgment.
+
+## A-5.3 · P-3 — Attribution invariants ADOPTED (ruling verbatim)
+
+> *"APPROVE INV-ATTR-1 and INV-ATTR-2 as governing principles: process identity is evidential only and never an authority input; self-declared identity must never be represented as independently attested."*
+
+> **`INV-ATTR-1` (evidential-only attribution).** *A process identity may appear in the record only as an attribute of a recorded act. It must never be an input to any precondition, gate, grant evaluation, or activation decision. Attribution answers "who acted"; it never answers "who may act."*
+>
+> **`INV-ATTR-2` (self-declared until attested).** *Any process identity in the record is a declaration by the declaring process. It must be labelled as such and must never be presented as an attestation, unless produced by a mechanism the declaring process cannot forge.*
+
+**Both are now governing principles.** Governance verified that `INV-ATTR-1` **codifies a property `AST-015` already satisfies by construction** — no precondition reads `executionContext` — so it **preserves an existing property rather than inventing one**. Consistent with `INV-DISC-2`, accepted principle 5 and `A-4` `C-1`.
+
+**Consequence for any future attribution work:** an `actor`-style field would require a **contract test proving no gate reads it**. That is a condition on a future authorization, not an authorization.
+
+## A-5.4 · P-4 — `DEP-3` per-lane git identities (ruling verbatim)
+
+> *"APPROVE investigation/preparation of per-lane Git identities as an operating improvement, but do not treat Git identity as proof of independent judgment and do not modify AST-015/AST-016 under this decision."*
+
+**Approved:** investigation and preparation, as an **operating-setup improvement only**. **Not approved:** any `AST-015`/`AST-016` change; any representation of git identity as proof of independent judgment.
+
+**Measured limits recorded with the approval** (Governance review `C-4`): today **one OS user, one worktree, and 60/60 commits unsigned**. Per-lane identities are **trivially settable by any lane**, so absent enforced key isolation this is a **legibility and habit gain, not attestation** — and by `INV-ATTR-2` it must be labelled as such.
+
+## A-5.5 · P-5 — Machine verifiability is REPORTING-ONLY (ruling verbatim)
+
+> *"REPORTING-ONLY. A machine may report process-distinctness/provenance findings, but it must never claim that process distinction proves independent judgment and must not act as an authorization or enforcement gate."*
+
+**Binding on any future instrument.** It may **surface**; it may **never gate**, authorize or enforce.
+
+**The reason, recorded so it is not re-litigated:** a machine can establish **process-distinctness**, never **independent judgment** — the lanes share one model, one human director, one worktree and one repository, so two processes given the same evidence are **one judgment computed twice**. Governance recorded that a false independence certificate would be **`V-3` with a larger blast radius**: `V-3` misinformed about a handoff and induced three false-defect episodes in one day; this would misinform about the integrity of the review process itself. **Consistent with `AST-016`'s surface-don't-decide precedent.**
+
+## A-5.6 · P-6 — Sequencing: `AST-015` is NOT reopened (ruling verbatim)
+
+> *"Do not reopen AST-015 yet. First establish the operational value and limits of A5 + strengthened A-4.3 + DEP-3. Keep DEP-1/D-2/D-6 as a separately commissioned mechanism-evolution family. Do not batch them into implementation without a new architecture boundary."*
+
+**`AST-015` remains closed.** `DEP-1` (actor field) · `D-2` (grant↔session linkage) · `D-6` (read-only participation) are recorded as a **mechanism-evolution family**, **separately commissioned**, and **must not be batched into implementation without a new architecture boundary.**
+
+**The evaluation gate this creates:** the operational value and limits of `A5` + strengthened `A-4.3` + `DEP-3` must be established **first**. *(Note the dependency: `A5` is not operational until `OB-1` defines its trigger — so `OB-1` also gates the start of this evaluation.)*
+
+## A-5.7 · What A-5 does NOT do
+
+**No implementation grant is implied.** No modification to `AST-015`, `AST-016`, hooks, `SESSION_START`, workflow semantics, git configuration or `executionContext` is authorized by this act alone. `R-34` · `A-1.4`/`D-5` · accepted principle 5 · `INV-ORCH-1` · `R8` · `Inv C`/`R1` · `G-1`/`G-2`/`G-3` · the authority conjunction · the `SESSION_START` prohibition while `V-3` is unresolved · `A-4.1`/`A-4.2`/`A-4.4` — **all unchanged**. `V-3`, `D-2`, `D-6`, `E-1`, `O-CLOSURE-VOCAB` and the bootstrap gap are **not resolved**.
+
+## A-5.8 · Registration notes (Governance)
+
+**`A-5.2` supersedes `A-4.3`'s prose duty and takes effect immediately.** The permission itself is untouched.
+
+**First application, retrospectively satisfied:** the Governance review that produced this ruling (`184d2745` §0) already carried `D-a`, `D-b`, `D-c` and — via §8's four corrections and the executed `recordedBy` probe — `D-d`. **The duty was met in substance before it became rule text**, for the second time in this programme (`A-4.3` did the same).
+
+**`A-5.2` partially discharges `DEP-4`** (machine-readable review→evidence linkage): requiring `D-b` to name a commit SHA or artifact path establishes that linkage **by convention, with no mechanism change.**
+
+**Outstanding obligation:** **`OB-1`** — define and record `A5`'s escalation trigger (threshold · owner · review point). **`A5` is not operational policy until then.**
