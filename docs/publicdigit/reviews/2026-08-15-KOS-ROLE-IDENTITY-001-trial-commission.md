@@ -125,6 +125,41 @@ Per the decision, in two explicit parts:
 
 ---
 
+## 10 · Trial-conduct rule (PO/ARB, 2026-08-15) — registered verbatim
+
+> ### *"Do not try to make the trial succeed. Let it succeed, fail, be ignored, be inconvenient, or prove useless. All of those are valid evidence."*
+
+**Binding on everyone applying the block, and on Governance when compiling.** Concretely:
+
+- **No chasing completion.** A missing block is **`E-T1` data**, not a gap to backfill. **Nobody is to be reminded, prompted or corrected into compliance** — a completion rate achieved by nagging measures the nagging, not the practice.
+- **No retrospective tidying.** Blocks are not added to artifacts after the fact, and imperfect ones are not improved before the review.
+- **Inconvenience is a finding.** If the block is annoying, slow, or awkward to fill honestly, **that is `E-T3`**, and it is the kind of result most likely to be lost if the trial is run to look good.
+
+## 11 · Instance #1 is existence evidence only — and a bias I must declare
+
+**PO/ARB clarification, registered:**
+
+> *"'The trial started in this act — the registration artifact carries instance #1' is fine as evidence of the trial itself, but I would not treat that first example as evidence that ALT-2 is useful. It's merely: **Trial instance #1 exists.** Its usefulness is something E-T1–E-T6 must establish over the period."*
+
+**Accepted without qualification.** Instance #1 establishes **that the practice was applied once**. It establishes **nothing** about accuracy, effort, information content or usefulness. **It contributes to `E-T1`'s denominator and numerator, and to nothing else.**
+
+### 🔴 Declared bias on the evidence — `E-T-BIAS`
+
+**The trial is being applied, and its evidence compiled, by the same process that designed and recommended it.** That process is invested in the trial being *informative*, which is a different bias from wanting it to *succeed* — but it is still a bias, and it acts most strongly on the two measurements most easily inflated:
+
+| Evidence | How the bias would show |
+|---|---|
+| **`E-T1`** completion rate | An invested actor fills the block **more reliably than a disinterested one would**. A high completion rate may therefore measure *this process's diligence*, not the practice's viability |
+| **`E-T3`** operational effort | The same actor is likely to **under-report friction** it has already decided is worthwhile |
+
+> **Consequence for the 30 August review: `E-T1` and `E-T3` must be presented with this bias attached, not as neutral measurements.** A high completion rate produced by one invested actor is **weak evidence** that the practice would survive contact with a disinterested one. **`E-T4` and `E-T6` are less exposed**, because both can be contradicted by observation regardless of who is looking.
+>
+> **This is recorded now, before the numbers exist**, so it cannot be added or omitted depending on what they turn out to be.
+
+**Nothing is commissioned by this addendum.** No Architecture or Implementation session is engaged for `ALT-2`; the next governance milestone is the **2026-08-30 review**.
+
+---
+
 ## Traceability
 
 PO/ARB decision + refinement 2026-08-15 (§1 verbatim) · ADP `a5b571df` · Governance review `4ad09fa1` (`C-1` prediction → `E-T6`; `C-3` illustrative label → §4) · `A-6.8` review date 2026-08-30 · `A-6.4` Governance evidence-compilation duty · `A-5.2` `D-a`–`D-d` (the pattern `ALT-2` extends) · `INV-ATTR-1`/`INV-ATTR-2` · `A-5.5` reporting-only · `P-6` unbatched family · `DEP-3.1`–`3.4` · `V-3` false-confidence precedent · `A5` run-ahead-of-evidence precedent
