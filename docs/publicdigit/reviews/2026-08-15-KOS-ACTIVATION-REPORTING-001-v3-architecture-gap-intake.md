@@ -41,6 +41,25 @@ AST-015 asked to START verif .. CASE A ACCEPTED (exit 0) · CASE B REFUSED (exit
 
 > **The information is not unknowable — it is unpublished.** AST-015 discriminates the two cases perfectly. This is a **publication** gap, not an epistemic one. Any remedy that begins *"the fact cannot be known"* is starting from a false premise.
 
+### 3.1 Observed in the wild — `AST-016`'s first live use after adoption (added 2026-08-15)
+
+Governance registered a new architecture lane (`KOS-EXEC-TOPOLOGY-001` seq 1–2) and immediately resolved it:
+
+```
+verdict: RESOLVED   operable: false
+  KOS-EXEC-TOPOLOGY-001 :: S4-architecture-topology [architecture] = CREATED
+  missing for activation: a recorded predecessor HANDOFF carrying its token   ← FALSE: seq 2 recorded it
+  missing for activation: a recorded human START act                          ← TRUE
+```
+
+> **V-3 is no longer a laboratory result.** It reproduced on the **first live use** of the qualified and adopted asset, against a real lane, within minutes of adoption. **Second real-world occurrence** (the first cost a reconciliation cycle, `32596519`).
+
+**It independently confirms §4's narrowing:** the human-START line is **correct** here — the lane genuinely is unstarted — and **only** the handoff line is false. **Exactly one of the two items is wrong**, as recorded.
+
+**It also sharpens the §7 constraint from a projection into an observation:** had `AST-016` been wired into `SESSION_START`, every session on this lane would now be told automatically that a handoff it demonstrably possesses is missing.
+
+**Nothing was repaired.** Recorded as evidence only; classification, scope and remedy remain exactly as stated. *(Source: `2026-08-15-KOS-EXEC-TOPOLOGY-001-architecture-commission.md` §5.)*
+
 ## 4 · Scope — exactly ONE of the two enumerated prerequisites
 
 The two items in `missingForActivation` have **different epistemic status**. This narrowing is load-bearing and must not be lost:
