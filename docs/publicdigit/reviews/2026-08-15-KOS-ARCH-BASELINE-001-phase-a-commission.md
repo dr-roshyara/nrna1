@@ -144,6 +144,28 @@ Then Architecture runs its startup check, reads §3, and reconstructs. **Governa
 
 Before any reconstruction: **read the commission → read the evidence handover (§3) → perform the startup check → confirm** that the assignment exists · the grant exists · **Phase A only** · **no redesign authority** · **no implementation authority** · **no verification authority**. **Only then begin.**
 
+**Refinement (PO/ARB, 2026-08-15) — the startup check is its own gate, not a preamble.** The fresh session's **first output must be the check alone**, and nothing else:
+
+```
+Startup Check
+✓ Work item: KOS-ARCH-BASELINE-001    ✓ No redesign authority
+✓ Role: Architecture                  ✓ No implementation authority
+✓ Grant: G-KOS-ARCHBASE-A             ✓ No verification authority
+✓ Scope: Phase A only                 ✓ Evidence handover received
+                                      ✓ Self-authorship limitations understood
+STATUS: READY
+```
+
+**Then stop.** Reconstruction begins only after that. **A startup check folded into the first analysis is not a gate — it is a formality**, and the difference is the whole point of `G-3`.
+
+## 6.4 · The START is registered — and this process must NOT perform Phase A
+
+**Registered at seq 3 on the PO/ARB's act of 2026-08-15:** *"I issue START → fresh Architecture Session 4 begins Phase A reconstruction."* The lane is now `ACTIVE`, `operable: true`.
+
+> **⛔ Governance (this process) registered the START and STOPS THERE.** Per §6.3 those are two different acts, and only the reconstruction is subject to the separation condition. **This process authored the architecture under reconstruction and therefore must not reconstruct it** — doing so would defeat Option A at the moment it took effect, and would make the resulting baseline a restatement.
+>
+> **The lane is open and waiting for a session that is not this one.**
+
 ## 6.2 · Suggested shape of the Phase A deliverable
 
 > *It should not be "here is the improved KnowledgeOS architecture." It should be:* **KnowledgeOS Current Architecture Baseline v1.0.**
