@@ -1,4 +1,6 @@
-# Decision Request — `EM-OPEN-042` reframed: does a blocked election enter a governed Suspension?
+# Decision Request — `EM-OPEN-042`: what becomes of an election when a reached phase cannot complete?
+
+> ⚠️ **RE-FRAMED AGAIN, 2026-08-15, at PO direction — and the correction is Governance's to record against itself.** An earlier draft of this request asked *"does the election enter a governed Suspension?"* **That question presupposed its own answer.** **Suspension is ONE candidate among several, not the frame.** The neutral question is below; the suspension analysis that follows remains valid **if and only if** suspension is the path chosen.
 
 **Type:** Governance decision request (Session 2) · **Date:** 2026-08-15 · **Business language only**
 **⛔ Nothing adopted. The PO's interpretation is expressly NOT treated as adopted, per instruction. No architecture. `EM-OPEN-039` untouched. Architecture ⏸️ · Session 3 🛑.**
@@ -29,11 +31,21 @@
 
 ---
 
-## 1 · The reframed question
+## 1 · The question, in plain business language
 
-> **When a mandatory condition prevents an election from progressing, does the election enter a governed Suspension — and what are the rules for resolving and resuming it?**
+> **Administration was scheduled for 1–5 September. On 5 September the conditions are evaluated. There are zero voters. Administration cannot complete, and the protocol records the failure.**
+>
+> ## **What should the election become at that point?**
 
-**Governance confirms the reframing is the better question.** *"What happens to the failed phase?"* asked about a part; the real subject is the **election**.
+**Nine parts, none answered here:**
+
+**(a)** does the election simply **await an authorized corrective action**? · **(b)** may the **failed phase be rescheduled**? · **(c)** may the election **restart from that phase**? · **(d)** may it **restart from an earlier phase**? · **(e)** does it require a **new application**? · **(f)** may it be **cancelled or abandoned**? · **(g)** **who decides which recovery path applies** — and may the Chief choose it, or do the Election Rules determine what recovery is permitted? · **(h)** what must be **recorded**? · **(i)** **what happens to the already-created downstream opportunities?**
+
+**Candidate philosophies named by the PO, none endorsed:** wait for correction · reschedule · restart from the failed phase · go back to an earlier phase · cancel/terminate · **or a rule that depends on the REASON for failure** *(zero voters may deserve a different consequence from a governance failure)*.
+
+**Two invariants stated by the PO, and their actual status:** *"no phase outcome without phase reachability or an explicit governed rule"* — **already secured** by `EM-GOV-011` and its never-reached-≠-failed refinement. *"no election-level outcome inferred from one phase failure"* — **currently true by ABSENCE: no adopted rule infers one.** ⚠️ **Absence is not a rule.** One line adopts it as a prohibition; **until then it holds only because nothing contradicts it.**
+
+**On (g), the PO's own words are recorded as a recommendation and NOT as a ruling:** *"The Chief may initiate a corrective action, but cannot use administrative authority to bypass mandatory Election Rules."* **Governance notes only that its second half is already binding (`EM-GOV-008`); its first half — that the Chief may initiate — is not yet adopted.**
 
 ## 2 · Compatibility with what is already adopted — checked, and it holds
 
