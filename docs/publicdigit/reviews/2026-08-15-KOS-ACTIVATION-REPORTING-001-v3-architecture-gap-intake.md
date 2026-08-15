@@ -60,6 +60,20 @@ verdict: RESOLVED   operable: false
 
 **Nothing was repaired.** Recorded as evidence only; classification, scope and remedy remain exactly as stated. *(Source: `2026-08-15-KOS-EXEC-TOPOLOGY-001-architecture-commission.md` §5.)*
 
+### 3.2 Third occurrence — V-3 blocked a commissioned lane (added 2026-08-15)
+
+Session 4, correctly refusing to guess, read the resolver's *"missing for activation: a recorded predecessor HANDOFF"* on `KOS-EXEC-TOPOLOGY-001` and reported the lane unstartable with a defective handoff linkage. **Governance proved by execution that `AST-015` accepts the START** — the handoff at seq 2 is recognized and the lane was startable all along.
+
+| # | Occurrence | Cost |
+|---|---|---|
+| 1 | Seq-16 "reconciliation" (`32596519`) | a false defect filed against a sound record; one cycle lost |
+| 2 | First live use after adoption | detected immediately; no cost |
+| 3 | **This event** | **a commissioned architecture lane blocked; Governance asked to repair a record that is not broken** |
+
+> **The failure mode is now demonstrated rather than theorised: V-3 does not merely mislead — it induces correct, careful sessions to request repairs to sound records.** The danger is no longer a wasted cycle; it is **an unnecessary write to a correct authoritative record.**
+
+**New evidence for the remedy decision:** V-3's false line is **compounded by `identity`'s `predecessor: null`**. `predecessor` (a declared `REGISTER` field) and `handoffsTo` (the actual activation gate) are different facts, but read together they make a **sound bootstrap lane appear doubly broken**. **Any remedy should consider both surfaces together.** No remedy chosen. *(Source: `2026-08-15-KOS-EXEC-TOPOLOGY-001-reconciliation.md`.)*
+
 ## 4 · Scope — exactly ONE of the two enumerated prerequisites
 
 The two items in `missingForActivation` have **different epistemic status**. This narrowing is load-bearing and must not be lost:
