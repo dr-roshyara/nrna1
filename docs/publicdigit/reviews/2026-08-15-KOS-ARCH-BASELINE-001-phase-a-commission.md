@@ -68,6 +68,19 @@
 
 **Not authored by it, and known to belong to the Election lane:** everything `EM-*`, `PBDIGIT-*`, `session3-*`, `session4-election-*`, `governance-ruling-phase-schedule-*`, `tier1-*`. **`A-8` forbids this baseline from modifying any of it.**
 
+> ### ⚠️ Correction by Governance — two different questions, and only one is answered
+>
+> The line above states a **modification** boundary. It must not be read as a **scope** determination, and an earlier reading of this handover could have taken it that way.
+>
+> | Question | Answer |
+> |---|---|
+> | **May Phase A modify Election artifacts?** | ❌ **No. Binding and absolute** (`A-8`) — observe and report only |
+> | **Is the Election work part of the KnowledgeOS architecture being reconstructed?** | ⬜ **NOT ANSWERED. This is a Phase A question** — it is a bounded-context/system-boundary determination, and **Governance must not prejudge it** |
+>
+> **"Do not touch it" is not the same as "it is not part of the system."** Whether the Election product lies inside or outside the KnowledgeOS boundary — and where that boundary actually runs — is **exactly the kind of conclusion Phase A exists to establish from evidence.** If Governance had settled it here, it would have handed over a bounded-context decision disguised as a housekeeping note, which is precisely what Option A exists to prevent.
+>
+> **Architecture decides the scope question on evidence. The modification prohibition holds either way.**
+
 ## 3.3 · Where the authoritative sources are declared to live
 
 **Locations only. Whether any of these *is* authoritative is a Phase A question.**
