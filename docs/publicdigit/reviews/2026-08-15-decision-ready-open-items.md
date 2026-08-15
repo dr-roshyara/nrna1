@@ -21,7 +21,17 @@
 
 # 1 · One decision is actually open
 
-> # 🟠 DECISION NEEDED FROM PO/ARB
+> # ✅ DECIDED — PO/ARB, 2026-08-15
+>
+> ### **APPROVED: Option A — keep `OBS-1` registered, commission no further work.**
+>
+> *Registered verbatim:* **"APPROVE OPTION A. Keep OBS-1 registered, but commission no further work. It is a historical inconsistency with virtually no current operational impact. Keeping it visible preserves useful evidence without spending engineering effort."**
+>
+> **No decision is now pending from Governance.** The next scheduled decision point is **30 August 2026**. *(The request as originally put is preserved below, unaltered.)*
+
+---
+
+> # 🟠 DECISION NEEDED FROM PO/ARB *(as originally put — now decided, above)*
 >
 > ### **Recommended: Option A — keep the observation registered, but commission nothing.**
 >
