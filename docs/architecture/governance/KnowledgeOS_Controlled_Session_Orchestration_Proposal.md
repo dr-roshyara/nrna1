@@ -2,6 +2,7 @@
 
 **Status: ✅ ACCEPTED WITH AMENDMENTS G-1–G-4 (PO/ARB, 2026-08-14) — GOVERNANCE RULE ONLY. This acceptance authorizes the RULE; it does NOT authorize implementation of any orchestration mechanism. A separate bounded Platform Implementation commission is required before implementation begins.**
 **Amendment A-1 (PO/ARB ruling D-1–D-5, 2026-08-14): ROLE-BOUND EXECUTION — see the amendment section at the end of this document. Per D-1 this is an amendment to KOS-AI-ORCH-001; no KOS-AI-ORCH-002 exists.**
+**Amendment A-4 (PO/ARB ruling DEC-1/DEC-2, 2026-08-15): EXECUTION TOPOLOGY OPERATING CONVENTION + Engineering→Governance DISCLOSURE DUTY — see A-4 at the end. Convention and duty only; authorizes no implementation and changes no mechanism. A-1.4/D-5, principle 5 and INV-ORCH-1 are unchanged; the two-terminal model is explicitly NOT an authority mechanism.**
 **Acceptance provisos:** placement accepted **provisionally pending the ADR:OQ-2 ruling** (G-5) · the **freeze-exception interpretation must be explicitly recorded as part of the implementation-authority decision** (G-6 — the reading itself is not yet stated and is NOT invented here). Acceptance record: ARB review document, §Acceptance. Amendments G-1–G-4 are applied inline below, each marked.
 *(Original status, superseded 2026-08-14: 🟡 PROPOSED — awaiting Human/ARB review.)*
 **Date:** 2026-08-14 · **Author:** Session 2 (governance stream), commissioned by the PO · **Type:** platform governance principle (execution policy), proposal
@@ -316,3 +317,65 @@ The invariant INV-ORCH-1 · the authority model and chain · one-mutation-owner 
 ## A-3.2 · Registration notes (Governance)
 
 The rule closes exactly the audit's claim (d) — the twice-exercised precedent (intent-vs-ruling; no self-reference) is now rule text. **The R5b mechanism is unchanged and correct by design**: it checks reference presence; act-existence verification is the Governance role's duty, unautomatable under ruled Q-4. **First application of A-3, same day:** the review accompanying this ruling recommended dispositions for F-3, F-1, and operational qualification — those are recommendations, **not performed acts, and are NOT registered**; they remain on the PO desk.
+
+---
+
+# Amendment A-4 — Execution Topology Operating Convention (PO/ARB ruling DEC-1 / DEC-2, 2026-08-15; registered by Governance)
+
+**Origin:** work item `KOS-EXEC-TOPOLOGY-001` — Architecture Decision Proposal (`86b2e536`) and Governance review (`e77fa724`). **This amendment registers a CONVENTION and a DISCLOSURE DUTY. It authorizes no implementation and changes no mechanism.**
+
+## A-4.1 · DEC-1 — the two-terminal model, adopted as convention only (ruling verbatim)
+
+> *"I adopt the two-terminal model as an operating convention/documentation only, subject to C-1–C-4.*
+> *It is explicitly **not** an authority mechanism, platform requirement, or encoded architectural rule.*
+> *Authority remains determined by the governed model: assignment, grant, human START and workflow state.*
+> *R-34 remains the actual independence rule: a process that implemented a work item may not independently verify that same implementation.*
+> *Architecture interruptions shall use Option A (separate work item) or Option C (sequential governed handoff). Option B — concurrent same-work-item lanes — is not adopted.*
+> *No change to AST-015 or AST-016 is authorized by this decision."*
+> — **PO/ARB, 2026-08-15**
+
+**The convention.** Where practical, the production lane (Governance · Architecture · Implementation, sequentially) and the assurance lane (Verification) run as separate execution environments.
+
+| | Condition | Status |
+|---|---|---|
+| **C-1** | **The terminal confers NO authority.** Authority is and remains `assignment ∧ grant ∧ human START ∧ workflow state`. The convention is a habit that makes `R-34` easier to keep — **never the control itself** | binding on the convention |
+| **C-2** | **`R-34`'s operative test, verbatim:** *a process that implemented a work item may not independently verify that same implementation.* The convention must never be restated as "verification must be in another terminal" | binding on the convention |
+| **C-3** | **`executionContext` should distinguish processes** well enough to evidence `R-34`. A convention for what Governance writes into an **existing** field — **no schema, mechanism or `AST-015` change.** Applies from the next assignment onward; **no record is rewritten** (append-only) | binding on the convention |
+| **C-4** | **Architecture interrupts use Option A or Option C. Option B is NOT adopted** | binding rule |
+
+## A-4.2 · Interrupt options (C-4, ruled)
+
+| Option | Disposition |
+|---|---|
+| **A — separate work item** | ✅ **Adopted** for substantial architectural questions. Approved isolation between work items; own evidence, grant and lifecycle. No mechanism change |
+| **C — sequential governed handoff** | ✅ **Adopted** for short in-flight clarifications: Implementation `HANDOFF` → Architecture `START` → answer → `HANDOFF` back → Implementation resumes under a **NEW SessionAssignment** (`R8`). No mechanism change; **already proven** — `KOS-SESSION-DISCOVERY-001` seq 1–18 is this pattern |
+| **B — concurrent same-work-item lanes** | ❌ **NOT adopted.** Would silently transfer mutation ownership from the running lane, and requires a `D-6` cure ⇒ reopening the **qualified** `AST-015` |
+
+**Related disposition, registered:** unguarded mutation-ownership transfer at `START` is an **accepted consequence of the current design with a documented operating constraint — not a defect, and not silently acceptable.** A second `START` requires a recorded handoff **and** a human act, so the transfer is deliberate and governed; what is absent is **notification**, not a gate. **No mechanism change is authorized.**
+
+## A-4.3 · DEC-2 — Engineering→Governance overlap: PERMIT WITH DISCLOSURE (ruling verbatim)
+
+> *"I permit a process to act in a Governance capacity on evidence it previously produced in an Engineering capacity under the current governance model, because no adopted rule currently prohibits that sequence and the authoritative record cannot presently attribute Governance acts to a process identity.*
+> *However, such overlap **must be explicitly disclosed** in the Governance review artifact whenever the reviewing process also produced the evidence under review.*
+> *This decision does not establish that self-review is desirable or permanently acceptable. It establishes an **auditable interim convention** until process attribution and the stronger independence question are separately examined."*
+> — **PO/ARB, 2026-08-15**
+
+**Duty created (effective immediately).** When a process acts in a **Governance** capacity on evidence it produced in an **Engineering** capacity — including `verification→governance` and `architecture→governance` — **the Governance review artifact MUST disclose the overlap explicitly.** Non-disclosure is a governance defect.
+
+**Scope of the class, as established by the review:** *a process acting in a governance capacity on evidence it itself produced in an engineering capacity.* It is broader than `verification→governance` alone.
+
+**Known limitation, recorded rather than papered over:** this duty is **declaration-based and not machine-verifiable today**, because (a) Governance is **not a registered session** — its acts appear only as `recordedBy: governance`, so the record cannot attribute them to a process; and (b) `executionContext` does not currently distinguish processes (`C-3`). **The PO/ARB adopted it knowing this**, as an interim convention pending the follow-up work item.
+
+## A-4.4 · What A-4 does NOT change
+
+`R-34` · `A-1.4`/`D-5` and accepted principle 5 (terminal/process agnosticism) · `INV-ORCH-1` and its realization-vs-rule ruling · `R8` · `Inv C`/`R1` · `G-1`/`G-2`/`G-3` · the authority conjunction · `AST-015` · `AST-016` · the standing prohibition on wiring `AST-016` into `SESSION_START` while `V-3` is unresolved · `SESSION_START`, hooks, locks, leases, workflow semantics · Increment-2 (still NOT authorized).
+
+**No implementation is authorized by this amendment.**
+
+## A-4.5 · Registration notes (Governance)
+
+**The convention is a re-derivation of what `A-1.4` already established, arrived at independently from lived experience** — corroboration, not new architecture. Its one novel element, making the topology normative, is precisely the element the PO/ARB **rejected**, keeping the authority model topology-free.
+
+**First application of A-4.3, same day:** the Governance review that produced this ruling **disclosed** that the same process acted as Architecture and then as Governance on the same evidence (`e77fa724` §4). The duty was met before it was rule text.
+
+**Follow-up commissioned by DEC-2:** `KOS-GOV-ATTRIBUTION-001` — process attribution for Governance acts · whether a stronger Engineering→Governance independence invariant should be adopted · how such an invariant could be machine-verifiable rather than declaration-based.
