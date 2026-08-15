@@ -7,6 +7,7 @@
 **Amendment A-6 (PO/ARB ruling, 2026-08-15): OB-1 ESCALATION TRIGGER ADOPTED (T-3) — see A-6 at the end. Discharges A-5.1's precondition; A5 becomes operational policy. Adds a standing Governance duty to compile and present accumulated A5 disclosure evidence PROACTIVELY at the review point. Authorizes no implementation; no reopening of AST-015/AST-016. 🔴 OB-2 OPEN: no not-to-exceed date or evaluation-period endpoint is defined anywhere, so threshold arm (a) cannot yet arrive and the trigger currently operates as arm (b) alone — the standalone form the adopted analysis found insufficient. *(STATUS ANNOTATION 2026-08-15, per ES-004.3 — decision text unchanged: **OB-2 DISCHARGED by A-6.8**; endpoint set to **2026-08-30**; the T-3 guarantee now holds and the trigger is structurally complete.)***
 **📅 STANDING DATED OBLIGATION — `A5` evaluation period 2026-08-15 → 2026-08-30. At the EARLIER of 2026-08-30 or a qualifying harm/dispute event (A-6.3), Governance SHALL PROACTIVELY compile and present the accumulated A5 disclosure evidence to the PO/ARB (A-6.4). Governance does not decide the outcome.**
 **Amendment A-7 (PO/ARB ruling, 2026-08-15): `GOV-HUMAN-01` DECISION-READY COMMUNICATION — see A-7 at the end. Governance SHALL present decisions to PO/ARB in business/governance language FIRST and technical terminology SECOND; technical identifiers are traceability, never the primary explanation; eight questions must be answered at every decision request; fact → interpretation → recommendation → decision required must be distinguished. THE TEST: the human must be able to decide without understanding the implementation details. Binds at DECISION POINTS only — technical reports may remain technical. ⚠️ A-7.5 guard: the rule makes decision requests FULLER and must also make them FEWER — volume is not diligence. Process/documentation rule only; authorizes no implementation and changes no mechanism.**
+**Amendment A-8 (PO/ARB ruling, 2026-08-15): PARALLEL LANES AND MUTATION AUTHORITY — see A-8 at the end. *"Parallel work is allowed; parallel authority over the same change is not."* A lane may OBSERVE and REPORT another lane's area; it may NOT modify that lane's implementation, tests, tickets, architecture or records, nor open a second lane into it, without explicit commission. Binds every lane symmetrically. A-8.4 WITHDRAWS Governance's own "correct the ticket" recommendation on PBDIGIT-64 as a boundary crossing. ⚠️ A-8.5: the rule's precondition is unmet for Election — no Election work item exists in the governed record, so ownership is asserted in prose only and cannot be attributed. No implementation; no Election record touched.**
 **🔖 POINTER ONLY — NOT AN AMENDMENT, NOT POLICY.** A bounded **`ALT-2` provenance TRIAL** runs **2026-08-15 → 2026-08-30** under `KOS-ROLE-IDENTITY-001` (PO/ARB, 2026-08-15): governance/architecture artifacts may carry an **illustrative** responsibility/operator/approver block. **`ALT-2` is explicitly NOT adopted as policy**; the block is **evidence only — never proof of authority, correctness, independence or approval**; the format is **illustrative, not a standard**. Deliberately recorded **outside** the `A-*` amendment series so it does not acquire policy appearance. Protocol: `docs/publicdigit/reviews/2026-08-15-KOS-ROLE-IDENTITY-001-trial-commission.md`. **Expires at the 2026-08-30 review.**
 **Acceptance provisos:** placement accepted **provisionally pending the ADR:OQ-2 ruling** (G-5) · the **freeze-exception interpretation must be explicitly recorded as part of the implementation-authority decision** (G-6 — the reading itself is not yet stated and is NOT invented here). Acceptance record: ARB review document, §Acceptance. Amendments G-1–G-4 are applied inline below, each marked.
 *(Original status, superseded 2026-08-14: 🟡 PROPOSED — awaiting Human/ARB review.)*
@@ -628,3 +629,56 @@ The `P-6` evaluation is defined over **three** things: `A5` · strengthened `A-4
 ## A-7.6 · What A-7 does NOT do
 
 No implementation authorized · no `AST-015`/`AST-016`/`workflow-state.php`/`session-resolve.php` change · no hooks · no `SESSION_START` wiring · no mechanism · no new work item, grant, assignment or session. **It rewrites no past artifact** — prior decision requests stand as recorded; the duty applies from now onward. All prior amendments, `INV-ATTR-1`/`INV-ATTR-2`, `A-5.2`, `A-5.5`, `A-6` and the `ALT-2` trial are unchanged.
+
+---
+
+# Amendment A-8 — Parallel Lanes and Mutation Authority (PO/ARB ruling, 2026-08-15; registered by Governance)
+
+**Occasioned by a live near-miss:** Governance, reviewing `PBDIGIT-64`, recommended *"correct the ticket"* — an edit to an Election record owned by a **different, concurrently active lane**. **That recommendation is withdrawn (§A-8.4).** The rule below exists because the boundary was nearly crossed in good faith.
+
+## A-8.1 · The principle, registered verbatim
+
+> ### **Parallel work is allowed; parallel authority over the same change is not.**
+
+## A-8.2 · The standing instruction to Governance, registered verbatim
+
+> *"Do not take ownership of or modify the Election work.*
+> *Treat the active Election lane as an independent work stream.*
+> *Do not correct its implementation, tests, tickets, architecture, or records unless explicitly commissioned to do so.*
+> *If PBDIGIT-64 is relevant to that work, report the observation to PO/ARB and identify the existing Election owner/session. Do not start a second Election implementation or verification lane.*
+> *The purpose of the current Governance activity is coordination and protection against conflicting work, not taking over the Election work."*
+
+## A-8.3 · What this permits and forbids
+
+| | |
+|---|---|
+| ✅ **Permitted** | **Observing** another lane's area · **reporting** the observation to the PO/ARB · **naming** a risk · asking for coordination |
+| ❌ **Forbidden without explicit commission** | Modifying another lane's **implementation · tests · tickets · architecture · records** · opening a second implementation or verification lane into its area · "fixing" a ticket status · correcting what appears to be its mistake |
+
+**The required posture, stated for reuse:**
+
+> *"I have observed something in another lane's area that may matter to the PO/ARB. **That lane owns the work. I will not modify it.** I will report the observation and coordinate before any action."*
+
+**This binds every lane symmetrically** — it is not a rule about Election, and not a rule about Governance. **A lane's discovery of a problem in another lane's area confers no authority to act on it.**
+
+## A-8.4 · Withdrawal of a Governance recommendation
+
+**Governance's `PBDIGIT-64` review (`9b319c90`) recommended "Option A — correct the ticket now."** Under `A-8.3` that is **forbidden**: the ticket is an Election record owned by an active lane.
+
+> **Option A is WITHDRAWN by Governance.** The *observation* it rested on — that the ticket's status is two days stale — **stands and is reported**. What is withdrawn is the proposal that **Governance** act on it. **Correcting that ticket is the Election lane's to do, or the PO/ARB's to commission.**
+>
+> The review artifact is **not rewritten**; this withdrawal is recorded against it, per the append-only discipline.
+
+## A-8.5 · ⚠️ The rule has a precondition this estate does not yet meet
+
+**`A-8` requires knowing which lane owns a given area. For the Election track, the governed record cannot say.**
+
+Measured: **no Election work item exists in the workflow record** (7 records, all `KOS-*`); the Election lane runs **entirely outside `AST-015`**. Its ownership is asserted in `CONTEXT`/session logs, and **git shows one identity for every lane**.
+
+> **Consequence: Governance can identify the Election *work stream* — `PBDIGIT-68`, its commits, its "A-2 authorization gate" — but cannot identify an *owner* in any attributable way.** The instruction to *"identify the existing Election owner/session"* is therefore **only partially satisfiable today**, and that is a fact about the estate, not a refusal.
+>
+> **This is the attribution gap becoming operational.** It is no longer an abstract question about who performed an act — **a boundary rule now depends on an answer the record cannot give.** Recorded as evidence for the open findings; **no work is commissioned by this observation.**
+
+## A-8.6 · What A-8 does NOT do
+
+No implementation · no `AST-015`/`AST-016` change · no hooks · no `SESSION_START` wiring · no mechanism · **no Election work item created, and no Election record, ticket, test or artifact modified** · no second lane opened. It does not adjudicate anything the Election lane has done, and **implies no criticism of it** — the observation concerns a stale status line, not that lane's work.
