@@ -21,6 +21,16 @@
 
 # 1 · One decision is actually open
 
+> # 🟠 DECISION NEEDED FROM PO/ARB
+>
+> ### **Recommended: Option A — keep the observation registered, but commission nothing.**
+>
+> **Why:** it is a historical inconsistency with virtually no current operational impact. **Keeping it visible preserves useful evidence without spending engineering effort.**
+>
+> *The full explanation follows. You do not need to read it to act on the recommendation — but it is here if you want it.*
+
+*(Presentation convention adopted 2026-08-15 at the PO/ARB's suggestion: every decision request leads with **what is needed** and **the recommendation**, before the explanation. This is a presentation convention, **not** an addition to `GOV-HUMAN-01`/`A-7` — the rule text is unchanged.)*
+
 ## Should we keep or drop a small inconsistency we found in our own records?
 
 **1 · What is the situation?**
