@@ -7,7 +7,27 @@
 
 ---
 
-## 0 · Reconciliation — the two lists differ, and nothing may be dropped silently
+## 0a · ⚠️ CANONICAL SET FROZEN — `SCB-1` … `SCB-9` *(stable IDs; these never renumber)*
+
+**Three successive lists have now differed, and each renumbering lost a different item.** The latest confirmation **drops *extension*** — which is not the same act as *moving forward* *(extension changes the END while keeping the start; moving forward shifts both)* — **and it is the one boundary tied to `EM-OPEN-027`, the end-tolerance collision. Losing it would lose that link.** It also adds *elapsed*, **which is already authorized in principle.**
+
+> **Governance therefore freezes stable identifiers. `SCB-n` never renumbers; new boundaries append. Positional lists must not be used again.**
+
+| ID | Boundary | Status |
+|---|---|---|
+| **`SCB-1`** | How far may a window be moved **forward**? | OPEN |
+| **`SCB-2`** | May a window be **extended** *(end moved, start kept)*? | OPEN ⚠️ **dropped by the latest list; recovered** · decide with `EM-OPEN-027` |
+| **`SCB-3`** | May a window be **shortened**? | OPEN ⚠️ **absent from the original list; recovered** |
+| **`SCB-4`** | May a window be moved **backward**? | OPEN |
+| **`SCB-5`** | What happens to **dependent future phases**? | OPEN ⚠️ **circular — see §2** |
+| **`SCB-6`** | What happens to **already completed phases**? | OPEN |
+| **`SCB-7`** | What if **votes have already been cast**? | OPEN — **direction matters** |
+| **`SCB-8`** | What happens to **credentials/entitlements already issued**? | OPEN ⚠️ **absent from the latest list; recovered** · check external rules first |
+| **`SCB-9`** | Correcting an **elapsed** window | ✅ **AUTHORIZED IN PRINCIPLE** (`EM-GOV-004` says so expressly) — **only its governed CONDITIONS are open.** ⚠️ **Listing it as an undecided boundary would wrongly imply the power itself is in doubt.** |
+
+**Mapping:** commission-list *B-1→`SCB-1`, B-2→`SCB-9`, B-3→`SCB-3`, B-4→`SCB-4`, B-5→`SCB-5`, B-6→`SCB-6`, B-7→`SCB-7`, B-8→`SCB-8`* · earlier request *B-2→`SCB-2`*.
+
+## 0b · Reconciliation — the two lists differ, and nothing may be dropped silently
 
 | Boundary | In the commission's list | In the Manifesto's list |
 |---|---|---|
@@ -66,6 +86,10 @@
 ## 4 · One dependency on the unsigned act
 
 **The five confirmed-but-unadopted rules are relied on here only in `B-5`** *(via `EM-GOV-013`)*. **Every other boundary rests on adopted rules alone**, so this commission can proceed. **Conclusions touching `B-5` will be marked conditional on adoption until the act is signed.**
+
+## 4a · Evidence discipline registered for this commission (PO, 2026-08-15)
+
+**Resolve each boundary as an independent business question. Do not infer an answer from implementation behaviour or convenience.** Preserve: **the authority** *(already established, `EM-GOV-004`)* · **its permitted scope** *(this commission)* · **its technical representation** *(Architecture's, paused)*. **`SCB-5`: `EM-GOV-013` may NOT be used as evidence for its own missing clause; conclusions stay conditional until adopted.** **`SCB-8`: inspect the existing credential/entitlement governance BEFORE formulating the decision.** **`SCB-6`/`SCB-7`: distinguish historical facts already established from future changes to a schedule.** **`SCB-3`: treat shortening independently; do not assume symmetry with extension.** **`SCB-4`: do not derive prohibition from temporal awkwardness — present the business consequences and let Governance decide.** **Record each ruling with its provenance; identify unresolved questions rather than letting Architecture fill gaps.**
 
 ## 5 · Governance's position
 
