@@ -19,7 +19,9 @@
 >
 > **1 · `EM-GOV-012`** — *Progression is halted when a mandatory phase condition prevents legitimate completion. The protocol records the event, the reason and the affected phase. A halted progression does not by itself define the election-level outcome.*
 >
-> **2 · `EM-GOV-014`, Part 1 (Election domain)** — *A halted election requires a governed recovery process. The Election Chief is responsible for initiating it. The organisation may replace the Election Chief according to its governance rules; a replacement Chief inherits responsibility for the recovery decision but cannot bypass any Election Rule or reuse invalidated decisions. Replacing the Chief does not reset history — the protocol remains the source of truth.*
+> **2 · `EM-GOV-014`, Part 1 (Election domain)** — *A halted election requires a governed recovery process. The Election Chief is responsible for initiating it. No recovery action may bypass any Election Rule or reuse invalidated decisions.*
+>
+> *(**AMENDED 2026-08-15 as directed:** the sentence introducing organisational authority to replace the Election Chief is **struck**. Election recovery and Chief-appointment authority are separate subjects; combining them expanded scope for no benefit. **`EM-OPEN-049` therefore remains fully open and untouched.**)*
 >
 > **3 · `EM-GOV-014`, Part 2 (service policy — NOT an Election Rule)** — *The recovery period duration is a service-policy parameter owned by the service provider. The Election Rules do not define its numeric value. The applicable policy version and the deadline used are recorded for each halted election.*
 >
@@ -35,7 +37,9 @@
 * **`EM-OPEN-042`** *(which recovery actions are permitted)* — **not decided.** Item 2 says a governed recovery process is **required**; it does not say **which** processes qualify.
 * **`EM-OPEN-046`** *(is anyone obliged to act, or may an election stay halted indefinitely)* · **`EM-OPEN-048`(a)(b)** *(naming of the recovery period; the *cancelled* overload)* · **`EM-OPEN-049`** *(organisation authority to appoint/remove the Chief — item 2 asserts it; it is **new policy in a frozen area**)* · **`EM-OPEN-050`(a)** *(the context-map consequence — Architecture's, and Architecture is paused)* · **`EM-OPEN-045`** *(protocol event vocabulary)* — **all remain open.**
 
-⚠️ **Item 2 carries `EM-OPEN-049` inside it.** Adopting it establishes, for the first time in this record, that **the organisation may replace the Election Chief.** **That is new policy touching the frozen Full Membership area.** *(Its second half — a replacement cannot bypass a rule or reuse invalidated decisions — is already derived and adds nothing new.)* **If you would rather not settle that here, strike the middle sentence of item 2 and adopt the rest.**
+✅ **`EM-OPEN-049` was carried inside item 2 and has been struck out of it.** The act no longer establishes any organisational authority over the Election Chief.
+
+⚠️ **One thing worth knowing before signing: after the amendment, item 2 contains exactly ONE genuinely new element** — *a halted election requires a governed recovery process, and the Chief is responsible for initiating it.* **Its second sentence is already DERIVED** (`EM-GOV-008` + `EM-VOC-005`/`EM-VOT-005` make bypassing impossible today), and the struck *"replacing the Chief does not reset history"* **loses nothing, because `EM-GOV-005` already forbids resetting history for any reason.** **The act is smaller than it looks — which is the right outcome.**
 
 ## After the act
 
