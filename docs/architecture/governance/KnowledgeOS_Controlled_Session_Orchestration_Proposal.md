@@ -6,6 +6,7 @@
 **Amendment A-5 (PO/ARB ruling P-1–P-6, 2026-08-15): PROCESS ATTRIBUTION + STRENGTHENED DISCLOSURE — see A-5 at the end. Adopts INV-ATTR-1/INV-ATTR-2 as governing principles; A-5.2 SUPERSEDES A-4.3's prose duty with a required four-part disclosure (permission unchanged); machine verifiability is REPORTING-ONLY, never a gate; AST-015 is NOT reopened and DEP-1/D-2/D-6 stay a separately commissioned family. Authorizes no implementation. ⚠️ OB-1 OUTSTANDING: A5's escalation trigger is undefined, so A5 is NOT yet operational policy. *(STATUS ANNOTATION 2026-08-15, per ES-004.3 — decision text unchanged: **OB-1 DISCHARGED by A-6**; A5 is now operational policy.)***
 **Amendment A-6 (PO/ARB ruling, 2026-08-15): OB-1 ESCALATION TRIGGER ADOPTED (T-3) — see A-6 at the end. Discharges A-5.1's precondition; A5 becomes operational policy. Adds a standing Governance duty to compile and present accumulated A5 disclosure evidence PROACTIVELY at the review point. Authorizes no implementation; no reopening of AST-015/AST-016. 🔴 OB-2 OPEN: no not-to-exceed date or evaluation-period endpoint is defined anywhere, so threshold arm (a) cannot yet arrive and the trigger currently operates as arm (b) alone — the standalone form the adopted analysis found insufficient. *(STATUS ANNOTATION 2026-08-15, per ES-004.3 — decision text unchanged: **OB-2 DISCHARGED by A-6.8**; endpoint set to **2026-08-30**; the T-3 guarantee now holds and the trigger is structurally complete.)***
 **📅 STANDING DATED OBLIGATION — `A5` evaluation period 2026-08-15 → 2026-08-30. At the EARLIER of 2026-08-30 or a qualifying harm/dispute event (A-6.3), Governance SHALL PROACTIVELY compile and present the accumulated A5 disclosure evidence to the PO/ARB (A-6.4). Governance does not decide the outcome.**
+**Amendment A-7 (PO/ARB ruling, 2026-08-15): `GOV-HUMAN-01` DECISION-READY COMMUNICATION — see A-7 at the end. Governance SHALL present decisions to PO/ARB in business/governance language FIRST and technical terminology SECOND; technical identifiers are traceability, never the primary explanation; eight questions must be answered at every decision request; fact → interpretation → recommendation → decision required must be distinguished. THE TEST: the human must be able to decide without understanding the implementation details. Binds at DECISION POINTS only — technical reports may remain technical. ⚠️ A-7.5 guard: the rule makes decision requests FULLER and must also make them FEWER — volume is not diligence. Process/documentation rule only; authorizes no implementation and changes no mechanism.**
 **🔖 POINTER ONLY — NOT AN AMENDMENT, NOT POLICY.** A bounded **`ALT-2` provenance TRIAL** runs **2026-08-15 → 2026-08-30** under `KOS-ROLE-IDENTITY-001` (PO/ARB, 2026-08-15): governance/architecture artifacts may carry an **illustrative** responsibility/operator/approver block. **`ALT-2` is explicitly NOT adopted as policy**; the block is **evidence only — never proof of authority, correctness, independence or approval**; the format is **illustrative, not a standard**. Deliberately recorded **outside** the `A-*` amendment series so it does not acquire policy appearance. Protocol: `docs/publicdigit/reviews/2026-08-15-KOS-ROLE-IDENTITY-001-trial-commission.md`. **Expires at the 2026-08-30 review.**
 **Acceptance provisos:** placement accepted **provisionally pending the ADR:OQ-2 ruling** (G-5) · the **freeze-exception interpretation must be explicitly recorded as part of the implementation-authority decision** (G-6 — the reading itself is not yet stated and is NOT invented here). Acceptance record: ARB review document, §Acceptance. Amendments G-1–G-4 are applied inline below, each marked.
 *(Original status, superseded 2026-08-14: 🟡 PROPOSED — awaiting Human/ARB review.)*
@@ -558,3 +559,72 @@ The `P-6` evaluation is defined over **three** things: `A5` · strengthened `A-4
 > **Consequence, stated so it is not discovered at the review:** on the current record the 2026-08-30 review will carry evidence for **`A5` and `A-4.3` only**, and **`DEP-3` will be evidence-empty**. **If the PO/ARB wants `DEP-3` evidence at that review, `FU-1` must be commissioned with enough time to produce it.** **Governance has not commissioned it and does not do so here.**
 
 **Nothing else changes.** No implementation · no `AST-015`/`AST-016` reopening · no hook change · no `SESSION_START` wiring · no mechanism change. `A-6.3`, `A-6.4`, `A-6.6`, `A-6.7` and all prior amendments stand.
+
+---
+
+# Amendment A-7 — `GOV-HUMAN-01` Decision-Ready Communication (PO/ARB ruling, 2026-08-15; registered by Governance)
+
+**A standing duty on the Governance role.** Registered here because this document already carries Governance's other standing duties — `A-5.2` (disclosure) and `A-6.4` (proactive evidence compilation) — and `ES-005.4` requires extending the existing home rather than creating a second one. **Process and documentation rule only: no implementation, no `AST-015`/`AST-016` change, no mechanism.**
+
+## A-7.1 · The principle, registered verbatim
+
+> ### **`GOV-HUMAN-01` — Decision-Ready Communication**
+>
+> *Governance exists partly to translate technical and architectural evidence into decisions that the accountable human can understand and own.*
+>
+> *Therefore Governance **SHALL** present decisions to PO/ARB in business/governance language first and technical terminology second.*
+>
+> *Governance **SHALL** explain the organizational value, risk, consequence and alternatives of a decision.*
+>
+> *Technical identifiers **SHALL** remain available for traceability but **SHALL NOT** be used as the primary explanation.*
+>
+> *Where the decision is non-obvious, Governance **SHALL** offer a concrete example or analogy before requesting the decision.*
+>
+> *Governance **SHALL NOT** obscure uncertainty behind technical terminology.*
+>
+> *Governance **SHALL** clearly distinguish: **fact → interpretation → recommendation → decision required.***
+>
+> ### **The test: the human must be able to make the decision without understanding the implementation details.**
+
+## A-7.2 · The eight questions every decision request must answer
+
+1. **What is the situation?**
+2. **Why does it matter to the organization?**
+3. **What business value, risk, or governance capability is affected?**
+4. **What decision is required from PO/ARB?**
+5. **What are the realistic options?**
+6. **What does Governance recommend, and why?**
+7. **What happens if we do nothing?**
+8. **What would change operationally if we choose an option?**
+
+**Technical identifiers appear afterwards, as traceability:** `Technical reference: …`
+
+## A-7.3 · The three layers, in order
+
+```
+1 · HUMAN / BUSINESS    "Should someone who reviews a decision be able to take
+                         part in the work without becoming responsible for changing it?"
+2 · GOVERNANCE MEANING  separation of responsibility and review independence
+3 · TECHNICAL REFERENCE D-6 — read-only participation
+```
+
+> **Business → Governance → Technical.** **Never Technical → Technical → Technical → *"please decide."***
+
+## A-7.4 · Where the duty binds — and where it does not
+
+| | |
+|---|---|
+| **BINDING** | **Any point at which Governance says, in effect, *"PO/ARB, here is the decision you need to make."*** Decision requests · qualification requests · options presented for a ruling · the 2026-08-30 review presentation |
+| **NOT binding** | Technical reports may remain technical: architecture proposals, verification reports, evidence records, the runtime record, commit messages, session logs. **The transformation is required at the decision point, not throughout the corpus** |
+
+## A-7.5 · ⚠️ Guard — this rule is NOT a licence to produce more governance
+
+**A predictable failure mode, recorded at adoption:** a rule requiring fuller explanation can produce **more prose and more decision requests**, which is the opposite of its purpose.
+
+> **The rule makes each decision request FULLER. It must also make them FEWER.** If a matter does not genuinely require the accountable human's judgment, **the correct action is not to write eight well-structured points about it — it is not to raise it.** A registered finding is not a decision request (`Open Findings Register`, §opening rule).
+>
+> **Volume is not diligence.** `GOV-HUMAN-01` is satisfied by a short, clear, decision-ready request — never by a long one.
+
+## A-7.6 · What A-7 does NOT do
+
+No implementation authorized · no `AST-015`/`AST-016`/`workflow-state.php`/`session-resolve.php` change · no hooks · no `SESSION_START` wiring · no mechanism · no new work item, grant, assignment or session. **It rewrites no past artifact** — prior decision requests stand as recorded; the duty applies from now onward. All prior amendments, `INV-ATTR-1`/`INV-ATTR-2`, `A-5.2`, `A-5.5`, `A-6` and the `ALT-2` trial are unchanged.
