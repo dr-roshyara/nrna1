@@ -104,6 +104,27 @@ Recorded as evidence in `KOS-ACTIVATION-REPORTING-001`. **Classification, scope 
 
 ---
 
+## 8 · START registered — `S4-architecture-topology` is ACTIVE (added 2026-08-15)
+
+**PO/ARB act, registered verbatim:** *"START act for S4-architecture-topology"*, confirmed after reconciliation as *"Register the human START act for S4-architecture-topology exactly as already authorized."*
+
+**Registered as seq 3**, `recordedBy: human`. **G-3 complete**: the recorded seq-2 handoff **∧** the recorded human START — the conjunction, both directions, exactly as the mechanism requires. **No repair preceded it; none was needed.**
+
+```
+AST-015 identity   role architecture · state ACTIVE · linkage G-KOS-TOPO-ARCH
+AST-015 authorized {"authorized": true}   (against the granted scope, verbatim)
+AST-016 resolver   RESOLVED · operable: true · ACTIVE (mutation owner)
+                   state is ACTIVE: yes · holds mutation ownership: yes
+```
+
+> **The startup check passes on both surfaces.** Session 4 may now begin — **within `G-KOS-TOPO-ARCH` only**.
+
+**Note for `KOS-ACTIVATION-REPORTING-001`:** the V-3 false line **disappeared** at this transition, because `missingForActivation` is emitted only for `CREATED`. **V-3 is invisible precisely when a lane is running and visible precisely when someone is deciding whether to start one** — that is, it misinforms exactly at the decision point and stays silent afterwards. Recorded as evidence; **no remedy chosen.**
+
+**Standing reminders carried into the lane:** `operable ≠ authorized` — the resolver reports facts and never grants authority · mechanism change is a **recorded dependency requiring separate authorization**, never designed here · `AST-015`/`AST-016`, `KOS-SESSION-DISCOVERY-001` and `KOS-ACTIVATION-REPORTING-001` remain untouched · Sessions 1 and 3 remain stopped · **Session 4 does not self-certify.**
+
+---
+
 ## Traceability
 
 Record `KOS-EXEC-TOPOLOGY-001` seq 1–2 + `G-KOS-TOPO-ARCH` · startability proof on a scratchpad copy (START exit 0; real record verified unchanged at 2 transitions) · `identity` output (`predecessor: null`, `authorizationLinkage: G-KOS-TOPO-ARCH`) · `AST-016` report (V-3 false line) · precedent `KOS-SESSION-DISCOVERY-001` seq 1–3 · prior identical incident `32596519` · commission `0f203192` · `KOS-ACTIVATION-REPORTING-001` (OPEN, 0/0)
