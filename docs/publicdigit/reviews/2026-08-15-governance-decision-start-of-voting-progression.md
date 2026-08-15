@@ -164,3 +164,50 @@ Session 4's semantic reconciliation — *the commissioning hypothesis corrected*
 **Binding on that work:** **Architecture must not invent business rules** — where a business decision is needed that this authorization does not cover, **Session 4 stops at that boundary and returns the question to Governance.** **No production code.** Approved design → Session 3 → Session 1.
 
 **Unchanged and still open:** `EM-OPEN-021` · the six schedule-correction boundaries · every other phase boundary's semantics · `PBDIGIT-59` and `PBDIGIT-67` (prerequisite: *"the scheduled time has been reached"* is not assessable until both are answered) · A-2 (independent; grant still outstanding).
+
+---
+
+# REFINEMENT OF FINDING G-1 — the voting opportunity (PO clarification, 2026-08-15)
+
+> **Registered verbatim in substance:** *"A published voting schedule defines a specific voting opportunity. The opportunity is not reusable after it has been terminated or expired. A voting opportunity may result in voting starting, remaining temporarily blocked while it is still valid, expiring unused, being explicitly cancelled, or being superseded by a later governed schedule. These outcomes must remain distinguishable because they have different business meanings. If a later voting opportunity is created, it is a new opportunity and requires a new Chief Election Officer authorization. Authorization for a previous opportunity must never authorize a later opportunity. Every material event, progression attempt, failure, termination, cancellation, expiry, or supersession must be recorded in the election protocol, while preserving the original history."*
+
+## What this changes about G-1
+
+**Finding G-1 was:** *the Constitution defines the commands, the Manifesto defines the preconditions, and neither has ever decided whether progression is commanded or derived — the system's most consequential lifecycle semantic was only ever implemented, three different ways.*
+
+`EM-VOT-004` settled **who progresses** at the start-of-voting boundary. This clarification settles **what is being progressed** — and that turns out to be the piece G-1 was missing. Progression was previously discussed as though an election simply moved from one phase to the next. It does not: **it takes up, or fails to take up, a specific opportunity that a published schedule created.** That reframing gives the boundary something it never had — **an identity for the thing being decided about**, and therefore a way to say what happened when nothing happened.
+
+**Now governed at the start-of-voting boundary:**
+
+| | Established by |
+|---|---|
+| A published schedule creates a **voting opportunity**, which is **not reusable** once terminated or expired | `EM-VOC-004` |
+| Its outcomes are **five distinguishable business results**, not one undifferentiated "did not vote" | `EM-VOC-004` |
+| **Authorization belongs to one opportunity and never carries to another** — a later opportunity needs a new decision | `EM-VOT-005` |
+| **Every material event is recorded, and history is never rewritten** | `EM-GOV-005` |
+| Time confers eligibility; the Chief decides; the conditions permit or refuse | `EM-VOT-004` |
+
+**`EM-VOT-005` closes a loophole that `EM-VOT-004` alone left open:** an officer refused on one opportunity could otherwise obtain a later one and lean on the earlier decision — reaching in two steps what neither step permits. **Authorization is spent on the opportunity it was given for.**
+
+## What G-1 now reduces to — still ungoverned
+
+**One boundary is decided; the finding survives everywhere else.** Whether progression is commanded or derived remains undecided for **entering nomination, closing voting early, moving to counting, and publishing results.** Nothing here decides them, and none should be inferred from the start-of-voting rule.
+
+## ⚠️ One question this clarification creates — surfaced, not decided
+
+**Is a corrected schedule the same opportunity, or a new one?**
+
+`EM-GOV-004` permits the Chief to correct a schedule. `EM-VOT-005` says a **new** opportunity requires a **new** authorization. **The two rules meet at a point neither answers:**
+
+- If correcting a schedule **creates a new opportunity**, then correction always **re-arms the decision** — the officer must decide again, and a prior refusal cannot be walked around. **This reading is consistent with the anti-circumvention clause.**
+- If correction **adjusts the existing opportunity**, an authorization given before the correction might still stand — and an officer could, in principle, correct their way past a refusal. **That is precisely what the adopted rules forbid in intent**, so the reading would need an explicit safeguard.
+
+**OPEN — REQUIRES PO/GOVERNANCE DECISION.** Governance does not choose between them, but records that the anti-circumvention intent already adopted **points strongly toward the first reading**, and that leaving it unstated is what would allow the second to arrive by accident.
+
+## Not decided in this commission *(the PO's own exclusions, recorded)*
+
+The exact **expiry boundary** · **cancellation authority** · **detailed rescheduling powers** · **credential consequences** · **technical representation**. All remain separate Governance questions. **No technical lifecycle state or implementation mechanism was introduced here.**
+
+## Effect on `EM-OPEN-021` — a vocabulary now exists, and that is all
+
+The five outcomes give business language that the zero-candidate question previously lacked: *"temporarily unable to proceed while the opportunity is still valid"* and *"expired unused"* are now **adopted business concepts** rather than abstractions. **`EM-OPEN-021` remains OPEN and is not resolved here** — but when it is ruled, it can now be answered in the election's own vocabulary instead of inventing one.

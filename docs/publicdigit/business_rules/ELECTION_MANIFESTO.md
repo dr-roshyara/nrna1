@@ -113,6 +113,10 @@ TEST                          zero approved candidates → open_voting rejected 
 | **EM-GOV-003** | **Election Chief suspension and organisation-driven suspension are distinct governance acts and must not be treated as one rule.** | ADOPTED |
 | **EM-GOV-004** | **The Chief Election Officer may correct an election's schedule under governed conditions, including a window whose time has already elapsed, where necessary for the election to continue legitimately.** A schedule correction **never by itself advances the election · never bypasses a mandatory condition for progression · is attributable to the officer who made it · carries a stated reason · is auditable.** | ADOPTED *(principle only — PO/ARB authorization, **2026-08-15**)* |
 
+| **EM-GOV-005** | **Every material event in an election's progression is recorded in the election protocol** — including each attempt to proceed, each refusal and its reason, and each termination, cancellation, expiry or supersession of a voting opportunity — **and the original history is preserved.** A later event never rewrites or erases an earlier one. | ADOPTED *(PO clarification, **2026-08-15**)* |
+
+**`EM-GOV-005`** is what makes the distinctions of `EM-VOC-004` durable: outcomes that are distinguishable in the moment but not recorded become indistinguishable afterwards. **What must be recorded is adopted; the form of the record is not decided here.**
+
 **`EM-GOV-004` boundaries are deliberately NOT adopted and require separate business decisions:** moving a window forward · extending a window · correcting a window already elapsed · moving a window backward · the effect on voting credentials already issued · permissibility once votes have been cast. **An implementation that assumed any of these would be inventing policy.**
 
 ## 4 · Adopted vocabulary
@@ -122,6 +126,9 @@ TEST                          zero approved candidates → open_voting rejected 
 | **EM-VOC-001** | **"Organisation Membership" means the `Member` aggregate** — the organisation-side membership concept that carries membership identity, type, fees and term. | ADOPTED |
 | **EM-VOC-002** | **A technical organisation association or role assignment is not Organisation Membership**, whatever its name or role value. | ADOPTED |
 | **EM-VOC-003** | **`ElectionMember` and `Organisation Member` are different concepts. `ElectionMembership` does not imply Organisation Membership.** | ADOPTED |
+| **EM-VOC-004** | **A published voting schedule defines a specific *voting opportunity*.** A voting opportunity is **not reusable** once it has been terminated or has expired. A voting opportunity may end in one of several ways, and **these outcomes must remain distinguishable because they carry different business meanings**: **voting started** · **temporarily unable to proceed while the opportunity is still valid** · **expired unused** · **explicitly cancelled** · **superseded by a later governed schedule**. | ADOPTED *(PO clarification, **2026-08-15**)* |
+
+**Why the outcomes must stay distinguishable:** an election that never voted because nobody was ready is not the same as one that was cancelled, nor one whose schedule was replaced, nor one that was merely waiting and still could have proceeded. **Collapsing them into a single "did not vote" would destroy information the election's own record must carry.** *(How they are represented is not decided here.)*
 
 ## 4a · Adopted rules — voting phase
 
@@ -153,6 +160,10 @@ The Chief **must not be able to bypass, suppress, or override a refusal through 
 4. **The historical technical name `voting_blocked` is NOT adopted as business vocabulary.** Three business situations must be distinguishable — *not yet eligible* · *eligible, awaiting the officer's decision* · *cannot proceed, with the unmet condition named*. **Their representation is Architecture's to determine.**
 5. **`ElectionConstitution` is the identified expression home; implementation is NOT authorized by this adoption.** Conditions are evaluated **at the moment the Chief requests progression**, on **every** path into voting (the `EM-VOT-002` both-paths lesson applies).
 6. **This rule does NOT resolve `EM-OPEN-021`** — the zero-candidate configuration is also reachable without the clock (`forceCloseNomination()`), so that question survives and remains open.
+
+| **EM-VOT-005** | **Authorization to proceed belongs to one voting opportunity and never to another.** If a later voting opportunity comes into being, it is a **new opportunity** and requires a **new Chief Election Officer authorization**. **An authorization given for a previous opportunity must never authorize a later one.** | ADOPTED *(PO clarification, **2026-08-15**)* |
+
+**`EM-VOT-005` completes the anti-circumvention intent of `EM-VOT-004`.** Without it, an officer refused on one opportunity could obtain a later one and rely on the earlier decision — reaching by two steps what neither step permits. **Authorization is spent on the opportunity it was given for.**
 
 **Note on canonical overlap:** the Constitution **partially** expresses `EM-VOT-001`, as the `has_approved_candidates` precondition on the nomination transition; the precondition itself remains canonical in the Constitution and is not restated. **`SD-14` = YES (ARB/PO, 2026-08-13) resolved the boundary question:** *"the next phase"* **includes the voting phase**, so the requirement binds at `open_voting` as well — adopted as **`EM-VOT-002`**, deliberately phrased with the Constitution's own precise vocabulary (*"at least one **approved** candidate"*) so business rule and implementation vocabulary stay aligned. **`ElectionConstitution` is the authoritative implementation home for this precondition. Implementation is NOT yet authorised** — the ruling closes the business question only; implementation authorization is a separate act.
 
@@ -220,6 +231,9 @@ The Chief **must not be able to bypass, suppress, or override a refusal through 
 | EM-VOC-003 | admission-gate adopted rules 1, 2, 5 | 2026-08-12 | global | ADOPTED |
 | EM-VOT-001 | `PBDIGIT-64` — *"Without a candidate an election must not go into the next phase"*, stated by the Product Owner | **2026-08-08** | election lifecycle | ADOPTED |
 | EM-VOT-002 | **`SD-14` = YES** ruling — *"next phase"* includes voting; vocabulary aligned to the Constitution's `has_approved_candidates` | **2026-08-13** | `open_voting` boundary | ADOPTED |
+| EM-VOC-004 | PO clarification: a published schedule defines a voting opportunity; not reusable; five outcomes must stay distinguishable | **2026-08-15** | voting schedule | ADOPTED |
+| EM-VOT-005 | same clarification: authorization is opportunity-bound and never carries forward | **2026-08-15** | start-of-voting authority | ADOPTED |
+| EM-GOV-005 | same clarification: material events recorded in the election protocol, original history preserved | **2026-08-15** | election protocol | ADOPTED |
 | EM-VOT-004 | PO/ARB authorization adopting the Governance Decision Report — Start of Voting: Progression Authority (2026-08-15); new rule, not a restoration | **2026-08-15** | start-of-voting boundary, all paths | ADOPTED |
 | EM-GOV-004 | same authorization — schedule-correction principle; boundaries left open | **2026-08-15** | election schedule | ADOPTED *(principle)* |
 | EM-VOT-003 | PO ruling, verbatim: *"Adopted: an election may enter Voting Active only when it has at least one approved candidate and at least one admitted voter"* — recorded per the decision package §5b/§5c determination (voter half new; expression home identified; implementation not authorised) | **2026-08-13** | `voting_active` boundary, both paths | ADOPTED |
