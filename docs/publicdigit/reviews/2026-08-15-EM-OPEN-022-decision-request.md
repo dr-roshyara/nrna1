@@ -1,6 +1,8 @@
 # Decision Request — Does correcting a schedule create a new voting opportunity, or change the existing one?
 
 **Prepared by Governance (Session 2) · 2026-08-15 · Business-language format · One decision · `EM-OPEN-022`**
+**✅ DECIDED 2026-08-15 — the PO/ARB accepted READING A.** Ruling registered in `2026-08-15-EM-OPEN-022-ruling-registration.md`; adopted as **`EM-VOC-005`**. The differentiated rule offered in "A third possibility" below was **considered and not adopted**; the interim safeguard is **superseded by the ruling**. *This request is left standing as the record of what was asked.*
+
 **⛔ Decision request only. No implementation. No architecture. The interim safeguard below is already in force.**
 
 ---
