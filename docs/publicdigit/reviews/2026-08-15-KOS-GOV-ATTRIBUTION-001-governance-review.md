@@ -114,6 +114,52 @@ Every load-bearing factual claim was re-derived independently — at source (F-1
 
 ---
 
+## 8 · Addendum — three questions the first pass did not answer directly
+
+*Added on a second Governance pass against a sharper question list. §§0–7 stand unchanged; nothing below overturns them. **Still nothing decided.***
+
+### 8.1 · Is `A5` genuinely preferable to `A2`/`A3`/`A4`? — **`A5` is not an answer to `Q-1`; it is a decision to defer answering, and its trigger is undefined**
+
+**The comparison collapses once `A5` is unpacked.** `A5` = *`A3` now → `A2` if evidence demands → `A4` for high-assurance acts*. Its **only immediate component is `A3`** — and the ADP itself concedes (§3.1) that **`A3` alone cannot answer `Q-1`, because Governance performs no `REGISTER`.**
+
+> **Therefore, on today's evidence: choosing `A5` leaves governance acts exactly as unattributed as they are now.** That is a legitimate choice — it matches *"governance precedes automation"* and avoids reopening a qualified mechanism on speculation — **but it must be chosen knowingly, as deferral, not mistaken for a solution.**
+
+**`A5` vs `A3`-only is close to a non-choice** (`A5` merely pre-registers future options, which costs nothing). **The real decision at `P-1` is `A5`/defer versus `A2`/act-now**, and it turns on a question the evidence can inform but not settle: *is unattributed governance acceptable in the meantime?* Relevant measured fact: the `A-4.3` disclosure duty is **already load-bearing, with three registered instances in one day** — the frequency is not hypothetical.
+
+**🔴 Evidence gap — newly identified, and material to `P-1`.** `A5`'s escalation trigger is *"if and when evidence shows the convention insufficient."* **No criterion is defined**: no threshold, no owner, no review point. **As written, `A5` can never demonstrably fail**, because nothing states what failure looks like.
+> **Governance recommends no option, but does recommend that if `P-1` selects `A5`, the PO/ARB require a defined trigger** — an occurrence count, a review date, or a named condition. Otherwise `A5` is indistinguishable from `A3`-only with optimistic wording. *(This is a defect in the recommendation's form, not in its direction.)*
+
+### 8.2 · Would machine-verifiable process distinction establish independence? — **No. Only distinctness — and Governance treats this as the more important finding of the two**
+
+**Endorsed, and strengthened.** Even with perfect attribution, a check could establish only that **two different processes acted**. It could not establish independent *judgment*: the lanes share the same model, the same human director, the same worktree and the same repository. **Two processes of one model, given the same evidence, are not two independent judgments — they are one judgment computed twice.**
+
+> **Governance adds a precedent that gives this weight rather than leaving it as a caution.** This is **the same category of error as `V-3`**: an instrument asserting something the underlying record does not support, and being believed because it looks authoritative. `V-3` cost three false-defect episodes in a single day — twice inducing a competent session to request repairs to a sound record.
+>
+> **A green independence check would be `V-3` with a larger blast radius**: `V-3` misinforms about a handoff; a false independence certificate misinforms about the integrity of the review process itself. **The reporting-only constraint in `P-5` is therefore not conservatism — it is the directly transferable lesson from this programme's own most expensive finding.**
+
+### 8.3 · Which recommendations require reopening qualified `AST-015`/`AST-016`? — consolidated
+
+**Governance's explicit dependency map, by decision outcome.** *(Recorded; nothing authorized. `AST-015` is operationally qualified and `KOS-AI-ORCH-001` reserves mechanism evolution to separate authorization.)*
+
+| Decision outcome | Requires reopening `AST-015`? | Requires `AST-016` change? | Other |
+|---|---|---|---|
+| **`P-1` = A5** (as recommended) | ❌ **No — today.** Only if the (undefined) trigger fires → then `DEP-1` | ❌ No | convention only |
+| **`P-1` = A2 now** | ✅ **YES — `DEP-1`** (`actor` field, additive) | ⚠️ later, to surface it (`DEP-5`) | must carry a contract test proving **no gate reads `actor`** (`INV-ATTR-1`) |
+| **`P-1` = A4 now** | ❌ No | ❌ No | **operating setup only** (git identities/keys) |
+| **`P-1` = A3 only** | ❌ No | ❌ No | convention only; **does not answer `Q-1`** |
+| **`P-1` = A1** | ✅ Yes, large | — | **rejected** on ownership grounds (`C-2`) |
+| **`P-2` = STRENGTHEN / REMAIN** | ❌ **No** | ❌ No | **rule text + artifact convention only** |
+| **`P-2` = RESTRICT / REPLACE** | ❌ Not directly | ❌ No | **but unenforceable until `P-1` yields attribution** — the rule would be declaration-based |
+| **`P-3` = adopt `INV-ATTR-1`/`INV-ATTR-2`** | ❌ **No** | ❌ No | rule text; Governance advises the `A-1`…`A-4` amendment route (**ES-005.4**), not a new document |
+| **`P-4` = authorize `DEP-3`** | ❌ **No** | ❌ No | **operating setup only** — and see `C-4`: legibility, not attestation |
+| **`P-5` = reporting-only instrument** | ❌ No | ✅ **Yes — `DEP-5`** if ever built | |
+| **`P-5` = gate** | ❌ No | ✅ Yes | ⚠️ **also engages hooks / `SESSION_START`, which are separately prohibited** and would need their own authorization |
+| **`P-6` = sequence `DEP-1` / `D-2` / `D-6`** | ✅ **All three touch `AST-015`** | — | **one family** — *who acted* · *whose authority* · *in what mode*; batching may beat three reopenings |
+
+> **The load-bearing consequence for the PO/ARB:** **every option available *today* without reopening a qualified mechanism is convention-level** — `A3`/`A5`-now, `STRENGTHEN`, `INV-ATTR-1`/`INV-ATTR-2`, `DEP-3`. **Everything that would make attribution real requires reopening `AST-015`.** That is the actual shape of the decision, and it is not softened by the recommendation.
+
+---
+
 ## Traceability
 
 ADP `988c3593` · `S4-architecture-attribution` seq 1–4 (REGISTER · HANDOFF · human START · **COMPLETE by governance, seq 4**) · `G-KOS-ATTR-ARCH` · source verification `workflow-state.php:126,179,199,245,261,372` · executed `recordedBy` probe (scratchpad `--dir`; estate untouched) · git identity + signature census (60 commits, 1 identity, 0 signed) · `executionContext` census (6 records, 5 carrying, 2 values) · `A-4.3`/`C-3` (`KnowledgeOS_Controlled_Session_Orchestration_Proposal.md`) · `A-1.4`/`D-5` · `R-34` · `INV-DISC-2` · accepted principle 5 · `G-1`/`G-2` · `D-2` · `D-6` · prior `A-4.3` instances `e77fa724` §4 and `c9915445`
