@@ -117,6 +117,28 @@ TEST                          zero approved candidates → open_voting rejected 
 
 **`EM-GOV-005`** is what makes the distinctions of `EM-VOC-004` durable: outcomes that are distinguishable in the moment but not recorded become indistinguishable afterwards. **What must be recorded is adopted; the form of the record is not decided here.**
 
+### `F-PROTO-1` — the refusal-recording gap *(registered 2026-08-15)*
+
+**Provenance, stated exactly: an ARCHITECTURE OBSERVATION endorsed by the PO. It has NOT been independently verified by Governance, and Governance did not inspect the code.** Independent verification is Session 1's act, if and when commissioned.
+
+> **Observed:** a guard rejects a progression request → an exception or metric results → **no durable protocol event is written.** **A capped/rotating history is likewise insufficient**, because it cannot preserve the complete sequence indefinitely.
+>
+> **PO assessment, registered:** *"That fails the adopted recording rule."* `EM-GOV-005` requires far more than successful state transitions — **requests, evaluations, refusals AND their reasons, supersession, expiry, cancellation and starts** must all be reconstructable.
+
+⛔ **Required properties of the protocol record — binding on Architecture (PO, 2026-08-15). The storage mechanism is NOT prescribed; these properties are.**
+
+| # | Property |
+|---|---|
+| 1 | **durable** |
+| 2 | **append-only in meaning** |
+| 3 | **complete** for the required material events |
+| 4 | **opportunity-bound** |
+| 5 | **resistant to silent truncation** |
+| 6 | **able to record a refusal before, or independently of, any state-transition success** |
+| 7 | **able to distinguish lifecycle events from progression-decision events** (`P-2H`) |
+
+**Corroborating external reference, NOT authority:** public election-audit guidance treats the audit trail as the record needed to reconstruct procedures followed and verify actions taken. *(Cited by the PO; our rules stand on `EM-GOV-005`, not on external guidance.)*
+
 **`EM-GOV-004` boundaries are deliberately NOT adopted and require separate business decisions:** moving a window forward · extending a window · correcting a window already elapsed · moving a window backward · the effect on voting credentials already issued · permissibility once votes have been cast. **An implementation that assumed any of these would be inventing policy.** **Unchanged by the `EM-OPEN-022` ruling (2026-08-15):** that ruling settled **the identity of the opportunity after a correction**, not **the extent of the correction authority**. **Every boundary in this list remains open.**
 
 ## 4 · Adopted vocabulary
@@ -148,11 +170,39 @@ TEST                          zero approved candidates → open_voting rejected 
 
 **DERIVED CLARIFICATIONS (Governance, 2026-08-15 — consequences of adopted rules; NO new policy, and they pre-empt no open decision):**
 
-* **D-1 · A change to a schedule that is not yet published is NOT a correction within the meaning of `EM-VOC-005`** — it creates no voting opportunity and produces no supersession. The rule attaches, by its own adopted words, to a *published* schedule; everything strictly before that moment is outside its reach, **whatever the PO decides "published" means** (`EM-OPEN-023`). *Ordinary setup editing is preparation, not correction.*
+* **D-1 · A schedule edit made before the business moment defined as publication does not create a correction under `EM-VOC-005`, and therefore does not create supersession under that rule.** *(Wording refined at PO direction, 2026-08-15 — the earlier phrasing risked implying that pre-publication activity can never be **recorded**; it cannot. **Whether preparation activity is a material event for the protocol remains open** — `EM-OPEN-023`(d) / N-5 — and `EM-GOV-005` is not narrowed by this clause.)* The rule attaches, by its own adopted words, to a *published* schedule; everything strictly before that moment is outside its reach, **whatever the PO decides "published" means** (`EM-OPEN-023`). *Ordinary setup editing is preparation, not correction.*
 * **D-2 · The authoritative time for progression is the published schedule of the voting opportunity under consideration** — its published start and published end. **The time voting actually started or ended is a separate business fact**, and **an actual event must never overwrite a published schedule.** A **superseded opportunity keeps its own published schedule permanently** — never re-pointed, never deleted. After a correction, the authoritative schedule is the **new** opportunity's. *(Derived from `EM-GOV-005` · `EM-VOC-004` · `EM-VOC-005` · `EM-VOT-005`.)* ⛔ **No database field, column or attribute is named — representation is Architecture's, constrained by this clause.**
 * **D-3 · The officer's device or location timezone is NOT a business rule for election schedules** and must not be used, inferred or defaulted to. **`EM-OPEN-018`'s device-timezone steer is display-scoped and unauthorized** — it confers nothing on schedule meaning. *(The governing timezone itself is undecided: `EM-OPEN-024`.)*
 
 **What this ruling does NOT decide** *(unchanged, still open)*: **the limits of the Chief's schedule-correction authority itself** — the ruling states only that it *"may be exercised only within the limits separately established by Governance"*, and the `EM-GOV-004` boundary list below stands open in full · when an opportunity expires · who may cancel one · correction while an opportunity is active · correction after votes are cast · credential consequences · technical representation.
+
+## 4b · CORE PRINCIPLE `P-2H` — Opportunity lifecycle ≠ progression-decision history
+
+> **A voting opportunity's lifecycle and its progression-decision history are two separate records. They must never be merged.**
+
+**Status, stated exactly:** `P-2H` is **a NAME given to an already-adopted reading** — the confirmed reading of `EM-VOC-004` together with `EM-GOV-005` — **elevated to a core principle at PO direction (2026-08-15). It is not a new rule and adds no policy.**
+
+```text
+Voting Opportunity O1
+├── Request #1 → REFUSED — no approved candidate
+├── Request #2 → REFUSED — nomination incomplete
+├── Request #3 → PERMITTED
+└── Outcome: STARTED
+```
+
+**The refusals do not destroy the opportunity, and they do not disappear because a later request succeeded.** And across a correction:
+
+```text
+O1 ├── Request #1 → REFUSED
+   ├── Request #2 → REFUSED
+   └── SUPERSEDED
+          ↓
+O2 └── Request #1 → must be evaluated ANEW      (EM-VOT-005: nothing carries over)
+```
+
+> **The Chief has the authority to REQUEST progression. The Chief does not have the authority to make progression VALID.** The Election Rules remain sovereign over whether a request is permitted.
+
+⛔ **Binding on Architecture and Implementation:** lifecycle events and progression-decision events must remain **distinguishable**; a refusal must never be represented as a termination; a successful request must never erase or supersede the refusals that preceded it.
 
 ## 4a · Adopted rules — voting phase
 
