@@ -57,7 +57,9 @@
 | **3** | Which **person** approved or verified it? | **approver identity** |
 | **4** | Is there **genuine independent judgement**? | **not establishable by identity at all** |
 
-> **Governance observation, recorded for the investigation's benefit:** the prior ADP separated **provenance** from **authority** — a two-way split. **This commission adds a third axis the earlier analysis never separated: *person*-level identity, and within it the distinction between the operator and the approver.** Those are different people at different moments with different accountability, and today the record distinguishes **none** of the four. **The investigation should treat the four as genuinely independent questions, not as one question with four labels.**
+> **Governance observation, recorded for the investigation's benefit:** the prior ADP separated **provenance** from **authority** — a two-way split. **This commission adds a third axis the earlier analysis never separated: *person*-level identity, and within it the distinction between the operator and the approver.** Those are different people at different moments with different accountability, and today the record distinguishes **none** of the four.
+
+> **⚖️ The line to hold — corrected per the PO/ARB refinement of 2026-08-15 (§8.1).** The four are **four distinct QUESTIONS**, and the commission requires them to be **distinguished**. But **how many INSTRUMENTS answer them is NOT prejudged** — one combined mechanism, several separate ones, or none may prove best. *(Governance's earlier phrasing here — "treat the four as genuinely independent questions, not as one question with four labels" — leaned toward separate instruments and is **withdrawn as a steer**; the distinction it drew between the four questions stands, the implied answer does not.)*
 
 **🔒 BINDING.** **Different identities MUST NOT be treated as proof of independence, authority, correctness or approval.** Already binding via `INV-ATTR-2` (self-declared is never attested), `A-5.5` (reporting-only, never a gate) and `A-4` `C-1` (identity never authorises) — **the commission restates it rather than creating it.**
 
@@ -102,6 +104,44 @@ The commission did **not** use the word "START". It said:
 **Carried into the lane:** `operable ≠ authorized` · mechanism change is a **recorded dependency**, never designed · the deliverable is a **recommendation for human decision** · **no self-certification** · **Architecture does not complete its own assignment** (`G-1`) · **`A-5.2`'s four-part disclosure duty applies** to any Governance review of the resulting report.
 
 **Untouched:** `V-3` · `D-2` · `D-6` · `E-1` · `O-CLOSURE-VOCAB` · the bootstrap gap · Election work. `KOS-SESSION-DISCOVERY-001` and `KOS-EXEC-TOPOLOGY-001` remain closed.
+
+---
+
+## 8 · PO/ARB refinements to the commission (2026-08-15) — registered and binding
+
+The PO/ARB confirmed the commission and added **two refinements**. The machine grant text is **append-only and therefore unchanged**; these refinements are carried **here**, in the artifact the grant's `humanActRef` already references, and **they bind the investigation**. **Neither expands scope — both narrow or clarify it.**
+
+### 8.1 · No preselected answer — in either direction
+
+> *"Do not preselect the 'combined provenance model' as the likely answer. Let Architecture investigate the alternatives and recommend one. Otherwise the investigation is subtly biased toward a predetermined solution."*
+
+**Registered, and applied against Governance's own wording.** No combined model was preselected — **but §3's earlier phrasing leaned the opposite way**, toward separate instruments. **Both leanings are bias.** The line now held:
+
+| | |
+|---|---|
+| **Required** | The four **questions** must be clearly **distinguished** — this is the commission's own instruction |
+| **Open — not to be prejudged** | **How many instruments answer them.** One combined mechanism · several separate ones · a partial subset · none — **all remain live outcomes, and the investigation decides on evidence** |
+
+**Governance corrected its own steer rather than defending it.** *(§3, annotated in place.)*
+
+### 8.2 · Separate what can be evidenced by 2026-08-30 from what needs a later phase
+
+> *"Given your 30 August 2026 review date, I would explicitly ask Architecture to distinguish between **what can realistically be evidenced before 30 August** and what would require a later implementation phase. That prevents DEP-3 from becoming an open-ended architecture project."*
+
+**Registered as a deliverable requirement.** The recommendation must split its content into:
+
+1. **Evidenceable by 2026-08-30** — what this investigation can actually establish, and with what evidence, in the remaining window.
+2. **Requires a later implementation phase** — recorded as **dependencies with their authorization requirements**, *not designed here*.
+
+> **This makes the deliverable useful at the review even if the investigation is short**, and it is the structural guard against `DEP-3` becoming open-ended. It also composes with the existing scope line requiring *"the minimum evidence that would be useful for the 30 August review"* — §8.2 says where the boundary falls; that line says what must be on the near side of it.
+
+### 8.3 · The principle both refinements protect
+
+> **`DEP-3` investigates PROVENANCE. It does not create authority, independence, or authorization.**
+
+Already binding via `INV-ATTR-1` (identity is evidential, never an authority input), `INV-ATTR-2` (self-declared is never attested), `A-5.5` (reporting-only, never a gate) and `A-4` `C-1` (the terminal confers nothing). **Restated because it is the sentence the whole lane must not drift from** — and because question ④ (*genuine independent judgement*) is precisely the one no identity scheme can answer.
+
+**Unchanged by these refinements:** the grant's exclusions · the reserved implementation decision · the 2026-08-30 review date · the human-START reading disclosed at §5 · every prior amendment.
 
 ---
 
