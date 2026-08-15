@@ -50,16 +50,41 @@
 
 **`C-3` applies from the next assignment onward.** `executionContext` should distinguish processes well enough to evidence `R-34`. **No existing record is rewritten** — the log is append-only, and repairing sound history is exactly the failure mode this programme has twice declined to commit.
 
-## 5 · Work-item status
+## 5 · Closure — declared by the PO/ARB, 2026-08-15
 
-**`KOS-EXEC-TOPOLOGY-001`: every commissioned question is answered and both decisions are registered. The authorized scope is discharged.**
+**The closing act, registered verbatim:**
 
-- Machine record: **`OPEN`** · `mutationOwner: NULL` · `S4-architecture-topology` `COMPLETED`.
-- **Governance/documentary closure: NOT YET DECLARED.**
+> *"I declare KOS-EXEC-TOPOLOGY-001 CLOSED. Its authorized scope is discharged: DEC-1 and DEC-2 have been registered, the architectural investigation is complete, and the resulting governance decisions are recorded. This closure does not mean that KOS-GOV-ATTRIBUTION-001, V-3, D-6, E-1, O-CLOSURE-VOCAB, or the bootstrap gap are resolved. Those remain separate follow-up matters and are not reopened or included in this closure. … No implementation, mechanism change, AST-015/AST-016 change, or startup wiring is authorized by this closure."*
 
-> **Closure is deliberately left to an explicit act.** Nothing remains in scope, and Governance could close it — but every prior lifecycle act in this programme (qualification, adoption, closure) has been an explicit PO/ARB commission, and Governance does not assume that authority unbidden. **One word closes it.**
+Stated in the ruled form (binding vocabulary ruling, 2026-08-15):
+
+> ## `KOS-EXEC-TOPOLOGY-001`
+> ### **Governance / documentary closure: CLOSED**
+> ### **Authoritative workflow-machine state: `OPEN`**
 >
-> *Reminder of the binding vocabulary ruling (2026-08-15): when it is closed, it must be stated with its plane named — **governance/documentary closure: CLOSED · authoritative workflow-machine state: `OPEN`**, because `AST-015` has no closure transition (`O-CLOSURE-VOCAB`).*
+> `OPEN` because **`AST-015` has no closure transition** — `{"type":"CLOSE"}` is refused with *"no such edge exists in the machine"*, and `workItemState` is only ever `OPEN` or `STOPPED` (`O-CLOSURE-VOCAB`). **`STOP` was not misused**: `STOPPED` means *halted*, is sticky, and exits only via `CONTINUATION`.
+
+**⚠️ Both lines must be quoted together. No document may state or imply that the machine record says `CLOSED`. It does not, and it cannot.**
+
+### Closure evidence
+
+| Requirement | Evidence | Status |
+|---|---|---|
+| Commission answered in full | ADP `86b2e536` — all eight commissioned questions (Q1–Q8) addressed | ✅ |
+| Architecture within grant, no self-certification | design-only; `S4` neither completed itself nor created a handoff | ✅ |
+| Governance review independent of the PO decision | `e77fa724`; load-bearing premise (`A-1.4` = adopted rule) verified at source | ✅ |
+| Human decisions obtained and registered verbatim | `DEC-1`, `DEC-2` — §1 above | ✅ |
+| Decisions given effect | Amendment `A-4` in the canonical home + header pointer | ✅ |
+| Follow-up carried, not absorbed | `KOS-GOV-ATTRIBUTION-001` created — OPEN, 0 sessions, 0 grants | ✅ |
+| Assignment lifecycle correct | `S4-architecture-topology` `COMPLETE` by **Governance** (seq 4, G-1); `mutationOwner: NULL` | ✅ |
+| Qualified mechanisms unharmed | `AST-015` sha256 `e19705ce` · `AST-016` sha256 `00c68cc9` — unchanged throughout | ✅ |
+| Engineering did not accept its own work | Architecture proposed · Governance reviewed · **PO/ARB decided and closed** | ✅ |
+
+### What this closure does NOT do
+
+**Explicitly not resolved, not reopened, not included:** `KOS-GOV-ATTRIBUTION-001` (OPEN, uncommissioned) · `V-3` / `KOS-ACTIVATION-REPORTING-001` (OPEN, uncommissioned) · `D-6` · `E-1` · `O-CLOSURE-VOCAB` · the successor-registration bootstrap gap.
+
+**No implementation, mechanism change, `AST-015`/`AST-016` change or startup wiring is authorized by this closure.** The prohibition on wiring `AST-016` into `SESSION_START` while `V-3` is unresolved **stands unweakened**. The `A-4.3` disclosure duty **remains in force**; `C-1`–`C-4` **remain binding on the convention**.
 
 ---
 
