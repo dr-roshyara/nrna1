@@ -11,6 +11,12 @@
 
 ---
 
+## ⚠️ Status: NOT SIGNED
+
+**The act below has been confirmed item-by-item and amended as directed, but no adopting act has been performed.** *"Ready for signature"*, *"I would sign"* and *"my proposed signing position"* are all descriptions of an intention. **The record advances only on a performative sentence.**
+
+**The shortest sufficient act: *"I adopt the consolidated adoption act of 2026-08-15 as amended."*** — that one sentence adopts all five items. Nothing further is needed from Governance.
+
 ## The act — copy, amend if you wish, and sign
 
 > **PO/ARB ADOPTION ACT — Election halt and recovery, 2026-08-15**
