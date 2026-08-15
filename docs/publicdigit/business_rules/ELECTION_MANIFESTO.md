@@ -111,6 +111,9 @@ TEST                          zero approved candidates → open_voting rejected 
 | **EM-GOV-001** | **The election holds its own governance over whether an entitlement may currently be exercised.** | ADOPTED |
 | **EM-GOV-002** | **The Election Chief may independently suspend an ElectionMember for an election-specific reason.** | ADOPTED |
 | **EM-GOV-003** | **Election Chief suspension and organisation-driven suspension are distinct governance acts and must not be treated as one rule.** | ADOPTED |
+| **EM-GOV-004** | **The Chief Election Officer may correct an election's schedule under governed conditions, including a window whose time has already elapsed, where necessary for the election to continue legitimately.** A schedule correction **never by itself advances the election · never bypasses a mandatory condition for progression · is attributable to the officer who made it · carries a stated reason · is auditable.** | ADOPTED *(principle only — PO/ARB authorization, **2026-08-15**)* |
+
+**`EM-GOV-004` boundaries are deliberately NOT adopted and require separate business decisions:** moving a window forward · extending a window · correcting a window already elapsed · moving a window backward · the effect on voting credentials already issued · permissibility once votes have been cast. **An implementation that assumed any of these would be inventing policy.**
 
 ## 4 · Adopted vocabulary
 
@@ -131,6 +134,25 @@ TEST                          zero approved candidates → open_voting rejected 
 | **EM-VOT-003** | **An election may enter Voting Active only when it has at least one approved candidate and at least one admitted voter.** | ADOPTED *(PO ruling, verbatim, **2026-08-13**)* |
 
 **Note on `EM-VOT-003`:** the candidate half restates `EM-VOT-002`'s requirement at the same boundary (same rule at two granularities, not duplication — see §9); the **voter half is new**: no earlier adopted rule required ≥ 1 admitted voter at voting start. Evidence at adoption: `has_voters` exists as a `complete_administration` precondition only (an upstream gate, not a boundary invariant), and **neither path into `voting_active` checks voters** (guard preconditions and computed derivation both candidate-and-window-only). Per the `EM-VOT-002` precedent, **`ElectionConstitution` is the identified authoritative expression home**, with the both-paths lesson applying symmetrically. **Implementation is NOT authorised by this adoption** — the ruling closes the business question only. This rule does **not** resolve `EM-OPEN-021`, and the zero-voter analog question remains open with no semantics chosen.
+
+| **EM-VOT-004** | **An election does not enter its voting phase by the passage of time.** Reaching the scheduled voting start time — or a valid schedule correction — makes the election **eligible for the Chief Election Officer's consideration**; it confers no authority. **The Chief Election Officer must explicitly decide to proceed**, and progression is valid only if, at that moment, every mandatory condition holds: at least one approved candidate · at least one admitted voter · nomination completed · no other established constitutional prohibition. If any is unmet, **voting does not begin**, the election remains in its current valid non-voting condition, the officer is told which condition is unmet, may correct it where authorized, and may decide to proceed again. | ADOPTED *(PO/ARB authorization, **2026-08-15**)* |
+
+**The governing principle, verbatim:** ***"Time makes progression possible; authority and eligibility make progression valid."*** and ***"The Chief decides when to request progression; the Election Rules decide whether progression is permitted."***
+
+**The authority boundary — authorized verbatim, and the central constitutional boundary Architecture must preserve:**
+
+> **No clock-driven lifecycle mechanism may exercise the Chief Election Officer's authority.**
+> **No Chief Election Officer action may override a mandatory Election condition.**
+
+The Chief **must not be able to bypass, suppress, or override a refusal through administrative authority or schedule manipulation.**
+
+**Notes on `EM-VOT-004`, recorded so nothing is mistaken for something it is not:**
+1. **This is a NEW rule, not a restoration.** Architecture evidence (2026-08-15 semantic reconciliation) established that **no generation of this system ever required the Chief's act for an election to become voting-active** — the voting boundary has been clock-driven since the first generation.
+2. **"Nomination completed" is NEW as a condition at this boundary** — it exists today only as an input to the automatic derivation, never as a stated requirement of opening voting.
+3. **Scope: the START of voting only.** It must **not** be generalized into *"progression is always manual"*. **Automatic closing at the valid end of the voting period is unchanged**; any separately governed early-closure authority is a distinct act. Every other phase boundary remains undecided.
+4. **The historical technical name `voting_blocked` is NOT adopted as business vocabulary.** Three business situations must be distinguishable — *not yet eligible* · *eligible, awaiting the officer's decision* · *cannot proceed, with the unmet condition named*. **Their representation is Architecture's to determine.**
+5. **`ElectionConstitution` is the identified expression home; implementation is NOT authorized by this adoption.** Conditions are evaluated **at the moment the Chief requests progression**, on **every** path into voting (the `EM-VOT-002` both-paths lesson applies).
+6. **This rule does NOT resolve `EM-OPEN-021`** — the zero-candidate configuration is also reachable without the clock (`forceCloseNomination()`), so that question survives and remains open.
 
 **Note on canonical overlap:** the Constitution **partially** expresses `EM-VOT-001`, as the `has_approved_candidates` precondition on the nomination transition; the precondition itself remains canonical in the Constitution and is not restated. **`SD-14` = YES (ARB/PO, 2026-08-13) resolved the boundary question:** *"the next phase"* **includes the voting phase**, so the requirement binds at `open_voting` as well — adopted as **`EM-VOT-002`**, deliberately phrased with the Constitution's own precise vocabulary (*"at least one **approved** candidate"*) so business rule and implementation vocabulary stay aligned. **`ElectionConstitution` is the authoritative implementation home for this precondition. Implementation is NOT yet authorised** — the ruling closes the business question only; implementation authorization is a separate act.
 
@@ -198,6 +220,8 @@ TEST                          zero approved candidates → open_voting rejected 
 | EM-VOC-003 | admission-gate adopted rules 1, 2, 5 | 2026-08-12 | global | ADOPTED |
 | EM-VOT-001 | `PBDIGIT-64` — *"Without a candidate an election must not go into the next phase"*, stated by the Product Owner | **2026-08-08** | election lifecycle | ADOPTED |
 | EM-VOT-002 | **`SD-14` = YES** ruling — *"next phase"* includes voting; vocabulary aligned to the Constitution's `has_approved_candidates` | **2026-08-13** | `open_voting` boundary | ADOPTED |
+| EM-VOT-004 | PO/ARB authorization adopting the Governance Decision Report — Start of Voting: Progression Authority (2026-08-15); new rule, not a restoration | **2026-08-15** | start-of-voting boundary, all paths | ADOPTED |
+| EM-GOV-004 | same authorization — schedule-correction principle; boundaries left open | **2026-08-15** | election schedule | ADOPTED *(principle)* |
 | EM-VOT-003 | PO ruling, verbatim: *"Adopted: an election may enter Voting Active only when it has at least one approved candidate and at least one admitted voter"* — recorded per the decision package §5b/§5c determination (voter half new; expression home identified; implementation not authorised) | **2026-08-13** | `voting_active` boundary, both paths | ADOPTED |
 | EM-SEQ-001 | Election-Only-first sequencing decision | 2026-08-12 | programme | ADOPTED |
 | EM-SEQ-002 | Election-Only-first sequencing decision | 2026-08-12 | programme | ADOPTED |

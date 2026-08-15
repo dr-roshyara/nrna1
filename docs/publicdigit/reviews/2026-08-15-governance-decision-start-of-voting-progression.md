@@ -128,3 +128,39 @@ Session 4's semantic reconciliation — *the commissioning hypothesis corrected*
 **Exit state:** the start-of-voting rule is formally expressed · time-eligibility and officer authority are explicitly separated · mandatory conditions are identified (with the new one flagged as new) · automatic closing is preserved and fenced from generalization · schedule-correction authority is captured at principle level with its boundaries left open · unresolved questions are labelled **OPEN — REQUIRES PO/GOVERNANCE DECISION** · Constitution and Manifesto amendments are identified and drafted · **no architecture or implementation work was performed.**
 
 **Next gate:** the PO adopts (or amends) §17 → Governance records it into the Constitution/Manifesto → **then** Session 4 determines how the lifecycle must change → then implementation → then independent verification.
+
+---
+
+# ADOPTION — PO/ARB AUTHORIZATION REGISTERED (2026-08-15, verbatim in substance)
+
+> **"I formally adopt and authorize the Governance Decision Report — Start of Voting: Progression Authority as the governing business decision for the start of voting.**
+>
+> ***"Time makes progression possible; authority and eligibility make progression valid."*** *Reaching the scheduled voting start time does not automatically start voting. It makes the election eligible for consideration. The Chief Election Officer must explicitly choose Proceed, and the election may enter voting only when all mandatory business conditions are satisfied.*
+>
+> *The Chief Election Officer has the exclusive authority to initiate the decision to proceed, but this authority is **not** authority to override the Election's mandatory rules or conditions.* ***"The Chief decides when to request progression; the Election Rules decide whether progression is permitted."*** *If a mandatory condition is not satisfied, the Chief's request must be refused. **The Chief must not be able to bypass, suppress, or override that refusal through administrative authority or schedule manipulation.***
+>
+> *This authorization also adopts the principle that a schedule correction does not itself start voting · does not bypass mandatory conditions · must be attributable to the authorized officer · must have a stated reason · must be auditable. The detailed boundaries of schedule correction remain separate open business decisions and are not authorized by this act. Automatic closing at the valid end of the voting period remains unchanged.*
+>
+> **Mandatory conditions authorized:** *(1) the scheduled start time has been reached, or the schedule has been validly corrected; (2) the Chief Election Officer explicitly chooses Proceed; (3) at least one approved candidate exists; (4) at least one admitted voter exists; (5) nomination has reached its required completed/closed condition; (6) no other established constitutional prohibition prevents progression — **evaluated at the time the Chief requests progression**.*
+>
+> **Authority boundary, explicitly authorized:** ***"No clock-driven lifecycle mechanism may exercise the Chief Election Officer's authority. No Chief Election Officer action may override a mandatory Election condition."*** *This is the central constitutional boundary that Architecture must preserve.*
+>
+> **Scope:** *start-of-voting boundary only. Does not decide: other phase transitions · the final meaning of the zero-candidate configuration · detailed schedule-correction rules · credential consequences of schedule changes · schedule changes after votes are cast · the technical representation of the lifecycle · state-machine architecture · implementation details. The historical technical term `voting_blocked` is not adopted as business vocabulary.* — **PO/ARB, 2026-08-15**"
+
+## What Governance enacted on this authorization
+
+**Recorded into the Manifesto** (registrar act following adoption, per the `EM-VOT-003` precedent):
+
+- **`EM-VOT-004`** — the start-of-voting progression rule, with the governing principle and the **authority boundary** verbatim, the anti-circumvention clause, and six notes: *new rule not a restoration* · *nomination-completed is new at this boundary* · *start-of-voting scope only, automatic closing unchanged* · *`voting_blocked` not adopted; three business situations must be distinguishable; representation is Architecture's* · *Constitution is the expression home, implementation NOT authorized* · *does not resolve `EM-OPEN-021`*.
+- **`EM-GOV-004`** — the schedule-correction principle with its five qualifiers, and its **six boundaries explicitly not adopted**.
+- Traceability rows for both.
+
+**Deliberately NOT enacted: the Constitution changes.** Amending `ElectionConstitution` is a change to running enforcement code and requires implementation authority under the established chain — it is precisely what Architecture then Implementation will carry. The Manifesto records the rule; the Constitution expresses it **when granted**. *(Same treatment `EM-VOT-002` and `EM-VOT-003` received.)*
+
+## Architecture authorization registered
+
+**Session 4 is authorized to begin architecture work** on the eight questions: representing *not yet eligible* / *eligible, awaiting the Chief* / *cannot proceed with the condition named* · how the clock informs state **without exercising authority** · how the Chief's Proceed becomes the authoritative transition · how the mandatory conditions are evaluated consistently **on every path into voting** · how schedule correction interacts with state **without becoming a progression mechanism** · reconciling the current lifecycle, the Constitution and the legacy remnants · what must be retired, separated or replaced · which ADRs are required.
+
+**Binding on that work:** **Architecture must not invent business rules** — where a business decision is needed that this authorization does not cover, **Session 4 stops at that boundary and returns the question to Governance.** **No production code.** Approved design → Session 3 → Session 1.
+
+**Unchanged and still open:** `EM-OPEN-021` · the six schedule-correction boundaries · every other phase boundary's semantics · `PBDIGIT-59` and `PBDIGIT-67` (prerequisite: *"the scheduled time has been reached"* is not assessable until both are answered) · A-2 (independent; grant still outstanding).
