@@ -41,6 +41,12 @@
 >
 > **— Signed: PO/ARB, 2026-08-16**
 
+## Part 1a — ⚠️ This act also RESOLVES `EM-OPEN-067`
+
+**Items 11 and 13 together ARE the answer to `EM-OPEN-067`** — item 11 establishes `Election Appointment` as a phase whose completion gates Administration; item 13 inserts it into the chain. **Signing Part 1 therefore closes `EM-OPEN-067`; it does not need a separate act afterwards.**
+
+**Consequence for the agreed sequence: steps 1 and 2 OVERLAP.** After signing, the next commission is **step 3** — the remaining lifecycle questions *(Election Committee definition, the acceptance thresholds, the schedule-correction boundaries)* — not a second act for the lifecycle chain.
+
 ## Part 2 — NOT in this act, and why
 
 | Rule | Blocked by |
