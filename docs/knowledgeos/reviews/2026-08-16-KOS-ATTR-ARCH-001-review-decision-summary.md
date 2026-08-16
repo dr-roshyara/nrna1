@@ -82,6 +82,8 @@ Take this in three acts, in order: **accept the review and conclude the verifica
 
 Recorded as the Human's reading of the approved model — the interpretive half of the F-1 repair that only the Human could supply. **Q-B1's approval is now fully supported**; the boundary restatement itself remains Architecture's work in the active repair pass. **Q-C1's assignment** is registered (`S4-architecture-attr-stage2`, seq 10, **CREATED**) and inoperable by design — its START waits on `KOS-ARCH-BASELINE-001` Phase A acceptance **and** a Human START act.
 
+**Q-B1 / Q-B6 — LANDED after the repair pass (2026-08-16).** Human/ARB verbatim: *"record Q-B1 and Q-B6 approved after repair."* — spoken and **RECORDED** (session log, section Sixty-first). The two approvals the table above held as conditional — *"APPROVED AFTER the F-1 repair"* (Q-B1) · *"APPROVED AFTER F-2's full disposition"* (Q-B6) — are now **confirmed, the conditions met by the delivered repair pass** (`2026-08-16-KOS-ATTR-ARCH-001-f1-f8-repair.md`: **R-1** restates the boundary `{Claim · Assessments}` + serialized establishment on the recorded interpretation · **R-2** completes the disposition to **five domain facts**). **Q-B1 and Q-B6 therefore stand as APPROVED**, per §7. All other Q-rows are unchanged and already APPROVED / DEFERRED as recorded above.
+
 ## Evidence
 
 Findings register §6 and recommendations §7 of `2026-08-16-KOS-ATTR-ARCH-001-rev3-independent-architecture-review.md` (`a8d607a0`, erratum `3ff6b67a`) · repair sizes as stated per finding · the architecture lane HANDED_OFF-not-COMPLETED (seq 5, Stage 2 and repairs remain its future work) · the verification lane ACTIVE, its closure awaiting your RECORD · the reviewer's forward entanglement flag for the re-verification gate.
