@@ -51,6 +51,8 @@ Take this in three acts, in order: **accept the review and conclude the verifica
 >
 > **Not concluded by this act:** `COMPLETE: the independent verification session` (a separate Human verb — `S1-verification-attr-rev3-review` remains **ACTIVE**) · the Q-A1…Q-B8 decisions and the F-1 uniqueness sentence · hand-back to Architecture for the F-1…F-8 repair pass. Each remains available, in the order above.
 
+**Second act, spoken and recorded the same day:** *"COMPLETE: the independent verification session."* — translated to the workflow `COMPLETE` (seq 7) · `S1-verification-attr-rev3-review` **COMPLETED** · ownership released · the architecture lane stays `HANDED_OFF` with Stage 2 and the F-1…F-8 repairs as its future work (session log, section Fifty-seventh). Remaining, in order: the Q-A1…Q-B8 decisions with the F-1 uniqueness sentence, then hand-back to Architecture for the repair pass.
+
 ## Evidence
 
 Findings register §6 and recommendations §7 of `2026-08-16-KOS-ATTR-ARCH-001-rev3-independent-architecture-review.md` (`a8d607a0`, erratum `3ff6b67a`) · repair sizes as stated per finding · the architecture lane HANDED_OFF-not-COMPLETED (seq 5, Stage 2 and repairs remain its future work) · the verification lane ACTIVE, its closure awaiting your RECORD · the reviewer's forward entanglement flag for the re-verification gate.
