@@ -22,6 +22,12 @@
 | **START** | performed by the PO's signing line; execution began at this registration |
 | **Excluded** | reading the first-pass report or any findings artifact · resolving anything · Manifesto edits · comparison (Governance's, next) · disposition (PO's) |
 
+## 3a · ⚠️ SUPERSEDING ACT — the PO performed the designation directly (registered verbatim, same day)
+
+> *"I designate a fresh independent Verification lane and grant it authority to execute the blind Verification pass of EM-BRQ-001 against the frozen corpus and frozen scenario suite, with the prepared blinding protocol, and I START that verification work. It shall not read, use, or rely upon the Governance first-pass findings or N-1…N-7; it shall not resolve or modify any rule; and its sole output is the independent classification required for later comparison."* — PO/ARB, 2026-08-16
+
+**Effect: §1's delegated-designation reading is SUPERSEDED — designation, grant and START are the PO's own performed act, verbatim above. The lane as launched (`V-BRQ-1`, fresh context-isolated process, prepared blinding protocol) matches the act exactly; nothing about the running execution changes. The act's three constraints (no findings access · no rule resolution or modification · sole output = the independent classification for comparison) were already binding in `G-EM-BRQ-VERIFY` and are now grounded in the human act itself.**
+
 ## 4 · Next, in order
 
 **① `V-BRQ-1` report lands → ② Governance comparison (divergence is itself a finding) → ③ PO disposition of the candidates → ④ Model A verdict.**
