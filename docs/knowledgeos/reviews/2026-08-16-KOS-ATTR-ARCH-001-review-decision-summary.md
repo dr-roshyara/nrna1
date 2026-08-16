@@ -71,12 +71,16 @@ Take this in three acts, in order: **accept the review and conclude the verifica
 | **Q-B6** | **APPROVED AFTER F-2's full disposition** (expected result five domain facts) |
 | **Q-B7** | **APPROVED** (adding F-6's rule + F-7's ownership row) |
 | **Q-B8** | **APPROVED** |
-| **Q-C1** | **NOT covered** by the act's range — **remains the Human's choice** (Governance recommendation, given not decided: a new assignment on the same work item) |
+| **Q-C1** | **APPROVED** — a new Architecture assignment on the same work item for Stage 2, **gated on acceptance of the current-state Architecture Baseline** |
 | **Q-D1** | already discharged by delivery |
 
 **Findings F-1…F-8 ACCEPTED as delivered** — dispositions per §6/§7, repaired by **Architecture**, whose lane is now handed back and **STARTED** (`HANDOFF` seq 8 · `START` seq 9, `S4-architecture-attr-target` **ACTIVE**; no new work item).
 
-**🔴 Still owed by the Human, in your words:** the **F-1 uniqueness interpretive sentence** (*"stating the uniqueness rule as your reading of the approved model"* — `at most one established assessment per claim`). Q-B1's approval and the F-1 repair's completion wait on it. The decision summary and this record stand ready to carry it when spoken.
+**The F-1 uniqueness sentence — now given, in the Human's words (2026-08-16):**
+
+> *"I interpret the approved Assurance Model as requiring at most one established assessment per Assurance Claim at a time."*
+
+Recorded as the Human's reading of the approved model — the interpretive half of the F-1 repair that only the Human could supply. **Q-B1's approval is now fully supported**; the boundary restatement itself remains Architecture's work in the active repair pass. **Q-C1's assignment** is registered (`S4-architecture-attr-stage2`, seq 10, **CREATED**) and inoperable by design — its START waits on `KOS-ARCH-BASELINE-001` Phase A acceptance **and** a Human START act.
 
 ## Evidence
 
