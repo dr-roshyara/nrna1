@@ -24,6 +24,12 @@
 | ~~`Void`~~ | ⛔ electoral-law connotation (voided results) — dangerous adjacency |
 | **`Discontinued`** | ✅ **corpus 0 · codebase 0 · no open-question adjacency** |
 
+## 2a · PO candidate *Terminated*, received mid-resolution — tested and reported (2026-08-17)
+
+**The PO proposed *Terminated* (with `TerminatedElectionState` as a later technical mapping, business vocabulary first).** **The separation principle is exactly right and this resolution already embodies it — `110` names the business word; Architecture maps it.** **But the candidate fails the collision test on ADOPTED text:** `EM-VOC-004` — *"a voting opportunity is not reusable once it has been **terminated** or has expired"*; *"a **terminated**, expired or superseded opportunity cannot be reused."* **Election-level *Terminated* would CREATE a new two-level overload — the exact `cancelled` mistake under repair.**
+⚠️ **Why the Election-prefix convention rescues *Cancelled* but not *Terminated*:** the convention ACCOMMODATES an overload that already exists in adopted text (`058`); it must not be used to LICENSE creating a new one — otherwise every future name could ride the prefix and the vocabulary discipline would be dead. **Accommodating ≠ creating.**
+*(Also already reserved: **Suspended** — the adopted ElectionMember concept; expressly kept off elections at the `058` naming ruling.)*
+
 ## 3 · The decision, structured as two options *(recommendation given, decision the PO's)*
 
 **Option A — no new word: both election-level ends are `Election Cancelled`, distinguished by recorded cause.** *For:* minimal; `063` already mandates recording the cause. *Against:* two distinct governed failures (Committee-restoration failure vs halted-recovery failure) share one name, so distinguishability retreats from the NAME into a cause field — **against the grain of this programme's nine naming rulings and of `EM-GOV-059`(a)'s own insistence that the two periods stay distinct.**
