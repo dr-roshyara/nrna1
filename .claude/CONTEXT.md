@@ -1,6 +1,21 @@
 # Current Working State
 
-**Updated:** 2026-08-15 *(state-synchronization act — Governance, Session 2. Additive: nothing below is deleted; the block immediately following is the authoritative current position, and any older row it contradicts is superseded by it.)*
+**Updated:** 2026-08-17 *(additive — see the 2026-08-17 block; older rows it contradicts are superseded by it)*
+
+---
+
+## 📍 UPDATE (2026-08-17) — Election Architecture lane (`EM-ARCH-001`, Session 4)
+
+| | |
+|---|---|
+| **START** | human START act recorded in-session, 2026-08-17, under the signed commission |
+| **Corpus verified** | Manifesto @ `52587d41`, sha256 `b6f232cd…` — byte-identical at session start |
+| **Delivered** | `docs/publicdigit/architecture/2026-08-17-EM-ARCH-001-model-a-operating-core-design.md` — five phases (reconstruction → domain model → boundaries → behavioural flows → target architecture), per-element traceability, 9-entry dependency register (branches stopped, nothing assumed), hexagonal/clean style with no technology commitment |
+| **NEXT ACTOR** | 🔵 **Session 2 (Governance)** — review against hard gates G-1…G-6; then Human/PO/ARB design approval. **Implementation NOT authorized.** |
+
+---
+
+**Prior authoritative position (2026-08-15) follows.** *(state-synchronization act — Governance, Session 2. Additive: nothing below is deleted.)*
 
 ---
 
