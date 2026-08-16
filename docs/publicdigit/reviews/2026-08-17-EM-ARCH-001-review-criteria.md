@@ -19,6 +19,11 @@
 * 🔴 **OPEN must not become a technical timeout.** The Governance model deliberately allows a gate to remain open indefinitely (`068`; `053` unresolved by classification). **A timer introduced "because timers are technically convenient" is precisely the drift this review exists to catch.**
 * 🔴 **`Inoperative ≠ Halted ≠ OPEN ≠ Terminal.`** These four survived adversarial simulation as distinct business conditions; **the derived model must keep them distinct — as explicit concepts or states if the model requires them — and must never collapse two into one implementation state.**
 
+## 3a · ELEVATED TO HARD REVIEW GATES (PO, 2026-08-17)
+
+**The PO directs that the following are HARD GATES — a deliverable failing any one is not approvable as it stands, not merely commented upon:**
+**G-1** no architectural invention of business rules · **G-2** every significant architectural element traces to a qualified governance requirement · **G-3** OPEN remains semantically distinct from HALTED · **G-4** Inoperative remains distinct from HALTED, OPEN and Terminal · **G-5** an unresolved Governance question becomes an explicit dependency, never an architectural assumption · **G-6** no implementation or technology commitment before design approval.
+
 ## 4 · What happens on return
 
 Session 2 reviews against §§1–3 + the commission's own text (traceability obligation, no-assumption rule, §4 constraints-as-constraints) → review goes to the PO with findings → **Human/PO/ARB design approval precedes any implementation authorization** (checkpoint, verbatim in the signed act).
