@@ -61,3 +61,16 @@ No mechanism change · no assurance ladder defined (that is the P-1 deliverable,
 ---
 
 **Traceability:** PO/ARB act 2026-08-16 (§1 headline verbatim; §2 refined wording; INV-ATTR-3 addition; §3 responsibility note; non-weakening clause) · ADP §2.2 (candidate wordings, superseded) · P-1 registration `02f813ae` (assurance-level disclosure duty, now constrained by INV-ATTR-2/3) · P-2 registration `8de09453` (complementary involvement disclosure) · accepted root gap `487fce74` · `INV-DISC-2` · `A-4.3` · ES-005.4
+
+---
+
+## Addendum — ARB confirmation and clarification (registered same day)
+
+The ARB confirmed the final ruling in exactly the §1 wording, and sharpened §3's responsibility boundary into a **two-decision split**, which supersedes the §3 phrasing where they differ:
+
+> **Governance decision:** *what level of assurance is required for a particular use?*
+> **Architecture decision:** *what mechanism provides that assurance?* (workflow records · signed commits · authenticated identities · approval records · cryptographic signatures · or another mechanism)
+
+Governance/ARB owns the requirement; Architecture owns the means. This is the programme's standing separation (*business meaning → mechanism → verification*) applied to attribution.
+
+The ARB also recorded forward intent, registered as intent and nothing more: **P-3 is a candidate for a constitutional EKS invariant** — it protects the system regardless of whether the future platform uses PHP, Python, stronger identity, signatures, or something else. No EKS work is created by this note.
