@@ -41,6 +41,16 @@ Take this in three acts, in order: **accept the review and conclude the verifica
 
 *(Vocabulary per the ARB's same-day correction: RECORD for events and decisions · START/COMPLETE for opening and formally closing a session.)*
 
+---
+
+## Acceptance record
+
+> **2026-08-16 · Human verbatim:** *"record I accept the independent review as delivered."* — the first action line above, spoken and **RECORDED in the official record** (session log, section Fifty-sixth).
+>
+> **Recorded meaning:** the independent architecture review of the Stage-1 attribution architecture, **as delivered** (`a8d607a0` + erratum `3ff6b67a`), is **accepted** by the Human — verdict and findings included as the delivered review. This is a decision-recording act only.
+>
+> **Not concluded by this act:** `COMPLETE: the independent verification session` (a separate Human verb — `S1-verification-attr-rev3-review` remains **ACTIVE**) · the Q-A1…Q-B8 decisions and the F-1 uniqueness sentence · hand-back to Architecture for the F-1…F-8 repair pass. Each remains available, in the order above.
+
 ## Evidence
 
 Findings register §6 and recommendations §7 of `2026-08-16-KOS-ATTR-ARCH-001-rev3-independent-architecture-review.md` (`a8d607a0`, erratum `3ff6b67a`) · repair sizes as stated per finding · the architecture lane HANDED_OFF-not-COMPLETED (seq 5, Stage 2 and repairs remain its future work) · the verification lane ACTIVE, its closure awaiting your RECORD · the reviewer's forward entanglement flag for the re-verification gate.
