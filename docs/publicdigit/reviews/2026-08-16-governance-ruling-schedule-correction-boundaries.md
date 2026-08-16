@@ -9,7 +9,20 @@
 
 ## ⚠️ 0 · Two collisions must be settled before the set can close
 
-### **0.1 · `SCB-1` as written contradicts an ADOPTED rule**
+### ✅ **0.1 · RESOLVED 2026-08-16 — the reading Governance proposed is CONFIRMED**
+
+> **PO ruling direction:** *"The Chief cannot arbitrarily move a scheduled window forward. However, when a phase has elapsed and the governed recovery mechanism requires the election to continue, the elapsed-window recovery rule may establish a new future window."*
+
+**Both principles survive: ordinary forward movement is prohibited; elapsed-window correction under GOVERNED RECOVERY is not ordinary schedule movement at all.** **The business distinction that carries it:**
+
+```
+Normal schedule      → the Chief cannot arbitrarily change it
+Halted election      → governed recovery → a new future opportunity/window
+```
+
+⛔ **`SCB-1` and `SCB-9` no longer cancel each other. The boundary set is UNBLOCKED.** ✅ **CONSEQUENCE: `EM-GOV-013` IS UNBLOCKED** — it needed `SCB-1`'s scope confirmed *(rescheduling a halted phase IS a forward movement)*, and §4 of this report already recorded that `SCB-7`, `SCB-8` and `SCB-9`(a)(b)(c) constrain **particular corrections** rather than the recovery mechanism. **With `SCB-5` ruled and `SCB-1` scoped, `EM-GOV-013` is ready for adoption.**
+
+### ~~0.1 (original) · `SCB-1` as written contradicts an ADOPTED rule~~
 
 **`SCB-1` says a window may not be moved forward. `EM-GOV-004` (ADOPTED) says an elapsed window may be corrected.** **A correction to an elapsed window can only place it later — a window cannot be rescheduled into the past.** **So every elapsed-window correction is a forward movement.**
 
