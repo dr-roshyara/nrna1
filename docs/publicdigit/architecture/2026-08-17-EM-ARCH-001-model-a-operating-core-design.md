@@ -3,7 +3,7 @@
 **Type:** Architecture design deliverable (Architecture — Session 4) · **Date:** 2026-08-17
 **Commission:** `EM-ARCH-001`, signed 2026-08-17 (`docs/publicdigit/reviews/2026-08-17-election-architecture-commission-prepared.md` §5)
 **Corpus:** Election Manifesto @ `52587d41`, sha256 `b6f232cd…` — **verified byte-identical at session start. ADOPTED rows only are rules.**
-**Status:** ⏸️ **RETURNED FOR HUMAN/PO/ARB DESIGN REVIEW. Implementation is NOT authorized by this document. No technology is committed by this document.**
+**Status:** ✅ **APPROVED (PO/ARB, 2026-08-17) — *"subject to the recorded D-1…D-9 dependencies and without resolving them by architectural assumption"* (registration: `docs/publicdigit/reviews/2026-08-17-EM-ARCH-001-design-approval-registration.md`; Governance review: PASS G-1…G-6). Implementation, technology selection and deployment remain NOT authorized — a separate authorization is required.**
 **Placement:** derived — `php scripts/doc-placement.php --scope=product-specific --maturity=qualified --domain=publicdigit` → `docs/publicdigit` (exit 0, ruled); `architecture/` is the existing sub-root for architecture artifacts.
 
 > ## Reading contract
