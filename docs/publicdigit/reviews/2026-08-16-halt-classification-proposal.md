@@ -19,6 +19,9 @@
 
 ---
 
+> ### ⚠️ **CORRECTION (2026-08-16, registered in `2026-08-16-EM-BRQ-001-start-and-freeze.md` §3): §0.2 IS WRONG.**
+> **`EM-VOT-002` (ADOPTED 2026-08-13) requires *"at least one approved candidate before voting may be opened"*; `EM-VOT-003` adds the admitted-voter floor. My search used "at least one candidate" and missed "at least one APPROVED candidate". Example B was correctly premised all along. The classification model is unaffected.**
+
 ## 1 · The three-row table conflates TWO INDEPENDENT AXES
 
 **The recommended table lists *temporary/recoverable*, *objectively impossible*, and *actor fails to act* as three situations. The first two describe the CONDITION; the third describes the ACTOR. They are not alternatives — they vary independently.**
