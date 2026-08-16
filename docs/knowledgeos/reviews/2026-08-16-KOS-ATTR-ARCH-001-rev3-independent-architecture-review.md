@@ -180,3 +180,9 @@ Verified against `workflow-state.php`: `assertTransitionAllowed` and the grant w
 ---
 
 > # REVIEW DELIVERED — findings and recommendations only · all decisions remain Human/ARB · this session does not complete its own assignment
+
+---
+
+## Erratum E-R1 (same day, self-found, disclosed to the PO before any disposition)
+
+F-2's projected disposition — *"five facts / seven internal / one removed / one read-side"* — sums to **14**; there are **13** events. Correct projection: **five domain facts · SIX internal** (`EvidenceObserved` · `EvidenceAssociated` · `EvidenceEvaluated` · `EvidenceSuperseded` · `AssessmentProposed` · `AssessmentRejected`) **· one removed as redundant (`OutcomeClassified`) · one read-side (`OutcomeDisclosed`)** = 13. The finding itself (three events undispositioned; "ten" a miscount; `AssuranceClaimSuperseded` a likely fifth fact) is unaffected — the defective sentence was the reviewer's *expected outcome*, not the defect evidence. Recorded as an appended erratum, never a rewrite, per the programme's supersession discipline — and noted plainly: the reviewer committed the same *class* of error (a count) its own F-2 reports. The disposition remains Architecture's to make and the ARB's to approve.
