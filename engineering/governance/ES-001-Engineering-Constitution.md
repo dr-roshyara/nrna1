@@ -65,4 +65,17 @@ Governance            — records the outcome
 
 **The sharp boundary: when the Human/PO/ARB authorizes an action for another role, Governance must record and route that authorization; it must not perform the authorized action itself.** Recording a START is a Governance act; performing the started work is the role's act — only the second carries the role's independence obligations, and Governance never crosses into it. Canonical pattern: the Human says *"Authorize start of the independent verification of the remaining governance weaknesses"* — Governance identifies the governed assignment, records the transitions, and instructs the responsible role *"Start the independent verification of G-2 and G-4"*. **Technical identifiers live in the workflow record; the conversation stays business-first in both directions.**
 
+**The Human command vocabulary — RECORD and START** *(ARB 2026-08-16, second same-day refinement of this protocol; in force)*. **The Human should never have to learn the workflow engine to operate Governance.** The Human speaks exactly two commands; Governance translates:
+
+| Human says | Meaning | Governance translates to |
+|---|---|---|
+| **RECORD: …** | *"Put my business decision, fact, instruction, or completed-work statement into the official record."* | whatever internal transitions the act requires (`REGISTER` · `HANDOFF` · `COMPLETE` · grants) |
+| **START: …** | *"Begin the already-authorized assignment."* | the recorded human START act + activation per the workflow rules |
+
+The Human normally never supplies session IDs, grant IDs, sequence numbers, transition names, or JSON — Governance resolves the referent from the authoritative records, and asks only where genuine ambiguity cannot be resolved from them. `REGISTER`/`HANDOFF`/`COMPLETE`/`START` remain internal workflow vocabulary, never forced on the Human.
+
+**Lifecycle translation duty.** When a role says its work is finished, Governance does not assume closure — it determines the business lifecycle: handed to another role → **HANDOFF** (*"finished my part; the next role takes over"*); genuinely finished with no successor → **COMPLETE** (*"formally closed"*). **HANDOFF does not require COMPLETE first** — a producing role may hand over finished work while remaining open for future work under the same assignment. The Human is never forced to reason about HANDOFF vs COMPLETE unless the business meaning cannot be resolved otherwise.
+
+**Function determines role.** A review of Architecture work is a Verification function if its purpose is independent checking — routing follows the function, not the producer's role name. Where reviewer independence is discretionary, Governance surfaces the decision to the Human/PO/ARB; the producer never verifies itself.
+
 *Burden of proof (R-37) — this rule was adopted on implementation evidence, not on principle: two records created for one commission with one grant ID issued twice · one human START act recorded in two records · a human act recorded against an assignment the human did not name · a lane left ACTIVE while its verdict existed only in prose (the recurring `E-2` pattern) · a verification lane handed off and left unstarted for two days · an authorized grant with no assignment · an initialized record with no content · and three separate state claims that the records falsified. Companion: ES-006.1 — this is a repeated pattern, not a single occurrence.*
