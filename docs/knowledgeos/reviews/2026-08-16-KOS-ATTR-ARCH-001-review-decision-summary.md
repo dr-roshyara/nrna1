@@ -53,6 +53,31 @@ Take this in three acts, in order: **accept the review and conclude the verifica
 
 **Second act, spoken and recorded the same day:** *"COMPLETE: the independent verification session."* — translated to the workflow `COMPLETE` (seq 7) · `S1-verification-attr-rev3-review` **COMPLETED** · ownership released · the architecture lane stays `HANDED_OFF` with Stage 2 and the F-1…F-8 repairs as its future work (session log, section Fifty-seventh). Remaining, in order: the Q-A1…Q-B8 decisions with the F-1 uniqueness sentence, then hand-back to Architecture for the repair pass.
 
+---
+
+## Q-decision record
+
+**2026-08-16 · Human/ARB verbatim:** *"Human/ARB decides F-1 through F-8 / Q-A1…Q-B8. Hand-back to Architecture for the F-1…F-8 repair pass → START: the repair work when authorized."* — spoken and **RECORDED** (session log, section Fifty-eighth). Recorded as adoption of §7 above, item by item:
+
+| Question | Decision |
+|---|---|
+| **Q-A1** | **APPROVED** (carrying F-8's rename) |
+| **Q-A2** | **DEFERRED** to Stage 2 |
+| **Q-B1** | **APPROVED AFTER the F-1 repair** — on the recorded interpretation, **not** the current text |
+| **Q-B2** | **APPROVED** as precised (one *current* claim per (act, dimension)) |
+| **Q-B3** | **APPROVED** (derived outcome; cites the F-1 uniqueness rule) |
+| **Q-B4** | **APPROVED** with F-5's closed-gate-input constraint |
+| **Q-B5** | **APPROVED** (`EvidenceSuperseded` dispositioned internal per F-2) |
+| **Q-B6** | **APPROVED AFTER F-2's full disposition** (expected result five domain facts) |
+| **Q-B7** | **APPROVED** (adding F-6's rule + F-7's ownership row) |
+| **Q-B8** | **APPROVED** |
+| **Q-C1** | **NOT covered** by the act's range — **remains the Human's choice** (Governance recommendation, given not decided: a new assignment on the same work item) |
+| **Q-D1** | already discharged by delivery |
+
+**Findings F-1…F-8 ACCEPTED as delivered** — dispositions per §6/§7, repaired by **Architecture**, whose lane is now handed back and **STARTED** (`HANDOFF` seq 8 · `START` seq 9, `S4-architecture-attr-target` **ACTIVE**; no new work item).
+
+**🔴 Still owed by the Human, in your words:** the **F-1 uniqueness interpretive sentence** (*"stating the uniqueness rule as your reading of the approved model"* — `at most one established assessment per claim`). Q-B1's approval and the F-1 repair's completion wait on it. The decision summary and this record stand ready to carry it when spoken.
+
 ## Evidence
 
 Findings register §6 and recommendations §7 of `2026-08-16-KOS-ATTR-ARCH-001-rev3-independent-architecture-review.md` (`a8d607a0`, erratum `3ff6b67a`) · repair sizes as stated per finding · the architecture lane HANDED_OFF-not-COMPLETED (seq 5, Stage 2 and repairs remain its future work) · the verification lane ACTIVE, its closure awaiting your RECORD · the reviewer's forward entanglement flag for the re-verification gate.
