@@ -31,12 +31,15 @@ Take this in three acts, in order: **accept the review and conclude the verifica
 
 ## Human action required
 
-> **RECORD: I accept the independent review as delivered; the verification of the Stage-1 design has concluded.**
+> **RECORD: I accept the independent review as delivered.**
+> **COMPLETE: the independent verification session.**
 
 *(then, when ready:)*
 
 > **RECORD: [your decisions on Q-A1…Q-B8, and the F-1 uniqueness sentence in your words]**
 > **RECORD: Hand the work back to Architecture for the F-1…F-8 repair pass.** → **START: the repair work.**
+
+*(Vocabulary per the ARB's same-day correction: RECORD for events and decisions · START/COMPLETE for opening and formally closing a session.)*
 
 ## Evidence
 
