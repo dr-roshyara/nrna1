@@ -1,7 +1,7 @@
 # Election Architecture Commission — PREPARED FOR SIGNATURE
 
 **Type:** Commission preparation (Governance) · **Date:** 2026-08-17
-**⛔ PREPARED, NOT PERFORMED. The Election Architecture pause is IN FORCE and *platform-first then Election* is IN FORCE — this act, when signed, is what changes both, for exactly this scope. NO ARCHITECTURE WORK MAY START FROM THIS DOCUMENT.**
+**✅ SIGNED 2026-08-17 — see §5. The Election Architecture pause is LIFTED and the sequencing exception CONSTITUTED, for exactly this scope. Performing lane: Architecture — Session 4. Implementation NOT authorized.**
 
 ## 1 · The commissioning act, ready for signature
 
@@ -22,5 +22,11 @@
 ## 4 · Boundary notes
 
 ⚠️ **The KOS attribution-track Architecture commission (`KOS-ATTR-ARCH-001`, prepared 2026-08-16) is a DIFFERENT commission on a DIFFERENT programme — still awaiting its own signature; neither implies the other.** ⚠️ **Everything outside the Model A operating core stays under the Architecture pause and platform-first.**
+
+## 5 · SIGNED (2026-08-17)
+
+> **"I sign and authorize the Architecture commission as prepared, with Architecture — Session 4 as the performing lane. The commission is limited to the qualified Model A operating core and does not authorize implementation."** — PO/ARB, 2026-08-17
+
+**Checkpoint, verbatim:** *"Architecture returns the discovery/reconstruction and target architecture deliverable for Human/PO/ARB approval before any implementation authorization."*
 
 **Traceability.** Closure registration · final report §4/§6 · the pause and sequencing decisions · A-3.
