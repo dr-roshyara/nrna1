@@ -42,3 +42,7 @@ Architecture          commissioning act available, not performed
 ---
 
 **Traceability:** PO/ARB act 2026-08-16 (§1 verbatim) · model rev 3 `5ab3b4e6` (its §8 defines this approval's scope) · rev history `9156b28e` → `771e3907` → `ac53cc5c` → `5ab3b4e6` · P-1 `02f813ae` (the commission this discharges) · ARB reviews of rev 1 and rev 2 (registered in the session log, thirty-seventh and thirty-eighth entries)
+
+---
+
+**Cross-reference (added same day, disclosed):** a concurrent Governance process registered this same approval one minute later in `2026-08-16-assurance-model-rev3-approval-registration.md` (`b8b2914c`), which the model's status header cites. **The two registrations agree in substance — same act, same in-force scope, same not-done list — so this is duplication of form, not a conflict.** Both stand; neither is deleted. The duplication itself is a live specimen of the accepted root gap (two governance actors, no mutual visibility) and is surfaced to the PO/ARB rather than silently reconciled.
