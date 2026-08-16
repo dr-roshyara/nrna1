@@ -83,18 +83,45 @@
 - ❌ **The `ALT-2` trial is not expanded.** Per §10 of its protocol, the correct response to a trial limitation is to **record it and leave the experiment alone** — including the limitation that CONTEXT/session-log-only turns generate no `E-T1` data.
 - ❌ **No finding is promoted, ranked, or aged.** Sitting in section A implies **no** claim that something should be done.
 
-## H · Deferred target-architecture inputs — held here so no lane is created for them
+## H · Exploratory material produced OUTSIDE the governed lane — candidate input only
 
-**Added 2026-08-16 on PO/ARB direction.** These are **design inputs, not findings and not work items.** They are recorded so their intent survives without a lane existing to pull work forward.
+**Added 2026-08-16; PROVENANCE CORRECTED the same day on PO/ARB instruction.**
 
-| Input | Where it lives | Status |
+> ### 🔴 Correction registered verbatim
+> *"Work Item B was not intended to be commissioned in the active KnowledgeOS governance lane. The Rule Model / Authority Model / target-architecture material was produced separately in an isolated folder/environment as exploratory analysis for architectural validation. **No KnowledgeOS assignment, grant, START, or implementation authority was intended by that exploratory work.** Please do not create or activate Work Item B from that message. Treat the isolated material as **candidate architectural evidence/design input only**."*
+
+**What §H previously said, and why it was wrong:** this section originally recorded Work Item B as *"deferred governed intent."* **That mis-stated its provenance.** It is not deferred work of this lane — **it is exploratory output produced outside the governed lane entirely.** The distinction matters: deferred governed work carries an implied future claim on this lane; exploratory external material carries **none**.
+
+### The three-way provenance distinction — to be preserved in every future reference
+
+| | Kind | Authority |
 |---|---|---|
-| **Work Item B — *EKS Strategic Architecture Finalization*** (rule model · authority model · knowledge vocabulary · bounded contexts · context map · C4 · architecture constitution) | this register only — **deliberately no work item** | ⏸️ **DEFERRED** until `KOS-ARCH-BASELINE-001` Phase A is **verified and its baseline accepted.** *"Do not create a dormant B merely to make the backlog look complete"* |
-| **Rule Model business semantics, incl. `RM-1`…`RM-4`** | `docs/knowledge_tranfer/20260816_1211_rule_model_business_semantics.md` | ⏸️ **Preserved as a future target-architecture input. NOT actively designed.** Revisited only after baseline acceptance |
+| **1** | **Governed KnowledgeOS architecture work** — assignment · grant · human START | ✅ authorized within its grant |
+| **2** | **Isolated exploratory architecture work** *(this section)* | ⛔ **none.** Exists; authorizes nothing |
+| **3** | **Future formally commissioned target-architecture work** | ⬜ does not yet exist |
 
-> **Why they are held rather than commissioned:** all of it is **target-architecture work**, and `KOS-ARCH-BASELINE-001`'s grant forbids that while Phase A reconstructs the current state. The agreed sequence is **reconstruct → verify → accept → *then* design.** Recording intent is not the same as authorizing work.
->
-> ⚠️ **Noted for honesty, not as criticism:** the Rule Model document was created **2026-08-16 12:11**, eight minutes after the gap analysis that identified architecture output displacing evidence production. **It is itself one of the six documents that appeared in that two-hour window.** That does not make it wrong — it makes it an input to be used later, which is precisely why it sits here rather than in a lane.
+**Never collapse 2 into 1 or 3.** *"This document exists"* is not *"this work item is complete"*, and *"the target architecture has been designed"* is not *"the target architecture may be adopted."*
+
+| Material | Where it lives | Status |
+|---|---|---|
+| **Work Item B — *EKS Strategic Architecture Finalization*** | **no work item; none to be created from the originating message** | ⛔ **NOT commissioned, NOT activated** |
+| **Rule Model business semantics, incl. `RM-1`…`RM-4`** | `docs/knowledge_tranfer/20260816_1211_rule_model_business_semantics.md` — **produced in an isolated environment** | 🕯️ **Candidate architectural evidence/design input. NOT authorized, NOT actively designed** |
+
+### 🔒 Admission review — required before any of it enters the governed lane
+
+**Governance must NOT simply "take over" exploratory architecture.** When the time comes, the material passes an **admission review**, not a handover:
+
+```
+exploratory proposal → evidence/provenance review → compatibility with the ACCEPTED baseline
+   → DDD/architectural review → business decisions identified → ARB acceptance or rejection
+   → formal commission
+```
+
+> **This exists to stop an isolated environment becoming a backdoor architecture authority.** Material cannot acquire authority by maturing quietly outside the lane and then being adopted because it looks finished.
+
+**Earliest point that review may begin:** after `KOS-ARCH-BASELINE-001` Phase A is **reconstructed and independently verified**, and the baseline **accepted** — because *"compatibility with the accepted baseline"* is a step of the review, and until then there is no accepted baseline to compare against.
+
+⚠️ **On the Rule Model's timing, stated correctly:** it was created 2026-08-16 12:11, eight minutes after the gap analysis, and is one of the six documents from that two-hour window. **The correct conclusion is not that it is wrong because it was produced quickly.** It is: **it is not yet allowed to become the architectural authority while the current baseline is still being reconstructed.**
 
 ## I · Candidate invariants — proposed, NOT adopted
 
