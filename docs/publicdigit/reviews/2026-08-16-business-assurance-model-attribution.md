@@ -3,7 +3,7 @@
 **Deliverable owed under:** P-1 (*"Governance shall define the business assurance categories and escalation triggers"*)
 **Produced by:** Governance · 2026-08-16
 **Status:** **PROPOSED — awaiting Human/PO/ARB approval as the business requirements baseline for attribution assurance.** Nothing in this model is in force until that approval.
-**Inputs:** all six approved decisions — P-1 strategy · P-2 review classes · P-3 invariants · P-4 evidence policy · P-5 advisory boundary · P-6 triggers. **No mechanism is chosen anywhere in this document** (that is Architecture's half, per the P-3 addendum split).
+**Inputs:** all six approved decisions — P-1 strategy · P-2 review classes · P-3 invariants · P-4 evidence policy · P-5 advisory boundary · P-6 triggers. *"Approved" is backed by the record: each of the six registrations quotes the Human/PO/ARB approval act verbatim (`02f813ae` · `8de09453` · `6ad39fa0` · `fdfd6470` · `defc8a22` · `30976423`) — this document creates no approval evidence of its own.* **No mechanism is chosen anywhere in this document** (that is Architecture's half, per the P-3 addendum split).
 
 ---
 
@@ -26,9 +26,9 @@ Five levels, ordered by how far the evidence sits outside the declarer's control
 |---|---|---|
 | **L0** | **Declared** | The claim exists only in the actor's own statement. Nothing corroborates it. |
 | **L1** | **Recorded** | The claim was registered in the governed record at the time of the act — sequenced, append-only. This protects against *later fabrication of history*, not against a false declaration at the time. |
-| **L2** | **Corroborated** | At least one independent evidence source **outside the declarer's control** is consistent with the claim (e.g. a distinct lane identity in the engineering history, per P-4). Consistency, not proof. |
-| **L3** | **Verified** | An independent party examined the evidence and positively established the attribution (a Class-B act under P-2 — it cannot be claimed by a participant in the work). |
-| **L4** | **Independently attested** | The attribution is produced by a mechanism the declarer cannot forge (e.g. a signature with an unshared key). The strongest level; still attests a *credential*, not necessarily a *person*. |
+| **L2** | **Corroborated** | At least one independent evidence source **outside the declarer's control** is consistent with the claim (e.g. a distinct lane identity in the engineering history, per P-4). Consistency, not proof. **The sufficiency of an evidence source is an Architecture determination subject to Governance approval.** |
+| **L3** | **Verified** | An independent party, **meeting the P-2 Class-B independence requirements**, examined the evidence and established the attribution claim. (A Class-B act — it cannot be claimed by a participant in the work.) |
+| **L4** | **Independently attested** | Attribution is established using evidence that the declarer cannot forge independently (for example, cryptographic attestation, trusted signing, or equivalent assurance mechanisms). This attests a **credential or identity construct, not necessarily a specific natural person**. |
 
 **Standing rules over the ladder (from the approved decisions, restated not re-decided):**
 
@@ -47,7 +47,7 @@ Requirements are driven by the P-1 criteria — business risk, governance import
 |---|---|---|---|---|
 | **C1 · Administrative record-keeping** | session logs · progress notes · portfolio views | **L0 Declared** | L0–L1 | none — requirement met |
 | **C2 · Governed lifecycle acts** | registering assignments · handoffs · routing · closures | **L1 Recorded** | L1 | met; L2 desirable as P-4 lands |
-| **C3 · Human authority acts** | authorizations · STARTs · approvals · acceptance decisions | **L2 Corroborated** *(target)* | **L0–L1** | **known gap** — disclosed on every act; first candidate for escalation when triggers fire |
+| **C3 · Human authority acts** | authorizations · STARTs · approvals · acceptance decisions | **L2 Corroborated** *(target)* | **L0–L1** | **known gap** — **until the target level is achieved, all authority acts MUST explicitly disclose the actual assurance level present at the time of the act** (a mandatory rule, not an implied one); first candidate for escalation when triggers fire |
 | **C4 · Independence-bearing claims** | *"this verification was independent"* · Class-B review claims · self-review disclosures | **L2 Corroborated** *(target)*, with mandatory P-2 disclosure at every level | **L0 (declared)** | **known gap** — the disclosure duty carries the honesty burden until evidence improves |
 | **C5 · Externally consequential acts** | anything with regulatory, contractual or audit exposure outside the programme | **L3–L4** as the obligation demands | not available | **out of current capability** — if such an act arises, that is itself a P-6 trigger (regulatory/contractual) |
 
