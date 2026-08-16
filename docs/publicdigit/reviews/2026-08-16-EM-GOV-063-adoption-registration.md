@@ -6,7 +6,7 @@
 
 > **"I adopt EM-GOV-063 as prepared, with the terminal state's vocabulary reserved to EM-OPEN-110."** — PO/ARB, 2026-08-16
 
-**Provenance reading, stated so it is overrulable:** the PO's message opens *"I recommend adopting…"* but then supplies the adoption statement expressly (*"Use this adoption statement"*) and closes with the imperative *"Adopt EM-GOV-063 as prepared."* **Governance reads the supplied statement as the performative act, performed in that message and registered here.** If the PO intended only to stage the statement for a later act, one line corrects this registration.
+**Provenance reading, stated so it is overrulable:** the PO's message opens *"I recommend adopting…"* but then supplies the adoption statement expressly (*"Use this adoption statement"*) and closes with the imperative *"Adopt EM-GOV-063 as prepared."* **Governance reads the supplied statement as the performative act, performed in that message and registered here.** If the PO intended only to stage the statement for a later act, one line corrects this registration. **CONFIRMED 2026-08-16: the PO re-performed the adoption verbatim in a subsequent message (*"I adopt EM-GOV-063 as prepared… This is the correct governance closure."*) — the overrulable reading is settled; the adoption stands beyond doubt.**
 
 ## 2 · What is now in force
 

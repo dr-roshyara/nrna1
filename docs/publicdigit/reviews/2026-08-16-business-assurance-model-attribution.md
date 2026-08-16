@@ -2,7 +2,7 @@
 
 **Deliverable owed under:** P-1 (*"Governance shall define the business assurance categories and escalation triggers"*)
 **Produced by:** Governance · 2026-08-16 · **Revision 3** (rev 2 applied the ARB's seven structural refinements — three dimensions, no false total order; **rev 3 adds the DDD bridge the ARB required: the claim/evidence/assessment domain model, the candidate invariants, and the lifecycle concepts** — so Architecture receives a business/domain model, not only an assurance policy)
-**Status:** **PROPOSED — awaiting Human/PO/ARB approval as the business requirements baseline for attribution assurance.** Nothing in this model is in force until that approval.
+**Status:** **APPROVED 2026-08-16 — the business requirements baseline for attribution assurance** *(PO/ARB approval registered in `2026-08-16-assurance-model-rev3-approval-registration.md`; the §7 "would not mean" list applies in full — candidate invariants INV-ATTR-4/5/6 remain unadopted, Architecture uncommissioned, implementation unauthorized).*
 **Inputs:** all six approved decisions (registrations quoting the approval acts verbatim: `02f813ae` · `8de09453` · `6ad39fa0` · `fdfd6470` · `defc8a22` · `30976423` — this document creates no approval evidence of its own). **No mechanism is chosen anywhere in this document.** Explicitly kept out, per the ARB: classes, repositories, tables, event schemas, git details, service identities, cryptographic choices, aggregate design, bounded-context declarations.
 
 ---
