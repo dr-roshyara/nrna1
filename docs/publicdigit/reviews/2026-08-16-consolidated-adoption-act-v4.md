@@ -83,6 +83,23 @@
 > **Several included rules reference "the applicable representative threshold" — `EM-GOV-031`, `EM-GOV-047`'s impossibility trigger, `EM-GOV-054`'s substitution condition.** **With `EM-GOV-037` excluded, that threshold is not defined.**
 > **So v4 adopts the acceptance FRAMEWORK, and the representative channel is not OPERABLE until `EM-GOV-037` is settled.** **The Committee channel is complete and operable** *(`EM-GOV-036` supplies its rule)*. **This is a real limitation of v4 and is not concealed.**
 
+## 2a · FINAL DEPENDENCY CHECK on `EM-GOV-037` *(requested before signature)*
+
+**Test applied:** does any included rule depend on `EM-GOV-037` in a way that makes its adoption **misleading or internally non-operative** — as distinct from merely **referencing an applicable threshold that will exist later**?
+
+| Class | Rules | Verdict |
+|---|---|---|
+| **Fully operative now — no threshold needed** | `029` `030` `033` `036` `040` `041` `042` `043` `044` `045` `046` `048` `049` `052` `053` `056` `057` `058` `059` `060` `061` `062` | ✅ **Adoptable.** They define bodies, vocabularies, configuration, freezes, states and clocks — none evaluates a threshold. |
+| **Conditional triggers** | `047` *(triggers only where the threshold is already impossible)* · `050` `051` `054` `039` | ✅ **Adoptable.** Each describes what happens **when a condition arises**; the condition cannot arise before a threshold exists, so the rule is dormant rather than wrong. |
+| **Generic over whatever rules exist** | `032` `034` `035` | ✅ **Adoptable — and they CONSTRAIN `EM-GOV-037` in advance:** with `034` (no unanimity) and adopted `EM-GOV-038` (round up), **v4 NARROWS what `EM-GOV-037` may later become rather than leaving it open.** |
+| **Constitutive reference** | `031` + its amendment `055` | ⚠️ **Adoptable, but inoperative for Model C.** They state that acceptance requires **both** thresholds; with the representative threshold undefined, **Model C cannot be configured.** **Not misleading — the rule is correct and simply cannot be exercised**, exactly as `EM-GOV-025`'s models cannot be configured while the appointing authority is external. |
+
+> ### ✅ **RESULT: no rule requires further exclusion.** **The dependency is confined to Model C's CONFIGURABILITY.**
+>
+> ### ✅ **AND THE CHECK PRODUCES A POSITIVE FINDING WORTH STATING: v4 MAKES MODEL A (Committee only) COMPLETE AND OPERABLE.**
+> **Model A needs `029` `030` `033` `036` `052` `056` `057` `058`–`062` — all included — and none of the representative machinery applies to it.** **Its only outstanding dependency is the EXTERNAL appointing authority (`EM-OPEN-066`), which is not a Governance gap.**
+> **So v4 does not merely record a framework: it delivers one working acceptance path and defers the other to `EM-GOV-037`.**
+
 ## 3 · Traceability
 
 | Rule | Originating decision / resolved question |
