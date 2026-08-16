@@ -3,10 +3,13 @@
   "_variant": "Hitz & Montazeri LCOM4: connected components over methods; edges = shared instance variable OR intra-class call.",
   "_variant_decisions_pinned": {
     "constructors": "EXCLUDED (__construct/__destruct) — they touch everything and mask splits",
-    "static_methods": "INCLUDED as nodes; a static touching no $this is an isolated component (inflates LCOM4 — known, pinned, revisitable)",
+    "intra_class_calls": "An internal behavioural relationship exists when one method uses another method as a behaviour of the same class. The relationship is determined by the behavioural dependency, NOT by the syntax used to express it. INCLUDED: $this->m(), self::m(), static::m(), OwnClass::m() — where m is declared in this class body. EXCLUDED AS OUT OF FRAME: parent::m() — it uses inherited behaviour outside the analyzed class, which is not a node here (see inherited_methods). EXCLUDED AS NOT DETERMINABLE: calls whose target cannot be resolved from the class in isolation — dynamic method names ($this->$name()), callable arrays (call_user_func([$this,'m'])), and any runtime-computed target; a real dependency may exist, but the analysis cannot determine the target reliably. THESE TWO EXCLUSIONS ARE DIFFERENT CLAIMS AND MUST NOT BE MERGED: the first says there is nothing to connect to; the second admits we cannot see it. (PO/ARB decision 2026-08-16)",
+    "first_class_callables": "EXCLUDED. First-class callable references (m(...)) are currently outside the LCOM4 cohesion contract. They may represent a real dependency, but they are not treated as an invocation relationship for this metric. A separate metric may be introduced later if method-reference coupling proves valuable. (PO/ARB decision 2026-08-16)",
+    "static_methods": "INCLUDED as nodes; a static that neither touches $this NOR participates in an internal behavioural relationship is an isolated component (inflates LCOM4 — known, pinned, revisitable)",
     "trait_methods": "NOT resolved — only methods declared in the class body are analyzed (known limitation)",
     "inherited_methods": "NOT included — the class is analyzed in isolation (known limitation)",
-    "magic_methods": "no special handling beyond constructor/destructor exclusion"
+    "magic_methods": "no special handling beyond constructor/destructor exclusion",
+    "own_class_name_resolution": "OwnClass::m() is recognized only when the name matches the class's own declared name AS WRITTEN; namespaced or aliased spellings are not resolved — the class is analyzed in isolation (known limitation)"
   },
   "_caution": "Validate the metric before validating the code: values on real classes (e.g. Election=29) are observations pending this suite's conformance, never verdicts.",
   "_future_layout": "When a second implementation language arrives, this evolves to specification/ + fixtures/ + implementations/{php,python,...} — the specification becomes the source of truth, every implementation executes it. Recorded 2026-08-04; not a refactor instruction.",
@@ -16,5 +19,8 @@
   "constructor-glue.php": [{"class": "ConstructorGlueExample", "value": 2}],
   "isolated-methods.php": [{"class": "IsolatedExample", "value": 2}],
   "static-methods.php": [{"class": "StaticExample", "value": 2}],
-  "trait-user.php": [{"class": "TraitUserExample", "value": 1}]
+  "trait-user.php": [{"class": "TraitUserExample", "value": 1}],
+  "self-call.php": [{"class": "SelfCallExample", "value": 2}],
+  "static-call-chain.php": [{"class": "StaticChainExample", "value": 1}],
+  "parent-call.php": [{"class": "ParentCallExample", "value": 2}]
 }
