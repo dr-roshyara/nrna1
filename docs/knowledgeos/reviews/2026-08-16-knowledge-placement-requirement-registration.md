@@ -43,3 +43,27 @@ The fix-forward convention (README, this directory) · the historical files in `
 ---
 
 **Traceability:** ARB acceptance act 2026-08-16 (this message's verdict: fix-forward ✅ · historical-stay ✅ · new-root ✅ · requirement registered) · convention `docs/knowledgeos/reviews/README.md` (`70fd2b35`, wording ARB-strengthened same day) · drift verification (66 `KOS-*` files; 19/22/19 across 08-14/15/16; 39 `tokenRef` hard references) · placement policy `docs/adr/ADR_20260801_1740_ Documentation Roots and Artifact Placement.md` · `documentation-placement.yaml` · G-5 (the same failure shape in the role topology) · ES-001.3 (the detection duty under which the drift was surfaced)
+
+---
+
+## Addendum (same day) — second candidate requirement: Governed-Knowledge Distribution
+
+**Trigger:** within the hour of the convention's registration, the next Architecture lane wrote four work-item documents to the old location. Verified mechanism: the lane's only taught path was the workflow record's `tokenRef`, which points to a pre-convention location; the convention existed in a README the lane had no reason to open. `AMD2` (placement routing) was registered on the work item; Governance did not move another lane's documents — the owning lane moves its own.
+
+**The ARB's classification, registered:** this is a **knowledge-distribution problem**, not a placement problem and not a one-off human mistake:
+
+```
+Governance knowledge → stored in repository → ? discovery ? → role/session working context
+```
+
+The `?` is currently unreliable. It applies beyond placement: workflow rules · business language · role separation · approval semantics · attribution rules · assurance requirements.
+
+**Candidate EKS requirement (second, registered as evidence — no mechanism designed):**
+
+> **Operational rules must be discoverable by the responsible session at startup; inherited path precedent must never override derived placement.** Governed rules that affect how a session operates must be discoverable by the session at startup and must not depend on inherited precedent.
+
+**Precision correction (ARB wording supersedes the earlier Governance phrasing):**
+
+> **Recording a rule is not sufficient. The responsible session must reliably discover and apply the current rule.**
+
+**The two-specimen class evidence:** (1) the placement rule — approved, registered, strengthened, and violated innocently by the next lane the same hour; (2) the four-session rules — different Governance windows behaved differently on the same day (the duplicate work item, the duplicate registrations). Same class: **the programme has governance knowledge, but the runtime does not consistently propagate the current governed knowledge to every execution role.** A first-class EKS architecture problem — **evidence preserved; the current Architecture work continues; no immediate redesign.**
