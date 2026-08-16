@@ -83,6 +83,27 @@
 - ❌ **The `ALT-2` trial is not expanded.** Per §10 of its protocol, the correct response to a trial limitation is to **record it and leave the experiment alone** — including the limitation that CONTEXT/session-log-only turns generate no `E-T1` data.
 - ❌ **No finding is promoted, ranked, or aged.** Sitting in section A implies **no** claim that something should be done.
 
+## H · Deferred target-architecture inputs — held here so no lane is created for them
+
+**Added 2026-08-16 on PO/ARB direction.** These are **design inputs, not findings and not work items.** They are recorded so their intent survives without a lane existing to pull work forward.
+
+| Input | Where it lives | Status |
+|---|---|---|
+| **Work Item B — *EKS Strategic Architecture Finalization*** (rule model · authority model · knowledge vocabulary · bounded contexts · context map · C4 · architecture constitution) | this register only — **deliberately no work item** | ⏸️ **DEFERRED** until `KOS-ARCH-BASELINE-001` Phase A is **verified and its baseline accepted.** *"Do not create a dormant B merely to make the backlog look complete"* |
+| **Rule Model business semantics, incl. `RM-1`…`RM-4`** | `docs/knowledge_tranfer/20260816_1211_rule_model_business_semantics.md` | ⏸️ **Preserved as a future target-architecture input. NOT actively designed.** Revisited only after baseline acceptance |
+
+> **Why they are held rather than commissioned:** all of it is **target-architecture work**, and `KOS-ARCH-BASELINE-001`'s grant forbids that while Phase A reconstructs the current state. The agreed sequence is **reconstruct → verify → accept → *then* design.** Recording intent is not the same as authorizing work.
+>
+> ⚠️ **Noted for honesty, not as criticism:** the Rule Model document was created **2026-08-16 12:11**, eight minutes after the gap analysis that identified architecture output displacing evidence production. **It is itself one of the six documents that appeared in that two-hour window.** That does not make it wrong — it makes it an input to be used later, which is precisely why it sits here rather than in a lane.
+
+## I · Candidate invariants — proposed, NOT adopted
+
+| Candidate | Wording | Status |
+|---|---|---|
+| **Evidence-substitution invariant** | *"Architecture activity cannot substitute for operational evidence when the decision under consideration is explicitly gated on operational evidence."* | 🕯️ **CANDIDATE.** Proposed 2026-08-16, **deliberately not registered** — the wording was offered conditionally. **One PO/ARB act adopts it** |
+
+**Why it is worth keeping as a candidate:** it binds the **substitution**, not the volume. *"Don't write too many architecture documents"* measures output; this measures **whether the required evidence is being produced at all** — which is the behaviour actually at issue.
+
 ## G · Maintenance
 
 **Single home.** When a finding opens, closes, or gains a work item, **this register is updated in place** — new rows appended, dispositions annotated. **Closed entries move to §D; they are not deleted**, so the register shows what was decided as well as what is pending.
