@@ -43,6 +43,7 @@
 |---|---|---|---|
 | ES-001.1 Rule parsimony | AI evaluates ("does an existing rule cover this?" is reasoning) | human review at ratification | None |
 | ES-001.2 Documents-record-governance | AI evaluates → **Human decides** | human review | None |
+| ES-001.3 Governance orientation duty | AI evaluates and **must recommend** → **Human decides** (recommendation is never authorization) | human review + workflow-record fold (state claims must be reproducible from the records) | **Candidate** — the detections are record-derivable (stale/unstarted lanes, grants without assignments, owner-vs-state mismatches); no automation exists |
 | AIP-10/11 (registered) | AI evaluates | OQ instruments (date/score scans) | Existing (OQ greps) |
 | ES-002.1 Implementation-first · ES-002.2 Observation stop | AI evaluates | EP-02 review | None |
 | EEP lifecycle + EP-01-Light gate | AI evaluates → **Human approves** | EP-02 review + reminders | Existing (AST-005/006 reminders) |
