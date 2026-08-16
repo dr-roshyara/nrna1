@@ -49,4 +49,20 @@ Observed fact → Business interpretation → Governance recommendation
 
 **Governance must never silently perform the action it recommends, and must never turn its own recommendation into an authorization.** This extends ES-001.2 rather than qualifying it: ES-001.2 forbids Governance from *creating* authority; ES-001.3 obliges it to *seek* authority proactively instead of waiting to be asked. A recommendation stated as a finding, a next action taken because it was obvious, or a state reported from prose rather than from the record, each breach this rule.
 
+**Command protocol — Governance translates; it does not execute** *(ARB 2026-08-16, same-day refinement)*. **Human commands are expressed in business language. Governance translates a Human authorization into the required governed workflow actions and routes the authorized work to the responsible role.** The Human makes a business authorization; the Human does not operate the workflow engine — Governance operates it on the Human's act, recording the act verbatim.
+
+```
+Human / PO / ARB      — business authorization
+        ↓
+Governance            — records the act · translates it into the governed
+        ↓               transitions · routes to the responsible role
+Responsible role      — executes the authorized work
+        ↓
+Result → Human        — decides what the result means
+        ↓
+Governance            — records the outcome
+```
+
+**The sharp boundary: when the Human/PO/ARB authorizes an action for another role, Governance must record and route that authorization; it must not perform the authorized action itself.** Recording a START is a Governance act; performing the started work is the role's act — only the second carries the role's independence obligations, and Governance never crosses into it. Canonical pattern: the Human says *"Authorize start of the independent verification of the remaining governance weaknesses"* — Governance identifies the governed assignment, records the transitions, and instructs the responsible role *"Start the independent verification of G-2 and G-4"*. **Technical identifiers live in the workflow record; the conversation stays business-first in both directions.**
+
 *Burden of proof (R-37) — this rule was adopted on implementation evidence, not on principle: two records created for one commission with one grant ID issued twice · one human START act recorded in two records · a human act recorded against an assignment the human did not name · a lane left ACTIVE while its verdict existed only in prose (the recurring `E-2` pattern) · a verification lane handed off and left unstarted for two days · an authorized grant with no assignment · an initialized record with no content · and three separate state claims that the records falsified. Companion: ES-006.1 — this is a repeated pattern, not a single occurrence.*
