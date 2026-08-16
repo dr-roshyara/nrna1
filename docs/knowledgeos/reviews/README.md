@@ -10,7 +10,21 @@
 
 ## 2 · The convention now in force
 
-**From 2026-08-16 onward, KnowledgeOS work products — commissions, registrations, reviews, verification reports, decision requests — are placed under `docs/knowledgeos/reviews/`.** Placement is **derived, never chosen**: run `php scripts/doc-placement.php` with the document's scope and domain; do not inherit a root from a predecessor document's path or a workflow record's `tokenRef`.
+**From 2026-08-16 onward, KnowledgeOS work products — commissions, registrations, reviews, verification reports, decision requests — are placed under `docs/knowledgeos/reviews/`.**
+
+**Placement is derived from the knowledge subject and governed product/domain — never from the producing session, predecessor path, terminal, or convenience** *(ARB-strengthened wording, 2026-08-16)*. Run `php scripts/doc-placement.php` with the document's scope and domain. **The subject is determined first**; the location follows:
+
+```
+Knowledge subject → Product/Domain → Knowledge Space → Artifact type → Canonical location
+```
+
+not:
+
+```
+Current terminal → previous path → same folder again
+```
+
+**The distinction this preserves:** *historical location is evidence; canonical future location is architecture.*
 
 *Why the drift happened (recorded so it is not repeated):* `docs/publicdigit/reviews/` was the repository's only `reviews/` folder when the KnowledgeOS governance work began on 2026-08-14; each session then inherited the previous session's paths via `tokenRef` references — consistency-by-repeated-configuration instead of derivation. The 08-16 session that verified the drift had itself written ~20 documents to the wrong root the same day.
 
