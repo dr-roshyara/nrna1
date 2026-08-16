@@ -3,6 +3,13 @@
 
 **Session 4 — `S4-architecture-baseline` · ACTIVE, mutation owner (resolver-verified before analysis) · grant `G-KOS-ARCHBASE-A` — PHASE A ONLY · 2026-08-15**
 
+> ## v1.1 — CORRECTED 2026-08-17 · still PROPOSED, NOT ACCEPTED
+> **Bounded precision corrections only**, under grant `G-KOS-ARCHBASE-A-CORRECT`, repairing the defects confirmed by independent verification #1 (`2026-08-17-…-phase-a-independent-verification.md`): **D-1**/**V-A** (hook count 8→10, incl. the §6 caption and the §11 row) · **D-2** (executable-substance count) · **D-3** (7-vs-8 census, new §6.4) · **V-B** (why `CAP-04` has no row) · **V-D** (method attached to the dependency scan) · **V-C** (duplicate `.gitignore` citation). **V-E is not correctable** and is recorded as an acceptance-context note in §5.1.
+>
+> **The snapshot is unchanged: this remains a reconstruction as of 2026-08-15.** Figures are corrected to what was true *at* the snapshot — never updated to today's state. The reconstruction scope is unchanged; no new investigation was performed. **No conclusion of v1.0 was reversed** — the verifier found the thesis sound and the defects confined to precision and internal consistency.
+>
+> **R-34 forward constraint:** the process that applied these corrections **must not perform their re-verification.**
+
 > **This document reconstructs what KnowledgeOS *is*. It contains no target architecture, no redesign, no recommendation, and no remediation.** Where something looks wrong, it is recorded as a finding and left alone. Phase B (assessment) and Phase C (target) are **not authorized** and are not begun here.
 >
 > **Startup gate (commission §1):** work item `KOS-ARCH-BASELINE-001` ✅ · assignment `S4-architecture-baseline` ✅ ACTIVE + mutation owner ✅ · grant `G-KOS-ARCHBASE-A` AUTHORIZED, Phase A only ✅. *I am authorized to reconstruct the current KnowledgeOS architecture. I am NOT authorized to redesign, implement, remediate, verify, qualify, or adopt.*
@@ -17,7 +24,7 @@
 
 Five statements that characterize the system as measured:
 
-1. **Two architectures coexist, and they are not the same size.** A *declared* architecture of 6 bounded contexts + 7 components exists as frozen ARB-approved documents (`Observed` as documents; `Declared` as architecture). An *executing* architecture consists of **8 wired hooks, 12 scripts, 16 registered assets, and 8 workflow records**. Four of the seven declared components have **no executable substance at all**.
+1. **Two architectures coexist, and they are not the same size.** A *declared* architecture of 6 bounded contexts + **7 components** exists as frozen ARB-approved documents (`Observed` as documents; `Declared` as architecture) — while the **live registry carries 8** (`CMP-001…008`); the extra is **`CMP-001 composition_root`, absent from the declared table** *(corrects **D-3**; §6.4)*. An *executing* architecture consists of **10 wired hooks** *(corrects **D-1**/**V-A**)*, 12 scripts, 16 registered assets, and 8 workflow records. **Two of the eight registered components have no assets at all** (`CMP-003`, `CMP-006`); two more are partial or by-reference (`CMP-005`, `CMP-007`) *(corrects **D-2**; consistent with §3.1's own table, which the superseded wording contradicted)*.
 2. **The platform's real substance is its rule corpus, not its runtime.** `ES-001`…`ES-006`, the AIP principles, the ADR-AIP rulings register, and the KnowledgeOS orchestration rulebook (amendments `A-1`…`A-8`) constitute the bulk of the system. All six ES standards are **`PROPOSED`, none ratified** (measured).
 3. **Exactly one component carries the new mechanism.** `workflow_engine` (CMP-004) holds 7 of 16 assets including both `AST-015` (the record mechanism) and `AST-016` (the resolver). It was described as "paper" three days ago; it is now the platform's only executable governance surface.
 4. **Authority is deliberately *not* automated.** No mechanism grants, blocks, or evaluates authorization. `AST-015` refuses malformed transitions; it does not decide who may act. Every gate that matters — START, approval, qualification, closure — is a human act that Governance *registers*. This is architecture, not an omission (`R-37`: governance precedes automation).
@@ -63,7 +70,7 @@ Six contexts + two external domains, derived by an explicit merge/keep-separate 
 
 # 4 · Capability Map
 
-Declared capabilities `CAP-01`…`CAP-13` (source: `Phase-02.5-Certification-Plan.md`). Measured realization:
+Declared capabilities `CAP-01`…`CAP-13` (source: `Phase-02.5-Certification-Plan.md`). Measured realization. **`CAP-04` has no row because the ARB merged it into `CAP-03` (`Phase-02.5:41`) — the capability does not exist separately, so its absence is substantive, not an omission** *(corrects **V-B**)*:
 
 | Capability | Declared owner | Realized by | State |
 |---|---|---|---|
@@ -95,7 +102,9 @@ Declared capabilities `CAP-01`…`CAP-13` (source: `Phase-02.5-Certification-Pla
 | Platform inventory | `.claude/platform/registry.yaml` — 16 assets, 8 components | counted twice, independently | `Observed` |
 | **Authority state** | grants inside the same JSON records; **origin** is a committed human act referenced by `humanActRef` | source + records | `Observed` |
 
-**Critical measured property:** the workflow records are **gitignored** (`.gitignore:25,32`) and untracked — **zero history for any of the 8**. Every other authority artifact is a git commit. The platform's machine-authoritative state is therefore the *only* governance artifact with no provenance, no diff, no recovery.
+**Critical measured property:** the workflow records are **gitignored** (`.gitignore:25` and `:32` — two duplicate identical entries, *(**V-C**)*) and untracked — **zero history for any of the 8**. Every other authority artifact is a git commit. The platform's machine-authoritative state is therefore the *only* governance artifact with no provenance, no diff, no recovery.
+
+> **Acceptance-context note (**V-E** — recorded, NOT corrected).** This finding applies reflexively to the count above: because the records are gitignored with no history (U-8), **"8 workflow records" is retroactively unverifiable** — no one can now audit what existed on 2026-08-15. It is not an error, and the document cannot repair it; the baseline's own machine-state figures are declarations of a moment that left no trace. **The PO/ARB should accept the baseline knowing this.**
 
 ## 5.2 Knowledge ownership
 
@@ -133,7 +142,7 @@ Architecture proposes · Implementation executes · Verification reports
    ┌─────────────────── .claude/ (runtime mount) ────────────────────┐
    │                                                                  │
    │   settings.json (CMP-001 composition root)                       │
-   │        │ wires 8 hooks at 4 runtime moments                      │
+   │        │ wires 10 hooks at 4 runtime moments   (D-1/V-A)         │
    │        ├─▶ CMP-002 session_manager: inject-context ·             │
    │        │        session-changes-logger · session-log-reminder    │
    │        ├─▶ CMP-004 workflow_engine: discipline-gate ·            │
@@ -153,13 +162,19 @@ Architecture proposes · Implementation executes · Verification reports
 **Measured dependency facts:**
 
 - **AST-016 → AST-015 is a one-way consumer dependency**, implemented by `proc_open` at `session-resolve.php:103`, with the mechanism path resolved from `KOS_MECHANISM_PATH` or defaulting to the sibling. The resolver self-documents that AST-015 is the *interpretation authority* and that it "performs no independent interpretation." `Observed`.
-- **AST-015 depends on nothing** in the platform (22 matches for require/include/exec are all internal function definitions and its own dispatch — no cross-asset dependency). It is the dependency root. `Observed`.
+- **AST-015 depends on nothing** in the platform: a scan for dependency constructs (`require`/`include`/`exec`) returns only internal function definitions, its own dispatch, and the English word *"requires"* inside refusal strings — **no cross-asset dependency**. It is the dependency root. `Observed`. *(**V-D**: the superseded text carried a bare match count without its method; a near-identical pattern family yields a different number, so the count is method-dependent and evidentially inert. The conclusion is unchanged and was re-derived independently.)*
 - **Platform → Product direction is one-way**: the platform reads/guards `app/`; no `app/` code imports or invokes any `.claude/` asset. `Observed` (consistent with `AIP-14`).
 - **The registry is data, not a dependency**: nothing loads `registry.yaml` at runtime. It is a governed inventory consulted by humans and by registry-first process. `Observed`.
 
 ## 6.2 Registry-first compliance — measured
 
 **Three scripts execute as wired hooks but are absent from the registry:** `claude-code-trigger.sh` (PostToolUse), `engineering-placement-guard.sh` (PreToolUse), `project-knowledge-guard.sh` (PreToolUse). The registry's own binding workflow is *register → review → implement → verify* (`R-17`/`R-21`). **Recorded as a finding; not repaired, not judged.** `Observed`.
+
+## 6.4 Declared component table vs. live registry — a census discrepancy *(corrects **D-3**)*
+
+The frozen `Phase-03A-Reference-Architecture.md` states **"Seven components"** and its table does not contain `composition_root`. The live registry carries **eight** — `CMP-001…008` — including **`CMP-001 composition_root`, which holds 2 assets** (`settings.json` AST-001 and the plan-timestamp hook).
+
+**The original document used "7" and "8" in different sentences without noting they disagree.** For a reconstruction whose thesis is *declared ≠ executing*, an unflagged declared-vs-registry gap — and specifically the **composition root**, the component that wires every hook in §6's diagram — was an instance of its own subject matter, missed. `Observed`.
 
 ## 6.3 A measured correction to the evidence handover
 
@@ -231,7 +246,7 @@ Each traced to evidence; none invented.
 
 | # | Unknown | Why it cannot be settled in Phase A |
 |---|---|---|
-| U-1 | Whether the declared 6-context model still describes the system, given 4 of 7 components have no executable substance | requires judgment about whether a context can exist as rules alone — a Phase B question |
+| U-1 | Whether the declared 6-context model still describes the system, given that **2 of 8 registered components have no assets and 2 more are partial/by-reference** *(figure corrected per **D-2**; the question is unchanged)* | requires judgment about whether a context can exist as rules alone — a Phase B question |
 | U-2 | Whether `docs/publicdigit/reviews/` is a platform or product artifact store | it holds both lanes; `ES-005.1` says one thing, practice another |
 | U-3 | Whether governed session orchestration is a seventh bounded context or a capability inside CMP-004 | both readings defensible; §3.2 |
 | U-4 | Whether `docs/knowledge/` (EKP) and `docs/pks/` are one knowledge system or two | different constitutions, no executing component to arbitrate |
@@ -252,9 +267,10 @@ Each traced to evidence; none invented.
 | Statement | Class | Evidence | Confidence | Open |
 |---|---|---|---|---|
 | 6 contexts + 7 components are declared | `Observed` (as documents) | `Phase-02-Domain-Model.md`, `Phase-03A-Reference-Architecture.md`, both FROZEN | high | U-1 |
-| 4 of 7 components have no executable substance | `Observed` | registry status fields; asset-to-component census | high | — |
+| **2 of 8 registered components have no assets** (`CMP-003`, `CMP-006`); 2 more partial/by-reference | `Observed` | asset-to-component census, recounted | high | — *(corrects **D-2**)* |
+| **Declared table lists 7 components; registry carries 8** — `CMP-001 composition_root` is registry-only | `Observed` | `Phase-03A` table vs registry ids | high | — *(corrects **D-3**)* |
 | 16 assets, not 24 | `Observed` | two independent counts | high | — |
-| 8 hooks wired at 4 runtime moments | `Observed` | `settings.json` parse | high | U-9 |
+| **10 hooks wired at 4 runtime moments** | `Observed` | `settings.json` parse — **count computed, not eyeballed** (the superseded "8" was an eyeballed total; §6's diagram already summed to 10) | high | U-9 *(corrects **D-1**/**V-A**)* |
 | 3 wired hooks are unregistered | `Observed` | disk vs registry comparison | high | — |
 | AST-016 → AST-015 one-way, by `proc_open` | `Observed` | source `:90,:103,:288` | high | U-6 |
 | AST-015 is the dependency root | `Observed` | source scan | high | — |
