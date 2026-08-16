@@ -8,7 +8,7 @@
 
 | Standard | Title | Governs | Hosts (new canonical homes) |
 |---|---|---|---|
-| [ES-001](ES-001-Engineering-Constitution.md) | Engineering Constitution | Foundational principles & governance creation | rule parsimony · documents-record-governance |
+| [ES-001](ES-001-Engineering-Constitution.md) | Engineering Constitution | Foundational principles & governance creation | rule parsimony · documents-record-governance · governance orientation duty |
 | [ES-002](ES-002-Engineering-Execution.md) | Engineering Execution | How work is performed | implementation-first default · AIP observation stop |
 | [ES-003](ES-003-Qualification.md) | Qualification | How the platform verifies itself | qualification lifecycle · score-persistence stop · measurement conventions |
 | [ES-004](ES-004-Documentation.md) | Documentation | How records are structured & governed | retrospectives-recommend · record conventions |
@@ -43,7 +43,7 @@
 |---|---|---|---|
 | ES-001.1 Rule parsimony | AI evaluates ("does an existing rule cover this?" is reasoning) | human review at ratification | None |
 | ES-001.2 Documents-record-governance | AI evaluates → **Human decides** | human review | None |
-| ES-001.3 Governance orientation duty | AI evaluates and **must recommend** → **Human decides** (recommendation is never authorization) | human review + workflow-record fold (state claims must be reproducible from the records) | **Candidate** — the detections are record-derivable (stale/unstarted lanes, grants without assignments, owner-vs-state mismatches); no automation exists |
+| ES-001.3 Governance orientation duty (incl. business-language-first communication) | AI evaluates and **must recommend** → **Human decides** (recommendation is never authorization) | human review + workflow-record fold (state claims must be reproducible from the records; **business meaning stated before technical identifiers**) | **Candidate** — the detections are record-derivable (stale/unstarted lanes, grants without assignments, owner-vs-state mismatches); the communication duty is **judgment, not automatable**; no automation exists |
 | AIP-10/11 (registered) | AI evaluates | OQ instruments (date/score scans) | Existing (OQ greps) |
 | ES-002.1 Implementation-first · ES-002.2 Observation stop | AI evaluates | EP-02 review | None |
 | EEP lifecycle + EP-01-Light gate | AI evaluates → **Human approves** | EP-02 review + reminders | Existing (AST-005/006 reminders) |
