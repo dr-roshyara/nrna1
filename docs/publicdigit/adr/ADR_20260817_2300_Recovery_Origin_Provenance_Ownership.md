@@ -125,6 +125,8 @@ RestorationOrigin
 > **(c)** the **allowed origin types** and their mandatory references ·
 > **(d)** the **OWNER of each causal invariant** (the §4 options are the candidate homes: A/B domain-owned · C excluded · D proxy) ·
 > **(e)** the **authorization path** if a domain change is chosen — a domain slice with its own RED tests and its own authorization; ⛔ **no application workaround** ·
+> ⚠️ **The consumption rule that (d) and (g) rest on (added 2026-08-17):** ***"An origin type may be REFERENCED by other bounded contexts, but only its OWNING bounded context may create, validate, or change its meaning."*** **It forecloses the future half-claim *"we don't own the concept, but we need to validate it"* — consumers may USE meaning; they do not DEFINE it.**
+>
 > **(g)** ⚠️ **which BOUNDED CONTEXT is authoritative for EACH origin type** — e.g. a halt origin owned by the Recovery concern, an unachievable-resolution origin possibly owned elsewhere. **A typed origin WITHOUT stated ownership can still degenerate into a shared data structure**, and the DDD rule is: ***a concept is not owned because it has a class; it is owned because ONE bounded context defines its meaning.*** ⛔ **Two contexts writing the same origin type is co-ownership, which is no ownership.** ·
 > **(f)** the **UC-3 consequence**: what the committed `FillCommitteeSeatHandler` must do differently, and whether that lands in the normalization slice or a separate one.
 
