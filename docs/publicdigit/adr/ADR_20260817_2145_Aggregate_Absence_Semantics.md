@@ -177,6 +177,12 @@ Failure semantics           Normal domain state
 >
 > *The lane will not choose among these options, and has implemented none of them.*
 
+### 6-guard · REQUIRED IN THE RULING — the classification guard *(added at PO direction, 2026-08-17)*
+
+> **"The Application layer may detect absence of a required reference but may not classify the cause of absence unless that classification is already represented by an authorized domain contract."**
+
+⚠️ **Why it must be explicit rather than implied:** without it, a future developer reads *"missing committee"* as *"the committee never existed"* — **a lifecycle statement the application has no standing to make.** The application may know *"I require a Committee for this use case"* and *"the repository returned nothing"*; it may **not** invent **why** it is absent, **whether corruption occurred**, or **whether a lifecycle state exists.** ⛔ **And this is the guard that keeps composite semantics from becoming an application decision engine — the shape to forbid being `if ($committee === null) { /* decide it is caller error */ }` written inside a handler.**
+
 ### 6a · REQUIRED IN THE RULING — "What this decision does NOT mean" *(pre-drafted at PO direction, 2026-08-17, to prevent the discussion reopening)*
 
 > **"This ADR does not define a universal exception policy. It defines the domain meaning of absent references. Representation follows after meaning."**
