@@ -27,7 +27,7 @@
 | | Option | Authorization required | Note |
 |---|---|---|---|
 | **A** | **`RecoveryProcess` owns `originatingGate`** | ⛔ **DOMAIN** | Registered position ranks it strongest: *"the invariant stays together"* — the recovery period and the halt that caused it in one place. ⚠️ **Evidence from the investigation: this retains a fact the F-2 handler ALREADY HOLDS AND DISCARDS**, which is why it reads as the natural home. |
-| **B** | **The recovery-start fact carries provenance** (`RecoveryPeriodStarted { originatingGate, … }`) | ⛔ **DOMAIN** | Also domain-owned; event-oriented. ⚠️ If AG-3 later needs it, it must reconstruct it. |
+| **B** | **The recovery-start DOMAIN FACT carries provenance** — an immutable domain record (`RecoveryPeriodStarted { originatingGate, … }`) | ⛔ **DOMAIN** | Also domain-owned. ⚠️ If AG-3 later needs it, it must reconstruct it. ⚠️ **Vocabulary care (2026-08-17): read as *domain fact / immutable domain record* FIRST. "Event" is deliberately avoided here — it pulls readers toward event-sourcing assumptions the system has not adopted. If this option is later implemented AS an event, then and only then do §5d.1's guarantees apply.** |
 | **C** | **A protocol read port supplies it** | ⛔ **NEW PORT** | ⛔ **Rejected as a direction:** the protocol answers *"what happened?"*, not *"what causal invariant allows this?"*; using it so **turns history into hidden authority — a hidden event-sourced domain without event sourcing's guarantees.** |
 | **D** | **A ruled proxy** (today's behaviour, blessed) | ruling only | Weakest on sovereignty; *"could work temporarily, but creates future risk"* — the application becomes a translator of missing domain knowledge, violating **invariant ownership follows the bounded context, not the layer that needs the data.** |
 | **E** | **The command carries it** | — | ⛔ **REJECTED by the lane, with reason:** it would let an appointment body decide progression meaning, leaking lifecycle meaning into the caller. |
@@ -106,6 +106,10 @@ RestorationOrigin
 
 **This closes the same loophole `§6c` closes in ADR-1: a technical trace is not a business meaning, and reconstructing causality after the fact makes the reconstruction — not the domain — the author of the meaning.**
 
+### 5d.0 · Vocabulary discipline in this ADR *(added 2026-08-17)*
+
+**Throughout this ADR, read "fact" as *domain fact / immutable domain record*, never as "event" in the event-sourcing sense.** ⚠️ **The word `event` is used only where the protocol or an actual event-sourcing design is meant** — because using it loosely invites a reader to assume stream identity, replay and versioning that this system has not adopted. **If a chosen option is implemented as an event, §5d.1's guarantees become obligations at that moment, not before.**
+
 ### 5d.1 · If event sourcing is ever adopted, it must be adopted properly
 
 **"Event sourcing" must not be claimed loosely.** If the system later adopts it for the relevant aggregate, the implementation must provide: **immutable events · aggregate stream identity · versioning · expected-version append · deterministic replay · schema evolution.** ⛔ **Reading provenance out of an append-only log without these is not event sourcing; it is a weak imitation with none of its guarantees** — the failure mode §3 already forbids.
@@ -121,6 +125,7 @@ RestorationOrigin
 > **(c)** the **allowed origin types** and their mandatory references ·
 > **(d)** the **OWNER of each causal invariant** (the §4 options are the candidate homes: A/B domain-owned · C excluded · D proxy) ·
 > **(e)** the **authorization path** if a domain change is chosen — a domain slice with its own RED tests and its own authorization; ⛔ **no application workaround** ·
+> **(g)** ⚠️ **which BOUNDED CONTEXT is authoritative for EACH origin type** — e.g. a halt origin owned by the Recovery concern, an unachievable-resolution origin possibly owned elsewhere. **A typed origin WITHOUT stated ownership can still degenerate into a shared data structure**, and the DDD rule is: ***a concept is not owned because it has a class; it is owned because ONE bounded context defines its meaning.*** ⛔ **Two contexts writing the same origin type is co-ownership, which is no ownership.** ·
 > **(f)** the **UC-3 consequence**: what the committed `FillCommitteeSeatHandler` must do differently, and whether that lands in the normalization slice or a separate one.
 
 ### 6a · REQUIRED IN THE RULING — "What this decision does NOT mean" *(pre-drafted at PO direction)*
