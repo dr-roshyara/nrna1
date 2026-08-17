@@ -85,6 +85,14 @@ Acceptance conditions:
 
 *(This supersedes the provenance caveat in the header to this extent: the authority chain is attested and the increment accepted; the provenance defect and RED-ordering caveat remain permanently recorded as history.)*
 
+## Baseline Freeze
+
+EM-IMPL-001 is frozen as: **Accepted · Closed · Verified · Baselined.**
+
+Reference (the cold-start entry point): `docs/publicdigit/implementation/2026-08-17-EM-IMPL-001-baseline-freeze.md`
+
+Future work must enter through one of: **`EM-OPEN-111` adjudication · §2b correction (Architecture, own authorization) · `PBDIGIT-69` hygiene slices · Increment 2 authorization.** Nothing else touches this code.
+
 ## Traceability
 
 `EM-ARCH-001` (approved design; §2c/§2e/§5c) · `EM-IMPL-001` (prepared act + readiness report G=YES; **authorization acts pending registration — fork ruling open**) · rules `EM-GOV-005`/`028`/`029`/`031`/`033`/`035`/`036`/`038`/`052`/`056`/`057`/`058`/`059`/`060`/`061`/`062`/`063`/`064`/`065`/`066`/`067`/`068`/`069` · ADR-T11 · `F-PROTO-1` · `P-2H` · verification queue items ①–⑤ (`.claude/sessions/2026-08-17.md`).
