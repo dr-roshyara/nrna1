@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | 🟡 **PROPOSED — decision pending PO/ARB.** Nothing in this document is in force until the decision block (§7) is signed. |
+| **Status** | ✅ **ACCEPTED — Option A (PO/ARB, 2026-08-17): BC-7 Governed Session Orchestration is recognized.** Primary decision signed in §7; **consequence decisions (a) CAP id and (b) role-model ownership remain UNDECIDED** — their block is still blank. Context-map update / Baseline v2 are the next architecture steps and require their own commissioning; nothing physical (folders, components, code) is authorized by this acceptance. |
 | **Series** | ADR-AIP (AI Engineering Platform) |
 | **Decision authority** | PO/ARB — a bounded-context recognition is a strategic model decision (`R-34`: engineering never accepts its own work) |
 | **Drafted by** | Architecture terminal (`KOS-ATTR-ARCH-001` Stage 2), authority: generated — this draft decides nothing |
@@ -80,9 +80,15 @@ BC-4's nature (ADR-C7) · the composition-root census and the declared-Core ques
 
 **Primary decision — the boundary, alone:**
 
-> ⬜ **Option A — recognize BC-7 (Supporting Subdomain)** · ⬜ **Option B — decline, extend BC-2's language** · ⬜ **Option C — defer, with named re-entry trigger:** ________
+> ☑ **Option A — recognize BC-7 (Supporting Subdomain)** · ⬜ Option B · ⬜ Option C
 >
-> Signed: ________________ (PO/ARB) · Date: ________
+> Signed: **PO/ARB** · Date: **2026-08-17** *(decision delivered in the PO/ARB's own words; registered verbatim below)*
+
+**The decision record, verbatim (PO/ARB, 2026-08-17):**
+
+> *"☑ Option A — Recognize BC-7 Governed Session Orchestration. The PO/ARB recognizes Governed Session Orchestration as a distinct bounded context in the AI Engineering Platform context map. The decision is based on the following architectural evidence: It has its own ubiquitous language: work item · assignment · grant · handoff · human act · mutation ownership · lifecycle transition. It has distinct invariants: one active mutation owner · authorized handoff before transfer · human act required for authority transitions · recorded state overrides narrative state. It has a different change reason from BC-2 Implementation Guidance. Combining implementation guidance and authority orchestration creates two different models inside one boundary. **Therefore the previous BC-2 placement is recognized as a physical implementation placement, not the final strategic domain boundary.**"*
+
+**Registration notes (Architecture terminal, 2026-08-17):** ① the act decides the **primary boundary question only** — the consequence block below remains blank, per this ADR's own sequencing; ② the closing clause is load-bearing and is read exactly as written: the Increment-1 placement of the mechanism inside CMP-004 **stands as a physical placement** — recognition changes the *model*, and any physical change remains future work under its own authorization (`R-37`, §3 Option A consequences); ③ BC-7 enters the context map as a **Supporting Subdomain** per §3 Option A's classification.
 
 **Consequence decisions — taken only after the primary decision is signed, per its outcome (§2):**
 
