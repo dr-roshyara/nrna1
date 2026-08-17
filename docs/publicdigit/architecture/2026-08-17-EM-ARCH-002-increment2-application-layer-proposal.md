@@ -1,5 +1,7 @@
 # `EM-ARCH-002` — Increment-2 Architectural Proposal v1.0: Application Layer for the Election Operating Core
 
+> ✅ **BOUNDARY AUTHORIZED (PO/ARB, 2026-08-17)** — act registered in `docs/publicdigit/reviews/2026-08-17-EM-ARCH-002-boundary-authorization-registration.md`: **A-3 IN · A-4 OUT (construction fixture) · A-7 query form**; A-8/A-9 remain recorded observations; RED obligations travel in the `EM-IMPL-002` grant; independent verification precedes acceptance; grant and START are separate future acts.
+
 **Type:** Architecture proposal (Increment-2 preparation) · **Date:** 2026-08-17
 **Status:** 🟡 **PROPOSED — NOT approved, NOT authorized.** This document is the boundary presentation for Increment 2. Implementation, technology selection, persistence and deployment remain NOT authorized; the sequence fixed by the PO stands: *proposal → boundary → grant → START → RED*.
 **Baseline consumed:** `EM-IMPL-001` — Architecture `BASELINED` · Implementation `ACCEPTED` · Verification `INDEPENDENTLY VERIFIED` (`docs/publicdigit/implementation/2026-08-17-EM-IMPL-001-baseline-freeze.md`). The domain core (56 files @ `a31f54f1`) is the authoritative baseline; **this proposal changes none of it.**
