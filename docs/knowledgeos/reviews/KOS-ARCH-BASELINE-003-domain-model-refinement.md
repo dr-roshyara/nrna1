@@ -5,7 +5,8 @@
 **Work item:** `KOS-ARCH-BASELINE-003` · **Workflow:** `architecture-domain-model` · **Assignment:** `S4-architecture-bc7-refinement-2` — role **architecture**, ACTIVE and mutation owner (START recorded at **seq 12**)
 **Grants:** `G-KOS-ARCHBASE3-REFINE` + `AMD1` + `AMD2` + `AMD3` (all AUTHORIZED) · **Date:** 2026-08-17
 
-> ## PROPOSAL — returns to the PO/ARB for decision. It does not self-adopt.
+> ## PROPOSAL — **DECIDED: ACCEPTED 2026-08-17** by PO/ARB act *"Accept the BC-7 domain model proposal as refined."*
+> Registration: `2026-08-17-KOS-ARCH-BASELINE-003-acceptance-registration.md`. Lifecycle annotation only — verified content untouched. Acceptance authorizes **no implementation**; `ADR-AIP-04` stays deferred; `OQ-10` stays open; the independence limitation and the unrecorded Verification #3 START stand as disclosed qualifications.
 > **Architecture proposes wording and classification; the PO/ARB decides.** The proposal is **not modified** by this document — every correction below is offered as a *replacement text for a named line*, for the PO/ARB to accept or reject. The verification report is not modified. Nothing here is accepted, implemented, or verified by its own author.
 >
 > **The aggregate root decision, the BC-7 boundary, `CAP-14`, `ADR-AIP-03` and `ADR-AIP-04` are untouched** — see §7, which states each one explicitly rather than leaving it to inference.
