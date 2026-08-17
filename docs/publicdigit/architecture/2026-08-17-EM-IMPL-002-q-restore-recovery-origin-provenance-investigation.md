@@ -99,6 +99,16 @@ UC-3's caller supplies the returned-to gate.
 
 ---
 
+## 3a · The PO's entering POSITION and ranking (registered 2026-08-17 — ⚠️ **POSITION, NOT THE RULING**)
+
+**Verbatim:** *"Prefer domain-owned provenance. Protocol remains evidence, not causal authority."*
+
+**Ranked, with the reason for each place:** ✅ **A strongest** — *"the invariant stays together"*: the recovery period and the halted gate that caused it belong in one place · ✅ **B also valid** — likewise domain-owned · ⛔ **C weak, rejected as a direction** — *the protocol answers "what happened?", not "what causal invariant allows this?"*, and using it so would **turn history into hidden authority** · ⚠️ **D weakest** — *"could work temporarily, but creates future risk."*
+
+⚠️ **Both A and B require DOMAIN authorization (the core is frozen); the companion ruling on restoration with no prior halt (§1.2, the `w8` case) remains required under every option.**
+
+---
+
 ## 4 · Interim state, until a ruling exists
 
 UC-3 keeps the §1.1 proxy, documented in the handler as an open question. **No further use case should consume the proxy**, and **no second acceptance decision should be established for one election** until this is settled — that is the condition under which the proxy is exact.

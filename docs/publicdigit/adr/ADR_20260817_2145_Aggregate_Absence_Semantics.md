@@ -132,6 +132,35 @@ Whichever option is chosen, **the shape is still undecided**, and it cannot be r
 
 ---
 
+## 4b · The PO's decision PROCEDURE and entering POSITION (registered 2026-08-17 — ⚠️ **POSITIONS, NOT THE RULING; §6 stays blank**)
+
+> ### **The reframing — a better test than the option list:** the decision is **not** *"what exception do we throw?"* but ***"what invariant does the absence violate, or does it represent?"***
+
+```
+Repository returns null
+          |
+          v
+What invariant does this reference represent?
+          |
+          +----------------------+
+          |                      |
+          v                      v
+Required existence          Optional lifecycle state
+          |                      |
+          v                      v
+Failure semantics           Normal domain state
+```
+
+**The PO's entering position, verbatim:** *"Do not choose a universal absence meaning. Adopt governed composite semantics: each aggregate's absence meaning is determined by its domain invariant. RecoveryProcess absence remains a normal lifecycle state; Committee and AcceptanceGateDecision require explicit existence semantics."*
+
+**With the options graded, and the grading's reason:** ⛔ **A rejected** and ⛔ **B rejected** — *each contradicts `RecoveryProcess`, where absence is already a valid state, so a global A or B "would actually damage an existing correct model"* · ⚠️ **C too broad** — *a missing Committee does not necessarily mean "not yet created"; it may mean a corrupted reference* · ✅ **D strongest** — **and expressly: *"composite does NOT mean arbitrary. It must be governed by the aggregate invariant."***
+
+> ## ⚠️ **The consequence for the NORMALIZATION slice, which this position changes materially:**
+> **The goal is NOT *"make all handlers handle null the same way"* — that would be wrong.** It is ***"make each handler conform to the governed absence meaning of the referenced aggregate."***
+> **Same discipline. Different meanings.** *(Recorded here because a normalization slice written to the wrong goal would encode the very uniformity this ADR exists to prevent.)*
+
+---
+
 ## 5 · Consequences of NOT deciding (recorded, since this is the status quo)
 
 * UC-3 keeps a **null-dereference path**; UC-1/UC-2 keep a shape nobody ratified; the divergence grows by ~2 sites per remaining use case (UC-4, UC-5).
