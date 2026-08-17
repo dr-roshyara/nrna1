@@ -177,6 +177,25 @@ Failure semantics           Normal domain state
 >
 > *The lane will not choose among these options, and has implemented none of them.*
 
+### 6a · REQUIRED IN THE RULING — "What this decision does NOT mean" *(pre-drafted at PO direction, 2026-08-17, to prevent the discussion reopening)*
+
+> **"This ADR does not define a universal exception policy. It defines the domain meaning of absent references. Representation follows after meaning."**
+
+### 6b · Composite done right vs done wrong *(the PO's illustration, registered because the distinction is the whole risk)*
+
+⛔ **BAD composite — inconsistency wearing composite's clothes** *(no invariant explanation, just three different reflexes)*:
+`Committee missing → throw RuntimeException` · `Gate missing → return null` · `Recovery missing → ignore`
+
+✅ **GOOD composite — one governing principle, three outcomes**:
+
+| Reference | Invariant | Therefore absence is |
+|---|---|---|
+| Committee | **required existence** | a **violation** |
+| Acceptance decision | **required constitutional decision** | a **violation** |
+| Recovery process | **optional running process** | a **normal state** |
+
+**Same governing principle. Different outcomes.** ⚠️ **And the acceptance criteria for the normalization slice follow from the INVARIANT, never from a uniform null policy: each handler's behaviour follows the invariant of the reference it uses.**
+
 ---
 
 ## 7 · Traceability

@@ -109,6 +109,16 @@ UC-3's caller supplies the returned-to gate.
 
 ---
 
+## 3b · REQUIRED IN THE RULING — "What this decision does NOT mean" *(pre-drafted at PO direction, 2026-08-17)*
+
+> **"Provenance ownership is a domain ownership decision, not a data availability decision."**
+
+**Its purpose, stated plainly: it forecloses the future argument *"the protocol already has the information, so let's use it."*** ⚠️ **The failure mode it prevents is a hidden event-sourced domain without any of event sourcing's guarantees — the domain reaching into protocol history to reconstruct meaning it never modelled.**
+
+**Candidate STANDING rule (a promotion signal, not yet adopted):** *"Protocol records decisions; it does not become the source of causal authority."* — the PO states this *"should remain a permanent architecture rule"*, which would make it the **second** promoted standing rule of this subsystem after *"Application consumes established constitutional values; Application never derives constitutional mathematics."*
+
+---
+
 ## 4 · Interim state, until a ruling exists
 
 UC-3 keeps the §1.1 proxy, documented in the handler as an open question. **No further use case should consume the proxy**, and **no second acceptance decision should be established for one election** until this is settled — that is the condition under which the proxy is exact.
