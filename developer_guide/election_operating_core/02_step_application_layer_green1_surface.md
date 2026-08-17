@@ -1,69 +1,66 @@
-# Step 02 — Application Layer GREEN-1: the granted surface (EM-IMPL-002)
+# Step 02 — Application Layer, GREEN-1: the granted surface (behaviour deliberately absent)
 
-**What this step actually implements — and deliberately nothing more.**
+> **Status:** GREEN-1 **CLOSED** (PO/ARB, 2026-08-17). Surface exists; **behaviour intentionally absent** until GREEN-2…GREEN-7. Commits: RED `1f4b4c5f` → surface `d2a0fe7c`.
+> **Placement note:** this guide lives in the **existing** `election_operating_core/` area rather than a new `election/` one — one area per subsystem, consumed not duplicated (ES-005.4).
 
 ## Purpose
 
-GREEN-1 establishes the granted Increment-2 application namespace
-`App\Contexts\Election\Application\OperatingCore\` so the RED suite's structural
-contract binds real production classes. **No use-case behaviour exists yet**:
-every handler and query body throws `BadMethodCallException` naming the GREEN
-increment that will implement it. This is deliberate — a silent no-op body could
-vacuously satisfy the suite's zero-mutation assertions; a throwing body cannot
-make any behavioural test pass without the real domain delegation.
+Introduces the **application layer** for the Model A operating core as **orchestration only**, over the byte-identical frozen domain. Its whole reason for existing is stated in the governance record: **the Application Layer must never become a second Domain Layer.**
 
 ## Where it fits
 
-Application layer (orchestration only — G-1/G-2): the layer receives commands,
-will invoke frozen Domain operations, and will record accepted facts/refusals
-through `ProtocolAppend`. It decides no election meaning, holds no domain state,
-and never references the external-authority port (D-1 wall; verified by
-`StructuralApplicationGuardsRedTest`, 16/16 green after this step).
+`app/Contexts/Election/Application/OperatingCore/` — `Command/` (5 DTOs) · `Handler/` (5) · `Query/` (4). Domain stays at `…/Domain/OperatingCore/` and is **unchanged**.
 
-## Key files
+## What GREEN-1 actually is
 
-```
-app/Contexts/Election/Application/OperatingCore/
-  Command/   5 final readonly DTOs (no identity surface, no caller-supplied
-             instants — A-2/D-8; the constitution command carries the one
-             documented typed-list exception to the no-arrays rule)
-  Handler/   5 final handlers, one public handle() each (G-1), constructor
-             port order pinned by the RED base fixture (§3a):
-             UC-1/UC-2: repos + policy snapshot + protocol + instants
-             UC-3/UC-4: repos + protocol + instants (NO policy snapshot)
-             UC-5:      committee repo + protocol + instants
-  Query/     4 final query services (UQ-1…UQ-4), derivation-only by contract
+**The surface, and nothing else.** Every handler and query body throws:
+
+```php
+public function handle(ExpressCommitteePositionCommand $command): void
+{
+    throw new BadMethodCallException('EM-IMPL-002 GREEN-2 pending: UC-1 behaviour is not implemented yet.');
+}
 ```
 
-## Design decisions
+**That is deliberate, not unfinished work:** it makes the 36 behavioural tests fail *by pending increment* while the 16 structural guards — written **before** the code — legitimately pass. A body that returned something plausible could let a behavioural pin pass vacuously; a throw cannot.
 
-- **Bodies throw, never no-op** — RED integrity: 36 behavioural tests keep
-  failing loudly; 16 structural guards pass because the surface is real.
-- **Constructor wiring = the RED fixture's pinned §3a order** — GREEN-2…7
-  implement *to* this wiring; no new port may appear (grant).
-- **UC-5's constitution fact type stays OPEN** (Q-UC5/EM-OPEN-045) — named in
-  the handler docblock; GREEN-6 resolves it via review, never silently.
+## Key design facts (each traceable, none invented here)
+
+| Fact | Source |
+|---|---|
+| **Constructor-injected ports only**, from a **closed six-port universe** (3 repositories, `ProtocolAppend`, `ServicePolicySnapshot`, `InstantSource`); no new port | authorized proposal §3a |
+| **No `OrganisationalAppointmentAuthority` anywhere** — the D-1 wall; verified absent in all 14 files | B-3, W-10 |
+| **Commands carry no actor and no instant** — the recording instant arrives from `InstantSource` at handling | A-2, D-8 |
+| Commands are `final readonly` and carry **domain value objects**, not primitives (`ElectionId`, `GateDesignation`, `CommitteeSeatId`, `AcceptancePosition`) — and **validate no business rule** | PO ruling, File-1 record §2.5 |
+| **One public entry point per handler** (`handle()`), one per query (`execute()`) — names are application vocabulary, not domain vocabulary | G-1; File-1 §2.4 |
+| **UQ-2 `ProgressionEligibilityQuery` is the ANSWER-shape of Meaning-2** — it answers *"can progression continue?"*; performing progression stays the Chief's | `EM-GOV-071` + A-7 |
+| **Constructor parameter ORDER is convention, not architecture** — dependency **set** governed, **order** accidental; ⛔ never an ADR | File-1 §2.1 |
+
+## How to extend — the three binding obligations for GREEN-2 onward
+
+1. **Read the established denominator only.** UC-2 takes `RequiredVotes` from the AG-2 repository (`requiredVotes()`); it must **never validate, calculate or reinterpret** it. *The application consumes an established fact; it does not create constitutional mathematics.*
+2. **No P-6 predicate logic in `ReportPeriodExpiryHandler`** — verbatim criterion: *"contains no P-6 predicate logic. It only gathers state and delegates consequence meaning."*
+3. **Never reproduce domain predicates**, in any handler.
+
+**The invariant, generalised:** the application **may** receive · load · translate · delegate · append. It **may not** interpret · calculate · decide · govern.
 
 ## Testing
 
-```
+`tests/Unit/Contexts/Election/OperatingCoreApplication/` — 52 tests. Current expected state: **36 failed (all `BadMethodCallException`, pending increments) · 16 passed (structural guards).** Frozen core: **42 passed / 2434 assertions** — the assertion growth over 2420 is the frozen suite's **own D-1 scan now covering the new files**, so the baseline verifies the new layer by construction. Run:
+
+```bash
 php artisan test tests/Unit/Contexts/Election/OperatingCoreApplication
-  → 36 failed (all BadMethodCallException "GREEN-n pending"), 16 passed
-php artisan test tests/Unit/Contexts/Election/OperatingCore
-  → 42 passed (frozen; assertion count grows +14 because the frozen D-1 scan
-    now iterates the 14 new files — the guard working, not drift)
+php artisan test tests/Unit/Contexts/Election/OperatingCore   # must stay 42 passed
 ```
 
 ## Pitfalls
 
-- The structural guards scan **source text including comments**: the UC-1
-  handler file must not even mention the operational-condition vocabulary
-  (W-2), and no application file may name the external-authority port (G-4).
-- `readonly class` + promoted properties satisfies the DTO reflection guard;
-  property names must avoid the identity/time regexes.
+- ⛔ **Do not implement a throwing body "just enough to make a test green"** — the pins are behavioural contracts; a shortcut here is the forbidden shape in disguise.
+- ⛔ **Never write an adapter, fake, mock or stub of the D-1 port** — not in production, not in tests.
+- ⛔ **Do not invent `HandlerResult`/`ApplicationResponse`/`CommandOutcome`** — return shapes stay open until a real need appears.
+- ⛔ **No `ProcessManager`/`Saga`** — only a named long-running domain process could justify one; recovery is not that, it belongs to the domain.
+- ⚠️ **Q-UC5 (the constitution fact type) is OPEN with a scheduled STOP at GREEN-6** — realize it through the existing `ProtocolEntry` surface, and if a domain event class is genuinely required, **STOP**: extending the frozen domain needs its own PO authorization.
 
 ## Traceability
 
-EM-IMPL-002 · GREEN authorization (PO/ARB 2026-08-17, this increment = GREEN-1
-of the 8-step sequence) · RED baseline `1f4b4c5f` · acceptance record
-`f5edb951` · proposal §3a/§8 · guards W-1…W-10, G-1…G-5, RED-1…RED-5.
+Authorized boundary (`A-3` IN · `A-4` OUT/fixture · `A-7` query form) · grant `G-1…G-5`, `Q-1…Q-3` · RED acceptance record · File-1 acceptance record · GREEN-1 verification (`b0ef088c`) · `EM-GOV-070`/`071` · baseline freeze.
