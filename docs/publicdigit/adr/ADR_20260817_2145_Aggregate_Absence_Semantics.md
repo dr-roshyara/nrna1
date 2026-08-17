@@ -8,6 +8,9 @@
 
 ---
 
+> ## **What this ADR protects, in one line:** **Application detects absence. Domain contract defines meaning.**
+> *(PO formulation, 2026-08-17. The failure mode: an application layer becoming a hidden domain authority — `if ($committee === null) { /* decide it means "never existed" */ }`.)*
+
 ## 0 · Placement note (ES-004.2 / ADR_20260801_1740)
 
 Placement was **derived, not chosen**:

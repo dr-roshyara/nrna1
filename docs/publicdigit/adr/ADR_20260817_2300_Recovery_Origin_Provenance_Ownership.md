@@ -5,6 +5,9 @@
 **Evidence base — consumed, NOT restated:** `docs/publicdigit/architecture/2026-08-17-EM-IMPL-002-q-restore-recovery-origin-provenance-investigation.md` (left unchanged, per the registered sequence *evidence → investigation → ADR proposal → decision*).
 **Placement:** `docs/publicdigit/adr/` — the same class as `ADR_20260817_2145`, so both rulings of this hold live in artifacts of one kind.
 
+> ## **What this ADR protects, in one line:** **Protocol records reality. Domain owns causal meaning.**
+> *(PO formulation, 2026-08-17. The failure mode: an event-sourced architecture without event sourcing's guarantees — no versioning, no replay guarantees, no reconstruction rules, no consistency model.)*
+
 ## 1 · Why this is an ADR and not an implementation detail
 
 **The question is an architecture OWNERSHIP question:** *who owns the invariant that explains why recovery is possible?* It affects the domain model · the recovery lifecycle · event/protocol interpretation · future restoration behaviour. **It is deliberately kept SEPARATE from `ADR_20260817_2145`:** that one asks *what does null MEAN*, this one asks *who owns the causal explanation.* ⛔ **They must not be combined.**
