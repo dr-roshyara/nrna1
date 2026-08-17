@@ -1,4 +1,4 @@
-# KnowledgeOS — Current Architecture Baseline v1.0
+# KnowledgeOS — Current Architecture Baseline v1.1
 ## KOS-ARCH-BASELINE-001 · Phase A · Reconstruction from Evidence
 
 **Session 4 — `S4-architecture-baseline` · ACTIVE, mutation owner (resolver-verified before analysis) · grant `G-KOS-ARCHBASE-A` — PHASE A ONLY · 2026-08-15**
@@ -170,15 +170,15 @@ Architecture proposes · Implementation executes · Verification reports
 
 **Three scripts execute as wired hooks but are absent from the registry:** `claude-code-trigger.sh` (PostToolUse), `engineering-placement-guard.sh` (PreToolUse), `project-knowledge-guard.sh` (PreToolUse). The registry's own binding workflow is *register → review → implement → verify* (`R-17`/`R-21`). **Recorded as a finding; not repaired, not judged.** `Observed`.
 
+## 6.3 A measured correction to the evidence handover
+
+The handover states **24 assets**; two independent counts give **16** (`AST-001`…`AST-016`, no higher ids, no gaps). The handover's own §3.1 warns its inventory is a declaration, not an attestation — this is an instance. **Recorded as a correction, not a defect.** `Observed`.
+
 ## 6.4 Declared component table vs. live registry — a census discrepancy *(corrects **D-3**)*
 
 The frozen `Phase-03A-Reference-Architecture.md` states **"Seven components"** and its table does not contain `composition_root`. The live registry carries **eight** — `CMP-001…008` — including **`CMP-001 composition_root`, which holds 2 assets** (`settings.json` AST-001 and the plan-timestamp hook).
 
 **The original document used "7" and "8" in different sentences without noting they disagree.** For a reconstruction whose thesis is *declared ≠ executing*, an unflagged declared-vs-registry gap — and specifically the **composition root**, the component that wires every hook in §6's diagram — was an instance of its own subject matter, missed. `Observed`.
-
-## 6.3 A measured correction to the evidence handover
-
-The handover states **24 assets**; two independent counts give **16** (`AST-001`…`AST-016`, no higher ids, no gaps). The handover's own §3.1 warns its inventory is a declaration, not an attestation — this is an instance. **Recorded as a correction, not a defect.** `Observed`.
 
 ---
 
