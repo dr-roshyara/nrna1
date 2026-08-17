@@ -767,3 +767,8 @@ Conventions proven in PB003: certification decisions are scope-qualified ("PB003
 
 ## Shared-checkout commit hygiene (BINDING for all concurrent sessions — PO, 2026-08-13)
 Multiple sessions share one working tree and one index. **Never assume the index contains only your own work.** Before EVERY commit: `git status` · `git diff --cached --stat` · `git diff --cached --name-only` (verify every path is yours) · then commit · then `git show --stat --oneline HEAD` to confirm what actually landed. Origin: Session 3's gate commit accidentally swept in another stream's three staged ADR renames (recorded in `.claude/sessions/2026-08-13.md`); history was deliberately NOT rewritten.
+
+## Boundary-creation principle (Principal Architect, 2026-08-17 — endorsed foundation for the Knowledge Engineering System track)
+> **Do not create boundaries because a concept exists. Create boundaries because ownership, language, invariants, and change reasons require them.**
+
+The four-question test applied throughout the KOS track (language · invariants · ownership · change reason) is the operational form. Corollary recorded with it: **a role is not automatically a bounded context** — role-model decisions (ADR-AIP-04 territory) and context-map decisions (ADR-AIP-03 territory) are different taxonomies, decided separately.
