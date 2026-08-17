@@ -2,6 +2,8 @@
 
 **Work item:** `KOS-ARCH-BASELINE-002` · **Session registering:** `S4-architecture-landscape-v2` (the producing terminal) · **Date:** 2026-08-17
 
+> **⚠️ Provenance note added 2026-08-17 (mutable annotation; §§1–4 below stand as history, unrewritten):** the reviewer subsequently declared the first-pass review (§§1–4) **mis-targeted** — *"My previous analysis was for the wrong artifact (EM-IMPL-002)"* — and issued a **second-pass review of the correct artifact, which SUPERSEDES the first pass**; see §5. Registered honestly, both ways: the first pass stands superseded **by its author's own declaration**, while the record also notes that its quoted findings resolve to the v2 deliverables and are consistent with the second pass — the supersession is a provenance ruling by the reviewer, not a reversal of substance.
+
 > ## What this registration is, and is not
 > It registers a review **received in this thread** from the Principal DDD Architect on the three v2 deliverables (`f278dc54`). Under `R-34` it enters the record as **evidence and recommendation only**:
 > * It is **NOT the PO/ARB acceptance act.** The deliverables' status is unchanged: **PROPOSED, awaiting PO/ARB decision.** The review's own words gate its notes "before PO/ARB acceptance."
@@ -168,4 +170,50 @@ No ADR decisions.
 
 ---
 
-**Traceability:** the Principal review (this thread, 2026-08-17) · v2 deliverables `f278dc54` · commission `2026-08-17-KOS-ARCH-BASELINE-002-commission.md` · grant `G-KOS-ARCHBASE2-MODEL` · START seq 3 · `R-34`/P-2 · ADR-AIP-03 (accepted) · ADR-AIP-04 (deferred, untouched).
+## 5 · Second-pass Principal review (2026-08-17, later the same day) — SUPERSEDES §§1–4 per the reviewer's declaration
+
+**Received in the same thread, expressly identified by the reviewer as the review of the correct artifact.** Registered, as before, as **evidence and recommendation only — NOT the PO/ARB acceptance.**
+
+**Verdict, verbatim in substance:** *"The Architecture work is correctly completed for its assigned scope"* — with the load-bearing qualifier quoted exactly: **"Architecture has completed the proposal phase, not the decision phase."** Confirmed on the reviewer's own checks: ① all three deliverables present, prohibited classes untouched · ② ADR-AIP-03 respected (BC-7 + CAP-14 + role-model deferral; the sequence ADR → strategic model → PO/ARB decision → domain model → implementation architecture preserved) · ③ **no accidental implementation** — *"strategic boundary ≠ physical structure"* named as the preserved principle · ④ both boundary discoveries endorsed again (the authorized-vs-recorded Governance seam; the meaning-vs-movement Knowledge seam, with the reviewer's own worked example: artifact identity/lineage vs assigned/START/HANDOFF/COMPLETE — *"they reference each other; they must not become one model"*) · ⑤ the name discipline endorsed (keep now; domain model re-tests; *Governed Work Orchestration* the candidate) · ⑥ blocked-now list confirmed: implementation ❌ · ADR-AIP-04 ⏸.
+
+**The reviewer's state machine and closing direction, registered:** current position = **PO/ARB decision**; after acceptance, Governance creates `KOS-ARCH-BASELINE-003` (BC-7 Domain Model); *"the next action is not Architecture … The architecture lane should stop now. It has fulfilled its responsibility."* — this lane accordingly performs **no further architecture work** on this work item; it holds ACTIVE/mutation-owner only until Governance disposes the lifecycle (`COMPLETE` is Governance's act, `G-1`).
+
+### 5a · Suggested PO/ARB decision text — PREPARED, UNSIGNED
+
+Supplied by the reviewer for the PO/ARB's convenience; **registered verbatim as a draft. It is in force only when the PO/ARB performs it — a suggested text signs nothing:**
+
+```
+RECORD:
+
+Accept KOS-ARCH-BASELINE-002 Architecture proposal.
+
+I accept:
+- Architecture Landscape v2
+- Context Map v2
+- Capability Map v2
+
+as the current strategic architecture model.
+
+This acceptance:
+- recognizes BC-7 Governed Session Orchestration in the context map,
+- accepts CAP-14 ownership in the capability model,
+- does not authorize implementation,
+- does not approve physical component movement,
+- does not decide ADR-AIP-04 role ownership,
+- does not define the BC-7 domain model.
+
+Next architectural step:
+Commission KOS-ARCH-BASELINE-003 for BC-7 Domain Model discovery.
+
+Signed:
+PO/ARB
+Date:
+```
+
+*Registration notes:* ① one precision for the signature moment — "recognizes BC-7 … in the context map" and "accepts CAP-14 ownership" are, strictly, **already in force by ADR-AIP-03's signed decisions**; what this acceptance newly adopts is the **v2 model set that realizes them** (landscape, relationships R-1…R-8, the CAP-14 row and its map). The draft's wording is harmless either way; noted so the act's effect is read exactly. ② The acceptance would also, per the deliverables' own terms, **amend ADR-AIP-01's context table by reference** — the draft may say so expressly if the PO/ARB wishes. ③ Whether independent verification of the v2 set precedes acceptance remains the PO/ARB's routing choice (`R-34`/P-2; this producer barred).
+
+**Standing state after §5: unchanged.** Work item OPEN · deliverables PROPOSED · implementation not authorized · ADR-AIP-04 deferred · §3's three gates unchanged (this suggested act, if signed, satisfies gate ①). **The single live decision remains the PO/ARB's.**
+
+---
+
+**Traceability:** the Principal reviews, first and second pass (this thread, 2026-08-17; second pass superseding per the reviewer's declaration) · v2 deliverables `f278dc54` · first-pass registration `516b07e1` · commission `2026-08-17-KOS-ARCH-BASELINE-002-commission.md` · grant `G-KOS-ARCHBASE2-MODEL` · START seq 3 · `R-34`/P-2 · `G-1` · ADR-AIP-03 (accepted) · ADR-AIP-01 (amended only on acceptance of the v2 set) · ADR-AIP-04 (deferred, untouched).
