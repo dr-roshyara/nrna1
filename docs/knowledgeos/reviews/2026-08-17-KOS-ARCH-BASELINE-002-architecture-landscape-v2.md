@@ -3,7 +3,7 @@
 
 **Work item:** `KOS-ARCH-BASELINE-002` · **Grant:** `G-KOS-ARCHBASE2-MODEL` (AUTHORIZED) · **Session:** `S4-architecture-landscape-v2`, ACTIVE, mutation owner (START recorded at seq 3, human act 2026-08-17) · **Date:** 2026-08-17
 
-> ## PROPOSAL — decides nothing
+> ## PROPOSAL — decided by the PO/ARB acceptance of 2026-08-17 **[ACCEPTED 2026-08-17 — PO/ARB act; registration: `2026-08-17-KOS-ARCH-BASELINE-002-acceptance-registration.md`; lifecycle annotation only, content at `f278dc54` untouched.]**
 > All three v2 deliverables (this landscape · Context Map v2 · Capability Map v2) are **proposals**. *Architecture may propose; the PO/ARB decides.* ADR-AIP-01's frozen context table is amended **only by the acceptance of these deliverables** — never silently, and not by this document's existence. Until acceptance, the authoritative strategic model remains ADR-AIP-01 as amended by ADR-AIP-03's signed decisions.
 >
 > **Attribution disclosure (assignment `executionContext`, mandatory):** performed by a **fresh Architecture terminal** (claude-code session, model Claude Fable 5) with **no prior estate history on this work item**. Separation is **Declared, not attestable** (`INV-ATTR-2`). Prior contact this session, disclosed: the terminal registered the seq-3 START into the work-item record, and **re-measured `AST-015` (`workflow-state.php`) at source** while verifying its own authority — those re-measurements are marked `Observed (re-measured 2026-08-17)` below. **R-34/P-2 forward constraint: this producer must not independently verify the v2 model.**

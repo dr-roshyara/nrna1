@@ -1,7 +1,7 @@
 # KnowledgeOS — Capability Map v2
 ## KOS-ARCH-BASELINE-002 · CAP-01…CAP-14 with every capability owned
 
-**Work item:** `KOS-ARCH-BASELINE-002` · **Grant:** `G-KOS-ARCHBASE2-MODEL` · **Session:** `S4-architecture-landscape-v2` · **Date:** 2026-08-17 · **Status: PROPOSAL — returns for PO/ARB decision; does not self-adopt.**
+**Work item:** `KOS-ARCH-BASELINE-002` · **Grant:** `G-KOS-ARCHBASE2-MODEL` · **Session:** `S4-architecture-landscape-v2` · **Date:** 2026-08-17 · **Status: PROPOSAL — returned for PO/ARB decision.** **[ACCEPTED 2026-08-17 — PO/ARB act; registration: `2026-08-17-KOS-ARCH-BASELINE-002-acceptance-registration.md`; lifecycle annotation only, content at `f278dc54` untouched.]**
 
 > Companion to **Architecture Landscape v2** and **Context Map v2** (same date, same work item). Realization states are the accepted baseline v1.1's (snapshot 2026-08-15) unless marked re-observed. The one change of substance is the **`CAP-14` row** — the identifier the PO/ARB assigned to BC-7 by the signed ADR-AIP-03 consequence decision; this map gives it its declared place.
 

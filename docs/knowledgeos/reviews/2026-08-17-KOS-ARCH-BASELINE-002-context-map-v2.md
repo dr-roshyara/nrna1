@@ -1,7 +1,7 @@
 # KnowledgeOS — Context Map v2
 ## KOS-ARCH-BASELINE-002 · Seven contexts, relationships discovered
 
-**Work item:** `KOS-ARCH-BASELINE-002` · **Grant:** `G-KOS-ARCHBASE2-MODEL` · **Session:** `S4-architecture-landscape-v2` · **Date:** 2026-08-17 · **Status: PROPOSAL — returns for PO/ARB decision; does not self-adopt.**
+**Work item:** `KOS-ARCH-BASELINE-002` · **Grant:** `G-KOS-ARCHBASE2-MODEL` · **Session:** `S4-architecture-landscape-v2` · **Date:** 2026-08-17 · **Status: PROPOSAL — returned for PO/ARB decision.** **[ACCEPTED 2026-08-17 — PO/ARB act; registration: `2026-08-17-KOS-ARCH-BASELINE-002-acceptance-registration.md`; lifecycle annotation only, content at `f278dc54` untouched.]**
 
 > Companion to **Architecture Landscape v2** (same date, same work item), which carries the boundary analysis and the two relationship studies this map compresses. Attribution and the discovery-guard disclosure are stated there and apply here. Relationship labels are **`Inferred`** strategic readings of `Observed` facts unless marked otherwise.
 
