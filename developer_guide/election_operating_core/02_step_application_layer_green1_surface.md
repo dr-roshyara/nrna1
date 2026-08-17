@@ -24,6 +24,23 @@ public function handle(ExpressCommitteePositionCommand $command): void
 
 **That is deliberate, not unfinished work:** it makes the 36 behavioural tests fail *by pending increment* while the 16 structural guards — written **before** the code — legitimately pass. A body that returned something plausible could let a behavioural pin pass vacuously; a throw cannot.
 
+## Key files (restored from the authoring lane's version, `d2a0fe7c`)
+
+```
+app/Contexts/Election/Application/OperatingCore/
+  Command/   5 final readonly DTOs (no identity surface, no caller-supplied
+             instants — A-2/D-8; the constitution command carries the one
+             documented typed-list exception to the no-arrays rule)
+  Handler/   5 final handlers, one public handle() each (G-1), constructor
+             port order pinned by the RED base fixture (§3a):
+             UC-1/UC-2: repos + policy snapshot + protocol + instants
+             UC-3/UC-4: repos + protocol + instants (NO policy snapshot)
+             UC-5:      committee repo + protocol + instants
+  Query/     4 final query services (UQ-1…UQ-4), derivation-only by contract
+```
+
+⚠️ **The differentiated port sets matter and are governed, not incidental:** UC-3 gets **no** `ServicePolicySnapshot` because restoration resumes a remaining portion and never starts a period (`EM-GOV-061`(a)); UC-5 touches nothing but the committee, the protocol and instants.
+
 ## Key design facts (each traceable, none invented here)
 
 | Fact | Source |
