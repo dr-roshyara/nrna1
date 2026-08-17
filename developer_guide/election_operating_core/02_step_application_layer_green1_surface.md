@@ -3,6 +3,16 @@
 > **Status:** GREEN-1 **CLOSED** (PO/ARB, 2026-08-17). Surface exists; **behaviour intentionally absent** until GREEN-2…GREEN-7. Commits: RED `1f4b4c5f` → surface `d2a0fe7c`.
 > **Placement note:** this guide lives in the **existing** `election_operating_core/` area rather than a new `election/` one — one area per subsystem, consumed not duplicated (ES-005.4).
 
+## Acceptance note — what GREEN-1 does and does not certify (PO/ARB, 2026-08-17, registered wording)
+
+> **GREEN-1 does not certify application behaviour.**
+>
+> It certifies only: **namespace existence · dependency boundary · DTO shape · handler/query entry points · port wiring surface · structural compliance.**
+>
+> **Behavioural authority remains entirely unimplemented until GREEN-2 through GREEN-7.**
+
+*(Recorded so no later reader mistakes "GREEN-1 closed · 16 guards passing" for behavioural certification. UC-1 behaviour arrives in step 03.)*
+
 ## Purpose
 
 Introduces the **application layer** for the Model A operating core as **orchestration only**, over the byte-identical frozen domain. Its whole reason for existing is stated in the governance record: **the Application Layer must never become a second Domain Layer.**
