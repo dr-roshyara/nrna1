@@ -207,6 +207,38 @@ Failure semantics           Normal domain state
 
 ---
 
+### 6c · Architectural Implementation Constraint *(added 2026-08-17; ⚠️ a CONSTRAINT on the implementation, NOT a selection among A/B/C/D)*
+
+> **The selected absence semantics must not be implemented by Application-layer interpretation of technical repository absence.**
+>
+> **A repository returning `null` is a TECHNICAL OBSERVATION, not a business meaning.**
+>
+> **The Application layer may detect that a reference is absent, but it may not classify the cause of absence unless that classification is already represented by an authorized domain contract.**
+>
+> **The implementation must introduce or consume an authorized domain-owned contract that provides the invariant decision.**
+>
+> **The concrete mechanism — a domain operation, a domain decision object, a domain policy, or another authorized contract shape — is intentionally LEFT OPEN until the normalization slice, because choosing the mechanism is an implementation decision, not an ADR decision.**
+
+#### Forbidden vs allowed shape
+
+| | Shape | Why |
+|---|---|---|
+| ⛔ **Forbidden** | `$committee = $repository->find($id);`<br>`if ($committee === null) { throw new InvalidArgumentException(); }` | **the Application has classified absence as a caller error** — a business meaning it has no standing to assign |
+| ✅ **Allowed** | `$decision = $authorizedDomainContract->evaluate(...);`<br>`if ($decision->isRejected()) { record($decision); }` | **the domain contract owns the meaning**; the application coordinates and records |
+
+#### ⚠️ Two mechanisms considered and expressly NOT mandated
+
+**A repository status query** (`$repository->getStatus()` returning `DOES_NOT_EXIST` / `NOT_YET_CONSTITUTED` / …) was proposed in review and is **deliberately not required here.** Reason, recorded because it is the substantive point: **a repository answers *"can I retrieve this aggregate?"*, not *"what business meaning should this absence carry?"*** — it sees storage, and cannot generally distinguish a wrong identifier from a not-yet-created aggregate from a data-integrity fault from a migration defect. Mandating it would prematurely select a mechanism **and might itself relocate a domain question into infrastructure — the very fault this ADR exists to prevent.**
+**A mandatory new application exception set** is likewise **not decided here**, because this ADR's own rule is *"representation follows after meaning"*: `null → exception → meaning` inverts it.
+
+**The deeper rule both exclusions serve:** ***the application may REQUEST a domain decision; it may not RECONSTRUCT a domain decision from technical absence.***
+
+#### Purpose note (traceability)
+
+**§6c does not choose Option A/B/C/D.** Its only purpose is to stop the normalization slice from producing **hidden domain rules inside handlers · duplicated invariant knowledge · divergence between application code and future domain evolution.** It is compatible with every option in §3 and with every mechanism listed above.
+
+---
+
 ## 7 · Traceability
 
 `EM-IMPL-002` grant (registered condition 3) · GREEN-2 `8ea13835` · GREEN-3 `cdc45f99` · GREEN-4 `4651a3e7` · GREEN-4 verification record §3/§5.1 · RED acceptance record §2 (A-5, provisionally accepted) · `EM-GOV-005` · repo Rule 8 · `EM-IMPL-001` baseline freeze (C-1).
