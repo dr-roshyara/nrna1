@@ -22,4 +22,10 @@
 > **`EM-IMPL-001` FIRST INCREMENT: IMPLEMENTED (ratified chain) → INDEPENDENTLY VERIFIED (8/8 · disputes resolved) → ACCEPTED WITH CONDITIONS. The increment is CLOSED.**
 > Standing after closure: the provenance defect and RED-ordering caveat remain permanently recorded · conditions 1 and 2 are the owed follow-on acts (each its own authorization) · later increments (application layer, adapters, persistence, technology) each require separate authorization · the trailing verifier testimony pasted with the acceptance is the exchange already registered (`8274101e`); no new act in it.
 
+## 4 · Final architectural statement (PO, 2026-08-17 — registered to protect the increment from future reinterpretation)
+
+> **"EM-IMPL-001 acceptance does not establish the meaning of the OPEN ∧ INOPERATIVE region. It establishes only that the current implementation faithfully realizes the currently adopted rules and that the ambiguity is intentionally preserved pending EM-OPEN-111."**
+
+**Status line, as the PO marked it:** `ACCEPTED · CLOSED · BASELINED` — implementation VALIDATED · one open governance question remains (`EM-OPEN-111`) · future implementation BLOCKED only where it would decide that question.
+
 **Traceability.** C-5 report (committed `50d1ff1b`) · ratification `2d0c3c21` · C-4 commits `4b707798`/`a31f54f1` · `EM-OPEN-111` (+precisions) · `PBDIGIT-69` · A-3.

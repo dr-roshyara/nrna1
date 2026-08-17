@@ -71,6 +71,20 @@ $gate->intervalState($committee);   // seat A's cast accept STANDS (I-8) — see
 - **Free-text `VacancyReason` is an ADR-T11-constrained surface** — never let voter/vote-linkable content in.
 - **Five items are queued for independent verification** — touching the disputed branch, the Inoperative-onset event payload, or the §2b commentary edge before C-5 rules is scope drift.
 
+## Acceptance status
+
+**EM-IMPL-001 was ACCEPTED on 2026-08-17 after C-5 independent verification (8/8 constraint checks; every correctness dispute resolved in the code's favour), and the increment is CLOSED and BASELINED.**
+
+Acceptance conditions:
+- §2b commentary correction pending separate Architecture authorization (proven-half scope only).
+- `OPEN ∧ INOPERATIVE` semantics deferred to `EM-OPEN-111` (both parts: clock/gloss · what Inoperative permits).
+- N-3…N-6 tracked in `PBDIGIT-69`.
+- **Behaviour freeze applies: no implementation may encode a decision on `OPEN ∧ INOPERATIVE` until governance resolution** — e.g. `if ($committee->unableToFunction()) { $gate->close(); }` is exactly the forbidden change.
+
+> **The protective statement, verbatim:** *"EM-IMPL-001 acceptance does not establish the meaning of the OPEN ∧ INOPERATIVE region. It establishes only that the current implementation faithfully realizes the currently adopted rules and that the ambiguity is intentionally preserved pending EM-OPEN-111."*
+
+*(This supersedes the provenance caveat in the header to this extent: the authority chain is attested and the increment accepted; the provenance defect and RED-ordering caveat remain permanently recorded as history.)*
+
 ## Traceability
 
 `EM-ARCH-001` (approved design; §2c/§2e/§5c) · `EM-IMPL-001` (prepared act + readiness report G=YES; **authorization acts pending registration — fork ruling open**) · rules `EM-GOV-005`/`028`/`029`/`031`/`033`/`035`/`036`/`038`/`052`/`056`/`057`/`058`/`059`/`060`/`061`/`062`/`063`/`064`/`065`/`066`/`067`/`068`/`069` · ADR-T11 · `F-PROTO-1` · `P-2H` · verification queue items ①–⑤ (`.claude/sessions/2026-08-17.md`).
