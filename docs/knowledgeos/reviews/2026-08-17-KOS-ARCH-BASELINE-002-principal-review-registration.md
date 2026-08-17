@@ -214,6 +214,41 @@ Date:
 
 **Standing state after §5: unchanged.** Work item OPEN · deliverables PROPOSED · implementation not authorized · ADR-AIP-04 deferred · §3's three gates unchanged (this suggested act, if signed, satisfies gate ①). **The single live decision remains the PO/ARB's.**
 
+### 5b · Third-pass Principal review (2026-08-17): state CONFIRMED; the draft act's wording REFINED
+
+A third pass confirmed the registered state in full (provenance handling, scope discipline, both boundary discoveries, name discipline, implementation restraint — all endorsed; recommendation repeated: *do not start another Architecture terminal; the correct next act is the PO/ARB acceptance*). Its one new element: the reviewer adopted registration note ① of §5a and **refined the draft act's opening to avoid semantic duplication with ADR-AIP-03**. The refined draft — still **PREPARED, UNSIGNED; in force only when the PO/ARB performs it**:
+
+```
+RECORD:
+
+Accept KOS-ARCH-BASELINE-002 Architecture proposal.
+
+This acceptance adopts:
+
+- Architecture Landscape v2
+- Context Map v2
+- Capability Map v2
+
+as the current strategic architecture model — which realize the
+already-decided BC-7 recognition and CAP-14 ownership from ADR-AIP-03,
+and amend ADR-AIP-01's context table by reference.
+
+This acceptance:
+- does not authorize implementation,
+- does not approve physical component movement,
+- does not decide ADR-AIP-04 role ownership,
+- does not define the BC-7 domain model.
+
+Next architectural step:
+Commission KOS-ARCH-BASELINE-003 for BC-7 Domain Model discovery.
+
+Signed:
+PO/ARB
+Date:
+```
+
+*(The ADR-AIP-01 amendment clause incorporates §5a registration note ②; the §5a original stands above as history. Either text is signable — the refinement is the reviewer's recommended form.)*
+
 ---
 
 **Traceability:** the Principal reviews, first and second pass (this thread, 2026-08-17; second pass superseding per the reviewer's declaration) · v2 deliverables `f278dc54` · first-pass registration `516b07e1` · commission `2026-08-17-KOS-ARCH-BASELINE-002-commission.md` · grant `G-KOS-ARCHBASE2-MODEL` · START seq 3 · `R-34`/P-2 · `G-1` · ADR-AIP-03 (accepted) · ADR-AIP-01 (amended only on acceptance of the v2 set) · ADR-AIP-04 (deferred, untouched).
