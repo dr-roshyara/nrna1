@@ -10,7 +10,7 @@
 
 ## 1 · Why this is an ADR and not an implementation detail
 
-**The question is an architecture OWNERSHIP question:** *who owns the invariant that explains why recovery is possible?* It affects the domain model · the recovery lifecycle · event/protocol interpretation · future restoration behaviour. **It is deliberately kept SEPARATE from `ADR_20260817_2145`:** that one asks *what does null MEAN*, this one asks *who owns the causal explanation.* ⛔ **They must not be combined.**
+**The question is an architecture OWNERSHIP question — and reframed 2026-08-17 from a storage question to a MODEL question:** ⛔ *not* *"who owns `originatingGate`?"* but ✅ ***"what causal-origin model governs Restoration, and which bounded-context concept owns each causal invariant?"*** *(`originatingGate` is only one possible CONSEQUENCE of that model; naming it first would settle a field location before the model exists.)* It affects the domain model · the recovery lifecycle · event/protocol interpretation · future restoration behaviour. **It is deliberately kept SEPARATE from `ADR_20260817_2145`:** that one asks *what does null MEAN*, this one asks *who owns the causal explanation.* ⛔ **They must not be combined.**
 
 ## 2 · Context
 
@@ -57,11 +57,71 @@ Restoration
 **Owner:** the recovery domain concept · **preferred:** option A · **reason:** the invariant *"recovery originated from a halt"* belongs with `RecoveryProcess` · **authorization:** requires a future domain slice · ⛔ **not allowed:** application reconstruction · protocol lookup · command-supplied provenance.
 **Companion rule offered with it:** *"Restoration without `RecoveryProcess`: allowed. A restoration fact does not imply a prior halt."*
 
+## 5b · TWO questions the ADR must not conflate *(added 2026-08-17)*
+
+| Question | Subject |
+|---|---|
+| *"What caused this **RESTORATION**?"* | the restoration transition |
+| *"What caused this **RECOVERY PROCESS**?"* | the recovery period |
+
+**These are related but NOT identical, may have different answers, and may have DIFFERENT OWNERS.** A model that answers only the second leaves `w8` unanswered (§5a: a restoration can exist with no recovery period at all).
+
+## 5c · Causal-origin model *(the space the ruling chooses from — deliberately NOT limited to the §4 storage options)*
+
+> **The question is not where `originatingGate` is stored. It is: WHAT DOMAIN FACT EXPLAINS WHY RESTORATION WAS VALID?**
+
+**Candidate models, none preferred here:** **① mandatory predecessor** (every restoration has a predecessor fact) · **② typed independent origins** (several legitimate origin kinds, discriminated) · **③ conditional predecessor paths** · **④ state-only restoration** (no provenance concept — admissible only if expressly justified).
+
+**Whichever is selected, the ruling must define:** the **allowed origins** · **ownership** of each · which references are **mandatory** · the **validation point** · the **immutable representation**.
+
+### 5c.1 · `RestorationOrigin` as a TYPED concept — why nullable fields are the wrong shape
+
+⛔ **The shape to avoid:**
+
+```php
+final class Restoration {
+    ?RecoveryProcessId $process;   //  all three null → the model
+    ?GateDesignation   $gate;      //  cannot say WHY, and every
+    ?Reason            $reason;    //  reader must guess
+}
+```
+
+**Three nullable fields admit combinations that mean nothing, and no invariant forbids them.** ✅ **A discriminated `RestorationOrigin` makes illegal states unrepresentable:**
+
+```
+RestorationOrigin
+  ├── HaltOrigin                    { recoveryProcessId, originatingGate }
+  ├── UnachievableResolutionOrigin  { resolutionId, reason }
+  └── … further kinds only if the ruling defines them
+```
+
+> ### ⚠️ **AND THE ONE THING THIS SECTION DELIBERATELY DOES NOT DECIDE**
+> **Whether provenance is ALWAYS required.** The independent review proposed that every restoration *"MUST carry exactly one typed causal origin"* — **that is not adopted here, because it would silently decide the `w8` case** (§5a: *the existence of a restoration event does not imply the existence of a recovery period*). **The ruling must choose between:** **(i)** every restoration has an origin, with an explicit kind for the unachievable-resolution path · **(ii)** some restorations legitimately have **no** causal provenance, represented explicitly (e.g. a `NotApplicable` kind — **never a silent null**) · **(iii)** an unknown-origin state, if the domain wants one. **This is the same philosophy as ADR-1: absence must have a named meaning, not an inferred one.**
+
+## 5d · Provenance CAPTURE constraint *(binding on any option — added 2026-08-17)*
+
+> **Causal provenance MUST be captured at the moment the Restoration transition is ACCEPTED.**
+>
+> ⛔ **It MUST NOT be reconstructed from:** protocol logs · timestamps · projections · downstream read models · inferred ordering.
+
+**This closes the same loophole `§6c` closes in ADR-1: a technical trace is not a business meaning, and reconstructing causality after the fact makes the reconstruction — not the domain — the author of the meaning.**
+
+### 5d.1 · If event sourcing is ever adopted, it must be adopted properly
+
+**"Event sourcing" must not be claimed loosely.** If the system later adopts it for the relevant aggregate, the implementation must provide: **immutable events · aggregate stream identity · versioning · expected-version append · deterministic replay · schema evolution.** ⛔ **Reading provenance out of an append-only log without these is not event sourcing; it is a weak imitation with none of its guarantees** — the failure mode §3 already forbids.
+
 ## 6 · Decision
 
 > **⬜ LEFT BLANK — the Product Owner / ARB decides.**
 >
-> Required in the ruling: **(a)** the **owner of the invariant** (A / B / C / D) · **(b)** the **authorization path** if a domain change is chosen (a domain slice with its own RED tests and its own authorization — **no application workaround**) · **(c)** the **companion rule for restoration with no prior halt** (§5).
+> **This is a CAUSAL-ORIGIN decision, not a field-location decision.** Required in the ruling:
+>
+> **(a)** the **causal-origin MODEL** (§5c: mandatory predecessor · typed independent origins · conditional paths · state-only) ·
+> **(b)** **whether every restoration requires provenance** — and if not, how its absence is represented **explicitly** (§5c.1; ⛔ never a silent null) ·
+> **(c)** the **allowed origin types** and their mandatory references ·
+> **(d)** the **OWNER of each causal invariant** (the §4 options are the candidate homes: A/B domain-owned · C excluded · D proxy) ·
+> **(e)** the **authorization path** if a domain change is chosen — a domain slice with its own RED tests and its own authorization; ⛔ **no application workaround** ·
+> **(f)** the **UC-3 consequence**: what the committed `FillCommitteeSeatHandler` must do differently, and whether that lands in the normalization slice or a separate one.
 
 ### 6a · REQUIRED IN THE RULING — "What this decision does NOT mean" *(pre-drafted at PO direction)*
 
