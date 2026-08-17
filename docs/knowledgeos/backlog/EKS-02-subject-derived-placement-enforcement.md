@@ -40,3 +40,13 @@ No enforcement built by this ticket · no move of historical documents (that is 
 ## Dependencies / relations
 
 EKS-01 (this is one instance of the distribution problem — a placement enforcer that sessions never discover would repeat the failure) · `documentation-placement.yaml` + `ADR_20260801_1740` (the ruling mechanism to extend, never duplicate — ES-005.4) · the fix-forward convention `docs/knowledgeos/reviews/README.md`.
+
+---
+
+## Related routing (2026-08-17) — measurement provenance
+
+The PO/ARB routed a **measurement-provenance issue** to future KES governance work when accepting Verification #3 of `KOS-ARCH-BASELINE-003`. It is recorded here as adjacent subject matter, **not merged into this ticket and not commissioned**:
+
+> **A figure stated without its method cannot be reproduced — and a figure handed onward as a check criterion inherits authority it has not earned.**
+
+Evidence: F-1 (a diff count that git contradicts; method-dependent) and F-2 (*"6 of 37"* not reproducible; a plain criterion yields 14 of 38; the selection rule unstated) — both MINOR, both classified as **knowledge-integrity findings, not architecture defects**. Whether this becomes its own EKS ticket or extends an existing one is a governance decision that has not been taken. Registration: `../reviews/2026-08-17-KOS-ARCH-BASELINE-003-verification-3-acceptance-registration.md`.
