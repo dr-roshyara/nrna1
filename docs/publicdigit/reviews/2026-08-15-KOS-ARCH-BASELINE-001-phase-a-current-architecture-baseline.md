@@ -3,7 +3,7 @@
 
 **Session 4 — `S4-architecture-baseline` · ACTIVE, mutation owner (resolver-verified before analysis) · grant `G-KOS-ARCHBASE-A` — PHASE A ONLY · 2026-08-15**
 
-> ## v1.1 — CORRECTED 2026-08-17 · still PROPOSED, NOT ACCEPTED
+> ## v1.1 — CORRECTED 2026-08-17 · **ACCEPTED 2026-08-17** as the authoritative reconstructed current-state architecture baseline (PO/ARB act; registration: `docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-001-phase-a-acceptance-registration.md` — Stage-2 analysis authorized only; no bounded context, aggregate, implementation architecture, technology or migration decision approved). Accepted content: `40026b12`; this banner line is a lifecycle annotation, the sole post-verification change.
 > **Bounded precision corrections only**, under grant `G-KOS-ARCHBASE-A-CORRECT`, repairing the defects confirmed by independent verification #1 (`2026-08-17-…-phase-a-independent-verification.md`): **D-1**/**V-A** (hook count 8→10, incl. the §6 caption and the §11 row) · **D-2** (executable-substance count) · **D-3** (7-vs-8 census, new §6.4) · **V-B** (why `CAP-04` has no row) · **V-D** (method attached to the dependency scan) · **V-C** (duplicate `.gitignore` citation). **V-E is not correctable** and is recorded as an acceptance-context note in §5.1.
 >
 > **The snapshot is unchanged: this remains a reconstruction as of 2026-08-15.** Figures are corrected to what was true *at* the snapshot — never updated to today's state. The reconstruction scope is unchanged; no new investigation was performed. **No conclusion of v1.0 was reversed** — the verifier found the thesis sound and the defects confined to precision and internal consistency.
