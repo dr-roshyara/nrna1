@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | ✅ **ACCEPTED — Option A (PO/ARB, 2026-08-17): BC-7 Governed Session Orchestration is recognized.** Primary decision signed in §7; **consequence decisions (a) CAP id and (b) role-model ownership remain UNDECIDED** — their block is still blank. Context-map update / Baseline v2 are the next architecture steps and require their own commissioning; nothing physical (folders, components, code) is authorized by this acceptance. |
+| **Status** | ✅ **ACCEPTED — Option A (PO/ARB, 2026-08-17): BC-7 Governed Session Orchestration is recognized.** Primary decision signed in §7; **consequence decisions BOTH taken (2026-08-17): (a) `CAP-14` assigned to BC-7 · (b) role-model ownership deferred to ADR-AIP-04 discovery** — see §5. Context-map update / Baseline v2 are the next architecture steps and require their own commissioning; nothing physical (folders, components, code) is authorized by this acceptance or its consequences. |
 | **Series** | ADR-AIP (AI Engineering Platform) |
 | **Decision authority** | PO/ARB — a bounded-context recognition is a strategic model decision (`R-34`: engineering never accepts its own work) |
 | **Drafted by** | Architecture terminal (`KOS-ATTR-ARCH-001` Stage 2), authority: generated — this draft decides nothing |
@@ -92,7 +92,11 @@ BC-4's nature (ADR-C7) · the composition-root census and the declared-Core ques
 
 **Consequence decisions — taken only after the primary decision is signed, per its outcome (§2):**
 
-> (a) CAP id: ⚠️ **REGISTRATION PAUSED ON A MEASURED COLLISION.** The PO/ARB act of 2026-08-17 assigned **`CAP-07`** to BC-7 — but `CAP-07` is already declared: the accepted baseline's capability map (§4) carries `CAP-07/08/09 — Checks, verdicts, traceability` under BC-3 Verification & Evidence, partially live. Registering it twice would create an identifier overload (two capabilities · one id · two owners). **Declared ids run `CAP-01…13`; `CAP-04` is retired-by-merge and not reusable; the next free identifier is `CAP-14`.** Awaiting a one-line PO/ARB confirmation (e.g. *"assign CAP-14"*), registered here when given. **No id is in force for BC-7's capability until then.**
+> (a) CAP id: ✅ **DECIDED — `CAP-14 — Governed Session Orchestration` is assigned to BC-7.** Signed: **PO/ARB** · Date: **2026-08-17** — act verbatim:
+>
+> > *"Confirm the consequence decision for ADR-AIP-03. Assign: CAP-14 — Governed Session Orchestration to: BC-7 Governed Session Orchestration. Rationale: CAP-07 is already assigned to BC-3 Verification & Evidence. Capability identifiers are unique semantic identities and must not be reused across bounded contexts. This assignment creates no implementation change. It only establishes capability ownership in the architecture model. Role-model ownership remains deferred to ADR-AIP-04 discovery."*
+>
+> *Registration notes (Governance, 2026-08-17):* ① premises re-verified at registration — `CAP-07/08/09` owned by BC-3 in the accepted baseline §4; declared ids `CAP-01…13`; `CAP-04` retired-by-merge, not reusable; **`CAP-14` free, no prior registration anywhere in the estate**; ② the earlier CAP-07 pause stands in this block's history as **a successful architecture safety check, not a failure** — the registry exposed an existing semantic ownership before an overload was created; ③ the **Capability Identity Invariant** the act states — *one capability identifier = one semantic owner* — is recorded with the decision as its rationale; ④ the assignment establishes capability ownership **in the model only**: no folder, component, code, hook or registration changes (`R-37`), consistent with the primary decision's closing clause.
 >
 > (b) role-model ownership: ☑ **expressly deferred to: ADR-AIP-04 discovery** — Signed: **PO/ARB** · Date: **2026-08-17** *(act verbatim: "defer role-model ownership to ADR-AIP-04 discovery")*
 
