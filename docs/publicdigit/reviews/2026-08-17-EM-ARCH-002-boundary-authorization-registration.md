@@ -25,6 +25,8 @@
 **G-3** No ProcessManager/Saga until a NAMED domain process requires it (the registered triggers; never step-count).
 **G-4** Every handler's RED proves three negatives: it cannot bypass the domain · cannot invent authority · cannot mutate lifecycle.
 
+**G-5** *(added at PO review, pre-signature)* NO HIDDEN POLICY DUPLICATION: **any business rule appearing in Application code requires explicit architectural review** — the last protection against application-layer erosion (compound conditions like `votes >= 2/3 && !inactive && !blocked` in a handler are the named smell).
+
 **Attached questions, answered in the deliverable (design note + RED pin each), never silently:**
 **Q-1** AUTHORIZATION SPLIT — *authorization to SUBMIT a request* (Application/Security) vs *authority to MAKE AN ELECTION FACT TRUE* (Domain/external) must stay separate; each handler names which check it performs and which it expressly does NOT.
 **Q-2** IDEMPOTENCY — duplicate command handling defined per use case (same fact exists → return existing result; never a second constitution/fact), to the extent answerable without persistence.
@@ -32,6 +34,10 @@
 
 **On signature + START: the lane implements under the grant AS AMENDED. Until then: nothing in `app/` or `tests/` moves.**
 
-> **Signature line:** *"I sign the EM-IMPL-002 grant as amended (G-1…G-4, Q-1…Q-3) and START the Implementation lane."*
+## 3b · SIGNED AND STARTED (PO/ARB, 2026-08-17 — the strengthened form, verbatim)
+
+> **"I sign EM-IMPL-002 grant as amended (G-1…G-5, Q-1…Q-3). The Application Layer implementation may proceed only as orchestration over the frozen Domain Core. START the implementation lane with RED-first execution. No production implementation begins before failing architectural tests demonstrate the forbidden paths."**
+
+*(Established pattern, overrulable.)* **Execution sequencing fixed by Governance to repair the EM-IMPL-001 ordering caveat at the root: PHASE 1 — the lane writes the RED suite ONLY, Governance independently verifies it FAILS and commits it as commit 1; PHASE 2 — the lane implements GREEN, Governance verifies and commits as commit 2. RED→GREEN ordering becomes git-provable, never testimony.**
 
 **Traceability.** Proposal + author review (evidence) · this act (ruling) · `EM-GOV-070`/`071` · the baseline freeze · A-3.
