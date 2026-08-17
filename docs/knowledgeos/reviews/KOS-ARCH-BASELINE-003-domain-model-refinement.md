@@ -10,6 +10,15 @@
 >
 > **The aggregate root decision, the BC-7 boundary, `CAP-14`, `ADR-AIP-03` and `ADR-AIP-04` are untouched** — see §7, which states each one explicitly rather than leaving it to inference.
 
+> ## ✏️ CORRECTED 2026-08-17 — evidence corrections only · still PROPOSED, NOT ACCEPTED
+> **Three corrections applied under `G-KOS-ARCHBASE3-CORRECT`** (assignment `S4-architecture-bc7-correction`, seq 16 REGISTER · seq 17 HANDOFF · **seq 18 human START**), implementing **Verification #2**'s R-1/R-2/R-3 and **nothing else**:
+> **① §2** — the false `Observed` cell *"non-canonical keys anywhere in the estate = 0"* replaced with the re-measured census (**20 instances**, `note` ×16 the specimen). **T-1 remains SUPPORTED; the correction strengthens T-1b.**
+> **② §4.4 ③** — the DP-6 replacement instruction completed to **all three cells** (it would otherwise have dropped the class marker when applied).
+> **③ §5.4 ③** — **OQ-10 extended** to record the `recordedBy` **referent** ambiguity as a *question only*.
+>
+> **Nothing else in this document changed.** No redesign · no aggregate decision revisited · no RA-4 reopening · no boundary, `ADR-AIP-03`, `CAP-14` or `ADR-AIP-04` change · no new invariant, policy or ADR · no implementation or code change. **Delivery note:** `KOS-ARCH-BASELINE-003-correction-delivery-note.md`.
+> ⚠️ **Disclosed:** the correcting pen is the **same process that authored Verification #2** — permitted expressly by the grant's eligibility note, **barred from Verification #3**, and every edit is a single-line revert if the PO/ARB prefers a fresh pen.
+
 ---
 
 # 0 · Disclosure, stated first (`INV-ATTR-2` · `R-34`/P-2 · AMD3 bars)
@@ -54,7 +63,7 @@ Measured **before** this lane's own seq-12 START (which makes the transition tot
 | **The two `architecture` recorders** | **both are HANDOFF, and in both the `from` lane IS the recording lane** — `KOS-ARCH-BASELINE-001` seq 5 (`S4-architecture-baseline` → `S1-verification-baseline-phase-a`) and `KOS-ARCH-BASELINE-003` seq 5 (`S4-architecture-bc7-domain-model` → `S1-verification-bc7-domain-model`) | record inspection |
 | Grants | **47 · 47 AUTHORIZED · 47 `registeredBy: governance` · 0 missing `humanActRef`** | value census |
 | **Derived keys stored** (`mutationOwner`, `state`, `workItemState`, `assignmentState`) | **0 of 126 transitions** | key census |
-| **Non-canonical keys anywhere in the estate** | **0** | key census against the vocabulary |
+| **Keys the mechanism never reads, anywhere in the estate** | **20 instances** — `note` ×16 (on COMPLETE; the string `note` appears **nowhere** in `workflow-state.php`) · `humanAct` ×3 (on COMPLETE, where no precondition reads it) · `reason` ×1 (on CANCEL, where no branch reads it). **Correcting a false cell: this row previously read "Non-canonical keys anywhere in the estate — 0", which Verification #2 falsified.** ⭐ **The correction STRENGTHENS T-1b rather than weakening it:** these 20 are the empirical proof that a non-vocabulary key is *stored and inert* — exactly what T-1b asserts — and **not one of them is a derived key**, so **T-1c stands unchanged at 0 of 133**. **T-1 remains SUPPORTED in full.** | key census against the mechanism's read set, **re-measured 2026-08-17 after seq 18** (15 records · 133 transitions · 49 grants) |
 
 > **The single most consequential new measurement is the cross-tabulation.** The proposal reported `recordedBy` as a flat census (*"governance 83 · human 33 · architecture 1"*), which makes the `architecture` value look like a stray. **Crossed with transition type it is not a stray: it is confined to one type, and in both instances the recorder is the lane the contract requires to act.** §5 turns on this.
 
@@ -166,13 +175,15 @@ V#1 says T-1's "accepted as input" half is undemonstrated. **Confirmed — and u
 
 > The modelling rule this proposal states plainly: **a derived projection has one producer and no stored form.** It is never *set*, and never *consulted* if present — the mechanism computes it, and a recorded value bearing its name has no standing (T-1a/T-1b). **The rule is not that such a value is refused at the boundary; it is that it can never become truth** (T-1c).
 
-**③ DP-6 (proposal line 279) — REPLACE:**
+**③ DP-6 (proposal line 279) — REPLACE the COMPLETE row (all three cells; corrected per Verification #2 R-2, which found this instruction quoted and replaced only two of the row's three cells, so that applying it literally would have dropped the class marker):**
 
-> | DP-6 | State is folded from the log; derived values are never accepted as input |
+> | DP-6 | State is folded from the log; derived values are never accepted as input | `Observed` + **`Proposed`** as T-1 |
 
 **with:**
 
-> | DP-6 | State is folded from the log; **a derived value is never consulted and never authoritative — the fold is its only producer** |
+> | DP-6 | State is folded from the log; **a derived value is never consulted and never authoritative — the fold is its only producer** | **`Observed`** (T-1a/T-1b — structural, in source) + **`Proposed`** (T-1c — the writer obligation), **as T-1** |
+
+**Note on the third cell, so the PO/ARB can see it is derived rather than invented:** the class value is not a new decision — it is the mechanical consequence of T-1's own restatement in ① above, which splits the invariant into two structurally `Observed` parts (T-1a/T-1b) and one `Proposed` writer obligation (T-1c). DP-6 mirrors T-1 and its class cell follows T-1's; **no policy, invariant or domain rule is created, changed or added here.**
 
 **Why this is a strengthening, not a weakening.** The absolute form rested on a census (0 stored) that a single future write could falsify. The restated form rests on **the fold's definition** — which no write can falsify — and confines the census-based claim to the one part (T-1c) that genuinely is a practice measurement. **The invariant now says less than it did, and everything it says is true.**
 
@@ -243,7 +254,7 @@ Each is stated at its strongest before being answered.
 
 **with:**
 
-> | OQ-10 | **Recorder classes — a Governance question, stated at its correct scope.** `recordedBy` is constrained only on COMPLETE and CONTINUATION (and there by G-1 and Inv E, not by I-5); on every other type the sole requirement is non-emptiness. **Two `architecture`-recorded HANDOFFs exist, both contract-conformant** (§2.1). **Should the recorder class of a lifecycle transition be constrained at all, and is `RecordedBy` a closed vocabulary?** | It decides whether `RecordedBy` is a closed-vocabulary VO or an open value — **and it is the residual of C-3. Architecture's classification is that no invariant is breached; whether the invariant set should be extended is Governance's decision, not the domain model's.** |
+> | OQ-10 | **Recorder classes — a Governance question, stated at its correct scope.** `recordedBy` is constrained only on COMPLETE and CONTINUATION (and there by G-1 and Inv E, not by I-5); on every other type the sole requirement is non-emptiness. **Two `architecture`-recorded HANDOFFs exist, both contract-conformant** (§2.1). **Should the recorder class of a lifecycle transition be constrained at all, and is `RecordedBy` a closed vocabulary?** **⭐ AND, added per Verification #2 R-3 — does `recordedBy` carry ONE referent?** *Observed:* on a **START** it names the act's **origin** (the human), while Governance performs the registration; on **REGISTER / COMPLETE / CANCEL** it names the **acting role**; on the two `architecture` HANDOFFs it names the **performing lane's role**. *Evidence: **6 of 37 STARTs** are `recordedBy: human` while their own `humanAct` text states that **Governance** recorded the START (e.g. `KOS-ARCH-BASELINE-001` seq 3: "Registered by Governance … registering a START is a GOVERNANCE act"), so a reader asking "who registered this transition?" is answered wrongly by the field on **37 of 37** STARTs.* **The question is recorded, not answered.** | It decides whether `RecordedBy` is a closed-vocabulary VO or an open value — **and it is the residual of C-3. Architecture's classification is that no invariant is breached; whether the invariant set should be extended is Governance's decision, not the domain model's.** **The referent limb matters for the same reason C-3 arose: a field whose referent shifts by transition type is what invites an invariant to be measured against the wrong part of the aggregate.** ⛔ **No solution is proposed here — no rename, no new model, no ADR, no vocabulary decision.** Verification #2 declined to propose wording on the ground that it would be modelling; **this correction inherits that restraint verbatim.** |
 
 ---
 
