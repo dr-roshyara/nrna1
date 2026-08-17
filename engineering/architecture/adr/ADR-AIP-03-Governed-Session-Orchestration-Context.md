@@ -92,9 +92,9 @@ BC-4's nature (ADR-C7) · the composition-root census and the declared-Core ques
 
 **Consequence decisions — taken only after the primary decision is signed, per its outcome (§2):**
 
-> (a) CAP id: ⬜ assigned as ________ under ⬜ BC-7 / ⬜ BC-2 · (b) role-model ownership: ⬜ decided: ________ / ⬜ expressly deferred to: ________
+> (a) CAP id: ⚠️ **REGISTRATION PAUSED ON A MEASURED COLLISION.** The PO/ARB act of 2026-08-17 assigned **`CAP-07`** to BC-7 — but `CAP-07` is already declared: the accepted baseline's capability map (§4) carries `CAP-07/08/09 — Checks, verdicts, traceability` under BC-3 Verification & Evidence, partially live. Registering it twice would create an identifier overload (two capabilities · one id · two owners). **Declared ids run `CAP-01…13`; `CAP-04` is retired-by-merge and not reusable; the next free identifier is `CAP-14`.** Awaiting a one-line PO/ARB confirmation (e.g. *"assign CAP-14"*), registered here when given. **No id is in force for BC-7's capability until then.**
 >
-> Signed: ________________ (PO/ARB) · Date: ________
+> (b) role-model ownership: ☑ **expressly deferred to: ADR-AIP-04 discovery** — Signed: **PO/ARB** · Date: **2026-08-17** *(act verbatim: "defer role-model ownership to ADR-AIP-04 discovery")*
 
 ---
 
