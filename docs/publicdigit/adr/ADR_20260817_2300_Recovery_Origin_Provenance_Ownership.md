@@ -33,6 +33,27 @@
 
 ⚠️ **Restoration happens with no prior halt at all.** The accepted RED pin `w8` restores an election whose gate is merely **Unachievable** (vacancy arithmetic) with **no halted-recovery period in existence** — and `ElectionRestored` requires a non-nullable `GateDesignation`. **No option in §4 answers this.** ⛔ **Without a companion ruling, `Q-RESTORE` reopens at the first election restored while merely unachievable.**
 
+### 5a · The sharpened statement *(PO direction, 2026-08-17 — this is the form the ruling must answer)*
+
+> ## **"The existence of a restoration event does not imply the existence of a recovery period."**
+
+⚠️ **Why the sharper wording matters:** the loose form (*"restoration happens with no prior halt"*) still lets a later reader assume `ElectionRestored` **implies** a `RecoveryProcess` existed — **which is precisely the hidden-invariant problem this ADR exists to prevent.** The relationship is **two distinct causal paths**, not one:
+
+```
+Restoration
+      |
+      +---- a recovery period completed
+      |
+      +---- an unachievable condition was resolved   (no recovery period ever existed)
+```
+
+**So even if option A is chosen, `originatingGate` may legitimately be absent** — and that is a **domain lifecycle** question, not a technical one: *is restoration always caused by a halted gate, or can it also mean an unachievable condition resolved without recovery?*
+
+### 5b · A recommendation the PO offered for the eventual ruling *(⚠️ RECOMMENDATION, expressly "not the decision itself — PO/ARB owns that")*
+
+**Owner:** the recovery domain concept · **preferred:** option A · **reason:** the invariant *"recovery originated from a halt"* belongs with `RecoveryProcess` · **authorization:** requires a future domain slice · ⛔ **not allowed:** application reconstruction · protocol lookup · command-supplied provenance.
+**Companion rule offered with it:** *"Restoration without `RecoveryProcess`: allowed. A restoration fact does not imply a prior halt."*
+
 ## 6 · Decision
 
 > **⬜ LEFT BLANK — the Product Owner / ARB decides.**
