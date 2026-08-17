@@ -79,7 +79,7 @@ Acceptance conditions:
 - §2b commentary correction pending separate Architecture authorization (proven-half scope only).
 - `OPEN ∧ INOPERATIVE` semantics deferred to `EM-OPEN-111` (both parts: clock/gloss · what Inoperative permits).
 - N-3…N-6 tracked in `PBDIGIT-69`.
-- **Behaviour freeze applies: no implementation may encode a decision on `OPEN ∧ INOPERATIVE` until governance resolution** — e.g. `if ($committee->unableToFunction()) { $gate->close(); }` is exactly the forbidden change.
+- ~~Behaviour freeze~~ **RESOLVED 2026-08-17: adopted `EM-GOV-070`/`071` (Reading A). The region is valid; decision FACTS may be recorded while Inoperative; the PROGRESSION TRANSITION is deferred until operative. The forbidden shape `if ($committee->unableToFunction()) { $gate->close(); }` is now wrong BY ADOPTED RULE — gate state and election condition are independent.
 
 > **The protective statement, verbatim:** *"EM-IMPL-001 acceptance does not establish the meaning of the OPEN ∧ INOPERATIVE region. It establishes only that the current implementation faithfully realizes the currently adopted rules and that the ambiguity is intentionally preserved pending EM-OPEN-111."*
 

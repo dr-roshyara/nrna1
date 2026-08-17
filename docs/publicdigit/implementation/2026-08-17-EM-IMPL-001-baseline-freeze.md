@@ -19,18 +19,18 @@ I-1…I-16, per the approved design (`docs/publicdigit/architecture/2026-08-17-E
 5. **Rule corpus:** `docs/publicdigit/business_rules/ELECTION_MANIFESTO.md` — ADOPTED rows only are rules.
 
 ## Unresolved questions
-- **`EM-OPEN-111`** (Manifesto row; two parts: ① `068`-gloss vs `062` restoration clock in the combined region · ② what Inoperative PERMITS — reading A/B; the code takes NO position). **The only open governance question of this baseline.**
+- ~~`EM-OPEN-111`~~ **RESOLVED 2026-08-17 by adopted `EM-GOV-070`/`071` (Reading A; Meaning-1/Meaning-2 precision). The baseline now has NO open governance question of its own.**
 - Walls unchanged: `EM-OPEN-049`/`066`/`094` (external authorities) · `053` (unbounded OPEN, accepted) · `077`/`076` (menu).
 
 ## Prohibited changes (binding until their gate opens)
-- ⛔ **Anything that would decide `EM-OPEN-111`** — the canonical forbidden shape: `if ($committee->unableToFunction()) { $gate->close(); }` (a derived condition becoming an authority decision).
+- ⛔ **The canonical forbidden shape stands, now BY ADOPTED RULE (`070`/`071`), no longer by freeze:** `if ($committee->unableToFunction()) { $gate->close(); }` — a derived condition may never become an authority decision; gate state and election condition are independent.
 - ⛔ Any adapter/binding/operation for `OrganisationalAppointmentAuthority` (D-1).
 - ⛔ Any time attachment to an OPEN gate (deadline, timeout, scheduler, expiry hook).
 - ⛔ Any stored classification flag; any second terminal-state rendering; any framework import into the domain core.
 - ⛔ Reuse of the historical caveats as evidence: the provenance defect and RED-ordering caveat are PERMANENT record (`…-ratification-registration.md`).
 
 ## Next allowed entry points (each requires its own authorization)
-1. **`EM-OPEN-111` adjudication** (Governance) — prerequisite for anything touching the combined region.
+1. ~~`EM-OPEN-111` adjudication~~ ✅ done (adopted `070`/`071`; freeze lifted, zero code change).
 2. **§2b commentary correction** (Architecture; proven-half scope fixed in advance).
 3. **`PBDIGIT-69`** hygiene slices (N-3 bounded free-text · N-4 replay parity · N-5 `$active` removal · N-6 negative-path tests).
 4. **Increment 2** (application layer / adapters / persistence / protocol-store technology) — new boundary presentation → authorization → grant → START → RED first.
