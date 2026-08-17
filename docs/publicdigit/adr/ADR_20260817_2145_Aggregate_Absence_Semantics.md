@@ -116,6 +116,22 @@ Whichever option is chosen, **the shape is still undecided**, and it cannot be r
 
 ---
 
+## 4a · SCOPE — which references the ruling covers *(added by Governance, 2026-08-17, at the PO's required-decision list; evidence only, no option chosen)*
+
+**The PO's decision package requires the ruling to state its scope across the three repository references. Governance adds the evidence, because the three are NOT alike and the code already proves it:**
+
+| Reference | How absence is treated TODAY | Evidence |
+|---|---|---|
+| `ElectionCommitteeRepository` | ⚠️ **inconsistent** — UC-1/UC-2 throw; **UC-3 dereferences it unguarded** | the frozen pin `AbsentAggregateReferenceRedTest` |
+| `AcceptanceGateDecisionRepository` | ⚠️ **inconsistent** — UC-1 throws; **UC-3's helper returns `null` and the caller dereferences it** | same pin, second violation |
+| **`RecoveryProcessRepository`** | ✅ **ALREADY SETTLED, and settled as a NORMAL STATE, not an error** — `if ($restoration === null) { return; // No allowance is running: there is nothing to pause. }` and `if ($halted === null) { return; // nothing to resume }` in UC-3, with the same shape in UC-2 | `FillCommitteeSeatHandler` · `RecordVacancyEventHandler` |
+
+> ### ⚠️ **The consequence for the ruling, stated as evidence rather than as a recommendation:**
+> **A single blanket answer would be wrong for at least one of the three.** An absent `RecoveryProcess` genuinely means *"no period is running"* — a **legitimate lifecycle state (Option C)** — and it is already implemented that way, deliberately and correctly, in two handlers. **So the ruling's scope must either exclude that reference or adopt Option D (composite); a uniform Option A or B would require changing already-correct behaviour.**
+> **Governance chooses nothing here. It records that the scope question is not decorative: one of the three references already has a settled and defensible answer, and it is not the same answer the other two need.**
+
+---
+
 ## 5 · Consequences of NOT deciding (recorded, since this is the status quo)
 
 * UC-3 keeps a **null-dereference path**; UC-1/UC-2 keep a shape nobody ratified; the divergence grows by ~2 sites per remaining use case (UC-4, UC-5).
