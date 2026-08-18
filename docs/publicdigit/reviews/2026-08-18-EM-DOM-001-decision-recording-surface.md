@@ -1,9 +1,9 @@
 # `EM-DOM-001` — **DECISION RECORDING SURFACE** for the human PO/ARB
 
 **Prepared by:** a governance **recording** session · 2026-08-18 · **Read-only w.r.t. implementation.**
-**Status:** ⬜ **ALL FOUR BLOCKS BLANK. NOTHING DECIDED. This surface confers nothing.**
+**Status:** ✅ **ALL FOUR DECISIONS RECORDED VERBATIM — PO/ARB, 2026-08-18.** **D1 `BND-2` = Act B IN SCOPE (contract only) · D2 `w8` clarification CONFIRMED · D3 `BND-1` DEFERRED (open) · D4 `BND-3` DEFERRED (open).** ⚠️ **Appendix Q's negative boundary is now LIVE, not conditional.** ⛔ **No implementation authority is created; the Rule-8 gate result is recorded separately.**
 
-> ⛔ **This session is not the PO/ARB and decides nothing.** It prepared the blocks, the options and the consequences. **Every choice below is the human's.** ⛔ **No option is marked, recommended or pre-selected in any block.**
+> ⛔ **This session is not the PO/ARB and decided nothing.** It prepared the blocks; **the PO/ARB supplied the wording on 2026-08-18 and it is recorded verbatim below.** ⛔ **No block was filled, inferred or completed by this session, and nothing was taken from Appendix R.**
 
 **Analysis is NOT repeated here.** The evidence and reasoning live in the dossier: `2026-08-18-EM-DOM-001-po-arb-decision-dossier.md` (§§1–10). **This surface is only the place where a decision is written down.**
 
@@ -44,18 +44,31 @@ The `EM-DOM-001` verification record (`7654b9e4`) stated: ***"no investigation a
 
 **Draft wording for either choice: dossier §9 Draft B (`B-IN` / `B-OUT`).** ⛔ **Neither is marked.**
 
-### ⬜ DECISION 1 — LEFT BLANK
+### ✅ DECISION 1 — RECORDED (PO/ARB, 2026-08-18): `BND-2` — Act B IN SCOPE
 
+> **Recorded VERBATIM as supplied. Not paraphrased, not reordered, not improved.**
+
+```text
+I decide that Act B — creation of a new Domain-owned identity and retrieval
+contract for the operational overlay — is IN SCOPE of EM-DOM-001.
+
+This authorizes only the creation and definition of that Domain-owned contract
+within the bounded Domain slice.
+
+It does not authorize modification of an existing repository interface,
+persistence or adapter implementation, Application-layer changes,
+UC-1/UC-2/UC-3 normalization, selection of the overlay's aggregate or
+persistence boundary, approval of R-1's final representation, GREEN-5,
+or invention of any technical mechanism beyond the contract required by
+the approved domain meaning.
+
+BND-3 remains OPEN. This decision must not be interpreted as approval of
+an aggregate, lifecycle aggregate, projection, or other persistence model.
+
+Any implementation consequence outside the Domain contract requires its
+own authorization under Rule 8.
 ```
-Choice ( [A] IN SCOPE  |  [B] OUT OF SCOPE ):  ____________
 
-PO/ARB wording (verbatim, as you write it):
-
-
-
-
-Signed: ____________________   Date: ____________
-```
 
 ---
 
@@ -76,18 +89,31 @@ Signed: ____________________   Date: ____________
 
 ⛔ **Selects no representation:** no nullability · no sentinel · no `UnknownGate` · no new enum value · no new aggregate · no new event · no replacement representation · no protocol read · no repository change. **Representation follows meaning.** ⛔ **Grants no implementation authority; the ADR-2 Rule-8 gate stands as recorded (BLOCKED).**
 
-### ⬜ DECISION 2 — LEFT BLANK
+### ✅ DECISION 2 — RECORDED (PO/ARB, 2026-08-18): `w8` — clarification confirmed
 
+> **Recorded VERBATIM as supplied. Not paraphrased, not reordered, not improved.**
+
+```text
+I confirm the following as a clarification of ADR-2 §6, not as an amendment
+to that ADR:
+
+Restoration and Resumption are distinct domain concepts.
+
+The w8 case represents Restoration without a prior halt. It therefore has
+a known causal origin but has no resumption target.
+
+This clarification confirms that the legitimate Restoration-without-prior-halt
+path is covered by ADR-2 §6(b) and §6(h).
+
+This decision selects no representation for that path. It does not authorize
+nullability, a sentinel, UnknownGate, a new enum value, a new aggregate,
+a new event/fact, a replacement representation, a protocol read, or a
+repository change.
+
+Representation remains a Domain-model matter to be resolved within the
+authorized Domain work under Rule 8.
 ```
-Confirmed as a sharpening of ADR-2 §6 (not an amendment)?  ____________
 
-PO/ARB wording (verbatim, as you write it):
-
-
-
-
-Signed: ____________________   Date: ____________
-```
 
 ---
 
@@ -110,20 +136,30 @@ Signed: ____________________   Date: ____________
 
 **What remains unresolved either way:** the `HaltedAtGate` ↔ `ElectionConstitution` **documentation-vs-architecture discrepancy**, which both `BND-1` and `BND-3` depend on.
 
-### ⬜ DECISION 3 — LEFT BLANK
+### ✅ DECISION 3 — RECORDED (PO/ARB, 2026-08-18): `BND-1` — DEFERRED
 
+> **Recorded VERBATIM as supplied. Not paraphrased, not reordered, not improved.**
+
+```text
+I explicitly DEFER BND-1.
+
+BND-1 remains OPEN and is not resolved, rejected, or merged with EM-OPEN-055.
+
+No interpretation is selected regarding ownership of lifecycle phase for
+the OperatingCore.
+
+This decision does not introduce a new OperatingCore phase concept,
+establish a Published-Language relationship with the legacy Election
+context, declare AG-2 establishment to be the lifecycle-phase marker,
+or import ElectionLifecycleState as the answer.
+
+BND-1 may be revisited when the required lifecycle-ownership evidence is
+available.
+
+This deferral does not authorize implementation of any provisional solution
+for the missing lifecycle-phase discriminator.
 ```
-Ruling — or explicit DEFERRAL (deferral must state: open, not closed, not merged into EM-OPEN-055):
 
-Interpretation, if ruled ( (a) | (b) | (c) | other ):  ____________
-
-PO/ARB wording (verbatim, as you write it):
-
-
-
-
-Signed: ____________________   Date: ____________
-```
 
 ---
 
@@ -145,18 +181,30 @@ Signed: ____________________   Date: ____________
 
 **Consequences.** Choosing early risks the wrong seam. **Deferring costs nothing immediately** — act **E** is unauthorized under any `BND-2` answer, and **`BND-2 = [A] IN SCOPE` would authorize identity and retrieval WITHOUT settling shape.**
 
-### ⬜ DECISION 4 — LEFT BLANK
+### ✅ DECISION 4 — RECORDED (PO/ARB, 2026-08-18): `BND-3` — DEFERRED
 
+> **Recorded VERBATIM as supplied. Not paraphrased, not reordered, not improved.**
+
+```text
+I explicitly DEFER BND-3.
+
+BND-3 remains OPEN. No operational-overlay boundary is selected by this
+decision.
+
+I do not approve or reject a distinct aggregate, membership in a lifecycle
+aggregate, a projection over recorded lifecycle facts, or any alternative
+identity/persistence model.
+
+The principle "identity + persistence does not imply aggregate" is preserved.
+
+The Domain lane may define the authorized contract under D1, but it must not
+use D1 as authorization to select the overlay's aggregate boundary or
+persistence model.
+
+BND-3 must be resolved through a separate architectural/domain decision
+when the lifecycle-ownership evidence is sufficient.
 ```
-Ruling — or explicit DEFERRAL pending BND-1:
 
-PO/ARB wording (verbatim, as you write it):
-
-
-
-
-Signed: ____________________   Date: ____________
-```
 
 ---
 
@@ -215,7 +263,9 @@ Signed: ____________________   Date: ____________
 
 ---
 
-# APPENDIX Q · Conditional pre-constraint on a `BND-2` = **IN SCOPE** answer
+# APPENDIX Q · ⚠️ **NOW LIVE** — the operative negative boundary on `BND-2` = IN SCOPE
+
+> ✅ **The condition was met on 2026-08-18: D1 selected Act B IN SCOPE. This appendix is no longer conditional — its eight-item negative list is OPERATIVE, and D1's own wording independently restates it.**
 
 **Filed 2026-08-18 from a PO/ARB decision-recording update.** ⛔ **This appendix does NOT mark D1, does not select IN SCOPE, and does not create authority.** It records, **in advance of any decision**, the boundary that would apply *if* IN SCOPE were later chosen — so the boundary is already in the record rather than being argued after the fact.
 
