@@ -8,6 +8,7 @@ Area: `app/Contexts/Election/Domain/OperatingCore/` · Work item: `EM-IMPL-001` 
 | 02 | [`02_step_application_layer_green1_surface.md`](02_step_application_layer_green1_surface.md) | `EM-IMPL-002` GREEN-1: the granted application surface (5 commands · 5 handlers · 4 queries) — structural guards green, behaviour deliberately pending GREEN-2…7 |
 | 03 | [`03_step_application_layer_green2_uc1.md`](03_step_application_layer_green2_uc1.md) | `EM-IMPL-002` GREEN-2: UC-1 `ExpressCommitteePosition` behaviour — the F-2 consequence sequence, Q-REF fixed (record + rethrow), and the five conditions registered with the approval (binding on GREEN-3 onward) |
 | 04 | [`04_step_act_b_recorded_operational_status_contract.md`](04_step_act_b_recorded_operational_status_contract.md) | `EM-DOM-001` Act B: the Domain-owned `Port/RecordedOperationalStatus` retrieval contract — declared, **deliberately unimplemented and uncalled**; `H-1` structural-absence RED before it |
+| 05 | [`05_step_h2_w8_regression_lock.md`](05_step_h2_w8_regression_lock.md) | `EM-DOM-001` `H-2`: the `w8` regression lock for **`D2`** — restoration without a prior halt keeps its known causal origin and has **no resumption target**; **test-only, no production change**, and fail-first shown by mutation in a throwaway export |
 
 | — | [`operating_rules_for_implementation_lanes.md`](operating_rules_for_implementation_lanes.md) | **Step-independent: the seven operating rules binding every lane in this subsystem, plus the pre-GREEN checklist** |
 
