@@ -212,3 +212,45 @@ Signed: ____________________   Date: ____________
 *(D1's consequence column already states this; it is restated here because the risk is a **lane's misreading after the fact**, not a gap in the block.)*
 
 ⛔ **Nothing in this appendix is a decision, an authorization, or a pre-selection. A recommendation — however favourable, however well-argued, however often repeated — is not a decision.**
+
+---
+
+# APPENDIX Q · Conditional pre-constraint on a `BND-2` = **IN SCOPE** answer
+
+**Filed 2026-08-18 from a PO/ARB decision-recording update.** ⛔ **This appendix does NOT mark D1, does not select IN SCOPE, and does not create authority.** It records, **in advance of any decision**, the boundary that would apply *if* IN SCOPE were later chosen — so the boundary is already in the record rather than being argued after the fact.
+
+> ### **Even if the human PO/ARB later selects `[A] IN SCOPE` for `BND-2`, that would authorize ONLY the specifically described domain-side identity/retrieval contract activity within the authorized scope.**
+
+**It would NOT authorize:**
+
+| ⛔ | |
+|---|---|
+| 1 | choosing the operational overlay's **aggregate boundary** *(that is `BND-3`)* |
+| 2 | choosing **`R-1`'s final form** |
+| 3 | implementing **persistence or adapters** *(act C)* |
+| 4 | **modifying existing repositories** *(act A)* |
+| 5 | **changing Application handlers** *(act D)* |
+| 6 | **normalizing UC-1/UC-2/UC-3** *(ADR-1 §6(c) is subject to Rule 8; ADR-2 §6(f) bars UC-3)* |
+| 7 | implementing **GREEN-5** |
+| 8 | **inventing any technical mechanism not expressly authorized** |
+
+**Appendix R's non-authority, restated as filed:** no item in the recommendation register may be read by a subsequent lane as a PO/ARB ruling · an approved architectural design · an implementation authorization · permission to select a domain representation · permission to select an aggregate boundary · **or permission to broaden `EM-DOM-001`.**
+
+## Verification of the asserted state — checked, not accepted
+
+**All claims in the filed update were verified against the repository at HEAD `2a1875e3`:**
+
+| Claim | Result |
+|---|---|
+| Domain core byte-identical to baseline `1f4b4c5f` | ✅ **TRUE** — empty diff |
+| `app/` untouched | ✅ **TRUE** — empty diff vs `7514f145` **in any session's committed history**, and no uncommitted changes |
+| `tests/` untouched | ✅ **TRUE, with one standing caveat** — ⚠️ **one untracked file exists: `tests/Feature/Election/ElectionOnlyEntitlementPinTest.php`.** That is the **pre-existing quarantined pin**, which by standing constraint stays **untracked, unmodified, undeleted and is not evidence**. It predates this work item and **was not created by any lane in this chain.** *(Recorded so "tests/ untouched" is not later read as "tests/ is pristine.")* |
+| ADR-2 Rule-8 gate **BLOCKED** | ✅ **TRUE** — as recorded at `c4828cdd`; nothing since has changed it |
+| GREEN-5 **STOPPED** | ✅ **TRUE** |
+| No implementation prepared in anticipation | ✅ **TRUE** — no scaffolding, no draft class, no draft test exists anywhere from this chain |
+| Both dossiers **UNTRACKED** | ✅ **TRUE** — still another session's; **this session has not committed them** |
+| Four blocks blank | ✅ **TRUE** — `LEFT BLANK` count = **4** |
+
+⚠️ **HEAD has advanced to `2a1875e3`** (another session has committed since this surface was prepared at `4796ef1f`). **The domain core and `app/`/`tests/` are unaffected by that movement** — verified above, not assumed.
+
+⛔ **Nothing in this appendix is a decision. The recording session has created no authority.**
