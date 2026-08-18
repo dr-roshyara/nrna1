@@ -33,7 +33,29 @@
 
 ---
 
-## GATE 1 · Architecture — one narrow confirmation *(NOT a new investigation)*
+## ✅ GATE 1 — **CONFIRMED** (2026-08-18, `6079fe9f`)
+
+**Verdict recorded as returned. Verdict artifact:** `2026-08-18-EM-DOM-001-act-b-gate1-architecture-confirmation.md` *(one file, 222 insertions; `app/` and `tests/` untouched; OperatingCore byte-identical to `1f4b4c5f`)*.
+
+**`G-2a` upheld, and `Repository/` is barred on the code's own words:** all three interfaces there declare *"contract for AG-1/AG-2/AG-3"*, and `ElectionCommitteeRepository.php:11` states outright *"repositories exist for aggregates only — repo Rule 9."* **A fourth would assert exactly the aggregate standing D1 and D4 withhold.**
+
+**The load-bearing precedent is `ProtocolAppend`, NOT `OrganisationalAppointmentAuthority`** — a contract over the Election's **own** recorded record, with *"the storage mechanism deliberately NOT prescribed (G-6)"* and no adapter. *(The commission's caution that V-10's external-actor port is not semantically alike was accepted.)*
+
+⭐ **Neutrality established on LOCK-IN, not on silence:** the signature declares **no root, no identity, no `save`, no transaction, not even `find()`**; **all three `D4` candidates can supply it**; and with **zero consumers** and **no adapter**, **any later `BND-3` ruling remains implementable without rework.** ⇒ **`BND-3` was never needed to answer, so the REJECT hatch did not apply.**
+
+### ⚠️ Three items the Gate-1 lane flagged — routing is the PO/ARB's
+
+| # | Item |
+|---|---|
+| **F-1** 🔴 | **The Gate-1 lane DEPARTS from the untracked architecture review, which places the contract in `Repository/`** *(that review, line 129: "the contract would live in `Domain/OperatingCore/Repository/`")* **and miscounts `Port/` as six ports.** Gate 1 cites it but **rejects that placement** and does **not** adopt its §5.1 projection elimination. ⚠️ **Two architecture opinions now disagree on placement.** **Gate 1 is the designated, committed, post-Phase-2A one; the other is untracked and predates the proposal.** **Reconciling them is the PO's call.** |
+| **F-2** | **`C-2` resolved on its ARCHITECTURAL half only:** the grant's own enumeration includes the three `Repository` interfaces, so *"six-port universe"* means **the Application's collaborator set, not the `Port/` directory** (V-9 independently confirmed). The authorization half is unnecessary because **D1 authorizes definition directly** — ⚠️ **but `C-2` still bites at act D.** |
+| **F-3** | **A naming-coherence risk:** `StructuralApplicationGuardsRedTest.php:228` labels `ElectionOperationalStatus`/`HaltedAtGate` *"derived classifications"* — **a loose label a later lane could quote against the word *"Recorded"*** in `RecordedOperationalStatus`. **Flagged, not resolved.** |
+
+**Explicitly excluded from the confirmation:** the return type's **totality** — a shape question, still `BND-1`-dependent, **and Gate 2's business**. **All five non-determinations recorded** *(no `BND-1`, no `BND-3`, no aggregate ownership, no `R-1`/`R-2`/`R-3` approval beyond the bounded contract, no implementation authority beyond `117536f3`)*.
+
+---
+
+## GATE 1 · original commission *(retained for traceability)*
 
 **Scope:** answer **`G-2a` only.** ⛔ Not `BND-3`, not persistence, not wiring, not lifecycle ownership.
 
