@@ -258,7 +258,9 @@ Every row was checked against the repository. **Nothing here is accepted on a pr
 
 ## 8 · IMPLEMENTATION READINESS
 
-> ## **"Act B design is sufficiently defined for implementation" — with two conditions, neither of which this lane may discharge.**
+> ## **"Act B design is sufficiently defined to PERMIT IMPLEMENTATION OF THE ACT-B CONTRACT — subject to independent verification and Architecture confirmation of naming/placement."**
+>
+> ⚠️ **Wording tightened 2026-08-18 at the PO/ARB's explicit request, by the governance recording session. The analysis is untouched — only this headline changed.** **Reason given: the previous phrasing (*"sufficiently defined for implementation"*) could be read by an implementation engineer as *"go implement"*, which the authorization does not permit.** **The two conditions below were already stated immediately underneath; the headline now carries them so it cannot be quoted alone.**
 
 **The design is complete** because the meaning was already frozen (V-1/V-2), the key is agreed (`ElectionId`), the return type is agreed and unchanged, boundary neutrality is demonstrated (§G), and the RED is specifiable and fails by absence (§H-1).
 
