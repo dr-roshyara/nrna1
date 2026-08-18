@@ -7,7 +7,7 @@
 
 ## Standing of Phase 1 — reviewed, NOT accepted
 
-A reviewer assessed Phase 1 as *"a strong Domain-lane result"* and stated: ***"Approve the Phase-1 report as an analysis deliverable, but do not approve R-1/R-2/R-3 for implementation yet."*** **That is a recommendation in the reviewer's own framing (*"My recommendation"*), addressed to the PO/ARB.** Therefore:
+A reviewer assessed Phase 1 as *"a strong Domain-lane result"* and stated: ***"Approve the Phase-1 report as an analysis deliverable, but do not approve R-1/R-2/R-3 for implementation yet."*** **That is a recommendation in the reviewer's own framing (*"My recommendation"*), addressed to the PO/ARB.** A **second** favourable review followed on the same day (*"I would accept the referral as a referral"* — again conditional, again addressed to the PO/ARB). ⚠️ **Two favourable reviews do not sum to an acceptance.** Therefore:
 
 ⬜ **Phase 1 is NOT accepted** — acceptance is the PO/ARB's act (`EP-02`; engineering never accepts its own work).
 ⬜ **R-1, R-2, R-3 are NOT approved for implementation.**
@@ -64,6 +64,20 @@ DEP-5b and DEP-6 cannot be discharged
 ✅ **DEP-4's core invariant already exists** (`PeriodKind` + P-6) and needs nothing.
 ✅ **P-7 is settled:** consume, never duplicate, never loosen to accept `null`.
 ✅ **DEP-10 is settled:** 4 protected sites across 2 files; planned T-10 locks all four.
+
+## Constraints on the Architecture / ARB lane (added 2026-08-18 on reviewer recommendation)
+
+⛔ **The Architecture lane must not write code.** Its output is a ruling on the boundary, not a solution.
+
+⛔ **It must not treat R-1 / R-2 / R-3 as approved design.** They are the Domain lane's **proposals**, and their status is unchanged by this referral.
+
+> **Phase 1 discovered the likely shape. Architecture decides whether that shape is architecturally legitimate at all** — including the answer *"no, and here is why."* **A Domain-lane proposal is evidence, never a premise.**
+
+⛔ **It must not resolve BND-1 by importing `ElectionLifecycleState` because that class already exists.** That would settle **ownership by convenience** — the failure mode the whole chain from the Rule-8 gate onward exists to prevent. **An existing class is not an ownership argument.** For the same reason, no candidate under BND-3 may be selected because it is the easiest to implement.
+
+⛔ **It must not resolve more than BND-1, BND-2 and BND-3.** Anything further discovered is recorded and referred, not absorbed.
+
+⚠️ **Ordering:** **BND-1 before BND-3.** The overlay's boundary depends on who owns lifecycle transitions; deciding the boundary first would fix the wrong seam. **BND-2 is independent of both** and may be answered at any point — it is an authorization reading, not an architectural one.
 
 ## What the Domain lane requests
 
