@@ -5,6 +5,14 @@
 **Controlling input:** the Phase-2A addendum to `2026-08-18-EM-DOM-001-domain-lane-briefing.md` (controlling where it differs from the Phase-1 briefing)
 **Placement derived, not chosen:** `docs/publicdigit` (exit 0); `architecture/` matches the sibling Phase-1 map.
 
+> # ⛔ CONTROLLING INSTRUCTION FOR THE NEXT SESSIONS *(PO/ARB, 2026-08-18)*
+>
+> ## **The Phase-2A design map is EVIDENCE TO BE EVALUATED, not a design to be implemented.**
+>
+> **Applies to both remaining gates.** **Architecture** must not turn this proposal into an approved design merely because it looks reasonable, and **must not decide `BND-3`** while confirming naming/placement. **The independent verifier** must **verify, not redesign**. ⚠️ **Neither gate may be satisfied by an attractive proposal acquiring architecture by momentum.**
+>
+> **The order is: meaning → ownership → boundary → contract → verification → implementation.** **This document sits at *contract-proposal*. Two stages remain before implementation.**
+
 > ## ⚠️ PROVENANCE AND AUTHORITY NOTE — added 2026-08-18 by the governance recording session
 >
 > **Three layers exist and must NOT be conflated:**

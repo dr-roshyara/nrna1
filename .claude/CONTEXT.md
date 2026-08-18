@@ -2920,7 +2920,8 @@ Both sit at ES-006.1 rung **observation**, both record `PLACEMENT: PENDING` (ADR
 - ⛔ **Nothing created:** no contract, no `H-1` RED, `Port/` unchanged (7 files), **`Domain/OperatingCore` byte-identical to `1f4b4c5f`**, `app/`/`tests/` untouched.
 - **Acts A/C/D/E unauthorized.** **`PBDIGIT-72`** opened — `EM-GOV-063`'s terminal consequence (and `ELECTION DISCONTINUED`) unreachable; **Act B does not fix it** *(also needs a caller + act C)*.
 - **Corrected:** `V-11` — `w8` lacks the prior **HALT**, not the `RecoveryProcess`; the Phase-1 briefing sentence is struck. **Amendment 1** ratified DEP-10's exclusion.
-- **Next actors:** an **independent verifier** and an **Architecture** lane, both narrow. **Neither designated.** Then, only if both are positive, the Domain lane commits the `H-1` structural RED.
+- ⛔ **CONTROLLING INSTRUCTION (PO/ARB):** ***the Phase-2A design map is EVIDENCE TO BE EVALUATED, not a design to be implemented.*** Architecture must not approve it for looking reasonable, nor decide `BND-3`; the verifier verifies and does not redesign. **Order: meaning → ownership → boundary → contract → verification → implementation** — the map sits at *contract-proposal*.
+- **Next actors:** an **independent verifier** and an **Architecture** lane, both narrow. **Neither designated.** Then, only if both are positive, the Domain lane commits the `H-1` structural RED — **absence of the contract, never a design smuggled through a test.**
 - Untracked (other sessions'): the two dossiers · `2026-08-18-EM-DOM-001-architecture-review.md`.
 - Still open elsewhere: `EM-OPEN-049`/`066`/`094` · `053` · `076`/`077` · `095`② · `102` limbs · `PBDIGIT-69`/`70`/`71` · `KOS-ATTR-ARCH-001` unsigned.
 <!-- /GOV-STATE -->
