@@ -62,7 +62,7 @@ capability → ownership → bounded context / stewardship → human role → ag
 | **C-2** | **Lifecycle transition & mutation ownership** | the fold; `I-1` single owner; `I-2` HANDOFF ∧ human START; `I-3` sticky STOPPED | BC-7 / `CAP-14` | **live** |
 | **C-3** | **Lifecycle interpretation** | `AST-015` holds *"its own interpretation authority"* (ADR-AIP-03 §1) | BC-7 | **live, contested — `EKS-04`** |
 | **C-4** | **Assignment & next-actor routing** | `REGISTER` role + `executionContext`; "next actor" sections in every governed artifact | BC-7 (mechanism) / ⚠️ **unowned (composition)** | **partial** |
-| **C-5** | **Separation attestation** | `INV-ATTR-2`/`G-2`: separation is **Declared, NOT attestable** | 🔴 **NO OWNER** | **absent** ⚠️ **[CORRECTED → *live, narrow, unmodelled* · Amendment 1 §A1.2]** |
+| **C-5** | **Separation attestation** | `INV-ATTR-2`/`G-2`: separation is **Declared, NOT attestable** | 🔴 **NO OWNER** | **absent** — ✅ *status correct and unchanged*; ⚠️ **an Amendment-1 pointer was MISPLACED on this row and is removed by Correction #2 §C2.2 (finding `W-2`)** |
 | **C-6** | **Acceptance / closure** | `COMPLETE` refuses any `recordedBy` but `governance`/`human` (`G-1`); `R-34` | BC-7 (mechanism) + PO/ARB (authority) | **live** |
 | **C-7** | **Knowledge curation & promotion** (`generated → authoritative`) | `CAP-03`; Knowledge-Constitution; `authority:` fields | BC-1 Knowledge Governance | 🔴 **NOT BUILT** — constitution + convention only |
 | **C-8** | **Evidence identity & provenance** | 39 `tokenRef`s hard-code paths (`EKS-03`) ⚠️ **[count CORRECTED → 40 · Amendment 1 §A1.3]**; *"historical location is evidence"* | ⚠️ **weak / implicit** | **fragile** |
@@ -71,7 +71,7 @@ capability → ownership → bounded context / stewardship → human role → ag
 | **C-11** | **Context bootstrap & rehydration** | `CAP-01`, `AST-002`, SessionStart hook | BC-6 Session Continuity | **live** |
 | **C-12** | **Session recording & archival** | `CAP-02`, `AST-003/004` | BC-6 | **live** |
 | **C-13** | **Policy derivation** | `doc-placement.php` — exit 0 for every case | BC-1/BC-2 (`INFERRED`) | **live** |
-| **C-14** | **Policy enforcement** | `EKS-02`: *"the rule exists, but the workflow does not make it hard enough to violate"* | 🔴 **NO OWNER** | **absent** |
+| **C-14** | **Policy enforcement** | `EKS-02`: *"the rule exists, but the workflow does not make it hard enough to violate"* | 🔴 **NO OWNER** | **absent** 🔴 **[FALSIFIED — WITHDRAWN. Corrected status: `CONTESTED`; neither "absent" nor "live" is established. See Correction #2 §C2.2 · original wording retained]** |
 | **C-15** | **Discipline gating & tripwires** | `CAP-06`, `AST-005/006/014` | BC-2 Implementation Guidance | **live, all Tier-2 non-blocking** |
 | **C-16** | **Strategic & tactical modelling / ADR drafting** | `CAP-10/12`, frozen templates | BC-5 Design & Decision Support | **by reference** |
 | **C-17** | **Conformance checking & verdicts** | `CAP-07/08/09`, `AST-007/010` | BC-3 Verification & Evidence | **partial** |
@@ -336,6 +336,8 @@ BC-1 Knowledge Governance                     C-10 DISTRIBUTION            execu
 | **`OQ-E`** | `OI-1` — the term **"review"**; and now also **"role"** (§6): three existing meanings | **OPEN, pre-existing + extended** |
 | **`OQ-F`** | ADR-C2 — `CAP-13`/registry placement | **OPEN, pre-existing, untouched** |
 | **`OQ-G`** | Should the four unowned capabilities be **built** before any role formalization? | **OPEN — this is the sequencing question §17 puts to the PO/ARB** |
+| **`OQ-H`** | **`C-14`'s home — BC-2 or BC-3?** `AST-007` is the only Tier-1 asset and its own trace assigns it to `CAP-09` / `verification-evidence`; `EKS-02`'s unclosed gap points at BC-2's derivation surface. ⚠️ **Sharpened by `W-6`: `CAP-09` is *Constitutional Observation & Escalation* with halt-on-trip, so whether `AST-007` is a policy-enforcement instance at all is itself contested** | **OPEN — added by Amendment 1 §A1.2, registered here by Correction #2 §C2.3** |
+| **`OQ-I`** | **Disposition of the untracked architectural material** — ⚠️ **scope widened by `W-1`: the four `.puml` files, both `README`s, AND `docs/knowledgeos/brainstorming/ai-engineering-platform-6-role-model.md` (925 lines, all six roles, its own ADR-AIP-04 Options A/B/C).** ⛔ *They cannot remain undisposed and be cited as evidence* | **OPEN — added by Amendment 1 §A1.6, scope corrected and registered by Correction #2 §C2.3** |
 
 ### 15.1 · ⚠️ Shared-boundary risks — Track 1 coupling · **RECORDED, NOT SOLVED**
 
@@ -628,3 +630,245 @@ Person(verifier,   "Independent Verification Engineer", "Falsifies and assures")
 **Next actor: an independent verification process — neither this producer nor the first verifier, and preferably with no Track-1 authorship — re-verifies the corrected discovery. Only then: PO/ARB decision.**
 
 **Amendment traceability:** `KOS-AIP04-DISCOVERY-001-independent-verification.md` (`V-1`…`V-4`, findings `E`/`I`/`L`, §1② recusal, conditions 1–6) · primary evidence re-derived: **`01-system-context.puml`** and **`02-container-architecture.puml`** (both `??`, full `Person()` survey) · `registry.yaml` `AST-005/006/007/014` (tiers re-read; `AST-007` `trace` → `CAP-09`/`verification-evidence`) · 16 workflow records / 48 `tokenRef`s / **40 path-bearing**, observed 2026-08-18 · `Phase-02-Domain-Model.md` §7 (authorities: Chief Architect · ARB · Sponsor) · git precedence 2026-07-10 vs 2026-08-17 · `AIP-11` addendum precedent · `INV-ATTR-2`/`G-1`/`G-2`/`R8`/`R-34`.
+
+---
+---
+
+# CORRECTION #2 — after Independent Verification #2
+
+| | |
+|---|---|
+| **Status** | 🟡 **CORRECTION ONLY.** Nothing decided. Not a third discovery round. |
+| **Assignment** | `S4b-architecture-aip04-correction2` — **seq 10 REGISTER · 11 HANDOFF · 12 START** |
+| **Grant** | `G-KOS-AIP04-CORRECTION2` (AUTHORIZED, PO/ARB 2026-08-19) |
+| ⭐ **PRODUCING PROCESS — declared, because `W-4` exists** | **`claude-code-session:5e1dd9ee`** — the original discovery producer **and** the author of Amendment 1. **Self-declared and NOT attestable** (`INV-ATTR-2`/`G-2`). Distinct from Verification #1 (`1c8b041b`) and Verification #2 (`2da45a86`), which is the assignment's precondition — ⛔ **but NOT independent of its own work.** `R-34`/`P-2` binds. |
+| **Preserved, nothing deleted** | the original proposal · Amendment 1 · Verification #1 · Verification #2 |
+| **Next actor** | **Independent Verification #3** — ARB bar strengthened: **no Track-1 authorship AND no authorship of either ADR-AIP-04 correction.** |
+
+**What landed in the document body (additive, verified after writing):** the `C-14` correction moved onto the **`C-14` row** and `C-5` **restored** (§C2.2) · **`OQ-H` and `OQ-I` added to the authoritative §15 register** (§C2.3).
+
+---
+
+## ⚠️ C2.0 · The failure recurred a third time — and the repository already had a rule against the mechanism
+
+**Verification #2's sharpest finding is that Amendment 1 stated the absence-search discipline and then failed to apply it to its own conclusion.** That is accepted without qualification.
+
+| # | Instance | Mechanism |
+|---|---|---|
+| **1** | `V-1` — *"the six roles appear nowhere"* | a survey **truncated by `head -5`** |
+| **2** | `V-2` — *"enforcement is absent"* | a **verified narrow claim generalised** without seeking a counter-instance |
+| **3** | **`W-1`** — *"the untracked material depicts a five-actor sketch"* | an **absence claim about a CLASS of material, derived from one file type in one directory** |
+
+> ### ⭐ **And a second, independent mechanism finding — `W-2`:**
+> **The `C-14` correction landed on the `C-5` row because it was applied with a scripted first-match string replace.** `C-5` and `C-14` shared the look-alike cell `| 🔴 **NO OWNER** | **absent** |`, and the first match was `C-5`.
+>
+> **This repository already carries a STANDING RULE against exactly this mechanism** — *"Do NOT use automated search-and-replace on source code … a slightly-too-broad pattern corrupts look-alike sites silently"* — whose declared scope is **source code**. ⛔ **The rule's SCOPE excluded documents; its RATIONALE did not.** The estate has now paid for that gap inside a single work item.
+>
+> **This correction's own row edits were therefore made by verified line index, with a content assertion before writing** — the discipline the rule intends. **`PROPOSED`, not adopted: extend the rule's scope from *source code* to *any artifact with look-alike sites*.**
+
+**Both mechanisms share one root:** an operation whose *scope was assumed rather than verified* — a truncated search, an over-general induction, a first-match replace. **`PROPOSED` (not a decision): the absence-claim rule (`A1.0`) should be paired with a scope-verification rule — *state what you searched or edited, and verify the operation's extent before relying on it.***
+
+---
+
+## C2.1 · `W-1` — the six-role evidence survey, completed
+
+### The mandatory disclosure the rule now requires
+
+| | |
+|---|---|
+| **Search scope** | the **entire repository**, excluding only `.git`, `node_modules`, `vendor`, `public` |
+| **Search method** | case-insensitive fixed-string search for **each of the six titles separately**, over **all file types**, output **not truncated**; then per-file `git ls-files` to establish tracked status |
+| **Search completeness** | ✅ **complete for the six literal titles.** ⛔ **NOT complete for paraphrases** (e.g. *"governance role"*, *"verifier"*), and **no file-by-file classification of all hits was performed** — see the residual below |
+| **Observation point** | **2026-08-19**, at this correction |
+
+### `OBSERVED` — the measured distribution
+
+| Title | Files |
+|---|---:|
+| Knowledge Engineer | **89** |
+| Governance Engineer | 16 |
+| Implementation Engineer | 10 |
+| Verification Engineer | 9 |
+| Architecture Engineer | 7 |
+| Communication Engineer | 7 |
+| **Distinct files containing at least one** | ⭐ **104** |
+
+**Tracked status:** the overwhelming majority are **TRACKED**. Untracked among the hits: `01-system-context.puml`, `02-container-architecture.puml`, **`docs/knowledgeos/brainstorming/ai-engineering-platform-6-role-model.md`**, and two unrelated files.
+
+### 🔴 `A1.1-b` is FALSIFIED and withdrawn
+
+**`A1.1-b` claimed the untracked material *"depicts a FIVE-actor sketch, not the six-role set under evaluation."* Primary evidence refutes it.**
+
+`docs/knowledgeos/brainstorming/ai-engineering-platform-6-role-model.md` — **untracked, 925 lines** — contains **all six roles as first-class sections**:
+
+```
+# Role 1 — Governance Engineer        # Role 4 — Architecture Engineer
+# Role 2 — Communication Engineer     # Role 5 — Implementation Engineer
+# Role 3 — Knowledge Engineer         # Role 6 — Independent Verification Engineer
+```
+
+**And it pre-frames this very ADR:** `## ADR-AIP-04 — AI Engineering Platform Capability Model`, with **`Option A — Accept six-role model` · `Option B — Keep them as Governance sub-capabilities` · `Option C — Defer`**, plus *"But do not create 6 independent agents immediately"* and *"Do not mix ADR-AIP-04 with BC-7."*
+
+> ### ⚠️ **A disclosure this correction must make against its own interest**
+> **Option B — *"keep them as Governance sub-capabilities"* — is materially the conclusion the discovery reached independently in §13** (communication as a **stewardship inside Governance** rather than a peer context). **The commission's capability-first guard and the BC-7 separation rule also appear in that document.**
+>
+> ⛔ **Whether the discovery independently converged or reconstructed an unread source CANNOT BE ESTABLISHED.** *"I did not read it"* is exactly the class of claim `INV-ATTR-2` says is not attestable. **Classification: `OPEN`.** ⚠️ **Consequence for the PO/ARB: §13's convergence with Option B must NOT be counted as independent corroboration of Option B.**
+
+### `F-3″` — the finding, restated on the completed survey *(supersedes `F-3` and `F-3′`)*
+
+> **`OBSERVED`:** the six titles occur in **104 files across the repository**, most of them **tracked**, including a **925-line untracked document that sets out all six roles and drafts this ADR's option space**, and **two mutually inconsistent untracked C4 diagrams**.
+>
+> ⛔ **EVERY ABSENCE CLAIM IS WITHDRAWN.** *"Appear nowhere"* (original), *"only commissioning personas"* (original), and *"a five-actor sketch"* (Amendment 1) are all falsified and are retained above only as historical wording.
+>
+> **`INFERRED` — the surviving conclusion, and the ONLY one this evidence supports:** **the six-role model is not established as GOVERNED platform architecture** — because **no ADR, no accepted decision record, no capability-map row and no `registry.yaml` entry adopts it.** *(`OBSERVED` component: `registry.yaml` contains no role or actor concept at all; `CAP-01…14 ↔ BC-1…BC-7` contains no role row; `ADR-AIP-01/02/03` adopt none.)*
+>
+> ⭐ **The claim's basis has changed completely.** It no longer rests on *scarcity of the titles* — they are abundant. **It rests solely on the absence of an ADOPTING GOVERNED ACT.** That is a narrower, checkable, and materially different argument.
+
+**Residual, stated rather than hidden (`OPEN`):** **no file-by-file classification of the 104 hits was performed**, so this correction does **not** assert that none of the 104 is a governed adoption — it asserts only that **the four artifact classes that could adopt one (ADRs, decision records, the capability map, the registry) do not.** ⛔ **A full classification of the 104 remains unperformed and is a legitimate input to `OQ-I`.**
+
+### The four-way distinction, applied to the completed survey
+
+| Class | Contents | Weight |
+|---|---|---|
+| **1 · Governed architecture** | `ADR-AIP-01/02/03` · the accepted capability map · `registry.yaml` | ✅ **contains no six-role adoption** — `OBSERVED` |
+| **2 · Untracked material** | the 925-line role model · `01`/`02-*.puml` · both `README`s | 🔴 **rich in six-role content; NONE of it governed** |
+| **3 · Persona language** | *"Principal Knowledge Engineer / Strategic DDD Architect"* headers — the bulk of the 89 "Knowledge Engineer" hits | ⚠️ an addressing convention |
+| **4 · Executable lane roles** | BC-7's declared role sets, validated at `REGISTER`, immutable per `R8` | ✅ **the estate's only mechanically enforced role model** |
+
+---
+
+## C2.2 · `W-2` and `W-6` — the `C-14` correction, landed and sharpened
+
+**`W-2` is accepted.** The Amendment-1 pointer sat on the **`C-5`** row while **`C-14`** still displayed the falsified *"absent / NO OWNER"* — and §3's inventory **is** the surface PO/ARB decision 3 reads. **Both rows are now fixed in the document body**, edited by verified line index (§C2.0).
+
+| Row | State now |
+|---|---|
+| **`C-5`** | **restored to its own correct status** — `absent` is right: separation attestation has no owner and no mechanism. The misplacement is noted inline so it stays traceable |
+| **`C-14`** | the withdrawal and the corrected status now appear **on the `C-14` row** |
+
+### 🔴 `W-6` forces a further correction — the status is `CONTESTED`, not `LIVE`
+
+**`OBSERVED`, from `Phase-02.5-Certification-Plan.md`:**
+
+```
+CAP-09 | Constitutional Observation & Escalation | Read-only observation of constitutional guards
+       (CI-1..5/Q7); on a trip: halt, escalate, never retry, never modify.
+       Owner: Verification & Evidence | write-paths: None — deliberately closed | Tier-1 action-space asymmetry
+```
+
+**`AST-007`'s own `trace` assigns it to `CAP-09`.** ⇒ `db-safety-check.sh` blocking `migrate:fresh/refresh/db:seed` is **exactly a halt-on-trip on a constitutional guard** — which is `CAP-09`'s *defined behaviour*, not evidence of a general policy-enforcement capability.
+
+> ## **Therefore Amendment 1's status `LIVE, NARROW, UNMODELLED` was still too strong, and is corrected to `CONTESTED`.**
+>
+> | Statement | Status |
+> |---|---|
+> | *"policy enforcement is absent"* (original) | 🔴 **FALSIFIED — withdrawn** (a Tier-1 blocking asset exists) |
+> | *"policy enforcement is live, narrow, unmodelled"* (Amendment 1) | 🔴 **NOT ESTABLISHED — withdrawn.** The sole Tier-1 asset may be a **correctly filed `CAP-09` constitutional-observation asset**, not a `C-14` instance |
+> | **`CONTESTED`** — corrected | ✅ **the strongest justified class.** ⛔ **Neither "absent" nor "live" is established** |
+
+**`OQ-H` is sharpened accordingly** *(and registered in §15 — §C2.3)*: the question is **not merely BC-2 vs BC-3**, but first ***"does `C-14` have ANY live instance, or is the only Tier-1 asset an instance of a different capability?"*** ⛔ **Not decided here** — the record does not decide it, and the grant forbids solving it.
+
+**Unchanged and still `OBSERVED`:** `C-15`'s three assets (`AST-005/006/014`) are **all Tier-2 non-blocking** · **`AST-007` is the estate's sole Tier-1 asset** · `EKS-02`'s specific gap stands (`doc-placement.php` is derivation, not enforcement) · `F-7`'s **authorship ≠ derivation ≠ enforcement** distinction holds.
+
+**`SB-3` re-recalculated:** Amendment 1 reduced it to *"a change of coverage, not of kind"* on the premise that blocking **policy** enforcement already exists. **With `W-6`, that premise is itself contested.** ⇒ **`SB-3` returns to `OPEN / UNQUANTIFIED`: whether extending enforcement would change the conditions Track-1 lanes execute under cannot be settled until `OQ-H` is.** ⛔ Still not proposed; **the flag is restored to its original severity rather than left understated.**
+
+---
+
+## C2.3 · `W-3` — `OQ-H` and `OQ-I` registered
+
+**Done in the document body:** the authoritative §15 register now lists **`OQ-A` … `OQ-I`** — nine open questions, matching the corrected decision set. ⛔ **Neither is decided.**
+
+**`OQ-I`'s scope is corrected per `W-1`:** its disposal list now includes **the 925-line role-model document**, not only the diagrams and READMEs.
+
+---
+
+## C2.4 · `W-4` — provenance declared, history not repaired
+
+**`OBSERVED`, from the record:** when Amendment 1 was produced, transitions 1–6 existed. The fold at that point placed the **architecture lane `HANDED_OFF`** and the **Verification #1 lane as mutation owner**. **There was no correction assignment and no correction grant.** The seq-1 `executionContext` already required *"The proposal MUST disclose its producing process, self-declared"* — **and Amendment 1 declared none.**
+
+| | |
+|---|---|
+| **The fact** | **Amendment 1 was produced with no governed correction assignment, no correction grant, and no declared producer.** Its authorship is recoverable only by **inference**. `OBSERVED` (the record) + `INFERRED` (the authorship) |
+| **Declared now** | the producing process of **Amendment 1** and of **this Correction #2** is **`claude-code-session:5e1dd9ee`** — self-declared, **not attestable** (`INV-ATTR-2`) |
+| ⛔ **Not done** | **no assignment is back-dated · no grant is retro-registered · no owner is retroactively invented · the append-only record is not rewritten.** The gap stands in the record as a gap |
+| **What changed structurally** | **this correction has an explicit governed producer, assignment (seq 10–12) and authority (`G-KOS-AIP04-CORRECTION2`)** — so the defect does not recur |
+
+> ⭐ **The ARB's distinction, and it is the durable lesson of this work item:** **content can be independently assessable while authority and provenance are not established.** Amendment 1 was the first; the estate now has a governed instance of the same activity to compare it against. ⚠️ **`PROPOSED` observation, not adopted: this is `C-5` (separation attestation) manifesting on the PRODUCTION side rather than the verification side** — the platform could not tell who produced Amendment 1, for the same structural reason it cannot attest a verifier's separation.
+
+---
+
+## C2.5 · `W-5` — actor wording corrected
+
+**`OBSERVED`:** `01-system-context.puml` contains **6** `Person()` declarations; `02-container-architecture.puml` contains **2**.
+
+| Amendment 1 wrote | Corrected |
+|---|---|
+| *"`01` models **five separate** `Person()` actors"* | **6 `Person()` — five engineering-role actors PLUS `Person(po, "PO / ARB", "Human decision authority")`** |
+| *"`02` collapses them into **ONE** actor"* | **2 `Person()` — one collapsed `"Engineering Roles"` actor PLUS `Person(po, "PO / ARB", …)`** |
+
+**Both counts silently excluded the `PO / ARB` actor.** ⚠️ **The exclusion was not arbitrary — the PO/ARB is a human decision authority rather than an engineering role — but it was undeclared, which is the defect.** ✅ **The substantive point survives: the two diagrams disagree on the ENGINEERING-role decomposition (five separate vs one collapsed), and neither is governed.**
+
+---
+
+## C2.6 · `SB-1` — still not cleared, and now for a recorded pattern
+
+> ## ⚠️ **`SB-1` REMAINS `CONFLICTED / REQUIRES RE-VERIFICATION`. This correction does not clear it and must not be read as clearing it.**
+
+**`OBSERVED`:** **two consecutive independent verification passes have declined to issue an `SB-1` verdict, for the same reason — both verifiers hold Track-1 authorship.** Verification #1 is the Track-1 implementation engineer; Verification #2 holds Track-1 assurance authorship and **issued no verdict at all** on `SB-1`, deliberately deviating from its own scale rather than let a recusal be read as a clearance.
+
+⚠️ **`INFERRED`: this is not evidence that `SB-1` is wrong. It is evidence that the estate currently lacks a verifier without Track-1 authorship** — a structural availability problem, not a substantive one. **`SB-1`'s substance is unchanged: ADR-AIP-04 must not assign conformance authority.**
+
+✅ **The ARB's strengthened bar for Verification #3 — no Track-1 authorship AND no authorship of either ADR-AIP-04 correction — is the first configuration in which `SB-1` can be cleared.** ⛔ **Recorded as the condition; not requested as a favour.**
+
+---
+
+## C2.7 · Impact assessment on the overall thesis
+
+### What changed materially in this correction
+
+| | |
+|---|---|
+| **`F-3`/`F-3′` → `F-3″`** | 🔴 **the argument's BASIS is replaced.** From *"the titles are scarce/only personas/a five-actor sketch"* to *"the titles are abundant (104 files) but **no governed act adopts them**."* **Same conclusion, entirely different evidence — and a narrower, checkable one** |
+| **`C-14`** | 🔴 **`absent` → (Amendment 1) `live, narrow, unmodelled` → `CONTESTED`.** Two successive withdrawals; **the corrected class is weaker than both** |
+| **`SB-3`** | 🔴 **restored to `OPEN / UNQUANTIFIED`** — Amendment 1's reduction rested on a premise `W-6` contests |
+| **`OQ-H`** | sharpened — the prior question (BC-2 vs BC-3) is now **second** to *"is there any `C-14` instance at all?"* |
+| **`OQ-I`** | scope widened to include the 925-line document |
+| **§13's convergence with "Option B"** | ⚠️ **can no longer be counted as independent corroboration** (`OPEN`, §C2.1) |
+| **Provenance** | Amendment 1's gap **recorded, not repaired**; this correction is governed |
+
+### What still survives, after two independent verification passes
+
+**Unchallenged by either verifier:** all **mechanism evidence** (reproduced exactly by Verification #1) · ⭐ **the invariant asymmetry — every invariant BC-7 owns is mechanically enforced, almost every invariant outside BC-7 is declared only** · ⭐ **`C-5` cannot be discharged by an agent** (called the strongest argument in the proposal, and now *doubly* evidenced by `W-4`: the platform could not attest who produced Amendment 1) · **`C-10`** as the strongest evidenced gap · **`C-19`** failing its own five-test matrix ⇒ stewardship · **`F-7`** · **`F-10`** (ADR-C7 pre-emption) · **`F-11`** (Product Primacy) · **`F-9`/`F-9a`**, corroborated first-hand by **both** verifiers' own self-recorded STARTs · **parsimony** — no context created · **Track-1 safety** — verified clean twice.
+
+> ### **The thesis after two corrections:** **the question is capability ownership, not role creation — and the load-bearing structural result is untouched.** ⛔ **But the evidence package has now been materially wrong three times about the same thing, and the honest summary is that this discovery has been better at DDD reasoning than at surveying its own estate.** **No finding is strengthened by this correction. `C-14` and `SB-3` are weaker than before.**
+
+---
+
+## C2.8 · Corrected PO/ARB decision set
+
+**Supersedes Amendment 1 §A1.9 and §17. Both retained above. Changes in bold.**
+
+| # | Decision | Minimum the act must state |
+|---|---|---|
+| **1** | Six-role model — adopt · reject · treat as candidate material | ⚠️ **CORRECTED input:** the titles are in **104 files**, most tracked, incl. a **925-line document drafting this ADR's own options**. ⛔ **The old framing — "personas vs architecture" — is dead.** The live question is: *does any governed act adopt them, and should one?* |
+| **2** | `OQ-5` role-model ownership — BC-7's own · governance-published · **the proposed split** | unchanged; consumption leg is `INFERRED` |
+| **3** | **`C-5`, `C-10`, `C-19` as unowned capabilities; `C-14` as `CONTESTED`** | accept/reject **each separately.** ⚠️ **CORRECTED: `C-14` is `CONTESTED`, not `live` — the sole Tier-1 asset may belong to `CAP-09`** |
+| **4** | Owner for `C-10` — BC-1 or BC-6 (`OQ-B`) | the owner, or a deferral with a named trigger |
+| **5** | Sequencing (`OQ-G`) | ⚠️ **CORRECTED: `C-14` cannot be sequenced until `OQ-H` establishes whether it has an instance** |
+| **6** | **`SB-1`** — ADR-AIP-04 must not assign conformance authority **AND must be re-verified without Track-1 authorship** | ⚠️ **two passes have now failed to clear it for the same structural reason** |
+| **7** | Who verifies **Correction #2** | **no Track-1 authorship AND no authorship of either ADR-AIP-04 correction** — the ARB's strengthened bar |
+| **8** | **`OQ-H`** — `C-14`: **is there any instance at all**, and then BC-2 or BC-3? | ⚠️ **CORRECTED ordering per `W-6`** |
+| **9** | **`OQ-I`** — disposition of the untracked material | ⚠️ **SCOPE WIDENED:** four `.puml` + two `README`s **+ the 925-line role-model document**. ⛔ *They cannot remain undisposed and be cited as evidence* |
+| **10** | 🆕 **Amendment 1's provenance gap** (`W-4`) | that it is **recorded and not repaired**; whether any further governance consequence follows is the PO/ARB's |
+| **11** | 🆕 **`PROPOSED` — extend the anti-mass-replace rule's scope** from *source code* to *any artifact with look-alike sites*, and pair the absence-claim rule with a **scope-verification** rule (§C2.0) | adopt · reject · defer. ⛔ **Proposed only; this correction adopts nothing** |
+
+**Carried forward unchanged and unanswered:** `OQ-A` · `OQ-B` · `OQ-C` (ADR-C7) · `OQ-D` · `OQ-E` · `OQ-F` · `OQ-G` · `SB-2`.
+
+---
+
+**CORRECTION #2 DELIVERED · STOPPING.**
+⛔ **No third discovery round · no redesign · no ADR-AIP-04 question answered · no capability, context, role, agent or service created · BC-7 untouched · Track 1, the shared L3 contract and all accepted semantic decisions untouched · `SB-1` NOT cleared · the untracked material NOT committed and NOT adopted · no evidence class upgraded · no history rewritten or deleted · no self-verification · no self-acceptance · work item NOT closed (`G-1`).**
+
+**Next actor: Independent Verification #3 — no Track-1 authorship and no authorship of either ADR-AIP-04 correction. Only then: PO/ARB decision.**
+
+**Correction #2 traceability:** `G-KOS-AIP04-CORRECTION2` · assignment seq 10–12 · Verification #2 (`W-1`…`W-6`, §1 recusal, verdict RETURNED) · Verification #1 (`V-1`…`V-4`) · Amendment 1 (`8008ee8a`) · discovery (`51910203`) · **exhaustive six-title survey: 104 distinct files, per-title counts, tracked status file-by-file, scope/method/completeness/observation-point declared, 2026-08-19** · **`docs/knowledgeos/brainstorming/ai-engineering-platform-6-role-model.md` (untracked, 925 lines, Roles 1–6, `ADR-AIP-04` Options A/B/C)** · `01-system-context.puml` (6 `Person()`) · `02-container-architecture.puml` (2 `Person()`) · `Phase-02.5-Certification-Plan.md` `CAP-09` (*"on a trip: halt, escalate, never retry, never modify"*, Tier-1 asymmetry, write-paths deliberately closed) · `registry.yaml` `AST-005/006/007/014` · proposal rows `C-5` / `C-14` re-edited **by verified line index** · `.claude/CLAUDE.md` source-editing standing rule (scope vs rationale) · `INV-ATTR-2`/`G-1`/`G-2`/`G-3`/`R8`/`R-34`/`P-2`.
