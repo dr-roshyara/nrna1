@@ -10,7 +10,7 @@
 
 **Independence, declared:** this lane held **no position anywhere in the `EM-DOM-001` chain** before this commission. It did not author D1–D4, the Rule-8 post-decision gate, the dossiers, the decision-recording surface, ADR-1/ADR-2, the Phase-1 or Phase-2A maps, the briefing, the referral, the critical-path note, the authorization records, or the untracked `2026-08-18-EM-DOM-001-architecture-review.md`. It reached the verdict below from **code and the governing decisions**, not from any summary. **Gate 1 had already landed CONFIRMED (`6079fe9f`) when this pass ran; only its headline was read, never its reasoning, so every finding below is independently derived.**
 
-**State at verification:** `HEAD` = `faa9f2c5` (advanced during the pass; the core and `app/` are unaffected — verified, not assumed).
+**State at verification:** `HEAD` = `faa9f2c5`. ⚠️ **`HEAD` advanced twice more during the pass, to `8008ee8a`** (other sessions' commits, including Gate 1 at `6079fe9f`); **the frozen core is byte-identical at that `HEAD` too** — same tree hash `94e46c3d`, empty diff against `1f4b4c5f`. **Verified, not assumed.**
 
 ---
 
