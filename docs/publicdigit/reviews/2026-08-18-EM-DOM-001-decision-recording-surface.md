@@ -254,3 +254,15 @@ Signed: ____________________   Date: ____________
 ⚠️ **HEAD has advanced to `2a1875e3`** (another session has committed since this surface was prepared at `4796ef1f`). **The domain core and `app/`/`tests/` are unaffected by that movement** — verified above, not assumed.
 
 ⛔ **Nothing in this appendix is a decision. The recording session has created no authority.**
+
+---
+
+# ⚠️ Registered NON-ACT · 2026-08-18 — a decision-providing message carrying no decision text
+
+**A message was received headed *"I am now providing the PO/ARB decisions. Record the following four decisions exactly as written"*, followed by recording instructions, the three standing principles, and a STOP directive.** ⛔ **It contained NO D1/D2/D3/D4 wording. No decision text followed the instruction.**
+
+**Nothing was recorded. All four blocks remain `LEFT BLANK`.**
+
+**Basis — the message's own constraints:** *"Do not infer missing decisions"* · *"Do not convert recommendations into decisions"* · *"Do not select an option where I have not selected one."* **Appendix R holds `IN SCOPE` / `confirm` / `defer` / `defer` as recommendations; filling the blocks from it would have breached all three at once.** ⚠️ **Recorded because this is the single most likely way a recommendation becomes a ruling by accident: an instruction to record, arriving without the text to record.**
+
+**The Rule-8 gate was NOT re-run.** Its input — the authorization state — **did not change**, so a fresh gate pass would have restated `c4828cdd` while implying a new authorization existed. **The gate result stands exactly as recorded: 🔴 BLOCKED.**
