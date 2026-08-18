@@ -4,6 +4,25 @@
 
 ---
 
+## 📍 UPDATE (2026-08-18, later) — contract-neutrality **parsing architecture evaluation delivered**; PO/ARB selection pending
+
+*(Additive. Supersedes the NEXT ACTOR row of the breadth block below — Decisions 1–3 were taken, the architecture evaluation they commissioned is now delivered.)*
+
+| | |
+|---|---|
+| **Work item / assignment** | `KOS-CONTRACT-NEUTRALITY-001` · **`S4-architecture-parsing-evaluation`** (seq 20 REGISTER · 21 HANDOFF · **22 START**, human act recorded) · grant `G-KOS-CONTRACT-PARSING-ARCH`. ⚠️ The START names `S4-architecture-contract-parsing-architecture`; the **registered** label is `S4-architecture-parsing-evaluation` — same commission; reconciliation is a Governance act. |
+| **Delivered** | `docs/publicdigit/reviews/2026-08-18-KOS-CONTRACT-NEUTRALITY-001-parsing-architecture-evaluation.md` — 13 sections, evidence-based, **recommendation only; nothing selected** |
+| ⭐ **Finding 1** | **Zero of the twelve divergences is a disagreement about cohesion.** Root causes: **9 lexical · 2 structural · 1 contract · 0 semantic-model.** ***The experiment failed at a layer the contract never specified*** — the neutrality claim was implicitly being made over *PHP source comprehension*, which is not language-neutral and was never anybody's decision. |
+| ⭐ **Finding 2** | **The PHP reference is ALREADY Option B (nikic AST v5.4.0) and still produced `NEW-5`.** Measured: `Name::toString()` returns `Fq` for **both** `Fq` and `\Fq`; `toCodeString()`/`isFullyQualified()` preserve the distinction. ***The information the pinned decision turns on is preserved by the parser and discarded by the accessor.*** ⇒ **an AST is necessary and demonstrably NOT sufficient**, and Decision 1's *"the PHP reference is not automatically authoritative"* is **measurably** correct. |
+| ⭐ **Finding 3** | **The defect list is not a backlog; it is an incrementally-discovered specification of the PHP lexical grammar** — one cause (*approximate a grammar with regexes*), eleven symptoms. ***"You cannot enumerate the complement of a grammar"*** ⇒ **Option A cannot state its own residual risk.** |
+| ⭐ **Finding 4** | **Decision 2 already specified an intermediate representation without calling it one**, and **`expected.json`'s `_future_layout` (2026-08-04) already anticipated the stratified architecture.** ⇒ the recommendation is **consumption, not invention** (`ES-005.4`). |
+| **Measured (read-only)** | PHP 8.5.8 + nikic v5.4.0 + `token_get_all()` present · **NO AST-grade PHP parser available to Python** and every grant forbids Python packaging ⇒ **B2 blocked by a CONSTRAINT, not a technical fact** · **the token stream resolves ALL nine lexical constructs** (declaration-`class` count = 1 in every probe) · 152 token kinds = A's true target · **`{$this->…}` live in `app/`: 26 files / 60 sites** — `NEW-6` mis-measures production code today. |
+| **Recommendation** | **`D` — stratify the contract, conformance boundary at the fact model; language layer by `B3` (shared engine lexer, independent parser), `B1` available; `C`-as-completion mandatory; `A` rejected as an architecture** (available only as an explicitly-labelled stopgap). ⭐ **`C` split and given two verdicts:** *as substitute* **rejected** (scope defined by a defect); *as completion* **required under every option**. ⭐ **Dissent recorded against my own recommendation:** if the need is *trustworthy numbers soon* rather than *a defensible claim*, **A is the better answer** — the two needs have never been separated. |
+| **`NEW-5`** | **Returned UNDECIDED** (Decision 1 reserved it), with the ambiguity located: a **collision between two pinned decisions** (*dependency, not syntax* vs *as written*), and "as written" never defined against PHP's five name kinds. Four readings, each with its consequence. |
+| **NEXT ACTOR** | 🔵 **PO/ARB** — ⭐ **first answer 13.1: *what is the contract-neutrality claim OVER?*** (L3→L5 cohesion model, or L1→L5 including PHP comprehension). ***The parsing architecture cannot be selected before that is answered.*** Then: select the architecture · rule `NEW-5` · decide whether the Python-packaging constraint stands (gates B2) · rule the four contract silences (⚠️ **`?->` can NEVER be surfaced by differential testing — both implementations share the blindness**) · decide corpus promotion · write Decision 2 into the contract. ⛔ **No option selected · no implementation authorized · nothing modified · assignment NOT self-completed (`G-1`).** |
+
+---
+
 ## 📍 UPDATE (2026-08-18) — contract-neutrality **breadth verification delivered**; PO/ARB decision pending
 
 | | |
