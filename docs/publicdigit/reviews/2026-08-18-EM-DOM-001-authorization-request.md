@@ -3,7 +3,7 @@
 *(Prepared as a request; became the authorization record when the PO/ARB performed the act on 2026-08-18. The filename is kept for link stability.)*
 
 **Prepared by:** Session 2 — Governance · **Date:** 2026-08-18
-**Status:** ✅ **AUTHORIZED by the PO/ARB on 2026-08-18 (recorded verbatim in the Authorization block). ⏸️ NOT STARTED — the fresh Domain lane has not been designated. Phase 1 only (domain analysis/design + RED-test preparation).**
+**Status:** ✅ **AUTHORIZED by the PO/ARB on 2026-08-18 (recorded verbatim in the Authorization block) · ✅ AMENDED by the PO/ARB on 2026-08-18 (Amendment 1 — obligation (9) corrected to exclude `DEP-10`). ⏸️ NOT STARTED — the fresh Domain lane has not been designated. Phase 1 only (domain analysis/design + RED-test preparation).**
 
 > ⚠️ **This document began as a request and is now the authorization record.** Sections 1–10 are the requested terms; the **Authorization block** carries the PO/ARB's performed act verbatim, with two annotations. **Governance prepared it and did not grant it.** **The ID `EM-DOM-001` is CONFIRMED by the authorizing text's own heading.**
 
@@ -64,7 +64,9 @@ Path A                          Path B  ( = w8 )
 
 **Registered constraint:** `ElectionRestored.$returnsToGate` is **non-nullable**. Per ADR-2 (h) that incompatibility **is** the domain-model gap, and its representation is decided **together with** this slice's implementation — not deferred.
 
-## 6 · DEP-7 … DEP-12 — prohibited paths, and they REMAIN prohibited
+## 6 · The prohibited paths — DEP-7, DEP-8, DEP-9, DEP-11, DEP-12 — and they REMAIN prohibited
+
+> **The span `DEP-7 … DEP-12` is a numbering range, NOT a prohibition set. `DEP-10` sits inside the range and is class A.** *(Confirmed by PO/ARB Amendment 1, 2026-08-18.)*
 
 | # | Prohibited path | Note |
 |---|---|---|
@@ -144,6 +146,8 @@ The map must render at least these two discriminations explicitly:
 
 ## ✅ **AUTHORIZED — PO/ARB, 2026-08-18. Recorded verbatim.**
 
+> 🔴 **READ THIS BEFORE OBLIGATION (9): the act below is SUBJECT TO PO/ARB AMENDMENT 1 (2026-08-18), recorded immediately after it, which REPLACES obligation (9). The amended text governs. `DEP-10` is EXCLUDED from the prohibition.**
+
 > **PO/ARB AUTHORIZATION — EM-DOM-001**
 >
 > I authorize one bounded Domain slice to resolve DEP-1 through DEP-6 identified by the EM-IMPL-002 Rule-8 dependency gate.
@@ -176,13 +180,58 @@ The map must render at least these two discriminations explicitly:
 
 **ID confirmed:** the proposed `EM-DOM-001` is adopted by the authorizing text's own heading.
 
-### ⚠️ Annotation A — the DEP-10 reconciliation (recorded, not silently repaired)
+---
 
-Obligation **(9)** says *"leave all prohibited DEP-7 through DEP-12 paths prohibited."* **`DEP-10` lies inside that numeric range but is class A, NOT prohibited** (§6, §7). Read literally, (9) and (8) would conflict — DEP-10 both *"prohibited"* and *"preserved."*
+## 🔴 PO/ARB **AMENDMENT 1** — 2026-08-18 · obligation (9) corrected
 
-> **Reconciliation: obligation (8) governs `DEP-10`. The range in (9) is read as shorthand for the prohibited members of that span — DEP-7, DEP-8, DEP-9, DEP-11, DEP-12.**
+**Delivered by the PO/ARB, in the PO/ARB's own voice, with the replacement text supplied verbatim:**
 
-**Basis:** obligation (8) names `RecoveryProcess` absence semantics specifically and positively; (9) names *"all **prohibited**"* paths, which is qualified, not exhaustive. **The specific and positive clause controls the generic range.** ⛔ **The domain lane must NOT delete or alter `if ($restoration === null) { return; }` on the strength of (9).** *(Flagged to the PO for correction if this reading is not intended.)*
+> *"Replace: **'leave all prohibited DEP-7 through DEP-12 paths prohibited'** with: **'leave the prohibited DEP-7, DEP-8, DEP-9, DEP-11 and DEP-12 paths prohibited; DEP-10 is explicitly excluded and its existing legitimate RecoveryProcess absence semantics must be preserved.'**"*
+
+### The operative obligation (9), as amended — **this text governs**
+
+> **9. leave the prohibited `DEP-7`, `DEP-8`, `DEP-9`, `DEP-11` and `DEP-12` paths prohibited; `DEP-10` is explicitly excluded and its existing legitimate `RecoveryProcess` absence semantics must be preserved.**
+
+**Everything else in the act of 2026-08-18 is unchanged.** Obligations (1)–(8), the prohibitions, the Phase-1 boundary, the new-scope rule and the START reservation all stand exactly as signed.
+
+### The PO/ARB's stated reason, recorded
+
+> *"An authorization should not require the executing lane to interpret a contradiction in its authorization. **Governance should resolve the contradiction before execution.**"*
+
+**This supersedes Annotation A's interpretive reconciliation.** The ambiguity is now removed **at the source** rather than resolved downstream by a reader — which is the stronger form, because an interpretation can be missed and an amended obligation cannot.
+
+### Why this was recorded as an amendment and NOT as an in-place edit of the act
+
+**The signed act is history and is never rewritten** (`ES-004.3`: synchronization touches only the mutable portion of an artifact; decision text and history are not rewritten). Editing obligation (9) inside the quoted block would have made the record assert that the PO/ARB signed, on 2026-08-18, wording it did not sign. **The correction is therefore recorded as a dated amendment placed so that no lane can reach obligation (9) without meeting it first** (banner at the head of the Authorization block). **The executing lane's interpretive burden is removed — which was the PO/ARB's stated objective — and the signature stays truthful.** *(If the PO/ARB intends an actual in-place replacement of the signed text, that is a further act and should be said explicitly; it is not assumed here.)*
+
+### ⚠️ One factual correction to the amendment's own scope — **`DEP-10` protects TWO sites, not one**
+
+Every prior artifact writes the protected shape in the singular. **Verified 2026-08-18 by direct measurement:** the guard exists at **two** call sites, both in `pauseAccruingRestorationAllowance()`:
+
+| Site | Verified |
+|---|---|
+| `app/Contexts/Election/Application/OperatingCore/Handler/FillCommitteeSeatHandler.php:174` | `Observed` |
+| `app/Contexts/Election/Application/OperatingCore/Handler/RecordVacancyEventHandler.php:174` | `Observed` |
+
+*(The Rule-8 gate records the site as `UC-3:172`; the current line is `174` in both files. The drift is in the citation, not in the code's meaning.)*
+
+**Consequence:** the amendment's protection is read as attaching to **the semantics**, not to one file — **both sites are preserved.** Protecting one and normalizing the other would produce exactly the syntactic uniformity §7 forbids.
+
+### The class-A grounding, verified rather than assumed
+
+**`EM-GOV-062` (ADOPTED, PO/ARB adoption act v4, 2026-08-16) states the general principle verbatim:** *"a recovery clock measures the period during which the condition requiring that recovery is active; **it does not consume time while that condition is absent**."*
+
+The code reads `find($electionId, PeriodKind::CommitteeRestoration)` and, on `null`, returns with the comment *"No allowance is running: there is nothing to pause."* **Absence here means *no clock is running* — an adopted, legitimate lifecycle state, not a domain violation.** The site therefore **consumes an adopted governance meaning rather than inventing one**, which is precisely the class-A test. ✅ **The amendment is factually warranted, not merely a wording preference.**
+
+### ⚠️ Annotation A — the DEP-10 reconciliation · **SUPERSEDED by Amendment 1; retained as the finding that produced it**
+
+Obligation **(9)** as signed said *"leave all prohibited DEP-7 through DEP-12 paths prohibited."* **`DEP-10` lies inside that numeric range but is class A, NOT prohibited** (§6, §7). Read literally, (9) and (8) conflicted — DEP-10 both *"prohibited"* and *"preserved."*
+
+> **Reconciliation as originally recorded (now superseded): obligation (8) governs `DEP-10`. The range in (9) is read as shorthand for the prohibited members of that span — DEP-7, DEP-8, DEP-9, DEP-11, DEP-12.**
+
+**Basis:** obligation (8) names `RecoveryProcess` absence semantics specifically and positively; (9) named *"all **prohibited**"* paths, which is qualified, not exhaustive. **The specific and positive clause controls the generic range.** ⛔ **The domain lane must NOT delete or alter the `if ($restoration === null) { return; }` guard at either site.**
+
+> **Status: the reading was flagged to the PO for correction, and the PO/ARB corrected it. Amendment 1 now carries the rule; this annotation is retained because the record should show that the conflict was detected before execution rather than after — and no longer as an instruction to a reader.**
 
 ### ⚠️ Annotation B — what is authorized versus what is started
 
@@ -204,6 +253,8 @@ Obligation **(9)** says *"leave all prohibited DEP-7 through DEP-12 paths prohib
 > Its substance has been adopted where it legitimately can be: as **Obligations 5 and 6** above, and as the **requested form** below. **Nothing was started.**
 
 **Requested form** (Governance's proposal, incorporating the reviewer's recommended wording — **unsigned**):
+
+> ⚠️ **Historical draft. Its clause (9) carries the defect Amendment 1 corrected, and is reproduced unchanged because this block records what was *proposed*, not what governs.** **The operative obligation (9) is the amended one above.**
 
 > *"**PO/ARB AUTHORIZATION — `EM-DOM-001`.** I authorize one bounded Domain slice to resolve DEP-1 through DEP-6 identified by the `EM-IMPL-002` Rule-8 dependency gate. This authorization is limited to resolving the approved domain invariants, their bounded-context ownership, and the domain representations/contracts required by ADR-1 and ADR-2.*
 >

@@ -13,7 +13,7 @@
 | 2 | `docs/publicdigit/adr/ADR_20260817_2300_Recovery_Origin_Provenance_Ownership.md` §6 | ADR-2, DECIDED — the **causal-model** ruling, (a)–(h). **It is not an Option A/B/C/D choice; do not read it as one** |
 | 3 | `docs/publicdigit/reviews/2026-08-18-EM-IMPL-002-rule8-gate-adr2.md` | the gate + the **A/B/C matrix** (A=2 · B=6 · C=6). This is the evidence, already accepted |
 | 4 | `docs/publicdigit/reviews/2026-08-18-EM-IMPL-002-rule8-gate-adr1.md`-equivalent record at `7514f145` | the ADR-1 gate |
-| 5 | the authorization request/record, §§1–10 + both annotations | your scope and your obligations |
+| 5 | the authorization request/record, §§1–10 + **PO/ARB Amendment 1** + both annotations | your scope and your obligations. ⚠️ **Obligation (9) as signed is SUPERSEDED — read Amendment 1; `DEP-10` is excluded from the prohibition** |
 | 6 | `ELECTION_MANIFESTO.md` — `EM-GOV-059(c)`, `060`, `062`, `EM-GOV-064…066`, `EM-GOV-068` | the adopted business rules the invariants must serve |
 
 ## Your mission
@@ -37,7 +37,7 @@ It must render the two discriminations in §9 of the authorization record explic
 ⛔ **Do not design around `FillCommitteeSeatHandler`'s current structure.** Its shape is the symptom, not the specification.
 ⛔ **Do not aim at `AbsentAggregateReferenceRedTest`.** It goes green later as a **consequence**, never as your target (Obligation 5). **You are not asked to make existing tests pass; you are asked to make the approved invariants explicit and testable.**
 ⛔ **Do not recreate or duplicate P-7** `ResumptionTarget::resolve(HaltedAtGate): GateDesignation` — it exists, it is authorized, you **consume** it (`ES-005.4`; ADR-2 (g): *reference is not ownership*).
-⛔ **Do not touch** `if ($restoration === null) { return; }` — **DEP-10 is class A**, grounded in `EM-GOV-062`, and Annotation A of the authorization record governs. **Normalization means semantic conformity, not syntactic uniformity.**
+⛔ **Do not touch** `if ($restoration === null) { return; }` — **DEP-10 is class A**, grounded in `EM-GOV-062`, and **PO/ARB Amendment 1 (2026-08-18) governs: obligation (9) explicitly EXCLUDES `DEP-10`, and its existing legitimate `RecoveryProcess` absence semantics must be preserved.** ⚠️ **The guard exists at TWO sites, not one** — `FillCommitteeSeatHandler.php:174` **and** `RecordVacancyEventHandler.php:174`, both in `pauseAccruingRestorationAllowance()` (verified 2026-08-18; the gate's `UC-3:172` citation has drifted by two lines). **Preserve both. Normalization means semantic conformity, not syntactic uniformity — protecting one site and normalizing the other would produce exactly the uniformity §7 forbids.**
 ⛔ **New scope discovered mid-slice → a backlog item and a report, never an extension** (Obligation 6).
 ⛔ **The domain core is currently byte-identical to `1f4b4c5f`.** Phase 1 changes none of it.
 
