@@ -24,6 +24,42 @@
 >
 > ⇒ **The designated implementation lane performs ①–③ and then STOPS** *(which is also ⑤)*. **④ is a SEPARATE designation, made after Act-B GREEN exists**, to a lane with no hand in writing it. ⛔ **No scope is added and none removed by this reading** — the release's five steps are all performed, by two lanes instead of one.
 
+> ## ✅ ACT-B GREEN ACHIEVED — 2026-08-19 · steps ①–③ complete, ⑤ observed
+>
+> | Step | Commit | Contents |
+> |---|---|---|
+> | **① RED** | **`e7317077`** | `RecordedOperationalStatusRetrievalRedTest.php` **alone** — 4 failures, all one cause: `interface_exists(...) === false` |
+> | **② + ③ GREEN** | **`216552aa`** | `Port/RecordedOperationalStatus.php` **alone** — 63 lines; test then `OK (4 tests, 16 assertions)` |
+> | **DoD** | `6c653ace` | `developer_guide/election_operating_core/04_step_…md` + `00_index.md` row |
+>
+> ```php
+> interface RecordedOperationalStatus
+> {
+>     public function ofElection(ElectionId $electionId): ElectionOperationalStatus;
+> }
+> ```
+>
+> **Independently confirmed by Governance before recording** *(structural checks only — this is NOT step ④)*: **RED commit contains no interface · GREEN commit contains no test · ordering strictly RED→GREEN, git-provable** · `git diff 1f4b4c5f HEAD --name-status` over the core shows **exactly one `A` line, no `M`, no `D`** *(`Port/` 7 → 8 files)* · **zero** forbidden-vocabulary hits in the new file · **no adapter, no implementation, no Application wiring** *(act D not performed)* · new test **4 passed / 16 assertions**; full frozen-core suite **46 passed / 2457 assertions**.
+>
+> **`C-4` applied by the lane:** the RED makes **no domain-invariant claim**, does **not** attempt the non-executable `Then` clause ②, and asserts **nothing behavioural** about halt retention, restoration or `w8` — that behaviour is *already true* on the frozen type, so it would be **`H-2`'s regression lock**, and counting it as the RED **would have falsified the ordering evidence.** **`C-3` applied:** the non-nullable return is asserted as a legitimate type-level encoding.
+>
+> ⛔ **Act-B GREEN means ONLY that the contract exists.** Status is **not** persisted, **not** retrievable at runtime; restoration is **not** fixed; **`GREEN-5` remains STOPPED**; **`EM-GOV-063` remains unreachable.**
+>
+> ### 🚀 Step ④ — independent verification DESIGNATED and STARTED, 2026-08-19
+>
+> A **fresh verifier with no hand in writing the change** was designated, per the release's own word *"independently"* and `EP-02`/`R-34`. **The implementing lane correctly did NOT verify its own work.** Verdict will be recorded verbatim on arrival.
+>
+> ### Reported by the implementing lane and NOT acted on — all correctly out of scope
+>
+> | # | Item |
+> |---|---|
+> | **1** | **15 errors + 1 failure pre-existing in `OperatingCoreApplication/`** *(`QueryServicesRedTest`, `ReportPeriodExpiryHandlerRedTest`, `RecordCommitteeConstitutionHandlerRedTest`, `RefusalTaxonomyRedTest`, `HistoryKindAssignmentRedTest`, `AbsentAggregateReferenceRedTest`)*. **Proved unrelated** — identical counts with the new file present and moved aside. **GREEN-3…7 pending; not this slice.** |
+> | **2** | **`F-3` label defect** — `StructuralApplicationGuardsRedTest.php:228` calls these types *"derived classifications"* while their own docblocks call them recorded facts. **Not corrected: existing test file, outside scope; routing is the PO/ARB's.** |
+> | **3** | **`H-2` regression lock not written** — the `w8` discrimination pin. **Passes on arrival, explicitly not the RED, not commissioned.** |
+> | **4** | **Naming observation stands** — `Recorded…` is otherwise a value-type prefix in this core (`Time/RecordedInstant`), so the port name reads like a value object. **Gate 1 weighed this (§6.1) and declined to change it; the lane did not reopen it.** |
+> | **5** | **`V-8`/`PBDIGIT-72`** — two independent reachability causes. **Untouched.** |
+> | **6** | ⭐ **`CONTEXT.md` and the session log deliberately left to Governance** — *"other sessions are actively committing … CONTEXT is shared state."* **Correct call: a lane must not write into another lane's records.** **Done by Governance in this commit.** |
+
 > ### 🚀 Designation performed — 2026-08-19
 >
 > **A fresh Implementation/Domain lane was DESIGNATED and STARTED by Governance**, as the release directs. It inherits none of the recording session's context, was pointed at the verified design and both gate verdicts **as its authority**, and was given the negative list above verbatim.
