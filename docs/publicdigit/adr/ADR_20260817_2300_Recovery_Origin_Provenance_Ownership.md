@@ -1,6 +1,6 @@
 # ADR — Recovery Origin Provenance Ownership
 
-**Status: 🟡 PROPOSED — CANDIDATE ONLY. The decision block (§6) is deliberately BLANK and belongs to the Product Owner / ARB.**
+**Status: ✅ DECIDED — PO/ARB ruling recorded in §6 on 2026-08-18 (a CAUSAL-MODEL ruling; no A/B/C/D option was selected). Implementation authority is NOT granted; the domain core remains frozen and every consequence must pass the Rule-8 gate.**
 **Created:** 2026-08-17, at PO direction *(«Create ADR-2 from the investigation. Keep ADR-2 decision blank.»)* · **Work item:** `EM-IMPL-002`, architecture hold before GREEN-5.
 **Evidence base — consumed, NOT restated:** `docs/publicdigit/architecture/2026-08-17-EM-IMPL-002-q-restore-recovery-origin-provenance-investigation.md` (left unchanged, per the registered sequence *evidence → investigation → ADR proposal → decision*).
 **Placement:** `docs/publicdigit/adr/` — the same class as `ADR_20260817_2145`, so both rulings of this hold live in artifacts of one kind.
@@ -139,7 +139,104 @@ RestorationOrigin
 
 ## 6 · Decision
 
-> **⬜ LEFT BLANK — the Product Owner / ARB decides.**
+> ## ✅ **PO/ARB DECISION — 2026-08-18: APPROVED.**
+>
+> ⚠️ **Recorded as given. This ruling deliberately does NOT select Option A/B/C/D** — the PO stated expressly: *"I would not sign ADR-2 as merely 'Option A — RecoveryProcess owns originatingGate.' That is too narrow. It solves why recovery started, but it does not by itself solve why restoration occurred."* **Governance has therefore recorded a CAUSAL-MODEL ruling and has not translated it into an option.**
+
+### (a) Causal-origin model
+
+**The Domain shall distinguish between (i) why a `RecoveryProcess` exists, and (ii) why a `Restoration` is permitted to occur.** These are related causal questions, **are not assumed to be the same invariant, and must not be collapsed** merely because one restoration path may follow a recovery period.
+
+**A `RecoveryProcess` may own the invariant describing the origin of that recovery process. A `Restoration` must INDEPENDENTLY express the domain condition that makes restoration legitimate.** **The existence of a Restoration does not imply that a `RecoveryProcess` previously existed.**
+
+```
+                    Restoration
+                         |
+              +----------+----------+
+              |                     |
+      Recovery completed      Unachievable condition
+              |                 resolved directly
+       RecoveryProcess          no RecoveryProcess
+       existed
+```
+
+⛔ **The model must not infer one path from the other.**
+
+### (b) Whether provenance is always required
+
+**Provenance is required whenever the approved domain invariant requires causal origin to explain or validate the transition. It is NOT universally mandatory merely because a Restoration occurred.**
+
+**A Restoration without a prior `RecoveryProcess` is a legitimate domain possibility** where an unachievable condition has been resolved without a recovery process having existed. ⛔ **Such a case must not be represented by:** a fabricated `HaltedAtGate` · a fabricated `RecoveryProcess` · a sentinel `GateDesignation` · an *"unknown"* value used merely to satisfy a non-nullable field · inferred provenance · an application-level assumption.
+
+> ## **Legitimate absence of provenance must itself have a named domain meaning.**
+
+**The exact representation is a domain-model decision and requires the authorization in (e).**
+
+### (c) Allowed origin types and mandatory references
+
+**The Domain shall define explicitly which causal origins are valid for each transition. An origin type is valid only where the corresponding bounded context OWNS the invariant that gives that origin its meaning.**
+
+**Recovery-origin case:** a `RecoveryProcess` may carry the causal fact explaining why that recovery process exists, **including its originating gate where the domain invariant requires that information.**
+**Restoration case:** the model must distinguish at least the two causally different situations the evidence establishes — restoration **following a `RecoveryProcess`**, and restoration **following resolution of an unachievable condition without one**.
+
+⛔ **No origin type may be introduced merely as a technical wrapper around `null`. No sentinel or catch-all origin may be introduced without an explicit domain meaning.**
+
+### (d) Ownership of each causal invariant
+
+**Invariant ownership follows the bounded context that DEFINES THE MEANING, not the layer or component that needs the data.** Therefore: the context owning the **recovery lifecycle** owns the invariant explaining why a `RecoveryProcess` exists · the context owning the **restoration lifecycle** owns the invariant explaining why Restoration is permitted · another context **may reference** an authorized origin concept **but does not thereby acquire authority over it.**
+
+**Binding:** ***an origin type may be referenced by other bounded contexts, but only its owning bounded context may create, validate, or change its meaning.***
+⛔ **No shared "provenance DTO" or common data structure shall be treated as ownership.** **A concept is not owned because it has a class; a concept is owned because a bounded context defines its meaning.**
+
+### (e) Authorization path
+
+⛔ **This decision does NOT authorize a domain-model modification. The current domain core remains FROZEN.**
+
+**If the existing domain model cannot represent the approved causal relationship, a separate authorized domain slice is required before application normalization.** That slice must have: **an explicit domain RED test expressing the missing invariant · explicit PO/ARB authorization · domain implementation · domain verification · confirmation that the resulting contract can be consumed by the Application layer without reconstructing domain meaning.**
+
+⛔ **No application workaround may compensate for a missing domain concept. In particular the Application layer must not:** inspect protocol history to reconstruct provenance · infer provenance from timestamps · infer provenance from ordering · manufacture `HaltedAtGate` · manufacture a `RecoveryProcess` · obtain causal meaning from a command supplied by an appointment body · use repository absence as a substitute for the missing domain invariant.
+
+### (f) UC-3 consequence
+
+⛔ **UC-3 must NOT be normalized until the approved causal model has an authorized domain representation. The committed UC-3 behaviour remains UNCHANGED until the authorization/dependency gate is completed.** Once the contract exists, **UC-3 must CONSUME it rather than reconstructing provenance itself.**
+
+**Acceptance criterion:** ***UC-3 must express the approved Restoration invariant without inventing causal provenance*** — correctly handling **both** restoration following a `RecoveryProcess` **and** restoration without one. ⛔ **The normalization must not merely replace one technical representation with another.**
+
+### (g) Authoritative bounded context per origin type
+
+**Every origin type introduced by the approved domain model must have ONE authoritative bounded context.** Other contexts may consume it through an authorized contract but may not: **create it · reinterpret it · validate its business meaning · extend its semantics · derive a competing meaning.**
+
+**This prevents a typed `RestorationOrigin` from degenerating into a shared data structure with several contexts implicitly owning the same concept.**
+
+> ## **Reference is not ownership. Consumption is not authority.**
+
+### (h) Restoration without `RecoveryProcess` — explicit representation
+
+**The `w8` case is part of the decision, not an implementation afterthought.** If the Domain permits restoration after an unachievable condition is resolved without a prior `RecoveryProcess`, **the Domain must provide an explicit representation for that causal path — decided TOGETHER with this ADR's implementation, not deferred until after the semantics have been adopted.**
+
+⛔ **The current `ElectionRestored` representation must not be silently repurposed to encode this case.** No fabricated `HaltedAtGate` · no fabricated `RecoveryProcess` · no sentinel `GateDesignation` · no *"unknown"* value without explicit domain meaning · no protocol reconstruction.
+
+**If the existing non-nullable `GateDesignation` requirement is incompatible with the approved causal model, that incompatibility is a DOMAIN-MODEL GAP requiring a separately authorized domain slice.**
+
+### Binding provenance rule
+
+> **Provenance is captured at the domain transition that establishes the causal fact. It must not subsequently be reconstructed from protocol logs, timestamps, projections, read models, inferred temporal ordering, or application-side correlation.**
+
+**The protocol may preserve evidence of what happened. It does not become the authority for why the Domain allowed it.** → ***Protocol records reality. Domain owns causal meaning.***
+
+### What this decision does NOT authorize
+
+⛔ **Not blanket implementation authorization.** It does not authorize: changes to the frozen domain core · a new repository port · a protocol read model · an event-sourcing implementation · a provenance DTO · a new `RestorationOrigin` class · changes to `ElectionRestored` · changes to UC-3 · normalization of the existing RED pin. **All are CONSEQUENCES of this decision and must pass the Rule-8 gate.**
+
+**If the approved model requires a new domain concept, the next action is:** `Domain RED → domain authorization → domain implementation → domain verification → Application normalization → GREEN-5`.
+
+### Final architectural principle
+
+> ## **Restoration provenance belongs to the domain causal model, not to the mechanism that happens to have enough data to reconstruct it.**
+
+**Retained:** ***provenance ownership is a domain ownership decision, not a data availability decision.***
+>
+> *(The eight required decisions (a)–(h) below are all answered by the ruling above; retained for traceability.)*
 >
 > **This is a CAUSAL-ORIGIN decision, not a field-location decision.** Required in the ruling:
 >
