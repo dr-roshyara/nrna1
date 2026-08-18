@@ -1,6 +1,32 @@
 # `EM-DOM-001` Act B — the two remaining gate commissions, **prepared and unsigned**
 
-**Prepared by:** the governance recording session · 2026-08-18 · **No lane designated. Neither gate satisfied. Nothing implemented.**
+**Prepared by:** the governance recording session · 2026-08-18 · **Nothing implemented.**
+
+> ## ✅ GOVERNANCE RECORD — `EM-DOM-001` Act-B gate · **READY FOR EXECUTION — NO NEW PO/ARB DECISION REQUIRED**
+>
+> **Recorded as directed by the PO/ARB, 2026-08-18.**
+>
+> **Act B is AUTHORIZED but NOT YET EXECUTABLE.** Authorization `117536f3` covers **only** creation and definition of the Domain-owned identity/retrieval contract for the operational overlay. ⛔ **It does not authorize** Act C · Act D · `BND-1` · `BND-3` · `GREEN-5` · UC-1/UC-2/UC-3 normalization · aggregate selection · final `R-1` representation · lifecycle-phase ownership · persistence/adapters · Application changes · **or any other mechanism.**
+>
+> **Only the two confirmations below remain.** **On `Gate 1 = CONFIRMED` and `Gate 2 = VERIFIED`, authorization `117536f3` becomes executable WITHOUT another PO/ARB decision**, and the lane performs exactly: **`H-1` RED → create `RecordedOperationalStatus` → Act-B GREEN → STOP.**
+>
+> ### ⛔ Mandatory stop boundary
+>
+> **Act-B GREEN means ONLY:** *the Domain-owned identity/retrieval contract exists, per the verified Phase-2A design and the confirmed naming/placement.*
+>
+> **It does NOT mean:** restoration is fixed · operational status is persisted or retrievable at runtime · `EM-GOV-063` is reachable *(`PBDIGIT-72`)* · Act C is complete · Act D is complete · `GREEN-5` is unlocked · `BND-1` is resolved · `BND-3` is resolved. **After Act-B GREEN the lane STOPS and returns the result for the next authorized work item.**
+>
+> ### Repository boundary until both confirmations land
+>
+> `Port/` unchanged · `Domain/OperatingCore` byte-identical to baseline `1f4b4c5f` · **no `H-1` RED created** · **no implementation performed** · **no scaffolding prepared in anticipation.**
+>
+> ### 🚀 Designation performed — 2026-08-18
+>
+> **Both independent lanes were DESIGNATED and STARTED on PO/ARB instruction** (*"designate the two independent lanes"*). Each is a **fresh session inheriting none of the recording session's context**, so neither holds a prior position in this chain. **Each was pointed at the artifacts in this repository as its authority — not at any summary of them — and each may return the negative verdict** (`REJECTED` / `NOT VERIFIED`).
+>
+> ⛔ **The recording session performed NEITHER gate**, and by its own eligibility rule could not: it recorded D1–D4, ran the post-decision Rule-8 gate, tightened the design map's headline and authored the critical-path note. **Verdicts will be recorded verbatim when they arrive.**
+>
+> ⛔ **Per the same instruction, NO further design or governance artifact was created for `EM-DOM-001`** — this record was amended in place.
 **Purpose:** hold both commissions ready so that designating them is a one-line act, and neither has to be re-derived.
 
 > ⛔ **Neither text below is a verdict.** ⛔ **This session performs neither gate.** ✅ **The Act-B implementation authorization is already registered** (`117536f3`) and **becomes executable the moment both gates land** — no further PO/ARB act is required after that.
