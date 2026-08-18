@@ -2,7 +2,21 @@
 
 **Lane:** `EM-DOM-001` Domain lane (designated 2026-08-18) · **Authorization:** PO/ARB, `2026-08-18-EM-DOM-001-authorization-request.md`
 **Phase:** 1 — **ANALYSIS / DESIGN ONLY. No production code was written. `app/`, `tests/`, repositories and protocol access are untouched; the domain core remains byte-identical to `1f4b4c5f`.**
-**Status:** 🟡 **PROPOSED — awaiting review and explicit acceptance. No implementation until then.**
+**Status:** ✅ **ACCEPTED by the PO/ARB on 2026-08-18 — as an ANALYSIS DELIVERABLE and evidence base for the Architecture/ARB referral.**
+
+> ### The acceptance act, recorded verbatim
+>
+> *"accept the EM-DOM-001 Phase-1 Domain Decision Map as an analysis deliverable and evidence base for the Architecture/ARB referral.*
+>
+> *This acceptance does not approve R-1, R-2, or R-3, does not authorize implementation, and does not resolve BND-1, BND-2, or BND-3.*
+>
+> *The Domain lane's proposals remain proposals pending the Architecture/ARB rulings.*
+>
+> ***PO/ARB: ACCEPTED.***"
+>
+> **⚠️ What this acceptance does NOT do, per its own terms:** ⛔ does **not** approve **R-1 / R-2 / R-3** — §6 remains a **proposal set** · ⛔ does **not** authorize implementation · ⛔ does **not** resolve **BND-1, BND-2 or BND-3**.
+>
+> **Accordingly: §§0–5, §7 and §8 are ACCEPTED EVIDENCE. §6 is an ACCEPTED-AS-RECORDED PROPOSAL, not an approved design** — and per the referral, *a Domain-lane proposal is evidence, never a premise.* **Phase 2 remains unstarted.**
 
 ---
 

@@ -5,13 +5,18 @@
 
 > ⚠️ **The Domain lane has stopped on all three. It proposes no answers here, and none of the three may be resolved by whoever implements.** Each would either invent an owner or fix a seam the evidence does not locate.
 
-## Standing of Phase 1 — reviewed, NOT accepted
+## Standing of Phase 1 — ✅ ACCEPTED as an analysis deliverable (2026-08-18)
 
 A reviewer assessed Phase 1 as *"a strong Domain-lane result"* and stated: ***"Approve the Phase-1 report as an analysis deliverable, but do not approve R-1/R-2/R-3 for implementation yet."*** **That is a recommendation in the reviewer's own framing (*"My recommendation"*), addressed to the PO/ARB.** A **second** favourable review followed on the same day (*"I would accept the referral as a referral"* — again conditional, again addressed to the PO/ARB). ⚠️ **Two favourable reviews do not sum to an acceptance.** Therefore:
 
-⬜ **Phase 1 is NOT accepted** — acceptance is the PO/ARB's act (`EP-02`; engineering never accepts its own work).
-⬜ **R-1, R-2, R-3 are NOT approved for implementation.**
-✅ **One substantive challenge from that review WAS adopted** — see BND-3 below; the Phase-1 document was corrected.
+**The PO/ARB then performed the act** (2026-08-18, recorded verbatim in the Phase-1 deliverable's header):
+
+✅ **Phase 1 is ACCEPTED — as an analysis deliverable and as the evidence base for this referral.**
+⬜ **R-1, R-2, R-3 remain PROPOSALS.** The acceptance states expressly that it *"does not approve R-1, R-2, or R-3"* and *"does not authorize implementation."*
+⬜ **BND-1, BND-2, BND-3 remain UNRULED.** The acceptance states expressly that it *"does not resolve"* them.
+✅ **One substantive challenge from the reviews WAS adopted** — see BND-3 below; the Phase-1 document was corrected.
+
+> **So this referral now rests on ACCEPTED evidence and carries UNAPPROVED proposals.** That is the intended separation: **the Architecture lane inherits a settled factual base and an open design question.**
 
 ## The three referred questions
 
