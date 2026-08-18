@@ -4,6 +4,23 @@
 
 ---
 
+## 📍 UPDATE (2026-08-18, newest) — `KOS-CONTRACT-NEUTRALITY-001` **Track 1 routed to INDEPENDENT VERIFICATION**; assignment registered, **START awaited**
+
+*(Additive. Supersedes the NEXT ACTOR of the Track-1 delivery block for this work item — verification is now registered, not merely recommended.)*
+
+| | |
+|---|---|
+| **Work item / assignment** | `KOS-CONTRACT-NEUTRALITY-001` · **`S1-verification-track1-php-adapter`** — **`CREATED`** (seq **35** REGISTER · seq **36** HANDOFF · ⛔ **NO START**) · grant **`G-KOS-CONTRACT-TRACK1-VERIFY`** (`AUTHORIZED`) · predecessor `S3-implementation-track1-php-adapter` (now `HANDED_OFF`) · **`mutationOwner: None`** |
+| **Under verification** | Track-1 delivery `4c6c1dac` (PHP adapter / B3 binding · L3 fact model · PHP L4/L5 · 22 production classes), registered `2abbf79f` |
+| ⭐ **Precondition recorded, not waved through** | The machine has **no `DELIVERED` state** — the implementer folded to **`ACTIVE` and still owned the mutation**. **Delivery is evidenced by the registered artifact; it is not a lifecycle state.** |
+| ⭐ **The handoff grants nothing** | `START` is a **conjunction** (Inv F / G-3): the predecessor's handoff **AND** a human act. The handoff was recorded **only** because without it a later human `START` would be **refused, exit 65**. ***A handoff alone never yields `ACTIVE`.*** |
+| ⭐ **Finding boundary registered** | A finding **MAY** say *"the implementation is insufficient because…"*; it **MUST NOT** say *"replace it with architecture X."* **Verification identifies insufficiency; Architecture supplies architecture.** |
+| **Containment carried** | ⛔ `G-KOS-CONTRACT-ARTIFACT-UPDATE` stays **UNEXERCISED** — absent expected evidence is a **governed deferral, not a failure**; the verifier **produces none** · ⛔ the legacy calculator is **NOT the specification** (Decision 1) — divergence from it is not by itself a defect |
+| **Independence** | Producer **barred** (`R-34`), four-part `P-2` disclosure mandatory, *"if independence cannot be established: STOP"*. ⚠️ **Declared, not attestable** (`INV-ATTR-2`); **no gate reads process identity** (`INV-ATTR-1`) |
+| **NEXT ACTOR** | 🔵 **Human PO/ARB — `START` `S1-verification-track1-php-adapter`.** ⛔ Nothing verified · no finding · Track 1 **not accepted** · work item **not closed** · implementation session **not `COMPLETE`d** |
+
+---
+
 ## 📍 UPDATE (2026-08-18, latest) — `EM-DOM-001` **amended**; the fresh Domain lane is still NOT designated
 
 | | |
@@ -2920,6 +2937,7 @@ Both sit at ES-006.1 rung **observation**, both record `PLACEMENT: PENDING` (ADR
 - ⛔ **Nothing created:** no contract, no `H-1` RED, `Port/` unchanged (7 files), **`Domain/OperatingCore` byte-identical to `1f4b4c5f`**, `app/`/`tests/` untouched.
 - **Acts A/C/D/E unauthorized.** **`PBDIGIT-72`** opened — `EM-GOV-063`'s terminal consequence (and `ELECTION DISCONTINUED`) unreachable; **Act B does not fix it** *(also needs a caller + act C)*.
 - **Corrected:** `V-11` — `w8` lacks the prior **HALT**, not the `RecoveryProcess`; the Phase-1 briefing sentence is struck. **Amendment 1** ratified DEP-10's exclusion.
+- ⭐ **CRITICAL PATH (`2026-08-18-EM-DOM-001-critical-path-note.md`): `Act-B GREEN` ≠ `GREEN-5`.** **`BND-1` blocks only `GREEN-5`; `BND-3` blocks neither.** Act-B GREEN needs: Architecture boundary-neutrality confirmation · independent verification · ⭐ **and the PO lifting the authorization's ANALYSIS-ONLY limitation, which `D1` did not do** — without that one-line act, both gates can pass and nothing moves.
 - ⛔ **CONTROLLING INSTRUCTION (PO/ARB):** ***the Phase-2A design map is EVIDENCE TO BE EVALUATED, not a design to be implemented.*** Architecture must not approve it for looking reasonable, nor decide `BND-3`; the verifier verifies and does not redesign. **Order: meaning → ownership → boundary → contract → verification → implementation** — the map sits at *contract-proposal*.
 - **Next actors:** an **independent verifier** and an **Architecture** lane, both narrow. **Neither designated.** Then, only if both are positive, the Domain lane commits the `H-1` structural RED — **absence of the contract, never a design smuggled through a test.**
 - Untracked (other sessions'): the two dossiers · `2026-08-18-EM-DOM-001-architecture-review.md`.
