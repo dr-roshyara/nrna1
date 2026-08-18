@@ -75,7 +75,37 @@
 
 ---
 
-## GATE 2 · Independent verification — one focused pass
+## ✅ GATE 2 — **VERIFIED** (2026-08-18, `ca72dec8`)
+
+**Verdict recorded as returned.** Artifact: `2026-08-18-EM-DOM-001-act-b-gate2-independent-verification.md` *(tracked, 164 lines, clean at HEAD)*. **Read-only throughout — `app/`/`tests/` untouched, no contract created, no `H-1` written.**
+
+**All six items check out on primary code evidence.** Frozen core byte-identical to `1f4b4c5f` *(same tree hash, 56 files, re-verified after HEAD advanced)* · `V-1…V-12` each trace to `file:line` · **`w8` genuinely representable on the frozen type** (`ElectionOperationalStatus.php:22-24,39-42,49-52` ⇒ `haltedAtGate() === null`, `isHalted() === false`) · **no production producer or retrieval path for `HaltedAtGate`** (`new HaltedAtGate` only at `ConditionSemanticsTest.php:89,110,173`) · **`H-1` is a genuine structural-absence RED**, not behavioural, no design smuggled through it · D1–D4 and `G-2a` complied with (`Port/*` carries **no** AG-n vocabulary; `Repository/*` has three matches).
+
+⭐ **The "all three `BND-3` candidates share `ElectionId`" claim is STRONGER than argued:** the frozen type **carries no second discriminator at all**, unlike AG-2 *(per gate)* and AG-3 *(per kind)*.
+⭐ **D2 was the sharpest attack and it clears:** the nullable `?HaltedAtGate` is **pre-existing frozen state with `isHalted()` as its named discriminator** — **no sentinel, and it selects no representation.**
+
+### Four corrections — none falsifying a load-bearing claim
+
+| # | Correction |
+|---|---|
+| **C-1** | **`V-9`'s *"the three handlers' constructors"* is wrong** — **five handlers plus four `Query/` classes** inject. **The union is still exactly six**, and the grant settles it better than the map does (`EM-ARCH-002…:90-91` defines the six as *"Ports consumed"* and excludes `OrganisationalAppointmentAuthority`). |
+| **C-2** | **`V-8`'s attribution is incomplete** — the terminal consequence is unreachable for **TWO** independent reasons: **UC-4 is also unimplemented** (`ReportPeriodExpiryHandler.php:31-33` throws `BadMethodCallException`). ⚠️ **So a halt producer ALONE would not reach it** — recorded against `PBDIGIT-72`. |
+| **C-3** | §G's *"the totality question … is declared as a dependency instead of being encoded"* is **imprecise** — a non-nullable return type **IS** a type-level encoding. **What is not encoded is any phase concept or ownership**, so **D3 is not breached.** |
+| **C-4** | §`H-1`'s *"Domain invariant"* framing **claims more than the test can carry**, and its `Then` clause ② (*"no target is produced by any means"*) **is not an executable assertion.** |
+
+### 🔴 The blocking item it raised — and its closure
+
+> **Unsubstantiated:** the design map's own authority premise (§0.2) — **the authorization record still read *"⏸️ NOT STARTED — the fresh Domain lane has not been designated."*** *(`…authorization-request.md:6,241`)* **This is the map's own STOP-condition 6 and must be closed by Governance before the `H-1` RED is committed.**
+
+✅ **CLOSED 2026-08-18 by Governance.** The line was **stale on three counts** — a lane was designated and completed Phase 1 and Phase 2A; the analysis-only limitation was **lifted** by `117536f3`; and Act-B implementation is authorized with both gates now returned. **Status corrected in place.** *(A correct finding: the record contradicted the authorization it was supposed to carry.)*
+
+**It also independently corroborated Gate-1 flag `F-1`:** the untracked `…architecture-review.md` proposes the **opposite** placement (`Repository/`, `:129`) and miscounts `Port/` as six ports (`:140`), **so it cannot be cited as confirming `Port/`.** ⇒ **Two independent lanes now reach the same conclusion about that untracked review.**
+
+⚠️ **Reported honestly by the verifier:** a concurrent session's commit `99aeac7c` swept its staged verdict file into that commit before it could commit; `ca72dec8` then carried the final amendment. **Verified here: the file is tracked, complete and clean at HEAD.**
+
+---
+
+## GATE 2 · original commission *(retained for traceability)*
 
 **⭐ The waiver offered by this session is DECLINED by the PO/ARB, on the record:** *"I would **not** waive independent verification merely to save time … an independent verifier costs little and gives you a clean evidence chain."* ⇒ **Gate 2 STANDS. It is no longer an open option and should not be revisited as one.**
 
