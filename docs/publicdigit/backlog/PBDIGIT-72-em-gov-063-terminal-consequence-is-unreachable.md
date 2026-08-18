@@ -35,6 +35,17 @@ public static function onHaltedRecoveryExpiry(
 
 ⛔ **Not a defect in `ExpiryConsequence`** — the policy is correct; its input is unobtainable. ⛔ **Not authorization** to add a producer, a caller, a port or a scheduler. ⛔ **Not a claim that `EM-GOV-063` is wrongly adopted** — the rule is adopted and sound; only its execution path is absent. ⛔ **Not a claim about severity or urgency** — no election has reached halted-recovery expiry in the current model.
 
+## ⚠️ Amended 2026-08-18 — TWO independent causes, not one *(Gate-2 correction `C-2`)*
+
+**The Gate-2 verifier found this item's attribution incomplete.** The terminal consequence is unreachable for **two independent reasons**:
+
+| # | Cause |
+|---|---|
+| **1** | **no producer for `HaltedAtGate`** — the cause originally recorded here |
+| **2** | ⭐ **UC-4 is itself unimplemented** — `ReportPeriodExpiryHandler.php:31-33` throws `BadMethodCallException`, so **nothing calls the policy at all** |
+
+> ## ⇒ **A halt producer ALONE would not make `EM-GOV-063` reachable.** **Any future authorization for this item must cover both causes, or it will close one and leave the rule just as unreachable.**
+
 ## Next action
 
 **None authorized.** Requires its own PO/ARB authorization. **Recommend it be weighed together with act C (persistence) rather than separately**, since both turn on making recorded operational status obtainable.
