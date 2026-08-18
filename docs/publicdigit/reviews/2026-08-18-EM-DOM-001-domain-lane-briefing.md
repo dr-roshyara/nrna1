@@ -52,3 +52,71 @@ It must render the two discriminations in §9 of the authorization record explic
 Domain **RED committed and verified failing-by-absence BEFORE** GREEN, as **separate commits**, so ordering is git-provable (the `EM-IMPL-002` two-phase discipline) · **independent verification** — you supply evidence and never accept your own work (`EP-02`, `R-34`) · a **developer guide** with the step (repo Definition of Done) · **one story → one commit**, subject carrying its ID.
 
 **Traceability:** the `EM-DOM-001` authorization record · ADR-1 §6 · ADR-2 §6 · `7514f145` · `74fcf5e5` · `c4828cdd` · `b78c50ab` · `f53469cb` · `1f4b4c5f`.
+
+---
+
+# ADDENDUM · **PHASE 2A** briefing — added 2026-08-18 after D1–D4 were recorded
+
+> ⚠️ **Everything above was written for PHASE 1, before the PO/ARB decisions existed. Read this addendum as controlling wherever the two differ.**
+> ⏸️ **Still NOT STARTED. No lane designated. This addendum is not a START and confers nothing.**
+
+## What changed
+
+**D1 places Act B IN SCOPE:** creation and definition of a **Domain-owned identity and retrieval contract** for the operational overlay. **D2** clarified `w8` (`Restoration ≠ Resumption`) **and selected no representation**. **D3** deferred `BND-1`. **D4** deferred `BND-3`. **Appendix Q's negative list is LIVE.** Gate result: `2026-08-18-EM-DOM-001-rule8-gate-post-decisions.md` — 🟡 **PARTIALLY UNBLOCKED**.
+
+## Your mission — Phase 2A, **analysis/design + RED-test preparation ONLY**
+
+> ### **Define the Domain-owned identity/retrieval contract required by Act B — without deciding `BND-1` or `BND-3`, and without implementing persistence, adapters, Application consumption, or GREEN-5.**
+
+⛔ **Phase 2A is NOT coding.** The authorization states the lane *"may begin only with domain analysis/design and RED-test preparation."* **Produce the analysis and the RED plan, then STOP for review.**
+
+## The six questions you must answer
+
+1. What **domain meaning** must the contract expose?
+2. What facts must be **retrievable** to represent that meaning?
+3. What is the **smallest** contract satisfying it?
+4. **How does the contract avoid encoding an aggregate/boundary assumption?** *(see the hazard below — this is the hard one)*
+5. What **RED test** demonstrates the missing invariant?
+6. What remains **impossible** because `BND-1` and `BND-3` are still open?
+
+## The seven questions you must NOT answer
+
+⛔ who owns lifecycle **phase** → `BND-1`, **deferred** · ⛔ what **aggregate** owns the overlay → `BND-3`, **deferred** · ⛔ how **persistence** works → act C · ⛔ how the **Application consumes** it → act D · ⛔ what `ElectionRestored`'s representation ultimately becomes → D2 selects none · ⛔ how **GREEN-5** is repaired · ⛔ whether **existing repositories** should change → act A.
+
+> **You may answer *"what domain contract expresses the already-approved meaning?"* You may NOT answer *"what aggregate should own this?"* Those are different questions, and D1 + D4 together give you only the first.**
+
+## 🔴 The naming / placement hazard — gate finding **G-2a**
+
+**All three files in `app/Contexts/Election/Domain/OperatingCore/Repository/` carry aggregate semantics (`AG-1`/`AG-2`/`AG-3`) in their docblocks.** ⛔ **A fourth `…Repository` placed there would inherit that vocabulary and thereby ASSERT aggregate standing — which D1 ("not … selection of the overlay's aggregate or persistence boundary") and D4 ("must not use D1 as authorization to select the overlay's aggregate boundary") both forbid.**
+
+> ## **The contract must not be named or placed so as to encode a boundary claim.**
+
+**Why it is nonetheless possible:** all three `BND-3` candidates — distinct aggregate · part of a lifecycle aggregate · projection over recorded facts — **share the same retrieval key (`ElectionId`) and the same already-frozen return type.** *(Consistent with ADR-1 §6(c), which deliberately does not prescribe "a repository method".)* **Naming and placement are therefore part of your analysis, not an afterthought.**
+
+## What Act B does and does not reach
+
+| ✅ In | ⛔ Out |
+|---|---|
+| defining the domain contract | modifying an existing repository interface *(act A)* |
+| its domain vocabulary and placement | persistence / adapter *(act C)* |
+| a RED test for the missing invariant | Application call sites *(act D)* |
+| naming what must be retrievable | a new identity/persistence **model** *(act E = `BND-3`)* |
+| | `R-1`'s final form · GREEN-5 · any mechanism beyond the contract |
+
+## Carried forward from Phase 1, unchanged
+
+⛔ **Do not recreate or duplicate P-7** — consume it; never loosen it to accept `null`. ⛔ **Do not touch DEP-10's four guarded sites** *(`FillCommitteeSeat` 174/192 · `RecordVacancy` 161/174)* — class A, `EM-GOV-062`, **and its exclusion from the prohibited set is now ratified by Amendment 1.** ⛔ **Do not aim at `AbsentAggregateReferenceRedTest`** — a consequence, never a target. ⛔ **Do not design around `FillCommitteeSeatHandler`'s shape.** ⛔ **New scope mid-slice → a backlog item and a report, never an extension.**
+
+## ⚠️ Know this before you plan: Act B does not reach GREEN-5
+
+**`ADR-1` §6(c) authorizes ONE normalization slice whose criterion is *"each handler conforms to the governed domain meaning of EVERY absent reference it encounters"*, and it names UC-2 and UC-3 as requiring `AcceptanceDecision` conformance.** That is `DEP-2` → `BND-1` → **deferred.** ⇒ **Completing Act B perfectly still leaves the normalization slice shut and GREEN-5 stopped.** **Plan for a contract, not for a fix.**
+
+## Lane independence — strengthened
+
+⛔ **Obligation 4 now reads more strictly: the sessions that produced the decisions, the ADRs, the architecture reviews and this record must NOT become the lane that interprets those decisions into a model.** **A fresh, independent session.** *(Rationale: the session that made a decision is the worst-placed one to discover what the decision "obviously" implies.)*
+
+## Process obligations
+
+Domain **RED before GREEN**, separate commits, verified failing-by-absence *(git-provable)* · **independent verification** — you supply evidence and never accept your own work (`EP-02`, `R-34`) · a **developer guide** with the step · **one story → one commit** carrying its ID.
+
+**Traceability:** decision surface D1–D4 *(verbatim)* · Appendix Q *(live)* · post-decision Rule-8 gate G-1…G-8 · `EM-DOM-001` authorization + Annotations A/B + Amendment 1 · ADR-1 §6(c) + ⑥ · ADR-2 §6(b)/(f)/(h) · Phase-1 map §§0–5/7/8 *(accepted as analysis)* · `1f4b4c5f`.
