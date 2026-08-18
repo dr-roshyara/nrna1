@@ -5,6 +5,22 @@
 **Controlling input:** the Phase-2A addendum to `2026-08-18-EM-DOM-001-domain-lane-briefing.md` (controlling where it differs from the Phase-1 briefing)
 **Placement derived, not chosen:** `docs/publicdigit` (exit 0); `architecture/` matches the sibling Phase-1 map.
 
+> ## ⚠️ PROVENANCE AND AUTHORITY NOTE — added 2026-08-18 by the governance recording session
+>
+> **Three layers exist and must NOT be conflated:**
+>
+> | | Artifact | Author | What it carries |
+> |---|---|---|---|
+> | **1** | the Phase-2A **addendum** to the lane briefing | governance | **constraints only — NO model, no contract, no `H-1`** |
+> | **2** | **this design map** | **the fresh Domain lane** | `ofElection()` · `Port/RecordedOperationalStatus` · `H-1` · `V-1…V-12` |
+> | **3** | the correction/registration pass | governance recording | the headline tightening · the `V-11` fix to the briefing · `PBDIGIT-72` for `V-8` |
+>
+> ⛔ **A LATER SESSION HAVING REVIEWED, QUOTED OR EDITED THIS DOCUMENT CONFERS NO AUTHORITY ON IT.** **In particular the §8 headline was tightened at the PO/ARB's explicit request — that edit is a WORDING change and is NOT an acceptance, an endorsement, or an Architecture confirmation of anything in §§1–7.** **Review is not authority. Editing is not approval.**
+>
+> **Both gates remain UNSATISFIED:** ⬜ **Architecture confirmation** of `Port/RecordedOperationalStatus` as boundary-neutral under `G-2a`/`C-2` *(without deciding `BND-3`)* · ⬜ **independent verification** of this map against the frozen core and the governing decisions *(`EP-02`/`R-34`; §0.1's disclosure makes it non-optional)*.
+>
+> **Therefore, as of this note: no contract exists · no `H-1` RED exists · no implementation is authorized · `Port/` still holds its seven pre-existing files · `Domain/OperatingCore` is byte-identical to `1f4b4c5f`.** ⚠️ **And `PBDIGIT-72` must not be read as *"Act B fixes `EM-GOV-063`"*** — the Act-B contract alone does **not** make `ExpiryConsequence` reachable; that also needs a caller and act C, neither authorized.
+
 ---
 
 ## ⚠️ 0 · Two disclosures before any analysis

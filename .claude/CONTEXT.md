@@ -2911,17 +2911,16 @@ Both sit at ES-006.1 rung **observation**, both record `PLACEMENT: PENDING` (ADR
 **Standing rules bound into the plan this session:** *coverage is descriptive, completeness is normative* · *business meaning precedes persistence meaning; persistence meaning precedes implementation judgement* · the permanent hierarchy with **implementation judgement last** · *never call a persisted record a decision/audit record from its shape*.
 
 <!-- GOV-STATE -->
-**`EM-DOM-001` Domain lane · state 2026-08-18**
+**`EM-DOM-001` · state 2026-08-18 (post-decision)**
 
-- **Phase 1 ✅ ACCEPTED** (PO/ARB, 2026-08-18) — `docs/publicdigit/architecture/2026-08-18-EM-DOM-001-phase1-domain-decision-map.md`, **as an ANALYSIS DELIVERABLE only.** §§0–5/§7/§8 = accepted evidence; **§6 (R-1…R-3) = proposals, NOT approved design.** **Phase 2 unstarted; no production code; core byte-identical to `1f4b4c5f`.**
-- **Key finding:** `ElectionOperationalStatus` (holds `?HaltedAtGate`, owns `restored()`) is authorized, complete and **unreachable — no identity, no repository**. It is P-7's legitimate supplier. P-6 is the precedent producer pattern.
-- **Proposal:** R-1 overlay identity + retrieval (**form left to architecture**) · R-2 producer policy stating the permission invariant · R-3 event able to express no-target. Ten RED tests planned.
-- 🛑 **BLOCKED on THREE rulings** (referral: `docs/publicdigit/reviews/2026-08-18-EM-DOM-001-architecture-referral.md`): **BND-1** lifecycle-phase ownership (DEP-2) · **BND-2** may R-1 introduce a new domain identity/retrieval contract given the *"modify repositories"* prohibition — **if "no", DEP-5b and DEP-6 are unachievable, not merely deferred** · **BND-3** the overlay's boundary — *identity + persistence ≠ aggregate*; the "fourth aggregate" claim is **withdrawn**.
-- ⬜ **R-1…R-3 NOT approved · implementation NOT authorized · BND-1/2/3 NOT resolved** — the acceptance act carved out all three expressly.
-- **NEXT ACT (PO/ARB):** designate an independent **Architecture/ARB lane**. Referral `docs/publicdigit/reviews/2026-08-18-EM-DOM-001-architecture-referral.md` is complete and carries the lane's constraints (no code · proposals are evidence not premises · no ownership-by-convenience · **BND-1 before BND-3**; BND-2 independent).
-- **DEP-10 protected set is 4 sites across 2 files**, all locked by planned T-10.
-- **Gate corrections (all narrowing):** DEP-3 unnamed-not-absent · DEP-4 `PeriodKind` already suffices for the causal class · DEP-5b re-attributed to the overlay · DEP-6 `w8` fails only in the event shape. `Restoration → RecoveryProcess → originatingGate` **refuted**.
-- **Open discrepancy:** `HaltedAtGate`'s docblock names `ElectionConstitution` as the canonical lifecycle home; that class has no halt/gate/operative vocabulary. Governance/ARB owns it.
-- **GREEN-5 STOPPED.** `AbsentAggregateReferenceRedTest` stays RED and is **not** this slice's target.
-- Still open elsewhere: `EM-OPEN-049`/`066`/`094` · `053` · `076`/`077` · `095`② · `102` remaining limbs · `PBDIGIT-69` · `PBDIGIT-71` · `KOS-ATTR-ARCH-001` unsigned.
+- **D1–D4 RECORDED VERBATIM** (byte-verified). **D1** Act B **IN SCOPE** *(contract definition only)* · **D2** `w8` clarification **CONFIRMED** *(not an ADR amendment)* · **D3** `BND-1` **DEFERRED, open** · **D4** `BND-3` **DEFERRED, open**. Appendix Q **LIVE**; Appendix R recommendation-only.
+- **Rule-8 gate re-run: 🟡 PARTIALLY UNBLOCKED** — `2026-08-18-EM-DOM-001-rule8-gate-post-decisions.md`.
+- ⚠️ **`GREEN-5` is NOT reachable through Act B.** ADR-1 §6(c)'s single normalization slice needs **every** absent reference to conform; UC-2/UC-3 need `AcceptanceDecision` conformance → `DEP-2` → **deferred `BND-1`**. **Plan for a contract, not a fix.**
+- **Phase 2A design map EXISTS** *(another lane, tracked `1aa20bb5`)*: proposes `ofElection(ElectionId)` in `Port/RecordedOperationalStatus`. ⬜ **NOT accepted.** **Two gates unsatisfied:** Architecture naming/placement confirmation *(`G-2a`/`C-2`, without deciding `BND-3`)* · independent verification.
+- ⛔ **Nothing created:** no contract, no `H-1` RED, `Port/` unchanged (7 files), **`Domain/OperatingCore` byte-identical to `1f4b4c5f`**, `app/`/`tests/` untouched.
+- **Acts A/C/D/E unauthorized.** **`PBDIGIT-72`** opened — `EM-GOV-063`'s terminal consequence (and `ELECTION DISCONTINUED`) unreachable; **Act B does not fix it** *(also needs a caller + act C)*.
+- **Corrected:** `V-11` — `w8` lacks the prior **HALT**, not the `RecoveryProcess`; the Phase-1 briefing sentence is struck. **Amendment 1** ratified DEP-10's exclusion.
+- **Next actors:** an **independent verifier** and an **Architecture** lane, both narrow. **Neither designated.** Then, only if both are positive, the Domain lane commits the `H-1` structural RED.
+- Untracked (other sessions'): the two dossiers · `2026-08-18-EM-DOM-001-architecture-review.md`.
+- Still open elsewhere: `EM-OPEN-049`/`066`/`094` · `053` · `076`/`077` · `095`② · `102` limbs · `PBDIGIT-69`/`70`/`71` · `KOS-ATTR-ARCH-001` unsigned.
 <!-- /GOV-STATE -->
