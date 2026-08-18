@@ -1,9 +1,9 @@
 # PO/ARB Authorization **REQUEST** — one bounded Domain slice (proposed ID: `EM-DOM-001`)
 
 **Prepared by:** Session 2 — Governance · **Date:** 2026-08-18
-**Status:** 🟡 **REQUEST — NOT AUTHORIZED. NOT GRANTED. NOT STARTED.**
+**Status:** ✅ **AUTHORIZED by the PO/ARB on 2026-08-18 (recorded verbatim in the Authorization block). ⏸️ NOT STARTED — the fresh Domain lane has not been designated. Phase 1 only (domain analysis/design + RED-test preparation).**
 
-> ⚠️ **This document is a request prepared for the PO/ARB. It confers nothing.** Governance prepares; it does not grant, and it does not clear its own gate. **The ID `EM-DOM-001` is PROPOSED — the PO/ARB assigns or replaces it.**
+> ⚠️ **This document began as a request and is now the authorization record.** Sections 1–10 are the requested terms; the **Authorization block** carries the PO/ARB's performed act verbatim, with two annotations. **Governance prepared it and did not grant it.** **The ID `EM-DOM-001` is CONFIRMED by the authorizing text's own heading.**
 
 **Nothing was modified to produce this request.** `app/`, `tests/`, repositories, protocol access and the frozen domain core are unchanged; the core remains byte-identical to `1f4b4c5f`.
 
@@ -140,7 +140,56 @@ The map must render at least these two discriminations explicitly:
 
 ## Authorization block
 
-**⬜ LEFT BLANK — the Product Owner / ARB decides.**
+## ✅ **AUTHORIZED — PO/ARB, 2026-08-18. Recorded verbatim.**
+
+> **PO/ARB AUTHORIZATION — EM-DOM-001**
+>
+> I authorize one bounded Domain slice to resolve DEP-1 through DEP-6 identified by the EM-IMPL-002 Rule-8 dependency gate.
+>
+> This authorization is limited to resolving the approved domain invariants, their bounded-context ownership, and the domain representations/contracts required by ADR-1 and ADR-2.
+>
+> This is not authorization to modify the Application layer, normalize UC-1/UC-2/UC-3, change repositories, add protocol reads, reconstruct provenance in the Application layer, or implement GREEN-5.
+>
+> The Domain lane must:
+>
+> 1. establish the domain decision map before implementation;
+> 2. identify the bounded-context owner of every affected invariant;
+> 3. define the domain representation of the approved semantics, including the w8 Restoration-without-RecoveryProcess path;
+> 4. consume the existing P-7 contract rather than recreate or duplicate it;
+> 5. create RED tests for the missing domain invariants before implementation;
+> 6. implement only the authorized domain model;
+> 7. verify the domain slice independently;
+> 8. preserve the existing legitimate RecoveryProcess absence semantics;
+> 9. leave all prohibited DEP-7 through DEP-12 paths prohibited.
+>
+> The Domain lane must not derive its model from the current Application handler structure.
+>
+> An ADR signature is not layer-wide implementation authorization.
+>
+> The authorization is for ONE bounded domain slice to resolve DEP-1 through DEP-6; it is NOT authorization to invent a technical mechanism.
+>
+> The Domain lane may begin only with domain analysis/design and RED-test preparation. Any additional domain scope discovered during the slice requires a new authorization.
+>
+> **PO/ARB: AUTHORIZED.**
+
+**ID confirmed:** the proposed `EM-DOM-001` is adopted by the authorizing text's own heading.
+
+### ⚠️ Annotation A — the DEP-10 reconciliation (recorded, not silently repaired)
+
+Obligation **(9)** says *"leave all prohibited DEP-7 through DEP-12 paths prohibited."* **`DEP-10` lies inside that numeric range but is class A, NOT prohibited** (§6, §7). Read literally, (9) and (8) would conflict — DEP-10 both *"prohibited"* and *"preserved."*
+
+> **Reconciliation: obligation (8) governs `DEP-10`. The range in (9) is read as shorthand for the prohibited members of that span — DEP-7, DEP-8, DEP-9, DEP-11, DEP-12.**
+
+**Basis:** obligation (8) names `RecoveryProcess` absence semantics specifically and positively; (9) names *"all **prohibited**"* paths, which is qualified, not exhaustive. **The specific and positive clause controls the generic range.** ⛔ **The domain lane must NOT delete or alter `if ($restoration === null) { return; }` on the strength of (9).** *(Flagged to the PO for correction if this reading is not intended.)*
+
+### ⚠️ Annotation B — what is authorized versus what is started
+
+**Authorized:** the slice, bounded to Phase 1 — *"may begin only with domain analysis/design and RED-test preparation."*
+**NOT yet designated:** **WHO the Domain lane is.** Obligation 4 of this request requires a **FRESH Domain lane, not the current implementation lane** — and **not this Governance session**, which has spent the whole gate reading `FillCommitteeSeatHandler` and is therefore the single worst-placed lane to model the domain.
+
+> **Remaining PO/ARB act: designate the fresh Domain lane and START it.** Governance does not designate the lane that executes work Governance scoped.
+
+**Governance's own next act is finished when the lane briefing below exists.** Governance authors no model, names no concept, proposes no class.
 
 > ## ⚠️ Registered non-act — 2026-08-18
 >
