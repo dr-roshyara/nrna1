@@ -1,6 +1,6 @@
 # ADR — What the absence of a required aggregate MEANS at the application boundary
 
-**Status: 🟡 PROPOSED — CANDIDATE ONLY. No option is chosen here. The decision block (§6) is deliberately BLANK and belongs to the Product Owner / ARB.**
+**Status: ✅ DECIDED — PO/ARB ruling recorded in §6 on 2026-08-18 (governed composite absence semantics). Implementation authority is NOT granted by this decision; see §6's binding constraints and the Rule-8 gate.**
 **Date:** 2026-08-17 21:45 · **Deciders:** Product Owner / ARB (pending) · **Recorded by:** the `EM-IMPL-002` implementation lane (evidence and options only — `R-34`: engineering supplies evidence and never accepts its own work)
 **Origin:** `EM-IMPL-002` GREEN-2/3/4. Three handlers were implemented under a grant that left this question open; they now handle absence **three different ways**, and the Governance verification record rates the result a robustness regression.
 **Evidence base:** `docs/publicdigit/implementation/2026-08-17-EM-IMPL-002-green4-verification.md` §3 (the three-way divergence, and the verified fact that **no test covers an absent-aggregate path in any handler**). This ADR asserts nothing that record did not establish.
@@ -186,11 +186,68 @@ Failure semantics           Normal domain state
 
 ## 6 · Decision
 
-> **⬜ LEFT BLANK — the Product Owner / ARB decides.**
+> ## ✅ **PO/ARB DECISION — 2026-08-18: APPROVED. STATUS: ACCEPTED / DECIDED.**
 >
-> Required in the ruling: **(a)** which of A / B / C / D is the meaning of absence; **(b)** the shape from §4; **(c)** whether normalization of UC-1/UC-2/UC-3 is authorized as one slice; **(d)** whether a RED pin for the chosen behaviour is required before that normalization (the lane recommends yes — it is currently untested in all three handlers).
->
-> *The lane will not choose among these options, and has implemented none of them.*
+> *(Recorded verbatim in substance by Governance. Header read "PO/ARB DECISION … Decision: APPROVED", Status "ACCEPTED / DECIDED", with no recommendation framing and no reservation — registered as the performed ruling.)*
+
+### (a) Meaning of absence — **governed composite absence semantics**
+
+**There is no universal interpretation of an absent aggregate reference.** The meaning is determined by **the invariant governing the referenced domain concept in the lifecycle and operation in which the reference is required.**
+
+| Referenced concept | Governing condition | Meaning of absence |
+|---|---|---|
+| `Committee` | the command requires an existing Committee | **violation** of the required-existence invariant |
+| `AcceptanceDecision` | the command requires an already-established constitutional decision | **violation** of the required-decision invariant |
+| `AcceptanceDecision` | the election has not yet reached the lifecycle phase in which an acceptance decision exists | **legitimate lifecycle state** |
+| `RecoveryProcess` | no recovery process is currently running | **legitimate lifecycle state** |
+
+> ## **Different absence meanings are allowed; different invented meanings are not.**
+
+**A technical `null` does not itself determine which meaning applies.** The meaning must be established by the authorized domain model and its lifecycle invariants.
+
+### (b) Domain representation / decision shape
+
+**The Application layer may detect that a reference is absent, but it may not interpret the business meaning of that absence from the technical observation alone.**
+
+**It MAY consume:** an existing authorized domain-owned decision · a domain policy or operation that explicitly establishes the relevant invariant · another explicitly authorized domain contract whose semantics are already defined by the Domain.
+
+⚠️ **The phrase *"already-established domain invariant"* does not by itself authorize application interpretation. An invariant is consumable for this purpose ONLY when its meaning is exposed through an authorized domain-owned contract.**
+
+⛔ **Therefore PROHIBITED:**
+
+```php
+if ($committee === null) {
+    throw new InvalidArgumentException(...);
+}
+```
+
+**— when the `null` itself is being used by the Application layer to conclude that the caller violated a business invariant.**
+
+**The Application may request or consume a domain decision; it may not reconstruct that decision from technical absence.** **If the required domain contract does not exist, that is a DOMAIN-MODEL GAP, not permission for the Application layer to invent the meaning.** Any required domain contract, policy, value object, status model or other domain representation **requires a separately authorized domain slice under Rule 8.**
+
+### (c) Normalization scope
+
+**Authorized: ONE bounded normalization slice covering UC-1, UC-2 and UC-3 — subject to the Rule-8 authorization/dependency gate.**
+
+⛔ **The acceptance criterion is NOT** *"all three handlers use the same null/exception handling."* ✅ **It is:** ***each handler conforms to the governed domain meaning of every absent reference it encounters.***
+
+**UC-1:** Committee absence conforms to the governed Committee invariant · **UC-2:** Committee **and** AcceptanceDecision absence each conform to their respective governed invariants · **UC-3:** Committee **and** AcceptanceDecision absence each conform to their respective governed invariants · **`RecoveryProcess`:** existing legitimate lifecycle absence **must not be changed merely to achieve implementation symmetry.**
+
+⛔ **The normalization slice must not create a universal null policy.**
+
+### (d) RED-pin prerequisite — **CONFIRMED**
+
+**`AbsentAggregateReferenceRedTest` precedes implementation and remains binding.** Its architectural purpose: ***a possibly-absent aggregate reference must reach an explicit, domain-authorized decision before it is dereferenced.***
+
+⛔ **It deliberately does not prescribe:** an exception type · an HTTP status · a repository method · `getStatus()` · a particular domain API · a universal null policy. **It becomes GREEN only when the implementation conforms to the approved domain semantics.**
+
+### Binding architectural constraints *(this decision is NOT blanket implementation authorization)*
+
+**①** Application detects absence; Domain contract defines meaning · **②** the Application must not classify the cause of absence unless that classification is already exposed through an authorized domain contract · **③** representation follows meaning; meaning does not follow representation · **④** a nullable `find()` result is a technical observation, not a domain classification · **⑤** no application exception hierarchy shall be introduced merely to give `null` a business meaning · **⑥** if the required domain contract does not exist, **implementation stops and a separate domain slice is required** · **⑦** `RecoveryProcess` must not be normalized merely for symmetry with required aggregates · **⑧** **ADR-2 remains a separate decision** concerning recovery causal provenance · **⑨** an ADR signature is not blanket layer-wide implementation authorization.
+
+### Status
+
+**ADR-1: ACCEPTED / DECIDED.** **This decision authorizes the semantic direction and bounded normalization scope. It does NOT authorize implementation of a missing domain concept.**
 
 ### 6-guard · REQUIRED IN THE RULING — the classification guard *(added at PO direction, 2026-08-17)*
 
