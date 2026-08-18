@@ -40,7 +40,7 @@ The repository contracts are **frozen** and return `null` when nothing is stored
 | Handler | Absent-aggregate handling | Sites |
 |---|---|---|
 | UC-1 `ExpressCommitteePositionHandler` | inline `?? throw new InvalidArgumentException(...)` | 2 |
-| UC-2 `RecordVacancyEventHandler` | `?? throw $this->unresolvedReference(...)` (named private method returning the same class) | 3 |
+| UC-2 `RecordVacancyEventHandler` | `?? throw $this->unresolvedReference(...)` (named private method returning the same class) | 2 |
 | UC-3 `FillCommitteeSeatHandler` | 🔴 **nothing** — `requiredVotes()` / `unableToFunction()` are reached on possibly-`null` values | 0 |
 
 **How the divergence arose, stated fairly.** Registered condition 3 said *"do not propagate UC-1's exception choice as a pattern."* UC-2 read it as *"keep one provisional shape, isolate it, re-raise the question"*; UC-3's mandate said *"STOP and report; do not invent"*, so the lane removed its placeholder — correctly refusing to throw a domain `SeatNotVacant`, which would have asserted a false meaning — and left no handling at all. **Both readings are defensible. The consequence is not: the three handlers now disagree, and one can raise a raw PHP error.**
@@ -164,6 +164,18 @@ Failure semantics           Normal domain state
 
 ---
 
+## 4d · §8.2 — a factual limitation of Option C's audit argument *(added 2026-08-18; ⚠️ NOT a rejection of Option C and NOT a selection of any other option)*
+
+**VERIFIED FACT:** `RefusalRecord`'s constructor is `(string $requestedAct, string $reason, RecordedInstant $refusedAt)` — **it carries NO `ElectionId` field.**
+
+**Consequence for the ADR's own wording:** any claim that Option C yields a *strongly typed permanent record identifying the affected election* is **stronger than the code supports.** Today the election identity would be recoverable **only** through the free-text `reason` and the surrounding protocol structure — **not from a typed `ElectionId` on the refusal itself.**
+
+⚠️ **Adding typed election identity to `RefusalRecord` would be a DOMAIN-CORE change and therefore requires its own authorization** *(the same dependency H-1 exposes for §6c)*.
+
+⛔ **This does not reject Option C, does not select another option, and does not authorize a domain change.** It records that Option C's **audit fidelity** must be weighed as it actually is, not as the earlier wording implied.
+
+---
+
 ## 5 · Consequences of NOT deciding (recorded, since this is the status quo)
 
 * UC-3 keeps a **null-dereference path**; UC-1/UC-2 keep a shape nobody ratified; the divergence grows by ~2 sites per remaining use case (UC-4, UC-5).
@@ -207,6 +219,18 @@ Failure semantics           Normal domain state
 
 ---
 
+### 6-cross · CROSS-ADR CONSISTENCY CONDITION *(H-2, added 2026-08-18 — ⛔ the ADRs remain SEPARATE and are NOT merged)*
+
+**These two decisions are separate OWNERSHIP decisions whose CONSEQUENCES must remain mutually consistent.** *Separate does not mean consequence-independent.*
+
+**The specific condition, stated in the precise form (the PO's sharpening):** ✅ **`RecoveryProcess` absence MAY legitimately remain a normal lifecycle state — that is not in tension with anything.** ⛔ **What cannot simultaneously be true is: *"every Restoration requires HALT provenance, AND that provenance is owned by the halted recovery period."*** **Because `w8` permits a restoration with no prior halt — no `HaltedElectionRecovery` period exists for it — so no halted-period-owned origin can exist for that restoration.**
+
+> ⚠️ **FACTUAL CORRECTION (2026-08-18, second independent gate).** An earlier form of this sentence said *"`w8` permits a restoration where no `RecoveryProcess` ever existed."* **The fixture contradicts that.** **VERIFIED in `tests/Unit/Contexts/Election/OperatingCoreApplication/FillCommitteeSeatHandlerRedTest.php` (`test_w8_…`): the pin seeds `RecoveryProcess(PeriodKind::CommitteeRestoration, 20)` — a `RecoveryProcess` DOES exist in `w8`.** What `w8` lacks is the **halt**: no `HaltedElectionRecovery` period, hence no halt-derived gate. ⚠️ **The distinction is load-bearing for the ruling, and it separates THREE concepts that the loose wording collapsed into two: Restoration ≠ `RecoveryProcess` ≠ halt provenance.**
+
+⚠️ **Note this strengthens rather than weakens the ADR-2 model: it is further evidence that *"cause of Restoration"* and *"cause of RecoveryProcess"* are DISTINCT domain concepts (`ADR_20260817_2300` §5b).**
+
+**Required of the rulings: the `w8` case must be resolved EXPLICITLY.** ⛔ **This condition selects no option and states no preferred outcome in either ADR.**
+
 ### 6c · Architectural Implementation Constraint *(added 2026-08-17; ⚠️ a CONSTRAINT on the implementation, NOT a selection among A/B/C/D)*
 
 > **The selected absence semantics must not be implemented by Application-layer interpretation of technical repository absence.**
@@ -217,7 +241,45 @@ Failure semantics           Normal domain state
 >
 > **The implementation must introduce or consume an authorized domain-owned contract that provides the invariant decision.**
 >
+> ⚠️ **H-1 CORRECTION (2026-08-18): "introduce OR consume" must not be read as though both are presently available.** **VERIFIED ARCHITECTURAL FACT: no currently existing domain contract expresses the meaning of an ABSENT AGGREGATE.** *(Inspected: policies P-1…P-7 accept and return thresholds, intervals, gate classifications and halt targets — none accepts or returns an absence concept; the repositories express only a nullable return, which is a technical observation, not a meaning; and the one absence-adjacent contract, `UnknownCommitteeSeat`, has as its subject a SEAT WITHIN A PRESENT AGGREGATE — the case `A-5` already rules — not an absent aggregate.)*
+>
+> **Therefore the sequencing, made explicit:** ***if the selected absence semantics require a domain-owned contract that does not yet exist, introducing it is a DOMAIN change — it requires its own separate authorization and its own domain slice BEFORE application normalization.*** ⛔ **This ADR does not prescribe that contract's shape: no class, method, repository API, policy or exception is named or implied here.** **The purpose of this correction is to expose the AUTHORIZATION DEPENDENCY, not to design the mechanism — and it materially affects what §6(c) authorizes.**
+>
 > **The concrete mechanism — a domain operation, a domain decision object, a domain policy, or another authorized contract shape — is intentionally LEFT OPEN until the normalization slice, because choosing the mechanism is an implementation decision, not an ADR decision.**
+
+#### 6c.1 · ⚠️ *"Introduce or consume"* — only ONE branch is currently available *(added 2026-08-18, closing architecture-review finding **H-1**; VERIFIED FACT, no mechanism prescribed)*
+
+**The disjunction above reads as though both branches were open. They are not.**
+
+> **VERIFIED, by architecture inspection of the domain 2026-08-18: no existing domain contract expresses the meaning of an absent aggregate.** `app/Contexts/Election/Domain/OperatingCore/Policy/` holds seven policies — `ClockAccrual`, `ExpiryConsequence`, `GateIntervalClassification`, `InoperativeOnset`, `ResumptionTarget`, `ThresholdEvaluation`, `UnableToFunction` — **all concerning time, thresholds and gate semantics; none answers *"what does the absence of this aggregate mean?"*** No absence- or existence-semantics contract exists elsewhere in the context either.
+
+**Therefore there is presently nothing to *consume*, and the sequencing is:**
+
+```
+ADR-1 decision (§6)
+        |
+        v
+Does the domain already express the required absence meaning?
+        |
+        +-- NO  (the verified position today)
+              |
+              v
+        a domain-owned contract must be INTRODUCED
+              |
+              v
+        SEPARATE domain authorization  (C-1: the domain core is frozen)
+              |
+              v
+        domain RED -> domain implementation -> domain verification
+              |
+              v
+        application normalization of UC-1/UC-2/UC-3
+```
+
+> ### ⚠️ **The consequence for the ruling — this is why the fact is recorded here rather than left to the implementation lane:**
+> **Sub-ruling §6(c) — *"whether normalization of UC-1/UC-2/UC-3 is authorized as one slice"* — cannot be answered as a simple yes on today's evidence.** If the selected semantics require an explicit domain-owned contract, **a domain slice must precede the normalization**, and that slice needs **its own authorization, its own RED tests and its own verification**. A signature given on the assumption that normalization is a single authorizable slice would authorize work that cannot lawfully be performed under `C-1`.
+
+**What this subsection deliberately does NOT do:** it prescribes **no** contract shape — no class, method, repository API, policy object or exception — and it does **not** authorize the domain slice it identifies. **Its only purpose is to expose an authorization dependency that the disjunction concealed.** The mechanism remains open exactly as stated above.
 
 #### Forbidden vs allowed shape
 
@@ -236,6 +298,33 @@ Failure semantics           Normal domain state
 #### Purpose note (traceability)
 
 **§6c does not choose Option A/B/C/D.** Its only purpose is to stop the normalization slice from producing **hidden domain rules inside handlers · duplicated invariant knowledge · divergence between application code and future domain evolution.** It is compatible with every option in §3 and with every mechanism listed above.
+
+---
+
+## 6d · ⚠️ CROSS-ADR CONSISTENCY CONDITION — separate in ownership, NOT independent in consequence *(added 2026-08-18, closing architecture-review finding **H-2**)*
+
+**`ADR_20260817_2300` (causal-origin ownership) remains a SEPARATE decision and the two ADRs must NOT be merged** — §1 of that ADR is right about that, and this section does not weaken it. **But separate ownership does not mean independent consequence, and reading it that way is what the review found.**
+
+> ### The incompatibility is a **THREE-statement** one. Any TWO of these are fine together; **all three cannot hold at once:**
+>
+> **① `RecoveryProcess` absence is a legitimate normal lifecycle state — for BOTH governed period kinds, and `HaltedElectionRecovery` absence is the one `w8` exercises** — this ADR's §4a position, already implemented in two handlers (`// No halted period exists: there is nothing to resume.`).
+> **② Every Restoration requires causal provenance** — a permitted answer to `ADR-2` §6(b).
+> **③ That provenance is the originating gate of a HALT, owned by the halted recovery period** — `ADR-2` option A applied to the halt path, its registered-strongest option.
+>
+> **Because the accepted RED pin `w8` restores an election with no prior halt — hence with no `HaltedElectionRecovery` period in existence**, ①+②+③ leaves that restoration with a mandatory halt origin whose owner may legitimately not exist.
+
+> ⚠️ **FACTUAL CORRECTION (2026-08-18, second independent gate) — the counter-example is about the HALT, not about `RecoveryProcess`.** An earlier form of this block said `w8` *"restores an election that never had a recovery period at all."* **VERIFIED in `FillCommitteeSeatHandlerRedTest::test_w8_…`: the pin seeds `RecoveryProcess(PeriodKind::CommitteeRestoration, 20)`, so a `RecoveryProcess` DOES exist in `w8`; what does not exist is a `HaltedElectionRecovery` period, i.e. the halt whose gate the provenance question is about.** ⚠️ **Why the PO must have the precise form: the loose form told the signer that a `RecoveryProcess`-owned provenance is IMPOSSIBLE for `w8` — it is not; the owner exists and carries no halt.** ⛔ **And a restoration with NO `RecoveryProcess` of either kind is structurally reachable (`FillCommitteeSeatHandler` returns early on both `null` branches) but is pinned by NO test — so it must be read as an unpinned path, never as an accepted RED case.** *(Consistent with this ADR's own verified finding that no absent-aggregate path is covered in any handler.)*
+
+**Stated precisely, because the loose form misleads:** ⛔ it is **NOT** *"if provenance is mandatory then `RecoveryProcess` absence stops being a normal state."* **`RecoveryProcess` absence CAN remain a normal state under every combination.** ✅ What cannot also hold is *"every Restoration requires HALT provenance **owned by the halted recovery period**"* — the ownership clause is the load-bearing part.
+
+**And the consequence points somewhere useful rather than merely blocking:** if restoration may occur with no prior halt, then **the cause of a Restoration cannot in general be the cause of a halted `RecoveryProcess`** — which is exactly the distinction `ADR-2` §5b already draws between the two questions, and the corrected form sharpens it into three subjects rather than two: **the restoration transition · the recovery period · the halt that may or may not have originated it.** **The dependency therefore strengthens `ADR-2`'s existing separation of the causal subjects rather than arguing against it.**
+
+**Required of the two rulings — a consistency condition, not an outcome:**
+1. **The answers must be mutually consistent**, and whoever signs second must check the first.
+2. **The `w8` case must be resolved explicitly** by the Product Owner / ARB — under `ADR-2` §6(b), and visibly compatible with whatever this ADR rules for `RecoveryProcess`.
+3. ⛔ **Neither ADR may be read as having pre-answered the other's question.**
+
+**Nothing is decided here.** No option in either ADR is selected, preferred or excluded by this section; it records a constraint the two rulings must jointly satisfy. **A reciprocal note is recorded in `ADR-2` §6d.**
 
 ---
 
