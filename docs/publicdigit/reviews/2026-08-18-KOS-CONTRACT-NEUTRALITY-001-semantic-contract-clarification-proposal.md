@@ -41,6 +41,22 @@ LCOM4 = 3  ⟺  the edge a–b DOES NOT EXIST
 
 **a one-bit exact read of the edge set, not an inference from a number.** Per `O-1` each probe states its falsifier; per `O-2` the construction is built so a compensating error cannot hide — there is only one possible edge. Controls (`N02` `self::`, `N12` `parent::`, `G2c` plain `$this->`) confirm the probes can both pass and fail. **Nothing in the repository was modified**; probes are throwaway scratch files.
 
+### 1.4 ⚠️ Continuation disclosure — **a SECOND process continued this lane** (added 2026-08-18)
+
+**§§1–6 below were drafted by `claude-code-session:5e1dd9ee`** — the breadth verifier, whose anchoring conflict §1.2 discloses. **The additions marked *(added 2026-08-18)* — this subsection, the §3 banner, §2.8 and §6.0 — were made by `claude-code-session:1c8b041b`**, on a PO/ARB act directing that the active lane continue. **No conclusion, recommendation, marking or evidence row of the original drafting was altered.**
+
+| | |
+|---|---|
+| **Identity, self-declared and NOT attestable** (`INV-ATTR-2`/`G-2`) | `claude-code-session:1c8b041b` |
+| **Is it the Python collector implementer?** | **No** (`fbc084f0`) |
+| **Is it the breadth verifier / original drafter?** | **No** (`5e1dd9ee`) |
+| **Is it the completion/reproduction auditor?** | **No** (`b260fb38`) |
+| 🔴 **Its own prior position, flagged at the point of use** | **It authored the parsing-architecture evaluation (`d2859e91`)**, which analysed `NEW-5`, proposed four candidate readings, and concluded that the reference's behaviour is *"information loss at the extraction API, not a considered semantic decision."* **That is a prior position on this exact question and it is disclosed here rather than left to be discovered.** Its consequence is worked through in **§2.8**, where it operates **against** the continuing process's own earlier taxonomy. |
+
+> ⚠️ **Record discrepancy, reported and not repaired here.** The seq-23 `executionContext` names the performing process as `claude-code-session:5e1dd9ee`. **That was true of the drafting and is not true of this continuation.** The workflow record therefore under-describes who acted on this artifact. **Correcting the assignment's execution context is a Governance act; this process created no assignment and no grant, and does not amend the record's identity fields.**
+
+**Neither disclosure is cured by the other.** The original anchoring risk stands exactly as §1.2 states it; a second process's additions do not verify, ratify or discharge it. **`R-34`/`P-2` now bars BOTH processes from verifying this proposal.**
+
 ---
 
 ## 2 · `NEW-5` semantic proposal (Decision 13.3)
@@ -165,11 +181,35 @@ dynamic / computed    EXCLUDE — not determinable
 
 **Reason:** it is the only option that (i) matches `13.1`'s own stratification instead of fighting it, (ii) keeps the contract honest about what it asks a binding to provide, (iii) removes the collision in §2.4 rather than choosing a winner arbitrarily, and (iv) fixes the `N09` semantic loss without importing full alias resolution. **`R-2` is the correct minimal-cost fallback if the PO/ARB prefers the contract to stay small — but then §2.5's objection must be discharged explicitly: the `NOT DETERMINABLE` bucket must not be used for determinable cases.**
 
+### 2.8 Cross-reference — **one reading from the parsing-architecture evaluation is now ELIMINATED** *(added 2026-08-18)*
+
+**Two documents now propose competing taxonomies for the same question, and a PO/ARB cross-reading would otherwise have to reconcile them unaided.** The parsing-architecture evaluation (`d2859e91` §3.4) listed four readings `R1`–`R4`; this proposal lists three, `R-1`–`R-3`. **The labels do not correspond.** The mapping, and what the new evidence does to it:
+
+| Evaluation `d2859e91` §3.4 | This proposal | Status on the `N04` / `N09` evidence |
+|---|---|---|
+| **`R1`** lexeme identity — `\Fq` ≠ `Fq`, no edge | **`R-2`** SPELLING | **live** |
+| **`R2`** behavioural dependency governs (final segment) | ≈ **`R-1`** IDENTITY, *soundly stated* | **live** — and this proposal repairs `R2`'s stated flaw: §2.5 shows file-local resolution suffices, so it does **not** breach the isolation limitation |
+| **`R4`** resolve names properly | **`R-1`** IDENTITY | **live**; `R-1` subsumes it |
+| 🔴 **`R3`** *"strip exactly one leading `\`, then compare"* — the reference's de facto rule | *(no counterpart — deliberately)* | 🔴 **ELIMINATED as a candidate rule** |
+| — | ⭐ **`R-3`** STRATIFIED, per qualifier kind | **new; has no counterpart in the evaluation** — see below |
+
+> ### 🔴 Why `R3` is eliminated, and why this matters more than a taxonomy tidy-up
+>
+> `R3` was offered in the evaluation as a live option whose cost was political — *"ratifies current PHP behaviour… makes the reference authoritative by default."* **The `N04`/`N09` evidence eliminates it on a stronger ground: it is not a coherent rule at all.**
+>
+> `R3` predicts PHP's behaviour exactly — `\Fq` → `Fq` matches (`N04` ✅), `\App\Fq` → `App\Fq` does not (`N09` ⛔). **So `R3` is an accurate DESCRIPTION and a disqualified RULE**, because its verdict on a reference turns on **whether the file happens to declare a namespace** — which is not a property of the reference, of the target, or of the dependency. **A rule whose answer changes when you add a `namespace` line to the top of the file, without touching the call, is not stating a semantic.**
+>
+> ⚠️ **This cuts against the continuing process's own earlier document**, which listed `R3` as a live option with a stated cost rather than as an incoherent one. **The disclosure in §1.4 is what makes that admissible; the evidence is what makes it correct.**
+
+**And the second half of the mapping is the more consequential one:** `R-3` (STRATIFIED) **has no counterpart in the evaluation because it could not have.** The evaluation was written **before** `13.1` decided that contract neutrality is `L3 → L5`. **`R-3` is the reading that only becomes available once the neutrality boundary is fixed at the fact model** — the contract rules per *qualifier kind*, and the binding's obligation is to *report* the kind rather than to *resolve* it. ⇒ **The option space did not merely get re-labelled between the two documents; `13.1` created a new option.** That is an argument for reading `R-1`/`R-2`/`R-3` as the current option set and treating `R1`–`R4` as superseded.
+
 ---
 
 ## 3 · The four contract silences (Decision 13.5)
 
 **Mandatory marking honoured: every silence is marked, and none is left merely unmentioned.**
+
+> 🔴 **READ THE COLUMN HEADER BEFORE THE CELL VALUES** *(clarified 2026-08-18)*. The column is **"Proposed marking"**. A cell reading **`DECIDED`** means ***"Architecture proposes that the PO/ARB mark this silence DECIDED, with the rule in the next column"*** — it does **NOT** mean the silence has been decided. **Nothing in this table is decided; `13.5` is the PO/ARB's act.** The distinction matters because three of the four proposed rules are **CHANGES** to current behaviour, not ratifications of it — see `G-1` and the explicit change-warning in `G-3`.
 
 | # | Silence | Evidence (Observed) | **Proposed marking** | Proposed rule / consequence |
 |---|---|---|---|---|
@@ -220,7 +260,24 @@ dynamic / computed    EXCLUDE — not determinable
 
 ## 6 · Open choices for the PO/ARB
 
-**Six rulings. Each states the minimum the act must contain.**
+### 6.0 Decision-ready summary *(added 2026-08-18, in the column shape the commissioning act requested)*
+
+> **Every row is `PROPOSED`. Nothing in this document is `DECIDED`.** The only `DECIDED` items in force are `13.1`, `13.7`, and Decisions 1–3, listed in §1.1 and not re-opened here.
+
+| Decision | Proposal *(PROPOSED — not decided)* | Evidence | Open question the PO/ARB must close | PO/ARB act required |
+|---|---|---|---|---|
+| **13.3-a · precedence** | **Stratify** — clause (a) governs *what an edge means*; the qualifier-kind table governs *what the binding must report*. The clauses stop colliding rather than one defeating the other | §2.4; `13.1` fixes the boundary that makes stratification available | Does **(a)** govern, does **(b)** govern, or are they **stratified**? | **Rule one of three.** No default applies |
+| **13.3-b · `NEW-5` / `NEW-5b` rule** | **`R-3`**, with **fully-qualified → INCLUDE** and **relative → INCLUDE** | `N04` ✅/⛔, `N05`+`N10` ✅/⛔ (`Observed`, one-bit edge read); `R3` of `d2859e91` **eliminated** (§2.8) | Which rule — `R-1`, `R-2`, `R-3`? If `R-3`, the verdict for **fully-qualified** and **relative** | **Name the rule; if `R-3`, fill the two `?` rows** |
+| **13.3-c · `aliased`** | **Hold at `EXCLUDE`, restated as a LIMITATION** rather than left as a silent exclusion | `N07` — both implementations agree, **by unrelated accidents** (§5 `C-2`) | Does `aliased` move with fully-qualified, or stay excluded? | **Rule separately** — the evidence shows it is a different case with a different cost |
+| **13.3-d · status of the ruling** | **DECISION** for each filled `R-3` row; **LIMITATION** for `aliased` | §2.6 | Is the ruling a **DECISION** or a **LIMITATION**? | **State it explicitly.** ⛔ May not be left implicit — *"a silent limitation is indistinguishable from a defect"* |
+| **13.5-a · `G-1` anonymous classes** | Mark **DECIDED**: an anonymous class **IS** an analysed unit, **and** the contract must require a **stable unique designation** | `I6` (Python omits) · `I4`/`I5` (Python fabricates `implements`/`extends`) · `N5` (**PHP emits two rows both named `(anonymous)`**) | Unit or not — **and** what identity keys it? | **Two rulings in one act.** ⛔ Neither current behaviour is adoptable |
+| **13.5-b · `G-2` nullsafe `?->`** | Mark **DECIDED**: `?->` **IS** an edge (clause (a) settles it) | `G2a`/`G2b` — **both implementations miss it**; `G2c` control passes | Confirm `?->` is a behavioural dependency | **Rule it — and note it can NEVER be surfaced by differential testing.** It must be pinned by a fixture with a declared expected value |
+| **13.5-c · `G-3` enum / interface / trait** | Mark **DECIDED**, **ruled separately**: **enum = unit · trait = unit · interface = NOT a unit** | `E1`–`E5`, `M5`, `I1`–`I3`, `T1`–`T5` — both emit nothing for all three, consistently | Three separate rulings, not one | **Rule each.** ⚠️ **This is a CHANGE: files gain observations ⇒ `expected.json` changes (`C-4`)** |
+| **13.5-d · `G-4` FQ first-class callables** | Mark **`DECIDED (existing text sufficient)`** — not a real silence | `G4a`/`G4b`/`G4c` — all agree, no edge, at every name kind | Confirm the existing `first_class_callables` clause already covers it | **Confirm and close**, so it is not re-opened. `NEW-5`'s outcome cannot disturb it |
+| **`L3` obligations** | Adopt §4's rows as the schema the parsing architecture is selected **against** | §4; `NEW-5` **survives a perfect parser** | Which rows does the contract **require** a binding to supply? | **Follows 13.3 + 13.5.** ⛔ Selecting a parsing architecture first would freeze the schema before the contract knows what it must carry |
+| **Consequential sequencing** | `expected.json` / fixture amendments implied by `13.5` are a **separate authorized act**; the conformance suite is rebuilt at `L3` | `C-3`, `C-4` | When are the frozen inputs amended, and under what authority? | **Sequence it explicitly**, or the first run after the ruling fails for a reason nobody authorized |
+
+**Then, in detail — six rulings. Each states the minimum the act must contain.**
 
 | # | Ruling | Minimum content | Gate |
 |---|---|---|---|
