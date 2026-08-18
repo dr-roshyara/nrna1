@@ -4,6 +4,22 @@
 
 ---
 
+## 📍 UPDATE (2026-08-18) — contract-neutrality **breadth verification delivered**; PO/ARB decision pending
+
+| | |
+|---|---|
+| **Work item / assignment** | `KOS-CONTRACT-NEUTRALITY-001` · `S1-verification-stage2-breadth` — **`ACTIVE`** (seq 17 REGISTER · 18 HANDOFF · **19 START**, human act recorded) · grant `G-KOS-CONTRACT-STAGE2-BREADTH` |
+| **Delivered** | `docs/publicdigit/reviews/2026-08-18-KOS-CONTRACT-NEUTRALITY-001-breadth-verification-report.md` — 76 probes, **54 agree · 22 diverge**; ten golden fixtures re-run as baseline (10/10, `PHP == Python == expected`) |
+| **Answer to the commissioned question** | 🔴 **NO — the three known divergences are NOT exhaustive. Nine new divergences in nine distinct mechanisms**, each `Observed` with the Python scanner's internal state dumped. All three known divergences reproduce; the own-line attribute control still passes. |
+| **The qualitative shift** | the known three are all *wrong values*; the new set adds **missing observations · fabricated observations · fabricated class identities · and a positive false statement** (`value 0` / *"no analyzable methods"* for a 3-method class). **Four of the six new consequence classes are invisible to any suite comparing values on known classes.** Surface is **two-signed** — Python both invents and loses relationships. |
+| ⭐ **`NEW-5`** | **the PHP REFERENCE may be the divergent party** (`\Own::m()`; `Node\Name::toString()` drops the leading backslash). **Contract ambiguity inside the defect surface — a Python-only repair cannot close it**, and routing it as a Python fix would do what `G-KOS-CONTRACT-EXP-AMD1` forbids. |
+| ⭐ **New finding `O-2`** | ***equal LCOM4 values are not evidence of equal analysis*** — one probe agreed at 2 while the node sets differed (lost method + lost edge cancelled); nullsafe agrees because **both** miss it. Sharpens `O-1`: a future conformance suite must compare **node set and edge set**, not the metric. |
+| **Clean families** | enums · interfaces · traits-as-units · readonly/promoted · match/enum-case — **27 probes, all agreeing, each with a stated falsifier.** Divergences cluster in the **scanner-vs-AST seam** `N-2` predicted. |
+| **Recommendation** | **A — proceed to implementation correction, with two conditions**: (1) **rule on `NEW-5`, do not "fix" it**; (2) **acceptance must not be "the values agree"** (per `O-2`). **The ARB's standing scanner-vs-AST question now has its evidence: the defect surface is a property of the parsing strategy, not of the contract's cohesion rules.** |
+| **NEXT ACTOR** | 🔵 **PO/ARB** — decide repair vs further verification vs conclude · rule `NEW-5` · decide the parser precondition question · decide whether the 76-probe corpus becomes durable evidence · then **Governance closes the lane (G-1)**. ⛔ **No repair · no Stage 3 · no acceptance · no verdict change · the defect surface is NOT declared closed.** |
+
+---
+
 ## 📍 UPDATE (2026-08-17) — Election Architecture lane (`EM-ARCH-001`, Session 4)
 
 | | |
