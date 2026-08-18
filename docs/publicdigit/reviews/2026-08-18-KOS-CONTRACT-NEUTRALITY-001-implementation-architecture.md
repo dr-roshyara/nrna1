@@ -1,194 +1,199 @@
-# `KOS-CONTRACT-NEUTRALITY-001` — **Implementation Architecture: D / B3 / C-as-completion**
+# `KOS-CONTRACT-NEUTRALITY-001` — **FINAL Implementation Architecture** · Architecture D / B3 / C-as-completion · **PHP binding**
 
-**Status: 🟡 PROPOSAL ONLY. It adopts nothing, authorizes nothing, and does not self-accept.**
-**Assignment:** `S4-architecture-impl-arch-d-b3` (seq 29 REGISTER · 30 HANDOFF · 31 START) · **Grant:** `G-KOS-CONTRACT-IMPL-ARCH`
-**Date:** 2026-08-18 · **Role:** Architecture (design) · **Next actor:** PO/ARB — accept or return
+**Status: 🟡 PROPOSAL. It adopts nothing, authorizes nothing, verifies nothing and does not self-accept.**
+**Assignment:** `S4-architecture-impl-arch-d-b3` (seq 29 REGISTER · 30 HANDOFF · 31 START) · **Grants:** `G-KOS-CONTRACT-IMPL-ARCH` **+ AMD1 (language scope) + AMD2 (OQ-2/OQ-4/conformance) + AMD3 (finalization)**
+**Date:** 2026-08-18 · **Next actor:** PO/ARB — accept or return
 
-> **Producing process, self-declared and NOT attestable** (`INV-ATTR-2`/`G-2`): `claude-code-session:1c8b041b`.
-> 🔴 **Disclosed prior position, at the point of use:** this process authored the parsing-architecture evaluation (`d2859e91`) whose recommendation — **D**, with **B** for the language layer and **C-as-completion** — the PO/ARB has now selected. **It is designing the realization of its own recommendation.** `R-34` is not breached (designing is neither verifying nor accepting), but the anchoring risk is real. **Mitigation, and it is checkable: §17.2 states where the selected shape is COSTLY or AWKWARD rather than only where it works, and §16 returns four architectural issues rather than smoothing them.** Not the Python implementer (`fbc084f0`), not the breadth verifier (`5e1dd9ee`), not the completion auditor (`b260fb38`). **`R-34`/`P-2` binds forward: this process must not verify or accept this design.**
+> **Producing process, self-declared, NOT attestable** (`INV-ATTR-2`/`G-2`): `claude-code-session:1c8b041b`.
+> 🔴 **Prior position, disclosed at the point of use:** this process authored the parsing evaluation `d2859e91` whose D/B3/C recommendation was selected, and the first draft of this design. **It is designing its own recommendation.** `R-34` is not breached; the anchoring mitigation is delivered, not promised — **§18 `OPEN-1` records a violation of AMD1's own principle that this design cannot fix by itself**, and §19.2 records five costs. **`R-34`/`P-2`: this process must not verify or accept this design.**
+> ⚠️ **This document REPLACES the 2026-08-18 first delivery at the same path.** The earlier version predates AMD1–AMD3; three of its four open questions are now settled by the record and its two-current-implementations premise is superseded.
 
-**Legend used throughout — ✅ `DECIDED` (in force, not re-opened) · 🟡 `PROPOSED` (this document's design) · ⬜ `OPEN` (returned to the PO/ARB).**
+**Classification used throughout: ✅ `DECIDED` · 🟡 `PROPOSED` · 🔵 `FUTURE` · ⬜ `OPEN`.**
 
 ---
 
 # 1 · Executive summary
 
-**This design turns the decided contract into a realizable structure by making one property structural rather than aspirational:**
+**The design realizes Architecture D for a single PHP binding, and it turns two properties from intentions into structure.**
 
-> ## ⭐ **The cohesion layer is given no PHP syntax to fall back to.**
-> **`L4` consumes a CLOSED VOCABULARY of enumerated facts. Raw source text exists only in a separate diagnostic envelope that `L4` is structurally not handed.** A cohesion rule therefore *cannot* inspect a name, a token, or a spelling — not by convention, but because the value is not in its input type. **§14 `INV-4` makes this an invariant and §12 layer C makes it a test.**
+> ## ⭐ **① The cohesion layer is given nothing PHP to read.**
+> `L3` splits into **`Fact`** (closed-vocabulary semantic attributes — the only thing `L4` receives) and **`Provenance`** (offsets, raw text, token indices — **never handed to `L4`**). A cohesion rule cannot read a spelling, a token or an AST node **because those values are not reachable from its input type.** ✅ **Verified by the pre-delivery gate (§21): PASSES.**
 
-**Four design commitments carry the decided rules:**
+> ## ⭐ **② Conformance is declared, not compared — because it can no longer be compared.**
+> The founding method was differential: implement independently in Python, compare. **AMD1 removes that method** — one binding remains. **So `13.7` (node set + edge set + metric) and `13.5`'s declared-expected clause are no longer a supplement to differential testing; they ARE the conformance mechanism.** §9 specifies how expected facts, expected graph and expected metric are authored, stored and asserted.
 
-**① Two orthogonal facts per call site, never one.** `QualifierKind` (*how the target was spelled*) and `TargetUnitRelation` (*whether it denotes the analysed unit*) are separate. **13.3's stratified rule is exactly a table over these two** — and separating them is what lets `aliased` be excluded *by kind* while `fully-qualified` is included *by relation*.
+## 1.1 🔴 Scope of claim — stated because AMD2 requires it and because it is easy to overstate
 
-**② `NotTheAnalysedUnit` and `NotDeterminable` are distinct values in a closed enum.** The bucket ruling — *"the qualified case is determinable and must not be classified as 'not determinable'"* — becomes **structurally unsayable to violate**, not a rule someone must remember.
+> ### **Current scope proves: THE PHP BINDING CONFORMS TO THE LANGUAGE-NEUTRAL MODEL.**
+> ### ⛔ **It does NOT prove: THE MODEL IS NEUTRAL.**
+> **Neutrality becomes demonstrable when a second binding produces the same `L3` facts.** Until then it is claimed **architecturally** — from the stratified boundary and the binding/model separation — **not empirically.** ⛔ **This design does not claim the stronger result, and no artifact it proposes should be quoted as evidence for it.**
 
-**③ The binding emits every declaration; `L4` decides eligibility.** Interfaces are **seen and excluded**, never unseen. ⚠️ **Otherwise a lexer that drops interfaces is indistinguishable from correct exclusion** — `O-2`'s lesson applied to unit eligibility.
+## 1.2 The one finding that survives the amendments and must not be lost
 
-**④ Declared expected evidence is the oracle; differential comparison is a diagnostic.** 13.5's nullsafe ruling forces this: both implementations share the blindness, so agreement proves nothing. **§12 demotes differential comparison everywhere, not only for nullsafe.**
+**Measured, `Observed`:** `Stmt\Class_` finds **2 of 5** declarations — `Enum_`, `Trait_`, `Interface_` are separate node types, so the PHP reference **misses enums and traits entirely** · **`MethodCall` count is 0** for `$this?->b()`, so nullsafe is invisible · `(anonymous)` **collides within one file** · `Name::toString()` **erases qualifier kind**. ⇒ **Of the nine decided rules, the PHP implementation requires change on eight.** ✅ **Decision 1 stands: the reference is not authoritative and is not this design's baseline.**
 
-**Measured consequences for both implementations — the grant required these be stated, not assumed. All `Observed` (§11):**
+---
 
-| | Change required |
+# 2 · Fixed decisions ✅ DECIDED — inputs, not questions
+
+| | Decision | Source |
+|---|---|---|
+| **1** | Contract-neutrality boundary is **`L3 → L5`** | 13.1 |
+| **2** | **Architecture D** — stratified contract / fact-model boundary | selection act |
+| **3** | Language layer **B3** — grammar-exact PHP lexer/token extraction | selection act |
+| **4** | **C-as-completion** — binding preconditions, silences, declared expectations | selection act |
+| **5** | **PHP is the sole current implementation language** | **AMD1** |
+| **6** | **The analysed scope is ONE PHP SOURCE FILE** | **AMD2** (decides `OQ-2`) |
+| **7** | **`OQ-4` disposed — not applicable to current scope; deferred** to a future binding's own work item | **AMD2** |
+| **8** | **13.3** — qualifier kind preserved by the binding, interpreted by the contract, per the adopted stratified rules incl. the bucket ruling | 13.3 |
+| **9** | **13.5** — anonymous class = unit (stable unique identity) · nullsafe `?->` = edge · enum = unit · trait = unit · **interface = NOT a unit** · FQ first-class callable excluded by existing rule | 13.5 |
+| **10** | **13.7** — conformance evidence = node set + edge set + final LCOM4; **final-metric equality alone is insufficient** | 13.7 |
+| **11** | **Declared specification / expected evidence is normative. Implementation agreement is DIAGNOSTIC ONLY.** | **AMD2** |
+| **12** | 🔵 **FUTURE:** one authoritative language-neutral `L4`/`L5` engine; future bindings are separate governed work items | **AMD1/AMD2** |
+
+> ## ⭐ **The principle this design must incorporate, verbatim (AMD1):**
+> ### **"PHP is the first language binding, not the definition of the language-neutral cohesion model."**
+> **Its test, also verbatim:** *"a design in which PHP's shape has silently become the model's shape violates it, even if nothing named PHP appears at `L4`/`L5`."* ⚠️ **This design applies that test to itself in §18 `OPEN-1` and does not pass it cleanly.**
+
+**Also in force and not re-opened:** the seven pinned `_variant_decisions` except as amended by 13.3/13.5 · Decision 1 (PHP not authoritative) · Decision 2 · `O-1` · `O-2` · `N-2`.
+
+---
+
+# 3 · Architectural principles
+
+| | Principle |
 |---|---|
-| **PHP** | scans `Stmt\Class_`, which **misses `Enum_` and `Trait_` entirely** (measured: 1 each, found only via `ClassLike`) · **`$this?->b()` yields `MethodCall` count = 0** — nullsafe is invisible · `(anonymous)` **collides within one file** · `Name::toString()` **erases qualifier kind** |
-| **Python** | the `blank_noise`/`CLASS_RE`/`METHOD_RE` layer is **superseded, not repaired** |
-
-> ⇒ **PHP changes more than the record has so far assumed. Decision 1 stands: the reference is not authoritative, and this design does not treat it as a baseline.**
+| **P-1** | **`L3` is the conformance boundary.** Extraction is a binding, below the claim |
+| **P-2** | **The binding REPORTS; the contract INTERPRETS.** No cohesion decision below `L3` |
+| **P-3** | **Meaning precedes representation.** Every `L3` element exists because a decided rule ranges over it |
+| **P-4** | **Distinctions the contract insists on are distinct TYPES**, not conventions |
+| **P-5** | **Declared expectation is the authority; agreement is a diagnostic** |
+| **P-6** | **PHP is the first binding, not the model** *(AMD1, verbatim above)* |
+| **P-7** | **Consume before creating** — the fixtures, pinned decisions and `_future_layout` are extended, not replaced (`ES-005.4`) |
 
 ---
 
-# 2 · Architectural principles
+# 4 · `L3` fact model 🟡 PROPOSED — the conformance boundary
 
-| | Principle | Source |
+> ⛔ **Not a generic DTO.** It carries ubiquitous language, ownership and invariants; an attribute that no decided rule ranges over does not belong.
+
+## 4.1 Ubiquitous language and ownership
+
+| Term | Meaning | Owned by | Consumed by |
+|---|---|---|---|
+| **`AnalysisScope`** | ✅ **one PHP source file** (fixed decision 6) — the extent within which identity must be unique | the binding | `L3` identity |
+| **`DeclaredUnit`** | a type declaration the binding found | the binding | `L4` eligibility |
+| **`UnitKind`** | closed: `Class` · `AnonymousClass` · `Enum` · `Trait` · `Interface` | the **contract** (13.5 rules over it) | `L4` |
+| **`UnitIdentity`** | designation **stable and unique within the `AnalysisScope`** | the binding, per a contract-declared rule | `L4`, evidence |
+| **`DeclaredName`** | the unit's own written name; **absent for `AnonymousClass`** | the binding | `L4` (target relation) |
+| **`MethodDeclaration`** | a method declared in this unit's own body | the binding | `L4` node set |
+| **`MethodIdentity`** | the method name in the **language's full identifier charset** | the binding | `L4` |
+| **`StateAccess`** | a touch of the analysed instance's state: `PropertyName` + `AccessMode` | the binding | `L4` state edges |
+| **`BehaviourReference`** | one site where a method refers to a behaviour — six attributes, §4.2 | the binding | `L4` behaviour edges |
+
+## 4.2 `BehaviourReference` — six mandatory attributes
+
+| Attribute | Closed values | Decided rule that needs it |
 |---|---|---|
-| **P-1** | **The neutrality boundary is `L3 → L5`.** Extraction is a *language binding*, below the claim | ✅ 13.1 |
-| **P-2** | **Meaning precedes representation.** Every `L3` element exists because a decided rule ranges over it | ✅ selection §2 |
-| **P-3** | **The binding REPORTS; the contract INTERPRETS.** The binding never decides an edge | ✅ 13.3 |
-| **P-4** | **Distinctions the contract insists on are distinct TYPES**, not conventions | ✅ 13.3 bucket ruling |
-| **P-5** | **Evidence is declared, not derived from agreement** | ✅ 13.5 nullsafe · 13.7 |
-| **P-6** | **Shared extraction is not shared semantics.** The shared artifact carries no contract content | ✅ 13.1 · `G-KOS-CONTRACT-EXP-AMD1` |
-| **P-7** | **Consume before creating** — the existing fixtures, pinned decisions and `_future_layout` are extended, not replaced | `ES-005.4` |
+| `TargetMethodName` | identifier | every edge rule |
+| ⭐ `QualifierKind` | `SelfKeyword` · `StaticKeyword` · `ParentKeyword` · `UnqualifiedName` · `QualifiedName` · `FullyQualifiedName` · `RelativeName` · `AliasedName` · `InstanceReceiver` · `ComputedTarget` | **13.3 — the rule is a table over this** ⚠️ see `OPEN-1` |
+| ⭐ `TargetUnitRelation` | `DenotesAnalysedUnit` · `DenotesOtherUnit` · `Undetermined` | 13.3 — *include* means *include where it denotes this unit* |
+| `ReferenceMode` | `Invocation` · `CallableReference` | `first_class_callables` · 13.5 |
+| `AccessMode` | `Direct` · `Nullsafe` | **13.5 — nullsafe is an edge** |
+| ⭐ `Determinability` | `Determinable` · `NotDeterminable` | **13.3's bucket ruling** |
 
----
+> ### ⭐ Why `QualifierKind` and `TargetUnitRelation` are SEPARATE facts
+> **`aliased` is excluded BY KIND even when it denotes the analysed unit; `fully-qualified` is included BY RELATION only when it does.** A single fused *"is own class?"* boolean cannot express both — **and fusing them is exactly how the reference lost the distinction** (`Name::toString()` erases the kind before any rule runs). **Two axes in the ruling ⇒ two facts.**
 
-# 3 · Context and boundary model
+## 4.3 🟡 `UnitIdentity` — now selectable, because the scope has an extent
+
+**AMD2 unblocked this by deciding the scope.** Requirement (13.5): stable and unique **within one PHP file**.
+
+> ### 🟡 **PROPOSED rule — the declaration path:** the chain of enclosing declared units, each anonymous declaration numbered by its **1-based ordinal among the anonymous declarations of the same enclosing unit, in source order**.
 
 ```
-            ┌──────────────────────────────────────────────────────────┐
-  PHP src → │  L0/L1  BYTES → TOKENS      grammar-exact (B3)           │  binding
-            │  L2     DECLARATIONS & BODIES                            │  (below the
-            └──────────────────────────────────────────────────────────┘   boundary)
-                                    │  emits
-            ══════════════════════ L3 FACT MODEL ══════════════════════   ◄── CONFORMANCE BOUNDARY
-                                    │  consumed by
-            ┌──────────────────────────────────────────────────────────┐
-            │  L4  COHESION SEMANTICS   unit eligibility · edge rules   │  the contract
-            │  L5  METRIC               connected components → LCOM4    │  (language-neutral)
-            └──────────────────────────────────────────────────────────┘
-                                    │
-                              CONFORMANCE EVIDENCE   node set + edge set + metric
+Factory                      a named unit
+Factory/anon#1               the first anonymous class declared inside it
+Factory/anon#1/anon#1        nested (measured case: probe N5)
 ```
 
-**What crosses the boundary upward:** only closed-vocabulary facts. **What never crosses upward:** tokens, offsets, spellings, PHP type names. **What never crosses downward:** cohesion verdicts, exclusions, the notion of an "edge".
+**Why this and not a declaration-site coordinate (line/column):** ✅ deterministic · ✅ unique within the file · ✅ **invariant under reformatting**, which a coordinate is not — and reformatting is the far more common edit. ⚠️ **Cost, stated: it is coupled to source ORDER — reordering two sibling anonymous declarations renames both.** ⬜ **Ratification is the PO/ARB's (`OQ-1`), because the choice decides which edit invalidates declared evidence — a contract-visible consequence, not a coding preference.**
 
----
-
-# 4 · `L3` fact model 🟡 PROPOSED
-
-> ⚠️ **This is a domain model with invariants and a ubiquitous language — deliberately NOT a technical DTO.** Its terms are the vocabulary in which the contract is written; if a term here is not needed by a decided rule, it does not belong.
-
-## 4.1 The vocabulary
-
-| Term | Meaning (ubiquitous language) | Owns |
-|---|---|---|
-| **`AnalysisScope`** | the extent within which identity must be unique — **one source unit** (a file), per the pinned *analyzed in isolation* limitation | identity uniqueness |
-| **`DeclaredUnit`** | a declaration the binding found | `UnitKind` · `UnitIdentity` · `DeclaredName` |
-| **`UnitKind`** | closed: `Class` · `AnonymousClass` · `Enum` · `Trait` · `Interface` | what 13.5 rules eligibility over |
-| **`UnitIdentity`** | a designation **stable and unique within the `AnalysisScope`** | 13.5's anonymous-class requirement |
-| **`MethodDeclaration`** | a method declared in a unit's own body | `MethodIdentity` · `hasBody` |
-| **`MethodIdentity`** | the method's name **in the source language's full identifier charset** | discharges `NEW-9` |
-| **`StateAccess`** | a touch of the analysed instance's state | `PropertyName` · `AccessMode` |
-| **`BehaviourReference`** | one site where a unit's method refers to a behaviour | the six attributes below |
-
-## 4.2 `BehaviourReference` — six attributes, all mandatory
-
-| Attribute | Closed values | Which decided rule needs it |
-|---|---|---|
-| **`TargetMethodName`** | identifier | every edge rule |
-| ⭐ **`QualifierKind`** | `SelfKeyword` · `StaticKeyword` · `ParentKeyword` · `UnqualifiedName` · `QualifiedName` · `FullyQualifiedName` · `RelativeName` · `AliasedName` · `InstanceReceiver` · `ComputedTarget` | **13.3 — the rule is a table over this** |
-| ⭐ **`TargetUnitRelation`** | `DenotesAnalysedUnit` · `DenotesOtherUnit` · `Undetermined` | 13.3 — *include* means *include when it denotes this unit* |
-| **`ReferenceMode`** | `Invocation` · `CallableReference` | `first_class_callables` · 13.5 `G-4` |
-| **`AccessMode`** | `Direct` · `Nullsafe` | **13.5 — nullsafe is an edge** |
-| ⭐ **`Determinability`** | `Determinable` · `NotDeterminable` | **13.3's bucket ruling** |
-
-> ### ⭐ Why `QualifierKind` and `TargetUnitRelation` must be SEPARATE
-> **`aliased` is excluded by KIND even when it denotes the analysed unit.** **`fully-qualified` is included by RELATION only when it does.** **A single fused "is own class?" boolean cannot express both**, and fusing them is precisely how the reference lost the distinction (`Name::toString()`). *Two facts, because the ruling has two axes.*
-
-## 4.3 Invariants — the part that makes this a model rather than a DTO
+## 4.4 Invariants
 
 | | Invariant | Enforced by |
 |---|---|---|
-| **`INV-L3-1`** | **Closed vocabulary.** Every decisional attribute is a closed enum or an identity. **No free text is a decision input** | the `Fact`/`Provenance` split (§4.4) |
-| **`INV-L3-2`** | **Identity stability.** Identical source ⇒ identical `UnitIdentity`; distinct declarations in one scope ⇒ distinct identities | §4.5 |
-| **`INV-L3-3`** | **Kind completeness.** **Every declaration is emitted, including interfaces.** Eligibility is never applied here | §5.4 |
-| **`INV-L3-4`** | **Determinability separation.** `NotDeterminable` is used **only** where the target cannot be determined from the scope. A determined target that is another unit is `Determinable` + `DenotesOtherUnit` | distinct enum values |
-| **`INV-L3-5`** | **Totality.** A `BehaviourReference` carries all six attributes. There is no "unknown" and no default | constructor totality |
-| **`INV-L3-6`** | **No verdicts.** `L3` contains no edge, no exclusion, no metric | §14 `INV-2` |
-| **`INV-L3-7`** | **Provenance is non-decisional** | §4.4 |
-
-## 4.4 🟡 The `Fact` / `Provenance` split — how "no fallback to PHP syntax" becomes structural
-
-**Two records, joined by an opaque id:**
-
-```
-Fact        { factId, …closed-vocabulary attributes only… }        → handed to L4
-Provenance  { factId, sourceOffset, rawText, tokenIndex, … }       → NEVER handed to L4
-```
-
-**`L4`'s input type is a collection of `Fact`.** ⇒ **a cohesion rule cannot read a spelling because the value is not reachable from its input.** Provenance still exists — for diagnostics, evidence review and defect reports — but it is **structurally out of the decision path**, not merely discouraged.
-
-> **This is the design's answer to the standing constraint that the cohesion layer must not silently fall back to PHP syntax.** ✅ **Testable: §12 layer C runs `L4` against synthetic facts with no provenance at all. If any rule needs it, that layer fails to compile or to run.**
-
-## 4.5 🟡 `UnitIdentity` for anonymous classes — the hardest requirement
-
-**Requirement (✅ 13.5): stable and unique within the analysed scope.** *Measured problem: PHP emits `(anonymous)` and it collides — probe `N5` produced two rows with the same designation.*
-
-**Proposed: a declaration path** — the chain of enclosing declared units plus a 1-based ordinal among anonymous declarations of the same enclosing unit, in source order:
-
-```
-Factory                 a named unit
-Factory / anon#1        the first anonymous class declared inside it
-Factory / anon#1 / anon#1   nested (probe N5)
-```
-
-**Properties:** deterministic · unique within scope (`INV-L3-2`) · independent of formatting and of byte offsets · human-readable in evidence files. **Cost, stated: it is coupled to source ORDER, so reordering two anonymous declarations renames both.** ⬜ **Alternative — a declaration-site coordinate (line/column) — is stable under reordering and unstable under formatting. `OQ-1` returns the choice.**
+| `INV-L3-1` | **Closed vocabulary.** Every decisional attribute is a closed enum or an identity; **no free text is a decision input** | §5 split |
+| `INV-L3-2` | **Identity stability.** Same source ⇒ same identity; distinct declarations in a scope ⇒ distinct identities | §4.3 |
+| `INV-L3-3` | **Kind completeness.** Every declaration is emitted, **including interfaces**; eligibility is never applied here | §6.4 |
+| `INV-L3-4` | **Determinability separation.** `NotDeterminable` **only** where the target cannot be determined within the scope | distinct enum values |
+| `INV-L3-5` | **Totality.** All six `BehaviourReference` attributes are always present; no default, no "unknown" | constructor totality |
+| `INV-L3-6` | **No verdicts.** `L3` contains no edge, no exclusion, no metric | §17 `INV-2` |
+| `INV-L3-7` | **Provenance is non-decisional** | §5 |
 
 ---
 
-# 5 · `B3` PHP extraction architecture 🟡 PROPOSED
+# 5 · Provenance boundary 🟡 PROPOSED — **structural, not documentary**
 
-> ⛔ **The extractor produces `L3` facts and contains NO `L4`/`L5` decision.** It never asks whether something is an edge.
-
-## 5.1 The pipeline
+**AMD3 makes this load-bearing: `L4`/`L5` must not be able to access raw source, spelling, parser objects, AST nodes or tokens.**
 
 ```
-PHP source
-   │  T1  TOKENIZE      the language's own lexer — grammar-exact by construction
-   ▼
-Token stream  (kind, text, position)      ← the ONLY shared artifact
-   │  T2  DECLARE       recognize units and their bodies
-   │  T3  MEMBER        recognize methods declared in each unit's own body
-   │  T4  OBSERVE       recognize state accesses and behaviour references in each body
-   │  T5  CLASSIFY      assign QualifierKind, TargetUnitRelation, Determinability
-   ▼
-L3 facts + provenance
+Fact        { factId, …closed-vocabulary attributes only… }          ──►  handed to L4
+Provenance  { factId, byteOffset, line, rawLexeme, tokenIndex, … }   ──►  NEVER handed to L4
 ```
 
-## 5.2 The construct table — every measured defect answered at `T1`
+**Realization — three enforcing properties, all checkable:**
 
-*All rows `Observed`: the token stream was probed against each construct and resolved every one; in all nine probes the count of genuine declaration keywords was exactly 1.*
+1. **Type-level.** `L4`'s entry point accepts a collection of `Fact`. `Provenance` is a **separate collection reachable only from the evidence/diagnostic path**. There is no navigation from `Fact` to `Provenance` — the join is one-way, by opaque `factId`, resolved *outside* `L4`.
+2. **Dependency-level.** The `L4`/`L5` module declares **no dependency** on the binding module, on any tokenizer, or on any parser package. **A cycle or an added import is a build-visible violation**, not a review finding.
+3. **Test-level.** **§12 layer C executes `L4` against synthetic facts constructed in-test, with no PHP source, no tokens and no provenance in the process at all.** If any rule needs them, that layer cannot be written.
+
+> ⛔ **`INV-4`: provenance exists for diagnostics, traceability and evidence review — and is structurally outside the decision path.**
+
+---
+
+# 6 · `B3` PHP language binding 🟡 PROPOSED
+
+> ⛔ **Extraction only. The binding never asks whether something is an edge, whether a unit is eligible, or what the metric is.**
+
+## 6.1 Pipeline
+
+```
+one PHP source file  (AnalysisScope — fixed decision 6)
+  │ T1 TOKENIZE   the language's own lexer — grammar-exact by construction
+  │ T2 DECLARE    recognize DeclaredUnits and their body extents
+  │ T3 MEMBER     recognize methods declared in each unit's own body
+  │ T4 OBSERVE    recognize StateAccess and BehaviourReference sites in each body
+  │ T5 CLASSIFY   assign QualifierKind, TargetUnitRelation, ReferenceMode,
+  │               AccessMode, Determinability; assign UnitIdentity
+  ▼
+L3 Facts  +  Provenance (separate)
+```
+
+## 6.2 Construct table — every measured defect answered at `T1`
+
+*All rows `Observed` against the token stream; in every probe the count of genuine declaration keywords was exactly 1.*
 
 | Construct | Token-level handling | Closes |
 |---|---|---|
-| **Attributes** `#[Attr]` | `T_ATTRIBUTE` — **a distinct kind, never a comment** | `K3` · `NEW-2` · `NEW-3` |
-| **Heredoc / nowdoc** | delimited by `T_START_HEREDOC` … `T_END_HEREDOC` | `K1` · `K2` · `NEW-4` |
-| **Interpolation** | `T_CURLY_OPEN` + `T_VARIABLE` + `T_OBJECT_OPERATOR` (complex) and `T_VARIABLE`+`T_OBJECT_OPERATOR`+`T_STRING` (simple) — **interpolated code is real code and yields real facts** | `NEW-6` |
-| **PHP-mode boundaries** | `T_INLINE_HTML`, `T_HALT_COMPILER` — non-code regions are not scanned | `NEW-7` |
-| **Identifiers** | `T_STRING` carries the language's full identifier charset | `NEW-9` |
-| **`$class` as a variable** | `T_VARIABLE`, never a declaration keyword | `NEW-8` |
-| **`new class implements X`** | `T_NEW` precedes the class keyword ⇒ anonymous declaration, **no name captured from a keyword** | `NEW-1` |
-| **Name kinds** | `T_STRING` · `T_NAME_QUALIFIED` · `T_NAME_FULLY_QUALIFIED` · `T_NAME_RELATIVE` — **four distinct token kinds** | ⭐ `NEW-5` / `NEW-5b` |
+| **Attributes** `#[Attr]` | `T_ATTRIBUTE` — a distinct kind, **never a comment** | `K3` `NEW-2` `NEW-3` |
+| **Heredoc / nowdoc** | `T_START_HEREDOC` … `T_END_HEREDOC` delimit; body is not code | `K1` `K2` `NEW-4` |
+| **Interpolation** | complex `T_CURLY_OPEN`+`T_VARIABLE`+`T_OBJECT_OPERATOR`; simple `T_VARIABLE`+`T_OBJECT_OPERATOR`+`T_STRING` — **interpolated code yields real facts** | `NEW-6` |
+| **PHP-mode boundaries** | `T_INLINE_HTML`, `T_HALT_COMPILER` — non-code regions are never scanned | `NEW-7` |
+| **Identifiers** | `T_STRING` carries the full identifier charset | `NEW-9` |
+| **`$class` variable** | `T_VARIABLE`, never a declaration keyword | `NEW-8` |
+| **Anonymous class** | `T_NEW` precedes the class keyword ⇒ anonymous declaration; **no name is captured from a keyword** | `NEW-1` |
+| **`enum` / `trait` / `interface`** | `T_ENUM` · `T_TRAIT` · `T_INTERFACE` — **all emitted with their `UnitKind`** | 13.5 |
+| **Nullsafe** | `T_NULLSAFE_OBJECT_OPERATOR` ⇒ `AccessMode::Nullsafe` | 13.5 |
+| **Five name kinds** | `T_STRING` · `T_NAME_QUALIFIED` · `T_NAME_FULLY_QUALIFIED` · `T_NAME_RELATIVE` · alias map from `use … as` | ⭐ 13.3 |
 
-> ### ⭐ **The language's lexer already distinguishes the four name kinds that 13.3 rules over.** `QualifierKind` is therefore *read*, not *inferred* — which is the whole reason `NEW-5` is closable at all.
+> ### ⭐ **The language's own lexer already distinguishes the name kinds that 13.3 rules over.** `QualifierKind` is **read, not inferred** — which is why `NEW-5` is closable at all.
 
-## 5.3 🟡 `T5` classification — the binding's one hard task
+## 6.3 `T5` classification within one file
 
-**`QualifierKind`** is read from the token kind (plus `self`/`static`/`parent` keyword recognition and the `use … as` alias map).
-**`TargetUnitRelation`** requires **file-local** name resolution only — the `namespace` declaration and the file's `use` map:
+**`TargetUnitRelation` requires only file-local information** — the `namespace` declaration and the file's `use` map. ✅ **Consistent with fixed decision 6 and with the pinned *analyzed in isolation* limitation: no cross-file lookup, no autoloading, no repository-wide resolution.**
 
-| Spelling in `namespace App; class Fq` | `QualifierKind` | `TargetUnitRelation` |
+| Spelling inside `namespace App; class Fq` | `QualifierKind` | `TargetUnitRelation` |
 |---|---|---|
 | `Fq::b()` | `UnqualifiedName` | `DenotesAnalysedUnit` |
 | `\App\Fq::b()` | `FullyQualifiedName` | `DenotesAnalysedUnit` |
@@ -197,36 +202,27 @@ L3 facts + provenance
 | `Sub\Fq::b()` | `QualifiedName` | `DenotesOtherUnit` |
 | `Ali::b()` after `use App\Fq as Ali` | `AliasedName` | `DenotesAnalysedUnit` |
 | `$c::b()` | `ComputedTarget` | `Undetermined` (+ `NotDeterminable`) |
+| `$this->b()` / `$this?->b()` | `InstanceReceiver` | `DenotesAnalysedUnit` |
 
-⚠️ **Awkwardness, stated rather than hidden:** for `AliasedName` the binding must resolve the alias far enough to know it *is* an alias, and the contract then discards the resolution (`EXCLUDE` — a stated LIMITATION). **The work is done and thrown away.** That is a real cost of the decided rule and it is recorded, not designed around.
+⚠️ **Recorded awkwardness:** for `AliasedName` the binding must build the `use` map to know a spelling *is* an alias — and the contract then **discards** the resolution (`EXCLUDE`, a stated LIMITATION). **Work performed to reach a rule that ignores it.** A cost of the decided rule, not of this design.
 
-## 5.4 🟡 The shared-token boundary — and its one strict rule
+## 6.4 Emission rule
 
-**The token stream is the only artifact both implementations share.** Transport is a token dump emitted by the language's own lexer.
-
-> ⛔ **`INV-5`: the token dump carries `(kind, text, position)` and NOTHING ELSE.** No declarations, no resolved names, no facts, no eligibility, no verdicts. **A dump that contained a resolved name would move `T5` below the shared boundary and make the two implementations agree by construction — which is exactly the circularity `13.1` was drawn to prevent.**
-
-⬜ **`OQ-4` returns the transport and its operational consequence** — a PHP process becomes a runtime dependency of the Python implementation. **Legitimate under `13.1` (below the boundary), and a real CI/packaging cost.**
+> **`INV-8`: the binding emits EVERY declaration, including interfaces, with its `UnitKind`. Eligibility is `L4`'s.**
+> ⛔ **Otherwise a binding that drops interfaces is indistinguishable from correct exclusion** — `O-2`'s lesson applied to unit eligibility. **Seen-and-excluded must be distinguishable from unseen in the evidence.**
 
 ---
 
-# 6 · `L4` cohesion architecture 🟡 PROPOSED · language-neutral
+# 7 · `L4` cohesion semantics 🟡 PROPOSED — language-neutral
 
-## 6.1 Unit eligibility (✅ 13.5)
+## 7.1 Unit eligibility ✅ 13.5
 
 ```
-UnitKind          eligible as an analysed unit?
-────────────────  ───────────────────────────────
-Class             YES
-AnonymousClass    YES   (requires UnitIdentity — 4.5)
-Enum              YES
-Trait             YES
-Interface         NO    ← seen and excluded, never unseen
+Class · AnonymousClass · Enum · Trait   →  ELIGIBLE
+Interface                               →  NOT ELIGIBLE   (seen, recorded, excluded)
 ```
 
-## 6.2 ⭐ The edge rule table — 13.3, executable
-
-**Evaluated in order; the first matching row decides. `verdict = INCLUDE` only where the target is also a method declared in this unit (§6.3).**
+## 7.2 ⭐ Edge rule table — 13.3, executable. First match decides.
 
 | # | `ReferenceMode` | `QualifierKind` | `TargetUnitRelation` | Verdict | `ExclusionReason` |
 |---|---|---|---|---|---|
@@ -235,135 +231,132 @@ Interface         NO    ← seen and excluded, never unseen
 | 3 | *any* | `ParentKeyword` | *any* | **EXCLUDE** | `OutOfFrame` |
 | 4 | `Invocation` | `AliasedName` | *any* | **EXCLUDE** | `AliasedSpelling` ⚠️ **LIMITATION** |
 | 5 | `Invocation` | `SelfKeyword` · `StaticKeyword` | — | **INCLUDE** | — |
-| 6 | `Invocation` | `InstanceReceiver` (`$this->` / `$this?->`) | — | **INCLUDE** | — |
+| 6 | `Invocation` | `InstanceReceiver` | — | **INCLUDE** | — |
 | 7 | `Invocation` | `UnqualifiedName` · `FullyQualifiedName` · `RelativeName` | `DenotesAnalysedUnit` | **INCLUDE** | — |
 | 8 | `Invocation` | `UnqualifiedName` · `FullyQualifiedName` · `RelativeName` | `DenotesOtherUnit` | **EXCLUDE** | `NotTheAnalysedUnit` |
 | 9 | `Invocation` | `QualifiedName` | *any* | **EXCLUDE** | `NotTheAnalysedUnit` |
 
-> ### ⭐ Rows 2, 8 and 9 are the bucket ruling, made structural
-> **Row 9's reason is `NotTheAnalysedUnit` — never `NotDeterminable`.** They are different values of a closed enum, they appear separately in evidence, and **`INV-3` forbids merging them.** *The distinction the contract "insists must never be merged" is now impossible to merge without changing the enum.*
+> ### ⭐ Rows 2, 8, 9 ARE the bucket ruling
+> **Row 9's reason is `NotTheAnalysedUnit`, never `NotDeterminable`.** Distinct values of a closed enum, reported separately in evidence, `INV-3` forbids merging. **The distinction the contract insists must never be merged is now impossible to merge without changing the enum.**
 
-**`AccessMode` is deliberately absent from the table.** ✅ 13.5 rules nullsafe an edge, so `Direct` and `Nullsafe` behave identically **here**. It is carried because **the ruling must be assertable in evidence** (§8.3) — not because it branches.
+**`AccessMode` does not appear in the table.** ✅ 13.5 made nullsafe an edge, so `Direct` and `Nullsafe` behave identically **here**. It is carried because **the ruling must be assertable in evidence** (§9.3) — the only reason, and it is stated so a later reader does not delete it as dead.
 
-## 6.3 Node and edge construction
+**`Determinability`** is carried as an independent fact and cross-checked: **row 2 is the only path to `NotDeterminable`**, and any `Determinable` reference reaching that row is an internal contradiction the evidence must surface.
 
-**Nodes** = the eligible unit's `MethodDeclaration`s, excluding `__construct`/`__destruct` (pinned). **Bodyless declarations are nodes** (existing behaviour, both sides agree).
-**Edges** — two kinds, kept distinguishable in evidence:
-* **state edge**: two nodes share a `StateAccess.PropertyName`;
-* **behaviour edge**: an `INCLUDE`d `BehaviourReference` whose `TargetMethodName` is a node of this unit. *(Where it is not, the reference is retained in evidence with `TargetNotDeclaredHere` — visible, not silently dropped.)*
+## 7.3 Node and edge construction
 
----
-
-# 7 · `L5` metric architecture 🟡 PROPOSED
-
-**Unchanged in substance — ⛔ no new metric is invented.** LCOM4 = connected components over the node set under the union of state and behaviour edges (Hitz & Montazeri, per `_variant`). Union-find; `0` nodes ⇒ value `0`. Interpretation strings unchanged.
-
-**`L5` consumes only `(node set, edge set)`.** It sees no qualifier, no unit kind, no source. ⇒ **it is trivially language-neutral and is the least interesting layer — which is the point: the difficulty was never in the metric.**
+**Nodes** = the eligible unit's `MethodDeclaration`s minus `__construct`/`__destruct` (pinned). **Bodyless declarations are nodes** (existing agreed behaviour).
+**Edges**, kept distinguishable in evidence:
+* **state edge** — two nodes share a `StateAccess.PropertyName` *(both `AccessMode`s count — 13.5)*;
+* **behaviour edge** — an `INCLUDE`d reference whose `TargetMethodName` is a node of this unit. Where it is not, the reference is retained with `TargetNotDeclaredHere` — **visible, never silently dropped.**
 
 ---
 
-# 8 · Conformance evidence architecture 🟡 PROPOSED (✅ 13.7)
+# 8 · `L5` LCOM4 🟡 PROPOSED — ⛔ no new metric
 
-## 8.1 The pipeline
+**Cohesion graph** = (node set, edge set) from `L4`. **LCOM4** = number of connected components under the union of state and behaviour edges (Hitz & Montazeri, per `_variant`). Union-find. **0 nodes ⇒ 0.** Interpretation strings unchanged.
+
+**`L5` receives only `(nodes, edges)`** — no unit kind, no qualifier, no source, no provenance. ⇒ **trivially language-neutral, and deliberately the least interesting layer: the difficulty was never in the metric.**
+
+---
+
+# 9 · Conformance evidence 🟡 PROPOSED (✅ 13.7 · AMD2's three levels)
+
+## 9.1 The normative model
 
 ```
 source ─► binding ─► L3 facts ─► L4 ─► node set + edge set ─► L5 ─► metric
-                        │                    │                        │
-                        ▼                    ▼                        ▼
-                  UNIT SET             EDGE SET               FINAL METRIC
-                        └──────── compared, element-wise, against ────────┘
-                                    DECLARED EXPECTED EVIDENCE
+              │                            │                          │
+        (1) L3 FACT              (2) L4 SEMANTIC              (3) L5 METRIC
+        conformance                conformance                  conformance
+              └──────── element-wise vs DECLARED EXPECTED EVIDENCE ────────┘
 ```
 
-## 8.2 Three assertion layers, per fixture
+## 9.2 What is declared per fixture
 
-1. **Unit set** — every declaration with `UnitKind`, `UnitIdentity`, and eligibility. **Interfaces appear, marked ineligible.**
-2. **Edge set** — per unit: the node set, and each edge with its kind; each excluded reference with its `ExclusionReason`.
-3. **Final metric** — per eligible unit.
+**Level 1 — expected facts:** every `DeclaredUnit` (`UnitKind`, `UnitIdentity`, `DeclaredName`), its methods, and each unit's `StateAccess` and `BehaviourReference` facts with all six attributes. **Interfaces appear here**, with their kind.
+**Level 2 — expected graph:** per eligible unit, the node set and the edge set with edge kinds; every excluded reference with its `ExclusionReason`; the eligibility verdict per unit.
+**Level 3 — expected metric:** the LCOM4 value per eligible unit.
 
-## 8.3 ⭐ How compensating errors become detectable
+## 9.3 How declared evidence exposes each failure mode
 
-**The measured case (`O-2`, probe `C3`): PHP node set `{a, über, c}`, Python `{a, c}` — a lost node AND a lost edge, cancelling to the same metric.** Under element-wise **node-set** comparison the loss fails at layer 2 **before** the metric is consulted. **Cancellation cannot survive a set comparison; it only survives a scalar one.**
+| Failure mode | Measured instance | Exposed at |
+|---|---|---|
+| **Fabricated observation** | `NEW-7` ghost classes from inline HTML; `NEW-1`/`NEW-8` units named after keywords | **Level 1** — an extra `DeclaredUnit` |
+| **Missing observation** | `NEW-3` class vanishes; enums/traits missed entirely | **Level 1** — a declared unit absent |
+| **Wrong identity** | `(anonymous)` collides (probe `N5`) | **Level 1** — identity mismatch |
+| **Wrong relationship** | `NEW-6` lost interpolation edges; `K1` fabricated heredoc edge | **Level 2** — edge-set mismatch |
+| ⭐ **Compensating errors** | `O-2` probe `C3`: node set `{a,c}` vs `{a,über,c}` — a lost node **and** a lost edge cancelling to the same metric | **Level 2, before the metric is consulted.** **Cancellation survives a scalar comparison; it cannot survive a set comparison** |
+| ⭐ **Shared blindness** | `G-2` nullsafe — both implementations miss `?->` | **Level 1 + 2 against the DECLARATION.** ⛔ **No comparison between implementations can ever surface this** |
 
-**And for nullsafe (✅ 13.5's explicit requirement):** both implementations currently miss `?->`, so **differential comparison can never surface it.** The fixture therefore **declares** the expected edge, and each implementation is compared **to the declaration** — never to the other.
+## 9.4 The authority statement
 
-> ## ⛔ `INV-7`: **the declared expected evidence is the oracle. Implementation agreement is a diagnostic and is never a conformance result.**
+> ## ⛔ **"Implementation agreement is diagnostic evidence, not the conformance authority."**
+> **The normative authority is the declared contract plus expected evidence.** A differential run may be executed to *localize* a defect; **its result is never a conformance verdict.** ✅ **AMD1 makes this structural rather than stylistic: with one binding there is nothing to agree with.**
+
+**Nullsafe specifically (13.5):** the expected evidence **declares** the nullsafe edge; the implementation is asserted against the declaration. ⛔ **Never against another implementation.**
 
 ---
 
-# 9 · Specification / binding / fixture / implementation structure 🟡 PROPOSED
+# 10 · Specification / binding / fixtures / implementation structure 🟡 PROPOSED
 
-**Consumes the layout `expected.json` recorded for itself on 2026-08-04** — *"specification/ + fixtures/ + implementations/{php,python,…} — the specification becomes the source of truth"*. ⛔ **Described only; nothing is moved by this document.**
+**Consumes `expected.json`'s own `_future_layout` (recorded 2026-08-04).** ⛔ **Described only — nothing is moved, created or modified by this document.**
 
 ```
 scripts/observations/lcom4/
-  specification/        ← language-NEUTRAL, the contract
-      fact-model.md         L3 vocabulary + INV-L3-1..7
-      cohesion-rules.md     unit eligibility + the §6.2 table + node/edge construction
-      metric.md             LCOM4 definition and interpretations
-      conformance.md        the three assertion layers; the oracle rule (INV-7)
-  bindings/
-      php.md                ← language-SPECIFIC: the §5.2 construct table,
-                              the §5.3 classification rules, the token-dump schema,
-                              and the C-as-completion PRECONDITIONS a binding must meet
-  fixtures/                 ← the ten existing files, plus additions
-  expected/
-      <fixture>.evidence.json   ← unit set + edge set + metric  (supersedes bare integers)
-  implementations/
-      php/  python/
+  A · specification/          LANGUAGE-NEUTRAL — the contract
+        fact-model.md             L3 vocabulary, ownership, INV-L3-1..7
+        cohesion-rules.md         eligibility, the §7.2 table, node/edge construction
+        metric.md                 LCOM4 definition and interpretations
+        conformance.md            the three levels; the authority rule (INV-7)
+  B · bindings/php.md         PHP-SPECIFIC — the §6.2 construct table, §6.3 classification,
+                              the accepted LANGUAGE LEVEL, and the C-as-completion preconditions
+  C · fixtures/               the ten existing files, plus additions
+      expected/<fixture>.evidence.json    levels 1+2+3
+  D · implementations/php/    the PHP binding + the L4/L5 engine, in separate modules (§5)
 ```
 
-⚠️ **`expected.json`'s current form — ten fixture→integer rows — becomes one of three assertion layers, not the whole expectation.** ⛔ **Migrating it is a separate governed act (§13, `OQ-3`).**
+⚠️ **`expected.json`'s ten fixture→integer rows become ONE of three assertion levels, not the whole expectation.** ✅ **Migrating them is already routed: `G-KOS-CONTRACT-ARTIFACT-UPDATE` (AUTHORIZED, UNEXERCISED, no assignment created).** ⛔ **This design does not exercise it.**
 
 ---
 
-# 10 · Existing collector migration 🟡 PROPOSED · ⛔ neither collector is modified here
+# 11 · Existing collector migration 🟡 PROPOSED · ⛔ neither collector modified
 
-## 10.1 `Lcom4Collector.php` (180 lines)
+## 11.1 `Lcom4Collector.php` — becomes the PHP binding + engine
 
 | Current responsibility | Disposition |
 |---|---|
-| `nikic/php-parser` AST | 🟡 **retained as an alternative binding front-end** — an AST is a legitimate `T1`–`T4`; **it must additionally satisfy `T5`** |
-| `findInstanceOf(Stmt\Class_)` | 🔴 **REPLACED by `ClassLike`** — measured: `Class_` finds 2 of 5 declarations; `Enum_`, `Trait_`, `Interface_` are separate node types |
-| `PropertyFetch` / `MethodCall` scanning | 🔴 **EXTENDED** — measured: `$this?->b()` yields `MethodCall` = **0**; `NullsafeMethodCall` / `NullsafePropertyFetch` must be handled |
-| `namesThisClass()` (`:113–125`) | 🔴 **OBSOLETE.** It fuses the two axes and, via `toString()`, erases the kind. Replaced by `T5` emitting `QualifierKind` + `TargetUnitRelation` |
-| `'(anonymous)'` literal (`:96`) | 🔴 **OBSOLETE** — collides within one file; replaced by `UnitIdentity` |
+| `nikic/php-parser` AST | 🟡 **retained as a legitimate `T1`–`T4` front end** — an AST satisfies grammar-exactness; **it must additionally satisfy `T5`** |
+| `findInstanceOf(Stmt\Class_)` | 🔴 **REPLACED by `ClassLike`** — measured: finds **2 of 5**; `Enum_`/`Trait_`/`Interface_` are separate types |
+| `PropertyFetch` / `MethodCall` scanning | 🔴 **EXTENDED** — measured: `MethodCall` = **0** for `$this?->b()`; `NullsafeMethodCall`/`NullsafePropertyFetch` required |
+| `namesThisClass()` `:113–125` | 🔴 **OBSOLETE** — fuses the two axes and erases the kind via `toString()`. Replaced by `T5` emitting `QualifierKind` + `TargetUnitRelation` |
+| `'(anonymous)'` literal `:96` | 🔴 **OBSOLETE** — collides; replaced by `UnitIdentity` (§4.3) |
 | `isFirstClassCallable()` | ✅ **MOVES to `T5`** as `ReferenceMode` |
-| `connectedComponents()` (`:142–178`) | ✅ **MOVES UP to `L5` unchanged** — already pure over `(nodes, edges)` |
-| constructor exclusion, interpretation strings | ✅ **MOVE UP to `L4`/`L5`** |
+| `connectedComponents()` `:142–178` | ✅ **MOVES UP to `L5` unchanged** — already pure over `(nodes, edges)` |
+| constructor exclusion · interpretation strings | ✅ **MOVE UP** to `L4` / `L5` |
 
-## 10.2 `lcom4_collector.py` (279 lines)
+## 11.2 `lcom4_collector.py` — ⛔ out of current implementation scope (AMD1)
+
+**AMD1: out of current scope is NOT deletion; any disposition is a separate act.** Its analysis is recorded for the eventual disposition, not acted on.
 
 | Current responsibility | Disposition |
 |---|---|
-| `blank_noise` (`:59–99`) | 🔴 **OBSOLETE** — a hand-written lexer; superseded by `T1` |
-| `CLASS_RE` / `METHOD_RE` / `find_methods` depth arithmetic | 🔴 **OBSOLETE** — superseded by `T2`/`T3` over tokens |
-| `PROP_OR_CALL_RE` / `STATIC_CALL_RE` (`:155–157`) | 🔴 **OBSOLETE** — superseded by `T4`/`T5` |
-| `OUT_OF_FRAME` / `SELF_REFERENTIAL` sets | ✅ **MOVE UP to `L4`** as rows 3 and 5 |
-| `connected_components` (`:201–231`) | ✅ **MOVES UP to `L5` unchanged** |
-| `interpretation()` | ✅ **MOVES UP to `L5`** |
+| `blank_noise` `:59–99` · `CLASS_RE`/`METHOD_RE` · `find_methods` depth arithmetic · `PROP_OR_CALL_RE`/`STATIC_CALL_RE` | 🔴 **superseded in principle by `T1`–`T5`** — a hand-written lexer is what B3 replaces |
+| `OUT_OF_FRAME` / `SELF_REFERENTIAL` sets | ✅ their **semantics** survive as rows 3 and 5 of §7.2 |
+| `connected_components` · `interpretation()` | ✅ their **semantics** survive at `L5` |
 
-> ⭐ **Both collectors keep their metric layer and lose their parsing layer.** **The Python file's genuinely independent contribution — the union-find and the exclusion semantics — survives; the scanner does not.** ✅ **That is the experiment's finding realized as structure: the cohesion model transferred, the language substrate did not.**
+> ⭐ **Both collectors keep their metric layer and lose their parsing layer.** **The experiment's finding realized as structure: the cohesion model transferred; the language substrate did not.**
 
----
+## 11.3 🟡 Retirement criteria — **specifying is design; retiring is a separate Governance act**
 
-# 11 · Consequences for BOTH implementations (`Observed`)
+**All five, for the old calculation path:**
+1. §12 layers A–E green for the PHP implementation **against declared expected evidence**;
+2. declared evidence covers **all nine decided rules**, nullsafe included;
+3. every dual-run divergence **explained and attributed to a decided rule** — not merely reconciled;
+4. the artifact-update step (`G-KOS-CONTRACT-ARTIFACT-UPDATE`) **exercised and accepted**;
+5. **independent verification** by a process that is neither the implementer nor this designer.
 
-> **The grant required this be stated, not assumed. Decision 1 stands: the PHP reference is not authoritative and is not the baseline.**
-
-| Decided rule | PHP today | Python today | Who changes |
-|---|---|---|---|
-| **fully-qualified INCLUDE** | ⚠️ **incoherent** — includes `\Fq`, refuses `\App\Fq`; correctness is an accident of namespace declaration | ⛔ never includes | **BOTH** |
-| **relative INCLUDE** | ⚠️ includes, but by prefix-erasure rather than by rule | ⛔ never includes | **BOTH** |
-| **qualified unaliased EXCLUDE** (`NotTheAnalysedUnit`) | ✅ excludes — **for the wrong reason**, and the reason is not represented | ✅ excludes, reason not represented | **BOTH** (the *reason* must become a fact) |
-| **aliased EXCLUDE (LIMITATION)** | ✅ excludes | ✅ excludes | neither, but must be *stated* |
-| **nullsafe `?->` = edge** | 🔴 **misses** — `MethodCall` = 0 for `$this?->b()` | 🔴 misses | **BOTH** |
-| **anonymous class = unit, stable identity** | ⚠️ emits `(anonymous)`, **collides** | 🔴 omits or fabricates a keyword name | **BOTH** |
-| **enum = unit** | 🔴 **misses** — `Enum_` is a separate node type | 🔴 misses | **BOTH** |
-| **trait = unit** | 🔴 **misses** — `Trait_` is a separate node type | 🔴 misses | **BOTH** |
-| **interface NOT a unit** | ✅ excluded — but **unseen**, not seen-and-excluded | ✅ unseen | **BOTH** |
-
-> ### 🔴 **Nine decided rules; PHP requires change on eight and Python on nine.** **"Repair Python" was never the shape of this work**, and the design must not be read as a Python migration.
+⛔ **Meeting the criteria does not retire anything.** ⛔ **The Python collector's disposition is not decided here at all.**
 
 ---
 
@@ -371,144 +364,182 @@ scripts/observations/lcom4/
 
 | | Layer | Proves | ⛔ Does NOT prove |
 |---|---|---|---|
-| **A** | **Extraction** — source → token handling per §5.2 | the binding sees the construct correctly | nothing about cohesion |
-| **B** | **Fact model** — source → `L3`, asserted against declared facts | qualifier kind, identity, determinability and access mode are **preserved** | nothing about edges |
-| **C** | **Cohesion semantics** — the §6.2 table over **synthetic facts, with no provenance and no source at all** | the rules are correct **and language-neutral** | nothing about PHP |
+| **A** | **Extraction** — source → token handling per §6.2 | the binding sees each construct correctly | nothing about cohesion |
+| **B** | **Fact model** — source → `L3`, asserted against declared facts | qualifier kind, identity, access mode, determinability are **preserved** | nothing about edges |
+| **C** | ⭐ **Cohesion semantics** — the §7.2 table over **synthetic facts built in-test; no PHP source, no tokens, no provenance in the process** | the rules are correct **and language-neutral** | nothing about PHP |
 | **D** | **Metric** — `(nodes, edges)` → LCOM4 over synthetic graphs | connected-components arithmetic | nothing about extraction |
-| **E** | **Conformance** — fixtures → the three assertion layers vs **declared expected evidence** | **an implementation conforms to the contract** | ⛔ **nothing about the other implementation** |
+| **E** | **Declared conformance** — fixtures → the three levels vs declared evidence | ✅ **the binding conforms to the contract** | ⛔ **that the model is neutral** (§1.1) |
 
-> ### ⭐ **Layer C is the enforcement of the design's central property.** It is executed **without any PHP input**. **If a cohesion rule ever needs a spelling, a token or an offset, layer C cannot be written** — the failure is structural and immediate, not a review finding.
+> ### ⭐ **Layer C is the enforcement of §5.** It runs with **no PHP input at all**. **If any cohesion rule ever needs a spelling, a token, an AST node or an offset, layer C cannot be written** — a structural, immediate failure.
 
-## 12.1 ⛔ The prohibition, stated as a test-architecture rule
-
-> **"Both implementations agree" is NOT a layer. It is a DIAGNOSTIC.**
-> **A differential run may be executed to localize a defect, and its result is never a conformance verdict.** `G-2` (nullsafe) is the constructive proof: both agree while both violate a decided rule. **A pass at layer E for each implementation independently is what conformance means.**
+> ## ⛔ **"PHP and the implementation agree" is NOT a layer and is NOT conformance authority (AMD3).**
+> **`G-2` is the constructive proof: both implementations agree while both violate a decided rule.** A pass at layer E against the **declaration** is what conformance means.
 
 ---
 
-# 13 · Migration strategy 🟡 PROPOSED · ⛔ not authorized, not begun
+# 13 · Migration / rollout 🟡 PROPOSED · ⛔ not authorized, not begun
 
 | Phase | Content | Gate |
 |---|---|---|
-| **M-0** | Write `specification/` and `bindings/php.md` (**C-as-completion**). ⛔ No code | acceptance of this design |
-| **M-1** | Author declared expected evidence for the ten existing fixtures **at the current decided semantics**. ⚠️ **Enums, traits and anonymous classes will produce NEW rows, and `trait-user.php` gains an observation for the trait itself** — this is where the decided rules first touch pinned expectations | **separate governed act** |
-| **M-2** | Build the binding + `L4`/`L5` behind the existing entry point; **dual-run** old and new, recording every divergence as evidence rather than a defect list | separate authorization |
-| **M-3** | Layer E green for **both** implementations independently against declared evidence | independent verification |
-| **M-4** | Remove the old scanner | see criteria |
+| **M-0** | Write `specification/` + `bindings/php.md` (**C-as-completion**). ⛔ no code | acceptance of this design + `OQ-1` |
+| **M-1** | Author declared expected evidence for the ten fixtures at the decided semantics | **`G-KOS-CONTRACT-ARTIFACT-UPDATE`**, its own assignment |
+| **M-2** | Build binding (`T1`–`T5`) + `L3`; then `L4`/`L5` as a **separate module with no dependency on the binding** (§5) | separate implementation authorization |
+| **M-3** | **Dual-run** old and new paths; record every divergence as evidence | — |
+| **M-4** | Layers A–E green against declared evidence | independent verification |
+| **M-5** | Retire the old path | §11.3, and a Governance act |
 
-**Removal criteria for the old scanner — all four:** layer E green for both implementations · every dual-run divergence explained and attributed to a decided rule (**not merely reconciled**) · the declared evidence covers all nine rules of §11 including nullsafe · independent verification by a process that is neither implementer nor this designer.
+**Compatibility period.** During M-3 both paths coexist and **will disagree by design** — the new path implements decided rules the old one predates. ⚠️ **Divergence during dual-run is EXPECTED and must not be read as regression.** **That expectation must be written into M-3's authorization, or the first run will be misread as a defect surge.**
 
-⚠️ **Compatibility note:** during M-2 two collectors coexist and **will disagree by design** — the new one implements decided rules the old one predates. **Divergence during dual-run is expected and must not be read as regression**; that expectation must be written into M-2's authorization or the first run will be misread.
-
----
-
-# 14 · Architectural invariants
-
-| | Invariant | Enforced by |
-|---|---|---|
-| **`INV-1`** | **`L4`/`L5` never inspect source syntax** | §4.4 `Fact`/`Provenance` split · §12 layer C |
-| **`INV-2`** | **The binding never decides cohesion** — no edge, exclusion or eligibility below `L3` | §5 pipeline · §6.1 |
-| **`INV-3`** | **`L3` preserves `QualifierKind`; `NotTheAnalysedUnit` ≠ `NotDeterminable`** | closed enums · §6.2 rows 2/8/9 |
-| **`INV-4`** | **The `L3` vocabulary is closed.** Adding a decisional attribute is a contract change | §4.3 `INV-L3-1` |
-| **`INV-5`** | **Shared token extraction does not become shared contract semantics** — the dump carries `(kind, text, position)` only | §5.4 |
-| **`INV-6`** | **The final metric is never the only conformance evidence** | §8.2 · ✅ 13.7 |
-| **`INV-7`** | **Declared expected evidence is authoritative; agreement is a diagnostic** | §8.3 · §12.1 |
-| **`INV-8`** | **Every declaration is emitted; eligibility is `L4`'s** — *seen-and-excluded* is distinguishable from *unseen* | §4.3 `INV-L3-3` · §8.2 |
+**Regression strategy.** The old path's ten integers remain checkable throughout M-2/M-3 as a **coarse smoke signal only** — ⛔ never as conformance (`INV-7`). Layer E against declared evidence is the regression authority from M-1 onward.
 
 ---
 
-# 15 · C4 / PlantUML views
+# 14 · Operational architecture 🟡 PROPOSED
 
-> ⛔ **Every component below is `PROPOSED`. Only `Lcom4Collector.php`, `lcom4_collector.py`, the fixtures and `expected.json` exist today.**
+## 14.1 Runtime contract
 
-### 15.1 Context
+✅ **Fixed decision 7 removed the cross-process premise: `OQ-4` is disposed and deferred.** ⇒ **In current scope B3 runs IN-PROCESS inside the PHP implementation.** No subprocess, no token dump, no serialized transport. The runtime dependency is simply *the PHP that runs the collector*.
+
+## 14.2 Supported PHP versions and grammar compatibility
+
+**Measured on this estate:** PHP **8.5.8**; `T_ATTRIBUTE`, `T_NAME_QUALIFIED`, `T_NAME_FULLY_QUALIFIED`, `T_NAME_RELATIVE`, `T_ENUM`, `T_READONLY`, `T_NULLSAFE_OBJECT_OPERATOR`, `T_HALT_COMPILER`, `T_INLINE_HTML` — **all defined.**
+
+> ### ⭐ **The governing rule: the ANALYSING runtime must be at least the language level of the ANALYSED source.**
+> A lexer cannot tokenize syntax it predates. **Minimum for the decided rules: PHP 8.1** (enums as a unit kind, plus 8.0's attributes, name kinds and nullsafe). **Analysing 8.4 property hooks or 8.5 syntax requires a runtime at that level.**
+
+🟡 **The binding DECLARES an accepted `LanguageLevel` in `bindings/php.md`, and it is recorded in every evidence file (§14.6).** ⛔ **A runtime below the declared level is a refusal, not a degraded run.**
+
+## 14.3 Failure behaviour — the rule that matters most
+
+> ## ⛔ **A source that cannot be tokenized produces a NAMED REFUSAL, never an empty unit set.**
+> **`NEW-3` is the measured reason: a vanished class and a class that legitimately has no methods both present as "nothing here".** **Empty must never be the failure representation.**
+
+**Also refusals, not silent skips:** an unknown/newer token kind · a `LanguageLevel` mismatch · an evidence-version mismatch (§14.6) · an identity collision (which would breach `INV-L3-2` and indicates a binding defect).
+
+## 14.4 Deterministic execution and reproducibility
+
+**Same source + same `LanguageLevel` + same binding version ⇒ byte-identical `L3` facts.** No clock, no randomness, no filesystem ordering, no locale dependence.
+
+⚠️ **One concrete locale hazard, worth naming because it interacts with a decided rule:** PHP folds **ASCII** case in type names and does **not** fold non-ASCII. 🟡 **The binding's name comparison must therefore be ASCII-case-insensitive and byte-exact elsewhere** — never a locale-sensitive lowercase. **`NEW-9` (non-ASCII identifiers) is exactly where a locale-sensitive fold would silently produce a wrong `TargetUnitRelation`.**
+
+## 14.5 CI and developer-local
+
+**Both pin the same PHP version**, and the pin is recorded in the evidence. 🟡 **A PHP version bump that changes any declared fact is a governed event**, surfaced by layer B failing — ⛔ **not silently absorbed by re-recording the evidence.**
+
+## 14.6 🟡 Evidence versioning
+
+Every expected-evidence file records: **specification version · binding version · `LanguageLevel` · runtime version used to author it.** **A mismatch on the first three is a refusal; the fourth is informational.** ⇒ **evidence can never be quietly re-interpreted under changed semantics** — the failure the whole work item exists to prevent.
+
+---
+
+# 15 · Future language extension point 🔵 FUTURE — ⛔ not designed, not in scope
+
+**AMD1/AMD2: a future Java/Python/C# binding is a SEPARATE governed work item.** It must produce the **same `L3` fact model** and conform to the **same `L4`/`L5` semantics`**; it does **not** require redesigning `L4`/`L5` **unless new evidence demonstrates a genuine model gap.**
+
+```
+🔵 FUTURE  <language> binding  ──►  the SAME L3 Fact Model  ──►  the SAME L4/L5 engine
+```
+
+**The seam preserved by this design, and nothing more:** `L4`/`L5` is a module with **no dependency on any binding** (§5, property 2) · `L3` is a declared vocabulary, not a PHP artifact · conformance is asserted against declared evidence, not against a peer.
+⛔ **No transport, no serialization format, no second implementation is designed here.** ✅ **When a second binding produces the same `L3` facts, the neutrality claim of §1.1 becomes empirically demonstrable — that is the only thing FUTURE work is promised to add.**
+
+---
+
+# 16 · C4 / PlantUML
+
+> ⛔ **Everything marked `PROPOSED` or `FUTURE` is NOT implemented.** Only `Lcom4Collector.php`, `lcom4_collector.py`, the ten fixtures and `expected.json` exist today.
+
+### 16.1 Container view
 
 ```plantuml
 @startuml
-title C4 L1 — Context (PROPOSED components marked)
+title C4 L2 — Containers (current scope: PHP only)
 skinparam componentStyle rectangle
 actor "Engineer / CI" as U
-rectangle "LCOM4 Conformance Capability" as SYS {
+package "PHP implementation  <<PROPOSED>>" {
+  package "Binding module  <<PROPOSED>>" #FFF3E0 {
+    [B3 extraction  T1..T5] as B3
+  }
+  package "Cohesion module  <<PROPOSED>>" #E8F5E9 {
+    [L4 semantics] as L4
+    [L5 metric] as L5
+  }
 }
-database "PHP source under analysis" as SRC
-file "Declared expected evidence\n<<PROPOSED>>" as EXP
-U --> SYS : runs an observation / conformance check
-SRC --> SYS : source
-SYS --> EXP : compared against (oracle)
-note right of EXP
-  INV-7 the oracle is the DECLARATION,
-  never the other implementation
-end note
-@enduml
-```
-
-### 15.2 Containers
-
-```plantuml
-@startuml
-title C4 L2 — Containers
-skinparam componentStyle rectangle
-package "Binding (below the neutrality boundary)" #FFF3E0 {
-  [Tokenizer  T1\n<<PROPOSED>>] as T1
-  [Declaration & body reader  T2/T3\n<<PROPOSED>>] as T2
-  [Fact classifier  T4/T5\n<<PROPOSED>>] as T5
-}
-package "Contract (language-neutral)" #E8F5E9 {
-  [L4 Cohesion engine\n<<PROPOSED>>] as L4
-  [L5 Metric\n<<PROPOSED>>] as L5
-}
-[L3 Fact model\n<<PROPOSED>>] as L3
-[Conformance comparator\n<<PROPOSED>>] as CMP
-file "expected/*.evidence.json\n<<PROPOSED>>" as EXP
-T1 --> T2 --> T5 --> L3
-L3 --> L4 : Fact only (no Provenance)
-L4 --> L5 : nodes + edges
-L4 --> CMP : unit set, edge set
-L5 --> CMP : metric
-EXP --> CMP
+[L3 Fact model  <<PROPOSED>>] as L3
+[Provenance store  <<PROPOSED>>] as PROV
+[Conformance comparator  <<PROPOSED>>] as CMP
+file "expected/*.evidence.json  <<PROPOSED>>" as EXP
+database "one PHP source file" as SRC
+U --> CMP : run conformance
+SRC --> B3
+B3 --> L3 : Facts
+B3 --> PROV : Provenance
+L3 --> L4 : Facts ONLY
+L4 --> L5
+L4 --> CMP
+L5 --> CMP
+EXP --> CMP : NORMATIVE
+PROV ..> CMP : diagnostics only
 note right of L3 : ══ CONFORMANCE BOUNDARY (13.1) ══
+note bottom of PROV : INV-4 — never reachable from L4/L5
 @enduml
 ```
 
-### 15.3 D / B3 component view
+### 16.2 Component view
 
 ```plantuml
 @startuml
-title C4 L3 — D / B3 implementation architecture
+title C4 L3 — Components
 skinparam componentStyle rectangle
-[PHP source] as SRC
-[token_get_all (language lexer)] as LEX
-[Token dump  (kind,text,position) ONLY\n<<PROPOSED>>  INV-5] as DUMP
-package "PHP implementation <<PROPOSED>>" {
-  [PHP T2/T3/T5] as PT
-  [PHP L4/L5] as PL
+package "Binding  <<PROPOSED>>" {
+  [T1 Tokenize] --> [T2 Declare] --> [T3 Members] --> [T4 Observe] --> [T5 Classify]
 }
-package "Python implementation <<PROPOSED>>" {
-  [Py T2/T3/T5] as YT
-  [Py L4/L5] as YL
+package "Cohesion  <<PROPOSED>>" {
+  [Unit eligibility (13.5)] as EL
+  [Edge rule table (13.3)] as ER
+  [Graph builder] as GB
+  [LCOM4 union-find] as UF
+  EL --> GB
+  ER --> GB --> UF
 }
-SRC --> LEX --> DUMP
-DUMP --> PT --> PL
-DUMP --> YT --> YL
-note bottom of DUMP
-  SHARED: tokens only.
-  NOT shared: declarations, resolved
-  names, facts, eligibility, verdicts.
+[T5 Classify] --> [L3 Facts] --> EL
+[L3 Facts] --> ER
+note right of ER
+  9 rows, first match wins.
+  NotTheAnalysedUnit != NotDeterminable
 end note
 @enduml
 ```
 
-### 15.4 Fact model and conformance flow
+### 16.3 D / B3 implementation architecture
 
 ```plantuml
 @startuml
-title L3 fact model + conformance flow
+title D / B3 — current scope in-process; future seam marked
 skinparam componentStyle rectangle
-class DeclaredUnit {
-  UnitKind kind
-  UnitIdentity identity
-  DeclaredName name
+[one PHP source file] as SRC
+[PHP lexer  token_get_all] as LEX
+package "PHP binding  <<PROPOSED>>" { [T2..T5] as PT }
+package "Cohesion engine  <<PROPOSED>>\nno dependency on any binding" { [L4 + L5] as ENG }
+SRC --> LEX --> PT --> ENG : L3 Facts
+package "FUTURE" #EEEEEE {
+  [<language> binding  <<FUTURE>>] as FB
 }
+FB ..> ENG : the SAME L3 Facts  <<FUTURE>>
+note bottom of FB
+  Separate governed work item (AMD1/AMD2).
+  Not designed here. No transport chosen.
+end note
+@enduml
+```
+
+### 16.4 `L3` → `L4` → `L5` conformance flow
+
+```plantuml
+@startuml
+title Fact model and three-level conformance
+skinparam componentStyle rectangle
+class DeclaredUnit { UnitKind kind \n UnitIdentity identity \n DeclaredName? name }
 class MethodDeclaration { MethodIdentity id \n bool hasBody }
 class StateAccess { PropertyName name \n AccessMode mode }
 class BehaviourReference {
@@ -519,73 +550,142 @@ class BehaviourReference {
   AccessMode access
   Determinability determinability
 }
-class Provenance { factId \n offset \n rawText }
+class Provenance { factId \n byteOffset \n rawLexeme }
 DeclaredUnit "1" o-- "*" MethodDeclaration
 MethodDeclaration "1" o-- "*" StateAccess
 MethodDeclaration "1" o-- "*" BehaviourReference
-BehaviourReference .. Provenance : factId only\nNEVER handed to L4
-note bottom of Provenance : INV-1 / INV-L3-7\nnon-decisional
+BehaviourReference .. Provenance : factId only — one-way
+note bottom of Provenance : INV-4 / INV-L3-7 — non-decisional
+note top of DeclaredUnit
+  L1 fact conformance
+  L2 semantic conformance (graph)
+  L3 metric conformance
+  all vs DECLARED expected evidence
+end note
 @enduml
 ```
 
 ---
 
-# 16 · Open questions ⬜ returned to the PO/ARB
+# 17 · Architectural invariants
 
-| | Question | Why Architecture does not close it |
+| | Invariant | Enforced by |
 |---|---|---|
-| **`OQ-1`** | **`UnitIdentity` scheme for anonymous classes** — declaration path (unstable under reordering) vs declaration-site coordinate (unstable under formatting)? | Both satisfy 13.5. **The choice trades which edit renames a unit**, and that is a contract-visible consequence, not a coding preference |
-| **`OQ-2`** | **Is `AnalysisScope` = one file?** Identity must be unique *within the analysed scope*, and the scope has never been named | The pinned *analyzed in isolation* limitation implies the file, but implication is not a ruling |
-| **`OQ-3`** | ⚠️ **`trait = analysed unit` vs the pinned `trait_methods` decision.** They are compatible in principle — *analyse the trait itself; do not resolve its methods into a using class* — but **`trait-user.php` will gain a second observation**, so a pinned expectation changes | 13.5 decided the rule; **nobody has decided that the fixtures change**, and the act said artifact consequences need a separate governed act |
-| **`OQ-4`** | **Token-dump transport**, and acceptance of a **PHP process as a runtime dependency of the Python implementation** | Legitimate under 13.1, and an operational/CI commitment the PO/ARB should make knowingly |
-
-⚠️ **`OQ-3` is the one that will surprise.** It is the first place a decided *semantic* forces a change to a *pinned expectation*, and the two have been kept rigorously apart until now.
-
----
-
-# 17 · Implementation consequences
-
-## 17.1 What becomes possible only after acceptance
-
-Writing `specification/` and `bindings/php.md` · authoring declared expected evidence · building the binding · changing either collector · migrating `expected.json`. ⛔ **None is authorized by this document.**
-
-## 17.2 ⚠️ Where the selected shape is COSTLY or AWKWARD — the anchoring mitigation
-
-**Recorded because this process recommended the architecture it is now designing, and a design that only reports success is not evidence.**
-
-1. **The Python implementation acquires a PHP runtime dependency.** `B2` would not have. Under `13.1` this is legitimate — extraction is below the boundary — but it is a genuine operational cost, and it means the Python side can never run standalone. **The neutrality claim survives; the deployment simplicity does not.**
-2. **`AliasedName` requires resolution that is then discarded** (§5.3). The binding must build a `use` map to classify a spelling the contract then excludes. **Work done to reach a rule that ignores it.**
-3. **`UnitIdentity` for anonymous classes is the weakest link.** Every scheme couples the identity of a unit to some accident of source layout. **13.5 requires stability; the language provides no stable designator.** `OQ-1` cannot be made cost-free.
-4. **Expected-evidence files are an order of magnitude larger than ten integers**, and must be maintained by hand or generated — **and if generated by an implementation, the oracle quietly becomes that implementation.** `INV-7` forbids it; the maintenance burden is nonetheless real and is the most likely place this architecture erodes in practice.
-5. **`AccessMode` is carried and never branched on** (§6.2). It is justified — the ruling must be assertable — but it is an attribute whose only consumer is the evidence layer, and a future reader will reasonably ask why it exists.
-
-## 17.3 What does NOT change
-
-The metric · the seven pinned decisions other than those 13.3/13.5 amended · the union-find · the interpretation strings · the ten fixtures' source.
+| `INV-1` | **`L3` is the conformance boundary** | §4 · §9 |
+| `INV-2` | **`B3` decides no cohesion** — no edge, exclusion, eligibility or metric below `L3` | §6 · §6.4 |
+| `INV-3` | **Qualifier kind is preserved; `NotTheAnalysedUnit` ≠ `NotDeterminable`** | closed enums · §7.2 rows 2/8/9 |
+| `INV-4` | **`L4`/`L5` cannot access provenance, source, spelling, tokens, AST nodes or parser objects** | §5 — type · dependency · test |
+| `INV-5` | **`L4` inspects no PHP syntax** | §12 layer C runs with no PHP present |
+| `INV-6` | **Seen-and-excluded ≠ unseen** — every declaration is emitted, incl. interfaces | §6.4 · §9.2 level 1 |
+| `INV-7` | **Declared expected evidence is normative; implementation agreement is diagnostic** | §9.4 |
+| `INV-8` | **The final metric alone is never sufficient conformance evidence** | §9.1 three levels |
+| `INV-9` | **The `L3` vocabulary is closed.** Adding a decisional attribute is a contract change | §4.4 `INV-L3-1` |
+| `INV-10` | **PHP is a binding, not the definition of the cohesion model** | §5 property 2 · §15 seam ⚠️ **see `OPEN-1`** |
+| `INV-11` | **Determinism** — same source + `LanguageLevel` + binding version ⇒ identical facts | §14.4 |
 
 ---
 
-# 18 · Recommended implementation sequence
+# 18 · Open questions ⬜ / open architectural issues
+
+## ⬜ `OQ-1` — ratify the `UnitIdentity` rule (§4.3)
+**Now selectable** (AMD2 gave the scope an extent) and **a rule is proposed**. **The PO/ARB ratifies because the choice decides which edit invalidates declared evidence** — reformatting (coordinates) vs reordering (declaration path). ✅ **This design recommends the declaration path.**
+
+## 🔴 `OPEN-1` — **AMD1's own principle is not cleanly satisfied, and this design cannot fix it alone**
+
+**AMD1's test, verbatim:** *"a design in which PHP's shape has silently become the model's shape violates it, even if nothing named PHP appears at `L4`/`L5`."* **Applied honestly to this design:**
+
+| `L3` vocabulary | PHP-shaped? |
+|---|---|
+| `QualifierKind`: `SelfKeyword` · `StaticKeyword` · `ParentKeyword` · `RelativeName` | 🔴 **Yes.** `self`/`static`/`parent` are PHP keywords; `static::` and `namespace\X` have no general counterpart. Java has `this`/`super` and neither of the others |
+| `UnitKind`: `Trait` | 🔴 **Yes.** PHP/Scala/Rust have traits; Java does not |
+| `AccessMode`: `Nullsafe` | 🟡 reasonably general (`?.` in Kotlin, C#, JS) |
+
+> ### **The `L3` vocabulary is currently PHP's taxonomy wearing neutral names. Nothing named PHP appears at `L4`/`L5` — and PHP's shape is nevertheless the model's shape.**
+>
+> **Why this design does not fix it silently:** **13.3 decided the rules PER QUALIFIER KIND using exactly this taxonomy, and 13.5 decided `trait = analysed unit`.** ✅ **Both are FIXED and AMD3 forbids reopening them.** **Renaming the vocabulary to a language-neutral one — even one-for-one, changing no rule — alters the CONTRACT's terms, which is a PO/ARB act, not an architecture act.**
+
+**🟡 Proposed mitigation, semantics-preserving, for the PO/ARB to accept or decline:** record in `specification/fact-model.md` that the current `QualifierKind` and `UnitKind` value sets are **the PHP binding's taxonomy adopted as the first version of the neutral vocabulary**, and that **a second binding may require the vocabulary to generalize — which would be a contract amendment, not a model gap.** ⇒ **the tension becomes recorded and bounded rather than discovered by the first non-PHP binding.** ⛔ **This changes no rule and no value; it changes what the specification says about itself.**
+
+⚠️ **Stated plainly: this is a real limit on the §1.1 claim.** *"The PHP binding conforms to the language-neutral model"* is weaker still while the model's vocabulary is PHP's. **The pre-delivery gate passes (§21); AMD1's stronger test does not.**
+
+## ⬜ `OQ-3` — routed, not open here
+✅ **Covered by `G-KOS-CONTRACT-ARTIFACT-UPDATE`** (AUTHORIZED, UNEXERCISED, no assignment). ⛔ **Not exercised by this design.**
+
+## ✅ Closed by the record
+`OQ-2` — **one PHP source file** (AMD2) · `OQ-4` — **disposed, deferred** (AMD2).
+
+---
+
+# 19 · Implementation consequences
+
+## 19.1 What becomes possible only after acceptance
+Writing `specification/` and `bindings/php.md` · authoring declared expected evidence (under its own grant) · building the binding and the cohesion module · changing `Lcom4Collector.php` · migrating `expected.json`. ⛔ **None is authorized here.**
+
+## 19.2 ⚠️ Where the selected shape is costly or awkward — the anchoring mitigation, delivered
+
+1. 🔴 **`OPEN-1`** — the neutral vocabulary is PHP's taxonomy. **The most serious limitation in this document.**
+2. **Aliased resolution is performed and then discarded** (§6.3) — work done to reach a rule that ignores it.
+3. **`UnitIdentity` has no cost-free scheme.** Every option couples a unit's identity to some accident of source layout; 13.5 requires stability and the language provides no stable designator.
+4. **Expected-evidence files are an order of magnitude larger than ten integers** — and ⚠️ **if generated by the implementation, the oracle quietly becomes the implementation.** `INV-7` forbids it; **this is the most likely place the architecture erodes in practice**, and §14.6's versioning is the guard.
+5. **`AccessMode` is carried and never branched on** (§7.2). Justified — the ruling must be assertable — and a future reader will reasonably propose deleting it.
+6. **Neutrality is now architectural, not empirical** (§1.1). **The work item's founding method is gone**, and the design cannot restore it.
+
+## 19.3 What does not change
+The metric · the union-find · the interpretation strings · the pinned decisions other than those 13.3/13.5 amended · the ten fixtures' source.
+
+---
+
+# 20 · Recommended implementation sequence
 
 ```
-S-0  PO/ARB accepts or returns THIS design + rules OQ-1..OQ-4         ← the gate
-S-1  specification/ + bindings/php.md          (C-as-completion; no code)
-S-2  declared expected evidence for the ten fixtures at decided semantics
-       ⚠️ separate governed act — pinned expectations change (OQ-3)
-S-3  binding (T1–T5) + L3, per implementation
-S-4  L4 + L5 (metric layers migrate up from BOTH collectors)
-S-5  test layers A–E; layer C runs with NO PHP input
-S-6  dual-run; divergences recorded as evidence, not defects
+S-0  PO/ARB accepts or returns THIS design · ratifies OQ-1 · disposes OPEN-1     ← the gate
+S-1  specification/ + bindings/php.md            (C-as-completion; no code)
+S-2  declared expected evidence for the ten fixtures
+       ⚠️ its own assignment under G-KOS-CONTRACT-ARTIFACT-UPDATE
+S-3  binding T1–T5 + L3   (PHP)
+S-4  L4 + L5 as a SEPARATE module with no dependency on the binding
+S-5  test layers A–E; layer C runs with NO PHP present
+S-6  dual-run; divergence recorded as evidence, not regression
 S-7  independent verification — neither implementer nor this designer
-S-8  removal of the old scanner on the four criteria (§13)
+S-8  retirement of the old path on §11.3's five criteria — a Governance act
 ```
 
-**Each step is a separate authorization. ⛔ This document authorizes none of them.**
+**Each step is a separate authorization. ⛔ This document authorizes none.**
 
 ---
 
-**IMPLEMENTATION ARCHITECTURE DELIVERED · STOPPING.**
-⛔ **No implementation · no code · no collector, contract, fixture or `expected.json` modified · no architecture re-selected · no decided rule re-opened · no verification · no acceptance · this lane does not complete itself (`G-1`).**
-**Next actor: PO/ARB — accept or return this design, and rule `OQ-1`…`OQ-4`.**
+# 21 · Pre-delivery architectural gate — **PERFORMED** (AMD3)
 
-**Traceability:** grant `G-KOS-CONTRACT-IMPL-ARCH` · assignment `S4-architecture-impl-arch-d-b3` (seq 29–31) · architecture-selection registration (D / B3 / C-as-completion; the ten fact-model requirements) · Decisions 13.1 · 13.3 (stratified qualifier rules + the bucket ruling) · 13.5 (four silences) · 13.7 · Decision 1 (PHP not authoritative) · Decision 2 · semantic clarification proposal + AMD1 (`N13`/`N13-c`) · parsing evaluation `d2859e91` (`L1`–`L5`, the twelve-divergence root-layer table) · breadth report `17e4f066` (`O-1`, `O-2`, the nine mechanisms) · `expected.json` `_future_layout` (2026-08-04) · measurements taken read-only in scratchpad for this design: nikic node-type coverage (`Class_` 2 of 5; `Enum_`/`Trait_`/`Interface_` separate; `MethodCall` = 0 for `$this?->b()`; `NullsafeMethodCall`/`NullsafePropertyFetch` present) and the token-kind probes of §5.2 — **not added to the repository** · `ES-005.4` · `R-34`/`P-2` · `G-1`.
+> **The test: can the proposed `L4`/`L5` be implemented without reading PHP source text, PHP spelling, PHP AST nodes, PHP tokens or parser-specific objects?**
+
+| Input | Reachable from `L4`/`L5`? | Why |
+|---|---|---|
+| PHP source text | ⛔ **No** | not in `Fact`; `Provenance` is a separate collection, one-way join (§5) |
+| PHP spelling / raw lexeme | ⛔ **No** | `Fact` carries closed enums and identities only (`INV-L3-1`) |
+| PHP AST nodes | ⛔ **No** | the cohesion module declares no dependency on the binding or any parser (§5 property 2) |
+| PHP tokens | ⛔ **No** | tokens terminate at `T5` |
+| Parser-specific objects | ⛔ **No** | same as above |
+
+> ## ✅ **GATE RESULT: PASSES.** §12 layer C is the executable proof — `L4` runs against synthetic facts with no PHP present.
+
+**Also verified before delivery:**
+
+```
+[✓] No decided semantic rule reopened      — 13.3, 13.5, D, B3, C-as-completion restated as inputs (§2)
+[✓] No future scope became current scope   — §15 is FUTURE only; no Java/Python binding designed
+[✓] No implementation work performed       — no code written
+[✓] No existing artifact modified          — collectors, expected.json, fixtures, contract untouched;
+                                              sha256 4136519b… / 5acb0e13… / 173ab4ec… unchanged
+[✓] No new assignment and no new grant created
+[✓] Contradiction found → recorded, not fixed silently — OPEN-1 (§18), returned to PO/ARB
+```
+
+⚠️ **The gate passes on its stated terms. AMD1's stronger principle does not — `OPEN-1` records why, and it is returned rather than smoothed.**
+
+---
+
+**FINAL IMPLEMENTATION ARCHITECTURE DELIVERED · STOPPING.**
+⛔ **No implementation · no verification · no acceptance · no self-close (`G-1`) · no artifact modified · no decided rule reopened · no future scope pulled into current scope.**
+**Next actor: PO/ARB — accept or return; ratify `OQ-1`; dispose `OPEN-1`.**
+
+**Traceability:** `G-KOS-CONTRACT-IMPL-ARCH` + **AMD1** (language scope; the verbatim principle) + **AMD2** (`OQ-2` decided, `OQ-4` disposed, declared-specification conformance at three levels, scope-of-claim) + **AMD3** (finalization; the provenance boundary; the pre-delivery gate; the twelve required coverages) · `G-KOS-CONTRACT-ARTIFACT-UPDATE` (`OQ-3`) · assignment `S4-architecture-impl-arch-d-b3` seq 29–31 · architecture-selection registration · Decisions 13.1 · 13.3 · 13.5 · 13.7 · Decision 1 · Decision 2 · semantic proposal + AMD1 (`N13`/`N13-c`) · parsing evaluation `d2859e91` · breadth report `17e4f066` (`O-1`, `O-2`, `N-2`, the nine mechanisms) · `expected.json` `_future_layout` · measurements taken read-only in scratchpad (nikic node-type coverage; `MethodCall` = 0 for `$this?->b()`; token-kind availability on PHP 8.5.8) — **not added to the repository** · `ES-005.4` · `R-34`/`P-2` · `G-1` · `INV-ATTR-2`.
