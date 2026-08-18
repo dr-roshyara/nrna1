@@ -1,11 +1,13 @@
-# PO/ARB Authorization **REQUEST** — one bounded Domain slice (proposed ID: `EM-DOM-001`)
+# `EM-DOM-001` — PO/ARB **AUTHORIZATION RECORD** for one bounded Domain slice
+
+*(Prepared as a request; became the authorization record when the PO/ARB performed the act on 2026-08-18. The filename is kept for link stability.)*
 
 **Prepared by:** Session 2 — Governance · **Date:** 2026-08-18
 **Status:** ✅ **AUTHORIZED by the PO/ARB on 2026-08-18 (recorded verbatim in the Authorization block). ⏸️ NOT STARTED — the fresh Domain lane has not been designated. Phase 1 only (domain analysis/design + RED-test preparation).**
 
 > ⚠️ **This document began as a request and is now the authorization record.** Sections 1–10 are the requested terms; the **Authorization block** carries the PO/ARB's performed act verbatim, with two annotations. **Governance prepared it and did not grant it.** **The ID `EM-DOM-001` is CONFIRMED by the authorizing text's own heading.**
 
-**Nothing was modified to produce this request.** `app/`, `tests/`, repositories, protocol access and the frozen domain core are unchanged; the core remains byte-identical to `1f4b4c5f`.
+**Nothing was modified to produce this record.** `app/`, `tests/`, repositories, protocol access and the frozen domain core are unchanged; the core remains byte-identical to `1f4b4c5f`.
 
 ---
 

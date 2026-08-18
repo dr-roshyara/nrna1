@@ -2899,13 +2899,13 @@ Both sit at ES-006.1 rung **observation**, both record `PLACEMENT: PENDING` (ADR
 **Standing rules bound into the plan this session:** *coverage is descriptive, completeness is normative* · *business meaning precedes persistence meaning; persistence meaning precedes implementation judgement* · the permanent hierarchy with **implementation judgement last** · *never call a persisted record a decision/audit record from its shape*.
 
 <!-- GOV-STATE -->
-**Session 2 — Governance · state 2026-08-18 (`b78c50ab`)**
+**Session 2 — Governance · state 2026-08-18 (`2399f5cf`)**
 
-- **ADR-1 + ADR-2 DECIDED. Both Rule-8 gates COMPLETE.** Verdict: 🔴 BLOCKED at the domain boundary — **A=2 · B=6 · C=6**; zero application work remains.
-- **Awaiting the PO/ARB act:** authorize (or withhold) **`EM-DOM-001`** — one bounded domain slice for DEP-1…DEP-6. Request prepared at `docs/publicdigit/reviews/2026-08-18-EM-DOM-001-authorization-request.md`, **authorization block blank**. START would be separate.
-- **DEP-5a:** P-7 `ResumptionTarget` exists and is authorized — **consume, never recreate.** **DEP-5b:** `HaltedAtGate` has no producer/port — that is the real gap.
-- **DEP-7 quarantined, not repaired** (ADR-2 (f)). **DEP-10 must survive untouched** (`EM-GOV-062`).
-- **Domain core FROZEN**, byte-identical to `1f4b4c5f`. `app/`/`tests/` untouched. **GREEN-5 STOPPED.** `AbsentAggregateReferenceRedTest` stays RED, correctly.
-- **When authorized: a FRESH Domain lane**, not the implementation lane.
+- **ADR-1 + ADR-2 DECIDED · both Rule-8 gates COMPLETE · `EM-DOM-001` ✅ AUTHORIZED** (PO/ARB, recorded verbatim).
+- ⏸️ **NOT STARTED.** No fresh Domain lane designated. **Obligation 4: not the implementation lane and not this Governance session.** Designation + START is the **PO/ARB's** act.
+- **Briefing ready:** `docs/publicdigit/reviews/2026-08-18-EM-DOM-001-domain-lane-briefing.md` — Phase 1 only (decision map + RED-test proposal, then STOP for review). Governance authored no model.
+- ⚠️ **Annotation A open for PO correction:** obligation (9)'s *"DEP-7 through DEP-12"* sweeps in **DEP-10, which is class A**; obligation (8) governs it. `if ($restoration === null) { return; }` **must survive**.
+- **DEP-5a:** P-7 `ResumptionTarget` exists and is authorized — **consume, never recreate**. **DEP-5b:** no producer/port for `HaltedAtGate` — the real gap. **DEP-7 quarantined, not repaired.**
+- **Domain core FROZEN**, byte-identical to `1f4b4c5f`. `app/`/`tests/` untouched. **GREEN-5 STOPPED.** `AbsentAggregateReferenceRedTest` stays RED — and is **not** the domain slice's target.
 - Still open elsewhere: `EM-OPEN-049`/`066`/`094` · `053` · `076`/`077` · `095`② · `102` remaining limbs · `PBDIGIT-69` · `PBDIGIT-71` · candidate rule *"Protocol records decisions; it does not become the source of causal authority"* · `KOS-ATTR-ARCH-001` unsigned.
 <!-- /GOV-STATE -->
