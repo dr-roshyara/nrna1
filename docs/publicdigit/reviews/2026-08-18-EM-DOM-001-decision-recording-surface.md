@@ -183,3 +183,32 @@ Signed: ____________________   Date: ____________
 **State at preparation:** HEAD `4796ef1f` · frozen domain core byte-identical to `1f4b4c5f` · `EM-IMPL-002` Rule-8 gate for ADR-2 **🔴 BLOCKED** · GREEN-5 **STOPPED** · `AbsentAggregateReferenceRedTest` **RED**, and not any slice's target.
 
 **Traceability:** `ADR_20260817_2145` §6 · `ADR_20260817_2300` §6(a)–(h) · `EM-DOM-001` authorization + Annotations A/B · Phase-1 map §§2/4/8 *(ACCEPTED as analysis, `e57adac2`)* · verification record *(`7654b9e4`, corrected by N-2)* · PO/ARB decision dossier §§1–10 *(UNTRACKED — N-1)* · `EM-GOV-036`/`057`/`059(b)`/`059(c)`/`062` · `D-6` · `EM-OPEN-055` · `AIP-14` · `1f4b4c5f`.
+
+---
+
+# APPENDIX R · Recommendation register — ⛔ **NOT decisions, NOT pre-selections**
+
+> ## ⚠️ Quarantined deliberately. The four blocks above remain **UNMARKED**, and this appendix does not mark them.
+>
+> **Why it is separated rather than folded into the blocks:** the surface states that *"no option is marked, recommended or pre-selected in any block."* **Placing a recommendation inside a block would break that guarantee and anchor the decision.** It is recorded here instead so the audit trail shows **what was recommended** alongside **what was decided** — which is queued obligation #2 (*preserve decision ≠ recommendation*) discharged in advance rather than after the fact.
+
+**Received 2026-08-18 from the architecture reviewer, in the reviewer's own framing** — *"That is an architectural recommendation, **not a decision**. You should put the decision in your own words"* and *"you should write the actual PO/ARB wording yourself, because that wording is the authority boundary."*
+
+| Block | Recommendation received | Recorded status |
+|---|---|---|
+| **D1 `BND-2`** | *lean* **[A] IN SCOPE** — qualified: only if the intent is that the slice may create *the contract the already-decided semantics require*, **without** authorizing its adapter, repository implementation, Application wiring or aggregate shape | ⬜ **BLANK — undecided** |
+| **D2 `w8`** | **confirm the clarification** *(already covered by ADR-2; improves vocabulary without changing meaning)* | ⬜ **BLANK — undecided** |
+| **D3 `BND-1`** | **DEFER** — *"open, not resolved, rejected, or merged with `EM-OPEN-055`"* | ⬜ **BLANK — undecided** |
+| **D4 `BND-3`** | **DEFER** — do not choose fourth aggregate, lifecycle aggregate, or projection; **and not because one is easiest to implement** | ⬜ **BLANK — undecided** |
+
+**Sequencing also recommended:** the authoring session **commits both dossiers BEFORE any signature** (agreeing with N-1) · then D1 first, as the only block that can dead-end `DEP-5b`/`DEP-6`.
+
+## The one guard this appendix adds, because it names a live misreading risk
+
+> ⛔ **`BND-2 = IN SCOPE` must NOT be read by any lane as *"design the aggregate."***
+>
+> The authorization, on that answer, extends to **contract / identity-retrieval only.** **The representation SHAPE and the OWNERSHIP remain subject to domain/architecture analysis — `BND-3` is untouched by a `BND-2` answer, and `R-1`'s FORM is not approved by it.**
+
+*(D1's consequence column already states this; it is restated here because the risk is a **lane's misreading after the fact**, not a gap in the block.)*
+
+⛔ **Nothing in this appendix is a decision, an authorization, or a pre-selection. A recommendation — however favourable, however well-argued, however often repeated — is not a decision.**
