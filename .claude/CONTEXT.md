@@ -2911,13 +2911,15 @@ Both sit at ES-006.1 rung **observation**, both record `PLACEMENT: PENDING` (ADR
 **Standing rules bound into the plan this session:** *coverage is descriptive, completeness is normative* · *business meaning precedes persistence meaning; persistence meaning precedes implementation judgement* · the permanent hierarchy with **implementation judgement last** · *never call a persisted record a decision/audit record from its shape*.
 
 <!-- GOV-STATE -->
-**Session 2 — Governance · state 2026-08-18 (`2399f5cf`)**
+**`EM-DOM-001` Domain lane · state 2026-08-18**
 
-- **ADR-1 + ADR-2 DECIDED · both Rule-8 gates COMPLETE · `EM-DOM-001` ✅ AUTHORIZED** (PO/ARB, recorded verbatim).
-- ⏸️ **NOT STARTED.** No fresh Domain lane designated. **Obligation 4: not the implementation lane and not this Governance session.** Designation + START is the **PO/ARB's** act.
-- **Briefing ready:** `docs/publicdigit/reviews/2026-08-18-EM-DOM-001-domain-lane-briefing.md` — Phase 1 only (decision map + RED-test proposal, then STOP for review). Governance authored no model.
-- ⚠️ **Annotation A open for PO correction:** obligation (9)'s *"DEP-7 through DEP-12"* sweeps in **DEP-10, which is class A**; obligation (8) governs it. `if ($restoration === null) { return; }` **must survive**.
-- **DEP-5a:** P-7 `ResumptionTarget` exists and is authorized — **consume, never recreate**. **DEP-5b:** no producer/port for `HaltedAtGate` — the real gap. **DEP-7 quarantined, not repaired.**
-- **Domain core FROZEN**, byte-identical to `1f4b4c5f`. `app/`/`tests/` untouched. **GREEN-5 STOPPED.** `AbsentAggregateReferenceRedTest` stays RED — and is **not** the domain slice's target.
-- Still open elsewhere: `EM-OPEN-049`/`066`/`094` · `053` · `076`/`077` · `095`② · `102` remaining limbs · `PBDIGIT-69` · `PBDIGIT-71` · candidate rule *"Protocol records decisions; it does not become the source of causal authority"* · `KOS-ATTR-ARCH-001` unsigned.
+- **Phase 1 DELIVERED** — `docs/publicdigit/architecture/2026-08-18-EM-DOM-001-phase1-domain-decision-map.md`. 🟡 PROPOSED, awaiting explicit acceptance. **No production code; core byte-identical to `1f4b4c5f`.**
+- **Key finding:** `ElectionOperationalStatus` (holds `?HaltedAtGate`, owns `restored()`) is authorized, complete and **unreachable — no identity, no repository**. It is P-7's legitimate supplier. P-6 is the precedent producer pattern.
+- **Proposal:** R-1 overlay aggregate standing · R-2 producer policy stating the permission invariant · R-3 event able to express no-target. Ten RED tests planned.
+- 🛑 **BLOCKED on two rulings:** **BND-1** lifecycle-phase ownership (DEP-2) — strategic/context-map question · **BND-2** may R-1 introduce a new domain identity/retrieval contract, given the *"modify repositories"* prohibition. **If BND-2 is "no", DEP-5b and DEP-6 cannot be discharged at all.**
+- **DEP-10 protected set is 4 sites across 2 files**, all locked by planned T-10.
+- **Gate corrections (all narrowing):** DEP-3 unnamed-not-absent · DEP-4 `PeriodKind` already suffices for the causal class · DEP-5b re-attributed to the overlay · DEP-6 `w8` fails only in the event shape. `Restoration → RecoveryProcess → originatingGate` **refuted**.
+- **Open discrepancy:** `HaltedAtGate`'s docblock names `ElectionConstitution` as the canonical lifecycle home; that class has no halt/gate/operative vocabulary. Governance/ARB owns it.
+- **GREEN-5 STOPPED.** `AbsentAggregateReferenceRedTest` stays RED and is **not** this slice's target.
+- Still open elsewhere: `EM-OPEN-049`/`066`/`094` · `053` · `076`/`077` · `095`② · `102` remaining limbs · `PBDIGIT-69` · `PBDIGIT-71` · `KOS-ATTR-ARCH-001` unsigned.
 <!-- /GOV-STATE -->
