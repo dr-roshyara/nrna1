@@ -118,6 +118,12 @@ The map must render at least these two discriminations explicitly:
 
 **Obligation 4 (requested) — a FRESH Domain lane, not the current implementation lane**, so the Application handler's present shape cannot unconsciously shape the domain model.
 
+**Obligation 5 (added 2026-08-18 on reviewer recommendation) — the RED tests must make the APPROVED DOMAIN INVARIANTS explicit and testable. They must NOT be written to make the existing Application tests pass.**
+
+> ⚠️ **`AbsentAggregateReferenceRedTest` is NOT the specification of this slice.** It is a downstream symptom. **The domain lane is not asked to turn it green; it is asked to model the invariants.** Application changes come afterwards, and that pin turns green as a *consequence*, never as a *target*. Aiming at the pin would reintroduce solution-by-current-call-site at the domain layer — the precise failure Obligation 4 exists to prevent.
+
+**Obligation 6 (added 2026-08-18 on reviewer recommendation) — any additional domain scope discovered during the slice requires a NEW authorization.** Discovered work becomes a backlog item and a report, never an extension of this slice.
+
 ## 10 · What remains stopped
 
 ⛔ **No Application normalization.** ⛔ **No change to UC-1, UC-2, UC-3 or UC-4.** ⛔ **`AbsentAggregateReferenceRedTest` stays RED and keeps reporting its two UC-3 sites — correctly.** ⛔ **GREEN-5 remains STOPPED** until the authorized domain slice is **verified**.
@@ -134,8 +140,28 @@ The map must render at least these two discriminations explicitly:
 
 ## Authorization block
 
-**⬜ LEFT BLANK — the Product Owner / ARB decides.** Requested form:
+**⬜ LEFT BLANK — the Product Owner / ARB decides.**
 
-> *"I authorize one bounded Domain slice (`EM-DOM-001`) to resolve the approved ADR-1 and ADR-2 semantic dependencies DEP-1 through DEP-6 in the domain model, with its own domain decision map first, then domain RED tests, then domain implementation, then independent domain verification. No Application-layer normalization and no GREEN-5 work is authorized until that slice is verified. START is a separate act."*
+> ## ⚠️ Registered non-act — 2026-08-18
+>
+> A reviewer supplied a **recommended authorization text** for this block, ending with the string `PO/ARB: AUTHORIZED.` **It has NOT been recorded as an authorization, and this block remains blank.**
+>
+> **Reason (the reviewer's own words, from the same message):** *"I would approve the authorization request as a governance artifact, but **I would not authorize the domain work yet unless you, as PO/ARB, explicitly make that authorization**"* · *"You are now the PO/ARB decision-maker"* · *"If you agree … your next act is to authorize EM-DOM-001"* · *"**I would use this exact wording**"* · *"That is the authorization **I would give**."*
+>
+> **The text is therefore a recommendation of wording addressed to the deciding authority, not an act performed by it.** `A-3` is unsatisfied: not performative in the speaker's own voice, and expressly conditioned on an act the deciding authority has not yet performed. **A quoted `AUTHORIZED.` inside a recommended template is a draft, not a signature.**
+>
+> Its substance has been adopted where it legitimately can be: as **Obligations 5 and 6** above, and as the **requested form** below. **Nothing was started.**
+
+**Requested form** (Governance's proposal, incorporating the reviewer's recommended wording — **unsigned**):
+
+> *"**PO/ARB AUTHORIZATION — `EM-DOM-001`.** I authorize one bounded Domain slice to resolve DEP-1 through DEP-6 identified by the `EM-IMPL-002` Rule-8 dependency gate. This authorization is limited to resolving the approved domain invariants, their bounded-context ownership, and the domain representations/contracts required by ADR-1 and ADR-2.*
+>
+> *This is **not** authorization to modify the Application layer, normalize UC-1/UC-2/UC-3, change repositories, add protocol reads, reconstruct provenance in the Application layer, or implement GREEN-5.*
+>
+> *The Domain lane must: (1) establish the domain decision map before implementation; (2) identify the bounded-context owner of every affected invariant; (3) define the domain representation of the approved semantics, including the `w8` Restoration-without-`RecoveryProcess` path; (4) consume the existing P-7 contract rather than recreate or duplicate it; (5) create RED tests for the missing domain invariants before implementation; (6) implement only the authorized domain model; (7) verify the domain slice independently; (8) preserve the existing legitimate `RecoveryProcess` absence semantics; (9) leave all prohibited DEP-7 through DEP-12 paths prohibited.*
+>
+> *The Domain lane **must not derive its model from the current Application handler structure**. An ADR signature is not layer-wide implementation authorization. The authorization is for ONE bounded domain slice to resolve DEP-1 through DEP-6; it is NOT authorization to invent a technical mechanism.*
+>
+> *The Domain lane may begin only with domain analysis/design and RED-test preparation. Any additional domain scope discovered during the slice requires a new authorization. **START is a separate act.**"*
 
 **Traceability:** ADR-1 §6 · ADR-2 §6 (a)–(h) · `7514f145` · `74fcf5e5` · `c4828cdd` · P-7 `ResumptionTarget` · `HaltedAtGate` · `Q-RESTORE` · A-9 · `EM-GOV-059(c)` · `EM-GOV-060` · `EM-GOV-062` · W-8 · `EP-01` · `EP-02` · `ES-005.4` · `R-34`.
