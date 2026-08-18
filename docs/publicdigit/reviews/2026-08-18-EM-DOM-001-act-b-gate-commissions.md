@@ -24,6 +24,39 @@
 >
 > ⇒ **The designated implementation lane performs ①–③ and then STOPS** *(which is also ⑤)*. **④ is a SEPARATE designation, made after Act-B GREEN exists**, to a lane with no hand in writing it. ⛔ **No scope is added and none removed by this reading** — the release's five steps are all performed, by two lanes instead of one.
 
+> # ✅✅ **`EM-DOM-001` ACT B — COMPLETE. ALL FIVE RELEASE STEPS DISCHARGED.** *(2026-08-19)*
+>
+> | Step | Outcome |
+> |---|---|
+> | **① RED** | `e7317077` — test alone, **4 failures by structural absence** |
+> | **② contract** | `216552aa` — interface alone |
+> | **③ GREEN** | test passes; frozen-core suite **46 / 2457** |
+> | **④ independent verification** | ✅ **VERIFIED** — `67a09e11` |
+> | **⑤ STOP** | observed — the lane stopped at GREEN and **refused to verify itself** |
+>
+> ### Step ④ — VERIFIED, and it re-derived rather than trusted
+>
+> **All nine commissioned items check out on measured evidence.** The verifier **re-derived the two claims the implementing lane made about itself:**
+>
+> - **Ordering is git-provable** — **RED is GREEN's first parent**; RED adds only the test, GREEN only the interface.
+> - ⭐ **It REPRODUCED the RED** by exporting the tree at `e7317077` **with that tree's own `vendor/`**, verifying Composer's `App\` PSR-4 root resolved **inside the export** so nothing could leak in from HEAD → **4 tests / 4 assertions / 4 failures / 0 errors**, every one on `interface_exists() === false`.
+> - **`C-4` genuinely applied** — `ResumptionTarget` never called, `HaltedAtGate` never imported, **all eleven assertions about the declaration**, behavioural terms confined to the docblock's exclusion list.
+> - **`C-3` holds** · placement and signature match Gate 1 exactly · **Gate-1 §5.1 scans clean** *(the only two vocabulary hits are a quotation about the **derived** `GateIntervalState` — the same one Gate 1 itself relied on — and a **negation** of authorization)* · frozen-core diff **exactly one `A`, no `M`/`D`** · **the guide's every checkable claim resolves to a real `file:line`, no invented API.**
+> - ⭐ **The app-suite claim was substantiated by a STRICTER method than the one claimed.** Unable to move the file aside *(read-only on `app/`)*, it ran the **pre-Act-B tree**: `56 tests / 1336 assertions / 15 errors / 1 failure` with an **identical enumerated test-name set** to HEAD. **Pre-existing and unrelated: confirmed.**
+>
+> ### 🔴 Defect found — **D-1**, non-load-bearing, recorded and NOT corrected
+>
+> **`216552aa`'s commit message says *"the 40 pre-existing OperatingCore domain tests."* The count is 42** — measured on the pre-Act-B tree `d2af82a2` (`OK 42 tests, 2434 assertions`), and `46 − 4 new = 42`. **The substance and the `(46/46)` figure are correct; neither `720479d6` nor the developer guide repeats the slip.**
+>
+> ⛔ **Not corrected, deliberately: a commit message cannot be changed without rewriting history, and history must not be rewritten while other sessions are committing.** **The defect is recorded here instead, which is the durable fix.**
+>
+> ### Disclosed, and not defects
+>
+> **The RED fails as a clean per-test FAILURE rather than the load ERROR design-map §H-1 predicted** — **stronger evidence**, matching the estate's own `assertGrantedSurfaceExists` form, and **disclosed in the test's own docblock.**
+> **Three non-blocking observations:** the RED **pins the namespace** *(a relocation would be a one-line test edit)* · Gate-1 §6.1's drift risk and §6.2's *"derived classifications"* label defect are **unchanged and correctly untouched** · **`H-2` is absent by design, so `D2` has no regression lock yet.**
+>
+> *(HEAD advanced `6c653ace` → `acdc613f` mid-verification — documentation-only movement, verified; all measurements were re-taken at `acdc613f`.)*
+
 > ## ✅ ACT-B GREEN ACHIEVED — 2026-08-19 · steps ①–③ complete, ⑤ observed
 >
 > | Step | Commit | Contents |
