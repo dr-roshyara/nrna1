@@ -2897,3 +2897,13 @@ Both sit at ES-006.1 rung **observation**, both record `PLACEMENT: PENDING` (ADR
 **Programme blockers (both unresolved):** `SD-1` scope · `SD-2` evidence depth. **These do gate Step 2 in full.**
 
 **Standing rules bound into the plan this session:** *coverage is descriptive, completeness is normative* · *business meaning precedes persistence meaning; persistence meaning precedes implementation judgement* · the permanent hierarchy with **implementation judgement last** · *never call a persisted record a decision/audit record from its shape*.
+
+<!-- GOV-STATE -->
+**Session 2 — Governance · state 2026-08-18 (`74fcf5e5`)**
+
+- **ADR-1 ACCEPTED · ADR-2 ACCEPTED.** Both Rule-8 gates run. **Both BLOCKED.**
+- **`EM-IMPL-002` GREEN-5 STOPPED.** Blocker is a **domain-model gap**, not a lock: five gaps (G-a…G-e) in the frozen core, converging on `FillCommitteeSeatHandler.php:106/140/156`.
+- **Domain core FROZEN and byte-identical to `1f4b4c5f`.** Not to be touched without a separate PO/ARB domain-slice grant.
+- **Awaiting the PO/ARB act:** authorize a domain slice (Governance recommends ONE slice for all five gaps) — or leave GREEN-5 stopped.
+- Still open elsewhere: `EM-OPEN-049`/`066`/`094` (external walls) · `053` · `076`/`077` · `095`② · `102` remaining limbs · `PBDIGIT-69` · `PBDIGIT-71` · candidate rule *"Protocol records decisions; it does not become the source of causal authority"* · `KOS-ATTR-ARCH-001` unsigned.
+<!-- /GOV-STATE -->
