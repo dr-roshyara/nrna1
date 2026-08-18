@@ -39,6 +39,37 @@ A RED test **must** detect a real architectural violation, and **must not** choo
 [ ] Tests express approved semantics
 ```
 
+## Rule 8 — An ADR signature is NOT layer-wide implementation authorization *(added 2026-08-18)*
+
+> ⛔ **The failure mode this rule exists to prevent: treating a signed ADR as automatic authorization to modify every affected layer.**
+
+**A signature settles a QUESTION. It does not grant authority over every layer the answer touches.** After a decision is signed, the **first act is an authorization/dependency check — never coding**:
+
+```
+Signed decision
+      |
+      +-- does the required domain concept ALREADY exist?
+      |         |
+      |         +-- yes → the application consequence is authorized; proceed to the normalization slice
+      |
+      +-- must the DOMAIN MODEL change?
+                |
+                +-- STOP
+                      +-- separate domain RED slice
+                      +-- domain authorization
+                      +-- domain implementation
+                      +-- verification
+                      +-- THEN application normalization
+```
+
+⚠️ **Consequence for planning: if a ruling selects a domain-owned answer, the next increment is two authorized slices away, not one.**
+
+## Rule 9 — Inspection is not implementation *(added 2026-08-18)*
+
+**A lane MAY inspect evidence when an authorization or dependency check requires it.** ⛔ **It may NOT, while a decision is unsigned:** modify `app/` · modify the domain · normalize exceptions · introduce a status query or any other mechanism · invent a missing domain fact · read protocol history to reconstruct provenance · **modify a RED pin to make it pass** · start the next GREEN increment · or **"prepare" implementation on an ASSUMED decision.**
+
+⚠️ **The last item is the subtle one:** speculative preparation looks harmless and is not — it commits the design to an answer the principal has not given, and the work then argues for itself when the ruling arrives.
+
 ---
 
 ## First application of Rule 7 — the current state, 2026-08-17
