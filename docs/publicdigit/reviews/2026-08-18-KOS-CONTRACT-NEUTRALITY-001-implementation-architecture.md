@@ -654,6 +654,9 @@ S-8  retirement of the old path on §11.3's five criteria — a Governance act
 
 ---
 
+> ## ✅ ACCEPTED 2026-08-18 — PO/ARB act; registration: `2026-08-18-KOS-CONTRACT-NEUTRALITY-001-impl-arch-final-acceptance.md`.
+> **Accepted as the architecture to be implemented, WITH the `OPEN-1` qualification recorded there** (the gate passes; AMD1's stronger principle does not, and that non-conformance is knowingly deferred, not resolved). ⛔ **Acceptance authorizes no implementation** — that is a separate act. *Lifecycle annotation only; content unchanged.*
+
 # 21 · Pre-delivery architectural gate — **PERFORMED** (AMD3)
 
 > **The test: can the proposed `L4`/`L5` be implemented without reading PHP source text, PHP spelling, PHP AST nodes, PHP tokens or parser-specific objects?**
