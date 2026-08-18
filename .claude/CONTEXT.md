@@ -4,6 +4,18 @@
 
 ---
 
+## 📍 UPDATE (2026-08-18, latest) — `EM-DOM-001` **amended**; the fresh Domain lane is still NOT designated
+
+| | |
+|---|---|
+| **Act recorded** | **PO/ARB Amendment 1** to the `EM-DOM-001` authorization — obligation **(9)** now reads *"leave the prohibited `DEP-7`, `DEP-8`, `DEP-9`, `DEP-11` and `DEP-12` paths prohibited; **`DEP-10` is explicitly excluded** and its existing legitimate `RecoveryProcess` absence semantics must be preserved."* Commit `a5a2b54a`. **Documentation only — no code, no tests, no domain changes.** |
+| **Why** | Obligation (9) as signed said *"all prohibited DEP-7 **through** DEP-12"*; `DEP-10` sits in that range and is **class A**, which obligation (8) positively protects. Annotation A had detected the conflict and resolved it **by interpretation**. ⭐ PO/ARB: *"An authorization should not require the executing lane to interpret a contradiction in its authorization."* |
+| ⭐ **Form of the correction** | **Recorded as an AMENDMENT, not an in-place edit** — the signed act is history and is not rewritten (`ES-004.3`). A banner at the head of the Authorization block makes the correction unmissable, so the interpretive burden is gone **and** the signature stays truthful. **Flagged: an actual in-place replacement would be a further act, not assumed.** |
+| ⭐ **Two findings from verifying, not trusting** | **`DEP-10` protects TWO sites, not one** — `FillCommitteeSeatHandler.php:174` **and** `RecordVacancyEventHandler.php:174`, both in `pauseAccruingRestorationAllowance()`; *protecting one and normalizing the other would produce exactly the syntactic uniformity §7 forbids* · **class-A grounding verified at source**: `EM-GOV-062` (ADOPTED) — *"it does not consume time while that condition is absent"* — so the guard **consumes an adopted governance meaning rather than inventing one.** **The amendment is factually warranted, not a wording preference.** |
+| **NEXT ACTOR** | 🔵 **PO/ARB — designate the fresh Domain lane and START it** (Annotation B; *"Governance does not designate the lane that executes work Governance scoped"*). ⛔ **Lane NOT designated · NOT started · no domain model, concept, class name, aggregate, RED test or implementation · `app/` and `tests/` untouched.** ⚠️ **This session did not self-designate**, though it is factually fresh w.r.t. EM — **freshness is a qualification, not an authorization.** |
+
+---
+
 ## 📍 UPDATE (2026-08-18, later) — contract-neutrality **parsing architecture evaluation delivered**; PO/ARB selection pending
 
 *(Additive. Supersedes the NEXT ACTOR row of the breadth block below — Decisions 1–3 were taken, the architecture evaluation they commissioned is now delivered.)*
