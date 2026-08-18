@@ -2,6 +2,34 @@
 
 **Prepared by:** the governance recording session · 2026-08-18 · **Nothing implemented.**
 
+> # 🚀 **`EM-DOM-001` ACT-B — IMPLEMENTATION RELEASE** *(PO/ARB, 2026-08-19 — recorded verbatim)*
+>
+> **Architecture confirmation is CONFIRMED (`6079fe9f`). Independent Phase-2A verification is VERIFIED (`ca72dec8`). The existing PO/ARB authorization `117536f3` is therefore EXECUTABLE.**
+>
+> **Implementation scope is strictly limited to Act B:** *create and define the Domain-owned identity/retrieval contract for the election's recorded operational status, using the verified Phase-2A design and Architecture-confirmed naming/placement.*
+>
+> **The implementation lane shall:** **①** create the RED test for the **absence of the contract**; **②** implement the **minimum** Act-B Domain contract; **③** make the RED test GREEN; **④** independently verify the resulting change; **⑤** **stop immediately after Act-B GREEN.**
+>
+> **This release does NOT authorize:** Act C persistence or adapters · Act D Application consumption · `BND-1` resolution · `BND-3` resolution · aggregate selection · lifecycle-phase ownership · UC-1/UC-2/UC-3 normalization · `GREEN-5` · final `R-1` representation · **changes to P-7** · **any new repository mechanism** · **any restoration implementation beyond the Act-B contract.**
+>
+> **Act-B GREEN means ONLY that the Domain-owned identity/retrieval contract exists according to the verified design.** **It does NOT mean** that operational status is persisted or retrievable at runtime, that restoration is fixed, or that `EM-GOV-063` is reachable.
+>
+> ⛔ **The implementation lane must not infer additional authorization from the existence of the contract.**
+>
+> **Next actor: a fresh Implementation/Domain lane designated and STARTed by Governance.**
+
+> ### ⚠️ One structural note on step ④, recorded rather than silently reinterpreted
+>
+> **Steps ①–③ and step ④ cannot be performed by the same lane.** `EP-02`/`R-34`: **engineering supplies evidence and never accepts its own work** — a lane cannot *independently* verify itself, and the word *"independently"* in ④ is the release's own requirement.
+>
+> ⇒ **The designated implementation lane performs ①–③ and then STOPS** *(which is also ⑤)*. **④ is a SEPARATE designation, made after Act-B GREEN exists**, to a lane with no hand in writing it. ⛔ **No scope is added and none removed by this reading** — the release's five steps are all performed, by two lanes instead of one.
+
+> ### 🚀 Designation performed — 2026-08-19
+>
+> **A fresh Implementation/Domain lane was DESIGNATED and STARTED by Governance**, as the release directs. It inherits none of the recording session's context, was pointed at the verified design and both gate verdicts **as its authority**, and was given the negative list above verbatim.
+>
+> **It was also given the two Gate-2 corrections that bear directly on its work:** **`C-4`** — `H-1`'s *"Domain invariant"* framing **overclaims**, and its `Then` clause ② (*"no target is produced by any means"*) **is not an executable assertion**, so the RED must assert only what a test can actually check; **`C-3`** — a **non-nullable** return type is a legitimate type-level encoding and **does not breach `D3`**, which settles the totality question Gate 1 expressly left open.
+
 > ## ✅ GOVERNANCE RECORD — `EM-DOM-001` Act-B gate · **READY FOR EXECUTION — NO NEW PO/ARB DECISION REQUIRED**
 >
 > **Recorded as directed by the PO/ARB, 2026-08-18.**
