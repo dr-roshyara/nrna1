@@ -27,7 +27,7 @@ final readonly class ElectionOperationalStatus {
 
 > ## The gate asked *"where can an authoritative `HaltedAtGate` legitimately come from?"* — **the answer already exists in the model and has no identity, no persistence and no owner.**
 
-**AG-1, AG-2, AG-3 each have a repository. The operational overlay has none.** `EM-ARCH-001` modelled it as a *type* (§2b) and never as an aggregate. **That, and not a missing concept, is the substance of DEP-5b.**
+**AG-1, AG-2, AG-3 each have a repository. The operational overlay has none.** `EM-ARCH-001` modelled it as a *type* (§2b), not as something with identity. **That, and not a missing concept, is the substance of DEP-5b.** ⚠️ **This states a REACHABILITY gap and deliberately does not assert what the overlay's correct boundary is** — see §8, BND-3.
 
 **Corroborating evidence — the domain already produces lifecycle events from exactly these ingredients:**
 
@@ -127,11 +127,11 @@ Each dependency answers the ten commissioned questions. **Q3/Q4 are answered fro
 | **② owner** | **The operational overlay itself** — it is the only concept that owns the halt↔condition relationship, and `EM-ARCH-001 §2b/§5d` already assigns it that role. |
 | **③ existing concept** | **`ElectionOperationalStatus`** + `OperationalCondition` + `HaltedAtGate`, and `ConditionSemanticsTest::test_halted_and_inoperative_are_representable_together_and_the_halt_is_retained` **already proves the semantics**. |
 | **④ authorized contract?** | 🟡 **The TYPE is authorized and complete. It has no identity, no repository and no producer.** A value object no one can load is not a contract. |
-| **⑤ genuinely missing** | **Aggregate standing for the overlay: an election-scoped identity and a retrieval contract.** ⚠️ **Whether this slice may introduce that contract is BND-2 (§8) — the authorization forbids modifying repositories, and I will not decide whether a NEW domain repository interface falls inside or outside that prohibition.** |
+| **⑤ genuinely missing** | **An election-scoped identity and a retrieval contract for the overlay**, so recorded operational truth can be loaded. ⚠️ **Two things are NOT decided here:** whether that standing is *aggregate* standing (**BND-3**), and whether this slice may introduce the contract at all (**BND-2** — the authorization forbids modifying repositories, and the lane will not read a NEW domain repository interface as inside or outside that prohibition). |
 | **⑥ legitimate states** | `Operative` ∧ no halt · `Operative` ∧ halted · `Inoperative` ∧ no halt · `Inoperative` ∧ halted. **All four are legitimate** (`EM-GOV-070`: OPEN ∧ INOPERATIVE is valid). |
 | **⑦ absence means** | ⚠️ **An election with no recorded operational status = never appointed.** For a constituted election, `Operative` ∧ no halt is the **positive** default and must be **recorded as such**, never inferred from a missing row. |
 | **⑧ causal need** | P-7 requires a `HaltedAtGate`. **It must come from the overlay's recorded state and from nowhere else.** |
-| **⑨ representation** | The overlay becomes the **fourth aggregate**, retrieved per election; `haltedAtGate()` feeds P-7 unchanged. ⛔ **P-7 is consumed, never duplicated.** |
+| **⑨ representation** | The overlay **requires aggregate-level standing, OR another explicitly authorized identity/persistence model** — election-scoped, retrievable — so that `haltedAtGate()` can feed P-7 unchanged. ⚠️ **The aggregate BOUNDARY is not settled by this analysis and is subject to architecture confirmation** (see §8, BND-3): the evidence establishes that the overlay needs *identity and retrieval* to be recorded truth, and **identity + persistence does not by itself imply "aggregate."** ⛔ **P-7 is consumed, never duplicated.** |
 | **⑩ RED** | *"P-7's input is obtained from recorded operational status; a halt that was never recorded cannot be manufactured, and an election that is Inoperative retains its halt across `becameInoperative()` → `restored()`."* |
 
 ## DEP-6 — why Restoration is permitted, incl. `w8` ⚠️ **the state already represents it; the EVENT cannot**
@@ -168,6 +168,7 @@ Each dependency answers the ten commissioned questions. **Q3/Q4 are answered fro
         does NOT own: restoration permission · the halt fact
                         │
    ⬛ OPERATIONAL OVERLAY  ElectionOperationalStatus     ← no identity today
+        ⚠️ boundary NOT settled by this analysis — BND-3
         owns: the retained halt (?HaltedAtGate) · Operative/Inoperative
         owns: restoration EFFECT (restored())
         ⇒ the legitimate supplier of P-7's input          DEP-5b · DEP-6
@@ -251,7 +252,7 @@ Each dependency answers the ten commissioned questions. **Q3/Q4 are answered fro
 
 | # | Change | Discharges | Justification |
 |---|---|---|---|
-| **R-1** | Give the **operational overlay aggregate standing** — election-scoped identity + a retrieval contract, so recorded operational status can be loaded and saved. **The type itself is unchanged.** | DEP-5b, and unblocks DEP-6 | The halt must be *recorded truth*, not a per-request value (`EM-GOV-059(b)`). ⚠️ **Gated on BND-2.** |
+| **R-1** | Give the operational overlay **identity and a retrieval contract** — election-scoped — so recorded operational status can be loaded and saved. **The type itself is unchanged.** **The form of that standing (aggregate or otherwise) is left to architecture.** | DEP-5b, and unblocks DEP-6 | The halt must be *recorded truth*, not a per-request value (`EM-GOV-059(b)`). ⚠️ **Gated on BND-2 and BND-3.** |
 | **R-2** | A **domain policy that produces `ElectionRestored`**, taking the recorded operational status and the Committee, **stating the permission invariant and resolving the target through P-7** — the shape P-6 already establishes. | DEP-6 (i)+(ii), DEP-3 | The model's own precedent; moves the decision out of the handler with no new mechanism. |
 | **R-3** | Make **`ElectionRestored` able to express a restoration with no resumption target**, with the *no-target* case carrying a **named domain meaning** — never a sentinel, never *"unknown"*. | DEP-6 (iii) = ADR-2 (h), DEP-3 | The only identified way to record `w8` without fabrication. |
 
@@ -293,7 +294,7 @@ Each dependency answers the ten commissioned questions. **Q3/Q4 are answered fro
 
 DEP-1, DEP-3, DEP-4, DEP-5b, DEP-6 analysed · P-7 consumed not duplicated · `w8` treated as first-class and its representation located · DEP-10 preserved and its protected set widened · no Application change · no repository change · no protocol read · no provenance reconstruction · no production code.
 
-## 🛑 BOUNDARY — two items I am STOPPING on rather than deciding
+## 🛑 BOUNDARY — three items I am STOPPING on rather than deciding
 
 ### **BND-1 — DEP-2's discriminator is a lifecycle PHASE, which the OperatingCore does not own**
 
@@ -313,6 +314,17 @@ The overlay needs **identity and retrieval** to be recorded truth. The prohibiti
 
 **⚠️ Consequence, stated plainly: if BND-2 is answered "out of scope", then DEP-5b and DEP-6 cannot be discharged at all, because P-7's input has no other legitimate supplier.** Every alternative supplier is an already-prohibited DEP-8/DEP-9/DEP-7 path.
 
+### **BND-3 — the overlay's aggregate BOUNDARY is not settled by this analysis**
+
+**Raised on reviewer challenge and adopted: identity + persistence does NOT by itself imply "aggregate."**
+
+This analysis establishes that the overlay must become **retrievable recorded truth** (`EM-GOV-059(b)` — the halt is *retained*, not recomputed). **It does not establish that the correct model is a fourth aggregate.** The earlier wording *"the overlay becomes the fourth aggregate"* asserted more than the evidence supports and has been withdrawn.
+
+**Why it must not be settled here:** the overlay's boundary depends on **who owns lifecycle transitions for the OperatingCore** — and that is exactly the question the `HaltedAtGate`/`ElectionConstitution` discrepancy (§2) leaves open. **A boundary chosen before that ownership is resolved would fix the wrong seam.** Candidate readings the lane names and does **not** choose: a distinct aggregate · a part of an existing lifecycle aggregate not yet present in the OperatingCore · a projection over recorded lifecycle facts.
+
+**Depends on:** the §2 discrepancy · `EM-ARCH-001 §2b/§5d` · `EM-GOV-059(b)/(c)`.
+**Additional authorization required:** an **architecture confirmation of the overlay's boundary and lifecycle ownership** before R-1 takes any concrete form.
+
 ## Corrections this phase makes to the Rule-8 gate
 
 | Gate statement | Phase-1 finding |
@@ -324,7 +336,7 @@ The overlay needs **identity and retrieval** to be recorded truth. The prohibiti
 | *"`ElectionRestored.$returnsToGate` non-nullable is the gap"* | **Confirmed, and it is the WHOLE of the `w8` gap.** |
 | DEP-10 protected sites: 2 files | **4 guarded sites** across those 2 files. T-10 locks all four. |
 
-**Net effect: the slice is smaller and better-anchored than the gate projected — three changes (R-1…R-3), one blocked on ownership (DEP-2), one already satisfied (DEP-4's core).**
+**Net effect: the slice is smaller and better-anchored than the gate projected — three changes (R-1…R-3), one blocked on ownership (DEP-2), one already satisfied (DEP-4's core). R-1's FORM remains open (BND-3).**
 
 ---
 
@@ -332,6 +344,6 @@ The overlay needs **identity and retrieval** to be recorded truth. The prohibiti
 
 **Phase 1 ends here, as authorized.** No production code · no RED test written · no domain file modified · core byte-identical to `1f4b4c5f`.
 
-**Awaiting:** review and explicit acceptance of this analysis · a ruling on **BND-1** and **BND-2**. **Implementation begins only after both.**
+**Awaiting:** review and explicit acceptance of this analysis · rulings on **BND-1**, **BND-2** and **BND-3**. **Implementation begins only after all three.**
 
 **Traceability:** ADR-1 §6 · ADR-2 §6 (a)–(h) · `EM-DOM-001` authorization + Annotations A/B · Rule-8 gates `7514f145`/`74fcf5e5`/`c4828cdd` · `EM-GOV-026`, `056`, `057`, `059(b)/(c)`, `060`, `062`, `063`, `065`, `066`, `068`, `069`, `070` · `EM-ARCH-001 §2b/§2c/§2e/§5d` · P-3/P-4/P-6/P-7 · `ConditionSemanticsTest` · `1f4b4c5f`.
