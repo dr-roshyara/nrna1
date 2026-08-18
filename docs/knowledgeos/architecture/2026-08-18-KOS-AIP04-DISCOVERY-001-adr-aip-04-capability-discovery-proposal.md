@@ -62,10 +62,10 @@ capability → ownership → bounded context / stewardship → human role → ag
 | **C-2** | **Lifecycle transition & mutation ownership** | the fold; `I-1` single owner; `I-2` HANDOFF ∧ human START; `I-3` sticky STOPPED | BC-7 / `CAP-14` | **live** |
 | **C-3** | **Lifecycle interpretation** | `AST-015` holds *"its own interpretation authority"* (ADR-AIP-03 §1) | BC-7 | **live, contested — `EKS-04`** |
 | **C-4** | **Assignment & next-actor routing** | `REGISTER` role + `executionContext`; "next actor" sections in every governed artifact | BC-7 (mechanism) / ⚠️ **unowned (composition)** | **partial** |
-| **C-5** | **Separation attestation** | `INV-ATTR-2`/`G-2`: separation is **Declared, NOT attestable** | 🔴 **NO OWNER** | **absent** |
+| **C-5** | **Separation attestation** | `INV-ATTR-2`/`G-2`: separation is **Declared, NOT attestable** | 🔴 **NO OWNER** | **absent** ⚠️ **[CORRECTED → *live, narrow, unmodelled* · Amendment 1 §A1.2]** |
 | **C-6** | **Acceptance / closure** | `COMPLETE` refuses any `recordedBy` but `governance`/`human` (`G-1`); `R-34` | BC-7 (mechanism) + PO/ARB (authority) | **live** |
 | **C-7** | **Knowledge curation & promotion** (`generated → authoritative`) | `CAP-03`; Knowledge-Constitution; `authority:` fields | BC-1 Knowledge Governance | 🔴 **NOT BUILT** — constitution + convention only |
-| **C-8** | **Evidence identity & provenance** | 39 `tokenRef`s hard-code paths (`EKS-03`); *"historical location is evidence"* | ⚠️ **weak / implicit** | **fragile** |
+| **C-8** | **Evidence identity & provenance** | 39 `tokenRef`s hard-code paths (`EKS-03`) ⚠️ **[count CORRECTED → 40 · Amendment 1 §A1.3]**; *"historical location is evidence"* | ⚠️ **weak / implicit** | **fragile** |
 | **C-9** | **Decision lineage & supersession** | ADR series; `AIP-11` supersede-never-in-place; decision registers | BC-1 (`INFERRED`) | **convention only** |
 | **C-10** | **Knowledge distribution to the executing session** | `EKS-01`: *"Recording a rule is not sufficient"* | 🔴 **NO OWNER** | **absent** |
 | **C-11** | **Context bootstrap & rehydration** | `CAP-01`, `AST-002`, SessionStart hook | BC-6 Session Continuity | **live** |
@@ -79,6 +79,8 @@ capability → ownership → bounded context / stewardship → human role → ag
 | **C-19** | **Communication composition** (briefings · dossiers · decision surfaces · state explanations) | this estate's own artifact classes; `GOV-HUMAN-01`/`A-7` | 🔴 **NO OWNER** | **practised, undeclared** |
 | **C-20** | **Platform self-governance / registry** | `CAP-13`, `registry.yaml` (`AST-009`) | BC-5 — **placement challenged** (`M-2`/ADR-C2) | **live as data** |
 
+> ⚠️ **[HEADLINE CORRECTED by Amendment 1 §A1.8 — it is THREE unowned (`C-5`, `C-10`, `C-19`) plus `C-14` live-but-unmodelled with a contested home. Original wording retained below.]**
+>
 > ### ⭐ **Four capabilities have NO OWNER: `C-5` separation attestation · `C-10` knowledge distribution · `C-14` policy enforcement · `C-19` communication composition.** `INFERRED`: **these four, not the six roles, are the substance of ADR-AIP-04.**
 
 ## 4 · Capability boundaries — the eleven findings
@@ -86,10 +88,10 @@ capability → ownership → bounded context / stewardship → human role → ag
 | | Finding | Class |
 |---|---|---|
 | **F-1** | **The accepted model contains no Communication capability and no Communication context.** `CAP-01…14` and `BC-1…BC-7` — none is communication, while communication artifacts are pervasive | **OBSERVED** |
-| **F-2** | ⭐ **The frozen "AI Responsibility Matrix" is NOT a role model.** It is an **activity × decision-right** matrix (*AI decides · AI recommends · Human approval · ARB-only · Sponsor-only*) and **contains no actors at all** | **OBSERVED** |
+| **F-2** | ⭐ **The frozen "AI Responsibility Matrix" is NOT a role model.** It is an **activity × decision-right** matrix (*AI decides · AI recommends · Human approval · ARB-only · Sponsor-only*) and **contains no actors at all** ⚠️ **[CORRECTED → it names decision AUTHORITIES but no engineering roles · Amendment 1 §A1.4]** | **OBSERVED** |
 | **F-2a** | Its own stated pattern is **capability-shaped, not role-shaped**: *"the AI **decides** wherever the outcome is a derived fact of an executable check; it **recommends** wherever the outcome is a judgment; humans hold every gate where authority, value, or entrenchment changes."* ⇒ decision rights follow **the nature of the activity**, never the identity of the actor | **OBSERVED** |
-| **F-3** | ⭐ **The six "Engineer" roles appear nowhere in the declared architecture, the capability map, or `registry.yaml`.** Where such titles occur they are **commissioning personas in document headers** (*"Principal Knowledge Engineer / Strategic DDD Architect"*) — an addressing convention for the human commissioner | **OBSERVED** |
-| **F-3a** | ⇒ The six-role model is a **persona vocabulary mistaken for a platform role model** | **INFERRED** |
+| **F-3** | ⭐ **The six "Engineer" roles appear nowhere in the declared architecture, the capability map, or `registry.yaml`.** 🔴 **[FALSIFIED — WITHDRAWN. See Amendment 1 §A1.1; original wording retained as historical.]** Where such titles occur they are **commissioning personas in document headers** (*"Principal Knowledge Engineer / Strategic DDD Architect"*) — an addressing convention for the human commissioner | **OBSERVED** |
+| **F-3a** | ⇒ The six-role model is a **persona vocabulary mistaken for a platform role model** 🔴 **[RESTATED on corrected evidence · Amendment 1 §A1.1]** | **INFERRED** |
 | **F-4** | **Role separation is `Declared`, not attestable** (`INV-ATTR-2`/`G-2`). No mechanism can establish who performed an act; assurance rests entirely on **where the human starts the session** | **OBSERVED** |
 | **F-4a** | ⇒ **A role model cannot deliver the assurance it appears to promise while `C-5` is absent.** Naming roles more precisely does not make separation checkable | **INFERRED** |
 | **F-5** | ⭐ **`EKS-01`: the HANDOFF token's `tokenRef` acted as the de-facto knowledge channel and taught a lane the superseded path.** A lane was *"taught the old path by its workflow record's `tokenRef`"* | **OBSERVED** |
@@ -316,7 +318,7 @@ BC-1 Knowledge Governance                     C-10 DISTRIBUTION            execu
 |---|---|---|
 | **`C-10` Knowledge Distribution** | 🟡 **a CAPABILITY needing a declared owner.** Two homes are defensible: **BC-1** (knowledge reaching its consumer is a knowledge duty) or **BC-6** (it is session-payload machinery, `CAP-01` already does a version of it). ⛔ **Not proposed as a new context** — `ES-001.1` parsimony, and its language is borrowed | `PROPOSED`, medium |
 | **`C-5` Separation Attestation** | 🟡 **a CAPABILITY with a genuinely distinct reason to change and its own language.** Context vs stewardship vs platform service is **OPEN (`OQ-A`)**. ⚠️ It is the only candidate that could survive the full context test — and the one most likely to be *over*-structured | `PROPOSED`, medium-low |
-| **`C-14` Policy Enforcement** | 🟡 **a capability inside BC-2**, not a context — it shares BC-2's language and changes with the tripwire posture | `PROPOSED`, medium-high |
+| **`C-14` Policy Enforcement** | 🟡 **a capability inside BC-2** ⚠️ **[placement WITHDRAWN as unsupported — the live instance traces to BC-3; `OQ-H` · Amendment 1 §A1.2]**, not a context — it shares BC-2's language and changes with the tripwire posture | `PROPOSED`, medium-high |
 | **`C-19` Communication Composition** | 🟡 **a STEWARDSHIP**, not a context (§13) | `PROPOSED`, medium-high |
 | **A "Roles" context** | 🔴 **NOT proposed.** Lane roles are BC-7's (§12); personas are not architecture (`F-3`); authority is `§7`'s | `PROPOSED` (negative), high |
 | BC-1…BC-7 boundaries | ⛔ **untouched.** No existing context is redrawn by this discovery | — |
@@ -341,9 +343,9 @@ BC-1 Knowledge Governance                     C-10 DISTRIBUTION            execu
 
 | # | Affected boundary | Evidence | Consequence | Required decision |
 |---|---|---|---|---|
-| **SB-1** | 🔴 **Conformance authority** | §9 records *conformance evidence* as **shared between BC-1 and BC-3** (`OBSERVED`). **Track 1 has live, accepted decisions about conformance** — Decision 2 (node set + edge set + metric) and the finding that *conformance can never be evidenced by implementation agreement* | **Assigning "conformance evidence" to a Verification capability in ADR-AIP-04 could RELOCATE conformance authority that Track 1 currently exercises** | ⛔ **STOP. Returned to Architecture / PO-ARB as a separate act. ADR-AIP-04 must NOT assign conformance authority** |
+| **SB-1** ⚠️ **[remains CONFLICTED / REQUIRES RE-VERIFICATION · Amendment 1 §A1.7]** | 🔴 **Conformance authority** | §9 records *conformance evidence* as **shared between BC-1 and BC-3** (`OBSERVED`). **Track 1 has live, accepted decisions about conformance** — Decision 2 (node set + edge set + metric) and the finding that *conformance can never be evidenced by implementation agreement* | **Assigning "conformance evidence" to a Verification capability in ADR-AIP-04 could RELOCATE conformance authority that Track 1 currently exercises** | ⛔ **STOP. Returned to Architecture / PO-ARB as a separate act. ADR-AIP-04 must NOT assign conformance authority** |
 | **SB-2** | 🟡 **Evidence-chain location coupling** | `EKS-03`: 39 `tokenRef`s hard-code paths; **Track 1's own records live in that chain** | A `C-8` fix (`PROPOSED I-K2`, location-independent identity) would touch records Track 1 depends on | ⛔ **Do not act. Sequence any `C-8` work against Track 1** |
-| **SB-3** | 🟡 **`C-14` enforcement posture** | `C-15` tripwires are all **Tier-2 non-blocking** (`OBSERVED`) | Making enforcement blocking would change the conditions under which **Track 1 lanes** execute | ⛔ **A posture change needs its own authorization; not proposed here** |
+| **SB-3** ⚠️ **[premise RECALCULATED · Amendment 1 §A1.2]** | 🟡 **`C-14` enforcement posture** | `C-15` tripwires are all **Tier-2 non-blocking** (`OBSERVED`) | Making enforcement blocking would change the conditions under which **Track 1 lanes** execute | ⛔ **A posture change needs its own authorization; not proposed here** |
 
 ⛔ **Nothing in this document modifies the L3 fact model, any accepted semantic decision, the PHP LCOM4 architecture, conformance authority, or `KOS-CONTRACT-NEUTRALITY-001`.**
 
@@ -376,3 +378,253 @@ BC-1 Knowledge Governance                     C-10 DISTRIBUTION            execu
 **Every proposal above remains a proposal. This lane does not complete its own assignment (`G-1`).**
 
 **Traceability:** commission `2026-08-18-KOS-AIP04-DISCOVERY-001-commission.md` · grant `G-KOS-AIP04-DISCOVERY` · lane seq 1–3 · `ADR-AIP-01` (Baseline v1.0, `AIP-11`, `OI-1`) · `ADR-AIP-02` (`AIP-14` Product Primacy) · `ADR-AIP-03`/BC-7 §1/§2/§3/§5/§7 incl. consequence (a) `CAP-14` and (b) the deferral · `Phase-02-Domain-Model.md` §7 AI Responsibility Matrix · `KOS-ARCH-BASELINE-002` capability map v2 (`CAP ↔ BC`) · `EKS-01`…`EKS-04` · `.claude/scripts/workflow-state.php` (`AST-015`) read in full · 15 work-item records · `.claude/platform/registry.yaml` (`AST-001…016`) · `INV-ATTR-2`/`G-1`/`G-2`/`R8`/`R-34`/`R-37`/`ES-001.1` · Track-1 Decisions 1/2 and 13.1 *(cited for `SB-1` only, unmodified)*.
+
+---
+---
+
+# AMENDMENT 1 — **Material corrections after independent verification**
+
+**Appended 2026-08-18. Everything above is the original proposal and is retained.** Only **additive inline pointers** (`⚠️ [… · Amendment 1 §…]`) were inserted above, adjacent to each corrected claim, so a reader cannot act on a falsified statement without seeing that it was corrected. **No original wording was deleted, softened, or rewritten** — the estate's own precedent (`ADR-AIP-01`'s appended addendum, `AIP-11`; and the `EM-IMPL-002` ADRs' inline `FACTUAL CORRECTION` blocks).
+
+**Trigger:** `KOS-AIP04-DISCOVERY-001-independent-verification.md` — verdict 🔴 **RETURNED FOR MATERIAL CORRECTION** (`V-1`, `V-2` material; `V-3`, `V-4` minor; `OQ-5` classification; `SB-1` conflicted).
+**Scope:** ⛔ **CORRECTION ONLY.** No new discovery round · no redesign · no PO/ARB question answered · no role, agent, context or service created · **BC-7, Track 1, the shared L3 contract and every accepted semantic decision untouched.**
+**Corrections were re-derived from primary evidence, not accepted from the verification report.** Where my recount differs from the verifier's, both numbers are given.
+
+### ⚠️ A1.0 · Root cause — owned, because it is itself a finding
+
+The verifier's finding `L` is exact: **both failures are one error — *absence of registration presented as absence of existence*.** The mechanical causes are worth recording because they are avoidable:
+
+| Failure | Mechanical cause |
+|---|---|
+| `V-1` | **The absence claim rested on a search truncated by `head -5`.** The survey command included `docs/knowledgeos/` and would have hit the diagram; **its output was cut before the hit was visible, and the truncated result was then reported as "nowhere."** |
+| `V-2` | A **verified narrow claim** (`C-15`'s three assets are all Tier-2) was **generalised into a broad one** (*"enforcement is absent"*) without searching for a counter-instance. |
+
+> ⭐ **PROPOSED (a durable discipline, not a decision):** **an absence claim requires an exhaustive, untruncated search AND an explicit statement of what was searched.** This is the same shape as Track 1's `O-1` (*a probe that cannot fail is not evidence*) and `O-2` (*a probe that can only observe the final number can fail to notice that it did fail*) — **extended: a search that can be truncated is not a survey.** ⚠️ Offered as an observation for the estate, **not** adopted here.
+
+---
+
+## A1.1 · `V-1` — the six-role evidence, corrected
+
+### The falsifier fired. Primary evidence, read directly:
+
+`docs/knowledgeos/architecture/01-system-context.puml` — **untracked (`??`)** — models the titles as C4 `Person()` actors with responsibilities and relationships:
+
+```
+Person(governance, "Governance Engineer",               "Authority, lifecycle, grants, acceptance")
+Person(comm,       "Governance Communication",          "Next-actor and handover communication")
+Person(arch,       "Architecture Engineer",             "DDD strategic and tactical architecture")
+Person(impl,       "Implementation Engineer",           "Builds approved implementation")
+Person(verifier,   "Independent Verification Engineer", "Falsifies and assures")
+```
+
+> ### 🔴 **BOTH HALVES OF `F-3` ARE WITHDRAWN AS FALSIFIED.** They do **not** appear "nowhere", and where they appear they are **not** commissioning personas — **they are modelled actors in an architecture diagram.** `OBSERVED`.
+
+### The four-way distinction the corrected finding uses
+
+| Class | Contents here | Governed? |
+|---|---|---|
+| **1 · Governed architectural evidence** | `ADR-AIP-01/02/03`, the accepted capability map (`CAP-01…14 ↔ BC-1…BC-7`), `registry.yaml` (`AST-001…016`) | ✅ committed, registered, decided |
+| **2 · Untracked / non-registered architectural material** | **all four `.puml` files + both `README`s in `docs/knowledgeos/architecture/` — every one `??`** | 🔴 **never committed ⇒ not a governed artifact** |
+| **3 · Commissioning persona usage** | *"Principal Knowledge Engineer / Strategic DDD Architect"* in document headers | ⚠️ an addressing convention |
+| **4 · Executable workflow lane roles** | BC-7's declared role sets, validated at `REGISTER`, immutable per `R8` | ✅ mechanically enforced |
+
+> ## **The KnowledgeOS principle, applied: absence from a governed registry ≠ evidence of non-existence.** The original claim collapsed classes 1–4 into one survey. **They are four different kinds of evidence with four different weights.**
+
+### ⭐ Two facts from the **full** `.puml` survey the verifier's condition 1 required — in neither report
+
+| # | `OBSERVED` |
+|---|---|
+| **A1.1-a** | **The two diagrams disagree with each other.** `01-system-context.puml` models **five separate `Person()` actors**; `02-container-architecture.puml` collapses them into **ONE** actor — `Person(engineer, "Engineering Roles", "Governance, Communication, Architecture, Implementation, Verification")`. **One model, two incompatible actor decompositions.** |
+| **A1.1-b** | ⭐ **Neither diagram contains a "Knowledge Engineer", and neither contains a "Communication Engineer" as a peer.** `01` names *"Governance Communication"*; `02` lists *"Communication"* inside a single collapsed actor. ⇒ **the untracked material depicts a FIVE-actor sketch, not the six-role set under evaluation.** |
+
+### `F-3′` — corrected finding *(replaces `F-3`; original retained above)*
+
+> **`OBSERVED`:** the Engineer titles **are** modelled as `Person()` actors — in **untracked, uncommitted** C4 diagrams in `docs/knowledgeos/architecture/`.
+>
+> **`INFERRED` (`F-3a′`, restated on corrected evidence):** that material **does not establish a governed platform role model**, for four independent reasons — ① **untracked and never committed**, so it is not a governed artifact under this estate's own rules; ② **the two diagrams contradict each other** on the actor decomposition (`A1.1-a`); ③ **both omit Knowledge Engineer**, so neither depicts the six-role set being evaluated (`A1.1-b`); ④ **no ADR, decision record, capability-map row or registry entry adopts them.**
+>
+> **`PROPOSED` classification:** **candidate architectural material pending explicit PO/ARB disposition** — ⛔ **not "non-existent", and ⛔ not "governed".**
+
+> ### ⚠️ **The strength of the conclusion has DROPPED, and that is stated rather than hidden.** Original: *"personas, not architecture."* Corrected: *"not yet governed architecture."* **The weaker claim is the one the evidence supports.**
+
+---
+
+## A1.2 · `V-2` — `C-14` corrected to **LIVE, NARROW, UNMODELLED**
+
+### Primary evidence, read directly from `registry.yaml`
+
+```yaml
+- id: AST-007
+  path: .claude/scripts/db-safety-check.sh
+  component: CMP-005
+  adoption: adopted
+  governance_tier: 1               # blocking gate
+  runtime_moments: [PRE_ACTION]
+  verified: { date: 2026-07-08, method: "… blocks migrate:fresh/refresh/db:seed unless testing env" }
+  trace: { capability: CAP-09, context: verification-evidence, principle: AIP-06, decision: PD-06, adr: ADR-AIP-01 }
+```
+
+**`OBSERVED`: `AST-007` is an adopted Tier-1 *blocking* governance gate, running at `PRE_ACTION`, verified 2026-07-08. That is policy enforcement, mechanical and in production today.**
+
+**⛔ The conclusion "policy enforcement is absent" is WITHDRAWN as falsified.**
+
+### The `C-14` / `C-15` distinction is PRESERVED, not erased
+
+| | Assets | Tier | Verified here |
+|---|---|---|---|
+| **`C-14` policy enforcement** | `AST-007` | **Tier 1 — blocking** | ✅ `governance_tier: 1`, `adoption: adopted` |
+| **`C-15` discipline / tripwires** | `AST-005`, `AST-006`, `AST-014` | **Tier 2 — all non-blocking** | ✅ all three re-verified `governance_tier: 2` |
+
+**⇒ The original `C-15` claim was accurate; only its generalisation into `C-14` was wrong.** The two remain **different capabilities with different enforcement postures.**
+
+### Corrected status
+
+| Capability | Original | **Corrected** |
+|---|---|---|
+| `C-14` policy enforcement | 🔴 `absent` / `NO OWNER` | 🟡 **`LIVE, NARROW, UNMODELLED`** — mechanically enforced for **one** subject (database safety); **not modelled as a capability**; **coverage and ownership are the gap, not existence** |
+
+**What survives unchanged (`OBSERVED`):** `EKS-02`'s specific gap is real and unclosed — **`doc-placement.php` is derivation, not enforcement**, and no blocking gate covers documentation placement. `F-7`'s three-way distinction (**authorship ≠ derivation ≠ enforcement**) is verified and stands.
+
+### ⭐ A refinement neither report states — and it withdraws one of my own proposals
+
+**`OBSERVED`: `AST-007`'s own `trace` assigns it to `capability: CAP-09`, `context: verification-evidence` — i.e. the one live blocking enforcement instance sits in *BC-3 Verification & Evidence*, NOT in BC-2 Implementation Guidance.**
+
+⇒ **§14's proposal that `C-14` is *"a capability inside BC-2"* is WITHDRAWN as unsupported by evidence.** The live instance points at BC-3; `EKS-02`'s unclosed gap points at BC-2's derivation surface. **The home is genuinely contested ⇒ new `OQ-H`.** ⛔ **Not decided here.**
+
+### `SB-3` recalculated
+
+| | |
+|---|---|
+| **Original premise** | *"making enforcement blocking would change the conditions under which Track-1 lanes execute"* |
+| **`OBSERVED` correction** | **Blocking enforcement already exists** (`AST-007`, Tier-1, `PRE_ACTION`), and **Track-1 lanes already execute under it.** |
+| **Corrected `SB-3`** | 🟡 **A change of COVERAGE, not of KIND.** *Introducing* blocking enforcement is not a new condition; **extending its coverage to new subjects would be.** ⚠️ Still **not proposed**, still requires its own authorization. **The shared-boundary flag is retained at reduced severity.** |
+
+---
+
+## A1.3 · `V-3` — `EKS-03` count corrected **39 → 40**
+
+**My own recount, independently of the report:** **16** workflow records · **48** `tokenRef`s · **40 path-bearing**. ✅ **Confirms the verifier's 40.**
+
+⚠️ **One discrepancy recorded rather than smoothed:** the verifier counted **17** records; I observe **16**. **The record set is time-varying — it was 15 when the original proposal was drafted.** ⇒ **the durable fix is not another fixed number but a stated observation point:** *40 of 48 `tokenRef`s across 16 records, observed 2026-08-18 at this amendment.*
+
+**The underlying conclusion is UNCHANGED, and per the verifier the drift *strengthens* it:** `F-8` (provenance is path-coupled) and `PROPOSED I-K2` (evidence identity independent of storage location) stand, because **the count moves as ongoing work adds path-bearing references** — which is the coupling, demonstrated.
+
+---
+
+## A1.4 · `V-4` — `F-2` wording corrected
+
+**⛔ WITHDRAWN:** *"contains no actors at all."*
+
+**`OBSERVED` correction:** §7 **names decision AUTHORITIES** — **Chief Architect · ARB · Sponsor**, plus *owner* and *rule owner* — **but names no engineering roles.**
+
+**RETAINED, because it is the substantively useful distinction and it survives:** §7 is an **activity × decision-right** model, **not an engineering-role model.** Its own pattern statement is unaffected: *decisions follow the nature of the activity, never the identity of the actor.* **The authority dimension is preserved, not erased.**
+
+**Consequence for `OQ-5`:** what BC-7 would consume **does** name authorities. ⇒ the split's *"names no actors"* framing is corrected; **the split itself is unaffected**, because it rests on **precedence** and **non-coupling**, both independently verified (§A1.5).
+
+---
+
+## A1.5 · `OQ-5` — the consumption leg reclassified to `INFERRED`
+
+| Leg | Original | **Corrected** | Evidence |
+|---|---|---|---|
+| §7 **predates** BC-7 | `OBSERVED` | ✅ **`OBSERVED`** — unchanged | git: §7 **2026-07-10** vs BC-7 recognition **2026-08-17** |
+| §7 carries **no BC-7 vocabulary** (no hidden coupling) | `OBSERVED` | ✅ **`OBSERVED`** — unchanged | **zero** occurrences of `BC-7` / `lane role` / `session assignment` |
+| **BC-7 *consumes* §7** | ⚠️ presented as observed | 🔴 **`INFERRED`** | **no mechanical linkage exists.** Grants carry scope and cite human acts; **nothing binds a grant to a §7 row** |
+
+⛔ **`OQ-5` is NOT decided.** The proposed split stands as `PROPOSED`; only the consumption leg's classification is corrected.
+
+---
+
+## A1.6 · Disposal of the *"Governance Communication"* actor
+
+**`OBSERVED`:** `Person(comm, "Governance Communication", "Next-actor and handover communication")` with `Rel(comm, kos, "Coordinates actor context")` — **in an untracked file.**
+
+> ## **Classification: UNTRACKED ARCHITECTURAL EVIDENCE REQUIRING EXPLICIT PO/ARB TREATMENT BEFORE IT CAN BE CONSIDERED GOVERNED ARCHITECTURAL TRUTH.**
+> ⛔ **No replacement role is invented. It is NOT silently declared valid architecture. It is NOT dismissed.**
+
+### Reconciliation with `F-1` and `C-19`
+
+| Claim | Status after correction |
+|---|---|
+| **`F-1`** *"the ACCEPTED model contains no Communication capability and no Communication context"* | ✅ **STANDS, `OBSERVED`** — `CAP-01…14` and `BC-1…BC-7` contain none, and **the diagram is not part of the accepted model** (untracked, class 2 of §A1.1) |
+| **`C-19`** *"communication composition — no owner"* | ✅ **STANDS for governed artifacts** — ⚠️ **and is now qualified:** the diagram shows an **undisposed intent** to model communication as first-class. `C-19`'s status is *unowned in governed architecture*, **not** *unconsidered* |
+| **§13's stewardship proposal** | 🟡 **Weakly concurred with, at correct strength.** The actor's own name and description place communication **inside Governance** (*"Governance Communication"*, *"next-actor and handover"*) rather than as a peer context — the same shape §13 proposed. ⚠️ **But untracked material corroborates nothing governed: this is a *concurring sketch*, not evidence.** `INFERRED`, low weight |
+| **The honest counter** | ⚠️ Someone modelled communication as first-class enough to draw an actor and a relationship. **That is a reason for the PO/ARB to dispose of it explicitly rather than for this amendment to argue it away** ⇒ new **`OQ-I`** |
+
+---
+
+## A1.7 · `SB-1` — qualification preserved
+
+> ## ⚠️ **`SB-1` REMAINS `CONFLICTED / REQUIRES RE-VERIFICATION`. It is NOT resolved by this amendment and NOT resolved by the verification.**
+
+**`OBSERVED`, from the verification report §1②:** the verifier **is the Track-1 implementation engineer (`4c6c1dac`)** and the author of the Track-1 fit assessment and reconciliation, **and recuses from `SB-1`**.
+
+⛔ **The current verification MUST NOT be used as independent evidence for `SB-1`.** Its `SB-1` row is a **recusal**, not a clearance.
+
+**`SB-1`'s substance is unchanged:** conformance evidence is shared BC-1/BC-3 while **Track 1 already exercises live accepted conformance decisions** ⇒ **ADR-AIP-04 must not assign conformance authority**; the question returns to Architecture / PO-ARB as a separate act.
+
+⚠️ **The conflict's direction is recorded because the verifier recorded it — the proposal already *halts* `SB-1`, so confirming it preserves the status quo rather than advantaging Track-1 work. That mitigates the risk; it does NOT cure the conflict.** **Re-verification must come from a process with no Track-1 authorship.**
+
+---
+
+## A1.8 · Impact assessment on the overall thesis
+
+### 🔴 One headline changes materially
+
+| | |
+|---|---|
+| **Original** | *"**Four** capabilities have NO OWNER: `C-5` · `C-10` · `C-14` · `C-19`"* |
+| **Corrected** | > ## **THREE capabilities have no owner — `C-5` separation attestation · `C-10` knowledge distribution · `C-19` communication composition — and a FOURTH, `C-14` policy enforcement, is LIVE BUT UNMODELLED with a contested home (`OQ-H`).** |
+
+**This was the discovery's most quotable line and it is corrected explicitly, not quietly.**
+
+### ✅ What survives independent falsification, unchanged
+
+| Finding | Status |
+|---|---|
+| **All mechanism evidence** — `G-1` closure refusal, `R8`, `REGISTER` role validation, this lane's mechanical exclusion of `implementation` | ✅ **reproduced exactly by the verifier** |
+| ⭐ **The invariant asymmetry (§7):** every invariant BC-7 owns is **mechanically enforced**; almost every invariant outside BC-7 is **declared only** ⇒ *assurance is strong where it is executable and weak where it is prose* | ✅ **unchallenged — the discovery's core structural result** |
+| ⭐ **`C-5` cannot be discharged by an agent** — a process cannot attest its own separation | ✅ **verified; called the strongest argument in the proposal** |
+| **`C-10` is the strongest evidenced gap** (`EKS-01`; the mechanism is structural — 48 uses, not incidental) | ✅ **verified** |
+| **`C-19` fails its own five-test matrix ⇒ stewardship, not context** | ✅ **verified, and specifically praised as applying the test rather than decorating it** |
+| **`F-7`** authorship ≠ derivation ≠ enforcement · **`F-11`** Product Primacy · **`F-10`** ADR-C7 pre-emption | ✅ **verified** |
+| **`F-9`/`F-9a`** role fluidity; Governance's recording duties are discharged by the holding lane while **acceptance is strictly separated** | ✅ **independently corroborated — the verifier records its own three self-recorded STARTs** |
+| **Parsimony** — no bounded context created; three of five candidates proposed as *not* contexts | ✅ **verified** |
+| **Track-1 safety** | ✅ **verified clean** — no L3, semantic decision or Track-1 artifact touched |
+
+### ⚠️ What is weakened
+
+**`F-3`/`F-3a`** — conclusion strength drops from *"personas"* to *"not yet governed architecture"* (§A1.1) · **`SB-3`** — coverage, not kind (§A1.2) · **§14's `C-14` → BC-2 placement** — withdrawn as unsupported (§A1.2) · **`OQ-5` consumption** — `OBSERVED` → `INFERRED` (§A1.5) · **`F-2` wording** (§A1.4) · **`EKS-03` count** (§A1.3).
+
+### The thesis after correction
+
+> **The discovery's framing survives: the question is capability ownership, not role creation — and the load-bearing structural result (mechanical inside BC-7, declared outside) is untouched.** **What changed is that one capability is live rather than absent, one absence claim was withdrawn, and one conclusion now rests on a weaker but defensible basis.** ⛔ **No finding was strengthened by this amendment, and none should be read as strengthened.**
+
+---
+
+## A1.9 · Corrected PO/ARB decision set
+
+**Supersedes §17's table. Original retained above. Corrections in bold.**
+
+| # | Decision | Minimum the act must state |
+|---|---|---|
+| **1** | Is the six-role model adopted, rejected, or re-classified? | ⚠️ **CORRECTED framing:** the choice is no longer *"architecture vs personas"*. It is between **adopting**, **rejecting**, or **treating the untracked diagrams as candidate material requiring disposition** (§A1.1) |
+| **2** | `OQ-5` role-model ownership — BC-7's own · governance-published · **or the proposed split** | unchanged; ⚠️ **noting the consumption leg is `INFERRED`, not observed** (§A1.5) |
+| **3** | **CORRECTED:** are **`C-5`, `C-10`, `C-19`** accepted as **unowned capabilities**, and is **`C-14`** accepted as **live-but-unmodelled**? | accept/reject **each of the four separately** — ⚠️ **a blanket answer would repeat the exact conflation that produced `V-2`** |
+| **4** | Owner for `C-10` — BC-1 or BC-6 (`OQ-B`) | the owner, or an explicit deferral with a named trigger |
+| **5** | Sequencing — capability-building before role formalization (`OQ-G`) | ⚠️ **CORRECTED input:** `C-14` is now a **coverage** problem, which may re-order it relative to `C-10` |
+| **6** | **`SB-1`** — that ADR-AIP-04 must **not** assign conformance authority | ⚠️ **AND: `SB-1` must be RE-VERIFIED by a process with NO Track-1 authorship** (§A1.7) |
+| **7** | Who verifies **this amendment** | a process that is **neither this producer nor the first verifier** — and **preferably with no Track-1 authorship**, so `SB-1` can be cleared in the same pass |
+| **8** | 🆕 **`OQ-H` — `C-14`'s home: BC-2 or BC-3?** | the live instance traces to **BC-3**; `EKS-02`'s gap points at **BC-2**. The act should name the owner or defer with a trigger (§A1.2) |
+| **9** | 🆕 **`OQ-I` — disposition of the untracked architecture material** — the four `.puml` files and both `README`s, including the **"Governance Communication"** actor and the **two contradictory actor decompositions** | one of: **adopt** (which requires committing and registering them) · **reject** · **retain as explicitly non-governed drafts.** ⛔ **They cannot remain undisposed and be cited as evidence** (§A1.1, §A1.6) |
+
+**Carried forward unchanged and unanswered:** `OQ-A` · `OQ-B` · `OQ-C` (ADR-C7) · `OQ-D` (EKP/PKS) · `OQ-E` (`OI-1` "review"; "role") · `OQ-F` (ADR-C2) · `OQ-G` · `SB-2`.
+
+---
+
+**AMENDMENT 1 DELIVERED · STOPPING.**
+⛔ **No new discovery · no redesign · no PO/ARB question answered · no role, agent, context or service created · BC-7 not reopened · Track 1, the shared L3 contract and all accepted semantic decisions untouched · `SB-1` NOT resolved · the untracked diagrams NOT adopted and NOT committed · no self-verification · no self-acceptance · assignment NOT closed (`G-1`).**
+
+**Next actor: an independent verification process — neither this producer nor the first verifier, and preferably with no Track-1 authorship — re-verifies the corrected discovery. Only then: PO/ARB decision.**
+
+**Amendment traceability:** `KOS-AIP04-DISCOVERY-001-independent-verification.md` (`V-1`…`V-4`, findings `E`/`I`/`L`, §1② recusal, conditions 1–6) · primary evidence re-derived: **`01-system-context.puml`** and **`02-container-architecture.puml`** (both `??`, full `Person()` survey) · `registry.yaml` `AST-005/006/007/014` (tiers re-read; `AST-007` `trace` → `CAP-09`/`verification-evidence`) · 16 workflow records / 48 `tokenRef`s / **40 path-bearing**, observed 2026-08-18 · `Phase-02-Domain-Model.md` §7 (authorities: Chief Architect · ARB · Sponsor) · git precedence 2026-07-10 vs 2026-08-17 · `AIP-11` addendum precedent · `INV-ATTR-2`/`G-1`/`G-2`/`R8`/`R-34`.
