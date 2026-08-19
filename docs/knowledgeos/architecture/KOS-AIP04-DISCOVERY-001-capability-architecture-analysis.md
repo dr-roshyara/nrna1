@@ -13,11 +13,11 @@
 
 **`PROPOSED` — none of the four is recommended as a new bounded context, and one is proposed not to be a distinct capability at all.**
 
-| | Capability | **Proposed category** | Bounded context? |
+| | Capability | **Proposed category** | Bounded context? | ⚠️ **[EXISTENCE VERDICT MISSING — added by Amendment 1 §A1.1: category was answered without separately answering existence]** |
 |---|---|---|---|
 | **C-5** | Separation attestation | **cross-context control-plane assurance capability** | 🔴 **No** — owns no attestation record, assurance level, exception or dispute lifecycle |
 | **C-10** | Knowledge distribution | **cross-layer delivery capability** whose *smallest coherent boundary* is **applicability + receipt** | 🔴 **No** — but the *receipt* is authoritative state nobody holds ⇒ the one live threshold question |
-| **C-14** | Policy enforcement | ⭐ **PROPOSED: NOT a distinct capability as posited** — a **coverage gap in an existing, owned enforcement pattern** | 🔴 **No** |
+| **C-14** | Policy enforcement | ⭐ **PROPOSED: NOT a distinct capability as posited** 🔴 **[SUPERSEDED by Amendment 1 §A1.4 — replaced with the provisional wording; existence is `CONTESTED`, not `NO`]** — a **coverage gap in an existing, owned enforcement pattern** | 🔴 **No** |
 | **C-19** | Communication composition | **stewardship / cross-cutting expression concern** | 🔴 **No** — fails the ten-part test on 6 of 10 |
 
 > ### ⭐ **The structural finding: the four are not four candidate contexts. They are one CONTROL LOOP with four distinct capabilities in it.**
@@ -112,7 +112,7 @@
 | **access separation** | 🔴 **none** — every lane has the same filesystem and tool access | GOVERNED · `OBSERVED` |
 | **artifact/evidence isolation** | 🔴 **none** — any lane may write any artifact | GOVERNED · `OBSERVED` |
 | **evidence immutability** | 🟡 **partial** — the transition log is append-only; documents are not | GOVERNED · `OBSERVED` |
-| **organizational independence** | ⚪ **not applicable / undefined** in a single-operator estate | `OPEN` |
+| **organizational independence** | ⚪ **not applicable / undefined** in a single-operator estate 🔴 **[SUPERSEDED by Amendment 1 §A1.2 → `NOT_ESTABLISHED`; "not applicable" risked collapsing into PASS]** | `OPEN` |
 | **assessment impartiality** | 🟡 **procedural only** — recusals are honoured by disclosure, and *were* honoured twice (`SB-1`) | GOVERNED · `OBSERVED` |
 
 > ⭐ **`INFERRED` — the sharpest C-5 result: separation is already STRONG where it is authority-shaped and ABSENT where it is identity- or access-shaped.** Authority separation is mechanical; **identity, access and artifact isolation are not enforced at all.** ⇒ **"separation" is not one property with one gap. It is nine properties with three different maturity levels**, which is why a boolean attestation would misdescribe the estate. **`EXTERNAL / CORROBORATIVE`:** the research reaches the same conclusion independently — *"separation is graded rather than binary"*, and it challenges *"role-name difference as evidence of independence"* and *"self-declaration as sufficient."*
@@ -200,7 +200,7 @@ created → governed → published → selected → retrieved → assembled → 
 | **audit** | ✅ the protocol / transition log | GOVERNED |
 | **advisory tripwires** | ✅ `CAP-06` — `AST-005/006/014`, **all `governance_tier: 2`, non-blocking** | GOVERNED |
 
-> ## ⭐ **`PROPOSED` — the answer is NO: on current evidence there is no distinct `C-14` capability.**
+> ## ⭐ **`PROPOSED` — the answer is NO: on current evidence there is no distinct `C-14` capability.** 🔴 **[SUPERSEDED by Amendment 1 §A1.4. This was a CATEGORY/OWNERSHIP argument doing an EXISTENCE test's work — the exact unsound move AMD2's refinement 1 names. Original wording retained below as historical.]**
 > **Every stage of the policy-to-effect path is already performed by an owned capability.** The complete pattern — *observe → evaluate → admit/block → halt → escalate* — **exists today at Tier-1**, owned by **`CAP-09` Constitutional Observation & Escalation (BC-3)**, with write-paths *"deliberately closed."*
 >
 > **What `EKS-02` actually records is not a missing capability but a missing COVERAGE:** `CAP-09`'s definition scopes it to **constitutional guards (`CI-1..5`/`Q7`)**. Documentation placement is **derived but never admitted-or-blocked**, because it is not a constitutional guard. ⇒ ***"the rule exists, but the workflow does not make it hard enough to violate"*** **is a policy-TIERING gap in existing machinery.**
@@ -305,7 +305,7 @@ BC-1 defines policy/knowledge → C-10 delivers it to the gated session → C-14
                                    C-19 expresses the outcome  ←  C-5 attests who acted, and how separately
 ```
 
-**`INFERRED` consequences the PO/ARB should weigh:** **`C-14` cannot enforce a policy the session never received** ⇒ `C-14` **depends on** `C-10`. **`C-5` attests acts that `C-14` gates** ⇒ they share an evidence substrate (provenance). **`C-19` is downstream of all three** and adds no state. ⇒ ⭐ **build order is not arbitrary: `C-10` before `C-14` coverage; provenance before `C-5`; `C-19` last or never.**
+**`INFERRED` consequences the PO/ARB should weigh:** **`C-14` cannot enforce a policy the session never received** ⇒ `C-14` **depends on** `C-10`. **`C-5` attests acts that `C-14` gates** ⇒ they share an evidence substrate (provenance). **`C-19` is downstream of all three** and adds no state. ⇒ ⚠️ **[RECLASSIFIED by Amendment 1 §A1.7 into SEMANTIC / EVIDENCE / IMPLEMENTATION dependencies — a dependency is not ownership]** ⭐ **build order is not arbitrary: `C-10` before `C-14` coverage; provenance before `C-5`; `C-19` last or never.**
 
 ### 8.5 Overlaps and duplications
 
@@ -379,7 +379,7 @@ BC-1 defines policy/knowledge → C-10 delivers it to the gated session → C-14
 |---|---|---|
 | **1** | **Category for each of the four** — from the five admissible categories | ⛔ four separate answers; a blanket answer would repeat the `V-2` conflation |
 | **2** | **`C-14`: Reading 1 or Reading 2** | ⭐ **If Reading 1, the remedy is a POLICY/TIER act, not a new capability** — and `SB-3` reduces accordingly |
-| **3** | **`OQ-J` — is `C-10`'s receipt authoritative state?** | ⭐ the only decision here that flips a category |
+| **3** | **`OQ-J`** 🔴 **[REFORMULATED by Amendment 1 §A1.3 — *"authoritative for WHICH claim?"*, split into five: delivery · possession · applicability · execution · compliance. The yes/no form let one authority cover five assertions.]** ~~is `C-10`'s receipt authoritative state?~~ | ⭐ the only decision here that flips a category |
 | **4** | **`OQ-K` — halt or warn on missing required knowledge** | determines whether `C-10` is control-plane |
 | **5** | **Owners / stewards** — or explicit deferral with named triggers | §10 options; **none selected** |
 | **6** | **`OQ-L` — adopt the shared control-plane invariant?** | already implemented twice, never stated |
@@ -415,3 +415,326 @@ BC-1 defines policy/knowledge → C-10 delivers it to the gated session → C-14
 **ANALYSIS DELIVERED · STOPPING.** ⛔ **No self-verification · no self-acceptance · assignment NOT closed (`G-1`).** **Next actor: PO/ARB.**
 
 **Traceability:** `G-KOS-AIP04-DECISION-PREP` + `-AMD1` · assignment seq 15/17/18 · **six-role adoption registration 2026-08-19** (the decision, the non-equivalences, the historical-material clause) · Verification #3 (`READY FOR PO/ARB DECISION`; **`SB-1` CLEARED, durable**; §7.1's declined `OQ-A` answer) · `G-KOS-AIP04-VERIFY3-AMD1`/`-AMD2` · Correction #2 (`C-14` `CONTESTED`; `OQ-H`; the completed 104-file survey) · Amendment 1 · the discovery proposal · the record-integrity disposition · **code/registry read directly: `registry.yaml` `AST-005/006/007/014` (tiers, adoption, `PRE_ACTION`, `AST-007.trace → CAP-09/verification-evidence`) · `Phase-02.5-Certification-Plan.md` `CAP-09` (*"halt, escalate, never retry, never modify"*, Tier-1, write-paths closed) · `CAP↔BC` map v2 · `workflow-state.php` (`G-1`/`G-2`/`R8`/`REGISTER` role validation) · `EKS-01`/`EKS-02`** · `INV-ATTR-1`/`INV-ATTR-2` (adopted, P-1–P-6 2026-08-15) · `A-7`/`GOV-HUMAN-01` · **Class C: `perpleixity_research_on_roles.md` (1595 lines, untracked)** · `R-34`/`P-2`.
+
+---
+---
+
+# AMENDMENT 1 — epistemic precision under `G-KOS-AIP04-DECISION-PREP-AMD2`
+
+| | |
+|---|---|
+| **Status** | 🟡 **AMENDMENT to the existing analysis. Not a competing decision surface. Nothing decided.** |
+| **Authority** | `G-KOS-AIP04-DECISION-PREP` + **`-AMD1`** + **`-AMD2`** (registered `39f14f15`), read together, append-only |
+| **Lane** | `S4-architecture-aip04-decision-prep`, **ACTIVE at seq 18 and holding mutation ownership** ⇒ **no new START required**, and none was taken |
+| **Producing process** | **`claude-code-session:5e1dd9ee`** — self-declared, **not attestable** (`INV-ATTR-2`/`G-2`); the author of the original analysis and of the three prior corrections in this work item |
+| **Original** | **`ba74dbdd` retained in full above.** Six additive supersession pointers were inserted beside superseded statements, **edited by verified line index with a content assertion before writing** — the discipline `W-2` taught in this same work item |
+| **Next actor** | **Independent Verification** |
+
+### ⚠️ A1.0 · The source review is not in the estate — recorded, not worked around
+
+**`OBSERVED`, independently re-verified by this lane:** a full-repository search (all file types, tracked and untracked, no truncation) for an artifact matching *"independent review of the capability architecture analysis"* returns **nothing**, and `docs/knowledgeos/reviews/` contains **no capability-architecture review**. The registration commit states the same in its own subject.
+
+⇒ **The refinements below are implemented as the PO/ARB's registered instructions on their own merits.** ⛔ **No finding is attributed to a review, no review is cited as evidence, and no reviewer's independence is asserted** — it would be unattestable here in any case.
+
+> ### ⭐ **`INFERRED` — and it belongs in the analysis, not only in the record:** **this is the third external input in two days whose artifact is absent from the governed channel** — the 925-line role model (`OQ-I`), the external research (untracked), and now this review.
+> **That recurrence is evidence about a KNOWLEDGE-CHANNEL property: substantive input is reaching governed decisions from outside the governed channel, and each time its provenance is unattestable.** ⚠️ **It bears on `C-10`, and per `AMD1` it is NOT assumed to be owned by `C-10`** — it may equally be a Governance-intake concern. ⛔ **Recorded as evidence; no owner inferred.** *(It is also `EXTERNAL`-adjacent evidence for the research's own challenge: "publication does not imply execution-time use" — here, input is used before it is published at all.)*
+
+---
+
+## A1.1 · REFINEMENT 1 — capability **existence** separated from capability **category**
+
+### The unsound move, named precisely
+
+**`OBSERVED` in the original:** the analysis answered *category* and then presented the result as an answer about *existence*. **The clearest instance is `C-14`:** *"no distinct capability exists"* was supported by *"every stage already has an owner"* — **an ownership/category argument doing an existence test's work.** ⛔ **A capability can be real and belong to no context of its own.**
+
+**`AMD2`'s fourth existence value — `NOT YET ESTABLISHED` — was the answer previously unavailable, and it is the honest one across part of this surface.**
+
+### The two verdicts, now separate
+
+| | **(A) EXISTENCE** | Basis for (A) — *stated independently of category* | **(B) CATEGORY** *(only after A)* |
+|---|---|---|---|
+| **C-5** | ✅ **YES** | ⭐ **two independent grounds:** ① `INV-ATTR-2` is an **ADOPTED invariant *about* separation attestation** (PO/ARB `P-1`–`P-6`, 2026-08-15) — the estate has decided a rule that **presupposes** the capability; ② the capability has been **performed**: Verification #3 established authorship from write-class provenance. **A capability with an adopted governing invariant that has been performed exists.** `OBSERVED` | **control-plane function** — argued **positively** in §A1.2, not residually |
+| **C-10** | 🟡 **NOT YET ESTABLISHED** | the **need** is evidenced (`EKS-01`), but **no instance of applicability-determination or receipt has ever been performed**, and no invariant about it is adopted. ⚠️ **Its necessity is `INFERRED`; its existence is not.** *(Delivery in the broad sense does occur — `CAP-01`'s bootstrap — but that is BC-6's, not C-10's bounded claim: §A1.3)* | **deferred until (A)** — ⛔ a category for a not-yet-established capability would be premature |
+| **C-14** | 🟡 **CONTESTED** | see the provisional wording, §A1.4 | **deferred** — contested existence cannot carry a category |
+| **C-19** | ✅ **YES** | ⭐ **and refinement 1 CHANGES this result:** composition demonstrably occurs — every governed artifact is a composed rendering — **and `A-7`/`GOV-HUMAN-01` is an ADOPTED rule about it.** `OBSERVED`. **The original gave C-19 only a category ("stewardship") and never asked whether the capability existed; it does.** | **stewardship / cross-cutting concern** — revalidated §A1.5 |
+
+⛔ **Neither forbidden inference is used anywhere below:** *"not a bounded context → not a capability"* and *"not a bounded context → cross-context capability"*. **Every category claim is argued from positive properties.**
+
+> ⭐ **What refinement 1 actually did to this analysis, stated plainly: it upgraded two verdicts and downgraded two.** **C-5 and C-19 gain an explicit `YES` on existence** they never had; **C-14's `NO` becomes `CONTESTED`** and **C-10's implicit `YES` becomes `NOT YET ESTABLISHED`**. ⛔ **Only one of the four moved in the direction that flatters the original analysis.**
+
+---
+
+## A1.2 · C-5 — reworked as four separate questions
+
+| # | Question | Answer |
+|---|---|---|
+| **1** | Does **separation attestation** exist as a capability? | ✅ **YES** — §A1.1 |
+| **2** | Is there an **authoritative assurance RESULT**? | 🟡 **produced once, ad hoc** (`SB-1`), never as a standing artifact. `OBSERVED` |
+| **3** | Is there a **C-5-OWNED authoritative aggregate/state**? | 🔴 **NO** — no attestation record, assurance level, exception or dispute. `OBSERVED` |
+| **4** | Is C-5 **bounded-context eligible**? | 🔴 **NO on current evidence** — because of (3) |
+
+> ## ⭐ **The distinction `AMD2` requires, stated exactly:**
+> **The absence of a C-5-owned authoritative state is evidence AGAINST a separate C-5 BOUNDED CONTEXT.**
+> ⛔ **It is NOT evidence against the EXISTENCE of separation attestation as a capability.**
+> **The original blurred these. This amendment separates them, and the existence verdict is `YES` while the bounded-context verdict is `NO` — both at once, with no contradiction.**
+
+### Why **control-plane function** fits — argued positively
+
+`INFERRED`, on four properties held *simultaneously*: ① it evaluates a condition **about an act**, never about domain data; ② it emits a **verdict**, not a value; ③ it may **withhold a claim** an act would otherwise make; ④ **it is defeated if the gated party issues it** (§A1.6). ⛔ **None of these is "it failed the bounded-context test."**
+
+### The nine dimensions — with `ORGANIZATIONAL_INDEPENDENCE` modelled as `AMD2` requires
+
+| Dimension | State | Class |
+|---|---|---|
+| role difference | ✅ **ESTABLISHED** — validated at `REGISTER`, immutable per `R8` | `OBSERVED` |
+| identity difference | 🔴 **NOT_ESTABLISHED** — `executionContext` is free text | `OBSERVED` |
+| assignment separation | ✅ **ESTABLISHED** — one assignment per lane, predecessor chain | `OBSERVED` |
+| authority separation | ✅ **ESTABLISHED, mechanically** — `G-1`, `G-2` | `OBSERVED` |
+| access separation | 🔴 **NOT_ESTABLISHED** — every lane has identical access | `OBSERVED` |
+| artifact isolation | 🔴 **NOT_ESTABLISHED** — any lane may write any artifact | `OBSERVED` |
+| evidence immutability | 🟡 **PARTIAL** — the transition log is append-only; documents are not | `OBSERVED` |
+| ⭐ **organizational independence** | 🔴 **`NOT_ESTABLISHED`** *(not `NOT_APPLICABLE`)* | `OBSERVED` |
+| assessment impartiality | 🟡 **PROCEDURAL ONLY** — honoured by disclosure; honoured twice in fact | `OBSERVED` |
+
+**The four-state model, and the correction it forces:**
+
+```
+NOT_APPLICABLE        the dimension does not apply to this system at all
+NOT_ESTABLISHED       it applies, and the system cannot currently establish it   ← C-5 here
+ESTABLISHED           established by the platform's own mechanism
+EXTERNALLY_ATTESTED   established by a party outside the platform
+```
+
+> ### 🔴 **The original wrote *"⚪ not applicable / undefined in a single-operator estate."* That is SUPERSEDED and it was the wrong state.**
+> **`DECIDED` constraint, registered:** in a single-operator environment **organizational independence is not among the achievable separations, and it MUST NOT be represented as established.**
+> ⛔ **`NOT_APPLICABLE` must never collapse into `PASS`.** *"Not applicable"* invites a reader to discount the row; **`NOT_ESTABLISHED` states that a real assurance dimension is missing and cannot presently be supplied.** ⭐ **That is a materially weaker assurance posture than the original implied, and the amendment states it as such.**
+
+### What the platform can establish **mechanically** — separated from what it does
+
+| | Can it be established mechanically? | Is it established today? |
+|---|---|---|
+| **process separation** | ✅ **yes** — demonstrated: write-class `tool_use` provenance identified an artifact's producer (`SB-1`) | 🟡 **once, by hand** — no standing mechanism |
+| **independent execution** | 🟡 **partially** — provenance shows *which* process acted, not that it ran in an isolated environment | 🔴 no |
+| **access separation** | 🔴 **not with current mechanisms** — nothing constrains a lane's access | 🔴 no |
+| **artifact isolation** | 🔴 **not with current mechanisms** | 🔴 no |
+
+**`EXTERNAL / CORROBORATIVE`:** the research supports *"access-enforced separation"* and *"evidence of actual assignment and authorization"*, challenges *"self-declaration as sufficient"*, and lists as unknown *"the acceptable fallback when independent personnel are unavailable"* — ⚠️ **the precise gap a single-operator estate has, and it offers no answer.**
+
+**Ownership: `OPEN`.** ⛔ Unchanged, and `C-5`→Verification Engineer remains a **forbidden hypothesis**, not a finding.
+
+---
+
+## A1.3 · C-10 — the receipt model replaced with seven distinguished states
+
+| State | Meaning | Status today | Owner today |
+|---|---|---|---|
+| `ContextPublished` | the governed knowledge exists and is published | ✅ **occurs** | **BC-1** (`CAP-03` **not built**) |
+| `ContextSelected` | the subset **applicable to this act** is determined | 🔴 **does not occur** | 🔴 **nobody** |
+| `ContextDelivered` | it is transmitted toward the session | 🟡 **occurs incidentally** — `CAP-01` bootstrap; and **leaking through BC-7's `tokenRef`** | BC-6 / BC-7 |
+| `ContextAvailable` | it is present in the session's working context | 🟡 **occurs, unevidenced** | BC-6 |
+| `ContextAcknowledged` | the session records that it holds a specific version | 🔴 **does not occur** | 🔴 **nobody** |
+| `ContextApplied` | the session's act conforms to it | 🔴 **not observable** | 🔴 nobody |
+| `ContextVerified` | a third party confirms application | 🔴 **does not occur** | 🔴 nobody |
+
+> ⛔ **The three prohibitions, honoured explicitly:** **receipt ≠ application** · **receipt ≠ understanding** · **receipt ≠ compliance.** ⭐ **A receipt can only ever evidence `ContextAcknowledged`. `ContextApplied` and `ContextVerified` are different claims requiring different evidence, and no receipt can supply them.**
+
+### `I-K1` reformulated — `PROPOSED`, verbatim as registered
+
+> **"Before a governed act begins, the session must possess a valid receipt for the applicable context version required by the act."**
+
+⚠️ **`PROPOSED` until PO/ARB.** **Three load-bearing terms are undefined and must not be quietly assumed:** *valid* · *applicable* · *required by the act*. **Each is a separate decision** — and *applicable* is `ContextSelected`, which **nobody owns**.
+
+### `OQ-J` reformulated — **authoritative for WHICH claim?**
+
+| # | Claim | What a receipt could authoritatively assert | Verdict |
+|---|---|---|---|
+| **1** | **delivery authority** | *"the platform sent version V toward this session"* | ✅ **a receipt can carry this** |
+| **2** | **possession authority** | *"the session held version V at START"* | ✅ **a receipt can carry this** — this is `I-K1`'s actual scope |
+| **3** | **applicability authority** | *"version V was the right context for this act"* | 🔴 **a receipt CANNOT carry this** — it is a **judgement**, and unowned |
+| **4** | **execution authority** | *"the act was permitted to proceed"* | 🔴 **a receipt cannot carry this** — that is a **gate's** verdict (`C-14`-shaped) |
+| **5** | **compliance authority** | *"the act conformed to version V"* | 🔴 **a receipt cannot carry this** — it needs `ContextVerified` |
+
+> ⭐ **`INFERRED` — the reformulation's real result: a receipt is authoritative for at most TWO of the five claims.** **The original yes/no form would have let a single "authoritative receipt" decision silently cover all five** — including *applicability* (a judgement nobody owns) and *compliance* (which requires third-party verification). ⛔ **The five must be decided separately; three of them are not receipt-shaped at all.**
+
+### Two exclusions, restated because they narrow the case
+
+⛔ **Missing STARTs, off-record execution and the Amendment-1 provenance gap are NOT C-10 evidence** — they are **BC-7 lifecycle** concerns about whether an act was *recorded*, not whether knowledge *arrived*. *(Restated from the original; `AMD2` re-requires it.)*
+⚠️ **And the absent-artifact recurrence (§A1.0) is recorded as evidence bearing on C-10 but is NOT claimed by it** — it may be a Governance-intake concern.
+
+**Ownership: `OPEN` (`OQ-B`).** ⛔ `C-10`→Knowledge Engineer remains a forbidden hypothesis.
+
+---
+
+## A1.4 · C-14 — the categorical denial replaced
+
+> ## **`PROPOSED`, verbatim as registered:**
+> **"On current evidence, no platform-wide C-14 capability is established. A Tier-1 enforcement pattern exists within `CAP-09`, but whether that instance constitutes the same capability as C-14 remains OPEN."**
+
+🔴 **The original's *"there is no distinct C-14 capability"* is WITHDRAWN.** *"No platform-wide capability is established"* and *"no capability exists"* are **different claims, and only the first is supported.** **Existence verdict: `CONTESTED`.**
+
+**Both readings preserved:** **Reading 1** — no distinct platform-wide capability established; the remedy is a **policy/tier act**, not new architecture. **Reading 2** — **policy tiering itself** is the relevant capability / decision-right.
+
+### The four sub-concerns, separated as `AMD2` requires
+
+| Sub-concern | What it is | Owner today | Status |
+|---|---|---|---|
+| **policy tier assignment** | deciding a policy is Tier-1 (blocking) or Tier-2 (advisory) | 🔴 **no declared owner** — tiers exist in `registry.yaml` as data | ⭐ **the strongest candidate for a real decision-right** (Reading 2) |
+| **coverage mapping** | which policy families a gate actually covers | 🔴 **nobody** — `EKS-02` is a coverage gap nobody tracks | `OPEN` |
+| **enforcement execution** | performing the block/halt | ✅ **`CAP-09` / BC-3** — `AST-007`, Tier-1, `PRE_ACTION` | `OBSERVED`, live |
+| **enforcement assurance** | evidencing that enforcement worked and was not bypassed | 🔴 **nobody** | `OPEN` — ⚠️ **and it is `C-5`-shaped, not `C-14`-shaped** |
+
+⛔ **Not collapsed.** ⭐ **Splitting them shows the four have different owners and different statuses — which is itself why a single "C-14" verdict was unsafe.**
+
+**`AST-007` / `CAP-09` status preserved as `CONTESTED`:** its `trace` is `capability: CAP-09`, `context: verification-evidence`, and `CAP-09` is *"Constitutional Observation & Escalation… on a trip: halt, escalate, never retry, never modify"* with write-paths *"deliberately closed."* ⇒ **whether it is a policy-enforcement instance or a constitutional-observation instance is `OQ-H`.** ⛔ **No capability existence is inferred from this single mechanism.**
+
+**Ownership: `OPEN` (`OQ-H`).** ⛔ `C-14`→Governance Engineer remains a forbidden hypothesis — **and the live instance sits in BC-3.**
+
+---
+
+## A1.5 · C-19 — revalidated
+
+| Attribute | Revalidated | Change from original |
+|---|---|---|
+| language | 🔴 borrowed | — |
+| invariants | 🟡 one — `A-7` (**adopted**) | ⭐ **now read as EXISTENCE evidence, not just a weak invariant** |
+| lifecycle | 🔴 the reporting act's | — |
+| authority | 🔴 none | — |
+| state | 🔴 none | — |
+| **audience** | 🔴 no audience concept modelled | — |
+| **channel** | 🔴 none | — |
+| **acknowledgement** | 🔴 none — ⭐ **and it belongs to `C-10`** | sharpened |
+| **retention** | 🔴 none | — |
+| reason to change | 🔴 the **audience** — a different *kind* of reason | — |
+
+> **`PROPOSED`, preserved: EXISTENCE `YES` · CATEGORY stewardship / cross-cutting expression concern.** The corrections above **did not change the category evidence**; they added the existence verdict the original omitted.
+
+⛔ **`DECIDED` and restated: the adoption of the Communication Engineer role is NOT evidence of a Communication capability or bounded context.** The adoption act forbids the inference in terms.
+
+⭐ **And `C-10`'s receipt semantics reduce the case further:** `ContextAcknowledged` is **`C-10`'s** state. **If it is ever adopted, the one attribute that could have given a Communication context authoritative state will already belong elsewhere.**
+
+---
+
+## A1.6 · `OQ-L` — refined, not decided
+
+### Terms defined, because the invariant is unreadable without them
+
+| Term | `PROPOSED` definition |
+|---|---|
+| **party** | the process, lane or person performing or answerable for the governed act |
+| **governed control** | a check whose outcome conditions whether an act may proceed, be accepted, or be claimed conformant |
+| **issue** | produce the control's verdict |
+| **accept** | admit the verdict as sufficient |
+| **finalize** | make the verdict unappealable within the process |
+| **advisory result** | an outcome that informs but does not condition the act *(Tier-2)* |
+| **authoritative verdict** | an outcome that does condition it *(Tier-1)* |
+| **independent ratification** | a second party's confirmation, by a route the first party cannot write |
+
+### The candidate invariant — `PROPOSED` / `OPEN`, verbatim
+
+> **"A party subject to a governed control may not be the sole authority for issuing, accepting, or finalizing the control's verdict about its own compliance, separation, or conformance."**
+
+**`OBSERVED` support — it is already implemented twice and never stated:** `G-1` (`COMPLETE` refuses any writer but `governance`/`human`) and `CAP-09`'s deliberately closed write-paths. **`OBSERVED` counter-pressure:** `INV-ATTR-2` exists precisely *because* the estate cannot enforce it generally.
+
+### Candidate exceptions — **examined, not decided**
+
+| Candidate exception | Analysis (`PROPOSED`) |
+|---|---|
+| **low-risk advisory checks** | ⚠️ plausible — an advisory result conditions nothing, so "sole authority" carries no assurance weight. **But it needs a risk test, and none exists** |
+| **deterministic automated checks with independent execution** | ⚠️ **the strongest candidate** — `AST-007` is arguably this: deterministic, and it executes at `PRE_ACTION` where the gated party cannot intervene. ⚠️ **But "independent execution" is itself `NOT_ESTABLISHED` (§A1.2)** |
+| **emergency procedures** | `OPEN` — no emergency concept exists in the estate |
+| ⭐ **single-operator fallback** | ⚠️ **the one that cannot be waved through.** With organizational independence `NOT_ESTABLISHED`, **a blanket invariant may be unsatisfiable in this estate**, and an unsatisfiable invariant is worse than none. **This interacts directly with §A1.2 and must be decided with it** |
+| **compensating controls** | `OPEN` — e.g. append-only provenance as a substitute for isolation. **Plausible and unassessed** |
+
+⛔ **No exception is adopted, and the invariant is not adopted.**
+
+---
+
+## A1.7 · Dependencies — reclassified into three kinds
+
+🔴 **The original's "build order is not arbitrary" is reclassified.** ⛔ **A dependency is not ownership and not containment.**
+
+| Dependency | Kind | Statement |
+|---|---|---|
+| `C-10` → `C-14` | **SEMANTIC** | a gate cannot meaningfully enforce a policy the session never received. ⛔ **Does not make `C-10` an owner of `C-14`, nor place either inside the other** |
+| `C-5` → provenance | **EVIDENCE** | attestation depends on provenance the acting party cannot write. ⛔ **Does not make provenance infrastructure the owner of `C-5`** |
+| `C-19` → `C-10` | **SEMANTIC** | acknowledgement semantics belong to `C-10`; `C-19` would consume them |
+| `C-14` coverage → policy tiering | **SEMANTIC** | coverage cannot be assessed before tiers are assigned |
+| `C-5` mechanism → access/artifact isolation | **IMPLEMENTATION** | a standing attestation mechanism needs isolation that does not exist |
+| `C-10` receipt → `ContextSelected` owner | **IMPLEMENTATION** | a receipt for an *applicable* version presupposes someone determines applicability |
+
+> ⭐ **`INFERRED`: the three kinds have different consequences, which is why the single "build order" claim was unsafe.** **A semantic dependency constrains MEANING** (and must be resolved before a decision) · **an evidence dependency constrains what can be PROVEN** · **an implementation dependency constrains only SEQUENCE and may be deferred.** ⛔ **The original conflated all three into one ordering, which reads as a plan. It is not one.**
+
+---
+
+## A1.8 · Decision pack — grouped as required
+
+### **GROUP A — CAPABILITY EXISTENCE** *(answer first; a category answer cannot substitute)*
+
+| | Capability | Proposed existence verdict | The decision |
+|---|---|---|---|
+| **A-1** | **C-5** Separation attestation | ✅ **YES** | accept / reject / mark contested |
+| **A-2** | **C-10** Knowledge distribution | 🟡 **NOT YET ESTABLISHED** | accept the status, or rule that the evidenced *need* suffices to establish it |
+| **A-3** | **C-14** Policy enforcement | 🟡 **CONTESTED** | resolve `OQ-H`, or accept `CONTESTED` as the standing status |
+| **A-4** | **C-19** Communication composition | ✅ **YES** | accept / reject |
+
+### **GROUP B — SEMANTIC COMMITMENTS**
+
+| | Decision | Note |
+|---|---|---|
+| **B-1** | **`OQ-J` — the receipt is authoritative for WHICH claim?** | ⭐ **five separate answers**: delivery · possession · applicability · execution · compliance. **A receipt can carry at most the first two** |
+| **B-2** | **Missing-knowledge response: warn / halt / escalate** (`OQ-K`) | determines whether `C-10` is advisory or control-plane |
+| **B-3** | **`OQ-L`** — adopt, reject or refine the shared invariant | ⚠️ **and the single-operator exception must be decided WITH it** |
+| **B-4** | `I-K1`'s three undefined terms — *valid* · *applicable* · *required by the act* | each is a separate commitment |
+
+### **GROUP C — CATEGORY / STEWARDSHIP / OWNERSHIP** *(only after Group A)*
+
+| | Decision |
+|---|---|
+| **C-1** | **Category** for each capability accepted in Group A |
+| **C-2** | **Steward** for each — §10's options; **all `OPEN`** |
+| **C-3** | **Owner of authoritative state**, where any is accepted (C-5's attestation record · C-10's receipt) |
+| **C-4** | ⭐ **Promotion criteria for a FUTURE bounded context** — e.g. C-5's §4.3 threshold. **Deciding the criteria now avoids deciding the context later by drift** |
+
+### **GROUP D — SEQUENCING**
+
+| | Kind | What it constrains | May it be deferred? |
+|---|---|---|---|
+| **D-1** | **SEMANTIC** — `C-10`→`C-14`; `C-19`→`C-10`; tiering→coverage | **meaning** — must be resolved before the dependent decision | 🔴 **no** |
+| **D-2** | **EVIDENCE** — `C-5`→provenance | what can be **proven** | 🟡 only if the claim is weakened |
+| **D-3** | **IMPLEMENTATION** — isolation mechanisms; `ContextSelected` owner | **sequence only** | ✅ **yes — safely deferrable** |
+| **D-4** | **Safe deferrals** | `C-19` entirely · all agentization · all technology | ✅ **yes** |
+
+---
+
+## A1.9 · What changed, why, and what still stands
+
+| Original statement | Disposition | Why |
+|---|---|---|
+| *"no distinct `C-14` capability"* | 🔴 **SUPERSEDED** → the provisional wording; existence `CONTESTED` | a category/ownership argument was doing an existence test's work |
+| C-5/C-10/C-14/C-19 given **category only** | 🔴 **SUPERSEDED** → two separate verdicts each | refinement 1 |
+| organizational independence *"not applicable / undefined"* | 🔴 **SUPERSEDED** → **`NOT_ESTABLISHED`** | `NOT_APPLICABLE` risks collapsing into `PASS`; the dimension applies and cannot be established here |
+| *"is the receipt authoritative state?"* | 🔴 **REFORMULATED** → *authoritative for which claim?*, five parts | one authority claim covered five assertions |
+| *"build order is not arbitrary"* | 🔴 **RECLASSIFIED** → semantic / evidence / implementation | a dependency is not ownership, and the three differ in consequence |
+| C-19 = stewardship | ✅ **STANDS**, now with existence `YES` | the category evidence did not change |
+| the four as **one control loop**, four unrelated clocks | ✅ **STANDS** | unaffected |
+| C-10's boundary = **applicability + receipt** | ✅ **STANDS**, sharpened by the seven states | unaffected |
+| C-5's nine dimensions at three maturity levels | ✅ **STANDS**, with one state corrected | unaffected |
+| §8.3's shared-invariant candidate | ✅ **STANDS**, now defined and exception-tested (§A1.6) | unaffected |
+| the four forbidden pairings all `OPEN` | ✅ **STANDS** | unaffected |
+| external research as `EXTERNAL / CORROBORATIVE`, untracked | ✅ **STANDS** | unaffected |
+
+⛔ **No original finding was deleted, and no original wording was rewritten.**
+
+---
+
+## A1.10 · Non-decisions
+
+⛔ **No ownership assigned · no bounded context created · no capability formally created · no agent · no service · no technology · no role redefined · no six-role reopening · no implementation · BC-7 untouched · role definitions untouched · the OQ register untouched · Track 1 untouched.**
+
+**`OQ-J` is reformulated and `OQ-K`/`OQ-L` remain proposed additions — ⛔ this lane registers none of them.**
+
+> ## **No capability existence, category, ownership, stewardship, bounded context, or implementation decision is made by this Architecture lane. These remain PO/ARB decisions.**
+
+**AMENDMENT 1 DELIVERED · STOPPING.** ⛔ **No self-verification · no self-acceptance · assignment NOT closed (`G-1`).** **Next actor: Independent Verification.**
+
+**Amendment traceability:** `G-KOS-AIP04-DECISION-PREP-AMD2` (registered `39f14f15`) · `AMD1` · the parent grant · lane seq 18 (ACTIVE, mutation owner) · the original analysis `ba74dbdd` retained · **the source review's absence independently re-verified (full-repository search, tracked and untracked, untruncated, 2026-08-19)** · six-role adoption registration · Verification #3 (`SB-1` cleared; §7.1's declined `OQ-A` answer) · `INV-ATTR-1`/`INV-ATTR-2` (adopted `P-1`–`P-6`, 2026-08-15) · `A-7`/`GOV-HUMAN-01` (adopted) · `registry.yaml` `AST-005/006/007/014` · `CAP-09` (`Phase-02.5`) · `G-1`/`G-2`/`R8` · `EKS-01`/`EKS-02` · **Class C: `perpleixity_research_on_roles.md` (untracked) — `EXTERNAL / CORROBORATIVE` only.**
