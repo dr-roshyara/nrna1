@@ -85,3 +85,42 @@ The replacing register reads `D-1`…`D-5` as **DECIDED**; the replaced one regi
 **Next actor: Human PO/ARB — dispose `A`, `B`, `C`; then `START` the decision-preparation lane (which `A` currently blocks).**
 
 **Traceability:** the PO/ARB commission 2026-08-19 · `G-KOS-AIP04-DECISION-PREP` seq 15 · `G-KOS-AIP04-VERIFY3` + `-AMD1` (adoption as decided input) + `-AMD2` (verdict `G` re-scoped) · Verification #3 report (`X-2`, self-disclosed) · `9c93e2f0` · `e8b3842b` · `cc2507b0` · `ES-004.3` · `Inv C` · `G-3` · `G-1` · `INV-ATTR-2`/`G-2` · `R-34`/`P-2`
+
+---
+
+# ⬛ AMENDMENT A1 — the capability analysis is bounded; ownership decisions deferred · 2026-08-19
+
+**Registered by:** Governance, on the delivered PO/ARB act revising the next-step plan · recorded as **`G-KOS-AIP04-DECISION-PREP-AMD1`**.
+
+## A1.1 · What the amendment changes
+
+> ⛔ **Do NOT decide ownership of `C-5`, `C-10`, `C-14` or `C-19`.** The lane produces **one bounded DDD capability analysis** across the four; **PO/ARB decides ownership afterwards.**
+
+**The analysis method is superseded** — not the direction. `capability → bounded context/stewardship → ownership → adopted role → agent → service` still binds as the **direction**; the **method** is now the ten questions, because they force **meaning, invariant, evidence, authority and effect** to be settled *before* ownership rather than alongside it.
+
+> ### ⭐ The central warning, registered
+> **Do not assume every capability deserves its own bounded context.** Admissible outcomes: **bounded context · cross-context capability · stewardship · control-plane function · another explicit architectural category.**
+
+## A1.2 · Hypotheses recorded AS hypotheses
+
+`C-5` and `C-14` **may** be cross-context **control** capabilities · `C-10` **may** be a cross-**layer delivery** capability · `C-19` **may** remain delivery/stewardship.
+
+⛔ **And the four role pairings are explicitly NOT decisions and must not be adopted:** `C-5 → Verification Engineer` · `C-10 → Knowledge Engineer` · `C-14 → Governance Engineer` · `C-19 → Communication Engineer`.
+
+**Per-capability tests registered:** `C-5` — **separation is graded, not Boolean**; a bounded context is plausible only if it owns attestation records, assurance levels, exceptions, disputes and their lifecycle · `C-10` — test the nine-stage lifecycle and find **which parts form one coherent capability** · `C-14` — test `definition → evaluation → enforcement → protected action → audit`, with a lifecycle **distinct from policy authorship** · `C-19` — a Communication context is justified only if it owns Message, Audience, Channel, Consent, Delivery, Acknowledgement, Retention, Publication. ⛔ **Communication Engineer ≠ Communication bounded context.**
+
+## A1.3 · ⚠️ The external research — evidence status recorded before use
+
+**The cited research is NOT present in this estate.** Governance searched: the only Perplexity artifact is `architecture_legacy/ai_architecture/pks/20260803_1426_perplexity_view.md` (**2026-08-03**, a different subject — retrieval-layer-governed knowledge for AI agents). **It was not produced by this Governance lane, and this lane did not upload it.**
+
+⇒ it is **external, ungoverned, and its provenance is not attestable here.** It may serve as **external corroborative input only**, and **must be registered as an artifact in the estate before any finding cites it.** The estate's own rule governs: *"agreement with an unread source is not independent evidence when authorship/exposure cannot be attested."*
+
+⛔ **External research may not be treated as governed architecture, and may not substitute for primary evidence from this estate.**
+
+*Its analytical content is nonetheless carried into the grant on its merits — the graded-separation model, the nine-stage knowledge lifecycle, the policy chain and its seven effects, and the communication-concept test are registered as **tests to apply**, not as findings.*
+
+## A1.4 · Unchanged
+
+Six-role adoption stands and is not reopened · the non-equivalences bind · Verification #3 frozen · the forbidden list stands · Part A above is incorporated, not re-derived.
+
+⛔ **The lane remains NOT STARTED — and cannot be started until `X-2` is disposed.**
