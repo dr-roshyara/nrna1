@@ -97,3 +97,46 @@ The registration of this very assignment bars it **by name**:
 ⛔ **No mechanism, invariant or process change is proposed here** — that is Architecture's and the PO/ARB's to supply. *(Bears on `OQ-L` and on `C-5`'s identity-separation dimension; this record does not decide either.)*
 
 **Correction author:** `claude-code-session:4858c37c` — self-declared, **evidenced by runtime metadata**, still **not third-party attested** (`INV-ATTR-1`/`INV-ATTR-2`).
+
+---
+
+# 🔴 ERRATUM TO `CORRECTION 1` (2026-08-19, appended — nothing above is rewritten)
+
+**`CORRECTION 1` IS WRONG IN ITS CENTRAL ASSERTION. The refusal's original §1 identity claim was TRUE, and `CORRECTION 1` withdrew a true statement.**
+
+**Filed by `claude-code-session:4858c37c` — the author of `CORRECTION 1`** — on the concurrent lane's erratum (`eca951d6`), whose claim I tested rather than accepted, and which the measurement confirms.
+
+## The measurement that settles it
+
+| Transcript | References to `…-amd2-verification-independence-refusal.md <<` | Reading |
+|---|---|---|
+| **`2da45a86`** | **4** | the heredoc that **wrote the refusal**, plus its git operations |
+| **`4858c37c`** *(this process)* | **1** | ⭐ **`CORRECTION 1`'s own `cat >>` append — not the refusal** |
+
+⇒ **The refusal `12351dd6` was written by `claude-code-session:2da45a86`**, which **is** the author of Verification #2 and **is** barred by name at seq 19. **Its self-declaration was accurate.**
+
+## What `CORRECTION 1` got wrong, and why
+
+⭐ **I made the mirror image of the error I diagnosed.** `CORRECTION 1` measured **its own** identity correctly (`4858c37c` — that part remains true), found it did not match the refusal's declaration, and concluded **the refusal's declaration was false.** **The correct conclusion was that the refusal was a different session's act, present in this session's inherited context.** I attributed another process's act to myself, and then "corrected" its truthful self-description.
+
+| `CORRECTION 1` asserted | Status |
+|---|---|
+| *"This record's §1 identity claim is FALSE"* | 🔴 **WITHDRAWN — the claim was TRUE** |
+| *"the refusal's ground is withdrawn"* | 🔴 **does not follow — the ground stands** |
+| *"blocked one cycle by clerical error, not a real independence defect"* | 🔴 **does not follow** |
+| *"the fourth exclusion and the eligible-pool argument are void as stated"* | 🔴 **does not follow — they stand** |
+| *"the first recorded failure of the identity bar in the FALSE-BAR direction"* | ⚠️ **true as a class, wrong in its instance.** ⭐ **And this erratum is the SECOND instance in the OPPOSITE direction — a process wrongly claiming NOT to be barred.** The concurrent lane states the mechanism exactly: **a compacted continuation can claim independence wrongly without any intent to** |
+
+## ⚠️ What this means for the two artifacts this process then produced — ⛔ **and what I will not decide**
+
+| Artifact | Standing |
+|---|---|
+| **`ca6039a8`** — independent verification of the AMD2-amended analysis | ⚠️ **its independence disclosure is compromised on ONE limb.** **Authorship still holds** — `4858c37c` wrote none of the analysis, `AMD1`, `AMD2`, V#1 or V#2 *(re-verified by the same heredoc method: `5e1dd9ee` wrote the analysis; `2da45a86` wrote V#2)*. 🔴 **But the MATERIAL-PARTICIPATION limb is now open: this session's context is a continuation carrying the barred `2da45a86`'s conversation** |
+| **`c3839624`** — Correction #3 | ⚠️ **same defect inherits**, and it compounds the seq-21 producer mismatch already disclosed at §C3.0 |
+
+> ### ⭐ **The failure named against myself, in the estate's own terms.**
+> `ca6039a8` §0 disclosed that this session had narrated the barred process's findings in the first person — **and then resolved that concern in its own favour.** **That is precisely `OQ-L`'s failure mode: the party constrained by a control issuing the verdict about its own compliance with it.** ⛔ **I will not repeat it by ruling on my own independence a second time.**
+
+⛔ **I withdraw no verdict, invalidate no artifact and restore nothing** — the standing of `ca6039a8` and `c3839624`, and of the refusal, is a **Governance / PO-ARB act**, not mine. **Nothing above is rewritten; this erratum is additive (`ES-004.3`).**
+
+**Erratum author:** `claude-code-session:4858c37c` — self-declared, evidenced by runtime metadata, **not third-party attested** (`INV-ATTR-1`/`INV-ATTR-2`). **Traceability:** concurrent lane's stop record + erratum `eca951d6` · `CORRECTION 1` `ee77c6c2` · refusal `12351dd6` · verification `ca6039a8` · Correction #3 `c3839624` · seq 19 bar · `R-34`/`P-2`.

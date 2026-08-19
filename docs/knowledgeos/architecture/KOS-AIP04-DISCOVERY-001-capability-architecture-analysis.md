@@ -912,3 +912,11 @@ EXTERNALLY_ATTESTED   established by a party outside the platform
 **CORRECTION #3 DELIVERED · STOPPING. Next actor: Independent Verification** — ⚠️ **and it must be a process other than `4858c37c` (this correction), `5e1dd9ee` (the analysis, `AMD1`, `AMD2`), `1c8b041b` (Verification #1) and `2da45a86` (Verification #2).**
 
 **Correction traceability:** `G-KOS-AIP04-CORRECTION3` (AUTHORIZED) · assignment `S4b-architecture-aip04-correction3`, `REGISTER` seq 21 · `HANDOFF` seq 23 · ⚠️ **no `START` recorded** · verified findings **`ca6039a8`** · seq 22 `START` transcription (`F-7`) · `AMD2` grant `G-KOS-AIP04-DECISION-PREP-AMD2` (`39f14f15`) · `AMD1` · original `ba74dbdd` · amended `aff41549` · **primary sources re-read for this correction: `.claude/platform/registry.yaml` (`AST-005`/`006`/`007`/`014` tiers, `AST-007` `PRE_ACTION` + `trace: CAP-09`/`verification-evidence`) · `Phase-02.5-Certification-Plan.md:46` · `Phase-03A-Reference-Architecture.md:73`** · six-role adoption (the non-equivalence clause) · `INV-ATTR-1`/`INV-ATTR-2` · `G-1`/`G-2`/`G-3` · `R-34`/`P-2` · identity correction `ee77c6c2`.
+
+---
+
+> ## 🔴 **STANDING ERRATUM (appended 2026-08-19, additive — nothing above rewritten)**
+> **This artifact's producing process is `claude-code-session:4858c37c`, and its independence disclosure is COMPROMISED ON ONE LIMB.**
+> **Authorship holds:** `4858c37c` wrote none of the analysis, `AMD1`, `AMD2`, Verification #1 or Verification #2. 🔴 **But its context is a compacted continuation carrying the conversation of `2da45a86` — the Verification #2 author, barred by name at seq 19 — so the MATERIAL-PARTICIPATION limb is open.**
+> ⭐ **The disclosure in this artifact resolved that concern in the producer's own favour, which is `OQ-L`'s failure mode: the constrained party issuing the verdict about its own compliance.**
+> ⛔ **Nothing here is withdrawn by the producer. The standing of this artifact is a Governance / PO-ARB act.** Full record: the erratum appended to `…-amd2-verification-independence-refusal.md`, on the concurrent lane's `eca951d6`.

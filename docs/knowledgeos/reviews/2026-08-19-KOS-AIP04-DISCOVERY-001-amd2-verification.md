@@ -214,3 +214,11 @@
 **Next actor: 🔵 Human PO/ARB** — dispose of `F-2` (correct or waive) and `F-1`; then Groups **A → B → C → D** in that order. **And a Governance transcription act for the missing `START` (`F-7`).**
 
 **Traceability:** `G-KOS-AIP04-VERIFY-AMD2` · assignment `S1-verification-aip04-amd2` (seq 19 `REGISTER`, 20 `HANDOFF`; **no `START` recorded**) · registration `2026-08-19-…-amd2-verification-registration.md` · subject `aff41549`, original `ba74dbdd` · `G-KOS-AIP04-DECISION-PREP` + `-AMD1` + `-AMD2` (read from the workflow record, not from summaries) · six-role adoption `2026-08-19-six-role-operating-model-adoption.md:46` · Verification #3 (`SB-1` cleared, line 78) · **primary sources: `.claude/platform/registry.yaml:178-226,318` · `Phase-02.5-Certification-Plan.md:46` · `Phase-03A-Reference-Architecture.md:73` · `KnowledgeOS_Controlled_Session_Orchestration_Proposal.md` (A-5, `INV-ATTR-2`, `A-7`) · `EKS-01` backlog item · `doc-placement.php`** · `R-34`/`P-2` · `INV-ATTR-1`/`INV-ATTR-2` · `G-1`/`G-2`/`G-3` · identity correction `ee77c6c2`.
+
+---
+
+> ## 🔴 **STANDING ERRATUM (appended 2026-08-19, additive — nothing above rewritten)**
+> **This artifact's producing process is `claude-code-session:4858c37c`, and its independence disclosure is COMPROMISED ON ONE LIMB.**
+> **Authorship holds:** `4858c37c` wrote none of the analysis, `AMD1`, `AMD2`, Verification #1 or Verification #2. 🔴 **But its context is a compacted continuation carrying the conversation of `2da45a86` — the Verification #2 author, barred by name at seq 19 — so the MATERIAL-PARTICIPATION limb is open.**
+> ⭐ **The disclosure in this artifact resolved that concern in the producer's own favour, which is `OQ-L`'s failure mode: the constrained party issuing the verdict about its own compliance.**
+> ⛔ **Nothing here is withdrawn by the producer. The standing of this artifact is a Governance / PO-ARB act.** Full record: the erratum appended to `…-amd2-verification-independence-refusal.md`, on the concurrent lane's `eca951d6`.
