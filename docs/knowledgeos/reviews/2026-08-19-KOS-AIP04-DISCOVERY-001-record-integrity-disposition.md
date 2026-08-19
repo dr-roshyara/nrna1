@@ -124,3 +124,77 @@ The replacing register reads `D-1`…`D-5` as **DECIDED**; the replaced one regi
 Six-role adoption stands and is not reopened · the non-equivalences bind · Verification #3 frozen · the forbidden list stands · Part A above is incorporated, not re-derived.
 
 ⛔ **The lane remains NOT STARTED — and cannot be started until `X-2` is disposed.**
+
+---
+
+# ⬛ DISPOSITION — the record-integrity gate · 2026-08-19
+
+**Determined by:** Governance, on the delivered PO/ARB record-integrity disposition act.
+**⛔ No capability analysis · Verification #3 not re-run · six-role adoption not reopened · `C-5`/`C-10`/`C-14`/`C-19` not decided · the next Architecture assignment NOT started.**
+
+---
+
+## A · `X-2` · **DETERMINED: option B — RETAIN AS OFF-RECORD EVIDENCE**
+
+**And the reason is a constraint, not a preference.**
+
+> **Option A — transcribing the missing `START` — is not available to Governance.** A transcription records **a human act that was given**. No such act exists in this lane's record, and **Governance may not supply one.** Choosing A would be indistinguishable in the record from inventing it. ⛔ *"Do not silently back-date the record"* forecloses A **for this actor**, not for the PO/ARB.
+
+**Therefore recorded, as fact:**
+
+| | |
+|---|---|
+| **`OBSERVED`** | the Verification #3 report exists; **the workflow record contains no `START` for `S1-verification-aip04-correction2`**; the record ends at seq 14 `HANDOFF` (now seq 15, an unrelated `REGISTER`) |
+| **`OBSERVED`** | the producing lane **disclosed this itself** as `X-2`, did not back-date it, and did not mutate the record |
+| **`DECIDED` (this act)** | the report is **retained as evidence produced OFF-RECORD**; the lifecycle transition **was not recorded**, and that absence is now part of the governed record rather than a gap in it |
+| **`OPEN`** | **option A remains available to the PO/ARB at any time** and would supersede this disposition. It requires one thing only: **the PO/ARB stating that a human `START` was given** |
+
+⛔ **The verification report was not modified.**
+
+## B · Session log · **PREPARED, not determined — recommendation on record**
+
+| Option | Consequence |
+|---|---|
+| **B(1) RESTORE** | history complete again; the restoration is itself visible as an act |
+| **B(2) PRESERVE + RECOVERY REFERENCE** ⭐ **recommended** | the truncation is already **recorded in the log itself** by today's appended Governance entry, naming `9c93e2f0` and the recovery commit `e8b3842b`. **Nothing is lost — it is one lookup away** |
+| **B(3)** | another explicitly justified disposition |
+
+**Why B(2) is recommended and not B(1):** restoring append-only history is **itself a history edit**; two lanes wrote this file the same day; and the defect — a lane rewriting shared history without authority — would be repeated in the act of repairing it. **A recorded truncation with a recovery pointer is a truthful history. A silently reconstructed one is not.** ⛔ **Nothing was restored.** *This one is genuinely the PO/ARB's call and is left open.*
+
+## C · `D-1`…`D-5` register · **DETERMINED: C(1)-additive — restore, do not merge**
+
+> **The authoritative record must represent this history as SUCCESSIVE ACTS, not as a blended text.**
+
+**Executed** as `RESTORATION R1` appended to `2026-08-19-…-v3-decisions-registration.md`:
+
+| | Restored | Ground |
+|---|---|---|
+| **1** | the **advocacy qualification** | ⭐ **a standing ARB instruction that was unexecuted** — *"I would keep that qualification in the decision record"* |
+| **2** | the **`D-2`/`D-3` coupling rule** | a Governance-recorded ordering constraint on the decisions |
+| **3** | the **fifth-silence finding** | ⭐ **independently corroborated by the replacing document's own premise check `P-b`** — the deletion removed a finding its replacement confirms |
+| **4** | the **conformance-asserting residue** | survives independently in `G-KOS-CONTRACT-ARTIFACT-UPDATE-AMD2`/`-AMD3` |
+
+**⛔ NOT a merge of contradictory interpretations.** The current register's **DECIDED** reading of `D-1`…`D-5` is **untouched**; the restored sections are appended, dated, attributed to their source commit, and explicitly do **not** reinstate the "OPEN" framing they originally sat inside.
+
+**⭐ And a simplification worth stating:** items 1–3 are **independent of whether `D-1`…`D-5` were decisions or recommendations.** An ARB instruction, an ordering constraint and a corroborated finding stand under either reading. ⇒ **C did not have to wait on the Track-1 question, and does not pre-empt it.** That question **remains OPEN.**
+
+---
+
+## D · **GATE RESULT — 🔴 REMAINS BLOCKED**
+
+**Measured on a scratch copy of the record; the live record was not touched (15 transitions before and after).**
+
+| Probe | Result |
+|---|---|
+| Can any lane hand off today? | ❌ `refused: only the current mutation owner can hand off (Inv C)` — **`mutationOwner` is `None`** |
+| Would a human `START` of the Verification #3 lane restore ownership? | ✅ **yes** — `ok`, and `mutationOwner → S1-verification-aip04-correction2` |
+| Could it then hand off to the capability-analysis lane? | ✅ **yes** |
+
+> ### **The record is not broken. It is exactly ONE HUMAN ACT short.**
+> **`START: S1-verification-aip04-correction2`** restores mutation ownership, which permits the handoff, which permits `S4-architecture-aip04-decision-prep` to be started. **Nothing else on this work item can start until then** — `START` is a conjunction (`G-3`) and its predecessor limb is currently unreachable.
+
+**Note the interaction with A, stated plainly rather than left implicit:** disposition **B** (retain as off-record evidence) **records the truth but does not unblock the lane.** The blockage and the transcription question are **the same act seen twice**. If the PO/ARB does state that a human `START` was given, transcribing it discharges `X-2` **and** opens the gate in one move; if not, unblocking requires a separately authorized repair act, which the standing grant forbids without explicit authority.
+
+**Next actor: Human PO/ARB — (1) dispose `B`; (2) either state that a human `START` was given for `S1-verification-aip04-correction2`, or authorize a repair act; then the capability-analysis lane can be started.**
+
+**Traceability:** the PO/ARB disposition act 2026-08-19 · `G-KOS-AIP04-DECISION-PREP` + `-AMD1` · seq 14–15 · Verification #3 report (`X-2`) · `9c93e2f0` · `e8b3842b` · `RESTORATION R1` · `Inv C` · `G-3` · `G-1` · `ES-004.3`

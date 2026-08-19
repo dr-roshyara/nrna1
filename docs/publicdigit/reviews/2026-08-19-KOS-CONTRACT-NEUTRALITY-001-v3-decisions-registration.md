@@ -195,3 +195,61 @@ The act says *"The exact representation change is implementation work after the 
 
 **AMENDMENT 1 RECORDED · STOPPING.**
 **Next actor: Governance — translate `D-1`…`D-5` into the specification and the bounded implementation / artifact-update authorizations, routing `D-1`'s REPRESENTATION as a contract decision (`A1.3`), not as implementation work.**
+
+---
+
+# ⬛ RESTORATION R1 — content deleted by `9c93e2f0`, re-appended additively · 2026-08-19
+
+**Restored by:** Governance, under the PO/ARB record-integrity disposition act · **determination C(1)-additive**.
+**⚠ NOTHING ABOVE THIS LINE WAS ALTERED.** The decided reading of `D-1`…`D-5` stands exactly as `9c93e2f0` wrote it. **This is not a merge of two interpretations** — it re-appends material that was deleted, dated and attributed, so the register carries its own history.
+**Source of the restored text:** `e8b3842b` (the register as it stood before replacement). **Three of the four items are independent of whether `D-1`…`D-5` were decisions or recommendations**, so their restoration does not pre-empt that open Track-1 question.
+
+## R1.1 · The advocacy qualification — restored because the ARB directed it be kept
+
+> *"I would keep that qualification in the decision record."* — PO/ARB, 2026-08-19. **The instruction was standing and unexecuted after the replacement.**
+
+## 2 · ⚠️ The qualification the ARB directed be kept in the decision record
+
+**The determination's producing process disclosed material prior participation that the independence amendment did not cover.** It authored the **semantic clarification proposal** (`dab0f65c`), whose §4 **first proposed that the L3 fact model must carry a determinability attribute**. `V-3` is a finding about exactly that attribute.
+
+⇒ **This determination asks whether an L3 requirement that same process proposed is entailed by the accepted model.** The determination states the consequence itself rather than minimising it: it must be weighed as **possible advocacy for the drafter's own earlier proposal**, not only as neutral entailment analysis — *"a conflict of a different kind from the two named bars"* — and it records that **the PO/ARB may route the determination elsewhere on this disclosure.**
+
+**The two named bars were satisfied:** the process is neither the Track-1 implementer (`1c8b041b`) nor the V-3 finding's author (`2da45a86`). Self-declared and **not attestable** (`INV-ATTR-2`/`G-2`).
+
+**A self-correcting consequence, recorded because it changes an accepted decision's completeness:** the **four contract silences** enumerated under Decision 13.5 **did not include dynamic property access.** It is a **fifth** silence. ⇒ **13.5's enumeration is incomplete on the record** — `D-2` is the decision that meets it.
+
+## 3 · The five decisions — OPEN
+
+| # | Decision | Admissible answers, as framed |
+
+## R1.2 · The `D-2`/`D-3` coupling rule
+
+### 3.1 The dependency order, registered
+
+```
+D-2  is the fact in the contract at all?
+  ↓
+D-3  if yes, how must L3 represent it?
+  ↓
+D-1  how is a computed method name represented?
+  ↓
+D-4  which library dispatch is in scope?
+  ↓
+D-5  how is that dispatch represented?
+```
+
+**The rule that makes the order binding rather than cosmetic:** ⛔ **D-2 and D-3 must not be split into contradictory decisions.** D-2 settles whether the fact is semantically in scope; D-3 settles the representation **only if it is**. *Deciding representation before membership designs a data structure for a fact that may not belong to the model.*
+
+## R1.3 · The conformance-asserting residue
+
+### 4.1 ⚠️ A residual difference returned to the PO/ARB, not resolved here
+
+The determination's own condition (§10) is **narrower still** than this act's wording: *"YES for the golden-fixture evidence… **NO for `app/`-scoped or CONFORMANCE-ASSERTING evidence** until D-1/D-2 are answered."* The act frees *"ordinary existing fixtures"* and does not mention the conformance-asserting case.
+
+**Consequence if left unresolved:** expected evidence authored over ordinary fixtures **but used to assert conformance** would be permitted by the act's wording and refused by the determination's. **Governance registers the act's wording as governing and flags the residue rather than choosing between them.**
+
+*Also carried in `G-KOS-CONTRACT-ARTIFACT-UPDATE-AMD2` and `-AMD3`, so this item survived the deletion in the append-only record even while it vanished from the document.*
+
+## R1.4 · What restoration does NOT do
+
+⛔ It does not decide whether `D-1`…`D-5` were PO/ARB decisions or recommendations — **that question remains OPEN** · ⛔ it does not alter the current register's text · ⛔ it does not reinstate the "OPEN" framing those sections originally sat inside · ⛔ it repairs no workflow history.
