@@ -30,6 +30,44 @@
 
 ---
 
+# ✅✅ **`H-2` COMPLETE AND VERIFIED — 2026-08-19**
+
+| Step | Outcome |
+|---|---|
+| **RED** | **`4da89888`** — `RestorationWithoutPriorHaltRegressionLockTest.php` **alone** (223 lines), fail-first shown by **mutation in a throwaway export** |
+| **GREEN** | **`3da3053d`** — **developer guide only.** ⭐ **No production change and no test change was required** — the `D2` behaviour was already correct, exactly as this record predicted |
+| **Independent verification** | ✅ **VERIFIED — `33f7316e`. No defects.** |
+| **STOP** | observed — the lane did not verify itself |
+
+**Repo state:** lock `OK (3 tests, 21 assertions)` · domain suite **49 / 2478** *(46 → 49)* · core still the Act-B baseline: **one `A`, no `M`/`D`** vs `1f4b4c5f` · `app/` clean.
+
+## The fail-first route worked, and the verifier reproduced it independently
+
+**The sanctioned mutation route was followed and strengthened:** the lane exported the tree with its own `vendor/`, **ran the lock GREEN inside the export first** to prove self-containment, then mutated **only the copy** — `restored()` fabricating a halt via `$this->haltedAtGate ?? new HaltedAtGate(...)`, **the exact fabrication ADR-2 §6(b) forbids** — and captured 2 of 3 tests failing.
+
+⭐ **The verifier did NOT accept that on trust.** It built its **own** export, proved self-containment via `autoload_psr4.php`'s `__DIR__`-derived `$baseDir`, measured its own pre-slice baseline (`46 tests / 2457 assertions`, confirming *"46 before, +3"* and `2457 + 21 = 2478`), reproduced the mutation, and obtained output **identical down to the object identifiers `#543`/`#424`/`#542`**. **Then it isolated causation** — reverting the mutation in the same export returned `OK (3 tests, 21 assertions)`, so the failures come from the mutation and **not** environment drift.
+
+> ## ⭐ **The named failure mode did NOT occur.** No semantic rule was invented. **All twenty assertions plus the `expectException` read behaviour the frozen core already exhibits** — `ElectionOperationalStatus.php:22-25,33-36,39-42,49-57` · `ResumptionTarget.php:105,107` · `RecoveryProcess.php:50-57,59-67` · `PeriodKind.php:17-18` · `ExpiryConsequence.php:46-48`. **The lock passing with ZERO production change is itself the proof.**
+
+**Also independently established:** the *"refuses on kind alone"* claim — `onHaltedRecoveryExpiry`'s **other three guards each PASS** under the lock's arguments, leaving the kind guard as the **sole** cause. And the 3 `SplObjectStorage` deprecations trace to `vendor/sebastian/recursion-context/src/Context.php:148`, attributed only to the test whose failure message renders the fabricated object; **unmutated runs report none.**
+
+## Three boundary facts — recorded as explicitly NOT defects
+
+| # | Observation |
+|---|---|
+| **O-1** | The **arity pin** at `…LockTest.php:150` is **marginally wider than `D2`'s text** — but it asserts a **true property of committed code** and **is what makes *"no resumption target"* executable** rather than conventional. |
+| **O-2** | Two assertions (`:175-179`, `:205-209`) are **tautological** given those preceding them. |
+| **O-3** ⚠️ | **The locked type has NO production caller** besides the **uncalled** Act-B port *(independently confirmed: `ElectionOperationalStatus` appears in `app/` only in its own file and in `Port/RecordedOperationalStatus.php`)*. ⇒ **The lock guards `D2`'s DOMAIN semantics, not the executed `w8` APPLICATION path** — which still runs `$decision->gate()` under quarantined `DEP-7`. **This is exactly the scope the lock claims, and it is worth stating plainly: a regression on the Application path would NOT be caught by this lock.** |
+
+## What `H-2` does and does not change
+
+✅ **`D2`'s semantics now have a regression lock**, and it is executable rather than conventional.
+⛔ **Nothing else moved.** Act C · Act D · `BND-1` · `BND-3` · `GREEN-5` · `RecordedOperationalStatus` · persistence · Application layer · `HaltedAtGate` · `ResumptionTarget` · ADR-2 — **all untouched and unauthorized.** ⛔ **`EM-GOV-063` remains unreachable** *(`PBDIGIT-72`, two causes)*. ⛔ **ADR-2 §5f — `ElectionRestored`'s non-nullable `GateDesignation` — remains OPEN**, and the lock deliberately says nothing about it *(`ElectionRestored` appears once in the whole test file: inside the "does not assert" list)*.
+
+⚠️ **Housekeeping, no repo impact:** both throwaway exports remain under the session scratchpad — **outside the repository and outside git** — because the sandbox declined `rm -rf`. **Both had their mutations reverted** *(independently checked: the prior export's `ElectionOperationalStatus.php` is byte-identical to the committed file)*. **Neither is repository content.**
+
+---
+
 ## 🔴 A structural issue in the RED requirement — flagged, not silently resolved
 
 **The `w8` behaviour ALREADY PASSES on the frozen domain.** The Act-B implementing lane reported exactly this: *"`H-2` … passes on arrival, is explicitly not the RED."* Independently confirmed: `ElectionOperationalStatus.php:22-24,39-42,49-52` already yields `haltedAtGate() === null` and `isHalted() === false` for the halt-absent path.
