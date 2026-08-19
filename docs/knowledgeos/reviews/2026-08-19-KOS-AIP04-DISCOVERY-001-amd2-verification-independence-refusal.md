@@ -53,3 +53,47 @@ The registration of this very assignment bars it **by name**:
 🔵 **Human PO/ARB — `START` `S1-verification-aip04-amd2` in a process that is none of `5e1dd9ee`, `1c8b041b`, `2da45a86`.** The grant, the assignment and the seq-20 handoff all stand; only the `START` is outstanding, and the `G-3` conjunction is unaffected by this refusal.
 
 **Traceability:** `G-KOS-AIP04-VERIFY-AMD2` · assignment seq 19–20 (`CREATED`) · registration `2026-08-19-…-amd2-verification-registration.md` §2 (the by-name bar) · my Verification #2 `acdc613f` · six-role adoption `cc2507b0` · `W-1` re-scope `d77fb5ea` · Track-1 parallel bar `G-KOS-CONTRACT-V3-ARCH-AMD1` (`b1227c86`) · `R-34`/`P-2` · `G-3` · `INV-ATTR-1`/`INV-ATTR-2`.
+
+---
+
+# ⚠️ CORRECTION 1 (2026-08-19, appended — nothing above is rewritten)
+
+**This record's §1 identity claim is FALSE. The refusal it justifies was therefore unfounded, and it blocked an assignment this process was eligible to perform.**
+
+## What this record claimed vs what is true
+
+| | |
+|---|---|
+| **Claimed above** | *"This process is `claude-code-session:2da45a86`"* — and, on that basis, that it authored **ADR-AIP-04 Verification #2** and was **barred by name** |
+| **True** | **This process is `claude-code-session:4858c37c`** (transcript `4858c37c-a601-4a87-8d6c-7ae5c65a6f0f`). It authored **none** of the barred artifacts. `2da45a86` is a **separate session** that ended at **08:49:17Z**, before this session's activity |
+
+## How the correction was established — mechanically, not by assertion
+
+| Evidence | Finding |
+|---|---|
+| `sessionId` field on every record of this session's own transcript | `4858c37c-a601-4a87-8d6c-7ae5c65a6f0f`, consistently |
+| Transcript inventory | `2da45a86-f309-4b8b-8f46-ac38e0f9de36.jsonl` exists as a **distinct** 849-line transcript; this session's is 97 lines |
+| **Authorship of Verification #2** | `2da45a86` line **729**: `cat > docs/knowledgeos/reviews/2026-08-19-…-independent-verification-2-amendment1.md <<'DOC'`. **This session never wrote that file** — its only two references are a `grep` result and a probe script |
+| Authorship of the analysis + `AMD1` + `AMD2` | **`5e1dd9ee` only** — the sole session with heredoc writes to `…-capability-architecture-analysis.md` (2 writes). `2da45a86`, `1c8b041b` and `4858c37c` have **zero** |
+| Presence of `4858c37c` in the governed estate | **None.** This session had never been declared in any record before this correction |
+
+## Root cause — recorded, not excused
+
+**The identity was INFERRED FROM THE ESTATE instead of established from the runtime.** This session read the registration's bar, matched the *described work* against summaries in its context, and concluded it must be the barred process — **without once reading its own session identifier.** The gate's own step 1 (*"establish your current process/session identity"*) was answered by inference; steps 2–3 then compared an inferred identity against the exclusion list and produced a false match.
+
+⛔ **The refusal's reasoning was internally coherent and externally wrong** — which is precisely the failure mode a self-declared identity cannot catch.
+
+## Consequences
+
+1. **The refusal is WITHDRAWN as to its ground.** Its *conduct* stands correct on its own premise — it consumed no `START`, mutated no record, opened no subject artifact, and rendered no verdict. **Nothing has to be un-done; only the premise was wrong.**
+2. **The assignment was blocked for one cycle by clerical error, not by a real independence defect.**
+3. **This record's derived claims about assurance capacity are void as stated:** *"three processes are now barred by name"* remains true of `5e1dd9ee`/`1c8b041b`/`2da45a86`, but the inference that **this** process was a fourth exclusion — and the eligible-pool-shrinking argument built on it — **do not follow.**
+4. ⭐ **`4858c37c` satisfies the bar and has proceeded** under the re-issued PO/ARB `START`. Report: `2026-08-19-KOS-AIP04-DISCOVERY-001-amd2-verification.md`.
+
+## Observation returned to the PO/ARB — ⛔ no remedy designed
+
+**The identity bar is enforced on self-declared session identifiers, and this is the first recorded instance of it failing in the FALSE-BAR direction.** `INV-ATTR-2` anticipated that a process could **wrongly claim independence**; this event shows the same mechanism can make a process **wrongly claim to be barred**, with the assignment as the casualty. Both directions trace to one property: **the declaration is unverified at the point of use, and the declaring party is the only source.**
+
+⛔ **No mechanism, invariant or process change is proposed here** — that is Architecture's and the PO/ARB's to supply. *(Bears on `OQ-L` and on `C-5`'s identity-separation dimension; this record does not decide either.)*
+
+**Correction author:** `claude-code-session:4858c37c` — self-declared, **evidenced by runtime metadata**, still **not third-party attested** (`INV-ATTR-1`/`INV-ATTR-2`).
