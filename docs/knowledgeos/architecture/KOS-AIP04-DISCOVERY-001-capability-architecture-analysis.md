@@ -11,14 +11,33 @@
 
 ## 1 · Executive conclusion
 
-**`PROPOSED` — none of the four is recommended as a new bounded context, and one is proposed not to be a distinct capability at all.**
+**`PROPOSED` — none of the four is recommended as a new bounded context, and one is proposed not to be a distinct capability at all.** 🔴 **[SUPERSEDED by CORRECTION #3 §C3.1 — the second clause states the categorical `C-14` denial that `AMD1` §A1.4 WITHDREW. The corrected executive statement is the existence/category table immediately below; this sentence is retained as historical.]**
 
-| | Capability | **Proposed category** | Bounded context? | ⚠️ **[EXISTENCE VERDICT MISSING — added by Amendment 1 §A1.1: category was answered without separately answering existence]** |
+> ### ⭐ **CORRECTION #3 · THE CORRECTED EXECUTIVE STATEMENT — existence and category, together, for a reader who reads only this section**
+>
+> | | Capability | **(A) EXISTENCE** *(`PROPOSED`)* | **(B) ARCHITECTURAL CATEGORY** *(`PROPOSED`)* | Bounded context? |
+> |---|---|---|---|---|
+> | **C-5** | Separation attestation | ✅ **`YES`** | **cross-context control-plane assurance capability** | 🔴 **No** — owns no attestation record, assurance level, exception or dispute lifecycle |
+> | **C-10** | Knowledge distribution | 🟡 **`NOT YET ESTABLISHED`** | ⚠️ **DEFERRED until existence is resolved** — candidate as originally proposed: *cross-layer delivery capability*, smallest coherent boundary **applicability + receipt** | 🔴 **No** — ⚠️ unless the receipt is adopted as authoritative state (`OQ-J`) |
+> | **C-14** | Policy enforcement | 🟡 **`CONTESTED`** | ⚠️ **DEFERRED** — contested existence cannot carry a category | 🔴 **No** |
+> | **C-19** | Communication composition | ✅ **`YES`** | **stewardship / cross-cutting expression concern** | 🔴 **No** — fails the ten-part test on 6 of 10 |
+>
+> ⛔ **`C-14`, stated in the provisional form and nowhere in the categorical form:**
+> > **"On current evidence, no platform-wide C-14 capability is established. A Tier-1 enforcement pattern exists within `CAP-09`, but whether that instance constitutes the same capability as `C-14` remains OPEN."**
+>
+> ⛔ **The two inferences this table must never be read to license:** *"not a bounded context"* ⇒ *"not a capability"*, and *"not a bounded context"* ⇒ *"cross-context capability"*. **Every category above is argued from positive properties (§A1.1–§A1.5); the bounded-context column answers a separate question.**
+> ⛔ **Existence values are `PROPOSED` for PO/ARB acceptance (Group A, §A1.8). No existence verdict, category, owner or bounded context is decided by this analysis or by this correction.**
+
+**Historical executive table, retained** *(the original §1 surface with its `AMD1` pointers; superseded as the decision surface by the table above)*:
+
+| | Capability | **Proposed category** | Bounded context? |
 |---|---|---|---|
 | **C-5** | Separation attestation | **cross-context control-plane assurance capability** | 🔴 **No** — owns no attestation record, assurance level, exception or dispute lifecycle |
 | **C-10** | Knowledge distribution | **cross-layer delivery capability** whose *smallest coherent boundary* is **applicability + receipt** | 🔴 **No** — but the *receipt* is authoritative state nobody holds ⇒ the one live threshold question |
 | **C-14** | Policy enforcement | ⭐ **PROPOSED: NOT a distinct capability as posited** 🔴 **[SUPERSEDED by Amendment 1 §A1.4 — replaced with the provisional wording; existence is `CONTESTED`, not `NO`]** — a **coverage gap in an existing, owned enforcement pattern** | 🔴 **No** |
 | **C-19** | Communication composition | **stewardship / cross-cutting expression concern** | 🔴 **No** — fails the ten-part test on 6 of 10 |
+
+⚠️ **[EXISTENCE VERDICT MISSING — added by Amendment 1 §A1.1: category was answered without separately answering existence]** — *`AMD1`'s annotation, retained **verbatim**. **CORRECTION #3 (F-1)** moved it out of the table's header cell, where it made the table malformed (five header cells against four body cells), into this note. No wording was altered and the attribution is unchanged.*
 
 > ### ⭐ **The structural finding: the four are not four candidate contexts. They are one CONTROL LOOP with four distinct capabilities in it.**
 >
@@ -414,7 +433,7 @@ BC-1 defines policy/knowledge → C-10 delivers it to the gated session → C-14
 
 **ANALYSIS DELIVERED · STOPPING.** ⛔ **No self-verification · no self-acceptance · assignment NOT closed (`G-1`).** **Next actor: PO/ARB.**
 
-**Traceability:** `G-KOS-AIP04-DECISION-PREP` + `-AMD1` · assignment seq 15/17/18 · **six-role adoption registration 2026-08-19** (the decision, the non-equivalences, the historical-material clause) · Verification #3 (`READY FOR PO/ARB DECISION`; **`SB-1` CLEARED, durable**; §7.1's declined `OQ-A` answer) · `G-KOS-AIP04-VERIFY3-AMD1`/`-AMD2` · Correction #2 (`C-14` `CONTESTED`; `OQ-H`; the completed 104-file survey) · Amendment 1 · the discovery proposal · the record-integrity disposition · **code/registry read directly: `registry.yaml` `AST-005/006/007/014` (tiers, adoption, `PRE_ACTION`, `AST-007.trace → CAP-09/verification-evidence`) · `Phase-02.5-Certification-Plan.md` `CAP-09` (*"halt, escalate, never retry, never modify"*, Tier-1, write-paths closed) · `CAP↔BC` map v2 · `workflow-state.php` (`G-1`/`G-2`/`R8`/`REGISTER` role validation) · `EKS-01`/`EKS-02`** · `INV-ATTR-1`/`INV-ATTR-2` (adopted, P-1–P-6 2026-08-15) · `A-7`/`GOV-HUMAN-01` · **Class C: `perpleixity_research_on_roles.md` (1595 lines, untracked)** · `R-34`/`P-2`.
+**Traceability:** `G-KOS-AIP04-DECISION-PREP` + `-AMD1` · assignment seq 15/17/18 · **six-role adoption registration 2026-08-19** (the decision, the non-equivalences, the historical-material clause) · Verification #3 (`READY FOR PO/ARB DECISION`; **`SB-1` CLEARED, durable**; §7.1's declined `OQ-A` answer) · `G-KOS-AIP04-VERIFY3-AMD1`/`-AMD2` · Correction #2 (`C-14` `CONTESTED`; `OQ-H`; the completed 104-file survey) · Amendment 1 · the discovery proposal · the record-integrity disposition · **code/registry read directly: `registry.yaml` `AST-005/006/007/014` (tiers, adoption, `PRE_ACTION`, `AST-007.trace → CAP-09/verification-evidence`) · `Phase-02.5-Certification-Plan.md:46` `CAP-09` (*"halt, escalate, never retry, never modify"*, Tier-1) **+ `Phase-03A-Reference-Architecture.md:73`** (*"deliberately closed"* — ⭐ **corrected location, CORRECTION #3 F-4**: the two quotations come from two different documents and were previously credited to one) · `CAP↔BC` map v2 · `workflow-state.php` (`G-1`/`G-2`/`R8`/`REGISTER` role validation) · `EKS-01`/`EKS-02`** · `INV-ATTR-1`/`INV-ATTR-2` (adopted, P-1–P-6 2026-08-15) · `A-7`/`GOV-HUMAN-01` · **Class C: `perpleixity_research_on_roles.md` (1595 lines, untracked)** · `R-34`/`P-2`.
 
 ---
 ---
@@ -723,7 +742,7 @@ EXTERNALLY_ATTESTED   established by a party outside the platform
 | the four forbidden pairings all `OPEN` | ✅ **STANDS** | unaffected |
 | external research as `EXTERNAL / CORROBORATIVE`, untracked | ✅ **STANDS** | unaffected |
 
-⛔ **No original finding was deleted, and no original wording was rewritten.**
+⛔ **No original finding was deleted, and no original wording was rewritten.** 🔴 **[CORRECTED by CORRECTION #3 §C3.5 — accurate as to deletion and as to five of the six supersession pointers, but too categorical: one pointer applied `~~strikethrough~~` to original wording, which changes how the original reads. §C3.5 states the four distinct operations separately.]**
 
 ---
 
@@ -737,4 +756,159 @@ EXTERNALLY_ATTESTED   established by a party outside the platform
 
 **AMENDMENT 1 DELIVERED · STOPPING.** ⛔ **No self-verification · no self-acceptance · assignment NOT closed (`G-1`).** **Next actor: Independent Verification.**
 
-**Amendment traceability:** `G-KOS-AIP04-DECISION-PREP-AMD2` (registered `39f14f15`) · `AMD1` · the parent grant · lane seq 18 (ACTIVE, mutation owner) · the original analysis `ba74dbdd` retained · **the source review's absence independently re-verified (full-repository search, tracked and untracked, untruncated, 2026-08-19)** · six-role adoption registration · Verification #3 (`SB-1` cleared; §7.1's declined `OQ-A` answer) · `INV-ATTR-1`/`INV-ATTR-2` (adopted `P-1`–`P-6`, 2026-08-15) · `A-7`/`GOV-HUMAN-01` (adopted) · `registry.yaml` `AST-005/006/007/014` · `CAP-09` (`Phase-02.5`) · `G-1`/`G-2`/`R8` · `EKS-01`/`EKS-02` · **Class C: `perpleixity_research_on_roles.md` (untracked) — `EXTERNAL / CORROBORATIVE` only.**
+**Amendment traceability:** `G-KOS-AIP04-DECISION-PREP-AMD2` (registered `39f14f15`) · `AMD1` · the parent grant · lane seq 18 (ACTIVE, mutation owner) · the original analysis `ba74dbdd` retained · **the source review's absence independently re-verified (full-repository search, tracked and untracked, untruncated, 2026-08-19)** · six-role adoption registration · Verification #3 (`SB-1` cleared; §7.1's declined `OQ-A` answer) · `INV-ATTR-1`/`INV-ATTR-2` (adopted `P-1`–`P-6`, 2026-08-15) · `A-7`/`GOV-HUMAN-01` (adopted) · `registry.yaml` `AST-005/006/007/014` · `CAP-09` (`Phase-02.5-Certification-Plan.md:46` for the halt/escalate wording · **`Phase-03A-Reference-Architecture.md:73` for *"deliberately closed"*** — corrected, CORRECTION #3 F-4) · `G-1`/`G-2`/`R8` · `EKS-01`/`EKS-02` · **Class C: `perpleixity_research_on_roles.md` (untracked) — `EXTERNAL / CORROBORATIVE` only.**
+
+---
+---
+
+# CORRECTION #3 — the verified findings of `ca6039a8`, corrected and nothing else
+
+| | |
+|---|---|
+| **Status** | 🟡 **NARROW CORRECTION. It decides nothing.** `ba74dbdd` (original) and `aff41549` (`AMD1`) both retained in full above |
+| **Authority** | `G-KOS-AIP04-CORRECTION3` (AUTHORIZED) · assignment **`S4b-architecture-aip04-correction3`** · `REGISTER` seq 21 · `HANDOFF` seq 23 · role **Architecture Engineer** |
+| **Input** | **verified findings `F-1`…`F-7` of the independent verification `ca6039a8`** — *RETURNED FOR CORRECTION, narrowly; 10 of 14 areas PASS, 0 FAIL* |
+| **Next actor** | **Independent Verification** — ⛔ **this lane must not verify or accept its own correction (`R-34`/`P-2`, `G-1`)** |
+
+## ⚠️ C3.0 · Producer disclosure — two facts the reader needs before reading anything else
+
+**Producing process, self-declared, evidenced by runtime metadata, NOT third-party attested** (`INV-ATTR-1`/`INV-ATTR-2`): **`claude-code-session:4858c37c`**.
+
+| | Disclosure |
+|---|---|
+| 🔴 **The record names a different producer** | **Seq 21's execution context registers the Correction #3 producer as `claude-code-session:5e1dd9ee`** — the analysis's own Architecture lane. **This correction was performed by `4858c37c`** on a delivered PO/ARB act. ⚠️ **The mismatch was raised BEFORE any content was written; the PO/ARB ruled that this process proceeds and that Governance corrects seq 21.** ⛔ **A registered producer designation may only be changed by Governance (`G-2`) — this lane did not touch it, and until that act the record and this artifact disagree about provenance** |
+| ⚠️ **The finder is the fixer** | **`4858c37c` authored the verification report `ca6039a8` whose findings this corrects**, and its assignment `S1-verification-aip04-amd2` is this assignment's registered predecessor (seq 21). **The verification grant's own clause — *"Verification identifies insufficiency; it does not provide the replacement architecture"* — is why this is a separate assignment in a separate role.** ⭐ **Consequence stated plainly: no independent party has yet tested whether `F-1`…`F-7` were correctly scoped, and the first such test is the Independent Verification that follows this correction. The PO/ARB accepted that risk explicitly** |
+
+⛔ **No finding was re-litigated, widened or reinterpreted in this lane's favour.** Where a finding proved **already disposed of by a later governed act**, that is recorded as such (`F-5`, `F-7`) rather than corrected into the artifact.
+
+---
+
+## C3.1 · `F-1` — executive decision surface *(BLOCKING)*
+
+**`OBSERVED` defect:** the executive section carried category verdicts only; its lead sentence and its `C-14` row asserted the **categorical denial that `AMD1` §A1.4 had already WITHDRAWN**; the existence verdicts sat ~380 lines away in §A1.1; and `AMD1`'s corrective annotation had been added as a **fifth header cell to a four-column table**, leaving the table malformed.
+
+**Corrected, in §1 above:**
+
+| Change | Discipline applied |
+|---|---|
+| A **corrected executive statement** now stands **first** in §1 — existence **and** category **together** for all four, with the bounded-context answer as a **separate column** | additive; the historical table is retained beneath it, marked historical |
+| **`C-14` appears in the provisional form only**, quoted verbatim, and the two forbidden inferences are stated as prohibitions on the face of the table | the categorical form appears nowhere in the corrected statement |
+| The **lead sentence is marked `SUPERSEDED`**, not deleted | ⛔ historical wording retained |
+| `AMD1`'s annotation **moved verbatim out of the header cell into a note**, restoring the table to four columns | ⭐ **verified after the edit: corrected table 5 cells throughout; historical table 4 cells throughout** |
+
+⛔ **No existence verdict and no category was changed** — every value is `AMD1` §A1.1's, carried forward unaltered. `C-10`'s and `C-14`'s categories are shown as **DEFERRED** because `AMD1` deferred them, not because this correction deferred anything.
+
+## C3.2 · `F-2` — the `OQ-L` definitions *(BLOCKING)*
+
+**`OBSERVED` defect:** `AMD2` required explicit definitions of seven concepts. Five existed in §A1.6; **`CONSTRAIN` and `MACHINE-GENERATED RESULT` were absent** — and the second is load-bearing, because §A1.6's strongest candidate exception is *"deterministic automated checks"*, whose admissibility turns on precisely that term.
+
+**All seven are stated here as one complete surface. `PROPOSED`.** *(Terms carried from §A1.6 are marked `carried`; §A1.6's `governed control`, `accept` and `finalize` remain valid and are unaffected.)*
+
+| # | Term | `PROPOSED` definition |
+|---|---|---|
+| **1** | **PARTY** *(carried, sharpened)* | any **process, lane or person** that performs a governed act or is answerable for it. A party is identified in the workflow record by its **assignment and role**; ⚠️ its **process identity is self-declared and not attestable** (`INV-ATTR-1`/`INV-ATTR-2`). ⭐ **For a control, the *constrained party* is the party whose act the outcome conditions — not necessarily the party that executes the check** |
+| **2** | **ISSUE** *(carried, sharpened)* | to **produce a control's outcome as that control's result**. ⛔ Distinct from **executing** the check (which may be mechanical), from **accepting** the outcome (admitting it as sufficient), and from **finalizing** it (making it unappealable within the process) |
+| **3** | ⭐ **CONSTRAIN** *(new — `F-2`)* | a control **constrains** a party when the control's outcome **conditions whether that party's act may proceed, be accepted, or be claimed conformant**. ⭐ **Constraint is a relation between a control and the party whose act is conditioned.** ⛔ **It is not a relation to whoever runs the check, and not a relation to whoever reads the result.** ⇒ **a control may be executed by a mechanism no party owns and still constrain a specific party** |
+| **4** | **ADVISORY RESULT** *(carried)* | an outcome that **informs** a party but **conditions nothing** — the act may proceed unchanged whichever way the result falls. `OBSERVED` instance: `governance_tier: 2` assets `AST-005`/`AST-006`/`AST-014`, **non-blocking by design** |
+| **5** | **AUTHORITATIVE RESULT** *(carried from §A1.6's "authoritative verdict" — same concept, `AMD2`'s term adopted)* | an outcome that **does condition** the act: the act may not proceed, be accepted, or be claimed conformant against it. `OBSERVED` instance: `governance_tier: 1`, `AST-007` at `runtime_moments: [PRE_ACTION]`, **blocking** |
+| **6** | ⭐ **MACHINE-GENERATED RESULT** *(new — `F-2`, the load-bearing one)* | an outcome produced by **deterministic execution of an encoded rule by a mechanism, without a judgement by any party.** ⭐ **Its trustworthiness derives from its EXECUTION CONDITIONS — when it runs, what inputs it reads, and who can alter or bypass it — and not from the identity, role or separation of any party.** ⛔ **Being machine-generated makes an outcome neither independent nor ratified** |
+| **7** | **INDEPENDENT RATIFICATION** *(carried, sharpened)* | a **second party's confirmation** of an outcome, given **by a route the first party cannot write.** **Three properties, all required:** ① **a party gives it** — a mechanism cannot, because ratification is an act of **answerability**; ② the ratifying party **is not the constrained party**; ③ the route is **not writable by the constrained party** |
+
+> ### ⭐ **The distinction `AMD2` asked for, stated exactly: MODE OF PRODUCTION and EFFECT are orthogonal, and this estate holds both combinations today.**
+>
+> | | **advisory** *(effect: conditions nothing)* | **authoritative** *(effect: conditions the act)* |
+> |---|---|---|
+> | **machine-generated** *(no party judgement)* | ✅ `AST-005`/`006`/`014` — Tier-2 tripwires | ✅ **`AST-007`** — Tier-1, `PRE_ACTION`, blocking |
+> | **party judgement** | a review comment, a disclosure | a verification verdict, a PO/ARB acceptance |
+>
+> ⇒ **Three separate axes must not be conflated:** **how an outcome was produced** (machine-generated vs party judgement) · **what it conditions** (advisory vs authoritative) · **who stands behind it** (independent ratification, or nobody). ⭐ **A machine-generated result may be EVIDENCE that a ratifying party relies on; it can never BE the ratification. And an authoritative result is not thereby ratified — authority is about effect, ratification is about answerability.**
+
+⛔ **What this correction does NOT do, stated because the terms make it tempting:** it does **not** decide whether a **machine-generated authoritative result executed where the constrained party cannot intervene satisfies `OQ-L`** — that is §A1.6's **candidate exception 2**, and it remains **`OPEN`**. It does not decide the **single-operator fallback** exception, which §A1.6 records as the one that cannot be waved through. **`OQ-L` remains `PROPOSED` / `OPEN`, its wording unchanged, no exception adopted.**
+
+## C3.3 · `F-3` — external attestation as a separation dimension
+
+**`AMD2` requires `C-5` to explicitly distinguish six separations. Five carried explicit statuses; external attestation appeared only as an unreached state value.** It is now stated as a dimension:
+
+| Dimension | State | Class |
+|---|---|---|
+| ⭐ **external attestation** | 🔴 **`NOT_ESTABLISHED`** | `OBSERVED` |
+
+**Precisely, and no further:** **no party outside the platform has attested any separation claim in this estate.** Every separation statement to date is either **self-declared** (`INV-ATTR-2`'s target) or established by **another lane of the same operator** reading write-class provenance (Verification #3's `SB-1` clearance).
+
+> ⭐ **The sharpening this dimension forces: intra-platform third-party ≠ external attestation.** §4.1(25)'s *"possibly as third-party attestation"* is about **a different process under the same operator, on the same filesystem** — that is evidence of **process separation**, not of **externality**. ⛔ **It must not be read as external attestation, and this correction does not claim external attestation exists.**
+
+**Why `NOT_ESTABLISHED` and not `NOT_APPLICABLE`:** the dimension **applies** — an external party could in principle attest — so the four-state model puts it at `NOT_ESTABLISHED`, and **`EXTERNALLY_ATTESTED` remains an unreached state.** ⛔ **No owner is inferred and no ownership decision is made** (§10's options stay `OPEN`).
+
+## C3.4 · `F-4` — the `CAP-09` citation
+
+**Re-verified against the primary sources before changing anything:**
+
+| Quotation | Actual location |
+|---|---|
+| *"Read-only observation of constitutional guards (CI-1..5/Q7); on a trip: halt, escalate, never retry, never modify"* | ✅ **`Phase-02.5-Certification-Plan.md:46`** — the original citation was correct |
+| *"deliberately closed"* | ✅ **`Phase-03A-Reference-Architecture.md:73`** — *"CAP-09 (constitutional observation) is **deliberately closed** — no extension point exists."* ⛔ **previously credited to `Phase-02.5`** |
+
+**Both traceability lines now carry the split.** ⛔ **No substantive conclusion changed** — `CAP-09`'s Tier-1 halt-and-escalate behaviour and its closed write-paths are both still supported, by two documents instead of one.
+
+## C3.5 · `F-5` and `F-6` — textual and historical precision
+
+### `F-5` — ⚠️ **disposed of by a later act, not by editing**
+
+`AMD2` registered the provisional wording ending *"remains open"*; the artifact wrote *"remains **OPEN**"*. **But the `G-KOS-AIP04-CORRECTION3` grant and the correction act both write *"remains OPEN"* — capitalised.** ⇒ ⭐ **the later registered wording governs, the artifact already matches it, and "correcting" it to lower case would create fresh drift against the current act.** **`F-5` is recorded as DISPOSED; no text was changed.**
+
+### `F-6` — the four operations, stated separately
+
+**The categorical claim *"no original wording was rewritten"* is annotated in §A1.9. Accurately:**
+
+| Operation | What actually happened |
+|---|---|
+| **historical artifact preservation** | ✅ **`ba74dbdd` retained in full**, and `aff41549` above it. **No original finding was deleted** — this part of the claim is exactly true |
+| **additive amendment** | ✅ **329 insertions / 6 deletions**, and **five of the six** supersession pointers were appended **beside** original text which survives **verbatim** |
+| **actual file replacement** | ⚠️ **one instance**: §13 decision 3 wrapped the original question in **`~~strikethrough~~`** and re-ordered its label. **The words remain, but they now read as negated rather than annotated.** ⭐ **That is a change to original wording, and the categorical claim did not admit it** |
+| **workflow transcription** | ⚠️ **A different operation on a different object** — it changes the **workflow record**, never the artifact. Seq **16** and seq **22** transcribed human `START` acts that occurred before they were recorded, each carrying the anomaly on the face of the transition |
+
+⛔ **Nothing was erased to make this tidier, and the strikethrough was not reverted** — reverting it would itself be a further edit to historical text. It is **named** instead.
+
+## C3.6 · `F-7` — the workflow-record anomaly, recorded as discovered
+
+**`OBSERVED`, and its disposition:** the verification report `ca6039a8` **existed before its recorded `START`**. **The PO/ARB transcribed that `START` at seq 22**, preserving four conditions on the face of the transition — including that the report was produced before the transition existed. ⭐ **The anomaly is preserved, not erased.**
+
+⚠️ **`OBSERVED` recurrence, recorded because it is now a pattern:** **`S4b-architecture-aip04-correction3` stands at `REGISTER` (seq 21) + `HANDOFF` (seq 23) with NO `START`**, while this correction executes on a delivered human act. **This is the fourth occurrence of the same shape** — `X-2` recorded two, the AMD2 verification was the third.
+
+⛔ **Not done and not to be done by this lane:** no back-dating · no fictional earlier transition · no alteration of workflow history · **the workflow record was not written to at all** (recording a transition is a Governance act).
+⛔ **`INFERRED` but expressly NOT ASSIGNED:** the recurrence is evidence about how governed acts reach the record, and it **bears on `C-10` and equally on Governance-intake**. **It is NOT assigned to `C-10` by this correction** — `AMD1`'s exclusion and the correction act both forbid it. **Whether it is BC-7 lifecycle, Governance-intake, or `C-10` remains `OPEN`.**
+
+## C3.7 · Correction mapping — every change traced to a finding
+
+| Finding | Class | What this correction did | Where |
+|---|---|---|---|
+| **`F-1`** | 🔴 BLOCKING | corrected executive statement added (existence + category together, `C-14` provisional only); lead sentence marked `SUPERSEDED`; malformed table repaired by relocating `AMD1`'s annotation **verbatim** | §1 · §C3.1 |
+| **`F-2`** | 🔴 BLOCKING | all **seven** terms defined; **`CONSTRAIN`** and **`MACHINE-GENERATED RESULT`** newly supplied; mode-of-production / effect / answerability separated on three axes | §C3.2 |
+| **`F-3`** | evidence | **external attestation** stated as a dimension at **`NOT_ESTABLISHED`**; intra-platform third-party distinguished from external | §C3.3 |
+| **`F-4`** | evidence | citation corrected to **`Phase-03A:73`** for *"deliberately closed"*; `Phase-02.5:46` retained for the halt/escalate wording | §15 · amendment traceability · §C3.4 |
+| **`F-5`** | textual | **DISPOSED — no change**: the later registered wording governs and the artifact already matches it | §C3.5 |
+| **`F-6`** | historical | the categorical claim annotated; **four operations stated separately** | §A1.9 · §C3.5 |
+| **`F-7`** | record | anomaly recorded as discovered; seq-22 transcription noted; **fourth recurrence** recorded; **not assigned to `C-10`** | §C3.6 |
+
+⛔ **Correction-only rule honoured: every passage changed maps to a finding above, and nothing else in the artifact was touched.** No passage was changed for style, tidiness or preference.
+
+## C3.8 · What did NOT change · what remains `OPEN`
+
+⛔ **Unchanged:** every capability **existence** verdict and every **category** (`C-5` `YES`/control-plane · `C-10` `NOT YET ESTABLISHED` · `C-14` `CONTESTED` · `C-19` `YES`/stewardship) · the twenty-six-point analyses · the nine `C-5` dimensions *(one dimension added, none restated)* · `C-10`'s seven states and `OQ-J`'s five authorities · `C-14`'s four sub-concerns and **both readings** · `C-19`'s ten-part test · the control-loop finding and the four clocks · the three dependency kinds · the four **forbidden pairings**, all still `OPEN` · the decision pack Groups **A–D** · external research as **`EXTERNAL / CORROBORATIVE`**, untracked, never promoted · `AST-007`/`CAP-09` **`CONTESTED`**.
+
+**Remaining `OPEN`:** `OQ-A` · `OQ-B` · `OQ-H` · `OQ-I` · **`OQ-J`** (five separate authorities) · **`OQ-K`** · **`OQ-L`** *(now defined, still undecided, no exception adopted)* · `OQ-C`–`OQ-G` · `SB-2` · `SB-3` · `SB-1`'s disposition · `I-K1`'s three undefined terms *(valid · applicable · required by the act)* · `C-14` Reading 1 vs Reading 2 · **the provenance mismatch at seq 21** *(Governance)* · **the missing `START` for this assignment** *(Governance)*.
+
+⛔ **The OQ register was not modified.** `OQ-J`/`OQ-K`/`OQ-L` remain **proposed additions** for the PO/ARB to register or reject; this lane registers none of them.
+
+---
+
+> ## **"No PO/ARB decision was made by this correction."**
+> ## **"No ownership was assigned."**
+> ## **"No bounded context was created."**
+> ## **"No implementation was performed."**
+
+⛔ **Also not done:** no capability created · no capability existence or category decided · no agent · no service · no technology · no role redefined · six-role model neither reopened nor reinterpreted · `role ≠ capability ≠ bounded context ≠ agent ≠ service ≠ organizational authority` preserved throughout · **capability existence ≠ architectural category** preserved throughout · Verification #3 not re-run · `AMD1`/`AMD2` not reinterpreted · BC-7, role definitions, the OQ register and Track 1 untouched · **the workflow record not written to** · ⛔ **no self-verification and no self-acceptance; the assignment is NOT closed (`G-1`).**
+
+**CORRECTION #3 DELIVERED · STOPPING. Next actor: Independent Verification** — ⚠️ **and it must be a process other than `4858c37c` (this correction), `5e1dd9ee` (the analysis, `AMD1`, `AMD2`), `1c8b041b` (Verification #1) and `2da45a86` (Verification #2).**
+
+**Correction traceability:** `G-KOS-AIP04-CORRECTION3` (AUTHORIZED) · assignment `S4b-architecture-aip04-correction3`, `REGISTER` seq 21 · `HANDOFF` seq 23 · ⚠️ **no `START` recorded** · verified findings **`ca6039a8`** · seq 22 `START` transcription (`F-7`) · `AMD2` grant `G-KOS-AIP04-DECISION-PREP-AMD2` (`39f14f15`) · `AMD1` · original `ba74dbdd` · amended `aff41549` · **primary sources re-read for this correction: `.claude/platform/registry.yaml` (`AST-005`/`006`/`007`/`014` tiers, `AST-007` `PRE_ACTION` + `trace: CAP-09`/`verification-evidence`) · `Phase-02.5-Certification-Plan.md:46` · `Phase-03A-Reference-Architecture.md:73`** · six-role adoption (the non-equivalence clause) · `INV-ATTR-1`/`INV-ATTR-2` · `G-1`/`G-2`/`G-3` · `R-34`/`P-2` · identity correction `ee77c6c2`.
