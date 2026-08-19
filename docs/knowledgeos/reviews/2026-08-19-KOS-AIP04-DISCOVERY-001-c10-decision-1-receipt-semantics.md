@@ -90,3 +90,48 @@ category  →  stewardship / ownership
 **Next actor: 🔵 PO/ARB — C-10 Decision 2.** ⚠️ **And the fresh-verification gate (`b853a644` §5) still admits no known process.**
 
 **Traceability:** PO/ARB C-10 Decision-1 act 2026-08-19 · the declined-selection record `890bb1cc` · canonical analysis §5, §A1.3 (`OQ-J` five authorities; seven states), lines 84, 412, 551, 564, 682 · provenance disposition `b853a644` · `AMD2` grant · `ES-005.4` · `G-1` · `INV-ATTR-1`/`INV-ATTR-2`.
+
+---
+
+# ✅ AUTHORITATIVE DECISION TEXT (formal PO/ARB act, 2026-08-19) — appended; §1 above is the earlier draft and is superseded as to wording
+
+> ## **STATUS: DECIDED — APPROVED, Option C.**
+>
+> **"The C-10 system records an authoritative fact that context package P, containing knowledge versions K, was delivered to and acknowledged by session execution S at time T, under applicability decision A."**
+
+| | |
+|---|---|
+| **THE RECEIPT ESTABLISHES** | which package · which knowledge versions · which session execution · which assignment · **applicability reference** · delivery event · acknowledgement event · time · issuer / evidence basis |
+| **THE RECEIPT DOES NOT ESTABLISH** | **comprehension** · understanding · application · compliance · verification · **correctness of applicability** · organizational independence |
+
+> ### **CORE INVARIANT: `AUTHORITY IS CLAIM-SCOPED`.**
+> *"The receipt is authoritative only for the claim that delivery and acknowledgment occurred. It is not authoritative for understanding, application, or compliance."*
+
+**REQUIRED PROPERTIES (eight, as decided):** stable receipt identity · package and knowledge versions · session/assignment identity · **applicability reference** · delivery and acknowledgement timestamps · issuer and assurance basis · **invalidation semantics** · **immutable provenance linkage**.
+
+**NON-DECISIONS, explicitly remaining `OPEN`:** C-10 capability existence (`D2`) · authoritative state / lifecycle (`D3`) · missing / disputed receipt behaviour (`D4`) · architectural category · ownership / stewardship · implementation technology.
+
+## What changed from the draft in §1 — recorded so the diff is not silent
+
+| | |
+|---|---|
+| decision statement | **+ *"containing knowledge versions K"*** |
+| not-established list | **+ comprehension** *(now distinct from understanding)* |
+| ⭐ **new section** | **REQUIRED PROPERTIES — eight items**, including two the draft did not carry: **invalidation semantics** and **immutable provenance linkage** |
+| non-decisions | now **enumerated explicitly**, incl. *implementation technology* |
+
+## Two readings recorded, so the formal act is not later over-read
+
+**① `invalidation semantics` is a REQUIRED PROPERTY while `D3` (authoritative state / lifecycle) stays `OPEN`.** ⭐ **Read as: the receipt MUST HAVE invalidation semantics; WHAT they are is `D3`'s to decide.** ⛔ **This decision does not pre-empt `D3`** — it establishes that a receipt without invalidation semantics would not satisfy `D1`, nothing more.
+**② `immutable provenance linkage` is consistent with the act's own distinction `immutable ≠ authoritative`.** Immutability is required **as a property**; it confers no additional authority beyond the claim-scoped one.
+
+## 🔴 The referent gap is now SHARPER, not resolved
+
+**`applicability reference` has moved from a listed establishment to a REQUIRED PROPERTY.** **`ContextSelected` — *"the subset applicable to this act is determined"* — remains `🔴 does not occur · owner: 🔴 nobody`** (canonical analysis line 551).
+
+> ⭐ **Consequence, stated precisely: a receipt conforming to this decision is NOT PRESENTLY POPULATABLE, because one of its eight required properties references an act the estate never performs and nobody owns.**
+> **The authority question is closed** — reference ≠ correctness, per §3 above, and that holds. **The existence question about the referent is not.** ⛔ **Neither disposition is chosen here:** whether the reference may be null/optional until `ContextSelected` has an owner, or whether this decision creates a standing obligation to establish it, is **PO/ARB's** — and it bears directly on `D2`, since a capability whose required output cannot yet be produced is exactly the `NOT YET ESTABLISHED` question `D2` asks.
+
+⛔ **§§2–6 above stand unchanged:** the attribution correction · the refinement that closed the authority defect · the basis note on the untracked external research *(**never project authority, never `DECIDED`** — analysis lines 84, 412)* · and **no typed `KnowledgeDeliveryReceipt` adopted** *(verified: no such type exists in the estate)*.
+
+**Next actor: 🔵 PO/ARB — C-10 `D2`: does C-10 exist as a distinct capability?** ⚠️ **The fresh-verification gate (`b853a644` §5) still admits no known process.**
