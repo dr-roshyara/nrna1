@@ -1,6 +1,19 @@
 # Current Working State
 
-**Updated:** 2026-08-17 *(additive — see the 2026-08-17 block; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-19 *(additive — the 2026-08-19 block is newest; older rows it contradicts are superseded by it)*
+
+---
+
+## 📍 UPDATE (2026-08-19, newest) — two lanes await a PO/ARB act; **two record-integrity items are open**
+
+| | |
+|---|---|
+| **Track 1 · `KOS-CONTRACT-NEUTRALITY-001`** | V-3 determination **delivered** (`4f429a81`); `D-1`…`D-5` registered (`a8033ef9` + `e8b3842b`). Artifact-update gate **narrowed, not lifted** (`AMD1`/`AMD2`/`AMD3`): ordinary fixture evidence free · dynamic-member evidence blocked · assignment **not created**. `S4-architecture-v3-determination` still **`ACTIVE`**, holding mutation ownership with its deliverable complete |
+| 🔴 **Track 1 · OPEN QUESTION** | **Were `D-1`…`D-5` PO/ARB decisions or recommendations?** `9c93e2f0` replaced the register with a DECIDED reading and appended **nothing** to the workflow record; record and prose now disagree about the gate. ⛔ **Implementation must not proceed on an ambiguous decision state** |
+| **Track 2 · `KOS-AIP04-DISCOVERY-001`** | Six-role model **ADOPTED** as the engineering operating model (`cc2507b0`) — non-equivalences binding; 925-line document **unadopted**, `OQ-I` open. Verification #3 registered (`b236f2d6`), `W-1`/verdict `G` **re-scoped** (`d77fb5ea`) |
+| 🔴 **Track 2 · RECORD GAP `X-2`** | **Verification #3 ran off-record** — the report exists, the record ends at **seq 14 `HANDOFF`, no `START`**. Second occurrence at a "Verification #3" slot. Not back-dated; **needs a PO/ARB transcription act** |
+| ⚠️ **Estate integrity** | `9c93e2f0` also removed **73 lines** from the append-only session log. Recoverable at `e8b3842b`; **not restored** — restoration is itself a history edit and is a PO/ARB call |
+| **NEXT ACTOR** | 🔵 **Human PO/ARB** — (1) rule on the `D-1`…`D-5` status; (2) `START S1-verification-aip04-correction2` **or** transcribe the missing `START` for the report already produced |
 
 ---
 
