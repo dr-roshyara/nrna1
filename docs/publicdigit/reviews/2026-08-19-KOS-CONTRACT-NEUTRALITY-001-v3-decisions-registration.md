@@ -156,7 +156,22 @@ The act says *"The exact representation change is implementation work after the 
 > ## ⚠️ **`D-1`'s disposition (IN SCOPE) and its closing sentence do not sit together.**
 > **The disposition is decided and stands. But "downstream implementation concern" cannot be discharged as written: every available schema either changes an `L3` invariant or declares a limitation — both of which are contract acts, not implementation choices.**
 >
-> ⛔ **Governance does not resolve this and does not choose among (a)/(b)/(c).** **It is recorded so the translation step routes `D-1` to a representation decision rather than to an implementation ticket.** *(The same collision was independently identified as `F-D1` in the first registration above, and by the earlier determination that Governance classified as evidence only — **three findings, two of them from separated processes, agreeing.**)*
+> ⛔ **Governance does not resolve this and does not choose among (a)/(b)/(c).** **It is recorded so the translation step routes `D-1` to a representation decision rather than to an implementation ticket.** *(The same collision was also identified as `F-D1` in the first registration above and by the earlier determination `99aeac7c` that Governance classified as evidence only.)*
+>
+> ## 🔴 ERRATUM — issued 2026-08-19 by the recording process, against its own act
+> **The sentence originally here read: *"three findings, TWO OF THEM FROM SEPARATED PROCESSES, agreeing."* That is FACTUALLY WRONG and it OVERSTATES INDEPENDENCE.**
+> 
+> | Finding | Producing process |
+> |---|---|
+> | `F-D1` (this register) | `claude-code-session:1c8b041b` |
+> | the earlier determination `99aeac7c` | **`claude-code-session:1c8b041b` — the same process** |
+> | the V-3 architecture determination | ✅ **a separated process** |
+> 
+> ⇒ **ONE finding comes from a separated process, not two. Two of the three are the Track-1 implementer, writing about its own type.**
+> 
+> ⚠️ **The corrected statement:** the collision was **raised twice by the implementer and CONFIRMED ONCE INDEPENDENTLY** — by the separated lane, which proved it from the code and went further, enumerating the three admissible resolutions. **That is a sound basis for the routing in `A1.3`; it is NOT convergence of three independent analyses, and must not be quoted as such.**
+> 
+> **This is the exact error class this estate has repeatedly caught — *similarity presented as independent corroboration* — committed here by the recording process itself. It is corrected in place by erratum rather than by rewriting the sentence, so the mistake stays visible.** ⛔ **The `A1.3` routing is UNAFFECTED: it rests on the separated determination's own code-level proof, not on a count of agreeing findings.**
 
 ## A1.4 · Standing after this amendment
 
