@@ -62,3 +62,45 @@ No verification performed · no verification started · ADR-AIP-04 not decided �
 **Next actor: Human PO/ARB → `START S1-verification-aip04-correction2`.**
 
 **Traceability:** the PO/ARB `REGISTER` act 2026-08-19 · `G-KOS-AIP04-VERIFY3` · seq 13–14 · Correction #2 `3cbb915c` (assignment seq 10–12; grant `G-KOS-AIP04-CORRECTION2`) · Verification #2 `acdc613f` (`W-1`…`W-6`, RETURNED, §1 recusal) · Verification #1 · Amendment 1 `8008ee8a` · discovery `51910203` · Track-1 verification `50d55d26` (the undeclared producer) · `INV-ATTR-1` · `INV-ATTR-2` · `G-2` · `G-3` · `R-34`/`P-2` · `R8`
+
+---
+
+# ⬛ AMENDMENT A1 — `W-1` / verdict `G` re-scoped after the six-role adoption · 2026-08-19
+
+**Registered by:** Governance, on the delivered PO/ARB `RECORD` act · recorded as **`G-KOS-AIP04-VERIFY3-AMD2`**.
+*(A prior amendment, `-AMD1`, recorded the adoption decision as a decided input. Grants are append-only: the grant, AMD1 and AMD2 are read together.)*
+
+## A1.1 · What changed, and what did not
+
+> **The former thesis — *"the six-role model is not currently established as governed architecture"* — is SUPERSEDED by the adoption decision.**
+
+**Superseded, not disproven.** The claim was true of the estate when Verification #2 examined it; a later decision changed the world, not the finding.
+
+> ## ⛔ **DO NOT DELETE OR REWRITE THE HISTORICAL VERIFICATION RESULT.**
+
+**Verification #2's findings, and every prior verification result, stand exactly as written.** Supersession governs **what is to be verified next**; it does not edit what was found before. *Recorded emphatically because the estate saw a governed record replaced rather than amended earlier today — the distinction between superseding a question and overwriting an answer is the whole of it.*
+
+## A1.2 · `W-1` / verdict `G` — the re-scoped charge
+
+> **"Verify the evidence quality, provenance, completeness, and historical classification surrounding the adopted six-role model. Do not re-open whether PO/ARB should adopt the six-role model."**
+
+| ✅ The verifier may still verify | ⛔ The verifier must not |
+|---|---|
+| the six-class evidence distinction | re-decide adoption of the six-role model |
+| completeness of the estate survey | reject the PO/ARB decision |
+| the 925-line brainstorming document | create a different role model |
+| whether that document carries **any independent governed authority** | |
+| historical timing / provenance | |
+| consistency between the adopted model and surviving artifacts | |
+
+*The sharpest surviving question is the fourth: **whether the untracked document carries independent governed authority.** Adoption of the model did not adopt it, so its evidential standing is exactly as contestable as it was — and it is the document the self-corroboration check turns on.*
+
+## A1.3 · Unchanged
+
+The 925-line document **remains unadopted and remains under `OQ-I`** unless a separate governance act changes its disposition · AMD1's **non-equivalences remain binding** (role ≠ bounded context / capability / agent / platform service / organizational position; the adopted model is not proof a capability exists) · `W-2`, `W-3`, `W-4`, `W-5`, `W-6`, `SB-1` and its strengthened independence bar, the self-corroboration check, the DDD test, and verdicts **A–F** and **H–O** are untouched · `OQ-A`…`OQ-I` remain open.
+
+## A1.4 · Not done
+
+⛔ **The verification is NOT started by this act** — `S1-verification-aip04-correction2` remains `CREATED`. No historical result altered · ADR-AIP-04 not decided · no lane closed.
+
+**Next actor: Human PO/ARB → `START S1-verification-aip04-correction2`.**
