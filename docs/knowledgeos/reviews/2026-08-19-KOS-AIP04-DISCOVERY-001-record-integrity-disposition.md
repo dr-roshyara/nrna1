@@ -198,3 +198,56 @@ Six-role adoption stands and is not reopened · the non-equivalences bind · Ver
 **Next actor: Human PO/ARB — (1) dispose `B`; (2) either state that a human `START` was given for `S1-verification-aip04-correction2`, or authorize a repair act; then the capability-analysis lane can be started.**
 
 **Traceability:** the PO/ARB disposition act 2026-08-19 · `G-KOS-AIP04-DECISION-PREP` + `-AMD1` · seq 14–15 · Verification #3 report (`X-2`) · `9c93e2f0` · `e8b3842b` · `RESTORATION R1` · `Inv C` · `G-3` · `G-1` · `ES-004.3`
+
+---
+
+# ⬛ GATE DISCHARGED — the transcription is recorded and the handoff performed · 2026-08-19
+
+**Executed by:** Governance, on the delivered PO/ARB act authorizing the transcription and the handoff.
+
+## 1 · `X-2` · **DISCHARGED by explicit governance transcription** — seq 16
+
+> **PO/ARB, verbatim:** *"I confirm that the human START for `S1-verification-aip04-correction2` was given. Authorize Governance to transcribe the missing START transition into the workflow record."*
+
+**The four conditions the act required are written onto the face of the transition itself**, not merely into this document:
+
+| | Condition | How the record carries it |
+|---|---|---|
+| **1** | **the human act occurred** | affirmed by the PO/ARB in the transition's `humanAct` text. **Governance neither supplied nor inferred it** — this is the fact only the PO/ARB could provide, and it is now provided |
+| **2** | **the transition was not recorded at the time** | stated in the transition: the report was produced **before** this transition existed, which the report itself disclosed as `X-2` |
+| **3** | **the record is repaired by explicit governance transcription** | the transition **declares itself a transcription**, and its sequence number (16) is **later than the artifact it authorizes** — the anomaly is visible in the record rather than smoothed out of it |
+| **4** | **no other historical transition is back-dated or rewritten** | seq **1–15 untouched** · the verification report **unmodified** · nothing reconstructed |
+
+⭐ **The sequence number was deliberately not manipulated.** A transcription that appeared at seq 15 would read as though the `START` had preceded the report. **It did not, and the record now says so.**
+
+**`X-2` is discharged as a governance matter. It remains a recorded PLATFORM GAP** — the second occurrence at a "Verification #3" slot in this estate — **and evidence bearing on `C-10`, which the capability analysis must not assume owns it.**
+
+## 2 · Session log · **DISPOSITION B — recorded, nothing restored**
+
+> **PO/ARB:** *"DO NOT restore the 73 deleted session-log lines. Preserve the current append-only history. Retain the recovery reference: `e8b3842b`."*
+
+**Recorded as governed fact:** the deletion by `9c93e2f0` stands in history · **the deleted content remains recoverable from `e8b3842b`** · the existing log is **not rewritten** · today's appended Governance entry already carries the truncation notice and both commit references, so the pointer lives in the log itself and not only here.
+
+## 3 · Handoff · **PERFORMED** — seq 17
+
+`S1-verification-aip04-correction2` → `S4-architecture-aip04-decision-prep`.
+
+**Carried in the token:** the Verification #3 report, now on-record by transcription · the six-role **adoption as a decided input** · `AMD2`'s re-scoping of `W-1`/verdict `G` · **Decision Pack Part A, incorporated rather than re-derived** · the grant with `AMD1` (ownership **deferred**, the ten questions, the eleven-stage chain, the four **forbidden** role pairings, external research admissible only as unregistered external input).
+
+⛔ Verification #3 frozen · six-role adoption not reopened · **no capability, ownership, bounded context, agent or service created by this handoff.**
+
+## 4 · Gate result — ✅ **UNBLOCKED**, and one act short of running
+
+| | Before | Now |
+|---|---|---|
+| `mutationOwner` | `None` — no lane could hand off (`Inv C`) | released cleanly by seq 17 |
+| `S1-verification-aip04-correction2` | `CREATED` (report produced off-record) | **`HANDED_OFF`** |
+| `S4-architecture-aip04-decision-prep` | `CREATED`, unreachable | **`CREATED`, reachable** |
+
+**⛔ The capability-analysis lane is NOT started, and Governance cannot start it.** Confirmed against the engine rather than asserted:
+
+> `refused: START requires the recorded human start act — a handoff alone never yields ACTIVE (G-3)`
+
+**Next actor: Human PO/ARB — `START S4-architecture-aip04-decision-prep`.**
+
+**Traceability:** the PO/ARB act 2026-08-19 · seq 16 (`START`, transcribed) · seq 17 (`HANDOFF`) · `G-KOS-AIP04-VERIFY3` + `-AMD1` + `-AMD2` · `G-KOS-AIP04-DECISION-PREP` + `-AMD1` · Verification #3 report (`X-2`) · `9c93e2f0` · `e8b3842b` · `Inv C` · `G-3` · `G-1`
