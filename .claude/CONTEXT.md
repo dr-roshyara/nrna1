@@ -1,10 +1,24 @@
 # Current Working State
 
-**Updated:** 2026-08-19 *(additive — the 2026-08-19 block is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-20 *(additive — the 2026-08-20 block is newest; older rows it contradicts are superseded by it)*
 
 ---
 
-## 📍 UPDATE (2026-08-19, newest) — two lanes await a PO/ARB act; **two record-integrity items are open**
+## 📍 UPDATE (2026-08-20, newest) — **the migration-plan track gained two amendments and one independent review; ⛔ nothing is registered and nothing has executed**
+
+| | |
+|---|---|
+| **Track 2 · `KOS-AIP-GOV-STATE-DURABILITY` · migration plan** | `3817eb2b` plan *(`1c8b041b`)* → technical Architecture review `a282d14b` *(`bc1b47ef`, `CL-1`…`CL-12`)* → **AMD3** `bb1708b7` *(`bc1b47ef`)* → **independent AMD3 remedy review** *(`9c908e70`)* → **AMD4** `0a2fa71d` *(`bc1b47ef`)*. Plan now **706 lines**. ⛔ **No migration executed · no file moved · no default changed · `.gitignore`/`.gitattributes` untouched · no authority record modified** |
+| ✅ **Independent AMD3 remedy review DELIVERED** *(`9c908e70`)* | 🟡 **`PASS WITH DESIGN CLARIFICATIONS`** — **10 `CL` CLOSED · `CL-5`/`CL-6` ADDRESSED BUT NOT CLOSED · 0 NOT CLOSED**, raising **`RC-1`…`RC-11`**. ⭐ **Four are gate-class: `RC-1` → Phase 3 · `RC-2`/`RC-3` → Phase 4b · `RC-4` → Phase 7, the only one guarding an IRREVERSIBLE act.** Every corpus figure re-measured independently: **18 / 216 / 110 · 109 unique `grantId`s · 0 grants carry `seq` · `seq` dense 18/18 · 0 `*.tmp*`** |
+| ⚠️ **AMD4 addresses all eleven `RC`s — and closes none of them** | AMD4's own position, correctly held: **every `RC` is `ADDRESSED`, never `CLOSED`**, because its remedies are again written by `bc1b47ef`, which will not review them. ⭐ **The provenance bound recurs one level down, and will recur until an amendment produces no new remedy** |
+| 🔴 **`OPEN-M6` — neither AMD3 nor AMD4 carries a registered grant** | **Verified against the corpus: `G-…-MIGRATION-PLAN` + `-AMD1` + `-AMD2` exist and are `AUTHORIZED`; NO `-AMD3` and NO `-AMD4` grant exists anywhere.** Registration is a Governance act with exactly one writer (`G-2`/`R5a`) |
+| ⚠️ **Provenance observation — recorded, not disposed** | **The independent AMD3 review entered history INSIDE `0a2fa71d`, the AMD4 commit** — no commit of its own, under a subject describing AMD4's work, alongside the amendment that answers it. ✅ **Content verified intact:** 471 lines, byte-identical to HEAD, verdict and reviewer identity present. ⛔ **No history rewrite proposed** *(the AMD4 review commission already cites that hash)*; the proportionate remedy is a Governance note, which is Governance's to write |
+| 🔴 **The identity gate FIRED TWICE and HELD** | The AMD4 remedy-review commission was put to `9c908e70` twice; both times it returned **"STOP — independence requirement not satisfied"** and did not open the artifact. **This session authored `RC-1`…`RC-11`; judging whether its own findings are closed is verifying its own work (`R-34`/`P-2`)** |
+| **NEXT ACTOR** | 🔵 **A FRESH independent Principal Architecture reviewer of AMD4** — ⛔ **not `1c8b041b`, not `bc1b47ef`, not `9c908e70`**; `5e1dd9ee` is **disclose-only**. ⭐ **It must take `RC-1`…`RC-11` from the independent AMD3 review, NOT from AMD4's restatement of them** — the amendment is the proposed remedy; the prior review is the source of the defect being tested. Then **Governance registers AMD3 + AMD4** (`OPEN-M6`) → **PO/ARB: acceptance · `OPEN-M5` · Phase-0 freeze declaration · Phase-4b authorization** → execution becomes eligible, **beginning at Phase 0, never at Phase 3** |
+
+---
+
+## 📍 UPDATE (2026-08-19) — two lanes await a PO/ARB act; **two record-integrity items are open**
 
 | | |
 |---|---|
