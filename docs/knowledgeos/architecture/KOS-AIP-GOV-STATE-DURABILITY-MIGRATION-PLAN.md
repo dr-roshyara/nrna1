@@ -1,8 +1,8 @@
 # `KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN`
 
-**Status: 🟡 PROPOSED · AMENDED (AMD3 + AMD4, 2026-08-20).** Planning only — **no migration executed, no file moved, no default changed, no `.gitignore` or `.gitattributes` touched, no authority record modified.**
-**Lane:** `S4b-architecture-gov-state-impl-design` (seq 4 REGISTER · 5 HANDOFF · 6 START) · **Grants:** `G-KOS-GOV-STATE-DURABILITY-MIGRATION-PLAN` **+ AMD1 + AMD2** · ⚠️ **AMD3 and AMD4 are BOTH UNREGISTERED — §0.2, §11.1**
-**Date:** 2026-08-19 · **amended 2026-08-20 (AMD3), 2026-08-20 (AMD4).** **Producing process of the original plan, self-declared, NOT attestable** (`INV-ATTR-2`/`G-2`): `claude-code-session:1c8b041b`. **Producing process of AMD3 and AMD4:** `claude-code-session:bc1b47ef` — ⚠️ **author of the technical review `a282d14b` whose `CL` clarifications AMD3 closed.** ✅ **AMD4's `RC` findings, by contrast, are `claude-code-session:9c908e70`'s — INDEPENDENT (§0.4.1).** **`R-34`/`P-2`: no producing process may verify or accept this plan.**
+**Status: 🟡 PROPOSED · AMENDED (AMD3 + AMD4 + AMD5, 2026-08-20).** Planning only — **no migration executed, no file moved, no default changed, no `.gitignore` or `.gitattributes` touched, no authority record modified.**
+**Lane:** `S4b-architecture-gov-state-impl-design` (seq 4 REGISTER · 5 HANDOFF · 6 START) · **Grants:** `G-KOS-GOV-STATE-DURABILITY-MIGRATION-PLAN` **+ AMD1 + AMD2** · ⚠️ **AMD3, AMD4 and AMD5 are ALL UNREGISTERED — §0.2, §11.1**
+**Date:** 2026-08-19 · **amended 2026-08-20 (AMD3 · AMD4 · AMD5).** **Producing process of the original plan, self-declared, NOT attestable** (`INV-ATTR-2`/`G-2`): `claude-code-session:1c8b041b`. **Producing process of AMD3, AMD4 and AMD5:** `claude-code-session:bc1b47ef` — ⚠️ **author of the technical review `a282d14b` whose `CL` clarifications AMD3 closed.** ✅ **AMD4's `RC` findings are `claude-code-session:9c908e70`'s and AMD5's `RD`/`DI` findings are `claude-code-session:870305e0`'s — both INDEPENDENT (§0.4.1, §0.5).** **`R-34`/`P-2`: no producing process may verify or accept this plan.**
 
 **Placement resolved through existing governance, not chosen:** `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos` → **`docs/knowledgeos`**, **exit 0**. ⇒ the AMD2 exit-2 `PENDING`/escalate branch **did not fire**; `architecture/` matches the artifact class.
 
@@ -79,19 +79,19 @@
 | ⭐ **`RC-1`** | **gate · Phase 3** | §4 table — **`2b-pin` (before the copy) and `2c-commit` (at/after the copy) are now SEPARATE phases**; Phase 3's precondition is `2b-pin`, which no longer depends on Phase 3's output | **ADDRESSED — circularity removed** |
 | ⭐ **`RC-2`** | **gate · Phase 4b** | §3 table — **row 1 binds the AUTHORITATIVE resolution; new row 2 states a governed override yields a NON-AUTHORITATIVE location and is NOT a boundary violation**; both contract suites' `--dir` usage quoted as the evidence | **ADDRESSED — pinned suites preserved** |
 | ⭐ **`RC-3`** | **gate · Phase 4b** | §3 table — **reporting form marked ✅ *"THIS IS WHAT PHASE 4b IMPLEMENTS"*; enforcing form marked ⛔ *"DEFERRED TO `OPEN-M5`, NOT CURRENT"*** | **ADDRESSED — one current definition per row** |
-| 🔴 ⭐ **`RC-4`** | **gate · Phase 7** | **§4.1 — a FINAL re-hash against `manifest + reconciled delta` is Phase 7's precondition**; mismatch ⇒ stop, reconcile, re-verify, never remove. **New acceptance criterion 12** · new §8 rollback trigger | **ADDRESSED — the destructive act is guarded** |
-| **`RC-5`** | design | **§4.2 — Phase 5's internal order MANDATED: re-hash · readers · WRITER LAST**; the transfer instant is the writer switch; §8's boundary restated | **ADDRESSED** |
+| 🔴 ⭐ **`RC-4`** | **gate · Phase 7** | **§4.4 — a FINAL re-hash against `manifest + reconciled delta` is Phase 7's precondition**; mismatch ⇒ stop, reconcile, re-verify, never remove. **New acceptance criterion 12** · new §8 rollback trigger | **ADDRESSED — the destructive act is guarded** |
+| **`RC-5`** | design | **§4.3 — Phase 5's internal order MANDATED: re-hash · readers · WRITER LAST**; the transfer instant is the writer switch; §8's boundary restated | **ADDRESSED** |
 | **`RC-5b`** | design | §3 `INV-R5` + §4 table row 8 — **Phase 4b delivers the resolver DORMANT; Phase 5 is the sole activating act** | **ADDRESSED** |
-| **`RC-6`** | design | **§4.3 — directory-level · out-of-band · in-file marking FORBIDDEN by byte preservation · ⛔ never `*.json` · advisory reach stated** | **ADDRESSED** |
+| **`RC-6`** | design | **§4.5 — directory-level · out-of-band · in-file marking FORBIDDEN by byte preservation · ⛔ never `*.json` · advisory reach stated** | **ADDRESSED** |
 | **`RC-7a`** | coherence | §4 — the `INV-ORDER` preservation argument now enumerates **all three** additions, including `2b`/`2c` inside the 2–4 span | **ADDRESSED** |
 | **`RC-7b`** | coherence | §4 — **the table is sorted by EXECUTION and numbered `1…11`; labels are lineage, row order is authoritative** | **ADDRESSED** |
 | **`RC-7`** *(dependencies)* | coherence | **§11.1 — six prerequisites with actors**, including the Phase-0 and Phase-4b acts AMD3 introduced and did not carry | **ADDRESSED** |
-| **`RC-8`** | design | **§4.4 — `text eol=lf` WITHDRAWN; `-text` only**, with the `CR` argument; hash semantics (SHA-256, working-tree bytes) recorded in Phase 1 | **ADDRESSED** |
+| **`RC-8`** | design | **§4.6 — `text eol=lf` WITHDRAWN; `-text` only**, with the `CR` argument; hash semantics (SHA-256, working-tree bytes) recorded in Phase 1 | **ADDRESSED** |
 | **`RC-9`** | wording | §6.3 — **canonical re-encode DEFINED as recursive key ordering**, comparison-only | **ADDRESSED** |
 | **`RC-10`** | design brief | **§3.1 — refusal MUST precede `saveRecord`'s `mkdir`**, because a mis-resolved path *materializes* rather than failing | **ADDRESSED — recorded, not implemented** |
 | **`RC-11`** | wording | **§1.3 — *"one writer of governance evidence"*, with the discriminating test** (*references `runtime/workflow` AND writes*) and the three candidates disposed | **ADDRESSED — closes `INFO-1`** |
-| **`CL-5`** | reopened | closed via `RC-6` (§4.3) | **ADDRESSED** |
-| **`CL-6`** | reopened | closed via `RC-1` (§4) and `RC-8` (§4.4) | **ADDRESSED** |
+| **`CL-5`** | reopened | closed via `RC-6` (§4.5) | **ADDRESSED** |
+| **`CL-6`** | reopened | closed via `RC-1` (§4) and `RC-8` (§4.6) | **ADDRESSED** |
 
 ⛔ **AMD4 changes NO decision.** `B′` · `R-CONFLICT` · `OPEN-M3` Option A · placement governance · `INV-ORDER` · `Option D` — **all untouched.** ⛔ **`OPEN-M5` NOT decided** · ⛔ **no ledger** · ⛔ **no bounded context** · ⛔ **no `.gitignore` change** · ⛔ **no `.gitattributes` change** *(the `-text` pin is REQUIRED at Phase 2b-pin and NOT performed)* · ⛔ **no runtime code, including the Phase-4b resolver and the `RC-10` guard** · ⛔ **migration NOT executed.**
 
@@ -101,9 +101,44 @@
 
 ## 0.4.4 Canonical-document rule
 
-**One canonical CURRENT definition per section.** **Superseded wording remains ONLY where explicitly labelled** — §1.3's heading, §3's enforcing row, §4.4's withdrawn form, §6.3's withdrawn invariant, §8's superseded rule, §10's superseded criteria. ⛔ **Governance history is not deleted, and no two competing current definitions are left standing** — the one such defect the independent review found (`RC-3`) is repaired in §3.
+**One canonical CURRENT definition per section.** **Superseded wording remains ONLY where explicitly labelled** — §1.3's heading, §3's enforcing row, §4.6's withdrawn form, §6.3's withdrawn invariant, §8's superseded rule, §10's superseded criteria. ⛔ **Governance history is not deleted, and no two competing current definitions are left standing** — the one such defect the independent review found (`RC-3`) is repaired in §3.
 
 ---
+---
+
+# 0.5 · Amendment 5 — residual correction *(AMD4 review)*
+
+**Input, consumed and not reinterpreted:** `docs/knowledgeos/reviews/KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN-AMD4-ARCHITECTURE-REVIEW.md` — the **INDEPENDENT** AMD4 review by `claude-code-session:870305e0`, verdict **`PASS WITH DESIGN CLARIFICATIONS`**: ⭐ **`RC-1`…`RC-11` ALL CLOSED**, with six new residuals — **three design gaps (`RD-7`, `RD-3`, `RD-10`) and three document-integrity defects (`DI-1`, `DI-2`, `DI-3`)**.
+**Baseline:** AMD4 at **`0a2fa71d`** · **authorizing human act, cited by reference:** the PO/ARB commission of 2026-08-20 (*"AMD5 — MIGRATION PLAN RESIDUAL CORRECTION"*). ⚠️ **Also unregistered — `OPEN-M6` now spans AMD3, AMD4 and AMD5 (§11.1).**
+**Producing process:** `claude-code-session:bc1b47ef` — ⚠️ **author of AMD3, AMD4 and the original technical review.** ✅ **`RD`/`DI` findings are `870305e0`'s, independent.** ⛔ **The §0.4.1 bound recurs unchanged: AMD5 records every item `ADDRESSED`, never `CLOSED`.**
+
+## 0.5.1 Disposition — ⭐ **all six ADDRESSED; ⛔ none self-closed**
+
+| # | Kind | Correction | Where |
+|---|---|---|---|
+| 🔴 ⭐ **`RD-7`** | design gap | ⭐ **Phase 5 gains STEP 5: RETRACT the staging `NON-AUTHORITATIVE` marker, ordered AFTER the writer switch.** Full marker lifecycle tabled; both windows shown closed; evidence bytes provably untouched. **New acceptance criterion 14** | **§4.5** · §4 rows 3 & 9 · §10 |
+| 🔴 ⭐ **`RD-3`** | design gap | ⭐ **The Phase-7 mismatch disposition is SPLIT: CASE α (pre-writer-switch) reconciles under §6; CASE β (post-demotion write) is QUARANTINED, recorded and ESCALATED — never imported.** Tie-break stated: unestablishable ordering ⇒ treat as β. **New acceptance criterion 15** | **§4.4** · §4 row 11 · §10 |
+| 🔴 ⭐ **`RD-10`** | design gap | ⭐ **Freeze semantics PARTITIONED: unrelated appends prohibited; the migration lane's OWN records explicitly permitted and DECLARED IN ADVANCE as EXPECTED DELTA INPUTS.** Verification gains a third outcome, so a real violation stays detectable. **Criterion 11 restated** | **§4.0** · §4 rows 1 & 9 · §10 |
+| 🔴 ⭐ **`DI-1`** | integrity | ⭐ **`§4.1`/`§4.2` collisions removed and §4 renumbered MONOTONICALLY** — see the map in §0.5.2. **All 21 live `§4.x` references repointed and audited to resolve uniquely** | **§4 (whole)** |
+| ⚠️ **`DI-2`** | integrity | ⭐ **Stale *"Phase 2b"* corrected to `2c-commit` in the two live places** — §5's manifest-commit sentence and §10 criterion 1 — **each with the superseded wording labelled.** §10 criterion 5's shorthand normalised to `2b-pin`. **§0.3 and §12's AMD3 lineage retained as labelled history** | §5 · §10 · §12 |
+| ⚠️ **`DI-3`** | integrity | ⭐ **The count is reconciled TO THE ROWS: EIGHT, grouped by kind, with the 3 that gate execution named.** ⛔ **No dependency invented to reach a number; no ownership moved** | **§11.1** |
+
+## 0.5.2 ⭐ `DI-1` — the §4 renumbering map, so every prior reference remains resolvable
+
+| Was | Now | Content | Note |
+|---|---|---|---|
+| `4.1` *(AMD4)* | ⭐ **`4.4`** | the FINAL integrity check (`RC-4`, and now `RD-3`) | **renumbered — AMD4 addition** |
+| `4.2` *(AMD4)* | ⭐ **`4.3`** | the transfer INSTANT (`RC-5`) | **renumbered — AMD4 addition** |
+| `4.3` *(AMD4)* | ⭐ **`4.5`** | marker mechanism (`RC-6`, and now `RD-7`) | **renumbered — AMD4 addition** |
+| `4.4` *(AMD4)* | ⭐ **`4.6`** | `-text` only (`RC-8`) | **renumbered — AMD4 addition** |
+| `4.0` | `4.0` | Phase 0 — the freeze (and now `RD-10`) | **unchanged; moved into position** |
+| `4.1` *(original)* | ✅ **`4.1`** | Phase 3 — what byte-preserving forbids | ⭐ **UNCHANGED — the ORIGINAL plan's number is preserved**, because the Governance review and the AMD3 review cite it |
+| `4.2` *(original)* | ✅ **`4.2`** | Phase 7 — removal is NOT deletion | ⭐ **UNCHANGED, same reason** |
+
+> ⭐ **The AMD4 additions moved and the originals did not — deliberately.** ⛔ **Renumbering the originals would have invalidated citations in two already-delivered independent reviews.** ✅ **Order is now monotonic — `4.0 · 4.1 · 4.2 · 4.3 · 4.4 · 4.5 · 4.6` — which `RC-7b` established as authoritative for this artifact.** ⛔ **No governance history was deleted; nothing was renamed to hide a change.**
+
+⛔ **AMD5 changes NO decision.** `B′` · `R-CONFLICT` *(the invariant is untouched — §4.4 states why quarantine is compliant)* · `OPEN-M3` Option A · placement governance · `INV-ORDER` · `Option D` — **all intact.** ⛔ **No second authority boundary · no second owner · no ledger · no bounded context.** ⛔ **`OPEN-M1`/`OPEN-M2`/`OPEN-M4`/`OPEN-M5`/`OPEN-M6` NOT decided** *(`RD-10` and `RC-1` constrain `OPEN-M2` further; neither resolves it)*. ⛔ **No phase reordered — the sequence is unchanged: `0 · 1 · 2 · 2b-pin · 3 · 2c-commit · 4 · 4b · 5 · 6 · 7`.** ⛔ **`Increment 2` not proposed** — §4.4 records the final-re-hash-to-removal interval as **irreducible without a lock**.
+
 
 # 1 · Current-state inventory — `OBSERVED`, measured, nothing modified
 
@@ -152,7 +187,7 @@ git check-ignore -v .claude/runtime/workflow/KOS-CONTRACT-NEUTRALITY-001.json  �
 >
 > ⭐ **And AMD3's own evidence made the unqualified form indefensible: `CL-10`/§1.5 establishes that `KOS_MECHANISM_PATH` makes a SECOND write path reachable.** ⇒ *"one writer"* is true of **the committed code paths today** and false as a **structural guarantee**. ⛔ **This plan does not claim that arbitrary writes to the directory are impossible — §1.4 and `INV-R4` already say the opposite.**
 
-✅ **A single writer of governance evidence is still the migration's biggest asset:** the cutover has one code path to switch, not many — and §4.2 uses exactly that fact to make the authority-transfer instant a single event.
+✅ **A single writer of governance evidence is still the migration's biggest asset:** the cutover has one code path to switch, not many — and §4.3 uses exactly that fact to make the authority-transfer instant a single event.
 
 > ## 🔴 **AMD3 (`CL-1`) — the write is atomic; the READ-MODIFY-WRITE is not. This is REPORTED, not repaired.**
 > ```
@@ -295,7 +330,7 @@ Five shell scripts touch `.claude/runtime/` and **none is a governance-evidence 
 > **The original plan switched every path *"to the §3 resolver"* while no phase produced one, and §7 declined to restrict the overrides that criteria 6 and 7 require closed.** ⇒ **the seven phases asserted an outcome they could not reach.**
 > ⭐ **§3 is a SPECIFICATION, not an artifact.** The artifact is produced by a **named act — Phase 4b (§4) — an authorized implementation slice against `workflow-state.php` and `session-resolve.php`,** which is **runtime-code change and therefore outside this planning artifact's fence** (§12). **Phase 5 may not begin until that act has landed and its own RED/GREEN evidence exists.**
 > ⛔ **What `INV-R5` does NOT do:** it does not design the resolver, choose its shape, or restrict `--dir`/`KOS_MECHANISM_PATH` (§7 stands). **It names the missing act and refuses to let Phase 5 assume it.**
-> ⭐ **AMD4 (`RC-5b`): Phase 4b delivers the resolver DORMANT — built, tested, NOT WIRED.** ⛔ **If 4b wired it, writers would redirect at 4b, 4b would BE the switch, and §4.2's transfer instant would be indeterminate.** **Phase 5 is the sole activating act.**
+> ⭐ **AMD4 (`RC-5b`): Phase 4b delivers the resolver DORMANT — built, tested, NOT WIRED.** ⛔ **If 4b wired it, writers would redirect at 4b, 4b would BE the switch, and §4.3's transfer instant would be indeterminate.** **Phase 5 is the sole activating act.**
 
 ## 3.1 ⭐ **AMD4 (`RC-10`) — a Phase-4b design brief the plan owes the implementer: REFUSAL MUST PRECEDE `mkdir`**
 
@@ -334,90 +369,17 @@ function saveRecord(string $path, array $record): void {
 
 | # | Phase | Act | Precondition | Produces |
 |---|---|---|---|---|
-| 1 | ⭐ **0 · Declared write freeze** *(AMD3, `CL-1`)* | **PO/ARB declares the migration window: no lane may append to the corpus.** ⛔ **A GOVERNANCE ACT, not a lock — no lock exists and none is proposed** | the authorizing human act | **freeze declaration** |
+| 1 | ⭐ **0 · Declared write freeze** *(AMD3, `CL-1`)* | ⭐ **AMD5 (`RD-10`): PO/ARB declares the window — ⛔ NO UNRELATED lane may append, ✅ and the MIGRATION LANE's OWN records are explicitly permitted and DECLARED IN ADVANCE as EXPECTED DELTA INPUTS (§4.0).** ⛔ **A GOVERNANCE ACT, not a lock** | the authorizing human act | **freeze declaration + the declared expected-delta list** |
 | 2 | **1 · Inventory** | enumerate every record, transition, grant; **hash each file**. ⭐ **AMD3 (`CL-12`): the record predicate is EXACTLY `*.json`** — matching `session-resolve.php:130` — and ⛔ **any `*.tmp.<pid>` remnant is QUARANTINED: never migrated, never deleted**. ⭐ **AMD4 (`RC-8` minor): the manifest RECORDS ITS HASH SEMANTICS — algorithm (SHA-256) and subject (WORKING-TREE BYTES, not the git blob)** | **Phase 0 declared** | ⭐ **the FROZEN MANIFEST** — hashes + counts + hash semantics (§5) |
-| 3 | **2 · Durable target** | resolve the target through existing placement governance; create it. ⭐ **`CL-5`/`RC-6`: the target carries a NON-AUTHORITATIVE MARKER for the whole 3→5 window — see §4.3** | resolver exit 0 | placement evidence |
-| 4 | ⭐ **2b-pin · Byte-integrity pin** *(AMD4, `RC-1`/`RC-8`)* | **pin the evidence path in `.gitattributes` as `-text`.** ⛔ **AMD4 (`RC-8`): `-text` ONLY. `text eol=lf` is NOT equivalent and is withdrawn — see §4.4** | **Phase 2 target resolved** | the pin |
+| 3 | **2 · Durable target** | resolve the target through existing placement governance; create it. ⭐ **`CL-5`/`RC-6`: the target carries a NON-AUTHORITATIVE MARKER for the whole 3→5 window — see §4.5** | resolver exit 0 | placement evidence |
+| 4 | ⭐ **2b-pin · Byte-integrity pin** *(AMD4, `RC-1`/`RC-8`)* | **pin the evidence path in `.gitattributes` as `-text`.** ⛔ **AMD4 (`RC-8`): `-text` ONLY. `text eol=lf` is NOT equivalent and is withdrawn — see §4.6** | **Phase 2 target resolved** | the pin |
 | 5 | **3 · Byte-preserving copy** | copy **bytes exactly** | ⭐ **AMD4: Phases 1 and 2b-pin complete** *(no longer "2b", which could not complete before Phase 3)* | the durable copy |
 | 6 | ⭐ **2c-commit · Manifest + copy committed** *(AMD4, `RC-1`)* | **commit the Phase-1 manifest AND the Phase-3 copy in ONE commit**, so manifest and artifact cannot drift | **Phase 3 complete** | committed manifest + copy |
 | 7 | **4 · Integrity verification** | byte equality · **hash equality** · record count · sequence continuity · provenance continuity — **against the FROZEN MANIFEST**. ⭐ **ALL-OR-NOTHING: a per-file PASS set that does not exhaust the manifest is a FAIL, not progress** | Phase 2c-commit complete | **verification evidence** |
 | 8 | ⭐ **4b · Resolver exists, DORMANT** *(AMD3 `CL-3`/`INV-R5`; AMD4 `RC-5b`)* | the separately authorized implementation slice that **PRODUCES** the §3 resolver has landed with its own RED/GREEN evidence. ⭐ **AMD4 (`RC-5b`): it delivers the resolver DORMANT — BUILT BUT NOT WIRED. ⛔ Phase 4b changes no component's effective resolution, so it is NOT a switch and cannot collapse into Phase 5.** ⛔ **Runtime-code change — outside this plan's fence (§12); named here, not performed** | Phase 4 PASSED | resolver *(dormant)* + its test evidence |
-| 9 | **5 · Authority path switch** — ⭐ **the SOLE activating act** | ⭐ **AMD4 (`RC-5`): INTERNAL ORDER IS MANDATED — RE-HASH first · then READERS (`P-2`, `P-4`) · then THE WRITER (`P-1`) LAST.** *(`P-3a/b` are NOT restricted — §7 stands.)* The re-hash compares source to the frozen manifest: unchanged ⇒ the window was provably quiet; changed ⇒ **reconcile the delta under §6 as a NAMED STEP.** ⭐ **`CL-5`/`RC-6`: write the runtime copy's DEMOTION MARKER in this same act** | **Phase 4 PASSED · Phase 4b landed** | switch-over evidence · re-hash comparison · ⭐ **the reconciled delta** |
-| 10 | **6 · Authority demotion** | ⭐ **RECORD the transfer that the Phase-5 WRITER SWITCH already performed.** ⛔ **Phase 6 does not CAUSE the transfer** — §4.2 | Phase 5 complete | demotion record |
-| 11 | **7 · Runtime cleanup** | remove the obsolete runtime copy | 🔴 ⭐ **AMD4 (`RC-4`): Phases 4 AND 5 passed **AND A FINAL RE-HASH PASSES** — see §4.1. ⛔ The Phase-5 re-hash is NOT sufficient** | cleanup evidence · **final re-hash evidence** |
-
-## 4.1 🔴 ⭐ **AMD4 (`RC-4`) — THE FINAL INTEGRITY CHECK. This is the one path by which the migration itself could destroy evidence.**
-
-**The gap the independent review found, stated as the sequence:**
-
-```
-Phase 5   re-hash vs manifest  ← the LAST integrity check of the runtime copy under AMD3
-Phase 5   switch readers, then the writer     ← not atomic with the re-hash
-Phase 6   record the transfer
-Phase 7   REMOVE the runtime copy             ← AMD3 precondition: "Phases 4 AND 5 passed" — NO re-check
-```
-
-> ⛔ **A write landing after the Phase-5 re-hash but before the WRITER is switched goes to the RUNTIME copy. It is not in the frozen manifest and not in either reconciliation input — and Phase 7 destroys it.**
-> ⭐ **And note precisely why AMD3's own restatement cannot catch it:** the bounded claim is *"no record lost **relative to** the frozen manifest and the observed inputs"*, and a gap-window write is in **neither**. **The restatement is honest and here it is self-satisfying. The withdrawn absolute claim would have caught this.** ⛔ **That is NOT an argument for restoring the absolute claim — §6.3's withdrawal stands, and §1.3's evidence is unchanged. It is an argument for a final check.**
-
-**⇒ Phase 7's precondition, in full:**
-
-```
-FINAL RE-HASH:  runtime source   vs   frozen manifest + reconciled delta
-    identical  →  ✅ removal permitted
-    different  →  ⛔ STOP. Do NOT remove.
-                  reconcile the difference under §6 (CASE A / CASE B)
-                  re-verify (Phase 4 semantics, all-or-nothing)
-                  only then may removal proceed
-```
-
-⭐ **Why this closes it and costs almost nothing: the check is 18 hash comparisons against an object that already exists, and it is the only guard standing between the last verification and an irreversible act.** ✅ **`§4.2`'s justification for Phase 7 — *"a redundant, demoted, BYTE-VERIFIED copy"* — becomes true at the moment of removal rather than true as of Phase 4.**
-
-## 4.3 ⭐ **AMD4 (`RC-6`) — marker mechanism, specified so it is implementable without re-deriving the constraints**
-
-| Property | Rule |
-|---|---|
-| **granularity** | **DIRECTORY-LEVEL**, one marker per store — not per record |
-| **placement** | ⛔ **OUT-OF-BAND. In-file marking is FORBIDDEN** — it would alter evidence bytes and break §4.1's byte preservation and every hash in the manifest |
-| **naming** | ⛔ **MUST NOT match `*.json`** — that glob is `session-resolve.php:130`'s record predicate and §4's Phase-1 predicate; a `*.json` marker would be read as a work item |
-| **the two markers** | **staging target: NON-AUTHORITATIVE**, from Phase 2 until Phase 5 · **runtime copy: DEMOTED**, written in the Phase-5 act |
-| ⚠️ **reach** | **ADVISORY for the ad-hoc reader class §1.4 already bounds.** ⛔ **The marker does not make the invariant enforceable against a reader that resolves nothing** — it makes the state *visible* to a reader who looks. **Stated, not assumed away** |
-
-## 4.4 ⭐ **AMD4 (`RC-8`) — `-text` and `text eol=lf` are NOT interchangeable. The alternative is withdrawn.**
-
-| Form | Effect | Verdict |
-|---|---|---|
-| ⛔ `text eol=lf` | **keeps text normalisation ON** and merely fixes the checkout direction. **A record that ever contained a raw `CR` would be silently rewritten on commit** — the exact class of silent byte rewrite the pin exists to prevent | 🔴 **WITHDRAWN — it cannot support an unconditional claim** |
-| ✅ **`-text`** | **disables conversion in BOTH directions** | ⭐ **the only form that makes byte preservation unconditional** |
-
-✅ **Measured today: 0 of 18 records contain a `CR` byte, so both forms behave identically NOW.** ⛔ **The claim is about a FUTURE verifier, so it must not rest on a present coincidence.**
-
-> ## ⭐ **AMD3 (`CL-4`) — WHERE AUTHORITY TRANSFERS. Two accepted artifacts disagreed; the disagreement is now resolved.**
-> | Source | Said |
-> |---|---|
-> | implementation design `ae451db9` §3.2/§4.1 | authority moves **at the switch** — *"before step 3: runtime; after step 3: the governance evidence boundary"* |
-> | this plan, as first written | **Phase 6** *"declares the runtime copy no longer authoritative"* — a separate later act |
->
-> ⭐ **RULING (mechanism, not preference): AUTHORITY TRANSFERS AT THE PHASE-5 WRITER SWITCH, because that is what redirects WRITERS.** After it, an append exists **only** in the new store. **Phase 6 is the RECORD of a transfer that has already happened.**
-> ⛔ **CONSEQUENCE FOR ROLLBACK, and §8 is corrected accordingly: after the writer switch, rollback is RECONCILIATION, never *"stop"*.** *"Stop"* would abandon appends that exist only in the new store, or re-promote a store that is **provably behind** — which is the governance act §8 reserved for after Phase 6.
-
-## 4.2 ⭐ **AMD4 (`RC-5`) — the transfer INSTANT, because Phase 5 is not atomic**
-
-**AMD3 said *"on completion of Phase 5."* 🔴 Phase 5 switches `P-1`, `P-2` and `P-4` — several call sites, so its completion is not an instant.** ⭐ **Authority moves the moment the WRITER's resolution changes, which is INSIDE Phase 5** ⇒ **for the interval between the writer switch and Phase 5's completion, AMD3's *"before Phase 5 ⇒ stop"* rule was false for exactly the reason `CL-4` corrected one window later.**
-
-✅ **The fix is cheap because there is only ONE writer to order:**
-
-```
-Phase 5, mandated internal order
-    1  RE-HASH        source vs frozen manifest            ← still non-authoritative
-    2  READERS        P-2 (session-resolve), P-4 (mechanism selection)
-    3  ⭐ THE WRITER   P-1 (workflow-state)   ← ⭐ THE AUTHORITY-TRANSFER INSTANT
-    4  MARKERS        runtime copy = DEMOTED
-```
-
-> ⭐ **Readers first, writer last, and the reason is directional: a reader pointed at the new store before the writer moves reads a copy that is byte-verified and merely not-yet-current; a WRITER pointed at the new store before the readers move would produce evidence no reader can see.** ⛔ **The reverse order creates an invisible-write window; this order creates only a briefly-stale-read window, and the re-hash has already bounded that.**
-
-**⇒ §8's rollback boundary is *"the writer switch"*, not *"Phase 5"*.**
+| 9 | **5 · Authority path switch** — ⭐ **the SOLE activating act** | ⭐ **AMD4 (`RC-5`): INTERNAL ORDER IS MANDATED — RE-HASH first · then READERS (`P-2`, `P-4`) · then THE WRITER (`P-1`) LAST.** *(`P-3a/b` are NOT restricted — §7 stands.)* The re-hash compares source to the frozen manifest: unchanged ⇒ the window was provably quiet; ⭐ **AMD5 (`RD-10`): a delta WITHIN the declared migration-lane records ⇒ EXPECTED, reconcile it separately; a delta OUTSIDE them ⇒ 🔴 FREEZE VIOLATION, stop and escalate.** ⭐ **`CL-5`/`RC-6` step 4: write the runtime copy's DEMOTION MARKER.** ⭐ **AMD5 (`RD-7`) step 5: RETRACT the staging store's `NON-AUTHORITATIVE` marker — after the writer switch, never before (§4.5)** | **Phase 4 PASSED · Phase 4b landed** | switch-over evidence · re-hash comparison · ⭐ **the reconciled delta** |
+| 10 | **6 · Authority demotion** | ⭐ **RECORD the transfer that the Phase-5 WRITER SWITCH already performed.** ⛔ **Phase 6 does not CAUSE the transfer** — §4.3 | Phase 5 complete | demotion record |
+| 11 | **7 · Runtime cleanup** | remove the obsolete runtime copy | 🔴 ⭐ **AMD4 (`RC-4`): Phases 4 AND 5 passed **AND A FINAL RE-HASH PASSES** — see §4.4. ⛔ The Phase-5 re-hash is NOT sufficient.** ⭐ **AMD5 (`RD-3`): a mismatch is disposed by CASE α (reconcile) or CASE β (QUARANTINE + escalate) — never one branch for both** | cleanup evidence · **final re-hash evidence** |
 
 ## 4.0 ⭐ Phase 0 — why a freeze, and why it is not a lock
 
@@ -432,6 +394,40 @@ Phase 5   RE-HASH and compare
 ```
 
 > ⭐ **This is what converts an unprovable claim into a provable one.** *"No record was lost"* is not provable in general (§1.3). ***"No write occurred during the window"* is provable by comparing the manifest's hashes.** ⛔ **The freeze is DECLARATORY: a lane that appends anyway is a governance violation, detected by the re-hash — not a prevented act.**
+
+### 🔴 ⭐ **AMD5 (`RD-10`) — FREEZE SEMANTICS. A literal freeze is not self-consistent for the lane doing the migrating.**
+
+**The defect, stated as the sequence it produces:**
+
+```
+Phase 0 declares "no lane may append to the corpus"
+    …but the migration's OWN governance acts ARE corpus appends —
+       every transition and grant is written by P-1 into .claude/runtime/workflow/*.json,
+       which is the store being frozen and hashed
+⇒ the Phase-1 manifest is stale the moment the migration records its next transition
+⇒ the Phase-5 re-hash reports a DELTA in the NORMAL case
+⇒ criterion 11's "the window was PROVABLY quiet" branch is UNREACHABLE BY CONSTRUCTION
+⇒ the headline gain degrades to "always reconcile"
+⇒ ⛔ and a genuine freeze VIOLATION becomes indistinguishable from the migration's own bookkeeping
+```
+
+> ⛔ **AMD5 does NOT redefine "freeze" as "ignore all writes", and does NOT remove the ability to detect an unauthorized writer.** **It partitions the writes.**
+
+| Class | Rule | Verification treatment |
+|---|---|---|
+| ⛔ **UNRELATED corpus appends** — any other lane, any other work item | **PROHIBITED for the window's duration** | 🔴 **a freeze VIOLATION. Detected, recorded, escalated — never silently reconciled** |
+| ✅ ⭐ **MIGRATION-LANE records** — this work item's own transitions and grants: `OPEN-M6`'s registration · plan acceptance · the Phase-0 declaration itself · the reconciliation records · the switch-over record · **Phase 6's demotion record** · the cleanup record | ⭐ **EXPLICITLY PERMITTED, and DECLARED IN ADVANCE** | ⭐ **EXPECTED DELTA INPUTS — reconciled SEPARATELY from the frozen baseline, and named as such** |
+
+**⇒ the Phase-0 declaration MUST enumerate, in advance, the work items and record classes whose appends are expected.** ⭐ **The verification then has three outcomes rather than two, and the middle one is the normal case:**
+
+```
+Phase 5 / Phase 7 re-hash vs manifest
+    identical                                    →  ✅ the window was quiet
+    delta ⊆ the DECLARED migration-lane records  →  ✅ EXPECTED. Reconcile the declared delta, proceed
+    delta ⊄ the declared records                 →  🔴 FREEZE VIOLATION. Stop, record, escalate
+```
+
+⭐ **This is what keeps the freeze's evidential value: an unauthorized writer is still detectable, because the test is no longer *"did anything change?"* but *"did anything change that we did not declare?"*** ⚠️ **Honest bound: the migration's own appends are strict extensions, so CASE A already handled them SAFELY — ⛔ what was lost was EVIDENTIAL CLARITY, not integrity.** ⛔ **`OPEN-M2` is further constrained and still NOT decided; no phase is reordered.**
 
 ## 4.1 ⛔ Phase 3 — what "byte-preserving" forbids
 
@@ -452,6 +448,122 @@ The adopted invariant forbids resolving a conflict by **deleting historical evid
 
 > **Phase 7 removes a redundant, demoted, byte-verified copy. It destroys nothing.** ⛔ **Without the Phase-4 precondition stated, Phase 7 reads on its face as history deletion and cannot be told apart from the act the invariant prohibits — which is precisely why the precondition is written into the phase and not into a footnote.**
 
+> ## ⭐ **AMD3 (`CL-4`) — WHERE AUTHORITY TRANSFERS. Two accepted artifacts disagreed; the disagreement is now resolved.**
+> | Source | Said |
+> |---|---|
+> | implementation design `ae451db9` §3.2/§4.1 | authority moves **at the switch** — *"before step 3: runtime; after step 3: the governance evidence boundary"* |
+> | this plan, as first written | **Phase 6** *"declares the runtime copy no longer authoritative"* — a separate later act |
+>
+> ⭐ **RULING (mechanism, not preference): AUTHORITY TRANSFERS AT THE PHASE-5 WRITER SWITCH, because that is what redirects WRITERS.** After it, an append exists **only** in the new store. **Phase 6 is the RECORD of a transfer that has already happened.**
+> ⛔ **CONSEQUENCE FOR ROLLBACK, and §8 is corrected accordingly: after the writer switch, rollback is RECONCILIATION, never *"stop"*.** *"Stop"* would abandon appends that exist only in the new store, or re-promote a store that is **provably behind** — which is the governance act §8 reserved for after Phase 6.
+
+## 4.3 ⭐ **AMD4 (`RC-5`) — the transfer INSTANT, because Phase 5 is not atomic**
+
+**AMD3 said *"on completion of Phase 5."* 🔴 Phase 5 switches `P-1`, `P-2` and `P-4` — several call sites, so its completion is not an instant.** ⭐ **Authority moves the moment the WRITER's resolution changes, which is INSIDE Phase 5** ⇒ **for the interval between the writer switch and Phase 5's completion, AMD3's *"before Phase 5 ⇒ stop"* rule was false for exactly the reason `CL-4` corrected one window later.**
+
+✅ **The fix is cheap because there is only ONE writer to order:**
+
+```
+Phase 5, mandated internal order
+    1  RE-HASH        source vs frozen manifest            ← still non-authoritative
+    2  READERS        P-2 (session-resolve), P-4 (mechanism selection)
+    3  ⭐ THE WRITER   P-1 (workflow-state)   ← ⭐ THE AUTHORITY-TRANSFER INSTANT
+    4  MARKERS        runtime copy = DEMOTED
+```
+
+> ⭐ **Readers first, writer last, and the reason is directional: a reader pointed at the new store before the writer moves reads a copy that is byte-verified and merely not-yet-current; a WRITER pointed at the new store before the readers move would produce evidence no reader can see.** ⛔ **The reverse order creates an invisible-write window; this order creates only a briefly-stale-read window, and the re-hash has already bounded that.**
+
+**⇒ §8's rollback boundary is *"the writer switch"*, not *"Phase 5"*.**
+
+## 4.4 🔴 ⭐ **AMD4 (`RC-4`) — THE FINAL INTEGRITY CHECK. This is the one path by which the migration itself could destroy evidence.**
+
+**The gap the independent review found, stated as the sequence:**
+
+```
+Phase 5   re-hash vs manifest  ← the LAST integrity check of the runtime copy under AMD3
+Phase 5   switch readers, then the writer     ← not atomic with the re-hash
+Phase 6   record the transfer
+Phase 7   REMOVE the runtime copy             ← AMD3 precondition: "Phases 4 AND 5 passed" — NO re-check
+```
+
+> ⛔ **A write landing after the Phase-5 re-hash but before the WRITER is switched goes to the RUNTIME copy. It is not in the frozen manifest and not in either reconciliation input — and Phase 7 destroys it.**
+> ⭐ **And note precisely why AMD3's own restatement cannot catch it:** the bounded claim is *"no record lost **relative to** the frozen manifest and the observed inputs"*, and a gap-window write is in **neither**. **The restatement is honest and here it is self-satisfying. The withdrawn absolute claim would have caught this.** ⛔ **That is NOT an argument for restoring the absolute claim — §6.3's withdrawal stands, and §1.3's evidence is unchanged. It is an argument for a final check.**
+
+**⇒ Phase 7's precondition, in full:**
+
+```
+FINAL RE-HASH:  runtime source   vs   frozen manifest + reconciled delta
+    identical  →  ✅ removal permitted
+    different  →  ⛔ STOP. Do NOT remove.  →  disposition per the SPLIT below
+```
+
+### 🔴 ⭐ **AMD5 (`RD-3`) — THE MISMATCH DISPOSITION IS SPLIT. One trigger, two causes, OPPOSITE correct dispositions.**
+
+**AMD4 sent every Phase-7 mismatch to *"reconcile under §6 (CASE A / CASE B)"*. ⛔ That model does not cover its own trigger: §6.3 scopes the divergence window to Phases 3–5, and CASE A APPENDS THE RUNTIME TAIL AS A LEGITIMATE EXTENSION.**
+
+| | **CASE α — PRE-writer-switch** *(gap-window write)* | **CASE β — POST-writer-switch** *(a write to a DEMOTED store)* |
+|---|---|---|
+| **What happened** | a write landed while **runtime was still authoritative** — after the Phase-5 re-hash, before the writer switch (§4.3) | a write landed **after authority transferred** — via `P-3a` `--dir`, an ad-hoc write, or an unswitched client |
+| **Status of the bytes** | ✅ **governance evidence, authoritatively produced** | 🔴 **NOT authoritative evidence. Produced against a store that no longer held authority** |
+| ⭐ **Disposition** | ✅ **RECONCILE under §6 (CASE A / CASE B)** — the existing model is CORRECT here | ⛔ **QUARANTINE. Record the conflict as evidence. ESCALATE under governance.** ⛔ **NEVER import into the authoritative store** |
+| **Why** | runtime was the authority when the bytes were written, so §6's union preserves both sides legitimately | ⭐ **§6 CASE A would IMPORT non-authoritative bytes into the authoritative store — and §8 already rules that re-promoting a demoted source is a GOVERNANCE ACT, not a merge** |
+
+> ## ⛔ **AMD5 does NOT change the adopted `R-CONFLICT` invariant, and does NOT redefine post-demotion runtime bytes as evidence.**
+> **`R-CONFLICT` forbids silently selecting a side, deleting historical evidence, or rewriting sequence history. ✅ Quarantine does none of those: the bytes are PRESERVED, the conflict is RECORDED, provenance is intact, and nothing is chosen.** ⭐ **What quarantine refuses is the opposite error — silently PROMOTING bytes by merging them.** ⛔ **The §6.2 clause labelling applies unchanged: this is migration interpretation, not invariant text.**
+> ⚠️ **How the two cases are distinguished, since the plan must say and not imply: the writer-switch instant (§4.3) is a recorded event, and Phase 5 produces switch-over evidence. A runtime write is CASE α if it precedes that record and CASE β if it follows it.** ⛔ **If the ordering cannot be established from the records, the write is treated as CASE β and escalated — the conservative direction, because β preserves without promoting.**
+
+**Then, for either case:**
+
+```
+re-verify (Phase 4 semantics, all-or-nothing)
+    →  only then may removal proceed
+```
+
+⚠️ **AMD5 records the irreducible residual rather than implying it away: a write inside the interval between the FINAL re-hash and the removal itself cannot be caught without a lock, and `Increment 2` is unauthorized.** ⭐ **The exposure shrinks from three phases to one step, which is the whole gain.**
+
+⭐ **Why this closes it and costs almost nothing: the check is 18 hash comparisons against an object that already exists, and it is the only guard standing between the last verification and an irreversible act.** ✅ **`§4.2`'s justification for Phase 7 — *"a redundant, demoted, BYTE-VERIFIED copy"* — becomes true at the moment of removal rather than true as of Phase 4.**
+
+## 4.5 ⭐ **AMD4 (`RC-6`) — marker mechanism, specified so it is implementable without re-deriving the constraints**
+
+| Property | Rule |
+|---|---|
+| **granularity** | **DIRECTORY-LEVEL**, one marker per store — not per record |
+| **placement** | ⛔ **OUT-OF-BAND. In-file marking is FORBIDDEN** — it would alter evidence bytes and break §4.1's byte preservation and every hash in the manifest |
+| **naming** | ⛔ **MUST NOT match `*.json`** — that glob is `session-resolve.php:130`'s record predicate and §4's Phase-1 predicate; a `*.json` marker would be read as a work item |
+| **the two markers** | **staging target: NON-AUTHORITATIVE**, from Phase 2 until it is RETRACTED in Phase 5 · **runtime copy: DEMOTED**, written in the Phase-5 act |
+| ⚠️ **reach** | **ADVISORY for the ad-hoc reader class §1.4 already bounds.** ⛔ **The marker does not make the invariant enforceable against a reader that resolves nothing** — it makes the state *visible* to a reader who looks. **Stated, not assumed away** |
+
+### 🔴 ⭐ **AMD5 (`RD-7`) — THE STAGING MARKER IS RETRACTED. No phase did that, and the omission was durable.**
+
+**AMD4 gave the staging marker a lifetime — *"from Phase 2 until Phase 5"* — but Phase 5's mandated steps wrote only the runtime DEMOTED marker, and no row removed the staging one.** ⭐ **Because the staging store is COMMITTED at `2c-commit`, the consequence was versioned and permanent: after the writer switch the AUTHORITATIVE store would carry an on-disk `NON-AUTHORITATIVE` label — the exact reader-visible contradiction the marker exists to prevent.** ⚠️ **Same defect shape as `RC-1` and `RC-7`: an act named in a specification and carried by no phase.**
+
+**⇒ marker lifecycle, complete and ordered — this is the full set of marker transitions in the migration:**
+
+| When | Act | Store |
+|---|---|---|
+| **Phase 2** | **WRITE** `NON-AUTHORITATIVE` | staging target |
+| **Phase 5 step 4** *(after the writer switch)* | ⛔ **DEMOTE** — write `DEMOTED` | runtime copy |
+| ⭐ **Phase 5 step 5** *(AMD5, `RD-7` — immediately after step 4)* | ⭐ **RETRACT** `NON-AUTHORITATIVE` | ⭐ **the now-authoritative store** |
+| **Phase 7** | the runtime store and its `DEMOTED` marker are removed together | runtime copy |
+
+> ⭐ **ORDERING IS LOAD-BEARING AND FOLLOWS `RD-7`'s REQUIREMENT: retraction occurs AFTER the writer switch, never before.** ⛔ **Retracting earlier would label a store authoritative while the writer still appended elsewhere — asserting an authority transfer that had not happened.** ⇒ **the two windows are both closed, and neither is left open:**
+> ```
+> before the writer switch :  staging = NON-AUTHORITATIVE   ✅ true
+> after  step 5           :  authoritative store unlabelled ✅ true · runtime = DEMOTED ✅ true
+> ⛔ at NO point is the authoritative store labelled NON-AUTHORITATIVE
+> ```
+> ✅ **`RD-7`'s four other requirements, each satisfied by the rules already in this section rather than by new machinery: retraction is OUT-OF-BAND · DIRECTORY-LEVEL · ⛔ never `*.json` · and ⭐ EVIDENCE BYTES DO NOT CHANGE — marker management never touches a record, so every hash in the manifest and every Phase-4/5/7 comparison is unaffected.**
+> ⛔ **No new authority model is introduced. A marker still reports state; it never confers or removes authority — §4.3's writer switch does that, and this is only its visible trace.**
+
+## 4.6 ⭐ **AMD4 (`RC-8`) — `-text` and `text eol=lf` are NOT interchangeable. The alternative is withdrawn.**
+
+| Form | Effect | Verdict |
+|---|---|---|
+| ⛔ `text eol=lf` | **keeps text normalisation ON** and merely fixes the checkout direction. **A record that ever contained a raw `CR` would be silently rewritten on commit** — the exact class of silent byte rewrite the pin exists to prevent | 🔴 **WITHDRAWN — it cannot support an unconditional claim** |
+| ✅ **`-text`** | **disables conversion in BOTH directions** | ⭐ **the only form that makes byte preservation unconditional** |
+
+✅ **Measured today: 0 of 18 records contain a `CR` byte, so both forms behave identically NOW.** ⛔ **The claim is about a FUTURE verifier, so it must not rest on a present coincidence.**
+
 ---
 
 # 5 · Migration evidence — it is itself governance evidence (Flag Q, promoted)
@@ -466,7 +578,7 @@ The adopted invariant forbids resolving a conflict by **deleting historical evid
 > | **ATTESTABILITY** — the record is versioned, so any later reader can verify what it said | ✅ **this is what the migration cures, and it is the whole point of `B′`** |
 > | **CRASH DURABILITY** — the bytes survive power loss | 🔴 **UNCHANGED.** `saveRecord` does **not** `fsync`; `rename` gives atomicity of *visibility*, not durability. **Pre-existing, out of scope, and not claimed** |
 
-✅ **They land at the same resolved durable target as the corpus they attest.** ⭐ **AMD3: the Phase-1 frozen manifest is committed at Phase 2b, in the same commit as the Phase-3 copy, so manifest and artifact cannot drift.** ⚠️ **Ordering consequence:** Phase 1 and Phase 4 produce evidence **before** Phase 2's target may exist — so either the target is created first (Phase 2 before Phase 1's write) or the early evidence is staged and committed to the durable boundary as soon as the target exists. **`OPEN-M2` records this; the plan does not resolve it by reordering the mandated phases.**
+✅ **They land at the same resolved durable target as the corpus they attest.** ⭐ **AMD5 (`DI-2`): the Phase-1 frozen manifest is committed at `2c-commit`, in the same commit as the Phase-3 copy, so manifest and artifact cannot drift.** *(Superseded wording: AMD3/AMD4 said *"committed at Phase 2b"* — **impossible after `RC-1`'s split, because `2b-pin` executes BEFORE Phase 3**.)* ⚠️ **Ordering consequence:** Phase 1 and Phase 4 produce evidence **before** Phase 2's target may exist — so either the target is created first (Phase 2 before Phase 1's write) or the early evidence is staged and committed to the durable boundary as soon as the target exists. **`OPEN-M2` records this; the plan does not resolve it by reordering the mandated phases.**
 
 ---
 
@@ -587,7 +699,7 @@ G-KOS-GOVGAPS-VERIFY   in KOS-GOV-GAPS-VERIFY-001.json (index 0)   distinct huma
 > **Superseded text:** *"`INV-ORDER` makes rollback cheap before Phase 6: until authority is demoted, the runtime copy is still authoritative and the durable copy is additive — so rollback before Phase 6 is 'stop', not 'undo'."*
 > 🔴 **False in the 5→6 window.** Per §4's ruling, **authority transfers on completion of Phase 5**, so appends after the switch exist **only** in the new store. *"Stop"* would abandon them, or would re-promote a store that is **provably behind** — a change of authority, i.e. the very governance act the sentence deferred to after Phase 6.
 
-**⚠️ AMD4 (`RC-5`): the boundary is THE WRITER SWITCH, not "Phase 5" — because Phase 5 is not atomic (§4.2).**
+**⚠️ AMD4 (`RC-5`): the boundary is THE WRITER SWITCH, not "Phase 5" — because Phase 5 is not atomic (§4.3).**
 
 | Window | Rollback is |
 |---|---|
@@ -624,19 +736,21 @@ AUTHORITY            "who may decide what it means?"     → PO/ARB; not a stora
 
 | # | Criterion | Demonstrated by |
 |---|---|---|
-| ⭐ **1** | every authority record **in the frozen manifest** accounted for *(AMD3, `CL-2`)* | **Phase 1 manifest, committed at Phase 2b** — ⛔ **not** the literals `18 / 216 / 109`, which are unattestable (§1.1) *(superseded: "Phase 1 inventory vs 18 / 216 / 109")* |
+| ⭐ **1** | every authority record **in the frozen manifest** accounted for *(AMD3, `CL-2`)* | ⭐ **AMD5 (`DI-2`): the Phase-1 manifest, committed at `2c-commit`** — ⛔ **not** the literals `18 / 216 / 109`, which are unattestable (§1.1) *(superseded: "Phase 1 inventory vs 18 / 216 / 109"; and "committed at Phase 2b", which `RC-1`'s split made impossible)* |
 | ⭐ **2** | **no record lost RELATIVE TO the frozen manifest and both reconciliation inputs** *(AMD3, `CL-1`)* | Phase 4 count + superset check + **the Phase-5 re-hash**. ⛔ **The absolute form is withdrawn** (§6.3) *(superseded: "no record silently lost")* |
 | 3 | sequence integrity preserved | density + monotonicity check ⚠️ **for transitions; grants per §6.4** |
 | 4 | provenance preserved | per-record provenance continuity |
-| 5 | byte integrity preserved | **hash equality**, per file — ⭐ **and the `.gitattributes` pin (Phase 2b) is what keeps it re-checkable by a FUTURE verifier** |
+| 5 | byte integrity preserved | **hash equality**, per file — ⭐ **and the `.gitattributes` pin (`2b-pin`) is what keeps it re-checkable by a FUTURE verifier** |
 | ⭐ **6** | **every DEFAULT authority-resolution path is unified** *(AMD3, `CL-3`)* | `P-1` and `P-2` replaced by one resolution (Phase 4b + Phase 5). ⚠️ **`P-3a/b` are NOT restricted — §7 stands, and override hardening is a separately authorized act** *(superseded: "all writers use one authority-resolution path")* |
 | ⭐ **7** | **all readers resolve through the same boundary, and `P-4` is governed in its REPORTING form** *(AMD3, `CL-3`/`CL-10`)* | `P-2` retired; `P-4` under the resolver per `OPEN-M3` Option A; **§1.4's advisory limit stated**; ⚠️ **enforcement deferred to `OPEN-M5`** *(superseded: "`P-4` governed")* |
 | 8 | runtime is not an authority source after cutover | ⭐ **Phase 5's demotion marker** *(the on-disk fact)* **and** Phase 6's demotion record *(the governance fact)* |
 | 9 | migration evidence is itself durable | §5 |
 | 10 | conflict handling follows the adopted invariant | §6, CASE A / CASE B, ⭐ **and §6.4 for grants** |
-| ⭐ **11** | *(AMD3, `CL-1`)* **the migration window is shown to have been quiet, or its delta is reconciled as a named step** | **Phase 5 re-hash vs the frozen manifest** |
-| 🔴 ⭐ **12** | *(AMD4, `RC-4`)* **the runtime copy is verified IMMEDIATELY BEFORE it is removed** | **Phase 7's FINAL re-hash vs `manifest + reconciled delta`** (§4.1). ⛔ **Criterion 11 does not imply this one — the Phase-5 re-hash precedes the writer switch, and the destructive act is three phases later** |
-| ⭐ **13** | *(AMD4, `RC-5`)* **authority moved at ONE identifiable instant** | **Phase 5's mandated internal order — re-hash · readers · writer LAST** (§4.2) |
+| ⭐ **11** | *(AMD3 `CL-1`; ⭐ **AMD5 `RD-10`**)* **the window is shown to have been quiet, OR its delta is shown to lie WITHIN the declared migration-lane records and is reconciled as a named step** | **Phase 5 re-hash vs the frozen manifest + the Phase-0 declared expected-delta list** (§4.0). ⛔ **A delta outside the declared list is a FREEZE VIOLATION, not a reconciliation** *(superseded: "the window is shown to have been quiet, or its delta is reconciled" — unreachable, because the migration's own appends always produce a delta)* |
+| 🔴 ⭐ **12** | *(AMD4, `RC-4`)* **the runtime copy is verified IMMEDIATELY BEFORE it is removed** | **Phase 7's FINAL re-hash vs `manifest + reconciled delta`** (§4.4). ⛔ **Criterion 11 does not imply this one — the Phase-5 re-hash precedes the writer switch, and the destructive act is three phases later** |
+| ⭐ **13** | *(AMD4, `RC-5`)* **authority moved at ONE identifiable instant** | **Phase 5's mandated internal order — re-hash · readers · writer LAST** (§4.3) |
+| 🔴 ⭐ **14** | *(AMD5, `RD-7`)* ⭐ **the FINAL MARKER STATE is correct: the authoritative store carries NO `NON-AUTHORITATIVE` label, and the runtime store is marked `DEMOTED` until removed** | **Phase 5 step 5's retraction record + step 4's demotion marker** (§4.5). ⛔ **Criterion 8 asserts runtime is not an authority source; it does NOT assert the authoritative store is unlabelled — that is this criterion** |
+| ⭐ **15** | *(AMD5, `RD-3`)* **every Phase-7 mismatch was disposed by ITS OWN branch** | **CASE α reconciliation records, or CASE β quarantine + escalation records** (§4.4). ⛔ **No post-demotion runtime bytes were imported into authoritative evidence** |
 
 ---
 
@@ -651,7 +765,17 @@ AUTHORITY            "who may decide what it means?"     → PO/ARB; not a stora
 | ⭐ **`OPEN-M5`** *(AMD3, `CL-10`)* | **`INV-R3`'s ENFORCING form removes the seam that `T-13(b)` and `T-15` deliberately exercise. Does bringing `P-4` under governance authorize amending `AST-016`'s AMENDMENT-2 contract, or is enforcement a separate act after the migration?** | ⛔ **A contract question, not a boundary question. `OPEN-M3` is not reopened.** ✅ **The migration executes on the REPORTING form, so this does not gate it** |
 | ⭐ **`OPEN-M6`** *(AMD3, §0.2)* | **AMD3 carries no registered grant.** The authorizing human act exists and is cited; its registration as `G-…-MIGRATION-PLAN-AMD3` is outstanding | ⛔ **Registration has exactly one writer — Governance** (`G-2`/`R5a`). **This process holds an Architecture role and will not register its own authorization** |
 
-## 11.1 🔴 ⭐ **AMD4 (`RC-7`) — EXECUTION-GATE RECONCILIATION. AMD3 said *"two require another actor"*; there are SIX, and AMD3 itself introduced two of them.**
+## 11.1 🔴 ⭐ **EXECUTION-GATE RECONCILIATION — ⭐ AMD5 (`DI-3`): EIGHT ROWS, GROUPED BY KIND. The count now matches the table.**
+
+> ⭐ **AMD3 said *"two require another actor."* AMD4 replaced that with *"there are SIX"* over a table of **eight** rows — ⛔ **the same enumeration-versus-content mismatch `RC-7a` was raised for, one level down.** ⚠️ **AMD5 reconciles the COUNT TO THE ROWS and invents no dependency to reach a number; the rows are unchanged in substance and no ownership moved.**
+>
+> | Kind | Rows | Who |
+> |---|---|---|
+> | **Governance acts** | **2** — registration · `INFO-2` provenance | **Governance** *(one writer, `G-2`/`R5a`)* |
+> | **PO/ARB acts** | **4** — Phase-0 declaration · Phase-4b authorization · `OPEN-M5` · plan acceptance | **PO/ARB** |
+> | **Architecture remediation** | **1** — `RC`/`RD`/`DI` correction *(this act)* | **Architecture** |
+> | **Open questions carried, not prerequisites** | **1** grouped row — `OPEN-M1` · `OPEN-M2` · `OPEN-M4` | PO/ARB |
+> | ⭐ **TOTAL** | ⭐ **8 rows** — of which ⭐ **3 GATE EXECUTION** *(registration · Phase-0 · Phase-4b)*, and **acceptance gates the whole** | |
 
 | Prerequisite | Actor | Gates | Status |
 |---|---|---|---|
@@ -670,7 +794,7 @@ AUTHORITY            "who may decide what it means?"     → PO/ARB; not a stora
 
 # 12 · What this plan does NOT do
 
-⛔ **No migration executed** · no file moved or copied · no default changed · **no `.gitignore` change** · ⭐ **no `.gitattributes` change** *(AMD3 REQUIRES the pin at Phase 2b and does not perform it)* · **no runtime code modified** — ⭐ **including the Phase-4b resolver, which AMD3 NAMES and does not build** · **no authority record modified** · **no grant registered** (§0.2) · no ledger introduced · no new placement rule · no repository layout chosen · no implementation technology selected · **`R-CONFLICT` not modified** — ⭐ **§6.4's grant rules are labelled *"Migration interpretation"* and are NOT invariant text** · no `--dir` restriction implemented · **`Increment 2` not proposed** · **no acceptance and no self-verification** · ⛔ **and AMD3 does not declare its own clarifications closed** (§0.1).
+⛔ **No migration executed** · no file moved or copied · no default changed · **no `.gitignore` change** · ⭐ **no `.gitattributes` change** *(the pin is REQUIRED at `2b-pin` and is NOT performed — AMD5 `DI-2`)* · **no runtime code modified** — ⭐ **including the Phase-4b resolver, which AMD3 NAMES and does not build** · **no authority record modified** · **no grant registered** (§0.2) · no ledger introduced · no new placement rule · no repository layout chosen · no implementation technology selected · **`R-CONFLICT` not modified** — ⭐ **§6.4's grant rules are labelled *"Migration interpretation"* and are NOT invariant text** · no `--dir` restriction implemented · **`Increment 2` not proposed** · **no acceptance and no self-verification** · ⛔ **and AMD3 does not declare its own clarifications closed** (§0.1).
 
 ⛔ **AMD4 adds nothing to the DOING column.** Every `RC` remedy is a **sequencing, specification or wording change to this planning artifact**: `RC-1`/`RC-7b` reorder phases · `RC-2`/`RC-3` reconcile §3's cells · `RC-4` adds a precondition · `RC-5`/`RC-5b`/`RC-6`/`RC-8`/`RC-9` specify mechanism · `RC-10` records a design brief · `RC-11` narrows a claim. ⛔ **The `-text` pin is REQUIRED and NOT APPLIED. The Phase-4b resolver and the `RC-10` refusal guard are NAMED and NOT BUILT.**
 
@@ -678,19 +802,20 @@ AUTHORITY            "who may decide what it means?"     → PO/ARB; not a stora
 
 ---
 
-**MIGRATION PLAN AMENDED (AMD4) · STOPPING.** ⛔ **THE MIGRATION IS NOT EXECUTED AND MUST NOT BE.**
+**MIGRATION PLAN AMENDED (AMD5) · STOPPING.** ⛔ **THE MIGRATION IS NOT EXECUTED AND MUST NOT BE.**
 
-> ## ⛔ **PHASE 3 MUST NOT BEGIN.** `RC-1`…`RC-11` are **`ADDRESSED · NOT CLOSED`** — §0.4.1 explains why this process cannot close them, and why its position is nonetheless stronger than AMD3's.
-> ⭐ **The three gate points, so they cannot be lost in the list:** **`RC-1` gates Phase 3 · `RC-2`/`RC-3` gate Phase 4b · `RC-4` gates Phase 7** — and `RC-4` is the only one that guards an **irreversible** act.
+> ## ⛔ **PHASE 3 MUST NOT BEGIN.** ✅ **`RC-1`…`RC-11` were CLOSED by the independent AMD4 review.** ⛔ **`RD-7`, `RD-3`, `RD-10`, `DI-1`, `DI-2`, `DI-3` are `ADDRESSED · NOT CLOSED`** — §0.4.1's bound recurs: this process wrote these remedies and will not review them.
+> ⭐ **Where each AMD5 correction bites:** **`RD-10` at the Phase-0 declaration · `RD-7` at Phase 5 step 5 · `RD-3` at Phase 7** — and `RD-3` is the one attached to the **irreversible** act, because it decides whether post-demotion bytes get imported.
 
 **Next actors, in order:**
 
 ```
 AMD4 (this amendment)
       ↓
-FRESH INDEPENDENT technical review — neither 1c8b041b, nor bc1b47ef, nor 9c908e70 for its own findings
+FRESH INDEPENDENT technical review — not bc1b47ef (AMD5 author), not 1c8b041b, not 9c908e70, not 870305e0
+      |   5e1dd9ee is disclosure-only, not automatically excluded
       ↓   ⭐ reviews the REMEDY again; the bound recurs until an amendment produces no new remedy
-Governance registers AMD3 + AMD4          (OPEN-M6)
+Governance registers AMD3 + AMD4 + AMD5   (OPEN-M6)
       ↓
 PO/ARB — acceptance · OPEN-M5 if it chooses · the PHASE-0 FREEZE DECLARATION · the PHASE-4b AUTHORIZATION
       ↓
@@ -698,6 +823,8 @@ Migration execution — beginning at PHASE 0, never at Phase 3
       ↓
 Post-migration verification
 ```
+
+**Traceability (AMD5):** the PO/ARB commission of 2026-08-20 *(cited §0.5, **unregistered** — `OPEN-M6`)* · **the INDEPENDENT AMD4 review by `claude-code-session:870305e0`** — `RC-1`…`RC-11` **all CLOSED**; residuals `RD-7` *(§6 markers, no retraction phase)*, `RD-3` *(§4 `RC-4` disposition branch)*, `RD-10` *(§4.1 freeze self-consistency)*, `DI-1`/`DI-2`/`DI-3` *(§6 document integrity)*, its §5 open-question status and §13 verdict · AMD4 at **`0a2fa71d`** · **verified before amending:** `## 4.1` at two lines and `## 4.2` at two lines with live references bound to both senses · §4 subsection order `4.1 · 4.3 · 4.4 · 4.2 · 4.0 · 4.1 · 4.2` non-monotonic · *"Phase 2b"* live in §5 and §10 criterion 1 · §11.1 **8 rows** under a *"SIX"* heading · **corpus 18 / 216 / 110, no `*.tmp*`, no durable target, nothing executed** · `INV-ATTR-2`/`G-2` · `G-2`/`R5a` · `R-34`/`P-2`.
 
 **Traceability (AMD4):** the PO/ARB commission of 2026-08-20 *(cited §0.4, **unregistered** — `OPEN-M6`)* · **the INDEPENDENT AMD3 remedy review by `claude-code-session:9c908e70`** — `RC-1`…`RC-11`, its §3.4 (`RC-4` sequence gap), §5.1 circularity test, §6 `CL`-by-`CL` classification, §7.3 (`RC-10`), §8 canonical-integrity findings, §12 dependency table, §13 verdict *(10 CLOSED · 2 ADDRESSED · 0 unclosed)* · AMD3 at **`bb1708b7`** · technical review **`a282d14b`** · `INFO-1` *(closed by `RC-11`)* · **contract evidence re-cited:** `SessionAssignmentResolverContractTest` harness `--dir=sys_get_temp_dir()`, `T-8`, `T-11`, `T-12`, `T-13(b)`, `T-15` · `WorkflowStateRecordContractTest:39,70` · `workflow-state.php:101–102` *(`RC-10`'s `mkdir`)* · `session-resolve.php:127,130` · `.gitattributes:1` · **0 of 18 records contain `CR`** · **no `-AMD3`/`-AMD4` grant exists in the corpus** · `INV-ATTR-2`/`G-2` · `G-2`/`R5a` · `R-34`/`P-2`.
 

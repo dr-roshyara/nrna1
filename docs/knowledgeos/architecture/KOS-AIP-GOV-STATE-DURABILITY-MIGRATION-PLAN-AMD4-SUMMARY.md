@@ -8,6 +8,8 @@
 
 ---
 
+> ⚠️ **AMD5 (`DI-1`) correction, 2026-08-20:** §4 subsection references below were repointed after the plan's §4 was renumbered monotonically — **`4.1`→`4.4` · `4.2`→`4.3` · `4.3`→`4.5` · `4.4`→`4.6`** (map: plan §0.5.2). ⛔ **No disposition, finding or wording of AMD4 was changed.**
+
 # 1 · Where AMD4 stands, in one table
 
 | | |
@@ -28,19 +30,19 @@
 | ⭐ **`RC-1`** | gate | **Phase 3** | **The circular phase is SPLIT.** `2b-pin` (pin `.gitattributes`) executes **before** the copy; `2c-commit` (commit manifest **with** the copy) executes **at/after** it. **Phase 3's precondition is now `2b-pin`, which no longer depends on Phase 3's own output** | §4 table rows 4–6 |
 | ⭐ **`RC-2`** | gate | **Phase 4b** | **`INV-R1`'s boundary check now binds the AUTHORITATIVE resolution only.** A new row states that a **governed override yields a NON-AUTHORITATIVE output location and is NOT a boundary violation** — with both contract suites' `--dir=sys_get_temp_dir()` usage quoted as the evidence | §3 table rows 1–2 |
 | ⭐ **`RC-3`** | gate | **Phase 4b** | **The two mechanism-selection forms are separated and labelled:** reporting = ✅ *"THIS IS WHAT PHASE 4b IMPLEMENTS"*; enforcing = ⛔ *"DEFERRED TO `OPEN-M5`, NOT CURRENT"*. **The one conflicting current definition in the artifact is gone** | §3 table rows 3–4 |
-| 🔴 ⭐ **`RC-4`** | gate | **Phase 7** | **A FINAL re-hash is now Phase 7's precondition:** runtime source vs **`manifest + reconciled delta`**; any difference ⇒ **stop, reconcile under §6, re-verify, only then remove.** New **acceptance criterion 12** and a fourth §8 rollback trigger | §4.1 · §4 row 11 · §10 · §8 |
-| **`RC-5`** | design | — | **Phase 5's internal order is MANDATED — re-hash · readers (`P-2`, `P-4`) · WRITER (`P-1`) LAST — and the authority-transfer instant is the writer switch.** §8's boundary restated from *"Phase 5"* to *"the writer switch"* | §4.2 · §8 |
+| 🔴 ⭐ **`RC-4`** | gate | **Phase 7** | **A FINAL re-hash is now Phase 7's precondition:** runtime source vs **`manifest + reconciled delta`**; any difference ⇒ **stop, reconcile under §6, re-verify, only then remove.** New **acceptance criterion 12** and a fourth §8 rollback trigger | §4.4 · §4 row 11 · §10 · §8 |
+| **`RC-5`** | design | — | **Phase 5's internal order is MANDATED — re-hash · readers (`P-2`, `P-4`) · WRITER (`P-1`) LAST — and the authority-transfer instant is the writer switch.** §8's boundary restated from *"Phase 5"* to *"the writer switch"* | §4.3 · §8 |
 | **`RC-5b`** | design | — | **Phase 4b delivers the resolver DORMANT — built, tested, NOT WIRED. Phase 5 is the sole activating act**, so 4b cannot collapse into it | §3 `INV-R5` · §4 row 8 |
-| **`RC-6`** | design | — | **Marker mechanism specified:** directory-level · out-of-band · ⛔ **in-file marking FORBIDDEN by byte preservation** · ⛔ **never `*.json`** · **advisory reach stated** | §4.3 |
+| **`RC-6`** | design | — | **Marker mechanism specified:** directory-level · out-of-band · ⛔ **in-file marking FORBIDDEN by byte preservation** · ⛔ **never `*.json`** · **advisory reach stated** | §4.5 |
 | **`RC-7a`** | coherence | — | The `INV-ORDER` preservation argument now enumerates **all three** additions — including `2b`/`2c`, the ones landing **inside** the 2–4 span | §4 |
 | **`RC-7b`** | coherence | — | **The phase table is sorted by EXECUTION and numbered `1…11`.** Labels are lineage; **row order is authoritative** | §4 |
 | **`RC-7`** *(deps)* | coherence | — | **Six prerequisites enumerated with actors**, including the **Phase-0 freeze** and **Phase-4b authorization** that AMD3 introduced and did not carry | §11.1 |
-| **`RC-8`** | design | — | **`text eol=lf` WITHDRAWN; `-text` only** — it keeps normalisation on and would silently rewrite a record containing a raw `CR`. **Hash semantics recorded: SHA-256 over working-tree bytes** | §4.4 · §4 row 2 |
+| **`RC-8`** | design | — | **`text eol=lf` WITHDRAWN; `-text` only** — it keeps normalisation on and would silently rewrite a record containing a raw `CR`. **Hash semantics recorded: SHA-256 over working-tree bytes** | §4.6 · §4 row 2 |
 | **`RC-9`** | wording | — | **"Canonical re-encode" DEFINED as recursive key ordering**, and **comparison-only** | §6.3 |
 | **`RC-10`** | design brief | — | **Refusal MUST precede `saveRecord`'s `mkdir`** — a mis-resolved path otherwise *materializes* a new evidence location, re-creating `B′`'s defect in the component built to close it | §3.1 |
 | **`RC-11`** | wording | — | **"One writer of GOVERNANCE EVIDENCE"**, with the discriminating test (*references `runtime/workflow` **and** writes*) and all three `file_put_contents` candidates disposed. ⛔ **No claim that arbitrary directory writes are impossible.** **Closes `INFO-1`** | §1.3 |
-| **`CL-5`** | reopened | — | closed via `RC-6` | §4.3 |
-| **`CL-6`** | reopened | — | closed via `RC-1` + `RC-8` | §4 · §4.4 |
+| **`CL-5`** | reopened | — | closed via `RC-6` | §4.5 |
+| **`CL-6`** | reopened | — | closed via `RC-1` + `RC-8` | §4 · §4.6 |
 
 ---
 
