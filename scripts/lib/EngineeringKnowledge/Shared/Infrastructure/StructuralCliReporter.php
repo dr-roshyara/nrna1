@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace EngineeringKnowledge\Shared\Infrastructure;
 
 use EngineeringKnowledge\Shared\Domain\Assessment;
+use EngineeringKnowledge\Shared\Domain\AssuranceHandoffReport;
 use EngineeringKnowledge\Shared\Domain\Verdict;
 
 /**
@@ -20,14 +21,14 @@ use EngineeringKnowledge\Shared\Domain\Verdict;
  */
 final readonly class StructuralCliReporter
 {
-    /** D-4 — the DA's formulation, printed in every Phase-0 report, verbatim. */
-    public const NOT_CHECKED_STATEMENT =
-        '⛔ NOT CHECKED (stated positively): mechanical assurance proves DECLARED '
-        .'STRUCTURE — identifier uniqueness, intra-document reference resolution, '
-        .'declared vocabulary, table shape, disposition labelling. It does NOT check '
-        .'soundness, completeness, authority, or provenance — architecture review '
-        .'discovers UNDECLARED ARCHITECTURAL CONTENT. A PASS here is mechanical, '
-        .'not architectural, assurance.';
+    /**
+     * D-4 — the DA's formulation, printed in every report, verbatim.
+     *
+     * ONE text, sourced from the Domain (Phase-1 D-1: report-content rules are
+     * business rules): this Infrastructure constant is an alias, so the three
+     * Phase-0 scripts and the Phase-1 handoff report can never drift apart.
+     */
+    public const NOT_CHECKED_STATEMENT = AssuranceHandoffReport::NOT_CHECKED_STATEMENT;
 
     /** One non-clean assessment: `[FAIL] S2 · path` then indented evidence. */
     public function sliceLine(string $slice, string $file, Assessment $assessment): string
