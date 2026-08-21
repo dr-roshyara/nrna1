@@ -1,6 +1,11 @@
 # `KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN` — **AMD6 amendment summary**
 
 **Status: 🟡 PROPOSED · ADDRESSED — ⛔ NOT CLOSED, NOT REGISTERED, NOT ACCEPTED.**
+
+> ## 🔴 ⭐ **DV CORRECTION PROPAGATED INTO THIS ARTIFACT — 2026-08-21**
+> **This summary is a CURRENT derivative artifact, so the `DV-1`…`DV-7` corrections reach it under the registered second-artifact control (`C-13`).** ⛔ **No current artifact may retain the superseded wording.**
+> **Propagated here:** `DV-1` *(slot `3(iii-b)`, §3.3)* · `DV-3` *(the authority-boundary discriminator, §3.2 and §3.3)* · `DV-5` *(the stale-read window, §3.4)* · `DV-6` *(quarantine laundering, §4)* · `DV-7` *(the undefined operator token removed, §5)*. **`DV-2` and `DV-4` land in plan §4.0 and §4.3 and have no counterpart claim here.**
+> ⛔ **AMD6's own substantive content is NOT rewritten and its status is unchanged.** ⛔ **`DV-1`…`DV-7` remain `PROPOSED · ADDRESSED · NOT CLOSED`. The correction's author MUST NOT review or accept it.** **Correction summary: `KOS-AIP-GOV-STATE-DURABILITY-DV-CORRECTION-SUMMARY.md`.**
 > ## ⛔ **MIGRATION NOT EXECUTED.** **Nothing was moved, copied, pinned, switched, marked, demoted, quarantined or removed. No quarantine store was created. No `.gitignore` or `.gitattributes` change. No runtime code change. No authority record modified. No grant registered. No aggregate created.**
 
 **Canonical governed aggregate (`C-9`, verified before writing):** `KOS-AIP-GOV-STATE-DURABILITY-ADR` · workflow `architecture-adr`. ⛔ **`KOS-AIP-GOV-STATE-DURABILITY` is the TRACK LABEL only and was not used as the aggregate key.**
@@ -74,7 +79,7 @@
 | **destination** | a governed **QUARANTINE STORE** inside the governed evidence boundary and ⛔ **OUTSIDE every directory scanned by the `*.json` record predicate** *(`glob($recordDir . '/*.json')`, `session-resolve.php:130`)* — because **a quarantined record IS a `*.json` file** |
 | **path** | ⛔ **not chosen here** — resolved at execution time through **existing placement governance**, exactly as §2 requires |
 | **byte identity** | **original filename · original bytes · original hash.** ⛔ **NOT renamed · NOT re-encoded · NOT rewritten** — renaming would break the manifest linkage that **proves** preservation *(flag `AA`)* |
-| **mechanism** | **byte-preserving PLACEMENT** into the quarantine store, with the demoted source store **RETAINED ENTIRE and UNMODIFIED.** ⛔ **A MOVE is refused** — it would alter the demoted store and break the recorded enumeration |
+| **mechanism** | **byte-preserving PLACEMENT** into the quarantine store, with the demoted source store **RETAINED ENTIRE and UNMODIFIED.** 🔴 ⭐ **A MOVE is refused because it would LAUNDER THE QUARANTINE** — a post-demotion record lies OUTSIDE the enumeration by definition, so moving it out HIDES the quarantined evidence, makes the source **SPURIOUSLY SATISFY** criterion 12, and thereby opens the removal branch while the quarantine stands undisposed *(⛔ **superseded reason, INVERTED:** *"it would alter the demoted store and break the recorded enumeration"* — **a move does not break the comparison; it makes the comparison PASS when it should FAIL** — `DV-6`)* |
 | **granularity** | ⭐ **STORE-LEVEL** (`C-2`). ⛔ **No partial-record removal semantics** |
 | **marker** | a **THIRD** marker, **`QUARANTINED`** — directory-level, out-of-band, ⛔ never `*.json`, ⛔ **distinct from `NON-AUTHORITATIVE` (staging) and `DEMOTED` (runtime)** in name, subject and lifecycle |
 | ⛔ **not authority** | a quarantined record is **not** authoritative evidence and is **never** promoted by being stored somewhere governed — `B′`'s own lesson applied to the new store |
@@ -120,7 +125,8 @@ slot 3     P-1's resolution changes here — the authority-transfer instant
 | Record | Subject state | Destination |
 |---|---|---|
 | slot **1** re-hash · slot **1b** reconciliation or STOP · slot **2** reader switch | **PRE-SWITCH SOURCE** | **the source store** |
-| ⭐ slot **3** the **`SWITCH-OVER RECORD`** | ⭐ **POST-SWITCH AUTHORITATIVE** | ⭐ **the authoritative store — its FIRST record** |
+| ⭐ slot **3** the **`SWITCH-OVER RECORD`** | ⭐ **POST-SWITCH AUTHORITATIVE** | ⭐ **the authoritative store — as the FIRST GOVERNANCE APPEND AFTER THE AUTHORITY TRANSFER** *(⛔ **superseded wording:** *"its FIRST record"* — `DV-3`/`C-16`)* |
+| ⭐ **DV CORRECTION: slot `3(iii-b)`'s VERIFICATION RECEIPT** | ⭐ **POST-SWITCH AUTHORITATIVE** | ⭐ **the authoritative store — CARRIED BY the `SWITCH-OVER RECORD` at `3(v)`** *(plan §0.7.5)* |
 | slot **4** demotion-marker record · slot **5** retraction record · Phase 6 · Phase 7 | **POST-SWITCH AUTHORITATIVE** | **the authoritative store** |
 
 ⭐ **Why slot 3's evidence goes AFTER the switch is a TERMINATION argument, not a preference:** a pre-switch slot-3 record would land in the source **after** the copy had been reconciled to it ⇒ reconcile again ⇒ write again ⇒ ⛔ **non-terminating.** Writing it post-switch terminates in one step, because `P-1` has moved and the source receives nothing further.
@@ -128,17 +134,33 @@ slot 3     P-1's resolution changes here — the authority-transfer instant
 ## 3.3 What slot 3 does, and the object it produces
 
 ```
+⛔ slot 3 is NOT renumbered — these are SUB-STEPS OF SLOT 3.
+   slot 4 = RUNTIME DEMOTION MARKER · slot 5 = STAGING MARKER RETRACTION
+
 (i)   MEASURE the source, after slot 2's append has landed
 (ii)  VERIFY it against  manifest + reconciled delta + the DECLARED pre-switch Phase-5 records
         → §4.0's SAME three outcomes; outcome C is a STOP BEFORE THE SWITCH
-(iii) bring the durable copy to that state      (a MIGRATION MECHANICAL WRITE, not a governance append)
+      ⭐ THE SOURCE FINAL-STATE ENUMERATION IS CONSTRUCTED AND CLOSED HERE — BEFORE THE
+        FINAL COPY-SIDE WRITE — AND IS IMMUTABLE FROM THIS INSTANT
+(iii) bring the durable copy to that ALREADY-CLOSED state
+                                     (a MIGRATION MECHANICAL WRITE, not a governance append)
+(iii-b) 🔴 ⭐ FINAL DURABLE-COPY VERIFICATION            ← DV CORRECTION (DV-1). MANDATORY.
+      compare the FINAL durable copy against the ALREADY-CLOSED enumeration —
+      PHASE-4 SEMANTICS, ALL-OR-NOTHING
+          PASS → continue to (iv)
+          FAIL → ⛔ STOP · RECORD · ESCALATE · ⛔ NO AUTHORITY TRANSFER
+      ⛔ the enumeration is CONSUMED, never re-constructed or re-closed; ⛔ no second
+         comparison object; ⛔ the verification receipt is NOT an operand of this comparison
 (iv)  ⭐ SWITCH P-1
 (v)   ⭐ write the SWITCH-OVER RECORD into the authoritative store, CARRYING the enumeration
+        AND the (iii-b) verification receipt
 ```
+
+> 🔴 ⭐ **DV CORRECTION (`DV-1`), propagated here because this summary is a CURRENT derivative artifact:** the durable copy was written at slot `1b` and slot `3(iii)` **after its last all-or-nothing verification** and was **re-verified nowhere** before Phase 7 removed the source — **and neither operand of Phase 7's gate is the durable copy.** ⭐ **`3(iii-b)` covers both copy-side writes and is criterion 18's demonstrating act.** ⛔ **The independent AMD6 review classified this UNSAFE DIRECTION: PHASE 5 MUST NOT EXECUTE until the repair is independently reviewed.**
 
 | `C-4`'s required property | Delivered by |
 |---|---|
-| switch evidence in the authoritative store, after the switch | the switch-over record is that store's **first** record |
+| switch evidence in the authoritative store, after the switch | ⭐ **the switch-over record is the FIRST GOVERNANCE APPEND AFTER THE AUTHORITY TRANSFER** *(⛔ **superseded wording:** *"that store's first record"* — **false, not merely imprecise: Phase 3 has already copied governance records into that store. `RECORD EXISTENCE ≠ AUTHORITY ESTABLISHMENT`; `PHYSICAL STORAGE ORDER ≠ DOMAIN EVENT ORDER`** — `DV-3`/`C-16`)* |
 | the Phase-7 re-hash is **not** self-detecting because of migration bookkeeping | the **`SOURCE FINAL-STATE ENUMERATION`** is Phase 7's comparison object ⇒ ⭐ **criterion 12's *"identical"* branch is REACHABLE** — `RD-10`'s degradation does **not** recur at the irreversible gate |
 | the switch-over record remains a valid discriminator | ⭐ the boundary is **content-defined, not timestamp-defined** — which it must be, because only **2 of 216** transitions carry a time field |
 
@@ -151,6 +173,7 @@ slot 3     P-1's resolution changes here — the authority-transfer instant
 | Window | Status |
 |---|---|
 | ⚠️ **measure (i) → switch (iv)** | ⭐ **NEW with AMD6 and recorded here rather than discovered later.** A write inside it is genuinely `PRE-SWITCH` but falls outside the enumeration, so the tie-break classifies it `POST-DEMOTION` — **safe, imprecise, irreducible without atomicity** |
+| ⚠️ ⭐ **DV CORRECTION (`DV-5`): reader switch (slot 2) → carry-across `3(iii)` — THE STALE-READ WINDOW** | ⭐ **Added because it was absent from this table while §4.3 credited the slot-1 re-hash with bounding it.** **The actual bound is slot `3(i)`–`3(iii)`; `3(iii-b)` DEMONSTRATES it.** ✅ **Narrow and self-referential — only this work item's own bookkeeping — and NON-EMPTY BY CONSTRUCTION** |
 | ⚠️ **slot 3 → slot 4** | `RD-2`, carried from the AMD4 review, unchanged |
 | ⚠️ **slot 3 → slot 5** | `RD-7·b`, restated honestly |
 | ⚠️ **final re-hash → removal** | irreducible without a lock; `Increment 2` unauthorized |
@@ -193,9 +216,10 @@ a governed DISPOSITION     is REQUIRED
 | 1 | step 1 re-hash | §4.3 slot 1 | 11 | `P5·1` |
 | 2 | ⭐ step 1b reconcile / dispose, three outcomes | §4.3 slot 1b | **16** | `P5·1b` |
 | 3 | step 2 reader switch | §4.3 slot 2 | 13 | `P5·2` |
-| 4 | ⭐ step 3 close the enumeration, verify, switch `P-1` | §4.3 slot 3 | 13 · **17** | `P5·3` |
-| 5 | ⭐ step 3 the `SWITCH-OVER RECORD`, authoritative store, first | §4.3 slot 3 + placement table | **17** | `P5·3` |
-| 6 | ⭐ Phase-5 placement by subject-state | §4.3 placement table | **18** | `P5·ALL` |
+| 4 | ⭐ step 3 close the enumeration at `(ii)`, verify, switch `P-1` | §4.3 slot 3 | 13 · **17** | `P5·3` |
+| 5 | ⭐ step 3 the `SWITCH-OVER RECORD` — the **first governance append after the authority transfer** *(⛔ superseded: *"authoritative store, first"* — `DV-3`)* | §4.3 slot 3 + placement table | **17** | `P5·3` |
+| 6 | ⭐ Phase-5 placement by subject-state | §4.3 placement table | **18** | ⭐ **`P5·1` · `P5·1b` · `P5·2` · `P5·3` · `P5·4` · `P5·5`** *(⛔ superseded cell: an **undefined wildcard operator token**, removed — `DV-7`)* |
+| ⭐ **7-DV** | 🔴 ⭐ **DV CORRECTION: `3(iii-b)` FINAL DURABLE-COPY VERIFICATION, all-or-nothing, before the authority transfer** | §4.3 slot **`3(iii-b)`** | **2 · 12 · 18** | `P5·3` |
 | 7 | step 4 runtime `DEMOTED` marker | §4.3 slot 4 · §4.5 | 8 · 14 | `P5·4` |
 | 8 | ⭐ step 5 retract `NON-AUTHORITATIVE` | §4.3 slot 5 · §4.5 | 14 | `P5·5` |
 | 9 | ⭐ Phase 7 dispose by `PRE-SWITCH` / `POST-DEMOTION` | §4.4 split | 15 | `P7·1` |
@@ -203,6 +227,7 @@ a governed DISPOSITION     is REQUIRED
 | 11 | ⭐ Phase 7 suspend · retain entire · no false pass | §4.4 · §4 row 11 | **20** | `P7·3` |
 
 ✅ **Every row resolves in all four columns.** ⛔ **That is the whole claim — it is not a claim that any of it is sound.**
+> ⚠️ ⭐ **DV CORRECTION (`DV-7`): this claim was FALSE for row 6 as AMD6 delivered it** — the cell cited a wildcard operator token defined nowhere in §4.7, so the trace asserted its own completeness while carrying an unresolvable reference. ✅ **It is TRUE as the table now stands.**
 
 ---
 

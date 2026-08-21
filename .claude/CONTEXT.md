@@ -1,6 +1,30 @@
 # Current Working State
 
-**Updated:** 2026-08-21 *(additive — the BRAINSTORMING SORT + ARCHITECTURE REVIEW SET DELIVERED block is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-21 *(additive — the **DV-1…DV-7 CORRECTION AUTHORED** block is newest; older rows it contradicts are superseded by it)*
+
+---
+
+## 📍 UPDATE (2026-08-21, **TRACK 2 · `DV-1`…`DV-7` CORRECTION AUTHORED** — newest) — **STATUS: `PROPOSED` · `ADDRESSED` · ⛔ NOT CLOSED, NOT REGISTERED, NOT ACCEPTED · ⛔ MIGRATION NOT EXECUTED**
+
+| | |
+|---|---|
+| ⭐ **Act** | the **DV correction** authored under the **existing** DV-CORRECTION commission — ⛔ **no new commission created, gate not reinterpreted.** Authorization read from the record: `G-KOS-GOV-STATE-DURABILITY-DV-CORRECTION-GATE-OPEN` = **`GATE OPEN`** |
+| **Author** | `claude-code-session:f7e57e4a` — **a fresh lane** *(self-declared, ⛔ not attestable — `INV-ATTR-2`)*. ⛔ **NOT `dd639043`; authored no prior amendment in this chain and reviewed none** |
+| ✅ **Delivered** | `docs/knowledgeos/architecture/KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN.md` *(1206 → 1435 lines; **new §0.7**)* · `…-MIGRATION-PLAN-AMD6-SUMMARY.md` *(285 → 310, second-artifact propagation)* · **NEW** `…-DV-CORRECTION-SUMMARY.md` *(403 lines)* |
+| ⭐ **Commission resolved from the RECORD, not a copied list** | **all SIX cited grant IDs RESOLVE** against the canonical aggregate `KOS-AIP-GOV-STATE-DURABILITY-ADR` *(22 grants)*. ⭐ **Both known transcription defects avoided** — the index's inserted `MIGRATION-PLAN-` in `C-16`, and its omission from `C-13`. **Only the base commission and `C-13` carry the longer prefix** |
+| 🔴 **`DV-1` — the repair that changes what an executor does** | **slot `3(iii-b)` FINAL DURABLE-COPY VERIFICATION** — Phase-4 semantics, all-or-nothing, against the **ALREADY-CLOSED** enumeration, after the last copy-side write and **before** the transfer. **FAIL ⇒ STOP · record · escalate · ⛔ NO authority transfer.** ⭐ **Covers BOTH copy-side writes (`1b` and `3(iii)`) and is criterion 18's demonstrating act** |
+| ⭐ **`C-15` over `C-13`** | the enumeration is **CLOSED at `3(ii)`, BEFORE the final copy-side write**, and ⛔ **never re-constructed or re-closed.** **`C-13`'s ordering would have rebuilt the absorption defect the review had structurally excluded** |
+| ⭐ **Canonical slots UNCHANGED** | **`1 · 1b · 2 · 3 · 4 · 5`.** ⛔ **`4(i)`/`4(ii)`/`4(iii)` appear as NO step label anywhere** *(structural check, validated non-vacuous)*. **Slot 4 = runtime demotion · slot 5 = staging retraction** |
+| 🔴 **`DV-3`** | **`FIRST GOVERNANCE APPEND AFTER THE AUTHORITY TRANSFER`** replaces the false wording at **§0.6.3 · §4 row 9 · §4.3 · criterion 17** *(+ the AMD6 summary)*, with **all four `C-16` demonstrations** on criterion 17. ⭐ **`RECORD EXISTENCE ≠ AUTHORITY ESTABLISHMENT` · `PHYSICAL STORAGE ORDER ≠ DOMAIN EVENT ORDER`** |
+| ⭐ **`DV-3`'s riskiest surface** | **verification logic — MEASURED AND EMPTY.** `.claude/scripts/` = `session-resolve.php` + `workflow-state.php` only, **neither locating any discriminator positionally.** ⛔ **Nothing invented to appear thorough** |
+| 🔴 **`DV-2`** | §4.0 now **requires the declared set to cover slots 1, 1b and 2**, class-based form preferred; the impossible *"switch-over record in the SOURCE delta"* entry corrected. ⭐ **Flag `AE` honoured — `DV-1`/`DV-2` treated as ONE coupled problem, and the reviewer is told to test them together** |
+| ⚠️ **`DV-4` · `DV-5` · `DV-6` · `DV-7`** | premise moved **inside** the `C-4` termination argument *(`PREMISE 2`)* · stale-read bound re-attributed to `3(i)`–`3(iii)` **+ a residual-window row in both artifacts** · **`QUARANTINE LAUNDERING`** stated as the load-bearing MOVE-refusal reason · **the undefined wildcard operator token REMOVED**, trace row 6 citing the six real IDs |
+| ⭐ **Verification receipt — placement OUTCOME A** | **existing governed placement owns it.** Canonical discovery *(`ES-005.4`)* found the C-10 receipt *(a DIFFERENT concept — its invariant `AUTHORITY IS CLAIM-SCOPED` consumed)* and §4.3's placement table + §5. ⇒ **POST-SWITCH, CARRIED BY the `SWITCH-OVER RECORD` at `3(v)`**; on **FAIL** the failure record is an ordinary pre-switch append into the source. ⛔ **No new store, record class, boundary or provenance mechanism** |
+| ✅ **Verified as PROPERTIES, not paragraphs** | **RED `26`-of-`35` failing → GREEN `43`-of-`43`.** Three tests **re-specified and disclosed** *(current-claim vs labelled history · instruction vs prohibition · structural step label)*; ⛔ **none deleted, no threshold lowered.** **Tables: 58 / 11 / 13 blocks, 0 mismatched.** **Criteria still `1…20`, each once** |
+| ⚠️ **Corpus grew again** | **18 records · 216 transitions · `114 → 125` grants.** ⭐ **`RD-10`'s phenomenon and `C-4`'s premise live for a third time — the new grants ARE this correction's own commission.** ⭐ **Also live evidence FOR `DV-2`'s class-based declaration** |
+| ⛔ **Not done** | no finding self-closed · nothing registered or accepted · `B′`/`R-CONFLICT`/`OPEN-M3` Option A/`INV-ORDER` untouched · `OPEN-M5`/`OPEN-M7` not decided · no `FES`/`CFS` · no second comparison object · no `.gitignore`/`.gitattributes` change · reviews and session logs NOT rewritten |
+| **NEXT** | ⛔ **STOP. A FRESH INDEPENDENT ARCHITECTURE REVIEW** — ⛔ not the author, ⛔ not `dd639043`; ⭐ **test `DV-1` and `DV-2` together** → **Governance bounded review** *(completeness/provenance/lineage only; `C-11` disclosure if `b64828fe`)* → **PO/ARB** |
+| ⛔ **Gates** | ⛔ **`PHASE 5` PROHIBITED until `DV-1`'s repair is INDEPENDENTLY REVIEWED — the repair being in the artifact is NOT the discharge** · ⛔ **`PHASE 3` MUST NOT BEGIN** · `OPEN-M6` four deep · `OPEN-M7` open · Phase-0 declaration + Phase-4b + plan acceptance all outstanding, all other actors |
 
 ---
 
