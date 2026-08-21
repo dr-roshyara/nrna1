@@ -1,10 +1,26 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **HPA RULING ON THE R-1 GATE REVIEW — TWO RESEARCH CANDIDATES** block is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **HPA RULING — TOPOLOGY AS VALIDATION LENS + P4 SCHEMA REFINED + SHALL DISCIPLINE** block is newest; older rows it contradicts are superseded by it)*
 
 ---
 
-## 📍 UPDATE (2026-08-22, **HPA RULING ON THE R-1 GATE REVIEW — MEASUREMENT INDEPENDENCE + REPRESENTATION–SEMANTICS SEPARATION AS RESEARCH CANDIDATES · R-1 GATE ACCEPTED · NO BASELINE CHANGE · NO INV-005** — newest) — **"a property of KnowledgeOS must be defined against the semantic structure of the evidence, not by representation heuristics" · SOURCE≠DERIVED≠REPRESENTATION · EKS-08 registered as P4/P5 research observation · ⛔ invariant map unchanged · remaining gate = corrected-P3 re-review → P4**
+## 📍 UPDATE (2026-08-22, **HPA RULING — TOPOLOGY POSITIONED AS VALIDATION LENS (PPI SCALAR REJECTED) · P4 SCHEMA REFINED TO 7-COLUMN (INVARIANT|DIMENSIONS|FORBIDDEN COLLAPSE|EVIDENCE|STRENGTH|VALIDATION TARGET|NOTES/BOUNDARY) · SHALL DISCIPLINE · EKS-08 CONFIRMED AS RESEARCH OBSERVATION** — newest) — **"which structural properties survived A→B→C?" is the constitutional question · PPI scoring rejected (violates Dimension Purity) · Strength = epistemic status, not architectural · SHALL earned by P5 · ⛔ P4 CLOSED until corrected-P3 re-review**
+
+| | |
+|---|---|
+| 🧭 **Topology position (HPA, P5 Representation hypothesis)** | Transfers: *"structure that persists across transformations and across scales without reducing to a scalar score."* Research question: **"Can persistent topology provide a representation-independent test for whether a knowledge invariant survives transformation?"** (identity · lineage · authority separation · context boundary). **Validation lens, NOT another scoring mechanism.** |
+| 🧩 **Four research directions (recorded)** | (1) evolution — identity/lineage stay connected across K₁→K₂→K₃→K₄ · (2) context boundaries — DDD↔topology (boundaries · connectedness · separation · composition · continuity) · (3) fragmentation — β₀ disconnected components → **analytics layer**, below the constitutional layer · (4) local→global consistency — sheaf theory (*"locally consistent contexts → globally consistent structure?"*; A-language≠B-language≠C-language). |
+| ⛔ **REJECTED for the kernel** | PPI scoring (`Q_info × Q_dyn × Q_struct × W`) and any `Evidence=0.8 · Authority=0.9 … → KnowledgeScore=0.53` — **collapsing independent dimensions into one scalar violates the Dimension Purity Principle**. `syntactic similarity ≠ semantic connectedness`. Positioning: topology **below** the constitutional layer, as mathematical description feeding invariant validation — NOT `Topology → architecture`. |
+| 📑 **P4 schema refinement (HPA, authoritative — supersedes `81563a24`)** | 7 columns: **Invariant** (separation/protection claimed; statement folded in) · **Dimensions** (which dimensions involved — NEW) · **Forbidden Collapse** (what must not occur implicitly) · **Evidence** (what EKS/PKS/AIP establishes) · **Strength** (Established/Candidate/Hypothesis = **current evidential status, NOT architectural status**) · **Validation Target** (what P5 tests) · **Notes / Boundary** (qualification/limitation — NEW). ID retained as row key. Domain → P5: *"domain independence is a required property to be tested,"* never asserted pre-test. |
+| ⚖️ **SHALL discipline (BINDING)** | Candidate rows use **"Candidate formulation: KnowledgeOS should preserve…"** — the final **SHALL is earned by the P5 domain-independence test and subsequent architectural governance.** |
+| 🧬 **Atomic vs composite (HPA restated)** | INV-001..004 = observed separations; INV-KOS-001 = generalization across them. **Elegance must NOT increase evidential strength** (that is the epistemic mistake KnowledgeOS prevents). **INV-KOS-001 stays Candidate.** |
+| 📋 **Three-level ordering confirmed** | (1) observed separations · (2) INV-KOS-001 composite candidate · (3) research candidates (Measurement Independence · Representation–Semantics Separation). **EKS-08 stays in the research backlog as P4/P5 input — no further changes.** |
+| 🪜 **P4/P5/kernel boundary (HPA restated)** | P4 = which invariant separations are actually evidenced across EKS/PKS/AIP · P5 = do they generalize beyond the observed systems · kernel discovery = which domain-independent invariants are fundamental enough to protect. *"We are not designing the kernel yet — discovering the constitutional properties that could justify one."* |
+| **NEXT** | R-1 **closed** · ⛔ **P4 remains CLOSED** until the corrected-P3 re-review passes (`6034db5c`/`c673de5d`/`e5f98a6a`) → P4 produces the Constitutional Invariant Map v1.0 in the refined 7-column schema (INV-001..004 established · INV-KOS-001 Candidate) → P5 domain-independence test. |
+
+---
+
+## 📍 UPDATE (2026-08-22, **HPA RULING ON THE R-1 GATE REVIEW — MEASUREMENT INDEPENDENCE + REPRESENTATION–SEMANTICS SEPARATION AS RESEARCH CANDIDATES · R-1 GATE ACCEPTED · NO BASELINE CHANGE · NO INV-005**) — **"a property of KnowledgeOS must be defined against the semantic structure of the evidence, not by representation heuristics" · SOURCE≠DERIVED≠REPRESENTATION · EKS-08 registered as P4/P5 research observation · ⛔ invariant map unchanged · remaining gate = corrected-P3 re-review → P4**
 
 | | |
 |---|---|
