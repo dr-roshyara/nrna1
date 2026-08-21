@@ -1,10 +1,25 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **HPA-REQUESTED GAME-THEORY EXTRACTION — SOURCE DOCUMENT ABSENT** block is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **HPA CONFIRMATION — P4 SCHEMA + STRENGTH-CONTROLS-LANGUAGE + DIMENSIONS↔FORBIDDEN-COLLAPSE QUALITY GATE + 3-LEVEL LADDER + MISSING-SOURCE META-POINT** block is newest; older rows it contradicts are superseded by it)*
 
 ---
 
-## 📍 UPDATE (2026-08-22, **HPA-REQUESTED GAME-THEORY EXTRACTION — ⛔ SOURCE DOCUMENT ABSENT** — newest) — **HPA supplied the strict "DeepSeek Investigation Prompt" to extract only research hypotheses from the external "GAME THEORY INTEGRATION INTO THE HONEYCOMB FRAMEWORK (v13 UPPS)" doc for the invariant investigation · ⛔ the UPPS v13 document is NOT in repo/git/session-logs/CONTEXT/test.log · extraction NOT run against a fabricated source (Measurement Independence + evidence-strength discipline) · BLOCKED — awaiting the actual document**
+## 📍 UPDATE (2026-08-22, **HPA CONFIRMATION — 7-COLUMN P4 SCHEMA ACCEPTED (ID EXPLICIT) · STRENGTH CONTROLS LANGUAGE · DIMENSIONS↔FORBIDDEN COLLAPSE = BIDIRECTIONAL P4 QUALITY GATE · 3-LEVEL LINGUISTIC LADDER · INV-KOS-001 DIRECTION PROTECTION · MISSING-SOURCE META-POINT** — newest) — **"the process refused to create knowledge from a missing source" = live demonstration of Measurement Independence · game-theory extraction stays BLOCKED until the real UPPS v13 artifact exists · P4 quality gate: every row must define a meaningful dimension separation AND an equivalent forbidden collapse, else it is probably not an invariant**
+
+| | |
+|---|---|
+| 📑 **P4 schema (CONFIRMED, binding)** | **7 content columns + ID reference key**: **ID** (stable key — INV-001, INV-KOS-001, …) · **Invariant** (the protected separation; **Statement merged in — not retained separately**, because a statement column produces prose that outruns the evidence) · **Dimensions** (concepts that must remain distinct) · **Forbidden Collapse** (invalid transformation prevented) · **Evidence** · **Strength** (current epistemic status) · **Validation Target** · **Notes/Boundary**. **Wording strength is controlled by Strength, not sentence style.** |
+| 🚪 **P4 quality gate (NEW, BINDING)** | **Dimensions ↔ Forbidden Collapse bidirectional validation** — the forbidden collapse is exactly the transformation that merges the named dimensions. Worked: INV-001 Evidence\|Authority ⟷ evidence→authority · INV-002 Observation\|Decision ⟷ observation→decision · INV-003 Assessment\|Authority ⟷ assessment→authority · INV-004 Projection\|Source ⟷ projection→source-of-truth. **"Every invariant row must define a meaningful dimension separation AND an equivalent forbidden collapse. If not, the row is probably not an invariant."** — discriminative, not merely consistency. |
+| 🪜 **3-level linguistic ladder (BINDING)** | `Evidence strength → Invariant strength → Allowed language`: **Established** → "KnowledgeOS SHALL preserve…" (post-validation) · **Candidate** → "KnowledgeOS should preserve…" (current) · **Hypothesis** → "KnowledgeOS may require…" (research). Prevents an idea becoming constitutional law before validation. |
+| 🧬 **INV-KOS-001 direction protection (BINDING)** | INV-001..004 = observed separations; INV-KOS-001 = hypothesis of a deeper principle. `observed → candidate generalization → test domain independence → possibly constitutional`. **Never**: `Dimension Independence → therefore all separations are true`. |
+| 🗺️ **Discovery model (confirmed)** | Constitutional Invariant Map → **Established** (INV-001..004) \| **Candidate** (INV-KOS-001) \| **Research** (EKS-08). Mathematics (topology · lattice · temporal · category · game theory) = **research lenses** — describe/test invariants, never define them. |
+| 🧪 **Missing-source meta-point (HPA)** | The extraction refusal **enacted** Measurement Independence live: `Assumed source ≠ Available evidence ≠ Derived interpretation` · `memory of a source ≠ available source`. Recorded as a **fourth EKS-08 strengthening example** (`recordedBy`≠temporal · derived≠persisted · projection≠source · **memory≠source**). ⛔ Research pattern, NOT an invariant. |
+| 🎲 **Game-theory extraction (amendment on arrival)** | When the real UPPS v13 artifact arrives: run the prompt **unchanged**; add the guard classification set `Concept \| Source claim \| EKS/PKS/AIP evidence \| KnowledgeOS relation \| Classification` to the final analysis — the biggest risk is confusing "interesting external concept → KnowledgeOS relevance" with "KnowledgeOS invariant." |
+| **NEXT** | ⛔ R-1 **closed** · ⛔ P4 **CLOSED** until the corrected-P3 re-review passes (`6034db5c`/`c673de5d`/`e5f98a6a`) → P4 produces the Constitutional Invariant Map v1.0 (7-col + ID; every row through the quality gate; INV-001..004 Established · INV-KOS-001 Candidate · SHALL discipline) → P5 domain-independence test. **Game-theory extraction BLOCKED on the source artifact.** |
+
+---
+
+## 📍 UPDATE (2026-08-22, **HPA-REQUESTED GAME-THEORY EXTRACTION — ⛔ SOURCE DOCUMENT ABSENT**) — **HPA supplied the strict "DeepSeek Investigation Prompt" to extract only research hypotheses from the external "GAME THEORY INTEGRATION INTO THE HONEYCOMB FRAMEWORK (v13 UPPS)" doc for the invariant investigation · ⛔ the UPPS v13 document is NOT in repo/git/session-logs/CONTEXT/test.log · extraction NOT run against a fabricated source (Measurement Independence + evidence-strength discipline) · BLOCKED — awaiting the actual document**
 
 | | |
 |---|---|
