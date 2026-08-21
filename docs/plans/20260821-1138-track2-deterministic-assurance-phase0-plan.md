@@ -70,7 +70,7 @@
 | **S3** | **vocabulary integrity** — stale-token scan against declared current vocabulary; **confusable-identifier detection** *(`CASE B` vs `CASE β`)* | ⭐ **`CAP-003` / `DP-3` — the capability's FIRST realization** | tests assert an unqualified-homonym verdict on a fixture carrying both tokens | ✅ `4a923440` |
 | **S4** | **table column-count consistency** | `CAP-004`-adjacent structural rule | fixture with a ragged table | ✅ `73dbe091` |
 | **S5** | **unlabelled-superseded heuristic → `WARN` only** | ✅ **`CAP-003` / `DP-3` mapping CONFIRMED by the back-test** *(`OQ-2` hypothesis: §0.4.4's canonical-document rule is DP-3 applied to a document — AMD5 `DI-4` §8:709 vs §0.5.1:120 and §4:382 → WARN; AMD6 quiet)* | fixture with two current dispositions, one unlabelled | ✅ `a2529dde` |
-| **S6** | ⭐ **the back-test harness** *(§6)* | — | runs green only when §6's matrix is reproduced | ⬜ |
+| **S6** | ⭐ **the back-test harness** *(§6)* | — | runs green only when §6's matrix is reproduced | ✅ `b753cac1` |
 | **S7** | **adapters + `verify.sh` wiring** *(warn-only)* | — | — | ⬜ |
 | ⚠️ **S8** | **enumeration-vs-content agreement** (`DI-3`/`DI-6`) | ⛔ **BLOCKED on `OQ-1`** | not started | ⛔ |
 
