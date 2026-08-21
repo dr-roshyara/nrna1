@@ -1,10 +1,27 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **HPA CONSOLIDATION II — "KNOWLEDGE DIMENSION MODEL" terminology + "DIMENSION PURITY PRINCIPLE" + INV row enumeration** block is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **HPA ENDORSEMENT OF CONSOLIDATION AS P4 FOUNDATION** block is newest; older rows it contradicts are superseded by it)*
 
 ---
 
-## 📍 UPDATE (2026-08-22, **HPA CONSOLIDATION II — "KNOWLEDGE DIMENSION MODEL" TERMINOLOGY + "DIMENSION PURITY PRINCIPLE" + INV ROW ENUMERATION (INV-001..004 + INV-KOS-001)** — newest) — **model named, not a "state object" (the invariant is the relationship, not the storage) · three-level stabilization (feature→math→constitutional) · four collapse patterns as vocabulary · ⛔ gates unchanged**
+## 📍 UPDATE (2026-08-22, **HPA ENDORSEMENT OF CONSOLIDATION AS P4 FOUNDATION — "CONSTITUTIONAL INVARIANT DISCOVERY" CONFIRMED · P4 DELIVERABLE SCHEMA REFINED TO THE 7-COLUMN MAP · INV-KOS-001 PROTECTIVE DISCIPLINE** — newest) — **investigation moved from candidate-kernel design → constitutional invariant discovery · kernel question = "which transformations must be prevented" · P4 schema = ID|Invariant|Statement|Evidence Source|Strength|Forbidden Collapse|Validation Target · ⛔ INV-KOS-001 stays Candidate until P5 · ⛔ gates unchanged (R-1 + corrected-P3 → P4)**
+
+| | |
+|---|---|
+| 🏛 **HPA assessment (major endorsement)** | Direction is architecturally much stronger: *"Do not design what KnowledgeOS stores. Discover what KnowledgeOS must prevent from collapsing."* External research principles (provenance · authority · temporality · evidence · lineage · decision rationale · governance) are correctly NOT mapped prematurely into classes / tables / graph models / event streams / aggregates. |
+| 📐 **Naming correction confirmed** | **"Knowledge Dimension Model"**, not "state object" — the invariant is the relationship, not the storage. Avoids the implied single aggregate / persistence model / lifecycle / ownership boundary. |
+| ⚖️ **Dimension Purity Principle = strongest refinement** | *"Every knowledge dimension has its own meaning, lifecycle, ownership, and transition rules. A valid transformation may update one dimension only through an explicit governed transition and SHALL NOT implicitly modify another dimension."* Dangerous failures are invalid transitions, not missing dimensions. |
+| 🧪 **INV-001..004 vs INV-KOS-001 (governance decision)** | Discovered laws vs composition hypothesis. Avoids Hypothesis→Declared→Assumed failure; chain: Evidence→Observed invariant→Candidate generalization→Future validation. |
+| 🧩 **Four collapse patterns = vocabulary** | Confidence (Evidence→Authority) · AI (Assessment→Authority) · Database (Projection→Source) · Workflow (Execution→Authority) — framed as forbidden transformations, constitutional-layer-correct. |
+| 🆔 **Identity naming issue confirmed** | Identity is a property preserved BY dimensional separation, **not a 6th dimension** (C-6 · PKS AP-4 · AP-5). Vocabulary stays "Knowledge Dimension Model". |
+| 📑 **P4 deliverable schema (HPA, BINDING)** | "KnowledgeOS Constitutional Invariant Map v1.0" — columns **ID | Invariant | Statement | Evidence Source | Strength | Forbidden Collapse | Validation Target**. Rows: INV-001 Authority Separation (Established · Evidence→Authority) · INV-002 Observation≠Decision (Established · Observation→Decision) · INV-003 Assessment≠Authority (Established · Assessment→Authority) · INV-004 Projection≠Source (Established · Projection→Source) · **INV-KOS-001 Dimension Independence (Candidate · Cross-dimensional collapse)** — all Validation Target P5. *(Supersedes the UM-1 8-field INV structure: Classification→Strength; Domain→P5 validation target; Kernel relevance→via P5; +Forbidden Collapse +Validation Target.)* |
+| 🛡 **Protective discipline (HPA, BINDING)** | ⛔ **INV-KOS-001 MUST NOT be treated as established before P5 validation** — stays Candidate through P4; only the P5 domain-independence test may upgrade or reject it. |
+| 🌉 **Bridge established** | External principle → Potential invariant → Forbidden transformation → Architecture test — the first proper bridge between research and EKS/PKS/AIP archaeology. |
+| **NEXT** | ⛔ **P4 remains CLOSED** — this endorsement validates the consolidation's content as P4's foundation; it is **not** a gate ruling. Gates unchanged: R-1 re-review (`aa08151d`, verdict delivered, recommendation PASS, awaiting HPA decision) + corrected-P3 re-review → **P4 produces "KnowledgeOS Constitutional Invariant Map v1.0" (7-column schema)** → P5 domain-independence test. |
+
+---
+
+## 📍 UPDATE (2026-08-22, **HPA CONSOLIDATION II — "KNOWLEDGE DIMENSION MODEL" TERMINOLOGY + "DIMENSION PURITY PRINCIPLE" + INV ROW ENUMERATION (INV-001..004 + INV-KOS-001)**) — **model named, not a "state object" (the invariant is the relationship, not the storage) · three-level stabilization (feature→math→constitutional) · four collapse patterns as vocabulary · ⛔ gates unchanged**
 
 | | |
 |---|---|
