@@ -1,6 +1,23 @@
 # Current Working State
 
-**Updated:** 2026-08-21 *(additive — the AMD6 block is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-21 *(additive — the assurance×durability integration block is newest; older rows it contradicts are superseded by it)*
+
+---
+
+## 📍 UPDATE (2026-08-21, **ASSURANCE × DURABILITY INTEGRATION ANALYSIS** — newest) — **durability is the FIRST consumer of deterministic assurance; two tracks run in parallel, no authority merged**
+
+| | |
+|---|---|
+| ⭐ **Deliverable** | `docs/knowledgeos/brainstorming/20260821_1206_kos-state-durability-assurance-integration.md` — **brainstorming/input ONLY** · ⛔ **decides nothing, commissions nothing, mints no identifier, adopts no model, authorizes no implementation** |
+| ⭐ **The conclusion** | **`KOS-AIP-GOV-STATE-DURABILITY` is the first real consumer of the deterministic assurance capability, not a second project that waits.** The migration corpus **is** the checker's back-test corpus ⇒ the integration is a **sequencing and authority problem, not a new architecture problem**. Neither track replaces the other |
+| **The combined model** | durability produces governed evidence → **deterministic assurance checks mechanical properties of that boundary** → human Architecture → Governance → PO/ARB. **Automation produces evidence; human authority decides what it means** |
+| **Now vs wait** | ✅ deterministic assurance — startable now (accepted 2026-08-04 correction) · ⛔ assurance classes / routing / gates — **frozen**, PO/ARB + second adopter |
+| **Seven integration surfaces** | 1 Phase 0 back-test vs AMD4–AMD6 · 2 four-layer trace verification · 3 `R-CONFLICT` seq/integrity checks · 4 `OPEN-M6` lineage verification · 5 **post-`B′` scope extension** · 6 author-side pre-handoff report (warn-only) · 7 report-as-required-evidence (behind AMD6 acceptance) |
+| ⭐ **The one coupling to design for now** | **Assurance root resolution must FOLLOW the governed evidence boundary; it must NOT define or own that boundary.** Ownership of the boundary stays with `B′` |
+| ⛔ **Guardrails** | warn-only · no undeclared-act discovery (`X-5`) · reports state what they did NOT check · no authority manufacture · no frontmatter/card requirement · no identifier minted |
+| **Execution order** | Phase 0 now → AMD6 chain undisturbed → checker as author's pre-delivery obligation (warn-only) → checker reads relocated root → EKS-06/classes/routing later (separate governed act) |
+| **State unchanged** | **Phase 0** `20260821-1138-…-plan.md` still 🟡 PROPOSED · ⛔ awaits **DA EP-01 plan approval** (`R-46` — the DA's act, not the ARB's). **AMD6** still 🟡 ADDRESSED · unreviewed · unregistered (`OPEN-M6`) · unaccepted |
+| **NEXT ACTOR** | 🔵 **DA: approve or reject the Phase-0 EP-01 plan.** Parallel: fresh independent AMD6 review → Governance → PO/ARB → AMD3–AMD6 registration → PO/ARB acceptance · `OPEN-M5` · `OPEN-M7` · Phase-0 declaration + expected-delta list · Phase-4b authorization → execution from Phase 0. ⛔ **`PHASE 3 MUST NOT BEGIN`.** The integration artifact is the standing reference for the Phase 0 ↔ migration-execution handoff |
 
 ---
 
