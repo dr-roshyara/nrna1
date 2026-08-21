@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Kind** | **EP-01 engineering plan** — the Planning Stage for the **PHASE 1 ADOPTION** commission of 2026-08-21. Governed home per **ES-004.2**. |
-| **Status** | ✅ **EP-01 APPROVED** *(Decision Authority, 2026-08-21 — approval of the Phase-1 adoption plan; R-46: EP-01 plan approval is the DA's act; recorded, not inferred, per CAP-001 precedent `20260802-0015`)*. ⛔ **Approval covers this Phase-1 plan only.** |
+| **Status** | ✅ **EP-01 APPROVED · EXECUTED · PHASE 1 COMPLETE — PHASE 1 ADOPTION IMPLEMENTED / VERIFIED** *(Decision Authority approval `58e758b0`, 2026-08-21; slices P1–P6 shipped `1c326999` · `282ed339` · `cb97d70d` · `cc27688a` · `ca55fed6` · this commit). ⛔ Organizational adoption is a separate human authorization — this plan's delivery does not claim it.* |
 | **Predecessor** | `docs/plans/20260821-1138-track2-deterministic-assurance-phase0-plan.md` — **AUTHORIZED · EXECUTED · PHASE 0 COMPLETE — PASS (authorized scope)** |
 | **Commissioning review** | `docs/knowledgeos/reviews/2026-08-21-cost-optimization-governance-assurance-review.md` §7 *(Phase 1 — author-side adoption)* |
 | **Date** | 2026-08-21 |
@@ -55,39 +55,39 @@ Implement the smallest practical **author-side handoff-assurance workflow** reus
 
 ## 6 · Implementation slices (one commit per slice; dev guide per slice)
 
-### P1 — Domain value objects + invariant tests (RED→GREEN)
+### P1 — Domain value objects + invariant tests (RED→GREEN) — ✅ SHIPPED `1c326999`
 New under `scripts/lib/EngineeringKnowledge/Shared/Domain/`:
 - `HandoffContext` (readonly VO): `target` · `checkerName` · `checkerVersion` · `sourceCommit` · `generatedAt` · `commandLine`; named constructor `of(...)`.
 - `AssuranceHandoffReport` (readonly VO): holds `context` + `array<string, Assessment> $perSlice` + `notCheckedStatement` + `notCheckedAreas` + `limitations`. Methods: `aggregateVerdict(): Verdict` (D-3 precedence), `findings(): array<string, Assessment>` (non-PASS slices), `recommendation(): string` (FIX BEFORE HANDOFF iff FAIL; review INCONCLUSIVE; resolve WARN at author judgment; attach-as-evidence iff PASS). Invariant: non-empty `perSlice`; `notCheckedStatement` never empty.
 - `CheckerVersion` (constants class): `CURRENT = '1.0.0'`.
 New `Shared/Tests/Domain/AssuranceHandoffReportTest.php` (+ `HandoffContextTest.php` if warranted): aggregate precedence, findings filter, recommendation vocabulary, fail-closed (INCONCLUSIVE never yields PASS), D-3 properties. **Reuse** `Assessment::of(Verdict::…, evidence, subject)`.
 
-### P2 — Application service + tests
+### P2 — Application service + tests — ✅ SHIPPED `282ed339`
 New `Shared/Application/GenerateHandoffAssuranceReport.php` (`final readonly`): `handle(HandoffContext $context, array $perSlice, ?array $notCheckedAreas = null): AssuranceHandoffReport` — assembles the VO, supplies the structural profile's **named NOT-CHECKED areas** (DI-3/DI-6 → OQ-1/S8 · RC mechanical classes → surface 3 · grant/aggregate identity & amendment lineage → surface 4 · the undeclared-act class — human architecture review only) and known limitations; never manufactures PASS.
 New `Shared/Tests/Application/GenerateHandoffAssuranceReportTest.php` — fake assessments (anonymous-class pattern from `ReferenceIntegrity/Tests/Application/ValidateIntraDocumentReferencesTest.php`), asserts report structure + named NOT-CHECKED always present.
 
-### P3 — Reporter render + CLI adapter + integration tests
+### P3 — Reporter render + CLI adapter + integration tests — ✅ SHIPPED `cb97d70d`
 - Extend `Shared/Infrastructure/StructuralCliReporter.php` with `renderHandoffReport(AssuranceHandoffReport $report): string` — renders all nine elements, reusing `badge()`/`sliceLine()`/`notCheckedStatement()`; header block with context/provenance, per-slice table, findings, D-4 verbatim, named NOT-CHECKED, limitations, recommendation, footer.
 - Extend `scripts/knowledge-lint.php`: parse `--report=handoff`, `--document=`, `--out=` (pattern at lines 54–69); a `run_handoff_report()` that instantiates the same five services (S1–S5 map, `run_structural_profile` lines 97–106), runs each over the document, builds `HandoffContext` (version constant · git HEAD via `git -C … rev-parse --short HEAD` else `UNKNOWN` · `date('c')` · `implode(' ', $argv)`), calls `GenerateHandoffAssuranceReport`, renders, writes stdout or `--out`, **exit 0**; missing `--document` → usage exit 3.
 - New `Shared/Tests/Adapters/HandoffAdaptersCliTest.php` (or extend `StructuralAdaptersCliTest`, same `invoke()` pattern): defective fixture → report shows FAIL + FIX BEFORE HANDOFF + exit 0 · clean fixture → PASS · no `--vocabulary` → S3 INCONCLUSIVE visible + aggregate INCONCLUSIVE (never PASS) · report contains checker name/version/commit/timestamp + D-4 statement + named NOT-CHECKED + no governance vocabulary · `--out` writes the file and leaves the scanned doc untouched · rerun-after-remediation (fix fixture → PASS).
 
-### P4 — Real-corpus evidence + evidence report + business-value summary
+### P4 — Real-corpus evidence + evidence report + business-value summary — ✅ SHIPPED `cc27688a`
 - Scripted runs (read-only, `git show` like `Phase0BackTest::materializeState()`): **AMD4 `0a2fa71d` / AMD5 `7d3abc59` plan state → FAIL** (findings present) · **AMD6 current plan → S1/S2/S4/S5 PASS, S3 INCONCLUSIVE (no vocab config) → aggregate INCONCLUSIVE** · **new authoring fixture → meaningful report** (all slices evaluated or documented INCONCLUSIVE).
 - New `docs/knowledgeos/reviews/2026-08-21-track2-phase1-adoption-evidence.md`: real-corpus expected→observed table · the **12 acceptance criteria** from the commission checked · FINAL STATUS: **PHASE 1 ADOPTION IMPLEMENTED / VERIFIED** · STOP.
 - **Business-value summary** (in the same evidence report): **OBSERVED** — mechanical share 29%→46%→58% (review §3.1) · 14 defect instances rediscovered deterministically (back-test §3) · 5 amendments / 4 reviews / 12 corrections for one 4,315-line migration (review §3.2) · AMD6's 14-point manual pre-delivery check (review §3.3) · AMD6 quiet (0 false positives on the corrected artifact). **ESTIMATED** (clearly labelled) — per-defect cost ≈ one amendment cycle; the Phase-1 exit metric (review §7: next review raises *fewer* mechanical findings than 7-of-12). **UNKNOWN** — reviewer-hours, financial savings, post-adoption false-positive rate. ⛔ No invented savings.
 
-### P5 — Developer guide
+### P5 — Developer guide — ✅ SHIPPED `ca55fed6`
 New `developer_guide/knowledgeos/03_phase1_author_side_adoption.md` (+ `00_index.md` row): when to run (before Architecture/Governance handoff) · the command · what the report contains · the FIX BEFORE HANDOFF practice (author-side, warn-only) · the handoff package definition (report + artifact identity + checker version + result + NOT-CHECKED) · what remains human · pitfalls (reading PASS from silence; the `step N` prose trap; trimming D-4; wiring `--strict`).
 
-### P6 — Bookkeeping
+### P6 — Bookkeeping — ✅ SHIPPED (this commit)
 Write the canonical plan to `docs/plans/20260821-<HHMM>-track2-phase1-author-side-adoption-plan.md` + approval record commit (mirrors Phase-0 `1fcdb353`) · plan status · session log `.claude/sessions/2026-08-21.md` · `.claude/CONTEXT.md` NEXT → STOP · closing commit chain.
 
-## 7 · Verification
+## 7 · Verification — ✅ all four observed
 
-1. `--testsuite=EngineeringKnowledge` green — existing 220 + new P1–P3 tests.
-2. Real-corpus runs: expected→observed matches the table in P4.
-3. `bash scripts/verify.sh` — unchanged, ALL GATES PASSED (handoff mode is an author-side affordance, wired into nothing).
-4. The evidence report checks all 12 acceptance criteria explicitly.
+1. `--testsuite=EngineeringKnowledge` green — **252 tests / 603 assertions** (existing 220 + P1–P3).
+2. Real-corpus runs: expected→observed **matches the table in P4** — AMD4/AMD5 FAIL with the Phase-0 findings; AMD6 quiet (S1/S2/S4/S5 PASS, S3 INCONCLUSIVE, 0 false positives); authoring draft FAIL → remediated fail-closed INCONCLUSIVE.
+3. `bash scripts/verify.sh` — unchanged, **ALL GATES PASSED** (handoff mode is an author-side affordance, wired into nothing).
+4. The evidence report `docs/knowledgeos/reviews/2026-08-21-track2-phase1-adoption-evidence.md` checks **all 12 acceptance criteria explicitly** (§6).
 
 ## 8 · Risks / boundaries
 
@@ -102,11 +102,11 @@ Write the canonical plan to `docs/plans/20260821-<HHMM>-track2-phase1-author-sid
 
 None blocking — the commission delegates the determinations; they are recorded in D-rows: report target = the author's document · storage = stdout + `--out` opt-in · failure handling = FIX BEFORE HANDOFF (author-side), never autonomous. The plan's approval is the checkpoint; **STOP after delivery — the next decision is the human authority's.**
 
-## 10 · Next actions
+## 10 · Next actions — ✅ P1–P6 shipped; STOP
 
-1. Write this canonical plan + approval record (this commit).
-2. Implement P1 → P2 → P3 → P4 → P5 → P6.
-3. **STOP.** Final status discipline: **PHASE 1 ADOPTION IMPLEMENTED / VERIFIED** — organizational adoption is a separate human authorization.
+1. ✅ Write this canonical plan + approval record (`58e758b0`).
+2. ✅ Implement P1 → P2 → P3 → P4 → P5 → P6 (`1c326999` · `282ed339` · `cb97d70d` · `cc27688a` · `ca55fed6` · this commit).
+3. ✅ **STOP.** Final status discipline delivered: **PHASE 1 ADOPTION IMPLEMENTED / VERIFIED** — organizational adoption is a **separate human authorization** the Decision Authority now owns.
 
 ## Traceability
 

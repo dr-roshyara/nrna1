@@ -1,6 +1,20 @@
 # Current Working State
 
-**Updated:** 2026-08-21 *(additive — the AMD6 INDEPENDENT REVIEW block is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-21 *(additive — the TRACK 2 · PHASE 1 AUTHOR-SIDE ADOPTION COMPLETE block is newest; older rows it contradicts are superseded by it)*
+
+---
+
+## 📍 UPDATE (2026-08-21, **TRACK 2 · PHASE 1 AUTHOR-SIDE ADOPTION COMPLETE** — newest) — **FINAL STATUS: PHASE 1 ADOPTION IMPLEMENTED / VERIFIED · all six slices P1–P6 shipped · real-corpus validated · 252 tests / 603 assertions green · ⛔ STOP — organizational adoption is a separate human authorization**
+
+| | |
+|---|---|
+| ✅ **Delivered** | `knowledge-lint --report=handoff --document=<path> [--vocabulary=<path>] [--out=<path>]` — the author-side handoff-assurance workflow, reusing the Phase-0 S1–S5 checks (Domain VOs `HandoffContext` / `AssuranceHandoffReport` / `CheckerVersion` · application service `GenerateHandoffAssuranceReport` · `renderHandoffReport()` · CLI adapter, D-1…D-7). Automation produces **evidence**; it produces no decision, authority, or acceptance |
+| ✅ **Committed** | P1 `1c326999` (domain VOs) · P2 `282ed339` (application service) · P3 `cb97d70d` (reporter + CLI + 8 integration tests, incl. the **D-3 position-independent fail-closed aggregate repair**) · P4 `cc27688a` (evidence report + business-value summary) · P5 `ca55fed6` (developer guide) · P6 (this commit: plan status + session log + CONTEXT) |
+| ✅ **Verified** | **252 tests / 603 assertions** green · real-corpus expected→observed **matches the plan table** — AMD4/AMD5 **FAIL** with the Phase-0 findings, AMD6 quiet (S1/S2/S4/S5 PASS, S3 **INCONCLUSIVE** from an absent vocab config, **0 false positives**), authoring draft FAIL → remediated fail-closed INCONCLUSIVE · `bash scripts/verify.sh` **ALL GATES PASSED** · all **12 acceptance criteria** checked (§6 of the evidence report) |
+| 📋 **Artifacts** | evidence report `docs/knowledgeos/reviews/2026-08-21-track2-phase1-adoption-evidence.md` (FINAL STATUS + OBSERVED/ESTIMATED/UNKNOWN business-value, no invented savings) · developer guide `developer_guide/knowledgeos/03_phase1_author_side_adoption.md` + `00_index.md` row · plan `docs/plans/20260821-1641-track2-phase1-author-side-adoption-plan.md` (EP-01 APPROVED `58e758b0`) |
+| 🛡️ **Boundary held** | warn-only, **exit 0 everywhere** · `--strict` not applicable (note printed) · no new gate / hook / CI wiring · no authority manufactured — report says `FIX BEFORE HANDOFF`, never `APPROVED`/`REJECTED`/`ACCEPTED` · **DV-1…DV-7 + durability migration untouched** · EKS-07 not solved · no new provenance mechanism (git HEAD = code provenance only) · read-only w.r.t. governed artifacts (checker never writes what it scans) |
+| ⛔ **D-3 repair** | the fail-closed aggregate is now **position-independent** (FAIL > INCONCLUSIVE > WARN > PASS) — an INCONCLUSIVE slice can no longer mask a FAIL (RED test first, then GREEN) |
+| **NEXT** | ✅ **STOP.** Phase-1 implementation and verification are complete. **Organizational adoption** — making the author-side check a standing practice — is a **separate decision the Decision Authority now owns**; nothing in this commission claims it |
 
 ---
 
