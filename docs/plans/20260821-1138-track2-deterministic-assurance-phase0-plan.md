@@ -63,16 +63,16 @@
 
 > **Harness already exists, measured:** `composer.json` PSR-4 `EngineeringKnowledge\` → `scripts/lib/EngineeringKnowledge/`; `phpunit.xml:44–45` `<testsuite name="EngineeringKnowledge">`. ⇒ **`--testsuite=EngineeringKnowledge` runs it. ⛔ No new harness.**
 
-| # | Slice | Capability · rule | RED boundary |
-|---|---|---|---|
-| **S1** | **document-local identifier uniqueness + monotonic ordering** | **`CAP-001` / `DP-1`**, register = the document | tests assert a collision verdict on a fixture with `## 4.1` twice; fail because the rule class does not exist |
-| **S2** | **intra-document reference resolution** *(`§x.y` → exactly one heading; `step N` → a normative enumeration that defines `N`)* | **`CAP-004` / `DP-4`** | tests assert `MISSING` for a `step 5` reference against a block defining `1..4` |
-| **S3** | **vocabulary integrity** — stale-token scan against declared current vocabulary; **confusable-identifier detection** *(`CASE B` vs `CASE β`)* | ⭐ **`CAP-003` / `DP-3` — the capability's FIRST realization** | tests assert an unqualified-homonym verdict on a fixture carrying both tokens |
-| **S4** | **table column-count consistency** | `CAP-004`-adjacent structural rule | fixture with a ragged table |
-| **S5** | **unlabelled-superseded heuristic → `WARN` only** | ⚠️ **`CAP-003` candidate mapping — to be CONFIRMED, not assumed** | fixture with two current dispositions, one unlabelled |
-| **S6** | ⭐ **the back-test harness** *(§6)* | — | runs green only when §6's matrix is reproduced |
-| **S7** | **adapters + `verify.sh` wiring** *(warn-only)* | — | — |
-| ⚠️ **S8** | **enumeration-vs-content agreement** (`DI-3`/`DI-6`) | ⛔ **BLOCKED on `OQ-1`** | not started |
+| # | Slice | Capability · rule | RED boundary | Status |
+|---|---|---|---|---|
+| **S1** | **document-local identifier uniqueness + monotonic ordering** | **`CAP-001` / `DP-1`**, register = the document | tests assert a collision verdict on a fixture with `## 4.1` twice; fail because the rule class does not exist | ✅ `895d38cb` |
+| **S2** | **intra-document reference resolution** *(`§x.y` → exactly one heading; `step N` → a normative enumeration that defines `N`)* | **`CAP-004` / `DP-4`** | tests assert `MISSING` for a `step 5` reference against a block defining `1..4` | ✅ `d16a3a78` |
+| **S3** | **vocabulary integrity** — stale-token scan against declared current vocabulary; **confusable-identifier detection** *(`CASE B` vs `CASE β`)* | ⭐ **`CAP-003` / `DP-3` — the capability's FIRST realization** | tests assert an unqualified-homonym verdict on a fixture carrying both tokens | ✅ `4a923440` |
+| **S4** | **table column-count consistency** | `CAP-004`-adjacent structural rule | fixture with a ragged table | ⬜ |
+| **S5** | **unlabelled-superseded heuristic → `WARN` only** | ⚠️ **`CAP-003` candidate mapping — to be CONFIRMED, not assumed** | fixture with two current dispositions, one unlabelled | ⬜ |
+| **S6** | ⭐ **the back-test harness** *(§6)* | — | runs green only when §6's matrix is reproduced | ⬜ |
+| **S7** | **adapters + `verify.sh` wiring** *(warn-only)* | — | — | ⬜ |
+| ⚠️ **S8** | **enumeration-vs-content agreement** (`DI-3`/`DI-6`) | ⛔ **BLOCKED on `OQ-1`** | not started | ⛔ |
 
 # 6 · ⭐ The exit criterion — a falsification test, and it is already verified as FEASIBLE
 
