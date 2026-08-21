@@ -2,7 +2,7 @@
 
 > **STATUS: PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.** Nothing here is frozen, adopted, or ratified. This document **describes what EKS is today**; it proposes no target architecture, no migration, no refactoring, no technology, no kernel, and no bounded context.
 >
-> ⛔ **BROKEN / INCOMPLETE — 2026-08-21 · Human Principal Architect: "yes its broken now. so mark it as broken file."** This deliverable is **structurally incomplete** and is marked as a **broken file**. Verified (tier 1, direct measurement): the file ends at **§20** (line 1162) but its own body cross-references terminal sections that **do not exist in this file** — **§21** (special questions, cited at §7.6c · §16.2 · §16.3 · §16.6 · §17.2) · **§23** (P-rows, cited at §5.1) · **§24** (UNKNOWN areas **U-***, cited at §11.4) · **§25** (contradictions **X-***, cited at §25.1 · §25.3); **§22** is also absent. The approved plan's Stage-1 terminal sections (**§19 Known Gaps and Contradictions · §20 UNKNOWN Areas**) are not present as such. ⛔ **NOT a valid P1 deliverable as delivered**: the promised UNKNOWN register and contradiction register are missing. Do **not** treat as a complete baseline and do **not** carry its conclusions into Stage 2 as accepted until the missing terminal sections are supplied (or their absence is explicitly ruled by the Human Principal Architect). §1–§20 stand only as evidence-tagged **partial** material. This banner is a marker, not a repair — nothing here is fabricated or silently completed.
+> ✅ **CORPUS COMPLETED — 2026-08-22 · R-1 of the approved EP-01 study** (launch instrument: `docs/knowledgeos/reviews/2026-08-22-KOS-EP01-R1-eks-corpus-completion-launch-prompt.md`, commit `a9cf7936`). **§1–§20 are preserved verbatim** — the git diff shows additions/errata only, no silent rewrite. The previously-missing terminal sections are supplied **in place**: **§21** (special questions, cited at §7.6c · §11.5 · §16.2 · §16.3 · §16.6 · §17.2) · **§22** (Known Gaps and Open Areas) · **§23** (P-rows, cited at §5.1) · **§24** (UNKNOWN register **U-***, cited at §11.4) · **§25** (contradiction register **X-***, cited at §25.1 · §25.3). One smallest-scope erratum was applied at the affected site — **E-1** (§8, §25.2): the fully-read corpus (`KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN.md` §1.2) contradicts the claim that a lost transition is *mechanically detectable as a gap* — **density is NOT a completeness proof** (P3-F1 lesson). The corpus was re-read exhaustively (P3-F1 lesson) and the §1–§20 measurements were re-verified by direct re-run in this session. This banner records the corpus completion (this commit); it is **not a repair of content**, and it is **not a substitute for Human Principal Architect review** — the baseline remains **PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED** until the HPA re-reviews.
 >
 > **Deliverable:** Stage 1 / phase P1 of the approved EP-01 plan `docs/plans/20260821-2118-eks-pks-aip-current-architecture-landscape-knowledgeos-evolution-study-plan.md`.
 > **Identifier:** ⛔ **This document does NOT claim the identifier `KOS-ARCH-BASELINE-001`.** It is a *candidate input* to that baseline. Per PMR-10 the identifier is not minted here; `identifier-check.php --audit` returns INCONCLUSIVE for that series (no governed register exists — gap **G-1**, §17.4).
@@ -513,6 +513,8 @@ Required correction, applied. **Observed:** grants on a work item frequently nar
 | The knowledge corpus | **nothing** — a git commit is the only grouping, and it is not an EKS mechanism | — | **E** |
 
 **Concurrency:** none. `workflow-state.php` performs read → fold → check → append → write with **no lock, no lease, no compare-and-swap, and no re-read**. Two concurrent appends silently lose one. Tier-1 source states this is deliberate: *"Increment 2 is not authorized: no lock, no lease, no hook, no enforcement."* Mitigation is detection, not prevention: `seq` is dense and monotonic, so a lost transition is *mechanically detectable as a gap* (measured: no gaps today, 18/18 records clean). Class **D — accepted, recorded debt.**
+
+> ⛔ **E-1 erratum (applied 2026-08-22 — smallest scope, see §25.2):** the mitigation claim immediately above — *"a lost transition is mechanically detectable as a gap"* — is **contradicted by the fully-read corpus** (`KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN.md` §1.2, tier 1/3; P3-F1 lesson). In the concurrent-append experiment, **23 / 30 trials silently lost a transition; the losing process exited 0 and reported `{"ok":true,"seq":2}`; every survivor was dense and monotonic.** *"DENSITY IS NOT A COMPLETENESS PROOF. It is preserved BY the loss, because the clobbering writer reuses the sequence number the lost writer took."* A lost transition is therefore **NOT** mechanically detectable as a gap. The parenthetical "(measured: no gaps today, 18/18 records clean)" stands only as a point-in-time fact and proves nothing about loss. Class stays **D — accepted, recorded debt.** The original sentence is preserved verbatim above; this erratum is the correction, never a silent rewrite.
 
 ---
 
@@ -1162,3 +1164,150 @@ Patterns are listed **only** where tier-1/2 evidence demonstrates them.
 | Microservices / Layered service architecture / Event-driven architecture | — | **G — proposed only** |
 
 **Duplication finding (class D):** **three independent LCOM4 implementations coexist** — `scripts/observations/Lcom4Collector.php` (in the live pipeline, uses `nikic/php-parser`), `scripts/observations/lcom4_collector.py` (the evidence experiment, own scanner), and `scripts/lib/EngineeringKnowledge/Capabilities/Cohesion/**` (the newest, hexagonal, best-modelled — `UnitKind`, `EdgeRules`, `CohesionGraph`, `Lcom4`, `Interpretation`). **The newest is called only by its own tests** (`tests/Unit/Cohesion/`); the pipeline still uses the oldest. Which is canonical is recorded nowhere.
+
+---
+
+## 21. Special Questions
+
+> The baseline's body cites **six "special questions"** posed by the producing session and answered in place (§7.6c · §11.5 · §16.2 · §16.3 · §16.6 · §17.2). The numbered list these questions were drawn from is **not preserved anywhere in the corpus** — the numbers **4 · 5 · 6 · 8 · 11 · 12** survive only as those citations. The other numbers (1–3 · 7 · 9 · 10 · 13+) are **UNKNOWN** (§24 U-18). Each question is consolidated here with its answer, its evidence class, and its home section. No new question is invented.
+
+### 21.1 SQ4 — Where is authority actually enforced? (§16.2) — class **A** (enforcement) / **D** (scope)
+
+**Answer:** Nowhere against engineering work; in exactly four places against the record itself — (1) only `governance` may write a grant (`workflow-state.php:333`, R5a); (2) a grant must carry a `humanActRef` (`:336`, R5b); (3) only the current mutation owner may hand off (`:225`, R1); (4) only `governance`/`human` may record `COMPLETE` or `CONTINUATION` (`:262`, `:249`, R4). Every one is a **precondition on a write to the JSON file**, evaluated by a CLI the actor chose to run, with the writer role supplied as a **command-line flag**.
+
+> **Enforcement scope, stated precisely: EKS enforces the well-formedness of its own record. It enforces nothing about engineering.** The tier-1 source says so in its opening comment: *"the fold refuses; nothing is physically prevented."*
+
+### 21.2 SQ5 — Grant vs record authority (§16.3) — class **A**
+
+**Answer:** **The system RECORDS authority. It does not GRANT authority.** Verbatim in tier-1 source: *"a grant registers a recorded human act by reference — the record never manufactures authority (G-2/R5b)"*. Corroborated by measurement: **126/126** grants carry a `humanActRef`, and **0/126** carry anything the mechanism could have generated as authority itself.
+
+### 21.3 SQ6 — Does governed work have an end? (§7.6c) — class **E**
+
+**Answer:** **No.** `workItemState` has exactly two reachable values: `OPEN` and `STOPPED`. There is no `CLOSED`, `COMPLETED`, `ACCEPTED`, or `CANCELLED` work-item state. Measured consequence: **34 `COMPLETE` transitions** have been recorded, and **17 of 18 work items still fold to `OPEN`**; one folds to `STOPPED`. **The lifecycle of governed work has no recorded end.** (See §22 G-8.)
+
+### 21.4 SQ8 — What is persisted vs derived? (§11.5) — class **A**
+
+**Answer:** A clean and unusually disciplined separation. **Persisted:** `schema`, `workItem`, `workflow`, `roles[]`; `transitions[]` (verbatim, append-only, `seq`-stamped); `grants[]` (verbatim, append-only); every JSONL row; the markdown/YAML corpus. **Derived, never stored:** `sessions{}` and each session's `state`; `mutationOwner`; `workItemState`; `handoffsTo{}`; `authorizationLinkage`; `authorized`; every resolver verdict, reason and `authorizationFact`; all lint/check output. *"The record holds facts; every interpretation is recomputed on demand."* It is the strongest single design property in EKS, and it is what makes the fold trustworthy.
+
+### 21.5 SQ11 — What does "deterministic assurance" actually mean in EKS? (§17.2) — class **A**
+
+**Answer:** Determinism is a **designed and tested property**, not an aspiration: identical `ChangeSet` + identical sources → identical recommendations regardless of trigger (tested); the runtime never scans the repository (changed files only); rules are **data**, not code; recommendation ids are content-derived (`sha1(rule|subject)`); assessment thresholds are explicit constants with stated rationale; verdicts are a **closed enum** with three values structurally unemittable by machine; an assessment **cannot exist without evidence**; and EKS tests its own *specification* by independent re-implementation in another language (`lcom4_collector.py`, deliberately not a port).
+
+### 21.6 SQ12 — Executable vs documented-only governance (§16.6) — class **A/G**
+
+**Answer:** Nine governance rules (single authority writer · humanActRef required · single mutation owner · token-bearing handoff · conjunctive START · sticky STOPPED · role immutability · work-item isolation · ACTIVE≠AUTHORIZED) are **executable + tested (29 tests)**; read-purity/discovery and one-interpreter rules are executable + tested (17 tests); the closed-verdict vocabulary is executable + tested (252 tests). Everything else — the registry-first workflow, **ES-001…ES-006 (all PROPOSED)**, the promotion ladder, the 14-phase Operating Loop, EP-01/02/03, the six-role operating model, work-item acceptance/closure — is **documented only**. The `Decision Authority & Verification Matrix` in `STANDARDS_INDEX.md` states EKS's own verdict: *"The smallest automation set justified by evidence: ZERO new hooks."* This baseline records that as a **decision, not a defect** — while noting that §16.2's enforcement-scope consequence follows from it inescapably.
+
+---
+
+## 22. Known Gaps and Open Areas
+
+> This section delivers the plan's Stage-1 required terminal section **"Known Gaps"** (the "Contradictions" half lives in §25). Each gap carries a stable id, class, evidence, and its detailed home.
+
+| ID | Gap | Class | Evidence | Detailed |
+|---|---|---|---|---|
+| **G-1** | **No canonical identifier-register list** — `identifier-check.php --audit` returns INCONCLUSIVE for every series except `R` and `PMR` | **E** | tier 1 | §17.4 |
+| **G-2** | **EKS enforces nothing about engineering** — no edit/commit/push/merge/deploy gated by any grant, ownership, or transition | **D** | tier 1 | §16.2 |
+| **G-3** | **No temporal ordering of authority** — 2/218 transitions (0.9%) carry any time-like field; ordering by per-record `seq` alone | **E** | tier 1,3 | §11.3 |
+| **G-4** | **No git history for the runtime** — `git log -- .claude/runtime/` is empty; insertion cannot be dated, attributed, or diffed | **E** | tier 1 | §11.2 |
+| **G-5** | **Single-host, no backup, no replication, no integrity check** for the estate's authoritative governance state | **E** | tier 1 | §11.2 |
+| **G-6** | **The scoped-subset problem** — two "current state" measurements of the same corpus cannot be reconciled (undefined inclusion rule) | **D** | tier 1,3 | §25.3 |
+| **G-7** | **Grant identity not enforced unique** — 1 duplicate measured (`G-KOS-GOVGAPS-VERIFY`) | **E** | tier 1,3 | §12.2 |
+| **G-8** | **Work-item lifecycle has no terminal state** — 17/18 fold to `OPEN`; 34 `COMPLETE` transitions recorded | **E** | tier 1,3 | §21.3 |
+| **G-9** | **Registry-first rule unmet for the majority** — 8 components + 16 assets registered; the observation runtime, metrics pipeline, `EngineeringKnowledge` library, and five knowledge/assurance CLIs are unregistered, with no recorded owner | **C/D** | tier 5 vs tier 1 | §16.6 |
+| **G-10** | **Observation/assurance loop dormant 17 days** (2026-08-04 → 2026-08-21); governance/workflow loop active daily | **D** | tier 3 | §18.5 |
+| **G-11** | **EKS is not a separable system** — shares repo, autoload, phpunit, vendor, CI, `.gitignore` with the product; reuse in a second repository not demonstrated | **D** | tier 1 | §18.4 |
+| **G-12** | **No deployment** — no Dockerfile, no service, no CI deploy, no release artifact; EKS "deploys" by being present in a git checkout | **E** | tier 1 | §19.1 |
+| **G-13** | **Reference integrity** — **58 broken references** (50 missing · 6 ambiguous · 2 git-rename); report-only | **C** | tier 1 | §17.4 |
+| **G-14** | **`KOS_MECHANISM_PATH` is an unhardened write-capable interpreter-substitution path** — reporting only, no legitimacy assessment, no refusal | **D** | tier 1 | §25.1 X-6 |
+| **G-15** | **Five shell scripts hold ephemeral reminder/session state in `.claude/runtime/`** — the runtime directory legitimately holds both ephemera and authority evidence | **C** | tier 1 | §25.1 X-5 |
+| **G-16** | **The durability of governance state is decided by a product config file** (`.gitignore` lines 25/32) | **D** | tier 1 | §19.4 |
+
+**Previously-unread-artifact finding (P3-F1 lesson):** **G-14 and G-15 appear nowhere in §1–§20**; both are current-state facts folded in from the exhaustively-read `KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN.md` (§1.5 CL-10 · §1.6). G-6 is the scoped-subset problem (§25.3). These are corpus-boundary decisions recorded as findings, never silent choices.
+
+---
+
+## 23. Propositions (P-rows)
+
+> The register of the baseline's own **propositions** — stated findings that are not accepted/ratified. **P-7** is the row the body forward-references (§5.1). **P-2** is forward-referenced at §16.5 (`R-34/P-2`). The remaining rows consolidate §1–§20's key findings under stable ids. A proposition records *what is*, with its class; it claims no remediation.
+
+| ID | Proposition | Class | Source |
+|---|---|---|---|
+| **P-1** | EKS enforces the well-formedness of its own record and **nothing about engineering**; the fold refuses, nothing is physically prevented | **A** | §16.2 |
+| **P-2** | **Producer ≠ acceptor** — the durability ADR binds its own producing process out of approving it (`R-34/P-2`) | **A** | §16.5 |
+| **P-3** | The record holds facts; every interpretation is recomputed on demand (persisted vs derived) | **A** | §11.5 · §21.4 |
+| **P-4** | Two never-merged records in one consistency boundary: `transitions` (evidence) ≠ `grants` (authority) | **A** | §7.6 · §20 |
+| **P-5** | EKS's assurance is excellent and **ungated**; the product's is gated — EKS holds itself to a lower operational standard than it holds the product to | **D** | §17.3 |
+| **P-6** | The subsystem that is durably persisted is the one that is dormant; the subsystem that is untracked is the one that is alive | **D** | §18.5 |
+| **P-7** | The **single-writer rule is a recorded constraint, not an authenticated one** — `--writer-role` is a command-line flag; anything that can run the CLI can pass `--writer-role=governance` | **D** | §5.1 |
+| **P-8** | Density of `seq` is **not** a completeness proof — a lost transition leaves a perfectly dense sequence (§25.2 E-1) | **D** | MIGRATION-PLAN §1.2 |
+
+---
+
+## 24. UNKNOWN Register (U-*)
+
+> Every UNKNOWN the corpus leaves open. **An honest UNKNOWN is valid; an artificial UNKNOWN is a defect** (P3-F1 lesson). **U-4** is the row the body forward-references (§11.4). No entry is filled to make the reconstruction coherent.
+
+| ID | UNKNOWN | Source | Status |
+|---|---|---|---|
+| **U-1** | **Bounded contexts NOT ESTABLISHED** — BC-1..BC-7 are boundary candidates only; none is promoted; no formal DDD validation exists | §9 | OPEN |
+| **U-2** | **Aggregates NOT established** — the one-work-item file is the clearest boundary but "never named as one" (class B); no aggregate is named in code or docs | §8 | OPEN |
+| **U-3** | **Current C4 model UNKNOWN / CONTESTED** — no current EKS container model exists; only a stale (2026-07-27) self-disclaiming reference model and quarantined proposed diagrams | §9.2 | OPEN |
+| **U-4** | **EKS/PKS identity ambiguity** — the 2032 baseline attributes the "Git-backed" characterization to the *PKS corpus*; whether EKS and PKS are the same, different, or overlapping systems is UNRESOLVED by EKS evidence | §11.4; P2 baseline §24 U-02 | OPEN |
+| **U-5** | **Delegation semantic interpretation UNKNOWN** — grants narrow over time, but the business concept *Delegation* is NOT established; 0/126 grants carry a delegation/delegator/delegatee/parent-grant/validity/expiry field | §7.9 | OPEN |
+| **U-6** | **Knowledge-corpus (BC-5) ownership PENDING ARB** — ES-006 lists `docs/knowledge/` disposition as PENDING | §9 | OPEN |
+| **U-7** | **Grant lifecycle closure unexercised** — the recommendation lifecycle was exercised once (10 → 2 → 1 → 1); 8 recommendations open since 2026-08-04; no grant closure observed | §13.5 | OPEN |
+| **U-8** | **Work-item terminal state absent** — `workItemState` has exactly two reachable values; what "finished" means for a work item is not recorded | §7.6c | OPEN (see §21.3) |
+| **U-9** | **Authorization query unanswerable** — EKS cannot answer "is this actor authorized to do this thing?"; grants and sessions are disjoint record sets with no join key; 2 of 6 AuthorizationFacts permanently UNKNOWN by construction | §16.4 | OPEN |
+| **U-10** | **Process/actor authenticity UNKNOWN** — AI processes are first-class actors but their identity cannot be established by any mechanism; *"self-declared process identity is not independently attested authorship"* (EKS-07 unsolved) | §5.4 · §7.8 | OPEN |
+| **U-11** | **Temporal authority unreconstructable** — "was this authority valid at a historical point?" is unanswerable (0/20 observed grants carry validity; 2/218 baseline) | §11.3; what_eks_today §20.1 | OPEN |
+| **U-12** | **Rule and authority mechanisms not connected** — no observed grant references a Rule and no Rule references a grant | what_eks_today §20.4 | OPEN |
+| **U-13** | **Evidence addressing partially mutable** — 7/20 observed grants reference artifacts descriptively rather than immutably; evidence provenance can drift | what_eks_today §20.3 | OPEN |
+| **U-14** | **What the observation loop's dormancy means** — the operational state is recorded (§18.5), not interpreted | what_eks_today §20.5 · §18.5 | OPEN |
+| **U-15** | **Persistence topology** — PostgreSQL/graph/vector as EKS system of record is PROPOSED, not current (zero implementation evidence) | §11.4; 60-section draft §58 | OPEN |
+| **U-16** | **Cross-repo topology** — reuse in a second repository not demonstrated; extraction not possible in current shape | §18.4 | OPEN |
+| **U-17** | **Terminology migration** — 8 overloaded terms across candidate boundaries (`Session`, `Assessment`, `Verdict`, `Decision`, `Evidence`, `Rule`, `Capability`, `Workflow`) | §6.2 · §9.1 | OPEN |
+| **U-18** | **The special-question list** — the numbered list SQ1–SQ3, SQ7, SQ9, SQ10, SQ13+ is not preserved anywhere in the corpus; only SQ4 · SQ5 · SQ6 · SQ8 · SQ11 · SQ12 survive as citations | §21 | OPEN |
+
+---
+
+## 25. Contradiction Register (X-*)
+
+> Every EKS-internal contradiction surfaced — implementation vs documentation, proposal vs implementation, current vs historical, measurement vs measurement. **Never silently reconciled — both sides are recorded.**
+
+### 25.1 Contradictions
+
+| ID | Contradiction (concepts · evidence · nature) | Sources | Status |
+|---|---|---|---|
+| **X-1** | **System of record** — "Git-backed repository" (2032 baseline, tier 5, attributed to the PKS corpus) vs KnowledgeOS proposals (PostgreSQL/graph/vector, tier 7) vs measured (tier 1,3): **two systems of record with opposite durability** (a git-tracked corpus AND an untracked local JSON governance store). "Git-backed" is half true and materially misleading — accurate for P2–P10, false for P1, which holds the authority record | §11.4 | **OPEN — UNRESOLVED for Stage 2** |
+| **X-2** | **Six-role vs four-role operating model** — six-role (Governance · Architecture · Implementation · Verification · Knowledge · Communication) adopted in docs (tier 4); the runtime knows four; `knowledge` and `communication` appear in **no** workflow record | §5.3 | **OPEN — CONTRADICTED** |
+| **X-3** | **ES-001…ES-006 PROPOSED vs bound-as-canonical** — all six are PROPOSED, awaiting ARB review 41 days after consolidation was ordered (2026-07-11); yet `.claude/CLAUDE.md` binds them as "canonical rules" at runtime and the project CLAUDE.md cites ES-004.2/005.4/006.1 as governing rules | §13.3 | **OPEN — CONTRADICTED** |
+| **X-4** | **Density not a completeness proof** — §8 claimed "a lost transition is mechanically detectable as a gap"; the fully-read corpus's concurrent-append experiment lost **23/30** trials while every survivor stayed dense and monotonic; *"the clobbering writer reuses the sequence number the lost writer took"* → **E-1 erratum applied** | §8; MIGRATION-PLAN §1.2 | **OPEN — erratum E-1 (§25.2)** |
+| **X-5** | **"No runtime state in the runtime directory"** — the durability ADR infers the `.claude/runtime/` artifacts are "not runtime state" (scoped to the workflow JSON files); MIGRATION-PLAN §1.6 shows **five shell scripts** legitimately hold ephemeral reminder/session state there. Both are true at different scopes; no source states the boundary | ADR §3–4; MIGRATION-PLAN §1.6 | **OPEN — scoping note** |
+| **X-6** | **`KOS_MECHANISM_PATH` framing** — §16.7 presents it as "not a hardened boundary" (interpreter substitution, reporting); the fully-read corpus upgrades it: **it is a WRITE-CAPABLE path** (CL-10) — *"worse than 'the right bytes read by the wrong mechanism'"*. Both agree it is unhardened; the write-capability is the newly-read fact | §16.7; MIGRATION-PLAN §1.5 CL-10 | **OPEN** |
+| **X-7** | **Commit-trigger not wired** — a version-controlled post-commit hook exists (`.husky/post-commit` → `scripts/observations/git-hooks/post-commit`); `.git/hooks` empty · `core.hooksPath` unset · `.husky/_` empty → **NOT INSTALLED** | §5.5 | **OPEN — CONTRADICTED** |
+| **X-8** | **Two "current state" measurements of the same corpus disagree** — this baseline (2026-08-21): 18 records / **218** transitions / **126** grants / 125 unique; MIGRATION-PLAN AMD3 (2026-08-20): 18 / **216** / **110** / 109 unique; MIGRATION-PLAN AMD6 (2026-08-21): 18 / 216 / **114** / 113 unique. The delta is plausible corpus growth but **unattestable** (git log empty) | §10.2; MIGRATION-PLAN §1.1, AMD6 | **OPEN — REQUIRES FUTURE VALIDATION** |
+| **X-9** | **"13/20 immutable commit addressing" split not reproduced** — what_eks_today §1.3 claims 13/20 immutable / 7/20 descriptive (20-grant scoped subset); direct re-measurement this session produces **3/17 or 16/4** under two defined rules; the claim's defining rule is undefined | what_eks_today §1.3; this session | **OPEN — REQUIRES FUTURE VALIDATION** |
+
+### 25.2 Errata (E-*)
+
+| ID | Erratum | Applied at | Evidence |
+|---|---|---|---|
+| **E-1** | §8's mitigation claim ("seq is dense and monotonic, so a lost transition is mechanically detectable as a gap") is **contradicted by the fully-read corpus**: 23/30 concurrent-append trials silently lost a transition while every survivor remained dense and monotonic — *"DENSITY IS NOT A COMPLETENESS PROOF. It is preserved BY the loss, because the clobbering writer reuses the sequence number the lost writer took."* A lost transition is **NOT** mechanically detectable as a gap. Smallest-scope erratum — the original sentence is preserved verbatim; this record is the correction. | §8 (inline) · §25.2 | MIGRATION-PLAN §1.2 (tier 1,3); re-verified this session |
+
+### 25.3 The scoped-subset problem (cited §11.2)
+
+**Not resolvable by any mechanism.** A "current state" measurement of the runtime corpus is meaningful only if the measured set and its defining rule are stated and reproducible. Neither is attestable:
+
+- **Scope drift:** what_eks_today §1.3's "13/20" (X-9) is a **20-grant scoped subset**; this baseline's §10.2 measures the **full estate** (126 grants). The two are not comparable without a defined inclusion rule.
+- **No history:** `git log -- .claude/runtime/` is empty (§11.2) — a criterion pinned to "18 / 216 / 110" or "126 grants" cannot be re-derived at any later date, and cannot distinguish *"a record is missing"* from *"the corpus legitimately grew"* (MIGRATION-PLAN §1.1). The corpus grew during the ADR, the design, the planning, and the reviews.
+- **Consequence:** §11.2's point 4 — *"The scoped-subset problem is now unresolvable"* — stands. Any Stage-2 comparison that relies on an absolute record count must first pin the set and the rule, or record the comparison as **UNKNOWN** (§24).
+
+---
+
+## Traceability and corpus record
+
+- **Preserved verbatim:** §1–§20 of this baseline. The git diff for this completion shows **additions/errata only** — the banner (completion record, not a repair), the §8 E-1 erratum block, and the appended §21–§25 + this traceability record.
+- **Completed in place by R-1 (this session, 2026-08-22):** §21 Special Questions (SQ4 · SQ5 · SQ6 · SQ8 · SQ11 · SQ12) · §22 Known Gaps and Open Areas (G-1..G-16) · §23 Propositions (P-1..P-8) · §24 UNKNOWN register (U-1..U-18) · §25 Contradiction register (X-1..X-9) · Errata (E-1) · §25.3 Scoped-subset problem.
+- **Sources:** the AMENDMENT-4 binding corpus (60-section draft `docs/knowledgeos/brainstorming/20260801_1231_EKS Current Architecture Baseline.md` · `docs/knowledgeos/brainstorming/20260821_2033_what_eks_today.md` · `docs/knowledgeos/architecture/20260821_2032_EKS Current Architecture Baseline.md`), plus the exhaustively-read `docs/knowledgeos/architecture/KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN.md` (P3-F1 lesson) and direct tier-1/3 measurements executed in this session against `.claude/runtime/workflow/*.json`, `.claude/scripts/workflow-state.php`, `.claude/scripts/session-resolve.php`, `engineering/governance/STANDARDS_INDEX.md`, `docs/knowledgeos/architecture/KOS-AIP-GOV-STATE-DURABILITY-ADR.md`.
+- **Quarantined (never EKS current-architecture evidence):** the proposed KnowledgeOS architecture — Review Set `docs/knowledgeos/architecture/00…07-*`, kernel-extraction conclusions, `docs/knowledgeos/brainstorming/20260821_2032_how_to_change_eks_into_kowledge_os_kernel.md` (Stage-4/5 material only), the Digitalization Robot. The Review Set is never used to interpret EKS current architecture.
+- **Quality test — every substantive claim in this document carries (a) an evidence tier (1–8), (b) a reality class A–G, or (c) a stable U-/X-/P-/G- register reference.** No B/C/G finding is promoted to A. UNKNOWN remains UNKNOWN. Contradictions are surfaced, never silently reconciled. **EKS is frozen — read-only; no redesign, no frozen-baseline reopening, no technology change.**
