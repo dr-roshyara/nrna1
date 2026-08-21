@@ -1,3 +1,19 @@
+---
+source:
+  original_name: "20260821_1206_kos-state-durability-assurance-integration.md"
+  original_path: "docs/knowledgeos/brainstorming/20260821_1206_kos-state-durability-assurance-integration.md"
+  detected_timestamp: "2026-08-21 12:06:33"
+  timestamp_source: filesystem-mtime
+  timestamp_confidence: high
+  timestamp_notes: "filename stamp 12:06 agrees with mtime 12:06:33"
+classification:
+  theme: "03-evidence-assurance-governance"
+  type: architecture-proposal
+status:
+  authoritative: false
+  proposed: false
+---
+
 # KOS-STATE-DURABILITY × Deterministic Assurance — the integration model
 
 **Kind:** brainstorming / integration analysis — **INPUT only**. ⛔ **This document decides nothing, commissions nothing, mints no identifier, adopts no model, and authorizes no implementation.**
