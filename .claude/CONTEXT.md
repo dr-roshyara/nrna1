@@ -4,7 +4,7 @@
 
 ---
 
-## 📍 UPDATE (2026-08-21, **TRACK 2 · PHASE 0 IN EXECUTION** — newest) — **DA approved the Phase-0 plan; S1 · S2 · S3 implemented and committed; the §6 back-test matrix reproduced incl. the AMD6 quiet row**
+## 📍 UPDATE (2026-08-21, **TRACK 2 · PHASE 0 IN EXECUTION** — newest) — **DA approved the Phase-0 plan; S1 · S2 · S3 · S4 implemented and committed; the §6 back-test matrix reproduced incl. the AMD6 quiet row**
 
 | | |
 |---|---|
@@ -13,9 +13,10 @@
 | ✅ **S2 — `d16a3a78`** | **intra-document reference resolution** (`CAP-004`/`DP-4`): `§x.y` → exactly one heading · `step N` → a normative enumeration defining `N`. Back-test row: AMD5 *"Phase 5 step 5"* vs a block defining `1·2·3·4` → **FAIL**; AMD6 quiet |
 | ✅ **S3 — `4a923440`** | ⭐ **vocabulary integrity + confusable identifiers — `CAP-003`/`DP-3`'s FIRST realization** · stale-token scan (CITED vs LIVE: quoted / §-scoped / `Traceability (`) · confusable pair detection via `HomoglyphMap` (α→A, β→B) · **document-level declaration check** (backticked `` `DI-7` `` label) |
 | ✅ **§6 back-test matrix reproduced** | AMD4 → FAIL (`DI-1` ×2 classes + `DI-2` ×4 live `Phase 2b` at 469/627/631/673) · AMD5 → FAIL (`DI-5` dangling `step 5` + `DI-7` two undeclared confusable pairs) · ⭐ **AMD6 `8307beca` → QUIET** (5 cited retired-term occurrences, 0 live; 54 confusable identifiers; collision declared). ⭐ **Regression direction holds: fires on the defective historical states, silent on the repaired current one** |
-| ✅ **Suite** | `--testsuite=EngineeringKnowledge` **138 tests / 238 assertions green** · no new harness · warn-only, exit 0, **no gate/hook/CI** · nothing under `docs/` modified by any checker · no identifier minted |
+| ✅ **S4 — `73dbe091`** | **table column-count consistency** — `CAP-004`-ADJACENT structural rule (extending the ReferenceIntegrity realization; ⛔ no DP verbatim owns it, stated not claimed; no new capability/register/policy): a table's every row must carry the header's cell count; a deviating row is a ragged table. Corpus-quiet AMD4 (22 tables) · AMD5 (27) · AMD6 (42), every `|`-leading line observed |
+| ✅ **Suite** | `--testsuite=EngineeringKnowledge` **161 tests / 284 assertions green** · no new harness · warn-only, exit 0, **no gate/hook/CI** · nothing under `docs/` modified by any checker · no identifier minted |
 | ⛔ **Still frozen** | assurance classes · routing · gates · review-model evolution (`2026-08-01`) · `OQ-1`…`OQ-4` ⛔ not answered here |
-| **NEXT** | **S4 — table column-count consistency** (fixture with a ragged table) → S5 (`WARN`-only unlabelled-superseded heuristic, `OQ-2` hypothesis) → S6 (back-test harness) → S7 (adapters + `verify.sh`, warn-only) → Phase-0 back-test report + developer guide + CAP-003 catalogue-row update (Candidate → Realized) + `H-CAT-1` + `OQ-1` raised. ⛔ Then **STOP** — Phase 1 is a separate act on §6's evidence |
+| **NEXT** | **S5 — unlabelled-superseded heuristic → `WARN` only** (`CAP-003` candidate mapping, `OQ-2` hypothesis) → S6 (back-test harness) → S7 (adapters + `verify.sh`, warn-only) → Phase-0 back-test report + developer guide + CAP-003 catalogue-row update (Candidate → Realized) + `H-CAT-1` + `OQ-1` raised. ⛔ Then **STOP** — Phase 1 is a separate act on §6's evidence |
 | 🔵 **Parallel (unchanged)** | AMD6 chain: fresh independent review → Governance BOUNDED review → register AMD3+AMD4+AMD5+AMD6 → PO/ARB acceptance · `OPEN-M5` · `OPEN-M7` · Phase-0 declaration · Phase-4b authorization. ⛔ **`PHASE 3 MUST NOT BEGIN`** |
 
 ---
