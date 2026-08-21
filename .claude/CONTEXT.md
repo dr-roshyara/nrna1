@@ -19,6 +19,20 @@
 
 ---
 
+## 📍 UPDATE (2026-08-22, **R-1 DELIVERED — EKS CURRENT ARCHITECTURE BASELINE CORPUS COMPLETED**) — **READ-ONLY · PROPOSED · §1–§20 preserved verbatim + §21–§25 + U-/X- registers supplied · one erratum E-1 (§8) · commit `aa08151d` · awaits HPA review**
+
+| | |
+|---|---|
+| ✅ **R-1 delivered (commit `aa08151d`)** | `docs/knowledgeos/architecture/20260821-2140-EKS-Current-Architecture-Baseline-Stage-1.md` completed **in place** — **READ-ONLY, PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED**. Launch instrument `a9cf7936` executed to scope. |
+| 📄 **§1–§20 preserved verbatim** | git diff = **150 insertions / 1 deletion** (the single deletion is the old BROKEN/INCOMPLETE banner, replaced by a completion-status banner). No §1–§20 content rewritten, no renaming, no source content lost. |
+| 🆕 **Terminal sections supplied** | **§21** Special Questions (SQ4 · SQ5 · SQ6 · SQ8 · SQ11 · SQ12, consolidated from §7.6c · §11.5 · §16.2 · §16.3 · §16.6 · §17.2; SQ1–3 · SQ7 · SQ9 · SQ10 · SQ13+ = **U-18**) · **§22** Known Gaps (G-1..G-16) · **§23** Propositions (P-1..P-8; **P-7** = the body's forward reference §5.1) · **§24** UNKNOWN register (**U-1..U-18**; **U-4** = the body's forward reference §11.4, EKS/PKS identity) · **§25** Contradiction register (**X-1..X-9**; §25.1 table · §25.2 Errata **E-1** · §25.3 scoped-subset problem = §11.2's forward reference) |
+| ⛔ **E-1 erratum applied (smallest scope)** | §8's "a lost transition is mechanically detectable as a gap" is **contradicted by the fully-read corpus** (P3-F1 lesson): MIGRATION-PLAN §1.2 — **23/30 concurrent-append trials lost a transition while every survivor stayed dense**; *"the clobbering writer reuses the sequence number the lost writer took"* → **density is NOT a completeness proof**. Original sentence preserved verbatim; correction appended at the site + §25.2. |
+| 🧩 **P3-F1 current-state facts folded in** | `KOS_MECHANISM_PATH` = **WRITE-CAPABLE path** (X-6) · **5 shell scripts** hold ephemeral state in `.claude/runtime/` (X-5 — scopes the ADR's "no runtime state" claim) · measurement delta 18/218/126/125 (this baseline) vs 18/216/110/109 (MIGRATION-PLAN AMD3) vs 18/216/114/113 (AMD6) surfaced as **X-8** · "13/20 immutable commit references" split **NOT reproduced** (X-9) |
+| 🧮 **Registers** | UNKNOWN **U-1..U-18** · Contradictions **X-1..X-9** (OPEN / REQUIRES FUTURE VALIDATION) · Errata **E-1** · Propositions **P-1..P-8** · Gaps **G-1..G-16** |
+| **NEXT** | 🔵 **Human Principal Architect: re-review the completed EKS baseline** (R-1 corpus-completion gate; commit `aa08151d`). ⛔ **P4 remains CLOSED** pending the corrected-P3 HPA re-review. On both → P4 Stage-4 Landscape → P5 AMENDMENT-6 — P5 MUST inherit the HPA classification block above + "P5 External Convergence Analysis" + the dimension-isolation kernel framing. |
+
+---
+
 ## 📍 UPDATE (2026-08-22, **HPA DECISION: AMENDMENT-6 DEFERRED TO P5 — OPTION 3**) — **no kernel-candidate gate test now · binding sequence: R-1 EKS corpus → P3 re-review → P4 Landscape (U-02/X-01 identity) → P5 AMENDMENT-6 (C-1..C-10) → kernel decision · the epistemic investigation = a candidate map, NOT a kernel**
 
 | | |
