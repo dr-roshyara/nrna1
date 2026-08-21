@@ -1,10 +1,26 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **HPA REVIEW — "ZERO" / NEUTRAL ORIGIN STATE (RESEARCH LENS) · CANDIDATE NEUTRALITY PRESERVATION (H-ZERO-001) TAKEN AS CANDIDATE, NOT INV-KOS-003 · H-ZERO-002 TRANSFORMATION ORIGIN PRESERVATION · UNKNOWN IS FIRST-CLASS · ZERO+TOPOOLOGY+PROVENANCE** block is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **HPA CONSOLIDATION — TRANSFORMATION-PROTECTION SHIFT AFFIRMED · KERNEL BOUNDARY FILTER (5 QUESTIONS) · REPRESENTATION→TRUTH ADDED · ZERO/VĀṆĪ/TOPOOLOGY/EKS/PKS/AIP/DDD CONVERGE · "CONSTITUTIONAL RUNTIME" POSITIONING** block is newest; older rows it contradicts are superseded by it)*
 
 ---
 
-## 📍 UPDATE (2026-08-22, **HPA REVIEW — "ZERO" / NEUTRAL ORIGIN STATE (RESEARCH LENS, NOT KERNEL PRIMITIVE) · CANDIDATE NEUTRALITY PRESERVATION (H-ZERO-001) TAKEN AS CANDIDATE — NOT INV-KOS-003 YET · H-ZERO-002 TRANSFORMATION ORIGIN PRESERVATION · UNKNOWN IS A FIRST-CLASS STATE · ZERO+TOPOOLOGY+PROVENANCE · FRESH-SESSION EXTRACTION PROMPT COMMISSIONED (UNBLOCKED)** — newest) — **"An unknown knowledge object is not absence of knowledge. It is a knowledge identity without resolved dimensions." · kernel question becomes "Which transitions are allowed from the neutral state?" · the kernel does not calculate knowledge — it protects the conditions under which knowledge can evolve without losing identity**
+## 📍 UPDATE (2026-08-22, **HPA CONSOLIDATION — TRANSFORMATION-PROTECTION SHIFT AFFIRMED AS STRATEGICALLY MOST IMPORTANT · KERNEL BOUNDARY FILTER (5 QUESTIONS) · REPRESENTATION→TRUTH ADDED TO PREVENTS LIST · ZERO/VĀṆĪ/TOPOOLOGY/EKS/PKS/AIP/DDD CONVERGE ON "PRESERVE IDENTITY WHILE ALLOWING EVOLUTION" · "CONSTITUTIONAL RUNTIME FOR TRUSTWORTHY KNOWLEDGE EVOLUTION"** — newest) — **"KnowledgeOS is not a system that stores knowledge objects. It is a system that protects valid transformations of knowledge identity." · the kernel is becoming about protected relationships, not objects**
+
+| | |
+|---|---|
+| 🎯 **The shift (affirmed, most important)** | *"A KnowledgeOS invariant is not a fact about knowledge. It is a protection against an invalid transformation between knowledge dimensions."* Question sharpened: **"Which invalid transformations between dimensions must KnowledgeOS prevent?"** |
+| 🧬 **Kernel boundary filter (NEW — operational form)** | Ask of every transformation: **Did meaning change? · Did authority change? · Did evidence change? · Did identity change? · Was the transition explicit?** The filter is the **detection dual** of the forbidden-transition list — the list names what is forbidden; the filter detects a violation. |
+| 🚫 **Prevents list (extended)** | Evidence→Authority · Expression→Meaning · Projection→Source · Memory→Evidence · **Representation→Truth (NEW, HPA — research-pattern level, unnumbered, related to surrogate≠reality)**. |
+| 🛡️ **Protects** | **Identity · Meaning · Evidence lineage · Authority relationship · Temporal validity.** |
+| 🔗 **Convergence (consolidation point)** | Zero → neutral origin · Vāṇī → expression vs meaning · Topology → survival under transformation · EKS/PKS/AIP → observed separations · DDD → bounded ownership. **All five → "preserve identity while allowing evolution."** |
+| 🏛️ **Strongest formulation (HPA)** | *"KnowledgeOS is not a system that stores knowledge objects. It is a system that protects valid transformations of knowledge identity."* Positioning: less a knowledge-database kernel, more **a constitutional runtime for trustworthy knowledge evolution**. |
+| 🤖 **AI connection (future test)** | Human knowledge → Document → Embedding → AI summary → Answer. Normal AI: Representation → Assumed meaning → Authority. KnowledgeOS prevents **AI output → Source truth** (Document≠Knowledge · AI summary≠Source · Representation≠Meaning). |
+| ⚖️ **Caution (reaffirmed)** | INV-KOS-002 stays **weaker than** INV-001 (external research, awaiting EKS/PKS/AIP validation). Process: External insight → Candidate → Validate → possible constitutional law; never Beautiful idea → Kernel law. |
+| **NEXT** | ⛔ R-1 **closed** · ⛔ P4 **CLOSED** until the corrected-P3 re-review passes (`6034db5c`/`c673de5d`/`e5f98a6a`) → P4: map v1.0 (INV-001..004 Established · candidates INV-KOS-001 · INV-KOS-002 · H-ZERO-001 · H-ZERO-002 · every row through the Dimensions↔ForbiddenCollapse gate · **kernel boundary filter as the map's acceptance lens**) → P5 domain-independence. **Game-theory extraction BLOCKED on UPPS v13.** **Zero extraction prompt ready for a fresh session (UNBLOCKED).** |
+
+---
+
+## 📍 UPDATE (2026-08-22, **HPA REVIEW — "ZERO" / NEUTRAL ORIGIN STATE (RESEARCH LENS, NOT KERNEL PRIMITIVE) · CANDIDATE NEUTRALITY PRESERVATION (H-ZERO-001) TAKEN AS CANDIDATE — NOT INV-KOS-003 YET · H-ZERO-002 TRANSFORMATION ORIGIN PRESERVATION · UNKNOWN IS A FIRST-CLASS STATE · ZERO+TOPOOLOGY+PROVENANCE · FRESH-SESSION EXTRACTION PROMPT COMMISSIONED (UNBLOCKED)**) — **"An unknown knowledge object is not absence of knowledge. It is a knowledge identity without resolved dimensions." · kernel question becomes "Which transitions are allowed from the neutral state?" · the kernel does not calculate knowledge — it protects the conditions under which knowledge can evolve without losing identity**
 
 | | |
 |---|---|
