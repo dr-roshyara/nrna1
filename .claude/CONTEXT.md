@@ -1,10 +1,25 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **HPA CONFIRMATION & CONSOLIDATION — P4 deliverable named "CONSTITUTIONAL INVARIANT MAP v1.0" + crystallized strategic hypothesis** block is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **HPA CONSOLIDATION II — "KNOWLEDGE DIMENSION MODEL" terminology + "DIMENSION PURITY PRINCIPLE" + INV row enumeration** block is newest; older rows it contradicts are superseded by it)*
 
 ---
 
-## 📍 UPDATE (2026-08-22, **HPA CONFIRMATION & CONSOLIDATION — P4 DELIVERABLE NAMED "KNOWLEDGEOS CONSTITUTIONAL INVARIANT MAP v1.0" + CRYSTALLIZED STRATEGIC HYPOTHESIS** — newest) — **direction endorsed: kernel-design → invariant-discovery · carried-forward hypothesis: "not a knowledge storage kernel — a constitutional layer preserving separation between knowledge dimensions while allowing controlled evolution" · kernel question = "what transformations must KnowledgeOS prevent?" · ⛔ gates unchanged**
+## 📍 UPDATE (2026-08-22, **HPA CONSOLIDATION II — "KNOWLEDGE DIMENSION MODEL" TERMINOLOGY + "DIMENSION PURITY PRINCIPLE" + INV ROW ENUMERATION (INV-001..004 + INV-KOS-001)** — newest) — **model named, not a "state object" (the invariant is the relationship, not the storage) · three-level stabilization (feature→math→constitutional) · four collapse patterns as vocabulary · ⛔ gates unchanged**
+
+| | |
+|---|---|
+| 🏛 **Terminology refinement (HPA)** | Do NOT call the model a **"state object"** too early (implies implementation) → **"Knowledge Dimension Model"** (container candidate: "Knowledge Identity Space" — {Semantic · Evidence · Authority · Temporal · Lifecycle}). The kernel may NOT store it as one object — could be Semantic Service · Evidence Registry · Authority Ledger · Temporal Model · Lifecycle Controller. **The invariant is the relationship, not the storage.** |
+| ⚖️ **Dimension Purity Principle (HPA)** | *"Every knowledge dimension has its own meaning, lifecycle, ownership, and transition rules. A valid transformation may update one dimension only through an explicit governed transition and SHALL NOT implicitly modify another dimension."* The problem is not having dimensions; the problem is **collapse**. |
+| 🧩 **Four collapse patterns (vocabulary for forbidden-transition examples)** | **Confidence collapse** (Evidence→Authority) · **AI collapse** (Assessment→Authority) · **Database collapse** (Projection→Source) · **Workflow collapse** (Execution→Authority) — each = one ESTABLISHED atomic invariant as a forbidden transition. |
+| 📑 **INV row enumeration (HPA, explicit for P4)** | **INV-001 Authority Separation** (Established) · **INV-002 Observation≠Decision** · **INV-003 Assessment≠Authority** · **INV-004 Projection≠Source** · **INV-KOS-001 Dimension Independence** (Candidate). |
+| 🚫 **NOT now (HPA)** | No kernel classes · DB schemas · event sourcing · graph DB · KnowledgeObject aggregate · math formalism as architecture. **Architecture emerges from the invariant map.** |
+| 🔄 **Next scientific question (HPA)** | *"Which knowledge transformations are universally safe, and which must KnowledgeOS prevent?"* |
+| ⚠️ **Parent-session flag (naming discipline)** | **"Knowledge Identity Space"** may collide with the governed **identity** invariant (C-6 per-kind register-scoped identity · PKS AP-4 · AP-5). Primary name = **"Knowledge Dimension Model"**; identity = a property preserved BY dimensional separation, not a 6th dimension. Resolve in P4 vocabulary pass. |
+| **NEXT** | ⛔ Gates unchanged: R-1 re-review (`aa08151d`) + corrected-P3 re-review → **P4 produces "KnowledgeOS Constitutional Invariant Map v1.0"** (INV-001..004 + INV-KOS-001) → P5 domain-independence test. |
+
+---
+
+## 📍 UPDATE (2026-08-22, **HPA CONFIRMATION & CONSOLIDATION — P4 DELIVERABLE NAMED "KNOWLEDGEOS CONSTITUTIONAL INVARIANT MAP v1.0" + CRYSTALLIZED STRATEGIC HYPOTHESIS**) — **direction endorsed: kernel-design → invariant-discovery · carried-forward hypothesis: "not a knowledge storage kernel — a constitutional layer preserving separation between knowledge dimensions while allowing controlled evolution" · kernel question = "what transformations must KnowledgeOS prevent?" · ⛔ gates unchanged**
 
 | | |
 |---|---|
