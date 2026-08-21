@@ -1,6 +1,18 @@
 # Current Working State
 
-**Updated:** 2026-08-21 *(additive — the **KNOWLEDGEOS EPISTEMIC ARCHITECTURE INVESTIGATION** block is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **HPA DECISION: AMENDMENT-6 DEFERRED TO P5** block is newest; older rows it contradicts are superseded by it)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **HPA DECISION: AMENDMENT-6 DEFERRED TO P5 — OPTION 3** — newest) — **no kernel-candidate gate test now · binding sequence: R-1 EKS corpus → P3 re-review → P4 Landscape (U-02/X-01 identity) → P5 AMENDMENT-6 (C-1..C-10) → kernel decision · the epistemic investigation = a candidate map, NOT a kernel**
+
+| | |
+|---|---|
+| ✅ **HPA decision (2026-08-22, binding)** | **Option 3 — DEFER the AMENDMENT-6 kernel-candidate progression to P5.** Option 1 (C-1 gate test now) and Option 2 (full C-1..C-10 map now) **rejected**. |
+| 🔑 **Governance rationale** | AMENDMENT-6 promotion demands **domain-independence + reuse across >1 knowledge domain**. All three implementations (EKS/PKS/AIP) currently sit **within one governance/engineering ecosystem** — *"three systems" ≠ "more than one knowledge domain."* Running the gate before U-02/X-01 identity is resolved would be **self-confirming**: using the same evidence landscape whose identity relationship is unresolved to decide whether that evidence represents independent domains. |
+| 📋 **Binding sequence (HPA)** | ① **R-1 — EKS corpus completion** (UNBLOCKING: QUARANTINED/INCOMPLETE EKS baseline — ends at §20, §21–§25 absent, U-/X- registers missing; **no opportunistic repair**) → ② **P3 corrected baseline → HPA re-review** → ③ **P4 — Stage-4 Current Architecture Landscape** (resolve EKS↔PKS↔AIP identity / U-02 / X-01) → ④ **P5 — AMENDMENT-6 progression candidate-by-candidate** (C-1 authority-as-recorded-reference · C-2 state-as-fold · C-3 closed-verdict-vocabulary · C-4 assessment≠authority · C-5 forward-only-supersession · C-6 register-scoped-identity · C-7 regenerable-projection · C-10 honest-UNKNOWN; each: evidence → domain-independence → cross-domain-reuse → same invariant/lifecycle/ownership/authority → reusable-abstraction → **KERNEL-CANDIDATE / OPEN / NOT KERNEL**) → ⑤ **only then → kernel decision** |
+| 🧭 **State preserved** | C-1 (authority-as-recorded-reference-to-human-act) remains the **strongest candidate** (STRONG, A in all three, same invariant stated in all three) — but **NOT promoted** · AMENDMENT-6 progression **NOT executed** · the decisive open question: *are these genuinely cross-domain invariants, or recurring patterns within one engineering-governance ecosystem?* |
+| **NEXT** | 🔵 **Human Principal Architect: (1) authorize R-1 — EKS corpus completion** (bounded evidence-completion on the quarantined EKS baseline; the unblocking item — pending launch mandate); **(2) re-review the corrected P3 baseline** (erratum P3-F1 applied). On both → **P4 — Stage 4 Current Architecture Landscape (EKS + PKS + AIP)** as a separate fresh session. ⛔ **AMENDMENT-6 progression CLOSED until P5** · **P4 CLOSED until P3 re-review** · all outputs PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED |
 
 ---
 
