@@ -1,10 +1,23 @@
 # Current Working State
 
-**Updated:** 2026-08-21 *(additive — the TRACK 2 · PHASE 1 AUTHOR-SIDE ADOPTION COMPLETE block is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-21 *(additive — the BRAINSTORMING SORT + ARCHITECTURE REVIEW SET DELIVERED block is newest; older rows it contradicts are superseded by it)*
 
 ---
 
-## 📍 UPDATE (2026-08-21, **TRACK 2 · PHASE 1 AUTHOR-SIDE ADOPTION COMPLETE** — newest) — **FINAL STATUS: PHASE 1 ADOPTION IMPLEMENTED / VERIFIED · all six slices P1–P6 shipped · real-corpus validated · 252 tests / 603 assertions green · ⛔ STOP — organizational adoption is a separate human authorization**
+## 📍 UPDATE (2026-08-21, **KNOWLEDGEOS BRAINSTORMING SORT + ARCHITECTURE REVIEW SET DELIVERED** — newest) — **27/27 corpus entries sorted & renamed (P1 `9a57a7cb`) · 8-doc Review Set 00–07 delivered (P2 `6a6e4a95`) · PROPOSED · NON-AUTHORITATIVE · ⛔ evidence FOR the human architecture decision — nothing adopted, frozen, or promoted**
+
+| | |
+|---|---|
+| ✅ **P1** | `9a57a7cb` — all 27 `docs/knowledgeos/brainstorming/` entries renamed `YYYYMMDD-HHMMSS-<content>.md` (6 non-arch → `_misc/`) · YAML provenance prepended (26 text files; **mtime = save evidence**, confidence graded, divergence noted) · `00_INDEX.md` recovery key (27/27, duplicates preserved, theme map, flagged items) |
+| ✅ **P2** | `6a6e4a95` — **Architecture Review Set 00–07** (`docs/knowledgeos/architecture/`): index · domain & bounded context · kernel & platform (incl. `_misc/` linux-analogy + digitalization-robot) · evidence/assurance/governance · event & integration · patterns & technology · operating model & product (incl. `_misc/` IPO/IP) · **07 reconciliation** (E/P/R/O claim register · current-state vs proposed-target · **C1–C15 tensions surfaced unresolved** · evolution chain · **10 Decision Candidates, human-approval-required**) |
+| ✅ **P3** | canonical plan `docs/plans/20260821-1749-knowledgeos-brainstorming-sort-and-final-architecture-plan.md` · session log · this CONTEXT |
+| 🛡️ **Boundary held** | `_misc/` integrated as **cited sources**, files stay physically in `_misc/` (explicit user choice) · duplicates preserved (both pairs) · timestamps = mtime, never inferred from filename/chat · **T1 KnowledgeOS ≠ T3 PKS** (`knowledge_tranfer/`) never merged · Rust/Spring/Event-Sourcing/Kafka/Digitalization-Robot stay **hypotheses** · durability decision status graded (ADR 🟡 PROPOSED vs PO/ARB ✅ DECIDED vs migration 🟡 0 lines executed) |
+| ✅ **Verified** | `knowledge-lint --report=handoff`: **S1/S2/S4 PASS** on 01–07, **S1/S4 PASS** on the index (S2/S5 INCONCLUSIVE — nothing to evaluate; S3 INCONCLUSIVE — absent vocab config; all documented, no FAILs) · all cross-doc links resolve · documentation-only, no implementation changes |
+| **NEXT** | ⛔ **The Review Set awaits the Human Principal Architect / Architecture-Governance review.** Decision candidates (doc 07) each carry an AI-review **recommendation** + **human approval required: yes**. Flagged for the human (in `00_INDEX.md` + doc 00): `architecture/Yes.md` later-rename recommendation · off-topic PublicDigit files (`…104802-delegation-map` · `…104830-election-only` · `…104804-voting-election`) relocation · `_misc/20260821-150830-diagram.png` content classification (valid PNG, not rendered) |
+
+---
+
+## 📍 UPDATE (2026-08-21, **TRACK 2 · PHASE 1 AUTHOR-SIDE ADOPTION COMPLETE**) — **FINAL STATUS: PHASE 1 ADOPTION IMPLEMENTED / VERIFIED · all six slices P1–P6 shipped · real-corpus validated · 252 tests / 603 assertions green · ⛔ STOP — organizational adoption is a separate human authorization**
 
 | | |
 |---|---|
