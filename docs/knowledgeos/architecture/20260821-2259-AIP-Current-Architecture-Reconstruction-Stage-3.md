@@ -10,6 +10,20 @@
 
 ---
 
+## 🔧 ERRATUM — P3-F1 · BOUNDED EVIDENCE COMPLETION (2026-08-21)
+
+> **Bounded evidence-completion pass — NOT a P3 architecture rewrite.** The HPA review (`docs/knowledgeos/reviews/2026-08-21-KOS-EP01-P3-aip-reconstruction-hpa-review.md`, commit `c673de5d`) made a bounded evidence-completion pass a **mandatory precondition** before P4 consumes this baseline: the plan §5.3 approved corpus names the 196KB MIGRATION-PLAN, whose body was not read in full. Independent verification (`docs/knowledgeos/reviews/2026-08-21-KOS-EP01-P3-findings-independent-verification.md`, commit `e5f98a6a`) ruled **P3-F1 CONFIRMED (BLOCKING)**: the unread §1 is an explicit current-state inventory whose facts **contradict** two load-bearing current-state claims. This erratum corrects only those claims (§8.1 density · §8.1/§9.3 writer surface · §18 U-11). **No other P3 content is altered; no target architecture, kernel design, EKS/PKS/AIP comparison or durability redesign is introduced.**
+
+| ID | Original claim | Corrected claim | Evidence | Reason | Affected P3 sections |
+|---|---|---|---|---|---|
+| **E-1** | *"`seq` is dense and monotonic per record ⇒ omission is mechanically detectable."* | Dense-and-monotonic `seq` is **NOT a completeness proof** — the current persistence mechanism does **not** provide completeness merely from dense sequence numbers. | MIGRATION-PLAN §1.3 AMD3 `CL-1` (`docs/knowledgeos/architecture/KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN.md`, commit `2f0301c2`): **23 / 30 concurrent-append trials silently lost a transition** (losing process exited 0, reported `{"ok":true,"seq":2}`) while **every survivor was dense and monotonic** (the clobbering writer reuses the lost writer's sequence number). The write is atomic per write (`tmp`+`rename`); the **read-modify-write is not** (no lock, lease, CAS or version check). | The baseline inferred an integrity guarantee the plan's own current-state inventory explicitly withdrew; materiality confirmed by `e5f98a6a` §1.3. | §8.1 |
+| **E-2** | *"Exactly one writer: `workflow-state.php` (`saveRecord` from init, append, grant — three sites only)."* | `workflow-state.php` is the **currently identified primary writer** of governance evidence — **not a structurally guaranteed single-writer architecture**. A **second write-capable path** exists: `session-resolve.php:90` reads `getenv('KOS_MECHANISM_PATH')` and `:103` executes the environment-named program via `proc_open`, **handing it the authority-record directory as an argument** (`:156`). `grep -rln file_put_contents .claude/scripts/` returns three files; the third (`session-changes-logger.sh:60`) writes session state, never `runtime/workflow`. | MIGRATION-PLAN §1.3 AMD4 `RC-11` · §1.5 `P-4` / AMD3 `CL-10`. | The baseline omitted the P-4 mechanism axis — a current-state fact about the authority model: *"one writer" is true of the committed code paths today and false as a structural guarantee.* | §8.1 · §9.3 |
+| **E-3** | U-11: *"NOT READ in full here; PROPOSED, NOT EXECUTED — **not needed for current-state reconstruction**."* | The **"not needed" clause is withdrawn**. The MIGRATION-PLAN body **has been read in full**: §1 is an explicit current-state inventory (OBSERVED, measured, nothing modified) whose material facts are folded in (E-1/E-2); the remainder is **target-state migration design** that cannot affect current-state reconstruction (PROPOSED, NOT EXECUTED). U-11 is **RESOLVED**. | MIGRATION-PLAN §1/§11/§12 read in full; verification `e5f98a6a`. | The unread body is part of the approved corpus (plan §5.3) and contained current-state facts contradicting the baseline; "not needed" was asserted, not established. | §18 U-11 |
+
+**Inference discipline (binding):** E-1 establishes only that the current mechanism does not provide completeness from dense sequence numbers; E-2 establishes only a current authority/write-surface problem. **Neither implies any future architecture** — no event sourcing, no append-only event store, no kernel design, no durability redesign.
+
+---
+
 ## 0 · Method and evidence discipline
 
 ### 0.1 Status marking
@@ -265,9 +279,9 @@ Every invariant BC-7 (the workflow engine) owns is **mechanically enforced**; al
 
 - One file per work item under `.claude/runtime/workflow/<work-item>.json`, containing `schema · workItem · workflow · roles · transitions · grants`. **[T3·A]**
 - **No derived state is persisted** (schema, workItem, workflow, roles, transitions, grants only); `mutationOwner`, `sessions`, `workItemState` are **folded at read time**. **[T3·A]**
-- **Writes are atomic** (`tmp` + `rename`). **`seq` is dense and monotonic per record** ⇒ omission is mechanically detectable. **[T3·A]**
+- **Writes are atomic** (`tmp` + `rename`) per write. **`seq` is dense and monotonic per record** — but **density is NOT a completeness proof** (corrected, **E-1**): the technical review reproduced **23 / 30 concurrent-append trials silently losing a transition** while **every survivor was dense and monotonic** (the clobbering writer reuses the sequence number the lost writer took); the **read-modify-write is not atomic** (no lock, lease, CAS or version check). **[T3·A corrected by MIGRATION-PLAN §1.3 AMD3 CL-1]**
 - **Only 2 of 218 transitions carry any date** (measured 2026-08-21 22:59); order is `seq` alone, no systematic time dimension. **[T3·A]**
-- Exactly one writer: `workflow-state.php` (`saveRecord` from init, append, grant — three sites only). **[T3/T1·A]**
+- **Currently identified primary writer of governance evidence:** `workflow-state.php` (`saveRecord` from init, append, grant — three sites only). ⚠️ **Not a structurally guaranteed single-writer architecture** (corrected, **E-2**): `session-resolve.php:90` reads `getenv('KOS_MECHANISM_PATH')` and `:103` executes the environment-named program via `proc_open`, **handing it the authority-record directory as an argument** (`:156`) — a **write-capable substitution path** through a component whose own bytes contain no write call. **[T3/T1·A corrected by MIGRATION-PLAN §1.3 AMD4 RC-11 · §1.5 P-4/CL-10]**
 - Readers: `workflow-state.php`, `session-resolve.php`, `registry.yaml` (asset metadata), prose traceability lines. **[T3/T1·A]**
 
 ### 8.2 Current volume (measured)
@@ -324,7 +338,7 @@ The GOV-STATE-DURABILITY migration (B′ relocation) is **NOT EXECUTED, NOT AUTH
 
 - **AST-015/016 are advisory** — violations are visible/adjudicable, not physically prevented (Increment-2 not authorized). **[T1/T4·A]**
 - **AST-016 V-3 is an OPEN ARCHITECTURE/SPECIFICATION GAP**: it cannot distinguish a recorded handoff from an absent one; it fails safe. Remedy UNDECIDED. PO/ARB condition (BINDING and OUTSTANDING): V-3 **must** be resolved before AST-016 is wired into SESSION_START or any automatic startup path. **[T4·A]**
-- **`--dir` is overridable in both scripts** (RA-1 `workflow-state.php:81`, RA-2 `session-resolve.php:74` — two independent defaults). The mechanism already supports relocation; only the default contradicts B′. **[T1/T4·A]**
+- **Path sources are THREE, on TWO axes** (corrected, **E-2**; MIGRATION-PLAN §1.5): *where the record lives* — **P-1** default `workflow-state.php:81`, **P-2** default `session-resolve.php:74` (two independent defaults, RA-2), **P-3a/b** the two `--dir` overrides; *which mechanism interprets it* — **P-4** `session-resolve.php:90` `getenv('KOS_MECHANISM_PATH')` → `:103` `proc_open` → `:156`, a **write-capable** substitution path. The mechanism already supports relocation; only the default contradicts B′. **[T1/T4·A corrected by MIGRATION-PLAN §1.5]**
 
 ---
 
@@ -493,7 +507,7 @@ The reconstruction records a **candidate split** present in AIP's own evidence; 
 | U-8 | C-5 access/artifact isolation; organisational independence | **NOT_ESTABLISHED** (not NOT_APPLICABLE) |
 | U-9 | The four forbidden pairings (producer/verifier/acceptance) | **ALL OPEN** |
 | U-10 | EKS's and PKS's place relative to AIP (boundaries, side of the split) | **UNKNOWN — left to Stage 4** |
-| U-11 | The full internal body of the 196KB MIGRATION-PLAN (beyond header + AMD4/5/6) | **NOT READ in full here; PROPOSED, NOT EXECUTED — not needed for current-state reconstruction** |
+| U-11 | The full internal body of the 196KB MIGRATION-PLAN (beyond header + AMD4/5/6) | **RESOLVED by P3-F1 evidence completion** (2026-08-21, erratum **E-3**): read in full; §1 is an explicit current-state inventory (OBSERVED, measured, nothing modified) whose material facts are folded into §8.1/§9.3 (E-1/E-2); the remainder is **target-state migration design** that cannot affect current-state reconstruction (PROPOSED, NOT EXECUTED). **"Not needed" clause withdrawn.** Evidence: MIGRATION-PLAN §1/§11/§12 · verification `e5f98a6a` |
 | U-12 | Whether `KOS-AIP-GOV-STATE-DURABILITY-DECISION.md` exists | **NOT PRODUCED** (per registration review; not found in the architecture directory) |
 
 ---
@@ -520,4 +534,5 @@ The reconstruction records a **candidate split** present in AIP's own evidence; 
 - **Corpus (read-only inputs):** ADR-AIP-04 discovery proposal · KOS-AIP04 capability-architecture analysis · six-role adoption review · GOV-STATE-DURABILITY ADR / IMPLEMENTATION-DESIGN / MIGRATION-PLAN (+AMD4/5/6) · 6-role brainstorming document.
 - **Additional evidence admitted by role:** `.claude/platform/registry.yaml` · `.claude/platform/OPERATING_INSTRUCTIONS.md` · `.claude/scripts/` · `.claude/runtime/workflow/*.json` (live fold) · `…po-arb-position-registration.md`.
 - **Placement:** `docs/knowledgeos/architecture/` per `php scripts/doc-placement.php` (product-specific, domain knowledgeos — as established by the corpus artifacts already placed there).
-- **Status:** **PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.** Next actor: Human Principal Architect review.
+- **Erratum P3-F1 (2026-08-21):** bounded evidence completion per HPA review `c673de5d` · independent verification `e5f98a6a` · MIGRATION-PLAN §1/§11/§12 read in full. Corrects §8.1, §9.3 and §18 U-11 only.
+- **Status:** **PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.** Corrected by erratum **P3-F1** (bounded evidence completion). **Next actor: Human Principal Architect re-review — P4 remains CLOSED until the corrected baseline receives HPA approval.**
