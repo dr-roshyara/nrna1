@@ -17,19 +17,28 @@ declare(strict_types=1);
  *   php scripts/identifier-check.php R-72          # may I mint R-72?
  *   php scripts/identifier-check.php --audit R     # what is the state of series R?
  *   php scripts/identifier-check.php --series      # which series are governed?
+ *   php scripts/identifier-check.php --document=<path>  # S1 document-local register (Phase 0)
  *
  * Exit: 0 PASS · 1 WARN|INCONCLUSIVE · 2 FAIL · 3 usage error
  *
  * ⛔ This command PREVENTS; it never REPAIRS. Existing collisions are uncurable —
  *    identifier stability forbids renaming (M4; PMR-10's adoption note).
+ *
+ * --document=<path> is the S7 document-local-register adapter (plan D-1): CAP-001's
+ * register notion applied to a single document (its numbered section identifiers).
+ * Phase-0 warn-only (D-3): it reports and exits 0 regardless of verdict — it never
+ * blocks. The minting and audit paths keep the exit-code contract above.
  */
 
+use EngineeringKnowledge\Capabilities\IdentifierIntegrity\Application\ValidateDocumentLocalIntegrity;
 use EngineeringKnowledge\Capabilities\IdentifierIntegrity\Application\ValidateIdentifier;
 use EngineeringKnowledge\Capabilities\IdentifierIntegrity\Domain\IdentifierSeries;
 use EngineeringKnowledge\Capabilities\IdentifierIntegrity\Infrastructure\CliOutputFormatter;
 use EngineeringKnowledge\Capabilities\IdentifierIntegrity\Infrastructure\GovernedRegisterMap;
+use EngineeringKnowledge\Capabilities\IdentifierIntegrity\Infrastructure\MarkdownDocumentContentsReader;
 use EngineeringKnowledge\Capabilities\IdentifierIntegrity\Infrastructure\MarkdownSeriesContentsReader;
 use EngineeringKnowledge\Shared\Domain\Verdict;
+use EngineeringKnowledge\Shared\Infrastructure\StructuralCliReporter;
 
 require __DIR__.'/../vendor/autoload.php';
 
@@ -94,6 +103,22 @@ if ($args[0] === '--audit') {
     ));
 
     exit($contents->citedCount() > 0 ? 1 : 0);
+}
+
+// --document=<PATH> : the document-local register (S1, plan D-1).
+// Phase-0 warn-only (D-3): reports, never blocks — exit 0 regardless of verdict.
+foreach ($args as $arg) {
+    if (str_starts_with($arg, '--document=')) {
+        $docPath = substr($arg, strlen('--document='));
+        if ($docPath === '') {
+            fwrite(STDERR, "--document needs a path, e.g. --document=docs/.../PLAN.md\n");
+            exit(3);
+        }
+        $assessment = (new ValidateDocumentLocalIntegrity(new MarkdownDocumentContentsReader()))->handle($docPath);
+        $reporter = new StructuralCliReporter();
+        fwrite(STDOUT, $reporter->sliceLine('S1', $docPath, $assessment) . "\n\n" . $reporter->notCheckedStatement() . "\n");
+        exit(0); // D-3: warn-only
+    }
 }
 
 // default : check one proposed identifier

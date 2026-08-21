@@ -124,6 +124,19 @@ if ! run_gate "DDD Structure Visibility (warning only)" \
   OVERALL_STATUS=$FAIL
 fi
 
+# ── Gate 7: Track-2 Structural Integrity (Phase 0 — warn-only, exit 0) ─────
+# Phase 0 of the Track-2 deterministic-assurance back-test. The S1–S5 structural
+# checks (identifier uniqueness, reference resolution, declared vocabulary, table
+# shape, disposition labelling) run as a REPORT over the governed architecture
+# artifacts. ⛔ D-3: wired into NO gate, hook, or CI — this step always exits 0 and
+# never sets OVERALL_STATUS. Plan: docs/plans/20260821-1138-track2-deterministic-
+# assurance-phase0-plan.md
+if ! run_gate "Track-2 Structural Integrity (Phase 0, warn-only)" \
+  "php \"$SCRIPT_DIR/knowledge-lint.php\" --profile=structural --root=\"$SCRIPT_DIR/../docs/knowledgeos/architecture\"" \
+  "warn"; then
+  OVERALL_STATUS=$FAIL
+fi
+
 # ── Future Gates (placeholder) ──────────────────────────
 # Gate 4: Accessibility (Phase 4)
 #   bash "$SCRIPT_DIR/a11y-check.sh"

@@ -13,13 +13,39 @@ declare(strict_types=1);
  *   php scripts/knowledge-lint.php --strict   # exit 1 if any ERROR
  *   php scripts/knowledge-lint.php --json     # machine-readable output
  *
+ *   # Track-2 structural profile (Phase 0 — S1–S5 over a directory, D-1)
+ *   php scripts/knowledge-lint.php --profile=structural --root=<dir> [--vocabulary=<path>]
+ *   php scripts/knowledge-lint.php --profile=structural --root=<dir> --strict
+ *
  * Rules (severity from knowledge-schema.yaml): frontmatter present/parses,
  * required fields, knowledge_id pattern + uniqueness, enum validity,
  * relationship key validity, relationship target existence, link resolution,
  * single-authoritative-per-topic, traceability completeness, orphan detection,
  * circular dependencies, boundary consistency, review overdue, code_refs exist.
+ *
+ * Structural profile (the ADAPTER over the S1–S5 capability-library services):
+ *   S1 document-local identifier uniqueness + ordering (CAP-001 / DP-1)
+ *   S2 intra-document §/step reference resolution  (CAP-004 / DP-4)
+ *   S3 declared vocabulary + confusable identifiers (CAP-003 / DP-3)
+ *   S4 table column-count consistency
+ *   S5 unlabelled-superseded disposition → WARN
+ *   ⛔ Warn-only (D-3): exits 0 regardless of verdict unless --strict is passed.
+ *   ⛔ D-4: the report ends with the NOT-CHECKED statement.
  */
 
+use EngineeringKnowledge\Capabilities\IdentifierIntegrity\Application\ValidateDocumentLocalIntegrity;
+use EngineeringKnowledge\Capabilities\IdentifierIntegrity\Infrastructure\MarkdownDocumentContentsReader;
+use EngineeringKnowledge\Capabilities\ReferenceIntegrity\Application\ValidateIntraDocumentReferences;
+use EngineeringKnowledge\Capabilities\ReferenceIntegrity\Application\ValidateTableColumnCount;
+use EngineeringKnowledge\Capabilities\ReferenceIntegrity\Infrastructure\MarkdownIntraDocumentReader;
+use EngineeringKnowledge\Capabilities\ReferenceIntegrity\Infrastructure\MarkdownTableReader;
+use EngineeringKnowledge\Capabilities\VocabularyIntegrity\Application\ValidateCompetingCurrentDefinitions;
+use EngineeringKnowledge\Capabilities\VocabularyIntegrity\Application\ValidateVocabularyIntegrity;
+use EngineeringKnowledge\Capabilities\VocabularyIntegrity\Infrastructure\MarkdownDispositionReader;
+use EngineeringKnowledge\Capabilities\VocabularyIntegrity\Infrastructure\MarkdownVocabularyReader;
+use EngineeringKnowledge\Capabilities\VocabularyIntegrity\Infrastructure\YamlVocabularySource;
+use EngineeringKnowledge\Shared\Domain\Verdict;
+use EngineeringKnowledge\Shared\Infrastructure\StructuralCliReporter;
 use Symfony\Component\Yaml\Yaml;
 
 $root = dirname(__DIR__);
@@ -28,6 +54,119 @@ require $root . '/vendor/autoload.php';
 $args = $argv;
 $strict = in_array('--strict', $args, true);
 $asJson = in_array('--json', $args, true);
+
+$profile = null;
+$rootDir = null;
+$vocabularyPath = null;
+foreach (array_slice($argv, 1) as $a) {
+    if (preg_match('/^--profile=(.+)$/', $a, $m)) {
+        $profile = $m[1];
+    } elseif (preg_match('/^--root=(.+)$/', $a, $m)) {
+        $rootDir = $m[1];
+    } elseif (preg_match('/^--vocabulary=(.+)$/', $a, $m)) {
+        $vocabularyPath = $m[1];
+    }
+}
+
+// ── Track-2 structural profile (S7, plan D-1) ──────────────────────────────
+if ($profile !== null) {
+    if ($profile !== 'structural') {
+        fwrite(STDERR, "knowledge-lint: unknown --profile '{$profile}'. Known profiles: structural.\n");
+        exit(3);
+    }
+    if ($rootDir === null) {
+        fwrite(STDERR, "knowledge-lint: --profile=structural requires --root=<dir>.\n");
+        exit(3);
+    }
+
+    exit(run_structural_profile($rootDir, $vocabularyPath, $strict, $root));
+}
+
+/**
+ * S7 — the S1–S5 structural checks over a directory of markdown documents.
+ *
+ * ADAPTER only (D-1): every verdict comes from the capability-library application
+ * services; this function scans, invokes, and reports. It owns no rule.
+ *
+ * Warn-only (D-3): returns 0 regardless of verdict unless --strict is passed, and
+ * --strict is wired into no gate, hook, or CI. Fail-closed (D-2): S3 without a
+ * readable vocabulary config is INCONCLUSIVE, never PASS.
+ */
+function run_structural_profile(string $rootDir, ?string $vocabularyPath, bool $strict, string $repoRoot): int
+{
+    $services = [
+        'S1' => new ValidateDocumentLocalIntegrity(new MarkdownDocumentContentsReader()),
+        'S2' => new ValidateIntraDocumentReferences(new MarkdownIntraDocumentReader()),
+        'S3' => new ValidateVocabularyIntegrity(
+            new YamlVocabularySource($vocabularyPath ?: $repoRoot . '/docs/knowledge/schema/vocabulary-integrity.yaml'),
+            new MarkdownVocabularyReader(),
+        ),
+        'S4' => new ValidateTableColumnCount(new MarkdownTableReader()),
+        'S5' => new ValidateCompetingCurrentDefinitions(new MarkdownDispositionReader()),
+    ];
+
+    if (! is_dir($rootDir)) {
+        fwrite(STDERR, "knowledge-lint: --root '{$rootDir}' is not a directory.\n");
+
+        return 3;
+    }
+
+    $files = [];
+    $rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($rootDir, FilesystemIterator::SKIP_DOTS));
+    foreach ($rii as $f) {
+        if ($f->getExtension() === 'md') {
+            $files[] = $f->getPathname();
+        }
+    }
+    sort($files);
+
+    $reporter = new StructuralCliReporter();
+    $rows = [];
+    $counts = [];
+    foreach ($files as $file) {
+        $rel = str_replace($repoRoot . '/', '', $file);
+        foreach ($services as $slice => $service) {
+            $assessment = $service->handle($file);
+            $rows[] = ['slice' => $slice, 'file' => $rel, 'assessment' => $assessment];
+            $counts[$slice][$assessment->verdict()->value] = ($counts[$slice][$assessment->verdict()->value] ?? 0) + 1;
+        }
+    }
+
+    echo "Engineering Knowledge Platform — knowledge-lint — structural profile\n";
+    echo 'Root: ' . $rootDir . ' · ' . count($files) . ' markdown document(s) · '
+        . (5 * count($files)) . " assessments (S1–S5)\n\n";
+
+    foreach ($rows as $row) {
+        if ($row['assessment']->isClean()) {
+            continue;
+        }
+        echo $reporter->sliceLine($row['slice'], $row['file'], $row['assessment']) . "\n";
+    }
+
+    echo "\nSummary by slice:\n";
+    foreach ($counts as $slice => $c) {
+        echo sprintf(
+            "  %s  PASS %d · FAIL %d · WARN %d · INCONCLUSIVE %d\n",
+            $slice,
+            $c[Verdict::PASS->value] ?? 0,
+            $c[Verdict::FAIL->value] ?? 0,
+            $c[Verdict::WARN->value] ?? 0,
+            $c[Verdict::INCONCLUSIVE->value] ?? 0,
+        );
+    }
+
+    echo "\n" . $reporter->notCheckedStatement() . "\n";
+
+    if ($strict) {
+        foreach ($rows as $row) {
+            if (in_array($row['assessment']->verdict(), [Verdict::FAIL, Verdict::INCONCLUSIVE], true)) {
+                return 1;
+            }
+        }
+    }
+
+    return 0;
+}
 
 $schemaDir = $root . '/docs/knowledge/schema';
 $knowledgeDir = $root . '/docs/knowledge';

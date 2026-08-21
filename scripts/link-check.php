@@ -17,8 +17,19 @@ declare(strict_types=1);
  *   php scripts/link-check.php                 # report
  *   php scripts/link-check.php --json=out.json # machine-readable
  *   php scripts/link-check.php --apply         # applies confidence >= 99 only
+ *
+ *   # Track-2 --anchors mode (Phase 0, S7 D-1): S2 intra-document references
+ *   php scripts/link-check.php --anchors=<dir> # warn-only, exit 0
+ *
+ * The --anchors mode is an ADAPTER over CAP-004's ValidateIntraDocumentReferences:
+ * it resolves §-references and step-references WITHIN each document under <dir>.
+ * ⛔ Warn-only (D-3): exits 0 regardless of verdict. ⛔ D-4: report ends with the
+ * NOT-CHECKED statement.
  */
 
+use EngineeringKnowledge\Capabilities\ReferenceIntegrity\Application\ValidateIntraDocumentReferences;
+use EngineeringKnowledge\Capabilities\ReferenceIntegrity\Infrastructure\MarkdownIntraDocumentReader;
+use EngineeringKnowledge\Shared\Infrastructure\StructuralCliReporter;
 use Symfony\Component\Yaml\Yaml;
 
 $root = dirname(__DIR__);
@@ -32,6 +43,65 @@ foreach (array_slice($argv, 1) as $a) {
     }
 }
 $apply = isset($args['apply']);
+
+// ── Track-2 --anchors mode (S7, plan D-1): intra-document references over a directory ──
+if (isset($args['anchors'])) {
+    $anchorsDir = $args['anchors'];
+    if (! is_string($anchorsDir) || $anchorsDir === '') {
+        fwrite(STDERR, "link-check: --anchors needs a directory, e.g. --anchors=docs/knowledgeos/architecture\n");
+        exit(3);
+    }
+    exit(run_anchors_profile($anchorsDir, $root));
+}
+
+/**
+ * S7 — the S2 intra-document reference check over a directory of markdown documents.
+ *
+ * ADAPTER only (D-1): every verdict comes from CAP-004's application service;
+ * this function scans, invokes, and reports. It owns no rule. Warn-only (D-3).
+ */
+function run_anchors_profile(string $dir, string $repoRoot): int
+{
+    $service = new ValidateIntraDocumentReferences(new MarkdownIntraDocumentReader());
+    $reporter = new StructuralCliReporter();
+
+    if (! is_dir($dir)) {
+        fwrite(STDERR, "link-check: --anchors '{$dir}' is not a directory.\n");
+
+        return 3;
+    }
+
+    $files = [];
+    $rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir, FilesystemIterator::SKIP_DOTS));
+    foreach ($rii as $f) {
+        if ($f->getExtension() === 'md') {
+            $files[] = $f->getPathname();
+        }
+    }
+    sort($files);
+
+    $rows = [];
+    echo "link-check — anchors (S2 intra-document reference resolution, Phase 0)\n";
+    echo 'Root: ' . $dir . ' · ' . count($files) . " markdown document(s)\n\n";
+
+    foreach ($files as $file) {
+        $rel = str_replace($repoRoot . '/', '', $file);
+        $assessment = $service->handle($file);
+        $rows[] = ['file' => $rel, 'assessment' => $assessment];
+    }
+
+    foreach ($rows as $row) {
+        if ($row['assessment']->isClean()) {
+            continue;
+        }
+        echo $reporter->sliceLine('S2', $row['file'], $row['assessment']) . "\n";
+    }
+
+    echo "\n" . $reporter->notCheckedStatement() . "\n";
+
+    // D-3: warn-only — exit 0 always in Phase 0.
+    return 0;
+}
 
 $migrations = (Yaml::parseFile('docs/knowledge/schema/repository-migrations.yaml')
     ?? [])['repository_migrations'] ?? [];
