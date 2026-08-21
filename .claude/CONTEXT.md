@@ -1,6 +1,21 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **VEDA–UPANISHAD–VEDANTA / PRAMĀṆA LENS — NEW CANDIDATE INV-KOS-007 "KNOWLEDGE REQUIRES PROVENANCE OF KNOWING" · KNOWLEDGE HAS AN EPISTEMIC PIPELINE · PRAMĀṆA ≠ PRAMĀ · KNOWLEDGEOS DOES NOT STORE ANSWERS — IT PRESERVES THE CONDITIONS UNDER WHICH ANSWERS CAN BE TRUSTED** block is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **RESEARCH COLLECTION PHASE: COMPLETE — FREEZE CONCEPTUAL COLLECTION · P4 = FILTER · SEPARATE · TEST · MINIMAL KERNEL CANDIDATE REFINED TO SIX PROTECTED DIMENSIONS + ONE MECHANISM (STRUCTURAL ENFORCEMENT) · "EPISTEMIC INTEGRITY LAYER" · LENSES REVEAL SEPARATION REQUIREMENTS, NOT MORE DIMENSIONS** block is newest; older rows it contradicts are superseded by it)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **RESEARCH COLLECTION PHASE: COMPLETE — FREEZE CONCEPTUAL COLLECTION (ONLY CHALLENGES TO AN EXISTING INVARIANT ADMITTED) · EKS/PKS/AIP = TIER-1 EVIDENCE, LENSES = TIER-3 · P4 JOB = FILTER · SEPARATE · TEST · MINIMAL KERNEL CANDIDATE = SIX PROTECTED DIMENSIONS + ONE MECHANISM (STRUCTURAL ENFORCEMENT) · "THE KERNEL IS AN EPISTEMIC INTEGRITY LAYER, NOT A KNOWLEDGE DATABASE"**) — **"KnowledgeOS is not a system for storing knowledge. It is a system for preserving the conditions under which knowledge remains trustworthy." · "Distill the smallest constitutional invariant set that prevents knowledge corruption."**
+
+| | |
+|---|---|
+| 🧊 **Ruling: Research Collection Phase COMPLETE (HPA, UM-22)** | **Freeze.** Do NOT add more philosophy · metaphors · mathematics · analogies — **unless they challenge an existing invariant**. The work has moved from exploration toward consolidation; what matters is **convergence**, not concept count. |
+| 🔑 **The most important discovery (HPA)** | The lenses are **not producing more dimensions — they are revealing separation requirements**. Naive `Knowledge object {content, confidence, score, metadata}` is wrong; emerging model = **Identity + Meaning + Evidence + Authority + Time + Transformation history + Unknown state + Relationships**. |
+| 🏗️ **Evidence hierarchy (HPA)** | Tier 1 **EKS/PKS/AIP evidence** → Tier 2 **Invariant extraction** → Tier 3 **Mathematical/philosophical lenses** → Tier 4 **Future kernel hypothesis**. Not the other way around. |
+| 🎯 **P4 job (HPA)** | **Filter** (remove beautiful-but-not-testable · metaphorical-only · duplicate · implementation-specific) · **Separate** (Established / Candidate / Hypothesis / Rejected analogy) · **Test** (Dimension → Forbidden collapse → Evidence → Validation target). Maps onto the binding 7-col + ID schema. |
+| ⭐ **Minimal kernel candidate REFINED — SIX protected dimensions + ONE mechanism** | 1 Identity Preservation · 2 Evidence Integrity · 3 Authority Separation · 4 Transformation Integrity · 5 Temporal Validity · 6 Unknown Preservation. **+ Structural Enforcement = a principle, NOT a seventh dimension** (*"the kernel must make forbidden transformations impossible"* — adopts the mechanism-vs-dimension distinction, supersedes §Q-9's seven-item list). ⚠️ Publication excluded (governed transformation, §S-5); Meaning folds into Transformation Integrity; H-KOS-Relationship-001 stays a candidate, not a protected dimension. |
+| 🧭 **The lens saturation map (HPA)** | Topology→Transformation Integrity · Vāṇī→Expression Separation · Zero→Unknown Preservation (H-ZERO-001) · Gita/Tripuṭī→Relationship Integrity (H-KOS-Relationship-001, hypothesis) · Vedanta→Means of Knowing (reinforces Evidence≠Authority) · ECS→Publication discipline · **EKS proved which ideas are engineering-relevant**. |
+| 🧬 **Final image (HPA)** | Kernel = **Epistemic Integrity Layer**: **Separate → Preserve → Validate → Relate → Transform → Project** — the point where KnowledgeOS becomes a distinct architectural concept. |
+| **NEXT** | ⛔ R-1 **closed** · ⛔ P4 **CLOSED** until the **corrected-P3 (AIP Stage-3) re-review ruling** — §U-7 defines P4's execution job, ready the moment the gate opens (this ruling is a directive, not a gate-opening) → P4: map v1.0 (7-col + ID; INV-001..004 Established · candidates INV-KOS-001..007 · H-ZERO-001/002 · H-KOS-Relationship-001 · kernel-design K-1..K-7; quality gate + minimality; Publication family compression test; INV-KOS-007 vs H-ZERO-002/INV-003) → P5 domain-independence. **Game-theory extraction BLOCKED on UPPS v13.** **Zero extraction prompt ready for a fresh session (UNBLOCKED).** |
 
 ---
 
