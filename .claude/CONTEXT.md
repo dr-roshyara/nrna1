@@ -1,10 +1,25 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **HPA DECISION: AMENDMENT-6 DEFERRED TO P5** block is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **EXTERNAL RESEARCH & COMPLEX-NUMBER DOCS — CLASSIFIED AS P5 INPUTS** block is newest; older rows it contradicts are superseded by it)*
 
 ---
 
-## 📍 UPDATE (2026-08-22, **HPA DECISION: AMENDMENT-6 DEFERRED TO P5 — OPTION 3** — newest) — **no kernel-candidate gate test now · binding sequence: R-1 EKS corpus → P3 re-review → P4 Landscape (U-02/X-01 identity) → P5 AMENDMENT-6 (C-1..C-10) → kernel decision · the epistemic investigation = a candidate map, NOT a kernel**
+## 📍 UPDATE (2026-08-22, **HPA DECISION: EXTERNAL RESEARCH & COMPLEX-NUMBER DOCS — CLASSIFIED AS P5 INPUTS (NOT kernel design inputs)** — newest) — **neither influences the kernel design directly · both carry to P5 as comparison material · new P5 category "External Convergence Analysis" · kernel question refined to dimension-isolation invariants · no new brainstorming note (HPA)**
+
+| | |
+|---|---|
+| ✅ **HPA decision (2026-08-22, binding)** | The two brainstorming docs — `docs/knowledgeos/brainstorming/Independent External Research Review.md` and `docs/knowledgeos/brainstorming/complex_number_in_knowledge_os.md` — are **useful ONLY as P5 comparison inputs, NEVER as kernel design inputs.** Relationship (binding): `External Research → Hypothesis/Comparison Material → P5 Kernel Evaluation → test against EKS/PKS/AIP → Accept/Reject/Keep Open` — ⛔ NOT `External Research → KnowledgeOS Kernel Design`. |
+| 📦 **Classification** | **`Independent External Research Review.md`** → **External Knowledge Research Corpus** (Level: Research/Conceptual · Authority: **None** · Use: **P5 comparative evaluation** — gives candidate questions, e.g. "Authority ≠ Confidence" → does EKS/PKS/AIP show this?; source of truth remains EKS/PKS/AIP). **`complex_number_in_knowledge_os.md`** → **Representation hypothesis** — the idea is `Semantic state ≠ Authority state`, NOT `K = S + iA`; pair / independent axes / complex number = equal representations of the same conceptual possibility; complex number = possible mathematical notation, ⛔ never a kernel primitive (mechanism ≠ invariant). |
+| 🧭 **Deeper insight (HPA)** | Both documents point to one architectural question: **how to prevent different dimensions of knowledge from collapsing into one thing** (Confidence≠Authority · Observation≠Decision · Assessment≠Truth · Projection≠Source · Current-state≠Historical-evidence). The external research + complex-number idea give **names/metaphors** for the phenomenon; **EKS/PKS/AIP discovered it** — research did not. |
+| 🔖 **NEW P5 category (HPA, standing for P5)** | These documents enter P5 under **"P5 External Convergence Analysis"**, NOT "kernel candidates": **Confirmed convergence** (Authority≠Confidence) · **Partial convergence** (temporal reasoning) · **Unsupported** (Bayesian confidence engine) · **Contradicted** (automatic fallback authority) · **Representation hypothesis** (complex numbers) · **Technology hypothesis** (knowledge graphs, event sourcing). |
+| 🧬 **Refined kernel question (HPA)** | Not "what data structures should the kernel have?" but **"which dimensions of knowledge must remain independent forever?"** — the kernel may not store dimensions as classes; it may simply **enforce that they cannot collapse** (authority isolation · semantic isolation · evidence isolation · temporal isolation · identity isolation) — Unix-like mechanism/policy philosophy. |
+| ⚖️ **Binding rule (HPA)** | *External research may propose what to test. EKS/PKS/AIP evidence decides what survives.* |
+| 🚫 **Disposition** | Per HPA recommendation: **no new note created in `brainstorming/`** — the existing files already carry the classification; this record carries forward for the fresh P5 session. ⛔ Gates unchanged: R-1 EXECUTING · P3 re-review standing · **P4 CLOSED** until both · AMENDMENT-6 CLOSED until P5. |
+| **NEXT** | unchanged: (1) await R-1 delivery → re-review completed EKS baseline; (2) re-review corrected P3 baseline; on both → P4 Stage-4 Landscape — **plus: P5 must inherit this classification + the "External Convergence Analysis" category + the dimension-isolation kernel framing** (recorded here + session log 2026-08-22). |
+
+---
+
+## 📍 UPDATE (2026-08-22, **HPA DECISION: AMENDMENT-6 DEFERRED TO P5 — OPTION 3**) — **no kernel-candidate gate test now · binding sequence: R-1 EKS corpus → P3 re-review → P4 Landscape (U-02/X-01 identity) → P5 AMENDMENT-6 (C-1..C-10) → kernel decision · the epistemic investigation = a candidate map, NOT a kernel**
 
 | | |
 |---|---|
