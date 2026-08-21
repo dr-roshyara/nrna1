@@ -69,7 +69,7 @@
 | **S2** | **intra-document reference resolution** *(`§x.y` → exactly one heading; `step N` → a normative enumeration that defines `N`)* | **`CAP-004` / `DP-4`** | tests assert `MISSING` for a `step 5` reference against a block defining `1..4` | ✅ `d16a3a78` |
 | **S3** | **vocabulary integrity** — stale-token scan against declared current vocabulary; **confusable-identifier detection** *(`CASE B` vs `CASE β`)* | ⭐ **`CAP-003` / `DP-3` — the capability's FIRST realization** | tests assert an unqualified-homonym verdict on a fixture carrying both tokens | ✅ `4a923440` |
 | **S4** | **table column-count consistency** | `CAP-004`-adjacent structural rule | fixture with a ragged table | ✅ `73dbe091` |
-| **S5** | **unlabelled-superseded heuristic → `WARN` only** | ⚠️ **`CAP-003` candidate mapping — to be CONFIRMED, not assumed** | fixture with two current dispositions, one unlabelled | ⬜ |
+| **S5** | **unlabelled-superseded heuristic → `WARN` only** | ✅ **`CAP-003` / `DP-3` mapping CONFIRMED by the back-test** *(`OQ-2` hypothesis: §0.4.4's canonical-document rule is DP-3 applied to a document — AMD5 `DI-4` §8:709 vs §0.5.1:120 and §4:382 → WARN; AMD6 quiet)* | fixture with two current dispositions, one unlabelled | ✅ `a2529dde` |
 | **S6** | ⭐ **the back-test harness** *(§6)* | — | runs green only when §6's matrix is reproduced | ⬜ |
 | **S7** | **adapters + `verify.sh` wiring** *(warn-only)* | — | — | ⬜ |
 | ⚠️ **S8** | **enumeration-vs-content agreement** (`DI-3`/`DI-6`) | ⛔ **BLOCKED on `OQ-1`** | not started | ⛔ |
@@ -124,7 +124,7 @@
 | | Question | Owner |
 |---|---|---|
 | 🔴 **`OQ-1`** | **`DI-3`/`DI-6`'s class — *a stated enumeration contradicting the content it enumerates* — has NO catalogued capability.** Is it a new capability, an extension of an existing `DP`, or not a capability at all? ⛔ **Named and returned to governance; nothing invented; `S8` blocked until answered** | **Governance / ARB** *(capability existence is not Architecture's to decide)* |
-| ⚠️ **`OQ-2`** | **Is `DI-4` (competing current definitions) genuinely `DP-3`?** `S5` proceeds as `WARN` under the mapping as a **hypothesis**, and records the answer as evidence | ARB, on `S5`'s evidence |
+| ✅ **`OQ-2`** *(evidence recorded; decision still ARB's)* | **Is `DI-4` (competing current definitions) genuinely `DP-3`?** ⭐ **The `S5` back-test CONFIRMED the hypothesis**: §0.4.4's canonical-document rule is `DP-3` applied to a document — AMD5's unlabelled single-remedy §8 Phase-7 row (709) competed with its own declared §4.4 split (120, 382); AMD6's repaired row (labelled + two-branch) went quiet. **Recorded as evidence, not adopted** | **ARB**, on `S5`'s recorded evidence |
 | ⚠️ **`OQ-3`** | The `CAP` and `EKS` series are **not governed registers** (`identifier-check` → `INCONCLUSIVE`). Should their index files be added to the governed register map? | Governance — ⛔ **not a side effect of this plan** |
 | ⚠️ **`OQ-4`** | Does realizing capability 2 confirm or refute **`H-CAT-1`** *(a parent "Validation Capability" abstraction)*? | recorded as evidence, decided by ARB |
 
