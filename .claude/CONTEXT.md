@@ -1,10 +1,24 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **HPA STRATEGIC CLARIFICATION: "KNOWLEDGEOS CONSTITUTIONAL INVARIANT LAYER"** block is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **INV-KOS-001 — DIMENSIONAL PURITY & STATE INDEPENDENCE (P4 candidate drafted, per-dimension strength split)** block is newest; older rows it contradicts are superseded by it)*
 
 ---
 
-## 📍 UPDATE (2026-08-22, **HPA STRATEGIC CLARIFICATION: "KNOWLEDGEOS CONSTITUTIONAL INVARIANT LAYER" — INVARIANT MAP CONFIRMED AS P4 DELIVERABLE + MATHEMATICS DOC CLASSIFIED (P5 input)** — newest) — **discovery of laws, not kernel design · P4 = "KnowledgeOS Invariant Map v1.0" (Reconciliation-Ledger deliverable; structure approved) · P5 = 5-question test · four anti-collapse invariants = "probably the first kernel laws" (ESTABLISHED) · math doc → P5 External Convergence Analysis / Representation hypothesis (sheaf theory = NEW candidate) · ⛔ gates unchanged**
+## 📍 UPDATE (2026-08-22, **INV-KOS-001 — DIMENSIONAL PURITY & STATE INDEPENDENCE: HPA DRAFTED FIRST INVARIANT-MAP CANDIDATE** — newest) — **P4 candidate, NOT a kernel decision · per-dimension strength split (temporal = weakest, semantic = hypothesis, four separations + PKS orthogonal-axes = ESTABLISHED) · ⛔ gates unchanged**
+
+| | |
+|---|---|
+| 🏛 **HPA core principle (refined, operational)** | *"KnowledgeOS must preserve the separation of knowledge dimensions and prevent invalid state transitions between dimensions. Each dimension has its own state model, lifecycle, authority rules, and ownership boundary."* |
+| 📐 **INV-KOS-001 — Dimension Independence (HPA draft, SHALL)** | *"KnowledgeOS SHALL maintain independent state dimensions for semantic meaning, evidence, authority, temporal validity, and lifecycle. No dimension transition SHALL implicitly modify another dimension without an explicit governed transformation."* |
+| 🧬 **Model (HPA draft)** | Knowledge object = composition of 5 independent dimensions, each its own state machine: **Semantic** (Unknown→Draft→Reviewed→Accepted→Deprecated) · **Evidence** (None→Collected→Validated→Expired) · **Authority** (None→Requested→Granted→Revoked — never from evidence automatically) · **Temporal** (Future→Active→Superseded→Historical) · **Lifecycle** (Created→Processed→Published→Archived). `KnowledgeState = (Semantic, Evidence, Authority, Temporal, Lifecycle)`; **allowed transitions must preserve independence** — *"the problem is not movement, the problem is invalid movement."* |
+| ⚖️ **Forbidden / Allowed** | Forbidden (ESTABLISHED-grounded): AI confidence→authority · new interpretation→historical-evidence rewrite · generated projection→source truth. Allowed: human decision→authority (grants carry humanActRef) · new evidence→evidence transition · new version→temporal supersession. |
+| 📊 **Per-dimension strength (parent-session re-measurement — NOT monolithic)** | **ESTABLISHED:** Authority≠Execution (EKS 906/319-320/1150/1182) · Assessment≠Authority (EKS+PKS AP-1) · Observation≠Decision (EKS resolver 78) · Projection≠Source (EKS fold 318; PKS AP-2/AP-9) · **general multi-axis principle** (PKS 252/448: "three state classes × four orthogonal axes — authority ⊥ status ⊥ maturity ⊥ adoption"). **CANDIDATE/PARTIAL:** lifecycle/maturity dimension (PKS maturity axis real; the 5-state chain is HPA sketch) · evidence as a full state machine (lineage established; no evidence-lifecycle machine anywhere). **CANDIDATE/WEAKEST — NOT ESTABLISHED:** temporal (investigation 29/162/606 "weakest concern"; `effective_from/until/superseded_at` exist nowhere; 2/218 dated; UNK-06/H-04). **CANDIDATE/HYPOTHESIS:** semantic dimension as its own state machine (no system records one; PKS AP-5 is an identity rule, not a semantic-state machine). |
+| ✅ **HPA recommendation (binding for P4)** | Keep INV-KOS-001 as a **P4 Invariant Map candidate**, NOT a kernel decision. Name: **"KnowledgeOS Principle: Dimensional Purity and State Independence."** Test against PKS · AIP · future domains → if survives multiple domains, candidate for one of the first kernel laws. |
+| **NEXT** | P4 formalizes INV-KOS-001 into the INV-001 structure (Strength column per dimension); P5 runs the domain-independence test. ⛔ **Gates unchanged: R-1 re-review (`aa08151d`) + corrected-P3 re-review → P4.** |
+
+---
+
+## 📍 UPDATE (2026-08-22, **HPA STRATEGIC CLARIFICATION: "KNOWLEDGEOS CONSTITUTIONAL INVARIANT LAYER" — INVARIANT MAP CONFIRMED AS P4 DELIVERABLE + MATHEMATICS DOC CLASSIFIED (P5 input)**) — **discovery of laws, not kernel design · P4 = "KnowledgeOS Invariant Map v1.0" (Reconciliation-Ledger deliverable; structure approved) · P5 = 5-question test · four anti-collapse invariants = "probably the first kernel laws" (ESTABLISHED) · math doc → P5 External Convergence Analysis / Representation hypothesis (sheaf theory = NEW candidate) · ⛔ gates unchanged**
 
 | | |
 |---|---|
