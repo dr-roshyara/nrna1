@@ -122,8 +122,8 @@ Next capability                    → chosen from this catalog, never invented
 |---|---|---|---|---|---|---|
 | **CAP-001** | ⭐ **Identifier Integrity** | every identifier is unique within its **register(ns)** | **DP-1** | **DESIGNED** ⛔ *unauthorized* | **PMR-10 GOVERNED** · ⛔ **§0A — THE THIRD ESCAPE, REALIZED 2026-08-02** · C-1..C-4 · M4's *OQ- overload* + *R-nn cross-kind* · **§0's three label collisions** | *(planned)* `identifier-check.php` |
 | **CAP-002** | **Projection Integrity** | every projection regenerates from its sources and is cited as authority by nothing | **DP-2** | **DEFERRED** | **AD-1**: *"its correctness is verifiable structurally"* · guide steps **6/31** conform | — |
-| **CAP-003** | **Vocabulary Integrity** | a governed term carries one meaning per context; homonyms are qualified | **DP-3** | **Candidate** | **F-BCP-4** *register* 3-sense · **OQ-PKS-11** *Qualification* · **§0's homonyms** · `constitutional` ×6 | — |
-| **CAP-004** | **Reference Integrity** *(renamed — §0)* | a reference resolves to an existing target, or is classified as evidence | **DP-4** | ✅ **REALIZED** | 121-vs-9 scan · 53 classified | `link-check.php` · `doc-placement.php` |
+| **CAP-003** | **Vocabulary Integrity** | a governed term carries one meaning per context; homonyms are qualified | **DP-3** | ✅ **REALIZED** *(2026-08-21 — Track-2 Phase-0, back-tested)* | **F-BCP-4** *register* 3-sense · **OQ-PKS-11** *Qualification* · **§0's homonyms** · `constitutional` ×6 · ⭐ **back-test: AMD4 `DI-2` ×4 LIVE `Phase 2b` rediscovered · AMD5 `DI-7` ×2 undeclared confusable pairs rediscovered · AMD6 quiet** | `knowledge-lint.php --profile=structural` *(S3)* |
+| **CAP-004** | **Reference Integrity** *(renamed — §0)* | a reference resolves to an existing target, or is classified as evidence | **DP-4** | ✅ **REALIZED** | 121-vs-9 scan · 53 classified · ⭐ **intra-document extension back-tested 2026-08-21: AMD5 `DI-5` dangling step ref rediscovered · AMD6 quiet** | `link-check.php` · `doc-placement.php` · `link-check.php --anchors` *(S2)* |
 | **CAP-005** | **Assessment-Record Integrity** *(renamed — §0)* | an assessment records its method, scope and instrument | **DP-5** | **Candidate** | negative-claim discipline **broken 3×** while in force | — |
 | **CAP-006** | **Knowledge-Card Integrity** | a governed document carries a valid, schema-conformant card | **DP-6** | ✅ **REALIZED** | baseline 9 errors/0 warnings | `knowledge-lint.php` |
 
@@ -209,12 +209,14 @@ IMPLEMENTATION (changeable)
 
 | # | Hypothesis | Refuted by |
 |---|---|---|
-| **H-CAT-1** | A parent **"Validation Capability"** abstraction is justified | ⚠️ **Not yet evidenced — only CAP-001 has escaped-defect evidence.** Refuted if the six siblings share no common contract once two are realized |
+| **H-CAT-1** | A parent **"Validation Capability"** abstraction is justified | ⚠️ **TWO siblings now realized (CAP-001, CAP-003) — evidence recorded, decision stays ARB's.** Observed common contract: both emit `Shared\Domain\Assessment`/`Verdict` · fail-closed `INCONCLUSIVE` on "nothing to evaluate" · warn-only exit 0 · identical Domain/Application/Infrastructure/Tests shape. **Whether a common contract "justifies" the parent is `OQ-4` — recorded, not decided.** Refuted if the six siblings share no common contract once two are realized |
 | **H-CAT-2** | This catalog becomes the engineering roadmap | refuted if capabilities keep being proposed outside it |
 | **H-CAT-3** | Capabilities outlive their implementations | refuted if CAP-001's definition must change when its script does |
 | ⭐ **H-CAT-4** | **PKS is evolving toward an engineering KNOWLEDGE GRAPH rather than a knowledge MODEL** — *a model is mostly hierarchical; a graph is relational, and PKS increasingly carries concepts · vocabulary · relationships · evidence · policies · decisions · traceability as **edges*** *(PA, 2026-08-02)* | *refuted if capability work never needs to traverse relationships — i.e. if hierarchical lookup suffices across the first several capabilities.* ⛔ **EXPLICITLY NOT introduced as an architectural layer today** (PA: *"treat it as a research hypothesis to validate after several capabilities have been implemented"*). **Evidence would come from CAP-001..CAP-003 operation, not from analysis** |
 
 **⛔ NEW open question (§0A): what disposition applies to the R-70/R-71 citations now that R-65/R-66 are minted otherwise?** *Renaming is forbidden; an annotation (the R-53 pattern) is the likely instrument. **Authority.**
+
+**⛔ RAISED — `OQ-1` (Track-2 Phase-0 plan §9, owner **Governance / ARB**):** `DI-3`/`DI-6`'s class — *a stated enumeration contradicting the content it enumerates* — has **NO catalogued capability**. Is it a new capability, an extension of an existing `DP`, or not a capability at all? ⛔ **Capability existence is not Architecture's to decide; nothing invented; `S8` blocked until answered** *(plan `D-6`)*. Pointer only — the plan's §9 row is the record.
 
 **Open questions carried, none resolved:** the **governed-register list** (Authority — also M6 §7.5's trigger) · **Q-7** trigger location · **Q-2** components over undefined regions · **OQ-PKS-7** one corpus or three · **IBC-1's absence** · **R-65..R-71 → decision C-4**.
 
