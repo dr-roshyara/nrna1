@@ -112,10 +112,15 @@ final readonly class AssuranceHandoffReport
      * Fail-closed aggregate (D-3): FAIL > INCONCLUSIVE > WARN > PASS.
      * Absence of evidence is not PASS — one INCONCLUSIVE slice keeps the
      * aggregate from PASS, so a report never reads as "clean" on silence.
+     *
+     * ⛔ The precedence is POSITION-INDEPENDENT: iteration order never decides the
+     *    verdict. The scan collects the highest-precedence verdict over the whole
+     *    check set, so an INCONCLUSIVE slice that merely precedes a FAIL can never
+     *    mask it (fail-closed — a defect stays visible regardless of slice order).
      */
     public function aggregateVerdict(): Verdict
     {
-        $sawWarn = false;
+        $highest = Verdict::PASS;
 
         foreach ($this->perSlice as $assessment) {
             $verdict = $assessment->verdict();
@@ -125,15 +130,13 @@ final readonly class AssuranceHandoffReport
             }
 
             if ($verdict === Verdict::INCONCLUSIVE) {
-                return Verdict::INCONCLUSIVE;
-            }
-
-            if ($verdict === Verdict::WARN) {
-                $sawWarn = true;
+                $highest = Verdict::INCONCLUSIVE;
+            } elseif ($verdict === Verdict::WARN && $highest === Verdict::PASS) {
+                $highest = Verdict::WARN;
             }
         }
 
-        return $sawWarn ? Verdict::WARN : Verdict::PASS;
+        return $highest;
     }
 
     /** Non-PASS slices: every assessment an author must look at before handoff. */

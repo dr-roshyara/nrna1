@@ -17,6 +17,9 @@ declare(strict_types=1);
  *   php scripts/knowledge-lint.php --profile=structural --root=<dir> [--vocabulary=<path>]
  *   php scripts/knowledge-lint.php --profile=structural --root=<dir> --strict
  *
+ *   # Phase-1 author-side handoff assurance (D-4 — warn-only, ALWAYS exit 0)
+ *   php scripts/knowledge-lint.php --report=handoff --document=<path> [--vocabulary=<path>] [--out=<path>]
+ *
  * Rules (severity from knowledge-schema.yaml): frontmatter present/parses,
  * required fields, knowledge_id pattern + uniqueness, enum validity,
  * relationship key validity, relationship target existence, link resolution,
@@ -44,6 +47,9 @@ use EngineeringKnowledge\Capabilities\VocabularyIntegrity\Application\ValidateVo
 use EngineeringKnowledge\Capabilities\VocabularyIntegrity\Infrastructure\MarkdownDispositionReader;
 use EngineeringKnowledge\Capabilities\VocabularyIntegrity\Infrastructure\MarkdownVocabularyReader;
 use EngineeringKnowledge\Capabilities\VocabularyIntegrity\Infrastructure\YamlVocabularySource;
+use EngineeringKnowledge\Shared\Application\GenerateHandoffAssuranceReport;
+use EngineeringKnowledge\Shared\Domain\CheckerVersion;
+use EngineeringKnowledge\Shared\Domain\HandoffContext;
 use EngineeringKnowledge\Shared\Domain\Verdict;
 use EngineeringKnowledge\Shared\Infrastructure\StructuralCliReporter;
 use Symfony\Component\Yaml\Yaml;
@@ -56,16 +62,39 @@ $strict = in_array('--strict', $args, true);
 $asJson = in_array('--json', $args, true);
 
 $profile = null;
+$report = null;
 $rootDir = null;
+$documentPath = null;
 $vocabularyPath = null;
+$outPath = null;
 foreach (array_slice($argv, 1) as $a) {
     if (preg_match('/^--profile=(.+)$/', $a, $m)) {
         $profile = $m[1];
+    } elseif (preg_match('/^--report=(.+)$/', $a, $m)) {
+        $report = $m[1];
     } elseif (preg_match('/^--root=(.+)$/', $a, $m)) {
         $rootDir = $m[1];
+    } elseif (preg_match('/^--document=(.+)$/', $a, $m)) {
+        $documentPath = $m[1];
     } elseif (preg_match('/^--vocabulary=(.+)$/', $a, $m)) {
         $vocabularyPath = $m[1];
+    } elseif (preg_match('/^--out=(.+)$/', $a, $m)) {
+        $outPath = $m[1];
     }
+}
+
+// ── Phase-1 author-side handoff assurance (D-4: warn-only, exit 0) ─────────
+if ($report !== null) {
+    if ($report !== 'handoff') {
+        fwrite(STDERR, "knowledge-lint: unknown --report '{$report}'. Known reports: handoff.\n");
+        exit(3);
+    }
+    if ($documentPath === null) {
+        fwrite(STDERR, "knowledge-lint: --report=handoff requires --document=<path>.\n");
+        exit(3);
+    }
+
+    exit(run_handoff_report($documentPath, $vocabularyPath, $outPath, $strict, $argv, $root));
 }
 
 // ── Track-2 structural profile (S7, plan D-1) ──────────────────────────────
@@ -92,9 +121,17 @@ if ($profile !== null) {
  * --strict is wired into no gate, hook, or CI. Fail-closed (D-2): S3 without a
  * readable vocabulary config is INCONCLUSIVE, never PASS.
  */
-function run_structural_profile(string $rootDir, ?string $vocabularyPath, bool $strict, string $repoRoot): int
+/**
+ * The five S1–S5 application services, composed ONCE (D-1): the directory profile
+ * and the Phase-1 handoff report run the same wiring, so the script stays a thin
+ * adapter and a new slice cannot be wired into one entry point and forgotten in
+ * the other.
+ *
+ * @return array<string, object> keyed by slice (S1..S5); each responds to handle(string): Assessment
+ */
+function structural_services(?string $vocabularyPath, string $repoRoot): array
 {
-    $services = [
+    return [
         'S1' => new ValidateDocumentLocalIntegrity(new MarkdownDocumentContentsReader()),
         'S2' => new ValidateIntraDocumentReferences(new MarkdownIntraDocumentReader()),
         'S3' => new ValidateVocabularyIntegrity(
@@ -104,6 +141,84 @@ function run_structural_profile(string $rootDir, ?string $vocabularyPath, bool $
         'S4' => new ValidateTableColumnCount(new MarkdownTableReader()),
         'S5' => new ValidateCompetingCurrentDefinitions(new MarkdownDispositionReader()),
     ];
+}
+
+/**
+ * Phase-1 author-side handoff assurance (D-1..D-7).
+ *
+ * ADAPTER only: runs the five S1–S5 services over ONE document and renders the
+ * AssuranceHandoffReport — the D-4 NOT-CHECKED statement, the named NOT-CHECKED
+ * areas (back-test §5), the known limitations, and the fail-closed aggregate
+ * (D-3).
+ *
+ * Warn-only (D-4): ALWAYS returns 0 — findings are a FIX BEFORE HANDOFF
+ * recommendation to the author, never a rejection; --strict does not apply (a
+ * note is printed if combined). Output is stdout by default, or the author's
+ * --out path (D-6). A missing or non-file --document is a usage error (exit 3).
+ */
+function run_handoff_report(
+    string $documentPath,
+    ?string $vocabularyPath,
+    ?string $outPath,
+    bool $strict,
+    array $argv,
+    string $repoRoot,
+): int {
+    if (! is_file($documentPath)) {
+        fwrite(STDERR, "knowledge-lint: --document '{$documentPath}' is not a file.\n");
+
+        return 3;
+    }
+
+    if ($strict) {
+        fwrite(STDERR, "knowledge-lint: note — --strict is not applicable to --report=handoff; "
+            . "handoff reports are always warn-only (D-4).\n");
+    }
+
+    $perSlice = [];
+    foreach (structural_services($vocabularyPath, $repoRoot) as $slice => $service) {
+        $perSlice[$slice] = $service->handle($documentPath);
+    }
+
+    $context = HandoffContext::of(
+        $documentPath,
+        'knowledge-lint --report=handoff',
+        CheckerVersion::CURRENT,
+        git_head_short($repoRoot),
+        date('c'),
+        implode(' ', $argv),
+    );
+
+    $report = (new GenerateHandoffAssuranceReport())->handle($context, $perSlice);
+
+    $rendered = (new StructuralCliReporter())->renderHandoffReport($report);
+
+    if ($outPath !== null) {
+        file_put_contents($outPath, $rendered);
+    } else {
+        echo $rendered;
+    }
+
+    return 0;
+}
+
+/**
+ * D-5 — the source commit the checker ran at: git HEAD (an existing mechanism),
+ * else UNKNOWN. CODE provenance, never AI-process attestation (EKS-07 stays
+ * unsolved; a self-declared process ID is not independently attested authorship).
+ */
+function git_head_short(string $repoRoot): string
+{
+    $lines = [];
+    $code = 0;
+    exec('git -C ' . escapeshellarg($repoRoot) . ' rev-parse --short HEAD 2>/dev/null', $lines, $code);
+
+    return ($code === 0 && isset($lines[0]) && trim($lines[0]) !== '') ? trim($lines[0]) : 'UNKNOWN';
+}
+
+function run_structural_profile(string $rootDir, ?string $vocabularyPath, bool $strict, string $repoRoot): int
+{
+    $services = structural_services($vocabularyPath, $repoRoot);
 
     if (! is_dir($rootDir)) {
         fwrite(STDERR, "knowledge-lint: --root '{$rootDir}' is not a directory.\n");

@@ -72,6 +72,27 @@ final class AssuranceHandoffReportTest extends TestCase
         self::assertSame(AssuranceHandoffReport::RECOMMEND_FIX_BEFORE_HANDOFF, $report->recommendation());
     }
 
+    public function test_a_fail_dominates_even_when_a_lower_verdict_precedes_it(): void
+    {
+        // D-3 precedence is POSITION-INDEPENDENT: the first non-PASS slice in
+        // iteration order must not mask a FAIL that appears later (e.g. S2
+        // INCONCLUSIVE before S5 FAIL — the real-corpus shape where the earliest
+        // INCONCLUSIVE is not the deciding verdict).
+        $report = AssuranceHandoffReport::of(
+            $this->context,
+            [
+                'S1' => $this->assessment(Verdict::PASS),
+                'S2' => $this->assessment(Verdict::INCONCLUSIVE),
+                'S4' => $this->assessment(Verdict::WARN),
+                'S5' => $this->assessment(Verdict::FAIL),
+            ],
+            AssuranceHandoffReport::NOT_CHECKED_STATEMENT,
+        );
+
+        self::assertSame(Verdict::FAIL, $report->aggregateVerdict());
+        self::assertSame(AssuranceHandoffReport::RECOMMEND_FIX_BEFORE_HANDOFF, $report->recommendation());
+    }
+
     public function test_inconclusive_beats_warn_and_never_pass(): void
     {
         $report = AssuranceHandoffReport::of(

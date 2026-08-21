@@ -47,6 +47,59 @@ final readonly class StructuralCliReporter
         return self::NOT_CHECKED_STATEMENT;
     }
 
+    /**
+     * The Phase-1 author-side handoff report — D-2's nine elements, D-3's
+     * fail-closed aggregate, D-4's author-side recommendation. Presentation
+     * only: every verdict and the D-4 statement are carried unchanged; nothing
+     * is invented, softened, or accepted.
+     */
+    public function renderHandoffReport(AssuranceHandoffReport $report): string
+    {
+        $context = $report->context();
+        $out = [];
+
+        $out[] = 'Handoff assurance report — deterministic structural checks';
+        $out[] = 'Artifact : ' . $context->target();
+        $out[] = 'Checker  : ' . $context->checkerName() . ' · version ' . $context->checkerVersion();
+        $out[] = 'Source   : ' . $context->sourceCommit();
+        $out[] = 'Generated: ' . $context->generatedAt();
+        $out[] = 'Command  : ' . $context->commandLine();
+        $out[] = '';
+        $out[] = 'Checks executed (per-slice verdicts):';
+        foreach ($report->perSlice() as $slice => $assessment) {
+            $out[] = '  ' . $this->badge($assessment->verdict()) . ' ' . $slice;
+        }
+        $out[] = '';
+        $out[] = 'Findings — every non-PASS slice, with its evidence:';
+        $findings = $report->findings();
+        if ($findings === []) {
+            $out[] = '  (none)';
+        } else {
+            foreach ($findings as $slice => $assessment) {
+                $out[] = $this->sliceLine($slice, $context->target(), $assessment);
+            }
+        }
+        $out[] = '';
+        $out[] = $report->notCheckedStatement();
+        if ($report->notCheckedAreas() !== []) {
+            $out[] = 'NOT-CHECKED areas (named):';
+            foreach ($report->notCheckedAreas() as $area) {
+                $out[] = '  - ' . $area;
+            }
+        }
+        if ($report->limitations() !== []) {
+            $out[] = 'Known limitations:';
+            foreach ($report->limitations() as $limitation) {
+                $out[] = '  - ' . $limitation;
+            }
+        }
+        $out[] = '';
+        $out[] = 'Aggregate verdict: ' . $this->badge($report->aggregateVerdict());
+        $out[] = 'Recommendation: ' . $report->recommendation();
+
+        return implode("\n", $out) . "\n";
+    }
+
     private function badge(Verdict $verdict): string
     {
         return match ($verdict) {
