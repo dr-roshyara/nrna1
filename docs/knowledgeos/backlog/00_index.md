@@ -11,5 +11,6 @@ Backlog items for the EKS / KnowledgeOS platform. **A backlog item records a pro
 | [EKS-05](EKS-05-knowledge-evidence-boundary.md) | Knowledge Evidence Boundary — separating Execution State from Governance Evidence | **FUTURE ARCHITECTURE EXPLORATION** | strategic-DDD boundary problem |
 | [EKS-06](EKS-06-reference-register-identifier-families.md) | Reference resolution bound to a fixed token list, not to declared identifier families | BACKLOG | assurance-coverage problem |
 | [EKS-07](EKS-07-multi-process-coordination.md) | Multi-Process Coordination & Shared Work-State Integrity for AI Engineering | **FUTURE ARCHITECTURE EXPLORATION / OBSERVED PROBLEM** | platform-capability / coordination-boundary problem |
+| [EKS-08](EKS-08-representation-semantics-separation.md) | Representation–Semantics Separation & Measurement Independence — KnowledgeOS invariants evaluated against semantic structure, not representation heuristics | **FUTURE ARCHITECTURE EXPLORATION** (P4/P5 research observation) | candidate constitutional invariant (research) |
 
 Created 2026-08-16 on the PO/ARB act *"record this as problem and write EKS- tickets"*, from the placement-drift and knowledge-distribution incidents (`../reviews/2026-08-16-knowledge-placement-requirement-registration.md`).

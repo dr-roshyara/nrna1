@@ -1,10 +1,25 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **HPA ENDORSEMENT OF CONSOLIDATION AS P4 FOUNDATION** block is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **HPA RULING ON THE R-1 GATE REVIEW — TWO RESEARCH CANDIDATES** block is newest; older rows it contradicts are superseded by it)*
 
 ---
 
-## 📍 UPDATE (2026-08-22, **HPA ENDORSEMENT OF CONSOLIDATION AS P4 FOUNDATION — "CONSTITUTIONAL INVARIANT DISCOVERY" CONFIRMED · P4 DELIVERABLE SCHEMA REFINED TO THE 7-COLUMN MAP · INV-KOS-001 PROTECTIVE DISCIPLINE** — newest) — **investigation moved from candidate-kernel design → constitutional invariant discovery · kernel question = "which transformations must be prevented" · P4 schema = ID|Invariant|Statement|Evidence Source|Strength|Forbidden Collapse|Validation Target · ⛔ INV-KOS-001 stays Candidate until P5 · ⛔ gates unchanged (R-1 + corrected-P3 → P4)**
+## 📍 UPDATE (2026-08-22, **HPA RULING ON THE R-1 GATE REVIEW — MEASUREMENT INDEPENDENCE + REPRESENTATION–SEMANTICS SEPARATION AS RESEARCH CANDIDATES · R-1 GATE ACCEPTED · NO BASELINE CHANGE · NO INV-005** — newest) — **"a property of KnowledgeOS must be defined against the semantic structure of the evidence, not by representation heuristics" · SOURCE≠DERIVED≠REPRESENTATION · EKS-08 registered as P4/P5 research observation · ⛔ invariant map unchanged · remaining gate = corrected-P3 re-review → P4**
+
+| | |
+|---|---|
+| 🧪 **Candidate principle 1 — Measurement Independence (HPA)** | *"A KnowledgeOS invariant SHALL be evaluated against the semantic structure of a knowledge record, not merely against incidental representation patterns."* (The `22/218 → 2/218` correction is not a testing lesson — it is a candidate constitutional rule.) |
+| 🧪 **Candidate principle 2 — Representation–Semantics Separation (HPA)** | *"A representation SHALL NOT acquire semantic authority merely because a pattern, field, structure, or computation resembles another semantic concept."* Examples: `recordedBy` ≠ temporal validity · derived `workItemState` ≠ persisted source state · projection ≠ source · measurement ≠ architectural fact · recommendation ≠ decision · evidence ≠ authority. |
+| 🪜 **The layers (candidate vocabulary)** | SOURCE (persisted authoritative record) → DERIVATION (deterministic computation) → PROJECTION (representation of derived state) → MEASUREMENT (observation produced by analysis) → INTERPRETATION (conclusion from measurement) → AUTHORITY (separately governed authorization). Kernel question: **"Can one layer silently become another?"** (substring→measurement→architecture claim ❌ · projection→source ❌ · evidence→authority ❌). |
+| ⛔ **HPA discipline (BINDING)** | **No INV-005. No invariant-map change. No EKS baseline change** (the review found no baseline error). Carry the two candidates as a **P4/P5 research observation** — generalizations from observed failure modes, not established invariants. |
+| 📋 **Registered** | **EKS-08 — Representation–Semantics Separation & Measurement Independence** (`docs/knowledgeos/backlog/EKS-08-…md`, index updated) — FUTURE ARCHITECTURE EXPLORATION, NOT commissioned, NOT an invariant row. |
+| ✅ **R-1 corpus-completion gate** | **ACCEPTED by the HPA** — review's conclusion endorsed (no baseline error; observation carried forward). R-1 closed. |
+| 🏛 **Architectural reading (HPA)** | EKS is giving **counterexamples** that make the kernel definition more precise — EKS: "ways a system can accidentally confuse things" · PKS: "explicit separations and fail-closed rules" · AIP: "orchestration can consume knowledge without owning it" · KnowledgeOS: "what constitutional rules prevent those collapses regardless of implementation." |
+| **NEXT** | ⛔ **P4 remains CLOSED** — remaining gate: **corrected-P3 re-review** (`6034db5c`/`c673de5d`/`e5f98a6a`) → **P4 produces "KnowledgeOS Constitutional Invariant Map v1.0"** (7-column schema; INV-001..004 established + INV-KOS-001 Candidate) → P5 domain-independence test. |
+
+---
+
+## 📍 UPDATE (2026-08-22, **HPA ENDORSEMENT OF CONSOLIDATION AS P4 FOUNDATION — "CONSTITUTIONAL INVARIANT DISCOVERY" CONFIRMED · P4 DELIVERABLE SCHEMA REFINED TO THE 7-COLUMN MAP · INV-KOS-001 PROTECTIVE DISCIPLINE**) — **investigation moved from candidate-kernel design → constitutional invariant discovery · kernel question = "which transformations must be prevented" · P4 schema = ID|Invariant|Statement|Evidence Source|Strength|Forbidden Collapse|Validation Target · ⛔ INV-KOS-001 stays Candidate until P5 · ⛔ gates unchanged (R-1 + corrected-P3 → P4)**
 
 | | |
 |---|---|
