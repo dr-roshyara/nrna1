@@ -1,10 +1,24 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **INV-KOS-001 — DIMENSIONAL PURITY & STATE INDEPENDENCE (P4 candidate drafted, per-dimension strength split)** block is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **HPA CONFIRMATION & CONSOLIDATION — P4 deliverable named "CONSTITUTIONAL INVARIANT MAP v1.0" + crystallized strategic hypothesis** block is newest; older rows it contradicts are superseded by it)*
 
 ---
 
-## 📍 UPDATE (2026-08-22, **INV-KOS-001 — DIMENSIONAL PURITY & STATE INDEPENDENCE: HPA DRAFTED FIRST INVARIANT-MAP CANDIDATE** — newest) — **P4 candidate, NOT a kernel decision · per-dimension strength split (temporal = weakest, semantic = hypothesis, four separations + PKS orthogonal-axes = ESTABLISHED) · ⛔ gates unchanged**
+## 📍 UPDATE (2026-08-22, **HPA CONFIRMATION & CONSOLIDATION — P4 DELIVERABLE NAMED "KNOWLEDGEOS CONSTITUTIONAL INVARIANT MAP v1.0" + CRYSTALLIZED STRATEGIC HYPOTHESIS** — newest) — **direction endorsed: kernel-design → invariant-discovery · carried-forward hypothesis: "not a knowledge storage kernel — a constitutional layer preserving separation between knowledge dimensions while allowing controlled evolution" · kernel question = "what transformations must KnowledgeOS prevent?" · ⛔ gates unchanged**
+
+| | |
+|---|---|
+| ✅ **HPA confirmation (2026-08-22, endorsement)** | Direction **correct**: not inventing a kernel, but discovering the **constitutional invariants any future kernel must preserve**. *"A kernel is not primarily a container of features — a kernel exists to protect invariants."* (DDD-aligned: entities/aggregates/technologies may change; invariants define the protected truth boundaries.) |
+| 📐 **P4 deliverable naming (HPA refinement)** | **"KnowledgeOS Constitutional Invariant Map v1.0"** (was "KnowledgeOS Invariant Map v1.0") — consistent with the "Constitutional Invariant Layer" naming; the **scientific foundation** from which a future kernel / protocol / runtime / governance model can emerge. Structure unchanged; INV-001 illustration = **Authority Separation** (*"Authority SHALL NOT be derived from evidence quality"* · Evidence EKS/PKS/AIP · Classification Invariant · Strength Established · Kernel relevance Candidate). |
+| 🧬 **Crystallized strategic hypothesis (HPA — carried forward, standing)** | *"KnowledgeOS is not a knowledge storage kernel. It is a constitutional layer that preserves separation between knowledge dimensions while allowing controlled evolution."* |
+| 🔄 **Refined kernel question (HPA)** | Not "what components should the kernel contain?" but **"what transformations must KnowledgeOS prevent?"** — a normal system protects data; a KnowledgeOS kernel protects **relationships between dimensions** (allowed: evidence improves → evidence state changes · new projection generated; forbidden: evidence improves → authority automatically increases · projection replaces source). |
+| 🔍 **Confirmed (no strength change)** | Anti-collapse family = established findings, NOT promoted laws · math describes never defines (EKS/PKS/AIP → invariants → concepts → representations) · topology > complex numbers ("what survives transformation?") · lattice = per-dimension partial order (Approved ≠ more semantically true = higher authority state) · sheaf theory = P5 representation hypothesis only (DDD ACL-compatible). |
+| 🧩 **Structural clarification (parent session)** | The map holds **both** the four atomic ESTABLISHED separations (INV-001 Authority Separation + rows for Observation≠Decision / Assessment≠Authority / Projection≠Source) **and** INV-KOS-001 (Dimension Independence) as the **composite generalization** — the composite is the candidate P5 must test hardest (temporal = weakest, semantic = hypothesis). |
+| **NEXT** | ⛔ Gates unchanged: R-1 re-review (`aa08151d`) + corrected-P3 re-review → **P4 produces "KnowledgeOS Constitutional Invariant Map v1.0"** (INV-KOS-001 = seed row) → P5 domain-independence test. |
+
+---
+
+## 📍 UPDATE (2026-08-22, **INV-KOS-001 — DIMENSIONAL PURITY & STATE INDEPENDENCE: HPA DRAFTED FIRST INVARIANT-MAP CANDIDATE**) — **P4 candidate, NOT a kernel decision · per-dimension strength split (temporal = weakest, semantic = hypothesis, four separations + PKS orthogonal-axes = ESTABLISHED) · ⛔ gates unchanged**
 
 | | |
 |---|---|
