@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Kind** | **EP-01 IMPLEMENTATION PLAN.** Phase 0 of the sequence in `docs/knowledgeos/reviews/2026-08-21-cost-optimization-governance-assurance-review.md` §7 |
-| **Status** | ▶️ **AUTHORIZED AND IN EXECUTION.** ⭐ **Authorizing act: the Decision Authority's EP-01 plan approval and Phase-0 execution commission of 2026-08-21** — *"Approve the Phase 0 plan"*, followed by the **TRACK 2 — DETERMINISTIC ASSURANCE · PHASE 0 — HISTORICAL BACK-TEST** commission, which supplies role, scope, the authority boundary *(read-only · no governed artifact · no workflow record · no migration state · no gate · no routing · no identifier)*, the reuse directive *(extend `knowledge-lint` / `link-check` / `identifier-check` / `verify.sh`; no new engine)*, the required back-test targets, the exit criteria and the stop conditions. **Recorded here as the authorizing act, per the `CAP-001` precedent `20260802-0015` of recording rather than inferring** *(and per `R-46`: EP-01 plan approval is the DA's act, not the ARB's)*. ⛔ **Nothing beyond Phase 0's scope is authorized by this approval.** |
+| **Status** | 🏁 **AUTHORIZED · EXECUTED · PHASE 0 COMPLETE** — **FINAL STATUS: PASS (authorized scope)** ⭐. Authorizing act: the Decision Authority's EP-01 plan approval and Phase-0 execution commission of 2026-08-21 — *"Approve the Phase 0 plan"*, followed by the **TRACK 2 — DETERMINISTIC ASSURANCE · PHASE 0 — HISTORICAL BACK-TEST** commission, which supplies role, scope, the authority boundary *(read-only · no governed artifact · no workflow record · no migration state · no gate · no routing · no identifier)*, the reuse directive *(extend `knowledge-lint` / `link-check` / `identifier-check` / `verify.sh`; no new engine)*, the required back-test targets, the exit criteria and the stop conditions. ⛔ **Result (2026-08-21):** the §6 matrix reproduced cell-for-cell incl. the AMD6 quiet row · every report carries D-4 · warn-only exit 0 · no governed artifact modified · **report `docs/knowledgeos/reviews/2026-08-21-track2-phase0-historical-back-test-report.md`**. ⛔ **`DI-3`/`DI-6` (`S8`) and the RC/grant/lineage corpus classes are NOT-CHECKED — stated, not silent (§5 of the report).** ⛔ **Nothing beyond Phase 0's scope is authorized by this approval.** ⛔ **STOP — Phase 1 (author-side adoption) is a separate act on §6's evidence.** |
 | **What it is NOT** | ⛔ **not a gate · not a routing change · not an assurance-class model · not a methodology change · not a review-model change.** Those are Phases 2–4 and are **frozen** (`2026-08-01`) |
 | **Capabilities** | ⭐ **REALIZE `CAP-003` Vocabulary Integrity** *(catalogued CANDIDATE, `DP-3`)* · ⭐ **EXTEND `CAP-004` Reference Integrity's realization to intra-document references** *(catalogued REALIZED, `DP-4`)* · ⭐ **EXTEND `CAP-001`'s register notion to document-local identifiers** *(`DP-1`)*. ⛔ **No new capability, no new `CAP` id, no new register, no new domain policy** |
 | **Governing rules already in force** | **`DP-1`** *(unique within its register(ns))* · **`DP-3`** *(one meaning per context; homonyms qualified)* · **`DP-4`** *(a reference resolves, or is classified as evidence — never repaired on a guess)* · **§0.4.4** *(one canonical CURRENT definition per section; superseded wording only where labelled)* |
@@ -96,16 +96,16 @@
 # 7 · Definition of Done
 
 ```
-□ CAP-003 realized, CAP-004's realization extended, CAP-001's register notion extended
-□ every rule unit-tested in Tests/{Domain,Application,Infrastructure};  --testsuite=EngineeringKnowledge green
-□ §6's back-test matrix reproduced, including the AMD6 quiet row
-□ every report carries D-4's "what was NOT checked" statement
-□ warn-only:  exit 0;  no gate, no hook, no CI wiring
-□ developer guide written  (developer_guide/<area>/ — Definition of Done, standing rule)
-□ the capability catalogue's CAP-003 row updated from Candidate → Realized, with its realization named
-□ H-CAT-1 evidence recorded  (do the two realized siblings share a contract?)
-□ OQ-1 raised, not answered
-□ ⛔ nothing under docs/ modified by the checker;  ⛔ no identifier minted
+✅ CAP-003 realized, CAP-004's realization extended, CAP-001's register notion extended
+✅ every rule unit-tested in Tests/{Domain,Application,Infrastructure};  --testsuite=EngineeringKnowledge green  (220 tests / 501 assertions)
+✅ §6's back-test matrix reproduced, including the AMD6 quiet row
+✅ every report carries D-4's "what was NOT checked" statement
+✅ warn-only:  exit 0;  no gate, no hook, no CI wiring
+✅ developer guide written  (developer_guide/knowledgeos/02_track2_structural_profile.md — Definition of Done, standing rule)
+✅ the capability catalogue's CAP-003 row updated from Candidate → Realized, with its realization named
+✅ H-CAT-1 evidence recorded  (do the two realized siblings share a contract? — YES observed: Assessment/Verdict · fail-closed INCONCLUSIVE · warn-only exit 0; decision stays ARB's, OQ-4)
+✅ OQ-1 raised, not answered
+✅ ⛔ nothing under docs/ modified by the checker;  ⛔ no identifier minted
 ```
 
 # 8 · Risks
