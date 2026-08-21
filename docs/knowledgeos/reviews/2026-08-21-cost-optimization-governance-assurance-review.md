@@ -225,3 +225,65 @@ report a candidate classification            ownership
 **Traceability:** `docs/knowledgeos/brainstorming/how_to_optimize_cost.md` *(the reviewed input)* · the independent AMD3/AMD4/AMD5 architecture reviews *(`9c908e70`, `870305e0`, `ccf6c9c7`)* — finding sets enumerated mechanically for §3.1 · AMD6 at `8307beca` · **`KnowledgeOS_Deferred_Architecture_Register`, the ACCEPTED 2026-08-04 correction *"automation of deterministic work is not speculative architecture"*** · `.claude/CLAUDE.md` — the **2026-08-01 methodology freeze** and the operating loop's Phase-6 classification · `ES-005.4` · `ES-006.1` · `ES-002.1`/`ES-002.2` · `PMR-10` · `G-2`/`R5a`/`R5b` · `R-34`/`P-2` · `INV-ATTR-2` · **evidence read directly:** `scripts/knowledge-lint.php:8,32–33,58` · `scripts/link-check.php:1–21` · `scripts/identifier-check.php:1–26` + `scripts/lib/EngineeringKnowledge/Capabilities/` · `scripts/verify.sh:1–16` · `scripts/doc-placement.php` *(exit 0)* · `docs/knowledgeos/backlog/00_index.md` + `EKS-02` + `EKS-05` · `php scripts/identifier-check.php EKS-06` → **`INCONCLUSIVE`** · **chain volume measured: 4,315 lines · 5 amendment commits · 4 independent reviews.**
 
 **REVIEW DELIVERED · STOPPING.** ⛔ **NOTHING IS ADOPTED, COMMISSIONED OR IMPLEMENTED BY THIS ACT.**
+
+---
+
+# 11 · Addendum *(added 2026-08-21, additive — ⛔ no verdict in §1–10 is changed)*
+
+**Trigger:** the Decision Authority's response to §1–10, which **accepted the two-authority-class split**, restated `X-5` as a formulation, and named the implementation target. **Two things are recorded here: the DA's refinement, and a canonical-discovery finding that arrived AFTER §5 and makes Phase 0 cheaper than §7 described.**
+
+## 11.1 ⭐ The DA's refinement of `X-5` — adopted into this review's language
+
+> ```
+> Mechanical Assurance    proves DECLARED STRUCTURE
+> Architecture Review     discovers UNDECLARED ARCHITECTURAL CONTENT
+> ```
+
+⭐ **This is a better formulation than `X-5`'s and it should be the platform's standing sentence**, because it states the boundary as a *division of labour* rather than as a *limitation*: the checker is not a weak reviewer, it is a different instrument. ⛔ **It also forbids the sentence the platform must never emit — *"mechanical assurance proves architectural completeness"*.**
+⚠️ **Attribution, kept straight: the formulation is the DA's, not this review's.** `X-5` established the boundary; the DA named it.
+
+## 11.2 \U0001F534 ⭐ Canonical discovery, completed — **§5 searched the SCRIPTS and missed the CATALOGUE. The capability layer already governs this space.**
+
+**`docs/implementation/PKS_Phase_III_Capability_Catalog.md` (225 lines) catalogues six engineering capabilities with domain policies `DP-1`…`DP-6` and a lifecycle** *(Candidate → Designed → Realized)*:
+
+| CAP | Rule *(`DP-n`)* | Status | Realization |
+|---|---|---|---|
+| **CAP-001** Identifier Integrity | **`DP-1`** every identifier is unique within its **register(ns)**, checked before minting | DESIGNED | `identifier-check.php` |
+| CAP-002 Projection Integrity | `DP-2` | DEFERRED | — |
+| ⭐ **CAP-003 Vocabulary Integrity** | ⭐ **`DP-3`** a governed term carries **one meaning per context**; homonyms are **qualified** | ⭐ **CANDIDATE** | ⛔ **none** |
+| ⭐ **CAP-004 Reference Integrity** | ⭐ **`DP-4`** a reference **resolves to an existing target**, or is classified as evidence | ✅ **REALIZED** | `link-check.php` · `doc-placement.php` |
+| CAP-005 Assessment-Record Integrity | `DP-5` | Candidate | — |
+| CAP-006 Knowledge-Card Integrity | `DP-6` | ✅ REALIZED | `knowledge-lint.php` |
+
+⭐ **Mapping §7's six back-test targets onto capabilities that ALREADY EXIST:**
+
+| Target | ⭐ Existing capability | Fit |
+|---|---|---|
+| **`DI-1`** duplicate `## 4.1` / `## 4.2` headings | ⭐ **CAP-001 (`DP-1`)** | ⭐ **exact, once the *register* is understood to be THE DOCUMENT** — a heading identifier colliding inside its own document is a `DP-1` violation |
+| **`DI-1`** 21 unresolved `§4.x` references · **`DI-5`** criterion 14 citing an undefined step | ⭐ **CAP-004 (`DP-4`)** | ⭐ **exact** — *"a reference resolves to an existing target"*. ⚠️ **Its realization covers FILE links only; intra-document anchors are the gap** |
+| **`DI-2`** stale *"Phase 2b"* · **`DI-7`** `CASE B` vs `CASE β` | ⭐ **CAP-003 (`DP-3`)** | ⭐ **exact** — a term carrying two meanings, and an unqualified near-homonym |
+| **`DI-4`** two competing CURRENT definitions of one disposition | ⚠️ **CAP-003 (`DP-3`), candidate mapping** | *"one meaning per context"* plausibly covers it — **to be confirmed, not assumed** |
+| \U0001F534 **`DI-3` · `DI-6`** a stated COUNT contradicting the rows it counts | ⛔ **NO CATALOGUED CAPABILITY** | ⭐ **Named and returned to governance; ⛔ nothing invented** — per the operating loop's Phase 3: *if the classification genuinely has no home, name what is missing and invent nothing*. **Working label only, not minted: *"self-consistency of an enumeration and the content it enumerates"*** |
+
+> ## ⭐ **Consequence — Phase 0 is cheaper AND better-governed than §7 said:**
+> **Phase 0 is not *"build a checker"*. It is: ⭐ REALIZE `CAP-003` — which the catalogue itself lists as the pending choice of *"capability 2"* — and ⭐ EXTEND `CAP-004`'s realization to intra-document references.** ⛔ **No new capability · no new `CAP` identifier · no new register · no new domain policy.** ⭐ **Which also removes §7's `X-8` obstacle entirely: nothing needs minting, so `identifier-check`'s `INCONCLUSIVE` on an ungoverned series never arises.**
+> ⭐ **And the evidence shape matches the one the catalogue ALREADY ACCEPTED for CAP-001** — *"a GOVERNED rule, adopted expressly to prevent this, failed to prevent it, because it had NO EXECUTABLE CHECK."* **§0.4.4's canonical-document rule is exactly such a rule, and `DI-4` violated it two amendments after it was adopted.**
+> ⭐ **Bonus, recorded because the catalogue is waiting on it: realizing a second capability TESTS the catalogue's open hypothesis `H-CAT-1`** *("a parent Validation Capability abstraction is justified — refuted if the six siblings share no common contract once two are realized")*.
+
+## 11.3 The infrastructure is already wired — measured
+
+```
+composer.json      PSR-4  EngineeringKnowledge\  →  scripts/lib/EngineeringKnowledge/
+phpunit.xml:44-45  <testsuite name="EngineeringKnowledge">  →  ./scripts/lib/EngineeringKnowledge
+CAP-001 layout     Domain/ · Application/ · Infrastructure/ · Tests/{Domain,Application,Infrastructure} · README.md
+Shared\Domain      Assessment · Verdict  (already used by CAP-001's domain tests)
+```
+
+⇒ ⭐ **the TDD path needs no new harness: `--testsuite=EngineeringKnowledge` already runs capability tests.** ⛔ **This does not make the work authorized; it makes it small.**
+
+## 11.4 ⚠️ One observation on the DA's sequence diagram, resolved rather than left implicit
+
+**The DA's diagram places *"separately authorize Phase 0"* as a branch of the PO/ARB step in the AMD6 chain, while §4 found Phase 0 needs no new authority.** ⭐ **Both are satisfiable, and an existing precedent settles it: `R-46` — EP-01 plan approval is the DECISION AUTHORITY's act, not the ARB's** *(cited in `docs/plans/20260802-0015-…-plan.md`, the CAP-001 precedent)*. ⇒ **Phase 0 proceeds on a DA plan approval and does NOT queue behind AMD6's PO/ARB acceptance; what stays queued behind that acceptance is Phase 2, exactly as §7 said.**
+⛔ **This review does not decide the sequence — it records that the estate already has a rule for it, and that the rule makes the DA's constraint and §4's finding compatible rather than conflicting.**
+
+**Addendum traceability:** the DA's response of 2026-08-21 *(the `X-5` formulation and the named implementation target)* · `docs/implementation/PKS_Phase_III_Capability_Catalog.md` §4 *(the `CAP-001`…`CAP-006` table)*, §7 *(`DP-1`…`DP-6`)*, §0 *(the homonym cases)*, §8 *(`H-CAT-1`; *"choose capability 2 from the catalogue"*)* · `docs/implementation/PKS_Phase_III_Engineering_Knowledge_Model.md:107,113` · `composer.json` PSR-4 · `phpunit.xml:44–45` · `scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/**` · `R-46` via `docs/plans/20260802-0015-pks-identifier-validation-capability-plan.md`.
