@@ -1035,7 +1035,20 @@
 
 ---
 
-## 📍 UPDATE (2026-08-22, **TRACK 2 · ARCHITECTURE `RV-1…RV-7` REPAIR DELIVERED** — newest) — **S6 REPAIR COMMITTED · EVIDENCE PRODUCED · ⛔ FINDINGS STILL OPEN, NOTHING ACCEPTED · MIGRATION STILL ⛔ FROZEN · NEXT = GOVERNANCE BOUNDED RE-VERIFICATION**
+## 📍 UPDATE (2026-08-22, **TRACK 2 · GOVERNANCE RE-VERIFICATION DISCHARGED — ARCHITECTURE STAGE COMPLETE · CHAIN PRESENTABLE TO PO/ARB** — newest) — **✅ `RV-1` DISPOSED (Option A) · ✅ CONSTRAINTS HELD · ⏳ PO/ARB DECISION NEXT · ⛔ MIGRATION STILL FROZEN**
+
+| | |
+|---|---|
+| ✅ **Governance bounded re-verification** | committed `849c0cca` (`…-DV-CORRECTION-RV-REPAIR-GOVERNANCE-RE-VERIFICATION.md`), grant 25 `…-GOVERNANCE-RE-VERIFICATION` AUTHORIZED. **Verdict: ✅ ARCHITECTURE STAGE COMPLETE · CHAIN PRESENTABLE TO PO/ARB.** **C-11 bounded** (completeness · provenance · amendment lineage · current/superseded integrity ONLY) — ⛔ NOT technical verification; fresh independent technical verification remains the route for design-soundness |
+| 🔵 **`RV-1` gateway DISPOSED on the record** | **Option A** — ONE §4.3 placement-table row (plan line 796) for slot `3(iii)`'s evidencing governance append: **location** = the AUTHORITATIVE store, CARRIED BY the `SWITCH-OVER RECORD` at `3(v)` · **evidence artifact** · **provenance** = `PREMISE 2` / §0.7.5. Justification for A-not-B stated; PREMISE 2 note added where stated (plan §4.3 lines 811–814; summary §4 line 175) |
+| ✅ **`RV-2…RV-7` each disposed with evidence** | per-finding quote + disposition + file/line (plan §4.4:1043 · §4.0:655 · §5:1129 · §4.7:1111 · summary §3:153 · §11:330 · Traceability:405). Repair commit `933c0713` = exactly **5 files** (plan · summary · disposition record · CONTEXT · session log); append-only held, superseded wording shown. Re-measured `.claude/scripts/` = **13** (10 shell + README + 2 PHP) — repair's count true; the review's "11 shell" sub-breakdown corrected |
+| 🔒 **Constraints held (commission §3)** | no migration · no finding closed, nothing accepted · no artifact beyond the RV repair · append-only · no self-certification. Lane `S6` **COMPLETED** via G-1 closure (seq 13) — the delivered-lane-left-ACTIVE gap not repeated |
+| ⛔ **NOTHING ACCEPTED, NOTHING CLOSED** | **`DV-1…DV-7` + `RV-1…RV-7` REMAIN OPEN** — closure and the `DV-1` Phase-5 bar are the **PO/ARB's acceptance acts** (`R-34`/`P-2`). ⚠️ Standing: independent DV review + `DECISION.md` remain UNTRACKED (condition-C; PO/ARB should know before acceptance) |
+| **NEXT** | ⏳ **PO/ARB — DECISION and ACCEPTANCE** → then, and only then, **MIGRATION AUTHORIZATION**. ⛔ **MIGRATION STILL NOT AUTHORIZED · PHASE 3 MUST NOT BEGIN · PHASE 5 REMAINS PROHIBITED** |
+
+---
+
+## 📍 UPDATE (2026-08-22, **TRACK 2 · ARCHITECTURE `RV-1…RV-7` REPAIR DELIVERED**) — **S6 REPAIR COMMITTED · EVIDENCE PRODUCED · ⛔ FINDINGS STILL OPEN, NOTHING ACCEPTED · MIGRATION STILL ⛔ FROZEN · NEXT = GOVERNANCE BOUNDED RE-VERIFICATION**
 
 | | |
 |---|---|
