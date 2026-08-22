@@ -586,3 +586,33 @@ The **H-KOS-Agent-001** draft in §15 is **superseded** by the HPA's final disci
 - §16 (Kernel vs Reasoning Engine) confirmed by the HPA as a **fundamental boundary** — binding status unchanged.
 - Register: H-KOS-Agent-001 → **INV-KOS-Agent-001** (Candidate, Relationship family, subject-side). Count unchanged: **12 candidates + 4 Established**.
 - ⛔ **Not "written in stone":** kernel laws are not yet finalized; the ladder **Research insight → Candidate invariant → Cross-domain validation → Established invariant → Kernel law** still governs.
+
+---
+
+# §19 Tarka — Reasoning Governance (HPA, UM-31 + UM-32)
+
+**New boundary (UM-31):** *"Reasoning is not knowledge itself. Reasoning is the controlled transformation process through which knowledge may emerge."*
+
+**New principle (UM-32):** **Reasoning is a governed transformation** — `Input (Evidence + Context + Existing Knowledge) → Transformation (Reasoning Process) → Output (Derived Knowledge State)`. The middle is never a black box; `Evidence → Magic AI → Truth` is forbidden.
+
+**The Tarka family — five HYPOTHESES** (supersede the UM-31 pair; should-voice; tier-3-derived; validation targets seek tier-1/2 evidence):
+
+| Candidate | Content |
+|---|---|
+| **H-KOS-Reasoning-Separation-001** (Strong) | Distinguish knowledge-generating reasoning from knowledge-evaluating reasoning — *Inference creates candidates · Tarka tests candidates* |
+| **H-KOS-Reasoning-Provenance-001** | Preserve the reasoning path of derived knowledge — premises · rules · assumptions · conclusion |
+| **H-KOS-Vyapti-001** | Preserve the evidence↔conclusion rule — `Observation + Rule + Applicability = Inference`; without the rule, `Evidence → Conclusion` is opaque |
+| **H-KOS-Uncertainty-001** | Represent uncertainty as a structured epistemic state, not missing data (Saṃśaya — structured doubt) |
+| **H-KOS-Fallacy-001** | Detect and preserve invalid reasoning patterns — circular dependency · infinite regress · self-reference = reasoning loop = epistemic corruption |
+
+⚠️ **Flagged, unnamed:** Pramāṇa source-role separation (four Nyāya sources have different epistemic roles — must not flatten `sensor = expert statement = AI inference`). P4 decides designation.
+
+**Updated character (provisionally canonical — latest-wins):**
+
+> **"KnowledgeOS is a constitutional epistemic reasoning substrate that preserves the identity of the knower, the integrity of evidence, the validity of reasoning, the history of transformation, and the uncertainty of conclusions while enabling governed truth discovery."**
+
+Shorter: **"KnowledgeOS does not store truth. It preserves the conditions under which truth can be responsibly discovered."**
+
+Essence chain: UM-28 → UM-29 → UM-30 → UM-32 (latest wins; HPA overrides anytime). §16 extended: the **Reasoning + Validation layers are engines** (operational mechanisms) under the constitutional kernel.
+
+Register: 12 → 14 (UM-31) → **17 candidates + 4 Established** (UM-32). ⛔ Gate unchanged: P4 CLOSED until the corrected-P3 (AIP Stage-3) re-review ruling.
