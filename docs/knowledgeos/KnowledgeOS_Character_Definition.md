@@ -11,7 +11,7 @@
 | **Purpose** | State the strategic character of KnowledgeOS as a constitutional epistemic system — the prose culmination of all research lenses analysed (EKS/PKS/AIP archaeology · epistemic systems · Vedanta/Jñāna · Vāṇī · Zero · topology · logic · TMS/AGM · contradiction handling · inference theory) |
 | **Kernel Status** | ⛔ **Does not define kernel architecture, data model, or implementation** |
 | **Rule obeyed** | ⛔ **No promotion**: this is a *character statement*, not an invariant map. Nothing here is adopted, nothing is SHALL, nothing changes the register. The **Constitutional Invariant Map v1.0** remains the P4 deliverable, with evidence-column discipline. Every point reconciles to an already-registered candidate (§14) — the character introduces **no new candidate, no new dimension, no new forbidden collapse**. |
-| **Traceability** | HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29) — recorded §Z + §AA + §AB in `.claude/sessions/2026-08-22.md` · `.claude/CONTEXT.md` (blocks Y + Z + AB) · placement derived `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) |
+| **Traceability** | HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33) — recorded §Z + §AA + §AB + §AC + §AD + §AE + §AF in `.claude/sessions/2026-08-22.md` · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF) · placement derived `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) |
 
 ---
 
@@ -563,7 +563,7 @@ With **H-KOS-Agent-001** and the **Kernel-vs-Engine** separation, the character 
 
 ---
 
-**Traceability:** HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29) · recorded `.claude/sessions/2026-08-22.md` §Z + §AA + §AB · `.claude/CONTEXT.md` (blocks Y + Z + AB) · placement derived `--scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) · house naming `KnowledgeOS_*` (precedent: `KnowledgeOS_Conceptual_Foundation.md`, `KnowledgeOS_Epistemic_Control_Systems_Comparison.md`, `KnowledgeOS_Vedanta_Pramana_Lens.md`). All study outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.
+**Traceability:** HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33) · recorded `.claude/sessions/2026-08-22.md` §Z + §AA + §AB + §AC + §AD + §AE + §AF · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF) · placement derived `--scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) · house naming `KnowledgeOS_*` (precedent: `KnowledgeOS_Conceptual_Foundation.md`, `KnowledgeOS_Epistemic_Control_Systems_Comparison.md`, `KnowledgeOS_Vedanta_Pramana_Lens.md`). All study outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.
 
 ---
 
@@ -616,3 +616,43 @@ Shorter: **"KnowledgeOS does not store truth. It preserves the conditions under 
 Essence chain: UM-28 → UM-29 → UM-30 → UM-32 (latest wins; HPA overrides anytime). §16 extended: the **Reasoning + Validation layers are engines** (operational mechanisms) under the constitutional kernel.
 
 Register: 12 → 14 (UM-31) → **17 candidates + 4 Established** (UM-32). ⛔ Gate unchanged: P4 CLOSED until the corrected-P3 (AIP Stage-3) re-review ruling.
+
+---
+
+# §20 Navya-Nyāya — Relational Ontology (HPA, UM-33)
+
+**New boundary (HPA):** Navya-Nyāya is *more important architecturally than the previous Tarka document* — it moves from **reasoning steps** into **the structure of reasoning itself**. Tarka said "reasoning must be governed." Navya-Nyāya adds: **"the relationships inside reasoning must be explicitly represented."** The strongest contribution is **not the 16 categories** but **Navya-Nyāya's relational ontology** — sambandha (relation) is **ontologically primary, not merely grammatical**.
+
+**The deepest discovery.** KnowledgeOS is not fundamentally a document system, and not fundamentally a knowledge-object system — it is a **relationship-preserving reasoning system**:
+
+```
+Entity → Relationship → Meaning → Inference → Knowledge State        (not Document → Embedding → Answer)
+```
+
+The already-registered separations — Evidence ≠ Authority · Observation ≠ Decision · Assessment ≠ Authority · Expression ≠ Meaning · Representation ≠ Identity — are **all relationship constraints, not object properties**. "The relationship itself carries meaning."
+
+**The Navya-Nyāya family — five HYPOTHESES** (should-voice; tier-3-derived; validation targets seek tier-1/2 evidence):
+
+| Candidate | Content |
+|---|---|
+| **H-KOS-Relation-001** (HPA: "one of the strongest kernel candidates") | Epistemic relationships as **first-class entities**; do not reduce them into attributes of knowledge objects |
+| **H-KOS-Context-002** (Avacchedaka) | Preserve the **delimiting conditions under which a proposition is valid** — "Context is not metadata. Context is a logical boundary." A claim without its boundary conditions is incomplete |
+| **H-KOS-Lifecycle-Reasoning-001** | Knowledge evolution as an **epistemic inquiry lifecycle**, not only a document lifecycle — `Observation → Doubt → Investigation → Reasoning → Challenge → Determination → Knowledge State` |
+| **H-KOS-Intent-001** (Vāda/Jalpa/Vitaṇḍā) | Preserve the **purpose and intent of a reasoning process** — identical arguments can produce different epistemic outcomes by intent; **truth seeking ≠ argument generation** |
+| **H-KOS-Failure-001** (Hetvābhāsa — 5 failure modes) | Preserve **reasoning failure modes as explicit epistemic states**, not discard failed attempts — store *why* reasoning failed |
+
+⚠️ **Compression flags (4 of 5; ES-005.4, never a copy).** **H-KOS-Relation-001** is NOT a new dimension — it is the **general principle UNDER the separation family**; P4's deepest test is whether it **subsumes** the N pairwise rows as instances (one relation invariant + N instances). **Context-002 ↔ H-KOS-Context-001 ↔ Semantic-Continuity** · **Lifecycle-Reasoning-001 ↔ Transformation family ↔ doubt state-machine (§AD-7)** · **Failure-001 ↔ H-KOS-Fallacy-001 ↔ REJECTED epistemic state** (state-side complement of Fallacy-001's detection side). **H-KOS-Intent-001 is the genuinely novel content** (no registered row covers reasoning intent) — but Medium relevance and engine-layer.
+
+**Research Only (HPA).** The 16 Padārthas as a complete architecture · Nyāya liberation goal · Sanskrit logical terminology. The 16 categories must **not** become kernel entities.
+
+**Self-presenting representation — architectural consequence, NOT a kernel decision.** Navya-Nyāya's innovation: the logical structure is **visible inside the representation itself** (relation · boundary · role · dependency carried by the representation), vs `Data + hidden metadata + external interpretation`. Consequence: KnowledgeOS probably requires a **semantic relationship model** — a knowledge graph / hypergraph (`Claim —supported-by→ Evidence —bounded-by→ Context —derived-through→ Reasoning Chain`) — **not** relational-DB-only, **not** vector-DB-only. ⚠️ **Discipline:** recorded as a **P4 architectural-candidate / storage-model consideration** — the Nyāya material does not decide a storage model or an AI architecture (HPA discipline, restated in-message).
+
+**Updated kernel formula (HPA) — "Preserves … Through …".** Preserves 1–8: Identity · Evidence · Authority · Context · Transformation · Time · Uncertainty · Knower — Through 9–12: Relations · Reasoning chains · Validation processes · Revision history. ⚠️ A **two-tier constitutional structure** (what is preserved vs the mechanisms through which it is preserved) needing P4 reconciliation with the established dimension set; minor tension noted (Relations appear both as §1's primitive and as a "Through" mechanism) — P4 resolves.
+
+**Updated character (provisionally canonical — latest-wins):**
+
+> **"KnowledgeOS preserves the relational structure through which knowledge becomes meaningful."**
+
+Essence chain extended: UM-28 → UM-29 → UM-30 → UM-32 → **UM-33**. A **refinement, not a contradiction** — it adds the relational primitive as the medium; UM-32's substrate character (§19) remains the fuller form. HPA's final insight: *"Knowledge is not a thing. Knowledge is a justified network of relationships between a knower, an object, evidence, reasoning, context, and conclusion."* Canonical one-sentence form confirmed at P4.
+
+Register: 17 → **22 candidates + 4 Established** (UM-33) + unnamed Pramāṇa row. Effective new count at P4 may be **lower after Filter · Separate · Test** (4 of 5 carry compression flags). ⛔ "Final missing piece before P4 mapping" = **readiness, not gate-open**. P4 remains CLOSED until the corrected-P3 (AIP Stage-3) re-review ruling.
