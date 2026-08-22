@@ -1,7 +1,7 @@
 # Session Completion Report & Next Actor Recommendation — Operational Protocol
 
 **Work item:** `KOS-AIP-GOV-STATE-DURABILITY-ADR` · **Classification:** **OPERATIONAL GOVERNANCE IMPROVEMENT**
-**Status:** **PROPOSED OPERATIONAL IMPROVEMENT** — *not* accepted architecture · *not* a workflow engine change · *not* a migration requirement · *not* an EKS-07 implementation
+**Status:** **ADOPTED OPERATIONAL PRACTICE** *(PO/ARB act 2026-08-22 · registration: `2026-08-22-KOS-AIP-GOV-STATE-DURABILITY-ADR-session-completion-handoff-protocol-adoption-registration.md`)* — *not* accepted architecture · *not* a workflow engine change · *not* a migration requirement · *not* an EKS-07 implementation
 **Registered by:** the producing session — **self-declared, not attestable** (`INV-ATTR-1`/`INV-ATTR-2`)
 
 > ### ⭐ The one-line thesis
@@ -349,7 +349,7 @@ Continuation Reason:      The next slice is the same responsibility; it is not a
 
 ## 11 · Status & Stop Condition
 
-**This document is:** **PROPOSED OPERATIONAL IMPROVEMENT**
+**This document is:** **ADOPTED OPERATIONAL PRACTICE** *(PO/ARB act 2026-08-22 · registration: `2026-08-22-KOS-AIP-GOV-STATE-DURABILITY-ADR-session-completion-handoff-protocol-adoption-registration.md`)*
 
 **It is NOT:** accepted architecture · workflow engine change · migration requirement · EKS-07 implementation.
 
@@ -361,7 +361,7 @@ Continuation Reason:      The next slice is the same responsibility; it is not a
 - ⛔ do not modify any DV correction;
 - ⛔ do not create an EKS-07 implementation.
 
-**Next actor:** 🔵 **Governance review of this operational improvement.**
+**Next steps (post-adoption):** ① the producer applies the accepted **F1/F3 amendment** in an authorized next revision (F2 is recorded in the adoption registration) · ② **agent templates** (`.claude`/`.codex`) only after Governance acceptance — *agents may follow a protocol only after Governance has accepted it* · ③ **continue the `KOS-AIP-GOV-STATE-DURABILITY` migration** (next-actor ambiguity operationally solved).
 
 ---
 
