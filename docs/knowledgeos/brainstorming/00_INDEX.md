@@ -113,7 +113,7 @@ architecture · write the final architecture documents) · approved plan (P1 pha
 > in our research of knowledgeos. If not integrated, then integrate them. Rename them
 > based on their content. Make a timestamp of the saved time and use it in the name."*
 > Recorded in full: `docs/knowledgeos/reviews/20260822-1430-KOS-BRAINSTORMING-INTAKE-INTEGRATION-ASSESSMENT.md`
-> (governed review record — §BS in `.claude/sessions/2026-08-22.md`, commit `________`).
+> (governed review record — §BS in `.claude/sessions/2026-08-22.md`, commit `b503f8ed`).
 
 ## Why this section exists
 
