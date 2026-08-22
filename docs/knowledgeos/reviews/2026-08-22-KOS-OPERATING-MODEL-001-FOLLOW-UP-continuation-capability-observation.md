@@ -1,7 +1,7 @@
 # `KOS-OPERATING-MODEL-001` — FOLLOW-UP observation: governed continuation & fresh-session self-activation capability (`ActivateCommissionedFreshSession`)
 
 **Recorded by:** Governance-recording — `claude-code-session:b51dba91-6fc4-4110-b2f2-ac76ad0f3808` *(disclosed GOVERNANCE-RECORDING capacity; identity disclosed — CORRECTION-001 author. Recording ≠ implementing/verifying/accepting/adopting/appointing/deciding.)*
-**Source acts:** PO/ARB in-session analysis 2026-08-22 (two messages): (1) narrating the fresh independent verifier `claude-code-session:fc59bb0a-98df-4c3f-8819-06bd1adb92f4` that correctly stopped instead of self-authorizing — *"the next actor is Governance"*; (2) the design refinement — *"Yes. That is the missing architectural piece. The fresh session's identity is inherently unknown before the session exists, so the workflow must support **self-registration of the newly created runtime identity — but only for the already-authorized role and only under governed conditions**."* — the new explicitly commissioned capability `ActivateCommissionedFreshSession`, with the invariant: *"A fresh session may self-bind identity; it may never self-choose role, scope, work item, or authority."*
+**Source acts:** PO/ARB in-session analysis 2026-08-22 (three messages): (1) narrating the fresh independent verifier `claude-code-session:fc59bb0a-98df-4c3f-8819-06bd1adb92f4` that correctly stopped instead of self-authorizing — *"the next actor is Governance"*; (2) the design refinement — *"Yes. That is the missing architectural piece. The fresh session's identity is inherently unknown before the session exists, so the workflow must support **self-registration of the newly created runtime identity — but only for the already-authorized role and only under governed conditions**."* — the new explicitly commissioned capability `ActivateCommissionedFreshSession`, with the invariant: *"A fresh session may self-bind identity; it may never self-choose role, scope, work item, or authority."*; (3) the symmetry refinement — *"A fresh session does not need to know its identity or role in advance. It discovers its runtime identity, and its requested role comes from the human's business instruction."* — the **unified binding model**: *"Human declares intended responsibility; runtime declares process identity; the governed bootstrap binds the two"* — one mechanism for the FIRST session (*"I want Governance Engineer."*) and every subsequent fresh session (*"I want a Verification session for KOS-OPERATING-MODEL-001."*); the old rule *"A session must never register itself"* is corrected as too strong.
 **Placement derived:** `scripts/doc-placement.php` (product-specific · knowledgeos → `docs/knowledgeos`, exit 0)
 
 > ⛔ **This observation is recorded, NOT decided, NOT implemented.** It proposes a **follow-up / amendment** to `KOS-OPERATING-MODEL-001`. It creates no authority, no lane, no grant, no state change, no new capability, no modification to any asset.
@@ -53,6 +53,70 @@ VERIFICATION ACTIVE
 ```
 
 **The human never provides the UUID.** The human starts a fresh session and pastes the prepared prompt; the session discovers `CLAUDE_CODE_SESSION_ID` automatically.
+
+### The unified binding model — the symmetry (PO/ARB refinement #2, 2026-08-22)
+
+**The revelation (verbatim):** *"A fresh session does not need to know its identity or role in advance. It discovers its runtime identity, and its requested role comes from the human's business instruction."* The old statement *"A session must never register itself"* was **too strong**. The correct rule:
+
+> **A fresh session may register itself only when the desired role and work context are already established by the human's business instruction or an existing governed commission.**
+
+**The unified invariant:**
+
+> **Human declares intended responsibility; runtime declares process identity; the governed bootstrap binds the two.**
+
+**The symmetry — one mechanism, every role.** The human chooses the role in **business language**, never a process ID; the runtime supplies the process identity automatically:
+
+```
+HUMAN BUSINESS INTENT
+        ↓
+"I want <ROLE>."   ← Governance Engineer · Architecture · Implementation · Verification · Review · Communication
+        ↓
+FRESH SESSION
+        ↓
+discover runtime ID
+        ↓
+GOVERNED BINDING   ← validates work context · requested role · eligibility · identity
+        ↓
+REGISTER {session = own runtime identity, role = requested role}
+        ↓
+HANDOFF / activation mechanics
+        ↓
+<ROLE> ACTIVE
+```
+
+**First session (Governance Engineer):**
+```
+Human → opens fresh session → "I want Governance Engineer."
+session discovers its own runtime identity
+session says: "I am <runtime-id>. You requested Governance Engineer."
+Governance bootstrap validates: work context · requested role · eligibility · identity
+REGISTER itself as Governance Engineer
+HANDOFF / activation mechanics
+Governance Engineer ACTIVE
+```
+The human does not say *"I appoint fc59…"* — the session performs `runtime identity = fc59…`, `requested role = Governance Engineer`, and the governed bootstrap establishes `REGISTER {session = fc59…, role = governance}`.
+
+**Subsequent session (existing work item):**
+```
+"I want a Verification session for KOS-OPERATING-MODEL-001."
+```
+The fresh session gets its own runtime identity and binds itself to the **already requested/authorized role**, subject to the workflow rules.
+
+**The key architectural distinction:**
+
+```
+✅ self-discover identity
+✅ self-bind to explicitly requested/commissioned role
+✅ self-register through canonical workflow mechanism
+
+❌ choose its own role
+❌ choose arbitrary work item
+❌ invent scope
+❌ invent authority
+❌ bypass Governance
+```
+
+**The mechanics are the same for both cases; only the business-intent source differs** — the human's business instruction for a first session (*"Hello Governance Engineer…"*) versus an existing governed commission for a subsequent session (*"I am the fresh Verification session for …"*).
 
 ## 3 · The proposed capability `ActivateCommissionedFreshSession` (candidate, NOT implemented)
 
@@ -139,7 +203,7 @@ The earlier in-session message prescribed the governed sequence **CONTINUATION �
 
   On the human's **"1"**, the governed sequence executes (CONTINUATION → REGISTER(verification) → HANDOFF → human START) → verification ACTIVE → **independent verification** → governance adoption review → **PO/ARB adoption decision** (NOT automatic).
 
-- **(B) The PO/ARB commissioning `ActivateCommissionedFreshSession`** as a **new explicitly commissioned capability / operating-model amendment** (per the design in §2–§5) — a separate governed slice, integrated by the Governance Engineer. **This observation does not substitute for either decision** — it records the gap and the refined design so the gap is governed, not silently patched.
+- **(B) The PO/ARB commissioning `ActivateCommissionedFreshSession`** as a **new explicitly commissioned capability / operating-model amendment** (per the design in §2–§5, now unified — §2.1: the same binding mechanism serves the FIRST session *"I want Governance Engineer."* and every subsequent fresh session *"I want a Verification session for KOS-OPERATING-MODEL-001."*) — a separate governed slice, integrated by the Governance Engineer. **This observation does not substitute for either decision** — it records the gap and the refined design so the gap is governed, not silently patched.
 
 ## 9 · session_completion
 
@@ -152,11 +216,15 @@ session_completion:
                      #   architecture: the missing capability = ActivateCommissionedFreshSession (fresh
                      #   session self-binds its discovered identity to the commissioned role; never
                      #   self-chooses role/scope/work-item/authority); contract + safety rule + invariant +
-                     #   Governance/Communication split + boundaries
+                     #   Governance/Communication split + boundaries; refinement #2: the unified binding
+                     #   model — Human declares intended responsibility / runtime declares process
+                     #   identity / governed bootstrap binds the two — one mechanism for the FIRST session
+                     #   and every subsequent fresh session; old "a session must never register itself"
+                     #   corrected as too strong
   evidence:          # fold KOS-OPERATING-MODEL-001 (STOPPED, 259c1966, no verification lane); AST-017
                      #   bootstrap fc59bb0a (UNRESOLVED/authorized_to_act=false/next=governance); session log
                      #   2026-08-22 (fc59bb0a declaration, independence bars passed); PO/ARB in-session
-                     #   analysis 2026-08-22 (two messages, verbatim)
+                     #   analysis 2026-08-22 (three messages, verbatim)
   open_items:        # human continuation decision (A) pending; capability commissioning (B) pending;
                      #   verification lane not registered; ActivateCommissionedFreshSession not decided/
                      #   implemented; adoption not claimed
