@@ -2,6 +2,7 @@
 
 **Work item:** `KOS-AIP-GOV-STATE-DURABILITY-ADR` · **Classification:** **OPERATIONAL GOVERNANCE IMPROVEMENT**
 **Status:** **ADOPTED OPERATIONAL PRACTICE** *(PO/ARB act 2026-08-22 · registration: `2026-08-22-KOS-AIP-GOV-STATE-DURABILITY-ADR-session-completion-handoff-protocol-adoption-registration.md`)* — *not* accepted architecture · *not* a workflow engine change · *not* a migration requirement · *not* an EKS-07 implementation
+**Version:** **1.1** — F1 + F3 amendment (PO/ARB-authorized controlled revision, 2026-08-22); supersedes v1.0 @ commit `db3a83e5`
 **Registered by:** the producing session — **self-declared, not attestable** (`INV-ATTR-1`/`INV-ATTR-2`)
 
 > ### ⭐ The one-line thesis
@@ -104,7 +105,7 @@ Continuation Reason:      <explanation>
 | **Recommended Next Actor** | the declared role that should act next — **a recommendation, never an assignment** |
 | **Reason** | the rule (independence, authority boundary) that produces the recommendation — a preference is not a reason |
 | **Human Decision Required** | `YES` if any human act (`humanAct`, grant, approval, decision, START) is needed before the next actor may act; `NO` only where no human authority boundary is crossed |
-| **Can Current Session Continue** | the session's self-answered continuation question (§4) — `YES`/`NO`, never blank |
+| **Can Current Session Continue** | the session's self-answered continuation question (§4) — `YES`/`NO`, never blank; ⚡ **a *capability* statement, never an *authorization* statement** (amendment v1.1 — F1) |
 | **Continuation Reason** | the rule that allows or prohibits continuation |
 
 **The report is an evidence artifact.** It is **advisory**, it registers nothing, it grants nothing, and it is authored under the producer bar: the session that produced a report is subject to the same independence rules as any other producer (§4).
@@ -153,6 +154,41 @@ Every completion report MUST answer: **"Can I continue?"** — and MUST answer i
 - the producer of an artifact cannot later approve, verify, or accept that artifact.
 
 > ⛔ **The self-answer is a self-declaration, not an authority decision.** A session answering `YES` does not thereby acquire the right to act — the workflow engine still governs who is allowed to act (§6). A session answering `NO` is stating a bar it must respect; it is not being "blocked by the system," it is being bound by its own independence.
+
+### ⚡ Amendment v1.1 — Continuation Assessment (F1: capability ≠ authorization)
+
+*PO/ARB-authorized controlled revision, 2026-08-22. Adds the distinction the field requires; changes nothing in the outcomes above.*
+
+**"Can Current Session Continue?" evaluates operational continuity only.**
+
+It answers:
+
+- **YES** — the current session has enough context to continue analysis.
+
+It does **NOT** mean:
+
+- ❌ ownership granted
+- ❌ authority transferred
+- ❌ workflow started
+- ❌ human decision completed
+- ❌ artifact acceptance granted
+
+**Authorization remains controlled by:**
+
+- workflow state
+- Governance decisions
+- `humanAct` requirements
+- ownership rules
+
+**Worked example:**
+
+```
+Continuation possible:  YES
+Authorization:          NOT GRANTED
+Next actor:             Governance / Architecture / Human PO — according to workflow state
+```
+
+**Consequence:** answering `YES` is a **capability** statement, never an **authorization** statement. It changes nothing in the workflow: `START` still requires a recorded human act **and** the predecessor's recorded handoff (`G-3`); no other exit from `STOPPED` exists than a recorded Governance/Human `CONTINUATION` (`Inv E`).
 
 ---
 
@@ -347,7 +383,25 @@ Continuation Reason:      The next slice is the same responsibility; it is not a
 
 ---
 
-## 11 · Status & Stop Condition
+## 11 · Relationship to Existing Completion Controls (amendment v1.1 — F3)
+
+*PO/ARB-authorized controlled revision, 2026-08-22.*
+
+This protocol does **not** replace existing completion checklists.
+
+Before declaring session completion, the session must consult the **End-of-Commission checklist** (`.claude/CLAUDE.md`):
+
+> session log written · CONTEXT updated · active plan updated · one story → one commit · working tree clean · next action recorded
+
+| This protocol provides | The existing checklist provides |
+|---|---|
+| **"Who should act next?"** | **"Has the session completed its obligations?"** |
+
+The two answer **different questions** and are both binding: the checklist closes the product-phase bookkeeping; this protocol makes the governed-session handoff legible. This is a **complement** (consume/relate — `ES-005.4`, never a second) — **never** a parallel completion process.
+
+---
+
+## 12 · Status & Stop Condition
 
 **This document is:** **ADOPTED OPERATIONAL PRACTICE** *(PO/ARB act 2026-08-22 · registration: `2026-08-22-KOS-AIP-GOV-STATE-DURABILITY-ADR-session-completion-handoff-protocol-adoption-registration.md`)*
 
@@ -361,10 +415,10 @@ Continuation Reason:      The next slice is the same responsibility; it is not a
 - ⛔ do not modify any DV correction;
 - ⛔ do not create an EKS-07 implementation.
 
-**Next steps (post-adoption):** ① the producer applies the accepted **F1/F3 amendment** in an authorized next revision (F2 is recorded in the adoption registration) · ② **agent templates** (`.claude`/`.codex`) only after Governance acceptance — *agents may follow a protocol only after Governance has accepted it* · ③ **continue the `KOS-AIP-GOV-STATE-DURABILITY` migration** (next-actor ambiguity operationally solved).
+**Next steps (post-adoption, v1.1):** ① ✅ **F1/F3 amendment applied** (this document is v1.1; F2 recorded in the adoption registration) · ② **agent templates** (`.claude` / `.codex` / `AGENTS.md`) — now permitted: PO/ARB adoption + Governance review + operational practice accepted · ③ **operational handoff test** · ④ **continue the `KOS-AIP-GOV-STATE-DURABILITY` migration** (next-actor ambiguity operationally solved).
 
 ---
 
-## 12 · Traceability
+## 13 · Traceability
 
-Work item `KOS-AIP-GOV-STATE-DURABILITY-ADR` (operational improvement) · the coordination friction observed during the `KOS-AIP-GOV-STATE-DURABILITY` work · `KOS-AIP-GOV-STATE-DURABILITY-DECISION.md` and `2026-08-19-KOS-AIP-GOV-STATE-DURABILITY-po-arb-position-registration.md` *(producer bar · `G-2`/`R5b` `humanActRef` · decision authority reserved to the human PO/ARB)* · `workflow-state.php` *(states · `REGISTER`/`HANDOFF`/`START`/`COMPLETE` · ownership passes only on `START` · `G-3`)* · `EKS-04` *(HANDOFF vs COMPLETE)* · `EKS-07` *(multi-process coordination — FUTURE ARCHITECTURE EXPLORATION, not commissioned)* · six-role operating model adoption *(declared-role vocabulary; roles ≠ bounded contexts)* · `INV-ATTR-1`/`INV-ATTR-2` *(self-declared identity, recorded not attested)* · `ES-005.4` *(reuse the declared role vocabulary and the existing workflow engine; create no second)* · `scripts/doc-placement.php` *(product-specific · knowledgeos → `docs/knowledgeos`, exit 0)*
+Work item `KOS-AIP-GOV-STATE-DURABILITY-ADR` (operational improvement) · the coordination friction observed during the `KOS-AIP-GOV-STATE-DURABILITY` work · `KOS-AIP-GOV-STATE-DURABILITY-DECISION.md` and `2026-08-19-KOS-AIP-GOV-STATE-DURABILITY-po-arb-position-registration.md` *(producer bar · `G-2`/`R5b` `humanActRef` · decision authority reserved to the human PO/ARB)* · `workflow-state.php` *(states · `REGISTER`/`HANDOFF`/`START`/`COMPLETE` · ownership passes only on `START` · `G-3`)* · `EKS-04` *(HANDOFF vs COMPLETE)* · `EKS-07` *(multi-process coordination — FUTURE ARCHITECTURE EXPLORATION, not commissioned)* · six-role operating model adoption *(declared-role vocabulary; roles ≠ bounded contexts)* · `INV-ATTR-1`/`INV-ATTR-2` *(self-declared identity, recorded not attested)* · `ES-005.4` *(reuse the declared role vocabulary and the existing workflow engine; create no second)* · `scripts/doc-placement.php` *(product-specific · knowledgeos → `docs/knowledgeos`, exit 0)* · **v1.1 amendment record** (PO/ARB-authorized controlled revision 2026-08-22): F1 *continuation capability ≠ authorization* (§4) · F3 *relationship to existing completion controls* (§11) — supersedes v1.0 @ `db3a83e5`
