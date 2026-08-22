@@ -11,7 +11,7 @@
 | **Purpose** | State the strategic character of KnowledgeOS as a constitutional epistemic system — the prose culmination of all research lenses analysed (EKS/PKS/AIP archaeology · epistemic systems · Vedanta/Jñāna · Vāṇī · Zero · topology · logic · TMS/AGM · contradiction handling · inference theory) |
 | **Kernel Status** | ⛔ **Does not define kernel architecture, data model, or implementation** |
 | **Rule obeyed** | ⛔ **No promotion**: this is a *character statement*, not an invariant map. Nothing here is adopted, nothing is SHALL, nothing changes the register. The **Constitutional Invariant Map v1.0** remains the P4 deliverable, with evidence-column discipline. Every point reconciles to an already-registered candidate (§14) — the character introduces **no new candidate, no new dimension, no new forbidden collapse**. |
-| **Traceability** | HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33) — recorded §Z + §AA + §AB + §AC + §AD + §AE + §AF in `.claude/sessions/2026-08-22.md` · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF) · placement derived `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) |
+| **Traceability** | HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34) — recorded §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG in `.claude/sessions/2026-08-22.md` · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG) · placement derived `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) |
 
 ---
 
@@ -563,7 +563,7 @@ With **H-KOS-Agent-001** and the **Kernel-vs-Engine** separation, the character 
 
 ---
 
-**Traceability:** HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33) · recorded `.claude/sessions/2026-08-22.md` §Z + §AA + §AB + §AC + §AD + §AE + §AF · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF) · placement derived `--scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) · house naming `KnowledgeOS_*` (precedent: `KnowledgeOS_Conceptual_Foundation.md`, `KnowledgeOS_Epistemic_Control_Systems_Comparison.md`, `KnowledgeOS_Vedanta_Pramana_Lens.md`). All study outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.
+**Traceability:** HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34) · recorded `.claude/sessions/2026-08-22.md` §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG) · placement derived `--scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) · house naming `KnowledgeOS_*` (precedent: `KnowledgeOS_Conceptual_Foundation.md`, `KnowledgeOS_Epistemic_Control_Systems_Comparison.md`, `KnowledgeOS_Vedanta_Pramana_Lens.md`). All study outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.
 
 ---
 
@@ -656,3 +656,34 @@ The already-registered separations — Evidence ≠ Authority · Observation ≠
 Essence chain extended: UM-28 → UM-29 → UM-30 → UM-32 → **UM-33**. A **refinement, not a contradiction** — it adds the relational primitive as the medium; UM-32's substrate character (§19) remains the fuller form. HPA's final insight: *"Knowledge is not a thing. Knowledge is a justified network of relationships between a knower, an object, evidence, reasoning, context, and conclusion."* Canonical one-sentence form confirmed at P4.
 
 Register: 17 → **22 candidates + 4 Established** (UM-33) + unnamed Pramāṇa row. Effective new count at P4 may be **lower after Filter · Separate · Test** (4 of 5 carry compression flags). ⛔ "Final missing piece before P4 mapping" = **readiness, not gate-open**. P4 remains CLOSED until the corrected-P3 (AIP Stage-3) re-review ruling.
+
+---
+
+# §21 Tarka paper — the Reasoning Discipline Model (HPA, UM-34)
+
+**The extraction (HPA):** the "Tarka – The Indian Science of Logical Analysis" paper gives KnowledgeOS a **reasoning discipline model** — *"KnowledgeOS needs a formal discipline for how claims move from uncertainty → investigation → justification → accepted knowledge."* Nyāya as "examining-understanding through substantiation." The core claim: **a knowledge state is a verified transition, not stored information** — `Observation → Question → Investigation → Reasoning → Validation → Conclusion → Knowledge State`, never `Input → Fact`. **"Knowledge is a justified epistemic state, not stored information."**
+
+**⚠️ The decisive discipline result — canonical discovery (ES-005.4, never a copy).** Six new INV-KOS- designations drafted by the HPA; **five map onto already-registered rows** (candidate-level convergence, not new content):
+
+| HPA designation (UM-34) | Existing registered row |
+|---|---|
+| INV-KOS-ReasoningLifecycle-001 | **H-KOS-Lifecycle-Reasoning-001** (§20, UM-33) |
+| INV-KOS-Pramana-001 | ⚠️ **Resolves the unnamed Pramāṇa flag** (§19 / §AE-5) — now named |
+| INV-KOS-InferenceBoundary-001 | **INV-KOS-Inference-001** (Observation≠Inference) |
+| INV-KOS-ArgumentStructure-001 | **H-KOS-Reasoning-Provenance-001** (§19) |
+| INV-KOS-SemanticBoundary-001 | **H-KOS-Context-002** (Avacchedaka, §20) — partial; + new facet |
+| INV-KOS-ReasoningGate-001 | **H-KOS-Reasoning-Separation-001** (§19, Strong) |
+
+**Pramāṇa flag RESOLVED — INV-KOS-Pramana-001.** *"Preserve the means by which knowledge was acquired because validity depends on the epistemic method of acquisition."* Evidence carries `Evidence Type + Acquisition Method + Reliability Conditions`; must not flatten `sensor ≠ expert assessment ≠ logical inference ≠ historical document`. Selects option (a) of the §AE-5 triplet (distinct source-type candidate). P4 still runs the compression tests: **Pramana-001 ↔ Reasoning-Separation-001 ↔ Agent-001 ↔ INV-001**.
+
+**SemanticBoundary-001 — the one genuinely new facet.** The **definition-precision taxonomy** (definitions must avoid **over-extension · under-extension · impossible characteristics**) connects Context boundary · Semantic identity · Ubiquitous language. ⚠️ **Not auto-added** — P4 candidate material under the **Context-002 compression test** (refinement or distinct row — P4 decides).
+
+**Confirmed alignment (no new rows).** Hetvābhāsa → AI failure categories = **H-KOS-Failure-001 + H-KOS-Fallacy-001** · "Reasoning Gate ≠ Answer Generator" = **H-KOS-Reasoning-Separation-001** + the kernel/engine validation boundary (§16) · kernel model (Truth Discovery Layer → Reasoning Governance → Constitutional Invariants incl. **Relations**) = the §19/§20 architecture + **H-KOS-Relation-001**.
+
+**Updated character (provisionally canonical — latest-wins):**
+
+> **"KnowledgeOS is not a knowledge repository. It is an epistemic reasoning substrate that preserves the relationships, evidence, context, and reasoning paths required for trustworthy truth discovery."**
+
+Short-form variant: **"KnowledgeOS preserves the conditions under which reasoning can produce trustworthy knowledge."** Essence chain: UM-28 → 29 → 30 → 32 → 33 → **34** (refinements, not contradictions). Canonical one-sentence form confirmed at P4.
+
+Register: 22 → **23 candidates + 4 Established** (Pramāṇa named and counted; five designations mapped, no new rows; SemanticBoundary = P4 candidate material). ⛔ Gate unchanged: P4 CLOSED until the corrected-P3 (AIP Stage-3) re-review ruling.
