@@ -153,6 +153,31 @@ Halt and report — do not solve — if the work appears to require: modifying v
 
 **Five architectural hypotheses (AH-1…AH-5) recorded and stopped at "HPA DECISION REQUIRED".** No architecture change, no winner, no promotion, OQ-4 still unauthorized.
 
+## 16 · EP-02 Completion Review — independent verification (added 2026-08-22)
+
+**Reviewer:** Senior Research Engineer / Mathematical Semantic Systems Engineer. **EP-02 / R-34 discipline:** engineering does not accept its own work — the executed artifacts were **re-run from committed code** and verified against the HPA's approval-with-amendments, rather than trusting the report's self-claims. All checks below were executed this session in this worktree.
+
+**Governing instrument:** HPA approval-with-amendments, 2026-08-22 — *"Approved with amendments. Proceed with P5 steps 6–16."* Amendments: **Q-1** OQ-4 remains unauthorized · **Q-2** honest reduction accepted · **Q-3** `DOMAIN_CONDITIONAL` deferred · **Q-4** templates + independently declared hand-written gold · **D-3** strengthened to the four-way distinction `EXPRESSED / EXPRESSED+NEGATED / NOT_EXPRESSED / UNKNOWN`. Boundaries preserved verbatim: `SNF = research mechanism · SNF ≠ KnowledgeOS Kernel · Candidate ≠ Identity · Confidence ≠ Identity · Agreement ≠ Identity · Canonical representation ≠ Identity · Similarity ≠ Identity`.
+
+| Amendment / boundary | Independent check (this session) | Result |
+|---|---|---|
+| **D-3** four-way distinction | `d_snf_gate(V02)` re-run | **14/14 PASS** — all four states separated 0.45–1.00; pair K `NOT_EXPRESSED` vs `UNKNOWN` = 0.450 ≥ τ 0.40; negation pair above τ. No collapse |
+| v0.1 retained as A/B baseline | `d_snf(…, V01)` on UNKNOWN-bearing IR | V01 still callable; known reflexivity defect preserved as baseline (d(x,x)=0.124); V02 d(x,x)=0.000 |
+| **Q-3** six policies + deferral | `ARBITRATION_POLICIES` / `POLICY_DEFERRED` / `SNFE` | exactly six policies (`UNANIMOUS · MAJORITY · QUORUM · VETO · ABSTAIN_ON_CONFLICT · LEAST_DIVERGENT`); `DOMAIN_CONDITIONAL` in `POLICY_DEFERRED`, rejected by `SNFE` with `ValueError`, not implemented |
+| **Q-4** hand-declared gold | corpus structure + import audit | 1,100 cases · digest `e9fb867903fb` · every case declares a relation + non-empty rationale; `corpus_1000.py` imports **stdlib + `ir` only** (never a producer/evaluator/distance/metrics module) |
+| **Q-2** honest reduction | `EXCLUDED_FAMILIES` | translation · legal · narrative · abstract · technical-ontology · institutional · procedural · metaphor/pragmatics — excluded with reasons, test-enforced as un-built, no claims made about them |
+| **Q-1** OQ-4 unauthorized | report Part I + STOP block | "NO real-language claim · OQ-4 remains UNAUTHORIZED" — verbatim in the report |
+| Reproducibility | two full `run-competition.py` runs | sweep digest **`9ce9d670cb47` identical across runs** and identical to the committed artifact; only `meta.elapsed_s` differs |
+| Phase-1 backward compatibility | `run-pilot.py` re-run | results **byte-identical** (`1f639703d21a`); metrics values identical — payload gains only the two D-7 provenance keys (`n_pairs`, `n_cases`); committed historical artifact restored |
+| Test suite | `run-tests.py` | **51 tests, OK** (incl. alias-pinning, deferred-policy, derived-denominator, no-composite, bootstrap-CI) |
+| No-winner / no-composite / no architecture change | report Part I + STOP block + code audit | confirmed — no selection, no weighted-composite authority rule, v1.1 r3 / Constitution / KnowledgeAggregate authority / Port Contract / register 25+4 all unmodified; AH-1…AH-5 stopped at "HPA DECISION REQUIRED", none implemented |
+
+**Verdict: the executed work (commit `92d7e5eb`) implements the approved plan and satisfies every HPA amendment and preserved boundary.** The report's Part I four-category section (Established · Suggested · Not established · Architectural implications requiring HPA decision) is present exactly as the HPA requested, and the STOP block holds.
+
+**Process observation (recorded, not a defect):** the execution commit (`92d7e5eb`) and the plan's "APPROVED WITH AMENDMENTS" status precede this session's receipt of the HPA approval instrument. The execution matches the amendments verbatim and the HPA has now confirmed them; the temporal ordering is noted for the record, not asserted as strictly sequential.
+
+**Action: none beyond this review.** STOP per §12/§16. OQ-4 remains unauthorized. No architecture step is taken as a result of this review.
+
 ---
 
 ### Traceability
