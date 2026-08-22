@@ -277,6 +277,7 @@ foreach ($workItems as $workItem) {
 
 $selected = null;
 $verdict = null;
+$ambiguousMatches = []; // V-3: ONLY the candidates that actually matched the selector
 
 if ($readableRecords === 0) {
     $verdict = 'UNRESOLVABLE';
@@ -290,6 +291,7 @@ if ($readableRecords === 0) {
     if (count($candidates) > 1) {
         // Same lane id in more than one record — never a silent pick.
         $verdict = 'AMBIGUOUS';
+        $ambiguousMatches = $candidates; // every record carrying that lane id IS a match
         $reasons[] = "lane id '{$opts['session']}' occurs in more than one record — "
             . 'specify --work-item to disambiguate';
     } else {
@@ -310,6 +312,7 @@ if ($readableRecords === 0) {
             . 'the REGISTER that attributes this process is the missing fact (Inv B)';
     } elseif (count($matching) > 1) {
         $verdict = 'AMBIGUOUS';
+        $ambiguousMatches = $matching; // ONLY the lanes that reference the current process label (V-3)
         $reasons[] = 'more than one lane references the current process label — all are listed and NONE is '
             . 'chosen; narrow with --session/--work-item or ask Governance which assignment applies';
     } else {
@@ -356,7 +359,10 @@ if ($verdict === 'RESOLVED' && $selected !== null) {
 
     // G-3 conjunction: START requires BOTH the predecessor's recorded handoff AND
     // a recorded human START act. A lane is ACTIVE only if both were recorded.
-    $recordedHumanStartAct = $selected['state'] !== 'CREATED';
+    // A human START is therefore NEVER inferred from "the lane left CREATED" —
+    // a CREATED→CANCELLED lane has no start act (V-1). ACTIVE is the fold state
+    // AST-015 sets only on START/CONTINUATION — the authoritative fact (no raw read).
+    $recordedHumanStartAct = $selected['state'] === 'ACTIVE';
     $missingForStart = [];
     if ($predecessorHandoff === null) {
         $missingForStart[] = 'a recorded predecessor HANDOFF carrying its token + tokenRef (G-3)';
@@ -633,7 +639,8 @@ $report = [
         'work_items_scanned' => $readableRecords,
         'candidates' => $candidates,
         'disambiguation_required' => $verdict === 'AMBIGUOUS'
-            ? 'Specify --session=<lane> and/or --work-item=<id> to select exactly one lane: ' . describeLanes($candidates)
+            ? 'Specify --session=<lane> and/or --work-item=<id> to select exactly one lane: '
+                . describeLanes($ambiguousMatches) // V-3: ONLY the actual matches, never every candidate
             : null,
         'unresolved_message' => $unresolvedMessage,
         'resolution_source' => 'AST-015 fold/identity/authorized via subprocess (AMENDMENT 2) + the single '

@@ -6,7 +6,9 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * KOS-SESSION-BOOTSTRAP-001 — Session Bootstrap & Responsibility Resolution
- * contract, S-1…S-17.
+ * contract, S-1…S-17, plus CORRECTION-001 regressions S-18…S-20
+ * (V-1 recorded_human_start_act · V-3 disambiguation truthfulness · V-5
+ * canonical field contract).
  *
  * Work item: KOS-SESSION-BOOTSTRAP-001 · Asset: AST-017
  * (session-bootstrap.php) · Component: CMP-004 (workflow_engine).
@@ -537,5 +539,84 @@ class SessionBootstrapContractTest extends TestCase
         $this->assertSame($a['raw'], $b['raw'],
             'PO/ARB acceptance criterion: same repo/records/process-label/work-item/CLI under either provider '
             . 'shape → byte-identical JSON. The harness — not the model endpoint — determines the result.');
+    }
+
+    // ─── CORRECTION-001 · S-18 = V-1 — a human START is never inferred ───────
+
+    public function test_s18_v1_cancelled_lane_without_start_never_claims_human_start(): void
+    {
+        $this->requireBootstrap();
+        // REGISTER → CANCEL with NO HANDOFF and NO START: the only lawfully-correct
+        // answer is that no human START was recorded (G-3). A terminal lane that
+        // merely LEFT CREATED must not be reported as having a human start act.
+        $this->mechanism(['init', 'WI-V1', '--workflow=platform-implementation',
+            '--roles=governance,architecture,implementation,verification']);
+        $this->mechanism(['append', 'WI-V1', '--json=' . json_encode(['type' => 'REGISTER', 'session' => 'S-v1',
+            'role' => 'implementation', 'predecessor' => null, 'executionContext' => 'claude-code-session:V1LABEL',
+            'recordedBy' => 'governance'])]);
+        $this->mechanism(['append', 'WI-V1', '--json=' . json_encode(['type' => 'CANCEL', 'session' => 'S-v1',
+            'recordedBy' => 'governance'])]);
+
+        $r = $this->bootstrap(['--process-label=V1LABEL', '--work-item=WI-V1']);
+
+        $this->assertSame('RESOLVED', $r['out']['verdict'], 'precondition: the lane is attributable');
+        $this->assertSame('CANCELLED', $r['out']['assignment']['workflow_state'],
+            'precondition: the lane reached the CANCELLED terminal state');
+        $this->assertFalse($r['out']['activation_prerequisites']['recorded_human_start_act'],
+            'V-1: leaving CREATED is NOT a human START — a CREATED→CANCELLED lane must report false');
+        $this->assertFalse($r['out']['gates']['authorized_to_act'],
+            'V-1: G-3 is not weakened — no START means no authorization');
+    }
+
+    // ─── CORRECTION-001 · S-19 = V-3 — disambiguation names ONLY the matches ──
+
+    public function test_s19_v3_disambiguation_lists_only_actual_matches(): void
+    {
+        $this->requireBootstrap();
+        $this->record('WI-V3a', 'V3LANE-A', 'implementation', 'ACTIVE', 'V3LABEL');   // matches
+        $this->record('WI-V3b', 'V3LANE-B', 'architecture', 'ACTIVE', 'V3LABEL');    // matches
+        $this->record('WI-V3c', 'V3LANE-C', 'verification', 'ACTIVE', 'OTHERLABEL'); // does NOT match
+
+        $r = $this->bootstrap(['--process-label=V3LABEL']);
+
+        $this->assertSame('AMBIGUOUS', $r['out']['verdict'], 'precondition: two lanes match the selector');
+        $this->assertCount(3, $r['out']['meta']['candidates'],
+            'precondition: all three lanes are discovered candidates');
+        $msg = (string) ($r['out']['meta']['disambiguation_required'] ?? '');
+        $this->assertNotSame('', $msg, 'an AMBIGUOUS report must require disambiguation');
+        $this->assertStringContainsString('V3LANE-A', $msg, 'matching lane A is named for disambiguation');
+        $this->assertStringContainsString('V3LANE-B', $msg, 'matching lane B is named for disambiguation');
+        $this->assertStringNotContainsString('V3LANE-C', $msg,
+            'V-3 truthfulness: the non-matching lane MUST NOT be listed as a disambiguation candidate');
+        $this->assertNull($r['out']['assignment']['lane'] ?? null, 'no silent selection (P-3)');
+        $this->assertFalse($r['out']['gates']['authorized_to_act'], 'fail-closed unchanged');
+    }
+
+    // ─── CORRECTION-001 · S-20 = V-5 — ONE canonical bootstrap field name ─────
+
+    public function test_s20_v5_canonical_field_is_activation_prerequisites(): void
+    {
+        $this->requireBootstrap();
+        $this->record('WI-V5', 'S-v5', 'implementation', 'ACTIVE', 'V5LABEL');
+        $this->grantScope('WI-V5', 'G-V5', 'Scope-V5');
+
+        $r = $this->bootstrap(['--process-label=V5LABEL', '--session=S-v5', '--scope=Scope-V5']);
+
+        // The canonical field name — exactly ONE (V-5). No duplicate alias.
+        $this->assertArrayHasKey('activation_prerequisites', $r['out'],
+            'V-5: the documented field `activation_prerequisites` MUST exist in the report');
+        $this->assertArrayNotHasKey('bootstrapping_status', $r['out'],
+            'V-5: the stale `bootstrapping_status` name MUST NOT be emitted');
+
+        // Promised semantics (boundary §5): the block carries the G-3
+        // prerequisites, not a status string.
+        $p = $r['out']['activation_prerequisites'];
+        $this->assertTrue($p['predecessor_handoff_present'], 'G-3 conjunct 1 is reported');
+        $this->assertSame('ref', $p['predecessor_handoff_token_ref'], 'the V-3 handoff tokenRef is reported');
+        $this->assertTrue($p['recorded_human_start_act'], 'G-3 conjunct 2 is reported for an ACTIVE lane');
+        $this->assertFalse($p['successor_handoff_present']);
+        $this->assertNull($p['successor_lane']);
+        $this->assertIsArray($p['missing_for_start']);
+        $this->assertSame([], $p['missing_for_start'], 'an activated lane has no missing G-3 conjunct');
     }
 }

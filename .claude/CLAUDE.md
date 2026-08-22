@@ -770,7 +770,7 @@ At the beginning of every work session:
 2. Read CONTEXT.md.
 3. Read the relevant plan document(s).
 4. Read today's session log if it already exists.
-5. **Resolve session bootstrap (ON_DEMAND):** run `php .claude/scripts/session-bootstrap.php` with your process label / work item / `--scope` (when grant-scoped); consume `bootstrapping_status` and `gates.authorized_to_act` **before acting**. Any `AMBIGUOUS`/`UNRESOLVED`/`UNRESOLVABLE` → **STOP, stay read-only, escalate to Governance** with the `unresolved_message`. Attribution `MISMATCH`/`UNKNOWN` → **never adopt another process's identity in order to become operable** — escalate. Canonical rule text (rules-live-once): `docs/knowledgeos/reviews/2026-08-22-KOS-SESSION-BOOTSTRAP-001-implementation-boundary-proposal.md`. *Resolution is not activation — the report creates no authority, no ownership, no state change; G-3 gates are untouched.*
+5. **Resolve session bootstrap (ON_DEMAND):** run `php .claude/scripts/session-bootstrap.php` with your process label / work item / `--scope` (when grant-scoped); consume `activation_prerequisites` and `gates.authorized_to_act` **before acting**. Any `AMBIGUOUS`/`UNRESOLVED`/`UNRESOLVABLE` → **STOP, stay read-only, escalate to Governance** with the `unresolved_message`. Attribution `MISMATCH`/`UNKNOWN` → **never adopt another process's identity in order to become operable** — escalate. Canonical rule text (rules-live-once): `docs/knowledgeos/reviews/2026-08-22-KOS-SESSION-BOOTSTRAP-001-implementation-boundary-proposal.md`. *Resolution is not activation — the report creates no authority, no ownership, no state change; G-3 gates are untouched.*
 
 Before starting implementation:
 

@@ -66,7 +66,7 @@ Open finding V-3: **no AST-015 read command exposes the predecessor-handoff fact
 |---|---|---|
 | `identity` | `current_process_uuid` (env `CLAUDE_CODE_SESSION_ID`), `current_process_label`, `registered_process_label`, `process_labels_referenced[]` (ALL tokens in the lane's executionContext), `attribution` MATCH/MISMATCH/UNKNOWN, `attribution_caveat` | **evidence-only** — reported, **never** a grant input (`INV-ATTR-1`/`INV-ATTR-2`: self-declared until attested) |
 | `assignment` | `work_item` · `lane` · `role` (declared vocabulary) · `predecessor` · `workflow_state` · `work_item_state` | AST-015 verbatim |
-| `bootstrapping_status` / `activation_prerequisites` | `status` RESOLVED/AMBIGUOUS/UNRESOLVED/UNRESOLVABLE · `operable` · `predecessor_handoff_present` · `predecessor_handoff_token_ref` · `successor_handoff_present` · `successor_lane` · `recorded_human_start_act` · `missing_for_start[]` | discovery + G-3 conjunction, deterministic |
+| `activation_prerequisites` | `predecessor_handoff_present` · `predecessor_handoff_token_ref` · `successor_handoff_present` · `successor_lane` · `recorded_human_start_act` (=ACTIVE⇒true, G-3) · `missing_for_start[]` | discovery + G-3 conjunction, deterministic · **ONE canonical field name (V-5)** — the block carries the G-3 prerequisites, never a status (`verdict`/`operable` are top-level keys) |
 | `grant` | `authorization_linkage` · `linkage_caveat` (D-2: grants carry no session/role linkage) · `scope_requested` · `scope_coverage_evaluable` · `authorized_within_scope` bool\|null · `grant_caveat` (R6) | AST-015 `authorized` — scope-string equality |
 | `mutation_owner` | `session` (fold.mutationOwner) · `is_this_lane` | fold only; HANDOFF clears it (EKS-08 §1b) |
 | `gates` | `authorized_to_act` + rationale · `human_decision_required` + detail | derived deterministically, fail-closed |
@@ -113,7 +113,7 @@ Roles come from the **declared role vocabulary only** (PO/ARB · Governance · I
 
 ## 9 · Runtime binding — ON_DEMAND + pointer-only (V-3 binding)
 
-AST-017 is registered `runtime_moments: [ON_DEMAND]` and is **NOT** wired into `SESSION_START`. **That wiring is a fresh governed slice after the V-3 full remedy** (V-3 binding). The harness pointers (§11) tell a governed session to run the command at start and consume `bootstrapping_status` before acting — nothing auto-executes it.
+AST-017 is registered `runtime_moments: [ON_DEMAND]` and is **NOT** wired into `SESSION_START`. **That wiring is a fresh governed slice after the V-3 full remedy** (V-3 binding). The harness pointers (§11) tell a governed session to run the command at start and consume `activation_prerequisites` before acting — nothing auto-executes it.
 
 ## 10 · Adoption status — ⛔ NOT ADOPTED
 
@@ -129,7 +129,7 @@ The registry enum is `adopted | verify | deprecated | planned` (ARB amendment 4)
 
 A governed AI session at start:
 
-1. Run `php .claude/scripts/session-bootstrap.php` (ON_DEMAND) with its process label / work item / `--scope` (when grant-scoped). Consume `bootstrapping_status` and `gates.authorized_to_act` **before acting**.
+1. Run `php .claude/scripts/session-bootstrap.php` (ON_DEMAND) with its process label / work item / `--scope` (when grant-scoped). Consume `activation_prerequisites` and `gates.authorized_to_act` **before acting**.
 2. `RESOLVED` + `authorized_to_act=true` → proceed within the authorized scope.
 3. Any `AMBIGUOUS` / `UNRESOLVED` / `UNRESOLVABLE` → **STOP, stay read-only, escalate to Governance** with the `unresolved_message` (missing fact · source · responsible next actor). **Never invent identity or authorization; never create a transition.**
 4. Attribution MISMATCH/UNKNOWN → **never adopt another process's identity in order to become operable.** Escalate.

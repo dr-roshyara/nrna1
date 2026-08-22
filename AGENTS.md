@@ -83,7 +83,7 @@ At session start, a governed session MUST resolve its own registered lane / role
 php .claude/scripts/session-bootstrap.php --process-label=<id> --work-item=<wi> [--scope=<s>] --json
 ```
 
-Consume `bootstrapping_status` and `gates.authorized_to_act` before acting. Any
+Consume `activation_prerequisites` and `gates.authorized_to_act` before acting. Any
 `AMBIGUOUS` / `UNRESOLVED` / `UNRESOLVABLE` → **STOP, stay read-only, escalate to
 Governance** with the `unresolved_message`. Attribution `MISMATCH`/`UNKNOWN` →
 **never adopt another process's identity in order to become operable** — escalate.

@@ -130,7 +130,7 @@ The report shape (`--json`):
 ## How to use / extend
 
 - **A governed session at start** runs the command (ON_DEMAND), consumes
-  `bootstrapping_status`/`gates.authorized_to_act` before acting, and on any
+  `activation_prerequisites`/`gates.authorized_to_act` before acting, and on any
   AMBIGUOUS/UNRESOLVED/UNRESOLVABLE **STOPs, stays read-only, escalates to
   Governance** with the `unresolved_message`.
 - **`--scope` is mandatory for grant-scoped work.** Without it the report is
