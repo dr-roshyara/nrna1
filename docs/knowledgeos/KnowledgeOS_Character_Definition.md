@@ -11,7 +11,7 @@
 | **Purpose** | State the strategic character of KnowledgeOS as a constitutional epistemic system — the prose culmination of all research lenses analysed (EKS/PKS/AIP archaeology · epistemic systems · Vedanta/Jñāna · Vāṇī · Zero · topology · logic · TMS/AGM · contradiction handling · inference theory) |
 | **Kernel Status** | ⛔ **Does not define kernel architecture, data model, or implementation** |
 | **Rule obeyed** | ⛔ **No promotion**: this is a *character statement*, not an invariant map. Nothing here is adopted, nothing is SHALL, nothing changes the register. The **Constitutional Invariant Map v1.0** remains the P4 deliverable, with evidence-column discipline. Every point reconciles to an already-registered candidate (§14) — the character introduces **no new candidate, no new dimension, no new forbidden collapse**. |
-| **Traceability** | HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35 + UM-36) — recorded §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH + §AI in `.claude/sessions/2026-08-22.md` · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH + AI) · placement derived `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) |
+| **Traceability** | HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35 + UM-36 + UM-37) — recorded §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH + §AI + §AJ in `.claude/sessions/2026-08-22.md` · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH + AI + AJ) · placement derived `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) |
 
 ---
 
@@ -563,7 +563,7 @@ With **H-KOS-Agent-001** and the **Kernel-vs-Engine** separation, the character 
 
 ---
 
-**Traceability:** HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35 + UM-36) · recorded `.claude/sessions/2026-08-22.md` §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH + §AI · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH + AI) · placement derived `--scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) · house naming `KnowledgeOS_*` (precedent: `KnowledgeOS_Conceptual_Foundation.md`, `KnowledgeOS_Epistemic_Control_Systems_Comparison.md`, `KnowledgeOS_Vedanta_Pramana_Lens.md`). All study outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.
+**Traceability:** HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35 + UM-36 + UM-37) · recorded `.claude/sessions/2026-08-22.md` §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH + §AI + §AJ · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH + AI + AJ) · placement derived `--scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) · house naming `KnowledgeOS_*` (precedent: `KnowledgeOS_Conceptual_Foundation.md`, `KnowledgeOS_Epistemic_Control_Systems_Comparison.md`, `KnowledgeOS_Vedanta_Pramana_Lens.md`). All study outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.
 
 ---
 
@@ -748,3 +748,33 @@ Register: 23 → **25 candidates + 4 Established** (+ Dialogue-001 · EvidenceAu
 **The "theory of epistemic operations" is already fully covered by the slate:** knowledge enters → **Pramana-001** · earns trust → **Validation Layer** · gets challenged → **Contradiction-001 / Dialogue-001** · becomes actionable → **INV-KOS-Decision-001**.
 
 Register: **25 candidates + 4 Established (UNCHANGED)** — a full book plus five ADRs produced **zero new invariant rows**; the extraction phase has **saturated**. Character: no new formulation (essence chain 28 → 35). ⛔ Gate unchanged: P4 CLOSED until the corrected-P3 (AIP Stage-3) re-review ruling.
+
+---
+
+# §24 Hetvābhāsa + Navya-Nyāya deep dive — the Reasoning Integrity Kernel — "Is this reasoning structurally allowed?" (HPA, UM-37)
+
+**The extraction (HPA).** The "most architecturally significant extraction so far": the layer that prevents **reasoning itself from becoming structurally invalid**. Pipeline: `Reality → Observation → Meaning → Knowledge Object → Reasoning Engine → **Reasoning Integrity Kernel** → Validated Conclusion`. The new layer asks **"Is this reasoning structurally allowed?"** ⚠️ **Freeze admission (my note):** sixth source on the same Nyāya/Tarka tradition — deepening, admissible; largely a **synthesis of already-analysed material** (the five Hetvābhāsa fallacies were already in H-KOS-Failure-001 / §20 and §21's "Hetvābhāsa → AI failures"). **The significance is operational/architectural, not invariant-level.**
+
+**⚠️ The five-fallacy mapping — ZERO new invariant rows** (ES-005.4, never a copy). The five proposed H-KOS-xxx-001 candidates are the **enumerated corruption modes of invariants we already have** — each names *how an existing invariant gets violated*, which is exactly the **Validation-Target column** of the P4 7-column schema:
+
+| Proposed candidate (HPA) | Fallacy | Maps onto | Nature |
+|---|---|---|---|
+| H-KOS-Inference-Consistency-001 | Savyabhicāra — invalid generalization | **H-KOS-Vyapti-001** (+ Reasoning-Separation-001) | Enrichment: relation-strength stability (Dignāga conditions 2+3) |
+| H-KOS-Contradictory-Reasoning-001 | Viruddha — reason proves the opposite | **INV-KOS-Contradiction-001** | Enrichment: premise↔conclusion contradiction detection |
+| H-KOS-Competing-Reasoning-001 | Satpratipakṣa — two valid arguments, neither auto-wins | **INV-KOS-Contradiction-001** + Verification-Engine state space + **H-KOS-Dialogue-001** | Enrichment + engine policy: `KnowledgeState = CONFLICTED`, NOT FALSE; no probability auto-resolution |
+| H-KOS-Premise-Grounding-001 | Asiddha — unproven premise | **H-ZERO-001** + **H-KOS-EvidenceAuthenticity-001** | Enrichment: grounded inference inputs |
+| H-KOS-Evidence-Override-001 | Bādhita — overridden by stronger evidence | **INV-KOS-Revisability-001** + epistemic-state machine | Enrichment: evidence hierarchy; `SUPERSEDED_BY_EVIDENCE` (never delete) |
+
+**The design target completes the UM-26 inversion.** The kernel's purpose becomes **"Prevent epistemic type errors"** — Type error↔Epistemic error · Invalid cast↔Invalid inference · Null reference↔Unsupported premise · Wrong interface↔Wrong semantic context · Runtime failure↔Knowledge corruption. The five fallacies = the enumerated corruption catalogue — the sharpest statement yet of the kernel's negative mission (the §20 anti-collapse discipline generalized).
+
+**The Reasoning Integrity Kernel = engine-side (GOVERN), NOT a kernel invariant.** Consistent with the Kernel/Engine separation (§16/§19): the kernel *preserves the conditions* (PRESERVE); this layer *enforces* them (GOVERN) — the Hetvābhāsa Guard. **P4 architectural material**: the layer stack (Truth Constitution → Epistemic Engine → Semantic Engine → Reasoning Integrity → Type Kernel) = P4 layer-diagram candidate; the five fallacies = Validation-Target content for their mapped rows.
+
+**Avacchedaka → Context-Bounded Identity + dependent types (P4 type-model material).** Knowledge Identity = **(Entity, Property, Context, Relation, Time, Authority)**, not `Entity + Text`. `SecurityStatus: (system, audit-context, timestamp, assessor) → EpistemicClaim` — *the type contains the justification conditions*. **Deepens H-KOS-Context-002** (Avacchedaka). ⚠️ Discipline: P4 type-model/representation material, **NOT a storage-model decision** (standing discipline); the property-graph/hypergraph "almost mandatory" conclusion extends the §20/§22 relational-representation consideration (topology decision for P4, not a kernel invariant).
+
+**Updated character (essence chain 28 → 35 → 37; latest-wins provisional).**
+
+> **"KnowledgeOS is a constitutional epistemic type system that preserves meaning, evidence, reasoning validity, and historical transformation, allowing humans and AI agents to discover truth without corrupting the conditions of knowing."**
+
+Adds **reasoning validity** (the anti-corruption target) + **historical transformation** + the prevention clause **"without corrupting the conditions of knowing."** ⚠️ Discipline note: the **"type system"** vocabulary carries representation implications — the canonical-one-sentence vs enforcement-metaphor question is resolved at P4 (kernel-identity vs engine-machinery); recorded as a **refinement** of the UM-34 substrate form. The layer-progression synthesis (Veda → Upanishad → Vedanta → Nyaya → Tarka → Matilal → Navya-Nyaya → KnowledgeOS = "the constitutional operating system for trustworthy intelligence") records the HPA's framing of the whole arc — a readiness statement, not a gate-open.
+
+Register: **25 candidates + 4 Established (UNCHANGED)** — fifth consecutive zero-new-row result; the invariant set is complete; this source contributes enforcement machinery + design target + type-model formalization = P4 layer/Validation-Target/representation material. ⛔ Gate unchanged: P4 CLOSED until the corrected-P3 (AIP Stage-3) re-review ruling.
