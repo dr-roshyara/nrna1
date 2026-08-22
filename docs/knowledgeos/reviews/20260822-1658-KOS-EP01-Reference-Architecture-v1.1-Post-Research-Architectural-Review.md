@@ -259,16 +259,18 @@ None of this is authorized by this review. **KOS-SNF-ME v0.4** remains **gated**
 
 ## 13 · Quality Gates
 
+> *(HPA-directed correction, 2026-08-22: **Gate 2** and **Gate 8** result markings corrected from `✅ **No**` to `✅ **Yes**` — the conditions they check were satisfied (no mechanism acquired identity authority · no research hypothesis became architecture); the `❌`/`No` markings were polarity errors creating an internally contradictory audit record. Recorded in the HPA acceptance instrument `docs/knowledgeos/reviews/20260822-1711-KOS-EP01-Post-Research-Architectural-Review-HPA-acceptance.md`.)*
+
 | Gate | Question | Result |
 |---|---|---|
 | **1 — Architecture Separation** | Did the review keep research mechanisms separate from the KnowledgeOS domain? | ✅ **Yes** — §2–§3 · §8; every mechanism and measurement stays behind the port |
-| **2 — Authority Separation** | Did no mechanism, score, entropy, Bayesian posterior, or ensemble acquire identity authority? | ✅ **No** — §4–§5 · §9; the aggregate remains the sole authority locus (D-1) |
+| **2 — Authority Separation** | Did no mechanism, score, entropy, Bayesian posterior, or ensemble acquire identity authority? | ✅ **Yes** — §4–§5 · §9; the aggregate remains the sole authority locus (D-1) |
 | **3 — DDD Reduction** | Did the architecture become smaller/clearer rather than larger? | ✅ **Yes** — no element added; the review *is* a reduction argument (Move 2, §1) |
 | **4 — Unknown** | Can the architecture represent genuine unknown without pretending abstention is success? | ✅ **Yes** — UNKNOWN is first-class and domain-determined (⟨C-5⟩); abstention quality is a measurement concern, never a domain reward (OBS-PR-1) |
 | **5 — Replacement** | Can every SNF mechanism be replaced without changing KnowledgeOS identity? | ✅ **Yes** — §10 · §11.1 (Test B) · Test F |
 | **6 — Constitution** | Did the review preserve the frozen Constitution? | ✅ **Yes** — no article added, weakened, or reinterpreted; register **25+4 unchanged** |
 | **7 — Evidence Discipline** | Does every architectural claim have sufficient evidence? | ✅ **Yes** — every finding traces to v1.1, the Port Contract, LA Review 01, or a recorded research instrument (§2 · Traceability) |
-| **8 — No Premature Promotion** | Did no research hypothesis become architecture without evidence? | ✅ **No** — SNF-C/SNF-E and the whole competition remain **RESEARCH HYPOTHESES** (§9) |
+| **8 — No Premature Promotion** | Did no research hypothesis become architecture without evidence? | ✅ **Yes** — SNF-C/SNF-E and the whole competition remain **RESEARCH HYPOTHESES** (§9) |
 
 ---
 
