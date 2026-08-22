@@ -1,6 +1,20 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **KOS-SNF P5 — HPA ACCEPTANCE · P5 CLOSED** block is newest: P5 accepted as successful completion · SNF experiment engineering STOPPED (no P6 · no formula refinement · no Kernel) · next phase = HPA decision on AH-1…AH-5 + OQ-2/3/5 + F-1…F-5 · architecture refinement only where evidence requires (answer may be no) · OQ-4 closed · no SNF winner · architecture unchanged; the P5-verified block below stands as the executed-work record)*
+**Updated:** 2026-08-22 *(additive — the **AH-1…AH-5 DECISION SUPPORT** block is newest: five-hypothesis decision-support document delivered · all decision fields ⬜ OPEN · no authorization conveyed · next = HPA rulings on AH-1…AH-5 (+ OQ-2/3/5 · F-1…F-5 at its discretion); the P5 acceptance block below stands as the closure record)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **AH-1…AH-5 DECISION SUPPORT — *DELIVERED · PROPOSED · NON-AUTHORITATIVE · DECISION FIELDS ⬜ OPEN · NO ENGINEERING, NO AUTHORIZATION*: the HPA-directed decision-support document for the five architectural hypotheses is written; the HPA now rules ACCEPT / REJECT / DEFER on each — architecture changes follow only if accepted and only via a separate authorized act**)
+
+**Commission → delivery:** the HPA confirmed the P5 closure state and directed the **next artifact**: a **decision-support document for AH-1…AH-5**, based only on the P5 evidence (+ v1.1 · Constitution v1.0 · Port Contract · Post-Research review), with a strict **9-field structure** per hypothesis and field 9 (ACCEPT / REJECT / DEFER) **left OPEN** — *"That lets you make the architectural decisions cleanly without accidentally authorizing implementation."* Delivered: `docs/knowledgeos/reviews/20260822-2334-KOS-EP01-AH1-5-decision-support.md`.
+
+**What it is:** for each AH — (1) Observation (2) Evidence (toy-world, strength-scoped) (3) Proposed architectural interpretation (the P5 hypothesis, verbatim-in-substance) (4) What existing v1.1 already covers (5) What would actually change if accepted (6) What would *not* change (7) Constitutional impact (8) DDD impact (9) **HPA decision: ⬜ OPEN**. A decision surface table (5 AHs × altitude/owner of the change each would unlock) and an explicit **what-this-document-does-NOT-do** block.
+
+**The five decision surfaces (as laid out, not decided):** **AH-1** — Port Contract obligation-3's *declared insufficiency* may need to distinguish *"no filler"* from *"filler unknown"* (unlocks OQ-1; contract-level vocabulary, v1.1 §9 already domain-side correct) · **AH-2** — 0.587 wrong-reading agreement corroborates INV-KOS-IDENTITY-001 at scale, informational, no change (nothing would change if accepted) · **AH-3** — *cannot parse the word* vs *cannot decide the reading* as distinct port declarations (adjacent to AH-1, independently decidable) · **AH-4** — any future promotion argument must name its metric version (research-governance standing requirement, not an architecture change) · **AH-5** — asserted-vs-possible as category boundary or degree: a **modelling** question the research cannot settle, two readings presented (modelling deferral vs domain ruling), OQ-3 territory.
+
+**Constitutional impact on all five: NONE to any article** — each accepted consequence lives at Logical Architecture (Port vocabulary) · research governance · or REPRESENTATION altitude; **V.3 amendment discipline is never engaged**; no new invariant, aggregate member, event, or register row is proposed; register **25+4 unchanged** · Constitution **FROZEN**.
+
+**NEXT (the HPA's — NOT authorized here):** the **AH-1…AH-5 rulings** (ACCEPT / REJECT / DEFER), and at the HPA's discretion the already-waiting **OQ-2 · OQ-3 · OQ-5 · F-1…F-5**. Accepting an AH *names a next act* (e.g. a Port Contract vocabulary amendment) that requires its **own** authorization — no v1.1 change · no Constitution change · no aggregate change · no experiment · no Kernel work follows from this document. Research **CLOSED** · **OQ-4 stays unauthorized** · the Post-Research review's **NO CHANGE** verdict stands until a ruling changes it.
 
 ---
 
