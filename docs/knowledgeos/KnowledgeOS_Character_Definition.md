@@ -1061,3 +1061,21 @@ Register: **25 candidates + 4 Established (UNCHANGED)** — boundary definitions
 **Character: NO head advance (chain stays 43).** The updated statement — *"KnowledgeOS is a system that preserves identity of meaning through changing representations, contexts, reasoning processes, and observations"* — = the identity-clause **refinement candidate #3** (alongside §29's existence-clause and UM-45's reasoning-clause). The kernel principle — *"KnowledgeOS SHALL protect not only truth values, but the identity conditions of meaning"* — = Constitution kernel-invariant phrasing (section 3). P4's canonical-essence ruling adjudicates the accumulating clause refinements (existence · reasoning · identity).
 
 **Register (UNCHANGED: 25 candidates + 4 Established).** TENTH consecutive zero-new-row result across the admitted corpus. New P4 material: the identity model (Meaning → Context·Reasoning·Evidence → Observable Result) · coextension-collapse (similarity-collapse's limit case) · `type Knowledge` encoding · typed-epistemic-graph conclusion · identity-clause refinement candidate #3 · "identity conditions of meaning" Constitution phrasing · two-❌ LLM comparison. ⛔ Gate unchanged: P4 CLOSED until the corrected-P3 (AIP Stage-3) re-review ruling.
+
+---
+
+# §34 P4 — CONSTITUTIONAL INVARIANT MAP v1.0 PRODUCED (2026-08-22) — the study's P4 deliverable, drawn from this register
+
+The **P4 Constitutional Invariant Map v1.0** (`docs/knowledgeos/architecture/20260822-0915-KOS-EP01-P4-Constitutional-Invariant-Map-v1.0.md` — ⭐ PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED) consolidates this document's register into the 8-family constitutional map per the HPA's P4 launch prompt.
+
+**Register census outcome.** All **25 candidates + 4 Established** preserved **exactly** — no row added, no row removed, none promoted (Rule 1). Every row fixed to its registration point (§3.0 of the Map; Rule 2 identity discipline).
+
+**Compression-test rulings (Filter · Separate · Test).** Context-002 SUBSUMES the SemanticBoundary/Ontology/type-model/Boundary facets · Agent-001 DISTINCT (supersedes H-KOS-Agent-001) · Relation-001 = the general principle under the separation family · Pramana-001/Reasoning-Separation-001/Agent-001/INV-001 DISTINCT · Vyapti-001 SUBSUMES proposed Reasoning-001/002 + upādhi facet · Fallacy/Failure COMPLEMENTARY · Dialogue/Contradiction/Revisability/Intent COMPLEMENTARY · Abhava-001 → Uncertainty-001 · Dimension-Independence↔NonInterference OVERLAPPING (P5 consolidation test).
+
+**Canonical-essence ruling.** Head **43 stands unchanged**. The three clause-refinement candidates (§29 existence · §32/UM-45 reasoning · §33/UM-46 identity) are **refinements, not supersessions** — absorbed into Constitution v1.0 kernel-invariant phrasing; no chain advance.
+
+**Pramāṇa designation.** The source-role separation (flagged unnamed §19, reproduced §28 + §30) is **named** as INV-KOS-Pramana-001's Forbidden-Collapse content — **"source-role collapse"** — NOT a separate row (ES-005.4; selects §AE-5 option (a)).
+
+**Final gate: Has research ended? — YES.** Ten consecutive zero-new-row results (§24–§33) = the saturation proof. Next: P5 (Evidence Validation / domain-independence) → kernel decision (step ⑤) → **KnowledgeOS Constitution v1.0** (destination artifact — §3 "kernel invariants" = this Map's content; sections 7–10 carry step-⑤ commitments, NOT decided here).
+
+**Traceability:** P4 Map produced from this register (2026-08-22) · `20260822-0915-KOS-EP01-P4-Constitutional-Invariant-Map-v1.0.md` · recorded `.claude/sessions/2026-08-22.md` §AV · `.claude/CONTEXT.md` (block AV) · commissioning instrument `docs/knowledgeos/reviews/2026-08-22-KOS-EP01-P4-landscape-launch-prompt.md`. The Map is PROPOSED; **the kernel decision remains step ⑤ after P5**, NOT a P4 deliverable.

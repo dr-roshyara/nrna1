@@ -1,6 +1,19 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **CORRECTED-P3 (AIP STAGE-3) RE-REVIEW RULING — ✅ PASS · P4 GATE OPEN · P4 COMMISSIONED** block (AT) is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **P4 — CONSTITUTIONAL INVARIANT MAP v1.0 DELIVERED** block (AV) is newest; older rows it contradicts are superseded by it)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **P4 — CONSTITUTIONAL INVARIANT MAP v1.0 DELIVERED — TASK #10 DELIVERED — THE 7-PART MAP PER THE P4 LAUNCH PROMPT · REGISTER PRESERVED EXACTLY (25 CANDIDATES + 4 ESTABLISHED · NO ROW ADDED/REMOVED · CENSUS §3.0) · TEN COMPRESSION-TEST RULINGS · PRAMĀṆA SOURCE-ROLE SEPARATION NAMED "SOURCE-ROLE COLLAPSE" AS PRAMANA-001'S FORBIDDEN-COLLAPSE (NOT A ROW) · CANONICAL-ESSENCE RULING: HEAD 43 STANDS, THREE CLAUSE REFINEMENTS ABSORBED AS CONSTITUTION PHRASING · LANDSCAPE C-1..C-10 MAPPED (F2/F3/F4 HONORED — AIP CONSUMES ≠ OWNS ≠ IS KNOWLEDGEOS) · FINAL GATE: "HAS RESEARCH ENDED?" — **YES** · NEXT: P5 → KERNEL DECISION (STEP ⑤) → CONSTITUTION v1.0 — NONE OF THESE IS A P4 DELIVERABLE**)
+
+| | |
+|---|---|
+| 📐 **Deliverable** | `docs/knowledgeos/architecture/20260822-0915-KOS-EP01-P4-Constitutional-Invariant-Map-v1.0.md` — 7 parts: ① Character Definition (canonical-essence adjudication) · ② 5 non-identities · ③ Constitutional Invariant Map (7-column × 8 families: Identity·Evidence·Authority·Transformation·Temporal·Reasoning·Contradiction·Agent) · ④ Kernel vs Engine boundary · ⑤ Math-lens consolidation · ⑥ KOS-vs-LLM · ⑦ Final Kernel Definition ("constitutional epistemic operating system … governs … protects …"). ⭐ PROPOSED · NON-AUTHORITATIVE · NOT ADOPTED. |
+| 🧬 **Register preserved** | **25 candidates + 4 Established** — no row added, no row removed, none promoted (Rule 1). Census §3.0 fixes every row to its registration point (Rule 2). Ten compression rulings (§3.9): Context-002 SUBSUMES SemanticBoundary/Ontology/Boundary facets · Agent-001 DISTINCT (supersedes H-KOS-Agent-001) · Relation-001 = general principle under the separation family · Pramana-001/ReasoningSep-001/Agent-001/INV-001 DISTINCT · Vyapti-001 SUBSUMES Reasoning-001/002 + upādhi facet · Fallacy/Failure COMPLEMENTARY · Dialogue/Contradiction/Revisability/Intent COMPLEMENTARY · Abhava-001→Uncertainty-001 · DimensionIndep↔NonInterference OVERLAPPING (P5 consolidation test). |
+| ⚖️ **P4 rulings** | **(a)** Pramāṇa source-role separation **named** = Pramana-001's Forbidden-Collapse content **"source-role collapse"** — NOT a separate row (ES-005.4; 3× reproduced §19→§28→§30). **(b)** Canonical essence: **head 43 stands unchanged**; the three clause refinements (existence §29 · reasoning UM-45 · identity UM-46) are **refinements, not supersessions** — absorbed into Constitution v1.0 kernel-invariant phrasing; no chain advance. |
+| 🧭 **Landscape integration** | C-1..C-10 mapped to map rows with the 8-class vocabulary; carry-forwards honored — F2 (mechanism ≠ ownership) · F3 (asymmetry evidence-scoped) · F4 (AIP consumes knowledge ≠ AIP owns knowledge ≠ AIP is KnowledgeOS — AIP is a consumer/runtime, not the layer). The map's rows describe the constitutional layer; EKS/PKS/AIP exhibit (partially) and consume (AIP) it — none *is* it. |
+| ✅ **Final gate** | **Has research ended? — YES** (ten consecutive zero-new-row results across the admitted corpus + structural convergence from non-admitted lenses = saturation proof). P4 objective met: the smallest set of constitutional rules for trustworthy knowledge evolution. |
+| **NEXT** | **P5 — Evidence Validation / domain-independence** (step ④ of the frozen binding sequence), then kernel decision (step ⑤) → **KnowledgeOS Constitution v1.0** (destination artifact). P4 Map awaits HPA review. All outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED. |
 
 ---
 
