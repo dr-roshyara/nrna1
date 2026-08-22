@@ -1,6 +1,24 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **SECOND ARCHITECTURAL REVIEW OF v1.1 — ACCEPTED AS THE ARCHITECT-SIDE DELIVERABLE, r3 FROZEN** block is newest; it sits on top of the **KNOWLEDGEOS REFERENCE ARCHITECTURE v1.1** block, which stands at **r2** and is **unmodified**; older rows either block contradicts are superseded by it; the FIRST HPA review remains **OPEN** — awaiting HPA confirmation of the applied r2 wording)*
+**Updated:** 2026-08-22 *(additive — the **FIRST HPA REVIEW CLOSED · r2 STANDS · r3 FROZEN** block is newest; v1.1 is at **r2, unchanged**; both reviews are **disposed** (first CLOSED, second ACCEPTED as delivery); **r3 is FROZEN**, Logical Architecture is **NOT open**, the experiment is **NOT authorized**; ⚠️ **D-1 open** — the confirmation text said *"constitutional administration"* where r2 carries *"constitutional admissibility of a state transition"* (0 vs 5 occurrences); artifact **unedited**, one-line ratification requested)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **FIRST HPA REVIEW OF REFERENCE ARCHITECTURE v1.1 — CLOSED BY HPA CONFIRMATION — r2 STANDS UNCHANGED · r3 FROZEN · LOGICAL ARCHITECTURE NOT OPEN — ⚠️ D-1 WORDING DISCREPANCY OPEN**)
+
+**Instrument:** `docs/knowledgeos/reviews/20260822-1527-KOS-EP01-Reference-Architecture-v1.1-FIRST-HPA-REVIEW-CLOSURE.md`.
+
+**Act (HPA, verbatim):** *"Confirmed — the wording "The KnowledgeAggregate is the authoritative domain boundary at which constitutional administration is determined." closes the first review. r2 remains the current proposed artifact; r3 remains frozen and unapplied."* — and explicitly: the confirmation *"closes the first HPA review **only**, without accepting or applying the r3 change set."*
+
+**✅ THE FIRST HPA REVIEW (14:25 · PASS CONDITIONALLY) IS CLOSED.** Its one condition was applied in r2; the application is confirmed. **Both reviews are now disposed:** first **CLOSED**, second **ACCEPTED as architect-side delivery**.
+
+**⚠️ D-1 — WORDING DISCREPANCY, FLAGGED NOT RECONCILED.** The confirmation text says *"constitutional **administration** is determined"*; **v1.1 r2 carries *"constitutional **admissibility of a state transition** is determined"*** — verified **0 vs 5 occurrences** in the artifact. Engineering **recorded the act verbatim**, **did not edit v1.1**, **did not adopt a wording**, and **did not decide** which phrasing is canonical. The closure is registered against **the wording as applied in r2** (the object the condition was raised against and applied to). **⏳ One-line ratification requested (non-blocking):** confirm *"admissibility of a state transition"* is canonical and *"administration"* was a slip — **or** instruct an amendment, which would be a **NEW condition and a NEW act**, not part of this closure. Until then **r2's applied wording governs, unamended**. *(Silently substituting would rewrite an HPA act; silently recording "administration" as canonical would leave artifact and closure record disagreeing and invite a future "correction" that weakens the condition — administration ≠ admissibility of a state transition.)*
+
+**BOUNDARIES, exactly as the HPA recorded them:** **r2** remains **PROPOSED and unchanged** · **first HPA review CLOSED** · **second review ACCEPTED as architect-side delivery** · **r3 (C-1…C-5 · R-1 · A-1…A-3) FROZEN, not applied** · **OQ-2 open — no Port Contract decision implied** · **OQ-4 unauthorized — the experiment is not opened** · **Logical Architecture / Port Contract / experiment remain unopened unless SEPARATELY AUTHORIZED**.
+
+**The governing distinction (HPA-affirmed):** **"Accepting a review is not accepting the proposed changes into the artifact."**
+
+**NEXT — nothing is scheduled, and nothing is pending on engineering.** The chain is in a **stable, fully-recorded rest state**. Two independent HPA acts remain available, **neither implied by the other**: **(a)** a ruling that unfreezes and applies r3; **(b)** an authorization that opens Logical Architecture with the Expression↔Meaning Port Contract as its first deliverable. Plus the D-1 ratification line above. Register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · P4 gate **unchanged** · Semantic Compiler **NOT promoted**.
 
 ---
 
