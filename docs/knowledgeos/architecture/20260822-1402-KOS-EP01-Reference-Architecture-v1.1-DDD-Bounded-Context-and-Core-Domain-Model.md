@@ -1,6 +1,6 @@
 # KnowledgeOS Reference Architecture v1.1 — CONSOLIDATED (r3)
 
-> **DDD Bounded Context and Core Domain Model** — the artifact's established identity, revised in place: **r1** (produced) → **r2** (first HPA review condition applied) → **r3 CONSOLIDATED** (this revision).
+> **DDD Bounded Context and Core Domain Model** — the artifact's established identity, revised in place: **r1** (produced) → **r2** (first HPA review condition applied) → **r3 CONSOLIDATED** → **r4** (architectural-direction annotations — the six negative-direction prohibitions · Expression↔Meaning Port Contract opened, 2026-08-22).
 
 ---
 
@@ -12,12 +12,14 @@
 | **Position** | Constitution v1.0 (FROZEN) → Reference Architecture v1.0 (PROPOSED) → **this v1.1** → Logical Architecture → Implementation Architecture → Systems |
 | **Reviews** | First HPA review (2026-08-22 14:25) — **PASS CONDITIONALLY → condition applied in r2 → CLOSED** (confirmation, 15:27) · Second architectural review (14:59) — **PASS · CLARIFICATION ONLY → ACCEPTED as architect-side delivery** (15:23) |
 | **This revision** | the **r3 change set applied** — C-1…C-5 · R-1 · A-1…A-3 — under the HPA consolidation commission (`docs/knowledgeos/reviews/20260822-1533-…-r3-Consolidation-commissioning-prompt.md`) |
-| **Change authority** | **the r3 change set and nothing else.** No new architecture is introduced; anything outside the set is recorded as an observation (Appendix B), never incorporated |
+| **r4 annotations** | the HPA's **architectural-direction steering** (2026-08-22) — the **six negative-direction prohibitions** as invariant interpretations (three already present ⟨C-1⟩; three added: **Probability→Truth · Canonicalization→Authority · Low entropy→Certainty**) · the **Expression↔Meaning Port Contract opened and authored** — authority: `docs/knowledgeos/reviews/20260822-1559-…-r4-and-Port-Contract-HPA-steering.md` |
+| **Change authority** | **the r3 change set and nothing else** for r3 · **the HPA's 2026-08-22 steering and nothing else** for r4. No new architecture is introduced; anything outside the change sets is recorded as an observation (Appendix B), never incorporated |
 | **Unchanged by r3** | the core-domain decision · the context map · the aggregate member set · the eleven invariants' wording · the ten domain events · the rejected set · the Semantic Compiler ruling · the LLM boundary · Zero's placement |
 | **Constitution** | v1.0 **FROZEN** — satisfied, **never extended**. No article added, weakened, or reinterpreted |
 | **Register** | **25+4 unchanged** · research phase **CLOSED** · P4 gate **unchanged** |
-| **Not opened by this artifact** | Logical Architecture · the **Expression↔Meaning Port Contract** · Semantic Compiler / SNF implementation · the KOS-SCB v0.2 experiment (**OQ-4 unauthorized**) · database · API · class · framework · model selection |
-| **Deliberately open** | **OQ-1 … OQ-5** (§20) — in particular **OQ-2**, which this artifact records but does **not** answer |
+| **Opened by r4** | the **Expression↔Meaning Port Contract** — first Logical-Architecture deliverable, authored under the 2026-08-22 HPA steering (deliverable: `docs/knowledgeos/architecture/20260822-1559-KOS-Expression-Meaning-Port-Contract.md`) |
+| **Not opened by this artifact** | Semantic Compiler / SNF implementation · the KOS-SCB v0.2 experiment (**OQ-4 unauthorized**) · KOS-SNF-ME v0.4 (**gated, not authorized**) · database · API · class · framework · model selection · Logical Architecture **beyond** the Expression↔Meaning Port Contract |
+| **Deliberately open** | **OQ-1 … OQ-5** (§20) — in particular **OQ-2**, which this artifact records but does **not** answer (the Port Contract takes a position at contract altitude; the ruling remains the HPA's) |
 
 **Canonical wording (D-1 ratified, HPA 2026-08-22):**
 
@@ -361,6 +363,8 @@ EPISTEMIC STATE       determined at the aggregate boundary, by the domain alone
 
 **Why obligation 3 is load-bearing.** A mechanism that cannot abstain will assert. Post-review evidence measured a mechanism asserting understanding where grounds were insufficient in roughly **30% of a small case set** — the empirical shape of *insufficient grounds converted into an assertion*. The architectural answer is not a better parser; it is a port that will not accept a candidate lacking a declared insufficiency.
 
+**⟨r4⟩ Candidate payload vocabulary.** The candidate's accompanying metadata — **interpretation probabilities · uncertainty · provenance · transformation evidence** — is **port-contract vocabulary**, defined by the Expression↔Meaning Port Contract (Logical Architecture, authored under the 2026-08-22 HPA steering), **never aggregate members**. No member is added; the seven states, the Confidence boundary rule ⟨R-1⟩, and the Verification Port admission path are unchanged.
+
 **The separation to keep visible:**
 
 ```
@@ -511,6 +515,11 @@ Extended to the boundary: **a mechanism's inability to determine meaning is a fi
 | Revision ≠ Erasure | INV-KOS-HISTORY-001 (Article 11.1) |
 | Inference ≠ Observation | INV-KOS-VERIFICATION-001 (Article 6) |
 | Agent ≠ Truth | INV-KOS-AGENCY-001 (Article 10) + §13 |
+| **Probability ≠ Truth** ⟨r4⟩ | INV-KOS-VERIFICATION-001 (verdict vocabulary, Articles 6, 9) + INV-KOS-DIMENSION-001 (Article 2.3) — an interpretation probability is candidate-side metadata, **never a truth verdict** |
+| **Canonicalization ≠ Authority** ⟨r4⟩ | INV-KOS-AUTHORITY-001 (Article 3) — normalization confers **no authority** on the claim an expression carries |
+| **Low entropy ≠ Certainty** ⟨r4⟩ | INV-KOS-DIMENSION-001 + INV-KOS-UNKNOWN-001 (Articles 2, 9) — a highly-normalized / low-entropy form is **not thereby more certain** |
+
+**⟨r4⟩** The three measurement-side rows above are added under the 2026-08-22 HPA steering — **interpretations of existing invariants, no new invariant** (Probability→Truth · Canonicalization→Authority · Low entropy→Certainty). The other rows are unchanged.
 
 **r3's effect on the invariants:** four are **strengthened** — IDENTITY-001 ⟨C-1⟩ · DIMENSION-001 ⟨R-1⟩ · UNKNOWN-001 ⟨C-5⟩ · VERIFICATION-001 ⟨A-2, via the port contract's obligations⟩ — because the post-review evidence supplied concrete failure modes for prohibitions that already existed. The other seven are unaffected. **None is added; none is weakened; no wording of an article changes.**
 
@@ -544,6 +553,9 @@ Extended to the boundary: **a mechanism's inability to determine meaning is a fi
 | **Truth machine / oracle** | the system preserves the conditions of discovery; it does not answer with authority | 3, 9 |
 | **Wisdom Formation as a core domain** | not a constitutional concept; adopting it would extend the frozen Constitution | V.3 |
 | **Similarity or canonicalization as an identity authority** ⟨C-1⟩ | representation equality is not identity | 1.2, 1.3 |
+| **Interpretation probability as a truth verdict** ⟨r4⟩ | a scalar never decides truth; a candidate-side probability is interpretation uncertainty, never a verdict | 6, 9 (and 2.3) |
+| **Canonicalization as an authority grant** ⟨r4⟩ | normalization is not authorization; no mechanism confers authority by compressing an expression | 3 |
+| **Low entropy / canonical-form compression as certainty** ⟨r4⟩ | representation compression is not epistemic certainty | 2, 9 |
 
 **External by placement, not by rejection:** the LLM · semantic compilers and parsers · normalizers · reasoning and validation engines · evidence source systems · the human acts that assign authority and make decisions. These are *necessary collaborators the core does not own*.
 
@@ -584,7 +596,7 @@ Extended to the boundary: **a mechanism's inability to determine meaning is a fi
 | **LLM** | if the LLM disappears, is it still KnowledgeOS? | ✅ **Yes** — §13, Test E |
 | **Representation** | if SNF changes, is it still KnowledgeOS? | ✅ **Yes** — SNF is a representation at the freely-changeable altitude (§16) |
 | **Aggregate** | does the KnowledgeAggregate remain the authoritative boundary for constitutional admissibility of state transitions? | ✅ **Yes** — §6, §7; the realization stays deferred |
-| **Non-collapse** | can any representation, similarity score, parser confidence, authority signal or LLM output **directly become Knowledge Identity**? | ✅ **NO** — canonical form ⟨C-1⟩ · score ⟨R-1⟩ · authority (assigned, referenced) · LLM output (candidate only). Identity is **assigned**, never computed |
+| **Non-collapse** | can any representation, similarity score, parser confidence, authority signal or LLM output **directly become Knowledge Identity**? | ✅ **NO** — canonical form ⟨C-1⟩ · score ⟨R-1⟩ · authority (assigned, referenced) · LLM output (candidate only); and **⟨r4⟩ none of them becomes truth, authority, or certainty either** (probability ≠ truth · canonicalization ≠ authority · low entropy ≠ certainty). Identity is **assigned**, never computed |
 | **Reduction** | did the architecture become smaller, clearer, more enforceable? | ✅ **Yes** — r3 adds **no** context, aggregate, member, event or invariant; it adds boundary notes that make four existing invariants enforceable at the port. Element count of *what must exist* is unchanged from r2 (one core domain · one primary aggregate · one ConflictRecord · three small supporting aggregates) |
 | **Failure** | if the core principle disappears, does KnowledgeOS stop being KnowledgeOS? | ✅ **Yes** — remove identity-of-meaning → claim-store; remove the lifecycle → snapshot-store; both Ch IV refusals |
 | **Constitution** | is the Constitution satisfied and never extended? | ✅ **Yes** — eleven invariants render eleven articles; no article added, weakened or reinterpreted; register **25+4 unchanged** |
@@ -599,12 +611,12 @@ Extended to the boundary: **a mechanism's inability to determine meaning is a fi
 | # | Deferred | Altitude / owner |
 |---|---|---|
 | **DEF-1** | **How the aggregate boundary is realized** — commands · methods · domain services · policy evaluation, or another form | Logical / Implementation Architecture |
-| **DEF-2** | **The Expression↔Meaning Port Contract** — named ⟨A-2⟩, **not authored, not open** | Logical Architecture (first deliverable when opened) |
+| **DEF-2** | **The Expression↔Meaning Port Contract** — named ⟨A-2⟩; **OPENED by the 2026-08-22 HPA steering (r4)** and authored at `docs/knowledgeos/architecture/20260822-1559-KOS-Expression-Meaning-Port-Contract.md` | Logical Architecture — **first deliverable, now authored** |
 | **DEF-3** | **Semantic Compiler promotion** — remains a candidate adapter; promotion requires evidence and an HPA act | HPA |
 | **DEF-4** | **SNF as the port encoding** — may become the form candidates take; undecided | Logical Architecture |
 | **DEF-5** | Storage · schemas · APIs · classes · frameworks · message formats · model selection | Implementation Architecture / Systems |
 | **OQ-1** | Does a mechanism's *declared insufficiency* need its own vocabulary at the port, or does the existing verdict vocabulary cover it? | Logical Architecture |
-| **OQ-2** | **May SNF-equivalence be recorded as an EvidenceLink supporting an identity-assignment act, without itself becoming an identity mechanism?** **OPEN — deliberately unresolved here.** It is invariant-adjacent (INV-KOS-IDENTITY-001); the boundary is recorded, the answer is not invented | Expression↔Meaning Port Contract / Logical Architecture — **HPA attention flagged** |
+| **OQ-2** | **May SNF-equivalence be recorded as an EvidenceLink supporting an identity-assignment act, without itself becoming an identity mechanism?** **OPEN — deliberately unresolved here.** It is invariant-adjacent (INV-KOS-IDENTITY-001); the boundary is recorded, the answer is not invented. The Port Contract takes a **position at contract altitude** (collisions are evidence, never admission — its §Q8); the **ruling** on that position remains the HPA's | Expression↔Meaning Port Contract (delivered) — **HPA rule still required** |
 | **OQ-3** | Is cross-language sameness (e.g. EN/DE) a claim about meaning or about translation? | Logical Architecture / experiment design |
 | **OQ-4** | **The KOS-SCB v0.2 experiment — NOT AUTHORIZED.** Not to be run, commissioned, or corpus-built here; no accuracy claim, no performance projection. When authorized, its corpus must contain positive equivalence cases, **negative / non-collapse cases**, ambiguity, context variation, temporal variation, contradiction, UNKNOWN, and cross-expression transformations — otherwise it could merely demonstrate a lossy canonicalization function | **HPA act required** |
 | **OQ-5** | Should Confidence remain an aggregate member at all, or become a derived read-side attribute? ⟨R-1⟩ makes it safe; it does not make it necessary | Logical Architecture |
@@ -629,6 +641,18 @@ Extended to the boundary: **a mechanism's inability to determine meaning is a fi
 
 **Structural inventory, r2 → r3:** bounded contexts **6 → 6** · core domains **1 → 1** · aggregates **5 → 5** (KnowledgeAggregate · ConflictRecord · AuthorityGrant · DerivedView · DecisionRecord) · aggregate members **12 → 12** · domain events **10 → 10** · invariants **11 → 11** · constitutional articles **11 → 11** · register **25+4 → 25+4**. **Net structural change: none.** The document was reorganized into the twenty commissioned sections; §3, §9, §18 and §20 are new *sections* presenting already-accepted content (principles, lifecycle, dependency direction, deferrals), not new architecture.
 
+**r4 change ledger (architectural-direction annotations — HPA steering 2026-08-22, `docs/knowledgeos/reviews/20260822-1559-…-r4-and-Port-Contract-HPA-steering.md`).** Every change traces to the steering act; nothing else changed.
+
+| Ref | Class | Change | Applied at |
+|---|---|---|---|
+| **r4-1** | ADDITION (interpretation) | **Probability ≠ Truth** added to the non-collapse distinctions — an interpretation probability is candidate-side metadata, **never a truth verdict** | §15 · §17 · §19 |
+| **r4-2** | ADDITION (interpretation) | **Canonicalization ≠ Authority** — normalization confers **no authority** | §15 · §17 · §19 |
+| **r4-3** | ADDITION (interpretation) | **Low entropy ≠ Certainty** — compression is **not certainty** | §15 · §17 · §19 |
+| **r4-4** | CLARIFICATION | Candidate **payload vocabulary** (interpretation probabilities · uncertainty · provenance · transformation evidence) is port-contract vocabulary, **never aggregate members** | §10 |
+| **r4-5** | STATUS | **Expression↔Meaning Port Contract opened** (DEF-2) and authored under the steering act; OQ-2 position recorded at contract altitude | §20 · §1 |
+
+**Structural inventory, r3 → r4:** bounded contexts **6 → 6** · core domains **1 → 1** · aggregates **5 → 5** · aggregate members **12 → 12** · domain events **10 → 10** · invariants **11 → 11** · constitutional articles **11 → 11** · register **25+4 → 25+4**. **Net structural change: none.** The r4 annotations are **interpretations of existing invariants**, not new law.
+
 ## Appendix B · Observations recorded, NOT incorporated
 
 Per the commission: *"If you discover something that is not covered by the frozen change set: STOP and record it as an observation. Do not silently incorporate it."*
@@ -644,9 +668,10 @@ Per the commission: *"If you discover something that is not covered by the froze
 ## Traceability
 
 - **Consolidation commission:** `docs/knowledgeos/reviews/20260822-1533-KOS-EP01-Reference-Architecture-v1.1-r3-Consolidation-commissioning-prompt.md` (HPA act — **r3 unfrozen · D-1 ratified**).
+- **r4 steering (this revision):** HPA **architectural-direction steering** 2026-08-22 (`docs/knowledgeos/reviews/20260822-1559-…-r4-and-Port-Contract-HPA-steering.md`) — the six negative-direction prohibitions · Expression↔Meaning Port Contract **opened**; deliverable `docs/knowledgeos/architecture/20260822-1559-KOS-Expression-Meaning-Port-Contract.md` (first Logical-Architecture deliverable).
 - **Review chain:** first HPA review `…20260822-1425-…-DDD-Refinement-HPA-Review.md` (**PASS CONDITIONALLY → CLOSED**, confirmation `…20260822-1527-…-FIRST-HPA-REVIEW-CLOSURE.md`) · second architectural review `…20260822-1459-…-Second-Architectural-Review-Semantic-Invariance.md` (**PASS · CLARIFICATION ONLY**, accepted `…20260822-1523-…-Second-Review-HPA-ACCEPTANCE.md`).
 - **Prior instruments:** original commissioning prompt `…20260822-1402-…-DDD-Refinement-commissioning-prompt.md` · Constitution v1.0 `…20260822-0951-KOS-EP01-Constitution-v1.0.md` (**FROZEN**) · Reference Architecture v1.0 `…20260822-0955-KOS-EP01-Reference-Architecture-v1.0.md` · P4 Constitutional Invariant Map `…20260822-0915-…` · Kernel Decision `…20260822-0939-…`.
 - **Evidence informing r3 (post-review):** the false-acceptance finding · the semantic-compilation / epistemic-validation measurement split · the semantic non-collapse dimension · the boundary refinement — recorded in `docs/knowledgeos/brainstorming/20260822-14{1513,3217,3421,3844}-*.md`. **Accuracy projections in that material are explicitly excluded as evidence** (a projection, refuted within its own composite source, and a forbidden action of this commission).
-- **Revision history:** **r1** produced (DDD refinement of v1.0) → **r2** first-review condition applied (aggregate-boundary altitude) → **r3 CONSOLIDATED** (this revision: the r3 change set applied, document reorganized into the twenty commissioned sections).
+- **Revision history:** **r1** produced (DDD refinement of v1.0) → **r2** first-review condition applied (aggregate-boundary altitude) → **r3 CONSOLIDATED** (the r3 change set applied, document reorganized into the twenty commissioned sections) → **r4** architectural-direction annotations (the six negative-direction prohibitions · Port Contract opened, 2026-08-22).
 - **Discipline honored:** apply only what was accepted · reopen no HPA decision · reinterpret nothing · invent no change · every r2→r3 delta traceable (Appendix A) · anything uncovered recorded as an observation (Appendix B) · Constitution satisfied never extended · no new philosophy, dimension, article, context, aggregate, member, event or invariant · no database, API, class, framework, model or technology decision · no promotion · the strongest statement never exceeds the evidence.
-- **Status:** ⭐ **KnowledgeOS Reference Architecture v1.1 — CONSOLIDATED (r3) · PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE.** Register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · P4 gate **unchanged** · Semantic Compiler **NOT promoted** · Logical Architecture **NOT open** · Port Contract **named, not authored** · **OQ-2 open** · **OQ-4 unauthorized**. **Not v1.2. Not Logical Architecture. Not a Semantic Compiler Architecture.**
+- **Status:** ⭐ **KnowledgeOS Reference Architecture v1.1 — CONSOLIDATED (r3) · ⟨r4 annotations⟩ · PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE.** Register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · P4 gate **unchanged** · Semantic Compiler **NOT promoted** · SNF research **paused** · Logical Architecture **open for the Expression↔Meaning Port Contract only** · Port Contract **authored** (first Logical-Architecture deliverable, under the 2026-08-22 HPA steering) · KOS-SNF-ME v0.4 **gated, not authorized** · **OQ-2 position recorded at contract altitude, HPA rule still required** · **OQ-4 unauthorized**. **Not v1.2. Not a Semantic Compiler Architecture.**

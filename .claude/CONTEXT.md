@@ -1,6 +1,20 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **REFERENCE ARCHITECTURE v1.1 — CONSOLIDATED (r3)** block is newest and supersedes the r2 rows above it; **r3 APPLIED** (C-1…C-5 · R-1 · A-1…A-3) · both HPA reviews **disposed** · **D-1 RATIFIED** (canonical wording = *"constitutional admissibility of a state transition"*); **Logical Architecture still NOT open** · Port Contract **named, not authored** · **OQ-2 open** · **OQ-4 unauthorized**)*
+**Updated:** 2026-08-22 *(additive — the **r4 / PORT CONTRACT** block is newest and supersedes the r3 rows below it: HPA steering recorded — **SNF research PAUSED** · the **six negative-direction prohibitions** applied as **r4 annotations** · the **Expression↔Meaning Port Contract OPENED and AUTHORED** as the first Logical-Architecture deliverable · **Logical Architecture open for the Port Contract only** · **OQ-2 position recorded at contract altitude, HPA rule still required** · **OQ-4 / KOS-SNF-ME v0.4 unauthorized**)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **KNOWLEDGEOS — HPA ARCHITECTURAL-DIRECTION STEERING (r4): *"I WOULD STOP EXPANDING SNF RESEARCH FOR NOW AND REFINE THE ARCHITECTURE"* — SNF RESEARCH PAUSED · THE SIX NEGATIVE-DIRECTION PROHIBITIONS AS r4 ANNOTATIONS · EXPRESSION↔MEANING PORT CONTRACT OPENED AND AUTHORED — FIRST LOGICAL-ARCHITECTURE DELIVERABLE · *"THE PORT, NOT SNF, BECOMES ARCHITECTURAL"* · KOS-SNF-ME v0.4 GATED BEHIND THE BOUNDARY**)
+
+**Steering instrument (HPA act, recorded verbatim-in-substance):** `docs/knowledgeos/reviews/20260822-1559-KOS-EP01-Reference-Architecture-v1.1-r4-and-Port-Contract-HPA-steering.md`. One sentence: *"We should now refine KnowledgeOS architecture around the semantic boundary, not refine the SNF formula itself."* The SNF measurement chain (SNF hypothesis → measurement framework → v0.1 → v0.2 → v0.3 gold-relation simulation) ends in an **ARCHITECTURAL DECISION** — what the architecture must protect — **not** a validated algorithm.
+
+**r4 annotations APPLIED to v1.1** (change authority = the steering act · net structural change **NONE**): the **six negative-direction prohibitions** as invariant interpretations — **Representation→Identity · Similarity→Equality · SNF equality→Knowledge identity** already present ⟨C-1⟩; **Probability→Truth · Canonicalization→Authority · Low entropy→Certainty ADDED** (§15 non-collapse table · §17 rejected set · §19 Non-collapse gate). Candidate **payload vocabulary** (interpretation probabilities · uncertainty · provenance · transformation evidence) = **port-contract vocabulary, never aggregate members** (r4-4). r4 change ledger in Appendix A (r4-1…r4-5).
+
+**EXPRESSION↔MEANING PORT CONTRACT — DELIVERED** (first Logical-Architecture deliverable, opened by the steering act): `docs/knowledgeos/architecture/20260822-1559-KOS-Expression-Meaning-Port-Contract.md`. Answers the **8 HPA questions** (what enters · what the mechanism returns · uncertainty · UNKNOWN · evidence · kernel trust · never-infer-from-SNF · collision reporting); renders the **six obligations** of §10 ⟨A-2⟩; the **six prohibited inferences** (Q7); the candidate payload vocabulary; the trust boundary; **collision rate = critical failure metric**, non-collapse measured in both directions; collisions are **evidence, never admission** (the contract's **position on OQ-2** — HPA rule still required). Encoding-agnostic (DEF-4) · no implementation form (DEF-5) · no experiment authorized (OQ-4 · v0.4).
+
+**⛔ NOT OPENED / NOT DECIDED:** Semantic Compiler/SNF **implementation** · SNF as the port **encoding** (DEF-4) · storage/schemas/APIs/classes (DEF-5) · **KOS-SNF-ME v0.4 NOT authorized — gated behind the boundary** (HPA Step 5) · **OQ-4 (KOS-SCB v0.2) unauthorized** · OQ-1/3/5 recorded, positions at contract altitude · Logical Architecture **open for the Port Contract only**.
+
+**NEXT:** the HPA's review of (a) the **r4 annotations** and (b) the **Expression↔Meaning Port Contract** — and, at that stage, a possible **ruling on OQ-2** (may SNF-equivalence be recorded as an EvidenceLink? — the contract's position: yes as candidate-side evidence, never as the assignment). Then **SNF v0.4 research only after the boundary is ratified**. Register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · P4 gate **unchanged**.
 
 ---
 
