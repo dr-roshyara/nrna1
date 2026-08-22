@@ -1,6 +1,17 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **`KOS-OPERATING-MODEL-001` INDEPENDENT VERIFICATION DELIVERED — VERIFIED (3 layers) · NOT ADOPTED · NOT AUTHORIZED** block is the newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **`KOS-OPERATING-MODEL-001` GOVERNANCE ADOPTION REVIEW — START GATE REFUSAL (verifier cannot be the reviewer; no governance lane)** block is the newest; older rows it contradicts are superseded by it)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **`KOS-OPERATING-MODEL-001` — GOVERNANCE ADOPTION REVIEW · **START GATE REFUSAL** — PO/ARB directed *"Begin the governance adoption review"*; the review **did not occur** — reviewer identity bar: this process IS the independent verifier `fc59bb0a`; lane bar: **no `role = governance` lane exists** on the record; item **STOPPED** (seq 9); ⛔ NOT ADOPTED · NOT AUTHORIZED — nothing recommended, nothing adopted** — supersedes nothing; the VERIFIED block below stands; the separate `KOS-NEXT-ACTOR-ORCHESTRATION-001` / `AST-018` slice is PRESERVED and continues independently)
+
+| | |
+|---|---|
+| 🎬 **PO/ARB direction** | in-session 2026-08-22, verbatim: **"Begin the governance adoption review."** — the declared sequence's step 5 directive. Directs a **step**, not a process; names no reviewer. Recording creates **no authority, no lane, no grant, no state change**. |
+| ⛔ **Gate determination — REFUSED** | **No adoption review performed. Nothing recommended. Nothing adopted.** Two independent failures (Phase 0 gate, house precedent `…-KOS-SESSION-BOOTSTRAP-001-CORRECTION-001-GOVERNANCE-ADOPTION-REVIEW-START-GATE-REFUSAL-d31ea60f.md`): (1) **identity bar** — this process `fc59bb0a` is the **independent verifier**; the adoption reviewer must NOT be the verifier (separation of duties, R-34/EP-02 extended; §38 four states stay distinct); (2) **lane bar** — **no `role = governance` lane** exists on the authoritative record (seq 1–9: implementation `259c1966` HANDED_OFF · verification `fc59bb0a` STOPPED). Bootstrap: `registered_role=verification`, `authorized_to_act=false`, next actor `governance`. |
+| 📜 **Recorded** | `docs/knowledgeos/reviews/2026-08-22-KOS-OPERATING-MODEL-001-GOVERNANCE-ADOPTION-REVIEW-START-GATE-REFUSAL-fc59bb0a.md` — **no transitions recorded; item remains STOPPED** (fail-closed). Mirrors the CORRECTION-001 refusals which the PO/ARB ruled **correct behaviour, not defects**. |
+| ✅ **Status + NEXT** | **IMPLEMENTED ≠ VERIFIED ≠ ADOPTED ≠ AUTHORIZED.** **NEXT: PO/ARB appoints a fresh, separate governance adoption reviewer** (a new process; NOT `fc59bb0a` the verifier · NOT `259c1966` the producer · not `5c0e13c1` · `8a525719` · `b51dba91` · `8deac5de` · `d1612e03` · `b64828fe` · `7c2690ae` · PO/ARB) → Governance records CONTINUATION (exits STOPPED, Inv E) → REGISTER(governance) → HANDOFF → Human START → the appointed reviewer performs the review → STOP → **PO/ARB adoption decision (NOT automatic)**. ⛔ no adoption by this process · no claim of authorization · no AST-015/016/017/018 change · no EKS-07. |
 
 ---
 
