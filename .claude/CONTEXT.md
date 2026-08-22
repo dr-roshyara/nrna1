@@ -1035,7 +1035,20 @@
 
 ---
 
-## 📍 UPDATE (2026-08-22, **TRACK 2 · ARCHITECTURE `RV-1…RV-7` REPAIR LANE OPENED** — newest) — **PO/ARB AUTHORIZED THE NARROW REPAIR COMMISSION · S6 ACTIVE · MIGRATION STILL ⛔ FROZEN**
+## 📍 UPDATE (2026-08-22, **TRACK 2 · ARCHITECTURE `RV-1…RV-7` REPAIR DELIVERED** — newest) — **S6 REPAIR COMMITTED · EVIDENCE PRODUCED · ⛔ FINDINGS STILL OPEN, NOTHING ACCEPTED · MIGRATION STILL ⛔ FROZEN · NEXT = GOVERNANCE BOUNDED RE-VERIFICATION**
+
+| | |
+|---|---|
+| 🔵 **Lane state on the record** | `S6-architecture-dv-correction-rv-repair` — repair **DELIVERED and COMMITTED** per grant `G-KOS-GOV-STATE-DURABILITY-DV-CORRECTION-RV-REPAIR` (AUTHORIZED) and the PO/ARB act registered at `8b92a100`. Contract honored: **"Repair `RV-1…RV-7` only, produce evidence, stop"** — no migration, no finding closed, nothing accepted |
+| ✅ **`RV-1` (gateway) — Option A** | ONE §4.3 placement-table row added (plan line 796) placing step `3(iii)`'s evidencing governance append: **POST-SWITCH AUTHORITATIVE → CARRIED BY the `SWITCH-OVER RECORD` at `3(v)`**, citing `PREMISE 2` + the §0.7.5 five-line derivation; the `3(iii-b)` receipt does NOT discharge it (attests the COMPARISON, not the WRITE). PREMISE 2 note in plan §4.3 + propagation note in summary §4 |
+| ✅ **`RV-2`…`RV-7`** | `RV-2` §4.4 overclaim scoped (superseded wording shown) · `RV-3` §4.0 switch-over record labelled superseded in place · `RV-4` §5 evidence list now carries the `3(iii-b)` VERIFICATION RECEIPT · `RV-5` summary `.claude/scripts/` measurement corrected to **13 entries** (10 shell scripts + README + 2 PHP) · `RV-6` summary irreconcilable counts (`26/35 → 43/43`, `37/37`) withdrawn as superseded — measured evidence = **18 property tests (`T1`…`T18`) ALL PASSING** · `RV-7` §4.7 `P5·3` scoping clause added (re-attempt re-measures at (i) / re-closes a fresh enumeration at (ii)) |
+| 📋 **Evidence** | repaired plan + summary diffs · **NEW** disposition record `docs/knowledgeos/reviews/2026-08-22-KOS-AIP-GOV-STATE-DURABILITY-DV-CORRECTION-RV-REPAIR-DISPOSITION.md` (per-finding quote · disposition · §/line · diff · Option A justification · "What this does NOT do" · Traceability) · session completion report appended to `.claude/sessions/2026-08-22.md` |
+| ⛔ **Open (not Architecture's to close)** | **`DV-1`…`DV-7` and `RV-1`…`RV-7` REMAIN OPEN** — closure is the PO/ARB's acceptance act (`R-34`/`P-2`). The repair is evidence, not a verdict. ⛔ **MIGRATION NOT AUTHORIZED · PHASE 3 MUST NOT BEGIN · PHASE 5 REMAINS PROHIBITED** |
+| **NEXT** | ⏳ **GOVERNANCE BOUNDED RE-VERIFICATION** (completeness · provenance · lineage · current/superseded integrity only — never citable as technical verification) → **PO/ARB decision and acceptance** (the DV-1 Phase-5 bar is theirs to discharge) → migration authorization |
+
+---
+
+## 📍 UPDATE (2026-08-22, **TRACK 2 · ARCHITECTURE `RV-1…RV-7` REPAIR LANE OPENED**) — **PO/ARB AUTHORIZED THE NARROW REPAIR COMMISSION · S6 ACTIVE · MIGRATION STILL ⛔ FROZEN**
 
 | | |
 |---|---|
