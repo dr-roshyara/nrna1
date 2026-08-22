@@ -1,6 +1,19 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **`KOS-OPERATING-MODEL-001` IMPLEMENTED** block is the newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **`KOS-OPERATING-MODEL-001` VERIFIER APPOINTMENT RECORDED** block is the newest; older rows it contradicts are superseded by it)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **`KOS-OPERATING-MODEL-001` — VERIFICATION APPOINTMENT **RECORDED** (PO/ARB in-session: *"appoint a fresh independent verifier"*, verbatim) — appointee identity placeholder `claude-code-session:<ACTOR-ID>`; work item **STOPPED** (seq 4); ⛔ NOT VERIFIED · NOT ADOPTED** — supersedes nothing; the implementation-IMPLEMENTED block below stands; the separate `KOS-NEXT-ACTOR-ORCHESTRATION-001` / `AST-018` slice is PRESERVED and continues independently)
+
+| | |
+|---|---|
+| 🎬 **PO/ARB act** | in-session direction 2026-08-22, verbatim: **"appoint a fresh independent verifier"** — recorded in `docs/knowledgeos/reviews/2026-08-22-KOS-OPERATING-MODEL-001-VERIFIER-APPOINTMENT-registration.md`. Recording creates **no authority, no lane, no grant, no state change** (Governance-recording by the producing implementation session `259c1966`, disclosed — recording ≠ implementing/verifying/accepting/adopting/appointing). |
+| 🆔 **Appointee identity** | **`claude-code-session:<ACTOR-ID>`** — placeholder, **NOT declared** (INV-ATTR-1/2: identity is declared from the runtime by the fresh process; never fabricated, never chosen from a human-entered UUID). |
+| 🛡 **Identity bars** | fresh verifier ≠ `259c1966` (producing implementation — producer bar R-34/EP-02) · ≠ `5c0e13c1` · ≠ `8a525719` · ≠ `b51dba91` · ≠ `8deac5de` · ≠ `d1612e03` · ≠ `b64828fe` · ≠ `7c2690ae` · ≠ PO/ARB. A **subagent is disqualified by construction** (inherits parent `CLAUDE_CODE_SESSION_ID` — empirical probe 2026-08-22). |
+| ⛔ **Governed state** | work item **STOPPED** (seq 4). AST-018 `next-actor` → `WORK_ITEM_STOPPED` (CONTINUE / LEAVE_STOPPED) · `prepare-next-session` → `NO_FRESH_ACTOR_REQUIRED` while stopped · AST-017 bootstrap → UNRESOLVED fail-closed, next role `governance`. **Explicit CONTINUATION (recordedBy governance/human) must precede REGISTER(verification).** |
+| 📜 **Candidate-declaration prompt** | preserved verbatim: `docs/knowledgeos/reviews/2026-08-22-KOS-OPERATING-MODEL-001-VERIFIER-CANDIDATE-DECLARATION-prompt.md` — the PO/ARB starts the fresh verification session with it. |
+| ✅ **Status + NEXT** | **IMPLEMENTED ≠ VERIFIED ≠ ADOPTED ≠ AUTHORIZED.** **NEXT: PO/ARB records the explicit CONTINUATION** (sticky STOPPED) → starts the fresh independent verification session (separate process; declares identity from the runtime; bars above) → eligibility → Governance REGISTER(verification) → HANDOFF → human START (G-3) → independent verification → governance adoption review → PO/ARB adoption decision (NOT automatic). ⛔ no REGISTER/START/verification by `259c1966` · no subagent as the "fresh" verifier · no adoption claim · no AST-015/016/017/018 change · no EKS-07. |
 
 ---
 
