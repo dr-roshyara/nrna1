@@ -79,6 +79,38 @@ W_NOT_LICENSED = 0.05
 # Global epistemic difference: one IR declares AMBIGUOUS, the other RESOLVED.
 W_UNCERTAINTY_GLOBAL = 0.20
 
+# ---------------------------------------------------------------------------
+# Versions (v0.1 = pilot baseline, retained for A/B; v0.2 = P5 research metric)
+# ---------------------------------------------------------------------------
+#
+# v0.2 repairs two measured defects of v0.1 (P5 plan D-2, D-3):
+#
+#   D-2  an optional role's PRESENCE could be diluted below the acceptance
+#        threshold by role averaging, so "engineer stored the file" and
+#        "engineer stored the file in the server" read as the same meaning.
+#   D-3  NOT_EXPRESSED vs UNKNOWN carried 0.30 and, after the blend, landed
+#        under tau — epistemic absence collapsing into semantic absence.
+#
+# The repair is a CATEGORY FLOOR, not a bigger weight: a status-category
+# mismatch is a boundary, so the total may not fall below the floor for the
+# most decisive slot. This is the same reasoning Tier 1 already applies to
+# predicate/negation/entity; v0.1 simply failed to apply it to presence and
+# epistemic status. Floors are declared research hyper-parameters, NOT
+# architectural thresholds, and v0.1 remains callable as the A/B baseline.
+
+V01 = "v0.1"
+V02 = "v0.2"
+VERSIONS = (V01, V02)
+DEFAULT_VERSION = V01   # keeps the Phase-1 pilot byte-reproducible
+
+# v0.2 category floors, per role slot (status-pair -> minimum total distance).
+FLOOR_PRESENT_ABSENT = 0.50    # EXPRESSED vs NOT_EXPRESSED
+FLOOR_PRESENT_UNKNOWN = 0.55   # EXPRESSED vs UNKNOWN   (ignorance != presence)
+FLOOR_ABSENT_UNKNOWN = 0.45    # NOT_EXPRESSED vs UNKNOWN (ignorance != absence)
+FLOOR_STRUCT_MISMATCH = 0.50   # role in one IR, absent from the other
+FLOOR_AMBIG_ABSENT = 0.45      # AMBIGUOUS vs NOT_EXPRESSED
+FLOOR_AMBIG_UNKNOWN = 0.45     # AMBIGUOUS vs UNKNOWN
+
 # Role-slot blend: max-dominant so a single decisive slot is never diluted away.
 ROLE_BLEND_MAX = 0.65
 ROLE_BLEND_MEAN = 0.35
@@ -93,6 +125,21 @@ def _norm_entity(e: str | None) -> str | None:
     if s.endswith("s") and not s.endswith("ss") and len(s) > 3:
         return s[:-1]
     return s
+
+
+def _same_meaning(x: IR, y: IR) -> bool:
+    """Are these two IRs the same meaning-bearing content?
+
+    Compares only the semantic fields. `confidence` and `provenance` are
+    experiment bookkeeping — no distance term reads them, so they cannot make
+    two IRs different meanings.
+    """
+    def key(m: IR):
+        return (m.predicate, m.negation, m.modality, m.temporal,
+                m.quantification, m.uncertainty,
+                tuple(sorted((a.role, _norm_entity(a.entity), a.status)
+                             for a in m.arguments)))
+    return key(x) == key(y)
 
 
 def _predicate_term(x: IR, y: IR) -> float:
@@ -166,6 +213,47 @@ def _slot_term(x: IR, y: IR, role: str) -> float:
     return W_ENTITY_MISMATCH
 
 
+def _slot_floor(x: IR, y: IR, role: str) -> float:
+    """v0.2 category floor for one role slot.
+
+    Returns the minimum total distance this slot's status pair must produce.
+    0.0 when the pair is not a category boundary (same status, or a purely
+    graded difference such as entity mismatch, which Tier 1 already handles).
+    """
+    ax = x.role_map().get(role)
+    ay = y.role_map().get(role)
+    if ax is None and ay is None:
+        return 0.0
+    if ax is None or ay is None:
+        return FLOOR_STRUCT_MISMATCH
+
+    sx, sy = ax.status, ay.status
+    if sx == sy:
+        return 0.0
+    if ARG_NOT_LICENSED in (sx, sy):
+        return 0.0          # frame difference, deliberately mild
+    pair = {sx, sy}
+    if pair == {ARG_EXPRESSED, ARG_NOT_EXPRESSED}:
+        return FLOOR_PRESENT_ABSENT
+    if pair == {ARG_EXPRESSED, ARG_UNKNOWN}:
+        return FLOOR_PRESENT_UNKNOWN
+    if pair == {ARG_NOT_EXPRESSED, ARG_UNKNOWN}:
+        return FLOOR_ABSENT_UNKNOWN
+    if pair == {ARG_AMBIGUOUS, ARG_NOT_EXPRESSED}:
+        return FLOOR_AMBIG_ABSENT
+    if pair == {ARG_AMBIGUOUS, ARG_UNKNOWN}:
+        return FLOOR_AMBIG_UNKNOWN
+    return 0.0
+
+
+def _category_floor(x: IR, y: IR) -> float:
+    """The strongest category boundary present across all role slots."""
+    roles = {a.role for m in (x, y) for a in m.arguments}
+    if not roles:
+        return 0.0
+    return max(_slot_floor(x, y, r) for r in roles)
+
+
 def _roles_term(x: IR, y: IR) -> float:
     all_roles = set()
     for m in (x, y):
@@ -205,8 +293,29 @@ def _inversion_term(x: IR, y: IR) -> float:
     return 0.0
 
 
-def d_snf(x: IR, y: IR) -> float:
-    """Semantic distance in [0, 1]. Higher = more semantically distant."""
+def d_snf(x: IR, y: IR, version: str = DEFAULT_VERSION) -> float:
+    """Semantic distance in [0, 1]. Higher = more semantically distant.
+
+    version=V01 — the Phase-1 pilot metric, unchanged (A/B baseline).
+    version=V02 — the P5 research metric: identical terms, plus the category
+                  floor that keeps a presence/epistemic-status boundary from
+                  being averaged away (D-2, D-3).
+
+    Still a PRE-METRIC: non-negative, symmetric, d(x,x)=0. The triangle
+    inequality is NOT claimed for either version.
+    """
+    if version not in VERSIONS:
+        raise ValueError(f"unknown d_snf version: {version}")
+    if version == V02 and _same_meaning(x, y):
+        # Reflexivity. v0.1 violated d(x,x)=0 whenever an IR carried an UNKNOWN
+        # slot: W_UNKNOWN_UNKNOWN (0.15) separated an IR from ITSELF, because
+        # "two unknowns may differ" was applied without first checking whether
+        # the two IRs are the same IR. The pilot report claimed d(x,x)=0 as a
+        # pre-metric property; for UNKNOWN-bearing IRs that claim was false.
+        # v0.2 restores reflexivity and keeps the UNKNOWN-vs-UNKNOWN separation
+        # for genuinely DISTINCT IRs. (v0.1 is left as-is: it is the A/B
+        # baseline and reproducing its defects is the point.)
+        return 0.0
     terms = [
         _predicate_term(x, y),
         _negation_term(x, y),
@@ -215,13 +324,17 @@ def d_snf(x: IR, y: IR) -> float:
         _inversion_term(x, y),
         _global_uncertainty_term(x, y),
     ]
-    return max(0.0, min(1.0, sum(terms)))
+    total = sum(terms)
+    if version == V02:
+        total = max(total, _category_floor(x, y))
+    return max(0.0, min(1.0, total))
 
 
-def d_snf_acceptance(x: IR, y: IR, tau: float = 0.40) -> bool:
+def d_snf_acceptance(x: IR, y: IR, tau: float = 0.40,
+                     version: str = DEFAULT_VERSION) -> bool:
     """Binarised interpretation: are these "the same meaning"?
     tau is a research hyper-parameter, NOT an architectural threshold."""
-    return d_snf(x, y) <= tau
+    return d_snf(x, y, version=version) <= tau
 
 
 # ---------------------------------------------------------------------------
@@ -278,6 +391,50 @@ def _build_sanity_pairs():
     return pairs
 
 
+def _build_v02_pairs():
+    """Six additional GOLD pairs for the v0.2 gate — the distinctions the HPA
+    named as must-not-collapse (2026-08-22 amendment):
+
+        EXPRESSED  !=  EXPRESSED+NEGATED  !=  NOT_EXPRESSED  !=  UNKNOWN
+
+    plus the two presence cases (D-2). Every one of these must land strictly
+    above the evaluator's acceptance threshold (0.40), otherwise the metric
+    would report "same meaning" for a real semantic or epistemic difference.
+    """
+    from ir import Argument
+
+    def store(loc_entity, loc_status):
+        return IR(predicate="STORE",
+                  arguments=[Argument(ROLE_AGENT, "engineer", ARG_EXPRESSED),
+                             Argument(ROLE_PATIENT, "file", ARG_EXPRESSED),
+                             Argument("LOCATION", loc_entity, loc_status)])
+
+    def eat(entity, status, negation=False):
+        return IR(predicate="EAT",
+                  arguments=[Argument(ROLE_AGENT, "rama", ARG_EXPRESSED),
+                             Argument(ROLE_PATIENT, entity, status)],
+                  negation=negation)
+
+    expressed = eat("rice", ARG_EXPRESSED)
+    negated = eat("rice", ARG_EXPRESSED, negation=True)
+    not_expressed = eat(None, ARG_NOT_EXPRESSED)
+    unknown = eat(None, ARG_UNKNOWN)
+
+    return [
+        ("I", expressed, not_expressed, "EXPRESSED vs NOT_EXPRESSED"),
+        ("J", expressed, unknown, "EXPRESSED vs UNKNOWN"),
+        ("K", not_expressed, unknown, "NOT_EXPRESSED vs UNKNOWN"),
+        ("L", expressed, negated, "EXPRESSED vs NEGATED"),
+        ("M", store("server", ARG_EXPRESSED), store(None, ARG_NOT_EXPRESSED),
+         "optional-role presence vs absence"),
+        ("N", store("server", ARG_EXPRESSED), store(None, ARG_UNKNOWN),
+         "optional-role presence vs unknown"),
+    ]
+
+
+TAU_SEPARATE = 0.40   # must exceed the evaluator's acceptance threshold
+
+
 def d_snf_sanity_test() -> list[dict]:
     """Run the metric sanity test. Returns per-pair results.
 
@@ -288,9 +445,19 @@ def d_snf_sanity_test() -> list[dict]:
       G: 0.30 <= d <= 0.85 (ambiguous is a real, moderate difference)
       H: 0.15 <= d <= 0.85 (incomplete is a real, partial difference)
     """
+    return d_snf_gate(DEFAULT_VERSION)
+
+
+def d_snf_gate(version: str = V02) -> list[dict]:
+    """The metric gate for `version`. MUST pass before mechanisms run.
+
+    v0.1: pairs A..H (the Phase-1 gate, unchanged).
+    v0.2: pairs A..H plus I..N (the non-collapse gate) — I..N must each be
+          strictly above TAU_SEPARATE.
+    """
     results = []
     for pid, x, y, bound, label in _build_sanity_pairs():
-        d = d_snf(x, y)
+        d = d_snf(x, y, version=version)
         if pid == "A":
             ok = d <= 0.001
         elif pid in ("B", "C"):
@@ -302,15 +469,23 @@ def d_snf_sanity_test() -> list[dict]:
         else:
             ok = 0.15 <= d <= 0.85
         results.append({"pair": pid, "label": label, "d_snf": round(d, 4),
-                        "bound": bound, "pass": ok})
+                        "bound": bound, "pass": ok, "version": version})
+    if version == V02:
+        for pid, x, y, label in _build_v02_pairs():
+            d = d_snf(x, y, version=version)
+            results.append({"pair": pid, "label": label, "d_snf": round(d, 4),
+                            "bound": f"> {TAU_SEPARATE}",
+                            "pass": d > TAU_SEPARATE, "version": version})
     return results
 
 
 if __name__ == "__main__":
-    for r in d_snf_sanity_test():
+    import sys
+    _v = sys.argv[1] if len(sys.argv) > 1 else V02
+    for r in d_snf_gate(_v):
         print(f"{r['pair']} {r['label']:<26} d={r['d_snf']:.3f} "
               f"bound<={r['bound']}  {'PASS' if r['pass'] else 'FAIL'}")
-    if all(r["pass"] for r in d_snf_sanity_test()):
+    if all(r["pass"] for r in d_snf_gate(_v)):
         print("\nSANITY TEST PASSES — mechanisms may run.")
     else:
         print("\nSANITY TEST FAILS — investigate the metric before running mechanisms.")

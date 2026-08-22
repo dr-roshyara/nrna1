@@ -37,7 +37,29 @@ from __future__ import annotations
 
 import _bootstrap  # noqa: F401
 
-from distance import d_snf
+from distance import d_snf as _d_snf_raw, V01 as D_V01, V02 as D_V02
+
+# Which d_SNF version the evaluation layer uses. Default V01 keeps the Phase-1
+# pilot byte-reproducible; the P5 competition sets V02 explicitly.
+_DISTANCE_VERSION = D_V01
+
+
+def set_distance_version(version: str) -> None:
+    """Select the d_SNF version for the whole evaluation layer (runner-level
+    configuration, recorded in the run metadata)."""
+    global _DISTANCE_VERSION
+    if version not in (D_V01, D_V02):
+        raise ValueError(f"unknown d_snf version: {version}")
+    _DISTANCE_VERSION = version
+
+
+def distance_version() -> str:
+    return _DISTANCE_VERSION
+
+
+def d_snf(x, y):
+    """Evaluation-layer distance — always the configured version."""
+    return _d_snf_raw(x, y, version=_DISTANCE_VERSION)
 from ir import IR, UNC_AMBIGUOUS, UNC_UNKNOWN
 from lexicon import (NOUNS, VERBS, REGISTERED_PREDICATES, REGISTERED_ENTITIES,
                      tokenize)
@@ -71,7 +93,18 @@ def _unregistered_in_world(expression: str) -> bool:
 
 
 def abstention_warranted(case: dict, mechanism: str) -> bool:
-    """Should this mechanism abstain on this case (Zero-lens gold)?"""
+    """Should this mechanism abstain on this case (Zero-lens gold)?
+
+    Three sources, all DECLARED (never inferred from a mechanism's behaviour):
+      1. the corpus declares `abstain_expected` — the toy world cannot
+         represent the case at all, so abstention is the only correct answer
+         for EVERY mechanism (this is what separates prudence from inability);
+      2. the gold declares the surface underdetermined (`ambiguous`);
+      3. SNF-D's closed world does not register the named predicate/entity
+         (public mechanism configuration, not gold).
+    """
+    if case["gold"].get("abstain_expected"):
+        return True
     if case["gold"]["ambiguous"]:
         return True
     if mechanism == "SNF-D":

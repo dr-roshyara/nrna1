@@ -35,6 +35,8 @@ from __future__ import annotations
 
 import _bootstrap  # noqa: F401
 
+from distance import V01 as D_V01, V02 as D_V02  # noqa: F401
+
 from ir import (IR, Argument, ROLE_AGENT, ROLE_PATIENT, ROLE_INSTRUMENT,
                 ROLE_RECIPIENT, ROLE_SOURCE, ROLE_LOCATION, ROLES,
                 ARG_EXPRESSED, ARG_UNKNOWN, ARG_NOT_EXPRESSED, ARG_AMBIGUOUS,
@@ -549,33 +551,94 @@ class SNFD:
 # SNF-E — Constitutional veto ensemble (NOT a weighted average)
 # ---------------------------------------------------------------------------
 
+# Approved arbitration policies (HPA 2026-08-22). Each is behaviourally
+# DISTINCT — the Phase-1 code carried five names for three behaviours, so a
+# "sweep" over them would have produced the same numbers under different
+# labels. `tests/test_ensemble_policies.py` pins them apart.
+ARBITRATION_POLICIES = {
+    "UNANIMOUS": "promote only if EVERY member agrees; any dissent -> abstain",
+    "MAJORITY": "promote on >= n-1 agreeing; hedge on a 2-member cluster",
+    "QUORUM": "promote on any 2 agreeing members",
+    "VETO": "any member abstention blocks promotion; otherwise majority",
+    "ABSTAIN_ON_CONFLICT": "promote only with NO internal disagreement; never hedges",
+    "LEAST_DIVERGENT": "always promote the least-divergent member; never abstains",
+}
+
+# DEFERRED by HPA decision (Q-3): "I would not create a fake domain taxonomy
+# merely to make the arbitration sweep complete." The toy world has no domain
+# model, so a DOMAIN_CONDITIONAL policy would introduce an uncontrolled
+# variable. It is recorded here as deferred and MUST NOT be implemented.
+POLICY_DEFERRED = {
+    "DOMAIN_CONDITIONAL": "DEFERRED — requires a real domain model (HPA, Q-3)",
+}
+
+DECISION_PROMOTE = "PROMOTE"
+DECISION_HEDGE = "HEDGE"
+DECISION_ABSTAIN = "ABSTAIN"
+
+
 class SNFE:
     """Runs A/B/C/D, performs DIVERGENCE ANALYSIS, then arbitrates.
 
-    NOT a weighted average: score = wA*A + wB*B + wC*C is FORBIDDEN here.
+    NOT a scorer: combining member outputs into a single numeric authority is
+    FORBIDDEN here (commission: "Do not create a composite authority score").
     Output is one member's candidate IR (the least-divergent one inside its
-    agreement cluster), or an abstention. The arbitration rule is an
-    EXPERIMENTAL VARIABLE — the pilot measures behavior under it, it does not
-    endorse any rule.
+    agreement cluster), or an abstention. The arbitration policy is an
+    EXPERIMENTAL VARIABLE — the experiment measures behaviour under it and
+    endorses no policy.
 
-    Rules (config.rule):
-      "unanimity"        promote only if ALL members agree (d < tau_agree)
-      "majority"         promote if >= 3 of 4 agree
-      "pairwise"         promote if >= 2 of 4 agree
-      "abstain_conflict" promote on majority, else ABSTAIN (default)
-      "veto"             any member abstention blocks promotion
+    Defaults reproduce the Phase-1 pilot exactly (policy=MAJORITY, d_SNF v0.1),
+    so the pilot stays byte-reproducible; the P5 competition passes its policy
+    and distance version explicitly.
     """
 
     name = "SNF-E"
 
-    def __init__(self, rule: str = "abstain_conflict", tau_agree: float = 0.30):
-        if rule not in ("unanimity", "majority", "pairwise", "abstain_conflict",
-                        "veto"):
-            raise ValueError(f"unknown arbitration rule: {rule}")
-        self.rule = rule
+    def __init__(self, policy: str = "MAJORITY", tau_agree: float = 0.30,
+                 distance_version: str = D_V01):
+        if policy in POLICY_DEFERRED:
+            raise ValueError(f"{policy} is {POLICY_DEFERRED[policy]}")
+        if policy not in ARBITRATION_POLICIES:
+            raise ValueError(f"unknown arbitration policy: {policy}")
+        self.policy = policy
         self.tau_agree = tau_agree
+        self.distance_version = distance_version
         self.members = [SNFA(), SNFB(), SNFC(), SNFD()]
         self._last_divergence = None  # for reporting
+
+    # -- the decision rule, isolated so it can be tested without running NLP --
+    def _decide(self, cluster_size: int, n_answered: int,
+                n_members: int = 4) -> str:
+        """Map a member-outcome pattern to a decision. Pure function."""
+        p = self.policy
+        if n_answered == 0:
+            return DECISION_ABSTAIN
+        if p == "LEAST_DIVERGENT":
+            return DECISION_PROMOTE
+        if p == "UNANIMOUS":
+            return (DECISION_PROMOTE if cluster_size == n_members
+                    else DECISION_ABSTAIN)
+        if p == "ABSTAIN_ON_CONFLICT":
+            return (DECISION_PROMOTE
+                    if (cluster_size == n_answered and n_answered >= 2)
+                    else DECISION_ABSTAIN)
+        if p == "QUORUM":
+            return DECISION_PROMOTE if cluster_size >= 2 else DECISION_ABSTAIN
+        if p == "VETO":
+            if n_answered < n_members:
+                return DECISION_ABSTAIN
+            return self._majority(cluster_size, n_members)
+        if p == "MAJORITY":
+            return self._majority(cluster_size, n_members)
+        raise ValueError(f"unhandled policy: {p}")   # pragma: no cover
+
+    @staticmethod
+    def _majority(cluster_size: int, n_members: int) -> str:
+        if cluster_size >= max(3, n_members - 1):
+            return DECISION_PROMOTE
+        if cluster_size >= 2:
+            return DECISION_HEDGE
+        return DECISION_ABSTAIN
 
     def _run_members(self, expression: str, context: dict):
         return {m.name: m.interpret(expression, context) for m in self.members}
@@ -591,27 +654,31 @@ class SNFE:
         for a in irs:
             matrix[a] = {}
             for b in irs:
-                matrix[a][b] = (d_snf(irs[a], irs[b]) if a != b else 0.0)
+                matrix[a][b] = (d_snf(irs[a], irs[b],
+                                      version=self.distance_version)
+                                if a != b else 0.0)
         return matrix
 
-    def interpret(self, expression: str, context: dict) -> dict:
-        from distance import d_snf
+    def _abstain(self, reason: str, ev: list[str]) -> dict:
+        return _candidate_set(self.name,
+                              _base_ir("", False, MODALITY_ASSERTED, "NONE",
+                                       "NONE", UNC_UNKNOWN, self.name, 0.0),
+                              0.0, UNC_UNKNOWN, abstained=True,
+                              reason=reason, evidence=ev)
 
+    def interpret(self, expression: str, context: dict) -> dict:
         outs = self._run_members(expression, context)
         member_names = {m.name for m in self.members}
         irs = {m: self._rep_ir(out) for m, out in outs.items()}
         answered = {m for m, ir in irs.items() if ir is not None}
-        ev = [f"members run: {','.join(m.name for m in self.members)}"]
-        ev.append(f"answered: {sorted(answered)}; "
-                  f"abstained: {sorted(member_names - answered)}")
+        ev = [f"members run: {','.join(m.name for m in self.members)}",
+              f"answered: {sorted(answered)}; "
+              f"abstained: {sorted(member_names - answered)}",
+              f"policy={self.policy}; tau_agree={self.tau_agree}; "
+              f"d_snf={self.distance_version}"]
 
-        if self.rule == "veto" and len(answered) < len(self.members):
-            return _candidate_set(self.name, _base_ir("", False,
-                                 MODALITY_ASSERTED, "NONE", "NONE",
-                                 UNC_UNKNOWN, self.name, 0.0),
-                                 0.0, UNC_UNKNOWN, abstained=True,
-                                 reason="member abstention vetoed promotion",
-                                 evidence=ev)
+        if not answered:
+            return self._abstain("no member produced a candidate", ev)
 
         matrix = self._pairwise({m: irs[m] for m in answered})
         self._last_divergence = matrix
@@ -626,41 +693,35 @@ class SNFE:
                     cluster.append(other)
             if len(cluster) > len(best_cluster):
                 best_cluster = cluster
-        ev.append(f"agreement cluster: {sorted(best_cluster)} "
-                  f"(rule={self.rule}, tau_agree={self.tau_agree})")
-        ev.append(f"divergence matrix: "
+        ev.append(f"agreement cluster: {sorted(best_cluster)}")
+        ev.append("divergence matrix: "
                   + "; ".join(f"{a}<->{b}:{matrix[a][b]:.2f}"
-                              for a in members for b in members
-                              if a < b))
+                              for a in members for b in members if a < b))
+
+        decision = self._decide(len(best_cluster), len(answered),
+                                len(self.members))
+        ev.append(f"decision={decision} "
+                  f"(cluster={len(best_cluster)}, answered={len(answered)})")
+
+        if decision == DECISION_ABSTAIN:
+            return self._abstain(
+                f"{self.policy}: no admissible agreement "
+                f"(cluster={len(best_cluster)}, answered={len(answered)})", ev)
+
+        # Representative = least-divergent member of the cluster (never a
+        # numeric blend of members).
+        pool = best_cluster if len(best_cluster) >= 1 else members
+        rep = min(pool, key=lambda m: sum(matrix[m][o] for o in pool if o != m))
+        ir = irs[rep]
+
+        if decision == DECISION_HEDGE:
+            ev.append(f"partial agreement (cluster={sorted(best_cluster)}); "
+                      "candidate + divergence note")
+            return _candidate_set(self.name, ir, 0.5, UNC_AMBIGUOUS,
+                                  evidence=ev)
 
         n = len(best_cluster)
-        if self.rule == "unanimity":
-            promote = n == len(self.members)
-        elif self.rule in ("majority", "abstain_conflict", "veto"):
-            promote = n >= max(3, len(self.members) - 1)
-        else:  # pairwise
-            promote = n >= 2
-
-        if not promote:
-            if n >= 2:
-                rep = best_cluster[0]
-                return _candidate_set(self.name, irs[rep], 0.5,
-                                      UNC_AMBIGUOUS, evidence=ev +
-                                      [f"partial agreement (cluster={sorted(best_cluster)}); "
-                                       "candidate + divergence note"])
-            return _candidate_set(self.name, _base_ir("", False,
-                                 MODALITY_ASSERTED, "NONE", "NONE",
-                                 UNC_UNKNOWN, self.name, 0.0),
-                                 0.0, UNC_UNKNOWN, abstained=True,
-                                 reason="incompatible member outputs (no agreement)",
-                                 evidence=ev + ["no agreement cluster -> ABSTAIN"])
-
-        # Promote the least-divergent member of the cluster.
-        rep = min(best_cluster, key=lambda m: sum(
-            matrix[m][o] for o in best_cluster if o != m))
-        ir = irs[rep]
-        conf = 0.6 + 0.1 * (n - 2)
-        ir.confidence = min(0.95, conf)
+        ir.confidence = min(0.95, 0.6 + 0.1 * (n - 2))
         ev.append(f"PROMOTE member {rep} (least-divergent in cluster); "
                   f"agreement count={n}")
         return _candidate_set(self.name, ir, ir.confidence, UNC_RESOLVED,

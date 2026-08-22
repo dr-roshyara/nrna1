@@ -36,8 +36,22 @@ from evaluator import (verdict_for, verdict_pair, abstention_warranted,
 
 PAIR_CATS = {"equivalent", "distinct", "transformation", "adversarial"}
 AMBIG_CATS = {"ambiguous"}
-N_PAIRS = 80
-N_TOTAL = 100
+
+# D-7: corpus sizes are DERIVED from the data, never literals. The Phase-1 code
+# divided by 20 / 80 / 100, which is silently wrong at any other corpus size.
+
+ABSTAINED_VERDICTS = ("ABSTAINED", "HANDLED_VIA_ABSTENTION")
+
+# Four-way abstention taxonomy (commission §15). FALSE_ACCEPTANCE is the most
+# dangerous error and is reported as a CONSTRAINT to be bounded, never as a
+# score to be maximised.
+CORRECT_RESOLUTION = "CORRECT_RESOLUTION"
+CORRECT_ABSTENTION = "CORRECT_ABSTENTION"
+BLIND_ABSTENTION = "BLIND_ABSTENTION"
+FALSE_ACCEPTANCE = "FALSE_ACCEPTANCE"
+ABSTENTION_OUTCOMES = (CORRECT_RESOLUTION, CORRECT_ABSTENTION,
+                       BLIND_ABSTENTION, FALSE_ACCEPTANCE)
+FALSE_ACCEPTANCE_CONSTRAINT = "false_acceptance_rate <= epsilon"
 
 
 # ---------------------------------------------------------------------------
@@ -131,6 +145,51 @@ def risk_coverage(points: list[tuple[float, int]],
 
 
 # ---------------------------------------------------------------------------
+# Confidence intervals (D-9) and coverage-matched calibration (D-5)
+# ---------------------------------------------------------------------------
+
+def bootstrap_ci(values: list[float], seed: int, iters: int = 2000,
+                 alpha: float = 0.05) -> tuple:
+    """Percentile bootstrap CI for the mean of `values`. Seeded => reproducible.
+
+    A single deterministic run gives point estimates that read as more precise
+    than they are; this is the interval the report must carry.
+    """
+    if not values:
+        return (None, None)
+    import random
+    rng = random.Random(seed)
+    n = len(values)
+    means = []
+    for _ in range(iters):
+        means.append(sum(values[rng.randrange(n)] for _ in range(n)) / n)
+    means.sort()
+    lo = means[int((alpha / 2) * iters)]
+    hi = means[min(iters - 1, int((1 - alpha / 2) * iters))]
+    return (round(lo, 4), round(hi, 4))
+
+
+def calibration_at_coverage(points: list[tuple[float, int]],
+                            coverage: float) -> dict:
+    """Calibration restricted to the most-confident `coverage` fraction.
+
+    D-5: a mechanism that answers only its easiest cases will look better
+    calibrated than one that answers everything. Comparing two mechanisms at
+    the SAME coverage removes that artifact — the abstainer's advantage either
+    survives the matching (calibration skill) or disappears (selection effect).
+    """
+    if not points or coverage <= 0:
+        return {"brier": None, "ece": None, "n": 0, "coverage": coverage,
+                "reliability": []}
+    ordered = sorted(points, key=lambda p: -p[0])
+    n_sel = max(1, min(len(ordered), round(coverage * len(ordered))))
+    sel = ordered[:n_sel]
+    out = calibration(sel)
+    out["coverage"] = round(n_sel / len(ordered), 4)
+    return out
+
+
+# ---------------------------------------------------------------------------
 # Abstention quality
 # ---------------------------------------------------------------------------
 
@@ -166,6 +225,69 @@ def abstention_stats(verdicts: list[dict], cases: list[dict]) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# Abstention taxonomy — prudence vs inability (D-6)
+# ---------------------------------------------------------------------------
+
+def abstention_taxonomy(verdicts: list[dict], cases: list[dict]) -> dict:
+    """Classify every (case, mechanism) into the four-way taxonomy.
+
+        CORRECT_RESOLUTION  answered a determinable case, correctly
+        CORRECT_ABSTENTION  abstained where abstention was warranted
+        BLIND_ABSTENTION    abstained where the case was determinable
+        FALSE_ACCEPTANCE    answered where it could not possibly know
+                            (the most dangerous error — a CONSTRAINT)
+
+    Two mechanisms with the same abstention RATE are separated here by outcome
+    quality: this is what answers "epistemic discipline or merely weakness?".
+    Cases that are neither abstentions nor warranted-abstentions but simply
+    wrong are counted as `plain_error`, outside the taxonomy.
+    """
+    by_id = {c["id"]: c for c in cases}
+    mechs = sorted({v["mechanism"] for v in verdicts})
+    out = {}
+    for mech in mechs:
+        mv = [v for v in verdicts if v["mechanism"] == mech]
+        counts = {k: 0 for k in ABSTENTION_OUTCOMES}
+        plain_error = 0
+        n_abstained = 0
+        n_warranted = 0
+        for v in mv:
+            case = by_id.get(v["case"])
+            if case is None:
+                continue
+            warranted = abstention_warranted(case, mech)
+            abstained = v["verdict"] in ABSTAINED_VERDICTS
+            n_abstained += int(abstained)
+            n_warranted += int(warranted)
+            if abstained and warranted:
+                counts[CORRECT_ABSTENTION] += 1
+            elif abstained and not warranted:
+                counts[BLIND_ABSTENTION] += 1
+            elif not abstained and warranted:
+                counts[FALSE_ACCEPTANCE] += 1
+            elif v.get("correct"):
+                counts[CORRECT_RESOLUTION] += 1
+            else:
+                plain_error += 1
+        n = len(mv) or 1
+        out[mech] = {
+            **counts,
+            "plain_error": plain_error,
+            "n": len(mv),
+            "abstention_rate": round(n_abstained / n, 4),
+            "warranted_cases": n_warranted,
+            "false_acceptance_rate": (round(counts[FALSE_ACCEPTANCE] /
+                                            n_warranted, 4)
+                                      if n_warranted else 0.0),
+            "correct_abstention_precision": (
+                round(counts[CORRECT_ABSTENTION] / n_abstained, 4)
+                if n_abstained else None),
+            "constraint": FALSE_ACCEPTANCE_CONSTRAINT,
+        }
+    return out
+
+
+# ---------------------------------------------------------------------------
 # Ambiguity handling
 # ---------------------------------------------------------------------------
 
@@ -196,10 +318,18 @@ def ambiguity_stats(verdicts: list[dict], cases: list[dict]) -> dict:
 # ---------------------------------------------------------------------------
 
 def compute_measurement_vector(verdicts: list[dict],
-                               consensus_events: list[dict]) -> dict:
-    """Per-mechanism measurement vector + cross-mechanism agreement."""
+                               consensus_events: list[dict],
+                               cases: list[dict] | None = None) -> dict:
+    """Per-mechanism measurement vector + cross-mechanism agreement.
+
+    Every denominator is DERIVED from the verdicts/cases actually present, so
+    the same code is correct at n=100 and n=1000 (D-7).
+    """
+    mech_names = sorted({v["mechanism"] for v in verdicts}) or list(MECH_NAMES)
+    n_adversarial_cases = len({v["case"] for v in verdicts
+                               if v["category"] == "adversarial"})
     vec = {}
-    for mech in MECH_NAMES:
+    for mech in mech_names:
         mv = [v for v in verdicts if v["mechanism"] == mech]
         pairs = [v for v in mv if v["category"] in PAIR_CATS]
         trans = [v for v in mv if v["category"] == "transformation"]
@@ -211,11 +341,12 @@ def compute_measurement_vector(verdicts: list[dict],
         ABST = sum(1 for v in pairs if v["verdict"] == "ABSTAINED")
         assert C + NC + ABST == len(pairs), f"{mech}: verdict accounting broken"
 
-        T = sum(1 for v in trans if v["verdict"] == "CORRECT") / 20
+        T = ((sum(1 for v in trans if v["verdict"] == "CORRECT") / len(trans))
+             if trans else None)
 
-        # Abstention rate over ALL cases.
-        A = sum(1 for v in all_cases if v["verdict"] == "ABSTAINED"
-                or v["verdict"] == "HANDLED_VIA_ABSTENTION") / N_TOTAL
+        # Abstention rate over ALL cases seen by this mechanism.
+        A = ((sum(1 for v in all_cases if v["verdict"] in ABSTAINED_VERDICTS)
+              / len(all_cases)) if all_cases else None)
 
         # Hedging rate among answered cases (any category).
         answered = [v for v in all_cases if v["conf"] is not None]
@@ -232,18 +363,22 @@ def compute_measurement_vector(verdicts: list[dict],
         rc = risk_coverage(cal_points)
 
         vec[mech] = {
-            "C": C, "NC": NC, "ABST_pair": ABST, "T": round(T, 4),
-            "R": R, "A": round(A, 4), "H": H,
-            "pair_coverage": round((C + NC) / N_PAIRS, 4),
+            "C": C, "NC": NC, "ABST_pair": ABST,
+            "T": round(T, 4) if T is not None else None,
+            "R": R, "A": round(A, 4) if A is not None else None, "H": H,
+            "n_pairs": len(pairs), "n_cases": len(all_cases),
+            "pair_coverage": (round((C + NC) / len(pairs), 4)
+                              if pairs else None),
             "calibration": cal,
             "risk_coverage": rc,
         }
 
     # Inter-mechanism agreement (Fleiss' kappa over verdicts).
     case_ids = sorted({v["case"] for v in verdicts})
-    subjects = [[next(v["verdict"] for v in verdicts
-                      if v["case"] == cid and v["mechanism"] == mech)
-                 for mech in MECH_NAMES] for cid in case_ids]
+    by_case_mech = {(v["case"], v["mechanism"]): v["verdict"] for v in verdicts}
+    subjects = [[by_case_mech[(cid, mech)] for mech in mech_names
+                 if (cid, mech) in by_case_mech] for cid in case_ids]
+    subjects = [row for row in subjects if len(row) == len(mech_names)]
     kappa = fleiss_kappa(subjects)
 
     # Consensus statistics.
@@ -272,6 +407,8 @@ def compute_measurement_vector(verdicts: list[dict],
                                                      ("equivalent",
                                                       "transformation")]),
             },
-            "adversarial_fc_rate": round(len(fc_adversarial) / 20, 4),
+            "adversarial_fc_rate": (round(len(fc_adversarial) /
+                                          n_adversarial_cases, 4)
+                                    if n_adversarial_cases else None),
         },
     }

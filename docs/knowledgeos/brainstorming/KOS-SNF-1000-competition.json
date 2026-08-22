@@ -1,0 +1,7792 @@
+{
+ "meta": {
+  "authority_note": "Candidate != identity. Confidence != identity. Agreement != identity. Similarity != identity. Canonical representation != identity. Nothing in this run selects a mechanism or grants authority to one.",
+  "corpus_digest": "e9fb867903fbb1c5779da87f868f7df6484e4dbb8f00759402328b9384342be6",
+  "corpus_n": 1100,
+  "corpus_version": "KOS-SNF-1000 v0.1",
+  "distance_gate": [
+   {
+    "bound": 0.001,
+    "d_snf": 0.0,
+    "label": "identical",
+    "pair": "A",
+    "pass": true,
+    "version": "v0.2"
+   },
+   {
+    "bound": 0.3,
+    "d_snf": 0.0,
+    "label": "paraphrase (same gold IR)",
+    "pair": "B",
+    "pass": true,
+    "version": "v0.2"
+   },
+   {
+    "bound": 0.3,
+    "d_snf": 0.0,
+    "label": "active/passive (same gold IR)",
+    "pair": "C",
+    "pass": true,
+    "version": "v0.2"
+   },
+   {
+    "bound": 0.6,
+    "d_snf": 0.85,
+    "label": "argument inversion",
+    "pair": "D",
+    "pass": true,
+    "version": "v0.2"
+   },
+   {
+    "bound": 0.6,
+    "d_snf": 0.65,
+    "label": "negation",
+    "pair": "E",
+    "pass": true,
+    "version": "v0.2"
+   },
+   {
+    "bound": 0.6,
+    "d_snf": 0.65,
+    "label": "different predicate",
+    "pair": "F",
+    "pass": true,
+    "version": "v0.2"
+   },
+   {
+    "bound": 0.85,
+    "d_snf": 0.5,
+    "label": "ambiguous vs clear",
+    "pair": "G",
+    "pass": true,
+    "version": "v0.2"
+   },
+   {
+    "bound": 0.85,
+    "d_snf": 0.5,
+    "label": "incomplete vs complete",
+    "pair": "H",
+    "pass": true,
+    "version": "v0.2"
+   },
+   {
+    "bound": "> 0.4",
+    "d_snf": 0.5,
+    "label": "EXPRESSED vs NOT_EXPRESSED",
+    "pair": "I",
+    "pass": true,
+    "version": "v0.2"
+   },
+   {
+    "bound": "> 0.4",
+    "d_snf": 0.55,
+    "label": "EXPRESSED vs UNKNOWN",
+    "pair": "J",
+    "pass": true,
+    "version": "v0.2"
+   },
+   {
+    "bound": "> 0.4",
+    "d_snf": 0.45,
+    "label": "NOT_EXPRESSED vs UNKNOWN",
+    "pair": "K",
+    "pass": true,
+    "version": "v0.2"
+   },
+   {
+    "bound": "> 0.4",
+    "d_snf": 0.65,
+    "label": "EXPRESSED vs NEGATED",
+    "pair": "L",
+    "pass": true,
+    "version": "v0.2"
+   },
+   {
+    "bound": "> 0.4",
+    "d_snf": 0.5,
+    "label": "optional-role presence vs absence",
+    "pair": "M",
+    "pass": true,
+    "version": "v0.2"
+   },
+   {
+    "bound": "> 0.4",
+    "d_snf": 0.55,
+    "label": "optional-role presence vs unknown",
+    "pair": "N",
+    "pass": true,
+    "version": "v0.2"
+   }
+  ],
+  "distance_version": "v0.2",
+  "elapsed_s": 32.01,
+  "excluded_families": {
+   "institutional_meaning": "requires an institution and its rules",
+   "legal_semantics": "requires an institutional interpretive frame",
+   "metaphor": "requires figurative-language competence absent from the world",
+   "narrative_semantics": "requires multi-sentence discourse structure",
+   "pragmatics": "requires discourse context and speaker intent",
+   "procedural_semantics": "requires process state, not single propositions",
+   "technical_ontology": "requires a real domain ontology",
+   "translation": "requires a real bilingual corpus and native gold"
+  },
+  "policies_deferred": {
+   "DOMAIN_CONDITIONAL": "DEFERRED \u2014 requires a real domain model (HPA, Q-3)"
+  },
+  "policies_swept": [
+   "ABSTAIN_ON_CONFLICT",
+   "LEAST_DIVERGENT",
+   "MAJORITY",
+   "QUORUM",
+   "UNANIMOUS",
+   "VETO"
+  ],
+  "python": "3.13.2",
+  "run": "KOS-SNF P5 competition",
+  "scope_note": "Toy world. One verb lexicon, one closed entity set, hand-written gold. Results are evidence about the apparatus and the candidate producers, and are NOT evidence about natural language, translation, metaphor, pragmatics, or institutional meaning.",
+  "seed": 20260822
+ },
+ "sweep": {
+  "ABSTAIN_ON_CONFLICT": {
+   "abstention_taxonomy": {
+    "SNF-A": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-B": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-C": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-D": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 163,
+     "CORRECT_RESOLUTION": 594,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.1482,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.424,
+     "n": 1100,
+     "plain_error": 223,
+     "warranted_cases": 283
+    },
+    "SNF-E": {
+     "BLIND_ABSTENTION": 45,
+     "CORRECT_ABSTENTION": 80,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 90,
+     "abstention_rate": 0.1136,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 0.64,
+     "false_acceptance_rate": 0.5294,
+     "n": 1100,
+     "plain_error": 245,
+     "warranted_cases": 170
+    },
+    "SNF-N": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 0,
+     "CORRECT_RESOLUTION": 0,
+     "FALSE_ACCEPTANCE": 170,
+     "abstention_rate": 0.0,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": null,
+     "false_acceptance_rate": 1.0,
+     "n": 1100,
+     "plain_error": 930,
+     "warranted_cases": 170
+    }
+   },
+   "calibration": {
+    "SNF-A": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.1742,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0666,
+     "matched_n": 817,
+     "raw_brier": 0.2408,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.1618
+    },
+    "SNF-B": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.17,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0166,
+     "matched_n": 817,
+     "raw_brier": 0.2271,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.1118
+    },
+    "SNF-C": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.17,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0166,
+     "matched_n": 817,
+     "raw_brier": 0.2198,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.107
+    },
+    "SNF-D": {
+     "accuracy_ci": [
+      0.6952,
+      0.7564
+     ],
+     "matched_brier": 0.2482,
+     "matched_coverage": 1.0,
+     "matched_ece": 0.2229,
+     "matched_n": 817,
+     "raw_brier": 0.2482,
+     "raw_coverage": 0.8337,
+     "raw_ece": 0.2229
+    },
+    "SNF-E": {
+     "accuracy_ci": [
+      0.6949,
+      0.7525
+     ],
+     "matched_brier": 0.1875,
+     "matched_coverage": 0.9232,
+     "matched_ece": 0.0575,
+     "matched_n": 817,
+     "raw_brier": 0.2033,
+     "raw_coverage": 0.9031,
+     "raw_ece": 0.0717
+    },
+    "SNF-N": {
+     "accuracy_ci": [
+      0.0,
+      0.0
+     ],
+     "matched_brier": 0.25,
+     "matched_coverage": 0.8337,
+     "matched_ece": 0.5,
+     "matched_n": 817,
+     "raw_brier": 0.25,
+     "raw_coverage": 1.0,
+     "raw_ece": 0.5
+    },
+    "_common_coverage": 0.8337,
+    "_note": "An abstainer answers fewer, easier cases. Any calibration advantage that disappears under matched coverage was a selection effect, not calibration skill."
+   },
+   "consensus_pairs": {
+    "agreeing_pairs": 5090,
+    "false_edges_top": {
+     "SNF-A|SNF-B": 320,
+     "SNF-A|SNF-C": 260,
+     "SNF-A|SNF-D": 320,
+     "SNF-A|SNF-E": 320,
+     "SNF-B|SNF-C": 260,
+     "SNF-B|SNF-D": 350,
+     "SNF-B|SNF-E": 320,
+     "SNF-C|SNF-D": 260,
+     "SNF-C|SNF-E": 260,
+     "SNF-D|SNF-E": 320
+    },
+    "false_pairs": 2990,
+    "pairwise_false_rate": 0.5874
+   },
+   "measurement_vector": {
+    "consensus": {
+     "adversarial_fc_rate": 0.0,
+     "consensus_correctness_rate": null,
+     "events": 0,
+     "false_consensus": 0,
+     "fc_by_category": {
+      "adversarial": 0,
+      "ambiguous": 0,
+      "distinct": 0,
+      "equivalent_or_transformation": 0
+     },
+     "true_consensus": 0
+    },
+    "inter_mechanism_kappa": 0.4975,
+    "mechanisms": {
+     "SNF-A": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.0714,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2408,
+       "ece": 0.1618,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.6882,
+         "conf": 0.85,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 930
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-B": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.0,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2271,
+       "ece": 0.1118,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.6882,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 930
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-C": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.1286,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2198,
+       "ece": 0.107,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.7,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 45
+        },
+        {
+         "acc": 0.7232,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 885
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7232,
+        "coverage": 0.9516,
+        "n": 885,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-D": {
+      "A": 0.1482,
+      "ABST_pair": 163,
+      "C": 594,
+      "H": 0.0,
+      "NC": 223,
+      "R": 0.7270501835985312,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2482,
+       "ece": 0.2229,
+       "n": 817,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 0
+        },
+        {
+         "acc": 0.7271,
+         "conf": 0.95,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 817
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.8337,
+      "risk_coverage": [
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-E": {
+      "A": 0.1136,
+      "ABST_pair": 95,
+      "C": 640,
+      "H": 0.0,
+      "NC": 245,
+      "R": 0.7231638418079096,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2033,
+       "ece": 0.0717,
+       "n": 885,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.5055,
+         "conf": 0.75,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 91
+        },
+        {
+         "acc": 0.7481,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 794
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.9031,
+      "risk_coverage": [
+       {
+        "accuracy": 0.7232,
+        "coverage": 1.0,
+        "n": 885,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.7232,
+        "coverage": 1.0,
+        "n": 885,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.7232,
+        "coverage": 1.0,
+        "n": 885,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.7232,
+        "coverage": 1.0,
+        "n": 885,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7481,
+        "coverage": 0.8972,
+        "n": 794,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-N": {
+      "A": 0.0,
+      "ABST_pair": 0,
+      "C": 0,
+      "H": 0.0,
+      "NC": 980,
+      "R": 0.0,
+      "T": 0.0,
+      "calibration": {
+       "brier": 0.25,
+       "ece": 0.5,
+       "n": 980,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.5,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 980
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 1.0,
+      "risk_coverage": [
+       {
+        "accuracy": 0.0,
+        "coverage": 1.0,
+        "n": 980,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.0,
+        "coverage": 1.0,
+        "n": 980,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     }
+    }
+   },
+   "pareto": {
+    "non_dominated": [
+     "SNF-D",
+     "SNF-E"
+    ],
+    "note": "Non-domination is not a ranking and not a selection. No mechanism is endorsed by appearing here.",
+    "points": {
+     "SNF-A": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-B": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-C": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-D": {
+      "correct_abstention_rate": 0.1482,
+      "correct_resolution_rate": 0.54,
+      "false_acceptance_rate": 0.424
+     },
+     "SNF-E": {
+      "correct_abstention_rate": 0.0727,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.5294
+     },
+     "SNF-N": {
+      "correct_abstention_rate": 0.0,
+      "correct_resolution_rate": 0.0,
+      "false_acceptance_rate": 1.0
+     }
+    }
+   },
+   "per_family": {
+    "SNF-A": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "HANDLED_VIA_HEDGING": 30,
+      "OVERCOMMITTED": 30
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-B": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "OVERCOMMITTED": 60
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-C": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "HANDLED_VIA_HEDGING": 30,
+      "OVERCOMMITTED": 30
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "HANDLED_VIA_HEDGING": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-D": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "ABSTAINED": 67,
+      "WRONG": 23
+     },
+     "genuine_ambiguity": {
+      "OVERCOMMITTED": 60
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "ABSTAINED": 46,
+      "CORRECT": 64
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-E": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "ABSTAINED": 45,
+      "WRONG": 45
+     },
+     "genuine_ambiguity": {
+      "HANDLED_VIA_ABSTENTION": 30,
+      "OVERCOMMITTED": 30
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-N": {
+     "abstain_expected": {
+      "WRONG": 50
+     },
+     "active_passive": {
+      "WRONG": 90
+     },
+     "argument_inversion": {
+      "WRONG": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "WRONG": 60
+     },
+     "modality_temporal_quantifier": {
+      "WRONG": 120
+     },
+     "negation_vs_predicate": {
+      "WRONG": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "WRONG": 110
+     },
+     "paraphrase_equivalent": {
+      "WRONG": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    }
+   }
+  },
+  "LEAST_DIVERGENT": {
+   "abstention_taxonomy": {
+    "SNF-A": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-B": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-C": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-D": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 163,
+     "CORRECT_RESOLUTION": 594,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.1482,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.424,
+     "n": 1100,
+     "plain_error": 223,
+     "warranted_cases": 283
+    },
+    "SNF-E": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-N": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 0,
+     "CORRECT_RESOLUTION": 0,
+     "FALSE_ACCEPTANCE": 170,
+     "abstention_rate": 0.0,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": null,
+     "false_acceptance_rate": 1.0,
+     "n": 1100,
+     "plain_error": 930,
+     "warranted_cases": 170
+    }
+   },
+   "calibration": {
+    "SNF-A": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.1742,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0666,
+     "matched_n": 817,
+     "raw_brier": 0.2408,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.1618
+    },
+    "SNF-B": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.17,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0166,
+     "matched_n": 817,
+     "raw_brier": 0.2271,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.1118
+    },
+    "SNF-C": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.17,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0166,
+     "matched_n": 817,
+     "raw_brier": 0.2198,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.107
+    },
+    "SNF-D": {
+     "accuracy_ci": [
+      0.6952,
+      0.7564
+     ],
+     "matched_brier": 0.2482,
+     "matched_coverage": 1.0,
+     "matched_ece": 0.2229,
+     "matched_n": 817,
+     "raw_brier": 0.2482,
+     "raw_coverage": 0.8337,
+     "raw_ece": 0.2229
+    },
+    "SNF-E": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.1875,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0575,
+     "matched_n": 817,
+     "raw_brier": 0.2156,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.1009
+    },
+    "SNF-N": {
+     "accuracy_ci": [
+      0.0,
+      0.0
+     ],
+     "matched_brier": 0.25,
+     "matched_coverage": 0.8337,
+     "matched_ece": 0.5,
+     "matched_n": 817,
+     "raw_brier": 0.25,
+     "raw_coverage": 1.0,
+     "raw_ece": 0.5
+    },
+    "_common_coverage": 0.8337,
+    "_note": "An abstainer answers fewer, easier cases. Any calibration advantage that disappears under matched coverage was a selection effect, not calibration skill."
+   },
+   "consensus_pairs": {
+    "agreeing_pairs": 5150,
+    "false_edges_top": {
+     "SNF-A|SNF-B": 320,
+     "SNF-A|SNF-C": 260,
+     "SNF-A|SNF-D": 320,
+     "SNF-A|SNF-E": 320,
+     "SNF-B|SNF-C": 260,
+     "SNF-B|SNF-D": 350,
+     "SNF-B|SNF-E": 350,
+     "SNF-C|SNF-D": 260,
+     "SNF-C|SNF-E": 260,
+     "SNF-D|SNF-E": 350
+    },
+    "false_pairs": 3050,
+    "pairwise_false_rate": 0.5922
+   },
+   "measurement_vector": {
+    "consensus": {
+     "adversarial_fc_rate": 0.0,
+     "consensus_correctness_rate": null,
+     "events": 0,
+     "false_consensus": 0,
+     "fc_by_category": {
+      "adversarial": 0,
+      "ambiguous": 0,
+      "distinct": 0,
+      "equivalent_or_transformation": 0
+     },
+     "true_consensus": 0
+    },
+    "inter_mechanism_kappa": 0.5177,
+    "mechanisms": {
+     "SNF-A": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.0714,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2408,
+       "ece": 0.1618,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.6882,
+         "conf": 0.85,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 930
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-B": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.0,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2271,
+       "ece": 0.1118,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.6882,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 930
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-C": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.1286,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2198,
+       "ece": 0.107,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.7,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 45
+        },
+        {
+         "acc": 0.7232,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 885
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7232,
+        "coverage": 0.9516,
+        "n": 885,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-D": {
+      "A": 0.1482,
+      "ABST_pair": 163,
+      "C": 594,
+      "H": 0.0,
+      "NC": 223,
+      "R": 0.7270501835985312,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2482,
+       "ece": 0.2229,
+       "n": 817,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 0
+        },
+        {
+         "acc": 0.7271,
+         "conf": 0.95,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 817
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.8337,
+      "risk_coverage": [
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-E": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.0,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2156,
+       "ece": 0.1009,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.65,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 22
+        },
+        {
+         "acc": 0.4035,
+         "conf": 0.7399,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 114
+        },
+        {
+         "acc": 0.7481,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 794
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.7048,
+        "coverage": 0.9763,
+        "n": 908,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7481,
+        "coverage": 0.8538,
+        "n": 794,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-N": {
+      "A": 0.0,
+      "ABST_pair": 0,
+      "C": 0,
+      "H": 0.0,
+      "NC": 980,
+      "R": 0.0,
+      "T": 0.0,
+      "calibration": {
+       "brier": 0.25,
+       "ece": 0.5,
+       "n": 980,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.5,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 980
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 1.0,
+      "risk_coverage": [
+       {
+        "accuracy": 0.0,
+        "coverage": 1.0,
+        "n": 980,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.0,
+        "coverage": 1.0,
+        "n": 980,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     }
+    }
+   },
+   "pareto": {
+    "non_dominated": [
+     "SNF-A",
+     "SNF-B",
+     "SNF-C",
+     "SNF-D",
+     "SNF-E"
+    ],
+    "note": "Non-domination is not a ranking and not a selection. No mechanism is endorsed by appearing here.",
+    "points": {
+     "SNF-A": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-B": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-C": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-D": {
+      "correct_abstention_rate": 0.1482,
+      "correct_resolution_rate": 0.54,
+      "false_acceptance_rate": 0.424
+     },
+     "SNF-E": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-N": {
+      "correct_abstention_rate": 0.0,
+      "correct_resolution_rate": 0.0,
+      "false_acceptance_rate": 1.0
+     }
+    }
+   },
+   "per_family": {
+    "SNF-A": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "HANDLED_VIA_HEDGING": 30,
+      "OVERCOMMITTED": 30
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-B": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "OVERCOMMITTED": 60
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-C": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "HANDLED_VIA_HEDGING": 30,
+      "OVERCOMMITTED": 30
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "HANDLED_VIA_HEDGING": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-D": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "ABSTAINED": 67,
+      "WRONG": 23
+     },
+     "genuine_ambiguity": {
+      "OVERCOMMITTED": 60
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "ABSTAINED": 46,
+      "CORRECT": 64
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-E": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "OVERCOMMITTED": 60
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-N": {
+     "abstain_expected": {
+      "WRONG": 50
+     },
+     "active_passive": {
+      "WRONG": 90
+     },
+     "argument_inversion": {
+      "WRONG": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "WRONG": 60
+     },
+     "modality_temporal_quantifier": {
+      "WRONG": 120
+     },
+     "negation_vs_predicate": {
+      "WRONG": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "WRONG": 110
+     },
+     "paraphrase_equivalent": {
+      "WRONG": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    }
+   }
+  },
+  "MAJORITY": {
+   "abstention_taxonomy": {
+    "SNF-A": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-B": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-C": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-D": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 163,
+     "CORRECT_RESOLUTION": 594,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.1482,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.424,
+     "n": 1100,
+     "plain_error": 223,
+     "warranted_cases": 283
+    },
+    "SNF-E": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-N": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 0,
+     "CORRECT_RESOLUTION": 0,
+     "FALSE_ACCEPTANCE": 170,
+     "abstention_rate": 0.0,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": null,
+     "false_acceptance_rate": 1.0,
+     "n": 1100,
+     "plain_error": 930,
+     "warranted_cases": 170
+    }
+   },
+   "calibration": {
+    "SNF-A": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.1742,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0666,
+     "matched_n": 817,
+     "raw_brier": 0.2408,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.1618
+    },
+    "SNF-B": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.17,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0166,
+     "matched_n": 817,
+     "raw_brier": 0.2271,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.1118
+    },
+    "SNF-C": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.17,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0166,
+     "matched_n": 817,
+     "raw_brier": 0.2198,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.107
+    },
+    "SNF-D": {
+     "accuracy_ci": [
+      0.6952,
+      0.7564
+     ],
+     "matched_brier": 0.2482,
+     "matched_coverage": 1.0,
+     "matched_ece": 0.2229,
+     "matched_n": 817,
+     "raw_brier": 0.2482,
+     "raw_coverage": 0.8337,
+     "raw_ece": 0.2229
+    },
+    "SNF-E": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.1875,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0575,
+     "matched_n": 817,
+     "raw_brier": 0.2125,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.0985
+    },
+    "SNF-N": {
+     "accuracy_ci": [
+      0.0,
+      0.0
+     ],
+     "matched_brier": 0.25,
+     "matched_coverage": 0.8337,
+     "matched_ece": 0.5,
+     "matched_n": 817,
+     "raw_brier": 0.25,
+     "raw_coverage": 1.0,
+     "raw_ece": 0.5
+    },
+    "_common_coverage": 0.8337,
+    "_note": "An abstainer answers fewer, easier cases. Any calibration advantage that disappears under matched coverage was a selection effect, not calibration skill."
+   },
+   "consensus_pairs": {
+    "agreeing_pairs": 5090,
+    "false_edges_top": {
+     "SNF-A|SNF-B": 320,
+     "SNF-A|SNF-C": 260,
+     "SNF-A|SNF-D": 320,
+     "SNF-A|SNF-E": 320,
+     "SNF-B|SNF-C": 260,
+     "SNF-B|SNF-D": 350,
+     "SNF-B|SNF-E": 320,
+     "SNF-C|SNF-D": 260,
+     "SNF-C|SNF-E": 260,
+     "SNF-D|SNF-E": 320
+    },
+    "false_pairs": 2990,
+    "pairwise_false_rate": 0.5874
+   },
+   "measurement_vector": {
+    "consensus": {
+     "adversarial_fc_rate": 0.0,
+     "consensus_correctness_rate": null,
+     "events": 0,
+     "false_consensus": 0,
+     "fc_by_category": {
+      "adversarial": 0,
+      "ambiguous": 0,
+      "distinct": 0,
+      "equivalent_or_transformation": 0
+     },
+     "true_consensus": 0
+    },
+    "inter_mechanism_kappa": 0.5178,
+    "mechanisms": {
+     "SNF-A": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.0714,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2408,
+       "ece": 0.1618,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.6882,
+         "conf": 0.85,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 930
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-B": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.0,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2271,
+       "ece": 0.1118,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.6882,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 930
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-C": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.1286,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2198,
+       "ece": 0.107,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.7,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 45
+        },
+        {
+         "acc": 0.7232,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 885
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7232,
+        "coverage": 0.9516,
+        "n": 885,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-D": {
+      "A": 0.1482,
+      "ABST_pair": 163,
+      "C": 594,
+      "H": 0.0,
+      "NC": 223,
+      "R": 0.7270501835985312,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2482,
+       "ece": 0.2229,
+       "n": 817,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 0
+        },
+        {
+         "acc": 0.7271,
+         "conf": 0.95,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 817
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.8337,
+      "risk_coverage": [
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-E": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.0714,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2125,
+       "ece": 0.0985,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.6256,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 45
+        },
+        {
+         "acc": 0.5055,
+         "conf": 0.75,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 91
+        },
+        {
+         "acc": 0.7481,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 794
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.7232,
+        "coverage": 0.9516,
+        "n": 885,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7481,
+        "coverage": 0.8538,
+        "n": 794,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-N": {
+      "A": 0.0,
+      "ABST_pair": 0,
+      "C": 0,
+      "H": 0.0,
+      "NC": 980,
+      "R": 0.0,
+      "T": 0.0,
+      "calibration": {
+       "brier": 0.25,
+       "ece": 0.5,
+       "n": 980,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.5,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 980
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 1.0,
+      "risk_coverage": [
+       {
+        "accuracy": 0.0,
+        "coverage": 1.0,
+        "n": 980,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.0,
+        "coverage": 1.0,
+        "n": 980,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     }
+    }
+   },
+   "pareto": {
+    "non_dominated": [
+     "SNF-A",
+     "SNF-B",
+     "SNF-C",
+     "SNF-D",
+     "SNF-E"
+    ],
+    "note": "Non-domination is not a ranking and not a selection. No mechanism is endorsed by appearing here.",
+    "points": {
+     "SNF-A": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-B": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-C": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-D": {
+      "correct_abstention_rate": 0.1482,
+      "correct_resolution_rate": 0.54,
+      "false_acceptance_rate": 0.424
+     },
+     "SNF-E": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-N": {
+      "correct_abstention_rate": 0.0,
+      "correct_resolution_rate": 0.0,
+      "false_acceptance_rate": 1.0
+     }
+    }
+   },
+   "per_family": {
+    "SNF-A": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "HANDLED_VIA_HEDGING": 30,
+      "OVERCOMMITTED": 30
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-B": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "OVERCOMMITTED": 60
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-C": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "HANDLED_VIA_HEDGING": 30,
+      "OVERCOMMITTED": 30
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "HANDLED_VIA_HEDGING": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-D": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "ABSTAINED": 67,
+      "WRONG": 23
+     },
+     "genuine_ambiguity": {
+      "OVERCOMMITTED": 60
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "ABSTAINED": 46,
+      "CORRECT": 64
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-E": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "HANDLED_VIA_HEDGING": 30,
+      "OVERCOMMITTED": 30
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-N": {
+     "abstain_expected": {
+      "WRONG": 50
+     },
+     "active_passive": {
+      "WRONG": 90
+     },
+     "argument_inversion": {
+      "WRONG": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "WRONG": 60
+     },
+     "modality_temporal_quantifier": {
+      "WRONG": 120
+     },
+     "negation_vs_predicate": {
+      "WRONG": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "WRONG": 110
+     },
+     "paraphrase_equivalent": {
+      "WRONG": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    }
+   }
+  },
+  "QUORUM": {
+   "abstention_taxonomy": {
+    "SNF-A": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-B": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-C": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-D": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 163,
+     "CORRECT_RESOLUTION": 594,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.1482,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.424,
+     "n": 1100,
+     "plain_error": 223,
+     "warranted_cases": 283
+    },
+    "SNF-E": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-N": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 0,
+     "CORRECT_RESOLUTION": 0,
+     "FALSE_ACCEPTANCE": 170,
+     "abstention_rate": 0.0,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": null,
+     "false_acceptance_rate": 1.0,
+     "n": 1100,
+     "plain_error": 930,
+     "warranted_cases": 170
+    }
+   },
+   "calibration": {
+    "SNF-A": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.1742,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0666,
+     "matched_n": 817,
+     "raw_brier": 0.2408,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.1618
+    },
+    "SNF-B": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.17,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0166,
+     "matched_n": 817,
+     "raw_brier": 0.2271,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.1118
+    },
+    "SNF-C": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.17,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0166,
+     "matched_n": 817,
+     "raw_brier": 0.2198,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.107
+    },
+    "SNF-D": {
+     "accuracy_ci": [
+      0.6952,
+      0.7564
+     ],
+     "matched_brier": 0.2482,
+     "matched_coverage": 1.0,
+     "matched_ece": 0.2229,
+     "matched_n": 817,
+     "raw_brier": 0.2482,
+     "raw_coverage": 0.8337,
+     "raw_ece": 0.2229
+    },
+    "SNF-E": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.1875,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0575,
+     "matched_n": 817,
+     "raw_brier": 0.2156,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.1009
+    },
+    "SNF-N": {
+     "accuracy_ci": [
+      0.0,
+      0.0
+     ],
+     "matched_brier": 0.25,
+     "matched_coverage": 0.8337,
+     "matched_ece": 0.5,
+     "matched_n": 817,
+     "raw_brier": 0.25,
+     "raw_coverage": 1.0,
+     "raw_ece": 0.5
+    },
+    "_common_coverage": 0.8337,
+    "_note": "An abstainer answers fewer, easier cases. Any calibration advantage that disappears under matched coverage was a selection effect, not calibration skill."
+   },
+   "consensus_pairs": {
+    "agreeing_pairs": 5150,
+    "false_edges_top": {
+     "SNF-A|SNF-B": 320,
+     "SNF-A|SNF-C": 260,
+     "SNF-A|SNF-D": 320,
+     "SNF-A|SNF-E": 320,
+     "SNF-B|SNF-C": 260,
+     "SNF-B|SNF-D": 350,
+     "SNF-B|SNF-E": 350,
+     "SNF-C|SNF-D": 260,
+     "SNF-C|SNF-E": 260,
+     "SNF-D|SNF-E": 350
+    },
+    "false_pairs": 3050,
+    "pairwise_false_rate": 0.5922
+   },
+   "measurement_vector": {
+    "consensus": {
+     "adversarial_fc_rate": 0.0,
+     "consensus_correctness_rate": null,
+     "events": 0,
+     "false_consensus": 0,
+     "fc_by_category": {
+      "adversarial": 0,
+      "ambiguous": 0,
+      "distinct": 0,
+      "equivalent_or_transformation": 0
+     },
+     "true_consensus": 0
+    },
+    "inter_mechanism_kappa": 0.5177,
+    "mechanisms": {
+     "SNF-A": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.0714,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2408,
+       "ece": 0.1618,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.6882,
+         "conf": 0.85,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 930
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-B": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.0,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2271,
+       "ece": 0.1118,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.6882,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 930
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-C": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.1286,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2198,
+       "ece": 0.107,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.7,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 45
+        },
+        {
+         "acc": 0.7232,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 885
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7232,
+        "coverage": 0.9516,
+        "n": 885,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-D": {
+      "A": 0.1482,
+      "ABST_pair": 163,
+      "C": 594,
+      "H": 0.0,
+      "NC": 223,
+      "R": 0.7270501835985312,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2482,
+       "ece": 0.2229,
+       "n": 817,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 0
+        },
+        {
+         "acc": 0.7271,
+         "conf": 0.95,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 817
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.8337,
+      "risk_coverage": [
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-E": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.0,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2156,
+       "ece": 0.1009,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.65,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 22
+        },
+        {
+         "acc": 0.4035,
+         "conf": 0.7399,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 114
+        },
+        {
+         "acc": 0.7481,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 794
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.7048,
+        "coverage": 0.9763,
+        "n": 908,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7481,
+        "coverage": 0.8538,
+        "n": 794,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-N": {
+      "A": 0.0,
+      "ABST_pair": 0,
+      "C": 0,
+      "H": 0.0,
+      "NC": 980,
+      "R": 0.0,
+      "T": 0.0,
+      "calibration": {
+       "brier": 0.25,
+       "ece": 0.5,
+       "n": 980,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.5,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 980
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 1.0,
+      "risk_coverage": [
+       {
+        "accuracy": 0.0,
+        "coverage": 1.0,
+        "n": 980,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.0,
+        "coverage": 1.0,
+        "n": 980,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     }
+    }
+   },
+   "pareto": {
+    "non_dominated": [
+     "SNF-A",
+     "SNF-B",
+     "SNF-C",
+     "SNF-D",
+     "SNF-E"
+    ],
+    "note": "Non-domination is not a ranking and not a selection. No mechanism is endorsed by appearing here.",
+    "points": {
+     "SNF-A": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-B": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-C": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-D": {
+      "correct_abstention_rate": 0.1482,
+      "correct_resolution_rate": 0.54,
+      "false_acceptance_rate": 0.424
+     },
+     "SNF-E": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-N": {
+      "correct_abstention_rate": 0.0,
+      "correct_resolution_rate": 0.0,
+      "false_acceptance_rate": 1.0
+     }
+    }
+   },
+   "per_family": {
+    "SNF-A": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "HANDLED_VIA_HEDGING": 30,
+      "OVERCOMMITTED": 30
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-B": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "OVERCOMMITTED": 60
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-C": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "HANDLED_VIA_HEDGING": 30,
+      "OVERCOMMITTED": 30
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "HANDLED_VIA_HEDGING": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-D": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "ABSTAINED": 67,
+      "WRONG": 23
+     },
+     "genuine_ambiguity": {
+      "OVERCOMMITTED": 60
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "ABSTAINED": 46,
+      "CORRECT": 64
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-E": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "OVERCOMMITTED": 60
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-N": {
+     "abstain_expected": {
+      "WRONG": 50
+     },
+     "active_passive": {
+      "WRONG": 90
+     },
+     "argument_inversion": {
+      "WRONG": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "WRONG": 60
+     },
+     "modality_temporal_quantifier": {
+      "WRONG": 120
+     },
+     "negation_vs_predicate": {
+      "WRONG": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "WRONG": 110
+     },
+     "paraphrase_equivalent": {
+      "WRONG": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    }
+   }
+  },
+  "UNANIMOUS": {
+   "abstention_taxonomy": {
+    "SNF-A": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-B": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-C": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-D": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 163,
+     "CORRECT_RESOLUTION": 594,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.1482,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.424,
+     "n": 1100,
+     "plain_error": 223,
+     "warranted_cases": 283
+    },
+    "SNF-E": {
+     "BLIND_ABSTENTION": 136,
+     "CORRECT_ABSTENTION": 80,
+     "CORRECT_RESOLUTION": 594,
+     "FALSE_ACCEPTANCE": 90,
+     "abstention_rate": 0.1964,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 0.3704,
+     "false_acceptance_rate": 0.5294,
+     "n": 1100,
+     "plain_error": 200,
+     "warranted_cases": 170
+    },
+    "SNF-N": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 0,
+     "CORRECT_RESOLUTION": 0,
+     "FALSE_ACCEPTANCE": 170,
+     "abstention_rate": 0.0,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": null,
+     "false_acceptance_rate": 1.0,
+     "n": 1100,
+     "plain_error": 930,
+     "warranted_cases": 170
+    }
+   },
+   "calibration": {
+    "SNF-A": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.1583,
+     "matched_coverage": 0.8538,
+     "matched_ece": 0.044,
+     "matched_n": 794,
+     "raw_brier": 0.2408,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.1618
+    },
+    "SNF-B": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.1564,
+     "matched_coverage": 0.8538,
+     "matched_ece": 0.006,
+     "matched_n": 794,
+     "raw_brier": 0.2271,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.1118
+    },
+    "SNF-C": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.1564,
+     "matched_coverage": 0.8538,
+     "matched_ece": 0.006,
+     "matched_n": 794,
+     "raw_brier": 0.2198,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.107
+    },
+    "SNF-D": {
+     "accuracy_ci": [
+      0.6952,
+      0.7564
+     ],
+     "matched_brier": 0.2292,
+     "matched_coverage": 0.9718,
+     "matched_ece": 0.2019,
+     "matched_n": 794,
+     "raw_brier": 0.2482,
+     "raw_coverage": 0.8337,
+     "raw_ece": 0.2229
+    },
+    "SNF-E": {
+     "accuracy_ci": [
+      0.7179,
+      0.7796
+     ],
+     "matched_brier": 0.1911,
+     "matched_coverage": 1.0,
+     "matched_ece": 0.0519,
+     "matched_n": 794,
+     "raw_brier": 0.1911,
+     "raw_coverage": 0.8102,
+     "raw_ece": 0.0519
+    },
+    "SNF-N": {
+     "accuracy_ci": [
+      0.0,
+      0.0
+     ],
+     "matched_brier": 0.25,
+     "matched_coverage": 0.8102,
+     "matched_ece": 0.5,
+     "matched_n": 794,
+     "raw_brier": 0.25,
+     "raw_coverage": 1.0,
+     "raw_ece": 0.5
+    },
+    "_common_coverage": 0.8102,
+    "_note": "An abstainer answers fewer, easier cases. Any calibration advantage that disappears under matched coverage was a selection effect, not calibration skill."
+   },
+   "consensus_pairs": {
+    "agreeing_pairs": 5090,
+    "false_edges_top": {
+     "SNF-A|SNF-B": 320,
+     "SNF-A|SNF-C": 260,
+     "SNF-A|SNF-D": 320,
+     "SNF-A|SNF-E": 320,
+     "SNF-B|SNF-C": 260,
+     "SNF-B|SNF-D": 350,
+     "SNF-B|SNF-E": 320,
+     "SNF-C|SNF-D": 260,
+     "SNF-C|SNF-E": 260,
+     "SNF-D|SNF-E": 320
+    },
+    "false_pairs": 2990,
+    "pairwise_false_rate": 0.5874
+   },
+   "measurement_vector": {
+    "consensus": {
+     "adversarial_fc_rate": 0.0,
+     "consensus_correctness_rate": null,
+     "events": 0,
+     "false_consensus": 0,
+     "fc_by_category": {
+      "adversarial": 0,
+      "ambiguous": 0,
+      "distinct": 0,
+      "equivalent_or_transformation": 0
+     },
+     "true_consensus": 0
+    },
+    "inter_mechanism_kappa": 0.4834,
+    "mechanisms": {
+     "SNF-A": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.0714,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2408,
+       "ece": 0.1618,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.6882,
+         "conf": 0.85,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 930
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-B": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.0,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2271,
+       "ece": 0.1118,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.6882,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 930
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-C": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.1286,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2198,
+       "ece": 0.107,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.7,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 45
+        },
+        {
+         "acc": 0.7232,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 885
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7232,
+        "coverage": 0.9516,
+        "n": 885,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-D": {
+      "A": 0.1482,
+      "ABST_pair": 163,
+      "C": 594,
+      "H": 0.0,
+      "NC": 223,
+      "R": 0.7270501835985312,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2482,
+       "ece": 0.2229,
+       "n": 817,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 0
+        },
+        {
+         "acc": 0.7271,
+         "conf": 0.95,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 817
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.8337,
+      "risk_coverage": [
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-E": {
+      "A": 0.1964,
+      "ABST_pair": 186,
+      "C": 594,
+      "H": 0.0,
+      "NC": 200,
+      "R": 0.7481108312342569,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.1911,
+       "ece": 0.0519,
+       "n": 794,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.7481,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 794
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.8102,
+      "risk_coverage": [
+       {
+        "accuracy": 0.7481,
+        "coverage": 1.0,
+        "n": 794,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.7481,
+        "coverage": 1.0,
+        "n": 794,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.7481,
+        "coverage": 1.0,
+        "n": 794,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.7481,
+        "coverage": 1.0,
+        "n": 794,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7481,
+        "coverage": 1.0,
+        "n": 794,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-N": {
+      "A": 0.0,
+      "ABST_pair": 0,
+      "C": 0,
+      "H": 0.0,
+      "NC": 980,
+      "R": 0.0,
+      "T": 0.0,
+      "calibration": {
+       "brier": 0.25,
+       "ece": 0.5,
+       "n": 980,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.5,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 980
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 1.0,
+      "risk_coverage": [
+       {
+        "accuracy": 0.0,
+        "coverage": 1.0,
+        "n": 980,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.0,
+        "coverage": 1.0,
+        "n": 980,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     }
+    }
+   },
+   "pareto": {
+    "non_dominated": [
+     "SNF-A",
+     "SNF-B",
+     "SNF-C",
+     "SNF-D"
+    ],
+    "note": "Non-domination is not a ranking and not a selection. No mechanism is endorsed by appearing here.",
+    "points": {
+     "SNF-A": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-B": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-C": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-D": {
+      "correct_abstention_rate": 0.1482,
+      "correct_resolution_rate": 0.54,
+      "false_acceptance_rate": 0.424
+     },
+     "SNF-E": {
+      "correct_abstention_rate": 0.0727,
+      "correct_resolution_rate": 0.54,
+      "false_acceptance_rate": 0.5294
+     },
+     "SNF-N": {
+      "correct_abstention_rate": 0.0,
+      "correct_resolution_rate": 0.0,
+      "false_acceptance_rate": 1.0
+     }
+    }
+   },
+   "per_family": {
+    "SNF-A": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "HANDLED_VIA_HEDGING": 30,
+      "OVERCOMMITTED": 30
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-B": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "OVERCOMMITTED": 60
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-C": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "HANDLED_VIA_HEDGING": 30,
+      "OVERCOMMITTED": 30
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "HANDLED_VIA_HEDGING": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-D": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "ABSTAINED": 67,
+      "WRONG": 23
+     },
+     "genuine_ambiguity": {
+      "OVERCOMMITTED": 60
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "ABSTAINED": 46,
+      "CORRECT": 64
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-E": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "ABSTAINED": 90
+     },
+     "genuine_ambiguity": {
+      "HANDLED_VIA_ABSTENTION": 30,
+      "OVERCOMMITTED": 30
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "ABSTAINED": 46,
+      "CORRECT": 64
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-N": {
+     "abstain_expected": {
+      "WRONG": 50
+     },
+     "active_passive": {
+      "WRONG": 90
+     },
+     "argument_inversion": {
+      "WRONG": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "WRONG": 60
+     },
+     "modality_temporal_quantifier": {
+      "WRONG": 120
+     },
+     "negation_vs_predicate": {
+      "WRONG": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "WRONG": 110
+     },
+     "paraphrase_equivalent": {
+      "WRONG": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    }
+   }
+  },
+  "VETO": {
+   "abstention_taxonomy": {
+    "SNF-A": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-B": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-C": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 640,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.0455,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 290,
+     "warranted_cases": 170
+    },
+    "SNF-D": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 163,
+     "CORRECT_RESOLUTION": 594,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.1482,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 1.0,
+     "false_acceptance_rate": 0.424,
+     "n": 1100,
+     "plain_error": 223,
+     "warranted_cases": 283
+    },
+    "SNF-E": {
+     "BLIND_ABSTENTION": 113,
+     "CORRECT_ABSTENTION": 50,
+     "CORRECT_RESOLUTION": 594,
+     "FALSE_ACCEPTANCE": 120,
+     "abstention_rate": 0.1482,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": 0.3067,
+     "false_acceptance_rate": 0.7059,
+     "n": 1100,
+     "plain_error": 223,
+     "warranted_cases": 170
+    },
+    "SNF-N": {
+     "BLIND_ABSTENTION": 0,
+     "CORRECT_ABSTENTION": 0,
+     "CORRECT_RESOLUTION": 0,
+     "FALSE_ACCEPTANCE": 170,
+     "abstention_rate": 0.0,
+     "constraint": "false_acceptance_rate <= epsilon",
+     "correct_abstention_precision": null,
+     "false_acceptance_rate": 1.0,
+     "n": 1100,
+     "plain_error": 930,
+     "warranted_cases": 170
+    }
+   },
+   "calibration": {
+    "SNF-A": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.1742,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0666,
+     "matched_n": 817,
+     "raw_brier": 0.2408,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.1618
+    },
+    "SNF-B": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.17,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0166,
+     "matched_n": 817,
+     "raw_brier": 0.2271,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.1118
+    },
+    "SNF-C": {
+     "accuracy_ci": [
+      0.6591,
+      0.7183
+     ],
+     "matched_brier": 0.17,
+     "matched_coverage": 0.8785,
+     "matched_ece": 0.0166,
+     "matched_n": 817,
+     "raw_brier": 0.2198,
+     "raw_coverage": 0.949,
+     "raw_ece": 0.107
+    },
+    "SNF-D": {
+     "accuracy_ci": [
+      0.6952,
+      0.7564
+     ],
+     "matched_brier": 0.2482,
+     "matched_coverage": 1.0,
+     "matched_ece": 0.2229,
+     "matched_n": 817,
+     "raw_brier": 0.2482,
+     "raw_coverage": 0.8337,
+     "raw_ece": 0.2229
+    },
+    "SNF-E": {
+     "accuracy_ci": [
+      0.6952,
+      0.7564
+     ],
+     "matched_brier": 0.1976,
+     "matched_coverage": 1.0,
+     "matched_ece": 0.0687,
+     "matched_n": 817,
+     "raw_brier": 0.1976,
+     "raw_coverage": 0.8337,
+     "raw_ece": 0.0687
+    },
+    "SNF-N": {
+     "accuracy_ci": [
+      0.0,
+      0.0
+     ],
+     "matched_brier": 0.25,
+     "matched_coverage": 0.8337,
+     "matched_ece": 0.5,
+     "matched_n": 817,
+     "raw_brier": 0.25,
+     "raw_coverage": 1.0,
+     "raw_ece": 0.5
+    },
+    "_common_coverage": 0.8337,
+    "_note": "An abstainer answers fewer, easier cases. Any calibration advantage that disappears under matched coverage was a selection effect, not calibration skill."
+   },
+   "consensus_pairs": {
+    "agreeing_pairs": 5090,
+    "false_edges_top": {
+     "SNF-A|SNF-B": 320,
+     "SNF-A|SNF-C": 260,
+     "SNF-A|SNF-D": 320,
+     "SNF-A|SNF-E": 320,
+     "SNF-B|SNF-C": 260,
+     "SNF-B|SNF-D": 350,
+     "SNF-B|SNF-E": 320,
+     "SNF-C|SNF-D": 260,
+     "SNF-C|SNF-E": 260,
+     "SNF-D|SNF-E": 320
+    },
+    "false_pairs": 2990,
+    "pairwise_false_rate": 0.5874
+   },
+   "measurement_vector": {
+    "consensus": {
+     "adversarial_fc_rate": 0.0,
+     "consensus_correctness_rate": null,
+     "events": 0,
+     "false_consensus": 0,
+     "fc_by_category": {
+      "adversarial": 0,
+      "ambiguous": 0,
+      "distinct": 0,
+      "equivalent_or_transformation": 0
+     },
+     "true_consensus": 0
+    },
+    "inter_mechanism_kappa": 0.4987,
+    "mechanisms": {
+     "SNF-A": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.0714,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2408,
+       "ece": 0.1618,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.6882,
+         "conf": 0.85,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 930
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-B": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.0,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2271,
+       "ece": 0.1118,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.6882,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 930
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-C": {
+      "A": 0.0455,
+      "ABST_pair": 50,
+      "C": 640,
+      "H": 0.1286,
+      "NC": 290,
+      "R": 0.6881720430107527,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2198,
+       "ece": 0.107,
+       "n": 930,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.7,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 45
+        },
+        {
+         "acc": 0.7232,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 885
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.949,
+      "risk_coverage": [
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.6882,
+        "coverage": 1.0,
+        "n": 930,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7232,
+        "coverage": 0.9516,
+        "n": 885,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-D": {
+      "A": 0.1482,
+      "ABST_pair": 163,
+      "C": 594,
+      "H": 0.0,
+      "NC": 223,
+      "R": 0.7270501835985312,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.2482,
+       "ece": 0.2229,
+       "n": 817,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 0
+        },
+        {
+         "acc": 0.7271,
+         "conf": 0.95,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 817
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.8337,
+      "risk_coverage": [
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-E": {
+      "A": 0.1482,
+      "ABST_pair": 163,
+      "C": 594,
+      "H": 0.0566,
+      "NC": 223,
+      "R": 0.7270501835985312,
+      "T": 0.5,
+      "calibration": {
+       "brier": 0.1976,
+       "ece": 0.0687,
+       "n": 817,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.65,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 23
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.7481,
+         "conf": 0.8,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 794
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 0.8337,
+      "risk_coverage": [
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": 0.7271,
+        "coverage": 1.0,
+        "n": 817,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": 0.7481,
+        "coverage": 0.9718,
+        "n": 794,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": 0.7481,
+        "coverage": 0.9718,
+        "n": 794,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     },
+     "SNF-N": {
+      "A": 0.0,
+      "ABST_pair": 0,
+      "C": 0,
+      "H": 0.0,
+      "NC": 980,
+      "R": 0.0,
+      "T": 0.0,
+      "calibration": {
+       "brier": 0.25,
+       "ece": 0.5,
+       "n": 980,
+       "reliability": [
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.1,
+         "lo": 0.0,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.2,
+         "lo": 0.1,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.3,
+         "lo": 0.2,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.4,
+         "lo": 0.3,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.5,
+         "lo": 0.4,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.5,
+         "hi": 0.6,
+         "lo": 0.5,
+         "n": 980
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.7,
+         "lo": 0.6,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.8,
+         "lo": 0.7,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 0.9,
+         "lo": 0.8,
+         "n": 0
+        },
+        {
+         "acc": 0.0,
+         "conf": 0.0,
+         "hi": 1.0,
+         "lo": 0.9,
+         "n": 0
+        }
+       ]
+      },
+      "n_cases": 1100,
+      "n_pairs": 980,
+      "pair_coverage": 1.0,
+      "risk_coverage": [
+       {
+        "accuracy": 0.0,
+        "coverage": 1.0,
+        "n": 980,
+        "threshold": 0.0
+       },
+       {
+        "accuracy": 0.0,
+        "coverage": 1.0,
+        "n": 980,
+        "threshold": 0.5
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.6
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.7
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.8
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.9
+       },
+       {
+        "accuracy": null,
+        "coverage": 0.0,
+        "n": 0,
+        "threshold": 0.95
+       }
+      ]
+     }
+    }
+   },
+   "pareto": {
+    "non_dominated": [
+     "SNF-A",
+     "SNF-B",
+     "SNF-C",
+     "SNF-D"
+    ],
+    "note": "Non-domination is not a ranking and not a selection. No mechanism is endorsed by appearing here.",
+    "points": {
+     "SNF-A": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-B": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-C": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.5818,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-D": {
+      "correct_abstention_rate": 0.1482,
+      "correct_resolution_rate": 0.54,
+      "false_acceptance_rate": 0.424
+     },
+     "SNF-E": {
+      "correct_abstention_rate": 0.0455,
+      "correct_resolution_rate": 0.54,
+      "false_acceptance_rate": 0.7059
+     },
+     "SNF-N": {
+      "correct_abstention_rate": 0.0,
+      "correct_resolution_rate": 0.0,
+      "false_acceptance_rate": 1.0
+     }
+    }
+   },
+   "per_family": {
+    "SNF-A": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "HANDLED_VIA_HEDGING": 30,
+      "OVERCOMMITTED": 30
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-B": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "OVERCOMMITTED": 60
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-C": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "HANDLED_VIA_HEDGING": 30,
+      "OVERCOMMITTED": 30
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "CORRECT": 110
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "HANDLED_VIA_HEDGING": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-D": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "ABSTAINED": 67,
+      "WRONG": 23
+     },
+     "genuine_ambiguity": {
+      "OVERCOMMITTED": 60
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "ABSTAINED": 46,
+      "CORRECT": 64
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-E": {
+     "abstain_expected": {
+      "ABSTAINED": 50
+     },
+     "active_passive": {
+      "CORRECT": 90
+     },
+     "argument_inversion": {
+      "CORRECT": 100
+     },
+     "false_consensus_trap": {
+      "ABSTAINED": 67,
+      "WRONG": 23
+     },
+     "genuine_ambiguity": {
+      "HANDLED_VIA_HEDGING": 30,
+      "OVERCOMMITTED": 30
+     },
+     "modality_temporal_quantifier": {
+      "CORRECT": 120
+     },
+     "negation_vs_predicate": {
+      "CORRECT": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "ABSTAINED": 46,
+      "CORRECT": 64
+     },
+     "paraphrase_equivalent": {
+      "CORRECT": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    },
+    "SNF-N": {
+     "abstain_expected": {
+      "WRONG": 50
+     },
+     "active_passive": {
+      "WRONG": 90
+     },
+     "argument_inversion": {
+      "WRONG": 100
+     },
+     "false_consensus_trap": {
+      "WRONG": 90
+     },
+     "genuine_ambiguity": {
+      "WRONG": 60
+     },
+     "modality_temporal_quantifier": {
+      "WRONG": 120
+     },
+     "negation_vs_predicate": {
+      "WRONG": 100
+     },
+     "nominalization_reorder": {
+      "WRONG": 90
+     },
+     "optional_role_presence": {
+      "WRONG": 110
+     },
+     "paraphrase_equivalent": {
+      "WRONG": 120
+     },
+     "role_omission_ambiguity": {
+      "WRONG": 60
+     },
+     "unknown_vs_not_expressed": {
+      "WRONG": 110
+     }
+    }
+   }
+  }
+ }
+}

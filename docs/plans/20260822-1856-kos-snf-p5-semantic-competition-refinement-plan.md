@@ -1,6 +1,6 @@
 # KOS-SNF P5 — Semantic Competition Refinement · PLAN (EP-01, awaiting approval)
 
-> **Status:** 📋 **PLAN — AWAITING HPA APPROVAL.** No code written, no corpus generated, no experiment run. Per EP-01 the approval applies to *this plan*, not to the commission that requested it.
+> **Status:** ✅ **APPROVED WITH AMENDMENTS (HPA, 2026-08-22) — EXECUTED, COMPLETE.** Steps 6–16 done; results in `docs/knowledgeos/brainstorming/KOS-SNF-RESEARCH-P5-COMPETITION-001.md`. Amendments applied: **Q-1** OQ-4 remains unauthorized · **Q-2** honest reduction accepted · **Q-3** `DOMAIN_CONDITIONAL` deferred · **Q-4** templates + independently declared hand-written gold · **D-3 strengthened** to the four-way distinction (EXPRESSED / EXPRESSED+NEGATED / NOT_EXPRESSED / UNKNOWN).
 > **Commission:** HPA, 2026-08-22 — *"Claude Code Commission — P5 Semantic Competition Refinement"* (23 sections + 16-step execution order).
 > **Mission (verbatim-in-substance):** determine, through a controlled reproducible experiment, **how the candidate semantic mechanisms behave** with respect to meaning preservation · convergence · false convergence/collapse · distinction preservation · transformation stability · appropriate abstention · calibration · disagreement · false consensus. **Not** to redesign KnowledgeOS, select an SNF winner, or introduce SNF into the kernel.
 
@@ -108,18 +108,18 @@ Research-domain concepts, explicitly **not** KnowledgeOS domain concepts: `Expre
 
 ## 11 · Task checklist (execution order per commission §Execution Mode)
 
-- [ ] 1–5 **DONE (this plan)** — artifacts read, research context reconstructed, apparatus reviewed, defects D-1…D-9 identified
-- [ ] 6 Test suite first (**D-8**): distance · abstention · transformation · ensemble · metric-scaling tests — RED before any change
-- [ ] 7 `d_SNF` v0.2 (**D-2, D-3**) + extended sanity gate; v0.1 retained for comparison
-- [ ] 8 `KOS-SNF-1000` corpus (**D-1**), versioned schema, declared relations, verifier
-- [ ] 9 Derive corpus sizes from data (**D-7**); SNF-E arbitration policies implemented as swept policies (**D-4**)
-- [ ] 10 Run the 1,000-case competition (deterministic, seeded)
-- [ ] 11 Measure all mechanisms (vector, not scalar)
-- [ ] 12 Pareto frontier + failure-mode analysis
-- [ ] 13 Abstention (**D-6**) and false-consensus analysis; coverage-matched calibration (**D-5**); intervals (**D-9**)
-- [ ] 14 Reports A–I (§22), including *what was established* vs *what remains unknown*
-- [ ] 15 Verify reproducibility (byte-identical across subprocess runs; record seeds, versions, hashes)
-- [ ] 16 **STOP** — no architecture change; any implication recorded as OBSERVATION → EVIDENCE → ARCHITECTURAL HYPOTHESIS → HPA DECISION REQUIRED
+- [x] 1–5 **DONE (this plan)** — artifacts read, research context reconstructed, apparatus reviewed, defects D-1…D-9 identified
+- [x] 6 Test suite first (**D-8**): distance · abstention · transformation · ensemble · metric-scaling tests — RED before any change
+- [x] 7 `d_SNF` v0.2 (**D-2, D-3**) + extended sanity gate; v0.1 retained for comparison
+- [x] 8 `KOS-SNF-1000` corpus (**D-1**), versioned schema, declared relations, verifier
+- [x] 9 Derive corpus sizes from data (**D-7**); SNF-E arbitration policies implemented as swept policies (**D-4**)
+- [x] 10 Run the 1,000-case competition (deterministic, seeded)
+- [x] 11 Measure all mechanisms (vector, not scalar)
+- [x] 12 Pareto frontier + failure-mode analysis
+- [x] 13 Abstention (**D-6**) and false-consensus analysis; coverage-matched calibration (**D-5**); intervals (**D-9**)
+- [x] 14 Reports A–I (§22), including *what was established* vs *what remains unknown*
+- [x] 15 Verify reproducibility (byte-identical across subprocess runs; record seeds, versions, hashes)
+- [x] 16 **STOP** — no architecture change; any implication recorded as OBSERVATION → EVIDENCE → ARCHITECTURAL HYPOTHESIS → HPA DECISION REQUIRED
 
 ## 12 · Stop conditions (commission §21)
 
@@ -145,9 +145,13 @@ Halt and report — do not solve — if the work appears to require: modifying v
 | **Q-3** | `DOMAIN_CONDITIONAL` arbitration — the toy world has no domain taxonomy. Sweep it as a **stub over case families**, or defer the policy? | avoids inventing a domain model to satisfy a policy name |
 | **Q-4** | Corpus authorship: **hand-designed** (pilot's method, ~1,000 cases is a large manual set) or **generated from declared family templates** with hand-written gold per template? My recommendation: **templates + hand-written gold**, which keeps determinism and auditability at n=1,000 | affects reproducibility claims and effort |
 
-## 15 · Next action
+## 15 · Outcome
 
-**Await approval of this plan.** On approval, execute steps 6–16 in order and stop at 16. On rejection or amendment, revise the plan — no implementation begins either way.
+**Executed and complete.** 51 tests (RED before GREEN) · `d_SNF v0.2` with the four-way non-collapse gate (14/14) · `KOS-SNF-1000` (1,100 cases, digest `e9fb867903fb`) · six-policy arbitration sweep · full measurement vector with bootstrap CIs · coverage-matched calibration · Pareto per policy · reproducibility verified (sweep digest `9ce9d670cb47`, identical across runs).
+
+**Headline results:** the Phase-1 ceiling was a corpus artifact (R 1.00 → 0.69) · `d_SNF v0.1` collapsed two distinctions and was crediting producers as CORRECT on 45/90 adversarial traps · three of six named arbitration rules were behavioural aliases · 0.587 of mechanism agreements are agreements on a wrong reading · SNF-D's Phase-1 calibration advantage was a selection effect and reverses under matched coverage · **no producer represents the UNKNOWN vs NOT_EXPRESSED distinction at all** (110/110 failures).
+
+**Five architectural hypotheses (AH-1…AH-5) recorded and stopped at "HPA DECISION REQUIRED".** No architecture change, no winner, no promotion, OQ-4 still unauthorized.
 
 ---
 
