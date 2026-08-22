@@ -236,3 +236,13 @@ row, no admission, no promotion.
   classification is asserted here.
 - **No file's content was edited.** Renames only. `timestamp_source: filesystem-mtime`
   for every entry in this batch.
+
+---
+
+# 2026-08-22 third intake (1 file — rename only, mtime-stamped)
+
+| # | Old name | Renamed file | mtime | Size | Note (descriptive only) |
+|---|---|---|---|---|---|
+| 1 | `Untitled-3.md` | `20260822-154923-snf-measurement-framework-mathematical-review.md` | 2026-08-22 15:49:23 | 40065 | ⚗️ **measurement/simulation record** — SNF measurement-framework mathematical review (v0.1→v0.3 simulation thread · semantic collision rate · three-uncertainty separation · entropy is model-relative · threshold and composite-score critique · URDNA2015 question). **Composite source**, multiple passes; later passes supersede earlier ones. Tracked so the v1.1 r4 refinement can cite a durable artifact (durability discipline) |
+
+**Renames only — content untouched, nothing deleted.** No integration act: the frozen classifier, the Research-Phase Closure, register 25+4 and the P4 gate are unchanged. **Not an authorization** — see OQ-4 in Reference Architecture v1.1.
