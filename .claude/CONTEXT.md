@@ -1035,7 +1035,19 @@
 
 ---
 
-## 📍 UPDATE (2026-08-22, **TRACK 2 · GOVERNANCE BOUNDED REVIEW DELIVERED** — newest) — **🟡 CHAIN NOT READY FOR PO/ARB ACCEPTANCE · ⛔ `DV-1`…`DV-7` REMAIN OPEN · ⛔ `RV-1`…`RV-7` REMAIN OPEN, routed to ARCHITECTURE, repair ABSENT · ⛔ MIGRATION NOT AUTHORIZED · PHASE 3 MUST NOT BEGIN · PHASE 5 REMAINS PROHIBITED**
+## 📍 UPDATE (2026-08-22, **TRACK 2 · ARCHITECTURE `RV-1…RV-7` REPAIR LANE OPENED** — newest) — **PO/ARB AUTHORIZED THE NARROW REPAIR COMMISSION · S6 ACTIVE · MIGRATION STILL ⛔ FROZEN**
+
+| | |
+|---|---|
+| ⭐ **Act** | **PO/ARB authorization of the Architecture RV-repair lane**, 2026-08-22 — recorded verbatim and committed `8b92a100` (`docs/knowledgeos/reviews/2026-08-22-KOS-AIP-GOV-STATE-DURABILITY-DV-CORRECTION-RV-REPAIR-COMMISSION-REGISTRATION.md`). *"Architecture must repair the findings. Architecture must not start Phase 3 or Phase 5 migration. The migration remains frozen until PO/ARB acceptance."* Prompt contract = **"Repair `RV-1…RV-7` only, produce evidence, stop"** — NOT "continue migration". This record is the `humanActRef`/`humanAct` for the lane's grant and START (`G-2`/`R5b`, `G-3`). ⛔ Governance recorded the decision; it did not make it |
+| 🔵 **Lane opened on the record** | `S6-architecture-dv-correction-rv-repair` — REGISTER (seq 10) · HANDOFF S5→S6 with token + tokenRef (seq 11, `G-3` predecessor-handoff conjunct; S5 ends HANDED_OFF per the review's §13 routing) · GRANT `G-KOS-GOV-STATE-DURABILITY-DV-CORRECTION-RV-REPAIR` (AUTHORIZED, 24th) · START (seq 12, `humanAct` = the registered act). **Fold confirms: `mutationOwner = S6`, ACTIVE, work item OPEN** |
+| 📋 **Commission scope (narrow, fixed)** | `RV-1` (gateway): **ONE §4.3 placement-table row** placing step `3(iii)`'s governance-append evidence record (location · evidence artifact · provenance reference) **OR** a stated justified exemption — Architecture chooses, on the record. `RV-2…RV-7`: wording / measurement / current-vs-superseded document-consistency repairs per the independent review's per-finding table. ⛔ NOT a redesign · ⛔ no finding closed, nothing accepted (`R-34`/`P-2`) · ⛔ append-only preserved |
+| **Deliverables** | repaired plan (committed) · per-finding disposition record · session completion report · **STOP** → bounded re-verification → PO/ARB decision → migration authorization |
+| **NEXT** | ⏳ **ARCHITECTURE (`S6`, ACTIVE)** — perform the `RV-1…RV-7` repair now. ⛔ **MIGRATION STILL NOT AUTHORIZED · PHASE 3 MUST NOT BEGIN · PHASE 5 REMAINS PROHIBITED** |
+
+---
+
+## 📍 UPDATE (2026-08-22, **TRACK 2 · GOVERNANCE BOUNDED REVIEW DELIVERED**) — **🟡 CHAIN NOT READY FOR PO/ARB ACCEPTANCE · ⛔ `DV-1`…`DV-7` REMAIN OPEN · ⛔ `RV-1`…`RV-7` REMAIN OPEN, routed to ARCHITECTURE, repair ABSENT · ⛔ MIGRATION NOT AUTHORIZED · PHASE 3 MUST NOT BEGIN · PHASE 5 REMAINS PROHIBITED**
 
 | | |
 |---|---|
