@@ -75,7 +75,8 @@ No write commands. Appointment, prompt preparation, and stop are AST-018's comma
 - [x] 7. Write developer guide (`developer_guide/ai_platform/05_operating_model.md`) + index
 - [x] 8. Update plan progress, CONTEXT, session log (ES-004.3)
 - [x] 9. Write §38 completion report (IMPLEMENTED ≠ VERIFIED ≠ ADOPTED ≠ AUTHORIZED)
-- [ ] 10. Commit (one story · one commit · subject carries `(KOS-OPERATING-MODEL-001)`)
+- [x] 10. Commit (one story · one commit · subject carries `(KOS-OPERATING-MODEL-001)`) — `39e953dd`
+- [x] 11. Record lane STOP (seq 4 via AST-015, per the START act's declared sequence) — `workItemState: STOPPED`; bootstrap fail-closes to UNRESOLVED → next `governance`; AST-018 `WORK_ITEM_STOPPED`
 
 ## 7 · Boundaries (binding — from §26–§28, §37)
 
@@ -94,9 +95,10 @@ No write commands. Appointment, prompt preparation, and stop are AST-018's comma
 - 2026-08-22: **PO/ARB corrections applied before GREEN** — (1) FRESH_SESSION_REQUIRED = "Start a new session and paste this prompt:" + `<generated prompt>` + "You may use this prompt unchanged or edit it." — never an appointment invitation; human never asked for a session UUID. (2) `session` candidate status is NEVER inferred from UNRESOLVED + NEXT_ACTOR_REQUIRED — it rests on authoritative eligibility/appointment facts. Both pinned in tests (test_om_04, 10, 16, human_03, human_05, 38).
 - 2026-08-22: **GREEN** — OperatingModelContractTest 43 tests / 409 assertions; AST-015/016/017/018 regression suites (78 tests / 876 assertions) still green; test_om_37 proves all four canonical assets byte-unchanged vs HEAD.
 - 2026-08-22: Layer 1 operating-model document written; developer guide 05 + index updated.
+- 2026-08-22: **STOP recorded** (seq 4 via AST-015) — `workItemState: STOPPED`; bootstrap fail-closes to UNRESOLVED (operable=false, authorized_to_act=false, recommended next role = governance); AST-018 reports `WORK_ITEM_STOPPED` (options CONTINUE / LEAVE_STOPPED). Commit `39e953dd`.
 
 ## 10 · Open questions / next actions
 
 - Independent verification (after STOP) — **not** performed by this session (R-34/EP-02).
 - Adoption — governance path, **NOT** claimed here.
-- **Implementation STOP pending** — the lane's next governed step (record STOP → PO/ARB appoints fresh independent verifier → Governance REGISTER/HANDOFF/human START) is outside this session's authority.
+- **Implementation STOPPED (seq 4).** Next actor: **PO/ARB appoints a FRESH INDEPENDENT VERIFIER** (≠ `5c0e13c1` · `8a525719` · `b51dba91` · `8deac5de` · `d1612e03` · `b64828fe` · `7c2690ae`) → Governance REGISTER(verification) → HANDOFF → human START → independent verification → governance adoption review → PO/ARB adoption decision (NOT automatic). This is outside this session's authority.
