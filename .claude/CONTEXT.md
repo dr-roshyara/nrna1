@@ -1422,9 +1422,9 @@
 | Rule | **ACCEPTED** + amendments G-1…G-4 (orchestration), A-1 (role-bound execution), A-2 (role journals), A-3 (human-act precondition) |
 | Increment 1 (workflow state record) | **implemented · independently verified · operationally qualified · terminally closed** |
 | `KOS-SESSION-DISCOVERY-001` | architecture approved → implemented → verified with findings → **QUALIFIED WITH CONDITION** → C-1/C-2 corrective increment implemented (`84100bb0`, 17 tests/170 assertions) |
-| Now | **corrective verification ACTIVE** (`S1-verify-discovery-corrective`), scope = the six checks **+** classifying finding **V-3** (the resolver may report a missing predecessor handoff without checking) |
+| `KOS-SESSION-BOOTSTRAP-001` | **implemented · self-verified (PO/ARB plan approval 2026-08-22, three binding conditions)** — AST-017 `session-bootstrap.php` (read-only resolver, AMENDMENT 2 delegation + ONE bounded V-3 handoff read), S1–S17 (+S2b) **18/18 GREEN (210 assertions)**, full WorkflowEngine suite **47/47** untouched, live checks vs real record: `8a525719` → UNRESOLVED · `a8ce5a39` → AMBIGUOUS (referenced by S5 **and** S6 — fail-closed, explicit `--session=S5` → RESOLVED/HANDED_OFF) · read purity on live store. **Adoption NOT claimed** — registry `planned → verify` (PO/ARB condition 1); harness pointers in `.claude/CLAUDE.md`/`AGENTS.md`/`.codex/README.md` (ON_DEMAND, no SESSION_START wiring). **`EKS-07` NOT solved** — minimal operational correction only; V-3 FULL remedy + SESSION_START wiring recorded as `EKS-07 FOLLOW-UP` |
 | `AST-016` | **`planned`** — not adopted |
-| Waiting on | **Session 1's corrective verification report** (not a PO act) |
+| Waiting on | **independent verification of AST-017** (producer bar — not the producing session) → governance path decides adoption |
 
 ### Lane 2 · Election — implementation lane **paused at an authorization gate, not half-implemented**
 
