@@ -1,6 +1,18 @@
 # Current Working State
 
-**Updated:** 2026-08-23 *(additive — the **HPA IMPLEMENTATION AUTHORIZATION DECISION PACKAGE** block is newest: the T-2/T-3 authorization decision package for EP-01 is DELIVERED — preparation only, contract and code untouched, Q-C and Q-D answered from repository evidence (ONE slice · OQ-1 recorded IN the slice, both recommended), the HPA's authorization fields ⬜ OPEN; implementation T-2/T-3 remains NOT authorized — the package's §5 fields wait for the HPA's separate, explicit act; the EP-01-PLAN-APPROVED and terminology-review blocks below record the Q-B resolution and approval that produced this state)*
+**Updated:** 2026-08-23 *(additive — the **EP-01 T-2/T-3 IMPLEMENTED — GATES G-1…G-8 GREEN** block is newest: the HPA's formal implementation authorization was issued (one slice, OQ-1 in the slice); the Port Contract was refined at the seven §5.6 sites; the T-3 verification records all eight gates GREEN (RED baseline = the pre-slice single-flat `declared insufficiency`); OQ-1 recorded RESOLVED in §6; the slice STOPPED for EP-02 — a separate, independent act (R-34); the authorization-package, EP-01-PLAN-APPROVED, and terminology-review blocks below record the prior states)*
+
+---
+
+## 📍 UPDATE (2026-08-23, **EP-01 T-2/T-3 IMPLEMENTED — *PORT CONTRACT VOCABULARY REFINEMENT (AH-1 · AH-3) — AUTHORIZED (HPA, 2026-08-23: "one slice, OQ-1 in the slice") · EXECUTED · GATES G-1…G-8 ALL GREEN · RED BASELINE RECORDED · STOPPED FOR EP-02 (SEPARATE ACT) · CONTRACT STILL PROPOSED · NON-AUTHORITATIVE***)
+
+**Act → execution:** the HPA issued the **formal T-2/T-3 implementation authorization** (*"Authorize T-2/T-3 per the package: one slice, OQ-1 in the slice."*; the full authorization also issued in-conversation with boundaries = package §4). The slice was executed in **one commit's scope**:
+- **T-2 (seven sites, plan §5.6)** in `docs/knowledgeos/architecture/20260822-1559-...-Port-Contract.md`: §1 purpose sentence (a mechanism declares **which** statement) · §2 obligation-3 pointer to the structured vocabulary (content unchanged) · §3 Q2 (candidate-component rows structured — `insufficiency` vs `determination`; `Declared determination` = `NO_FILLER`) · §3 Q4 (abstention = the `FILLER_UNKNOWN` family → UNKNOWN; `NO_FILLER` is **not** an abstention — core evaluates) · §4 vocabulary table (single flat row → the **two sibling terms + value-cases**: `declared insufficiency` → `FILLER_UNKNOWN` (+ `reason` `PARSE_UNAVAILABLE`/`READING_UNDERDETERMINED`) · `declared determination` → `NO_FILLER`; `abstention` reconciled) · §6 OQ-1 **recorded RESOLVED** (Q-D: in the slice) · §7 gates (+ **G-4 No-domain-capture** + **G-6 Anti-laundering**; Structure stays ✅).
+- **T-3 (gates G-1…G-8)** verified **property-based** and recorded as committed evidence: `docs/knowledgeos/reviews/20260823-0024-KOS-EP01-T3-gates-G1-G8-verification.md` — RED baseline (pre-slice contract failed G-1·G-2·G-3·G-5·G-6 — the P5-measured conflation) → **all eight GREEN** with per-gate citations to the refined text. **Q-C: one slice** executed.
+
+**Boundaries honored:** no code · no schemas/APIs/classes/storage (DEF-5) · no v1.1 / Constitution / aggregate / Kernel / SNF / corpus change · no OQ-4 · no OQ-2/OQ-3/OQ-5/F-1…F-5/AH-5/AH-2/AH-4 work · register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · contract remains **PROPOSED · NON-AUTHORITATIVE**.
+
+**NEXT (NOT this act):** **STOP — EP-02 independent completion review** (R-34: engineering never accepts its own work; a separate, commissioned act) · then **v1.1 reassessment** (T-5, expected: v1.1 remains; measured, not assumed) · then OQ-2 / OQ-3 / OQ-5 / F-1…F-5 · AH-5 deferral · AH-4 governance recording separate. **The Kernel still waits.**
 
 ---
 

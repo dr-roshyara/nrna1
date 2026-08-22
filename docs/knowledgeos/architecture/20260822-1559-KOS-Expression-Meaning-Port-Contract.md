@@ -15,6 +15,8 @@ The consolidated Reference Architecture states what a mechanism may **not do** a
 
 **This contract closes that gap.** It is the port's published language — the vocabulary and obligations that make the boundary enforceable. It answers the HPA's eight questions and renders obligations that are **each traceable to an existing invariant** (never new law).
 
+**A mechanism declares which statement it is making** — *"determined absent in the candidate"* (`declared determination`) or *"could not determine"* (`declared insufficiency`) — so the core distinguishes the two honestly, without conflating a determinate absence with a provider's inability (AH-1 · AH-3, vocabulary §4).
+
 ```
       EXPRESSION  (surface form · any language · any order — carries no epistemic weight)
            │  enters the port
@@ -45,6 +47,8 @@ The consolidated Reference Architecture states what a mechanism may **not do** a
 
 Obligation 3 is the load-bearing one: a mechanism that cannot abstain will assert. The architectural answer is not a better parser — it is a port that will not accept a candidate lacking a declared insufficiency.
 
+The declaration is now **structured (§4)**: one of **two sibling declarations** — `declared insufficiency` (*"I did not determine this"* → UNKNOWN, ⟨C-5⟩) or `declared determination` (*"I determined this about the candidate"* → the core evaluates). A mechanism states, precisely, which it is making.
+
 ---
 
 ## 3 · The eight questions, answered
@@ -62,7 +66,8 @@ A **meaning candidate** — a *proposal* about what the expression means — com
 | Candidate component | What it is | Status |
 |---|---|---|
 | **Candidate meaning** | a representation of the intensional content (e.g. a canonical form such as SNF — the encoding is **not fixed here**, DEF-4) | required |
-| **Declared insufficiency** | the mechanism's own statement of what it could not determine — abstention is first-class (obligation 3) | required |
+| **Declared insufficiency** | the mechanism's own statement of what it could not determine — abstention is first-class (obligation 3); structured — `insufficiency` (what was not determined × why) vs `determination` (what was determined) | required |
+| **Declared determination** | the mechanism's own statement of what it determined about the candidate — e.g. `NO_FILLER`, *"the role/slot is not expressed"* — a determinate negative; present when a determinate claim is made (obligation 2) | required |
 | **Justification path** | premises · rules · assumptions · inference rule — the reasoning that produced the proposal (obligation 2) | required |
 | **Interpretation metadata** | uncertainty · provenance · transformation evidence (§4) — candidate-side, **never aggregate members** | required |
 
@@ -84,6 +89,8 @@ The distinction the contract preserves: **interpretation uncertainty is about th
 ### Q4 · How is UNKNOWN represented?
 
 By **abstention** — the mechanism declares *"I did not determine this meaning"* as a **first-class output** (obligation 3). That declaration maps to **UNKNOWN** (⟨C-5⟩), never to ABSENT, never to FALSE, never to a low-confidence accept.
+
+**Abstention is the `FILLER_UNKNOWN` family** (the `declared insufficiency` declaration — *"a filler may exist, but the provider could not determine which one"*) → **UNKNOWN**. **`NO_FILLER`** (the `declared determination` declaration — *"the representation establishes that the role/slot is not expressed"*) is **not** an abstention: it is a **determinate negative the core evaluates** (Q6 · obligation 2) — never auto-mapped to ABSENT, never emitted by the mechanism (obligations 1 · 6).
 
 The three negative states remain distinct — **unknown** (no grounds) ≠ **absent** (grounds that it does not exist) ≠ **false** (grounds that it is not so) (v1.1 §9). Abstention is not a failure; it is the mechanism honoring Zero's operational reading — *insufficient grounds → do not invent meaning → UNKNOWN*. A mechanism that cannot say *"I did not determine this"* will assert instead; this contract refuses to reward that.
 
@@ -139,13 +146,15 @@ All of the following is **port-contract vocabulary** — candidate-side, carried
 | Term | Meaning | Rendered obligation |
 |---|---|---|
 | **meaning candidate** | the proposal about what the expression means | 1 |
-| **declared insufficiency** | the mechanism's statement of what it could not determine | 3 |
+| **declared insufficiency** | the mechanism's statement of what it could not determine — the **`FILLER_UNKNOWN`** declaration, *"a filler may exist, but the provider could not determine which one"* — a **determinate insufficiency** (abstention) → **UNKNOWN** (⟨C-5⟩ · obligation 3) | 3 |
+| **declared insufficiency · reason** | why the insufficiency arose — an **orthogonal dimension, insufficiency only** (AH-3): `PARSE_UNAVAILABLE` — cannot parse the relevant token/form · `READING_UNDERDETERMINED` — can parse, but cannot decide the interpretation | 3 |
+| **declared determination** | the mechanism's statement of what it determined about the candidate — the **`NO_FILLER`** declaration, *"the representation establishes that the role/slot is not expressed"* — a **determinate negative**, not an abstention; the core evaluates (obligation 2), never auto-mapped to ABSENT, never emitted by the mechanism (obligations 1 · 6) | 2 |
 | **justification path** | premises · rules · assumptions · inference rule · conclusion | 2 |
 | **interpretation uncertainty** | candidate-side structured metadata; Bayesian interpretation probability permitted, **never Confidence** | 3, 5 |
 | **provenance** | source expression · mechanism identity · derivation steps | 2 |
 | **transformation evidence** | normalization / canonicalization steps + non-collapse record | 2, Q5 |
 | **collision / candidate-equality observation** | two expressions → same candidate; rate = critical failure metric | Q8 |
-| **abstention** | *"I did not determine this"* — first-class output → UNKNOWN | 3, 6 |
+| **abstention** | *"I did not determine this"* — first-class output → UNKNOWN; exactly the **`FILLER_UNKNOWN`** family (the `declared insufficiency` declaration) — `NO_FILLER` is **not** an abstention | 3, 6 |
 
 ---
 
@@ -177,7 +186,7 @@ The port separates **mechanism-owned** (expression · candidate · metadata) fro
 
 **Open questions — positions at contract altitude (recorded, not closed):**
 
-- **OQ-1** — *does declared insufficiency need its own vocabulary?* This contract **adopts "declared insufficiency"** as the port vocabulary (obligation 3). Recorded; the HPA may rule.
+- **OQ-1 — RESOLVED** (recorded at implementation per the AH-1 ruling · HPA option-C approval, 2026-08-23) — *does declared insufficiency need its own vocabulary?* **Yes.** The declaration is structured into the **sibling pair** — `declared insufficiency` (what was not determined × why) · `declared determination` (what was determined) — with the value-cases in §4. (v1.1 §20 deferred OQ-1 to the Logical Architecture; the Port Contract is that deliverable.)
 - **OQ-2** — *may SNF-equivalence be recorded as an EvidenceLink?* The contract's position: **yes, as a candidate-side evidence observation, never as the assignment itself** (Q8). **HPA rule still required.**
 - **OQ-3** — *is cross-language sameness about meaning or translation?* The contract treats cross-language same-candidate as **a candidate for the same admitted meaning**, never identity. Recorded; experiment design may decide the translation-vs-meaning question.
 - **OQ-5** — *should Confidence remain an aggregate member?* Unchanged by this contract; ⟨R-1⟩ keeps it safe. A later Logical-Architecture decision may revisit it.
@@ -192,7 +201,9 @@ The port separates **mechanism-owned** (expression · candidate · metadata) fro
 | **Replacement** | can the mechanism be swapped without changing the contract? | ✅ **Yes** — Pāṇinian · dependency · symbolic · LLM · human all feed the same port (§1, v1.1 §11.1) |
 | **Non-collapse** | does the contract protect the two-sided property? | ✅ **Yes** — collision rate is a critical failure metric and non-collapse is measured in both directions (Q8) |
 | **No new law** | does every obligation render an existing invariant? | ✅ **Yes** — §2 table traces all six; the six prohibitions (Q7) are r4 interpretations of existing invariants |
-| **Structure** | does the contract add any member, event, state, or register row? | ✅ **No** — candidate payload vocabulary is port-level, never an aggregate member (r4-4); reporting a collision is not a domain event (⟨A-3⟩) |
+| **Structure** | does the contract add any member, event, state, or register row? | ✅ **No** — candidate payload vocabulary is port-level, never an aggregate member (r4-4); reporting a collision is not a domain event (⟨A-3⟩); the vocabulary value-cases (`NO_FILLER` · `FILLER_UNKNOWN` · `reason`) are port vocabulary, never members, events, or states (r4-4 · ⟨A-3⟩ · §9) |
+| **No-domain-capture (G-4)** | do any of the value-cases become a domain state, member, event, or register row? | ✅ **No** — `FILLER_UNKNOWN` · `NO_FILLER` · `PARSE_UNAVAILABLE` · `READING_UNDERDETERMINED` are port vocabulary only; §9 remains exactly seven states; register **25+4** |
+| **Anti-laundering (G-6)** | can a mechanism convert underdetermination into determination? | ✅ **No** — `NO_FILLER` requires its justification path (obligation 2 · Q6); the core retains UNKNOWN/QUESTIONABLE routing for unjustified or contradicted absence claims (obligation 6); every insufficiency carries a `reason` — *"I could not parse it"* cannot masquerade as *"I established its absence"* |
 
 ---
 
