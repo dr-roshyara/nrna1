@@ -186,3 +186,53 @@ closure are unchanged. Register 25+4 unchanged · P4 gate unchanged.**
   top-level, tagged `outside candidate register`; relocation to a governance/session home
   is left to the human (matching the house treatment of PublicDigit off-topic files).
 - **No file's content was edited.** Renames only (mtime timestamps). `timestamp_source: filesystem-mtime` on every file.
+
+---
+
+# 2026-08-22 second intake batch (8 files — rename only, mtime-stamped)
+
+> **Commission:** Human Principal Architect, 2026-08-22 — *"read
+> docs/knowledgeos/brainstorming untracked files. rename them based on their comments and
+> as done to other files. timestamp is when they are saved. and make commit."*
+
+## Why this section exists
+
+These are the **8 files left untracked after the first 2026-08-22 intake batch** (commit
+`b503f8ed`), written 2026-08-22 13:52–14:38 — the semantic-compiler / Pāṇinian-compiler
+working thread plus one governance-track note. Each file was read; each is renamed to the
+house convention using its **filesystem mtime** (the saved time) as the timestamp.
+**Renames only — no file content was edited, nothing deleted, no metadata block added.**
+
+**No integration act.** This batch is a *naming* commission, not an intake assessment: the
+"integration note" column below is descriptive only. **The frozen classifier, the standing
+Research-Phase Closure, register 25+4 and the P4 gate are unchanged** — no new candidate
+row, no admission, no promotion.
+
+## The 8 files (old → new, mtime-stamped)
+
+| # | Old name (chat-style) | Renamed file | Detected timestamp (mtime) | Size | Integration note (descriptive only) |
+|---|---|---|---|---|---|
+| 1 | `Based on the current evidence chain, I w` | `20260822-135214-po-arb-acceptance-decision-support-option-1-recommendation.md` | 2026-08-22 13:52:14 | 3432 | ⛔ **outside candidate register** — AIP governance-track decision support (KOS-AIP-GOV-STATE-DURABILITY acceptance, Option 1 with conditions); relocation left to the human (house precedent) |
+| 2 | `Yes.md` | `20260822-140426-research-phase-closure-ddd-refinement-review-prompt.md` | 2026-08-22 14:04:26 | 8015 | ✅ confirms — research closure restated + DDD refinement review prompt for Reference Architecture v1.0 |
+| 3 | `c like compiler` | `20260822-140622-paninian-grammar-compiler-architecture-parallel.md` | 2026-08-22 14:06:22 | 19383 | ✅ confirms — Sanskrit-grammar family (UM-45…47): Pāṇini ↔ compiler structural parallel, principles not grammar |
+| 4 | `# KnowledgeOS Research Extraction: Seman.md` | `20260822-140939-knowledgeos-semantic-compiler-architecture-research-extraction.md` | 2026-08-22 14:09:39 | 36887 | ✅ confirms — Semantic Compiler as operational layer (lexer · parser · Semantic AST · KIR · validation); mechanism candidate, no admission |
+| 5 | `#first actual CPU-only prototype benchmark.md` | `20260822-141513-semantic-compiler-cpu-prototype-benchmark-first-run.md` | 2026-08-22 14:15:13 | 14637 | ⚗️ **experiment record** — first CPU-only deterministic-parser benchmark (~1–2 µs/sentence, tiny grammar); EN/DE semantic divergence exposed (condition dropped) |
+| 6 | `This verification analysis is actually a.md` | `20260822-143217-benchmark-verification-reinterpreted-knowledgeos-v1-1-layers.md` | 2026-08-22 14:32:17 | 39343 | ⚗️ **verification analysis** — benchmark reinterpreted against Reference Architecture v1.1 layers; separates efficiency · semantic understanding · epistemic trustworthiness (74.2% ≠ failure) |
+| 7 | `Yes. I agree with this refinement. **Thi` | `20260822-143421-semantic-compiler-kernel-boundary-refinement-kos-ev.md` | 2026-08-22 14:34:21 | 20180 | ✅ confirms — boundary refinement: Semantic Compiler (expression→meaning) stays OUTSIDE the kernel; KOS-EV is an enforcement mechanism at the boundary, **not** the kernel |
+| 8 | `next_steps.md` | `20260822-143844-next-steps-architecture-first-then-semantic-compiler-experiment.md` | 2026-08-22 14:38:44 | 9936 | 📋 **sequencing recommendation** — (1) v1.1 DDD refinement · (2) Semantic Compiler v0.2 experiment as evidence · (3) refine only on exposed inconsistency; ❌ no more philosophical research, ❌ no implementation yet |
+
+**Count:** 8/8 mapped ✓ (all top-level; no `_misc/` relocation).
+
+## Flagged for the human
+
+- `20260822-135214-po-arb-acceptance-decision-support-option-1-recommendation.md` is
+  **governance-track** content (PO/ARB acceptance decision support) sitting inside the
+  KnowledgeOS brainstorming corpus. Kept top-level and tagged; relocation to a
+  governance/session home is left to the human — matching the treatment of the
+  first-batch entries #24/#25.
+- Entries 5 and 6 are **experiment/verification records**, not lenses. Whether the
+  semantic-compiler experiment thread becomes a governed artifact (its own experiment
+  record under `docs/knowledgeos/`) is an **open question for the human**; no such
+  classification is asserted here.
+- **No file's content was edited.** Renames only. `timestamp_source: filesystem-mtime`
+  for every entry in this batch.
