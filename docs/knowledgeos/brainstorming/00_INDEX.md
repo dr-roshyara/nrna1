@@ -212,3 +212,13 @@ behind the semantic-interpretation boundary — subordinate to
 
 **Pilot conclusion (verbatim, §18 of the report):** apparatus **VALID** · research question
 **REQUIRES REFINEMENT** · **no winner selected, no architecture decision made**.
+
+---
+
+# 2026-08-22 fourth intake (1 file — rename only, mtime-stamped)
+
+| # | Old name | Renamed file | mtime | Size | Note (descriptive only) |
+|---|---|---|---|---|---|
+| 1 | `Not yet. **I would not start implementin` | `_misc/20260822-174800-kernel-implementation-timing-gates-k0-k1-k2-language-choice.md` | 2026-08-22 17:48:00 | 36893 | 📋 **sequencing / implementation-timing note** — *"I would not start implementing the KnowledgeOS kernel while the SNF semantic contract is still experimentally unresolved"* · gates **K0** (research apparatus valid) · **K1** (semantic boundary sufficiently stable) · **K2** (kernel constitution) · language-choice discussion · **EKS/PKS as archaeological evidence for the kernel, not the kernel** · roadmap. Kept in `_misc/` where it was placed; relocation left to the human (house rule) |
+
+**Rename only — content untouched, nothing deleted.** **Not an architectural act:** v1.1 is untouched (the recorded stopping point stands — no v1.1 modification, no SNF-competition implementation), register 25+4 unchanged · Constitution FROZEN · research CLOSED · v0.4 / OQ-4 unauthorized.
