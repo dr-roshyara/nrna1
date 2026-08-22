@@ -1,6 +1,20 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **AH-1…AH-5 DECISION SUPPORT** block is newest: five-hypothesis decision-support document delivered · all decision fields ⬜ OPEN · no authorization conveyed · next = HPA rulings on AH-1…AH-5 (+ OQ-2/3/5 · F-1…F-5 at its discretion); the P5 acceptance block below stands as the closure record)*
+**Updated:** 2026-08-22 *(additive — the **AH-1…AH-5 HPA DECISION RECORD** block is newest: five proposed rulings recorded (AH-1 ACCEPT · AH-2 REJECT/CORROBORATION · AH-3 ACCEPT · AH-4 ACCEPT AS GOVERNANCE · AH-5 DEFER) · acceptance fields ⬜ OPEN — none final until the HPA confirms · no act authorized · next = the HPA's explicit confirmation, then authorized Port Contract / governance acts; the decision-support block below stands as the analysis basis)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **AH-1…AH-5 HPA DECISION RECORD — *DELIVERED · PROPOSED · NON-AUTHORITATIVE · FIVE PROPOSED RULINGS · ACCEPTANCE FIELDS ⬜ OPEN · NO RULING FINAL UNTIL THE HPA CONFIRMS · NO ACT AUTHORIZED*: the HPA's own five proposed rulings on the P5 architectural hypotheses are recorded for explicit acceptance — AH-1 ACCEPT (Port Contract declared-insufficiency vocabulary) · AH-2 REJECT/RECORD AS CORROBORATION · AH-3 ACCEPT (composable with AH-1) · AH-4 ACCEPT AS GOVERNANCE (no architecture change) · AH-5 DEFER — Claude decides nothing**)
+
+**Commission → delivery:** the HPA directed the immediate next act — *"prepare an **HPA Decision Record for AH-1…AH-5**, but **do not let Claude make the decisions**. It should present the five proposed rulings and their consequences, then stop for your explicit acceptance."* Delivered: `docs/knowledgeos/reviews/20260822-2341-KOS-EP01-AH1-5-HPA-decision-record.md`. The proposals are the **HPA's own** reading, recorded verbatim-in-substance; the record presents ruling · reading · evidence · consequence · not-authorized · and an **⬜ OPEN acceptance field** for each.
+
+**The five proposed rulings (HPA's own, PENDING confirmation):** **AH-1 ACCEPT** — strongest finding; v1.1 already distinguishes UNKNOWN/ABSENT/FALSE in the domain (§9 · Article 9), but the Port Contract has one generic "declared insufficiency" → refine it to distinguish *"no filler"* from *"filler unknown"* (resolves OQ-1) · **AH-2 REJECT / RECORD AS CORROBORATION** — already fully protected (INV-KOS-IDENTITY-001 · Port Q8); 0.587 is corroboration, no change · **AH-3 ACCEPT** — *cannot parse the word* vs *cannot decide the reading* as distinct declarations; related to AH-1, no domain change · **AH-4 ACCEPT AS GOVERNANCE** — any future promotion argument must name its metric version; research-governance rule, not architecture · **AH-5 DEFER** — P5 explicitly cannot settle asserted-vs-possible; stays open (OQ-3 territory · DEF-4).
+
+**The expected outcome (HPA):** **probably NO v1.2** — v1.1 already has the correct domain-side semantics and the Constitution prevents the collapse; the likely refinement is **at the Expression↔Meaning Port Contract, not the Kernel/domain model**. Sequence: confirm rulings → authorize the specific acts (Port Contract vocabulary refinement · governance rule) → resolve OQ-1 · OQ-2 · OQ-3 · OQ-5 · F-1…F-5 → reassess v1.1 (remains | controlled v1.2 only on material impact). **Kernel after the boundary is settled — no Kernel now.**
+
+**What the record does NOT do:** make the rulings (all ⬜ OPEN) · authorize any act (no Port Contract edit · no v1.1 edit · no v1.2 · no experiment · no Kernel) · change register 25+4 or Constitution (FROZEN) · reopen research (**OQ-4 stays unauthorized**) · promote a mechanism.
+
+**NEXT (the HPA's — NOT authorized here):** the **explicit confirmation of the five rulings** (acceptance fields in `20260822-2341`), then the authorized Port Contract vocabulary refinement / research-governance rule, then the already-waiting OQ-1 · OQ-2 · OQ-3 · OQ-5 · F-1…F-5.
 
 ---
 
