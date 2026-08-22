@@ -1,6 +1,18 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **`KOS-OPERATING-MODEL-001` GOVERNANCE ADOPTION REVIEW — START GATE REFUSAL #2 (correction author cannot be the reviewer; no governance lane)** block is the newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **`KOS-OPERATING-MODEL-001` AMENDMENT-001 — AST-019 `ActivateCommissionedFreshSession` IMPLEMENTED** block is the newest; the START GATE REFUSAL #2/#1 blocks below stand as history — the gap this amendment closes)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **`KOS-OPERATING-MODEL-001` — AMENDMENT-001 · capability **`AST-019` `ActivateCommissionedFreshSession` IMPLEMENTED** — EP-01 plan approved → RED (GO-01..GO-25 by absence) → GREEN (25 passed / 270 assertions) · full WorkflowEngine regression 147 passed (1577) · registry `adoption: verify` · ⛔ NOT VERIFIED (producer bar) · ⛔ NOT ADOPTED · ⛔ NOT AUTHORIZED — the human order *"Start the Governance adoption review of KOS-OPERATING-MODEL-001"* now has a lawful execution path (GO-05/GO-01)** — supersedes nothing; the START GATE REFUSAL #2 / #1 blocks below stand as history (the gap this amendment closes); the separate `KOS-NEXT-ACTOR-ORCHESTRATION-001` / `AST-018` slice is PRESERVED)
+
+| | |
+|---|---|
+| 🎬 **Commission** | PO/ARB follow-up amendment 2026-08-22 (`G-KOS-OPERATING-MODEL-001-AMENDMENT-001`): *"HUMAN GIVES BUSINESS ORDER → GOVERNANCE ENGINEER LISTENS → ANALYZES HONESTLY → DETERMINES LAWFUL EXECUTION PATH → CURRENT/FRESH SESSION BINDS ITS REAL RUNTIME IDENTITY TO THE REQUESTED RESPONSIBILITY → CANONICAL WORKFLOW MECHANICS → GOVERNANCE ENGINEER ACTIVE → HUMAN ORDER EXECUTED."* **Success criterion (§4):** *"Start the Governance adoption review of KOS-OPERATING-MODEL-001"* must NOT produce *"no lane therefore refuse."* |
+| 🔎 **Corrected invariant** | *"A session must never register itself"* is **too strong** → **a fresh session may register itself only when the desired role and work context are already established by the human's business instruction or an existing governed commission.** **Unified invariant:** *"Human declares intended responsibility; runtime declares process identity; the governed bootstrap binds the two."* **A fresh session may self-bind identity; it may never self-choose role, scope, work item, or authority.** |
+| ✅ **Delivered** | **AST-019** `.claude/scripts/activate-commissioned-fresh-session.php` (`activate` write + `check` read-only): V1–V10 fail-closed validation → commission resolution (AST-018 `next-actor`, read-only — never `appoint`) → **the ONLY write REGISTER→HANDOFF→START through AST-015 `append`** (recordedBy governance/governance/human; G-3). Identity from `CLAUDE_CODE_SESSION_ID` env ONLY. Exit 0/64/65. GO-01..GO-25 GREEN (25 passed / 270 assertions); full WorkflowEngine regression **147 passed (1577)** (baseline 122 + 25); AST-015/016/017/018 + `operating-model.php` **byte-unchanged**. |
+| 📜 **Docs** | Plan `docs/plans/20260822-2309-activate-commissioned-fresh-session-plan.md` (EP-01 approved) · L1 amendment `docs/knowledgeos/reviews/…-AMENDMENT-001-ActivateCommissionedFreshSession.md` · dev guide `developer_guide/ai_platform/06_…md` + `00_index.md` row 06 · completion report `…-AMENDMENT-001-session-completion.md` · registry AST-019 `adoption: verify` (registry-first: planned BEFORE implementation). |
+| ✅ **Status + NEXT** | **IMPLEMENTED ≠ VERIFIED ≠ ADOPTED ≠ AUTHORIZED.** Slice closed; **this session does not verify/adopt its own output (R-34/EP-02).** **NEXT: (1) PO/ARB appoints a fresh INDEPENDENT verifier** for AST-019; **(2) the Governance adoption review of the amended operating model** — a fresh eligible governance session binds via **AST-019 itself** → performs the review → STOP → **PO/ARB adoption decision (NOT automatic)**. ⛔ no adoption by any process · no claim of authorization · no AST-015/016/017/018 change · no EKS-07. |
 
 ---
 
