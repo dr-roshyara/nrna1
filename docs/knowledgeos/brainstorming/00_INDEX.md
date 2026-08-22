@@ -186,3 +186,29 @@ closure are unchanged. Register 25+4 unchanged · P4 gate unchanged.**
   top-level, tagged `outside candidate register`; relocation to a governance/session home
   is left to the human (matching the house treatment of PublicDigit off-topic files).
 - **No file's content was edited.** Renames only (mtime timestamps). `timestamp_source: filesystem-mtime` on every file.
+
+---
+
+# 2026-08-22 SNF research simulation — Phase 1 pilot (experiment record)
+
+> **Commission:** *KOS-SNF Research Simulation Refinement / Phase 1* (HPA, 2026-08-22) —
+> repair the experimental apparatus, run a gated 100-case pilot, and STOP before any
+> architecture action. Full record: `KOS-SNF-RESEARCH-REFINEMENT-001.md` (this folder).
+
+This section is **NOT an intake batch** and is **NOT part of the frozen classifier**. It is
+an **experiment record**: new research-produced artifacts (report + corpus + result/metrics
+JSONs + reproducible runner). **No admissions · no new lens rows · register 25+4 unchanged ·
+P4 gate unchanged · KnowledgeOS architecture untouched.** SNF stays a candidate mechanism set
+behind the semantic-interpretation boundary — subordinate to
+`candidate → measurement → evidence → Port Contract/Governance`.
+
+| Artifact | Role | sha256 (prefix) |
+|---|---|---|
+| `KOS-SNF-RESEARCH-REFINEMENT-001.md` | 18-section report with PILOT COMPLETE block | — |
+| `KOS-SNF-pilot-100.json` | hand-written gold corpus (100 cases, 20×5) | `dd03c0baeaea` |
+| `KOS-SNF-pilot-results.json` | per-case/per-mechanism verdicts + consensus | `1f639703d21a` |
+| `KOS-SNF-pilot-metrics.json` | measurement vector + abstention + calibration | `7170e2cd6aec` |
+| `scripts/snf-research/run-pilot.py` | reproducible runner (seeded, byte-identical) | — |
+
+**Pilot conclusion (verbatim, §18 of the report):** apparatus **VALID** · research question
+**REQUIRES REFINEMENT** · **no winner selected, no architecture decision made**.

@@ -1,6 +1,20 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **HPA ACCEPTANCE OF THE POST-RESEARCH REVIEW** block is newest and supersedes the Post-Research review block below it: **NO CHANGE ACCEPTED** — *"the research has become more disciplined, not a reason to absorb the research into the architecture"* · five separations affirmed (SNF not core · no SNF-C/SNF-E choice yet · measurement vector · disagreement stays information · aggregate remains authority boundary) · Quality Gates 2 + 8 polarity errors CORRECTED per HPA direction · SNF formula refinement STOPPED · competition NOT IMPLEMENTED · next = HPA decision on Port Contract / LA Review 01 · register 25+4 unchanged · Constitution FROZEN · research CLOSED)*
+**Updated:** 2026-08-22 *(additive — the **KOS-SNF RESEARCH SIMULATION PHASE 1 — PILOT COMPLETE** block is newest: corrected apparatus · gated 100-case pilot · **apparatus VALID · research question REQUIRES REFINEMENT · no winner selected · no architecture change** · SNF stays a candidate mechanism set behind the semantic-interpretation boundary; supersedes nothing above it — the Post-Research Review acceptance still stands)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **KOS-SNF RESEARCH SIMULATION PHASE 1 — *PILOT COMPLETE*: corrected apparatus · gated 100-case pilot · apparatus VALID · question REQUIRES REFINEMENT · no winner · no architecture change · SNF stays a candidate mechanism set behind the semantic-interpretation boundary**)
+
+**Commission:** HPA background job — *repair the experimental apparatus before interpreting the measurement*; run a gated 100-case pilot, then STOP. Full record: `docs/knowledgeos/brainstorming/KOS-SNF-RESEARCH-REFINEMENT-001.md` (18 sections, ends with the **PILOT COMPLETE** block). This is the **empirical mechanism-comparison experiment reopened in research-simulation form** — consistent with the Post-Research Review's *"after ratification, SNF research deliberately reopens as an empirical experiment"*; it makes **no architecture claim**.
+
+**What the corrected apparatus is:** KOS-SNF-IR v0.1 (research-only representation; identity authority explicitly absent) · d_SNF two-tier pre-metric with a hard **8/8 sanity gate** (inversion 0.850, negation 0.650 decisively separated) · six true black-box mechanisms A/B/C/D/E/N under the identical contract `interpret(expression, context) -> CandidateSet` (SNF-C = Pāṇinian kāraka lens; SNF-E = veto ensemble, **no weighted average**; SNF-N = null baseline) · 100-case hand-gold corpus (20×5) whose gold is **never** passed to a mechanism · deterministic, seeded, byte-reproducible runner. Three apparatus defects were fixed **before** interpreting (SNF-D plural-registry · warranted-abstention tokenization · consensus gold-verdict via declared relation) — no result was read from a broken apparatus.
+
+**Headline pilot results:** pairwise false-consensus rate 0.319 — **0% on same-meaning categories, 100% on distinct/ambiguous/adversarial** (agreement is informative but never infallible) · strict consensus correctness 0.60 (5 events, 2 false, both ambiguous over-commitment) · **only SNF-D abstains** (precision 1.0, recall 0.60) · SNF-N at chance (C=3/80, Brier 0.25) → **abstention and convergence carry information** · SNF-E worse-calibrated than its members (Brier 0.052 vs A 0.0225) · overcommitment dominant on ambiguous cases · inter-mechanism κ=0.259. **These are statements about the toy world, not about KnowledgeOS** (report §16 limits).
+
+**The verdict (report §18):** apparatus **VALID** · research question **REQUIRES REFINEMENT** · **NO winner selected · NO Port Contract / Governance / Constitution / identity-authority change · NO SNF formula finalized · STOP honored.** SNF stays subordinate: `candidate → measurement → evidence → Port Contract/Governance`. Register **25+4 unchanged** · Constitution **FROZEN**.
+
+**NEXT (the HPA's — not authorized here):** decision on the next research question (report §18: 1,000-case competition · per-rule SNF-E arbitration sweep · presence-sensitivity d_SNF variant) and/or the Expression↔Meaning Port Contract / LA Review 01 (OQ-2 · OQ-3 · OQ-5 · F-1…F-5).
 
 ---
 

@@ -30,3 +30,7 @@ storage/framework/
 /.deptrac.cache
 /build/
 .claude/runtime/
+
+# Python (scripts/snf-research research runner)
+__pycache__/
+*.pyc

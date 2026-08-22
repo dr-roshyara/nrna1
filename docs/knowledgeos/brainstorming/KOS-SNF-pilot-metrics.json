@@ -1,0 +1,950 @@
+{
+  "meta": {
+    "experiment": "KOS-SNF research simulation \u2014 Phase 1 pilot (100 cases)",
+    "seed": 20260822,
+    "corpus": "KOS-SNF-pilot-100.json",
+    "corpus_sha256_prefix": "1f812a25ad48",
+    "thresholds": {
+      "tau_eval": 0.4,
+      "tau_amb": 0.55,
+      "tau_conv": 0.4
+    },
+    "note": "Gold was never passed to a mechanism. Mechanisms received only (expression, context). Identity authority is absent: no score here confers Identity(E, theta)."
+  },
+  "measurement_vector": {
+    "mechanisms": {
+      "SNF-A": {
+        "C": 80,
+        "NC": 0,
+        "ABST_pair": 0,
+        "T": 1.0,
+        "R": 1.0,
+        "A": 0.0,
+        "H": 0.06,
+        "pair_coverage": 1.0,
+        "calibration": {
+          "brier": 0.0225,
+          "ece": 0.15,
+          "n": 80,
+          "reliability": [
+            {
+              "lo": 0.0,
+              "hi": 0.1,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.1,
+              "hi": 0.2,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.2,
+              "hi": 0.3,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.3,
+              "hi": 0.4,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.4,
+              "hi": 0.5,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.5,
+              "hi": 0.6,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.6,
+              "hi": 0.7,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.7,
+              "hi": 0.8,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.8,
+              "hi": 0.9,
+              "conf": 0.85,
+              "acc": 1.0,
+              "n": 80
+            },
+            {
+              "lo": 0.9,
+              "hi": 1.0,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            }
+          ]
+        },
+        "risk_coverage": [
+          {
+            "threshold": 0.0,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.5,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.6,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.7,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.8,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.9,
+            "coverage": 0.0,
+            "accuracy": null,
+            "n": 0
+          },
+          {
+            "threshold": 0.95,
+            "coverage": 0.0,
+            "accuracy": null,
+            "n": 0
+          }
+        ]
+      },
+      "SNF-B": {
+        "C": 80,
+        "NC": 0,
+        "ABST_pair": 0,
+        "T": 1.0,
+        "R": 1.0,
+        "A": 0.0,
+        "H": 0.0,
+        "pair_coverage": 1.0,
+        "calibration": {
+          "brier": 0.04,
+          "ece": 0.2,
+          "n": 80,
+          "reliability": [
+            {
+              "lo": 0.0,
+              "hi": 0.1,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.1,
+              "hi": 0.2,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.2,
+              "hi": 0.3,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.3,
+              "hi": 0.4,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.4,
+              "hi": 0.5,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.5,
+              "hi": 0.6,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.6,
+              "hi": 0.7,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.7,
+              "hi": 0.8,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.8,
+              "hi": 0.9,
+              "conf": 0.8,
+              "acc": 1.0,
+              "n": 80
+            },
+            {
+              "lo": 0.9,
+              "hi": 1.0,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            }
+          ]
+        },
+        "risk_coverage": [
+          {
+            "threshold": 0.0,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.5,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.6,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.7,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.8,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.9,
+            "coverage": 0.0,
+            "accuracy": null,
+            "n": 0
+          },
+          {
+            "threshold": 0.95,
+            "coverage": 0.0,
+            "accuracy": null,
+            "n": 0
+          }
+        ]
+      },
+      "SNF-C": {
+        "C": 80,
+        "NC": 0,
+        "ABST_pair": 0,
+        "T": 1.0,
+        "R": 1.0,
+        "A": 0.0,
+        "H": 0.06,
+        "pair_coverage": 1.0,
+        "calibration": {
+          "brier": 0.04,
+          "ece": 0.2,
+          "n": 80,
+          "reliability": [
+            {
+              "lo": 0.0,
+              "hi": 0.1,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.1,
+              "hi": 0.2,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.2,
+              "hi": 0.3,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.3,
+              "hi": 0.4,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.4,
+              "hi": 0.5,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.5,
+              "hi": 0.6,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.6,
+              "hi": 0.7,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.7,
+              "hi": 0.8,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.8,
+              "hi": 0.9,
+              "conf": 0.8,
+              "acc": 1.0,
+              "n": 80
+            },
+            {
+              "lo": 0.9,
+              "hi": 1.0,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            }
+          ]
+        },
+        "risk_coverage": [
+          {
+            "threshold": 0.0,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.5,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.6,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.7,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.8,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.9,
+            "coverage": 0.0,
+            "accuracy": null,
+            "n": 0
+          },
+          {
+            "threshold": 0.95,
+            "coverage": 0.0,
+            "accuracy": null,
+            "n": 0
+          }
+        ]
+      },
+      "SNF-D": {
+        "C": 57,
+        "NC": 0,
+        "ABST_pair": 23,
+        "T": 0.75,
+        "R": 1.0,
+        "A": 0.26,
+        "H": 0.0,
+        "pair_coverage": 0.7125,
+        "calibration": {
+          "brier": 0.0025,
+          "ece": 0.05,
+          "n": 57,
+          "reliability": [
+            {
+              "lo": 0.0,
+              "hi": 0.1,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.1,
+              "hi": 0.2,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.2,
+              "hi": 0.3,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.3,
+              "hi": 0.4,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.4,
+              "hi": 0.5,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.5,
+              "hi": 0.6,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.6,
+              "hi": 0.7,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.7,
+              "hi": 0.8,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.8,
+              "hi": 0.9,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.9,
+              "hi": 1.0,
+              "conf": 0.95,
+              "acc": 1.0,
+              "n": 57
+            }
+          ]
+        },
+        "risk_coverage": [
+          {
+            "threshold": 0.0,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 57
+          },
+          {
+            "threshold": 0.5,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 57
+          },
+          {
+            "threshold": 0.6,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 57
+          },
+          {
+            "threshold": 0.7,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 57
+          },
+          {
+            "threshold": 0.8,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 57
+          },
+          {
+            "threshold": 0.9,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 57
+          },
+          {
+            "threshold": 0.95,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 57
+          }
+        ]
+      },
+      "SNF-E": {
+        "C": 80,
+        "NC": 0,
+        "ABST_pair": 0,
+        "T": 1.0,
+        "R": 1.0,
+        "A": 0.0,
+        "H": 0.06,
+        "pair_coverage": 1.0,
+        "calibration": {
+          "brier": 0.052,
+          "ece": 0.2244,
+          "n": 80,
+          "reliability": [
+            {
+              "lo": 0.0,
+              "hi": 0.1,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.1,
+              "hi": 0.2,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.2,
+              "hi": 0.3,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.3,
+              "hi": 0.4,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.4,
+              "hi": 0.5,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.5,
+              "hi": 0.6,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.6,
+              "hi": 0.7,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.7,
+              "hi": 0.8,
+              "conf": 0.7152,
+              "acc": 1.0,
+              "n": 23
+            },
+            {
+              "lo": 0.8,
+              "hi": 0.9,
+              "conf": 0.8,
+              "acc": 1.0,
+              "n": 57
+            },
+            {
+              "lo": 0.9,
+              "hi": 1.0,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            }
+          ]
+        },
+        "risk_coverage": [
+          {
+            "threshold": 0.0,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.5,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.6,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.7,
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "n": 80
+          },
+          {
+            "threshold": 0.8,
+            "coverage": 0.7125,
+            "accuracy": 1.0,
+            "n": 57
+          },
+          {
+            "threshold": 0.9,
+            "coverage": 0.0,
+            "accuracy": null,
+            "n": 0
+          },
+          {
+            "threshold": 0.95,
+            "coverage": 0.0,
+            "accuracy": null,
+            "n": 0
+          }
+        ]
+      },
+      "SNF-N": {
+        "C": 3,
+        "NC": 77,
+        "ABST_pair": 0,
+        "T": 0.05,
+        "R": 0.0375,
+        "A": 0.0,
+        "H": 0.0,
+        "pair_coverage": 1.0,
+        "calibration": {
+          "brier": 0.25,
+          "ece": 0.4625,
+          "n": 80,
+          "reliability": [
+            {
+              "lo": 0.0,
+              "hi": 0.1,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.1,
+              "hi": 0.2,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.2,
+              "hi": 0.3,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.3,
+              "hi": 0.4,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.4,
+              "hi": 0.5,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.5,
+              "hi": 0.6,
+              "conf": 0.5,
+              "acc": 0.0375,
+              "n": 80
+            },
+            {
+              "lo": 0.6,
+              "hi": 0.7,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.7,
+              "hi": 0.8,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.8,
+              "hi": 0.9,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            },
+            {
+              "lo": 0.9,
+              "hi": 1.0,
+              "conf": 0.0,
+              "acc": 0.0,
+              "n": 0
+            }
+          ]
+        },
+        "risk_coverage": [
+          {
+            "threshold": 0.0,
+            "coverage": 1.0,
+            "accuracy": 0.0375,
+            "n": 80
+          },
+          {
+            "threshold": 0.5,
+            "coverage": 1.0,
+            "accuracy": 0.0375,
+            "n": 80
+          },
+          {
+            "threshold": 0.6,
+            "coverage": 0.0,
+            "accuracy": null,
+            "n": 0
+          },
+          {
+            "threshold": 0.7,
+            "coverage": 0.0,
+            "accuracy": null,
+            "n": 0
+          },
+          {
+            "threshold": 0.8,
+            "coverage": 0.0,
+            "accuracy": null,
+            "n": 0
+          },
+          {
+            "threshold": 0.9,
+            "coverage": 0.0,
+            "accuracy": null,
+            "n": 0
+          },
+          {
+            "threshold": 0.95,
+            "coverage": 0.0,
+            "accuracy": null,
+            "n": 0
+          }
+        ]
+      }
+    },
+    "inter_mechanism_kappa": 0.2589,
+    "consensus": {
+      "events": 5,
+      "true_consensus": 3,
+      "false_consensus": 2,
+      "consensus_correctness_rate": 0.6,
+      "fc_by_category": {
+        "adversarial": 0,
+        "ambiguous": 2,
+        "distinct": 0,
+        "equivalent_or_transformation": 0
+      },
+      "adversarial_fc_rate": 0.0
+    },
+    "consensus_pairwise": {
+      "all": {
+        "agreeing": 551,
+        "false": 176,
+        "false_rate": 0.3194
+      },
+      "equivalent": {
+        "agreeing": 190,
+        "false": 0,
+        "false_rate": 0.0
+      },
+      "distinct": {
+        "agreeing": 16,
+        "false": 16,
+        "false_rate": 1.0
+      },
+      "ambiguous": {
+        "agreeing": 144,
+        "false": 144,
+        "false_rate": 1.0
+      },
+      "transformation": {
+        "agreeing": 185,
+        "false": 0,
+        "false_rate": 0.0
+      },
+      "adversarial": {
+        "agreeing": 16,
+        "false": 16,
+        "false_rate": 1.0
+      }
+    }
+  },
+  "abstention_quality": {
+    "SNF-A": {
+      "A_appropriate": 0,
+      "A_false": 0,
+      "A_missed": 20,
+      "precision": null,
+      "recall": 0.0
+    },
+    "SNF-B": {
+      "A_appropriate": 0,
+      "A_false": 0,
+      "A_missed": 20,
+      "precision": null,
+      "recall": 0.0
+    },
+    "SNF-C": {
+      "A_appropriate": 0,
+      "A_false": 0,
+      "A_missed": 20,
+      "precision": null,
+      "recall": 0.0
+    },
+    "SNF-D": {
+      "A_appropriate": 26,
+      "A_false": 0,
+      "A_missed": 17,
+      "precision": 1.0,
+      "recall": 0.6047
+    },
+    "SNF-E": {
+      "A_appropriate": 0,
+      "A_false": 0,
+      "A_missed": 20,
+      "precision": null,
+      "recall": 0.0
+    },
+    "SNF-N": {
+      "A_appropriate": 0,
+      "A_false": 0,
+      "A_missed": 20,
+      "precision": null,
+      "recall": 0.0
+    }
+  },
+  "ambiguity_handling": {
+    "SNF-A": {
+      "n": 20,
+      "handled": 6,
+      "handled_rate": 0.3,
+      "abstained": 0,
+      "hedged": 6,
+      "overcommitted": 14,
+      "wrong": 0
+    },
+    "SNF-B": {
+      "n": 20,
+      "handled": 0,
+      "handled_rate": 0.0,
+      "abstained": 0,
+      "hedged": 0,
+      "overcommitted": 20,
+      "wrong": 0
+    },
+    "SNF-C": {
+      "n": 20,
+      "handled": 6,
+      "handled_rate": 0.3,
+      "abstained": 0,
+      "hedged": 6,
+      "overcommitted": 14,
+      "wrong": 0
+    },
+    "SNF-D": {
+      "n": 20,
+      "handled": 3,
+      "handled_rate": 0.15,
+      "abstained": 3,
+      "hedged": 0,
+      "overcommitted": 17,
+      "wrong": 0
+    },
+    "SNF-E": {
+      "n": 20,
+      "handled": 6,
+      "handled_rate": 0.3,
+      "abstained": 0,
+      "hedged": 6,
+      "overcommitted": 14,
+      "wrong": 0
+    },
+    "SNF-N": {
+      "n": 20,
+      "handled": 0,
+      "handled_rate": 0.0,
+      "abstained": 0,
+      "hedged": 0,
+      "overcommitted": 2,
+      "wrong": 18
+    }
+  }
+}
