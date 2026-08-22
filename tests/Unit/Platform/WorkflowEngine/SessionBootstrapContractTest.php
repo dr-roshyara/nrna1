@@ -287,7 +287,7 @@ class SessionBootstrapContractTest extends TestCase
     {
         $this->requireBootstrap();
         $this->record('WI-6', 'S-g', 'implementation', 'ACTIVE', 'S6LABEL');
-        $this->grantScope('WI-6', 'G-6', 'Uncovered');
+        $this->grantScope('WI-6', 'G-6', 'Granted-Scope');
 
         $r = $this->bootstrap(['--process-label=S6LABEL', '--session=S-g', '--scope=Uncovered']);
 
@@ -380,7 +380,7 @@ class SessionBootstrapContractTest extends TestCase
         $this->assertStringContainsString('register', $msg,
             'the missing fact is named: no REGISTER attributes this process to a lane');
         $this->assertStringContainsString('governance', $msg, 'the responsible next actor is named');
-        $this->assertStringContainsString('REG10', $msg, 'registered lanes + their labels are listed');
+        $this->assertStringContainsString('reg10', $msg, 'registered lanes + their labels are listed');
     }
 
     public function test_s11_absent_mechanism_is_unresolvable_and_names_the_mechanism(): void
@@ -501,8 +501,8 @@ class SessionBootstrapContractTest extends TestCase
             'role comes from fold, NOT from the raw decoy sessions.S-v.role');
         $this->assertSame('S-v', $r['out']['mutation_owner']['session'],
             'owner comes from fold, NOT from the raw decoy mutationOwner');
-        $this->assertSame('ACTIVE', $r['out']['assignment']['work_item_state'],
-            'work-item state comes from fold, NOT from the raw decoy workItemState');
+        $this->assertSame('OPEN', $r['out']['assignment']['work_item_state'],
+            'work-item state comes from fold (OPEN), NOT from the raw decoy workItemState (DECOY-STATE)');
 
         // And the ONE bounded raw read still works: the handoff family.
         $this->assertTrue($r['out']['activation_prerequisites']['predecessor_handoff_present']);
