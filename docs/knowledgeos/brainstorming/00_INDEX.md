@@ -103,3 +103,86 @@ architecture · write the final architecture documents) · approved plan (P1 pha
 `.claude/plans/starry-jumping-tower.md` → canonical home
 `docs/plans/20260821-<HHMM>-knowledgeos-brainstorming-sort-and-final-architecture-plan.md`
 · rename mapping + D-2 metadata schema per plan D-1…D-5 · Review-Set pointer per plan D-6/D-7.
+
+---
+
+# 2026-08-22 intake batch (27 files — rename + integration assessment)
+
+> **Commission:** Human Principal Architect, 2026-08-22 — *"now read untracked files in
+> …/docs/knowledgeos/brainstorming/. Check if they are integrated as possible candidates
+> in our research of knowledgeos. If not integrated, then integrate them. Rename them
+> based on their content. Make a timestamp of the saved time and use it in the name."*
+> Recorded in full: `docs/knowledgeos/reviews/20260822-1430-KOS-BRAINSTORMING-INTAKE-INTEGRATION-ASSESSMENT.md`
+> (governed review record — §BS in `.claude/sessions/2026-08-22.md`, commit `________`).
+
+## Why this section exists
+
+The 2026-08-21 sort renamed the **tracked** corpus (the 27 entries above). This batch is
+the **27 files left untracked after the Research-Phase Closure (`20260822-1028`)** — raw
+AI-session working notes produced 2026-08-22 10:16–12:58 (plus one 2026-08-19 orphan).
+Per the HPA commission they are renamed to the house convention using each file's
+**filesystem mtime** (the saved time) as the timestamp. Content was read in full for
+each file; the integration assessment is documented in the review record — **every
+lens-bearing file routes to an already-admitted source / record / character section
+(confirmation, never a new row); the frozen classifier and the standing research
+closure are unchanged. Register 25+4 unchanged · P4 gate unchanged.**
+
+## The 27 files (old → new, mtime-stamped)
+
+| # | Old name (chat-style) | Renamed file | Detected timestamp (mtime) | Size | Integration classification |
+|---|---|---|---|---|---|
+| 1 | `# Gaṇeśa Wisdom Architecture: Core Compo` | `20260822-114753-ganesha-wisdom-architecture-core-components.md` | 2026-08-22 11:47:53 | 18428 | ✅ confirms — character Wisdom/Gaṇeśa · mechanism candidates |
+| 2 | `# Sanskrit-Inspired Semantic Language fo` | `20260822-125831-sanskrit-inspired-semantic-language-artha-research-extraction.md` | 2026-08-22 12:58:31 | 61318 | ✅ confirms — UM-46/47 evidence base · mechanism candidates (Artha/SNF/Semantic Invariance) |
+| 3 | `# Wisdom Transformation and Epistemic Hu.md` | `20260822-114551-wisdom-transformation-epistemic-humility-research-extraction.md` | 2026-08-22 11:45:51 | 25202 | ✅ confirms — character Wisdom layer · WISDOM-MECH-001..006 |
+| 4 | `Here is a deeper exploration of those tw` | `20260822-120635-math-music-hofstadter-fourier-harmonics-of-meaning.md` | 2026-08-22 12:06:35 | 10527 | ✅ confirms — Gödel/Hofstadter family deepening (no admission) |
+| 5 | `I have reviewed this Gaṇeśa Wisdom Archi` | `20260822-113910-ganesha-wisdom-integration-layer-review.md` | 2026-08-22 11:39:10 | 8384 | ✅ confirms — character Wisdom/Gaṇeśa |
+| 6 | `I read the uploaded material. This is ac` | `20260822-120638-knowledgeos-math-music-lens-extraction-harmonic-knowledge.md` | 2026-08-22 12:06:38 | 8092 | ✅ confirms — Gödel/Hofstadter family deepening · Harmonic Knowledge (mechanism) |
+| 7 | `I reviewed the **Vedic Sanskrit Grammar*.md` | `20260822-125015-vedic-sanskrit-grammar-v2-word-order-semantic-normal-form.md` | 2026-08-22 12:50:15 | 23095 | ✅ confirms — UM-46/47 draft · word-order/SNF |
+| 8 | `I reviewed the follow-up record. This is` | `20260822-122523-godel-not-architecture-formal-justification-boundaries.md` | 2026-08-22 12:25:23 | 6376 | ✅ confirms — Gödel family (UM-41/42) |
+| 9 | `I reviewed the uploaded **“Logic in Clas.md` | `20260822-122537-logic-in-classical-indian-philosophy-review-nyaya-trirupa.md` | 2026-08-22 12:25:37 | 6217 | ✅ confirms — Nyāya/Tarka family · tri-rūpa-hetu · Avidyā Detection |
+| 10 | `I understand the correction. You are **n` | `20260822-111626-leonardo-contextual-completeness-lens.md` | 2026-08-22 11:16:26 | 7068 | ✅ confirms — character Leonardo · Contextual Completeness meta-principle |
+| 11 | `Logic in Classical Indian Philosophy.md` | `20260822-122927-logic-in-classical-indian-philosophy-sep-source.md` | 2026-08-22 12:29:27 | 104945 | ✅ confirms — Nyāya/Tarka family (SEP source doc) |
+| 12 | `This article is a very good continuation` | `20260822-115830-godel-numbering-knowledge-identity-numbers-reflection.md` | 2026-08-22 11:58:30 | 6929 | ✅ confirms — Gödel family (UM-43) · Knowledge Identity Numbers |
+| 13 | `This book is actually a very intere.md` | `20260822-101842-sakta-tantra-woodroffe-lens-extraction.md` | 2026-08-22 10:18:42 | 8069 | ✅ confirms — character Śiva-Śakti (canonical of dup pair) |
+| 14 | `This is a very important next step. Afte` | `20260822-115144-godel-truth-provability-boundary-lens.md` | 2026-08-22 11:51:44 | 7594 | ✅ confirms — Gödel family (UM-41/42) · Gödel Boundary |
+| 15 | `This is a very interesting lens because` | `20260822-112442-bala-ganesha-wisdom-engine-lens.md` | 2026-08-22 11:24:42 | 16489 | ✅ confirms — character Wisdom/Gaṇeśa · mechanism candidates |
+| 16 | `This is a very interesting next lens for` | `20260822-122930-escher-invariant-transformation-lens.md` | 2026-08-22 12:29:30 | 9003 | ✅ confirms — Escher lens (UM-44) |
+| 17 | `This is a very interesting transition po` | `20260822-110850-moksha-lens-state-transformation-of-knower.md` | 2026-08-22 11:08:50 | 10273 | ✅ confirms — §BK/UM-40 (deeper pass, no admission) |
+| 18 | `This is actually the **missing half** of` | `20260822-105921-negative-epistemology-what-knowledgeos-is-not.md` | 2026-08-22 10:59:21 | 8966 | ✅ confirms — §BI/UM-38 (negative epistemology) |
+| 19 | `This question goes deeper than the previ` | `20260822-111434-shiva-shakti-unity-through-manifestation-convergence.md` | 2026-08-22 11:14:34 | 9558 | ✅ confirms — character Śiva-Śakti · Unity Through Manifestation |
+| 20 | `Yes. I will review the whole KnowledgeOS` | `20260822-112804-knowledgeos-consolidation-review-character-synthesis.md` | 2026-08-22 11:28:04 | 9416 | ✅ confirms — character synthesis (UM-30) |
+| 21 | `Yes. Sanskrit grammar is actually one of` | `20260822-124229-sanskrit-grammar-v1-dhatu-transformation-lens.md` | 2026-08-22 12:42:29 | 18483 | ✅ confirms — UM-45 draft (Sanskrit grammar v1) |
+| 22 | `Yes. This book is actually a very intere` | `20260822-101651-sakta-tantra-woodroffe-lens-extraction-duplicate.md` | 2026-08-22 10:16:51 | 8069 | ⩲ **duplicate of #13** (byte-identical) — preserved, no deletion |
+| 23 | `Yes. This is actually a very interesting` | `20260822-105719-quranic-epistemology-lens-al-haqq-isnad.md` | 2026-08-22 10:57:19 | 9753 | ✅ confirms — §BH/UM-37 (Quranic, admitted) |
+| 24 | `Yes.md` | `20260819-104748-ai-engineering-lifecycle-five-responsibilities-governance.md` | 2026-08-19 10:47:48 | 12452 | ⛔ **not a KnowledgeOS candidate** — AIP governance-track session material (five responsibilities · workflow state machine · ADR-AIP-04), outside the research intake |
+| 25 | `You are resuming the already authorized .md` | `20260822-103624-aip-s5-review-lane-instruction-vedic-zero-lens.md` | 2026-08-22 10:36:24 | 9013 | ⛔ part (a) **not a candidate** — S5 review-lane operational instruction (KOS-AIP-GOV-STATE-DURABILITY-ADR); ✅ part (b) confirms — Z-KOS-001 (Vedic Zero lens) |
+| 26 | `bible valuable next lens becaus` | `20260822-110210-biblical-explanation-architecture-lens.md` | 2026-08-22 11:02:10 | 11042 | ✅ confirms — §BJ/UM-39 (Biblical, admitted) |
+| 27 | `kashmiri shaivism.md` | `20260822-101729-kashmiri-shaivism-prakasa-vimarsa-lens.md` | 2026-08-22 10:17:29 | 20074 | ✅ confirms — character Śiva-Śakti/Tripuṭī · H-KOS-Agent-001 |
+
+**Count:** 27/27 mapped ✓ (all top-level; no `_misc/` relocation for this batch).
+
+## Intake duplicate pair (both preserved — nothing deleted)
+
+| Pair | A | B | Relationship | Canonical |
+|---|---|---|---|---|
+| #1 | `20260822-101842-sakta-tantra-woodroffe-lens-extraction.md` | `20260822-101651-sakta-tantra-woodroffe-lens-extraction-duplicate.md` | **byte-identical** | A |
+
+## Classification summary (frozen classifier · research closure unchanged)
+
+- **24 lens-bearing files** → confirmation routing to existing admitted sources / records /
+  character sections (Gödel family · Sanskrit family · Nyāya/Tarka family · negative
+  epistemology · Moksha · Quranic · Biblical · Escher · Kashmir Śaivism · Gaṇeśa/Wisdom ·
+  Śiva-Śakti · Leonardo · consolidation · Zero). **No new rows · no admissions · register 25+4 unchanged.**
+- **1 exact duplicate** (#22 = #13) — preserved per house rule (nothing deleted).
+- **2 files outside the candidate register** (#24 AIP governance lifecycle · #25(a) S5 review
+  lane) — operational/session material, not KnowledgeOS research candidates; renamed by
+  content and tagged, relocation left to the human (house precedent: `delegation-map`, `Yes.md` → `election-only-mode`).
+
+## Flagged for the human
+
+- `20260819-104748-ai-engineering-lifecycle-five-responsibilities-governance.md` and
+  `20260822-103624-aip-s5-review-lane-instruction-vedic-zero-lens.md` are **governance-track /
+  session** content sitting inside the KnowledgeOS brainstorming corpus. They are kept
+  top-level, tagged `outside candidate register`; relocation to a governance/session home
+  is left to the human (matching the house treatment of PublicDigit off-topic files).
+- **No file's content was edited.** Renames only (mtime timestamps). `timestamp_source: filesystem-mtime` on every file.
