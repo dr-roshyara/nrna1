@@ -11,7 +11,7 @@
 | **Purpose** | State the strategic character of KnowledgeOS as a constitutional epistemic system — the prose culmination of all research lenses analysed (EKS/PKS/AIP archaeology · epistemic systems · Vedanta/Jñāna · Vāṇī · Zero · topology · logic · TMS/AGM · contradiction handling · inference theory) |
 | **Kernel Status** | ⛔ **Does not define kernel architecture, data model, or implementation** |
 | **Rule obeyed** | ⛔ **No promotion**: this is a *character statement*, not an invariant map. Nothing here is adopted, nothing is SHALL, nothing changes the register. The **Constitutional Invariant Map v1.0** remains the P4 deliverable, with evidence-column discipline. Every point reconciles to an already-registered candidate (§14) — the character introduces **no new candidate, no new dimension, no new forbidden collapse**. |
-| **Traceability** | HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35 + UM-36 + UM-37 + UM-38 + UM-39 + UM-40 + UM-41 + UM-42 + UM-43) — recorded §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH + §AI + §AJ + §AK + §AL + §AM + §AN + §AO + §AP in `.claude/sessions/2026-08-22.md` · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH + AI + AJ + AK + AL + AM + AN + AO + AP) · placement derived `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) |
+| **Traceability** | HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35 + UM-36 + UM-37 + UM-38 + UM-39 + UM-40 + UM-41 + UM-42 + UM-43 + UM-44) — recorded §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH + §AI + §AJ + §AK + §AL + §AM + §AN + §AO + §AP + §AQ in `.claude/sessions/2026-08-22.md` · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH + AI + AJ + AK + AL + AM + AN + AO + AP + AQ) · placement derived `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) |
 
 ---
 
@@ -563,7 +563,7 @@ With **H-KOS-Agent-001** and the **Kernel-vs-Engine** separation, the character 
 
 ---
 
-**Traceability:** HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35 + UM-36 + UM-37 + UM-38 + UM-39 + UM-40 + UM-41 + UM-42 + UM-43) · recorded `.claude/sessions/2026-08-22.md` §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH + §AI + §AJ + §AK + §AL + §AM + §AN + §AO + §AP · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH + AI + AJ + AK + AL + AM + AN + AO + AP) · placement derived `--scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) · house naming `KnowledgeOS_*` (precedent: `KnowledgeOS_Conceptual_Foundation.md`, `KnowledgeOS_Epistemic_Control_Systems_Comparison.md`, `KnowledgeOS_Vedanta_Pramana_Lens.md`). All study outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.
+**Traceability:** HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35 + UM-36 + UM-37 + UM-38 + UM-39 + UM-40 + UM-41 + UM-42 + UM-43 + UM-44) · recorded `.claude/sessions/2026-08-22.md` §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH + §AI + §AJ + §AK + §AL + §AM + §AN + §AO + §AP + §AQ · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH + AI + AJ + AK + AL + AM + AN + AO + AP + AQ) · placement derived `--scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) · house naming `KnowledgeOS_*` (precedent: `KnowledgeOS_Conceptual_Foundation.md`, `KnowledgeOS_Epistemic_Control_Systems_Comparison.md`, `KnowledgeOS_Vedanta_Pramana_Lens.md`). All study outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.
 
 ---
 
@@ -975,3 +975,32 @@ Register: **25 candidates + 4 Established (UNCHANGED)** — EIGHTH consecutive z
 **Register (UNCHANGED: 25 candidates + 4 Established).** The synthesis lands all content on registered rows — **the register survives its final synthesis (the certification)**. New P4 material: the synthesis essence (head 43) · the 12-principle table · the six-layer model · the what-it-is-not taxonomy · the epistemic-hypergraph internal model · the Constitution v1.0 scope.
 
 **The KnowledgeOS Constitution v1.0 = the study's destination artifact (gate note).** The HPA proposes it as "the next logical step" (10 sections: Mission · Ontology · Kernel invariants · Knowledge lifecycle · Reasoning lifecycle · Agent interaction · Storage model · Governance model · AI integration · Formal architecture). ⚠️ Its section 3 "Kernel invariants" IS the P4 Map's content, and sections 7–10 contain **kernel-level commitments** the frozen sequence reserves for step ⑤. **Positioned correctly as the END artifact of the pipeline — P4 Map → P5 (domain-independence) → kernel decision → Constitution v1.0 — NOT a P4-phase deliverable, NOT a P4 gate-opening.** ⛔ Gate unchanged: P4 CLOSED until the corrected-P3 (AIP Stage-3) re-review ruling.
+
+---
+
+# §31 BOUNDARY DEFINITION — what KnowledgeOS deliberately refuses to be (HPA, UM-44) — identity completed (essence + boundary)
+
+**The boundary definition (HPA).** *"A constitution is not only a list of rights; it is also a list of forbidden interpretations."* KnowledgeOS becomes clearer — and architectures become stable — through identity by refusal. Ten non-identities complete the identity: positive essence (§30, head 43) + negative boundary (§31).
+
+**⚠️ The ten non-identities — ALL corroborate registered material (zero new invariants):**
+
+| Non-identity | Maps onto | Verdict |
+|---|---|---|
+| NOT an LLM — "What is justified to believe?" vs "What is the most likely answer?" | §16/§24 kernel-vs-engine + Validation Layer + Pramāṇa source-role separation | corroborates |
+| NOT a knowledge base — claims carry evidence/authority/context/reasoning/temporal/confidence/history | **H-KOS-EvidenceAuthenticity-001** + **INV-KOS-Pramana-001** + KnowledgeAtom/Claim record | corroborates |
+| NOT a search engine — "find justified understanding" vs "find information quickly" | "not a repository/search" character + **H-ZERO-001** + **INV-KOS-Decision-001** | corroborates |
+| NOT a document system — Document/Representation/Meaning separated | **Expression≠Meaning** + Vāṇī + SemanticBoundary | direct |
+| NOT a vector database — **"similarity is not truth"** (Dog≈Wolf ≠ Dog=Wolf) | SemanticBoundary + type/identity cluster | ⭐ **named corruption target: similarity-collapse** |
+| NOT a knowledge graph — a graph stores relationships; KnowledgeOS governs them | **H-KOS-Relation-001** + kernel/engine governance + hypergraph model | corroborates |
+| NOT a truth oracle — "I preserve the strongest justified knowledge available" | **H-ZERO-001** + "does not store truth" + fallibilism | corroborates |
+| NOT an autonomous decision maker — Knowledge \| Decision separation | **INV-KOS-Decision-001** + **INV-KOS-Agent-001** + authority layer | ⭐ **named corruption target: decision-collapse** |
+| NOT a memory system — "preserve epistemic lineage" vs remembering | provenance + **H-KOS-Reasoning-Provenance-001** + revision history | corroborates |
+| NOT a single reasoning method — kernel hosts deduction/induction/abduction/Bayesian/human/AI | §16 kernel/engine + §24 Reasoning Integrity layer | corroborates |
+
+**The two named corruption targets (P4 Forbidden-Collapse vocabulary; precedent: the five fallacies = corruption modes, not rows).** (a) **Similarity-collapse** — semantic proximity must never be offered as justification. (b) **Decision-collapse** — *"AI believes X → AI executes action"*; knowledge must never skip the authority/governance layer into action (Knowledge state + Authority + Decision authority + Human/governance approval). Both = the anti-collapse discipline in named form.
+
+**LLM comparison + the "missing layer" (P4/Constitution positioning).** The 12-capability comparison (provenance · contradiction · temporal · revision · authority · transparency · unknown handling · agent accountability) shows the LLM's weaknesses vs the constitutional strengths — the evidence for the epistemic layer. *"LLMs may become more intelligent, but they will still need an epistemic layer. The missing layer between Information → Intelligence → Trustworthy knowledge is exactly where KnowledgeOS sits."* ⚠️ The HPA cites external research [DOI 10.1016/j.websem.2024.100844 — "Knowledge Graphs, LLMs, and Hallucinations: An NLP Perspective"] as support for the LLM-limitation claims — noted, not read/verified.
+
+**Character: NO head advance (chain stays 43).** The **Final Boundary Statement** — *"A constitutional epistemic system that governs how knowledge is created, justified, transformed, challenged, and evolved"* — is the **corroborative boundary form of head 43** (the IS-side completing the NOT-side; process-verb governance framing without the dimension enumeration). Recorded as the Constitution's "forbidden interpretations" vocabulary.
+
+Register: **25 candidates + 4 Established (UNCHANGED)** — boundary definitions consolidate, they do not add. New P4/Constitution material: the ten non-identities taxonomy · the two named corruption targets (similarity-collapse · decision-collapse) · the LLM comparison table · the missing-layer positioning · the "forbidden interpretations" constitutional framing. ⛔ Gate unchanged: P4 CLOSED until the corrected-P3 (AIP Stage-3) re-review ruling.
