@@ -11,7 +11,7 @@
 | **Purpose** | State the strategic character of KnowledgeOS as a constitutional epistemic system — the prose culmination of all research lenses analysed (EKS/PKS/AIP archaeology · epistemic systems · Vedanta/Jñāna · Vāṇī · Zero · topology · logic · TMS/AGM · contradiction handling · inference theory) |
 | **Kernel Status** | ⛔ **Does not define kernel architecture, data model, or implementation** |
 | **Rule obeyed** | ⛔ **No promotion**: this is a *character statement*, not an invariant map. Nothing here is adopted, nothing is SHALL, nothing changes the register. The **Constitutional Invariant Map v1.0** remains the P4 deliverable, with evidence-column discipline. Every point reconciles to an already-registered candidate (§14) — the character introduces **no new candidate, no new dimension, no new forbidden collapse**. |
-| **Traceability** | HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34) — recorded §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG in `.claude/sessions/2026-08-22.md` · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG) · placement derived `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) |
+| **Traceability** | HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35) — recorded §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH in `.claude/sessions/2026-08-22.md` · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH) · placement derived `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) |
 
 ---
 
@@ -563,7 +563,7 @@ With **H-KOS-Agent-001** and the **Kernel-vs-Engine** separation, the character 
 
 ---
 
-**Traceability:** HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34) · recorded `.claude/sessions/2026-08-22.md` §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG) · placement derived `--scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) · house naming `KnowledgeOS_*` (precedent: `KnowledgeOS_Conceptual_Foundation.md`, `KnowledgeOS_Epistemic_Control_Systems_Comparison.md`, `KnowledgeOS_Vedanta_Pramana_Lens.md`). All study outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.
+**Traceability:** HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35) · recorded `.claude/sessions/2026-08-22.md` §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH) · placement derived `--scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) · house naming `KnowledgeOS_*` (precedent: `KnowledgeOS_Conceptual_Foundation.md`, `KnowledgeOS_Epistemic_Control_Systems_Comparison.md`, `KnowledgeOS_Vedanta_Pramana_Lens.md`). All study outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.
 
 ---
 
@@ -687,3 +687,34 @@ Register: 17 → **22 candidates + 4 Established** (UM-33) + unnamed Pramāṇa 
 Short-form variant: **"KnowledgeOS preserves the conditions under which reasoning can produce trustworthy knowledge."** Essence chain: UM-28 → 29 → 30 → 32 → 33 → **34** (refinements, not contradictions). Canonical one-sentence form confirmed at P4.
 
 Register: 22 → **23 candidates + 4 Established** (Pramāṇa named and counted; five designations mapped, no new rows; SemanticBoundary = P4 candidate material). ⛔ Gate unchanged: P4 CLOSED until the corrected-P3 (AIP Stage-3) re-review ruling.
+
+---
+
+# §22 Matilal — *The Character of Logic in India* — the logic-of-justification layer (HPA, UM-35)
+
+**The extraction (HPA).** Logic as **"the discipline of establishing justified knowledge in a community of inquiry"** — not symbol manipulation. Central theme: **vyāpti**, the *inference-warranting relation* between reason and conclusion. This gives KnowledgeOS the missing **"logic of justification" layer** between knowledge storage and truth discovery — moving it from a knowledge graph into an **epistemic reasoning system**.
+
+**H-KOS-Vyapti-001 — CONTENT REFINED (existing row; no count change).** The missing object in `Evidence → Reasoning → Conclusion` is the **Inference-Warranting Relation**: the system must store *why* smoke legitimately indicates fire, not only "smoke observed → fire inferred." Sharpened formulation adds the decisive clause:
+
+> *"A conclusion without an explicit inference relation **should** remain a hypothesis."*
+
+(⚠️ SHALL-discipline → should.) This ties Vyapti-001 to **H-ZERO** — an unwarranted conclusion is a hypothesis, not knowledge. ⭐ **Dignāga's three conditions = the operational method** (P4 Validation-Target material): a valid sign is (1) **present in the subject**, (2) **present in similar cases**, (3) **absent in dissimilar cases** → the **Inference Validation Matrix** (Evidence Sign → Similar/Dissimilar cases → Validation Score). **Liṅga/Liṅgin (sign/signified):** evidence functions as a logical sign, the inferred entity as signified — an enrichment of Vyapti-001's evidence-side (sign-role + warrant), overlapping Pramana-001 + the Evidence≠Conclusion family; the relationship is first-class (consistent with Relation-001).
+
+**Two new HYPOTHESES (should-voice; tier-3-derived; compression flags attached):**
+
+| Candidate | Content | Compression test |
+|---|---|---|
+| **H-KOS-Dialogue-001** | Truth discovery supports **structured opposition** — claims may be challenged without destroying knowledge identity (Vāda/Jalpa/Vitaṇḍā → multi-agent truth discovery: A claim · B counter-evidence · C validator · Mediator determination). New content: structured opposition as a first-class reasoning structure. | ↔ Contradiction-001 ↔ Revisability-001 ↔ Intent-001 |
+| **H-KOS-EvidenceAuthenticity-001** | Distinguish evidence from **pseudo-evidence** (hetvābhāsa — appears like evidence but lacks the logical force for the thesis; e.g. AI hallucination: generated citation, no real source). New content: authenticity/anti-hallucination criterion on the evidence object — evidence-side complement of Fallacy-001. | ↔ Pramana-001 ↔ Fallacy-001 ↔ Failure-001 |
+
+**Confirmed alignment (no new rows).** The Reasoning Verification Engine (VERDICT vocabulary VALIDATED / QUESTIONABLE / CONFLICTED / INVALID / UNKNOWN) is the **Validation Layer** (§19/§AE-7) with an explicit verdict vocabulary — the verdicts are **values of the existing epistemic-state attribute**, not a new dimension. "Tarka tests whether reasoning survives examination" = **Reasoning-Separation-001**. `A vs B → Conflict Space → Resolution Process` (never "A wins, B deleted") = **Contradiction-001 + Revisability-001**.
+
+**Debate Governance / Argument Graph (§9).** KnowledgeOS = **Knowledge Graph + Argument Graph + Debate Graph**; a knowledge object carries Claim · Who asserted · Evidence · Counterclaims · Reasoning · Validation · Decision · Revision history. ⚠️ **P4 architectural-candidate material** — extends the §20 semantic-relationship-model consideration (representation/storage layer); NOT a kernel invariant (no storage-model decision — standing discipline). New engine-layer element: **Debate/Challenge** between validation and determination.
+
+**Updated character — debate-aware variant (recorded; essence chain 28 → 34 → 35).**
+
+> **"KnowledgeOS is an epistemic reasoning kernel that preserves the relationships between evidence, inference, counterargument, and justified conclusion."**
+
+Adds **counterargument** to the preserved-relationships list. ⚠️ A **refinement variant, NOT a supersession** of UM-34's fuller form (which subsumes this + context + reasoning paths); canonical one-sentence confirmed at P4; HPA overrides anytime. Final insight corroborates the character: **"Truth is not produced by storing more information. Truth emerges when evidence, reasoning relations, objections, and validation rules are preserved together."**
+
+Register: 23 → **25 candidates + 4 Established** (+ Dialogue-001 · EvidenceAuthenticity-001; Vyapti-001 refined, no count change). ⛔ Gate unchanged: P4 CLOSED until the corrected-P3 (AIP Stage-3) re-review ruling.
