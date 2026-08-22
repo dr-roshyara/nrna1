@@ -11,7 +11,7 @@
 | **Purpose** | State the strategic character of KnowledgeOS as a constitutional epistemic system — the prose culmination of all research lenses analysed (EKS/PKS/AIP archaeology · epistemic systems · Vedanta/Jñāna · Vāṇī · Zero · topology · logic · TMS/AGM · contradiction handling · inference theory) |
 | **Kernel Status** | ⛔ **Does not define kernel architecture, data model, or implementation** |
 | **Rule obeyed** | ⛔ **No promotion**: this is a *character statement*, not an invariant map. Nothing here is adopted, nothing is SHALL, nothing changes the register. The **Constitutional Invariant Map v1.0** remains the P4 deliverable, with evidence-column discipline. Every point reconciles to an already-registered candidate (§14) — the character introduces **no new candidate, no new dimension, no new forbidden collapse**. |
-| **Traceability** | HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35) — recorded §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH in `.claude/sessions/2026-08-22.md` · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH) · placement derived `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) |
+| **Traceability** | HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35 + UM-36) — recorded §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH + §AI in `.claude/sessions/2026-08-22.md` · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH + AI) · placement derived `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) |
 
 ---
 
@@ -563,7 +563,7 @@ With **H-KOS-Agent-001** and the **Kernel-vs-Engine** separation, the character 
 
 ---
 
-**Traceability:** HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35) · recorded `.claude/sessions/2026-08-22.md` §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH) · placement derived `--scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) · house naming `KnowledgeOS_*` (precedent: `KnowledgeOS_Conceptual_Foundation.md`, `KnowledgeOS_Epistemic_Control_Systems_Comparison.md`, `KnowledgeOS_Vedanta_Pramana_Lens.md`). All study outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.
+**Traceability:** HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35 + UM-36) · recorded `.claude/sessions/2026-08-22.md` §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH + §AI · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH + AI) · placement derived `--scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) · house naming `KnowledgeOS_*` (precedent: `KnowledgeOS_Conceptual_Foundation.md`, `KnowledgeOS_Epistemic_Control_Systems_Comparison.md`, `KnowledgeOS_Vedanta_Pramana_Lens.md`). All study outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.
 
 ---
 
@@ -718,3 +718,33 @@ Register: 22 → **23 candidates + 4 Established** (Pramāṇa named and counted
 Adds **counterargument** to the preserved-relationships list. ⚠️ A **refinement variant, NOT a supersession** of UM-34's fuller form (which subsumes this + context + reasoning paths); canonical one-sentence confirmed at P4; HPA overrides anytime. Final insight corroborates the character: **"Truth is not produced by storing more information. Truth emerges when evidence, reasoning relations, objections, and validation rules are preserved together."**
 
 Register: 23 → **25 candidates + 4 Established** (+ Dialogue-001 · EvidenceAuthenticity-001; Vyapti-001 refined, no count change). ⛔ Gate unchanged: P4 CLOSED until the corrected-P3 (AIP Stage-3) re-review ruling.
+
+---
+
+# §23 Dasti & Phillips — *The Nyāya-sūtra* — the runtime architecture of epistemic operations (HPA, UM-36)
+
+**The extraction (HPA).** More foundational than Matilal at the *operational* level: how knowledge is **generated, validated, challenged, stabilized**. Matilal gave the logic of justification; this gives the **runtime architecture of epistemic operations** — "almost a blueprint for the Epistemic Kernel."
+
+**The architectural pivot — Pramāṇa, not knowledge objects.** Modern systems model `Data → Information → Knowledge`; Nyāya models `Object → Knowledge Source (Pramāṇa) → Valid Cognition → Successful Action`. **"Knowledge is not primarily a stored thing. Knowledge is the output of a reliable process."** The fourfold — pramāṇa (source) · prameya (object known) · pramātṛ (knower) · pramiti (cognition) — → the **KnowledgeEvent** record (`knower · object · source · cognition · validity`), a P4 candidate record model confirming Agent-001 + Pramana-001 + the provenance chain.
+
+**Process-centric verification (enrichment of INV-KOS-Pramana-001, NOT a new row).** Nyāya asks *"was this cognition generated by a reliable knowledge-producing process?"* (externalist), not *"does this belief have a justification?"* (internalist). KnowledgeOS: generate claim → identify production process → check process reliability → accept/reject — never generate-and-hope. This sets the Validation Layer's design target: **process reliability, not self-reported justification**.
+
+**⚠️ The five ADR candidates (ADR-KOS-EPI-001..005) — ALL map onto already-registered rows** (ES-005.4, never a copy). No new register rows; ADRs are drafted as P4/architecture-layer expressions of established invariants when the Map produces them:
+
+| ADR-KOS-EPI | Content | Existing row |
+|---|---|---|
+| 001 Knowledge is Process-Generated | preserve source + production process | **INV-KOS-Pramana-001** + provenance chain |
+| 002 Evidence Source Registry | every claim identifies its epistemic source category | **INV-KOS-Pramana-001** (registry form) |
+| 003 Source vs Imitator (pramāṇābhāsa) | distinguish valid mechanisms from evidence-like artifacts | **H-KOS-EvidenceAuthenticity-001** |
+| 004 Doubt Escalation | deeper verification only when triggered by contradiction/uncertainty/challenge | state-machine enrichment (§19/§AD-7) + operational policy |
+| 005 Commentary Lineage | preserve interpretive lineage rather than replace historical states | **INV-KOS-Revisability-001** + Transformation/Time |
+
+**Pramāṇa Registry.** The per-source reliability structure (perception: `high_for: infrastructure_state · runtime_metrics` · inference: `depends_on: inference_rule · evidence_quality` · testimony: `depends_on: authority · trust_level`) = the **data model of Pramana-001** — P4 architectural material, not an invariant.
+
+**Epistemic Escalation / Cognitive Review Mode.** Two-tier trust (default trust → doubt triggers self-conscious investigation) + the chain `OBSERVED → INFERRED → ACCEPTED → CHALLENGED → UNDER REVIEW → VALIDATED/REJECTED`. ⚠️ **Model-integrity:** more values of the existing epistemic-state attribute — state-space enrichment, NOT a dimension; the escalation policy ("not every fact needs an expensive review") is an engine-design efficiency principle. P4 material, no row.
+
+**Confirmed alignment.** Tarka = suppositional challenge engine, NOT itself a knowledge source; `Agent B disagrees → Agent B is right` forbidden = **Reasoning-Separation-001** + the Reject-A≠Prove-B asymmetry (§19) · Commentary lineage = "Git for institutional reasoning" (`Original Decision → Interpretation → Extension → Challenge → Resolution`, never overwrite) → **Revisability-001** · Epistemic OS architecture (Governance → Production Engine: Observation·Inference·Testimony → Validation Engine → Knowledge Objects → Action/Decision) = §AE-7/§20 + kernel/engine separation.
+
+**The "theory of epistemic operations" is already fully covered by the slate:** knowledge enters → **Pramana-001** · earns trust → **Validation Layer** · gets challenged → **Contradiction-001 / Dialogue-001** · becomes actionable → **INV-KOS-Decision-001**.
+
+Register: **25 candidates + 4 Established (UNCHANGED)** — a full book plus five ADRs produced **zero new invariant rows**; the extraction phase has **saturated**. Character: no new formulation (essence chain 28 → 35). ⛔ Gate unchanged: P4 CLOSED until the corrected-P3 (AIP Stage-3) re-review ruling.
