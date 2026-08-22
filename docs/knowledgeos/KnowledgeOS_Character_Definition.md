@@ -11,7 +11,7 @@
 | **Purpose** | State the strategic character of KnowledgeOS as a constitutional epistemic system — the prose culmination of all research lenses analysed (EKS/PKS/AIP archaeology · epistemic systems · Vedanta/Jñāna · Vāṇī · Zero · topology · logic · TMS/AGM · contradiction handling · inference theory) |
 | **Kernel Status** | ⛔ **Does not define kernel architecture, data model, or implementation** |
 | **Rule obeyed** | ⛔ **No promotion**: this is a *character statement*, not an invariant map. Nothing here is adopted, nothing is SHALL, nothing changes the register. The **Constitutional Invariant Map v1.0** remains the P4 deliverable, with evidence-column discipline. Every point reconciles to an already-registered candidate (§14) — the character introduces **no new candidate, no new dimension, no new forbidden collapse**. |
-| **Traceability** | HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35 + UM-36 + UM-37) — recorded §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH + §AI + §AJ in `.claude/sessions/2026-08-22.md` · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH + AI + AJ) · placement derived `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) |
+| **Traceability** | HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35 + UM-36 + UM-37 + UM-38) — recorded §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH + §AI + §AJ + §AK in `.claude/sessions/2026-08-22.md` · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH + AI + AJ + AK) · placement derived `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) |
 
 ---
 
@@ -563,7 +563,7 @@ With **H-KOS-Agent-001** and the **Kernel-vs-Engine** separation, the character 
 
 ---
 
-**Traceability:** HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35 + UM-36 + UM-37) · recorded `.claude/sessions/2026-08-22.md` §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH + §AI + §AJ · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH + AI + AJ) · placement derived `--scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) · house naming `KnowledgeOS_*` (precedent: `KnowledgeOS_Conceptual_Foundation.md`, `KnowledgeOS_Epistemic_Control_Systems_Comparison.md`, `KnowledgeOS_Vedanta_Pramana_Lens.md`). All study outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.
+**Traceability:** HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29 + UM-30 + UM-31 + UM-32 + UM-33 + UM-34 + UM-35 + UM-36 + UM-37 + UM-38) · recorded `.claude/sessions/2026-08-22.md` §Z + §AA + §AB + §AC + §AD + §AE + §AF + §AG + §AH + §AI + §AJ + §AK · `.claude/CONTEXT.md` (blocks Y + Z + AB + AC + AE + AF + AG + AH + AI + AJ + AK) · placement derived `--scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) · house naming `KnowledgeOS_*` (precedent: `KnowledgeOS_Conceptual_Foundation.md`, `KnowledgeOS_Epistemic_Control_Systems_Comparison.md`, `KnowledgeOS_Vedanta_Pramana_Lens.md`). All study outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.
 
 ---
 
@@ -778,3 +778,43 @@ Register: **25 candidates + 4 Established (UNCHANGED)** — a full book plus fiv
 Adds **reasoning validity** (the anti-corruption target) + **historical transformation** + the prevention clause **"without corrupting the conditions of knowing."** ⚠️ Discipline note: the **"type system"** vocabulary carries representation implications — the canonical-one-sentence vs enforcement-metaphor question is resolved at P4 (kernel-identity vs engine-machinery); recorded as a **refinement** of the UM-34 substrate form. The layer-progression synthesis (Veda → Upanishad → Vedanta → Nyaya → Tarka → Matilal → Navya-Nyaya → KnowledgeOS = "the constitutional operating system for trustworthy intelligence") records the HPA's framing of the whole arc — a readiness statement, not a gate-open.
 
 Register: **25 candidates + 4 Established (UNCHANGED)** — fifth consecutive zero-new-row result; the invariant set is complete; this source contributes enforcement machinery + design target + type-model formalization = P4 layer/Validation-Target/representation material. ⛔ Gate unchanged: P4 CLOSED until the corrected-P3 (AIP Stage-3) re-review ruling.
+
+---
+
+# §25 Tarka-Saṅgraha with Dīpikā of Annambhaṭṭa — the ontology + epistemology + reasoning discipline (HPA, UM-38)
+
+**The extraction (HPA).** Not summarized as philosophy but treated as an **architectural source**: an ontology + epistemology + reasoning discipline. Tarka = "a precise tool for philosophical investigation and truth discovery, not intellectual entertainment." Seven lenses → seven proposed invariants. ⚠️ **Freeze admission (my note):** seventh source on the same Nyāya/Tarka tradition — deepening, admissible; as a Navya-Nyāya foundational text it is the closest yet to the §20 (UM-33) lens itself. ⚠️ **The discipline result is the strongest possible: seven proposed candidates, zero new invariant rows — the register is now stable under repeated independent extraction.**
+
+**⚠️ The seven-candidate mapping — ZERO new invariant rows** (ES-005.4, never a copy):
+
+| HPA proposed | Maps onto (existing) | Verdict |
+|---|---|---|
+| H-KOS-Ontology-001 — ontological category of every object | **H-KOS-Context-002** (type/identity cluster) | Enrichment + P4 type-model material |
+| H-KOS-Pramana-001 — preserve how it became known | **INV-KOS-Pramana-001** | ⚠️ **SAME ID, reproduced independently** — direct match |
+| H-KOS-ReasoningTrace-001 — inference chain | **H-KOS-Reasoning-Provenance-001** | direct match |
+| H-KOS-KnowledgeGraph-001 — relations first-class | **H-KOS-Relation-001** | direct match |
+| H-KOS-ErrorState-001 — error represented, not deleted | **H-KOS-Failure-001** + epistemic-state machine | direct match |
+| H-KOS-SemanticPrecision-001 — predicate scope | **SemanticBoundary-001** facet (§21/§AG) | existing candidate-material; Context-002 compression test |
+| H-KOS-AgentReasoning-001 — agent identity + capability | **INV-KOS-Agent-001** + Pramana-001 | direct match |
+
+**Upamāna — the 4th source-channel (genuine registry enrichment).** The four classical pramāṇas → KnowledgeOS input channels: Pratyakṣa→observation/telemetry · Anumāna→reasoning engine · **Upamāna→analogy/similarity (NEW — the §23 Pramāṇa Registry had only perception·inference·testimony)** · Śabda→testimony. P4 registry-content update, NOT a new row (Pramana-001 enriched).
+
+**Five-member syllogism = the canonical reasoning-trace shape.** Pratijñā (claim) → Hetu (reason) → Udāharaṇa (general rule) → Upanaya (application) → Nigamana (conclusion). ⚠️ The concrete shape of **Reasoning-Provenance-001**'s path (premises·rules·assumptions·conclusion) — P4 record-shape material; "the foundation for explainable AI" = the Validation Layer's traceability target.
+
+**Vaiśeṣika ontology — "Before reasoning, define what kind of thing exists."** Ontology-001 = every object carries an explicit category (entity/property/relation/event/absence). ⚠️ **P4 type-model material** — deepens the §24 context-bounded identity cluster (Knowledge Identity = Entity·Property·Context·Relation·Time·Authority); the **Vaiśeṣika category taxonomy itself is Research Only** (§20 precedent — the 16 Padārthas "must not become kernel entities"). The *absence* category (abhāva) connects to H-ZERO / EvidenceAuthenticity / the Asiddha grounding discipline.
+
+**Mithyājñāna (erroneous cognition) = error as a first-class state.** `VALID / UNKNOWN / CONFLICTED / SUPERSEDED / INVALID` — values of the existing epistemic-state attribute; "incorrect cognition represented explicitly, not deleted" = **H-KOS-Failure-001** (preserve failure modes as explicit states) + **Revisability-001** (revision≠deletion). Confirms contradiction tolerance · fallibilism · temporal revision (Contradiction-001 / H-ZERO / Transformation).
+
+**SemanticPrecision-001 = the §21 SemanticBoundary facet.** "Every statement defines the semantic scope of its predicates" — the "secure" example (vulnerability-free/compliant/encrypted/available/trusted) is precisely the over/under-extension taxonomy. ⚠️ Same candidate material — joins the accumulating **Context-002 ↔ SemanticBoundary ↔ Ontology-001 ↔ type-model** compression-test cluster for P4.
+
+**AgentReasoning-001 = Agent-001 + process-centric verification.** "Not 'what answer did the AI generate?' but 'what reasoning process produced this answer?'" = the §23 externalist target; the capability facet enriches Pramana-001's reliability registry (sensor ≠ expert ≠ LLM). No new row.
+
+**Updated character (essence chain 28 → 38; latest-wins provisional).**
+
+> **"KnowledgeOS protects the entire lifecycle of knowing: what exists, how it is observed, how it is reasoned about, how it can fail, and how it can be corrected."**
+
+⚠️ **Functional/lifecycle framing** (what the kernel *does*), complementing — not necessarily replacing — the §24 *substance* form (what the kernel *is*: constitutional epistemic type system). Makes **failure and correction** explicit (the anti-corruption mission). P4 canonical synthesis reconciles the variant family. Final insight: *"Knowledge is not a stored object. Knowledge is a justified relationship between reality, observer, evidence, reasoning, and conclusion."* — corroborates the relational (§20) + process (§23) + substrate (§21) characters.
+
+**Constitutional model (Lens 8) = P4 layer-diagram material.** Stack: Truth Constitution → **Ontology Layer** (what exists?) → **Pramana Layer** (how known?) → Reasoning Layer (how concluded?) → Semantic Layer (what does it mean?) → **Evidence Graph** → **Revision Engine** (how corrected?). New elements: **Ontology Layer at the top** + **Revision Engine at the bottom** — slot into the §AE-7/§AH-10/§AI-9/§AJ-4 layer family; all engine-side governance (GOVERN).
+
+Register: **25 candidates + 4 Established (UNCHANGED)** — SIXTH consecutive zero-new-row result; the register is **stable under repeated independent extraction** (the definitive saturation proof). Character head → **38**. New P4 material: Upamāna 4th channel · five-member trace shape · Vaiśeṣika typing (taxonomy Research Only) · Lens-8 stack · lifecycle character. ⛔ Gate unchanged: P4 CLOSED until the corrected-P3 (AIP Stage-3) re-review ruling.
