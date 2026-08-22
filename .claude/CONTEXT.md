@@ -1083,7 +1083,20 @@
 
 ---
 
-## 📍 UPDATE (2026-08-22, **TRACK 2 · GOVERNANCE RE-VERIFICATION DISCHARGED — ARCHITECTURE STAGE COMPLETE · CHAIN PRESENTABLE TO PO/ARB** — newest) — **✅ `RV-1` DISPOSED (Option A) · ✅ CONSTRAINTS HELD · ⏳ PO/ARB DECISION NEXT · ⛔ MIGRATION STILL FROZEN**
+## 📍 UPDATE (2026-08-22, **TRACK 2 · PO/ARB ACCEPTANCE DECISION REGISTERED — DV-CORRECTION CHAIN CLOSED · MIGRATION STAYS FROZEN** — newest) — **✅ Option 1 ACCEPT with explicit conditions · ✅ `DV-1` Phase-5 bar DISCHARGED · ✅ `DV-1…DV-7` / `RV-1…RV-7` CLOSED (this correction chain only) · ⛔ MIGRATION NOT AUTHORIZED · ⛔ PHASE 3 NOT STARTED · ⛔ PHASE 5 REMAINS PROHIBITED · ⚠️ migration prerequisite CREATED**
+
+| | |
+|---|---|
+| ✅ **PO/ARB decision** | **Option 1 — ACCEPT** (with explicit conditions), registered `df175873` (`…-DV-CORRECTION-ACCEPTANCE-REGISTRATION.md`), grant 26 `…-DV-CORRECTION-ACCEPTANCE` AUTHORIZED. **Verbatim note:** *"PO/ARB accepts the repaired chain state and Governance bounded re-verification as sufficient evidence for closure of the current correction workflow. This acceptance does not authorize migration. Migration authorization remains a separate future decision. The remaining durability observation (untracked review artifacts / DECISION.md) must be addressed during migration preparation."* |
+| ✅ **Accepts** | Architecture repair `933c0713` · Governance bounded re-verification `849c0cca` · `RV-1…RV-7` dispositions — as sufficient evidence; **discharges the `DV-1` Phase-5 bar**; **closes `DV-1…DV-7` / `RV-1…RV-7` as findings of THIS correction chain** (`R-34`/`P-2` — acceptance is the PO/ARB's act, delivered) |
+| ⛔ **Does NOT accept/authorize** | ❌ migration authorization (separate future decision) · ❌ Phase 3 start · ❌ Phase 5 start · ❌ DV closure beyond this acceptance act · ❌ ownership assignment / new authority |
+| ⚠️ **Migration prerequisite CREATED** | **"Before migration authorization, all authoritative review artifacts must be durable/tracked."** — the untracked independent-DV-review artifact + `DECISION.md` must be committed during **migration preparation**, before migration authorization is considered. Recorded prerequisite, NOT a rejection |
+| **RECORD STATE** | grants **26** · `S6` COMPLETED · `S4`/`S4b`/`S5` HANDED_OFF · mutationOwner **None** · workItemState **OPEN** (migration still pending its own authorization) |
+| **NEXT** | ⏳ **MIGRATION AUTHORIZATION** — a separate future PO/ARB act. Until then: **MIGRATION FROZEN · PHASE 3 MUST NOT BEGIN · PHASE 5 REMAINS PROHIBITED** |
+
+---
+
+## 📍 UPDATE (2026-08-22, **TRACK 2 · GOVERNANCE RE-VERIFICATION DISCHARGED — ARCHITECTURE STAGE COMPLETE · CHAIN PRESENTABLE TO PO/ARB**) — **✅ `RV-1` DISPOSED (Option A) · ✅ CONSTRAINTS HELD · ⏳ PO/ARB DECISION NEXT · ⛔ MIGRATION STILL FROZEN**
 
 | | |
 |---|---|
