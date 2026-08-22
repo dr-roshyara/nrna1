@@ -1,6 +1,18 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **`KOS-OPERATING-MODEL-001` commission** block and the **HPA AI-ENGINE ARCHITECTURE VISION — UNDERSTAND MEANING BEFORE SPEAKING — LLM AS LANGUAGE CORTEX** block (BV) are the newest; older rows they contradict are superseded by them)*
+**Updated:** 2026-08-22 *(additive — the **`KOS-OPERATING-MODEL-001` IMPLEMENTED** block is the newest; older rows it contradicts are superseded by it)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **`KOS-OPERATING-MODEL-001` — ALL THREE LAYERS IMPLEMENTED — FINAL GOVERNANCE + COMMUNICATION OPERATING MODEL — lane `259c1966` ACTIVE; ⛔ NOT VERIFIED · NOT ADOPTED** — supersedes the "NOT implemented · NOT adopted" status line in the commission block below; the separate `KOS-NEXT-ACTOR-ORCHESTRATION-001` / `AST-018` slice is PRESERVED and continues independently)
+
+| | |
+|---|---|
+| 🎬 **What happened** | The appointed fresh implementation session `claude-code-session:259c1966-b18e-4759-8afe-b46627dd5a2f` (role=implementation, bootstrap RESOLVED · attribution=MATCH · authorized_to_act=true) implemented all three authorized layers of `KOS-OPERATING-MODEL-001` per the verbatim 40-section prompt, after EP-01 plan approval. |
+| 📄 **Layer 1 (doc)** | `docs/knowledgeos/governance/2026-08-22-KOS-OPERATING-MODEL-001-final-operating-model.md` — the operating model, §1–§40: Governance Engineer / Communication Engineer as responsibilities (six-role model), the five business outcomes (§11), the six human cases (§29), fresh-session handling, review + adoption lifecycle, boundaries (§26–§28), stop model (§35), success criterion (§39). |
+| 🛠️ **Layer 2 (capability)** | `.claude/scripts/operating-model.php` — CMP-004's 5th implementation asset. **READ-ONLY presenter**: `outcome <workItem>` (exactly-one business outcome from AST-018 `result` + §29 case) · `session <workItem>` (MATCH/MISMATCH/governance from AST-017 + AST-018). No store path, no fold, no write path, no second engine, no second vocabulary; mechanics hidden by default (`--show-mechanics` only escape hatch). Consumes AST-018/AST-017 strictly as subprocesses. |
+| 🔎 **Layer 3 (verification)** | `OperatingModelContractTest` — **43 tests / 409 assertions GREEN** (`test_om_*`). AST-015/016/017/018 regression suites **78 tests / 876 assertions still green**. test_om_37 proves all four canonical assets **byte-unchanged vs HEAD**. Two PO/ARB-corrected semantics pinned: (1) **FRESH_SESSION_REQUIRED = paste-prompt-not-appointment** ("Start a new session and paste this prompt:" + generated prompt + "You may use this prompt unchanged or edit it."; no session UUID ever asked); (2) **candidate status never inferred** from UNRESOLVED + NEXT_ACTOR_REQUIRED — rests on authoritative eligibility/appointment facts. §38 completion report: `...-KOS-OPERATING-MODEL-001-session-completion.md`. Guide: `developer_guide/ai_platform/05_operating_model.md`. Plan: `docs/plans/20260822-2126-…-plan.md`. |
+| ✅ **Status + NEXT** | **IMPLEMENTED ≠ VERIFIED ≠ ADOPTED ≠ AUTHORIZED.** ⛔ no adoption claim · no AST-015/016/017/018 change · no second engine · no EKS-07 · no migration. **NEXT: record STOP on this lane (human act) → PO/ARB appoints a FRESH INDEPENDENT VERIFIER** (≠ `5c0e13c1` · `8a525719` · `b51dba91` · `8deac5de` · `d1612e03` · `b64828fe` · `7c2690ae`) → Governance REGISTER(verification) → HANDOFF → human START → independent verification → governance adoption review → PO/ARB adoption decision (NOT automatic). |
 
 ---
 
