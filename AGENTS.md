@@ -74,6 +74,23 @@ and Codex are peer execution harnesses, not competing owners of that truth.
   architecture, ADRs, scripts, tests, project configuration, or application
   code without explicit task authorization.
 
+## Session bootstrap and responsibility resolution
+
+At session start, a governed session MUST resolve its own registered lane / role
+/ workflow state / authority before acting. Run (ON_DEMAND):
+
+```bash
+php .claude/scripts/session-bootstrap.php --process-label=<id> --work-item=<wi> [--scope=<s>] --json
+```
+
+Consume `bootstrapping_status` and `gates.authorized_to_act` before acting. Any
+`AMBIGUOUS` / `UNRESOLVED` / `UNRESOLVABLE` → **STOP, stay read-only, escalate to
+Governance** with the `unresolved_message`. Attribution `MISMATCH`/`UNKNOWN` →
+**never adopt another process's identity in order to become operable** — escalate.
+*Resolution is not activation — the report creates no authority, no ownership, no
+state change; G-3 gates are untouched.* Canonical rule text (rules-live-once):
+`docs/knowledgeos/reviews/2026-08-22-KOS-SESSION-BOOTSTRAP-001-implementation-boundary-proposal.md`.
+
 ## Session completion
 
 When a governed session completes its responsibility, produce a **Session
