@@ -1,16 +1,16 @@
-# KnowledgeOS — EP-01 Plan · Expression↔Meaning Port Contract Vocabulary Refinement (AH-1 · AH-3) — AWAITING HPA APPROVAL (2026-08-22)
+# KnowledgeOS — EP-01 Plan · Expression↔Meaning Port Contract Vocabulary Refinement (AH-1 · AH-3) — APPROVED (HPA · 2026-08-23 · option C — two sibling declarations) (2026-08-22)
 
 > **Act:** the **first authorized planning act** after the AH-1…AH-5 decision gate (HPA confirmation `20260822-2346`, commit `1e6d076f`) — a **separate EP-01 plan** for the Expression↔Meaning **Port Contract vocabulary refinement** resulting from **AH-1** and **AH-3**.
-> **Position:** `P5 research CLOSED → AH-1…AH-5 decided (AH-1 ACCEPT · AH-3 ACCEPT) → EP-01 plan for the Port Contract vocabulary refinement ← WE ARE HERE → HPA plan approval → (further explicit authorization) → implementation → EP-02 → reassess v1.1`.
-> **Authority:** HPA confirmation 2026-08-22 — acceptance of AH-1/AH-3 "authorizes **only the next planning act, not implementation**: prepare a separate **EP-01 plan** for the Expression↔Meaning Port Contract vocabulary refinement." **Approving this plan approves the plan — it does not authorize implementation.** Implementation is a further, separate, explicit act.
+> **Position:** `P5 research CLOSED → AH-1…AH-5 decided (AH-1 ACCEPT · AH-3 ACCEPT) → EP-01 plan → Q-B resolved (terminology review) → HPA plan approval (2026-08-23, option C) ← WE ARE HERE → (further explicit implementation authorization) → implementation → EP-02 → reassess v1.1`.
+> **Authority:** HPA confirmation 2026-08-22 — acceptance of AH-1/AH-3 "authorizes **only the next planning act, not implementation**: prepare a separate **EP-01 plan** for the Expression↔Meaning Port Contract vocabulary refinement." **HPA approval 2026-08-23 (option C) approves this plan as revised below — it does NOT authorize implementation.** Implementation is a further, separate, explicit act.
 > **Deliverable of THIS act:** the plan only. **No code · no contract edit · no v1.1/Constitution/aggregate/Kernel/SNF/corpus modification · no v1.2 · no experiment (OQ-4 unauthorized).**
-> **Status:** 📋 **PLANNING ACT DELIVERED — PROPOSED · NON-AUTHORITATIVE · ⬜ AWAITING THE HPA'S EXPLICIT APPROVAL.** Register **25+4 unchanged** · Constitution **FROZEN** · Port Contract **unchanged (PROPOSED · NON-AUTHORITATIVE)** · research **CLOSED** · OQ-4 **unauthorized**.
+> **Status:** ✅ **EP-01 PLAN APPROVED (HPA, 2026-08-23 · option C — two sibling declarations: `declared insufficiency` · `declared determination`) · PLANNING ONLY.** Implementation (T-2/T-3) **NOT authorized** — a further, separate, explicit HPA act is required. Register **25+4 unchanged** · Constitution **FROZEN** · Port Contract **unchanged (PROPOSED · NON-AUTHORITATIVE)** · research **CLOSED** · OQ-4 **unauthorized**.
 
 ---
 
 ## 1 · Objective
 
-Design — and gain the HPA's approval of — the **Expression↔Meaning Port Contract vocabulary refinement** that AH-1 and AH-3 require: give the port's single generic **declared insufficiency** declaration a structure that distinguishes (AH-1) *"no filler / determined absent"* from *"filler unknown / could not determine,"* and (AH-3) *parse-level inability* from *reading-level underdetermination* — **entirely at the port boundary, as candidate-side published language**, with the domain, the Constitution, the aggregate, and the Reference Architecture untouched.
+Design — and gain the HPA's approval of — the **Expression↔Meaning Port Contract vocabulary refinement** that AH-1 and AH-3 require: **split the port's single generic `declared insufficiency` declaration into two sibling candidate-side declarations** — **`declared insufficiency`** (what the mechanism could not determine: `FILLER_UNKNOWN` + a `reason` distinguishing (AH-3) *parse-level inability* from *reading-level underdetermination*) and **`declared determination`** (what the mechanism determined: `NO_FILLER`, the (AH-1) determinate negative *"no filler / determined absent in the candidate"*) — **entirely at the port boundary, as candidate-side published language**, with the domain, the Constitution, the aggregate, and the Reference Architecture untouched. **(Approved by the HPA on 2026-08-23, option C — per the Q-B terminology review; see §5.1 · §11.)**
 
 The plan determines the vocabulary (it does not copy the HPA's sketch into the contract); identifies the exact contract sites a later authorized slice would touch; scopes the architecture/fitness gates that slice must pass; and stops for approval.
 
@@ -53,25 +53,28 @@ The plan determines the vocabulary (it does not copy the HPA's sketch into the c
 
 ## 5 · Design decisions — the vocabulary this plan determines
 
-The HPA's sketch (`DeclaredInsufficiency · what_is_undetermined · FILLER/… · reason · PARSE_UNAVAILABLE/READING_UNDERDETERMINED`) is **guidance, not contract text** — the plan derives the vocabulary from the evidence and the existing contract. The plan determines the following; approval fixes it.
+The HPA's sketch (`DeclaredInsufficiency · what_is_undetermined · FILLER/… · reason · PARSE_UNAVAILABLE/READING_UNDERDETERMINED`) is **guidance, not contract text** — the plan derives the vocabulary from the evidence and the existing contract, and the Q-B terminology review (`20260823-0015`) refined the grouping. **The plan determined the following; the HPA approved it on 2026-08-23 (option C — two sibling declarations).**
 
-### 5.1 The structured port term — `declared insufficiency`
+### 5.1 The two sibling port declarations — `declared insufficiency` · `declared determination`
 
-The existing single flat term becomes a **structured component** with two orthogonal dimensions. It remains **candidate-side port vocabulary — never an aggregate member, never a domain object, never a state** (r4-4 · ⟨A-3⟩ · §9).
+The existing single flat term is **split into two sibling candidate-side declarations** — one for what the mechanism **could not determine** (`declared insufficiency`), one for what it **determined** about the candidate (`declared determination`). They remain **candidate-side port vocabulary — never an aggregate member, never a domain object, never a state** (r4-4 · ⟨A-3⟩ · §9).
+
+The split is **approved by the HPA (2026-08-23, option C)** per the Q-B terminology review (`20260823-0015`): `FILLER_UNKNOWN` and `NO_FILLER` render **different invariants** (inability → UNKNOWN vs determinate candidate claim → core evaluates), so they are **two concepts, not two values under one label**. `declared insufficiency` is **reserved** for the inability act and is **not** an umbrella for both; its meaning is **not broadened**.
 
 ```
 declared insufficiency        (candidate-side · port vocabulary · §4)
-  ├── what_is_undetermined    (AH-1 — the object of the negative declaration)
-  │     ├── NO_FILLER          "the representation establishes that the role/slot is
-  │     │                       not expressed"        — a DETERMINATE NEGATIVE
-  │     └── FILLER_UNKNOWN     "a filler may exist, but the provider could not
-  │                             determine which one"  — a DETERMINATE INSUFFICIENCY
-  └── reason                  (AH-3 — why an insufficiency arose; orthogonal; optional)
-        ├── PARSE_UNAVAILABLE        "cannot parse the relevant token/form"
-        └── READING_UNDERDETERMINED  "can parse, but cannot decide the interpretation"
+  └── FILLER_UNKNOWN          "a filler may exist, but the provider could not
+        │                      determine which one"  — a DETERMINATE INSUFFICIENCY
+        └── reason            (AH-3 — why the insufficiency arose; orthogonal)
+              ├── PARSE_UNAVAILABLE        "cannot parse the relevant token/form"
+              └── READING_UNDERDETERMINED  "can parse, but cannot decide the interpretation"
+
+declared determination        (candidate-side · port vocabulary · §4)
+  └── NO_FILLER               "the representation establishes that the role/slot is
+                               not expressed"  — a DETERMINATE NEGATIVE
 ```
 
-### 5.2 AH-1 — the `what_is_undetermined` dimension
+### 5.2 AH-1 — the two sibling declarations
 
 | Value-case | Definition | Character | Routing consequence |
 |---|---|---|---|
@@ -80,7 +83,7 @@ declared insufficiency        (candidate-side · port vocabulary · §4)
 
 **Derivation:** P5's `unknown_vs_not_expressed` failure is exactly the inability to state whether the *expression* leaves the role unfilled (`NOT_EXPRESSED` → port `NO_FILLER`) or the *mechanism* could not fill it (`UNKNOWN` → port `FILLER_UNKNOWN`). The domain's §9 ABSENT/UNKNOWN semantics are the **source**; the port now renders the distinction in the mechanism's own voice, without letting the mechanism mint the states.
 
-**Two declarations, not one:** the single generic "declared insufficiency" becomes two distinguishable declarations — the port can tell a *determined absence in the candidate* from a *determined inability of the provider*. This is the entire point of AH-1.
+**Two sibling declarations, not one structured term:** the single generic "declared insufficiency" is replaced by **two sibling port terms** — the port can tell a *determined absence in the candidate* (`declared determination` · `NO_FILLER`) from a *determined inability of the provider* (`declared insufficiency` · `FILLER_UNKNOWN`). This is the entire point of AH-1, and the option-C split makes the distinction **structurally visible** in the published language rather than a remembered sub-case of one umbrella term.
 
 ### 5.3 AH-3 — the `reason` dimension (orthogonal, composes)
 
@@ -89,7 +92,7 @@ declared insufficiency        (candidate-side · port vocabulary · §4)
 | **`PARSE_UNAVAILABLE`** | Cannot parse the relevant token/form — a **surface-level inability** (the word/segment could not be parsed). |
 | **`READING_UNDERDETERMINED`** | Can parse, but cannot decide the interpretation/reading — a **semantic-level underdetermination** (multiple readings consistent). |
 
-**Composition rule (the plan determines it):** `reason` applies **only to insufficiency declarations** — currently `FILLER_UNKNOWN`. `NO_FILLER` is a determinate declaration and carries **no** reason: establishing that a slot is not expressed requires a successful parse *and* a successful reading; *"cannot parse ⇒ absence"* is contradictory and **excluded**. The valid declaration space is therefore exactly:
+**Composition rule (the plan determines it):** `reason` applies **only to insufficiency declarations** — `FILLER_UNKNOWN`, under `declared insufficiency`. `NO_FILLER`, under `declared determination`, is a determinate declaration and carries **no** reason: establishing that a slot is not expressed requires a successful parse *and* a successful reading; *"cannot parse ⇒ absence"* is contradictory and **excluded**. The valid declaration space is therefore exactly:
 
 ```
 NO_FILLER                                            (determinate negative · no reason)
@@ -101,10 +104,12 @@ The dimension is **general** (orthogonal by construction), so a future undetermi
 
 **Not a domain object, not an altitude:** the AH-3 distinction is a **port-vocabulary dimension**, never a domain object, never a state, and it must not be read through the altitude vocabulary — hence the names `PARSE_UNAVAILABLE` / `READING_UNDERDETERMINED` describe the *cause of the insufficiency*, not a "level" of the system (§16 altitudes are untouched). *(The HPA's alternative names `PARSE_LEVEL` / `READING_LEVEL` are recorded as synonyms, not adopted — "level" collides with the altitude vocabulary.)*
 
-### 5.4 Reconciliation with the existing terms (no silent drift)
+### 5.4 Reconciliation with the existing terms (no silent drift) — per the HPA's option-C decision
 
-- **`declared insufficiency`** keeps its name and gains structure. Its §4 definition is re-scoped to *"the mechanism's statement of what it could not determine **or determined as absent in the candidate** — structured as what × reason"* — the HPA's ruling places the determinate negative under the same declaration, and the re-scoped definition resolves the terminological tension by definition, not by ambiguity. *(Flagged for the HPA at approval — see §11 Q-B.)*
-- **`abstention`** keeps its meaning (*"I did not determine this"* → UNKNOWN, Port §Q4) and becomes **exactly the `FILLER_UNKNOWN` family** (+ any future undetermined values). `NO_FILLER` is **not** an abstention.
+- **`declared insufficiency`** keeps its name **and its exact meaning** — *"the mechanism's statement of what it could not determine"* (obligation 3 · §4). **No broadening.** It is **reserved** for `FILLER_UNKNOWN` and its `reason` dimension. Per the HPA (2026-08-23): *"Do not broaden the existing meaning of `declared insufficiency`."*
+- **`declared determination`** is the **new sibling port-level term** for `NO_FILLER` — the mechanism's statement of what it determined about the candidate representation. Per the HPA (2026-08-23): *"`declared determination` is the sibling port-level term for `NO_FILLER`."*
+- **`declared insufficiency` is NOT an umbrella for both.** The two sibling terms each render their own invariant: `FILLER_UNKNOWN` → UNKNOWN (⟨C-5⟩ · obligation 3); `NO_FILLER` → evidence toward the core's ABSENT-direction (Q6 · obligation 2), evaluated by the core, never auto-mapped.
+- **`abstention`** keeps its meaning (*"I did not determine this"* → UNKNOWN, Port §Q4) and becomes **exactly the `FILLER_UNKNOWN` family** (+ any future undetermined values), i.e. the `declared insufficiency` declaration. `NO_FILLER` is **not** an abstention.
 - **Obligation 3** (renders INV-KOS-UNKNOWN-001) is unchanged in content; a later slice adds a pointer to the structured §4 vocabulary. **No new law.**
 - **⟨C-5⟩** (mechanism inability → UNKNOWN) is unchanged and now distinguishes its own reason dimension.
 
@@ -124,13 +129,13 @@ The refinement is a revision of the **PROPOSED · NON-AUTHORITATIVE** Port Contr
 
 | Site | Proposed change |
 |---|---|
-| **§2 · obligation 3** | Content unchanged (renders INV-KOS-UNKNOWN-001); add a pointer to the structured vocabulary (§4) — the declaration is now structured. |
-| **§3 · Q2** | The candidate-component row *Declared insufficiency* gains: "structured — what was undetermined × why (vocabulary §4)." |
-| **§3 · Q4** | Reconcile: abstention = the `FILLER_UNKNOWN` family → UNKNOWN (⟨C-5⟩); `NO_FILLER` is **not** an abstention — a determinate negative the core evaluates. |
-| **§4 · vocabulary table** | Replace the single flat *declared insufficiency* row with the structured term + the four value-cases (each with its rendered obligation); reconcile the *abstention* row (→ `FILLER_UNKNOWN` family). |
-| **§6 · OQ-1** | Record **OQ-1 resolved** by the AH-1 ruling: *declared insufficiency* has its own vocabulary — now structured. (v1.1 §20 defers OQ-1 to the Logical Architecture; this is that answer.) |
+| **§2 · obligation 3** | Content unchanged (renders INV-KOS-UNKNOWN-001); add a pointer to the structured vocabulary (§4) — the declaration is now one of **two sibling declarations**. |
+| **§3 · Q2** | The candidate-component rows *Declared insufficiency* / *Declared determination* gain: "structured — `insufficiency` (what was not determined × why) vs `determination` (what was determined)." |
+| **§3 · Q4** | Reconcile: abstention = the `FILLER_UNKNOWN` family (the `declared insufficiency` declaration) → UNKNOWN (⟨C-5⟩); `NO_FILLER` (the `declared determination` declaration) is **not** an abstention — a determinate negative the core evaluates. |
+| **§4 · vocabulary table** | Replace the single flat *declared insufficiency* row with the **two sibling terms** + the value-cases (each with its rendered obligation): *declared insufficiency* → `FILLER_UNKNOWN` (+ `reason`: `PARSE_UNAVAILABLE` · `READING_UNDERDETERMINED`); *declared determination* → `NO_FILLER`. Reconcile the *abstention* row (→ `FILLER_UNKNOWN` family). |
+| **§6 · OQ-1** | Record **OQ-1 resolved** by the AH-1 ruling: *declared insufficiency* has its own vocabulary — now the sibling pair *insufficiency / determination* (approved option C). (v1.1 §20 defers OQ-1 to the Logical Architecture; this is that answer.) |
 | **§7 · gates** | **Structure** gate stays ✅ (the value-cases are port vocabulary — r4-4 · ⟨A-3⟩ · §9); **add** the No-domain-capture gate (G-4) and the Anti-laundering gate (G-6). |
-| **§1 · purpose** | One clarifying sentence: a mechanism can now declare **which** insufficiency, so the core can distinguish *"determined absent in the candidate"* from *"could not determine."* |
+| **§1 · purpose** | One clarifying sentence: a mechanism can now declare **which** statement — *"determined absent in the candidate"* (`declared determination`) or *"could not determine"* (`declared insufficiency`) — so the core distinguishes the two honestly. |
 
 ### 5.7 What does NOT change — anywhere
 
@@ -176,9 +181,9 @@ The later authorized slice must pass these **architecture/fitness gates** — pr
 
 | # | Task | Status |
 |---|---|---|
-| **T-1** | **HPA approval of this EP-01 plan** | ⬜ PENDING — the HPA's decision |
-| **T-2** | **Implementation slice** — edit the Port Contract per §5.6 (obligation-3 pointer · Q2/Q4 reconciliation · §4 vocabulary table · §6 OQ-1 resolution record · §7 gates) | ⬜ NOT AUTHORIZED — requires a further, separate, explicit HPA act (the confirmation authorizes planning only) |
-| **T-3** | **RED → GREEN** architecture/fitness gates **G-1…G-8** (property-based) | ⬜ deferred with T-2 |
+| **T-1** | **HPA approval of this EP-01 plan** | ✅ **APPROVED — HPA, 2026-08-23 · option C** (two sibling declarations: `declared insufficiency` · `declared determination`; the revised plan below is the approved form) |
+| **T-2** | **Implementation slice** — edit the Port Contract per §5.6 (obligation-3 pointer · Q2/Q4 reconciliation · §4 vocabulary table · §6 OQ-1 resolution record · §7 gates) | ⬜ NOT AUTHORIZED — plan approval is planning-only; the slice requires a **further, separate, explicit HPA act** |
+| **T-3** | **RED → GREEN** architecture/fitness gates **G-1…G-8** (property-based) | ⬜ deferred with T-2 — same separate authorization |
 | **T-4** | **EP-02 completion review** — independent acceptance (R-34: engineering never accepts its own work) | ⬜ deferred |
 | **T-5** | **Post-implementation reassessment** of v1.1 (expected: v1.1 remains; measured, not assumed) | ⬜ deferred |
 | **T-6** | **AH-4 research-governance recording** (metric version · corpus/family scope · addressed failure modes) | ⬜ SEPARATE authorized artifact — not this plan |
@@ -186,42 +191,48 @@ The later authorized slice must pass these **architecture/fitness gates** — pr
 ## 9 · Progress
 
 - **2026-08-22** — planning act executed: read-only inspection of the Port Contract, v1.1 (§9/§10/§14/§16/§20), Constitution Article 9, P5 evidence (items 2 · 9 · AH-3 row · Threats item 6), Post-Research review (OBS-PR-1…3 · F-1…F-5), HPA confirmation/decision-record. EP-03 readiness derived (§4). Vocabulary determined (§5). Gates specified (§7).
-- **Status:** 📋 **DELIVERED · PROPOSED · NON-AUTHORITATIVE · ⬜ AWAITING THE HPA'S EXPLICIT APPROVAL.** No implementation. Nothing else was touched.
+- **2026-08-23** — **Q-B resolved**: the HPA commissioned a read-only terminology review (`docs/knowledgeos/reviews/20260823-0015-...`, commit `e5cab7c9`); the review concluded `declared insufficiency` is the wrong parent for `NO_FILLER` (two renderings ⇒ two concepts; the `what_is_undetermined` label contradicted its own child) and recommended two sibling terms. **The HPA ruled option C — approve the plan with the structural split** (`declared insufficiency` = `FILLER_UNKNOWN` + `reason`; `declared determination` = `NO_FILLER`; no umbrella; no broadening of `declared insufficiency`). This plan was revised to the approved form (§5.1–§5.6 · §8 · §10 · §11).
+- **Status:** ✅ **EP-01 PLAN APPROVED (HPA, 2026-08-23 · option C) · PLANNING ONLY.** No implementation — T-2/T-3 await a further, separate, explicit HPA act. Nothing else was touched.
 
 ## 10 · Risks
 
 | Risk | Mitigation |
 |---|---|
 | **Naming drift** — plan's derived names vs the HPA's sketch | The plan adopts the HPA's names (`NO_FILLER` · `FILLER_UNKNOWN` · `PARSE_UNAVAILABLE` · `READING_UNDERDETERMINED`) and records the HPA's alternative reason names (`PARSE_LEVEL`/`READING_LEVEL`) as not-adopted synonyms (collision with altitude vocabulary). Confirmed at approval (§11). |
-| **Terminological tension** — "insufficiency" semantically means inability, yet `NO_FILLER` (a determinate negative) sits under it | Resolved by re-scoping the §4 definition ("could not determine **or determined as absent**"); flagged for the HPA at approval (§11 Q-B). |
+| **Terminological tension** — "insufficiency" semantically means inability, yet `NO_FILLER` (a determinate negative) sat under it | **Resolved by the structural split (HPA 2026-08-23, option C)** — `declared insufficiency` is reserved for the inability act (no broadening); `NO_FILLER` moves under the sibling `declared determination`; the `what_is_undetermined` dimension label (which contradicted its own `NO_FILLER` child) is removed. |
 | **Laundering** — `NO_FILLER` used to escape abstention | The anti-laundering guard (§5.5) — justification requirement · core retains UNKNOWN/QUESTIONABLE routing · reason always present on insufficiency. Gate G-6. |
 | **Over-structuring** — port vocabulary drifts into a domain/measurement taxonomy | The value-cases are strictly the AH-1/AH-3 distinction; the research 2×2 abstention taxonomy stays measurement-side (OBS-PR-1). No new values admitted now. |
 | **Scope preemption** — of F-1…F-5 / OQ-2 / OQ-3 / OQ-5 | Explicit out-of-scope block (§3); the refinement is orthogonal to them; their rulings remain the HPA's. |
 | **v1.2 temptation** — research produced interesting results, so "manufacture a v1.2" | The confirmation and this plan's impact analysis say the refinement is boundary-only; the reassessment (T-5) is a separate, measured act. |
 
-## 11 · Open questions — for the HPA at approval
+## 11 · Open questions — resolved and remaining
 
-- **Q-A.** Adopt the derived vocabulary as proposed (names · composition rule · routing) — or adjust?
-- **Q-B.** Confirm the §5.4 re-scope of *declared insufficiency* to include "determined as absent" (the HPA's framing), and the §5.2 position that the core evaluates `NO_FILLER` and never auto-maps it to ABSENT.
-- **Q-C.** One implementation slice for AH-1+AH-3 together (recommended — the dimensions compose; splitting would leave a partially-structured vocabulary), or two sequential slices?
-- **Q-D.** Record **OQ-1 as resolved** by the AH-1 ruling in the same slice (§5.6), or leave OQ-1's record for a separate act?
+- **Q-A. RESOLVED (HPA, 2026-08-23, option C).** The derived vocabulary is adopted **in the option-C form**: names (`declared insufficiency` · `declared determination` · `FILLER_UNKNOWN` · `NO_FILLER` · `PARSE_UNAVAILABLE` · `READING_UNDERDETERMINED`), composition rule, and routing are as §5 — with the structural split approved.
+- **Q-B. RESOLVED (HPA, 2026-08-23, option C).** The §5.4 re-scope is **rejected** — *"do not broaden the existing meaning of `declared insufficiency`"* and *"do not use `declared insufficiency` as an umbrella for both."* The split per the terminology review (`20260823-0015`) stands: `declared insufficiency` = `FILLER_UNKNOWN` + `reason`; `declared determination` = `NO_FILLER`. The §5.2 position — the core evaluates `NO_FILLER` and never auto-maps it to ABSENT — is confirmed.
+- **Q-C.** One implementation slice for AH-1+AH-3 together (recommended — the dimensions compose; splitting would leave a partially-structured vocabulary), or two sequential slices? → **deferred to the implementation authorization** (the HPA decides at that act).
+- **Q-D.** Record **OQ-1 as resolved** by the AH-1 ruling in the same slice (§5.6), or leave OQ-1's record for a separate act? → **deferred to the implementation authorization**.
 
-## 12 · Next actions — STOP for approval
+## 12 · Next actions — STOP for the implementation authorization
 
-1. **STOP.** This planning act is complete. **No code. No contract edit. No implementation.**
-2. The HPA approves or revises this plan (**approval applies to the plan**).
-3. If approved, **implementation is still not authorized** — per the confirmation, acceptance of AH-1/AH-3 "authorizes only the next planning act, not implementation." The T-2…T-5 slice is a **further, separate, explicit** HPA act.
+1. **STOP.** This planning act is **complete and APPROVED** (HPA, 2026-08-23, option C). **No code. No contract edit. No implementation.**
+2. This revised plan is the **approved form** — the reference for the future implementation slice and for the EP-02 completion review.
+3. **Implementation is NOT authorized.** Per the HPA (2026-08-23): *"Approval of the revised plan is approval of the planning act only. Stop again and await a separate explicit implementation authorization."* The **T-2/T-3 slice** is a **further, separate, explicit HPA act** — it may also decide Q-C (one slice vs two) and Q-D (OQ-1 record).
 4. AH-4's governance recording is a separate authorized artifact.
-5. After implementation: reassess v1.1 (T-5) · then the already-waiting OQ-2 · OQ-3 · OQ-5 · F-1…F-5 · AH-5 deferral.
+5. After implementation: **EP-02** independent completion review (R-34) · **reassess v1.1** (T-5) · then the already-waiting OQ-2 · OQ-3 · OQ-5 · F-1…F-5 · AH-5 deferral.
 
 ```text
-EP-01 PORT CONTRACT VOCABULARY REFINEMENT PLAN: DELIVERED · AWAITING APPROVAL
+EP-01 PORT CONTRACT VOCABULARY REFINEMENT PLAN: APPROVED (HPA · 2026-08-23 · option C)
 
-  Vocabulary determined   declared insufficiency = what_is_undetermined (NO_FILLER | FILLER_UNKNOWN)
-                                          × reason (PARSE_UNAVAILABLE | READING_UNDERDETERMINED)
+  Vocabulary determined   declared insufficiency  = FILLER_UNKNOWN
+                                                     × reason (PARSE_UNAVAILABLE | READING_UNDERDETERMINED)
+                          declared determination  = NO_FILLER
+  Sibling split           no umbrella · no broadening of "declared insufficiency" (HPA decision)
+  Routing                 FILLER_UNKNOWN → UNKNOWN → core evaluates
+                          NO_FILLER → determinate candidate-side statement → core evaluates
+                          → may contribute to ABSENT; neither mechanism emits a state or identity
   Boundary honored        port vocabulary only · never domain state/member/event/row (r4-4 · ⟨A-3⟩ · §9)
   Domain untouched        seven states (§9) · Constitution Article 9 · aggregate · Kernel · v1.1 — UNCHANGED
-  Implementation         NOT authorized — further explicit HPA act required
+  Implementation         NOT authorized — separate explicit HPA act required
   Register 25+4          UNCHANGED · OQ-4 UNAUTHORIZED · research CLOSED · Constitution FROZEN
 ```
 
@@ -235,5 +246,6 @@ EP-01 PORT CONTRACT VOCABULARY REFINEMENT PLAN: DELIVERED · AWAITING APPROVAL
 - **Authoritative grounding:** Reference Architecture v1.1 (`20260822-1402`, §9 seven states · §10 ⟨A-2⟩ obligations · §14 ⟨C-5⟩ · §16 altitudes · §20 OQ-1…OQ-5) · Constitution v1.0 (Article 9 · V.3) · Post-Research review (`20260822-1658`, NO CHANGE · OBS-PR-1…3 · F-1…F-5 pending HPA rule).
 - **Evidence:** P5 (`KOS-SNF-RESEARCH-P5-COMPETITION-001.md`) — Established item 9 (110/110, all producers) · Established item 2 (v0.1 0.247 collapse; v0.2 four-way 0.450–1.00, gate 14/14) · AH-3 row + Threats item 6 (definitional artifact) · the decision-support (`20260822-2334`) and decision-record (`20260822-2341`) analyses this plan's design decisions build on.
 - **Predecessor plan:** `docs/plans/20260822-1856-kos-snf-p5-semantic-competition-refinement-plan.md` — executed, closed by EP-02 (commit `32554cbd`); this plan follows it, does not supersede it.
-- **Discipline honored:** EP-01 planning stage — plan produced, **stopped for explicit HPA approval** (approval applies to the plan) · EP-03 readiness derived from the repository, nothing asked of the human that the repo answers · no code · no contract edit · no v1.1/Constitution/aggregate/Kernel/SNF/corpus modification · no v1.2 · no experiment (OQ-4 unauthorized) · no new law, invariant, member, event, or register row · **acceptance and act-authorization strictly separated** — plan approval does not authorize implementation · register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · the strongest statement never exceeds the evidence (P5 is toy-world; no natural-language claim).
-- **Status:** 📋 **EP-01 PLAN — DELIVERED · PROPOSED · NON-AUTHORITATIVE · ⬜ AWAITING THE HPA'S EXPLICIT APPROVAL.** Next: the HPA's decision on this plan (§12) — then, separately and explicitly, the implementation authorization (or revision). **The Kernel still waits.**
+- **Q-B resolution:** terminology review `docs/knowledgeos/reviews/20260823-0015-KOS-EP01-QB-terminology-review-declared-insufficiency.md` (commit `e5cab7c9`) — read-only review concluding `declared insufficiency` is the wrong parent for `NO_FILLER` (two renderings ⇒ two concepts) and recommending two sibling terms · **HPA decision 2026-08-23 (option C): approve the plan with the structural split** — `declared insufficiency` reserved for `FILLER_UNKNOWN` + `reason` · `declared determination` the sibling term for `NO_FILLER` · no umbrella · no broadening of `declared insufficiency` · the routing preserved (FILLER_UNKNOWN → UNKNOWN → core evaluates; NO_FILLER → determinate candidate-side statement → core evaluates → may contribute to ABSENT) · neither mechanism emits a state or identity. This plan was revised to the approved form.
+- **Discipline honored:** EP-01 planning stage — plan produced, **revised per the HPA's option-C decision, and APPROVED (2026-08-23)** · EP-03 readiness derived from the repository · no code · no contract edit · no v1.1/Constitution/aggregate/Kernel/SNF/corpus modification · no v1.2 · no experiment (OQ-4 unauthorized) · no new law, invariant, member, event, or register row · **acceptance and act-authorization strictly separated** — plan approval does NOT authorize implementation (T-2/T-3 remain a further, separate, explicit HPA act) · register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · the strongest statement never exceeds the evidence (P5 is toy-world; no natural-language claim).
+- **Status:** ✅ **EP-01 PLAN — APPROVED (HPA, 2026-08-23 · option C — two sibling declarations) · PLANNING ONLY.** Next: the **separate, explicit implementation authorization** for T-2/T-3 (§12) — then EP-02 · v1.1 reassessment · OQ-2/OQ-3/OQ-5/F-1…F-5. **The Kernel still waits.**

@@ -2,7 +2,7 @@
 
 > **Source:** Human Principal Architect (HPA), 2026-08-22 — **message 7** (recorded verbatim-in-substance in §0). The HPA reviewed the EP-01 plan, confirmed it is correctly completed and stopped at the right gate, and before approving raised one scrutiny point — Q-B — the parent-term question — and commissioned this **read-only terminology review** of the existing ubiquitous language.
 > **Position:** between the EP-01 plan (commit `c5040e4f`) and its approval gate. **This review is advisory — it recommends, decides nothing, and creates no authority.** The HPA decides: approve the plan as written, approve with a rename, approve with a structural split, or revise.
-> **Status:** 📋 **DELIVERED · RECOMMENDATION ONLY · NON-AUTHORITATIVE.** No code · no contract edit · no plan edit · no v1.1 change · no Constitution change · the plan remains ⬜ AWAITING THE HPA'S EXPLICIT APPROVAL.
+> **Status:** ✅ **DELIVERED · RECOMMENDATION ADOPTED — the HPA ruled **option C** on 2026-08-23** (approve the EP-01 plan with the structural split — see §6). No code · no contract edit · no v1.1 change · no Constitution change. The EP-01 plan is now **APPROVED (planning only)**; implementation (T-2/T-3) awaits a separate explicit HPA act.
 
 ---
 
@@ -130,22 +130,31 @@ It is the most DDD-faithful outcome: two renderings ⇒ two concepts (the rule t
 
 ---
 
-## 6 · The decision (HPA) — ⬜ OPEN
+## 6 · The decision (HPA) — ✅ **C — APPROVE WITH THE SPLIT** (2026-08-23)
+
+> **HPA Decision — Q-B: Choose C** (verbatim-in-substance):
+>
+> *"Approve the EP-01 plan with the structural split recommended by the terminology review:
+> * `declared insufficiency` is reserved for `FILLER_UNKNOWN` and its `reason` dimension (`PARSE_UNAVAILABLE` / `READING_UNDERDETERMINED`).
+> * `declared determination` is the sibling port-level term for `NO_FILLER`.
+> * Do not use `declared insufficiency` as an umbrella for both.
+> * Do not broaden the existing meaning of `declared insufficiency`.
+>
+> The rationale is DDD/ubiquitous-language integrity: `FILLER_UNKNOWN` represents provider inability, whereas `NO_FILLER` represents a provider determination about the candidate representation. Their downstream routing and semantic responsibility differ and therefore they must remain distinct published-language concepts.
+>
+> Record this as an HPA decision and update the EP-01 plan accordingly, but do not implement T-2/T-3 yet. Approval of the revised plan is approval of the planning act only. Stop again and await a separate explicit implementation authorization.
+>
+> Preserve all existing boundaries: no v1.1 change, no Constitution change, no aggregate change, no Kernel implementation, no SNF implementation, no corpus/research reopening, no OQ-4."*
+
+**The HPA also affirmed the review's key insight:** *"the two declarations belong to different semantic categories"* — `FILLER_UNKNOWN` = the provider **cannot determine** the filler → epistemic insufficiency → UNKNOWN; `NO_FILLER` = the provider **determined** the candidate representation has no filler → a determinate negative the core evaluates — and **"option C is the strongest DDD decision."** The routing is preserved:
 
 ```text
-EP-01 plan (c5040e4f) is DELIVERED · PROPOSED · NON-AUTHORITATIVE.
-Approval is the HPA's alone. The options:
-
-  ☐ A — approve as written           (declared insufficiency umbrella, broadened definition)
-  ☐ B — approve with rename          (neutral umbrella, e.g. declared determination)
-  ☐ C — approve with split           (declared insufficiency · declared determination — siblings)
-  ☐ D — revise / return the plan
-
-Any of A/B/C resolves Q-B and permits approval of the plan (with the §5.1/§5.4/§5.6
-adjustment if B or C). Approval of the plan remains approval of a PLANNING act only —
-it does NOT authorize the T-2…T-5 implementation slice, which remains a further,
-separate, explicit HPA act. The Kernel still waits.
+FILLER_UNKNOWN → UNKNOWN → core evaluates
+NO_FILLER      → determinate candidate-side statement → core evaluates → may contribute to ABSENT
+Neither mechanism gets to emit an epistemic state or identity.
 ```
+
+**Consequence:** the EP-01 plan is **approved** in the option-C form (§5.1 two sibling declarations · §5.4 no broadening · §5.6 sites · Q-B closed). Approval is **planning-only**: the T-2/T-3 implementation slice remains a **further, separate, explicit HPA act**. The sequence stands: `P5 closed → AH decisions → EP-01 planning → Q-B resolved → revised EP-01 plan → HPA approval → separate implementation authorization → G-1…G-8 → EP-02 → v1.1 reassessment`. **The Kernel still waits.**
 
 ---
 
@@ -153,5 +162,7 @@ separate, explicit HPA act. The Kernel still waits.
 
 - **Commission:** HPA, 2026-08-22 (**message 7**) — reviewed the EP-01 plan (commit `c5040e4f`), confirmed it correctly completed and stopped at the right gate, raised Q-B (the `declared insufficiency` parent question), declined to auto-approve the §5.4 broadening, and commissioned this read-only terminology review. *"If it concludes the terminology is sound, then approve EP-01."* Recorded verbatim-in-substance (§0).
 - **Grounding inspected (read-only):** Reference Architecture v1.1 (P-2 · §9 seven states · §10 ⟨A-2⟩ obligations 1, 2, 3, 6 · §14 ⟨C-5⟩ · §15 ⟨C-1⟩/⟨R-1⟩ · ConflictState) · Constitution v1.0 (Article 9 · Contradiction/resolution) · Expression↔Meaning Port Contract (obligation 3 · §4 vocabulary table · §Q4 · §Q6 · §Q8) · P5 competition corpus (`unknown_vs_not_expressed` 110/110 · v0.1 0.247 collapse · v0.2 four-way 0.45–1.00 gate 14/14) · ES-006.1 promotion ladder · AH-1…AH-5 decision record / confirmation (commits `29e28d05` · `1d6a5ea9`).
-- **Discipline honored:** read-only — no code, no contract edit, no plan edit, no v1.1 change, no Constitution change · advisory — the review recommends, the HPA decides · the strongest statement never exceeds the evidence (renderings and reservations are cited; P5 is toy-world) · acceptance and act-authorization kept strictly separate — even approval of the plan authorizes only planning, not the T-2…T-5 slice · register **25+4 unchanged** · Constitution **FROZEN** · **the Kernel still waits.**
-- **Status:** 📋 **Q-B TERMINOLOGY REVIEW — DELIVERED · RECOMMENDATION ONLY.** Decision field **⬜ OPEN (HPA)** · EP-01 plan **⬜ AWAITING THE HPA'S EXPLICIT APPROVAL** · no further engineering act authorized.
+- **HPA decision (2026-08-23):** **option C — approve the EP-01 plan with the structural split** (verbatim-in-substance in §6) · *"the two declarations belong to different semantic categories"* · *"option C is the strongest DDD decision"* · routing preserved (FILLER_UNKNOWN → UNKNOWN → core evaluates; NO_FILLER → determinate candidate-side statement → core evaluates → may contribute to ABSENT; neither mechanism emits a state or identity) · boundaries preserved (no v1.1 · no Constitution · no aggregate · no Kernel · no SNF · no corpus/research reopening · no OQ-4).
+- **Discipline honored:** read-only — no code, no contract edit, no plan edit, no v1.1 change, no Constitution change · advisory — the review recommends, the HPA decides · the strongest statement never exceeds the evidence (renderings and reservations are cited; P5 is toy-world) · acceptance and act-authorization kept strictly separate — approval of the plan authorizes only planning, not the T-2/T-3 slice · register **25+4 unchanged** · Constitution **FROZEN** · **the Kernel still waits.**
+- **HPA decision (2026-08-23):** **option C — approve the EP-01 plan with the structural split** (recorded verbatim-in-substance in §6) · **"option C is the strongest DDD decision."** The terminology review's recommendation was **adopted**; the EP-01 plan was revised to the option-C form and is **APPROVED (planning only)**.
+- **Status:** ✅ **Q-B TERMINOLOGY REVIEW — DELIVERED · RECOMMENDATION ADOPTED.** Decision field **✅ C (HPA, 2026-08-23)** · EP-01 plan **✅ APPROVED (planning only)** · **implementation (T-2/T-3) NOT authorized** — a separate, explicit HPA act · no further engineering act authorized by this act.

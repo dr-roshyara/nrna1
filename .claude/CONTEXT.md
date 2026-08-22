@@ -1,10 +1,34 @@
 # Current Working State
 
-**Updated:** 2026-08-23 *(additive — the **Q-B TERMINOLOGY REVIEW** block is newest: the HPA's message-7 scrutiny point — is `declared insufficiency` the right parent for both `NO_FILLER` and `FILLER_UNKNOWN`? — is answered by a read-only terminology review of the existing ubiquitous language (DELIVERED · RECOMMENDATION ONLY); the review concludes the HPA's instinct is correct (two renderings ⇒ two concepts; the plan's `what_is_undetermined` label contradicts its own `NO_FILLER` child) and recommends two sibling terms (`declared insufficiency` · `declared determination`) over the broaden-the-definition fix; the HPA now decides A/B/C/D on the plan — the EP-01 plan itself is byte-identical, still AWAITING APPROVAL; implementation still requires a further explicit HPA act)*
+**Updated:** 2026-08-23 *(additive — the **EP-01 PLAN APPROVED (option C)** block is newest: the HPA ruled option C on Q-B — approve the EP-01 plan with the structural split — `declared insufficiency` reserved for `FILLER_UNKNOWN` + reason · `declared determination` the sibling term for `NO_FILLER` · no umbrella · no broadening; the plan was revised to the approved form and is ✅ APPROVED (PLANNING ONLY); implementation T-2/T-3 is NOT authorized — a separate explicit HPA act; the terminology-review block below records the Q-B resolution that produced this ruling)*
 
 ---
 
-## 📍 UPDATE (2026-08-23, **Q-B TERMINOLOGY REVIEW — *EP-01 PLAN · `declared insufficiency` PARENT QUESTION — DELIVERED · RECOMMENDATION ONLY · NON-AUTHORITATIVE · DECISION ⬜ OPEN (HPA) · THE PLAN REMAINS ⬜ AWAITING THE HPA'S EXPLICIT APPROVAL · READ-ONLY · NO CODE · NO CONTRACT/PIAN EDIT*: the HPA's pre-approval scrutiny point is resolved-in-evidence — a read-only terminology review of the existing ubiquitous language answers Q-B: `declared insufficiency` is correct for `FILLER_UNKNOWN` and wrong as the parent of `NO_FILLER`**)
+## 📍 UPDATE (2026-08-23, **EP-01 PLAN APPROVED — *PORT CONTRACT VOCABULARY REFINEMENT (AH-1 · AH-3) — ✅ APPROVED (HPA · 2026-08-23 · OPTION C — TWO SIBLING DECLARATIONS) · PLANNING ONLY · NO CODE · IMPLEMENTATION (T-2/T-3) NOT AUTHORIZED — A SEPARATE, EXPLICIT HPA ACT*: Q-B resolved — the HPA chose C, the terminology review's recommendation, and approved the plan in the two-sibling-declaration form**)
+
+**Act → ruling → delivery:** the HPA (2026-08-23) ruled **option C** on Q-B: *"Approve the EP-01 plan with the structural split recommended by the terminology review"* — **`declared insufficiency`** reserved for `FILLER_UNKNOWN` + `reason` (`PARSE_UNAVAILABLE` / `READING_UNDERDETERMINED`) · **`declared determination`** the sibling port-level term for `NO_FILLER` · **no umbrella** · **no broadening** of `declared insufficiency` · rationale = DDD/ubiquitous-language integrity (*"the two declarations belong to different semantic categories"* · *"option C is the strongest DDD decision"*). The EP-01 plan (`docs/plans/20260822-2354-...-plan.md`) was **revised to the approved option-C form** (§5.1 two sibling declarations · §5.4 no broadening · §5.6 sites · §11 Q-A/Q-B resolved · §12 stop-for-authorization) — still planning only, no code, no contract edit. The decision was recorded in the review's decision field (`docs/knowledgeos/reviews/20260823-0015-...`, §6 ✅ C).
+
+**The approved vocabulary (option C):**
+```
+declared insufficiency        candidate-side · port vocabulary · §4
+  └── FILLER_UNKNOWN          "a filler may exist, but the provider could not determine which"
+        └── reason            PARSE_UNAVAILABLE | READING_UNDERDETERMINED   (AH-3)
+                                   ↓  UNKNOWN (⟨C-5⟩ · obligation 3) → core evaluates
+declared determination        candidate-side · port vocabulary · §4
+  └── NO_FILLER               "the role/slot is not expressed" — determinate negative (AH-1)
+                                   ↓  evidence toward ABSENT-direction → core evaluates
+Neither mechanism emits an epistemic state or identity. (obligations 1, 4, 6)
+```
+
+**Routing preserved (HPA):** `FILLER_UNKNOWN` → UNKNOWN → core evaluates · `NO_FILLER` → determinate candidate-side statement → core evaluates → may contribute to ABSENT. **Composition closure:** `{NO_FILLER} ∪ {FILLER_UNKNOWN × (PARSE_UNAVAILABLE | READING_UNDERDETERMINED)}` — no reason on `NO_FILLER`. Gates **G-1…G-8** scoped for the future slice. Anti-laundering guard unchanged (§5.5).
+
+**Boundaries honored:** port vocabulary only — never domain state/member/event/row (r4-4 · ⟨A-3⟩ · §9) · no v1.1 · no Constitution change · no aggregate change · no Kernel · no SNF implementation · no corpus/research reopening · no OQ-4 · register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED**.
+
+**NEXT (NOT authorized here):** **STOP — the T-2/T-3 implementation slice requires a separate, explicit HPA implementation authorization** (which may also decide Q-C one-slice-vs-two and Q-D OQ-1 record) · then **EP-02** independent completion review (R-34) · then the **v1.1 reassessment** (expected: v1.1 remains; measured, not assumed) · then OQ-2 / OQ-3 / OQ-5 / F-1…F-5 · AH-5 deferral · AH-4 governance recording separate. **The Kernel still waits.**
+
+---
+
+## 📍 UPDATE (2026-08-23, **Q-B TERMINOLOGY REVIEW — *EP-01 PLAN · `declared insufficiency` PARENT QUESTION — DELIVERED · RECOMMENDATION ADOPTED (HPA, 2026-08-23 · OPTION C) · DECISION ✅ C · READ-ONLY · NO CODE · NO CONTRACT/PLAN EDIT*: the HPA's pre-approval scrutiny point is resolved-in-evidence — a read-only terminology review of the existing ubiquitous language answers Q-B: `declared insufficiency` is correct for `FILLER_UNKNOWN` and wrong as the parent of `NO_FILLER`**)
 
 **Commission → delivery:** the HPA (message 7) confirmed the EP-01 plan correctly completed and stopped at the right gate, raised one scrutiny point before approving — *"Should `NO_FILLER` really live under the term 'declared insufficiency'?"* — declined to auto-approve the plan's §5.4 broadening (*"or determined as absent"*), and commissioned a **read-only terminology review**: is `declared insufficiency` the correct bounded-context parent for both `NO_FILLER` and `FILLER_UNKNOWN`, or should the parent be renamed neutrally (`declared determination` / `declared qualification`) while retaining the AH-1 distinction? Delivered: `docs/knowledgeos/reviews/20260823-0015-KOS-EP01-QB-terminology-review-declared-insufficiency.md`.
 
