@@ -1,6 +1,17 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **`KOS-OPERATING-MODEL-001` GOVERNANCE ADOPTION REVIEW — START GATE REFUSAL (verifier cannot be the reviewer; no governance lane)** block is the newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **`KOS-OPERATING-MODEL-001` GOVERNANCE ADOPTION REVIEW — START GATE REFUSAL #2 (correction author cannot be the reviewer; no governance lane)** block is the newest; older rows it contradicts are superseded by it)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **`KOS-OPERATING-MODEL-001` — GOVERNANCE ADOPTION REVIEW · **START GATE REFUSAL #2** — PO/ARB directed *"start governence adaptation review of KOS-OPERATING-MODEL-001"* (verbatim); the review **did not occur again** — reviewer identity bar: this process IS the **CORRECTION-001 author** `b51dba91` (barred; also no lane at all — bootstrap `UNRESOLVED`); lane bar: **still no `role = governance` lane exists** on the record for any process (`grants: []`); item **STOPPED** (seq 9); ⛔ NOT ADOPTED · NOT AUTHORIZED — nothing recommended, nothing adopted** — supersedes nothing; the VERIFIED block and refusal #1 (`fc59bb0a`) below stand; the separate `KOS-NEXT-ACTOR-ORCHESTRATION-001` / `AST-018` slice is PRESERVED and continues independently)
+
+| | |
+|---|---|
+| 🎬 **PO/ARB direction** | in-session 2026-08-22, verbatim: **"start governence adaptation review of KOS-OPERATING-MODEL-001"** *(sic — "governence"/"adaptation"; estate term = Governance adoption review)* — the declared sequence's step 5 directive, directed at this process after the fc59bb0a refusal. Directs a **step**, not a process; names no reviewer. Recording creates **no authority, no lane, no grant, no state change**. |
+| ⛔ **Gate determination — REFUSED (this process)** | **No adoption review performed. Nothing recommended. Nothing adopted.** Two independent failures (Phase 0 gate, house precedent `…-d31ea60f.md` / `…-fc59bb0a.md`): (1) **identity bar** — this process `b51dba91` is the **CORRECTION-001 author**; the adoption reviewer must NOT be the correction author (separation-of-duties chain: producer → verifier → adoption reviewer → PO/ARB; §38 four states stay distinct); also holds **no lane at all** on the record; (2) **lane bar** — **no `role = governance` lane exists** on the authoritative record (seq 1–9: implementation `259c1966` HANDED_OFF · verification `fc59bb0a` STOPPED). Bootstrap: `UNRESOLVED · authorized_to_act=false`, next actor `governance`. |
+| 📜 **Recorded** | `docs/knowledgeos/reviews/2026-08-22-KOS-OPERATING-MODEL-001-GOVERNANCE-ADOPTION-REVIEW-START-GATE-REFUSAL-b51dba91.md` — **no transitions recorded; item remains STOPPED** (fail-closed). Second refusal on this work item (first: `…-fc59bb0a.md`). Both mirror the CORRECTION-001 refusals which the PO/ARB ruled **correct behaviour, not defects**. |
+| ✅ **Status + NEXT** | **IMPLEMENTED ≠ VERIFIED ≠ ADOPTED ≠ AUTHORIZED.** **NEXT: PO/ARB appoints a fresh, separate governance adoption reviewer** (a new process; NOT `b51dba91` the correction author · NOT `fc59bb0a` the verifier · NOT `259c1966` the producer · not `5c0e13c1` · `8a525719` · `8deac5de` · `d1612e03` · `b64828fe` · `7c2690ae` · PO/ARB) → Governance records CONTINUATION (exits STOPPED, Inv E) → REGISTER(governance) → HANDOFF → Human START → the appointed reviewer performs the review → STOP → **PO/ARB adoption decision (NOT automatic)**. ⛔ no adoption by any process · no claim of authorization · no AST-015/016/017/018 change · no EKS-07. |
 
 ---
 
