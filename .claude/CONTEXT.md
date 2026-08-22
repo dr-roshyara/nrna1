@@ -1,6 +1,17 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **STEP ⑤ — KERNEL DECISION RECORDED** block (AX) is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **KNOWLEDGEOS CONSTITUTION v1.0 PRODUCED** block (AY) is newest; older rows it contradicts are superseded by it)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **KNOWLEDGEOS CONSTITUTION v1.0 PRODUCED — THE DESTINATION ARTIFACT — "THE NEXT ACT IS NOT DISCOVERY. IT IS LAW FORMATION." (HPA) — SIX CHAPTERS: PREAMBLE (HEAD 43 + FINAL RULE) · CH I CONSTITUTIONAL IDENTITY (HEAD 43 + THREE CLAUSE REFINEMENTS ABSORBED + "MATHEMATICS DESCRIBES, NEVER DEFINES") · CH II THE KERNEL LAWS (ARTICLES 1–11, SHALL REGISTER, TWO MERGES STATED INSIDE) · CH III THE KERNEL BOUNDARY (KERNEL PRESERVE → ENGINE/MECHANISM GOVERN → REPRESENTATION/IMPLEMENTATION ENABLE · KERNEL DOES NOT DO THE REASONING · NO ENGINE MAY VIOLATE AN ARTICLE) · CH IV NEGATIVE BOUNDARY (FIVE NON-IDENTITIES AS THE ENFORCEMENT-FACE OF THE ARTICLES) · CH V AMENDMENT DISCIPLINE (ENGINEERING EVOLUTION FREE · CONSTITUTIONAL AMENDMENT REQUIRED FOR ARTICLES/CHARACTER/NEGATIVE BOUNDARY/KERNEL BOUNDARY/DISCIPLINE · AMENDMENT NEVER WEAKENS, NEVER ADDS CONCEPTS) · CH VI STATUS & RATIFICATION — PROPOSED · NON-AUTHORITATIVE PENDING HPA RATIFICATION · AFTER RATIFICATION: REFERENCE ARCHITECTURE → IMPLEMENTATION MODEL (CONFORM, NEVER EXTEND)**)
+
+| | |
+|---|---|
+| 📐 **Destination artifact** | `docs/knowledgeos/architecture/20260822-0951-KOS-EP01-Constitution-v1.0.md` — the **formal governing instrument**, produced per the HPA's commissioning prompt (`docs/knowledgeos/reviews/20260822-0951-KOS-EP01-Constitution-v1.0-commissioning-prompt.md`: *"Act as Constitutional Architect. … Convert selected laws into constitutional articles."*). ⭐ PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE — pending HPA ratification. |
+| 📜 **Content (6 chapters)** | **Preamble** (Head 43 = constitutional identity · the final rule) · **Ch I** Constitutional Identity (Head 43 + the three clause refinements constitutionally absorbed · "mathematics describes, never defines") · **Ch II** the eleven laws as **constitutional articles** (SHALL register · each with rendered rows + failure signature · the two merges stated inside: NonInterference in Article 2 · Context-001 in Article 1) · **Ch III** Kernel Boundary (KERNEL PRESERVE → Engine GOVERN → Mechanisms GOVERN → Representations ENABLE → Implementation ENABLE · the kernel does not do the reasoning · no engine/mechanism/representation may violate an article · implementation out of constitutional scope) · **Ch IV** Negative Boundary (the five non-identities as the enforcement-face of the articles — each refusal tied to the article it enforces) · **Ch V** Amendment Discipline (engineering evolution free · constitutional amendment required for the eleven articles / the character / the negative boundary / the kernel boundary / the discipline itself · amendment refines wording, never weakens, never adds concepts) · **Ch VI** Status & Ratification (PROPOSED pending HPA ratification · register 25+4 unchanged · upon ratification = governing instrument). |
+| ✅ **Disciplines** | No new concepts · no new rows · no new philosophy · no implementation design · the final rule · SHALL register per step-⑤ selected wording. Corpus closed — *"adding knowledge to the kernel would violate the very discipline it is trying to establish."* |
+| **NEXT** | **HPA ratification of Constitution v1.0** — then **Reference Architecture → Implementation Model** (SHALL conform to the Constitution, SHALL NOT extend it). The frozen sequence ① R-1 → ② P3 → ③ P4 → ④ P5 → ⑤ kernel decision → **Constitution v1.0** is complete except for ratification. |
 
 ---
 
