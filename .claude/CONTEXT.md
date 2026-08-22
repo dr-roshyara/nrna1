@@ -1,6 +1,22 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **AH-1…AH-5 HPA DECISION RECORD** block is newest: five proposed rulings recorded (AH-1 ACCEPT · AH-2 REJECT/CORROBORATION · AH-3 ACCEPT · AH-4 ACCEPT AS GOVERNANCE · AH-5 DEFER) · acceptance fields ⬜ OPEN — none final until the HPA confirms · no act authorized · next = the HPA's explicit confirmation, then authorized Port Contract / governance acts; the decision-support block below stands as the analysis basis)*
+**Updated:** 2026-08-22 *(additive — the **AH-1…AH-5 HPA CONFIRMATION** block is newest: HPA confirms the five rulings · **decision gate CLOSED** · AH-1 ACCEPT · AH-2 REJECT/CORROBORATION · AH-3 ACCEPT · AH-4 ACCEPT AS GOVERNANCE · AH-5 DEFER · only next planning acts authorized (not implementation) · no v1.1/Constitution/aggregate/Kernel/SNF/corpus modification in this act · STOP — await next explicit engineering authorization; the decision-record block below stands as the proposal basis)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **AH-1…AH-5 HPA CONFIRMATION — *DECISION GATE CLOSED · THE FIVE RULINGS ARE FINAL (HPA) · ONLY NEXT PLANNING ACTS AUTHORIZED · NO IMPLEMENTATION · NO MODIFICATION OF v1.1 / CONSTITUTION / AGGREGATE / KERNEL / SNF / CORPUS IN THIS ACT · STOP*: AH-1 ACCEPT · AH-2 REJECT/RECORD AS CORROBORATION · AH-3 ACCEPT · AH-4 ACCEPT AS RESEARCH GOVERNANCE · AH-5 DEFER**)
+
+**Act → record:** the HPA issued the explicit confirmation closing the AH-1…AH-5 decision gate — *"Confirm the five proposed rulings exactly as recorded … This confirmation closes the AH-1…AH-5 decision gate."* Recorded verbatim-in-substance as `docs/knowledgeos/reviews/20260822-2346-KOS-EP01-AH1-5-HPA-confirmation.md` (✅ **DECISION GATE CLOSED**).
+
+**The five rulings — FINAL:** **AH-1 ACCEPT** — refine the Port Contract so declared insufficiency distinguishes *"no filler / determined absent"* from *"filler unknown / could not determine"* (strongest P5-derived refinement) · **AH-2 REJECT / RECORD AS CORROBORATION** — the 0.587 wrong-agreement result confirms an existing rule, requires no new rule · **AH-3 ACCEPT** — distinguish *parse-level insufficiency* from *semantic/reading-level underdetermination* (composes with AH-1, separate dimension) · **AH-4 ACCEPT AS RESEARCH GOVERNANCE** — every future competence/promotion claim must name metric version · corpus/family scope · addressed failure modes; no architecture change · **AH-5 DEFER** — asserted-vs-possible not decided (P5 did not establish it); must not be resolved by inference.
+
+**Authorized (strictly scoped, planning-only):** AH-1/AH-3 → only the **next planning act** — a separate **EP-01 plan** for the Expression↔Meaning **Port Contract vocabulary refinement** (not implementation) · AH-4 → only **preparation of the research-governance recording** · AH-2 → no architectural action · AH-5 → deferred.
+
+**NOT authorized in this act:** modification of v1.1 / Constitution / aggregate / Kernel / SNF mechanisms / research corpus · no v1.2 · no experiment (OQ-4 unauthorized) · no SNF winner / mechanism promotion / composite authority · no implementation.
+
+**The architectural conclusion (HPA):** *"We are not refining the KnowledgeOS domain model because of SNF research."* The domain already has the correct distinction between UNKNOWN, ABSENT and FALSE; the evidence points to a **boundary/contract vocabulary refinement**, not a new aggregate, invariant, or constitutional concept. Register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · **the Kernel still waits**.
+
+**NEXT (NOT authorized here):** **STOP — await the HPA's next explicit engineering authorization.** The authorized next acts are the separate EP-01 plan for the Port Contract vocabulary refinement (AH-1/AH-3) and the governance recording (AH-4), to be commissioned explicitly; then resolve OQ-1 · OQ-2 · OQ-3 · OQ-5 · F-1…F-5; then reassess v1.1 (remains | controlled v1.2 on material impact only).
 
 ---
 
