@@ -62,3 +62,37 @@ The acceptance is registered on the record as **grant 26 `G-KOS-GOV-STATE-DURABI
 ---
 
 **Traceability:** PO/ARB acceptance act 2026-08-22 (quoted §1, verbatim note) · Architecture repair `933c0713` + disposition record · Governance bounded re-verification `849c0cca` · commission registration `8b92a100` · bounded review `ff50a2cf` · independent DV review `a8ce5a39` · DV correction `2f0301c2` · grant 26 `…-DV-CORRECTION-ACCEPTANCE` (AUTHORIZED) · `R-34`/`P-2` (acceptance is the PO/ARB's — delivered) · `G-2`/`R5b` · `INV-ATTR-1`/`INV-ATTR-2` (self-declared identity) · `ES-004.3` · placement: `scripts/doc-placement.php` (product-specific · knowledgeos → `docs/knowledgeos`, exit 0); `reviews/` per the review README convention
+
+---
+
+## 6 · Clarifying note (PO/ARB, appended 2026-08-22) — **the acceptance does NOT close the durability observation**
+
+The PO/ARB supplemented the acceptance with the following clarification. It is **appended, not substituted** — §1–§5 stand as recorded; §3's prerequisite wording is amplified by this note.
+
+**Why "do not reject because of this" was said.** The untracked artifacts are **not** a reason to reject the Architecture repair; they **are** a valid governance observation that must remain visible. The distinction the PO/ARB drew:
+
+| Question | Answer |
+|---|---|
+| Did Architecture repair `RV-1…RV-7`? | ✅ Yes |
+| Did Governance verify the repair evidence? | ✅ Yes |
+| Is the correction chain acceptable for PO/ARB decision? | ✅ Yes |
+| Is the migration execution ready? | ❌ No |
+| Is the durability problem completely solved? | ❌ No |
+
+The untracked artifacts are evidence of the **original problem category** — *"Governance state exists, but durability of governance evidence is incomplete"* — which is **exactly the class of problem the durability migration is intended to address**. Rejecting the correction because the durability problem still exists would create a circular dependency: migration is needed to fix durability → reject the correction because durability exists → cannot authorize migration → durability remains. The purpose of the correction workflow is to reach the point where migration authorization *can be considered*.
+
+**The acceptance wording, final (PO/ARB):**
+
+> **"Accepted for correction-chain completion. Not accepted as migration authorization. Untracked governance artifacts remain an explicit migration prerequisite."**
+
+**The durability observation REMAINS OPEN — it is NOT closed by this acceptance.** To make that unambiguous, the observation is now carried with an explicit owner and resolution:
+
+```
+Observation:  Governance artifacts may exist outside durable tracked history
+Owner:        Migration preparation
+Resolution:   KOS-AIP-GOV-STATE-DURABILITY migration
+```
+
+**Consequence on the record:** this acceptance closes the **correction-chain findings only** (`DV-1…DV-7` / `RV-1…RV-7`, per §2). It does **not** close the durability observation. No reader may claim *"the governance durability problem is solved"* — it is **not** solved. The observation stays open and visible, owned by migration preparation, resolved by the migration.
+
+**Traceability (this appendix):** PO/ARB clarifying note 2026-08-22 (quoted above) · appended to the acceptance registration after grant 26 `…-DV-CORRECTION-ACCEPTANCE` (AUTHORIZED) · supersedes nothing — §1–§5 intact · `ES-004.3` append-only discipline
