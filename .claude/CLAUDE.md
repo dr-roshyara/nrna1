@@ -842,6 +842,30 @@ Never finish a work session without updating these files.
 
 **Discovered work never becomes a sentence in a reply.** If a commission surfaces work outside its scope: **create a backlog item** (`docs/publicdigit/backlog/PBDIGIT-nn-*.md`), point the originating story at it, and say *"I found work outside this story's scope; I recommend `PBDIGIT-nn` rather than extending this commission."* **One story · one implementation · one commit · one review · the rest becomes backlog.**
 
+### 📋 Governed AI session completion — Session Completion Report (ADOPTED OPERATIONAL PRACTICE)
+
+A governed AI session that completes its responsibility produces a **Session Completion Report** per the canonical protocol `docs/knowledgeos/governance/SESSION-COMPLETION-HANDOFF-PROTOCOL.md` (**v1.1 · ADOPTED OPERATIONAL PRACTICE** — PO/ARB act 2026-08-22). It answers **"who should act next?"**; the End-of-Commission checklist above answers **"has the session completed its obligations?"** — the two complement, never a second completion discipline (`ES-005.4`). The report is **advisory**: it recommends, assigns nothing, and creates no authority.
+
+**Session Completion Template:**
+
+```yaml
+session_completion:
+  status:            # workflow state consumed from the authoritative record
+  completed_work:
+  evidence:
+  open_items:
+
+next_actor:
+  recommended_role:  # declared role vocabulary only — never invent a role
+  reason:            # the rule that produces the recommendation
+  blocking_condition:
+
+authorization:
+  current_session_can_continue:   # capability, NOT authorization (F1)
+  authorized_to_act:              # workflow state + Governance + humanAct only
+  requires_human_decision:
+```
+
 ## Commit message IDs
 
 | Change | Subject carries |

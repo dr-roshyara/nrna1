@@ -415,7 +415,7 @@ The two answer **different questions** and are both binding: the checklist close
 - ⛔ do not modify any DV correction;
 - ⛔ do not create an EKS-07 implementation.
 
-**Next steps (post-adoption, v1.1):** ① ✅ **F1/F3 amendment applied** (this document is v1.1; F2 recorded in the adoption registration) · ② **agent templates** (`.claude` / `.codex` / `AGENTS.md`) — now permitted: PO/ARB adoption + Governance review + operational practice accepted · ③ **operational handoff test** · ④ **continue the `KOS-AIP-GOV-STATE-DURABILITY` migration** (next-actor ambiguity operationally solved).
+**Next steps (post-adoption, v1.1):** ① ✅ **F1/F3 amendment applied** (this document is v1.1; F2 recorded in the adoption registration) · ② ✅ **agent templates applied** (`.claude` / `.codex` / `AGENTS.md`) — PO/ARB confirmed the reading of the "after Governance acceptance" gate on 2026-08-22, resolving the independent v1.1 review's 🟡 observation · ③ **operational handoff test** · ④ **continue the `KOS-AIP-GOV-STATE-DURABILITY` migration** (next-actor ambiguity operationally solved).
 
 ---
 
