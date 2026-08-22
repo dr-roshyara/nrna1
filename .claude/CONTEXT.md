@@ -1,6 +1,18 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **`KOS-OPERATING-MODEL-001` FRESH VERIFIER DECLARED + FOLLOW-UP CAPABILITY DESIGNED** block is the newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **`KOS-OPERATING-MODEL-001` INDEPENDENT VERIFICATION DELIVERED — VERIFIED (3 layers) · NOT ADOPTED · NOT AUTHORIZED** block is the newest; older rows it contradicts are superseded by it)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **`KOS-OPERATING-MODEL-001` — INDEPENDENT VERIFICATION DELIVERED — ✅ VERIFIED (all three layers) by fresh independent verifier `fc59bb0a` · ⛔ NOT ADOPTED · NOT AUTHORIZED — adoption remains the PO/ARB decision via the Governance adoption review (NOT automatic)** — supersedes the "CONTINUATION DECISION PENDING HUMAN" and "NOT VERIFIED" status lines below; the separate `KOS-NEXT-ACTOR-ORCHESTRATION-001` / `AST-018` slice is PRESERVED and continues independently)
+
+| | |
+|---|---|
+| 🆔 **Verifier identity** | `claude-code-session:fc59bb0a-98df-4c3f-8819-06bd1adb92f4` — REGISTERed verification lane (seq 6) · predecessor `259c1966` (HANDED_OFF, seq 7) · human START (seq 8, PO/ARB verbatim *"register yourself as independent verifier and run the verification work"*) · CONTINUATION seq 5 (recordedBy human) exited the sticky STOPPED · independence bars passed (≠ `259c1966` producer · `5c0e13c1` · `8a525719` · `b51dba91` · `8deac5de` · `d1612e03` · `b64828fe` · `7c2690ae` · PO/ARB). |
+| ✅ **Verdict** | **VERIFIED — all three layers** (`docs/knowledgeos/reviews/2026-08-22-KOS-OPERATING-MODEL-001-INDEPENDENT-VERIFICATION.md`). L1 operating-model doc: all 40 sections (§1–§40) present, Engineers as responsibilities (P-3), `REVIEW_INDEPENDENCE_POLICY` placeholder. L2 `operating-model.php`: read-only (static + dynamic), consume-only, deterministic, exactly-one outcome, six §29 cases, no second engine/vocabulary. L3 tests: **43 / 409 GREEN** (rerun) + full WorkflowEngine regression **122 / 1307 GREEN**; all four canonical assets **byte-unchanged** vs HEAD; all 30 §36 scenarios covered. Live: outcome→CONTINUE, session→MATCH, wrong-session→MISMATCH fail-closed, **cross-provider byte-identical** (Claude vs DeepSeek env). |
+| 📊 **Four-state separation** | **IMPLEMENTED ≠ VERIFIED ≠ ADOPTED ≠ AUTHORIZED.** The verification report establishes **VERIFIED**; it explicitly does **not** claim ADOPTED or AUTHORIZED. §38 producer report correctly carried IMPLEMENTED / NOT VERIFIED / NOT ADOPTED / NOT AUTHORIZED before this. **Adoption remains the PO/ARB decision via the Governance adoption review — NOT automatic.** |
+| ⛔ **What verification did NOT do** | no implementation modification · no canonical-asset modification · no AST-015/016/017/018 change · no EKS-07 · no migration · no second engine · no adoption claim · no grant. |
+| ✅ **Status + NEXT** | Work item **VERIFIED** (lane `fc59bb0a` ACTIVE, verifier now STOPs). **NEXT: Governance adoption review → PO/ARB adoption decision (NOT automatic)**. Separately, PO/ARB decides whether to commission `ActivateCommissionedFreshSession` (recorded, NOT decided, NOT implemented). ⛔ no adoption by this or any engineering process · no claim of authorization. |
 
 ---
 
