@@ -1,6 +1,17 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **`KOS-OPERATING-MODEL-001` VERIFIER APPOINTMENT RECORDED** block is the newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **`KOS-OPERATING-MODEL-001` FRESH VERIFIER DECLARED + FOLLOW-UP CAPABILITY DESIGNED** block is the newest; older rows it contradicts are superseded by it)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **`KOS-OPERATING-MODEL-001` — FRESH VERIFIER `fc59bb0a` DECLARED + STOPPED CORRECTLY · PO/ARB DESIGNED THE MISSING CAPABILITY `ActivateCommissionedFreshSession` (fresh-session self-activation) — CONTINUATION DECISION PENDING HUMAN — ⛔ NOT VERIFIED · NOT ADOPTED · capability NOT decided · NOT implemented** — supersedes nothing; the VERIFIER-APPOINTMENT block below stands; the separate `KOS-NEXT-ACTOR-ORCHESTRATION-001` / `AST-018` slice is PRESERVED and continues independently)
+
+| | |
+|---|---|
+| 🆔 **Fresh verifier declared** | `claude-code-session:fc59bb0a-98df-4c3f-8819-06bd1adb92f4` — identity declared from runtime (INV-ATTR-1/2) · INDEPENDENCE **passed** (≠ producer `259c1966` · `5c0e13c1` · `8a525719` · `b51dba91` · `8deac5de` · `d1612e03` · `b64828fe` · `7c2690ae` · PO/ARB) · ELIGIBLE as candidate · **NOT AUTHORIZED** — bootstrap `UNRESOLVED` fail-closed (`authorized_to_act=false`, next actor governance). **Stopped correctly** — did not self-register / verify / change the workflow. Correct under the OLD flow (self-registration prohibited). |
+| 🔎 **PO/ARB architectural refinement** | verbatim: *"Yes. That is the missing architectural piece."* — the missing continuation/transition capability is designed as a **new explicitly commissioned capability `ActivateCommissionedFreshSession`**: a genuinely fresh, pre-commissioned session may **self-bind its own discovered runtime identity to its already-authorized role**, then enter the normal REGISTER → HANDOFF → human START sequence. **Invariant:** *"A fresh session may self-bind identity; it may never self-choose role, scope, work item, or authority."* Constrained contract (identity + commissioned work item + commissioned role + declaration + eligibility/independence + no conflicting assignment) → **only** allowed write `REGISTER {session=own runtime identity, role=commissioned role}`. Human **never provides the UUID**; Governance commissions the **role**, not a process ID; `prompt ≠ commission → MISMATCH → STOP`. |
+| 📜 **Recorded** | `docs/knowledgeos/reviews/2026-08-22-KOS-OPERATING-MODEL-001-FOLLOW-UP-continuation-capability-observation.md` — **RECORDED · NOT DECIDED · NOT IMPLEMENTED**; creates no authority/lane/grant/state change; **NOT** a patch to AST-015/017/018 or the verifier; Governance Engineer integration (Communication Engineer routine mechanics). |
+| ✅ **Status + NEXT** | **IMPLEMENTED ≠ VERIFIED ≠ ADOPTED ≠ AUTHORIZED.** Work item **STOPPED** (seq 4). **NEXT — human continuation decision OPEN:** *"The implementation is complete and a fresh independent verifier is ready (identity declared `fc59bb0a`). The work item is currently stopped. I need your permission to continue the work into independent verification. 1. Yes / 2. Write a prompt for the verification step / 3. Stop"* → on "1": governed sequence (CONTINUATION → REGISTER(verification) → HANDOFF → human START) → independent verification → governance adoption review → PO/ARB adoption decision (NOT automatic). Separately, PO/ARB decides whether to **commission `ActivateCommissionedFreshSession`** as a new governed capability. ⛔ no REGISTER/START/verification without the continuation · no adoption claim · no AST-015/016/017/018 change · no EKS-07. |
 
 ---
 
