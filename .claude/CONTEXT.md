@@ -1,6 +1,22 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **KOS-SNF P5 SEMANTIC COMPETITION — EXECUTED + EP-02 VERIFIED** block is newest: 1,100-case competition · six-policy arbitration sweep · d_SNF v0.2 four-way gate 14/14 · **no winner · no architecture change · OQ-4 unauthorized**; the Phase-1 block below stands as historical record)*
+**Updated:** 2026-08-22 *(additive — the **KOS-SNF P5 — HPA ACCEPTANCE · P5 CLOSED** block is newest: P5 accepted as successful completion · SNF experiment engineering STOPPED (no P6 · no formula refinement · no Kernel) · next phase = HPA decision on AH-1…AH-5 + OQ-2/3/5 + F-1…F-5 · architecture refinement only where evidence requires (answer may be no) · OQ-4 closed · no SNF winner · architecture unchanged; the P5-verified block below stands as the executed-work record)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **KOS-SNF P5 — *HPA ACCEPTANCE — P5 CLOSED · SNF EXPERIMENT ENGINEERING STOPPED · NEXT = HPA DECISION WORK ON AH-1…AH-5*: P5 ACCEPTED AS SUCCESSFUL COMPLETION (EP-02 VERIFICATION CONFIRMED: 51 TESTS · d_SNF v0.2 GATE 14/14 · 1,100 CASES · SIX POLICIES · REPRODUCIBLE · PHASE-1 BACKWARD-COMPATIBLE) · **NO P6 · NO FORMULA REFINEMENT · NO KERNEL IMPLEMENTATION · ARCHITECTURE UNCHANGED · OQ-4 CLOSED***)
+
+**HPA act (recorded verbatim-in-substance):** `docs/knowledgeos/reviews/20260822-2327-KOS-EP01-P5-semantic-competition-HPA-acceptance.md`. The HPA **accepts P5 as a successful completion** — explicitly affirming the EP-02 independent re-run (51 tests · d_SNF v0.2 gate 14/14 · 1,100 cases · six arbitration policies · reproducibility · Phase-1 backward compatibility) — and **closes the phase**: *"P5 should now be considered closed."* Three stop directives: **do not run P6 · do not refine the formula again immediately · do not start implementing the Kernel.**
+
+**The meaningful findings (HPA-framed):** the Phase-1 ceiling was largely a **corpus artifact**, not equality of A/B/C/E · **v0.1 really did collapse** important distinctions (v0.2 eliminated the tested adversarial collapse) · some named arbitration policies were **behaviorally equivalent** (evidence about the arbitration design) · **mechanism agreement is not evidence of semantic truth** (0.587 of agreements on a wrong reading) · **SNF-D's calibration advantage was a coverage/abstention selection effect** · **no producer represented UNKNOWN vs NOT_EXPRESSED (110/110 failures)** · **SNF-C's advantage was specifically `role_omission_ambiguity`**, not general superiority. *"That is actually a much more valuable result than finding a winner."* The architecture boundary survived — **no SNF winner · no composite authority · no mechanism promoted · v1.1 r3 / Constitution / KnowledgeAggregate authority / Port Contract / register 25+4 unchanged.**
+
+**The next phase = architectural/HPA decision work** (not another SNF simulation): **(1)** HPA reviews **AH-1…AH-5** (AH-1 Port Contract obligation-3 wording · AH-2 informational corroboration · AH-3 abstention-warrant distinction · AH-4 metric-version naming · AH-5 modality-as-degree/OQ-3) — the bridge `research evidence → AH → HPA decision → only-if-accepted → architecture refinement`, **never** `experiment → SNF mechanism → Kernel`; **(2)** resolve the open architectural questions **OQ-2 · OQ-3 · OQ-5 · F-1…F-5**; **(3)** then ask whether v1.1 needs refinement **only where the evidence requires it** — and the answer may still be **no** (do not manufacture a v1.2 merely because research produced interesting results; if the statement "semantic mechanisms are replaceable research/interpretation providers behind the Expression↔Meaning boundary; their measurements are evidence about candidate interpretation quality, not identity authority" is already represented in v1.1, leave it); **(4)** **OQ-4 (real-corpus KOS-SCB) remains closed** — a separate decision, **not automatic**.
+
+**The central discovery (HPA-aligned):** *"The difficult problem is not convergence. It is preserving distinctions and knowing when the representation does not contain enough information to distinguish them."*
+
+**The clean stopping point for P5, verbatim:** *"HPA → decide which of AH-1…AH-5 actually warrant architectural refinement → then update the architecture only where the evidence requires it."*
+
+**NEXT (the HPA's — NOT authorized here):** the **AH-1…AH-5 decisions** and the open **OQ-2 · OQ-3 · OQ-5 · F-1…F-5**. No engineering act, no architecture change, no P6, no formula refinement, no Kernel implementation, **OQ-4 closed**.
 
 ---
 

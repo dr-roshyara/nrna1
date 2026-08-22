@@ -178,6 +178,10 @@ Halt and report — do not solve — if the work appears to require: modifying v
 
 **Action: none beyond this review.** STOP per §12/§16. OQ-4 remains unauthorized. No architecture step is taken as a result of this review.
 
+## 17 · HPA acceptance — P5 closed (added 2026-08-22)
+
+The HPA **accepted P5 as a successful completion** and **closed the phase** — *"P5 should now be considered closed."* Recorded as `docs/knowledgeos/reviews/20260822-2327-KOS-EP01-P5-semantic-competition-HPA-acceptance.md`. Three stop directives: **no P6 · no immediate formula refinement · no Kernel implementation.** The architecture boundary survived (no SNF promotion, no composite authority, v1.1 r3 / Constitution / KnowledgeAggregate authority / Port Contract / register 25+4 unchanged). **Next phase = HPA decision work:** AH-1…AH-5 → HPA decision → architecture refinement **only where the evidence requires it** (the answer may be **no** — no manufactured v1.2), plus the open OQ-2 · OQ-3 · OQ-5 · F-1…F-5. **OQ-4 remains closed** — a separate, non-automatic decision. The clean stopping point, verbatim: *"HPA → decide which of AH-1…AH-5 actually warrant architectural refinement → then update the architecture only where the evidence requires it."*
+
 ---
 
 ### Traceability
