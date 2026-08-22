@@ -1,6 +1,38 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **KNOWLEDGEOS REFERENCE ARCHITECTURE v1.1 — DDD BOUNDED CONTEXT AND CORE DOMAIN MODEL** block (the HPA review of v1.0, executed as a DDD refinement) is newest; older rows it contradicts are superseded by it; the v1.1 block reflects the **HPA review 2026-08-22 — PASS CONDITIONALLY — one wording refinement, applied, awaiting HPA confirmation**)*
+**Updated:** 2026-08-22 *(additive — the **SECOND ARCHITECTURAL REVIEW OF v1.1 — ACCEPTED AS THE ARCHITECT-SIDE DELIVERABLE, r3 FROZEN** block is newest; it sits on top of the **KNOWLEDGEOS REFERENCE ARCHITECTURE v1.1** block, which stands at **r2** and is **unmodified**; older rows either block contradicts are superseded by it; the FIRST HPA review remains **OPEN** — awaiting HPA confirmation of the applied r2 wording)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **SECOND ARCHITECTURAL REVIEW OF REFERENCE ARCHITECTURE v1.1 — SEMANTIC INVARIANCE · COMPILER BOUNDARY · DDD CONSISTENCY — VERDICT: PASS — CLARIFICATION ONLY — ACCEPTED BY THE HPA AS THE ARCHITECT-SIDE DELIVERABLE, WITH r3 FROZEN**)
+
+**Instrument:** `docs/knowledgeos/reviews/20260822-1459-KOS-EP01-Reference-Architecture-v1.1-Second-Architectural-Review-Semantic-Invariance.md` (commit `1ac7f639`) — architect-side second review of the EXISTING v1.1 r2, **not** another architecture-generation exercise. **Acceptance record:** `docs/knowledgeos/reviews/20260822-1523-KOS-EP01-Reference-Architecture-v1.1-Second-Review-HPA-ACCEPTANCE.md`.
+
+**VERDICT — PASS · CLARIFICATION ONLY.** v1.1 withstands the new semantic-invariance evidence **unchanged**. **No v1.2.** No mechanism promoted into the core. Five clarifications, one refinement, three record-additions — **all r3 annotations, and r3 is FROZEN**.
+
+**⛔ r3 IS FROZEN (HPA procedural condition).** *"Do not yet apply its r3 annotations to v1.1 until the prior HPA conditional review is explicitly closed."* → **v1.1 stays at r2, unmodified.** The change set C-1…C-5 · R-1 · A-1…A-3 is recorded, **not applied**.
+
+**⏳ THE NEXT ACT — HPA CONFIRMATION OF THE APPLIED r2 WORDING** (a one-line act): *"The KnowledgeAggregate is the authoritative domain boundary at which constitutional admissibility of a state transition is determined."* Confirming it **closes the first HPA review** and unblocks the HPA ruling on the second review → then r3 → then Logical Architecture.
+
+**THE DECISIVE FINDING — TEST F.** Remove natural language entirely and KnowledgeOS is unharmed (identity · admitted meaning · evidence · justification · agency · contradiction · history · epistemic lifecycle all intact; only *reach* is lost). Therefore **no mechanism whose reason for existing is natural language can be core** — semantic invariance **protects an input boundary around** the core; it is not part of it. Tests A/B removable; C/D/E already answered in the record (cited, not re-derived). HPA: *"a much stronger argument than simply saying 'the compiler is an adapter.'"*
+
+**THE CENTRAL SAFEGUARD — N-1, SNF ≠ IDENTITY.** *A canonical form is still a representation*, so canonical-form equality is a similarity claim in formal dress — and similarity never becomes identity (INV-KOS-IDENTITY-001, Art 1.2/1.3). `SNF(E1) = SNF(E2) ≠ same KnowledgeId`: it yields a **candidate for the same admitted meaning**, never an identity determination. HPA: *"probably the most important safeguard introduced by the review"* — it blocks the plausible failure mode of **replacing embedding similarity with "formal" canonical-form similarity and pretending the latter is identity**. **N-3:** invariance without **non-collapse** is a lossy hash (*approved* must not merge with *acknowledged*).
+
+**THE GAP FOUND + THE NAMED DELIVERABLE.** v1.1 says what a mechanism may **not do**; it does not say what a mechanism must **declare**. A ~30% false-accept rate is a mechanism with **no way to abstain**. → **EXPRESSION↔MEANING PORT CONTRACT**, the **first Logical-Architecture deliverable** (named, **not authored**): candidate-only · preserved justification path · **declared insufficiency/abstention** · never proposes or derives a KnowledgeId · never a scalar in place of epistemic structure · failure/silence → **UNKNOWN**. Six obligations = **logical-architecture renderings of existing invariants, NOT new constitutional laws — a distinction to be preserved**.
+
+**AGGREGATE:** all **12 members KEEP** (0 removals · 0 relocations · 0 additions). Weakest = **Confidence** → **R-1**: structured epistemic metadata assigned **inside** the boundary; a mechanism's *"74% confidence"* must never cross the port and become KnowledgeOS confidence (Art 2.3).
+
+**CONVERGENCE + GUARDS.** The new material's *"enforcement mechanism at the boundary, not the kernel"* **independently re-derives the r2 wording** — corroboration. **KOS-EV / KOS-SCB are BENCHMARK NAMES, not architectural components.** **No domain event** is added for normalization (mechanism steps are not state transitions — the `WisdomDerived` discipline). **No new bounded context** (Semantic Compiler / SIL / SNF fail all five context tests; they live in the existing **Expression** generic/external context). SNF = **representation** (primary) / **mechanism** (secondary), **not** a domain concept.
+
+**EVIDENCE AUDIT (N-0).** Most cited "new evidence" was already a v1.1 input: the ~74.2% figure **is** the stated reason for the §7.3 non-promotion ruling; the Sanskrit lens already had its home; the SNF source (12:50) **predates v1.1** (14:02). Genuinely post-review: **false acceptance ~30% (6/20)** · the **KOS-SCB/KOS-EV split** · **non-collapse** · the boundary refinement. **EXCLUDED as evidence:** the 74.2%→95% cumulative projection and *"93–95%"* — a projection, **refuted inside its own composite source**, and a forbidden action of the v1.1 commission.
+
+**INVARIANTS:** IDENTITY-001 · VERIFICATION-001 · UNKNOWN-001 · DIMENSION-001 **touched and STRENGTHENED** (the evidence supplies failure modes they already forbid); the other seven **unaffected**. **None added, none weakened, none reinterpreted.**
+
+**⛔ WHAT IS *NOT* DONE:** the **FIRST HPA review is STILL OPEN** (P-1 — this review cannot and does not close it) · **r3 NOT applied** · **Logical Architecture NOT open** · the Port Contract **NOT authored** · the semantic-invariance experiment **NOT authorized (OQ-4)** · **OQ-2 undecided** (may SNF-equivalence be an EvidenceLink supporting an identity-assignment act? — HPA flagged it for *particular attention* at the Port Contract stage) · Semantic Compiler **NOT promoted** · register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · P4 gate **unchanged**.
+
+**OPEN QUESTIONS:** OQ-1 insufficiency vocabulary · **OQ-2 SNF-equivalence as EvidenceLink (HPA attention)** · OQ-3 EN/DE sameness — meaning or translation? · **OQ-4 experiment authorization (HPA act required; corpus must include negative/non-collapse families)** · OQ-5 should Confidence remain an aggregate member at all.
+
+**NEXT (HPA-affirmed sequence):** ⏳ **HPA confirms r2 wording** → first review **closes** → HPA **rules** on the second review → **r3 applied** → **Logical Architecture opens** → **Expression↔Meaning Port Contract** (first deliverable) → semantic-invariance experiment **as evidence, never as an architecture layer**. *"Do not rewrite the review. Do not create v1.2. Do not reopen research."*
 
 ---
 
