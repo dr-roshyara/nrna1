@@ -1079,3 +1079,19 @@ The **P4 Constitutional Invariant Map v1.0** (`docs/knowledgeos/architecture/202
 **Final gate: Has research ended? — YES.** Ten consecutive zero-new-row results (§24–§33) = the saturation proof. Next: P5 (Evidence Validation / domain-independence) → kernel decision (step ⑤) → **KnowledgeOS Constitution v1.0** (destination artifact — §3 "kernel invariants" = this Map's content; sections 7–10 carry step-⑤ commitments, NOT decided here).
 
 **Traceability:** P4 Map produced from this register (2026-08-22) · `20260822-0915-KOS-EP01-P4-Constitutional-Invariant-Map-v1.0.md` · recorded `.claude/sessions/2026-08-22.md` §AV · `.claude/CONTEXT.md` (block AV) · commissioning instrument `docs/knowledgeos/reviews/2026-08-22-KOS-EP01-P4-landscape-launch-prompt.md`. The Map is PROPOSED; **the kernel decision remains step ⑤ after P5**, NOT a P4 deliverable.
+
+---
+
+# §35 STEP ⑤ — KERNEL DECISION (2026-08-22) — the eleven-law core ACCEPTED, scope frozen
+
+The **HPA's step-⑤ kernel decision** (on the strength of the P5 assessment — *"P5 is a successful completion"* · *"the correct constitutional boundary"*) selects the **eleven laws** as the constitutional kernel. Recorded in `docs/knowledgeos/architecture/20260822-0939-KOS-EP01-Step5-Kernel-Decision.md`.
+
+**Decision 1 — the eleven-law core ACCEPTED** (final wordings in the artifact): ① Identity (Representation≠Meaning · Expression≠Meaning · Similarity≠Identity · context is part of identity · knowledge is relational) · ② Dimension (no implicit cross-dimension transition · no single-score collapse) · ③ Authority (evidence/assessment/source never constitute authority · assigned reference · source-role separation) · ④ Decision (observation/knowledge never constitute decision) · ⑤ Projection (projection ≠ source) · ⑥ Verification (no claim without a preserved justification path: authentic evidence + acquisition method + inference rule + reasoning path · generation ≠ justification) · ⑦ Failure-State (invalid/failed reasoning = preserved REJECTED state) · ⑧ Contradiction (CONFLICTED coexists until governed resolution · challenge never destroys identity) · ⑨ Unknown (**Unknown ≠ Absent ≠ False**) · ⑩ Agency (knowledge never anonymous · "Who knows?" always answerable) · ⑪ History (revision never deletes · forward-only supersession).
+
+**Decision 2 — the two consolidation merges resolved.** NonInterference-001 → Dimension Law (its "no implicit transition" content stated inside law 2) · Context-001 → Context-002 (law 1's context clause; the tuple stays REPRESENTATION).
+
+**Decision 3 — Constitution v1.0 scope frozen.** The eleven laws ARE the boundary · no new concepts/rows/philosophy (HPA verbatim) · register **25 candidates + 4 Established, unchanged** · **head 43 stands** (canonical essence; the three clause refinements remain Constitution phrasing per §34) · kernel/engine boundary fixed (engines/mechanisms/representations deferred, referenceable not kernel) · the five non-identities carry in as the negative boundary.
+
+**Status.** The eleven laws are now **SELECTED KERNEL LAWS** by this ruling — still **PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED** until the **KnowledgeOS Constitution v1.0** (the next, destination artifact) formalizes them.
+
+**Traceability:** kernel decision (2026-08-22) · `20260822-0939-KOS-EP01-Step5-Kernel-Decision.md` · recorded `.claude/sessions/2026-08-22.md` §AX · `.claude/CONTEXT.md` (block AX) · basis = the HPA's P5 assessment + step-⑤ recommendation. **Next artifact:** KnowledgeOS Constitution v1.0 — the destination — per the frozen scope.

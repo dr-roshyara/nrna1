@@ -1,6 +1,18 @@
 # Current Working State
 
-**Updated:** 2026-08-22 *(additive — the **P5 — CONSTITUTIONAL EVIDENCE VALIDATION DELIVERED** block (AW) is newest; older rows it contradicts are superseded by it)*
+**Updated:** 2026-08-22 *(additive — the **STEP ⑤ — KERNEL DECISION RECORDED** block (AX) is newest; older rows it contradicts are superseded by it)*
+
+---
+
+## 📍 UPDATE (2026-08-22, **STEP ⑤ — KERNEL DECISION RECORDED — THE 11-LAW CORE **ACCEPTED** (HPA RULING · "P5 IS A SUCCESSFUL COMPLETION" · "THE CORRECT CONSTITUTIONAL BOUNDARY") — TWO CONSOLIDATION WORDINGS RESOLVED (NONINTERFERENCE→DIMENSION · CONTEXT-001→CONTEXT-002) — CONSTITUTION v1.0 SCOPE FROZEN (ELEVEN LAWS = THE BOUNDARY · NO NEW CONCEPTS/ROWS/PHILOSOPHY · REGISTER 25+4 UNCHANGED · HEAD 43 STANDS · KERNEL/ENGINE BOUNDARY FIXED · FIVE NON-IDENTITIES CARRY IN) — ELEVEN LAWS NOW **SELECTED KERNEL LAWS** — NEXT: **KNOWLEDGEOS CONSTITUTION v1.0** (DESTINATION ARTIFACT) — ALL STILL PROPOSED · NON-AUTHORITATIVE · NOT ADOPTED UNTIL THE CONSTITUTION FORMALIZES THEM**)
+
+| | |
+|---|---|
+| 📐 **Step-⑤ artifact** | `docs/knowledgeos/architecture/20260822-0939-KOS-EP01-Step5-Kernel-Decision.md` — the kernel decision record (HPA's recommended `KOS-EP01-Step5-Kernel-Decision.md`, rendered ES-004.2). Three decisions: ① 11-law core **ACCEPTED** (each law's final wording + rendered rows + failure signature) · ② two consolidation merges resolved · ③ Constitution v1.0 scope frozen. |
+| ✅ **Decision 1** | **The eleven-law core ACCEPTED** — all eleven affirmed, none rejected, none added. Identity · Dimension · Authority · Decision · Projection · Verification · Failure-State · Contradiction · Unknown · Agency · History. Register unchanged at **25 candidates + 4 Established**. |
+| 🔗 **Decision 2** | **(a) NonInterference → Dimension** — one law: *"Epistemic dimensions evolve independently. No value passes from one dimension to another without an explicit, governed transition; no dimension collapses into another."* **(b) Context-001 → Context-002** — law 1's context clause: *"Context is part of identity: a knowledge object carries its delimiting conditions (its semantic frame) and is never valid beyond them."* The tuple stays REPRESENTATION, deferred. |
+| 🧊 **Decision 3** | **Constitution v1.0 scope frozen** — the eleven laws ARE the boundary (no addition/removal/weakening) · no new concepts/rows/philosophy (HPA verbatim) · register 25+4 · head 43 stands · kernel/engine boundary fixed (engines · mechanisms · representations = deferred, referenceable not kernel) · the five non-identities carry in unchanged. |
+| **NEXT** | **KnowledgeOS Constitution v1.0 — the destination artifact** — formalizes the eleven selected laws + character head 43 + the five non-identities + the kernel/engine boundary per the frozen scope. After it: Reference Architecture → Implementation Model. The corpus is closed; nothing further is extracted. |
 
 ---
 
