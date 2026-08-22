@@ -11,7 +11,7 @@
 | **Purpose** | State the strategic character of KnowledgeOS as a constitutional epistemic system — the prose culmination of all research lenses analysed (EKS/PKS/AIP archaeology · epistemic systems · Vedanta/Jñāna · Vāṇī · Zero · topology · logic · TMS/AGM · contradiction handling · inference theory) |
 | **Kernel Status** | ⛔ **Does not define kernel architecture, data model, or implementation** |
 | **Rule obeyed** | ⛔ **No promotion**: this is a *character statement*, not an invariant map. Nothing here is adopted, nothing is SHALL, nothing changes the register. The **Constitutional Invariant Map v1.0** remains the P4 deliverable, with evidence-column discipline. Every point reconciles to an already-registered candidate (§14) — the character introduces **no new candidate, no new dimension, no new forbidden collapse**. |
-| **Traceability** | HPA strategic character definition (2026-08-22, message UM-27) — recorded §Z in `.claude/sessions/2026-08-22.md` · `.claude/CONTEXT.md` (block Y) · placement derived `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) |
+| **Traceability** | HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29) — recorded §Z + §AA + §AB in `.claude/sessions/2026-08-22.md` · `.claude/CONTEXT.md` (blocks Y + Z + AB) · placement derived `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) |
 
 ---
 
@@ -563,4 +563,26 @@ With **H-KOS-Agent-001** and the **Kernel-vs-Engine** separation, the character 
 
 ---
 
-**Traceability:** HPA strategic character definition (2026-08-22, messages UM-27 + UM-28) · recorded `.claude/sessions/2026-08-22.md` §Z + §AA · `.claude/CONTEXT.md` (blocks Y + Z) · placement derived `--scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) · house naming `KnowledgeOS_*` (precedent: `KnowledgeOS_Conceptual_Foundation.md`, `KnowledgeOS_Epistemic_Control_Systems_Comparison.md`, `KnowledgeOS_Vedanta_Pramana_Lens.md`). All study outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.
+**Traceability:** HPA strategic character definition (2026-08-22, messages UM-27 + UM-28 + UM-29) · recorded `.claude/sessions/2026-08-22.md` §Z + §AA + §AB · `.claude/CONTEXT.md` (blocks Y + Z + AB) · placement derived `--scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0) · house naming `KnowledgeOS_*` (precedent: `KnowledgeOS_Conceptual_Foundation.md`, `KnowledgeOS_Epistemic_Control_Systems_Comparison.md`, `KnowledgeOS_Vedanta_Pramana_Lens.md`). All study outputs remain PROPOSED · EVIDENCE-BASED · NON-AUTHORITATIVE · NOT ADOPTED.
+
+---
+
+# §18 Supersession notice — Epistemic Agency, not Ownership (HPA, UM-29)
+
+The **H-KOS-Agent-001** draft in §15 is **superseded** by the HPA's final discipline correction (UM-29). The coupling formulation — *"the agent's identity, role, and epistemic capacity are preserved as protected attributes of the knowledge object"* — reads as binding knowledge to a person, which the kernel must not do. The corrected invariant:
+
+> **INV-KOS-Agent-001 — Epistemic Agency (Candidate).** *"KnowledgeOS should preserve the epistemic agency associated with every knowledge state, including who observed, who interpreted, who reasoned, who validated, and under which authority context the knowledge state was produced."*
+
+| Old (H-KOS-Agent-001, §15) | New (INV-KOS-Agent-001, UM-29) |
+|---|---|
+| Knower **coupled to** the knowledge object | Epistemic **agency / lineage preserved** |
+| "who knows" inseparable from "what is known" | Knowledge **traceable through** observers, reasoners, authorities |
+| Binding relationship | Traceable relationship — the object may outlive its observer |
+
+- **Tripuṭī as engineering abstraction:** ज्ञाता (Jñātā) Knower = Epistemic Agent · ज्ञान (Jñāna) Knowing = Reasoning / transformation process · ज्ञेय (Jñeya) Known = Knowledge object.
+- **Engineering extraction:** *Knowledge without epistemic origin loses accountability.*
+- **Final essence refined (UM-29):** *"KnowledgeOS is the constitutional epistemic substrate that preserves the integrity of the relationship between the Knower, the Known, the Evidence, and the transformations through which justified understanding evolves over time."* — "unbroken relationship" softened to "integrity of the relationship" (lineage preserved, not binding).
+- **Five constitutional questions** (condensed character): What exists? · Why believe it? · Who produced it? · How does it change? · What can be done with it? — the **character layer**, not a new dimension set.
+- §16 (Kernel vs Reasoning Engine) confirmed by the HPA as a **fundamental boundary** — binding status unchanged.
+- Register: H-KOS-Agent-001 → **INV-KOS-Agent-001** (Candidate, Relationship family, subject-side). Count unchanged: **12 candidates + 4 Established**.
+- ⛔ **Not "written in stone":** kernel laws are not yet finalized; the ladder **Research insight → Candidate invariant → Cross-domain validation → Established invariant → Kernel law** still governs.
