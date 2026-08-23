@@ -1,8 +1,8 @@
 # KnowledgeOS — OQ-2 Decision Record — May SNF-Equivalence Be Recorded as an EvidenceLink Supporting an Identity-Assignment Act? (2026-08-23)
 
 > **Commission:** the **Human Principal Architect (HPA)**, 2026-08-23 — *"Commission OQ-2 as a governed act."* OQ-2 is the first of the remaining **deferred decisions** recorded in v1.1 §20 (the boundary is recorded, the answer is not invented); the Expression↔Meaning Port Contract takes a **position at contract altitude** (its §Q8); **the ruling remains the HPA's**.
-> **Position:** `P5 → AH-1…AH-5 → EP-01 → T-2/T-3 (G-1…G-8 GREEN) → EP-02 (✅ ACCEPTED) → T-5 (v1.1 REMAINS · ✅ ACCEPTED) → ← WE ARE HERE (OQ-2) → OQ-3 · OQ-5 · F-1…F-5 · AH-5/AH-4 → Kernel decision`.
-> **Status:** 📋 **OQ-2 DECISION RECORD — DELIVERED · EVIDENCE-BACKED (every boundary cited, nothing invented) · RECOMMENDATION ONLY · DECISION FIELD ⬜ OPEN (HPA) · NO ARCHITECTURE CHANGE — NO v1.1 EDIT · NO CONTRACT EDIT · NO v1.2.** Register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · OQ-4 **unauthorized** · Port Contract remains **PROPOSED · NON-AUTHORITATIVE** · **no Kernel implementation is authorized by this act**.
+> **Position:** `P5 → AH-1…AH-5 → EP-01 → T-2/T-3 (G-1…G-8 GREEN) → EP-02 (✅ ACCEPTED) → T-5 (v1.1 REMAINS · ✅ ACCEPTED) → OQ-2 (✅ RESOLVED · CLOSED) → ← WE ARE HERE (STOP) → OQ-3 · OQ-5 · F-1…F-5 · AH-5/AH-4 → Kernel decision`.
+> **Status:** ✅ **OQ-2 DECISION RECORD — HPA ACCEPTED (2026-08-23) · OQ-2 RESOLVED · CLOSED** — the HPA ruled **ACCEPT**: SNF-equivalence may be recorded as an EvidenceLink supporting an identity-assignment act, **as a candidate-side evidence observation, never as the assignment itself**; the EvidenceLink remains reference-only (⟨C-3⟩) · recording the observation does not change knowledge state, derive identity, or bypass the Verification Port (⟨A-3⟩ · INV-KOS-VERIFICATION-001) · **no architecture change** — no v1.1 edit · no contract edit · no v1.2 · register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · OQ-4 **unauthorized** · Port Contract remains **PROPOSED · NON-AUTHORITATIVE** · **no Kernel implementation is authorized by this act**.
 
 ---
 
@@ -78,29 +78,33 @@ The ruling is the HPA's alone (v1.1 §20 · OQ-2: *"the ruling remains the HPA's
 
 ---
 
-## 6 · The decision (HPA) — ⬜ OPEN
+## 6 · The decision (HPA) — ✅ ACCEPTED (2026-08-23)
 
 ```text
-OQ-2 — decision fields OPEN
+OQ-2 — HPA ruling: ACCEPT  (2026-08-23)
 
-  ☐ ACCEPT:  Yes — SNF-equivalence may be recorded as an EvidenceLink supporting
+  ☑ ACCEPT:  Yes — SNF-equivalence may be recorded as an EvidenceLink supporting
              an identity-assignment act, as a candidate-side evidence observation,
              never as the assignment itself (§Q8 position) — OQ-2 RESOLVED
-             [recommended]
-  ☐ REJECT:  No — the §Q8 position is overruled; collisions never feed an EvidenceLink
-  ☐ MODIFY:  Yes, with conditions beyond §Q8 (each must trace to an existing invariant)
+             [the recommended ruling]
 
-  Note: whichever ruling is made, it changes nothing in the architecture — no
-        invariant · state · member · event · register row · mechanism · v1.1 change ·
-        Constitution change. Register 25+4 unchanged. No Kernel implementation is
-        authorized by this rule. OQ-4 stays unauthorized.
+  Note: the ruling changes nothing in the architecture — no invariant · state ·
+        member · event · register row · mechanism · v1.1 change · Constitution
+        change. Register 25+4 unchanged. No Kernel implementation is authorized
+        by this rule. OQ-4 stays unauthorized.
 ```
+
+### 6a · The HPA's acceptance (2026-08-23) — verbatim in substance
+
+> **OQ-2 — ACCEPT.** SNF-equivalence may be recorded as an EvidenceLink supporting an identity-assignment act, **as a candidate-side evidence observation and never as the assignment itself**. The EvidenceLink remains reference-only; it does not contain the evidence itself. Recording the observation does not change knowledge state, derive identity, or bypass the Verification Port. **OQ-2 is resolved.** No architecture change, no v1.1 change, no v1.2, no Constitution change, and no Kernel authorization follows from this ruling.
+
+*(The HPA's ruling is exactly the recommended option — ACCEPT with the two §Q8 conditions, each tracing to existing law: reference-only (⟨C-3⟩) · no state change / no identity derivation / no Verification-Port bypass (⟨A-3⟩ · INV-KOS-IDENTITY-001 · INV-KOS-VERIFICATION-001). The ruling is a rendering of existing law — no new law is created.)*
 
 ---
 
 ## 7 · STOP
 
-OQ-2 is **delivered as a decision record — recommendation only**. **Nothing was modified**: no v1.1 edit · no contract edit · no code · no v1.2 · no register · no Constitution · no Kernel · no SNF · no corpus. The recorded boundary, the §Q8 position, and the gate check are cited to existing law; the **HPA's decision field is ⬜ OPEN**. On the HPA's ruling, the following acts remain separate governed acts: **OQ-3 · OQ-5 · F-1…F-5 · AH-5 deferral · AH-4**. **The Kernel still waits.**
+OQ-2 is **RESOLVED — the HPA accepted the recommended ruling (ACCEPT) on 2026-08-23; the decision record is closed**. **Nothing was modified by the ruling**: no v1.1 edit · no contract edit · no code · no v1.2 · no register · no Constitution · no Kernel · no SNF · no corpus. The ruling confirms the §Q8 position (SNF-equivalence may be recorded as an EvidenceLink — a candidate-side evidence observation, never the assignment itself) — a **rendering of existing law** (⟨C-3⟩ · ⟨A-3⟩ · INV-KOS-VERIFICATION-001 · INV-KOS-IDENTITY-001), not new law. The following acts remain **separate governed acts, each a new commission**: **OQ-3 · OQ-5 · F-1…F-5 · AH-5 deferral · AH-4**. **The Kernel still waits.**
 
 ---
 
@@ -111,5 +115,5 @@ OQ-2 is **delivered as a decision record — recommendation only**. **Nothing wa
 - **The position assessed:** Expression↔Meaning Port Contract §Q8 (collisions are evidence, never admission — *"they may feed an EvidenceLink (a candidate-side observation offered to an identity-assignment act …)"*) · §6 OQ-2 record (*"yes, as a candidate-side evidence observation, never as the assignment itself (Q8). HPA rule still required."*) · §7 invariant 6 (SNF equality = a candidate for the same admitted meaning; the SNF family supports identity **reasoning** as evidence, never **assignment**).
 - **Grounding (existing law, cited):** v1.1 §7 INV-KOS-IDENTITY-001 · §1 P-4 · §12.1 ⟨C-1⟩ non-admission note · §6 EvidenceLinks (⟨C-3⟩) · §7 INV-KOS-VERIFICATION-001 · §8 ⟨A-3⟩ event guard · §10 obligations · §20 OQ-2 · §1 register 25+4 · Port Contract §2 obligation 4 · Second Architectural Review (20260822-1459) Finding N-1.
 - **Chain position:** T-5 accepted (`971eb0fe`) → OQ-2 is the first remaining deferred decision. The plan (`20260822-2354`) and the authorization package (`20260823-0021`) both record OQ-2 as a **separate HPA ruling**, untouched by the refinement.
-- **Discipline honored:** **grounded, not invented** — every clause traces to existing law (§2); **gate-verified** (§4 — the position holds every guard); **recommendation separated from decision** (R-34 — the HPA's decision field is ⬜ OPEN); **nothing changed** (§7); the strongest statement never exceeds the evidence (the record states what is existing law and what remains the HPA's to rule) · register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · OQ-4 **unauthorized** · **the Kernel still waits.**
-- **Status:** 📋 **OQ-2 DECISION RECORD — DELIVERED · RECOMMENDATION ONLY · DECISION FIELD ⬜ OPEN (HPA).** Next: **HPA ruling on OQ-2** · then OQ-3 · OQ-5 · F-1…F-5 · AH-5 deferral · AH-4 · consolidate architectural consequences · **Kernel decision**.
+- **Discipline honored:** **grounded, not invented** — every clause traces to existing law (§2); **gate-verified** (§4 — the position holds every guard); **recommendation separated from decision** (R-34 — the record delivered evidence and recommendation; the HPA's ruling was a separate human act); **the ruling changed nothing** (§7); the strongest statement never exceeds the evidence (the record states what is existing law and what was the HPA's to rule) · register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · OQ-4 **unauthorized** · **the Kernel still waits.**
+- **Status:** ✅ **OQ-2 DECISION RECORD — HPA ACCEPTED (2026-08-23) · OQ-2 RESOLVED · CLOSED.** The HPA accepted the recommended ruling (ACCEPT) — SNF-equivalence may be recorded as an EvidenceLink supporting an identity-assignment act, as a candidate-side evidence observation, never as the assignment itself. Next (separate governed acts, each a new commission): **OQ-3 · OQ-5 · F-1…F-5 · AH-5 deferral · AH-4** · consolidate architectural consequences · **Kernel decision**.
