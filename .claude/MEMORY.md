@@ -772,3 +772,11 @@ Multiple sessions share one working tree and one index. **Never assume the index
 > **Do not create boundaries because a concept exists. Create boundaries because ownership, language, invariants, and change reasons require them.**
 
 The four-question test applied throughout the KOS track (language · invariants · ownership · change reason) is the operational form. Corollary recorded with it: **a role is not automatically a bounded context** — role-model decisions (ADR-AIP-04 territory) and context-map decisions (ADR-AIP-03 territory) are different taxonomies, decided separately.
+
+## Research in development — HPA standing directive (2026-08-23)
+
+**Inform, never initiate.** When development needs a question answered that no architecture/governance resolution can answer, **surface it to the HPA and wait** — never start a research track (formula iteration · simulation · experiment · new corpus study) on the agent's own authority.
+
+**KOS-SNF chain (HPA, 2026-08-23):** the SNF research track is deliberately **STOPPED** — P5 produced the architectural evidence it could produce · research **CLOSED** · **OQ-4 (real-language KOS-SCB) remains UNAUTHORIZED**. The one **parked** research question — *can a real-world semantic compiler preserve distinctions and abstain appropriately across actual multilingual/domain corpora?* — is reconsidered only on a future, explicitly commissioned OQ-4/KOS-SCB track, never reopened implicitly. No further SNF research now: SNF formula/entropy · SNF-A/B/C/D/E competition · Sanskrit/Pāṇinian theory · Bayesian scoring.
+
+**The Kernel depends on the contract, not the mechanism (HPA reaffirmation, 2026-08-23):** semantic mechanisms (SNF-C/SNF-E · LLM · Sanskrit/Pāṇinian compiler · structured API · human submission) are **replaceable interpretation providers behind the Expression↔Meaning boundary** — never constitutional core. Remaining work on the KOS chain is **architecture/governance resolution** (OQ-3 · OQ-5 · F-1…F-5 · AH-5/AH-4 · consolidation · Kernel decision), not research.
