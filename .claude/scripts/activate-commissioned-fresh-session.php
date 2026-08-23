@@ -189,15 +189,22 @@ function refusal(string $wi, string $reason, string $missing, string $why, strin
     ];
 }
 
-/** @return array{ready:bool,exit:int,payload:array} an honest mid-sequence report */
+/**
+ * An honest mid-sequence report. `ok` is part of the shape the caller tests, so
+ * the failure path carries it explicitly rather than relying on a missing key
+ * reading as falsy; `transitionWritten` states what was actually persisted.
+ *
+ * @return array{ok:bool,ready:bool,exit:int,payload:array}
+ */
 function incompleteSequence(string $wi, array $written, string $missing, string $err): array
 {
     return [
+        'ok' => false,
         'ready' => false,
         'exit' => EX_REFUSED,
         'payload' => [
             'result' => 'INCOMPLETE_SEQUENCE',
-            'transitionWritten' => true,
+            'transitionWritten' => $written !== [],
             'written' => $written,
             'workItem' => $wi,
             'whatIsMissing' => $missing . ($err === '' ? '' : ' — ' . $err),
@@ -381,6 +388,12 @@ function analyze(string $wi, string $role, ?string $humanAct, array $excludes, ?
         'commissionSource' => $commissionSource,
         'independentOf' => $exclusionSet,
         'humanAct' => $humanAct,
+        // The authoritative fold obtained at V2 — carried forward so the write
+        // path derives ownership from recorded fact rather than re-deriving it.
+        // It is NEVER re-folded downstream (one fold per analysis, AST-015 is
+        // the sole interpreter); if ownership moves between analysis and write,
+        // AST-015's HANDOFF guard refuses and the sequence reports honestly.
+        'fold' => $fold,
     ];
 }
 
@@ -390,7 +403,8 @@ function analyze(string $wi, string $role, ?string $humanAct, array $excludes, ?
  * The ONLY allowed write. Every transition goes through AST-015 `append`; the
  * outcome is verified from the authoritative fold, never assumed. Mid-sequence
  * refusal is honestly reported as INCOMPLETE_SEQUENCE (what was written + who
- * acts next).
+ * acts next). Both paths return `ok`, and ownership comes from the fold the
+ * analysis observed — never from a hand-derived or defaulted value.
  *
  * @return array{ok:bool,written:array,payload?:array,exit?:int}
  */
@@ -623,7 +637,7 @@ if (!$written['ok']) {
 
 render([
     'result' => 'ACTIVATED',
-    'transitionWritten' => true,
+    'transitionWritten' => $written['written'] !== [],
     'session' => $analysis['identity'],
     'role' => $role,
     'commissionSource' => $analysis['commissionSource'],

@@ -1,8 +1,22 @@
 # Current Working State
 
-**Updated:** 2026-08-24 *(additive — the **`REPAIR-001` implementer `84e5c1f7` APPOINTED + ACTIVE via AST-018 · `O-5` cleared by test · correction `C-1` (appoint DOES write START) · finding `O-6`** block is the newest; every block below stands as history)*
+**Updated:** 2026-08-24 *(additive — the **`REPAIR-001` IMPLEMENTED (RED→GREEN→regression→integrity), NOT VERIFIED** block is the newest; every block below stands as history)*
 
 ---
+
+## 📍 UPDATE (2026-08-24, **`KOS-OPERATING-MODEL-001-AMENDMENT-001` — `REPAIR-001` **IMPLEMENTED**: `F-1`+`F-2`+`F-3`+`F-4`+`O-1` repaired under approved `EP-01`; ⛔ **NOT VERIFIED · NOT ADOPTED · NOT AUTHORIZED** — newest block; everything below stands as history)
+
+| | |
+|---|---|
+| 🆔 **Implementation lane** | `claude-code-session:84e5c1f7-bd51-42fd-83fc-1b58c7d90dd3` — `implementation` · `ACTIVE` · attribution `MATCH` · `authorized_to_act: true`. Appointed via `AST-018` (not hand-composed), human `START` recorded. |
+| 📋 **Approved plan** | `docs/plans/20260824-0058-KOS-OPERATING-MODEL-001-AMENDMENT-001-REPAIR-001-plan.md` — approved in-session by the PO/ARB: *"approve the REPAIR-001 EP-01 plan. Proceed with RED first. Do not change the scope."* |
+| 🔴 **RED first, observed** | `GO-26`…`GO-30` added; **5/5 failed** against unmodified `AST-019`. `GO-26` independently reproduced the verifier's `HERMETIC-AST019-C`: `check → READY`, then `activate → 65`, `written: ["REGISTER"]`, refused *"bootstrap handoff (from=null) is only valid while no owner exists"*. Re-checked after a test-double correction: **still 5/5 RED on `HEAD` source**. |
+| 🟢 **GREEN — 4 behavioural lines** | `F-1` `analyze()` now returns `'fold' => $fold` (no second fold; `AST-015` stays sole interpreter) · `F-3` `incompleteSequence()` returns `'ok' => false` · `F-4` `transitionWritten` derived at **both** sites · `F-2` closes as a consequence — **no `@`, no buffering, no `ini_set`**. |
+| ✅ **Evidence** | `GO-26`…`GO-30` green (132 assertions) · full `WorkflowEngine` regression **152 tests / 1709 assertions OK** vs pre-RED baseline **147 / 1577** (+5 tests, no new failures; the one pre-existing PHPUnit deprecation unchanged). |
+| 🔒 **Integrity** | `AST-015/016/017/018`, `operating-model.php` (**L2**), `OperatingModelContractTest` (**L3**), `…final-operating-model.md` (**L1**) all **byte-identical to `HEAD`** · `GO-01`…`GO-25` **+293/−0** (additions only) · `'CONTINUATION'` count still `0` · `mechanismPath()` untouched · only the two authorized files modified. |
+| 🧭 **Observation (recorded here only, NOT filed, NOT acted on)** | `AST-017` and `AST-016` also honour `KOS_MECHANISM_PATH` — the seam is wider than `F-5` records. It surfaced as a **test-double** ordering fault (fixed by identifying the post-write fold by content), never as a production issue. **`F-5` remains untouched and out of scope.** |
+| 🚫 **Non-actions** | no verification · no adoption · no authorization · no verifier appointed · no `F-5` fix · no `ASD-001` remedy · no `§22` change · no `AST-015`–`AST-018` change · no governance artifact filed · parent not reopened · verification history not reopened or rewritten. |
+| ▶️ **Next act (HUMAN)** | Decide whether to commit the slice, then commission a **fresh independent verifier** — barred: `84c0f6f6` · `1899d8bf` · `5928b9f9`/`e40f3fd0` · `930c65a4` · **`84e5c1f7` (this implementer)**. |
 
 ## 📍 UPDATE (2026-08-23, **`KOS-OPERATING-MODEL-001-AMENDMENT-001` — `REPAIR-001` **IMPLEMENTER SELECTION DECIDED**: a **genuinely fresh session** · **`e40f3fd0…` BARRED** (same participant as `5928b9f9`, new runtime id after restart) · **`1899d8bf` EXCLUDED BY DECISION, not by rule** · kickoff bound to a **two-phase** pattern · Phase-1 prompt **amended in place** · observation **`O-5`** filed separately; ⛔ **NO appointment, NO transition, NO code change** — AST-019 still IMPLEMENTED · VERIFICATION COMPLETE RESULT FAIL · NOT ADOPTED · NOT AUTHORIZED** — newest block; everything below stands as history)
 

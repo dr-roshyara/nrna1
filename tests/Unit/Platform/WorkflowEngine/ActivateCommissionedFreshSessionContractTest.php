@@ -263,6 +263,121 @@ class ActivateCommissionedFreshSessionContractTest extends TestCase
 
     private const UUID = '/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/';
 
+    // ─── REPAIR-001 harness (GO-26…GO-30 only; the harness above is untouched) ─
+
+    /**
+     * The ONE state that arms F-1: a live `mutationOwner` with no ACTIVE,
+     * CREATED or HANDED_OFF lane. In AST-015's fold `COMPLETE` and `HANDOFF`
+     * clear the owner — `FAIL` does not — so a lane that STARTed and then FAILed
+     * keeps ownership while AST-018 still reports NEXT_ACTOR_REQUIRED. Built
+     * through the qualified mechanism only, never by hand-writing JSON.
+     */
+    private function armedOwnerFixture(string $wi): void
+    {
+        $this->record($wi, 'IMPL', 'implementation', 'COMPLETED', 'IMPLARM'); // COMPLETE clears the owner
+        $this->recordLane($wi, 'OWNER', 'architecture', 'FAILED');            // START→FAIL keeps it: owner = OWNER
+    }
+
+    /** Test-side read of the hermetic temp record (the capability itself never reads a record). */
+    private function recordedTransitions(string $wi): array
+    {
+        return json_decode((string) file_get_contents($this->dir . '/' . $wi . '.json'), true)['transitions'] ?? [];
+    }
+
+    private function lastTransitionOfType(string $wi, string $type): ?array
+    {
+        $found = null;
+        foreach ($this->recordedTransitions($wi) as $t) {
+            if (($t['type'] ?? '') === $type) {
+                $found = $t;
+            }
+        }
+
+        return $found;
+    }
+
+    /**
+     * A forwarding proxy over AST-015, injected through the same
+     * KOS_MECHANISM_PATH seam GO-20 already uses. It forwards every invocation
+     * verbatim and writes nothing of its own; it only refuses one chosen
+     * `append` type, or doctors the post-write `fold` so the outcome
+     * verification disagrees. A test vehicle — it neither repairs nor mitigates
+     * F-5.
+     *
+     * The post-write fold is identified by CONTENT, not by call order: it is the
+     * only fold reporting $doctorWhenActive as ACTIVE. Ordering would be wrong —
+     * AST-017 honours KOS_MECHANISM_PATH too and folds through this proxy while
+     * the capability is still analysing.
+     */
+    private function stubMechanism(?string $failAppendType, ?string $doctorWhenActive = null): string
+    {
+        $path = $this->dir . '/proxy-mechanism.php';
+        $head = '<?php' . "\n"
+            . '$real = ' . var_export($this->repoRoot . '/' . self::MECHANISM, true) . ";\n"
+            . '$fail = ' . var_export($failAppendType, true) . ";\n"
+            . '$doctor = ' . var_export($doctorWhenActive, true) . ";\n";
+        $body = <<<'STUB'
+            $args = array_slice($argv, 1);
+            if ($fail !== null && ($args[0] ?? '') === 'append') {
+                foreach ($args as $a) {
+                    if (str_starts_with($a, '--json=')) {
+                        $t = json_decode(substr($a, 7), true)['type'] ?? '';
+                        if ($t === $fail) {
+                            fwrite(STDERR, "injected failure: the {$t} append was refused by the test proxy\n");
+                            exit(65);
+                        }
+                    }
+                }
+            }
+            $p = proc_open(array_merge(['php', $real], $args), [1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes);
+            $out = stream_get_contents($pipes[1]);
+            $err = stream_get_contents($pipes[2]);
+            fclose($pipes[1]);
+            fclose($pipes[2]);
+            $code = proc_close($p);
+            if ($doctor !== null && ($args[0] ?? '') === 'fold' && $code === 0) {
+                $fold = json_decode($out, true);
+                if (($fold['sessions'][$doctor]['state'] ?? null) === 'ACTIVE') {
+                    $fold['mutationOwner'] = 'SOMEONE-ELSE';  // the post-write fold disagrees
+                    $out = json_encode($fold);
+                }
+            }
+            fwrite(STDOUT, $out);
+            fwrite(STDERR, $err);
+            exit($code);
+            STUB;
+        file_put_contents($path, $head . $body . "\n");
+
+        return $path;
+    }
+
+    /**
+     * Run the capability under explicit php.ini flags. `display_errors` is an
+     * environment default, so the --json contract must be asserted under it
+     * rather than under whatever this host's php.ini happens to be (F-2).
+     *
+     * @return array{code:int,out:?array,raw:string,err:string}
+     */
+    private function activateIni(array $ini, array $args, array $env = []): array
+    {
+        $flags = [];
+        foreach ($ini as $k => $v) {
+            $flags[] = '-d';
+            $flags[] = $k . '=' . $v;
+        }
+        $r = $this->runRaw(array_merge(['php'], $flags,
+            [$this->repoRoot . '/' . self::CAPABILITY, '--dir=' . $this->dir, '--json'], $args), $env);
+        $r['out'] = json_decode($r['raw'], true);
+
+        return $r;
+    }
+
+    /** php.ini flags that put every diagnostic on STDERR, deterministically. */
+    private const INI_ERRORS_TO_STDERR = ['display_errors' => 'stderr', 'error_reporting' => '-1', 'log_errors' => '0'];
+
+    /** php.ini flags of an ordinary dev/CI host: diagnostics on STDOUT (the F-2 condition). */
+    private const INI_ERRORS_TO_STDOUT = ['display_errors' => '1', 'error_reporting' => '-1', 'log_errors' => '0'];
+
     // ─── GO-01 … GO-05 · the unified binding model — first + subsequent ─────
 
     public function test_go01_first_governance_session_binds_from_human_business_order(): void
@@ -768,6 +883,184 @@ class ActivateCommissionedFreshSessionContractTest extends TestCase
             '.claude/scripts/operating-model.php'] as $canonical) {
             $this->assertTrue($this->gitClean($canonical),
                 "{$canonical} must be byte-unchanged vs HEAD (read-only paths stay untouched)");
+        }
+    }
+
+    // ─── GO-26 … GO-30 · REPAIR-001 · the findings of the independent
+    //     verification (F-1 blocking · F-3 · F-4 · F-2) and the structural
+    //     coverage gap O-1 that hid F-1 from GO-01…GO-25 ────────────────────
+
+    /**
+     * GO-26 · O-1 + F-1 — the write path, reached with a LIVE mutationOwner.
+     *
+     * O-1 is why 25/25 green could not see F-1: GO-01/03/05/15/18 use an empty
+     * or first-lane item, GO-04/06/23/24/25 use a COMPLETED predecessor (which
+     * clears the owner), and every other non-null-owner shape is refused earlier
+     * by GO-13/GO-21. The write path was exercised only where owner is
+     * legitimately null — exactly where the defect is invisible.
+     */
+    public function test_go26_repair001_live_mutation_owner_is_derived_from_the_authoritative_fold(): void
+    {
+        $this->requireCapability();
+        $this->armedOwnerFixture('WI-GO26');
+
+        // the fixture is genuinely armed, asserted rather than assumed
+        $fold = $this->foldOf('WI-GO26');
+        $this->assertSame('OWNER', $fold['mutationOwner'], 'the fixture must present a LIVE mutation owner');
+        $this->assertSame('OPEN', $fold['workItemState']);
+        $this->assertSame('COMPLETED', $fold['sessions']['IMPL']['state']);
+        $this->assertSame('FAILED', $fold['sessions']['OWNER']['state'],
+            'no ACTIVE/CREATED/HANDED_OFF lane — otherwise GO-13 refuses before the write path');
+        $na = json_decode($this->nextActorRaw('WI-GO26'), true);
+        $this->assertSame('NEXT_ACTOR_REQUIRED', $na['result']);
+        $this->assertSame('verification', $na['role']);
+
+        // the read-only sibling exists to PREDICT the write — it must not mispredict
+        $check = $this->activate(['check', '--work-item=WI-GO26', '--requested-role=verification',
+            '--human-act=I want a Verification session for WI-GO26.'], ['CLAUDE_CODE_SESSION_ID' => 'GO26']);
+        $this->assertSame('READY', $check['out']['result']);
+
+        $r = $this->activate(['activate', '--work-item=WI-GO26', '--requested-role=verification',
+            '--human-act=I want a Verification session for WI-GO26.'], ['CLAUDE_CODE_SESSION_ID' => 'GO26']);
+
+        $this->assertSame(0, $r['code'],
+            'check promised READY; activate must not half-write and stop — the record is append-only: ' . $r['raw']);
+        $this->assertSame('ACTIVATED', $r['out']['result']);
+        $this->assertSame(['REGISTER', 'HANDOFF', 'START'], $r['out']['transitions']);
+
+        $after = $this->foldOf('WI-GO26');
+        $this->assertSame('GO26', $after['mutationOwner']);
+        $this->assertSame('ACTIVE', $after['sessions']['GO26']['state']);
+        $this->assertSame('OWNER', $after['sessions']['GO26']['predecessor'],
+            'REGISTER.predecessor must derive from the live mutationOwner, never from a forced null (F-1)');
+
+        $handoff = $this->lastTransitionOfType('WI-GO26', 'HANDOFF');
+        $this->assertSame('OWNER', $handoff['from'],
+            'HANDOFF.from must derive from the live mutationOwner (F-1) — AST-015 refuses from=null while an owner exists');
+        $this->assertSame('GO26', $handoff['to']);
+    }
+
+    /**
+     * GO-27 · F-3 — one machine-readable result shape on BOTH paths.
+     * The docblock promises array{ok:bool,…} and the caller tests $written['ok'];
+     * the failure path returned the refusal() shape, which has no 'ok'. The
+     * observable symptom is an undefined-key read on every partial write.
+     */
+    public function test_go27_repair001_failure_paths_return_the_documented_result_shape(): void
+    {
+        $this->requireCapability();
+
+        $cases = [['REGISTER', []], ['HANDOFF', ['REGISTER']], ['START', ['REGISTER', 'HANDOFF']]];
+        foreach ($cases as [$failAt, $expectWritten]) {
+            $wi = 'WI-GO27-' . $failAt;
+            $this->record($wi, 'IMPL', 'implementation', 'COMPLETED', 'IMPL27');
+
+            $r = $this->activateIni(self::INI_ERRORS_TO_STDERR,
+                ['activate', '--work-item=' . $wi, '--requested-role=verification',
+                    '--human-act=I want a Verification session for ' . $wi . '.'],
+                ['CLAUDE_CODE_SESSION_ID' => 'GO27' . $failAt,
+                    'KOS_MECHANISM_PATH' => $this->stubMechanism($failAt)]);
+
+            $this->assertSame(65, $r['code'], $r['err']);
+            $this->assertIsArray($r['out'], 'the payload must stay machine-readable: ' . $r['raw']);
+            $this->assertSame('INCOMPLETE_SEQUENCE', $r['out']['result']);
+            $this->assertSame($expectWritten, $r['out']['written']);
+            $this->assertSame('governance', $r['out']['whoMustActNext']);
+            $this->assertStringNotContainsString('Undefined array key', $r['err'],
+                "injected {$failAt} failure: the caller must not read an undefined key — the failure path owes the documented shape (F-3)");
+            $this->assertStringNotContainsString('Undefined array key', $r['raw']);
+        }
+
+        // the fourth case the verification exercised: all three written, post-write fold disagrees
+        $this->record('WI-GO27-FOLD', 'IMPL', 'implementation', 'COMPLETED', 'IMPL27F');
+        $r = $this->activateIni(self::INI_ERRORS_TO_STDERR,
+            ['activate', '--work-item=WI-GO27-FOLD', '--requested-role=verification',
+                '--human-act=I want a Verification session for WI-GO27-FOLD.'],
+            ['CLAUDE_CODE_SESSION_ID' => 'GO27FOLD',
+                'KOS_MECHANISM_PATH' => $this->stubMechanism(null, 'GO27FOLD')]);
+
+        $this->assertSame(65, $r['code'], $r['err']);
+        $this->assertSame('INCOMPLETE_SEQUENCE', $r['out']['result'],
+            'three successful appends still yield INCOMPLETE_SEQUENCE when the authoritative fold disagrees');
+        $this->assertSame(['REGISTER', 'HANDOFF', 'START'], $r['out']['written']);
+        $this->assertStringNotContainsString('Undefined array key', $r['err']);
+    }
+
+    /** GO-28 · F-4 — transitionWritten states what was actually persisted, never a hard-coded true. */
+    public function test_go28_repair001_transition_written_reflects_what_was_actually_persisted(): void
+    {
+        $this->requireCapability();
+
+        // nothing written
+        $this->record('WI-GO28a', 'IMPL', 'implementation', 'COMPLETED', 'IMPL28A');
+        $a = $this->activate(['activate', '--work-item=WI-GO28a', '--requested-role=verification',
+            '--human-act=I want a Verification session for WI-GO28a.'],
+            ['CLAUDE_CODE_SESSION_ID' => 'GO28A', 'KOS_MECHANISM_PATH' => $this->stubMechanism('REGISTER')]);
+        $this->assertSame(65, $a['code']);
+        $this->assertSame([], $a['out']['written']);
+        $this->assertFalse($a['out']['transitionWritten'],
+            'nothing was persisted — a governance-record field must not claim a mutation that never happened (F-4)');
+
+        // part written
+        $this->record('WI-GO28b', 'IMPL', 'implementation', 'COMPLETED', 'IMPL28B');
+        $b = $this->activate(['activate', '--work-item=WI-GO28b', '--requested-role=verification',
+            '--human-act=I want a Verification session for WI-GO28b.'],
+            ['CLAUDE_CODE_SESSION_ID' => 'GO28B', 'KOS_MECHANISM_PATH' => $this->stubMechanism('HANDOFF')]);
+        $this->assertSame(65, $b['code']);
+        $this->assertSame(['REGISTER'], $b['out']['written']);
+        $this->assertTrue($b['out']['transitionWritten'],
+            'part of an append-only sequence was persisted and cannot be undone — that must be reported');
+
+        // fully written
+        $this->record('WI-GO28c', 'IMPL', 'implementation', 'COMPLETED', 'IMPL28C');
+        $c = $this->activate(['activate', '--work-item=WI-GO28c', '--requested-role=verification',
+            '--human-act=I want a Verification session for WI-GO28c.'], ['CLAUDE_CODE_SESSION_ID' => 'GO28C']);
+        $this->assertSame(0, $c['code'], $c['err']);
+        $this->assertTrue($c['out']['transitionWritten']);
+    }
+
+    /** GO-29 · F-2 — the --json contract holds under display_errors=On (success path). */
+    public function test_go29_repair001_json_contract_holds_under_display_errors_on_success(): void
+    {
+        $this->requireCapability();
+        $this->record('WI-GO29', 'IMPL', 'implementation', 'COMPLETED', 'IMPL29');
+
+        $r = $this->activateIni(self::INI_ERRORS_TO_STDOUT,
+            ['activate', '--work-item=WI-GO29', '--requested-role=verification',
+                '--human-act=I want a Verification session for WI-GO29.'],
+            ['CLAUDE_CODE_SESSION_ID' => 'GO29']);
+
+        $this->assertSame(0, $r['code'], $r['err']);
+        $this->assertIsArray($r['out'],
+            'display_errors=On is an ordinary dev/CI default; a diagnostic ahead of the payload makes a SUCCESSFUL '
+                . 'activation unparseable to every programmatic consumer, including the capability\'s own run() idiom (F-2): '
+                . $r['raw']);
+        $this->assertSame('ACTIVATED', $r['out']['result']);
+        foreach (['PHP Warning', 'PHP Notice', 'PHP Deprecated', 'Undefined array key'] as $diagnostic) {
+            $this->assertStringNotContainsString($diagnostic, $r['raw'], "STDOUT must carry no {$diagnostic}");
+            $this->assertStringNotContainsString($diagnostic, $r['err'], "STDERR must carry no {$diagnostic}");
+        }
+    }
+
+    /** GO-30 · F-2 — the same contract on the partial-write path. */
+    public function test_go30_repair001_json_contract_holds_under_display_errors_on_partial_write(): void
+    {
+        $this->requireCapability();
+        $this->record('WI-GO30', 'IMPL', 'implementation', 'COMPLETED', 'IMPL30');
+
+        $r = $this->activateIni(self::INI_ERRORS_TO_STDOUT,
+            ['activate', '--work-item=WI-GO30', '--requested-role=verification',
+                '--human-act=I want a Verification session for WI-GO30.'],
+            ['CLAUDE_CODE_SESSION_ID' => 'GO30', 'KOS_MECHANISM_PATH' => $this->stubMechanism('HANDOFF')]);
+
+        $this->assertSame(65, $r['code']);
+        $this->assertIsArray($r['out'],
+            'a partial write is exactly when a consumer most needs a parseable answer (F-2): ' . $r['raw']);
+        $this->assertSame('INCOMPLETE_SEQUENCE', $r['out']['result']);
+        $this->assertSame(['REGISTER'], $r['out']['written']);
+        foreach (['PHP Warning', 'PHP Notice', 'PHP Deprecated', 'Undefined array key'] as $diagnostic) {
+            $this->assertStringNotContainsString($diagnostic, $r['raw'], "STDOUT must carry no {$diagnostic}");
+            $this->assertStringNotContainsString($diagnostic, $r['err'], "STDERR must carry no {$diagnostic}");
         }
     }
 }
