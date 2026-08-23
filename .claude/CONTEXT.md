@@ -1,6 +1,6 @@
 # Current Working State
 
-**Updated:** 2026-08-24 *(additive — the **`REPAIR-001` IMPLEMENTED (`d8a5ee93`) · re-verification determined **BINDING** on the PO/ARB's own §38 condition · ⚠️ implementation `STOP` UNRECORDED = the real next act** block is the newest; every block below stands as history)*
+**Updated:** 2026-08-24 *(additive — the **implementation lane CLOSED (`seq 9`, Governance-transcribed) · item reopened for re-verification (`seq 10`) · awaiting a fresh re-verifier declaration** block is the newest; every block below stands as history)*
 
 ---
 
@@ -186,6 +186,19 @@
 | ❓ **OPEN — the PO/ARB's ruling** | *Does a runtime that performed read-only orientation and produced advisory output about the appointment path (but no write and no assessment of the review subject) satisfy the freshness/independence condition for the Governance adoption-review role?* **D-i** start a genuinely new session → question moot, `PASS` on facts, **no precedent created** · **D-ii** rule the question → gives `REVIEW_INDEPENDENCE_POLICY` its **first concrete precedent**, estate-wide. **No recommendation made between them** — the candidate does not rule on its own independence. |
 | ⛔ **Unchanged** | `KOS-OPERATING-MODEL-001` **VERIFIED · NOT ADOPTED · NOT AUTHORIZED** · `AST-019`/`AMENDMENT-001` **IMPLEMENTED · NOT VERIFIED · NOT ADOPTED · NOT AUTHORIZED** (§38) · binding path still `REGISTER(governance)` → `HANDOFF` from `fc59bb0a` → **human START (G-3)** → review → STOP → PO/ARB adoption decision (**AST-019 is not this step's mechanism** — `CONFLICTING_ASSIGNMENT`, GO-13). |
 | 🚫 **Non-actions** | no REGISTER · no HANDOFF · no START · no CONTINUATION · no grant · no lane · no workflow transition · no adoption review · no adoption recommendation · no independence ruling · no self-appointment · no change to AST-015/016/017/018/019, the operating model, or the preserved prompt · no EKS-07. |
+
+---
+
+## 📍 UPDATE (2026-08-24, **`KOS-OPERATING-MODEL-001-AMENDMENT-001` — PO/ARB chose **option 1, start independent re-verification** · implementation lane **CLOSED** (`seq 9 STOP`, **transcribed by Governance**, disclosed) · item **reopened** (`seq 10 CONTINUATION`) · ⬜ **no appointment — awaiting a fresh candidate's own declaration**; ⛔ no status advanced: AST-019 IMPLEMENTED · NOT VERIFIED · NOT ADOPTED · NOT AUTHORIZED**)
+
+| | |
+|---|---|
+| 🎬 **PO/ARB act (G-3)** | **`1`** — *"Start independent re-verification"*, with the same session's statement of completion: *"The implementation was completed under the approved EP-01 plan and committed as: d8a5ee93."* |
+| ✅ **`seq 9 STOP` — implementation closed, attribution disclosed** | `recordedBy: **governance**`, deliberately **not** `implementation`. The lane completed and *did* report — in `d8a5ee93` + its message, the EP-01 plan, dev guide 05, its session log — but never recorded its own `STOP`, so the record never said implementation had finished. **Governance transcribes that existing report; it does not speak in the lane's voice** (`INV-ATTR-1/2`). **Asserted:** the report exists and is cited. **NOT asserted:** that the repair is correct — the re-verifier's question, deliberately not audited here. Status on the transition: **IMPLEMENTED, explicitly NOT VERIFIED/ADOPTED/AUTHORIZED** (`R-34`/`EP-02`). Scope check carried on the record: `d8a5ee93` touches no `AST-015/016/017/018`, no `operating-model.php`, no `L1/L2/L3`. |
+| ✅ **`seq 10 CONTINUATION` — reopened narrowly** | Exits sticky `STOPPED` (`Inv E`) so a re-verification lane can be appointed; `recordedBy: governance`, `humanAct` = the `1`. **Reopens:** the work item only. **Does NOT reopen:** the implementation (`seq 9` stands) · the previous verification or its **FAIL** (history, unchanged) · the parent (`L1+L2+L3` ADOPTED · AUTHORIZED). **Advances nothing.** Names `84e5c1f7` because `CONTINUATION` needs a *registered* session and reactivating the owner is the only governed way to restore a `HANDOFF` predecessor (`seq 5` here, `seq 10` on the parent) — **it is asked for no further work and is BARRED from the re-verification.** |
+| 📊 **Fold** | `OPEN` · `mutationOwner=84e5c1f7` · `implementation` `ACTIVE` (predecessor only) · `verification` `HANDED_OFF` · `G-REPAIR-001` `AUTHORIZED` · **10 transitions**. |
+| ⬜ **Why no appointment** | **An identity cannot be invented** (`INV-ATTR-1/2`); `AST-018` refuses without a candidate because *"a fresh actor has no identity until its own process reports one."* **Human acts next:** start a fresh session with `…-REPAIR-001-RE-VERIFIER-CANDIDATE-DECLARATION-prompt.md` (declaration-only; step 0 *"declare before you orient"*; bans reading the subject/plan/guide/diff first). **Bars:** `84e5c1f7` (wrote fix *and* certifying tests) · `84c0f6f6` (authored the findings) · `1899d8bf` (producer) · `5928b9f9` (scoped the repair). On appointment: `AST-018 appoint` only — nothing hand-composed (`ASD-001`) — and per `O-6` that one act writes `REGISTER`+`HANDOFF`+`START` together. |
+| ⛔ **Non-actions** | No appointment · no verdict · **no status advanced** · no adoption/authorization claim · no code or test change · no `AST-015/016/017/018/019` modification · verification history untouched · parent not reopened · `F-5`·`ASD-001`·`O-4`·`O-6`·`Q-1`·`Q-2`·§22 uncommissioned. |
 
 ---
 
