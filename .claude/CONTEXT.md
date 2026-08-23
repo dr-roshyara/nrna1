@@ -1,6 +1,6 @@
 # Current Working State
 
-**Updated:** 2026-08-23 *(additive — the **`KOS-OPERATING-MODEL-001-AMENDMENT-001` AST-019 VERIFIER ACTIVATED (`84c0f6f6`, lane ACTIVE)** block is the newest; the parent's ADOPTED/AUTHORIZED outcome and every block below stand as history)*
+**Updated:** 2026-08-23 *(additive — the **`ASD-001` APPOINTMENT SEQUENCING DEFECT (AST-018 bypassed; NOT_ELIGIBLE is a correct re-appointment guard, NOT an independence finding) — remedy A/B is the PO/ARB's** block is the newest; every block below stands as history)*
 
 ---
 
@@ -132,6 +132,21 @@
 | ❓ **OPEN — the PO/ARB's ruling** | *Does a runtime that performed read-only orientation and produced advisory output about the appointment path (but no write and no assessment of the review subject) satisfy the freshness/independence condition for the Governance adoption-review role?* **D-i** start a genuinely new session → question moot, `PASS` on facts, **no precedent created** · **D-ii** rule the question → gives `REVIEW_INDEPENDENCE_POLICY` its **first concrete precedent**, estate-wide. **No recommendation made between them** — the candidate does not rule on its own independence. |
 | ⛔ **Unchanged** | `KOS-OPERATING-MODEL-001` **VERIFIED · NOT ADOPTED · NOT AUTHORIZED** · `AST-019`/`AMENDMENT-001` **IMPLEMENTED · NOT VERIFIED · NOT ADOPTED · NOT AUTHORIZED** (§38) · binding path still `REGISTER(governance)` → `HANDOFF` from `fc59bb0a` → **human START (G-3)** → review → STOP → PO/ARB adoption decision (**AST-019 is not this step's mechanism** — `CONFLICTING_ASSIGNMENT`, GO-13). |
 | 🚫 **Non-actions** | no REGISTER · no HANDOFF · no START · no CONTINUATION · no grant · no lane · no workflow transition · no adoption review · no adoption recommendation · no independence ruling · no self-appointment · no change to AST-015/016/017/018/019, the operating model, or the preserved prompt · no EKS-07. |
+
+---
+
+## 📍 UPDATE (2026-08-23, **`KOS-OPERATING-MODEL-001-AMENDMENT-001` — `ASD-001` APPOINTMENT SEQUENCING DEFECT RECORDED — the canonical appointment engine **`AST-018 appoint` was BYPASSED** by hand-composed AST-015 appends; the resulting `NOT_ELIGIBLE` is a **correct re-appointment guard, NOT a finding that `84c0f6f6` lacks independence**; ⛔ ANALYSIS ONLY — no transition, no CANCEL, no re-appointment, refusal NOT bypassed** — supersedes nothing)
+
+| | |
+|---|---|
+| ❓ **The reported refusal** | `NOT_ELIGIBLE — independence: the candidate already holds a lane on this work item`. Source: `next-actor-orchestration.php:365`, a **pre-appointment guard** (`isset($fold['sessions'][$candidate])`) — **distinct** from the substantive eligibility check at `:373`. In AST-018's intended sequence `appoint` is *what creates the lane*, so a pre-existing lane implies prior participation — a sound inference that an out-of-band REGISTER falsified. |
+| ✅ **Candidate-declaration hypothesis DISPROVEN** | The declaration created **nothing**. Evidence: `84c0f6f6`'s own declaration records `sessions: []`/`transitions: []`; this process's pre-flight fold showed `transitions: 0` *after* the declaration existed; `seq 1` is `recordedBy: governance`. **The candidate never wrote to the record and explicitly refused two self-binding shortcuts.** |
+| 🎯 **ROOT CAUSE `ASD-001`** | **Governance (this process, `5928b9f9`) bypassed `AST-018 appoint`** — the registry's *"ONLY writing command"* — and hand-composed REGISTER+HANDOFF+START. Cause: *"canonical Governance appointment path"* was read as the parent item's hand-composed seq 1→2→3 pattern, with *"do not use AST-019"* taken as the operative constraint. **Lost by the bypass:** `appoint` records the eligibility check **as a governed act**, writing `'INDEPENDENCE: ' . $eligibility['because']` into the executionContext and deriving predecessor/from from the fold. **Misuse/sequencing error of implemented mechanisms — NOT a missing capability** (`ES-005.4`; no new engine proposed). |
+| ✅ **NOT defective** | Formal validity (all AST-015 preconditions, `exit 0` ×3) · human authority **genuine** (`seq 3` humanAct = the PO/ARB's verbatim order, `recordedBy: human`) · **substantive independence intact** (16/16 bars PASS, not producer `1899d8bf`, four searches → no hits) · attributability proven (`RESOLVED · MATCH · authorized_to_act=true`) · **candidate conduct exemplary**. **Exactly one thing is defective: the appointment's provenance.** |
+| 🛠️ **Both paths mechanically confirmed** | **A** — proceed with `84c0f6f6`: no transition needed; lane already ACTIVE and authorized; `NOT_ELIGIBLE` blocks only a *redundant second* appointment. **B** — `CANCEL` the lane (history preserved, nothing erased) → `AST-018 appoint --candidate=<fresh declared id>` (writes REGISTER+HANDOFF, `Inv C` permits `from`=cancelled owner) → **human START** (appoint never writes START). |
+| ⚖️ **Recommendation: `A`** (grounds, not convenience) | The guard fired on lane *existence*, not on any independence defect · `B` consumes a clean identity and improves **no** independence fact · house rule = *record deviations, repair in a later authorized slice* · parent precedent supports the lane's validity. **Two binding conditions:** (1) `ASD-001` must be disclosed **in the verification record itself**; (2) **A requires resuming session `84c0f6f6`** — the lane is bound to that identity, so **if it cannot be resumed, `B` is forced**. |
+| 🚫 **Author cannot rule** | `R-34`/`EP-02` — this process **caused** `ASD-001`, so the remedy is the **PO/ARB's decision**. `B` is legitimate if they judge that verifying a *governed-activation* capability demands a flawlessly-governed lane; the irony is real. |
+| ⛔ **Non-actions** | No transition · no CANCEL/STOP/re-appointment · **refusal NOT bypassed** · no JSON edit · no identity impersonation · no AST-018/019 modification · no manufactured human act · no verification · no verdict · parent ADOPTED/AUTHORIZED untouched. |
 
 ---
 
