@@ -253,6 +253,7 @@ row, no admission, no promotion.
 
 > **Commission:** Human Principal Architect, 2026-08-23 — *"visit the folder docs/knowledgeos/brainstorming and subfolder. there are files which have names are not time stamped. list them and find the timestamp when they are saved. then read the files in a sequential way. start with the oldest file to read and continue with sequential way. after finishing the reading: 1) Rename them starting the name with timestamp… 2) Understand if they are useful for knowledgeos kernel."* Issued together with the **INDEPENDENT DDD CRITIQUE** commission, for which this corpus was the falsification instrument.
 > **Critique record (the reading's purpose and result):** `docs/knowledgeos/reviews/20260823-2154-KOS-EP01-Kernel-Capability-Mapping-INDEPENDENT-DDD-CRITIQUE.md` *(on branch `kos-v11-ddd-refinement`, with the rest of the governed Kernel chain)*.
+> **Reading report (what the discussion itself says):** `docs/knowledgeos/reviews/20260823-2212-KOS-BRAINSTORMING-KERNEL-THREAD-READING-REPORT.md` — the five-phase arc · what the discussion established / rejected / left unresolved · the **20-point drift catalogue** (its most operationally valuable output) · the 26-lens system recovered · the six non-collapse pairs the law cannot express · the named artifacts it created that are **not** in the register (AH-6 · topological lens · candidate states/contexts/events). **This table below is the per-file catalogue; that report is the discussion.**
 
 ## Why this section exists
 
