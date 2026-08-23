@@ -3,7 +3,7 @@
 > **Role:** the commissioned **Kernel Boundary Definition** act — the last DDD step before the Kernel implementation decision. Phase 1 architectural consolidation + Phase 2 boundary definition, producing the thirteen prescribed outputs, the five mandatory investigations, and a **separate adversarial critic pass**.
 > **Commission:** HPA, 2026-08-23 — *"Proceed with the commissioned Kernel Boundary Definition… Treat A–E as architectural questions to be investigated by the boundary act, not as reasons to reopen research."* Handoff: `docs/plans/20260823-1241-kernel-boundary-definition-handoff-plan.md` §7 (the approved scope).
 > **Position:** P5 ✅ → AH-1…AH-5 ✅ (gate CLOSED) → T-2/T-3 ✅ → T-5 ✅ → OQ-2 ✅ → OQ-3 ✅ → OQ-5 ✅ → F-1…F-5 ✅ → **← THIS ACT** → HPA ruling → Kernel capability mapping → implementation decision.
-> **Status:** 📋 **DELIVERED · PROPOSED · NON-AUTHORITATIVE · HPA DECISION REQUIRED.** No code · no technology · no research · no DSL · no parser · no FST · no SNF · no redesign · no v1.2 · register **25+4 unchanged** · contexts **6→6** · aggregates **5→5** · members **12→12** · events **10→10** · invariants **11→11** · Constitution **FROZEN** · research **CLOSED** · OQ-4 **UNAUTHORIZED**. **Nothing is adopted by this act.**
+> **Status:** ✅ **RULED — HPA 2026-08-23 (§10): ACCEPTED as the architectural decision-support basis, subject to the rulings recorded there** (ZERO-DEFECT-1 reading (b) · ZERO-DEFECT-2 reading (b) · K-1 ACCEPT · UQ-3/UQ-4 DEFER · DEF-1 REMAINS DEFERRED · the anti-reasoner constraint carried forward as a mandatory capability fitness constraint). **Boundary ACCEPTED · Kernel NOT built · capability mapping NOT begun · implementation NOT authorized.** *(Status as delivered, preserved: 📋 DELIVERED · PROPOSED · NON-AUTHORITATIVE · HPA DECISION REQUIRED.)* No code · no technology · no research · no DSL · no parser · no FST · no SNF · no redesign · no v1.2 · register **25+4 unchanged** · contexts **6→6** · aggregates **5→5** · members **12→12** · events **10→10** · invariants **11→11** · Constitution **FROZEN** · research **CLOSED** · OQ-4 **UNAUTHORIZED**. **Nothing is adopted by this act.**
 > **Placement derived:** `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos --maturity=research` → `docs/knowledgeos` (exit 0).
 
 ---
@@ -14,7 +14,9 @@
 
 **The answer:**
 
-> **The smallest authoritative KnowledgeCore boundary is the KnowledgeAggregate consistency boundary together with ConflictRecord, admitting state transitions through the Verification Port as its single inbound gate, and preserving three of the eleven invariants as boundary *refusals* whose records live in supporting contexts.**
+> **The smallest authoritative KnowledgeCore boundary is the *KnowledgeCore Admission Boundary*: it contains exactly two existing aggregates — `KnowledgeAggregate` and `ConflictRecord`, which remain *separate* aggregate consistency boundaries — admits state transitions through the Verification Port as its single inbound gate, and preserves three of the eleven invariants as boundary *refusals* whose records live in supporting contexts.**
+
+> ⚖️ **POST-RULING PRECISION (HPA, 2026-08-23 · §10).** This sentence originally read *"the KnowledgeAggregate consistency boundary together with ConflictRecord."* That conflated two altitudes: an aggregate **is** a consistency boundary, so two aggregates cannot share one. The admission boundary is **one gate over two consistency boundaries**; their coordination is **cross-aggregate** and remains subject to **DEF-1**. Corrected as a consequence of the ruling, per the HPA's direction.
 
 Stated as a structure — **no new element is created; every element below already exists in v1.1:**
 
@@ -24,7 +26,7 @@ Stated as a structure — **no new element is created; every element below alrea
                     └──────────────┬──────────────────┘
                                    ▼
               ╔════════ Verification Port ═════════╗  ← the SINGLE admission gate
-              ║  THE BOUNDARY (the "Kernel")        ║     contract INSIDE (published language)
+              ║  KnowledgeCore ADMISSION BOUNDARY    ║     contract INSIDE (published language)
               ║                                     ║     adapter OUTSIDE (mechanism)
               ║   KnowledgeAggregate (12 members)   ║
               ║   ConflictRecord                    ║
@@ -125,7 +127,9 @@ A formal argument from the law, with no step supplied by this act:
 - **(a) Rejector-agency reading.** A rejection record carries the **rejecting domain act's** agency and a provisional identity, not the candidate's. Cost: it changes what `Agency` denotes (from the knowledge's epistemic lineage to, in this one case, the refusal's authorship) and admits a KnowledgeId for an incompletely-contextualized item. It touches two invariants' meaning — an amendment-class change.
 - **(b) Pre-domain reading (this act's recommendation, offered as evidence only).** `KnowledgeRejected` covers **R-2** and the **justification-absent** case only. Agency-absent and context-absent candidates never reach the aggregate: they are refused *at the ACL* alongside **R-4**, retained mechanism-side, and produce **no domain event** — consistent with ⟨A-3⟩ read strictly. Cost: **v1.1 §9's diagram is imprecise**, because it routes all three checks to `KnowledgeRejected`. That is a documentation-level correction of a *frozen* artifact, so it is an HPA act, not an editorial one.
 
-**Recorded, not resolved.** Reading (b) is smaller — it changes a diagram, not two invariants' meanings — and it is corroborated independently by **§3.1** below, where identity-assignment's zero case forces the same conclusion. This act states the evidence and stops.
+**Recorded, not resolved *by this act*.** Reading (b) is smaller — it changes a diagram, not two invariants' meanings — and it is corroborated independently by **§3.1** below, where identity-assignment's zero case forces the same conclusion. This act stated the evidence and stopped.
+
+> ⚖️ **RULED — HPA, 2026-08-23 (§10): reading (b) ACCEPTED for both defects.** An **agency-absent** or **context-absent** candidate **does not enter KnowledgeCore**: no `KnowledgeAggregate`, no `KnowledgeId`, no epistemic state, **no domain event**. **Rejector-agency and provisional identity are explicitly refused** — they would alter the meaning of existing invariants. The HPA's governing principle, recorded verbatim: **"absence of a constitutive prerequisite is not an epistemic state."** Consequence carried forward: `KnowledgeRejected` covers **R-2** and the **justification-path-absent** case only, and v1.1 §9's diagram — which routes all three gate causes to `KnowledgeRejected` — is **imprecise and awaits a separate governed correction of the frozen artifact.** This act performs no such correction.
 
 ---
 
@@ -144,7 +148,9 @@ Four candidate referents were tested. **No fourth structure is created** (ES-005
 
 The §16 KERNEL altitude and the admission boundary are **different notions**: the first answers *what may not change without an amendment*, the second answers *where constitutional admissibility is determined*. They have **different extents** (five aggregates vs two) and neither is wrong. But one word names both, and the boundary act is precisely where that overload becomes load-bearing.
 
-**Recommendation (PROPOSED — HPA rules):** reserve **"KERNEL"** for the §16 **altitude**, and name the structure defined here **"the KnowledgeCore admission boundary."** The HPA's working hypothesis — *"the Kernel is the authoritative admission boundary of KnowledgeCore"* — is thereby **CONFIRMED in substance and refined in extent**: it is the admission boundary, it is *narrower* than the §16 altitude, and it needs no new architectural element. **v1.1 requires no change for this**; §16's altitude table and §6's boundary sentence are both already correct as written.
+> ⚖️ **RULED — HPA, 2026-08-23 (§10): K-1 ACCEPTED.** `KERNEL` is **reserved for the existing §16 change-governance altitude**. The structure defined by this act is **the KnowledgeCore Admission Boundary**. It contains exactly two existing aggregates, which **remain separate consistency boundaries**; the admission boundary is **not** itself an aggregate and must not be described as one shared consistency boundary.
+
+**Recommendation (as proposed — now RULED, above):** reserve **"KERNEL"** for the §16 **altitude**, and name the structure defined here **"the KnowledgeCore Admission Boundary."** The HPA's working hypothesis — *"the Kernel is the authoritative admission boundary of KnowledgeCore"* — is thereby **CONFIRMED in substance and refined in extent**: it is the admission boundary, it is *narrower* than the §16 altitude, and it needs no new architectural element. **v1.1 requires no change for this**; §16's altitude table and §6's boundary sentence are both already correct as written.
 
 **Corroboration from the ZERO lens.** Identity-assignment's zero case (§5, row 3) independently forces reading (b) of §2.3: `UNKNOWN` is a state *of a created aggregate*, and a created aggregate requires a KnowledgeId — so `UNKNOWN` can never cover "no identity could be assigned." An identity-less candidate therefore cannot be inside the boundary in any state at all. Two independent routes reaching the same conclusion is the strongest evidence this act produced.
 
@@ -234,7 +240,20 @@ For each member: **what invariant becomes invalid if this element changes indepe
 
 ### 1 · Kernel boundary
 
-**The KnowledgeCore admission boundary** (recommended name — **FINDING K-1**): the **KnowledgeAggregate** consistency boundary together with **ConflictRecord**, admitting every state transition through the **Verification Port** as its single inbound gate. Strictly narrower than the §16 KERNEL altitude. **No new element; nothing renamed in v1.1.**
+**The KnowledgeCore Admission Boundary** (name **RULED — ACCEPTED**, HPA 2026-08-23 · **K-1**): a single admission gate over **exactly two existing aggregates**, admitting every state transition through the **Verification Port**. Strictly narrower than the §16 KERNEL altitude. **No new element; nothing renamed in v1.1.**
+
+```
+KnowledgeCore Admission Boundary        ← ONE admission boundary
+│                                          (the Verification Port is its only gate)
+├── KnowledgeAggregate                  ← consistency boundary #1
+│
+└── ConflictRecord                      ← consistency boundary #2 (SEPARATE)
+     └── coordination is CROSS-AGGREGATE → DS-CAND-2 → ⬜ DEF-1
+```
+
+**Ruled constraint (HPA · §10):** the two aggregates **remain separate aggregate consistency boundaries** and **must not be described as one shared consistency boundary.** The admission boundary is not itself an aggregate.
+
+**Why ConflictRecord is inside — the atomicity ground, not a relatedness ground** *(post-ruling precision; the original ATTACK 1 argued only from the enforcement locus and D-5)*: **INV-KOS-CONTRADICTION-001's enforcement locus is defined as `EpistemicState(CONFLICTED)` + `ConflictRecord` jointly, and Article 8.3 requires the record to survive resolution forward-only. Atomic consistency between the CONFLICTED state and the existence of its record is therefore necessary *under the current invariant definition*.** It is **not** inside because contradiction is conceptually related to knowledge. Should that invariant definition ever change, this membership must be re-derived, not inherited.
 
 ### 2 · Inside
 
@@ -326,7 +345,7 @@ The boundary **must not** contain: a **reasoner** or any conclusion-generating e
 
 | # | Attack | Test against law | Outcome |
 |---|---|---|---|
-| **1** | *The boundary is not minimal — ConflictRecord could sit outside.* | INV-KOS-CONTRADICTION-001's §7 locus is *"EpistemicState (CONFLICTED) + ConflictRecord"*; 8.3 requires the record to survive resolution forward-only. Outside, D-5 (*nothing written outside returns as knowledge*) would forbid reading it back into a state determination | **SURVIVES** |
+| **1** | *The boundary is not minimal — ConflictRecord could sit outside.* | INV-KOS-CONTRADICTION-001's §7 locus is *"EpistemicState (CONFLICTED) + ConflictRecord"*; 8.3 requires the record to survive resolution forward-only. Outside, D-5 (*nothing written outside returns as knowledge*) would forbid reading it back into a state determination | **SURVIVES** — ⚠️ **but the pass was incomplete**: it argued from the enforcement locus, **not** from atomicity. The **HPA supplied the missing challenge** (2026-08-23): *is ConflictRecord in the same consistency boundary, or a separate aggregate coordinated by a service/process?* The atomicity ground is now stated in §7 item 1; the answer is **separate aggregate, cross-aggregate coordination, DEF-1**. **Self-assessed gap:** the §6 atomicity test was applied to the twelve members but **not** to ConflictRecord's boundary inclusion |
 | **2** | *The boundary depends on an unratified artifact — so it is not authoritative.* | The two inbound port contracts are **PROPOSED · NON-AUTHORITATIVE** (precondition 9). D-2 makes the *contract* core-owned published language, so its ownership is sound — but its **content** is not yet ratified | ⚠️ **LANDS PARTIALLY** — recorded as a dependency risk; no §7 claim rests on unratified *content*, and the six obligations are cited only where they render an invariant already in v1.1 |
 | **3** | *"Kernel = the admission boundary" contradicts §16, where KERNEL spans five aggregates.* | §16 is change-governance; the boundary is consistency/admissibility. Different notions, different extents, both lawful — **but one word names both** | ⚠️ **LANDS** → became **FINDING K-1** and **UQ-K-1**; drove the recommended rename |
 | **4** | *Putting REJECTED inside makes the aggregate a candidate store under another name.* | F-4 forbids storing **candidates**; what is retained is the domain's **own refusal act**, not the candidate payload — and under reading (b) only for justification-absent cases | ⚠️ **LANDS PARTIALLY** → strengthens the recommendation for reading (b); recorded, not decided |
@@ -383,9 +402,100 @@ next_actor: HUMAN PRINCIPAL ARCHITECT
 next_act: SEPARATE GOVERNED ACT
 ```
 
-**PROPOSED · NON-AUTHORITATIVE · HPA DECISION REQUIRED.** Nothing here is adopted, accepted, or authorized for implementation. **The Kernel still waits.**
+**The YAML above is the completion report AS DELIVERED (pre-ruling): PROPOSED · NON-AUTHORITATIVE · HPA DECISION REQUIRED.** It is retained unrewritten as the record of what was proposed (ES-004.3). For the disposition of every item in it, see **§10 · HPA RULING** — where the boundary is **ACCEPTED subject to rulings**, `KERNEL` is reserved for the §16 altitude, the two aggregates are confirmed as **separate consistency boundaries**, ZERO-DEFECT-1/2 take **reading (b)**, UQ-3/UQ-4 and DEF-1 stay deferred, and the **anti-reasoner constraint** is carried forward as mandatory. **Nothing is implemented or authorized for implementation. The Kernel still waits.**
 
 ---
+
+---
+
+## 10 · HPA RULING (2026-08-23) — recorded verbatim-in-substance
+
+> **The Kernel Boundary Definition is accepted as the architectural decision-support basis, subject to the following rulings.**
+
+| # | Item | Ruling | Consequence |
+|---|---|---|---|
+| **1** | **ZERO-DEFECT-1** — agency absent | ✅ **ACCEPT the pre-domain reading (B)** | Agency-absent candidates **do not enter KnowledgeCore**: no `KnowledgeAggregate`, no `KnowledgeId`, **no domain event**, and **not** represented as a Knowledge `REJECTED` state. **Rejector-agency and provisional identity are refused** — they would alter the meaning of existing invariants |
+| **2** | **ZERO-DEFECT-2** — context absent | ✅ **ACCEPT the pre-domain reading (B)** | Without context a valid `KnowledgeId` cannot be assigned, because **context is constitutive of identity**. The candidate cannot enter the aggregate as `UNKNOWN`, `REJECTED`, or any other epistemic state. **No provisional identity is introduced** |
+| **3** | **K-1** — terminology | ✅ **ACCEPT** | `KERNEL` is **reserved for the existing §16 change-governance altitude**. This structure is **the KnowledgeCore Admission Boundary**, containing exactly two existing aggregates — `KnowledgeAggregate` and `ConflictRecord` — which **remain separate aggregate consistency boundaries**, coordinated **cross-aggregate**, subject to **DEF-1**. **Do not describe them as one shared aggregate consistency boundary** |
+| **4** | **UQ-3** — preserved-but-insufficient path → `QUESTIONABLE` or `UNKNOWN`? | ⬜ **DEFER** | Logical Architecture. **Not** a reason to reopen domain discovery |
+| **5** | **UQ-4** — indeterminate Confidence: absent or explicitly unknown? | ⬜ **DEFER** | Logical Architecture |
+| **6** | **DEF-1** — commands · methods · domain services · policy evaluation | ⬜ **REMAINS DEFERRED** | **DS-CAND-1** (admission decision) and **DS-CAND-2** (cross-aggregate contradiction coordination) remain **candidate loci, not services** |
+
+### 10.1 The governing principle the ruling establishes
+
+> **Absence of a constitutive prerequisite is not an epistemic state.**
+
+This is the ZERO lens's most consequential result. `UNKNOWN`, `ABSENT`, `FALSE` and `REJECTED` are states *of an identified epistemic object*; where the prerequisites of identity itself (**agency**, **context**) are missing, there is no object to bear a state, and the lawful outcome is **refusal before the domain**, not a negative state inside it.
+
+### 10.2 The anti-reasoner constraint — carried forward as MANDATORY
+
+> **The KnowledgeCore may evaluate whether a supplied justification path satisfies predefined domain admissibility requirements; it may not generate, infer, discover, or derive the semantic conclusion that the justification purports to support.**
+
+**Status: a mandatory implementation / capability **fitness constraint** for the next act (Kernel Capability Mapping).** It is the hardest future Kernel constraint, and it is where **ATTACK 7**'s watchpoint acquires teeth — the boundary can only *name* the prohibition; capability mapping is where a responsibility could quietly acquire the power to derive a conclusion.
+
+```
+EXTERNAL WORLD
+      │
+      ▼
+Expression · Semantic Compiler · Reasoning & Validation
+      │  produces
+      ▼
+Candidate + JustificationPath
+      │
+      ▼
+┌──────────────────────────────────────────┐
+│  KnowledgeCore Admission Boundary         │
+│                                           │
+│  verify admissibility · assign identity   │
+│  admit meaning · determine epistemic      │
+│  state · preserve justification ·         │
+│  assign confidence · record history       │
+│                                           │
+│  ⛔ NEVER GENERATE A CONCLUSION            │
+└──────────────────────────────────────────┘
+```
+
+### 10.3 The REJECTED model, as ruled — four situations, cleanly separated
+
+| Situation | Where | Domain state? |
+|---|---|---|
+| Candidate violates the representation / port contract | **ACL** | **No** |
+| **Agency or context prerequisite missing** | **Pre-domain refusal** | **No** |
+| Justification path absent, domain refusal representable | KnowledgeCore rejection path | **`REJECTED`** |
+| Already-admitted knowledge later fails justification | KnowledgeCore lifecycle (`BeliefRevised`) | **`REJECTED`** |
+
+**And critically: mechanism inability is not rejection.** `declared insufficiency → UNKNOWN` remains intact (⟨C-5⟩ · port obligations 3 · 6), preserving the distinction P5 exposed between *"the system cannot determine"* and *"the domain has determined that the admitted epistemic object is rejected."*
+
+### 10.4 Corrections applied to this artifact as a consequence of the ruling
+
+Per the HPA's direction — *"apply the terminology/precision correction to the boundary artifact only as a consequence of this ruling"* — four surgical corrections were made and each is marked in place:
+
+1. **§0** — the boundary sentence no longer says *"the KnowledgeAggregate consistency boundary together with ConflictRecord"* (a conflation: an aggregate **is** a consistency boundary, so two cannot share one). It now states **one admission gate over two separate consistency boundaries**.
+2. **§7 item 1** — restated with the ruled name, the two-aggregate diagram, and the **atomicity ground** for ConflictRecord's inclusion: *atomic consistency between `EpistemicState(CONFLICTED)` and the existence of its record is necessary **under the current invariant definition**, not because contradiction is conceptually related to knowledge.* Should that definition change, the membership must be **re-derived, not inherited**.
+3. **§2.3 · §3.1** — ruling annotations recording readings (b) and K-1 as ACCEPTED.
+4. **§8 ATTACK 1** — annotated with a **self-assessed gap**: the atomicity test of §6 was applied to the twelve members but **not** to ConflictRecord's boundary inclusion; the HPA supplied that missing challenge.
+
+**Nothing else was rewritten.** The analysis, the thirteen outputs, the ZERO sweep, the membership proofs and the critic pass stand as delivered (ES-004.3 — decision text and history are never rewritten; status annotations are the mechanism).
+
+### 10.5 Scope of the ruling — what it does NOT authorize
+
+**Do not reopen** research · SNF · OQ-4 · the domain model. **Do not begin** capability mapping or implementation until the **next separately governed act is commissioned**. The ruling accepts a **boundary**; it authorizes **no build**.
+
+```
+Research                      CLOSED
+Domain discovery              CLOSED
+F-1…F-5                       CLOSED
+Kernel boundary definition    COMPLETED
+ZERO defects                  RULED
+Kernel terminology            RULED
+Boundary                      ACCEPTED
+Capability mapping            NEXT — requires a separate commission
+Implementation                NOT YET
+Kernel implementation         NOT YET
+```
+
+**We have defined what the Kernel is allowed to protect. We have not built the Kernel.**
+
 
 ## Traceability
 
