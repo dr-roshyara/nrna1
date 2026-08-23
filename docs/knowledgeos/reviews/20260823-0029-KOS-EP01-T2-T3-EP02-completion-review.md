@@ -3,7 +3,7 @@
 > **Commission:** the **Human Principal Architect (HPA)**, 2026-08-23 — *"Commission the EP-02 independent completion review."* (R-34 · EP-02: engineering never accepts its own work; the completion review is a **separate, independent** act from the implementation it reviews.)
 > **Reviewer:** **independent** — a fresh-context reviewer agent with **no prior involvement** in the slice, the plan, or the authorization. The implementer supplied evidence; it did not accept its own work.
 > **Position:** `P5 closed → AH-1…AH-5 decided → EP-01 plan APPROVED (option C) → authorization package (20260823-0021) → HPA formal authorization → T-2/T-3 implemented (08841729, gates G-1…G-8 GREEN) → ← WE ARE HERE (EP-02 independent completion review) → v1.1 reassessment → remaining OQs / F gates → Kernel decision`.
-> **Status:** 📋 **EP-02 INDEPENDENT COMPLETION REVIEW — VERDICT: ✅ APPROVED (RECOMMENDATION) · NO SUBSTANTIVE DEVIATIONS · ACCEPTANCE FIELD ⬜ OPEN (HPA).** The reviewer independently re-derived all seven sites from the diff and all eight gates from the refined contract text — all seven **implemented-as-specified**, all eight gates **HOLDS**, RED baseline genuine, scope exactly the authorized four-file slice. Register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · OQ-4 **unauthorized** · contract remains **PROPOSED · NON-AUTHORITATIVE**.
+> **Status:** ✅ **EP-02 INDEPENDENT COMPLETION REVIEW — VERDICT APPROVED (RECOMMENDATION) · NO SUBSTANTIVE DEVIATIONS · ACCEPTED BY THE HPA (2026-08-23) · CLOSED.** The reviewer independently re-derived all seven sites from the diff and all eight gates from the refined contract text — all seven **implemented-as-specified**, all eight gates **HOLDS**, RED baseline genuine, scope exactly the authorized four-file slice. **The HPA accepted the verdict and closed EP-02 (recorded §7a).** Register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · OQ-4 **unauthorized** · contract remains **PROPOSED · NON-AUTHORITATIVE**.
 
 ---
 
@@ -109,13 +109,19 @@ Four observations do **not** rise to deviations — all minor wording, non-contr
 
 > The slice `08841729` faithfully and completely implements the approved EP-01 plan §5.6 at all seven contract sites and executes the G-1…G-8 RED→GREEN architecture/fitness verification as committed evidence. Every site matches the approved wording; every gate **HOLDS**; the RED baseline is genuine; the scope is exactly the authorized four-file slice — no code, no v1.1/Constitution/register/aggregate/Kernel/SNF/corpus change, no OQ-4, no OQ-2/OQ-3/OQ-5/F-1…F-5/AH-5/AH-2/AH-4 work. The residual wording tensions are minor, non-contradictory, and in two cases mandated by the plan's own "content unchanged" boundary.
 
-**Acceptance — ⬜ OPEN (HPA).** The reviewer recommends; **the HPA accepts.** Per R-34 / EP-02, evidence (this review) and authority (acceptance) are strictly separate. This document records the recommendation only; it creates no authority.
+**Acceptance — ✅ ACCEPTED BY THE HPA (2026-08-23).** Per R-34 / EP-02, evidence (this review) and authority (acceptance) are strictly separate — the reviewer recommended; **the HPA accepted.** The acceptance record is §7a below.
+
+### 7a · The HPA's acceptance (verbatim-in-substance, 2026-08-23)
+
+> **HPA ACCEPTANCE — EP-02.** I accept the EP-02 independent completion review for the EP-01 T-2/T-3 Port Contract refinement slice. The verdict **APPROVED** is accepted. I confirm: all seven T-2 sites were implemented as authorized · G-1…G-8 independently hold · no substantive deviations were found · the implementation remained within the authorized scope · the Port Contract remains **PROPOSED · NON-AUTHORITATIVE** · no Kernel, SNF, research, Constitution, aggregate, register, or v1.1 change was made. **EP-02 is therefore accepted and closed.** Next: commission the **v1.1 architectural reassessment (T-5)**. OQ-2/OQ-3/OQ-5, F-1…F-5, AH-5, and Kernel work remain subsequent governed acts — **do not begin them automatically.**
+
+**Effect:** the review is closed as accepted; the T-5 v1.1 reassessment is the next commissioned act (delivered at `docs/knowledgeos/reviews/20260823-0829-KOS-EP01-T5-v1.1-reassessment.md`).
 
 ---
 
 ## 8 · STOP
 
-The EP-02 independent completion review is **complete**: verdict **APPROVED (recommendation)**, no substantive deviations, acceptance field **⬜ OPEN**. The slice's implementation does **not** continue; the review does **not** authorize the **v1.1 architectural reassessment (T-5)**, the remaining **OQ-2 / OQ-3 / OQ-5 / F-1…F-5**, **AH-5** (deferred), **AH-2** (corroboration), or **AH-4** (governance recording) — each remains a separate commissioned act. **The Kernel still waits.**
+The EP-02 independent completion review is **complete and CLOSED — ACCEPTED BY THE HPA (2026-08-23)**. The slice's implementation does **not** continue. The HPA's acceptance **does** commission the **v1.1 architectural reassessment (T-5)** — delivered as `docs/knowledgeos/reviews/20260823-0829-KOS-EP01-T5-v1.1-reassessment.md`. The remaining **OQ-2 / OQ-3 / OQ-5 / F-1…F-5**, **AH-5** (deferred), **AH-2** (corroboration), and **AH-4** (governance recording) remain separate commissioned acts. **The Kernel still waits.**
 
 ---
 
