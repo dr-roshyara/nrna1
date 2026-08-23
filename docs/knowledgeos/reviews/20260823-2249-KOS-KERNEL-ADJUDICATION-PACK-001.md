@@ -490,6 +490,76 @@ The corpus is **NON-AUTHORITATIVE**. Each row's brainstorming evidence carries o
 
 ---
 
+---
+
+## S.5 · REFERENT MAP — which object does each decision act on? *(added 2026-08-23 23:09)*
+
+**Commissioned by the HPA's pre-adjudication question:** *"Are we actually adjudicating the right object?"* — raised because three things have been called "Kernel" and the ADR exists to separate them. The HPA directed that this distinction *"should be treated as foundational before we start making detailed decisions."*
+
+**§S.1–S.4 sorted the 21 items by decision class, thread, brainstorming coverage and silent consequence. None of those sorts asks which *object* a ruling changes.** This section adds that sort. It changes no item and resolves nothing.
+
+### S.5.1 The five objects a ruling can act on
+
+| # | Object | What it is | Change mechanism |
+|---|---|---|---|
+| **O-1** | **the KnowledgeCore Admission Boundary** — its *description*, behaviour and fitness tests | the structure this chain defined; two aggregates, one gate | mapping revision, on an HPA ruling |
+| **O-2** | **the KnowledgeAggregate / ConflictRecord** — members, states, events, lifecycle | KnowledgeCore's own law (§6 · §8 · §9) | amendment-class if a member/state/event changes |
+| **O-3** | **the §16 KERNEL altitude** — the change-governance grouping | eleven invariants + five aggregates, spanning four contexts | **HPA amendment only** (§16: *"nothing moves between altitudes except by constitutional amendment"*) |
+| **O-4** | **the KnowledgeOS context map** — the six bounded contexts (§5.3) | which contexts exist and what each owns | amendment-class (6→7) |
+| **O-5** | **the Constitution / the character** | the eleven articles; V.3 forbids adding concepts | **HPA amendment under V.3** |
+
+**Plus a non-object class:** rulings that act on **process or documentation**, not on architecture at all.
+
+### S.5.2 The map
+
+| Item | Object the ruling acts on | Object fixed, or set by the answer? |
+|---|---|---|
+| **C-1** taxonomy | **O-1** — the capability list describes the boundary *(and the ⬜ OPEN F-1…F-5 record)* | fixed |
+| **C-4** targeting path | **O-1** + the Port Contract *(⬜ unratified)* — what crosses the gate | fixed |
+| **C-8** identity-continuity test | **O-1** — a fitness test; **law already states the requirement** | fixed |
+| **C-9** register gaps | **O-1** — three anti-capability entries + tests | fixed |
+| **C-10** evidence resolvability | **O-1**, or the Port Contract if admissibility status crosses | **set by the answer** |
+| **C-12** relation integrity | **O-1** — a fitness test | fixed |
+| **C-16** idempotency / non-unique identity | **O-1** (state the property) or **O-2** (if identity semantics change) | **set by the answer** |
+| **C-5** supersession locus | **O-1** — record a third DS candidate, DEF-1-deferred | fixed |
+| **C-6** referential staleness | **O-1** (as-of-admission) · **O-2** (invalidation re-enters the gate) · **O-5** (what justification means over time) | **set by the answer** |
+| **C-7** `CONFLICTED` cardinality | **O-2** — the member/record relationship | **set by the answer** (O-1 if only a rule is stated) |
+| **C-11** Confidence derivability | **O-1** (enumerate lawful structural inputs) or **O-2** (the member is vestigial — touches OQ-5) | **set by the answer** |
+| **C-14** not-assessed representation | **O-2** (a Confidence representation) or **O-5** (a §15 row) | **set by the answer** |
+| **C-15** retraction | **O-2** — a state or an event; ⟨A-3⟩ guards additions | fixed |
+| **C-17** impossible claim | **O-2** — a state, or a port-vocabulary route | fixed |
+| **F-CM-1** ambiguity ≠ contradiction | **O-5** (the §15 row) **and** **O-1** (does the boundary select?) | **two objects, separable** |
+| **C-2** determinism | **O-3/O-5** (a new invariant) · **O-1** (a fitness constraint) · **DEF-1** (realization) | **set by the answer — three different objects** |
+| **C-18** constitutional-version binding | **remedy on O-2** *(a member, an EvidenceLink, or History)*; **trigger on O-3** *(amendment is possible at all)* | **remedy and trigger sit at different altitudes** |
+| **C-3 / CC-2** authority adequacy | **O-1** (a tenth capability) or **O-4** (contexts 6→7) | **set by the answer** |
+| **Wisdom** | **O-5** — V.3; core-concept addition | fixed |
+| **CC-1** historical diagram | **non-object** — documentation disposition across all three "Kernel" referents | fixed |
+| **C-13** reasoning chain | **non-object** — process discipline for the next mapping revision | fixed |
+| **C-19** consistency check | **non-object** — comparison of an existing ownership map against O-1; can only clear or falsify | fixed |
+
+### S.5.3 What the map shows
+
+**1 · The answer to the HPA's question is: mostly yes, with three qualifications.**
+
+Eighteen of the 21 act on **O-1** or **O-2** — the boundary's description and KnowledgeCore's own law — which is the object this chain has been working on throughout. **No item turns out to be about the historical conceptual Kernel.** That referent survives only in **CC-1**, and only as a documentation disposition.
+
+**2 · Eight items have an object that is only fixed by the ruling.** C-2 · C-3 · C-6 · C-7 · C-10 · C-11 · C-14 · C-16. For these, *deciding the answer decides which artifact changes* — a mapping revision, a member change, a context addition, or a §15 row. **They cannot be pre-sorted by object, only by decision.**
+
+> **C-2 is the clearest case: its three options act on three different objects** — a new invariant (O-3/O-5, amendment-class), a fitness constraint (O-1, a mapping revision), or DEF-1 realization (deferred). Adjudicating it as a single "completeness" item obscures that one of its three answers is amendment-class.
+
+**3 · One item's trigger and remedy sit at different altitudes.** **C-18**: amendment is possible because of **O-3** (§16), and r5 has just demonstrated that v1.1 revises — but any binding would be recorded on **O-2**. Assigning it to one altitude loses half the question.
+
+**4 · Three items are not object-decisions at all** — CC-1 (documentation), C-13 (process), C-19 (a check that can only clear or falsify). Ruling on them changes no architecture, so they can be dispositioned independently of the other eighteen and in any order.
+
+**5 · Only two items reach the Constitution unambiguously** — **F-CM-1**'s §15 row and **Wisdom** (V.3). Both are amendment-class, and **F-CM-1 is separable into two rulings**: whether to record the distinction (O-5) and where selection sits (O-1). Those need not be answered together.
+
+### S.5.4 What this section does not do
+
+It **reclassifies nothing** — every item's thread and decision class in §S.1–S.4 stands. It **resolves nothing** and **recommends nothing**. It adds one sort that was missing, so that a ruling on any item is made in the knowledge of which artifact it will change and whether that artifact is amendment-gated.
+
+**No brainstorming material was consulted for this section**, and none of the independent philosophical or topological lenses was applied — per the HPA's direction that lens work belongs to a post-adjudication falsification pass, not to the adjudication stream. Register **25+4** · Constitution **FROZEN** · **no architecture changed.**
+
+
 ## Traceability
 
 - **Commission:** HPA, 2026-08-23 — build the adjudication pack from the critique questions, using the brainstorming report as historical/adversarial evidence and v1.1 + HPA rulings as authoritative law; **the pack recommends nothing**; keep completeness / scope / constitutional adequacy / consistency separate; do not resurrect the corpus's non-law artifacts; then stop and adjudicate.

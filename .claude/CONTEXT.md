@@ -4,6 +4,26 @@
 
 ---
 
+## 📍 UPDATE (2026-08-23, **REFERENT MAP (pack §S.5) — *ANSWERS "ARE WE ADJUDICATING THE RIGHT OBJECT?" · 8 OF 21 ITEMS HAVE AN OBJECT ONLY THE RULING FIXES · NO ITEM IS ABOUT THE HISTORICAL KERNEL* — newest block**)
+
+**Added to the adjudication pack as §S.5** (pack now 569 ln) in answer to the HPA's pre-adjudication question — *"are we actually adjudicating the right object?"* — raised because three things have been called "Kernel". §S.1–S.4 sorted the 21 items by decision class, thread, brainstorming coverage and silent consequence; **none of those sorts asks which OBJECT a ruling changes.** §S.5 adds that sort, reclassifies nothing, and resolves nothing.
+
+**Five objects a ruling can act on:** **O-1** the Admission Boundary's description/behaviour/tests · **O-2** the KnowledgeAggregate/ConflictRecord (members · states · events · lifecycle) · **O-3** the §16 KERNEL altitude (change-governance, amendment-only, spans four contexts) · **O-4** the KnowledgeOS context map (6→7 is amendment-class) · **O-5** the Constitution/character (V.3) — plus a **non-object** class for rulings that change process or documentation rather than architecture.
+
+**The answer: mostly yes, with three qualifications.** **Eighteen of 21 act on O-1 or O-2** — the object this chain has worked on throughout. **No item turns out to be about the historical conceptual Kernel**; that referent survives only in **CC-1**, and only as a documentation disposition. So the adjudication is aimed at the right object.
+
+**⚠️ But eight items have an object that only the ruling fixes** — C-2 · C-3 · C-6 · C-7 · C-10 · C-11 · C-14 · C-16. For these, **deciding the answer decides which artifact changes** (a mapping revision · a member change · a context addition · a §15 row), so they cannot be pre-sorted by object. **C-2 is the sharpest: its three options act on three different objects** — a new invariant (O-3/O-5, **amendment-class**), a fitness constraint (O-1, mapping revision), or DEF-1 realization (deferred). Adjudicating it as a plain "completeness" item hides that one of its three answers is amendment-class.
+
+**One item's trigger and remedy sit at different altitudes:** **C-18** — amendment is possible because of **O-3** (§16, and r5 has just demonstrated v1.1 revises), but any binding would be recorded on **O-2**. Assigning it to a single altitude loses half the question.
+
+**Three items are not object-decisions at all** — **CC-1** (documentation), **C-13** (process), **C-19** (a check that can only clear or falsify). They change no architecture and can be dispositioned independently of the other eighteen, in any order.
+
+**Only two items reach the Constitution unambiguously** — **F-CM-1**'s §15 row and **Wisdom** (V.3). And **F-CM-1 is separable into two rulings**: whether to record the distinction (O-5) and where selection sits (O-1). They need not be answered together.
+
+**Discipline:** no brainstorming material was consulted for §S.5 and **no philosophical or topological lens was applied** — per the HPA's direction that lens work belongs to a **post-adjudication falsification pass**, not to the adjudication stream. The sequence the HPA fixed is now: brainstorming → formal architecture → **adjudication (here)** → independent multi-lens falsification → implementation. Register **25+4** · Constitution **FROZEN** · no architecture changed · **implementation ungated · the Kernel is not built.**
+
+---
+
 ## 📍 UPDATE (2026-08-23, **ADJUDICATION PACK — *21 ITEMS · 4 THREADS · RECOMMENDS NOTHING · 18 OF 21 ANTICIPATED BY THE BRAINSTORMING · ONLY C-17 IS NEW · AWAITING HPA/ARB ADJUDICATION* — newest block**)
 
 **Delivered:** `docs/knowledgeos/reviews/20260823-2249-KOS-KERNEL-ADJUDICATION-PACK-001.md` (499 ln) — **DECISION SUPPORT · PROPOSED · NON-AUTHORITATIVE · RECOMMENDS NOTHING.** The retrospective brainstorming extraction is folded in as each item's *Brainstorming evidence* row rather than written as a second artifact (ES-005.4).
