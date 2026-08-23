@@ -552,6 +552,65 @@ next_act: "governance adjudication of the 13 recorded questions — NOT implemen
 
 ---
 
+---
+
+## 25 · HPA REFRAMING OF C-19 (2026-08-23) — and the first two consistency-check results
+
+### 25.1 The reframing, recorded
+
+The HPA reframed **C-19** before adjudication. Recorded verbatim-in-substance:
+
+> **C-19 is a CONSISTENCY CHECK, not a research programme.** The question is **not** *"does the Kernel need to validate itself against all of EKS/PKS/AIP?"* — which risks **expanding** the Kernel. It is: **"Given the previously established KnowledgeOS scope and its relationship to EKS, PKS and the AI Engineering Platform, does the proposed Kernel boundary violate any already-established architectural dependency, responsibility, or ownership?"**
+>
+> The direction of travel is **downward into a smaller boundary, never outward**. **EKS/PKS/AIP are context for validating the boundary, not candidates for inclusion in it.** No new research track is implied.
+
+The HPA additionally ruled on the historical stack diagram (`AI Engineering Platform → EKS/PKS → KnowledgeOS → KnowledgeCore → Kernel`): it is **historical architectural context / candidate predecessor model — verify, do not assume authoritative**, and it **mixes architectural altitudes**. Three views are to be kept separate: an **ecosystem** view, a **KnowledgeOS architectural** view, and the **Kernel** view.
+
+**Effect on this critique's classification.** C-19 was recorded as *PARTIALLY FALSIFIED (program-level derivation)* with the open question *"must the boundary be validated against EKS/PKS/AIP before the implementation decision?"* The reframing **answers that question** — yes, but as a bounded consistency check — and thereby **narrows C-19 from an open programme risk to a defined, executable check**. The finding itself is unchanged; its remedy is now specified. Recorded as a consequence of the reframing; the original text of §18 stands (ES-004.3 — findings are not rewritten).
+
+### 25.2 CC-1 · The historical nesting contradicts §16's altitude extent — **CONFIRMED INCONSISTENCY**
+
+The first consistency check, executed against law:
+
+The historical diagram draws strict containment — **`Kernel ⊂ KnowledgeCore ⊂ KnowledgeOS`**. But v1.1 **§16** declares the **KERNEL altitude**'s members as *"the eleven invariants · KnowledgeAggregate · ConflictRecord · **the three small supporting aggregates**."* Those three are `AuthorityGrant`, `DerivedView` and `DecisionRecord` — and **§6.2 places them in the Authority, Projection and Decision Boundary contexts**, all *outside* KnowledgeCore.
+
+> **Therefore, under the §16 altitude reading, `Kernel ⊄ KnowledgeCore`.** The altitude is **wider** than KnowledgeCore, spanning four bounded contexts. Only the **admission-boundary** reading nests the way the historical diagram draws it.
+
+This is exactly the overload **K-1** identified and the HPA ruled: `KERNEL` is reserved for the §16 change-governance altitude, while the structure this chain defines is the **KnowledgeCore Admission Boundary**. **The historical diagram is therefore accurate for neither reading without disambiguation** — it draws containment that holds for the admission boundary while using the name that belongs to the altitude.
+
+**Verdict: a real inconsistency between the historical picture and current law, confirmed.** It does **not** falsify the proposed boundary — it falsifies the *diagram*. Per the HPA's own direction (*"if the old diagram is genuinely obsolete, we should eventually record that explicitly rather than allowing two architectural pictures to coexist indefinitely"*), the disposition of the diagram is an **HPA act**; this critique records the inconsistency and performs no correction.
+
+### 25.3 CC-2 · A Governance bounded context appears in three independent models and in none of the law — **C-3 CORROBORATED FROM A THIRD DIRECTION**
+
+The second consistency check produced a stronger result than expected.
+
+v1.1 **§5.3** declares **six** bounded contexts: KnowledgeCore · Authority · Projection · Decision Boundary · Reasoning & Validation · Expression. **Governance is not among them.** `Authority` owns only the `AuthorityGrant` — *the recorded reference to a human act* — and nothing in the six evaluates **eligibility, policy, or authority scope**.
+
+Yet a **Governance context** appears in three independent models:
+
+| Source | Form |
+|---|---|
+| brainstorming corpus (`kernel/20260823-110248`, `…110950`) | a **Governance Context** owning constitutional rules, authority, eligibility, policy, evidence admissibility |
+| this critique, **C-3** | the authority-**adequacy** responsibility found **unhomed** — the register catches self-authorization, not *insufficient* authority |
+| the HPA's own KnowledgeOS architectural view (2026-08-23) | `Governance` listed as a bounded context alongside Expression, R&V, Projection, Decision Boundary and KnowledgeCore |
+
+> **Three independent models contain a Governance context. The law contains none.** That is the strongest available evidence that **C-3 is a genuine gap in the model rather than an omission in the mapping.**
+
+The gap remains exactly as C-3 states it: either the boundary performs the authority-adequacy check (and the capability list needs a tenth entry) or a context must own it (and adding one is **contexts 6→7**, an amendment-class change). **Nothing is decided here.**
+
+**One further minor inconsistency, recorded without weight:** the HPA's architectural view lists *Expression* among KnowledgeOS's own contexts. §5.3 classifies **Expression as GENERIC/EXTERNAL** — an adapter *at a port*, owning *"its own transient artifacts — no domain state."* The Kernel column of the HPA's concern table is correct; only the KnowledgeOS column overstates ownership.
+
+### 25.4 What these two results do and do not establish
+
+**They establish:** the historical stack picture cannot be used as current authoritative nesting (**CC-1**), and the authority-adequacy gap is real and independently triple-confirmed (**CC-2**).
+
+**They do not establish:** any change to the proposed boundary. Neither check moved a responsibility, and neither found EKS, PKS or the AI Engineering Platform to contain anything that must be inside the Kernel. **The consistency check, so far, supports the boundary.** C-19's remaining scope — the full check against established EKS/PKS/AIP dependencies and ownership — is unexecuted and awaits a commission.
+
+**Also routed onward, not resolved here:** the HPA's question about *"the smallest boundary of knowledge **and wisdom**"* was flagged as **amendment-gated** — v1.1 §4.1 rejects Wisdom Formation at the boundary, §17 lists it among the Chapter IV refusals against **V.3**, and §8 records `WisdomDerived` as *"NOT admitted."* That flag is carried into the separately commissioned ADR (`20260823-2229-KOS-ADR-KnowledgeOS-Core-Today-and-Future-Epistemic-Brain-Vision.md`), which states the constitutional position and makes no amendment.
+
+**Register unchanged by §25:** 25+4 · contexts **6→6** · aggregates **5→5** · members **12→12** · events **10→10** · states **7→7** · invariants **11→11** · Constitution **FROZEN**. No architecture changed, no diagram corrected, no context added.
+
+
 ## Traceability
 
 - **Commission:** HPA, 2026-08-23 — *KOS — INDEPENDENT DDD CRITIQUE OF KERNEL CAPABILITY MAPPING*, verbatim-in-substance: independent critic role · primary rule *do not improve, try to break* · 20 falsification targets · the lens corpus as a non-authoritative falsification instrument · the governance rules (`RESEARCH REQUIRED — NOT AUTHORIZED` · `HPA DECISION REQUIRED` · no silent renaming) · the 23-item deliverable · the critical stop condition. Plus the file commission: list untimestamped brainstorming files, determine their saved timestamps, read oldest-first, rename with timestamp, and assess kernel usefulness.
