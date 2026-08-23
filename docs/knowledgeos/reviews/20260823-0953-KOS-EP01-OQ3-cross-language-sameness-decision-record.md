@@ -1,8 +1,8 @@
 # KnowledgeOS — OQ-3 Decision Record — Is Cross-Language Sameness (EN/DE) a Claim about Meaning or about Translation? (2026-08-23)
 
 > **Commission:** the **Human Principal Architect (HPA)**, 2026-08-23 — *"The next governed act should therefore be: OQ-3. … We should prepare the OQ-3 decision package, have it reviewed against the existing architecture and evidence, and then let the HPA decide."* OQ-3 is one of the remaining **deferred decisions** recorded in v1.1 §20 (the boundary is recorded, the answer is not invented); the Expression↔Meaning Port Contract takes a **position at contract altitude** (its §4 OQ-3 record); **the ruling remains the HPA's**.
-> **Position:** `P5 → AH-1…AH-5 → EP-01 → T-2/T-3 (G-1…G-8 GREEN) → EP-02 (✅ ACCEPTED) → T-5 (v1.1 REMAINS · ✅ ACCEPTED) → OQ-2 (✅ RESOLVED · CLOSED) → OQ-3 (⬜ DECISION OPEN — package DELIVERED) → ← WE ARE HERE (STOP) → OQ-5 · F-1…F-5 · AH-5/AH-4 → Kernel decision`.
-> **Status:** ⬜ **OQ-3 DECISION RECORD — RECOMMENDATION ONLY · DECISION ⬜ OPEN (HPA)** — the package delivers evidence + recommendation and changes nothing: no v1.1 edit · no contract edit · no v1.2 · register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · OQ-4 **unauthorized** · Port Contract remains **PROPOSED · NON-AUTHORITATIVE** · **no Kernel implementation is authorized by this act**.
+> **Position:** `P5 → AH-1…AH-5 → EP-01 → T-2/T-3 (G-1…G-8 GREEN) → EP-02 (✅ ACCEPTED) → T-5 (v1.1 REMAINS · ✅ ACCEPTED) → OQ-2 (✅ RESOLVED · CLOSED) → OQ-3 (✅ RESOLVED · CLOSED) → ← WE ARE HERE (STOP) → OQ-5 · F-1…F-5 · AH-5/AH-4 → Kernel decision`.
+> **Status:** ✅ **OQ-3 DECISION RECORD — HPA ACCEPTED (2026-08-23) · OQ-3 RESOLVED · CLOSED** — the HPA ruled **ACCEPT**: cross-language sameness is a **candidate-side meaning claim**, never a translation claim and never identity/equivalence/certainty; the **Port Contract §4 position is ratified**; the **empirical question remains outside OQ-3 and stays in unauthorized OQ-4** · **no architecture change** — no v1.1 edit · no contract edit · no v1.2 · register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · OQ-4 **unauthorized** · Port Contract remains **PROPOSED · NON-AUTHORITATIVE** · **no Kernel implementation is authorized by this act**.
 
 ---
 
@@ -98,36 +98,35 @@ The ruling is the HPA's alone (v1.1 §20 · OQ-3: *"the ruling remains the HPA's
 
 ---
 
-## 7 · The decision (HPA) — ⬜ OPEN
+## 7 · The decision (HPA) — ✅ ACCEPTED (2026-08-23)
 
 ```text
-OQ-3 — HPA ruling: (pending — 2026-08-23)
+OQ-3 — HPA ruling: ACCEPT  (2026-08-23)
 
-  ⬜ OPEN: the HPA's ruling is awaited.
+  ☑ ACCEPT:  Cross-language sameness is a candidate-side meaning claim,
+             never a translation claim and never identity/equivalence/certainty.
+             The Port Contract position is ratified. The empirical question
+             remains outside OQ-3 and stays in unauthorized OQ-4.
+             — OQ-3 RESOLVED
+             [the recommended ruling]
 
-  Options:
-    ☑ ACCEPT (recommended)  — cross-language sameness is a claim about MEANING:
-        a candidate-side meaning claim (candidate-equality observation offered to
-        an authorized identity-assignment act), never a claim about translation,
-        never identity/equivalence/certainty; the Port Contract §4 position is
-        ratified; the translation reading is a prohibited inference; the empirical
-        separation stays OQ-4 (unauthorized) — OQ-3 RESOLVED
-    ☐ DEFER                  — OQ-3 stays open until a future authorized experiment
-        (OQ-4) separates meaning-preservation from translation-collapse; the §4
-        position stays an unratified contract position
-    ☐ ACCEPT with modification — conditions beyond the meaning-reading, each
-        tracing to existing law (no new law)
-
-  Note: nothing changes until the HPA rules. No architecture change · no mechanism ·
-        no v1.2 · no Constitution change · register 25+4 unchanged · OQ-4 stays
-        unauthorized · no Kernel authorization follows from any option.
+  Note: the ruling changes nothing in the architecture — no invariant · state ·
+        member · event · register row · mechanism · v1.1 change · v1.2 ·
+        Constitution change. Register 25+4 unchanged. No Kernel implementation
+        is authorized by this rule. OQ-4 stays unauthorized.
 ```
+
+### 7a · The HPA's acceptance (2026-08-23) — verbatim in substance
+
+> **OQ-3 — ACCEPT.** Cross-language sameness is a candidate-side meaning claim, never a translation claim and never identity/equivalence/certainty. The Port Contract position is ratified. The empirical question remains outside OQ-3 and stays in unauthorized OQ-4.
+
+*(The HPA's ruling is exactly the recommended option — ACCEPT with the meaning-reading, each clause tracing to existing law: candidate-side meaning claim (⟨C-1⟩ ✅-route) · never translation (negative boundaries: translation collapse · token ≠ meaning · no translation authority) · never identity/equivalence/certainty (INV-KOS-IDENTITY-001 · P-4 · prohibited inference 6 · §Q8) · Port Contract §4 position ratified · empirical question outside OQ-3, stays in unauthorized OQ-4 (the HPA's escalation rule — research inform, never initiate). The ruling is a rendering of existing law — no new law is created, and it does not change the answer to OQ-4, which remains unauthorized.)*
 
 ---
 
 ## 8 · STOP
 
-OQ-3 decision package **DELIVERED (2026-08-23)** — recommendation only; **the decision field is ⬜ OPEN (HPA)**. **Nothing was modified by this act**: no v1.1 edit · no contract edit · no code · no v1.2 · no register · no Constitution · no Kernel · no SNF · no corpus · **no research track opened**. The **research-escalation rule was applied**: the architectural claim is evidence-sufficient — **no bounded research requirement is proposed for OQ-3** — and the empirical separation (the Second Review's *"the evidence conflates them"*) is **named and explicitly routed to OQ-4 (stays unauthorized)**, never reopened implicitly. The following acts remain **separate governed acts, each a new commission**: **OQ-5 · F-1…F-5 · AH-5 deferral · AH-4** — and after them the architectural-consequence consolidation (what minimum Kernel boundary the evidence actually requires) and the **Kernel decision**. **The Kernel still waits.**
+OQ-3 is **RESOLVED — the HPA accepted the recommended ruling (ACCEPT) on 2026-08-23; the decision record is closed**. **Nothing was modified by the ruling**: no v1.1 edit · no contract edit · no code · no v1.2 · no register · no Constitution · no Kernel · no SNF · no corpus · **no research track opened**. The ruling confirms the meaning-reading (cross-language sameness is a **candidate-side meaning claim**, never a translation claim, never identity/equivalence/certainty; the Port Contract §4 position is ratified) — a **rendering of existing law** (⟨C-1⟩ · INV-KOS-IDENTITY-001 · P-4 · §Q8 · negative boundaries · OQ-2 ruling), not new law. The **empirical question remains outside OQ-3 and stays in unauthorized OQ-4**. The following acts remain **separate governed acts, each a new commission**: **OQ-5 · F-1…F-5 · AH-5 deferral · AH-4** — and after them the architectural-consequence consolidation (what minimum Kernel boundary the evidence actually requires) and the **Kernel decision**. **The Kernel still waits.**
 
 ---
 
@@ -139,4 +138,4 @@ OQ-3 decision package **DELIVERED (2026-08-23)** — recommendation only; **the 
 - **Grounding (existing law, cited):** v1.1 §7 INV-KOS-IDENTITY-001 · §1 P-4 · §12.1 ⟨C-1⟩ non-admission note · §8 ⟨A-3⟩ event guard · §10 obligations · §20 OQ-3 · §1 register 25+4 · Port Contract Article 1 · §2 obligation 4 · §4 OQ-3 record · §7 prohibited inference 6 · §Q8 · OQ-2 ruling (`56e1bd8a` · EvidenceLink-as-candidate-side-evidence) · Second Architectural Review (20260822-1459, line 363 — *"the evidence conflates them"*) · LA Review-01 (20260822-1611, line 154 — *"untouched; experiment design may decide"*) · Sanskrit Word-Order review (20260822-1415, §9 — translation collapse refused) · Sanskrit Grammar review (20260822-1345, §8 — token ≠ meaning refused).
 - **Chain position:** OQ-2 resolved (`56e1bd8a`) → OQ-3 is the next deferred decision. The chain (`P5 → … → OQ-2 → OQ-3 → OQ-5 · F-1…F-5 · AH-5/AH-4 → Kernel decision`) records each as a **separate HPA ruling**, untouched by the refinement.
 - **Discipline honored:** **grounded, not invented** — every clause traces to existing law (§2); **escalation rule applied** (§4 — the architectural claim is evidence-sufficient; the empirical separation is routed to OQ-4, unauthorized; no research track opened); **gate-verified** (§5 — the meaning-reading holds every guard); **recommendation separated from decision** (R-34 — the record delivers evidence and recommendation; the HPA's ruling is a separate human act); **nothing changed** (§8) · register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · OQ-4 **unauthorized** · **the Kernel still waits.**
-- **Status:** ⬜ **OQ-3 DECISION RECORD — RECOMMENDATION ONLY · DECISION ⬜ OPEN (HPA)** — the recommended ruling: cross-language sameness is a **claim about meaning** (candidate-side, never translation, never identity); the translation reading is a prohibited inference; the empirical separation stays OQ-4. Next (separate governed acts, each a new commission): **OQ-5 · F-1…F-5 · AH-5 deferral · AH-4** · consolidate architectural consequences · **Kernel decision**.
+- **Status:** ✅ **OQ-3 DECISION RECORD — HPA ACCEPTED (2026-08-23) · OQ-3 RESOLVED · CLOSED.** The HPA accepted the recommended ruling (ACCEPT) — cross-language sameness is a **candidate-side meaning claim**, never a translation claim, never identity/equivalence/certainty; the Port Contract §4 position is ratified; the empirical question remains outside OQ-3 and stays in unauthorized OQ-4. Next (separate governed acts, each a new commission): **OQ-5 · F-1…F-5 · AH-5 deferral · AH-4** · consolidate architectural consequences · **Kernel decision**.
