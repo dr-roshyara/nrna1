@@ -1,7 +1,7 @@
 # KnowledgeOS — Kernel Boundary Definition — Next-Agent Handoff & Commission
 
 > **Role:** the handoff / commission for the **next governed actor** in the KnowledgeOS architectural decision chain. **Self-contained** — everything a fresh agent (with no prior session context) needs to continue from here. Write for an executor who has never seen this conversation.
-> **What you are about to do:** the **final architectural consolidation + Kernel boundary definition** — the *last DDD step* before the Kernel implementation decision. This is a **governed architecture act**: discover-and-decide from existing law, produce a decision-support deliverable, **STOP for the HPA ruling**. It is **not** research, **not** implementation, **not** Kernel design (the boundary is defined; the Kernel's internal realization stays deferred — DEF-1).
+> **What you are about to do:** the **final architectural consolidation + Kernel boundary definition** — the *last DDD step* before the Kernel implementation decision. This is a **governed architecture act**: discover-and-decide from existing law, produce a decision-support deliverable, **STOP for the HPA ruling**. It is **not** research, **not** implementation, and **not** Kernel implementation design. **The Kernel boundary itself is the subject of this act; its internal realization remains deferred** (DEF-1).
 > **Status:** HANDOFF · the **F-1…F-5 decision support is DELIVERED** (2026-08-23) and engaged by the HPA · the **Kernel boundary remains UNDEFINED** · **the Kernel still waits**.
 
 ---
@@ -210,7 +210,7 @@ The HPA engaged the F-1…F-5 delivery and refined the Kernel terminology. This 
 2. **"Kernel = constitutional validator" is a metaphor, not the domain definition.** Constitutional admissibility is **one responsibility inside** the boundary — not the whole. The central domain act is richer: `candidate → verification → admissibility → identity assignment → epistemic state → evidence/justification/confidence → history → KnowledgeCreated` — the **inbound admission pipeline** F-1…F-5 pinned.
 3. **Working formulation to verify:** *the Kernel is the authoritative admission boundary of KnowledgeCore.* Whether "Kernel" names the entire KnowledgeCore boundary or a stricter subset is exactly what the boundary act must decide.
 4. **F-3 implication:** natural language is **one representable surface**; the **candidate shape is invariant**. The Sanskrit / FST / Semantic-Compiler research therefore has a clean home at **Expression / Interpretation**, **never in the Kernel**.
-5. **F-4 implication:** **no hidden semantic aggregate.** Non-admitted candidates are **not KnowledgeOS domain state** — recorded in History as part of an admitted transition, or retained mechanism-side/infrastructure-side. The KnowledgeAggregate is the **only** aggregate; a "candidate store" is forbidden.
+5. **F-4 implication:** **no hidden semantic aggregate.** Non-admitted candidates are **not KnowledgeOS domain state** — recorded in History as part of an admitted transition, or retained mechanism-side/infrastructure-side. **KnowledgeAggregate remains the authoritative core aggregate** (with ConflictRecord as the second core aggregate and the three small supporting aggregates — AuthorityGrant · DerivedView · DecisionRecord); **no additional hidden candidate/semantic aggregate may be introduced**; a "candidate store" is forbidden.
 
 The boundary act may **confirm, refine, or refute** this formulation — but must do so **from existing law**, and must record each claim as hypothesis → evidence → verdict, with the strongest statement never exceeding the evidence.
 
@@ -255,6 +255,29 @@ The deliverable is a **decision-support record** (a governed document, house sty
 
 - The act **produces** the boundary; a **separate, adversarial DDD critique** of the consolidated boundary **verifies** it (the producer and the verifier must not be the same role). If you perform both, keep them in separate passes and label the passes explicitly.
 - The boundary is a **proposal to the HPA**. You do not accept it; you do not implement it; you do not begin capability mapping.
+- Apply the **ZERO lens** (§7.7) in both passes — for every boundary responsibility, in the producer pass and in the adversarial critique.
+
+### 7.7 The ZERO lens — test the boundary from the absence case
+
+For **every boundary responsibility**, determine the zero/absence case:
+
+> **What happens when the required information, evidence, meaning, justification, authority, confidence, or interpretation is missing, unknown, contradictory, or insufficient?**
+
+Test the boundary from **both directions**:
+
+```text
+           NORMAL CASE                          ZERO CASE
+               ↓                                    ↓
+Candidate → Admission → Knowledge        Candidate → Insufficient / Unknown / Conflict
+                                                    ↓
+                                           What does the domain do?
+```
+
+Ground the test in the P5 distinction, preserved as the deepest discovery of the prior acts:
+
+- **absence ≠ unknown · unknown ≠ false · uncertainty ≠ rejection · lack of evidence ≠ evidence of absence** (INV-KOS-UNKNOWN-001 · ⟨C-5⟩ · INV-KOS-FAILURE-001 · INV-KOS-CONTRADICTION-001).
+
+Every boundary responsibility's zero case must resolve to a **lawful epistemic state** (UNKNOWN · ABSENT · REJECTED · CONFLICTED) or a **mechanism-side retention** — never a silent gap, never a second admission path, never a hidden aggregate. If the boundary has no answer for a zero case, that is a boundary defect to record — not an excuse to leave the case undefined.
 
 ---
 
@@ -316,6 +339,9 @@ boundary:           # your 13-item deliverable in summary form
 consolidation:
   input_set_assembled: YES
   open_items_recorded:  # F-1…F-5 amendments · AH-4 · AH-5 · DEF-1/4/5 · OQ-4 · Port Contract ratification — recorded, not decided
+zero_lens_applied:      # §7.7 — every boundary responsibility tested from the NORMAL case and the ZERO case
+  producer_pass: YES
+  adversarial_pass: YES
 next_actor: HUMAN PRINCIPAL ARCHITECT
 next_act: SEPARATE GOVERNED ACT
 ```
