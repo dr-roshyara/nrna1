@@ -1,8 +1,8 @@
 # KnowledgeOS — OQ-5 Decision Record — Should Confidence Remain an Aggregate Member, or Become a Derived Read-Side Attribute? (2026-08-23)
 
 > **Commission:** the **Human Principal Architect (HPA)**, 2026-08-23 — *"Proceed with OQ-5 as the next separately governed act. Prepare the OQ-5 decision package, grounded exclusively in the existing architecture, governance, and evidence. … Do not implement anything. Do not open a research track autonomously. If the OQ-5 decision cannot be resolved from existing evidence and genuinely requires research, identify the precise bounded research requirement and STOP for HPA authorization. Do not proceed to F-1…F-5, AH-5, AH-4, architectural consolidation, or Kernel work. After delivering the OQ-5 decision package, STOP for the HPA ruling."* OQ-5 is one of the remaining **deferred decisions** recorded in v1.1 §20 (the boundary is recorded, the answer is not invented); the Expression↔Meaning Port Contract records a **position at contract altitude** (its §4 OQ-5 note — *"unchanged by this contract; ⟨R-1⟩ keeps it safe"*); **the ruling remains the HPA's**.
-> **Position:** `P5 → AH-1…AH-5 → EP-01 → T-2/T-3 (G-1…G-8 GREEN) → EP-02 (✅ ACCEPTED) → T-5 (v1.1 REMAINS · ✅ ACCEPTED) → OQ-2 (✅ RESOLVED · CLOSED) → OQ-3 (✅ RESOLVED · CLOSED) → OQ-5 (⬜ DECISION OPEN — package DELIVERED) → ← WE ARE HERE (STOP) → F-1…F-5 · AH-5/AH-4 → Kernel decision`.
-> **Status:** ⬜ **OQ-5 DECISION RECORD — RECOMMENDATION ONLY · DECISION ⬜ OPEN (HPA)** — the package delivers evidence + recommendation and changes nothing: no v1.1 edit · no contract edit · no v1.2 · register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · OQ-4 **unauthorized** · Port Contract remains **PROPOSED · NON-AUTHORITATIVE** · **no Kernel implementation is authorized by this act**.
+> **Position:** `P5 → AH-1…AH-5 → EP-01 → T-2/T-3 (G-1…G-8 GREEN) → EP-02 (✅ ACCEPTED) → T-5 (v1.1 REMAINS · ✅ ACCEPTED) → OQ-2 (✅ RESOLVED · CLOSED) → OQ-3 (✅ RESOLVED · CLOSED) → OQ-5 (✅ RESOLVED · CLOSED) → ← WE ARE HERE (STOP) → F-1…F-5 · AH-5/AH-4 → Kernel decision`.
+> **Status:** ✅ **OQ-5 DECISION RECORD — HPA ACCEPTED (2026-08-23) · OQ-5 RESOLVED · CLOSED** — the HPA ruled **ACCEPT** (*Confidence remains an aggregate member; Confidence is not a mechanism confidence score — a domain-owned, structured epistemic attribute assigned inside the KnowledgeOS boundary*); **no architecture change follows** — no v1.1 edit · no contract edit · no v1.2 · no member added or removed · register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · OQ-4 **unauthorized** · Port Contract remains **PROPOSED · NON-AUTHORITATIVE** · **no Kernel implementation is authorized by this act**.
 
 ---
 
@@ -97,38 +97,45 @@ The ruling is the HPA's alone (v1.1 §20 · OQ-5: *"the ruling remains the HPA's
 
 ---
 
-## 7 · The decision (HPA) — ⬜ OPEN
+## 7 · The decision (HPA) — ✅ ACCEPTED (2026-08-23) · OQ-5 RESOLVED · CLOSED
 
 ```text
-OQ-5 — HPA ruling: (pending — 2026-08-23)
+OQ-5 — HPA ruling (2026-08-23): ✅ ACCEPTED.
 
-  ⬜ OPEN: the HPA's ruling is awaited.
+  ✅ ACCEPT (as recommended)  — Confidence REMAINS an aggregate member: the
+      domain's own structured epistemic evaluation, assigned inside the
+      boundary (⟨R-1⟩), carried as Temporal Epistemic Metadata (UM-46); the
+      read-side is non-authoritative by design (Projection · DerivedView) and
+      cannot carry it; the member is necessary (ownership), not merely safe
+      (⟨R-1⟩) — OQ-5 RESOLVED; Second Review KEEP-with-R-1 confirmed.
+      Confidence is NOT a mechanism confidence score — it is a domain-owned,
+      structured epistemic attribute assigned inside the KnowledgeOS boundary.
 
-  Options:
-    ☑ ACCEPT (recommended)  — Confidence REMAINS an aggregate member: the
-        domain's own structured epistemic evaluation, assigned inside the
-        boundary (⟨R-1⟩), carried as Temporal Epistemic Metadata (UM-46); the
-        read-side is non-authoritative by design (Projection · DerivedView) and
-        cannot carry it; the member is necessary (ownership), not merely safe
-        (⟨R-1⟩) — OQ-5 RESOLVED; Second Review KEEP-with-R-1 confirmed
-    ☐ REJECT                  — Confidence becomes a derived read-side attribute
-        (not a rendering of existing law — requires new law: a write-back path
-        or re-classification as non-authoritative)
-    ☐ DEFER                   — OQ-5 stays open; placement settled at a future
-        Logical Architecture / Kernel design act (sequencing choice, no
-        evidence gap)
-
-  Note: nothing changes until the HPA rules. No architecture change · no member
-        removal · no new member · no invariant/state/event/register row · no v1.2 ·
-        no Constitution change · register 25+4 unchanged · OQ-4 stays
-        unauthorized · no Kernel authorization follows from any option.
+  Note: no architecture change follows from this ruling. No member removal ·
+        no new member · no invariant/state/event/register row · no v1.2 · no
+        Constitution change · register 25+4 unchanged · OQ-4 stays
+        unauthorized · no research track · no Kernel authorization follows.
 ```
+
+### §7a — HPA acceptance verbatim-in-substance (2026-08-23)
+
+The HPA ruled **ACCEPT** on OQ-5 — in substance:
+
+> **"HPA ACCEPT — Confidence remains an aggregate member. Confidence is not a mechanism confidence score. It is a domain-owned, structured epistemic attribute assigned inside the KnowledgeOS boundary."**
+
+Each clause traces to existing law:
+
+- *"Confidence remains an aggregate member"* — the Second Architectural Review's **KEEP — with refinement R-1** (line 166) · the KnowledgeCore's ownership of **justified epistemic state** (v1.1 §5.3) · the LA Review-01's *"a property of the knowledge state"* (line 71).
+- *"Confidence is not a mechanism confidence score"* — **⟨R-1⟩** (a mechanism-supplied score must never cross the port and become Confidence) · **INV-KOS-DIMENSION-001** (no scalar surrogate for structure) · the Second Review's 74.2%-mechanism hazard (line 166 — *"would naturally hand over '0.74'"*) · the LA Review-01's *"backdoor to epistemic authority"* (line 71).
+- *"a domain-owned, structured epistemic attribute assigned inside the KnowledgeOS boundary"* — the Port Contract's **domain-owned column** (line 173 — confidence is domain-owned) · v1.1 §6 line 214 (a **structured** epistemic attribute, carried as **Temporal Epistemic Metadata UM-46** — never a scalar knowledge-quality score) · **⟨R-1⟩** (assigned **inside** the boundary).
+
+**The HPA confirmed the analysis identified no research gap** — *"Do not open another research track."* The **SNF research track remains CLOSED** · **OQ-4 stays UNAUTHORIZED** · the research posture (**inform, never initiate**) is unchanged. **The HPA confirmed the sequence after this ruling:** *"the next step is F-1…F-5, not more research"* → AH-5/AH-4 → architectural consolidation → **Kernel decision** — with the practical framing: *"We are not yet at 'start coding the Kernel.' We are at: final architectural decision closure → Kernel boundary definition → Kernel capability mapping → implementation decision."* **F-1…F-5 remains a separate governed act — a new commission; none is issued by this ruling.**
 
 ---
 
 ## 8 · STOP
 
-OQ-5 decision package **DELIVERED (2026-08-23)** — recommendation only; **the decision field is ⬜ OPEN (HPA)**. **Nothing was modified by this act**: no v1.1 edit · no contract edit · no code · no v1.2 · no register · no Constitution · no Kernel · no SNF · no corpus · **no research track opened** · **no member added or removed**. The **research-escalation rule was applied**: the placement question is evidence-sufficient — **no bounded research requirement is proposed for OQ-5** — and the empirical mechanism-reliability question is **named and explicitly routed to OQ-4 (stays unauthorized)**, never reopened implicitly. The following acts remain **separate governed acts, each a new commission**: **F-1…F-5 · AH-5 deferral · AH-4** — and after them the architectural-consequence consolidation (what minimum Kernel boundary the evidence actually requires) and the **Kernel decision**. **The Kernel still waits.**
+OQ-5 **RESOLVED · CLOSED (2026-08-23)** — the HPA ruled **ACCEPT** (*Confidence remains an aggregate member; Confidence is not a mechanism confidence score — a domain-owned, structured epistemic attribute assigned inside the KnowledgeOS boundary*). **Nothing was modified by this act**: the ruling is a decision-record act — no v1.1 edit · no contract edit · no code · no v1.2 · no register · no Constitution · no Kernel · no SNF · no corpus · **no research track opened** · **no member added or removed**. The **research-escalation rule was applied and confirmed by the HPA**: the placement question was evidence-sufficient — **no bounded research requirement was proposed for OQ-5** — and the empirical mechanism-reliability question is **named and explicitly routed to OQ-4 (stays unauthorized)**, never reopened implicitly; **the HPA: "Do not open another research track."** The following acts remain **separate governed acts, each a new commission**: **F-1…F-5 · AH-5 deferral · AH-4** — and after them the architectural-consequence consolidation (what minimum Kernel boundary the evidence actually requires) and the **Kernel decision**. The HPA's practical framing: **"We are not yet at 'start coding the Kernel.' We are at: final architectural decision closure → Kernel boundary definition → Kernel capability mapping → implementation decision."** **The Kernel still waits.**
 
 ---
 
@@ -141,4 +148,4 @@ OQ-5 decision package **DELIVERED (2026-08-23)** — recommendation only; **the 
 - **Same-named identifier excluded:** the "OQ-5" in `2026-08-18-KOS-AIP04-DISCOVERY-001` (§17, role-model ownership) is a **different question in a different lineage** — not this act's subject; no conflation is made (§1 note).
 - **Chain position:** OQ-2 resolved (`56e1bd8a`) · OQ-3 resolved (`55c73b1b`) → OQ-5 is the next deferred decision. The chain (`P5 → … → OQ-2 → OQ-3 → OQ-5 → F-1…F-5 → AH-5/AH-4 → Kernel decision`) records each as a **separate HPA ruling**, untouched by the refinement.
 - **Discipline honored:** **grounded, not invented** — every clause traces to existing law (§2); **escalation rule applied** (§4 — the placement question is evidence-sufficient; the empirical question is routed to OQ-4, unauthorized; no research track opened); **gate-verified** (§5 — the KEEP reading holds every guard); **recommendation separated from decision** (R-34 — the record delivers evidence and recommendation; the HPA's ruling is a separate human act); **nothing changed** (§8) · register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · OQ-4 **unauthorized** · **the Kernel still waits.**
-- **Status:** ⬜ **OQ-5 DECISION RECORD — RECOMMENDATION ONLY · DECISION ⬜ OPEN (HPA)** — the recommended ruling: **Confidence remains an aggregate member** (domain-owned, boundary-assigned, structured — the read-side is non-authoritative by design and cannot carry it; the member is necessary, not merely safe). Next (separate governed acts, each a new commission): **F-1…F-5 · AH-5 deferral · AH-4** · consolidate architectural consequences · **Kernel decision**.
+- **Status:** ✅ **OQ-5 DECISION RECORD — HPA ACCEPTED (2026-08-23) · OQ-5 RESOLVED · CLOSED** — the HPA ruled **ACCEPT**: **Confidence remains an aggregate member** (domain-owned, boundary-assigned, structured — the read-side is non-authoritative by design and cannot carry it; the member is necessary, not merely safe; **Confidence is not a mechanism confidence score — a domain-owned, structured epistemic attribute assigned inside the KnowledgeOS boundary**); **no research track** (the HPA confirmed the analysis identified no research gap). Next (separate governed acts, each a new commission): **F-1…F-5 · AH-5 deferral · AH-4** · consolidate architectural consequences · **Kernel decision**.
