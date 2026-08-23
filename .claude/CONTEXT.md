@@ -1,10 +1,24 @@
 # Current Working State
 
-**Updated:** 2026-08-23 *(additive — the **EP-02 ACCEPTED (HPA) → T-5 v1.1 REASSESSMENT DELIVERED — v1.1 REMAINS** block is newest: the HPA accepted the EP-02 verdict (✅ APPROVED accepted · EP-02 closed) and commissioned T-5; the v1.1 reassessment was delivered — v1.1 read in full, every interaction surface checked, verdict v1.1 REMAINS (no change required, no v1.2), one non-material observation recorded (OBS-T5-1: §10 altitude-note under-inclusive — reconcile at Port Contract ratification, not now), decision field ⬜ OPEN (HPA); the EP-02-APPROVED, T-2/T-3-IMPLEMENTED, authorization-package, EP-01-PLAN-APPROVED, and terminology-review blocks below record the prior states)*
+**Updated:** 2026-08-23 *(additive — the **T-5 v1.1 REASSESSMENT ACCEPTED (HPA)** block is newest: the HPA accepted the T-5 reassessment — Reference Architecture v1.1 REMAINS (no change required, no v1.2) accepted, OBS-T5-1 recorded as non-material (reconsider at a future Port Contract ratification), T-5 accepted and closed, decision field ✅ ACCEPTED; next work proceeds only as separately governed acts (OQ-2 · OQ-3 · OQ-5 · F-1…F-5 · AH-5/AH-4 as applicable), no Kernel implementation authorized; the EP-02-ACCEPTED→T-5-DELIVERED, EP-02-APPROVED, T-2/T-3-IMPLEMENTED, authorization-package, EP-01-PLAN-APPROVED, and terminology-review blocks below record the prior states)*
 
 ---
 
-## 📍 UPDATE (2026-08-23, **EP-02 ACCEPTED (HPA) → T-5 v1.1 REASSESSMENT — *VERDICT: v1.1 REMAINS · NO CHANGE REQUIRED · NO v1.2 · MEASURED, NOT ASSUMED · OBS-T5-1 RECORDED (NON-MATERIAL) · DECISION FIELD ⬜ OPEN (HPA) · PORT CONTRACT STILL PROPOSED · NON-AUTHORITATIVE***)
+## 📍 UPDATE (2026-08-23, **T-5 v1.1 REASSESSMENT — *VERDICT: v1.1 REMAINS · NO CHANGE REQUIRED · NO v1.2 · MEASURED, NOT ASSUMED · ✅ ACCEPTED BY THE HPA (2026-08-23) · CLOSED · OBS-T5-1 RECORDED (NON-MATERIAL · RECONSIDER AT A FUTURE PORT CONTRACT RATIFICATION) · DECISION FIELD ✅ ACCEPTED · PORT CONTRACT STILL PROPOSED · NON-AUTHORITATIVE · NO KERNEL IMPLEMENTATION AUTHORIZED***)
+
+**Acceptance → close → next:** the **HPA accepted the T-5 v1.1 Architectural Reassessment** (2026-08-23): the evidence-based verdict **Reference Architecture v1.1 REMAINS — no architectural change required and no v1.2 is opened** is accepted; **OBS-T5-1** is recorded as a non-material observation to be reconsidered during a **future Port Contract ratification**, if such ratification occurs; **T-5 is accepted and closed**; the next work may proceed as **separately governed acts** — **OQ-2 · OQ-3 · OQ-5 · F-1…F-5 · AH-5/AH-4** as applicable; **no Kernel implementation is authorized by this acceptance**. Recorded in the reassessment §6a.
+
+**What was accepted (the delivered reassessment `docs/knowledgeos/reviews/20260823-0829-KOS-EP01-T5-v1.1-reassessment.md`):** v1.1 read in full (677 lines), every interaction surface checked (§3.1–3.7) — the refinement is the expected consumption of v1.1's own deferrals (⟨A-2⟩ Port Contract named/not-authored · DEF-2 opened · OQ-1 deferred to the Logical Architecture — now answered there · ⟨r4⟩ payload vocabulary = port-contract vocabulary, never aggregate members); renders existing law (obligations 2/3 → INV-KOS-VERIFICATION-001 · INV-KOS-UNKNOWN-001); **no new invariant/state/member/event/register row** · **OBS-T5-1** (§10 altitude-note under-inclusive — non-material, NOT a v1.2 trigger).
+
+**Milestone:** the full chain is now closed — **P5 → AH-1…AH-5 → EP-01 → T-2/T-3 (G-1…G-8 GREEN) → EP-02 (independently approved · HPA ACCEPTED) → T-5 (v1.1 REMAINS · HPA ACCEPTED)**. The architecture **absorbed the empirical discovery through its existing boundaries and deferred Logical Architecture work — without requiring new domain law** — a strong validation of the current architectural decomposition. **Toward, but not yet at, the Kernel decision.**
+
+**Boundaries honored:** **nothing modified** — no v1.1 edit · no contract edit · no code · **no v1.2** · no register · no Constitution · no Kernel · no SNF · no corpus · register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · OQ-4 **unauthorized** · contract remains **PROPOSED · NON-AUTHORITATIVE**.
+
+**NEXT (NOT this act):** **STOP — OQ-2 / OQ-3 / OQ-5 / F-1…F-5 · AH-5 deferral · AH-4 governance recording** — as **separately governed acts** (each requires its own commission; none commissioned by this acceptance) · then consolidate architectural consequences · then the **Kernel decision**. **The Kernel still waits.**
+
+---
+
+## 📍 UPDATE (2026-08-23, **EP-02 ACCEPTED (HPA) → T-5 v1.1 REASSESSMENT — *VERDICT: v1.1 REMAINS · NO CHANGE REQUIRED · NO v1.2 · MEASURED, NOT ASSUMED · OBS-T5-1 RECORDED (NON-MATERIAL) · DECISION FIELD ⬜ OPEN (HPA) · PORT CONTRACT STILL PROPOSED · NON-AUTHORITATIVE → ✅ ACCEPTED BY THE HPA (2026-08-23) · CLOSED — superseded by the newest block above***)
 
 **Act → acceptance → reassessment:** the **HPA accepted EP-02** (verdict ✅ **APPROVED** accepted · all seven T-2 sites implemented as authorized · G-1…G-8 independently hold · no substantive deviations · within authorized scope · contract PROPOSED · NON-AUTHORITATIVE · no Kernel/SNF/research/Constitution/aggregate/register/v1.1 change · **EP-02 closed**) and **commissioned the v1.1 architectural reassessment (T-5)** — task T-5 of the approved EP-01 plan (expected: v1.1 remains; measured, not assumed). Acceptance recorded in the EP-02 review §7a. Reassessment delivered: `docs/knowledgeos/reviews/20260823-0829-KOS-EP01-T5-v1.1-reassessment.md`.
 
@@ -16,7 +30,7 @@
 
 **Boundaries honored:** **nothing modified** — no v1.1 edit · no contract edit · no code · **no v1.2** · no register · no Constitution · no Kernel · no SNF · no corpus · register **25+4 unchanged** · Constitution **FROZEN** · research **CLOSED** · OQ-4 **unauthorized** · contract remains **PROPOSED · NON-AUTHORITATIVE**.
 
-**NEXT (NOT this act):** **STOP — the HPA's decision on T-5** (accept v1.1 REMAINS · note OBS-T5-1 · ⬜ OPEN) · then OQ-2 / OQ-3 / OQ-5 / F-1…F-5 · AH-5 deferral · AH-4 governance recording separate · then the **Kernel decision**. **The Kernel still waits.**
+**NEXT (superseded — the HPA accepted T-5 on 2026-08-23; see the newest block):** OQ-2 / OQ-3 / OQ-5 / F-1…F-5 · AH-5 deferral · AH-4 governance recording remain **separately governed acts** · then the **Kernel decision**. **The Kernel still waits.**
 
 ---
 
