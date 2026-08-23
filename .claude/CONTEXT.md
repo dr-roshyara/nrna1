@@ -1,9 +1,25 @@
 # Current Working State
 
-**Updated:** 2026-08-23 *(additive — the **`KOS-OPERATING-MODEL-001` GOVERNANCE ADOPTION REVIEW DELIVERED (`cf621832`) — review result PASS · ⛔ NOT ADOPTED · NOT AUTHORIZED — the PO/ARB adoption decision is now the only remaining step** block is the newest and supersedes the candidate-declaration status lines; the CANDIDATE DECLARATION (`77b85fa3`) / CONTINUATION seq 10 / APPOINTMENT / AMENDMENT-001 / START GATE REFUSAL #2/#1 blocks below stand as history)*
+**Updated:** 2026-08-23 *(additive — the **`KOS-OPERATING-MODEL-001` ✅ ADOPTED by PO/ARB decision (three verified layers L1+L2+L3; `AST-019` NOT adopted) · `AUTHORIZED for future use` NOT DECIDED** block is the newest and supersedes the NOT ADOPTED status lines; the GOVERNANCE ADOPTION REVIEW / CANDIDATE DECLARATION / CONTINUATION seq 10 / APPOINTMENT / AMENDMENT-001 / START GATE REFUSAL blocks below stand as history)*
 
 ---
 
+
+
+## 📍 UPDATE (2026-08-23, **`KOS-OPERATING-MODEL-001` — ✅ **ADOPTED** · PO/ARB decision verbatim *"Accept and adopt the three verified layers"* — L1 + L2 + L3 ADOPTED · `AST-019` explicitly **NOT ADOPTED / NOT VERIFIED** · **`AUTHORIZED for future use` NOT DECIDED** (§38 — the human said adopt and said nothing about authorization; the two are never collapsed)** — supersedes every NOT ADOPTED status line above and below; all prior blocks stand as history)
+
+| Aspect | Record |
+|---|---|
+| 🎬 **PO/ARB decision (§29 CASE 6 · option 1)** | in-session 2026-08-23, verbatim: *"Accept and adopt the three verified layers"* — taken after the Governance adoption review presented the decision (result PASS), **bounded exactly as review finding F-2 recommended**. |
+| 📜 **Decision record** | `docs/knowledgeos/governance/2026-08-23-KOS-OPERATING-MODEL-001-ADOPTION-DECISION.md` — the authoritative record of the human act, what is adopted, what is explicitly not, and the findings carried forward. |
+| ✅ **Adopted** | **L1** `…-final-operating-model.md` (40 sections) · **L2** `.claude/scripts/operating-model.php` · **L3** `OperatingModelContractTest` (43 `test_om_*`). |
+| ⛔ **NOT adopted** | **`AST-019` / `ActivateCommissionedFreshSession`** — IMPLEMENTED (25/270 GREEN) but **NOT VERIFIED** and outside the verification report; not among "the three verified layers". Its independent verification remains a separate governed step. |
+| ⚠️ **NOT decided** | **`AUTHORIZED for future use`** — the human said *adopt*, not *authorize*. §38 forbids collapsing the two, so **nothing here authorizes the operating model as the binding operating layer for future work.** The question is back with the PO/ARB. |
+| 🔧 **F-1 closed** | L1 status annotation synchronized per `ES-004.3` — **1 line changed, all 40 sections byte-identical**; L2/L3 and AST-015/016/017/018/019 untouched (`git diff` empty); full WorkflowEngine regression re-run **147 passed / 1577 assertions** after the edit. |
+| ➡️ **Carried forward (adoption closes none of these)** | **F-3** `AST-019` has no registered lane and **no recorded producer UUID** → its producer bar is not mechanically enforceable; Governance must record that identity **before** commissioning its verification. **F-4** §8's `appoint` path is not the path the estate takes (disclosure too thin) → give it a passthrough or sanction hand-composition. **F-5** `REVIEW_INDEPENDENCE_POLICY` still a placeholder, now with observed cost. **F-6/F-7** §29 **CASE 6 is not machine-rendered** under the estate's closure discipline — proven on a **copy** of the record: `STOP` short-circuits to `WORK_ITEM_STOPPED`, and `COMPLETE` makes the renderer falsely say *"The implementation actor is assigned and waiting"* (predecessors stay permanently `HANDED_OFF`); CASE 6 needs **every** lane `COMPLETED`, which is what `test_om_25`'s fixture builds and the governed flow never produces → follow-up against `KOS-NEXT-ACTOR-ORCHESTRATION-001`/`AST-018`, **not** a defect in the adopted layers. |
+| 🔒 **Record** | seq 15 `CONTINUATION` (`recordedBy: human`, the adoption decision; names exactly what the recording act may touch) · seq 16 `STOP` (`recordedBy: governance`). Work item **STOPPED**; the runtime record is gitignored, so seq 11–16 live only in `.claude/runtime/`. |
+
+---
 
 ## 📍 UPDATE (2026-08-23, **`KOS-OPERATING-MODEL-001` — GOVERNANCE ADOPTION REVIEW **DELIVERED** by fresh reviewer `cf621832` (lane `governance`, REGISTER seq 11 · HANDOFF seq 12 · human START seq 13 · STOP seq 14) — §23 result **PASS** for the three verified layers; six findings recorded; ⛔ **NOT ADOPTED · NOT AUTHORIZED** — the PO/ARB adoption decision is the only remaining step and is NOT automatic** — supersedes the candidate-declaration "awaiting a ruling" status; all blocks below stand as history)
 
