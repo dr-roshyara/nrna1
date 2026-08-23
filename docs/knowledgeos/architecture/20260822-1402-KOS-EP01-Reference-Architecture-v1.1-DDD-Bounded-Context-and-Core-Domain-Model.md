@@ -13,6 +13,7 @@
 | **Reviews** | First HPA review (2026-08-22 14:25) — **PASS CONDITIONALLY → condition applied in r2 → CLOSED** (confirmation, 15:27) · Second architectural review (14:59) — **PASS · CLARIFICATION ONLY → ACCEPTED as architect-side delivery** (15:23) |
 | **This revision** | the **r3 change set applied** — C-1…C-5 · R-1 · A-1…A-3 — under the HPA consolidation commission (`docs/knowledgeos/reviews/20260822-1533-…-r3-Consolidation-commissioning-prompt.md`) |
 | **r4 annotations** | the HPA's **architectural-direction steering** (2026-08-22) — the **six negative-direction prohibitions** as invariant interpretations (three already present ⟨C-1⟩; three added: **Probability→Truth · Canonicalization→Authority · Low entropy→Certainty**) · the **Expression↔Meaning Port Contract opened and authored** — authority: `docs/knowledgeos/reviews/20260822-1559-…-r4-and-Port-Contract-HPA-steering.md` |
+| **r5 conformance correction** | the **Kernel-boundary ruling of 2026-08-23** applied as a **law-conformance correction**: ⟨Z-1⟩ *absence of a constitutive prerequisite is not an epistemic state* — the §9 gate is drawn as **two stages** (constitutive prerequisites, then justification path), and a prerequisite-absent candidate is **refused before the domain** (no aggregate · no `KnowledgeId` · no epistemic state · **no event**). Authority: HPA ruling recorded at `docs/knowledgeos/reviews/20260823-1306-KOS-EP01-Kernel-Boundary-Definition.md` §10. **Interpretation of existing invariants — no new law** |
 | **Change authority** | **the r3 change set and nothing else** for r3 · **the HPA's 2026-08-22 steering and nothing else** for r4. No new architecture is introduced; anything outside the change sets is recorded as an observation (Appendix B), never incorporated |
 | **Unchanged by r3** | the core-domain decision · the context map · the aggregate member set · the eleven invariants' wording · the ten domain events · the rejected set · the Semantic Compiler ruling · the LLM boundary · Zero's placement |
 | **Constitution** | v1.0 **FROZEN** — satisfied, **never extended**. No article added, weakened, or reinterpreted |
@@ -208,7 +209,7 @@ No transition is admitted without passing the aggregate's invariants, and no mem
 | **EvidenceLinks** | Collection | the justification: evidence **references** + acquisition method + reliability conditions; pseudo-evidence never admitted. **⟨C-3⟩** The core owns the **links**, never the evidence *content* — external systems own the artifacts. Holding content would drift the core toward the Ch IV **database** refusal | 6 |
 | **JustificationPath** | Value object | the reasoning **path**: premises · rules · assumptions · inference rule (Vyapti-warranted) · conclusion — the reason the state is justified, never a black box. The *record* of reasoning; the *process* is external | 6.4 |
 | **Authority** | Reference | the assigned authority — a recorded reference to a human act; **held by the Authority context, referenced by the aggregate** | 3 |
-| **Agency** | Value object | the epistemic lineage: who observed · reasoned · validated · decided · under which authority — traceable, never a binding to a person. The one member whose **absence rejects creation** | 10 |
+| **Agency** | Value object | the epistemic lineage: who observed · reasoned · validated · decided · under which authority — traceable, never a binding to a person. The one member whose **absence refuses creation** — **⟨Z-1⟩** *refuses*, not *rejects*: the candidate never becomes a domain object, so no `REJECTED` state and no event arise | 10 |
 | **EpistemicState** | Value object | the state vocabulary: **VALIDATED · QUESTIONABLE · REJECTED · CONFLICTED · UNKNOWN · ABSENT · FALSE** — first-class negative and failure states. **No mechanism may ever produce this member** | 7, 8, 9 |
 | **TemporalValidity** | Value object | valid-from · valid-until · superseded-by — freshness never truth, expiry never absence | 11 |
 | **Confidence** | Value object (governed) | a **structured** epistemic attribute — never a scalar replacing epistemic structure (Article 2.3); carried as Temporal Epistemic Metadata (UM-46), not as a knowledge-quality score. **⟨R-1⟩ Boundary rule: Confidence is assigned INSIDE the boundary. A mechanism-supplied score — parser accuracy, model likelihood, match strength — must never cross the port and become Confidence.** A mechanism's *"74% confident"* is a statement about the mechanism, not about the knowledge | 2 |
@@ -251,7 +252,7 @@ The eleven articles, rendered as aggregate invariants. **A transition that would
 | **INV-KOS-FAILURE-001** | Failed reasoning is preserved as an explicit state; never knowledge, never silently discarded | EpistemicState (REJECTED) + History |
 | **INV-KOS-CONTRADICTION-001** | Conflicting knowledge coexists as CONFLICTED until governed resolution; challenge never destroys identity | EpistemicState (CONFLICTED) + ConflictRecord |
 | **INV-KOS-UNKNOWN-001** | UNKNOWN is first-class; unknown ≠ absent ≠ false; uncertainty is preserved, never flattened — **⟨C-5⟩ a mechanism's inability to determine meaning maps to UNKNOWN, never to ABSENT, FALSE, or a low-confidence accept** | EpistemicState (UNKNOWN · ABSENT · FALSE as distinct states) |
-| **INV-KOS-AGENCY-001** | Every state preserves epistemic agency; knowledge is never anonymous | the Agency member; a state without agency is rejected at creation |
+| **INV-KOS-AGENCY-001** | Every state preserves epistemic agency; knowledge is never anonymous | the Agency member; **⟨Z-1⟩** a candidate without agency is **refused before the domain** — no aggregate is created, no `KnowledgeId` assigned, no epistemic state borne and no event raised. It is **not** recorded as a `REJECTED` state, because a state without agency would violate this very invariant |
 | **INV-KOS-HISTORY-001** | Revision never deletes; supersession is forward-only; freshness never truth, expiry never absence | the History member; every revision creates a new state |
 
 ---
@@ -269,7 +270,7 @@ Each event is a named state transition of the KnowledgeAggregate (or ConflictRec
 | **ContradictionDetected** | a claim conflicts with an existing state | CONFLICTED; ConflictRecord created | 8 |
 | **ContradictionResolved** | a governed resolution is reached | ConflictRecord → RESOLVED; record retained | 8.3, 11 |
 | **KnowledgeSuperseded** | a new version supersedes an old one | old state → History; forward-only | 11 |
-| **KnowledgeRejected** | a candidate failed verification | preserved as REJECTED; never discarded, never knowledge | 7 |
+| **KnowledgeRejected** | a candidate that satisfied the constitutive prerequisites failed on its **justification path** — **⟨Z-1⟩** a pre-domain refusal (agency or context absent) raises **no event** | preserved as REJECTED; never discarded, never knowledge | 7 |
 | **AuthorityAssigned** | an authority grant is recorded | the aggregate's Authority reference updated | 3 |
 | **DecisionInformed** | knowledge is made available to an authorized decision step | recommendation issued; **execution remains outside the core** | 4 |
 
@@ -286,32 +287,47 @@ The justified life of one identity, in the domain's own vocabulary.
 ```
               (a candidate arrives at the Verification Port)
                                 │
-             ┌──────────────────┴──────────────────┐
-             │ justification path preserved?        │
-             │ agency present? context present?     │
-             └──────────────────┬──────────────────┘
-                     no │              │ yes
-                        ▼              ▼
-               KnowledgeRejected   KnowledgeCreated ── initial state: UNKNOWN
-                (REJECTED, kept)         │
-                                         │  EvidenceAdded · BeliefRevised · MeaningTranslated
-                                         ▼
-                       ┌───────────────────────────────────┐
-                       │  VALIDATED · QUESTIONABLE ·        │
-                       │  CONFLICTED · UNKNOWN ·            │
-                       │  ABSENT · FALSE · REJECTED         │
-                       └───────────────┬───────────────────┘
-                                       │  ContradictionDetected / Resolved
-                                       │  KnowledgeSuperseded
-                                       ▼
-                          every prior state → History
-                          (forward-only; nothing overwritten)
+             ┌──────────────────┴───────────────────┐
+             │ ⟨Z-1⟩ CONSTITUTIVE PREREQUISITES      │
+             │ agency present?   context present?    │
+             └──────────────────┬───────────────────┘
+                     absent │           │ present
+                            ▼           │
+        ┌────────────────────────────┐  │
+        │  PRE-DOMAIN REFUSAL         │  │
+        │  no aggregate               │  │
+        │  no KnowledgeId             │  │
+        │  no epistemic state         │  │
+        │  NO DOMAIN EVENT            │  │
+        │  (retained mechanism-side)  │  │
+        └────────────────────────────┘  │
+                                        ▼
+                     ┌──────────────────────────────────┐
+                     │  justification path preserved?    │
+                     └──────────────┬───────────────────┘
+                             no │        │ yes
+                                ▼        ▼
+                   KnowledgeRejected   KnowledgeCreated ── initial state: UNKNOWN
+                    (REJECTED, kept)         │
+                                             │  EvidenceAdded · BeliefRevised · MeaningTranslated
+                                             ▼
+                           ┌───────────────────────────────────┐
+                           │  VALIDATED · QUESTIONABLE ·        │
+                           │  CONFLICTED · UNKNOWN ·            │
+                           │  ABSENT · FALSE · REJECTED         │
+                           └───────────────┬───────────────────┘
+                                           │  ContradictionDetected / Resolved
+                                           │  KnowledgeSuperseded
+                                           ▼
+                              every prior state → History
+                              (forward-only; nothing overwritten)
 ```
 
 - **UNKNOWN is the initial state**, not a failure state — the operational form of epistemic honesty (§14).
 - **The seven states are distinct and none is a degree of another.** *unknown* (no grounds) ≠ *absent* (grounds that it does not exist) ≠ *false* (grounds that it is not so).
 - **Transitions are named, governed and forward-only.** There is no implicit transition and no in-place edit; a revision creates a new state and retains the prior one.
-- **Rejection is preserved, never discarded** — a failed candidate remains as evidence of the failure (INV-KOS-FAILURE-001).
+- **Rejection is preserved, never discarded** — a candidate that reached the domain and failed on its **justification path** remains as evidence of the failure (INV-KOS-FAILURE-001). **⟨Z-1⟩** This applies to candidates the domain actually admitted into its own record; it does **not** apply to a pre-domain refusal, which produces no record because there is nothing to hold one.
+- **⟨Z-1⟩ Absence of a constitutive prerequisite is not an epistemic state.** `UNKNOWN` · `ABSENT` · `FALSE` · `REJECTED` are states **of an identified epistemic object**. Where the prerequisites of identity itself are missing — **agency** (INV-KOS-AGENCY-001: *every state* preserves epistemic agency) or **context** (Article 1.4: context is constitutive of identity) — there is no object to bear a state, no `KnowledgeId` can be assigned, and the lawful outcome is **refusal before the domain**: no aggregate, no epistemic state, and **no domain event** (⟨A-3⟩). Such a candidate is retained mechanism-side or infrastructure-side, never as domain state. *This is an **interpretation of existing invariants**, ruled by the HPA on 2026-08-23; no new state, no new invariant, no new event.*
 - **Contradiction is a state, not an error.** Conflicting knowledge coexists until governed resolution; the weaker side is never deleted.
 - *Note on vocabulary: the informal complement of UNKNOWN — "known" — is rendered by **VALIDATED**. No eighth state is introduced.*
 
@@ -652,6 +668,18 @@ Extended to the boundary: **a mechanism's inability to determine meaning is a fi
 | **r4-5** | STATUS | **Expression↔Meaning Port Contract opened** (DEF-2) and authored under the steering act; OQ-2 position recorded at contract altitude | §20 · §1 |
 
 **Structural inventory, r3 → r4:** bounded contexts **6 → 6** · core domains **1 → 1** · aggregates **5 → 5** · aggregate members **12 → 12** · domain events **10 → 10** · invariants **11 → 11** · constitutional articles **11 → 11** · register **25+4 → 25+4**. **Net structural change: none.** The r4 annotations are **interpretations of existing invariants**, not new law.
+
+**r5 change ledger (law-conformance correction — HPA ruling 2026-08-23, `docs/knowledgeos/reviews/20260823-1306-KOS-EP01-Kernel-Boundary-Definition.md` §10).** Every change traces to the ruling act; nothing else changed. **This is a conformance correction, not a revision of the architecture:** the ruling accepted the KnowledgeCore Admission Boundary and, in doing so, made the previous single-stage rendering of the §9 gate imprecise. The correction brings the *rendering* into conformance with law that did not change.
+
+| Ref | Class | Change | Applied at |
+|---|---|---|---|
+| **r5-1** | CORRECTION (rendering) | The §9 lifecycle gate is drawn as **two stages**: ⟨Z-1⟩ **constitutive prerequisites** (agency · context) → **pre-domain refusal** if absent; then **justification path** → `KnowledgeRejected` if absent. Previously all three checks routed to `KnowledgeRejected` | §9 (diagram) |
+| **r5-2** | ADDITION (interpretation) | **⟨Z-1⟩ Absence of a constitutive prerequisite is not an epistemic state.** `UNKNOWN` · `ABSENT` · `FALSE` · `REJECTED` are states **of an identified epistemic object**; where identity's own prerequisites are missing the lawful outcome is refusal before the domain — no aggregate, no epistemic state, **no domain event** (⟨A-3⟩); retained mechanism-side. The rejection-preservation bullet is scoped to candidates the domain admitted into its own record | §9 (bullets) |
+| **r5-3** | CORRECTION (rendering) | `KnowledgeRejected`'s **trigger** narrowed to a candidate that satisfied the constitutive prerequisites and failed on its **justification path**; a pre-domain refusal raises **no event**. The event itself is unchanged | §8 (event table) |
+| **r5-4** | CORRECTION (rendering) | INV-KOS-AGENCY-001's **enforcement locus** restated: a candidate without agency is **refused before the domain**, not recorded as a `REJECTED` state — which would itself violate the invariant. **The invariant's statement is untouched** | §7 (enforcement-locus column) |
+| **r5-5** | CORRECTION (wording) | The `Agency` member's note reads **"absence refuses creation"** rather than *"absence rejects creation"* — *refuses*, not *rejects*, because no domain object comes into being | §6 (Agency member) |
+
+**Structural inventory, r4 → r5:** bounded contexts **6 → 6** · core domains **1 → 1** · aggregates **5 → 5** · aggregate members **12 → 12** · domain events **10 → 10** · epistemic states **7 → 7** · invariants **11 → 11** · constitutional articles **11 → 11** · register **25+4 → 25+4** · admission paths **1 → 1**. **Net structural change: none.** Every r5 entry corrects a **rendering** of law or records an **interpretation** of existing invariants; **no invariant statement, no state, no event, no member and no aggregate is added, removed, or reworded.** The prior renderings are preserved in this ledger and in the ruling record — history is not rewritten (ES-004.3).
 
 ## Appendix B · Observations recorded, NOT incorporated
 

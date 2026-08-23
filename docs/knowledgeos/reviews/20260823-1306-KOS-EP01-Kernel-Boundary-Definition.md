@@ -497,6 +497,76 @@ Kernel implementation         NOT YET
 **We have defined what the Kernel is allowed to protect. We have not built the Kernel.**
 
 
+---
+
+## 11 · v1.1 §9 CONFORMANCE CORRECTION (r5) — applied and verified
+
+**Commission:** HPA, 2026-08-23 — *"make the next immediate act: correct v1.1 §9 under explicit HPA authorization. This is **not research** and **not architecture redesign**. It is a **law-conformance correction caused by an accepted architectural ruling**."* The §10 ruling made the previous single-stage rendering of the §9 gate imprecise; without correction a capability mapper reading the frozen diagram would reproduce *three gate causes → `KnowledgeRejected`*.
+
+**Mechanism used:** v1.1's **own** established revision apparatus — a lettered revision with a change ledger, each entry traced to a named authority act, plus a structural inventory (the pattern of r3 and r4). **No new mechanism was invented.** This is **r5**.
+
+### 11.1 The corrected gate (v1.1 §9)
+
+```
+              (a candidate arrives at the Verification Port)
+                                │
+             ┌──────────────────┴───────────────────┐
+             │ ⟨Z-1⟩ CONSTITUTIVE PREREQUISITES      │
+             │ agency present?   context present?    │
+             └──────────────────┬───────────────────┘
+                     absent │           │ present
+                            ▼           │
+        ┌────────────────────────────┐  │
+        │  PRE-DOMAIN REFUSAL         │  │
+        │  no aggregate               │  │
+        │  no KnowledgeId             │  │
+        │  no epistemic state         │  │
+        │  NO DOMAIN EVENT            │  │
+        │  (retained mechanism-side)  │  │
+        └────────────────────────────┘  │
+                                        ▼
+                     ┌──────────────────────────────────┐
+                     │  justification path preserved?    │
+                     └──────────────┬───────────────────┘
+                             no │        │ yes
+                                ▼        ▼
+                   KnowledgeRejected   KnowledgeCreated ── initial state: UNKNOWN
+```
+
+### 11.2 The r5 change set — five entries, all renderings
+
+| Ref | Class | Change | Site |
+|---|---|---|---|
+| **r5-1** | CORRECTION (rendering) | the gate drawn as **two stages** — constitutive prerequisites, then justification path | §9 diagram |
+| **r5-2** | ADDITION (interpretation) | **⟨Z-1⟩** *absence of a constitutive prerequisite is not an epistemic state*; rejection-preservation scoped to candidates the domain admitted into its own record | §9 bullets |
+| **r5-3** | CORRECTION (rendering) | `KnowledgeRejected`'s **trigger** narrowed to justification-path failure; a pre-domain refusal raises **no event**. The event itself unchanged | §8 event table |
+| **r5-4** | CORRECTION (rendering) | INV-KOS-AGENCY-001's **enforcement locus** restated — refused before the domain, **not** recorded as `REJECTED` (which would violate the invariant it enforces). **The statement column is untouched** | §7 |
+| **r5-5** | CORRECTION (wording) | the `Agency` member reads **"absence refuses creation"**, not *"rejects"* — no domain object comes into being | §6 |
+
+**The r5-4 distinction is the one that made the correction possible without amending law:** v1.1's invariant table separates the **statement** column (the invariant) from the **enforcement locus** column (its rendering). Only the rendering changed.
+
+### 11.3 Verification against the six commissioned criteria
+
+| # | Criterion | Method | Result |
+|---|---|---|---|
+| **1** | changes only the affected lifecycle representation | every diff hunk mapped to its owning section | ✅ **PASS** — §9 (the lifecycle), its three renderings (§6 · §7 · §8), plus §1 status row and Appendix A ledger (the traceability apparatus). **No other section touched** |
+| **2** | does not change the eleven invariants | column-2 (statement) of all eleven `INV-KOS-*` rows extracted at `HEAD` and at working tree, compared | ✅ **PASS** — **byte-identical**. Only INV-KOS-AGENCY-001's *enforcement-locus* column changed |
+| **3** | does not introduce a new state | the seven-state vocabulary parsed and counted both sides | ✅ **PASS** — `VALIDATED · QUESTIONABLE · REJECTED · CONFLICTED · UNKNOWN · ABSENT · FALSE` — **7 → 7**, identical |
+| **4** | does not change aggregate membership | member-table rows counted both sides; aggregate count string checked | ✅ **PASS** — members **12 → 12**; aggregates **5 → 5** |
+| **5** | does not introduce a second admission path | *"the only admission path"* occurrences and all `Verification Port` references counted both sides | ✅ **PASS** — 3 → 3 and 12 → 12; admission paths **1 → 1**. The correction **subtracts** from what enters the gate; it adds no gate |
+| **6** | preserves historical traceability | the r5 ledger records the prior rendering verbatim (*"Previously all three checks routed to `KnowledgeRejected`"*); the ruling record and both prior commits stand | ✅ **PASS** — nothing rewritten (ES-004.3) |
+
+**Also verified:** domain events **10 → 10** · bounded contexts **6 → 6** · register **25+4** · constitutional articles **11 → 11**. **Net structural change: none.**
+
+### 11.4 What this correction is, and is not
+
+**It is:** a conformance correction of a **rendering** of law, caused by an accepted ruling, executed through v1.1's own revision mechanism, with the prior rendering preserved.
+
+**It is not:** research · architecture redesign · a v1.2 · a new invariant · a new state · a new event · a new member · a new aggregate · a second admission path · an amendment to the Constitution. **⟨Z-1⟩ is an interpretation of existing invariants** (INV-KOS-AGENCY-001 · INV-KOS-IDENTITY-001 Article 1.4 · INV-KOS-UNKNOWN-001 · ⟨A-3⟩), in the same class as ⟨C-1⟩…⟨C-5⟩, ⟨R-1⟩ and the ⟨r4⟩ annotations — **not new law**.
+
+**Next act: Kernel Capability Mapping — requires a separate commission.** The anti-reasoner constraint (§10.2) enters it as a **fitness constraint with a test**, not as prose.
+
+
 ## Traceability
 
 - **Commission:** HPA, 2026-08-23 — *"Proceed with the commissioned Kernel Boundary Definition"*, with five mandatory investigations (REJECTED semantics · what "Kernel" denotes · whether a Domain Service is required · the ZERO lens per capability · aggregate-membership proofs), a separate adversarial critic pass, and the instruction to treat readiness findings A–E as architectural questions rather than grounds to reopen research.
