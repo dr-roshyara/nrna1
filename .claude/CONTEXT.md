@@ -1,10 +1,26 @@
 # Current Working State
 
-**Updated:** 2026-08-23 *(additive — the **`KOS-OPERATING-MODEL-001` ✅ ADOPTED by PO/ARB decision (three verified layers L1+L2+L3; `AST-019` NOT adopted) · `AUTHORIZED for future use` NOT DECIDED** block is the newest and supersedes the NOT ADOPTED status lines; the GOVERNANCE ADOPTION REVIEW / CANDIDATE DECLARATION / CONTINUATION seq 10 / APPOINTMENT / AMENDMENT-001 / START GATE REFUSAL blocks below stand as history)*
+**Updated:** 2026-08-23 *(additive — the **`KOS-OPERATING-MODEL-001` ✅ ADOPTED **and** ✅ AUTHORIZED for future use (three layers L1+L2+L3; `AST-019` expressly held NOT ADOPTED / NOT AUTHORIZED pending independent verification)** block is the newest and supersedes the "AUTHORIZED NOT DECIDED" lines; the ADOPTED / GOVERNANCE ADOPTION REVIEW / CANDIDATE DECLARATION / CONTINUATION seq 10 / APPOINTMENT / AMENDMENT-001 / START GATE REFUSAL blocks below stand as history)*
 
 ---
 
 
+
+
+## 📍 UPDATE (2026-08-23, **`KOS-OPERATING-MODEL-001` — ✅ **AUTHORIZED for future use** · PO/ARB decision verbatim *"Authorize the three adopted layers of KOS-OPERATING-MODEL-001 for future use. Keep AST-019 / AMENDMENT-001 not adopted and not authorized pending independent verification."* — **all four §38 states now positive for L1+L2+L3, reached by four separate acts** · `AST-019` expressly **HELD**** — supersedes every "AUTHORIZED NOT DECIDED" line; all prior blocks stand as history)
+
+| Aspect | Record |
+|---|---|
+| 🎬 **PO/ARB act** | in-session 2026-08-23, verbatim above — §38's **fourth state**, decided **separately** from adoption exactly as §38 requires, answering the question Governance returned rather than inferred. Two parts: authorize the three layers · hold `AST-019`. |
+| 📜 **Decision record** | `docs/knowledgeos/governance/2026-08-23-KOS-OPERATING-MODEL-001-AUTHORIZATION-DECISION.md` — **the authoritative home of this authorization** (the engine has no `AUTHORIZED` vocabulary). |
+| ✅ **Authorized** | **L1** `…-final-operating-model.md` · **L2** `.claude/scripts/operating-model.php` · **L3** `OperatingModelContractTest` — authorized **as the operating model for future governed work**, over `AST-015`/`AST-017`/`AST-018`, which it consumes and never replaces (§26–§28). |
+| ⛔ **Held by the same act** | **`AST-019`/`AMENDMENT-001`** — NOT ADOPTED · NOT AUTHORIZED · NOT VERIFIED, *"pending independent verification"*. **F-3 is a prerequisite:** its producer identity is recorded nowhere by UUID (implemented with no lane), so the `R-34`/`EP-02` producer bar is unenforceable until Governance records it. |
+| 🚫 **Deliberately NOT done** | No `grant` on the workflow record (grants = lane write-authority, **not** asset authorization — using them would invent semantics, `ES-005.4`; `grants` stays `[]`). **No change to `.claude/CLAUDE.md`** or any standing instruction set — binding the authorized model into the runtime instructions is a **separate governance act the human has not directed**, and CLAUDE.md carries a FROZEN-methodology notice. Flagged, not performed. |
+| 🔧 **Synchronized (`ES-004.3`, additive)** | L1 status annotation (**1 line; all 40 sections byte-identical**) · adoption record given a **STATUS SUPERSESSION note** with its decision text unrewritten · `.claude/MEMORY.md` durable-fact entry (adopted **and** authorized operating model = long-term knowledge). L2/L3 and AST-015/016/017/018/019 untouched. |
+| ➡️ **Still open** | **F-3** record `AST-019`'s producer identity, **then** commission its verifier · **F-4** `appoint` disclosure passthrough vs sanctioned hand-composition · **F-5** `REVIEW_INDEPENDENCE_POLICY` still a placeholder — now more pointed, since the model is authorized *with* its independence policy absent · **F-6/F-7** §29 CASE 6 not machine-rendered (closure discipline; AST-018 cascade) · **F-8** the engine has no `ADOPTED`/`AUTHORIZED` vocabulary, so no mechanism can answer *"is this authorized?"* |
+| 🔒 **Record** | seq 17 `CONTINUATION` (`recordedBy: human`; its reason names exactly what the recording act may touch) · seq 18 `STOP` (`recordedBy: governance`). Runtime record gitignored — seq 11–18 live only in `.claude/runtime/`. |
+
+---
 
 ## 📍 UPDATE (2026-08-23, **`KOS-OPERATING-MODEL-001` — ✅ **ADOPTED** · PO/ARB decision verbatim *"Accept and adopt the three verified layers"* — L1 + L2 + L3 ADOPTED · `AST-019` explicitly **NOT ADOPTED / NOT VERIFIED** · **`AUTHORIZED for future use` NOT DECIDED** (§38 — the human said adopt and said nothing about authorization; the two are never collapsed)** — supersedes every NOT ADOPTED status line above and below; all prior blocks stand as history)
 

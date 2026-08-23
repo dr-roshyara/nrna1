@@ -16,6 +16,22 @@
 - **STRATEGIC/TACTICAL BOUNDARY RULE (ARB, 2026-07-28 — durable):** **Strategic DDD ends with *what the implementation must respect*. It does NOT end with *how implementation must realize it*** — that latter question belongs to Tactical DDD. **Consequence for handover artifacts: they may carry the certified baseline, assumptions, unresolved questions, implementation constraints, the inheritance contract, and explicit non-assumptions; they may NOT carry aggregates, repositories, services, APIs, infrastructure, or technologies.** The moment a handover prescribes implementation structure, it has crossed the boundary. **Naming discipline that goes with it: govern the *handover* / the *transition contract*, never "the transition into implementation" — the latter reads as one methodology continuing into another, when the correct shape is Knowledge Methodology → governed handover (an anticorruption boundary) → Implementation Methodology, each separately governed.**
 - **Fold-class discipline (MCR-4, reusable):** editorial/evidence-neutral refinements may be applied by the executing commission; evidence-affecting or substantive changes require a separate bounded act and, where they alter what an artifact asserts, Authority disposition.
 
+
+## ✅ The Governance + Communication OPERATING MODEL is ADOPTED and AUTHORIZED for future use (`KOS-OPERATING-MODEL-001`, 2026-08-23)
+
+**Durable fact.** The human-facing operating layer over the workflow estate is adopted **and** authorized: **L1** `docs/knowledgeos/governance/2026-08-22-KOS-OPERATING-MODEL-001-final-operating-model.md` (40 sections) · **L2** `.claude/scripts/operating-model.php` (read-only presenter) · **L3** `tests/Unit/Platform/WorkflowEngine/OperatingModelContractTest.php`.
+
+**Core principle it authorizes:** *the human speaks BUSINESS LANGUAGE; the system handles TECHNICAL WORKFLOW MECHANICS; the human never operates the workflow engine* — no UUIDs, no `REGISTER`/`HANDOFF`/`START`, no `mutationOwner`/`predecessor`, no transition JSON (§1, §29, §30).
+
+**It consumes and never replaces** `AST-015` (single workflow authority) · `AST-017` (read-only resolution) · `AST-018` (next-actor orchestration). It grants no write path and adds no transition type.
+
+**Reached by four separate acts, in order — never one implying the next (§38):** IMPLEMENTED (`259c1966`) → VERIFIED (independent verifier `fc59bb0a`) → REVIEWED (Governance adoption review `cf621832`, result PASS) → ADOPTED (PO/ARB) → AUTHORIZED (PO/ARB, a **separate** later act). Decision records: `…-ADOPTION-DECISION.md` · `…-AUTHORIZATION-DECISION.md`.
+
+**Held out of scope:** `AST-019`/`AMENDMENT-001` (`ActivateCommissionedFreshSession`) is **NOT ADOPTED · NOT AUTHORIZED · NOT VERIFIED** by express instruction, pending independent verification — and that verification cannot be soundly commissioned until its **producer identity is recorded** (it was implemented with no registered lane and no recorded UUID, so the `R-34`/`EP-02` producer bar is unenforceable).
+
+**Two standing consequences to remember:** (1) the workflow engine has **no `ADOPTED`/`AUTHORIZED` vocabulary** — both states live only in governance documents, so no mechanism can answer *"is this authorized?"*; (2) authorization did **not** bind the model into `.claude/CLAUDE.md` or any standing instruction set — that remains a separate governance act, never performed. `REVIEW_INDEPENDENCE_POLICY` (§22) is still a deliberate placeholder.
+
+
 ## Review framework (FROZEN + operationally adopted, 2026-07-31)
 - **Eight dimensions in two groups** — Architecture: *Taxonomy · DDD Layer · Business Owner · Responsibility Type* · Execution: *Execution Responsibility Owner · Authority · Artifact · GREEN Readiness*. One question each, one answer per finding.
 - **Frozen for REFINEMENT, not for use.** Reopens **only** when an *independent* slice shows it cannot classify or expose a real issue — never for elegance, preference or simplification. Governance stays **external**: the framework asks *who may authorize*, never states *who does* (Taxonomy selects the governance **rule**; the rule identifies the authority).

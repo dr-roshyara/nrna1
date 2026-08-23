@@ -1,4 +1,6 @@
-# `KOS-OPERATING-MODEL-001` — **ADOPTION DECISION** · ✅ **ADOPTED** (three verified layers) · `AUTHORIZED` **NOT DECIDED**
+# `KOS-OPERATING-MODEL-001` — **ADOPTION DECISION** · ✅ **ADOPTED** (three verified layers)
+
+> **📌 STATUS SUPERSESSION (additive, `ES-004.3`, 2026-08-23):** this record's `AUTHORIZED` **NOT DECIDED** statements were true when written and are **now superseded** — the PO/ARB authorized the three adopted layers for future use in a separate later act, recorded in `2026-08-23-KOS-OPERATING-MODEL-001-AUTHORIZATION-DECISION.md`. **The decision text below is unchanged and was not rewritten.** `AST-019` remains NOT ADOPTED · NOT AUTHORIZED by that same act.
 
 **Work item:** `KOS-OPERATING-MODEL-001` (FINAL GOVERNANCE + COMMUNICATION OPERATING MODEL) · **Component:** `CMP-004` (workflow_engine)
 **Document type:** the **PO/ARB adoption decision** — the human authority act of operating model §25, recorded by Governance. This is the authoritative record of the decision itself.
