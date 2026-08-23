@@ -88,6 +88,8 @@ STOP
 
 Then **STOP.** Governance verifies your eligibility, appoints your declared identity via `AST-018 appoint --role=implementation --candidate=<your declared id> --human-act='<verbatim>'` *(never hand-composed appends — that was `ASD-001`)*, a person records the `START`, an `EP-01` plan is written and **explicitly approved** — and **only then** does **Phase 2**, the repair commission, reach you.
 
+> ⚠️ **Correction `C-1` (2026-08-24, recorded after this prompt was consumed).** The line above says *"a person records the `START`"*. **That is wrong: `AST-018 appoint` writes the `START` itself** (`next-actor-orchestration.php:430–447`, `recordedBy: 'human'`, carrying the supplied `--human-act`), so appointment and activation happen in **one** act — finding `O-6`. The Governance process that wrote this prompt had read `:380–430` and stopped one block short. Corrected here rather than silently; the declaration this prompt produced is unaffected, and the text is left in place because the record is append-only. Full correction: `…-REPAIR-001-IMPLEMENTER-APPOINTMENT-84e5c1f7.md` §4.
+
 **Do not ask for Phase 2, and do not reconstruct it from the fold.** A declaration that arrives with a plan attached has already broken the boundary this prompt exists to protect.
 
 ---

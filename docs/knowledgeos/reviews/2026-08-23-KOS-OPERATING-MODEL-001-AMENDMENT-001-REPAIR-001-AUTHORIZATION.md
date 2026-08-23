@@ -63,7 +63,7 @@ Registered through `AST-015 grant --writer-role=governance` (`Inv H`/`G-2`: the 
 | PO/ARB authorization of the slice | ✅ recorded (`G-REPAIR-001`) |
 | **Fresh implementation candidate declares its own identity** | ⬜ **the next act** — declaration-only prompt: `…-AMENDMENT-001-REPAIR-001-IMPLEMENTER-CANDIDATE-DECLARATION-prompt.md` |
 | **Appointment via `AST-018 appoint`** | ⬜ `--role=implementation --candidate=<declared id> --human-act='<verbatim>'` — **NOT hand-composed appends; that was `ASD-001`** |
-| **Human `START`** (`G-3`) | ⬜ never automated, never inferred |
+| **Human `START`** (`G-3`) | ⚠️ **SUPERSEDED by correction `C-1`** (`…-REPAIR-001-IMPLEMENTER-APPOINTMENT-84e5c1f7.md` §4) — `AST-018 appoint` **does** write the `START` (`:430–447`, `recordedBy: human`, using the supplied `--human-act`). This row was wrong: no separate human START is needed; the appointment act is the activation authority. Recorded, not rewritten. |
 | **Approved `EP-01` plan** | ⬜ plan → **explicit human approval of the plan** → implement only the approved plan |
 
 **Then:** RED (`O-1` fails on today's code) → GREEN (`F-1`, `F-3`, `F-4`) → `F-2` asserted clean on both paths → full `GO` suite + WorkflowEngine regression → byte-integrity of `L1/L2/L3` and `AST-015/016/017/018` re-proven → `STOP` reporting **IMPLEMENTED, never VERIFIED** (`R-34`/`EP-02`).
