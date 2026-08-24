@@ -4,6 +4,9 @@
 **Recorded by:** Governance — `claude-code-session:5928b9f9-b4d5-46e9-8c71-c295dace18f8` *(governance-recording; holds no lane on this work item)*
 **Placement derived:** `php scripts/doc-placement.php --scope=product-specific --domain=publicdigit` → `docs/publicdigit` (exit 0) — the existing `KOS-CONTRACT-NEUTRALITY-001` document family lives here.
 
+> ### 📌 **AMENDED 2026-08-24 — see `2026-08-24-KOS-CONTRACT-NEUTRALITY-001-framing-amendment-continue-from-record.md`.**
+> The PO/ARB directed that this work **continues from the current authoritative state of the work item, not from the historical state captured in the original commission brief.** §1's brief remains authoritative for the **commissioned question and the methodological constraints**; its statements about the current state of LCOM4 and Stage 2 are **superseded**. §2's discrepancy is accordingly **disposed of, not merely reported**. The revised objective, the mandated evidence-reconciliation first pass, and the `EKS-07` coordination hold live in the amendment. **This text is unchanged and was not rewritten** (`ES-004.3`).
+
 > ### ⛔ **REGISTERED · NOT COMMISSIONED · NOT AUTHORIZED · NO LANE · NO GRANT.**
 > This record captures the human's instructions so they are governed and not lost. It **starts nothing**, appoints nobody, creates no authority, and changes no state. **Nothing in §4 was acted on.**
 
