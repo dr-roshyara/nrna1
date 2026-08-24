@@ -1,6 +1,6 @@
 # Current Working State
 
-**Updated:** 2026-08-24 *(additive — the **`AST-019` lifecycle CLOSED; follow-ups disposed: `RV-F1`→**EKS-09**, `RV-F2`→**EKS-10**, `F-5`→**EKS-11**; `G-REPAIR-001` CONSUMED** block is the newest; every block below stands as history)*
+**Updated:** 2026-08-24 *(additive — the **`KOS-CONTRACT-NEUTRALITY-001` commission REGISTERED (not commissioned, no lane) · ⚠️ the brief's stated evidence appears SUPERSEDED by the record — decision required** block is the newest; every block below stands as history)*
 
 ---
 
@@ -204,6 +204,20 @@
 | ❓ **OPEN — the PO/ARB's ruling** | *Does a runtime that performed read-only orientation and produced advisory output about the appointment path (but no write and no assessment of the review subject) satisfy the freshness/independence condition for the Governance adoption-review role?* **D-i** start a genuinely new session → question moot, `PASS` on facts, **no precedent created** · **D-ii** rule the question → gives `REVIEW_INDEPENDENCE_POLICY` its **first concrete precedent**, estate-wide. **No recommendation made between them** — the candidate does not rule on its own independence. |
 | ⛔ **Unchanged** | `KOS-OPERATING-MODEL-001` **VERIFIED · NOT ADOPTED · NOT AUTHORIZED** · `AST-019`/`AMENDMENT-001` **IMPLEMENTED · NOT VERIFIED · NOT ADOPTED · NOT AUTHORIZED** (§38) · binding path still `REGISTER(governance)` → `HANDOFF` from `fc59bb0a` → **human START (G-3)** → review → STOP → PO/ARB adoption decision (**AST-019 is not this step's mechanism** — `CONFLICTING_ASSIGNMENT`, GO-13). |
 | 🚫 **Non-actions** | no REGISTER · no HANDOFF · no START · no CONTINUATION · no grant · no lane · no workflow transition · no adoption review · no adoption recommendation · no independence ruling · no self-appointment · no change to AST-015/016/017/018/019, the operating model, or the preserved prompt · no EKS-07. |
+
+---
+
+## 📍 UPDATE (2026-08-24, **`KOS-CONTRACT-NEUTRALITY-001` — contract language-neutrality commission **REGISTERED** · ⛔ **NOT COMMISSIONED · NOT AUTHORIZED · NO LANE · NO GRANT** · ⚠️ **the brief's "Current Known Evidence" appears SUPERSEDED by the authoritative record — reported, NOT resolved**; a decision is required before any work starts)
+
+| | |
+|---|---|
+| 🎬 **PO/ARB order** | *"can you register this task now"* + the full *"KOS Contract Neutrality — Next Session Instructions"*. **Registration only** — nothing started. |
+| ❓ **The question the work exists to answer** | *"Is the existing capability contract sufficiently precise and language-neutral that independent PHP and Python implementations can conform to the same externally observable behaviour?"* Explicitly **not** a Python migration, **not** a rewrite, **not** a target-architecture exercise. *"The contract is the subject under test; PHP and Python are implementations under test."* |
+| ⚠️ **Load-bearing observation — brief vs record** | **`DECLARED` (brief):** a separate contract-correction item *was created*; the *"intra-class call"* ambiguity is *"currently the central blocker"*; Stage 2 Python *"remains BLOCKED"*. **`OBSERVED` (record):** `KOS-LCOM4-CONTRACT-001` is that correction item and its **three lanes are `COMPLETED`** (draft → apply → corrected re-verify, grants `DRAFT`/`APPLY`/`REVERIFY` all `AUTHORIZED`); it addresses **exactly that term** (`intra-class call` ×5 in its draft correction, incl. golden-fixture definitions); `STAGE2`, `STAGE2-VERIFY`, `STAGE2-BREADTH` grants are all `AUTHORIZED`; the item carries **40 transitions / 27 grants** (one `REVOKED`) with work through **2026-08-19** (V-3 architecture determination, decisions registration, `ARTIFACT-UPDATE` ×3 amendments); and **an architecture lane is currently `ACTIVE`** and holds the item. |
+| 🚫 **What Governance does NOT claim** | Whether the *"intra-class call"* ambiguity is actually **resolved** is **`UNKNOWN`** — establishing it requires reading the LCOM4 re-verification and the V-3 determination, which is **investigation, and investigation was not ordered**. **Completed lanes evidence that work occurred; they do not prove the semantic question was settled.** Also `UNKNOWN`: whether this commission **continues**, **re-baselines**, or **runs alongside** the active lane. |
+| ⚠️ **Three risks, stated not argued** | (1) **duplicate ownership** — Deliverables B/C may re-do owned work; (2) **an active lane** — a second actor on the same item is the hazard already recorded as **`EKS-07`**; (3) **a stale premise** would make any verdict unsound however carefully reached. |
+| ⛔ **Non-actions** | No lane · no appointment · **no grant, not even `PROPOSED`** · no transition · no evidence table · no contract reconstruction · no semantic analysis · no correction proposal · no fixture assessment · no Python plan · no verdict · nothing in the human's do-not-modify list touched (`KOS-ARCH-BASELINE-001`, EKS baseline, proposed KnowledgeOS architecture, bounded contexts, target tech, platform/governance architecture) · `KOS-LCOM4-CONTRACT-001` not reopened · the active architecture lane not disturbed. |
+| ⬜ **Decision required** | **Smallest:** does this commission **continue** the investigation from where the record stands, or **re-run** reconstruction from the brief's baseline? Then separately, if it proceeds: **authorization** (a grant) and **who performs it** — including whether the active architecture lane is the performer or a distinct concern. **Independent verification and Architecture review are `OPTIONAL` here** — no binding rule requires either for an evidence-reconstruction task, and the brief itself makes them conditional. |
 
 ---
 
