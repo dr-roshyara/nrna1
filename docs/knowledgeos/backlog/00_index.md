@@ -12,5 +12,11 @@ Backlog items for the EKS / KnowledgeOS platform. **A backlog item records a pro
 | [EKS-06](EKS-06-reference-register-identifier-families.md) | Reference resolution bound to a fixed token list, not to declared identifier families | BACKLOG | assurance-coverage problem |
 | [EKS-07](EKS-07-multi-process-coordination.md) | Multi-Process Coordination & Shared Work-State Integrity for AI Engineering | **FUTURE ARCHITECTURE EXPLORATION / OBSERVED PROBLEM** | platform-capability / coordination-boundary problem |
 | [EKS-08](EKS-08-representation-semantics-separation.md) | Representation–Semantics Separation & Measurement Independence — KnowledgeOS invariants evaluated against semantic structure, not representation heuristics | **FUTURE ARCHITECTURE EXPLORATION** (P4/P5 research observation) | candidate constitutional invariant (research) |
+| [EKS-09](EKS-09-activation-write-atomicity.md) | Activation write atomicity — a multi-append governed sequence has no transaction boundary | BACKLOG · ARCHITECTURE | architecture problem (transaction boundary) |
+| [EKS-10](EKS-10-activation-failure-path-coverage.md) | Activation failure-path coverage — the live-owner combination is unprotected by a committed test | BACKLOG · ENGINEERING | assurance-coverage problem |
+| [EKS-11](EKS-11-sole-writer-environment-override.md) | The "sole writer" is redirectable by environment — an asymmetric, unbounded test seam | **BACKLOG · HELD BY STANDING DECISION** | architecture problem (assurance boundary) |
 
 Created 2026-08-16 on the PO/ARB act *"record this as problem and write EKS- tickets"*, from the placement-drift and knowledge-distribution incidents (`../reviews/2026-08-16-knowledge-placement-requirement-registration.md`).
+
+
+**EKS-09/10/11 added 2026-08-24** on the PO/ARB follow-up-disposition act, from the `AST-019` `REPAIR-001` re-verification findings (`RV-F1`, `RV-F2`, `F-5`/`RV-O3`). All three were classified **NON-BLOCKING** and are **carried by**, not contradicted by, the `AST-019` adoption and authorization of the same date. `EKS-09` is adjacent to `EKS-07` and records first-hand corroborating evidence for it; it is kept separate because the remedy space differs (atomicity vs. cross-process awareness) — see `EKS-09` §4 for the `ES-005.4` check.
