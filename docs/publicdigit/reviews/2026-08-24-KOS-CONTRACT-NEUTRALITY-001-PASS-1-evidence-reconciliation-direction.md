@@ -1,7 +1,14 @@
 # `KOS-CONTRACT-NEUTRALITY-001` — **PASS 1: evidence reconciliation** · direction, PREPARED
 
-> # ⛔ NOT AUTHORIZED — DO NOT ACT ON THIS YET
-> **No authority has been granted to any performer, and an architecture lane is currently active on this work item.** This document is **prepared and held** so it is ready when the PO/ARB authorizes a performer. **Reading it confers nothing.** Starting this pass without a recorded authorization act would be exactly the coordination failure tracked as `EKS-07`.
+> # ✅ AUTHORIZED 2026-08-24 — under grant `G-KOS-CONTRACT-PASS1-RECONCILE`
+> **Performer: the existing active architecture lane `S4-architecture-v3-determination` — the same actor, under a SEPARATE authority (PO/ARB Option C).** The V-3 grants are unchanged and remain bounded to their two binding-semantics questions; this pass is a second, independently scoped deliverable on the same lane.
+>
+> **Authorized for evidence reconciliation ONLY.** Not authorized: changing the contract · modifying LCOM4 or reopening `KOS-LCOM4-CONTRACT-001` · implementing Python · changing the V-3 determination · closing the existing V-3 lane · architecture redesign · deciding the target language · modifying `KOS-ARCH-BASELINE-001` (or the EKS baseline, proposed KnowledgeOS architecture, bounded contexts, target technology, platform or governance architecture) · changing any golden fixture · starting a second lane or actor.
+>
+> ### ⚠️ The containment rule, load-bearing
+> **Pass 1 must remain an evidence-reconciliation activity and must not silently become the implementation or contract-correction activity.** If reconciliation shows correction or implementation is needed, that is a **finding to report — not work to perform.** Any continuation needs a **separate** authorization.
+>
+> *(This document was previously held under a "NOT AUTHORIZED" banner while the performer's authority was verified; the verification found the existing V-3 grant did not cover Pass 1, which is why a separate grant now exists. Banner replaced 2026-08-24 — the direction's content below is unchanged.)*
 
 **Work item:** `KOS-CONTRACT-NEUTRALITY-001` · **Prepared by:** Governance (`5928b9f9`), 2026-08-24 · **Governing framing:** `…-framing-amendment-continue-from-record.md`
 
