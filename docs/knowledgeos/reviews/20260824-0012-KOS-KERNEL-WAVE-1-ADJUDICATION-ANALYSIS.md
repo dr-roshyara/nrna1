@@ -727,6 +727,78 @@ The mapping recorded it as **UQ-4**; the HPA **deferred it to Logical Architectu
 
 ---
 
+## 7.4 · SUFFICIENCY-TEST BURDEN SHEET — the five amendment-class Wave 1 options
+*(added 2026-08-25 · decision support · **no ruling, and no assessment of whether any burden is met**)*
+
+The **constitutional sufficiency test** was established by the F-CM-1a ruling **after** this analysis was written, so Wave 1's amendment-class options have never been stated against it. This sheet does that and only that: for each, **what a demonstration of insufficiency would have to show**, and **what would count as failing to show it**. Whether either obtains is the HPA's determination and is deliberately left blank.
+
+> **The test:** *record a new constitutional distinction only when the existing law is insufficient to prevent materially different architectural interpretations. Absence of a distinction does not automatically justify adding one.*
+
+| Option | The amendment sought | **Demonstration of insufficiency would require showing…** | **It fails if…** |
+|---|---|---|---|
+| **Wisdom W-2** | a V.3 act admitting Wisdom as a core concept | that some **existing invariant cannot be protected** without a wisdom concept in the core — and that wisdom can be defined **non-semantically**, since §16 forbids the kernel generating conclusions | wisdom is definable only semantically (then it is a mechanism), **or** no invariant is shown unprotectable. §4.1's minimality result already found **no** atomicity requirement |
+| **C-15 R-1** | an eighth state `WITHDRAWN` | that no existing state can carry retraction **without misdescription**, *and* that the loss from weakening the closed seven-state set is smaller than the loss from having no representation | `REJECTED` or a `BeliefRevised` variant can carry it with a **stated** trigger amendment — i.e. the misdescription is curable at rendering level rather than by a new state |
+| **C-15 R-2** | an eleventh event, no new state | that ⟨A-3⟩ is satisfied by a `History` entry alone, **and** that a fact recorded only in `History` is **not** hidden state | the fact is invisible to state consumers — which §4's falsification already found. R-2's burden is therefore **the hardest of the five**, because it must defeat its own falsification before reaching the sufficiency test |
+| **C-17 I-1** | an eighth state for incoherence | that the boundary can **assign** the state without **detecting** incoherence — i.e. that the determination is supplied — *and* that a supplied determination cannot instead be handled as a **port obligation** (I-2) | a supplied determination is handled at the ACL. Then I-1 collapses into I-2 and the amendment is unnecessary — which §4's falsification already established |
+| **C-18 V-1** | a thirteenth member `GoverningLaw` | that **neither** `History` **nor** `EvidenceLinks` can carry the binding — against the **OQ-2 precedent**, which already permits a fact about an act's basis to be recorded as a reference | either member can carry it. §4 found `History` the better fit on granularity, so V-1's burden is to defeat two existing homes, not one |
+| **C-14 N-2** | a §15 row for `NOT_ASSESSED ≠ LOW_CONFIDENCE` | that **⟨C-5⟩ is narrow** — that it governs *meaning* only and does not already forbid an inability-to-low-value collapse across epistemic attributes generally | ⟨C-5⟩ reads broadly. **Then N-2 is redundant** — which §6 already identified as the crux. This item is **entirely** a reading of existing law |
+
+### 7.4.1 What this sheet shows structurally
+
+**Four of the six burdens are already partly discharged against the option by this analysis's own falsification pass** — C-15 R-2 (hidden state), C-17 I-1 (collapses into I-2), C-18 V-1 (two existing homes), C-14 N-2 (redundant on a broad ⟨C-5⟩). **The sufficiency test and the falsification pass point the same way in those four cases, by independent routes.** That convergence is recorded as a fact about the analysis, **not** as a recommendation.
+
+**One burden is genuinely open on its merits: C-15 R-1.** It is the only amendment-class option whose defeat requires a *judgement about cost* — weakening the closed seven-state set versus having no representation of retraction at all — rather than a demonstration that an existing construct suffices. **Nothing in the analysis settles it, and nothing should.**
+
+**One is not a burden question at all: C-14 N-2**, which turns wholly on how ⟨C-5⟩ is read. No demonstration can substitute for that reading.
+
+---
+
+## 7.5 · COMBINED-EFFECT ANALYSIS — C-15 and C-17 against the closed state set
+*(added 2026-08-25 · the interaction §7.1(1) flagged but did not work through)*
+
+**Why this needs separate treatment.** C-15 and C-17 are **independent** — neither blocks the other, and each could be ruled alone. But both, in their state-adding options, act on **the same object**: §9's closed set of seven. Ruled in isolation, each looks like a single addition. **Ruled together in their state-adding forms, the effect is not additive but structural.**
+
+| Scenario | States | Effect on the closed-set discipline |
+|---|---|---|
+| Neither adds a state (R-3/R-4 + I-2/I-3) | **7** | unchanged; §9's *"No eighth state is introduced"* and OBS-2 both stand |
+| One adds (R-1 **or** I-1) | **8** | §9's sentence and OBS-2 are **contradicted once**; an amendment can lift a statement of record, and the set remains small |
+| **Both add (R-1 and I-1)** | **9** | ⚠️ **the set is no longer closed in practice.** Two additions in one wave establish that the set is extensible on demonstrated need — which is a different governance posture from a closed set with a recorded refusal |
+
+**Why the third row is not merely "two instead of one".** INV-KOS-UNKNOWN-001's operative content — ***unknown ≠ absent ≠ false***, *"uncertainty is preserved, never flattened"* — depends on the reader being able to hold the whole set in view and see that no member is a degree of another (§9: *"The seven states are distinct and none is a degree of another"*). That property is a function of the set being **small and enumerable**, not of any individual member. **A set that has just grown twice invites a third growth, and each growth weakens the guarantee that the distinctions are exhaustive rather than illustrative.**
+
+**Two further coupling points, recorded:**
+1. **Both new states would need coexistence rules against `CONFLICTED`** → each independently feeds **C-7**, whose cardinality question is already open. Two additions make C-7 harder, not twice as hard: it would then need rules for `WITHDRAWN`+`CONFLICTED` **and** `INCOHERENT`+`CONFLICTED` **and** possibly `WITHDRAWN`+`INCOHERENT`.
+2. **Both raise an authority question that lands on C-3** — *who may retract* and *whose incoherence declaration is trusted*. **Neither can be fully closed in Wave 1**, and if both are ruled as state additions, C-3 acquires two dependents it did not have.
+
+**What follows for sequencing — offered as structure, not preference.** The HPA may rule them in either order or together. If ruled **separately**, the second ruling is made in a materially different context from the first, and **the second-mover carries the combined cost** while appearing to carry only its own. If ruled **together**, the combined effect is visible at decision time. **This analysis states the asymmetry and does not recommend an order.**
+
+---
+
+## 7.6 · C-18 → C-2 PRE-DECISION MAP — what each C-18 option does to determinism
+*(added 2026-08-25 · the interaction §7.1(2) flagged but did not quantify)*
+
+**The commission forbids a lower-level decision silently deciding a higher one.** §7.1(2) flagged that C-18's options bear on C-2 without stating how far. This maps it option by option, so that a C-18 ruling is made in knowledge of what it settles about C-2.
+
+| C-18 option | Is the governing law version recoverable in-domain? | Effect on **C-2** (determinism) |
+|---|---|---|
+| **V-1** new member | **yes**, per-object | C-2's *"new invariant"* option (A) remains fully available; determinism is verifiable across amendments |
+| **V-2** `EvidenceLink` | **yes**, per-object | as V-1 |
+| **V-3** `History` entry | **yes, per-transition** — the finest granularity | as V-1, and **the only option that makes determinism verifiable per transition rather than per object** |
+| **V-4** infrastructure metadata | **no** — recoverable only outside the domain | ⚠️ **C-2's invariant option becomes untenable.** A boundary property the domain cannot verify from its own record is not a domain guarantee. C-2 would be effectively narrowed to *fitness constraint* (E) or *DEF-1* (F) |
+| **V-5** out of scope | **no** — not recorded at all | ⚠️ **as V-4, and more strongly**: with no record anywhere, determinism across an amendment is not merely unverifiable in-domain but unverifiable at all |
+
+### 7.6.1 The precise pre-decision
+
+> **Ruling C-18 as V-4 or V-5 removes C-2's option A (a new invariant) before C-2 is reached.** It does not decide between C-2's remaining options (E fitness constraint, F DEF-1), but it eliminates one of three — and the eliminated one is the only option at **constitutional** altitude.
+
+**Consequence for the workbook's altitude classification.** C-2 is recorded there as *"the item whose altitude the ruling itself fixes"* — A, E or F. **Under V-4/V-5 that is no longer true: C-2's altitude would be fixed to E-or-F by the C-18 ruling, not by C-2's own.** That is precisely the lower-deciding-higher pattern the commission guards against, and it is why this map exists.
+
+**Recorded, not recommended.** The HPA may legitimately rule V-4 or V-5 and thereby narrow C-2 — deliberately. The requirement is that the narrowing be **visible at the moment of the C-18 ruling** rather than discovered at C-2.
+
+**One knock-on already noted at §4:** F-CM-1's only remaining mitigation is **T-2 semantic-invariance**, which **presupposes determinism**. So a C-18 ruling that narrows C-2 to *DEF-1 (deferred)* would leave **T-2 unavailable for the duration of the deferral**, and with F-CM-1a already deferred, the highest-drift item in the set would have **no mitigation and no scheduled mitigation**. **This is a consequence chain across three items — C-18 → C-2 → T-2 → F-CM-1 — and it is fully visible only when the three are read together.**
+
+---
+
 ## 7.3 · RESEARCH-SEQUENCING NOTICE — phase separation preserved
 
 **Recorded on the HPA's notice of 2026-08-24, issued during this act.** A **second, substantially expanded brainstorming corpus** exists — additional books, philosophical lenses, epistemological analysis, DDD reinterpretations, Zero-lens analysis and cross-lens synthesis — developed *after* the current formal analysis and **not yet incorporated**.
