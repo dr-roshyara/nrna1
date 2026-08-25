@@ -432,6 +432,52 @@ The capability mapping declared it unanswerable from law and refused to resolve 
 4. **The `AMBIGUOUS` finding is retained on the record as implementation-drift risk**, with the governing distinction stated by the HPA: **repeated confusion ≠ constitutional gap.**
 5. ⚠️ **Mitigation status of the highest-drift item.** F-CM-1 carries 🔴 HIGH drift risk (an implementation that meets two viable interpretations may compare them, breaching ⟨C-1⟩). Its **constitutional** mitigation is now deferred. The remaining mitigation is **T-2 SEMANTIC-INVARIANCE**, which **depends on C-2 (determinism), which is blocked by C-18** — both unruled. **So at this moment the highest-drift item in the set has no active mitigation.** Recorded as a consequence, not as an objection; it bears directly on C-18 and C-2 when those are reached.
 
+### 🔧 EVIDENCE CORRECTION to §4 — the `UNKNOWN` dual use *(added 2026-08-25, law-derived only)*
+
+**Commissioned by the HPA as an annotation-only evidence correction. The F-CM-1a ruling is NOT reopened and NOT modified. This corrects the evidence base beneath it.**
+
+#### C-1 · `UNKNOWN` carries two distinct uses in v1.1 — verified from law alone
+
+| Use | Where | What it is |
+|---|---|---|
+| **(a) a STATE of an identified epistemic object** | §9 — *"**UNKNOWN is the initial state**, not a failure state"* · ⟨Z-1⟩ (r5) — *"`UNKNOWN` · `ABSENT` · `FALSE` · `REJECTED` are states **of an identified epistemic object**"* | presupposes an **admitted** object that already bears a `KnowledgeId` |
+| **(b) the MAPPING TARGET for mechanism non-determination** | §14 ⟨C-5⟩ — *"a mechanism's inability to determine meaning is a first-class output that **maps to UNKNOWN**"* · INV-KOS-UNKNOWN-001 carries ⟨C-5⟩ · port obligation 3 | a **disposition of a candidate at the port**, before any object exists |
+
+**These are not the same thing.** (a) is a value the domain assigns to something it has admitted. (b) is what the domain does with a candidate whose meaning a mechanism could not determine. The r5/⟨Z-1⟩ correction made (a) explicit — *states of an identified epistemic object* — which is precisely what sharpens the distinction.
+
+#### C-2 · Correction to this analysis's §4
+
+**What §4 did:** it cited use **(b)** — *"⟨C-5⟩ + obligation 3 give underdetermination a home: declared insufficiency → `UNKNOWN`"* — **without flagging that this is a different use from (a).**
+
+**Why that is a defect and not a quibble:** an argument of the form *"`UNKNOWN` already covers ambiguity"* moves silently between the two uses. Under **(b)** it is a claim about a **port disposition**; under **(a)** it is a claim about an **admitted state**. Establishing the first does not establish the second.
+
+**Consequence, stated as the HPA did:** **`UNKNOWN` cannot be used to answer F-CM-1a**, because which of its two uses is meant is exactly what **F-CM-1b** decides. Any F-CM-1a argument resting on `UNKNOWN` assumes F-CM-1b's answer.
+
+#### C-3 · Mapping versus prohibition — the separation §4 under-drew
+
+**F-CM-1a asks for a PROHIBITION**: should §15 record that a collapse is forbidden? **F-CM-1b asks for a MAPPING**: how is plurality represented, and by whom?
+
+§4's option **A-2** (*"⟨C-5⟩ + obligation 3 already cover it"*) is phrased as a **coverage** claim — and **coverage is a mapping claim, not a prohibition claim.** So A-2 could never have been settled inside F-CM-1a: it required a mapping decision that belongs to 1b.
+
+**This strengthens the A-2 falsification rather than weakening it.** §4 falsified A-2 on the narrower ground that ⟨C-5⟩ covers *underdetermination* but not *plural determinacy*. The correction adds a structural ground: **A-2 is category-mismatched to the question it was offered against.**
+
+#### C-4 · Effect on the ruling: none
+
+**The ruling stands unchanged, and is better supported after this correction.** Its own stated reason — that recording *"plurality of determinate readings ≠ contradiction"* would introduce terminology *"whose representation is precisely the subject of F-CM-1b"* — is exactly what C-1 through C-3 demonstrate from law. **A-3 (defer) remains correct; A-2 remains unavailable; A-1 remains undemonstrated.**
+
+#### C-5 · What this correction does NOT contain, and why
+
+The HPA's commission also listed items requiring the **second brainstorming corpus**: an Aug-25 `Interpretation "*" --> "*" Proposition` model · catuṣkoṭi-style challenges to `UNKNOWN`'s precision · a *sub-distinction-of-UNKNOWN* decision option · and "Findings A–E" from a review.
+
+**None of those is included here.** Three reasons, recorded:
+
+1. **The seal.** The HPA's research-sequencing notice (recorded at §7.3) directs that the second corpus **not be requested, inferred, reconstructed or incorporated during adjudication**, and that it enter only at the later falsification phase. Incorporating it now would breach that instruction.
+2. **Provenance.** The artifact cited as *"the review"* was checked. `docs/knowledgeos/brainstorming/kernel/20260824-020611-wave-1-kernel-extent-versus-contents-adjudication-status.md` (58 lines, mtime 02:06) **opens with this session's own prior chat response verbatim** — the same text as the untracked stray `docs/knowledgeos/architecture/Stopped and waiting. Nothing in flight;` (02:05). **It is this session's output round-tripped into the corpus, not an independent review.** Building an evidence correction on it would create a provenance loop in which this session's own text re-enters as external evidence.
+3. **Visibility.** The second corpus is **114 files / 135,682 lines** in `docs/knowledgeos/brainstorming/kernel/` on branch **`election-review`**. **Zero of those files exist in this worktree** (`kos-v11-ddd-refinement`), which is why no prior act of this session has seen or cited them.
+
+**Scope decision reserved to the HPA:** whether to unseal the second corpus for the bounded purpose of correcting F-CM-1a/1b evidence, or to keep it sealed until the falsification phase. **Until that ruling, the corpus-derived items are recorded as pending, not as findings, and the `UNKNOWN` sub-distinction is NOT recorded as a proposed state** — per the HPA's instruction that a new distinction must not become an inevitable new state.
+
+---
 ### 📜 RULING-DERIVED GOVERNANCE PRINCIPLE — the constitutional sufficiency test
 
 The HPA established a principle of programme-wide effect alongside this ruling. Recorded here because it governs the assessment of every remaining item:
