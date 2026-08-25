@@ -407,6 +407,55 @@ The capability mapping declared it unanswerable from law and refused to resolve 
 
 ---
 
+### ⚖️ HPA RULING — F-CM-1a (2026-08-25) · **RULED**
+
+> **RULING: O3 — DEFER / NO NEW §15 ROW AT THIS TIME.**
+>
+> **Rationale (verbatim).** *The existing constitutional model already distinguishes: similarity from identity; contradiction as a state of an identified epistemic object; mechanism-side interpretation/ambiguity handling; mechanism non-determination; and the prohibition on introducing an eighth epistemic state.*
+>
+> *The analysis has not demonstrated that an additional constitutional non-collapse row is necessary to preserve an invariant or prevent an otherwise lawful but materially different architectural interpretation.*
+>
+> *In particular, recording "plurality of determinate readings ≠ contradiction" would risk introducing terminology and semantics whose representation is precisely the subject of F-CM-1b.*
+>
+> *The repeated appearance of AMBIGUOUS in prior brainstorming artifacts is retained as evidence of **interpretation/implementation drift risk**, but is not treated as evidence of a constitutional defect.*
+>
+> ***F-CM-1b remains independently OPEN.***
+>
+> **This ruling does NOT determine:** whether plurality maps to `UNKNOWN` · whether multiple candidates may be admitted separately · whether distinct `KnowledgeId`s may be assigned · where selection occurs · **or which actor establishes semantic distinctness**. *Those questions remain exclusively within F-CM-1b.*
+
+**Effect on the option set.** **A-3 (defer) is taken.** A-1 (record the row) is not taken. **A-2 is not taken either** — and the distinction matters: the ruling does **not** assert that ⟨C-5⟩ + obligation 3 *cover* plural determinacy, which is the ground on which this analysis falsified A-2. It rules instead on **insufficient demonstration of necessity** and on **sequencing** (the terminology belongs to F-CM-1b). The A-2 falsification therefore stands unrebutted and is not contradicted by the ruling.
+
+**Consequences recorded.**
+1. **§15 remains at eleven rows.** No amendment. Register **25+4** unchanged · invariants **11→11** · states **7→7**. The `AMBIGUOUS`-state route is **doubly closed**: no §15 row, and §9/OBS-2's *"No eighth state is introduced."*
+2. **F-CM-1b is OPEN and has been WIDENED by this ruling.** Four of the five reserved questions were already within its scope; **"which actor establishes semantic distinctness" is new** and is recorded as an addition to F-CM-1b's scope.
+3. **C-4 and C-16 remain blocked** behind F-CM-1b. The deferral does not unblock them.
+4. **The `AMBIGUOUS` finding is retained on the record as implementation-drift risk**, with the governing distinction stated by the HPA: **repeated confusion ≠ constitutional gap.**
+5. ⚠️ **Mitigation status of the highest-drift item.** F-CM-1 carries 🔴 HIGH drift risk (an implementation that meets two viable interpretations may compare them, breaching ⟨C-1⟩). Its **constitutional** mitigation is now deferred. The remaining mitigation is **T-2 SEMANTIC-INVARIANCE**, which **depends on C-2 (determinism), which is blocked by C-18** — both unruled. **So at this moment the highest-drift item in the set has no active mitigation.** Recorded as a consequence, not as an objection; it bears directly on C-18 and C-2 when those are reached.
+
+### 📜 RULING-DERIVED GOVERNANCE PRINCIPLE — the constitutional sufficiency test
+
+The HPA established a principle of programme-wide effect alongside this ruling. Recorded here because it governs the assessment of every remaining item:
+
+> **Record a new constitutional distinction only when the existing law is insufficient to prevent materially different architectural interpretations.**
+>
+> **The absence of an explicit distinction in the Constitution does not automatically justify adding one.**
+
+```
+Existing law
+    ↓
+Is the existing invariant sufficient?
+    │
+    ├── YES → clarify elsewhere / defer
+    │
+    └── NO  → constitutional amendment candidate
+```
+
+**Why it matters, in the HPA's own terms:** without it, every interesting distinction discovered by philosophical or epistemological analysis will attempt the escalation **Entity → VO → State → Event → Invariant → Constitutional Article** — *"and that would destroy the smallest possible Kernel objective."* The Constitution must not become a catalogue of every possible semantic confusion.
+
+**Application to the remaining items.** The test now applies to every amendment-class option in the workbook — in Wave 1: **C-15** (R-1/R-2), **C-17** (I-1), **C-18** (V-1), **C-14** (N-2). For each, the burden is **demonstrated insufficiency of existing law**, not the attractiveness of the clarification. *This analysis does not apply the test on the HPA's behalf; it records that the burden now exists.*
+
+---
+
 # 5 · C-18 · CONSTITUTIONAL-VERSION BINDING
 
 ### QUESTION

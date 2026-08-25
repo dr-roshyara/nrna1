@@ -24,6 +24,30 @@ The pack states "21 items" three times and "COMPLETENESS (12)" where the complet
 
 ---
 
+## 0.1 ⚖️ The constitutional sufficiency test *(added 2026-08-25, established by the F-CM-1a ruling)*
+
+> **Record a new constitutional distinction only when the existing law is insufficient to prevent materially different architectural interpretations.**
+>
+> **The absence of an explicit distinction in the Constitution does not automatically justify adding one.**
+
+```
+Existing law
+    ↓
+Is the existing invariant sufficient?
+    │
+    ├── YES → clarify elsewhere / defer
+    │
+    └── NO  → constitutional amendment candidate
+```
+
+**Effect on this workbook.** The burden for **every amendment-class option** is now **demonstrated insufficiency of existing law** — not the usefulness, elegance or intuitive appeal of the clarification. It applies to: **C-15** (R-1/R-2) · **C-17** (I-1) · **C-18** (V-1) · **C-14** (N-2) · **C-2** (new invariant) · **C-3** (contexts 6→7) · **C-11** (member vestigial) · **C-7** (model change) · **C-6** (justification-over-time) · **Wisdom** (V.3) · **F-CM-1b** (if it reaches law).
+
+**Why the HPA established it:** without this test, every distinction surfaced by analysis attempts the escalation **Entity → VO → State → Event → Invariant → Constitutional Article**, and *"that would destroy the smallest possible Kernel objective."* The Constitution must not become a catalogue of every possible semantic confusion.
+
+**A companion distinction, recorded with it:** **repeated confusion ≠ constitutional gap.** That designers repeatedly misread a point is an architectural observation about **interpretation-drift risk**; it is not evidence that law is defective.
+
+---
+
 ## 1 · Altitude classification (A–H)
 
 Per the commission: *never allow a lower-level decision to silently decide a higher-level question.* Items whose altitude is **determined by the answer** are marked with the alternatives — this is not indecision; it is the finding from referent-map §S.5.3.
@@ -712,14 +736,16 @@ The commission's eleven special tests, applied and reported.
 
 ## 7 · HPA DECISION SHEET
 
-**One row per decision. The ruling field is deliberately EMPTY. This workbook does not decide.**
+**One row per decision. The ruling field was deliberately EMPTY when this workbook was delivered; this workbook does not decide.**
+
+> ⚖️ **Rulings received are entered as they arrive. 1 of 24 filled** (F-CM-1a, HPA 2026-08-25). All others remain open.
 
 | ID | Decision | Altitude | Options | Consequence (headline) | Amendment? | Dependency | **HPA RULING** |
 |---|---|---|---|---|---|---|---|
 | **Wisdom** | Wisdom as a core concept? | A (V.3) | status quo / open a V.3 act | inaction is safe | only if opened | none | |
 | **C-15** | retraction representation? | A | state / event / revise-existing / reject | states 7→8 or events 10→11 | yes (O1/O2) | none | |
 | **C-17** | internally impossible claim? | A | state / port route / reject / record | drift is **invisible** | yes (O1) | none | |
-| **F-CM-1a** | record *Ambiguity ≠ Contradiction*? | A | §15 row / ⟨C-5⟩ suffices / defer | gates F-CM-1b | yes (O1) | none | |
+| **F-CM-1a** | record *Ambiguity ≠ Contradiction*? | A | §15 row / ⟨C-5⟩ suffices / defer | gates F-CM-1b | yes (O1) | none | **⚖️ RULED 2026-08-25 — O3 DEFER / NO NEW §15 ROW.** Necessity not demonstrated; the terminology belongs to F-CM-1b. `AMBIGUOUS` retained as implementation-drift risk, **not** a constitutional defect. F-CM-1b **OPEN and widened** ("which actor establishes semantic distinctness"). §15 stays at **11 rows**. |
 | **C-18** | bind the constitutional version? | A→C | member / EvidenceLink / History / outside / reject | unblocks **C-2** | yes (O1) | none | |
 | **C-14** | reclassify not-assessed? | A or F | confirm F / reclassify A / ⟨C-5⟩ suffices | realization would implement the collapse | yes (O2) | **C-11** | |
 | **C-3** | who checks authority **adequacy**? | B or A | capability / 7th context / reject / port | 🔴 half-strength invariant | yes (O2) | none | |
