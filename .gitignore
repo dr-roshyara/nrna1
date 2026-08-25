@@ -34,3 +34,16 @@ storage/framework/
 # Python (scripts/snf-research research runner)
 __pycache__/
 *.pyc
+
+# ── Generated chat-output strays (repository-integrity guard) ────────────────
+# Something outside git writes assistant chat text into the repo as files.
+# Two occurred on 2026-08-24; one was wrongly committed (see b7e5118c and
+# .claude/sessions/2026-08-24.md). This guard is DELIBERATELY NARROW: it
+# matches only filename shapes that no legitimate document uses — verified
+# 0 hits against every tracked file under docs/. It does NOT match
+# extensionless files, because legitimate ones exist (e.g. docs/implementation/PKS_ADR).
+#
+# THIS DOES NOT FIX THE CAUSE. The writer should be corrected at source;
+# this only stops the known class being swept into a commit by accident.
+docs/**/*;*
+docs/**/*\*\**
