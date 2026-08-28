@@ -72,3 +72,99 @@ Three consequences worth keeping visible:
 **TRACKS INVOLVED** — research/extraction → adjudication (topology, not content).
 
 **STATUS** — recorded. Not routed by me. `W:C-7`, `W:C-14` and `W:C-15` remain three separate open items in every register I can see, and I have not merged them.
+
+---
+
+## X-004 · This session's own standing hypothesis may descend from the corpus it tests
+
+**SOURCE** — the standing instruction's §17: *"KnowledgeOS may be better understood as a system that **preserves and reconstructs** epistemic states than as a system that stores a primitive called 'Knowledge'. Do not adopt this as truth. **Test it against every new artifact.**"*
+
+**OBSERVATION** — `S1-F013` Finding 4 records the corpus stating, on **2026-08-23**, that *"KnowledgeOS may not fundamentally be a 'knowledge storage system' or even a 'knowledge transformation system.' It may be a **constitutional system for preserving**…"*
+
+That is the standing hypothesis, dated inside the research record, before it reached me as a test instrument.
+
+**WHY IT MATTERS** — I have recorded *"strengthens the hypothesis"* in five per-artifact reviews (`S2-F024`, `S2-R-F010`, `S2-R-F011`, `S2-R-F012`, and considered it here). If the hypothesis **descends** from corpus material like Finding 4, then every one of those confirmations is **framing inheritance** — mechanism 3 of `S2-F005` — and not evidence.
+
+The circularity is exact: a hypothesis extracted from the corpus, handed back as a lens, then confirmed by the corpus. This is the failure I charged Session 1 with in `S2-F001`, `S2-F005`, `S2-F015`, `S2-F019` and `S2-R-F012.4`. **It applies to me.**
+
+⚠ **What I cannot establish.** I do not know whether §17 was formulated from this material, independently, or from elsewhere — and inferring descent from similarity would repeat `S2-R-F012.1`'s error. So this is a **question about my own instrument**, not a proven defect.
+
+**CONSEQUENCE, adopted immediately.** From `S2-R-F013` onward, §17 hypothesis-tests are recorded as **CONSISTENT / INCONSISTENT**, never as *strengthens* or *support*, until the hypothesis's provenance is declared. The five prior entries are **not rewritten** — they stand with this observation attached, per `ES-004.3`.
+
+**TRACKS INVOLVED** — instruction/framing → review. A new direction: `X-002` was adjudication leaking into research; `X-003` research reshaping adjudication topology; **`X-004` is the reviewer's own lens leaking in from the material under review.**
+
+**STATUS** — recorded. One question would settle it: **what is §17's provenance?**
+
+---
+
+## X-005 · A third sense of "Zero lens" — and this session has been using it
+
+**SOURCE** — `S1-F024`'s second-pass depth audit records **two incompatible definitions** of the Zero lens inside the corpus, 90 minutes apart, neither citing the other:
+
+| Document | Definition |
+|---|---|
+| `20260824-152415` (`S1-F034`) | *"remove prior structure; ask what can be recovered from the source alone"* — **subtractive / structural** |
+| `20260824-154254` | *"what statistically persists after explaining away non-knowledge"* — **statistical residual** |
+
+**OBSERVATION** — the Zero lens I have applied in **every review in this register** is neither. Mine, supplied by the standing instructions, is an **absence typology**: *not mentioned ≠ absent · absent from enumeration ≠ excluded · not represented ≠ zero · unknown ≠ false*, with the classes *zero · absence · unrepresented · unknown · not applicable · excluded · not tested*.
+
+Subtractive-structural, statistical-residual, and absence-typology are **three different operations under one name.**
+
+**WHY IT MATTERS** — `S2-F002`, `S2-R-F001`, `S2-R-F010`, `S2-R-F013`, `S2-R-F020` and others record *"Zero-lens assessment"* sections. A reader who takes "Zero lens" to mean either corpus sense will misread every one of them. The instrument name is doing what `S1-F002` says `Rule` does: carrying several senses without declaring which.
+
+⚠ **What this does not do.** It does not invalidate any finding. The absence typology is well-specified in my instructions and I have applied it consistently; the defect is **naming**, not reasoning. Nor does it establish descent in either direction — I do not know the instruction's provenance, and inferring it from similarity would repeat `S2-R-F012.1`.
+
+**CONSEQUENCE, adopted immediately.** From here on, Session-2 reviews say **"Zero-lens assessment (absence typology)"** so the sense is declared at the point of use. Prior sections are **not rewritten** — they stand with this observation attached (`ES-004.3`).
+
+**TRACKS INVOLVED** — instrument naming, across research and review. Companion to `X-004`: that one questioned the *provenance* of my standing hypothesis; this one questions the *identity* of my standing lens.
+
+**UPDATE · `S2-R-F034.2`** — `S1-F034` supplies the definition's **date**: 2026-08-24 15:24, while the lens had been in continuous use since 2026-08-23. So the full picture is worse than three senses:
+
+1. **Used undefined for ~17 hours** — `S1-F013`, `S1-F016`, `S1-F021` all reached Zero-derived conclusions before any definition existed;
+2. **then defined twice incompatibly within 90 minutes** — subtractive-structural (`152415`) and statistical-residual (`154254`), neither citing the other;
+3. **and this session applies a third sense** (absence typology).
+
+Session 1 records (1) as a **provenance caveat, not invalidation**, and I concur — an instrument can be used correctly before it is written down. But the combination means *"the Zero lens shows…"* is not a single claim anywhere in this corpus.
+
+**STATUS** — recorded. Two questions would settle it: what is the instruction's Zero-lens provenance, and which corpus definition (if either) governs `S1-F034`.
+
+---
+
+## X-006 · The adjudication track leaked into the research corpus, and the research track extracted it back
+
+**SOURCE** — `S1-F028`, reviewing `brainstorming/kernel/20260824-020611-wave-1-kernel-extent-versus-contents-adjudication-status.md`.
+
+**OBSERVATION** — a file in the **research corpus** contains **adjudication-track output produced earlier in this conversation** — extent/contents, the K-1 structure, the Wave-1 item set, wave sequencing, amendment-pressure ordering — saved as a document. Session 1 extracted it as a corpus finding. Had I consumed that finding, the circuit would have closed:
+
+```
+adjudication track  →  saved as a file in brainstorming/kernel/
+                          ↓
+                    Session 1 extracts it as a corpus finding
+                          ↓
+                    Session 2 reviews it as research evidence
+                          ↓
+              my own prior output returns to me as corroboration
+```
+
+**WHY IT MATTERS** — this is the most complete instance of the failure the whole two-session design exists to prevent, and every guard in the register bears on it: `S2-F001` (a report *about* X is not evidence *of* X) · `S2-F005` (undeclared descent) · `X-002` (scope exclusions porous to secondary citation) · `X-004` (my hypothesis may descend from the material) · `S2-R-F027.2` (no high-value claim without an identifiable bridge). Here they converge on one file.
+
+⚠ **The distinction it carries may well be sound.** *Extent vs contents* is genuinely clarifying, and Session 1's re-reading of the eight formulations through it may be correct. **Soundness is not the issue** — provenance is. A correct distinction reached by a laundered route is still laundered, and the standing rule is unconditional: *a model's own previous reasoning cannot become independent evidence merely because it has been saved as a document.*
+
+**CONSEQUENCE, adopted** — recorded in `S2-R-F028 §3`: the material is not corpus evidence; the distinction is not a corpus arrival; Session 1's reframing built on it is descent confined to that one artifact; and I have **refused** to use it to strengthen `S2-R-F016`, `S2-R-F019.5` or `S2-R-F020.1`, each of which it would have strengthened.
+
+**TRACKS INVOLVED** — adjudication → research corpus → extraction → review. `X-002` was adjudication leaking *into* research by citation; `X-003` was research reshaping adjudication *topology*; **`X-006` is a full round trip.**
+
+**STATUS** — recorded and contained. Two questions remain: how many other `kernel/` files are saved chat output, and whether any of `S1-F029`–`S1-F040` descends from the same source. The second is now a standing check for the remainder of this review.
+
+### X-006 · ADDENDUM — adopting *extent / contents / surrounding law* as an instrument
+
+The HPA has directed that reviews classify every architectural question as **A** changes Kernel **extent** · **B** changes Kernel **contents** · **C** repairs **surrounding architecture/law** · **D** is **knowledge only**. ⚠ Session 2 adds **E** — **constitutional**, above all three (`S2-R-F031`).
+
+That vocabulary is the same one `X-006` disqualified. The distinction that makes adoption legitimate:
+
+| Use | Status |
+|---|---|
+| As **evidence** — *"the corpus independently arrived at extent/contents, therefore my finding is corroborated"* | **REFUSED.** This is the laundering circuit `X-006` describes |
+| As an **instrument** — a classification scheme supplied by the HPA, like the ten lenses and the implementation vocabulary | **ADOPTED**, with provenance declared here |
+
+Instruments come from the HPA; evidence comes from the corpus. This register has never treated an instruction as evidence, and does not begin now: no A/B/C/D/E classification will be cited as corroboration of anything, and `S2-R-F016`, `S2-R-F019.5` and `S2-R-F020.1` remain unstrengthened.
