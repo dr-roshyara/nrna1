@@ -1,7 +1,7 @@
 # KOS-CONTRACT-NEUTRALITY-001 — **Semantic Contract Clarification Proposal**
 
 **Status: 🟡 PROPOSAL ONLY. It decides nothing. Decisions 13.3 and 13.5 remain the PO/ARB's.**
-**Assignment:** `S4b-architecture-semantic-clarification` (seq 23 REGISTER · 24 HANDOFF · 25 START) · **Grant:** `G-KOS-CONTRACT-SEMANTIC-CLARIFY`
+**Assignment:** `S4b-architecture-semantic-clarification` (seq 23 REGISTER · 24 HANDOFF · 25 START) · **Grants:** `G-KOS-CONTRACT-SEMANTIC-CLARIFY` · `G-KOS-CONTRACT-SEMANTIC-CLARIFY-AMD1` *(evidence completeness — the unaliased qualified name kind, §2.9)* · `G-KOS-CONTRACT-SEMANTIC-CLARIFY-AMD2` *(containment: an evidence amendment may add a measurement and a row; it may not re-argue a conclusion)*
 **Date:** 2026-08-18 · **Role:** Architecture (drafting) · **Next actor:** PO/ARB — decide **13.3** and **13.5**
 **Placement derived, not chosen:** `php scripts/doc-placement.php --scope=product-specific --maturity=research --domain=publicdigit` → `docs/publicdigit` (exit 0); the `reviews/` folder holds this work item's sibling artifacts.
 
@@ -74,6 +74,7 @@ LCOM4 = 3  ⟺  the edge a–b DOES NOT EXIST
 | **`N05`** | **`namespace\Fq::b()`** — relative, no namespace declared | ⚠️ **ambiguous** | ✅ | ⛔ | 🔴 **NEW-5b** |
 | **`N10`** | **`namespace\Fq::b()`** inside `namespace App` | ⚠️ **ambiguous** | ✅ | ⛔ | 🔴 **NEW-5b** |
 | `N09` | `\App\Fq::b()` inside `namespace App` — **the own class, fully qualified** | *"namespaced spellings are not resolved"* | ⛔ | ⛔ | agree |
+| **`N13`** | **`Sub\Fq::b()` inside `namespace App` — QUALIFIED: no leading `\`, ≥2 segments, NO `use`-alias** *(added by AMD1 — the kind absent from `N01`–`N12`; §2.9)* | *"namespaced spellings are not resolved"* | ⛔ | ⛔ | agree — ⚠️ **but by DIFFERENT extracted text on each side (§2.9)** |
 | `N07` | `Ali::b()` after `use App\Fq as Ali` | *"aliased spellings are not resolved"* | ⛔ | ⛔ | agree |
 | `N11` | `\Vendor\Fq::b()` — a different class | not own class | ⛔ | ⛔ | agree |
 | `N12` | `parent::b()` | EXCLUDED AS OUT OF FRAME | ⛔ | ⛔ | agree |
@@ -203,6 +204,62 @@ dynamic / computed    EXCLUDE — not determinable
 
 **And the second half of the mapping is the more consequential one:** `R-3` (STRATIFIED) **has no counterpart in the evaluation because it could not have.** The evaluation was written **before** `13.1` decided that contract neutrality is `L3 → L5`. **`R-3` is the reading that only becomes available once the neutrality boundary is fixed at the fact model** — the contract rules per *qualifier kind*, and the binding's obligation is to *report* the kind rather than to *resolve* it. ⇒ **The option space did not merely get re-labelled between the two documents; `13.1` created a new option.** That is an argument for reading `R-1`/`R-2`/`R-3` as the current option set and treating `R1`–`R4` as superseded.
 
+### 2.9 · **AMD1 — the missing QUALIFIED name kind** `Sub\Fq::b()` *(added 2026-08-18 under `G-KOS-CONTRACT-SEMANTIC-CLARIFY-AMD1`; evidence completeness only)*
+
+**Why this exists:** `N01`–`N12` measured unqualified, `self`/`static`, `parent`, case-variant, fully-qualified, relative, aliased and other-class forms. **They did not measure the UNALIASED QUALIFIED kind** — *no leading backslash · two or more segments · not introduced through a `use`-alias.* ⛔ **AMD1 adds that one measurement and one row. It re-opens no existing probe, changes no candidate rule, and decides nothing.**
+
+#### The probe — one file, one class, one call *(held as throwaway scratch input, NOT added to the repository, as with `N01`–`N12`)*
+
+```php
+<?php
+namespace App;
+class Fq {
+    public function a(): void { Sub\Fq::b(); }   // QUALIFIED, unaliased
+    public static function b(): void {}
+}
+```
+
+**Why it is capable of failing, and how that was demonstrated rather than asserted:** the two methods are connected **only** if the call is read as an own-class reference. **LCOM4 = 1 means "edge"; LCOM4 = 2 means "no edge" — a one-bit read.** ✅ **Sensitivity was verified with a control arm in the identical file shape, changing only the qualifier** (`Fq::b()`): **both implementations returned LCOM4 = 1.** So the shape does produce an edge when the reference is an own-class one — **the `N13` result is a real measurement, not an artefact of a probe that cannot fire.** *(The control arm is the same probe's own sensitivity check; it introduces no new construct and does not re-open `N01`.)*
+
+#### Measurement — **`Observed`**
+
+| Arm | Construct | PHP `Lcom4Collector` | Python `lcom4_collector` | Verdict |
+|---|---|:---:|:---:|---|
+| **`N13`** | `Sub\Fq::b()` — qualified, unaliased | **LCOM4 = 2** → ⛔ no edge | **LCOM4 = 2** → ⛔ no edge | **AGREE — no edge** |
+| **`N13-c`** control | `Fq::b()` — unqualified own name, same file shape | **LCOM4 = 1** → ✅ edge | **LCOM4 = 1** → ✅ edge | agree — probe is sensitive |
+
+**Both collectors were run read-only; `OBS_DIR` was redirected to scratch and the repository's `engineering/verification/observations/lcom4.jsonl` is byte-unchanged.**
+
+> ### ⭐ **`Observed`, and it is a NEW instance of `O-2` / §5 `C-2`: the two sides agree on the VERDICT while extracting DIFFERENT qualifier text.**
+> **PHP** — `Sub\Fq` is a qualified `Node\Name`; `toString()` yields **`"Sub\Fq"`**, which never equals a short own name (`Lcom4Collector::namesThisClass`).
+> **Python** — `STATIC_CALL_RE`'s qualifier class is `[A-Za-z_\\]\w*` and `\w` excludes `\`, so the match begins at the backslash and the captured qualifier is **`"\Fq"`** — the last segment carrying a prefix that was never written that way.
+> ⛔ **Same answer, different fact.** **Agreement here is therefore not evidence of conformance — exactly what `C-2` states, now with a second constructive instance.**
+
+#### The five kinds, explicitly distinguished *(the AMD1 row is #2; #1, #3, #4, #5 are the measurements already recorded in §2.1 — cited, not re-opened)*
+
+| # | Qualifier kind | Written form | Resolves (PHP language rule) to | PHP | Python | Recorded in |
+|---|---|---|---|:---:|:---:|---|
+| **1** | **unqualified** | `Fq::b()` | the own class | ✅ | ✅ | `N01` |
+| **2** | ⭐ **qualified (unaliased)** | `Sub\Fq::b()` | `App\Sub\Fq` — **a different class** | ⛔ | ⛔ | **`N13` (AMD1)** |
+| **3** | **fully-qualified** | `\Fq::b()` · `\App\Fq::b()` | the global-namespace class · the own class | ✅ / ⛔ | ⛔ / ⛔ | `N04` / `N09` |
+| **4** | **relative** | `namespace\Fq::b()` | the current namespace's `Fq` — **the own class** | ✅ | ⛔ | `N05`, `N10` |
+| **5** | **aliased** | `Ali::b()` after `use App\Fq as Ali` | the own class | ⛔ | ⛔ | `N07` |
+
+#### Semantic interpretation — **`Proposed`**
+
+> ### **A qualified, unaliased name CANNOT denote the analysed unit — structurally, in every PHP program.**
+> A qualified name resolves to `<current-namespace>\<written segments>`. The analysed unit's own FQN is `<current-namespace>\<ShortName>` — **exactly one segment beyond the current namespace.** A name with two or more written segments therefore resolves *deeper* than the unit it is written inside, so it can never name that unit. ⇒ **`qualified → EXCLUDE — NOT THE OWN CLASS.`**
+>
+> ⚠️ **The bucket matters as much as the verdict, and this is the part the ruling must state:** the exclusion is **"not the own class"**, ⛔ **NOT "not determinable"** and ⛔ **not a declared limitation.** The target is fully determined from file-local text. **Putting it in the `NOT DETERMINABLE` bucket would repeat exactly the corruption §2.5 objects to in `R-2`** — using a bucket defined as *"a real dependency may exist but the target cannot be determined"* for a case that is determinable.
+>
+> ✅ **Consequence for the option space, stated so the PO/ARB is not left to infer it:** **`R-1`, `R-2` and `R-3` all give the SAME verdict on this kind** — identity cannot match a different class, spelling cannot match, and the stratified table excludes it as other-class. ⛔ **So kind #2 is NOT a second `NEW-5`: it needs no choice among the rules, only an explicit row.** ⚠️ **One boundary, recorded to keep the claim exact:** if the leading segment is a `use`-imported namespace (`use App\Sub;` inside `namespace App\Sub`, then `Sub\Fq::b()`), the name *can* reach the own class — **but that is the ALIASED kind (#5, `13.3-c`), not this one**, and AMD1's probe characteristics exclude it by construction.
+
+#### `L3` fact-model implication
+
+**No new schema obligation. One existing row's enumeration is INCOMPLETE:** §4's ⭐ **QUALIFIER KIND** row must enumerate **`qualified`** as a value distinct from `fully-qualified` and `relative` — the three resolve by three different language rules, and **the current extractions each collapse them differently *and differently from each other*** (`"Sub\Fq"` vs `"\Fq"`, above). ⛔ **Without the kind carried as a fact, a binding can return the right verdict for the wrong reason** — which `C-2` already bars from counting as conformance evidence. **`N13` is the case that proves the distinction is needed even where the two implementations agree.**
+
+⛔ **AMD1 adds no rule, no decision and no recommendation beyond the marking of this one kind. `R-1`/`R-2`/`R-3`, §3's silences, §5's conformance findings and §6's open choices are untouched.**
+
 ---
 
 ## 3 · The four contract silences (Decision 13.5)
@@ -230,7 +287,7 @@ dynamic / computed    EXCLUDE — not determinable
 | **unit IDENTITY, unique within the analysed scope** | `G-1` | ⛔ **No** — PHP's `(anonymous)` collides; Python fabricates keyword names |
 | **method IDENTITY** — name + declaring unit, in the **language's** identifier charset | `NEW-9`; every edge rule | ⛔ **No** — Python's `[A-Za-z_]` anchor drops legal identifiers |
 | **call TARGET** — the referenced method name | every edge rule | ✅ Yes |
-| ⭐ **QUALIFIER KIND** — unqualified · self · static · parent · fully-qualified · relative · aliased · other · dynamic | **`NEW-5` / `NEW-5b` — `R-3` is undecidable without it; `R-1` needs the resolved name too** | ⛔ **No — and this is the root of `NEW-5`.** `Name::toString()` erases it before any contract logic runs (§2.2) |
+| ⭐ **QUALIFIER KIND** — unqualified · self · static · parent · **qualified** *(⭐ added by AMD1, §2.9 — distinct from the two below)* · fully-qualified · relative · aliased · other · dynamic | **`NEW-5` / `NEW-5b` — `R-3` is undecidable without it; `R-1` needs the resolved name too.** ⭐ **AMD1: `qualified` must be carried too — the three namespaced kinds resolve by three different language rules** | ⛔ **No — and this is the root of `NEW-5`.** `Name::toString()` erases it before any contract logic runs (§2.2). ⭐ **AMD1: and the two extractions collapse `qualified` DIFFERENTLY from each other (`"Sub\Fq"` vs `"\Fq"`, §2.9) while agreeing on the verdict** |
 | **CALLABLE vs INVOCATION** | `first_class_callables`, `G-4` | ⚠️ **Implicitly** — both detect it, neither represents it as a fact |
 | **ACCESS MODE** — plain vs nullsafe | `G-2` | ⛔ **No** — both lose `?->` at extraction |
 | **DETERMINABILITY** — determinable · out-of-frame · not-determinable | the contract's own rule that these *"MUST NOT be merged"* | ⚠️ **Partly** — the distinction exists in both **implementations' control flow** but is **not carried as a fact**, so it cannot be evidenced at the boundary |
@@ -267,7 +324,7 @@ dynamic / computed    EXCLUDE — not determinable
 | Decision | Proposal *(PROPOSED — not decided)* | Evidence | Open question the PO/ARB must close | PO/ARB act required |
 |---|---|---|---|---|
 | **13.3-a · precedence** | **Stratify** — clause (a) governs *what an edge means*; the qualifier-kind table governs *what the binding must report*. The clauses stop colliding rather than one defeating the other | §2.4; `13.1` fixes the boundary that makes stratification available | Does **(a)** govern, does **(b)** govern, or are they **stratified**? | **Rule one of three.** No default applies |
-| **13.3-b · `NEW-5` / `NEW-5b` rule** | **`R-3`**, with **fully-qualified → INCLUDE** and **relative → INCLUDE** | `N04` ✅/⛔, `N05`+`N10` ✅/⛔ (`Observed`, one-bit edge read); `R3` of `d2859e91` **eliminated** (§2.8) | Which rule — `R-1`, `R-2`, `R-3`? If `R-3`, the verdict for **fully-qualified** and **relative** | **Name the rule; if `R-3`, fill the two `?` rows** |
+| **13.3-b · `NEW-5` / `NEW-5b` rule** | **`R-3`**, with **fully-qualified → INCLUDE** and **relative → INCLUDE** | `N04` ✅/⛔, `N05`+`N10` ✅/⛔ (`Observed`, one-bit edge read); `R3` of `d2859e91` **eliminated** (§2.8) | Which rule — `R-1`, `R-2`, `R-3`? If `R-3`, the verdict for **fully-qualified** and **relative** | **Name the rule; if `R-3`, fill the two `?` rows.** ⭐ **AMD1 (§2.9): the kind table also carries a `qualified` row — and `R-1`/`R-2`/`R-3` all verdict it `EXCLUDE — not own class`, so it is a row to STATE explicitly (in the *not-own-class* bucket, never *not-determinable*), not a choice to make** |
 | **13.3-c · `aliased`** | **Hold at `EXCLUDE`, restated as a LIMITATION** rather than left as a silent exclusion | `N07` — both implementations agree, **by unrelated accidents** (§5 `C-2`) | Does `aliased` move with fully-qualified, or stay excluded? | **Rule separately** — the evidence shows it is a different case with a different cost |
 | **13.3-d · status of the ruling** | **DECISION** for each filled `R-3` row; **LIMITATION** for `aliased` | §2.6 | Is the ruling a **DECISION** or a **LIMITATION**? | **State it explicitly.** ⛔ May not be left implicit — *"a silent limitation is indistinguishable from a defect"* |
 | **13.5-a · `G-1` anonymous classes** | Mark **DECIDED**: an anonymous class **IS** an analysed unit, **and** the contract must require a **stable unique designation** | `I6` (Python omits) · `I4`/`I5` (Python fabricates `implements`/`extends`) · `N5` (**PHP emits two rows both named `(anonymous)`**) | Unit or not — **and** what identity keys it? | **Two rulings in one act.** ⛔ Neither current behaviour is adoptable |
@@ -282,7 +339,7 @@ dynamic / computed    EXCLUDE — not determinable
 | # | Ruling | Minimum content | Gate |
 |---|---|---|---|
 | **1** | **Which clause GOVERNS** when behavioural-dependency (a) and spelling (b) collide | one of: (a) governs · (b) governs · they are stratified per `13.1` | **13.3** |
-| **2** | **The `NEW-5` / `NEW-5b` rule** | `R-1` · `R-2` · `R-3` — and if `R-3`, the verdict for **fully-qualified** and **relative** (and whether **aliased** moves) | **13.3** |
+| **2** | **The `NEW-5` / `NEW-5b` rule** | `R-1` · `R-2` · `R-3` — and if `R-3`, the verdict for **fully-qualified** and **relative** (and whether **aliased** moves), ⭐ **plus the `qualified` row AMD1 added: `EXCLUDE — not own class`, in that bucket and not the not-determinable one (§2.9)** | **13.3** |
 | **3** | **The ruling's STATUS** | **LIMITATION** or **DECISION**, stated explicitly (§2.6) | **13.3** |
 | **4** | **The four silences** | `G-1` anonymous classes *(unit? + identity rule)* · `G-2` nullsafe · `G-3` enum / interface / trait, **ruled separately** · `G-4` confirm `DECIDED (existing text)` | **13.5** |
 | **5** | **The `L3` fact-model obligations** | which of §4's rows the contract **requires** a binding to supply — this is the schema the parsing architecture will be selected against | follows 13.3 + 13.5 |
@@ -296,5 +353,10 @@ dynamic / computed    EXCLUDE — not determinable
 ---
 
 **PROPOSAL DELIVERED · STOPPING.** ⛔ **Nothing decided. No parsing architecture selected or evaluated. No collector, contract, fixture or expectation modified. No implementation authorized. This lane does not complete itself.**
+
+> ## **AMD1 completed; no semantic decision made.** *(2026-08-18, under `G-KOS-CONTRACT-SEMANTIC-CLARIFY-AMD1`, within `AMD2` containment)*
+> **Added:** the `N13` probe and its control arm (§2.9), the `N13` row in §2.1, the `qualified` value in §4's QUALIFIER KIND row, and the `qualified`-row clauses in §6.0 `13.3-b` and ruling 2. **Measurement marked `Observed`; interpretation marked `Proposed`.**
+> ⛔ **Not done:** no further discovery round · no unrelated construct · no existing probe re-opened · `R-1`/`R-2`/`R-3` unchanged · `NEW-5` not decided · `13.5` not decided · no parsing architecture selected · contract, both collectors, fixtures and `expected.json` unmodified · no assignment and no grant created · **not self-verified, not self-accepted, not self-closed.**
+> **Next actor: PO/ARB — `13.3`, `13.5`, then parsing-architecture selection.**
 
 **Traceability:** grant `G-KOS-CONTRACT-SEMANTIC-CLARIFY` · assignment `S4b-architecture-semantic-clarification` (seq 23–25) · Decisions `13.1`/`13.7` and `1`/`2`/`3` registrations · parsing-architecture evaluation `d2859e91` (the `L1–L5` stratification, the twelve-divergence root-layer table, `G-1`…`G-4`) · breadth report `17e4f066` (`NEW-5`, `O-2`, the four silences) · contract `scripts/observations/examples/lcom4/expected.json` (clauses `intra_class_calls`, `own_class_name_resolution`, `first_class_callables`, `trait_methods`) · `Lcom4Collector.php` `namesThisClass` :113–125 · `lcom4_collector.py` `analyse_method` :163–193 · **18 new discriminating probes** (`N01`–`N12`, `G2a`–`G2c`, `G4a`–`G4c`) held as throwaway scratch input, not added to the repository.

@@ -128,3 +128,90 @@ Architecture proposal → Principal Architect recommendation → PO/ARB decision
 **STOP.** **Next actor: 🔵 the human PO/ARB — the decision act.** ⚠️ **Not routed to the ADR's producer.**
 
 **Amendment traceability:** the PO/ARB clarifying act 2026-08-19 *(recommendation ≠ decision; the four-stage chain; `History ≠ Reconstruction Guess`; the separation-working observation)* · `ADR-AIP-01` *(ARB as declared decision authority)* · `Phase-02-Domain-Model.md` §7 *(the ARB-only allocations)* · `ES-005.4` · the ADR `67a8e75e` · `R-34`/`P-2` · `G-1`.
+
+---
+---
+
+# APPENDED 2026-08-19 — **the DECISION ACT registered** *(second act on this slot)*
+
+**Registered by:** Governance — `claude-code-session:b64828fe` *(self-declared, not attestable). **Distinct from the ADR's producer `5e1dd9ee`,** and therefore eligible to review the ADR — but **not** to decide it.*
+**Appended to this surface deliberately: one registration surface per work item, additive. Nothing above rewritten.**
+
+> ## ⛔ **`KOS-AIP-GOV-STATE-DURABILITY-DECISION.md` was NOT produced. Decisions 1 and 2 carry no selection.**
+> ✅ **One selection IS delivered and is registered as DECIDED — placement governance (§C below).**
+
+## A · Why Governance did not supply the missing selections
+
+**The act assigns the PO/ARB role to a process.** ⛔ **Declined — and the ground is mechanical, not stylistic:**
+
+> **The workflow engine refuses any grant without a `humanActRef`, in these words: *"a grant registers a recorded human act by reference — the record never manufactures authority (`G-2`/`R5b`)."***
+
+⇒ **If one process both decides and registers, the `humanActRef` points at its own output.** The precondition exists to prevent exactly that. **A second, independent ground stands unchanged from §1 above: decision authority is reserved to the human PO/ARB.**
+
+⭐ **And the act itself confirms the reviewer's standing: *"The review is advisory only. It does not decide."*** **Registered as accepted** — the recommendations at §D are advisory, and are recorded as such.
+
+## B · Decisions 1 and 2 — **NOT SELECTED**
+
+| | Delivered as | Registered |
+|---|---|---|
+| **D1 · durability model** | *"Choose one … Record: Selected option:"* — **blank** | 🟡 **NOT SELECTED.** The **position** already registered at §3 stands: `Option B′` *"architecturally strongest"*, `A` rejected as target, `C` rejected as final model. ⚠️ **Position, not decision** — *"I would select"* remains conditional |
+| **D2 · `R-CONFLICT`** | *"Choose: ADOPT / REJECT / DEFER"* — **blank** | 🟡 **NOT SELECTED**, and unchanged from §3: the invariant is restated in strengthened form and **no adoption is recorded** |
+
+⛔ **Governance does not choose between "the act contains the decision" and "the act is a position."** That ambiguity was identified at §2 and **is not resolved by a second act that again leaves the field blank.**
+
+## C · ✅ Placement governance — **DECIDED**, and the only selection in this act
+
+**Delivered as an instruction rather than a blank, and therefore registered as decided:**
+
+> **"Record interpretation only. Do not create a new placement rule. Existing placement governance applies."**
+> **Interpretation to record, verbatim as supplied: *"ADR placement continues under existing placement governance."***
+> **And if it is ever found insufficient: *"Create a separate governance work item. Do not solve it inside this decision."***
+
+⭐ **This selects Option A of the earlier act's Decision 3, and Governance's canonical discovery independently corroborates it** — run, not assumed:
+
+| Check | Result |
+|---|---|
+| an existing placement authority exists | ✅ `ADR_20260801_1740_ Documentation Roots and Artifact Placement.md` |
+| the config already rules on cross-product scope | ✅ `documentation-placement.yaml` — `cross-product-qualified`, `cross-product-research` |
+| ⭐ **`ADR:OQ-2` status** | ✅ **already referenced inside that config (line 31)** ⇒ **a known open question already owned by the placement ADR, NOT a fresh governance gap** |
+| the resolver answers for a platform-governance ADR | ✅ `--scope=cross-product --maturity=adopted` → `engineering`, **exit 0** *(exit 2 is the unruled signal; it did not fire)* |
+
+⇒ **Creating a new placement rule would have created a second where one exists (`ES-005.4`). The act's instruction not to create one is correct on the evidence.**
+
+## D · Governance's advisory recommendations — **ADVISORY ONLY, they decide nothing**
+
+*Recorded because the act invites a recommendation and marks it advisory. Supplied by a process that did NOT author the ADR.*
+
+| | Recommendation | Load-bearing ground |
+|---|---|---|
+| **D1** | **`Option B′`** | ⭐ **First-hand evidence against `C`, not argument:** commit **`de998173`** (2026-08-19) committed the **narrative** lineage — sixteen review documents — while **all 28 grants and 33 transitions remained outside git**, `.claude/runtime/` being gitignored at `.gitignore:25` and `:32`. **The documents survived; the record they register against did not.** That is `C`'s failure mode, dated and reproducible, and it is exactly what the ADR's own principle forbids — ***"An aggregate cannot depend on accidental reconstruction."*** **`B` vs `B′`:** `B` leaves runtime as the *origin* of authority and durability a derived copy; **`B′` holds that the authority record was never runtime's to export.** |
+| **D2** | **`ADOPT`** | ⭐ **It codifies practice the estate already follows, which is the strongest kind of invariant.** Four instances, all on this work item: `S5`'s `HANDED_OFF` **clarified, never "fixed"** (no transition appended) · `CORRECTION 1` and its `ERRATUM` **both retained**, the false one not deleted · **Act A** retained historical while its proposition was superseded · **`ca6039a8`** findings intact, only assurance refused. ⚠️ **And adoption is the legitimate promotion path — an explicit act, not accretion** (`ES-006.1`), which is why Governance recorded these four as *evidence* and declined to promote them itself |
+
+## E · DDD consistency check — confirmed as constraints, not decided
+
+| Must hold | Status |
+|---|---|
+| **Runtime Context** owns execution mechanics | ✅ registered as a constraint on any option |
+| **Governance Evidence Context** owns authoritative history | ✅ registered |
+| ⛔ avoid **Execution = Authority** | ✅ this is precisely why `A` is rejected as target |
+| ⛔ avoid **Reconstruction = Source of truth** | ✅ this is precisely why `C` is rejected as final model |
+
+⚠️ **Confirming that the options *preserve* these boundaries is not selecting among them.**
+
+## F · Non-decisions
+
+⛔ **C-10 existence · `D2` status · C-10 category (`D6`) · C-10 ownership (`D7`) · Correction #3 verification · implementation details** — none touched.
+⛔ **No implementation planning.** The act's own rule is registered: *"Implementation planning occurs only after adoption."* **Adoption has not occurred for D1 or D2.**
+
+## G · State after this registration
+
+```
+Placement governance   ✅ DECIDED — existing governance applies; no new rule
+D1 durability model    🟡 NOT SELECTED  (position: B′ favoured)
+D2 R-CONFLICT          🟡 NOT SELECTED
+DECISION.md            ⛔ NOT PRODUCED
+```
+
+**Next actor: 🔵 the human PO/ARB — supply the two selections.** ⭐ **Two words settle it: an option letter for D1 and `ADOPT`/`REJECT`/`DEFER` for D2**, and Governance will produce `KOS-AIP-GOV-STATE-DURABILITY-DECISION.md` in full.
+
+**Traceability (this append):** the PO/ARB DECISION ACT 2026-08-19 *(second act on this slot; placement decided, D1/D2 blank; "the review is advisory only")* · §1–§3 above *(the position, and the two grounds for declining)* · ADR `67a8e75e` · `workflow-state.php` `G-2`/`R5b` *(the `humanActRef` precondition)* · commit `de998173` and `.gitignore:25`/`:32` *(the first-hand `C`-failure evidence)* · `ADR_20260801_1740` + `documentation-placement.yaml` line 31 + `scripts/doc-placement.php` *(the placement corroboration)* · `ES-005.4` · `ES-006.1` · `R-34`/`P-2`

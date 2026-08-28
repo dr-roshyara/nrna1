@@ -1,0 +1,38 @@
+@startuml KOS-Containers
+!include <C4/C4_Container>
+LAYOUT_LEFT_RIGHT()
+
+Person(po, "PO / ARB", "Decision authority")
+Person(engineer, "Engineering Roles", "Governance, Communication, Architecture, Implementation, Verification")
+
+System_Boundary(kos, "KnowledgeOS / AI Engineering Platform") {
+  Container(gov, "Governance Engine", "Workflow records / policy", "REGISTER, GRANT, HANDOFF, START, ACCEPT, COMPLETE, CANCEL")
+  Container(comm, "Communication Capability", "Prompts / state summaries", "Next actor, handover and decision communication")
+  Container(knowledge, "Knowledge Engineering", "Evidence / lineage / document registry", "Knowledge integrity, provenance, supersession, traceability")
+  Container(architecture, "Architecture Workbench", "DDD / ADR / model artifacts", "Evidence → bounded contexts → ADRs → domain models")
+  Container(implementation, "Implementation Workbench", "Code / tests / delivery", "Approved implementation design → code → tests")
+  Container(verification, "Verification Engine", "Evidence / falsification", "Independent verification and findings")
+  Container(session, "Session Orchestration", "Agent runtime", "Assignment, grants, handoffs, mutation ownership")
+  Container(registry, "Platform Registry", "YAML / configuration", "Platform roles, components and runtime configuration")
+  ContainerDb(estate, "Knowledge / Workflow Estate", "Git + governed records", "Architecture artifacts, ADRs, reports, workflow JSON, source and tests")
+}
+
+Rel(po, gov, "Authorizes / accepts")
+Rel(engineer, session, "Executes assigned session")
+Rel(gov, session, "Registers grants / assignments")
+Rel(session, comm, "Provides execution context")
+Rel(knowledge, gov, "Provides evidence / provenance")
+Rel(architecture, knowledge, "Consumes evidence; produces models")
+Rel(implementation, architecture, "Consumes approved architecture")
+Rel(verification, architecture, "Challenges architecture artifacts")
+Rel(verification, implementation, "Challenges implementation")
+Rel(session, registry, "Loads platform policy")
+Rel(gov, estate, "Persists lifecycle records")
+Rel(knowledge, estate, "Persists knowledge artifacts")
+Rel(architecture, estate, "Reads / writes architecture artifacts")
+Rel(implementation, estate, "Reads / writes code and tests")
+Rel(verification, estate, "Reads evidence / writes reports")
+Rel(session, estate, "Reads / writes workflow state")
+
+SHOW_LEGEND()
+@enduml

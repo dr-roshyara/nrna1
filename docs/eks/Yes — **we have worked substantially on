@@ -1,0 +1,761 @@
+Yes — **we have worked substantially on the architecture**, but we need to distinguish **current-architecture reconstruction** from **target-architecture exploration**.
+
+### What we have actually done
+
+**1. Current EKS architecture archaeology**
+
+We reconstructed a candidate `KOS-ARCH-BASELINE-001` describing what EKS appears to be today:
+
+* governance and authorization
+* work items and grants
+* human-act provenance
+* scoped engineering activity
+* evidence and observations
+* verification and deterministic assurance
+* durable records
+* stateful workflows
+* architecture governance / ADRs
+* AI Engineering Platform
+* candidate, rather than asserted, domain boundaries
+
+The baseline explicitly concludes that EKS is **not yet sufficiently evidenced as a formally separated bounded-context architecture**. 
+
+**2. We deliberately did NOT freeze a target architecture**
+
+We have repeatedly prevented the exploratory work from contaminating the current-state baseline.
+
+In particular, we have **not** declared:
+
+* KnowledgeOS kernel
+* canonical Knowledge bounded context
+* Authority bounded context
+* Rule bounded context
+* microservices
+* Kafka/event-driven architecture
+* Rust
+* Spring Boot
+* Digitalization Robot
+
+as current EKS architecture. 
+
+**3. We explored the semantic architecture**
+
+Separately, Track 2 explored:
+
+```text
+Rule
+  ↓
+Authority
+  ↓
+scope / validity / evidence / delegation
+```
+
+but that remains **candidate architectural knowledge**, not adopted architecture.
+
+The Track 2 handoff explicitly says the purpose is to discover whether the proposed EKS target architecture is semantically coherent before anyone is authorized to build it. 
+
+**4. We also worked on contract/language neutrality**
+
+The PHP/Python neutrality work is another architecture-related investigation, but it is specifically about whether a capability contract is genuinely implementation-language neutral.
+
+It should **not** be interpreted as a Python architecture decision.
+
+The current work item has moved beyond the stale state in the original brief, which is why we just stopped and required reconciliation against the authoritative record.
+
+---
+
+### So where are we architecturally?
+
+I would describe the programme as:
+
+```text
+                    EKS ARCHITECTURE
+                          │
+          ┌───────────────┴────────────────┐
+          │                                │
+          ▼                                ▼
+ CURRENT-STATE                       EXPLORATORY
+ RECONSTRUCTION                      SEMANTIC / TARGET
+          │                                │
+          ▼                                ▼
+ KOS-ARCH-BASELINE-001             Track 2
+          │                         Rule / Authority
+          │                         Target hypotheses
+          │
+          ▼
+ "What exists today?"
+                          │
+                          ▼
+             Independent verification
+                          │
+                          ▼
+                Accepted baseline
+                          │
+                          ▼
+              Only then target architecture
+```
+
+And **that last step is where we have deliberately not gone yet**.
+
+So the short answer is:
+
+> **Yes, we have done a lot of architecture work. But we have been disciplined about doing architecture archaeology first. We have not yet legitimately completed the target KnowledgeOS architecture.**
+
+The current most important architectural artifact is therefore still the **EKS current-state reconstruction**, not the proposed future KnowledgeOS design.
+Yes. If the goal is **true EKS implementation neutrality across PHP, Python, Java, Rust, TypeScript, Go, etc.**, I would make neutrality an **architectural property of the contract**, not a property of any particular language.
+
+The core rule should be:
+
+> **EKS architecture defines capabilities and observable semantics; programming languages implement those capabilities.**
+
+## 1. The architecture I would use
+
+I would use a combination of **DDD + Hexagonal Architecture + Contract-First Architecture + Conformance Testing**.
+
+Not one framework alone.
+
+```text
+                    EKS DOMAIN SEMANTICS
+                           │
+                           ▼
+                 LANGUAGE-NEUTRAL CONTRACT
+                           │
+             ┌─────────────┼─────────────┐
+             ▼             ▼             ▼
+            PHP          Python         Rust
+             │             │             │
+             ▼             ▼             ▼
+       Adapter/Impl   Adapter/Impl   Adapter/Impl
+             │             │             │
+             └─────────────┼─────────────┘
+                           ▼
+                  CONFORMANCE TESTS
+                           │
+                           ▼
+                 OBSERVABLE BEHAVIOUR
+```
+
+The **contract**, not PHP/Python/Rust, is the architectural centre.
+
+---
+
+# 2. The five-layer neutrality model
+
+I would formalize EKS language neutrality into five layers.
+
+### Layer 1 — Domain semantics
+
+This is the most important layer.
+
+Define:
+
+* business concepts;
+* invariants;
+* state transitions;
+* authorization semantics;
+* evidence semantics;
+* temporal semantics;
+* error semantics;
+* determinism requirements.
+
+No PHP.
+
+No Python.
+
+No framework terminology.
+
+For example:
+
+> "A granted activity may execute only within the scope specified by the grant."
+
+That is domain semantics.
+
+Not:
+
+```php
+if ($grant->allows($action))
+```
+
+and not:
+
+```python
+if grant.allows(action):
+```
+
+---
+
+### Layer 2 — Capability contract
+
+Then define what an implementation must expose.
+
+For example:
+
+```text
+Capability:
+    EvaluateAuthorization
+
+Input:
+    actor
+    activity
+    scope
+    time
+    evidence
+
+Output:
+    permitted | denied
+    reason
+    evidence-reference
+```
+
+The contract should define **observable behaviour**, not implementation structure.
+
+---
+
+### Layer 3 — Canonical data contract
+
+Use a language-neutral representation for interoperability.
+
+Depending on the capability:
+
+* JSON Schema
+* OpenAPI
+* Protobuf
+* AsyncAPI
+* plain canonical JSON
+* formally specified value semantics
+
+But don't make JSON itself the architecture.
+
+JSON is only the representation of the contract.
+
+The architecture is the **meaning**.
+
+---
+
+### Layer 4 — Adapters
+
+Each language gets an adapter.
+
+```text
+EKS Contract
+     │
+     ├── PHP Adapter
+     ├── Python Adapter
+     ├── Java Adapter
+     ├── Rust Adapter
+     ├── TypeScript Adapter
+     └── Go Adapter
+```
+
+The adapters translate language-specific implementation into the contract.
+
+This is where Hexagonal Architecture becomes useful.
+
+---
+
+### Layer 5 — Conformance
+
+Every implementation runs against the **same language-independent conformance suite**.
+
+```text
+                 Golden Fixtures
+                       │
+          ┌────────────┼────────────┐
+          ▼            ▼            ▼
+         PHP         Python        Rust
+          │            │            │
+          ▼            ▼            ▼
+       result        result        result
+          └────────────┼────────────┘
+                       ▼
+                 Contract oracle
+```
+
+This is the most important mechanism for neutrality.
+
+---
+
+# 3. The algorithm: Contract → Oracle → Conformance
+
+I would use a **contract conformance algorithm**, rather than an algorithm tied to a language.
+
+Conceptually:
+
+```text
+fixture
+   ↓
+normalize input
+   ↓
+execute implementation
+   ↓
+capture observable result
+   ↓
+canonicalize result
+   ↓
+compare against contract oracle
+   ↓
+PASS / FAIL
+```
+
+For example:
+
+```text
+Fixture F-001
+
+Input
+  actor=A
+  activity=X
+  scope=S
+
+Expected contract semantics
+  PERMITTED
+
+PHP
+  PERMITTED       ✓
+
+Python
+  PERMITTED       ✓
+
+Rust
+  PERMITTED       ✓
+```
+
+The internal implementation can be completely different.
+
+That is exactly what we want.
+
+---
+
+# 4. Golden fixtures are extremely important
+
+Your existing **seven golden fixtures** are already moving in the right direction.
+
+But I would evolve them into a formal:
+
+> **EKS Language-Neutral Conformance Suite**
+
+Each fixture should describe:
+
+```text
+Given
+When
+Then
+```
+
+without PHP/Python terminology.
+
+For example:
+
+```yaml
+id: AUTH-001
+
+given:
+  actor: engineer
+  activity: architecture_design
+  scope: work-item-123
+
+when:
+  authorization_is_evaluated: true
+
+then:
+  decision: permitted
+```
+
+Then PHP, Python, Rust, Java, etc. all execute exactly the same fixture.
+
+---
+
+# 5. But golden fixtures alone are not enough
+
+This is an important distinction.
+
+A test suite can accidentally encode the behaviour of the first implementation.
+
+Therefore we need **three independent things**:
+
+### A. Contract
+
+What the capability means.
+
+### B. Oracle
+
+What result is correct.
+
+### C. Implementation
+
+How a language achieves the result.
+
+```text
+             CONTRACT
+                │
+        ┌───────┴────────┐
+        ▼                ▼
+      ORACLE        IMPLEMENTATION
+        │                │
+        └───────┬────────┘
+                ▼
+            CONFORMANCE
+```
+
+The reference PHP implementation must **not become the oracle**.
+
+This is precisely the danger your LCOM4 investigation exposed.
+
+---
+
+# 6. Architecture framework: Hexagonal + DDD
+
+For the implementation itself, I would use **Hexagonal Architecture**.
+
+Conceptually:
+
+```text
+                 ┌─────────────────────┐
+                 │   EKS Domain Core    │
+                 │                     │
+                 │ semantics           │
+                 │ invariants          │
+                 │ policies            │
+                 │ state               │
+                 └──────────┬──────────┘
+                            │
+                    Ports / Contracts
+                            │
+              ┌─────────────┼─────────────┐
+              ▼             ▼             ▼
+            PHP           Python         Rust
+           Adapter       Adapter        Adapter
+```
+
+The domain core should not depend on:
+
+* PHP framework;
+* Python framework;
+* Spring;
+* Laravel;
+* Django;
+* FastAPI;
+* Rust framework;
+* database;
+* message broker.
+
+Those are adapters/infrastructure.
+
+---
+
+# 7. DDD gives you semantic neutrality
+
+DDD is useful because it forces us to define:
+
+* ubiquitous language;
+* business invariants;
+* bounded responsibilities;
+* domain policies;
+* lifecycle;
+* consistency boundaries.
+
+But be careful:
+
+> **DDD does not automatically produce language neutrality.**
+
+You can write terrible language-specific architecture using DDD.
+
+The neutrality comes from keeping the **domain semantics independent from implementation language**.
+
+---
+
+# 8. Use Architecture Decision Records for language neutrality
+
+I would introduce a specific architectural rule:
+
+### ADR: EKS Implementation Language Neutrality
+
+Something like:
+
+> EKS capabilities SHALL be specified in language-independent domain and contract semantics. An implementation language SHALL NOT define the semantics of an EKS capability.
+
+Then additional rules:
+
+1. Contract semantics precede implementation.
+2. No implementation becomes the normative semantic authority merely by being first.
+3. Every supported implementation must pass the same conformance suite.
+4. Language-specific behaviour must remain behind adapters.
+5. Canonical fixtures must not encode undocumented language behaviour.
+6. Observable behaviour is authoritative for conformance.
+7. Implementation internals are not part of the cross-language contract.
+
+---
+
+# 9. Add property-based testing
+
+This is where I would go beyond the current seven golden fixtures.
+
+Golden fixtures test known examples.
+
+**Property-based testing** tests general invariants.
+
+For example:
+
+> For every valid grant `G`, an activity outside `G.scope` must never be permitted.
+
+Instead of:
+
+```text
+test case #17
+```
+
+you test:
+
+```text
+∀ grant, activity:
+    activity ∉ grant.scope
+    ⇒ authorization(grant, activity) = DENIED
+```
+
+Then generate hundreds/thousands of cases.
+
+And run the same properties against:
+
+```text
+PHP
+Python
+Rust
+Java
+...
+```
+
+This is much stronger evidence of neutrality.
+
+---
+
+# 10. Add differential testing
+
+For multiple implementations, use **differential testing**.
+
+```text
+                 Same generated input
+                         │
+          ┌──────────────┼──────────────┐
+          ▼              ▼              ▼
+         PHP           Python          Rust
+          │              │              │
+          ▼              ▼              ▼
+          R1             R2             R3
+          └──────────────┼──────────────┘
+                         ▼
+                    equivalence
+```
+
+If:
+
+```text
+R1 ≠ R2
+```
+
+you don't immediately blame Python.
+
+You investigate:
+
+```text
+Contract?
+Oracle?
+Fixture?
+PHP?
+Python?
+Semantic ambiguity?
+```
+
+This fits perfectly with the failure vocabulary you've already established:
+
+* `CONTRACT_ERROR`
+* `PHP_REFERENCE_ERROR`
+* `PYTHON_IMPLEMENTATION_ERROR`
+* `FIXTURE_ERROR`
+* `TEST_HARNESS_ERROR`
+* `LANGUAGE_SEMANTIC_GAP`
+* `UNKNOWN`
+
+That vocabulary is actually a very good foundation for the neutrality architecture.
+
+---
+
+# 11. Determinism must be part of the contract
+
+Given the EKS work you've already done around deterministic assurance, I would make this explicit.
+
+A capability contract should define:
+
+```text
+same semantic input
+       +
+same relevant state
+       +
+same time/context
+       ↓
+same observable result
+```
+
+If implementation A produces:
+
+```text
+PERMITTED
+```
+
+and implementation B produces:
+
+```text
+DENIED
+```
+
+for the same normalized contract input, you have a conformance failure.
+
+This is where your existing replay/temporal determinism work becomes directly relevant.
+
+---
+
+# 12. Don't require identical internals
+
+This is critical.
+
+PHP might implement:
+
+```text
+PolicyEvaluator
+```
+
+Python might implement:
+
+```text
+AuthorizationPolicy
+```
+
+Rust might implement:
+
+```text
+evaluate_authorization()
+```
+
+That is completely fine.
+
+Neutrality does **not** mean:
+
+> same classes
+
+or:
+
+> same modules
+
+or:
+
+> same algorithms
+
+or:
+
+> same database.
+
+It means:
+
+> **same required semantics and observable contract.**
+
+---
+
+# 13. What should actually be standardized?
+
+I would standardize these:
+
+| Layer                                  | Standardize?                          |
+| -------------------------------------- | ------------------------------------- |
+| Business semantics                     | **YES**                               |
+| Domain invariants                      | **YES**                               |
+| State transition semantics             | **YES**                               |
+| Authorization semantics                | **YES**                               |
+| Error semantics                        | **YES**                               |
+| Temporal semantics                     | **YES**                               |
+| Evidence/provenance semantics          | **YES**                               |
+| Input/output contract                  | **YES**                               |
+| Canonical serialization where required | **YES**                               |
+| Golden fixtures                        | **YES**                               |
+| Conformance tests                      | **YES**                               |
+| Internal classes                       | **NO**                                |
+| Internal modules                       | **NO**                                |
+| Database                               | **NO**                                |
+| Framework                              | **NO**                                |
+| Programming language                   | **NO**                                |
+| Deployment model                       | **NO**, unless required by a contract |
+
+---
+
+# 14. The architecture framework I recommend for EKS
+
+I would call the combined approach:
+
+> **EKS Language-Neutral Contract Architecture**
+
+with these foundations:
+
+```text
+DDD
+ │
+ ├── Ubiquitous Language
+ ├── Domain Semantics
+ ├── Invariants
+ └── Boundaries
+       │
+       ▼
+Hexagonal Architecture
+       │
+       ├── Domain
+       ├── Ports
+       └── Adapters
+              │
+              ▼
+Contract-First Architecture
+              │
+              ├── Capability Contracts
+              ├── Canonical Schemas
+              └── Semantic Rules
+                     │
+                     ▼
+Conformance Architecture
+                     │
+                     ├── Golden Fixtures
+                     ├── Property Tests
+                     ├── Differential Tests
+                     └── Determinism Tests
+```
+
+And then:
+
+```text
+              ┌──────────────────────┐
+              │ EKS SEMANTIC CONTRACT│
+              └──────────┬───────────┘
+                         │
+          ┌──────────────┼──────────────┐
+          │              │              │
+         PHP           Python          Rust
+          │              │              │
+          └──────────────┼──────────────┘
+                         │
+                  CONFORMANCE GATE
+                         │
+              ┌──────────┴──────────┐
+              │                     │
+            PASS                  FAIL
+              │                     │
+              ▼                     ▼
+       implementation       classify failure
+       is conformant        before changing code
+```
+
+## The key architectural rule
+
+If I had to reduce all of this to **one rule for EKS**, it would be:
+
+> **No programming language implementation is allowed to become the semantic authority for EKS.**
+
+The semantic authority must be the **language-independent contract + domain invariants + conformance oracle**.
+
+That is the architectural mechanism that lets you have PHP today, Python tomorrow, Rust later, or several languages simultaneously **without changing what EKS means**.
+
+And importantly, this is exactly why I would finish the current `KOS-CONTRACT-NEUTRALITY-001` reconciliation **before introducing another language implementation**. The existing LCOM4 history has already shown that the hardest problem is not translating PHP to Python; it is making sure the contract itself is precise enough that two independent implementations can reach the same answer.

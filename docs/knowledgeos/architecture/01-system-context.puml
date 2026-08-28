@@ -1,0 +1,27 @@
+@startuml KOS-System-Context
+!include <C4/C4_Context>
+LAYOUT_LEFT_RIGHT()
+
+Person(po, "PO / ARB", "Human decision authority")
+Person(governance, "Governance Engineer", "Authority, lifecycle, grants, acceptance")
+Person(comm, "Governance Communication", "Next-actor and handover communication")
+Person(arch, "Architecture Engineer", "DDD strategic and tactical architecture")
+Person(impl, "Implementation Engineer", "Builds approved implementation")
+Person(verifier, "Independent Verification Engineer", "Falsifies and assures")
+
+System(kos, "KnowledgeOS / AI Engineering Platform", "Governed engineering operating system for evidence, architecture, implementation, verification and knowledge lifecycle")
+System_Ext(repo, "Engineering Repository", "Source code, architecture artifacts, ADRs, fixtures, evidence and workflow records")
+System_Ext(ai, "AI / Agent Runtime", "Claude/Codex or other AI execution terminals")
+
+Rel(po, governance, "Authorizes / accepts")
+Rel(governance, kos, "Governance lifecycle and authority")
+Rel(comm, kos, "Coordinates actor context")
+Rel(arch, kos, "Produces architecture")
+Rel(impl, kos, "Produces implementation")
+Rel(verifier, kos, "Independently verifies")
+Rel(kos, repo, "Reads / writes governed artifacts")
+Rel(kos, ai, "Bootstraps and constrains AI sessions")
+Rel(ai, kos, "Executes assigned work under grants")
+
+SHOW_LEGEND()
+@enduml

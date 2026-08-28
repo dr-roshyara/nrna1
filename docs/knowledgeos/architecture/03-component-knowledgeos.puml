@@ -1,0 +1,39 @@
+@startuml KOS-Component-Architecture
+!include <C4/C4_Component>
+LAYOUT_TOP_DOWN()
+
+Person(po, "PO / ARB", "Human decision authority")
+
+Container_Boundary(platform, "KnowledgeOS Platform") {
+  Component(composition, "Composition Root", "Platform composition", "Builds the governed runtime")
+  Component(session, "Session Manager", "Session lifecycle", "Registers and activates work sessions")
+  Component(workflow, "Workflow Engine", "Governed workflow", "Grants, assignments, handoffs, mutation ownership and transitions")
+  Component(knowledge, "Knowledge Manager", "Knowledge management", "Evidence, lineage, document and knowledge lifecycle")
+  Component(verification, "Verification Engine", "Assurance", "Independent falsification and verification workflows")
+  Component(review, "Review Engine", "Review orchestration", "Routes reviews and preserves role separation")
+  Component(drafting, "Drafting Studio", "Artifact generation", "Produces bounded proposals and reports")
+  Component(registry, "Platform Registry", "Configuration", "Role/component registration and platform capabilities")
+  Component(comm, "Communication Capability", "Coordination", "Next-actor instructions, handovers and decision summaries")
+}
+
+ContainerDb(store, "Knowledge + Workflow Store", "Git / JSON / Markdown", "Durable evidence and lifecycle record")
+System_Ext(ai, "AI Agent Runtime", "Claude / Codex / other terminals")
+
+Rel(po, workflow, "Authorizes / accepts")
+Rel(composition, session, "Composes")
+Rel(composition, registry, "Loads")
+Rel(session, workflow, "Starts / activates")
+Rel(workflow, comm, "Supplies authoritative state")
+Rel(knowledge, workflow, "Evidence / provenance")
+Rel(drafting, knowledge, "Reads evidence")
+Rel(drafting, workflow, "Reads assignment / grant")
+Rel(review, verification, "Routes independent verification")
+Rel(verification, knowledge, "Reads evidence / writes findings")
+Rel(workflow, store, "Persists state")
+Rel(knowledge, store, "Persists knowledge")
+Rel(drafting, store, "Persists artifacts")
+Rel(verification, store, "Persists verification reports")
+Rel(ai, session, "Executes under session context")
+
+SHOW_LEGEND()
+@enduml

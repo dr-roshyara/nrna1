@@ -1,0 +1,25 @@
+@startuml ContractNeutrality-FactModel
+!include <C4/C4_Component>
+LAYOUT_LEFT_RIGHT()
+
+Container_Boundary(neutrality, "KOS-CONTRACT-NEUTRALITY-001") {
+  Component(source, "Source Language", "PHP source", "Language-specific source text")
+  Component(binding, "Language Binding / Extraction", "PHP grammar-exact lexer / parser boundary", "L0-L2 extraction into language-neutral facts")
+  Component(fact, "L3 Fact Model", "Language-neutral schema", "Analysed-unit kind, stable identity, method identity, target, qualifier kind, callable/invocation, access mode, determinability, property access")
+  Component(cohesion, "L4 Cohesion Semantics", "Contract rules", "Behavioural dependency and qualifier-kind interpretation")
+  Component(metric, "L5 Metric", "LCOM4", "Derived cohesion metric")
+  Component(conformance, "Conformance Evidence", "Declared expectations", "Node set + edge set + final metric")
+}
+
+Rel(source, binding, "Parsed / tokenized")
+Rel(binding, fact, "Produces facts")
+Rel(fact, cohesion, "Interpreted by")
+Rel(cohesion, metric, "Derives")
+Rel(fact, conformance, "Expected node / edge set")
+Rel(metric, conformance, "Expected final metric")
+
+Rel_U(cohesion, fact, "Qualifier kind is preserved, not inferred from final metric")
+Rel_U(conformance, metric, "Metric alone is insufficient")
+
+SHOW_LEGEND()
+@enduml

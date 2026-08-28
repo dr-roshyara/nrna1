@@ -1,0 +1,5 @@
+Model,Duplicate invariant,Independent corroboration,Dependency-aware,Irrelevance,Order invariant,Stale retained,"Bounded [0,1]"
+MAX,True,False,True,True,True,True,True
+WEIGHTED_MEAN,True,False,False,False,True,True,True
+SATURATING,True,True,True,True,True,True,True
+BAYES_LIKE,True,True,True,False,True,True,True
