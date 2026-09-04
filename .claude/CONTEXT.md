@@ -1,3 +1,537 @@
+**Updated:** 2026-09-04 (mathematical_ideas_that_can_be_implemented/ pass, 40/282 done — measure-theoretic Knowledge Space apparatus now formally crystallized; kernel-minimality shown representation-dependent; two persistent unresolved cross-references, "Freedman" ×6 and "Brown-Hwang" ×3) *(additive — this block is the newest; every block below stands as history.)*
+
+**Updated:** 2026-09-04 *(additive — the **Pass-1 re-attribution DETERMINED: the model does NOT permit attaching a fresh process to the existing lane → returned to PO/ARB; one-mutation-owner cost flagged** block is the newest; every block below stands as history)*
+
+Continuing autonomously (MD-019) past the 20/282 checkpoint above. Key developments M0021-M0040:
+
+- **Epistemology sources cluster (M0021-M0029)**: Vedic/Upanishadic (Roopa Pai), Plato (White),
+  Audi, Davidson — each independently instantiating this reconstruction's own resemblance-≠-identity
+  discipline (Kṣetrajña≠observer-random-variable, Buddhi≠estimator, jñāna≠posterior-distribution).
+  Davidson (M0029) delivers Knowledge Space as a relational structure KS_t=(K_t,R_t) and a
+  six-argument Inquiry Q=(T,P,C,R,Γ,Σ).
+- **Kernel-minimality experiment cluster (M0026, M0030, M0035, M0037)**: a full ablation/minimality
+  protocol (authored by a "ChatGPT" persona, executed by Claude Code CLI) was actually run
+  (~150,000 trials, variants V0-V12). Major finding: **kernel minimality is representation-
+  dependent** — 13 operators under one algebra, 8 under an expanded one (four distinct minimal
+  kernels), proven NOT a statistical artifact. Delivers the "invariant custody" concept (a
+  reduction can shrink operator count while concentrating responsibility). Self-discovers a missing
+  operator (`Qualify`) that the corpus had already classified as irreducible — a first-class
+  methodological finding, not a bug.
+- **Titelbaum re-reading cluster (M0032, M0033, M0036)**: introduces **Epistemic Standards S^epi**
+  as the single most important missing KnowledgeOS element (K_t=F(E_t,S_t), not f(E_t) alone),
+  culminating in M0036's theoretical explanation of the `Qualify` discovery: the kernel experiment
+  was minimizing operators before separating the underlying state carriers. Delivers the cleanest,
+  most rigorous rejection anywhere in this pass of M0001's founding thesis.
+- **Measure-theory cluster (M0038, M0040)**: crystallizes Knowledge Space as a **measurable space**
+  (𝒳,𝒜), explicitly NOT a probability space — probability is additional structure over it.
+  M0040 delivers 22 clean formal definitions (new: the Γ compatibility-region map, semantic
+  equivalence via behavioral equivalence) and precisely explains *why* the 13-vs-8 kernel
+  experiment came out unstable (minimality was sought before 𝒳,𝒜,≡_sem,𝒦,D,T were fixed).
+- **Two persistent unresolved cross-references**, each cited as an established source without a
+  dedicated extraction ever appearing in M0001-M0040: **"Freedman"** (rival explanations, causal
+  model-criticism — cited 6×: M0029, M0030, M0032, M0033, M0035, M0036) and **"Brown-Hwang"**
+  (Kalman-filter-style state enrichment — cited 3×: M0037, M0038 ×2). Both flagged for the eventual
+  global-reclassification pass as possible genuine corpus gaps.
+- **Corpus-count discrepancy** (M0035): this lane's own experiment reports primary=1,452+derived=330
+  (=1,782 total) against an earlier-cited 1,155-file figure — a third distinct corpus-size figure,
+  alongside this reconstruction's own main-corpus count (~1,193/2,376 after MD-020), requiring
+  reconciliation at the eventual global-reclassification stage.
+
+**Progress:** M0001-M0040 done (40/282; 3 checksum-duplicates: M0008→M0006, M0011→M0010,
+M0039→M0038). `resume_mathematical.py` CONSISTENT throughout, `next_sequence=M0041`.
+
+**Next:** continue M0041 onward through the remaining 242 files autonomously (MD-019), until
+"MATHEMATICAL-PART SEQUENTIAL PASS COMPLETE" — only then scope the global-reclassification pass.
+
+## Update (2026-09-04): mathematical_ideas_that_can_be_implemented/ (KR-SIM lane) pass — in progress, 20/282
+
+Per instruction ("before you scope the reclassification pass, please do the same process for the
+file listed in `mathematical_part_files.log`"), the same MD-013 per-file discipline is now being
+applied to the 282-file `mathematical_ideas_that_can_be_implemented/` corpus (its own control plane:
+`00_control/mathematical-manifest.tsv`/`mathematical-progress.tsv`/`resume_mathematical.py`,
+`01_source-analysis/per-file-mathematical/`, M-prefixed sequences M0001-M0282). This is explicitly
+ordered BEFORE the global-reclassification pass — not started yet, per that instruction.
+
+**Progress:** M0001-M0020 done (20/282; 2 checksum-duplicates so far, M0008→M0006 and M0011→M0010).
+`resume_mathematical.py` CONSISTENT throughout, `next_sequence=M0021`.
+
+**Key findings so far:**
+- **M0001**: the lane's own chronological origin point (2026-09-01 14:59) — its founding thesis
+  (K_t=probability distribution, conditionalization=δ) is the exact overclaim already-tracked
+  main-corpus files 2321/2324/2328 later refuted. A documented self-correction arc.
+- **M0010/M0014/M0015**: very plausibly the direct primary sources of already-tracked main-corpus
+  files 2321/2324's Dretske- and Kallenberg-citing "probability is not knowledge, No/No/No"
+  negative-convergence finding — M0015 contains a near-verbatim matching table row.
+- **M0016-M0019**: isolate and substantially advance a single central problem Φ:(F_t,E_t,Π_t,S_t)→K_t
+  ("how does information become semantic knowledge") — Discriminate operator, Zero≈relevant-
+  alternatives correspondence hypothesis, Inquiry Q=(T,P,C,R,Γ) as a genuinely new primitive with
+  its own Smallest-Adequate-Answer optimization and — critically — the pass's first principled
+  stopping condition (Stop iff Zero(K_t,I_Q,EC)=0). Two competing, unreconciled intermediate
+  pipeline layers (M0017's ℐ_t vs M0018's R_t) flagged `unresolved_equivalence`.
+- **M0020 — the single most important bridge-candidate document found so far**: THIS IS the
+  KR-SIM lane's own independently-conducted sibling investigation of this reconstruction's ENTIRE
+  three-model-convergence mandate (KnowledgeOS math / Gita / Probability-InfoTheory), with its own
+  three-level convergence definition, explicit convergence AND non-convergence findings
+  (Ātman≢𝓘 — "no convergence established" — Paramātmā unsupplied, Governance a KnowledgeOS-specific
+  extension, probability rejected as knowledge's ontology), and a five-level evidence hierarchy
+  near-identical to this reconstruction's own promotion-chain discipline.
+
+**Next:** continue M0021 onward through the remaining 262 files (per-file M0021.yaml/.md,
+`mathematical-progress.tsv` update, `dimension-registry-mathematical.md` entry,
+`resume_mathematical.py` verification each cycle), autonomously (MD-019), until
+"MATHEMATICAL-PART SEQUENTIAL PASS COMPLETE" — only then scope the global-reclassification pass.
+
+## Milestone (2026-09-04, confirmed against refreshed manifest): SEQUENTIAL PASS COMPLETE
+
+After the MD-020 manifest refresh (below) revealed 46 remaining primary files (not 0 as first
+reported), the pass continued and `resume.py` now reports **"SEQUENTIAL PASS COMPLETE — global
+reclassification may now open (MD-004)"** against the refreshed manifest itself (2376 total rows,
+N_primary=1193). This is a genuine completion, not a stale-manifest artifact.
+
+Per user instruction mid-pass, the repetitive `step-292/` package (Reiter/situation-calculus audit,
+already synthesized once at the top level) was given minimal/SKIPPED treatment for its remaining
+sub-documents and exec artifacts rather than full per-file analysis — a deliberate, requested
+efficiency measure, not a scope change.
+
+**A fitting closing coincidence**: the very last file in the entire primary corpus (sequence 2376,
+`20260904-104500_gita-on-declared-reads-and-effective-reads.md`) turned out to be the **formal closure
+of the Gītā-thread's own kernel-candidacy investigation** — the sixth and final "KR-SIM Gītā companion
+study," explicitly tallying five prior cycles (contradiction/elimination/reduction/audit/bridge, all
+independently tracked in this reconstruction's own per-file records) and recommending: *"stop testing
+[the Gītā strand] for kernel candidacy — the candidacy question is answered."* This is confirmed, by
+direct primary-source reading, as the exact document behind the earlier-reported parallel-session
+closure note.
+
+**Not yet done — the two-stage classification gate (MD-004) is now open, not yet entered:**
+- **Global reclassification** — assigning FINAL/CANONICAL classification to all provisional per-file
+  records (~1,193 primary files across the whole corpus, not just this window's ~140).
+- Gated stages after that: 02/03/04 canonical models → 05 cross-model → 06 gap-analysis → 07
+  formalization → 08 kernel → 09 dynamics → 10 computational → 11 validation → 12 canonical-theory
+  (guarded).
+- **The "Path B" open item (file 2319) is now substantially — though not completely — advanced**, not
+  fully resolved: files 2322-2323 delivered strong candidate identifications (C1's six-dimensional
+  kernel candidate; the "portability kernel" gloss; the Kernel_engineering≠Kernel_epistemic hypothesis,
+  G-108), and file 2328 delivered a strong candidate for the KR-SIM lane's own synthesis, but no single
+  document was confirmed as definitively "Path B" itself.
+
+## Update (2026-09-04): manifest refreshed (MD-020) — pass was NOT actually complete
+
+Per instruction ("refresh the manifest before we scope reclassification"), re-walked
+`docs/knowledgeos/brainstorming/` against its current on-disk state and appended the delta to
+`reading-manifest.tsv`/`progress.tsv` (append-only; no existing row touched). Full record: MD-020 in
+`14_decision-log/model-boundary-decisions.md`, and `00_control/corpus-validation-report.md` Addendum 2.
+
+- **N_primary corrected: 1,155 → 1,193** (+38 new primary files, +18 new `EXCLUDED_VERIFICATION`
+  growth inside the already-excluded subdirectory). One apparent "new" file recognized as a rename of
+  an already-`DONE` file (matched by size+mtime) and correctly not re-added.
+- **Two directories now excluded from the manifest entirely** (didn't exist when it was first built):
+  `three_model_convergence/` (this reconstruction's own output — self-reference) and
+  `mathematical_ideas_that_can_be_implemented/` (the separate KR-SIM lane).
+- **The "SEQUENTIAL PASS COMPLETE" milestone reported earlier today was against a stale manifest.**
+  46 primary files actually remain. Resuming the sequential pass now per MD-019 (autonomous
+  continuation — this is not a new decision point, it's the same pass continuing against the
+  corrected scope).
+- The "Path B" open item (sequence 2319, unverified corpus-internal convergence claim) is unchanged
+  and still open — this refresh only recorded where KR-SIM lives and excluded it; it did not check
+  the claim.
+
+## Milestone (2026-09-04, superseded by the refresh above): Three-Model Convergence — SEQUENTIAL PASS COMPLETE
+
+`docs/knowledgeos/brainstorming/three_model_convergence/00_control/resume.py` now reports
+**"SEQUENTIAL PASS COMPLETE — global reclassification may now open (MD-004)"** after
+sequence 2320 (`DONE=1186 [primary=1147, adjacent=39]`). Every primary-corpus file under
+`brainstorming/` (per the manifest's PRIMARY tier, `reading-manifest.tsv`, excluding the five
+derived subdirectories `classification/ corpus/ falsification/ synthesis/ verification/` and the
+`docs/knowledgeos/` root) has a per-file YAML+MD record (`01_source-analysis/per-file/`), a
+`progress.tsv` row, and a `dimension-registry.md` entry.
+
+**Not yet done — awaiting a scoping decision, not simply "continue":**
+- **Global reclassification (MD-004)** — the two-stage classification gate. Pass-1 records carry
+  PROVISIONAL classification only; FINAL/CANONICAL classification is assigned in a dedicated pass
+  now that the whole corpus context exists. Gated stages after that: 02/03/04 canonical models →
+  05 cross-model → 06 gap-analysis → 07 formalization → 08 kernel → 09 dynamics → 10
+  computational → 11 validation → 12 canonical-theory (guarded, `12_canonical-theory/STATUS.md`).
+- **Manifest staleness**: `reading-manifest.tsv` predates same-day corpus growth. Confirmed this
+  session: three duplicate-content files under `phase_measure_theory/` (sequences 2312–2314, one
+  content occurring three times, only one self-flagged as "duplicate"); `docs/knowledgeos/
+  brainstorming/mathematical_ideas_that_can_be_implemented/` (the separate **KR-SIM lane** — see
+  the 2026-09-02 block below) is correctly outside this manifest's PRIMARY scope but has grown to
+  ~229+ files same-day, several referencing findings that bear directly on this lane's own open
+  questions (see next point). Re-running the manifest builder before global reclassification is
+  recommended, not yet done.
+- **A corpus-internal convergence claim, unverified**: sequence 2319
+  (`20260901-111523_step_286_independent-research-line-appears-to-have-arrived-at-the-same-result.md`)
+  reports that an unidentified "independent research line" ("Path B": `KnowledgeAggregate →
+  admissibility → deterministic state transition`, eight core capacities, the boundary "admissible,
+  not true," and a `ℙ≠K` non-collapse principle) converges with this Gītā/measure-theoretic
+  thread's own conclusions (files 2317–2318). Path B was **not named** in that file. Today's
+  earlier, separate session (see log below, "the complete theory, written as a document set")
+  recorded the **KR-SIM lane's own verdict**: *"Gītā strand: stop testing it for kernel candidacy.
+  Five cycles, zero machinery. Keep it as an external naming lens; the candidacy question is
+  answered."* Whether Path B **is** the KR-SIM lane (or some other already-tracked corpus
+  document, e.g. `_misc/20260819-224159-linux-analogy-kernel-os-model.md` or the EKS-to-Kernel
+  integration files flagged in sequence 2320) has **not** been checked. This reconstruction's own
+  discipline (independent verification before merging) applies here too: the KR-SIM verdict is
+  from a differently-scoped, differently-governed lane and must not be imported into this
+  reconstruction's own findings without that check.
+
+**Recommended next actions (for the user/project owner to choose among, not autonomously started):**
+1. Re-run/refresh `reading-manifest.tsv` against the current corpus state, then decide whether the
+   newly-appeared files change PRIMARY scope before reclassification begins.
+2. Decide the shape of the Global Reclassification pass (MD-004) — full manual per-file re-review,
+   or a structured batch/agent-assisted pass — given ~1,147 primary files now carry provisional
+   classification only.
+3. If desired, cross-check sequence 2319's convergence claim against the KR-SIM lane's own
+   documents (`docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/theory-*`)
+   to identify "Path B" and verify or refute the claimed convergence — as its own, separately
+   scoped task, not as part of continuing the sequential pass (which is finished).
+
+## Active track (2026-09-02): KnowledgeOS theory simulation lane — `KR-SIM-2026-09-02-*`
+
+**A distinct research thread.** It does not touch the Three-Model Convergence lane described in the
+2026-09-01 block below, and asserts nothing about it. *(Note: that lane writes its output into
+`brainstorming/three_model_convergence/`, which the primary-corpus inclusion rule sweeps in —
+corrected in `docs/knowledgeos/research/kernel-reduction/02-evidence-matrix.md`; corrected
+`N_primary = 1 153 @ 2026-09-01 23:02` under a rule that also excludes that directory — and
+still growing, so any corpus count must carry a timestamp.)*
+
+Workplace: `research/knowledgeos-sim/` (code) and `docs/knowledgeos/research/theory-v1.1-simulation/`
++ `theory-v1.2-simulation/` (25 artifacts). Commissioning prompts arrive in
+`docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/`.
+
+**Chain executed:** v1.1 simulation → v1.2 simulation (`-B`) → factivity repair (`-C`) → `Sat_c`
+semantic closure (`-D`) → evaluators supplied (`-E`) → repair phase, re-ordered (`-F`) → evaluation
+semantics (`-G`). Each consumed the previous one's findings as binding input.
+
+**State of the theory (nothing canonized):**
+
+| | |
+|---|---|
+| Theory v1.2 | **B — PARTIALLY EXECUTABLE** |
+| `Sat` | **SEMANTICALLY INCOHERENT** under the model the theory proposes |
+| Kernel | **NOT TESTED** — and under v1.2 not testable |
+| Factivity | **OPEN** — no class in the satisfaction family requires it |
+| `Truth ⟂ Closure` | **ESTABLISHED** — a state closes while its attribution is false |
+| Zero chain `strict ⇒ reasoned ⇒ weak` | **DERIVED** (1 620 000 assignments, 0 counterexamples) |
+| Zero readings | **not total** — a contradictory state closes under all four |
+
+**Load-bearing results:** `DEF-1` factivity and `K = Γ(E,Q,C,EC)` are jointly unsatisfiable
+(witness + 420/10 000) · only 3 of 8 `Sat_c` classes are executable · `value ∘ Eval_c` is lossy,
+9 situations collapsing into `U` · 8 of 10 required negative tests falsified.
+
+**Self-corrections carried:** two of this lane's own evaluators retracted as corpus-unsupported; the
+`Zero_reasoned`/`Zero_weak` separation reported in `-E` was an artifact of those evaluators; `-E` ran
+before the specification repairs and understated the contagion (corrected at source).
+
+**`Contr` RUN (`KR-CONTR-2026-09`, 2026-09-02):** **there are TWO contradiction models, not three** —
+`M3` (three-valued/`UNDEFINED`) and `M4` (four-valued/`C`) are **isomorphic under relabeling** (0/8
+commutation failures); only `MD` (delegated) differs, and it is **separated by the pair `(X1,X2)`** and
+**`[NEG]` refuted relative to the corpus's own `ZI-01`/`ZI-09` distinctions** — it renames contradiction
+as absence. **The fourth-value question is NOT an independent item: it is a corollary of the
+composition question** (models separate iff the composition rule is token-sensitive; corpus supplies
+none). **`D-0`'s "all three agree" is a MASKING artifact** — separable in isolation, masked by ONE
+unrelated `U`, because the readings are **existential and saturate**. **No model adopted · `Contr`
+still undefined · closure still unrepaired.** **`[PROP]` next should be COMPOSITION, not `Contr`** —
+the readings saturate, so a `Contr` defined today would be unobservable. Artifact:
+`docs/knowledgeos/research/theory-v1.2-simulation/V-contr-experiment.md`.
+
+**`KR-CONTR-EVAL-2026-09` RUN + REVIEWED — ACCEPT WITH MINOR FORMAL CORRECTIONS (applied).**
+Gate **C — Structured Evaluation Required**; **protocol kernel designation `K2` — NOT a KnowledgeOS
+kernel, none selected.** **Headline (per review): the obstruction is STRUCTURAL, not cardinal** — no
+flat domain of ANY cardinality is adequate; A/B/C fail on the *unknown* family, so a value added for
+contradiction cannot repair it. **`χ = 3` means only: ≥3 flat classes given THIS required set and
+adequacy criterion** — it does **not** say the domain has three values. Minimum found: a **pair**
+containing `reason`, `[EXP]`/`[PROP]`, **not a primitive**. **`Contr` itself remains `[OPEN]`** — what
+is established is the *shape of the problem*: model assignment · evaluation structure · composition ·
+`Contr`. **`M3 ≅ M4` at the tested ASSIGNMENT level only.** **ID collision ELIMINATED** —
+`KR-CONTR-2026-09` retired as a live name; see
+`docs/knowledgeos/research/theory-v1.2-simulation/EXPERIMENT-ID-REGISTRY.md`.
+**Second review applied (21 further sections):** *"reason is the sole indispensable field"* **SOFTENED
+and then TESTED** — `Reason(x)=x` would make it a disguised state identifier, so it was **measured**:
+10 values / 21 conditions, 66 pairs collapsed, **not adequate alone (11/12, failing only
+`Satisfied`/`Unsatisfied`)**. Safe form: *an explicit reason/boundary component is indispensable
+**within the tested representation language***. **`reason` factors as `(locus, modality)`: adequate
+12/12 but NOT lossless** (3 distinctions lost) — whether that matters is an `ℛ_req` **decision**.
+**ARCHITECTURAL CLARIFICATION: `Contr` is NOT at the root** — the chain is `Required Distinctions →
+Evaluation Representation → Typed Boundary/Reason → Composition → Aggregation → Zero → Determination`,
+with contradiction **one required distinction**. **`Zero` cannot be defined before evaluation semantics
+can answer "`U` because what?" — the dependency is `Sat → Zero`.** Emerging shape `[PROP]`:
+**`Evaluation = Status + Typed Reason/Boundary`**, **not** four-valued logic.
+**Candidate `FR-002` recorded in `S-…register.md` — 13 items, NOT FROZEN** (its stated blocker, item 5's
+wording, is now repaired by measurement). **Priest extraction commissioned as preparatory to `KR-COMP`.**
+
+**`KR-CONTR-FDE-2026-09` IMPLEMENTED + RUN** — representation-comparison harness in
+`research/knowledgeos-sim/kos12/fde/` (**`app/` untouched**; spec was Java, repo has none, so it went
+into the existing Python research structure). **Classical 1/13 preserved with 11 NOT-REPRESENTABLE ·
+K3 3/13 · FDE 11/13 · Structured 13/13.** **The two-channel Standing takes K3's 10 collapses to 2**,
+preserving every `Contr|X` pair, and fails on **exactly the boundary family**. **`FDEConflict ≢ Contr`
+STRUCTURALLY** — Standing has no access to the frame, so the detector can only implement `φ = ∅`, the
+qualifier already known to over-generate. **Correction to the spec: boundary ambiguity affects EVERY
+Standing class, not just `(0,0)`** — `NotAssessed`/`Underdetermined`/`TheoryIncomplete` sit in `(1,0)`.
+**Composition and `φ` are COUPLED**: only `union` yields a conflicting Standing and it also
+misclassifies supersession. **Nothing adopted.** Verdict: `research/knowledgeos-sim/results/fde/verdict.md`.
+
+**`KR-COMP-2026-09` RUN** — coupled sweep of (rule × φ × status policy), **90 combinations**.
+**18 satisfy all five criteria; EVERY one has `φ ⊇ {time, context}`.** **`E-FDE-5` confirmed and
+SHARPENED: the frame is the load-bearing half** — once φ is adequate, **three rules tie**, so **the
+criteria select a FRAME QUALIFIER, not a composition rule.** **φ is NON-ADDITIVE** (`{time}` 0/15,
+`{context}` 0/15, `{time,context}` 9/15). **Status policy completely irrelevant (6/30 each) —
+supersession is SUBSUMED by temporal separation**, not an independent mechanism. **`union` excluded**
+(collapses `TemporalConflict`/`ContextConflict` onto `DirectContradiction` — resolving the apparent
+tension with `KR-CONTR-FDE` §7: union is the only rule producing conflict *without* a frame, and is
+excluded *with* one); **`strict` excluded** (destroys genuine conflict). **Verdict ROBUST: dropping C5
+gives identical 18/90.** **No rule selected · φ not settled · `ℛ_req` not settled · `Contr` still
+undefined · nothing adopted.** Artifact: `X-KR-COMP-2026-09.md`.
+**✅ `DECISION-01` TAKEN (governance, 2026-09-02): semantic evaluation must be invariant under
+transformations that leave evidential content unchanged. `C6` and `C7` RATIFIED as instances** —
+`docs/knowledgeos/research/theory-v1.2-simulation/DECISION-01-non-evidential-invariance.md`.
+**⬅ `DECISION-02` REQUIRED — is `φ` a semantically meaningful evaluation frame, or merely an evidence
+partition?** (`DECISION-02-semantic-status-of-the-frame.md`). **⛔ `majority` vs `intraframe-only` is
+DEFERRED and must NOT be decided** — deciding it now would settle the frame ontology by implication,
+**and `DECISION-01`'s `C7` instance cannot even be APPLIED first: under Option B (frames are semantic
+contexts) `majority` does not violate `C7` at all.** **This lane's `[PROP]` favouring `intraframe-only`
+is WITHDRAWN** — it presupposed the ontology, and converted *"aggregation is representation-sensitive"*
+into *"aggregation is forbidden"*, which does not follow. **`φ={time,context}` NOT promoted to a
+semantic primitive.** **Third candidate shape kept open** (`divergence → explicitly unresolved`;
+`Evaluation = (frame-relative standings, divergence)` + a separate determination operation) —
+`[PROP]`, **not architecture**. Procedure **D1 ✅ → D2 ⬅ → D3/D4/D5 blocked**.
+
+**(superseded framing below)** **⚖️ AWAITING DECISION — cross-frame divergence.** Record:
+`docs/knowledgeos/research/theory-v1.2-simulation/Z-DECISION-cross-frame-divergence.md`. **`aggregate`
+(`majority`) vs `refuse` (`intraframe-only`).** **NEW `C7` frame-refinement invariance separates them
+empirically:** identical evidence, only the timestamp resolution differs, and **`majority` flips**
+(`unsupported` → `positive-support`) — **and that is CONSTITUTIVE of counting frames, not a fixable
+flaw.** **Crux: `last-wins` was eliminated for depending on a non-evidential input (order); `C7` shows
+`majority` does the same (resolution) — so the choice is COUPLED to whether the programme ratifies
+"invariance under non-evidential variation" as a criterion class.** Both `C6` and `C7` are `[PROP]`,
+this lane's, **unratified**. **`intraframe-only`'s cost measured:** it emits `unsupported` with
+boundary `(None,None)` — an **incoherent pair** — so it **REQUIRES a new `BoundaryCondition`
+(`cross-frame-divergence`)** and **blocks determination**. Lane observes `[PROP]` `intraframe-only` on
+the `C7` ground **and does not adjudicate**. **Scope guard: the design space is NOT established to
+contain only these two.** New status class **`[DECISION]`** added to the register.
+
+**`KR-COMP-SEP-2026-09` RUN — the separating witness constructed.** **The commissioned shape does NOT
+separate**: internal conflict is **ABSORBING** under both `majority` and `intraframe-only` (both
+short-circuit to `(1,1)`), so adding it **destroys** the separation. **The separating witness must have
+NO internal conflict**: `W2` = 3 frames, asymmetric (2 positive vs 1 negative) → **three distinct
+outputs** (`positive-support` / `negative-support` / `unsupported`). **`last-wins` ELIMINATED TWICE,
+independently:** it reports the commissioned `W1` as `negative-support` not conflict — **discarding an
+internally-contradictory frame** (C1 failure on all 6 of its triples) — and it is **ORDER-DEPENDENT**
+(`W4` = `W2` permuted flips its output), so it is **not a function of the evidence set**.
+`[PROP]` **C6 order-invariance** proposed by this lane, unratified, **not applied retroactively**.
+**Surviving: `majority` vs `intraframe-only` — now behaviourally separated, but the choice is a
+DECISION**: aggregate cross-frame divergence (`majority`) or refuse it (`intraframe-only`). Both costs
+stated. Artifact: `Y-KR-COMP-SEP-2026-09.md`. (10 test dimensions; **do not begin by selecting
+the composition algebra**). Artifacts: `W-KR-CONTR-EVAL-2026-09.md` · Gītā study
+`brainstorming/20260902-160500_gita-on-contradiction-…md`.
+
+**Blocked on:** **nothing — `Factivity` is DECIDED (`R1`, see below).** **Superseded by the above:** the `Contr`/fourth-value
+experiment **with the four `Zero` readings extended in the same step** — five OPEN items, one
+decision. The next experiment must also supply a case that separates the three contradiction models;
+the current deterministic suite cannot. **Do not** implement `Sat_c`, run another randomized layer, or
+invent `Contr`/`⪰` as test fixtures.
+
+**First FROZEN result (2026-09-02):** `FR-001` — *pairwise semantic/evidential distinguishability
+cannot carry family-level epistemic complexity by itself*, established by two independent failure
+mechanisms (`~_Λ` non-transitive; δ-packing fails on coupling by up to 222×). Register:
+`docs/knowledgeos/research/theory-v1.2-simulation/S-frozen-results-register.md`. **Freezing is not
+promotion** — Theory v1.2 is unchanged and the finding stays `[NEG]`/`[OPEN]`. It closes the
+`N_eff` formula search and carries five standing consequences, notably **C-1: do not put statistical
+mechanisms into the kernel merely because KnowledgeOS can use them.** `N_eff` and `⪰` remain
+**independent** research problems.
+
+**`KR-HILBERT` (2026-09-02):** Hilbert space **did not solve** the obstructions — it **reproduced
+them in cleaner coordinates**. `FR-001` **STRENGTHENED, not reopened**: all four tested spectral
+functionals are exact on blocks and fail on equicorrelation by up to **50× under**, the opposite
+direction from the pairwise route's **222× over**. Kernel **NOT SELECTABLE** (consistent with C-1).
+**One candidate `[EXP]`, NOT frozen** — freezable only after independent replication. The stronger
+wording *"the burden lies between them"* was **WITHDRAWN from `T` and from the register**: "between"
+needs a formally defined ordering and a proof, and had neither. `KR-EXTREME-2026-09` is **DESIGNED,
+NOT RUN** and **must not precede the queue**.
+
+## ✅ DECIDED — Factivity: `R1` *(governance, 2026-09-02)*
+
+> **`K_t → A_t` (AttributedState)** · **`Knows(a,p,c,t) → True(p,c,t)` retained as an external,
+> factive assertion** · **Verification kept separate.**
+
+**The stop below is LIFTED.** **Next: `Contr` + evaluation domain** — a research experiment, and it
+must supply a case that **separates the three contradiction models** (the deterministic suite cannot).
+**Consequent engineering:** propagate `K_t → A_t` to `Δ_t`, `Zero`, adequacy, the kernel definition and
+`I1`–`I9`; **no component may assert `Knows`.** **`R1` does not solve the downstream theory** — `Sat`
+is still semantically incoherent, 5 of 8 classes non-executable, `𝓑` still `[PROP]`, and **the 390
+false attributions remain.**
+
+**Record of why it needed a decision — retained, because it is the `evidence ≠ decision` case:**
+
+**`Factivity` had left the experimental track.** `DEF-1` and `K_t = Γ(E_t,Q,C,EC)` are jointly
+unsatisfiable for any total attributing `Γ` (truth is not in `Γ`'s domain — a property of the
+**domain**, not the function). **No experiment can settle it: R1 and R2 are behaviourally identical**
+— 3 320 attributions, 390 false, 0 knowledge claims in both; they differ in what the system *claims*,
+not what it *does*. R3 is **REFUTED**.
+
+**Brief (options R0/R1/R2, costs, and the five things a decision must state):**
+`docs/knowledgeos/research/theory-v1.2-simulation/U-factivity-adjudication-brief.md`.
+Lane recommendation `[PROP]` **R2**; **R1 is cheapest and defensible**. **The lane does not adjudicate
+its own work.**
+
+**Two constraints the brief carries:** (a) under R2 the verifier must sit on an **independent
+channel** — same-channel validation catches a misleading source **0.75 %** vs **99.3 %** — which
+silently commits KnowledgeOS to representing `ChannelRelation(c₁,c₂)`, unbuilt; (b) **no option
+removes the 390 false attributions** — the decision fixes *what may be claimed*, never *how often the
+system is right*.
+
+**Superseded by the decision above:** the former instruction *"do not start `Contr`, `KR-EXTREME`, or
+any further simulation ahead of this decision"* is **discharged for `Contr`**. **`KR-EXTREME` still must
+not precede the queue.**
+
+---
+
+**Updated:** 2026-09-01 *(the block below was the newest as of that date.)*
+
+## Active track (2026-09-01): KnowledgeOS Three-Model Convergence research
+
+**Distinct research thread — not the "KnowledgeOS theory... under verification in another lane" noted
+in the block below; that lane is untouched by this one, and this block asserts nothing about it.**
+
+Workplace: `docs/knowledgeos/brainstorming/three_model_convergence/`. Governing prompt:
+`prompts/202609011141_prompt.md`. Task: strictly sequential reconstruction of three-to-four
+independently-developed theoretical foundations (Gītā/philosophical, mathematical, Engineering
+KnowledgeOS/C1, Epistemic KnowledgeOS/C2) from the `docs/knowledgeos/brainstorming/` corpus
+(N_primary = 1,155 files), per the reading log `docs/knowledgeos/brainstorming/files_to_read_one_by_one.log`.
+No premature synthesis; no C1/C2 convergence assumed; every classification provisional until a global
+reclassification pass (gated, not yet open).
+
+**State:** sequential pass reached **file 0094 (48 of 1,155 primary files done)**, then **paused** for
+a human-directed consolidation/falsification audit — see
+`01_source-analysis/checkpoint-0080-0094-consolidation.md`. `00_control/resume.py` verified
+CONSISTENT at this boundary. Sixteen methodology decisions recorded in
+`14_decision-log/model-boundary-decisions.md` (MD-001..MD-016); MD-014/015/016 (this session) added an
+anchor-document discipline (first anchor: file 0087, a "Minimal Kernel Candidate," permanently
+`candidate` status, never silently promotable), a per-dimension lifecycle registry
+(`01_source-analysis/dimension-registry.md`, 19 tracked entries, none past maturity stage 3 of 5), and
+this consolidation pass itself.
+
+**Landmark findings this session (all still `candidate`, none promoted):** file 0087 — corpus's first
+explicit numbered minimal-kernel proposal; file 0091 — first *argued* (not merely structural)
+Gita-to-C1 connection (Kṣetrajña → `H-KOS-Agent-001`), not promoted (same continuous conversational
+arc, not independent evidence per MD-012); file 0094 — a potentially fundamental
+relationships-not-dimensions reframing (`H-KOS-Relation-001`, from Navya-Nyāya's Sambandha), scoped by
+this session's own audit to real explanatory power for derivation-type forbidden-collapses only; file
+0094 also produces the corpus's first explicit negative ruling on the Purification/Mokṣa
+correspondence hypothesis (classified "Research Only," not kernel-relevant, by that source document).
+
+**Next action:** await review of the consolidation audit. On resumption, continue the sequential pass
+from file 0095 (`20260822-0232-...tarka-nyaya-reasoning-lifecycle.md`), applying the MD-014 anchor_test
+and MD-015 registry-update discipline per file. No canonical-theory, cross-model comparison, or kernel
+promotion work is authorized until the full sequential pass and gap analysis (§29 of the governing
+prompt) complete — unchanged by this session.
+
+---
+# Current Working State
+
+**Updated:** 2026-08-31 *(additive — this block is the newest; every block below stands as history.)*
+
+## Operational state (GN-79)
+> **Part II — ACCEPTED · Part III — produced + gate-passed, protected · Part IV/V/VI — proposed
+> structure, unratified · Part I — 0/6 in Ed2, I.3 kernel-gated.**
+> **Operation registry — NOT ESTABLISHED; derivation COMMISSIONED (GN-79), ISSUED · NOT STARTED,
+> executor unassigned.**
+> **Operations + Transformations — BLOCKED / NOT CANONICAL. Book V.5/V.6 RED.**
+> **KnowledgeOS theory — under verification in another lane; no closure conclusion may be inferred.**
+
+Book lane role unchanged (GN-71): book-production governance + controlled synchronization only.
+Verified this phase across the whole governed surface: **v0.2/v0.1/FA-1…FA-9 and the repository
+architecture corpus define ZERO operations and no pre/post-condition specification**; nine
+capabilities are canonically required, none defined; of 99 contract cells, 88 empty.
+
+Artifacts (analysis/): THEORY-TO-BOOK-CANONICAL-STATE · book-structure-crosswalk-proposal ·
+book-implementation-source-map · canonical-implementation-contract-template ·
+CANONICAL-IMPLEMENTATION-GAP · OPERATION-CONTRACT-GAP · TRANSFORMATION-CONTRACT-GAP ·
+IMPLEMENTATION-READINESS-MATRIX · DRAFT-HPA-RULING-operation-registry (SIGNED, Option 1) ·
+COMMISSION-operation-registry-derivation. Ledger at GN-79.
+
+**Next action:** HPA assigns an executor for the commission (commission §10). Book lane holds; no
+prose until the structure is ratified and the registry ratification act exists.
+
+---
+# Current Working State
+
+**Updated:** 2026-08-30 (later) *(additive — this block is the newest; every block below stands as history.)*
+
+## Operational state (GN-71 — book session standing constraints)
+> **Part II — ACCEPTED.**
+> **KnowledgeOS theory — independently under verification; no conclusion about completeness
+> should be inferred from Part II acceptance.**
+> **Part IV — not started.**
+> **Part I — remains subject to its existing gates.**
+
+Book session role from here: **book-production governance and controlled synchronization only** —
+no new theory investigation; no change to model/kernel/architecture/OQ register/Parts I & IV.
+Lanes kept distinct: BOOK (records history + evidential status) · THEORY RESEARCH · INDEPENDENT
+VERIFICATION · ARCHITECTURE · GOVERNANCE. **Book acceptance is not evidence of theoretical
+correctness.** No theory-promotion language ("complete/proven/validated/established/confirmed")
+without authorization via the theory-architecture lane. Any future request is classified first:
+(1) editorial · (2) evidence/provenance · (3) book-structure · (4) theory · (5) governance —
+**(4)/(5) STOP and request explicit HPA authorization.**
+
+Closure artifacts: `analysis/part-2-acceptance-closure.md` (md5 92ed81bf79bd5ca0197ddbdd713a1720),
+ledger GN-70/GN-71. Artifacts of record: II.1 6be8ef6c… 191/2,079 · II.2 4f30f47d… 138/1,588 ·
+II.3 b78ef6a9… 146/1,610 · II.4 2961d925… 148/1,730 · v0.2 frozen e928af…de9.
+Open, untouched: P2A-F-3/4/5/7 · DDD-F-1…8 · OQ-1…12 · riders HELD · RA v1.1 DEFERRED ·
+P2G-A-9 standing adoption · kernel evidence commission (gates I.3).
+
+**Next action:** none — session STOPPED pending a new book-production instruction (likely the
+post-verification synchronization, when that report exists).
+
+---
+# Current Working State
+
+**Updated:** 2026-08-30 *(additive — this block is the newest; every block below stands as history.)*
+
+## Active track (2026-08-30)
+KnowledgeOS synthesis programme — Edition 2 production under HPA supervision. Workplace
+`docs/knowledgeos/reviews/synthesis/`; authoritative ledger `analysis/governance-notes.md`
+(GN-01…GN-69).
+
+State: v0.2 frozen (md5 e928af…de9, re-verified) · FA/BA ratified · Edition 1 FROZEN ·
+**Part III complete (10 ch) + method gate PASSED (GN-53)** · **Part II complete (II.1–II.4),
+whole-Part gate PASS WITH CORRECTIONS (GN-66) → 18 corrections applied+verified (GN-67) → final
+acceptance review ACCEPT WITH CORRECTIONS (GN-69)** · four-lens verification complete (hostile
+GN-44 · math GN-46/49 · DDD GN-58 SOUND WITH FINDINGS, DDD-F-1…8 · Part II gates) · controls
+grown to BA-ED2-14 (citation-content substantiation) · OQ-1…12 OPEN · riders HELD · RA v1.1
+DEFERRED · DeepSeek NOT INCORPORATED.
+
+Artifacts of record: II.1 6be8ef6c… (191/2,079) · II.2 a74f1951… (138/1,592) · II.3 739b7cc5…
+(145/1,599) · II.4 2961d925… (148/1,730).
+
+**Blocker / next action:** awaiting HPA ruling on the acceptance review — (a) the single RED
+P2A-F-1 (II.1 claims.md depth line still 2,021 vs the 2,079 artifact of record; producer lapse
+from the GN-67 pass, NOT yet corrected — findings ≠ authorized repairs), (b) which AMBER items to
+take (reviewer recommends P2A-F-2, P2A-F-6), (c) whether the five GREEN protections become
+binding record. **Part IV NOT started; Part I locked (I.3 gated on the 38-doc kernel evidence
+commission).** Producer holds; no book file is edited without an explicit ruling.
+
+---
+# Current Working State
+
+**Updated:** 2026-08-29 *(additive — this block is the newest; every block below stands as history. NOTE: an overwrite of this file occurred briefly on 2026-08-29 and was immediately restored from git — no history lost.)*
+
+## Active track (2026-08-29)
+KnowledgeOS synthesis programme — Edition 2 + three-lens verification (book · hostile architecture
+pass · mathematical audit). Workplace `docs/knowledgeos/reviews/synthesis/`; authoritative ledger
+`analysis/governance-notes.md` (GN-01…GN-47).
+
+State: v0.2 authorized/frozen (md5 e928af…de9) · FA ratified GN-31 · BA ratified GN-34 + BA-ED2
+(GN-42) · Edition 1 ACCEPTED/FROZEN (GN-41) · Edition 2 III.1–III.8 produced · hostile pass GN-44
+(COHERENT WITH FINDINGS, AF-F-7…23) · math audit GN-47 (SOUND WITH QUALIFICATIONS, MV-F-1…22,
+0 critical/high) · GN-45 bounded book corrections applied · OQ-1…12 OPEN · riders HELD · v1.1
+DEFERRED · DeepSeek NOT INCORPORATED.
+
+Now (updated later 2026-08-29): GN-50 ruled; III.9 ✅ (Part III 9/10, ~25.9k words); roadmap plan
+adopted (docs/plans/*edition-2-completion-roadmap-plan.md). Next: III.10 → Part III review gate
+(method-validation; integrates hostile + math findings) → HPA dispositions → Parts II/IV/I.
+
+---
 # Current Working State
 
 **Updated:** 2026-08-24 *(additive — the **Pass 1 AUTHORIZED (Option C, grant `G-KOS-CONTRACT-PASS1-RECONCILE`) — same lane, separate authority; V-3 grant untouched; NOT yet started** block is the newest; every block below stands as history)*
@@ -204,6 +738,21 @@
 | ❓ **OPEN — the PO/ARB's ruling** | *Does a runtime that performed read-only orientation and produced advisory output about the appointment path (but no write and no assessment of the review subject) satisfy the freshness/independence condition for the Governance adoption-review role?* **D-i** start a genuinely new session → question moot, `PASS` on facts, **no precedent created** · **D-ii** rule the question → gives `REVIEW_INDEPENDENCE_POLICY` its **first concrete precedent**, estate-wide. **No recommendation made between them** — the candidate does not rule on its own independence. |
 | ⛔ **Unchanged** | `KOS-OPERATING-MODEL-001` **VERIFIED · NOT ADOPTED · NOT AUTHORIZED** · `AST-019`/`AMENDMENT-001` **IMPLEMENTED · NOT VERIFIED · NOT ADOPTED · NOT AUTHORIZED** (§38) · binding path still `REGISTER(governance)` → `HANDOFF` from `fc59bb0a` → **human START (G-3)** → review → STOP → PO/ARB adoption decision (**AST-019 is not this step's mechanism** — `CONFLICTING_ASSIGNMENT`, GO-13). |
 | 🚫 **Non-actions** | no REGISTER · no HANDOFF · no START · no CONTINUATION · no grant · no lane · no workflow transition · no adoption review · no adoption recommendation · no independence ruling · no self-appointment · no change to AST-015/016/017/018/019, the operating model, or the preserved prompt · no EKS-07. |
+
+---
+
+## 📍 UPDATE (2026-09-04, **`KOS-CONTRACT-NEUTRALITY-001` — Pass-1 **RE-ATTRIBUTION DETERMINED: THE MODEL DOES NOT PERMIT IT** → the PO/ARB's conditional failed, so this is the **stop-and-return** branch · ⛔ no REGISTER, no transition (still 40) · Pass 1 still AUTHORIZED and unstarted)
+
+| | |
+|---|---|
+| ❓ **The gating question** | PO/ARB: *"Register the fresh session as the current performer for the already-authorized `S4` lane, **if the governance model permits that** … If the canonical mechanism instead requires creating a new lane or changing the authorized performer in a way that alters the original grant, **stop and bring that back to you.**"* **Answer: it does not permit it.** |
+| 📄 **Evidence (three independent mechanism facts, read at source)** | (1) **`REGISTER` refuses an existing lane** — `workflow-state.php:189-194`, *"session assignment already registered — role is immutable … (`R8`)"*. (2) **No re-attribution edge exists**: the complete vocabulary is `REGISTER`·`HANDOFF`·`START`·`CONTINUATION`·`STOP`·`COMPLETE`·`FAIL`·`CANCEL` — **none changes who a lane is attributed to** (`R1`, no `CLAIM_OWNERSHIP`). (3) **Attribution lives in immutable text** — the lane's `executionContext` sits inside `seq 38`, and `G-KOS-CONTRACT-V3-ARCH-AMD1` says so itself: *"IMMUTABLE BY CONSTRUCTION — AST-015 refuses"*, which is why that amendment was a **grant** amendment and not an edit. |
+| 🔑 **A distinction that improves the options** | On **this** work item lanes are keyed by **descriptive assignment names** (`S4-architecture-v3-determination`), **not** session UUIDs — unlike `AMENDMENT-001`. So a "lane" here is an **assignment slot**, not a process identity: a new lane can be created **for Pass 1 specifically**, leaving the V-3 assignment untouched. The grant's **scope** would not change — only its **named performer** clause. |
+| ⚠️ **The cost to weigh — one mutation owner at a time** | **Activating a Pass-1 lane takes mutation ownership from the still-open V-3 lane.** `HANDOFF` requires `from === mutationOwner` (`Inv C`) and `START` requires that handoff (`Inv F`/`G-3`); the current owner **is** the `ACTIVE` V-3 lane, which never closed its two questions. **Pass 1 and the V-3 determination cannot both hold this work item simultaneously.** This is exactly why **Option C worked** — one actor, one lane, two grants, no ownership transfer. **Losing that actor is what turned a free choice into a costly one.** |
+| ✅ **Fresh performer behaved correctly** | `claude-code-session:e8f324f1-…` attempted onboarding, ran the repo's own read-only resolver **against itself** rather than trusting its brief, got **`UNRESOLVED`**, and **stopped** — writing a document and **no transition**. The record is still at 40, which is the correct outcome. Governance has **not** assessed its independence — no appointment is on the table until the PO/ARB decides. |
+| 🔎 **One substantive fact it surfaced (reported, NOT adjudicated)** | The `v3-decisions-registration` states *"the delivered V-3 architecture determination is **neither accepted nor amended** here."* If that holds on reading, **neither V-3 determination has been accepted** — consistent with what Governance recorded as `UNKNOWN` on 2026-08-24. **Confirming it is Pass 1's work, not this record's.** |
+| ⬜ **Decision returned to the PO/ARB** | **1** new Pass-1 lane performed by `e8f324f1` + grant amendment naming it (V-3 assignment and grants untouched; **cost:** V-3 lane goes `HANDED_OFF` while still open) · **2** close the V-3 lane first, then create the Pass-1 lane (cleanest; **cost:** requires deciding the V-3 lane's disposition, a substantive question nobody has been asked) · **3** recover the original `S4` process (no governance change; unlikely after 11 days, unverifiable from here) · **4** leave Pass 1 authorized and idle. **Governance recommends none.** |
+| ⛔ **Non-actions** | No `REGISTER`/`HANDOFF`/`START` · no lane · no grant or amendment · **no transition (still 40)** · V-3 grants and lane unchanged · Pass-1 grant unchanged, still `AUTHORIZED` · no Pass-1 work · **no V-3 adjudication** · do-not-modify list untouched · the fresh performer's stop document not altered. |
 
 ---
 
@@ -4861,3 +5410,33 @@ Both sit at ES-006.1 rung **observation**, both record `PLACEMENT: PENDING` (ADR
 - Untracked (other sessions'): the two dossiers · `2026-08-18-EM-DOM-001-architecture-review.md`.
 - Still open elsewhere: `EM-OPEN-049`/`066`/`094` · `053` · `076`/`077` · `095`② · `102` limbs · `PBDIGIT-69`/`70`/`71` · `KOS-ATTR-ARCH-001` unsigned.
 <!-- /GOV-STATE -->
+
+---
+
+## Update (2026-09-04, continued): mathematical_ideas_that_can_be_implemented/ pass — 50/282 done
+
+Continuing the KR-SIM mathematical-lane sequential pass (M0041–M0050 this session). Key developments since the 40/282 checkpoint:
+
+- **M0041–M0043**: A major architectural pivot — the measure-theoretic Knowledge Space thread (M0038–M0040) is explicitly critiqued as "too aggressive" and reframed as one *regime* among several, sitting atop a new **many-sorted relational core** 𝒞=(D,P,T,C,I,E,R,H,Θ) with a **factive Knows(a,p,c,t) relation** irreducible to Evidence/Probability/Inference. M0042 fuses this with a **named persona registry** (Ganesha/Krishna/Leonardo/Roberts/Rudin/Shani, drawn from the main corpus's own Gita-lens tradition) — the clearest documented fusion point between the mathematical lane and that tradition. M0043 is the **capstone axiomatic document**: 33 definitions/7 axioms/11 theorems with proofs, but contains **flagged internal errors** (THM-1 overstated, THM-5 not universally valid, THM-11 near-tautological) that M0045 later catches independently.
+- **M0044–M0048**: I. J. Good's *Weighing of Evidence* (1950) audited (M0044) → a **critical self-audit** (M0045) independently confirms this reconstruction's own THM-11 tautology caution, reduces the theory to 10 named gaps (G1–G10) → M0047 delivers the pass's **most complete Gap theory** (ten-class taxonomy, six proven theorems, the "GapIncrease≠KnowledgeDecrease" finding) → M0048 **independently converges** with M0045's own finding via a genuine caught inconsistency (Knowledge ⊊ EpistemicState).
+- **M0049**: A complete, not-yet-executed simulation-experiment protocol (KR-SIM-2026-09-02) extending the earlier kernel-reduction experiment's discipline (vacuity audit, no-smuggling, oracle independence) to the *full* epistemic lifecycle. Flags a genuine **naming collision** between its own "G1–G9" gap-category registry and M0045's unrelated "G1–G10" registry — at least **six independently-numbered invariant/property registries** now coexist unreconciled (EW-*, C*/G-C*, I1–I9, G1–G10, G1–G9, P1–P20).
+- **M0050 — MAJOR FINDING**: a document sourced in the KR-SIM folder but entirely about the **main corpus's own step-numbered "Theory v1.1" track** (Step 261 as an "overarching kernel gate," Steps 285–290, Gita lenses Buddhi/Sārathi/Sañjaya, Knowledge Identity as DDD core domain). This is the clearest evidence yet that the two lineages (main corpus and KR-SIM) are **one ongoing conversation distributed across two directories**, not independent lines of research. It **independently converges** with M0048's own E_t≠K_t finding, and introduces a **second independent 11-value epistemic-status vocabulary** plus a **four-relation equality taxonomy** (identity/=/≈/≅_λ), both unreconciled with the KR-SIM lane's own apparatus. New unattributed cross-reference: "the F5 error in Step 287."
+
+**Persistent open cross-references (still unresolved, now four)**: "Freedman" (7×), "Brown-Hwang" (4×), "Dretske" (new, M0044), "the F5 error in Step 287" (new, M0050) — none has a dedicated extraction anywhere in the 50 files processed so far. All deferred to the eventual global-reclassification pass (MD-004), per standing epistemic discipline (flag, never silently resolve).
+
+**High-priority MD-004 target surfaced by M0050**: locate the main-corpus M-numbers corresponding to Steps 261, 285–290 (and the forward-planned 291–295) in this reconstruction's own completed main-corpus registry (M0001–2376), to reconcile the two lineages' independently-derived findings and resolve the equality-taxonomy and epistemic-status-vocabulary duplications.
+
+Next: continue the sequential pass from M0051 (`satisfaction-by-requirement-class-three-valued-sat-predicate.md`) onward, toward the 282-file completion target.
+
+---
+
+## Update (2026-09-04, continued further): mathematical_ideas_that_can_be_implemented/ pass — 57/282 done
+
+Continuing past the 50/282 checkpoint (M0051–M0057 this session):
+
+- **M0051–M0056**: Confirmed the KR-SIM-2026-09-02 experiment series was actually executed across multiple runs (-B, -D, and a further "H" repair/re-order run), converging on a genuine three-valued `Sat_c` satisfaction-predicate specification (eight requirement classes) before discovering it was structurally inadequate — **the sharpest finding: "the satisfaction family has no place to attach truth" (all eight Sat_c classes are non-factive)**, plus a real pre-implementation non-totality defect in `Sat_content`, a U-propagation scaling law under Kleene conjunction, and a well-foundedness problem in `Sat_op`. Introduced a fourth Zero-closure candidate (`Zero_reasoned`) and the sharp result **Closure⇏Truth**. Surfaced a genuine experiment-ID naming collision (an experiment titled "G" assigned ID "-E", while a different experiment later claims ID "-G").
+- **M0057 — MAJOR ARCHITECTURAL BREAKTHROUGH**: dissolves the entire Sat_c/Eval_c/Zero deadlock by separating **Zero Lens** (`ZeroLens(K_t,Γ_t,ℒ)→Boundary_t` — a rich, structured boundary-examination operation) from **Zero Closure** (the still-genuinely-open three-valued-or-otherwise closure predicate). Shows the presumed "Contradiction+Evaluation+Zero domain coupling" the experiments had found is not a fundamental coupling at all — it dissolves into four independent formal operations. **Repositions Zero as more fundamental than Sat** (a meta-epistemic operation over representation boundaries, not a wrapper around Sat). Reframes the recurring "U" value as a *coarse projection* of a richer boundary rather than a fundamental ontological state — explaining precisely why every attempt to add a fourth truth value (3→4) failed to solve the underlying information-loss problem. Yields a concrete, testable hypothesis with kernel-minimality consequences: **`DetectGap` may be a mere projection of `ZeroLens`, not a kernel primitive** (directly relevant to the still-unresolved 13-vs-8 kernel debate). Cross-connects to M0050's own four-relation equality taxonomy (K₁≡_Q K₂ does not imply equal boundaries unless the Zero lens is part of the equivalence contract) — another genuine link between the KR-SIM lane and the main-corpus bridge material.
+
+**New independently-numbered registry**: ZI-01 through ZI-10 (Zero Invariants), joining the growing list of unreconciled numbered registries (EW-*, I1-I9, G1-G10, G1-G9 categories, P1-P20) flagged for the eventual global-reclassification pass.
+
+Next: continue the sequential pass from M0058 (`review-of-the-zero-document-non-collapse-and-the-boundary-problem.md`) onward.
