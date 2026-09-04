@@ -1,6 +1,6 @@
 **Updated:** 2026-09-04 (mathematical_ideas_that_can_be_implemented/ pass, 40/282 done — measure-theoretic Knowledge Space apparatus now formally crystallized; kernel-minimality shown representation-dependent; two persistent unresolved cross-references, "Freedman" ×6 and "Brown-Hwang" ×3) *(additive — this block is the newest; every block below stands as history.)*
 
-**Updated:** 2026-09-04 *(additive — the **Pass-1 re-attribution DETERMINED: the model does NOT permit attaching a fresh process to the existing lane → returned to PO/ARB; one-mutation-owner cost flagged** block is the newest; every block below stands as history)*
+**Updated:** 2026-09-04 *(additive — the **Pass-1 performer lane ESTABLISHED (Option 1, acts 1–3 recorded separately) · performer now ATTRIBUTABLE but NOT permitted · V-3 untouched · Pass 1 still NOT started** block is the newest; every block below stands as history)*
 
 Continuing autonomously (MD-019) past the 20/282 checkpoint above. Key developments M0021-M0040:
 
@@ -738,6 +738,20 @@ adopted (docs/plans/*edition-2-completion-roadmap-plan.md). Next: III.10 → Par
 | ❓ **OPEN — the PO/ARB's ruling** | *Does a runtime that performed read-only orientation and produced advisory output about the appointment path (but no write and no assessment of the review subject) satisfy the freshness/independence condition for the Governance adoption-review role?* **D-i** start a genuinely new session → question moot, `PASS` on facts, **no precedent created** · **D-ii** rule the question → gives `REVIEW_INDEPENDENCE_POLICY` its **first concrete precedent**, estate-wide. **No recommendation made between them** — the candidate does not rule on its own independence. |
 | ⛔ **Unchanged** | `KOS-OPERATING-MODEL-001` **VERIFIED · NOT ADOPTED · NOT AUTHORIZED** · `AST-019`/`AMENDMENT-001` **IMPLEMENTED · NOT VERIFIED · NOT ADOPTED · NOT AUTHORIZED** (§38) · binding path still `REGISTER(governance)` → `HANDOFF` from `fc59bb0a` → **human START (G-3)** → review → STOP → PO/ARB adoption decision (**AST-019 is not this step's mechanism** — `CONFLICTING_ASSIGNMENT`, GO-13). |
 | 🚫 **Non-actions** | no REGISTER · no HANDOFF · no START · no CONTINUATION · no grant · no lane · no workflow transition · no adoption review · no adoption recommendation · no independence ruling · no self-appointment · no change to AST-015/016/017/018/019, the operating model, or the preserved prompt · no EKS-07. |
+
+---
+
+## 📍 UPDATE (2026-09-04, **`KOS-CONTRACT-NEUTRALITY-001` — Pass-1 performer lane **ESTABLISHED** (PO/ARB **Option 1**) as **three separately recorded acts** · performer now **ATTRIBUTABLE but NOT PERMITTED** · ⛔ **V-3 NOT closed / accepted / amended / adjudicated** · **Pass 1 still NOT started** — human `START` outstanding)
+
+| | |
+|---|---|
+| 🎬 **PO/ARB act (G-3), verbatim** | *"Create a new lane for the fresh performer, amend the existing Pass-1 grant to name that lane, and perform the necessary governed handoff from the currently open V-3 lane. **Do not close, accept, amend, or adjudicate the V-3 determination. Preserve the V-3 lane's unresolved state and provenance.**"* Recorded as **separate acts** on the PO/ARB's instruction — *"it lets you prove later exactly what was decided, by whom, and what was not decided."* |
+| ✅ **Acts 1–3** | **1** `REGISTER seq 41` — new lane **`S5-architecture-pass1-evidence-reconciliation`** (role `architecture`, predecessor `S4-architecture-v3-determination`). **2** grant **`G-KOS-CONTRACT-PASS1-RECONCILE-AMD1`** — **performer clause ONLY**. **3** `HANDOFF seq 42` — `S4` → `S5`, token `T-KOS-CONTRACT-PASS1-RECONCILE`. All accepted. **State:** `OPEN` · `mutationOwner: null` · `S4` **`HANDED_OFF`** · `S5` **`CREATED`** · **42 transitions** · 4 grants in force. |
+| 🔬 **Act 4 gate — VERIFIED, not asserted** | The performer now resolves **`RESOLVED · attribution MATCH · role architecture · authorized_to_act FALSE`**. **This is exactly right: it is now legitimately ATTRIBUTABLE but NOT PERMITTED TO WORK.** Acts 1–3 solved **identity**; they conferred **no permission**. **`mutationOwner` is `null`, not `S5`** — a handoff *releases* ownership and it passes to the successor **only at `START`** (`Inv F`/`G-3`). The work item is presently held by nobody; that is the honest intermediate state. |
+| 🛡️ **What was preserved (the binding condition)** | **V-3 substantive question: OPEN · UNRESOLVED**, untouched. **`S4` attribution and provenance: preserved** — its `executionContext` is immutable and unaltered; `HANDED_OFF` is a **mechanical consequence of `Inv C`**, **not** a resolution, closure, acceptance or adjudication — and that sentence is written **onto the handoff transition itself** so it cannot be misread from the record alone. **V-3 grants unchanged**, both still `AUTHORIZED`, still `PROPOSAL ONLY` (re-verified after the writes). **Base Pass-1 grant unchanged**; `AMD1` alters **only** the named performer — not scope, deliverable, evidence set, V-3 ranking rule, containment rule, not-authorized list, vocabularies or stop conditions, and it grants no `START`. **Neither V-3 determination is accepted.** |
+| ⚠️ **One disclosed choice** | `REGISTER` requires a **role**, and **role is immutable once recorded (`R8`)**. Governance chose **`architecture`** — it continues the assignment family the Pass-1 grant originally named and is the closest declared role. **Role is not authority:** the grant is, and its deliverable is an **evidence determination, explicitly not an architecture decision**. **If a different role is preferred it must be raised BEFORE `START`** — afterwards the fix is a new assignment, not an edit. |
+| ⬜ **Next, in order** | **(a)** the performer re-runs the resolver against itself and confirms *attributable but must not begin* · **(b)** **a human records `START`** — only then does ownership pass to `S5` and Pass 1 become permitted · **(c)** Pass 1 runs to the unchanged prepared direction. **Until (b), no Pass-1 work is permitted**, and the containment rule stands. |
+| ⛔ **Non-actions** | No `START` · no Pass-1 work · **no V-3 closure/acceptance/amendment/adjudication** · no change to V-3 grants or the base Pass-1 grant · no `executionContext` edit (immutable) · no independence assessment of the performer (none commissioned) · do-not-modify list untouched · `KOS-LCOM4-CONTRACT-001` not reopened. |
 
 ---
 
@@ -5440,3 +5454,32 @@ Continuing past the 50/282 checkpoint (M0051–M0057 this session):
 **New independently-numbered registry**: ZI-01 through ZI-10 (Zero Invariants), joining the growing list of unreconciled numbered registries (EW-*, I1-I9, G1-G10, G1-G9 categories, P1-P20) flagged for the eventual global-reclassification pass.
 
 Next: continue the sequential pass from M0058 (`review-of-the-zero-document-non-collapse-and-the-boundary-problem.md`) onward.
+
+---
+
+## Update (2026-09-04, continued further still): mathematical_ideas_that_can_be_implemented/ pass — 76/282 done
+
+Continuing past the 57/282 checkpoint (M0058–M0076 this session):
+
+- **M0058–M0064**: A rigorous critique-and-execution cycle around the Zero Lens breakthrough. M0058 proves Zero **cannot be an oracle for unknown unknowns** (a genuine formal impossibility result) and repairs the ZeroLens signature to include an explicit Inquiry argument. **M0064 ("Artifact I") is the first genuinely EXECUTED test** of the boundary formulation — confirms a 6/6 contradiction-repair under all three contradiction models, **explicitly retracts an earlier experiment's own prior conclusion** ("the codomain and closure questions are not separable... that was wrong"), and confirms `DetectGap`'s non-primitive status via **two independently converging lanes** (the kernel-reduction lane at 12/12 derivable + the Zero-lane boundary projection) — explicitly corroboration, not derivation.
+- **M0065–M0076 — a distinct sub-thread**: a run of documents applying an unrigorous sexual/tantric metaphor ("zero as yoni," "orgasm as epistemic closure") to KnowledgeOS, alternating between low-value analogical documents (M0065, M0066, M0068, M0070, M0075 — recorded as low-importance, no formal content, several directly contradicting already-established findings without engagement) and **repeated disciplined rescues** (M0067, M0071, M0073, M0074, M0076) that extract genuinely useful formal content while explicitly rejecting the numerological claims. The strongest rescued contributions: an **Argument Standing/Reconciliation** layer inserted into the evidence pipeline (M0071, recorded as candidate AR-01); a formalization of "epistemic closure" as a **transition event, never a state** (M0073/M0074/M0076); a **five-way non-collapse chain** Reconciliation≠Closure≠Determination≠Knowledge≠Truth (M0074); and — the most valuable single result — a **clean four-way Zero disambiguation** (mathematical zero / argument balance / the Zero Lens / epistemic closure, all explicitly "not the same object," M0076). This entire sub-thread stayed correctly quarantined from the formal theory (nothing promoted past `[PROP]`), demonstrating the pass's own anti-reification discipline holding up under repeated stress-testing by low-rigor input.
+
+**Corpus-integrity note**: multiple documents in the M0065–M0076 sub-thread directly reasserted formulations this pass's own earlier work (M0038, M0043, M0047) had explicitly and carefully rejected (e.g. Δ=K−I, "Ideal State=0") without any engagement or acknowledgment — flagged in each case, not silently corrected.
+
+Next: continue the sequential pass from M0077 (`what-eleven-experiments-established-a-synthesis.md`) onward, toward the 282-file completion target.
+
+---
+
+## Update (2026-09-04, continued yet further): mathematical_ideas_that_can_be_implemented/ pass — 77/282 done
+
+**M0077 — CAPSTONE SYNTHESIS OF THE ENTIRE EXPERIMENTAL ARC**: "What Eleven Experiments Established" consolidates the whole Sat_c/Zero/Boundary/kernel research programme (M0051–M0076) under a single unifying structural diagnosis: *"the programme has repeatedly defined a projection and then asked it to do the work of the structure it projects from"* — shown to be the exact same failure mode behind five apparently distinct breakdowns (Sat_c, Zero⟺Δ=∅, Gap, DetectGap, K_t=Γ(E_t,...)).
+
+Key confirmed/quantified results:
+- **Factivity-impossibility theorem confirmed with concrete numbers**: 420/10,000 paired-world violations — this is the KR-SIM lane's own independent reproduction of the exact factivity-impossibility finding this reconstruction already tracks from main-corpus files 2321/2324/2328.
+- **The Zero chain (Zero_strict⟹Zero_reasoned⟹Zero_weak) upgraded to fully proven [DEF] status** via exhaustive machine verification: 1,620,000 assignments, 0 counterexamples.
+- A rigorous **statistical self-audit of the programme's own methodology** — four dated corrections (vacuity is mandatory; put the confidence interval on the quantity that actually has sampling error; declare a paired vs. independent design; seed-reproducibility ≠ robustness) — concluding "model uncertainty dominates sampling uncertainty by a wide margin... randomized testing is the wrong instrument for semantic discrimination."
+- **A corpus-hygiene finding directly relevant to this reconstruction's own already-flagged corpus-count discrepancy (M0035)**: a derived analysis lane wrote its output into the primary corpus (325 files, all one day), with a hard-coded folder-exclusion rule blind to lanes created after it was written — "provenance should be a property of the artifact, not its directory" — the primary corpus grew ~1.7% during a single session. Worth cross-checking at the eventual MD-004 reconciliation.
+- The authoritative kernel-question verdict: **"a kernel selected now would be a selection of a representation, disguised as a discovery about knowledge."**
+- An ordered four-experiment forward plan (N-1: decide factivity as an architectural decision, not an experiment; N-2: define Contr and the fourth value together; N-3: define the epistemic-status ordering ⪰; N-4: test the 37 unsupported typed distinctions or drop them).
+
+Next: continue the sequential pass from M0078 (`kr-closure-2026-09-02-epistemic-closure-event-experiment.md`) onward.
