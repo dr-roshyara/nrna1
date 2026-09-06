@@ -1,0 +1,128 @@
+==============================================================================
+EXP-01 INDEPENDENT RECHECK — four operators, RAW vs PIPE semantics
+==============================================================================
+
+A. Duplicate invariance  A(E u {e1,e2}) = A(E u {e1}),  e1 ~ e2
+  MAX            raw(het-base): 0.8000 vs 0.8000 -> PASS | pipe: PASS | raw(singleton-base): PASS
+  WEIGHTED_MEAN  raw(het-base): 0.6000 vs 0.6667 -> FAIL | pipe: PASS | raw(singleton-base): PASS
+  SATURATING     raw(het-base): 0.8800 vs 0.9760 -> FAIL | pipe: PASS | raw(singleton-base): FAIL
+  BAYES_LIKE     raw(het-base): 0.7273 vs 0.9143 -> FAIL | pipe: PASS | raw(singleton-base): FAIL
+
+B. Independent corroboration  A(e1,e2) > A(e1),  e1 _|_ e2
+  MAX            0.7000 -> 0.7000 : FAIL
+  WEIGHTED_MEAN  0.7000 -> 0.7000 : FAIL
+  SATURATING     0.7000 -> 0.9100 : PASS
+  BAYES_LIKE     0.7000 -> 0.8448 : PASS
+
+C. Order invariance (all permutations of a 4-item set)
+  MAX            PASS
+  WEIGHTED_MEAN  PASS
+  SATURATING     PASS
+  BAYES_LIKE     PASS
+
+D. Associativity of the induced binary combiner (PF-4: never executed)
+  MAX                    PASS
+  WEIGHTED_MEAN(naive)   FAIL   (state-carrying (sum,count) mean IS associative)
+  SATURATING             PASS
+  BAYES_LIKE(odds)       PASS
+
+E. Contradiction preservation (designed; narrative-only historically)
+  MAX            netted(strong-conflict)=0.000 netted(weak-conflict)=0.000 -> distinct epistemic situations CONFLATED; scalar output cannot retain (S+,S-): FAIL as operator property
+  WEIGHTED_MEAN  netted(strong-conflict)=0.000 netted(weak-conflict)=0.000 -> distinct epistemic situations CONFLATED; scalar output cannot retain (S+,S-): FAIL as operator property
+  SATURATING     netted(strong-conflict)=0.000 netted(weak-conflict)=0.000 -> distinct epistemic situations CONFLATED; scalar output cannot retain (S+,S-): FAIL as operator property
+  BAYES_LIKE     netted(strong-conflict)=0.000 netted(weak-conflict)=0.000 -> distinct epistemic situations CONFLATED; scalar output cannot retain (S+,S-): FAIL as operator property
+  NOTE: retaining (S+,S-) is a REPRESENTATION-layer property; no scalar
+  operator can satisfy E. This is what defeats every scalar as foundation.
+
+F. Dependency awareness: A({api,llm1,llm2}) must equal A({api})
+  MAX            raw: 0.8000 vs 0.9000 -> FAIL | pipe: PASS
+  WEIGHTED_MEAN  raw: 0.8000 vs 0.8500 -> FAIL | pipe: PASS
+  SATURATING     raw: 0.8000 vs 0.9970 -> FAIL | pipe: PASS
+  BAYES_LIKE     raw: 0.8000 vs 0.9951 -> FAIL | pipe: PASS
+
+G. Irrelevance: Relevance(e,P)=0 must not strengthen P
+  MAX            raw: 0.6000 vs 0.9500 -> FAIL | pipe: PASS
+  WEIGHTED_MEAN  raw: 0.6000 vs 0.7750 -> FAIL | pipe: PASS
+  SATURATING     raw: 0.6000 vs 0.9800 -> FAIL | pipe: PASS
+  BAYES_LIKE     raw: 0.6000 vs 0.9661 -> FAIL | pipe: PASS
+  NOTE: irrelevance handling is a normalization-layer property for ALL
+  four operators, not only MAX/mean (the historical footnote's scope).
+
+H. Temporal validity: store-level property (stale item retained, not
+   counted as current). No operator has time semantics; PASS is a store
+   property under either semantics, N/A as a raw operator property.
+
+Bounded [0,1] (executed matrix's extra column; not a designed criterion)
+  MAX            PASS
+  WEIGHTED_MEAN  PASS CAVEAT: undefined on []
+  SATURATING     PASS
+  BAYES_LIKE     PASS CAVEAT: undefined on [0.0, 1.0]
+  BAYES_LIKE is undefined (0/0) on {0,1} jointly; WEIGHTED_MEAN undefined
+  on the empty set; MAX needs an empty-set convention. Numerical caveats.
+
+ADVERSARIAL: 100 duplicates of one s=0.7 observation
+  MAX            raw=0.700000  pipe=0.700000   (must equal 0.7 to be duplicate-safe)
+  WEIGHTED_MEAN  raw=0.700000  pipe=0.700000   (must equal 0.7 to be duplicate-safe)
+  SATURATING     raw=1.000000  pipe=0.700000   (must equal 0.7 to be duplicate-safe)
+  BAYES_LIKE     raw=1.000000  pipe=0.700000   (must equal 0.7 to be duplicate-safe)
+
+CALIBRATION (designed 'most important statistical test'; never executed)
+  SATURATING over 10 independent weak items (s=0.3): 0.9718
+  -> a '0.97' with no probability space, no likelihood, no calibration:
+     exactly the design's 'number pretending to be probability'.
+  BAYES_LIKE treating the API->LLM1/LLM2 chain as independent: 0.9846 vs correct single-source 0.8000
+  -> severe overconfidence from double-counting dependent evidence.
+
+==============================================================================
+COMPARISON WITH HISTORY (verdict table and CSV; GN-27: prose prevails)
+==============================================================================
+op             prop    RAW    PIPE   verdict   CSV   
+-----------------------------------------------------
+MAX            A       PASS   PASS   PASS      PASS  
+MAX            B       FAIL   FAIL   FAIL      FAIL  
+MAX            C       PASS   PASS   PASS      PASS  
+MAX            F       FAIL   PASS   PASS      PASS  
+MAX            G       FAIL   PASS   FAIL*     PASS  
+MAX            H       n/a    PASS   PASS      PASS  
+MAX            Bounded PASS   n/a    PASS      PASS  
+WEIGHTED_MEAN  A       FAIL   PASS   FAIL      PASS  
+WEIGHTED_MEAN  B       FAIL   FAIL   FAIL      FAIL  
+WEIGHTED_MEAN  C       PASS   PASS   PASS      PASS  
+WEIGHTED_MEAN  F       FAIL   PASS   FAIL      FAIL  
+WEIGHTED_MEAN  G       FAIL   PASS   FAIL*     FAIL  
+WEIGHTED_MEAN  H       n/a    PASS   PASS      PASS  
+WEIGHTED_MEAN  Bounded PASS   n/a    PASS      PASS  
+SATURATING     A       FAIL   PASS   PASS      PASS  
+SATURATING     B       PASS   PASS   PASS      PASS  
+SATURATING     C       PASS   PASS   PASS      PASS  
+SATURATING     F       FAIL   PASS   PASS      PASS  
+SATURATING     G       FAIL   PASS   PASS      PASS  
+SATURATING     H       n/a    PASS   PASS      PASS  
+SATURATING     Bounded PASS   n/a    PASS      PASS  
+BAYES_LIKE     A       FAIL   PASS   PASS      PASS  
+BAYES_LIKE     B       PASS   PASS   PASS      PASS  
+BAYES_LIKE     C       PASS   PASS   PASS      PASS  
+BAYES_LIKE     F       FAIL   PASS   PASS      PASS  
+BAYES_LIKE     G       FAIL   PASS   PASS      FAIL  
+BAYES_LIKE     H       n/a    PASS   PASS      PASS  
+BAYES_LIKE     Bounded PASS   n/a    PASS      PASS  
+
+READING (independent determination, no artifact modified):
+* Every historical PASS cell that my RAW run fails (SAT/A, SAT/F, BAYES/A,
+  BAYES/F, SAT/G, BAYES/G) is TRUE ONLY of the normalized pipeline
+  (N: E -> E/~ plus relevance filtering run before the operator). The
+  verdict's own §§2-3 and §8 say the collapse happens BEFORE the operator,
+  so the prose record is internally consistent under that reading.
+* CSV oddities re-derived: WM/A 'True' is exactly what a singleton-base
+  duplication test produces (mean(s,s)=s); MAX/G 'True' is the normalized
+  reading; BAYES/G 'False' is the raw reading. The CSV mixes semantics
+  across cells -- consistent with GN-27's 'inconsistent under any single
+  reading; unreliable standalone'. The adjudication STANDS.
+* The published negative verdict ('no simple scalar operator is sufficient
+  as the epistemic foundation') does NOT follow from the 7-column matrix
+  alone (SATURATING passes all seven columns). It DOES follow from the
+  matrix PLUS criterion E (no scalar can retain (S+,S-)) PLUS the
+  pre-operator dependency/duplicate work PLUS the calibration caution --
+  all of which the verdict states narratively. Independent recheck:
+  the negative conclusion is CONFIRMED and is in fact provable.
+

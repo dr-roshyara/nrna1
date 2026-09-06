@@ -1,0 +1,37 @@
+==============================================================================
+IS THE CORPUS'S OWN NECESSITY CRITERION ABLE TO DISCRIMINATE?
+commission GN-79 / GN-80 · NOTHING RATIFIED
+==============================================================================
+rows in 272A's D_mandatory register        : 19
+distinct distinctions                     : 19
+distinct required operations              : 19
+map distinction -> operation is TOTAL     : True
+map distinction -> operation is INJECTIVE : True
+map operation -> distinction is INJECTIVE  : True
+
+Consequence, computed:
+  operations serving more than one distinction : 0
+  distinctions with more than one realizer     : 0 (the register lists exactly ONE operation per row)
+
+  Therefore, for EVERY o in the register there is EXACTLY ONE d whose only
+  listed realizer is o. Removing o loses d. The criterion returns:
+
+      |O_core| = 19  =  |O_sem| — ALL 19 'necessary'
+
+  This is not a derivation. It is a RESTATEMENT: the register was written by
+  reading an operation off each distinction, so the necessity test over it
+  is a TAUTOLOGY. It cannot eliminate a single member, and it cannot
+  discover a member the register's author did not already name.
+
+  ** The criterion is only informative over a requirement set derived
+     INDEPENDENTLY of the operation vocabulary. That is why this
+     commission derives R_A from the RATIFIED invariants and flow
+     instead of from any candidate list. **
+
+==============================================================================
+SECOND FINDING — the criterion's index set is UNDEFINED in the source
+that states it:  step 277 §277.30 quantifies over R_mandatory and step 277
+never enumerates R_mandatory anywhere. 272A §272A.16 quantifies over
+D_mandatory, which IS enumerated (above) but is tautological. The two
+index sets are never linked to each other.
+==============================================================================

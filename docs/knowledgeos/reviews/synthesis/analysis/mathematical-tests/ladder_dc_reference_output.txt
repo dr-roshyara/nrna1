@@ -1,0 +1,34 @@
+==========================================================================
+Ladder / boundary / adjacent-states reference checks
+==========================================================================
+  skip Candidate->Accepted rejected : PASS (I-12 covering relation)
+  in-order promotion                : PASS (history ['Candidate', 'Supported', 'Accepted'])
+  10^6 evidence, no authority act   : PASS (not committed)
+  authority act crosses boundary    : PASS
+  silent rejection refused          : PASS (governed act required)
+  rejection preserved with reasoning: PASS
+
+Expressibility probe — source Omega_A = (Support, Acceptance, Commitment, Contest):
+  target state: Acceptance=Accepted AND Contest=Active (008 §11, board case)
+  layered-model options: stay 'Accepted' (contest invisible) or move to
+  'CONFLICTED' (acceptance suspended). NO single state carries both.
+  -> PF-6 residue CONFIRMED as an expressibility fact (not judged here).
+
+==========================================================================
+Decision Contract admissibility (042)
+==========================================================================
+  no-averaging (42.10): Pre=T, Assurance=T, Auth=T, Invariant=F
+    -> Admissible = False : PASS (a 95%-admissible decision is inadmissible)
+  Unknown invariant (42.12): -> None (Block) : PASS
+  refined form, Q (epistemic sufficiency) fails alone -> False : PASS
+    NOTE: under the ratified SIX-tuple (Pre,Inv,Auth,Post,Temporal,Evidence)
+    there is no component typed as epistemic sufficiency, so this block
+    is INEXPRESSIBLE without conflating Q into Evidence — PF-7's loss,
+    executable form. Also: the ratified 6-tuple has NO ratified
+    admissibility conjunction (42.9 omits Temporal; 42.41 is the
+    7-tuple's law) — a formal mismatch reported to the register.
+
+  042 falsification experiments, executed:
+    42.49 epistemic pass, auth fail -> False (expect False) : PASS
+    42.50 auth pass, hard inv fail  -> False (expect False) : PASS
+    42.51 safety-critical unknown   -> None (expect Block, never True) : PASS

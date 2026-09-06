@@ -1,0 +1,264 @@
+==============================================================================
+TASK 1 — THE COMPLETE CANDIDATE OPERATION UNIVERSE (mechanically unioned)
+commission GN-79 / GN-80 · NOTHING RATIFIED
+==============================================================================
+
+sources inventoried                        : 17
+  256.2     |  9 named | 0 excluded | step 256 §256.2 — 'the candidate operation vocabulary' (BOXED, and self-labelled 'a reco
+  256.x     |  2 named | 2 excluded | step 256 §§256.19-256.22 — signed operations outside the transformation family
+  257       |  6 named | 0 excluded | step 257 — the four discriminating operations + two named-only observers
+  259.7     |  9 named | 0 excluded | step 259 §259.7/§259.8 — the operations the prompt 'requires searching for', plus the pr
+  272A      | 19 named | 5 excluded | step 272A §272A.14/§272A.17 — O_sem = O_S u O_E u O_O u O_H u O_G, with the 19-row Manda
+  277       | 22 named | 5 excluded | step 277 §277.2/§277.3 — the reconstructed historical operation inventory
+  277.T     |  6 named | 0 excluded | step 277 §277.31 — T_candidate, the candidate state-transition kernel ('T_candidate != T
+  249       | 10 named | 0 excluded | step 249 §249.4/§249.19 — the operation matrix
+  250       | 17 named | 0 excluded | step 250 §250.3 + §§250.11-250.12 — the corpus-derived candidate inventory
+  232       | 11 named | 2 excluded | step 232 §232.3 + CQRS layer — 'the core operations'
+  algD      | 14 named | 0 excluded | verification/KNOWLEDGE-STATE-ALGEBRA.md §2 — 'the twelve operations' (+ split, query, wh
+  algE      |  5 named | 0 excluded | verification/TRANSFORMATION-CANONICAL-MODEL.md §2 — the fully instantiated transformatio
+  oderive   | 14 named | 0 excluded | canonical-construction/02-OPERATION-UNIVERSE.md + exec/oderive.py — the 14 operations re
+  274       | 10 named | 0 excluded | step 274 §274.6/§274.30 — candidate core transitions ('every cell of the closure matrix 
+  276       | 27 named | 0 excluded | step 276 §276.4 — O_core = O_S u O_E u O_H u O_G u O_Q u O_X, SIX families, INCLUDING th
+  281x      |  9 named | 0 excluded | step-281/exec/test_repair_selection.py — the set the EXECUTED harness calls 'the mandato
+  hand      |  1 named | 0 excluded | handoff/02-O-CORE-AUTHORITATIVE-DETERMINATION.md — the executed algebra's additional mem
+
+DISTINCT SEMANTIC-CORE OPERATION NAMES     : 57
+names EXCLUDED by at least one source      : 7  (Command, Delete, Deserialize, Event, Load, Save, Serialize)
+grand total distinct names (core+excluded) : 59
+
+--- MEMBERSHIP MATRIX -------------------------------------------------------
+op                      256.2   256.x     257   259.7    272A     277   277.T     249     250     232    algD    algE  oderiv     274     276    281x    hand   n
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Merge                       X               X               X       X       X       X       X       X       X       X               X       X       X          13
+Supersede                   X               X               X       X       X       X       X       X       X               X       X       X       X          13
+Validate                            X               X       X       X               X       X       X       X               X       X       X       X          12
+Replay                                              X       X       X               X       X               X               X       X       X       X          10
+Split                       X                       X               X       X       X       X       X       X                               X                   9
+Assert                                                      X       X       X                               X       X               X       X       X           8
+Reject                      X                       X               X               X       X       X                       X               X                   8
+Retract                                                     X       X       X                               X       X               X       X       X           8
+Assess                                              X       X                               X               X               X       X               X           7
+Remove                      X                                                       X       X       X       X               X                                   6
+Revise                      X               X                                       X       X       X                       X                                   6
+Add                         X                                                       X       X       X                       X                                   5
+Authorize                                           X       X       X                                                       X               X                   5
+Transform                   X               X                                       X       X       X                                                           5
+Qualify                                                     X       X                                                       X               X                   4
+Query                                                       X       X                                       X                               X                   4
+Relate                                                                                                      X       X                               X       X   4
+Withdraw                    X                       X                                       X                               X                                   4
+Approve                             X                               X                                                                       X                   3
+Compare                                                     X       X                                                                       X                   3
+LinkEvidence                                                        X       X                                                               X                   3
+Refute                                                      X       X                                                                       X                   3
+Support                                                     X       X                                                                       X                   3
+Trace                                                       X       X                                                                       X                   3
+ChangePolicy                                                        X                                                                       X                   2
+Create                                                                                      X               X                                                   2
+Derive                                                                                                                      X       X                           2
+Evaluate                                                            X                                                                       X                   2
+Explain                                                             X                                                                       X                   2
+Infer                                                       X                               X                                                                   2
+LineageQuery                                                        X                                                                       X                   2
+Promote                                             X                                                                       X                                   2
+ProvenanceQuery                                                     X                                                                       X                   2
+Accept                                                                                      X                                                                   1
+Apply                                                                                               X                                                           1
+Commit                                                                                      X                                                                   1
+Contest                                                                                                                             X                           1
+Delete                                                      -       -                                                                       X                   1
+Deserialize                                                 -       -                                                                       X                   1
+DetectContradiction                                         X                                                                                                   1
+Determine                                                                                                                   X                                   1
+Equal                                                       X                                                                                                   1
+ExplainRevision                             X                                                                                                                   1
+Identity                                                    X                                                                                                   1
+Load                                                        -       -                                                                       X                   1
+Observe                                                                                     X                                                                   1
+QualifyEvidence                                                                                                                     X                           1
+Reassess                                                                                            X                                                           1
+Refine                                                                                                      X                                                   1
+Reintroduce                                         X                                                                                                           1
+Resolve                                                     X                                                                                                   1
+Save                                                        -       -                                                                       X                   1
+Serialize                                                   -       -                                                                       X                   1
+SupersessionHistory                         X                                                                                                                   1
+contradicts                                                                                                                                         X           1
+noop                                                                                                                X                                           1
+resolve                                                                                                     X                                                   1
+X = enumerated as an operation   - = explicitly EXCLUDED by that source
+
+--- SOURCES THAT NAME AN OPERATION EXACTLY ONCE (singletons) ----------------
+24 names appear in exactly ONE source:
+  Accept                 only in 250
+  Apply                  only in 232
+  Commit                 only in 250
+  Contest                only in 274
+  Delete                 only in 276
+  Deserialize            only in 276
+  DetectContradiction    only in 272A
+  Determine              only in oderive
+  Equal                  only in 272A
+  ExplainRevision        only in 257
+  Identity               only in 272A
+  Load                   only in 276
+  Observe                only in 250
+  QualifyEvidence        only in 274
+  Reassess               only in 232
+  Refine                 only in algD
+  Reintroduce            only in 259.7
+  Resolve                only in 272A
+  Save                   only in 276
+  Serialize              only in 276
+  SupersessionHistory    only in 257
+  contradicts            only in 281x
+  noop                   only in algE
+  resolve                only in algD
+
+--- PAIRWISE DISAGREEMENT (symmetric difference over the semantic core) -----
+Only the enumerations that CLAIM to be an operation universe are compared.
+pair                  |A\B|  |B\A|  Jaccard   verdict
+------------------------------------------------------------------------------
+256.2 vs 259.7            6      6      0.20   INCOMPARABLE
+256.2 vs 272A             7     17      0.08   INCOMPARABLE
+256.2 vs 277              5     18      0.15   INCOMPARABLE
+256.2 vs 277.T            6      3      0.25   INCOMPARABLE
+256.2 vs 249              1      2      0.73   INCOMPARABLE
+256.2 vs 250              0      8      0.53   A subset B
+256.2 vs 232              1      3      0.67   INCOMPARABLE
+256.2 vs algD             5     10      0.21   INCOMPARABLE
+256.2 vs oderive          3      8      0.35   INCOMPARABLE
+256.2 vs 274              7      8      0.12   INCOMPARABLE
+256.2 vs 276              5     23      0.12   INCOMPARABLE
+256.2 vs 281x             7      7      0.12   INCOMPARABLE
+259.7 vs 272A             5     15      0.17   INCOMPARABLE
+259.7 vs 277              4     17      0.19   INCOMPARABLE
+259.7 vs 277.T            8      5      0.07   INCOMPARABLE
+259.7 vs 249              5      6      0.27   INCOMPARABLE
+259.7 vs 250              3     11      0.30   INCOMPARABLE
+259.7 vs 232              6      8      0.18   INCOMPARABLE
+259.7 vs algD             5     10      0.21   INCOMPARABLE
+259.7 vs oderive          2      7      0.44   INCOMPARABLE
+259.7 vs 274              6      7      0.19   INCOMPARABLE
+259.7 vs 276              4     22      0.16   INCOMPARABLE
+259.7 vs 281x             6      6      0.20   INCOMPARABLE
+272A vs 277               6      9      0.46   INCOMPARABLE
+272A vs 277.T            15      2      0.19   INCOMPARABLE
+272A vs 249              15      6      0.16   INCOMPARABLE
+272A vs 250              13     11      0.20   INCOMPARABLE
+272A vs 232              16      8      0.11   INCOMPARABLE
+272A vs algD             11      6      0.32   INCOMPARABLE
+272A vs oderive          13      8      0.22   INCOMPARABLE
+272A vs 274              12      3      0.32   INCOMPARABLE
+272A vs 276               6     14      0.39   INCOMPARABLE
+272A vs 281x             12      2      0.33   INCOMPARABLE
+277 vs 277.T             16      0      0.27   B subset A
+277 vs 249               16      4      0.23   INCOMPARABLE
+277 vs 250               16     11      0.18   INCOMPARABLE
+277 vs 232               17      6      0.18   INCOMPARABLE
+277 vs algD              14      6      0.29   INCOMPARABLE
+277 vs oderive           16      8      0.20   INCOMPARABLE
+277 vs 274               16      4      0.23   INCOMPARABLE
+277 vs 276                0      5      0.81   A subset B
+277 vs 281x              16      3      0.24   INCOMPARABLE
+277.T vs 249              3      7      0.23   INCOMPARABLE
+277.T vs 250              3     14      0.15   INCOMPARABLE
+277.T vs 232              3      8      0.21   INCOMPARABLE
+277.T vs algD             1      9      0.33   INCOMPARABLE
+277.T vs oderive          5     13      0.05   INCOMPARABLE
+277.T vs 274              2      6      0.33   INCOMPARABLE
+277.T vs 276              0     21      0.22   A subset B
+277.T vs 281x             2      5      0.36   INCOMPARABLE
+249 vs 250                0      7      0.59   A subset B
+249 vs 232                1      2      0.75   INCOMPARABLE
+249 vs algD               4      8      0.33   INCOMPARABLE
+249 vs oderive            3      7      0.41   INCOMPARABLE
+249 vs 274                6      6      0.25   INCOMPARABLE
+249 vs 276                4     21      0.19   INCOMPARABLE
+249 vs 281x               6      5      0.27   INCOMPARABLE
+250 vs 232                8      2      0.47   INCOMPARABLE
+250 vs algD               9      6      0.35   INCOMPARABLE
+250 vs oderive            8      5      0.41   INCOMPARABLE
+250 vs 274               12      5      0.23   INCOMPARABLE
+250 vs 276               11     21      0.16   INCOMPARABLE
+250 vs 281x              12      4      0.24   INCOMPARABLE
+232 vs algD               6      9      0.25   INCOMPARABLE
+232 vs oderive            5      8      0.32   INCOMPARABLE
+232 vs 274                8      7      0.17   INCOMPARABLE
+232 vs 276                6     22      0.15   INCOMPARABLE
+232 vs 281x               8      6      0.18   INCOMPARABLE
+algD vs oderive           9      9      0.22   INCOMPARABLE
+algD vs 274               7      3      0.41   INCOMPARABLE
+algD vs 276               6     19      0.24   INCOMPARABLE
+algD vs 281x              6      1      0.53   INCOMPARABLE
+oderive vs 274            9      5      0.26   INCOMPARABLE
+oderive vs 276            8     21      0.17   INCOMPARABLE
+oderive vs 281x          10      5      0.21   INCOMPARABLE
+274 vs 276                4     21      0.19   INCOMPARABLE
+274 vs 281x               3      2      0.58   INCOMPARABLE
+276 vs 281x              21      3      0.20   INCOMPARABLE
+
+NO TWO ENUMERATIONS AGREE.
+
+--- THE TWO NAMED UNRECONCILED OPERATIONS (commission T-3) ------------------
+  Split          named by: 256.2, 259.7, 277, 277.T, 249, 250, 232, algD, 276
+  LinkEvidence   named by: 277, 277.T, 276
+
+--- FORCED-BUT-UNNAMED / NAMED-BUT-UNFORCED (oderive's two-sided gap) ------
+  forced by oderive yet ABSENT from 256.2 u 259.7 : Derive, Determine, Qualify
+  named in 256.2 u 259.7 yet forced by NO law     : Merge, Reintroduce, Split, Transform
+
+--- NAME COLLISIONS (same token, different semantics) -----------------------
+  resolve:
+      (1) algD 'resolve' = ADD A resolves-EDGE (a relation constructor)
+      (2) 272A 'Resolve' = RESOLVE AN UNRESOLVED EPISTEMIC PROBLEM (O_E)
+  Create:
+      (1) 250 §250.4 'Create != necessarily Add' — a domain LIFECYCLE transition
+      (2) algD 'create' = produce the EMPTY state, output `0`
+  Reject:
+      (1) 256.11 Status(x): Proposed -> Rejected — an EPISTEMIC disposition on an item
+      (2) 277 §277.3 'Reject | Governance transition | Governance state | External'
+  Transform:
+      (1) 256.7/249 = the generic state transformer K x Params -> K
+      (2) 250 §250.23 — THREE distinct senses: epistemic / state / representation
+
+--- OPERATION-COUNT CLAIMS ACROSS THE RECORD -------------------------------
+  256.2     |O| =  9
+  259.7     |O| =  9
+  272A      |O| = 19
+  277       |O| = 22
+  277.T     |O| =  6
+  249       |O| = 10
+  250       |O| = 17
+  232       |O| = 11
+  algD      |O| = 14
+  oderive   |O| = 14
+  274       |O| = 10
+  276       |O| = 27
+  281x      |O| =  9
+  UNION     |O| = 57   <- the complete candidate universe
+  INTERSECTION of all claiming enumerations = 0  (EMPTY)
+
+--- THE ONE THING EVERY SOURCE AGREES ON --------------------------------
+  representation ops ['Deserialize', 'Load', 'Save', 'Serialize']
+    EXCLUDED by : ['272A', '277']
+    INCLUDED by : ['276']
+  -> AGREEMENT HOLDS: False
+
+--- PRE-CANONICAL / EARLIER-LANE ENUMERATIONS (counted separately) ------
+  007 O_K      |O| =  8
+  009 R_K      |O| =  9
+  051 Sigma    |O| =  9
+  025a-5       |O| =  9
+  187 R        |O| =  7
+  205 cmds     |O| = 14
+  032 pipe     |O| =  8
+  034 I        |O| = 10
+  025z Lord    |O| =  8
+  kernel       |O| =  7
+  historical union                 |O| = 69
+  historical names NOT in the live universe : 48
+    Abstain, AcquireEvidence, Act, ApproveDecision, Ask, AssertClaim, CancelAction, Capture, Clarify, CompleteAction, Conflict, Contextualize, Contradict, Corroborate, CreateAssessment, CreateDecision, CreateProposition, Decide, Defer, Downgrade, Execute, Experiment, Introduce, Invalidate, IssueAction, Measure, Model, ObserveOutcome, Predict, ProposeDecision, ReassessProposition, Recalculate, Record, RegisterEvidence, RejectDecision, RequestApproval, Retrieve, ReviseKnowledge, Simulate, SupersedeDecision, SupersedeEvidence, SupersedeProposition, ValidateClaim, ValidateEvidence, contest_count, explain, restatus, withdraw
+  GRAND UNION (live + historical)   |O| = 105
+
+==============================================================================

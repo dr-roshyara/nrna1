@@ -1,0 +1,53 @@
+==============================================================================
+TASK 8 — CONSISTENCY OF EVERY CANDIDATE OPERATION WITH THE RATIFIED CONSTRAINTS
+commission GN-79 / GN-80 · NOTHING RATIFIED
+==============================================================================
+operations checked : 55
+probe states       : 21
+arguments          : 18
+total applications : 20790
+
+--- A6 ADVERSARIAL: can evidence volume cross the boundary? ---
+  state: 1 Accepted item, 44 independent supporting evidence units, NO authority act
+  operations that produced Committed : 0  -> A6 HOLDS: evidence volume never crosses
+  PROBE CommitByEvidence             outcomes on the heavy state: ['REJECTED(authority)', 'REJECTED(structural)']
+  PROBE RevisePolicyDirect           outcomes on the heavy state: ['REJECTED(authority)', 'REJECTED(structural)']
+  PROBE CommitBySufficientSupport    outcomes on the heavy state: ['*** CROSSED A6 ***', 'REJECTED(structural)', 'ok']
+
+--- I-11 ADVERSARIAL: can an in-force policy be mutated off-route? ---
+  operations that changed the IN-FORCE POLICY RECORD off-route : 0  -> I-11 HOLDS
+  PROBE RevisePolicyDirect outcome : REJECTED(authority)
+
+--- I-5 / I-6 EXECUTED on the assessment operation ---
+  linked {e1}                                             -> grade ['s1']
+  linked {e1,e1dup}  (DUPLICATE added)                    -> grade ['s1']
+  linked {e1,e1dup,e3}  (INDEPENDENT added)               -> grade ['s1', 's3']
+  linked {e1,e1dup,e3,e4dep}  (UNRESOLVED DEPENDENCY added) -> grade ['s1', 's3']
+  I-5 duplicates do NOT amplify        : True
+  I-5 corroboration DOES amplify       : True
+  I-6 unresolved dependency EXCLUDED   : True
+  no aggregation OPERATOR was selected : True  (grade is a SET of source classes; OQ-3 untouched)
+
+==============================================================================
+VIOLATION REPORT
+==============================================================================
+
+Art.8 — 1 distinct violations, 1 operations
+  Reject                 CONFLICTED -> Rejected with NO governed act
+
+I-12 — 4 distinct violations, 2 operations
+  Reject                 Conflicted -> Rejected
+  Split                  creates an item directly at Accepted — entry above the first rung
+  Split                  creates an item directly at Conflicted — entry above the first rung
+  Split                  creates an item directly at Supported — entry above the first rung
+
+------------------------------------------------------------------------------
+MODEL-DETECTED AMBIGUITIES (not violations — the canon does not decide)
+------------------------------------------------------------------------------
+
+I-11/R-1 — 3 operations
+  Assess                 mutates POLICY-AS-CONTENT while a policy record of the same id is IN FORCE — legal under R-1 taken literally, yet the canon never binds the in-force record to its content item
+  Reject                 mutates POLICY-AS-CONTENT while a policy record of the same id is IN FORCE — legal under R-1 taken literally, yet the canon never binds the in-force record to its content item
+  Withdraw               mutates POLICY-AS-CONTENT while a policy record of the same id is IN FORCE — legal under R-1 taken literally, yet the canon never binds the in-force record to its content item
+
+==============================================================================

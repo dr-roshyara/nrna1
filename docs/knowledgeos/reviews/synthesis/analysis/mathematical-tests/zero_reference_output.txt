@@ -1,0 +1,35 @@
+==========================================================================
+Zero(K, EC) reference implementation — source-level status vector
+==========================================================================
+
+§25D.8 example (expect r_version Satisfied, backup Unknown, approval Missing):
+  CurrentVersionKnown          Satisfied
+  BackupVerified               Unknown  <- gap
+  GovernanceApprovalObtained   Missing  <- gap
+  MATCHES the source's own expected output.
+
+25D.38 falsification tests, executed (historically declared-only):
+  T1 complete state -> gaps == {} : PASS
+  T2 unknown blocker -> nonempty  : PASS
+  T3 irrelevant info, no new gap  : PASS
+  T4 duplicates leave Zero fixed  : PASS
+  T5 conflict -> Conflicted       : PASS
+  T6 stale -> Stale               : PASS
+  T7 no invented gaps             : PASS
+  T8 old contract replay stable   : PASS
+
+Gamma sufficiency (Insufficient) and the never-a-number law:
+  1 item under a 2-independent bar -> Insufficient (PASS)
+  NOTE: 'Insufficient' is expressible ONLY because Gamma is carried;
+  the ratified four-arm summary (unknown/conflicting/missing/invalid)
+  has no arm for it, nor for Stale or Prohibited — the PF-1 loss,
+  demonstrated here as executable semantics, not as prose.
+
+Scalar-collapse counterexample (025d §25D.17, executed):
+  |gaps(A)| = |gaps(B)| = 2, yet A != B as work plans (PASS) — any count/scalar conflates them.
+
+COMPUTABILITY VERDICT (this script is the witness):
+  Zero is computable, total and terminating over finite R, RELATIVE to
+  per-requirement evaluators; complexity O(|R| * cost(evaluate)).
+  What is NOT established: the evaluators themselves (Gamma semantics,
+  HumanAuthorization oracles) and eta (EC construction) — OQ-1/AF-F-1.

@@ -1,0 +1,341 @@
+==============================================================================
+EXECUTED OPERATION-NECESSITY / MINIMALITY TEST
+commission GN-79 / GN-80 · ARCHITECTURE-THEORY lane · NOTHING RATIFIED
+==============================================================================
+candidate pool size (names)          : 55
+mandatory capabilities (R_A)         : 15  [13 ratified-forced, 2 proposed]
+adversarial probes (not pool members): 3
+
+==============================================================================
+STEP 0 — MECHANICAL EFFECT-EQUIVALENCE OF THE CANDIDATE POOL
+Two names are equivalent iff identical (state,outcome) on every probe.
+==============================================================================
+distinct effect classes              : 39
+classes containing >1 name           : 7
+  COLLAPSED: Compare == Equal == Evaluate == Explain == ExplainRevision == Identity == LineageQuery == ProvenanceQuery == Query == SupersessionHistory
+  COLLAPSED: Add == Assert == Create
+  COLLAPSED: Accept == Determine
+  COLLAPSED: ChangePolicy == EnactPolicyVersion
+  COLLAPSED: LinkEvidence == Support
+  COLLAPSED: Promote == Transform
+  COLLAPSED: Remove == Retract
+representatives used for the test    : 39
+NO-OP-ON-K names (never change state on any probe): 3
+  Compare, Trace, noop
+search pool (state-changing reps)    : 36
+  Accept, Act, Add, AdmitEvidence, Approve, AssertPolicy, Assess, Authorize, ChangePolicy, Commit, ComputeZero, Decide, Derive, DetectContradiction, Infer, LinkEvidence, MarkConflict, Merge, Observe, Promote, Propose, Qualify, RecognizeDimension, Refine, Refute, Reintroduce, Reject, Relate, Remove, Replay, Resolve, Revise, Split, Supersede, Validate, Withdraw
+
+==============================================================================
+STEP 1 — WITNESS SEARCH  (Closure computed per capability)
+==============================================================================
+[A1 searched in 4.3s]
+
+A1  depth<=4  grade=RATIFIED-FORCED
+     forced by: ladder + I-12 (Supported reachable only from Candidate)
+     minimal witnesses: 2
+       {Promote}
+       {Authorize, MarkConflict, Resolve}
+     ops appearing in some witness (4): Authorize, MarkConflict, Promote, Resolve
+[A2 searched in 0.4s]
+
+A2  depth<=3  grade=RATIFIED-FORCED
+     forced by: ladder + I-12 + v0.2 Determination concept row
+     minimal witnesses: 2
+       {Accept}
+       {Promote}
+     ops appearing in some witness (2): Accept, Promote
+[A3 searched in 0.4s]
+
+A3  depth<=3  grade=RATIFIED-FORCED
+     forced by: A6 / I-4 — authority act crosses the boundary
+     minimal witnesses: 1
+       {Authorize, Commit}
+     ops appearing in some witness (2): Authorize, Commit
+[A4 searched in 0.0s]
+
+A4  depth<=4  grade=RATIFIED-FORCED
+     forced by: I-11 + v0.2 §3 stratification loop
+     minimal witnesses: 1
+       {Approve, Authorize, ChangePolicy}
+     ops appearing in some witness (3): Approve, Authorize, ChangePolicy
+[A5 searched in 68.1s]
+
+A5  depth<=6  grade=RATIFIED-FORCED
+     forced by: I-5 + I-6 (the only TESTED pair)
+     minimal witnesses: 1
+       {Assess, LinkEvidence}
+     ops appearing in some witness (2): Assess, LinkEvidence
+[A6 searched in 0.0s]
+
+A6  depth<=2  grade=RATIFIED-FORCED
+     forced by: Zero(K,EC) + I-9 four-way typology
+     minimal witnesses: 1
+       {ComputeZero}
+     ops appearing in some witness (1): ComputeZero
+[A7 searched in 0.1s]
+
+A7  depth<=3  grade=RATIFIED-FORCED
+     forced by: SourceObs != SemanticObs; Evidence concept row
+     minimal witnesses: 1
+       {Observe, Qualify}
+     ops appearing in some witness (2): Observe, Qualify
+[A8 searched in 0.0s]
+
+A8  depth<=2  grade=RATIFIED-FORCED
+     forced by: FA-1 D-FA-1 / Art.7 REJECTED terminal-preserved
+     minimal witnesses: 1
+       {Reject}
+     ops appearing in some witness (1): Reject
+[A9 searched in 14.8s]
+
+A9  depth<=4  grade=RATIFIED-FORCED
+     forced by: FA-1 D-FA-1 / Art.8 CONFLICTED governed suspension
+     minimal witnesses: 5
+       {Authorize, MarkConflict}
+       {Add, DetectContradiction, Relate}
+       {DetectContradiction, Infer, Relate}
+       {DetectContradiction, LinkEvidence, Refute}
+       {DetectContradiction, Relate, Split}
+     ops appearing in some witness (9): Add, Authorize, DetectContradiction, Infer, LinkEvidence, MarkConflict, Refute, Relate, Split
+[A10 searched in 0.6s]
+
+A10  depth<=3  grade=RATIFIED-FORCED
+     forced by: FA-1 D-FA-1 / Art.8 'until governed resolution'
+     minimal witnesses: 1
+       {Authorize, Resolve}
+     ops appearing in some witness (2): Authorize, Resolve
+[A11 searched in 0.0s]
+
+A11  depth<=2  grade=RATIFIED-FORCED
+     forced by: Art.9 / I-9 UNKNOWN != ABSENT (FA-1 evidence layer)
+     minimal witnesses: 2
+       {Observe}
+       {RecognizeDimension}
+     ops appearing in some witness (2): Observe, RecognizeDimension
+[A12 searched in 0.1s]
+
+A12  depth<=3  grade=RATIFIED-FORCED
+     forced by: I-2 proposal != decision; v0.2 §3 flow node
+     minimal witnesses: 1
+       {ComputeZero, Propose}
+     ops appearing in some witness (2): ComputeZero, Propose
+[A13 searched in 67.0s]
+
+A13  depth<=8  grade=RATIFIED-FORCED-CAPABILITY / PROPOSED-FORMULATION
+     forced by: 042 DC 6-tuple + I-3; the SIX-SLOT CONJUNCTION is NOT ratified
+     *** UNREACHABLE with the whole pool — capability NOT EXPRESSIBLE ***
+     ops appearing in some witness (0): 
+[A14 searched in 0.0s]
+
+A14  depth<=2  grade=PROPOSED
+     forced by: action loop; far side OPEN BY RULING (OQ-4)
+     minimal witnesses: 1
+       {Act}
+     ops appearing in some witness (1): Act
+[A15 searched in 0.0s]
+
+A15  depth<=2  grade=PROPOSED
+     forced by: State != History — a corpus law, NOT in the ratified surface
+     minimal witnesses: 1
+       {Replay}
+     ops appearing in some witness (1): Replay
+
+witness-size cap: 4  (all minimal witnesses of size <= 4 enumerated EXACTLY)
+!! per-subset BFS budget reached somewhere for: ['A5', 'A13']
+DIRECTION OF THE BOUND: any witness missed by the size cap or a budget can only
+UNDERSTATE multiplicity and OVERSTATE necessity - never the reverse.
+
+==============================================================================
+STEP 1b — CONSTRUCTED WITNESSES (for capabilities where the
+size-4 enumeration returned nothing: reachability shown by an explicit program)
+==============================================================================
+
+A13: program of 7 steps, support size 7
+     LinkEvidence(i1:e1) -> ok
+     Assess(i1) -> ok
+     Validate(-) -> ok
+     Authorize(i1) -> ok
+     ComputeZero(-) -> ok
+     Propose(next) -> ok
+     Decide(-) -> ok
+     GOAL REACHED: True
+     support: {Assess, Authorize, ComputeZero, Decide, LinkEvidence, Propose, Validate}
+     -> recorded as a CONSTRUCTED (not proven-minimal) witness; the
+        executed enumeration showed NO witness of size <= 4, so any
+        minimal witness for A13 has size >= 5.
+
+==============================================================================
+STEP 2 — PER-OPERATION NECESSITY over R_A (all 15 capabilities)
+  o NECESSARY  <=>  exists r : EVERY witness of r contains o
+==============================================================================
+NECESSARY operations: 16
+  Act                    loses A14
+  Approve                loses A4
+  Assess                 loses A13, A5
+  Authorize              loses A10, A13, A3, A4
+  ChangePolicy           loses A4
+  Commit                 loses A3
+  ComputeZero            loses A12, A13, A6
+  Decide                 loses A13
+  LinkEvidence           loses A13, A5
+  Observe                loses A7
+  Propose                loses A12, A13
+  Qualify                loses A7
+  Reject                 loses A8
+  Replay                 loses A15
+  Resolve                loses A10
+  Validate               loses A13
+NOT necessary (removal costs no capability): 20
+  Accept, Add, AdmitEvidence, AssertPolicy, Derive, DetectContradiction, Infer, MarkConflict, Merge, Promote, RecognizeDimension, Refine, Refute, Reintroduce, Relate, Remove, Revise, Split, Supersede, Withdraw
+
+==============================================================================
+STEP 2 — PER-OPERATION NECESSITY over R_A_ratified (13 ratified-forced only)
+  o NECESSARY  <=>  exists r : EVERY witness of r contains o
+==============================================================================
+NECESSARY operations: 14
+  Approve                loses A4
+  Assess                 loses A13, A5
+  Authorize              loses A10, A13, A3, A4
+  ChangePolicy           loses A4
+  Commit                 loses A3
+  ComputeZero            loses A12, A13, A6
+  Decide                 loses A13
+  LinkEvidence           loses A13, A5
+  Observe                loses A7
+  Propose                loses A12, A13
+  Qualify                loses A7
+  Reject                 loses A8
+  Resolve                loses A10
+  Validate               loses A13
+NOT necessary (removal costs no capability): 22
+  Accept, Act, Add, AdmitEvidence, AssertPolicy, Derive, DetectContradiction, Infer, MarkConflict, Merge, Promote, RecognizeDimension, Refine, Refute, Reintroduce, Relate, Remove, Replay, Revise, Split, Supersede, Withdraw
+
+==============================================================================
+STEP 2 — PER-OPERATION NECESSITY over R_A_strict (12: ratified-forced AND ratified-formulated; A13 dropped because its six-slot conjunction is PROPOSED, not ratified)
+  o NECESSARY  <=>  exists r : EVERY witness of r contains o
+==============================================================================
+NECESSARY operations: 12
+  Approve                loses A4
+  Assess                 loses A5
+  Authorize              loses A10, A3, A4
+  ChangePolicy           loses A4
+  Commit                 loses A3
+  ComputeZero            loses A12, A6
+  LinkEvidence           loses A5
+  Observe                loses A7
+  Propose                loses A12
+  Qualify                loses A7
+  Reject                 loses A8
+  Resolve                loses A10
+NOT necessary (removal costs no capability): 24
+  Accept, Act, Add, AdmitEvidence, AssertPolicy, Decide, Derive, DetectContradiction, Infer, MarkConflict, Merge, Promote, RecognizeDimension, Refine, Refute, Reintroduce, Relate, Remove, Replay, Revise, Split, Supersede, Validate, Withdraw
+
+==============================================================================
+STEP 2b — UNIQUE-WRITER CROSS-CHECK (independent of the witness search)
+  If exactly ONE operation in the pool writes a field the goal requires, its
+  necessity does not depend on the search's completeness at all.
+==============================================================================
+fields with exactly ONE writer in the search pool: 10
+  approvals              <- only Approve
+  auth_acts              <- only Authorize
+  decisions              <- only Decide
+  item.committed         <- only Commit
+  item.version           <- only Revise
+  proposals              <- only Propose
+  qualified              <- only Qualify
+  replays                <- only Replay
+  validations            <- only Validate
+  zero                   <- only ComputeZero
+
+fields with MORE THAN ONE writer (where necessity DOES depend on the search):
+  dims                   <- Observe, RecognizeDimension
+  ev                     <- AdmitEvidence, Qualify, Refute
+  item.ev                <- LinkEvidence, Merge, Refute, Split
+  item.grade             <- Assess, LinkEvidence, Merge, Refute, Split
+  item.present           <- Add, Infer, Merge, Remove, Split
+  item.status            <- Accept, Add, DetectContradiction, Infer, MarkConflict, Promote, Reject, Resolve, Split
+  item.value             <- Add, Infer, Revise
+  item.withdrawn         <- Reintroduce, Withdraw
+  obs                    <- Act, Observe
+  pols                   <- AssertPolicy, ChangePolicy
+  rels                   <- Derive, Infer, Refine, Relate, Remove, Split, Supersede
+
+==============================================================================
+STEP 3 — ALL MINIMAL SUFFICIENT REGISTRIES over R_A (all 15)
+==============================================================================
+number of MINIMAL sufficient registries : 6
+sizes                                   : [18, 19, 20]
+INTERSECTION (in EVERY minimal registry, size 16):
+  Act, Approve, Assess, Authorize, ChangePolicy, Commit, ComputeZero, Decide, LinkEvidence, Observe, Propose, Qualify, Reject, Replay, Resolve, Validate
+UNION (appears in at least one, size 25):
+  Accept, Act, Add, Approve, Assess, Authorize, ChangePolicy, Commit, ComputeZero, Decide, DetectContradiction, Infer, LinkEvidence, MarkConflict, Observe, Promote, Propose, Qualify, Refute, Reject, Relate, Replay, Resolve, Split, Validate
+UNDETERMINED BAND (union minus intersection, size 9):
+  Accept, Add, DetectContradiction, Infer, MarkConflict, Promote, Refute, Relate, Split
+ALL 6 MINIMAL REGISTRIES — ENUMERATED, NONE SELECTED:
+  R1 (|R|=18)  = CORE + {Accept, MarkConflict}
+  R2 (|R|=18)  = CORE + {MarkConflict, Promote}
+  R3 (|R|=19)  = CORE + {DetectContradiction, Promote, Refute}
+  R4 (|R|=20)  = CORE + {Add, DetectContradiction, Promote, Relate}
+  R5 (|R|=20)  = CORE + {DetectContradiction, Infer, Promote, Relate}
+  R6 (|R|=20)  = CORE + {DetectContradiction, Promote, Relate, Split}
+  where CORE = {Act, Approve, Assess, Authorize, ChangePolicy, Commit, ComputeZero, Decide, LinkEvidence, Observe, Propose, Qualify, Reject, Replay, Resolve, Validate}
+CROSS-CHECK  intersection == necessary-set ? True
+
+==============================================================================
+STEP 3 — ALL MINIMAL SUFFICIENT REGISTRIES over R_A_ratified (13)
+==============================================================================
+number of MINIMAL sufficient registries : 6
+sizes                                   : [16, 17, 18]
+INTERSECTION (in EVERY minimal registry, size 14):
+  Approve, Assess, Authorize, ChangePolicy, Commit, ComputeZero, Decide, LinkEvidence, Observe, Propose, Qualify, Reject, Resolve, Validate
+UNION (appears in at least one, size 23):
+  Accept, Add, Approve, Assess, Authorize, ChangePolicy, Commit, ComputeZero, Decide, DetectContradiction, Infer, LinkEvidence, MarkConflict, Observe, Promote, Propose, Qualify, Refute, Reject, Relate, Resolve, Split, Validate
+UNDETERMINED BAND (union minus intersection, size 9):
+  Accept, Add, DetectContradiction, Infer, MarkConflict, Promote, Refute, Relate, Split
+ALL 6 MINIMAL REGISTRIES — ENUMERATED, NONE SELECTED:
+  R1 (|R|=16)  = CORE + {Accept, MarkConflict}
+  R2 (|R|=16)  = CORE + {MarkConflict, Promote}
+  R3 (|R|=17)  = CORE + {DetectContradiction, Promote, Refute}
+  R4 (|R|=18)  = CORE + {Add, DetectContradiction, Promote, Relate}
+  R5 (|R|=18)  = CORE + {DetectContradiction, Infer, Promote, Relate}
+  R6 (|R|=18)  = CORE + {DetectContradiction, Promote, Relate, Split}
+  where CORE = {Approve, Assess, Authorize, ChangePolicy, Commit, ComputeZero, Decide, LinkEvidence, Observe, Propose, Qualify, Reject, Resolve, Validate}
+CROSS-CHECK  intersection == necessary-set ? True
+
+==============================================================================
+STEP 3 — ALL MINIMAL SUFFICIENT REGISTRIES over R_A_strict (12)
+==============================================================================
+number of MINIMAL sufficient registries : 6
+sizes                                   : [14, 15, 16]
+INTERSECTION (in EVERY minimal registry, size 12):
+  Approve, Assess, Authorize, ChangePolicy, Commit, ComputeZero, LinkEvidence, Observe, Propose, Qualify, Reject, Resolve
+UNION (appears in at least one, size 21):
+  Accept, Add, Approve, Assess, Authorize, ChangePolicy, Commit, ComputeZero, DetectContradiction, Infer, LinkEvidence, MarkConflict, Observe, Promote, Propose, Qualify, Refute, Reject, Relate, Resolve, Split
+UNDETERMINED BAND (union minus intersection, size 9):
+  Accept, Add, DetectContradiction, Infer, MarkConflict, Promote, Refute, Relate, Split
+ALL 6 MINIMAL REGISTRIES — ENUMERATED, NONE SELECTED:
+  R1 (|R|=14)  = CORE + {Accept, MarkConflict}
+  R2 (|R|=14)  = CORE + {MarkConflict, Promote}
+  R3 (|R|=15)  = CORE + {DetectContradiction, Promote, Refute}
+  R4 (|R|=16)  = CORE + {Add, DetectContradiction, Promote, Relate}
+  R5 (|R|=16)  = CORE + {DetectContradiction, Infer, Promote, Relate}
+  R6 (|R|=16)  = CORE + {DetectContradiction, Promote, Relate, Split}
+  where CORE = {Approve, Assess, Authorize, ChangePolicy, Commit, ComputeZero, LinkEvidence, Observe, Propose, Qualify, Reject, Resolve}
+CROSS-CHECK  intersection == necessary-set ? True
+
+==============================================================================
+STEP 4 — SUBSET REMOVAL (interaction effects), over R_A_strict (12)
+  R_A_strict is used because every one of its capabilities is BOTH
+  ratified-forced AND ratified-formulated.
+==============================================================================
+pairs tested: 630   pairs whose joint removal costs a capability: 357
+of those, PURE INTERACTION pairs (neither member individually necessary): 3
+  {Accept, Promote}  ->  loses A2
+  {DetectContradiction, MarkConflict}  ->  loses A9
+  {MarkConflict, Promote}  ->  loses A1
+triples over non-necessary ops tested: 2024   lossy: 65   NEW (not explained by a lossy pair): 1
+  {MarkConflict, Refute, Relate}  ->  loses A9
+
+==============================================================================
+DONE in 156.4s
+==============================================================================
