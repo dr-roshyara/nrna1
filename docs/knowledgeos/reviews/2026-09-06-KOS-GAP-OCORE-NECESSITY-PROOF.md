@@ -5,6 +5,13 @@
 `2026-09-06-KOS-SURVIVING-BLOCKER-DEPENDENCY-ANALYSIS.md` §9 recommendation ①.
 **Raised by:** the research owner, 2026-09-06. **Verified against the corpus here.**
 
+> ### ⚠️ **AMENDED 2026-09-06 — `D-1A` IS BLOCKED**
+> §3's adequacy predicate rests on `K_min`, which is **stipulated, not derived**, and a rival basis
+> with better standing exists (`GN-77`, nine capabilities, *"canonically REQUIRED"*).
+> **`D-1A` must not run until Level A — capability necessity — is proved or falsified.**
+> See [`…-GAP-KMIN-CAPABILITY-BASIS-UNVALIDATED.md`](2026-09-06-KOS-GAP-KMIN-CAPABILITY-BASIS-UNVALIDATED.md).
+
+
 ---
 
 ## 1. The correction I have to accept first

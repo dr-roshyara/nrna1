@@ -4,6 +4,16 @@
 **Tests:** `2026-09-06-KOS-IMPLEMENTATION-READINESS-REVERIFICATION.md` §14.
 
 > **Instruction honoured:** *"do not search for more definitions now; prove the dependency structure
+
+> ### ⚠️ **FURTHER AMENDED 2026-09-06** — the closure this rests on is MODEL-RELATIVE
+> The `K_min` = {Hold, Transition, Reject, Replay} basis is **stipulated**, not derived
+> (`07-MINIMUM-IMPLEMENTABLE` Method paragraph: *"A reference kernel **must be able to**…"*, no
+> citation). Its guarantee *"excluded by a dependency fact, not by judgement"* covers **the closure
+> of those four, not the four**. And a **rival basis with better standing exists** — `GN-77`:
+> *"**9 capabilities are canonically REQUIRED**"*.
+> **Consequence: §4's exclusion of `Qualify` from the kernel path holds under `K_min` and is
+> UNTESTED under `GN-77`.** See [`…-GAP-KMIN-CAPABILITY-BASIS-UNVALIDATED.md`](2026-09-06-KOS-GAP-KMIN-CAPABILITY-BASIS-UNVALIDATED.md).
+
 > of the nine surviving items."* **No definition search was performed.** Only two already-computed
 > dependency artifacts were consulted.
 
